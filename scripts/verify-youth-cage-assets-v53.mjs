@@ -1,0 +1,72 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { chromium } from 'playwright-core';
+import { createDesktopHomeworldDriver } from './desktop-youth-patrol-v52.mjs';
+
+const url = process.env.V53_QA_URL || 'http://127.0.0.1:4174';
+const output = process.env.V53_CAGE_ASSET_QA_OUTPUT || 'outputs/qa-commercial-audit/v53/youth/asset-retry';
+const archivePath = process.env.V53_PATROL_ARCHIVE || 'outputs/qa-commercial-audit/v52/youth/patrol-browser-qa/patrol-return-played-storage.json';
+// Archived after the actual V52 browser route. No actor, phase or receipt is invented.
+const archive = JSON.parse(await fs.readFile(archivePath, 'utf8'));
+const saveKey = 'yautja-long-hunt.save', original = JSON.parse(archive[saveKey]);
+assert.equal(original.youthTraining.checkpoint.phase, 'patrol-complete');
+assert.equal(original.youthTraining.receipts.length, 16);
+const missingPath = '/game/youth/v53/cage-structure.png';
+await fs.mkdir(output, { recursive: true });
+const browser = await chromium.launch({ channel: 'chrome', headless: true });
+const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+const page = await context.newPage(), errors = [], responses = [], checks = [];
+page.setDefaultTimeout(45000);
+page.on('pageerror', error => errors.push(error.message));
+page.on('response', response => { if (response.status() >= 400) responses.push({ url: response.url(), status: response.status() }); });
+const canvas = page.locator('canvas[data-youth-stage]');
+const state = () => canvas.evaluate(node => ({ phase: node.dataset.youthPhase, tick: Number(node.dataset.youthTick), assets: node.dataset.youthAssets, paused: node.dataset.youthPaused }));
+const savedBytes = () => page.evaluate(key => localStorage.getItem(key), saveKey);
+try {
+  await page.goto(url, { waitUntil: 'networkidle', timeout: 120000 });
+  await page.evaluate(entries => { localStorage.clear(); for (const [key, value] of Object.entries(entries)) localStorage.setItem(key, value); }, archive);
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.getByRole('button', { name: /^Continuer/ }).click();
+  await page.locator('[data-homeworld-hub]').waitFor();
+  assert.equal(await page.locator('[data-game-content-version]').first().getAttribute('data-game-content-version'), 'V53');
+  await page.clock.install();
+  const driver = await createDesktopHomeworldDriver(page);
+  await driver.approach('training-service');
+  await page.route('**' + missingPath, route => route.fulfill({ status: 404, contentType: 'text/plain', body: 'QA missing cage structure' }));
+  await page.getByRole('button', { name: 'Préparer le premier duel de la Fosse', exact: true }).click();
+  const retry = page.getByRole('button', { name: 'Réessayer le chargement', exact: true });
+  await retry.waitFor(); await page.clock.runFor(100);
+  const blocked = await state(), before = await savedBytes();
+  assert.equal(blocked.phase, 'patrol-complete'); assert.equal(blocked.assets, 'false'); assert.equal(blocked.paused, 'true');
+  await canvas.focus();
+  const move = original.settings.controlBindings['pit.p1MoveRight'][0];
+  await page.keyboard.down(move); await page.clock.runFor(1500); await page.keyboard.up(move);
+  assert.deepEqual(await state(), blocked); assert.equal(await savedBytes(), before);
+  assert.equal(JSON.parse(before).youthTraining.receipts.length, 16);
+  await page.screenshot({ path: path.join(output, 'missing-cage-structure.png') });
+  checks.push({ name: 'missing-cage-asset-blocks-ticks-and-progress', missingPath, exactPrimaryPreserved: true, physicallyVisitedMentor: true });
+
+  await page.unroute('**' + missingPath); await retry.click();
+  await page.waitForFunction(() => document.querySelector('canvas[data-youth-stage]')?.dataset.youthAssets === 'true');
+  await canvas.focus(); await page.clock.runFor(1200);
+  const recovered = await state();
+  assert.equal(recovered.phase, 'patrol-complete'); assert.equal(recovered.tick, blocked.tick);
+  assert.equal(JSON.parse(await savedBytes()).youthTraining.receipts.length, 16);
+  checks.push({ name: 'retry-loads-all-images-without-automatic-departure', tick: recovered.tick, proofCount: 16 });
+  await page.locator('[data-youth-cage-departure]').click(); await page.clock.runFor(250);
+  assert.equal((await state()).phase, 'cage-briefing');
+  assert.equal((await state()).assets, 'true');
+  assert.equal(JSON.parse(await savedBytes()).youthTraining.receipts.length, 16);
+  await page.screenshot({ path: path.join(output, 'cage-retry-explicit-departure.png') });
+  checks.push({ name: 'explicit-departure-opens-ready-cage-without-free-reward', phase: 'cage-briefing', proofCount: 16 });
+  assert.deepEqual(errors, []);
+  assert(responses.length >= 1);
+  assert(responses.every(response => response.status === 404 && new URL(response.url).pathname === missingPath));
+  await fs.writeFile(path.join(output, 'report.json'), JSON.stringify({ passed: true, checkedAt: new Date().toISOString(), url, contentVersion: 'V53', archivePath, checks, errors, expectedFailureResponses: responses, routeEvidence: driver.routeEvidence }, null, 2) + '\n');
+  console.log(JSON.stringify({ passed: true, checks: checks.length, output }));
+} catch (error) {
+  await page.screenshot({ path: path.join(output, 'failure.png'), fullPage: true }).catch(() => {});
+  await fs.writeFile(path.join(output, 'failure.json'), JSON.stringify({ error: String(error), checks, errors, responses, body: await page.locator('body').innerText().catch(() => null) }, null, 2));
+  console.error(error); process.exitCode = 1;
+} finally { await context.close(); await browser.close(); }

@@ -1,0 +1,1619 @@
+{
+  "schemaVersion": 2,
+  "asOf": "2026-11-02",
+  "method": "Read-only Pillow alpha/ROI/geometry/byte inspection. No processed PNGs exported. All delivered PNGs are exact original byte copies.",
+  "request": {
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "grid": [
+      3,
+      2
+    ],
+    "strictGutterPxAtAlphaGt0": 32,
+    "requestedPivots": [
+      256,
+      464
+    ],
+    "requestedBodyReferencePx": [
+      360,
+      380,
+      300
+    ],
+    "actualPivotsAndBodyReference": "Diagnostic proposals recorded independently from the request, not falsely declared equal."
+  },
+  "pages": [
+    {
+      "facing": "right",
+      "attempt": 1,
+      "selection": "RETAINED_RIGHT_CANDIDATE_STRICT_GUTTER_NOT_PASSED",
+      "path": "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-right-native.png",
+      "originalPath": "/workspace/generated_images/exec-ff9c35c3-b16c-4dc4-a9d4-b9aaad26793a.png",
+      "bytes": 2258555,
+      "sha256": "3353ea3b7422ec2cd3fc2576bc7122ba135e50ebbf54bed41478c7e2259b0ef8",
+      "byteExactCopy": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alpha1or2Pixels": 78485,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cellWidth": 512,
+        "cellHeight": 512
+      },
+      "sixRawCellsDistinct": true,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pose": "injured-upright",
+          "proposedDurationTicks": 30,
+          "alphaGt0": {
+            "bboxExclusive": [
+              15,
+              24,
+              508,
+              512
+            ],
+            "margins": [
+              15,
+              24,
+              4,
+              0
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              24,
+              26,
+              476,
+              496
+            ],
+            "margins": [
+              24,
+              26,
+              36,
+              16
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              26,
+              28,
+              472,
+              495
+            ],
+            "margins": [
+              26,
+              28,
+              40,
+              17
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              27,
+              29,
+              471,
+              494
+            ],
+            "margins": [
+              27,
+              29,
+              41,
+              18
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 1,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 268,
+            "y": 493,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "90eff73e6aa494cf5f5c26557404817491c1c3f0381dab646beb6475da77f4c7"
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pose": "pin-contact-recoil",
+          "proposedDurationTicks": 30,
+          "alphaGt0": {
+            "bboxExclusive": [
+              3,
+              38,
+              512,
+              500
+            ],
+            "margins": [
+              3,
+              38,
+              0,
+              12
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              31,
+              40,
+              460,
+              495
+            ],
+            "margins": [
+              31,
+              40,
+              52,
+              17
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              32,
+              41,
+              458,
+              495
+            ],
+            "margins": [
+              32,
+              41,
+              54,
+              17
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              33,
+              42,
+              457,
+              494
+            ],
+            "margins": [
+              33,
+              42,
+              55,
+              18
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 4,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 248,
+            "y": 493,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "70fe025d660f5128e6f8f77a7cd3444299e7e41e839ea25d3354921efdc65d76"
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pose": "braced-held",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              0,
+              45,
+              496,
+              504
+            ],
+            "margins": [
+              0,
+              45,
+              16,
+              8
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              11,
+              138,
+              493,
+              495
+            ],
+            "margins": [
+              11,
+              138,
+              19,
+              17
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              13,
+              139,
+              491,
+              495
+            ],
+            "margins": [
+              13,
+              139,
+              21,
+              17
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              14,
+              140,
+              490,
+              494
+            ],
+            "margins": [
+              14,
+              140,
+              22,
+              18
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 2,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 200,
+            "y": 493,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "dd72d21c1b0c901639e1230ac54f0fb2d2adb7348e30ad80ee2bddf3fa54049d"
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pose": "shoulder-twist",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              0,
+              6,
+              512,
+              512
+            ],
+            "margins": [
+              0,
+              6,
+              0,
+              0
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              34,
+              27,
+              484,
+              482
+            ],
+            "margins": [
+              34,
+              27,
+              28,
+              30
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              36,
+              29,
+              483,
+              482
+            ],
+            "margins": [
+              36,
+              29,
+              29,
+              30
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              37,
+              30,
+              482,
+              481
+            ],
+            "margins": [
+              37,
+              30,
+              30,
+              31
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 3,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 256,
+            "y": 480,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "2be7f027c9ebcb00688c24c512fa175d2c892e233839581842bb13cb32fd121e"
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pose": "cut-contact-recoil",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              9,
+              27,
+              512,
+              490
+            ],
+            "margins": [
+              9,
+              27,
+              0,
+              22
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              32,
+              61,
+              450,
+              477
+            ],
+            "margins": [
+              32,
+              61,
+              62,
+              35
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              34,
+              63,
+              449,
+              475
+            ],
+            "margins": [
+              34,
+              63,
+              63,
+              37
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              35,
+              64,
+              448,
+              474
+            ],
+            "margins": [
+              35,
+              64,
+              64,
+              38
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 11,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 244,
+            "y": 473,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "48f028521c4640753e0bc1ff12e5c16bcf6b21fa39b82da0db770a224e76d7ab"
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pose": "collapse-release",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              0,
+              1,
+              497,
+              512
+            ],
+            "margins": [
+              0,
+              1,
+              15,
+              0
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              11,
+              170,
+              494,
+              473
+            ],
+            "margins": [
+              11,
+              170,
+              18,
+              39
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              13,
+              172,
+              493,
+              472
+            ],
+            "margins": [
+              13,
+              172,
+              19,
+              40
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              14,
+              173,
+              492,
+              471
+            ],
+            "margins": [
+              14,
+              173,
+              20,
+              41
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 5,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 436,
+            "y": 470,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "15504db74d0a354cc601c93f257da7bedddb9615bbba71591ef6254d190617c8"
+        }
+      ],
+      "fixedPageBodyHeightDiagnostic": {
+        "pixels": 465,
+        "rule": "Neutral frame0 alpha>128 crown-to-lowest-support approximation, not anatomical admission; fixed for page, never per-pose rescaling."
+      },
+      "visibleBoundaryContactAtAlphaGt2": false,
+      "strict32pxGuttersAllPassed": false,
+      "status": "CANDIDAT_NON_ADMIS",
+      "humanValidated": false,
+      "pixelChanges": false
+    },
+    {
+      "facing": "left",
+      "attempt": 1,
+      "selection": "REJECTED_VISIBLE_GRID_BOUNDARY_CONTACT_FRAMES_3_4",
+      "path": "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-left-native.png",
+      "originalPath": "/workspace/generated_images/exec-14c701ed-4d6e-401d-bdc5-d85333931110.png",
+      "bytes": 2267771,
+      "sha256": "4b38e10df9e53d0e96069b31783fc60dfa5ab1bdd432d1224c0e0b45e13ca86c",
+      "byteExactCopy": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alpha1or2Pixels": 88234,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cellWidth": 512,
+        "cellHeight": 512
+      },
+      "sixRawCellsDistinct": true,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pose": "injured-upright",
+          "proposedDurationTicks": 30,
+          "alphaGt0": {
+            "bboxExclusive": [
+              0,
+              24,
+              512,
+              500
+            ],
+            "margins": [
+              0,
+              24,
+              0,
+              12
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              48,
+              26,
+              510,
+              495
+            ],
+            "margins": [
+              48,
+              26,
+              2,
+              17
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              49,
+              27,
+              509,
+              493
+            ],
+            "margins": [
+              49,
+              27,
+              3,
+              19
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              50,
+              28,
+              507,
+              492
+            ],
+            "margins": [
+              50,
+              28,
+              5,
+              20
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 54,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 304,
+            "y": 491,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "cd2906882e2d116024b7e8fab04567ce743bb45f0309f2db94ac7acf4e3cff13"
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pose": "pin-contact-recoil",
+          "proposedDurationTicks": 30,
+          "alphaGt0": {
+            "bboxExclusive": [
+              0,
+              7,
+              512,
+              512
+            ],
+            "margins": [
+              0,
+              7,
+              0,
+              0
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              48,
+              45,
+              480,
+              495
+            ],
+            "margins": [
+              48,
+              45,
+              32,
+              17
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              50,
+              47,
+              480,
+              493
+            ],
+            "margins": [
+              50,
+              47,
+              32,
+              19
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              51,
+              48,
+              479,
+              492
+            ],
+            "margins": [
+              51,
+              48,
+              33,
+              20
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 43,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 284,
+            "y": 491,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "60667af78bbfd1f8d4976c8d683aec09cb6514f708f35d2b378bdebf5c36adb6"
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pose": "braced-held",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              1,
+              9,
+              511,
+              506
+            ],
+            "margins": [
+              1,
+              9,
+              1,
+              6
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              21,
+              150,
+              500,
+              492
+            ],
+            "margins": [
+              21,
+              150,
+              12,
+              20
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              23,
+              151,
+              498,
+              490
+            ],
+            "margins": [
+              23,
+              151,
+              14,
+              22
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              24,
+              153,
+              498,
+              488
+            ],
+            "margins": [
+              24,
+              153,
+              14,
+              24
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 0,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 246,
+            "y": 487,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "7eda04543eda5071a7ffae884739be287bc4cce38aa4a221050214d0c252d835"
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pose": "shoulder-twist",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              0,
+              5,
+              512,
+              512
+            ],
+            "margins": [
+              0,
+              5,
+              0,
+              0
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              21,
+              29,
+              512,
+              464
+            ],
+            "margins": [
+              21,
+              29,
+              0,
+              48
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              23,
+              30,
+              512,
+              462
+            ],
+            "margins": [
+              23,
+              30,
+              0,
+              50
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              24,
+              31,
+              512,
+              461
+            ],
+            "margins": [
+              24,
+              31,
+              0,
+              51
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 196,
+            "2": 142,
+            "8": 132,
+            "128": 100
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 396,
+            "y": 460,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "700ec51f39c6410f088b220bcdc462388d80ddb2cc0653ad39b149d68ac030f4"
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pose": "cut-contact-recoil",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              0,
+              1,
+              512,
+              512
+            ],
+            "margins": [
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              0,
+              26,
+              483,
+              460
+            ],
+            "margins": [
+              0,
+              26,
+              29,
+              52
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              0,
+              28,
+              481,
+              458
+            ],
+            "margins": [
+              0,
+              28,
+              31,
+              54
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              0,
+              29,
+              480,
+              457
+            ],
+            "margins": [
+              0,
+              29,
+              32,
+              55
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 171,
+            "2": 145,
+            "8": 140,
+            "128": 112
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 169,
+            "y": 456,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "ae9ecd85cf2e021e465b64bd8bf1545e1a7f3adaccba415ece891f7eea0c07e1"
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pose": "collapse-release",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              1,
+              1,
+              512,
+              512
+            ],
+            "margins": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              6,
+              147,
+              502,
+              477
+            ],
+            "margins": [
+              6,
+              147,
+              10,
+              35
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              6,
+              147,
+              500,
+              475
+            ],
+            "margins": [
+              6,
+              147,
+              12,
+              37
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              7,
+              149,
+              499,
+              474
+            ],
+            "margins": [
+              7,
+              149,
+              13,
+              38
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 13,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 138,
+            "y": 473,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "e83a2ed23890fd8129f45caae03d94c39d2ebed1819daadf48385494be164d23"
+        }
+      ],
+      "fixedPageBodyHeightDiagnostic": {
+        "pixels": 464,
+        "rule": "Neutral frame0 alpha>128 crown-to-lowest-support approximation, not anatomical admission; fixed for page, never per-pose rescaling."
+      },
+      "visibleBoundaryContactAtAlphaGt2": true,
+      "strict32pxGuttersAllPassed": false,
+      "status": "REJECTED_GRID_BOUNDARY_CONTACT",
+      "humanValidated": false,
+      "pixelChanges": false
+    },
+    {
+      "facing": "left",
+      "attempt": 2,
+      "selection": "RETAINED_LEFT_REPLACEMENT_CANDIDATE_STRICT_GUTTER_NOT_PASSED",
+      "path": "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-left-native-attempt02.png",
+      "originalPath": "/workspace/generated_images/exec-729604bf-8dad-44cd-8eeb-03df8f62a0e4.png",
+      "bytes": 1989987,
+      "sha256": "e4eff9bf4d183f909c6a3446746c08f055e575704cf548166a1e0ea389568d76",
+      "byteExactCopy": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alpha1or2Pixels": 59895,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cellWidth": 512,
+        "cellHeight": 512
+      },
+      "sixRawCellsDistinct": true,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pose": "injured-upright",
+          "proposedDurationTicks": 30,
+          "alphaGt0": {
+            "bboxExclusive": [
+              0,
+              9,
+              512,
+              487
+            ],
+            "margins": [
+              0,
+              9,
+              0,
+              25
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              144,
+              78,
+              463,
+              483
+            ],
+            "margins": [
+              144,
+              78,
+              49,
+              29
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              145,
+              79,
+              462,
+              483
+            ],
+            "margins": [
+              145,
+              79,
+              50,
+              29
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              146,
+              79,
+              461,
+              482
+            ],
+            "margins": [
+              146,
+              79,
+              51,
+              30
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 7,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 354,
+            "y": 481,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "f6e3de717e055145b8c81b77e0e370def66717df5a8517e6e8b98a1a4a7f6ad9"
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pose": "pin-contact-recoil",
+          "proposedDurationTicks": 30,
+          "alphaGt0": {
+            "bboxExclusive": [
+              1,
+              79,
+              462,
+              512
+            ],
+            "margins": [
+              1,
+              79,
+              50,
+              0
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              112,
+              81,
+              440,
+              487
+            ],
+            "margins": [
+              112,
+              81,
+              72,
+              25
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              114,
+              84,
+              439,
+              487
+            ],
+            "margins": [
+              114,
+              84,
+              73,
+              25
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              115,
+              86,
+              437,
+              485
+            ],
+            "margins": [
+              115,
+              86,
+              75,
+              27
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 1,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 308,
+            "y": 484,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "bdcdb711065bb65a08882079bbe210351cd8a81a999df40cd29886ec4fec8435"
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pose": "braced-held",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              3,
+              19,
+              478,
+              502
+            ],
+            "margins": [
+              3,
+              19,
+              34,
+              10
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              63,
+              208,
+              437,
+              491
+            ],
+            "margins": [
+              63,
+              208,
+              75,
+              21
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              64,
+              208,
+              435,
+              491
+            ],
+            "margins": [
+              64,
+              208,
+              77,
+              21
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              65,
+              209,
+              434,
+              490
+            ],
+            "margins": [
+              65,
+              209,
+              78,
+              22
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 0,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 136,
+            "y": 489,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "84e217ebbbdd19d2dd7cee44ef440181bf945d3a4cc88af9956a57ba6d205d67"
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pose": "shoulder-twist",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              11,
+              6,
+              508,
+              486
+            ],
+            "margins": [
+              11,
+              6,
+              4,
+              26
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              82,
+              70,
+              463,
+              461
+            ],
+            "margins": [
+              82,
+              70,
+              49,
+              51
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              83,
+              72,
+              461,
+              459
+            ],
+            "margins": [
+              83,
+              72,
+              51,
+              53
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              84,
+              73,
+              460,
+              458
+            ],
+            "margins": [
+              84,
+              73,
+              52,
+              54
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 0,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 339,
+            "y": 457,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "5834ace422c8b190ccc3e81fd916a197ea65e868543ad0d0582e09f5def522c2"
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pose": "cut-contact-recoil",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              1,
+              73,
+              500,
+              464
+            ],
+            "margins": [
+              1,
+              73,
+              12,
+              48
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              67,
+              75,
+              474,
+              460
+            ],
+            "margins": [
+              67,
+              75,
+              38,
+              52
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              68,
+              77,
+              472,
+              458
+            ],
+            "margins": [
+              68,
+              77,
+              40,
+              54
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              69,
+              78,
+              471,
+              457
+            ],
+            "margins": [
+              69,
+              78,
+              41,
+              55
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 0,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": false,
+          "proposedPivot": {
+            "x": 273,
+            "y": 456,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "1afba6c57926083abdf5262203f01b9351118f3fe78961d8b3f09a5ceb1260e9"
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pose": "collapse-release",
+          "proposedDurationTicks": 60,
+          "alphaGt0": {
+            "bboxExclusive": [
+              50,
+              34,
+              476,
+              466
+            ],
+            "margins": [
+              50,
+              34,
+              36,
+              46
+            ]
+          },
+          "alphaGt2": {
+            "bboxExclusive": [
+              51,
+              209,
+              462,
+              462
+            ],
+            "margins": [
+              51,
+              209,
+              50,
+              50
+            ]
+          },
+          "alphaGt8": {
+            "bboxExclusive": [
+              52,
+              211,
+              462,
+              460
+            ],
+            "margins": [
+              52,
+              211,
+              50,
+              52
+            ]
+          },
+          "alphaGt128": {
+            "bboxExclusive": [
+              53,
+              212,
+              461,
+              459
+            ],
+            "margins": [
+              53,
+              212,
+              51,
+              53
+            ]
+          },
+          "edgePixelsByThreshold": {
+            "0": 0,
+            "2": 0,
+            "8": 0,
+            "128": 0
+          },
+          "strict32pxAlpha0GutterPass": true,
+          "proposedPivot": {
+            "x": 148,
+            "y": 458,
+            "status": "DIAGNOSTIC_NATIVE_SUPPORT_BAND_NOT_ADMITTED",
+            "rule": "Center of occupied x-range at alpha>128 in lowest4pixel band; anatomical support/contact still requires actual review."
+          },
+          "rawCellBytesSha256DiagnosticOnly": "0be616b91554927bb94f5454f542ffe9f76afcec6bc70de105a13bacc3781704"
+        }
+      ],
+      "fixedPageBodyHeightDiagnostic": {
+        "pixels": 403,
+        "rule": "Neutral frame0 alpha>128 crown-to-lowest-support approximation, not anatomical admission; fixed for page, never per-pose rescaling."
+      },
+      "visibleBoundaryContactAtAlphaGt2": false,
+      "strict32pxGuttersAllPassed": false,
+      "status": "CANDIDAT_NON_ADMIS",
+      "humanValidated": false,
+      "pixelChanges": false
+    }
+  ],
+  "selectedCandidatePaths": [
+    "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-right-native.png",
+    "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-left-native-attempt02.png"
+  ],
+  "rejectedPaths": [
+    "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-left-native.png"
+  ],
+  "selectedPairExactHorizontalMirror": false,
+  "independentGenerationCalls": true,
+  "humanValidated": false,
+  "runtimeIntegrated": false,
+  "sourceCompletion": false,
+  "victimEntityAdmitted": false,
+  "limits": [
+    "Both retained pages fail strict requested32px alpha>0 gutters. No threshold was applied to saved pixels.",
+    "First left page has actual alpha>2 boundary contact in frames3/4 and stays rejected; no crop,padding,mirror or edit repaired it.",
+    "Retained right and replacement-left have no alpha>2 pixels on cell boundaries, but faint alpha1/2 noise reaches boundaries.",
+    "Proposed anchors/body reference do not establish in-engine contact, victim identity or artistic quality."
+  ]
+}

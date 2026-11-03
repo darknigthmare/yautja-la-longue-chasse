@@ -1,0 +1,532 @@
+{
+  "version": "MMK-20261103-PASS5-REVIEW",
+  "date": "2026-11-03",
+  "baselineCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+  "previousDeliveryCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+  "status": "GENERATED_REVIEWED_SOURCE_ART_CANDIDATES",
+  "scope": "Ten independent native source-art states and components extending forty-six previously selected PNGs.",
+  "reviewer": "Root coordinating assistant; each selected output directly displayed against source references.",
+  "humanArtReview": false,
+  "method": "Separate source/new PNG visual inspection, byte hashes and alpha measurements. Not an in-game or human-art validation.",
+  "selectedCount": 10,
+  "totalPackSelectedCount": 56,
+  "newInheritedReferenceViewCount": 9,
+  "totalInheritedReferenceViewCount": 22,
+  "assets": [
+    {
+      "id": "HWM162-S15",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S15-empty-market-stall-right.png",
+      "sha256": "1789194a68cc85780818da0a20fc66937fdbcdc1c8697805c97e2f2850f45800",
+      "findings": "Comptoir et espace sous table dégagés, pots, lots, rouleaux, peaux exposées et caisses retirés. Auvent, montants, lanternes et textiles fixes suspendus conservés. Silhouette entière ; pointe haute à seulement 4 px du bord au seuil alpha > 24, cadrage natif serré documenté. Les surfaces précédemment cachées sont reconstruites.",
+      "reviewMethod": "Root directly displayed loaded V78 stall and unchanged native empty state.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "visibleMarginsAtAlpha24": [
+        44,
+        4,
+        16,
+        57
+      ],
+      "minVisibleMarginAtAlpha24": 4,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "referenceSources": [
+        {
+          "path": "public/game/homeworld/v78/market-stall-right.png",
+          "sha256": "c98a90d777cf85e921681feb36c738216d8a99a945669e670234c65b65897796",
+          "sourceCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional inputs for each correction are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-S16",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S16-empty-compact-merchant-kiosk.png",
+      "sha256": "37499344d5fe0990548ef5f8ebab64878b4b0642a133ed219a4dbd3e405715a4",
+      "findings": "Comptoir vide et trois accroches libres. Coffre, pots, couteaux, trophées mobiles et nappe retirés ; deux défenses du toit, couverture, emblèmes, lanternes et soubassement conservés. Vue et proportions visuellement proches de la référence compacte ; échelle physique et superposition exacte non certifiées.",
+      "reviewMethod": "Root directly displayed original HWA160-023 kiosk and unchanged native empty state.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "dimensionsPixels": [
+        1254,
+        1254
+      ],
+      "visibleMarginsAtAlpha24": [
+        198,
+        66,
+        178,
+        94
+      ],
+      "minVisibleMarginAtAlpha24": 66,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+          "sha256": "cff21dfa18b8d2bcaa74f8690b7a7ff1d4fc83f902f38af21c7ebc00b1dec3b3",
+          "sourceCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional inputs for each correction are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-S17",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S17-small-sealed-storage-jar.png",
+      "sha256": "015f42e293889ff50f5d69de30a5208b3ea60ca9727c3ea79c26d9e5d8248b27",
+      "findings": "Un pot fermé autonome, corps sombre, couvercle et cerclages bronze, motif angulaire cohérent avec les petits pots du rack V76. Aucun rack ni autre contenant fusionné. Contenu, contenance, dimensions physiques et sens canonique du motif non attribués.",
+      "reviewMethod": "Root directly displayed loaded V76 lateral rack and unchanged native isolated storage jar.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "dimensionsPixels": [
+        1312,
+        1199
+      ],
+      "visibleMarginsAtAlpha24": [
+        377,
+        188,
+        377,
+        218
+      ],
+      "minVisibleMarginAtAlpha24": 188,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "referenceSources": [
+        {
+          "path": "public/game/homeworld/v76/interior/rack-lateral.png",
+          "sha256": "441642d5ddacad9a03a45f068d0e95d588518ae18a5c02af897b2dd165436308",
+          "sourceCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional inputs for each correction are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-M16",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M16-hurdle-left-upright-v2.png",
+      "sha256": "344a740252dd99119e9f48a6f9fcb1c6211786667619206a218bf889007dfebd",
+      "selectedAttempt": 2,
+      "findings": "Montant gauche entier, récepteur vide à droite, base, voyant et logements conservés. La correction native rapproche la hauteur visible de celle de M17 : 435 px contre 436 px, au lieu de 474 px. Le raccord exact, la hauteur de la barre et la charge restent non validés.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "reviewMethod": "Root directly displayed M05, M16-v1, M17 and unchanged native M16-v2.",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "visibleMarginsAtAlpha24": [
+        166,
+        307,
+        1066,
+        282
+      ],
+      "minVisibleMarginAtAlpha24": 166,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+          "sourceCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional inputs for each correction are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-M17",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M17-hurdle-right-upright.png",
+      "sha256": "0a230a9593d54ab7f1e636c02e2dd77bb4af685eaa88618f410bd76d8a5e113f",
+      "findings": "Montant droit entier avec récepteur vide orienté à gauche, base, logements et voyant conservés. Aucun montant opposé ni barre fusionné. Vue cohérente avec M05 ; points de contact, charge et réglage non validés. La comparaison à M16 a motivé une correction native du gabarit du montant gauche.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "reviewMethod": "Root directly displayed complete M05 and both native isolated upright outputs.",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "visibleMarginsAtAlpha24": [
+        1073,
+        303,
+        169,
+        285
+      ],
+      "minVisibleMarginAtAlpha24": 169,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+          "sourceCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional inputs for each correction are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-M18",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M18-padded-training-rail.png",
+      "sha256": "b06df21e7ff05796094c29fa790429335dc4026aeb7a9fd279af7aacdc4d81ce",
+      "findings": "Barre seule, textile rouge, cerclages et deux embouts complets. Aucun récepteur, poteau ou socle fusionné. Position horizontale cohérente avec M05 ; longueur de raccord et diamètre aux récepteurs restent à ajuster en scène.",
+      "reviewMethod": "Root directly displayed M05 and unchanged native isolated padded rail.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "visibleMarginsAtAlpha24": [
+        348,
+        479,
+        351,
+        481
+      ],
+      "minVisibleMarginAtAlpha24": 348,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+          "sourceCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional inputs for each correction are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-K18",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K18-enclosure-rear-arc.png",
+      "sha256": "6550a4e80f2fa0aaa332ff3942865ab49ce89abdf2a566592e3b01bc187349ea",
+      "findings": "Arc arrière et retours conservés avec six poteaux complets. Deux poteaux et trois travées avant retirés ; passage libre, charnière fixe portée par le poteau gauche. Identité, matière et vue cohérentes avec 266. Raccords aux pièces de premier plan et occultation en jeu restent à valider.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "reviewMethod": "Root directly displayed the complete source266 and the unchanged generated rear arc.",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "dimensionsPixels": [
+        1254,
+        1254
+      ],
+      "visibleMarginsAtAlpha24": [
+        116,
+        296,
+        79,
+        415
+      ],
+      "minVisibleMarginAtAlpha24": 79,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "referenceSources": [
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+          "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+          "sourceCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional inputs for each correction are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-K19",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K19-enclosure-front-arc.png",
+      "sha256": "e1157b98f951c2c62c71a4392ecb13b480c1bf5a7c7930510418ac879ccd225d",
+      "findings": "Deux travées fixes et deux poteaux avant complets, récepteur de serrure à gauche. Trois extrémités de rails libres à droite, sans duplication du poteau porté par K18. Vue et directions cohérentes avec 266. Le rendu est agrandi/recentré par rapport à la zone source : il faut régler échelle et placement avant assemblage, aucune superposition directe n’est certifiée.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "reviewMethod": "Root directly displayed source266, generated K18 and unchanged native front arc.",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "dimensionsPixels": [
+        1254,
+        1254
+      ],
+      "visibleMarginsAtAlpha24": [
+        184,
+        428,
+        75,
+        317
+      ],
+      "minVisibleMarginAtAlpha24": 75,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "referenceSources": [
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+          "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+          "sourceCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional inputs for each correction are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-K20",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+      "sha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290",
+      "selectedAttempt": 2,
+      "findings": "Battant indépendant à trois traverses avec deux ouvertures, paumelles mobiles à gauche et loquet à droite, sans poteau en basalte. Pose fermée diagonale cohérente avec 266. La correction retire l’insert lumineux repris du poteau fixe ; le voyant reste attribué à K19. Échelle de composition et raccord des ferrures non validés.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "reviewMethod": "Root directly displayed source266, K19, initial K20 and unchanged corrected native K20.",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "visibleMarginsAtAlpha24": [
+        355,
+        103,
+        387,
+        96
+      ],
+      "minVisibleMarginAtAlpha24": 96,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "referenceSources": [
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+          "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+          "sourceCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional inputs for each correction are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-K21",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png",
+      "sha256": "e3db8d71f15a449bbdacf717368015d3f1033dc40ca1f7eaaa632b478c4d3c3f",
+      "findings": "Battant entier à trois traverses et deux vides, sans poteau ni insert lumineux. Pose ouverte proposée : axe de charnière en haut à droite, bord libre et loquet en bas à gauche. Géométrie et ferrures cohérentes avec K20 corrigé ; nouvelle sortie native, aucun miroir de pixels. Les faces auparavant cachées restent reconstruites ; angle d’ouverture, axe exact et dégagement non validés.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "reviewMethod": "Root directly displayed source266, corrected closed gate K20 and unchanged native open gate K21.",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "visibleMarginsAtAlpha24": [
+        384,
+        41,
+        382,
+        42
+      ],
+      "minVisibleMarginAtAlpha24": 41,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "referenceSources": [
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+          "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+          "sourceCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+          "sha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290",
+          "sourceCommit": null,
+          "sourceState": "CURRENT_PASS_GENERATED_INPUT"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional inputs for each correction are retained in the generation receipt."
+    }
+  ],
+  "correctedAttempts": [
+    {
+      "id": "HWM162-M16",
+      "path": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M16-hurdle-left-upright-v1.png",
+      "sha256": "daa4d1e54bcfce7ef90d85e5908729d4850f06025ccd4aa07baec4189a7f91e8",
+      "findings": "Montant gauche entier avec socle, voyant ambre, logements visibles et récepteur intérieur vide orienté à droite. Barre et montant opposé absents. Identité et vue cohérentes avec M05 ; le volume du récepteur précédemment masqué est reconstruit. Échelle commune, contact avec la barre et réglage de hauteur non validés.",
+      "decision": "CORRECT_PAIR_SCALE",
+      "reviewMethod": "Root directly displayed complete M05 and the unchanged native isolated left upright.",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "attempt": 1,
+      "reason": "M16 visible height474px exceeds the right upright M17 height436px by about8.7% on the same1536×1024 canvas. Source M05 presents comparable upright heights. Request one native size/framing correction, retaining the object identity.",
+      "action": "Native rerender requested; archive unchanged first attempt separately.",
+      "bytes": 1226732,
+      "selectedAttempt": 2,
+      "selectedPath": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M16-hurdle-left-upright-v2.png",
+      "rootDirectlyInspectedRejectedAttempt": true
+    },
+    {
+      "id": "HWM162-K20",
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K20-enclosure-gate-leaf-v1.png",
+      "sha256": "b03b138646808b34cffa635b806ad56c7efef17d1bf516f1960851fa105599ad",
+      "attempt": 1,
+      "decision": "REMOVE_FIXED_POST_INDICATOR_FROM_MOVING_LEAF",
+      "reason": "An amber luminous insert appeared on the gate free edge. The original266 reference locates the indicator on the fixed receiver post, represented separately by K19.",
+      "action": "One targeted native edit requested before using the corrected closed gate as reference for K21. Preserve latch and geometry; archive first unchanged output.",
+      "rootDirectlyInspectedRejectedAttempt": true,
+      "bytes": 1695433,
+      "selectedAttempt": 2,
+      "selectedPath": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png"
+    }
+  ],
+  "limits": [
+    "Nine requests inherit their reference camera views; S17 requests the project camera. No actual camera angle is measured.",
+    "K21 turns the gate object while requesting the source camera; the previously hidden face is reconstructed as an original game adaptation.",
+    "K19 and the gate use their own native framing. A common pixel scale, complete layer alignment and exact hardware joints are not certified.",
+    "S15 has a 4 px main-silhouette margin at alpha>24. Native low-alpha edge noise remains, with no scripted cleanup or padding.",
+    "No physical dimensions, capacity, species fit, collision, navigation, interaction, animation, runtime admission or canonical 1:1 certification is claimed.",
+    "Forty-six previous selected PNGs remain byte-identical; rejected first attempts are counted separately."
+  ],
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "selectedAdditionalBytes": 12318185,
+  "selectedPackBytes": 93931261,
+  "previousSelectedPNGPreserved": 46,
+  "generationCallCountForPass": 12,
+  "archivedRejectedAttemptCountForPass": 2,
+  "archivedRejectedAttemptBytes": 2922165,
+  "spotChecks": {
+    "scope": "Sector-assistant alpha checks recorded in receipts; root separately inspected every selected image visually.",
+    "marketOpeningSamples": {
+      "HWM162-S15": [
+        {
+          "point": [
+            700,
+            450
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            600,
+            800
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            1100,
+            800
+          ],
+          "alpha": 0
+        }
+      ],
+      "HWM162-S16": [
+        {
+          "point": [
+            600,
+            650
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            800,
+            650
+          ],
+          "alpha": 0
+        }
+      ]
+    },
+    "kennelTransparencyWindows": {
+      "HWM162-K18": [
+        {
+          "box_xyxy_exclusive": [
+            300,
+            600,
+            1000,
+            950
+          ],
+          "pixels": 245000,
+          "alpha_min": 0,
+          "alpha_max": 1,
+          "pixels_alpha0": 244853,
+          "pixels_alpha1": 147,
+          "pixels_greater8": 0
+        }
+      ],
+      "HWM162-K20": [
+        {
+          "box_xyxy_exclusive": [
+            640,
+            375,
+            680,
+            395
+          ],
+          "pixels": 800,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 800,
+          "pixels_alpha1": 0,
+          "pixels_greater8": 0
+        },
+        {
+          "box_xyxy_exclusive": [
+            640,
+            590,
+            680,
+            610
+          ],
+          "pixels": 800,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 800,
+          "pixels_alpha1": 0,
+          "pixels_greater8": 0
+        }
+      ],
+      "HWM162-K21": [
+        {
+          "box_xyxy_exclusive": [
+            700,
+            420,
+            740,
+            440
+          ],
+          "pixels": 800,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 800,
+          "pixels_alpha1": 0,
+          "pixels_greater8": 0
+        },
+        {
+          "box_xyxy_exclusive": [
+            700,
+            635,
+            740,
+            655
+          ],
+          "pixels": 800,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 800,
+          "pixels_alpha1": 0,
+          "pixels_greater8": 0
+        }
+      ]
+    },
+    "uprightVisibleHeightsPixels": {
+      "M16FirstAttempt": 474,
+      "M16Selected": 435,
+      "M17Selected": 436,
+      "commonPhysicalScaleCertified": false
+    }
+  }
+}

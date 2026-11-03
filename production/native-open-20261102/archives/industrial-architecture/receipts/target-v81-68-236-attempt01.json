@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-68-236",
+  "label": "trappe",
+  "attempt": 1,
+  "family": "RUE_ACCES",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "Draw ONE original native whole-object PNG sprite for the Yautja homeworld fan game La Longue Chasse, a lore-compatible ORIGINAL design, not a canonical film-prop assertion. The visual family has charcoal porous basalt/dark gunmetal, worn antique-bronze chamfered angular reinforcement, fine restrained geometric carving, small contained amber fittings, realistic prerendered2.5D materials, warm neutral top-left light. Readable silhouette at small game size. Three-quarter isometric, front and right side visible, camera down25-30degrees. One connected object only, all tips,base and attachments entirely visible. Keep it modestly sized centrally on the square native canvas with vast20percent empty TRANSPARENT padding on every side. Preserve native emitted dimensions. Exact alpha0 everywhere outside physical silhouette including every edge; no haze/bloom,cast shadow,ground patch,backdrop/checkerboard,scenery,text/letters/numbers/logos,people/creatures,grid/atlas/repeated views or cropping. Static candidate only; no gameplay or art admission implied. SUBJECT: one independent CLOSED ALIEN GROUND ACCESS HATCH set into its own shallow rigid octagonal frame. A low flat angular dark-metal cover plate with worn bronze edge reinforcement,two heavy attached hinges,one recessed locking handle and a narrow amber mechanical status aperture. Camera3quarter looking down30degrees so its top walking surface reads as a horizontal floor hatch,not a vertical door or floating shield. Small integral frame depth and underside lip only, no surrounding pavement square,no building,no open hole or underground room. Clearly CLOSED static state,one complete object only; no second open copy,no multi-frame sheet. Native plate engraving echoes basalt undercity paving without copying its texture tile. All frame corners and hinges fully inside generous transparent margins.",
+  "nativeSourcePath": "/workspace/generated_images/exec-d8d6b844-c407-43eb-97f8-82b78fc6f95a.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-68-236-trappe-fermee-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v81/paving-undercity.png",
+    "public/game/homeworld/v64/interior-panels.png",
+    "public/game/homeworld/v84/maintenance-console-right.png"
+  ],
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "wholeSingleObject": true,
+    "visibleCroppedObject": false,
+    "duplicateGrid": false,
+    "materialCameraCoherent": true,
+    "functionReadable": true,
+    "notes": "One whole shallow CLOSED hatch and frame with hinges/handle. No open-state drawing,cycle,walkable floor or underground access is delivered. Low-alpha border noise retained."
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-68-236",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-68-236-trappe-fermee-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-d8d6b844-c407-43eb-97f8-82b78fc6f95a.png",
+    "bytes": 1493007,
+    "sha256": "122c7ee72d9860bf30964028621a4a19f2a4039087cd22ee06f54ed99b406680",
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 999891,
+    "alpha1or2Pixels": 7815,
+    "alpha1to8Pixels": 10107,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          0,
+          37,
+          1216,
+          1254
+        ],
+        "margins": [
+          0,
+          37,
+          38,
+          0
+        ],
+        "visiblePixels": 572625,
+        "edgeVisiblePixels": 27
+      },
+      "2": {
+        "bboxExclusive": [
+          133,
+          328,
+          1136,
+          1020
+        ],
+        "margins": [
+          133,
+          328,
+          118,
+          234
+        ],
+        "visiblePixels": 564810,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          135,
+          330,
+          1133,
+          1018
+        ],
+        "margins": [
+          135,
+          330,
+          121,
+          236
+        ],
+        "visiblePixels": 562518,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": true,
+    "diagnosticImageAnchor": {
+      "x": 634,
+      "y": 1017,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/235"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/235"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/235"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 68,
+      "line": 1896
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 240,
+        "idCell": {
+          "cell": "A240",
+          "value": "target-v81-68-236"
+        },
+        "labelCell": {
+          "cell": "D240",
+          "value": "trappe"
+        },
+        "historicalPresenceCell": {
+          "cell": "G240",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F240",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 240,
+        "idCell": {
+          "cell": "A240",
+          "value": "target-v81-68-236"
+        },
+        "labelCell": {
+          "cell": "C240",
+          "value": "trappe"
+        },
+        "historicalPresenceCell": {
+          "cell": "D240",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E240",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT"
+  ],
+  "targetSpecificLimits": [
+    "Closed hatch state only; no open state, animation, underside, underground route or passage collision."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

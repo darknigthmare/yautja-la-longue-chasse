@@ -1,0 +1,1430 @@
+{
+  "schemaVersion": 1,
+  "imageEditOperations": [],
+  "entries": [
+    {
+      "id": "target-v81-57-71",
+      "attempt": 1,
+      "source": "/workspace/generated_images/exec-4e9eb13d-1727-4379-b0bb-e9a95bde7e5a.png",
+      "prompt": "Create ONE standalone game prop sprite: a LEFT-side alien energy-barrier emitter for an ancient hunter city, target-v81-57-71. This is the left endpoint of a future gate: its emission aperture is visibly on the object's RIGHT-facing inner side, pointing toward screen-right. One connected freestanding tapered squat monolith, heavy angular charcoal porous basalt foundation, aged bronze geometric brace plates, a recessed narrow vertical warm amber emitter slit, a small functional rear service block. Design the left-hand construction natively; no paired emitter and no energy sheet. Material and camera family: realistic hand-art-directed prerendered 2.5D game asset, orthographic three-quarter camera elevated about 32 degrees, visible front and right side, no wide-angle perspective. Restrained warm top-left light, dark weathered stone, matte oxidized bronze, only small amber emission. Clear chunky silhouette readable at 96px. Not a lamp, not a building, no ornate throne. Entire object centered with at least 96px fully empty transparent margin on all sides on a requested 1024 by 1024 canvas; complete base and all projecting parts included, lowest base near y850, do not fill the frame. Transparent alpha background with no floor, no ground tile, no detached shadow, no fog or particles, no text, labels, people, animal, extra props, frame or watermark. One whole native image, single view, not a sprite sheet. No blue neon. A static visual candidate only; do not imply an animation.",
+      "requestedDimensions": [
+        1024,
+        1024
+      ],
+      "transparentBackground": true,
+      "nativePixelEdits": false,
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-57-71-emitter-left-native.png",
+      "sha256": "6223d55bf97da84de22798a24e39f3c54c3d92d9368c7cb53fb1b5cb0e48bfeb",
+      "bytes": 1034401,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "byteIdenticalToOriginal": true,
+      "thresholds": {
+        "0": {
+          "bbox": [
+            23,
+            19,
+            1240,
+            1254
+          ],
+          "margins": [
+            23,
+            19,
+            14,
+            0
+          ],
+          "edgePixels": 94,
+          "occupiedPixels": 360106
+        },
+        "2": {
+          "bbox": [
+            309,
+            148,
+            970,
+            1125
+          ],
+          "margins": [
+            309,
+            148,
+            284,
+            129
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 351623
+        },
+        "8": {
+          "bbox": [
+            311,
+            150,
+            968,
+            1123
+          ],
+          "margins": [
+            311,
+            150,
+            286,
+            131
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 349085
+        },
+        "128": {
+          "bbox": [
+            313,
+            151,
+            967,
+            1121
+          ],
+          "margins": [
+            313,
+            151,
+            287,
+            133
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 346154
+        }
+      },
+      "humanValidated": false,
+      "admitted": false,
+      "visualStatus": "CANDIDAT_NON_ADMIS",
+      "proposedBasePivot": {
+        "pixel": [
+          639.5,
+          1122
+        ],
+        "normalised": [
+          0.50997,
+          0.89474
+        ],
+        "status": "BOUNDING_BOX_DIAGNOSTIC_ONLY_NOT_RUNTIME_QUALIFIED"
+      },
+      "centreAlpha": 252,
+      "alphaNoise": {
+        "alpha1or2Pixels": 8483,
+        "componentsAtAlphaGreater8": 6,
+        "largestComponentAreasAtAlphaGreater8": [
+          349080,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "dominantFractionAtAlphaGreater8": 0.999985676840884,
+        "note": "Disconnected raster islands are not additional semantic objects."
+      },
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "expectedFrames": 1,
+        "atlas": false,
+        "visuallyObservedConnectedPropAssemblies": 1
+      },
+      "requestedMinimumTransparentMargin": 96,
+      "strictRequestedAlphaGreater0MarginSatisfied": false,
+      "substantiveAlphaGreater2RequestedMarginSatisfied": true,
+      "actualDimensionsMatchRequested": false,
+      "wholeNativeCopyActuallyOpened": true,
+      "visibleFindings": "Whole left endpoint with right-facing slit and low rear service block. Candidate scale and inner contact plane not qualified with its partner.",
+      "imageEditingOperations": [],
+      "noVisibleClippingAtSubstantiveAlpha": true,
+      "status": "CANDIDAT_NON_ADMIS",
+      "selectedCandidate": true,
+      "requestedDimensionsAreSpecificationNotGuaranteedToolOutput": true,
+      "admissionLimitations": [
+        "Native dimension differs from requested1024²; raw1254² preserved.",
+        "No in-engine or human artistic admission.",
+        "Pivot is bbox diagnostic only, no gameplay footprint or world-scale qualification.",
+        "Strict alpha>0 margins and alpha>2 diagnostics are reported separately, with no silent threshold substitution."
+      ],
+      "sha256AfterInspection": "6223d55bf97da84de22798a24e39f3c54c3d92d9368c7cb53fb1b5cb0e48bfeb"
+    },
+    {
+      "id": "target-v81-57-72",
+      "name": "emitter-right",
+      "prompt": "A single whole independent native transparent game prop, realistic prerendered 2.5D alien hunter-city art. Orthographic three-quarter view elevated 32 degrees, warm top-left light, charcoal porous basalt, thick angular aged bronze brace plates, subtle amber only, weathered matte surfaces and strong readable silhouette. Consistent with a tapered black-basalt monolith with bronze rectangular emitter braces and warm amber slit. Requested1024x1024, object fully inside central80percent with at least96px empty margin on all sides, complete base and protrusions. Transparent alpha background, no floor terrain tile, no detached cast shadow, no text labels watermark people animals UI or extra objects; single view, not atlas. Static candidate only. SUBJECT: RIGHT endpoint emitter of an energy barrier; emission aperture on the LEFT-facing inner face, pointing toward screen-left. Build this right-hand object as an original independent drawing: asymmetric squat tapered upright, wide stepped basalt foot, bronze reinforcement on the outside right edge, short vented service box physically connected low on its RIGHT flank, narrow recessed amber slit on LEFT-facing edge. Camera sees front and LEFT side. Aperture and service box must be functionally opposite those on a left endpoint. Do not put a second emitter or energy curtain in image. Do not mirror pixels, do not create two views. One connected functional emitter.",
+      "source": "/workspace/generated_images/exec-6f727e4e-fbd2-457a-bb3c-7180a48045ef.png",
+      "filename": "target-v81-57-72-emitter-right-native.png",
+      "attempt": 1,
+      "requestedDimensions": [
+        1024,
+        1024
+      ],
+      "transparentBackground": true,
+      "nativePixelEdits": false,
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-57-72-emitter-right-native.png",
+      "sha256": "c3977773ab717e3f3729bca56e27ae28bbd0d29bfd8d4087d6c2684cd6d3836e",
+      "bytes": 1489415,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "byteIdenticalToOriginal": true,
+      "thresholds": {
+        "0": {
+          "bbox": [
+            0,
+            21,
+            1240,
+            1254
+          ],
+          "margins": [
+            0,
+            21,
+            14,
+            0
+          ],
+          "edgePixels": 97,
+          "occupiedPixels": 567039
+        },
+        "2": {
+          "bbox": [
+            174,
+            55,
+            1123,
+            1203
+          ],
+          "margins": [
+            174,
+            55,
+            131,
+            51
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 553380
+        },
+        "8": {
+          "bbox": [
+            174,
+            57,
+            1120,
+            1200
+          ],
+          "margins": [
+            174,
+            57,
+            134,
+            54
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 549570
+        },
+        "128": {
+          "bbox": [
+            176,
+            58,
+            1119,
+            1199
+          ],
+          "margins": [
+            176,
+            58,
+            135,
+            55
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 545923
+        }
+      },
+      "humanValidated": false,
+      "admitted": false,
+      "visualStatus": "CANDIDAT_NON_ADMIS",
+      "proposedBasePivot": {
+        "pixel": [
+          647.0,
+          1199
+        ],
+        "normalised": [
+          0.51595,
+          0.95614
+        ],
+        "status": "BOUNDING_BOX_DIAGNOSTIC_ONLY_NOT_RUNTIME_QUALIFIED"
+      },
+      "centreAlpha": 253,
+      "alphaNoise": {
+        "alpha1or2Pixels": 13659,
+        "componentsAtAlphaGreater8": 8,
+        "largestComponentAreasAtAlphaGreater8": [
+          549560,
+          3,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "dominantFractionAtAlphaGreater8": 0.99998180395582,
+        "note": "Disconnected raster islands are not additional semantic objects."
+      },
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "expectedFrames": 1,
+        "atlas": false,
+        "visuallyObservedConnectedPropAssemblies": 1
+      },
+      "requestedMinimumTransparentMargin": 96,
+      "strictRequestedAlphaGreater0MarginSatisfied": false,
+      "substantiveAlphaGreater2RequestedMarginSatisfied": false,
+      "actualDimensionsMatchRequested": false,
+      "wholeNativeCopyActuallyOpened": true,
+      "visibleFindings": "Independent right-endpoint drawing with left-facing slit and differently constructed outside service box. No pixel mirroring. Pair height/scale/aperture contact need in-context qualification.",
+      "imageEditingOperations": [],
+      "noVisibleClippingAtSubstantiveAlpha": true,
+      "status": "CANDIDAT_NON_ADMIS",
+      "selectedCandidate": true,
+      "requestedDimensionsAreSpecificationNotGuaranteedToolOutput": true,
+      "admissionLimitations": [
+        "Native dimension differs from requested1024²; raw1254² preserved.",
+        "No in-engine or human artistic admission.",
+        "Pivot is bbox diagnostic only, no gameplay footprint or world-scale qualification.",
+        "Strict alpha>0 margins and alpha>2 diagnostics are reported separately, with no silent threshold substitution."
+      ],
+      "sha256AfterInspection": "c3977773ab717e3f3729bca56e27ae28bbd0d29bfd8d4087d6c2684cd6d3836e"
+    },
+    {
+      "id": "target-v81-56-58",
+      "name": "energy-door",
+      "prompt": "A single whole independent native transparent game prop, realistic prerendered 2.5D alien hunter-city art. Orthographic three-quarter view elevated 32 degrees, warm top-left light, charcoal porous basalt, thick angular aged bronze brace plates, subtle amber only, weathered matte surfaces and strong readable silhouette. Consistent with a tapered black-basalt monolith with bronze rectangular emitter braces and warm amber slit. Requested1024x1024, object fully inside central80percent with at least96px empty margin on all sides, complete base and protrusions. Transparent alpha background, no floor terrain tile, no detached cast shadow, no text labels watermark people animals UI or extra objects; single view, not atlas. Static candidate only. SUBJECT: ONE complete freestanding alien energy DOOR portal: a thick angular squared arch of dark porous basalt with agedbronze stepped inner lining, two short broad integrated jamb feet, small amber emitter nodes inside the jambs, an attached faint semitransparent warm-amber energy membrane filling the single walk-through opening. The membrane is thin clear glasslike forcefield with a restrained geometric interference pattern; actual translucent alpha should let the background show through. One connected modest pedestrian portal rather than a building or monumental temple, no decorative skull, no physical door leaf, no duplicate modules. Threequarter camera sees front and rightside and shallow arch thickness; top beam and feet entirely included, fit arch within central75percent. One static closed-energy state; no animation claim.",
+      "source": "/workspace/generated_images/exec-4aac4af0-64b8-412d-ab9d-62208975aa5a.png",
+      "filename": "target-v81-56-58-energy-door-native.png",
+      "attempt": 1,
+      "requestedDimensions": [
+        1024,
+        1024
+      ],
+      "transparentBackground": true,
+      "nativePixelEdits": false,
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-56-58-energy-door-native.png",
+      "sha256": "fed0391ae37a9f337ad5c7670489471063db40f52389d96498b9987171f3dbe9",
+      "bytes": 1699095,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "byteIdenticalToOriginal": true,
+      "thresholds": {
+        "0": {
+          "bbox": [
+            0,
+            0,
+            1236,
+            1254
+          ],
+          "margins": [
+            0,
+            0,
+            18,
+            0
+          ],
+          "edgePixels": 217,
+          "occupiedPixels": 703389
+        },
+        "2": {
+          "bbox": [
+            162,
+            68,
+            1094,
+            1198
+          ],
+          "margins": [
+            162,
+            68,
+            160,
+            56
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 688011
+        },
+        "8": {
+          "bbox": [
+            164,
+            70,
+            1092,
+            1196
+          ],
+          "margins": [
+            164,
+            70,
+            162,
+            58
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 684385
+        },
+        "128": {
+          "bbox": [
+            165,
+            71,
+            1091,
+            1196
+          ],
+          "margins": [
+            165,
+            71,
+            163,
+            58
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 606152
+        }
+      },
+      "humanValidated": false,
+      "admitted": false,
+      "visualStatus": "CANDIDAT_NON_ADMIS",
+      "proposedBasePivot": {
+        "pixel": [
+          628.0,
+          1195
+        ],
+        "normalised": [
+          0.5008,
+          0.95295
+        ],
+        "status": "BOUNDING_BOX_DIAGNOSTIC_ONLY_NOT_RUNTIME_QUALIFIED"
+      },
+      "centreAlpha": 112,
+      "alphaNoise": {
+        "alpha1or2Pixels": 15378,
+        "componentsAtAlphaGreater8": 31,
+        "largestComponentAreasAtAlphaGreater8": [
+          684335,
+          8,
+          3,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1
+        ],
+        "dominantFractionAtAlphaGreater8": 0.9999269417067879,
+        "note": "Disconnected raster islands are not additional semantic objects."
+      },
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "expectedFrames": 1,
+        "atlas": false,
+        "visuallyObservedConnectedPropAssemblies": 1
+      },
+      "requestedMinimumTransparentMargin": 96,
+      "strictRequestedAlphaGreater0MarginSatisfied": false,
+      "substantiveAlphaGreater2RequestedMarginSatisfied": false,
+      "actualDimensionsMatchRequested": false,
+      "wholeNativeCopyActuallyOpened": true,
+      "visibleFindings": "Complete pedestrian arch with semitransparent membrane; bright cream/amber appearance needs actual terrain composite review. Static closed state only, no opening sequence.",
+      "imageEditingOperations": [],
+      "noVisibleClippingAtSubstantiveAlpha": true,
+      "status": "CANDIDAT_NON_ADMIS",
+      "selectedCandidate": true,
+      "requestedDimensionsAreSpecificationNotGuaranteedToolOutput": true,
+      "admissionLimitations": [
+        "Native dimension differs from requested1024²; raw1254² preserved.",
+        "No in-engine or human artistic admission.",
+        "Pivot is bbox diagnostic only, no gameplay footprint or world-scale qualification.",
+        "Strict alpha>0 margins and alpha>2 diagnostics are reported separately, with no silent threshold substitution."
+      ],
+      "sha256AfterInspection": "fed0391ae37a9f337ad5c7670489471063db40f52389d96498b9987171f3dbe9"
+    },
+    {
+      "id": "target-v81-57-73",
+      "name": "energy-field",
+      "prompt": "ONE isolated static ENERGY FIELD membrane sprite for an ancient alien hunter-city barrier, target-v81-57-73. A single upright thin rectangular transparent amber forcefield plane seen orthographic threequarter elevated32degrees: its top and bottom edges slope gently down toward screen-right; it is wider than tall, four complete sharp corners, about 1.4width to1height. A faint amber edge and a sparse angular geometric energy interference pattern visible over a MOSTLYTRANSLUCENT pane, alpha about60-120of255 across its interior with visible transparent holes. No solid frame or emitter or pylons, no physicalobject other than the single membrane, no blue neon, no flaming edges, no particles, no floor/shadow or background. Amber is the only color, warm muted translucent ochre. This is a native independent field layer, not a door and not an animation. Render one whole plane centered within central65percent of requested1024square transparent canvas, at least120px empty margins on every side; no text, atlas, duplicate views, labels or watermark.",
+      "source": "/workspace/generated_images/exec-f916f43d-51f3-4f06-9774-ee51aedae623.png",
+      "filename": "target-v81-57-73-energy-field-native.png",
+      "attempt": 1,
+      "requestedDimensions": [
+        1024,
+        1024
+      ],
+      "transparentBackground": true,
+      "nativePixelEdits": false,
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-57-73-energy-field-native.png",
+      "sha256": "983e9e47aa434447fe72378c36f4ca30d62350ab247f48d52fdf8f46e267fb96",
+      "bytes": 1020023,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "byteIdenticalToOriginal": true,
+      "thresholds": {
+        "0": {
+          "bbox": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "edgePixels": 624,
+          "occupiedPixels": 521077
+        },
+        "2": {
+          "bbox": [
+            195,
+            248,
+            1082,
+            1038
+          ],
+          "margins": [
+            195,
+            248,
+            172,
+            216
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 486015
+        },
+        "8": {
+          "bbox": [
+            197,
+            250,
+            1080,
+            1037
+          ],
+          "margins": [
+            197,
+            250,
+            174,
+            217
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 475456
+        },
+        "128": {
+          "bbox": [
+            199,
+            251,
+            1078,
+            1036
+          ],
+          "margins": [
+            199,
+            251,
+            176,
+            218
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 188952
+        }
+      },
+      "humanValidated": false,
+      "admitted": false,
+      "visualStatus": "CANDIDAT_NON_ADMIS",
+      "proposedBasePivot": {
+        "pixel": [
+          638.5,
+          1036
+        ],
+        "normalised": [
+          0.50917,
+          0.82616
+        ],
+        "status": "BOUNDING_BOX_DIAGNOSTIC_ONLY_NOT_RUNTIME_QUALIFIED"
+      },
+      "centreAlpha": 33,
+      "alphaNoise": {
+        "alpha1or2Pixels": 35062,
+        "componentsAtAlphaGreater8": 41,
+        "largestComponentAreasAtAlphaGreater8": [
+          475407,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "dominantFractionAtAlphaGreater8": 0.999896941041863,
+        "note": "Disconnected raster islands are not additional semantic objects."
+      },
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "expectedFrames": 1,
+        "atlas": false,
+        "visuallyObservedConnectedPropAssemblies": 1
+      },
+      "requestedMinimumTransparentMargin": 120,
+      "strictRequestedAlphaGreater0MarginSatisfied": false,
+      "substantiveAlphaGreater2RequestedMarginSatisfied": true,
+      "actualDimensionsMatchRequested": false,
+      "wholeNativeCopyActuallyOpened": true,
+      "visibleFindings": "One independent translucent amber plane, no solid emitters. Includes irregular circular intensity spots/holes and edge glow; visual coherence and compositing remain open. No animation authored.",
+      "imageEditingOperations": [],
+      "noVisibleClippingAtSubstantiveAlpha": true,
+      "status": "CANDIDAT_NON_ADMIS",
+      "selectedCandidate": true,
+      "requestedDimensionsAreSpecificationNotGuaranteedToolOutput": true,
+      "admissionLimitations": [
+        "Native dimension differs from requested1024²; raw1254² preserved.",
+        "No in-engine or human artistic admission.",
+        "Pivot is bbox diagnostic only, no gameplay footprint or world-scale qualification.",
+        "Strict alpha>0 margins and alpha>2 diagnostics are reported separately, with no silent threshold substitution."
+      ],
+      "sha256AfterInspection": "983e9e47aa434447fe72378c36f4ca30d62350ab247f48d52fdf8f46e267fb96"
+    },
+    {
+      "id": "target-v81-71-267",
+      "name": "enclosure-post",
+      "prompt": "Production game prop candidate for an alien hunter city, ONE object, realistic prerendered2.5D style. Orthographic threequarter camera elevated32degrees, warm top-left light, charcoal porousbasalt and thick angular agedbronzeplates, very restrained amber. Strong chunky silhouette, matte chippedtexture, no humanfarmstyle. Requested1024x1024 true transparent RGBA canvas, object compact in central65percent with generous blank alpha margin at least100px, entire feet and protrusions visible. No ground terrain tile, no detached shadow, scenery, text, labels, watermarks, person or animal. Singleview and singleobject, no spritesheet. Static candidate only. SUBJECT: one single ANIMAL ENCLOSURE POST, waist-high functional restraint stanchion for large alien reptiles. Squat hexagonal basaltfoot, short thick faceted bronze-reinforced upright, two clearly visible mechanical rail sockets at different heights on its RIGHT-facing side and one capped opposite socket, small recessed lock pin and one muted amber status pip. A blunt flatcap rather than lamp or tower. No rail attached, no rope or chain, no emitter slit. The empty sockets make its purpose readable. Complete compactpost stands alone, no stoneplatformaroundit.",
+      "source": "/workspace/generated_images/exec-6a2ddbf6-6603-468a-8aa7-c5cf1bd281c3.png",
+      "filename": "target-v81-71-267-enclosure-post-native.png",
+      "attempt": 1,
+      "requestedDimensions": [
+        1024,
+        1024
+      ],
+      "transparentBackground": true,
+      "nativePixelEdits": false,
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-71-267-enclosure-post-native.png",
+      "sha256": "cd67258d8e3931edc4ba42401dcdfaea41f78de3e1995b46873aebdaf0efe9b0",
+      "bytes": 1293842,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "byteIdenticalToOriginal": true,
+      "thresholds": {
+        "0": {
+          "bbox": [
+            0,
+            32,
+            1230,
+            1254
+          ],
+          "margins": [
+            0,
+            32,
+            24,
+            0
+          ],
+          "edgePixels": 16,
+          "occupiedPixels": 499364
+        },
+        "2": {
+          "bbox": [
+            283,
+            70,
+            970,
+            1182
+          ],
+          "margins": [
+            283,
+            70,
+            284,
+            72
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 492291
+        },
+        "8": {
+          "bbox": [
+            284,
+            72,
+            968,
+            1180
+          ],
+          "margins": [
+            284,
+            72,
+            286,
+            74
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 488785
+        },
+        "128": {
+          "bbox": [
+            286,
+            73,
+            967,
+            1179
+          ],
+          "margins": [
+            286,
+            73,
+            287,
+            75
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 485703
+        }
+      },
+      "humanValidated": false,
+      "admitted": false,
+      "visualStatus": "CANDIDAT_NON_ADMIS",
+      "proposedBasePivot": {
+        "pixel": [
+          626.0,
+          1179
+        ],
+        "normalised": [
+          0.4992,
+          0.94019
+        ],
+        "status": "BOUNDING_BOX_DIAGNOSTIC_ONLY_NOT_RUNTIME_QUALIFIED"
+      },
+      "centreAlpha": 253,
+      "alphaNoise": {
+        "alpha1or2Pixels": 7073,
+        "componentsAtAlphaGreater8": 28,
+        "largestComponentAreasAtAlphaGreater8": [
+          488710,
+          30,
+          7,
+          4,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          1
+        ],
+        "dominantFractionAtAlphaGreater8": 0.9998465583027303,
+        "note": "Disconnected raster islands are not additional semantic objects."
+      },
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "expectedFrames": 1,
+        "atlas": false,
+        "visuallyObservedConnectedPropAssemblies": 1
+      },
+      "requestedMinimumTransparentMargin": 100,
+      "strictRequestedAlphaGreater0MarginSatisfied": false,
+      "substantiveAlphaGreater2RequestedMarginSatisfied": false,
+      "actualDimensionsMatchRequested": false,
+      "wholeNativeCopyActuallyOpened": true,
+      "visibleFindings": "Whole compact stanchion with two right-hand sockets and a capped opposing socket; one amber lock indicator. Rail socket alignment and load-bearing footprint are not runtime qualified.",
+      "imageEditingOperations": [],
+      "noVisibleClippingAtSubstantiveAlpha": true,
+      "status": "CANDIDAT_NON_ADMIS",
+      "selectedCandidate": true,
+      "requestedDimensionsAreSpecificationNotGuaranteedToolOutput": true,
+      "admissionLimitations": [
+        "Native dimension differs from requested1024²; raw1254² preserved.",
+        "No in-engine or human artistic admission.",
+        "Pivot is bbox diagnostic only, no gameplay footprint or world-scale qualification.",
+        "Strict alpha>0 margins and alpha>2 diagnostics are reported separately, with no silent threshold substitution."
+      ],
+      "sha256AfterInspection": "cd67258d8e3931edc4ba42401dcdfaea41f78de3e1995b46873aebdaf0efe9b0"
+    },
+    {
+      "id": "target-v81-71-268",
+      "name": "enclosure-barrier",
+      "prompt": "Production game prop candidate for an alien hunter city, ONE object, realistic prerendered2.5D style. Orthographic threequarter camera elevated32degrees, warm top-left light, charcoal porousbasalt and thick angular agedbronzeplates, very restrained amber. Strong chunky silhouette, matte chippedtexture, no humanfarmstyle. Requested1024x1024 true transparent RGBA canvas, object compact in central65percent with generous blank alpha margin at least100px, entire feet and protrusions visible. No ground terrain tile, no detached shadow, scenery, text, labels, watermarks, person or animal. Singleview and singleobject, no spritesheet. Static candidate only. SUBJECT: one connected short modular ANIMAL ENCLOSURE FENCE section, two squat thickfaceted posts on separate compact basaltfeet joined by exactlythree stout horizontal agedbronze rails with angular industrial mechanical railjoiners. Between bars should be trulytransparent air. Wide low sturdyfunctional barrier for dangerous reptiles, no pickets or spikes, noenergymembrane, no door. Frontplane runs from near lowerleft tofar upperright, consistent orthographicthreequarter. One connectedwholemodule only, complete bothfeet, not decorativebalustrade.",
+      "source": "/workspace/generated_images/exec-af4e9a18-1613-4bc6-986a-e37398ffa498.png",
+      "filename": "target-v81-71-268-enclosure-barrier-native.png",
+      "attempt": 1,
+      "requestedDimensions": [
+        1024,
+        1024
+      ],
+      "transparentBackground": true,
+      "nativePixelEdits": false,
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-71-268-enclosure-barrier-native.png",
+      "sha256": "5683daf01f9252c4127f077e70b964bf3f7c3b299d615f3da39cb35c52639039",
+      "bytes": 1381713,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "byteIdenticalToOriginal": true,
+      "thresholds": {
+        "0": {
+          "bbox": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "edgePixels": 299,
+          "occupiedPixels": 500812
+        },
+        "2": {
+          "bbox": [
+            12,
+            144,
+            1253,
+            1113
+          ],
+          "margins": [
+            12,
+            144,
+            1,
+            141
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 475495
+        },
+        "8": {
+          "bbox": [
+            14,
+            147,
+            1248,
+            1111
+          ],
+          "margins": [
+            14,
+            147,
+            6,
+            143
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 468483
+        },
+        "128": {
+          "bbox": [
+            15,
+            148,
+            1247,
+            1110
+          ],
+          "margins": [
+            15,
+            148,
+            7,
+            144
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 461600
+        }
+      },
+      "humanValidated": false,
+      "admitted": false,
+      "visualStatus": "REJET_CADRAGE_MARGE_DROITE_1PX",
+      "proposedBasePivot": {
+        "pixel": [
+          631.0,
+          1110
+        ],
+        "normalised": [
+          0.50319,
+          0.88517
+        ],
+        "status": "BOUNDING_BOX_DIAGNOSTIC_ONLY_NOT_RUNTIME_QUALIFIED"
+      },
+      "centreAlpha": 0,
+      "alphaNoise": {
+        "alpha1or2Pixels": 25317,
+        "componentsAtAlphaGreater8": 22,
+        "largestComponentAreasAtAlphaGreater8": [
+          468454,
+          4,
+          3,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "dominantFractionAtAlphaGreater8": 0.9999380980739963,
+        "note": "Disconnected raster islands are not additional semantic objects."
+      },
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "expectedFrames": 1,
+        "atlas": false,
+        "visuallyObservedConnectedPropAssemblies": 1
+      },
+      "requestedMinimumTransparentMargin": 100,
+      "strictRequestedAlphaGreater0MarginSatisfied": false,
+      "substantiveAlphaGreater2RequestedMarginSatisfied": false,
+      "actualDimensionsMatchRequested": false,
+      "wholeNativeCopyActuallyOpened": true,
+      "visibleFindings": "One short connected three-rail module with two whole footed posts and transparent air gaps. Preferred second native generation has broad margins; independent assets do not yet prove modular join alignment.",
+      "imageEditingOperations": [],
+      "noVisibleClippingAtSubstantiveAlpha": true,
+      "status": "REJET_CADRAGE_MARGE_DROITE_1PX",
+      "selectedCandidate": false,
+      "requestedDimensionsAreSpecificationNotGuaranteedToolOutput": true,
+      "admissionLimitations": [
+        "Native dimension differs from requested1024²; raw1254² preserved.",
+        "No in-engine or human artistic admission.",
+        "Pivot is bbox diagnostic only, no gameplay footprint or world-scale qualification.",
+        "Strict alpha>0 margins and alpha>2 diagnostics are reported separately, with no silent threshold substitution."
+      ],
+      "sha256AfterInspection": "5683daf01f9252c4127f077e70b964bf3f7c3b299d615f3da39cb35c52639039"
+    },
+    {
+      "id": "target-v81-71-266",
+      "name": "enclosure",
+      "prompt": "ONE standalone native productiongameprop for an alienhuntercity. Realistic prerendered2.5D, orthographicthreequarter elevated32degrees, warmtop-leftlight, charcoalporousbasalt, thickangular agedbronze braces, mutedamber accents. Transparent RGBA requested1024square. ESSENTIAL WIDE FRAMING: deliberately show object SMALL at the center, only55percent of the canvas width and55percent of height; blank transparent area of approximately220pixels allaround. Do not zoomin. All feet/extremities must have a verybroad transparent border. No scenery, floor tile, ground dirt, castshadow, detachedparts, person, animal, text, labels, watermark or atlas. One wholeconnectedobject only. SUBJECT: one complete EMPTY small ALIENFAUNA ENCLOSURE compound, octagonal waist-high enclosure with chunky basaltcornerposts and three thickagedbronze horizontalrails between them. Entire closedpolygon, backandfrontfence bothshown, one visiblydefined short hingedaccessgate in itsfrontleftface, heavypracticalmechanicalhinge and latch. Empty floor area must be alpha-transparent, no stoneplatform or paintedground whatsoever; holesbetweenbars alsoalpha-transparent. No roof, no energyfield, no animal, nofeedingobjects. It should read as a functional unified containment assembly for largealienreptiles, not as a scene or humanpaddock. One largeconnectedfenceobject fromoutside3/4, frontfence naturallyoccludes the emptyinterior.",
+      "source": "/workspace/generated_images/exec-bc65c1aa-9d05-42ab-a962-8df61924c91b.png",
+      "filename": "target-v81-71-266-enclosure-native.png",
+      "attempt": 1,
+      "requestedDimensions": [
+        1024,
+        1024
+      ],
+      "transparentBackground": true,
+      "nativePixelEdits": false,
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-71-266-enclosure-native.png",
+      "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+      "bytes": 1029855,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "byteIdenticalToOriginal": true,
+      "thresholds": {
+        "0": {
+          "bbox": [
+            0,
+            42,
+            1220,
+            1208
+          ],
+          "margins": [
+            0,
+            42,
+            34,
+            46
+          ],
+          "edgePixels": 1,
+          "occupiedPixels": 392770
+        },
+        "2": {
+          "bbox": [
+            119,
+            296,
+            1172,
+            957
+          ],
+          "margins": [
+            119,
+            296,
+            82,
+            297
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 363832
+        },
+        "8": {
+          "bbox": [
+            121,
+            298,
+            1170,
+            955
+          ],
+          "margins": [
+            121,
+            298,
+            84,
+            299
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 352481
+        },
+        "128": {
+          "bbox": [
+            122,
+            299,
+            1169,
+            954
+          ],
+          "margins": [
+            122,
+            299,
+            85,
+            300
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 343136
+        }
+      },
+      "humanValidated": false,
+      "admitted": false,
+      "visualStatus": "CANDIDAT_NON_ADMIS",
+      "proposedBasePivot": {
+        "pixel": [
+          645.5,
+          954
+        ],
+        "normalised": [
+          0.51475,
+          0.76077
+        ],
+        "status": "BOUNDING_BOX_DIAGNOSTIC_ONLY_NOT_RUNTIME_QUALIFIED"
+      },
+      "centreAlpha": 0,
+      "alphaNoise": {
+        "alpha1or2Pixels": 28938,
+        "componentsAtAlphaGreater8": 39,
+        "largestComponentAreasAtAlphaGreater8": [
+          352411,
+          14,
+          5,
+          5,
+          4,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          1
+        ],
+        "dominantFractionAtAlphaGreater8": 0.9998014077354525,
+        "note": "Disconnected raster islands are not additional semantic objects."
+      },
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "expectedFrames": 1,
+        "atlas": false,
+        "visuallyObservedConnectedPropAssemblies": 1
+      },
+      "requestedMinimumTransparentMargin": 220,
+      "strictRequestedAlphaGreater0MarginSatisfied": false,
+      "substantiveAlphaGreater2RequestedMarginSatisfied": false,
+      "actualDimensionsMatchRequested": false,
+      "wholeNativeCopyActuallyOpened": true,
+      "visibleFindings": "One connected empty polygon enclosure with a shut hinged front gate; transparent ground and bar gaps. Foreground/back occlusion and entry/collision would need native runtime layering design; no pixel split made.",
+      "imageEditingOperations": [],
+      "noVisibleClippingAtSubstantiveAlpha": true,
+      "status": "CANDIDAT_NON_ADMIS",
+      "selectedCandidate": true,
+      "requestedDimensionsAreSpecificationNotGuaranteedToolOutput": true,
+      "admissionLimitations": [
+        "Native dimension differs from requested1024²; raw1254² preserved.",
+        "No in-engine or human artistic admission.",
+        "Pivot is bbox diagnostic only, no gameplay footprint or world-scale qualification.",
+        "Strict alpha>0 margins and alpha>2 diagnostics are reported separately, with no silent threshold substitution."
+      ],
+      "sha256AfterInspection": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb"
+    },
+    {
+      "id": "target-v81-71-270",
+      "name": "fauna-energy-barrier",
+      "prompt": "ONE standalone native productiongameprop for an alienhuntercity. Realistic prerendered2.5D, orthographicthreequarter elevated32degrees, warmtop-leftlight, charcoalporousbasalt, thickangular agedbronze braces, mutedamber accents. Transparent RGBA requested1024square. ESSENTIAL WIDE FRAMING: deliberately show object SMALL at the center, only55percent of the canvas width and55percent of height; blank transparent area of approximately220pixels allaround. Do not zoomin. All feet/extremities must have a verybroad transparent border. No scenery, floor tile, ground dirt, castshadow, detachedparts, person, animal, text, labels, watermark or atlas. One wholeconnectedobject only. SUBJECT: one integrated LOW ALIENFAUNA ENERGYBARRIER module; two thick short faceted darkbasalt posts on separate compactfeet, eachbronzeclad, joined by one narrow footrail and a single translucent amberforcefield pane between their innerfaces. Lowwide containmentmodule, knee-to-waistheight relative to alienkeeper, no tallarch/no overheadbeam. Emissionnodes are functional recessed horizontalslits; keepgoldlightrestrained. Thepanehas actual semitransparentalpha with veryfaintangulargrid, notanopaque slab. One connectedassembly, fullbothfeet, a safetybarrier for dangerousreptiles distinct froma pedestrianportal. No animals or additionalstandaloneemitter.",
+      "source": "/workspace/generated_images/exec-5edf163f-ca46-4dae-b248-160debb26caa.png",
+      "filename": "target-v81-71-270-fauna-energy-barrier-native.png",
+      "attempt": 1,
+      "requestedDimensions": [
+        1024,
+        1024
+      ],
+      "transparentBackground": true,
+      "nativePixelEdits": false,
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png",
+      "sha256": "1dcc79dda8a24c76617b0d76fdbdfee4a5771f381a839fd52548e39c49a44cec",
+      "bytes": 423732,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "byteIdenticalToOriginal": true,
+      "thresholds": {
+        "0": {
+          "bbox": [
+            41,
+            35,
+            1210,
+            1182
+          ],
+          "margins": [
+            41,
+            35,
+            44,
+            72
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 153136
+        },
+        "2": {
+          "bbox": [
+            273,
+            472,
+            992,
+            904
+          ],
+          "margins": [
+            273,
+            472,
+            262,
+            350
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 148888
+        },
+        "8": {
+          "bbox": [
+            275,
+            474,
+            990,
+            902
+          ],
+          "margins": [
+            275,
+            474,
+            264,
+            352
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 147205
+        },
+        "128": {
+          "bbox": [
+            275,
+            474,
+            989,
+            901
+          ],
+          "margins": [
+            275,
+            474,
+            265,
+            353
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 144242
+        }
+      },
+      "humanValidated": false,
+      "admitted": false,
+      "visualStatus": "CANDIDAT_NON_ADMIS",
+      "proposedBasePivot": {
+        "pixel": [
+          632.5,
+          901
+        ],
+        "normalised": [
+          0.50439,
+          0.7185
+        ],
+        "status": "BOUNDING_BOX_DIAGNOSTIC_ONLY_NOT_RUNTIME_QUALIFIED"
+      },
+      "centreAlpha": 195,
+      "alphaNoise": {
+        "alpha1or2Pixels": 4248,
+        "componentsAtAlphaGreater8": 4,
+        "largestComponentAreasAtAlphaGreater8": [
+          147202,
+          1,
+          1,
+          1
+        ],
+        "dominantFractionAtAlphaGreater8": 0.9999796202574641,
+        "note": "Disconnected raster islands are not additional semantic objects."
+      },
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "expectedFrames": 1,
+        "atlas": false,
+        "visuallyObservedConnectedPropAssemblies": 1
+      },
+      "requestedMinimumTransparentMargin": 220,
+      "strictRequestedAlphaGreater0MarginSatisfied": false,
+      "substantiveAlphaGreater2RequestedMarginSatisfied": true,
+      "actualDimensionsMatchRequested": false,
+      "wholeNativeCopyActuallyOpened": true,
+      "visibleFindings": "One low connected two-post energy barrier with base rail and translucent membrane, visibly distinct from the tall pedestrian door. No live containment, collision or animated state proven.",
+      "imageEditingOperations": [],
+      "noVisibleClippingAtSubstantiveAlpha": true,
+      "status": "CANDIDAT_NON_ADMIS",
+      "selectedCandidate": true,
+      "requestedDimensionsAreSpecificationNotGuaranteedToolOutput": true,
+      "admissionLimitations": [
+        "Native dimension differs from requested1024²; raw1254² preserved.",
+        "No in-engine or human artistic admission.",
+        "Pivot is bbox diagnostic only, no gameplay footprint or world-scale qualification.",
+        "Strict alpha>0 margins and alpha>2 diagnostics are reported separately, with no silent threshold substitution."
+      ],
+      "sha256AfterInspection": "1dcc79dda8a24c76617b0d76fdbdfee4a5771f381a839fd52548e39c49a44cec"
+    },
+    {
+      "id": "target-v81-71-268",
+      "name": "enclosure-barrier",
+      "attempt": 2,
+      "prompt": "ONE standalone native productiongameprop for an alienhuntercity. Realistic prerendered2.5D, orthographicthreequarter elevated32degrees, warmtop-leftlight, charcoalporousbasalt, thickangular agedbronze braces, mutedamber accents. Transparent RGBA requested1024square. ESSENTIAL WIDE FRAMING: deliberately show object SMALL at the center, only55percent of the canvas width and55percent of height; blank transparent area of approximately220pixels allaround. Do not zoomin. All feet/extremities must have a verybroad transparent border. No scenery, floor tile, ground dirt, castshadow, detachedparts, person, animal, text, labels, watermark or atlas. One wholeconnectedobject only. SUBJECT: one SHORT connected ANIMALENCLOSURE FENCE module, two squatthickfacetedposts on separatecompactbasaltfeet joinedby exactlythree stout horizontal agedbronzerails withchunky mechanicaljoiners. Actualtransparentair betweenbars. Wide-low functional barrierforreptiles, no energymembrane, spikes or door. Frontplaneruns fromlowerleft toupperright. IMPORTANT previousframingwasrefusedbecause rightfoot hadonlyonepixel margin. Drawthis ORIGINAL newcomplete module substantiallySMALLER, at most55percentcanvaswidth, centeritwith equalblankspace leftandright; no foot anywhere nearimageedges. Oneconnectedwhole, bothfeetcomplete.",
+      "source": "/workspace/generated_images/exec-e2b7a9c8-afda-454c-b045-e0ee87b94a3b.png",
+      "filename": "target-v81-71-268-enclosure-barrier-native-attempt02.png",
+      "requestedDimensions": [
+        1024,
+        1024
+      ],
+      "transparentBackground": true,
+      "nativePixelEdits": false,
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+      "sha256": "522bec7b485f7d7742f835ca8a2f609970998f906247d6258b8a5e71aff927cf",
+      "bytes": 364392,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "byteIdenticalToOriginal": true,
+      "thresholds": {
+        "0": {
+          "bbox": [
+            41,
+            103,
+            1082,
+            1230
+          ],
+          "margins": [
+            41,
+            103,
+            172,
+            24
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 115877
+        },
+        "2": {
+          "bbox": [
+            324,
+            434,
+            978,
+            875
+          ],
+          "margins": [
+            324,
+            434,
+            276,
+            379
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 108059
+        },
+        "8": {
+          "bbox": [
+            326,
+            436,
+            977,
+            874
+          ],
+          "margins": [
+            326,
+            436,
+            277,
+            380
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 104912
+        },
+        "128": {
+          "bbox": [
+            326,
+            437,
+            975,
+            873
+          ],
+          "margins": [
+            326,
+            437,
+            279,
+            381
+          ],
+          "edgePixels": 0,
+          "occupiedPixels": 101665
+        }
+      },
+      "humanValidated": false,
+      "admitted": false,
+      "visualStatus": "CANDIDAT_NON_ADMIS",
+      "proposedBasePivot": {
+        "pixel": [
+          651.5,
+          873
+        ],
+        "normalised": [
+          0.51954,
+          0.69617
+        ],
+        "status": "BOUNDING_BOX_DIAGNOSTIC_ONLY_NOT_RUNTIME_QUALIFIED"
+      },
+      "centreAlpha": 0,
+      "alphaNoise": {
+        "alpha1or2Pixels": 7818,
+        "componentsAtAlphaGreater8": 7,
+        "largestComponentAreasAtAlphaGreater8": [
+          104903,
+          3,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "dominantFractionAtAlphaGreater8": 0.9999142138172945,
+        "note": "Disconnected raster islands are not additional semantic objects."
+      },
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "expectedFrames": 1,
+        "atlas": false,
+        "visuallyObservedConnectedPropAssemblies": 1
+      },
+      "requestedMinimumTransparentMargin": 220,
+      "strictRequestedAlphaGreater0MarginSatisfied": false,
+      "substantiveAlphaGreater2RequestedMarginSatisfied": true,
+      "actualDimensionsMatchRequested": false,
+      "wholeNativeCopyActuallyOpened": true,
+      "visibleFindings": "One short connected three-rail module with two whole footed posts and transparent air gaps. Preferred second native generation has broad margins; independent assets do not yet prove modular join alignment.",
+      "imageEditingOperations": [],
+      "noVisibleClippingAtSubstantiveAlpha": true,
+      "status": "CANDIDAT_NON_ADMIS",
+      "selectedCandidate": true,
+      "requestedDimensionsAreSpecificationNotGuaranteedToolOutput": true,
+      "admissionLimitations": [
+        "Native dimension differs from requested1024²; raw1254² preserved.",
+        "No in-engine or human artistic admission.",
+        "Pivot is bbox diagnostic only, no gameplay footprint or world-scale qualification.",
+        "Strict alpha>0 margins and alpha>2 diagnostics are reported separately, with no silent threshold substitution."
+      ],
+      "sha256AfterInspection": "522bec7b485f7d7742f835ca8a2f609970998f906247d6258b8a5e71aff927cf"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+name: Consolidated Homeworld saves and planetary layouts
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/game/**'
+      - 'tests/homeworld-dressing*'
+      - 'tests/homeworld-geometry-recovery*'
+      - 'tests/clan-war-convoy-route-v105.test.mjs'
+      - 'tests/clan-war-planet-level-design-v156.test.mjs'
+      - 'tests/hunt-level-coherence-v157.test.mjs'
+      - 'tests/fixtures/clan-war-front-*.json'
+      - 'scripts/plan-homeworld-dressing-v113.mjs'
+      - 'scripts/lib/reduce-homeworld-dressing-v113.mjs'
+      - '.github/workflows/pr-consolidation-20261103.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-consolidation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /tests/
+            /public/**/manifest.json
+            /public/game/homeworld/v64/
+            /public/game/homeworld/v72/civic-identity-atlas.png
+            /public/game/homeworld/v74/
+            /public/game/homeworld/v75/architecture/
+            /public/game/homeworld/v76/architecture/
+            /public/game/homeworld/v78/
+            /public/game/homeworld/v80/
+            /public/game/homeworld/v81/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Materialize immutable inputs used by historical Save11 recovery
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {createHash} from 'node:crypto';
+          import {execFileSync} from 'node:child_process';
+          import {readFileSync} from 'node:fs';
+          const bytes = readFileSync('tests/fixtures/excel-history-v111-homeworld-v112.json');
+          assert.equal(createHash('sha256').update(bytes).digest('hex'), 'd4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a');
+          const manifest = JSON.parse(bytes);
+          assert.equal(manifest.sourceCommit, 'def899ad07fea582053c5c204e4e578d8e0d7f9b');
+          const paths = manifest.shared.map(row => {
+            assert.match(row.path, /^(?:public|art-source|docs|tests)\/[A-Za-z0-9._/-]+$/);
+            assert.ok(row.path.split('/').every(part => part && part !== '.' && part !== '..'));
+            return '/' + row.path;
+          });
+          assert.equal(paths.length, 1219);
+          assert.equal(new Set(paths).size, paths.length);
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], {input: paths.join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit']});
+          console.log(JSON.stringify({historicalInputs: paths.length}));
+          NODE
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Recover old saves without moving floors or granting progress
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/homeworld-dressing-recovery-v113.test.mjs
+          tests/homeworld-dressing-planner-v113.test.mjs
+          tests/homeworld-geometry-recovery-v112.test.mjs
+          tests/homeworld-geometry-recovery-integration-v112.test.mjs
+          tests/homeworld-geometry-recovery-matrix-v112.test.mjs
+      - name: Check dressing collisions, access and real building alpha
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/homeworld-dressing-v113.test.mjs
+      - name: Preserve old planetary fronts and verify current routes and hunt layouts
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/clan-war-convoy-route-v105.test.mjs
+          tests/clan-war-planet-level-design-v156.test.mjs
+          tests/hunt-level-coherence-v157.test.mjs

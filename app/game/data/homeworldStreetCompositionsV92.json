@@ -1,0 +1,387 @@
+{
+  "version": "V92",
+  "provenance": "LORE_COMPATIBLE_ORIGINAL",
+  "compositions": [
+    {
+      "id": "memory-rest",
+      "label": "Poche de repos des archives",
+      "detail": "Un bac cultivé accompagne la poche de repos des archives. La consultation reste à l’intérieur du registre ; le passage public demeure ouvert."
+    },
+    {
+      "id": "trophy-wait",
+      "label": "Cour du mémorial",
+      "detail": "La végétation reste contenue dans un bac minéral ; les prises gagnées sont exposées à l’intérieur."
+    },
+    {
+      "id": "rampart-watch",
+      "label": "Travée de relève du rempart",
+      "detail": "Contrôle technique et réserve scellée sont séparés du chemin de la vigie."
+    },
+    {
+      "id": "port-registers",
+      "label": "Galerie des traversées",
+      "detail": "Le bac marque le bord du quai ; le pupitre et son approche restent libres."
+    },
+    {
+      "id": "port-return",
+      "label": "Retour des chasses",
+      "detail": "Les lots scellés restent à l’écart du sas et du chemin vers le pad."
+    },
+    {
+      "id": "lower-market",
+      "label": "Cour des échanges bas",
+      "detail": "Le comptoir reçoit les visiteurs du côté de la cour. Une marque debout distingue la branche du marché de la rue de transit."
+    },
+    {
+      "id": "lower-forge",
+      "label": "Poche des artisans bas",
+      "detail": "Le poste de finition borde le stock de matières ; la voie de manutention vers la rampe reste libre."
+    },
+    {
+      "id": "lower-cistern",
+      "label": "Cour des réserves minérales",
+      "detail": "Le poste de réglage est distinct de la réserve et laisse sa face opérateur accessible."
+    },
+    {
+      "id": "lower-common",
+      "label": "Cour commune des clans bas",
+      "detail": "Les fournitures scellées bordent le lieu de rencontre. La table et son espace social sont préservés."
+    },
+    {
+      "id": "gallery-care",
+      "label": "Poche du refuge bas",
+      "detail": "La réserve scellée et le bac cultivé se lisent dans deux rives distinctes du refuge. La porte reste libre."
+    },
+    {
+      "id": "gallery-repair",
+      "label": "Revers technique des galeries",
+      "detail": "Réglage et stockage bordent le logement bas ; la branche vers le passage de service reste ouverte."
+    },
+    {
+      "id": "convoy-repair",
+      "label": "Cour du retour des convoyeurs",
+      "detail": "Les pièces sont rangées au revers de l’atelier. Le passage vers la halte ne devient pas une zone de stockage."
+    },
+    {
+      "id": "convoy-dispatch",
+      "label": "Contrôle des lots du magasin",
+      "detail": "Le poste technique regarde sa poche de service, hors du seuil du magasin."
+    },
+    {
+      "id": "convoy-rest",
+      "label": "Halte des convoyeurs",
+      "detail": "Une réserve de relève et un bac cultivé accompagnent la halte, distincte des lots de fret."
+    },
+    {
+      "id": "proofs-register",
+      "label": "Galerie des preuves",
+      "detail": "Le repère du registre et la réserve de relève restent hors des trajets des gardiens."
+    },
+    {
+      "id": "acropolis-wait",
+      "label": "Galerie publique d’audience",
+      "detail": "Bac cultivé et repère debout occupent les rives de l’attente ; l’axe cérémoniel reste ouvert."
+    }
+  ],
+  "placements": [
+    {
+      "id": "street-v92:memory-rest:basalt-planter-left",
+      "compositionId": "memory-rest",
+      "buildingId": "memory-vault",
+      "levelId": "0",
+      "districtId": "memory",
+      "x": 750,
+      "y": 1210,
+      "artId": "basalt-planter-left",
+      "label": "Jardin de repos des archives",
+      "purpose": "Poche de repos minérale pour la consultation ; végétation originale non taxonomique.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:trophy-wait:basalt-planter-left",
+      "compositionId": "trophy-wait",
+      "buildingId": "trophy-mausoleum",
+      "levelId": "0",
+      "districtId": "esplanade",
+      "x": 340,
+      "y": 2370,
+      "artId": "basalt-planter-left",
+      "label": "Bac de la galerie des prises",
+      "purpose": "Cour plantée qui garde les trophées à l’intérieur et le passage vers le rivage libre.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:rampart-watch:maintenance-console-right",
+      "compositionId": "rampart-watch",
+      "buildingId": "rampart-watch",
+      "levelId": "0",
+      "districtId": "rampart-walk",
+      "x": 6190,
+      "y": 3060,
+      "artId": "maintenance-console-right",
+      "label": "Console des guetteurs du rempart",
+      "purpose": "Réglage du matériel au revers de la vigie, hors du chemin régional et de la porte.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:rampart-watch:care-cabinet-left",
+      "compositionId": "rampart-watch",
+      "buildingId": "rampart-watch",
+      "levelId": "0",
+      "districtId": "rampart-walk",
+      "x": 5280,
+      "y": 2920,
+      "artId": "care-cabinet-left",
+      "label": "Réserve de relève des remparts",
+      "purpose": "Fournitures scellées de relève dans la poche latérale de la promenade.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:port-registers:basalt-planter-left",
+      "compositionId": "port-registers",
+      "buildingId": null,
+      "levelId": "0",
+      "districtId": "port",
+      "x": 6130,
+      "y": 4930,
+      "artId": "basalt-planter-left",
+      "label": "Bac de la galerie des traversées",
+      "purpose": "Rive de la petite galerie du quai, dissociée du pupitre et de son lecteur.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:port-return:cargo-rack-right",
+      "compositionId": "port-return",
+      "buildingId": null,
+      "levelId": "0",
+      "districtId": "port",
+      "x": 7440,
+      "y": 4920,
+      "artId": "cargo-rack-right",
+      "label": "Rangement des retours de chasse",
+      "purpose": "Lots fermés après débarquement, sans exposer une espèce ou une prise canonique non gagnée.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:lower-market:merchant-counter-left",
+      "compositionId": "lower-market",
+      "buildingId": null,
+      "levelId": "-1A",
+      "districtId": "undercity",
+      "x": 3110,
+      "y": 3400,
+      "artId": "merchant-counter-left",
+      "label": "Comptoir des échanges bas",
+      "purpose": "Face clients orientée dans la cour, à l’opposé de la rue de transit.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:lower-market:clan-waymarker-right",
+      "compositionId": "lower-market",
+      "buildingId": null,
+      "levelId": "-1A",
+      "districtId": "undercity",
+      "x": 3220,
+      "y": 3480,
+      "artId": "clan-waymarker-right",
+      "label": "Repère des échanges bas",
+      "purpose": "Repère de la poche marchande sans obturer le carrefour public.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:lower-forge:forge-bench-right",
+      "compositionId": "lower-forge",
+      "buildingId": null,
+      "levelId": "-1A",
+      "districtId": "undercity",
+      "x": 3530,
+      "y": 4960,
+      "artId": "forge-bench-right",
+      "label": "Établi des artisans bas",
+      "purpose": "Finition près du stock de matières, mais hors du passage vers la rampe.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:lower-cistern:maintenance-console-right",
+      "compositionId": "lower-cistern",
+      "buildingId": null,
+      "levelId": "-1A",
+      "districtId": "undercity",
+      "x": 4810,
+      "y": 4980,
+      "artId": "maintenance-console-right",
+      "label": "Contrôle des réserves minérales",
+      "purpose": "Contrôle près de la citerne civique avec une aire opérateur propre.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:lower-common:care-cabinet-left",
+      "compositionId": "lower-common",
+      "buildingId": null,
+      "levelId": "-1A",
+      "districtId": "undercity",
+      "x": 4220,
+      "y": 5110,
+      "artId": "care-cabinet-left",
+      "label": "Réserve de la cour commune",
+      "purpose": "Fournitures scellées derrière la réunion des clans, sans service médical nouveau.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:gallery-care:care-cabinet-left",
+      "compositionId": "gallery-care",
+      "buildingId": "undercity-refuge",
+      "levelId": "-1B",
+      "districtId": "undercity",
+      "x": 5020,
+      "y": 3540,
+      "artId": "care-cabinet-left",
+      "label": "Réserve du refuge des galeries",
+      "purpose": "Réserve de soins scellée dans la poche orientale du refuge, séparée de la porte.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:gallery-care:basalt-planter-left",
+      "compositionId": "gallery-care",
+      "buildingId": "undercity-refuge",
+      "levelId": "-1B",
+      "districtId": "undercity",
+      "x": 4820,
+      "y": 3640,
+      "artId": "basalt-planter-left",
+      "label": "Bac du refuge des galeries",
+      "purpose": "Culture locale dans un bac clos éclairé par le refuge ; aucun sol de jardin public ajouté.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:gallery-repair:maintenance-console-right",
+      "compositionId": "gallery-repair",
+      "buildingId": "residence-undercity-2",
+      "levelId": "-1B",
+      "districtId": "undercity",
+      "x": 3720,
+      "y": 3520,
+      "artId": "maintenance-console-right",
+      "label": "Réglage du logement bas",
+      "purpose": "Petit poste de maintenance en retrait du chemin vers la loge basse.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:gallery-repair:cargo-rack-right",
+      "compositionId": "gallery-repair",
+      "buildingId": "residence-undercity-2",
+      "levelId": "-1B",
+      "districtId": "undercity",
+      "x": 3550,
+      "y": 3570,
+      "artId": "cargo-rack-right",
+      "label": "Pièces de la galerie basse",
+      "purpose": "Réserve technique au revers de la zone de travail, pas dans le trajet de relève.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:convoy-repair:cargo-rack-right",
+      "compositionId": "convoy-repair",
+      "buildingId": "convoy-workshop",
+      "levelId": "-1C",
+      "districtId": "convoy-works",
+      "x": 2150,
+      "y": 4760,
+      "artId": "cargo-rack-right",
+      "label": "Pièces de retour des convoyeurs",
+      "purpose": "Rangement après le poste de travail, hors de la sortie de l’atelier.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:convoy-dispatch:maintenance-console-right",
+      "compositionId": "convoy-dispatch",
+      "buildingId": "convoy-store",
+      "levelId": "-1C",
+      "districtId": "convoy-works",
+      "x": 3070,
+      "y": 4450,
+      "artId": "maintenance-console-right",
+      "label": "Contrôle des lots du magasin",
+      "purpose": "Vérification au bord de la travée du magasin, sans ajout de commande de livraison.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:convoy-rest:care-cabinet-left",
+      "compositionId": "convoy-rest",
+      "buildingId": "convoy-south-shelter",
+      "levelId": "-1C",
+      "districtId": "convoy-works",
+      "x": 2710,
+      "y": 4770,
+      "artId": "care-cabinet-left",
+      "label": "Réserve du relais sud",
+      "purpose": "Réserve fermée près de la halte des convoyeurs, distincte de leurs lots.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:convoy-rest:basalt-planter-left",
+      "compositionId": "convoy-rest",
+      "buildingId": "convoy-south-shelter",
+      "levelId": "-1C",
+      "districtId": "convoy-works",
+      "x": 2630,
+      "y": 4940,
+      "artId": "basalt-planter-left",
+      "label": "Bac de la halte des convoyeurs",
+      "purpose": "Respiration végétale cultivée à la périphérie de la halte, pas au milieu du fret.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:proofs-register:clan-waymarker-right",
+      "compositionId": "proofs-register",
+      "buildingId": "enforcer-bastion",
+      "levelId": "+1",
+      "districtId": "enforcers",
+      "x": 4920,
+      "y": 1870,
+      "artId": "clan-waymarker-right",
+      "label": "Repère de la galerie des preuves",
+      "purpose": "Marque de la bifurcation vers le registre public, hors des trajets des gardiens.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:proofs-register:care-cabinet-left",
+      "compositionId": "proofs-register",
+      "buildingId": "enforcer-bastion",
+      "levelId": "+1",
+      "districtId": "enforcers",
+      "x": 5000,
+      "y": 1700,
+      "artId": "care-cabinet-left",
+      "label": "Réserve scellée de la relève",
+      "purpose": "Fournitures de relève derrière la garde, sans modifier les règles de justice.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:acropolis-wait:basalt-planter-left",
+      "compositionId": "acropolis-wait",
+      "buildingId": "throne-audience",
+      "levelId": "+2",
+      "districtId": "citadel",
+      "x": 5050,
+      "y": 1450,
+      "artId": "basalt-planter-left",
+      "label": "Bac de la galerie d’audience",
+      "purpose": "Bord de la galerie publique royale ; jardin original sans suite privée inventée.",
+      "scale": 1
+    },
+    {
+      "id": "street-v92:acropolis-wait:clan-waymarker-right",
+      "compositionId": "acropolis-wait",
+      "buildingId": "throne-audience",
+      "levelId": "+2",
+      "districtId": "citadel",
+      "x": 4080,
+      "y": 1460,
+      "artId": "clan-waymarker-right",
+      "label": "Repère de l’attente royale",
+      "purpose": "Repère de la galerie publique, à distance de l’axe cérémoniel et du roi.",
+      "scale": 1
+    }
+  ]
+}

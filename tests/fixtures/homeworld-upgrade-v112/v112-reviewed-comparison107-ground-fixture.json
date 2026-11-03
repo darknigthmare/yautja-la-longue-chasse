@@ -1,0 +1,121 @@
+{
+  "owner": "2026-10-28T10:00:00.000Z",
+  "checkpoint": {
+    "version": 1,
+    "layoutRevision": 1,
+    "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+    "levelId": "0",
+    "exterior": {
+      "x": 7350,
+      "y": 5260
+    },
+    "interiorId": null,
+    "local": null
+  },
+  "ledgers": {
+    "archiveV106": {
+      "version": 1,
+      "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+      "revision": 8,
+      "receipt": {
+        "sceneId": "D6-W-PNJ-ROLE-03",
+        "operationId": "port-separated-study-records-v106",
+        "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+        "phase": "completed",
+        "resumePhase": null,
+        "last": {
+          "x": 7350,
+          "y": 5260
+        },
+        "walked": 1011.4239674357855,
+        "cases": [
+          {
+            "id": "A",
+            "x": 7240,
+            "y": 5180,
+            "place": "support"
+          },
+          {
+            "id": "B",
+            "x": 7470,
+            "y": 5180,
+            "place": "support"
+          }
+        ],
+        "carrier": null,
+        "pickupWalked": null,
+        "interruptedCount": 0,
+        "uncertaintyRecorded": true
+      }
+    },
+    "archiveComparisonV107": {
+      "version": 1,
+      "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+      "revision": 8,
+      "receipt": {
+        "sceneId": "D6-W-PNJ-ROLE-03",
+        "operationId": "port-situated-study-comparison-v107",
+        "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+        "phase": "interrupted",
+        "resumePhase": "search",
+        "last": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "walked": 2859.542585480364,
+        "evidence": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965,
+          "place": "ground"
+        },
+        "discovery": {
+          "position": {
+            "x": 7100,
+            "y": 5480
+          },
+          "observer": {
+            "x": 7100.03758250906,
+            "y": 5523.960312870433
+          },
+          "levelId": "0"
+        },
+        "provenanceCopied": true,
+        "observations": [],
+        "comparison": null,
+        "pickupWalked": null,
+        "interruptedCount": 1
+      }
+    }
+  },
+  "actor": {
+    "x": 7350,
+    "y": 5260,
+    "vx": 316.69306515395874,
+    "vy": -25.747403671066422,
+    "facing": 1,
+    "grounded": true
+  },
+  "historicalActor": {
+    "x": 7350,
+    "y": 5260,
+    "vx": 316.69306515395874,
+    "vy": -25.747403671066422,
+    "facing": 1,
+    "grounded": true
+  },
+  "oldNativeSteps": 1251,
+  "oldNativeWalkDistance": 6599.439438239045,
+  "oldOperationWalked": 2859.542585480364,
+  "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+  "privateSourceManifestSha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a",
+  "oldFree": true,
+  "currentBlocked": true,
+  "remote": true,
+  "groundObject": true,
+  "affected": {
+    "x": 4799.825914935707,
+    "y": 4964.21758152965
+  }
+}

@@ -1,0 +1,5 @@
+.hud{position:absolute;inset:auto 12px 10px;z-index:8;display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;padding:12px 16px;border:1px solid #b9ac72;background:#07130feF;color:#edf4e2;box-shadow:0 4px 20px #0009;font-size:12px}
+.caption{display:grid;gap:3px;flex:1 1 220px}.caption strong{color:#f4db86;font-size:17px;letter-spacing:.08em}.caption span{font-size:10px;letter-spacing:.04em}.hud small{flex:1 1 100%;font-size:11px;line-height:1.5}
+.choices{display:flex;flex-wrap:wrap;gap:6px}.choices button,.skip{min-height:36px;padding:7px 10px;border:1px solid #74865c;background:#172a20;color:#eff6e5;font:inherit;cursor:pointer}.choices button:disabled{opacity:.55;cursor:default}.choices button:focus-visible,.skip:focus-visible{outline:3px solid #ffe48c;outline-offset:3px}.skip{margin-left:auto;background:#312b20;border-color:#b4a372}
+.skip{margin-right:75px}
+@media(max-width:760px){.hud{inset:auto 6px 6px;padding:7px 9px;gap:5px 8px}.caption strong{font-size:13px}.caption{flex-basis:150px}.hud small{font-size:9px}.choices button,.skip{min-height:32px;padding:5px 7px;font-size:10px}}

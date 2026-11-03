@@ -1,0 +1,2433 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "8eaae97b8511ed6b93183729f201af7eb844f830",
+  "scope": "Original V99/V100/V104 collectors and their bounded input closure at merged V104. Shared assets and historical products must retain their hashes; no current runtime is substituted.",
+  "archive": {
+    "path": "tests/fixtures/excel-history-v104-v105.json.gz",
+    "sha256": "33c3c8a96a86702a819db845fe83d8566c95f674bbf5e13d0135861435705d6d",
+    "bytes": 3468566,
+    "uncompressedBytes": 18712984
+  },
+  "sources": [
+    {
+      "path": "app/game/ClanWarCommandV98.tsx",
+      "sha256": "c41424bf16bcc8f5bd52d835f00f5ee1a1dc475c09916f5df63f5675d4085c2f",
+      "bytes": 7885
+    },
+    {
+      "path": "app/game/ClanWarEvacuationV100.tsx",
+      "sha256": "c88e64e27da7c901979071ecd8d780f99e446c5bb4b83084af416778ab8c281b",
+      "bytes": 1853
+    },
+    {
+      "path": "app/game/GameReserveV66.tsx",
+      "sha256": "487798140e4b849df26fd2b4b4433c1dbc5879735fe5886eb987e01bf3d6601b",
+      "bytes": 22394
+    },
+    {
+      "path": "app/game/HomeworldHub.tsx",
+      "sha256": "edf9202e33b0821047f9c43b2fccee33aa7c0b21f1ff8fc557951b5691085d76",
+      "bytes": 105561
+    },
+    {
+      "path": "app/game/HomeworldStreetConversationV100.tsx",
+      "sha256": "9217c8c7ca2e11429b44ac2e385c537c6f25d84f6db45346c48014bca6f9c02e",
+      "bytes": 1936
+    },
+    {
+      "path": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "921a890b4ca119877a1265e210910a15fb7c7e3a9fd18dbc223fcf4e9b445da0",
+      "bytes": 21622
+    },
+    {
+      "path": "app/game/PitSelectionFlow.tsx",
+      "sha256": "509472947cdccaf275a26a5c3bd90b3a9cac50d30c4f2710d4814a795dd49beb",
+      "bytes": 29701
+    },
+    {
+      "path": "app/game/PitWorkbookAnimationViewerV100.tsx",
+      "sha256": "d5defe851b4e678a9bfb3944840a2125fbff3508f82f9f1afdb7846b4ff1a563",
+      "bytes": 7047
+    },
+    {
+      "path": "app/game/PlanetGeneratorV103.tsx",
+      "sha256": "09854f58841865bb1a56a900c03730c444fd0c9d12fc99aefb7bbc6a3ae690db",
+      "bytes": 25809
+    },
+    {
+      "path": "app/game/biomaskCatalogueV62.ts",
+      "sha256": "f3f32609f9eb67d92ab1f1cccfacedd8c06dcb530cafcb3bb80b5d6440b8359b",
+      "bytes": 4950
+    },
+    {
+      "path": "app/game/clanWarBibleV6Source.json",
+      "sha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+      "bytes": 1362699
+    },
+    {
+      "path": "app/game/clanWarV85Source.json",
+      "sha256": "58c77e7f555db2f61c8cf3905c0ae94798db9bdd10f66a5d58efd2cfe5a29114",
+      "bytes": 993059
+    },
+    {
+      "path": "app/game/data/bibleCartographySceneV104.json",
+      "sha256": "8e35c55896f875a5802def0766dbc3b7532a0117c9381c1f79e07f69c641ef10",
+      "bytes": 19183
+    },
+    {
+      "path": "app/game/data/bibleSceneCulturalV86.json",
+      "sha256": "97f97edc8d7daaabc5accf47b516e59f62ecbdcd52132a21fd73f1275fd6786f",
+      "bytes": 19124
+    },
+    {
+      "path": "app/game/data/enforcerProductionV611.json",
+      "sha256": "8498df70b2079b2abc9b1a27894a99cd7ef86b453eb1bcacbf08f2babc0fc00b",
+      "bytes": 86145
+    },
+    {
+      "path": "app/game/data/enforcerProductionV612.json",
+      "sha256": "2b393e3a7d07f6b6a894af348ddc0e779846ee25e3377d35e8e74754afd259b2",
+      "bytes": 87629
+    },
+    {
+      "path": "app/game/data/enforcerProductionV613.json",
+      "sha256": "9222cf9561dd47538d75c903f50829205513147a65ecfea50f398f5ab85e0e52",
+      "bytes": 81966
+    },
+    {
+      "path": "app/game/data/homeworldArchitectureArtV75.json",
+      "sha256": "40f18e871d68b9237c20ca381086ee0aacf10b7cc985839d091828800e6271af",
+      "bytes": 18483
+    },
+    {
+      "path": "app/game/data/homeworldArchitectureArtV76.json",
+      "sha256": "36799820350fad4847f457de56655d741a81d4967850b9431f8f22ea3d51e5ab",
+      "bytes": 378357
+    },
+    {
+      "path": "app/game/data/homeworldBrazierV69.json",
+      "sha256": "58a7cc0739614a2094d6d34dd70729f2a00740b6cfae3eb591a73490145760fd",
+      "bytes": 608
+    },
+    {
+      "path": "app/game/data/homeworldCityGeneratedProvenanceV78.json",
+      "sha256": "f6914e3c6cc4504f2c2570daedbd24bfeb5ea3f18d3978610cbfccafd941c925",
+      "bytes": 65859
+    },
+    {
+      "path": "app/game/data/homeworldConnectorArtV77.json",
+      "sha256": "64786d93a3486226f24e12edc0826794904d69c3b82cf2c419ca9d8a284109e9",
+      "bytes": 839
+    },
+    {
+      "path": "app/game/data/homeworldConnectorArtV82.json",
+      "sha256": "5972806415cf6113bc5f4ef60b71990ba3327750437006e3dee6d5b3a32f72c6",
+      "bytes": 13834
+    },
+    {
+      "path": "app/game/data/homeworldExteriorArtV76.json",
+      "sha256": "0abde1837561836ff2d1179872a3d208415ff937fa57c935bad8a62d2395f9f0",
+      "bytes": 5837
+    },
+    {
+      "path": "app/game/data/homeworldExteriorDecorV76.json",
+      "sha256": "cf6e2bacf1b51ad43404dd68684c1732120e38c13c534dcc6e4058f38f4327c0",
+      "bytes": 27860
+    },
+    {
+      "path": "app/game/data/homeworldFurnitureArtV72.json",
+      "sha256": "598c1341ad686700aeaab01f4c2164db84f36943356df731e7075e7eaa62607e",
+      "bytes": 9246
+    },
+    {
+      "path": "app/game/data/homeworldGatewayArtV72.json",
+      "sha256": "320a27eb15864d8472f1e7d8bbfe0368b2940474ba0c33caac03db36676c7e5b",
+      "bytes": 2857
+    },
+    {
+      "path": "app/game/data/homeworldIdentityArtV72.json",
+      "sha256": "52b44e3a1ef4a0e38985eba465a1428fd498027648e390a62755e4af184d07b0",
+      "bytes": 7954
+    },
+    {
+      "path": "app/game/data/homeworldInteriorDecorArtV76.json",
+      "sha256": "51458d942501f3ef2abd7a980c6fd1fa771e76b1b8b5dcb7edcbbbe242bcdaaa",
+      "bytes": 7051
+    },
+    {
+      "path": "app/game/data/homeworldInteriorDecorPlacementsV76.json",
+      "sha256": "194a7c29cc757d6a4946e13ced1492a78f882ed1d083e32b16505ffda1f54b94",
+      "bytes": 31291
+    },
+    {
+      "path": "app/game/data/homeworldInteriorEnvelopesV64.json",
+      "sha256": "1e46ed32bb057e6cee9bcaa0e54d117bbe39815760e2895b8b65877a2761c484",
+      "bytes": 5125
+    },
+    {
+      "path": "app/game/data/homeworldLavaArtV77.json",
+      "sha256": "70b1e9a6af757263262bdb16c6212cc8989e96dcc6bcc5acbef8b197790b6630",
+      "bytes": 2939
+    },
+    {
+      "path": "app/game/data/homeworldLifeV68.json",
+      "sha256": "28b7c337554a9f4295a20d15da4b76803c94f885f6de03de220fd1533b98d210",
+      "bytes": 25378
+    },
+    {
+      "path": "app/game/data/homeworldLifeV69.json",
+      "sha256": "01754301a51d48caead08352d1049e76c2a9fe1ff1449075952d7cdc71eb3d6a",
+      "bytes": 19305
+    },
+    {
+      "path": "app/game/data/homeworldNativeArchitectureV81.json",
+      "sha256": "6f24ee3298c5962c2f1a9ece431f0353821e43eadc59dbe151271c405b797f90",
+      "bytes": 389475
+    },
+    {
+      "path": "app/game/data/homeworldNativeDecorV80.json",
+      "sha256": "4d5098edfb2bf3f08945618438c58027a58d23d12f1faf0b0adbfe8b194109f8",
+      "bytes": 10904
+    },
+    {
+      "path": "app/game/data/homeworldNpcAdditionsV84.json",
+      "sha256": "7bbb19d2d539137dd96cbb7b77d175a8af5d11bb01bdf19eb10e2fdfe70b5897",
+      "bytes": 3323
+    },
+    {
+      "path": "app/game/data/homeworldRegionConnectionsV72.json",
+      "sha256": "13796be5cf5bc32803bf3259d9b2a5263533cd799c97257d95014e92a79aacad",
+      "bytes": 8518
+    },
+    {
+      "path": "app/game/data/homeworldResidencesV64.json",
+      "sha256": "467ffb2831b8e53c228839c523bd44bd79a3bb81213748b322eea7fe74565de7",
+      "bytes": 4324
+    },
+    {
+      "path": "app/game/data/homeworldStreetCompositionsV92.json",
+      "sha256": "71336faf17412d3b6c43ecb97394904c920bf135f97546631af074a305f2fdea",
+      "bytes": 13529
+    },
+    {
+      "path": "app/game/data/homeworldStreetDecorPlacementV83.json",
+      "sha256": "d1e53d433dfbcd61fba3aeb875fc5e6e404119b006c971c01dd9f57d1932edd3",
+      "bytes": 5979
+    },
+    {
+      "path": "app/game/data/homeworldStreetDecorPlacementV84.json",
+      "sha256": "cfa2254ecc8e434e122a1818ba85f085b6319337730906a11557712dfa7cd7c3",
+      "bytes": 6180
+    },
+    {
+      "path": "app/game/data/homeworldStreetDecorSourcesV83.json",
+      "sha256": "b2eb6adb1c19983e914c9a2543cda0441a2d156aa30162c49194a6a312f5055d",
+      "bytes": 1923
+    },
+    {
+      "path": "app/game/data/homeworldStreetDecorSourcesV84.json",
+      "sha256": "1715fa8c86c0dd2e414d01d3a6936f97b433616db89d2c8d1c0e9c489a601fdb",
+      "bytes": 1586
+    },
+    {
+      "path": "app/game/data/pitLifecycleAnimationsV93.json",
+      "sha256": "8dd16050d6faf8b1803e0d6fdc52990970d4072a95a66525423de80a8242c10b",
+      "bytes": 50610
+    },
+    {
+      "path": "app/game/data/pitLifecycleBerserkerV94.json",
+      "sha256": "3075aaa1c52d050a5774922ba87b6ea0380cc51e9df92f2f99b987f9db5e9b44",
+      "bytes": 25936
+    },
+    {
+      "path": "app/game/data/pitLifecycleCelticV94.json",
+      "sha256": "f000e99af2f9783073adc542150220b3d83e3625cc2161368c632a32d12004db",
+      "bytes": 60695
+    },
+    {
+      "path": "app/game/data/pitLifecycleGreybackV94.json",
+      "sha256": "4fb090529bf87c5a7ec79c3e404a8d4f5ea1d2e3cf9cf5d8f5050366bcaa4822",
+      "bytes": 4725
+    },
+    {
+      "path": "app/game/data/pitLifecycleWolfV94.json",
+      "sha256": "d80f38ec583d340bc4eada8d4fd590e772dca4030863f43d63bcbe8ba63ff188",
+      "bytes": 9296
+    },
+    {
+      "path": "app/game/data/pitStageCompositionV63.json",
+      "sha256": "d913c3910e52fb01b1efa7a21b7b8123db3431cf5ab53978df85ed016cc64845",
+      "bytes": 2810
+    },
+    {
+      "path": "app/game/data/pitStageCompositionV65.json",
+      "sha256": "4fee1202e0b39e1aedcb50f45ed5c15982f4de0563e2d8e8356b2d8dc4e9d87f",
+      "bytes": 82730
+    },
+    {
+      "path": "app/game/data/pitUserAnimationsV62.json",
+      "sha256": "59ecd85923bb8bf95e88ab5dbb443844c1502a46832aa14579005f0b0e36efb7",
+      "bytes": 10236
+    },
+    {
+      "path": "app/game/data/pitUserAnimationsV63.json",
+      "sha256": "77f8511a1147df28e1305bb8151088498d77754503e692a3edaeead4c26218e7",
+      "bytes": 20409
+    },
+    {
+      "path": "app/game/data/pitUserAnimationsV91.json",
+      "sha256": "82f5332c4deba5cfdda4cc55019cb636f54414e7011714556bd9c38744ad410f",
+      "bytes": 20976
+    },
+    {
+      "path": "app/game/data/pitUserAnimationsV92.json",
+      "sha256": "a7f2aea2bacd2cf540a8dad4db8215304e7c6be1a9419170ea7afa793b309f26",
+      "bytes": 27484
+    },
+    {
+      "path": "app/game/data/pitUserHuntersV44.json",
+      "sha256": "dbdb6d2dc993a93481d2d96a4dbe99bd75f0e37f3a1b70a7e4124feae79af7d7",
+      "bytes": 752312
+    },
+    {
+      "path": "app/game/data/pitUserHuntersV62.json",
+      "sha256": "3a860e299afd833d2fc32af5395ad9397a960ff9b4956776ba67ab620e259c52",
+      "bytes": 2592
+    },
+    {
+      "path": "app/game/data/pitUserHuntersV79.json",
+      "sha256": "dd16fed6bbcf2227281e20b62214731347bdb4a4dbd7a5739e7f5bc7eca88247",
+      "bytes": 4895
+    },
+    {
+      "path": "app/game/data/pitUserVariantsV63.json",
+      "sha256": "9cbef2a8938f7d766b6dc90bd99f0d89c86d305c080d9d3afe3dd1ee0844f3be",
+      "bytes": 3914
+    },
+    {
+      "path": "app/game/data/pitWorkbookAnimationPlanV100.json",
+      "sha256": "e320476807a1e5c36bb82202d243761097497e48b4d893884a8771bbf01f3141",
+      "bytes": 56186
+    },
+    {
+      "path": "app/game/data/pitWorkbookAnimationsV100.json",
+      "sha256": "5de70a8a5a08ac1c2bbe56f11fddfac52b6285cde4e606970141e74b8cc21956",
+      "bytes": 476546
+    },
+    {
+      "path": "app/game/gameReserveV66Rendering.ts",
+      "sha256": "af36eb1bc6e8588f2d53b815e9a4af7ad55d08ae0ec7713d823c3a6efe3d22f8",
+      "bytes": 12264
+    },
+    {
+      "path": "app/game/hunterSpriteAtlas.ts",
+      "sha256": "be0c4d820b2900708a3391a546269fa1c9bdd6b27f4f9a610d6ed43ce4ad606e",
+      "bytes": 32604
+    },
+    {
+      "path": "app/game/hunterSpriteMotion.ts",
+      "sha256": "6add9fbff758acd9407657a98d02d33d8e60508dde67043dc286bd861fd2b88a",
+      "bytes": 15666
+    },
+    {
+      "path": "app/game/pitArenaProduction.ts",
+      "sha256": "b49fbe048bce45c1328dd28e1c1985f6588a6f5a23d16f4323e2d995d8b94a7c",
+      "bytes": 15795
+    },
+    {
+      "path": "app/game/pitArenaProductionData.generated.json",
+      "sha256": "c07d5d314269548b50f7a4d564fd6e9c6583d2ac5d6033c56254340909d01f5b",
+      "bytes": 1758885
+    },
+    {
+      "path": "app/game/pitFighterPresentation.ts",
+      "sha256": "b060f231cb63384657e47072ee17c9ab9caf718d4b216b18413dc4c3fa475b59",
+      "bytes": 4377
+    },
+    {
+      "path": "app/game/pitSpriteSheetAnimation.ts",
+      "sha256": "7e58dadf09f042f3ee54f0c576e7a738becdaeba0d9e5b1a88f2a5e7df37b903",
+      "bytes": 35096
+    },
+    {
+      "path": "app/game/pitSpriteSheetRegistry.ts",
+      "sha256": "ccf79d56ec0399e417b57b2406e8de1a785f585054e10b5c50d72e5cb96a5433",
+      "bytes": 429034
+    },
+    {
+      "path": "app/game/pitStageCompositionV63.ts",
+      "sha256": "bd26ea648513d2fffe3473c01dfd903c90b6b0f8227c0bed29eb69008b1e6192",
+      "bytes": 2459
+    },
+    {
+      "path": "app/game/pitStageCompositionV65.ts",
+      "sha256": "711a1c3e5cf6f4a53302ddfe474e23eac513bda98694ef4ab3ddbc7ad2034ef0",
+      "bytes": 6701
+    },
+    {
+      "path": "app/game/pitWorkbookAnimationV100.ts",
+      "sha256": "d1120ca77376b54a3f38a958520e23f58d1f93879fff13cb32161cae4956af6a",
+      "bytes": 12704
+    },
+    {
+      "path": "app/game/pitWorkbookCombatRegistryV100.ts",
+      "sha256": "708e1540d4f805e1293e08f327bcd65582ffead672bd39df845cd40897be9b91",
+      "bytes": 1239
+    },
+    {
+      "path": "app/game/pitWorkbookNormalRegistryV104.ts",
+      "sha256": "f8886674588f3adbe7a034142c5ee462cc6a61a971fe50f7ff95cacf7060268d",
+      "bytes": 3956
+    },
+    {
+      "path": "app/game/shipInteriorKit.ts",
+      "sha256": "b208843fe445af3ceb21504586685645631c4dc58a599b10a5f69bcbfc63d68c",
+      "bytes": 4087
+    },
+    {
+      "path": "app/game/shipInteriorV22.ts",
+      "sha256": "57c6374f77f60408a7274ab03cfbb80d6b6f685a05284e5437fb90772d83d00b",
+      "bytes": 2998
+    },
+    {
+      "path": "app/game/spriteContact.ts",
+      "sha256": "3267276073ad8e006dfc9e0aa8a1f4c299287d0c2ab9bec9839e4564b4f53a10",
+      "bytes": 3886
+    },
+    {
+      "path": "app/game/systems/bibleSceneCulturalV86.ts",
+      "sha256": "1c96295b0c505fb00dbc58f4d28ffd6dec46d03ddd617d40c0f624a04ade0bc3",
+      "bytes": 17765
+    },
+    {
+      "path": "app/game/systems/bibleSourceV85.ts",
+      "sha256": "684dd9fcbc887650f536ff9989e0d6c85a02f53dc12478416f40f6100a9ae9f1",
+      "bytes": 5834
+    },
+    {
+      "path": "app/game/systems/bibleVoiceProfilesV88.ts",
+      "sha256": "b1be1b649b394dbd4537eca1ab422836e6f34d48b6de8711538f3669b32cac3c",
+      "bytes": 2633
+    },
+    {
+      "path": "app/game/systems/campaignSoloV66.ts",
+      "sha256": "caa70a40a7246460dc0f5bf10902b1150bbd8dece2c36091d4c32b0b8317acb3",
+      "bytes": 6704
+    },
+    {
+      "path": "app/game/systems/campaignSoloV67.ts",
+      "sha256": "b0dbaeb6ad8f6ecae7b2b82d81f37925d3c841dd79686bd28c5884ea519ce612",
+      "bytes": 6842
+    },
+    {
+      "path": "app/game/systems/campaignSoloV68.ts",
+      "sha256": "ec75f59556fa6ffe1c22aca8314e2265fb2c6f2ec6747fcabb84adf58e531e3e",
+      "bytes": 8163
+    },
+    {
+      "path": "app/game/systems/clanChronicle.ts",
+      "sha256": "c4c686c89d47b6ba840250c3d739b60e972bdee19d55481893f4d20bb9124022",
+      "bytes": 20246
+    },
+    {
+      "path": "app/game/systems/clanHoistMaintenanceV90.ts",
+      "sha256": "b6dd3960df9a897712e651e9d932df57932bda1a5d7f54024af23ee3e0e95a65",
+      "bytes": 27270
+    },
+    {
+      "path": "app/game/systems/clanWarBibleV6.ts",
+      "sha256": "66de0c9d66d9f9fffa65fd1037b9f1b428cdbe7545211c08a9afe77162833dab",
+      "bytes": 22223
+    },
+    {
+      "path": "app/game/systems/clanWarCoastlinesV97.ts",
+      "sha256": "9ad2f4a03a10c969decdd97f23bd179c6c8c8422e0232b3a5ec7d5fb9209717e",
+      "bytes": 51293
+    },
+    {
+      "path": "app/game/systems/clanWarEvacuationV100.ts",
+      "sha256": "ad67e727acfe2b80f125ea34d544082e0b802dae78e0259dcf840a97ca64c56d",
+      "bytes": 4357
+    },
+    {
+      "path": "app/game/systems/clanWarMedicalV92.ts",
+      "sha256": "cc5ef8df8e9584a67082bfa7b31f5b966a55a13626a6cf91b7ddb436e3c87f54",
+      "bytes": 16407
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV102.ts",
+      "sha256": "be410dd6586c18c849b38b8f6219c0b70a99603e672577a5ca742a072c282b29",
+      "bytes": 22584
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV103.ts",
+      "sha256": "9dddcfda7f76c723eacaee713abe310af307c82909da42a82a43c2719bfbdac9",
+      "bytes": 24289
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeographyV102.ts",
+      "sha256": "fa93c792c8e0683c71e770cc27e897f311edcd0637eb114af00a43e28204750c",
+      "bytes": 13824
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeographyV103.ts",
+      "sha256": "4e6a40fc1124325690bf2080938a8de13716c7906a1014e5224dded0519469a9",
+      "bytes": 31192
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetsV96.ts",
+      "sha256": "a263e11a43dd43bf0bc8c4b9d39a5ea8a907034c4ee375832ba287e73c4da0b4",
+      "bytes": 40094
+    },
+    {
+      "path": "app/game/systems/clanWarProceduralV103.ts",
+      "sha256": "ad4dae6be01e9f779efc56ae19cb172cab221be9c0cedc382fa64c95565c3e6f",
+      "bytes": 2759
+    },
+    {
+      "path": "app/game/systems/clanWarV85.ts",
+      "sha256": "deb710ef5766b0093889118dd590d7c87683efb226e14eb330579d82e7d3f17f",
+      "bytes": 43533
+    },
+    {
+      "path": "app/game/systems/clanWarV85Data.ts",
+      "sha256": "ea974feaf3715447736ebde591a542198822dba11a76049568b852330a8c29aa",
+      "bytes": 4985
+    },
+    {
+      "path": "app/game/systems/clanWarWorksV6.ts",
+      "sha256": "6570904149af46580e72ca42f9820c0ac2e79b63985b4799def43cb33123cf88",
+      "bytes": 122298
+    },
+    {
+      "path": "app/game/systems/cntlipLedgerV77.ts",
+      "sha256": "827322f140494b6dc401ffab2ecd6652c6d929a35f807ddfa930ab8d5590e943",
+      "bytes": 6563
+    },
+    {
+      "path": "app/game/systems/cntlipV77.ts",
+      "sha256": "52ae87b7c086a37e6115bd2a9b293c6656572a4fbef3483504474ee46cad9606",
+      "bytes": 19302
+    },
+    {
+      "path": "app/game/systems/firstHuntSoloV67.ts",
+      "sha256": "89d6ff7bc20da877be489a970b7a719b26507165a929ffe00b7657bc0251655e",
+      "bytes": 16665
+    },
+    {
+      "path": "app/game/systems/firstHuntSoloV68.ts",
+      "sha256": "3b34b8e6bbcbe5576b8290e65ea832a683f3bfb5c058691cdf445700d8bf3e56",
+      "bytes": 21051
+    },
+    {
+      "path": "app/game/systems/firstTracksSoloV66.ts",
+      "sha256": "12c0468b62dc9aac7edec31c9bbafd2d4a546aca4907d1ce76a4708db97d5cd2",
+      "bytes": 13900
+    },
+    {
+      "path": "app/game/systems/gameReserveLookoutV104.ts",
+      "sha256": "ca7cff12aa8df630d3e3ea18f9c95d4dcf6aa81030b9ef1aa07f7e9fe6c4d32f",
+      "bytes": 937
+    },
+    {
+      "path": "app/game/systems/gameReserveV66.ts",
+      "sha256": "7076668aeef77a75fbb8ca63126b64bfb4179215e9b15fc9d48fc1153b898f33",
+      "bytes": 37609
+    },
+    {
+      "path": "app/game/systems/glassDesert.ts",
+      "sha256": "65df204f73b175855ee3f89ea2a69161c69ae46d2523cd4315fb69afd6e3560f",
+      "bytes": 15682
+    },
+    {
+      "path": "app/game/systems/homeworld.ts",
+      "sha256": "ef0d4b893fdfd3ac7d7026b3f5ee8f719ca5237784225964925cd89a97c3671c",
+      "bytes": 28924
+    },
+    {
+      "path": "app/game/systems/homeworldAccessV69.ts",
+      "sha256": "7c10f37c8631e04e254f554ba44d262822d9af626c9d72a62f504e60ccdfa709",
+      "bytes": 1785
+    },
+    {
+      "path": "app/game/systems/homeworldArchitectureArtV75.ts",
+      "sha256": "5a472acbb59b47d0e487233170f0733445013a2bcb06f329a29cd4f86c6cec11",
+      "bytes": 1097
+    },
+    {
+      "path": "app/game/systems/homeworldArchitectureArtV76.ts",
+      "sha256": "d6da61eda4f230f5c1330fdd25ca10d4f6f04425bfa589ddf738f6a6acff52d6",
+      "bytes": 1335
+    },
+    {
+      "path": "app/game/systems/homeworldArchitectureV75.ts",
+      "sha256": "1455e625950f4a4906629adcd360743528a9c93602b186112689a0797e9c2450",
+      "bytes": 5314
+    },
+    {
+      "path": "app/game/systems/homeworldArtV64.ts",
+      "sha256": "a2a6e9609b65d4cdd99f69390459ca9795d48dd7d4372ed2d1b448072be294ac",
+      "bytes": 16055
+    },
+    {
+      "path": "app/game/systems/homeworldAuthoredLotsV81.ts",
+      "sha256": "bde4ad0ee3243997bd61a72b502feab4c095bdef5af50ee3d63683d6e6009d9a",
+      "bytes": 15263
+    },
+    {
+      "path": "app/game/systems/homeworldBuildingPlacementsV76.ts",
+      "sha256": "48844047a33c2db5ef25fbafbfe6d44046aba13e46f4058c0d4fe6d54bfdc969",
+      "bytes": 3790
+    },
+    {
+      "path": "app/game/systems/homeworldCartographyDefinitionV104.ts",
+      "sha256": "c5d3e4b7e0e34239810384984885cf6b2bf55aa096b1623481ae4adaad0d64f1",
+      "bytes": 2118
+    },
+    {
+      "path": "app/game/systems/homeworldCartographyLedgerV104.ts",
+      "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148",
+      "bytes": 5248
+    },
+    {
+      "path": "app/game/systems/homeworldCartographyV104.ts",
+      "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f",
+      "bytes": 10531
+    },
+    {
+      "path": "app/game/systems/homeworldCheckpointV77.ts",
+      "sha256": "3f36eae7d3def363d3b7c4be76378b2597a4546aa5e387211b82bd995a8cf9ad",
+      "bytes": 1879
+    },
+    {
+      "path": "app/game/systems/homeworldCity.ts",
+      "sha256": "e1dd6fad296039ddbbcea2835177556ec9e14342b0deacbeaaa21f8819ddecd0",
+      "bytes": 54066
+    },
+    {
+      "path": "app/game/systems/homeworldCityArtV54.ts",
+      "sha256": "b2b6334d45b4907da51e1536e9914c409502f1de1d13563763477fde56adedb4",
+      "bytes": 1113
+    },
+    {
+      "path": "app/game/systems/homeworldCityNativeArtV78.ts",
+      "sha256": "2f267e48d70ede10315391571fbf48fa45c670834c53a4d777e9243e55771e67",
+      "bytes": 3632
+    },
+    {
+      "path": "app/game/systems/homeworldCityNativePlacementV78.ts",
+      "sha256": "ab8a4030d76c228395adb25a18dec2bc9a521ecf8437340cfc2e0e2eba157e43",
+      "bytes": 7634
+    },
+    {
+      "path": "app/game/systems/homeworldCivicDecorV80.ts",
+      "sha256": "eff8fea8396066424225b57147032c8868e23cc10a15713ba5807dbc14bee373",
+      "bytes": 13939
+    },
+    {
+      "path": "app/game/systems/homeworldCivicPublicComplexV83.ts",
+      "sha256": "cf37919407881ea2f2850dd3dcf293789402ab98f7b897d0d938290f7bb0f8bf",
+      "bytes": 12367
+    },
+    {
+      "path": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "64cc8f141c161976d936b005373dadf140e8bed6251628658a723e2cd64cbbba",
+      "bytes": 1719
+    },
+    {
+      "path": "app/game/systems/homeworldCivilianRoutinesV84.ts",
+      "sha256": "222261902a3fb2c270ca77b63915d42ef5ce09459044a98ead3df1588a01ce9e",
+      "bytes": 9049
+    },
+    {
+      "path": "app/game/systems/homeworldCntlipPhysicalV77.ts",
+      "sha256": "0a19fa44e79e8a6d4216642c64f6e87ee8e0ef1d9fa6fdf26c26d8958e83d36a",
+      "bytes": 5463
+    },
+    {
+      "path": "app/game/systems/homeworldConnectorArtV77.ts",
+      "sha256": "ad41fa3c5026977c938710aa838637329e9d87876ed38977caadf752aa86c232",
+      "bytes": 2001
+    },
+    {
+      "path": "app/game/systems/homeworldConnectorSupportsV82.ts",
+      "sha256": "b64105986d32abf2b5fe68fc9d218caa352e220d86d4428560d5716d3ffc0214",
+      "bytes": 6495
+    },
+    {
+      "path": "app/game/systems/homeworldContractChainsV69.ts",
+      "sha256": "bdcba4a64f5a85204b93de168ccabcb3f3ffbdf5d0095d92de24214bb832294e",
+      "bytes": 10057
+    },
+    {
+      "path": "app/game/systems/homeworldContractsV68.ts",
+      "sha256": "6efde91524b9104e71fb8937a68ccdce6cdf32323bf6d7d181e3aad23bf1bc08",
+      "bytes": 29527
+    },
+    {
+      "path": "app/game/systems/homeworldCourtArtV80.ts",
+      "sha256": "74959060f87be423305bc7207f00a3cdde1712d9348a789389c8c4e9dd45bbee",
+      "bytes": 4122
+    },
+    {
+      "path": "app/game/systems/homeworldExpedition.ts",
+      "sha256": "7c8a5b182c2dc356fafb96f771d820fb7b42c63eb875a2acd53052a6a9c667cd",
+      "bytes": 10690
+    },
+    {
+      "path": "app/game/systems/homeworldExteriorDecorV76.ts",
+      "sha256": "a624dfdc2d6de4b5986e000adb88181acacd1954bec44e02af0ff6457c86d2fa",
+      "bytes": 7039
+    },
+    {
+      "path": "app/game/systems/homeworldForecourtsV76.ts",
+      "sha256": "7dc204ae4ae51c0d3d3c2503250ac39b2a4001fdc08a66a4f0e351806ac5d363",
+      "bytes": 1911
+    },
+    {
+      "path": "app/game/systems/homeworldFrontagePlacementsV76.ts",
+      "sha256": "798028cd1a43ef6fa0c32b0ca23df28c4c1753136934b5f8445f9b52bfc13690",
+      "bytes": 7021
+    },
+    {
+      "path": "app/game/systems/homeworldFunctionalInteriorsV72.ts",
+      "sha256": "f8abb35a4ba91255e1cee1af60a6b08a4cc8b25ba695bcd1524441eff449a21f",
+      "bytes": 5092
+    },
+    {
+      "path": "app/game/systems/homeworldFurnitureV72.ts",
+      "sha256": "7359ac65fa8e04f80be1814521ace58442ae99c353c8bfedcf5d98d6e89e1ee5",
+      "bytes": 2367
+    },
+    {
+      "path": "app/game/systems/homeworldGeometryV64.ts",
+      "sha256": "2ba2b827f2b541e3cc276825de339bcd9a51e9c723bd6116c7a5b0ab419ccbf3",
+      "bytes": 13103
+    },
+    {
+      "path": "app/game/systems/homeworldIdentityV72.ts",
+      "sha256": "415c58c301d7ca3589136f4bfb306ae51c23577375fff0bbe9a3c85b6c2e5605",
+      "bytes": 4438
+    },
+    {
+      "path": "app/game/systems/homeworldInquiry.ts",
+      "sha256": "f67760dec078f1c9464d3e23ae204df3771590d902b455fdb676cec78abfef28",
+      "bytes": 14108
+    },
+    {
+      "path": "app/game/systems/homeworldInteriorDecorV76.ts",
+      "sha256": "1978fefd63205b5ee7b7d7929f6cd1335ee3fb99d86875779726ddee269c10a9",
+      "bytes": 3779
+    },
+    {
+      "path": "app/game/systems/homeworldInteriorsV64.ts",
+      "sha256": "7a536e7f5873b893de4f9f2d12f4ac91c9e982932316f99a5e9a3b60f7f682c8",
+      "bytes": 16012
+    },
+    {
+      "path": "app/game/systems/homeworldLavaPlacementV77.ts",
+      "sha256": "f51b81a2b87b12b7e2ab8c46b9c7cab9f633a7561088b84dd8f27b7699da09dd",
+      "bytes": 5439
+    },
+    {
+      "path": "app/game/systems/homeworldLegacyPlacementsV81.ts",
+      "sha256": "9124331013424dc0aff377f258dcdd200cfa4304120ac0a18a7c6b00744c7d3b",
+      "bytes": 6496
+    },
+    {
+      "path": "app/game/systems/homeworldLifeV68.ts",
+      "sha256": "d6651bb03ff3185194f36fa664c202a2522d1e1a218ac3bcbf5ba520ba82be81",
+      "bytes": 4452
+    },
+    {
+      "path": "app/game/systems/homeworldLifeV69.ts",
+      "sha256": "23f7f7b4fd037d8754923c8b597c5c3fc71a34c926a544dbf4d8f633c4dc90c7",
+      "bytes": 3387
+    },
+    {
+      "path": "app/game/systems/homeworldMonumentInteriorsV81.ts",
+      "sha256": "50699b828c3a6efd574776c2060ca3f331403815335fc7ac4411f4c225ca8e91",
+      "bytes": 11168
+    },
+    {
+      "path": "app/game/systems/homeworldNativeArchitectureV81.ts",
+      "sha256": "81c02df5feeca8f018d4c1c6762bf2bcad2e693005d8a22f3fd8e5b456a69855",
+      "bytes": 1727
+    },
+    {
+      "path": "app/game/systems/homeworldNavigationV77.ts",
+      "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078",
+      "bytes": 7355
+    },
+    {
+      "path": "app/game/systems/homeworldNpcMissionsV66.ts",
+      "sha256": "d7e1afd9fad30c3f37f0c7167759877eedb123d49a02fc06ef0319a2efd7018c",
+      "bytes": 13601
+    },
+    {
+      "path": "app/game/systems/homeworldPassageV67.ts",
+      "sha256": "bedd50b9b65d5cc350c74141f8a781ede9c1022c6c460d0fe47b9f935041ea18",
+      "bytes": 15091
+    },
+    {
+      "path": "app/game/systems/homeworldPortPublicComplexV84.ts",
+      "sha256": "ff0e5f29b1b5196018806bd0d0ef82a5dab0f8421c5eddd24deefbaaa4ac4c3a",
+      "bytes": 12955
+    },
+    {
+      "path": "app/game/systems/homeworldPublicFittingsV82.ts",
+      "sha256": "e4dc1ee79a45d101c185396491d69ee5b347eaa93b3b824ed3dd67235a811829",
+      "bytes": 6004
+    },
+    {
+      "path": "app/game/systems/homeworldRegionConnectionsV72.ts",
+      "sha256": "4e3e074e73257093bdb6ec9db19d7e997578d1649c8598ac475d619c05f33fa9",
+      "bytes": 10116
+    },
+    {
+      "path": "app/game/systems/homeworldRegionsV68.ts",
+      "sha256": "95f1aaef3909f52095271c49c57f7ae7da54c024d86b54fcafc34cc053c6b1fa",
+      "bytes": 55215
+    },
+    {
+      "path": "app/game/systems/homeworldResidentConversationsV75.ts",
+      "sha256": "063588160b5a7a529cc9e66764bd3a1e6fd2355b12ed0747ac2bf1571990d76e",
+      "bytes": 11130
+    },
+    {
+      "path": "app/game/systems/homeworldResidentPlacementsV81.ts",
+      "sha256": "66dfdbcbc9aa65584417f4e0a2b8453fc704cad7540cfaa19bf41511dee4a4a2",
+      "bytes": 1808
+    },
+    {
+      "path": "app/game/systems/homeworldResidentVisibilityV100.ts",
+      "sha256": "2d5031f1306470892fc2aa0ccba00df2490db5d33c0ec93e67d605fc10644d32",
+      "bytes": 1247
+    },
+    {
+      "path": "app/game/systems/homeworldRetainingAssembliesV82.ts",
+      "sha256": "d8ad6e047c97d49387401613840cffc707f5f24c4ed3fbf88684fcb6752ed9d2",
+      "bytes": 5620
+    },
+    {
+      "path": "app/game/systems/homeworldSecondaryInteriorsV74.ts",
+      "sha256": "0d26417c3aaeb32112dab093bba31a59a8d62ba6fc98c0172b3579abd9dda213",
+      "bytes": 23722
+    },
+    {
+      "path": "app/game/systems/homeworldSideStoryV66.ts",
+      "sha256": "be52c12d75d6255a1f533c417369a5778a0aff296757f648ec5365e8a0d8eaa4",
+      "bytes": 14324
+    },
+    {
+      "path": "app/game/systems/homeworldStreetCompositionMountV92.ts",
+      "sha256": "afd4bc89b7aefcfa92ad91127833a6f50329a82bd1155b793cb9f740c99a2748",
+      "bytes": 3827
+    },
+    {
+      "path": "app/game/systems/homeworldStreetCompositionV92.ts",
+      "sha256": "f08028d263087d8183b8f579804b57c65e54e9891e98ab45387391e74b68a592",
+      "bytes": 7557
+    },
+    {
+      "path": "app/game/systems/homeworldStreetContactsV100.ts",
+      "sha256": "f2dfe7f551f2e621e4b1320f7526ed9b49992ef1a2a94ed9c44284ce75dd7d95",
+      "bytes": 7374
+    },
+    {
+      "path": "app/game/systems/homeworldStreetDecorMountV84.ts",
+      "sha256": "e77515d840b6174669b705576c42ff74afdf25beb7fcbbd749ad829e8f197895",
+      "bytes": 2636
+    },
+    {
+      "path": "app/game/systems/homeworldStreetDecorV83.ts",
+      "sha256": "037de6dfc2b40c84685fb4a37b3968d181143eb0780d983a6f11d6777e92f6c4",
+      "bytes": 8245
+    },
+    {
+      "path": "app/game/systems/homeworldStreetDecorV84.ts",
+      "sha256": "de6d2a980db1084eb605f2114c96de4fbe21bf13cce88207bffbe7ba3a0b8c52",
+      "bytes": 9770
+    },
+    {
+      "path": "app/game/systems/homeworldStreetModulesV78.ts",
+      "sha256": "a2d366a5bc6c370a34a7241fa5a9fdbce4e8cdd4b329dd2c280d95292270b1ba",
+      "bytes": 12364
+    },
+    {
+      "path": "app/game/systems/homeworldTransitJourneyV82.ts",
+      "sha256": "bb9d977c5a1f1eba50be4663b4e6dd1b26615a063b13c48e07aecf53942b1e5c",
+      "bytes": 495
+    },
+    {
+      "path": "app/game/systems/homeworldUrbanFacadePlansV83.ts",
+      "sha256": "4f324a8434e1600e3c2192c767f662130ca218bee67d3ff258905c8d945e3788",
+      "bytes": 4644
+    },
+    {
+      "path": "app/game/systems/homeworldUrbanFacadesV78.ts",
+      "sha256": "30209bb00d9bb524702904313bc2d332a7d1058635ec44f8cc9bc27754136359",
+      "bytes": 2824
+    },
+    {
+      "path": "app/game/systems/homeworldUrbanLayoutV78.ts",
+      "sha256": "7e3c3e53daf0dbdc1640a165228dc1a2395ec1e3a3f802be4c79fc13501c1558",
+      "bytes": 5542
+    },
+    {
+      "path": "app/game/systems/homeworldUrbanPopulationV78.ts",
+      "sha256": "22462e16d86617b9d626de0fbc76fdac488b6b44b01875e4ac0407a8134fbd31",
+      "bytes": 5379
+    },
+    {
+      "path": "app/game/systems/homeworldUsageEnvelopesV81.ts",
+      "sha256": "7a25ae23e32a6e2d3d942b84d00ad5274131392ba15365bfc436138cfe0da5fe",
+      "bytes": 4693
+    },
+    {
+      "path": "app/game/systems/homeworldWorldV77.ts",
+      "sha256": "9b76eb8a86a943c46d6edfff34bd3009368421fdab2be516bef00843b57164a8",
+      "bytes": 34965
+    },
+    {
+      "path": "app/game/systems/mausoleum.ts",
+      "sha256": "e6d855fa72a37d019c026d806b1f9dc68c3a6c11f14ef54939235f30b82ce55c",
+      "bytes": 11314
+    },
+    {
+      "path": "app/game/systems/nurseryCampaign.ts",
+      "sha256": "e1e48ba1b2f1aa104e626f6f932fb86b762e8a89b7ab30bee70e133d0830f34d",
+      "bytes": 4920
+    },
+    {
+      "path": "app/game/systems/nurseryContinuityV72.ts",
+      "sha256": "b416c15663467cb04b8950836c17dd17835ab602ec2949c088310fd9b7e3c464",
+      "bytes": 12229
+    },
+    {
+      "path": "app/game/systems/nurseryPrologue.ts",
+      "sha256": "ec3ea8ee86c086e6c13e4ff276921a3006ef46af89046a5955ceb336e9abd4cd",
+      "bytes": 37942
+    },
+    {
+      "path": "app/game/systems/pitArenaCompositionsV42.generated.json",
+      "sha256": "af5b4c285920e3e50ed22c4b53b6d25bebc363bcc85dc9ec214900a4ea284621",
+      "bytes": 22715
+    },
+    {
+      "path": "app/game/systems/pitArenaExtensions.ts",
+      "sha256": "e626bc78f26f1dfe143a0980decac44bf0fa73177f5ca31259440b2056b6cf45",
+      "bytes": 5885
+    },
+    {
+      "path": "app/game/systems/pitAuthoredMovesetsV92.ts",
+      "sha256": "af95ed0c703bb90083433dfd7de4e3af317568ef0e9051c80cd5aba46d378bf7",
+      "bytes": 5683
+    },
+    {
+      "path": "app/game/systems/pitCombat.ts",
+      "sha256": "5bbf8547fb3ce4d5cc2a2b08708f12579b8ce73f6085e790195750565e35f1bb",
+      "bytes": 106022
+    },
+    {
+      "path": "app/game/systems/pitCompanion.ts",
+      "sha256": "9b18899e3404b93a32efc0dbf74d44771529105d2479b93e0841ae187c4f53bf",
+      "bytes": 1844
+    },
+    {
+      "path": "app/game/systems/pitEquipmentV57.ts",
+      "sha256": "635428df8230f7b523c12724c64ad84daa5889052366fdd3d1e0b0613f5086a6",
+      "bytes": 634
+    },
+    {
+      "path": "app/game/systems/pitFalconerDrone.ts",
+      "sha256": "928f974b54cba2a4b44985003f75c13cd029490bcbdb0d065615a765da470559",
+      "bytes": 986
+    },
+    {
+      "path": "app/game/systems/pitFeralBoltsV58.ts",
+      "sha256": "ee235f354db4a0ee28e0167849f879c5c383fc0cee0419475b570c3ed4dfeda5",
+      "bytes": 1972
+    },
+    {
+      "path": "app/game/systems/pitFeralMuzzleV59.ts",
+      "sha256": "8f13a8f9b1ec1b09bfd4a36f3559d0ef658af00e1ec1ce18ddc2691a3bcde6ff",
+      "bytes": 2117
+    },
+    {
+      "path": "app/game/systems/pitFirstEdition.ts",
+      "sha256": "cabc80517887111f65ae104efd3921fd3570808bae20b3cf02fae5d6191f1b0c",
+      "bytes": 32857
+    },
+    {
+      "path": "app/game/systems/pitLoreStages.ts",
+      "sha256": "78f46bfe0d473718127d4b9442a841eae445234ac23c4afb16dafab77b68789f",
+      "bytes": 4221
+    },
+    {
+      "path": "app/game/systems/pitLoreStagesV55.generated.json",
+      "sha256": "2ae6736874ba324a79ee2acc9a37f5c7decd2cc4fa8de1a1b2f36a1a4be4affd",
+      "bytes": 125607
+    },
+    {
+      "path": "app/game/systems/pitLoreStagesV60.generated.json",
+      "sha256": "c8a9a86a60a90750136a018327c95f72669a1f8346fdd6f305fbc91d1a650afe",
+      "bytes": 45626
+    },
+    {
+      "path": "app/game/systems/pitLoreStagesV62.generated.json",
+      "sha256": "2f66c149fe9dbbcb326ae3a368f8c8d11a4aef113122828b7dcbfc0648ebee38",
+      "bytes": 1214
+    },
+    {
+      "path": "app/game/systems/pitOriginalFightersV56.ts",
+      "sha256": "33ecf5fe798ba2e2e52b98976ac1359b1ff5c9afddcd91b188247ba67b26728c",
+      "bytes": 7371
+    },
+    {
+      "path": "app/game/systems/pitReplay.ts",
+      "sha256": "4e1fd580546c9b62b33688dbc8120b28dc4f2bc1ebe0eecba610850dc2d6bd60",
+      "bytes": 30473
+    },
+    {
+      "path": "app/game/systems/pitRosterExpansion.ts",
+      "sha256": "47b631381f375799484441f8406d5708d408b59d0b47a1381a57cf4500287e87",
+      "bytes": 9615
+    },
+    {
+      "path": "app/game/systems/pitRosterIdentityV62.ts",
+      "sha256": "9290654fa1f4a5b443e291e28d842b894bb9fa68939c4b4e453bfad63d514fdc",
+      "bytes": 3585
+    },
+    {
+      "path": "app/game/systems/pitScreenArenas.ts",
+      "sha256": "eeb946235bc150a1d1107eec7baa5a435e5231f7af7a1f4b3339daa548c27b0a",
+      "bytes": 1291
+    },
+    {
+      "path": "app/game/systems/pitScreenArenasV43.generated.json",
+      "sha256": "b407900e0d3d309dc0373e238c1bc4fd7a6c3f4bc1999251209f317da8b33e75",
+      "bytes": 20977
+    },
+    {
+      "path": "app/game/systems/pitStageJourney.ts",
+      "sha256": "dc647d2d9e43d007d4eb9a569449d0e38e1fe370a17c868f77dadf3a570cda2e",
+      "bytes": 4238
+    },
+    {
+      "path": "app/game/systems/pitStageJourneyRoutes.ts",
+      "sha256": "3e3fc473f7a090ff758ab4dd5f90f0c956eaad47e7416b79b1d14c396048ea4d",
+      "bytes": 4736
+    },
+    {
+      "path": "app/game/systems/pitUserRoster.ts",
+      "sha256": "d0c57b7e6072c532b0ccf100205d07226a45f825fed6f083024b3af57083901c",
+      "bytes": 5846
+    },
+    {
+      "path": "app/game/systems/pitWorkbookNormalsV104.ts",
+      "sha256": "d4a79c3a6654cbf9864f6afb7b9a921557cc8f91fccbda6366ca037503b5177e",
+      "bytes": 3882
+    },
+    {
+      "path": "app/game/systems/planetMaterialProfilesV103.ts",
+      "sha256": "1208340900995e1ab03c33a317b1249bfa5d5cc1d2dd3006e008f28eae089943",
+      "bytes": 4806
+    },
+    {
+      "path": "app/game/systems/recentSpriteLibraryV85.ts",
+      "sha256": "bc0d9805f25cc645d9c4825959f39614c599d6dfb93eebf712f15d257699aed3",
+      "bytes": 15814
+    },
+    {
+      "path": "app/game/systems/youthCage.ts",
+      "sha256": "285aac13aecb54212ec141f6cd7079285a159ba1c56e9d716c0972d126620a92",
+      "bytes": 3883
+    },
+    {
+      "path": "app/game/systems/youthCampaign.ts",
+      "sha256": "68af8477471d11d48096af3aa9595c8f0a2fb5ca8c15e164984d5fdb6395c09e",
+      "bytes": 15222
+    },
+    {
+      "path": "app/game/systems/youthPatrol.ts",
+      "sha256": "f4eed03d3528ab8775ea7074a80b009a5efcb697c7285cd0109522d0305da69c",
+      "bytes": 6790
+    },
+    {
+      "path": "app/game/systems/youthTraining.ts",
+      "sha256": "2a7409a99c3c03e01130edc6ced83df118a0cc46c4a4c2ba9109ee34025c3aa1",
+      "bytes": 46494
+    },
+    {
+      "path": "app/game/trophyVisualRegistry.ts",
+      "sha256": "124ce045983dd982edaa73f2437d3c2bee3628d734facb6b2e2565b54f241305",
+      "bytes": 2921
+    },
+    {
+      "path": "app/pit-lab/PitWorkbookAnimationLabV100.tsx",
+      "sha256": "af651146ff22a68ddde5b17f9bc13547d56026397316d16da0cda9bb007ec1f5",
+      "bytes": 10326
+    },
+    {
+      "path": "docs/homeworld-cartography-v104-validation.json",
+      "sha256": "f6c2612c2f9683edeae3825fb3d6b84d6d61078a74f9be0c6804cfa75f57da18",
+      "bytes": 29841
+    },
+    {
+      "path": "docs/planet-generator-v103/review-fixes-20261022.json",
+      "sha256": "c761b12695319d1a1abc08170c5c520ee82349b8d4f626fc3316f45ea3f7230d",
+      "bytes": 9959
+    },
+    {
+      "path": "docs/suivi-production/v611/data/production-manifest.json",
+      "sha256": "16caef3fcd50707a2c451e3dcedbb035aa1fca9e5b99b0e199437a72785f94ea",
+      "bytes": 739978
+    },
+    {
+      "path": "docs/suivi-production/v612/data/production-manifest.json",
+      "sha256": "20736f64468c35bcb655168a19e3a7922580b8de744d28ba92b7eb84af3a8748",
+      "bytes": 756233
+    },
+    {
+      "path": "docs/suivi-production/v613/data/production-manifest.json",
+      "sha256": "5332c1aab687a28868a56b196b4616b54c8d84e827da3291a0f5e04d4fc35bde",
+      "bytes": 622188
+    },
+    {
+      "path": "docs/suivi-production/v613/validation.json",
+      "sha256": "1e8438a93cea6244668e7297b519cd8d2742fa943693436b8f3eac160cba085f",
+      "bytes": 3941
+    },
+    {
+      "path": "docs/v100-workstreams-source.json",
+      "sha256": "d6ff17874df1bc9763ac8eeac4fc7902c0843cb01a858fb8db8b9afcb00b5e72",
+      "bytes": 13493
+    },
+    {
+      "path": "docs/v104-cartography-retry-review.json",
+      "sha256": "56db53fe6f56613ad421237e1657a1668534245074dfd51256523f2f5eb3cfa1",
+      "bytes": 7169
+    },
+    {
+      "path": "docs/v104-pit-normals-validation.json",
+      "sha256": "9183731292a03122fee5e3e81d472196e6a73d275b78f602b230195719de1a6d",
+      "bytes": 179827
+    },
+    {
+      "path": "docs/v104-preserve-hunt-validation.json",
+      "sha256": "281af5ed5539f9f395d6b1c66f3f706ba9f977cdd23e7f84e4c94bb5fc429615",
+      "bytes": 31339
+    },
+    {
+      "path": "docs/v104-validation-summary.json",
+      "sha256": "b98c4aeca30c6fde5f7f0c8b05916721556b9e8752ac362daa40a85471963e04",
+      "bytes": 31533
+    },
+    {
+      "path": "docs/v104-workstreams-source.json",
+      "sha256": "7ce3a7e827b9933ccb654c22e8f2ebf8917ffdef6bad945b6af1862b6bbf49e8",
+      "bytes": 16762
+    },
+    {
+      "path": "docs/v56-excel-priorities.json",
+      "sha256": "fc8e1c6c81de62d8966e04746ed0751b0eeefc62f0458728c818896ad79972f4",
+      "bytes": 776044
+    },
+    {
+      "path": "docs/v63-stage-open-work.json",
+      "sha256": "c3539a54657428d455196d9794c1a5682254eb3635dfced5800fc59e98f0788d",
+      "bytes": 269431
+    },
+    {
+      "path": "docs/v63-workbook-roster-audit.json",
+      "sha256": "2db869d3de0ced92e5b28caa8aa302bbd265b2edf5848ca6b14b0c9e171839c3",
+      "bytes": 104163
+    },
+    {
+      "path": "docs/v99-workstreams-source.json",
+      "sha256": "14353d5b9881f35a157aec593497a124d0dd3f14c72d9bda004ad284836f7a31",
+      "bytes": 27508
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892",
+      "bytes": 389978
+    },
+    {
+      "path": "package.json",
+      "sha256": "b5556cc5a7534534c43a186bbc60e2462235e0cb5ddbc5f87e5fe32a4cc53274",
+      "bytes": 8454
+    },
+    {
+      "path": "public/game/assets/v15/trophies/manifest.json",
+      "sha256": "45270df58a616cf97b9e078e6ce0222c9ba864493083d88f36d7b2c1068b54b7",
+      "bytes": 13990
+    },
+    {
+      "path": "scripts/build-excel-followup-v100.mjs",
+      "sha256": "1fc26bf20a3d81eb3d6e8ad140fc0363e70db2d11710f632c94cbf4f2e12fe95",
+      "bytes": 33639
+    },
+    {
+      "path": "scripts/build-excel-followup-v100.py",
+      "sha256": "91491b98d2576e8f3ce89067ba782629ac05675ae0541343256576749e1f8ab1",
+      "bytes": 18054
+    },
+    {
+      "path": "scripts/build-excel-followup-v104.mjs",
+      "sha256": "7cf552bfa92817577b4165b48db2bf1775ce30ef1f64070089bfa55bb46b53a2",
+      "bytes": 34973
+    },
+    {
+      "path": "scripts/build-excel-followup-v104.py",
+      "sha256": "84d1d1cadaca8e71584da306183237aaa1ab745953f5682ef5570d76622a622b",
+      "bytes": 10393
+    },
+    {
+      "path": "scripts/build-excel-followup-v99.mjs",
+      "sha256": "5eb9de07e2d8a23dcccf44536882f7a8b3509659e6bf437cab3b1d2447b51b74",
+      "bytes": 24535
+    },
+    {
+      "path": "scripts/build-excel-followup-v99.py",
+      "sha256": "afe57e86a692f463e0452c2aa27aca163ca64ef897be4e218798ce0dc31905ce",
+      "bytes": 12392
+    },
+    {
+      "path": "tests/excel-followup-v100.test.mjs",
+      "sha256": "40680f8736138b4d1fc263f72c6695295a0bcb99d33135fe9b8e80455aad58a0",
+      "bytes": 14386
+    },
+    {
+      "path": "tests/excel-followup-v104.test.mjs",
+      "sha256": "5e8f79dc3ceb6d9df513966a61cb033c6acb37028523d8035cb548fea5744028",
+      "bytes": 15120
+    }
+  ],
+  "shared": [
+    {
+      "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+      "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+      "bytes": 62111
+    },
+    {
+      "path": "docs/THE_PIT_STAGES_V60_SUIVI.xlsx",
+      "sha256": "d1ef8866b4cd94e5e90130efe8ed62a6c099dc0093215bd17348ff25c946ef04",
+      "bytes": 35380
+    },
+    {
+      "path": "docs/THE_PIT_STAGES_V61_SUIVI.xlsx",
+      "sha256": "5dd113dfb7cb40f3517ba4f1081bd1ece977a9fba3e9cedc01de87835effd2e6",
+      "bytes": 14262
+    },
+    {
+      "path": "docs/THE_PIT_V62_SUIVI.xlsx",
+      "sha256": "c7c9986d872faf0cbc8398e697a28b9eae57328989fb09eed2881c431c1b57bb",
+      "bytes": 29389
+    },
+    {
+      "path": "docs/THE_PIT_V63_SUIVI.xlsx",
+      "sha256": "192b168456091239e65939b99c4630de791cfaca4f33f61a1c6a8a032fc9c7af",
+      "bytes": 56229
+    },
+    {
+      "path": "docs/YAUTJA_V100_SUIVI.xlsx",
+      "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf",
+      "bytes": 1862541
+    },
+    {
+      "path": "docs/YAUTJA_V104_SUIVI.xlsx",
+      "sha256": "ce78bac96ae57cbee732bc868acecd46b0dc57e5ade49f669fb15c8b12ea03aa",
+      "bytes": 2411658
+    },
+    {
+      "path": "docs/YAUTJA_V99_SUIVI.xlsx",
+      "sha256": "53116e8f0fe10867702cccdb2d7bf2c8bbc5baa7c6a9c528085c12f780392a15",
+      "bytes": 1130515
+    },
+    {
+      "path": "docs/suivi-production/v613/data/current-master.json.gz",
+      "sha256": "26723ff875d97548d62440b8062aae5e395a9048c3e9d4b1618fbcf87ae85513",
+      "bytes": 396359
+    },
+    {
+      "path": "docs/v100-excel-followup-qa.json",
+      "sha256": "f0ae6bc5a1b427544d1e099cdc9c1a8e6003105bf06db77456a47aa3d33e467c",
+      "bytes": 5103
+    },
+    {
+      "path": "docs/v100-workstreams.json",
+      "sha256": "1acfdc43ca7fd8adeeb29ce18e6e94f053b146c4b34d4d6d861e67970772d42b",
+      "bytes": 623794
+    },
+    {
+      "path": "docs/v104-excel-followup-qa.json",
+      "sha256": "a4f353ef1d207931be477070f5ad9b76ac2fa6ee97940ee29243192ed0683927",
+      "bytes": 4046
+    },
+    {
+      "path": "docs/v104-workstreams.json",
+      "sha256": "c2293f49855484ca63cba024064296851502fe6fa90ddfda2729d28a11a0b68f",
+      "bytes": 250445
+    },
+    {
+      "path": "docs/v99-workstreams.json",
+      "sha256": "ef6ad01755aa723f0293c709946fbbec1b71b038811a4ddc5a239d33dbb5c389",
+      "bytes": 284697
+    },
+    {
+      "path": "public/game/dialogues/v85/bible-dialogues.json",
+      "sha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+      "bytes": 8625812
+    },
+    {
+      "path": "public/game/dialogues/v85/bible-ships.json",
+      "sha256": "b453927c3e4449da2e88c023356772c91de982132128e1a545a3390478279001",
+      "bytes": 501882
+    },
+    {
+      "path": "public/game/production/enforcers-v611/alpha/enforcers-comics-04.png",
+      "sha256": "3599b11ec91b7d0df3a7f6fe2f87bb687d0af4b9a802dff8a652d4f60483966f",
+      "bytes": 2065842
+    },
+    {
+      "path": "public/game/production/enforcers-v611/alpha/enforcers-comics-05.png",
+      "sha256": "f79d06897f9d6c7df258b20ee256359413a8a1b47c433740d892f2b4de945218",
+      "bytes": 2379307
+    },
+    {
+      "path": "public/game/production/enforcers-v611/augmentes-assassin/enforcers-comics-04.png",
+      "sha256": "8fdf97380d6d6dd85aaed032b9a29ad8f3e1b9e4db70a741b10e955a504da5e5",
+      "bytes": 2625726
+    },
+    {
+      "path": "public/game/production/enforcers-v611/augmentes-assassin/enforcers-comics-05.png",
+      "sha256": "8b8c1fe598cb61b9fc59446a9d00bc6dbf60b538a9c2432710be15b5cbe6a307",
+      "bytes": 2558353
+    },
+    {
+      "path": "public/game/production/enforcers-v611/bionic/enforcers-comics-04.png",
+      "sha256": "b645f722a242ee70d84bd1f43db8bf048b8a176bf8d132c6410ae9c12cd6972e",
+      "bytes": 2269766
+    },
+    {
+      "path": "public/game/production/enforcers-v611/bionic/enforcers-comics-05.png",
+      "sha256": "fa2243832b2767d21ee9853a3cd044c44ecb678432f0af0ccf49cbcab33f0bfc",
+      "bytes": 2193774
+    },
+    {
+      "path": "public/game/production/enforcers-v611/city-hunter/enforcers-comics-04.png",
+      "sha256": "08ed5dd5b4e21f7b8b2dc05bd0c43ea21d3a8caabe17c1ed0f7660e976706eda",
+      "bytes": 2191775
+    },
+    {
+      "path": "public/game/production/enforcers-v611/city-hunter/enforcers-comics-05.png",
+      "sha256": "ee206df9c57259fad466ecea59929a4c7bda4a33a071d4facbc29cf01a7814d8",
+      "bytes": 2275955
+    },
+    {
+      "path": "public/game/production/enforcers-v611/feral/enforcers-comics-04.png",
+      "sha256": "862fe9d07ac4e754d6892adb8d097b2fbc26283065003291ef9184998531d7e7",
+      "bytes": 2108310
+    },
+    {
+      "path": "public/game/production/enforcers-v611/feral/enforcers-comics-05.png",
+      "sha256": "237f1dc6df1f6ce8236a5bc2b551caa539d63ce10180c14b1ec86c483ad3e3f6",
+      "bytes": 2042147
+    },
+    {
+      "path": "public/game/production/enforcers-v611/four-armed/enforcers-comics-04.png",
+      "sha256": "a1e5d20e1d2b7b4c06a234d9af4439df65abf5b9f0fecae2b82e52104a7c4282",
+      "bytes": 2676547
+    },
+    {
+      "path": "public/game/production/enforcers-v611/four-armed/enforcers-comics-05.png",
+      "sha256": "39f6a8476532d660ad7565674cf4220e1f1926799811c9e7d9b6e6546aaabbae",
+      "bytes": 2491644
+    },
+    {
+      "path": "public/game/production/enforcers-v611/grendel-kok/enforcers-comics-04.png",
+      "sha256": "ddaa2bd38ece68801dce05855579012152ba1f508282484a16e712c72bd4afca",
+      "bytes": 1948496
+    },
+    {
+      "path": "public/game/production/enforcers-v611/grendel-kok/enforcers-comics-05.png",
+      "sha256": "7162c90333dd5109bea325732e024de8fcf8b4c33f8447e4b83707eaa8320529",
+      "bytes": 2233467
+    },
+    {
+      "path": "public/game/production/enforcers-v611/hornhead/enforcers-comics-04.png",
+      "sha256": "f3af9ff92adbce9b02ab39dff415ad2949e3c352cfbd7131620c832573b14c9e",
+      "bytes": 2595053
+    },
+    {
+      "path": "public/game/production/enforcers-v611/hornhead/enforcers-comics-05.png",
+      "sha256": "52275ed70b65d737559326dfafdceca6678ec54eab3e45fc98b6293445f08251",
+      "bytes": 2424838
+    },
+    {
+      "path": "public/game/production/enforcers-v611/human-accepted/enforcers-comics-04.png",
+      "sha256": "6678ddb0a8725de0f9de3b754d8d36a2d1049dd6c3a64c07fead54550a7fa2ff",
+      "bytes": 1896868
+    },
+    {
+      "path": "public/game/production/enforcers-v611/human-accepted/enforcers-comics-05.png",
+      "sha256": "939b84db24cc916daafb73a8b92bf686ab18a010febd3eb4c3b0c7561a317c98",
+      "bytes": 2003630
+    },
+    {
+      "path": "public/game/production/enforcers-v611/kaal-or/enforcers-comics-04.png",
+      "sha256": "002857aee5c061629994b05897c597d4a4560f6d2df1b14ad4e0b0d84376a6c1",
+      "bytes": 2644437
+    },
+    {
+      "path": "public/game/production/enforcers-v611/kaal-or/enforcers-comics-05.png",
+      "sha256": "30236df71a2c9f1c7356bcc198c46016c7c22df376a8a508c85717f05dada636",
+      "bytes": 2728509
+    },
+    {
+      "path": "public/game/production/enforcers-v611/oni-kok/enforcers-comics-04.png",
+      "sha256": "cb0a30e28d3292d99ae51152bec3e208e9c511e29734053fbec3b1dd3ccdd1e5",
+      "bytes": 1910947
+    },
+    {
+      "path": "public/game/production/enforcers-v611/oni-kok/enforcers-comics-05.png",
+      "sha256": "78aaae9b939ed4c0750c3225c0f233af77884d6687d6772476bc7baf5e82ed1b",
+      "bytes": 1856169
+    },
+    {
+      "path": "public/game/production/enforcers-v611/pilot-kok/enforcers-comics-04.png",
+      "sha256": "8148a0b2dc96c657495095dbc11d759b643cbe64cb8ca0e07b9bbc17c07be84a",
+      "bytes": 2323598
+    },
+    {
+      "path": "public/game/production/enforcers-v611/pilot-kok/enforcers-comics-05.png",
+      "sha256": "7f5cfaa5d188ea4858f162dcfc55e249a5cc04af4c01544640391fd66d3c975e",
+      "bytes": 2232633
+    },
+    {
+      "path": "public/game/production/enforcers-v611/saar-keth/enforcers-comics-04.png",
+      "sha256": "87f89799086b42a9f1b7f4975323091b3a8acc711da7fde7f65637f0b606bea6",
+      "bytes": 2254398
+    },
+    {
+      "path": "public/game/production/enforcers-v611/saar-keth/enforcers-comics-05.png",
+      "sha256": "3df6be11366f821b346df5e39a50da4fdd50b1ccf16f55d6c6e313a9000dacb8",
+      "bytes": 2163792
+    },
+    {
+      "path": "public/game/production/enforcers-v611/sha-rhess/enforcers-comics-04.png",
+      "sha256": "e1ccafd22380c09a4f3c6c9aca5b41a59c5f3950b06d3fdc3f982b088777f34f",
+      "bytes": 2467089
+    },
+    {
+      "path": "public/game/production/enforcers-v611/sha-rhess/enforcers-comics-05.png",
+      "sha256": "3a8f4418d197fe34f86b194c9ce43f1a214866d8d4b74e00c828e137d21d94b6",
+      "bytes": 2274087
+    },
+    {
+      "path": "public/game/production/enforcers-v611/spiked-tail/enforcers-comics-04.png",
+      "sha256": "e420759f92bc92ba13ec9b2b29c93fccf5fab2837cdc0984f194cdfcb2d37bc9",
+      "bytes": 2661892
+    },
+    {
+      "path": "public/game/production/enforcers-v611/spiked-tail/enforcers-comics-05.png",
+      "sha256": "a0d1b36777eb04e25ea8478cd2e362b4798c594702850f0e2afa6c4ca6a0b304",
+      "bytes": 2534717
+    },
+    {
+      "path": "public/game/production/enforcers-v611/super-predators/enforcers-comics-04.png",
+      "sha256": "7dc67bd0913a007a7805a00118596deb1a90c260ae11367bfe867146eda504ca",
+      "bytes": 2088822
+    },
+    {
+      "path": "public/game/production/enforcers-v611/super-predators/enforcers-comics-05.png",
+      "sha256": "da62e29203266e54f674768d9d4ec595ec98cd03fbaa82e6ef29b4365275330a",
+      "bytes": 2265825
+    },
+    {
+      "path": "public/game/production/enforcers-v611/ul-khar/enforcers-comics-04.png",
+      "sha256": "8e0caf6ac49cc63219e041fd512fe07c8513a9bad2fbd8bd753d437d9d2a3e27",
+      "bytes": 2697300
+    },
+    {
+      "path": "public/game/production/enforcers-v611/ul-khar/enforcers-comics-05.png",
+      "sha256": "fbdaf21f06e99e8ef4d27c7cfc443b21c0cea8c4b6e91c0d0fa69ce0d4c8f98e",
+      "bytes": 2484327
+    },
+    {
+      "path": "public/game/production/enforcers-v611/vaal-tir/enforcers-comics-04.png",
+      "sha256": "989844eaf8ada95284ec01c5f92078e31b9a994e78cc24e06ed3f088058d0fe7",
+      "bytes": 2208895
+    },
+    {
+      "path": "public/game/production/enforcers-v611/vaal-tir/enforcers-comics-05.png",
+      "sha256": "4daa2204d45db7df7ce3fcc1ede0d80ea1b4ffc0e4f364508a39eee31c3fffb7",
+      "bytes": 2170706
+    },
+    {
+      "path": "public/game/production/enforcers-v612/alpha/enforcers-comics-06.png",
+      "sha256": "3fb8a38ad99eed340f4ed88a5a160c1b586fc21f801370234743b86732455038",
+      "bytes": 2517004
+    },
+    {
+      "path": "public/game/production/enforcers-v612/alpha/enforcers-comics-07.png",
+      "sha256": "3241277a8e10833eb0b229c4f02a327404d7fa2fc55ecaadd2b0bfd9aefe2315",
+      "bytes": 2489941
+    },
+    {
+      "path": "public/game/production/enforcers-v612/augmentes-assassin/enforcers-comics-06.png",
+      "sha256": "1af83482667ee40f37a86a319f5556d0ab38ee615197e8c826b28503f44768a3",
+      "bytes": 2583744
+    },
+    {
+      "path": "public/game/production/enforcers-v612/augmentes-assassin/enforcers-comics-07.png",
+      "sha256": "9f0d95aa2420d4d76ea338a5b3b61faaeffe95654a7afdac4ad05f12a31f559a",
+      "bytes": 2429678
+    },
+    {
+      "path": "public/game/production/enforcers-v612/bionic/enforcers-comics-06.png",
+      "sha256": "489af01f9024d7fcd0589192efa606e035b427a8191c034e39b9e723c64addba",
+      "bytes": 2215542
+    },
+    {
+      "path": "public/game/production/enforcers-v612/bionic/enforcers-comics-07.png",
+      "sha256": "53472f9243ab65c286276fe6373f814f09e7cc6bfb1d9ec02a83364a8ba069b2",
+      "bytes": 2318250
+    },
+    {
+      "path": "public/game/production/enforcers-v612/city-hunter/enforcers-comics-06.png",
+      "sha256": "0402dead77a84c5a5e08baff5ba2cee078dde540c3719cae1140da1a5e4894b9",
+      "bytes": 2284778
+    },
+    {
+      "path": "public/game/production/enforcers-v612/city-hunter/enforcers-comics-07.png",
+      "sha256": "361fd9ee463b42457c34b032a421a632694112d7d072ef7e78b441b832f7f009",
+      "bytes": 2217581
+    },
+    {
+      "path": "public/game/production/enforcers-v612/feral/enforcers-comics-06.png",
+      "sha256": "f26140da82543d296a312ba1dee1cabab9c6b6da7f256b9074d7bb74f6aa44d1",
+      "bytes": 2144559
+    },
+    {
+      "path": "public/game/production/enforcers-v612/feral/enforcers-comics-07.png",
+      "sha256": "6cb893ab251d81a57addd95eb1ad80b43003005418199384518411fc464f157b",
+      "bytes": 2269848
+    },
+    {
+      "path": "public/game/production/enforcers-v612/four-armed/enforcers-comics-06.png",
+      "sha256": "0c26700d613b9a9a04854bfe8bda6cc118d43a57e0e1cb9a6d0a40a90e98d4a2",
+      "bytes": 2592769
+    },
+    {
+      "path": "public/game/production/enforcers-v612/four-armed/enforcers-comics-07.png",
+      "sha256": "2aa01f3efc4e8d9b5fcc01a1ed5847d4a01b7316658ce5cf825cc3b31e008d2a",
+      "bytes": 2494584
+    },
+    {
+      "path": "public/game/production/enforcers-v612/grendel-kok/enforcers-comics-06.png",
+      "sha256": "67ce293dabc54c0157053d3c97994fc3380a73d389ff08095354d69c4f07c7e9",
+      "bytes": 2816378
+    },
+    {
+      "path": "public/game/production/enforcers-v612/grendel-kok/enforcers-comics-07.png",
+      "sha256": "6bd16f25d7050b12d4f674b66f0429f7fd80e0763dce76c949dc095b74411119",
+      "bytes": 2705567
+    },
+    {
+      "path": "public/game/production/enforcers-v612/hornhead/enforcers-comics-06.png",
+      "sha256": "2298477a2f79587c9788a26390b574fcdbf6ad82c1455616681828314445a51a",
+      "bytes": 2608693
+    },
+    {
+      "path": "public/game/production/enforcers-v612/hornhead/enforcers-comics-07.png",
+      "sha256": "629b681e3530038125cd27d1d75ef806d8a9dba70dce21d06d6f78b37798cc74",
+      "bytes": 2581265
+    },
+    {
+      "path": "public/game/production/enforcers-v612/human-accepted/enforcers-comics-06.png",
+      "sha256": "8abfa2cdb60598981f2e611d1ee04d42d71f1cfe8de62c37bbefbdcff75eb2e5",
+      "bytes": 2094585
+    },
+    {
+      "path": "public/game/production/enforcers-v612/human-accepted/enforcers-comics-07.png",
+      "sha256": "f7d8a48333fa3d580deaf8af2bb38e42d9fa6e1e69199f104ed0b0ae1cafa2fd",
+      "bytes": 2137052
+    },
+    {
+      "path": "public/game/production/enforcers-v612/kaal-or/enforcers-comics-06.png",
+      "sha256": "43125f64ddb29dfccba07389e89ba6ad6241f3e25e7a7063bc55ad11b8966aac",
+      "bytes": 2752309
+    },
+    {
+      "path": "public/game/production/enforcers-v612/kaal-or/enforcers-comics-07.png",
+      "sha256": "98f7c173c5103e52bfebad47dc6a085437c68f4dc599825f674abec57c6c5c0b",
+      "bytes": 2659072
+    },
+    {
+      "path": "public/game/production/enforcers-v612/oni-kok/enforcers-comics-06.png",
+      "sha256": "431a6e83c08ac3df52773158a74636af67849cf5c114c6d2fbdbb621eb78ec7e",
+      "bytes": 2237128
+    },
+    {
+      "path": "public/game/production/enforcers-v612/oni-kok/enforcers-comics-07.png",
+      "sha256": "035f8966364a300925ee5b6901218af53b1f549a096a9aaa6b2bbe785ffa6e7c",
+      "bytes": 2289390
+    },
+    {
+      "path": "public/game/production/enforcers-v612/pilot-kok/enforcers-comics-06.png",
+      "sha256": "02bcc3d283540d2840154d0d1ebd2e9e82c45dc5f52b4060b51f37a8166772ee",
+      "bytes": 2405893
+    },
+    {
+      "path": "public/game/production/enforcers-v612/pilot-kok/enforcers-comics-07.png",
+      "sha256": "bfebee822fc22285941607bc577d783ed5691ea9c6e4c1b6d79257aac6e1a53a",
+      "bytes": 2271343
+    },
+    {
+      "path": "public/game/production/enforcers-v612/saar-keth/enforcers-comics-06.png",
+      "sha256": "df82b4c9a39cdc0e39191f56866fb46e7d8c54b60a7403f8d9fdca7213d48fae",
+      "bytes": 2353227
+    },
+    {
+      "path": "public/game/production/enforcers-v612/saar-keth/enforcers-comics-07.png",
+      "sha256": "83367687200eebc427e78ccc18d6513dfd79e2c80f225c2c307b83ddbe405233",
+      "bytes": 2266054
+    },
+    {
+      "path": "public/game/production/enforcers-v612/sha-rhess/enforcers-comics-06.png",
+      "sha256": "d6461082c476eed78757e697a7ee794547cbd39b8fef73a04ca8f5329ecbe526",
+      "bytes": 2264861
+    },
+    {
+      "path": "public/game/production/enforcers-v612/sha-rhess/enforcers-comics-07.png",
+      "sha256": "5f03c9b9c4705ff3db020fc12c56d7ab35725e6e6df51026fbf2c85444cab38e",
+      "bytes": 2421687
+    },
+    {
+      "path": "public/game/production/enforcers-v612/spiked-tail/enforcers-comics-06.png",
+      "sha256": "a05365dee6964af6edb9289ce8373b9ab474fee472b96cb40836479c2a9f9031",
+      "bytes": 2678515
+    },
+    {
+      "path": "public/game/production/enforcers-v612/spiked-tail/enforcers-comics-07.png",
+      "sha256": "cdcc31198e4fd4bab5e3bcb9051f278f4858318ee79c42a39d06131e4ee942b9",
+      "bytes": 2540650
+    },
+    {
+      "path": "public/game/production/enforcers-v612/super-predators/enforcers-comics-06.png",
+      "sha256": "e89225ccce7dc038c87403491b89b3f70221994438ceddceaff2342254beb63a",
+      "bytes": 2356142
+    },
+    {
+      "path": "public/game/production/enforcers-v612/super-predators/enforcers-comics-07.png",
+      "sha256": "e9484bf7abdc68fa911a10080735cd3d96b2ccee7c46c2e6c1efc290818ef099",
+      "bytes": 2228362
+    },
+    {
+      "path": "public/game/production/enforcers-v612/ul-khar/enforcers-comics-06.png",
+      "sha256": "f1bbce16cd61c986e9a700c6e753c9b182e035a67de2e38c0f3a366e14c19b63",
+      "bytes": 2796919
+    },
+    {
+      "path": "public/game/production/enforcers-v612/ul-khar/enforcers-comics-07.png",
+      "sha256": "f0da61e27a3d26c94ac447919bb738648c25c644593a5ee4763084037b87a981",
+      "bytes": 2788350
+    },
+    {
+      "path": "public/game/production/enforcers-v612/vaal-tir/enforcers-comics-06.png",
+      "sha256": "5ccc1c80680f339e6a1f61cf5b001fba625e31fd03414180d1396045cc51bbfb",
+      "bytes": 2140790
+    },
+    {
+      "path": "public/game/production/enforcers-v612/vaal-tir/enforcers-comics-07.png",
+      "sha256": "ed03d8c7770cd15f17e30e877e4acfd21019d0bba19adb20f8cd6adf9845b203",
+      "bytes": 2127796
+    },
+    {
+      "path": "public/game/production/enforcers-v613/alpha/enforcers-comics-08.png",
+      "sha256": "f5322142951b86a8cb5fdfe1701b769925d40c97d692086bd684db2d2ba78f52",
+      "bytes": 2170593
+    },
+    {
+      "path": "public/game/production/enforcers-v613/alpha/enforcers-comics-09.png",
+      "sha256": "40a8f3b415b9de34ed07ac6a2bfd512b144c852829a942dbcbb27252f2889e43",
+      "bytes": 2541047
+    },
+    {
+      "path": "public/game/production/enforcers-v613/augmentes-assassin/enforcers-comics-08.png",
+      "sha256": "43e6a6b00bd64c6efdd7046c291a0f9d6156bb33bf172ed9b92379381ec686fc",
+      "bytes": 2368896
+    },
+    {
+      "path": "public/game/production/enforcers-v613/augmentes-assassin/enforcers-comics-09.png",
+      "sha256": "e849500eed6fd461b53df9ac6ba3edf2c1c510a1a562fc514400fadf9023cfd8",
+      "bytes": 2627627
+    },
+    {
+      "path": "public/game/production/enforcers-v613/bionic/enforcers-comics-08.png",
+      "sha256": "86adc6526cbd4ee51592d4d7abcb6b1e3c21dfb2a9d223fe7612150167bf3805",
+      "bytes": 2231396
+    },
+    {
+      "path": "public/game/production/enforcers-v613/bionic/enforcers-comics-09.png",
+      "sha256": "42c8874595ea5bac2126d436b085a968b2da3b95a1d8f4a2efc6d8fa7ef2c77a",
+      "bytes": 2079087
+    },
+    {
+      "path": "public/game/production/enforcers-v613/city-hunter/enforcers-comics-08.png",
+      "sha256": "8b5a32ec77bd114f7556f469a7cc99a0147523a217d90c26a0be7d923fbf0e8f",
+      "bytes": 1707470
+    },
+    {
+      "path": "public/game/production/enforcers-v613/city-hunter/enforcers-comics-09.png",
+      "sha256": "ceb9d116c24e6ff466dae9a99f998c8c7357d8b18a5110bdbb58e91d82e38a9d",
+      "bytes": 2119856
+    },
+    {
+      "path": "public/game/production/enforcers-v613/feral/enforcers-comics-08.png",
+      "sha256": "761a236047960a5ea0360a21f062265145cdac1c542c721548d07a39eaebb3e6",
+      "bytes": 2147055
+    },
+    {
+      "path": "public/game/production/enforcers-v613/feral/enforcers-comics-09.png",
+      "sha256": "ffb3bd05e15c454a721cbab6b33ed02b46f3e71ec9e6d362de399f7dffacbb8c",
+      "bytes": 2266058
+    },
+    {
+      "path": "public/game/production/enforcers-v613/four-armed/enforcers-comics-08.png",
+      "sha256": "f5b57aba4470ba90b8f8c5f12dfd3076095971593469ff1113ab25f139259dc7",
+      "bytes": 2451924
+    },
+    {
+      "path": "public/game/production/enforcers-v613/four-armed/enforcers-comics-09.png",
+      "sha256": "9f682b253215dab9cc6ff0da7f31fe5a1c3be45c3d4c190044511b4b75493bce",
+      "bytes": 2511670
+    },
+    {
+      "path": "public/game/production/enforcers-v613/grendel-kok/enforcers-comics-08.png",
+      "sha256": "98b24734e16d0ebe6edb58f344cae7192f3bb2a0ae10d742ca46a0377301e842",
+      "bytes": 2337752
+    },
+    {
+      "path": "public/game/production/enforcers-v613/grendel-kok/enforcers-comics-09.png",
+      "sha256": "ea88c2062df52b06db63cfc62f86dadfe0154d2124fb523f443b3f7d5d77b935",
+      "bytes": 2501171
+    },
+    {
+      "path": "public/game/production/enforcers-v613/hornhead/enforcers-comics-08.png",
+      "sha256": "989d9f09d3ab45af6729e15080913fc812fd85c0acf4753a0cbf43ea02ada432",
+      "bytes": 2366839
+    },
+    {
+      "path": "public/game/production/enforcers-v613/hornhead/enforcers-comics-09.png",
+      "sha256": "07e78a15e23233f5d4a42b3f78b3a6bea8077037dd3288312ea6cee1ab145dd2",
+      "bytes": 2570084
+    },
+    {
+      "path": "public/game/production/enforcers-v613/human-accepted/enforcers-comics-08.png",
+      "sha256": "032f5e30b5a955b06b3e57fe1e05c1ef236d1c01c632eea7d7a8aa11d258214f",
+      "bytes": 2111662
+    },
+    {
+      "path": "public/game/production/enforcers-v613/human-accepted/enforcers-comics-09.png",
+      "sha256": "c1cc00cedb372dd738537225fcb13e15ee5938325a47e02adea8b9ee08b7eb6c",
+      "bytes": 2032335
+    },
+    {
+      "path": "public/game/production/enforcers-v613/kaal-or/enforcers-comics-08.png",
+      "sha256": "6ebbe944199aa85d8a582b935bcd93d741d5b2f89c3bb24b75aa4957e566b56c",
+      "bytes": 2520464
+    },
+    {
+      "path": "public/game/production/enforcers-v613/kaal-or/enforcers-comics-09.png",
+      "sha256": "84b4497f1ce61948d5a521eee8345b35dee484f5389c4ed414c48445104964eb",
+      "bytes": 2397058
+    },
+    {
+      "path": "public/game/production/enforcers-v613/oni-kok/enforcers-comics-08.png",
+      "sha256": "2762445ffdf51f87ec334df48f30d025cfa5b41a9b2d7db6f41ca42227b5c312",
+      "bytes": 2129522
+    },
+    {
+      "path": "public/game/production/enforcers-v613/oni-kok/enforcers-comics-09.png",
+      "sha256": "fe46f1356617ec287773b6d8a815dd2e19d09c7b325c8b98107da9e07da05dd1",
+      "bytes": 2075780
+    },
+    {
+      "path": "public/game/production/enforcers-v613/pilot-kok/enforcers-comics-08.png",
+      "sha256": "64a9e46cb3282809a038348fc51f42fbd39c5c97c24975a4bc7c53ae46e53340",
+      "bytes": 1782639
+    },
+    {
+      "path": "public/game/production/enforcers-v613/pilot-kok/enforcers-comics-09.png",
+      "sha256": "9e6f04b2688886189f236d0d233e12638d914193d0745eface2877155e63d9cc",
+      "bytes": 2339187
+    },
+    {
+      "path": "public/game/production/enforcers-v613/saar-keth/enforcers-comics-08.png",
+      "sha256": "fa178ec7bacd4438be0e336a7f9c8499bb3babd53979880ba4b3256637c6304f",
+      "bytes": 2209167
+    },
+    {
+      "path": "public/game/production/enforcers-v613/saar-keth/enforcers-comics-09.png",
+      "sha256": "2fc449e952db8eacf7a34b707ad5020dbcc75667ddc77e3ccfcb1c639e923206",
+      "bytes": 2377001
+    },
+    {
+      "path": "public/game/production/enforcers-v613/sha-rhess/enforcers-comics-08.png",
+      "sha256": "0619c3fe88bfb4fffcaf09fb9509fcbd9a5db1172409b3efd692dcd95d52374e",
+      "bytes": 1726947
+    },
+    {
+      "path": "public/game/production/enforcers-v613/sha-rhess/enforcers-comics-09.png",
+      "sha256": "c2e0ce9ff66ad111c48666c848daeca8320531670e8cfe3e72b86b462e9136f4",
+      "bytes": 2100297
+    },
+    {
+      "path": "public/game/production/enforcers-v613/spiked-tail/enforcers-comics-08.png",
+      "sha256": "69abba043ed1746ef92e64a4db0579d72719ca4cad2d62543405e1322fe61b3e",
+      "bytes": 2443004
+    },
+    {
+      "path": "public/game/production/enforcers-v613/spiked-tail/enforcers-comics-09.png",
+      "sha256": "d0759796b5d2afa158ea20a274e2eb2c61f6fd00a88ffe3e56d851452dd10a88",
+      "bytes": 2610473
+    },
+    {
+      "path": "public/game/production/enforcers-v613/super-predators/enforcers-comics-08.png",
+      "sha256": "a0c8ae1f4bea5e7bb4b56369e95c4be5e2a27f33dff8b1fea995ad3c028fa73e",
+      "bytes": 2229121
+    },
+    {
+      "path": "public/game/production/enforcers-v613/super-predators/enforcers-comics-09.png",
+      "sha256": "8d3595066db427753acf4affd5a87e024a743a38690c9895c46947b90292977c",
+      "bytes": 2307900
+    },
+    {
+      "path": "public/game/production/enforcers-v613/ul-khar/enforcers-comics-08.png",
+      "sha256": "9b5f0c1d273d2a02ed43be4b0b5c96b572f6e56f9aaa0b54b00b17be287ddfca",
+      "bytes": 2455245
+    },
+    {
+      "path": "public/game/production/enforcers-v613/ul-khar/enforcers-comics-09.png",
+      "sha256": "1e4baa4533d80540416149bc8d35af74ab92c03da58df185af83174bd77a545d",
+      "bytes": 2606760
+    },
+    {
+      "path": "public/game/production/enforcers-v613/vaal-tir/enforcers-comics-08.png",
+      "sha256": "e2720dbabbf9d298926ce4c04165ef156f2bf45f17e5dc7d9efa2128c7d8d724",
+      "bytes": 1997681
+    },
+    {
+      "path": "public/game/production/enforcers-v613/vaal-tir/enforcers-comics-09.png",
+      "sha256": "e705eed7f47db19587979662189e0b40c9b2a0cfd54ffbe260dd94423233526b",
+      "bytes": 1986948
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+      "sha256": "cc17f91b2471c6731d3449983d35cf627162ae4803cafdfed997007354fc5735",
+      "bytes": 2018648
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/002-crouch-2l.png",
+      "sha256": "9cc63fc5a91565f6bb281c11138000e3b1078245581aabd65b60d53d372eb605",
+      "bytes": 2248775
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/005-crouch-2m.png",
+      "sha256": "91ab7a7ac6dc903dce4aa15ee2f39a9b8bf35113eb8d2bb3ea688debe610208f",
+      "bytes": 2166671
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+      "sha256": "c1b95635c5581dd0fa520e779e461433528640a1e83f2b0488ad05bc1acdcdbd",
+      "bytes": 2351936
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/011-crouch-2h-right.png",
+      "sha256": "4f094d0f2d3cccadd5f661158d4b4f412c1d769da823fca2e9e00cabd5b3d40d",
+      "bytes": 2214051
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/012-crouch-2h-left.png",
+      "sha256": "1cf32461860771ded634e7ec9ba119a15f29c13f4ef5341d97c1ae5129042c6b",
+      "bytes": 2154824
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/013-crouch-2l-left.png",
+      "sha256": "d6faa6692304c6191bc28f1ee1d3e8856603a62b263c320f3de4f9e7f169fdb6",
+      "bytes": 2145770
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/020-command-6m-right.png",
+      "sha256": "3b608ea248c440fe50a21139e0c46b82d0e435382c87b64ea300900743118b98",
+      "bytes": 2107336
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/021-command-6m-left.png",
+      "sha256": "b46a33dfa318da52d4815b9f2fb1a480a4d1bc5f7e66abc9daf59ba5288290fc",
+      "bytes": 2098102
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/022-throw-forward-right-a.png",
+      "sha256": "05efda7d52febc378376665c14e92af6a4dd97cf0926c0d4f49efa25d8a575f2",
+      "bytes": 1879201
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/023-throw-forward-right-b.png",
+      "sha256": "c66026d3c77787d6d3b16926fa5b9386046a02e369c9c8edba31dd131cbbec5e",
+      "bytes": 1800607
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/026-throw-back-right-a.png",
+      "sha256": "c4c77a912ca14fea15805310cd3476ae6d9153f237607cf8a40c29d21f521485",
+      "bytes": 1769432
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
+      "sha256": "f6dd75cb124e7db1224ab9f35c4273c4469464e0f14ac36b4ec6fbfcd5380cb5",
+      "bytes": 2062492
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
+      "sha256": "e40afc5ae89cdb482467ced9bdca55ed5ce8aad690b5dd648dedb7e64f9f9650",
+      "bytes": 2145482
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
+      "sha256": "f5ac5871db20a4bb8dd4512538979fa6bd75b0b032afaaa5c40032dd5aed04a4",
+      "bytes": 2119746
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
+      "sha256": "da38a240b9bdb96b99152ce3d222de3f47ee321d2a902f972dfd37355fe5c5e0",
+      "bytes": 2088633
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/036-throw-forward-left-a-corrected.png",
+      "sha256": "38db19ddd67f164d36390061f8f75e5e2c92f1987fe04422fd23425c90260a16",
+      "bytes": 1979763
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/037-throw-forward-left-b-corrected.png",
+      "sha256": "5e8759f9b38556cbd639807b35f2ff42b836ed249873f4c6c6322a0c034ab645",
+      "bytes": 2009623
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/038-throw-back-right-b-corrected.png",
+      "sha256": "74b2065794e277cdb89146de3d10876c21d1d85392d546f8a9f708b01b9338d8",
+      "bytes": 2032640
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/039-throw-back-left-a-corrected.png",
+      "sha256": "0846987ec7f914e692ada8c9a3aebc97f63fc13ce8021c62ad21be57234ebedd",
+      "bytes": 2029629
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/040-throw-back-left-b-corrected.png",
+      "sha256": "ac8ec0383f8a265c20c9963f59f3c8e53829d4d207809757a89108e242836c44",
+      "bytes": 1925915
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/041-air-jm-right-spaced.png",
+      "sha256": "922ca6e1397c90865c513a5ee022fcab6f54d25630f21fcdf3c3019e9ace3088",
+      "bytes": 1739401
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/042-air-jm-left-spaced.png",
+      "sha256": "af39b7568c24d53e5b2834932553f651e747ec4cf2e9db936c862562b8e56ae8",
+      "bytes": 1957052
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-clemence-a-left-v100.png",
+      "sha256": "45748db10aa0aa3da3467b02a954349d03f15b1a562103332b6743172c9bcdcd",
+      "bytes": 1847263
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-clemence-a-right-v100.png",
+      "sha256": "945574215a3b626e9b61a26e738a4214b89a70162738e9eb1850936134b1e17f",
+      "bytes": 1857236
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-clemence-b-left-v100.png",
+      "sha256": "fc9bb0f88e7a8b18cfbd1daed0dbeb171c534a8fcb383720c205b0c470f9ef7e",
+      "bytes": 1883997
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-clemence-b-right-v100.png",
+      "sha256": "0fb80d6ec9d03dae0e60f6aeefc2e2da42ee1445bad681084b7e1f32635c5c98",
+      "bytes": 1893432
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-left-v100.png",
+      "sha256": "bd175f7ba5c24368d6a10d92f754987e27c422f36e08fb2255ef0c171a82aae4",
+      "bytes": 2143222
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-right-v100.png",
+      "sha256": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d",
+      "bytes": 2122116
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-defaite-b-v100.png",
+      "sha256": "7176468913588842dcefafca72fa8e7bade281233dc23d79bf7bc651a3a3e89c",
+      "bytes": 1925293
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-equip-a-v100.png",
+      "sha256": "13d9fad90636ef74015db295d4ec42522f16470cfa64579dfb215a1a636f80e2",
+      "bytes": 2196464
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-equip-b-v100.png",
+      "sha256": "1acfa7baec435e75fafe61f8c3354c217db6f40c0747243738314fb4edff9cc0",
+      "bytes": 1948073
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-left-v100.png",
+      "sha256": "8a5cdeb3eb3cbb42241af92f5e537ae1f3a334fcc1ad9d55386784259ebdc313",
+      "bytes": 2224919
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-right-v100.png",
+      "sha256": "f8ebcd3875efb88b5be0e3e8098216aca038e4443b3e73e0c110f468b2a9adaf",
+      "bytes": 2001120
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-fatalite-1-b-left-v100.png",
+      "sha256": "9c269b662f03f47c832b44e5603abaa00cedc8b85afce798922ccd551ac31573",
+      "bytes": 2262780
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-fatalite-1-final-right-v100.png",
+      "sha256": "9fe4b4071699e2bd32713604f0a8131d85607dcc595a39d9455321e1f6f2ff34",
+      "bytes": 2288407
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-fatalite-1-return-right-v100.png",
+      "sha256": "1327b6fa5647ae4c4660877deb9d2b02fae5241f82d0eb9c00b4357d7d1da292",
+      "bytes": 2318848
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-fatalite-2-a-left-v100.png",
+      "sha256": "bb9756a2698a1511120c3b8fb2f2ae1c9eff63974cb59c225bfa841174934cfc",
+      "bytes": 2209911
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-fatalite-2-b-left-v100.png",
+      "sha256": "e702f0780bf8bf85c4af1bdb5620fce77665822f05ec8afeb92e80ce1bbaa3a2",
+      "bytes": 2060226
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-fatalite-2-right-v100.png",
+      "sha256": "30a744e2c827b0edfbb24a61f1a43d41bb10243ccf918cb0eadd3c72b921d690",
+      "bytes": 1714870
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-fatalite-2-stow-left-v100.png",
+      "sha256": "e2f8eb39d63dc8d2413faba512bba3d0647d0688128b98fbf95f7a77336df3d2",
+      "bytes": 2172545
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-intro-a-left-v100.png",
+      "sha256": "7d3de548392b8bc8497ae89ca27598d8beded14401351c842b3e785560ea2935",
+      "bytes": 1916556
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-intro-a-right-v100.png",
+      "sha256": "088a5226203be27f8c7247270b79d88e1b6fe0fec93c1d684bb522d236d57bcf",
+      "bytes": 1891725
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-intro-b-left-v100.png",
+      "sha256": "11ab7b8b0ff4b5d7db2461ea964650181decf7d8e6fd6b0d1675faa50d34dac0",
+      "bytes": 1839505
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-intro-b-right-v100.png",
+      "sha256": "049c6eac23a174a3e2b1f4739d9b594213e1ff82ee10d8b9b86075be9420721a",
+      "bytes": 1915805
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+      "sha256": "a45d64a6c524828225f29fc1757e58a1218fdfbea9f81a9acd5b1db820112c1e",
+      "bytes": 2081254
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-s2-b-v100.png",
+      "sha256": "1a341c55ddd26ecf1c626eb8baf791f558d2bc9ada9ac01c27463f0286c1cfce",
+      "bytes": 2037749
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-s3-a-v100.png",
+      "sha256": "986553c12a4dda1292935c99a119482f215aebe7fbc8bd378f1d1e357bc2bdcd",
+      "bytes": 2295353
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-s3-b-v100.png",
+      "sha256": "533a0a9c0c56e774f7a0c909c1ad67a93cde787edf392d6440f8d29427d37a74",
+      "bytes": 2261491
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-s3-counter-v100.png",
+      "sha256": "a65adbb501b510662ef710195b699ba25b0b7f6e6f672e6d448b2f10d8acd4dc",
+      "bytes": 1726682
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-s3-strike-v100.png",
+      "sha256": "82447a6278e2f49d27550926e3fb4f101a96db2f0858d41ad498342dc936576f",
+      "bytes": 2061057
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png",
+      "sha256": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
+      "bytes": 2229817
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
+      "sha256": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830",
+      "bytes": 2022900
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+      "sha256": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3",
+      "bytes": 2249370
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+      "sha256": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
+      "bytes": 2147314
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+      "sha256": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b",
+      "bytes": 1824704
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+      "sha256": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced",
+      "bytes": 2223295
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-a-v100.png",
+      "sha256": "c0b8623089e33f4fbdab9ecde11a7e61a09feb173d683d296b2bb40fb18bd9ec",
+      "bytes": 2153597
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-b-v100.png",
+      "sha256": "f9be913fdf8ef3d07d27cc0c9fb5d552892bf969cd06ef69b0c7cd1aa2268177",
+      "bytes": 1921471
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-a-v100.png",
+      "sha256": "0ac7341b1336007b9bf7fb32717c2af5749b03fc0183ac2ef96c74d9b12365d0",
+      "bytes": 1705757
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-b-v100.png",
+      "sha256": "8d0aeb93ef02cc77ac522e9fd32fe8f9d3dc52522ce82214e960c2eba46b882f",
+      "bytes": 2224587
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-victoire-a-v100.png",
+      "sha256": "0373a5e8025c8c4b7ae7dbad9d50a6764af38d52989f7c98d4495828a6d4b25b",
+      "bytes": 2185217
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-left-v100.png",
+      "sha256": "2d3a80a33be972b20a725c6a1c671ca500f2bf1d4beb8cd028be7e9b13f3cb53",
+      "bytes": 1886824
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-right-v100.png",
+      "sha256": "91fcac8364df3f192a94e1538fb7cb9537788f7ec4c00fa94bfda15302f80bd4",
+      "bytes": 1938065
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-2H-left-contact-recovery-native.png",
+      "sha256": "ebb4dd8320217091c3bbd8a8e6486231d19cf9b6c959b92d49231eaa419e5456",
+      "bytes": 1644642
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-2H-right-native.png",
+      "sha256": "50cb107f553f54bf7519bd97939046c510f0aebae82223358ddc44ac1d9245d0",
+      "bytes": 1664701
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-2L-native.png",
+      "sha256": "ba74a5756a0951847bdf7e78ae90761f131a17d1b63863e31124f51b4420f644",
+      "bytes": 1571563
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-2M-left-native.png",
+      "sha256": "74ad6714525cbba91bc6ef65c4d3798ce835b339893041b175ee2f40a530e283",
+      "bytes": 1746646
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-2M-right-native.png",
+      "sha256": "5cd1f926dd04d74e139fe88faef820262eec047c2ad266febda6b23f5610d384",
+      "bytes": 1680416
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+      "sha256": "658a0587a4e2ca496c950028569c595bc5fec3ee614d164c760225845d17fee8",
+      "bytes": 1736766
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+      "sha256": "3da7a25a272d0e9398170b2b5fff7f295494a56043336009e2c29ca55268521b",
+      "bytes": 1868855
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-5L-native.png",
+      "sha256": "c4e42f89fc367b442ed1cb4ac67cd1bf45868de4cc97cabf072ae5caac0d0cac",
+      "bytes": 2204395
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-5M-left-native.png",
+      "sha256": "56de9c7ca3110ed40ec810320788d37305b3f57dd8664b2abae54a0d612181f5",
+      "bytes": 1708232
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-5M-right-native.png",
+      "sha256": "54a70c307c11f41fc1252174cc863141eef3f10957972774493f9962dddf90d4",
+      "bytes": 1716500
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-6M-left-native.png",
+      "sha256": "5fe2379e13bbcd90478302652cc5534b42ee8e6e5f95d6cb3dccf02fd2e2ed51",
+      "bytes": 1940871
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-6M-right-native.png",
+      "sha256": "08e3c2586fb7ec07fd2ac2294f272580bf2a08bdf0677c8ae9d87c38f21e8fa9",
+      "bytes": 1722876
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-TH_B-left-native.png",
+      "sha256": "9fae9be652c52c4739eef1d7fb1b99fbe2fc57bff222eed93b915669a610aaf2",
+      "bytes": 1930704
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-TH_B-right-native.png",
+      "sha256": "45b253ef506a41b6a2555eb747a6e299dfc0b8617b22a0a28c3cd92adc6ddc9b",
+      "bytes": 1279997
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-TH_F-left-partial-native.png",
+      "sha256": "c1bfbe0edd26d99d63a0e6fb97a78e9f341578337f6888c766f13a86194890b4",
+      "bytes": 2260882
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-TH_F-left-recovery-native.png",
+      "sha256": "ca683a3f009676f097fc842c9f265cfb1402865fef4646d73f4b3da19f7b2e91",
+      "bytes": 1610039
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-TH_F-right-native.png",
+      "sha256": "3d27ef4ea3cf48a2a8e25d94f2087143d552bfcf37c54fae2086d926af6ebb4f",
+      "bytes": 1906763
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-jH-left-contact-recovery-native.png",
+      "sha256": "9b3bb6de48183ddaec9e89268564012d8465d7bec120664b60b7adf1b307fbbe",
+      "bytes": 2026413
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-jH-left-startup-native.png",
+      "sha256": "d906629e65873b4fba00377fec0a8f7528e98ce6791b02727f18cc596c9b5501",
+      "bytes": 2049049
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-jH-right-native.png",
+      "sha256": "9b48ac15b53a50d62ddea8a77189744352b3fb5661c5366940f77c87836fe199",
+      "bytes": 1715074
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-jL-left-native.png",
+      "sha256": "e3d2bc9e010351e37f9b208d6f8c06f417b9f0475c8bc9c991b578cfc82babc9",
+      "bytes": 1848518
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-jL-right-native.png",
+      "sha256": "fdb5f6a6dc8e4ca68b9c96a04bdea057748a6ad796b223fb377dd006e8810fb7",
+      "bytes": 1573763
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-jM-left-native.png",
+      "sha256": "4d714b5f7f334d22250adfca8231a3abf3fa147dd18c1f5d9b36498f45560388",
+      "bytes": 1926192
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-jM-right-native.png",
+      "sha256": "63c91bce12397c460cd8f5a60b41eb0dcb3a02261e819a269db42337c26d8a7f",
+      "bytes": 1738717
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-clemence-left.png",
+      "sha256": "559366b2e7d9c5d90f471f4cab4e0034b274540243148dd3adfd93c5717c5788",
+      "bytes": 1371700
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-clemence-right.png",
+      "sha256": "189f55ad7005c38747786a1f910ed12844c003ee62015e2bbcbef6a2d84b65ca",
+      "bytes": 1784150
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-defaite.png",
+      "sha256": "659bda952b0fee7db73036e9e8faf2f2ce3a7809c35d493055044e534fbc2784",
+      "bytes": 1976748
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-equip.png",
+      "sha256": "82bd27b0ee0df00afb124728014167f46bf17c7d290c71815ea346adcd87e1b5",
+      "bytes": 2416511
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-fatalite-1-left.png",
+      "sha256": "671cdac6459e42ba0ce9999bce87350b2bd284eeb154c63234498758b9fcf2ff",
+      "bytes": 1940063
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-fatalite-1-right.png",
+      "sha256": "a6b55fb4c86bb25d458aaced51ddddd9d309dcf5b9908e9cde7dd797ee81c8a6",
+      "bytes": 1774259
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-fatalite-2-left.png",
+      "sha256": "c6102fe83dc7d0137c71b3a7c0cf5ee203d0673256ad09159e5e9af1d9555fab",
+      "bytes": 1607007
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-fatalite-2-right.png",
+      "sha256": "a3038ed6fd17a8b71e21ae59f469290063eb74e575bf9571a2a11636a344a96b",
+      "bytes": 1466213
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-intro.png",
+      "sha256": "b02db6fa75d8a486e20bfc8525aac4dd0a161276a8a5488ed21f190a6ed156a8",
+      "bytes": 2395061
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-s1.png",
+      "sha256": "1cb5fa122d709f6065dcc5cbf824a97f4801495c375875a4270a0c8fdb736949",
+      "bytes": 1963780
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-s2-corrected.png",
+      "sha256": "fa8e84622de3acde190f6cd564c28fc82dc082f681ac518ff8ff2b5c036af752",
+      "bytes": 1904733
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-s3-left.png",
+      "sha256": "3bb94e42a714645f89ff8ce0c7567ac46193179676e28adbcc0bf760ba3b4481",
+      "bytes": 1447965
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-s3-right.png",
+      "sha256": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f",
+      "bytes": 1595986
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-s4.png",
+      "sha256": "4dd3be59ccb5582a232652981a011367f7cc639836c18799859649ff5e7066ef",
+      "bytes": 2465196
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-super.png",
+      "sha256": "cd81a0503a546ad34281f2b8d221763aea15bcd54d5d1c92ed583bdbfd6830c3",
+      "bytes": 1789099
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-taunt-1.png",
+      "sha256": "eabe0c8d9b21e61a0d477697006d11a03bd27b3aa5d314cc9b77c560672b3302",
+      "bytes": 1953793
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-left.png",
+      "sha256": "36d0760f8121c997a76710973c2a7ab377e96577e4e3b22959a667b5d1f99cd8",
+      "bytes": 1520330
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-right.png",
+      "sha256": "e7e54ccfc5470d422df8d4e4c149934eb67a2390041970bfe5b9922407da8550",
+      "bytes": 1568011
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-victoire.png",
+      "sha256": "e532637f7cfbff5c67ec05a6eff25e3c0df0246d3a46781a882f9b26e92dcd9c",
+      "bytes": 2463701
+    },
+    {
+      "path": "public/game/sprites/v59/pit/feral/launcher-left.png",
+      "sha256": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14",
+      "bytes": 2212312
+    },
+    {
+      "path": "public/game/sprites/v59/pit/feral/launcher-right.png",
+      "sha256": "feb0b99112cb55470b0c9211461793a85ac8c4538a59ed24026366ff8e7a31ca",
+      "bytes": 2148287
+    },
+    {
+      "path": "public/game/sprites/v59/pit/feral/shield-left.png",
+      "sha256": "b5f2f91c9beb78c9d78bd83f30ae40af54f3f5546e919a6016ac3299eff27585",
+      "bytes": 2340749
+    },
+    {
+      "path": "public/game/sprites/v59/pit/feral/shield-right.png",
+      "sha256": "a562123e1c19cc98b8614d479ef9f70b5499482142a8895f2aaaa7e8cd0953d2",
+      "bytes": 2267581
+    }
+  ],
+  "products": {
+    "V99": [
+      {
+        "path": "docs/v99-workstreams.json",
+        "sha256": "ef6ad01755aa723f0293c709946fbbec1b71b038811a4ddc5a239d33dbb5c389",
+        "bytes": 284697
+      },
+      {
+        "path": "docs/YAUTJA_V99_SUIVI.xlsx",
+        "sha256": "53116e8f0fe10867702cccdb2d7bf2c8bbc5baa7c6a9c528085c12f780392a15",
+        "bytes": 1130515
+      }
+    ],
+    "V100": [
+      {
+        "path": "docs/v100-workstreams.json",
+        "sha256": "1acfdc43ca7fd8adeeb29ce18e6e94f053b146c4b34d4d6d861e67970772d42b",
+        "bytes": 623794
+      },
+      {
+        "path": "docs/YAUTJA_V100_SUIVI.xlsx",
+        "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf",
+        "bytes": 1862541
+      },
+      {
+        "path": "docs/v100-excel-followup-qa.json",
+        "sha256": "f0ae6bc5a1b427544d1e099cdc9c1a8e6003105bf06db77456a47aa3d33e467c",
+        "bytes": 5103
+      }
+    ],
+    "V104": [
+      {
+        "path": "docs/v104-workstreams.json",
+        "sha256": "c2293f49855484ca63cba024064296851502fe6fa90ddfda2729d28a11a0b68f",
+        "bytes": 250445
+      },
+      {
+        "path": "docs/YAUTJA_V104_SUIVI.xlsx",
+        "sha256": "ce78bac96ae57cbee732bc868acecd46b0dc57e5ade49f669fb15c8b12ea03aa",
+        "bytes": 2411658
+      },
+      {
+        "path": "docs/v104-excel-followup-qa.json",
+        "sha256": "a4f353ef1d207931be477070f5ad9b76ac2fa6ee97940ee29243192ed0683927",
+        "bytes": 4046
+      }
+    ]
+  }
+}

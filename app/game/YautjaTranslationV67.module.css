@@ -1,0 +1,20 @@
+.translation { position: relative; line-height: inherit; }
+.accessible { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.visual { overflow-wrap: anywhere; }
+.word { white-space: nowrap; }
+.letter { position: relative; display: inline-block; }
+.human { opacity: 0; transition: opacity 110ms linear; }
+.glyph { position: absolute; left: 50%; top: 50%; width: .82em; height: 1em; max-width: none; transform: translate(-50%,-50%); color: #cfa767; opacity: .76; transition: opacity 110ms linear; pointer-events: none; }
+.glyph path { fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: square; stroke-linejoin: bevel; }
+.letter[data-revealed="true"] .human { opacity: 1; }
+.letter[data-revealed="true"] .glyph { opacity: 0; }
+.translation[data-translation-complete="true"] .human { opacity: 1; transition: none; }
+.translation[data-translation-complete="true"] .glyph { opacity: 0; transition: none; }
+.translation .skip { display: inline-block; margin: .2rem 0 .1rem .5rem; padding: .15rem .4rem; min-height: 28px; width: auto; font: inherit; font-size: .72em; line-height: 1.3; color: #e1c18b; background: #172426; border: 1px solid #826b45; border-radius: 3px; cursor: pointer; vertical-align: baseline; }
+.translation .skip:focus-visible { outline: 2px solid #f4d798; outline-offset: 3px; }
+.translation .skip[aria-disabled="true"] { color: #b5c2bb; cursor: default; }
+.translation .skip[data-translation-dismissed="true"] { visibility: hidden; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  .human { opacity: 1; transition: none; }
+  .glyph { display: none; transition: none; }
+}

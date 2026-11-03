@@ -1,0 +1,481 @@
+{
+  "source": "92a0b4f published V68 catalog, captured before V69 additions",
+  "definitions": [
+    {
+      "id": "ash-marches-track",
+      "title": "Sous la cuirasse de cendre",
+      "category": "tracking",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Marches de Cendre · Relève trois pistes puis observe le brouteur cuirassé sans entrer dans sa charge.",
+      "restriction": "Le brouteur reste vivant ; une trace ne vaut pas une prise.",
+      "rewardMarks": 18,
+      "objectives": [
+        {
+          "regionId": "ash-marches",
+          "action": "track",
+          "text": "Relève trois pistes puis observe le brouteur cuirassé sans entrer dans sa charge."
+        }
+      ]
+    },
+    {
+      "id": "ash-marches-challenge",
+      "title": "Tenir face au cuirassé",
+      "category": "challenge",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Marches de Cendre · Lis les pistes, évite deux charges et place trois touches pendant les reprises du cuirassé.",
+      "restriction": "Épreuve non létale. Ne poursuis pas la créature lorsqu’elle se retire.",
+      "rewardMarks": 30,
+      "objectives": [
+        {
+          "regionId": "ash-marches",
+          "action": "challenge",
+          "text": "Lis les pistes, évite deux charges et place trois touches pendant les reprises du cuirassé."
+        }
+      ]
+    },
+    {
+      "id": "glass-desert-track",
+      "title": "Le sillon sous le verre",
+      "category": "tracking",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Désert de Verre · Compare trois traces et observe le fouisseur pendant une accalmie.",
+      "restriction": "Ne frappe pas le sol vitrifié près du village.",
+      "rewardMarks": 20,
+      "objectives": [
+        {
+          "regionId": "glass-desert",
+          "action": "track",
+          "text": "Compare trois traces et observe le fouisseur pendant une accalmie."
+        }
+      ]
+    },
+    {
+      "id": "glass-desert-challenge",
+      "title": "La riposte du fouisseur",
+      "category": "challenge",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Désert de Verre · Repère la proie, évite deux sorties du fouisseur et place trois touches lors de sa reprise.",
+      "restriction": "La confrontation se termine au retrait de la proie, sans crâne attribué.",
+      "rewardMarks": 32,
+      "objectives": [
+        {
+          "regionId": "glass-desert",
+          "action": "challenge",
+          "text": "Repère la proie, évite deux sorties du fouisseur et place trois touches lors de sa reprise."
+        }
+      ]
+    },
+    {
+      "id": "pillar-jungle-track",
+      "title": "Les perchoirs du traqueur",
+      "category": "tracking",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Jungle des Piliers · Lis trois marques de perchoir puis observe le traqueur des piliers depuis le chemin.",
+      "restriction": "Aucun tir à travers les abris de clan.",
+      "rewardMarks": 22,
+      "objectives": [
+        {
+          "regionId": "pillar-jungle",
+          "action": "track",
+          "text": "Lis trois marques de perchoir puis observe le traqueur des piliers depuis le chemin."
+        }
+      ]
+    },
+    {
+      "id": "pillar-jungle-ward",
+      "title": "Garder les passerelles",
+      "category": "protection",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Jungle des Piliers · Après le relevé des pistes, protège deux balises pendant les accalmies du danger local.",
+      "restriction": "Le passage du village compte davantage qu’une poursuite hors de la route.",
+      "rewardMarks": 26,
+      "objectives": [
+        {
+          "regionId": "pillar-jungle",
+          "action": "ward",
+          "text": "Après le relevé des pistes, protège deux balises pendant les accalmies du danger local."
+        }
+      ]
+    },
+    {
+      "id": "luminous-marshes-track",
+      "title": "Les rides qui reviennent",
+      "category": "tracking",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Marais Luminescents · Suis trois rides de l’eau et observe la silhouette qui réapparaît entre les racines.",
+      "restriction": "Respecte les zones de repos des habitants.",
+      "rewardMarks": 22,
+      "objectives": [
+        {
+          "regionId": "luminous-marshes",
+          "action": "track",
+          "text": "Suis trois rides de l’eau et observe la silhouette qui réapparaît entre les racines."
+        }
+      ]
+    },
+    {
+      "id": "luminous-marshes-ward",
+      "title": "Deux lumières sur les racines",
+      "category": "protection",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Marais Luminescents · Relève les traces, évite le danger et stabilise les deux balises du passage humide.",
+      "restriction": "Reste sur la route ; aucun animal n’est une cible obligatoire.",
+      "rewardMarks": 26,
+      "objectives": [
+        {
+          "regionId": "luminous-marshes",
+          "action": "ward",
+          "text": "Relève les traces, évite le danger et stabilise les deux balises du passage humide."
+        }
+      ]
+    },
+    {
+      "id": "storm-chain-track",
+      "title": "Une ombre dans le vent",
+      "category": "tracking",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Chaîne des Orages · Lis trois traces puis observe le planeur cuirassé entre les rafales.",
+      "restriction": "L’observation se fait depuis le chemin, sans sauter dans le ravin.",
+      "rewardMarks": 24,
+      "objectives": [
+        {
+          "regionId": "storm-chain",
+          "action": "track",
+          "text": "Lis trois traces puis observe le planeur cuirassé entre les rafales."
+        }
+      ]
+    },
+    {
+      "id": "storm-chain-ward",
+      "title": "La ligne des guetteurs",
+      "category": "protection",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Chaîne des Orages · Repère les pistes, évite une rafale et protège les deux balises du retour.",
+      "restriction": "Attends la fenêtre de vent avant chaque intervention.",
+      "rewardMarks": 28,
+      "objectives": [
+        {
+          "regionId": "storm-chain",
+          "action": "ward",
+          "text": "Repère les pistes, évite une rafale et protège les deux balises du retour."
+        }
+      ]
+    },
+    {
+      "id": "leviathan-coast-track",
+      "title": "Le souffle au large",
+      "category": "tracking",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Côte des Léviathans · Recoupe trois indices du rivage et observe la présence côtière depuis la terre ferme.",
+      "restriction": "Aucune chasse en pleine mer ni prise de léviathan n’est attestée par ce relevé.",
+      "rewardMarks": 24,
+      "objectives": [
+        {
+          "regionId": "leviathan-coast",
+          "action": "track",
+          "text": "Recoupe trois indices du rivage et observe la présence côtière depuis la terre ferme."
+        }
+      ]
+    },
+    {
+      "id": "leviathan-coast-challenge",
+      "title": "Le gardien du rivage",
+      "category": "challenge",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Côte des Léviathans · Suis les traces et affronte la proie côtière : deux charges évitées, trois touches de reprise.",
+      "restriction": "Seule la proie territoriale proche du rivage est engagée ; ce n’est pas un léviathan tué.",
+      "rewardMarks": 34,
+      "objectives": [
+        {
+          "regionId": "leviathan-coast",
+          "action": "challenge",
+          "text": "Suis les traces et affronte la proie côtière : deux charges évitées, trois touches de reprise."
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves-survey",
+      "title": "Ce que la chaleur dissimule",
+      "category": "tracking",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Grottes Thermiques · Compare trois traces physiques malgré la vapeur et les signatures brouillées.",
+      "restriction": "Ne prétends pas que le thermique suffit à identifier une présence.",
+      "rewardMarks": 20,
+      "objectives": [
+        {
+          "regionId": "thermal-caves",
+          "action": "survey",
+          "text": "Compare trois traces physiques malgré la vapeur et les signatures brouillées."
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves-recover",
+      "title": "La balise du conduit",
+      "category": "recovery",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Grottes Thermiques · Après les trois indices, évite une émission de vapeur puis récupère la caisse de balises.",
+      "restriction": "Récupère le matériel pendant l’accalmie, sans toucher aux installations de clan.",
+      "rewardMarks": 26,
+      "objectives": [
+        {
+          "regionId": "thermal-caves",
+          "action": "recover",
+          "text": "Après les trois indices, évite une émission de vapeur puis récupère la caisse de balises."
+        }
+      ]
+    },
+    {
+      "id": "cold-crown-track",
+      "title": "La piste sans chaleur",
+      "category": "tracking",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Couronne Froide · Lis trois traces physiques puis observe le carnivore isolé thermiquement.",
+      "restriction": "Les empreintes comptent ; aucune jauge de froid ne remplace la préparation.",
+      "rewardMarks": 24,
+      "objectives": [
+        {
+          "regionId": "cold-crown",
+          "action": "track",
+          "text": "Lis trois traces physiques puis observe le carnivore isolé thermiquement."
+        }
+      ]
+    },
+    {
+      "id": "cold-crown-recover",
+      "title": "Les balises de l’ancienne cordée",
+      "category": "recovery",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Couronne Froide · Retrouve les trois indices, évite le danger de glace et rapporte la caisse de balises.",
+      "restriction": "Ne t’attribue pas les affaires personnelles des anciennes expéditions.",
+      "rewardMarks": 28,
+      "objectives": [
+        {
+          "regionId": "cold-crown",
+          "action": "recover",
+          "text": "Retrouve les trois indices, évite le danger de glace et rapporte la caisse de balises."
+        }
+      ]
+    },
+    {
+      "id": "first-city-ruins-survey",
+      "title": "Les marques sous les ajouts",
+      "category": "tracking",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Ruines de la Première Cité · Relève trois indices du site patrimonial et distingue les traces des installations récentes.",
+      "restriction": "Aucune archive scellée n’est ouverte par ce contrat.",
+      "rewardMarks": 22,
+      "objectives": [
+        {
+          "regionId": "first-city-ruins",
+          "action": "survey",
+          "text": "Relève trois indices du site patrimonial et distingue les traces des installations récentes."
+        }
+      ]
+    },
+    {
+      "id": "first-city-ruins-recover",
+      "title": "Le relais déplacé",
+      "category": "recovery",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Ruines de la Première Cité · Après le relevé, évite la sentinelle du passage et récupère la caisse de balises mobile.",
+      "restriction": "Laisse les éléments patrimoniaux en place.",
+      "rewardMarks": 30,
+      "objectives": [
+        {
+          "regionId": "first-city-ruins",
+          "action": "recover",
+          "text": "Après le relevé, évite la sentinelle du passage et récupère la caisse de balises mobile."
+        }
+      ]
+    },
+    {
+      "id": "forbidden-reserve-survey",
+      "title": "Les limites du confinement",
+      "category": "tracking",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Réserve Interdite · Relève les trois indices autour de la station d’observation autorisée.",
+      "restriction": "Les créatures importées ne sont pas la faune ordinaire de la planète ; aucune enceinte n’est ouverte.",
+      "rewardMarks": 24,
+      "objectives": [
+        {
+          "regionId": "forbidden-reserve",
+          "action": "survey",
+          "text": "Relève les trois indices autour de la station d’observation autorisée."
+        }
+      ]
+    },
+    {
+      "id": "forbidden-reserve-recover",
+      "title": "Un signal à l’extérieur",
+      "category": "recovery",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "brief": "Réserve Interdite · Relève les traces, évite le danger du chemin et rapporte la caisse extérieure de balises.",
+      "restriction": "N’entre pas dans un enclos et ne transporte aucune créature.",
+      "rewardMarks": 32,
+      "objectives": [
+        {
+          "regionId": "forbidden-reserve",
+          "action": "recover",
+          "text": "Relève les traces, évite le danger du chemin et rapporte la caisse extérieure de balises."
+        }
+      ]
+    },
+    {
+      "id": "npc-healer-safe-footing",
+      "title": "Des appuis pour le retour",
+      "category": "npc",
+      "giverNpcId": "clan-healer",
+      "giverName": "Soigneuse des délégations",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "rewardMarks": 38,
+      "brief": "Les délégations ont besoin de repères dans l’eau et dans la vapeur. Protège les balises du marais, puis relève les traces des grottes. Ramène les deux observations à cette maison.",
+      "restriction": "Il s’agit de préparer des retours, sans soin improvisé ni promesse que toute la région est sûre.",
+      "objectives": [
+        {
+          "regionId": "luminous-marshes",
+          "action": "ward",
+          "text": "Protéger les deux balises des Marais."
+        },
+        {
+          "regionId": "thermal-caves",
+          "action": "survey",
+          "text": "Relever les trois indices des Grottes."
+        }
+      ]
+    },
+    {
+      "id": "npc-dock-return-line",
+      "title": "La route des guetteurs",
+      "category": "npc",
+      "giverNpcId": "dock-officer",
+      "giverName": "Officier des quais",
+      "pointId": "dock-officer-point",
+      "buildingId": "dock-control",
+      "rewardMarks": 40,
+      "brief": "Une escorte doit savoir ce qui bouge entre les falaises et le rivage. Protège les deux balises de la Chaîne, puis observe la présence côtière. Reviens aux quais avec les rapports des guides.",
+      "restriction": "Le contrat prépare un trajet. Il ne délivre ni vaisseau personnel ni départ orbital.",
+      "objectives": [
+        {
+          "regionId": "storm-chain",
+          "action": "ward",
+          "text": "Protéger les balises des Orages."
+        },
+        {
+          "regionId": "leviathan-coast",
+          "action": "track",
+          "text": "Observer la présence de la Côte."
+        }
+      ]
+    },
+    {
+      "id": "npc-memory-two-histories",
+      "title": "Deux mémoires du terrain",
+      "category": "npc",
+      "giverNpcId": "memory-keeper",
+      "giverName": "Conservatrice des marques",
+      "pointId": "memory-register-point",
+      "buildingId": "memory-vault",
+      "rewardMarks": 42,
+      "brief": "Les vestiges ne racontent pas tous la même époque. Relève les traces des Ruines, puis récupère les balises d’expédition de la Couronne. Les guides doivent confirmer les deux retours avant ta remise ici.",
+      "restriction": "Le relevé ne prouve aucune culpabilité et ne débloque aucune archive royale.",
+      "objectives": [
+        {
+          "regionId": "first-city-ruins",
+          "action": "survey",
+          "text": "Relever les traces des Ruines."
+        },
+        {
+          "regionId": "cold-crown",
+          "action": "recover",
+          "text": "Récupérer la caisse de la Couronne."
+        }
+      ]
+    },
+    {
+      "id": "npc-forge-relay-cases",
+      "title": "Des boîtiers sans trophée",
+      "category": "npc",
+      "giverNpcId": "forge-artisan",
+      "giverName": "Maîtresse des parures",
+      "pointId": "forge-service",
+      "buildingId": "deep-forge",
+      "rewardMarks": 36,
+      "brief": "Observe le cuirassé des Cendres puis le fouisseur du Verre. Leurs mouvements permettront d’implanter les futurs relais sans confondre une installation utile avec un défi inutile.",
+      "restriction": "Ces observations ne donnent ni arme, ni parure gratuite, ni trophée vivant.",
+      "objectives": [
+        {
+          "regionId": "ash-marches",
+          "action": "track",
+          "text": "Observer le cuirassé des Cendres."
+        },
+        {
+          "regionId": "glass-desert",
+          "action": "track",
+          "text": "Observer le fouisseur du Verre."
+        }
+      ]
+    }
+  ]
+}

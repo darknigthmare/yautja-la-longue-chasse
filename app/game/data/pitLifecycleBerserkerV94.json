@@ -1,0 +1,1175 @@
+[
+  {
+    "fighterId": "berserker",
+    "variantId": "berserker-avec-casque-ba1f7a7b1e",
+    "bodyHeightPx": 440,
+    "pageBodyHeightPx": {
+      "berserker-002-berserker-masked-intro-a-v94": 370,
+      "berserker-003-berserker-masked-intro-b-v94": 384
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "berserker-002-berserker-masked-intro-a-v94",
+        "rect": [
+          0,
+          0,
+          320,
+          424
+        ],
+        "visibleRect": [
+          20,
+          54,
+          299,
+          369
+        ]
+      },
+      {
+        "pageId": "berserker-002-berserker-masked-intro-a-v94",
+        "rect": [
+          320,
+          0,
+          307,
+          424
+        ],
+        "visibleRect": [
+          333,
+          52,
+          267,
+          370
+        ]
+      },
+      {
+        "pageId": "berserker-002-berserker-masked-intro-a-v94",
+        "rect": [
+          0,
+          424,
+          319,
+          412
+        ],
+        "visibleRect": [
+          31,
+          453,
+          287,
+          363
+        ]
+      },
+      {
+        "pageId": "berserker-002-berserker-masked-intro-a-v94",
+        "rect": [
+          319,
+          424,
+          308,
+          412
+        ],
+        "visibleRect": [
+          337,
+          455,
+          276,
+          363
+        ]
+      },
+      {
+        "pageId": "berserker-002-berserker-masked-intro-a-v94",
+        "rect": [
+          0,
+          836,
+          336,
+          418
+        ],
+        "visibleRect": [
+          21,
+          846,
+          314,
+          358
+        ]
+      },
+      {
+        "pageId": "berserker-002-berserker-masked-intro-a-v94",
+        "rect": [
+          336,
+          836,
+          291,
+          418
+        ],
+        "visibleRect": [
+          345,
+          842,
+          269,
+          360
+        ]
+      },
+      {
+        "pageId": "berserker-003-berserker-masked-intro-b-v94",
+        "rect": [
+          0,
+          0,
+          314,
+          434
+        ],
+        "visibleRect": [
+          27,
+          49,
+          286,
+          384
+        ]
+      },
+      {
+        "pageId": "berserker-003-berserker-masked-intro-b-v94",
+        "rect": [
+          314,
+          0,
+          313,
+          434
+        ],
+        "visibleRect": [
+          335,
+          49,
+          273,
+          384
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "berserker-masked-intro-right-partial-v94",
+      "characterId": "berserker",
+      "variantId": "berserker-avec-casque-ba1f7a7b1e",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "berserker-002-berserker-masked-intro-a-v94",
+          "src": "/game/sprites/v94/pit/berserker/002-berserker-masked-intro-a-v94.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "berserker-003-berserker-masked-intro-b-v94",
+          "src": "/game/sprites/v94/pit/berserker/003-berserker-masked-intro-b-v94.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.intro",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-002-berserker-masked-intro-a-v94",
+              "rect": [
+                0,
+                0,
+                320,
+                424
+              ],
+              "pivot": [
+                164,
+                422
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-002-berserker-masked-intro-a-v94",
+              "rect": [
+                320,
+                0,
+                307,
+                424
+              ],
+              "pivot": [
+                146.5,
+                421
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-002-berserker-masked-intro-a-v94",
+              "rect": [
+                0,
+                424,
+                319,
+                412
+              ],
+              "pivot": [
+                167,
+                391
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-002-berserker-masked-intro-a-v94",
+              "rect": [
+                319,
+                424,
+                308,
+                412
+              ],
+              "pivot": [
+                153,
+                393
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-002-berserker-masked-intro-a-v94",
+              "rect": [
+                0,
+                836,
+                336,
+                418
+              ],
+              "pivot": [
+                164.5,
+                367
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-002-berserker-masked-intro-a-v94",
+              "rect": [
+                336,
+                836,
+                291,
+                418
+              ],
+              "pivot": [
+                143,
+                365
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-003-berserker-masked-intro-b-v94",
+              "rect": [
+                0,
+                0,
+                314,
+                434
+              ],
+              "pivot": [
+                169.5,
+                432
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-003-berserker-masked-intro-b-v94",
+              "rect": [
+                314,
+                0,
+                313,
+                434
+              ],
+              "pivot": [
+                157,
+                432
+              ],
+              "durationTicks": 9
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "berserker",
+    "variantId": "berserker-avec-casque-ba1f7a7b1e",
+    "bodyHeightPx": 440,
+    "pageBodyHeightPx": {
+      "berserker-004-berserker-masked-victory-a-v94": 414,
+      "berserker-005-berserker-masked-victory-b-v94": 404
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "berserker-004-berserker-masked-victory-a-v94",
+        "rect": [
+          0,
+          0,
+          313,
+          408
+        ],
+        "visibleRect": [
+          27,
+          19,
+          253,
+          385
+        ]
+      },
+      {
+        "pageId": "berserker-004-berserker-masked-victory-a-v94",
+        "rect": [
+          313,
+          0,
+          314,
+          408
+        ],
+        "visibleRect": [
+          341,
+          25,
+          254,
+          379
+        ]
+      },
+      {
+        "pageId": "berserker-004-berserker-masked-victory-a-v94",
+        "rect": [
+          0,
+          408,
+          313,
+          417
+        ],
+        "visibleRect": [
+          31,
+          410,
+          261,
+          414
+        ]
+      },
+      {
+        "pageId": "berserker-004-berserker-masked-victory-a-v94",
+        "rect": [
+          0,
+          825,
+          313,
+          429
+        ],
+        "visibleRect": [
+          32,
+          827,
+          259,
+          403
+        ]
+      },
+      {
+        "pageId": "berserker-005-berserker-masked-victory-b-v94",
+        "rect": [
+          0,
+          0,
+          320,
+          422
+        ],
+        "visibleRect": [
+          30,
+          17,
+          261,
+          404
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "berserker-masked-victory-right-partial-v94",
+      "characterId": "berserker",
+      "variantId": "berserker-avec-casque-ba1f7a7b1e",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "berserker-004-berserker-masked-victory-a-v94",
+          "src": "/game/sprites/v94/pit/berserker/004-berserker-masked-victory-a-v94.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "berserker-005-berserker-masked-victory-b-v94",
+          "src": "/game/sprites/v94/pit/berserker/005-berserker-masked-victory-b-v94.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.victory",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-004-berserker-masked-victory-a-v94",
+              "rect": [
+                0,
+                0,
+                313,
+                408
+              ],
+              "pivot": [
+                153,
+                403
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "berserker-004-berserker-masked-victory-a-v94",
+              "rect": [
+                313,
+                0,
+                314,
+                408
+              ],
+              "pivot": [
+                155,
+                403
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "berserker-004-berserker-masked-victory-a-v94",
+              "rect": [
+                0,
+                408,
+                313,
+                417
+              ],
+              "pivot": [
+                157,
+                415
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "berserker-004-berserker-masked-victory-a-v94",
+              "rect": [
+                0,
+                825,
+                313,
+                429
+              ],
+              "pivot": [
+                156,
+                404
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "berserker-005-berserker-masked-victory-b-v94",
+              "rect": [
+                0,
+                0,
+                320,
+                422
+              ],
+              "pivot": [
+                159.5,
+                420
+              ],
+              "durationTicks": 24
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "berserker",
+    "variantId": "berserker-avec-casque-ba1f7a7b1e",
+    "bodyHeightPx": 440,
+    "pageBodyHeightPx": {
+      "berserker-006-berserker-masked-defeat-a-v94": 437,
+      "berserker-007-berserker-masked-defeat-b-v94": 443
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+        "rect": [
+          0,
+          0,
+          313,
+          447
+        ],
+        "visibleRect": [
+          42,
+          8,
+          240,
+          437
+        ]
+      },
+      {
+        "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+        "rect": [
+          313,
+          0,
+          314,
+          447
+        ],
+        "visibleRect": [
+          353,
+          33,
+          228,
+          411
+        ]
+      },
+      {
+        "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+        "rect": [
+          0,
+          447,
+          313,
+          426
+        ],
+        "visibleRect": [
+          40,
+          470,
+          242,
+          402
+        ]
+      },
+      {
+        "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+        "rect": [
+          313,
+          447,
+          314,
+          426
+        ],
+        "visibleRect": [
+          348,
+          508,
+          234,
+          364
+        ]
+      },
+      {
+        "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+        "rect": [
+          0,
+          873,
+          313,
+          381
+        ],
+        "visibleRect": [
+          23,
+          920,
+          263,
+          300
+        ]
+      },
+      {
+        "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+        "rect": [
+          313,
+          873,
+          314,
+          381
+        ],
+        "visibleRect": [
+          337,
+          929,
+          252,
+          289
+        ]
+      },
+      {
+        "pageId": "berserker-007-berserker-masked-defeat-b-v94",
+        "rect": [
+          0,
+          478,
+          313,
+          389
+        ],
+        "visibleRect": [
+          17,
+          532,
+          269,
+          333
+        ]
+      },
+      {
+        "pageId": "berserker-007-berserker-masked-defeat-b-v94",
+        "rect": [
+          313,
+          478,
+          314,
+          389
+        ],
+        "visibleRect": [
+          331,
+          548,
+          272,
+          318
+        ]
+      },
+      {
+        "pageId": "berserker-007-berserker-masked-defeat-b-v94",
+        "rect": [
+          0,
+          867,
+          313,
+          387
+        ],
+        "visibleRect": [
+          26,
+          914,
+          262,
+          310
+        ]
+      },
+      {
+        "pageId": "berserker-007-berserker-masked-defeat-b-v94",
+        "rect": [
+          313,
+          867,
+          314,
+          387
+        ],
+        "visibleRect": [
+          336,
+          919,
+          268,
+          304
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "berserker-masked-defeat-right-partial-v94",
+      "characterId": "berserker",
+      "variantId": "berserker-avec-casque-ba1f7a7b1e",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "berserker-006-berserker-masked-defeat-a-v94",
+          "src": "/game/sprites/v94/pit/berserker/006-berserker-masked-defeat-a-v94.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "berserker-007-berserker-masked-defeat-b-v94",
+          "src": "/game/sprites/v94/pit/berserker/007-berserker-masked-defeat-b-v94.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+              "rect": [
+                0,
+                0,
+                313,
+                447
+              ],
+              "pivot": [
+                161,
+                444
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+              "rect": [
+                313,
+                0,
+                314,
+                447
+              ],
+              "pivot": [
+                153.5,
+                443
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+              "rect": [
+                0,
+                447,
+                313,
+                426
+              ],
+              "pivot": [
+                160,
+                424
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+              "rect": [
+                313,
+                447,
+                314,
+                426
+              ],
+              "pivot": [
+                150,
+                424
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+              "rect": [
+                0,
+                873,
+                313,
+                381
+              ],
+              "pivot": [
+                153,
+                346
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "berserker-006-berserker-masked-defeat-a-v94",
+              "rect": [
+                313,
+                873,
+                314,
+                381
+              ],
+              "pivot": [
+                148.5,
+                344
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "berserker-007-berserker-masked-defeat-b-v94",
+              "rect": [
+                0,
+                478,
+                313,
+                389
+              ],
+              "pivot": [
+                150.5,
+                386
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "berserker-007-berserker-masked-defeat-b-v94",
+              "rect": [
+                313,
+                478,
+                314,
+                389
+              ],
+              "pivot": [
+                154,
+                387
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "berserker-007-berserker-masked-defeat-b-v94",
+              "rect": [
+                0,
+                867,
+                313,
+                387
+              ],
+              "pivot": [
+                155.5,
+                356
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "berserker-007-berserker-masked-defeat-b-v94",
+              "rect": [
+                313,
+                867,
+                314,
+                387
+              ],
+              "pivot": [
+                155.5,
+                355
+              ],
+              "durationTicks": 12
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "berserker",
+    "variantId": "berserker-avec-casque-ba1f7a7b1e",
+    "bodyHeightPx": 440,
+    "pageBodyHeightPx": {
+      "berserker-009-berserker-masked-taunt-a-v94": 396,
+      "berserker-010-berserker-masked-taunt-b-v94": 385
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+        "rect": [
+          0,
+          0,
+          313,
+          419
+        ],
+        "visibleRect": [
+          33,
+          22,
+          269,
+          396
+        ]
+      },
+      {
+        "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+        "rect": [
+          313,
+          0,
+          314,
+          419
+        ],
+        "visibleRect": [
+          339,
+          45,
+          255,
+          372
+        ]
+      },
+      {
+        "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+        "rect": [
+          0,
+          419,
+          313,
+          403
+        ],
+        "visibleRect": [
+          29,
+          431,
+          278,
+          387
+        ]
+      },
+      {
+        "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+        "rect": [
+          313,
+          419,
+          314,
+          403
+        ],
+        "visibleRect": [
+          331,
+          437,
+          280,
+          379
+        ]
+      },
+      {
+        "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+        "rect": [
+          0,
+          822,
+          313,
+          432
+        ],
+        "visibleRect": [
+          32,
+          824,
+          271,
+          386
+        ]
+      },
+      {
+        "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+        "rect": [
+          313,
+          822,
+          314,
+          432
+        ],
+        "visibleRect": [
+          334,
+          828,
+          259,
+          382
+        ]
+      },
+      {
+        "pageId": "berserker-010-berserker-masked-taunt-b-v94",
+        "rect": [
+          0,
+          421,
+          323,
+          399
+        ],
+        "visibleRect": [
+          24,
+          432,
+          298,
+          381
+        ]
+      },
+      {
+        "pageId": "berserker-010-berserker-masked-taunt-b-v94",
+        "rect": [
+          323,
+          421,
+          304,
+          399
+        ],
+        "visibleRect": [
+          337,
+          431,
+          280,
+          382
+        ]
+      },
+      {
+        "pageId": "berserker-010-berserker-masked-taunt-b-v94",
+        "rect": [
+          0,
+          820,
+          313,
+          434
+        ],
+        "visibleRect": [
+          25,
+          822,
+          276,
+          385
+        ]
+      },
+      {
+        "pageId": "berserker-010-berserker-masked-taunt-b-v94",
+        "rect": [
+          313,
+          820,
+          314,
+          434
+        ],
+        "visibleRect": [
+          332,
+          822,
+          277,
+          385
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "berserker-masked-taunt-right-partial-v94",
+      "characterId": "berserker",
+      "variantId": "berserker-avec-casque-ba1f7a7b1e",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "berserker-009-berserker-masked-taunt-a-v94",
+          "src": "/game/sprites/v94/pit/berserker/009-berserker-masked-taunt-a-v94.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "berserker-010-berserker-masked-taunt-b-v94",
+          "src": "/game/sprites/v94/pit/berserker/010-berserker-masked-taunt-b-v94.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.taunt",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+              "rect": [
+                0,
+                0,
+                313,
+                419
+              ],
+              "pivot": [
+                166.5,
+                417
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+              "rect": [
+                313,
+                0,
+                314,
+                419
+              ],
+              "pivot": [
+                153,
+                416
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+              "rect": [
+                0,
+                419,
+                313,
+                403
+              ],
+              "pivot": [
+                165,
+                398
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+              "rect": [
+                313,
+                419,
+                314,
+                403
+              ],
+              "pivot": [
+                149.5,
+                396
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+              "rect": [
+                0,
+                822,
+                313,
+                432
+              ],
+              "pivot": [
+                164.5,
+                387
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-009-berserker-masked-taunt-a-v94",
+              "rect": [
+                313,
+                822,
+                314,
+                432
+              ],
+              "pivot": [
+                150,
+                387
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-010-berserker-masked-taunt-b-v94",
+              "rect": [
+                0,
+                421,
+                323,
+                399
+              ],
+              "pivot": [
+                163,
+                391
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-010-berserker-masked-taunt-b-v94",
+              "rect": [
+                323,
+                421,
+                304,
+                399
+              ],
+              "pivot": [
+                149.5,
+                391
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-010-berserker-masked-taunt-b-v94",
+              "rect": [
+                0,
+                820,
+                313,
+                434
+              ],
+              "pivot": [
+                162,
+                386
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "berserker-010-berserker-masked-taunt-b-v94",
+              "rect": [
+                313,
+                820,
+                314,
+                434
+              ],
+              "pivot": [
+                156,
+                386
+              ],
+              "durationTicks": 9
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

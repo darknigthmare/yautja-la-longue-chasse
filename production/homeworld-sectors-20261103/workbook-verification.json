@@ -1,0 +1,226 @@
+{
+  "actualFiles": 83,
+  "expectedFiles": 83,
+  "uniqueIds": 83,
+  "uniqueHashes": 83,
+  "targets": 42,
+  "sourceCount": 6,
+  "productionPassCounts": {
+    "1": 17,
+    "2": 8,
+    "3": 10,
+    "4": 11,
+    "5": 10,
+    "6": 14,
+    "7": 13
+  },
+  "inheritedReferenceViewIds": [
+    "HWM162-S08",
+    "HWM162-S10",
+    "HWM162-M10",
+    "HWM162-K10",
+    "HWM162-K11",
+    "HWM162-K12",
+    "HWM162-K13",
+    "HWM162-S11",
+    "HWM162-S12",
+    "HWM162-K14",
+    "HWM162-K15",
+    "HWM162-K16",
+    "HWM162-K17",
+    "HWM162-S15",
+    "HWM162-S16",
+    "HWM162-M16",
+    "HWM162-M17",
+    "HWM162-M18",
+    "HWM162-K18",
+    "HWM162-K19",
+    "HWM162-K20",
+    "HWM162-K21",
+    "HWM162-S18",
+    "HWM162-S19",
+    "HWM162-S20",
+    "HWM162-S21",
+    "HWM162-M19",
+    "HWM162-M20",
+    "HWM162-M21",
+    "HWM162-M22",
+    "HWM162-M23",
+    "HWM162-K22",
+    "HWM162-K23",
+    "HWM162-K24",
+    "HWM162-K25",
+    "HWM162-K26",
+    "HWM162-S22",
+    "HWM162-S23",
+    "HWM162-S24",
+    "HWM162-S25",
+    "HWM162-M24",
+    "HWM162-M25",
+    "HWM162-M26",
+    "HWM162-K27",
+    "HWM162-K28",
+    "HWM162-K29",
+    "HWM162-K30",
+    "HWM162-K31",
+    "HWM162-K32"
+  ],
+  "cameraAnglesMeasured": false,
+  "inspections": [
+    "{\"kind\":\"table\",\"sheet\":\"Livraison\",\"address\":\"A6:E9\",\"rows\":4,\"cols\":5,\"values\":[[\"Objets ou états du lot\",83,null,\"Lore : adaptations originales\",null],[\"PNG présents\",83,null,\"Aucune certification visuelle 1:1\",null],[\"Revue humaine validée\",0,null,\"Les 40 cibles héritées sont conservées\",null],[\"Admission runtime\",0,null,\"Pixels mesurés ; échelle physique proposée\",null]]}",
+    "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+  ],
+  "nativeExcelInteractiveVerification": false,
+  "visualReview": {
+    "status": "REVIEWED_NO_VISIBLE_CLIPPING_IN_INSPECTED_RANGES",
+    "sheets": [
+      "Livraison",
+      "Catalogue",
+      "Implantation",
+      "Références"
+    ],
+    "previewCount": 11,
+    "previews": [
+      {
+        "file": "preview-Livraison.png",
+        "range": "Livraison!A1:J18"
+      },
+      {
+        "file": "preview-Catalogue.png",
+        "range": "Catalogue!A1:E11"
+      },
+      {
+        "file": "preview-Implantation.png",
+        "range": "Implantation!A1:F12"
+      },
+      {
+        "file": "preview-References.png",
+        "range": "Références!A1:E10"
+      },
+      {
+        "file": "preview-Livraison-round7.png",
+        "range": "Livraison!A84:K96"
+      },
+      {
+        "file": "preview-Livraison-round7-camera.png",
+        "range": "Livraison!Q84:R96"
+      },
+      {
+        "file": "preview-Implantation-round7.png",
+        "range": "Implantation!A77:F89"
+      },
+      {
+        "file": "preview-Catalogue-round7-target-v81-64-170.png",
+        "range": "Catalogue!A20:E22"
+      },
+      {
+        "file": "preview-Catalogue-round7-target-v81-72-281.png",
+        "range": "Catalogue!A36:E38"
+      },
+      {
+        "file": "preview-Catalogue-round7-target-v81-71-276.png",
+        "range": "Catalogue!A31:E33"
+      },
+      {
+        "file": "preview-Catalogue-round7-target-v81-71-278.png",
+        "range": "Catalogue!A33:E35"
+      }
+    ],
+    "method": "Direct visual inspection of artifact-tool PNG renders, including the 13 new delivery rows, their inherited-camera/source columns, proposed placement rows and four expanded target rows.",
+    "scope": "Rendered ranges only; no native Excel interactive verification.",
+    "notes": [
+      "New proposed physical-dimension cells intentionally remain blank where no metric proposal is supplied; no canonical dimensions are inferred.",
+      "Inherited reference views are stated explicitly; the project camera request is not presented as a measured conversion.",
+      "The four catalogue targets with new component lists remain legible without visible clipping."
+    ]
+  },
+  "scopePreservation": {
+    "baselineCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+    "previous70DeliveryRowsFirst16ColumnsUnchanged": true,
+    "previous70DeliveryRowsAll18ColumnsUnchanged": true,
+    "cellValuesAndFormulasCompared": "Livraison!A14:R83",
+    "deliveryCellDifferenceCount": 0,
+    "referenceSheetCellsUnchanged": true,
+    "nativeTableCount": 4,
+    "inheritedTargetCountUnchanged": 40,
+    "targetRowsIncludingTwoBuildings": 42,
+    "method": "Read-only ZIP/XML comparison of exported XLSX cell values and formulas against the baseline commit; no formatting-identity claim."
+  },
+  "documentChecks": {
+    "galleryCards": 83,
+    "sourceCatalogueMatchesManifest": true,
+    "pass7PlansGenerated": 13,
+    "historicalSectionsExactlyUnchanged": {
+      "Deuxième passe": true,
+      "Troisième passe": true,
+      "Quatrième passe": true,
+      "Cinquième passe": true,
+      "Sixième passe": true
+    },
+    "round7SectionPresent": true,
+    "round7ReviewLinkTargetExists": true,
+    "hound2010PrimarySource": "https://www.hottoys.jp/item/view/100001667",
+    "relativeLinksChecked": 508,
+    "uniqueRelativeLinkTargets": 128,
+    "invalidRelativeLinks": [],
+    "linkValidationMethod": "Local existence or an exact tracked Git path for sparse historical source files; README, gallery and workbook catalogue source links.",
+    "sparseSourceTargetsVerified": [
+      "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+      "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
+      "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png",
+      "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+      "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+      "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+      "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+      "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+      "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png",
+      "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+      "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png",
+      "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+      "production/native-open-20261102/archives/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png",
+      "public/game/homeworld/v76/interior/rack-lateral.png",
+      "public/game/homeworld/v76/logistics-container-rack-native.png",
+      "public/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+      "public/game/homeworld/v78/market-stall-right.png",
+      "public/game/homeworld/v78/port-cargo-sorting-cart.png",
+      "public/game/homeworld/v80/sealed-cargo-case-left.png",
+      "public/game/homeworld/v83/cargo-rack-right.png",
+      "public/game/homeworld/v83/merchant-counter-left.png"
+    ],
+    "inheritedTargetsWithCandidate": 40,
+    "uncoveredInheritedTargets": [],
+    "sourceClosedChanged": false,
+    "inheritedReferenceViewCount": 49,
+    "nativeCorrectionSummary": {
+      "selectedNew": 13,
+      "nativeCalls": 18,
+      "archivedAttempts": 5,
+      "evidence": "review-round7.json",
+      "details": "K28-v1, K30-v1, K31-v1, K32-v1 and K32-v2 are archived. K32-v3 follows removal of a duplicated fixed rail and a targeted native correction of the alpha veil."
+    }
+  },
+  "workbookExport": {
+    "filename": "YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx",
+    "bytes": 44020,
+    "sha256": "7ab7d73aec3b7beb94ac930843a3aa125c617a18f785788007830d5e5ab768fb",
+    "cachedCounts": {
+      "B6": {
+        "value": "83",
+        "formula": "COUNTA(A14:A96)"
+      },
+      "B7": {
+        "value": "83",
+        "formula": "COUNTIFS(E14:E96,\"PNG présent\")"
+      },
+      "B8": {
+        "value": "0",
+        "formula": "COUNTIFS(N14:N96,\"Validé\")"
+      },
+      "B9": {
+        "value": "0",
+        "formula": "COUNTIFS(O14:O96,\"Intégré\")"
+      }
+    },
+    "formulaErrorCount": 0
+  }
+}

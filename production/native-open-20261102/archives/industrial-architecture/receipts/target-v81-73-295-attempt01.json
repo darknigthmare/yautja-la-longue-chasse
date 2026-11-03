@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-73-295",
+  "label": "tuyau apparent",
+  "attempt": 1,
+  "family": "BAS_QUARTIERS_PROPS",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "Create ONE original native game prop for the Yautja homeworld fan game La Longue Chasse; an original lore-compatible design, not a certified canonical object. Native square PNG with TRUE transparent alpha, one single connected whole object, no atlas. Cohesive material/camera family: charcoal porous basalt and gunmetal, worn antique bronze chamfered ribs, angular shallow alien geometric marks, small contained amber indicators, realistic prerendered 2.5D detail and midtone edge contrast, warm neutral light from upper left. Three-quarter isometric view looking down25-30degrees, front and right visible. The object is SMALL and CENTERED like a miniature seen from farther away, only central50-55percent of the canvas width/height; enormous empty alpha0 margin around every side. Entire object and all base/contact parts visible. Preserve the exact native canvas the tool emits. Every pixel outside the physical object must have exact alpha0, including canvas edges; no faint isolated speckles, no outside glow, no steam/fog, no ground or shadow patch, no scenery, no background or checkerboard, no humans/animals, no text/labels/numbers/logos, no extra separate pieces, no crop/mirror, no repeated views. Candidate static drawing only; no mechanics or admission implied. SUBJECT: one independent EXPOSED ALIEN UTILITY PIPE ASSEMBLY for attachment to a lower-city wall. A substantial dark gunmetal pipe with a single clean90degree elbow, two broad angular worn-bronze compression collars and two integral heavy wall clamp brackets. Ends remain visible as open flanged pipe mouths. One connected L-shaped pipe object, no backing wall, no hidden companion pipes, no valve wheel, no steam, no tank, no ground base. Its mounting pads are part of the pipe clamps. Clear L silhouette and sturdy industrial pipe thickness. Entire elbow and both end flanges safely inside the native canvas.",
+  "nativeSourcePath": "/workspace/generated_images/exec-4eff76d8-ea7c-4ed0-be93-c48c74385327.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-295-tuyau-apparent-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v78/civic-water-cistern-right.png",
+    "public/game/homeworld/v84/maintenance-console-right.png",
+    "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-310-generateur-native.png"
+  ],
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "wholeSingleObject": true,
+    "visibleCroppedObject": false,
+    "duplicateGrid": false,
+    "materialCameraCoherent": true,
+    "functionReadable": true,
+    "notes": "One L-shaped pipe and integral mounting brackets, both flange mouths intact. Canvas1312x1199 retained exactly. Wall-attachment pivot must be authored separately; no wall or real connection is implied."
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-73-295",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-295-tuyau-apparent-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-4eff76d8-ea7c-4ed0-be93-c48c74385327.png",
+    "bytes": 1043347,
+    "sha256": "4a00838936c0378dcdad4920592a708f7ad3385a08e63baf1cd1e38f76d1324f",
+    "mode": "RGBA",
+    "dimensions": [
+      1312,
+      1199
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 1172344,
+    "alpha1or2Pixels": 8783,
+    "alpha1to8Pixels": 12027,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          39,
+          39,
+          1292,
+          1199
+        ],
+        "margins": [
+          39,
+          39,
+          20,
+          0
+        ],
+        "visiblePixels": 400744,
+        "edgeVisiblePixels": 1
+      },
+      "2": {
+        "bboxExclusive": [
+          187,
+          95,
+          1179,
+          1053
+        ],
+        "margins": [
+          187,
+          95,
+          133,
+          146
+        ],
+        "visiblePixels": 391961,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          189,
+          97,
+          1177,
+          1053
+        ],
+        "margins": [
+          189,
+          97,
+          135,
+          146
+        ],
+        "visiblePixels": 388717,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": true,
+    "diagnosticImageAnchor": {
+      "x": 682,
+      "y": 1052,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/294"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/294"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/294"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 73,
+      "line": 1985
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 299,
+        "idCell": {
+          "cell": "A299",
+          "value": "target-v81-73-295"
+        },
+        "labelCell": {
+          "cell": "D299",
+          "value": "tuyau apparent"
+        },
+        "historicalPresenceCell": {
+          "cell": "G299",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F299",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 299,
+        "idCell": {
+          "cell": "A299",
+          "value": "target-v81-73-295"
+        },
+        "labelCell": {
+          "cell": "C299",
+          "value": "tuyau apparent"
+        },
+        "historicalPresenceCell": {
+          "cell": "D299",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E299",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT"
+  ],
+  "targetSpecificLimits": [
+    "One attached-clamp exposed pipe section, not a constructed network.",
+    "Wall attachment plane, pivot and pipe connectivity are untested."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1312,
+      1199
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

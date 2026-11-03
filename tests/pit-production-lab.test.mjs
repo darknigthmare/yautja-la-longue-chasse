@@ -1,0 +1,39 @@
+import assert from'node:assert/strict';import test from'node:test';import{build}from'esbuild';const b=await build({stdin:{contents:"export * from './app/pit-lab/pitLabProduction';export {PIT_VERSUS_FIGHTER_IDS} from './app/game/systems/pitRosterExpansion';",resolveDir:process.cwd()},bundle:true,write:false,platform:'node',format:'esm'});const p=await import('data:text/javascript;base64,'+Buffer.from(b.outputFiles[0].text).toString('base64'));
+test('production lab includes duel expansions and reports exact oriented coverage',()=>{assert.deepEqual(p.PIT_LAB_FIGHTER_IDS,p.PIT_VERSUS_FIGHTER_IDS);for(const id of p.PIT_LAB_FIGHTER_IDS.filter(id=>id.startsWith('user-')))for(const appearance of p.getPitLabAppearances(id)){const definitions=p.getPitLabDefinitions(id,appearance.id);assert(definitions.every(d=>d.variantId===appearance.id&&d.atlas.variantId===appearance.id));assert.equal(p.getPitLabCoverage(id,appearance.id).clips,definitions.flatMap(d=>d.atlas.clips.filter(c=>c.status==='validated')).length,'only the selected appearance contributes animated clips');}for(const id of ['tracker','greyback']){assert(p.PIT_LAB_FIGHTER_IDS.includes(id));const c=p.getPitLabCoverage(id);assert.equal(c.clips,id==='tracker'?30:28);assert.equal(c.rightClips,id==='tracker'?15:14);assert.equal(c.leftClips,id==='tracker'?15:14);assert.equal(c.sourcePages,8);}const j=p.getPitLabCoverage('jungle-hunter');assert.equal(j.clips,14);assert.equal(j.drawings,34);assert.equal(j.rightClips,6);assert.equal(j.leftClips,8);assert.equal(p.getPitLabCoverage('falconer').atlasCount,0);});
+test('lab samples inspect exact facing, reaction time and attack phase instead of mirroring',()=>{for(const id of ['tracker','greyback','jungle-hunter'])for(const d of p.getPitLabDefinitions(id))for(const c of d.atlas.clips)for(let n=0;n<c.frames.length;n++){const s=p.createPitLabFrame(id,c,n);assert.equal(s.fighter.definitionId,id);assert.equal(s.fighter.facing,c.facing==='right'?1:-1);assert.equal(s.index,n);assert.equal(s.combat.frame,s.tick);if(c.id==='pit.stand.hitstun')assert.equal(s.fighter.stunFrames,40-s.tick);if(c.id==='crouch')assert.equal(s.fighter.crouching,true);if(c.id==='walk')assert.equal(Math.sign(s.fighter.velocityX),s.fighter.facing);const phase=c.id.split('.').at(-1);if(['startup','active','recovery'].includes(phase))assert.equal(s.fighter.phase,phase);}});
+
+test('playback uses real engine phase time and the renderer agrees at every tick',async()=>{
+ const b=await build({stdin:{contents:"export {describePitHunterSpriteMotion,resolvePitHunterSpriteFrame} from './app/game/hunterSpriteMotion';export {PIT_FIGHTERS} from './app/game/systems/pitCombat';",resolveDir:process.cwd()},bundle:true,write:false,platform:'node',format:'esm'});const engine=await import('data:text/javascript;base64,'+Buffer.from(b.outputFiles[0].text).toString('base64'));
+ const tracker=p.getPitLabDefinitions('tracker')[0].atlas.clips.find(c=>c.id==='pit.stand.light.recovery'&&c.facing==='right');assert.deepEqual(tracker.frames.map((_,i)=>p.getPitLabFrameTicks('tracker',tracker,i)),[6,5]);
+ for(const id of p.PIT_LAB_FIGHTER_IDS)for(const d of p.getPitLabDefinitions(id))for(const clip of d.atlas.clips){
+  const match=/^pit\.stand\.(light|medium|heavy)\.(startup|active|recovery)$/.exec(clip.id);if(!match)continue;
+  const durations=clip.frames.map((_,i)=>p.getPitLabFrameTicks(id,clip,i)),total=durations.reduce((a,b)=>a+b,0);assert.equal(total,engine.PIT_FIGHTERS[id].attacks[match[1]][match[2]],id+' '+clip.id);
+  const sample=p.createPitLabFrame(id,clip,0),actionStart=sample.fighter.action.frame;let cursor,expected=0,boundary=durations[0];
+  for(let tick=0;tick<total;tick++){while(tick>=boundary&&expected<durations.length-1)boundary+=durations[++expected];sample.fighter.action.frame=actionStart+tick;const motion=engine.describePitHunterSpriteMotion(sample.fighter,tick,cursor);assert(motion);cursor=motion.cursor;const actual=engine.resolvePitHunterSpriteFrame(d.atlas,motion);assert(actual);assert.equal(actual.frame.frameIndex,expected,id+' '+clip.id+' tick'+tick);}
+ }
+ const hit=p.getPitLabDefinitions('tracker')[0].atlas.clips.find(c=>c.id==='pit.stand.hitstun');assert.equal(hit.frames.reduce((sum,_,i)=>sum+p.getPitLabFrameTicks('tracker',hit,i),0),40);
+});
+
+
+test('V40 keeps reused Scar drawings deduplicated and native Machiko guards separately oriented',()=>{
+ const scar=p.getPitLabCoverage('scar');assert.equal(scar.clips,30);assert.equal(scar.drawings,62);
+ const forward=p.getPitLabDefinitions('scar').find(d=>d.atlas.id==='scar-walk-forward-v40');
+ const backward=p.getPitLabDefinitions('scar').flatMap(d=>d.atlas.clips).filter(c=>c.id==='walk-backward');
+ for(const clip of forward.atlas.clips){const source=backward.find(c=>c.facing===clip.facing);assert.deepEqual(clip.frames.map(f=>f.rect),[0,3,2,1].map(i=>source.frames[i].rect));}
+ const human=p.getPitLabDefinitions('machiko-noguchi').flatMap(d=>d.atlas.clips).filter(c=>c.id==='high-guard');
+ assert.equal(human.length,2);assert.deepEqual(new Set(human.map(c=>c.facing)),new Set(['left','right']));
+ assert(human.every(c=>c.frames.length===2));assert.notDeepEqual(human[0].frames.map(f=>f.rect),human[1].frames.map(f=>f.rect));
+});
+
+test('V41 deduplicates Tracker gait reuse and Celtic idle adds four distinct native drawings',()=>{
+ const tracker=p.getPitLabCoverage('tracker');assert.equal(tracker.clips,30);
+ const forward=p.getPitLabDefinitions('tracker').find(d=>d.atlas.id==='tracker-walk-forward-v41');
+ const backward=p.getPitLabDefinitions('tracker').flatMap(d=>d.atlas.clips).filter(c=>c.id==='walk-backward');
+ for(const clip of forward.atlas.clips){const source=backward.find(c=>c.facing===clip.facing);assert.deepEqual(clip.frames.map(f=>f.rect),[0,3,2,1].map(i=>source.frames[i].rect));assert.deepEqual(clip.frames.map(f=>f.pivot),[0,3,2,1].map(i=>source.frames[i].pivot));}
+ const original=p.getPitLabDefinitions('tracker').filter(d=>d!==forward).flatMap(d=>d.atlas.clips.flatMap(c=>c.frames.map(f=>d.atlas.pages.find(page=>page.id===f.pageId).src+':'+f.rect.join(','))));
+ assert.equal(tracker.drawings,new Set(original).size,'Temporal mapping adds no drawing');
+ const idle=p.getPitLabDefinitions('celtic').flatMap(d=>d.atlas.clips).filter(c=>c.id==='idle');
+ assert.equal(idle.length,2);assert.deepEqual(new Set(idle.map(c=>c.facing)),new Set(['left','right']));
+ assert(idle.every(c=>c.frames.length===2));assert.notDeepEqual(idle[0].frames.map(f=>f.rect),idle[1].frames.map(f=>f.rect));
+ const celtic=p.getPitLabCoverage('celtic');assert.equal(celtic.drawings,54);assert.equal(celtic.clips,28);
+});

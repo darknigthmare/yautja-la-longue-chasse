@@ -1,0 +1,201 @@
+{
+  "owner": "2026-10-28T10:00:00.000Z",
+  "oldNativeSteps": 72,
+  "oldNativeWalkDistance": 361.4880949681338,
+  "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+  "privateSourceManifestSha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a",
+  "checkpoint": {
+    "version": 1,
+    "layoutRevision": 1,
+    "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+    "levelId": "0",
+    "exterior": {
+      "x": 6219,
+      "y": 5020
+    },
+    "interiorId": null,
+    "local": null
+  },
+  "ledgers": {
+    "cartographyV104": {
+      "version": 1,
+      "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+      "revision": 3,
+      "receipt": {
+        "sceneId": "D6-W-PNJ-ROLE-12",
+        "routeId": "port-known-lectern-v104",
+        "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+        "phase": "walking",
+        "nextWaypoint": 1,
+        "walked": 361.4880949681338,
+        "legWalked": 145.57674028391077,
+        "last": {
+          "x": 6219,
+          "y": 5020
+        },
+        "trail": [
+          {
+            "x": 5920,
+            "y": 5190
+          },
+          {
+            "x": 5938.694471623248,
+            "y": 5174.109699120236
+          },
+          {
+            "x": 5957.3889432464985,
+            "y": 5158.2193982404715
+          },
+          {
+            "x": 5976.083414869751,
+            "y": 5142.329097360707
+          },
+          {
+            "x": 5994.777886493004,
+            "y": 5126.438796480943
+          },
+          {
+            "x": 6013.472358116256,
+            "y": 5110.548495601179
+          },
+          {
+            "x": 6032.166829739509,
+            "y": 5094.6581947214145
+          },
+          {
+            "x": 6050.861301362762,
+            "y": 5078.76789384165
+          },
+          {
+            "x": 6069.555772986015,
+            "y": 5062.877592961886
+          },
+          {
+            "x": 6084.511350284617,
+            "y": 5050.165352258075
+          },
+          {
+            "x": 6103.205821907869,
+            "y": 5034.27505137831
+          },
+          {
+            "x": 6120,
+            "y": 5020
+          },
+          {
+            "x": 6142,
+            "y": 5020
+          },
+          {
+            "x": 6164,
+            "y": 5020
+          },
+          {
+            "x": 6186,
+            "y": 5020
+          },
+          {
+            "x": 6208,
+            "y": 5020
+          }
+        ],
+        "trailBreaks": [],
+        "trimmedCount": 0,
+        "interruptedCount": 0
+      }
+    }
+  },
+  "actor": {
+    "x": 6219,
+    "y": 5020,
+    "vx": 330,
+    "vy": 0,
+    "facing": 1,
+    "grounded": true
+  },
+  "expectedFallbackActor": {
+    "x": 7780,
+    "y": 4480,
+    "vx": 0,
+    "vy": 0,
+    "grounded": true,
+    "facing": 1
+  },
+  "provenance": {
+    "method": "Actual old V111 choose-b/reply/start actions, first measured waypoint, then actual old navigation/motor/sampler to the new V112 register-marker anchor; no owner, last, trail, distance or waypoint credit rewritten.",
+    "actions": [
+      {
+        "name": "choose-b",
+        "revision": 1,
+        "phase": "choice"
+      },
+      {
+        "name": "reply",
+        "revision": 2,
+        "phase": "ready"
+      },
+      {
+        "name": "start",
+        "revision": 3,
+        "phase": "walking"
+      }
+    ],
+    "legs": [
+      {
+        "from": {
+          "x": 5920,
+          "y": 5190
+        },
+        "target": {
+          "x": 6120,
+          "y": 5020
+        },
+        "routePoints": [
+          {
+            "x": 5920,
+            "y": 5190
+          },
+          {
+            "x": 6120,
+            "y": 5020
+          }
+        ],
+        "actualTo": {
+          "x": 6120,
+          "y": 5020
+        },
+        "oldNativeSteps": 54,
+        "walked": 262.4880949681338,
+        "nextWaypoint": 1
+      },
+      {
+        "from": {
+          "x": 6120,
+          "y": 5020
+        },
+        "target": {
+          "x": 6220,
+          "y": 5020
+        },
+        "routePoints": [
+          {
+            "x": 6120,
+            "y": 5020
+          },
+          {
+            "x": 6220,
+            "y": 5020
+          }
+        ],
+        "actualTo": {
+          "x": 6219,
+          "y": 5020
+        },
+        "oldNativeSteps": 18,
+        "walked": 99,
+        "nextWaypoint": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+# CCGS project configuration — single source of truth for project settings.
+# See .claude/docs/effects-map.md for full schema.
+#
+# Rigor is intentionally NOT set here: run `/adopt` (existing project) or
+# `/start` in Claude Code, which asks for `modes.rigor` and writes it.
+# Until then the framework default (`minimal`) applies.
+# Personal overrides go in project.local.yaml (gitignored).
+
+schema_version: 1
+
+framework:
+  version: 1.2.0
+  last_upgraded: 2026-11-01
+
+project:
+  name: "Yautja : La Longue Chasse"
+  genre: "Action 2D en vue latérale (chasse)"
+  stage: Production
+  kind: game
+
+engine:
+  # Custom engine (TypeScript game inside React 19 / Next 16). `engine.name`
+  # is deliberately omitted: CCGS only accepts Godot|Unity|Unreal there, and
+  # its engine-specialist agents (godot-*, unity-*, ue-*) do not apply.
+  # Do not run /setup-engine on this project.
+  language: "TypeScript"
+  rendering: "Canvas 2D, DOM/CSS and raw WebGL"
+
+platform:
+  targets: [Web, PC]
+
+commands:
+  # Real scripts from package.json. `build` (vinext), `build:production` (Next)
+  # and the desktop build are distinct — see AGENTS.md.
+  build: "npm run build"
+  test: "node --experimental-strip-types --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts"
+  run: "npm run dev"
+  smoke: "npm run lint && npm run typecheck"

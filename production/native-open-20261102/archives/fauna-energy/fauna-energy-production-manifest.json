@@ -1,0 +1,4239 @@
+{
+  "schemaVersion": 1,
+  "sessionDate": "2026-11-02",
+  "scope": "18 explicitly allocated fauna/energy Homeworld targets; new native candidates only",
+  "counts": {
+    "targetIds": 18,
+    "selectedCandidatePNGs": 18,
+    "rawPNGs": 19,
+    "rejectedAttempts": 1,
+    "nativeRetries": 1,
+    "humanArtAdmissions": 0,
+    "newArtClosures": 0,
+    "runtimeActivations": 0
+  },
+  "gitUsed": false,
+  "repositoryWrites": false,
+  "frozenWorkbookOrHistoryModified": false,
+  "imagePixelEditOperations": [],
+  "sourceManifest": {
+    "path": "/workspace/open-workstreams-production-20261102/art-gap-manifest.json",
+    "sha256": "265dab986d1b6962da57edc583778a94c25344f7bbaec1baefd71a0248aecc3d"
+  },
+  "guide": {
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/guides/create-game-assets-SKILL.md",
+    "sha256": "36cd246a434fefe1e36feff066597a6268d9f63364bee387ee65a22f03838b5d",
+    "pixelNormalizationInstructionOverriddenByExplicitRootNoPixelEditingAllocation": true
+  },
+  "visualDirection": {
+    "hero": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-57-71-emitter-left-native.png",
+    "materials": "porous charcoal basalt, thick angular aged bronze, muted amber; gear also red-brown leather",
+    "camera": "orthographic three-quarter, requested elevation32degrees, warm upper-left light",
+    "directionChosenByDelegatedProductionAgent": true,
+    "humanArtisticValidation": false
+  },
+  "filePresenceCorrections": [
+    {
+      "target": "target-v81-72-284",
+      "existing": "V34 kha-rha and bone-bison-de-guerre saddle modules exist; two opposing profiles on opaque magenta",
+      "newCandidatePurpose": "Single independent transparent three-quarter contextual proposal; not first saddle art."
+    },
+    {
+      "targets": [
+        "target-v81-71-276",
+        "target-v81-71-277",
+        "target-v81-71-278",
+        "target-v81-73-305"
+      ],
+      "existing": "V53 Youth cage-structure/floor/background scene layers exist.",
+      "newCandidatePurpose": "Four independent Homeworld three-quarter empty cage props; no global absence claim."
+    },
+    {
+      "targets": [
+        "target-v81-71-273",
+        "target-v81-72-282"
+      ],
+      "finding": "Both source labels are support harnais in two sectors.",
+      "productionInterpretation": "Low restraint-care support versus vertical storage stand are proposed contextual constructions, not canonical new families. Alias remains possible after review."
+    }
+  ],
+  "technicalLimits": [
+    "All19rawPNGs are native1254² rather than requested1024². No rescaling/cropping/padding/mirroring performed.",
+    "Strict alpha>0 borders and alpha>2/8 diagnostics remain separate; faint alpha1/2 noise is retained and not silently cleared.",
+    "No image has human art admission; no app integration or source/workbook closure.",
+    "The left/right emitters were independently generated; exact shared contact alignment and scale remain unqualified.",
+    "The single membrane/door/barrier images do not provide an animation cycle.",
+    "Saddle/harness anatomical fit is unproven; empty props do not activate any mount."
+  ],
+  "references": [
+    "/workspace/native-homeworld-open-20261102/fauna-energy/energy-enclosure-reference-receipt.json",
+    "/workspace/native-homeworld-open-20261102/fauna-energy/cages/cages-reference-contract.json",
+    "/workspace/native-homeworld-open-20261102/fauna-energy/gear/reference-receipt.json"
+  ],
+  "targets": [
+    {
+      "id": "target-v81-56-58",
+      "label": "porte énergétique",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/57"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/57"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/57"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 56,
+          "line": 1650
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 62,
+            "idCell": {
+              "cell": "A62",
+              "value": "target-v81-56-58"
+            },
+            "labelCell": {
+              "cell": "D62",
+              "value": "porte énergétique"
+            },
+            "historicalPresenceCell": {
+              "cell": "G62",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F62",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 62,
+            "idCell": {
+              "cell": "A62",
+              "value": "target-v81-56-58"
+            },
+            "labelCell": {
+              "cell": "C62",
+              "value": "porte énergétique"
+            },
+            "historicalPresenceCell": {
+              "cell": "D62",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E62",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS",
+        "AUTHORED-ANIMATION"
+      ],
+      "candidate": {
+        "id": "target-v81-56-58",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-56-58-energy-door-native.png",
+        "original": "/workspace/generated_images/exec-4aac4af0-64b8-412d-ab9d-62208975aa5a.png",
+        "prompt": "A single whole independent native transparent game prop, realistic prerendered 2.5D alien hunter-city art. Orthographic three-quarter view elevated 32 degrees, warm top-left light, charcoal porous basalt, thick angular aged bronze brace plates, subtle amber only, weathered matte surfaces and strong readable silhouette. Consistent with a tapered black-basalt monolith with bronze rectangular emitter braces and warm amber slit. Requested1024x1024, object fully inside central80percent with at least96px empty margin on all sides, complete base and protrusions. Transparent alpha background, no floor terrain tile, no detached cast shadow, no text labels watermark people animals UI or extra objects; single view, not atlas. Static candidate only. SUBJECT: ONE complete freestanding alien energy DOOR portal: a thick angular squared arch of dark porous basalt with agedbronze stepped inner lining, two short broad integrated jamb feet, small amber emitter nodes inside the jambs, an attached faint semitransparent warm-amber energy membrane filling the single walk-through opening. The membrane is thin clear glasslike forcefield with a restrained geometric interference pattern; actual translucent alpha should let the background show through. One connected modest pedestrian portal rather than a building or monumental temple, no decorative skull, no physical door leaf, no duplicate modules. Threequarter camera sees front and rightside and shallow arch thickness; top beam and feet entirely included, fit arch within central75percent. One static closed-energy state; no animation claim.",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/native-technical-inspection.json",
+        "minimumMargin": 96,
+        "findings": "Complete pedestrian arch with semitransparent membrane; bright cream/amber appearance needs actual terrain composite review. Static closed state only, no opening sequence.",
+        "sha256": "fed0391ae37a9f337ad5c7670489471063db40f52389d96498b9987171f3dbe9",
+        "originalSha256": "fed0391ae37a9f337ad5c7670489471063db40f52389d96498b9987171f3dbe9",
+        "bytes": 1699095,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 15378,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              0,
+              1236,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              0,
+              18,
+              0
+            ],
+            "canvasEdgePixels": 217,
+            "occupiedPixels": 703389
+          },
+          "2": {
+            "bboxExclusive": [
+              162,
+              68,
+              1094,
+              1198
+            ],
+            "marginsLTRB": [
+              162,
+              68,
+              160,
+              56
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 688011
+          },
+          "8": {
+            "bboxExclusive": [
+              164,
+              70,
+              1092,
+              1196
+            ],
+            "marginsLTRB": [
+              164,
+              70,
+              162,
+              58
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 684385
+          },
+          "128": {
+            "bboxExclusive": [
+              165,
+              71,
+              1091,
+              1196
+            ],
+            "marginsLTRB": [
+              165,
+              71,
+              163,
+              58
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 606152
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "proposedPivot": {
+          "pixels": [
+            628.0,
+            1195
+          ],
+          "normalized": [
+            0.5007974481658692,
+            0.9529505582137161
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "538c132ebd425c4e742823c23d0a29c3ff853c96c7635b0c3c539505e2c29373"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-57-71",
+      "label": "émetteur énergie gauche",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/70"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/70"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/70"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 57,
+          "line": 1668
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 75,
+            "idCell": {
+              "cell": "A75",
+              "value": "target-v81-57-71"
+            },
+            "labelCell": {
+              "cell": "D75",
+              "value": "émetteur énergie gauche"
+            },
+            "historicalPresenceCell": {
+              "cell": "G75",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F75",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 75,
+            "idCell": {
+              "cell": "A75",
+              "value": "target-v81-57-71"
+            },
+            "labelCell": {
+              "cell": "C75",
+              "value": "émetteur énergie gauche"
+            },
+            "historicalPresenceCell": {
+              "cell": "D75",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E75",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "AUTHORED-ANIMATION",
+        "NATIVE-ORIENTATION"
+      ],
+      "candidate": {
+        "id": "target-v81-57-71",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-57-71-emitter-left-native.png",
+        "original": "/workspace/generated_images/exec-4e9eb13d-1727-4379-b0bb-e9a95bde7e5a.png",
+        "prompt": "Create ONE standalone game prop sprite: a LEFT-side alien energy-barrier emitter for an ancient hunter city, target-v81-57-71. This is the left endpoint of a future gate: its emission aperture is visibly on the object's RIGHT-facing inner side, pointing toward screen-right. One connected freestanding tapered squat monolith, heavy angular charcoal porous basalt foundation, aged bronze geometric brace plates, a recessed narrow vertical warm amber emitter slit, a small functional rear service block. Design the left-hand construction natively; no paired emitter and no energy sheet. Material and camera family: realistic hand-art-directed prerendered 2.5D game asset, orthographic three-quarter camera elevated about 32 degrees, visible front and right side, no wide-angle perspective. Restrained warm top-left light, dark weathered stone, matte oxidized bronze, only small amber emission. Clear chunky silhouette readable at 96px. Not a lamp, not a building, no ornate throne. Entire object centered with at least 96px fully empty transparent margin on all sides on a requested 1024 by 1024 canvas; complete base and all projecting parts included, lowest base near y850, do not fill the frame. Transparent alpha background with no floor, no ground tile, no detached shadow, no fog or particles, no text, labels, people, animal, extra props, frame or watermark. One whole native image, single view, not a sprite sheet. No blue neon. A static visual candidate only; do not imply an animation.",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/native-technical-inspection.json",
+        "minimumMargin": 96,
+        "findings": "Whole left endpoint with right-facing slit and low rear service block. Candidate scale and inner contact plane not qualified with its partner.",
+        "sha256": "6223d55bf97da84de22798a24e39f3c54c3d92d9368c7cb53fb1b5cb0e48bfeb",
+        "originalSha256": "6223d55bf97da84de22798a24e39f3c54c3d92d9368c7cb53fb1b5cb0e48bfeb",
+        "bytes": 1034401,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 8483,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              23,
+              19,
+              1240,
+              1254
+            ],
+            "marginsLTRB": [
+              23,
+              19,
+              14,
+              0
+            ],
+            "canvasEdgePixels": 94,
+            "occupiedPixels": 360106
+          },
+          "2": {
+            "bboxExclusive": [
+              309,
+              148,
+              970,
+              1125
+            ],
+            "marginsLTRB": [
+              309,
+              148,
+              284,
+              129
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 351623
+          },
+          "8": {
+            "bboxExclusive": [
+              311,
+              150,
+              968,
+              1123
+            ],
+            "marginsLTRB": [
+              311,
+              150,
+              286,
+              131
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 349085
+          },
+          "128": {
+            "bboxExclusive": [
+              313,
+              151,
+              967,
+              1121
+            ],
+            "marginsLTRB": [
+              313,
+              151,
+              287,
+              133
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 346154
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "proposedPivot": {
+          "pixels": [
+            639.5,
+            1122
+          ],
+          "normalized": [
+            0.5099681020733652,
+            0.8947368421052632
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "f8c03b3989aea7ca7f17686f299bdc272a77deca9a49a62a4d5f202380429ad7"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-57-72",
+      "label": "émetteur énergie droit",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/71"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/71"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/71"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 57,
+          "line": 1669
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 76,
+            "idCell": {
+              "cell": "A76",
+              "value": "target-v81-57-72"
+            },
+            "labelCell": {
+              "cell": "D76",
+              "value": "émetteur énergie droit"
+            },
+            "historicalPresenceCell": {
+              "cell": "G76",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F76",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 76,
+            "idCell": {
+              "cell": "A76",
+              "value": "target-v81-57-72"
+            },
+            "labelCell": {
+              "cell": "C76",
+              "value": "émetteur énergie droit"
+            },
+            "historicalPresenceCell": {
+              "cell": "D76",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E76",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "AUTHORED-ANIMATION",
+        "NATIVE-ORIENTATION"
+      ],
+      "candidate": {
+        "id": "target-v81-57-72",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-57-72-emitter-right-native.png",
+        "original": "/workspace/generated_images/exec-6f727e4e-fbd2-457a-bb3c-7180a48045ef.png",
+        "prompt": "A single whole independent native transparent game prop, realistic prerendered 2.5D alien hunter-city art. Orthographic three-quarter view elevated 32 degrees, warm top-left light, charcoal porous basalt, thick angular aged bronze brace plates, subtle amber only, weathered matte surfaces and strong readable silhouette. Consistent with a tapered black-basalt monolith with bronze rectangular emitter braces and warm amber slit. Requested1024x1024, object fully inside central80percent with at least96px empty margin on all sides, complete base and protrusions. Transparent alpha background, no floor terrain tile, no detached cast shadow, no text labels watermark people animals UI or extra objects; single view, not atlas. Static candidate only. SUBJECT: RIGHT endpoint emitter of an energy barrier; emission aperture on the LEFT-facing inner face, pointing toward screen-left. Build this right-hand object as an original independent drawing: asymmetric squat tapered upright, wide stepped basalt foot, bronze reinforcement on the outside right edge, short vented service box physically connected low on its RIGHT flank, narrow recessed amber slit on LEFT-facing edge. Camera sees front and LEFT side. Aperture and service box must be functionally opposite those on a left endpoint. Do not put a second emitter or energy curtain in image. Do not mirror pixels, do not create two views. One connected functional emitter.",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/native-technical-inspection.json",
+        "minimumMargin": 96,
+        "findings": "Independent right-endpoint drawing with left-facing slit and differently constructed outside service box. No pixel mirroring. Pair height/scale/aperture contact need in-context qualification.",
+        "sha256": "c3977773ab717e3f3729bca56e27ae28bbd0d29bfd8d4087d6c2684cd6d3836e",
+        "originalSha256": "c3977773ab717e3f3729bca56e27ae28bbd0d29bfd8d4087d6c2684cd6d3836e",
+        "bytes": 1489415,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 13659,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              21,
+              1240,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              21,
+              14,
+              0
+            ],
+            "canvasEdgePixels": 97,
+            "occupiedPixels": 567039
+          },
+          "2": {
+            "bboxExclusive": [
+              174,
+              55,
+              1123,
+              1203
+            ],
+            "marginsLTRB": [
+              174,
+              55,
+              131,
+              51
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 553380
+          },
+          "8": {
+            "bboxExclusive": [
+              174,
+              57,
+              1120,
+              1200
+            ],
+            "marginsLTRB": [
+              174,
+              57,
+              134,
+              54
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 549570
+          },
+          "128": {
+            "bboxExclusive": [
+              176,
+              58,
+              1119,
+              1199
+            ],
+            "marginsLTRB": [
+              176,
+              58,
+              135,
+              55
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 545923
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "proposedPivot": {
+          "pixels": [
+            647.0,
+            1199
+          ],
+          "normalized": [
+            0.5159489633173844,
+            0.956140350877193
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "0fafee52247aa4a2c0ea8f98d94155f75ff186c9a8f86f8e62649f425c9d8d25"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-57-73",
+      "label": "champ énergétique",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/72"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/72"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/72"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 57,
+          "line": 1670
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 77,
+            "idCell": {
+              "cell": "A77",
+              "value": "target-v81-57-73"
+            },
+            "labelCell": {
+              "cell": "D77",
+              "value": "champ énergétique"
+            },
+            "historicalPresenceCell": {
+              "cell": "G77",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F77",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 77,
+            "idCell": {
+              "cell": "A77",
+              "value": "target-v81-57-73"
+            },
+            "labelCell": {
+              "cell": "C77",
+              "value": "champ énergétique"
+            },
+            "historicalPresenceCell": {
+              "cell": "D77",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E77",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "AUTHORED-ANIMATION"
+      ],
+      "candidate": {
+        "id": "target-v81-57-73",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-57-73-energy-field-native.png",
+        "original": "/workspace/generated_images/exec-f916f43d-51f3-4f06-9774-ee51aedae623.png",
+        "prompt": "ONE isolated static ENERGY FIELD membrane sprite for an ancient alien hunter-city barrier, target-v81-57-73. A single upright thin rectangular transparent amber forcefield plane seen orthographic threequarter elevated32degrees: its top and bottom edges slope gently down toward screen-right; it is wider than tall, four complete sharp corners, about 1.4width to1height. A faint amber edge and a sparse angular geometric energy interference pattern visible over a MOSTLYTRANSLUCENT pane, alpha about60-120of255 across its interior with visible transparent holes. No solid frame or emitter or pylons, no physicalobject other than the single membrane, no blue neon, no flaming edges, no particles, no floor/shadow or background. Amber is the only color, warm muted translucent ochre. This is a native independent field layer, not a door and not an animation. Render one whole plane centered within central65percent of requested1024square transparent canvas, at least120px empty margins on every side; no text, atlas, duplicate views, labels or watermark.",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/native-technical-inspection.json",
+        "minimumMargin": 120,
+        "findings": "One independent translucent amber plane, no solid emitters. Includes irregular circular intensity spots/holes and edge glow; visual coherence and compositing remain open. No animation authored.",
+        "sha256": "983e9e47aa434447fe72378c36f4ca30d62350ab247f48d52fdf8f46e267fb96",
+        "originalSha256": "983e9e47aa434447fe72378c36f4ca30d62350ab247f48d52fdf8f46e267fb96",
+        "bytes": 1020023,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 35062,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              0,
+              1254,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "canvasEdgePixels": 624,
+            "occupiedPixels": 521077
+          },
+          "2": {
+            "bboxExclusive": [
+              195,
+              248,
+              1082,
+              1038
+            ],
+            "marginsLTRB": [
+              195,
+              248,
+              172,
+              216
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 486015
+          },
+          "8": {
+            "bboxExclusive": [
+              197,
+              250,
+              1080,
+              1037
+            ],
+            "marginsLTRB": [
+              197,
+              250,
+              174,
+              217
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 475456
+          },
+          "128": {
+            "bboxExclusive": [
+              199,
+              251,
+              1078,
+              1036
+            ],
+            "marginsLTRB": [
+              199,
+              251,
+              176,
+              218
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 188952
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "proposedPivot": {
+          "pixels": [
+            638.5,
+            1036
+          ],
+          "normalized": [
+            0.509170653907496,
+            0.8261562998405104
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "f79716064c6acc7eb79ae86b6f725818c14a487eea6e8e79462746b991d6bbc0"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-71-266",
+      "label": "Enclos",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/265"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/265"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/265"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1943
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 270,
+            "idCell": {
+              "cell": "A270",
+              "value": "target-v81-71-266"
+            },
+            "labelCell": {
+              "cell": "D270",
+              "value": "Enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "G270",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F270",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 270,
+            "idCell": {
+              "cell": "A270",
+              "value": "target-v81-71-266"
+            },
+            "labelCell": {
+              "cell": "C270",
+              "value": "Enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "D270",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E270",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-71-266",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-71-266-enclosure-native.png",
+        "original": "/workspace/generated_images/exec-bc65c1aa-9d05-42ab-a962-8df61924c91b.png",
+        "prompt": "ONE standalone native productiongameprop for an alienhuntercity. Realistic prerendered2.5D, orthographicthreequarter elevated32degrees, warmtop-leftlight, charcoalporousbasalt, thickangular agedbronze braces, mutedamber accents. Transparent RGBA requested1024square. ESSENTIAL WIDE FRAMING: deliberately show object SMALL at the center, only55percent of the canvas width and55percent of height; blank transparent area of approximately220pixels allaround. Do not zoomin. All feet/extremities must have a verybroad transparent border. No scenery, floor tile, ground dirt, castshadow, detachedparts, person, animal, text, labels, watermark or atlas. One wholeconnectedobject only. SUBJECT: one complete EMPTY small ALIENFAUNA ENCLOSURE compound, octagonal waist-high enclosure with chunky basaltcornerposts and three thickagedbronze horizontalrails between them. Entire closedpolygon, backandfrontfence bothshown, one visiblydefined short hingedaccessgate in itsfrontleftface, heavypracticalmechanicalhinge and latch. Empty floor area must be alpha-transparent, no stoneplatform or paintedground whatsoever; holesbetweenbars alsoalpha-transparent. No roof, no energyfield, no animal, nofeedingobjects. It should read as a functional unified containment assembly for largealienreptiles, not as a scene or humanpaddock. One largeconnectedfenceobject fromoutside3/4, frontfence naturallyoccludes the emptyinterior.",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/native-technical-inspection.json",
+        "minimumMargin": 220,
+        "findings": "One connected empty polygon enclosure with a shut hinged front gate; transparent ground and bar gaps. Foreground/back occlusion and entry/collision would need native runtime layering design; no pixel split made.",
+        "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+        "originalSha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+        "bytes": 1029855,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 28938,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              42,
+              1220,
+              1208
+            ],
+            "marginsLTRB": [
+              0,
+              42,
+              34,
+              46
+            ],
+            "canvasEdgePixels": 1,
+            "occupiedPixels": 392770
+          },
+          "2": {
+            "bboxExclusive": [
+              119,
+              296,
+              1172,
+              957
+            ],
+            "marginsLTRB": [
+              119,
+              296,
+              82,
+              297
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 363832
+          },
+          "8": {
+            "bboxExclusive": [
+              121,
+              298,
+              1170,
+              955
+            ],
+            "marginsLTRB": [
+              121,
+              298,
+              84,
+              299
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 352481
+          },
+          "128": {
+            "bboxExclusive": [
+              122,
+              299,
+              1169,
+              954
+            ],
+            "marginsLTRB": [
+              122,
+              299,
+              85,
+              300
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 343136
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "proposedPivot": {
+          "pixels": [
+            645.5,
+            954
+          ],
+          "normalized": [
+            0.5147527910685805,
+            0.7607655502392344
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "49917c5729aec42057dc75948707f1e06851e4a43b55b9a91e484c6a860db626"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-71-267",
+      "label": "poteau enclos",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/266"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/266"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/266"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1944
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 271,
+            "idCell": {
+              "cell": "A271",
+              "value": "target-v81-71-267"
+            },
+            "labelCell": {
+              "cell": "D271",
+              "value": "poteau enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "G271",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F271",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 271,
+            "idCell": {
+              "cell": "A271",
+              "value": "target-v81-71-267"
+            },
+            "labelCell": {
+              "cell": "C271",
+              "value": "poteau enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "D271",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E271",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-71-267",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-71-267-enclosure-post-native.png",
+        "original": "/workspace/generated_images/exec-6a2ddbf6-6603-468a-8aa7-c5cf1bd281c3.png",
+        "prompt": "Production game prop candidate for an alien hunter city, ONE object, realistic prerendered2.5D style. Orthographic threequarter camera elevated32degrees, warm top-left light, charcoal porousbasalt and thick angular agedbronzeplates, very restrained amber. Strong chunky silhouette, matte chippedtexture, no humanfarmstyle. Requested1024x1024 true transparent RGBA canvas, object compact in central65percent with generous blank alpha margin at least100px, entire feet and protrusions visible. No ground terrain tile, no detached shadow, scenery, text, labels, watermarks, person or animal. Singleview and singleobject, no spritesheet. Static candidate only. SUBJECT: one single ANIMAL ENCLOSURE POST, waist-high functional restraint stanchion for large alien reptiles. Squat hexagonal basaltfoot, short thick faceted bronze-reinforced upright, two clearly visible mechanical rail sockets at different heights on its RIGHT-facing side and one capped opposite socket, small recessed lock pin and one muted amber status pip. A blunt flatcap rather than lamp or tower. No rail attached, no rope or chain, no emitter slit. The empty sockets make its purpose readable. Complete compactpost stands alone, no stoneplatformaroundit.",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/native-technical-inspection.json",
+        "minimumMargin": 100,
+        "findings": "Whole compact stanchion with two right-hand sockets and a capped opposing socket; one amber lock indicator. Rail socket alignment and load-bearing footprint are not runtime qualified.",
+        "sha256": "cd67258d8e3931edc4ba42401dcdfaea41f78de3e1995b46873aebdaf0efe9b0",
+        "originalSha256": "cd67258d8e3931edc4ba42401dcdfaea41f78de3e1995b46873aebdaf0efe9b0",
+        "bytes": 1293842,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 7073,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              32,
+              1230,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              32,
+              24,
+              0
+            ],
+            "canvasEdgePixels": 16,
+            "occupiedPixels": 499364
+          },
+          "2": {
+            "bboxExclusive": [
+              283,
+              70,
+              970,
+              1182
+            ],
+            "marginsLTRB": [
+              283,
+              70,
+              284,
+              72
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 492291
+          },
+          "8": {
+            "bboxExclusive": [
+              284,
+              72,
+              968,
+              1180
+            ],
+            "marginsLTRB": [
+              284,
+              72,
+              286,
+              74
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 488785
+          },
+          "128": {
+            "bboxExclusive": [
+              286,
+              73,
+              967,
+              1179
+            ],
+            "marginsLTRB": [
+              286,
+              73,
+              287,
+              75
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 485703
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "proposedPivot": {
+          "pixels": [
+            626.0,
+            1179
+          ],
+          "normalized": [
+            0.49920255183413076,
+            0.9401913875598086
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "b5242b55305fdf6d25b3f8264ed5aa44516d31b81c571a86b23966eff541f2ac"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-71-268",
+      "label": "barrière enclos",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/267"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/267"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/267"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1945
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 272,
+            "idCell": {
+              "cell": "A272",
+              "value": "target-v81-71-268"
+            },
+            "labelCell": {
+              "cell": "D272",
+              "value": "barrière enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "G272",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F272",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 272,
+            "idCell": {
+              "cell": "A272",
+              "value": "target-v81-71-268"
+            },
+            "labelCell": {
+              "cell": "C272",
+              "value": "barrière enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "D272",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E272",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-71-268",
+        "attempt": 2,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+        "original": "/workspace/generated_images/exec-e2b7a9c8-afda-454c-b045-e0ee87b94a3b.png",
+        "prompt": "ONE standalone native productiongameprop for an alienhuntercity. Realistic prerendered2.5D, orthographicthreequarter elevated32degrees, warmtop-leftlight, charcoalporousbasalt, thickangular agedbronze braces, mutedamber accents. Transparent RGBA requested1024square. ESSENTIAL WIDE FRAMING: deliberately show object SMALL at the center, only55percent of the canvas width and55percent of height; blank transparent area of approximately220pixels allaround. Do not zoomin. All feet/extremities must have a verybroad transparent border. No scenery, floor tile, ground dirt, castshadow, detachedparts, person, animal, text, labels, watermark or atlas. One wholeconnectedobject only. SUBJECT: one SHORT connected ANIMALENCLOSURE FENCE module, two squatthickfacetedposts on separatecompactbasaltfeet joinedby exactlythree stout horizontal agedbronzerails withchunky mechanicaljoiners. Actualtransparentair betweenbars. Wide-low functional barrierforreptiles, no energymembrane, spikes or door. Frontplaneruns fromlowerleft toupperright. IMPORTANT previousframingwasrefusedbecause rightfoot hadonlyonepixel margin. Drawthis ORIGINAL newcomplete module substantiallySMALLER, at most55percentcanvaswidth, centeritwith equalblankspace leftandright; no foot anywhere nearimageedges. Oneconnectedwhole, bothfeetcomplete.",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/native-technical-inspection.json",
+        "minimumMargin": 220,
+        "findings": "One short connected three-rail module with two whole footed posts and transparent air gaps. Preferred second native generation has broad margins; independent assets do not yet prove modular join alignment.",
+        "sha256": "522bec7b485f7d7742f835ca8a2f609970998f906247d6258b8a5e71aff927cf",
+        "originalSha256": "522bec7b485f7d7742f835ca8a2f609970998f906247d6258b8a5e71aff927cf",
+        "bytes": 364392,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 7818,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              41,
+              103,
+              1082,
+              1230
+            ],
+            "marginsLTRB": [
+              41,
+              103,
+              172,
+              24
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 115877
+          },
+          "2": {
+            "bboxExclusive": [
+              324,
+              434,
+              978,
+              875
+            ],
+            "marginsLTRB": [
+              324,
+              434,
+              276,
+              379
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 108059
+          },
+          "8": {
+            "bboxExclusive": [
+              326,
+              436,
+              977,
+              874
+            ],
+            "marginsLTRB": [
+              326,
+              436,
+              277,
+              380
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 104912
+          },
+          "128": {
+            "bboxExclusive": [
+              326,
+              437,
+              975,
+              873
+            ],
+            "marginsLTRB": [
+              326,
+              437,
+              279,
+              381
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 101665
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "proposedPivot": {
+          "pixels": [
+            651.5,
+            873
+          ],
+          "normalized": [
+            0.5195374800637959,
+            0.6961722488038278
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "5a79982fc0a39356ee1b76d1a844fadb4e95a7a34d4ba1f7279bb1741db1a6f2"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-71-270",
+      "label": "barrière énergie",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/269"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/269"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/269"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1947
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 274,
+            "idCell": {
+              "cell": "A274",
+              "value": "target-v81-71-270"
+            },
+            "labelCell": {
+              "cell": "D274",
+              "value": "barrière énergie"
+            },
+            "historicalPresenceCell": {
+              "cell": "G274",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F274",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 274,
+            "idCell": {
+              "cell": "A274",
+              "value": "target-v81-71-270"
+            },
+            "labelCell": {
+              "cell": "C274",
+              "value": "barrière énergie"
+            },
+            "historicalPresenceCell": {
+              "cell": "D274",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E274",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "AUTHORED-ANIMATION",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-71-270",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png",
+        "original": "/workspace/generated_images/exec-5edf163f-ca46-4dae-b248-160debb26caa.png",
+        "prompt": "ONE standalone native productiongameprop for an alienhuntercity. Realistic prerendered2.5D, orthographicthreequarter elevated32degrees, warmtop-leftlight, charcoalporousbasalt, thickangular agedbronze braces, mutedamber accents. Transparent RGBA requested1024square. ESSENTIAL WIDE FRAMING: deliberately show object SMALL at the center, only55percent of the canvas width and55percent of height; blank transparent area of approximately220pixels allaround. Do not zoomin. All feet/extremities must have a verybroad transparent border. No scenery, floor tile, ground dirt, castshadow, detachedparts, person, animal, text, labels, watermark or atlas. One wholeconnectedobject only. SUBJECT: one integrated LOW ALIENFAUNA ENERGYBARRIER module; two thick short faceted darkbasalt posts on separate compactfeet, eachbronzeclad, joined by one narrow footrail and a single translucent amberforcefield pane between their innerfaces. Lowwide containmentmodule, knee-to-waistheight relative to alienkeeper, no tallarch/no overheadbeam. Emissionnodes are functional recessed horizontalslits; keepgoldlightrestrained. Thepanehas actual semitransparentalpha with veryfaintangulargrid, notanopaque slab. One connectedassembly, fullbothfeet, a safetybarrier for dangerousreptiles distinct froma pedestrianportal. No animals or additionalstandaloneemitter.",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/native-technical-inspection.json",
+        "minimumMargin": 220,
+        "findings": "One low connected two-post energy barrier with base rail and translucent membrane, visibly distinct from the tall pedestrian door. No live containment, collision or animated state proven.",
+        "sha256": "1dcc79dda8a24c76617b0d76fdbdfee4a5771f381a839fd52548e39c49a44cec",
+        "originalSha256": "1dcc79dda8a24c76617b0d76fdbdfee4a5771f381a839fd52548e39c49a44cec",
+        "bytes": 423732,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 4248,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              41,
+              35,
+              1210,
+              1182
+            ],
+            "marginsLTRB": [
+              41,
+              35,
+              44,
+              72
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 153136
+          },
+          "2": {
+            "bboxExclusive": [
+              273,
+              472,
+              992,
+              904
+            ],
+            "marginsLTRB": [
+              273,
+              472,
+              262,
+              350
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 148888
+          },
+          "8": {
+            "bboxExclusive": [
+              275,
+              474,
+              990,
+              902
+            ],
+            "marginsLTRB": [
+              275,
+              474,
+              264,
+              352
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 147205
+          },
+          "128": {
+            "bboxExclusive": [
+              275,
+              474,
+              989,
+              901
+            ],
+            "marginsLTRB": [
+              275,
+              474,
+              265,
+              353
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 144242
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "proposedPivot": {
+          "pixels": [
+            632.5,
+            901
+          ],
+          "normalized": [
+            0.5043859649122807,
+            0.7185007974481659
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "cb38b79f9dc9b4f6bcda10e8bae476d5273ef7071653db46032c24927c82a391"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-71-273",
+      "label": "support harnais",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/272"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/272"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/272"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1950
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 277,
+            "idCell": {
+              "cell": "A277",
+              "value": "target-v81-71-273"
+            },
+            "labelCell": {
+              "cell": "D277",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "G277",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F277",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 277,
+            "idCell": {
+              "cell": "A277",
+              "value": "target-v81-71-273"
+            },
+            "labelCell": {
+              "cell": "C277",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "D277",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E277",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-71-273",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+        "original": "/workspace/generated_images/exec-84f30631-75e6-43de-8734-af8488e478db.png",
+        "prompt": "Create one original native production sprite for the Yautja Homeworld art catalogue target-v81-71-273, label support harnais, FAUNA animal-care category. SUBJECT: one EMPTY low animal-care harness-support gantry for a large alien beast. This is a stout LOW open service frame, wider than tall, an open rectangular walk-through bay with two waist-high side beams, four squat structural feet and two broad adjustable bronze care-support arms parked fully open on its sides. There is NO beast, NO actual harness hanging in it, NO suspended saddle and NO person. The empty central standing space and open front/back must read clearly. This is veterinary/care restraint support, visibly different from a tall tack-display stand, cage or fence. A little dark red-brown protective leather on the inner support pads is allowed. No roof, cage bars or raised floor inside the empty bay. Four individual structural feet are integral parts of this ONE assembled object, not separate loose props.\nSTYLE LOCK: realistic detailed 2D game prop, cinematic physically plausible surfaces; deep charcoal POROUS BASALT structural foot-blocks with irregular shallow pores, thick ANGULAR patinated bronze clamps, beams and reinforced beveled plates with restrained golden edge wear; minimal amber only as at most two tiny non-glowing indicators, no blue/cyan and no energy effects. Dark desaturated red-brown leather may accent genuine animal-contact pads. Keep silhouette chunky, readable and functional, with large simple structural masses and restrained detail. Elevated orthographic THREE-QUARTER camera, 32-degree downward view; front working edge toward the lower-left, visible top surfaces and right side; no wide-angle lens. One soft key light from upper-left, calm neutral fill, no dramatic cast shadow.\nTECHNICAL OUTPUT: request1024x1024 transparent PNG RGBA. Exactly ONE COMPLETE assembled object centered, full silhouette and all four feet entirely visible. Object occupies at most76percent of both canvas dimensions with AT LEAST96 pixels genuinely empty transparent margin on EVERY side; larger margins are welcome. Preserve every beam tip, latch, foot and pad inside safe frame. Real alpha transparency including through all openings; no background, scenery, floor tile, ground slab around it, checkerboard, magenta, vignette, caption, text, grid, mockup border, watermark or duplicate object. Native authored image only; do not present a sheet or multiple views. This is an original lore-compatible design, not a claim of a canonical appliance.",
+        "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.prompt.txt",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.receipt.json",
+        "minimumMargin": 96,
+        "findings": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "sha256": "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a",
+        "originalSha256": "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a",
+        "bytes": 1222952,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 16394,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              23,
+              1223,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              23,
+              31,
+              0
+            ],
+            "canvasEdgePixels": 13,
+            "occupiedPixels": 435406
+          },
+          "2": {
+            "bboxExclusive": [
+              25,
+              165,
+              1222,
+              1144
+            ],
+            "marginsLTRB": [
+              25,
+              165,
+              32,
+              110
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 419012
+          },
+          "8": {
+            "bboxExclusive": [
+              27,
+              167,
+              1220,
+              1142
+            ],
+            "marginsLTRB": [
+              27,
+              167,
+              34,
+              112
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 412812
+          },
+          "128": {
+            "bboxExclusive": [
+              28,
+              168,
+              1219,
+              1141
+            ],
+            "marginsLTRB": [
+              28,
+              168,
+              35,
+              113
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 406755
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "proposedPivot": {
+          "pixels": [
+            623.5,
+            1141
+          ],
+          "normalized": [
+            0.4972089314194577,
+            0.9098883572567783
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "db2492396e18d7838adb4e5250025504d0e96aa860b5b14e16d8b342079fc348"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-71-276",
+      "label": "cage petite",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/275"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/275"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/275"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1953
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 280,
+            "idCell": {
+              "cell": "A280",
+              "value": "target-v81-71-276"
+            },
+            "labelCell": {
+              "cell": "D280",
+              "value": "cage petite"
+            },
+            "historicalPresenceCell": {
+              "cell": "G280",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F280",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 280,
+            "idCell": {
+              "cell": "A280",
+              "value": "target-v81-71-276"
+            },
+            "labelCell": {
+              "cell": "C280",
+              "value": "cage petite"
+            },
+            "historicalPresenceCell": {
+              "cell": "D280",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E280",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-71-276",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "original": "/workspace/generated_images/exec-19a5b7d9-f49d-425a-80f6-a8f5d76c0ea9.png",
+        "prompt": "Create a single native hand-painted realistic game prop sprite for a Yautja alien Homeworld: ONE SMALL EMPTY FAUNA CONTAINMENT CAGE. Requested output 1024 by 1024 PNG with TRUE transparent alpha background. This is a brand-new original asset, one whole independent object, not an atlas, not a scene.\n\nVISUAL FAMILY: charcoal porous volcanic basalt, thick worn angular patinated bronze reinforcement, tiny restrained amber status slit. Materials have crisp realistic worn edges, pitted basalt and fine bronze scratches, matching a serious dark sci-fi hunting-clan homeworld. Orthographic elevated three-quarter camera at approximately 32 degrees; show the front and right side, with the top visible. Soft directional light from upper left, controlled ambient occlusion contained inside the actual object. No cast floor shadow or background haze.\n\nSMALL CAGE STRUCTURE: compact low hexagonal containment pen, broader than tall, with a faceted solid basalt floor and short basalt plinth feet. Six angular vertical bronze ribs and closely spaced thinner angular bronze bars form the sides; the spaces between bars are visibly empty and truly transparent where there is no physical surface. The top is a restrained open geometric barred roof, with substantial structural rails, not a fabric canopy or dome. A shut small hexagonal service door with a practical latch is integrated into the near-facing side. One unobtrusive handle may be integrated into the top rail. This is a robust small fauna container with a precise engineered silhouette, not a human bird cage, pet carrier, stable, medieval jail, shipping crate, or building. It is visibly a cage rather than an opaque box. Interior is entirely EMPTY. No animal, person, creature silhouette, bones, food, lettering, symbols, labels, numbers, skull ornament, loose props, duplicated objects, or decorative detached particles.\n\nCOMPOSITION CONTRACT: one object only, completely visible, centered on the transparent canvas. Keep every top rail, side bar, foot and latch inside the frame. A clear empty transparent border of at least 64 pixels on all four sides; the object should occupy about 70 to 76 percent of the canvas width and height, without enlarging to the edges. All physical surfaces and the complete support base must be visible. Solid shapes have clean alpha edges, empty bar gaps are transparent, no opaque black matte, no checkerboard painted into the image, no glow halo. Do not crop any part. Do not create a sprite sheet, multiple views or a ground tile.",
+        "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-276-cage-petite.prompt.txt",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-276-cage-petite.inspection.json",
+        "minimumMargin": 64,
+        "findings": "Compact faceted cage, open geometric barred roof, shut near-facing latch door, six corner reinforcements and pitted basalt floor/base.",
+        "sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+        "originalSha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+        "bytes": 2077790,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 22893,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              23,
+              9,
+              1236,
+              1254
+            ],
+            "marginsLTRB": [
+              23,
+              9,
+              18,
+              0
+            ],
+            "canvasEdgePixels": 51,
+            "occupiedPixels": 825219
+          },
+          "2": {
+            "bboxExclusive": [
+              93,
+              121,
+              1180,
+              1175
+            ],
+            "marginsLTRB": [
+              93,
+              121,
+              74,
+              79
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 802326
+          },
+          "8": {
+            "bboxExclusive": [
+              95,
+              123,
+              1178,
+              1173
+            ],
+            "marginsLTRB": [
+              95,
+              123,
+              76,
+              81
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 789795
+          },
+          "128": {
+            "bboxExclusive": [
+              96,
+              124,
+              1177,
+              1172
+            ],
+            "marginsLTRB": [
+              96,
+              124,
+              77,
+              82
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 778542
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "proposedPivot": {
+          "pixels": [
+            636.5,
+            1172
+          ],
+          "normalized": [
+            0.5075757575757576,
+            0.9346092503987241
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "12c0392dbb73d2087c064ed0827bdd6547d01b939437ed9120761de37b6f00d5"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-71-277",
+      "label": "cage moyenne",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/276"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/276"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/276"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1954
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 281,
+            "idCell": {
+              "cell": "A281",
+              "value": "target-v81-71-277"
+            },
+            "labelCell": {
+              "cell": "D281",
+              "value": "cage moyenne"
+            },
+            "historicalPresenceCell": {
+              "cell": "G281",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F281",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 281,
+            "idCell": {
+              "cell": "A281",
+              "value": "target-v81-71-277"
+            },
+            "labelCell": {
+              "cell": "C281",
+              "value": "cage moyenne"
+            },
+            "historicalPresenceCell": {
+              "cell": "D281",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E281",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-71-277",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+        "original": "/workspace/generated_images/exec-a969f886-dd7f-442f-925b-5915d5dd9612.png",
+        "prompt": "Create a single native hand-painted realistic game prop sprite for a Yautja alien Homeworld. Requested output 1024 by 1024 PNG with TRUE transparent alpha background. A brand-new original asset: ONE whole independent empty cage, not an atlas or scene.\nVISUAL FAMILY LOCK: charcoal porous volcanic basalt, thick worn angular patinated bronze reinforcement, tiny restrained amber status indicator. Crisp realistic worn edges, pitted basalt, fine bronze scratches, serious dark sci-fi hunting-clan architecture. Orthographic elevated three-quarter camera approximately32degrees; front and right side visible, top visible. Directional upper-left lighting. Ambient occlusion only within the actual structure. No floor shadow, haze, environment or ground tile.\nSUBJECT: ONE MEDIUM FAUNA CONTAINMENT CAGE. Design this as an elongated low oblong cage, length almost twice its height, unlike a compact hexagonal small cage. A long rectangular porous basalt floor is supported on two narrow low skids. Four chamfered basalt corner shoulders are clamped by thick bronze frames. Many closely spaced upright bronze bars run along the two long sides, with two substantial horizontal waist rails; open-bar roof uses simple long parallel rails, no solid roof. The far end has a sloping angular end-frame. On the near long side a closed wide sliding-bar service hatch has one practical bronze lock and tiny amber safety slit. The visual identity is a medium transport/holding cage: low, long, clean engineered construction. Keep its support base compact, not a pedestal or road vehicle. No wheels, chains, cables, handles on separate props or extra cage.\nEMPTY CAGE ONLY: show real open bar gaps, with transparency wherever no actual physical surface exists. Interior completely empty. No animals, creatures, people, silhouettes, bones, food, trophies, loose props, text, letters, labels, numbers, icons, skull ornament or floating particles. One connected object with one support base. Must read as an engineered alien barred cage, not an opaque crate, medieval jail, bird cage, human kennel, stable, building, or sci-fi room.\nCOMPOSITION: center the entire independent object on a genuinely transparent square canvas. Requested1024×1024. Leave at least64pixels completely empty transparent margin on ALL FOUR SIDES. Entire roof, posts, door, latch, skids and feet must fit comfortably; use approximately70–76percent of the frame width/height and never enlarge to any edge. True alpha holes between bars; no black matte and no painted checkerboard. Clean solid edges without glow halo. No cropping, duplicate views, sprite-sheet grid or scene.",
+        "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-277-cage-moyenne.prompt.txt",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-277-cage-moyenne.inspection.json",
+        "minimumMargin": 64,
+        "findings": "Low elongated cage with reinforced chamfered basalt corners, long open bronze roof rails and closed long-side barred hatch.",
+        "sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+        "originalSha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+        "bytes": 1691658,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 45317,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              33,
+              25,
+              1230,
+              1230
+            ],
+            "marginsLTRB": [
+              33,
+              25,
+              24,
+              24
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 678650
+          },
+          "2": {
+            "bboxExclusive": [
+              42,
+              210,
+              1221,
+              1048
+            ],
+            "marginsLTRB": [
+              42,
+              210,
+              33,
+              206
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 633333
+          },
+          "8": {
+            "bboxExclusive": [
+              44,
+              210,
+              1220,
+              1047
+            ],
+            "marginsLTRB": [
+              44,
+              210,
+              34,
+              207
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 607951
+          },
+          "128": {
+            "bboxExclusive": [
+              44,
+              211,
+              1218,
+              1046
+            ],
+            "marginsLTRB": [
+              44,
+              211,
+              36,
+              208
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 586214
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "proposedPivot": {
+          "pixels": [
+            632.0,
+            1046
+          ],
+          "normalized": [
+            0.5039872408293461,
+            0.8341307814992025
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "de76157e4a94cc7081c0203d5b25cb492a412dd9ffaac147d8d20391d5aca60b"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-71-278",
+      "label": "cage lourde",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/277"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/277"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/277"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1955
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 282,
+            "idCell": {
+              "cell": "A282",
+              "value": "target-v81-71-278"
+            },
+            "labelCell": {
+              "cell": "D282",
+              "value": "cage lourde"
+            },
+            "historicalPresenceCell": {
+              "cell": "G282",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F282",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 282,
+            "idCell": {
+              "cell": "A282",
+              "value": "target-v81-71-278"
+            },
+            "labelCell": {
+              "cell": "C282",
+              "value": "cage lourde"
+            },
+            "historicalPresenceCell": {
+              "cell": "D282",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E282",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-71-278",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "original": "/workspace/generated_images/exec-5cfe7ec9-8559-4ade-b3d6-392a5fbd5654.png",
+        "prompt": "Create a single native hand-painted realistic game prop sprite for a Yautja alien Homeworld. Requested output 1024 by 1024 PNG with TRUE transparent alpha background. A brand-new original asset: ONE whole independent empty cage, not an atlas or scene.\nVISUAL FAMILY LOCK: charcoal porous volcanic basalt, thick worn angular patinated bronze reinforcement, tiny restrained amber status indicator. Crisp realistic worn edges, pitted basalt, fine bronze scratches, serious dark sci-fi hunting-clan architecture. Orthographic elevated three-quarter camera approximately32degrees; front and right side visible, top visible. Directional upper-left lighting. Ambient occlusion only within the actual structure. No floor shadow, haze, environment or ground tile.\nSUBJECT: ONE HEAVY FAUNA CONTAINMENT CAGE. Distinct heavy structural design: a broad, deep rectangular barred containment cage built on two thick low reinforced basalt sled runners. Three giant angular transverse bronze structural arches bridge over the roof and down the sides, each arch buttressed to thick porous basalt corners. Wide bronze cross-braces and a double-row barred lower wall communicate strength. Between these substantial load-bearing ribs, clearly spaced open vertical bars and open roof bars show an empty interior; do NOT turn this into a closed armored shipping crate. The near short face has a single enormous reinforced shut barred door with a horizontal locking beam and one tiny amber latch indicator. Industrial sculpted Yautja geometry, not decorative gothic spikes. Overall mass broad and muscular, visibly heavier architecture than a small hexagonal cage or a low narrow medium cage. Entire support runners and arch tops visible. No crane hook, separate machines, attached weapons, wheels or energy field.\nEMPTY CAGE ONLY: show real open bar gaps, with transparency wherever no actual physical surface exists. Interior completely empty. No animals, creatures, people, silhouettes, bones, food, trophies, loose props, text, letters, labels, numbers, icons, skull ornament or floating particles. One connected object with one support base. Must read as an engineered alien barred cage, not an opaque crate, medieval jail, bird cage, human kennel, stable, building, or sci-fi room.\nCOMPOSITION: center the entire independent object on a genuinely transparent square canvas. Requested1024×1024. Leave at least64pixels completely empty transparent margin on ALL FOUR SIDES. Entire roof, posts, door, latch, skids and feet must fit comfortably; use approximately70–76percent of the frame width/height and never enlarge to any edge. True alpha holes between bars; no black matte and no painted checkerboard. Clean solid edges without glow halo. No cropping, duplicate views, sprite-sheet grid or scene.",
+        "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-278-cage-lourde.prompt.txt",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-278-cage-lourde.inspection.json",
+        "minimumMargin": 64,
+        "findings": "Heavy cage with three massive transverse arches, double-height side bars, reinforced end door and two thick support runners.",
+        "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+        "originalSha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+        "bytes": 2244917,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 27465,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              9,
+              1236,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              9,
+              18,
+              0
+            ],
+            "canvasEdgePixels": 61,
+            "occupiedPixels": 866345
+          },
+          "2": {
+            "bboxExclusive": [
+              28,
+              105,
+              1227,
+              1159
+            ],
+            "marginsLTRB": [
+              28,
+              105,
+              27,
+              95
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 838880
+          },
+          "8": {
+            "bboxExclusive": [
+              30,
+              107,
+              1225,
+              1157
+            ],
+            "marginsLTRB": [
+              30,
+              107,
+              29,
+              97
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 825728
+          },
+          "128": {
+            "bboxExclusive": [
+              31,
+              108,
+              1224,
+              1156
+            ],
+            "marginsLTRB": [
+              31,
+              108,
+              30,
+              98
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 814923
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "proposedPivot": {
+          "pixels": [
+            627.5,
+            1156
+          ],
+          "normalized": [
+            0.5003987240829346,
+            0.9218500797448166
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "1aff10c42f0375634dc6b9f7339fd210185352c6e1d6b914450ff66531d04c88"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-72-282",
+      "label": "support harnais",
+      "section": 72,
+      "family": "MONTURES",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/281"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/281"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/281"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1964
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 286,
+            "idCell": {
+              "cell": "A286",
+              "value": "target-v81-72-282"
+            },
+            "labelCell": {
+              "cell": "D286",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "G286",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F286",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 286,
+            "idCell": {
+              "cell": "A286",
+              "value": "target-v81-72-282"
+            },
+            "labelCell": {
+              "cell": "C286",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "D286",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E286",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-72-282",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png",
+        "original": "/workspace/generated_images/exec-cb284dad-b21a-4b5d-9dd7-25d31b231c8f.png",
+        "prompt": "Create one original native production sprite for the Yautja Homeworld catalogue target-v81-72-282, label support harnais, MOUNTS equipment category. SUBJECT: ONE EMPTY TALL VERTICAL tack/harness support trestle. A compact freestanding upright angular bronze spine stands on one chunky charcoal basalt tripod-foot base; the spine carries a broad upper transverse fork with gently downturned EMPTY blunt pegs for reins and straps, and a smaller lower open cross-arm with two EMPTY attachment loops. It is a clearly VERTICAL equipment stand, height about1.6times its width. Make a distinctive single upright tree-like service silhouette. NO hanging harness, NO saddle, NO animal, NO rider, NO actual loose straps. Every peg and loop is integrated to this ONE object. This is a place to store mount tack, NOT the wide low four-foot animal-care gantry, not a chair, not a saddle rack, not a humanoid statue. Functional plain solid metal, no ornate totem face.\nSTYLE LOCK: realistic detailed2D game prop; physically plausible cinematic surfaces matching charcoal porous BASALT and thick ANGULAR patinated bronze, deep dark metal faces, controlled golden worn bevels, angular reinforcing bands and large readable masses. Minimal amber at most one small non-glowing status stud. No blue/cyan, energy, screens or futuristic holograms. No broad illuminated seams. Tiny dark red-brown leather protective wraps on the EMPTY support pegs are allowed. Elevated orthographic THREE-QUARTER camera32-degree downward view, working face toward lower-left, visible top surfaces and right side, no perspective lens distortion. Soft upper-left key light, neutral fill, no ground cast-shadow patch.\nTECHNICAL OUTPUT: request1024x1024 true transparent PNG RGBA. Exactly one whole independent assembled object; no sheet, no multiple views. IMPORTANT small centered composition: the ENTIRE object must fit inside the CENTRAL74percent of canvas width AND height, leaving generous fully transparent margin of at least96 pixels on all four sides and preferably140. Do NOT zoom in to fill the square. Every foot, top tip and hook remains fully visible. Background and all gaps are genuinely transparent alpha; no checkerboard, magenta, floor tile, scene, pedestal outside the integral foot, text, labels, grid, border, watermark, duplicate object, people or beast. Native original lore-compatible local design; no claim of a canonical Yautja appliance.",
+        "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.prompt.txt",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.receipt.json",
+        "minimumMargin": 96,
+        "findings": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "sha256": "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc",
+        "originalSha256": "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc",
+        "bytes": 592752,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 14505,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              23,
+              21,
+              1224,
+              1254
+            ],
+            "marginsLTRB": [
+              23,
+              21,
+              30,
+              0
+            ],
+            "canvasEdgePixels": 10,
+            "occupiedPixels": 203622
+          },
+          "2": {
+            "bboxExclusive": [
+              336,
+              78,
+              917,
+              1173
+            ],
+            "marginsLTRB": [
+              336,
+              78,
+              337,
+              81
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 189117
+          },
+          "8": {
+            "bboxExclusive": [
+              338,
+              80,
+              915,
+              1170
+            ],
+            "marginsLTRB": [
+              338,
+              80,
+              339,
+              84
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 184616
+          },
+          "128": {
+            "bboxExclusive": [
+              339,
+              81,
+              914,
+              1170
+            ],
+            "marginsLTRB": [
+              339,
+              81,
+              340,
+              84
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 179958
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "proposedPivot": {
+          "pixels": [
+            626.5,
+            1169
+          ],
+          "normalized": [
+            0.4996012759170654,
+            0.9322169059011164
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "0997ddf81f1f2871ae325a1fd8a73019a6ced8d88aa58393048a4942b75c644e"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-72-283",
+      "label": "harnais",
+      "section": 72,
+      "family": "MONTURES",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/282"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/282"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/282"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1965
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 287,
+            "idCell": {
+              "cell": "A287",
+              "value": "target-v81-72-283"
+            },
+            "labelCell": {
+              "cell": "D287",
+              "value": "harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "G287",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F287",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 287,
+            "idCell": {
+              "cell": "A287",
+              "value": "target-v81-72-283"
+            },
+            "labelCell": {
+              "cell": "C287",
+              "value": "harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "D287",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E287",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-72-283",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+        "original": "/workspace/generated_images/exec-43ebc76e-a7c7-49b5-8e47-aab143ccc882.png",
+        "prompt": "Create ONE original native independent game equipment sprite for Yautja Homeworld target-v81-72-283, label harnais, MOUNTS category. SUBJECT: ONE COMPLETE EMPTY ALIEN MOUNT BODY HARNESS, separately displayed without an animal, rider, rack or mannequin. A functional connected assembly sized for a muscular long-necked four-legged alien mount: a broad charcoal bronze chest-yoke plate with layered angular cheek-free side fittings, a thick red-brown leather chest strap, two visibly connected curved body/girth straps with heavy bronze buckles and four short attachment loops. The straps and yoke form one coherent OPEN wearable harness with visible empty space inside the torso loop. Lay it naturally as one compact three-dimensional equipment bundle with the chest yoke facing lower-left, the connected torso loops curving toward upper-right; show all connections clearly. It is wearable flexible tack, not a saddle: NO seat, pommel, stirrups, floor base, stone blocks, display stand, animal body, skin, head or mouth bit. NO pile of disconnected belts. Avoid human Western/English equestrian shapes; original local alien engineered tack, anatomical fit not claimed proven.\nSTYLE LOCK: realistic detailed2D game prop, rich physically plausible surfaces with dark charcoal metal, thick angular PATINATED BRONZE framing and restrained gold worn bevels, dark desaturated RED-BROWN LEATHER with robust visible stitching and blunt functional buckles. Use the same chunky angular construction and restrained cinematic detail as porous charcoal basalt/bronze Homeworld service props, but NO basalt or stone on this wearable harness. Palette overwhelmingly charcoal, patinated bronze and red-brown, no bright cyan, blue, neon or magical glow. At most one tiny dull amber rivet. Elevated orthographic THREE-QUARTER view from32degrees above, front working face lower-left, visible top surfaces/right side; upper-left soft key light, neutral fill, no perspective distortion, no cast floor-shadow patch.\nTECHNICAL OUTPUT: request1024x1024 genuine transparent PNG RGBA. Exactly one complete connected harness, not a sheet or multiple views. Entire silhouette centered within CENTRAL70percent of canvas width and height, leaving AT LEAST96pixels completely empty transparent margin on EVERY side, preferably150. Keep every strap end, buckle and loop fully in-frame. All interior openings must be genuinely transparent alpha. No background, floor tile, checkerboard, magenta, gradient, labels, text, border, grid, watermark, duplicates, person or animal. Original lore-compatible local design; preserve raw native image as generated.",
+        "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-283-mount-harness-native.prompt.txt",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-283-mount-harness-native.receipt.json",
+        "minimumMargin": 96,
+        "findings": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "sha256": "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45",
+        "originalSha256": "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45",
+        "bytes": 1405605,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 17778,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              31,
+              1206,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              31,
+              48,
+              0
+            ],
+            "canvasEdgePixels": 53,
+            "occupiedPixels": 531054
+          },
+          "2": {
+            "bboxExclusive": [
+              118,
+              154,
+              1202,
+              1061
+            ],
+            "marginsLTRB": [
+              118,
+              154,
+              52,
+              193
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 513276
+          },
+          "8": {
+            "bboxExclusive": [
+              121,
+              156,
+              1200,
+              1061
+            ],
+            "marginsLTRB": [
+              121,
+              156,
+              54,
+              193
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 505970
+          },
+          "128": {
+            "bboxExclusive": [
+              122,
+              157,
+              1197,
+              1060
+            ],
+            "marginsLTRB": [
+              122,
+              157,
+              57,
+              194
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 498815
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "proposedPivot": {
+          "pixels": [
+            660.5,
+            1060
+          ],
+          "normalized": [
+            0.5267145135566188,
+            0.8452950558213717
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "92d38503ede6ce3793f71bd3eb045eae6946b3427a9485cad970a210c391654f"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-72-284",
+      "label": "selle",
+      "section": 72,
+      "family": "MONTURES",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/283"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/283"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/283"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1966
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 288,
+            "idCell": {
+              "cell": "A288",
+              "value": "target-v81-72-284"
+            },
+            "labelCell": {
+              "cell": "D288",
+              "value": "selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "G288",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F288",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 288,
+            "idCell": {
+              "cell": "A288",
+              "value": "target-v81-72-284"
+            },
+            "labelCell": {
+              "cell": "C288",
+              "value": "selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "D288",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E288",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-72-284",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-284-mount-saddle-native.png",
+        "original": "/workspace/generated_images/exec-217ce8e1-4395-40aa-83c6-2d0ab4701620.png",
+        "prompt": "Create ONE original native independent saddle sprite for Yautja Homeworld catalogue target-v81-72-284, label selle, MOUNTS category. Existing separate saddles already exist in this project as flat left/right magenta-background boards; THIS request is a NEW contextual THREE-QUARTER transparent view, not a claim of the first invented saddle. SUBJECT: one complete alien mount saddle with NO animal, rider, stand or floor. It fits a muscular four-legged long-neck alien mount with a relatively narrow upper back. A deep red-brown leather padded seat sits in a thick dark angular patinated bronze saddle tree, with a low angular front rise and two short rear protective flanges. Two wide connected girth straps curve naturally under the empty seat space; small heavy blunt triangular foot-support stirrups hang at the sides, fully visible. Compact purpose-built tack with a dark ridged undersurface and layered side guard plates, no horns, no horse head, no huge spikes. Clearly a functional seat with front/back and underside clearance. Display ONE coherent complete equipment assembly in three-quarter view with its FRONT angled toward LOWER-LEFT and rear toward upper-right, showing the padded top seat and nearer right side. Keep all straps and stirrups attached; no disconnected accessories.\nSTYLE LOCK: physically plausible detailed2D cinematic game asset, charcoal dark alloy and thick ANGULAR PATINATED BRONZE structure with restrained golden wear on strong bevels; dark desaturated RED-BROWN LEATHER panels, robust stitching and buckles. Same chunky functional material language as charcoal porous-basalt/bronze Homeworld structures, but NO stone/basalt on wearable equipment. Original alien local design, avoid terrestrial Western or English equestrian styling; no bright decorative turquoise, neon, blue, energy glow, gems, insignia or canonical claim. Elevated ORTHOGRAPHIC THREE-QUARTER camera32degrees downward, visible top surfaces and right side; soft upper-left key light and neutral fill, no wide-angle distortion or ground shadow patch.\nTECHNICAL OUTPUT: request1024x1024 transparent PNG RGBA, native authored image. Exactly ONE complete saddle, not two profiles, not a sheet. SMALL CENTERED composition with the entire saddle AND hanging strap tips inside the CENTRAL70percent of BOTH dimensions. At least96pixels empty transparent safety margin all four sides, preferably150. Complete silhouette, nothing cropped or touching frame. Real transparent alpha also inside open straps; no magenta, checkerboard, background, scenery, floor tile, stand, mannequin, animal, person, text, labels, grid, borders, duplicate objects or watermark.",
+        "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-284-mount-saddle-native.prompt.txt",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-284-mount-saddle-native.receipt.json",
+        "minimumMargin": 96,
+        "findings": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "sha256": "01569e77489c2296a019269eb863e7a3f48c16002991ad220b0a67b1719b4615",
+        "originalSha256": "01569e77489c2296a019269eb863e7a3f48c16002991ad220b0a67b1719b4615",
+        "bytes": 982818,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 17157,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              19,
+              1238,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              19,
+              16,
+              0
+            ],
+            "canvasEdgePixels": 26,
+            "occupiedPixels": 343921
+          },
+          "2": {
+            "bboxExclusive": [
+              246,
+              210,
+              1076,
+              1060
+            ],
+            "marginsLTRB": [
+              246,
+              210,
+              178,
+              194
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 326764
+          },
+          "8": {
+            "bboxExclusive": [
+              248,
+              212,
+              1075,
+              1060
+            ],
+            "marginsLTRB": [
+              248,
+              212,
+              179,
+              194
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 321203
+          },
+          "128": {
+            "bboxExclusive": [
+              249,
+              213,
+              1074,
+              1059
+            ],
+            "marginsLTRB": [
+              249,
+              213,
+              180,
+              195
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 316074
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "proposedPivot": {
+          "pixels": [
+            661.5,
+            1059
+          ],
+          "normalized": [
+            0.527511961722488,
+            0.8444976076555024
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "db19b5dd1b7ae9ca81f9dbffa136faabe68ee970258a37153f08a952c44be557"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-72-285",
+      "label": "rack selle",
+      "section": 72,
+      "family": "MONTURES",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/284"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/284"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/284"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1967
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 289,
+            "idCell": {
+              "cell": "A289",
+              "value": "target-v81-72-285"
+            },
+            "labelCell": {
+              "cell": "D289",
+              "value": "rack selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "G289",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F289",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 289,
+            "idCell": {
+              "cell": "A289",
+              "value": "target-v81-72-285"
+            },
+            "labelCell": {
+              "cell": "C289",
+              "value": "rack selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "D289",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E289",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-72-285",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-285-saddle-rack-native.png",
+        "original": "/workspace/generated_images/exec-cf6b87ad-44b7-4f00-86c2-f8bf11d54c8a.png",
+        "prompt": "Create ONE original native production prop for Yautja Homeworld catalogue target-v81-72-285, label rack selle, MOUNTS category. SUBJECT: ONE EMPTY LOW HORIZONTAL saddle-storage rack sized for ONE alien saddle. Design a stout elongated trestle: two squat porous-charcoal-basalt foot-blocks, one at each end, support angular bronze uprights; a single narrow longitudinal bronze spine joins them, with TWO raised curved transverse padded saddle-rest arches positioned front and rear along that spine. The two arches are structural parts of this ONE rack, wide enough to support the underside of a saddle while the girth straps hang in the OPEN empty sides. Dark red-brown leather protects only the top ridges of these two shaped cradles. Keep the middle top OPEN, no broad tabletop or seat surface. Bronze triangular cross-bracing beneath the spine, four small integrated fastening rings on the sides, no loose gear. Rack is wider/longer than tall and reads as an EMPTY SADDLE CRADLE, visibly different from the tall vertical harness tree and the wide animal-care restraint gantry. NO saddle, harness, hanging straps, animal, rider, tools or additional objects. Not a bench, table, cage, altar or human barn furnishing.\nSTYLE LOCK: realistic detailed2D cinematic game prop, heavy functional geometry; deep charcoal POROUS BASALT feet with irregular shallow pores, thick ANGULAR PATINATED BRONZE beams, clamps and reinforced bevels with restrained warm golden edge wear. Dark desaturated red-brown leather only at the shaped support ridges. Minimal amber at most two tiny dull non-glowing studs, no blue/cyan, broad lighting, energy effects or glyphs. Elevated ORTHOGRAPHIC THREE-QUARTER camera32degrees downward, the long axis runs lower-left to upper-right, nearer working edge facing lower-left, top and right side visible. Soft upper-left key light and neutral fill, no lens distortion, floor slab or ground-shadow patch.\nTECHNICAL OUTPUT: request1024x1024 genuinely transparent PNG RGBA. Exactly ONE complete assembled rack, one view, not a sheet or collection. SMALL centered object wholly inside the CENTRAL70percent of both canvas dimensions, AT LEAST96pixels empty transparent margin all sides, preferably150; no zoom to fill frame. Every foot, arch, ring and beam end must be visible and uncut. All gaps are transparent alpha. No background, floor tile, ground patch, magenta, checkerboard, label, text, border, grid, watermark, duplicate object, beast or person. Original lore-compatible local design, not canonical or validated equipment.",
+        "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-285-saddle-rack-native.prompt.txt",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-285-saddle-rack-native.receipt.json",
+        "minimumMargin": 96,
+        "findings": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "sha256": "ea4496e16d3e74bd5beb121445a3b72451b3712ac717277112ab55c615ee834c",
+        "originalSha256": "ea4496e16d3e74bd5beb121445a3b72451b3712ac717277112ab55c615ee834c",
+        "bytes": 571145,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 9446,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              23,
+              52,
+              1211,
+              1166
+            ],
+            "marginsLTRB": [
+              23,
+              52,
+              43,
+              88
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 205406
+          },
+          "2": {
+            "bboxExclusive": [
+              199,
+              319,
+              1121,
+              945
+            ],
+            "marginsLTRB": [
+              199,
+              319,
+              133,
+              309
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 195960
+          },
+          "8": {
+            "bboxExclusive": [
+              201,
+              321,
+              1118,
+              943
+            ],
+            "marginsLTRB": [
+              201,
+              321,
+              136,
+              311
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 191796
+          },
+          "128": {
+            "bboxExclusive": [
+              202,
+              322,
+              1117,
+              942
+            ],
+            "marginsLTRB": [
+              202,
+              322,
+              137,
+              312
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 187883
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "proposedPivot": {
+          "pixels": [
+            659.5,
+            942
+          ],
+          "normalized": [
+            0.5259170653907496,
+            0.7511961722488039
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "40da8baf18b70a650917a74b4b729cb732668739d9c8484bafb5c645722bb006"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-72-288",
+      "label": "mangeoire adaptée",
+      "section": 72,
+      "family": "MONTURES",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/287"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/287"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/287"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1970
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 292,
+            "idCell": {
+              "cell": "A292",
+              "value": "target-v81-72-288"
+            },
+            "labelCell": {
+              "cell": "D292",
+              "value": "mangeoire adaptée"
+            },
+            "historicalPresenceCell": {
+              "cell": "G292",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F292",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 292,
+            "idCell": {
+              "cell": "A292",
+              "value": "target-v81-72-288"
+            },
+            "labelCell": {
+              "cell": "C292",
+              "value": "mangeoire adaptée"
+            },
+            "historicalPresenceCell": {
+              "cell": "D292",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E292",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "candidate": {
+        "id": "target-v81-72-288",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png",
+        "original": "/workspace/generated_images/exec-b40c8c36-4e9f-4f54-93be-64c73f8c17b0.png",
+        "prompt": "Create ONE original native production sprite for Yautja Homeworld catalogue target-v81-72-288, label mangeoire adaptée, MOUNTS category. SUBJECT: ONE elevated DRY FEEDING TROUGH specifically shaped for a tall long-necked four-legged alien mount. The mount reference has a long upright neck and narrow broad beaked muzzle, so give the feeding vessel a deep angular back wall and a lower OPEN SCOOPED front lip that allows the long neck and muzzle to lean in freely. Vessel is elongated hexagonal rather than round, supported at raised chest height by two stout splayed dark charcoal porous basalt piers joined by thick angular bronze braces. One assembled freestanding feeder, wider than tall but distinctly raised, with clear open space beneath its vessel. Broad outward-splayed feet ensure stability; no entire floor slab. Basin holds a SMALL clearly visible layer of DRY dark reddish-brown coarse ALIEN RATION NUGGETS, not water, meat, gore, plants, hay or a mound spilling over the edge. Inner feeding surface dark matte metal, practical rolled bronze lip and no sharp projections near the muzzle. This is a mount feeding station, visibly distinct from an empty low animal water trough, generic farm manger, fountain, machinery console or storage chest. NO animal, beast head, rider, NPC, human stable, fence, cage or loose objects.\nSTYLE LOCK: realistic detailed2D cinematic game prop, deep charcoal POROUS BASALT with irregular shallow pits in its two structural piers; thick ANGULAR PATINATED BRONZE vessel framing, clamps and braces with restrained gold worn bevels and large readable masses. Small dark desaturated red-brown leather bumper at the front neck-contact lip is allowed. Almost no amber, at most one tiny dull non-glowing rivet; no cyan/blue, liquid glow, holograms, decorative gems or energy. Elevated ORTHOGRAPHIC THREE-QUARTER camera32degrees downward; open feeding edge faces LOWER-LEFT, vessel long axis lower-left to upper-right, top and right-side visible. Soft upper-left key light, neutral fill, no lens distortion or ground cast-shadow patch.\nTECHNICAL OUTPUT: request1024x1024 genuine transparent PNG RGBA. Exactly ONE whole independent feeding station, not a sheet, collection or multiple views. SMALL centered composition entirely inside CENTRAL70percent of canvas width AND height; at least96pixels genuinely transparent safety margin on EVERY side, preferably150. Every vessel corner, bumper, foot and brace must be fully in frame. Real alpha through all openings and around object; no background, scenery, floor tile, ground slab, checkerboard, magenta, vignette, text, labels, grid, border, watermark, duplicates or detached props. Original local lore-compatible engineering; practical adaptation remains a candidate needing fit review, not a canonical animal-care claim.",
+        "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.prompt.txt",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.receipt.json",
+        "minimumMargin": 96,
+        "findings": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "sha256": "22f2344dc1fb0c67a2ef1c28fa01a4a8998bdac18a7d5c8509c16785f89dd953",
+        "originalSha256": "22f2344dc1fb0c67a2ef1c28fa01a4a8998bdac18a7d5c8509c16785f89dd953",
+        "bytes": 1198158,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 9998,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              23,
+              1240,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              23,
+              14,
+              0
+            ],
+            "canvasEdgePixels": 72,
+            "occupiedPixels": 461530
+          },
+          "2": {
+            "bboxExclusive": [
+              132,
+              233,
+              1180,
+              1103
+            ],
+            "marginsLTRB": [
+              132,
+              233,
+              74,
+              151
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 451532
+          },
+          "8": {
+            "bboxExclusive": [
+              134,
+              235,
+              1178,
+              1101
+            ],
+            "marginsLTRB": [
+              134,
+              235,
+              76,
+              153
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 447860
+          },
+          "128": {
+            "bboxExclusive": [
+              135,
+              236,
+              1177,
+              1100
+            ],
+            "marginsLTRB": [
+              135,
+              236,
+              77,
+              154
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 444186
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "proposedPivot": {
+          "pixels": [
+            656.0,
+            1100
+          ],
+          "normalized": [
+            0.5231259968102073,
+            0.8771929824561403
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "231b700305a5db201e1ede5ca78e89f1b7f1850460bded58fc0c05a043f19eef"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    },
+    {
+      "id": "target-v81-73-305",
+      "label": "petite cage",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/304"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/304"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/304"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 73,
+          "line": 1995
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 309,
+            "idCell": {
+              "cell": "A309",
+              "value": "target-v81-73-305"
+            },
+            "labelCell": {
+              "cell": "D309",
+              "value": "petite cage"
+            },
+            "historicalPresenceCell": {
+              "cell": "G309",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F309",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 309,
+            "idCell": {
+              "cell": "A309",
+              "value": "target-v81-73-305"
+            },
+            "labelCell": {
+              "cell": "C309",
+              "value": "petite cage"
+            },
+            "historicalPresenceCell": {
+              "cell": "D309",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E309",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidate": {
+        "id": "target-v81-73-305",
+        "attempt": 1,
+        "selected": true,
+        "status": "CANDIDAT_NON_ADMIS",
+        "path": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers-native.png",
+        "original": "/workspace/generated_images/exec-15c98502-3543-49e9-8018-0a75a43462d1.png",
+        "prompt": "Create ONE native original hand-painted realistic game prop: a SMALL EMPTY SALVAGED CAGE from the lower quarters of a Yautja alien Homeworld. Requested1024×1024 PNG with TRUE ALPHA TRANSPARENCY. One complete independent object, not a scene, sprite sheet, atlas or set of variants.\n\nLOCKED ART FAMILY: charcoal porous volcanic basalt, worn angular patinated bronze, dark metal with realistic fine scratches, one tiny dull amber latch slit. Same sober dark sci-fi hunting-clan material language as the existing native Homeworld props. Orthographic elevated three-quarter camera approximately32degrees, front and right side visible with the roof seen. Upper-left light. Controlled contrast and realistic thick material edges; do not use cartoon outlines.\n\nDISTINCT LOWER-QUARTER CONSTRUCTION: an improvised compact asymmetric TRAPEZOIDAL cage-trap made from salvaged Yautja panels and reclaimed bronze bars. It has one low long basalt base, a high blunt rear corner frame and a visibly lower sloping front edge so the whole silhouette slopes downward, unlike a hexagonal fauna cage or rectangular heavy crate. The two side faces use unevenly spaced upright salvaged bars fastened into different angular repaired brackets. Three mismatched riveted repair plates reinforce one back corner; one diagonal exterior bronze brace gives visible practical repair character. The roof remains mostly open barred structure, with one small bent patch plate only over the back quarter. A closed small sliding barred hatch at the near end has a simple repaired locking hasp. Physical supports are two short irregular basalt feet integrated into the base, not loose rocks. Show wear, soot, small dings and patch joints; keep the object mechanically readable rather than a pile of junk. It is an intentionally serviceable modest cage in a poor salvage district, with a unique sloped repaired silhouette. Do not merely recolor a clean fauna cage.\n\nInterior ENTIRELY EMPTY, no creature, animal, person, silhouette, egg, body, bones, food, weapons, skull, trophies, symbols, letters, writing, labels or numbers. No extra cage, detached items, hanging chains, environment, floor tile, dust or smoke. Not a human bird cage, pet carrier, kennel, stable, medieval prison, building, rust-red steel container or opaque shipping box. Large clear gaps between the bars must be transparent except where actual far bars or the physical floor are behind them.\n\nFRAMING IS CRITICAL: use a small render within the square with EXTRA generous empty transparent border, ideally128pixels empty space on ALL FOUR SIDES of the requested1024canvas. Keep the whole cage including every foot, rear frame, patch, brace and latch completely inside the CENTRAL THREE-FIFTHS of the canvas. The maximum object width should be about720pixels on a1024canvas; do not enlarge it to fill the frame. Leave breathing room visibly around all sides. Full object visible without cropping, true transparent background and bar openings, no opaque black matte, no checkerboard painted into image, no cast floor shadow, no hazy halo. One object only.",
+        "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.prompt.txt",
+        "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.inspection.json",
+        "minimumMargin": 64,
+        "findings": "Distinct sloped trapezoidal salvage cage, repaired riveted tall rear corner, diagonal brace, mostly barred roof with a patch over rear quarter; lower near-end shut hatch.",
+        "sha256": "10e6f4a7e4d95a5daf1057c5968365c04566e71ae28f4267609cb7a3eb6a1499",
+        "originalSha256": "10e6f4a7e4d95a5daf1057c5968365c04566e71ae28f4267609cb7a3eb6a1499",
+        "bytes": 1402545,
+        "byteIdenticalToToolOriginal": true,
+        "requestedDimensions": [
+          1024,
+          1024
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha1or2PixelCount": 29389,
+        "thresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              23,
+              1218,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              23,
+              36,
+              0
+            ],
+            "canvasEdgePixels": 2,
+            "occupiedPixels": 543551
+          },
+          "2": {
+            "bboxExclusive": [
+              84,
+              238,
+              1177,
+              1053
+            ],
+            "marginsLTRB": [
+              84,
+              238,
+              77,
+              201
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 514162
+          },
+          "8": {
+            "bboxExclusive": [
+              84,
+              240,
+              1175,
+              1051
+            ],
+            "marginsLTRB": [
+              84,
+              240,
+              79,
+              203
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 500063
+          },
+          "128": {
+            "bboxExclusive": [
+              87,
+              240,
+              1174,
+              1050
+            ],
+            "marginsLTRB": [
+              87,
+              240,
+              80,
+              204
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 487349
+          }
+        },
+        "requestedDimensionContractMet": false,
+        "strictAlphaGreater0MarginContractMet": false,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "proposedPivot": {
+          "pixels": [
+            629.5,
+            1050
+          ],
+          "normalized": [
+            0.501993620414673,
+            0.8373205741626795
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "frame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "wholeNativeDestinationPNGOpenedByParent": true,
+        "humanValidated": false,
+        "admitted": false,
+        "runtimeActivated": false,
+        "pixelEdits": [],
+        "promptUtf8Sha256": "6147a2c3ec7d74379562adcf423ba0f65a3f8b1075a157102e4c5eb2844e37ca"
+      },
+      "remainingAdmission": [
+        "Human artistic review pending.",
+        "Actual world scale, placement pivot, occlusion, collision and interaction have not been qualified.",
+        "A static whole PNG does not satisfy any authored animation criterion.",
+        "Exact native dimensions and requested margins are not silently normalized."
+      ]
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "target-v81-71-268",
+      "attempt": 1,
+      "selected": false,
+      "status": "REJET_CADRAGE_MARGE_DROITE_1PX",
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-71-268-enclosure-barrier-native.png",
+      "original": "/workspace/generated_images/exec-af4e9a18-1613-4bc6-986a-e37398ffa498.png",
+      "prompt": "Production game prop candidate for an alien hunter city, ONE object, realistic prerendered2.5D style. Orthographic threequarter camera elevated32degrees, warm top-left light, charcoal porousbasalt and thick angular agedbronzeplates, very restrained amber. Strong chunky silhouette, matte chippedtexture, no humanfarmstyle. Requested1024x1024 true transparent RGBA canvas, object compact in central65percent with generous blank alpha margin at least100px, entire feet and protrusions visible. No ground terrain tile, no detached shadow, scenery, text, labels, watermarks, person or animal. Singleview and singleobject, no spritesheet. Static candidate only. SUBJECT: one connected short modular ANIMAL ENCLOSURE FENCE section, two squat thickfaceted posts on separate compact basaltfeet joined by exactlythree stout horizontal agedbronze rails with angular industrial mechanical railjoiners. Between bars should be trulytransparent air. Wide low sturdyfunctional barrier for dangerous reptiles, no pickets or spikes, noenergymembrane, no door. Frontplane runs from near lowerleft tofar upperright, consistent orthographicthreequarter. One connectedwholemodule only, complete bothfeet, not decorativebalustrade.",
+      "detail": "/workspace/native-homeworld-open-20261102/fauna-energy/native-technical-inspection.json",
+      "minimumMargin": 100,
+      "findings": "One short connected three-rail module with two whole footed posts and transparent air gaps. Preferred second native generation has broad margins; independent assets do not yet prove modular join alignment.",
+      "sha256": "5683daf01f9252c4127f077e70b964bf3f7c3b299d615f3da39cb35c52639039",
+      "originalSha256": "5683daf01f9252c4127f077e70b964bf3f7c3b299d615f3da39cb35c52639039",
+      "bytes": 1381713,
+      "byteIdenticalToToolOriginal": true,
+      "requestedDimensions": [
+        1024,
+        1024
+      ],
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha1or2PixelCount": 25317,
+      "thresholds": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "marginsLTRB": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "canvasEdgePixels": 299,
+          "occupiedPixels": 500812
+        },
+        "2": {
+          "bboxExclusive": [
+            12,
+            144,
+            1253,
+            1113
+          ],
+          "marginsLTRB": [
+            12,
+            144,
+            1,
+            141
+          ],
+          "canvasEdgePixels": 0,
+          "occupiedPixels": 475495
+        },
+        "8": {
+          "bboxExclusive": [
+            14,
+            147,
+            1248,
+            1111
+          ],
+          "marginsLTRB": [
+            14,
+            147,
+            6,
+            143
+          ],
+          "canvasEdgePixels": 0,
+          "occupiedPixels": 468483
+        },
+        "128": {
+          "bboxExclusive": [
+            15,
+            148,
+            1247,
+            1110
+          ],
+          "marginsLTRB": [
+            15,
+            148,
+            7,
+            144
+          ],
+          "canvasEdgePixels": 0,
+          "occupiedPixels": 461600
+        }
+      },
+      "requestedDimensionContractMet": false,
+      "strictAlphaGreater0MarginContractMet": false,
+      "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+      "proposedPivot": {
+        "pixels": [
+          631.0,
+          1110
+        ],
+        "normalized": [
+          0.5031897926634769,
+          0.8851674641148325
+        ],
+        "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+      },
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "atlas": false,
+        "semanticConnectedPropAssembliesObserved": 1,
+        "overlappingIndependentObjectsObserved": false
+      },
+      "wholeNativeDestinationPNGOpenedByParent": true,
+      "humanValidated": false,
+      "admitted": false,
+      "runtimeActivated": false,
+      "pixelEdits": [],
+      "promptUtf8Sha256": "226c514ed76242506f943ba1ffe000915be4ba7e3f5ac9f1217606dbe49aac84"
+    }
+  ],
+  "generator": "image_gen.imagegen",
+  "admissionCriteriaCatalogue": [
+    {
+      "id": "COMMON-NATIVE",
+      "requirement": "Original independent native PNG/atlas cell, silhouette whole, positive uniform scale, explicit native rectangle/dimensions/pivot, actual alpha and occupied bounds including all margins and edge pixels; do not manufacture missing function by extracting a painted detail. Preserve original bytes and SHA256/provenance.",
+      "sources": [
+        "docs/GAMEDEV_AGENT_GUIDE.md#Sprites, PNJ et fidélité visuelle",
+        "app/game/HomeworldNativePropV64.tsx",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2640"
+      ]
+    },
+    {
+      "id": "COMMON-IDENTITY",
+      "requirement": "Keep exact target ID, role/function, provenance category and candidate status. Existing presence, decode, tests or an assistant inspection never grant human artistic validated status. This audit closes no catalogue entry.",
+      "sources": [
+        "app/game/hunterSpriteAtlas.ts:1",
+        "docs/v111-homeworld-art.md",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2069"
+      ]
+    },
+    {
+      "id": "COMMON-SCALE",
+      "requirement": "Prop isolation screenshot with a real reference Yautja; inspect silhouette, scale, pivot, alpha, orientation and physical ground support. World dimensions are separate from bitmap dimensions and collision footprint.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:1536",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2640",
+        "app/game/HomeworldNativePropV64.tsx"
+      ]
+    },
+    {
+      "id": "COMMON-CONTEXT",
+      "requirement": "Inspect in actual district with wide/medium/near screenshots; verify free approach, usage and exit space, depth and ground support. Common props need visual diversity ideally4–8 native variants. A candidate image does not prove integration/gameplay completion.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2080",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2604",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2657"
+      ]
+    },
+    {
+      "id": "ARCHITECTURE-ACCESS",
+      "requirement": "Verify plot support, facade orientation, reachable entrance, true passage/cabin clearance and both travel directions. Existing lift V82 must be reviewed rather than regenerated merely because of historical MISSING. No route or collision claim arises from an image.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:447",
+        "app/game/data/homeworldConnectorArtV82.json",
+        "app/game/data/homeworldLiftCabinArtV82.json"
+      ]
+    },
+    {
+      "id": "NATIVE-ORIENTATION",
+      "requirement": "Author left/right views independently where requested; do not rotate, mirror, skew or stretch a PNG to claim a missing native orientation.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:520",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2558"
+      ]
+    },
+    {
+      "id": "AUTHORED-ANIMATION",
+      "requirement": "An active/energy state needs distinct native painted temporal states with frame rects,pivots,durations,loop contract and actual rendered temporal inspection. A static support, CSS opacity/transform pulse, NPC walking sheet or recolor does not establish an authored native work/energy cycle. Keep pause/reduced-motion/loading failure behavior explicit.",
+      "sources": [
+        "app/game/systems/homeworldAssetCatalogueV81.ts:63",
+        "docs/GAMEDEV_AGENT_GUIDE.md#Sprites, PNJ et fidélité visuelle",
+        "docs/v111-homeworld-art.md"
+      ]
+    },
+    {
+      "id": "FAUNA-FUNCTION",
+      "requirement": "Show the requested animal-care function and accessible working edge at fauna/mount scale. Habitat support is a rock shelf, not cage/enclosure. A stable-harness NPC, beast picture or static mount does not deliver an independent harness/saddle/cage or mount gameplay. Avoid a human stable; mark local invented iconography original.",
+      "sources": [
+        "app/game/systems/homeworldFaunaHabitatV77.ts",
+        "app/game/systems/homeworldAssetCatalogueV81.ts:51",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:1940",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:1960"
+      ]
+    }
+  ],
+  "supportingManifests": [
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/cages-production-manifest.json",
+      "sha256": "93cc13b667bd06402d8a278192607b8b8a9a68afff13f392faace887d3296c17"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/gear-index.json",
+      "sha256": "526cee86aa2e7df2faa995aa33bdc7e08b3f0db90736d6510f4f6ff22e115707"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/native-technical-inspection.json",
+      "sha256": "d749bcc337fb8fb78b921aa8678c3ab5a765b3f7c839786e9ee070f1f2b4f643"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/all-native-opened.json",
+      "sha256": "db50d11b5bfb425322ade54cae872f3f23fee3b3201142888c52c26537447bf7"
+    }
+  ]
+}

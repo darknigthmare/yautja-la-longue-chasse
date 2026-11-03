@@ -1,0 +1,2618 @@
+{
+  "version": "MMK-20261103-PASS3-AUDIT",
+  "date": "2026-11-03",
+  "baselineCommit": "454bbc558abc9bb06141b2b77642bff1894d8cf2",
+  "previousDeliveryCommit": "a6e16334589ee8c4724bcc04da539007e669c883",
+  "selectedBeforeContinuation": 25,
+  "approvedAdditionalPNGCount": 10,
+  "approvedIDs": [
+    "HWM162-S08",
+    "HWM162-S09",
+    "HWM162-S10",
+    "HWM162-M10",
+    "HWM162-M11",
+    "HWM162-M12",
+    "HWM162-K10",
+    "HWM162-K11",
+    "HWM162-K12",
+    "HWM162-K13"
+  ],
+  "preservedSelectedAssets": [
+    {
+      "id": "HWM162-S01",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
+      "sha256": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69"
+    },
+    {
+      "id": "HWM162-S02",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
+      "sha256": "c1e353660c697180604ca6cf805ad13eb14c2009e6213f3e83233acae518b00e"
+    },
+    {
+      "id": "HWM162-S03",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+      "sha256": "9d9e720b4dc541e82fb0e3fffe73338c591fc9c39baa1fff6929617a9b3957ab"
+    },
+    {
+      "id": "HWM162-S04",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
+      "sha256": "897a4024cd04edb42b557a08f8b40ee29d80c219e2de3061106265b69208a5d4"
+    },
+    {
+      "id": "HWM162-S05",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+      "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866"
+    },
+    {
+      "id": "HWM162-S06",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S06-removable-display-tray.png",
+      "sha256": "8e18a6f05375ac0179c606eb6631dc5cdab60b7d47723cf5e84088da1a7f2070"
+    },
+    {
+      "id": "HWM162-S07",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S07-market-cargo-pallet.png",
+      "sha256": "f196df3b9f6729887e467ed5035487fd5f4c8aac303dfe14c9901f482045a5ff"
+    },
+    {
+      "id": "HWM162-M01",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+      "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518"
+    },
+    {
+      "id": "HWM162-M02",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+      "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa"
+    },
+    {
+      "id": "HWM162-M03",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+      "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7"
+    },
+    {
+      "id": "HWM162-M04",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+      "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525"
+    },
+    {
+      "id": "HWM162-M05",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+      "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2"
+    },
+    {
+      "id": "HWM162-M06",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+      "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da"
+    },
+    {
+      "id": "HWM162-M07",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+      "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f"
+    },
+    {
+      "id": "HWM162-M08",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+      "sha256": "cd982603d1d7c51a2a88ad476fa59bfd58336f23cc30cc7ebb517917b81b212d"
+    },
+    {
+      "id": "HWM162-M09",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+      "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9"
+    },
+    {
+      "id": "HWM162-K01",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+      "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+    },
+    {
+      "id": "HWM162-K02",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+      "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c"
+    },
+    {
+      "id": "HWM162-K03",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797"
+    },
+    {
+      "id": "HWM162-K04",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+      "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73"
+    },
+    {
+      "id": "HWM162-K05",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+      "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf"
+    },
+    {
+      "id": "HWM162-K06",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+      "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4"
+    },
+    {
+      "id": "HWM162-K07",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+      "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9"
+    },
+    {
+      "id": "HWM162-K08",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+      "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698"
+    },
+    {
+      "id": "HWM162-K09",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+      "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2"
+    }
+  ],
+  "decisionOverrides": {
+    "outputNames": "Les chemins définitifs sont ceux de next-targets-round3.json ; les propositions brutes ci-dessous conservent leurs noms provisoires.",
+    "viewPolicy": "Préserver les vues héritées pour les éditions d’états ; demander la cible 0°/35° pour les nouvelles orientations, sans certification géométrique."
+  },
+  "sectorAudits": {
+    "market": {
+      "schemaVersion": 1,
+      "scope": "Marché — troisième passe de composants et états indépendants",
+      "date": "2026-11-03",
+      "repository": "darknigthmare/yautja-la-longue-chasse",
+      "baseCommit": "454bbc558abc9bb06141b2b77642bff1894d8cf2",
+      "priorSectorDeliveryCommit": "a6e16334589ee8c4724bcc04da539007e669c883",
+      "marketSourcesUnchangedDuringRemoteSync": true,
+      "trackedPathCount": 18788,
+      "readOnlyAudit": true,
+      "repositoryFilesEdited": false,
+      "imagesGenerated": 0,
+      "scopeTargets": [
+        "target-v81-59-97",
+        "target-v81-64-157",
+        "target-v81-64-158",
+        "target-v81-64-159",
+        "target-v81-64-160",
+        "target-v81-64-161",
+        "target-v81-64-162",
+        "target-v81-64-163",
+        "target-v81-64-164",
+        "target-v81-64-165",
+        "target-v81-64-166",
+        "target-v81-64-167",
+        "target-v81-64-168",
+        "target-v81-64-169",
+        "target-v81-64-170"
+      ],
+      "existingSectorMarketPNGCount": 7,
+      "method": [
+        "Recherche dans tous les chemins suivis au HEAD synchronisé.",
+        "Recherche ciblée dans les JSON Homeworld et les JSON production disponibles.",
+        "Extraction git show vers scratch pour les images absentes du checkout, sans changement de sparse config.",
+        "Inspection visuelle de 18 images pertinentes et mesure des PNG sans modification de pixels."
+      ],
+      "inspectedImages": [
+        {
+          "path": "public/game/homeworld/v78/market-stall-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v78__market-stall-right.png",
+          "bytes": 2705219,
+          "sha256": "c98a90d777cf85e921681feb36c738216d8a99a945669e670234c65b65897796",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            254
+          ],
+          "alpha24Box": [
+            46,
+            6,
+            1518,
+            966
+          ],
+          "alpha24Margins": [
+            46,
+            6,
+            18,
+            58
+          ],
+          "alpha24MinimumMargin": 6,
+          "visuallyInspected": true
+        },
+        {
+          "path": "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/production__homeworld-v160__originals__HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+          "bytes": 1737441,
+          "sha256": "cff21dfa18b8d2bcaa74f8690b7a7ff1d4fc83f902f38af21c7ebc00b1dec3b3",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "alpha24Box": [
+            202,
+            68,
+            1072,
+            1159
+          ],
+          "alpha24Margins": [
+            202,
+            68,
+            182,
+            95
+          ],
+          "alpha24MinimumMargin": 68,
+          "visuallyInspected": true
+        },
+        {
+          "path": "production/homeworld-v160/first-pack/HW1009_etale_marche_gauche.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/production__homeworld-v160__first-pack__HW1009_etale_marche_gauche.png",
+          "bytes": 2432702,
+          "sha256": "64bedca72cb9bc8685cda018b760f3c9995987ed5a965e9dc9ca236426c83769",
+          "width": 1313,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            254
+          ],
+          "alpha24Box": [
+            24,
+            6,
+            1289,
+            1017
+          ],
+          "alpha24Margins": [
+            24,
+            6,
+            24,
+            7
+          ],
+          "alpha24MinimumMargin": 6,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/homeworld/v83/merchant-counter-left.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v83__merchant-counter-left.png",
+          "bytes": 1381304,
+          "sha256": "a0bf8a90c46ebd7ed1271a3a84d591856d3bed0d88b1abdde07c6fc76124f8da",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "alpha24Box": [
+            35,
+            203,
+            1230,
+            1108
+          ],
+          "alpha24Margins": [
+            35,
+            203,
+            24,
+            146
+          ],
+          "alpha24MinimumMargin": 24,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__merchant-canopy-diagonal-native.png",
+          "bytes": 2226386,
+          "sha256": "05a92ec51800422f1fbbe396555cee2de7025d1b18f2af0a8c57cde2a9e7e60b",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            254
+          ],
+          "alpha24Box": [
+            215,
+            14,
+            1433,
+            991
+          ],
+          "alpha24Margins": [
+            215,
+            14,
+            103,
+            33
+          ],
+          "alpha24MinimumMargin": 14,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/homeworld/v76/interior/worktable-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__interior__worktable-right.png",
+          "bytes": 1176366,
+          "sha256": "62f1a4020acb5f65d6b07486d772fa42d7d2aacd8470af43aa84e508743c319d",
+          "width": 1448,
+          "height": 1086,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "alpha24Box": [
+            255,
+            85,
+            1201,
+            977
+          ],
+          "alpha24Margins": [
+            255,
+            85,
+            247,
+            109
+          ],
+          "alpha24MinimumMargin": 85,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/homeworld/v83/cargo-rack-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v83__cargo-rack-right.png",
+          "bytes": 1922894,
+          "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "alpha24Box": [
+            28,
+            54,
+            1241,
+            1181
+          ],
+          "alpha24Margins": [
+            28,
+            54,
+            13,
+            73
+          ],
+          "alpha24MinimumMargin": 13,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/homeworld/v76/interior/rack-lateral.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__interior__rack-lateral.png",
+          "bytes": 1196854,
+          "sha256": "441642d5ddacad9a03a45f068d0e95d588518ae18a5c02af897b2dd165436308",
+          "width": 1213,
+          "height": 1296,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "alpha24Box": [
+            292,
+            85,
+            934,
+            1227
+          ],
+          "alpha24Margins": [
+            292,
+            85,
+            279,
+            69
+          ],
+          "alpha24MinimumMargin": 69,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/homeworld/v76/logistics-container-rack-native.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__logistics-container-rack-native.png",
+          "bytes": 2074756,
+          "sha256": "e7e3097c0e665ad8a3a4c1d5dacd3f4dcffa8b01275b124895be4525d6345d90",
+          "width": 1312,
+          "height": 1199,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "alpha24Box": [
+            50,
+            59,
+            1262,
+            1136
+          ],
+          "alpha24Margins": [
+            50,
+            59,
+            50,
+            63
+          ],
+          "alpha24MinimumMargin": 50,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/homeworld/v80/sealed-cargo-case-left.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v80__sealed-cargo-case-left.png",
+          "bytes": 1801987,
+          "sha256": "0d27b2eec19ddbd8d1ea65a8071971b34e24d93abb0052c98e7bd32058d98012",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "alpha24Box": [
+            8,
+            237,
+            1245,
+            1041
+          ],
+          "alpha24Margins": [
+            8,
+            237,
+            9,
+            213
+          ],
+          "alpha24MinimumMargin": 8,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/homeworld/v76/interior/chest-diagonal.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__interior__chest-diagonal.png",
+          "bytes": 1518818,
+          "sha256": "b7ca429b772870bc2d7413b894eab1400c6593fd4fa046ec0aef936575504a42",
+          "width": 1375,
+          "height": 1144,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "alpha24Box": [
+            157,
+            160,
+            1297,
+            1049
+          ],
+          "alpha24Margins": [
+            157,
+            160,
+            78,
+            95
+          ],
+          "alpha24MinimumMargin": 78,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/homeworld/v80/amber-lamp-post.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v80__amber-lamp-post.png",
+          "bytes": 682306,
+          "sha256": "c89bb821c84fcb31fd633815d13001d8ef386a989f49f4383d7d0097b09dc09c",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "alpha24Box": [
+            385,
+            94,
+            873,
+            1152
+          ],
+          "alpha24Margins": [
+            385,
+            94,
+            381,
+            102
+          ],
+          "alpha24MinimumMargin": 94,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/homeworld/v80/clan-banner-standard.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v80__clan-banner-standard.png",
+          "bytes": 601287,
+          "sha256": "93538d8c833a6e299302784a62eb87df8ab79b14ced658bd6d85a84df458a06a",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "alpha24Box": [
+            422,
+            33,
+            836,
+            1192
+          ],
+          "alpha24Margins": [
+            422,
+            33,
+            418,
+            62
+          ],
+          "alpha24MinimumMargin": 33,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/sprites/v33/pit-arenas/trophy-hall/p3-c-archive-lamp-left.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__sprites__v33__pit-arenas__trophy-hall__p3-c-archive-lamp-left.png",
+          "bytes": 1515587,
+          "sha256": "205292487cfd747d6dca5cd9d6a21884a96fee20e427179f0a744ee27e6d8a77",
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            254
+          ],
+          "alpha24Box": [
+            182,
+            16,
+            746,
+            1437
+          ],
+          "alpha24Margins": [
+            182,
+            16,
+            278,
+            99
+          ],
+          "alpha24MinimumMargin": 16,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/sprites/v33/pit-arenas/trophy-hall/p3-d-archive-lamp-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__sprites__v33__pit-arenas__trophy-hall__p3-d-archive-lamp-right.png",
+          "bytes": 1528208,
+          "sha256": "31eeb78406229c61ea2cd568d68cce24178bb35230912195df7d96c30ef910e1",
+          "width": 1024,
+          "height": 1536,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            254
+          ],
+          "alpha24Box": [
+            336,
+            42,
+            855,
+            1407
+          ],
+          "alpha24Margins": [
+            336,
+            42,
+            169,
+            129
+          ],
+          "alpha24MinimumMargin": 42,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/homeworld/v75/architecture/market-canopy.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v75__architecture__market-canopy.png",
+          "bytes": 2504853,
+          "sha256": "1f7f995377dace094438de0ee0fab4b6fa47a3f9ca79632de8573c333ce55a04",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            254
+          ],
+          "alpha24Box": [
+            0,
+            40,
+            1536,
+            859
+          ],
+          "alpha24Margins": [
+            0,
+            40,
+            0,
+            165
+          ],
+          "alpha24MinimumMargin": 0,
+          "visuallyInspected": true
+        },
+        {
+          "path": "production/homeworld-v158/assets/sprites_png/HW1033_cuisine_collective_auvent.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/production__homeworld-v158__assets__sprites_png__HW1033_cuisine_collective_auvent.png",
+          "bytes": 49343,
+          "sha256": "50afd1d317e58a5a7a8e7958a2054a97cf93c8a4dc6834c5d89a8826247dbede",
+          "width": 212,
+          "height": 142,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            254
+          ],
+          "alpha24Box": [
+            4,
+            4,
+            209,
+            138
+          ],
+          "alpha24Margins": [
+            4,
+            4,
+            3,
+            4
+          ],
+          "alpha24MinimumMargin": 3,
+          "visuallyInspected": true
+        },
+        {
+          "path": "public/game/assets/v3/actors/yautja/hunter/equipment/barrel.webp",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__assets__v3__actors__yautja__hunter__equipment__barrel.webp",
+          "bytes": 1058,
+          "sha256": "e782d02528d889e5e9df3375a3be2776abca9c78889ecb17b01e71cf5014bbc9",
+          "width": 46,
+          "height": 20,
+          "mode": "RGBA",
+          "alphaRange": [
+            0,
+            255
+          ],
+          "alpha24Box": [
+            4,
+            4,
+            42,
+            16
+          ],
+          "alpha24Margins": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "alpha24MinimumMargin": 4,
+          "visuallyInspected": true
+        }
+      ],
+      "filenameSearches": [
+        {
+          "name": "open_case",
+          "basenamePattern": "((open|ouvert).*(case|crate|chest|caisse|coffre)|(case|crate|chest|caisse|coffre).*(open|ouvert))",
+          "matchingImagePaths": []
+        },
+        {
+          "name": "loose_container",
+          "basenamePattern": "(canister|conteneur|container|cylinder|cylindre|barrel|tonneau|(?:^|[-_])(jar|urn|vase|pot)(?:[-_.]|$))",
+          "matchingImagePaths": [
+            "docs/qa/v108-clans/02-two-mounts-one-water-container.png",
+            "public/game/assets/v3/actors/yautja/hunter/equipment/barrel.webp",
+            "public/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+            "public/game/homeworld/v76/logistics-container-rack-native.png"
+          ]
+        },
+        {
+          "name": "potential_lamp",
+          "basenamePattern": "(archive-lamp|amber-lamp|lantern|lanterne|suspended.*lamp|hanging.*lamp|pendant.*lamp)",
+          "matchingImagePaths": [
+            "art-source/v33/pit-arenas/trophy-hall/sources/p3-c-archive-lamp-left-205292487cfd.png",
+            "art-source/v33/pit-arenas/trophy-hall/sources/p3-d-archive-lamp-right-31eeb7840622.png",
+            "public/game/homeworld/v80/amber-lamp-post.png",
+            "public/game/sprites/v33/pit-arenas/trophy-hall/p3-c-archive-lamp-left.png",
+            "public/game/sprites/v33/pit-arenas/trophy-hall/p3-d-archive-lamp-right.png",
+            "public/game/sprites/v8/ecology/naraka-delta/lantern-toad-sheet.png",
+            "public/game/sprites/v8/ecology/pelagos-m/deep-lantern-sheet.png"
+          ]
+        },
+        {
+          "name": "potential_canopy",
+          "basenamePattern": "(merchant-canopy|market-canopy|cuisine_collective_auvent|awning)",
+          "matchingImagePaths": [
+            "production/homeworld-v158/assets/sprites_png/HW1033_cuisine_collective_auvent.png",
+            "public/game/homeworld/v75/architecture/market-canopy.png",
+            "public/game/homeworld/v76/merchant-canopy-diagonal-native.png"
+          ]
+        }
+      ],
+      "proposals": [
+        {
+          "tentativeId": "HWM162-S08",
+          "label": "Caisse marchande — état ouvert",
+          "targetIds": [
+            "target-v81-64-167"
+          ],
+          "gapKind": "MISSING_OPEN_STATE_OF_EXISTING_INDEPENDENT_PROP",
+          "evidence": "La caisse V80 est fermée, sanglée et verrouillée. Le coffre V76 est également fermé et ligaturé. Aucun état ouvert de caisse/coffre n’a été identifié dans les noms suivis ni dans les métadonnées ciblées.",
+          "function": "Montrer un contenant accessible pour une inspection ou un rangement sans afficher artificiellement un inventaire à travers un couvercle fermé.",
+          "primaryReference": "public/game/homeworld/v80/sealed-cargo-case-left.png",
+          "referenceInspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v80__sealed-cargo-case-left.png",
+          "otherExaminedReference": "public/game/homeworld/v76/interior/chest-diagonal.png",
+          "productionBrief": "Même caisse que V80, ouverte : corps, pieds, poignées, décor et angle conservés ; couvercle articulé relevé, attaches libérées, intérieur vide visible. Un seul ensemble indépendant. Préserver l’ancien fichier fermé.",
+          "proposedOutputPath": "production/homeworld-sectors-20261103/sprites/market/HWM162-S08-open-merchant-case.png",
+          "placementLimit": "La concordance des silhouettes, du pivot, de l’échelle et des états ouvert/fermé sera à vérifier. Ne pas annoncer une animation ou une collision fonctionnelle.",
+          "canonicalOneToOneClaimed": false,
+          "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+          "humanValidated": false,
+          "runtimeIntegrated": false,
+          "status": "PROPOSED_NOT_GENERATED"
+        },
+        {
+          "tentativeId": "HWM162-S09",
+          "label": "Conteneur cylindrique marchand autonome",
+          "targetIds": [
+            "target-v81-64-166"
+          ],
+          "gapKind": "COMPONENT_ONLY_PRESENT_INSIDE_COMPOSITE",
+          "evidence": "Le rack logistique V76 comporte six cylindres de tailles différentes, tous fusionnés au rack dans le même PNG. Aucun cylindre cargo indépendant de cette famille n’a été identifié. Le résultat barrel.webp appartient à l’équipement du chasseur et représente un petit canon, pas un contenant.",
+          "function": "Disposer, déplacer et charger un conteneur seul sur la palette S07, dans S05 ou sur un comptoir, sans emporter un rack entier.",
+          "primaryReference": "public/game/homeworld/v76/logistics-container-rack-native.png",
+          "referenceInspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__logistics-container-rack-native.png",
+          "otherExaminedReference": "public/game/homeworld/v76/interior/rack-lateral.png",
+          "productionBrief": "Un seul cylindre moyen fermé inspiré du cylindre supérieur central : enveloppe charbon, cerclages et raidisseurs bronze, couvercle complet, poignée ou prise solidaire. Aucun rack, caisse, contenu ou second cylindre fusionné.",
+          "proposedOutputPath": "production/homeworld-sectors-20261103/sprites/market/HWM162-S09-standalone-cargo-canister.png",
+          "placementLimit": "Dimension à proposer pour le jeu ; compatibilité avec les surfaces de S07 et S05 non prouvée par le sprite. Le contenu n’est pas défini comme aliment ou substance canonique.",
+          "canonicalOneToOneClaimed": false,
+          "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+          "humanValidated": false,
+          "runtimeIntegrated": false,
+          "status": "PROPOSED_NOT_GENERATED"
+        },
+        {
+          "tentativeId": "HWM162-S10",
+          "label": "Auvent marchand libre de mobilier",
+          "targetIds": [
+            "target-v81-64-161"
+          ],
+          "gapKind": "CANOPY_ONLY_PRESENT_WITH_FIXED_FURNITURE_OR_BUILDING",
+          "evidence": "Le candidat V76 fusionne toile, quatre poteaux, comptoir, trois pots et rouleaux. Le V75 est un bâtiment complet à trois baies avec plancher et architecture. HW1033 est un ensemble de cuisine sous auvent. Aucun de ces fichiers ne fournit l’auvent léger seul au-dessus d’un mobilier librement choisi.",
+          "function": "Abriter des plateaux, présentoirs ou réserves séparés et conserver une circulation libre sous la toile.",
+          "primaryReference": "public/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+          "referenceInspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__merchant-canopy-diagonal-native.png",
+          "otherExaminedReferences": [
+            "public/game/homeworld/v75/architecture/market-canopy.png",
+            "production/homeworld-v158/assets/sprites_png/HW1033_cuisine_collective_auvent.png"
+          ],
+          "productionBrief": "Auvent autonome : une toile tendue, quatre poteaux, traverses et attaches solidaires ; espace sous la toile entièrement vide et transparent, sans comptoir, pots, rouleaux, bâtiment ni plancher fusionné. La géométrie de perspective suit la référence et le contrat de caméra du projet.",
+          "proposedOutputPath": "production/homeworld-sectors-20261103/sprites/market/HWM162-S10-empty-merchant-canopy.png",
+          "placementLimit": "Poteaux et ombrage doivent être contrôlés en scène ; ce sprite de structure unique ne sépare pas encore les calques avant/arrière pour une occlusion dynamique.",
+          "canonicalOneToOneClaimed": false,
+          "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+          "humanValidated": false,
+          "runtimeIntegrated": false,
+          "status": "PROPOSED_NOT_GENERATED"
+        }
+      ],
+      "retainedOrReused": [
+        {
+          "targetId": "target-v81-64-168",
+          "paths": [
+            "public/game/sprites/v33/pit-arenas/trophy-hall/p3-c-archive-lamp-left.png",
+            "public/game/sprites/v33/pit-arenas/trophy-hall/p3-d-archive-lamp-right.png"
+          ],
+          "finding": "Deux lampes suspendues autonomes déjà présentes, lumière ambrée et métal sombre/bronze, fixation supérieure complète. Une nouvelle lampe ne constitue donc pas un manque démontré.",
+          "decision": "REUSE_CANDIDATES_NO_NEW_SPRITE",
+          "limits": "Vérifier la perspective, l’échelle et le point de fixation dans le marché ; aucune admission automatique."
+        },
+        {
+          "targetId": "target-v81-64-169",
+          "paths": [
+            "public/game/homeworld/v80/clan-banner-standard.png"
+          ],
+          "finding": "Bannière rouge sur pied indépendante et entière, utilisable comme candidat de signalétique du secteur.",
+          "decision": "RETAIN_EXISTING_NO_NEW_SPRITE",
+          "limits": "Le symbole reste celui du projet ; ne pas lui attribuer une signification marchande canonique."
+        },
+        {
+          "targetIds": [
+            "target-v81-64-157",
+            "target-v81-64-159",
+            "target-v81-64-160",
+            "target-v81-64-163",
+            "target-v81-64-164"
+          ],
+          "paths": [
+            "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+            "production/homeworld-v160/first-pack/HW1009_etale_marche_gauche.png",
+            "public/game/homeworld/v78/market-stall-right.png",
+            "public/game/homeworld/v83/merchant-counter-left.png",
+            "public/game/homeworld/v76/interior/worktable-right.png",
+            "public/game/homeworld/v83/cargo-rack-right.png",
+            "public/game/homeworld/v76/interior/rack-lateral.png"
+          ],
+          "finding": "Kiosque, étals, comptoirs et racks indépendants déjà présents. Leur fonction générale est lisible. Les détails de marchandise sont souvent fusionnés mais ne justifient pas de refaire l’ensemble.",
+          "decision": "RETAIN_EXISTING_NO_REDUNDANT_BUILDING_OR_FURNITURE",
+          "limits": "Les candidats conservent leur statut de revue ; les faibles marges sur certaines sources ne sont pas présentées comme une coupe observée."
+        }
+      ],
+      "droppedProposal": "Nouvelle lampe suspendue : abandonnée après découverte et inspection des deux lampes autonomes V33.",
+      "recommendedNewSprites": 3,
+      "recommendedNewBuildings": 0,
+      "evidenceLimits": [
+        "Une recherche de noms ne prouve pas une absence absolue dans tous les atlas non découpés.",
+        "La conclusion porte sur la fonction autonome et l’état observé, pas sur une certification canonique ou une intégration runtime.",
+        "Les trois propositions réemploient des cibles V81 existantes et laissent tous les anciens fichiers intacts."
+      ]
+    },
+    "mounts": {
+      "schemaVersion": 1,
+      "date": "2026-11-03",
+      "scope": "READ_ONLY_MOUNTS_AUDIT_ROUND3",
+      "expectedBaselineCommit": "454bbc558abc9bb06141b2b77642bff1894d8cf2",
+      "method": [
+        "Inspection individuelle via view_image des neuf M01–M09, des cinq équipements montures antérieurs, du portique faune et de cinq sources connexes.",
+        "Lecture des reçus/catalogue et recherches ciblées dans les noms de PNG/WebP suivis par Git.",
+        "Les PNG absents du sparse checkout ont été lus depuis HEAD dans un cache scratch, sans modification du dépôt ni de la configuration sparse.",
+        "Aucun PNG généré, redimensionné, miroir, tourné, nettoyé ou modifié."
+      ],
+      "limitations": [
+        "Recherche ciblée, pas preuve exhaustive d’absence d’un objet caché dans chaque atlas.",
+        "Revue de silhouettes 2D : dimensions en mètres, caméra 35 degrés, adaptation anatomique et collisions non validées.",
+        "Même agent auteur des neuf montures récentes ; ceci n’est pas une validation artistique humaine indépendante.",
+        "Aucune certification canonique 1:1. Les constructions examinées sont des adaptations originales du projet."
+      ],
+      "inspected": [
+        {
+          "id": "HWM162-M01",
+          "sourcePath": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+          "observation": "Bâtiment entier à trois baies ouvertes. Pas de besoin démontré d’un nouvel abri.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518"
+        },
+        {
+          "id": "HWM162-M02",
+          "sourcePath": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+          "observation": "Borne complète avec anneau et courte chaîne captive ; conserver. La laisse K07 existe ailleurs, donc pas de nouveau lien proposé sans preuve de dimension nécessaire.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1182,
+            1330
+          ],
+          "mode": "RGBA",
+          "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa"
+        },
+        {
+          "id": "HWM162-M03",
+          "sourcePath": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+          "observation": "Rampe continue et palier avec accès latéral ouvert. Montage à l’animal toujours à mesurer ; pas d’autre plateforme proposée.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7"
+        },
+        {
+          "id": "HWM162-M04",
+          "sourcePath": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+          "observation": "Segment frontal. Traverses horizontales et poteaux verticaux. Cette projection ne prolonge pas les axes inclinés de M07 par translation seule.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525"
+        },
+        {
+          "id": "HWM162-M05",
+          "sourcePath": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "observation": "Obstacle indépendant à barre rembourrée, complet ; aucune duplication proposée.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2"
+        },
+        {
+          "id": "HWM162-M06",
+          "sourcePath": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "observation": "Établi avec petit bassin, coussin, armoires fermées et bras diagnostic attaché. Surface de service ou appui de membre, pas table pour quadrupède entier. Le portique 71-273 existe séparément.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da"
+        },
+        {
+          "id": "HWM162-M07",
+          "sourcePath": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+          "observation": "Angle à trois poteaux : deux bras projetés sur des diagonales opposées. Les extensions rectilignes assorties à ces deux projections ne sont pas livrées dans M01–M09.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f"
+        },
+        {
+          "id": "HWM162-M08",
+          "sourcePath": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+          "observation": "Cadre ouvert avec passage transparent et track supérieur. Ne pas produire un doublon du portail.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "sha256": "cd982603d1d7c51a2a88ad476fa59bfd58336f23cc30cc7ebb517917b81b212d"
+        },
+        {
+          "id": "HWM162-M09",
+          "sourcePath": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+          "observation": "Battant indépendant, sans pylônes. Gardes au sol et au-dessus du corps déjà documentées ; assemblage non testé. Une nouvelle image ne prouverait pas la collision ou le coulissement.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9"
+        },
+        {
+          "id": "target-v81-71-273",
+          "sourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-71-273-fauna-harness-support-native.png",
+          "observation": "Portique bas vide à quatre berceaux rembourrés, déjà présent. Son usage exact et l’anatomie restent à qualifier ; exclut un nouveau portique de soin sans besoin distinct.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "sha256": "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a"
+        },
+        {
+          "id": "target-v81-72-282",
+          "sourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-282-mount-harness-support-native.png",
+          "observation": "Support vertical vide à deux niveaux, entier. Présence confirmée par pixels, pas seulement par reçu.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "sha256": "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc"
+        },
+        {
+          "id": "target-v81-72-283",
+          "sourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-283-mount-harness-native.png",
+          "observation": "Harnais connecté ouvert, plaque de poitrail, sangles et boucles sans animal ; pas d’absence du type harnais.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "sha256": "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45"
+        },
+        {
+          "id": "target-v81-72-284",
+          "sourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-284-mount-saddle-native.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-284-mount-saddle-native.png",
+          "observation": "Selle entière sans animal ni support, avec siège, sangles et étriers attachés ; ne pas dupliquer.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "sha256": "01569e77489c2296a019269eb863e7a3f48c16002991ad220b0a67b1719b4615"
+        },
+        {
+          "id": "target-v81-72-285",
+          "sourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-285-saddle-rack-native.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-285-saddle-rack-native.png",
+          "observation": "Rack bas vide à deux berceaux ; même axe général que la selle. Ajustement anatomique/composition non prouvé mais aucune incompatibilité démontrée qui justifie déjà un autre rack.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "sha256": "ea4496e16d3e74bd5beb121445a3b72451b3712ac717277112ab55c615ee834c"
+        },
+        {
+          "id": "target-v81-72-288",
+          "sourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-288-adapted-mount-feeder-native.png",
+          "observation": "Mangeoire surélevée avec rations sèches effectivement visibles et fusionnées au raster. Aucun état vide spécifique identifié dans les chemins ciblés.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "sha256": "22f2344dc1fb0c67a2ef1c28fa01a4a8998bdac18a7d5c8509c16785f89dd953"
+        },
+        {
+          "id": "HW1035",
+          "sourcePath": "production/homeworld-v158/assets/sprites_png/HW1035_poste_soins_faune.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-mounts-references/HW1035_poste_soins_faune.png",
+          "observation": "Ancien petit sprite montrant crâne et dais. Conservé comme source historique ; n’est pas un outil de soin portable ni le nouveau poste M06.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            207,
+            140
+          ],
+          "mode": "RGBA",
+          "sha256": "dbb7c4f30cb2dd4b31dff46049b2354962dba6eebc58f530b5a78d22c8e68656"
+        },
+        {
+          "id": "care-cabinet-v84",
+          "sourcePath": "public/game/homeworld/v84/care-cabinet-left.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-mounts-references/care-cabinet-left.png",
+          "observation": "Armoire fermée de soins, entière, existante. Aucun nouvel meuble de stockage de soins proposé.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "sha256": "c46f74c8164af922cbbf176609adadadc1eb6522ffdbace357f3e21206e902e5"
+        },
+        {
+          "id": "target-v81-71-271",
+          "sourcePath": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+          "observation": "Abreuvoir bas rempli d’eau ; fonction et forme distinctes d’un état vide de la mangeoire surélevée 72-288. Ne pas régénérer un abreuvoir générique.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "sha256": "644a9652da91d51ddd2e8576f786af3ba262ffc1413cabd2aa3abbd22b4e595a"
+        },
+        {
+          "id": "target-v81-71-268",
+          "sourcePath": "production/native-open-20261102/archives/fauna-energy/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+          "observation": "Barrière faune diagonale déjà existante : trois traverses bronze plus fines, capuchons/pieds différents, pas de renfort inférieur M07. Source apparentée conservée. Les propositions concernent les deux orientations du système M04/M07, non une absence générale de clôtures diagonales.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "sha256": "522bec7b485f7d7742f835ca8a2f609970998f906247d6258b8a5e71aff927cf"
+        },
+        {
+          "id": "HWA160-N01",
+          "sourcePath": "production/homeworld-v161/originals/HWA160-N01_garde-corps-trapezoidal-court.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-mounts-references/HWA160-N01_garde-corps-trapezoidal-court.png",
+          "observation": "Garde-corps urbain à panneaux pleins et arceaux trapézoïdaux, différent de la clôture à trois traverses M04/M07 ; conservé sans agrandissement arbitraire.",
+          "viewImageInspected": true,
+          "dimensionsPx": [
+            1774,
+            887
+          ],
+          "mode": "RGBA",
+          "sha256": "05db5ba00124ef243ef3af1601c7715ca49b302ae8f866f641553f58ec623ed6"
+        }
+      ],
+      "recommendedNextBatch": [
+        {
+          "tentativeId": "HWM162-M10",
+          "label": "Mangeoire adaptée — état vide",
+          "targetIds": [
+            "target-v81-72-288"
+          ],
+          "gapType": "STATE_VARIANT_OF_EXISTING_OBJECT",
+          "sourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png",
+          "referenceCachePath": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-288-adapted-mount-feeder-native.png",
+          "justification": "L’état livré contient une couche de rations fusionnée au bassin. Il ne peut montrer un stock épuisé ou un bassin vidé sans une autre source. L’abreuvoir bas 71-271 ne correspond pas à cette géométrie.",
+          "brief": "Un seul objet entier identique à la mangeoire source, bassin réellement vide, même pose et mêmes matériaux. Conserver l’original rempli et créer une nouvelle source native. Aucun aliment autonome inventé, aucun autre meuble.",
+          "expectedFile": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M10-empty-feeder.png",
+          "status": "PROPOSED_PENDING_ROOT_PLAN",
+          "newObjectType": false
+        },
+        {
+          "tentativeId": "HWM162-M11",
+          "label": "Clôture M04/M07 — axe haut-gauche vers bas-droite",
+          "targetIds": [
+            "target-v81-72-287"
+          ],
+          "gapType": "NATIVE_ORIENTATION_OF_EXISTING_SYSTEM",
+          "sourcePaths": [
+            "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+            "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png"
+          ],
+          "justification": "Le second bras de M07 suit l’axe opposé. Aucun panneau droit livré du système M04/M07 ne possède cette projection. Un miroir inverserait aussi patine, marquages et éclairage ; une seconde vue native est requise si l’on prolonge cet axe.",
+          "brief": "Un segment droit entier correspondant à l’autre bras, poteaux verticaux et mêmes hauteurs de traverses. Génération séparée, même lumière supérieure gauche. Pas de deuxième objet, pas de cage, pas de scène, pas de miroir ni rotation de pixels.",
+          "expectedFile": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M11-fence-diagonal-left.png",
+          "status": "PROPOSED_PENDING_ROOT_PLAN",
+          "newObjectType": false,
+          "extendsArmOfM07": "left"
+        },
+        {
+          "tentativeId": "HWM162-M12",
+          "label": "Clôture M04/M07 — axe bas-gauche vers haut-droite",
+          "targetIds": [
+            "target-v81-72-287"
+          ],
+          "gapType": "NATIVE_ORIENTATION_OF_EXISTING_SYSTEM",
+          "sourcePaths": [
+            "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+            "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png"
+          ],
+          "justification": "M07 a un bras qui remonte vers la droite. M04 a des rails horizontaux ; une rotation du PNG inclinerait ses poteaux. Il manque une vue native du panneau droit dans cet axe, assortie aux mêmes poteaux, traverses et renfort inférieur. La barrière faune 71-268 existe dans un axe voisin mais ne partage pas cette géométrie.",
+          "brief": "Un seul segment droit de la famille M04/M07, rails projetés sur l’axe bas-gauche/haut-droite, poteaux verticaux, lumière supérieure gauche inchangée. Chaque joint de raccord doit être lisible. Définir le recouvrement des poteaux pendant le plan, puis vérifier le raccord en scène. Ne pas obtenir la vue par rotation ou miroir du PNG.",
+          "expectedFile": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-fence-diagonal-right.png",
+          "status": "PROPOSED_PENDING_ROOT_PLAN",
+          "newObjectType": false,
+          "extendsArmOfM07": "right"
+        }
+      ],
+      "notRecommendedNow": [
+        "Nouvelle selle, harnais, support de harnais ou rack : sources indépendantes déjà présentes et inspectées.",
+        "Nouveau portique ou bâtiment de soins : 71-273, M06 et l’armoire v84 couvrent des fonctions distinctes existantes ; aucune nouvelle forme nécessaire démontrée.",
+        "Abreuvoir générique : source 71-271 existante.",
+        "Nouveau portail fermé fusionné : M08 et M09 sont déjà des composants séparés. Les gardes documentées doivent être évaluées en scène ; une image supplémentaire ne constitue pas ce test.",
+        "Outils de soins arbitraires : pas de manque fonctionnel suffisamment précis ni de source anatomique pour un nouvel outil spécialisé à ce stade."
+      ],
+      "planApproved": false,
+      "generationPerformed": false,
+      "pngModified": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "canonicalOneToOneClaimed": false,
+      "actualBaselineCommit": "454bbc558abc9bb06141b2b77642bff1894d8cf2",
+      "inspectedPNGCount": 20,
+      "parentSelectionNote": "Parent retient M10 vide, M11 bras gauche, M12 bras droit ; génération encore en attente de confirmation explicite."
+    },
+    "kennels": {
+      "schema_version": 1,
+      "audit": "round3-kennels",
+      "date": "2026-11-03",
+      "baseline_commit": "454bbc558abc9bb06141b2b77642bff1894d8cf2",
+      "scope": "READ_ONLY_AUDIT_NO_GENERATION",
+      "repository": "darknigthmare/yautja-la-longue-chasse",
+      "pull_request": 99,
+      "repo_files_modified": false,
+      "sparse_configuration_modified": false,
+      "historical_images_read_via": "git show HEAD:path, byte-for-byte copies into scratch round3-references",
+      "summary": {
+        "historical_targets": 15,
+        "all_target_categories_have_candidate_or_current_delivery": true,
+        "missing_source_categories": 0,
+        "current_kennel_assets_reopened_and_sha_verified": 9,
+        "proposed_independent_states": 4,
+        "matching_existing_open_or_off_state_found": false
+      },
+      "source_manifests": [
+        "production/native-open-20261102/source-manifest.json",
+        "production/native-open-20261102/archives/fauna-energy/fauna-energy-production-manifest.json",
+        "production/native-open-20261102/archives/fauna-energy/cages/cages-production-manifest.json",
+        "production/native-open-20261102/archives/fauna-energy/gear/gear-index.json",
+        "production/homeworld-sectors-20261103/catalogue.json",
+        "production/homeworld-sectors-20261103/receipts/kennels.json"
+      ],
+      "target_audit": [
+        {
+          "target_id": "target-v81-71-266",
+          "label": "Enclos",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1943,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/265",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [
+            {
+              "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+              "attempt": 1,
+              "selection": "RETAINED_CANDIDATE_NOT_ADMITTED",
+              "selected": true,
+              "bytes": 1029855,
+              "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/265"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/265"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/265"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1943
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 270,
+                    "idCell": {
+                      "cell": "A270",
+                      "value": "target-v81-71-266"
+                    },
+                    "labelCell": {
+                      "cell": "D270",
+                      "value": "Enclos"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G270",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F270",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 270,
+                    "idCell": {
+                      "cell": "A270",
+                      "value": "target-v81-71-266"
+                    },
+                    "labelCell": {
+                      "cell": "C270",
+                      "value": "Enclos"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D270",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E270",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "current_sector_assets": [],
+          "inspection": "Enclos polygonal complet, avec porte fermée intégrée ; source déjà disponible, pas un manque de bâtiment.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-267",
+          "label": "poteau enclos",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1944,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/266",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [
+            {
+              "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-267-enclosure-post-native.png",
+              "attempt": 1,
+              "selection": "RETAINED_CANDIDATE_NOT_ADMITTED",
+              "selected": true,
+              "bytes": 1293842,
+              "sha256": "cd67258d8e3931edc4ba42401dcdfaea41f78de3e1995b46873aebdaf0efe9b0",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/266"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/266"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/266"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1944
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 271,
+                    "idCell": {
+                      "cell": "A271",
+                      "value": "target-v81-71-267"
+                    },
+                    "labelCell": {
+                      "cell": "D271",
+                      "value": "poteau enclos"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G271",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F271",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 271,
+                    "idCell": {
+                      "cell": "A271",
+                      "value": "target-v81-71-267"
+                    },
+                    "labelCell": {
+                      "cell": "C271",
+                      "value": "poteau enclos"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D271",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E271",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "current_sector_assets": [],
+          "inspection": "Poteau autonome existant avec deux logements latéraux pour traverses ; pas de nouveau poteau proposé.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-268",
+          "label": "barrière enclos",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1945,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/267",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [
+            {
+              "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+              "attempt": 2,
+              "selection": "RETAINED_CANDIDATE_NOT_ADMITTED",
+              "selected": true,
+              "bytes": 364392,
+              "sha256": "522bec7b485f7d7742f835ca8a2f609970998f906247d6258b8a5e71aff927cf",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/267"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/267"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/267"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1945
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 272,
+                    "idCell": {
+                      "cell": "A272",
+                      "value": "target-v81-71-268"
+                    },
+                    "labelCell": {
+                      "cell": "D272",
+                      "value": "barrière enclos"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G272",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F272",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 272,
+                    "idCell": {
+                      "cell": "A272",
+                      "value": "target-v81-71-268"
+                    },
+                    "labelCell": {
+                      "cell": "C272",
+                      "value": "barrière enclos"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D272",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E272",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-268-enclosure-barrier-native.png",
+              "attempt": 1,
+              "selection": "REJET_CADRAGE_MARGE_DROITE_1PX",
+              "selected": false,
+              "bytes": 1381713,
+              "sha256": "5683daf01f9252c4127f077e70b964bf3f7c3b299d615f3da39cb35c52639039",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/267"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/267"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/267"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1945
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 272,
+                    "idCell": {
+                      "cell": "A272",
+                      "value": "target-v81-71-268"
+                    },
+                    "labelCell": {
+                      "cell": "D272",
+                      "value": "barrière enclos"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G272",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F272",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 272,
+                    "idCell": {
+                      "cell": "A272",
+                      "value": "target-v81-71-268"
+                    },
+                    "labelCell": {
+                      "cell": "C272",
+                      "value": "barrière enclos"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D272",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E272",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "current_sector_assets": [],
+          "inspection": "Deux poteaux et trois traverses ; tentative02 retenue, ne pas considérer la tentative01 rejetée comme seule source.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-269",
+          "label": "porte",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1946,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/268",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [],
+          "current_sector_assets": [
+            {
+              "id": "HWM162-K02",
+              "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png"
+            },
+            {
+              "id": "HWM162-K06",
+              "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png"
+            }
+          ],
+          "inspection": "K02 fournit le portique ouvert et K06 le battant indépendant ; assemblage runtime non prouvé.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-270",
+          "label": "barrière énergie",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1947,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/269",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [
+            {
+              "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png",
+              "attempt": 1,
+              "selection": "RETAINED_CANDIDATE_NOT_ADMITTED",
+              "selected": true,
+              "bytes": 423732,
+              "sha256": "1dcc79dda8a24c76617b0d76fdbdfee4a5771f381a839fd52548e39c49a44cec",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/269"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/269"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/269"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1947
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 274,
+                    "idCell": {
+                      "cell": "A274",
+                      "value": "target-v81-71-270"
+                    },
+                    "labelCell": {
+                      "cell": "D274",
+                      "value": "barrière énergie"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G274",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F274",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 274,
+                    "idCell": {
+                      "cell": "A274",
+                      "value": "target-v81-71-270"
+                    },
+                    "labelCell": {
+                      "cell": "C274",
+                      "value": "barrière énergie"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D274",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E274",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "current_sector_assets": [],
+          "inspection": "Barrière basse à deux pieds reliés par un rail, membrane ambre active fusionnée aux supports. Aucun état éteint correspondant trouvé.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-271",
+          "label": "abreuvoir alien",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1948,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/270",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [
+            {
+              "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native.png",
+              "attempt": 1,
+              "selection": "HISTORICAL_V113_CANDIDATE",
+              "selected": null,
+              "bytes": 1432776,
+              "sha256": "26a2e6e9217834667ab7ccd3d18aaf03aa0794a845e506570415592483d5bcd7",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/270"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/270"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/270"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1948
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 275,
+                    "idCell": {
+                      "cell": "A275",
+                      "value": "target-v81-71-271"
+                    },
+                    "labelCell": {
+                      "cell": "D275",
+                      "value": "abreuvoir alien"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G275",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F275",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 275,
+                    "idCell": {
+                      "cell": "A275",
+                      "value": "target-v81-71-271"
+                    },
+                    "labelCell": {
+                      "cell": "C275",
+                      "value": "abreuvoir alien"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D275",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E275",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+              "attempt": 2,
+              "selection": "HISTORICAL_V113_CANDIDATE",
+              "selected": null,
+              "bytes": 1215787,
+              "sha256": "644a9652da91d51ddd2e8576f786af3ba262ffc1413cabd2aa3abbd22b4e595a",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/270"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/270"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/270"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1948
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 275,
+                    "idCell": {
+                      "cell": "A275",
+                      "value": "target-v81-71-271"
+                    },
+                    "labelCell": {
+                      "cell": "D275",
+                      "value": "abreuvoir alien"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G275",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F275",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 275,
+                    "idCell": {
+                      "cell": "A275",
+                      "value": "target-v81-71-271"
+                    },
+                    "labelCell": {
+                      "cell": "C275",
+                      "value": "abreuvoir alien"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D275",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E275",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "current_sector_assets": [],
+          "inspection": "Abreuvoir ovale plein disponible ; tentative02 inspectée. Pas de nouvelle variante dans ce lot.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-272",
+          "label": "nourrisseur",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1949,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/271",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [
+            {
+              "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
+              "attempt": 1,
+              "selection": "HISTORICAL_V113_CANDIDATE",
+              "selected": null,
+              "bytes": 1400802,
+              "sha256": "214e44126281c66f8d526e57f2cb90527c7c255c7380c516a991a0d3cc3be91b",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/271"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/271"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/271"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1949
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 276,
+                    "idCell": {
+                      "cell": "A276",
+                      "value": "target-v81-71-272"
+                    },
+                    "labelCell": {
+                      "cell": "D276",
+                      "value": "nourrisseur"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G276",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F276",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 276,
+                    "idCell": {
+                      "cell": "A276",
+                      "value": "target-v81-71-272"
+                    },
+                    "labelCell": {
+                      "cell": "C276",
+                      "value": "nourrisseur"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D276",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E276",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "current_sector_assets": [],
+          "inspection": "Nourrisseur à trémie et bac rempli disponible ; pas de nouvelle variante dans ce lot.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-273",
+          "label": "support harnais",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1950,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/272",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [
+            {
+              "path": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+              "attempt": 1,
+              "selection": "RETAINED_CANDIDATE_NOT_ADMITTED",
+              "selected": true,
+              "bytes": 1222952,
+              "sha256": "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/272"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/272"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/272"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1950
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 277,
+                    "idCell": {
+                      "cell": "A277",
+                      "value": "target-v81-71-273"
+                    },
+                    "labelCell": {
+                      "cell": "D277",
+                      "value": "support harnais"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G277",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F277",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 277,
+                    "idCell": {
+                      "cell": "A277",
+                      "value": "target-v81-71-273"
+                    },
+                    "labelCell": {
+                      "cell": "C277",
+                      "value": "support harnais"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D277",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E277",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "current_sector_assets": [],
+          "inspection": "Support bas à quatre berceaux rembourrés, vide. Pas de portique de soin supplémentaire nécessaire.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-274",
+          "label": "rack dressage",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1951,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/273",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [],
+          "current_sector_assets": [
+            {
+              "id": "HWM162-K03",
+              "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png"
+            },
+            {
+              "id": "HWM162-K07",
+              "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png"
+            },
+            {
+              "id": "HWM162-K08",
+              "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png"
+            },
+            {
+              "id": "HWM162-K09",
+              "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png"
+            }
+          ],
+          "inspection": "K03 rack complet ; K07 laisse, K08 leurre et K09 collier autonomes. Pas de duplication de ces accessoires.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-275",
+          "label": "plateforme observation",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1952,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/274",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [],
+          "current_sector_assets": [
+            {
+              "id": "HWM162-K04",
+              "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png"
+            }
+          ],
+          "inspection": "K04 plateforme avec escalier complet et accès au palier, déjà disponible.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-276",
+          "label": "cage petite",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1953,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/275",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [
+            {
+              "path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+              "attempt": 1,
+              "selection": "RETAINED_CANDIDATE_NOT_ADMITTED",
+              "selected": true,
+              "bytes": 2077790,
+              "sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/275"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/275"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/275"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1953
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 280,
+                    "idCell": {
+                      "cell": "A280",
+                      "value": "target-v81-71-276"
+                    },
+                    "labelCell": {
+                      "cell": "D280",
+                      "value": "cage petite"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G280",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F280",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 280,
+                    "idCell": {
+                      "cell": "A280",
+                      "value": "target-v81-71-276"
+                    },
+                    "labelCell": {
+                      "cell": "C280",
+                      "value": "cage petite"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D280",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E280",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "current_sector_assets": [],
+          "inspection": "Cage compacte facettée, toit à barres et petite porte frontale à charnières fermée. État ouvert absent.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-277",
+          "label": "cage moyenne",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1954,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/276",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [
+            {
+              "path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+              "attempt": 1,
+              "selection": "RETAINED_CANDIDATE_NOT_ADMITTED",
+              "selected": true,
+              "bytes": 1691658,
+              "sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/276"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/276"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/276"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1954
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 281,
+                    "idCell": {
+                      "cell": "A281",
+                      "value": "target-v81-71-277"
+                    },
+                    "labelCell": {
+                      "cell": "D281",
+                      "value": "cage moyenne"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G281",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F281",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 281,
+                    "idCell": {
+                      "cell": "A281",
+                      "value": "target-v81-71-277"
+                    },
+                    "labelCell": {
+                      "cell": "C281",
+                      "value": "cage moyenne"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D281",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E281",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "current_sector_assets": [],
+          "inspection": "Cage rectangulaire allongée à patins bas, toit à barres et trappe coulissante de grand côté fermée. État ouvert absent.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-278",
+          "label": "cage lourde",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1955,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/277",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [
+            {
+              "path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+              "attempt": 1,
+              "selection": "RETAINED_CANDIDATE_NOT_ADMITTED",
+              "selected": true,
+              "bytes": 2244917,
+              "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/277"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/277"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/277"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1955
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 282,
+                    "idCell": {
+                      "cell": "A282",
+                      "value": "target-v81-71-278"
+                    },
+                    "labelCell": {
+                      "cell": "D282",
+                      "value": "cage lourde"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G282",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F282",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 282,
+                    "idCell": {
+                      "cell": "A282",
+                      "value": "target-v81-71-278"
+                    },
+                    "labelCell": {
+                      "cell": "C282",
+                      "value": "cage lourde"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D282",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E282",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "current_sector_assets": [],
+          "inspection": "Cage lourde à trois arceaux transversaux et deux patins renforcés, porte renforcée de face courte fermée. État ouvert absent.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-279",
+          "label": "fosse",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1956,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/278",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [],
+          "current_sector_assets": [
+            {
+              "id": "HWM162-K05",
+              "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png"
+            }
+          ],
+          "inspection": "K05 fosse sèche drainée à rebord complet, déjà disponible.",
+          "source_category_absent": false
+        },
+        {
+          "target_id": "target-v81-71-280",
+          "label": "signal danger",
+          "brief_path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "brief_line": 1957,
+          "catalogue_path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "catalogue_pointer": "/entries/279",
+          "source_label_lore_status": "LORE_COMPATIBLE_ORIGINAL",
+          "historical_candidates": [
+            {
+              "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png",
+              "attempt": 1,
+              "selection": "HISTORICAL_V113_CANDIDATE",
+              "selected": null,
+              "bytes": 1146909,
+              "sha256": "ffb1626d43f1b4abff1ebaf568b6e01eff18827283a40afe2bdffe11d4fc14d3",
+              "sourceLocators": {
+                "catalogue": {
+                  "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+                  "jsonPointer": "/entries/279"
+                },
+                "v111Inventory": {
+                  "path": "docs/v111-homeworld-art-inventory.json",
+                  "jsonPointer": "/entries/279"
+                },
+                "activeV112Followup": {
+                  "path": "docs/v112-homeworld-followup.json",
+                  "jsonPointer": "/artTargets/279"
+                },
+                "brief": {
+                  "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+                  "section": 71,
+                  "line": 1957
+                },
+                "workbookCells": [
+                  {
+                    "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV111",
+                    "part": "xl/worksheets/v111-sheet-110.xml",
+                    "row": 284,
+                    "idCell": {
+                      "cell": "A284",
+                      "value": "target-v81-71-280"
+                    },
+                    "labelCell": {
+                      "cell": "D284",
+                      "value": "signal danger"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "G284",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "F284",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  },
+                  {
+                    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+                    "sheet": "CatalogueArtV112",
+                    "part": "xl/worksheets/v112-sheet-119.xml",
+                    "row": 284,
+                    "idCell": {
+                      "cell": "A284",
+                      "value": "target-v81-71-280"
+                    },
+                    "labelCell": {
+                      "cell": "C284",
+                      "value": "signal danger"
+                    },
+                    "historicalPresenceCell": {
+                      "cell": "D284",
+                      "value": "MISSING"
+                    },
+                    "openArtCell": {
+                      "cell": "E284",
+                      "value": "NON_CLOTURE_ART"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "current_sector_assets": [],
+          "inspection": "Balise autonome à symbole original de griffures et indicateurs ambre disponible ; aucune preuve que ce symbole soit une écriture canonique.",
+          "source_category_absent": false
+        }
+      ],
+      "current_assets": [
+        {
+          "id": "HWM162-K01",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "receipt_sha256_matches": true,
+          "whole_image_reopened_for_this_audit": true,
+          "runtime_admitted": false,
+          "lore_status": "ORIGINAL_GAME_ADAPTATION"
+        },
+        {
+          "id": "HWM162-K02",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+          "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+          "receipt_sha256_matches": true,
+          "whole_image_reopened_for_this_audit": true,
+          "runtime_admitted": false,
+          "lore_status": "ORIGINAL_GAME_ADAPTATION"
+        },
+        {
+          "id": "HWM162-K03",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+          "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+          "receipt_sha256_matches": true,
+          "whole_image_reopened_for_this_audit": true,
+          "runtime_admitted": false,
+          "lore_status": "ORIGINAL_GAME_ADAPTATION"
+        },
+        {
+          "id": "HWM162-K04",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+          "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73",
+          "receipt_sha256_matches": true,
+          "whole_image_reopened_for_this_audit": true,
+          "runtime_admitted": false,
+          "lore_status": "ORIGINAL_GAME_ADAPTATION"
+        },
+        {
+          "id": "HWM162-K05",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+          "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf",
+          "receipt_sha256_matches": true,
+          "whole_image_reopened_for_this_audit": true,
+          "runtime_admitted": false,
+          "lore_status": "ORIGINAL_GAME_ADAPTATION"
+        },
+        {
+          "id": "HWM162-K06",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+          "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4",
+          "receipt_sha256_matches": true,
+          "whole_image_reopened_for_this_audit": true,
+          "runtime_admitted": false,
+          "lore_status": "ORIGINAL_GAME_ADAPTATION"
+        },
+        {
+          "id": "HWM162-K07",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+          "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9",
+          "receipt_sha256_matches": true,
+          "whole_image_reopened_for_this_audit": true,
+          "runtime_admitted": false,
+          "lore_status": "ORIGINAL_GAME_ADAPTATION"
+        },
+        {
+          "id": "HWM162-K08",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+          "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698",
+          "receipt_sha256_matches": true,
+          "whole_image_reopened_for_this_audit": true,
+          "runtime_admitted": false,
+          "lore_status": "ORIGINAL_GAME_ADAPTATION"
+        },
+        {
+          "id": "HWM162-K09",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+          "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2",
+          "receipt_sha256_matches": true,
+          "whole_image_reopened_for_this_audit": true,
+          "runtime_admitted": false,
+          "lore_status": "ORIGINAL_GAME_ADAPTATION"
+        }
+      ],
+      "other_possible_equivalents_visually_checked": [
+        {
+          "local_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-56-58-energy-door-native.png",
+          "finding": "Portail haut complet avec champ actif ; différent de la barrière basse270."
+        },
+        {
+          "local_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-57-71-emitter-left-native.png",
+          "finding": "Émetteur piéton haut gauche ; aucun rail ni petit pied identique à270."
+        },
+        {
+          "local_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-57-72-emitter-right-native.png",
+          "finding": "Émetteur piéton haut droit ; modèle distinct de270."
+        },
+        {
+          "local_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-57-73-energy-field-native.png",
+          "finding": "Champ actif autonome, sans supports ; ne donne pas un état éteint de270."
+        },
+        {
+          "local_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-73-305-petite-cage-bas-quartiers-native.png",
+          "finding": "Petite cage de bas quartiers asymétrique et réparée, porte également fermée ; ne remplace pas276."
+        },
+        {
+          "local_path": "/workspace/scratch/2166fec07f86/round3-references/cage-structure.png",
+          "finding": "Grande cage jeunessev53 avec grille en losanges, porte fermée ; modèle et fonction distincts des trois cagesFAUNE."
+        }
+      ],
+      "matching_state_filenames_found": [],
+      "search_limits": "Filename/tree search plus exact-target manifests and visual inspection of plausible known alternatives. No claim that an unspecified detail hidden in a scene/atlas is an independent state sprite.",
+      "proposals": [
+        {
+          "id_proposed": "HWM162-K10",
+          "target_id": "target-v81-71-276",
+          "label": "Cage petite — porte ouverte",
+          "missing_type": "STATE",
+          "reason": "État de chargement et de sortie absent du modèle compact.",
+          "source_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+          "source_sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+          "local_reference_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-276-cage-petite-native.png",
+          "generation_kind": "REFERENCE_EDIT_ORIGINAL_PIXELS_PRESERVED_AS_NEW_OUTPUT",
+          "requested_identity_constraints": "Conserver la cage compacte hexagonale, les six renforts, le plancher, le toit à barres et la poignée. Ouvrir la porte articulée visible en façade ; montrer un accès libre, un intérieur vide et toute la porte ouverte. Ne pas transformer la cage en modèle rectangulaire.",
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "canonical_one_to_one_claimed": false,
+          "camera_recommendation": "Preserve the historical source view and geometry (orthographic three-quarter requested approximately32deg). This differs from recent frontal yaw0 pitch35; parent must resolve before generation. A camera change would be a new view, not a direct matching state.",
+          "pixel_postprocessing_allowed": false,
+          "human_validated": false,
+          "runtime_integrated": false
+        },
+        {
+          "id_proposed": "HWM162-K11",
+          "target_id": "target-v81-71-277",
+          "label": "Cage moyenne — trappe latérale ouverte",
+          "missing_type": "STATE",
+          "reason": "État de chargement latéral absent du modèle allongé.",
+          "source_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+          "source_sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+          "local_reference_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-277-cage-moyenne-native.png",
+          "generation_kind": "REFERENCE_EDIT_ORIGINAL_PIXELS_PRESERVED_AS_NEW_OUTPUT",
+          "requested_identity_constraints": "Conserver la cage basse et allongée, ses deux patins et les longues barres de toit. Rétracter complètement la trappe coulissante du grand côté, sans laisser un panneau fermé dans le passage. Intérieur vide, accès latéral lisible, un seul objet connecté.",
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "canonical_one_to_one_claimed": false,
+          "camera_recommendation": "Preserve the historical source view and geometry (orthographic three-quarter requested approximately32deg). This differs from recent frontal yaw0 pitch35; parent must resolve before generation. A camera change would be a new view, not a direct matching state.",
+          "pixel_postprocessing_allowed": false,
+          "human_validated": false,
+          "runtime_integrated": false
+        },
+        {
+          "id_proposed": "HWM162-K12",
+          "target_id": "target-v81-71-278",
+          "label": "Cage lourde — porte ouverte",
+          "missing_type": "STATE",
+          "reason": "État de transfert absent du modèle lourd ; les cages petite et moyenne ne remplacent pas sa construction.",
+          "source_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+          "source_sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+          "local_reference_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-278-cage-lourde-native.png",
+          "generation_kind": "REFERENCE_EDIT_ORIGINAL_PIXELS_PRESERVED_AS_NEW_OUTPUT",
+          "requested_identity_constraints": "Conserver trois arceaux transversaux massifs, deux patins renforcés, les barres et la porte de face courte. Ouvrir le battant sur ses charnières, entrée entièrement dégagée ; inclure la porte entière dans le cadre. Aucun animal.",
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "canonical_one_to_one_claimed": false,
+          "camera_recommendation": "Preserve the historical source view and geometry (orthographic three-quarter requested approximately32deg). This differs from recent frontal yaw0 pitch35; parent must resolve before generation. A camera change would be a new view, not a direct matching state.",
+          "pixel_postprocessing_allowed": false,
+          "human_validated": false,
+          "runtime_integrated": false
+        },
+        {
+          "id_proposed": "HWM162-K13",
+          "target_id": "target-v81-71-270",
+          "label": "Barrière énergie — désactivée",
+          "missing_type": "STATE",
+          "reason": "État désactivé absent de la barrière basse ; les émetteurs piétons séparés sont des modèles différents.",
+          "source_path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png",
+          "source_sha256": "1dcc79dda8a24c76617b0d76fdbdfee4a5771f381a839fd52548e39c49a44cec",
+          "local_reference_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-270-fauna-energy-barrier-native.png",
+          "generation_kind": "REFERENCE_EDIT_ORIGINAL_PIXELS_PRESERVED_AS_NEW_OUTPUT",
+          "requested_identity_constraints": "Conserver les deux poteaux bas, leurs pieds, les placages bronze et le rail inférieur. Supprimer le champ, sa grille, tout halo de membrane et son émission. L’espace au-dessus du rail entre les supports doit être réellement transparent ; indicateurs éteints ou très discrets, sans champ résiduel.",
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "canonical_one_to_one_claimed": false,
+          "camera_recommendation": "Preserve the historical source view and geometry (orthographic three-quarter requested approximately32deg). This differs from recent frontal yaw0 pitch35; parent must resolve before generation. A camera change would be a new view, not a direct matching state.",
+          "pixel_postprocessing_allowed": false,
+          "human_validated": false,
+          "runtime_integrated": false
+        }
+      ],
+      "lore_limits": {
+        "source_section": "71 FAUNE, broader than dogs/kennels; small cages must not be represented as adult2010hound transport by default.",
+        "architecture": "Kennel building, cages, gates and energy hardware are project-original adaptations. No film kennel plan or precise canonical dimensions established.",
+        "hound2010_reference": "https://www.hottoys.jp/item/view/100001667",
+        "hound2010_limit": "Licensed Tracker2010 reference supports spiky quadruped silhouette and chain/lead relationship; it does not prove the cage designs, collar, kennel plans or metric scale.",
+        "hound2018_reference": "https://www.prime1studio.com/tpr-predator-hound/PMTPR-03.html",
+        "hound2018_limit": "Different bulky2018design with head appendages; do not blend its morphology with2010hound or treat collectible display base as canonkennel.",
+        "no_creatures_in_proposed_states": true
+      },
+      "generation_authorized_by_parent_for_this_audit": false,
+      "next_step": "Parent confirms the four-state plan and reference-camera choice before any generation."
+    }
+  },
+  "sourceAuditFiles": [
+    {
+      "filename": "round3-market-audit.json",
+      "sha256": "3b528e542500c1609360df3d4ea04c6486f349961d1b8f8c6ce8979de5bed704"
+    },
+    {
+      "filename": "round3-mounts-audit.json",
+      "sha256": "fce2dc1a5634176544d4490a3b4edfc5b55f9674601fde4644a4643ecd1c6d45"
+    },
+    {
+      "filename": "round3-kennels-audit.json",
+      "sha256": "0922dbb2e80cfaed3486361c212e016e6013d869da87c2b4546992d09b6a1d29"
+    }
+  ],
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "humanValidated": false
+}

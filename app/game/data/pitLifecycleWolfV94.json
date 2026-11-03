@@ -1,0 +1,446 @@
+[
+  {
+    "fighterId": "wolf",
+    "variantId": "wolf-avec-casque-4261aca172",
+    "bodyHeightPx": 460,
+    "visibleFrameBounds": [
+      {
+        "pageId": "wolf-masked-intro-partial-v94",
+        "rect": [
+          0,
+          0,
+          512,
+          517
+        ],
+        "visibleRect": [
+          153,
+          28,
+          261,
+          488
+        ]
+      },
+      {
+        "pageId": "wolf-masked-intro-partial-v94",
+        "rect": [
+          512,
+          0,
+          512,
+          517
+        ],
+        "visibleRect": [
+          615,
+          35,
+          259,
+          481
+        ]
+      },
+      {
+        "pageId": "wolf-masked-intro-partial-v94",
+        "rect": [
+          0,
+          517,
+          512,
+          507
+        ],
+        "visibleRect": [
+          150,
+          535,
+          296,
+          471
+        ]
+      },
+      {
+        "pageId": "wolf-masked-intro-partial-v94",
+        "rect": [
+          512,
+          517,
+          512,
+          507
+        ],
+        "visibleRect": [
+          594,
+          545,
+          292,
+          463
+        ]
+      },
+      {
+        "pageId": "wolf-masked-intro-partial-v94",
+        "rect": [
+          0,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          133,
+          1028,
+          325,
+          463
+        ]
+      },
+      {
+        "pageId": "wolf-masked-intro-partial-v94",
+        "rect": [
+          512,
+          1024,
+          512,
+          512
+        ],
+        "visibleRect": [
+          588,
+          1027,
+          328,
+          464
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "wolf-masked-intro-partial-v94",
+      "characterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "wolf-masked-intro-partial-v94",
+          "src": "/game/sprites/v94/pit/wolf/004-wolf-intro-partial-v94.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.intro",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-intro-partial-v94",
+              "rect": [
+                0,
+                0,
+                512,
+                517
+              ],
+              "pivot": [
+                287.5,
+                515
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "wolf-masked-intro-partial-v94",
+              "rect": [
+                0,
+                517,
+                512,
+                507
+              ],
+              "pivot": [
+                285,
+                488
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "wolf-masked-intro-partial-v94",
+              "rect": [
+                0,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                283,
+                466
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.intro",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-intro-partial-v94",
+              "rect": [
+                512,
+                0,
+                512,
+                517
+              ],
+              "pivot": [
+                230,
+                515
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "wolf-masked-intro-partial-v94",
+              "rect": [
+                512,
+                517,
+                512,
+                507
+              ],
+              "pivot": [
+                235,
+                490
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "wolf-masked-intro-partial-v94",
+              "rect": [
+                512,
+                1024,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                466
+              ],
+              "durationTicks": 24
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "wolf",
+    "variantId": "wolf-avec-casque-4261aca172",
+    "bodyHeightPx": 492,
+    "visibleFrameBounds": [
+      {
+        "pageId": "wolf-masked-defeat-partial-v94",
+        "rect": [
+          0,
+          0,
+          512,
+          551
+        ],
+        "visibleRect": [
+          145,
+          11,
+          290,
+          539
+        ]
+      },
+      {
+        "pageId": "wolf-masked-defeat-partial-v94",
+        "rect": [
+          512,
+          0,
+          512,
+          550
+        ],
+        "visibleRect": [
+          589,
+          10,
+          291,
+          539
+        ]
+      },
+      {
+        "pageId": "wolf-masked-defeat-partial-v94",
+        "rect": [
+          0,
+          551,
+          512,
+          521
+        ],
+        "visibleRect": [
+          140,
+          569,
+          321,
+          502
+        ]
+      },
+      {
+        "pageId": "wolf-masked-defeat-partial-v94",
+        "rect": [
+          512,
+          550,
+          512,
+          522
+        ],
+        "visibleRect": [
+          565,
+          569,
+          320,
+          502
+        ]
+      },
+      {
+        "pageId": "wolf-masked-defeat-partial-v94",
+        "rect": [
+          0,
+          1072,
+          512,
+          464
+        ],
+        "visibleRect": [
+          111,
+          1095,
+          363,
+          421
+        ]
+      },
+      {
+        "pageId": "wolf-masked-defeat-partial-v94",
+        "rect": [
+          512,
+          1072,
+          512,
+          464
+        ],
+        "visibleRect": [
+          560,
+          1097,
+          358,
+          416
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "wolf-masked-defeat-partial-v94",
+      "characterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "wolf-masked-defeat-partial-v94",
+          "src": "/game/sprites/v94/pit/wolf/006-wolf-defeat-partial-v94.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-defeat-partial-v94",
+              "rect": [
+                0,
+                0,
+                512,
+                551
+              ],
+              "pivot": [
+                291,
+                549
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "wolf-masked-defeat-partial-v94",
+              "rect": [
+                0,
+                551,
+                512,
+                521
+              ],
+              "pivot": [
+                285.5,
+                519
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "wolf-masked-defeat-partial-v94",
+              "rect": [
+                0,
+                1072,
+                512,
+                464
+              ],
+              "pivot": [
+                283,
+                443
+              ],
+              "durationTicks": 50
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-defeat-partial-v94",
+              "rect": [
+                512,
+                0,
+                512,
+                550
+              ],
+              "pivot": [
+                221.5,
+                548
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "wolf-masked-defeat-partial-v94",
+              "rect": [
+                512,
+                550,
+                512,
+                522
+              ],
+              "pivot": [
+                226,
+                520
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "wolf-masked-defeat-partial-v94",
+              "rect": [
+                512,
+                1072,
+                512,
+                464
+              ],
+              "pivot": [
+                237.5,
+                440
+              ],
+              "durationTicks": 50
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

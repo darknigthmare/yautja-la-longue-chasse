@@ -1,0 +1,72 @@
+name: V152 Native RTS Real-Time Web Lock Two-Tab Chrome QA
+
+on:
+  push:
+    branches: [codex/reconcile-v115-lock-four-modes-20261101]
+    paths:
+      - 'scripts/qa-clan-war-rts-two-tabs-v152.mjs'
+      - 'tests/clan-war-rts-web-lock-v152.test.mjs'
+      - 'app/game/ClanWarOperationsV115.tsx'
+      - 'app/game/systems/clanWarOperationsV115.ts'
+      - 'tests/browser/clan-war-v151-four-modes.fixture.tsx'
+      - 'docs/Yautja_ClanWar_V152_RTS_Deux_Onglets.xlsx'
+      - '.github/workflows/clan-war-v152-rts-web-lock.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-rts-multitab:
+    name: V152 genuine V115 realtime ticks under shared Web Lock
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Sparse checkout actual V115 sources and QA workbook
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig*.json
+            /eslint.config.mjs
+            /app/game/
+            /types/
+            /lib/
+            /tests/browser/clan-war-v151-four-modes.fixture.tsx
+            /tests/clan-war-rts-web-lock-v152.test.mjs
+            /scripts/qa-clan-war-rts-two-tabs-v152.mjs
+            /docs/Yautja_ClanWar_V152_RTS_Deux_Onglets.xlsx
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install pinned dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify real RTS rules, cost, unique receipts and browser contract
+        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-rts-web-lock-v152.test.mjs
+      - name: Check V147 integrated gameplay types
+        run: npx --no-install tsc --noEmit -p tsconfig.clan-war-v147.json
+      - name: Lint new RTS source tests and Chromium audit
+        run: npx --no-install eslint tests/clan-war-rts-web-lock-v152.test.mjs scripts/qa-clan-war-rts-two-tabs-v152.mjs
+      - name: Install Chromium
+        run: npx --no-install playwright-core install --with-deps chromium
+      - name: Two actual live RTS panels, held lock, realtime resume and recovery
+        run: |
+          export AUDIT_CHROME_EXECUTABLE="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-clan-war-rts-two-tabs-v152.mjs
+      - name: Check V152 Excel archive and five source worksheets
+        run: |
+          unzip -t docs/Yautja_ClanWar_V152_RTS_Deux_Onglets.xlsx | tail -1
+          python3 -c "import zipfile; p='docs/Yautja_ClanWar_V152_RTS_Deux_Onglets.xlsx'; z=zipfile.ZipFile(p); assert sum(n.startswith('xl/worksheets/sheet') and n.endswith('.xml') for n in z.namelist())==5"
+      - name: Preserve real Chromium screenshots and JSON evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-v152-real-rts-web-lock-browser-evidence
+          path: outputs/clan-war-v152-rts-lock/
+          retention-days: 30
+          if-no-files-found: warn

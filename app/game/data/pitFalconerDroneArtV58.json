@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "worldWidth": 72,
+  "presentation": "One native held flight pose per side. Return reuses that side; no flapping animation or additional offensive weapon.",
+  "records": [
+    {
+      "facing": 1,
+      "src": "/game/sprites/v58/pit/falconer/drone-flight-right.png",
+      "width": 1774,
+      "height": 887,
+      "referenceWidth": 1694,
+      "sha256": "0b17a8be5ce4b1b4f363696072fb189382c12864ade044920165b2086d97e1ad",
+      "generatedSource": "exec-c3818f6c-a113-43da-bb6e-070e5e809a6e.png",
+      "frames": [
+        {
+          "pose": "flight",
+          "rect": [
+            0,
+            0,
+            1774,
+            887
+          ],
+          "pivot": [
+            900,
+            360
+          ],
+          "alphaBounds": [
+            40,
+            99,
+            1694,
+            711
+          ]
+        }
+      ]
+    },
+    {
+      "facing": -1,
+      "src": "/game/sprites/v58/pit/falconer/drone-flight-left.png",
+      "width": 1774,
+      "height": 887,
+      "referenceWidth": 1734,
+      "sha256": "c09c1ae1646ecc223b43275ed68d2955c14c8e7597d17c5b4a213272ce53d107",
+      "generatedSource": "exec-3df2e970-f4a7-4833-bca1-aeb6bd70db26.png",
+      "frames": [
+        {
+          "pose": "flight",
+          "rect": [
+            0,
+            0,
+            1774,
+            887
+          ],
+          "pivot": [
+            880,
+            360
+          ],
+          "alphaBounds": [
+            20,
+            100,
+            1734,
+            714
+          ]
+        }
+      ]
+    }
+  ]
+}

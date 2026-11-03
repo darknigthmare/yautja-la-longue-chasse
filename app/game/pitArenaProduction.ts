@@ -1,0 +1,260 @@
+import { applyPitStageCompositionV63 } from "./pitStageCompositionV63";
+import { applyPitStageCompositionV65 } from "./pitStageCompositionV65";
+import type { PitArenaAmbientMotion } from "./pitArenaAmbience";
+import productionManifestJson from "./pitArenaProductionData.generated.json";
+import { isPitFirstEditionArenaId, type PitFirstEditionArenaId } from "./systems/pitFirstEdition";
+import { getPitArenaExtension, type PitRuntimeArenaId as PitArenaId, type PitExtensionArenaId } from "./systems/pitArenaExtensions";
+
+export type PitArenaProductionStatus = "planned" | "generated" | "reviewed" | "integrated";
+export type PitArenaProductionPlaneId = "P0" | "P1" | "P2" | "P3" | "P4" | "P5";
+export interface PitArenaProductionFrame {
+  readonly path: string;
+  readonly status: PitArenaProductionStatus;
+  readonly generation: null | {
+    readonly generator: "openai-imagegen";
+    /** Local production records carry a path; the deployable projection only carries its checked attestation. */
+    readonly source?: string;
+    readonly sourceRecorded?: boolean;
+    readonly sha256: string;
+    readonly width: number;
+    readonly height: number;
+    readonly hasAlpha: boolean;
+    readonly contentBounds: { readonly x: number; readonly y: number; readonly width: number; readonly height: number };
+  };
+  readonly review: null | {
+    readonly evidence?: string;
+    readonly evidenceRecorded?: boolean;
+    readonly coherence: true;
+    readonly layout: true;
+    readonly alpha: true;
+  };
+  readonly integration: null | { readonly evidence?: string; readonly evidenceRecorded?: boolean };
+}
+export interface PitArenaProductionPlacement {
+  readonly x: number;
+  readonly y: number;
+  readonly width: number;
+  readonly height: number;
+}
+export interface PitArenaProductionAsset {
+  readonly id: string;
+  /** Explicit original asset reuse; placements never count as newly drawn images. */
+  readonly libraryRef?: string;
+  readonly role: string;
+  readonly drawOrder?: number;
+  /** Slow movement of an existing atmospheric alpha bitmap, separate from frame animation. */
+  readonly ambientMotion?: PitArenaAmbientMotion;
+  /** Authoring-only contour brief; omitted from the runtime projection. */
+  readonly contour?: string;
+  readonly alphaRequired: boolean;
+  readonly requiredForRuntime: boolean;
+  readonly mode: "cover" | "module" | "repeat-x" | "strip-x";
+  readonly sourceCrop?: PitArenaProductionPlacement;
+  /** Keep a floor-mounted prop vertically attached while its horizontal depth remains independent. */
+  readonly anchorToGround?: boolean;
+  /** Hanging modules keep their authored top position even when their aspect ratio differs. */
+  readonly verticalAlign?: "top" | "bottom";
+  readonly parallax: number;
+  readonly opacity: number;
+  readonly placements: readonly PitArenaProductionPlacement[];
+  readonly animation: null | { readonly fps: number; readonly reducedMotionFrame: number; readonly loop: true };
+  readonly frames: readonly PitArenaProductionFrame[];
+}
+export interface PitArenaProductionPlane {
+  readonly id: PitArenaProductionPlaneId;
+  readonly role: string;
+  readonly nominalParallax: number;
+  readonly status: PitArenaProductionStatus;
+  readonly subplanSpecification: "pending-conversation" | "proposed-original" | "source-confirmed";
+  readonly assets: readonly PitArenaProductionAsset[];
+}
+export interface PitArenaProductionStage {
+  readonly number: number;
+  readonly catalogueId: string;
+  readonly assetDirectory: string;
+  readonly name: string;
+  readonly setting: string;
+  readonly wave: string;
+  readonly legacyRuntimeArenaId: PitFirstEditionArenaId | null;
+  /** Explicit neutral-duel approval; never inferred from reviewed image status. */
+  readonly runtimeExtension?: { readonly arenaId: PitExtensionArenaId; readonly gameplayProfile: "neutral-duel-v1"; readonly rendererEvidence?: string; readonly rendererEvidenceRecorded?: boolean; readonly applicationEvidence?: string; readonly applicationEvidenceRecorded?: boolean };
+  readonly legacyRuntimeStatus: "playable" | "concept";
+  readonly sourceConfirmation: "pending-dedicated-conversation" | "confirmed";
+  readonly runtimeEnabled: boolean;
+  readonly planes: readonly PitArenaProductionPlane[];
+}
+export interface PitArenaProductionManifest {
+  readonly schemaVersion: 1;
+  readonly production: "v33-pit-independent-arena-art";
+  readonly sourceNote: string;
+  readonly sharedLibrary?: readonly PitArenaSharedLibraryEntry[];
+  readonly stages: readonly PitArenaProductionStage[];
+}
+export interface PitArenaSharedLibraryEntry {
+  readonly id: string;
+  readonly sourceCatalogueId: string;
+  readonly sourceAssetId: string;
+  readonly frames: readonly {
+    readonly path: string;
+    readonly sha256: string;
+    readonly width: number;
+    readonly height: number;
+    readonly hasAlpha: boolean;
+    readonly contentBounds: PitArenaProductionPlacement;
+  }[];
+}
+export interface PitArenaProductionKit {
+  readonly catalogueId: string;
+  readonly arenaId: PitArenaId;
+  readonly planes: readonly PitArenaProductionPlane[];
+  readonly paths: readonly string[];
+  readonly requiredPaths: readonly string[];
+}
+
+export const PIT_ARENA_PRODUCTION_MANIFEST = productionManifestJson as unknown as PitArenaProductionManifest;
+const PLANE_IDS: readonly PitArenaProductionPlaneId[] = ["P0", "P1", "P2", "P3", "P4", "P5"];
+const STATUS_RANK: Record<PitArenaProductionStatus, number> = { planned: 0, generated: 1, reviewed: 2, integrated: 3 };
+
+const PUBLIC_ARENA_PATH = /^\/game\/sprites\/v(?:33|34|42|43|54|55|60|62)\/pit-arenas\/[a-z0-9/-]+\.png$/;
+function hasExactStageDirectory(stage: PitArenaProductionStage): boolean {
+  const match = /^\/game\/sprites\/v(?:33|34|42|43|54|55|60|62)\/pit-arenas\/([a-z0-9-]+)$/.exec(stage.assetDirectory);
+  return Boolean(match && (match[1] === stage.catalogueId
+    || (stage.legacyRuntimeArenaId && isPitFirstEditionArenaId(stage.legacyRuntimeArenaId) && match[1] === stage.legacyRuntimeArenaId)));
+}
+function sameBounds(a: PitArenaProductionPlacement, b: PitArenaProductionPlacement) {
+  return a && b && a.x === b.x && a.y === b.y && a.width === b.width && a.height === b.height;
+}
+
+/** Foreign paths require a unique library entry matching the still-present original asset. */
+export function isPitArenaAssetPathAuthorized(
+  stage: PitArenaProductionStage, asset: PitArenaProductionAsset, manifest: PitArenaProductionManifest,
+): boolean {
+  if (!hasExactStageDirectory(stage)) return false;
+  if (!asset.frames.every(frame => PUBLIC_ARENA_PATH.test(frame.path) && !frame.path.includes(".."))) return false;
+  if (!asset.libraryRef) return asset.frames.every(frame => frame.path.startsWith(stage.assetDirectory + "/"));
+  const entries = manifest.sharedLibrary?.filter(entry => entry.id === asset.libraryRef) ?? [];
+  if (entries.length !== 1) return false;
+  const entry = entries[0];
+  const originStage = manifest.stages.find(candidate => candidate.catalogueId === entry.sourceCatalogueId);
+  const originals = originStage?.planes.flatMap(plane => plane.assets).filter(candidate => candidate.id === entry.sourceAssetId) ?? [];
+  if (originals.length !== 1 || originals[0].libraryRef || !originStage || originStage.catalogueId === stage.catalogueId) return false;
+  if (!hasExactStageDirectory(originStage)) return false;
+  const original = originals[0];
+  if (original.frames.length !== entry.frames.length || asset.frames.length !== entry.frames.length
+    || asset.alphaRequired !== original.alphaRequired || asset.mode !== original.mode
+    || JSON.stringify(asset.animation) !== JSON.stringify(original.animation)
+    || Boolean(asset.sourceCrop) !== Boolean(original.sourceCrop)
+    || (asset.sourceCrop && original.sourceCrop && !sameBounds(asset.sourceCrop, original.sourceCrop))) return false;
+  return asset.frames.every((frame, index) => {
+    const declared = entry.frames[index], source = original.frames[index];
+    return isPitArenaProductionFrameReviewed(source, original.alphaRequired)
+      && source.path.startsWith(originStage.assetDirectory + "/")
+      && frame.path === declared.path && frame.path === source.path
+      && [frame.generation, source.generation].every(generation => generation
+        && generation.sha256 === declared.sha256 && generation.width === declared.width
+        && generation.height === declared.height && generation.hasAlpha === declared.hasAlpha
+        && sameBounds(generation.contentBounds, declared.contentBounds));
+  });
+}
+
+/** Readiness is based on each real image's provenance and review, never its filename. */
+export function isPitArenaProductionFrameReviewed(frame: PitArenaProductionFrame, alphaRequired: boolean): boolean {
+  const evidence = frame.generation;
+  return (frame.status === "reviewed" || frame.status === "integrated")
+    && evidence?.generator === "openai-imagegen"
+    && (evidence.sourceRecorded === true || (typeof evidence.source === "string" && evidence.source.length > 0))
+    && /^[a-f0-9]{64}$/.test(evidence.sha256)
+    && Number.isInteger(evidence.width) && evidence.width > 0
+    && Number.isInteger(evidence.height) && evidence.height > 0
+    && evidence.contentBounds !== undefined
+    && [evidence.contentBounds.x, evidence.contentBounds.y, evidence.contentBounds.width, evidence.contentBounds.height].every(Number.isInteger)
+    && evidence.contentBounds.x >= 0 && evidence.contentBounds.y >= 0
+    && evidence.contentBounds.width > 0 && evidence.contentBounds.height > 0
+    && evidence.contentBounds.x + evidence.contentBounds.width <= evidence.width
+    && evidence.contentBounds.y + evidence.contentBounds.height <= evidence.height
+    && (!alphaRequired || evidence.hasAlpha === true)
+    && frame.review?.coherence === true && frame.review.layout === true && frame.review.alpha === true
+    && (frame.review.evidenceRecorded === true || (typeof frame.review.evidence === "string" && frame.review.evidence.length > 0))
+    && (frame.status !== "integrated" || frame.integration?.evidenceRecorded === true
+      || (typeof frame.integration?.evidence === "string" && frame.integration.evidence.length > 0));
+}
+
+/** A partial animation holds its first reviewed drawing; missing frames are never requested. */
+export function getPitArenaProductionUsableFrames(asset: PitArenaProductionAsset): readonly PitArenaProductionFrame[] {
+  if (!asset.frames[0] || !isPitArenaProductionFrameReviewed(asset.frames[0], asset.alphaRequired)) return [];
+  if (asset.animation && asset.frames.length > 1 && asset.frames.every(frame => isPitArenaProductionFrameReviewed(frame, asset.alphaRequired))) {
+    return asset.frames;
+  }
+  return [asset.frames[0]];
+}
+
+/** Concepts require an explicit authored extension and renderer approval in addition to complete art. */
+export function resolvePitArenaProductionKit(
+  arenaId: PitArenaId, manifest: PitArenaProductionManifest = PIT_ARENA_PRODUCTION_MANIFEST,
+): PitArenaProductionKit | null {
+  const stage = manifest.stages.find(entry => entry.legacyRuntimeArenaId === arenaId || entry.runtimeExtension?.arenaId === arenaId);
+  const extension = stage && getPitArenaExtension(stage.catalogueId, stage.number);
+  const extensionApproved = extension?.id === arenaId && stage?.legacyRuntimeStatus === "concept" && stage.legacyRuntimeArenaId === null
+    && stage.runtimeExtension?.gameplayProfile === "neutral-duel-v1"
+    && (stage.runtimeExtension.rendererEvidenceRecorded === true || Boolean(stage.runtimeExtension.rendererEvidence));
+  const historical = isPitFirstEditionArenaId(arenaId) && stage?.legacyRuntimeArenaId === arenaId && stage.legacyRuntimeStatus === "playable";
+  if (!stage || !stage.runtimeEnabled || (!historical && !extensionApproved)
+    || stage.planes.length !== 6 || !PLANE_IDS.every(id => stage.planes.some(plane => plane.id === id))) return null;
+  const requiredPaths: string[] = [];
+  const paths = new Set<string>();
+  const planes: PitArenaProductionPlane[] = [];
+  for (const planeId of PLANE_IDS) {
+    const plane = stage.planes.find(entry => entry.id === planeId)!;
+    const assets: PitArenaProductionAsset[] = [];
+    for (const originalAsset of plane.assets) {
+      const asset = applyPitStageCompositionV63(stage.catalogueId, originalAsset);
+      const motion = asset.ambientMotion;
+      if (motion && (planeId !== "P0" || asset.mode !== "module" || !asset.alphaRequired || asset.animation || asset.frames.length !== 1
+        || motion.kind !== "drift-x" || !Number.isFinite(motion.amplitudePx) || motion.amplitudePx < 0 || motion.amplitudePx > 24
+        || !Number.isInteger(motion.periodFrames) || motion.periodFrames < 600 || motion.periodFrames > 3600)) return null;
+      const frames = getPitArenaProductionUsableFrames(asset);
+      if (asset.requiredForRuntime && !frames.length) return null;
+      if (!frames.length) continue;
+      // A data typo must not request another arena, a remote URL, or a private source file.
+      if (!isPitArenaAssetPathAuthorized(stage, originalAsset, manifest)) return null;
+      frames.forEach(frame => paths.add(frame.path));
+      if (asset.requiredForRuntime) requiredPaths.push(frames[0].path);
+      assets.push({ ...asset, frames });
+    }
+    if (!assets.length) return null;
+    planes.push({ ...plane, assets: assets.sort((a, b) => (a.drawOrder ?? 0) - (b.drawOrder ?? 0)) });
+  }
+  const composedPlanes = applyPitStageCompositionV65(stage.catalogueId, planes);
+  if (composedPlanes === planes) return { catalogueId: stage.catalogueId, arenaId, planes, paths: [...paths], requiredPaths };
+  return { catalogueId: stage.catalogueId, arenaId, planes: composedPlanes,
+    paths: [...new Set(composedPlanes.flatMap(plane => plane.assets.flatMap(asset => asset.frames.map(frame => frame.path))))],
+    requiredPaths: [...new Set(composedPlanes.flatMap(plane => plane.assets.filter(asset => asset.requiredForRuntime).map(asset => asset.frames[0].path)))] };
+}
+
+/** Counts files and documented sub-plans separately from gameplay and from six-plane targets. */
+export function summarizePitArenaProduction(manifest: PitArenaProductionManifest = PIT_ARENA_PRODUCTION_MANIFEST) {
+  const planes = manifest.stages.flatMap(stage => stage.planes);
+  const assets = planes.flatMap(plane => plane.assets);
+  const frames = assets.flatMap(asset => asset.frames);
+  const counts = { planned: 0, generated: 0, reviewed: 0, integrated: 0 };
+  for (const frame of frames) counts[frame.status]++;
+  return {
+    stages: manifest.stages.length,
+    primaryPlaneTargets: planes.length,
+    specifiedSubplans: assets.length,
+    requestedImageFiles: frames.length,
+    uniqueImageFiles: new Set(frames.map(frame => frame.generation?.sha256 ?? frame.path)).size,
+    sharedModuleInstances: assets.filter(asset => asset.libraryRef).length,
+    fileStatus: counts,
+    legacyPlayable: manifest.stages.filter(stage => stage.legacyRuntimeStatus === "playable").length,
+    runtimePlayable: manifest.stages.filter(stage => { const id = stage.legacyRuntimeArenaId ?? stage.runtimeExtension?.arenaId; return id && resolvePitArenaProductionKit(id, manifest); }).length,
+    concepts: manifest.stages.filter(stage => { const id = stage.legacyRuntimeArenaId ?? stage.runtimeExtension?.arenaId; return !id || !resolvePitArenaProductionKit(id, manifest); }).length,
+    readyRuntimeKits: manifest.stages.filter(stage => { const id = stage.legacyRuntimeArenaId ?? stage.runtimeExtension?.arenaId; return id && resolvePitArenaProductionKit(id, manifest); }).length,
+  };
+}
+
+export function getPitArenaProductionPlaneStatus(assets: readonly PitArenaProductionAsset[]): PitArenaProductionStatus {
+  const frames = assets.flatMap(asset => asset.frames);
+  if (!frames.length) return "planned";
+  return frames.reduce<PitArenaProductionStatus>((least, frame) => STATUS_RANK[frame.status] < STATUS_RANK[least] ? frame.status : least, "integrated");
+}

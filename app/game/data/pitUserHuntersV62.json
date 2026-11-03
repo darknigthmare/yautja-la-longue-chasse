@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "release": "V62",
+  "fighters": [
+    {
+      "id": "user-emissary-phg",
+      "name": "Emissary — Hunting Grounds",
+      "sourceLabel": "Predator: Hunting Grounds · Emissary DLC · références officielles",
+      "artProvenance": "openai-primary-reference",
+      "canonicalFidelityCertified": false,
+      "variants": [
+        {
+          "id": "emissary-phg-official-armour-v62",
+          "label": "Hunting Grounds · tenue militaire référencée",
+          "src": "/game/sprites/v62/fighters/emissary-phg/portrait.png",
+          "width": 1024,
+          "height": 1536,
+          "pivot": [
+            512,
+            1515
+          ],
+          "bodyTopY": 18,
+          "nativeFacing": "right",
+          "sha256": "6a4ac039b29387ce9290d8a48132bf40635ad6cb40dd23e5cc69f61f6dbdcf34",
+          "sourceArchive": "OpenAI intégré V62 · références primaires IllFonic / PlayStation",
+          "sourceEntry": "docs/v62-generation/emissary-phg-art.json",
+          "frameCount": 1,
+          "animated": false,
+          "identityStatus": "primary-game-incarnation",
+          "canonicalFidelityCertified": false,
+          "sourceUrls": [
+            "https://forum.predator.illfonic.com/t/patch-notes-2-39/27316",
+            "https://store.steampowered.com/app/1919280",
+            "https://store.playstation.com/en-us/product/UP3095-PPSA24179_00-PHGD17PDLC000000/"
+          ],
+          "sourceNotes": [
+            "Game incarnation Emissary from Predator: Hunting Grounds, released April19 2022. Distinct from the two cut-film Emissary designs of The Predator.",
+            "Body equipment extrapolates the partly occluded lower legs/back from official key art. Artistic reconstruction, no certified1:1 claim.",
+            "Only idle has six authored frames in each direction. Movement, attacks and round performances remain incomplete and use an explicitly declared native stance.",
+            "No invented exclusive canonical location: existing Hunting Grounds shared location association remains unchanged."
+          ]
+        }
+      ],
+      "icon": {
+        "src": "/game/sprites/v62/fighters/emissary-phg/roster-icon.webp",
+        "width": 128,
+        "height": 192,
+        "bytes": 26664,
+        "sourceSrc": "/game/sprites/v62/fighters/emissary-phg/portrait.png",
+        "sourceSha256": "6a4ac039b29387ce9290d8a48132bf40635ad6cb40dd23e5cc69f61f6dbdcf34",
+        "sourceVariantId": "emissary-phg-official-armour-v62",
+        "sha256": "1306f2a771db1cb4bc98e5e6ec4fe55975021eda1895c35ac94818bc2e71185f"
+      }
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+import assert from "node:assert/strict";
+import crypto from "node:crypto";
+import sharp from "sharp";
+import { build } from "esbuild";
+import { inspectPitArenaImage } from "./pit-arena-image-metadata.mjs";
+import { checkPitArenaRuntimeData } from "./build-pit-arena-runtime-v33.mjs";
+import { arenaCompositionDigest } from "./lib/pit-arena-composition-v42.mjs";
+import { V60_COMPOSITION, V60_LIFE, v60CompositionDigest, verifyV60StageBytes } from "./lib/pit-stage-plan-v60.mjs";
+const v60Life=JSON.parse(await fs.readFile(V60_LIFE, "utf8"));
+
+const root = process.cwd();
+const compilation = await build({ stdin: { contents: 'export * from "./app/game/pitArenaProduction"; export { PIT_ARENA_CATALOGUE } from "./app/game/systems/pitArenaCatalogue"; export { PIT_SCREEN_ARENA_DEFINITIONS } from "./app/game/systems/pitScreenArenas"; export { PIT_ALL_LORE_STAGE_DEFINITIONS } from "./app/game/systems/pitLoreStages"; export { getPitArenaLifePaths } from "./app/game/pitArenaLife"; export { getPitArenaExtension } from "./app/game/systems/pitArenaExtensions";', loader: "ts", resolveDir: root }, write: false, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
+const api = await import("data:text/javascript;base64," + Buffer.from(compilation.outputFiles[0].text).toString("base64"));
+// Audit original archive references, not the smaller runtime attestations.
+const { source: manifest } = await checkPitArenaRuntimeData(root);
+assert.equal(manifest.schemaVersion, 1);
+assert.equal(manifest.production, "v33-pit-independent-arena-art");
+assert.equal(manifest.stages.length, 100 + api.PIT_SCREEN_ARENA_DEFINITIONS.length + api.PIT_ALL_LORE_STAGE_DEFINITIONS.length);
+const ids = new Set();
+const imagePaths = new Set();
+const ownedImagePaths = new Set();
+const checks = [];
+for (const stage of manifest.stages) {
+  assert(!ids.has(stage.catalogueId), stage.catalogueId);
+  ids.add(stage.catalogueId);
+  const screen = [...api.PIT_SCREEN_ARENA_DEFINITIONS, ...api.PIT_ALL_LORE_STAGE_DEFINITIONS].find(entry => entry.id === stage.catalogueId);
+  const catalogue = api.PIT_ARENA_CATALOGUE.find(entry => entry.id === stage.catalogueId) ?? (screen && {number:screen.catalogueNumber,name:screen.name,setting:screen.setting,runtimeArenaId:stage.runtimeEnabled?screen.id:null,runtimeStatus:stage.runtimeEnabled?'playable':'concept'});
+  assert(catalogue, `Unknown catalogue ID ${stage.catalogueId}`);
+  assert.equal(stage.number, catalogue.number);
+  assert.equal(stage.name, catalogue.name);
+  assert.equal(stage.setting, catalogue.setting);
+  const nativeLife=v60Life.stages.find(entry=>entry.stageId===stage.catalogueId);
+  const nativeLifePaths=nativeLife?.events.map(event=>event.src)??[];
+  if(stage.compositionContract===V60_COMPOSITION){assert(nativeLife);await verifyV60StageBytes(stage,nativeLife,root);}
+  const runtimeId = stage.legacyRuntimeArenaId ?? stage.runtimeExtension?.arenaId ?? null;
+  assert.equal(runtimeId, catalogue.runtimeArenaId);
+  if (stage.runtimeExtension) {
+    const extension = api.getPitArenaExtension(stage.catalogueId, stage.number);
+    assert(extension && extension.id === stage.runtimeExtension.arenaId, "Unknown or mismatched gameplay extension");
+    assert.equal(stage.legacyRuntimeArenaId, null); assert.equal(stage.legacyRuntimeStatus, "concept");
+    assert.equal(stage.runtimeExtension.gameplayProfile, extension.gameplayProfile);
+    assert.equal(catalogue.runtimeStatus, "playable");
+    const qa = JSON.parse(await fs.readFile(stage.runtimeExtension.rendererEvidence, "utf8"));
+    assert.equal(qa.result, "PASS"); assert.equal(qa.arenaId, runtimeId);
+    if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions','v54-character-lore-shared-library-compositions','v55-character-lore-shared-library-compositions',V60_COMPOSITION].includes(stage.compositionContract)) {
+      const digest = stage.compositionContract===V60_COMPOSITION?v60CompositionDigest(stage,nativeLife):arenaCompositionDigest(stage);
+      assert.equal(qa.compositionDigest, digest, 'Renderer proof is stale: ' + stage.catalogueId);
+      assert.equal(stage.compositionVisualReview?.digest, digest, 'Visual approval is stale: ' + stage.catalogueId);
+      const visual = JSON.parse(await fs.readFile(stage.compositionVisualReview.evidence, 'utf8'));
+      assert(visual.compositions.some(entry => entry.arenaId === stage.catalogueId && entry.accepted === true && entry.compositionDigest === digest), 'Missing actual composition review');
+    }
+    assert.equal(qa.loaded.images, new Set([...stage.planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => f.path))), ...(nativeLife?nativeLifePaths:stage.number >= 137 ? api.getPitArenaLifePaths(stage.catalogueId) : [])]).size); assert.equal(qa.mobileNoOverflow, true);
+    assert.deepEqual(qa.errors, []); assert.deepEqual(qa.failedRequests, []);
+    assert(qa.scenarios.length >= 8 && qa.scenarios.every(s => s.planes.length === 6 && s.missing.length === 0 && s.unchangedCamera && s.unchangedState));
+    if (stage.runtimeExtension.applicationEvidence) {
+      const appQa = JSON.parse(await fs.readFile(stage.runtimeExtension.applicationEvidence, "utf8"));
+      assert.equal(appQa.passed, true); assert.equal(appQa.mobileNoOverflow, true);
+      if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions','v54-character-lore-shared-library-compositions','v55-character-lore-shared-library-compositions',V60_COMPOSITION].includes(stage.compositionContract)) {
+        const digest = stage.compositionContract===V60_COMPOSITION?v60CompositionDigest(stage,nativeLife):arenaCompositionDigest(stage);
+        assert(appQa.checks.some(check => check.arena === runtimeId && check.compositionDigest === digest), 'Application proof is stale: ' + stage.catalogueId);
+      }
+      assert.deepEqual(appQa.errors, []); assert.deepEqual(appQa.failedRequests, []);
+      assert(appQa.checks.some(check => check.arena === runtimeId && check.loadedImages === new Set([...stage.planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => f.path))),...nativeLifePaths]).size && check.subplans === stage.planes.reduce((n, p) => n + p.assets.length, 0) && check.missing === 0));
+    }
+  } else assert.equal(stage.legacyRuntimeStatus, catalogue.runtimeStatus);
+  assert.deepEqual(stage.planes.map(plane => plane.id), ["P0", "P1", "P2", "P3", "P4", "P5"]);
+  if (!runtimeId) assert.equal(stage.runtimeEnabled, false, "Concept art cannot unlock unimplemented gameplay");
+  for (const plane of stage.planes) {
+    assert.equal(plane.status, api.getPitArenaProductionPlaneStatus(plane.assets), `Stale aggregate status ${stage.catalogueId}/${plane.id}`);
+    for (const asset of plane.assets) {
+      assert(asset.frames.length > 0 && asset.placements.length > 0, asset.id);
+      assert(Number.isFinite(asset.parallax) && asset.parallax >= 0 && asset.parallax <= 2, asset.id);
+      assert(Number.isFinite(asset.opacity) && asset.opacity >= 0 && asset.opacity <= 1, asset.id);
+      for (const box of asset.placements) assert([box.x, box.y, box.width, box.height].every(Number.isFinite) && box.width > 0 && box.height > 0, asset.id);
+      if (asset.mode === "repeat-x") {
+        assert.equal(plane.id, "P4");
+        assert.equal(asset.parallax, 1, "The physical combat floor cannot drift with a decorative plane");
+      }
+      if (asset.animation) {
+        assert(Number.isFinite(asset.animation.fps) && asset.animation.fps > 0 && asset.animation.fps <= 30);
+        assert(Number.isInteger(asset.animation.reducedMotionFrame) && asset.animation.reducedMotionFrame >= 0 && asset.animation.reducedMotionFrame < asset.frames.length);
+      }
+      assert(api.isPitArenaAssetPathAuthorized(stage, asset, manifest), "Unauthorized foreign module: " + asset.id);
+      for (const frame of asset.frames) {
+        assert.match(frame.path, /^\/game\/sprites\/v(?:33|34|42|43|54|55|60)\/pit-arenas\/[a-z0-9/-]+\.png$/);
+        assert(asset.libraryRef || frame.path.startsWith(stage.assetDirectory + "/"));
+        // An authorised alias may be listed before its later-numbered owner.
+        // Only a second ownership claim is invalid; alias authorisation is checked above.
+        if (!asset.libraryRef) {
+          assert(!ownedImagePaths.has(frame.path), "Duplicate own file without explicit library reference: " + frame.path);
+          ownedImagePaths.add(frame.path);
+        }
+        imagePaths.add(frame.path);
+        assert(["planned", "generated", "reviewed", "integrated"].includes(frame.status), frame.path);
+        if (frame.status === "planned") {
+          assert.equal(frame.generation, null, "Record a generated file as generated instead of leaving inconsistent provenance");
+          assert.equal(frame.review, null);
+          assert.equal(frame.integration, null);
+          continue;
+        }
+        assert.equal(frame.generation?.generator, "openai-imagegen", frame.path);
+        assert(frame.generation.source && !path.isAbsolute(frame.generation.source) && !frame.generation.source.includes(".."), frame.path);
+        await fs.access(path.resolve(root, frame.generation.source));
+        if (/^art-source\/v(?:34|42|43)\/pit-arenas\//.test(frame.generation.source)) {
+          const receipt = JSON.parse(await fs.readFile(frame.generation.source, "utf8"));
+          assert.equal(receipt.accepted, true); assert.notEqual(receipt.excludedFromCoverage, true);
+          assert.equal(receipt.sha256, frame.generation.sha256); assert.equal(receipt.publicPath, frame.path);
+          assert(receipt.prompt && /^(art-source\/v(?:34|42|43)\/pit-arenas\/|public\/game\/sprites\/v(?:42|43)\/pit-arenas\/)/.test(receipt.archivedSource) && !receipt.archivedSource.includes(".."));
+          const original = await fs.readFile(path.resolve(root, receipt.archivedSource));
+          assert.equal(crypto.createHash("sha256").update(original).digest("hex"), frame.generation.sha256, "Original source changed: " + frame.path);
+        }
+        const diskPath = path.resolve(root, "public", "." + frame.path);
+        const bytes = await fs.readFile(diskPath);
+        const metadata = await sharp(bytes).metadata();
+        const measured = await inspectPitArenaImage(diskPath, {alphaThreshold: frame.path.startsWith('/game/sprites/v43/') ? 1 : frame.path.startsWith('/game/sprites/v60/') ? 3 : 16});
+        assert.deepEqual(frame.generation.contentBounds, measured.contentBounds, "Stale measured alpha bounds: " + frame.path);
+        const crop = asset.sourceCrop ?? frame.generation.contentBounds;
+        assert([crop.x, crop.y, crop.width, crop.height].every(Number.isInteger));
+        assert(crop.x >= 0 && crop.y >= 0 && crop.width > 0 && crop.height > 0 && crop.x + crop.width <= metadata.width && crop.y + crop.height <= metadata.height, "Source crop outside image: " + frame.path);
+        if (asset.animation && asset.sourceCrop) {
+          const bounds = frame.generation.contentBounds;
+          assert(crop.x <= bounds.x && crop.y <= bounds.y && crop.x + crop.width >= bounds.x + bounds.width && crop.y + crop.height >= bounds.y + bounds.height, "Animation crop clips a reviewed silhouette: " + frame.path);
+        }
+        assert.equal(crypto.createHash("sha256").update(bytes).digest("hex"), frame.generation.sha256, frame.path);
+        assert.equal(metadata.width, frame.generation.width, frame.path);
+        assert.equal(metadata.height, frame.generation.height, frame.path);
+        assert.equal(Boolean(metadata.hasAlpha), frame.generation.hasAlpha, frame.path);
+        if (asset.alphaRequired) {
+          assert(metadata.hasAlpha, "Independent module is opaque: " + frame.path);
+          const { data, info } = await sharp(bytes).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+          let transparent = 0, visible = 0;
+          for (let pixel = info.channels - 1; pixel < data.length; pixel += info.channels) {
+            if (data[pixel] === 0) transparent++;
+            if (data[pixel] > 0) visible++;
+          }
+          assert(transparent > 0 && visible > 0, "Alpha must contain both actual cut-out space and visible art: " + frame.path);
+          if (asset.mode === "repeat-x") {
+            let opaqueTop = 0;
+            for (let x = crop.x; x < crop.x + crop.width; x++) if (data[(crop.y * info.width + x) * info.channels + info.channels - 1] >= 250) opaqueTop++;
+            assert(opaqueTop / crop.width >= .98, "Floor contact must begin at its top pixel, without a transparent margin: " + frame.path);
+          }
+        }
+        if (frame.status === "reviewed" || frame.status === "integrated") {
+          assert(api.isPitArenaProductionFrameReviewed(frame, asset.alphaRequired), "Missing image review: " + frame.path);
+          await fs.access(path.resolve(root, frame.review.evidence));
+        }
+        if (frame.status === "integrated") await fs.access(path.resolve(root, frame.integration.evidence));
+        checks.push({ path: frame.path, width: metadata.width, height: metadata.height, status: frame.status });
+      }
+      if (asset.animation && asset.frames.every(frame => frame.status !== "planned")) {
+        assert.equal(new Set(asset.frames.map(frame => frame.generation.sha256)).size, asset.frames.length, "Duplicate files are not distinct animation drawings: " + asset.id);
+      }
+    }
+  }
+  if (stage.runtimeEnabled) assert(api.resolvePitArenaProductionKit(runtimeId, manifest), "Enabled kit lacks reviewed required frames: " + stage.catalogueId);
+}
+console.log(JSON.stringify({ result: "PASS", ...api.summarizePitArenaProduction(manifest), uniqueVerifiedImagePaths: imagePaths.size, verifiedImageInstances: checks }, null, 2));

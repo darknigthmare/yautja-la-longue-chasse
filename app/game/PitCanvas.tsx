@@ -1,0 +1,4782 @@
+"use client";
+
+/* eslint-disable @next/next/no-img-element -- local selection illustrations use the delivered WebP directly */
+
+import {
+  type PointerEvent as ReactPointerEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+
+import { applyPitWorkbookPresentationClockV105 } from './systems/pitWorkbookPresentationClockV105';
+import { PIT_WORKBOOK_COMBAT_RECIPE_V105 } from './systems/pitWorkbookCombatV105';
+import {PIT_WORKBOOK_COMBAT_RECIPE_V107} from './systems/pitWorkbookCombatV107';
+import {PIT_WORKBOOK_COMBAT_RECIPE_V109, PIT_WORKBOOK_FORWARD_THROW_V109, getPitWorkbookThrowPhaseV109} from './systems/pitWorkbookCombatV109';
+import {getPitWorkbookForwardThrowSupportV109, getPitForwardThrowArtReadinessV109} from './pitWorkbookRegistryV109';
+import {pitThrowInputV112, pitThrowCpuInputV112} from './systems/pitThrowControlsV112';
+import {PIT_WORKBOOK_COMBAT_RECIPE_V112, PIT_WORKBOOK_BACKWARD_THROW_V112, getPitWorkbookBackwardThrowPhaseV112} from './systems/pitWorkbookCombatV112';
+import {getPitWorkbookBackwardThrowSupportV112, getPitBackwardThrowArtReadinessV112} from './pitWorkbookRegistryV112';
+import {drawPitWorkbookDeviceBodyV107, drawPitWorkbookDeviceV107, loadPitWorkbookDeviceArtV107, type PitWorkbookDeviceArtV107} from './pitWorkbookDeviceRenderingV107';
+import {getPitWorkbookVariantCapabilitiesV107, guardPitWorkbookVariantCapabilityV107} from './pitWorkbookVariantCapabilitiesV107';
+import {preparePitWorkbookCampaignCombatV108,type PitWorkbookCarryV108} from './systems/pitWorkbookCampaignV108';
+import { PIT_WORKBOOK_COMBAT_RECIPE_V106 } from './systems/pitWorkbookCombatV106';
+import { PIT_WORKBOOK_MOVES_V105 } from './systems/pitWorkbookMovesV105';
+import { PIT_WORKBOOK_NORMALS_V104, PIT_WORKBOOK_NORMALS_RECIPE_V104, ownsPitWorkbookNormalsV104 } from './systems/pitWorkbookNormalsV104';
+import { createPitStageLifeSeedV66 } from "./pitStageLifeLaunchV66";
+import { advancePitFinisherV80, createPitFinisherViewV80, observePitFinisherV80, skipPitFinisherV80, triggerPitFinisherV80, pitFinisherIsSceneV80, createPitFinisherPadStateV80, readPitFinisherPadV80, PIT_FINISHER_COUNTS_V80, type PitFinisherChoiceV80, type PitFinisherModeV80, type PitFinisherViewV80 } from './systems/pitFinishersV80';
+import { drawPitFinisherActorsV80 } from './pitFinisherRenderingV80';
+import { PitFinisherHudV80 } from './PitFinisherHudV80';
+import {advancePitWorkbookConclusionSessionV107, advancePitWorkbookConclusionV107, createPitWorkbookConclusionV107,
+  getPitWorkbookConclusionQualificationV107, observePitWorkbookConclusionV107, pitWorkbookConclusionBlocksResultV107,
+  samplePitWorkbookConclusionV107, skipPitWorkbookConclusionV107, triggerPitWorkbookConclusionV107,
+  type PitWorkbookConclusionSessionV107, type PitWorkbookConclusionKeyV107} from './systems/pitWorkbookConclusionsV107';
+import {PIT_WORKBOOK_CONCLUSION_SCENE_REGISTRY_V107} from './pitWorkbookRegistryV107';
+import {drawPitWorkbookConclusionActorsV107, getPitWorkbookConclusionCameraV107, pitWorkbookConclusionActorsReadyV107} from './pitWorkbookConclusionRenderingV107';
+import {drawPitWorkbookObjectivePropsV107} from './pitWorkbookObjectiveRenderingV107';
+import {createPitWorkbookObjectiveSessionV107, ownsPitWorkbookObjectiveV107} from './pitWorkbookObjectiveSessionV107';
+import {PitWorkbookConclusionHudV107} from './PitWorkbookConclusionHudV107';
+import { advancePitLifecyclePresentationV93, beginPitCombatTauntV93, beginPitLifecycleTauntV93, createPitLifecyclePresentationV93, observePitCombatTauntsV93, pitLifecyclePresentationViewV93, pitLifecycleWindowWinnerV93 } from './systems/pitLifecyclePresentationV93';
+import { pitNativeTauntDurationV93, pitNativePresentationDurationV105, loadPitSpriteSheetAnimations, type PitSpriteSheetAnimationBank } from './pitSpriteSheetAnimation';
+import { getPitFighterPresentationCue } from './pitFighterPresentation';
+import { advancePitRoundPresentation, canPitPresentationAcceptInput, createPitRoundPresentation, observePitRoundPresentation, type PitRoundPresentationView } from "./systems/pitRoundPresentation";
+import { compactControlKeyLabel } from "./controlBindingLabels";
+import { createPitGamepadAssignments, disconnectPitGamepadAssignment, resolvePitGamepadAssignments } from "./systems/pitGamepadAssignments";
+import { getPitFighterKeyArt } from "./pitVisualAssets";
+import { pitMoveLabelV91 } from './systems/pitFidelityV91';
+import { getPitAuthoredMovesetV92 } from './systems/pitAuthoredMovesetsV92';
+import PitFidelityNoticeV91 from './PitFidelityNoticeV91';
+import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
+import { PIT_STAGE_JOURNEY_ROUTES, getPitStageJourneyForArena, getPitStageJourneyDefinition, pitStageSceneArena, pitStageJourneyArtIds } from "./systems/pitStageJourney";
+import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, getPitArenaLayerTransform, type PitArenaArtBank } from "./pitArenaRendering";
+import type { PitStageNarrativeCuesV61 } from "./pitStageStoryDirectorV61";
+import { getPitCombatBitmapArtDefinition, getPitCombatGroundFootprint, isPitCombatBitmapSelectionRequested, loadPitCombatBitmapArt, getPitCombatBitmapFighterArtStatus, getPitFighterPresentationVisualStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
+import { drawActorContactShadow } from "./spriteContact";
+import { drawPitCompanion, loadPitCompanionArt, pitCompanionPose, type PitCompanionArtBank } from './pitCompanionArt';
+import { drawPitFeralBolt } from './pitFeralBoltRendering';
+import { drawPitWorkbookChargeV106 } from './pitWorkbookEffectsV106';
+import {advancePitWorkbookCameraV106, isPitWorkbookSuperCameraV106} from './pitWorkbookCameraV106';
+import { getPitFeralNativeArtStatus } from './pitFeralNativeArtV59';
+import { getPitImpactFeedback, type PitImpactFlash } from './systems/pitImpactFeedback';
+import { drawPitFalconerDrone, loadPitFalconerDroneArt, resolvePitFalconerDroneFrame, type PitFalconerDroneArtBank } from './pitFalconerDroneArt';
+import {
+  PIT_ARENAS,
+  PIT_ARENA_IDS,
+  PIT_CLOAK_COST,
+  PIT_FIGHTERS,
+  getPitCombatFighterDefinition,
+  getPitCombatAttackDefinition,
+  getPitCurrentFighterDefinition,
+  PIT_MAX_TRAQUE,
+  PIT_TICK_RATE,
+  PIT_STATE_VERSION,
+  createPitCombatState,
+  getPitFighterBoxes,
+  getPitWorkbookShieldBoxV106,
+  getPitWorkbookDeviceBoxV107,
+  getPitTechniqueBox,
+  getPitTechniqueCollisionBoxV106,
+  getPitTechniqueDefinitionForEffect,
+  rematchPitCombat,
+  stepPitCombat,
+  PIT_THROW_TECH_WINDOW_FRAMES,
+  type PitArenaId,
+  type PitAttackKind,
+  type PitCombatEvent,
+  type PitCombatState,
+  type PitFighterId,
+  type PitPlayableFighterId,
+  type PitInput,
+  type PitTechniqueEffectState,
+} from "./systems/pitCombat";
+import {
+  advancePitPresentationCamera,
+  applyPitPresentationCamera,
+  resolvePitPresentationMotion,
+  type PitPresentationCamera,
+} from "./systems/pitCamera";
+import {
+  PIT_ARENA_CATALOGUE,
+  PIT_ARENA_CATALOGUE_SUMMARY,
+  PIT_ARENA_CATALOGUE_WAVES,
+} from "./systems/pitArenaCatalogue";
+import {
+  PIT_CONTROL_ACTION_IDS,
+  matchesControlAction,
+  pitInputFromControlCodes,
+  type ControlActionId,
+  type ControlBindings,
+} from "./systems/controlBindings";
+import {
+  PIT_ARCADE_COSMETICS,
+  PIT_ARCADE_ENCOUNTER_COUNT,
+  PIT_ARCADE_LADDERS,
+  PIT_DESCENT_FLOOR_COUNT,
+  PIT_DESCENT_MAX_HEALTH,
+  PIT_DESCENT_MODIFIERS,
+  PIT_DESCENT_RELICS,
+  applyPitArcadeEncounterResult,
+  applyPitDescentResolution,
+  createPitArcadeRun,
+  createPitDescentPlan,
+  createPitDescentRun,
+  selectPitDescentNode,
+  type PitArcadeCosmeticDefinition,
+  type PitArcadeRun,
+  type PitDescentNode,
+  type PitDescentRun,
+} from "./systems/pitArcade";
+import {
+  preparePitDescentCombat,
+  stepPitDescentCombat,
+  type PitDescentCombatContext,
+  type PitDescentCombatPresentation,
+} from "./systems/pitDescentCombat";
+import {
+  PIT_CIRCUIT_FIGHT_COUNT,
+  PIT_CIRCUIT_MAX_RESULTS,
+  PIT_CLAN_CIRCUITS,
+  applyPitCircuitFightResult,
+  createPitCircuitRun,
+  selectPitCircuitFight,
+  type PitCircuitRun,
+} from "./systems/pitCircuit";
+import {
+  isPitFirstEditionFighterId,
+  type PitTechniqueDevice,
+  type PitTechniqueStatusKind,
+} from "./systems/pitFirstEdition";
+import {
+  createPitReplayReader,
+  createPitReplayCombatState,
+  stepPitReplayCombat,
+  createPitReplayRecorder,
+  normalizePitReplay,
+  serializePitReplay,
+  type PitReplay,
+  type PitReplayReader,
+  type PitReplayRecorder,
+} from "./systems/pitReplay";
+import {
+  PIT_TRAINING_ACTION_LABELS,
+  PIT_TRAINING_DUMMY_OPTIONS,
+  PIT_TRAINING_PLAYBACK_OPTIONS,
+  PIT_TRAINING_SEQUENCE_MAX_TICKS,
+  createPitTrainingSequenceReader,
+  createPitTrainingSequenceRecorder,
+  createPitTrainingSettings,
+  getPitTrainingFrameReadout,
+  resetPitTrainingPositions,
+  resolvePitTrainingDummyInput,
+  updatePitTrainingSettings,
+  type PitTrainingSequence,
+  type PitTrainingSequenceReader,
+  type PitTrainingSequenceRecorder,
+  type PitTrainingSettingsPatch,
+} from "./systems/pitTraining";
+import { createPitTrainingClock, pausePitTrainingClock, requestPitTrainingTick } from "./systems/pitTrainingClock";
+import { PIT_TRAINING_LESSONS, getPitTrainingLessonAvailability, resolvePitTrainingLessonInput, evaluatePitTrainingLesson, type PitTrainingLesson, type PitTrainingLessonId } from "./systems/pitTrainingLessons";
+import { PIT_VERSUS_FIGHTER_IDS, isPitExpansionFighterId, isPitVersusFighterId, canPitFighterEnterMode, cyclePitMode, getPitFighterProfile, type PitVersusFighterId } from "./systems/pitRosterExpansion";
+import { isPitOriginalFighterIdV56 } from './systems/pitOriginalFightersV56';
+import { PIT_HOUND_VARIANTS, isPitHoundVariantId, type PitHoundVariantId } from './systems/pitCompanion';
+import { PIT_TRAINING_BRIEFING_TIMEOUT_MS, preparePitTrainingBriefing, beginPitTrainingBriefing, advancePitTrainingSessionClock, getPitTrainingBriefingReadiness, getPitTrainingBriefingControls, type PitTrainingAssetState } from "./systems/pitTrainingBriefing";
+import PitExtensionPortrait from "./PitExtensionPortrait";
+import { getPitUserVariant, normalizePitUserVariant } from "./systems/pitUserRoster";
+import { PIT_JUNGLE_FINAL_DUEL_VARIANT, pitTechniqueUnavailableReason } from './systems/pitEquipmentV57';
+import { PIT_FALCONER_RECON_DRONE } from './systems/pitFalconerDrone';
+import type { PitNarrativeResultInput } from './systems/pitNarrativeTrialsV57';
+import jungleFinalArt from './data/pitJungleFinalArtV57.json';
+import PitSelectionFlow, { type PitSelectionFlowHandle } from "./PitSelectionFlow";
+import { usePitCombatViewport } from "./usePitCombatViewport";
+import styles from "./PitCanvas.module.css";
+
+type PitMode = "cpu" | "local" | "training" | "arcade" | "circuit" | "descent";
+type PitTrainingActivity = "idle" | "recording" | "playback";
+
+export interface PitMatchCompleteResult {
+  resultId: string;
+  mode: Exclude<PitMode, "descent">;
+  winnerId: PitFighterId | null;
+  leftId: PitPlayableFighterId;
+  rightId: PitFighterId;
+  arenaId: PitArenaId;
+  round: number;
+  leftRoundsWon: number;
+  rightRoundsWon: number;
+  roundsDrawn: number;
+  arcadeEncounterIndex?: number;
+  arcadeCompleted?: boolean;
+  circuitFightIndex?: number;
+  circuitCompleted?: boolean;
+  cosmeticRewardIds?: readonly string[];
+  replay: PitReplay | null;
+}
+
+export type PitMatchPersistenceAck =
+  | { readonly persisted: true }
+  | { readonly persisted: false; readonly message: string };
+
+type PitMatchCompleteHandler = (
+  result: PitMatchCompleteResult,
+  nextCircuitRun?: PitCircuitRun,
+) => Promise<PitMatchPersistenceAck>;
+
+export type PitStoredCircuitRuns = Readonly<
+  Partial<Record<PitPlayableFighterId, PitCircuitRun | null>>
+>;
+export type PitStoredDescentRuns = Readonly<
+  Partial<Record<PitPlayableFighterId, PitDescentRun | null>>
+>;
+
+export type PitRunTransition =
+  | {
+      readonly id: string;
+      readonly kind: "circuit-persist";
+      readonly run: PitCircuitRun;
+    }
+  | {
+      readonly id: string;
+      readonly kind: "circuit-replace";
+      readonly run: PitCircuitRun;
+    }
+  | {
+      readonly id: string;
+      readonly kind: "descent-persist";
+      readonly run: PitDescentRun;
+    }
+  | {
+      readonly id: string;
+      readonly kind: "descent-replace";
+      readonly run: PitDescentRun;
+    };
+
+type PitRunTransitionHandler = (
+  transition: PitRunTransition,
+) => Promise<PitMatchPersistenceAck>;
+
+type PitArcadePersistenceStatus = "idle" | "pending" | "confirmed" | "failed";
+
+interface PitArcadePersistenceState {
+  readonly status: PitArcadePersistenceStatus;
+  readonly message: string;
+}
+
+interface PendingPitArcadeSettlement {
+  readonly result: PitMatchCompleteResult;
+  readonly nextRun: PitArcadeRun;
+}
+
+type PitCircuitPersistenceStatus = "idle" | "pending" | "confirmed" | "failed";
+
+interface PitCircuitPersistenceState {
+  readonly status: PitCircuitPersistenceStatus;
+  readonly message: string;
+}
+
+interface PendingPitCircuitSettlement {
+  readonly result: PitMatchCompleteResult;
+  readonly nextRun: PitCircuitRun;
+}
+
+type PitRunTransitionPersistenceStatus = "idle" | "pending" | "confirmed" | "failed";
+
+interface PitRunTransitionPersistenceState {
+  readonly status: PitRunTransitionPersistenceStatus;
+  readonly message: string;
+}
+
+interface PendingPitRunTransition {
+  readonly transition: PitRunTransition;
+  readonly onPersisted: () => void;
+}
+
+interface PitCanvasProps {
+  /** Restore the visited hero only; this is not a durable versus checkpoint. */
+  initialLeftId?: PitVersusFighterId;
+  /** A pre-reviewed workbook extract. Remount with a new key for each attempt. */
+  narrativeEncounter?: { readonly id: string; readonly leftId: PitVersusFighterId; readonly rightId: PitVersusFighterId; readonly arenaId: PitArenaId; readonly normalMoves?: 'workbook-v106'|'workbook-v107'; readonly workbookCarryV108?: PitWorkbookCarryV108 };
+  onWorkbookExerciseFrameV107?: (frame: Readonly<PitCombatState>) => void;
+  /** Reserved for an actual scenario controller; current workbook extracts emit no V61 story cue. */
+  narrativeStageCues?: PitStageNarrativeCuesV61;
+  onNarrativeComplete?: (result: PitNarrativeResultInput) => void | Promise<void>;
+  onOpenNarrativeTrials?: () => void;
+  onOpenCharacterChronicle?: (fighterId: PitVersusFighterId) => void;
+  controlBindings: ControlBindings;
+  highContrast: boolean;
+  reducedGore: boolean;
+  screenShake: boolean;
+  unlockedCosmeticIds?: readonly string[];
+  savedCircuitRuns?: PitStoredCircuitRuns;
+  savedDescentRuns?: PitStoredDescentRuns;
+  exitLabel?: string;
+  onExit: () => void;
+  onMatchComplete?: PitMatchCompleteHandler;
+  onRunTransition?: PitRunTransitionHandler;
+  lastReplay?: PitReplay | null;
+}
+
+type ImpactFlash = PitImpactFlash;
+
+interface PitDescentResourceFeedback {
+  readonly frame: number;
+  readonly durationFrames: number;
+  readonly fighterIds: readonly PitFighterId[];
+}
+
+const EMPTY_INPUT: PitInput = Object.freeze({});
+const PIT_PLAYER_ONE_ACTION_IDS = PIT_CONTROL_ACTION_IDS.filter(
+  (actionId) => actionId.startsWith("pit.p1"),
+);
+const PIT_PLAYER_TWO_ACTION_IDS = PIT_CONTROL_ACTION_IDS.filter(
+  (actionId) => actionId.startsWith("pit.p2"),
+);
+function createPitResultId(): string {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return `pit-${crypto.randomUUID()}`;
+  }
+  return `pit-${Date.now().toString(36)}-${performance.now().toString(36).replace(".", "")}`;
+}
+
+function createPitDescentSeed(): number {
+  if (typeof crypto !== "undefined" && typeof crypto.getRandomValues === "function") {
+    return crypto.getRandomValues(new Uint32Array(1))[0] ?? 0;
+  }
+  return Date.now() >>> 0;
+}
+
+const ACTION_LABELS: Record<PitAttackKind, string> = {
+  light: "Lame rapide",
+  medium: "Balayage",
+  heavy: "Frappe lourde",
+  technique: "Technique basse",
+};
+
+const TECHNIQUE_DEVICE_COLORS: Record<PitTechniqueDevice, string> = {
+  hound: '#d7ac65',
+  disc: "#d8fff7",
+  net: "#8df4cc",
+  plasma: "#ff715d",
+  shoulder: "#ffae5a",
+  whip: "#c9f8e8",
+  "bolt-trap": "#d8b06b",
+  bolt: '#b9bec1',
+  shockwave: "#ef8a55",
+  drone: "#77d9d0",
+  "counter-blade": "#e8e0bc",
+  spear: "#ebd58f",
+  hammer: "#c6b38a",
+  "bow-snare": "#9be09d",
+  "code-parry": "#79fff0",
+  "warlord-wave": "#df5a42",
+  "stone-heart-charge": "#d6a15d",
+};
+
+const TECHNIQUE_STATUS_LABELS: Record<PitTechniqueStatusKind, string> = {
+  netted: "FILET",
+  pinned: "IMMOBILISÉ",
+  tracked: "TRAQUÉ",
+  staggered: "ÉBRANLÉ",
+};
+
+function firstBinding(bindings: ControlBindings, action: ControlActionId): string {
+  return compactControlKeyLabel(bindings[action][0] ?? "—");
+}
+
+function mergeInputs(primary: PitInput, secondary: PitInput): PitInput {
+  return {
+    left: primary.left || secondary.left,
+    right: primary.right || secondary.right,
+    down: primary.down || secondary.down,
+    jump: primary.jump || secondary.jump,
+    guardHigh: primary.guardHigh || secondary.guardHigh,
+    guardLow: primary.guardLow || secondary.guardLow,
+    attack: primary.attack ?? secondary.attack,
+    workbookAction: primary.workbookAction ?? secondary.workbookAction,
+    throw: primary.throw || secondary.throw,
+    resource: primary.resource || secondary.resource,
+  };
+}
+
+function readGamepad(gamepad: Gamepad | null): PitInput {
+  if (!gamepad) return EMPTY_INPUT;
+  const axisX = gamepad.axes[0] ?? 0;
+  const axisY = gamepad.axes[1] ?? 0;
+  const pressed = (index: number) => Boolean(gamepad.buttons[index]?.pressed);
+  return {
+    left: axisX < -0.32 || pressed(14),
+    right: axisX > 0.32 || pressed(15),
+    down: axisY > 0.45 || pressed(13),
+    jump: pressed(0),
+    attack: pressed(2)
+      ? "light"
+      : pressed(3)
+        ? "medium"
+        : pressed(1)
+          ? "heavy"
+          : pressed(5)
+            ? "technique"
+            : undefined,
+    guardHigh: pressed(4),
+    guardLow: pressed(6),
+    throw: pressed(7),
+    resource: pressed(8),
+  };
+}
+
+function isNeutralInput(input: PitInput): boolean {
+  return !input.left && !input.right && !input.down && !input.jump &&
+    !input.guardHigh && !input.guardLow && !input.attack && !input.throw && !input.resource && !input.workbookAction;
+}
+
+/** Deterministic state-only rival: no random calls and no player-input access. */
+function cpuInput(state: PitCombatState): PitInput {
+  const cpu = state.fighters[1];
+  const opponent = state.fighters[0];
+  if (state.phase !== "round") return EMPTY_INPUT;
+  const forwardThrowResponse = pitThrowCpuInputV112(state);
+  if (forwardThrowResponse) return forwardThrowResponse;
+  if (
+    cpu.phase === "hitstun" &&
+    cpu.comboHitsReceived >= 2 &&
+    !cpu.ruptureUsedThisRound &&
+    cpu.traque >= PIT_MAX_TRAQUE
+  ) {
+    return { resource: true };
+  }
+  if (state.pendingThrow) {
+    // React to a visible capture after five ticks, never to the player's input.
+    return state.pendingThrow.attackerSlot === 0 &&
+      state.pendingThrow.framesRemaining === 3 &&
+      state.pendingThrow.capturedFrame % 3 !== 0 ? { throw: true } : EMPTY_INPUT;
+  }
+  if (cpu.phase !== "idle") return EMPTY_INPUT;
+  const signedDistance = opponent.x - cpu.x;
+  const distance = Math.abs(signedDistance);
+  const beat = state.frame % 180;
+  const cpuDefinition = getPitCombatFighterDefinition(cpu);
+  // Long contact equipment can contest neutral before entering fist range.
+  // This decision sees actor positions, not the human's pending input.
+  if (cpu.movesetId && distance > 116 && distance < cpuDefinition.attacks.medium.range + 20 &&
+    state.frame % 43 === 0) return { attack: 'medium' };
+
+  if (
+    PIT_FIGHTERS[cpu.definitionId].canCloak !== false && cpu.traque >= PIT_CLOAK_COST &&
+    cpu.traque < PIT_MAX_TRAQUE &&
+    cpu.cloakPhase === "inactive" &&
+    cpu.cloakCooldownFrames === 0 &&
+    state.frame % 240 === 0
+  ) {
+    return { resource: true };
+  }
+
+  if ((cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112))) && distance > 150 && distance < 600 &&
+    state.frame % 97 === 0 && cpu.traque >= (cpu.definitionId === 'feral-hunter' ? 300 : 250)) return {workbookAction: 'projectile'};
+
+  if (distance > 116) {
+    if (cpu.definitionId === 'tracker' && distance < 440 && state.frame % 97 === 0) return { attack: 'technique' };
+    return {
+      left: signedDistance < 0,
+      right: signedDistance > 0,
+      jump: distance > 310 && state.frame % 240 === 0,
+    };
+  }
+  if (beat >= 122 && beat < 150) {
+    return { guardHigh: beat < 136, guardLow: beat >= 136 };
+  }
+  if (state.frame % 83 === 0) return { throw: true };
+  if (state.frame % 61 === 0) {
+    if ((cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112)))) {
+      if (opponent.phase === 'startup' && cpu.definitionId === 'feral-hunter' && cpu.traque >= 150) return {workbookAction: 'shield'};
+      if (opponent.phase === 'startup' && cpu.definitionId === 'scar' && cpu.traque >= 100) return {workbookAction: 'counter'};
+      return {workbookAction: 'contact'};
+    }
+    return {attack: 'technique'};
+  }
+  if (state.frame % 43 === 0) return { attack: "heavy" };
+  if (state.frame % 29 === 0) return { attack: "medium" };
+  if (state.frame % 17 === 0) return { attack: "light" };
+  if (distance < 70 && beat < 24) {
+    return { left: signedDistance > 0, right: signedDistance < 0 };
+  }
+  return EMPTY_INPUT;
+}
+
+function eventLabel(event: PitCombatEvent, state: PitCombatState, engineVersion: number = state.version): string {
+  if (event.type === "stage-transfer") {
+    const destination = getPitStageJourneyDefinition(state.rules.stageJourney)?.destinationLabel;
+    return destination ? `PASSAGE CONFIRMÉ · ${destination}` : "PASSAGE CONFIRMÉ";
+  }
+  if (event.type === "round-start") return `MANCHE ${event.round} · COMBAT`;
+  if (event.type === "attack-start") {
+    if (engineVersion <= 6 && event.fighterId === 'tracker' && event.attack === 'technique') return 'CONTRE AU GANTELET · REPLAY HISTORIQUE';
+    if (engineVersion <= 8 && event.fighterId === 'feral-hunter' && event.attack === 'technique') return 'PIÈGE À CARREAUX · REPLAY HISTORIQUE';
+    const owner = state.fighters.find(fighter => fighter.definitionId === event.fighterId);
+    if (owner?.normalMovesRecipe || owner?.movesetId) return getPitCombatAttackDefinition(owner, event.attack).label.toUpperCase();
+    return (
+      event.attack === "technique"
+        ? pitMoveLabelV91(event.fighterId, 'technique', PIT_FIGHTERS[event.fighterId].attacks.technique.label)
+        : ACTION_LABELS[event.attack]
+    ).toUpperCase();
+  }
+  if (event.type === "throw-start") return "SAISIE RITUELLE";
+  if (event.type === "throw-caught") return (state.sourceThrowV112 ?? state.sourceThrowV109)?.techEligible === false
+    ? "RÉCUPÉRATION PUNIE · SAISIE" : "SAISI · PROJECTION POUR DÉCHOPPER";
+  if (event.type === "throw-tech") return "DÉCHOPPE RÉUSSIE";
+  if (event.type === "hit") return `${event.combo > 1 ? `${event.combo} COUPS · ` : ""}${event.damage} DÉGÂTS`;
+  if (event.type === "block") return `GARDE · ${event.damage} DÉGÂTS RÉSIDUELS`;
+  if (event.type === "traque-gain") return `TRAQUE +${event.amount}`;
+  if (event.type === "rupture") return "RUPTURE DE CHASSE";
+  if (event.type === "survival-instinct") return "INSTINCT DE SURVIE";
+  if (event.type === "cloak-start") return "CAMOUFLAGE ARMÉ";
+  if (event.type === "cloak-end") return event.reason === "expired" ? "CAMOUFLAGE ÉPUISÉ" : "CAMOUFLAGE ROMPU";
+  if (event.type === "combo-break") return "RUPTURE DE COMBO";
+  if (event.type === "match-end") return "MATCH TERMINÉ";
+  if (event.type === 'workbook-device-v107') return `${event.kind === 'mine' ? 'MINE' : 'ÉTOILE'} · ${{placed:'POSÉE',launched:'LANCÉE',armed:'ARMÉE',expired:'EXPIRÉE',destroyed:'DÉTRUITE',detonated:'DÉCLENCHÉE',consumed:'UTILISÉE'}[event.event]}`;
+  return event.result.reason === "timeout" ? "TEMPS ÉCOULÉ" : event.result.reason.toUpperCase();
+}
+
+function drawTechniqueEffect(
+  context: CanvasRenderingContext2D,
+  state: PitCombatState,
+  effect: PitTechniqueEffectState,
+  groundY: number,
+  highContrast: boolean,
+  showHitboxes: boolean,
+  companionArt: PitCompanionArtBank | null,
+  falconerArt: PitFalconerDroneArtBank | null,
+  reducedCharacterMotion: boolean,
+): void {
+  const technique = getPitTechniqueDefinitionForEffect(state, effect);
+  if (technique.device === 'bolt') {
+    drawPitFeralBolt(context, state, effect, groundY, highContrast, showHitboxes);
+    return;
+  }
+  if (technique.device === 'hound') {
+    drawPitCompanion(context, state, effect, companionArt, groundY, highContrast, showHitboxes, reducedCharacterMotion);
+    return;
+  }
+  if (technique.device === "drone") {
+    drawPitFalconerDrone(context, state, effect, falconerArt, groundY, highContrast, showHitboxes);
+    return;
+  }
+  const box = getPitTechniqueBox(state, effect);
+  const x = box.x;
+  const y = groundY - box.y - box.height;
+  const centerX = x + box.width / 2;
+  const centerY = y + box.height / 2;
+  const color = highContrast ? "#ffffff" : TECHNIQUE_DEVICE_COLORS[technique.device];
+  const pulse = 0.72 + Math.sin((state.frame + effect.id * 11) * 0.22) * 0.18;
+
+  context.save();
+  context.globalAlpha = effect.phase === "arming" ? pulse * 0.55 : effect.phase === "returning" ? 0.72 : 0.94;
+  context.strokeStyle = color;
+  context.fillStyle = color;
+  context.shadowColor = color;
+  context.shadowBlur = effect.phase === "active" ? 12 : 5;
+  context.lineWidth = 3;
+  if (effect.phase === "arming") context.setLineDash([5, 5]);
+  if (effect.phase === "returning") context.setLineDash([10, 4]);
+
+  if (state.fighters[effect.ownerSlot].movesetId && technique.motion === 'attached') {
+    // Readable contact feedback only: no synthetic weapon or magical projectile.
+    context.shadowBlur = 0;
+    context.globalAlpha *= .5;
+    context.beginPath();
+    context.moveTo(x, centerY);
+    context.lineTo(x + box.width, centerY);
+    context.stroke();
+  } else if (technique.device === "net" || technique.device === "bow-snare") {
+    context.strokeRect(x, y, box.width, box.height);
+    for (let offset = 8; offset < box.width; offset += 10) {
+      context.beginPath();
+      context.moveTo(x + offset, y);
+      context.lineTo(x + Math.max(0, offset - 15), y + box.height);
+      context.stroke();
+    }
+    for (let offset = 8; offset < box.height; offset += 10) {
+      context.beginPath();
+      context.moveTo(x, y + offset);
+      context.lineTo(x + box.width, y + Math.max(0, offset - 8));
+      context.stroke();
+    }
+  } else if (
+    technique.device === "disc" ||
+    technique.device === "counter-blade" ||
+    technique.device === "code-parry"
+  ) {
+    context.beginPath();
+    context.ellipse(centerX, centerY, box.width * 0.48, Math.max(4, box.height * 0.22), 0, 0, Math.PI * 2);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(x, centerY);
+    context.lineTo(x + box.width, centerY);
+    context.moveTo(centerX, y);
+    context.lineTo(centerX, y + box.height);
+    context.stroke();
+  } else if (technique.device === "shoulder" || technique.device === "hammer") {
+    // Local contact feedback, never a flying orb or a substitute for a weapon sprite.
+    context.shadowBlur = 0;
+    context.globalAlpha *= 0.65;
+    context.beginPath();
+    const leadingX = effect.direction > 0 ? x + box.width * 0.78 : x + box.width * 0.22;
+    if (technique.device === "hammer") {
+      context.moveTo(leadingX - effect.direction * box.width * 0.45, y + box.height * 0.08);
+      context.quadraticCurveTo(leadingX, centerY, leadingX, y + box.height * 0.85);
+    } else {
+      context.moveTo(leadingX - effect.direction * 12, y + box.height * 0.2);
+      context.quadraticCurveTo(leadingX, centerY, leadingX - effect.direction * 12, y + box.height * 0.8);
+    }
+    context.stroke();
+  } else if (technique.device === "plasma") {
+    const radius = Math.max(5, Math.min(box.width, box.height) * 0.42);
+    const glow = context.createRadialGradient(centerX, centerY, 1, centerX, centerY, radius);
+    glow.addColorStop(0, "#ffffff");
+    glow.addColorStop(0.35, color);
+    glow.addColorStop(1, "rgba(255,80,50,0)");
+    context.fillStyle = glow;
+    context.beginPath();
+    context.arc(centerX, centerY, radius, 0, Math.PI * 2);
+    context.fill();
+  } else if (
+    technique.device === "shockwave" ||
+    technique.device === "warlord-wave"
+  ) {
+    context.beginPath();
+    context.ellipse(centerX, y + box.height, box.width * 0.48, Math.max(5, box.height * 0.28), 0, Math.PI, Math.PI * 2);
+    context.stroke();
+    context.globalAlpha *= 0.55;
+    context.beginPath();
+    context.ellipse(centerX, y + box.height, box.width * 0.32, Math.max(3, box.height * 0.18), 0, Math.PI, Math.PI * 2);
+    context.stroke();
+  } else if (technique.device === "bolt-trap") {
+    context.beginPath();
+    context.moveTo(x, y + box.height);
+    context.lineTo(centerX, y);
+    context.lineTo(x + box.width, y + box.height);
+    context.closePath();
+    context.stroke();
+  } else {
+    context.beginPath();
+    context.moveTo(x, centerY + technique.height * 0.12);
+    context.lineTo(x + box.width, centerY - technique.height * 0.12);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(x + box.width, centerY - technique.height * 0.12);
+    context.lineTo(x + box.width - effect.direction * 12, centerY - 8);
+    context.lineTo(x + box.width - effect.direction * 12, centerY + 8);
+    context.closePath();
+    context.fill();
+  }
+
+  context.restore();
+  if (showHitboxes) {
+    const collision = getPitTechniqueCollisionBoxV106(state, effect);
+    context.save();
+    context.strokeStyle = "#d888ff";
+    context.lineWidth = 2;
+    context.strokeRect(collision.x, groundY - collision.y - collision.height, collision.width, collision.height);
+    context.restore();
+  }
+}
+
+function drawArena(
+  canvas: HTMLCanvasElement,
+  state: PitCombatState,
+  camera: PitPresentationCamera,
+  highContrast: boolean,
+  reducedGore: boolean,
+  showHitboxes: boolean,
+  impact: ImpactFlash | null,
+  leftCosmeticPalette: PitArcadeCosmeticDefinition["palette"] | null,
+  fighterArt: PitCombatBitmapArtBank | null,
+  arenaArt: PitArenaArtBank | null,
+  reducedMotion: boolean,
+  presentation: PitRoundPresentationView,
+  reducedCharacterMotion: boolean,
+  companionArt: PitCompanionArtBank | null,
+  falconerArt: PitFalconerDroneArtBank | null,
+  engineVersion: number = PIT_STATE_VERSION,
+  narrativeCuesV61?: PitStageNarrativeCuesV61,
+  stageLifeSeed = 0,
+  finisher?: PitFinisherViewV80,
+  workbookConclusionV107?: ReturnType<typeof createPitWorkbookConclusionV107>,
+  workbookConclusionArtV107: PitSpriteSheetAnimationBank | null = null,
+  objectiveSessionV107: PitWorkbookConclusionSessionV107 | null = null,
+  workbookDeviceArtV107: PitWorkbookDeviceArtV107 | null = null,
+): void {
+  const context = canvas.getContext("2d");
+  if (!context) return;
+  const arena = PIT_ARENAS[state.arenaId];
+  const { width, height, groundY } = arena;
+  context.clearRect(0, 0, width, height);
+  context.fillStyle = highContrast ? "#071d22" : arena.palette.sky;
+  context.fillRect(0, 0, width, height);
+  canvas.dataset.pitCameraMode = camera.mode;
+  canvas.dataset.pitWorkbookSuperCamera = String(isPitWorkbookSuperCameraV106(camera));
+  canvas.dataset.pitCameraZoom = camera.zoom.toFixed(4);
+  canvas.dataset.pitCameraTargetZoom = camera.targetZoom.toFixed(4);
+  canvas.dataset.pitCameraCenterX = camera.centerX.toFixed(2);
+  canvas.dataset.pitCameraCenterY = camera.centerY.toFixed(2);
+  canvas.dataset.pitArenaBackScale = getPitArenaLayerTransform(state.arenaId, "P0", camera, reducedMotion).scale.toFixed(4);
+  canvas.dataset.pitArenaFloorScale = getPitArenaLayerTransform(state.arenaId, "P4", camera, reducedMotion).scale.toFixed(4);
+
+  const backdropReport = drawPitArenaBackdrop(context, state, camera, arenaArt, { highContrast, reducedMotion, sceneArenaId: pitStageSceneArena(state),
+    roundPresentation: presentation, narrativeCuesV61, stageLifeSeed,
+    lifeResultElapsedMs: presentation.phase === 'round-result' || presentation.phase === 'match-result' ? presentation.elapsedMs : undefined });
+  canvas.dataset.pitStageLifeSeed = String(stageLifeSeed);
+  canvas.dataset.pitStageLifeV66Stage = backdropReport.stageLifeV66?.stageId ?? "";
+  canvas.dataset.pitStageLifeV66Actors = String(backdropReport.stageLifeV66?.actorsDrawn ?? 0);
+  canvas.dataset.pitStageLifeV66Events = JSON.stringify(backdropReport.stageLifeV66?.events ?? []);
+  canvas.dataset.pitStageLifeV66Missing = JSON.stringify(backdropReport.stageLifeV66?.missingPaths ?? []);
+  canvas.dataset.pitArenaId = state.arenaId;
+  canvas.dataset.pitArenaArtStatus = !arenaArt || arenaArt.arenaId !== pitStageSceneArena(state) ? "loading" : arenaArt.unavailable ? "unavailable" : backdropReport.missingPaths.length ? "partial" : "bitmap";
+  canvas.dataset.pitArenaMissingAssets = String(backdropReport.missingPaths.length);
+  canvas.dataset.pitArenaLifeActors = String(backdropReport.life?.actorsDrawn ?? 0);
+  canvas.dataset.pitArenaLifeFrames = JSON.stringify(backdropReport.life?.nativeFrames ?? []);
+  canvas.dataset.pitStageLifeV60Stage = backdropReport.stageLifeV60?.stageId ?? "";
+  canvas.dataset.pitStageLifeV60Actors = String(backdropReport.stageLifeV60?.actorsDrawn ?? 0);
+  canvas.dataset.pitStageLifeV60Events = JSON.stringify(backdropReport.stageLifeV60?.events ?? []);
+  canvas.dataset.pitStageLifeV60Missing = JSON.stringify(backdropReport.stageLifeV60?.missingPaths ?? []);
+  canvas.dataset.pitStageLifeV61Stage = backdropReport.stageLifeV61?.stageId ?? "";
+  canvas.dataset.pitStageLifeV61Actors = String(backdropReport.stageLifeV61?.actorsDrawn ?? 0);
+  canvas.dataset.pitStageLifeV61Events = JSON.stringify(backdropReport.stageLifeV61?.events ?? []);
+  canvas.dataset.pitStageLifeV61Missing = JSON.stringify(backdropReport.stageLifeV61?.missingPaths ?? []);
+  canvas.dataset.pitStageLifeV62Stage = backdropReport.stageLifeV62?.stageId ?? "";
+  canvas.dataset.pitStageLifeV62Actors = String(backdropReport.stageLifeV62?.actorsDrawn ?? 0);
+  canvas.dataset.pitStageLifeV62Events = JSON.stringify(backdropReport.stageLifeV62?.events ?? []);
+  canvas.dataset.pitStageLifeV62Missing = JSON.stringify(backdropReport.stageLifeV62?.missingPaths ?? []);
+  canvas.dataset.pitStageLifeV63Stage = backdropReport.stageLifeV63?.stageId ?? "";
+  canvas.dataset.pitStageLifeV63Actors = String(backdropReport.stageLifeV63?.actorsDrawn ?? 0);
+  canvas.dataset.pitStageLifeV63Events = JSON.stringify(backdropReport.stageLifeV63?.events ?? []);
+  canvas.dataset.pitStageLifeV63Missing = JSON.stringify(backdropReport.stageLifeV63?.missingPaths ?? []);
+  canvas.dataset.pitStageStoryV61Stage = backdropReport.stageStoryV61?.stageId ?? "";
+  canvas.dataset.pitStageStoryV61Actors = String(backdropReport.stageStoryV61?.actorsDrawn ?? 0);
+  canvas.dataset.pitStageStoryV61Events = JSON.stringify(backdropReport.stageStoryV61?.events ?? []);
+  canvas.dataset.pitStageStoryV61Missing = JSON.stringify(backdropReport.stageStoryV61?.missingPaths ?? []);
+  canvas.dataset.pitStageStoryV61Replaced = JSON.stringify(backdropReport.stageStoryV61?.replacedAmbientEventIds ?? []);
+  canvas.dataset.pitArenaArtSource = arenaArt?.unavailable ? "unavailable" : arenaArt?.productionKit ? "openai-v33-independent" : "legacy-bitmap";
+  canvas.dataset.pitSceneArenaId = pitStageSceneArena(state);
+  canvas.dataset.pitStageSector = state.stageJourney?.sector ?? "neutral";
+  canvas.dataset.pitStageTransferFrame = String(state.stageJourney?.transferFrame ?? "");
+  canvas.dataset.pitFighterPositions = JSON.stringify(state.fighters.map(fighter => ({ x: Number(fighter.x.toFixed(2)), y: Number(fighter.y.toFixed(2)) })));
+  canvas.dataset.pitForwardThrowV109 = JSON.stringify(state.sourceThrowV109 ?? null);
+  canvas.dataset.pitBackwardThrowV112 = JSON.stringify(state.sourceThrowV112 ?? null);
+  canvas.dataset.pitFighterFacingsV112 = JSON.stringify(state.fighters.map(fighter => fighter.facing));
+  canvas.dataset.pitSimulationFrameV109 = String(state.frame);
+  canvas.dataset.pitFighterHealthV109 = JSON.stringify(state.fighters.map(fighter => fighter.health));
+  canvas.dataset.pitFighterMeterV109 = JSON.stringify(state.fighters.map(fighter => fighter.traque));
+  canvas.dataset.pitFighterActions = JSON.stringify(state.fighters.map(fighter => ({phase: fighter.phase, normalMove: fighter.action?.normalMove ?? null, workbookMove: fighter.action?.workbookMove ?? null, actionFrame: fighter.action?.frame ?? null, connected: fighter.action?.connected ?? null, superConfirmed: fighter.action?.workbookSuperV106 ?? null})));
+  canvas.dataset.pitArenaLoadedImages = String(arenaArt?.images.size ?? 0);
+  canvas.dataset.pitArenaSubplans = String(arenaArt?.productionKit?.planes.reduce((sum, plane) => sum + plane.assets.length, 0) ?? 0);
+  context.save();
+  applyPitPresentationCamera(context, width, height, camera);
+
+  if (state.stageJourney?.sector === "sas") {
+    context.save(); context.fillStyle = "#f4d57a"; context.globalAlpha = .7;
+    context.fillRect(54, groundY - 3, 56, 5); context.fillRect(850, groundY - 3, 56, 5);
+    context.restore();
+  }
+
+  // A frozen KO tick must not pin attacks, status cages or sparks over ceremonies.
+  const combatEffectsVisible = presentation.phase === "fight" && state.phase === "round";
+  canvas.dataset.pitCombatEffects = String(combatEffectsVisible);
+  // Read-only observations for browser QA; never an input channel into the engine.
+  canvas.dataset.pitPlasmaCount = String(state.techniqueEffects.filter(effect => getPitTechniqueDefinitionForEffect(state, effect).device === 'plasma').length);
+  canvas.dataset.pitTechniqueEntities = JSON.stringify(state.techniqueEffects.map(effect => ({
+    id: effect.id, ownerSlot: effect.ownerSlot, techniqueId: effect.techniqueId,
+    phase: effect.phase, age: effect.age, hitCount: effect.hitCount, x: effect.x, y: effect.y,
+    bolt: effect.bolt, workbookMove: effect.workbookMove, direction: effect.direction,
+    collision: getPitTechniqueCollisionBoxV106(state, effect),
+  })));
+  const hounds = combatEffectsVisible ? state.techniqueEffects.filter(effect => getPitTechniqueDefinitionForEffect(state, effect).device === 'hound') : [];
+  canvas.dataset.pitHoundCount = String(hounds.length);
+  canvas.dataset.pitHoundPhases = hounds.map(effect => effect.phase).join(',');
+  canvas.dataset.pitHoundPositions = JSON.stringify(hounds.map(effect => ({ x: effect.x, y: effect.y, age: effect.age, direction: effect.direction })));
+  canvas.dataset.pitHoundVariant = state.houndVariantId ?? 'tracker-hound';
+  canvas.dataset.pitHoundArtStatus = !companionArt ? 'loading' : companionArt.failed ? 'missing' : companionArt.variantId === 'tracker-hound' ? 'native-6-pose-atlas' : 'static-bitmap';
+  canvas.dataset.pitHoundPoses = hounds.map(effect => pitCompanionPose(effect, state.houndVariantId ?? 'tracker-hound', reducedCharacterMotion)).join(',');
+  canvas.dataset.pitFalconerArtStatus = !falconerArt ? 'loading' : falconerArt.failed || falconerArt.cancelled ? 'missing' : 'native-held-bitmap';
+  canvas.dataset.pitFalconerNativeViews = JSON.stringify((combatEffectsVisible ? state.techniqueEffects : [])
+    .filter(effect => getPitTechniqueDefinitionForEffect(state, effect).device === 'drone')
+    .map(effect => {
+      const native = resolvePitFalconerDroneFrame(effect);
+      return { id: effect.id, facing: effect.direction, pose: native?.frame.pose ?? null, src: native?.art.src ?? null };
+    }));
+  canvas.dataset.pitWorkbookChargeCount = String(combatEffectsVisible ? drawPitWorkbookChargeV106(context, state, groundY, highContrast) : 0);
+  canvas.dataset.pitWorkbookShieldBoxes = JSON.stringify(state.fighters.map(fighter => getPitWorkbookShieldBoxV106(fighter)));
+  let paintedDevicesV107 = 0;
+  for (const device of combatEffectsVisible ? state.workbookDevicesV107 ?? [] : []) {
+    if (drawPitWorkbookDeviceV107(context, workbookDeviceArtV107, device, groundY)) paintedDevicesV107++;
+    if (showHitboxes) {const box = getPitWorkbookDeviceBoxV107(device); context.save(); context.strokeStyle = '#ffcf65'; context.strokeRect(box.x,groundY-box.y-box.height,box.width,box.height); context.restore();}
+  }
+  canvas.dataset.pitWorkbookDevicesV107 = JSON.stringify(state.workbookDevicesV107 ?? []);
+  canvas.dataset.pitWorkbookInventoryV107 = JSON.stringify(state.fighters.map(fighter => fighter.workbookDeviceV107 ?? null));
+  canvas.dataset.pitWorkbookDevicesDrawnV107 = String(paintedDevicesV107);
+  for (const effect of combatEffectsVisible ? state.techniqueEffects : []) {
+    drawTechniqueEffect(context, state, effect, groundY, highContrast, showHitboxes, companionArt, falconerArt, reducedCharacterMotion);
+  }
+
+  const fighterArtOptions = { simulationFrame: state.frame, combat: state, presentation,
+    reducedMotion: reducedCharacterMotion, engineVersion };
+  const sourceSceneV107 = workbookConclusionV107 ? samplePitWorkbookConclusionV107(workbookConclusionV107) : null;
+  canvas.dataset.pitWorkbookConclusionPhaseV107 = workbookConclusionV107?.phase ?? 'idle';
+  canvas.dataset.pitWorkbookConclusionKeyV107 = sourceSceneV107?.actionKey ?? '';
+  canvas.dataset.pitWorkbookConclusionTickV107 = String(sourceSceneV107?.clipTick ?? '');
+  canvas.dataset.pitWorkbookConclusionFrameV107 = String(sourceSceneV107?.frameIndex ?? '');
+  canvas.dataset.pitWorkbookConclusionContactsV107 = JSON.stringify(workbookConclusionV107?.contacts ?? []);
+  canvas.dataset.pitWorkbookConclusionActorsV107 = JSON.stringify(sourceSceneV107?.actors.map(actor => ({id:actor.definitionId,slot:actor.slot,x:actor.x,y:actor.y,phase:actor.phase,health:actor.health,facing:actor.facing})) ?? []);
+  canvas.dataset.pitWorkbookConclusionQualificationV107 = JSON.stringify(sourceSceneV107?.qualification ?? null);
+  canvas.dataset.pitWorkbookObjectiveV107 = JSON.stringify(workbookConclusionV107?.session ?? objectiveSessionV107);
+  const sourceDrawnV107 = workbookConclusionV107 ? drawPitWorkbookConclusionActorsV107(context, state, workbookConclusionV107, workbookConclusionArtV107, fighterArt, highContrast) : false;
+  const finisherDrawn = finisher ? drawPitFinisherActorsV80(context, state, finisher, fighterArt, highContrast, engineVersion, companionArt, falconerArt) : false;
+  canvas.dataset.pitFinisherPhase = finisher?.phase ?? 'idle';
+  canvas.dataset.pitFinisherFamily = finisher?.profile?.family ?? '';
+  canvas.dataset.pitFinisherChoice = String(finisher?.choice ?? '');
+  canvas.dataset.pitFinisherNativeAnimation = String(sourceDrawnV107);
+  canvas.dataset.pitLifecyclePhase = presentation.phase;
+  canvas.dataset.pitLifecycleKinds = state.fighters.map(fighter => getPitFighterPresentationCue(fighter.slot, presentation, reducedCharacterMotion)?.kind ?? 'combat').join(',');
+  (finisherDrawn ? [] : state.fighters).forEach((fighter) => {
+    if (sourceDrawnV107) return;
+    const definition = getPitCombatFighterDefinition(fighter);
+    const fighterPalette =
+      fighter.slot === 0 && leftCosmeticPalette ? leftCosmeticPalette : definition.palette;
+    const boxes = getPitFighterBoxes(fighter);
+    const body = boxes.pushbox;
+    const screenY = groundY - fighter.y;
+    const bodyTop = screenY - body.height;
+    const primary = highContrast
+      ? fighter.slot === 0 ? "#e6d07a" : "#ff6d65"
+      : fighterPalette.primary;
+    const accent = highContrast ? "#eafcff" : fighterPalette.accent;
+    const lean = fighter.phase === "startup" ? fighter.facing * 6 : fighter.phase === "active" ? fighter.facing * 13 : 0;
+
+    const footprint = getPitCombatGroundFootprint(fighterArt, fighter, fighterArtOptions);
+    const elevation = presentation.phase === "fight" ? fighter.y : 0;
+    drawActorContactShadow(context, footprint.x, groundY, footprint.halfWidth, elevation);
+    context.save();
+    if (fighter.slot === 0 && leftCosmeticPalette) {
+      context.strokeStyle = fighterPalette.primary;
+      context.lineWidth = 2;
+      context.beginPath();
+      context.ellipse(footprint.x, groundY + 2, footprint.halfWidth + 4, 4, 0, 0, Math.PI * 2);
+      context.stroke();
+    }
+    context.restore();
+
+    // These are the delivered, character-specific PNG plates. They remain fixed
+    // poses, never promoted to complete animation clips or used as hitboxes.
+    const bitmapDrawn = drawPitWorkbookDeviceBodyV107(context, fighterArt, fighter, groundY, {highContrast, accent, ...fighterArtOptions}) || drawPitCombatBitmapFighter(context, fighterArt, fighter, groundY, { highContrast, accent, ...fighterArtOptions });
+    const humanCombatant = fighter.definitionId === "theta" || fighter.definitionId === "machiko-noguchi" || Boolean(fighter.variantId) || fighter.definitionId.startsWith("user-") || isPitOriginalFighterIdV56(fighter.definitionId);
+    canvas.dataset[fighter.slot === 0 ? "pitPresentationArtP1" : "pitPresentationArtP2"] = getPitFighterPresentationVisualStatus(fighterArt, fighter, fighterArtOptions);
+    if (!bitmapDrawn && !humanCombatant && presentation.phase === "fight") {
+      context.save();
+      context.translate(fighter.x, bodyTop);
+      context.scale(fighter.facing, 1);
+      if (combatEffectsVisible && fighter.cloakPhase !== "inactive") {
+        context.globalAlpha = fighter.cloakPhase === "active" ? 0.38 : fighter.cloakPhase === "startup" ? 0.68 : 0.54;
+        context.shadowColor = highContrast ? "#ffffff" : "#72d8c2";
+        context.shadowBlur = fighter.cloakPhase === "active" ? 13 : 7;
+      }
+
+      context.fillStyle = primary;
+      context.beginPath();
+      context.moveTo(-18 + lean, 30);
+      context.lineTo(18 + lean, 30);
+      context.lineTo(25, body.height - 31);
+      context.lineTo(15, body.height);
+      context.lineTo(2, body.height - 38);
+      context.lineTo(-12, body.height);
+      context.lineTo(-24, body.height - 30);
+      context.closePath();
+      context.fill();
+      context.fillStyle = fighterPalette.secondary;
+      context.fillRect(-24 + lean, 39, 48, 23);
+      context.fillStyle = accent;
+      context.beginPath();
+      context.arc(lean, 18, 18, 0, Math.PI * 2);
+      context.fill();
+      context.fillStyle = "#111816";
+      context.fillRect(lean - 14, 14, 28, 8);
+      context.strokeStyle = accent;
+      context.lineWidth = 5;
+      context.beginPath();
+      context.moveTo(18 + lean, 49);
+      context.lineTo(43 + (fighter.phase === "active" ? 20 : 0), 65);
+      context.stroke();
+      context.restore();
+    } else if (!bitmapDrawn) {
+      // A missing human atlas is a status marker, never a fabricated Yautja body.
+      const status = getPitCombatBitmapFighterArtStatus(fighterArt, fighter, fighterArtOptions);
+      context.save();
+      context.fillStyle = highContrast ? "#ffffff" : "#d5e8df";
+      context.font = "11px sans-serif";
+      context.textAlign = "center";
+      context.fillText(definition.name, fighter.x, bodyTop + 35, 155);
+      context.fillText(status === "loading" ? "Visuel en chargement" : "Visuel indisponible", fighter.x, bodyTop + 52, 155);
+      context.restore();
+    } else if (combatEffectsVisible && (fighter.phase === "startup" || boxes.hitbox) &&
+      getPitCombatBitmapFighterArtStatus(fighterArt, fighter, fighterArtOptions) !== "sprite-sheet-animation") {
+      // Until authored attack poses exist, keep the real anticipation/contact
+      // readable through a separate cue. This cue cannot deal or extend damage.
+      context.save();
+      context.strokeStyle = fighter.phase === "startup" ? "#f7ce79" : "#fff2bf";
+      context.lineWidth = fighter.phase === "startup" ? 2 : 4;
+      context.globalAlpha = fighter.phase === "startup" ? .8 : .9;
+      context.beginPath();
+      if (boxes.hitbox) {
+        const hit = boxes.hitbox;
+        const y = groundY - hit.y - hit.height;
+        const fromX = fighter.facing === 1 ? hit.x : hit.x + hit.width;
+        const toX = fighter.facing === 1 ? hit.x + hit.width : hit.x;
+        context.moveTo(fromX, y + hit.height * .7);
+        context.quadraticCurveTo(toX, y - 8, toX, y + hit.height * .8);
+      } else {
+        context.arc(fighter.x + fighter.facing * definition.bodyWidth * .65, bodyTop + 38, 8, 0, Math.PI * 2);
+      }
+      context.stroke();
+      context.restore();
+    }
+
+    if (fighter.cloakPhase !== "inactive") {
+      context.save();
+      context.globalAlpha = fighter.cloakPhase === "active" ? 0.82 : 0.58;
+      context.strokeStyle = highContrast ? "#ffffff" : "#72d8c2";
+      context.lineWidth = fighter.cloakPhase === "active" ? 2 : 1;
+      context.setLineDash([7, 5]);
+      context.lineDashOffset = -(state.frame % 12);
+      context.strokeRect(
+        boxes.hurtbox.x - 3,
+        groundY - boxes.hurtbox.y - boxes.hurtbox.height - 3,
+        boxes.hurtbox.width + 6,
+        boxes.hurtbox.height + 6,
+      );
+      context.restore();
+    }
+
+    if (combatEffectsVisible && fighter.techniqueStatus) {
+      const statusColor = highContrast
+        ? "#ffffff"
+        : TECHNIQUE_DEVICE_COLORS[
+            PIT_FIGHTERS[fighter.techniqueStatus.sourceFighterId].technique.device
+          ];
+      context.save();
+      context.globalAlpha = 0.82;
+      context.strokeStyle = statusColor;
+      context.lineWidth = 2;
+      context.setLineDash(fighter.techniqueStatus.kind === "tracked" ? [3, 5] : [8, 4]);
+      context.lineDashOffset = -(state.frame % 12);
+      context.strokeRect(
+        boxes.hurtbox.x - 5,
+        groundY - boxes.hurtbox.y - boxes.hurtbox.height - 5,
+        boxes.hurtbox.width + 10,
+        boxes.hurtbox.height + 10,
+      );
+      if (fighter.techniqueStatus.kind === "netted" || fighter.techniqueStatus.kind === "pinned") {
+        context.beginPath();
+        context.moveTo(boxes.hurtbox.x, groundY - boxes.hurtbox.y - boxes.hurtbox.height);
+        context.lineTo(boxes.hurtbox.x + boxes.hurtbox.width, groundY - boxes.hurtbox.y);
+        context.moveTo(boxes.hurtbox.x + boxes.hurtbox.width, groundY - boxes.hurtbox.y - boxes.hurtbox.height);
+        context.lineTo(boxes.hurtbox.x, groundY - boxes.hurtbox.y);
+        context.stroke();
+      }
+      context.restore();
+    }
+
+    if (combatEffectsVisible && showHitboxes) {
+      const paintBox = (box: { x: number; y: number; width: number; height: number }, color: string) => {
+        context.strokeStyle = color;
+        context.lineWidth = 2;
+        context.strokeRect(box.x, groundY - box.y - box.height, box.width, box.height);
+      };
+      paintBox(boxes.hurtbox, "#59f4c7");
+      if (boxes.hitbox) paintBox(boxes.hitbox, "#ff4d69");
+    }
+  });
+
+  const retainedSessionV107 = workbookConclusionV107?.session ?? objectiveSessionV107;
+  const paintedPropsV107 = drawPitWorkbookObjectivePropsV107(context, workbookConclusionArtV107, retainedSessionV107,
+    sourceSceneV107?.actors ?? state.fighters, groundY,
+    {highContrast, nativeObjectInHand: sourceDrawnV107 && sourceSceneV107?.actionKey === 'CLEMENCE' && sourceSceneV107.frameIndex === 5 && retainedSessionV107?.missionObject.state === 'recovered'});
+  canvas.dataset.pitWorkbookObjectivePaintedV107 = String(paintedPropsV107);
+
+  if (combatEffectsVisible && impact && state.frame - impact.frame < 14) {
+    const age = state.frame - impact.frame;
+    const radius = 10 + age * 3.2;
+    context.strokeStyle = impact.blocked ? "#7cebdd" : reducedGore ? "#e8bd66" : "#bb303b";
+    context.globalAlpha = Math.max(0, 1 - age / 14);
+    context.lineWidth = 5;
+    context.beginPath();
+    context.arc(impact.x, impact.y, radius, 0, Math.PI * 2);
+    context.stroke();
+    context.globalAlpha = 1;
+  }
+  context.restore();
+  const foregroundReport = drawPitArenaForeground(context, state, camera, arenaArt, { highContrast, reducedMotion, sceneArenaId: pitStageSceneArena(state) });
+  canvas.dataset.pitArenaPlanes = [...backdropReport.drawnPlanes, ...foregroundReport.drawnPlanes].join(",");
+}
+
+function TouchButton({
+  label,
+  token,
+  onChange,
+  wide = false,
+}: {
+  label: string;
+  token: string;
+  onChange: (token: string, pressed: boolean) => void;
+  wide?: boolean;
+}) {
+  const release = (event: ReactPointerEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    onChange(token, false);
+  };
+  return (
+    <button
+      type="button"
+      className={`${styles.touchButton} ${wide ? styles.touchButtonWide : ""}`}
+      onPointerDown={(event) => {
+        event.preventDefault();
+        event.currentTarget.setPointerCapture(event.pointerId);
+        onChange(token, true);
+      }}
+      onPointerUp={release}
+      onPointerCancel={release}
+      onLostPointerCapture={() => onChange(token, false)}
+      onKeyDown={(event) => {
+        if (!event.repeat && (event.key === "Enter" || event.key === " ")) onChange(token, true);
+      }}
+      onKeyUp={(event) => {
+        if (event.key === "Enter" || event.key === " ") onChange(token, false);
+      }}
+      aria-label={label}
+    >
+      {label}
+    </button>
+  );
+}
+
+export function FighterCard({
+  fighterId,
+  side,
+  paletteOverride = null,
+  variantId = null,
+}: {
+  fighterId: PitFighterId;
+  variantId?: string | null;
+  side: "GAUCHE" | "DROITE";
+  paletteOverride?: PitArcadeCosmeticDefinition["palette"] | null;
+}) {
+  const fighter = getPitCurrentFighterDefinition(fighterId, variantId);
+  const profile = getPitFighterProfile(fighterId);
+  const palette = paletteOverride ?? fighter.palette;
+  const userVariant = getPitUserVariant(fighterId, normalizePitUserVariant(fighterId, variantId));
+  const moveset = getPitAuthoredMovesetV92(fighterId, userVariant?.id);
+  const authoredPortrait = isPitExpansionFighterId(fighterId) && !userVariant;
+  const keyArt = userVariant ? null : getPitFighterKeyArt(fighterId, side === "DROITE" ? "left" : "right");
+  const bitmapArt = keyArt ? null : getPitCombatBitmapArtDefinition(fighterId, variantId);
+  const finalDuelArt = fighterId === 'jungle-hunter' && variantId === PIT_JUNGLE_FINAL_DUEL_VARIANT
+    ? jungleFinalArt.pages.find(page => page.facing === (side === 'DROITE' ? 'left' : 'right')) : null;
+  const selectedArt = finalDuelArt ? { ...finalDuelArt, nativeFacing: finalDuelArt.facing, kind: 'static-bitmap' as const, alt: 'Jungle Hunter · duel final sans canon · pose fixe native' }
+    : keyArt ?? (bitmapArt ? { ...bitmapArt, alt: fighter.name + " en pied, illustration détourée existante en pose fixe." } : null);
+  const unavailableTechnique = pitTechniqueUnavailableReason(fighterId, variantId);
+  const [failedArtSrc, setFailedArtSrc] = useState<string | null>(null);
+  const [loadedArtSrc, setLoadedArtSrc] = useState<string | null>(null);
+  const visibleArt = selectedArt && failedArtSrc !== selectedArt.src ? selectedArt : null;
+  const facing = visibleArt?.nativeFacing === "neutral" ? "neutral" : side === "DROITE" ? "left" : "right";
+  return (
+    <article
+      className={styles.fighterCard}
+      style={{ "--fighter": palette.primary } as React.CSSProperties}
+      aria-label={`Profil de ${fighter.name} · côté ${side.toLocaleLowerCase("fr")}`}
+      data-fighter-id={fighterId}
+      data-fighter-art={authoredPortrait ? "authored-idle-pose" : visibleArt?.kind ?? "unavailable"}
+      data-fighter-variant={userVariant?.id ?? "default"}
+    >
+      <span className={styles.sideLabel}>{side}</span>
+      <div className={styles.fighterMedia} data-pit-fighter-media>
+        {authoredPortrait ? <PitExtensionPortrait key={fighterId + side} fighterId={fighterId} facing={side === "DROITE" ? "left" : "right"}/> : visibleArt ? (
+          <img
+            key={visibleArt.src}
+            className={styles.fighterKeyArt}
+            src={visibleArt.src}
+            width={visibleArt.width}
+            height={visibleArt.height}
+            alt={visibleArt.alt}
+            data-native-facing={visibleArt.nativeFacing}
+            data-facing={facing}
+            decoding="async"
+            data-art-ready={loadedArtSrc === visibleArt.src}
+            onLoad={() => setLoadedArtSrc(visibleArt.src)}
+            onError={() => setFailedArtSrc(visibleArt.src)}
+          />
+        ) : (
+          <span className={styles.portraitUnavailable} role="status">Portrait indisponible</span>
+        )}
+        {!authoredPortrait && visibleArt && loadedArtSrc !== visibleArt.src && <span className={styles.portraitLoading} role="status">Chargement du portrait…</span>}
+      </div>
+      {!authoredPortrait && !visibleArt ? <small className={styles.fighterArtNotice}>{selectedArt ? <><span>Image indisponible</span> <button type="button" onClick={() => setFailedArtSrc(null)}>Réessayer le portrait</button></> : "Image à produire"}</small> : null}
+      <h3>{fighter.name}</h3>
+      {userVariant && <small className={styles.fighterArtNotice}>{userVariant.label} · {finalDuelArt ? 'deux vues natives OpenAI · aucune animation' : userVariant.sourceArchive.startsWith('OpenAI') ? 'illustration OpenAI référencée · pose fixe' : 'image fournie · pose fixe'}</small>}
+      <p>{fighter.epithet}{paletteOverride ? " · ARMURE DU JUGEMENT" : ""}</p>
+      <small className={styles.techniqueName} data-pit-technique-available={!unavailableTechnique}>TECHNIQUE · {unavailableTechnique ? 'INDISPONIBLE · CANON RETIRÉ' : moveset ? fighter.attacks.technique.label : pitMoveLabelV91(fighterId, 'technique', fighter.attacks.technique.label)}</small>
+      {unavailableTechnique && <small className={styles.fighterArtNotice}>{unavailableTechnique}</small>}
+      {fighterId === 'falconer' && <small className={styles.fighterArtNotice}>Un drone mécanique · reconnaissance sans dégâts · une seconde commande rappelle le même appareil. Deux vues natives fixes : déplacement du capteur, sans cycle de battement inventé.</small>}
+      <dl>
+        <div><dt>VIE</dt><dd>{fighter.maxHealth}</dd></div>
+        <div><dt>PUISSANCE</dt><dd>{Math.round(fighter.power * 100)}</dd></div>
+        <div><dt>MOBILITÉ</dt><dd>{Math.round(fighter.walkSpeed * 20)}</dd></div>
+      </dl>
+      <details key={fighterId} className={styles.fighterProfile} data-pit-fighter-profile>
+        <summary aria-label={`Consulter le profil de ${fighter.name}`}>Profil du combattant</summary>
+        <p className={styles.fighterSource}>{profile.sourceWork}</p>
+        <p>{moveset ? moveset.sourceScope + ' ' + moveset.limitation : profile.arcadeIntro}</p>
+        {!unavailableTechnique && <p>
+          <strong>{moveset ? fighter.attacks.technique.label : pitMoveLabelV91(fighterId, 'technique', fighter.attacks.technique.label)}</strong>
+          {" · portée "}{fighter.attacks.technique.range}{" · préparation "}
+          {fighter.attacks.technique.startup}{" images"}
+        </p>}
+        {moveset ? <section data-pit-authored-moveset={moveset.id} data-pit-moveset-certified="false"
+          aria-label={`Règles de duel adaptées de ${fighter.name}`}>
+          <p><strong>Profil individuel V92 · fidélité 1:1 non certifiée.</strong> Les anciens checkpoints et replays gardent leurs recettes historiques.</p>
+          <a href={moveset.sourceUrl} target="_blank" rel="noopener noreferrer">Référence de l’équipement, sans certification des coups</a>
+          <ul>{(['light', 'medium', 'heavy', 'technique'] as const).map(kind => <li key={kind}>
+            {fighter.attacks[kind].label} · portée {fighter.attacks[kind].range} · préparation/contact/retour {fighter.attacks[kind].startup}/{fighter.attacks[kind].active}/{fighter.attacks[kind].recovery} ticks
+          </li>)}</ul>
+          <details><summary>Audit historique V91 avant spécialisation</summary>
+            <PitFidelityNoticeV91 fighterId={fighterId} variantId={userVariant?.id ?? variantId}/>
+          </details>
+        </section> : <PitFidelityNoticeV91 fighterId={fighterId} variantId={userVariant?.id ?? variantId}/>}
+        {visibleArt ? (
+          <small>
+            {visibleArt.kind === "static-bitmap" ? "Illustration détourée existante · pose fixe provisoire." : "Illustration de sélection."}
+            {paletteOverride ? " La palette Armure du Jugement colore le repère au sol ; l’illustration conserve ses couleurs." : ""}
+          </small>
+        ) : null}
+      </details>
+    </article>
+  );
+}
+
+function combatFighterArtStatuses(bank: PitCombatBitmapArtBank | null, combat: PitCombatState | null, presentation: PitRoundPresentationView, reducedMotion: boolean, engineVersion?: number) {
+  return combat?.fighters.map(fighter => getPitCombatBitmapFighterArtStatus(bank, fighter, {
+    simulationFrame: combat.frame, combat, presentation, reducedMotion, engineVersion,
+  }));
+}
+
+function nativeWorkbookPresentationClockV105(view: PitRoundPresentationView, combat: PitCombatState | null, art: PitCombatBitmapArtBank | null): PitRoundPresentationView {
+  if (!combat || (combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V105 && combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V106 && (combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V107 && (combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V109 && combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V112)))) return view;
+  let duration: number | null = null;
+  if (view.phase === 'intro-left' || view.phase === 'intro-right') {
+    duration = pitNativePresentationDurationV105(art?.spriteSheets, combat.fighters[view.fighterSlot ?? 0], 'intro');
+  } else if (view.phase === 'round-result' || view.phase === 'match-result') {
+    const durations = combat.fighters.map((fighter, slot) => pitNativePresentationDurationV105(art?.spriteSheets, fighter,
+      view.winnerSlot === slot ? 'victory' : 'defeat')).filter((value): value is number => value !== null);
+    if (durations.length) duration = Math.max(view.durationMs, ...durations);
+  }
+  return applyPitWorkbookPresentationClockV105(view, combat, duration);
+}
+
+function roundPresentationAnnouncement(presentation: PitRoundPresentationView, combat: PitCombatState | null): string {
+  if (!combat || combat.rules.mode === "training") return "";
+  if (presentation.phase === "intro-left" || presentation.phase === "intro-right") return `Entrée de ${PIT_FIGHTERS[combat.fighters[presentation.fighterSlot ?? 0].definitionId].name}. Commandes bloquées.`;
+  if (presentation.phase === "countdown") return `Manche ${presentation.round}. ${presentation.countdown}. Relâchez les commandes.`;
+  if (presentation.phase === "fight") return `Manche ${presentation.round}. Combat.`;
+  if (presentation.phase === "round-result" || presentation.phase === "match-result") return presentation.winnerSlot === null ? `Manche ${presentation.round}. Égalité.`
+    : `${PIT_FIGHTERS[combat.fighters[presentation.winnerSlot ?? 0].definitionId].name} remporte ${presentation.phase === "match-result" ? "le duel" : "la manche"}.`;
+  return "";
+}
+
+export default function PitCanvas({
+  initialLeftId,
+  narrativeEncounter,
+  narrativeStageCues,
+  onWorkbookExerciseFrameV107,
+  onNarrativeComplete,
+  onOpenNarrativeTrials,
+  onOpenCharacterChronicle,
+  controlBindings,
+  highContrast,
+  reducedGore,
+  screenShake,
+  unlockedCosmeticIds = [],
+  savedCircuitRuns = {},
+  savedDescentRuns = {},
+  exitLabel = "Retour au vaisseau",
+  onExit,
+  onMatchComplete,
+  onRunTransition,
+  lastReplay = null,
+}: PitCanvasProps) {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReducedMotion(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+  const [fixedCamera, setFixedCamera] = useState(false);
+  const presentationMotion = resolvePitPresentationMotion({ prefersReducedMotion, screenShake, fixedCamera });
+  const reducedCameraMotion = presentationMotion.reducedMotion;
+  const [mode, setMode] = useState<PitMode>("cpu");
+  const [leftId, setLeftId] = useState<PitVersusFighterId>(() => narrativeEncounter?.leftId ?? (isPitVersusFighterId(initialLeftId) ? initialLeftId : "jungle-hunter"));
+  const [rightId, setRightId] = useState<PitVersusFighterId>(narrativeEncounter?.rightId ?? (initialLeftId === "berserker" ? "jungle-hunter" : "berserker"));
+  const [leftVariantId, setLeftVariantId] = useState<string | null>(null);
+  const [rightVariantId, setRightVariantId] = useState<string | null>(null);
+  const [arenaId, setArenaId] = useState<PitArenaId>(narrativeEncounter?.arenaId ?? "the-pit");
+  const [arcadeRun, setArcadeRun] = useState<PitArcadeRun | null>(null);
+  const [circuitRun, setCircuitRun] = useState<PitCircuitRun | null>(null);
+  const [descentRun, setDescentRun] = useState<PitDescentRun | null>(null);
+  const [descentOptionIndex, setDescentOptionIndex] = useState(0);
+  const [descentDraftSeed, setDescentDraftSeed] = useState(0);
+  const [activeMatchResultId, setActiveMatchResultId] = useState("");
+  const [combat, setCombat] = useState<PitCombatState | null>(null);
+  const [roundPresentation, setRoundPresentation] = useState(() => createPitRoundPresentation(null));
+  const roundPresentationRef = useRef(roundPresentation);
+  const [finisherModeV80, setFinisherModeV80] = useState<PitFinisherModeV80>('stylized');
+  const [finisherV80, setFinisherV80] = useState(createPitFinisherViewV80);
+  const finisherRefV80 = useRef(finisherV80);
+  const [workbookConclusionV107, setWorkbookConclusionV107] = useState(createPitWorkbookConclusionV107);
+  const workbookConclusionRefV107 = useRef(workbookConclusionV107);
+  const [objectiveSessionV107, setObjectiveSessionV107] = useState<PitWorkbookConclusionSessionV107 | null>(null);
+  const objectiveSessionRefV107 = useRef<PitWorkbookConclusionSessionV107 | null>(null);
+  const objectiveRelationRefV107 = useRef<'ally' | 'hostile-adult'>('ally');
+  const [lifecycleV93, setLifecycleV93] = useState(createPitLifecyclePresentationV93);
+  const lifecycleRefV93 = useRef(lifecycleV93);
+  const lifecycleInteractionReadyRefV93 = useRef(false);
+  const finisherKeyV80 = combat?.phase === 'match-over' ? `${activeMatchResultId}:${combat.frame}:${combat.round}:${combat.matchWinnerId}` : '';
+  const terminalPresentationReady = combat?.phase === "match-over" && roundPresentation.resultVisible &&
+    finisherV80.key === finisherKeyV80 && finisherV80.phase === 'complete' && !pitWorkbookConclusionBlocksResultV107(workbookConclusionV107);
+  const combatPresent = combat !== null;
+  const [fighterArt, setFighterArt] = useState<PitCombatBitmapArtBank | null>(null);
+  const workbookConclusionActorsReadyV107 = pitWorkbookConclusionActorsReadyV107(fighterArt);
+  const [fighterArtRetry, setFighterArtRetry] = useState(0);
+  const [stageJourneyEnabled, setStageJourneyEnabled] = useState(false);
+  const [workbookNormalsEnabled, setWorkbookNormalsEnabled] = useState(false);
+  const [workbookCombatEnabledV105, setWorkbookCombatEnabledV105] = useState(false);
+  const [workbookCombatEnabledV106, setWorkbookCombatEnabledV106] = useState(false);
+  const [workbookCombatEnabledV107, setWorkbookCombatEnabledV107] = useState(false);
+  const [workbookCombatEnabledV109, setWorkbookCombatEnabledV109] = useState(false);
+  const [workbookCombatEnabledV112, setWorkbookCombatEnabledV112] = useState(false);
+  const workbookBackwardThrowsRefV112 = useRef<[boolean, boolean]>([false, false]);
+  const workbookThrowsRefV109 = useRef<[boolean, boolean]>([false, false]);
+  const [workbookDeviceArtV107, setWorkbookDeviceArtV107] = useState<PitWorkbookDeviceArtV107 | null>(null);
+  const [workbookDeviceRetryV107, setWorkbookDeviceRetryV107] = useState(0);
+  const [workbookConclusionsEnabledV107, setWorkbookConclusionsEnabledV107] = useState(false);
+  const [workbookConclusionRelationV107, setWorkbookConclusionRelationV107] = useState<'ally' | 'hostile-adult'>('ally');
+  const [workbookConclusionArtV107, setWorkbookConclusionArtV107] = useState<PitSpriteSheetAnimationBank | null>(null);
+  const [workbookConclusionRetryV107, setWorkbookConclusionRetryV107] = useState(0);
+  const workbookConclusionArtReadyV107 = !!workbookConclusionArtV107 && !workbookConclusionArtV107.cancelled &&
+    workbookConclusionArtV107.failedAtlasIds.length === 0 && workbookConclusionArtV107.readyClipCount === 6;
+  const workbookConclusionArtFailedV107 = !!workbookConclusionArtV107 && workbookConclusionArtV107.failedAtlasIds.length > 0;
+  const workbookObjectiveAvailableV107 = ownsPitWorkbookObjectiveV107(leftId, rightId, leftVariantId, rightVariantId) && (mode === 'cpu' || mode === 'local');
+  const workbookCommandsRefV105 = useRef<[PitInput['workbookAction'], PitInput['workbookAction']]>([undefined, undefined]);
+  const [tauntVariantsV105, setTauntVariantsV105] = useState<[1 | 2, 1 | 2]>([1, 1]);
+  const nextTauntVariantsRefV105 = useRef<[1 | 2, 1 | 2]>([1, 1]);
+  const workbookNormalsAvailable = ownsPitWorkbookNormalsV104(leftId, leftVariantId) || ownsPitWorkbookNormalsV104(rightId, rightVariantId);
+  const workbookThrowsAvailableV112 = getPitWorkbookBackwardThrowSupportV112(leftId, rightId, [leftVariantId, rightVariantId]).supported;
+  const workbookThrowsAvailableV109 = getPitWorkbookForwardThrowSupportV109(leftId, rightId, [leftVariantId, rightVariantId]).supported;
+  const [houndVariantId, setHoundVariantId] = useState<PitHoundVariantId>('tracker-hound');
+  const [companionArt, setCompanionArt] = useState<PitCompanionArtBank | null>(null);
+  const [companionArtRetry, setCompanionArtRetry] = useState(0);
+  const [falconerArt, setFalconerArt] = useState<PitFalconerDroneArtBank | null>(null);
+  const [falconerArtRetry, setFalconerArtRetry] = useState(0);
+  const [sceneBanks, setSceneBanks] = useState<ReadonlyMap<PitArenaId, PitArenaArtBank>>(new Map());
+  const [sceneRetry, setSceneRetry] = useState(0);
+  const renderedArenaId = combat?.arenaId ?? arenaId;
+  const availableJourney = getPitStageJourneyForArena(arenaId);
+  const selectedJourney = stageJourneyEnabled && (mode === "cpu" || mode === "local" || mode === "training") ? availableJourney?.id : undefined;
+  const requestedJourney = combat ? combat.rules.stageJourney : selectedJourney;
+  const sceneArenaId = combat ? pitStageSceneArena(combat) : renderedArenaId;
+  const arenaArt = sceneBanks.get(sceneArenaId) ?? null;
+  const journeyBanks = pitStageJourneyArtIds(renderedArenaId, requestedJourney).map(id => sceneBanks.get(id));
+  const sceneAssetsFailed = journeyBanks.some(bank => bank && (bank.failedPaths.size > 0 || bank.unavailable));
+  const journeyAssetsFailed = Boolean(requestedJourney && sceneAssetsFailed);
+  // The loader only inserts requested, decoded images. Count equality avoids passing
+  // mutable banks through opaque functions during React render.
+  const journeyAssetsReady = journeyBanks.every(bank => bank && !bank.cancelled && !bank.unavailable && bank.failedPaths.size === 0
+    && bank.requestedPaths.size > 0 && bank.images.size === bank.requestedPaths.size);
+  const retrySceneArt = useCallback(() => { setSceneBanks(new Map()); setSceneRetry(value => value + 1); }, []);
+  useEffect(() => {
+    const controller = new AbortController();
+    void Promise.all(pitStageJourneyArtIds(renderedArenaId, requestedJourney).map(id => loadPitArenaArt(id, { signal: controller.signal })))
+      .then(banks => { if (!controller.signal.aborted) setSceneBanks(new Map(banks.map(bank => [bank.arenaId, bank]))); });
+    return () => controller.abort();
+  }, [renderedArenaId, requestedJourney, sceneRetry]);
+  const renderedLeftId = combat?.fighters[0].definitionId ?? leftId;
+  const renderedRightId = combat?.fighters[1].definitionId ?? rightId;
+  const renderedLeftVariant = combat ? combat.fighters[0].variantId ?? null : leftVariantId;
+  const renderedRightVariant = combat ? combat.fighters[1].variantId ?? null : rightVariantId;
+  const renderedNormalMoves = combat ? combat.rules.normalMoves : narrativeEncounter?.normalMoves ?? (workbookCombatEnabledV112 && workbookThrowsAvailableV112 && (mode === 'cpu' || mode === 'local' || mode === 'training') ? PIT_WORKBOOK_COMBAT_RECIPE_V112 : workbookCombatEnabledV109 && workbookThrowsAvailableV109 && (mode === 'cpu' || mode === 'local' || mode === 'training') ? PIT_WORKBOOK_COMBAT_RECIPE_V109 : (workbookNormalsEnabled || workbookCombatEnabledV105 || workbookCombatEnabledV106 || workbookCombatEnabledV107) && workbookNormalsAvailable &&
+    (mode === 'cpu' || mode === 'local' || mode === 'training') ? workbookCombatEnabledV107 ? PIT_WORKBOOK_COMBAT_RECIPE_V107 : workbookCombatEnabledV106 ? PIT_WORKBOOK_COMBAT_RECIPE_V106 : workbookCombatEnabledV105 ? PIT_WORKBOOK_COMBAT_RECIPE_V105 : PIT_WORKBOOK_NORMALS_RECIPE_V104 : undefined);
+  const workbookThrowArtReadinessV109 = renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112 ? getPitBackwardThrowArtReadinessV112(fighterArt?.spriteSheets) : renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109
+    ? getPitForwardThrowArtReadinessV109(fighterArt?.spriteSheets) : 'not-required';
+  useEffect(() => {
+    const controller = new AbortController();
+    void loadPitCombatBitmapArt([renderedLeftId, renderedRightId], { signal: controller.signal, variants: [renderedLeftVariant, renderedRightVariant], normalMoves: renderedNormalMoves })
+      .then((bank) => { if (!controller.signal.aborted) setFighterArt(bank); });
+    return () => controller.abort();
+  }, [renderedLeftId, renderedRightId, renderedLeftVariant, renderedRightVariant, renderedNormalMoves, fighterArtRetry]);
+  useEffect(() => {
+    if (!workbookConclusionsEnabledV107 || !ownsPitWorkbookObjectiveV107(renderedLeftId, renderedRightId, renderedLeftVariant, renderedRightVariant)) return;
+    const controller = new AbortController();
+    void loadPitSpriteSheetAnimations(['scar', 'feral-hunter'], PIT_WORKBOOK_CONCLUSION_SCENE_REGISTRY_V107, {signal: controller.signal})
+      .then(bank => {if (!controller.signal.aborted) setWorkbookConclusionArtV107(bank);});
+    return () => controller.abort();
+  }, [workbookConclusionsEnabledV107, renderedLeftId, renderedRightId, renderedLeftVariant, renderedRightVariant, workbookConclusionRetryV107]);
+
+  useEffect(() => {
+    if ((renderedNormalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V107 && (renderedNormalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V109 && renderedNormalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V112))) return;
+    const controller = new AbortController();
+    void loadPitWorkbookDeviceArtV107(controller.signal).then(art => {if (!controller.signal.aborted) setWorkbookDeviceArtV107(art);});
+    return () => controller.abort();
+  }, [renderedNormalMoves, workbookDeviceRetryV107]);
+
+  const [combatNotice, setCombatNotice] = useState({ label: "CHOISIS LE RITUEL", frame: 0 });
+  const activeSourceThrowV112 = combat?.sourceThrowV112 ?? combat?.sourceThrowV109;
+  const activeSourceThrowTimingV112 = combat?.sourceThrowV112 ? PIT_WORKBOOK_BACKWARD_THROW_V112 : PIT_WORKBOOK_FORWARD_THROW_V109;
+  const announcement = activeSourceThrowV112 && activeSourceThrowV112.age >= activeSourceThrowTimingV112.techTicks &&
+    activeSourceThrowV112.age < activeSourceThrowTimingV112.techTicks + activeSourceThrowTimingV112.flightTicks - 1
+    ? 'PROJECTION EN COURS' : combatNotice.label;
+  const [ariaAnnouncement, setAriaAnnouncement] = useState("Choisissez le rituel de combat.");
+  const [replayNotice, setReplayNotice] = useState("");
+  const [recordedReplay, setRecordedReplay] = useState<PitReplay | null>(null);
+  const [playbackReplay, setPlaybackReplay] = useState<PitReplay | null>(null);
+  const [replayEnded, setReplayEnded] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
+  const [selectionOptionsOpen, setSelectionOptionsOpen] = useState(false);
+  const [showTrainingTools, setShowTrainingTools] = useState(false);
+  const [trainingSettings, setTrainingSettings] = useState(() => createPitTrainingSettings());
+  const [trainingSequence, setTrainingSequence] = useState<PitTrainingSequence | null>(null);
+  const [trainingActivity, setTrainingActivity] = useState<PitTrainingActivity>("idle");
+  const [trainingRecordedTicks, setTrainingRecordedTicks] = useState(0);
+  const [trainingNotice, setTrainingNotice] = useState("");
+  const [trainingPaused, setTrainingPaused] = useState(false);
+  const [trainingLesson, setTrainingLesson] = useState<PitTrainingLesson | null>(null);
+  const [trainingBriefingTimedOut, setTrainingBriefingTimedOut] = useState(false);
+  const trainingBriefingRef = useRef<HTMLDivElement>(null);
+  const trainingClockRef = useRef(createPitTrainingClock());
+  const trainingClockRestartRef = useRef(false);
+  const trainingLessonRef = useRef<PitTrainingLesson | null>(null);
+  const [impact, setImpact] = useState<ImpactFlash | null>(null);
+  const [descentCombatPresentation, setDescentCombatPresentation] =
+    useState<PitDescentCombatPresentation | null>(null);
+  const [descentResourceFeedback, setDescentResourceFeedback] =
+    useState<PitDescentResourceFeedback | null>(null);
+  const [equippedCosmeticId, setEquippedCosmeticId] = useState<string | null>(null);
+  const [arcadePersistence, setArcadePersistence] = useState<PitArcadePersistenceState>({
+    status: "idle",
+    message: "",
+  });
+  const [circuitPersistence, setCircuitPersistence] = useState<PitCircuitPersistenceState>({
+    status: "idle",
+    message: "",
+  });
+  const [runTransitionPersistence, setRunTransitionPersistence] =
+    useState<PitRunTransitionPersistenceState>({
+      status: "idle",
+      message: "",
+    });
+  const [touchAvailable] = useState(() =>
+    typeof navigator !== "undefined" &&
+      (navigator.maxTouchPoints > 0 || window.matchMedia("(any-pointer: coarse)").matches),
+  );
+  const combatRef = useRef<PitCombatState | null>(null);
+  const workbookExerciseObserverRefV107 = useRef(onWorkbookExerciseFrameV107);
+  useEffect(() => {workbookExerciseObserverRefV107.current = onWorkbookExerciseFrameV107;}, [onWorkbookExerciseFrameV107]);
+  const setAnnouncement = useCallback((label: string) => {
+    setCombatNotice({ label, frame: combatRef.current?.frame ?? 0 });
+  }, []);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const cameraRef = useRef<PitPresentationCamera | null>(null);
+  const rootRef = useRef<HTMLElement>(null);
+  const selectionFlowRef = useRef<PitSelectionFlowHandle>(null);
+  const selectionOptionsRef = useRef<HTMLDialogElement>(null);
+  const selectionOptionsTriggerRef = useRef<HTMLButtonElement>(null);
+  const resultOverlayRef = useRef<HTMLDivElement>(null);
+  const resultPrimaryRef = useRef<HTMLButtonElement>(null);
+  const pressedKeysRef = useRef(new Set<string>());
+  const touchInputsRef = useRef<[Set<string>, Set<string>]>([new Set(), new Set()]);
+  const menuGamepadRef = useRef({ previous: Array.from({ length: 13 }, () => false), ready: false });
+  const combatGamepadReadyRef = useRef<[boolean, boolean]>([false, false]);
+  const gamepadAssignmentsRef = useRef(createPitGamepadAssignments());
+  const reportedMatchFrameRef = useRef<number | null>(null);
+  const matchResultIdRef = useRef("");
+  const recorderRef = useRef<PitReplayRecorder | null>(null);
+  const replayReaderRef = useRef<PitReplayReader | null>(null);
+  const stageLifeSeedRef = useRef(0);
+  const arcadeRunRef = useRef<PitArcadeRun | null>(null);
+  const circuitRunRef = useRef<PitCircuitRun | null>(null);
+  const descentRunRef = useRef<PitDescentRun | null>(null);
+  const descentCombatContextRef = useRef<PitDescentCombatContext | null>(null);
+  const trainingSettingsRef = useRef(trainingSettings);
+  const trainingActivityRef = useRef<PitTrainingActivity>("idle");
+  const trainingRecorderRef = useRef<PitTrainingSequenceRecorder | null>(null);
+  const trainingReaderRef = useRef<PitTrainingSequenceReader | null>(null);
+  const pendingArcadeSettlementRef = useRef<PendingPitArcadeSettlement | null>(null);
+  const arcadePersistenceAttemptRef = useRef(0);
+  const pendingCircuitSettlementRef = useRef<PendingPitCircuitSettlement | null>(null);
+  const circuitPersistenceAttemptRef = useRef(0);
+  const pendingRunTransitionRef = useRef<PendingPitRunTransition | null>(null);
+  const runTransitionAttemptRef = useRef(0);
+  const normalizedLastReplay = useMemo(
+    () => lastReplay ? normalizePitReplay(lastReplay) : null,
+    [lastReplay],
+  );
+  const availableReplay = recordedReplay ?? normalizedLastReplay;
+  const downloadAvailableReplay = () => {
+    if (!availableReplay) return;
+    try {
+      const url = URL.createObjectURL(new Blob([serializePitReplay(availableReplay)], { type: "application/json" }));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "the-pit-" + availableReplay.fighters.join("-vs-") + ".json";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch {
+      setReplayNotice("L’export du replay a échoué. Vous pouvez encore revoir le duel dans cette session.");
+    }
+  };
+  const invalidReplayMessage = lastReplay && !normalizedLastReplay
+    ? "Le dernier duel enregistré est illisible ou incompatible."
+    : "";
+  const activeReplayNotice = replayNotice || invalidReplayMessage;
+  const activeAriaAnnouncement = invalidReplayMessage || ariaAnnouncement;
+  const runTransitionSelectionLocked =
+    runTransitionPersistence.status === "pending" ||
+    runTransitionPersistence.status === "failed";
+  const selectedArcadeCosmetic = isPitFirstEditionFighterId(leftId) ? PIT_ARCADE_COSMETICS[leftId] : null;
+  const selectedCosmeticUnlocked = selectedArcadeCosmetic !== null && unlockedCosmeticIds.includes(selectedArcadeCosmetic.id);
+  const equippedArcadeCosmetic =
+    selectedArcadeCosmetic && selectedCosmeticUnlocked && equippedCosmeticId === selectedArcadeCosmetic.id
+      ? selectedArcadeCosmetic
+      : null;
+  const gameplayKeyCodes = useMemo(() => {
+    const actionIds = mode === "local"
+      ? [...PIT_PLAYER_ONE_ACTION_IDS, ...PIT_PLAYER_TWO_ACTION_IDS]
+      : PIT_PLAYER_ONE_ACTION_IDS;
+    return new Set(actionIds.flatMap((actionId) => controlBindings[actionId]));
+  }, [controlBindings, mode]);
+
+  const lifecyclePresentationV93 = useMemo(
+    () => {
+      const view = pitLifecyclePresentationViewV93(roundPresentation, combat, finisherV80, lifecycleV93);
+      return (combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V105 || combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112))) ? {...view, fighterTauntVariants: tauntVariantsV105} : view;
+    },
+    [roundPresentation, combat, finisherV80, lifecycleV93, tauntVariantsV105],
+  );
+  const nativeTauntDurationsV93 = useMemo(() => combat?.fighters.map(fighter =>
+    pitNativeTauntDurationV93(fighterArt?.spriteSheets, fighter)) ?? [null, null], [combat, fighterArt]);
+  const tauntKeyCodesV93 = useMemo(() => {
+    // Respect every user binding, including pause/help, rather than stealing T.
+    const occupied = new Set(Object.values(controlBindings).flat());
+    return ['KeyT', 'KeyY', 'KeyG', 'KeyB', 'KeyV', 'KeyN'].filter(code => !occupied.has(code)).slice(0, 2);
+  }, [controlBindings]);
+  const fighterArtStatuses = useMemo(
+    () => combatFighterArtStatuses(fighterArt, combat, lifecyclePresentationV93, prefersReducedMotion, playbackReplay?.engineVersion),
+    [fighterArt, combat, lifecyclePresentationV93, prefersReducedMotion, playbackReplay?.engineVersion],
+  );
+  const briefingFighterStates = combat?.fighters.map((fighter, index): PitTrainingAssetState => {
+    if (!isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId)) return "loading";
+    const nativeFeral = getPitFeralNativeArtStatus(fighterArt?.spriteSheets, fighter.definitionId, fighter.variantId);
+    if (nativeFeral === 'loading' || nativeFeral === 'missing') return nativeFeral === 'loading' ? 'loading' : 'failed';
+    const status = fighterArtStatuses?.[index];
+    return status === "loading" ? "loading" : status === "missing" ? "failed" : "ready";
+  }) as [PitTrainingAssetState, PitTrainingAssetState] | undefined;
+  const briefingArenaState: PitTrainingAssetState = !arenaArt || arenaArt.cancelled || arenaArt.arenaId !== sceneArenaId
+    ? "loading" : arenaArt.unavailable || arenaArt.failedPaths.size > 0 ? "failed" : "ready";
+  const trainingBriefingReadiness = getPitTrainingBriefingReadiness(briefingFighterStates ?? ["loading", "loading"], briefingArenaState, trainingBriefingTimedOut);
+  const canBeginTrainingLesson = trainingBriefingReadiness.canBegin;
+  const trainingBriefingAssetStatus = trainingBriefingReadiness.status;
+
+  useEffect(() => {
+    if (trainingLesson?.status !== "briefing") return;
+    const timer = window.setTimeout(() => setTrainingBriefingTimedOut(true), PIT_TRAINING_BRIEFING_TIMEOUT_MS);
+    return () => window.clearTimeout(timer);
+  }, [trainingLesson]);
+
+  const changeCombat = useCallback((next: PitCombatState | null) => {
+    // A launched fight or replay never keeps the selection modal in the top layer.
+    selectionOptionsRef.current?.close();
+    setSelectionOptionsOpen(false);
+    combatRef.current = next;
+    const finisher = createPitFinisherViewV80();
+    finisherRefV80.current = finisher;
+    setFinisherV80(finisher);
+    const sourceConclusion = createPitWorkbookConclusionV107();
+    workbookConclusionRefV107.current = sourceConclusion; setWorkbookConclusionV107(sourceConclusion);
+    objectiveSessionRefV107.current = null; setObjectiveSessionV107(null);
+    workbookCommandsRefV105.current = [undefined, undefined];
+    workbookThrowsRefV109.current = [false, false];
+    workbookBackwardThrowsRefV112.current = [false, false];
+    setTauntVariantsV105([1, 1]);
+    nextTauntVariantsRefV105.current = [1, 1];
+    const lifecycle = createPitLifecyclePresentationV93();
+    lifecycleRefV93.current = lifecycle;
+    setLifecycleV93(lifecycle);
+    const presentation = createPitRoundPresentation(next);
+    roundPresentationRef.current = presentation;
+    setRoundPresentation(presentation);
+    const label = roundPresentationAnnouncement(presentation, next);
+    if (label) setAriaAnnouncement(label);
+    setCombat(next);
+  }, []);
+
+  const launchWorkbookObjectiveV107 = useCallback((next: PitCombatState) => {
+    if (!workbookConclusionsEnabledV107 || (mode !== 'cpu' && mode !== 'local') || narrativeEncounter || !workbookConclusionArtReadyV107) return;
+    const session = createPitWorkbookObjectiveSessionV107(next, 'objective:' + matchResultIdRef.current);
+    objectiveRelationRefV107.current = workbookConclusionRelationV107;
+    objectiveSessionRefV107.current = session; setObjectiveSessionV107(session);
+  }, [workbookConclusionsEnabledV107, workbookConclusionRelationV107, workbookConclusionArtReadyV107, mode, narrativeEncounter]);
+
+  const changePitMode = useCallback((nextMode: PitMode) => {
+    if (narrativeEncounter || runTransitionSelectionLocked) return;
+    if (!canPitFighterEnterMode(leftId, nextMode)) { setReplayNotice("Chronique de ce chasseur non produite : choisissez Duel CPU, Versus local ou Entraînement."); return; }
+    setMode(nextMode);
+    if (
+      nextMode === "descent" &&
+      descentRunRef.current?.fighterId !== leftId &&
+      !(isPitFirstEditionFighterId(leftId) && savedDescentRuns[leftId])
+    ) {
+      setDescentDraftSeed(createPitDescentSeed());
+    }
+  }, [leftId, narrativeEncounter, runTransitionSelectionLocked, savedDescentRuns]);
+
+  const resetLiveInputs = useCallback(() => {
+    pressedKeysRef.current.clear();
+    workbookCommandsRefV105.current = [undefined, undefined];
+    workbookThrowsRefV109.current = [false, false];
+    workbookBackwardThrowsRefV112.current = [false, false];
+    combatGamepadReadyRef.current = [false, false];
+    touchInputsRef.current.forEach((entries) => entries.clear());
+  }, []);
+
+  const publishRoundPresentation = useCallback((next: PitRoundPresentationView, latestCombat: PitCombatState | null = combatRef.current) => {
+    next = nativeWorkbookPresentationClockV105(next, latestCombat, fighterArt);
+    const previous = roundPresentationRef.current;
+    if (next === previous) return;
+    if (next.phase !== previous.phase || next.round !== previous.round) resetLiveInputs();
+    if (next.phase !== previous.phase || next.countdown !== previous.countdown || next.round !== previous.round) {
+      const label = roundPresentationAnnouncement(next, combatRef.current);
+      if (label) setAriaAnnouncement(label);
+    }
+    roundPresentationRef.current = next;
+    setRoundPresentation(next);
+  }, [resetLiveInputs, fighterArt]);
+
+  const focusCombatRoot = useCallback(() => {
+    window.requestAnimationFrame(() => rootRef.current?.focus({ preventScroll: true }));
+  }, []);
+
+  const onSelectionOptionsClosed = useCallback(() => {
+    setSelectionOptionsOpen(false);
+    resetLiveInputs();
+    menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
+    if (!combatRef.current) selectionOptionsTriggerRef.current?.focus({ preventScroll: true });
+  }, [resetLiveInputs]);
+  const closeSelectionOptions = useCallback(() => {
+    selectionOptionsRef.current?.close();
+    setSelectionOptionsOpen(false);
+    resetLiveInputs();
+    menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
+  }, [resetLiveInputs]);
+  const openSelectionOptions = useCallback(() => {
+    const dialog = selectionOptionsRef.current;
+    if (combatRef.current || !dialog || dialog.open) return;
+    resetLiveInputs();
+    menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
+    dialog.showModal();
+    setSelectionOptionsOpen(true);
+    dialog.querySelector<HTMLButtonElement>("[data-pit-options-close]")?.focus();
+  }, [resetLiveInputs]);
+
+  const readAssignedGamepads = useCallback(() => {
+    const previous = gamepadAssignmentsRef.current;
+    let pads: (Gamepad | null)[] = [];
+    try { pads = navigator.getGamepads?.() ?? []; }
+    catch { /* Resolve as disconnected so old held inputs cannot survive a policy denial. */ }
+    const resolved = resolvePitGamepadAssignments(previous, pads);
+    gamepadAssignmentsRef.current = resolved.assignments;
+    for (const player of [0, 1] as const) {
+      if (previous[player]?.revision !== resolved.assignments[player]?.revision) {
+        combatGamepadReadyRef.current[player] = false;
+        if (player === 0) menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
+      }
+    }
+    return resolved;
+  }, []);
+
+  const readViewportGamepad = useCallback(() => readAssignedGamepads().pads[0] ?? null, [readAssignedGamepads]);
+  const { menuOpen, pauseReason, pausedRef, menuRef, openMenu, resume, nativeFullscreen, fullscreenNotice, toggleFullscreen } = usePitCombatViewport(rootRef, combat !== null && !terminalPresentationReady && !replayEnded,
+    resetLiveInputs, focusCombatRoot, readViewportGamepad);
+
+  useEffect(() => {
+    const onDisconnected = (event: GamepadEvent) => {
+      gamepadAssignmentsRef.current = disconnectPitGamepadAssignment(gamepadAssignmentsRef.current, event.gamepad.index, event.gamepad.id);
+      resetLiveInputs();
+      menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
+    };
+    window.addEventListener("gamepaddisconnected", onDisconnected);
+    return () => window.removeEventListener("gamepaddisconnected", onDisconnected);
+  }, [resetLiveInputs]);
+
+  const toggleHelp = useCallback(() => {
+    setShowHelp(!showHelp);
+    resetLiveInputs();
+  }, [resetLiveInputs, showHelp]);
+
+  const toggleTrainingTools = useCallback(() => {
+    if (menuOpen) resume();
+    setShowTrainingTools(!showTrainingTools);
+    if (showTrainingTools) { resetLiveInputs(); focusCombatRoot(); }
+  }, [focusCombatRoot, resetLiveInputs, showTrainingTools, menuOpen, resume]);
+
+  const changeTrainingActivity = useCallback((next: PitTrainingActivity) => {
+    trainingActivityRef.current = next;
+    setTrainingActivity(next);
+  }, []);
+
+  const applyTrainingSettings = useCallback((patch: PitTrainingSettingsPatch) => {
+    setTrainingSettings((current) => {
+      const next = updatePitTrainingSettings(current, patch);
+      trainingSettingsRef.current = next;
+      return next;
+    });
+  }, []);
+
+  const clearTrainingLesson = useCallback(() => {
+    trainingLessonRef.current = null;
+    setTrainingLesson(null);
+    setTrainingBriefingTimedOut(false);
+    trainingClockRestartRef.current = false;
+    trainingClockRef.current = createPitTrainingClock();
+    setTrainingPaused(false);
+  }, []);
+
+  const toggleTrainingPause = useCallback(() => {
+    if (combatRef.current?.rules.mode !== "training" ||
+      (trainingLessonRef.current !== null && trainingLessonRef.current.status !== "running")) return;
+    const paused = !trainingClockRef.current.paused;
+    resetLiveInputs();
+    trainingClockRef.current = pausePitTrainingClock(trainingClockRef.current, paused);
+    setTrainingPaused(paused);
+    setAriaAnnouncement(paused ? "Simulation gelée. Chaque avance consomme un seul tick à 60 Hz." : "Simulation reprise.");
+    if (!paused) focusCombatRoot();
+  }, [focusCombatRoot, resetLiveInputs]);
+
+  const advanceTrainingTick = useCallback(() => {
+    if (combatRef.current?.rules.mode !== "training" ||
+      (trainingLessonRef.current !== null && trainingLessonRef.current.status !== "running")) return;
+    trainingClockRef.current = requestPitTrainingTick(trainingClockRef.current);
+  }, []);
+
+  const clearTrainingActivity = useCallback(() => {
+    trainingRecorderRef.current = null;
+    trainingReaderRef.current = null;
+    changeTrainingActivity("idle");
+    clearTrainingLesson();
+  }, [changeTrainingActivity, clearTrainingLesson]);
+
+  const finishTrainingRecording = useCallback((automatic = false) => {
+    const recorder = trainingRecorderRef.current;
+    trainingRecorderRef.current = null;
+    changeTrainingActivity("idle");
+    focusCombatRoot();
+    if (!recorder || recorder.tickCount === 0) {
+      setTrainingNotice("Aucune entrée enregistrée.");
+      setAriaAnnouncement("Aucune commande du mannequin n’a été enregistrée.");
+      return;
+    }
+    try {
+      const sequence = recorder.finish();
+      setTrainingSequence(sequence);
+      const seconds = (sequence.metadata.durationMs / 1_000).toFixed(1).replace(".0", "");
+      setTrainingNotice(`${automatic ? "Limite atteinte · " : ""}${seconds} s · ${sequence.metadata.ticks} images prêtes.`);
+      setAriaAnnouncement(`Séquence du mannequin enregistrée pendant ${seconds} secondes.`);
+    } catch {
+      setTrainingNotice("Séquence invalide. Recommencez l’enregistrement.");
+      setAriaAnnouncement("La séquence du mannequin n’a pas pu être conservée.");
+    }
+  }, [changeTrainingActivity, focusCombatRoot]);
+
+  const startTrainingRecording = useCallback(() => {
+    const current = combatRef.current;
+    if (!current || current.rules.mode !== "training") return;
+    clearTrainingLesson();
+    trainingReaderRef.current = null;
+    trainingRecorderRef.current = createPitTrainingSequenceRecorder();
+    setTrainingRecordedTicks(0);
+    changeTrainingActivity("recording");
+    setTrainingNotice("Commandes J1 dirigées vers le mannequin · 12 s maximum.");
+    setAnnouncement("ENREGISTREMENT MANNEQUIN");
+    setAriaAnnouncement("Enregistrement du mannequin commencé. Les commandes du joueur un contrôlent le mannequin.");
+    resetLiveInputs();
+    changeCombat(resetPitTrainingPositions(current));
+    focusCombatRoot();
+  }, [setAnnouncement, changeCombat, changeTrainingActivity, clearTrainingLesson, focusCombatRoot, resetLiveInputs]);
+
+  const startTrainingPlayback = useCallback(() => {
+    const current = combatRef.current;
+    if (!current || current.rules.mode !== "training" || !trainingSequence) return;
+    clearTrainingLesson();
+    try {
+      trainingRecorderRef.current = null;
+      trainingReaderRef.current = createPitTrainingSequenceReader(
+        trainingSequence,
+        trainingSettingsRef.current.sequencePlayback,
+      );
+      changeTrainingActivity("playback");
+      setTrainingNotice(trainingSettingsRef.current.sequencePlayback === "loop" ? "Lecture du mannequin en boucle." : "Lecture unique du mannequin.");
+      setAnnouncement("LECTURE MANNEQUIN");
+      setAriaAnnouncement("Lecture de la séquence du mannequin commencée.");
+      resetLiveInputs();
+      changeCombat(resetPitTrainingPositions(current));
+      focusCombatRoot();
+    } catch {
+      clearTrainingActivity();
+      setTrainingNotice("Impossible de lire cette séquence.");
+      setAriaAnnouncement("La séquence du mannequin est illisible.");
+    }
+  }, [setAnnouncement, changeCombat, changeTrainingActivity, clearTrainingActivity, clearTrainingLesson, focusCombatRoot, resetLiveInputs, trainingSequence]);
+
+  const stopTrainingPlayback = useCallback(() => {
+    trainingReaderRef.current = null;
+    changeTrainingActivity("idle");
+    setTrainingNotice("Lecture arrêtée. Le comportement choisi reprend.");
+    setAriaAnnouncement("Lecture du mannequin arrêtée.");
+    focusCombatRoot();
+  }, [changeTrainingActivity, focusCombatRoot]);
+
+  const resetTraining = useCallback(() => {
+    const current = combatRef.current;
+    if (!current || current.rules.mode !== "training") return;
+    clearTrainingActivity();
+    resetLiveInputs();
+    setTrainingNotice("Positions, vie et ressources réinitialisées.");
+    setAnnouncement("POSITIONS RÉINITIALISÉES");
+    setAriaAnnouncement("Positions, vie et ressources réinitialisées.");
+    changeCombat(resetPitTrainingPositions(current));
+    focusCombatRoot();
+  }, [setAnnouncement, changeCombat, clearTrainingActivity, focusCombatRoot, resetLiveInputs]);
+
+  const startTrainingLesson = useCallback((id: PitTrainingLessonId) => {
+    const current = combatRef.current;
+    if (!current || current.rules.mode !== "training") return;
+    if (current.rules.stageJourney) { setTrainingNotice("Les exercices guidés utilisent le duel neutre. Désactive le parcours dans la sélection pour les lancer."); return; }
+    const availability = getPitTrainingLessonAvailability(current.fighters[0].definitionId, id);
+    if (!availability.available) {
+      setTrainingNotice(availability.reason ?? "Exercice indisponible.");
+      setAriaAnnouncement(availability.reason ?? "Exercice indisponible.");
+      return;
+    }
+    const prepared = preparePitTrainingBriefing(current, id);
+    clearTrainingActivity();
+    resetLiveInputs();
+    recorderRef.current = null;
+    trainingLessonRef.current = prepared.lesson;
+    setTrainingLesson(prepared.lesson);
+    trainingClockRef.current = prepared.clock;
+    setTrainingPaused(true);
+    setTrainingBriefingTimedOut(false);
+    setTrainingNotice("");
+    setImpact(null);
+    setAnnouncement("PRÉPARATION DE L’EXERCICE");
+    setAriaAnnouncement(prepared.lesson.message);
+    changeCombat(prepared.state);
+    window.requestAnimationFrame(() => trainingBriefingRef.current?.focus({ preventScroll: true }));
+  }, [setAnnouncement, changeCombat, clearTrainingActivity, resetLiveInputs]);
+
+  const beginPreparedTrainingLesson = useCallback(() => {
+    const current = combatRef.current, lesson = trainingLessonRef.current;
+    if (!current || !lesson) return;
+    const started = beginPitTrainingBriefing(current, lesson, {
+      status: trainingBriefingAssetStatus, canBegin: canBeginTrainingLesson,
+    });
+    if (!started) return;
+    resetLiveInputs();
+    trainingLessonRef.current = started.lesson;
+    setTrainingLesson(started.lesson);
+    trainingClockRef.current = started.clock;
+    trainingClockRestartRef.current = true;
+    setTrainingPaused(false);
+    setAnnouncement("EXERCICE GUIDÉ");
+    setAriaAnnouncement("Exercice commencé. " + started.lesson.message);
+    focusCombatRoot();
+  }, [setAnnouncement, canBeginTrainingLesson, trainingBriefingAssetStatus, focusCombatRoot, resetLiveInputs]);
+
+  useEffect(() => {
+    if (trainingLesson?.status !== "briefing") return;
+    let frame = 0, armed = false, previousA = false, previousB = false, padRevision: number | undefined;
+    const poll = () => {
+      const assigned = readAssignedGamepads();
+      const pad = assigned.pads[0];
+      if (padRevision !== assigned.assignments[0]?.revision) armed = false;
+      padRevision = assigned.assignments[0]?.revision;
+      const a = Boolean(pad?.buttons[0]?.pressed), b = Boolean(pad?.buttons[1]?.pressed);
+      if (!pad) armed = false;
+      else if (!armed) armed = pad.buttons.every(button => !button.pressed) && pad.axes.every(axis => Math.abs(axis) < .32);
+      else if (b && !previousB) resetTraining();
+      else if (a && !previousA) beginPreparedTrainingLesson();
+      previousA = a; previousB = b;
+      frame = window.requestAnimationFrame(poll);
+    };
+    frame = window.requestAnimationFrame(poll);
+    return () => window.cancelAnimationFrame(frame);
+  }, [beginPreparedTrainingLesson, readAssignedGamepads, resetTraining, trainingLesson?.status]);
+
+  const beginRecording = useCallback((next: PitCombatState) => {
+    stageLifeSeedRef.current = createPitStageLifeSeedV66(stageLifeSeedRef.current);
+    try {
+      recorderRef.current = createPitReplayRecorder({
+        fighters: [next.fighters[0].definitionId, next.fighters[1].definitionId],
+        variants: [next.fighters[0].variantId ?? null, next.fighters[1].variantId ?? null],
+        rules: next.rules,
+        arenaId: next.arenaId,
+        houndVariantId: next.houndVariantId,
+        seed: stageLifeSeedRef.current,
+      });
+      setReplayNotice("");
+    } catch {
+      recorderRef.current = null;
+      setReplayNotice("Enregistrement du duel indisponible. Le combat continue.");
+      setAriaAnnouncement("Enregistrement du duel indisponible. Le combat continue.");
+    }
+  }, []);
+
+  const launchLiveMatch = useCallback((
+    playerId: PitVersusFighterId,
+    opponentId: PitFighterId,
+    nextArenaId: PitArenaId,
+    nextMode: PitMode,
+    descentRunState?: PitDescentRun,
+    descentNode?: PitDescentNode,
+  ) => {
+    const playerVariant = playerId === leftId ? leftVariantId : null;
+    const opponentVariant = opponentId === rightId ? rightVariantId : null;
+    const normalMoves = narrativeEncounter?.normalMoves ?? (workbookCombatEnabledV112 && getPitWorkbookBackwardThrowSupportV112(playerId, opponentId, [playerVariant, opponentVariant]).supported && (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') ? PIT_WORKBOOK_COMBAT_RECIPE_V112 : workbookCombatEnabledV109 && getPitWorkbookForwardThrowSupportV109(playerId, opponentId, [playerVariant, opponentVariant]).supported && (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') ? PIT_WORKBOOK_COMBAT_RECIPE_V109 :
+      (workbookNormalsEnabled || workbookCombatEnabledV105 || workbookCombatEnabledV106 || workbookCombatEnabledV107) &&
+      (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') &&
+      (ownsPitWorkbookNormalsV104(playerId, playerVariant) || ownsPitWorkbookNormalsV104(opponentId, opponentVariant))
+        ? workbookCombatEnabledV107 ? PIT_WORKBOOK_COMBAT_RECIPE_V107 : workbookCombatEnabledV106 ? PIT_WORKBOOK_COMBAT_RECIPE_V106 : workbookCombatEnabledV105 ? PIT_WORKBOOK_COMBAT_RECIPE_V105 : PIT_WORKBOOK_NORMALS_RECIPE_V104
+        : undefined);
+    if (!narrativeEncounter && (nextMode === 'cpu' || nextMode === 'local') && workbookConclusionsEnabledV107 &&
+      ownsPitWorkbookObjectiveV107(playerId, opponentId, playerId === leftId ? leftVariantId : null, opponentId === rightId ? rightVariantId : null) && !workbookConclusionArtReadyV107) {
+      setAriaAnnouncement('Les images de la conclusion sont encore en chargement.');
+      return;
+    }
+    if ((normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 && getPitForwardThrowArtReadinessV109(fighterArt?.spriteSheets) !== 'ready') || (normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112 && getPitBackwardThrowArtReadinessV112(fighterArt?.spriteSheets) !== 'ready')) {
+      setAriaAnnouncement('Les dessins de saisie et de chute sont encore en chargement.'); return;
+    }
+    if ((normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112))) {
+      const selections = [{id:playerId, variant:playerVariant}, {id:opponentId, variant:opponentVariant}];
+      const refused = selections.some(selection => (selection.id === 'scar' || selection.id === 'feral-hunter') &&
+        (!getPitWorkbookVariantCapabilitiesV107(selection.id, selection.variant).sourceRecipeOwnershipAllowed ||
+        (['right','left'] as const).some(facing => !guardPitWorkbookVariantCapabilityV107({fighterId:selection.id, variantId:selection.variant,
+          purpose:'native-action-drawing', id:selection.id === 'scar' ? 'M_F003_S2' : 'M_F006_S4', facing,
+          equipment:'source-equipped', armor:'source-intact', mask:'source-default'}).available)));
+      if (refused || !workbookDeviceArtV107?.ready) {setAriaAnnouncement(refused ? 'Cette apparence ne possède pas les gestes natifs requis.' : 'Les images des dispositifs sont encore en chargement.'); return;}
+    }
+    if (playerId === opponentId) {
+      const message = "Choisissez deux combattants différents pour entrer dans l’arène.";
+      setReplayNotice(message);
+      setAriaAnnouncement(message);
+      return;
+    }
+    let next = createPitCombatState(playerId, opponentId, {
+      mode: nextMode === "training" ? "training" : "match",
+      ...(normalMoves ? {normalMoves} : {}),
+      arenaId: nextArenaId,
+      variants: [playerId === leftId ? leftVariantId : null, opponentId === rightId ? rightVariantId : null],
+      ...([playerId, opponentId].includes('tracker') ? { houndVariantId } : {}),
+      ...(stageJourneyEnabled && getPitStageJourneyForArena(nextArenaId) && (nextMode === "cpu" || nextMode === "local" || nextMode === "training") ? { stageJourney: getPitStageJourneyForArena(nextArenaId)!.id } : {}),
+    });
+    if (narrativeEncounter?.workbookCarryV108) next = preparePitWorkbookCampaignCombatV108(next,narrativeEncounter.workbookCarryV108);
+    if (nextMode === "descent") {
+      if (!descentRunState || !descentNode) {
+        throw new Error("A Descent duel requires its persisted route and node.");
+      }
+      const prepared = preparePitDescentCombat(next, descentRunState, descentNode);
+      next = prepared.state;
+      // Descente uses one decisive round so the route health cannot be reset by a normal best-of-three.
+      next.fighters[0] = { ...next.fighters[0], roundsWon: 1 };
+      next.fighters[1] = { ...next.fighters[1], roundsWon: 1 };
+      descentCombatContextRef.current = prepared.context;
+      setDescentCombatPresentation(prepared.presentation);
+    } else {
+      descentCombatContextRef.current = null;
+      setDescentCombatPresentation(null);
+    }
+    setDescentResourceFeedback(null);
+    clearTrainingActivity();
+    setTrainingNotice("");
+    reportedMatchFrameRef.current = null;
+    matchResultIdRef.current = createPitResultId();
+    setActiveMatchResultId(matchResultIdRef.current);
+    replayReaderRef.current = null;
+    setPlaybackReplay(null);
+    setReplayEnded(false);
+    setImpact(null);
+    pendingArcadeSettlementRef.current = null;
+    arcadePersistenceAttemptRef.current += 1;
+    setArcadePersistence({ status: "idle", message: "" });
+    pendingCircuitSettlementRef.current = null;
+    circuitPersistenceAttemptRef.current += 1;
+    setCircuitPersistence({ status: "idle", message: "" });
+    pendingRunTransitionRef.current = null;
+    runTransitionAttemptRef.current += 1;
+    setRunTransitionPersistence({ status: "idle", message: "" });
+    setArenaId(nextArenaId);
+    cameraRef.current = null;
+    resetLiveInputs();
+    if (nextMode === "training" || nextMode === "descent") { recorderRef.current = null; stageLifeSeedRef.current = createPitStageLifeSeedV66(stageLifeSeedRef.current); }
+    else beginRecording(next);
+    const message = nextMode === "training"
+      ? "ENTRAÎNEMENT LIBRE"
+      : nextMode === "arcade"
+        ? "ARCADE · COMBAT"
+        : nextMode === "circuit"
+          ? "CIRCUIT DU CLAN · COMBAT"
+          : nextMode === "descent"
+            ? "DESCENTE · MANCHE DÉCISIVE"
+            : "MANCHE 1 · COMBAT";
+    setAnnouncement(message);
+    setAriaAnnouncement(
+      nextMode === "training"
+        ? "Entraînement libre commencé."
+        : nextMode === "arcade"
+          ? "Combat du parcours Arcade commencé."
+          : nextMode === "circuit"
+            ? "Combat du Circuit du clan commencé."
+            : nextMode === "descent"
+              ? "Combat décisif de la Descente commencé avec la santé conservée."
+              : "Manche 1. Combat.",
+    );
+    changeCombat(next);
+    launchWorkbookObjectiveV107(next);
+  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId, houndVariantId, workbookNormalsEnabled, workbookCombatEnabledV105, workbookCombatEnabledV106, workbookCombatEnabledV107, workbookCombatEnabledV109, workbookCombatEnabledV112, workbookDeviceArtV107, fighterArt, launchWorkbookObjectiveV107, narrativeEncounter, workbookConclusionsEnabledV107, workbookConclusionArtReadyV107]);
+
+  const submitRunTransition = useCallback((settlement: PendingPitRunTransition) => {
+    pendingRunTransitionRef.current = settlement;
+    const attempt = runTransitionAttemptRef.current + 1;
+    runTransitionAttemptRef.current = attempt;
+    setRunTransitionPersistence({
+      status: "pending",
+      message: "Écriture durable de la route THE PIT en cours…",
+    });
+
+    const submit = async () => {
+      let acknowledgement: PitMatchPersistenceAck;
+      try {
+        acknowledgement = onRunTransition
+          ? await onRunTransition(settlement.transition)
+          : {
+              persisted: false,
+              message: "La sauvegarde des routes THE PIT n’est pas disponible.",
+            };
+      } catch {
+        acknowledgement = {
+          persisted: false,
+          message: "L’écriture de la route THE PIT a échoué.",
+        };
+      }
+      if (
+        runTransitionAttemptRef.current !== attempt ||
+        pendingRunTransitionRef.current?.transition.id !== settlement.transition.id
+      ) {
+        return;
+      }
+      if (!acknowledgement.persisted) {
+        setRunTransitionPersistence({ status: "failed", message: acknowledgement.message });
+        return;
+      }
+      pendingRunTransitionRef.current = null;
+      setRunTransitionPersistence({ status: "confirmed", message: "Route THE PIT enregistrée." });
+      settlement.onPersisted();
+    };
+    void submit();
+  }, [onRunTransition]);
+
+  const retryRunTransition = useCallback(() => {
+    const settlement = pendingRunTransitionRef.current;
+    if (settlement) submitRunTransition(settlement);
+  }, [submitRunTransition]);
+
+  const launchCircuitSnapshot = useCallback((
+    baseRun: PitCircuitRun,
+    mutationKind: "circuit-persist" | "circuit-replace",
+  ) => {
+    const historyExhausted =
+      baseRun.appliedResults.length >= PIT_CIRCUIT_MAX_RESULTS;
+    const launchRun = historyExhausted
+      ? createPitCircuitRun(baseRun.fighterId)
+      : baseRun;
+    const launchMutationKind = historyExhausted
+      ? "circuit-replace"
+      : mutationKind;
+    if (historyExhausted) {
+      setReplayNotice(
+        "Historique du Circuit plein : nouveau Circuit créé, statistiques conservées.",
+      );
+    }
+    const fight = PIT_CLAN_CIRCUITS[launchRun.fighterId].fights[launchRun.fightIndex];
+    if (!fight) return;
+    const selectedRun = launchRun.selectedFightId
+      ? launchRun
+      : selectPitCircuitFight(launchRun, fight.id);
+    const launch = () => {
+      circuitRunRef.current = selectedRun;
+      setCircuitRun(selectedRun);
+      descentRunRef.current = null;
+      setDescentRun(null);
+      launchLiveMatch(
+        selectedRun.fighterId,
+        fight.opponentId,
+        fight.arenaId,
+        "circuit",
+      );
+    };
+    if (launchRun.selectedFightId) {
+      launch();
+      return;
+    }
+    submitRunTransition({
+      transition: {
+        id: createPitResultId(),
+        kind: launchMutationKind,
+        run: selectedRun,
+      },
+      onPersisted: launch,
+    });
+  }, [launchLiveMatch, submitRunTransition]);
+
+  const resolveDescentNonCombat = useCallback((
+    selectedRun: PitDescentRun,
+    node: PitDescentNode,
+  ) => {
+    const transitionId = createPitResultId();
+    const application = applyPitDescentResolution(selectedRun, {
+      id: transitionId,
+      nodeId: node.id,
+    });
+    submitRunTransition({
+      transition: {
+        id: transitionId,
+        kind: "descent-persist",
+        run: application.run,
+      },
+      onPersisted: () => {
+        descentRunRef.current = application.run;
+        setDescentRun(application.run);
+        setDescentOptionIndex(0);
+        setAnnouncement(node.kind === "relic" ? "RELIQUE SCELLÉE" : "SANTÉ RESTAURÉE");
+        setAriaAnnouncement(
+          node.kind === "relic"
+            ? "Relique temporaire de Descente enregistrée."
+            : "Récupération de santé de Descente enregistrée.",
+        );
+      },
+    });
+  }, [setAnnouncement, submitRunTransition]);
+
+  const enterPersistedDescentRun = useCallback((run: PitDescentRun) => {
+    descentRunRef.current = run;
+    setDescentRun(run);
+    const plan = createPitDescentPlan(run.fighterId, run.seed);
+    const node = run.selectedNodeId
+      ? plan.floors[run.completedFloors]?.options.find(
+          (candidate) => candidate.id === run.selectedNodeId,
+        ) ?? null
+      : null;
+    if (!node) return;
+    if ((node.kind === "fight" || node.kind === "boss") && node.opponentId) {
+      launchLiveMatch(run.fighterId, node.opponentId, node.arenaId, "descent", run, node);
+      return;
+    }
+    resolveDescentNonCombat(run, node);
+  }, [launchLiveMatch, resolveDescentNonCombat]);
+
+  const chooseDescentBranch = useCallback((
+    baseRun: PitDescentRun,
+    optionIndex: number,
+    mutationKind: "descent-persist" | "descent-replace" = "descent-persist",
+  ) => {
+    if (baseRun.phase !== "active" || baseRun.selectedNodeId) {
+      enterPersistedDescentRun(baseRun);
+      return;
+    }
+    const floor = createPitDescentPlan(baseRun.fighterId, baseRun.seed)
+      .floors[baseRun.completedFloors];
+    const node = floor?.options[
+      Math.max(0, Math.min(optionIndex, (floor?.options.length ?? 1) - 1))
+    ];
+    if (!node) return;
+    const selectedRun = selectPitDescentNode(baseRun, node.id);
+    submitRunTransition({
+      transition: {
+        id: createPitResultId(),
+        kind: mutationKind,
+        run: selectedRun,
+      },
+      onPersisted: () => enterPersistedDescentRun(selectedRun),
+    });
+  }, [enterPersistedDescentRun, submitRunTransition]);
+
+  const startMatch = useCallback(() => {
+    if (!canPitFighterEnterMode(leftId, mode)) return;
+    if (
+      runTransitionPersistence.status === "failed" &&
+      (mode === "circuit" || mode === "descent")
+    ) {
+      retryRunTransition();
+      return;
+    }
+    if (runTransitionPersistence.status === "pending") return;
+    if ((mode === "cpu" || mode === "local" || mode === "training") && !journeyAssetsReady) return;
+    if (mode === "arcade") {
+      if (!isPitFirstEditionFighterId(leftId)) return;
+      const run = createPitArcadeRun(leftId);
+      const encounter = PIT_ARCADE_LADDERS[leftId].encounters[0];
+      circuitRunRef.current = null;
+      setCircuitRun(null);
+      descentRunRef.current = null;
+      setDescentRun(null);
+      arcadeRunRef.current = run;
+      setArcadeRun(run);
+      launchLiveMatch(leftId, encounter.opponentId, encounter.arenaId, "arcade");
+      return;
+    }
+    if (mode === "circuit") {
+      if (!isPitFirstEditionFighterId(leftId)) return;
+      const localRun = circuitRunRef.current?.fighterId === leftId
+        ? circuitRunRef.current
+        : null;
+      const storedRun = localRun ?? savedCircuitRuns[leftId] ?? null;
+      const historyExhausted =
+        storedRun?.phase === "active" &&
+        storedRun.appliedResults.length >= PIT_CIRCUIT_MAX_RESULTS;
+      const baseRun =
+        storedRun?.phase === "active" && !historyExhausted
+          ? storedRun
+          : createPitCircuitRun(leftId);
+      if (historyExhausted) {
+        setReplayNotice(
+          "Historique du Circuit plein : nouveau Circuit créé, statistiques conservées.",
+        );
+      }
+      arcadeRunRef.current = null;
+      setArcadeRun(null);
+      launchCircuitSnapshot(
+        baseRun,
+        storedRun?.phase === "completed" || historyExhausted
+          ? "circuit-replace"
+          : "circuit-persist",
+      );
+      return;
+    }
+    if (mode === "descent") {
+      if (!isPitFirstEditionFighterId(leftId)) return;
+      const localRun = descentRunRef.current?.fighterId === leftId
+        ? descentRunRef.current
+        : null;
+      const storedRun = localRun ?? savedDescentRuns[leftId] ?? null;
+      const freshSeed = storedRun && storedRun.phase !== "active"
+        ? createPitDescentSeed()
+        : descentDraftSeed;
+      if (storedRun && storedRun.phase !== "active") {
+        setDescentDraftSeed(freshSeed);
+      }
+      const baseRun = storedRun?.phase === "active"
+        ? storedRun
+        : createPitDescentRun(leftId, freshSeed);
+      arcadeRunRef.current = null;
+      setArcadeRun(null);
+      circuitRunRef.current = null;
+      setCircuitRun(null);
+      chooseDescentBranch(
+        baseRun,
+        descentOptionIndex,
+        storedRun && storedRun.phase !== "active" ? "descent-replace" : "descent-persist",
+      );
+      return;
+    }
+    arcadeRunRef.current = null;
+    setArcadeRun(null);
+    circuitRunRef.current = null;
+    setCircuitRun(null);
+    descentRunRef.current = null;
+    setDescentRun(null);
+    launchLiveMatch(leftId, rightId, arenaId, mode);
+  }, [
+    arenaId,
+    chooseDescentBranch,
+    descentDraftSeed,
+    descentOptionIndex,
+    launchCircuitSnapshot,
+    launchLiveMatch,
+    journeyAssetsReady,
+    leftId,
+    mode,
+    rightId,
+    retryRunTransition,
+    runTransitionPersistence.status,
+    savedCircuitRuns,
+    savedDescentRuns,
+  ]);
+
+  const chooseDisplayedDescentBranch = useCallback((optionIndex: number) => {
+    if (!isPitFirstEditionFighterId(leftId) || runTransitionSelectionLocked) return;
+    setDescentOptionIndex(optionIndex);
+    selectionFlowRef.current?.reviewOpponent();
+  }, [leftId, runTransitionSelectionLocked]);
+
+  const swapSides = useCallback(() => {
+    if (narrativeEncounter) return;
+    selectionFlowRef.current?.reset(rightId);
+    if (!canPitFighterEnterMode(rightId, mode)) setMode("cpu");
+    setLeftId(rightId);
+    setRightId(leftId);
+    setLeftVariantId(rightVariantId);
+    setRightVariantId(leftVariantId);
+  }, [leftId, rightId, leftVariantId, rightVariantId, mode, narrativeEncounter]);
+
+  const returnToSelection = useCallback(() => {
+    if (narrativeEncounter) { onExit(); return; }
+    resume();
+    recorderRef.current = null;
+    replayReaderRef.current = null;
+    clearTrainingActivity();
+    setPlaybackReplay(null);
+    setReplayEnded(false);
+    pendingArcadeSettlementRef.current = null;
+    arcadePersistenceAttemptRef.current += 1;
+    setArcadePersistence({ status: "idle", message: "" });
+    pendingCircuitSettlementRef.current = null;
+    circuitPersistenceAttemptRef.current += 1;
+    setCircuitPersistence({ status: "idle", message: "" });
+    pendingRunTransitionRef.current = null;
+    runTransitionAttemptRef.current += 1;
+    setRunTransitionPersistence({ status: "idle", message: "" });
+    arcadeRunRef.current = null;
+    setArcadeRun(null);
+    circuitRunRef.current = null;
+    setCircuitRun(null);
+    descentRunRef.current = null;
+    setDescentRun(null);
+    descentCombatContextRef.current = null;
+    setDescentCombatPresentation(null);
+    setDescentResourceFeedback(null);
+    resetLiveInputs();
+    gamepadAssignmentsRef.current = createPitGamepadAssignments();
+    menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
+    setAnnouncement("CHOISIS LE RITUEL");
+    setAriaAnnouncement("Retour à la sélection du rituel.");
+    changeCombat(null);
+  }, [setAnnouncement, changeCombat, clearTrainingActivity, resetLiveInputs, resume, narrativeEncounter, onExit]);
+
+  const submitArcadeSettlement = useCallback((settlement: PendingPitArcadeSettlement) => {
+    pendingArcadeSettlementRef.current = settlement;
+    const attempt = arcadePersistenceAttemptRef.current + 1;
+    arcadePersistenceAttemptRef.current = attempt;
+    setArcadePersistence({
+      status: "pending",
+      message: "Enregistrement du résultat Arcade en cours…",
+    });
+
+    const submit = async () => {
+      let acknowledgement: PitMatchPersistenceAck;
+      try {
+        acknowledgement = onMatchComplete
+          ? await onMatchComplete(settlement.result)
+          : {
+              persisted: false,
+              message: "La sauvegarde THE PIT n’est pas disponible.",
+            };
+      } catch {
+        acknowledgement = {
+          persisted: false,
+          message: "L’écriture du résultat THE PIT a échoué.",
+        };
+      }
+
+      if (
+        arcadePersistenceAttemptRef.current !== attempt ||
+        pendingArcadeSettlementRef.current?.result.resultId !== settlement.result.resultId
+      ) {
+        return;
+      }
+      if (!acknowledgement.persisted) {
+        setArcadePersistence({
+          status: "failed",
+          message: acknowledgement.message,
+        });
+        return;
+      }
+
+      pendingArcadeSettlementRef.current = null;
+      arcadeRunRef.current = settlement.nextRun;
+      setArcadeRun(settlement.nextRun);
+      setArcadePersistence({
+        status: "confirmed",
+        message: "Résultat Arcade enregistré.",
+      });
+    };
+
+    void submit();
+  }, [onMatchComplete]);
+
+  const retryArcadeSettlement = useCallback(() => {
+    const settlement = pendingArcadeSettlementRef.current;
+    if (settlement) submitArcadeSettlement(settlement);
+  }, [submitArcadeSettlement]);
+
+  const submitCircuitSettlement = useCallback((settlement: PendingPitCircuitSettlement) => {
+    pendingCircuitSettlementRef.current = settlement;
+    const attempt = circuitPersistenceAttemptRef.current + 1;
+    circuitPersistenceAttemptRef.current = attempt;
+    setCircuitPersistence({
+      status: "pending",
+      message: "Enregistrement du résultat du Circuit en cours…",
+    });
+
+    const submit = async () => {
+      let acknowledgement: PitMatchPersistenceAck;
+      try {
+        acknowledgement = onMatchComplete
+          ? await onMatchComplete(settlement.result, settlement.nextRun)
+          : {
+              persisted: false,
+              message: "La sauvegarde THE PIT n’est pas disponible.",
+            };
+      } catch {
+        acknowledgement = {
+          persisted: false,
+          message: "L’écriture du résultat THE PIT a échoué.",
+        };
+      }
+
+      if (
+        circuitPersistenceAttemptRef.current !== attempt ||
+        pendingCircuitSettlementRef.current?.result.resultId !== settlement.result.resultId
+      ) {
+        return;
+      }
+      if (!acknowledgement.persisted) {
+        setCircuitPersistence({
+          status: "failed",
+          message: acknowledgement.message,
+        });
+        return;
+      }
+
+      pendingCircuitSettlementRef.current = null;
+      circuitRunRef.current = settlement.nextRun;
+      setCircuitRun(settlement.nextRun);
+      setCircuitPersistence({
+        status: "confirmed",
+        message: "Résultat du Circuit enregistré.",
+      });
+    };
+
+    void submit();
+  }, [onMatchComplete]);
+
+  const retryCircuitSettlement = useCallback(() => {
+    const settlement = pendingCircuitSettlementRef.current;
+    if (settlement) submitCircuitSettlement(settlement);
+  }, [submitCircuitSettlement]);
+
+  useEffect(() => () => {
+    arcadePersistenceAttemptRef.current += 1;
+    pendingArcadeSettlementRef.current = null;
+    circuitPersistenceAttemptRef.current += 1;
+    pendingCircuitSettlementRef.current = null;
+    runTransitionAttemptRef.current += 1;
+    pendingRunTransitionRef.current = null;
+  }, []);
+
+  const continueArcade = useCallback(() => {
+    if (arcadePersistence.status !== "confirmed") return;
+    const run = arcadeRunRef.current;
+    if (!run || !run.appliedResultIds.includes(matchResultIdRef.current)) return;
+    if (run.phase !== "active") {
+      returnToSelection();
+      return;
+    }
+    const encounter = PIT_ARCADE_LADDERS[run.fighterId].encounters[run.encounterIndex];
+    launchLiveMatch(run.fighterId, encounter.opponentId, encounter.arenaId, "arcade");
+  }, [arcadePersistence.status, launchLiveMatch, returnToSelection]);
+
+  const continueCircuit = useCallback(() => {
+    if (runTransitionPersistence.status === "failed") {
+      retryRunTransition();
+      return;
+    }
+    if (runTransitionPersistence.status === "pending") return;
+    if (circuitPersistence.status !== "confirmed") return;
+    const run = circuitRunRef.current;
+    if (
+      !run ||
+      !run.appliedResults.some((result) => result.resultId === matchResultIdRef.current)
+    ) {
+      return;
+    }
+    if (run.phase !== "active") {
+      returnToSelection();
+      return;
+    }
+    launchCircuitSnapshot(run, "circuit-persist");
+  }, [
+    circuitPersistence.status,
+    launchCircuitSnapshot,
+    retryRunTransition,
+    returnToSelection,
+    runTransitionPersistence.status,
+  ]);
+
+  const continueDescent = useCallback(() => {
+    if (runTransitionPersistence.status !== "confirmed") return;
+    const run = descentRunRef.current;
+    if (
+      !run ||
+      !run.appliedResolutionIds.includes(matchResultIdRef.current) ||
+      run.phase !== "active"
+    ) {
+      return;
+    }
+    recorderRef.current = null;
+    replayReaderRef.current = null;
+    setPlaybackReplay(null);
+    setReplayEnded(false);
+    setDescentOptionIndex(0);
+    setAnnouncement("CHOISISSEZ LA BRANCHE");
+    setAriaAnnouncement(
+      "Étage enregistré. Choisissez la prochaine branche de la Descente.",
+    );
+    descentCombatContextRef.current = null;
+    setDescentCombatPresentation(null);
+    setDescentResourceFeedback(null);
+    changeCombat(null);
+  }, [setAnnouncement, changeCombat, runTransitionPersistence.status]);
+
+  const restartDescent = useCallback(() => {
+    const current = descentRunRef.current;
+    if (!current || runTransitionPersistence.status === "pending") return;
+    const nextSeed = createPitDescentSeed();
+    setDescentDraftSeed(nextSeed);
+    const freshRun = createPitDescentRun(current.fighterId, nextSeed);
+    setDescentOptionIndex(0);
+    chooseDescentBranch(freshRun, 0, "descent-replace");
+  }, [chooseDescentBranch, runTransitionPersistence.status]);
+
+  const startReplay = useCallback((candidate: PitReplay) => {
+    try {
+      const replay = normalizePitReplay(candidate);
+      if (!replay) throw new Error("invalid replay");
+      const reader = createPitReplayReader(replay);
+      if (!canPitFighterEnterMode(replay.fighters[0], mode)) setMode("cpu");
+      const next = createPitReplayCombatState(replay);
+      recorderRef.current = null;
+      replayReaderRef.current = reader;
+      stageLifeSeedRef.current = replay.seed;
+      clearTrainingActivity();
+      reportedMatchFrameRef.current = null;
+      if (isPitVersusFighterId(replay.fighters[0])) setLeftId(replay.fighters[0]);
+      if (isPitVersusFighterId(replay.fighters[1])) setRightId(replay.fighters[1]);
+      setArenaId(replay.arenaId);
+      setLeftVariantId(replay.variants?.[0] ?? null);
+      setRightVariantId(replay.variants?.[1] ?? null);
+      arcadeRunRef.current = null;
+      setArcadeRun(null);
+      circuitRunRef.current = null;
+      setCircuitRun(null);
+      descentRunRef.current = null;
+      setDescentRun(null);
+      descentCombatContextRef.current = null;
+      setDescentCombatPresentation(null);
+      setDescentResourceFeedback(null);
+      pendingCircuitSettlementRef.current = null;
+      circuitPersistenceAttemptRef.current += 1;
+      setCircuitPersistence({ status: "idle", message: "" });
+      pendingRunTransitionRef.current = null;
+      runTransitionAttemptRef.current += 1;
+      setRunTransitionPersistence({ status: "idle", message: "" });
+      setPlaybackReplay(replay);
+      setReplayEnded(false);
+      setReplayNotice("");
+      setImpact(null);
+      resetLiveInputs();
+      setAnnouncement("RELECTURE · COMBAT");
+      setAriaAnnouncement("Relecture du dernier duel commencée.");
+      changeCombat(next);
+    } catch {
+      setReplayNotice("Le dernier duel est illisible ou incompatible.");
+      setAriaAnnouncement("Impossible de relire le dernier duel.");
+    }
+  }, [setAnnouncement, changeCombat, clearTrainingActivity, resetLiveInputs, mode]);
+
+  const startRematch = useCallback(() => {
+    if (narrativeEncounter) { onExit(); return; }
+    const current = combatRef.current;
+    if (!current) return;
+    const next = rematchPitCombat(current);
+    clearTrainingActivity();
+    setTrainingNotice("");
+    reportedMatchFrameRef.current = null;
+    matchResultIdRef.current = createPitResultId();
+    setActiveMatchResultId(matchResultIdRef.current);
+    replayReaderRef.current = null;
+    setPlaybackReplay(null);
+    setReplayEnded(false);
+    combatGamepadReadyRef.current = [false, false];
+    setImpact(null);
+    resetLiveInputs();
+    beginRecording(next);
+    setAnnouncement(next.rules.mode === "training" ? "ENTRAÎNEMENT LIBRE" : "MANCHE 1 · COMBAT");
+    setAriaAnnouncement(next.rules.mode === "training" ? "Entraînement libre recommencé." : "Revanche. Manche 1. Combat.");
+    changeCombat(next);
+    launchWorkbookObjectiveV107(next);
+  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, narrativeEncounter, onExit, launchWorkbookObjectiveV107]);
+
+  const chooseWorkbookConclusionV107 = useCallback((key: PitWorkbookConclusionKeyV107) => {
+    const current = workbookConclusionRefV107.current;
+    if (pausedRef.current || document.hidden || finisherRefV80.current.phase !== 'window' ||
+      finisherRefV80.current.options.cpuWinner || !workbookConclusionArtReadyV107) return;
+    const next = triggerPitWorkbookConclusionV107(current, key);
+    if (next === current) return;
+    workbookConclusionRefV107.current = next; setWorkbookConclusionV107(next);
+    const legacy = skipPitFinisherV80(finisherRefV80.current);
+    finisherRefV80.current = legacy; setFinisherV80(legacy);
+    rootRef.current?.focus({preventScroll: true});
+  }, [pausedRef, workbookConclusionArtReadyV107]);
+
+  const setTouchToken = useCallback((slot: 0 | 1, token: string, pressed: boolean) => {
+    const entries = touchInputsRef.current[slot];
+    if (pressed && !pausedRef.current && canPitPresentationAcceptInput(roundPresentationRef.current)) entries.add(token);
+    else entries.delete(token);
+  }, [pausedRef]);
+
+  const requestPitTauntV93 = useCallback((slot: 0 | 1) => {
+    const currentCombat = combatRef.current;
+    if (!lifecycleInteractionReadyRefV93.current || pausedRef.current || document.hidden || playbackReplay ||
+        !currentCombat || (slot === 1 && mode !== 'local') || trainingLessonRef.current || trainingActivityRef.current !== 'idle') return;
+    const variant = nextTauntVariantsRefV105.current[slot];
+    const durationMs = pitNativePresentationDurationV105(fighterArt?.spriteSheets, currentCombat.fighters[slot], 'taunt', variant) ??
+      pitNativeTauntDurationV93(fighterArt?.spriteSheets, currentCombat.fighters[slot]);
+    if (durationMs === null) return; // No procedural/reused substitute authorizes a taunt.
+    const current = lifecycleRefV93.current;
+    let next = current;
+    if (finisherRefV80.current.phase === 'window' && roundPresentationRef.current.resultVisible) {
+      next = beginPitLifecycleTauntV93(current, currentCombat, finisherRefV80.current, slot, durationMs, true);
+    } else {
+      const pad = readAssignedGamepads().pads[slot];
+      const input = mergeInputs(mergeInputs(
+        pitInputFromControlCodes(slot === 0 ? 1 : 2, pressedKeysRef.current, controlBindings),
+        pitInputFromControlCodes(slot === 0 ? 1 : 2, touchInputsRef.current[slot], controlBindings)), readGamepad(pad ?? null));
+      next = beginPitCombatTauntV93(current, currentCombat, roundPresentationRef.current, slot, durationMs, true, input);
+    }
+    if (next === current) return;
+    setTauntVariantsV105(current => slot === 0 ? [variant, current[1]] : [current[0], variant]);
+    nextTauntVariantsRefV105.current[slot] = variant === 1 ? 2 : 1;
+    lifecycleRefV93.current = next; setLifecycleV93(next);
+    setAriaAnnouncement(`${PIT_FIGHTERS[currentCombat.fighters[slot].definitionId].name} · provocation${finisherRefV80.current.phase === 'window' ? ' avant la conclusion.' : '. Le combat continue.'}`);
+    rootRef.current?.focus({ preventScroll: true });
+  }, [controlBindings, fighterArt, mode, pausedRef, playbackReplay, readAssignedGamepads]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.defaultPrevented) return;
+      if (selectionOptionsRef.current?.open) {
+        // Keep Tab in the active game menu; native modal inertness alone can
+        // yield focus to the browser chrome at the last control.
+        if (event.key === "Tab") {
+          const controls = Array.from(selectionOptionsRef.current.querySelectorAll<HTMLElement>(
+            'button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), summary, [tabindex="0"]',
+          )).filter(element => element.getClientRects().length > 0 && getComputedStyle(element).visibility !== "hidden");
+          const activeIndex = controls.indexOf(document.activeElement as HTMLElement);
+          if (controls.length && (activeIndex < 0 || (event.shiftKey ? activeIndex === 0 : activeIndex === controls.length - 1))) {
+            event.preventDefault();
+            controls[event.shiftKey ? controls.length - 1 : 0]?.focus();
+          }
+          return;
+        }
+        if (matchesControlAction("pit.pause", event, controlBindings)) {
+          event.preventDefault();
+          if (!event.repeat) closeSelectionOptions();
+        }
+        return;
+      }
+      if (event.target instanceof HTMLElement && event.target.closest("input, select, textarea, [contenteditable=\"true\"]") && event.key !== "Escape") return;
+      if (matchesControlAction("pit.pause", event, controlBindings)) {
+        event.preventDefault();
+        if (event.repeat) return;
+        if (!combatRef.current) selectionFlowRef.current?.command("back");
+        else if (combatRef.current.phase === "match-over" && roundPresentationRef.current.resultVisible && finisherRefV80.current.phase === 'complete' && !pitWorkbookConclusionBlocksResultV107(workbookConclusionRefV107.current)) onExit();
+        else if (pausedRef.current) resume();
+        else openMenu();
+        return;
+      }
+      if (pausedRef.current || document.hidden) return;
+      const target = event.target;
+      if (!combatRef.current && target === rootRef.current && !event.repeat) {
+        const command = ({ ArrowLeft: "left", ArrowRight: "right", ArrowUp: "up", ArrowDown: "down", Enter: "confirm", Space: "confirm" } as const)[event.code as "ArrowLeft"];
+        if (command) { event.preventDefault(); selectionFlowRef.current?.command(command); return; }
+      }
+      if (trainingLessonRef.current?.status === "briefing" &&
+        (target === trainingBriefingRef.current || target === rootRef.current)) {
+        if ((event.code === "Enter" || event.code === "Space") && !event.repeat) {
+          event.preventDefault();
+          beginPreparedTrainingLesson();
+        } else if (gameplayKeyCodes.has(event.code)) event.preventDefault();
+        return;
+      }
+      if (
+        target instanceof HTMLElement &&
+        target.closest("button, input, select, textarea, a[href]")
+      ) return;
+      const tauntSlot = tauntKeyCodesV93.indexOf(event.code);
+      if (!event.repeat && tauntSlot >= 0 && tauntSlot < 2 && !event.ctrlKey && !event.altKey && !event.metaKey) {
+        event.preventDefault(); requestPitTauntV93(tauntSlot as 0 | 1); return;
+      }
+      if (finisherRefV80.current.phase === 'window' && !event.repeat) {
+        const slot = finisherRefV80.current.winnerSlot;
+        const prefix = slot === 0 ? 'pit.p1' : 'pit.p2';
+        const trigger = slot !== null && !finisherRefV80.current.options.cpuWinner && (matchesControlAction(`${prefix}AttackHeavy` as ControlActionId, event, controlBindings) ||
+          matchesControlAction(`${prefix}AttackLight` as ControlActionId, event, controlBindings));
+        if (trigger) {
+          event.preventDefault();
+          const input = pitInputFromControlCodes(slot === 0 ? 1 : 2, new Set([event.code, ...pressedKeysRef.current]), controlBindings);
+          const choice: PitFinisherChoiceV80 = input.down ? 1 : input.left ? combatRef.current?.fighters[slot].facing === -1 ? 2 : 3 : input.right ? combatRef.current?.fighters[slot].facing === 1 ? 2 : 3 : 0;
+          const source = workbookConclusionRefV107.current;
+          if (source.phase === 'window' && (source.available.FATALITE_2 || source.available.CLEMENCE)) {
+            chooseWorkbookConclusionV107(choice === 1 || !source.available.FATALITE_2 ? 'CLEMENCE' : 'FATALITE_2');
+            return;
+          }
+          const next = triggerPitFinisherV80(finisherRefV80.current, slot!, choice);
+          finisherRefV80.current = next; setFinisherV80(next);
+          return;
+        }
+        if (gameplayKeyCodes.has(event.code)) { event.preventDefault(); pressedKeysRef.current.add(event.code); return; }
+      }
+      if (playbackReplay || !combatRef.current || combatRef.current.phase !== "round") return;
+      if (!gameplayKeyCodes.has(event.code)) return;
+      event.preventDefault();
+      if (!canPitPresentationAcceptInput(roundPresentationRef.current)) return;
+      if (!event.repeat || pressedKeysRef.current.has(event.code)) pressedKeysRef.current.add(event.code);
+    };
+    const onKeyUp = (event: KeyboardEvent) => pressedKeysRef.current.delete(event.code);
+    const onBlur = () => pressedKeysRef.current.clear();
+    window.addEventListener("keydown", onKeyDown, { passive: false });
+    window.addEventListener("keyup", onKeyUp);
+    window.addEventListener("blur", onBlur);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("keyup", onKeyUp);
+      window.removeEventListener("blur", onBlur);
+    };
+  }, [beginPreparedTrainingLesson, closeSelectionOptions, controlBindings, gameplayKeyCodes, onExit, playbackReplay, openMenu, resume, pausedRef, requestPitTauntV93, tauntKeyCodesV93, chooseWorkbookConclusionV107]);
+
+  const viewPhase = combat === null
+    ? "selection"
+    : terminalPresentationReady || replayEnded
+      ? "match-over"
+      : "combat";
+
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      if (viewPhase !== "match-over") {
+        if (viewPhase === "selection") { if (!selectionOptionsRef.current?.open) selectionFlowRef.current?.focus(); }
+        else rootRef.current?.focus({ preventScroll: true });
+        return;
+      }
+      if (
+        !playbackReplay &&
+        (
+          (mode === "arcade" &&
+            (arcadePersistence.status === "idle" || arcadePersistence.status === "pending")) ||
+          (mode === "circuit" &&
+            (circuitPersistence.status === "idle" ||
+              circuitPersistence.status === "pending" ||
+              runTransitionPersistence.status === "pending")) ||
+          (mode === "descent" &&
+            (runTransitionPersistence.status === "idle" ||
+              runTransitionPersistence.status === "pending"))
+        )
+      ) {
+        resultOverlayRef.current?.focus({ preventScroll: true });
+        return;
+      }
+      resultPrimaryRef.current?.focus({ preventScroll: true });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [arcadePersistence.status, circuitPersistence.status, mode, playbackReplay, runTransitionPersistence.status, viewPhase]);
+
+  useEffect(() => {
+    if (viewPhase === "combat") {
+      menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
+      return;
+    }
+    let requestId = 0;
+    const pollMenuGamepad = () => {
+      const gamepad = readAssignedGamepads().pads[0];
+      const current = gamepad
+        ? [
+            Boolean(gamepad.buttons[14]?.pressed) || (gamepad.axes[0] ?? 0) < -0.65,
+            Boolean(gamepad.buttons[15]?.pressed) || (gamepad.axes[0] ?? 0) > 0.65,
+            Boolean(gamepad.buttons[12]?.pressed) || (gamepad.axes[1] ?? 0) < -0.65,
+            Boolean(gamepad.buttons[13]?.pressed) || (gamepad.axes[1] ?? 0) > 0.65,
+            Boolean(gamepad.buttons[0]?.pressed),
+            Boolean(gamepad.buttons[1]?.pressed),
+            Boolean(gamepad.buttons[2]?.pressed),
+            Boolean(gamepad.buttons[3]?.pressed),
+            Boolean(gamepad.buttons[4]?.pressed),
+            Boolean(gamepad.buttons[5]?.pressed),
+            Boolean(gamepad.buttons[6]?.pressed),
+            Boolean(gamepad.buttons[7]?.pressed),
+            Boolean(gamepad.buttons[9]?.pressed),
+          ]
+        : Array.from({ length: 13 }, () => false);
+      const state = menuGamepadRef.current;
+      if (!gamepad) {
+        state.ready = false;
+      } else if (!state.ready) {
+        state.ready = current.every((pressed) => !pressed);
+      } else {
+        const previous = state.previous;
+        if (viewPhase === "selection") {
+          if (narrativeEncounter) {
+            if (current[5] && !previous[5]) onExit();
+          } else if (selectionOptionsRef.current?.open) {
+            if ((current[5] && !previous[5]) || (current[12] && !previous[12])) closeSelectionOptions();
+            else {
+              const items = Array.from(selectionOptionsRef.current.querySelectorAll<HTMLElement>("button:not(:disabled), input:not(:disabled), select:not(:disabled), a[href], summary"))
+                .filter(item => item.getClientRects().length > 0);
+              const index = items.indexOf(document.activeElement as HTMLElement);
+              const backward = (current[0] && !previous[0]) || (current[2] && !previous[2]);
+              const forward = (current[1] && !previous[1]) || (current[3] && !previous[3]);
+              if ((backward || forward) && items.length) items[(index + (backward ? -1 : 1) + items.length) % items.length]?.focus();
+              if (current[4] && !previous[4] && selectionOptionsRef.current.contains(document.activeElement)) (document.activeElement as HTMLElement)?.click();
+            }
+          } else if (current[12] && !previous[12]) openSelectionOptions();
+          else {
+            const directions = ["left", "right", "up", "down"] as const;
+            directions.forEach((direction, index) => {
+              if (current[index] && !previous[index]) selectionFlowRef.current?.command(direction);
+            });
+            if (current[4] && !previous[4]) selectionFlowRef.current?.command("confirm");
+            if (current[5] && !previous[5]) selectionFlowRef.current?.command("back");
+            if (!runTransitionSelectionLocked && current[6] && !previous[6]) swapSides();
+            if (current[7] && !previous[7] && availableReplay) startReplay(availableReplay);
+            if (current[8] && !previous[8]) changePitMode(cyclePitMode(mode, -1, leftId));
+            if (current[9] && !previous[9]) changePitMode(cyclePitMode(mode, 1, leftId));
+            if (current[10] && !previous[10]) selectionFlowRef.current?.command("variant-prev");
+            if (current[11] && !previous[11]) selectionFlowRef.current?.command("variant-next");
+          }
+        } else {
+          if (current[4] && !previous[4]) {
+            if (playbackReplay && availableReplay) startReplay(availableReplay);
+            else if (mode === "arcade" && arcadePersistence.status === "failed") {
+              retryArcadeSettlement();
+            } else if (mode === "arcade") continueArcade();
+            else if (mode === "circuit" && runTransitionPersistence.status === "failed") {
+              retryRunTransition();
+            } else if (mode === "circuit" && runTransitionPersistence.status === "pending") {
+              // The next selected fight stays blocked until its durable acknowledgement.
+            } else if (mode === "circuit" && circuitPersistence.status === "failed") {
+              retryCircuitSettlement();
+            } else if (mode === "circuit") continueCircuit();
+            else if (mode === "descent" && runTransitionPersistence.status === "failed") {
+              retryRunTransition();
+            } else if (mode === "descent" && descentRunRef.current?.phase === "active") {
+              continueDescent();
+            } else if (mode === "descent") restartDescent();
+            else startRematch();
+          }
+          if (current[5] && !previous[5]) onExit();
+          if (!narrativeEncounter && current[7] && !previous[7] && availableReplay) startReplay(availableReplay);
+        }
+      }
+      state.previous = current;
+      requestId = window.requestAnimationFrame(pollMenuGamepad);
+    };
+    requestId = window.requestAnimationFrame(pollMenuGamepad);
+    return () => window.cancelAnimationFrame(requestId);
+  }, [arcadePersistence.status, availableReplay, changePitMode, closeSelectionOptions, openSelectionOptions, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, readAssignedGamepads, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase, narrativeEncounter]);
+
+  const wantsHoundArt = (renderedLeftId === 'tracker' || renderedRightId === 'tracker') && (!playbackReplay || playbackReplay.engineVersion >= 7);
+  const renderedHoundVariantId = combat ? combat.houndVariantId ?? 'tracker-hound' : houndVariantId;
+  useEffect(() => {
+    if (!wantsHoundArt) return;
+    const controller = new AbortController();
+    void loadPitCompanionArt(renderedHoundVariantId, { signal: controller.signal }).then(bank => {
+      if (!controller.signal.aborted) setCompanionArt(bank);
+    });
+    return () => controller.abort();
+  }, [wantsHoundArt, renderedHoundVariantId, companionArtRetry]);
+  const houndArtFailed = wantsHoundArt && companionArt?.variantId === renderedHoundVariantId && companionArt.failed;
+  const houndArtPending = wantsHoundArt && (!companionArt || companionArt.variantId !== renderedHoundVariantId || companionArt.cancelled || companionArt.failed);
+  const wantsFalconerArt = renderedLeftId === 'falconer' || renderedRightId === 'falconer';
+  useEffect(() => {
+    if (!wantsFalconerArt) return;
+    const controller = new AbortController();
+    void loadPitFalconerDroneArt({ signal: controller.signal }).then(bank => {
+      if (!controller.signal.aborted) setFalconerArt(bank);
+    });
+    return () => controller.abort();
+  }, [wantsFalconerArt, falconerArtRetry]);
+  const falconerArtFailed = wantsFalconerArt && falconerArt?.failed;
+  const falconerArtPending = wantsFalconerArt && (!falconerArt || falconerArt.cancelled || falconerArt.failed);
+  const suppliedFighterArtFailed = Boolean(combat && combat.fighters.some((fighter, index) =>
+    (fighter.variantId || isPitOriginalFighterIdV56(fighter.definitionId)) && isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId) &&
+    fighterArtStatuses?.[index] === "missing"));
+  const feralNativeArtStatuses = combat?.fighters.map(fighter => getPitFeralNativeArtStatus(
+    fighterArt?.spriteSheets, fighter.definitionId, fighter.variantId)) ?? [];
+  const feralNativeArtFailed = feralNativeArtStatuses.includes('missing');
+  const feralNativeArtPending = feralNativeArtFailed || feralNativeArtStatuses.includes('loading');
+  const feralNativeArtStatus = feralNativeArtFailed ? 'missing' : feralNativeArtStatuses.includes('loading')
+    ? 'loading' : feralNativeArtStatuses.includes('ready') ? 'ready' : 'not-required';
+  const matchAssetsPending = combat !== null && (
+    houndArtPending || falconerArtPending || feralNativeArtPending ||
+    ((combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112) && workbookThrowArtReadinessV109 !== 'ready') ||
+    ((combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112)) && !workbookDeviceArtV107?.ready) ||
+    suppliedFighterArtFailed || (objectiveSessionV107 !== null && (!workbookConclusionArtReadyV107 || !workbookConclusionActorsReadyV107)) ||
+    (combat.rules.stageJourney && !journeyAssetsReady) ||
+    !arenaArt || arenaArt.cancelled || arenaArt.arenaId !== sceneArenaId || arenaArt.unavailable || arenaArt.failedPaths.size > 0 ||
+    arenaArt.requestedPaths.size === 0 || arenaArt.images.size !== arenaArt.requestedPaths.size ||
+    combat.fighters.some((fighter, index) => !isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId) ||
+      fighterArtStatuses?.[index] === "loading")
+  );
+  const simulationRunning = combat !== null && !menuOpen && !matchAssetsPending && !roundPresentation.blocksSimulation && combat.phase !== "match-over" &&
+    (!playbackReplay || !replayEnded);
+  useEffect(() => {
+    lifecycleInteractionReadyRefV93.current = !matchAssetsPending && !menuOpen && !trainingPaused;
+  }, [matchAssetsPending, menuOpen, trainingPaused]);
+  const tauntAvailableV93 = nativeTauntDurationsV93.map((durationMs, index) => {
+    const slot = index as 0 | 1;
+    if (durationMs === null || !combat || playbackReplay || matchAssetsPending || menuOpen || trainingPaused ||
+        trainingLesson || trainingActivity !== 'idle' || (slot === 1 && mode !== 'local')) return false;
+    if (finisherV80.phase === 'window') return roundPresentation.resultVisible && !finisherV80.options.cpuWinner &&
+      pitLifecycleWindowWinnerV93(combat, finisherV80) === slot && !lifecycleV93.taunt;
+    return beginPitCombatTauntV93(lifecycleV93, combat, roundPresentation, slot, durationMs, true) !== lifecycleV93;
+  });
+
+  useEffect(() => {
+    const presentation = roundPresentationRef.current;
+    if (!combatPresent || menuOpen || matchAssetsPending || replayEnded || presentation.resultVisible ||
+      (presentation.phase === "fight" && presentation.elapsedMs >= presentation.durationMs)) return;
+    let requestId = 0;
+    let previousTime = performance.now();
+    const animatePresentation = (now: number) => {
+      const elapsed = now - previousTime;
+      previousTime = now;
+      const frozen = pausedRef.current || document.hidden ||
+        (combatRef.current?.rules.mode === "training" && trainingClockRef.current.paused);
+      const timed = nativeWorkbookPresentationClockV105(roundPresentationRef.current, combatRef.current, fighterArt);
+      const next = advancePitRoundPresentation(timed, combatRef.current, elapsed, frozen);
+      publishRoundPresentation(next);
+      if (!next.resultVisible && !(next.phase === "fight" && next.elapsedMs >= next.durationMs)) requestId = requestAnimationFrame(animatePresentation);
+    };
+    requestId = requestAnimationFrame(animatePresentation);
+    return () => cancelAnimationFrame(requestId);
+    // Phase changes rearm the clock; engine ticks must not restart elapsed time.
+  }, [combatPresent, menuOpen, matchAssetsPending, replayEnded, roundPresentation.phase, roundPresentation.resultVisible, publishRoundPresentation, pausedRef, fighterArt]);
+
+  useEffect(() => {
+    const next = observePitFinisherV80(finisherRefV80.current, combat, finisherKeyV80, {
+      mode: finisherModeV80, reducedGore, reducedMotion: prefersReducedMotion,
+      narrative: Boolean(narrativeEncounter), replay: Boolean(playbackReplay),
+      cpuWinner: mode !== 'local' && combat?.matchWinnerId === combat?.fighters[1].definitionId,
+    });
+    if (next !== finisherRefV80.current) { finisherRefV80.current = next; setFinisherV80(next); }
+  }, [combat, finisherKeyV80, finisherModeV80, reducedGore, prefersReducedMotion, narrativeEncounter, playbackReplay, mode]);
+
+  useEffect(() => {
+    if (!combat) return;
+    const current = objectiveSessionRefV107.current;
+    if (!current || workbookConclusionRefV107.current.phase === 'approach' || workbookConclusionRefV107.current.phase === 'sequence') return;
+    const next = advancePitWorkbookConclusionSessionV107(current, combat);
+    if (next !== current) {objectiveSessionRefV107.current = next; setObjectiveSessionV107(next);}
+  }, [combat]);
+
+  useEffect(() => {
+    if (!combat) return;
+    const current = workbookConclusionRefV107.current;
+    let next = observePitWorkbookConclusionV107(current, combat, finisherV80, {
+      enabled: objectiveSessionRefV107.current !== null, relation: objectiveRelationRefV107.current,
+      reducedGore, reducedMotion: prefersReducedMotion, narrative: Boolean(narrativeEncounter),
+      replay: Boolean(playbackReplay), session: objectiveSessionRefV107.current,
+    });
+    if (finisherV80.phase === 'complete' && next.phase === 'window') next = skipPitWorkbookConclusionV107(next);
+    if (next !== current) {workbookConclusionRefV107.current = next; setWorkbookConclusionV107(next);}
+  }, [combat, finisherV80, reducedGore, prefersReducedMotion, narrativeEncounter, playbackReplay]);
+
+  useEffect(() => {
+    if (!combatPresent || menuOpen || matchAssetsPending ||
+      (workbookConclusionV107.phase !== 'approach' && workbookConclusionV107.phase !== 'sequence')) return;
+    let requestId = 0, previous = performance.now();
+    const step = (now: number) => {
+      const elapsed = now - previous; previous = now;
+      const next = advancePitWorkbookConclusionV107(workbookConclusionRefV107.current, elapsed,
+        {frozen: pausedRef.current || document.hidden, reducedMotion: prefersReducedMotion, reducedGore});
+      if (next !== workbookConclusionRefV107.current) {
+        workbookConclusionRefV107.current = next; setWorkbookConclusionV107(next);
+        if (next.session) {objectiveSessionRefV107.current = next.session; setObjectiveSessionV107(next.session);}
+      }
+      if (next.phase === 'approach' || next.phase === 'sequence') requestId = requestAnimationFrame(step);
+    };
+    requestId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(requestId);
+  }, [combatPresent, menuOpen, matchAssetsPending, workbookConclusionV107.phase, pausedRef, prefersReducedMotion, reducedGore]);
+
+  const chooseFinisherV80 = useCallback((choice: PitFinisherChoiceV80) => {
+    const current = finisherRefV80.current;
+    if (pausedRef.current || document.hidden || current.winnerSlot === null || current.options.cpuWinner) return;
+    const source = workbookConclusionRefV107.current;
+    if (source.phase === 'window' && (source.available.FATALITE_2 || source.available.CLEMENCE)) {
+      chooseWorkbookConclusionV107(choice === 1 || !source.available.FATALITE_2 ? 'CLEMENCE' : 'FATALITE_2');
+      return;
+    }
+    const next = triggerPitFinisherV80(current, current.winnerSlot, choice);
+    if (next !== current) { finisherRefV80.current = next; setFinisherV80(next); }
+  }, [pausedRef, chooseWorkbookConclusionV107]);
+  const skipFinisherV80 = useCallback(() => {
+    if (pausedRef.current || document.hidden) return;
+    const next = skipPitFinisherV80(finisherRefV80.current);
+    finisherRefV80.current = next; setFinisherV80(next);
+    const source = skipPitWorkbookConclusionV107(workbookConclusionRefV107.current);
+    workbookConclusionRefV107.current = source; setWorkbookConclusionV107(source);
+  }, [pausedRef]);
+
+  useEffect(() => {
+    if (!combatPresent || menuOpen || matchAssetsPending || finisherV80.phase === 'idle' || finisherV80.phase === 'complete') return;
+    let requestId = 0, previous = performance.now();
+    const step = (now: number) => {
+      const delta = now - previous; previous = now;
+      const source = workbookConclusionRefV107.current, legacy = finisherRefV80.current;
+      const automaticSource = !pausedRef.current && !document.hidden && legacy.phase === 'window' && legacy.options.cpuWinner && legacy.elapsedMs + delta >= 800 &&
+        source.phase === 'window' && workbookConclusionArtReadyV107 && (source.available.FATALITE_2 || source.available.CLEMENCE);
+      if (automaticSource) {
+        const chosen = triggerPitWorkbookConclusionV107(source, source.available.FATALITE_2 ? 'FATALITE_2' : 'CLEMENCE');
+        workbookConclusionRefV107.current = chosen; setWorkbookConclusionV107(chosen);
+      }
+      const next = automaticSource ? skipPitFinisherV80(legacy) : advancePitFinisherV80(finisherRefV80.current, delta, roundPresentationRef.current.resultVisible,
+        pausedRef.current || document.hidden);
+      if (next !== finisherRefV80.current) { finisherRefV80.current = next; setFinisherV80(next); }
+      const lifecycle = advancePitLifecyclePresentationV93(lifecycleRefV93.current, combatRef.current, next, delta,
+        pausedRef.current || document.hidden);
+      if (lifecycle !== lifecycleRefV93.current) { lifecycleRefV93.current = lifecycle; setLifecycleV93(lifecycle); }
+      if (next.phase !== 'complete' && next.phase !== 'idle') requestId = requestAnimationFrame(step);
+    };
+    requestId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(requestId);
+  }, [combatPresent, menuOpen, matchAssetsPending, finisherV80.phase, pausedRef, workbookConclusionArtReadyV107]);
+
+  useEffect(() => {
+    if (finisherV80.phase !== 'window' && finisherV80.phase !== 'approach' && finisherV80.phase !== 'signature' && finisherV80.phase !== 'settle') return;
+    let requestId = 0;
+    const controllers = [createPitFinisherPadStateV80(), createPitFinisherPadStateV80()];
+    const poll = () => {
+      const assigned = readAssignedGamepads(), pads = assigned.pads;
+      for (const slot of [0, 1] as const) {
+        const pad = pads[slot];
+        const buttons = [0, 1, 2, 9].map(index => Boolean(pad?.buttons[index]?.pressed));
+        const axisX = pad?.axes[0] ?? 0, axisY = pad?.axes[1] ?? 0;
+        const action = readPitFinisherPadV80(controllers[slot], { present: Boolean(pad), revision: assigned.assignments[slot]?.revision ?? -1, buttons,
+          neutral: !buttons.some(Boolean) && Math.abs(axisX) < .3 && Math.abs(axisY) < .3 && !pad?.buttons.slice(12, 16).some(button => button.pressed),
+          down: Boolean(pad?.buttons[13]?.pressed) || axisY > .65,
+          horizontal: Boolean(pad?.buttons[14]?.pressed) || axisX < -.65 ? -1 : Boolean(pad?.buttons[15]?.pressed) || axisX > .65 ? 1 : 0,
+        }, slot, finisherRefV80.current, combatRef.current?.fighters[slot].facing ?? 1,
+          !pausedRef.current && !document.hidden && !menuOpen && !matchAssetsPending);
+        controllers[slot] = action.next;
+        if (action.pause) openMenu(); else if (action.skip) skipFinisherV80(); else if (action.choice !== null) chooseFinisherV80(action.choice);
+      }
+      requestId = requestAnimationFrame(poll);
+    };
+    requestId = requestAnimationFrame(poll);
+    return () => cancelAnimationFrame(requestId);
+  }, [finisherV80.phase, readAssignedGamepads, pausedRef, menuOpen, matchAssetsPending, openMenu, chooseFinisherV80, skipFinisherV80]);
+
+  useEffect(() => {
+    if (!simulationRunning) return;
+    let requestId = 0;
+    let previousTime = performance.now();
+    let accumulator = 0;
+    const fixedStep = 1_000 / PIT_TICK_RATE;
+
+    const animate = (now: number) => {
+      if (pausedRef.current) return;
+      if (document.hidden) {
+        previousTime = now;
+        requestId = requestAnimationFrame(animate);
+        return;
+      }
+      let elapsed = Math.min(250, Math.max(0, now - previousTime));
+      if (mode === "training" && trainingClockRestartRef.current) {
+        elapsed = 0;
+        trainingClockRestartRef.current = false;
+      }
+      if (mode === "training" && !playbackReplay) {
+        const transport = advancePitTrainingSessionClock(trainingClockRef.current, elapsed, trainingLessonRef.current);
+        trainingClockRef.current = transport.clock;
+        accumulator = transport.ticks * fixedStep;
+      } else {
+        accumulator += elapsed;
+      }
+      previousTime = now;
+      let current = combatRef.current;
+      let shouldContinue = true;
+      while (current && accumulator + 1e-8 >= fixedStep) {
+        let inputs: readonly [PitInput, PitInput];
+        if (playbackReplay) {
+          const replayTick = replayReaderRef.current?.next();
+          if (!replayTick || replayTick.done) {
+            setReplayEnded(true);
+            setAnnouncement("RELECTURE TERMINÉE");
+            setAriaAnnouncement("Relecture du dernier duel terminée.");
+            shouldContinue = false;
+            break;
+          }
+          inputs = replayTick.value.inputs;
+        } else if (current.phase === "round-over") {
+          // Preserve every historical transition tick, without CPU/held live inputs.
+          inputs = [EMPTY_INPUT, EMPTY_INPUT];
+        } else {
+          const gamepads = readAssignedGamepads().pads;
+          const keyboardOne = pitInputFromControlCodes(1, pressedKeysRef.current, controlBindings);
+          const touchOne = pitInputFromControlCodes(1, touchInputsRef.current[0], controlBindings);
+          const firstPadInput = readGamepad(gamepads[0] ?? null);
+          if (!gamepads[0]) combatGamepadReadyRef.current[0] = false;
+          else if (!combatGamepadReadyRef.current[0] && isNeutralInput(firstPadInput)) {
+            combatGamepadReadyRef.current[0] = true;
+          }
+          let firstInput = mergeInputs(
+            mergeInputs(keyboardOne, touchOne),
+            combatGamepadReadyRef.current[0] ? firstPadInput : EMPTY_INPUT,
+          );
+          const sourceFighters = current.fighters;
+          const sourceCommand = (slot: 0 | 1, input: PitInput): PitInput => {
+            if (sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V105 && sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V106 && (sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V107 && (sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V109 && sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V112))) return input;
+            const player = slot === 0 ? 1 : 2;
+            const raw = new Set([...pressedKeysRef.current, ...touchInputsRef.current[slot]]);
+            const held = (suffix: 'AttackLight'|'AttackHeavy'|'AttackMedium'|'AttackTechnique') => controlBindings[`pit.p${player}${suffix}`].some(code => raw.has(code));
+            const pad = combatGamepadReadyRef.current[slot] ? gamepads[slot] : null;
+            const backwardRequested = workbookBackwardThrowsRefV112.current[slot] && sourceFighters[slot].normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112;
+            const sourceInput = backwardRequested ? {...input, left: sourceFighters[slot].facing === 1, right: sourceFighters[slot].facing === -1}
+              : workbookThrowsRefV109.current[slot] && sourceFighters[slot].normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112 ? {...input, left: false, right: false} : input;
+            const forwardThrowInput = pitThrowInputV112(sourceInput, {recipe: sourceFighters[slot].normalMovesRecipe,
+              player, codes: raw, bindings: controlBindings, pad, requested: workbookThrowsRefV109.current[slot] || backwardRequested});
+            workbookBackwardThrowsRefV112.current[slot] = false;
+            workbookThrowsRefV109.current[slot] = false;
+            const technique = held('AttackTechnique') || Boolean(pad?.buttons[5]?.pressed);
+            const equipment = technique && (held('AttackHeavy') || Boolean(pad?.buttons[1]?.pressed));
+            const contact = technique && (held('AttackMedium') || Boolean(pad?.buttons[3]?.pressed));
+            const action = workbookCommandsRefV105.current[slot] ?? (equipment ? 'equipment' : contact ? 'contact' : undefined);
+            workbookCommandsRefV105.current[slot] = undefined;
+            return forwardThrowInput !== input ? forwardThrowInput : action ? {...input, attack: undefined, workbookAction: action} : input;
+          };
+          firstInput = sourceCommand(0, firstInput);
+          let secondInput: PitInput;
+          if (mode === "cpu" || mode === "arcade" || mode === "circuit" || mode === "descent") {
+            secondInput = cpuInput(current);
+          } else if (mode === "training") {
+            const activity = trainingActivityRef.current;
+            if (trainingLessonRef.current) {
+              secondInput = resolvePitTrainingLessonInput(trainingLessonRef.current, current);
+            } else if (activity === "recording") {
+              secondInput = firstInput;
+              firstInput = EMPTY_INPUT;
+              const recorder = trainingRecorderRef.current;
+              if (recorder) {
+                try {
+                  recorder.append(secondInput);
+                  if (recorder.tickCount % 6 === 0 || recorder.tickCount >= PIT_TRAINING_SEQUENCE_MAX_TICKS) {
+                    setTrainingRecordedTicks(recorder.tickCount);
+                  }
+                  if (recorder.tickCount >= PIT_TRAINING_SEQUENCE_MAX_TICKS) {
+                    finishTrainingRecording(true);
+                  }
+                } catch {
+                  trainingRecorderRef.current = null;
+                  changeTrainingActivity("idle");
+                  setTrainingNotice("Enregistrement interrompu. La session reste jouable.");
+                  setAriaAnnouncement("Enregistrement du mannequin interrompu.");
+                }
+              }
+            } else if (activity === "playback") {
+              const trainingTick = trainingReaderRef.current?.next();
+              if (!trainingTick || trainingTick.done) {
+                trainingReaderRef.current = null;
+                changeTrainingActivity("idle");
+                setTrainingNotice("Lecture terminée. Le comportement choisi reprend.");
+                setAriaAnnouncement("Lecture de la séquence du mannequin terminée.");
+                secondInput = resolvePitTrainingDummyInput(trainingSettingsRef.current, current);
+              } else {
+                secondInput = trainingTick.value.input;
+              }
+            } else {
+              secondInput = resolvePitTrainingDummyInput(trainingSettingsRef.current, current);
+            }
+          } else {
+            const keyboardTwo = pitInputFromControlCodes(2, pressedKeysRef.current, controlBindings);
+            const touchTwo = pitInputFromControlCodes(2, touchInputsRef.current[1], controlBindings);
+            const secondPadInput = readGamepad(gamepads[1] ?? null);
+            if (!gamepads[1]) combatGamepadReadyRef.current[1] = false;
+            else if (!combatGamepadReadyRef.current[1] && isNeutralInput(secondPadInput)) {
+              combatGamepadReadyRef.current[1] = true;
+            }
+            secondInput = mergeInputs(
+              mergeInputs(keyboardTwo, touchTwo),
+              combatGamepadReadyRef.current[1] ? secondPadInput : EMPTY_INPUT,
+            );
+          }
+          if (mode === 'local') secondInput = sourceCommand(1, secondInput);
+          inputs = [firstInput, secondInput];
+        }
+        if (!playbackReplay && recorderRef.current) {
+          try {
+            // Include neutral round-transition ticks, never cinematic wall time.
+            recorderRef.current.append(inputs);
+          } catch {
+            recorderRef.current = null;
+            setReplayNotice("Enregistrement interrompu. Le combat reste jouable.");
+            setAriaAnnouncement("Enregistrement du duel interrompu. Le combat continue.");
+          }
+        }
+
+        const previousCombat = current;
+        if (mode === "descent" && descentCombatContextRef.current) {
+          const descentFrame = stepPitDescentCombat(
+            current,
+            inputs,
+            descentCombatContextRef.current,
+          );
+          current = descentFrame.state;
+          descentCombatContextRef.current = descentFrame.context;
+          setDescentCombatPresentation(descentFrame.presentation);
+          const resourceFighterIds = [
+            ...new Set(
+              current.events.flatMap((event) =>
+                event.type === "traque-gain" ? [event.fighterId] : [],
+              ),
+            ),
+          ];
+          if (resourceFighterIds.length > 0) {
+            setDescentResourceFeedback({
+              frame: current.frame,
+              durationFrames: descentFrame.presentation.resourceFeedbackFrames,
+              fighterIds: resourceFighterIds,
+            });
+          }
+        } else {
+          current = playbackReplay
+            ? stepPitReplayCombat(current, inputs, playbackReplay.engineVersion)
+            : stepPitCombat(current, inputs);
+        }
+        if (!playbackReplay && workbookExerciseObserverRefV107.current) workbookExerciseObserverRefV107.current(structuredClone(current));
+        publishRoundPresentation(observePitRoundPresentation(roundPresentationRef.current, current), current);
+        const lifecycle = observePitCombatTauntsV93(lifecycleRefV93.current, current, inputs);
+        if (lifecycle !== lifecycleRefV93.current) { lifecycleRefV93.current = lifecycle; setLifecycleV93(lifecycle); }
+        if (mode === "training" && trainingLessonRef.current) {
+          const nextLesson = evaluatePitTrainingLesson(trainingLessonRef.current, previousCombat, current);
+          trainingLessonRef.current = nextLesson;
+          setTrainingLesson(nextLesson);
+          if (nextLesson.status !== "running") {
+            trainingClockRef.current = pausePitTrainingClock(trainingClockRef.current, true);
+            setTrainingPaused(true);
+            setAriaAnnouncement(nextLesson.message);
+            accumulator = fixedStep;
+          }
+        }
+        if (current.events.length > 0) {
+          const latest = current.events[current.events.length - 1];
+          // Passive pressure gains arrive every 12 ticks. The resource meter
+          // already shows them; central notices are reserved for discrete events.
+          if (latest.type !== "traque-gain" || latest.source !== "pressure") setAnnouncement(eventLabel(latest, current, playbackReplay?.engineVersion));
+          const essential = [...current.events].reverse().find((event) =>
+            event.type === "round-start" || event.type === "round-end" || event.type === "match-end" ||
+            event.type === "throw-caught" || event.type === "throw-tech"
+          );
+          if (essential) setAriaAnnouncement(eventLabel(essential, current, playbackReplay?.engineVersion));
+          const contact = getPitImpactFeedback(current);
+          if (contact) setImpact(contact);
+        }
+        accumulator -= fixedStep;
+        if (current.phase === "match-over" || roundPresentationRef.current.blocksSimulation) {
+          shouldContinue = false;
+          accumulator = 0;
+          break;
+        }
+      }
+      if (current && current !== combatRef.current) {
+        combatRef.current = current;
+        setCombat(current);
+      }
+      if (shouldContinue) requestId = window.requestAnimationFrame(animate);
+    };
+    requestId = window.requestAnimationFrame(animate);
+    return () => window.cancelAnimationFrame(requestId);
+  }, [setAnnouncement, changeTrainingActivity, controlBindings, finishTrainingRecording, mode, playbackReplay, readAssignedGamepads, replayEnded, simulationRunning, pausedRef, publishRoundPresentation]);
+
+  useEffect(() => {
+    if (!combat || !canvasRef.current) return;
+    // Finishing movement uses the existing safe full-arena framing. The frozen
+    // engine frame must never be incremented just to advance a camera/animation.
+    const ordinaryCamera = pitFinisherIsSceneV80(finisherV80)
+      ? advancePitPresentationCamera(null, combat, { reducedMotion: true })
+      : advancePitWorkbookCameraV106(cameraRef.current, combat, reducedCameraMotion);
+    const camera = samplePitWorkbookConclusionV107(workbookConclusionV107) ? getPitWorkbookConclusionCameraV107(combat) : ordinaryCamera;
+    cameraRef.current = camera;
+    drawArena(
+      canvasRef.current,
+      combat,
+      camera,
+      highContrast,
+      reducedGore,
+      combat.rules.mode === "training" && trainingSettings.showHitboxes,
+      impact,
+      equippedArcadeCosmetic?.palette ?? null,
+      fighterArt,
+      arenaArt,
+      reducedCameraMotion,
+      lifecyclePresentationV93,
+      // Fixed camera only locks framing; OS reduced-motion also holds ceremonial poses.
+      prefersReducedMotion,
+      companionArt,
+      falconerArt,
+      playbackReplay?.engineVersion ?? combat.version,
+      !playbackReplay && narrativeEncounter?.id === narrativeStageCues?.encounterId ? narrativeStageCues : undefined,
+      stageLifeSeedRef.current,
+      finisherV80,
+      workbookConclusionV107,
+      workbookConclusionArtV107,
+      objectiveSessionV107,
+      workbookDeviceArtV107,
+    );
+  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, lifecyclePresentationV93, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay, narrativeEncounter, narrativeStageCues, finisherV80, workbookConclusionV107, workbookConclusionArtV107, objectiveSessionV107, workbookDeviceArtV107]);
+
+  useEffect(() => {
+    if (!combat || playbackReplay || combat.phase !== "match-over" ||
+      reportedMatchFrameRef.current !== null) return;
+    const playerId = combat.fighters[0].definitionId;
+    reportedMatchFrameRef.current = combat.frame;
+    let replay: PitReplay | null = null;
+    if (recorderRef.current) {
+      try {
+        replay = recorderRef.current.finish();
+        setRecordedReplay(replay);
+      } catch {
+        setReplayNotice("Le duel est terminé, mais son replay n’a pas pu être conservé.");
+        setAriaAnnouncement("Duel terminé. Son replay n’a pas pu être conservé.");
+      }
+    }
+    recorderRef.current = null;
+    if (combat.rules.stageJourney) {
+      setReplayNotice(replay
+        ? "Parcours de scène terminé. Replay disponible dans cette session ; aucun classement, distinction ou gain de progression."
+        : "Parcours de scène terminé. Replay indisponible ; aucun classement, distinction ou gain de progression.");
+      return;
+    }
+    if (narrativeEncounter) {
+      // These imposed CPU extracts report only to their in-memory narrative
+      // wrapper. Extension fighters must resolve their story outcome without
+      // opening the historical statistics or Arcade persistence gate below.
+      if (mode !== "cpu") { setReplayNotice("Une épreuve narrative doit rester un duel CPU imposé."); return; }
+      const narrativeResult: PitNarrativeResultInput = {
+        resultId: matchResultIdRef.current,
+        mode,
+        winnerId: combat.matchWinnerId,
+        leftId: playerId,
+        rightId: combat.fighters[1].definitionId,
+        arenaId: combat.arenaId,
+      };
+      if (onNarrativeComplete) void Promise.resolve().then(() => onNarrativeComplete(narrativeResult)).catch(() => {
+        setReplayNotice("L’issue de cette épreuve n’a pas pu être transmise au récit. Aucun succès n’est attribué.");
+      });
+      return;
+    }
+    if (!isPitFirstEditionFighterId(playerId)) {
+      setReplayNotice("Duel de l’extension terminé. Replay consultable et exportable ; statistiques et chroniques de progression non enregistrées pour ce lot.");
+      return;
+    }
+
+    if (mode === "descent") {
+      const currentRun = descentRunRef.current;
+      const currentNode = currentRun?.selectedNodeId
+        ? createPitDescentPlan(currentRun.fighterId, currentRun.seed)
+            .floors[currentRun.completedFloors]?.options.find(
+              (node) => node.id === currentRun.selectedNodeId,
+            ) ?? null
+        : null;
+      if (
+        !currentRun ||
+        !currentNode ||
+        (currentNode.kind !== "fight" && currentNode.kind !== "boss")
+      ) {
+        setReplayNotice("Descente interrompue : branche de combat indisponible.");
+        return;
+      }
+      const playerWon = combat.matchWinnerId === playerId;
+      const fighterMaximum = PIT_FIGHTERS[playerId].maxHealth;
+      const remainingHealth = playerWon
+        ? Math.max(
+            1,
+            Math.min(
+              currentRun.health,
+              Math.round(
+                (combat.fighters[0].health / fighterMaximum) * PIT_DESCENT_MAX_HEALTH,
+              ),
+            ),
+          )
+        : 0;
+      let application: ReturnType<typeof applyPitDescentResolution>;
+      try {
+        application = applyPitDescentResolution(currentRun, {
+          id: matchResultIdRef.current,
+          nodeId: currentNode.id,
+          victory: playerWon,
+          remainingHealth,
+          roundsWon: Math.max(0, combat.fighters[0].roundsWon - 1),
+          roundsLost: Math.max(0, combat.fighters[1].roundsWon - 1),
+          roundsDrawn: Math.max(0, combat.round - 1),
+        });
+      } catch {
+        setReplayNotice("Descente interrompue : résultat de combat incompatible.");
+        return;
+      }
+      submitRunTransition({
+        transition: {
+          id: matchResultIdRef.current,
+          kind: "descent-persist",
+          run: application.run,
+        },
+        onPersisted: () => {
+          descentRunRef.current = application.run;
+          setDescentRun(application.run);
+          setAnnouncement(
+            application.run.phase === "completed"
+              ? "DESCENTE ACCOMPLIE"
+              : application.run.phase === "failed"
+                ? "DESCENTE INTERROMPUE"
+                : "ÉTAGE SCELLÉ",
+          );
+          setAriaAnnouncement("Résultat de la Descente enregistré.");
+        },
+      });
+      return;
+    }
+
+    let playedArcadeIndex: number | undefined;
+    let completedArcade = false;
+    let playedCircuitIndex: number | undefined;
+    let completedCircuit = false;
+    let cosmeticRewardIds: readonly string[] | undefined;
+    let nextArcadeRun: PitArcadeRun | null = null;
+    let nextCircuitRun: PitCircuitRun | null = null;
+    if (mode === "arcade") {
+      const currentRun = arcadeRunRef.current;
+      if (!currentRun) {
+        setReplayNotice("Parcours Arcade interrompu : état de run indisponible.");
+        return;
+      }
+      playedArcadeIndex = currentRun.encounterIndex;
+      try {
+        const application = applyPitArcadeEncounterResult(currentRun, {
+          id: matchResultIdRef.current,
+          encounterIndex: currentRun.encounterIndex,
+          outcome: combat.matchWinnerId === playerId ? "victory" : "defeat",
+        });
+        nextArcadeRun = application.run;
+        completedArcade = application.run.phase === "completed";
+        cosmeticRewardIds = application.run.cosmeticRewardIds;
+      } catch {
+        setReplayNotice("Parcours Arcade interrompu : résultat incompatible.");
+        return;
+      }
+    } else if (mode === "circuit") {
+      const currentRun = circuitRunRef.current;
+      const currentFight = currentRun
+        ? PIT_CLAN_CIRCUITS[currentRun.fighterId].fights[currentRun.fightIndex]
+        : null;
+      if (!currentRun || !currentFight || currentRun.selectedFightId !== currentFight.id) {
+        setReplayNotice("Circuit du clan interrompu : état de run indisponible.");
+        return;
+      }
+      playedCircuitIndex = currentRun.fightIndex;
+      try {
+        const application = applyPitCircuitFightResult(currentRun, {
+          resultId: matchResultIdRef.current,
+          fightId: currentFight.id,
+          outcome: combat.matchWinnerId === null
+            ? "draw"
+            : combat.matchWinnerId === playerId
+              ? "victory"
+              : "defeat",
+        });
+        const previouslyUnlocked = new Set(currentRun.unlockedPitCosmeticIds);
+        nextCircuitRun = application.run;
+        completedCircuit = application.run.phase === "completed";
+        cosmeticRewardIds = application.run.unlockedPitCosmeticIds.filter(
+          (rewardId) => !previouslyUnlocked.has(rewardId),
+        );
+      } catch {
+        setReplayNotice("Circuit du clan interrompu : résultat incompatible.");
+        return;
+      }
+    }
+
+    const matchResult: PitMatchCompleteResult = {
+      resultId: matchResultIdRef.current,
+      mode,
+      winnerId: combat.matchWinnerId,
+      leftId: playerId,
+      rightId: combat.fighters[1].definitionId,
+      arenaId: combat.arenaId,
+      round: combat.round,
+      leftRoundsWon: combat.fighters[0].roundsWon,
+      rightRoundsWon: combat.fighters[1].roundsWon,
+      roundsDrawn: Math.max(
+        0,
+        combat.round - combat.fighters[0].roundsWon - combat.fighters[1].roundsWon,
+      ),
+      arcadeEncounterIndex: playedArcadeIndex,
+      arcadeCompleted: mode === "arcade" ? completedArcade : undefined,
+      circuitFightIndex: playedCircuitIndex,
+      circuitCompleted: mode === "circuit" ? completedCircuit : undefined,
+      cosmeticRewardIds,
+      replay,
+    };
+
+    if (nextArcadeRun) {
+      submitArcadeSettlement({ result: matchResult, nextRun: nextArcadeRun });
+      return;
+    }
+    if (nextCircuitRun) {
+      submitCircuitSettlement({ result: matchResult, nextRun: nextCircuitRun });
+      return;
+    }
+    if (onMatchComplete) {
+      void Promise.resolve(onMatchComplete(matchResult)).catch(() => {
+        setReplayNotice("Le résultat THE PIT n’a pas pu être enregistré.");
+      });
+    }
+  }, [setAnnouncement, combat, mode, narrativeEncounter, onNarrativeComplete, onMatchComplete, playbackReplay, submitArcadeSettlement, submitCircuitSettlement, submitRunTransition]);
+
+  const shortcuts = useMemo(() => ({
+    p1: {
+      left: firstBinding(controlBindings, "pit.p1MoveLeft"),
+      right: firstBinding(controlBindings, "pit.p1MoveRight"),
+      down: firstBinding(controlBindings, "pit.p1MoveDown"),
+      jump: firstBinding(controlBindings, "pit.p1Jump"),
+      light: firstBinding(controlBindings, "pit.p1AttackLight"),
+      medium: firstBinding(controlBindings, "pit.p1AttackMedium"),
+      heavy: firstBinding(controlBindings, "pit.p1AttackHeavy"),
+      technique: firstBinding(controlBindings, "pit.p1AttackTechnique"),
+      guardHigh: firstBinding(controlBindings, "pit.p1GuardHigh"),
+      guardLow: firstBinding(controlBindings, "pit.p1GuardLow"),
+      throw: firstBinding(controlBindings, "pit.p1Throw"),
+      resource: firstBinding(controlBindings, "pit.p1Resource"),
+    },
+    p2: {
+      left: firstBinding(controlBindings, "pit.p2MoveLeft"),
+      right: firstBinding(controlBindings, "pit.p2MoveRight"),
+      down: firstBinding(controlBindings, "pit.p2MoveDown"),
+      jump: firstBinding(controlBindings, "pit.p2Jump"),
+      light: firstBinding(controlBindings, "pit.p2AttackLight"),
+      medium: firstBinding(controlBindings, "pit.p2AttackMedium"),
+      heavy: firstBinding(controlBindings, "pit.p2AttackHeavy"),
+      technique: firstBinding(controlBindings, "pit.p2AttackTechnique"),
+      guardHigh: firstBinding(controlBindings, "pit.p2GuardHigh"),
+      guardLow: firstBinding(controlBindings, "pit.p2GuardLow"),
+      throw: firstBinding(controlBindings, "pit.p2Throw"),
+      resource: firstBinding(controlBindings, "pit.p2Resource"),
+    },
+    pause: firstBinding(controlBindings, "pit.pause"),
+  }), [controlBindings]);
+
+  // The narrative wrapper has already reviewed and confirmed these exact fighters
+  // and this venue. Wait for real scene assets, then use the normal intro/round flow.
+  useEffect(() => {
+    if (narrativeEncounter && !combat && !combatRef.current && journeyAssetsReady) startMatch();
+  }, [narrativeEncounter, combat, journeyAssetsReady, startMatch]);
+
+  if (!combat && narrativeEncounter) return <section ref={rootRef} className={["screen", styles.root, styles.selectionRoot].join(" ")} data-pit-narrative-loading={narrativeEncounter.id} tabIndex={-1}
+    onKeyDown={event => { if (event.key === 'Escape') { event.preventDefault(); onExit(); } }}>
+    <header className={styles.selectionHeader}><div><span className={styles.eyebrow}>ÉPREUVE NARRATIVE · EXTRAIT</span><h2>THE PIT</h2></div><button type="button" onClick={onExit}>{exitLabel}</button></header>
+    <p className={styles.selectionNotice} role="status">{PIT_FIGHTERS[leftId].name} contre {PIT_FIGHTERS[rightId].name} · {PIT_ARENAS[arenaId].name}. {sceneAssetsFailed ? 'Un décor manque : départ bloqué.' : 'Préparation du décor et des combattants…'}</p>
+    {sceneAssetsFailed ? <button type="button" className={styles.startButton} onClick={retrySceneArt}>Réessayer le décor</button> : null}
+  </section>;
+
+  if (!combat) {
+    const progressionId = isPitFirstEditionFighterId(leftId) ? leftId : null;
+    const previewLadder = progressionId ? PIT_ARCADE_LADDERS[progressionId] : null;
+    const previewEncounter = previewLadder?.encounters[0];
+    const previewCircuit = progressionId ? PIT_CLAN_CIRCUITS[progressionId] : null;
+    const previewCircuitRun = progressionId ? (circuitRun?.fighterId === progressionId ? circuitRun : savedCircuitRuns[progressionId] ?? null) : null;
+    const previewCircuitIndex = previewCircuitRun?.phase === "active" && previewCircuitRun.appliedResults.length < PIT_CIRCUIT_MAX_RESULTS ? previewCircuitRun.fightIndex : 0;
+    const previewCircuitFight = previewCircuit?.fights[previewCircuitIndex];
+    const previewDescentRun = progressionId ? (descentRun?.fighterId === progressionId ? descentRun : savedDescentRuns[progressionId] ?? null) : null;
+    const previewDescentPlan = progressionId ? createPitDescentPlan(progressionId, previewDescentRun?.seed ?? descentDraftSeed) : null;
+    const previewDescentFloorIndex = previewDescentRun?.phase === "active" ? Math.min(previewDescentRun.completedFloors,PIT_DESCENT_FLOOR_COUNT-1) : 0;
+    const previewDescentFloor = previewDescentPlan?.floors[previewDescentFloorIndex];
+    const previewDescentNode = previewDescentFloor?.options.find(node=>node.id===previewDescentRun?.selectedNodeId) ?? previewDescentFloor?.options[Math.max(0,Math.min(descentOptionIndex,previewDescentFloor.options.length-1))];
+    const previewRightId: PitFighterId = mode === "arcade" && previewEncounter ? previewEncounter.opponentId : mode === "circuit" && previewCircuitFight ? previewCircuitFight.opponentId : mode === "descent" && previewDescentNode?.opponentId ? previewDescentNode.opponentId : rightId;
+    const previewArenaId = mode === "arcade" && previewEncounter ? previewEncounter.arenaId : mode === "circuit" && previewCircuitFight ? previewCircuitFight.arenaId : mode === "descent" && previewDescentNode ? previewDescentNode.arenaId : arenaId;
+    const descentCompletedFloors = previewDescentRun?.completedFloors ?? 0;
+    const descentHealth = previewDescentRun?.health ?? PIT_DESCENT_MAX_HEALTH;
+    const selectionLaunchLabel = mode === "arcade"
+                ? "LANCER LE PARCOURS ARCADE"
+                : mode === "circuit"
+                  ? runTransitionPersistence.status === "failed"
+                    ? "RÉESSAYER L’ENREGISTREMENT"
+                    : runTransitionPersistence.status === "pending"
+                      ? "ENREGISTREMENT DU COMBAT…"
+                      : "LANCER LE CIRCUIT DU CLAN"
+                  : mode === "descent"
+                    ? runTransitionPersistence.status === "failed"
+                      ? "RÉESSAYER L’ENREGISTREMENT"
+                      : runTransitionPersistence.status === "pending"
+                        ? "ENREGISTREMENT DE LA ROUTE…"
+                        : previewDescentRun?.phase === "completed" ||
+                            previewDescentRun?.phase === "failed"
+                          ? "RECOMMENCER LA DESCENTE"
+                          : previewDescentRun?.selectedNodeId
+                            ? "REPRENDRE LA BRANCHE"
+                            : previewDescentRun
+                              ? "ENTRER À L’ÉTAGE " + (descentCompletedFloors + 1)
+                              : "COMMENCER LA DESCENTE"
+                    : "ENTRER DANS L’ARÈNE";
+
+    return (
+      <section
+        ref={rootRef}
+        className={["screen", styles.root, styles.selectionRoot, highContrast ? styles.highContrast : ""].join(" ")}
+        data-pit-selection-screen="immersive"
+        aria-labelledby="pit-title"
+        tabIndex={-1}
+        data-screen-focus
+      >
+        <div className={styles.srOnly} role="status" aria-live="polite" aria-atomic="true">
+          {activeAriaAnnouncement}
+        </div>
+        <div className={styles.selectionBackdrop} aria-hidden="true" />
+        <header className={styles.selectionHeader}>
+          <div><span className={styles.eyebrow}>RITUELS DE COMBAT</span><h2 id="pit-title">THE PIT</h2></div>
+          <p className={styles.selectionPopulation}>{PIT_VERSUS_FIGHTER_IDS.length} chasseurs <span>· {PIT_ARENA_IDS.length} arènes</span></p>
+          <div className={styles.selectionHeaderActions}>
+            {onOpenCharacterChronicle ? <button type="button" className={styles.utilityButton} data-pit-character-chronicle-open onClick={() => onOpenCharacterChronicle(leftId)}>Chronique du chasseur</button> : null}
+            {onOpenNarrativeTrials ? <button type="button" className={styles.utilityButton} data-pit-narrative-open onClick={onOpenNarrativeTrials}>Épreuves narratives</button> : null}
+            <button ref={selectionOptionsTriggerRef} type="button" className={styles.utilityButton} data-pit-options-open aria-haspopup="dialog" aria-expanded={selectionOptionsOpen} onClick={openSelectionOptions}>Options & parcours</button>
+            <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
+          </div>
+        </header>
+
+        <div className={styles.modeGrid} role="radiogroup" aria-label="Mode de combat">
+          {([
+            ["cpu", "Duel CPU", "Un chasseur contre un rival déterministe."],
+            ["local", "Versus local", "Deux joueurs, deux manettes ou clavier partagé."],
+            ["training", "Entraînement", "Gel, avance d’un tick, cinq exercices guidés, mannequin et séquences d’entrées."],
+            ["arcade", "Arcade individuel", "Huit rencontres propres au combattant, rival puis Warlord."],
+            ["circuit", "Circuit du clan", "Cinq chapitres et douze combats jusqu’au Jugement."],
+            ["descent", "Descente", "Huit étages à branches, santé persistante, reliques, soins et boss."],
+          ] as const).map(([id, label, description]) => (
+            <button
+              key={id}
+              type="button"
+              role="radio"
+              aria-checked={mode === id}
+              title={description}
+              className={[styles.modeCard, mode === id ? styles.modeCardActive : ""].join(" ")}
+              disabled={runTransitionSelectionLocked || !canPitFighterEnterMode(leftId, id)}
+              onClick={() => changePitMode(id)}
+            >
+              <strong>{label}</strong><span>{description}</span>
+            </button>
+          ))}
+        </div>
+
+        <PitSelectionFlow key={mode} ref={selectionFlowRef}
+          onStageRetry={retrySceneArt}
+          stageAssetsPending={(mode === "cpu" || mode === "local" || mode === "training") && !journeyAssetsReady}
+          mode={mode} playerId={leftId} opponentId={previewRightId} arenaId={previewArenaId}
+          playerVariantId={leftVariantId} opponentVariantId={previewRightId === rightId ? rightVariantId : null}
+          onPlayerVariantChange={setLeftVariantId} onOpponentVariantChange={setRightVariantId}
+          locked={runTransitionSelectionLocked} imposed={mode === "arcade" || mode === "circuit" || mode === "descent"}
+          eventOnly={Boolean(mode === "descent" && previewDescentNode && !previewDescentNode.opponentId)}
+          playerPreview={<FighterCard fighterId={leftId} variantId={leftVariantId} side="GAUCHE" paletteOverride={equippedArcadeCosmetic?.palette} />}
+          opponentPreview={mode === "descent" && previewDescentNode && !previewDescentNode.opponentId ? <article className={styles.descentEventCard}><span className={styles.sideLabel}>BRANCHE</span><strong>{previewDescentNode.relicId ? PIT_DESCENT_RELICS[previewDescentNode.relicId].name : "Récupération rituelle"}</strong><p>{previewDescentNode.relicId ? PIT_DESCENT_RELICS[previewDescentNode.relicId].description : "+" + previewDescentNode.recoveryHealth + " santé de Descente"}</p><small>Aucun résultat de combat n’est forgé pour cet étage.</small></article> : <FighterCard fighterId={previewRightId} variantId={previewRightId === rightId ? rightVariantId : null} side="DROITE" />}
+          onPlayerChange={selected => { if (!isPitVersusFighterId(selected)) return; setLeftId(selected); setLeftVariantId(null); setReplayNotice(""); if (selected === rightId) { setRightId(PIT_VERSUS_FIGHTER_IDS.find(id => id !== selected) ?? "berserker"); setRightVariantId(null); } }}
+          onOpponentChange={selected => { if (selected !== leftId) { setRightId(selected); setRightVariantId(null); setReplayNotice(""); } }}
+          onArenaChange={selected => { setArenaId(selected); setStageJourneyEnabled(false); }}
+          onImposedNavigate={mode === "descent" && !previewDescentRun?.selectedNodeId ? direction => setDescentOptionIndex(index => Math.max(0, Math.min((previewDescentFloor?.options.length ?? 1) - 1, index + direction))) : undefined}
+          onLaunch={(mode === "circuit" || mode === "descent") && runTransitionPersistence.status === "failed" ? retryRunTransition : startMatch}
+          onExit={onExit} launchLabel={selectionLaunchLabel}
+          launchDisabled={((renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112) && workbookThrowArtReadinessV109 !== 'ready') || ((renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112)) && !workbookDeviceArtV107?.ready) || Boolean(selectedJourney && !journeyAssetsReady) || runTransitionPersistence.status === "pending" || ((mode === "cpu" || mode === "local" || mode === "training") && leftId === rightId) || (workbookConclusionsEnabledV107 && workbookObjectiveAvailableV107 && !workbookConclusionArtReadyV107)}
+          reducedMotion={reducedCameraMotion} highContrast={highContrast}
+        />
+
+        {!selectedJourney && (mode === "cpu" || mode === "local" || mode === "training") && !journeyAssetsReady ? <div className={styles.selectionNotice} role={sceneAssetsFailed ? "alert" : "status"} data-pit-scene-assets={sceneAssetsFailed ? "failed" : "loading"}>
+          {sceneAssetsFailed ? <>Un plan du combat manque, même si l’aperçu est prêt. Départ bloqué. <button type="button" onClick={retrySceneArt}>Réessayer les plans du combat</button></> : "Chargement des plans du combat : départ temporairement bloqué."}
+        </div> : null}
+        {(((mode === "circuit" || mode === "descent") && runTransitionPersistence.status !== "idle") || activeReplayNotice || (selectedJourney && !journeyAssetsReady)) ? (
+          <div className={styles.selectionNotice} data-pit-selection-notice role={runTransitionPersistence.status === "failed" || journeyAssetsFailed ? "alert" : "status"}>
+            <div>
+              {(mode === "circuit" || mode === "descent") && runTransitionPersistence.status !== "idle" ? <p data-status={runTransitionPersistence.status}>{runTransitionPersistence.message}</p> : null}
+              {activeReplayNotice ? <p>{activeReplayNotice}</p> : null}
+              {selectedJourney && !journeyAssetsReady ? <p>{journeyAssetsFailed ? "Un décor du parcours manque : départ bloqué." : "Chargement des deux scènes du parcours : départ temporairement bloqué."}</p> : null}
+            </div>
+            {runTransitionPersistence.status === "failed" ? <button type="button" onClick={retryRunTransition}>Réessayer l’enregistrement</button> : null}
+            {selectedJourney && journeyAssetsFailed ? <button type="button" onClick={() => setSceneRetry(value => value + 1)}>Réessayer les décors</button> : null}
+          </div>
+        ) : null}
+        <dialog ref={selectionOptionsRef} className={styles.selectionOptions} data-pit-selection-options aria-labelledby="pit-selection-options-title"
+          onCancel={event => { event.preventDefault(); closeSelectionOptions(); }} onClose={onSelectionOptionsClosed}>
+          <header className={styles.selectionOptionsHeader}>
+            <div><span className={styles.eyebrow}>THE PIT</span><h3 id="pit-selection-options-title">Options & parcours</h3></div>
+            <button type="button" className={styles.utilityButton} data-pit-options-close onClick={closeSelectionOptions}>Fermer · Échap / B</button>
+          </header>
+          <div className={styles.selectionOptionsBody}>
+            <p className={styles.selectionContext}>Simulation de duels non canonique · aucun gain de campagne. Start ouvre les options ; B ou Échap ferme ce panneau sans quitter THE PIT.</p>
+            <aside className={styles.journeyChoice} aria-label="Finitions du duel">
+              <label>Conclusion après le dernier KO <select data-pit-finisher-mode value={finisherModeV80} onChange={event => setFinisherModeV80(event.target.value as PitFinisherModeV80)}>
+                <option value="off">Désactivée</option><option value="stylized">Stylisée</option><option value="cinematic">Cinématique prolongée</option>
+              </select></label>
+              <p>Quatre choix par combattant, {PIT_FINISHER_COUNTS_V80.playableSequences} séquences de présentation. {PIT_FINISHER_COUNTS_V80.attestedEquipment} arsenaux attestés, {PIT_FINISHER_COUNTS_V80.identityDerived} identités documentées, {PIT_FINISHER_COUNTS_V80.originalContact} compositions corporelles originales. Pas 201 planches de finition inédites. Gore réduit et chroniques : neutralisation obligatoire ; relectures et entraînement : désactivé.</p>
+            </aside>
+            {(mode === 'cpu' || mode === 'local') && <aside className={styles.journeyChoice} aria-label="Objectif alternatif de Scar">
+              <label><input type="checkbox" data-pit-workbook-objective-v107 checked={workbookConclusionsEnabledV107}
+                disabled={!workbookObjectiveAvailableV107 || Boolean(selectedJourney)} onChange={event => {
+                  setWorkbookConclusionsEnabledV107(event.target.checked);
+                  if (event.target.checked) {setWorkbookCombatEnabledV106(true); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false); setWorkbookCombatEnabledV112(false); setWorkbookCombatEnabledV105(false); setWorkbookNormalsEnabled(false);}
+                }} /> Duel alternatif de Scar · récupérer la balise</label>
+              <p>Scar et Feral, apparences d’origine : une balise rouge est placée au sol avant les entrées. Scar peut conclure avec sa lance ou retirer le dispositif d’épreuve puis récupérer la balise. L’objet et son propriétaire restent visibles au bilan ; aucun gain de campagne.</p>
+              {!workbookObjectiveAvailableV107 && <small>Choisissez Scar et Feral dans leurs apparences d’origine pour cet objectif.</small>}
+              {workbookConclusionsEnabledV107 && workbookObjectiveAvailableV107 && <>
+                <label>Contexte de l’épreuve <select data-pit-workbook-relation-v107 value={workbookConclusionRelationV107} onChange={event => setWorkbookConclusionRelationV107(event.target.value as 'ally' | 'hostile-adult')}>
+                  <option value="ally">Épreuve entre alliés · non létale</option><option value="hostile-adult">Branche alternative · menace hostile adulte</option>
+                </select></label>
+                <p>La pointe et le silence demande une victoire finale, une menace hostile adulte et la violence réduite désactivée. Le duel suffit conserve une limite : retirer le dispositif inerte ne réalise pas encore le désarmement d’une arme offensive prévu par le classeur.</p>
+                <small>Harnais et balise : adaptations de ce duel. Le dispositif n’est ni une nouvelle arme de Feral ni une mine offensive jouable.</small>
+                {!workbookConclusionArtReadyV107 && <p role={workbookConclusionArtFailedV107 ? 'alert' : 'status'}>{workbookConclusionArtFailedV107 ? 'Une image de la conclusion manque.' : 'Chargement des conclusions et de l’objectif…'}{workbookConclusionArtFailedV107 && <button type="button" onClick={() => {setWorkbookConclusionArtV107(null); setWorkbookConclusionRetryV107(value => value + 1);}}>Réessayer les images</button>}</p>}
+              </>}
+            </aside>}
+            {(mode === 'cpu' || mode === 'local' || mode === 'training') && workbookNormalsAvailable && <aside className={styles.journeyChoice} aria-label="Gestes Feral et Scar du classeur">
+              <label><input type="checkbox" data-pit-workbook-normals-v104 checked={workbookNormalsEnabled} onChange={event => {setWorkbookNormalsEnabled(event.target.checked); if(event.target.checked) {setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false); setWorkbookCombatEnabledV112(false);}}} /> Gestes du classeur · Feral et Scar</label>
+              <p>Neuf attaques par combattant dans leur apparence BODY d’origine : L / M / H debout, accroupi ou en saut. Préparation, contact, récupération, dégâts de base et hauteur de garde suivent le classeur. Les portées, les réactions et les limites de combo conservent les règles du duel. Cette recette est enregistrée dans les relectures.</p>
+              <label><input type="checkbox" data-pit-workbook-combat-v105 checked={workbookCombatEnabledV105} onChange={event => {setWorkbookCombatEnabledV105(event.target.checked); if(event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV106(false); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false); setWorkbookCombatEnabledV112(false);}}} /> Gestes étendus du classeur · Feral et Scar</label>
+              {workbookCombatEnabledV105 && <p>S désigne la technique, M la frappe moyenne et H la frappe lourde. Normales, pas de rupture (avant + M), préparation d’arme (S + H), spécial de contact (raccourci S + M), entrées, issues et deux provocations. Les techniques historiques restent sur S. Préparation : 20/0/20, sans dégâts. Coût du contact : Scar 0 %, Feral 10 % de Traque. Scar : parade frontale dédiée (22+S), 10 %, contre les frappes de contact seulement. Les boutons dédiés exécutent directement la commande source.</p>}
+              {workbookCombatEnabledV105 && [{id:leftId,variant:leftVariantId},{id:rightId,variant:rightVariantId}].filter(selection => ownsPitWorkbookNormalsV104(selection.id,selection.variant)).map(selection => <p key={selection.id}>{PIT_FIGHTERS[selection.id].name} : {PIT_WORKBOOK_MOVES_V105.filter(move => move.fighterId === selection.id && (move.key === '6M' || move.key === 'EQUIP' || move.key === (selection.id === 'scar' ? 'S1' : 'S3') || (selection.id === 'scar' && move.key === 'S4'))).map(move => `${move.key} · ${move.command} · ${move.startup}/${move.active}/${move.recovery} · base ${move.damage} · ${move.costPercent} %`).join(' ; ')}</p>)}
+              <label><input type="checkbox" data-pit-workbook-combat-v106 checked={workbookCombatEnabledV106} onChange={event => {setWorkbookCombatEnabledV106(event.target.checked); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false); setWorkbookCombatEnabledV112(false); if(event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV105(false);}}} /> Projectiles et gestes du classeur · Feral et Scar</label>
+              {workbookCombatEnabledV106 && <p>Les techniques partent avec une commande directionnelle suivie de S, ou avec leur bouton dédié. Avant et arrière suivent votre orientation : 236 = bas, diagonale avant, avant ; 623 = avant, bas, diagonale avant ; 214 = bas, diagonale arrière, arrière ; 22 = bas deux fois. Feral : trois carreaux vers le point acquis au départ (236+S, 30 % de Traque), bouclier frontal puis coup de bord (214+S, 15 %), lance scindée (623+S, 10 %). Scar : allonge (236+S), plasma haut rectiligne (623+S, 25 %) et parade de contact frontale (22+S, 10 %). Les deux signatures coûtent 100 % : 236236+S. Leur ouverture doit toucher sans être gardée pour déclencher la suite et son cadrage bref ; les blessures sont conservées. Avant+M déclenche le pas de rupture ; S+H prépare l’arme.</p>}
+              {workbookNormalsEnabled && [{id: leftId, variant: leftVariantId}, {id: rightId, variant: rightVariantId}].filter(selection => ownsPitWorkbookNormalsV104(selection.id, selection.variant)).map((selection, slot) => <div key={selection.id + slot}><strong>{PIT_FIGHTERS[selection.id].name} · apparence BODY</strong><ul>{PIT_WORKBOOK_NORMALS_V104.filter(move => move.fighterId === selection.id).map(move => <li key={move.key}>{move.key} · {move.startup}/{move.active}/{move.recovery} images · base {move.damage} · {move.hitLevel === 'high' ? 'haut' : move.hitLevel === 'low' ? 'bas' : 'milieu'}{move.antiAir ? ' / anti-air' : ''}</li>)}</ul></div>)}
+              <label><input type="checkbox" data-pit-workbook-combat-v107 checked={workbookCombatEnabledV107} onChange={event => {setWorkbookCombatEnabledV107(event.target.checked); setWorkbookCombatEnabledV109(false); setWorkbookCombatEnabledV112(false); if (event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false);}}} /> Dispositifs indépendants · Feral et Scar</label>
+              {workbookCombatEnabledV107 && <p>Les gestes précédents restent disponibles. Feral : une mine par round (22+S, 35 %), pose au tick 20, armement au tick 94 puis expiration au tick 154 ; un vrai coup peut la détruire. Scar : une étoile à cinq branches par round (214+S, 25 %), lâchée au tick 27. Préparer l’arme ne recharge aucun dispositif. L’étoile indépendante est une adaptation originale du dessin source ; les volumes et déplacements suivent les règles du duel.</p>}
+              {workbookCombatEnabledV107 && !workbookDeviceArtV107?.ready && <p role={workbookDeviceArtV107?.failed ? 'alert' : 'status'}>{workbookDeviceArtV107?.failed ? 'Une image de dispositif manque.' : 'Chargement des dispositifs…'}{workbookDeviceArtV107?.failed && <button type="button" onClick={() => {setWorkbookDeviceArtV107(null); setWorkbookDeviceRetryV107(value => value + 1);}}>Réessayer les dispositifs</button>}</p>}
+              {workbookThrowsAvailableV109 && <>
+                <label><input type="checkbox" data-pit-workbook-combat-v109 checked={workbookCombatEnabledV109} onChange={event => {setWorkbookCombatEnabledV109(event.target.checked); setWorkbookCombatEnabledV112(false); if (event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false); setWorkbookCombatEnabledV107(false);}}} /> Projections avant · Feral ↔ Scar</label>
+                {workbookCombatEnabledV109 && <p>Dans leurs apparences d’origine, les deux chasseurs peuvent saisir un adversaire au sol devant eux avec L + M, Projection ou le bouton dédié. Préparation 8, contact 3, récupération 30 ; dégâts de base 110, sans coût de Traque. Après la saisie, relâchez puis réappuyez sur Projection pendant 8 ticks pour déchopper. Une saisie qui punit une attaque encore en récupération reste indéchoppable. Les gestes et les stocks limités des dispositifs restent disponibles. Les autres partenaires et apparences restent à réaliser.</p>}
+                {workbookCombatEnabledV109 && !workbookDeviceArtV107?.ready && <p role="status">Chargement des dispositifs…</p>}
+                {workbookCombatEnabledV109 && workbookThrowArtReadinessV109 !== 'ready' && <p role="status">Chargement des dessins de saisie et de chute… {workbookThrowArtReadinessV109 === 'missing' && <button type="button" data-pit-forward-throw-art-retry-v109 onClick={() => {setFighterArt(null); setFighterArtRetry(value => value + 1);}}>Réessayer les dessins du duo</button>}</p>}
+              </>}
+              {workbookThrowsAvailableV112 && <>
+                <label><input type="checkbox" data-pit-workbook-combat-v112 checked={workbookCombatEnabledV112} onChange={event => {setWorkbookCombatEnabledV112(event.target.checked); if (event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false);}}} /> Projections avant et arrière · Feral ↔ Scar</label>
+                {workbookCombatEnabledV112 && <p>Au sol, maintenez la direction opposée à l’adversaire avec L + M, ou utilisez Projection arrière. Préparation 10, contact 3, récupération 32 ; dégâts de base 110, sans coût de Traque. La cible réelle passe derrière le lanceur puis retombe sur un point libre. Une paroi trop proche empêche cette saisie. Relâchez puis réappuyez sur Projection pendant les 8 ticks de déchoppe. Les gestes précédents et leurs stocks limités sont conservés.</p>}
+                {workbookCombatEnabledV112 && workbookThrowArtReadinessV109 !== 'ready' && <p role="status">Chargement des dessins indépendants du duo… {workbookThrowArtReadinessV109 === 'missing' && <button type="button" data-pit-backward-throw-art-retry-v112 onClick={() => {setFighterArt(null); setFighterArtRetry(value => value + 1);}}>Réessayer les dessins du duo</button>}</p>}
+                {workbookCombatEnabledV112 && !workbookDeviceArtV107?.ready && <p role="status">Chargement des dispositifs…</p>}
+              </>}
+              <small>{workbookCombatEnabledV112 ? 'Ces deux projections concernent uniquement Feral et Scar dans leur apparence d’origine. Les autres partenaires, variantes et le suivi durable des armes restent à réaliser.' : workbookCombatEnabledV109 ? 'Seule la projection avant du duo est raccordée. Les projections arrière et le suivi durable des armes restent à intégrer.' : workbookCombatEnabledV106 ? 'Les autres apparences et les projections gardent leurs règles de duel. La préparation ne restaure pas une arme perdue : le suivi durable des armes reste à intégrer.' : 'Projections, techniques sur S et autres apparences conservent leurs règles de duel. La préparation change la prise pendant son geste ; le suivi des armes perdues reste à intégrer.'}</small>
+            </aside>}
+            {[{id:leftId,variant:leftVariantId},{id:rightId,variant:rightVariantId}].map((selection,slot) => {
+              const capabilities = getPitWorkbookVariantCapabilitiesV107(selection.id,selection.variant);
+              return capabilities.supportedFighter ? <aside key={slot} className={styles.journeyChoice} aria-label={`Sources visuelles du joueur ${slot+1}`} data-pit-variant-capability-v107={slot}
+                data-source-recipe-allowed={capabilities.sourceRecipeOwnershipAllowed} data-native-actions={capabilities.nativeActions.length} data-native-clips={capabilities.nativeClips.length} data-static-reference={Boolean(capabilities.staticReference)}>
+                <strong>J{slot+1} · {PIT_FIGHTERS[selection.id].name} · apparence sélectionnée</strong>
+                <p>{capabilities.sourceRecipeOwnershipAllowed ? `${capabilities.nativeActions.length} actions possèdent des dessins natifs dans les deux orientations. Les recettes dédiées raccordent seulement les actions livrées.` : capabilities.nativeClips.length ? `${capabilities.nativeClips.length} séquences natives partielles. Cette apparence ne possède pas les attaques de la recette dédiée.` : 'Référence fixe de cette apparence ; ses cycles natifs restent à produire.'}</p>
+                <small>Perte ou rangement des armes, armure endommagée et changement de masque : sources encore manquantes. Aucun kit complet certifié.</small>
+              </aside> : null;
+            })}
+            <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · atlas et couverture par action ↗</a>
+            {(leftId === 'tracker' || rightId === 'tracker') && <aside className={styles.journeyChoice} aria-label="Chien de chasse de Tracker">
+              <label>Variante visuelle du chien de chasse
+                <select aria-label="Hellhound de Tracker" data-pit-hound-picker value={houndVariantId} onChange={event => { if (isPitHoundVariantId(event.target.value)) setHoundVariantId(event.target.value); }}>
+                  {PIT_HOUND_VARIANTS.map(variant => <option key={variant.id} value={variant.id}>{variant.name}</option>)}
+                </select>
+              </label>
+              <p>Même technique, mêmes dégâts : appel, charge annoncée et rappel. Deux interprétations visuelles distinctes, pas deux espèces canoniques certifiées. Crête dorsale : six poses natives par côté, dont deux dessins de charge. Longues cornes : une pose fixe par côté, cycles animés encore à produire. Aucun animal recruté dans la campagne.</p>
+            </aside>}
+        {(mode === "cpu" || mode === "local" || mode === "training") && <aside className={styles.journeyChoice} aria-label="Parcours de scène optionnel">
+          <label>Parcours disponibles · {PIT_STAGE_JOURNEY_ROUTES.length} liaisons d’exposition
+            <select aria-label="Parcours disponibles" data-pit-journey-picker value={selectedJourney ?? ""} disabled={runTransitionSelectionLocked}
+              onChange={event => { const route = getPitStageJourneyDefinition(event.target.value); setStageJourneyEnabled(Boolean(route)); if (route) setArenaId(route.entry); }}>
+              <option value="">Duel neutre · aucun parcours</option>
+              {PIT_STAGE_JOURNEY_ROUTES.map(route => <option key={route.id} value={route.id}>{route.label}</option>)}
+            </select>
+          </label>
+          {availableJourney && <label><input type="checkbox" checked={stageJourneyEnabled} disabled={runTransitionSelectionLocked} onChange={event => setStageJourneyEnabled(event.target.checked)} /> Parcours optionnel · {availableJourney.label}</label>}
+          <p>Deux lieux existants réutilisés, aucun dessin nouveau. Une projection réellement réussie près d’une limite emporte les deux combattants. Un seul passage par manche ; retour au secteur de départ au reset. Sans dégâts de décor ni gain de progression. Le duel neutre reste le réglage par défaut.</p>
+          {selectedJourney && <p data-pit-journey-assets={journeyAssetsFailed ? "failed" : journeyAssetsReady ? "ready" : "loading"}>{journeyAssetsFailed ? "Un des deux décors manque : départ bloqué." : journeyAssetsReady ? "Les deux scènes sont préchargées." : "Préchargement des deux scènes…"}{journeyAssetsFailed && <button type="button" onClick={() => setSceneRetry(value => value + 1)}>Réessayer les deux scènes</button>}</p>}
+        </aside>}
+
+        {selectedArcadeCosmetic && <aside className={styles.cosmeticControl} aria-label="Palette cosmétique THE PIT">
+          <div>
+            <span className={styles.eyebrow}>ARMURE DU JUGEMENT</span>
+            <strong>{selectedArcadeCosmetic.label}</strong>
+          </div>
+          {selectedCosmeticUnlocked ? (
+            <label>
+              <input
+                type="checkbox"
+                checked={equippedArcadeCosmetic !== null}
+                onChange={(event) =>
+                  setEquippedCosmeticId(event.target.checked ? selectedArcadeCosmetic.id : null)
+                }
+              />
+              <span>Équiper la palette pour cette session PIT</span>
+            </label>
+          ) : (
+            <span>Terminez les 8 combats Arcade avec ce chasseur pour la débloquer.</span>
+          )}
+        </aside>}
+
+        <details className={styles.arenaCatalogue}>
+          <summary>
+            <span><strong>Répertoire des 100 arènes</strong><small>Contrat récupéré des conversations</small></span>
+            <span>{PIT_ARENA_CATALOGUE_SUMMARY.playable} jouables · {PIT_ARENA_CATALOGUE_SUMMARY.concept} en conception</span>
+          </summary>
+          <p className={styles.catalogueTruth}>{PIT_ARENA_CATALOGUE_SUMMARY.playable} arènes disposent de six plans bitmap ; les {PIT_ARENA_CATALOGUE_SUMMARY.concept} autres restent des fiches de production. Chaque terrain propose un duel neutre sur un seul secteur. {PIT_STAGE_JOURNEY_ROUTES.length} parcours d’exposition optionnels relient deux décors existants ; les {80 - PIT_STAGE_JOURNEY_ROUTES.length} autres départs du groupe 1–80 restent sans parcours. Ruptures de décor, obstacles interactifs et dangers restent à réaliser.</p>
+          <div className={styles.catalogueWaves}>
+            {PIT_ARENA_CATALOGUE_WAVES.map((wave) => <section key={wave.id}>
+              <h3>{wave.label}<small>{wave.first}–{wave.last} · {wave.count}</small></h3>
+              <ol start={wave.first}>
+                {PIT_ARENA_CATALOGUE.filter(({ wave: entryWave }) => entryWave === wave.id).map((entry) => <li key={entry.id}>
+                  <span>{entry.name}</span>
+                  <em data-status={entry.runtimeStatus}>{entry.runtimeStatus === "playable" ? "Jouable · 6 plans bitmap" : "Conception · cible P0–P5"}</em>
+                </li>)}
+              </ol>
+            </section>)}
+          </div>
+          <p className={styles.catalogueRights}>Les arènes 51–60 sont des études de composition. Elles exigent des visuels originaux du projet et ne copient aucun asset officiel.</p>
+        </details>
+
+
+
+        {!isPitFirstEditionFighterId(leftId) ? <p role="note" data-pit-extension-progress="unavailable">Extension de duel : Arcade, Circuit et Descente indisponibles — chronique personnelle non produite. Les duels ne modifient pas les statistiques de progression.</p> : null}
+        {mode === "arcade" && previewLadder ? (
+          <aside className={styles.arcadeBrief} aria-label={"Parcours Arcade de " + PIT_FIGHTERS[leftId].name}>
+            <div>
+              <span className={styles.eyebrow}>PARCOURS INDIVIDUEL · 8 COMBATS · 2 CONTINUES</span>
+              <strong>{PIT_FIGHTERS[leftId].name}</strong>
+              <p>{previewLadder.intro}</p>
+            </div>
+            <ol>
+              {previewLadder.encounters.map((encounter) => (
+                <li key={encounter.id}>
+                  <span>{encounter.index}</span>
+                  <div>
+                    <strong>{PIT_FIGHTERS[encounter.opponentId].name}</strong>
+                    <small>{PIT_ARENAS[encounter.arenaId].name}{encounter.kind === "rival" ? " · RIVAL" : encounter.kind === "boss" ? " · BOSS" : ""}</small>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </aside>
+        ) : mode === "circuit" && previewCircuit ? (
+          <aside className={styles.circuitBrief} aria-label={"Circuit du clan de " + PIT_FIGHTERS[leftId].name}>
+            <div className={styles.circuitBriefHeader}>
+              <span className={styles.eyebrow}>CHRONIQUE · 5 CHAPITRES · 12 COMBATS</span>
+              <strong>{PIT_FIGHTERS[leftId].name}</strong>
+              <p>Une chronique reconstituée réunit des chasseurs de différentes époques. Le rival garde le combat 11, puis la reconstitution de Warlord attend au combat 12 devant le Tribunal.</p>
+              <p>Ce parcours en duels est distinct de l’histoire prévue pour votre chasseur personnel face aux Bad Blood de Cinder. Les choix de voie et l’enquête ne sont pas encore jouables.</p>
+            </div>
+            <ol className={styles.circuitChapters}>
+              {previewCircuit.chapters.map(({ chapter, fights }) => (
+                <li key={chapter.id} className={styles.circuitChapter}>
+                  <div>
+                    <span>CHAPITRE {chapter.index} · {fights.length} DUEL{fights.length > 1 ? "S" : ""}</span>
+                    <strong>{chapter.name}</strong>
+                    <p>{chapter.objective}</p>
+                  </div>
+                  <ol className={styles.circuitFightList}>
+                    {fights.map((fight) => (
+                      <li key={fight.id}>
+                        <span>{fight.index}</span>
+                        <div>
+                          <strong>{PIT_FIGHTERS[fight.opponentId].name}</strong>
+                          <small>
+                            {PIT_ARENAS[fight.arenaId].name}
+                            {fight.kind === "rival" ? " · RIVAL" : fight.kind === "boss" ? " · WARLORD" : ""}
+                          </small>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                  <small className={styles.circuitReward}>Récompense cosmétique PIT à la fin du chapitre</small>
+                </li>
+              ))}
+            </ol>
+          </aside>
+        ) : mode === "descent" && previewDescentPlan && previewDescentNode ? (
+          <aside
+            className={styles.descentBrief}
+            aria-label={"Descente de " + PIT_FIGHTERS[leftId].name}
+          >
+            <header className={styles.descentBriefHeader}>
+              <div>
+                <span className={styles.eyebrow}>SURVIE · 8 ÉTAGES · ROUTES À BRANCHES</span>
+                <strong>{PIT_FIGHTERS[leftId].name}</strong>
+                <p>
+                  {previewDescentRun?.phase === "completed"
+                    ? "Descente accomplie. La Bannière du Survivant est enregistrée."
+                    : previewDescentRun?.phase === "failed"
+                      ? "Route interrompue. Recommencez explicitement pour générer un nouveau tracé."
+                      : previewDescentRun
+                        ? "Reprise durable à l’étage " + (descentCompletedFloors + 1) + "."
+                        : "Nouvelle route déterministe générée au premier départ."}
+                </p>
+              </div>
+              <div className={styles.descentVitals}>
+                <span>SANTÉ DE RUN · {descentHealth}/{PIT_DESCENT_MAX_HEALTH}</span>
+                <div
+                  className={styles.descentHealthTrack}
+                  role="progressbar"
+                  aria-label="Santé persistante de la Descente"
+                  aria-valuemin={0}
+                  aria-valuemax={PIT_DESCENT_MAX_HEALTH}
+                  aria-valuenow={descentHealth}
+                >
+                  <i style={{ width: (descentHealth / PIT_DESCENT_MAX_HEALTH) * 100 + "%" }} />
+                </div>
+                <small>
+                  {previewDescentRun?.recoveriesRemaining ?? 2} récupération(s) disponible(s)
+                  · seed {previewDescentPlan.seed}
+                </small>
+              </div>
+            </header>
+
+            <ol className={styles.descentFloors}>
+              {previewDescentPlan.floors.map((floor) => {
+                const floorResolved = floor.index <= descentCompletedFloors;
+                const floorCurrent =
+                  (previewDescentRun?.phase ?? "active") === "active" &&
+                  floor.index === descentCompletedFloors + 1;
+                return (
+                  <li
+                    key={floor.index}
+                    className={[
+                      styles.descentFloor,
+                      floorResolved ? styles.descentFloorResolved : "",
+                      floorCurrent ? styles.descentFloorCurrent : "",
+                    ].join(" ")}
+                    aria-current={floorCurrent ? "step" : undefined}
+                  >
+                    <div className={styles.descentFloorHeading}>
+                      <span>ÉTAGE {floor.index}</span>
+                      <strong>{floor.options[0].label}</strong>
+                    </div>
+                    <div className={styles.descentBranches}>
+                      {floor.options.map((node, optionIndex) => {
+                        const selected =
+                          floorCurrent &&
+                          (previewDescentRun?.selectedNodeId === node.id ||
+                            (!previewDescentRun?.selectedNodeId &&
+                              optionIndex === Math.min(
+                                descentOptionIndex,
+                                floor.options.length - 1,
+                              )));
+                        const nodeTitle = node.opponentId
+                          ? PIT_FIGHTERS[node.opponentId].name
+                          : node.relicId
+                            ? PIT_DESCENT_RELICS[node.relicId].name
+                            : "Récupération +" + node.recoveryHealth;
+                        return (
+                          <button
+                            key={node.id}
+                            type="button"
+                            className={[
+                              styles.descentBranch,
+                              selected ? styles.descentBranchSelected : "",
+                            ].join(" ")}
+                            disabled={
+                              !floorCurrent ||
+                              runTransitionSelectionLocked ||
+                              Boolean(
+                                previewDescentRun?.selectedNodeId &&
+                                  previewDescentRun.selectedNodeId !== node.id,
+                              )
+                            }
+                            aria-pressed={selected}
+                            onClick={() => chooseDisplayedDescentBranch(optionIndex)}
+                          >
+                            <span>
+                              {previewDescentRun?.selectedNodeId === node.id
+                                ? "REPRENDRE"
+                                : node.kind === "boss"
+                                ? "BOSS"
+                                : node.kind === "fight"
+                                  ? "DUEL"
+                                  : node.kind === "relic"
+                                    ? "RELIQUE"
+                                    : "SOIN"}
+                            </span>
+                            <strong>{nodeTitle}</strong>
+                            <small>{PIT_ARENAS[node.arenaId].name}</small>
+                            {node.modifierIds.map((modifierId) => (
+                              <em key={modifierId}>
+                                {PIT_DESCENT_MODIFIERS[modifierId].name}
+                              </em>
+                            ))}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+
+            <div className={styles.descentContracts}>
+              <article>
+                <strong>RELIQUES TEMPORAIRES</strong>
+                <p>
+                  {previewDescentRun?.temporaryRelicIds.length
+                    ? previewDescentRun.temporaryRelicIds
+                        .map((relicId) => PIT_DESCENT_RELICS[relicId].name)
+                        .join(" · ")
+                    : "Aucune relique portée sur cette route."}
+                </p>
+              </article>
+              <article>
+                <strong>CONTRAT DE LA BRANCHE</strong>
+                <p>
+                  {previewDescentNode.modifierIds.length
+                    ? previewDescentNode.modifierIds
+                        .map(
+                          (modifierId) =>
+                            PIT_DESCENT_MODIFIERS[modifierId].name +
+                            " — " +
+                            PIT_DESCENT_MODIFIERS[modifierId].description,
+                        )
+                        .join(" ")
+                    : previewDescentNode.relicId
+                      ? PIT_DESCENT_RELICS[previewDescentNode.relicId].description
+                      : previewDescentNode.kind === "recovery"
+                        ? "Le soin est borné à " + PIT_DESCENT_MAX_HEALTH + " et consomme une récupération."
+                        : "Aucun modificateur sur ce duel."}
+                </p>
+              </article>
+            </div>
+            <p className={styles.descentHonesty}>
+              Santé, soins, embranchements, échec et boss sont actifs. Chaque duel utilise une
+              manche décisive pour conserver la santé entre les étages ; son replay est désactivé.
+              Les six modificateurs et quatre reliques altèrent réellement le duel : mobilité,
+              garde, Traque, poussée, visibilité, feedback, protection et camouflage.
+              Récompense finale unique : Bannière du Survivant de la Descente.
+            </p>
+          </aside>
+        ) : (
+          <button
+            type="button"
+            className={styles.swapButton}
+            disabled={runTransitionSelectionLocked}
+            onClick={swapSides}
+          >⇄ Permuter les côtés</button>
+        )}
+
+        <div className={styles.selectionActions}>
+
+          {availableReplay ? (
+            <button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>
+              REVOIR LE DERNIER DUEL
+            </button>
+          ) : null}
+        </div>
+        <p className={styles.selectionFootnote}>
+          {Object.values(PIT_FIGHTERS).filter((fighter) => getPitCombatBitmapArtDefinition(fighter.id) || PIT_SPRITE_SHEET_REGISTRY.some((entry) => entry.fighterId === fighter.id && entry.atlas.status === "validated")).length} combattants illustrés, adversaires compris ; animations OpenAI contrôlées selon le chasseur et l’action. Les séquences encore absentes utilisent un repli signalé.<br />
+          Simulation isolée : aucun honneur, trophée de campagne ou progression de chasse n’est attribué.<br />
+          Une palette équipée reste active jusqu’au retour au vaisseau.
+        </p>
+          </div>
+        </dialog>
+      </section>
+    );
+  }
+
+  const [left, right] = combat.fighters;
+  const leftDefinition = getPitCombatFighterDefinition(left);
+  const rightDefinition = getPitCombatFighterDefinition(right);
+  const arenaDefinition = PIT_ARENAS[combat.arenaId];
+  const activeJourneyDefinition = getPitStageJourneyDefinition(combat.stageJourney?.id);
+  const seconds = Math.ceil(combat.roundFramesRemaining / PIT_TICK_RATE);
+  const currentSourceCaptureV112 = combat.sourceThrowV112 ?? combat.sourceThrowV109;
+  const forwardThrowTechRemainingV109 = currentSourceCaptureV112?.techEligible
+    ? Math.max(0, PIT_WORKBOOK_FORWARD_THROW_V109.techTicks - currentSourceCaptureV112.age) : 0;
+  const recentImpact = roundPresentation.phase === "fight" && combat.phase === "round" && impact && combat.frame - impact.frame < 8;
+  const shake = presentationMotion.screenShake && recentImpact ? (combat.frame % 2 === 0 ? 5 : -5) : 0;
+  const descentResourceFeedbackActive = Boolean(
+    descentResourceFeedback &&
+      combat.frame - descentResourceFeedback.frame <
+        descentResourceFeedback.durationFrames,
+  );
+  const leftDescentResourcePulse =
+    descentResourceFeedbackActive &&
+    Boolean(descentResourceFeedback?.fighterIds.includes(left.definitionId));
+  const rightDescentResourcePulse =
+    descentResourceFeedbackActive &&
+    Boolean(descentResourceFeedback?.fighterIds.includes(right.definitionId));
+  const winner = combat.matchWinnerId ? PIT_FIGHTERS[combat.matchWinnerId] : null;
+  const terminal = terminalPresentationReady || replayEnded;
+  const trainingRules = combat.rules.mode === "training";
+  const terminalArcadeRun = mode === "arcade" && !playbackReplay ? arcadeRun : null;
+  const arcadePlayerWon = combat.matchWinnerId === left.definitionId;
+  const arcadeResolutionReady = arcadePersistence.status === "confirmed" && Boolean(
+    terminalArcadeRun?.appliedResultIds.includes(activeMatchResultId),
+  );
+  const arcadePersistenceFailed = arcadePersistence.status === "failed";
+  const arcadeLadder = terminalArcadeRun
+    ? PIT_ARCADE_LADDERS[terminalArcadeRun.fighterId]
+    : null;
+  const terminalCircuitRun = mode === "circuit" && !playbackReplay ? circuitRun : null;
+  const circuitAppliedResult = terminalCircuitRun?.appliedResults.find(
+    (result) => result.resultId === activeMatchResultId,
+  ) ?? null;
+  const circuitResolutionReady =
+    circuitPersistence.status === "confirmed" && circuitAppliedResult !== null;
+  const circuitPersistenceFailed = circuitPersistence.status === "failed";
+  const circuitRoutePersistencePending =
+    mode === "circuit" && runTransitionPersistence.status === "pending";
+  const circuitRoutePersistenceFailed =
+    mode === "circuit" && runTransitionPersistence.status === "failed";
+  const circuitDefinition = terminalCircuitRun
+    ? PIT_CLAN_CIRCUITS[terminalCircuitRun.fighterId]
+    : null;
+  const circuitRewardedChapter = circuitAppliedResult && circuitDefinition
+    ? circuitDefinition.chapters.find(
+        ({ fights }) => fights[fights.length - 1]?.id === circuitAppliedResult.fightId,
+      )?.chapter ?? null
+    : null;
+  const terminalDescentRun = mode === "descent" && !playbackReplay ? descentRun : null;
+  const descentAppliedResolution = terminalDescentRun?.resolutionHistory.find(
+    (resolution) => resolution.id === activeMatchResultId,
+  ) ?? null;
+  const descentResolutionReady =
+    runTransitionPersistence.status === "confirmed" && descentAppliedResolution !== null;
+  const descentPersistenceFailed = runTransitionPersistence.status === "failed";
+  const descentRoutePlan = terminalDescentRun
+    ? createPitDescentPlan(terminalDescentRun.fighterId, terminalDescentRun.seed)
+    : null;
+  const descentCombatNode = descentRoutePlan && terminalDescentRun
+    ? descentRoutePlan.floors
+        .flatMap((floor) => floor.options)
+        .find(
+          (node) =>
+            node.id ===
+            (descentAppliedResolution?.nodeId ?? terminalDescentRun.selectedNodeId),
+        ) ?? null
+    : null;
+  const trainingLessonChoices = PIT_TRAINING_LESSONS.map((lesson) => ({
+    ...lesson, ...getPitTrainingLessonAvailability(left.definitionId, lesson.id),
+  }));
+  const frameReadouts = trainingRules && trainingSettings.showFrameData
+    ? ([getPitTrainingFrameReadout(combat, 0), getPitTrainingFrameReadout(combat, 1)] as const)
+    : null;
+
+  return (
+    <section
+      ref={rootRef}
+      className={`screen ${styles.root} ${styles.matchRoot} ${highContrast ? styles.highContrast : ""}`}
+      aria-label="Combat THE PIT"
+      tabIndex={-1}
+      data-screen-focus
+      data-pit-immersive="true"
+      data-pit-normal-recipe={combat.rules.normalMoves ?? "historical"}
+      data-pit-normal-moves={JSON.stringify(combat.fighters.map(fighter => fighter.action?.normalMove ?? null))}
+      data-pit-forward-throw-v109={JSON.stringify(combat.sourceThrowV109 ?? null)}
+      data-pit-workbook-moves={JSON.stringify(combat.fighters.map(fighter => fighter.action?.workbookMove ?? null))}
+      data-pit-paused={menuOpen}
+      data-pit-combat-phase={combat.phase}
+      data-pit-workbook-conclusion-v107={workbookConclusionV107.phase}
+      data-pit-workbook-objective-state-v107={objectiveSessionV107?.missionObject.state ?? 'none'}
+      data-pit-timer-frames={combat.roundFramesRemaining}
+      data-pit-presentation-phase={roundPresentation.phase}
+      data-pit-taunt-variants={JSON.stringify(lifecyclePresentationV93.fighterTauntVariants ?? [1,1])}
+      data-pit-fighter-presentation-elapsed-ms={JSON.stringify(lifecyclePresentationV93.fighterElapsedMs ?? [lifecyclePresentationV93.elapsedMs,lifecyclePresentationV93.elapsedMs])}
+      data-pit-fighter-presentation-duration-ms={JSON.stringify(lifecyclePresentationV93.fighterDurationMs ?? [lifecyclePresentationV93.durationMs,lifecyclePresentationV93.durationMs])}
+      data-pit-lifecycle-phase={lifecyclePresentationV93.phase}
+      data-pit-taunt-key-p1={tauntKeyCodesV93[0] ?? ''}
+      data-pit-taunt-key-p2={mode === 'local' ? tauntKeyCodesV93[1] ?? '' : ''}
+      data-pit-taunt-available={tauntAvailableV93.join(',')}
+      data-pit-presentation-elapsed-ms={Math.floor(roundPresentation.elapsedMs)}
+      data-pit-presentation-duration-ms={roundPresentation.durationMs}
+      data-pit-presentation-countdown={roundPresentation.countdown ?? ""}
+      data-pit-presentation-round={roundPresentation.round}
+      data-pit-presentation-fighter-slot={roundPresentation.fighterSlot ?? ""}
+      data-pit-presentation-winner-slot={roundPresentation.winnerSlot ?? ""}
+      data-pit-presentation-blocked={!canPitPresentationAcceptInput(roundPresentation)}
+      data-pit-presentation-terminal-ready={terminal}
+      data-pit-presentation-simulation-blocked={roundPresentation.blocksSimulation}
+      data-pit-simulation-blocked={roundPresentation.blocksSimulation || menuOpen || matchAssetsPending}
+      data-pit-feral-native-art={feralNativeArtStatus}
+    >
+      <div className={styles.srOnly} role="status" aria-live="polite" aria-atomic="true">
+        {activeAriaAnnouncement}
+      </div>
+      {matchAssetsPending ? <div className={styles.matchLoading} role="status" aria-live="polite" data-pit-match-loading="true">
+        <strong>{houndArtFailed ? "IMAGE DU CHIEN INDISPONIBLE" : falconerArtFailed ? "IMAGE DU CAPTEUR INDISPONIBLE" : feralNativeArtFailed ? "ANIMATIONS DE FERAL INDISPONIBLES" : suppliedFighterArtFailed ? "IMAGE DU CHASSEUR INDISPONIBLE" : "CHARGEMENT DU COMBAT"}</strong>
+        <span>{houndArtFailed ? "Une vue du Hellhound manque. Combat suspendu : aucun chien de remplacement ni attaque invisible." : falconerArtFailed ? "Une vue native du drone manque. Le duel reste suspendu, sans capteur invisible ni forme de remplacement." : feralNativeArtFailed ? "Une vue native des actions de Feral manque. Le duel reste suspendu jusqu’au chargement des deux directions." : suppliedFighterArtFailed ? "La variante choisie n’a pas pu être chargée. Le duel reste en pause, sans personnage de remplacement." : "Préparation des combattants et des plans de l’arène. Le chronomètre est en pause."}</span>
+        {houndArtFailed && <button type="button" data-pit-hound-retry onClick={() => setCompanionArtRetry(value => value + 1)}>Réessayer le Hellhound</button>}
+        {falconerArtFailed && <button type="button" data-pit-falconer-retry onClick={() => { setFalconerArt(null); setFalconerArtRetry(value => value + 1); }}>Réessayer le capteur</button>}
+        {feralNativeArtFailed && <button type="button" data-pit-feral-art-retry onClick={() => { setFighterArt(null); setFighterArtRetry(value => value + 1); }}>Réessayer les animations de Feral</button>}
+        {workbookThrowArtReadinessV109 === 'missing' && <button type="button" data-pit-forward-throw-art-retry-v109 onClick={() => {setFighterArt(null); setFighterArtRetry(value => value + 1);}}>Réessayer les dessins du duo</button>}
+        {(combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112)) && workbookDeviceArtV107?.failed && <button type="button" data-pit-device-art-retry-v107 onClick={() => {setWorkbookDeviceArtV107(null); setWorkbookDeviceRetryV107(value => value + 1);}}>Réessayer les dispositifs</button>}
+        {objectiveSessionV107 && workbookConclusionArtFailedV107 && <button type="button" onClick={() => {setWorkbookConclusionArtV107(null); setWorkbookConclusionRetryV107(value => value + 1);}}>Réessayer les conclusions</button>}
+        {objectiveSessionV107 && !workbookConclusionActorsReadyV107 && <button type="button" onClick={() => {setFighterArt(null); setFighterArtRetry(value => value + 1);}}>Réessayer les deux acteurs</button>}
+        {suppliedFighterArtFailed && <button type="button" onClick={() => setFighterArtRetry(value => value + 1)}>Réessayer les chasseurs</button>}
+        {journeyAssetsFailed ? <button type="button" onClick={retrySceneArt}>Réessayer les deux scènes</button> : arenaArt && (arenaArt.unavailable || arenaArt.failedPaths.size > 0) ? <button type="button" onClick={retrySceneArt}>Réessayer le décor</button> : null}
+      </div> : null}
+      {activeReplayNotice ? <p className={styles.replayNoticeMatch}>{activeReplayNotice}</p> : null}
+      {arenaArt?.arenaId === sceneArenaId && !arenaArt.cancelled && (arenaArt.unavailable || arenaArt.failedPaths.size > 0) ? (
+        <p className={styles.replayNoticeMatch} role="status" data-pit-arena-warning="unavailable">
+          Décor indisponible ou incomplet : certaines images n’ont pas pu être chargées. Le duel reste en pause ; réessayez le chargement du décor.
+        </p>
+      ) : null}
+      <div className={styles.combatActions} inert={terminal || menuOpen}>
+        <span className={styles.stageLabel}>{playbackReplay ? "RELECTURE · " : ""}{arenaDefinition.name}{combat.stageJourney ? (` · ${combat.stageJourney.sector === "sas" ? activeJourneyDefinition?.entryLabel ?? "SECTEUR 1" : activeJourneyDefinition?.destinationLabel ?? "SECTEUR 2"}`) : ""}
+          {mode === "descent" && terminalDescentRun ? ` · ÉTAGE ${Math.min(PIT_DESCENT_FLOOR_COUNT, terminalDescentRun.completedFloors + 1)}/${PIT_DESCENT_FLOOR_COUNT} · RUN ${terminalDescentRun.health}/${PIT_DESCENT_MAX_HEALTH}` : ""}</span>
+        {objectiveSessionV107 && <span data-pit-workbook-objective-status-v107 className={styles.stageLabel}>
+          BALISE · {objectiveSessionV107.missionObject.state === 'ground' ? 'AU SOL' : 'RÉCUPÉRÉE PAR SCAR'} · DUEL ALTERNATIF
+        </span>}
+        {trainingRules && !playbackReplay && <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={toggleTrainingTools}>{showTrainingTools ? "Fermer le labo" : "Labo"}</button>}
+        {!playbackReplay && combat.phase === 'round' && nativeTauntDurationsV93.map((duration, slot) => duration !== null && (slot === 0 || mode === 'local')
+          ? <button key={slot} type="button" className={styles.utilityButton} style={{ minHeight: 44 }} data-pit-taunt={slot}
+            disabled={!tauntAvailableV93[slot]} onClick={() => requestPitTauntV93(slot as 0 | 1)}
+            aria-label={`Provocation du joueur ${slot + 1}${tauntKeyCodesV93[slot] ? `, touche ${compactControlKeyLabel(tauntKeyCodesV93[slot])}` : ''}`}>
+            J{slot + 1} · PROVOCATION{tauntKeyCodesV93[slot] ? ` · ${compactControlKeyLabel(tauntKeyCodesV93[slot])}` : ''}</button> : null)}
+        {!playbackReplay && combat.phase === 'round' && combat.fighters.map((fighter, slot) => (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112)))) && (slot === 0 || mode === 'local')
+          ? <span key={`workbook-${slot}`} className={styles.workbookControlsV105} data-pit-workbook-controls={slot}>
+            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112) && <button type="button" className={styles.utilityButton} data-pit-forward-throw-button-v109={slot} disabled={!simulationRunning || trainingPaused || (Boolean(currentSourceCaptureV112) && (!currentSourceCaptureV112!.techEligible || currentSourceCaptureV112!.attackerSlot === slot || currentSourceCaptureV112!.age >= PIT_WORKBOOK_FORWARD_THROW_V109.techTicks))} onClick={() => {workbookThrowsRefV109.current[slot as 0|1] = true; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · {currentSourceCaptureV112?.techEligible && currentSourceCaptureV112.attackerSlot !== slot && currentSourceCaptureV112.age < PIT_WORKBOOK_FORWARD_THROW_V109.techTicks ? 'DÉCHOPPER' : 'PROJECTION AVANT · L+M'}</button>}
+            {fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112 && <button type="button" className={styles.utilityButton} data-pit-backward-throw-button-v112={slot} disabled={!simulationRunning || trainingPaused || Boolean(currentSourceCaptureV112)} onClick={() => {workbookBackwardThrowsRefV112.current[slot as 0|1] = true; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · PROJECTION ARRIÈRE · 4+L+M</button>}
+            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112))) && <button type="button" className={styles.utilityButton} data-pit-workbook-action="projectile" disabled={!simulationRunning || trainingPaused || fighter.traque < (fighter.definitionId === 'feral-hunter' ? 300 : 250)} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'projectile'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · {fighter.definitionId === 'feral-hunter' ? 'CARREAUX · 236+S' : 'PLASMA · 623+S'}</button>}
+            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112))) && fighter.definitionId === 'feral-hunter' && <button type="button" className={styles.utilityButton} data-pit-workbook-action="shield" disabled={!simulationRunning || trainingPaused || fighter.traque < 150} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'shield'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · BOUCLIER · 214+S</button>}
+            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112))) && <button type="button" className={styles.utilityButton} data-pit-workbook-action="super" disabled={!simulationRunning || trainingPaused || fighter.traque < PIT_MAX_TRAQUE} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'super'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · SIGNATURE · 236236+S</button>}
+            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112)) && fighter.workbookDeviceV107 && <>
+              <span data-pit-device-inventory-v107={slot}>J{slot+1} · {fighter.workbookDeviceV107.item === 'mine' ? 'MINE' : 'ÉTOILE'} · {{ready:'DISPONIBLE',held:'EN MAIN',deployed:'DÉPLOYÉE',spent:'UTILISÉE'}[fighter.workbookDeviceV107.status]}</span>
+              <button type="button" className={styles.utilityButton} data-pit-workbook-action={fighter.definitionId === 'feral-hunter' ? 'mine' : 'shuriken'} disabled={!simulationRunning || trainingPaused || fighter.workbookDeviceV107.status !== 'ready' || fighter.traque < (fighter.definitionId === 'feral-hunter' ? 350 : 250)} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = fighter.definitionId === 'feral-hunter' ? 'mine' : 'shuriken'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · {fighter.definitionId === 'feral-hunter' ? 'MINE · 22+S' : 'ÉTOILE · 214+S'}</button>
+            </>}
+            <button type="button" className={styles.utilityButton} data-pit-workbook-action="equipment" disabled={!simulationRunning || trainingPaused} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'equipment'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · PRÉPARER · S+H</button>
+            <button type="button" className={styles.utilityButton} data-pit-workbook-action="contact" disabled={!simulationRunning || trainingPaused || (fighter.definitionId === 'feral-hunter' && fighter.traque < 100)} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'contact'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · {fighter.definitionId === 'scar' ? 'ALLONGE · 236+S' : 'LANCE SCINDÉE · 623+S'}</button>
+            {fighter.definitionId === 'scar' && <button type="button" className={styles.utilityButton} data-pit-workbook-action="counter" disabled={!simulationRunning || trainingPaused || fighter.traque < 100} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'counter'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · GARDE DE CHASSEUR · 22+S</button>}
+          </span> : null)}
+        <button type="button" className={styles.utilityButton} data-pit-menu-button aria-label="Pause et menu du combat" onClick={() => openMenu()}>Ⅱ <span>MENU</span></button>
+      </div>
+      <div className={styles.hud} data-pit-hud inert={terminal || menuOpen}>
+        <div className={styles.fighterHud}>
+          <div><strong>{leftDefinition.name}</strong>{trainingRules && <span>{left.phase.toUpperCase()}</span>}</div>
+          <div className={styles.healthTrack} role="progressbar" aria-label={`Vie de ${leftDefinition.name}`} aria-valuemin={0} aria-valuemax={leftDefinition.maxHealth} aria-valuenow={left.health}><i style={{ width: `${left.health / leftDefinition.maxHealth * 100}%` }} /></div>
+          <div className={`${styles.resourceRow} ${leftDescentResourcePulse ? styles.descentResourcePulse : ""}`}>
+            <span className={left.traque >= PIT_MAX_TRAQUE ? styles.resourceReady : ""}>TRAQUE</span>
+            <div className={styles.resourceTrack} role="progressbar" aria-label={`Traque de ${leftDefinition.name}`} aria-valuemin={0} aria-valuemax={PIT_MAX_TRAQUE} aria-valuenow={left.traque}><i style={{ width: `${left.traque / PIT_MAX_TRAQUE * 100}%` }} /></div>
+            <span>{left.traque}</span>
+          </div>
+          <div className={styles.fighterStatuses} aria-label={`États de ${leftDefinition.name}`}>
+            {pitTechniqueUnavailableReason(left.definitionId, left.variantId) && <span data-pit-plasma-unavailable="left">CANON RETIRÉ · TECHNIQUE INACTIVE</span>}
+            {left.definitionId === 'falconer' && <span data-pit-drone-phase="left">{combat.techniqueEffects.find(effect => effect.ownerSlot === 0 && effect.techniqueId === PIT_FALCONER_RECON_DRONE.id)?.phase === 'returning' ? 'DRONE · RETOUR' : combat.techniqueEffects.some(effect => effect.ownerSlot === 0 && effect.techniqueId === PIT_FALCONER_RECON_DRONE.id) ? 'DRONE · RAPPEL DISPONIBLE' : 'DRONE · PRÊT'}</span>}
+            {left.survivalInstinctFrames > 0 ? <span>INSTINCT · {Math.ceil(left.survivalInstinctFrames / PIT_TICK_RATE)} s</span> : null}
+            {left.cloakPhase !== "inactive" ? <span>CAMO · {left.cloakPhase.toUpperCase()}</span> : left.cloakCooldownFrames > 0 ? <span>CAMO · {Math.ceil(left.cloakCooldownFrames / PIT_TICK_RATE)} s</span> : null}
+            {left.ruptureUsedThisRound ? <span>RUPTURE UTILISÉE</span> : null}
+            {left.techniqueStatus ? <span>{TECHNIQUE_STATUS_LABELS[left.techniqueStatus.kind]} · {Math.ceil(left.techniqueStatus.framesRemaining / PIT_TICK_RATE)} s</span> : null}
+          </div>
+          <div className={styles.roundPips} aria-label={`${left.roundsWon} manche gagnée`}><i className={left.roundsWon >= 1 ? styles.won : ""} /><i className={left.roundsWon >= 2 ? styles.won : ""} /></div>
+        </div>
+        <div className={styles.timer}><small>{trainingRules ? "SESSION LIBRE" : mode === "descent" ? "MANCHE DÉCISIVE" : `MANCHE ${combat.round}`}</small><strong>{trainingRules ? "∞" : String(seconds).padStart(2, "0")}</strong></div>
+        <div className={`${styles.fighterHud} ${styles.fighterHudRight}`}>
+          <div><strong>{rightDefinition.name}</strong>{trainingRules && <span>{right.phase.toUpperCase()}</span>}</div>
+          <div className={styles.healthTrack} role="progressbar" aria-label={`Vie de ${rightDefinition.name}`} aria-valuemin={0} aria-valuemax={rightDefinition.maxHealth} aria-valuenow={right.health}><i style={{ width: `${right.health / rightDefinition.maxHealth * 100}%` }} /></div>
+          <div className={`${styles.resourceRow} ${rightDescentResourcePulse ? styles.descentResourcePulse : ""}`}>
+            <span className={right.traque >= PIT_MAX_TRAQUE ? styles.resourceReady : ""}>TRAQUE</span>
+            <div className={styles.resourceTrack} role="progressbar" aria-label={`Traque de ${rightDefinition.name}`} aria-valuemin={0} aria-valuemax={PIT_MAX_TRAQUE} aria-valuenow={right.traque}><i style={{ width: `${right.traque / PIT_MAX_TRAQUE * 100}%` }} /></div>
+            <span>{right.traque}</span>
+          </div>
+          <div className={styles.fighterStatuses} aria-label={`États de ${rightDefinition.name}`}>
+            {pitTechniqueUnavailableReason(right.definitionId, right.variantId) && <span data-pit-plasma-unavailable="right">CANON RETIRÉ · TECHNIQUE INACTIVE</span>}
+            {right.definitionId === 'falconer' && <span data-pit-drone-phase="right">{combat.techniqueEffects.find(effect => effect.ownerSlot === 1 && effect.techniqueId === PIT_FALCONER_RECON_DRONE.id)?.phase === 'returning' ? 'DRONE · RETOUR' : combat.techniqueEffects.some(effect => effect.ownerSlot === 1 && effect.techniqueId === PIT_FALCONER_RECON_DRONE.id) ? 'DRONE · RAPPEL DISPONIBLE' : 'DRONE · PRÊT'}</span>}
+            {right.survivalInstinctFrames > 0 ? <span>INSTINCT · {Math.ceil(right.survivalInstinctFrames / PIT_TICK_RATE)} s</span> : null}
+            {right.cloakPhase !== "inactive" ? <span>CAMO · {right.cloakPhase.toUpperCase()}</span> : right.cloakCooldownFrames > 0 ? <span>CAMO · {Math.ceil(right.cloakCooldownFrames / PIT_TICK_RATE)} s</span> : null}
+            {right.ruptureUsedThisRound ? <span>RUPTURE UTILISÉE</span> : null}
+            {right.techniqueStatus ? <span>{TECHNIQUE_STATUS_LABELS[right.techniqueStatus.kind]} · {Math.ceil(right.techniqueStatus.framesRemaining / PIT_TICK_RATE)} s</span> : null}
+          </div>
+          <div className={styles.roundPips} aria-label={`${right.roundsWon} manche gagnée`}><i className={right.roundsWon >= 1 ? styles.won : ""} /><i className={right.roundsWon >= 2 ? styles.won : ""} /></div>
+        </div>
+      </div>
+
+      <div className={styles.throwTechStatus} hidden={roundPresentation.phase !== "fight" || (combat.pendingThrow === null && forwardThrowTechRemainingV109 === 0)} data-active={roundPresentation.phase === "fight" && (combat.pendingThrow !== null || forwardThrowTechRemainingV109 > 0)}>
+        {playbackReplay?.engineVersion === 4
+          ? "RELECTURE V4 · règles historiques, sans fenêtre de déchoppe."
+          : forwardThrowTechRemainingV109 > 0
+            ? <><strong>SAISIE · {forwardThrowTechRemainingV109}/{PIT_WORKBOOK_FORWARD_THROW_V109.techTicks} ticks</strong> {currentSourceCaptureV112?.attackerSlot === 1 ? shortcuts.p1.throw : shortcuts.p2.throw} / L+M / RT / bouton Déchopper : relâchez puis réappuyez.</>
+          : combat.pendingThrow
+            ? <><strong>SAISIE · {combat.pendingThrow.framesRemaining}/{PIT_THROW_TECH_WINDOW_FRAMES} ticks</strong> {combat.pendingThrow.attackerSlot === 1 ? shortcuts.p1.throw : shortcuts.p2.throw} / RT / PROJ. : nouvel appui pour déchopper.</>
+            : <>Déchoppe : Projection après la saisie · {PIT_THROW_TECH_WINDOW_FRAMES} ticks / 133 ms · relâchez puis réappuyez.</>}
+      </div>
+      <div className={styles.arenaShell} inert={menuOpen} style={{ transform: `translateX(${shake}px)` }}
+        data-pit-frame={combat.frame} data-pit-throw-remaining={combat.pendingThrow?.framesRemaining ?? forwardThrowTechRemainingV109}
+        data-pit-throw-attacker={combat.pendingThrow?.attackerSlot ?? currentSourceCaptureV112?.attackerSlot ?? ""}
+        data-pit-forward-throw-phase-v109={combat.sourceThrowV109 ? getPitWorkbookThrowPhaseV109(combat.sourceThrowV109.age) : ''}
+        data-pit-backward-throw-phase-v112={combat.sourceThrowV112 ? getPitWorkbookBackwardThrowPhaseV112(combat.sourceThrowV112.age) : ''}>
+        <canvas ref={canvasRef} className={styles.canvas} width={arenaDefinition.width} height={arenaDefinition.height} aria-hidden="true" />
+        {mode === "descent" && descentCombatPresentation?.blackMistLongRange ? (
+          <div
+            className={styles.descentBlackMist}
+            style={{ opacity: descentCombatPresentation.blackMistStrength }}
+            aria-hidden="true"
+          />
+        ) : null}
+        <div className={styles.announcement} data-pit-announcement aria-hidden="true"
+          hidden={roundPresentation.phase !== "fight" || roundPresentation.elapsedMs < roundPresentation.durationMs || (combat.frame >= combatNotice.frame ? combat.frame - combatNotice.frame : combat.frame) > (announcement.startsWith("TRAQUE") ? 36 : 150)}>{announcement}</div>
+        {!menuOpen && !matchAssetsPending && !terminal && !roundPresentation.resultVisible && roundPresentation.phase !== "idle" &&
+          (roundPresentation.phase !== "fight" || roundPresentation.elapsedMs < roundPresentation.durationMs) ? (
+          <div className={styles.roundPresentation} data-pit-round-presentation data-phase={roundPresentation.phase} aria-hidden="true">
+            {roundPresentation.phase === "intro-left" || roundPresentation.phase === "intro-right" ? <div className={styles.roundIntro} data-slot={roundPresentation.fighterSlot}>
+              <span>{roundPresentation.fighterSlot === 0 ? "CHASSEUR 1" : "ADVERSAIRE"} · ENTRÉE DANS LE CERCLE</span>
+              <strong>{roundPresentation.fighterSlot === 0 ? leftDefinition.name : rightDefinition.name}</strong>
+              <small>Préparez-vous · commandes bloquées</small>
+            </div> : roundPresentation.phase === "countdown" ? <div className={styles.roundCountdown}>
+              <span>MANCHE {combat.round}</span><strong>{roundPresentation.countdown}</strong><small>Relâchez les commandes</small>
+            </div> : roundPresentation.phase === "fight" ? <div className={styles.roundFightSignal}><strong>COMBAT</strong></div>
+              : <div className={styles.roundOutcomes}>
+                <span>{roundPresentation.phase === "match-result" ? "DUEL TERMINÉ" : `MANCHE ${combat.round} TERMINÉE`}</span>
+                <div>{([leftDefinition, rightDefinition] as const).map((definition, slot) => {
+                  const outcome = roundPresentation.winnerSlot === null ? "draw" : roundPresentation.winnerSlot === slot ? "victory" : "defeat";
+                  return <section key={slot} data-pit-presentation-outcome-slot={slot} data-outcome={outcome}>
+                    <strong>{outcome === "draw" ? "ÉGALITÉ" : outcome === "victory" ? "VICTOIRE" : "DÉFAITE"}</strong><span>{definition.name}</span>
+                  </section>;
+                })}</div>
+              </div>}
+          </div>
+        ) : null}
+        {!menuOpen && !matchAssetsPending && (workbookConclusionV107.available.FATALITE_2 || workbookConclusionV107.available.CLEMENCE) ?
+          <PitWorkbookConclusionHudV107 state={workbookConclusionV107} legacy={finisherV80} ready={workbookConclusionArtReadyV107} onChoose={chooseWorkbookConclusionV107} onSkip={skipFinisherV80} /> :
+          !menuOpen && !matchAssetsPending && <PitFinisherHudV80 view={finisherV80} onChoose={chooseFinisherV80} onSkip={skipFinisherV80}
+          taunt={finisherV80.winnerSlot !== null && nativeTauntDurationsV93[finisherV80.winnerSlot] !== null ? {
+            available: tauntAvailableV93[finisherV80.winnerSlot], active: Boolean(lifecycleV93.taunt),
+            keyLabel: tauntKeyCodesV93[finisherV80.winnerSlot] ? compactControlKeyLabel(tauntKeyCodesV93[finisherV80.winnerSlot]) : undefined,
+            onRequest: () => { if (finisherV80.winnerSlot !== null) requestPitTauntV93(finisherV80.winnerSlot); },
+          } : undefined} />}
+        {roundPresentation.phase === "fight" && left.comboHitsReceived > 1 ? <div className={`${styles.combo} ${styles.comboLeft}`}>{left.comboHitsReceived}<small>COUPS</small></div> : null}
+        {roundPresentation.phase === "fight" && right.comboHitsReceived > 1 ? <div className={`${styles.combo} ${styles.comboRight}`}>{right.comboHitsReceived}<small>COUPS</small></div> : null}
+        {frameReadouts ? (
+          <aside className={styles.frameDataPanel} aria-label="Données d’images en temps réel" aria-live="off">
+            {frameReadouts.map((readout) => {
+              const definition = readout.fighterSlot === 0 ? leftDefinition : rightDefinition;
+              const phase = readout.phaseTotalFrames
+                ? `${readout.phaseLabel} ${readout.phaseFrame}/${readout.phaseTotalFrames}`
+                : readout.framesRemaining !== null
+                  ? `${readout.phaseLabel} · ${readout.framesRemaining} restantes`
+                  : readout.phaseLabel;
+              return (
+                <article key={readout.fighterSlot}>
+                  <strong>{definition.name} · F{readout.globalFrame}</strong>
+                  <span>{readout.actionLabel ?? "Aucune action"}{readout.actionTotalFrames ? ` · ${readout.actionFrame}/${readout.actionTotalFrames}` : ""}</span>
+                  <span>{phase}{readout.connected ? " · CONTACT" : ""}</span>
+                </article>
+              );
+            })}
+          </aside>
+        ) : null}
+        {terminal ? (
+          <div
+            ref={resultOverlayRef}
+            className={styles.resultOverlay}
+            role="dialog"
+            aria-modal="true"
+            tabIndex={-1}
+            aria-labelledby="pit-result"
+            onKeyDown={(event) => {
+              if (event.key !== "Tab") return;
+              const buttons = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>("button:not(:disabled)"));
+              if (buttons.length === 0) return;
+              const index = buttons.indexOf(document.activeElement as HTMLButtonElement);
+              event.preventDefault();
+              buttons[(index + (event.shiftKey ? -1 : 1) + buttons.length) % buttons.length].focus();
+            }}
+          >
+            <span>
+              {playbackReplay
+                ? "RELECTURE TERMINÉE"
+                : mode === "arcade"
+                  ? arcadePersistenceFailed
+                    ? "SAUVEGARDE ARCADE REQUISE"
+                    : arcadeResolutionReady
+                      ? terminalArcadeRun?.phase === "completed"
+                        ? "PARCOURS ARCADE ACCOMPLI"
+                        : terminalArcadeRun?.phase === "failed"
+                          ? "PARCOURS ARCADE INTERROMPU"
+                          : "ARCADE · " + (terminalArcadeRun?.victories ?? 0) + "/" + PIT_ARCADE_ENCOUNTER_COUNT
+                      : "ENREGISTREMENT DU RÉSULTAT"
+                  : mode === "circuit"
+                    ? circuitPersistenceFailed
+                      ? "SAUVEGARDE CIRCUIT REQUISE"
+                      : circuitResolutionReady
+                        ? terminalCircuitRun?.phase === "completed"
+                          ? "CIRCUIT DU CLAN ACCOMPLI"
+                          : "CIRCUIT · " + (terminalCircuitRun?.victories ?? 0) + "/" + PIT_CIRCUIT_FIGHT_COUNT
+                        : "ENREGISTREMENT DU RÉSULTAT"
+                    : mode === "descent"
+                      ? descentPersistenceFailed
+                        ? "SAUVEGARDE DESCENTE REQUISE"
+                        : descentResolutionReady
+                          ? terminalDescentRun?.phase === "completed"
+                            ? "DESCENTE ACCOMPLIE"
+                            : terminalDescentRun?.phase === "failed"
+                              ? "DESCENTE INTERROMPUE"
+                              : "DESCENTE · " + (terminalDescentRun?.completedFloors ?? 0) + "/" + PIT_DESCENT_FLOOR_COUNT
+                          : "ENREGISTREMENT DU RÉSULTAT"
+                      : "MATCH TERMINÉ"}
+            </span>
+            <h3 id="pit-result">
+              {playbackReplay
+                ? "Archive restituée"
+                : mode === "arcade" && arcadePersistenceFailed
+                  ? "Résultat non enregistré"
+                  : mode === "arcade" && !arcadeResolutionReady
+                    ? "Validation du combat"
+                    : mode === "arcade" && terminalArcadeRun?.phase === "completed"
+                      ? "Jugement accompli"
+                      : mode === "arcade" && terminalArcadeRun?.phase === "failed"
+                        ? "La fosse se referme"
+                        : mode === "circuit" && circuitPersistenceFailed
+                          ? "Résultat non enregistré"
+                          : mode === "circuit" && !circuitResolutionReady
+                            ? "Validation du combat"
+                            : mode === "circuit" && terminalCircuitRun?.phase === "completed"
+                              ? "Jugement accompli"
+                              : mode === "descent" && descentPersistenceFailed
+                                ? "Route non enregistrée"
+                                : mode === "descent" && !descentResolutionReady
+                                  ? "Validation de l’étage"
+                                  : mode === "descent" && terminalDescentRun?.phase === "completed"
+                                    ? "Survivant de la Descente"
+                                    : mode === "descent" && terminalDescentRun?.phase === "failed"
+                                      ? "La route se referme"
+                                      : winner
+                                        ? winner.name + " l’emporte"
+                                        : "Égalité"}
+            </h3>
+            {objectiveSessionV107 && <p data-pit-workbook-objective-result-v107
+              data-source-complete={getPitWorkbookConclusionQualificationV107(workbookConclusionV107).sourceActionComplete}>
+              {objectiveSessionV107.missionObject.state === 'recovered' ? 'Balise récupérée par Scar pour ce duel.' : 'La balise reste au sol.'}
+              {objectiveSessionV107.targetWeapon.state === 'ground' ? ' Le dispositif d’épreuve est au sol.' : ' Le dispositif reste attaché à Feral.'}
+              {workbookConclusionV107.outcome === 'partial-source' ? ' Le désarmement d’une arme offensive reste à réaliser.' : ''}
+              {' Aucun objet de campagne attribué.'}
+            </p>}
+            <p>
+              {playbackReplay
+                ? "A ou Y pour revoir · B pour revenir au vaisseau."
+                : mode === "arcade"
+                  ? arcadePersistenceFailed
+                    ? arcadePersistence.message + " Réessayez avec le même résultat avant de poursuivre ; aucune progression ni récompense n’est annoncée."
+                    : !arcadeResolutionReady
+                      ? "Le résultat est en cours d’enregistrement. Le parcours reste bloqué jusqu’à confirmation."
+                      : terminalArcadeRun?.phase === "completed"
+                        ? (arcadeLadder?.ending ?? "Le parcours est scellé.") + " Palette cosmétique PIT débloquée ; équipez-la pour cette session depuis la sélection."
+                        : terminalArcadeRun?.phase === "failed"
+                          ? "Les deux continues sont épuisés. Le parcours peut être recommencé depuis la sélection."
+                          : arcadePlayerWon
+                            ? "Victoire enregistrée. Prochain combat : " + ((terminalArcadeRun?.encounterIndex ?? 0) + 1) + "/" + PIT_ARCADE_ENCOUNTER_COUNT + "."
+                            : "Défaite enregistrée. " + (terminalArcadeRun?.continuesRemaining ?? 0) + " continue(s) restante(s) pour ce combat."
+                  : mode === "circuit"
+                    ? circuitRoutePersistenceFailed
+                      ? runTransitionPersistence.message + " Réessayez la même sélection avant de poursuivre ; le combat suivant reste non publié."
+                      : circuitRoutePersistencePending
+                        ? "La sélection du prochain combat est en cours d’enregistrement. Le Circuit reste bloqué jusqu’à l’accusé durable."
+                        : circuitPersistenceFailed
+                          ? circuitPersistence.message + " Réessayez avec le même résultat avant de poursuivre ; aucune progression ni récompense n’est annoncée."
+                          : !circuitResolutionReady
+                            ? "Le résultat est en cours d’enregistrement. Le Circuit reste bloqué jusqu’à confirmation."
+                        : terminalCircuitRun?.phase === "completed"
+                          ? "Warlord est vaincu au douzième combat. Le Jugement et sa récompense cosmétique PIT sont enregistrés."
+                          : circuitAppliedResult?.outcome === "victory"
+                            ? "Victoire enregistrée. " +
+                              (circuitRewardedChapter
+                                ? "Chapitre « " + circuitRewardedChapter.name + " » accompli et récompense cosmétique PIT enregistrée. "
+                                : "") +
+                              "Prochain combat : " + ((terminalCircuitRun?.fightIndex ?? 0) + 1) + "/" + PIT_CIRCUIT_FIGHT_COUNT + "."
+                            : circuitAppliedResult?.outcome === "draw"
+                              ? "Égalité enregistrée. Le même combat doit être rejoué."
+                              : "Défaite enregistrée. Le même combat doit être rejoué."
+                    : mode === "descent"
+                      ? descentPersistenceFailed
+                        ? runTransitionPersistence.message + " Réessayez la même transition avant de poursuivre ; la progression, la santé et la récompense restent non publiées."
+                        : !descentResolutionReady
+                          ? "Le résultat est en cours d’enregistrement. La route reste bloquée jusqu’à l’accusé durable."
+                          : terminalDescentRun?.phase === "completed"
+                            ? "Les huit étages et le boss sont scellés. La Bannière du Survivant, récompense finale unique, est enregistrée."
+                            : terminalDescentRun?.phase === "failed"
+                              ? "La santé de run est épuisée. Recommencez explicitement pour générer une nouvelle route."
+                              : "Étage enregistré avec " + (terminalDescentRun?.health ?? 0) + "/" + PIT_DESCENT_MAX_HEALTH + " santé. Choisissez ensuite la prochaine branche."
+                      : narrativeEncounter ? "A ou B pour lire l’issue de cette rencontre. Aucun résultat de campagne ou d’Arcade n’est attribué." : "A pour la revanche · Y pour revoir · B pour revenir au vaisseau."}
+            </p>
+            <div className={styles.overlayActions}>
+              {playbackReplay && availableReplay ? (
+                <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={() => startReplay(availableReplay)}>Revoir</button>
+              ) : mode === "arcade" ? (
+                <button
+                  ref={resultPrimaryRef}
+                  type="button"
+                  className={styles.startButton}
+                  disabled={!arcadePersistenceFailed && !arcadeResolutionReady}
+                  onClick={arcadePersistenceFailed ? retryArcadeSettlement : continueArcade}
+                >
+                  {arcadePersistenceFailed
+                    ? "RÉESSAYER L’ENREGISTREMENT"
+                    : !arcadeResolutionReady
+                      ? "Enregistrement…"
+                      : terminalArcadeRun?.phase === "active"
+                        ? arcadePlayerWon
+                          ? "Combat suivant"
+                          : "Utiliser un continue"
+                        : "Retour à la sélection"}
+                </button>
+              ) : mode === "circuit" ? (
+                <button
+                  ref={resultPrimaryRef}
+                  type="button"
+                  className={styles.startButton}
+                  disabled={
+                    circuitRoutePersistencePending ||
+                    (!circuitRoutePersistenceFailed &&
+                      !circuitPersistenceFailed &&
+                      !circuitResolutionReady)
+                  }
+                  onClick={
+                    circuitRoutePersistenceFailed
+                      ? retryRunTransition
+                      : circuitPersistenceFailed
+                        ? retryCircuitSettlement
+                        : continueCircuit
+                  }
+                  aria-keyshortcuts="Enter Space"
+                  data-gamepad-shortcut="A"
+                >
+                  {circuitRoutePersistenceFailed
+                    ? "RÉESSAYER LA SÉLECTION"
+                    : circuitRoutePersistencePending
+                      ? "Sélection en cours…"
+                      : circuitPersistenceFailed
+                        ? "RÉESSAYER L’ENREGISTREMENT"
+                        : !circuitResolutionReady
+                          ? "Enregistrement…"
+                      : terminalCircuitRun?.phase === "active"
+                        ? circuitAppliedResult?.outcome === "victory"
+                          ? "Combat suivant"
+                          : "Rejouer le combat"
+                        : "Retour à la sélection"}
+                </button>
+              ) : mode === "descent" ? (
+                <button
+                  ref={resultPrimaryRef}
+                  type="button"
+                  className={styles.startButton}
+                  disabled={!descentPersistenceFailed && !descentResolutionReady}
+                  onClick={
+                    descentPersistenceFailed
+                      ? retryRunTransition
+                      : terminalDescentRun?.phase === "active"
+                        ? continueDescent
+                        : restartDescent
+                  }
+                  aria-keyshortcuts="Enter Space"
+                  data-gamepad-shortcut="A"
+                >
+                  {descentPersistenceFailed
+                    ? "RÉESSAYER L’ENREGISTREMENT"
+                    : !descentResolutionReady
+                      ? "Enregistrement…"
+                      : terminalDescentRun?.phase === "active"
+                        ? "Choisir la branche suivante"
+                        : "Recommencer la Descente"}
+                </button>
+              ) : (
+                <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={startRematch}>{narrativeEncounter ? 'Lire l’issue de l’épreuve' : 'Revanche'}</button>
+              )}
+              {!narrativeEncounter && !playbackReplay && mode !== "arcade" && mode !== "circuit" && mode !== "descent" && availableReplay ? (
+                <><button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>Revoir le duel</button>{(availableReplay.engineVersion === 16 || availableReplay.engineVersion === 17 || availableReplay.fighters.some(id => isPitExpansionFighterId(id) || isPitOriginalFighterIdV56(id))) ? <button type="button" className={styles.replayButton} onClick={downloadAvailableReplay}>Exporter le replay JSON</button> : null}</>
+              ) : null}
+              <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
+            </div>
+          </div>
+        ) : null}
+      </div>
+
+      {touchAvailable && !playbackReplay && combat.phase !== "match-over" ? <div className={styles.touchRows} aria-label="Commandes tactiles" inert={terminal || menuOpen || trainingLesson?.status === "briefing" || !canPitPresentationAcceptInput(roundPresentation)}>
+        <div className={styles.touchGroup}>
+          <TouchButton label="◀" token={controlBindings["pit.p1MoveLeft"][0] ?? "KeyQ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="▼" token={controlBindings["pit.p1MoveDown"][0] ?? "KeyS"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="▶" token={controlBindings["pit.p1MoveRight"][0] ?? "KeyD"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="SAUT" token={controlBindings["pit.p1Jump"][0] ?? "Space"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+        </div>
+        <div className={styles.touchGroup}>
+          <TouchButton label="R" token={controlBindings["pit.p1AttackLight"][0] ?? "KeyJ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="M" token={controlBindings["pit.p1AttackMedium"][0] ?? "KeyK"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="L" token={controlBindings["pit.p1AttackHeavy"][0] ?? "KeyL"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="TECH." token={controlBindings["pit.p1AttackTechnique"][0] ?? "KeyU"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="GARDE ↑" token={controlBindings["pit.p1GuardHigh"][0] ?? "KeyI"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+          <TouchButton label="GARDE ↓" token={controlBindings["pit.p1GuardLow"][0] ?? "KeyO"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+          <TouchButton label="PROJ." token={controlBindings["pit.p1Throw"][0] ?? "KeyP"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+          <TouchButton label="TRAQUE" token={controlBindings["pit.p1Resource"][0] ?? "KeyH"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+        </div>
+        {mode === "local" ? (
+          <div className={`${styles.touchGroup} ${styles.touchGroupPlayerTwo}`}>
+            <TouchButton label="J2 ◀" token={controlBindings["pit.p2MoveLeft"][0] ?? "Numpad4"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 ▼" token={controlBindings["pit.p2MoveDown"][0] ?? "Numpad2"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 ▶" token={controlBindings["pit.p2MoveRight"][0] ?? "Numpad6"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 SAUT" token={controlBindings["pit.p2Jump"][0] ?? "Numpad8"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 R" token={controlBindings["pit.p2AttackLight"][0] ?? "Numpad1"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 M" token={controlBindings["pit.p2AttackMedium"][0] ?? "Numpad3"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 L" token={controlBindings["pit.p2AttackHeavy"][0] ?? "Numpad5"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 TECH." token={controlBindings["pit.p2AttackTechnique"][0] ?? "Numpad7"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 GARDE ↑" token={controlBindings["pit.p2GuardHigh"][0] ?? "Numpad9"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 GARDE ↓" token={controlBindings["pit.p2GuardLow"][0] ?? "Numpad0"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 PROJ." token={controlBindings["pit.p2Throw"][0] ?? "NumpadEnter"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 TRAQUE" token={controlBindings["pit.p2Resource"][0] ?? "NumpadSubtract"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+          </div>
+        ) : null}
+      </div> : null}
+
+        {trainingRules && !playbackReplay && showTrainingTools ? (
+          <aside className={styles.trainingTools} aria-label="Laboratoire d’entraînement" inert={terminal || menuOpen}>
+            <div className={styles.labHeading}><strong>LABORATOIRE · {trainingPaused ? "SIMULATION GELÉE" : "60 TICKS / SECONDE"}</strong><button type="button" className={styles.utilityButton} onClick={toggleTrainingTools}>Fermer le laboratoire</button></div>
+            <div className={styles.trainingActions}>
+              <button type="button" className={styles.trainingButton} onClick={toggleTrainingPause} aria-pressed={trainingPaused}
+                disabled={trainingLesson !== null && trainingLesson.status !== "running"}>
+                {trainingPaused ? "Reprendre la simulation" : "Geler la simulation"}
+              </button>
+              <button type="button" className={styles.trainingButton} onClick={advanceTrainingTick}
+                disabled={!trainingPaused || (trainingLesson !== null && trainingLesson.status !== "running")}>
+                Avancer d’un tick
+              </button>
+              <span className={styles.trainingRecording}>F{combat.frame} · boutons accessibles avec Tab puis Entrée / Espace.</span>
+            </div>
+            <details className={styles.trainingLessons} open={trainingLesson !== null}>
+              <summary>Exercices guidés · {trainingLessonChoices.filter((lesson) => lesson.available).length} disponibles</summary>
+              <div className={styles.trainingActions}>
+                {trainingLessonChoices.map((lesson) => <button key={lesson.id} type="button" className={styles.trainingButton}
+                  disabled={!lesson.available} aria-describedby={lesson.available ? undefined : "pit-training-unavailable-" + lesson.id}
+                  onClick={() => startTrainingLesson(lesson.id)}>{lesson.label}</button>)}
+              </div>
+              {trainingLessonChoices.filter((lesson) => !lesson.available).map((lesson) => (
+                <p key={lesson.id} id={"pit-training-unavailable-" + lesson.id}>{lesson.reason}</p>
+              ))}
+              <p>Mannequin pédagogique : {trainingLesson ? rightDefinition.name : "Jungle Hunter ou City Hunter, selon votre combattant"}. Déchoppe : nouvel appui sur Projection dans les {PIT_THROW_TECH_WINDOW_FRAMES} ticks après la saisie. Au sol : repos, garde ou contre-saisie. Pas pendant une frappe, sa récupération ou un étourdissement par un coup.</p>
+              {trainingLesson ? <div role="status" className={styles.lessonStatus} data-status={trainingLesson.status}>
+                <strong>{PIT_TRAINING_LESSONS.find((lesson) => lesson.id === trainingLesson.id)?.objective}</strong>
+                <p>{trainingLesson.message}</p>
+                {trainingLesson.status === "briefing" ? (
+                  <div ref={trainingBriefingRef} tabIndex={-1} role="group" aria-label="Préparation de l’exercice"
+                    data-training-briefing={trainingBriefingReadiness.status}>
+                    <p>{getPitTrainingBriefingControls(trainingLesson.id, shortcuts.p1)}</p>
+                    <p role="status" aria-live="polite">{trainingBriefingReadiness.message}</p>
+                    <p>Le mannequin et les 30 secondes restent arrêtés. Entrée / Espace ou A pour commencer ; B pour revenir à l’entraînement libre.</p>
+                    <div className={styles.trainingActions}>
+                      <button type="button" className={styles.trainingButton} disabled={!canBeginTrainingLesson}
+                        onClick={beginPreparedTrainingLesson}>Commencer l’exercice</button>
+                      <button type="button" className={styles.trainingButton} onClick={resetTraining}>Annuler la préparation</button>
+                    </div>
+                  </div>
+                ) : null}
+                <span>{trainingLesson.id === "corner-escape"
+                  ? `Contrôle retrouvé : ${trainingLesson.progress}/15 ticks`
+                  : `Étapes : ${trainingLesson.progress}/${trainingLesson.target}`} · {Math.floor(trainingLesson.elapsedTicks / PIT_TICK_RATE)} s / 30 s</span>
+                <div className={styles.trainingActions}>
+                  <button type="button" className={styles.trainingButton} onClick={() => startTrainingLesson(trainingLesson.id)}>Recommencer l’exercice</button>
+                  <button type="button" className={styles.trainingButton} onClick={resetTraining}>Retour à l’entraînement libre</button>
+                </div>
+              </div> : null}
+            </details>
+            <div className={styles.trainingOptions}>
+              <label>
+                <span>Comportement</span>
+                <select
+                  aria-label="Comportement du mannequin"
+                  value={trainingSettings.dummyBehavior}
+                  disabled={trainingActivity !== "idle" || trainingLesson !== null}
+                  onChange={(event) => applyTrainingSettings({ dummyBehavior: event.target.value as typeof trainingSettings.dummyBehavior })}
+                >
+                  {PIT_TRAINING_DUMMY_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                </select>
+              </label>
+              <label><input type="checkbox" checked={trainingSettings.showHitboxes} onChange={(event) => applyTrainingSettings({ showHitboxes: event.target.checked })} /> Hitboxes</label>
+              <label><input type="checkbox" checked={trainingSettings.showFrameData} onChange={(event) => applyTrainingSettings({ showFrameData: event.target.checked })} /> Frame data</label>
+              <label>
+                <span>Lecture</span>
+                <select
+                  aria-label="Mode de lecture de la séquence"
+                  value={trainingSettings.sequencePlayback}
+                  disabled={trainingActivity !== "idle"}
+                  onChange={(event) => applyTrainingSettings({ sequencePlayback: event.target.value as typeof trainingSettings.sequencePlayback })}
+                >
+                  {PIT_TRAINING_PLAYBACK_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                </select>
+              </label>
+            </div>
+            <div className={styles.trainingActions}>
+              <button type="button" className={styles.trainingButton} onClick={resetTraining}>{PIT_TRAINING_ACTION_LABELS.resetPositions}</button>
+              {trainingActivity === "recording" ? (
+                <button type="button" className={styles.trainingButton} onClick={() => finishTrainingRecording()}>{PIT_TRAINING_ACTION_LABELS.stopRecording}</button>
+              ) : (
+                <button type="button" className={styles.trainingButton} onClick={startTrainingRecording} disabled={trainingActivity === "playback" || trainingLesson !== null}>{PIT_TRAINING_ACTION_LABELS.startRecording}</button>
+              )}
+              {trainingActivity === "playback" ? (
+                <button type="button" className={styles.trainingButton} onClick={stopTrainingPlayback}>{PIT_TRAINING_ACTION_LABELS.stopPlayback}</button>
+              ) : (
+                <button type="button" className={styles.trainingButton} onClick={startTrainingPlayback} disabled={!trainingSequence || trainingActivity === "recording" || trainingLesson !== null}>{PIT_TRAINING_ACTION_LABELS.playSequence}</button>
+              )}
+            </div>
+            <span className={styles.trainingRecording} role="status">
+              {trainingActivity === "recording"
+                ? "Enregistrement en cours · 12 secondes maximum."
+                : trainingNotice || "Réglez le mannequin, puis mesurez ou enregistrez sa réponse."}
+            </span>
+            {trainingActivity === "recording" ? (
+              <span className={styles.trainingRecording} aria-hidden="true">
+                {trainingRecordedTicks}/{PIT_TRAINING_SEQUENCE_MAX_TICKS} images
+              </span>
+            ) : null}
+          </aside>
+        ) : null}
+
+
+
+      <div ref={menuRef} className={styles.pausePanel} hidden={!menuOpen} role="dialog" aria-modal="true" aria-labelledby="pit-pause-title" data-pit-pause-menu
+        onKeyDown={(event) => {
+          if (event.key !== "Tab") return;
+          const items = Array.from(event.currentTarget.querySelectorAll<HTMLElement>("button:not(:disabled), input, select, a[href], summary")).filter(item => item.getClientRects().length > 0);
+          if (!items.length) return;
+          event.preventDefault();
+          const index = items.indexOf(document.activeElement as HTMLElement);
+          items[(index + (event.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+        }}>
+        <div className={styles.pauseCard}>
+          <p className={styles.eyebrow}>THE PIT · {playbackReplay ? "RELECTURE" : "RITUEL DE COMBAT"}</p>
+          <h2 id="pit-pause-title">PAUSE</h2>
+          <p role="status">{pauseReason} Le temps et les combattants sont arrêtés.</p>
+          <div className={styles.pausePrimary}>
+            <button type="button" className={styles.startButton} data-pit-resume onClick={resume}>Reprendre le combat</button>
+            <button type="button" className={styles.utilityButton} data-pit-fullscreen onClick={() => void toggleFullscreen()}>{nativeFullscreen ? "Quitter le plein écran" : "Plein écran natif"}</button>
+          </div>
+          {fullscreenNotice && <p role="status">{fullscreenNotice}</p>}
+      <header className={styles.matchHeader}>
+        <button type="button" className={styles.utilityButton} aria-expanded={showHelp} onClick={toggleHelp}>
+          {showHelp ? "Masquer les commandes" : "Commandes"}
+        </button>
+        <span>
+          {playbackReplay
+            ? "RELECTURE"
+            : mode === "cpu"
+              ? "DUEL CPU"
+              : mode === "local"
+                ? "VERSUS LOCAL"
+                : mode === "arcade"
+                  ? "ARCADE INDIVIDUEL"
+                  : mode === "circuit"
+                    ? "CIRCUIT DU CLAN"
+                    : mode === "descent"
+                      ? "DESCENTE · SURVIE"
+                      : "ENTRAÎNEMENT"}
+          {" · "}{arenaDefinition.name}
+          {reducedCameraMotion ? " · CAMÉRA FIXE" : " · CAMÉRA DYNAMIQUE"}
+        </span>
+        <button type="button" className={styles.utilityButton}
+          data-pit-camera-control
+          aria-pressed={!reducedCameraMotion}
+          disabled={prefersReducedMotion}
+          title={prefersReducedMotion ? "Caméra fixe : préférence système de réduction des mouvements." : "Activer ou désactiver le suivi et le zoom de l’arène."}
+          onClick={() => { setFixedCamera(value => !value); resetLiveInputs(); }}>
+          {reducedCameraMotion ? "Caméra fixe" : "Caméra dynamique"}
+        </button>
+        {trainingRules && !playbackReplay ? (
+          <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={toggleTrainingTools}>
+            {showTrainingTools ? "Masquer le laboratoire" : "Laboratoire"}
+          </button>
+        ) : null}
+        <button type="button" className={styles.utilityButton} onClick={returnToSelection}>{narrativeEncounter ? 'Quitter l’épreuve' : 'Retour à la sélection'}</button>
+      </header>
+
+      {combat.stageJourney && <p className={styles.journeyStatus} data-pit-journey-sector={combat.stageJourney.sector}>{combat.stageJourney.sector === "sas" ? `${activeJourneyDefinition?.entryLabel ?? "SECTEUR 1"} · Réussis une projection près de la limite gauche ou droite pour rejoindre ${activeJourneyDefinition?.destinationLabel ?? "le second secteur"} avec ton adversaire.` : `${activeJourneyDefinition?.destinationLabel ?? "SECTEUR 2"} · Les deux combattants ont traversé. Prochaine manche : retour au secteur de départ.`} Parcours d’exposition, sans statistiques de progression.</p>}
+      {mode === "descent" && terminalDescentRun ? (
+        <aside className={styles.descentMatchStatus} aria-label="État de la Descente">
+          <strong>
+            ÉTAGE {Math.min(
+              PIT_DESCENT_FLOOR_COUNT,
+              terminalDescentRun.completedFloors +
+                (terminalDescentRun.selectedNodeId ? 1 : 0),
+            )}/{PIT_DESCENT_FLOOR_COUNT}
+          </strong>
+          <span>SANTÉ DE RUN · {terminalDescentRun.health}/{PIT_DESCENT_MAX_HEALTH}</span>
+          <span>
+            RELIQUES · {terminalDescentRun.temporaryRelicIds.length
+              ? terminalDescentRun.temporaryRelicIds
+                  .map((relicId) => PIT_DESCENT_RELICS[relicId].name)
+                  .join(" · ")
+              : "AUCUNE"}
+          </span>
+          <span>
+            MODIFICATEURS · {descentCombatNode?.modifierIds.length
+              ? descentCombatNode.modifierIds
+                  .map((modifierId) => PIT_DESCENT_MODIFIERS[modifierId].name)
+                  .join(" · ")
+              : "AUCUN"}
+          </span>
+        </aside>
+      ) : null}
+      {showHelp ? (
+        <aside className={styles.helpPanel}>
+          {playbackReplay ? (
+            <div>
+              <strong>RELECTURE</strong>
+              <span>Les commandes de combat, les manettes et le tactile sont désactivés pendant la restitution.</span>
+            </div>
+          ) : (
+            <>
+              <div>
+                <strong>JOUEUR 1 · PROFIL THE PIT</strong>
+                <span>{shortcuts.p1.left}/{shortcuts.p1.right} marcher · {shortcuts.p1.down} accroupi · {shortcuts.p1.jump} saut · {shortcuts.p1.light} rapide</span>
+                <span>{shortcuts.p1.medium} moyen · {shortcuts.p1.heavy} lourd · {shortcuts.p1.technique} technique · {shortcuts.p1.guardHigh}/{shortcuts.p1.guardLow} gardes · {shortcuts.p1.throw} projection / déchoppe · {shortcuts.p1.resource} Traque</span>
+              </div>
+              {mode === "local" ? (
+                <div>
+                  <strong>JOUEUR 2 · PROFIL THE PIT</strong>
+                  <span>{shortcuts.p2.left}/{shortcuts.p2.right} marcher · {shortcuts.p2.down} accroupi · {shortcuts.p2.jump} saut · {shortcuts.p2.light} rapide</span>
+                  <span>{shortcuts.p2.medium} moyen · {shortcuts.p2.heavy} lourd · {shortcuts.p2.technique} technique · {shortcuts.p2.guardHigh}/{shortcuts.p2.guardLow} gardes · {shortcuts.p2.throw} projection / déchoppe · {shortcuts.p2.resource} Traque</span>
+                </div>
+              ) : null}
+            </>
+          )}
+          <div><strong>MANETTE · PAUSE {shortcuts.pause}</strong><span>Stick/D-pad · A saut · X/Y/B/RB attaques · LB/LT gardes · RT projection / déchoppe · Select Traque. Rôles J1/J2 réservés jusqu’au retour à la sélection ; après reconnexion, relâchez les commandes avant de jouer.</span></div>
+        </aside>
+      ) : null}
+          <details className={styles.presentationDetails}>
+            <summary>État des animations et des visuels</summary>
+      <div className={styles.bitmapArtStatus} aria-label="État des visuels de combat">
+        {[left, right].map((fighter) => {
+          const status = fighterArtStatuses?.[fighter.slot];
+          return <span key={fighter.slot} data-pit-bitmap-slot={fighter.slot}
+            data-pit-bitmap-id={fighter.definitionId} data-pit-bitmap-variant={fighter.variantId ?? "default"} data-pit-bitmap-status={status}>
+            {PIT_FIGHTERS[fighter.definitionId].name} · {status === "sprite-sheet-animation" ? "animation dessinée · sprite sheet" : status === "sprite-sheet-hold" ? "pose dessinée tenue · action encore sans animation" : status === "static-bitmap" ? "image du chasseur · pose fixe pour cette action" : status === "loading" ? "chargement de l’image" : "image indisponible · repère de combat"}
+          </span>;
+        })}
+        <small>Animation dessinée lorsqu’un clip validé couvre l’action ; pose fixe pour les gestes restants. Le cercle et l’arc restent des aides de lecture du combat.</small>
+        {equippedArcadeCosmetic ? <small>La palette de l’Armure du Jugement colore le repère au sol ; les couleurs des PNG d’origine sont conservées.</small> : null}
+      </div>
+
+          </details>
+          <p className={styles.pauseHint}>Échap / Start : pause · A : valider · B : reprendre. Déchoppe : relâchez Projection puis réappuyez après la saisie ({PIT_THROW_TECH_WINDOW_FRAMES} ticks).</p>
+          <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
+        </div>
+      </div>
+
+    </section>
+  );
+}

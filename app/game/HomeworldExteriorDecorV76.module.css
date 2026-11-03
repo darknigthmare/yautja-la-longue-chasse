@@ -1,0 +1,7 @@
+.prop {
+  pointer-events: none;
+  transition: opacity 120ms linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .prop { transition: none; }
+}

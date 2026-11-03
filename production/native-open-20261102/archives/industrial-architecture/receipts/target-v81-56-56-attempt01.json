@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-56-56",
+  "label": "sas hangar",
+  "attempt": 1,
+  "family": "ARCHITECTURE_LOGISTIQUE",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "Create ONE ORIGINAL independent architecture asset for an existing Yautja-inspired alien Homeworld city as a complete single object, not an atlas, no grid, no labels or letters, no watermark, no people, no ship, no separate props. Transparent background with alpha, absolutely no background scene or surrounding ground plane, no outer glow, vignette, haze or rectangular matte, no cast shadow outside the object. Camera: orthographic three-quarter front/right view, looking down roughly 25–30 degrees, restrained perspective. Rendered 3D game sprite, angular monumental but functional alien engineering, near-black porous basalt (#282725), dark gunmetal structural work (#353838), worn antique bronze edge bands (#9a7446), sparse warm amber lights recessed inside the structure (#ffab3b). Fine material texture, broad readable forms, warm top-left light and subdued neutral fill. Original alien geometric relief motifs only, no real-world writing or emblems. All parts in the same material family. Compose the ENTIRE silhouette SMALLER in the central roughly two thirds of the image, leaving very generous completely clean transparent margins all around (at least 140 pixels if the canvas is around 1254 square). The entire roof, rear wall, front entrance, footing and side buttresses must be inside frame, no cut edges. Create natively, do not paste or edit existing source parts. Subject: ONE short armored HANGAR AIRLOCK MODULE, a compact deep rectangular chamber with two distinct door frames, not an entire hangar. Front armored portal fully OPEN; show its retracted split door halves within the thick side jambs. Through the opening, show the small chamber floor and its clearly separate CLOSED rear bulkhead door several feet behind, making the two-stage airlock readable. The second door has a central vertical seam and heavy latching ribs. Integral solid roof, ribbed side armor, narrow access threshold and intact foundation all connected. Very small embedded amber status lights without text. No windows, no added corridors or buildings, no interior furnishings, no loose control console. It is a single static open-front/closed-rear state. Keep whole exterior and every structural edge visible with generous empty alpha padding.",
+  "nativeSourcePath": "/workspace/generated_images/exec-4ae00935-1515-4477-9552-cbf377cc5cb8.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-56-56-sas-hangar-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v76/architecture/dock-control.png",
+    "public/game/homeworld/v81/spaceport-gantry.png"
+  ],
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "openedNativeOutput": true,
+    "singleObjectNotGrid": true,
+    "fullStrongAlphaSilhouetteVisible": true,
+    "notes": [
+      "Single armored chamber with open front portal, visible floor and a separate closed rear door; thick connected roof, ribs and foundation.",
+      "Whole strong-alpha object visible. Retraction/interlock mechanics and collision are not established by this one static state. Faint alpha border noise remains untouched."
+    ]
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-56-56",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-56-56-sas-hangar-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-4ae00935-1515-4477-9552-cbf377cc5cb8.png",
+    "bytes": 1490856,
+    "sha256": "592fff20a25c8a3041d6205997444c68e537925e4450ea02185734bdd771aca1",
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 972084,
+    "alpha1or2Pixels": 7075,
+    "alpha1to8Pixels": 10338,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          0,
+          23,
+          1251,
+          1228
+        ],
+        "margins": [
+          0,
+          23,
+          3,
+          26
+        ],
+        "visiblePixels": 600432,
+        "edgeVisiblePixels": 5
+      },
+      "2": {
+        "bboxExclusive": [
+          86,
+          258,
+          1173,
+          1013
+        ],
+        "margins": [
+          86,
+          258,
+          81,
+          241
+        ],
+        "visiblePixels": 593357,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          88,
+          260,
+          1171,
+          1011
+        ],
+        "margins": [
+          88,
+          260,
+          83,
+          243
+        ],
+        "visiblePixels": 590094,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": true,
+    "diagnosticImageAnchor": {
+      "x": 629,
+      "y": 1010,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/55"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/55"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/55"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 56,
+      "line": 1648
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 60,
+        "idCell": {
+          "cell": "A60",
+          "value": "target-v81-56-56"
+        },
+        "labelCell": {
+          "cell": "D60",
+          "value": "sas hangar"
+        },
+        "historicalPresenceCell": {
+          "cell": "G60",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F60",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 60,
+        "idCell": {
+          "cell": "A60",
+          "value": "target-v81-56-56"
+        },
+        "labelCell": {
+          "cell": "C60",
+          "value": "sas hangar"
+        },
+        "historicalPresenceCell": {
+          "cell": "D60",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E60",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT",
+    "ARCHITECTURE-ACCESS"
+  ],
+  "targetSpecificLimits": [
+    "One static front-open/rear-closed airlock chamber only; no authored door cycle, pressure/interlock sequence or collision is supplied."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

@@ -1,0 +1,94 @@
+name: V127 Earth metre-scale and 6000 encounter phases
+on:
+  pull_request:
+    branches:
+      - main
+      - feat/v126-earth-geography-climate-ai-multiplayer
+    paths:
+      - 'app/game/systems/clanWarEarthMetricV127.ts'
+      - 'app/game/systems/clanWarEarthHydrologyV127.ts'
+      - 'app/game/data/earthRiversNaturalEarth110mV127.json'
+      - 'app/game/data/earthLakesNaturalEarth110mV127.json'
+      - 'app/game/systems/clanWarEncounterDirectorV127.ts'
+      - 'tests/clan-war-metric-encounters-v127.test.mjs'
+      - 'tests/clan-war-multiplayer-practice-v127.test.mjs'
+      - 'app/game/ClanWarMultiplayerPracticeV127*'
+      - 'app/game/ClanWarGeoAiV126.tsx'
+      - 'app/game/ClanWarVariantAtlasV120.tsx'
+      - 'app/game/systems/clanWarMultiplayerPracticeV127.ts'
+      - 'scripts/export-clan-war-v127.mjs'
+      - 'tsconfig.clan-war-v127.json'
+      - '.github/workflows/clan-war-v127.yml'
+  push:
+    branches: [feat/v127-earth-meter-scale-encounter-director]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  v127-contract:
+    name: Validate 1:1 physical coordinates and 6000 encounter design plans
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Sparse checkout canonical V120–V127 rules and public data
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
+            /tsconfig.clan-war-v126.json
+            /tsconfig.clan-war-v127.json
+            /types/clan-war-v120-css.d.ts
+            /app/game/data/clanWarOriginalPlacesV120.json
+            /app/game/data/clanWarLoreFramesV120.json
+            /app/game/data/clanWarHomageAssaultV120.json
+            /app/game/data/clanWarHomageOuterV120.json
+            /app/game/data/clanWarHomageStealthV120.json
+            /app/game/data/clanWarHomageRtsV120.json
+            /app/game/data/earthLandNaturalEarth110mV126.json
+            /app/game/data/earthRiversNaturalEarth110mV127.json
+            /app/game/data/earthLakesNaturalEarth110mV127.json
+            /app/game/systems/clanWarVariantAtlasV120.ts
+            /app/game/systems/clanWarEarthV126.ts
+            /app/game/systems/clanWarWorldClimateV126.ts
+            /app/game/systems/clanWarEnemyProfilesV126.ts
+            /app/game/systems/clanWarMultiplayerV126.ts
+            /app/game/systems/clanWarMultiplayerPracticeV127.ts
+            /app/game/ClanWarGeoAiV126.tsx
+            /app/game/ClanWarVariantAtlasV120.tsx
+            /app/game/ClanWarVariantAtlasV120.module.css
+            /app/game/ClanWarGeoAiV126.module.css
+            /app/game/ClanWarMultiplayerPracticeV127.tsx
+            /app/game/ClanWarMultiplayerPracticeV127.module.css
+            /app/game/EarthPlanetMapV126.tsx
+            /app/game/EarthPlanetMapV126.module.css
+            /app/game/systems/clanWarEarthMetricV127.ts
+            /app/game/systems/clanWarEarthHydrologyV127.ts
+            /app/game/systems/clanWarEncounterDirectorV127.ts
+            /tests/clan-war-metric-encounters-v127.test.mjs
+            /tests/clan-war-multiplayer-practice-v127.test.mjs
+            /scripts/export-clan-war-v127.mjs
+      - name: Install Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '22'}
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify metre-scale WGS84 and 24,000 mission phases
+        run: node --test --test-reporter=spec tests/clan-war-metric-encounters-v127.test.mjs tests/clan-war-multiplayer-practice-v127.test.mjs
+      - name: Strict TypeScript compile of new engine
+        run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v127.json
+      - name: Lint new engine, tests and export script
+        run: npx --no-install eslint app/game/systems/clanWarEarthHydrologyV127.ts app/game/EarthPlanetMapV126.tsx app/game/systems/clanWarEarthMetricV127.ts app/game/systems/clanWarEncounterDirectorV127.ts app/game/systems/clanWarMultiplayerPracticeV127.ts app/game/ClanWarMultiplayerPracticeV127.tsx app/game/ClanWarVariantAtlasV120.tsx tests/clan-war-metric-encounters-v127.test.mjs tests/clan-war-multiplayer-practice-v127.test.mjs scripts/export-clan-war-v127.mjs
+      - name: Generate the full review data packs
+        run: node scripts/export-clan-war-v127.mjs outputs/clan-war-v127
+      - name: Upload WGS84 anchors and AI phase dossiers
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-earth-v127-6000-encounters
+          path: outputs/clan-war-v127/
+          if-no-files-found: error
+          retention-days: 30

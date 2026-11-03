@@ -1,0 +1,2392 @@
+{
+  "version": "V78",
+  "status": "PARTIAL_RUNTIME_NATIVE7_PENDING_BROWSER_QA",
+  "auditBaselineSourceSha": "2094e1541ad305b38163ab8595d93da8852a7c2b",
+  "recordedAt": "2026-10-03T06:30:09Z",
+  "selectedCount": 13,
+  "preservedSupersededCount": 2,
+  "runtimeIntegration": true,
+  "runtimeSourceSha": null,
+  "sourceCollection": {
+    "kind": "OpenAI image generation output originals",
+    "directory": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6",
+    "preservedByteExact": true,
+    "copyStatus": "COPIED_BYTE_IDENTICAL_13_ORIGINALS_WITH_APPROVED_INSTALLER; installed SHA/dimensions independently checked by real-file test",
+    "runtimeDirectory": "/game/homeworld/v78",
+    "copyVerifiedAt": "2026-10-03T14:11:10Z"
+  },
+  "measurement": {
+    "method": "Node sharp metadata and decoded ensureAlpha raw RGBA; crypto SHA256 on original PNG bytes",
+    "alphaThresholds": [
+      0,
+      128,
+      250
+    ],
+    "boundsInclusive": true,
+    "marginFormula": "left=xmin; top=ymin; right=width-1-xmax; bottom=height-1-ymax",
+    "alphaMeaning": "Transparent is alpha=0, opaque alpha=255, partial alpha1..254. Many generated subjects max254; zero opaque255 pixels does not mean no useful transparent background.",
+    "sourceNoMutation": true,
+    "measuredAt": "2026-10-03T06:30:09Z",
+    "limits": [
+      "Measured source pixel envelopes do not establish ground footprint, doorway height, native yaw, collisions, runtime pivots or perspectives.",
+      "Anatomical coherence of the two civilian poses remains explicitly review-required.",
+      "No runtime or publication QA is established by this file."
+    ]
+  },
+  "plan": {
+    "path": "app/game/data/homeworldCityArtManifestV78.json",
+    "plannedCount": 12,
+    "notEqualToGeneratedSet": true,
+    "exactFirstFourPlannedGenerated": 4,
+    "relatedAlternatives": [
+      "palace-frontage-safe differs from exact audience-porch request",
+      "terrace-retaining-front differs from native-left retaining-wall request"
+    ],
+    "otherGeneratedModulesAreAdditional": true
+  },
+  "modules": [
+    {
+      "id": "market-stall-right",
+      "file": "exec-60512172-4939-44fa-a515-8007cb2ef9fd.png",
+      "bytes": 2705219,
+      "sha256": "c98a90d777cf85e921681feb36c738216d8a99a945669e670234c65b65897796",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparent": 728404,
+        "opaque": 0,
+        "partial": 844460
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 0,
+          "top": 0,
+          "right": 1521,
+          "bottom": 1023,
+          "edgePixels": 177,
+          "margins": {
+            "left": 0,
+            "top": 0,
+            "right": 14,
+            "bottom": 0
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 47,
+          "top": 6,
+          "right": 1517,
+          "bottom": 965,
+          "edgePixels": 0,
+          "margins": {
+            "left": 47,
+            "top": 6,
+            "right": 18,
+            "bottom": 58
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 52,
+          "top": 18,
+          "right": 1514,
+          "bottom": 963,
+          "edgePixels": 0,
+          "margins": {
+            "left": 52,
+            "top": 18,
+            "right": 21,
+            "bottom": 60
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            17,
+            11,
+            3,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 0,
+          "rgba": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1023,
+          "rgba": [
+            28,
+            22,
+            14,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 1023,
+          "rgba": [
+            0,
+            1,
+            1,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": "/game/homeworld/v78/market-stall-right.png",
+      "runtimeSha256": "c98a90d777cf85e921681feb36c738216d8a99a945669e670234c65b65897796",
+      "nativeLandmarks": {
+        "sourceRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 1024
+        },
+        "alphaBounds": {
+          "x": 47,
+          "y": 6,
+          "width": 1471,
+          "height": 960
+        },
+        "pivot": {
+          "x": 659.3333333333334,
+          "y": 859.6666666666666
+        },
+        "nativeGroundSupport": [
+          {
+            "x": 108,
+            "y": 935
+          },
+          {
+            "x": 1460,
+            "y": 700
+          },
+          {
+            "x": 410,
+            "y": 944
+          }
+        ],
+        "heightWorld": 180,
+        "supportTolerancePixels": 12,
+        "metrology": "VISUAL_SUPPORT_CENTRES_CONSERVATIVE_HULL",
+        "limits": "Support centres on visible native pixels, approximate review tolerance12px; uniform native bitmap placement with one depth deprojection; not a calibrated3D or canon1:1 claim."
+      },
+      "orientation": "native-right-diagonal (parent identity; exact ground yaw not measured)",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:23:35Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "SOURCE_REVIEW_WITH_LIMITS",
+        "function": "single covered merchant stall; vendor and customer remain separate actors",
+        "observations": [
+          "Complete four support composition and continuous counter; basalt/bronze/dark fabric coherent with local palette.",
+          "Top spear margin6/right18 at alpha>128; faint low-alpha material reaches three canvas edges.",
+          "Stock vessels, minerals and fabric are original adaptations, not certified franchise items."
+        ]
+      },
+      "anatomyStatus": "NOT_A_CHARACTER_ASSET",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": false,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "NATIVE_CONSUMER_COLLISION_PRELOAD_CODEX_INTEGRATED_BROWSER_QA_PENDING",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/market-stall-right.png",
+      "runtimeIntegration": true,
+      "placement": {
+        "id": "city-native-v78:market-stall-right",
+        "artId": "market-stall-right",
+        "x": 3150,
+        "y": 2960,
+        "levelId": "-1A",
+        "districtId": "undercity",
+        "interactive": false,
+        "solid": true
+      },
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "merchant-home-right-safe",
+      "file": "exec-bb220842-e5a7-4bc0-881e-14574eaa7d18.png",
+      "bytes": 1816572,
+      "sha256": "ac86d081e0e0997d6d2a0800e30e8459337265cab1dd29106e01fc9d2430d994",
+      "width": 1327,
+      "height": 1186,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparent": 791336,
+        "opaque": 1340,
+        "partial": 781146
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 27,
+          "top": 19,
+          "right": 1280,
+          "bottom": 1122,
+          "edgePixels": 0,
+          "margins": {
+            "left": 27,
+            "top": 19,
+            "right": 46,
+            "bottom": 63
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 124,
+          "top": 87,
+          "right": 1276,
+          "bottom": 1119,
+          "edgePixels": 0,
+          "margins": {
+            "left": 124,
+            "top": 87,
+            "right": 50,
+            "bottom": 66
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 125,
+          "top": 91,
+          "right": 1276,
+          "bottom": 1118,
+          "edgePixels": 0,
+          "margins": {
+            "left": 125,
+            "top": 91,
+            "right": 50,
+            "bottom": 67
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1326,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1185,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1326,
+          "y": 1185,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": null,
+      "runtimeSha256": null,
+      "nativeLandmarks": null,
+      "orientation": "native-right-diagonal; side face visible",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:23:35Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "SOURCE_REVIEW_WITH_LIMITS",
+        "function": "merchant home with public doorway and frontage",
+        "observations": [
+          "All crown points, side water cylinder, front steps and bases now contained.",
+          "Front doorway visually open; actual threshold/clearance and matching interior envelope require native landmark metrology.",
+          "Props fused into this architectural source are not individual modular assets."
+        ]
+      },
+      "anatomyStatus": "NOT_A_CHARACTER_ASSET",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": true,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "COPIED_WITHHELD",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/merchant-home-right-safe.png",
+      "runtimeIntegration": false,
+      "withheldReason": "A real adult doorway and foundation must fit a new measured lot; existing8facades are not silently replaced.",
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "forge-workstation-left",
+      "file": "exec-823ac936-74e2-4b5d-a538-8e83f395622f.png",
+      "bytes": 2654456,
+      "sha256": "495980e1053bc95a64c639a1a0091f1a7fae5fa14c73671e0dd8567c09ab3fcb",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparent": 724027,
+        "opaque": 0,
+        "partial": 848837
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 28,
+          "top": 0,
+          "right": 1523,
+          "bottom": 1007,
+          "edgePixels": 110,
+          "margins": {
+            "left": 28,
+            "top": 0,
+            "right": 12,
+            "bottom": 16
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 31,
+          "top": 3,
+          "right": 1520,
+          "bottom": 996,
+          "edgePixels": 0,
+          "margins": {
+            "left": 31,
+            "top": 3,
+            "right": 15,
+            "bottom": 27
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 33,
+          "top": 6,
+          "right": 1519,
+          "bottom": 992,
+          "edgePixels": 0,
+          "margins": {
+            "left": 33,
+            "top": 6,
+            "right": 16,
+            "bottom": 31
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            1,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 0,
+          "rgba": [
+            7,
+            3,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1023,
+          "rgba": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 1023,
+          "rgba": [
+            1,
+            2,
+            1,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": "/game/homeworld/v78/forge-workstation-left.png",
+      "runtimeSha256": "495980e1053bc95a64c639a1a0091f1a7fae5fa14c73671e0dd8567c09ab3fcb",
+      "nativeLandmarks": {
+        "sourceRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 1024
+        },
+        "alphaBounds": {
+          "x": 31,
+          "y": 3,
+          "width": 1490,
+          "height": 994
+        },
+        "pivot": {
+          "x": 757.5,
+          "y": 777.5
+        },
+        "nativeGroundSupport": [
+          {
+            "x": 110,
+            "y": 660
+          },
+          {
+            "x": 1420,
+            "y": 780
+          },
+          {
+            "x": 1240,
+            "y": 933
+          },
+          {
+            "x": 260,
+            "y": 737
+          }
+        ],
+        "heightWorld": 155,
+        "supportTolerancePixels": 12,
+        "metrology": "VISUAL_SUPPORT_CENTRES_CONSERVATIVE_HULL",
+        "limits": "Support centres on visible native pixels, approximate review tolerance12px; uniform native bitmap placement with one depth deprojection; not a calibrated3D or canon1:1 claim."
+      },
+      "orientation": "native-left-diagonal (parent identity; exact ground yaw not measured)",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:23:35Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "SOURCE_REVIEW_WITH_LIMITS",
+        "function": "complete working forge bench",
+        "observations": [
+          "Bench, anvil, small hearth, exhaust and hanging tools have distinct local workshop function.",
+          "Chimney top margin3/right15 at alpha>128; no substantial silhouette reaches edge at that threshold.",
+          "Hammer/tongs/anvil are original local tools; do not label them canonical Yautja weapons."
+        ]
+      },
+      "anatomyStatus": "NOT_A_CHARACTER_ASSET",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": false,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "NATIVE_CONSUMER_COLLISION_PRELOAD_CODEX_INTEGRATED_BROWSER_QA_PENDING",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/forge-workstation-left.png",
+      "runtimeIntegration": true,
+      "placement": {
+        "id": "city-native-v78:forge-workstation-left",
+        "artId": "forge-workstation-left",
+        "x": 3600,
+        "y": 4630,
+        "levelId": "-1A",
+        "districtId": "undercity",
+        "interactive": false,
+        "solid": true
+      },
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "archive-shelf-right",
+      "file": "exec-1a0274dd-cb68-427e-8b63-8eb0273ba94a.png",
+      "bytes": 2972159,
+      "sha256": "bbd5cea8c92764140cc06422077102e1844d6c20b9fe703b1b1565714783829e",
+      "width": 1024,
+      "height": 1536,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparent": 542211,
+        "opaque": 0,
+        "partial": 1030653
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 0,
+          "top": 0,
+          "right": 1023,
+          "bottom": 1535,
+          "edgePixels": 79,
+          "margins": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 11,
+          "top": 10,
+          "right": 1015,
+          "bottom": 1524,
+          "edgePixels": 0,
+          "margins": {
+            "left": 11,
+            "top": 10,
+            "right": 8,
+            "bottom": 11
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 15,
+          "top": 14,
+          "right": 1010,
+          "bottom": 1522,
+          "edgePixels": 0,
+          "margins": {
+            "left": 15,
+            "top": 14,
+            "right": 13,
+            "bottom": 13
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1023,
+          "y": 0,
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1535,
+          "rgba": [
+            27,
+            20,
+            11,
+            0
+          ]
+        },
+        {
+          "x": 1023,
+          "y": 1535,
+          "rgba": [
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": "/game/homeworld/v78/archive-shelf-right.png",
+      "runtimeSha256": "bbd5cea8c92764140cc06422077102e1844d6c20b9fe703b1b1565714783829e",
+      "nativeLandmarks": {
+        "sourceRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": {
+          "x": 11,
+          "y": 10,
+          "width": 1005,
+          "height": 1515
+        },
+        "pivot": {
+          "x": 553.75,
+          "y": 1351.25
+        },
+        "nativeGroundSupport": [
+          {
+            "x": 55,
+            "y": 1375
+          },
+          {
+            "x": 875,
+            "y": 1240
+          },
+          {
+            "x": 975,
+            "y": 1310
+          },
+          {
+            "x": 310,
+            "y": 1480
+          }
+        ],
+        "heightWorld": 180,
+        "supportTolerancePixels": 12,
+        "metrology": "VISUAL_SUPPORT_CENTRES_CONSERVATIVE_HULL",
+        "limits": "Support centres on visible native pixels, approximate review tolerance12px; uniform native bitmap placement with one depth deprojection; not a calibrated3D or canon1:1 claim."
+      },
+      "orientation": "native-right-diagonal",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:23:55Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "SOURCE_REVIEW_WITH_LIMITS",
+        "function": "freestanding archive furnishing",
+        "observations": [
+          "Whole shelving volume with four support feet and stored slabs/cases; wall-side placement advisable.",
+          "Margins left11/top10/right8/bottom11 at alpha>128 are tight.",
+          "Glyphs/records/trophy-like small skull are original visual decoration, not readable canonical documents or earned rewards."
+        ]
+      },
+      "anatomyStatus": "NOT_A_CHARACTER_ASSET",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": false,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "NATIVE_CONSUMER_COLLISION_PRELOAD_CODEX_INTEGRATED_BROWSER_QA_PENDING",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/archive-shelf-right.png",
+      "runtimeIntegration": true,
+      "placement": {
+        "id": "city-native-v78:archive-shelf-right",
+        "artId": "archive-shelf-right",
+        "x": 4150,
+        "y": 2850,
+        "levelId": "-1A",
+        "districtId": "undercity",
+        "interactive": false,
+        "solid": true
+      },
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "terrace-retaining-front",
+      "file": "exec-6c47a90d-976f-4d86-ad08-e71062947cf8.png",
+      "bytes": 2759314,
+      "sha256": "00b1323bac81f0ddd0aefe31220f97efbf58876c6863abdd160c4769ffff2c44",
+      "width": 1774,
+      "height": 887,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparent": 438338,
+        "opaque": 474,
+        "partial": 1134726
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 19,
+          "top": 17,
+          "right": 1757,
+          "bottom": 869,
+          "edgePixels": 0,
+          "margins": {
+            "left": 19,
+            "top": 17,
+            "right": 16,
+            "bottom": 17
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 26,
+          "top": 84,
+          "right": 1747,
+          "bottom": 803,
+          "edgePixels": 0,
+          "margins": {
+            "left": 26,
+            "top": 84,
+            "right": 26,
+            "bottom": 83
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 27,
+          "top": 85,
+          "right": 1746,
+          "bottom": 802,
+          "edgePixels": 0,
+          "margins": {
+            "left": 27,
+            "top": 85,
+            "right": 27,
+            "bottom": 84
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1773,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 886,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1773,
+          "y": 886,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": "/game/homeworld/v78/terrace-retaining-front.png",
+      "runtimeSha256": "00b1323bac81f0ddd0aefe31220f97efbf58876c6863abdd160c4769ffff2c44",
+      "nativeLandmarks": {
+        "sourceRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1774,
+          "height": 887
+        },
+        "alphaBounds": {
+          "x": 26,
+          "y": 84,
+          "width": 1722,
+          "height": 720
+        },
+        "pivot": {
+          "x": 890,
+          "y": 773.5
+        },
+        "nativeGroundSupport": [
+          {
+            "x": 65,
+            "y": 758
+          },
+          {
+            "x": 1710,
+            "y": 756
+          },
+          {
+            "x": 1305,
+            "y": 790
+          },
+          {
+            "x": 480,
+            "y": 790
+          }
+        ],
+        "heightWorld": 190,
+        "supportTolerancePixels": 12,
+        "metrology": "VISUAL_SUPPORT_CENTRES_CONSERVATIVE_HULL",
+        "limits": "Support centres on visible native pixels, approximate review tolerance12px; uniform native bitmap placement with one depth deprojection; not a calibrated3D or canon1:1 claim."
+      },
+      "orientation": "native-front",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:23:55Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "SOURCE_REVIEW_WITH_LIMITS",
+        "function": "one continuous retaining-wall segment",
+        "observations": [
+          "Horizontal top ledge, paired buttresses and continuous rock base communicate terrace retaining mass.",
+          "Front orientation differs from planned left diagonal wall.",
+          "Transparent PNG provides no physical top ground by itself; real terrain/floor required."
+        ]
+      },
+      "anatomyStatus": "NOT_A_CHARACTER_ASSET",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": false,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "NATIVE_CONSUMER_COLLISION_PRELOAD_CODEX_INTEGRATED_BROWSER_QA_PENDING",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/terrace-retaining-front.png",
+      "runtimeIntegration": true,
+      "placement": {
+        "id": "city-native-v78:terrace-retaining-front",
+        "artId": "terrace-retaining-front",
+        "x": 2990,
+        "y": 4025,
+        "levelId": "-1A",
+        "districtId": "undercity",
+        "interactive": false,
+        "solid": true
+      },
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "port-cargo-sorting-cart",
+      "file": "exec-3da7ed3f-0443-4c8a-915b-4e398edc7cf3.png",
+      "bytes": 2572525,
+      "sha256": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparent": 715252,
+        "opaque": 0,
+        "partial": 857612
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 0,
+          "top": 0,
+          "right": 1521,
+          "bottom": 1000,
+          "edgePixels": 78,
+          "margins": {
+            "left": 0,
+            "top": 0,
+            "right": 14,
+            "bottom": 23
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 39,
+          "top": 9,
+          "right": 1484,
+          "bottom": 994,
+          "edgePixels": 0,
+          "margins": {
+            "left": 39,
+            "top": 9,
+            "right": 51,
+            "bottom": 29
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 41,
+          "top": 15,
+          "right": 1481,
+          "bottom": 993,
+          "edgePixels": 0,
+          "margins": {
+            "left": 41,
+            "top": 15,
+            "right": 54,
+            "bottom": 30
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1023,
+          "rgba": [
+            1,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 1023,
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": "/game/homeworld/v78/port-cargo-sorting-cart.png",
+      "runtimeSha256": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f",
+      "nativeLandmarks": {
+        "sourceRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 1024
+        },
+        "alphaBounds": {
+          "x": 39,
+          "y": 9,
+          "width": 1446,
+          "height": 986
+        },
+        "pivot": {
+          "x": 721.6666666666666,
+          "y": 815.3333333333334
+        },
+        "nativeGroundSupport": [
+          {
+            "x": 265,
+            "y": 768
+          },
+          {
+            "x": 1380,
+            "y": 700
+          },
+          {
+            "x": 520,
+            "y": 978
+          }
+        ],
+        "heightWorld": 115,
+        "supportTolerancePixels": 12,
+        "metrology": "VISUAL_SUPPORT_CENTRES_CONSERVATIVE_HULL",
+        "limits": "Support centres on visible native pixels, approximate review tolerance12px; uniform native bitmap placement with one depth deprojection; not a calibrated3D or canon1:1 claim."
+      },
+      "orientation": "native-left-diagonal",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:23:55Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "SOURCE_REVIEW_WITH_LIMITS",
+        "function": "one loaded cargo cart, not a separately animated vehicle",
+        "observations": [
+          "Cargo strapped to cart, wheels and winding drum read as loading equipment.",
+          "Top margin9 at alpha>128 is tight; large footprint must stay in real side pocket.",
+          "Manual wheels/cargo handling are original local transport adaptation; no canonical vehicle fidelity claimed."
+        ]
+      },
+      "anatomyStatus": "NOT_A_CHARACTER_ASSET",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": false,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "NATIVE_CONSUMER_COLLISION_PRELOAD_CODEX_INTEGRATED_BROWSER_QA_PENDING",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/port-cargo-sorting-cart.png",
+      "runtimeIntegration": true,
+      "placement": {
+        "id": "city-native-v78:port-cargo-sorting-cart",
+        "artId": "port-cargo-sorting-cart",
+        "x": 3500,
+        "y": 5050,
+        "levelId": "0",
+        "districtId": "port",
+        "interactive": false,
+        "solid": true
+      },
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "clan-common-table-left",
+      "file": "exec-6cf92f90-7e1f-42ea-8dab-11b52edc1d3d.png",
+      "bytes": 2221334,
+      "sha256": "b6a25d7e1763471014665b89c00ac34afad110ae108cc051990d2c5490b48311",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparent": 969896,
+        "opaque": 0,
+        "partial": 602968
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 18,
+          "top": 1,
+          "right": 1520,
+          "bottom": 1023,
+          "edgePixels": 29,
+          "margins": {
+            "left": 18,
+            "top": 1,
+            "right": 15,
+            "bottom": 0
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 22,
+          "top": 11,
+          "right": 1517,
+          "bottom": 1003,
+          "edgePixels": 0,
+          "margins": {
+            "left": 22,
+            "top": 11,
+            "right": 18,
+            "bottom": 20
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 23,
+          "top": 16,
+          "right": 1515,
+          "bottom": 996,
+          "edgePixels": 0,
+          "margins": {
+            "left": 23,
+            "top": 16,
+            "right": 20,
+            "bottom": 27
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 0,
+          "rgba": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1023,
+          "rgba": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 1023,
+          "rgba": [
+            1,
+            2,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": "/game/homeworld/v78/clan-common-table-left.png",
+      "runtimeSha256": "b6a25d7e1763471014665b89c00ac34afad110ae108cc051990d2c5490b48311",
+      "nativeLandmarks": {
+        "sourceRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 1024
+        },
+        "alphaBounds": {
+          "x": 22,
+          "y": 11,
+          "width": 1496,
+          "height": 993
+        },
+        "pivot": {
+          "x": 644.3333333333334,
+          "y": 783.3333333333334
+        },
+        "nativeGroundSupport": [
+          {
+            "x": 93,
+            "y": 816
+          },
+          {
+            "x": 1430,
+            "y": 563
+          },
+          {
+            "x": 410,
+            "y": 971
+          }
+        ],
+        "heightWorld": 85,
+        "supportTolerancePixels": 12,
+        "metrology": "VISUAL_SUPPORT_CENTRES_CONSERVATIVE_HULL",
+        "limits": "Support centres on visible native pixels, approximate review tolerance12px; uniform native bitmap placement with one depth deprojection; not a calibrated3D or canon1:1 claim."
+      },
+      "orientation": "native-left-diagonal",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:24:07Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "SOURCE_REVIEW_WITH_LIMITS",
+        "function": "one dressed communal table; diners remain separate actors",
+        "observations": [
+          "Tabletop, visible legs, shared food/drink composition fit a social furnishing.",
+          "Top11/right18/bottom20 margins at alpha>128 are tight.",
+          "Food, containers and drinks baked into this table are not independent animated props or a canon recipe; do not replace transactional service tables without preserving real host/approach."
+        ]
+      },
+      "anatomyStatus": "NOT_A_CHARACTER_ASSET",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": false,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "NATIVE_CONSUMER_COLLISION_PRELOAD_CODEX_INTEGRATED_BROWSER_QA_PENDING",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/clan-common-table-left.png",
+      "runtimeIntegration": true,
+      "placement": {
+        "id": "city-native-v78:clan-common-table-left",
+        "artId": "clan-common-table-left",
+        "x": 4210,
+        "y": 4715,
+        "levelId": "-1A",
+        "districtId": "undercity",
+        "interactive": false,
+        "solid": true
+      },
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "palace-frontage-safe",
+      "file": "exec-9c91d46f-5633-4dbe-b613-dcb1a3e6872d.png",
+      "bytes": 2604459,
+      "sha256": "9847e7e87d0e4c8822a1e2218fee7e2c0bd68231e60ebb2ffbfddbc68f5dc1f4",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparent": 707314,
+        "opaque": 0,
+        "partial": 865550
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 49,
+          "top": 23,
+          "right": 1495,
+          "bottom": 997,
+          "edgePixels": 0,
+          "margins": {
+            "left": 49,
+            "top": 23,
+            "right": 40,
+            "bottom": 26
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 56,
+          "top": 55,
+          "right": 1479,
+          "bottom": 958,
+          "edgePixels": 0,
+          "margins": {
+            "left": 56,
+            "top": 55,
+            "right": 56,
+            "bottom": 65
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 58,
+          "top": 63,
+          "right": 1474,
+          "bottom": 957,
+          "edgePixels": 0,
+          "margins": {
+            "left": 58,
+            "top": 63,
+            "right": 61,
+            "bottom": 66
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 0,
+          "rgba": [
+            1,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1023,
+          "rgba": [
+            1,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 1023,
+          "rgba": [
+            1,
+            2,
+            1,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": null,
+      "runtimeSha256": null,
+      "nativeLandmarks": null,
+      "orientation": "native-front",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:24:07Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "SOURCE_REVIEW_WITH_LIMITS",
+        "function": "ceremonial facade of a local audience complex",
+        "observations": [
+          "Central complete crown, side towers, entrance stairs and supporting base contained with alpha>128 margins56/55/56/65.",
+          "Facade is a wider complete complex than planned audience porch; footprint/door/interior correspondence still requires integration choices.",
+          "Stylized central face/glyphs/royal-looking banners are original clan imagery, not a known canonical monarch or universal palace."
+        ]
+      },
+      "anatomyStatus": "NOT_A_CHARACTER_ASSET",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": true,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "COPIED_WITHHELD",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/palace-frontage-safe.png",
+      "runtimeIntegration": false,
+      "withheldReason": "Main entrance/footprint and audience interior correspondence still require integration.",
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "acropolis-stair-front",
+      "file": "exec-87c48447-a34c-42e4-813d-32398eb87ca5.png",
+      "bytes": 2296832,
+      "sha256": "201500b1038720a92916c1f4d6b851621a3c9c6b696f86c4a8d7310791a05855",
+      "width": 1024,
+      "height": 1536,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparent": 808575,
+        "opaque": 0,
+        "partial": 764289
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 65,
+          "top": 15,
+          "right": 909,
+          "bottom": 1504,
+          "edgePixels": 0,
+          "margins": {
+            "left": 65,
+            "top": 15,
+            "right": 114,
+            "bottom": 31
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 120,
+          "top": 18,
+          "right": 903,
+          "bottom": 1500,
+          "edgePixels": 0,
+          "margins": {
+            "left": 120,
+            "top": 18,
+            "right": 120,
+            "bottom": 35
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 122,
+          "top": 27,
+          "right": 902,
+          "bottom": 1499,
+          "edgePixels": 0,
+          "margins": {
+            "left": 122,
+            "top": 27,
+            "right": 121,
+            "bottom": 36
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1023,
+          "y": 0,
+          "rgba": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1535,
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1023,
+          "y": 1535,
+          "rgba": [
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": null,
+      "runtimeSha256": null,
+      "nativeLandmarks": null,
+      "orientation": "native-front; climb along image vertical axis",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:24:07Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "SOURCE_REVIEW_WITH_LIMITS",
+        "function": "long stair volume with landings and balustrades",
+        "observations": [
+          "Four flights and intermediate landings have physically legible entry/exit arrangement.",
+          "Top18/bottom35 margins at alpha>128 are below target.",
+          "Painted flights cannot drive physical elevation or teleport; must bind to the existing continuous real transit and landing coordinates."
+        ]
+      },
+      "anatomyStatus": "NOT_A_CHARACTER_ASSET",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": false,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "COPIED_WITHHELD",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/acropolis-stair-front.png",
+      "runtimeIntegration": false,
+      "withheldReason": "Upper/lower native sockets and full transit support still require metrology.",
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "lower-quarter-ramp-front",
+      "file": "exec-ec60f2cc-5f46-48ae-86b7-c09e6faa80c3.png",
+      "bytes": 2108255,
+      "sha256": "41ce9f8311df9d5fdfa34c8f2cadae6a56a949e3dd91f5f70b4ab1c73c9f4f20",
+      "width": 1024,
+      "height": 1536,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparent": 924051,
+        "opaque": 0,
+        "partial": 648813
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 49,
+          "top": 17,
+          "right": 943,
+          "bottom": 1517,
+          "edgePixels": 0,
+          "margins": {
+            "left": 49,
+            "top": 17,
+            "right": 80,
+            "bottom": 18
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 152,
+          "top": 26,
+          "right": 870,
+          "bottom": 1497,
+          "edgePixels": 0,
+          "margins": {
+            "left": 152,
+            "top": 26,
+            "right": 153,
+            "bottom": 38
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 153,
+          "top": 27,
+          "right": 869,
+          "bottom": 1496,
+          "edgePixels": 0,
+          "margins": {
+            "left": 153,
+            "top": 27,
+            "right": 154,
+            "bottom": 39
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1023,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1535,
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1023,
+          "y": 1535,
+          "rgba": [
+            1,
+            2,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": null,
+      "runtimeSha256": null,
+      "nativeLandmarks": null,
+      "orientation": "native-front; climb along image vertical axis",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:24:07Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "SOURCE_REVIEW_WITH_LIMITS",
+        "function": "continuous sloped connector with top/bottom landings",
+        "observations": [
+          "Whole ramp and parapets have clear bottom approach and top landing.",
+          "Top26/bottom38 margins at alpha>128 are below target.",
+          "Real movement support and elevation must follow geometry; do not render ramp as a walkable flat decoration without physical connector."
+        ]
+      },
+      "anatomyStatus": "NOT_A_CHARACTER_ASSET",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": false,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "COPIED_WITHHELD",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/lower-quarter-ramp-front.png",
+      "runtimeIntegration": false,
+      "withheldReason": "Painted landings must match the real slum-slope path before mounting.",
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "civilian-forge-artisan",
+      "file": "exec-5f279167-e37a-4592-8ce3-c0c27557d755.png",
+      "bytes": 2010174,
+      "sha256": "b5ba874c9cdf87c0d46b453afc8c11ddd224100babd2d964ad96d6c58b419c86",
+      "width": 1024,
+      "height": 1536,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparent": 1006436,
+        "opaque": 0,
+        "partial": 566428
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 65,
+          "top": 17,
+          "right": 1009,
+          "bottom": 1519,
+          "edgePixels": 0,
+          "margins": {
+            "left": 65,
+            "top": 17,
+            "right": 14,
+            "bottom": 16
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 219,
+          "top": 20,
+          "right": 780,
+          "bottom": 1513,
+          "edgePixels": 0,
+          "margins": {
+            "left": 219,
+            "top": 20,
+            "right": 243,
+            "bottom": 22
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 224,
+          "top": 24,
+          "right": 776,
+          "bottom": 1512,
+          "edgePixels": 0,
+          "margins": {
+            "left": 224,
+            "top": 24,
+            "right": 247,
+            "bottom": 23
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1023,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1535,
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1023,
+          "y": 1535,
+          "rgba": [
+            1,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": null,
+      "runtimeSha256": null,
+      "nativeLandmarks": null,
+      "orientation": "static upright three-quarter pose facing left",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:27:24Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "ANATOMY_REVIEW_REQUIRED",
+        "function": "original civilian artisan appearance only",
+        "observations": [
+          "Work apron, covered torso/legs, wrapped feet, mandibles and dread silhouette distinguish civilian trade role.",
+          "Both clawed hands contain overlapping fingers; four-mandible anatomy/count and hands need reference and close acceptance review.",
+          "Static single pose; no native walking, hand action, facial or dread animation in this file.",
+          "Top20/bottom22 margins at alpha>128 are below target."
+        ]
+      },
+      "anatomyStatus": "ANATOMY_REVIEW_REQUIRED",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": false,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "COPIED_WITHHELD",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/civilian-forge-artisan.png",
+      "runtimeIntegration": false,
+      "withheldReason": "Anatomy review remains required; one pose supplies no walking clip.",
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "civilian-archive-keeper",
+      "file": "exec-83f0b97f-32b6-4525-893b-9ae1664d5596.png",
+      "bytes": 2018135,
+      "sha256": "8c58d432f02ef3d28a04bd494c502ae202c3a1b3ee203bce91e3bad22dba8b6c",
+      "width": 1024,
+      "height": 1536,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparent": 1014167,
+        "opaque": 0,
+        "partial": 558697
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 25,
+          "top": 0,
+          "right": 1009,
+          "bottom": 1506,
+          "edgePixels": 92,
+          "margins": {
+            "left": 25,
+            "top": 0,
+            "right": 14,
+            "bottom": 29
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 230,
+          "top": 9,
+          "right": 790,
+          "bottom": 1502,
+          "edgePixels": 0,
+          "margins": {
+            "left": 230,
+            "top": 9,
+            "right": 233,
+            "bottom": 33
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 231,
+          "top": 11,
+          "right": 789,
+          "bottom": 1501,
+          "edgePixels": 0,
+          "margins": {
+            "left": 231,
+            "top": 11,
+            "right": 234,
+            "bottom": 34
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1023,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1535,
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1023,
+          "y": 1535,
+          "rgba": [
+            1,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": null,
+      "runtimeSha256": null,
+      "nativeLandmarks": null,
+      "orientation": "static upright three-quarter pose facing right",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:27:24Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "ANATOMY_REVIEW_REQUIRED",
+        "function": "original civilian archive appearance only",
+        "observations": [
+          "Full robe, reddish shoulder textile, document slab and pouch distinguish archival role from fighter.",
+          "Slab-holding hand and relaxed claw hand require finger anatomy/reference review; mandible count is partly occluded.",
+          "Static single pose; no native walking, document handling or speech animation in this file.",
+          "Top9/bottom33 margins at alpha>128 are below target."
+        ]
+      },
+      "anatomyStatus": "ANATOMY_REVIEW_REQUIRED",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": false,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "COPIED_WITHHELD",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/civilian-archive-keeper.png",
+      "runtimeIntegration": false,
+      "withheldReason": "Anatomy review remains required; one pose supplies no walking clip.",
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    },
+    {
+      "id": "civic-water-cistern-right",
+      "file": "exec-00a056c7-5e3e-4e7f-8f75-f971d86cb10e.png",
+      "bytes": 2151259,
+      "sha256": "8417c094e895d8f7d521d5e6c05098a7dcdfe5cb6cbfec75f099ce71b6304049",
+      "width": 1350,
+      "height": 1165,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparent": 628616,
+        "opaque": 299,
+        "partial": 943835
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 0,
+          "top": 13,
+          "right": 1337,
+          "bottom": 1164,
+          "edgePixels": 83,
+          "margins": {
+            "left": 0,
+            "top": 13,
+            "right": 12,
+            "bottom": 0
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 59,
+          "top": 18,
+          "right": 1295,
+          "bottom": 1131,
+          "edgePixels": 0,
+          "margins": {
+            "left": 59,
+            "top": 18,
+            "right": 54,
+            "bottom": 33
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 61,
+          "top": 20,
+          "right": 1293,
+          "bottom": 1129,
+          "edgePixels": 0,
+          "margins": {
+            "left": 61,
+            "top": 20,
+            "right": 56,
+            "bottom": 35
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1349,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1164,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1349,
+          "y": 1164,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "SELECTED_ORIGINAL_COPIED_BYTE_IDENTICAL",
+      "runtimeSrc": "/game/homeworld/v78/civic-water-cistern-right.png",
+      "runtimeSha256": "8417c094e895d8f7d521d5e6c05098a7dcdfe5cb6cbfec75f099ce71b6304049",
+      "nativeLandmarks": {
+        "sourceRect": {
+          "x": 0,
+          "y": 0,
+          "width": 1350,
+          "height": 1165
+        },
+        "alphaBounds": {
+          "x": 59,
+          "y": 18,
+          "width": 1237,
+          "height": 1114
+        },
+        "pivot": {
+          "x": 787.5,
+          "y": 922
+        },
+        "nativeGroundSupport": [
+          {
+            "x": 80,
+            "y": 865
+          },
+          {
+            "x": 850,
+            "y": 790
+          },
+          {
+            "x": 1260,
+            "y": 825
+          },
+          {
+            "x": 1250,
+            "y": 900
+          },
+          {
+            "x": 865,
+            "y": 1112
+          },
+          {
+            "x": 420,
+            "y": 1040
+          }
+        ],
+        "heightWorld": 145,
+        "supportTolerancePixels": 12,
+        "metrology": "VISUAL_SUPPORT_CENTRES_CONSERVATIVE_HULL",
+        "limits": "Support centres on visible native pixels, approximate review tolerance12px; uniform native bitmap placement with one depth deprojection; not a calibrated3D or canon1:1 claim."
+      },
+      "orientation": "native-right-diagonal",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:27:24Z",
+        "reviewTimestampMeaning": "UTC read immediately after image tool batch returned; batch timing preserved",
+        "verdict": "SOURCE_REVIEW_WITH_LIMITS",
+        "function": "one water-service plinth with cistern/basin",
+        "observations": [
+          "Reservoir, valve, empty basin and shared footing provide a distinct civil service context.",
+          "Small vessels and vegetation are fused into this service module; they are not independent modular PNGs.",
+          "No water-flow animation or potable-water/canonical-appliance claim; local original engineering.",
+          "Top18/bottom33 margins at alpha>128 are below target."
+        ]
+      },
+      "anatomyStatus": "NOT_A_CHARACTER_ASSET",
+      "animationStatus": "STATIC_SINGLE_PNG_NO_NATIVE_ANIMATION",
+      "marginReview": {
+        "threshold": 128,
+        "requestedPixels": 48,
+        "allSidesMeetTarget": false,
+        "substantialSilhouetteTouchesEdge": false,
+        "limit": "Alpha threshold excludes faint glow/antialiasing; it is not a structural pivot or collision measurement."
+      },
+      "integrationStatus": "NATIVE_CONSUMER_COLLISION_PRELOAD_CODEX_INTEGRATED_BROWSER_QA_PENDING",
+      "authority": "ORIGINAL_LOCAL_ADAPTATION_NOT_CANON_1_TO_1",
+      "publicCopySrc": "/game/homeworld/v78/civic-water-cistern-right.png",
+      "runtimeIntegration": true,
+      "placement": {
+        "id": "city-native-v78:civic-water-cistern-right",
+        "artId": "civic-water-cistern-right",
+        "x": 4840,
+        "y": 4370,
+        "levelId": "-1A",
+        "districtId": "undercity",
+        "interactive": false,
+        "solid": true
+      },
+      "integrationReviewedAt": "2026-10-03T14:11:10Z"
+    }
+  ],
+  "preservedSuperseded": [
+    {
+      "id": "merchant-home-right-old-edge",
+      "file": "exec-af7e8ebc-d869-40ed-9897-2d0edeb8c0d6.png",
+      "bytes": 2153991,
+      "sha256": "a063ad67ab75e77fe378c41ec17fa45372f14c9f96ca872e31a0f165ec948335",
+      "width": 1327,
+      "height": 1186,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparent": 631270,
+        "opaque": 242,
+        "partial": 942310
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 0,
+          "top": 0,
+          "right": 1326,
+          "bottom": 1185,
+          "edgePixels": 125,
+          "margins": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 69,
+          "top": 5,
+          "right": 1326,
+          "bottom": 1130,
+          "edgePixels": 7,
+          "margins": {
+            "left": 69,
+            "top": 5,
+            "right": 0,
+            "bottom": 55
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 74,
+          "top": 10,
+          "right": 1325,
+          "bottom": 1129,
+          "edgePixels": 0,
+          "margins": {
+            "left": 74,
+            "top": 10,
+            "right": 1,
+            "bottom": 56
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1326,
+          "y": 0,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1185,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1326,
+          "y": 1185,
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "PRESERVED_SUPERSEDED_NOT_SELECTED",
+      "selectedReplacementId": "merchant-home-right-safe",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:26:02Z",
+        "verdict": "UNSAFE_FRAMING_PRESERVE_ORIGINAL",
+        "reason": "Right foundation touches canvas edge; alpha>128 has seven edge pixels."
+      },
+      "runtimeSrc": null,
+      "retained": true
+    },
+    {
+      "id": "palace-frontage-old-edge",
+      "file": "exec-fb456a37-f30c-46af-9ed6-b2ffaf09cd7d.png",
+      "bytes": 2826355,
+      "sha256": "b028b75792e2ccbbb1a50465ec338eb7e2e8e75cf05def18ece892443daea2eb",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparent": 535949,
+        "opaque": 0,
+        "partial": 1036915
+      },
+      "boxes": [
+        {
+          "threshold": 0,
+          "left": 0,
+          "top": 0,
+          "right": 1535,
+          "bottom": 1009,
+          "edgePixels": 126,
+          "margins": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 14
+          }
+        },
+        {
+          "threshold": 128,
+          "left": 1,
+          "top": 1,
+          "right": 1534,
+          "bottom": 1002,
+          "edgePixels": 0,
+          "margins": {
+            "left": 1,
+            "top": 1,
+            "right": 1,
+            "bottom": 21
+          }
+        },
+        {
+          "threshold": 250,
+          "left": 8,
+          "top": 14,
+          "right": 1532,
+          "bottom": 999,
+          "edgePixels": 0,
+          "margins": {
+            "left": 8,
+            "top": 14,
+            "right": 3,
+            "bottom": 24
+          }
+        }
+      ],
+      "corners": [
+        {
+          "x": 0,
+          "y": 0,
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 0,
+          "rgba": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 1023,
+          "rgba": [
+            1,
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "x": 1535,
+          "y": 1023,
+          "rgba": [
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRole": "PRESERVED_SUPERSEDED_NOT_SELECTED",
+      "selectedReplacementId": "palace-frontage-safe",
+      "visualReview": {
+        "method": "view_image",
+        "detail": "original",
+        "reviewedAt": "2026-10-03T06:27:24Z",
+        "verdict": "UNSAFE_FRAMING_PRESERVE_ORIGINAL",
+        "reason": "Central crown and lateral footprint are almost at source edges; alpha>128 margin is one pixel on top/left/right."
+      },
+      "runtimeSrc": null,
+      "retained": true
+    }
+  ],
+  "runtimeIntegrationMeaning": "Source consumers, native collision, preload and internal codex registered for exactly7 modules; no browser/build/publication gate is certified here.",
+  "runtimeMountedCount": 7,
+  "runtimeWithheldCount": 6,
+  "runtimeIntegrationReviewedAt": "2026-10-03T14:11:10Z",
+  "runtimeValidation": {
+    "sourceAndNativeImageReview": "13 originals actually opened with view_image at original detail; prior review timestamps preserved",
+    "modelAndRealSsr": "18 targeted tests PASS on 2026-10-03; exact command and limits in docs/homeworld-city-generated-review-v78.md",
+    "browser": "PENDING",
+    "production": "NOT_CERTIFIED"
+  }
+}

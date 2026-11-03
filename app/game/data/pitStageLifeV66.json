@@ -1,0 +1,1182 @@
+{
+  "schemaVersion": 1,
+  "release": "V66",
+  "stages": [
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Évent de basalte — vapeur",
+          "src": "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-01.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "3cef2d7cd1915900a1cb3c7537e77f0533cc43fd5549c3d6a8da6725582a2e0b",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                449
+              ],
+              "alphaBounds": [
+                52,
+                251,
+                408,
+                200
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                450
+              ],
+              "alphaBounds": [
+                52,
+                165,
+                408,
+                286
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                449
+              ],
+              "alphaBounds": [
+                53,
+                115,
+                407,
+                336
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                449
+              ],
+              "alphaBounds": [
+                53,
+                127,
+                407,
+                323
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                449
+              ],
+              "alphaBounds": [
+                53,
+                203,
+                407,
+                247
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                449
+              ],
+              "alphaBounds": [
+                53,
+                251,
+                407,
+                199
+              ]
+            }
+          ],
+          "fps": 2,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 156,
+            "bottom": 430,
+            "height": 90,
+            "parallax": 0.43,
+            "renderPass": "P3",
+            "anchor": "ground"
+          }
+        },
+        {
+          "id": "ambient-02",
+          "name": "Balise de la loge — veille lumineuse",
+          "src": "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-02.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "a900c6613bed6fd7a002ec53fd273a3a060ccde32963e8921e76c7a2c3ae8f2f",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                495
+              ],
+              "alphaBounds": [
+                130,
+                26,
+                253,
+                470
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                495
+              ],
+              "alphaBounds": [
+                130,
+                26,
+                253,
+                470
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                495
+              ],
+              "alphaBounds": [
+                130,
+                26,
+                252,
+                470
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                495
+              ],
+              "alphaBounds": [
+                130,
+                26,
+                253,
+                470
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                495
+              ],
+              "alphaBounds": [
+                130,
+                26,
+                252,
+                470
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                495
+              ],
+              "alphaBounds": [
+                130,
+                26,
+                252,
+                470
+              ]
+            }
+          ],
+          "fps": 2,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 835,
+            "bottom": 430,
+            "height": 106,
+            "parallax": 0.43,
+            "renderPass": "P3",
+            "anchor": "ground"
+          }
+        },
+        {
+          "id": "ambient-03",
+          "name": "Obturateur de desserte — ouverture",
+          "src": "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-03.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "4e2efd3fdd3e2d5d63af435ebf5879cb6185d6de754ad77d973549f4d2b4c64a",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                465
+              ],
+              "alphaBounds": [
+                32,
+                42,
+                448,
+                424
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                465
+              ],
+              "alphaBounds": [
+                31,
+                42,
+                449,
+                424
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                254.5,
+                465
+              ],
+              "alphaBounds": [
+                31,
+                42,
+                448,
+                424
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                465
+              ],
+              "alphaBounds": [
+                32,
+                42,
+                448,
+                424
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                254.5,
+                465
+              ],
+              "alphaBounds": [
+                31,
+                42,
+                449,
+                424
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                254.5,
+                465
+              ],
+              "alphaBounds": [
+                31,
+                42,
+                448,
+                424
+              ]
+            }
+          ],
+          "fps": 2,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 742,
+            "bottom": 430,
+            "height": 78,
+            "parallax": 0.43,
+            "renderPass": "P3",
+            "anchor": "ground"
+          }
+        }
+      ]
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Évent du sanctuaire — souffle minéral",
+          "src": "/game/sprites/v66/pit-life/arena-036-temple-de-la-double-lune/ambient-01.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "19221a59b03ad3efa2fef0bd18efdb0ba936c9175566250ee8efd1bf1bb8b673",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                261.5,
+                443
+              ],
+              "alphaBounds": [
+                78,
+                93,
+                368,
+                352
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                443
+              ],
+              "alphaBounds": [
+                71,
+                93,
+                369,
+                351
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                250,
+                443
+              ],
+              "alphaBounds": [
+                66,
+                85,
+                368,
+                359
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                261.5,
+                442
+              ],
+              "alphaBounds": [
+                78,
+                92,
+                368,
+                352
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                442
+              ],
+              "alphaBounds": [
+                71,
+                92,
+                369,
+                352
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                250,
+                442
+              ],
+              "alphaBounds": [
+                66,
+                93,
+                368,
+                350
+              ]
+            }
+          ],
+          "fps": 2,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 160,
+            "bottom": 430,
+            "height": 93,
+            "parallax": 0.43,
+            "renderPass": "P3",
+            "anchor": "ground"
+          }
+        },
+        {
+          "id": "ambient-02",
+          "name": "Balise du sanctuaire — lumière froide",
+          "src": "/game/sprites/v66/pit-life/arena-036-temple-de-la-double-lune/ambient-02.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "017d9d486bb6dcd3d1af08d1464f886d0a84303af4ab71e01a5a164541884c71",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                245,
+                482
+              ],
+              "alphaBounds": [
+                113,
+                20,
+                265,
+                463
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                482
+              ],
+              "alphaBounds": [
+                123,
+                20,
+                266,
+                463
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                266.5,
+                482
+              ],
+              "alphaBounds": [
+                134,
+                19,
+                265,
+                464
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                245,
+                483
+              ],
+              "alphaBounds": [
+                113,
+                20,
+                266,
+                464
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                483
+              ],
+              "alphaBounds": [
+                124,
+                20,
+                265,
+                464
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                266.5,
+                483
+              ],
+              "alphaBounds": [
+                134,
+                19,
+                265,
+                465
+              ]
+            }
+          ],
+          "fps": 2,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 825,
+            "bottom": 430,
+            "height": 110,
+            "parallax": 0.43,
+            "renderPass": "P3",
+            "anchor": "ground"
+          }
+        },
+        {
+          "id": "ambient-03",
+          "name": "Panneau du temple — ouverture",
+          "src": "/game/sprites/v66/pit-life/arena-036-temple-de-la-double-lune/ambient-03.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "2ab2095636610bc47701895509e2f623cfa0b198c43d83ce518210f9848c11be",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                258.5,
+                421
+              ],
+              "alphaBounds": [
+                31,
+                152,
+                461,
+                271
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                258.5,
+                422
+              ],
+              "alphaBounds": [
+                30,
+                152,
+                462,
+                271
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                258.5,
+                422
+              ],
+              "alphaBounds": [
+                30,
+                152,
+                462,
+                271
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                258.5,
+                422
+              ],
+              "alphaBounds": [
+                31,
+                152,
+                461,
+                271
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                258.5,
+                422
+              ],
+              "alphaBounds": [
+                30,
+                152,
+                462,
+                271
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                258.5,
+                422
+              ],
+              "alphaBounds": [
+                30,
+                152,
+                462,
+                271
+              ]
+            }
+          ],
+          "fps": 2,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 725,
+            "bottom": 430,
+            "height": 80,
+            "parallax": 0.43,
+            "renderPass": "P3",
+            "anchor": "ground"
+          }
+        }
+      ]
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Conduit des forges — purge",
+          "src": "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-01.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "e19e0e7fc3a372f151ce0381079f567c74ac2e871e888ef34e4383c2aa4aecb6",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                364.5,
+                408
+              ],
+              "alphaBounds": [
+                22,
+                130,
+                459,
+                279
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                364.5,
+                408
+              ],
+              "alphaBounds": [
+                43,
+                147,
+                438,
+                262
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                365,
+                408
+              ],
+              "alphaBounds": [
+                58,
+                159,
+                423,
+                250
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                365,
+                408
+              ],
+              "alphaBounds": [
+                53,
+                155,
+                428,
+                254
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                365.5,
+                408
+              ],
+              "alphaBounds": [
+                80,
+                158,
+                401,
+                251
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                365,
+                408
+              ],
+              "alphaBounds": [
+                126,
+                197,
+                355,
+                212
+              ]
+            }
+          ],
+          "fps": 2,
+          "restFrame": 5,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 168,
+            "bottom": 430,
+            "height": 93,
+            "parallax": 0.43,
+            "renderPass": "P3",
+            "anchor": "ground"
+          }
+        },
+        {
+          "id": "ambient-02",
+          "name": "Témoin de chauffe — cycle des chambres",
+          "src": "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-02.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "8092e56a38849a1aac0e98c71d250a244652f9e3f046e6656420cdc57fe99086",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                420
+              ],
+              "alphaBounds": [
+                41,
+                195,
+                430,
+                226
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                420
+              ],
+              "alphaBounds": [
+                41,
+                195,
+                430,
+                226
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                420
+              ],
+              "alphaBounds": [
+                41,
+                195,
+                430,
+                226
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                388
+              ],
+              "alphaBounds": [
+                42,
+                163,
+                429,
+                226
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                388
+              ],
+              "alphaBounds": [
+                41,
+                163,
+                430,
+                226
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                388
+              ],
+              "alphaBounds": [
+                42,
+                163,
+                429,
+                227
+              ]
+            }
+          ],
+          "fps": 2,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 767,
+            "bottom": 430,
+            "height": 73,
+            "parallax": 0.43,
+            "renderPass": "P3",
+            "anchor": "ground"
+          }
+        },
+        {
+          "id": "ambient-03",
+          "name": "Persiennes de la salle — ventilation",
+          "src": "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-03.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "d07626ff403cd6780e3ed8ede5d980b53f85ff52f6ce0bcb709735b7b9035283",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                414
+              ],
+              "alphaBounds": [
+                9,
+                112,
+                494,
+                303
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                414
+              ],
+              "alphaBounds": [
+                10,
+                112,
+                494,
+                303
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                257,
+                414
+              ],
+              "alphaBounds": [
+                11,
+                112,
+                493,
+                303
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                409
+              ],
+              "alphaBounds": [
+                9,
+                107,
+                494,
+                304
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                409
+              ],
+              "alphaBounds": [
+                10,
+                108,
+                494,
+                303
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                409
+              ],
+              "alphaBounds": [
+                10,
+                108,
+                494,
+                303
+              ]
+            }
+          ],
+          "fps": 2,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 865,
+            "bottom": 430,
+            "height": 89,
+            "parallax": 0.43,
+            "renderPass": "P3",
+            "anchor": "ground"
+          }
+        }
+      ]
+    }
+  ]
+}

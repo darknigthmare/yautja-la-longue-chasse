@@ -1,0 +1,658 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "workbook": "Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+    "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+    "totalWorkbookSheets": 139
+  },
+  "sheets": [
+    {
+      "name": "Campagne commune",
+      "rows": [
+        {
+          "number": 27,
+          "cells": [
+            {
+              "address": "A27",
+              "value": "R2-M022"
+            },
+            {
+              "address": "B27",
+              "value": "Huit salles pour préparer la route"
+            },
+            {
+              "address": "C27",
+              "value": "Blooded"
+            },
+            {
+              "address": "D27",
+              "value": "Vaisseau personnel réellement acquis dans R2-M021."
+            },
+            {
+              "address": "E27",
+              "value": "Le joueur parcourt carte galactique, armurerie, archives, forge d’apparence, galerie, infirmerie, arène et sas. Chaque pièce demande un geste utile : ranger, régler, inspecter ou préparer. Les circulations sont physiques et les objets ne fusionnent pas avec ceux de la maison."
+            },
+            {
+              "address": "F27",
+              "value": "Préparer une chasse courte ou un trajet avec escale change le chargement initial."
+            },
+            {
+              "address": "G27",
+              "value": "Les huit salles initiales sont introduites avec leur fonction et leurs états séparés."
+            },
+            {
+              "address": "H27",
+              "value": "Une préparation oubliée apparaît au contrôle du sas et peut être corrigée avant départ."
+            },
+            {
+              "address": "I27",
+              "value": "ship.firstInteriorTour ; ship.preflightReady"
+            },
+            {
+              "address": "J27",
+              "value": "La fin de scène écrit resolved ; success exige le critère annoncé. Les objets, blessés, personnes et lieux sont ceux de la sauvegarde. Une activité facultative n’entre pas dans les prérequis de rang suivants."
+            },
+            {
+              "address": "K27",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vaisseau personnel",
+      "rows": [
+        {
+          "number": 6,
+          "cells": [
+            {
+              "address": "A6",
+              "value": "PSR-01-BASE"
+            },
+            {
+              "address": "B6",
+              "value": "Carte galactique — état initial"
+            },
+            {
+              "address": "C6",
+              "value": "galaxy-map"
+            },
+            {
+              "address": "D6",
+              "value": 8
+            },
+            {
+              "address": "E6",
+              "value": "Espace du vaisseau acquis"
+            },
+            {
+              "address": "F6",
+              "value": "lire une route puis programmer un trajet"
+            },
+            {
+              "address": "G6",
+              "value": "Poste principal, rangements et chemin entre deux portes"
+            },
+            {
+              "address": "H6",
+              "value": "Blooded et vaisseau acquis, selon la séquence de mise en service"
+            },
+            {
+              "address": "I6",
+              "value": "Établit l’usage du lieu dans la boucle de chasse."
+            },
+            {
+              "address": "J6",
+              "value": "Position des objets, disponibilité du poste et état des améliorations."
+            },
+            {
+              "address": "K6",
+              "value": "Le lieu demeure sur le vaisseau personnel. Un transfert vers La Veille Partagée suit le trajet de l’objet."
+            },
+            {
+              "address": "L6",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "cells": [
+            {
+              "address": "A8",
+              "value": "PSR-02-BASE"
+            },
+            {
+              "address": "B8",
+              "value": "Armurerie murale — état initial"
+            },
+            {
+              "address": "C8",
+              "value": "wall-armory"
+            },
+            {
+              "address": "D8",
+              "value": 8
+            },
+            {
+              "address": "E8",
+              "value": "Espace du vaisseau acquis"
+            },
+            {
+              "address": "F8",
+              "value": "prendre un outil au support et préparer sa charge"
+            },
+            {
+              "address": "G8",
+              "value": "Poste principal, rangements et chemin entre deux portes"
+            },
+            {
+              "address": "H8",
+              "value": "Blooded et vaisseau acquis, selon la séquence de mise en service"
+            },
+            {
+              "address": "I8",
+              "value": "Établit l’usage du lieu dans la boucle de chasse."
+            },
+            {
+              "address": "J8",
+              "value": "Position des objets, disponibilité du poste et état des améliorations."
+            },
+            {
+              "address": "K8",
+              "value": "Le lieu demeure sur le vaisseau personnel. Un transfert vers La Veille Partagée suit le trajet de l’objet."
+            },
+            {
+              "address": "L8",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "cells": [
+            {
+              "address": "A10",
+              "value": "PSR-03-BASE"
+            },
+            {
+              "address": "B10",
+              "value": "Archives du clan — état initial"
+            },
+            {
+              "address": "C10",
+              "value": "clan-archives"
+            },
+            {
+              "address": "D10",
+              "value": 8
+            },
+            {
+              "address": "E10",
+              "value": "Espace du vaisseau acquis"
+            },
+            {
+              "address": "F10",
+              "value": "consulter une lignée et une mission reçue"
+            },
+            {
+              "address": "G10",
+              "value": "Poste principal, rangements et chemin entre deux portes"
+            },
+            {
+              "address": "H10",
+              "value": "Blooded et vaisseau acquis, selon la séquence de mise en service"
+            },
+            {
+              "address": "I10",
+              "value": "Établit l’usage du lieu dans la boucle de chasse."
+            },
+            {
+              "address": "J10",
+              "value": "Position des objets, disponibilité du poste et état des améliorations."
+            },
+            {
+              "address": "K10",
+              "value": "Le lieu demeure sur le vaisseau personnel. Un transfert vers La Veille Partagée suit le trajet de l’objet."
+            },
+            {
+              "address": "L10",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        },
+        {
+          "number": 12,
+          "cells": [
+            {
+              "address": "A12",
+              "value": "PSR-04-BASE"
+            },
+            {
+              "address": "B12",
+              "value": "Atelier d’apparence — état initial"
+            },
+            {
+              "address": "C12",
+              "value": "appearance-forge"
+            },
+            {
+              "address": "D12",
+              "value": 8
+            },
+            {
+              "address": "E12",
+              "value": "Espace du vaisseau acquis"
+            },
+            {
+              "address": "F12",
+              "value": "essayer masque et armure devant un repère"
+            },
+            {
+              "address": "G12",
+              "value": "Poste principal, rangements et chemin entre deux portes"
+            },
+            {
+              "address": "H12",
+              "value": "Blooded et vaisseau acquis, selon la séquence de mise en service"
+            },
+            {
+              "address": "I12",
+              "value": "Établit l’usage du lieu dans la boucle de chasse."
+            },
+            {
+              "address": "J12",
+              "value": "Position des objets, disponibilité du poste et état des améliorations."
+            },
+            {
+              "address": "K12",
+              "value": "Le lieu demeure sur le vaisseau personnel. Un transfert vers La Veille Partagée suit le trajet de l’objet."
+            },
+            {
+              "address": "L12",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        },
+        {
+          "number": 14,
+          "cells": [
+            {
+              "address": "A14",
+              "value": "PSR-05-BASE"
+            },
+            {
+              "address": "B14",
+              "value": "Galerie des trophées — état initial"
+            },
+            {
+              "address": "C14",
+              "value": "trophy-hall"
+            },
+            {
+              "address": "D14",
+              "value": 8
+            },
+            {
+              "address": "E14",
+              "value": "Espace du vaisseau acquis"
+            },
+            {
+              "address": "F14",
+              "value": "placer un original sur son support"
+            },
+            {
+              "address": "G14",
+              "value": "Poste principal, rangements et chemin entre deux portes"
+            },
+            {
+              "address": "H14",
+              "value": "Blooded et vaisseau acquis, selon la séquence de mise en service"
+            },
+            {
+              "address": "I14",
+              "value": "Établit l’usage du lieu dans la boucle de chasse."
+            },
+            {
+              "address": "J14",
+              "value": "Position des objets, disponibilité du poste et état des améliorations."
+            },
+            {
+              "address": "K14",
+              "value": "Le lieu demeure sur le vaisseau personnel. Un transfert vers La Veille Partagée suit le trajet de l’objet."
+            },
+            {
+              "address": "L14",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        },
+        {
+          "number": 16,
+          "cells": [
+            {
+              "address": "A16",
+              "value": "PSR-06-BASE"
+            },
+            {
+              "address": "B16",
+              "value": "Salle de soin — état initial"
+            },
+            {
+              "address": "C16",
+              "value": "medical-bay"
+            },
+            {
+              "address": "D16",
+              "value": 8
+            },
+            {
+              "address": "E16",
+              "value": "Espace du vaisseau acquis"
+            },
+            {
+              "address": "F16",
+              "value": "utiliser des outils de soin stylisés"
+            },
+            {
+              "address": "G16",
+              "value": "Poste principal, rangements et chemin entre deux portes"
+            },
+            {
+              "address": "H16",
+              "value": "Blooded et vaisseau acquis, selon la séquence de mise en service"
+            },
+            {
+              "address": "I16",
+              "value": "Établit l’usage du lieu dans la boucle de chasse."
+            },
+            {
+              "address": "J16",
+              "value": "Position des objets, disponibilité du poste et état des améliorations."
+            },
+            {
+              "address": "K16",
+              "value": "Le lieu demeure sur le vaisseau personnel. Un transfert vers La Veille Partagée suit le trajet de l’objet."
+            },
+            {
+              "address": "L16",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        },
+        {
+          "number": 18,
+          "cells": [
+            {
+              "address": "A18",
+              "value": "PSR-07-BASE"
+            },
+            {
+              "address": "B18",
+              "value": "Arène d’entraînement — état initial"
+            },
+            {
+              "address": "C18",
+              "value": "training-arena"
+            },
+            {
+              "address": "D18",
+              "value": 8
+            },
+            {
+              "address": "E18",
+              "value": "Espace du vaisseau acquis"
+            },
+            {
+              "address": "F18",
+              "value": "tester déplacement, parade et portée"
+            },
+            {
+              "address": "G18",
+              "value": "Poste principal, rangements et chemin entre deux portes"
+            },
+            {
+              "address": "H18",
+              "value": "Blooded et vaisseau acquis, selon la séquence de mise en service"
+            },
+            {
+              "address": "I18",
+              "value": "Établit l’usage du lieu dans la boucle de chasse."
+            },
+            {
+              "address": "J18",
+              "value": "Position des objets, disponibilité du poste et état des améliorations."
+            },
+            {
+              "address": "K18",
+              "value": "Le lieu demeure sur le vaisseau personnel. Un transfert vers La Veille Partagée suit le trajet de l’objet."
+            },
+            {
+              "address": "L18",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        },
+        {
+          "number": 20,
+          "cells": [
+            {
+              "address": "A20",
+              "value": "PSR-08-BASE"
+            },
+            {
+              "address": "B20",
+              "value": "Sas de lancement — état initial"
+            },
+            {
+              "address": "C20",
+              "value": "launch-airlock"
+            },
+            {
+              "address": "D20",
+              "value": 8
+            },
+            {
+              "address": "E20",
+              "value": "Espace du vaisseau acquis"
+            },
+            {
+              "address": "F20",
+              "value": "vérifier l’équipement puis descendre sur le terrain"
+            },
+            {
+              "address": "G20",
+              "value": "Poste principal, rangements et chemin entre deux portes"
+            },
+            {
+              "address": "H20",
+              "value": "Blooded et vaisseau acquis, selon la séquence de mise en service"
+            },
+            {
+              "address": "I20",
+              "value": "Établit l’usage du lieu dans la boucle de chasse."
+            },
+            {
+              "address": "J20",
+              "value": "Position des objets, disponibilité du poste et état des améliorations."
+            },
+            {
+              "address": "K20",
+              "value": "Le lieu demeure sur le vaisseau personnel. Un transfert vers La Veille Partagée suit le trajet de l’objet."
+            },
+            {
+              "address": "L20",
+              "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scènes de dialogue V6",
+      "rows": [
+        {
+          "number": 598,
+          "cells": [
+            {
+              "address": "A598",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "B598",
+              "value": "Huit salles pour préparer la route"
+            },
+            {
+              "address": "C598",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "D598",
+              "value": "core_missions"
+            },
+            {
+              "address": "E598",
+              "value": "R2-M022"
+            },
+            {
+              "address": "F598",
+              "value": "Le joueur parcourt carte galactique, armurerie, archives, forge d’apparence, galerie, infirmerie, arène et sas. Chaque pièce demande un geste utile : ranger, régler, inspecter ou préparer. Les circulations sont physiques et les objets ne fusionnent pas avec ceux de la maison."
+            },
+            {
+              "address": "G598",
+              "value": "Technicienne du chantier ; Joueur"
+            },
+            {
+              "address": "H598",
+              "value": "Vaisseau personnel réellement acquis dans R2-M021. ; locuteur réellement présent ou retour effectué auprès de lui. Les scènes de résultat exigent le résultat observé correspondant."
+            },
+            {
+              "address": "I598",
+              "value": "Le locuteur ne sait que ce qu’il voit ici ou ce qui lui a été rapporté avec sa provenance. Il parle au briefing ou au retour effectif ; aucun déplacement instantané ni liaison radio inventée."
+            },
+            {
+              "address": "J598",
+              "value": "Ouverture une fois à l’entrée de l’étape ; reprise après interruption seulement ; issue une fois par résultat constaté. Attendre une nouvelle transition d’état avant de rejouer. Refus ou attente ne rejouent pas la réussite."
+            },
+            {
+              "address": "K598",
+              "value": "Dialogue V6 original. Règles et progression locales du projet ; les références filmiques ne prouvent pas ces répliques."
+            },
+            {
+              "address": "L598",
+              "value": 2
+            },
+            {
+              "address": "M598",
+              "value": 1
+            },
+            {
+              "address": "N598",
+              "value": 1
+            },
+            {
+              "address": "O598",
+              "value": 1
+            },
+            {
+              "address": "P598",
+              "value": 1
+            },
+            {
+              "address": "Q598",
+              "value": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Choix et actions V6",
+      "rows": [
+        {
+          "number": 1218,
+          "cells": [
+            {
+              "address": "A1218",
+              "value": "D6-C-R2-M022-OPTION-A"
+            },
+            {
+              "address": "B1218",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C1218",
+              "value": "A"
+            },
+            {
+              "address": "D1218",
+              "value": "D6-C-R2-M022-CHOIX-A-01"
+            },
+            {
+              "address": "E1218",
+              "value": "D6-C-R2-M022-REPONSE-A-01"
+            },
+            {
+              "address": "F1218",
+              "value": "Approche A à jouer dans le décor : Le joueur parcourt carte galactique, armurerie, archives, forge d’apparence, galerie, infirmerie, arène et sas. Chaque pièce demande un geste utile : ranger, régler, inspecter ou préparer. Les circulations sont physiques et les objets ne fusionnent pas avec ceux de la maison."
+            },
+            {
+              "address": "G1218",
+              "value": "Accès V5 et interlocuteur disponible ; possibilité réelle de l’approche choisie."
+            },
+            {
+              "address": "H1218",
+              "value": "Préparer une chasse courte ou un trajet avec escale change le chargement initial. Ne rien attribuer avant la résolution réelle ; le choix formule une intention."
+            },
+            {
+              "address": "I1218",
+              "value": "Après la réponse : action physique ou refus/différé ; succès/échec/reprise selon résultat réel et variantes prioritaires. Aucun résultat par la sélection seule."
+            }
+          ]
+        },
+        {
+          "number": 1219,
+          "cells": [
+            {
+              "address": "A1219",
+              "value": "D6-C-R2-M022-OPTION-B"
+            },
+            {
+              "address": "B1219",
+              "value": "D6-C-R2-M022"
+            },
+            {
+              "address": "C1219",
+              "value": "B"
+            },
+            {
+              "address": "D1219",
+              "value": "D6-C-R2-M022-CHOIX-B-01"
+            },
+            {
+              "address": "E1219",
+              "value": "D6-C-R2-M022-REPONSE-B-01"
+            },
+            {
+              "address": "F1219",
+              "value": "Approche B à jouer ou différé explicite : Le joueur parcourt carte galactique, armurerie, archives, forge d’apparence, galerie, infirmerie, arène et sas. Chaque pièce demande un geste utile : ranger, régler, inspecter ou préparer. Les circulations sont physiques et les objets ne fusionnent pas avec ceux de la maison."
+            },
+            {
+              "address": "G1219",
+              "value": "Lire les conditions V5 ; aucun objet ou PNJ supposé présent. Refuser ou différer suspend l’objectif au lieu de le déclarer réussi."
+            },
+            {
+              "address": "H1219",
+              "value": "Préparer une chasse courte ou un trajet avec escale change le chargement initial. Si le choix diffère, refuse ou se contente d’observer, ne pas jouer une réussite de tâche non accomplie."
+            },
+            {
+              "address": "I1219",
+              "value": "Après la réponse : action physique ou refus/différé ; succès/échec/reprise selon résultat réel et variantes prioritaires. Aucun résultat par la sélection seule."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { readFile } from 'node:fs/promises';
+import { auditPitSpriteSheetProduction } from "./helpers/pit-sprite-sheet-production.mjs";
+
+test("real registered PNGs prepare as distinct transparent cells and every registered facing/phase resolves in the combat renderer", async () => {
+  const complete = await auditPitSpriteSheetProduction();
+  const lifecycleFiles = ['pitLifecycleAnimationsV93', 'pitLifecycleWolfV94', 'pitLifecycleGreybackV94', 'pitLifecycleCelticV94', 'pitLifecycleBerserkerV94'];
+  const lifecycle = (await Promise.all(lifecycleFiles.map(async name => JSON.parse(await readFile(new URL('../app/game/data/' + name + '.json', import.meta.url), 'utf8'))))).flat();
+  const lifecycleIds = new Set(lifecycle.map(entry => entry.atlas.id));
+  const measured = complete.clips.filter(clip => lifecycleIds.has(clip.atlasId));
+  const identify = clip => [clip.atlasId, clip.clipId, clip.facing, clip.drawnCells, clip.ready].join(':');
+  assert.deepEqual(measured.map(identify).sort(), lifecycle.flatMap(entry => entry.atlas.clips.map(clip => identify({atlasId:entry.atlas.id,clipId:clip.id,facing:clip.facing,drawnCells:clip.frames.length,ready:true}))).sort(), 'every registered V93/V94 lifecycle clip is decoded and drawn, including each native dizzy and taunt frame');
+  assert(measured.filter(clip => clip.clipId.startsWith('pit.presentation.')).every(clip => clip.presentationClockOnly && clip.physicsUnchanged));
+  const report = complete.historicalThroughV92;
+  const workbook = JSON.parse(await readFile(new URL('../app/game/data/pitWorkbookAnimationsV100.json', import.meta.url), 'utf8'));
+  const workbookIds = new Set(complete.workbookAtlasIds);
+  const workbookClips = complete.clips.filter(clip => workbookIds.has(clip.atlasId));
+  assert.deepEqual(workbookClips.map(identify).sort(), workbook.filter(entry => entry.definition && entry.combatClipIds?.length)
+    .flatMap(entry => entry.definition.atlas.clips.filter(clip => entry.combatClipIds.includes(clip.id))
+      .map(clip => identify({ atlasId: entry.atlasId, clipId: clip.id, facing: clip.facing, drawnCells: clip.frames.length, ready: true }))).sort(),
+  'every explicitly admitted V100 combat phase is decoded independently; inspection-only gestures stay outside combat');
+  assert.equal(complete.readyPhaseClips, report.readyPhaseClips + measured.length + workbookClips.length);
+  assert.equal(report.status, "PASS");
+  assert.deepEqual(new Set(report.historicalFighters), new Set(["jungle-hunter", "city-hunter", "berserker", "wolf", "feral-hunter", "scar", "celtic", "tracker", "greyback", "theta", "machiko-noguchi", "valkyrie"]));
+  assert.ok(report.pageCount >= 11);
+  assert.ok(report.distinctDrawings >= 86);
+  assert.ok(report.readyPhaseClips >= 42);
+  const historicalClips = report.clips.filter(clip => clip.variantId === null);
+  const hammer = report.clips.filter(clip => clip.atlasId === 'valkyrie-hammer-v57');
+  for (const facing of ['right', 'left']) {
+    const phases = hammer.filter(clip => clip.facing === facing && clip.clipId.includes('technique.'));
+    assert.deepEqual(phases.map(clip => clip.runtimePhase), ['startup', 'active', 'recovery']);
+    assert.deepEqual(phases.map(clip => clip.runtimePhaseTicks), [28, 7, 36]);
+    assert.deepEqual(phases.map(clip => clip.drawnCells), [2, 1, 2]);
+    assert.equal(hammer.find(clip => clip.facing === facing && clip.clipId === 'idle').status, 'held-native-stance');
+  }
+  const feralMetadata = JSON.parse(await readFile(new URL('../app/game/data/pitFeralArtV59.json', import.meta.url), 'utf8'));
+  const feralActions = report.clips.filter(clip => clip.atlasId === 'feral-actions-v59');
+  assert.equal(feralActions.length, 12, 'two actions in both native directions, with three phases each');
+  assert(feralActions.every(clip => clip.fighterId === 'feral-hunter' && clip.variantId === null &&
+    clip.runtimePosture === 'stand' && clip.noMirroring && clip.uniformScale && clip.physicsUnchanged && clip.filter === 'none'),
+  'default Feral owns these standing native actions; no costume, airborne or crouched coverage is invented');
+  for (const facing of ['right', 'left']) for (const [action, timing] of [
+    ['technique.feral-guided-bolts-v58', [9, 5, 18]], ['heavy', [13, 5, 22]],
+  ]) {
+    const phases = feralActions.filter(clip => clip.facing === facing && clip.clipId.startsWith(`pit.stand.${action}.`));
+    assert.deepEqual(phases.map(clip => clip.runtimePhase), ['startup', 'active', 'recovery']);
+    assert.deepEqual(phases.map(clip => clip.runtimePhaseTicks), timing);
+    assert.deepEqual(phases.map(clip => clip.authoredTicks), timing);
+    assert.deepEqual(phases.map(clip => clip.drawnCells), [2, 1, 2]);
+    assert.deepEqual(phases.map(clip => clip.drawnFrameIndices), [[0, 1], [0], [0, 1]],
+      'every registered frame was actually passed to the renderer, including recovery');
+  }
+  const feralPages = report.pages.filter(page => page.src.includes('/v59/pit/feral/'));
+  assert.equal(feralPages.length, 4);
+  assert.equal(feralMetadata.records.length, 4);
+  assert.deepEqual(new Set(feralMetadata.records.map(record => `${record.action}:${record.facing}`)),
+    new Set(['launcher:right', 'launcher:left', 'shield:right', 'shield:left']));
+  assert.equal(new Set(feralPages.flatMap(page => page.cells.map(cell => cell.sha256))).size, 16,
+    'phase reuse does not inflate the sixteen independently authored drawings');
+  assert.equal(report.pages.some(page => page.pageId === 'feral-hunter-heavy'), false,
+    'the superseded V34 wrist-blade thrust must not remain registered as a shield action');
+  assert.equal(historicalClips.filter(clip => clip.fighterId === 'feral-hunter' && clip.clipId.startsWith('pit.stand.heavy.')).length, 6,
+    'only one shield phase resolves per facing, never an ambiguous older duplicate');
+  for (const record of feralMetadata.records) {
+    const page = feralPages.find(candidate => candidate.src === record.src);
+    assert.ok(page); assert.equal(page.variantId, null); assert.equal(page.sourceHasAlpha, true);
+    assert.equal(page.keyedPixels, 0); assert.equal(page.sourceSha256, record.sha256);
+    assert.equal(page.width, record.width); assert.equal(page.height, record.height);
+    assert.equal(page.distinctDrawings, 4); assert.equal(record.frames.length, 4);
+    for (const frame of record.frames) {
+      const cell = page.cells.find(candidate => candidate.rect.every((value, index) => value === frame.rect[index]));
+      assert.ok(cell); assert.deepEqual(cell.pivot, frame.pivot);
+      assert.deepEqual(cell.alphaBounds, frame.alphaBounds);
+      assert.deepEqual(cell.margins, frame.margins);
+      assert.ok(cell.margins.every(value => value > 0));
+    }
+  }
+  const finalDuel = report.clips.filter(clip => clip.variantId === 'jungle-hunter-final-duel-v57');
+  assert.equal(finalDuel.length, 2);
+  assert(finalDuel.every(clip => clip.status === 'held-native-stance' && clip.drawnCells === 1));
+  assert.deepEqual(new Set(finalDuel.map(clip => clip.facing)), new Set(['left', 'right']));
+  const v50Clips = report.clips.filter(clip => clip.atlasId.endsWith("-v50"));
+  const ahab = report.clips.filter(clip => clip.fighterId === "user-ahab" && /-v(?:45|49)$/.test(clip.atlasId));
+  const ahabExpected = ["idle", "high-guard", "pit.stand.light.startup", "pit.stand.light.active", "pit.stand.light.recovery"];
+  assert.deepEqual(ahab.map(clip => [clip.variantId, clip.clipId, clip.facing, clip.ready].join(":" )).sort(),
+    ahabExpected.flatMap(id => ["right", "left"].map(facing => ["ahab-avec-casque-0c8ceb1c95", id, facing, true].join(":"))).sort(),
+    "V45/V49 masked native idle, guard and complete light attacks remain unchanged");
+  for (const facing of ["right", "left"]) {
+    assert.deepEqual(ahab.filter(clip => clip.facing === facing && clip.clipId.startsWith("pit.stand.light.")).map(clip => clip.drawnCells), [1, 1, 2]);
+    assert.equal(ahab.find(clip => clip.facing === facing && clip.clipId === "idle").drawnCells, 2);
+    assert.equal(ahab.find(clip => clip.facing === facing && clip.clipId === "high-guard").drawnCells, 2);
+  }
+  const newAhabPages = report.pages.filter(page => page.fighterId === "user-ahab" && page.src.includes("/v49/"));
+  assert.equal(newAhabPages.length, 3);
+  assert.equal(newAhabPages.reduce((count, page) => count + page.distinctDrawings, 0), 12);
+  assert(newAhabPages.every(page => page.sourceHasAlpha && page.keyedPixels === 0 && page.cells.every(cell => cell.borderPixels === 0)));
+  const ahabPage = report.pages.find(page => page.fighterId === "user-ahab" && page.pageId === "ahab-masked-idle-guard-right-v45");
+  assert.ok(ahabPage, "the exact historical Ahab page is retained regardless of registry order");
+  assert.equal(ahabPage.sourceSha256, "bfe5e04dd61416c611de0d304b7ac74383437075240ed0c766edae3ada5364c7");
+  assert.equal(ahabPage.alphaNoisePixels, 36579);
+  assert.equal(ahabPage.keyedPixels, 0);
+  assert.equal(ahabPage.distinctDrawings, 4);
+  assert(ahabPage.cells.every(cell => cell.borderPixels === 0));
+  const v50Variants = new Map([
+    ["user-ahab", "ahab-avec-casque-0c8ceb1c95"],
+    ["wolf", "wolf-avec-casque-4261aca172"],
+    ["falconer", "falconer-avec-casque-f5618ed362"],
+    ["scarface", "scarface-avec-casque-bca00052d4"],
+    ["enforcer", "enforcer-avec-casque-ca164d8925"],
+    ["celtic", "celtic-avec-casque-0764ed4b53"],
+  ]);
+  assert.equal(v50Clips.filter(clip => clip.fighterId === "user-ahab").length, 8,
+    "Ahab adds only the reviewed masked crouch and three jump phases in both native orientations");
+  assert.deepEqual([...new Set(v50Clips.map(clip => clip.fighterId))].sort(), [...v50Variants.keys()].sort(),
+    "All six reviewed V50 masked fighters must be registered");
+  for (const fighterId of new Set(v50Clips.map(clip => clip.fighterId))) {
+    assert.ok(v50Variants.has(fighterId), "Only the reviewed V50 fighter lot may gain coverage");
+    const variantId = v50Variants.get(fighterId);
+    const clips = v50Clips.filter(clip => clip.fighterId === fighterId);
+    const expectedIds = ["pit.air.jump.rise", "pit.air.jump.apex", "pit.air.jump.fall"];
+    if (fighterId === "user-ahab") expectedIds.unshift("crouch");
+    assert.deepEqual(clips.map(clip => [clip.variantId, clip.clipId, clip.facing, clip.ready].join(":" )).sort(),
+      expectedIds.flatMap(id => ["right", "left"].map(facing => [variantId, id, facing, true].join(":"))).sort(),
+      fighterId + " V50 coverage belongs only to its exact supplied masked appearance");
+    for (const clip of clips) {
+      const airborne = clip.clipId.startsWith("pit.air.jump.");
+      assert.equal(clip.runtimePosture, airborne ? "air" : "crouch");
+      assert.equal(clip.runtimePhase, airborne ? "locomotion" : "hold");
+      assert.equal(clip.runtimePhaseTicks, null);
+      const drawnCells = clip.clipId.endsWith("rise") || (clip.clipId.endsWith("fall") && fighterId !== "user-ahab") ? 2 : 1;
+      assert.equal(clip.drawnCells, drawnCells, fighterId + " " + clip.clipId + " authored frame count");
+    }
+    const pages = report.pages.filter(page => page.fighterId === fighterId && page.src.includes("/v50/"));
+    assert.ok(pages.length > 0);
+    assert.ok(pages.every(page => page.variantId === variantId && page.sourceHasAlpha && page.keyedPixels === 0));
+    const drawings = new Set(pages.flatMap(page => page.cells.map(cell => cell.sha256)));
+    assert.equal(drawings.size, fighterId === "user-ahab" ? 6 : 8,
+      "Clip reuse must not inflate the number of distinct V50 drawings");
+  }
+  const presentationClips = report.clips.filter(clip => clip.clipId.startsWith("pit.presentation."));
+  const v51PresentationClips = presentationClips.filter(clip => clip.atlasId.endsWith("-v51"));
+  const v52PresentationClips = presentationClips.filter(clip => clip.atlasId.endsWith("-v52"));
+  assert.deepEqual(v51PresentationClips.map(clip => [clip.fighterId, clip.variantId, clip.atlasId, clip.clipId, clip.facing, clip.drawnCells, clip.ready].join(":" )).sort(),
+    ["intro", "victory", "defeat"].flatMap(kind => ["right", "left"].map(facing =>
+      ["jungle-hunter", "jungle-hunter-avec-casque-53f4eb349a", "jungle-hunter-masked-round-presentation-v51", "pit.presentation." + kind, facing, 3, true].join(":"))).sort(),
+    "All six dedicated V51 clips belong to the exact reviewed Jungle Hunter appearance");
+  const v52Appearances = [["city-hunter", "city-hunter-avec-casque-12136078fe"], ["scar", "scar-avec-casque-6a0a69930d"]];
+  assert.deepEqual(v52PresentationClips.map(clip => [clip.fighterId, clip.variantId, clip.atlasId, clip.clipId, clip.facing, clip.drawnCells, clip.ready].join(":" )).sort(),
+    v52Appearances.flatMap(([fighterId, variantId]) => ["intro", "victory", "defeat"].flatMap(kind => ["right", "left"].map(facing =>
+      [fighterId, variantId, fighterId + "-masked-round-presentation-v52", "pit.presentation." + kind, facing, 3, true].join(":")))).sort(),
+    "All twelve V52 ceremonies belong only to their exact supplied masked costumes");
+  assert.equal(presentationClips.length, 18);
+  assert.equal(report.readyPhaseClips, 387, "V91 adds ten entries and V92 twelve native equipment phase clips to365");
+  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 369);
+  assert.equal(report.pageCount, 161);
+  assert.equal(new Set(report.pages.map(page => page.src)).size, 135);
+  assert.equal(report.distinctDrawings, 775);
+  assert.equal(report.appearances.length, 26);
+  assert.equal(report.fighters.length, 19);
+  const v92 = report.clips.filter(clip => clip.atlasId.endsWith('-v92'));
+  assert.equal(v92.length, 12, 'two equipment gestures, three phases and two native facings');
+  assert(v92.every(clip => clip.ready && clip.drawnCells === 2 && clip.runtimePosture === 'stand'));
+  assert.equal(report.pages.filter(page => page.src.includes('/v92/pit/')).length, 12);
+  for (const [fighterId, variantId, action, durations] of [
+    ['user-ahab', 'ahab-avec-casque-0c8ceb1c95', 'medium', [11, 3, 20]],
+    ['user-samurai', 'samurai-avec-casque-d75f93b15e', 'technique.samurai-katana-contact-v92', [6, 8, 26]],
+  ]) for (const facing of ['right', 'left']) {
+    const owned = v92.filter(clip => clip.fighterId === fighterId && clip.facing === facing);
+    assert.equal(owned.length, 3);
+    assert(owned.every(clip => clip.variantId === variantId));
+    const phases = ['startup', 'active', 'recovery'];
+    assert.deepEqual(owned.map(clip => clip.clipId).sort(), phases.map(phase => 'pit.stand.' + action + '.' + phase).sort());
+    assert.deepEqual(phases.map(phase => owned.find(clip => clip.runtimePhase === phase).runtimePhaseTicks), durations);
+  }
+  const v63 = report.clips.filter(clip => clip.atlasId.endsWith('-v63'));
+  assert.equal(v63.filter(clip => clip.status === 'held-native-stance').length, 4);
+  assert.equal(v63.filter(clip => clip.drawnCells === 6).length, 4);
+  const emissary = report.clips.filter(clip => clip.fighterId === 'user-emissary-phg');
+  assert.equal(emissary.filter(clip => clip.status === 'held-native-stance').length,2);
+  assert.equal(emissary.filter(clip => clip.drawnCells === 6).length,2);
+  const v53Clips = report.clips.filter(clip => clip.atlasId.endsWith('-v53'));
+  assert.deepEqual(v53Clips.map(clip => [clip.fighterId, clip.variantId, clip.clipId, clip.facing, clip.drawnCells, clip.ready].join(':')).sort(),
+    v52Appearances.flatMap(([fighterId, variantId]) => ['right', 'left'].map(facing => [fighterId, variantId, 'walk', facing, 2, true].join(':'))).sort(),
+    'V53 shuffles belong only to the exact City and Scar masked appearances');
+  assert(v53Clips.every(clip => clip.runtimePhase === 'locomotion' && clip.runtimePosture === 'stand' && clip.runtimePhaseTicks === null));
+  const v51Pages = report.pages.filter(page => page.src.includes("/v51/"));
+  assert.equal(v51Pages.length, 6);
+  assert.equal(new Set(v51Pages.map(page => page.src)).size, 4);
+  assert.equal(new Set(v51Pages.flatMap(page => page.cells.map(cell => cell.sha256))).size, 16,
+    "Two neutral references reused in presentation do not inflate distinct drawings");
+  assert(v51Pages.every(page => page.variantId === "jungle-hunter-avec-casque-53f4eb349a" && page.sourceHasAlpha && page.keyedPixels === 0));
+  const v52Pages = report.pages.filter(page => page.src.includes("/v52/"));
+  assert.equal(v52Pages.length, 12);
+  assert.equal(new Set(v52Pages.map(page => page.src)).size, 6);
+  assert.equal(new Set(v52Pages.flatMap(page => page.cells.map(cell => cell.sha256))).size, 26,
+    "Reused presentation stances must not inflate V52 distinct drawings");
+  for (const [fighterId, variantId] of v52Appearances) {
+    const pages = v52Pages.filter(page => page.fighterId === fighterId);
+    assert.equal(new Set(pages.flatMap(page => page.cells.map(cell => cell.sha256))).size, fighterId === "city-hunter" ? 14 : 12);
+    assert(pages.every(page => page.variantId === variantId && page.sourceHasAlpha && page.keyedPixels === 0 && page.transparency.noiseFloor === 2));
+    assert(pages.every(page => page.cells.every(cell => cell.borderPixels === 0)));
+  }
+  for (const clip of presentationClips) {
+    assert.ok(["intro", "victory", "defeat"].includes(clip.runtimePhase));
+    assert.equal(clip.clipId, "pit.presentation." + clip.runtimePhase);
+    assert.equal(clip.runtimePosture, "presentation");
+    assert.equal(clip.runtimePhaseTicks, null);
+    assert.equal(clip.presentationClockOnly, true); assert.equal(clip.physicsUnchanged, true);
+    assert.equal(clip.status, "dedicated-animation");
+    assert.deepEqual(clip.drawnFrameIndices, Array.from({ length: clip.drawnCells }, (_, index) => index));
+    assert.ok(clip.drawnCells >= 2, "A dedicated sequence must contain real changing drawings");
+  }
+  const city = historicalClips.filter(clip => clip.fighterId === "city-hunter");
+  assert.equal(city.length, 10);
+  assert.equal(city.filter(clip => clip.clipId === "high-guard" && clip.facing === "right" && clip.ready).length, 1);
+  assert.equal(city.filter(clip => clip.clipId === "high-guard" && clip.facing === "left" && clip.ready).length, 1, "Left guard requires its own authored atlas");
+  const wolf = historicalClips.filter(clip => clip.fighterId === "wolf");
+  assert.equal(wolf.length, 17);
+  assert.equal(wolf.some(clip => clip.clipId === "walk" || clip.clipId === "walk-backward" || clip.clipId.startsWith("pit.stand.medium")), false);
+  assert.equal(wolf.filter(clip => clip.clipId.startsWith("pit.stand.heavy")).length, 3);
+  assert.ok(wolf.filter(clip => clip.clipId.startsWith("pit.stand.heavy")).every(clip => clip.facing === "left"));
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "feral-hunter").length, 36);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "scar").length, 30);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "celtic").length, 28);
+  assert.equal(historicalClips.some(clip => clip.fighterId === "celtic" && clip.clipId === "walk"), false, "Rejected forward gait must remain absent");
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "tracker").length, 30);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "greyback").length, 28);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "theta").length, 26);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "machiko-noguchi").length, 26);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "jungle-hunter" && clip.clipId === "walk-backward").length, 1);
+  const berserker = historicalClips.filter(clip => clip.fighterId === "berserker");
+  assert.equal(berserker.length, 28);
+  assert.equal(berserker.filter(clip => clip.clipId === "pit.stand.hitstun" && clip.ready && clip.drawnCells === 4).length, 2);
+  assert.equal(berserker.some(clip => clip.clipId === "walk"), false, "Rejected forward walking must not become coverage");
+  for (const facing of ["right", "left"]) for (const clipId of ["crouch", "high-guard", "walk-backward", "pit.stand.medium.startup", "pit.stand.medium.active", "pit.stand.medium.recovery", "pit.stand.heavy.startup", "pit.stand.heavy.active", "pit.stand.heavy.recovery"]) {
+    assert.ok(berserker.some(clip => clip.facing === facing && clip.clipId === clipId && clip.ready));
+  }
+  for (const fighterId of report.historicalFighters.filter(id => id !== "valkyrie")) for (const facing of ["right", "left"]) {
+    for (const clipId of ["idle", "pit.stand.light.startup", "pit.stand.light.active", "pit.stand.light.recovery"]) {
+      assert.ok(historicalClips.some(clip => clip.fighterId === fighterId && clip.facing === facing && clip.clipId === clipId && clip.ready));
+    }
+  }
+});

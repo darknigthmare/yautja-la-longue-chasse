@@ -1,0 +1,815 @@
+{
+  "schemaVersion": 1,
+  "version": "v54",
+  "verifiedOn": "2026-09-27",
+  "canonicalFranchiseAudio": false,
+  "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "packs": {
+    "interface": {
+      "page": "https://kenney.nl/assets/interface-sounds",
+      "archive": "https://kenney.nl/media/pages/assets/interface-sounds/fa43c1dd4d-1677589452/kenney_interface-sounds.zip",
+      "sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "licenseOriginalSha256": "f7966c773bbed0eca6a9c75081c44a178b38eae112724dbb5fdfbd4192d118a9"
+    },
+    "rpg": {
+      "page": "https://kenney.nl/assets/rpg-audio",
+      "archive": "https://kenney.nl/media/pages/assets/rpg-audio/8e99002d76-1677590336/kenney_rpg-audio.zip",
+      "sha256": "6dbeaf8544da958d8f2adcb4a4a4b76c1ade34a05f8ab9edccd327da7375f38b",
+      "licenseOriginalSha256": "5735dfd72cb64cbbceda4ebc00c380c41ca680edb82ff153aa7c9ab97614c539"
+    },
+    "sci-fi": {
+      "page": "https://kenney.nl/assets/sci-fi-sounds",
+      "archive": "https://kenney.nl/media/pages/assets/sci-fi-sounds/6b296f9ecf-1677589334/kenney_sci-fi-sounds.zip",
+      "sha256": "119340f351a5098ad814f78719438c0da355a9ce8a4c8a3af6a8d48aa3d49e04",
+      "licenseOriginalSha256": "a9767b25c3533f69d03af136480efad08efba19a9f0d89616992b34c79fd6186"
+    }
+  },
+  "assets": [
+    {
+      "category": "sfx",
+      "id": "ui",
+      "file": "sfx/ui/v54.wav",
+      "bytes": 8610,
+      "sha256": "05830b46be4e59761024d276b6bec18a4025964a819d188ed68304fe92b40bed",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.09712018140589569,
+      "peak": 0.1199951171875,
+      "rms": 0.008532400873530382,
+      "dc": -2.1447095530294185e-06,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "interface",
+        "originalPath": "Audio/click_001.ogg",
+        "sha256": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/interface-sounds"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.12,
+        "rmsLimit": 0.06,
+        "gain": 0.3714879465844185,
+        "removedDc": -0.0014433144983064998
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "select",
+      "file": "sfx/select/v54.wav",
+      "bytes": 47584,
+      "sha256": "68771760d2a5810f9f020ee00be44f97dcbc989ef251e6b03a2049b4e02ab8c3",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.5390022675736962,
+      "peak": 0.17999267578125,
+      "rms": 0.036828443911365666,
+      "dc": -2.054191207404291e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "interface",
+        "originalPath": "Audio/confirmation_002.ogg",
+        "sha256": "33b17a9a9a2397c62b285c52c33a907fdffb476909c99e42dde603f6a7a8b12c",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/interface-sounds"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.18,
+        "rmsLimit": 0.06,
+        "gain": 0.20903604397309955,
+        "removedDc": -0.0002214636375963188
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "jump",
+      "file": "sfx/jump/v54.wav",
+      "bytes": 58346,
+      "sha256": "b07f7f28dbe2b6ebef4508f0fb3b45f1b2c8d909ca4d7659773b1e32529aeb16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.6610204081632653,
+      "peak": 0.160003662109375,
+      "rms": 0.011790760150281463,
+      "dc": -7.537530873726459e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "rpg",
+        "originalPath": "Audio/cloth1.ogg",
+        "sha256": "ddb93a3671233f95da0e0b10367f082f7eb42fa6caaddcf776410aa8833c747d",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/rpg-audio"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.16,
+        "rmsLimit": 0.05,
+        "gain": 0.2541953578307746,
+        "removedDc": 8.041143768870009e-05
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "footstep",
+      "file": "sfx/footstep/v54.wav",
+      "bytes": 23770,
+      "sha256": "d7c8ed478556cf7c747bcee2f85136438dea0b4c8926ee0450b100c03758fbac",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.26900226757369616,
+      "peak": 0.139984130859375,
+      "rms": 0.012824636523238599,
+      "dc": 3.087001074770294e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "rpg",
+        "originalPath": "Audio/footstep03.ogg",
+        "sha256": "a86756b9af9f370455ab47844239bb07fd1bee7a113068c91f0fcd9b72703fae",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/rpg-audio"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.14,
+        "rmsLimit": 0.04,
+        "gain": 0.1376791221851301,
+        "removedDc": 7.31391373695638e-05
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "slash",
+      "file": "sfx/slash/v54.wav",
+      "bytes": 52922,
+      "sha256": "dd4efed6463c40b749a4c832f501f7af6fbc5423164ccf0e09992e1f3ece0dd4",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.5995238095238096,
+      "peak": 0.239990234375,
+      "rms": 0.026419078154042677,
+      "dc": -1.3851164472937705e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "rpg",
+        "originalPath": "Audio/knifeSlice.ogg",
+        "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/rpg-audio"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.24,
+        "rmsLimit": 0.065,
+        "gain": 0.33376057277487553,
+        "removedDc": -9.459259964302113e-06
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "plasma",
+      "file": "sfx/plasma/v54.wav",
+      "bytes": 59724,
+      "sha256": "d336712da21eea798974387a7bcf2520878317044f5182806947252184e86a4c",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.6766439909297052,
+      "peak": 0.259979248046875,
+      "rms": 0.03964276325565535,
+      "dc": -3.170391829339812e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "sci-fi",
+        "originalPath": "Audio/laserLarge_000.ogg",
+        "sha256": "a56d95794cd732d6c2d66ce488c14cf557fe526c282897c9a77675c2bd9b77e6",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/sci-fi-sounds"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.26,
+        "rmsLimit": 0.07,
+        "gain": 0.2894989236642386,
+        "removedDc": -0.0005410079674344671
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "scan",
+      "file": "sfx/scan/v54.wav",
+      "bytes": 33560,
+      "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.38,
+      "peak": 0.065704345703125,
+      "rms": 0.039998810185796374,
+      "dc": -9.105375977145245e-09,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "sci-fi",
+        "originalPath": "Audio/computerNoise_000.ogg",
+        "sha256": "1527944e16eb14b48ee03fe3e7ce6aae94262833a4e1f83928d451a7414fe4e1",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/sci-fi-sounds"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": 0.38,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.16,
+        "rmsLimit": 0.04,
+        "gain": 0.0924088240582358,
+        "removedDc": -0.00034732579104710813
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "cloak-on",
+      "file": "sfx/cloak-on/v54.wav",
+      "bytes": 84188,
+      "sha256": "c20114f57d3fb83b7a5fde25ea6787644519f0d80fbd34bf5c079bfdb31681f0",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.9540136054421768,
+      "peak": 0.170257568359375,
+      "rms": 0.04999839998087276,
+      "dc": -1.8134137980723522e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "sci-fi",
+        "originalPath": "Audio/forceField_000.ogg",
+        "sha256": "c2916f2a062c8ddd1aca2826d134fe90847037db31342726ffb0f9097afe339c",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/sci-fi-sounds"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.18,
+        "rmsLimit": 0.05,
+        "gain": 0.18865747472269928,
+        "removedDc": 8.042283879767234e-05
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "cloak-off",
+      "file": "sfx/cloak-off/v54.wav",
+      "bytes": 84136,
+      "sha256": "d1b347e76fe796e4776bf235eb49b2c5becb3e868dfd9bd7045eefdcfe773815",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.9534240362811791,
+      "peak": 0.153961181640625,
+      "rms": 0.044998614402075074,
+      "dc": 1.8871165657850925e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "sci-fi",
+        "originalPath": "Audio/forceField_001.ogg",
+        "sha256": "5574e69dd04e5f59322c5ddffde5978f077b09170ae5e29cec0bd9901828cd90",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/sci-fi-sounds"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.16,
+        "rmsLimit": 0.045,
+        "gain": 0.1709055246905149,
+        "removedDc": -1.8598375812841293e-05
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "mask-on",
+      "file": "sfx/mask-on/v54.wav",
+      "bytes": 23092,
+      "sha256": "b29adbb030624b3c904fc38e9f0f40ec10dec8f82547a490a34eafe7f8eb625f",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.2613151927437642,
+      "peak": 0.16998291015625,
+      "rms": 0.013067490283284626,
+      "dc": 1.218160876214856e-07,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "rpg",
+        "originalPath": "Audio/metalLatch.ogg",
+        "sha256": "ba9ba60b172b3ebc131a940f25793cd2e207aca7af73dc80d637277f060f1708",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/rpg-audio"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.17,
+        "rmsLimit": 0.05,
+        "gain": 0.15524703283934835,
+        "removedDc": -0.00024838913894546886
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "mask-off",
+      "file": "sfx/mask-off/v54.wav",
+      "bytes": 39366,
+      "sha256": "6e7cef893466b939a2bcf7bb1705b85447cbc6f1fce44dc350f8575dba8ec516",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.445827664399093,
+      "peak": 0.149993896484375,
+      "rms": 0.006779822047310543,
+      "dc": -3.880471253369615e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "rpg",
+        "originalPath": "Audio/metalClick.ogg",
+        "sha256": "9851a69d0c613e13bceef08060ecc4148f098ef487927cbebe270d642398a3b3",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/rpg-audio"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.15,
+        "rmsLimit": 0.045,
+        "gain": 0.38355346401353063,
+        "removedDc": 1.6585178714277553e-05
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "weapon-switch",
+      "file": "sfx/weapon-switch/v54.wav",
+      "bytes": 39366,
+      "sha256": "ae907ea016243a4853bd6f430a109a24c7e03ca81fbf45106f1f9dacee1e9814",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.445827664399093,
+      "peak": 0.17999267578125,
+      "rms": 0.023564710302550987,
+      "dc": 4.346127803773969e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "rpg",
+        "originalPath": "Audio/drawKnife2.ogg",
+        "sha256": "d5df6a4130cbb016f97b4883769a418917b9629cb4c21717030b186e0c73281a",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/rpg-audio"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.18,
+        "rmsLimit": 0.05,
+        "gain": 2.9185303093381756,
+        "removedDc": 1.8959084937528638e-06
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "medicomp",
+      "file": "sfx/medicomp/v54.wav",
+      "bytes": 30408,
+      "sha256": "94f68331a930ddf1658f7fa7601cfd6bc8f12a7ec9da6ce88f268ee6f238d8f5",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.34426303854875284,
+      "peak": 0.149993896484375,
+      "rms": 0.02594080545432655,
+      "dc": 2.613150544230009e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "sci-fi",
+        "originalPath": "Audio/laserSmall_002.ogg",
+        "sha256": "e70139466c3e801358c9041ee17db7ff82c0e9a9cdf44647ad0ea6b9f8458f63",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/sci-fi-sounds"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.15,
+        "rmsLimit": 0.045,
+        "gain": 0.36139756697701647,
+        "removedDc": -0.0002364250216357049
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "netgun",
+      "file": "sfx/netgun/v54.wav",
+      "bytes": 24740,
+      "sha256": "2cd320068b282e8e2cba7a2758d5d76f913a905426bb06e2ab5b696d651aca00",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.28,
+      "peak": 0.220001220703125,
+      "rms": 0.04082871937692469,
+      "dc": 1.4828755162779397e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "sci-fi",
+        "originalPath": "Audio/thrusterFire_000.ogg",
+        "sha256": "0fdc474d93f209debf1fc4ea77765a669dcb7676db31b4d8a0a509685bccf374",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/sci-fi-sounds"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": 0.28,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.22,
+        "rmsLimit": 0.06,
+        "gain": 0.39038328999222915,
+        "removedDc": -0.003547462432984249
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "snare",
+      "file": "sfx/snare/v54.wav",
+      "bytes": 63770,
+      "sha256": "3e1304aff0657366b8fafdfb3e5295b0840265253b08c176d28ef4aadc172b6e",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.7225170068027211,
+      "peak": 0.199981689453125,
+      "rms": 0.008899979231290836,
+      "dc": 6.704423528073314e-09,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "rpg",
+        "originalPath": "Audio/clothBelt.ogg",
+        "sha256": "f29560a2aea95bbfeb643e1e8f56ec2b6f7e32f32ce4e140645a36db81de3253",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/rpg-audio"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.2,
+        "rmsLimit": 0.055,
+        "gain": 0.3315302143305137,
+        "removedDc": 2.2895627500001447e-05
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "enemy-alert",
+      "file": "sfx/enemy-alert/v54.wav",
+      "bytes": 29114,
+      "sha256": "8ed0cbb86388638679a2b6e9d7ff5970bd6a4084a875a331de1cd4061019a97d",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.3295918367346939,
+      "peak": 0.1705322265625,
+      "rms": 0.0599980985406389,
+      "dc": -2.3095518360853114e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "interface",
+        "originalPath": "Audio/question_003.ogg",
+        "sha256": "00bafc564e29c12e99da584864a750260e7110378251d63d3aa5b3d727836efe",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/interface-sounds"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.18,
+        "rmsLimit": 0.06,
+        "gain": 0.19009372800955646,
+        "removedDc": 2.3251734817467875e-06
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "objective",
+      "file": "sfx/objective/v54.wav",
+      "bytes": 43298,
+      "sha256": "371d585b2783406698c4a9e94cb1acc2a8c00e006a40ecae51d1e7b3a359e07e",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.4904081632653061,
+      "peak": 0.199981689453125,
+      "rms": 0.0572560223149818,
+      "dc": 1.1288695843159014e-08,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "interface",
+        "originalPath": "Audio/confirmation_004.ogg",
+        "sha256": "568967a3d9f8a8f6af54ea01729c4882284308f2a27d78c07ffd7ee0d6951661",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/interface-sounds"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.2,
+        "rmsLimit": 0.065,
+        "gain": 0.2221380141954551,
+        "removedDc": 2.6635631296574676e-06
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "hit",
+      "file": "sfx/hit/v54.wav",
+      "bytes": 36654,
+      "sha256": "c9fab9d00656beaaaed4d150a574742b04fea3ccb988fd35cf51365e56fcb0c7",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 0.4150793650793651,
+      "peak": 0.29998779296875,
+      "rms": 0.04440443254888355,
+      "dc": 0,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "rpg",
+        "originalPath": "Audio/dropLeather.ogg",
+        "sha256": "097e1d3b74949b0145fda0519d40b7e0773ab82ec4858727f95be830927e1a45",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/rpg-audio"
+      },
+      "processing": {
+        "monoAverage": true,
+        "maxDuration": null,
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.012,
+        "peakLimit": 0.3,
+        "rmsLimit": 0.08,
+        "gain": 0.7418515559700002,
+        "removedDc": 3.821656730331565e-05
+      }
+    },
+    {
+      "category": "ambience",
+      "id": "ship",
+      "file": "ambience/ship/v54.wav",
+      "bytes": 418994,
+      "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 4.75,
+      "peak": 0.05426025390625,
+      "rms": 0.024999254208076978,
+      "dc": -2.3309762501491826e-09,
+      "kind": "external-cc0-adaptation",
+      "source": {
+        "pack": "sci-fi",
+        "originalPath": "Audio/spaceEngineLow_000.ogg",
+        "sha256": "d7deee8d7217ce63aab802ad7365a59cacfd243392dc1bd03b0a9d454aa494df",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "sourcePage": "https://kenney.nl/assets/sci-fi-sounds"
+      },
+      "processing": {
+        "monoAverage": true,
+        "circularOverlapSeconds": 0.25,
+        "peakLimit": 0.1,
+        "rmsLimit": 0.025,
+        "gain": 0.0607411489648171,
+        "removedDc": -0.00024548946302629774
+      },
+      "loopBoundaryStep": 0.00033676020575233723
+    },
+    {
+      "category": "sfx",
+      "id": "trophy",
+      "file": "sfx/trophy/v54.wav",
+      "bytes": 105884,
+      "sha256": "f58c1995dd144316b8474448a621440c6c8a58f4a077ace922b6d8360c1c97a4",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 1.2,
+      "peak": 0.25,
+      "rms": 0.04044779487126719,
+      "dc": -1.0207126470379819e-07,
+      "kind": "original-procedural",
+      "author": "Yautja La Longue Chasse project / Codex",
+      "license": "project-original-no-third-party-samples",
+      "recipe": {
+        "seconds": 1.2,
+        "notes": [
+          [
+            0.16,
+            174,
+            0.85
+          ],
+          [
+            0.38,
+            261,
+            0.7
+          ]
+        ],
+        "drums": [
+          [
+            0,
+            95
+          ],
+          [
+            0.18,
+            82
+          ]
+        ]
+      },
+      "processing": {
+        "peakLimit": 0.25,
+        "rmsLimit": 0.055,
+        "gain": 0.13995594199965095,
+        "removedDc": -7.032744987760841e-06
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "victory",
+      "file": "sfx/victory/v54.wav",
+      "bytes": 141164,
+      "sha256": "c13708e8a33adaa0f988aab76671bf39b7b5c4e80177d3f496437e1eb219575a",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 1.6,
+      "peak": 0.25,
+      "rms": 0.04760706268321209,
+      "dc": -6.833584670847506e-07,
+      "kind": "original-procedural",
+      "author": "Yautja La Longue Chasse project / Codex",
+      "license": "project-original-no-third-party-samples",
+      "recipe": {
+        "seconds": 1.6,
+        "notes": [
+          [
+            0.36,
+            146.83,
+            1
+          ],
+          [
+            0.49,
+            220,
+            0.95
+          ],
+          [
+            0.62,
+            329.63,
+            0.9
+          ]
+        ],
+        "drums": [
+          [
+            0,
+            76
+          ],
+          [
+            0.22,
+            88
+          ],
+          [
+            0.44,
+            64
+          ]
+        ]
+      },
+      "processing": {
+        "peakLimit": 0.25,
+        "rmsLimit": 0.055,
+        "gain": 0.14640489199004467,
+        "removedDc": 0.00011994128772403613
+      }
+    },
+    {
+      "category": "sfx",
+      "id": "defeat",
+      "file": "sfx/defeat/v54.wav",
+      "bytes": 123524,
+      "sha256": "e302f3ee18a421d1940a80a4f35bb61826c546dcade2359ad8822e38f989a35c",
+      "sampleRate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "duration": 1.4,
+      "peak": 0.25,
+      "rms": 0.043887851562898324,
+      "dc": -1.2406725152858763e-07,
+      "kind": "original-procedural",
+      "author": "Yautja La Longue Chasse project / Codex",
+      "license": "project-original-no-third-party-samples",
+      "recipe": {
+        "seconds": 1.4,
+        "notes": [
+          [
+            0,
+            154,
+            0.8
+          ],
+          [
+            0.25,
+            103,
+            0.85
+          ],
+          [
+            0.55,
+            58,
+            0.8
+          ]
+        ],
+        "drums": [
+          [
+            0,
+            48
+          ]
+        ]
+      },
+      "processing": {
+        "peakLimit": 0.25,
+        "rmsLimit": 0.055,
+        "gain": 0.1485905955177448,
+        "removedDc": -0.00022785834963382062
+      }
+    }
+  ],
+  "limitations": [
+    "CC0 sound design is an original project adaptation, not official Predator or AVP audio.",
+    "No source pack recording technique is asserted; external sound design is distinct from project procedural synthesis.",
+    "No score, voice acting, or eight remaining biome audio files supplied in this batch.",
+    "Subjective listening and in-game mix approval remain required."
+  ]
+}

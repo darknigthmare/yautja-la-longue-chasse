@@ -1,0 +1,200 @@
+{
+  "schema": "native-homeworld-cages-reference-contract-v1",
+  "date": "2026-11-02",
+  "scope": "four original independent cage props; outputs outside repository only",
+  "status": "FOUR_NATIVE_CANDIDATES_PRODUCED_NON_ADMITTED",
+  "source": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+  "targets": [
+    {
+      "id": "target-v81-71-276",
+      "label": "cage petite",
+      "section": 71,
+      "originalTextLine": 1953,
+      "catalogueJsonLine": 1932,
+      "proposedDistinctConstruction": "Compact hexagonal low containment cage with faceted bronze rib construction and basalt base.",
+      "historicalInventoryStatus": "MISSING",
+      "qualifiedIndependentHomeworldSpriteLocated": false
+    },
+    {
+      "id": "target-v81-71-277",
+      "label": "cage moyenne",
+      "section": 71,
+      "originalTextLine": 1954,
+      "catalogueJsonLine": 1939,
+      "proposedDistinctConstruction": "Elongated low rectangular containment cage with side hatch and broad bars; distinctly larger plan.",
+      "historicalInventoryStatus": "MISSING",
+      "qualifiedIndependentHomeworldSpriteLocated": false
+    },
+    {
+      "id": "target-v81-71-278",
+      "label": "cage lourde",
+      "section": 71,
+      "originalTextLine": 1955,
+      "catalogueJsonLine": 1946,
+      "proposedDistinctConstruction": "Heavy armored containment cage, broad sled base, thick buttresses and structural overhead arches.",
+      "historicalInventoryStatus": "MISSING",
+      "qualifiedIndependentHomeworldSpriteLocated": false
+    },
+    {
+      "id": "target-v81-73-305",
+      "label": "petite cage",
+      "section": 73,
+      "originalTextLine": 1995,
+      "catalogueJsonLine": 2135,
+      "proposedDistinctConstruction": "Small lower-quarter salvaged cage, asymmetric patched frame and repaired plates; different structure and context from fauna small cage.",
+      "historicalInventoryStatus": "MISSING",
+      "qualifiedIndependentHomeworldSpriteLocated": false
+    }
+  ],
+  "existingCageNuance": {
+    "finding": "Cage-named raster files exist globally, but are Youth frontal arena scene layers. No independent small/medium/heavy Homeworld cage was located. Historical MISSING is not global absence of cage art.",
+    "consumer": "app/game/youthArtManifest.ts:34-37",
+    "structureDestination": [
+      140,
+      140,
+      680,
+      295
+    ],
+    "floorDestination": [
+      135,
+      421,
+      690,
+      76
+    ]
+  },
+  "references": [
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/youth/v53/cage-structure.png",
+      "sha256": "bdf49e15370251cb25fdee53c1619bf3b2c1b1fb4d79bd3f1a240f9daa2f3780",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGBA",
+      "visuallyOpened": true,
+      "finding": "Opened: wide frontal Youth arena enclosure, not independent Homeworld cage prop."
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/youth/v53/cage-floor.png",
+      "sha256": "a5bf242a63aa04f30c5d07317bd26d01ae5457a2b438adf70326079ef69c6f96",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGBA",
+      "visuallyOpened": true,
+      "finding": "Opened: separate frontal Youth arena floor."
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/youth/v53/cage-background.png",
+      "sha256": "1120d6deb39ce987508c6555a40e08772d9638ed208a7ca9604c6fc9064f8401",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "visuallyOpened": true,
+      "finding": "Opened: opaque arena background, not independent prop."
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v77/fauna-habitat-native.png",
+      "sha256": "5f19f7f0e5211eff377250b5178064b9d612dbf0184c10a7926164702e57e014",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "visuallyOpened": true,
+      "finding": "Opened: basalt shelf/platform, no cage."
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v83/cargo-rack-right.png",
+      "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "visuallyOpened": true,
+      "finding": "Opened: current independent right-facing cargo prop; palette/material/camera reference only."
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v75/architecture/undercity-refuge.png",
+      "sha256": "3923720daf1bee1f3ecfc181597dd9b7689ab4b4a2e42da1ee2d51e40c5465c0",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "visuallyOpened": true,
+      "finding": "Opened: lower-quarter basalt/bronze architecture and repair wear reference only."
+    },
+    {
+      "path": "/workspace/native-production-20261102/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+      "sha256": "644a9652da91d51ddd2e8576f786af3ba262ffc1413cabd2aa3abbd22b4e595a",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "visuallyOpened": true,
+      "finding": "Opened original outside-repo candidate: charcoal porous basalt with patinated bronze; palette/material/camera family reference, not cage shape or admitted artwork."
+    },
+    {
+      "path": "/workspace/native-production-20261102/target-v81-71-272-nourrisseur-native.png",
+      "sha256": "214e44126281c66f8d526e57f2cb90527c7c255c7380c516a991a0d3cc3be91b",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "visuallyOpened": true,
+      "finding": "Opened original outside-repo candidate: charcoal porous basalt with patinated bronze; palette/material/camera family reference, not cage shape or admitted artwork."
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/target-v81-57-71-emitter-left-native.png",
+      "sha256": "6223d55bf97da84de22798a24e39f3c54c3d92d9368c7cb53fb1b5cb0e48bfeb",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "visuallyOpened": true,
+      "finding": "Parent hero opened before generation; material/camera/light reference only, not cage form or admission."
+    }
+  ],
+  "contract": {
+    "requestDimensions": [
+      1024,
+      1024
+    ],
+    "nativeDimensionsMustBeRecorded": true,
+    "objectCount": 1,
+    "background": "true alpha transparency with transparent gaps between bars",
+    "camera": "Elevated orthographic three-quarter view32degrees, top-left lighting; follow opened emitter hero.",
+    "materials": [
+      "charcoal basalt",
+      "patinated bronze",
+      "small restrained amber indicators"
+    ],
+    "wholeObjectVisible": true,
+    "requestedTransparentMarginPixels": 64,
+    "noPaintedAnimalsPeople": true,
+    "noHumanStableStyling": true,
+    "noPixelEditingCroppingMirroring": true,
+    "maxRetryForActualRefusal": 1,
+    "pivot": "to measure and propose at center of support footprint from unchanged native; no claim of integration",
+    "humanValidated": false,
+    "runtimeActivated": false,
+    "automaticAdmission": false,
+    "admissionPending": [
+      "native alpha and full silhouette checks",
+      "visual family/size/context distinction",
+      "in-context scale and obstruction review",
+      "human art admission"
+    ]
+  },
+  "guide": "/workspace/native-homeworld-open-20261102/industrial-architecture/guides/create-game-assets-SKILL.md",
+  "pinnedGuideCommit": "19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9",
+  "allReferenceHashesStillMatch": true
+}

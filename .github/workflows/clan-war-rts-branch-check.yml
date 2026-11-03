@@ -1,0 +1,45 @@
+name: RTS branch type and scenario checks
+
+on:
+  pull_request:
+    branches:
+      - feat/v115-clan-mission-formats-20261030
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*.ts
+            /*.mts
+            /*.json
+            /.openai/
+            /app/
+            /desktop/
+            /scripts/
+            /tests/
+            /build/
+            /drizzle/
+            /supabase/
+            /public/game/assets/v14/hunter-kit/manifest.json
+            /public/game/assets/v15/trophies/manifest.json
+            /public/game/assets/v16/franchise-trophies/manifest.json
+            /public/game/assets/v17/enemy-trophies/manifest.json
+            /public/game/assets/v18/enemy-trophy-gameplay/manifest.json
+            /public/game/assets/v28/sprite-review/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: RTS and four-mode tests
+        run: node --test --test-reporter=spec tests/clan-war-*v115.test.mjs tests/clan-war-terrain-v116.test.mjs tests/clan-war-medical-v116.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-nav-v118.test.mjs tests/clan-war-source-dossiers-v117.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-source-scenarios-v119.test.mjs tests/clan-war-rts-circuit-v120.test.mjs tests/clan-war-beacon-v121.test.mjs tests/clan-war-wind-extraction-v122.test.mjs tests/clan-war-rts-report-log-v123.test.mjs
+      - name: Typecheck project
+        run: npm run typecheck -- --incremental false

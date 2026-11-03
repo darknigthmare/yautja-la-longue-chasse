@@ -1,0 +1,3517 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-02",
+  "scope": "17 allocated Homeworld industrial/architecture/urban targets; native original production only, outside repository. Not a closure of all354 catalogue targets or the56 global requirements.",
+  "allocation": [
+    "target-v81-55-26",
+    "target-v81-55-42",
+    "target-v81-55-43",
+    "target-v81-56-56",
+    "target-v81-59-105",
+    "target-v81-65-175",
+    "target-v81-66-192",
+    "target-v81-68-236",
+    "target-v81-73-295",
+    "target-v81-73-301",
+    "target-v81-73-308",
+    "target-v81-74-310",
+    "target-v81-74-311",
+    "target-v81-74-315",
+    "target-v81-74-316",
+    "target-v81-74-319",
+    "target-v81-76-354"
+  ],
+  "repositoryMutated": false,
+  "gitUsed": false,
+  "workbookMutated": false,
+  "priorFrozenProductsMutated": false,
+  "status": "CANDIDATS_NON_ADMIS",
+  "totals": {
+    "allocatedTargets": 17,
+    "generatedTargets": 17,
+    "originalNativePngs": 17,
+    "candidatePngs": 17,
+    "candidateVariantsPerTarget": 1,
+    "retries": 0,
+    "rejectedAttempts": 0,
+    "strictAlphaGt0MarginPass": 0,
+    "strictAlphaGt0MarginFail": 17,
+    "diagnosticAlphaGt8MarginPass": 14,
+    "diagnosticAlphaGt8MarginFail": 3,
+    "imagesWithAlphaGt0BorderPixels": 13,
+    "imagesWithAlphaGt2BorderPixels": 0,
+    "imagesWithAlphaGt8BorderPixels": 0,
+    "technicalAdmissions": 0,
+    "runtimeIntegrations": 0,
+    "humanValidated": 0,
+    "sourceClosures": 0,
+    "globalRequirementsRemainOpen": 56,
+    "globalArtTargetsRemainOpen": 354
+  },
+  "productionMethod": {
+    "tool": "image_gen.imagegen",
+    "transparentBackground": true,
+    "originalGenerationOneObjectPerId": true,
+    "referenceImageConditioning": false,
+    "referenceUse": "Actually opened source PNGs, then concrete textual style brief. No pixels from references were cropped, copied into an output, mirrored, recolored, rescaled or otherwise transformed.",
+    "heroTarget": "target-v81-74-310",
+    "heroApprovalScope": "Assistant selected this candidate as direction for the family. No human validation or in-game approval.",
+    "style": "Angular near-black basalt/gunmetal, worn antique bronze, sparse amber recesses, warm top-left light, whole-object orthographic front/right three-quarter sprites. Tunnels use32degree elevation; other objects roughly25–30degrees. No claim of identical calibrated projection.",
+    "canvas": "Actual tool-native dimensions are retained per entry; no assumed uniform resolution. All original PNG bytes preserved.",
+    "qualityGate": "Thresholds2/8 are alpha-noise diagnostics only. Strict48px alpha>0 padding fails17/17 and no admission is inferred from the friendlier threshold.",
+    "retryPolicy": "At most one retry for a genuine visual defect/grid was allowed; none used. No retries for faint alpha speckle or padding alone."
+  },
+  "historicalSourceAudit": {
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/sources/art-gap-manifest.json",
+    "bytes": 185798,
+    "sha256": "265dab986d1b6962da57edc583778a94c25344f7bbaec1baefd71a0248aecc3d",
+    "originalPath": "/workspace/open-workstreams-production-20261102/art-gap-manifest.json",
+    "context": "SNAPSHOT_HISTORIQUE",
+    "meaning": "MISSING is a conservative family-matcher absence, not proof that a required concrete file path is absent. Sources specify catalogue functions, not delivery destination filenames.38selectedtargets have no independent target sprite identified in scoped search;2lift targets already have native files. No313existing-candidate targets are mislabeled missing here.",
+    "scope": "Read-only sub-audit of40V111 MISSING targets plus1MISSING_ANIMATION, inherited by activeV112 artTargets. The313 EXISTING_NEEDS_VARIANT targets are intentionally excluded.",
+    "historicalFollowupUnchanged": true
+  },
+  "guide": {
+    "url": "https://raw.githubusercontent.com/gamedev-skills/awesome-gamedev-agent-skills/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/create-game-assets/SKILL.md",
+    "commit": "19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9",
+    "files": [
+      {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/guides/art-direction.md",
+        "bytes": 3876,
+        "sha256": "19b2ccb827eae0c6c4cd3648ab7febb82e44706bef8515f2e8912de23dec0a5c"
+      },
+      {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/guides/create-game-assets-SKILL.md",
+        "bytes": 8152,
+        "sha256": "36cd246a434fefe1e36feff066597a6268d9f63364bee387ee65a22f03838b5d"
+      },
+      {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/guides/provenance.md",
+        "bytes": 2605,
+        "sha256": "098d3cf915cd66e8ff0ad3a639964167edf2280f9e23efbae3ea6242d5bea3db"
+      },
+      {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/guides/raster-pipeline.md",
+        "bytes": 4236,
+        "sha256": "d7a5714628fd8f4b66d03e060488e353b163b811112b164af218beb2b6450a02"
+      }
+    ],
+    "normalization": "No pixel normalization: explicit parent/user instruction preserves untouched native outputs. The guide requirement for context review is still open."
+  },
+  "referencePins": [
+    {
+      "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-310-generateur-native.png",
+      "bytes": 1674710,
+      "sha256": "e32c32da91e1448a44099b905b1cc125541aed274e54cf1af7453b417da3958b",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/assets/v17/enemy-trophies/enemy-trophy-crochet-a-trophees.webp",
+      "bytes": 84164,
+      "sha256": "573b02b3b4ea02aa72775b35c58329ab29909e2bb87a7a1f8f2bcf087b30743e",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v64/interior-panels.png",
+      "bytes": 2231516,
+      "sha256": "cfa204f776d84849b38ea25bcd19d879aa469406bf0ab4c384baabd179de4a21",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v72/region-gateway-kit.png",
+      "bytes": 2164987,
+      "sha256": "9f22da436027bd16dd4aac9c64c42d473afe5b7670f36172059db1d925d687dd",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v75/architecture/convoy-workshop.png",
+      "bytes": 2368526,
+      "sha256": "da7787f9ad19485ecc3a056164a9cca08d0001278420b4d6ca26df15cc9b3155",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v75/architecture/undercity-refuge.png",
+      "bytes": 2492889,
+      "sha256": "3923720daf1bee1f3ecfc181597dd9b7689ab4b4a2e42da1ee2d51e40c5465c0",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v76/architecture/convoy-workshop.png",
+      "bytes": 2483645,
+      "sha256": "5f238a9b689cebe0aaf61b9faf3c5fe324dbd721a3ba447713b2cf339bad6b51",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v76/architecture/dock-control.png",
+      "bytes": 2635268,
+      "sha256": "bd96ea2fdfd665ba6b97e1a18b3375aa92a56d7f8ee998f14177151064198782",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v78/civic-water-cistern-right.png",
+      "bytes": 2151259,
+      "sha256": "8417c094e895d8f7d521d5e6c05098a7dcdfe5cb6cbfec75f099ce71b6304049",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v78/lower-quarter-ramp-front.png",
+      "bytes": 2108255,
+      "sha256": "41ce9f8311df9d5fdfa34c8f2cadae6a56a949e3dd91f5f70b4ab1c73c9f4f20",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v78/palace-frontage-safe.png",
+      "bytes": 2604459,
+      "sha256": "9847e7e87d0e4c8822a1e2218fee7e2c0bd68231e60ebb2ffbfddbc68f5dc1f4",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v78/terrace-retaining-front.png",
+      "bytes": 2759314,
+      "sha256": "00b1323bac81f0ddd0aefe31220f97efbf58876c6863abdd160c4769ffff2c44",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v80/clan-banner-standard.png",
+      "bytes": 601287,
+      "sha256": "93538d8c833a6e299302784a62eb87df8ab79b14ced658bd6d85a84df458a06a",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v80/maintenance-rack.png",
+      "bytes": 1610167,
+      "sha256": "7f5e1579691085f0df4330d3c6fe8d97201e6691d0e0ca8762bd113462fd9d20",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v81/clan-residence-left.png",
+      "bytes": 2582864,
+      "sha256": "e0c6bcc3657f18680063618e25fbc15d4c0775b5956370d92fd57e63f577fc17",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v81/paving-undercity.png",
+      "bytes": 3202523,
+      "sha256": "4618657e0fdda051d8d50b7cb3b48268b4c25c47dc5c96001631110a2bedeb62",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v81/spaceport-gantry.png",
+      "bytes": 2173945,
+      "sha256": "132bad9c636868b8db42ea28add5c39f3f3a4b166dc05e2502be06ce5280bf20",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v83/cargo-rack-right.png",
+      "bytes": 1922894,
+      "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v83/clan-waymarker-right.png",
+      "bytes": 828271,
+      "sha256": "60148ddbac32d32dec3a38a626ee11c3fcead4cec2947abf1dcc36d463fa8b6d",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v84/maintenance-console-right.png",
+      "bytes": 1334645,
+      "sha256": "a7a43de4384a75ecac48a5c8cd50bc6cd4eb82ffda47719a1022299b90bb966b",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+      "bytes": 2192283,
+      "sha256": "3dc86491e09d70e337db40454c0e61d9d4a413428d48423c3a36f1c77d0baae0",
+      "context": "SNAPSHOT_HISTORIQUE_VISUAL_REFERENCE",
+      "humanAdmissionImplied": false
+    }
+  ],
+  "targetReferenceMap": {
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-reference-map.json",
+    "bytes": 120577,
+    "sha256": "e6bbd27a13832756ecf7a63efe8c508540e47fc23d507e2ea42888d444d96a9e"
+  },
+  "admissionCriteriaStillRequired": [
+    {
+      "id": "COMMON-NATIVE",
+      "requirement": "Original independent native PNG/atlas cell, silhouette whole, positive uniform scale, explicit native rectangle/dimensions/pivot, actual alpha and occupied bounds including all margins and edge pixels; do not manufacture missing function by extracting a painted detail. Preserve original bytes and SHA256/provenance.",
+      "sources": [
+        "docs/GAMEDEV_AGENT_GUIDE.md#Sprites, PNJ et fidélité visuelle",
+        "app/game/HomeworldNativePropV64.tsx",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2640"
+      ]
+    },
+    {
+      "id": "COMMON-IDENTITY",
+      "requirement": "Keep exact target ID, role/function, provenance category and candidate status. Existing presence, decode, tests or an assistant inspection never grant human artistic validated status. This audit closes no catalogue entry.",
+      "sources": [
+        "app/game/hunterSpriteAtlas.ts:1",
+        "docs/v111-homeworld-art.md",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2069"
+      ]
+    },
+    {
+      "id": "COMMON-SCALE",
+      "requirement": "Prop isolation screenshot with a real reference Yautja; inspect silhouette, scale, pivot, alpha, orientation and physical ground support. World dimensions are separate from bitmap dimensions and collision footprint.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:1536",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2640",
+        "app/game/HomeworldNativePropV64.tsx"
+      ]
+    },
+    {
+      "id": "COMMON-CONTEXT",
+      "requirement": "Inspect in actual district with wide/medium/near screenshots; verify free approach, usage and exit space, depth and ground support. Common props need visual diversity ideally4–8 native variants. A candidate image does not prove integration/gameplay completion.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2080",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2604",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2657"
+      ]
+    },
+    {
+      "id": "ARCHITECTURE-ACCESS",
+      "requirement": "Verify plot support, facade orientation, reachable entrance, true passage/cabin clearance and both travel directions. Existing lift V82 must be reviewed rather than regenerated merely because of historical MISSING. No route or collision claim arises from an image.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:447",
+        "app/game/data/homeworldConnectorArtV82.json",
+        "app/game/data/homeworldLiftCabinArtV82.json"
+      ]
+    },
+    {
+      "id": "NATIVE-ORIENTATION",
+      "requirement": "Author left/right views independently where requested; do not rotate, mirror, skew or stretch a PNG to claim a missing native orientation.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:520",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2558"
+      ]
+    },
+    {
+      "id": "AUTHORED-ANIMATION",
+      "requirement": "An active/energy state needs distinct native painted temporal states with frame rects,pivots,durations,loop contract and actual rendered temporal inspection. A static support, CSS opacity/transform pulse, NPC walking sheet or recolor does not establish an authored native work/energy cycle. Keep pause/reduced-motion/loading failure behavior explicit.",
+      "sources": [
+        "app/game/systems/homeworldAssetCatalogueV81.ts:63",
+        "docs/GAMEDEV_AGENT_GUIDE.md#Sprites, PNJ et fidélité visuelle",
+        "docs/v111-homeworld-art.md"
+      ]
+    },
+    {
+      "id": "FAUNA-FUNCTION",
+      "requirement": "Show the requested animal-care function and accessible working edge at fauna/mount scale. Habitat support is a rock shelf, not cage/enclosure. A stable-harness NPC, beast picture or static mount does not deliver an independent harness/saddle/cage or mount gameplay. Avoid a human stable; mark local invented iconography original.",
+      "sources": [
+        "app/game/systems/homeworldFaunaHabitatV77.ts",
+        "app/game/systems/homeworldAssetCatalogueV81.ts:51",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:1940",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:1960"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "targetId": "target-v81-55-26",
+      "label": "balcon",
+      "section": 55,
+      "family": "ARCHITECTURE_RESIDENTIELLE",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Façades/terrasses voisines ; aucune pièce balcon indépendante identifiée.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/25"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/25"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/25"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 55,
+          "line": 1613
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 30,
+            "idCell": {
+              "cell": "A30",
+              "value": "target-v81-55-26"
+            },
+            "labelCell": {
+              "cell": "D30",
+              "value": "balcon"
+            },
+            "historicalPresenceCell": {
+              "cell": "G30",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F30",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 30,
+            "idCell": {
+              "cell": "A30",
+              "value": "target-v81-55-26"
+            },
+            "labelCell": {
+              "cell": "C30",
+              "value": "balcon"
+            },
+            "historicalPresenceCell": {
+              "cell": "D30",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E30",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-55-26-attempt01.json",
+        "bytes": 8876,
+        "sha256": "dbe059bdd21198fd7c2e373d0f09cbbef4e52ee0d9f53f1afa2b35917f7df5d2"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-55-26-balcon-native.png",
+        "bytes": 1120730,
+        "sha256": "e94bc9876855a3ba7ae4efadb12fca22b7663a6e31d538335d7946a4203d6dfd"
+      },
+      "dimensions": [
+        1388,
+        1133
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "e94bc9876855a3ba7ae4efadb12fca22b7663a6e31d538335d7946a4203d6dfd",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1388,
+          1133
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            52,
+            1382,
+            1109
+          ],
+          "margins": [
+            0,
+            52,
+            6,
+            24
+          ],
+          "visiblePixels": 433808,
+          "edgeVisiblePixels": 6
+        },
+        "2": {
+          "bboxExclusive": [
+            114,
+            212,
+            1296,
+            967
+          ],
+          "margins": [
+            114,
+            212,
+            92,
+            166
+          ],
+          "visiblePixels": 428672,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            116,
+            214,
+            1296,
+            967
+          ],
+          "margins": [
+            116,
+            214,
+            92,
+            166
+          ],
+          "visiblePixels": 425935,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 706,
+        "y": 966,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "Wall-mounted balcony only: attach by its rear deck edge; image bbox bottom-center is not the wall attachment pivot.",
+        "Deck/corbels are visible, but structural support, railing collision, usable standing space and access have not been qualified."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-55-42",
+      "label": "tunnel",
+      "section": 55,
+      "family": "tunnel-access",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Refuge, portail régional et rampe sont des voisins ; aucun tunnel indépendant identifié.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/41"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/41"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/41"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 55,
+          "line": 1629
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 46,
+            "idCell": {
+              "cell": "A46",
+              "value": "target-v81-55-42"
+            },
+            "labelCell": {
+              "cell": "D46",
+              "value": "tunnel"
+            },
+            "historicalPresenceCell": {
+              "cell": "G46",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F46",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 46,
+            "idCell": {
+              "cell": "A46",
+              "value": "target-v81-55-42"
+            },
+            "labelCell": {
+              "cell": "C46",
+              "value": "tunnel"
+            },
+            "historicalPresenceCell": {
+              "cell": "D46",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E46",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-55-42-attempt01.json",
+        "bytes": 12619,
+        "sha256": "2a15754984de7107173d91b28485be1ac81d3313bf4451a58fdd98a438856d28"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-55-42-tunnel-native.png",
+        "bytes": 1404685,
+        "sha256": "46cede7494ff64078e67ac3770e8c5541cb5f033c4f381adac05fd20e51cd137"
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "46cede7494ff64078e67ac3770e8c5541cb5f033c4f381adac05fd20e51cd137",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            25,
+            1224,
+            1230
+          ],
+          "margins": [
+            0,
+            25,
+            30,
+            24
+          ],
+          "visiblePixels": 557220,
+          "edgeVisiblePixels": 16
+        },
+        "2": {
+          "bboxExclusive": [
+            83,
+            244,
+            1203,
+            1034
+          ],
+          "margins": [
+            83,
+            244,
+            51,
+            220
+          ],
+          "visiblePixels": 549807,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            85,
+            245,
+            1201,
+            1032
+          ],
+          "margins": [
+            85,
+            245,
+            53,
+            222
+          ],
+          "visiblePixels": 546606,
+          "edgeVisiblePixels": 0
+        },
+        "128": {
+          "bboxExclusive": [
+            86,
+            247,
+            1201,
+            1031
+          ],
+          "margins": [
+            86,
+            247,
+            53,
+            223
+          ],
+          "visiblePixels": 543407,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 642,
+        "y": 1031,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "Covered corridor body, front floor and extra side opening are visible; a straight-through rear exit is not visually established.",
+        "No traversable route, bidirectional clearance, front/back layer split or navigation is proved."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-55-43",
+      "label": "entrée tunnel",
+      "section": 55,
+      "family": "tunnel-access",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Entrées/portails statiques voisins ; aucune bouche de tunnel indépendante identifiée.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/42"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/42"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/42"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 55,
+          "line": 1630
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 47,
+            "idCell": {
+              "cell": "A47",
+              "value": "target-v81-55-43"
+            },
+            "labelCell": {
+              "cell": "D47",
+              "value": "entrée tunnel"
+            },
+            "historicalPresenceCell": {
+              "cell": "G47",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F47",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 47,
+            "idCell": {
+              "cell": "A47",
+              "value": "target-v81-55-43"
+            },
+            "labelCell": {
+              "cell": "C47",
+              "value": "entrée tunnel"
+            },
+            "historicalPresenceCell": {
+              "cell": "D47",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E47",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-55-43-attempt01.json",
+        "bytes": 12063,
+        "sha256": "477a04ba5796f8658534fa7c12e05337bd339ccc1ae3a7391df2a6697ff449a5"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-55-43-entree-tunnel-native.png",
+        "bytes": 1521732,
+        "sha256": "5890107a3cefe673b65e746b9fc209362314d0176df0398df5a69365247d4886"
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "5890107a3cefe673b65e746b9fc209362314d0176df0398df5a69365247d4886",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            17,
+            1230,
+            1254
+          ],
+          "margins": [
+            0,
+            17,
+            24,
+            0
+          ],
+          "visiblePixels": 608279,
+          "edgeVisiblePixels": 76
+        },
+        "2": {
+          "bboxExclusive": [
+            89,
+            147,
+            1197,
+            1126
+          ],
+          "margins": [
+            89,
+            147,
+            57,
+            128
+          ],
+          "visiblePixels": 594523,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            91,
+            149,
+            1195,
+            1125
+          ],
+          "margins": [
+            91,
+            149,
+            59,
+            129
+          ],
+          "visiblePixels": 590169,
+          "edgeVisiblePixels": 0
+        },
+        "128": {
+          "bboxExclusive": [
+            91,
+            150,
+            1194,
+            1124
+          ],
+          "margins": [
+            91,
+            150,
+            60,
+            130
+          ],
+          "visiblePixels": 586048,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 642,
+        "y": 1124,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "One thick independent entrance arch with an alpha opening, not a full tunnel body.",
+        "Actual Yautja clearance, threshold pivot, occlusion and travel in both directions remain unqualified."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-56-56",
+      "label": "sas hangar",
+      "section": 56,
+      "family": "ARCHITECTURE_LOGISTIQUE",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Contrôle du port/portique statiques ; ne prouvent pas un sas ou son cycle.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/55"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/55"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/55"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 56,
+          "line": 1648
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 60,
+            "idCell": {
+              "cell": "A60",
+              "value": "target-v81-56-56"
+            },
+            "labelCell": {
+              "cell": "D60",
+              "value": "sas hangar"
+            },
+            "historicalPresenceCell": {
+              "cell": "G60",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F60",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 60,
+            "idCell": {
+              "cell": "A60",
+              "value": "target-v81-56-56"
+            },
+            "labelCell": {
+              "cell": "C60",
+              "value": "sas hangar"
+            },
+            "historicalPresenceCell": {
+              "cell": "D60",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E60",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-56-56-attempt01.json",
+        "bytes": 8809,
+        "sha256": "149f2919b98a4ab929a54480b1a867d5b74285be5c5e02a879001365d9ab54c6"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-56-56-sas-hangar-native.png",
+        "bytes": 1490856,
+        "sha256": "592fff20a25c8a3041d6205997444c68e537925e4450ea02185734bdd771aca1"
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "592fff20a25c8a3041d6205997444c68e537925e4450ea02185734bdd771aca1",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            23,
+            1251,
+            1228
+          ],
+          "margins": [
+            0,
+            23,
+            3,
+            26
+          ],
+          "visiblePixels": 600432,
+          "edgeVisiblePixels": 5
+        },
+        "2": {
+          "bboxExclusive": [
+            86,
+            258,
+            1173,
+            1013
+          ],
+          "margins": [
+            86,
+            258,
+            81,
+            241
+          ],
+          "visiblePixels": 593357,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            88,
+            260,
+            1171,
+            1011
+          ],
+          "margins": [
+            88,
+            260,
+            83,
+            243
+          ],
+          "visiblePixels": 590094,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 629,
+        "y": 1010,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "One static front-open/rear-closed airlock chamber only; no authored door cycle, pressure/interlock sequence or collision is supplied."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-59-105",
+      "label": "hangar",
+      "section": 59,
+      "family": "ARCHITECTURE_LOGISTIQUE",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Architecture logistique existante ; ne prouve ni volume de hangar ni intérieur ni sas.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/104"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/104"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/104"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 59,
+          "line": 1716
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 109,
+            "idCell": {
+              "cell": "A109",
+              "value": "target-v81-59-105"
+            },
+            "labelCell": {
+              "cell": "D109",
+              "value": "hangar"
+            },
+            "historicalPresenceCell": {
+              "cell": "G109",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F109",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 109,
+            "idCell": {
+              "cell": "A109",
+              "value": "target-v81-59-105"
+            },
+            "labelCell": {
+              "cell": "C109",
+              "value": "hangar"
+            },
+            "historicalPresenceCell": {
+              "cell": "D109",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E109",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-59-105-attempt01.json",
+        "bytes": 9048,
+        "sha256": "7b7eb8c6f741f9abcc4fb512252c25036340708b5e885242a89fffaf33620b48"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-59-105-hangar-native.png",
+        "bytes": 1137036,
+        "sha256": "e572e40597d39c0a5bdb89b09e21302b7ab6cac5202bf882a3bf86cc902f88a3"
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "e572e40597d39c0a5bdb89b09e21302b7ab6cac5202bf882a3bf86cc902f88a3",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": false,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            52,
+            1240,
+            1254
+          ],
+          "margins": [
+            0,
+            52,
+            14,
+            0
+          ],
+          "visiblePixels": 446806,
+          "edgeVisiblePixels": 72
+        },
+        "2": {
+          "bboxExclusive": [
+            43,
+            362,
+            1230,
+            980
+          ],
+          "margins": [
+            43,
+            362,
+            24,
+            274
+          ],
+          "visiblePixels": 440831,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            45,
+            364,
+            1228,
+            978
+          ],
+          "margins": [
+            45,
+            364,
+            26,
+            276
+          ],
+          "visiblePixels": 438484,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 636,
+        "y": 977,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "One complete empty hangar building candidate only; dark interior pixels do not establish an enterable room or gameplay.",
+        "Strong-alpha side margins45/26px fail the48px diagnostic."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-65-175",
+      "label": "totem",
+      "section": 65,
+      "family": "CLANS",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Repère de clan et bannière présents ; aucune sculpture totem autonome identifiée, aucune canonicité déduite.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/174"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/174"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/174"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 65,
+          "line": 1820
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 179,
+            "idCell": {
+              "cell": "A179",
+              "value": "target-v81-65-175"
+            },
+            "labelCell": {
+              "cell": "D179",
+              "value": "totem"
+            },
+            "historicalPresenceCell": {
+              "cell": "G179",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F179",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 179,
+            "idCell": {
+              "cell": "A179",
+              "value": "target-v81-65-175"
+            },
+            "labelCell": {
+              "cell": "C179",
+              "value": "totem"
+            },
+            "historicalPresenceCell": {
+              "cell": "D179",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E179",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-65-175-attempt01.json",
+        "bytes": 8255,
+        "sha256": "2855857cc511a3fa54fea846f589b2c0769310741d647b263193e1e135be9d64"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-65-175-totem-native.png",
+        "bytes": 993338,
+        "sha256": "6e40b491d9555c09654364dc85ac9eb5ab8907f8048efc1d1acf8010c02dfc55"
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "6e40b491d9555c09654364dc85ac9eb5ab8907f8048efc1d1acf8010c02dfc55",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": false,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            33,
+            18,
+            1222,
+            1237
+          ],
+          "margins": [
+            33,
+            18,
+            32,
+            17
+          ],
+          "visiblePixels": 345203,
+          "edgeVisiblePixels": 0
+        },
+        "2": {
+          "bboxExclusive": [
+            384,
+            19,
+            882,
+            1235
+          ],
+          "margins": [
+            384,
+            19,
+            372,
+            19
+          ],
+          "visiblePixels": 337451,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            384,
+            21,
+            880,
+            1233
+          ],
+          "margins": [
+            384,
+            21,
+            374,
+            21
+          ],
+          "visiblePixels": 333445,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 632,
+        "y": 1232,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "Invented original monumental totem, not a canonical screen-derived prop.",
+        "Strong-alpha top/bottom margins21px fail the48px diagnostic; silhouette is visible and not cropped."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-66-192",
+      "label": "crochet",
+      "section": 66,
+      "family": "TROPHEES_FIXTURE",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Racks/outillage voisins ; un détail peint dans un rack ne livre pas un crochet indépendant.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/191"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/191"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/191"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 66,
+          "line": 1842
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 196,
+            "idCell": {
+              "cell": "A196",
+              "value": "target-v81-66-192"
+            },
+            "labelCell": {
+              "cell": "D196",
+              "value": "crochet"
+            },
+            "historicalPresenceCell": {
+              "cell": "G196",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F196",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 196,
+            "idCell": {
+              "cell": "A196",
+              "value": "target-v81-66-192"
+            },
+            "labelCell": {
+              "cell": "C196",
+              "value": "crochet"
+            },
+            "historicalPresenceCell": {
+              "cell": "D196",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E196",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-66-192-attempt01.json",
+        "bytes": 8415,
+        "sha256": "b8e798ec474d4168a423ec39b4a63761f572c7941494d09036d7a1cb7971a3f2"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-66-192-crochet-trophees-native.png",
+        "bytes": 1037089,
+        "sha256": "d2e4404b46f48c3108996b64a92d8db69839caaf17ecbd4ab2fa82d03d30bd14"
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "d2e4404b46f48c3108996b64a92d8db69839caaf17ecbd4ab2fa82d03d30bd14",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            36,
+            1144,
+            1214
+          ],
+          "margins": [
+            0,
+            36,
+            110,
+            40
+          ],
+          "visiblePixels": 373752,
+          "edgeVisiblePixels": 3
+        },
+        "2": {
+          "bboxExclusive": [
+            266,
+            223,
+            1108,
+            970
+          ],
+          "margins": [
+            266,
+            223,
+            146,
+            284
+          ],
+          "visiblePixels": 364711,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            268,
+            225,
+            1106,
+            968
+          ],
+          "margins": [
+            268,
+            225,
+            148,
+            286
+          ],
+          "visiblePixels": 361273,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 686,
+        "y": 967,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "Independent empty wall fixture, not the existing V17 handheld trophy-hook reward.",
+        "No trophy hanging, load/support or wall attachment pivot is established."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-68-236",
+      "label": "trappe",
+      "section": 68,
+      "family": "RUE_ACCES",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Sol et panneaux voisins ; aucune trappe indépendante et ses états ouvert/fermé identifiés.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/235"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/235"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/235"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 68,
+          "line": 1896
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 240,
+            "idCell": {
+              "cell": "A240",
+              "value": "target-v81-68-236"
+            },
+            "labelCell": {
+              "cell": "D240",
+              "value": "trappe"
+            },
+            "historicalPresenceCell": {
+              "cell": "G240",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F240",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 240,
+            "idCell": {
+              "cell": "A240",
+              "value": "target-v81-68-236"
+            },
+            "labelCell": {
+              "cell": "C240",
+              "value": "trappe"
+            },
+            "historicalPresenceCell": {
+              "cell": "D240",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E240",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-68-236-attempt01.json",
+        "bytes": 8323,
+        "sha256": "6fe620587225ead9ba540561f1732bb4e0567e7faeef344fe0ea2ef1d1636d63"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-68-236-trappe-fermee-native.png",
+        "bytes": 1493007,
+        "sha256": "122c7ee72d9860bf30964028621a4a19f2a4039087cd22ee06f54ed99b406680"
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "122c7ee72d9860bf30964028621a4a19f2a4039087cd22ee06f54ed99b406680",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            37,
+            1216,
+            1254
+          ],
+          "margins": [
+            0,
+            37,
+            38,
+            0
+          ],
+          "visiblePixels": 572625,
+          "edgeVisiblePixels": 27
+        },
+        "2": {
+          "bboxExclusive": [
+            133,
+            328,
+            1136,
+            1020
+          ],
+          "margins": [
+            133,
+            328,
+            118,
+            234
+          ],
+          "visiblePixels": 564810,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            135,
+            330,
+            1133,
+            1018
+          ],
+          "margins": [
+            135,
+            330,
+            121,
+            236
+          ],
+          "visiblePixels": 562518,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 634,
+        "y": 1017,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "Closed hatch state only; no open state, animation, underside, underground route or passage collision."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-73-295",
+      "label": "tuyau apparent",
+      "section": 73,
+      "family": "BAS_QUARTIERS_PROPS",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "La citerne contient plomberie/spigot intégrés ; aucun tuyau autonome. Ne pas extraire un détail peint.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/294"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/294"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/294"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 73,
+          "line": 1985
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 299,
+            "idCell": {
+              "cell": "A299",
+              "value": "target-v81-73-295"
+            },
+            "labelCell": {
+              "cell": "D299",
+              "value": "tuyau apparent"
+            },
+            "historicalPresenceCell": {
+              "cell": "G299",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F299",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 299,
+            "idCell": {
+              "cell": "A299",
+              "value": "target-v81-73-295"
+            },
+            "labelCell": {
+              "cell": "C299",
+              "value": "tuyau apparent"
+            },
+            "historicalPresenceCell": {
+              "cell": "D299",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E299",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-73-295-attempt01.json",
+        "bytes": 8512,
+        "sha256": "18185fe3106223c6c91a658e57a54cd592b3ea0e157738033c08edfaba12e293"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-295-tuyau-apparent-native.png",
+        "bytes": 1043347,
+        "sha256": "4a00838936c0378dcdad4920592a708f7ad3385a08e63baf1cd1e38f76d1324f"
+      },
+      "dimensions": [
+        1312,
+        1199
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "4a00838936c0378dcdad4920592a708f7ad3385a08e63baf1cd1e38f76d1324f",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1312,
+          1199
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            39,
+            39,
+            1292,
+            1199
+          ],
+          "margins": [
+            39,
+            39,
+            20,
+            0
+          ],
+          "visiblePixels": 400744,
+          "edgeVisiblePixels": 1
+        },
+        "2": {
+          "bboxExclusive": [
+            187,
+            95,
+            1179,
+            1053
+          ],
+          "margins": [
+            187,
+            95,
+            133,
+            146
+          ],
+          "visiblePixels": 391961,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            189,
+            97,
+            1177,
+            1053
+          ],
+          "margins": [
+            189,
+            97,
+            135,
+            146
+          ],
+          "visiblePixels": 388717,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 682,
+        "y": 1052,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "One attached-clamp exposed pipe section, not a constructed network.",
+        "Wall attachment plane, pivot and pipe connectivity are untested."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-73-301",
+      "label": "pile scrap",
+      "section": 73,
+      "family": "BAS_QUARTIERS_PROPS",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Récupération/atelier voisins ; aucune pile de ferraille autonome identifiée.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/300"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/300"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/300"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 73,
+          "line": 1991
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 305,
+            "idCell": {
+              "cell": "A305",
+              "value": "target-v81-73-301"
+            },
+            "labelCell": {
+              "cell": "D305",
+              "value": "pile scrap"
+            },
+            "historicalPresenceCell": {
+              "cell": "G305",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F305",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 305,
+            "idCell": {
+              "cell": "A305",
+              "value": "target-v81-73-301"
+            },
+            "labelCell": {
+              "cell": "C305",
+              "value": "pile scrap"
+            },
+            "historicalPresenceCell": {
+              "cell": "D305",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E305",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-73-301-attempt01.json",
+        "bytes": 8291,
+        "sha256": "9f27ff9e084aff61d589acf0ef056d5d547f47ac048396bbc985887978ea1a19"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-301-pile-scrap-native.png",
+        "bytes": 1714895,
+        "sha256": "e8b94e27a855f7dddb99e0961c7ac7e77cdae2bbf609a6aef5edea242d45b1d7"
+      },
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "e8b94e27a855f7dddb99e0961c7ac7e77cdae2bbf609a6aef5edea242d45b1d7",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1536,
+          1024
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            9,
+            1522,
+            1024
+          ],
+          "margins": [
+            0,
+            9,
+            14,
+            0
+          ],
+          "visiblePixels": 405539,
+          "edgeVisiblePixels": 49
+        },
+        "2": {
+          "bboxExclusive": [
+            257,
+            178,
+            1278,
+            834
+          ],
+          "margins": [
+            257,
+            178,
+            258,
+            190
+          ],
+          "visiblePixels": 392312,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            258,
+            178,
+            1276,
+            832
+          ],
+          "margins": [
+            258,
+            178,
+            260,
+            192
+          ],
+          "visiblePixels": 389171,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 766,
+        "y": 831,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "One connected scrap heap candidate; no salvage, pickup or material economy interaction."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-73-308",
+      "label": "échafaudage",
+      "section": 73,
+      "family": "BAS_QUARTIERS_PROPS",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Portique/atelier existants ; pas un échafaudage autonome adapté aux façades.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/307"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/307"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/307"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 73,
+          "line": 1998
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 312,
+            "idCell": {
+              "cell": "A312",
+              "value": "target-v81-73-308"
+            },
+            "labelCell": {
+              "cell": "D312",
+              "value": "échafaudage"
+            },
+            "historicalPresenceCell": {
+              "cell": "G312",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F312",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 312,
+            "idCell": {
+              "cell": "A312",
+              "value": "target-v81-73-308"
+            },
+            "labelCell": {
+              "cell": "C312",
+              "value": "échafaudage"
+            },
+            "historicalPresenceCell": {
+              "cell": "D312",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E312",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-73-308-attempt01.json",
+        "bytes": 8397,
+        "sha256": "75dedd31254a8abd82816525b8c5c4fe329af549a3c258713f7e86e4be771981"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-308-echafaudage-native.png",
+        "bytes": 1231883,
+        "sha256": "07a2036bcbb0fe11ddc12c83d98c8cfb8765fd4553e0daa0bcc2574f23e70bb2"
+      },
+      "dimensions": [
+        1218,
+        1291
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "07a2036bcbb0fe11ddc12c83d98c8cfb8765fd4553e0daa0bcc2574f23e70bb2",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1218,
+          1291
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            35,
+            21,
+            1188,
+            1267
+          ],
+          "margins": [
+            35,
+            21,
+            30,
+            24
+          ],
+          "visiblePixels": 414697,
+          "edgeVisiblePixels": 0
+        },
+        "2": {
+          "bboxExclusive": [
+            291,
+            141,
+            980,
+            1159
+          ],
+          "margins": [
+            291,
+            141,
+            238,
+            132
+          ],
+          "visiblePixels": 387158,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            292,
+            143,
+            978,
+            1157
+          ],
+          "margins": [
+            292,
+            143,
+            240,
+            134
+          ],
+          "visiblePixels": 375549,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 634,
+        "y": 1156,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "One static scaffold module with two levels and integral ladder; no climbable/collision, structural or safety qualification."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-74-310",
+      "label": "Générateur",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Console/atelier statiques ; aucune machine génératrice autonome identifiée.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/309"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/309"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/309"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 74,
+          "line": 2005
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 314,
+            "idCell": {
+              "cell": "A314",
+              "value": "target-v81-74-310"
+            },
+            "labelCell": {
+              "cell": "D314",
+              "value": "Générateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "G314",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F314",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 314,
+            "idCell": {
+              "cell": "A314",
+              "value": "target-v81-74-310"
+            },
+            "labelCell": {
+              "cell": "C314",
+              "value": "Générateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "D314",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E314",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-74-310-attempt01.json",
+        "bytes": 8813,
+        "sha256": "86cfe45702b90f209dcf9b871d67397f83f879f123e1dde176c95c0e1390e1d8"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-310-generateur-native.png",
+        "bytes": 1674710,
+        "sha256": "e32c32da91e1448a44099b905b1cc125541aed274e54cf1af7453b417da3958b"
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "e32c32da91e1448a44099b905b1cc125541aed274e54cf1af7453b417da3958b",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": false,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            19,
+            1224,
+            1254
+          ],
+          "margins": [
+            0,
+            19,
+            30,
+            0
+          ],
+          "visiblePixels": 616406,
+          "edgeVisiblePixels": 27
+        },
+        "2": {
+          "bboxExclusive": [
+            48,
+            220,
+            1215,
+            1025
+          ],
+          "margins": [
+            48,
+            220,
+            39,
+            229
+          ],
+          "visiblePixels": 604152,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            50,
+            221,
+            1213,
+            1023
+          ],
+          "margins": [
+            50,
+            221,
+            41,
+            231
+          ],
+          "visiblePixels": 600358,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 631,
+        "y": 1022,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "Static generator candidate only, no native active/idle cycle or simulation; strong-alpha right margin41px fails the48px diagnostic."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-74-311",
+      "label": "transformateur",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Console et maintenance voisins ; aucun transformateur autonome identifié.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/310"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/310"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/310"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 74,
+          "line": 2006
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 315,
+            "idCell": {
+              "cell": "A315",
+              "value": "target-v81-74-311"
+            },
+            "labelCell": {
+              "cell": "D315",
+              "value": "transformateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "G315",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F315",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 315,
+            "idCell": {
+              "cell": "A315",
+              "value": "target-v81-74-311"
+            },
+            "labelCell": {
+              "cell": "C315",
+              "value": "transformateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "D315",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E315",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-74-311-attempt01.json",
+        "bytes": 8548,
+        "sha256": "489cfb8e0b2f487d738ff9a4ad1fc81c4210b33af8b0585d3baa8c63c20741b5"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-311-transformateur-native.png",
+        "bytes": 1059927,
+        "sha256": "2ba3417567895475002048b11a73e63da1b7bfa4f4d66f71e875690216728eaa"
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "2ba3417567895475002048b11a73e63da1b7bfa4f4d66f71e875690216728eaa",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            0,
+            1240,
+            1254
+          ],
+          "margins": [
+            0,
+            0,
+            14,
+            0
+          ],
+          "visiblePixels": 388167,
+          "edgeVisiblePixels": 89
+        },
+        "2": {
+          "bboxExclusive": [
+            277,
+            179,
+            1003,
+            1105
+          ],
+          "margins": [
+            277,
+            179,
+            251,
+            149
+          ],
+          "visiblePixels": 378028,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            279,
+            180,
+            1001,
+            1103
+          ],
+          "margins": [
+            279,
+            180,
+            253,
+            151
+          ],
+          "visiblePixels": 373542,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 640,
+        "y": 1102,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "Static transformer candidate only; no energy state, electrical network or authored temporal cycle."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-74-315",
+      "label": "radiateur",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Équipement industriel/forge voisins ; aucun radiateur autonome identifié.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/314"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/314"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/314"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 74,
+          "line": 2010
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 319,
+            "idCell": {
+              "cell": "A319",
+              "value": "target-v81-74-315"
+            },
+            "labelCell": {
+              "cell": "D319",
+              "value": "radiateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "G319",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F319",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 319,
+            "idCell": {
+              "cell": "A319",
+              "value": "target-v81-74-315"
+            },
+            "labelCell": {
+              "cell": "C319",
+              "value": "radiateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "D319",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E319",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-74-315-attempt01.json",
+        "bytes": 8351,
+        "sha256": "f642383f2ca4a6b55d354bfdadee3f0eb88f2a6942c42afa41e607286ed01985"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-315-radiateur-native.png",
+        "bytes": 1210491,
+        "sha256": "4473276936bb5f85d9a65b83b80b03f71315859ed9f473fa5dd5fe625c6bf750"
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "4473276936bb5f85d9a65b83b80b03f71315859ed9f473fa5dd5fe625c6bf750",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            31,
+            1232,
+            1254
+          ],
+          "margins": [
+            0,
+            31,
+            22,
+            0
+          ],
+          "visiblePixels": 495619,
+          "edgeVisiblePixels": 77
+        },
+        "2": {
+          "bboxExclusive": [
+            120,
+            260,
+            1178,
+            1022
+          ],
+          "margins": [
+            120,
+            260,
+            76,
+            232
+          ],
+          "visiblePixels": 483046,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            122,
+            262,
+            1176,
+            1020
+          ],
+          "margins": [
+            122,
+            262,
+            78,
+            234
+          ],
+          "visiblePixels": 479718,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 648,
+        "y": 1019,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "Static radiator candidate only; no heat/steam state or authored cooling cycle."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-74-316",
+      "label": "pompe",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "La spécification V78 appelle la citerne «cistern/pump gardenmodule», avec simple spigot intégré. Candidat composite réel, pas preuve d’une pompe industrielle indépendante.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/315"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/315"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/315"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 74,
+          "line": 2011
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 320,
+            "idCell": {
+              "cell": "A320",
+              "value": "target-v81-74-316"
+            },
+            "labelCell": {
+              "cell": "D320",
+              "value": "pompe"
+            },
+            "historicalPresenceCell": {
+              "cell": "G320",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F320",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 320,
+            "idCell": {
+              "cell": "A320",
+              "value": "target-v81-74-316"
+            },
+            "labelCell": {
+              "cell": "C320",
+              "value": "pompe"
+            },
+            "historicalPresenceCell": {
+              "cell": "D320",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E320",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-74-316-attempt01.json",
+        "bytes": 8803,
+        "sha256": "03ab7e8b8137d04cf924b5614accc07dbbab5918175ac88971453f66bbcfead7"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-316-pompe-native.png",
+        "bytes": 1384427,
+        "sha256": "44e1f0b181ccc24cb1f45c82fd910a29427a018995ee1f167cd36104e0747b56"
+      },
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "44e1f0b181ccc24cb1f45c82fd910a29427a018995ee1f167cd36104e0747b56",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1536,
+          1024
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            2,
+            79,
+            1394,
+            1000
+          ],
+          "margins": [
+            2,
+            79,
+            142,
+            24
+          ],
+          "visiblePixels": 287778,
+          "edgeVisiblePixels": 0
+        },
+        "2": {
+          "bboxExclusive": [
+            397,
+            207,
+            1181,
+            821
+          ],
+          "margins": [
+            397,
+            207,
+            355,
+            203
+          ],
+          "visiblePixels": 282751,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            398,
+            208,
+            1180,
+            821
+          ],
+          "margins": [
+            398,
+            208,
+            356,
+            203
+          ],
+          "visiblePixels": 280834,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 788,
+        "y": 820,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "New original Homeworld pump candidate; an older native six-state Pit pump atlas already exists in another context and is not called globally absent.",
+        "No pumping cycle, liquid flow, connection or gameplay is established."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-74-319",
+      "label": "valve",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Spigot/commandes intégrés voisins ; aucune vanne autonome identifiée.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/318"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/318"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/318"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 74,
+          "line": 2014
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 323,
+            "idCell": {
+              "cell": "A323",
+              "value": "target-v81-74-319"
+            },
+            "labelCell": {
+              "cell": "D323",
+              "value": "valve"
+            },
+            "historicalPresenceCell": {
+              "cell": "G323",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F323",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 323,
+            "idCell": {
+              "cell": "A323",
+              "value": "target-v81-74-319"
+            },
+            "labelCell": {
+              "cell": "C323",
+              "value": "valve"
+            },
+            "historicalPresenceCell": {
+              "cell": "D323",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E323",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-74-319-attempt01.json",
+        "bytes": 8540,
+        "sha256": "243140e099f7fba59174c6dbba93222079acb87e21501b7ba44da4f72d47cbac"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-319-valve-native.png",
+        "bytes": 1330910,
+        "sha256": "0d30ec4dd0a82c6ce28a81630ea4b99a9bfaee08bfb5c4f0c769f33485235a5c"
+      },
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "0d30ec4dd0a82c6ce28a81630ea4b99a9bfaee08bfb5c4f0c769f33485235a5c",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1536,
+          1024
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            55,
+            75,
+            1448,
+            1006
+          ],
+          "margins": [
+            55,
+            75,
+            88,
+            18
+          ],
+          "visiblePixels": 240821,
+          "edgeVisiblePixels": 0
+        },
+        "2": {
+          "bboxExclusive": [
+            449,
+            176,
+            1075,
+            819
+          ],
+          "margins": [
+            449,
+            176,
+            461,
+            205
+          ],
+          "visiblePixels": 232215,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            449,
+            177,
+            1073,
+            819
+          ],
+          "margins": [
+            449,
+            177,
+            463,
+            205
+          ],
+          "visiblePixels": 229109,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 760,
+        "y": 818,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "New original independent valve candidate; a painted cistern tap and older Pit cooling-valve imagery were visually checked as related context.",
+        "No open/closed pair, wheel animation, fluid state or gameplay is established."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    },
+    {
+      "targetId": "target-v81-76-354",
+      "label": "alcôves",
+      "section": 76,
+      "family": "ARCHITECTURE_PALAIS",
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "preProductionDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_SCOPED_REPOSITORY_SEARCH",
+      "preProductionMeaning": "Façade/pyramide/panneaux voisins ; aucune alcôve indépendante ni intérieur du palais déduit.",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/353"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/353"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/353"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 76,
+          "line": 2061
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 358,
+            "idCell": {
+              "cell": "A358",
+              "value": "target-v81-76-354"
+            },
+            "labelCell": {
+              "cell": "D358",
+              "value": "alcôves"
+            },
+            "historicalPresenceCell": {
+              "cell": "G358",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F358",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 358,
+            "idCell": {
+              "cell": "A358",
+              "value": "target-v81-76-354"
+            },
+            "labelCell": {
+              "cell": "C358",
+              "value": "alcôves"
+            },
+            "historicalPresenceCell": {
+              "cell": "D358",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E358",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "requiredCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "receipt": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/receipts/target-v81-76-354-attempt01.json",
+        "bytes": 8836,
+        "sha256": "b0983fd56b27cc1785009d4394b1c1c47bcd889f8653597b552d6da333c58baf"
+      },
+      "candidate": {
+        "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-76-354-alcoves-native.png",
+        "bytes": 2036235,
+        "sha256": "378356c33ffced593db6604a87efe9aee902ee1849312fe8f9f96cdc32430c74"
+      },
+      "dimensions": [
+        1133,
+        1388
+      ],
+      "mode": "RGBA",
+      "nativeOriginalSha256": "378356c33ffced593db6604a87efe9aee902ee1849312fe8f9f96cdc32430c74",
+      "frame": {
+        "rect": [
+          0,
+          0,
+          1133,
+          1388
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "wholeNativeCanvasRetained": true
+      },
+      "attempts": 1,
+      "candidateVariants": 1,
+      "strict48pxAlphaGt0MarginPass": false,
+      "diagnostic48pxAlphaGt8MarginPass": true,
+      "thresholdMeasurements": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            8,
+            1130,
+            1388
+          ],
+          "margins": [
+            0,
+            8,
+            3,
+            0
+          ],
+          "visiblePixels": 865435,
+          "edgeVisiblePixels": 81
+        },
+        "2": {
+          "bboxExclusive": [
+            120,
+            87,
+            1050,
+            1293
+          ],
+          "margins": [
+            120,
+            87,
+            83,
+            95
+          ],
+          "visiblePixels": 858120,
+          "edgeVisiblePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            122,
+            89,
+            1050,
+            1293
+          ],
+          "margins": [
+            122,
+            89,
+            83,
+            95
+          ],
+          "visiblePixels": 854822,
+          "edgeVisiblePixels": 0
+        }
+      },
+      "proposedDiagnosticAnchor": {
+        "x": 586,
+        "y": 1292,
+        "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+        "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+      },
+      "targetSpecificLimits": [
+        "Source plural alcôves is represented by ONE candidate niche module, not a set of variants or a finished palace interior.",
+        "Wall placement, reference-character scale, approach and floor support remain unqualified."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "nativeGenerated": true,
+      "byteExactNativeCopy": true,
+      "assistantVisualInspection": true,
+      "technicalAdmission": false,
+      "runtimeIntegrated": false,
+      "runtimeTested": false,
+      "humanValidated": false,
+      "sourceClosed": false,
+      "pixelsEdited": false
+    }
+  ],
+  "rejectedRawAttempts": [],
+  "limits": [
+    "All17 strict alpha>0 margin checks fail. Low-alpha border noise remains in13 candidates; no pixels are cleaned, cropped or repadded.",
+    "A static PNG does not satisfy authored animation, energy cycles, interlocks, interactions, rendering layers, routes or gameplay.",
+    "Pivots are proposed image-bbox anchors only, not verified ground contacts; wall-mounted modules require attachment pivots.",
+    "No scale screenshot with reference Yautja, district placement, collision envelope, access/exit or native-view distance qualification is included.",
+    "One candidate variant per exact target ID, not20 native variants and not the ideal4–8 variants for common props.",
+    "No target is marked human validated or globally closed. Existing Pit pump/valve context and V17 handheld trophy hook are not mislabeled as globally absent.",
+    "Historical source refs/cells are dated locators; subsequent runtime evolution must not silently rewrite this record."
+  ]
+}
