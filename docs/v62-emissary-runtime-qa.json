@@ -1,0 +1,319 @@
+{
+  "result": "PASS",
+  "url": "http://localhost:4182",
+  "version": "V62",
+  "checkedAt": "2026-09-30T20:44:12.931Z",
+  "fighterId": "user-emissary-phg",
+  "sourceHashes": {
+    "app/game/systems/pitUserRoster.ts": "e7e4c746d3e7457cf2b8281af1682d72a5e37362f0adde6a62487de96aca3aab",
+    "app/game/systems/pitRosterIdentityV62.ts": "9290654fa1f4a5b443e291e28d842b894bb9fa68939c4b4e453bfad63d514fdc",
+    "app/game/pitRosterIcons.ts": "227aee367c357d672267cb8a8ea7278bb04c26b53acd3138ebf5c3b2c9670d48",
+    "app/game/data/pitUserHuntersV62.json": "3a860e299afd833d2fc32af5395ad9397a960ff9b4956776ba67ab620e259c52",
+    "app/game/data/pitUserAnimationsV62.json": "59ecd85923bb8bf95e88ab5dbb443844c1502a46832aa14579005f0b0e36efb7",
+    "app/game/pitSpriteSheetRegistry.ts": "7830357fff7faa3d5273b79c8bff802e766fa3b4fdfb230834f9185eafae0492",
+    "scripts/verify-pit-emissary-v62.mjs": "3f92ff79dd8dd4c375da0d66615a752211d1dc4f9e230d361441c9fd993c543d"
+  },
+  "checks": [
+    {
+      "name": "native-facing-right",
+      "nativeFrames": 6,
+      "mirrored": false,
+      "pauseStable": true,
+      "uncoveredMovement": "declared-native-stance",
+      "draws": [
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-right.png",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "dest": [
+            232.6621315192744,
+            303.74149659863946,
+            134.67573696145124,
+            134.67573696145124
+          ],
+          "frame": 0,
+          "matrix": [
+            1.541516661643982,
+            1.541516661643982
+          ]
+        },
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-right.png",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "dest": [
+            232.6621315192744,
+            303.74149659863946,
+            134.67573696145124,
+            134.67573696145124
+          ],
+          "frame": 0,
+          "matrix": [
+            1.541516661643982,
+            1.541516661643982
+          ]
+        },
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-right.png",
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "dest": [
+            232.6621315192744,
+            303.74149659863946,
+            134.67573696145124,
+            134.67573696145124
+          ],
+          "frame": 0,
+          "matrix": [
+            1.541516661643982,
+            1.541516661643982
+          ]
+        },
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-right.png",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "dest": [
+            232.6621315192744,
+            300.8480725623583,
+            134.67573696145124,
+            134.67573696145124
+          ],
+          "frame": 0,
+          "matrix": [
+            1.541516661643982,
+            1.541516661643982
+          ]
+        },
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-right.png",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "dest": [
+            232.6621315192744,
+            301.1111111111111,
+            134.67573696145124,
+            134.67573696145124
+          ],
+          "frame": 12,
+          "matrix": [
+            1.541516661643982,
+            1.541516661643982
+          ]
+        },
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-right.png",
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "dest": [
+            232.6621315192744,
+            301.1111111111111,
+            134.67573696145124,
+            134.67573696145124
+          ],
+          "frame": 24,
+          "matrix": [
+            1.541516661643982,
+            1.541516661643982
+          ]
+        }
+      ]
+    },
+    {
+      "name": "native-facing-left",
+      "nativeFrames": 6,
+      "mirrored": false,
+      "pauseStable": true,
+      "uncoveredMovement": "declared-native-stance",
+      "draws": [
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-left.png",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "dest": [
+            596.9511677282378,
+            307.104033970276,
+            126.09766454352442,
+            126.09766454352442
+          ],
+          "frame": 0,
+          "matrix": [
+            1.5522068738937378,
+            1.5522068738937378
+          ]
+        },
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-left.png",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "dest": [
+            598.1525829334151,
+            308.96267206891014,
+            123.69483413316966,
+            123.69483413316966
+          ],
+          "frame": 0,
+          "matrix": [
+            1.5522068738937378,
+            1.5522068738937378
+          ]
+        },
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-left.png",
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "dest": [
+            596.9511677282378,
+            306.61146496815286,
+            126.09766454352442,
+            126.09766454352442
+          ],
+          "frame": 0,
+          "matrix": [
+            1.5522068738937378,
+            1.5522068738937378
+          ]
+        },
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-left.png",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "dest": [
+            596.9511677282378,
+            310.0594479830149,
+            126.09766454352442,
+            126.09766454352442
+          ],
+          "frame": 0,
+          "matrix": [
+            1.5522068738937378,
+            1.5522068738937378
+          ]
+        },
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-left.png",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "dest": [
+            596.9511677282378,
+            310.0594479830149,
+            126.09766454352442,
+            126.09766454352442
+          ],
+          "frame": 0,
+          "matrix": [
+            1.5522068738937378,
+            1.5522068738937378
+          ]
+        },
+        {
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-left.png",
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "dest": [
+            596.9511677282378,
+            310.30573248407643,
+            126.09766454352442,
+            126.09766454352442
+          ],
+          "frame": 0,
+          "matrix": [
+            1.5522068738937378,
+            1.5522068738937378
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mobile-selection-and-duel",
+      "viewport": [
+        844,
+        390
+      ],
+      "reducedMotionRequested": true,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "roster-emissary.png",
+      "sha256": "75fa57d3548d7bceebb5feb3c92869ca3ea2ccd6fb54b1d62c84ea95ff0c35f4",
+      "visualReview": "inspected-pass"
+    },
+    {
+      "file": "duel-native-right.png",
+      "sha256": "1603dab5e8231fbba70d0fed7405f87af35a0cbc73cf5f250109a411c9112369",
+      "visualReview": "inspected-pass"
+    },
+    {
+      "file": "duel-native-left.png",
+      "sha256": "1bf5971ada1b2266a1b2c085feff7a0b1471d81ee190ee16b1c8d75302be0234",
+      "visualReview": "inspected-pass"
+    },
+    {
+      "file": "mobile-left-reduced-motion.png",
+      "sha256": "9f3a999711b081efb9b578e8d0eba7281e8322fb1df1a17b9f5153c5a537874b",
+      "visualReview": "inspected-pass"
+    }
+  ],
+  "errors": [],
+  "badHttp": [],
+  "limits": [
+    "Mobile Chromium emulation, not a physical device.",
+    "Idle only: movement/attacks retain a declared native stance.",
+    "No complete18-action kit or canon1:1 certification."
+  ],
+  "visualNotes": [
+    "Full portrait and icon retain silhouette; source grid clears all toes and hands.",
+    "Both combat sides face the opponent using independent native drawings; feet align to floor.",
+    "844x390 touch layout is playable without horizontal overflow; controls occupy the lower field."
+  ]
+}

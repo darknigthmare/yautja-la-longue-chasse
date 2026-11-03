@@ -1,0 +1,2163 @@
+{
+  "schemaVersion": 1,
+  "canonicalFidelityCertified": false,
+  "method": "Explicit visual decisions + readonly original RGBA/SHA measurement; success decoding never approves art.",
+  "entries": [
+    {
+      "id": "jungle-idle-v93-r2",
+      "fighterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "family": "idle",
+      "sourcePath": "art-source/v93/pit/jungle-hunter/004-jungle-hunter-masked-idle-r2-v93.png",
+      "publicSrc": "/game/sprites/v93/pit/jungle-hunter/004-jungle-hunter-masked-idle-r2-v93.png",
+      "sha256": "12d339692c1d34e72035f1b733979a570b6475e799c7d610bdf566b00abbfdc3",
+      "bytes": 2046433,
+      "atlasId": "jungle-hunter-masked-idle-v93",
+      "bodyHeightPx": 420,
+      "bodyReferenceReason": "One fixed standing-body reference for all poses of this costume; bowed/crouched poses retain their smaller physical height.",
+      "tool": "builtin-image_gen",
+      "pixelTransformation": "none-byte-identical-copy",
+      "canonicalFidelityCertified": false,
+      "reviewDecision": "accepted-visual-native-alpha-no-crop-export",
+      "reviewer": "root source-image visual review",
+      "prompt": "Use the attached exact masked Jungle Hunter costume as the visual identity reference for a native 2D fighting game animation sprite sheet. Preserve the smooth silver 1987 bio-mask, yellow/ochre mottled skin, black net suit, dark dreadlocks with golden rings, metallic armor, teeth necklace, loincloth and asymmetric original equipment. His plasma caster is on the CHARACTER'S LEFT shoulder; his TWO wrist blades belong to the CHARACTER'S RIGHT wrist, never extra swords, spears or unrelated weapons. The face stays covered throughout. Detailed clean painted game sprites in the same visual style as the reference, consistent anatomical scale and equipment from cell to cell. Generate SIX genuinely separately drawn full-body poses on a PORTRAIT transparent RGBA canvas with TWO COLUMNS and THREE ROWS. LEFT COLUMN: the character faces screen RIGHT, three sequential frames from top to bottom. RIGHT COLUMN: the same character faces screen LEFT, three separately authored reverse-facing frames from top to bottom preserving equipment on its anatomical side, not a horizontal mirror. Each sprite confined to its own equal cell with broad fully transparent gutters between every row and column and margins at all outer edges. Every head, hand, dreadlock, foot and blade fully inside its cell. Same ground baseline relative to each cell, fixed source scale, no ground shadows or pedestal. No background whatsoever, no baked checkerboard, no glow, no lettering, no numbers, no watermark, no cell lines. Five coherent fingers per hand, normal two arms/two legs, no detached parts or equipment changes. This is a modest authored game gesture, not a claim of a shot-for-shot film scene. The animation is a subtle grounded battle IDLE LOOP, not walking or attacking. Frame 1 planted relaxed combat guard with right wrist blades REtracted inside the right wrist gauntlet; frame 2 chest expands in a calm inhale with slight shoulder/dreadlock motion and hands loosen, both feet remain planted; frame 3 exhale returns toward original guard, slight weight shift without moving feet. All six cells show retracted wrist blades with no blades sticking out. Three visibly different small anatomical poses, fixed head proportions and feet. No red target beam or projectiles.\nCRITICAL COMPOSITION CORRECTION: the character must be a SMALL sprite inside each cell, NOT fill the portrait height. Each complete body including hair and feet must be only about350pixels tall and no more than340pixels wide on a1024x1536canvas. In each512x512cell leave at least75pixels fully clear above head and75pixels clear below feet, at least65pixels clear to either side. Six SMALL FULL-BODY figures separated by approximately150pixels empty transparent horizontal bands. Even the tallest pose/blade is bounded by these margins. Center each figure identically within its own cell. Scale the drawn sprites uniformly small at source during generation; do not simply shrink a composed raster. Do not reuse any source background or shadow. Wide empty transparent gutters are more important than filling the canvas; six miniatures. No limb may touch or cross y512/y1024/x512 or canvas border. Draw three distinct animation poses while preserving EXACT anatomical scale and same costume from attached original.",
+      "references": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8.png",
+          "sha256": "53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8"
+        }
+      ],
+      "sourceLayoutDeviation": null,
+      "sourceReviewEvidence": null,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            0,
+            512,
+            560
+          ],
+          "visibleRect": [
+            126,
+            121,
+            288,
+            398
+          ],
+          "pivot": [
+            269,
+            518
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "0a76ad688ce75e36784c38df1b3f6f51df2fc09b544a9f13bd7b76098b27b212"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            0,
+            512,
+            560
+          ],
+          "visibleRect": [
+            611,
+            122,
+            289,
+            396
+          ],
+          "pivot": [
+            242.5,
+            517
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "fee07a256170a9fb4ed98c27ceb039526603d17cccdb080eb8fbedccd92bc602"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            560,
+            512,
+            480
+          ],
+          "visibleRect": [
+            136,
+            592,
+            279,
+            414
+          ],
+          "pivot": [
+            269,
+            445
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "cd76619f2e85fea599051eb044e3029e9f24eed715ad9e900e3bda6a651bf6cb"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            560,
+            512,
+            480
+          ],
+          "visibleRect": [
+            608,
+            592,
+            293,
+            414
+          ],
+          "pivot": [
+            246.5,
+            445
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "e7cbf734f498cb809cc930894962155bbf8bfd7b0a5416cbf6abc8cfae51e9ca"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            1040,
+            512,
+            496
+          ],
+          "visibleRect": [
+            125,
+            1084,
+            289,
+            390
+          ],
+          "pivot": [
+            269,
+            433
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "1e6373a9eb569e001b6d693ac2b8f0d840aead90108a89f88dea059da87b648a"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            1040,
+            512,
+            496
+          ],
+          "visibleRect": [
+            609,
+            1084,
+            290,
+            388
+          ],
+          "pivot": [
+            242.5,
+            431
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "f2a1e02213ce6e563626d28f1a78b025b21ff8854c8fa9bd69ee8ebbee83e575"
+        }
+      ]
+    },
+    {
+      "id": "jungle-dizzy-v93-r2",
+      "fighterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "family": "dizzy",
+      "sourcePath": "art-source/v93/pit/jungle-hunter/005-jungle-hunter-masked-dizzy-r2-v93.png",
+      "publicSrc": "/game/sprites/v93/pit/jungle-hunter/005-jungle-hunter-masked-dizzy-r2-v93.png",
+      "sha256": "543db5bcf74420efc7b5dab9481da477e36b3dcc18c035aa4807d4372d8d3091",
+      "bytes": 1840313,
+      "atlasId": "jungle-hunter-masked-dizzy-v93",
+      "bodyHeightPx": 420,
+      "bodyReferenceReason": "One fixed standing-body reference for all poses of this costume; bowed/crouched poses retain their smaller physical height.",
+      "tool": "builtin-image_gen",
+      "pixelTransformation": "none-byte-identical-copy",
+      "canonicalFidelityCertified": false,
+      "reviewDecision": "accepted-visual-native-alpha-no-crop-export",
+      "reviewer": "root source-image visual review",
+      "prompt": "Use the attached exact masked Jungle Hunter costume as the visual identity reference for a native 2D fighting game animation sprite sheet. Preserve the smooth silver 1987 bio-mask, yellow/ochre mottled skin, black net suit, dark dreadlocks with golden rings, metallic armor, teeth necklace, loincloth and asymmetric original equipment. His plasma caster is on the CHARACTER'S LEFT shoulder; his TWO wrist blades belong to the CHARACTER'S RIGHT wrist, never extra swords, spears or unrelated weapons. The face stays covered throughout. Detailed clean painted game sprites in the same visual style as the reference, consistent anatomical scale and equipment from cell to cell. Generate SIX genuinely separately drawn full-body poses on a PORTRAIT transparent RGBA canvas with TWO COLUMNS and THREE ROWS. LEFT COLUMN: the character faces screen RIGHT, three sequential frames from top to bottom. RIGHT COLUMN: the same character faces screen LEFT, three separately authored reverse-facing frames from top to bottom preserving equipment on its anatomical side, not a horizontal mirror. Each sprite confined to its own equal cell with broad fully transparent gutters between every row and column and margins at all outer edges. Every head, hand, dreadlock, foot and blade fully inside its cell. Same ground baseline relative to each cell, fixed source scale, no ground shadows or pedestal. No background whatsoever, no baked checkerboard, no glow, no lettering, no numbers, no watermark, no cell lines. Five coherent fingers per hand, normal two arms/two legs, no detached parts or equipment changes. This is a modest authored game gesture, not a claim of a shot-for-shot film scene. The animation is a FINISHER-WAITING STUNNED LOOP after a lost final match, distinct from falling down or dying. The living hunter remains on BOTH FEET in all six cells; right wrist blades fully retracted safely. Frame 1 knees weakly bent, torso leans slightly forward, arms sag, head low; frame 2 a restrained dazed sway toward camera, left empty palm loosely raised near abdomen for balance; frame 3 weak sway back and shoulders slump, head lower, same planted feet. No decapitation, no dismemberment, no blood, no victory, no self destruct, no new weapons. Distinct drawn poses, not duplicated cells. Keep the exact costume and intact covered mask.\nCRITICAL COMPOSITION CORRECTION: the character must be a SMALL sprite inside each cell, NOT fill the portrait height. Each complete body including hair and feet must be only about350pixels tall and no more than340pixels wide on a1024x1536canvas. In each512x512cell leave at least75pixels fully clear above head and75pixels clear below feet, at least65pixels clear to either side. Six SMALL FULL-BODY figures separated by approximately150pixels empty transparent horizontal bands. Even the tallest pose/blade is bounded by these margins. Center each figure identically within its own cell. Scale the drawn sprites uniformly small at source during generation; do not simply shrink a composed raster. Do not reuse any source background or shadow. Wide empty transparent gutters are more important than filling the canvas; six miniatures. No limb may touch or cross y512/y1024/x512 or canvas border. Draw three distinct animation poses while preserving EXACT anatomical scale and same costume from attached original.",
+      "references": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8.png",
+          "sha256": "53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8"
+        }
+      ],
+      "sourceLayoutDeviation": null,
+      "sourceReviewEvidence": null,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            184,
+            104,
+            183,
+            377
+          ],
+          "pivot": [
+            268,
+            480
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "435f17f3b719442e87ae581f14bb339aa313ef9220892fda51f3e9c459d8e002"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            660,
+            101,
+            185,
+            380
+          ],
+          "pivot": [
+            242.5,
+            480
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "1c92fe345f77fe1dbcab1772dafa17626a000995ce4b631a7d702930c31580f5"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            194,
+            584,
+            219,
+            391
+          ],
+          "pivot": [
+            276,
+            462
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "4e46ddd0229d9ec7e7bce6691d35a4d6dd17f044138b9674d67b6695adc5a00d"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            627,
+            587,
+            220,
+            386
+          ],
+          "pivot": [
+            244.5,
+            460
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "6674c6853f13dc2da3645777e9a4a4883e7232c1a3cd32a4fd438375d3e3bc78"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            184,
+            1089,
+            187,
+            374
+          ],
+          "pivot": [
+            274.5,
+            438
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "87327e700fa95d357d62a725caaf7df2fca5fa0c7e467a46eb0295fe6bacc326"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            652,
+            1090,
+            193,
+            373
+          ],
+          "pivot": [
+            236,
+            438
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "5c5d5be0a216d0c405a0cae2a216b26f06e382e38de097610af1adb3fe6be248"
+        }
+      ]
+    },
+    {
+      "id": "jungle-taunt-v93-r2",
+      "fighterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "family": "taunt",
+      "sourcePath": "art-source/v93/pit/jungle-hunter/006-jungle-hunter-masked-taunt-r2-v93.png",
+      "publicSrc": "/game/sprites/v93/pit/jungle-hunter/006-jungle-hunter-masked-taunt-r2-v93.png",
+      "sha256": "744298d7b4cd18a20a35e062ee439eca23bc9850a9570d8ea69caf9b83937f03",
+      "bytes": 2042714,
+      "atlasId": "jungle-hunter-masked-taunt-v93",
+      "bodyHeightPx": 420,
+      "bodyReferenceReason": "One fixed standing-body reference for all poses of this costume; bowed/crouched poses retain their smaller physical height.",
+      "tool": "builtin-image_gen",
+      "pixelTransformation": "none-byte-identical-copy",
+      "canonicalFidelityCertified": false,
+      "reviewDecision": "accepted-visual-native-alpha-no-crop-export",
+      "reviewer": "root source-image visual review",
+      "prompt": "Use the attached exact masked Jungle Hunter costume as the visual identity reference for a native 2D fighting game animation sprite sheet. Preserve the smooth silver 1987 bio-mask, yellow/ochre mottled skin, black net suit, dark dreadlocks with golden rings, metallic armor, teeth necklace, loincloth and asymmetric original equipment. His plasma caster is on the CHARACTER'S LEFT shoulder; his TWO wrist blades belong to the CHARACTER'S RIGHT wrist, never extra swords, spears or unrelated weapons. The face stays covered throughout. Detailed clean painted game sprites in the same visual style as the reference, consistent anatomical scale and equipment from cell to cell. Generate SIX genuinely separately drawn full-body poses on a PORTRAIT transparent RGBA canvas with TWO COLUMNS and THREE ROWS. LEFT COLUMN: the character faces screen RIGHT, three sequential frames from top to bottom. RIGHT COLUMN: the same character faces screen LEFT, three separately authored reverse-facing frames from top to bottom preserving equipment on its anatomical side, not a horizontal mirror. Each sprite confined to its own equal cell with broad fully transparent gutters between every row and column and margins at all outer edges. Every head, hand, dreadlock, foot and blade fully inside its cell. Same ground baseline relative to each cell, fixed source scale, no ground shadows or pedestal. No background whatsoever, no baked checkerboard, no glow, no lettering, no numbers, no watermark, no cell lines. Five coherent fingers per hand, normal two arms/two legs, no detached parts or equipment changes. This is a modest authored game gesture, not a claim of a shot-for-shot film scene. The animation is a short intimidating TAUNT that can recover to combat guard. Frame 1 standing planted, covered mask turning toward opponent, right forearm raises modestly chest-height with wrist blades retracted; frame 2 TWO original wrist blades extend from CHARACTER RIGHT wrist as he opens CHARACTER LEFT empty hand beckoning opponent with curled fingers, left shoulder cannon remains stationary and never fires; frame 3 he lowers the right blade-bearing forearm into guard, left hand relaxes, two blades still coherent. Both feet planted throughout. No mask removal, no invented supernatural effect, no extra weapons, no trophy, no NPC. Entire blade tips inside cells and never intersect his torso. A clear anatomical three frame sequence with exact equipment continuity.\nCRITICAL COMPOSITION CORRECTION: the character must be a SMALL sprite inside each cell, NOT fill the portrait height. Each complete body including hair and feet must be only about350pixels tall and no more than340pixels wide on a1024x1536canvas. In each512x512cell leave at least75pixels fully clear above head and75pixels clear below feet, at least65pixels clear to either side. Six SMALL FULL-BODY figures separated by approximately150pixels empty transparent horizontal bands. Even the tallest pose/blade is bounded by these margins. Center each figure identically within its own cell. Scale the drawn sprites uniformly small at source during generation; do not simply shrink a composed raster. Do not reuse any source background or shadow. Wide empty transparent gutters are more important than filling the canvas; six miniatures. No limb may touch or cross y512/y1024/x512 or canvas border. Draw three distinct animation poses while preserving EXACT anatomical scale and same costume from attached original.",
+      "references": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8.png",
+          "sha256": "53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8"
+        }
+      ],
+      "sourceLayoutDeviation": null,
+      "sourceReviewEvidence": null,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            133,
+            65,
+            266,
+            417
+          ],
+          "pivot": [
+            265.5,
+            481
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "132a783d7330b8e9fa628622002440830064a034366bcbef4da09ccaa6b7e191"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            628,
+            65,
+            267,
+            416
+          ],
+          "pivot": [
+            249.5,
+            480
+          ],
+          "borderAlpha": 0,
+          "drawingSha256": "09b207dfbee0d187cad83f0c4dd5750f0ef9359988c7de46c7d60c151f76e5a8"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            117,
+            578,
+            315,
+            414
+          ],
+          "pivot": [
+            258.5,
+            479
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "e913ffcb93f46cca89cf1f4c5c22ccf68b9d3b2ea442272e98db851e24b651e2"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            610,
+            578,
+            317,
+            413
+          ],
+          "pivot": [
+            252,
+            478
+          ],
+          "borderAlpha": 0,
+          "drawingSha256": "253a932cd05d01dd00fb76665e5dfc0d2d79465deaee6b285395a00988bc4042"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            127,
+            1070,
+            286,
+            410
+          ],
+          "pivot": [
+            269,
+            455
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "38b333bc98b396915cd6c499a3803624483b55b902f3df4cffdaf0e3eb6abeea"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            619,
+            1074,
+            278,
+            407
+          ],
+          "pivot": [
+            245,
+            456
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "73f8d00f4e1ca53ea96e5c0cfa1aaead730b2996374bbd1b9354a31b520d8d79"
+        }
+      ]
+    },
+    {
+      "id": "scar-dizzy-v93-r2",
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "family": "dizzy",
+      "sourcePath": "art-source/v93/pit/scar/003-scar-masked-dizzy-r2-v93.png",
+      "publicSrc": "/game/sprites/v93/pit/scar/003-scar-masked-dizzy-r2-v93.png",
+      "sha256": "f990b64ecbf5d4848a13c7c24d8bf2ed89371fff3f3ccfab18f377ea5709e0dd",
+      "bytes": 2021972,
+      "atlasId": "scar-masked-dizzy-v93",
+      "bodyHeightPx": 460,
+      "bodyReferenceReason": "One fixed standing-body reference for all poses of this costume; bowed/crouched poses retain their smaller physical height.",
+      "tool": "builtin-image_gen",
+      "pixelTransformation": "none-byte-identical-copy",
+      "canonicalFidelityCertified": false,
+      "reviewDecision": "accepted-visual-native-alpha-no-crop-export",
+      "reviewer": "root source-image visual review",
+      "prompt": "Create a SIX-DRAWING native fighting-game animation sheet from the attached exact SCAR masked reference, retaining his AVP silver angular etched mask, pale yellow black-spotted skin, extensive layered silver chest armor and long plate loin protection, armored claw feet, dark long dreadlocks with gold/red bands, necklace, black body netting. Equipment anatomical ownership never changes: original wrist blades ONLY on CHARACTER RIGHT wrist; single plasma caster on CHARACTER LEFT shoulder. Keep mask worn, no helmet swap or exposed face. Same richly painted detailed 2D game-sprite style and exact costume throughout. PORTRAIT RGBA with fully TRANSPARENT background. SIX separate full-body drawings in TWO COLUMNS by THREE ROWS: left column faces screen RIGHT, right column faces screen LEFT, sequential action frames top/middle/bottom in each column. Author the opposite-facing poses individually, never mirror the asymmetric gear. Every cell has large transparent gutters and outer margins; no limb/weapon/hair crossing cells, no clipping. Same consistent character scale and foot baseline per cell; hands must be anatomically coherent, five fingers, no extra arms or blades. No text, labels, grid, shadow, backdrop, glow or checkerboard. Three genuinely different poses for each facing, not clones. No shield, new spear or plasma shot. This is an authored restrained game gesture, not an alleged canonical film shot. FINISHER WAIT STUNNED IDLE LOOP. He remains upright living and planted on BOTH FEET, knees softly bent, wrist blades fully retracted. Frame1 torso slightly pitched forward, heavy arms hanging, covered head bowed; frame2 exhausted sway a few inches toward opponent, left empty hand loosens up for balance, shoulders slump; frame3 weak sway back close to original pose, head stays low. Never kneel, fall or die. Intact armor, no wounds, no blood, no dismemberment, no victory, no self destruct. Grounded repeated swaying cycle anatomically consistent.\nCritical layout: draw SIX SMALL MINIATURE full-body sprites, each onlyabout350pixels tall and at most340pixels wide, within six spacious512x512cells on1024x1536transparent canvas. The character occupies ONLY the central70percent of a cell: at least75clear transparent pixels above the head and belowfeet,65pixels clear beside all hands/hair/weapons. Huge approximately150pixel completely empty transparent bands between rows. No background or soft aura from reference copied. Accurate constant small body scale across all cells; same foot baseline. Never let any pixel of head, toes or equipment touch outeredge or y512/y1024/x512. Empty space is intentional, do not fillcanvas.",
+      "references": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+          "sha256": "6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd"
+        }
+      ],
+      "sourceLayoutDeviation": null,
+      "sourceReviewEvidence": null,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            142,
+            67,
+            214,
+            412
+          ],
+          "pivot": [
+            248.5,
+            478
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "f0704f51c3331608ad9c1a90218b300b2654211c7a0dccb7192991e57a45a0fe"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            665,
+            70,
+            221,
+            409
+          ],
+          "pivot": [
+            263,
+            478
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "e8b84e7889442c1e569b0d49de9c66549d554d4bd876b5d1cacf92232c429dc0"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            134,
+            582,
+            282,
+            412
+          ],
+          "pivot": [
+            247.5,
+            481
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "68b977f62ef55f2f22925b53ae39711f1e25a1013cb77bb0b81a49170b5ada90"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            603,
+            585,
+            290,
+            409
+          ],
+          "pivot": [
+            266.5,
+            481
+          ],
+          "borderAlpha": 0,
+          "drawingSha256": "7a7496e997bf54d8cabccb4328ce836e5a5e2dcf72935b37321ea46184c9a134"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            134,
+            1100,
+            216,
+            408
+          ],
+          "pivot": [
+            240.5,
+            483
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "aaa4b789f5decb145f50a7e840d6eb154ab8f60bc3904aa2a08609a5bc2b506f"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            673,
+            1101,
+            220,
+            408
+          ],
+          "pivot": [
+            270.5,
+            484
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "406f36b5a7635f3630734246f9b798d92f4a33d54cd432a2298c6c77fc094b52"
+        }
+      ]
+    },
+    {
+      "id": "scar-taunt-v93-r2",
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "family": "taunt",
+      "sourcePath": "art-source/v93/pit/scar/004-scar-masked-taunt-r2-v93.png",
+      "publicSrc": "/game/sprites/v93/pit/scar/004-scar-masked-taunt-r2-v93.png",
+      "sha256": "4740d5b1a51d70173fb9237c975fc228f387c077254934313975a3405a671beb",
+      "bytes": 2353218,
+      "atlasId": "scar-masked-taunt-v93",
+      "bodyHeightPx": 460,
+      "bodyReferenceReason": "One fixed standing-body reference for all poses of this costume; bowed/crouched poses retain their smaller physical height.",
+      "tool": "builtin-image_gen",
+      "pixelTransformation": "none-byte-identical-copy",
+      "canonicalFidelityCertified": false,
+      "reviewDecision": "accepted-visual-native-alpha-no-crop-export",
+      "reviewer": "root source-image visual review",
+      "prompt": "Create a SIX-DRAWING native fighting-game animation sheet from the attached exact SCAR masked reference, retaining his AVP silver angular etched mask, pale yellow black-spotted skin, extensive layered silver chest armor and long plate loin protection, armored claw feet, dark long dreadlocks with gold/red bands, necklace, black body netting. Equipment anatomical ownership never changes: original wrist blades ONLY on CHARACTER RIGHT wrist; single plasma caster on CHARACTER LEFT shoulder. Keep mask worn, no helmet swap or exposed face. Same richly painted detailed 2D game-sprite style and exact costume throughout. PORTRAIT RGBA with fully TRANSPARENT background. SIX separate full-body drawings in TWO COLUMNS by THREE ROWS: left column faces screen RIGHT, right column faces screen LEFT, sequential action frames top/middle/bottom in each column. Author the opposite-facing poses individually, never mirror the asymmetric gear. Every cell has large transparent gutters and outer margins; no limb/weapon/hair crossing cells, no clipping. Same consistent character scale and foot baseline per cell; hands must be anatomically coherent, five fingers, no extra arms or blades. No text, labels, grid, shadow, backdrop, glow or checkerboard. Three genuinely different poses for each facing, not clones. No shield, new spear or plasma shot. This is an authored restrained game gesture, not an alleged canonical film shot. TAUNT challenge three frames. Frame1 planted neutral battle guard, right forearm at abdomen, wrist blades safely fully retracted. Frame2 broad sturdy chest rise and head faces opponent, CHARACTER LEFT empty clawed hand closes into a restrained fist near left chest, CHARACTER RIGHT forearm relaxes downward. Frame3 left fist opens into a brief beckoning challenge, right arm safely lowered, returning to guard. All six drawings keep blades retracted (NO extended blade in any cell), empty hands and stationary shoulder cannon; do not summon NPCs or trophies or invented objects. No mask removal. Visible coherent arm/hand gesture in exact Scar armor.\nCritical layout: draw SIX SMALL MINIATURE full-body sprites, each onlyabout350pixels tall and at most340pixels wide, within six spacious512x512cells on1024x1536transparent canvas. The character occupies ONLY the central70percent of a cell: at least75clear transparent pixels above the head and belowfeet,65pixels clear beside all hands/hair/weapons. Huge approximately150pixel completely empty transparent bands between rows. No background or soft aura from reference copied. Accurate constant small body scale across all cells; same foot baseline. Never let any pixel of head, toes or equipment touch outeredge or y512/y1024/x512. Empty space is intentional, do not fillcanvas.",
+      "references": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+          "sha256": "6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd"
+        }
+      ],
+      "sourceLayoutDeviation": null,
+      "sourceReviewEvidence": null,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            81,
+            34,
+            361,
+            459
+          ],
+          "pivot": [
+            255.5,
+            492
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "a150183f379a1db7e3f9a04ea7b68c8b9f26e33eb8601eb78a6bd728e2e42fa0"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            581,
+            34,
+            361,
+            460
+          ],
+          "pivot": [
+            254,
+            493
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "6f0d1a849996a2a9a55eccb478de8d95a9d2b7e84c3d4d5665215bdba0ba1ca2"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            126,
+            544,
+            326,
+            455
+          ],
+          "pivot": [
+            288.5,
+            486
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "54e73a90c0eb006499ca31933469528e1cde77deb71fc2354da22cfc3de7c0f7"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            571,
+            544,
+            326,
+            457
+          ],
+          "pivot": [
+            222.5,
+            488
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "5882b2ab089f327c8b0bab239c27c64e33c51ca64e43a396806c4a67de06c244"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            80,
+            1046,
+            362,
+            439
+          ],
+          "pivot": [
+            259.5,
+            460
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "f9d516b8e0d9f6360019ac9025280c43a6a4e8cd126ceefbb6deabf06ad16e89"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            581,
+            1042,
+            363,
+            443
+          ],
+          "pivot": [
+            251.5,
+            460
+          ],
+          "borderAlpha": 0,
+          "drawingSha256": "c2c199fd1445968d6878148b9bd08068c1797b2f82bc618825bfbeb47d0d6233"
+        }
+      ]
+    },
+    {
+      "id": "scar-idle-v93-r2",
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "family": "idle",
+      "sourcePath": "art-source/v93/pit/scar/006-scar-masked-idle-r2-v93.png",
+      "publicSrc": "/game/sprites/v93/pit/scar/006-scar-masked-idle-r2-v93.png",
+      "sha256": "7f6ab1620ce5e7caf5cedece02819b38b39f885e9751087de36e9730d9345407",
+      "bytes": 2216983,
+      "atlasId": "scar-masked-idle-v93",
+      "bodyHeightPx": 460,
+      "bodyReferenceReason": "One fixed standing-body reference for all poses of this costume; bowed/crouched poses retain their smaller physical height.",
+      "tool": "builtin-image_gen",
+      "pixelTransformation": "none-byte-identical-copy",
+      "canonicalFidelityCertified": false,
+      "reviewDecision": "accepted-visual-native-alpha-no-crop-export",
+      "reviewer": "root source-image visual review",
+      "prompt": "Create a SIX-DRAWING native fighting-game animation sheet from the attached exact SCAR masked reference, retaining his AVP silver angular etched mask, pale yellow black-spotted skin, extensive layered silver chest armor and long plate loin protection, armored claw feet, dark long dreadlocks with gold/red bands, necklace, black body netting. Equipment anatomical ownership never changes: original wrist blades ONLY on CHARACTER RIGHT wrist; single plasma caster on CHARACTER LEFT shoulder. Keep mask worn, no helmet swap or exposed face. Same richly painted detailed 2D game-sprite style and exact costume throughout. PORTRAIT RGBA with fully TRANSPARENT background. SIX separate full-body drawings in TWO COLUMNS by THREE ROWS: left column faces screen RIGHT, right column faces screen LEFT, sequential action frames top/middle/bottom in each column. Author the opposite-facing poses individually, never mirror the asymmetric gear. Every cell has large transparent gutters and outer margins; no limb/weapon/hair crossing cells, no clipping. Same consistent character scale and foot baseline per cell; hands must be anatomically coherent, five fingers, no extra arms or blades. No text, labels, grid, shadow, backdrop, glow or checkerboard. Three genuinely different poses for each facing, not clones. No shield, new spear or plasma shot. This is an authored restrained game gesture, not an alleged canonical film shot. SUBTLE BATTLE IDLE LOOP in exact full Scar silver armor. All arms/hands/equipment stay in calm relaxed guard. Frame1 knees slightly bent, empty character LEFT hand raised modestly abdomen-height, character RIGHT forearm lowered, blades fully retracted; frame2 a calm breath chest rises a little, shoulders/dreadlocks move slightly, BOTH FEET remain planted; frame3 breathe out and settle toward original guard. No walking, no arm fist/beckon, no attacking, no mask removal, no weapon fired. Preserve his layered chest plate/loin/feet. THREE visibly different restrained drawn poses per facing. CRITICAL layout: each complete SMALL full-body figure only350pixels tall and less340pixels wide. At least75pixels entirely transparent abovehead/belowfeet and65pixels either side of each512x512cell. Six miniatures on1024x1536, wideempty150pixel horizontal gutters; do NOT fillcanvas. All limbs/head/equipment far away from outeredges or x512/y512/y1024. Anatomical scale constant source, no copied backdrop.\nMOST IMPORTANT CORRECTION: BOTH wrist gauntlets have ZERO projecting blades in EVERY drawing, both facings. No blade tip, no single curved blade, no spike below hand. All blades fully sheathed in CLOSED right wrist gauntlet in all six poses. Do not add extended blades in the right column. Shoulder caster stays visibly attached to CHARACTER LEFT shoulder, do not omit it. Increase transparent space by drawing SMALLER 300pixels tall figures in each512square. Preserve mask and armor exactly.",
+      "references": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+          "sha256": "6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd"
+        }
+      ],
+      "sourceLayoutDeviation": null,
+      "sourceReviewEvidence": null,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            107,
+            78,
+            308,
+            430
+          ],
+          "pivot": [
+            255.5,
+            507
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "5ba6001ec85da9547e62ac54a2497fa461a98146e0f011e3a8cc919d09fbe192"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            609,
+            79,
+            306,
+            431
+          ],
+          "pivot": [
+            251.5,
+            509
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "b8362a326970b4c103e242a11b1ea97a71cadd6bb710f8efd5c5704ab9450e01"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            126,
+            563,
+            312,
+            446
+          ],
+          "pivot": [
+            268,
+            496
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "42913c7ad9f3a5afcf659abc0a6f7288324c877ab3c065e10325e5147cc0021c"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            590,
+            559,
+            313,
+            454
+          ],
+          "pivot": [
+            245,
+            500
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "3d7436c7162a8409f6a705e4a70c3ba39cf72f8ffa870a4c4287c8bd94faaf54"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            112,
+            1058,
+            302,
+            424
+          ],
+          "pivot": [
+            258.5,
+            457
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "1d02118c435f87ede04dff6bf277ab9274897e6a959934cffa05b938cbb203cd"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            611,
+            1058,
+            307,
+            426
+          ],
+          "pivot": [
+            256,
+            459
+          ],
+          "borderAlpha": 0,
+          "drawingSha256": "dc06f3f9747360b32eb083ddafb134a16080f91d0e9f82b06e6e0d0e3ea51091"
+        }
+      ]
+    },
+    {
+      "id": "v93-wolf-003",
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "family": "taunt",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-003-wolf-masked-taunt-recovery.png",
+      "publicSrc": "/game/sprites/v93/pit/wolf/v93-wolf-003-wolf-masked-taunt-recovery.png",
+      "sha256": "0bdf5e0909c467b3d5387340b77ff4b5b912e86274aeb90203d7221c08012c71",
+      "bytes": 2096052,
+      "atlasId": "wolf-masked-taunt-v93",
+      "bodyHeightPx": 420,
+      "bodyReferenceReason": "One fixed standing-body reference for all poses of this costume; bowed/crouched poses retain their smaller physical height.",
+      "tool": "builtin-image_gen",
+      "pixelTransformation": "none-byte-identical-copy",
+      "canonicalFidelityCertified": false,
+      "reviewDecision": "accepted-visual-native-alpha-no-crop-export",
+      "reviewer": "homeworld_v92 source-image visual review; root agrees inactive shoulder-cannon angle is coherent",
+      "prompt": "Use case: stylized-concept. Production asset: transparent sprite sheet containing exactly SIX SMALL individual masked Wolf figures. The references are IDENTITY AND PAINT STYLE ONLY; do NOT copy their page layout or scale. Use a WIDE-SPACE layout with massive clear gutters. Canvas1024x1536. Two columns, three rows. Exact cell centers:(256,256),(768,256),(256,768),(768,768),(256,1280),(768,1280). The character must be drawn as a SMALL MINIATURE only300px tall and maximum260px wide, centered inside each512x512cell. That means102pixels or more of COMPLETELY EMPTY transparent space above and below every figure; do not fill the cell with a large figure. Feet at cell-local y406. A clean transparent RGBA sprite sheet, no grid lines, no labels, no background, no reference atmosphere, no floor, no shadow, no halo. Full figure with all dreadlocks, hands, feet and weapons clear of cell edges. Left column has THREE distinct temporal poses facing RIGHT; right column has corresponding THREE distinct temporal poses facing LEFT, independently painted views, never apply mirror transform.\nIdentity reference1 is supplied masked Wolf: SAME engraved silver biomask, black dreadlocks with gold bands, tan spotted skin, black body netting, silver plated chest/thigh/shin armor, orange-brown apron and neck skull, original shoulder cannon and spear. Reference2/3 confirm right/left drawn costumes. CRITICAL EQUIPMENT LOCK: ONE pistol always held in the SAME anatomical pistol hand, kept DOWN by hip throughout ALL6poses. The OTHER wrist-blade arm stays low by the other hip throughout ALL6poses. NEVER swap pistol into wrist-blade hand, never add a weapon, never change the harness side. Use only head and upper torso to perform this taunt. Both arms remain in the same low pose throughout to avoid weapon drift.\nTAUNT three distinct poses in time: row1 masked head level looking at opponent, calm body. Row2 lift chin noticeably and expand proud upper chest slightly while looking down at opponent, head above neutral, hands still unchanged low. Row3 tilt masked head towards opponent with a mocking small sideways nod, then settle shoulders toward neutral, hands still unchanged low. Legs planted, unchanged broad foot position. The small head/chest gestures are intentionally readable challenge, not breathing only. No mask removal, no shooting, no melee attack. Consistent small body scale across six poses and generous fully transparent gutters are mandatory. Retain source costume, these are gameplay adaptations rather than certified film animation.\n",
+      "references": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+          "sha256": "4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba"
+        },
+        {
+          "path": "public/game/sprites/v91/pit/wolf/masked-idle-right.png",
+          "sha256": "88e6b463c26a2a31c5b4e1683f1bcba548b8bfdd31a66283f76c1485cfeb4ffa"
+        },
+        {
+          "path": "public/game/sprites/v91/pit/wolf/masked-idle-left.png",
+          "sha256": "e5c727cc40bf2ea06e7cb6d1da4023f037a29a9f3d9dd47f9b3b7bd7610b2d00"
+        }
+      ],
+      "sourceLayoutDeviation": null,
+      "sourceReviewEvidence": null,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            149,
+            78,
+            265,
+            415
+          ],
+          "pivot": [
+            281.5,
+            492
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "c9f1d497879e10287764b6a1769b0c4b632061b1cb0dff3a14e086b0f8aa384d"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            609,
+            77,
+            262,
+            417
+          ],
+          "pivot": [
+            227,
+            493
+          ],
+          "borderAlpha": 0,
+          "drawingSha256": "782aabef8e696d73f3f82c172f50f884fbe59a6d2786373b34a4b61151bd18cf"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            157,
+            567,
+            268,
+            432
+          ],
+          "pivot": [
+            289.5,
+            486
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "1ecd262c72c5fa70c3273aa6caabe42f041e68179202107cca4682a07da24a1d"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            602,
+            567,
+            267,
+            437
+          ],
+          "pivot": [
+            223,
+            491
+          ],
+          "borderAlpha": 0,
+          "drawingSha256": "137ae6949971fddf82454d44b083d30c8ae8824382d925c670c3bba86b6747cb"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            160,
+            1072,
+            270,
+            420
+          ],
+          "pivot": [
+            294.5,
+            467
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "caa5f625862c9352bffb76a72500212d9d4e774f76536a93358d87a5555f74d8"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            603,
+            1067,
+            269,
+            426
+          ],
+          "pivot": [
+            224.5,
+            468
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "1701219748f3b33161ad41b66a658cafae5726d43f5a96a0ee0138782e1cfab7"
+        }
+      ]
+    },
+    {
+      "id": "v93-wolf-006",
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "family": "dizzy",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-006-wolf-masked-dizzy-recovery.png",
+      "publicSrc": "/game/sprites/v93/pit/wolf/v93-wolf-006-wolf-masked-dizzy-recovery.png",
+      "sha256": "128e9df5ed9e15c3585967eee8556e904b34e3ef0ed8c4106e64197de1ef70b1",
+      "bytes": 2029019,
+      "atlasId": "wolf-masked-dizzy-v93",
+      "bodyHeightPx": 420,
+      "bodyReferenceReason": "One fixed standing-body reference for all poses of this costume; bowed/crouched poses retain their smaller physical height.",
+      "tool": "builtin-image_gen",
+      "pixelTransformation": "none-byte-identical-copy",
+      "canonicalFidelityCertified": false,
+      "reviewDecision": "accepted-visual-native-alpha-no-crop-export",
+      "reviewer": "homeworld_v92 source-image visual review; root agrees inactive shoulder-cannon angle is coherent",
+      "prompt": "Use case: stylized-concept. Production asset: transparent sprite sheet containing exactly SIX SMALL individual masked Wolf figures. The references are IDENTITY AND PAINT STYLE ONLY; do NOT copy their page layout or scale. Use a WIDE-SPACE layout with massive clear gutters. Canvas1024x1536. Two columns, three rows. Exact cell centers:(256,256),(768,256),(256,768),(768,768),(256,1280),(768,1280). The character must be drawn as a SMALL MINIATURE only300px tall and maximum260px wide, centered inside each512x512cell. That means102pixels or more of COMPLETELY EMPTY transparent space above and below every figure; do not fill the cell with a large figure. Feet at cell-local y406. A clean transparent RGBA sprite sheet, no grid lines, no labels, no background, no reference atmosphere, no floor, no shadow, no halo. Full figure with all dreadlocks, hands, feet and weapons clear of cell edges. Left column has THREE distinct temporal poses facing RIGHT; right column has corresponding THREE distinct temporal poses facing LEFT, independently painted views, never apply mirror transform.\nIdentity reference1 is supplied masked Wolf: SAME engraved silver biomask, black dreadlocks with gold bands, tan spotted skin, black body netting, silver plated chest/thigh/shin armor, orange-brown apron and neck skull, original shoulder cannon and spear. Reference2/3 confirm right/left drawn costumes. CRITICAL EQUIPMENT LOCK: ONE pistol always held in the SAME anatomical pistol hand, kept DOWN by hip throughout ALL6poses. The OTHER wrist-blade arm stays low by the other hip throughout ALL6poses. NEVER swap pistol into wrist-blade hand, never add a weapon, never change the harness side. Use only head, torso and knee changes to perform the action below; both arms remain lowered with weapons visibly retained. Both arms remain in the same low pose throughout to avoid weapon drift.\nDIZZY three successive loop poses awaiting a finisher: Row1 knees gently bent, masked head hangs forward and torso leans a little toward opponent. Row2 torso and hanging head sway mildly back without lifting chin into a triumphant look; shoulders slump, knees remain bent. Row3 head droops a little further and torso sways forward toward row1, restrained weak motion. Both arms low throughout; pistol always VISIBLE in original hand, wrist blades on other arm quiet near hip. No red wound, stars, magic, attack, head spin, arm gesture, vanished weapon or extra weapon. Dreadlocks follow weak sway attached correctly, not through chest. Both facing sequences contain3different SMALL drawings of a vulnerable standing fighter, all isolated by ample native transparent gutter.\n",
+      "references": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+          "sha256": "4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba"
+        },
+        {
+          "path": "public/game/sprites/v91/pit/wolf/masked-idle-right.png",
+          "sha256": "88e6b463c26a2a31c5b4e1683f1bcba548b8bfdd31a66283f76c1485cfeb4ffa"
+        },
+        {
+          "path": "public/game/sprites/v91/pit/wolf/masked-idle-left.png",
+          "sha256": "e5c727cc40bf2ea06e7cb6d1da4023f037a29a9f3d9dd47f9b3b7bd7610b2d00"
+        }
+      ],
+      "sourceLayoutDeviation": null,
+      "sourceReviewEvidence": null,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            190,
+            89,
+            226,
+            407
+          ],
+          "pivot": [
+            310,
+            495
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "746bb93b1fdcea4e1f8b87fbb0248fc80c21e89a5ae7162ada94e14de55eb07b"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            609,
+            89,
+            223,
+            407
+          ],
+          "pivot": [
+            207,
+            495
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "a50df1e5892df82a343590d34d55a5036820090ae24b08d3c40a9e8ac71aa9f9"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            184,
+            568,
+            260,
+            418
+          ],
+          "pivot": [
+            313,
+            473
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "a74b4b76f708fc239ec24f5fbdde3ab80b67e20f7774e9c973aab11b3119340f"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            589,
+            570,
+            254,
+            417
+          ],
+          "pivot": [
+            214.5,
+            474
+          ],
+          "borderAlpha": 0,
+          "drawingSha256": "5512ec5b598f36c9ab49374d0bdc84443b74fe6174c98cfa8e3889a450389f3f"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            195,
+            1053,
+            233,
+            422
+          ],
+          "pivot": [
+            302,
+            450
+          ],
+          "borderAlpha": 0,
+          "drawingSha256": "c96db8505a17023529d677a54883a5bb04642fc1aca081d24f0eb89f93ca9270"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            609,
+            1064,
+            222,
+            412
+          ],
+          "pivot": [
+            215.5,
+            451
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "1973f8086a11130363c28e0bdba7755f6156f578fa221a7ad8af5f12383b4179"
+        }
+      ]
+    },
+    {
+      "id": "city-idle-v93-r2",
+      "fighterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "family": "idle",
+      "sourcePath": "art-source/v93/pit/city-hunter/idle-r2.png",
+      "publicSrc": "/game/sprites/v93/pit/city-hunter/idle-r2.png",
+      "sha256": "71fc0992f04b755b59ed8f4dcd2176a412976933a44db65057995735bbf292be",
+      "bytes": 2264765,
+      "atlasId": "city-hunter-masked-idle-v93",
+      "bodyHeightPx": 473,
+      "bodyReferenceReason": "One fixed standing-body reference for all poses of this costume; bowed/crouched poses retain their smaller physical height.",
+      "tool": "builtin-image_gen",
+      "pixelTransformation": "none-byte-identical-copy",
+      "canonicalFidelityCertified": false,
+      "reviewDecision": "accepted-visual-native-alpha-no-crop-export",
+      "reviewer": "campaign_v92 initial source review; root and homeworld_v92 independent source-image/reference review",
+      "prompt": "Use case: identity-preserve. Asset: transparent PNG fighting-game native animation sheet of MASKED CITY HUNTER matching the input costume reference.\nCRITICAL CORRECTION TO LAYOUT: Make a PORTRAIT 2:3 canvas (target1024x1536), NOT SQUARE. Exactly2 columns×3 rows. Six complete independent figures. Each figure maximum330px tall and240px wide, deliberately SMALL with HUGE EMPTY TRANSPARENT gutters. Never enlarge the sprites to fill the sheet. Centers about(256,250),(768,250),(256,768),(768,768),(256,1286),(768,1286). Their feet should end near y415,y933,y1451. At least180px of completely clear alpha between rows, at least200px between columns, 80px outer clear alpha. No visible content in the gutter bands y440..565 and y960..1085. Full head, feet/claws, cannon, wrist blades and dreadlocks fit completely inside each sprite with substantial free space. No pose crosses a cell or touches another one.\nIdentity invariants: exact reference bronze mottled angular biomask remains ON; orange/tan mottled skin, black netting, dark weathered metallic asymmetric armor, dreadlocks with brass rings, reference shoulder cannon, hip disc, existing two wrist blades on the SAME anatomical arm. No extra weapon, no redesign, no recolor, no alternate mask or costume. Draw both orientations independently, anatomically consistent asymmetric gear, NOT mirrored copies: LEFT COLUMN FACES SCREEN RIGHT; RIGHT COLUMN FACES SCREEN LEFT. Slight3/4 side view of full bodies appropriate for a side-on fighting game. Same body scale across six sprites, feet baseline matched per row.\nAnatomy QA: exactly five digits per hand, one opposable thumb and four natural clawed fingers; no extra/fused/missing digits, floating hands, broken wrists. Keep hands simple and separated from the body and equipment so they remain readable. Match the reference detailed illustrated realism, consistent neutral lighting. No ground, shadow, scenery, smoke, props, labels, letters, grid lines, watermark or painted checkerboard. Genuine completely transparent background, retain only character pixels. No colored outline or red/yellow fringe. All rows must be genuinely distinct articulated drawings, not repositioned identical artwork. Movements are restrained gameplay adaptations, not claimed canon choreography.\nIDLE BREATHING: row1 balanced relaxed ready stance, hands low and softly curled; row2 small visible inhalation, chest lifted, shoulders a little higher and elbows subtly bent; row3 exhalation, chest released, slight knee flex, elbows relaxed. Feet planted. No taunt, attack, jump or wild pose. Three distinct breathing keyframes per native side, suitable for looping.",
+      "references": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/12136078fe2a5ba66cf19f90f31b58423d3c0eb5b309f1b12c400fa188d2d66d.png",
+          "sha256": "12136078fe2a5ba66cf19f90f31b58423d3c0eb5b309f1b12c400fa188d2d66d"
+        }
+      ],
+      "sourceLayoutDeviation": "The requested150px transparent row gutters were not met despite one targeted replacement/page. Actual row gaps33–46px are retained and disclosed; every proposed rect has2px clear border at alpha>=2 and stays inside one isolated cell. No source pixels were moved, removed or repainted.",
+      "sourceReviewEvidence": {
+        "intakePath": "art-source/v93/pit/city-hunter/intake.json",
+        "intakeSha256": "621f496426e0071c7b72ea55e4ababcb3519a6075d15f055addcf0ce970c93cc",
+        "originalAlpha2Bounds": [
+          {
+            "rect": [
+              127,
+              20,
+              293,
+              477
+            ],
+            "alphaBounds": [
+              129,
+              22,
+              289,
+              473
+            ]
+          },
+          {
+            "rect": [
+              602,
+              20,
+              297,
+              478
+            ],
+            "alphaBounds": [
+              604,
+              22,
+              293,
+              474
+            ]
+          },
+          {
+            "rect": [
+              143,
+              526,
+              292,
+              486
+            ],
+            "alphaBounds": [
+              145,
+              528,
+              288,
+              482
+            ]
+          },
+          {
+            "rect": [
+              583,
+              528,
+              305,
+              484
+            ],
+            "alphaBounds": [
+              585,
+              530,
+              301,
+              480
+            ]
+          },
+          {
+            "rect": [
+              135,
+              1053,
+              281,
+              452
+            ],
+            "alphaBounds": [
+              137,
+              1055,
+              277,
+              448
+            ]
+          },
+          {
+            "rect": [
+              607,
+              1054,
+              277,
+              451
+            ],
+            "alphaBounds": [
+              609,
+              1056,
+              273,
+              447
+            ]
+          }
+        ],
+        "actualVerticalGapsPxAtAlpha2": [
+          [
+            33,
+            45
+          ],
+          [
+            34,
+            46
+          ]
+        ],
+        "originalPromptPath": "art-source/v93/pit/city-hunter/prompts-r2.json",
+        "privateNativeReviewOnly": true
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            127,
+            20,
+            293,
+            477
+          ],
+          "visibleRect": [
+            130,
+            22,
+            288,
+            472
+          ],
+          "pivot": [
+            155.5,
+            473
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "a10827abca000ed15b7b94929d9c91d1118b6f6ab9cd62089e4c7608c9dae142"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            602,
+            20,
+            297,
+            478
+          ],
+          "visibleRect": [
+            605,
+            22,
+            290,
+            472
+          ],
+          "pivot": [
+            134.5,
+            473
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "51a6c605eb01f3e18c2c8af02f32e07ab836bf8980dcb5e4320990f06a41bef6"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            143,
+            526,
+            292,
+            486
+          ],
+          "visibleRect": [
+            147,
+            529,
+            285,
+            481
+          ],
+          "pivot": [
+            144,
+            483
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "02d9fa23994385217604830dfa3bd3a2b5bade68bba93875170259fa69918485"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            583,
+            528,
+            305,
+            484
+          ],
+          "visibleRect": [
+            586,
+            531,
+            299,
+            477
+          ],
+          "pivot": [
+            153,
+            479
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "6739c5146c1ad6d76d58ca02b7643a8a7f4361c1dad82cacca99ba2848d20b66"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            135,
+            1053,
+            281,
+            452
+          ],
+          "visibleRect": [
+            140,
+            1056,
+            273,
+            446
+          ],
+          "pivot": [
+            143.5,
+            448
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "47e913e4992465d042122dab40772fb3e7677218c32ea007d506311ff58758f8"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            607,
+            1054,
+            277,
+            451
+          ],
+          "visibleRect": [
+            611,
+            1057,
+            269,
+            445
+          ],
+          "pivot": [
+            139,
+            447
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "8e26b852338ba708a89726dcd031801a34732d478ab7e0699d47c3b5e622e337"
+        }
+      ]
+    },
+    {
+      "id": "city-dizzy-v93-r2",
+      "fighterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "family": "dizzy",
+      "sourcePath": "art-source/v93/pit/city-hunter/dizzy-r2.png",
+      "publicSrc": "/game/sprites/v93/pit/city-hunter/dizzy-r2.png",
+      "sha256": "46f14ebb98b78f7fac03c44e9f5f053d8aceee54a21d5a9f4f7a3495185f9183",
+      "bytes": 2350479,
+      "atlasId": "city-hunter-masked-dizzy-v93",
+      "bodyHeightPx": 473,
+      "bodyReferenceReason": "One fixed standing-body reference for all poses of this costume; bowed/crouched poses retain their smaller physical height.",
+      "tool": "builtin-image_gen",
+      "pixelTransformation": "none-byte-identical-copy",
+      "canonicalFidelityCertified": false,
+      "reviewDecision": "accepted-visual-native-alpha-no-crop-export",
+      "reviewer": "campaign_v92 initial source review; root and homeworld_v92 independent source-image/reference review",
+      "prompt": "Use case: identity-preserve. Asset: transparent PNG fighting-game native animation sheet of MASKED CITY HUNTER matching the input costume reference.\nCRITICAL CORRECTION TO LAYOUT: Make a PORTRAIT 2:3 canvas (target1024x1536), NOT SQUARE. Exactly2 columns×3 rows. Six complete independent figures. Each figure maximum330px tall and240px wide, deliberately SMALL with HUGE EMPTY TRANSPARENT gutters. Never enlarge the sprites to fill the sheet. Centers about(256,250),(768,250),(256,768),(768,768),(256,1286),(768,1286). Their feet should end near y415,y933,y1451. At least180px of completely clear alpha between rows, at least200px between columns, 80px outer clear alpha. No visible content in the gutter bands y440..565 and y960..1085. Full head, feet/claws, cannon, wrist blades and dreadlocks fit completely inside each sprite with substantial free space. No pose crosses a cell or touches another one.\nIdentity invariants: exact reference bronze mottled angular biomask remains ON; orange/tan mottled skin, black netting, dark weathered metallic asymmetric armor, dreadlocks with brass rings, reference shoulder cannon, hip disc, existing two wrist blades on the SAME anatomical arm. No extra weapon, no redesign, no recolor, no alternate mask or costume. Draw both orientations independently, anatomically consistent asymmetric gear, NOT mirrored copies: LEFT COLUMN FACES SCREEN RIGHT; RIGHT COLUMN FACES SCREEN LEFT. Slight3/4 side view of full bodies appropriate for a side-on fighting game. Same body scale across six sprites, feet baseline matched per row.\nAnatomy QA: exactly five digits per hand, one opposable thumb and four natural clawed fingers; no extra/fused/missing digits, floating hands, broken wrists. Keep hands simple and separated from the body and equipment so they remain readable. Match the reference detailed illustrated realism, consistent neutral lighting. No ground, shadow, scenery, smoke, props, labels, letters, grid lines, watermark or painted checkerboard. Genuine completely transparent background, retain only character pixels. No colored outline or red/yellow fringe. All rows must be genuinely distinct articulated drawings, not repositioned identical artwork. Movements are restrained gameplay adaptations, not claimed canon choreography.\nDIZZY WAIT: row1 mildly unsteady stance with knees bent and masked head slightly forward; row2 gentle torso/head sway sideways, hands relaxed and low; row3 clearly different sway toward the other side and rebalancing knees. Feet planted throughout. No blood, injury marks, collapse, attack or equipment change. Three distinct calm disoriented keyframes per native side, suitable for looping.",
+      "references": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/12136078fe2a5ba66cf19f90f31b58423d3c0eb5b309f1b12c400fa188d2d66d.png",
+          "sha256": "12136078fe2a5ba66cf19f90f31b58423d3c0eb5b309f1b12c400fa188d2d66d"
+        }
+      ],
+      "sourceLayoutDeviation": "The requested150px transparent row gutters were not met despite one targeted replacement/page. Actual row gaps33–46px are retained and disclosed; every proposed rect has2px clear border at alpha>=2 and stays inside one isolated cell. No source pixels were moved, removed or repainted.",
+      "sourceReviewEvidence": {
+        "intakePath": "art-source/v93/pit/city-hunter/intake.json",
+        "intakeSha256": "621f496426e0071c7b72ea55e4ababcb3519a6075d15f055addcf0ce970c93cc",
+        "originalAlpha2Bounds": [
+          {
+            "rect": [
+              97,
+              31,
+              343,
+              450
+            ],
+            "alphaBounds": [
+              99,
+              33,
+              339,
+              446
+            ]
+          },
+          {
+            "rect": [
+              596,
+              29,
+              333,
+              452
+            ],
+            "alphaBounds": [
+              598,
+              31,
+              329,
+              448
+            ]
+          },
+          {
+            "rect": [
+              112,
+              519,
+              308,
+              491
+            ],
+            "alphaBounds": [
+              114,
+              521,
+              304,
+              487
+            ]
+          },
+          {
+            "rect": [
+              602,
+              518,
+              314,
+              492
+            ],
+            "alphaBounds": [
+              604,
+              520,
+              310,
+              488
+            ]
+          },
+          {
+            "rect": [
+              101,
+              1041,
+              324,
+              466
+            ],
+            "alphaBounds": [
+              103,
+              1043,
+              320,
+              462
+            ]
+          },
+          {
+            "rect": [
+              613,
+              1041,
+              310,
+              465
+            ],
+            "alphaBounds": [
+              615,
+              1043,
+              306,
+              461
+            ]
+          }
+        ],
+        "actualVerticalGapsPxAtAlpha2": [
+          [
+            42,
+            35
+          ],
+          [
+            41,
+            35
+          ]
+        ],
+        "originalPromptPath": "art-source/v93/pit/city-hunter/prompts-r2.json",
+        "privateNativeReviewOnly": true
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            97,
+            31,
+            343,
+            450
+          ],
+          "visibleRect": [
+            103,
+            34,
+            334,
+            445
+          ],
+          "pivot": [
+            178.5,
+            447
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "b4184b6fef6bb2d1ebfced2a03d10f0fb48e9c390cfad18068d9629e25c8b25f"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            596,
+            29,
+            333,
+            452
+          ],
+          "visibleRect": [
+            600,
+            32,
+            324,
+            447
+          ],
+          "pivot": [
+            159,
+            449
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "ee53a708f7a90d9bef925692ca92bc54d3fe6d3705b41484761dd772bbca4566"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            112,
+            519,
+            308,
+            491
+          ],
+          "visibleRect": [
+            115,
+            521,
+            302,
+            487
+          ],
+          "pivot": [
+            163,
+            488
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "f9250ad992c4f0671b38c22a4aa68be87ef17120c30f8fb7126290f4ddd2fed9"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            602,
+            518,
+            314,
+            492
+          ],
+          "visibleRect": [
+            604,
+            521,
+            309,
+            487
+          ],
+          "pivot": [
+            151,
+            489
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "9d3cc8dd0552b565b1071873fb6d7603e00e7628380a09bbedf3cf4d8b04f8ff"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            101,
+            1041,
+            324,
+            466
+          ],
+          "visibleRect": [
+            106,
+            1045,
+            317,
+            458
+          ],
+          "pivot": [
+            170,
+            461
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "68e27aa7f78336759e5af8d4c80b7b2288eb8947ddb9d162651cc76c7491f505"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            613,
+            1041,
+            310,
+            465
+          ],
+          "visibleRect": [
+            615,
+            1045,
+            305,
+            458
+          ],
+          "pivot": [
+            153.5,
+            461
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "a4ca697ba215d351b2dc2741aa08c960ffd24c0ba0f8d7bd87ce580387155c59"
+        }
+      ]
+    },
+    {
+      "id": "city-taunt-v93-r2",
+      "fighterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "family": "taunt",
+      "sourcePath": "art-source/v93/pit/city-hunter/taunt-r2.png",
+      "publicSrc": "/game/sprites/v93/pit/city-hunter/taunt-r2.png",
+      "sha256": "1495609c5fa4c1a205394c44aabc58cdd8e5ac3341af843f93fe49e31fe67533",
+      "bytes": 2211351,
+      "atlasId": "city-hunter-masked-taunt-v93",
+      "bodyHeightPx": 473,
+      "bodyReferenceReason": "One fixed standing-body reference for all poses of this costume; bowed/crouched poses retain their smaller physical height.",
+      "tool": "builtin-image_gen",
+      "pixelTransformation": "none-byte-identical-copy",
+      "canonicalFidelityCertified": false,
+      "reviewDecision": "accepted-visual-native-alpha-no-crop-export",
+      "reviewer": "campaign_v92 initial source review; root and homeworld_v92 independent source-image/reference review",
+      "prompt": "Use case: identity-preserve. Asset: transparent PNG fighting-game native animation sheet of MASKED CITY HUNTER matching the input costume reference.\nCRITICAL CORRECTION TO LAYOUT: Make a PORTRAIT 2:3 canvas (target1024x1536), NOT SQUARE. Exactly2 columns×3 rows. Six complete independent figures. Each figure maximum330px tall and240px wide, deliberately SMALL with HUGE EMPTY TRANSPARENT gutters. Never enlarge the sprites to fill the sheet. Centers about(256,250),(768,250),(256,768),(768,768),(256,1286),(768,1286). Their feet should end near y415,y933,y1451. At least180px of completely clear alpha between rows, at least200px between columns, 80px outer clear alpha. No visible content in the gutter bands y440..565 and y960..1085. Full head, feet/claws, cannon, wrist blades and dreadlocks fit completely inside each sprite with substantial free space. No pose crosses a cell or touches another one.\nIdentity invariants: exact reference bronze mottled angular biomask remains ON; orange/tan mottled skin, black netting, dark weathered metallic asymmetric armor, dreadlocks with brass rings, reference shoulder cannon, hip disc, existing two wrist blades on the SAME anatomical arm. No extra weapon, no redesign, no recolor, no alternate mask or costume. Draw both orientations independently, anatomically consistent asymmetric gear, NOT mirrored copies: LEFT COLUMN FACES SCREEN RIGHT; RIGHT COLUMN FACES SCREEN LEFT. Slight3/4 side view of full bodies appropriate for a side-on fighting game. Same body scale across six sprites, feet baseline matched per row.\nAnatomy QA: exactly five digits per hand, one opposable thumb and four natural clawed fingers; no extra/fused/missing digits, floating hands, broken wrists. Keep hands simple and separated from the body and equipment so they remain readable. Match the reference detailed illustrated realism, consistent neutral lighting. No ground, shadow, scenery, smoke, props, labels, letters, grid lines, watermark or painted checkerboard. Genuine completely transparent background, retain only character pixels. No colored outline or red/yellow fringe. All rows must be genuinely distinct articulated drawings, not repositioned identical artwork. Movements are restrained gameplay adaptations, not claimed canon choreography.\nTAUNT CHALLENGE: row1 upright ready stance looking toward opponent, simple hands down; row2 chest lifts and chin rises slightly, nearer forearm lifts to waist, one simple open five-digit clawed hand offers a restrained challenge; row3 chin levels and hand lowers toward ready stance. No pointing, finger signs, middle finger, firing, swinging weapon, salute or jump. Three distinct articulated challenge drawings per native side, nonlooped short gesture.",
+      "references": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/12136078fe2a5ba66cf19f90f31b58423d3c0eb5b309f1b12c400fa188d2d66d.png",
+          "sha256": "12136078fe2a5ba66cf19f90f31b58423d3c0eb5b309f1b12c400fa188d2d66d"
+        }
+      ],
+      "sourceLayoutDeviation": "The requested150px transparent row gutters were not met despite one targeted replacement/page. Actual row gaps33–46px are retained and disclosed; every proposed rect has2px clear border at alpha>=2 and stays inside one isolated cell. No source pixels were moved, removed or repainted.",
+      "sourceReviewEvidence": {
+        "intakePath": "art-source/v93/pit/city-hunter/intake.json",
+        "intakeSha256": "621f496426e0071c7b72ea55e4ababcb3519a6075d15f055addcf0ce970c93cc",
+        "originalAlpha2Bounds": [
+          {
+            "rect": [
+              116,
+              51,
+              285,
+              448
+            ],
+            "alphaBounds": [
+              118,
+              53,
+              281,
+              444
+            ]
+          },
+          {
+            "rect": [
+              626,
+              49,
+              284,
+              450
+            ],
+            "alphaBounds": [
+              628,
+              51,
+              280,
+              446
+            ]
+          },
+          {
+            "rect": [
+              112,
+              540,
+              324,
+              461
+            ],
+            "alphaBounds": [
+              114,
+              542,
+              320,
+              457
+            ]
+          },
+          {
+            "rect": [
+              604,
+              540,
+              307,
+              461
+            ],
+            "alphaBounds": [
+              606,
+              542,
+              303,
+              457
+            ]
+          },
+          {
+            "rect": [
+              111,
+              1043,
+              290,
+              447
+            ],
+            "alphaBounds": [
+              113,
+              1045,
+              286,
+              443
+            ]
+          },
+          {
+            "rect": [
+              623,
+              1038,
+              289,
+              453
+            ],
+            "alphaBounds": [
+              625,
+              1040,
+              285,
+              449
+            ]
+          }
+        ],
+        "actualVerticalGapsPxAtAlpha2": [
+          [
+            45,
+            46
+          ],
+          [
+            45,
+            41
+          ]
+        ],
+        "originalPromptPath": "art-source/v93/pit/city-hunter/prompts-r2.json",
+        "privateNativeReviewOnly": true
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            116,
+            51,
+            285,
+            448
+          ],
+          "visibleRect": [
+            118,
+            55,
+            280,
+            441
+          ],
+          "pivot": [
+            138.5,
+            444
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "274525eb21b9aafb3cebac316e98ddcef35ae8ae57c599f0c879907ad8c2a7b0"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            626,
+            49,
+            284,
+            450
+          ],
+          "visibleRect": [
+            631,
+            53,
+            275,
+            443
+          ],
+          "pivot": [
+            142.5,
+            446
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "b0bd129614db889a844b5b9222f405b38780a2b489910a9b44c0ca6ff86198e2"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            112,
+            540,
+            324,
+            461
+          ],
+          "visibleRect": [
+            115,
+            542,
+            319,
+            457
+          ],
+          "pivot": [
+            155,
+            458
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "0941646e0ff9387ec9ae8ed6de5d22103f11c934e3791b9a95dc44019cb92f4e"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            604,
+            540,
+            307,
+            461
+          ],
+          "visibleRect": [
+            608,
+            542,
+            301,
+            456
+          ],
+          "pivot": [
+            153,
+            457
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "0072b6703b93b88589232d9b076b4de3ca6e3f89a9d4c7203c235304f99924cb"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "rect": [
+            111,
+            1043,
+            290,
+            447
+          ],
+          "visibleRect": [
+            114,
+            1047,
+            284,
+            440
+          ],
+          "pivot": [
+            144,
+            443
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "8704d054cd9df12e3a2bca4ce2ce0dbf4a32feb9ebe99131b59a0ddf84e068af"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "left",
+          "rect": [
+            623,
+            1038,
+            289,
+            453
+          ],
+          "visibleRect": [
+            627,
+            1041,
+            283,
+            447
+          ],
+          "pivot": [
+            145.5,
+            449
+          ],
+          "borderAlpha": 1,
+          "drawingSha256": "6fc2cd77db79c70ce9492d3111b3a203e3aec162b9413b679f1d790282c25fab"
+        }
+      ]
+    }
+  ]
+}

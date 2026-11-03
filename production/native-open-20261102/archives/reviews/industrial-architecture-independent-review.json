@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "sessionDate": "2026-11-02",
+  "reviewScope": "Read-only integrity and semantic claim review of frozen17 native candidates; not art admission",
+  "result": "NO_UNREPORTED_BLOCKER_FOUND_FOR_CANDIDATE_ARCHIVE",
+  "reviewerAuthorshipLimit": {
+    "independentAuthorshipReviewTargets": 15,
+    "previouslyProducedByReviewer": [
+      "target-v81-55-42",
+      "target-v81-55-43"
+    ],
+    "mitigation": "Parent producer independently opened both tunnel PNGs; this report does not present reviewer-authored targets as independent authorship approval."
+  },
+  "frozenManifest": {
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/industrial-architecture-production-manifest.json",
+    "sha256": "5bcbb75ec06ce59181056a9c2c97974287964d4e969dc289d3eac063375d924c",
+    "matchesAnnouncedHash": true
+  },
+  "frozenInventory": {
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/industrial-architecture-artifact-inventory.json",
+    "sha256": "2f8f6a36fb5c8c648b69760dc9de9898bad0825e863630e7ff8673efb27f477d",
+    "matchesAnnouncedHash": true,
+    "listedFilesVerified": 48,
+    "exactDirectoryClosureExcludingInventorySelf": true,
+    "unchangedBeforeAfterReview": true
+  },
+  "checks": {
+    "allocationExact17": true,
+    "uniqueNativeOriginals": 17,
+    "byteExactNativeCopies": 17,
+    "nativePNGsActuallyOpened": 17,
+    "referencePinsHashVerified": 21,
+    "alphaMeasurementsRecomputed": 51,
+    "sourceLocatorsMatchHistoricalPin": 17,
+    "allCandidateStatusNonAdmitted": true,
+    "pixelEditingEvidence": "Copies equal original tool-native PNG bytes; receipts declare no pixel edits. No pixel transformations performed during review."
+  },
+  "findings": [],
+  "documentedLimitsConfirmed": [
+    {
+      "kind": "TECHNICAL",
+      "description": "All17 fail strict48px alpha>0 margin; alpha2/8 diagnostics do not replace that gate."
+    },
+    {
+      "kind": "TECHNICAL",
+      "targetIds": [
+        "target-v81-59-105",
+        "target-v81-65-175",
+        "target-v81-74-310"
+      ],
+      "description": "These3 also fail diagnostic48px alpha>8 margin; already disclosed."
+    },
+    {
+      "kind": "TECHNICAL",
+      "targetIds": [
+        "target-v81-73-301",
+        "target-v81-74-316",
+        "target-v81-74-319"
+      ],
+      "description": "Visible halo and maximumalpha254 remain native, explicitly documented; no clean-alpha or opacity correction implied."
+    },
+    {
+      "kind": "SEMANTIC",
+      "targetIds": [
+        "target-v81-55-42"
+      ],
+      "description": "Deep tunnel body has a side aperture; straight front/rear passage and navigation remain unproven and disclosed."
+    },
+    {
+      "kind": "SEMANTIC",
+      "targetIds": [
+        "target-v81-56-56",
+        "target-v81-59-105",
+        "target-v81-68-236",
+        "target-v81-76-354"
+      ],
+      "description": "Airlock is one open-front/closed-rear state; hangar does not prove enterable space; hatch is closed only; plural alcoves is one niche module. No missing state/set is claimed delivered."
+    },
+    {
+      "kind": "SCOPE",
+      "description": "No reference-character scale, runtime pivot, access, collision, animated cycle,20variants, artistic human validation or global source closure is established."
+    }
+  ],
+  "openedNativePNGs": [
+    {
+      "targetId": "target-v81-55-26",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-55-26-balcon-native.png",
+      "sha256": "e94bc9876855a3ba7ae4efadb12fca22b7663a6e31d538335d7946a4203d6dfd",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-55-42",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-55-42-tunnel-native.png",
+      "sha256": "46cede7494ff64078e67ac3770e8c5541cb5f033c4f381adac05fd20e51cd137",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": false
+    },
+    {
+      "targetId": "target-v81-55-43",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-55-43-entree-tunnel-native.png",
+      "sha256": "5890107a3cefe673b65e746b9fc209362314d0176df0398df5a69365247d4886",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": false
+    },
+    {
+      "targetId": "target-v81-56-56",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-56-56-sas-hangar-native.png",
+      "sha256": "592fff20a25c8a3041d6205997444c68e537925e4450ea02185734bdd771aca1",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-59-105",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-59-105-hangar-native.png",
+      "sha256": "e572e40597d39c0a5bdb89b09e21302b7ab6cac5202bf882a3bf86cc902f88a3",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-65-175",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-65-175-totem-native.png",
+      "sha256": "6e40b491d9555c09654364dc85ac9eb5ab8907f8048efc1d1acf8010c02dfc55",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-66-192",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-66-192-crochet-trophees-native.png",
+      "sha256": "d2e4404b46f48c3108996b64a92d8db69839caaf17ecbd4ab2fa82d03d30bd14",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-68-236",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-68-236-trappe-fermee-native.png",
+      "sha256": "122c7ee72d9860bf30964028621a4a19f2a4039087cd22ee06f54ed99b406680",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-73-295",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-295-tuyau-apparent-native.png",
+      "sha256": "4a00838936c0378dcdad4920592a708f7ad3385a08e63baf1cd1e38f76d1324f",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-73-301",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-301-pile-scrap-native.png",
+      "sha256": "e8b94e27a855f7dddb99e0961c7ac7e77cdae2bbf609a6aef5edea242d45b1d7",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-73-308",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-308-echafaudage-native.png",
+      "sha256": "07a2036bcbb0fe11ddc12c83d98c8cfb8765fd4553e0daa0bcc2574f23e70bb2",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-74-310",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-310-generateur-native.png",
+      "sha256": "e32c32da91e1448a44099b905b1cc125541aed274e54cf1af7453b417da3958b",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-74-311",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-311-transformateur-native.png",
+      "sha256": "2ba3417567895475002048b11a73e63da1b7bfa4f4d66f71e875690216728eaa",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-74-315",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-315-radiateur-native.png",
+      "sha256": "4473276936bb5f85d9a65b83b80b03f71315859ed9f473fa5dd5fe625c6bf750",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-74-316",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-316-pompe-native.png",
+      "sha256": "44e1f0b181ccc24cb1f45c82fd910a29427a018995ee1f167cd36104e0747b56",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-74-319",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-319-valve-native.png",
+      "sha256": "0d30ec4dd0a82c6ce28a81630ea4b99a9bfaee08bfb5c4f0c769f33485235a5c",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    },
+    {
+      "targetId": "target-v81-76-354",
+      "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-76-354-alcoves-native.png",
+      "sha256": "378356c33ffced593db6604a87efe9aee902ee1849312fe8f9f96cdc32430c74",
+      "wholeNativePNGActuallyOpened": true,
+      "authorshipIndependent": true
+    }
+  ],
+  "writesInsideProductionDirectory": false,
+  "writesInsideFrozenFaunaEnergy": false,
+  "gitUsed": false,
+  "humanValidated": false
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/feral/intake/033-air-jm-left-calibrated.png",
+  "sourceSha256": "d25032686020a1397e9747ea77a265492b81e6125ca57ddf9e9ac46089231cee",
+  "bytes": 2163316,
+  "width": 1024,
+  "height": 1536,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 2,
+  "strategy": "row-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "y",
+      "row": 1,
+      "start": 735,
+      "end": 833,
+      "cut": 784
+    },
+    {
+      "axis": "x",
+      "row": 0,
+      "column": 1,
+      "start": 498,
+      "end": 623,
+      "cut": 560
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        561,
+        785
+      ],
+      "visibleRect": [
+        106,
+        88,
+        392,
+        647
+      ],
+      "alphaPixels": 127207,
+      "borderPixels": 0,
+      "visiblePixelSha256": "35c0f2dfcf5c4e0302253088f7c16afddbc95edc3314202a953c7c324b4f1bf9",
+      "pivotCandidate": [
+        181.5,
+        735
+      ],
+      "visibleHeightCandidate": 647
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        560,
+        0,
+        464,
+        785
+      ],
+      "visibleRect": [
+        624,
+        139,
+        362,
+        557
+      ],
+      "alphaPixels": 98019,
+      "borderPixels": 0,
+      "visiblePixelSha256": "593efc2449b57926f1e713f6ffba4bdfb612fc7e5f84bc51924ec59140741754",
+      "pivotCandidate": [
+        384.5,
+        696
+      ],
+      "visibleHeightCandidate": 557
+    }
+  ],
+  "issues": [
+    "No safe vertical alpha gutter in row 2, before column 2",
+    "Column-first: No safe horizontal alpha gutter before row 2"
+  ]
+}

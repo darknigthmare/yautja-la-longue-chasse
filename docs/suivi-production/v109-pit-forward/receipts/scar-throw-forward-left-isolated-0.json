@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T08:44:27.248265+00:00",
+  "tool": "image_gen.imagegen",
+  "attemptId": "scar-throw-forward-left-isolated-0",
+  "submittedPrompt": "Edit this EXISTING six-pose hunter sprite sheet to deliver EXACTLY ONE isolated native sprite. Keep ONLY pose index0 counting0,1,2 left-to-right on top row and3,4,5 on bottom row: the wanted hunter is the TOP row, LEFT figure. Its complete existing body is approximately inside x104..550, y14..519 on the1536x1024 source. REMOVE EVERY OTHER FIGURE and every limb/weapon belonging to a neighboring pose. Reconstruct no other actor, no mannequin or partner. Preserve the wanted pose's full exact anatomy, mask, owned equipment, attached weapons, proportions, orientation and painted style, all two arms and two legs visible as in that pose. Do NOT cut off its reaching fingers, foot, shield, dreadlocks or spear. Keep the wanted pose at the SAME physical pixel scale and same location on a1536x1024 canvas if possible; all remaining canvas must be true RGBA TRANSPARENT, no brown glow, ground, vignette, captions, grid or checkerboard. This is ONE SINGLE hunter, never a new sheet and never multiple phases. Target the throwing hunter pose. Do not mirror, rotate, stretch, change outfit, replace it with standingidle, add third arms, duplicate weapons, or remove any owned equipment. The purpose is safe independent game rendering without adjacent sprites leaking into the crop.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/generated_images/exec-fd1ca4b6-42fe-4dd7-b26e-5ef6ef4dee8c.png",
+      "preservedPath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png",
+      "sha256": "64b53fe5abfaed37324a809419cfb216aca16b83467115a1e555ee0864f7d048",
+      "bytes": 2358596
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-71dee190-387b-445b-8e5b-284769bb7348.png",
+  "output": {
+    "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+    "sha256": "c5fb6df337079a263350702ddea4299b7ddb61f060dd7bed02eb6010632c9c96",
+    "bytes": 1707824,
+    "width": 1536,
+    "height": 1024
+  },
+  "status": "SELECTED_SOURCE_REGIONS",
+  "filesEditedAfterGeneration": false,
+  "scope": "Local tool call record, not an external signed certificate. Original adaptations; no film-exact fidelity or source action completion is inferred."
+}

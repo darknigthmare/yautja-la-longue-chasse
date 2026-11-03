@@ -1,0 +1,20 @@
+{
+  "name": "feral-special-clemence-attempt-01a",
+  "key": "CLEMENCE",
+  "part": "A",
+  "prompt": "Produce ONE sparse PORTRAIT native RGBA sprite sheet1024x1536: exactly TWO COLUMNS\u00d7FOUR ROWS, EIGHT isolated full-body drawings. Use attached images ONLY for Feral's identity/anatomy/style, not their backgrounds. New articulated poses, never mirror or rig. Accurate Feral: lean sinewy ochre-spotted skin, black dreads, ivory bone skull mask and exposed red mandibles, dark segmented loincloth, asymmetrical bone hip ornaments, bronze bracers, wrapped ankles and clawed bare toes. No shoulder cannon.\n\nEvery invisible cell512\u00d7384. Body about180px tall, never larger than210px, with at least80px ALPHA ZERO space above and below. Whole drawing including gear/any neutral stand-in below380px wide and inside its own cell. Huge empty transparent gutters; no touching/cropped silhouettes. LEFT COLUMN: Feral faces RIGHT, front/right-side view. RIGHT COLUMN: independently drawn Feral faces LEFT, back/left-side view; asymmetric gear stays on the same anatomical limbs. Same stage on each row. Same fixed body scale everywhere.\n\nBACKGROUND MUST BE ALPHA0 outside the exact figure/gear silhouettes: NO floor plane, no cast shadow, no aura, no ambient glow, no gradient, no fog, smoke or painted backdrop. Crisp narrow edges, no blur. No text, numbers, labels, borders or grid.\n\nGEAR AND SCOPE: Nonlethal source mercy choreography study with a neutral articulated gray training mannequin/partner stand-in. Feral holds one whole spear. The stand-in has one simple training blade; one small sealed mission case lies nearby. No injury, blood, execution or anatomical trophy. This is a scene study, not a combat sprite with a duplicated real opponent.\n\nROW1: Feral alone in neutral full-body guard with spear lowered, bracer blades retracted and left shield folded. This neutral reference is outside the clip and must show complete standing anatomy for a fixed body-height review.\nROW2: Feral hooks the neutral gray stand-in's training blade with his spear and twists it away from the grip; both complete bodies fit in the cell.\nROW3: The training blade visibly drops to the ground as Feral controls his spear and steps his rear foot backward, leaving the stand-in unharmed.\nROW4: Feral has moved a full step back with lowered weapon and open free palm, giving the neutral stand-in clear space to recover its stance.",
+  "refs": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-left.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-left.png"
+  ],
+  "taskStore": "feralSpecialTasks",
+  "tool": "image_gen",
+  "originalSource": "/workspace/generated_images/exec-b32ef6d5-532a-4272-a244-a9738ad244ec.png",
+  "originalSha256": "d9aafb83d2be160a51aa01348aa3974043458475299149f310d9448615c9f82e",
+  "nativeTransparentBackground": true,
+  "cpuPixelEditing": false,
+  "matchesIntakePng": true
+}

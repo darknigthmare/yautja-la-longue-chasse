@@ -1,0 +1,117 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4194",
+  "expectedVersion": "V76",
+  "naturalDevHydration": false,
+  "checks": [
+    {
+      "name": "compiled-version-and-native-motion-readiness",
+      "expectedVersion": "V76"
+    },
+    {
+      "name": "search-focus-modal-freezes-world-input-time-and-save"
+    },
+    {
+      "name": "accent-search-empty-results-and-sensitive-Reserve-hidden"
+    },
+    {
+      "name": "focus-trap-Escape-focus-return-and-no-held-input"
+    },
+    {
+      "name": "physical-stage-route-followed-by-keyboard",
+      "id": "point:dock-officer-point",
+      "spaces": [
+        "city",
+        "dock-control"
+      ],
+      "distance": 2403.295188456594,
+      "final": {
+        "x": 125,
+        "y": 189
+      },
+      "noActorMutation": true
+    },
+    {
+      "name": "guide-arrival-does-not-open-or-complete-dialogue-without-interaction"
+    },
+    {
+      "name": "physical-stage-route-followed-by-keyboard",
+      "id": "point:market-service",
+      "spaces": [
+        "dock-control",
+        "city",
+        "market-armory"
+      ],
+      "distance": 5795.818529042499,
+      "final": {
+        "x": 148,
+        "y": 167
+      },
+      "noActorMutation": true
+    },
+    {
+      "name": "pause-freezes-held-guide-world-and-save-HUD-resume-focus"
+    },
+    {
+      "name": "mobile-contained-modal-search-real-touch-guide-no-auto-walk-reduced-motion",
+      "viewport": {
+        "x": 0,
+        "y": 62,
+        "width": 393,
+        "height": 644
+      },
+      "modal": {
+        "x": 6,
+        "y": 68,
+        "width": 381,
+        "height": 632
+      },
+      "guideBox": {
+        "x": 8,
+        "y": 526.0625,
+        "width": 300,
+        "height": 99.9375
+      },
+      "heroBox": {
+        "x": 166.1075897216797,
+        "y": 352.71624755859375,
+        "width": 37.16999816894531,
+        "height": 80.71499633789062
+      },
+      "promptBox": {
+        "x": 98.25,
+        "y": 635.5,
+        "width": 196.5,
+        "height": 58.5
+      }
+    },
+    {
+      "name": "held-guide-can-be-cleared-without-state-or-coordinate-change"
+    }
+  ],
+  "captures": [
+    "work-local/v76/qa/wayfinding-local/desktop-modal-physical-exits.png",
+    "work-local/v76/qa/wayfinding-local/desktop-door-and-officer-detail.png",
+    "work-local/v76/qa/wayfinding-local/arrival-point-dock-officer-point-city.png",
+    "work-local/v76/qa/wayfinding-local/arrival-point-dock-officer-point-dock-control.png",
+    "work-local/v76/qa/wayfinding-local/officer-real-dialogue-not-auto-granted.png",
+    "work-local/v76/qa/wayfinding-local/youth-station-access-distinct-from-door.png",
+    "work-local/v76/qa/wayfinding-local/arrival-point-market-service-dock-control.png",
+    "work-local/v76/qa/wayfinding-local/arrival-point-market-service-city.png",
+    "work-local/v76/qa/wayfinding-local/arrival-point-market-service-market-armory.png",
+    "work-local/v76/qa/wayfinding-local/reserved-armory-real-interaction.png",
+    "work-local/v76/qa/wayfinding-local/paused-held-guide.png",
+    "work-local/v76/qa/wayfinding-local/mobile-portrait-modal-objective-reduced-motion.png",
+    "work-local/v76/qa/wayfinding-local/mobile-portrait-search-and-detail.png",
+    "work-local/v76/qa/wayfinding-local/mobile-portrait-held-guide-real-touch-selection.png"
+  ],
+  "errors": [],
+  "failures": [],
+  "consoleErrors": [],
+  "limits": [
+    "Prerequisites are seeded from a save produced by actual campaign model play, not a full browser replay of every chapter.",
+    "Movement uses public keyboard events and touch selection; no private actor/phase edits, teleport, save rewards or proof fabrication.",
+    "Routes for all 43 doors and points are additionally checked by the dedicated real model tests.",
+    "Mobile is Chrome emulation, not an actual phone."
+  ]
+}

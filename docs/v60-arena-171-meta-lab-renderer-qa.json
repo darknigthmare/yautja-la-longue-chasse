@@ -1,0 +1,1502 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-171-meta-lab",
+  "compositionDigest": "5ea0416ecd8fae241f4341e5510846dd99ac1ae4afa939ff71ec8e876f04822a",
+  "checkedAt": "2026-09-30T15:05:04.404Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-171-meta-lab/p0-depth.png",
+      "sha256": "2c655d8b8307d132598f1ff6224a6ce4190c84cb7a479dcbc8a962b3eba997c6",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+      "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p3-utility-case.png",
+      "sha256": "3cff01fa94f04a281ce76937cc2def0b0d2f0da125f87250db82cdea6fe8cdf7",
+      "width": 1774,
+      "height": 887,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-160-rage-war-umf12/p4-floor.png",
+      "sha256": "09c6eab1fdd6ed2d1666edc29621e37d365f476803cd254f7f681984a2886bc2",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+      "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-01.png",
+      "sha256": "fa771c0839343a4ee4608285c9661938ed3530e7cf4d6ffd280a58769527b4a8",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-02.png",
+      "sha256": "b2b50f83cdd4b6aa994081d980815fb78562e26975e1d765792254a839a0824c",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-03.png",
+      "sha256": "e894f427b51f6e5a599b4bf7b0a185c85eef6ef44c6b4b876f9bd08b9edca7c6",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 9,
+    "expectedImages": 9,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            165,
+            117
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            850,
+            225
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            478,
+            416
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            165,
+            117
+          ],
+          "pivot": [
+            165,
+            117
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            850,
+            225
+          ],
+          "pivot": [
+            850,
+            225
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            478,
+            416
+          ],
+          "pivot": [
+            478,
+            416
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 510.24999999999994,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 510.24999999999994,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -304.4776
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -304.4776
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            156.33749999999998,
+            112.53562499999997
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            860.1750000000001,
+            223.50562499999998
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            477.945,
+            419.758125
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            156.33749999999998,
+            112.53562499999997
+          ],
+          "pivot": [
+            156.33749999999998,
+            112.53562499999997
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            860.1750000000001,
+            223.50562499999998
+          ],
+          "pivot": [
+            860.1750000000001,
+            223.50562499999998
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            477.945,
+            419.758125
+          ],
+          "pivot": [
+            477.94499999999994,
+            419.758125
+          ],
+          "exactCell": true,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 501.9999999999999,
+          "expected": 502,
+          "error": 1.1368683772161603e-13
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 501.9999999999999,
+          "expected": 502,
+          "error": 1.1368683772161603e-13
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            168.13750000000002,
+            113.5575
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            868.55,
+            223.9875
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            488.18,
+            419.285
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            168.13750000000002,
+            113.5575
+          ],
+          "pivot": [
+            168.13750000000002,
+            113.5575
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            868.55,
+            223.9875
+          ],
+          "pivot": [
+            868.55,
+            223.9875
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            488.18,
+            419.285
+          ],
+          "pivot": [
+            488.18000000000006,
+            419.285
+          ],
+          "exactCell": true,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 501.9999999999999,
+          "expected": 502,
+          "error": 1.1368683772161603e-13
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 501.9999999999999,
+          "expected": 502,
+          "error": 1.1368683772161603e-13
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            147.68750000000003,
+            113.5575
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            848.1,
+            223.9875
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            467.73,
+            419.285
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            147.68750000000003,
+            113.5575
+          ],
+          "pivot": [
+            147.68750000000003,
+            113.5575
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            848.1,
+            223.9875
+          ],
+          "pivot": [
+            848.1,
+            223.9875
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            467.73,
+            419.285
+          ],
+          "pivot": [
+            467.73,
+            419.285
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 398.00000000000006,
+          "expected": 398,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 398.00000000000006,
+          "expected": 398,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 397.99999999999994,
+          "expected": 398,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 397.99999999999994,
+          "expected": 398,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -8.320000000000007
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -8.320000000000007
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            168.15,
+            118.52999999999999
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            846.3,
+            225.45
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            478.02,
+            414.53999999999996
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            168.15,
+            118.52999999999999
+          ],
+          "pivot": [
+            168.15,
+            118.52999999999999
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            846.3,
+            225.45
+          ],
+          "pivot": [
+            846.3,
+            225.45
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            478.02,
+            414.53999999999996
+          ],
+          "pivot": [
+            478.02,
+            414.53999999999996
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 414.00000000000006,
+          "expected": 414,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 414.00000000000006,
+          "expected": 414,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -49.5
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -49.5
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            196.5,
+            132.3
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            813,
+            229.5
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            478.2,
+            401.40000000000003
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            196.5,
+            132.3
+          ],
+          "pivot": [
+            196.5,
+            132.3
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            813,
+            229.5
+          ],
+          "pivot": [
+            813,
+            229.5
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            478.2,
+            401.40000000000003
+          ],
+          "pivot": [
+            478.2,
+            401.40000000000003
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            165,
+            117
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            850,
+            225
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            478,
+            416
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            165,
+            117
+          ],
+          "pivot": [
+            165,
+            117
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            850,
+            225
+          ],
+          "pivot": [
+            850,
+            225
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            478,
+            416
+          ],
+          "pivot": [
+            478,
+            416
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-steel-upright",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-utility-case",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            165,
+            117
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            850,
+            225
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-171-meta-lab/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            478,
+            416
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            165,
+            117
+          ],
+          "pivot": [
+            165,
+            117
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            850,
+            225
+          ],
+          "pivot": [
+            850,
+            225
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            478,
+            416
+          ],
+          "pivot": [
+            478,
+            416
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 1215,
+      "attachment": [
+        165,
+        117
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 1235,
+      "attachment": [
+        165,
+        117
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 1255,
+      "attachment": [
+        165,
+        117
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 1275,
+      "attachment": [
+        165,
+        117
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 1295,
+      "attachment": [
+        165,
+        117
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 1315,
+      "attachment": [
+        165,
+        117
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 2291,
+      "attachment": [
+        850,
+        225
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 2311,
+      "attachment": [
+        850,
+        225
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 2331,
+      "attachment": [
+        850,
+        225
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 2351,
+      "attachment": [
+        850,
+        225
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 2371,
+      "attachment": [
+        850,
+        225
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 2391,
+      "attachment": [
+        850,
+        225
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 3234,
+      "attachment": [
+        478,
+        416
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 3254,
+      "attachment": [
+        478,
+        416
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 3274,
+      "attachment": [
+        478,
+        416
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 3294,
+      "attachment": [
+        478,
+        416
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 3314,
+      "attachment": [
+        478,
+        416
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 3334,
+      "attachment": [
+        478,
+        416
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-160-rage-war-umf12/p4-floor.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-171-meta-lab\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-171-meta-lab\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-171-meta-lab\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-171-meta-lab\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-171-meta-lab\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-171-meta-lab\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-171-meta-lab\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-171-meta-lab\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "aaa3ff66ddf6c9d1b42416ccb2598f121a2bebd63fa36bda9e238d26027f3004",
+    "left-corner.png": "9d9458050862c74b437b791f17c07a8bb8081fb8f9b902c55f231f2cbc3a338d",
+    "right-corner.png": "3454c1e1336f84fea57a04140ab431d753297cfca1ed6d8b69e5fe4ef529315b",
+    "wide.png": "78a3d47f9206f99b2a822e71eb1da521f231fe14199a76b317015a71202eaa11",
+    "life-01-active.png": "4e71bd8fcf628ac7022aede93c5888ed77ff0ed6ed0d6377e615d84b5e7b08c9",
+    "life-03-active.png": "314bcfabb2348b72e799f5bfc05ef2530c73ee26b89bfe40b9c56a82f102e9c7",
+    "life-02-active.png": "2eafb958e1c96cc81f71a8f51fc49927c79a00a4f7da89ad2718a3f0e27496e3",
+    "mobile.png": "2a1d6c5deaa88c7884d0fb33095ada5951ea005c15aab529438568b1fdabfa3a"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}

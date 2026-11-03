@@ -1,0 +1,868 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-165-kenner-throne",
+  "proposalId": "new-kenner-throne",
+  "name": "Trône des clans · hommage Kenner",
+  "workbookStage": "09_STAGES!A29:N29",
+  "workbookLife": "10_VIE_DES_STAGES!A77:N79",
+  "sourceUrls": [
+    "https://store.necaonline.com/products/predator-bone-throne-diorama-element",
+    "https://necaonline.com/2016/02/predator-7-scale-action-figure-deluxe-clan-leader/"
+  ],
+  "loreLimits": [
+    "Original ceremonial chamber inspired by NECA Bone Throne; no claim of Kalakta or Marvel King/Prince personal throne.",
+    "E79 forbids throne tentacles, therefore replaced by an original slowly moving ceremonial banner.",
+    "Anonymous adult guard/attendant not the selected named hunter."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "Use case: stylized-concept. Six tiny fullbody anonymous adult Yautja guards as six sequential sprite animation poses. True transparent PNG1536x1024, exactly3columns2rows with512x512cells. ESSENTIAL SPRITE LAYOUT: each guard is a SMALL MINIATURE occupying only middle60percent of cell height, maximum300pixels tall, minimum90px completely transparent above head and below feet. Large empty transparent border on ALL sides. All six heads and both feet fully included. No weapon extending beyond bodybox. Guard identity consistent: silver angular biomask, black long dreadlocks, dark bronze segmented shoulder chest shin armour, brown mottled limbs, leather skirt, tall strong adult anatomy. Emptyhands, arms close tobody. Sixsubtle silent courtguard poses:1neutralstanding,2headturnleft,3headreturns,4rightfisttoucheschest,5fistlowers,6neutralwithweightshift. Sideviewthreequarterprofile towardsleft, groundedfeet samebaseline localy405. Same guardscale and clothing acrosssix; twohands withcoherent fingers, twofeet, noextra limbs. Detailed painted cinematic Predator gameart. Native alphatransparency, NO floorpatch, NO drop shadow, NOscene, NOtext/labels, NOseparatorlines. Do not crop and do not magnify the guard; maintain huge blankgutters.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-6e1c6630-ebe7-4b1a-9a35-a71d2d5c7a4b.png",
+      "workspacePath": "work-local/v60/generated/arena-165-kenner-throne/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected native six adult anonymous guard poses: coherent mask, two arms and legs, visible full head and feet, large clear gutters.",
+      "anchorKind": "ground-bottom",
+      "sha256": "322fc5cc352738020aa741f09f4f93a1f1844af2e461f640c3a4f62f88822f04",
+      "bytes": 1662029,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8351383209228516,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            191,
+            96,
+            156,
+            402
+          ],
+          "pivot": [
+            265,
+            498
+          ],
+          "bodyCenterPivot": [
+            268.5,
+            498
+          ],
+          "opaquePixelCount": 39974,
+          "contentSha256": "a6dd75eea116e2d3ca877f97541af9e60b80dd88bb9c00a98e9f0fa5baa0a2ac",
+          "margins": [
+            191,
+            96,
+            165,
+            14
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            171,
+            97,
+            155,
+            401
+          ],
+          "pivot": [
+            246,
+            498
+          ],
+          "bodyCenterPivot": [
+            248,
+            498
+          ],
+          "opaquePixelCount": 39561,
+          "contentSha256": "30a14c20b4057f8f9a6bd01c9350fe78dcac44d7c1cece8e944beda6036d00be",
+          "margins": [
+            171,
+            97,
+            186,
+            14
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            160,
+            94,
+            156,
+            404
+          ],
+          "pivot": [
+            235.5,
+            498
+          ],
+          "bodyCenterPivot": [
+            237.5,
+            498
+          ],
+          "opaquePixelCount": 40228,
+          "contentSha256": "b7218f5d1b7623fbb1b0a9c44b119e6e3a92b74a221bebcc7d101a238cf08d02",
+          "margins": [
+            160,
+            94,
+            196,
+            14
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            184,
+            64,
+            163,
+            399
+          ],
+          "pivot": [
+            265,
+            463
+          ],
+          "bodyCenterPivot": [
+            265,
+            463
+          ],
+          "opaquePixelCount": 39061,
+          "contentSha256": "fc07a507817429b79a59cae543e4a8b8f21ae90051c57be1c2c509ef11bfd927",
+          "margins": [
+            184,
+            64,
+            165,
+            49
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            168,
+            63,
+            159,
+            400
+          ],
+          "pivot": [
+            244,
+            463
+          ],
+          "bodyCenterPivot": [
+            247,
+            463
+          ],
+          "opaquePixelCount": 40633,
+          "contentSha256": "bb6bf14a6699cdfe5ac4bf32d76644c942f4fba894c2eecda4bc6c4400cc4462",
+          "margins": [
+            168,
+            63,
+            185,
+            49
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            165,
+            60,
+            162,
+            403
+          ],
+          "pivot": [
+            247,
+            463
+          ],
+          "bodyCenterPivot": [
+            245.5,
+            463
+          ],
+          "opaquePixelCount": 41328,
+          "contentSha256": "a4f2c5f1200773d890e83f3bf3edcac72fde8d61c6b3878a85d0cefffe3b6a58",
+          "margins": [
+            165,
+            60,
+            185,
+            49
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. True transparent PNG background actor sprite sheet1536x1024, exact3columns2rows of six512x512cells. One anonymous ADULT Yautja ceremonial attendant, different from an armored fighter: plain charcoal cloth wraps, modest bronze shoulderplate, unmarked half-face biomask, black dreadlocks, mottled brownskin. Fullbody with twoarms/twolegs, facingthreequarterleft, no named costume. Holds a small NARROW vertical bronze storage frame containing TWO fully collapsed inactive metal hunting staffs, no exposed blade, gun or glowingweapon. Same two hands grip safe solidhandles throughout. Six subtle carrying/weight-shift poses, feet planted in place:1steadyhold,2leftknee relaxes,3rack tips veryslightly inward as lowerhand adjusts,4head checks rack,5shoulders settle,6return calm. Genuine joint andhand geometry variations, no walking or translation. Wholefigure+rack width atmost300height390 centered in eachcell, feetbaseliney458 and generous35pxminimumclear margins. No fingers throughobjects, no extralimbs. Detailedhandpainted cinematic gameart, mutedbronze/cloth, cooltealrimlight for bone-throne hall. Truealpha aroundsilhouette and openings, no scene/floor/shadow/cloud/text/grid. Exactly6distinct drawings, stableidentity/gear andscale.",
+      "referencedImagePaths": [],
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-eec83d68-4d72-4353-9767-b0468dde1104.png",
+      "workspacePath": "work-local/v60/generated/arena-165-kenner-throne/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected full native sheet: six coherent complete poses. Follow-up edge analysis at alpha thresholds 32, 128 and 240 found zero border pixels in every frame: low-alpha halo only, no opaque anatomy or object clipped. Exact alpha>2 bounds retained.",
+      "anchorKind": "ground-bottom",
+      "sha256": "0e08187c7bfb5fb5588ea79542ce3d8655e86416c98d8a0144bedd6549ada174",
+      "bytes": 2000440,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7075767517089844,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            206,
+            0,
+            207,
+            508
+          ],
+          "pivot": [
+            310,
+            508
+          ],
+          "bodyCenterPivot": [
+            309,
+            508
+          ],
+          "opaquePixelCount": 67316,
+          "contentSha256": "965600760709d0fa0490b9af33ff5bfebf24859e51457459d17611bfe82999c3",
+          "margins": [
+            206,
+            0,
+            99,
+            4
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            159,
+            0,
+            212,
+            507
+          ],
+          "pivot": [
+            266.5,
+            507
+          ],
+          "bodyCenterPivot": [
+            264.5,
+            507
+          ],
+          "opaquePixelCount": 67609,
+          "contentSha256": "630504b1f39ee7f52a634504fd792e632d32df0162d3997f8c1d992bacef3c68",
+          "margins": [
+            159,
+            0,
+            141,
+            5
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            105,
+            6,
+            233,
+            501
+          ],
+          "pivot": [
+            238,
+            507
+          ],
+          "bodyCenterPivot": [
+            221,
+            507
+          ],
+          "opaquePixelCount": 70492,
+          "contentSha256": "18dd50cd537dc8651b9da719d0b1f1cfd796fd44d5be47b6c04c7b060c13c161",
+          "margins": [
+            105,
+            6,
+            174,
+            5
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            184,
+            5,
+            242,
+            499
+          ],
+          "pivot": [
+            323,
+            504
+          ],
+          "bodyCenterPivot": [
+            304.5,
+            504
+          ],
+          "opaquePixelCount": 68509,
+          "contentSha256": "3ad320e4ea890be965acd229e195ba7f25d5b0e3b3ecd7b539d4fa89eaece65b",
+          "margins": [
+            184,
+            5,
+            86,
+            8
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            153,
+            2,
+            215,
+            501
+          ],
+          "pivot": [
+            266.5,
+            503
+          ],
+          "bodyCenterPivot": [
+            260,
+            503
+          ],
+          "opaquePixelCount": 68536,
+          "contentSha256": "1dc49c58770ea266ed382d0df03ac656faf03776ad689c5deaf4a37e29c20ef8",
+          "margins": [
+            153,
+            2,
+            144,
+            9
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            134,
+            2,
+            215,
+            500
+          ],
+          "pivot": [
+            249.5,
+            502
+          ],
+          "bodyCenterPivot": [
+            241,
+            502
+          ],
+          "opaquePixelCount": 67147,
+          "contentSha256": "657aa1fc8f3f38710e8879ada32baf1e594b82e4ff854feff16c09cf42825226",
+          "margins": [
+            134,
+            2,
+            163,
+            10
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-03",
+      "prompt": "Create a real transparent PNG sprite sheet1536x1024, exactly3columns2rows of6equal512x512cells. A single small ceremonial hangingbanner for an ORIGINAL Yautja bone-throne chamber: aged darkcrimson cloth with plain ivory edge binding and three shortweighted bronze tassels, hangingfrom a shortfixed dullbronze crossbar with two visibleclosedloops. NO readabletext, rune, factionlogo, skullhead, tentacles or magicaleffect. Six real drawingsof gentle fabricmovement:1rest,2lowercloth bowsright,3S-shapedfoldright,4returnsvertical,5gentlefoldleft,6nearrest. Crossbar/loops fixed atlocalx256 y76, total complete sprite inside x145..380 y65..457 in eachcell. Maintain same clothlength,cut,edgepattern,tasselcount and lighting; bends physically from suspension, no whole-sprite tilt. Detailed painted cinematic gameasset, fabricweave and restrainedteal light alongshadows, appropriate backgroundobject. All outside andbetween tassels truly alphatransparent, no backdrop/vignette/floor/checkerboard/grid/title. Six poses no overlap. Explicitly a coherent original substitute for forbidden animated throne tentacles.",
+      "referencedImagePaths": [],
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-6e84eceb-6ae1-42c0-b398-2191ffa64796.png",
+      "workspacePath": "work-local/v60/generated/arena-165-kenner-throne/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected full native sheet: six coherent complete poses. Follow-up edge analysis at alpha thresholds 32, 128 and 240 found zero border pixels in every frame: low-alpha halo only, no opaque anatomy or object clipped. Exact alpha>2 bounds retained.",
+      "anchorKind": "hanging-top",
+      "sha256": "8d17ec1e9f1f248ad751ca88c2e3a5449f1522f3fb7d90398fc15f184eef4edc",
+      "bytes": 2044904,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6864217122395834,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            132,
+            0,
+            289,
+            481
+          ],
+          "pivot": [
+            275.5,
+            0
+          ],
+          "bodyCenterPivot": [
+            276,
+            481
+          ],
+          "opaquePixelCount": 70936,
+          "contentSha256": "525fa060f98c203e3149ec13cdc65051cff109b08791ca3d722a8e26168f0499",
+          "margins": [
+            132,
+            0,
+            91,
+            31
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            124,
+            0,
+            352,
+            471
+          ],
+          "pivot": [
+            264.5,
+            0
+          ],
+          "bodyCenterPivot": [
+            299.5,
+            471
+          ],
+          "opaquePixelCount": 72355,
+          "contentSha256": "33259ff7cbb4680c89327b8ffbf96e0c36883249168f25a72b993e455cc29911",
+          "margins": [
+            124,
+            0,
+            36,
+            41
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            93,
+            0,
+            354,
+            479
+          ],
+          "pivot": [
+            232.5,
+            0
+          ],
+          "bodyCenterPivot": [
+            269.5,
+            479
+          ],
+          "opaquePixelCount": 72693,
+          "contentSha256": "73efb377656736d16faf0bc57f6c89e2a072364afc59cc2347a7803c9bcd773c",
+          "margins": [
+            93,
+            0,
+            65,
+            33
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            134,
+            2,
+            289,
+            476
+          ],
+          "pivot": [
+            277.5,
+            2
+          ],
+          "bodyCenterPivot": [
+            278,
+            478
+          ],
+          "opaquePixelCount": 71805,
+          "contentSha256": "94ccdd07313bb71c02214a583e943faeeab94ed71c0dc681a8c094624e193821",
+          "margins": [
+            134,
+            2,
+            89,
+            34
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            0,
+            329,
+            466
+          ],
+          "pivot": [
+            266,
+            0
+          ],
+          "bodyCenterPivot": [
+            247,
+            466
+          ],
+          "opaquePixelCount": 73219,
+          "contentSha256": "90608849a4a75a9ed4f7fbc4cafe9a5d55f21e6cb166a52132934da556db877c",
+          "margins": [
+            83,
+            0,
+            100,
+            46
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            96,
+            0,
+            287,
+            478
+          ],
+          "pivot": [
+            238,
+            0
+          ],
+          "bodyCenterPivot": [
+            239,
+            478
+          ],
+          "opaquePixelCount": 71434,
+          "contentSha256": "0f29e8d87661830cdfee90d367a5009051ee350cc6649ff7b9271775e0289c99",
+          "margins": [
+            96,
+            0,
+            129,
+            34
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Edit the FIRST image only. Preserve its exact wide cinematic side-view stone hall, dimensions, layout, colour lighting, empty alcoves and stairs. Correct ONLY the SMALL EMPTY THRONE in centre to faithfully echo the sculpted throne geometry visible in the SECOND image, which is official NECA reference. The second photo is reference solely for the THRONE, absolutely NOT its seated Predator figure, red cape, guards/weapons or text. New emptythrone: skull-studded armrests and base, large pale ivory ribbed Alien Queen crest-shaped back, broad thin organic fin panels and curved pointed edges, with six rigid queen fin details, not many straight skeletal spinal ribs as currently drawn. It must stay SMALL in the distant recess, with no seated character, no red cloth, no tentacles and no animatedobjects. Keep everyother wall and spatial element unchanged. Hand-painted illustration finish, no photoobject pasted, no words or logos. No new figures.",
+      "referencedImagePaths": [
+        "C:/Users/chuck/.codex/generated_images/01a0f2b3-36a8-7413-840e-ad2db8ead848/exec-ab733e6f-aedd-435c-ae95-97b69f1604d8.png",
+        "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v60/references/neca-bone-throne.jpg"
+      ],
+      "transparentRequested": false,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-1f51d627-e0a7-422f-ad5b-99fea2006c40.png",
+      "workspacePath": "work-local/v60/generated/arena-165-kenner-throne/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Opened and inspected full scene, no actors baked in. Throne corrected with official NECA reference: broad queen crest, skull base and rigid fins; original room geometry.",
+      "anchorKind": "ground-bottom",
+      "sha256": "c06e3ad91b84a51e072716a8846165dbe99f021ff19dcbe605a3b92e1faba34e",
+      "bytes": 2432780,
+      "width": 1983,
+      "height": 793,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "artStatus": "complete-4-native-pngs-awaiting-runtime-qa",
+  "rejected": [
+    {
+      "id": "p0-depth",
+      "prompt": "Use case: stylized-concept. WIDE opaque painted BACKGROUND DEPTH for a2D side-view fighting game. Stage Trône des clans, an ORIGINAL ceremonial chamber homage to NECA Predator Bone Throne diorama, not a canonical personal palace of Kalakta or Marvel King. Dark blue-grey basalt hall, broad shallow horizontal alcoves and heavy ancient lintels. On a distant raised central recess sits a SMALL EMPTY bone throne: ivory skull-studded armrests and plinth, huge pale ribbed Alien Queen crest-shaped back with curved fan-like fins and thin pointed bonyspines, no tentacles. Keep throne distant enough that fighters in front remainlegible; no seatedfigure or weaponhands. Roomgeometryoriginal. Empty small side alcoves left/right reservedfor independent guard/attendant sprites. No hangingbanner baked in. Architectural baseline low about80percent, bottom20percent subduedblackstonebacking behind a separate playablefloor. Straight lateral theatrical camera, stronghorizontalrhythm, shallowdepth, no diagonalfloororcentralvanishingroad. Detailed painted cinematic videogameart, cooltealmoonlight andsubtleivory highlights, no phototoy, no text/logo/HUD, no people, aliens, movingprops, smokecloudsorfire.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-ab733e6f-aedd-435c-ae95-97b69f1604d8.png",
+      "reason": "Throne back was generic rib-bone fan. Corrected to broad NECA Queen crest using official photo."
+    }
+  ],
+  "rejectedAssets": [
+    {
+      "id": "life-01",
+      "prompt": "Create a true-alpha transparent PNG sprite sheet1536x1024, exactly3columns2rows of SIX512x512cells. Same anonymous ADULT Yautja ceremonial guard in six distinct small controlled salute poses. Generic original dark bronze and dullsteel minimal segmented armor, modest unmarked smooth biomask, black dreadlocks, mottled olive skin, netted torso, two normal arms and two legs, no named fighter costume. NO gun/cannon/spear/blade drawn, hands empty. Fullbody facingthreequarterright, same proportions and gear allframes; centered localx256,feetfixed atlocaly460, totalheight370px maximum, generousclear margins. Sequence1calm arms down,2rightforearm lifts towardchest,3rightfist touches breastplate,4headinclines slightly with fistheld,5hand lowers,6returnsrest. Leftarm staysrelaxed. Exactlyone body percell, plausiblehands with coherent fingers and wrists, no extra limbs, feetfirmlyplanted. Painted detailed cinematicgame sprite toplacefarbehindduel on bluegreybone-throne balcony. Cooltealrimlight, restrainedsilverarmor, lowcontrast. NO scenery, floor, shadowrectangle, magicglow, checkerboard, text, cellborders. Truealpha outsidefigure and betweenlimbs.",
+      "referencedImagePaths": [],
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-1c18657c-8074-477e-b4c6-1629e84098ed.png",
+      "workspacePath": "work-local/v60/generated/arena-165-kenner-throne/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "superseded-native",
+      "visualNotes": "Follow-up alpha measurement found art touching cell border. Not integration accepted until a native imagegen correction is inspected.",
+      "anchorKind": "ground-bottom",
+      "sha256": "607de2da04627c5971aca16efbaddbccd398da687c93123ca385698b306cf3ff",
+      "bytes": 1836842,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7684586842854818,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            202,
+            0,
+            177,
+            506
+          ],
+          "pivot": [
+            288,
+            506
+          ],
+          "bodyCenterPivot": [
+            290,
+            506
+          ],
+          "opaquePixelCount": 56196,
+          "contentSha256": "52afcd9e79518750d0f7e742b987acfa0f1d78da27c53dfbd15b37bf968859d3",
+          "margins": [
+            202,
+            0,
+            133,
+            6
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            170,
+            0,
+            177,
+            506
+          ],
+          "pivot": [
+            256.5,
+            506
+          ],
+          "bodyCenterPivot": [
+            258,
+            506
+          ],
+          "opaquePixelCount": 52706,
+          "contentSha256": "763f3416a0d7e7c2df31730a3f521bbb1abda6bf248149456664dbd0d37d0fd1",
+          "margins": [
+            170,
+            0,
+            165,
+            6
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            138,
+            0,
+            177,
+            507
+          ],
+          "pivot": [
+            224,
+            507
+          ],
+          "bodyCenterPivot": [
+            226,
+            507
+          ],
+          "opaquePixelCount": 52401,
+          "contentSha256": "948939dcd877ff79ebd25c9374045000c0878ecedf7044a7d2f6ff8a88fb54ce",
+          "margins": [
+            138,
+            0,
+            197,
+            5
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            201,
+            2,
+            174,
+            504
+          ],
+          "pivot": [
+            288,
+            506
+          ],
+          "bodyCenterPivot": [
+            287.5,
+            506
+          ],
+          "opaquePixelCount": 53229,
+          "contentSha256": "f437c4d70579efa31006e76235e72e741af48741b715eb81150b5b4f3b010b25",
+          "margins": [
+            201,
+            2,
+            137,
+            6
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            170,
+            2,
+            176,
+            505
+          ],
+          "pivot": [
+            255,
+            507
+          ],
+          "bodyCenterPivot": [
+            257.5,
+            507
+          ],
+          "opaquePixelCount": 54328,
+          "contentSha256": "1ff9cf97a3e169c707c5fea1e943a3e51f7b0b51fa97e632a6c575af887ababd",
+          "margins": [
+            170,
+            2,
+            166,
+            5
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            138,
+            3,
+            176,
+            504
+          ],
+          "pivot": [
+            224,
+            507
+          ],
+          "bodyCenterPivot": [
+            225.5,
+            507
+          ],
+          "opaquePixelCount": 56012,
+          "contentSha256": "7e3335c70b4f3f91f381a95aab17a812cb7923e1872af74477b6d61f3c2a0de3",
+          "margins": [
+            138,
+            3,
+            198,
+            5
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "rejectionReason": "Native correction: improved cell margins."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "house-a-basalt",
+  "tool": "OpenAI builtin image_gen",
+  "path": "/game/homeworld/v64/house-a-basalt.png",
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-463852a6-65e4-4a88-a417-928512d98ecd.png",
+  "sourcePreserved": true,
+  "nativeBytesUnchanged": true,
+  "sha256": "04d5cc33ec9b42548de1b3d352cc56d4182b921e694faf6fd9946e13ee407e84",
+  "width": 1164,
+  "height": 1351,
+  "drawings": 1,
+  "animationFrames": 0,
+  "alphaOutside": true,
+  "prompts": [
+    {
+      "file": "house-a-prompt.txt",
+      "prompt": "Use case: stylized-concept. Asset type: production-ready high-detail 2.5D videogame building sprite, one reusable Yautja residential building, family A \"Basalt canopy dwelling\". Create ONE COMPLETE isolated alien dwelling with true native transparency, no background, no terrain patch, no people, no text, no labels.\nSubject: original lore-compatible Yautja architecture: a heavy weathered basalt core, dark ribbed alien metal reinforced doorway, broad layered volcanic slab canopy with a shallow curved top, restrained aged bronze bracing and two dim amber mechanical slots. Tough practical alien hunting-clan dwelling, sophisticated machinery embedded in massive stone. Not a copy of a named movie building. No medieval roof, no human windows, no skull decorations.\nCAMERA IS CRITICAL: fixed orthographic game view, yaw EXACTLY ZERO, directly facing the south/front wall while looking slightly down from 35 degrees above the ground toward north. Front horizontal edges perfectly HORIZONTAL and vertical edges VERTICAL. Show the top of the roof and front facade, but NO left or right SIDE WALL. The north-south depth recedes straight UP the image, not diagonally left or right. No perspective vanishing point. NO isometric diamond view, NO three-quarter turn, NO perspective convergence.\nGEOMETRY: compact rectangular foundation width360 world units, depth240 world units. Front facade physical height240 units, shallow layered roof adds about45 units. At this camera ground depth appears about138 units on screen. Main open doorway centered exactly on the southern/front foundation edge. Door clear opening width90 units and height145 units, therefore notably tall and broad relative to the facade; a 100unit adult would fit comfortably. Threshold is level with the front foundation's ground contact, zero stairs, zero raised porch. Dark OPEN doorway with actual inset jambs, no painted flat door decal.\nCOMPOSITION: square canvas1536x1536, generous fully transparent margin, roughly3 native pixels per world unit; front foundation spans about1080px, centered x768, front ground contact abouty1290; dark clear doorway about270px wide and435px tall. All foundation and roof visible, nothing cut off. Foundation bottom straight and horizontal, actual structural foundation crisp, very minimal close contact shadow only. Front door floor socket unambiguous at center bottom of opening. The far roof edge recedes upward. Roof must have visible depth, not just frontal elevation.\nSTYLE: polished hand-painted realistic HD2D sprite, precise material detail and readable silhouette, neutral warm light upperleft, soft shadows under canopy. Natural stone/metal colors; no atmospheric fog, bloom or vignette. Exactly one building, isolated, genuine alpha, no checkerboard painted."
+    },
+    {
+      "file": "house-a-edit-prompt.txt",
+      "prompt": "Precise object edit of this production game building sprite. Keep the same design, materials, frontal yaw-zero orthographic camera, roof shape, width, true transparent background and center open doorway. CORRECT ONLY PROPORTIONS: extend the front facade WALL ABOVE the doorway substantially upward, by approximately one half of the current door opening height. Raise the complete roof accordingly, preserving its top visible depth. Keep the door opening's width and height the same and keep the threshold at the exact center of the bottom ground contact, no stairs, no porch. Thus the front facade height should become 1.65 times the door's clear opening height (currently almost equal), with an extra substantial stone-and-metal wall band ABOVE the door jamb. Side stone masses and bracing extend upward coherently. Do not stretch the door or the roof. Use a taller portrait canvas if needed so the entire enlarged building fits with transparent margin. No clipping. This is an isolated reusable Yautja-inspired basalt dwelling asset. No people, no label, no scenery. Camera yaw0, pitch35 degrees, perfectly horizontal front roof edge, vertical facade sides, no sidewalls seen, no vanishing point. Native transparent alpha."
+    }
+  ],
+  "loreStatus": "original-game-adaptation-not-canonical-1-to-1"
+}

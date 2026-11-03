@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-03",
+  "inspectedBase": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e",
+  "main": "f322e0cb42f2b1b7e06c3be1dcfbb23cb24f02c8",
+  "audit": {
+    "targetCount": 354,
+    "namedPublicSourceTargets": 3,
+    "exactCandidateTargets": 61,
+    "familyOnlyUnresolvedTargets": 279,
+    "animationUnresolvedTargets": 1,
+    "independentComponentsSelected": 10,
+    "historicalMissingWithExactSources": 40,
+    "previousConversationPNG": 117,
+    "concurrentSectorPNG": 17,
+    "previousRecordedFiles": 134
+  },
+  "newLot": {
+    "uniqueFunctionalProps": 10,
+    "nativePNGFiles": 20,
+    "editableBlendFiles": 10,
+    "loreClassification": "ORIGINAL_GAME_ADAPTATION",
+    "canonicalOneToOne": false,
+    "humanValidated": false,
+    "runtimeIntegrated": false,
+    "binaryFilesCommitted": true,
+    "sourceGeneratorCommitted": true
+  },
+  "delivery": {
+    "type": "REPOSITORY_FILES_WITH_ORIGINAL_ARCHIVE_PROVENANCE",
+    "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/51ce61d5-d39f-41a8-bae6-0978dcdf1311.zip",
+    "bytes": 21702086,
+    "sha256": "30c0a3fbcfd0d1af351a66026c998e52f4bbfe9c22632aa14433f9dbecc43a26",
+    "root": "production/homeworld-reconciled-20261103/"
+  },
+  "camera": {
+    "projection": "orthographic",
+    "pitchDegrees": 35,
+    "yawDegrees": 0,
+    "objectViewYaws": [
+      25,
+      205
+    ],
+    "mirroredPNG": false,
+    "physicalDimensionsAuthority": "GAME_DESIGN_NOT_OFFICIAL_LORE"
+  },
+  "checks": {
+    "sourceReconciliationTestsPassed": 6,
+    "targetIdsPreserved": 354,
+    "nativeRGBAFiles": 20,
+    "emptyImages": 0,
+    "minimumAlphaMarginPx": 117,
+    "requiredAlphaMarginPx": 48,
+    "runtimeTestsPerformed": false
+  },
+  "targetBindings": [
+    [
+      "HWP163-01",
+      "target-v81-63-151",
+      "Conduit de chaleur"
+    ],
+    [
+      "HWP163-02",
+      "target-v81-67-211",
+      "Conduit d’énergie"
+    ],
+    [
+      "HWP163-03",
+      "target-v81-67-212",
+      "Câble au sol"
+    ],
+    [
+      "HWP163-04",
+      "target-v81-67-215",
+      "Échelle de maintenance"
+    ],
+    [
+      "HWP163-05",
+      "target-v81-68-233",
+      "Grille de drainage"
+    ],
+    [
+      "HWP163-06",
+      "target-v81-68-235",
+      "Caniveau"
+    ],
+    [
+      "HWP163-07",
+      "target-v81-68-239",
+      "Ventilation de sol"
+    ],
+    [
+      "HWP163-08",
+      "target-v81-73-294",
+      "Câble suspendu"
+    ],
+    [
+      "HWP163-09",
+      "target-v81-74-324",
+      "Treuil"
+    ],
+    [
+      "HWP163-10",
+      "target-v81-74-326",
+      "Rail de manutention"
+    ]
+  ],
+  "imageColumns": [
+    "filename",
+    "sha256",
+    "bytes",
+    "width",
+    "height",
+    "minimumAlphaMarginPx"
+  ],
+  "images": [
+    [
+      "HWP163-01_conduit-chaleur_front.png",
+      "ec9d0ca6a7523a97a2c93ba3e1ce0002b4a3573f6e77464adf6f66bc4e3cda1a",
+      1127258,
+      1536,
+      1024,
+      132
+    ],
+    [
+      "HWP163-01_conduit-chaleur_rear.png",
+      "4b3a226f200bca285bdd6c085e37e60293c439d1b578921f4b1473c22ea0205b",
+      1127210,
+      1536,
+      1024,
+      132
+    ],
+    [
+      "HWP163-02_conduit-energie_front.png",
+      "f4828a6052113f229e959cac2123dc65b97bd588dc8ec44f50d799e8fedf87a3",
+      987614,
+      1536,
+      1024,
+      129
+    ],
+    [
+      "HWP163-02_conduit-energie_rear.png",
+      "6da2a189943f9f5f318485275e30f08a5d95d7df01ceb6570eb3154c0e351cfa",
+      987743,
+      1536,
+      1024,
+      129
+    ],
+    [
+      "HWP163-03_cable-sol_front.png",
+      "2f5f8440862f396801ce0f5c908d160e684ab54a80f685616b85526948ce6a68",
+      840739,
+      1536,
+      1024,
+      129
+    ],
+    [
+      "HWP163-03_cable-sol_rear.png",
+      "4f21cf462318b28d8d7446795c14973fcdbe8f48e1c5a586ccbd75c0bb8e1d18",
+      840206,
+      1536,
+      1024,
+      129
+    ],
+    [
+      "HWP163-04_echelle-maintenance_front.png",
+      "350fc1f28c18567324d507e78410b0802ad6e55659b21d9da30ad51b94d0ebc1",
+      1046886,
+      1024,
+      1536,
+      130
+    ],
+    [
+      "HWP163-04_echelle-maintenance_rear.png",
+      "b236e07deca32b2abbaa4e6debdfd6e028bc2abc6c2b5022c2e26f3c0ed84966",
+      1059022,
+      1024,
+      1536,
+      130
+    ],
+    [
+      "HWP163-05_grille-drainage_front.png",
+      "40f045834d4479e23e68a381fef4b2e6a381cf56b594b5ea49939a888aea3a79",
+      1351287,
+      1536,
+      1024,
+      131
+    ],
+    [
+      "HWP163-05_grille-drainage_rear.png",
+      "7269a1e9635a02525266b5676f91cbd27c902cbc45936c61e3838f99cc5715b6",
+      1350537,
+      1536,
+      1024,
+      131
+    ],
+    [
+      "HWP163-06_caniveau_front.png",
+      "65fae43fc2e6e8e7f84b74ac2a3f2115849fe1ff283fda555b34d6f33da187f8",
+      1005769,
+      1536,
+      1024,
+      128
+    ],
+    [
+      "HWP163-06_caniveau_rear.png",
+      "670356ed7c9006ad434e1de2bd5b73641409c10ce40de7afc6926f3f918335ab",
+      1006063,
+      1536,
+      1024,
+      128
+    ],
+    [
+      "HWP163-07_ventilation-sol_front.png",
+      "9fb90a6a4c39ced8a06e959d4aee2b123932e847465807272c0db62a54eadd2c",
+      1457624,
+      1536,
+      1024,
+      117
+    ],
+    [
+      "HWP163-07_ventilation-sol_rear.png",
+      "04a6eb361eee7037edd897708c45dbf9be89dbc084feba4485f279ea0297d256",
+      1479534,
+      1536,
+      1024,
+      117
+    ],
+    [
+      "HWP163-08_cable-suspendu_front.png",
+      "55c04d121b22091784858892e17f379c3acc2842dec81f8bd2fa0a7925888bac",
+      794672,
+      1536,
+      1024,
+      128
+    ],
+    [
+      "HWP163-08_cable-suspendu_rear.png",
+      "2b359cca92745c9b5161d6268d355bda04b87e823b1e0bb62cb912b85483c9e9",
+      794478,
+      1536,
+      1024,
+      128
+    ],
+    [
+      "HWP163-09_treuil_front.png",
+      "869a081a2aab0acccc769b524c001de799ac5f034362e2560f5b6c9017d2a4bc",
+      871592,
+      1536,
+      1024,
+      260
+    ],
+    [
+      "HWP163-09_treuil_rear.png",
+      "db4f47d97fc77b0c1c5822ffb5da0555b0a5e75dd27a465864943f6cbaeee222",
+      854221,
+      1536,
+      1024,
+      258
+    ],
+    [
+      "HWP163-10_rail-manutention_front.png",
+      "8f55664297f636e8c7abceb1c4555556f77200b0a3f7660133dcd4f55176ab0b",
+      962827,
+      1536,
+      1024,
+      127
+    ],
+    [
+      "HWP163-10_rail-manutention_rear.png",
+      "901d9d9c59c1073f6d8abda4357ea1b535919118f92ba1abad16c9a5d4c7d69e",
+      962856,
+      1536,
+      1024,
+      127
+    ]
+  ],
+  "rejectedImageGenerationOutput": {
+    "sha256": "aea8f0b744264feed7698a3a90a190a62949bf85c2be55bb9e5ef5edc7ed7c50",
+    "imported": false,
+    "reason": "Poster instead of independent sprites; its drawn completion and PR claims are not evidence."
+  },
+  "remaining": [
+    "279 family-only matches still require target-by-target visual reconciliation, not blind generation.",
+    "61 pre-existing exact-target candidates still require their own acceptance checks.",
+    "Forge animation remains a separate unresolved task.",
+    "The ten utility props are now committed as PNG and Blender sources; art, scale and in-context review remain open, and they are not claimed playable."
+  ],
+  "noSourceRequirementClosed": true,
+  "binaryImport": {
+    "date": "2026-11-03",
+    "archiveBytesVerified": 21702086,
+    "archiveSha256Verified": "30c0a3fbcfd0d1af351a66026c998e52f4bbfe9c22632aa14433f9dbecc43a26",
+    "pngFiles": 20,
+    "editableModels": 10,
+    "verification": "tools/verify-utility-delivery.py",
+    "sourceRequirementClosed": false
+  }
+}

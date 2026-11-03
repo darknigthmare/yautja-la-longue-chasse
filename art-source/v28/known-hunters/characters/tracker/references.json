@@ -1,0 +1,71 @@
+{
+  "characterId": "tracker",
+  "work": "Predators",
+  "year": 2010,
+  "variant": "masked Tracker / Flusher with normal film armor",
+  "reviewDate": "2026-09-05",
+  "status": "reference-informed-adaptation-not-1to1-certified",
+  "sources": [
+    {
+      "title": "Hot Toys Tracker via Sideshow licensed partner gallery",
+      "url": "https://www.sideshow.com/collectibles/predator-tracker-hot-toys-901303",
+      "type": "licensed-product-primary-gallery",
+      "inspection": "Product page plus two browser-rendered gallery captures visually inspected.",
+      "screenshots": [
+        "tmp/v28-tracker-fugitive-refs/tracker-page.png",
+        "tmp/v28-tracker-fugitive-refs/tracker-detail.png",
+        "tmp/v28-tracker-fugitive-refs/tracker-mask.png"
+      ],
+      "supports": [
+        "Two ivory tusks rising beside long sculpted mask muzzle",
+        "Elongated green-gray mask dome and narrow eye openings",
+        "Exposed mottled chest without mesh suit",
+        "Leather cross straps, burgundy-brown waist wrap, sparse green-gray armor",
+        "Single anatomical-left shoulder caster; right forearm blade housing"
+      ],
+      "screenshotProof": [
+        {
+          "path": "tmp/v28-tracker-fugitive-refs/tracker-page.png",
+          "sha256": "77527449bd96dcb8909dc810c42cec174e89fb1cf2c78282163ecc12e6b4a322"
+        },
+        {
+          "path": "tmp/v28-tracker-fugitive-refs/tracker-detail.png",
+          "sha256": "352af090a005b9835575ccfc28861823c1423f159a6da58e9fa90347b44f897b"
+        },
+        {
+          "path": "tmp/v28-tracker-fugitive-refs/tracker-mask.png",
+          "sha256": "8c0a81fbb10ca38efface1c73cdde4f0112eadd6935821f7973ffa12e7c6d6d7"
+        }
+      ]
+    },
+    {
+      "title": "NECA Predators Series2",
+      "url": "https://necaonline.com/2011/03/predators-7-action-figure-series-2-assortment/",
+      "type": "official-manufacturer-text",
+      "inspection": "Search-index text confirms Tracker in the2010 film figure series; live text fetch failed.",
+      "supports": [
+        "Tracker identity in the2010 Predators series"
+      ]
+    }
+  ],
+  "localReference": {
+    "path": "public/game/sprites/v5/film-plates/tracker.png",
+    "role": "Style continuity only; NOT canonical geometry authority",
+    "observedConflicts": [
+      "Local plate draws two wrist blades and mesh-like leg pattern; not carried into V28 single-blade no-net prompt.",
+      "hunterLore.ts biomaskId berserker is a runtime substitute; V28 prompt names Tracker-specific tusked mask."
+    ],
+    "sha256": "7517ab3c94be6197029bd7c7b510f4689b69a2d86fba2dc4262e1f9e3b9efa2d"
+  },
+  "promptInvariants": [
+    "One anatomical-left shoulder caster; one blade anchored to anatomical-right forearm housing",
+    "Two hands with natural thumbs; no sword held by fingers",
+    "Exactly two mask tusks; same mask/armor per pose",
+    "No hound or leash in this combat clip; no fictional portable trap"
+  ],
+  "limitations": [
+    "Licensed prototype figures are useful visual evidence, not a1:1 film scan.",
+    "No claim of exact mask sculpt, skin markings or pixel-perfect proportions.",
+    "References are browser screenshots kept under tmp; no licensed source image enters the public art pack."
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-165-kenner-throne",
+  "id": "victory-salute",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-9ee143b3-a752-43ee-b6cc-97d76506a7c2.png",
+  "workspacePath": "work-local/v61/generated/arena-165-kenner-throne/victory-salute.png",
+  "sha256": "c373dadcaeb74986c982a94a8486765ba052958fb799cb679ec092bf1ae3ddd3",
+  "bytes": 1817237,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.8208815256754557,
+  "copyByteIdentical": true,
+  "prompt": "Repair the framing of this six-pose sprite atlas. Keep exactly the same six gestures and same anonymous Yautja guard, armour and facing direction. CRITICAL: the raised fist of pose4 crosses the horizontal cell boundary. Redraw each complete character at only 75 PERCENT of current size in the CENTER of its own cell, including complete raised hand and tendrils. Six cells precisely512x512 each, THREE COLUMNS TWO ROWS on1536x1024 PNG. Keep all pixels of EACH complete character inside local x100..410 y100..445, except the raised fist which may rise to y60. Feet all at localy440. Each frame must have generous clear transparent space around it. Six articulated gestures:armsdown,fistchest,fistshoulder,fistabovehead,fistchest,armsdown. No inventedobjects,weapons,shadows,glow,letters,grids. TRUE ALPHA transparency everywhere outside subject. Do not crop or clip any part. Original reference only defines identity and six poses; shrink each individual figure within each cell, not wholeatlas.",
+  "referencedImagePaths": [
+    "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-7810c790-4f55-4ae8-b3ab-44aa48e29662.png"
+  ],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E77"
+  ],
+  "loreLimits": [
+    "Original anonymous Yautja guard/judge; gesture is workbook adaptation, not certified frame-for-frame canon."
+  ],
+  "rejectedAttempts": [
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-7810c790-4f55-4ae8-b3ab-44aa48e29662.png",
+      "prompt": "Use case: identity-preserve. This reference is the existing anonymous adult Yautja guard of a game background, not a named hunter. Create his NEW victory-only ceremonial salute animation as a true transparent PNG atlas, 1536x1024, exactly THREE COLUMNS and TWO ROWS of six 512x512 cells. Keep identical closed silver biomask, dark bronze armour panels, netting, olive skin, tendrils, stance facing left as seen, and painterly style. Six DISTINCT full-body redraws in reading order: 1 quiet arms down neutral, 2 right fist comes to chest, 3 right elbow opens and clenched fist rises above shoulder, 4 fist lifted visibly above head in a clear victory salute while head bows slightly, 5 fist lowers to chest, 6 calm lowered arms again. Left arm relaxed throughout, two arms and two legs only, anatomically coherent wrists and hands. All six COMPLETE figures including raised fist and dreadlocks fit inside each cell x65..447 y35..477. Feet same localbaseline y470 and same body proportions/scale all cells. No objects or weapons, no invented trophies, no text/borders. TRUE ALPHA, strictly NO halo, floor, gradient, background, cast shadow or glow outside silhouette. This must be a newly articulated victory gesture, not a translated/rotated copy of the idle sprite. Reference only defines identity/style; replace all six actions.",
+      "reference": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/public/game/sprites/v60/pit-life/arena-165-kenner-throne/life-01.png",
+      "reason": "Insufficient cell framing / stray visual fragments; replaced with native edit."
+    }
+  ],
+  "visualNotes": "Six articulated gestures reviewed; unmodified native PNG. Custom row boundary for judge uses clear gutter below top-row feet and above bottom-row palm.",
+  "status": "visually-accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        194,
+        65,
+        172,
+        413
+      ],
+      "pivot": [
+        280,
+        478
+      ],
+      "margins": [
+        194,
+        65,
+        146,
+        34
+      ],
+      "opaquePixelCount": 45450,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "73a58bcb1ccff35fb325f2d3874a67c2e4782df9dfab0b6a0d307a0e3243b6c7"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        163,
+        62,
+        180,
+        417
+      ],
+      "pivot": [
+        255,
+        479
+      ],
+      "margins": [
+        163,
+        62,
+        169,
+        33
+      ],
+      "opaquePixelCount": 46558,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "77ffe1f9b0a499dd1d0bf40095a4b20867cc864dab4e22959a43342ec121e43f"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        124,
+        62,
+        219,
+        417
+      ],
+      "pivot": [
+        254.5,
+        479
+      ],
+      "margins": [
+        124,
+        62,
+        169,
+        33
+      ],
+      "opaquePixelCount": 49746,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "336c8b08c1fa904bcc05ae75557b44f89236eeb2fd22894f241c20fec187c479"
+    },
+    {
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        193,
+        27,
+        183,
+        451
+      ],
+      "pivot": [
+        284.5,
+        478
+      ],
+      "margins": [
+        193,
+        27,
+        136,
+        34
+      ],
+      "opaquePixelCount": 46080,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "a3600d5f5cc7d0b363ca1445a2c96c9c7ca571c1f27c58921c4865c927091c1a"
+    },
+    {
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        162,
+        65,
+        187,
+        415
+      ],
+      "pivot": [
+        256,
+        480
+      ],
+      "margins": [
+        162,
+        65,
+        163,
+        32
+      ],
+      "opaquePixelCount": 47207,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "f82d00a97a368366d1fabf2184cb8bef580eca46b4a15d60c40e8355f79177ba"
+    },
+    {
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        167,
+        66,
+        176,
+        413
+      ],
+      "pivot": [
+        255,
+        479
+      ],
+      "margins": [
+        167,
+        66,
+        169,
+        33
+      ],
+      "opaquePixelCount": 46688,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "738278a6806ecaba2c619f6a9e87764b4f734b9672ff2801ae6ac7c778432ef2"
+    }
+  ]
+}

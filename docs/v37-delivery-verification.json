@@ -1,0 +1,635 @@
+{
+  "version": "V37",
+  "checkedAt": "2026-09-19T17:38:34.097Z",
+  "status": "published-and-verified",
+  "production": {
+    "deploymentId": "dpl_2M9nrfMaFk99WdMaVmiFRSEXiitF",
+    "state": "READY",
+    "gitCommit": "9d0f6c1b65f85f693ceb1f103b0aef4efb7d290d",
+    "branch": "main",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "deploymentUrl": "https://yautja-la-longue-chasse-olbbw73cj-darknigthmares-projects.vercel.app",
+    "verificationMethod": "Vercel deployment connector returned READY for the exact Git commit; browser checks then ran against the public production alias"
+  },
+  "navigation": [
+    "Dossier de campagne",
+    "Mondes et réserves",
+    "Planètes et tribus · bibliothèque d’images"
+  ],
+  "gallery": {
+    "passed": true,
+    "checkedAt": "2026-09-19T17:36:57.038Z",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "version": "V37",
+    "sourceCount": 204,
+    "countsByPack": {
+      "V2": 119,
+      "V3": 45,
+      "V4": 40
+    },
+    "fixture": "isolated-partial-v7-read-only",
+    "checkedPages": [
+      {
+        "page": 1,
+        "ids": [
+          "v2-personnage-mycora-nox-v2",
+          "v2-decor-mycora-nox-v2",
+          "v2-texture-mycora-nox-v2",
+          "v2-personnage-serekh-9-v2",
+          "v2-decor-serekh-9-v2",
+          "v2-texture-serekh-9-v2",
+          "v2-personnage-ferrum-6-v2",
+          "v2-decor-ferrum-6-v2",
+          "v2-texture-ferrum-6-v2",
+          "v2-personnage-nivalis-c-v2",
+          "v2-decor-nivalis-c-v2",
+          "v2-texture-nivalis-c-v2"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 2,
+        "ids": [
+          "v2-personnage-nivalis-k-v2",
+          "v2-decor-nivalis-k-v2",
+          "v2-texture-nivalis-k-v2",
+          "v2-personnage-kaail-prime-v2",
+          "v2-decor-kaail-prime-v2",
+          "v2-texture-kaail-prime-v2",
+          "v2-personnage-eryndor-v-v2",
+          "v2-decor-eryndor-v-v2",
+          "v2-texture-eryndor-v-v2",
+          "v2-personnage-oseris-iv-v2",
+          "v2-decor-oseris-iv-v2",
+          "v2-texture-oseris-iv-v2"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 3,
+        "ids": [
+          "v2-personnage-sequoia-ix-v2",
+          "v2-decor-sequoia-ix-v2",
+          "v2-texture-sequoia-ix-v2",
+          "v2-personnage-umbra-terminus-v2",
+          "v2-decor-umbra-terminus-v2",
+          "v2-texture-umbra-terminus-v2",
+          "v2-personnage-khar-sul-v2",
+          "v2-decor-khar-sul-v2",
+          "v2-texture-khar-sul-v2",
+          "v2-personnage-cinder-12-v2",
+          "v2-decor-cinder-12-v2",
+          "v2-texture-cinder-12-v2"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 4,
+        "ids": [
+          "v2-personnage-pelagos-m-v2",
+          "v2-decor-pelagos-m-v2",
+          "v2-texture-pelagos-m-v2",
+          "v2-personnage-xeno-prime-v2",
+          "v2-decor-xeno-prime-v2",
+          "v2-texture-xeno-prime-v2",
+          "v2-personnage-vardos-iii-v2",
+          "v2-decor-vardos-iii-v2",
+          "v2-texture-vardos-iii-v2",
+          "v2-elite-desert-v2",
+          "v2-pnj-desert-hydrologue-v2",
+          "v2-pnj-desert-intendante-v2"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 5,
+        "ids": [
+          "v2-homeworld-desert-v2",
+          "v2-salle-trone-desert-v2",
+          "v2-interieur-desert-v2",
+          "v2-trone-desert-v2",
+          "v2-prop-desert-nouveau-v2",
+          "v2-faune-desert-v2",
+          "v2-flore-desert-v2",
+          "v2-matiere-tribu-desert-v2",
+          "v2-elite-forest-v2",
+          "v2-pnj-forest-batieur-v2",
+          "v2-pnj-forest-archiviste-v2",
+          "v2-homeworld-forest-v2"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 6,
+        "ids": [
+          "v2-salle-trone-forest-v2",
+          "v2-interieur-forest-v2",
+          "v2-trone-forest-v2",
+          "v2-prop-forest-nouveau-v2",
+          "v2-faune-forest-v2",
+          "v2-flore-forest-v2",
+          "v2-matiere-tribu-forest-v2",
+          "v2-elite-slums-v2",
+          "v2-pnj-slums-mecanicienne-v2",
+          "v2-pnj-slums-negociant-v2",
+          "v2-homeworld-slums-v2",
+          "v2-salle-trone-slums-v2"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 7,
+        "ids": [
+          "v2-interieur-slums-v2",
+          "v2-trone-slums-v2",
+          "v2-prop-slums-nouveau-v2",
+          "v2-faune-slums-v2",
+          "v2-flore-slums-v2",
+          "v2-matiere-tribu-slums-v2",
+          "v2-elite-lava-v2",
+          "v2-pnj-lava-fondeur-v2",
+          "v2-pnj-lava-medecin-v2",
+          "v2-homeworld-lava-v2",
+          "v2-salle-trone-lava-v2",
+          "v2-interieur-lava-v2"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 8,
+        "ids": [
+          "v2-trone-lava-v2",
+          "v2-prop-lava-nouveau-v2",
+          "v2-faune-lava-v2",
+          "v2-flore-lava-v2",
+          "v2-matiere-tribu-lava-v2",
+          "v2-elite-darkjungle-v2",
+          "v2-pnj-darkjungle-botaniste-v2",
+          "v2-pnj-darkjungle-guide-v2",
+          "v2-homeworld-darkjungle-v2",
+          "v2-salle-trone-darkjungle-v2",
+          "v2-interieur-darkjungle-v2",
+          "v2-trone-darkjungle-v2"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 9,
+        "ids": [
+          "v2-prop-darkjungle-nouveau-v2",
+          "v2-faune-darkjungle-v2",
+          "v2-flore-darkjungle-v2",
+          "v2-matiere-tribu-darkjungle-v2",
+          "v2-prop-desert-origine-v2",
+          "v2-prop-forest-origine-v2",
+          "v2-prop-slums-origine-v2",
+          "v2-prop-lava-origine-v2",
+          "v2-original-refuge-darkjungle-v1",
+          "v2-original-porte-lava-v1",
+          "v2-original-forge-slums-v1",
+          "v2-original-porte-forest-v1"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 10,
+        "ids": [
+          "v2-original-elite-darkjungle-v1",
+          "v2-original-citerne-desert-v1",
+          "v2-original-elite-lava-v1",
+          "v2-original-elite-slums-v1",
+          "v2-original-elite-forest-v1",
+          "v2-original-elite-desert-v1",
+          "v2-original-trone-darkjungle-v1",
+          "v2-original-trone-slums-v1",
+          "v2-original-trone-desert-v1",
+          "v2-original-trone-forest-v1",
+          "v2-original-trone-lava-v1",
+          "v3-nature-mycora-nox-v3"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 11,
+        "ids": [
+          "v3-passages-mycora-nox-v3",
+          "v3-objets-mycora-nox-v3",
+          "v3-nature-serekh-9-v3",
+          "v3-passages-serekh-9-v3",
+          "v3-objets-serekh-9-v3",
+          "v3-nature-ferrum-6-v3",
+          "v3-passages-ferrum-6-v3",
+          "v3-objets-ferrum-6-v3",
+          "v3-nature-nivalis-c-v3",
+          "v3-passages-nivalis-c-v3",
+          "v3-objets-nivalis-c-v3",
+          "v3-nature-nivalis-k-v3"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 12,
+        "ids": [
+          "v3-passages-nivalis-k-v3",
+          "v3-objets-nivalis-k-v3",
+          "v3-nature-kaail-prime-v3",
+          "v3-passages-kaail-prime-v3",
+          "v3-objets-kaail-prime-v3",
+          "v3-nature-eryndor-v-v3",
+          "v3-passages-eryndor-v-v3",
+          "v3-objets-eryndor-v-v3",
+          "v3-nature-oseris-iv-v3",
+          "v3-passages-oseris-iv-v3",
+          "v3-objets-oseris-iv-v3",
+          "v3-nature-sequoia-ix-v3"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 13,
+        "ids": [
+          "v3-passages-sequoia-ix-v3",
+          "v3-objets-sequoia-ix-v3",
+          "v3-nature-umbra-terminus-v3",
+          "v3-passages-umbra-terminus-v3",
+          "v3-objets-umbra-terminus-v3",
+          "v3-nature-khar-sul-v3",
+          "v3-passages-khar-sul-v3",
+          "v3-objets-khar-sul-v3",
+          "v3-nature-cinder-12-v3",
+          "v3-passages-cinder-12-v3",
+          "v3-objets-cinder-12-v3",
+          "v3-nature-pelagos-m-v3"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 14,
+        "ids": [
+          "v3-passages-pelagos-m-v3",
+          "v3-objets-pelagos-m-v3",
+          "v3-nature-xeno-prime-v3",
+          "v3-passages-xeno-prime-v3",
+          "v3-objets-xeno-prime-v3",
+          "v3-nature-vardos-iii-v3",
+          "v3-passages-vardos-iii-v3",
+          "v3-objets-vardos-iii-v3",
+          "v4-membre-desert-doyenne-v4",
+          "v4-membre-desert-sentinelle-v4",
+          "v4-membre-desert-pisteur-v4",
+          "v4-membre-desert-instructrice-v4"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 15,
+        "ids": [
+          "v4-objet-desert-table-v4",
+          "v4-objet-desert-ratelier-v4",
+          "v4-lieu-desert-cour-v4",
+          "v4-lieu-desert-maison-v4",
+          "v4-membre-forest-gardien-v4",
+          "v4-membre-forest-traqueuse-v4",
+          "v4-membre-forest-maitre-v4",
+          "v4-membre-forest-garde-v4",
+          "v4-objet-forest-stele-v4",
+          "v4-objet-forest-masques-v4",
+          "v4-lieu-forest-epreuves-v4",
+          "v4-lieu-forest-galerie-v4"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 16,
+        "ids": [
+          "v4-membre-slums-doyen-v4",
+          "v4-membre-slums-gardienne-v4",
+          "v4-membre-slums-armurier-v4",
+          "v4-membre-slums-eclaireur-v4",
+          "v4-objet-slums-coffre-v4",
+          "v4-objet-slums-troc-v4",
+          "v4-lieu-slums-place-v4",
+          "v4-lieu-slums-armements-v4",
+          "v4-membre-lava-ancienne-v4",
+          "v4-membre-lava-gardien-v4",
+          "v4-membre-lava-traqueuse-v4",
+          "v4-membre-lava-maitre-v4"
+        ],
+        "thumbnailsDecoded": 12
+      },
+      {
+        "page": 17,
+        "ids": [
+          "v4-objet-lava-enclume-v4",
+          "v4-objet-lava-ratelier-v4",
+          "v4-lieu-lava-terrasse-v4",
+          "v4-lieu-lava-refectoire-v4",
+          "v4-membre-darkjungle-gardienne-v4",
+          "v4-membre-darkjungle-sentinelle-v4",
+          "v4-membre-darkjungle-tisseur-v4",
+          "v4-membre-darkjungle-chasseuse-v4",
+          "v4-objet-darkjungle-memoire-v4",
+          "v4-objet-darkjungle-metier-v4",
+          "v4-lieu-darkjungle-cour-v4",
+          "v4-lieu-darkjungle-salle-v4"
+        ],
+        "thumbnailsDecoded": 12
+      }
+    ],
+    "checkedFilters": [
+      {
+        "type": "pack",
+        "id": "V2",
+        "count": 119
+      },
+      {
+        "type": "pack",
+        "id": "V3",
+        "count": 45
+      },
+      {
+        "type": "pack",
+        "id": "V4",
+        "count": 40
+      },
+      {
+        "type": "kind",
+        "id": "planet-character",
+        "count": 15
+      },
+      {
+        "type": "kind",
+        "id": "planet-scene",
+        "count": 15
+      },
+      {
+        "type": "kind",
+        "id": "material",
+        "count": 20
+      },
+      {
+        "type": "kind",
+        "id": "homeworld-character",
+        "count": 35
+      },
+      {
+        "type": "kind",
+        "id": "homeworld-scene",
+        "count": 25
+      },
+      {
+        "type": "kind",
+        "id": "objects",
+        "count": 44
+      },
+      {
+        "type": "kind",
+        "id": "flora",
+        "count": 5
+      },
+      {
+        "type": "kind",
+        "id": "legacy",
+        "count": 15
+      },
+      {
+        "type": "kind",
+        "id": "nature",
+        "count": 15
+      },
+      {
+        "type": "kind",
+        "id": "passages",
+        "count": 15
+      },
+      {
+        "type": "query",
+        "query": "Mycora",
+        "count": 6
+      },
+      {
+        "type": "combined",
+        "query": "mycora",
+        "pack": "V2",
+        "kind": "planet-character",
+        "count": 1
+      }
+    ],
+    "fullResolutionChecks": [
+      {
+        "id": "v3-nature-mycora-nox-v3",
+        "kind": "nature",
+        "src": "/game/assets/v37/tribes/v3/nature-mycora-nox-v3--324b32ba48a8fc62.webp",
+        "width": 1536,
+        "height": 1024,
+        "nativePopupOpened": true,
+        "alpha": {
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "resampledForInspection": true
+        }
+      },
+      {
+        "id": "v2-elite-desert-v2",
+        "kind": "homeworld-character",
+        "src": "/game/assets/v37/tribes/v2/elite-desert-v2--9faf08655fd3c0b6.webp",
+        "width": 1024,
+        "height": 1536,
+        "nativePopupOpened": true,
+        "alpha": {
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "resampledForInspection": true
+        }
+      },
+      {
+        "id": "v2-flore-desert-v2",
+        "kind": "flora",
+        "src": "/game/assets/v37/tribes/v2/flore-desert-v2--096921f67d922e56.webp",
+        "width": 1024,
+        "height": 1536,
+        "nativePopupOpened": true,
+        "alpha": {
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "resampledForInspection": true
+        }
+      },
+      {
+        "id": "v2-trone-desert-v2",
+        "kind": "objects",
+        "src": "/game/assets/v37/tribes/v2/trone-desert-v2--72efb41d46805ab3.webp",
+        "width": 1024,
+        "height": 1536,
+        "nativePopupOpened": true,
+        "alpha": {
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "resampledForInspection": true
+        }
+      }
+    ],
+    "errors": [],
+    "failedResponses": [],
+    "failedRequests": [],
+    "mobile": {
+      "viewport": 390,
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "galleryLeft": 31,
+      "galleryRight": 359,
+      "controls": [
+        {
+          "label": "",
+          "left": 31,
+          "right": 359
+        },
+        {
+          "label": "Tous les typesChasseurs des planètesPaysages planétairesMati",
+          "left": 31,
+          "right": 359
+        },
+        {
+          "label": "V2 + V3 + V4V2 · 119 imagesV3 · 45 imagesV4 · 40 images",
+          "left": 31,
+          "right": 359
+        },
+        {
+          "label": "Ouvrir en pleine résolution",
+          "left": 50,
+          "right": 204.546875
+        },
+        {
+          "label": "Personnage Mycora NoxChasseurs des planètes · V2",
+          "left": 31,
+          "right": 189
+        },
+        {
+          "label": "Decor Mycora NoxPaysages planétaires · V2",
+          "left": 201,
+          "right": 359
+        },
+        {
+          "label": "Texture Mycora NoxMatières · V2",
+          "left": 31,
+          "right": 189
+        },
+        {
+          "label": "Nature Mycora NoxÉléments naturels · V3",
+          "left": 201,
+          "right": 359
+        },
+        {
+          "label": "Passages Mycora NoxPassages et structures · V3",
+          "left": 31,
+          "right": 189
+        },
+        {
+          "label": "Objets Mycora NoxObjets et créatures · V3",
+          "left": 201,
+          "right": 359
+        }
+      ],
+      "noHorizontalOverflow": true
+    },
+    "storage": {
+      "beforeSha256": "76fe107d7634680567f996060d613947f77a5b5db71eec0d8ed4b4d4c95e6e42",
+      "afterSha256": "76fe107d7634680567f996060d613947f77a5b5db71eec0d8ed4b4d4c95e6e42",
+      "unchanged": true,
+      "writesObserved": []
+    },
+    "uniqueThumbnailsDecoded": 204,
+    "boundedCardsPerPage": 12,
+    "keyboardSelectionAndFullResolutionLink": true,
+    "limitations": [
+      "Uses an isolated browser and a QA campaign, not user saves.",
+      "No physical controller, gameplay unlock or animation coverage claim.",
+      "Full-resolution WebP and browser alpha sampled here; complete source PNG/RGBA equality belongs to the separate import audit."
+    ]
+  },
+  "city": {
+    "passed": true,
+    "checkedAt": "2026-09-19T17:37:09.664Z",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "version": "V37",
+    "labCoverage": "2 atlas · 3 sources · 9 clips orientés · 18 dessins référencés. Droite : 5 clips ; gauche : 4 clips.",
+    "distinctGuardDrawings": 2,
+    "rightGuardInRealTrainingCombat": true,
+    "leftGuardNotInvented": true,
+    "sourceCrops": [
+      [
+        925,
+        29,
+        344,
+        490
+      ],
+      [
+        925,
+        537,
+        344,
+        479
+      ]
+    ],
+    "mobileNoOverflow": true,
+    "errors": [],
+    "failures": []
+  },
+  "publicAssetByteChecks": {
+    "passed": true,
+    "checkedAt": "2026-09-19T17:37:00.021Z",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "checks": [
+      {
+        "id": "v3-nature-mycora-nox-v3",
+        "url": "https://yautja-la-longue-chasse.vercel.app/game/assets/v37/tribes/v3/nature-mycora-nox-v3--324b32ba48a8fc62.webp",
+        "status": 200,
+        "bytes": 1658332,
+        "sha256": "ca1bf8aab66cc497e0d4b4326f1b83eed6be182584d2362829bcc11c49f2b543"
+      },
+      {
+        "id": "v2-elite-desert-v2",
+        "url": "https://yautja-la-longue-chasse.vercel.app/game/assets/v37/tribes/v2/elite-desert-v2--9faf08655fd3c0b6.webp",
+        "status": 200,
+        "bytes": 1526066,
+        "sha256": "9bd219dd854f55f7e775072a72cfa6632e2853d38de21a0af4e860cdad30926e"
+      },
+      {
+        "id": "v2-flore-desert-v2",
+        "url": "https://yautja-la-longue-chasse.vercel.app/game/assets/v37/tribes/v2/flore-desert-v2--096921f67d922e56.webp",
+        "status": 200,
+        "bytes": 1812100,
+        "sha256": "30ee0751b1a0110671af8c1b029a0967507389bf528740ec1e412953ffb02a62"
+      },
+      {
+        "id": "v2-trone-desert-v2",
+        "url": "https://yautja-la-longue-chasse.vercel.app/game/assets/v37/tribes/v2/trone-desert-v2--72efb41d46805ab3.webp",
+        "status": 200,
+        "bytes": 1854180,
+        "sha256": "37c23d4eb1840b13fd45af33be831780efd295fc25e6037cf712778873dafe81"
+      },
+      {
+        "id": "city-hunter-high-guard-right-v37",
+        "url": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v37/pit/city-hunter/high-guard-right.png",
+        "status": 200,
+        "bytes": 1768829,
+        "sha256": "3d1cfd804a182ccee1c89cd50ef42118390504adaf15b8792a701a020d3f626a"
+      }
+    ]
+  },
+  "sourceImportEvidence": "docs/tribe-art-import-v37.json",
+  "localEvidence": "docs/v37-local-verification.json",
+  "coverage": {
+    "importedStaticSourceImages": 204,
+    "playableArenas": 20,
+    "plannedArenas": 100,
+    "validatedOrientedClips": 205,
+    "animatedFighters": 9,
+    "completeMovesets": 0
+  },
+  "limitations": [
+    "Static source artwork is not a playable world, separated parallax kit or finished animation.",
+    "Nursery and Buried Cradle engines are tested but not connected to playable scenes and saves.",
+    "Private ChatGPT access remains deferred at owner request; local supplied ZIPs were imported, no private remote attachment downloaded.",
+    "Portable Windows package remains V35; no V37 PC package or physical controller verification is claimed."
+  ]
+}

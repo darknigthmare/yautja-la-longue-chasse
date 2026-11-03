@@ -1,0 +1,38 @@
+{
+  "release": "V63",
+  "plannedDeliverables": [
+    {
+      "ownerId": "greyback",
+      "variantId": "elder-phg-official-unmasked-v63",
+      "identity": "Elder — Predator: Hunting Grounds",
+      "portrait": 1,
+      "idlePages": 2,
+      "framesPerPage": 6
+    },
+    {
+      "ownerId": "user-classic-2010",
+      "variantId": "captured-phg-official-mask-v63",
+      "identity": "Captured — Predator: Hunting Grounds",
+      "portrait": 1,
+      "idlePages": 2,
+      "framesPerPage": 6
+    }
+  ],
+  "sourceUrls": [
+    "https://blog.playstation.com/2020/06/12/june-free-update-now-live-in-predator-hunting-grounds/",
+    "https://live.staticflickr.com/65535/49996764556_c03bc385e7_h.jpg",
+    "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+    "https://store.steampowered.com/app/1847080/Predator_Hunting_Grounds__Hunting_Party_Bundle/",
+    "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1847080/ss_4ebbc1badb9563972092231cb1e41b357a7de04e.1920x1080.jpg?t=1764097265"
+  ],
+  "prompts": {
+    "elderPortrait": "Use case: stylized-concept. Asset: one full-body transparent 2D fighting-game character portrait. Input reference is the OFFICIAL PS4 Pro screenshot of the ELDER CLASS in Predator: Hunting Grounds published by PlayStation on June12 2020. Recreate that game's unmasked Elder appearance as closely as possible, NOT a new elder and NOT a generic ornate tribal fantasy hunter.\nPreserve the aged pale gray/tan face and forehead pattern, FOUR separate external mouth mandibles with visible teeth and small piercings, black/gray beaded dreadlocks, lean muscular spotted tan skin under black diamond body netting, the compact layered dark-silver armor on his anatomical LEFT chest and shoulder, the much smaller right shoulder protection, the diagonal reddish-brown patterned leather bandolier, bone/bead and small skull necklace, segmented waist protection and leather pouches. Left forearm has its rectangular red-display computer; right forearm has its strapped wrist-blade housing with TWO short retracted blade tips. Keep the compact plasma caster over the anatomical LEFT shoulder, never duplicated. Hands empty, coherent five digits including thumb. Any sheathed belt accessory remains small and faithful, no sword in hands.\nFull body in calm combat-ready stance facing SCREEN RIGHT, readable side-on three-quarter view and waist-level camera. Two legs, two arms, clawed bare feet planted on a common baseline. Hidden shins and back are restrained reconstruction: worn plain dark-metal shin plates and existing netting, no new ornament. Match asymmetrical armor placement and correct anatomical sides. Body proportions realistic, not chibi. Detailed painted game sprite with clear silhouette, restrained neutral lighting, no dramatic colored light.\nPortrait canvas 1024x1536. Entire silhouette including dreadlocks, fingertips, equipment and toes fits within at least70px transparent margins, about82 percent canvas height. One character only. True transparent alpha background; no backdrop, floor, shadow, text, labels, logo, watermark, border, references or additional figures.",
+    "capturedPortrait": "Use case: stylized-concept. Asset: one full-body transparent 2D fighting-game character portrait. Input reference is the OFFICIAL Steam Hunting Party DLC key art. Recreate ONLY the character on the RIGHT labeled CAPTURED, the Captured class of Predator: Hunting Grounds (2021), NOT the two other hunters and not a generic Jungle Hunter.\nPreserve the Captured character's elongated smooth dark-silver classical biomask with the conspicuously damaged, notched and fractured upper edge on its anatomical LEFT side, narrow dark eye slits, long plain lower-face muzzle without teeth or tusks. Long thick black cuffed dreadlocks, pale tan/olive spotted skin, black diamond body netting. Preserve asymmetry: dark-silver layered chest armor on anatomical LEFT pectoral, compact triple-plated LEFT pauldron and shoulder plasma caster; a horizontal leather chest strap crossing the bare netted right chest. Left forearm rectangular computer with small red marks, RIGHT wrist strapped blade housing with TWO short retracted blade tips. Dark simple segmented waist armor and loin protection, worn greaves and clawed bare feet. Hidden shins/back are modest reconstruction consistent with pictured armor. No skull collar or fanciful ornaments, no Mr.Black tusks and no Falconer ridges, no new weapons. Both hands empty, five coherent digits including thumb; wrists continuous with arms.\nOne full-body calm combat-ready stance facing SCREEN RIGHT, readable side-on three-quarter view, waist-level camera. Two arms, two legs; feet planted on common baseline. Preserve anatomical equipment sides. Detailed painted 2D game sprite, realistic muscular proportions, clear silhouette, neutral lighting replacing advertising red/blue light. No toy base.\nPortrait canvas1024x1536, entire silhouette including fingers, blades, dreadlocks and feet comfortably inside at least70px transparent margins, about82 percent canvas height. True transparent alpha. No background, floor, drop shadow, checkerboard, text, logos, names, watermark, border, thumbnail, other hunters or reference strip."
+  },
+  "limitations": [
+    "Game-specific appearances appended to existing owner tiles; no invented new canonical individual.",
+    "Hidden lower legs and back require restrained reconstruction, exact 1:1 certification unavailable.",
+    "Two six-pose idles per appearance planned, not a complete combat animation kit.",
+    "Original V54 workbook, historical PNG and variant IDs remain unchanged."
+  ]
+}

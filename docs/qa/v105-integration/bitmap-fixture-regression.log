@@ -1,0 +1,38 @@
+✔ all sixteen exact-ID alpha plates exist with their expected dimensions and constant support bounds (647.950095ms)
+✔ the loader requests only the chosen unique IDs and exposes a real image-load failure honestly (20.406895ms)
+✔ wrong dimensions, opaque/empty/clipped pixels and unreadable alpha fail atomically (29.754939ms)
+✔ SSR, a pre-aborted signal and browser constructor/src errors settle without a rejected promise (1.268923ms)
+✔ timeout detaches handlers and a captured late callback cannot publish an image (3.267452ms)
+✔ aborting a pair discards already loaded art and ignores the remaining late callback (7.037866ms)
+✔ fixed rendering anchors the feet, preserves proportions and does not stretch for crouch or attack (1.462478ms)
+✔ frontal plates retain authored orientation; cloak and contrast are presentation effects only (0.269167ms)
+✔ missing/cancelled/invalid art does not touch Canvas; draw exceptions still restore its state (5.033188ms)
+✔ the static adapter neither imports the rig nor approves draft sprite sheets (8.582925ms)
+✔ per-asset camera bounds cover exactly the same complete rectangle that Canvas draws (2.602771ms)
+✔ City Hunter V31 support, crown and foot midpoint come from the delivered alpha (51.519466ms)
+✔ five added V31 plates use measured lower-foot midpoints and crown alpha rather than guessed sprite origins (268.992309ms)
+✔ V53 exact supplied idle holds the final native intro drawing without claiming an idle animation (11.205696ms)
+✔ V53 idle stance refuses unauthored facings and invalid introductions and keeps real idle animation priority (2.986567ms)
+✔ dedicated intro wins over earlier fallback art and advances while the simulation is frozen (1.916278ms)
+✔ dedicated victory wins over earlier fallback art and advances while the simulation is frozen (1.484751ms)
+✔ dedicated defeat wins over earlier fallback art and advances while the simulation is frozen (1.046614ms)
+✔ presentation clocks do not reset or advance the gameplay animation cursor (1.011763ms)
+✔ reviewed exact intro holds its first pose while waiting and its last pose while ready, without moving gameplay (4.204775ms)
+✔ held entrance poses reject looped, draft and one-drawing intros and preserve native exact-costume fallbacks (2.470055ms)
+✔ native facing and exact supplied costume are mandatory for dedicated and reused presentation art (1.693209ms)
+✔ forged banks, drafts, empty/noisy duplicate cells and revoked evidence cannot authorize a dedicated presentation (3.017042ms)
+✔ idle reuse, waiting holds, draws and dedicated presentations report their actual visual coverage (1.466794ms)
+✔ defeat holds the final crouch or idle drawing and never borrows victory or hitstun art (2.295798ms)
+✔ supplied static fallback retains the exact costume and stays a staged bitmap rather than an invented animation (31.36848ms)
+✔ presentation drawing restores Canvas state after success or failure without writing simulation or source metadata (1.979652ms)
+✔ reduced motion holds the dedicated ending or reused idle opening and removes staging interpolation (5.551122ms)
+✔ an airborne final combat snapshot is staged on the floor without moving its simulation body (3.488448ms)
+✔ invalid presentation clocks refuse theatrical art rather than inventing a valid elapsed time (0.789785ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2360.464618

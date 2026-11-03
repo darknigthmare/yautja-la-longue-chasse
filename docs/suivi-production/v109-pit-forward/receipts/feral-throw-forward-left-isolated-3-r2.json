@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T08:44:27.269388+00:00",
+  "tool": "image_gen.imagegen",
+  "attemptId": "feral-throw-forward-left-isolated-3-r2",
+  "submittedPrompt": "Edit ONLY the first single-pose Feral image, using the second study solely to check equipment sides. Keep the same left-facing forward-release pose and full body, exactly two arms/twolegs and bone mask. Correct equipment continuity: the arm reaching toward SCREEN LEFT is the hunter's LEFT forearm and MUST visibly carry his small round reddish bone/metal shield fixed to its outside, just behind the wrist; the reaching clawed hand stays open. The arm extended backward toward SCREEN RIGHT is the anatomical RIGHT arm and retains the existing pair of silver wrist blades on its gauntlet. Never place the shield on that rear blade arm. No weapon disappears, no extra arm/hand appears. One single hunter only; do not reproduce the study or mannequin. Complete feet, fingertips, dreadlocks and shield inside the canvas. Same painted reference incarnation, no shoulder cannon, no new ornaments or clothing. True RGBA transparent background with no glow or ground. Preserve the first image's pose, proportions, facing and scale as closely as possible.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/generated_images/exec-329d75ba-eb95-4953-8eaa-fea2423cb027.png",
+      "preservedPath": "art-source/v109-pit-forward/feral-throw-forward-left-isolated-3-v109.png",
+      "sha256": "ea841e87b7f6a224b3c32216479025675148d6e9369b424ce2520c73b513d50e",
+      "bytes": 1998476
+    },
+    {
+      "submittedPath": "/workspace/yautja-la-longue-chasse/public/game/sprites/v100/pit/feral/036-throw-forward-left-a-corrected.png",
+      "preservedPath": "public/game/sprites/v100/pit/feral/036-throw-forward-left-a-corrected.png",
+      "sha256": "38db19ddd67f164d36390061f8f75e5e2c92f1987fe04422fd23425c90260a16",
+      "bytes": 1979763
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-5187634f-e79f-4d96-a581-488e9ada80ff.png",
+  "output": {
+    "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+    "sha256": "151b49c54a3ec2321c5793bd10b6232a1e7542d48a8d1c09da2f8fb3cdd76ddb",
+    "bytes": 2071095,
+    "width": 1536,
+    "height": 1024
+  },
+  "status": "SELECTED_SOURCE_REGIONS",
+  "filesEditedAfterGeneration": false,
+  "scope": "Local tool call record, not an external signed certificate. Original adaptations; no film-exact fidelity or source action completion is inferred."
+}

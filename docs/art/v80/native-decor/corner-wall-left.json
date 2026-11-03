@@ -1,0 +1,69 @@
+{
+  "id": "corner-wall-left",
+  "input": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-e26203f2-f8fc-457c-8ec6-18537fd86f00.png",
+  "heightWorld": 105,
+  "nativeGroundSupport": [
+    {
+      "x": 85,
+      "y": 567
+    },
+    {
+      "x": 442,
+      "y": 974
+    },
+    {
+      "x": 1170,
+      "y": 756
+    },
+    {
+      "x": 1070,
+      "y": 707
+    }
+  ],
+  "label": "Muret de cour en retour",
+  "function": "Bordure basse massive d'une cour ; ni porte ni liaison nouvelle",
+  "lore": "Architecture originale de clan en basalte et bronze ; pas de plan canonique affirmé",
+  "prompt": "Use case: stylized-concept. Asset type: ONE independent transparent raster modular border prop for original Yautja clan-city2.5D game. Style reference image ONLY: match detailed dark volcanic basalt and worn bronze ribs, upper-left warm illumination. New subject: LOW L-SHAPED BASALT COURTYARD WALL CORNER, native orientation toward screen LEFT with two clearly connected perpendicular short arms. One single solid support volume, stepped coping, restrained bronze edge bracing and two shallow mineral niches, no statues or skull trophies. Intended function: low courtyard edge that can frame a resting court without representing an entrance. Fixed orthographic camera yaw0 pitch35degrees, grounddepthcompression0.574, clear top and front faces. All bottom contacts on SAME groundplane, visibly continuous full base, full wall corners inside1024-square with15percent transparentempty margin on EACH side. HEIGHT about105worldunits, footprint160by60. Short attached shadows only. Genuinely transparent alpha background. No doors, arches, people, plants, weapons, detachedprops, street/floor/landscape, text, readable alien letters, watermark or atlas. One complete object, no external decoration.",
+  "tool": "OpenAI built-in image_gen",
+  "reviewedAt": "2026-10-03",
+  "review": "Complete native L-wall inspected; conservative hull intentionally does not advertise an entrance or walkable inner void",
+  "sha256": "bbea0d159f0fddba22201d695f466dad684b17b200d35319ced7dad56f5bb013",
+  "sourceWidth": 1254,
+  "sourceHeight": 1254,
+  "alphaBounds": {
+    "x": 74,
+    "y": 310,
+    "width": 1116,
+    "height": 686
+  },
+  "transparentPixels": 1156525,
+  "totalPixels": 1572516,
+  "destination": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\homeworld\\v80\\corner-wall-left.png",
+  "sourceByteIdentical": true,
+  "installedAt": "2026-10-03T18:34:39.537Z",
+  "status": "SOURCE_MEASURED_AND_INSTALLED_RUNTIME_PLACEMENT_SEPARATE",
+  "supportRevisions": [
+    {
+      "at": "2026-10-03T19:02:21.014Z",
+      "previous": [
+        {
+          "x": 85,
+          "y": 567
+        },
+        {
+          "x": 442,
+          "y": 974
+        },
+        {
+          "x": 1170,
+          "y": 823
+        },
+        {
+          "x": 1070,
+          "y": 707
+        }
+      ],
+      "reason": "Visual foot-boundary correction verified against native alpha>=128; source PNG and SHA unchanged"
+    }
+  ]
+}

@@ -1,0 +1,587 @@
+{
+  "schemaVersion": 1,
+  "release": "V107",
+  "domain": "Clans",
+  "status": "PASS",
+  "at": "2026-10-24T00:21:36.144Z",
+  "scope": {
+    "runtimeCommit": "e93d43046dde641e1637faf9f72b4e5fa8d48404",
+    "context": "free-specialized-works-v107",
+    "description": "Six independently built and staffed source-V6 works with real UI movement, finite local RAV and identified people, boat, mounts, water, battery, duel objective, recordings and orbital ship. No injected state or campaign acquisitions.",
+    "sourceWorkbook": "Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+    "sourceWorkbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+    "sourceSheet": "Structures de guerre",
+    "sourceCells": [
+      {
+        "id": "W3-S09",
+        "cells": "C14:K14"
+      },
+      {
+        "id": "W3-S10",
+        "cells": "C15:K15"
+      },
+      {
+        "id": "W3-S13",
+        "cells": "C18:K18"
+      },
+      {
+        "id": "W3-S14",
+        "cells": "C19:K19"
+      },
+      {
+        "id": "W3-S15",
+        "cells": "C20:K20"
+      },
+      {
+        "id": "W3-S18",
+        "cells": "C23:K23"
+      }
+    ],
+    "stateInjection": false,
+    "fixtureIO": [
+      {
+        "target": "File.prototype.text",
+        "mode": "deferred-read",
+        "fileName": "v107-real-duel-carnet.json",
+        "payloadSource": "W3-S14 checkpoint exported from the preceding real UI duel",
+        "stateInjection": false
+      }
+    ],
+    "campaignCompletion": false
+  },
+  "production": {
+    "mode": "compiled-app",
+    "buildId": "7SF-x09qAzuBDG33EbB1i",
+    "runtimeCommit": "e93d43046dde641e1637faf9f72b4e5fa8d48404",
+    "checksPassed": 47,
+    "checksFailed": 0,
+    "browserErrors": 0,
+    "servedBuilds": [
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+        "foundInHtml": true
+      }
+    ],
+    "sourceFreeze": {
+      "path": "docs/v107-runtime-freeze.json",
+      "sha256": "a64d67df75188003441d85854cbfffd41ae4151dbf7b30f0672c4d46ba502378",
+      "bytes": 221954
+    },
+    "baseUrl": "http://127.0.0.1:3101",
+    "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=7SF-x09qAzuBDG33EbB1i YAUTJA_QA_RUNTIME_COMMIT=e93d43046dde641e1637faf9f72b4e5fa8d48404 YAUTJA_SPECIALIZED_V107_QA_MODE=compiled-app YAUTJA_SPECIALIZED_V107_QA_OUTPUT=outputs/qa-v107/clan-specialized-production-e93d430 node scripts/qa-clan-specialized-v107.mjs"
+  },
+  "tests": {
+    "business": {
+      "passed": 33,
+      "failed": 0,
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node --test tests/clan-war-specialized-v107.test.mjs tests/clan-war-specialized-import-v107.test.mjs > outputs/qa-v107/clan-specialized-production-e93d430/business-tests.log",
+      "exitCode": 0
+    },
+    "lint": {
+      "status": "PASS",
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" ./node_modules/.bin/eslint app/game/systems/clanWarSpecializedV107.ts app/game/ClanWarSpecializedV107.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarPanelV85.tsx tests/clan-war-specialized-import-v107.test.mjs scripts/qa-clan-specialized-v107.mjs > outputs/qa-v107/clan-specialized-production-e93d430/lint.log",
+      "exitCode": 0
+    }
+  },
+  "sourceBefore": [
+    {
+      "file": "app/game/systems/clanWarSpecializedV107.ts",
+      "sha256": "dd8fc139aab8a20e64e93e00cd78211eb938119a58f6dcc03e13a55b7720410c",
+      "bytes": 41365
+    },
+    {
+      "file": "app/game/ClanWarSpecializedV107.tsx",
+      "sha256": "46957b201f393c951a16575e936b6da8cf4dac9e93bca583242baccd35f70997",
+      "bytes": 30600
+    },
+    {
+      "file": "app/game/ClanWarSpecializedV107.module.css",
+      "sha256": "708de8280f0384642bddf5e1ea59a726656d08077498d8ae390101011af50530",
+      "bytes": 3883
+    },
+    {
+      "file": "app/game/ClanWarBibleV6Panel.tsx",
+      "sha256": "640eb4878d083fb331fef4777f10fcadb2602739f282f8393bf5365c31e7a486",
+      "bytes": 19502
+    },
+    {
+      "file": "app/game/ClanWarPanelV85.tsx",
+      "sha256": "7d5692d4fa0560acd0598fa4823c6421c04cf678eb79fb6e3ebe9d593ba20e22",
+      "bytes": 51449
+    },
+    {
+      "file": "app/game/systems/clanWarWorksV6.ts",
+      "sha256": "6570904149af46580e72ca42f9820c0ac2e79b63985b4799def43cb33123cf88",
+      "bytes": 122298
+    },
+    {
+      "file": "app/game/clanWarBibleV6Source.json",
+      "sha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+      "bytes": 1362699
+    },
+    {
+      "file": "scripts/qa-clan-specialized-v107.mjs",
+      "sha256": "e82d45b4fd4cfb0a94546a9ca6da9e6f2421abb17968dfa674f7238b7c139a47",
+      "bytes": 24230
+    },
+    {
+      "file": "public/game/homeworld/v77/lava-transit-skiff.png",
+      "sha256": "ad4e5303e5a6d2a84cdf69e647aa904919fdf6f796e723aa4f22ef811a71d0b1",
+      "bytes": 2422116
+    },
+    {
+      "file": "public/game/homeworld/v77/fauna/yautja-horse-corrected.png",
+      "sha256": "d7d8014ff3ace59f3eca4070cca8fa6534accd17b6a38d26cc8b8aecb95a130f",
+      "bytes": 1463703
+    },
+    {
+      "file": "public/game/homeworld/v64/clan-shuttle.png",
+      "sha256": "c9868a99fc4af4716150cdecbdeda502e662fd8bcc6334acfa3f0055c59deedd",
+      "bytes": 1982506
+    },
+    {
+      "file": "public/audio/ambience/ship/v54.wav",
+      "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371",
+      "bytes": 418994
+    },
+    {
+      "file": "public/audio/sfx/scan/v54.wav",
+      "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d",
+      "bytes": 33560
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/systems/clanWarSpecializedV107.ts",
+      "sha256": "dd8fc139aab8a20e64e93e00cd78211eb938119a58f6dcc03e13a55b7720410c",
+      "bytes": 41365
+    },
+    {
+      "file": "app/game/ClanWarSpecializedV107.tsx",
+      "sha256": "46957b201f393c951a16575e936b6da8cf4dac9e93bca583242baccd35f70997",
+      "bytes": 30600
+    },
+    {
+      "file": "app/game/ClanWarSpecializedV107.module.css",
+      "sha256": "708de8280f0384642bddf5e1ea59a726656d08077498d8ae390101011af50530",
+      "bytes": 3883
+    },
+    {
+      "file": "app/game/ClanWarBibleV6Panel.tsx",
+      "sha256": "640eb4878d083fb331fef4777f10fcadb2602739f282f8393bf5365c31e7a486",
+      "bytes": 19502
+    },
+    {
+      "file": "app/game/ClanWarPanelV85.tsx",
+      "sha256": "7d5692d4fa0560acd0598fa4823c6421c04cf678eb79fb6e3ebe9d593ba20e22",
+      "bytes": 51449
+    },
+    {
+      "file": "app/game/systems/clanWarWorksV6.ts",
+      "sha256": "6570904149af46580e72ca42f9820c0ac2e79b63985b4799def43cb33123cf88",
+      "bytes": 122298
+    },
+    {
+      "file": "app/game/clanWarBibleV6Source.json",
+      "sha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+      "bytes": 1362699
+    },
+    {
+      "file": "scripts/qa-clan-specialized-v107.mjs",
+      "sha256": "e82d45b4fd4cfb0a94546a9ca6da9e6f2421abb17968dfa674f7238b7c139a47",
+      "bytes": 24230
+    },
+    {
+      "file": "public/game/homeworld/v77/lava-transit-skiff.png",
+      "sha256": "ad4e5303e5a6d2a84cdf69e647aa904919fdf6f796e723aa4f22ef811a71d0b1",
+      "bytes": 2422116
+    },
+    {
+      "file": "public/game/homeworld/v77/fauna/yautja-horse-corrected.png",
+      "sha256": "d7d8014ff3ace59f3eca4070cca8fa6534accd17b6a38d26cc8b8aecb95a130f",
+      "bytes": 1463703
+    },
+    {
+      "file": "public/game/homeworld/v64/clan-shuttle.png",
+      "sha256": "c9868a99fc4af4716150cdecbdeda502e662fd8bcc6334acfa3f0055c59deedd",
+      "bytes": 1982506
+    },
+    {
+      "file": "public/audio/ambience/ship/v54.wav",
+      "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371",
+      "bytes": 418994
+    },
+    {
+      "file": "public/audio/sfx/scan/v54.wav",
+      "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d",
+      "bytes": 33560
+    }
+  ],
+  "checks": [
+    {
+      "name": "Served HTML at 1440px contains frozen build",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S09: pending real U19 cannot load a kit",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S09: exact source work turns, kit, local supply and actual operator commission the work",
+      "status": "PASS"
+    },
+    {
+      "name": "S09: real U19 members embark with the unique civil ferryman",
+      "status": "PASS"
+    },
+    {
+      "name": "S09: traversing boat physically moves its occupants together",
+      "status": "PASS"
+    },
+    {
+      "name": "S09: arrived opposite bank has the identical people and a unique receipt",
+      "status": "PASS"
+    },
+    {
+      "name": "S09: repeated disembark cannot duplicate people or cargo",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S10: pending real U19 cannot load a kit",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S10: exact source work turns, kit, local supply and actual operator commission the work",
+      "status": "PASS"
+    },
+    {
+      "name": "S10: narrow opening blocks the same large mount before the wall",
+      "status": "PASS"
+    },
+    {
+      "name": "S10: delivered finite water and a real turn restore the preexisting animal",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S13: pending real U19 cannot load a kit",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S13: exact source work turns, kit, local supply and actual operator commission the work",
+      "status": "PASS"
+    },
+    {
+      "name": "S13: no power is invented without the physical battery",
+      "status": "PASS"
+    },
+    {
+      "name": "S13: arriving probe is stopped on the actual covered corridor and consumes one charge",
+      "status": "PASS"
+    },
+    {
+      "name": "S13: adjacent route remains passable with no extra battery consumption",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S14: pending real U19 cannot load a kit",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S14: exact source work turns, kit, local supply and actual operator commission the work",
+      "status": "PASS"
+    },
+    {
+      "name": "S14: actual duel cannot begin before both signatures",
+      "status": "PASS"
+    },
+    {
+      "name": "S14: physical dodges win the accepted duel and transfer the unique objective to its real winner",
+      "status": "PASS"
+    },
+    {
+      "name": "S14: objective cannot be handed over twice",
+      "status": "PASS"
+    },
+    {
+      "name": "Cross-workshop import replaces a selected moving rival with the restored real U19 and stops the old walk",
+      "status": "PASS"
+    },
+    {
+      "name": "After cross-workshop import the real movement callback moves only the restored U19 team",
+      "status": "PASS"
+    },
+    {
+      "name": "Pending public file read clears the old valid draft, disables import and preserves the complete current checkpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "Resolving the delayed public file read imports its actual exported duel carnet instead of the old dock draft",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S15: pending real U19 cannot load a kit",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S15: exact source work turns, kit, local supply and actual operator commission the work",
+      "status": "PASS"
+    },
+    {
+      "name": "S15: an in-range source behind the physical wall is inaudible",
+      "status": "PASS"
+    },
+    {
+      "name": "S15: two actually played located WAVs are compared only after physical return",
+      "status": "PASS"
+    },
+    {
+      "name": "S15: uncertainty and missing fauna/weather are visible",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S18: pending real U19 cannot load a kit",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S18: exact source work turns, kit, local supply and actual operator commission the work",
+      "status": "PASS"
+    },
+    {
+      "name": "S18: an actual recognized/authorized ship and manifest are mandatory",
+      "status": "PASS"
+    },
+    {
+      "name": "S18: seven actual travel steps move the one hull and its manifest with one fuel debit",
+      "status": "PASS"
+    },
+    {
+      "name": "S18: strict replay restores the exact midflight checkpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "S18: actual orbital arrival disembarks the original members, with finite fuel and one receipt",
+      "status": "PASS"
+    },
+    {
+      "name": "Future checkpoint is refused and keeps the current full checkpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "Independent physical exercises leave the campaign and historical localStorage bytes untouched",
+      "status": "PASS"
+    },
+    {
+      "name": "Served HTML at 390px contains frozen build",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S09: pending real U19 cannot load a kit",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S09: exact source work turns, kit, local supply and actual operator commission the work",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile touch movement changes only the chosen real team position",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile has no page horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Leaving the workshop interrupts the physical walk without advancing in the hidden panel",
+      "status": "PASS"
+    },
+    {
+      "name": "Returning preserves the same checkpoint and does not restart the interrupted walk",
+      "status": "PASS"
+    },
+    {
+      "name": "Runtime, source workbook and native assets were unchanged throughout the real browser recipe",
+      "status": "PASS"
+    },
+    {
+      "name": "Browser reported no runtime or console errors",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "captures": [
+    {
+      "file": "01-dock-arrival.png",
+      "sha256": "7195a4611d86242ef5b46a2195fc104b579c9d85447a051743fb3a3efb3d5dc4",
+      "bytes": 248752
+    },
+    {
+      "file": "02-mount-care.png",
+      "sha256": "ed164d1e74e530febf7ccfd79984dc30c8806a64f53dd69cd0221f1828fe01c3",
+      "bytes": 263292
+    },
+    {
+      "file": "03-confinement-two-routes.png",
+      "sha256": "b75941f6275a60846c8632e318bf2e52d71a743708c4eaf7b764b4395cb17418",
+      "bytes": 242407
+    },
+    {
+      "file": "04-duel-objective.png",
+      "sha256": "54c9e489d04a4fdfa8d1ae080632d33fe15b2201b1139165d2530b10392ed679",
+      "bytes": 260087
+    },
+    {
+      "file": "05-listening-recordings.png",
+      "sha256": "33179b35b261392f95eb36c371f81c6dc5a5252b4465b50e1c442c158a3b5dfc",
+      "bytes": 262324
+    },
+    {
+      "file": "06-orbital-arrival.png",
+      "sha256": "eb20cd3d9c7196481d99279e221a612627106aa6158f508ed525359dd3a55431",
+      "bytes": 258911
+    },
+    {
+      "file": "07-mobile-dock.png",
+      "sha256": "75aba6e2be87704e7501a6cd0140399f10d801c32d2ad7dcbe1e5ef5bb0fb2ba",
+      "bytes": 190151
+    }
+  ],
+  "capturesOpened": [
+    "01-dock-arrival.png",
+    "02-mount-care.png",
+    "03-confinement-two-routes.png",
+    "04-duel-objective.png",
+    "05-listening-recordings.png",
+    "06-orbital-arrival.png",
+    "07-mobile-dock.png"
+  ],
+  "capturesInspected": 7,
+  "captureInspection": [
+    {
+      "file": "docs/qa/v107-clan-specialized/01-dock-arrival.png",
+      "sha256": "7195a4611d86242ef5b46a2195fc104b579c9d85447a051743fb3a3efb3d5dc4",
+      "bytes": 248752,
+      "capture": "01-dock-arrival.png",
+      "inspected": true
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/02-mount-care.png",
+      "sha256": "ed164d1e74e530febf7ccfd79984dc30c8806a64f53dd69cd0221f1828fe01c3",
+      "bytes": 263292,
+      "capture": "02-mount-care.png",
+      "inspected": true
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/03-confinement-two-routes.png",
+      "sha256": "b75941f6275a60846c8632e318bf2e52d71a743708c4eaf7b764b4395cb17418",
+      "bytes": 242407,
+      "capture": "03-confinement-two-routes.png",
+      "inspected": true
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/04-duel-objective.png",
+      "sha256": "54c9e489d04a4fdfa8d1ae080632d33fe15b2201b1139165d2530b10392ed679",
+      "bytes": 260087,
+      "capture": "04-duel-objective.png",
+      "inspected": true
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/05-listening-recordings.png",
+      "sha256": "33179b35b261392f95eb36c371f81c6dc5a5252b4465b50e1c442c158a3b5dfc",
+      "bytes": 262324,
+      "capture": "05-listening-recordings.png",
+      "inspected": true
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/06-orbital-arrival.png",
+      "sha256": "eb20cd3d9c7196481d99279e221a612627106aa6158f508ed525359dd3a55431",
+      "bytes": 258911,
+      "capture": "06-orbital-arrival.png",
+      "inspected": true
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/07-mobile-dock.png",
+      "sha256": "75aba6e2be87704e7501a6cd0140399f10d801c32d2ad7dcbe1e5ef5bb0fb2ba",
+      "bytes": 190151,
+      "capture": "07-mobile-dock.png",
+      "inspected": true
+    }
+  ],
+  "limits": [
+    "Independent export/import exercise; no SaveGame ownership, campaign reward or acquisition of the loaned ship.",
+    "Geometry, capacity, energy, water, current window, movement and three-touch sparring parameters are explicit local hypotheses, not certified workbook/canonical figures.",
+    "Mount asset is a held static reference with no native animation clip and no certified 1:1 canonical species identity.",
+    "Only the real machinery and scanner WAVs are recorded. Wildlife/weather sounds remain missing; no enemy identity or strength is inferred.",
+    "No new planet or fabricated mapping between source K01 and the thirty historical Risk worlds; generic damage/repair rules are not invented."
+  ],
+  "evidence": [
+    {
+      "file": "docs/qa/v107-clan-specialized/01-dock-arrival.png",
+      "sha256": "7195a4611d86242ef5b46a2195fc104b579c9d85447a051743fb3a3efb3d5dc4",
+      "bytes": 248752
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/02-mount-care.png",
+      "sha256": "ed164d1e74e530febf7ccfd79984dc30c8806a64f53dd69cd0221f1828fe01c3",
+      "bytes": 263292
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/03-confinement-two-routes.png",
+      "sha256": "b75941f6275a60846c8632e318bf2e52d71a743708c4eaf7b764b4395cb17418",
+      "bytes": 242407
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/04-duel-objective.png",
+      "sha256": "54c9e489d04a4fdfa8d1ae080632d33fe15b2201b1139165d2530b10392ed679",
+      "bytes": 260087
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/05-listening-recordings.png",
+      "sha256": "33179b35b261392f95eb36c371f81c6dc5a5252b4465b50e1c442c158a3b5dfc",
+      "bytes": 262324
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/06-orbital-arrival.png",
+      "sha256": "eb20cd3d9c7196481d99279e221a612627106aa6158f508ed525359dd3a55431",
+      "bytes": 258911
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/07-mobile-dock.png",
+      "sha256": "75aba6e2be87704e7501a6cd0140399f10d801c32d2ad7dcbe1e5ef5bb0fb2ba",
+      "bytes": 190151
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/raw-validation.json",
+      "sha256": "03de087b632af8b7a089552d9fb1f7b5c84c87b5559ca83121992b252c3639fb",
+      "bytes": 13026
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/source-before-after.json",
+      "sha256": "6d5ad946092b224be74563bc0e8c8e443d34e855d3f6fafc8739ef114eb52135",
+      "bytes": 4591
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/business-tests.log",
+      "sha256": "8f50b38ed2806a199d9ce9288f4826de9af89385c9b1f7f0b2d4ed150a872326",
+      "bytes": 8142
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "docs/qa/v107-clan-specialized/verification-commands.json",
+      "sha256": "b64e7f37553aebad0642c590adcab610f5cb2d8fb829e240975cee2219038516",
+      "bytes": 845
+    }
+  ]
+}

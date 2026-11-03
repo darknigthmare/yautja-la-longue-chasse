@@ -1,0 +1,28 @@
+name: Homeworld V162 native prototype integrity
+on:
+  pull_request:
+    paths:
+      - 'production/homeworld-v162/**'
+      - 'production/homeworld-v161/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V161.xlsx'
+      - '.github/workflows/homeworld-v162-delivery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /production/homeworld-v162/
+            /production/homeworld-v161/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V161.xlsx
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
+      - name: Verify seven source PNGs, eleven workbook sheets and immutable inherited targets
+        run: python production/homeworld-v162/tools/verify.py

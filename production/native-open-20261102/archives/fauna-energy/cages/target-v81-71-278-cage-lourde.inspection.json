@@ -1,0 +1,199 @@
+{
+  "id": "target-v81-71-278",
+  "label": "cage lourde",
+  "attempt": 1,
+  "status": "CANDIDATE_NON_ADMITTED",
+  "humanValidated": false,
+  "runtimeActivated": false,
+  "generatedBy": "image_gen.imagegen",
+  "toolOriginalPath": "/workspace/generated_images/exec-5cfe7ec9-8559-4ade-b3d6-392a5fbd5654.png",
+  "copiedNativePath": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+  "toolOriginalBytes": 2244917,
+  "copiedBytes": 2244917,
+  "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+  "sourceDestinationByteIdentical": true,
+  "sourceHashUnchangedAfterInspection": true,
+  "nativeHashUnchangedAfterInspection": true,
+  "pixelEditing": false,
+  "cropping": false,
+  "mirroring": false,
+  "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-278-cage-lourde.prompt.txt",
+  "promptSha256": "f6d61d41e301fcd9434065f388d786590b2b93f9f9c7283c4823b6b992e7d811",
+  "requestedDimensions": [
+    1024,
+    1024
+  ],
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "atlas": false,
+    "expectedObjectCount": 1,
+    "noPixelNormalization": true
+  },
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "zeroPixels": 706171,
+    "lowAlpha1to2Pixels": 27465,
+    "measurements": {
+      "0": {
+        "alphaGreaterThan": 0,
+        "pixelCount": 866345,
+        "bboxExclusive": [
+          0,
+          9,
+          1236,
+          1254
+        ],
+        "marginsLTRB": [
+          0,
+          9,
+          18,
+          0
+        ],
+        "canvasEdgePixelCount": 61,
+        "outer64BandPixelCount": 6686
+      },
+      "2": {
+        "alphaGreaterThan": 2,
+        "pixelCount": 838880,
+        "bboxExclusive": [
+          28,
+          105,
+          1227,
+          1159
+        ],
+        "marginsLTRB": [
+          28,
+          105,
+          27,
+          95
+        ],
+        "canvasEdgePixelCount": 0,
+        "outer64BandPixelCount": 4915
+      },
+      "8": {
+        "alphaGreaterThan": 8,
+        "pixelCount": 825728,
+        "bboxExclusive": [
+          30,
+          107,
+          1225,
+          1157
+        ],
+        "marginsLTRB": [
+          30,
+          107,
+          29,
+          97
+        ],
+        "canvasEdgePixelCount": 0,
+        "outer64BandPixelCount": 4493
+      },
+      "128": {
+        "alphaGreaterThan": 128,
+        "pixelCount": 814923,
+        "bboxExclusive": [
+          31,
+          108,
+          1224,
+          1156
+        ],
+        "marginsLTRB": [
+          31,
+          108,
+          30,
+          98
+        ],
+        "canvasEdgePixelCount": 0,
+        "outer64BandPixelCount": 4187
+      },
+      "254": {
+        "alphaGreaterThan": 254,
+        "pixelCount": 1634,
+        "bboxExclusive": [
+          36,
+          109,
+          1202,
+          1155
+        ],
+        "marginsLTRB": [
+          36,
+          109,
+          52,
+          99
+        ],
+        "canvasEdgePixelCount": 0,
+        "outer64BandPixelCount": 30
+      }
+    },
+    "componentsAlphaGreater8": {
+      "connectivity": 8,
+      "count": 83,
+      "largestAreas": [
+        825553,
+        12,
+        11,
+        9,
+        8,
+        7,
+        7,
+        5,
+        5,
+        4
+      ]
+    },
+    "transparentPixelsInsideAlphaGreater8BBox": 389254,
+    "lowAlpha1to2CanvasEdgePixels": 61,
+    "dominantComponentFractionAtGreater8": 0.9997880658037513
+  },
+  "strictRequestedAlphaMarginSatisfied": false,
+  "substantiveAlphaGreater2MarginSatisfied": false,
+  "visualInspection": {
+    "wholeNativeImageOpened": true,
+    "limitations": [
+      "Native dimensions differ from requested1024²; exact source retained.",
+      "Candidacy is not human art admission or in-context integration.",
+      "Requested64px empty border fails for substantive visible content, not only faint alpha noise: alpha>2 margins=[28, 105, 27, 95]. Preserved complete native without silent contract relaxation; no visible clipping or overlap justifying retry.",
+      "Strict alpha>0 margins also fail; all threshold measurements retained."
+    ],
+    "oneWholeEmptyCage": true,
+    "noVisibleClipping": true,
+    "realBarGapsVisible": true,
+    "structure": "Heavy cage with three massive transverse arches, double-height side bars, reinforced end door and two thick support runners.",
+    "family": "Charcoal porous basalt, angular patinated bronze, restrained amber; distinct engineering and mass, not recoloring.",
+    "openedFilename": "target-v81-71-278-cage-lourde-native.png"
+  },
+  "pivotProposal": {
+    "kind": "diagnostic bottom center of alpha>8 bbox only",
+    "point": [
+      627.5,
+      1156
+    ],
+    "runtimeApproved": false,
+    "supportFootprintNeedsInContextReview": true
+  },
+  "retryUsed": false,
+  "integration": "NONE",
+  "toolReceiptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-71-278-cage-lourde.tool-receipt.json",
+  "toolReceiptSha256": "95596ea79b83d086dddc65dbda8e6a66e7e8fa1837b02299fbd7049f2a1dc42e",
+  "exactPromptUtf8Sha256": "1aff10c42f0375634dc6b9f7339fd210185352c6e1d6b914450ff66531d04c88",
+  "promptTextFileTrailingNewlineOnly": true,
+  "retryDecision": "No retry: complete recognizable single object without visible clipping or overlap; requested border deviations retained explicitly.",
+  "gridInspection": {
+    "isAtlas": false,
+    "expectedFrames": 1,
+    "visuallyObservedIndependentObjects": 1,
+    "repeatedObjectGrid": false,
+    "disconnectedAlphaComponentsDoNotEqualSemanticObjectCount": true
+  }
+}

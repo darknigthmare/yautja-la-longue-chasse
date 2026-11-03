@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "generator": "OpenAI built-in image generation",
+  "asset": {
+    "id": "auxiliary-objects-12-atlas-v10",
+    "useCase": "stylized-concept",
+    "master": "art-source/v10/galaxy-navigation/openai-auxiliary-objects-12-atlas-master.png",
+    "dimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "grid": {
+      "columns": 4,
+      "rows": 3,
+      "objectCount": 12
+    },
+    "masterBytes": 1016319,
+    "masterSha256": "af264ec07e2fcfca4baa423fdfd12a2ec52b93799275c11d5eff02b3ce7c1e9b"
+  },
+  "inventoryRowMajor": [
+    "cratered ochre rocky moon",
+    "pale frozen moon with cyan fissures",
+    "dark volcanic moon with ember-red lava scars",
+    "copper-and-cream banded gas giant",
+    "blue-green storm-banded gas giant",
+    "compact original extraterrestrial hunter station",
+    "ring-shaped original extraterrestrial hunter station",
+    "crescent-shaped asteroid cluster",
+    "broken-ring asteroid cluster",
+    "contained amber gravitational vortex",
+    "contained cyan-green dimensional rift",
+    "original orbital relay"
+  ],
+  "generationPrompt": [
+    "Create exactly twelve separate original auxiliary space objects in an exact invisible four-column by three-row grid on a perfectly uniform pure black background.",
+    "Use the specified row-major inventory: three distinct moons and one copper gas giant; one blue-green gas giant, two original extraterrestrial hunter stations and one crescent asteroid cluster; one broken-ring asteroid cluster, two distinct contained energy anomalies and one orbital relay.",
+    "One centered object per equal cell, fully contained with equal spacing and generous black padding; no object may touch or cross a neighboring cell.",
+    "High-detail realistic dark retro-science-fiction game concept art, consistent three-quarter orbital view, controlled upper-left rim light, crisp silhouettes, aged bronze and restrained cyan-green accents.",
+    "No text, labels, logos, watermark, borders, frames, visible grid, UI, stars, nebulae, orbit lines, spacecraft, characters, duplicate or extra objects."
+  ],
+  "correctionPrompt": [
+    "Preserve the same twelve objects, exact row-major order, designs, colors, lighting and pure-black background.",
+    "Change only scale and centering so every silhouette, antenna, loose rock and energy glow is fully contained inside its mathematical cell with generous padding.",
+    "Keep exactly one object per cell in exactly four columns and three rows; tighten the anomaly glows and asteroid clusters and shorten the relay antenna if needed.",
+    "No text, labels, logos, watermark, visible grid, frame, UI, star field, orbit lines, extra decoration or inventory changes."
+  ]
+}

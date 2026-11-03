@@ -1,0 +1,1113 @@
+{
+  "fighterId": "celtic",
+  "bodyHeightPx": 410,
+  "pageBodyHeightPx": {
+    "celtic-repair-walk-backward-support": 375,
+    "celtic-crouch": 368,
+    "celtic-repair-guard-hand": 382,
+    "celtic-repair-hurt-armor": 380,
+    "celtic-repair-light-recovery": 355,
+    "celtic-medium": 370,
+    "celtic-heavy": 370
+  },
+  "atlas": {
+    "schemaVersion": 1,
+    "id": "celtic-pit-v34",
+    "characterId": "celtic",
+    "variantId": "the-pit-v34-v5-identity",
+    "sourceKind": "authored-frames",
+    "status": "validated",
+    "pages": [
+      {
+        "id": "celtic-repair-walk-backward-support",
+        "src": "/game/sprites/v34/pit/celtic/celtic-repair-walk-backward-support-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "celtic-crouch",
+        "src": "/game/sprites/v34/pit/celtic/celtic-crouch-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "celtic-repair-guard-hand",
+        "src": "/game/sprites/v34/pit/celtic/celtic-repair-guard-hand-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "celtic-repair-hurt-armor",
+        "src": "/game/sprites/v34/pit/celtic/celtic-repair-hurt-armor-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "celtic-repair-light-recovery",
+        "src": "/game/sprites/v34/pit/celtic/celtic-repair-light-recovery-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "celtic-medium",
+        "src": "/game/sprites/v34/pit/celtic/celtic-medium-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "celtic-heavy",
+        "src": "/game/sprites/v34/pit/celtic/celtic-heavy-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      }
+    ],
+    "clips": [
+      {
+        "id": "walk-backward",
+        "facing": "right",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-walk-backward-support",
+            "rect": [
+              65,
+              73,
+              292,
+              387
+            ],
+            "pivot": [
+              106,
+              383
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "celtic-repair-walk-backward-support",
+            "rect": [
+              476,
+              57,
+              236,
+              403
+            ],
+            "pivot": [
+              76,
+              399
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "celtic-repair-walk-backward-support",
+            "rect": [
+              845,
+              60,
+              253,
+              396
+            ],
+            "pivot": [
+              98,
+              392
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "celtic-repair-walk-backward-support",
+            "rect": [
+              1230,
+              57,
+              248,
+              399
+            ],
+            "pivot": [
+              100,
+              395
+            ],
+            "durationTicks": 8
+          }
+        ]
+      },
+      {
+        "id": "walk-backward",
+        "facing": "left",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-walk-backward-support",
+            "rect": [
+              67,
+              556,
+              260,
+              387
+            ],
+            "pivot": [
+              151,
+              383
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "celtic-repair-walk-backward-support",
+            "rect": [
+              454,
+              536,
+              237,
+              405
+            ],
+            "pivot": [
+              147,
+              401
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "celtic-repair-walk-backward-support",
+            "rect": [
+              831,
+              543,
+              246,
+              398
+            ],
+            "pivot": [
+              152,
+              394
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "celtic-repair-walk-backward-support",
+            "rect": [
+              1221,
+              542,
+              240,
+              398
+            ],
+            "pivot": [
+              138,
+              394
+            ],
+            "durationTicks": 8
+          }
+        ]
+      },
+      {
+        "id": "crouch",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-crouch",
+            "rect": [
+              77,
+              64,
+              258,
+              401
+            ],
+            "pivot": [
+              117,
+              397
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "celtic-crouch",
+            "rect": [
+              470,
+              86,
+              237,
+              379
+            ],
+            "pivot": [
+              111.5,
+              375
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "celtic-crouch",
+            "rect": [
+              853,
+              121,
+              206,
+              344
+            ],
+            "pivot": [
+              102,
+              340
+            ],
+            "durationTicks": 30
+          }
+        ]
+      },
+      {
+        "id": "crouch",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-crouch",
+            "rect": [
+              82,
+              559,
+              236,
+              387
+            ],
+            "pivot": [
+              123,
+              383
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "celtic-crouch",
+            "rect": [
+              465,
+              570,
+              230,
+              376
+            ],
+            "pivot": [
+              121,
+              372
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "celtic-crouch",
+            "rect": [
+              848,
+              605,
+              211,
+              341
+            ],
+            "pivot": [
+              109.5,
+              337
+            ],
+            "durationTicks": 30
+          }
+        ]
+      },
+      {
+        "id": "high-guard",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-guard-hand",
+            "rect": [
+              32,
+              51,
+              296,
+              423
+            ],
+            "pivot": [
+              146.5,
+              419
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "celtic-repair-guard-hand",
+            "rect": [
+              436,
+              46,
+              255,
+              429
+            ],
+            "pivot": [
+              123.5,
+              425
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "celtic-repair-guard-hand",
+            "rect": [
+              820,
+              49,
+              259,
+              426
+            ],
+            "pivot": [
+              121.5,
+              422
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "celtic-repair-guard-hand",
+            "rect": [
+              1205,
+              47,
+              250,
+              428
+            ],
+            "pivot": [
+              120.5,
+              424
+            ],
+            "durationTicks": 6
+          }
+        ]
+      },
+      {
+        "id": "high-guard",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-guard-hand",
+            "rect": [
+              52,
+              554,
+              277,
+              418
+            ],
+            "pivot": [
+              133,
+              414
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "celtic-repair-guard-hand",
+            "rect": [
+              450,
+              552,
+              258,
+              419
+            ],
+            "pivot": [
+              132,
+              415
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "celtic-repair-guard-hand",
+            "rect": [
+              831,
+              552,
+              258,
+              420
+            ],
+            "pivot": [
+              132.5,
+              416
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "celtic-repair-guard-hand",
+            "rect": [
+              1232,
+              551,
+              246,
+              421
+            ],
+            "pivot": [
+              123.5,
+              417
+            ],
+            "durationTicks": 6
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.hitstun",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-hurt-armor",
+            "rect": [
+              60,
+              61,
+              312,
+              405
+            ],
+            "pivot": [
+              117,
+              401
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "celtic-repair-hurt-armor",
+            "rect": [
+              434,
+              78,
+              315,
+              388
+            ],
+            "pivot": [
+              115.5,
+              384
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "celtic-repair-hurt-armor",
+            "rect": [
+              806,
+              73,
+              303,
+              393
+            ],
+            "pivot": [
+              116.5,
+              389
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "celtic-repair-hurt-armor",
+            "rect": [
+              1194,
+              60,
+              300,
+              406
+            ],
+            "pivot": [
+              123.5,
+              402
+            ],
+            "durationTicks": 3
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.hitstun",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-hurt-armor",
+            "rect": [
+              42,
+              568,
+              294,
+              394
+            ],
+            "pivot": [
+              167,
+              390
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "celtic-repair-hurt-armor",
+            "rect": [
+              405,
+              578,
+              308,
+              384
+            ],
+            "pivot": [
+              194,
+              380
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "celtic-repair-hurt-armor",
+            "rect": [
+              789,
+              575,
+              304,
+              387
+            ],
+            "pivot": [
+              191.5,
+              383
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "celtic-repair-hurt-armor",
+            "rect": [
+              1177,
+              566,
+              291,
+              396
+            ],
+            "pivot": [
+              173.5,
+              392
+            ],
+            "durationTicks": 3
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.startup",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-light-recovery",
+            "rect": [
+              70,
+              46,
+              220,
+              409
+            ],
+            "pivot": [
+              100.5,
+              405
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.active",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-light-recovery",
+            "rect": [
+              421,
+              47,
+              330,
+              408
+            ],
+            "pivot": [
+              122,
+              404
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.recovery",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-light-recovery",
+            "rect": [
+              1218,
+              46,
+              222,
+              409
+            ],
+            "pivot": [
+              107.5,
+              405
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.startup",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-light-recovery",
+            "rect": [
+              90,
+              558,
+              217,
+              408
+            ],
+            "pivot": [
+              114,
+              404
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.active",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-light-recovery",
+            "rect": [
+              390,
+              557,
+              335,
+              409
+            ],
+            "pivot": [
+              213,
+              405
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.recovery",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-repair-light-recovery",
+            "rect": [
+              1234,
+              558,
+              228,
+              409
+            ],
+            "pivot": [
+              113.5,
+              405
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.startup",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-medium",
+            "rect": [
+              49,
+              37,
+              252,
+              428
+            ],
+            "pivot": [
+              115,
+              424
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.active",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-medium",
+            "rect": [
+              415,
+              39,
+              412,
+              425
+            ],
+            "pivot": [
+              139,
+              421
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.recovery",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-medium",
+            "rect": [
+              1250,
+              38,
+              226,
+              429
+            ],
+            "pivot": [
+              105.5,
+              425
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.startup",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-medium",
+            "rect": [
+              68,
+              542,
+              253,
+              426
+            ],
+            "pivot": [
+              130,
+              422
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.active",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-medium",
+            "rect": [
+              355,
+              543,
+              402,
+              426
+            ],
+            "pivot": [
+              259.5,
+              422
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.recovery",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-medium",
+            "rect": [
+              1255,
+              541,
+              227,
+              429
+            ],
+            "pivot": [
+              118.5,
+              425
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.startup",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-heavy",
+            "rect": [
+              37,
+              74,
+              340,
+              392
+            ],
+            "pivot": [
+              132.5,
+              388
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.active",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-heavy",
+            "rect": [
+              412,
+              37,
+              355,
+              430
+            ],
+            "pivot": [
+              139.5,
+              426
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.recovery",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-heavy",
+            "rect": [
+              796,
+              51,
+              307,
+              416
+            ],
+            "pivot": [
+              129,
+              412
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "celtic-heavy",
+            "rect": [
+              1213,
+              43,
+              291,
+              424
+            ],
+            "pivot": [
+              117.5,
+              420
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.startup",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-heavy",
+            "rect": [
+              31,
+              560,
+              317,
+              401
+            ],
+            "pivot": [
+              181,
+              397
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.active",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-heavy",
+            "rect": [
+              385,
+              538,
+              353,
+              427
+            ],
+            "pivot": [
+              210,
+              423
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.recovery",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "celtic-heavy",
+            "rect": [
+              812,
+              560,
+              313,
+              406
+            ],
+            "pivot": [
+              179.5,
+              402
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "celtic-heavy",
+            "rect": [
+              1187,
+              545,
+              289,
+              420
+            ],
+            "pivot": [
+              171,
+              416
+            ],
+            "durationTicks": 1
+          }
+        ]
+      }
+    ]
+  }
+}

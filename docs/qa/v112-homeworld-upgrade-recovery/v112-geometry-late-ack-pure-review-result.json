@@ -1,0 +1,121 @@
+{
+  "scope": "Pure negative review of exact save adoption and exact backup confirmation; read-only Hub finish/effect/confirm review; no timers repeated.",
+  "hashesBefore": {
+    "recovery": "da3ed465f312e7278384ab614b4c57323ba2e2dd90740205e1cf4ec9c677cbf3",
+    "hub": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4"
+  },
+  "hashesAfter": {
+    "recovery": "da3ed465f312e7278384ab614b4c57323ba2e2dd90740205e1cf4ec9c677cbf3",
+    "hub": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4"
+  },
+  "checks": 996,
+  "rows": [
+    {
+      "fixture": "/tmp/v112-v104-played-blocked-fixture.json",
+      "sourceCommit": "played V111 per source fixture",
+      "oldNativeSteps": 56,
+      "ledgerKeys": [
+        "cartographyV104"
+      ],
+      "changedLedgerKeys": [
+        "cartographyV104"
+      ],
+      "checks": 124,
+      "completedBPreserved": null
+    },
+    {
+      "fixture": "/tmp/v112-reviewed-v105-walking-fixture.json",
+      "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+      "oldNativeSteps": 263,
+      "ledgerKeys": [
+        "cartographyV105"
+      ],
+      "changedLedgerKeys": [
+        "cartographyV105"
+      ],
+      "checks": 99,
+      "completedBPreserved": null
+    },
+    {
+      "fixture": "/tmp/v112-reviewed-archive106-carried-fixture.json",
+      "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+      "oldNativeSteps": 514,
+      "ledgerKeys": [
+        "archiveV106"
+      ],
+      "changedLedgerKeys": [
+        "archiveV106"
+      ],
+      "checks": 106,
+      "completedBPreserved": null
+    },
+    {
+      "fixture": "/tmp/v112-reviewed-comparison107-ground-fixture.json",
+      "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+      "oldNativeSteps": 1251,
+      "ledgerKeys": [
+        "archiveV106",
+        "archiveComparisonV107"
+      ],
+      "changedLedgerKeys": [
+        "archiveComparisonV107"
+      ],
+      "checks": 135,
+      "completedBPreserved": null
+    },
+    {
+      "fixture": "/tmp/v112-reviewed-cargo-wide-ground-fixture.json",
+      "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+      "oldNativeSteps": 473,
+      "ledgerKeys": [
+        "cargoV108"
+      ],
+      "changedLedgerKeys": [
+        "cargoV108"
+      ],
+      "checks": 112,
+      "completedBPreserved": null
+    },
+    {
+      "fixture": "/tmp/v112-reviewed-carried-plaque-fixture.json",
+      "sourceCommit": "played V111 per source fixture",
+      "oldNativeSteps": 630,
+      "ledgerKeys": [
+        "archivePlaqueV109"
+      ],
+      "changedLedgerKeys": [
+        "archivePlaqueV109"
+      ],
+      "checks": 122,
+      "completedBPreserved": null
+    },
+    {
+      "fixture": "/tmp/v112-reviewed-continuation-carried-fragment-fixture.json",
+      "sourceCommit": "played V111 per source fixture",
+      "oldNativeSteps": 947,
+      "ledgerKeys": [
+        "archivePlaqueV109",
+        "archiveContinuationV111"
+      ],
+      "changedLedgerKeys": [
+        "archiveContinuationV111"
+      ],
+      "checks": 183,
+      "completedBPreserved": true
+    },
+    {
+      "fixture": "/tmp/v112-reviewed-remote-last-fixture.json",
+      "sourceCommit": "played V111 per source fixture",
+      "oldNativeSteps": 1087,
+      "ledgerKeys": [
+        "archivePlaqueV109"
+      ],
+      "changedLedgerKeys": [
+        "archivePlaqueV109"
+      ],
+      "checks": 114,
+      "completedBPreserved": null
+    }
+  ],
+  "failures": []
+}

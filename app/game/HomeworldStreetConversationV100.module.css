@@ -1,0 +1,8 @@
+.conversation { display:grid; gap:12px; min-width:0; }
+.topics,.places { display:flex; flex-wrap:wrap; gap:8px; }
+.topics button,.places button { min-height:44px; min-width:44px; flex:1 1 170px; white-space:normal; overflow-wrap:anywhere; text-align:left; }
+.topics button[aria-pressed='true'] { border-color:#e5c57a; background:#594525; color:#fff2cc; }
+.topics button:focus-visible,.places button:focus-visible { outline:3px solid #ffe2a3; outline-offset:3px; }
+.conversation p { margin:0; line-height:1.65; overflow-wrap:anywhere; }
+.label { position:absolute; left:0; bottom:112px; transform:translateX(-50%); max-width:220px; padding:5px 8px; border:1px solid #c4ad70; border-radius:4px; background:#17221de8; color:#f3d995; font-size:12px; white-space:normal; text-align:center; pointer-events:none; }
+.ring { position:absolute; left:-24px; top:-5px; width:48px; height:12px; border:2px solid #e5c57a; border-radius:50%; pointer-events:none; }

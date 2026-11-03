@@ -1,0 +1,1178 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-127-avpr-2007-forest-crash",
+  "compositionDigest": "e016bc1890d911e45c4e04136cca8c7d48337faba56e4f7a0f587d0a7b7b9bac",
+  "conceptPreview": true,
+  "playablePromotion": false,
+  "checkedAt": "2026-09-20T00:57:11.238Z",
+  "surface": "isolated-renderer-with-real-game-fighters-and-images",
+  "ambienceProof": null,
+  "applicationFlowVerified": false,
+  "loaded": {
+    "independentKit": true,
+    "images": 7,
+    "expectedImages": 7,
+    "failed": [],
+    "fighterFailures": []
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -800,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            0,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            800,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            1600,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            2400,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -1656.6666666666667,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            0,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            1656.6666666666667,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            3313.3333333333335,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "close",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -1504,
+            510.25,
+            1240.5,
+            90.77348066298342
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -264,
+            510.25,
+            1240.5,
+            90.77348066298342
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            976,
+            510.25,
+            1240.5,
+            90.77348066298342
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            2216,
+            510.25,
+            1240.5,
+            90.77348066298342
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -2831.8333333333335,
+            541.25,
+            2568.3333333333335,
+            232.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -264,
+            541.25,
+            2568.3333333333335,
+            232.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            2303.8333333333335,
+            541.25,
+            2568.3333333333335,
+            232.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            4871.666666666667,
+            541.25,
+            2568.3333333333335,
+            232.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "left-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -2246,
+            502,
+            1160.5,
+            84.9171270718232
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -1086,
+            502,
+            1160.5,
+            84.9171270718232
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            74,
+            502,
+            1160.5,
+            84.9171270718232
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            1234,
+            502,
+            1160.5,
+            84.9171270718232
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            2394,
+            502,
+            1160.5,
+            84.9171270718232
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -4730.333333333333,
+            531,
+            2402.6666666666665,
+            217.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -2328.1666666666665,
+            531,
+            2402.6666666666665,
+            217.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            74,
+            531,
+            2402.6666666666665,
+            217.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            2476.1666666666665,
+            531,
+            2402.6666666666665,
+            217.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            4878.333333333333,
+            531,
+            2402.6666666666665,
+            217.49999999999997
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "right-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -1666,
+            502,
+            1160.5,
+            84.9171270718232
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -506,
+            502,
+            1160.5,
+            84.9171270718232
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            654,
+            502,
+            1160.5,
+            84.9171270718232
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            1814,
+            502,
+            1160.5,
+            84.9171270718232
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            2974,
+            502,
+            1160.5,
+            84.9171270718232
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -2908.1666666666665,
+            531,
+            2402.6666666666665,
+            217.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -506,
+            531,
+            2402.6666666666665,
+            217.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            1896.1666666666665,
+            531,
+            2402.6666666666665,
+            217.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            4298.333333333333,
+            531,
+            2402.6666666666665,
+            217.49999999999997
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "wide",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -1184,
+            398,
+            640.5,
+            46.850828729281766
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -544,
+            398,
+            640.5,
+            46.850828729281766
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            96,
+            398,
+            640.5,
+            46.850828729281766
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            736,
+            398,
+            640.5,
+            46.850828729281766
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            1376,
+            398,
+            640.5,
+            46.850828729281766
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            2016,
+            398,
+            640.5,
+            46.850828729281766
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -2554.666666666667,
+            414,
+            1325.8333333333335,
+            120.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -1229.3333333333335,
+            414,
+            1325.8333333333335,
+            120.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            96,
+            414,
+            1325.8333333333335,
+            120.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            1421.3333333333335,
+            414,
+            1325.8333333333335,
+            120.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            2746.666666666667,
+            414,
+            1325.8333333333335,
+            120.00000000000001
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "reduced-motion",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -1392,
+            414,
+            720.5,
+            52.70718232044199
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -672,
+            414,
+            720.5,
+            52.70718232044199
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            48,
+            414,
+            720.5,
+            52.70718232044199
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            768,
+            414,
+            720.5,
+            52.70718232044199
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            1488,
+            414,
+            720.5,
+            52.70718232044199
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            2208,
+            414,
+            720.5,
+            52.70718232044199
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -2934,
+            432,
+            1491.5,
+            135
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -1443,
+            432,
+            1491.5,
+            135
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            48,
+            432,
+            1491.5,
+            135
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            1539,
+            432,
+            1491.5,
+            135
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            3030,
+            432,
+            1491.5,
+            135
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "high-contrast",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -800,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            0,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            800,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            1600,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            2400,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -1656.6666666666667,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            0,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            1656.6666666666667,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            3313.3333333333335,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            -800,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            0,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            800,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            1600,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p4-forest-soil.png",
+          "args": [
+            0,
+            319,
+            2172,
+            159,
+            2400,
+            430,
+            800.5,
+            58.5635359116022
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            -1656.6666666666667,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            0,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            1656.6666666666667,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        },
+        {
+          "src": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+          "args": [
+            15,
+            285,
+            1988,
+            180,
+            3313.3333333333335,
+            450,
+            1657.1666666666667,
+            150
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "screenshots": [
+    "center.png",
+    "left-corner.png",
+    "right-corner.png",
+    "mobile.png"
+  ],
+  "limit": "Controlled Chromium renderer harness. Full-app navigation, physical hardware cadence, gamepad and deployment are not certified here."
+}

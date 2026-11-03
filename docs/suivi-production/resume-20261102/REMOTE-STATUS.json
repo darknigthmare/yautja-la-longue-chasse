@@ -1,0 +1,744 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-02T04:40:07.786032Z",
+  "scope": "Read-only GitHub audit and targeted browser reproduction; 3 obsolete harness locator lines corrected in 2 scripts with all assertions preserved. No Git mutation, merge or external comment.",
+  "main": {
+    "sha": "f3a1acec8c2603b3442da774457dfe75947d97d8",
+    "newIntegrationsSincePreviousSession": false
+  },
+  "coreBranch": {
+    "ref": "refs/heads/codex/homeworld-access-followup-20261101",
+    "sha": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+    "pullRequests": []
+  },
+  "pr27": {
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/27",
+    "state": "OPEN",
+    "draft": false,
+    "headSha": "8113d729009071d9fbf516d3dbf6733fbb054422",
+    "headRef": "feat/v113-chromatic-hunter-phg-20261030",
+    "baseRef": "main",
+    "mergeable": "MERGEABLE",
+    "mergeStateStatus": "UNSTABLE",
+    "updatedAt": "2026-11-01T15:15:10Z",
+    "previousSessionHead": "9ad29df77e8a11ca36bf1b37f6b4c6f08db3d05d",
+    "checks": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:08:50Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588444/job/124886845458",
+        "name": "Full application TypeScript (planet PR)",
+        "startedAt": "2026-11-01T15:07:46Z",
+        "status": "COMPLETED",
+        "workflowName": "Planet V114 focused regressions"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:07:34Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588403/job/124886754954",
+        "name": "V113 PNG integrity, registration and cosmetic surfaces",
+        "startedAt": "2026-11-01T15:07:24Z",
+        "status": "COMPLETED",
+        "workflowName": "V113 native PHG-inspired materials and renderer wiring"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:07:36Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588438/job/124886755123",
+        "name": "integrity",
+        "startedAt": "2026-11-01T15:07:24Z",
+        "status": "COMPLETED",
+        "workflowName": "V114 Yautja PHG material integrity and channel contract"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:07:40Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588465/job/124886755249",
+        "name": "World versions V103 and V115 both play",
+        "startedAt": "2026-11-01T15:07:24Z",
+        "status": "COMPLETED",
+        "workflowName": "V122 Planet V103 / V115 compatibility"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:07:29Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588745/job/124886756853",
+        "name": "Preserve all 34 sources and reject invented UV evidence",
+        "startedAt": "2026-11-01T15:07:24Z",
+        "status": "COMPLETED",
+        "workflowName": "V123 PHG YouTube and selected-screenshot evidence integrity"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:07:28Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588512/job/124886755336",
+        "name": "V137 workbook hashes, structure and 389-ticket integrity",
+        "startedAt": "2026-11-01T15:07:24Z",
+        "status": "COMPLETED",
+        "workflowName": "V138 PHG production Excel fidelity gate"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:07:31Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588457/job/124886755048",
+        "name": "V139 preserve 1134 visual cases and verify 52 decal placements",
+        "startedAt": "2026-11-01T15:07:24Z",
+        "status": "COMPLETED",
+        "workflowName": "V139 PHG visual/geometry Excel parity gate"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:10:32Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588481/job/124886755408",
+        "name": "gameplay-cloud",
+        "startedAt": "2026-11-01T15:07:24Z",
+        "status": "COMPLETED",
+        "workflowName": "V94 campaign routes and bounded cloud transport"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:07:52Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588455/job/124886844407",
+        "name": "Targeted V94 regressions (not full game QA)",
+        "startedAt": "2026-11-01T15:07:45Z",
+        "status": "COMPLETED",
+        "workflowName": "V94 regression tests"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:09:59Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588409/job/124886755148",
+        "name": "ship-training",
+        "startedAt": "2026-11-01T15:07:24Z",
+        "status": "COMPLETED",
+        "workflowName": "V94 ship training persistence"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:11:45Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588636/job/124886800307",
+        "name": "persistence",
+        "startedAt": "2026-11-01T15:07:35Z",
+        "status": "COMPLETED",
+        "workflowName": "V94 transactional exercises and trophy confirmation"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T16:27:46Z",
+        "conclusion": "CANCELLED",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588455/job/124886844738",
+        "name": "Application compile, types, runtime lint and browser integration",
+        "startedAt": "2026-11-01T15:07:46Z",
+        "status": "COMPLETED",
+        "workflowName": "V94 regression tests"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:11:13Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588444/job/124886845193",
+        "name": "domain",
+        "startedAt": "2026-11-01T15:07:46Z",
+        "status": "COMPLETED",
+        "workflowName": "Planet V114 focused regressions"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:09:05Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588438/job/124886754792",
+        "name": "TypeScript and lint on the complete game source",
+        "startedAt": "2026-11-01T15:07:24Z",
+        "status": "COMPLETED",
+        "workflowName": "V114 Yautja PHG material integrity and channel contract"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:15:54Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588444/job/124887748090",
+        "name": "V124 live PNG and ZIP verification",
+        "startedAt": "2026-11-01T15:11:16Z",
+        "status": "COMPLETED",
+        "workflowName": "Planet V114 focused regressions"
+      },
+      {
+        "__typename": "StatusContext",
+        "context": "Vercel",
+        "startedAt": "2026-11-01T15:07:18Z",
+        "state": "FAILURE",
+        "targetUrl": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-01T15:07:24Z",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+        "name": "CodeRabbit",
+        "startedAt": "2026-11-01T15:07:24Z",
+        "status": "COMPLETED",
+        "workflowName": ""
+      }
+    ]
+  },
+  "applicationJobs": [
+    {
+      "role": "previous",
+      "id": 124711325508,
+      "runId": 41260050569,
+      "headSha": "9ad29df77e8a11ca36bf1b37f6b4c6f08db3d05d",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050569/job/124711325508",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "startedAt": "2026-11-01T01:17:52Z",
+      "completedAt": "2026-11-01T02:37:53Z",
+      "failedSteps": [
+        {
+          "name": "Exercise current V112 hunting mechanics and invariants",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 7,
+          "started_at": "2026-11-01T01:19:33Z",
+          "completed_at": "2026-11-01T01:22:16Z"
+        },
+        {
+          "name": "Exercise generated planets, independent bitmap layers and real saved fronts",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 35,
+          "started_at": "2026-11-01T01:31:07Z",
+          "completed_at": "2026-11-01T01:35:12Z"
+        },
+        {
+          "name": "Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 40,
+          "started_at": "2026-11-01T01:41:04Z",
+          "completed_at": "2026-11-01T01:41:26Z"
+        }
+      ],
+      "stalledOrUnrunSteps": [
+        {
+          "name": "Exercise current V111 regressions across the parallel workstreams",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 52,
+          "started_at": "2026-11-01T01:49:55Z",
+          "completed_at": null
+        },
+        {
+          "name": "Execute unchanged V111 assertions and regenerate all 113 historical worksheets",
+          "status": "pending",
+          "conclusion": null,
+          "number": 53,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Exercise parallel V111 hunt compatibility suite",
+          "status": "pending",
+          "conclusion": null,
+          "number": 54,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Preserve parallel V112 Homeworld and hunt historical workbooks",
+          "status": "pending",
+          "conclusion": null,
+          "number": 55,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Exercise V112 geometry, public-life, mobility, backward throws and evidence guards",
+          "status": "pending",
+          "conclusion": null,
+          "number": 56,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify V112 open-workstream audit and reproducible append-only workbook",
+          "status": "pending",
+          "conclusion": null,
+          "number": 57,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify live Homeworld guidance in the real React atlas and native Worker",
+          "status": "pending",
+          "conclusion": null,
+          "number": 58,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Re-run unchanged V110 assertions and preserve its published workbook from pinned Git preimages",
+          "status": "pending",
+          "conclusion": null,
+          "number": 59,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Exercise actual clan-war panel and native locked storage",
+          "status": "pending",
+          "conclusion": null,
+          "number": 60,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Exercise trophy workshop lifecycle and historical ritual rules",
+          "status": "pending",
+          "conclusion": null,
+          "number": 61,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Complete all four workshop sequences in the actual React panel",
+          "status": "pending",
+          "conclusion": null,
+          "number": 62,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Exercise training lifecycle and all existing drill rules",
+          "status": "pending",
+          "conclusion": null,
+          "number": 63,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Play all five native training sequences and input interruption cases",
+          "status": "pending",
+          "conclusion": null,
+          "number": 64,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Node 22",
+          "status": "pending",
+          "conclusion": null,
+          "number": 127,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Checkout application source and real manifests without multi-gigabyte artwork",
+          "status": "pending",
+          "conclusion": null,
+          "number": 128,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "role": "current",
+      "id": 124886844738,
+      "runId": 41319588455,
+      "headSha": "8113d729009071d9fbf516d3dbf6733fbb054422",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588455/job/124886844738",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "startedAt": "2026-11-01T15:07:46Z",
+      "completedAt": "2026-11-01T16:27:46Z",
+      "failedSteps": [
+        {
+          "name": "Exercise current V112 hunting mechanics and invariants",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 7,
+          "started_at": "2026-11-01T15:09:32Z",
+          "completed_at": "2026-11-01T15:12:13Z"
+        },
+        {
+          "name": "Verify gamedev archive, asset, import and route regressions",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 17,
+          "started_at": "2026-11-01T15:15:34Z",
+          "completed_at": "2026-11-01T15:16:13Z"
+        },
+        {
+          "name": "Exercise generated planets, independent bitmap layers and real saved fronts",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 35,
+          "started_at": "2026-11-01T15:21:30Z",
+          "completed_at": "2026-11-01T15:22:28Z"
+        },
+        {
+          "name": "Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 40,
+          "started_at": "2026-11-01T15:28:27Z",
+          "completed_at": "2026-11-01T15:28:50Z"
+        }
+      ],
+      "stalledOrUnrunSteps": [
+        {
+          "name": "Exercise current V111 regressions across the parallel workstreams",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 52,
+          "started_at": "2026-11-01T15:37:19Z",
+          "completed_at": null
+        },
+        {
+          "name": "Execute unchanged V111 assertions and regenerate all 113 historical worksheets",
+          "status": "pending",
+          "conclusion": null,
+          "number": 53,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Exercise parallel V111 hunt compatibility suite",
+          "status": "pending",
+          "conclusion": null,
+          "number": 54,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Preserve parallel V112 Homeworld and hunt historical workbooks",
+          "status": "pending",
+          "conclusion": null,
+          "number": 55,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Exercise V112 geometry, public-life, mobility, backward throws and evidence guards",
+          "status": "pending",
+          "conclusion": null,
+          "number": 56,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify V112 open-workstream audit and reproducible append-only workbook",
+          "status": "pending",
+          "conclusion": null,
+          "number": 57,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify live Homeworld guidance in the real React atlas and native Worker",
+          "status": "pending",
+          "conclusion": null,
+          "number": 58,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Re-run unchanged V110 assertions and preserve its published workbook from pinned Git preimages",
+          "status": "pending",
+          "conclusion": null,
+          "number": 59,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Exercise actual clan-war panel and native locked storage",
+          "status": "pending",
+          "conclusion": null,
+          "number": 60,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Exercise trophy workshop lifecycle and historical ritual rules",
+          "status": "pending",
+          "conclusion": null,
+          "number": 61,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Complete all four workshop sequences in the actual React panel",
+          "status": "pending",
+          "conclusion": null,
+          "number": 62,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Exercise training lifecycle and all existing drill rules",
+          "status": "pending",
+          "conclusion": null,
+          "number": 63,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Play all five native training sequences and input interruption cases",
+          "status": "pending",
+          "conclusion": null,
+          "number": 64,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Node 22",
+          "status": "pending",
+          "conclusion": null,
+          "number": 127,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Checkout application source and real manifests without multi-gigabyte artwork",
+          "status": "pending",
+          "conclusion": null,
+          "number": 128,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    }
+  ],
+  "stage35": {
+    "ciMode": "Next development server, default Turbopack",
+    "exactCIRemoteAssertion": "Unavailable: annotations expose timeout only; signed artifact/log download not readable through available path.",
+    "currentSourceComparison": "4 scripts and 5 immediate components/routes match runtime bda; main39 differs in PlanetGeneratorV103 recipe extraction only, and already has the renamed global shuffle button.",
+    "localCompiledReproduction": {
+      "status": "PASS",
+      "baseUrl": "http://127.0.0.1:3104",
+      "buildId": "wVuSG_xIKNn3geLlIq7Cb",
+      "sourceCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+      "node": "v22.23.4",
+      "next": "16.3.5",
+      "chromium": "154.0.8037.57",
+      "outputsRoot": "/tmp/yautja-pr27-stage35-compiled-20261102",
+      "assertionsModified": false,
+      "harnessChanges": [
+        {
+          "path": "scripts/qa-planet-import-race-v103.mjs",
+          "change": "Exact accessible global shuffle button name updated to Tout mélanger au hasard; action and assertions retained."
+        },
+        {
+          "path": "scripts/qa-planet-generator-v103.mjs",
+          "change": "Same global shuffle button name update, plus legacy globe scroll targets planet-material-v101 instead of every canvas; following ready/fallback wait and all assertions retained."
+        }
+      ],
+      "results": [
+        {
+          "script": "qa-planet-import-race-v103.mjs",
+          "attempt": "before_harness_fix",
+          "status": "FAIL",
+          "passedChecks": 3,
+          "failure": "30-second click timeout: obsolete exact accessible name Mélanger les réglages",
+          "report": "stage35-compiled-before-import.json"
+        },
+        {
+          "script": "qa-planet-generator-v103.mjs",
+          "attempt": "before_harness_fix",
+          "status": "FAIL",
+          "passedChecks": 3,
+          "failure": "30-second keyboard press timeout: obsolete exact accessible name Mélanger les réglages",
+          "report": "stage35-compiled-before-v103.json"
+        },
+        {
+          "script": "qa-planet-generator-v103.mjs",
+          "attempt": "after_label_fix",
+          "status": "FAIL",
+          "passedChecks": 24,
+          "failure": "Strict locator violation while scrolling legacy canvas; matches globe and 2 texture preview canvases",
+          "report": "stage35-compiled-v103-after-label-failure.json"
+        },
+        {
+          "script": "qa-planet-import-race-v103.mjs",
+          "attempt": "after_harness_fix",
+          "status": "PASS",
+          "passedChecks": 7,
+          "report": "stage35-compiled-import-corrected.json"
+        },
+        {
+          "script": "qa-planet-regional-materials-v102.mjs",
+          "attempt": "unmodified",
+          "status": "PASS",
+          "passedChecks": 10,
+          "report": "stage35-compiled-regional.json"
+        },
+        {
+          "script": "qa-planet-generator-v102.mjs",
+          "attempt": "unmodified",
+          "status": "PASS",
+          "passedChecks": 35,
+          "report": "stage35-compiled-v102.json"
+        },
+        {
+          "script": "qa-planet-generator-v103.mjs",
+          "attempt": "after_harness_fix",
+          "status": "PASS",
+          "passedChecks": 36,
+          "report": "stage35-compiled-v103-corrected.json"
+        }
+      ],
+      "applicationCodeModified": false,
+      "runtimeAssetsModified": false,
+      "scriptHashSnapshot": [
+        {
+          "path": "scripts/qa-planet-import-race-v103.mjs",
+          "sha256": "bfe4cbdf4c8ea2ebba595b6a303498e758e0f8b9a0d4ab3d38b2fad33a0b050a",
+          "gitBlob": "9fbca162762c57f790af186bea0cbeb1b28b188c"
+        },
+        {
+          "path": "scripts/qa-planet-generator-v103.mjs",
+          "sha256": "dba9b59e7f0ea4f78a275a1befbd49380952a664dd99c875d73a536ed2e3764b",
+          "gitBlob": "8a367c4cd885648bd414c941e2692f3a2c4693bf"
+        }
+      ],
+      "completedAt": "2026-11-02T04:44:30.923538Z",
+      "passedChecksTotal": 88,
+      "mode": "Next production compiled build retained from previous session; no development-server replay yet.",
+      "diff": "stage35-harness.diff",
+      "sourceBlobComparisonTiming": "The source blob comparison was captured before the 3 harness locator corrections. Application components and build remain unchanged."
+    }
+  },
+  "limits": [
+    "A local production result does not establish the exact failed command or assertion on the remote development job.",
+    "Remote statuses are a dated snapshot, not a blanket approval for PR27.",
+    "Specialized green checks do not close the timed-out broad application job or open artistic/PHG rights workstreams."
+  ],
+  "evidenceFiles": [
+    {
+      "path": "core-branch-prs.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "core-branch.json",
+      "bytes": 534,
+      "sha256": "be7efe819a7553ad0800cdc43f7a2040774635301cb79b9aff5c598e89f2885a"
+    },
+    {
+      "path": "main-final-check.json",
+      "bytes": 464,
+      "sha256": "9a6e731e36d460565c703ce1b0acb6dfdd606aad68042ca82367e2d8495d4bb5"
+    },
+    {
+      "path": "main.json",
+      "bytes": 794246,
+      "sha256": "f40e21f5287af9c912c81a9a7d72c6dc95c49f7ef540bc1b74104af647d551ef"
+    },
+    {
+      "path": "pr27-changes-since-9ad.json",
+      "bytes": 1253409,
+      "sha256": "7a4f9e9a3420661411ff7648f5f1fabbe05f7fe7877419e0e7ecb5b670d5d0a5"
+    },
+    {
+      "path": "pr27-current-application-job.json",
+      "bytes": 17967,
+      "sha256": "a958f346c5e8079d64ad4b27f8248467d987d3bb6f729c85265a699303c23573"
+    },
+    {
+      "path": "pr27-current-checks.json",
+      "bytes": 6213,
+      "sha256": "3c615db6d8a4e35e29807906e4f0276988d73c7a0ae733717518387f2930ee8c"
+    },
+    {
+      "path": "pr27-current-vs-runtime-bda-script-component-blobs.json",
+      "bytes": 1927,
+      "sha256": "a1983d4c30f93723f2691fa4204e8a5030d02ede71f400084e96e7093f8353c1"
+    },
+    {
+      "path": "pr27-job-124711325508-annotations.json",
+      "bytes": 407,
+      "sha256": "ec73a3b23ec2c17d4139377341f7cf47ec682f91860d75d6b4e20c8e39452802"
+    },
+    {
+      "path": "pr27-job-124886844738-annotations.json",
+      "bytes": 407,
+      "sha256": "ef8450363237591a01592032d9ba012645f2f75ec1996ef3c4824712d9a30c6c"
+    },
+    {
+      "path": "pr27-main39-runtime-bda-blobs.json",
+      "bytes": 3731,
+      "sha256": "f3b35a6a997a485e8f33697af029a1a4a90feefbaf9182a6ef964a7354edab3b"
+    },
+    {
+      "path": "pr27-old-application-job.json",
+      "bytes": 17967,
+      "sha256": "74a8f591304d862c437d4f3700bb6d0feef9ed7fff7d648c5f6c32322932e635"
+    },
+    {
+      "path": "pr27-run-41260050569-artifacts.json",
+      "bytes": 3785,
+      "sha256": "417cc432a5ccaff9b83d533a8228cb06111287106be0bd1dd6a703ab561cd8bf"
+    },
+    {
+      "path": "pr27-run-41319588455-artifacts.json",
+      "bytes": 3785,
+      "sha256": "8e52df3093e2af079fa1f4a6ce1eeb9c582361a9872086dd077b2e7a7b528976"
+    },
+    {
+      "path": "pr27.json",
+      "bytes": 47011,
+      "sha256": "727cf0f55d60cea7b9716123263405093b798fb2c8b61eaab95084ea8ba8ac47"
+    },
+    {
+      "path": "stage35-compiled-before-import.json",
+      "bytes": 7977,
+      "sha256": "c2c32571bae491c576f274817aa962f25c37956a039f9b39a3373665c8870bee"
+    },
+    {
+      "path": "stage35-compiled-before-v103.json",
+      "bytes": 849,
+      "sha256": "a4da6f372fa8fa59ce2ae27a6800db7eee1d4dcfe731879466b41ce149e2fc0a"
+    },
+    {
+      "path": "stage35-compiled-import-corrected.json",
+      "bytes": 12870,
+      "sha256": "5aac69fbfbed6d67901314f2c42f7cbab148c53945b62ff2cc2f80efc99b6277"
+    },
+    {
+      "path": "stage35-compiled-regional.json",
+      "bytes": 2374,
+      "sha256": "a93843b9520589371b52defbce4e7e370b3bb7929e99aee5ef8846492a292176"
+    },
+    {
+      "path": "stage35-compiled-v102.json",
+      "bytes": 3201,
+      "sha256": "a9ff8a8a4443d626636c91f93cf36dcf13949197ddc4d03c6c8e97c3223089c7"
+    },
+    {
+      "path": "stage35-compiled-v103-after-label-failure.json",
+      "bytes": 4597,
+      "sha256": "b026e157f9a34011b24403668e6fc962a26a8d9dd83dbd4bea7c1ebe3d461980"
+    },
+    {
+      "path": "stage35-compiled-v103-corrected.json",
+      "bytes": 4336,
+      "sha256": "dc6cbe2c20a921507c547918115b8d24e11b3e7987193a97819e2125ee62a9f2"
+    },
+    {
+      "path": "stage35-harness.diff",
+      "bytes": 3035,
+      "sha256": "61217878b759b3c043eebe1355edb482601093231658a5d2f89295687bc1423a"
+    }
+  ]
+}

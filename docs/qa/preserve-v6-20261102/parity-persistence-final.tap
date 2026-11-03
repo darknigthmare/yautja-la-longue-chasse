@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: vharuun-grand-hunt: live active and physically returned states survive imports, campaign slots and complete archives without reward
+ok 1 - vharuun-grand-hunt: live active and physically returned states survive imports, campaign slots and complete archives without reward
+  ---
+  duration_ms: 368.437163
+  type: 'test'
+  ...
+# Subtest: vharuun-grand-hunt: a real survey channel event remains exact through storage; geometry fixture is not a combat victory
+ok 2 - vharuun-grand-hunt: a real survey channel event remains exact through storage; geometry fixture is not a combat victory
+  ---
+  duration_ms: 103.03888
+  type: 'test'
+  ...
+# Subtest: vharuun-grand-hunt: refused campaign-slot writes retain every durable byte and retry the identical V6 identity
+ok 3 - vharuun-grand-hunt: refused campaign-slot writes retain every durable byte and retry the identical V6 identity
+  ---
+  duration_ms: 62.352146
+  type: 'test'
+  ...
+# Subtest: avar-kesh-grand-hunt: live active and physically returned states survive imports, campaign slots and complete archives without reward
+ok 4 - avar-kesh-grand-hunt: live active and physically returned states survive imports, campaign slots and complete archives without reward
+  ---
+  duration_ms: 206.235082
+  type: 'test'
+  ...
+# Subtest: avar-kesh-grand-hunt: a real survey channel event remains exact through storage; geometry fixture is not a combat victory
+ok 5 - avar-kesh-grand-hunt: a real survey channel event remains exact through storage; geometry fixture is not a combat victory
+  ---
+  duration_ms: 79.368014
+  type: 'test'
+  ...
+# Subtest: avar-kesh-grand-hunt: refused campaign-slot writes retain every durable byte and retry the identical V6 identity
+ok 6 - avar-kesh-grand-hunt: refused campaign-slot writes retain every durable byte and retry the identical V6 identity
+  ---
+  duration_ms: 201.34497
+  type: 'test'
+  ...
+# Subtest: khar-duun-grand-hunt: live active and physically returned states survive imports, campaign slots and complete archives without reward
+ok 7 - khar-duun-grand-hunt: live active and physically returned states survive imports, campaign slots and complete archives without reward
+  ---
+  duration_ms: 151.457397
+  type: 'test'
+  ...
+# Subtest: khar-duun-grand-hunt: a real survey channel event remains exact through storage; geometry fixture is not a combat victory
+ok 8 - khar-duun-grand-hunt: a real survey channel event remains exact through storage; geometry fixture is not a combat victory
+  ---
+  duration_ms: 54.589537
+  type: 'test'
+  ...
+# Subtest: khar-duun-grand-hunt: refused campaign-slot writes retain every durable byte and retry the identical V6 identity
+ok 9 - khar-duun-grand-hunt: refused campaign-slot writes retain every durable byte and retry the identical V6 identity
+  ---
+  duration_ms: 62.230933
+  type: 'test'
+  ...
+# Subtest: iskhel-grand-hunt: live active and physically returned states survive imports, campaign slots and complete archives without reward
+ok 10 - iskhel-grand-hunt: live active and physically returned states survive imports, campaign slots and complete archives without reward
+  ---
+  duration_ms: 135.397717
+  type: 'test'
+  ...
+# Subtest: iskhel-grand-hunt: a real survey channel event remains exact through storage; geometry fixture is not a combat victory
+ok 11 - iskhel-grand-hunt: a real survey channel event remains exact through storage; geometry fixture is not a combat victory
+  ---
+  duration_ms: 86.362975
+  type: 'test'
+  ...
+# Subtest: iskhel-grand-hunt: refused campaign-slot writes retain every durable byte and retry the identical V6 identity
+ok 12 - iskhel-grand-hunt: refused campaign-slot writes retain every durable byte and retry the identical V6 identity
+  ---
+  duration_ms: 93.491589
+  type: 'test'
+  ...
+# Subtest: V7 is future, mixed V6/V5 identities remain invalid and six-group authority never leaks into legacy saves
+ok 13 - V7 is future, mixed V6/V5 identities remain invalid and six-group authority never leaks into legacy saves
+  ---
+  duration_ms: 3.16817
+  type: 'test'
+  ...
+# Subtest: v1: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+ok 14 - v1: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+  ---
+  duration_ms: 1.526002
+  type: 'test'
+  ...
+# Subtest: v2: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+ok 15 - v2: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+  ---
+  duration_ms: 0.214513
+  type: 'test'
+  ...
+# Subtest: v3: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+ok 16 - v3: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+  ---
+  duration_ms: 0.33842
+  type: 'test'
+  ...
+# Subtest: v4: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+ok 17 - v4: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+  ---
+  duration_ms: 0.195095
+  type: 'test'
+  ...
+# Subtest: desert-v5: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+ok 18 - desert-v5: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+  ---
+  duration_ms: 0.25806
+  type: 'test'
+  ...
+# Subtest: ice-v5: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+ok 19 - ice-v5: exact main03cf serialized state, terrain, 10001-frame trace and legacy drawing commands
+  ---
+  duration_ms: 0.207704
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7980.728883

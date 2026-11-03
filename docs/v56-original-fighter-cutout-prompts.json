@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "provider": "OpenAI built-in image_gen",
+  "mode": "background-extraction",
+  "transparentBackground": true,
+  "originalSourcesUnmodified": true,
+  "attempts": [
+    {
+      "subject": "Arid Ermit Yautja",
+      "accepted": true,
+      "output": "exec-cd3d642c-c1c9-4c25-8a69-f318d767e4ba.png",
+      "prompt": "Use case: background-extraction. Asset type: transparent full-body bitmap for a 2D fighting game. Input image 1 is the exact edit target, the user-original character named Arid Ermit Yautja. Change ONLY its background: remove the entire painted gray backdrop, floor and cast ground shadow to actual alpha transparency. Preserve the character exactly: same entire silhouette, same pose and facing right, same lean pale gray-beige skin pattern, long segmented dark dreadlocks, prominent pale cranial plates and tusked open mouth, same brown wrapping straps/skull belt adornment and fabric, every finger, claw, toe and ankle spur. Keep the same single drawing, linework, shading, colors, proportions and visible anatomy; no redrawing, beautification, extra limbs or equipment. Retain complete body with clean intact fine edges, no clipped toes or dreadlocks. No floor, no haze, no shadow, no text, no checkerboard pixels, no additional frames. A single faithful cutout only, with true transparent background."
+    },
+    {
+      "subject": "Yautja Mutated",
+      "accepted": false,
+      "output": "exec-9d1c64ac-0c78-410b-8bfe-0de9ccb5ad0b.png",
+      "reason": "Colors became overly saturated and hand/framing drift from supplied original.",
+      "prompt": "Use case: background-extraction. Asset type: transparent full-body bitmap for a 2D fighting game. Input image 1 is the exact edit target, the user-original character named Yautja Mutated. Change ONLY its background: remove the entire painted gray backdrop, floor and cast ground shadow to actual alpha transparency. Preserve the character exactly: same complete silhouette, same stance and facing right, same reddish copper-pink mutated anatomy, curved cranial plates, long segmented dreadlocks, tusked open mouth, perforated organic chest plates, thin long limbs, every finger, claw and toe. Keep the same single drawing, linework, shading, colors, proportions and visible anatomy; no redesign, extra limbs, equipment, powers or invented mutation cause. Retain complete body with clean intact fine edges, no clipped claws or dreadlocks. No floor, no haze, no glow, no shadow, no text, no checkerboard pixels, no additional frames. Single faithful cutout only; everything beyond the character contour must have zero alpha, without a soft aura."
+    },
+    {
+      "subject": "Yautja Mutated",
+      "accepted": true,
+      "output": "exec-595d6403-fd92-4578-81bc-905a04b5448a.png",
+      "prompt": "Use case: background-extraction. Exact image editing task, not illustration generation. Input image is the exact original Yautja Mutated file. Remove ONLY its flat gray painted background and the cast ground shadow, make those pixels transparent. Do not redraw or improve the character. Lock the existing pixel composition: same 1024x1536 portrait framing with generous empty upper and lower margins, same character size and placement within the frame, same exact stance and all limb joint positions. Preserve muted dusty reddish-brown / pale copper colors; do NOT increase saturation, contrast or gloss. Preserve the exact head silhouette, cranial plate geometry, dreadlock curves, mandibles, chest bone-hole pattern, elbow angles, all claw/finger count and positions, ankle spurs and toe shapes. Keep the original hands exactly, not a different gesture. Match original visible anatomy and linework as closely as possible. True alpha background only outside the silhouette including gaps between limbs and fingers; no backdrop, halo, shadow, floor, text or extra drawings. One single full body transparent cutout, no new animation or variants."
+    },
+    {
+      "subject": "Amengi female",
+      "accepted": true,
+      "output": "exec-5b42891d-6a3b-4c17-a846-625063216955.png",
+      "prompt": "Use case: background-extraction. Exact image editing task, not illustration generation. Input image is the exact original file named Amengi female.png, a user-labelled design. Remove ONLY its painted gray background and cast floor shadow, making those pixels transparent. Do not redraw or improve the insectoid character. Lock the existing landscape composition, character size and placement, full body stance and right-facing three-quarter view. Preserve muted reddish brown/copper chitin colors, two huge golden compound eyes, exact swept plated head and mandibles, the perforated bony chest plate, shoulder spikes, every limb joint, hand, claw, finger count, ankle spur and foot shape. Keep all original visible anatomy, details and linework; do not replace this design with a different canon creature or a Yautja, add dreadlocks, clothing, weapons or limbs. True alpha background outside the contour and between separated limbs/fingers. Clean intact fine edges, complete unclipped body. No aura, glow, haze, floor, shadow, text, checkerboard pixels or other drawings. One faithful transparent cutout only, same single pose."
+    }
+  ],
+  "limit": "Generative background extraction preserves reviewed identity and stance as closely as possible; no pixel-identical claim, native animation or canonical design certification."
+}

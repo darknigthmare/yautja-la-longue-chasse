@@ -1,0 +1,656 @@
+{
+  "role": "tribe-lava-smelter",
+  "tribe": "Forges de la Caldeira",
+  "method": "built-in image_gen, one independent call per sprite",
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+    "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/assets/v37/tribes/v2/pnj-lava-fondeur-v2--bd930342f88b9bf1.webp",
+    "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png"
+  ],
+  "anatomyGuidance": "official-1987-four-mandibles",
+  "sprites": [
+    {
+      "id": "01",
+      "name": "Gardien du creuset",
+      "description": "Massive broad adult with thick powerful arms and wide shoulders. A FULL sealed work biomask completely covers the face and mouth: broad angular basalt-black faceplate, curved bronze brow rim, two narrow amber visor slits and twin low cheek filters; thick black scalp tendrils tied low. Heavy black quilted work coat, huge dark brown divided leather apron, bronze shoulder and knee plates. Holds short heavy crucible tongs closed over a cool small dark cup; other hand supports its insulated handle. Strong planted stance.",
+      "faceExpected": "covered",
+      "prompt": "IMPORTANT INDIVIDUAL: This worker wears the complete sealed Yautja work biomask described below. Keep all facial skin and mouth covered. Use official anatomy only for fit under mask.\nANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Massive broad adult with thick powerful arms and wide shoulders. A FULL sealed work biomask completely covers the face and mouth: broad angular basalt-black faceplate, curved bronze brow rim, two narrow amber visor slits and twin low cheek filters; thick black scalp tendrils tied low. Heavy black quilted work coat, huge dark brown divided leather apron, bronze shoulder and knee plates. Holds short heavy crucible tongs closed over a cool small dark cup; other hand supports its insulated handle. Strong planted stance.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-01.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-bbcbd187-bce6-4f7c-9227-77a77047ca86.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 855245,
+        "pixel_count": 1572864,
+        "sha256": "afcb2ff3b9d3fe456e3f50e76f7d80406fdd83524a9b28f5d8ef57b93a9d01c7"
+      },
+      "githubBlobSha": "9343559c2e3e160a0389a2105c2c71d2b10b7e79",
+      "faceReview": {
+        "status": "approved",
+        "face": "covered",
+        "sha256": "afcb2ff3b9d3fe456e3f50e76f7d80406fdd83524a9b28f5d8ef57b93a9d01c7",
+        "review": "Complete generated PNG visually inspected; sealed full work biomask or individually legible four external mandibular lobes, upper and lower tusks, separate inner mouth; official 1987 reference."
+      }
+    },
+    {
+      "id": "02",
+      "name": "Fondeuse des alliages",
+      "description": "Tall lean adult female with pale slate speckled skin, narrow cranial dome, fine black tendrils bundled over one shoulder, visible four fleshy mandibles and upward lower tusks per reference. Black fitted heat-work vest over long sleeves, copper-bronze forearm guards, long split dark leather apron. Holds a small closed bronze alloy sample case and a compact testing probe at waist, calm focused eyes. Slim utility belt and covered legs.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Tall lean adult female with pale slate speckled skin, narrow cranial dome, fine black tendrils bundled over one shoulder, visible four fleshy mandibles and upward lower tusks per reference. Black fitted heat-work vest over long sleeves, copper-bronze forearm guards, long split dark leather apron. Holds a small closed bronze alloy sample case and a compact testing probe at waist, calm focused eyes. Slim utility belt and covered legs.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-02.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-666743b9-aaeb-4e67-ab26-dbe15d5b5f7c.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1044859,
+        "pixel_count": 1572864,
+        "sha256": "f322a89e7537f09ef33a23579b35d49fb2140db59d7ea17c29029226fb04ac54"
+      },
+      "githubBlobSha": "1d7b9861a3683111b5c0c88acf657ce223aa24ff",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "f322a89e7537f09ef33a23579b35d49fb2140db59d7ea17c29029226fb04ac54",
+        "review": "Complete generated PNG visually inspected; sealed full work biomask or individually legible four external mandibular lobes, upper and lower tusks, separate inner mouth; official 1987 reference."
+      }
+    },
+    {
+      "id": "03",
+      "name": "Préparateur des moules",
+      "description": "Short stocky adult with very thick forearms, broad neck and shoulder-length thick dreadlocks. FULL rounded bronze-black protective Yautja mask conceals mouth and face, a wide domed brow and central vertical grill with two short cheek vents, distinctly different mask from reference. Rolled padded sleeves, double rectangular leather apron, heavy kneepads. Holds one cool two-part casting mold with both hands against abdomen, hooks and pegs attached at belt. Braced idle stance.",
+      "faceExpected": "covered",
+      "prompt": "IMPORTANT INDIVIDUAL: This worker wears the complete sealed Yautja work biomask described below. Keep all facial skin and mouth covered. Use official anatomy only for fit under mask.\nANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Short stocky adult with very thick forearms, broad neck and shoulder-length thick dreadlocks. FULL rounded bronze-black protective Yautja mask conceals mouth and face, a wide domed brow and central vertical grill with two short cheek vents, distinctly different mask from reference. Rolled padded sleeves, double rectangular leather apron, heavy kneepads. Holds one cool two-part casting mold with both hands against abdomen, hooks and pegs attached at belt. Braced idle stance.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-03.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-7f88ee08-fd58-4b28-b315-f8255b23fb0b.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 837772,
+        "pixel_count": 1572864,
+        "sha256": "c4670704d2a63d4a9882886da36741a2cb933e39d0b3de8cced7408d7050b0fa"
+      },
+      "githubBlobSha": "8749da0ef4f650a176a26bd70d0ec7c0b2347f9a",
+      "faceReview": {
+        "status": "approved",
+        "face": "covered",
+        "sha256": "c4670704d2a63d4a9882886da36741a2cb933e39d0b3de8cced7408d7050b0fa",
+        "review": "Complete generated PNG visually inspected; sealed full work biomask or individually legible four external mandibular lobes, upper and lower tusks, separate inner mouth; official 1987 reference."
+      }
+    },
+    {
+      "id": "04",
+      "name": "Ancien des coulées",
+      "description": "Lean elderly adult, pale ochre-grey mottled skin, deep alien orbital folds, grey-black biological tendrils tied back, four external mandibular lobes with one naturally shorter tusk. Long soot-dark coat under a faded brown leather apron with stitched patches, bronze collar plate. Holds a small round mechanical furnace-control meter and a short sample ladle with an EMPTY cool cup pointing safely up at waist. Mild dignified stoop.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Lean elderly adult, pale ochre-grey mottled skin, deep alien orbital folds, grey-black biological tendrils tied back, four external mandibular lobes with one naturally shorter tusk. Long soot-dark coat under a faded brown leather apron with stitched patches, bronze collar plate. Holds a small round mechanical furnace-control meter and a short sample ladle with an EMPTY cool cup pointing safely up at waist. Mild dignified stoop.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-04.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-8e187b80-d722-4fe1-a727-719c174d7dac.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 883989,
+        "pixel_count": 1572864,
+        "sha256": "019ac0861f932fb0384602f3a89927c318346e97f2e7bc0e6ebebcf1fcea4296"
+      },
+      "githubBlobSha": "46edbc44e8b68942eb441462be28e6a2e6be9c9b",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "019ac0861f932fb0384602f3a89927c318346e97f2e7bc0e6ebebcf1fcea4296",
+        "review": "Complete generated PNG visually inspected; sealed full work biomask or individually legible four external mandibular lobes, upper and lower tusks, separate inner mouth; official 1987 reference."
+      }
+    },
+    {
+      "id": "05",
+      "name": "Fondeuse des lingots",
+      "description": "Broad athletic adult female, dark russet skin with black speckles, broad flattened crest, thick black tendrils in a practical high knot, exact four-mandible cinema anatomy. Black long-sleeved protective tunic, reinforced leather lifting straps and short overlapping apron panels, bronze shin plates. Cradles one cool short rectangular metal ingot in heavy work gloves; a compact weighing hook is secured to belt. Weight slightly counterbalanced.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Broad athletic adult female, dark russet skin with black speckles, broad flattened crest, thick black tendrils in a practical high knot, exact four-mandible cinema anatomy. Black long-sleeved protective tunic, reinforced leather lifting straps and short overlapping apron panels, bronze shin plates. Cradles one cool short rectangular metal ingot in heavy work gloves; a compact weighing hook is secured to belt. Weight slightly counterbalanced.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-05.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-e054a322-fc57-424e-9124-526514c5703d.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1072068,
+        "pixel_count": 1572864,
+        "sha256": "4d80b30d7d41311e0681c38cc560a94c4f4ae0189c8769551491edb468f7a008"
+      },
+      "githubBlobSha": "94f9c367f8723ce20dd0d7ae99c5432cead7e7e6",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "4d80b30d7d41311e0681c38cc560a94c4f4ae0189c8769551491edb468f7a008",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "06",
+      "name": "Contrôleur de température",
+      "description": "Very tall slender adult, mottled charcoal-olive skin, high elongated cranium and narrow orbital folds, long thin but biological tendril locks, four clearly separate mandibular lobes. High-collar soot-black tunic, long narrow leather apron, bronze elbow guards. Holds a compact optical furnace pyrometer with small amber glass viewing port at chest, other hand rests near belt tool pouch. Accurate small scientific instrument, not gun.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Very tall slender adult, mottled charcoal-olive skin, high elongated cranium and narrow orbital folds, long thin but biological tendril locks, four clearly separate mandibular lobes. High-collar soot-black tunic, long narrow leather apron, bronze elbow guards. Holds a compact optical furnace pyrometer with small amber glass viewing port at chest, other hand rests near belt tool pouch. Accurate small scientific instrument, not gun.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-06.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-4fd91d40-0662-4275-9b40-174199f387d1.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1023108,
+        "pixel_count": 1572864,
+        "sha256": "c7e1559e9da35cc5b49dd9972166dce4a81aba010da3d17ee3ec194f26597ae3"
+      },
+      "githubBlobSha": "67316f12cc09ec2291fcdb8b0e0d2134b93cf9bf",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "c7e1559e9da35cc5b49dd9972166dce4a81aba010da3d17ee3ec194f26597ae3",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "07",
+      "name": "Responsable des fours",
+      "description": "Heavyset adult with thick neck and immense shoulders, shoulder-length thick black tendrils. FULL black thermal biomask hides face and mouth, heavy bronze horizontal brow, narrow recessed eye slits, two broad vertical cheek filter plates and short attached breathing hose. Thick padded black jacket, bronze chest plate, very wide dark leather apron. Holds a short heavy furnace-door latch tool across both hands; practical back-mounted closed cooling canister. Sturdy wide stance.",
+      "faceExpected": "covered",
+      "prompt": "IMPORTANT INDIVIDUAL: This worker wears the complete sealed Yautja work biomask described below. Keep all facial skin and mouth covered. Use official anatomy only for fit under mask.\nANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Heavyset adult with thick neck and immense shoulders, shoulder-length thick black tendrils. FULL black thermal biomask hides face and mouth, heavy bronze horizontal brow, narrow recessed eye slits, two broad vertical cheek filter plates and short attached breathing hose. Thick padded black jacket, bronze chest plate, very wide dark leather apron. Holds a short heavy furnace-door latch tool across both hands; practical back-mounted closed cooling canister. Sturdy wide stance.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-07.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-9c9f44c7-8878-4a32-9f62-87bad713b5bd.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 843556,
+        "pixel_count": 1572864,
+        "sha256": "d39f93248c461d26db45455f31c820f1207b43ebe267960ea929c00f851b479f"
+      },
+      "githubBlobSha": "1dfe18f7f7c00fb4b35f549274e579571849c54a",
+      "faceReview": {
+        "status": "approved",
+        "face": "covered",
+        "sha256": "d39f93248c461d26db45455f31c820f1207b43ebe267960ea929c00f851b479f",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "08",
+      "name": "Trieuse des minerais",
+      "description": "Small-framed fully adult female, grey-gold speckled skin, compact domed brow, short thick tendrils tied at nape, four external fleshy jaws and separate inner mouth. Black rolled-sleeve work shirt, copper wrist guards and pocketed knee-length brown apron. Holds a small sealed mineral sample tray containing three cool dark ore pieces firmly seated in compartments; a short metal scoop clipped to belt. Light balanced stance.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Small-framed fully adult female, grey-gold speckled skin, compact domed brow, short thick tendrils tied at nape, four external fleshy jaws and separate inner mouth. Black rolled-sleeve work shirt, copper wrist guards and pocketed knee-length brown apron. Holds a small sealed mineral sample tray containing three cool dark ore pieces firmly seated in compartments; a short metal scoop clipped to belt. Light balanced stance.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-08.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-fa719ae9-41e5-4c63-acb3-2674a62f7572.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1064827,
+        "pixel_count": 1572864,
+        "sha256": "08be1ea408014fc1dc79972e646097c2579b073c65237ad010069aabfd917da0"
+      },
+      "githubBlobSha": "4403458f9206d2f15c5c61115b446d74b786ec6e",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "08be1ea408014fc1dc79972e646097c2579b073c65237ad010069aabfd917da0",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "09",
+      "name": "Réparateur des tuyères",
+      "description": "Muscular adult with long torso and powerful legs, dark scalp tendrils separated into four bound bunches. FULL narrow sloped basalt-steel biomask covers all facial skin and mouth, asymmetrical bronze forehead reinforcement and two small cheek vents, no human-style gasmask. Black reinforced sleeves, short dark leather utility apron, copper forearm armor. One hand holds a detached cool furnace nozzle, other a stout adjustable wrench, hose coiled on belt. Relaxed ready posture.",
+      "faceExpected": "covered",
+      "prompt": "IMPORTANT INDIVIDUAL: This worker wears the complete sealed Yautja work biomask described below. Keep all facial skin and mouth covered. Use official anatomy only for fit under mask.\nANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Muscular adult with long torso and powerful legs, dark scalp tendrils separated into four bound bunches. FULL narrow sloped basalt-steel biomask covers all facial skin and mouth, asymmetrical bronze forehead reinforcement and two small cheek vents, no human-style gasmask. Black reinforced sleeves, short dark leather utility apron, copper forearm armor. One hand holds a detached cool furnace nozzle, other a stout adjustable wrench, hose coiled on belt. Relaxed ready posture.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-09.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-0f82af29-1932-4112-bec4-aab2a69688eb.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 928582,
+        "pixel_count": 1572864,
+        "sha256": "537eaa101604009cbdba3c338b4cf70cba6d9de39483c80e2f792ae789357a8f"
+      },
+      "githubBlobSha": "af732c3a9a2757382b1fcb80feb9866012cbd9e4",
+      "faceReview": {
+        "status": "approved",
+        "face": "covered",
+        "sha256": "537eaa101604009cbdba3c338b4cf70cba6d9de39483c80e2f792ae789357a8f",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "10",
+      "name": "Inspectrice des pièces",
+      "description": "Tall adult female, pale slate-grey speckled face, wide upper orbital ridges, long ash-black biological dreadlocks, strict four mandibular lobes and lower upward tusks. Long split leather coat over black fitted work layers, bronze shoulder cover. Holds a short large measuring caliper around a small cool ring casting, compact inspection slate strapped to hip. Precise attentive hands, upright stance.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Tall adult female, pale slate-grey speckled face, wide upper orbital ridges, long ash-black biological dreadlocks, strict four mandibular lobes and lower upward tusks. Long split leather coat over black fitted work layers, bronze shoulder cover. Holds a short large measuring caliper around a small cool ring casting, compact inspection slate strapped to hip. Precise attentive hands, upright stance.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-10.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-66c01021-1fae-4025-b078-baba268b9f59.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 956119,
+        "pixel_count": 1572864,
+        "sha256": "d944c4724226764a00c04448bca8b018951166764df436357c41cc4d78320f81"
+      },
+      "githubBlobSha": "154b3080641b1f33946cca4666fbfb9b91b73f27",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "d944c4724226764a00c04448bca8b018951166764df436357c41cc4d78320f81",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "11",
+      "name": "Opérateur des soufflets",
+      "description": "Medium-height broad adult with amber-brown striped skin, low swept dome, thick mandibular lobes, black dreadlocks in a low bundle. Black heat cloth jacket, bronze clavicle plate, heavily patched brown apron, bronze greaves. Holds a short detached air-flow valve wheel and a compact mechanical flow meter connected by a short closed hose loop. Slight head tilt, steady idle stance.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Medium-height broad adult with amber-brown striped skin, low swept dome, thick mandibular lobes, black dreadlocks in a low bundle. Black heat cloth jacket, bronze clavicle plate, heavily patched brown apron, bronze greaves. Holds a short detached air-flow valve wheel and a compact mechanical flow meter connected by a short closed hose loop. Slight head tilt, steady idle stance.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-11.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-b7f8bd60-1ae5-482a-b274-e35f70eef3ef.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 900537,
+        "pixel_count": 1572864,
+        "sha256": "97db794f7c797404a18bf3e2aeed2ce28a0b7475cc953145a2371c7f5af9532a"
+      },
+      "githubBlobSha": "94591f96613c5ca6c9aa9f1451e5b40c779de92e",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "97db794f7c797404a18bf3e2aeed2ce28a0b7475cc953145a2371c7f5af9532a",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "12",
+      "name": "Artisane du refroidissement",
+      "description": "Slender older adult female, grey-olive skin, deep alien brow folds, silver-streaked thick tendrils, clear four external jaws; simple protective goggles rest above brow. Soot-black long-sleeve tunic, light bronze elbow covers and long pocketed leather apron. Holds a small closed cooling-system regulator and a fine maintenance key, belt with two sealed insulated sample capsules. Careful slightly forward-leaning stance.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Slender older adult female, grey-olive skin, deep alien brow folds, silver-streaked thick tendrils, clear four external jaws; simple protective goggles rest above brow. Soot-black long-sleeve tunic, light bronze elbow covers and long pocketed leather apron. Holds a small closed cooling-system regulator and a fine maintenance key, belt with two sealed insulated sample capsules. Careful slightly forward-leaning stance.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-12.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-9e4646c9-6220-4cb8-ac4e-28af784b1c27.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 995784,
+        "pixel_count": 1572864,
+        "sha256": "6a71e1ce2e54ad0c9f122c3da9de77a19d4682a61ececa52728b156e2d9f0734"
+      },
+      "githubBlobSha": "a5d9127d036ad8afe9479d13b21ab01d9d14fcf7",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "6a71e1ce2e54ad0c9f122c3da9de77a19d4682a61ececa52728b156e2d9f0734",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "13",
+      "name": "Leveur de charges",
+      "description": "Extremely tall muscular adult with broad limbs and dense thick dreadlocks gathered short behind. FULL segmented dark steel foundry biomask covers face/mouth, massive bronze jaw guard, wide low ridged crest and thin amber visor band with no letters. Heavy padded black lifting harness, copper-bronze shoulders and shin armor, short split leather apron. Holds a closed lifting clamp gripping a single cool small metal billet kept close to torso. Strong weight-bearing stance.",
+      "faceExpected": "covered",
+      "prompt": "IMPORTANT INDIVIDUAL: This worker wears the complete sealed Yautja work biomask described below. Keep all facial skin and mouth covered. Use official anatomy only for fit under mask.\nANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Extremely tall muscular adult with broad limbs and dense thick dreadlocks gathered short behind. FULL segmented dark steel foundry biomask covers face/mouth, massive bronze jaw guard, wide low ridged crest and thin amber visor band with no letters. Heavy padded black lifting harness, copper-bronze shoulders and shin armor, short split leather apron. Holds a closed lifting clamp gripping a single cool small metal billet kept close to torso. Strong weight-bearing stance.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-13.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-3fe9d16a-75e9-41be-9029-0f9d77e6495d.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 893783,
+        "pixel_count": 1572864,
+        "sha256": "c919013620eff167441d8ee5ccf71d83c61ecc91a5f9af5ecc4bbf4aac142e82"
+      },
+      "githubBlobSha": "26bb3564b3600d5f76fcf2ecbf625659ee6baa34",
+      "faceReview": {
+        "status": "approved",
+        "face": "covered",
+        "sha256": "c919013620eff167441d8ee5ccf71d83c61ecc91a5f9af5ecc4bbf4aac142e82",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "14",
+      "name": "Fondeuse des plaques",
+      "description": "Strong adult female with broad green-grey mottled head, robust brow crest, four fleshy mandible lobes with thick lower upward tusks, long tendrils in two tied bundles. Black crossover heat tunic, broad copper-bronze forearm plates, asymmetric leather apron. Holds a single small cool cast metal plate vertically against one hip and a short blunt finishing hammer down in the other hand. Open calm posture.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Strong adult female with broad green-grey mottled head, robust brow crest, four fleshy mandible lobes with thick lower upward tusks, long tendrils in two tied bundles. Black crossover heat tunic, broad copper-bronze forearm plates, asymmetric leather apron. Holds a single small cool cast metal plate vertically against one hip and a short blunt finishing hammer down in the other hand. Open calm posture.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-14.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5dedda2f-27ae-420b-90f6-ce9e2f2a3216.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 940681,
+        "pixel_count": 1572864,
+        "sha256": "8b5f3953cbc217b50493a47dc5f1d2a37423cd6157cd19a44aad33ac69e192fc"
+      },
+      "githubBlobSha": "fa999d25482700f5cf2fed4ea049008e71f28097",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "8b5f3953cbc217b50493a47dc5f1d2a37423cd6157cd19a44aad33ac69e192fc",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "15",
+      "name": "Technicien des protections",
+      "description": "Compact adult with thick neck, short tightly bound dreadlocks, full angular bronze-black safety biomask hides face/mouth, swept flat forehead and paired side intake slots, compact amber eyes. Black hood rests behind head, heavy dark leather chest bib, bronze knee protectors. Holds a spare small insulated wrist shield in one hand, other examines a fastened strap, tool roll secured to waist. Quiet standing stance.",
+      "faceExpected": "covered",
+      "prompt": "IMPORTANT INDIVIDUAL: This worker wears the complete sealed Yautja work biomask described below. Keep all facial skin and mouth covered. Use official anatomy only for fit under mask.\nANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Compact adult with thick neck, short tightly bound dreadlocks, full angular bronze-black safety biomask hides face/mouth, swept flat forehead and paired side intake slots, compact amber eyes. Black hood rests behind head, heavy dark leather chest bib, bronze knee protectors. Holds a spare small insulated wrist shield in one hand, other examines a fastened strap, tool roll secured to waist. Quiet standing stance.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-15.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-b0f363d2-f44e-4d37-8a63-351832ed1674.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 948900,
+        "pixel_count": 1572864,
+        "sha256": "7ecdd2478dfb94b309bf3aecd2dde175b05080f3fbe85017037646f60b90f561"
+      },
+      "githubBlobSha": "1978a9d698e2db41b7ff6e7a2f1c8856f343de5a",
+      "faceReview": {
+        "status": "approved",
+        "face": "covered",
+        "sha256": "7ecdd2478dfb94b309bf3aecd2dde175b05080f3fbe85017037646f60b90f561",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "16",
+      "name": "Assistante des creusets",
+      "description": "Young fully adult female with long lean limbs, cool grey densely spotted skin, narrow domed alien skull, thick shoulder-length biological tendrils with copper rings, four external mandibles readable. Simple black cross-wrap work tunic over fitted trousers, short leather apron and bronze bracers. Holds a cool empty small crucible with thick work gloves at mid-torso, short pair of tongs folded safely in belt. Easy attentive posture.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Young fully adult female with long lean limbs, cool grey densely spotted skin, narrow domed alien skull, thick shoulder-length biological tendrils with copper rings, four external mandibles readable. Simple black cross-wrap work tunic over fitted trousers, short leather apron and bronze bracers. Holds a cool empty small crucible with thick work gloves at mid-torso, short pair of tongs folded safely in belt. Easy attentive posture.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-16.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-34b93d46-4aa9-4caa-9e91-d12cd8eb2b11.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 1106372,
+        "pixel_count": 1572864,
+        "sha256": "b25a5e88439f5108980b92e8074a7d7447d70d2a3e1706abe720e7540c2db48e"
+      },
+      "githubBlobSha": "75b2adb281e2c78ab1a18627de4abfaf1219f294",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "b25a5e88439f5108980b92e8074a7d7447d70d2a3e1706abe720e7540c2db48e",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "17",
+      "name": "Maître des alliages",
+      "description": "Very old broad adult with pale grey-ochre speckled skin, deeply furrowed alien brow, four prominent fleshy jaws, one naturally worn shorter upper tusk, long silver-black thick tendrils. Repaired dark leather long apron over black work coat, bronze collar clasp, wrapped shins. Holds a compact closed alloy assay box with separate small cast samples in secured slots and a short testing probe. Calm experienced stance.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Very old broad adult with pale grey-ochre speckled skin, deeply furrowed alien brow, four prominent fleshy jaws, one naturally worn shorter upper tusk, long silver-black thick tendrils. Repaired dark leather long apron over black work coat, bronze collar clasp, wrapped shins. Holds a compact closed alloy assay box with separate small cast samples in secured slots and a short testing probe. Calm experienced stance.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-17.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-2c45365e-4b31-41d8-a04d-29887eb7e312.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 914378,
+        "pixel_count": 1572864,
+        "sha256": "f9a8f8ccbbee972e0b9f15a5fdca642c807f8faaffee24e526b5d522bef06ca0"
+      },
+      "githubBlobSha": "2b5b2c5cc10a83a312a358c7684ece844097ca14",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "f9a8f8ccbbee972e0b9f15a5fdca642c807f8faaffee24e526b5d522bef06ca0",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "18",
+      "name": "Étalonneur des fours",
+      "description": "Tall slim adult with long precise hands, olive-brown mottled hide, high swept cranial dome, long fine thick scalp tendrils bound low; explicit four external mandible lobes and separate small inner mouth. Black knee-length heat tunic, copper side armor and asymmetric brown leather apron. Holds two small coupled mechanical calibration meters with faint amber glass windows and a safely coiled thin lead. Studying readings without text.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Tall slim adult with long precise hands, olive-brown mottled hide, high swept cranial dome, long fine thick scalp tendrils bound low; explicit four external mandible lobes and separate small inner mouth. Black knee-length heat tunic, copper side armor and asymmetric brown leather apron. Holds two small coupled mechanical calibration meters with faint amber glass windows and a safely coiled thin lead. Studying readings without text.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-18.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-06b26cf4-a8ae-474e-a94e-8022f82db353.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 994691,
+        "pixel_count": 1572864,
+        "sha256": "09c01f20ed785fbd7caeec57244de6fb397d7d86d1e5e3f1dbc88572b44da8d4"
+      },
+      "githubBlobSha": "d6d50c6ee7b143cb88c20dc2171b24e908a361d3",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "09c01f20ed785fbd7caeec57244de6fb397d7d86d1e5e3f1dbc88572b44da8d4",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "19",
+      "name": "Fondeuse des grandes pièces",
+      "description": "Stocky adult female with powerful short legs and broad shoulders, thick black tendrils down shoulders. FULL protective Yautja biomask conceals mouth and face, broad copper-bronze dome, dark center ridges, two narrow amber slits and curved lower faceguard. Heavy short black padded work jacket, bronze shoulder and knee armor, double-layer leather apron. Carries one compact cool bolted mold frame with both hands against belly. Solid low-center stance.",
+      "faceExpected": "covered",
+      "prompt": "IMPORTANT INDIVIDUAL: This worker wears the complete sealed Yautja work biomask described below. Keep all facial skin and mouth covered. Use official anatomy only for fit under mask.\nANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Stocky adult female with powerful short legs and broad shoulders, thick black tendrils down shoulders. FULL protective Yautja biomask conceals mouth and face, broad copper-bronze dome, dark center ridges, two narrow amber slits and curved lower faceguard. Heavy short black padded work jacket, bronze shoulder and knee armor, double-layer leather apron. Carries one compact cool bolted mold frame with both hands against belly. Solid low-center stance.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-19.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-9e9e4a78-dde0-4835-b7e8-2638dd34c47d.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 805949,
+        "pixel_count": 1572864,
+        "sha256": "6d6a29e5744dbcf0311d24e051aa3e9ae12140f84aebce0c8d25e70ceb7c4580"
+      },
+      "githubBlobSha": "743cd576efeb4a0452bb9cedc8bac1d00f68924c",
+      "faceReview": {
+        "status": "approved",
+        "face": "covered",
+        "sha256": "6d6a29e5744dbcf0311d24e051aa3e9ae12140f84aebce0c8d25e70ceb7c4580",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    },
+    {
+      "id": "20",
+      "name": "Contrôleur de sortie",
+      "description": "Long-limbed middle-aged adult with slate hide and gold mottling, high flat alien brow dome, large four external jaws, long biological tendrils gathered into low tail. Sleeveless black leather work overcoat over protected arms, copper forearm guards and dark trousers. Holds an unmarked hinged metal quality-inspection slate tight to torso and raises free hand in a small calm acceptance gesture; cool test casting and short caliper clipped at hip.",
+      "faceExpected": "visible-four-mandibles",
+      "prompt": "ANATOMY HIGHEST PRIORITY: Image1 is the official 1987 Predator mechanical head close-up. Match its actual species anatomy rigorously, including the cranial dome, alien orbital brow folds, reptilian granular skin, no human nose bridge or human lips, and exactly FOUR distinct EXTERNAL fleshy mandibles framing a separate INNER toothed mouth. Two upper cheek mandible lobes each carry one short inward/downward tusk; two larger lower mandible lobes each carry one long upward-curving tusk. For exposed faces, the four fleshy lobes must be individually legible, slightly open in calm neutral expression. If a complete work mask is expressly specified in the individual design, keep that mask instead, correctly fitted over Yautja anatomy; the facial constraints apply to visible skin only. Not two tubes under the nose, not merely two hanging fangs, not an orc/human jaw. Thick scalp tendrils are biological dreadlocks, never human hair. Keep body three-quarter RIGHT but turn exposed FACE three-quarter TOWARD VIEWER enough to clearly show all4 mandibles. Do not copy the photo's human clothing, scene, logos or watermark. Variants can change brow proportions, spots, scars and tendrils, but NEVER simplify this anatomy.\nUse case: stylized-concept. Produce exactly ONE distinct full-body adult Yautja SMELTER NPC of the Forges de la Caldeira volcanic tribe. Image2 is clothing and tribe-material reference: soot-dark basalt steel, worn copper-bronze thermal armor plates, black protective underlayers, tough dark brown leather smelting aprons, reinforced work gloves, tiny controlled amber status vents, practical foundry tongs and instruments. Image3 is cinematic realistic handpainted 2D game art and slightly elevated camera/style reference. Same tribe role but completely new individual in each image, new body proportions, cranium/tendrils or unique fitted Yautja work biomask, garment tailoring, apron and tools. Worker at calm idle between jobs, not fighting. Exposed-face variants are away from active furnace, so any held metal is cool and safe; no flames, smoke, molten stream or sparks. All held tools, feet and full dreadlocks inside frame with at least8% empty transparent margins on every side. Small practical tools rather than weapons; every prop physically held or strapped. Three-quarter body facing RIGHT, exposed face turned slightly toward viewer so all four mandibles readable. Gentle consistent overhead-left lighting, crisp silhouette, detailed leather/metal/fabric. ACTUAL TRANSPARENT ALPHA background. No scene, floor, shadows on ground, lava puddle, platform, scenery, second character, animals, text, numerals, symbols like letters, watermark, frame, atlas or collage. Neither character nor tools cropped.\nDistinct individual design: Long-limbed middle-aged adult with slate hide and gold mottling, high flat alien brow dome, large four external jaws, long biological tendrils gathered into low tail. Sleeveless black leather work overcoat over protected arms, copper forearm guards and dark trousers. Holds an unmarked hinged metal quality-inspection slate tight to torso and raises free hand in a small calm acceptance gesture; cool test casting and short caliper clipped at hip.",
+      "status": "generated",
+      "file": "tribe-lava-smelter-20.png",
+      "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-41279203-28b4-4af9-b82f-f229ad567e74.png",
+      "validation": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "transparent_pixels": 994666,
+        "pixel_count": 1572864,
+        "sha256": "7642c057ed3d6ab583804be45261d1188eb20a703f82527f84b924c6cb213ac1"
+      },
+      "githubBlobSha": "3b56df7fc891db4b3310f306fde38eeb91dc52a7",
+      "faceReview": {
+        "status": "approved",
+        "face": "visible-four-mandibles",
+        "sha256": "7642c057ed3d6ab583804be45261d1188eb20a703f82527f84b924c6cb213ac1",
+        "review": "Complete generated PNG visually inspected against official 1987 reference."
+      }
+    }
+  ],
+  "completed": 20,
+  "officiallyReviewedSlots": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ]
+}

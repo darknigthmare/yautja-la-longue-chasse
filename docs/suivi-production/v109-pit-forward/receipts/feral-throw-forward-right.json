@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T08:44:27.224189+00:00",
+  "tool": "image_gen.imagegen",
+  "attemptId": "feral-throw-forward-right",
+  "submittedPrompt": "Edit the supplied animation study reference image(s) into a NEW production hunter-only animation atlas. Preserve the reference character incarnation and detailed painted game style. The gray training mannequin is baked into the old reference: remove it COMPLETELY from every pose and redraw the hunter anatomy previously occluded by it. No victim, mannequin, second actor, partner hands, floating prop, gray residue, text, numbers, grid lines, ground, brown glow or vignette may remain. True transparent RGBA background, not black or checkerboard. Deliver ONE landscape sprite sheet, intended 1536x1024, EXACTLY 6 separate drawings arranged THREE columns by TWO rows, six equal square cells, 48px minimum transparent gutter around every complete silhouette. Character is Feral, exactly the bone-mask long-limbed hunter of the references, mottled ochre skin, braided black dreadlocks, rough hide waist armor, anatomical LEFT forearm round shield and anatomical RIGHT wrist blades, no shoulder cannon. All six are drawn naturally facing screen RIGHT; this orientation must be separately rendered with correct equipment sides, NEVER a mirror of the opposite direction. Stable character proportions and scale, head-to-sole roughly350px per512px cell; ground baseline y=488 within each cell; no limb/weapon/dreadlock may leave its cell. Exactly two arms and two legs in each drawing, coherent joints and clawed hands. Read left-to-right then top-to-bottom: 0 ready and step into a close forward throw; 1 reach to seize an ABSENT partner's upper torso, own empty grabbing hand clearly visible; 2 lower hips and load the ABSENT partner over the leading hip/shoulder with both own limbs anatomically reconstructed; 3 drive and release the ABSENT partner FORWARD toward screen RIGHT, open grabbing hand and weight transfer; 4 controlled forward follow-through; 5 recover to the SAME ready guard and equipment. Each image depicts only the hunter's own body and attached owned equipment. Preserve shield/spear ownership through all six phases; do not invent or drop equipment. New original adaptation of the proposed game move, not a claim of a movie frame.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/yautja-la-longue-chasse/public/game/sprites/v100/pit/feral/022-throw-forward-right-a.png",
+      "preservedPath": "public/game/sprites/v100/pit/feral/022-throw-forward-right-a.png",
+      "sha256": "05efda7d52febc378376665c14e92af6a4dd97cf0926c0d4f49efa25d8a575f2",
+      "bytes": 1879201
+    },
+    {
+      "submittedPath": "/workspace/yautja-la-longue-chasse/public/game/sprites/v100/pit/feral/023-throw-forward-right-b.png",
+      "preservedPath": "public/game/sprites/v100/pit/feral/023-throw-forward-right-b.png",
+      "sha256": "c66026d3c77787d6d3b16926fa5b9386046a02e369c9c8edba31dd131cbbec5e",
+      "bytes": 1800607
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-e0413089-db5f-41e5-9e03-25ccc601c0ab.png",
+  "output": {
+    "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+    "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+    "bytes": 2316771,
+    "width": 1536,
+    "height": 1024
+  },
+  "status": "SELECTED_SOURCE_REGIONS",
+  "filesEditedAfterGeneration": false,
+  "scope": "Local tool call record, not an external signed certificate. Original adaptations; no film-exact fidelity or source action completion is inferred."
+}

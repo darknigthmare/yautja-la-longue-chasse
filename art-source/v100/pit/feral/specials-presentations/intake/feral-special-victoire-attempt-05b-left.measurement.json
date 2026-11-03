@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-victoire-attempt-05b-left.png",
+  "sourceSha256": "426fb88e6cc3a89d9445676b4a7c85ff983111546e02447ad8fd194c9f8843e8",
+  "bytes": 2323622,
+  "width": 1024,
+  "height": 1536,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 2,
+  "strategy": "row-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "y",
+      "row": 1,
+      "start": 690,
+      "end": 806,
+      "cut": 748
+    },
+    {
+      "axis": "x",
+      "row": 0,
+      "column": 1,
+      "start": 501,
+      "end": 522,
+      "cut": 511
+    },
+    {
+      "axis": "x",
+      "row": 1,
+      "column": 1,
+      "start": 506,
+      "end": 523,
+      "cut": 514
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        512,
+        749
+      ],
+      "visibleRect": [
+        29,
+        62,
+        472,
+        628
+      ],
+      "alphaPixels": 121093,
+      "borderPixels": 0,
+      "visiblePixelSha256": "8aa62d84377bf4391f6fcbc33555442e82b4f7efc47fd815ccdf82281b4504d6",
+      "pivotCandidate": [
+        218,
+        690
+      ],
+      "visibleHeightCandidate": 628
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        511,
+        0,
+        513,
+        749
+      ],
+      "visibleRect": [
+        523,
+        69,
+        501,
+        621
+      ],
+      "alphaPixels": 121580,
+      "borderPixels": 1,
+      "visiblePixelSha256": "ef7e5e68a50ae5200735585c70497f2f414ccad8f245fac7efa2547a8372be5d",
+      "pivotCandidate": [
+        199.5,
+        690
+      ],
+      "visibleHeightCandidate": 621
+    },
+    {
+      "index": 2,
+      "row": 1,
+      "column": 0,
+      "rect": [
+        0,
+        748,
+        515,
+        788
+      ],
+      "visibleRect": [
+        33,
+        807,
+        473,
+        637
+      ],
+      "alphaPixels": 128074,
+      "borderPixels": 0,
+      "visiblePixelSha256": "12e0320f0a3398c947b451302240234d52ea2c6e3ba35fd472bfbb818e397a54",
+      "pivotCandidate": [
+        218.5,
+        696
+      ],
+      "visibleHeightCandidate": 637
+    },
+    {
+      "index": 3,
+      "row": 1,
+      "column": 1,
+      "rect": [
+        514,
+        748,
+        510,
+        788
+      ],
+      "visibleRect": [
+        524,
+        814,
+        485,
+        629
+      ],
+      "alphaPixels": 124902,
+      "borderPixels": 0,
+      "visiblePixelSha256": "d80111a750f75031c7cd8f7157c6b9f04c16170c6709af6657faeb757d28633c",
+      "pivotCandidate": [
+        186.5,
+        695
+      ],
+      "visibleHeightCandidate": 629
+    }
+  ],
+  "issues": [
+    "Visible pixels touch the crop border in cell 1/2"
+  ]
+}

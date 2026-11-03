@@ -1,0 +1,50 @@
+[
+  {
+    "index": 1,
+    "name": "Fetch the exact public source snapshot without moving the current checkout",
+    "run": "git -c protocol.file.allow=never fetch --filter=blob:none --no-tags --depth=1 origin 03cf51badd450338d748da55599a317a71debd28",
+    "bashSyntax": "PASS"
+  },
+  {
+    "index": 2,
+    "name": "Reproduce the dated workbook from its pinned historical sources and current candidate files",
+    "run": "python3 scripts/build-open-production-workbook-v113.py --check",
+    "bashSyntax": "PASS"
+  },
+  {
+    "index": 3,
+    "name": "Compare all appended cells and preserve the original 122 worksheets",
+    "run": "python3 scripts/verify-open-production-workbook-v113.py",
+    "bashSyntax": "PASS"
+  },
+  {
+    "index": 4,
+    "name": "Reject altered source claims, historic cells and current products",
+    "run": "python3 tests/open-production-workbook-v113.test.py",
+    "bashSyntax": "PASS"
+  },
+  {
+    "index": 5,
+    "name": "Install pinned native PNG verification dependency in an isolated environment",
+    "run": "python3 -m venv \"$RUNNER_TEMP/v114-python\"\n\"$RUNNER_TEMP/v114-python/bin/python\" -m pip install --disable-pip-version-check --only-binary=:all: Pillow==12.3.0\necho \"$RUNNER_TEMP/v114-python/bin\" >> \"$GITHUB_PATH\"\n",
+    "bashSyntax": "PASS"
+  },
+  {
+    "index": 6,
+    "name": "Verify V114 native PNGs, source cells and all 130 historical worksheets",
+    "run": "python3 production/native-open-20261102/tools/verify-native-open-workbook-v114.py",
+    "bashSyntax": "PASS"
+  },
+  {
+    "index": 7,
+    "name": "Reproduce the five appended V114 sheets and their exact workbook bytes",
+    "run": "python3 production/native-open-20261102/tools/build-native-open-workbook-v114.py --check",
+    "bashSyntax": "PASS"
+  },
+  {
+    "index": 8,
+    "name": "Reject corrupt V114 sources, titles, historical cells and false admissions",
+    "run": "python3 production/native-open-20261102/tools/test-native-open-workbook-v114.py",
+    "bashSyntax": "PASS"
+  }
+]

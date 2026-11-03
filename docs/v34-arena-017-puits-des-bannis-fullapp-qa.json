@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-13T00:39:25.668Z",
+  "surface": "full-application-play-pit-training",
+  "verifiedContentVersion": "V35",
+  "fighters": [
+    "jungle-hunter",
+    "city-hunter"
+  ],
+  "fighterArtStates": [
+    {
+      "slot": 0,
+      "fighterId": "jungle-hunter",
+      "facing": "right",
+      "idleStatus": "sprite-sheet-animation"
+    },
+    {
+      "slot": 1,
+      "fighterId": "city-hunter",
+      "facing": "left",
+      "idleStatus": "sprite-sheet-animation"
+    }
+  ],
+  "url": "http://127.0.0.1:4173",
+  "checks": [
+    {
+      "name": "live-match",
+      "arena": "arena-017-puits-des-bannis",
+      "planes": "P0,P1,P2,P3,P4,P5",
+      "source": "openai-v33-independent",
+      "loadedImages": 14,
+      "subplans": 14,
+      "missing": 0
+    }
+  ],
+  "loadedImageFiles": [
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p0-a-depth.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-a-distant-left.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-b-distant-right.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p2-a-support-left.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p2-b-support-right.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p2-c-central-structure.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-a-prop-left.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-b-prop-right.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-c-light-left.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-d-light-right.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-a-foreground-left.png",
+    "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-b-foreground-right.png"
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": []
+}

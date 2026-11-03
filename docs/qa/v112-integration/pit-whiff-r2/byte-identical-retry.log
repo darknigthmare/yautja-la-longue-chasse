@@ -1,0 +1,13 @@
+PASS feral-hunter-vs-scar: local app serves the declared build
+PASS feral-hunter-vs-scar: public option enters the separate V17 source recipe
+FAIL feral-hunter-vs-scar: real out-of-range L+M whiffs without damage or an invented target
+AssertionError [ERR_ASSERTION]: feral-hunter-vs-scar: real out-of-range L+M whiffs without damage or an invented target
+    at check (file:///workspace/yautja-la-longue-chasse/scripts/qa-pit-backward-throws-v112.mjs:68:194)
+    at file:///workspace/yautja-la-longue-chasse/scripts/qa-pit-backward-throws-v112.mjs:294:5 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

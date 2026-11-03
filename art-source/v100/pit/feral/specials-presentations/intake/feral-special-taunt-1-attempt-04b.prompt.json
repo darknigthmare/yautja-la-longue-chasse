@@ -1,0 +1,18 @@
+{
+  "name": "feral-special-taunt-1-attempt-04b",
+  "actionId": "CIN_F006_TAUNT_1",
+  "sourceSheet": "07_PRESENTATIONS",
+  "sourceCell": "F10",
+  "columns": 2,
+  "rows": 4,
+  "refs": [
+    "/workspace/yautja-la-longue-chasse/art-source/v100/pit/feral/specials-presentations/intake/feral-special-taunt-1-attempt-03b.png"
+  ],
+  "prompt": "REMOVE ALL BACKGROUND from this exact eight-pose Feral sprite sheet and output TRUE TRANSPARENT RGBA. Every empty pixel outside the eight complete body/weapon silhouettes must be ALPHA=0, including all brown/gray gradients, glow, haze, shadows and gutters. No semitransparent background noise; do not paint a checkerboard or black rectangle. Preserve the SAME eight articulated poses, TWO columns FOUR rows,1024x1536canvas, original small body sizes, complete feet/blades/shield and huge empty gutters. SourceF10 final half: top row calibration; row2 separate arms after clack; row3 deliberate open-chested guard gap; row4 loose neutral. Keep the TWO STRAIGHT SILVER BLADES CONTINUOUSLY ATTACHED TO RIGHT WRIST IN ALL EIGHT POSES, including both row3 open arms. Blade bases connect physically to the same RIGHT gauntlet, no finger claws or hand-held blades. LEFT shield remains on LEFT forearm. Preserve corrected right/left independent anatomy, no mirror/rig, no extra arm or weapon. No cannon/launcher/spear/sword, no effects, background, ground or shadow. Only remove the alpha background through native redraw; retain the corrected action and weapon ownership.",
+  "status": "GENERATED_REVIEW_REQUIRED",
+  "transparent_background": true,
+  "owner": "clans_v100 delegated correction",
+  "originalGeneratedPath": "/workspace/generated_images/exec-bd43fbea-6c3e-489b-8d99-a45283e3b071.png",
+  "sourceSha256": "4bb059af2e83711668335fef5403f6572d06bd2ae167b4949fe717a23d4d77a4",
+  "pixelEdits": false
+}

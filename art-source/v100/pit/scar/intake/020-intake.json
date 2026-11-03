@@ -1,0 +1,35 @@
+{
+  "id": "scar-v100-020",
+  "generator": "OpenAI image_gen",
+  "original": "art-source/v100/pit/scar/intake/020-scar-jH-left-original.png",
+  "generatedOriginal": "/workspace/generated_images/exec-e16b9733-5037-444d-9b96-be661b3fd498.png",
+  "prompt": "020-prompt.txt",
+  "sourceCells": [
+    "05_MOVES_PROPOSES!L7"
+  ],
+  "fighterId": "scar",
+  "appearanceId": "runtime-default",
+  "facing": "left",
+  "transparentBackgroundRequested": true,
+  "sha256": "e5224a115796a3028c9d59b683230ca267a170d654399484cc080b9a20a5805e",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 1625169,
+  "status": "rejected-full-cycle-continuity",
+  "layout": {
+    "columns": 2,
+    "rows": 2,
+    "referenceFrameIndices": [
+      0
+    ],
+    "actionFrames": [
+      1,
+      2,
+      3
+    ]
+  },
+  "decision": "Independent qa_v100 visual review: Anticipation faces right, contact and landing face left; partial only, not full left cycle.",
+  "referenceImages": [
+    "public/game/sprites/v34/pit/scar/scar-idle-v34.png"
+  ]
+}

@@ -1,0 +1,839 @@
+{
+  "version": 12,
+  "prologue": null,
+  "youthTraining": null,
+  "soloV66": null,
+  "soloV67": null,
+  "soloV68": null,
+  "soloV69": null,
+  "soloV70": null,
+  "homeworldRegionV68": null,
+  "homeworldPassageV67": null,
+  "gameReserveV66": null,
+  "createdAt": "2026-11-02T00:00:00.000Z",
+  "updatedAt": "2026-11-02T05:08:27.468Z",
+  "profile": {
+    "hunterName": "Chasseur sans nom",
+    "rankId": "elder",
+    "honor": 3278,
+    "clanMarks": 4597,
+    "playTimeSeconds": 760
+  },
+  "inventory": {
+    "fieldToolIds": [],
+    "harvestV112": {
+      "version": 1,
+      "specimens": [],
+      "toolCondition": 100,
+      "toolUseIds": [],
+      "jobs": [],
+      "settledEncounterRuns": {
+        "jungle-vey": 0,
+        "ice-cryostalker": 0,
+        "volcano-bad-blood": 0,
+        "swamp-hydra": 0,
+        "desert-sandmaw": 0,
+        "ocean-leviathan": 0,
+        "fungal-hivemind": 0,
+        "ruins-ancient-guardian": 0
+      },
+      "archive": []
+    },
+    "unlockedWeaponIds": [
+      "wristblades",
+      "combistick",
+      "plasma-caster",
+      "yautja-bow",
+      "smart-disc"
+    ],
+    "unlockedGearIds": [
+      "motion-sensor",
+      "audio-decoy",
+      "netgun",
+      "snare"
+    ],
+    "unlockedArmorIds": [
+      "hunter",
+      "scout",
+      "berserker"
+    ],
+    "weaponUpgrades": {
+      "wristblades": 0,
+      "combistick": 0,
+      "plasma-caster": 0,
+      "smart-disc": 0,
+      "yautja-bow": 0
+    },
+    "gearUpgrades": {
+      "netgun": 0,
+      "motion-sensor": 0,
+      "audio-decoy": 0,
+      "snare": 0
+    },
+    "armorUpgrades": {
+      "scout": 0,
+      "hunter": 0,
+      "berserker": 0
+    }
+  },
+  "loadout": {
+    "armorId": "hunter",
+    "weaponIds": [
+      "combistick",
+      "plasma-caster"
+    ],
+    "gearIds": [
+      "motion-sensor",
+      "audio-decoy"
+    ]
+  },
+  "appearance": {
+    "presetId": "jungle-hunter",
+    "bodyMorphId": "classic",
+    "headStyleId": "reference",
+    "skinId": "ochre-mottle",
+    "biomaskId": "jungle",
+    "dreadStyleId": "classic",
+    "dreadTintId": "obsidian",
+    "armorStyleId": "classic",
+    "armorTintId": "bronze",
+    "skinMaterialId": null,
+    "dreadMaterialId": null,
+    "outfitMaterialId": null,
+    "trophyAdornmentId": "skull-spine",
+    "laserColorId": "crimson"
+  },
+  "missionProgress": {
+    "jungle-vey": {
+      "status": "completed",
+      "attempts": 1,
+      "completions": 1,
+      "bestScore": 98,
+      "bestTimeSeconds": 64,
+      "bestDifficultyId": "hunter",
+      "completedObjectiveIds": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey",
+        "extract-jungle-trophy"
+      ],
+      "lastPlayedAt": "2026-11-02T05:07:48.327Z"
+    },
+    "ice-cryostalker": {
+      "status": "completed",
+      "attempts": 1,
+      "completions": 1,
+      "bestScore": 94,
+      "bestTimeSeconds": 61,
+      "bestDifficultyId": "hunter",
+      "completedObjectiveIds": [
+        "scan-ice-traces",
+        "hunt-cryorunners",
+        "defeat-cryostalker",
+        "extract-ice-trophy"
+      ],
+      "lastPlayedAt": "2026-11-02T05:07:51.243Z"
+    },
+    "volcano-bad-blood": {
+      "status": "completed",
+      "attempts": 1,
+      "completions": 1,
+      "bestScore": 100,
+      "bestTimeSeconds": 80,
+      "bestDifficultyId": "hunter",
+      "completedObjectiveIds": [
+        "scan-fallen-hunters",
+        "recover-stolen-beacons",
+        "defeat-bad-blood",
+        "escape-self-destruct"
+      ],
+      "lastPlayedAt": "2026-11-02T05:07:56.008Z"
+    },
+    "swamp-hydra": {
+      "status": "completed",
+      "attempts": 1,
+      "completions": 1,
+      "bestScore": 96,
+      "bestTimeSeconds": 93,
+      "bestDifficultyId": "hunter",
+      "completedObjectiveIds": [
+        "swamp-hydra-scan",
+        "swamp-hydra-hunt",
+        "swamp-hydra-recover",
+        "swamp-hydra-boss",
+        "swamp-hydra-extract"
+      ],
+      "lastPlayedAt": "2026-11-02T05:08:01.734Z"
+    },
+    "desert-sandmaw": {
+      "status": "completed",
+      "attempts": 1,
+      "completions": 1,
+      "bestScore": 100,
+      "bestTimeSeconds": 108,
+      "bestDifficultyId": "hunter",
+      "completedObjectiveIds": [
+        "desert-sandmaw-scan",
+        "desert-sandmaw-hunt",
+        "desert-sandmaw-recover",
+        "desert-sandmaw-boss",
+        "desert-sandmaw-extract"
+      ],
+      "lastPlayedAt": "2026-11-02T05:08:07.906Z"
+    },
+    "ocean-leviathan": {
+      "status": "completed",
+      "attempts": 1,
+      "completions": 1,
+      "bestScore": 94,
+      "bestTimeSeconds": 126,
+      "bestDifficultyId": "hunter",
+      "completedObjectiveIds": [
+        "ocean-leviathan-scan",
+        "ocean-leviathan-hunt",
+        "ocean-leviathan-recover",
+        "ocean-leviathan-boss",
+        "ocean-leviathan-extract"
+      ],
+      "lastPlayedAt": "2026-11-02T05:08:13.984Z"
+    },
+    "fungal-hivemind": {
+      "status": "completed",
+      "attempts": 1,
+      "completions": 1,
+      "bestScore": 95,
+      "bestTimeSeconds": 103,
+      "bestDifficultyId": "hunter",
+      "completedObjectiveIds": [
+        "fungal-hivemind-scan",
+        "fungal-hivemind-hunt",
+        "fungal-hivemind-recover",
+        "fungal-hivemind-boss",
+        "fungal-hivemind-extract"
+      ],
+      "lastPlayedAt": "2026-11-02T05:08:20.346Z"
+    },
+    "ruins-ancient-guardian": {
+      "status": "completed",
+      "attempts": 1,
+      "completions": 1,
+      "bestScore": 94,
+      "bestTimeSeconds": 125,
+      "bestDifficultyId": "hunter",
+      "completedObjectiveIds": [
+        "ruins-ancient-guardian-scan",
+        "ruins-ancient-guardian-hunt",
+        "ruins-ancient-guardian-recover",
+        "ruins-ancient-guardian-boss",
+        "ruins-ancient-guardian-extract"
+      ],
+      "lastPlayedAt": "2026-11-02T05:08:27.452Z"
+    }
+  },
+  "trophies": [
+    {
+      "id": "jungle-vey-apex-mvyssf5u-nw-n2x51rev",
+      "definitionId": "trophy-vey",
+      "targetName": "Commandante Vey",
+      "targetKind": "human",
+      "partId": "insignia",
+      "condition": "pristine",
+      "missionId": "jungle-vey",
+      "quality": "elite",
+      "difficultyId": "hunter",
+      "score": 98,
+      "claimedAt": "2026-11-02T05:07:48.327Z"
+    },
+    {
+      "id": "ice-cryostalker-apex-mvyssh7j-kj-qkjv6qsx",
+      "definitionId": "trophy-cryostalker",
+      "targetName": "Cryostalker Alpha",
+      "targetKind": "beast",
+      "partId": "skull-and-spine",
+      "condition": "intact",
+      "missionId": "ice-cryostalker",
+      "quality": "flawless",
+      "difficultyId": "hunter",
+      "score": 94,
+      "claimedAt": "2026-11-02T05:07:51.243Z"
+    },
+    {
+      "id": "volcano-bad-blood-apex-mvysskog-10v-6p7zlzyz",
+      "definitionId": "trophy-bad-blood",
+      "targetName": "Le Bad Blood",
+      "targetKind": "yautja",
+      "partId": "mask",
+      "condition": "intact",
+      "missionId": "volcano-bad-blood",
+      "quality": "flawless",
+      "difficultyId": "hunter",
+      "score": 100,
+      "claimedAt": "2026-11-02T05:07:56.008Z"
+    },
+    {
+      "id": "swamp-hydra-apex-mvysspbr-qr-wxbg2zde",
+      "definitionId": "trophy-swamp-hydra",
+      "targetName": "Hydre de vase",
+      "targetKind": "beast",
+      "partId": "skull-and-spine",
+      "condition": "pristine",
+      "missionId": "swamp-hydra",
+      "quality": "flawless",
+      "difficultyId": "hunter",
+      "score": 96,
+      "claimedAt": "2026-11-02T05:08:01.734Z"
+    },
+    {
+      "id": "desert-sandmaw-apex-mvysstzy-za-h7k2dcyc",
+      "definitionId": "trophy-desert-sandmaw",
+      "targetName": "Matriarche Sandmaw",
+      "targetKind": "beast",
+      "partId": "skull",
+      "condition": "intact",
+      "missionId": "desert-sandmaw",
+      "quality": "elite",
+      "difficultyId": "hunter",
+      "score": 100,
+      "claimedAt": "2026-11-02T05:08:07.906Z"
+    },
+    {
+      "id": "ocean-leviathan-apex-mvyssyra-zq-0vbn5w52",
+      "definitionId": "trophy-ocean-leviathan",
+      "targetName": "Léviathan abyssal",
+      "targetKind": "beast",
+      "partId": "skull-and-spine",
+      "condition": "intact",
+      "missionId": "ocean-leviathan",
+      "quality": "flawless",
+      "difficultyId": "hunter",
+      "score": 94,
+      "claimedAt": "2026-11-02T05:08:13.984Z"
+    },
+    {
+      "id": "fungal-hivemind-apex-mvyst3ob-um-l58dve5k",
+      "definitionId": "trophy-fungal-hivemind",
+      "targetName": "Cœur-Mère mycélien",
+      "targetKind": "beast",
+      "partId": "skull",
+      "condition": "pristine",
+      "missionId": "fungal-hivemind",
+      "quality": "flawless",
+      "difficultyId": "hunter",
+      "score": 95,
+      "claimedAt": "2026-11-02T05:08:20.346Z"
+    },
+    {
+      "id": "ruins-ancient-guardian-apex-mvyst90z-1b2-ctmkgm0d",
+      "definitionId": "trophy-ruins-ancient-guardian",
+      "targetName": "Gardien d'obsidienne",
+      "targetKind": "beast",
+      "partId": "mask",
+      "condition": "intact",
+      "missionId": "ruins-ancient-guardian",
+      "quality": "elite",
+      "difficultyId": "hunter",
+      "score": 94,
+      "claimedAt": "2026-11-02T05:08:27.452Z"
+    }
+  ],
+  "exploration": {
+    "abilityIds": [],
+    "openedGateIds": [],
+    "secretIds": [],
+    "discoveredRoomIds": [
+      "jungle-pilot-approach",
+      "jungle-pilot-underpass",
+      "jungle-pilot-module",
+      "jungle-pilot-ravine",
+      "jungle-pilot-river-caves",
+      "jungle-pilot-vey-camp",
+      "jungle-pilot-duel-extraction",
+      "ice-region-approach",
+      "ice-region-shaft",
+      "ice-region-return",
+      "volcano-forge-approach",
+      "volcano-forge-return",
+      "swamp-brood-approach",
+      "swamp-brood-return",
+      "desert-crypt-approach",
+      "desert-crypt-return",
+      "ocean-pressure-approach",
+      "ocean-pressure-return",
+      "fungal-memory-approach",
+      "fungal-memory-return",
+      "ruins-oracle-approach",
+      "ruins-oracle-return"
+    ]
+  },
+  "codex": {
+    "unlockedEntryIds": [
+      "yautja-honor",
+      "biomask",
+      "cloaking-device",
+      "osiris-jungle",
+      "commandante-vey",
+      "nivalis-ice",
+      "cryostalker",
+      "cinder-volcano",
+      "bad-blood",
+      "naraka-swamp",
+      "mire-hydra",
+      "serekh-desert",
+      "sandmaw",
+      "pelagos-ocean",
+      "abyss-leviathan",
+      "mycora-fungal",
+      "hivemind",
+      "acheron-ruins",
+      "ancient-guardian"
+    ],
+    "discoveredEnemyIds": [
+      "common--weyland-security-synth",
+      "nivalis-k--cryo-prospector",
+      "cinder-12--bad-blood-initiate",
+      "naraka-delta--blood-reed",
+      "naraka-delta--fen-leaper",
+      "naraka-delta--delta-hydra-juvenile",
+      "serekh-9--burrow-snake",
+      "serekh-9--dune-raider",
+      "serekh-9--sandmaw-juvenile",
+      "pelagos-m--storm-eel",
+      "pelagos-m--tide-octopus",
+      "pelagos-m--glass-sponge",
+      "pelagos-m--salvage-synth",
+      "pelagos-m--leviathan-spawn",
+      "mycora-v--hive-avatar",
+      "acheron-sigma--sentinel-drone",
+      "acheron-sigma--archive-mold",
+      "acheron-sigma--ancient-guardian"
+    ],
+    "scanCounts": {
+      "yautja-honor": 4,
+      "biomask": 4,
+      "cloaking-device": 4,
+      "osiris-jungle": 4,
+      "commandante-vey": 4,
+      "nivalis-ice": 6,
+      "cryostalker": 6,
+      "cinder-volcano": 5,
+      "bad-blood": 5,
+      "naraka-swamp": 6,
+      "mire-hydra": 6,
+      "serekh-desert": 6,
+      "sandmaw": 6,
+      "pelagos-ocean": 8,
+      "abyss-leviathan": 8,
+      "mycora-fungal": 4,
+      "hivemind": 4,
+      "acheron-ruins": 6,
+      "ancient-guardian": 6
+    }
+  },
+  "statistics": {
+    "missionsStarted": 8,
+    "missionsCompleted": 8,
+    "missionsFailed": 0,
+    "totalKills": 93,
+    "totalScans": 45,
+    "secondWindsUsed": 0,
+    "bestHuntStreak": 8,
+    "currentHuntStreak": 8
+  },
+  "settings": {
+    "huntAccessibility": {
+      "version": 1,
+      "ritualTiming": "normal",
+      "ritualConfirm": "press",
+      "gripInput": "hold",
+      "aimInput": "hold",
+      "fieldGuide": true,
+      "largeGlyphs": true,
+      "gamepadButtons": {
+        "jump": 0,
+        "melee": 2,
+        "weapon": 7,
+        "scan": 4,
+        "cloak": 3,
+        "heal": 5,
+        "interact": 1,
+        "weaponNext": 8,
+        "gearOne": 10,
+        "gearTwo": 11,
+        "pause": 9,
+        "aim": 6
+      }
+    },
+    "difficultyId": "hunter",
+    "masterVolume": 0.8,
+    "musicVolume": 0.65,
+    "effectsVolume": 0.85,
+    "screenShake": true,
+    "reducedGore": false,
+    "highContrastVision": false,
+    "controlBindings": {
+      "hunt.moveLeft": [
+        "KeyQ",
+        "ArrowLeft"
+      ],
+      "hunt.moveRight": [
+        "KeyD",
+        "ArrowRight"
+      ],
+      "hunt.moveUp": [
+        "KeyZ",
+        "ArrowUp"
+      ],
+      "hunt.moveDown": [
+        "KeyS",
+        "ArrowDown"
+      ],
+      "hunt.jump": [
+        "Space"
+      ],
+      "hunt.melee": [
+        "KeyJ"
+      ],
+      "hunt.weaponPrimary": [
+        "KeyK"
+      ],
+      "hunt.selectWeaponOne": [
+        "Digit1",
+        "Numpad1"
+      ],
+      "hunt.selectWeaponTwo": [
+        "Digit2",
+        "Numpad2"
+      ],
+      "hunt.nextWeapon": [
+        "KeyR"
+      ],
+      "hunt.aim": [
+        "ShiftLeft",
+        "ShiftRight"
+      ],
+      "hunt.toggleMask": [
+        "KeyM"
+      ],
+      "hunt.scan": [
+        "KeyV"
+      ],
+      "hunt.toggleCloak": [
+        "KeyC"
+      ],
+      "hunt.heal": [
+        "KeyH"
+      ],
+      "hunt.useGearOne": [
+        "Digit3",
+        "Numpad3"
+      ],
+      "hunt.useGearTwo": [
+        "Digit4",
+        "Numpad4"
+      ],
+      "hunt.interact": [
+        "KeyE"
+      ],
+      "hunt.pause": [
+        "Escape"
+      ],
+      "pit.p1MoveLeft": [
+        "KeyQ",
+        "ArrowLeft"
+      ],
+      "pit.p1MoveRight": [
+        "KeyD",
+        "ArrowRight"
+      ],
+      "pit.p1MoveDown": [
+        "KeyS",
+        "ArrowDown"
+      ],
+      "pit.p1Jump": [
+        "Space"
+      ],
+      "pit.p1AttackLight": [
+        "KeyJ"
+      ],
+      "pit.p1AttackMedium": [
+        "KeyK"
+      ],
+      "pit.p1AttackHeavy": [
+        "KeyL"
+      ],
+      "pit.p1AttackTechnique": [
+        "KeyU"
+      ],
+      "pit.p1GuardHigh": [
+        "KeyI"
+      ],
+      "pit.p1GuardLow": [
+        "KeyO"
+      ],
+      "pit.p1Throw": [
+        "KeyP"
+      ],
+      "pit.p1Resource": [
+        "KeyH"
+      ],
+      "pit.p2MoveLeft": [
+        "Numpad4"
+      ],
+      "pit.p2MoveRight": [
+        "Numpad6"
+      ],
+      "pit.p2MoveDown": [
+        "Numpad2"
+      ],
+      "pit.p2Jump": [
+        "Numpad8"
+      ],
+      "pit.p2AttackLight": [
+        "Numpad1"
+      ],
+      "pit.p2AttackMedium": [
+        "Numpad3"
+      ],
+      "pit.p2AttackHeavy": [
+        "Numpad5"
+      ],
+      "pit.p2AttackTechnique": [
+        "Numpad7"
+      ],
+      "pit.p2GuardHigh": [
+        "Numpad9"
+      ],
+      "pit.p2GuardLow": [
+        "Numpad0"
+      ],
+      "pit.p2Throw": [
+        "NumpadEnter"
+      ],
+      "pit.p2Resource": [
+        "NumpadSubtract"
+      ],
+      "pit.pause": [
+        "Escape"
+      ],
+      "galaxy.flyLeft": [
+        "KeyQ",
+        "ArrowLeft"
+      ],
+      "galaxy.flyRight": [
+        "KeyD",
+        "ArrowRight"
+      ],
+      "galaxy.flyUp": [
+        "KeyZ",
+        "ArrowUp"
+      ],
+      "galaxy.flyDown": [
+        "KeyS",
+        "ArrowDown"
+      ],
+      "galaxy.previousTarget": [
+        "PageUp",
+        "KeyR"
+      ],
+      "galaxy.nextTarget": [
+        "PageDown",
+        "KeyE"
+      ],
+      "galaxy.activate": [
+        "Enter",
+        "Space"
+      ],
+      "galaxy.back": [
+        "Escape",
+        "Backspace"
+      ],
+      "galaxy.returnToGalaxy": [
+        "KeyG"
+      ],
+      "shipHub.previousRoom": [
+        "KeyQ",
+        "ArrowLeft"
+      ],
+      "shipHub.nextRoom": [
+        "KeyD",
+        "ArrowRight"
+      ],
+      "shipHub.previousAction": [
+        "ArrowUp"
+      ],
+      "shipHub.nextAction": [
+        "ArrowDown"
+      ],
+      "shipHub.activate": [
+        "Enter",
+        "Space"
+      ],
+      "shipHub.returnToBridge": [
+        "Escape"
+      ],
+      "shipHub.firstRoom": [
+        "Home"
+      ],
+      "shipHub.lastRoom": [
+        "End"
+      ],
+      "training.left": [
+        "KeyQ",
+        "ArrowLeft"
+      ],
+      "training.right": [
+        "KeyD",
+        "ArrowRight"
+      ],
+      "training.primary": [
+        "Space",
+        "KeyJ",
+        "Enter"
+      ],
+      "training.secondary": [
+        "KeyE",
+        "KeyK",
+        "ShiftLeft",
+        "ShiftRight"
+      ],
+      "training.cancel": [
+        "Escape"
+      ],
+      "workshop.left": [
+        "KeyQ",
+        "ArrowLeft"
+      ],
+      "workshop.up": [
+        "KeyZ",
+        "ArrowUp"
+      ],
+      "workshop.down": [
+        "KeyS",
+        "ArrowDown"
+      ],
+      "workshop.right": [
+        "KeyD",
+        "ArrowRight"
+      ],
+      "workshop.confirm": [
+        "Enter",
+        "Space",
+        "KeyE"
+      ],
+      "workshop.restart": [
+        "KeyR"
+      ],
+      "workshop.cancel": [
+        "Escape"
+      ]
+    }
+  },
+  "storyCompleted": true,
+  "homeworld": {
+    "version": 1,
+    "cntlipV77": {
+      "version": 1,
+      "revision": 0,
+      "state": {
+        "version": 1,
+        "knownLore": false,
+        "totalServings": 0,
+        "activeDoses": 0,
+        "worldElapsedMs": 0,
+        "memories": [],
+        "pending": null
+      },
+      "invitedSiteIds": [],
+      "stock": {
+        "clan-common": 0,
+        "market-halt": 0,
+        "pit-rest": 0,
+        "council-gathering": 0
+      }
+    },
+    "contractsV68": {
+      "version": 1,
+      "serial": 0,
+      "entries": []
+    },
+    "sideStoryV66": {
+      "version": 1,
+      "accepted": false,
+      "clues": [],
+      "archiveRead": false,
+      "chronologyVerified": false,
+      "deductionVerified": false,
+      "testimonyHeard": false,
+      "resolution": null,
+      "branchVerified": false,
+      "completed": false
+    },
+    "npcMissionsV66": {
+      "version": 1,
+      "ash": {
+        "accepted": false,
+        "report": null,
+        "delivered": false
+      },
+      "glass": {
+        "accepted": false,
+        "report": null,
+        "delivered": false
+      }
+    },
+    "mausoleum": {
+      "version": 1,
+      "examinedIds": [],
+      "consultedIds": []
+    },
+    "inquiry": {
+      "version": 1,
+      "convoyReviewed": false,
+      "archiveReviewed": false,
+      "approach": null,
+      "followupVerified": false,
+      "audienceFiled": false
+    },
+    "expeditions": {
+      "ash-marches": null,
+      "glass-desert": null
+    },
+    "visitedDistrictIds": [],
+    "evidenceIds": [],
+    "greetedNpcIds": [],
+    "witnessChoice": null,
+    "audienceOutcome": null,
+    "relations": {
+      "first-blood-houses": 0,
+      "forge-circle": 0,
+      "reserve-keepers": 0,
+      "star-navigators": 0,
+      "throne-court": 0,
+      "exile-network": 0
+    }
+  },
+  "justice": {
+    "version": 1,
+    "originChoice": null,
+    "declaration": "recognized",
+    "incidents": [],
+    "evidence": [],
+    "identifications": [],
+    "warrants": [],
+    "pressure": {
+      "homeworld": 0,
+      "clan-core": 0,
+      "frontier": 0,
+      "neutral-station": 0,
+      "renegade-port": 0
+    },
+    "clandestineNotoriety": 0,
+    "detention": null,
+    "intervention": {
+      "stage": "none",
+      "jurisdictionId": null,
+      "remainingBudget": 2,
+      "cooldownTicks": 0
+    }
+  }
+}

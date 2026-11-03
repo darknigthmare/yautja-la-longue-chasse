@@ -1,0 +1,1002 @@
+{
+  "missionId": "ice-cryostalker",
+  "armorId": "hunter",
+  "success": true,
+  "result": {
+    "missionId": "ice-cryostalker",
+    "exploration": {
+      "abilityIds": [],
+      "openedGateIds": [],
+      "secretIds": [],
+      "discoveredRoomIds": [
+        "jungle-pilot-approach",
+        "jungle-pilot-underpass",
+        "jungle-pilot-module",
+        "jungle-pilot-ravine",
+        "jungle-pilot-river-caves",
+        "jungle-pilot-vey-camp",
+        "jungle-pilot-duel-extraction",
+        "ice-region-approach",
+        "ice-region-shaft",
+        "ice-region-return"
+      ]
+    },
+    "difficultyId": "hunter",
+    "outcome": "success",
+    "score": 91,
+    "elapsedSeconds": 79,
+    "completedObjectiveIds": [
+      "scan-ice-traces",
+      "hunt-cryorunners",
+      "defeat-cryostalker",
+      "extract-ice-trophy"
+    ],
+    "honorEvents": [
+      {
+        "id": "scan-trace-1",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-ice-runners-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ice-runners-3",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-2",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-ice-runners-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-3",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "objective-scan-ice-traces",
+        "label": "Lire les traces bioélectriques",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-ice-runners-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "objective-hunt-cryorunners",
+        "label": "Disperser la meute",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-ice-salvagers-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ice-brutes-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ice-brutes-1",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ice-salvagers-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ice-salvagers-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "objective-defeat-cryostalker",
+        "label": "Abattre l'Alpha",
+        "value": 50,
+        "kind": "objective"
+      },
+      {
+        "id": "boss-honorable-kill",
+        "label": "Victoire sur Cryostalker Alpha",
+        "value": 18,
+        "kind": "duel"
+      },
+      {
+        "id": "trophy-claimed",
+        "label": "Crâne de Cryostalker",
+        "value": 12,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-extract-ice-trophy",
+        "label": "Extraire le trophée",
+        "value": 10,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:study-alpha",
+        "label": "Code respecté : Comprendre l'Apex",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:break-armor-cleanly",
+        "label": "Code rompu : Force contre instinct",
+        "value": -10,
+        "kind": "violation"
+      },
+      {
+        "id": "honor-rule:no-second-wind-ice",
+        "label": "Code respecté : Chasseur inébranlable",
+        "value": 15,
+        "kind": "objective"
+      }
+    ],
+    "trophyQuality": "elite",
+    "trophyClaims": [
+      {
+        "id": "ice-cryostalker-apex-mvysyzkg-zm-dlgj5enb",
+        "definitionId": "trophy-cryostalker",
+        "targetName": "Cryostalker Alpha",
+        "targetKind": "beast",
+        "partId": "skull-and-spine",
+        "quality": "elite",
+        "condition": "intact"
+      }
+    ],
+    "specimensV112": [
+      {
+        "id": "ice-cryostalker:1:ice-runners-1:bone",
+        "sourceId": "ice-cryostalker:1:ice-runners-1",
+        "speciesId": "nivalis-k--frost-xeno",
+        "partId": "bone",
+        "label": "Segment caudal de xénomorphe",
+        "quality": 72,
+        "massKg": 1.2,
+        "volumeUnits": 2,
+        "stage": "raw"
+      }
+    ],
+    "toolUseIdsV112": [
+      "ice-cryostalker:1:flay:ice-runners-1",
+      "ice-cryostalker:1:harvest-bone:ice-runners-1"
+    ],
+    "harvestEncounterRunV112": 1,
+    "kills": 10,
+    "scans": 3,
+    "discoveredEnemyIds": [],
+    "secondWindUsed": false,
+    "completedAt": "2026-11-02T05:12:54.767Z"
+  },
+  "climbFrames": 0,
+  "swingFrames": 0,
+  "authoredCanopyContactFrames": 0,
+  "maxX": 7988.99999999999,
+  "terminal": {
+    "t": 78.8,
+    "phase": "finished",
+    "x": 7989,
+    "y": 173,
+    "vx": 0,
+    "vy": 0,
+    "health": 88.88,
+    "stamina": 100,
+    "energy": 100,
+    "kills": 9,
+    "boss": {
+      "active": true,
+      "alive": false,
+      "health": 0,
+      "x": 6412.867476486155
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [],
+    "objectives": [
+      "scan-ice-traces",
+      "hunt-cryorunners",
+      "defeat-cryostalker",
+      "extract-ice-trophy"
+    ],
+    "message": "Objectif accompli : Extraire le trophée",
+    "grounded": false,
+    "climbing": false,
+    "load": {
+      "massKg": 1.2,
+      "volumeUnits": 2,
+      "capacityMassKg": 36,
+      "capacityVolumeUnits": 24,
+      "ratio": 0.08333333333333333,
+      "overloaded": false,
+      "movementMultiplier": 0.9733333333333334,
+      "jumpMultiplier": 0.9866666666666667,
+      "climbStaminaMultiplier": 1.05,
+      "noiseMultiplier": 1.0666666666666667
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "extraction-ice-cryostalker-1283-0",
+        "x": 7535.213946666538,
+        "y": 510,
+        "health": 221.4,
+        "width": 94,
+        "height": 114
+      },
+      {
+        "id": "extraction-ice-cryostalker-1284-1",
+        "x": 7872.946453333403,
+        "y": 549,
+        "health": 156.6,
+        "width": 90,
+        "height": 75
+      },
+      {
+        "id": "extraction-ice-cryostalker-1285-2",
+        "x": 7873.001246666829,
+        "y": 549,
+        "health": 156.6,
+        "width": 90,
+        "height": 75
+      }
+    ]
+  },
+  "admission": {
+    "missionId": "ice-cryostalker",
+    "armorId": "hunter",
+    "loadout": {
+      "armorId": "hunter",
+      "weaponIds": [
+        "combistick",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "inventory": {
+      "fieldToolIds": [
+        "flaying-tool"
+      ],
+      "harvestV112": {
+        "version": 1,
+        "specimens": [],
+        "toolCondition": 100,
+        "toolUseIds": [],
+        "jobs": [],
+        "settledEncounterRuns": {
+          "jungle-vey": 0,
+          "ice-cryostalker": 0
+        },
+        "archive": []
+      },
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster",
+        "yautja-bow",
+        "smart-disc"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy",
+        "netgun",
+        "snare"
+      ],
+      "unlockedArmorIds": [
+        "hunter",
+        "scout",
+        "berserker"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "toolOrigin": {
+      "path": "docs/qa/v112-ground-campaign/tool-origin.json",
+      "sha256": "0b489bc90df80e0643be22c971d0412ffbff434805812c75fc00f2690beef63b",
+      "missions": [
+        {
+          "missionId": "jungle-vey",
+          "outcome": "success",
+          "score": 98,
+          "elapsedSeconds": 61
+        },
+        {
+          "missionId": "ice-cryostalker",
+          "outcome": "success",
+          "score": 96,
+          "elapsedSeconds": 56
+        }
+      ],
+      "balanceBefore": 806,
+      "spentClanMarks": 120,
+      "balanceAfter": 686
+    },
+    "difficulty": "hunter",
+    "encounterRun": 1,
+    "random": {
+      "algorithm": "xorshift32",
+      "seed": 17965094
+    },
+    "spawn": {
+      "x": 225,
+      "y": 508
+    },
+    "initial": {
+      "t": 0,
+      "phase": "tracking",
+      "x": 225,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 720,
+        "x": 6911.4
+      },
+      "scans": [
+        false,
+        false,
+        false
+      ],
+      "recoveries": [],
+      "objectives": [],
+      "message": "La chasse commence. Localise les signatures.",
+      "grounded": true,
+      "climbing": false,
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "ice-runners-0",
+          "x": 1358.999,
+          "y": 542,
+          "health": 69.3,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    "world": {
+      "width": 8400,
+      "bossArena": {
+        "x": 6105,
+        "y": 286,
+        "width": 1680,
+        "height": 338
+      },
+      "extraction": {
+        "x": 8025,
+        "y": 624
+      },
+      "platforms": [
+        {
+          "x": 820,
+          "y": 304,
+          "width": 280,
+          "height": 24,
+          "id": "ice-region-high-gantry",
+          "material": "metal",
+          "collision": "solid",
+          "routeId": "mining-gantry",
+          "noiseMultiplier": 1.25,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1190,
+          "y": 392,
+          "width": 130,
+          "height": 24,
+          "id": "ice-region-vault-floor",
+          "material": "ice",
+          "collision": "solid",
+          "routeId": "mining-gantry",
+          "noiseMultiplier": 0.9,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1430,
+          "y": 0,
+          "width": 28,
+          "height": 416,
+          "id": "ice-region-outer-wall",
+          "material": "ice",
+          "collision": "solid",
+          "routeId": "mining-gantry",
+          "noiseMultiplier": 0.9,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 2090,
+          "y": 0,
+          "width": 28,
+          "height": 328,
+          "id": "ice-region-thermal-return-gate",
+          "material": "metal",
+          "collision": "solid",
+          "routeId": "mining-gantry",
+          "noiseMultiplier": 1.25,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1100,
+          "y": 0,
+          "width": 28,
+          "height": 416,
+          "id": "ice-mine-relay",
+          "material": "metal",
+          "collision": "solid",
+          "routeId": "mining-gantry",
+          "noiseMultiplier": 1.25,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1320,
+          "y": 392,
+          "width": 110,
+          "height": 24,
+          "id": "ice-return-hatch",
+          "material": "metal",
+          "collision": "solid",
+          "routeId": "mining-gantry",
+          "noiseMultiplier": 1.25,
+          "trackPersistence": 0.12
+        }
+      ],
+      "hazards": [
+        {
+          "id": "i-whiteout",
+          "x": 3975,
+          "y": 220,
+          "width": 1275,
+          "height": 404,
+          "kind": "whiteout",
+          "routeId": "ice-surface",
+          "damagePerSecond": 0,
+          "movementMultiplier": 0.78,
+          "noisePerSecond": 0.25,
+          "trackMultiplier": 0.55,
+          "revealsCloak": false,
+          "telegraphSeconds": 1.8,
+          "cycle": {
+            "periodSeconds": 14,
+            "activeSeconds": 5,
+            "phaseSeconds": 2.5
+          }
+        },
+        {
+          "id": "i-stalactites",
+          "x": 5145,
+          "y": 270,
+          "width": 630,
+          "height": 354,
+          "kind": "falling-ice",
+          "routeId": "glacial-caves",
+          "damagePerSecond": 18,
+          "movementMultiplier": 0.9,
+          "noisePerSecond": 0.85,
+          "trackMultiplier": 1,
+          "revealsCloak": true,
+          "telegraphSeconds": 0.85,
+          "cycle": {
+            "periodSeconds": 7.5,
+            "activeSeconds": 1,
+            "phaseSeconds": 0.4
+          }
+        },
+        {
+          "id": "i-arena-collapse",
+          "x": 6525,
+          "y": 250,
+          "width": 975,
+          "height": 374,
+          "kind": "falling-ice",
+          "routeId": "ice-surface",
+          "damagePerSecond": 22,
+          "movementMultiplier": 0.86,
+          "noisePerSecond": 1,
+          "trackMultiplier": 1.2,
+          "revealsCloak": true,
+          "telegraphSeconds": 0.95,
+          "cycle": {
+            "periodSeconds": 8,
+            "activeSeconds": 1.3,
+            "phaseSeconds": 4
+          }
+        },
+        {
+          "id": "feature-i-rift-thin",
+          "x": 1485,
+          "y": 590,
+          "width": 390,
+          "height": 34,
+          "kind": "thin-ice",
+          "routeId": "ice-surface",
+          "damagePerSecond": 14,
+          "movementMultiplier": 0.7,
+          "noisePerSecond": 0.62,
+          "trackMultiplier": 1.6,
+          "revealsCloak": false,
+          "telegraphSeconds": 1.1,
+          "cycle": {
+            "periodSeconds": 9,
+            "activeSeconds": 2.2,
+            "phaseSeconds": 2
+          }
+        },
+        {
+          "id": "feature-i-whiteout-bridge",
+          "x": 4335,
+          "y": 590,
+          "width": 390,
+          "height": 34,
+          "kind": "thin-ice",
+          "routeId": "ice-surface",
+          "damagePerSecond": 14,
+          "movementMultiplier": 0.7,
+          "noisePerSecond": 0.62,
+          "trackMultiplier": 1.6,
+          "revealsCloak": false,
+          "telegraphSeconds": 1.1,
+          "cycle": {
+            "periodSeconds": 9,
+            "activeSeconds": 2.2,
+            "phaseSeconds": 1
+          }
+        }
+      ]
+    },
+    "scanNodes": [
+      {
+        "id": "trace-1",
+        "x": 924,
+        "y": 588,
+        "scanned": false
+      },
+      {
+        "id": "trace-2",
+        "x": 2016,
+        "y": 395,
+        "scanned": false
+      },
+      {
+        "id": "trace-3",
+        "x": 3108,
+        "y": 588,
+        "scanned": false
+      }
+    ],
+    "recoveryNodes": []
+  },
+  "events": [
+    {
+      "t": 9.167,
+      "phase": "target",
+      "x": 2670.85,
+      "y": 508,
+      "vx": 258,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 19.9,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 720,
+        "x": 6911.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [],
+      "objectives": [
+        "scan-ice-traces"
+      ],
+      "message": "Cryostalker Alpha peut désormais être pisté.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "ice-runners-2",
+          "x": 3278.1527385484364,
+          "y": 528,
+          "health": 86.1,
+          "width": 114,
+          "height": 96
+        },
+        {
+          "id": "ice-salvagers-0",
+          "x": 5803.001,
+          "y": 408,
+          "health": 54.45,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 59.6,
+      "phase": "trophy",
+      "x": 6293.39,
+      "y": 503.76,
+      "vx": 2.64,
+      "vy": -254.17,
+      "health": 132.5,
+      "stamina": 87.53,
+      "energy": 17.03,
+      "kills": 9,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6412.867476486155
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [],
+      "objectives": [
+        "scan-ice-traces",
+        "hunt-cryorunners",
+        "defeat-cryostalker"
+      ],
+      "message": "Cryostalker Alpha est vaincu. Intégrité du trophée 83 %. Réclame le trophée avec [E].",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 1.2,
+        "volumeUnits": 2,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.08333333333333333,
+        "overloaded": false,
+        "movementMultiplier": 0.9733333333333334,
+        "jumpMultiplier": 0.9866666666666667,
+        "climbStaminaMultiplier": 1.05,
+        "noiseMultiplier": 1.0666666666666667
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": []
+    },
+    {
+      "t": 66.483,
+      "phase": "extraction",
+      "x": 6463.14,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 113.08,
+      "stamina": 100,
+      "energy": 85.87,
+      "kills": 9,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6412.867476486155
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [],
+      "objectives": [
+        "scan-ice-traces",
+        "hunt-cryorunners",
+        "defeat-cryostalker"
+      ],
+      "message": "Crâne de Cryostalker : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 1.2,
+        "volumeUnits": 2,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.08333333333333333,
+        "overloaded": false,
+        "movementMultiplier": 0.9733333333333334,
+        "jumpMultiplier": 0.9866666666666667,
+        "climbStaminaMultiplier": 1.05,
+        "noiseMultiplier": 1.0666666666666667
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "extraction-ice-cryostalker-1283-0",
+          "x": 7527.12544,
+          "y": 510,
+          "health": 221.4,
+          "width": 94,
+          "height": 114
+        }
+      ]
+    },
+    {
+      "t": 78.8,
+      "phase": "finished",
+      "x": 7989,
+      "y": 173,
+      "vx": 0,
+      "vy": 0,
+      "health": 88.88,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 9,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6412.867476486155
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [],
+      "objectives": [
+        "scan-ice-traces",
+        "hunt-cryorunners",
+        "defeat-cryostalker",
+        "extract-ice-trophy"
+      ],
+      "message": "Objectif accompli : Extraire le trophée",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 1.2,
+        "volumeUnits": 2,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.08333333333333333,
+        "overloaded": false,
+        "movementMultiplier": 0.9733333333333334,
+        "jumpMultiplier": 0.9866666666666667,
+        "climbStaminaMultiplier": 1.05,
+        "noiseMultiplier": 1.0666666666666667
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "extraction-ice-cryostalker-1283-0",
+          "x": 7535.213946666538,
+          "y": 510,
+          "health": 221.4,
+          "width": 94,
+          "height": 114
+        },
+        {
+          "id": "extraction-ice-cryostalker-1284-1",
+          "x": 7872.946453333403,
+          "y": 549,
+          "health": 156.6,
+          "width": 90,
+          "height": 75
+        },
+        {
+          "id": "extraction-ice-cryostalker-1285-2",
+          "x": 7873.001246666829,
+          "y": 549,
+          "health": 156.6,
+          "width": 90,
+          "height": 75
+        }
+      ]
+    }
+  ],
+  "traceFrames": 419,
+  "ticksExecuted": 4728,
+  "harvestActions": [
+    {
+      "tick": 1599,
+      "t": 26.649999999999768,
+      "action": "open",
+      "corpseId": "ice-runners-1",
+      "sourceEnemyId": "nivalis-k--frost-xeno",
+      "operation": null
+    },
+    {
+      "tick": 1600,
+      "t": 26.666666666666433,
+      "action": "flay",
+      "corpseId": "ice-runners-1",
+      "sourceEnemyId": "nivalis-k--frost-xeno",
+      "operation": {
+        "corpseId": "ice-runners-1",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 131.86666666666667,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 1792,
+      "t": 29.86666666666625,
+      "action": "harvest-bone",
+      "corpseId": "ice-runners-1",
+      "sourceEnemyId": "nivalis-k--frost-xeno",
+      "operation": {
+        "corpseId": "ice-runners-1",
+        "action": "harvest-bone",
+        "elapsed": 0,
+        "startHealth": 131.86666666666667,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    }
+  ],
+  "peakLoadRatio": 0.08333333333333333,
+  "peakSpecimens": [
+    {
+      "id": "ice-cryostalker:1:ice-runners-1:bone",
+      "sourceId": "ice-cryostalker:1:ice-runners-1",
+      "speciesId": "nivalis-k--frost-xeno",
+      "partId": "bone",
+      "label": "Segment caudal de xénomorphe",
+      "quality": 72,
+      "massKg": 1.2,
+      "volumeUnits": 2,
+      "stage": "raw"
+    }
+  ],
+  "firstLoadAt": {
+    "tick": 2003,
+    "t": 33.4,
+    "phase": "target",
+    "x": 2622.46,
+    "y": 508,
+    "vx": 54.41,
+    "vy": 0,
+    "health": 131.87,
+    "stamina": 100,
+    "energy": 100,
+    "kills": 6,
+    "boss": {
+      "active": true,
+      "alive": true,
+      "health": 720,
+      "x": 6135
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [],
+    "objectives": [
+      "scan-ice-traces",
+      "hunt-cryorunners"
+    ],
+    "message": "Geste inscrit dans la trace de cette chasse.",
+    "grounded": true,
+    "climbing": false,
+    "load": {
+      "massKg": 1.2,
+      "volumeUnits": 2,
+      "capacityMassKg": 36,
+      "capacityVolumeUnits": 24,
+      "ratio": 0.08333333333333333,
+      "overloaded": false,
+      "movementMultiplier": 0.9733333333333334,
+      "jumpMultiplier": 0.9866666666666667,
+      "climbStaminaMultiplier": 1.05,
+      "noiseMultiplier": 1.0666666666666667
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "ice-salvagers-0",
+        "x": 5806.764200000001,
+        "y": 431.4163948451286,
+        "health": 54.45,
+        "width": 98,
+        "height": 82
+      },
+      {
+        "id": "ice-salvagers-2",
+        "x": 5859.801799999987,
+        "y": 530,
+        "health": 54.45,
+        "width": 66,
+        "height": 94
+      },
+      {
+        "id": "ice-brutes-1",
+        "x": 5700.197040000014,
+        "y": 542,
+        "health": 178.2,
+        "width": 98,
+        "height": 82
+      }
+    ]
+  },
+  "replay": {
+    "verified": true,
+    "ticks": 4728,
+    "terminalSha256": "1b6da70924a4e66acd9b95786527085159babd7d392b9aae1d4553c7a0011d4e"
+  },
+  "rawData": {
+    "archive": "../native-runs-raw.tar.gz",
+    "member": "qualified-harvested/ice-cryostalker-hunter.json",
+    "sha256": "8a620cff65853ec596201ce2a47ad7031cc01afff6324acdb0c6c7c3f025c1cf"
+  }
+}

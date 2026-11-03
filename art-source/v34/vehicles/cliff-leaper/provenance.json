@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "cliff-leaper",
+  "name": "Cliff Leaper",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Original cliff-jumping mount PROPOSAL, exactly FOUR limbs: two short powerful claw forelegs and two longer digitigrade hindlegs with large thigh muscles, compact lean reptilian-mammalian body, broad gripping toes, long heavy counterbalancing tail, slate-brown granular hide and flattened blunt head with short natural brow ridges. All four feet distinct in balanced standing pose. No decorative horns, goat beard, harness or saddle.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Cliff Leaper — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/cliff-leaper/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/cliff-leaper/identity-r1.png",
+      "originId": "exec-ee63904b-a204-439b-ad86-48d69a74ab70.png",
+      "width": 1942,
+      "height": 809,
+      "sha256": "a375fcccb387b61d8c9ce8a34954bf50f8f86d040682e4f76acb6c9e0c0e78b0",
+      "bytes": 1399187,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1571078
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Bare animal layer: no saddle, tack or armor. Original cliff-jumping mount PROPOSAL, exactly FOUR limbs: two short powerful claw forelegs and two longer digitigrade hindlegs with large thigh muscles, compact lean reptilian-mammalian body, broad gripping toes, long heavy counterbalancing tail, slate-brown granular hide and flattened blunt head with short natural brow ridges. All four feet distinct in balanced standing pose. No decorative horns, goat beard, harness or saddle.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 14,
+          "recoveredLine": 1154,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "OpenAI ImageGen original identity proposal; no canonical appearance is asserted.",
+        "Visually inspected at source resolution: both opposing strict profiles show exactly four separately readable limbs and four complete gripping feet with connected joints; no decorative horn, goat beard, tack, armor, saddle or rider.",
+        "Static bare-animal review sheet only; no gameplay, rig or animation acceptance implied. Runtime transparency is applied by the production review renderer."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            971,
+            809
+          ],
+          "alpha16Bounds": [
+            19,
+            193,
+            903,
+            373
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 127999,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            971,
+            0,
+            971,
+            809
+          ],
+          "alpha16Bounds": [
+            1020,
+            193,
+            904,
+            373
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 127885,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

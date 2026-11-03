@@ -1,0 +1,67 @@
+name: V152 and main planet integration
+on:
+  pull_request:
+    branches: [main]
+    paths: ['.github/workflows/v152-main-rts-integration.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig*.json
+            /next.config.ts
+            /eslint.config.mjs
+            /.openai/
+            /app/
+            /build/
+            /db/
+            /lib/
+            /types/
+            /tests/
+            /scripts/
+            /docs/clan-war-v147/
+            /docs/clan-war-v152/
+            /docs/Yautja_ClanWar_V151_Quatre_Modes_Verrou.xlsx
+            /docs/Yautja_ClanWar_V152_RTS_Deux_Onglets.xlsx
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Typecheck merged planet editor and strategic panel
+        run: npx --no-install tsc --noEmit -p tsconfig.main-rts-integration.json
+      - name: Typecheck V152
+        run: npx --no-install tsc --noEmit -p tsconfig.clan-war-v152.json
+      - name: Planet, Council, archive and provenance regressions
+        run: |
+          node --experimental-strip-types --test --test-concurrency=1 \
+            tests/planet-generator-v103.test.mjs \
+            tests/planet-generator-integration-v103.test.mjs \
+            tests/planet-generator-import-race-v103.test.mjs \
+            tests/clan-war-v115-multitab-v151.test.mjs \
+            tests/clan-war-operations-v115.test.mjs \
+            tests/clan-war-stealth-last-contact.test.mjs \
+            tests/clan-war-outer-pace-reconcile.test.mjs \
+            tests/clan-war-council-v146.test.mjs \
+            tests/clan-war-source-consolidation-v147.test.mjs \
+            tests/clan-war-provenance-gate-v152.test.mjs \
+            tests/clan-war-production-v152.test.mjs \
+            tests/clan-war-production-v147.test.mjs \
+            tests/clan-war-rts-web-lock-v152.test.mjs
+      - run: npx --no-install playwright-core install --with-deps chromium
+      - name: Two tabs and native RTS lock
+        run: |
+          export AUDIT_CHROME_EXECUTABLE="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-clan-war-v115-multitab-v151.mjs
+          node scripts/qa-clan-war-rts-two-tabs-v152.mjs

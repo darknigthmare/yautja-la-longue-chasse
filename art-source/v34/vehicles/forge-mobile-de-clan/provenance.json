@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "forge-mobile-de-clan",
+  "name": "Forge mobile de clan",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Mobile clan workshop PROPOSAL on a wide low antigravity barge with armored driver pod at front, central enclosed furnace vessel with vent shutters CLOSED, empty external workbench folded against the flank, small stowed articulated crane, rear cooling stack and neatly integrated tool sockets. No fire, smoke, flying sparks, actual loose tools or weapons.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Forge mobile de clan — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/forge-mobile-de-clan/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/forge-mobile-de-clan/identity-r1.png",
+      "originId": "exec-f85f40ad-4c03-488e-93bc-d468fb455b4e.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "7020da8cd40b03c67200172d32d80dd143fb5faf9f9f2efdf4c7416ab23ea278",
+      "bytes": 1520828,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572528
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Empty vehicle chassis: removable weapons and props excluded. Mobile clan workshop PROPOSAL on a wide low antigravity barge with armored driver pod at front, central enclosed furnace vessel with vent shutters CLOSED, empty external workbench folded against the flank, small stowed articulated crane, rear cooling stack and neatly integrated tool sockets. No fire, smoke, flying sparks, actual loose tools or weapons.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 4,
+          "recoveredLine": 1122,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : profils latéraux complets, four fermé, établi et grue repliés, aucune flamme, fumée, étincelle ou outil détaché.",
+        "Les marques de panneaux restent décoratives et ne constituent pas une légende de feuille ; candidat statique en revue."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            33,
+            170,
+            1016,
+            331
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 209617,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1086,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            1125,
+            171,
+            1015,
+            331
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 209517,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

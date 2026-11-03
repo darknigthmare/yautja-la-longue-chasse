@@ -1,0 +1,842 @@
+{
+  "schemaVersion": 1,
+  "version": "V35",
+  "recordedAt": "2026-09-13T01:07:19.145Z",
+  "sourceCommit": "abd0fda5b4540bf315e7a72303d69fdcabb5f297",
+  "sourceDigest": "80f235ca915d4193d2c96021fc9084184c98d687b11a71f7938903f2909e9bb5",
+  "publication": {
+    "id": "dpl_HLL3HYbgWVGDCz4n6c18UUynWv5B",
+    "readyState": "READY",
+    "target": "production",
+    "sourceCommit": "abd0fda5b4540bf315e7a72303d69fdcabb5f297",
+    "url": "yautja-la-longue-chasse-lp6dn3oyt-darknigthmares-projects.vercel.app",
+    "domain": "https://yautja-la-longue-chasse.vercel.app",
+    "checkedAt": "2026-09-13T01:05:33.120Z"
+  },
+  "http": [
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/",
+      "status": 200,
+      "bytes": 47848,
+      "checkedAt": "2026-09-13T01:01:44.5716256Z"
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/pit-lab",
+      "status": 200,
+      "bytes": 15629,
+      "checkedAt": "2026-09-13T01:01:44.8572588Z"
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/index.html",
+      "status": 200,
+      "bytes": 5519,
+      "checkedAt": "2026-09-13T01:01:44.9581209Z"
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/vehicle-assembly-review/index.html",
+      "status": 200,
+      "bytes": 5572,
+      "checkedAt": "2026-09-13T01:01:45.1673802Z"
+    }
+  ],
+  "validation": {
+    "tests": 1168,
+    "passed": 1168,
+    "failed": 0,
+    "nextProductionBuild": true,
+    "typecheck": true,
+    "eslint": true,
+    "publicGallery": {
+      "passed": true,
+      "checkedAt": "2026-09-13T01:06:22.812Z",
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/index.html",
+      "loadedAndShaVerified": 548,
+      "vehicleReviewDistinctFrames": 8,
+      "propulsionReviewDistinctFrames": 8,
+      "newVehicleChecks": [
+        {
+          "id": "v34-blade-fighter-k-93-blades-r2",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-blade-fighter-k-93-cannons-r2",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-blade-fighter-k-93-muzzle-fx-r1",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-bone-bison-de-guerre-walk-right-r2",
+          "distinctReviewFrames": 6,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-bone-bison-de-guerre-walk-left-r2",
+          "distinctReviewFrames": 6,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-grav-sled-eclaireur-antigrav-activation-r1",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-grav-sled-eclaireur-drive-tilt-r1",
+          "distinctReviewFrames": 7,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-hunter-speeder-antigrav-activation-r1",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-hunter-speeder-drive-tilt-r1",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-kha-rha-run-r1",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-kha-rha-jump-r1",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-kha-rha-bite-r1",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-kha-rha-bite-right-r2",
+          "distinctReviewFrames": 4,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-kha-rha-bite-left-r2",
+          "distinctReviewFrames": 4,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-razorwing-near-wing-right-beat-r1",
+          "distinctReviewFrames": 6,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-razorwing-near-wing-left-beat-r1",
+          "distinctReviewFrames": 6,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-razorwing-far-wing-right-beat-r1",
+          "distinctReviewFrames": 6,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-razorwing-far-wing-left-beat-r1",
+          "distinctReviewFrames": 6,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-shared-vehicle-fx-antigrav-pulse-r1",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-shared-vehicle-fx-dust-trail-r1",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-shared-vehicle-fx-water-wake-r1",
+          "distinctReviewFrames": 8,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        },
+        {
+          "id": "v34-sphere-dejection-atmospherique-controller-arch-states-r1",
+          "distinctReviewFrames": 4,
+          "pivotFramingInsideCanvas": true,
+          "acceptedRuntimeClip": false
+        }
+      ],
+      "searchAndStatusFilters": true,
+      "emptySearchClearsStaleState": true,
+      "mobileNoOverflow": true,
+      "missingAssetClearsStaleState": true,
+      "missingAssetRecovers": true,
+      "errors": []
+    },
+    "publicLab": {
+      "passed": true,
+      "checkedAt": "2026-09-13T01:01:33.161Z",
+      "url": "https://yautja-la-longue-chasse.vercel.app/pit-lab",
+      "checks": [
+        {
+          "kind": "exact-frame-selection",
+          "id": "tracker",
+          "clip": "idle",
+          "frames": 4
+        },
+        {
+          "kind": "exact-frame-selection",
+          "id": "tracker",
+          "clip": "crouch",
+          "frames": 3
+        },
+        {
+          "kind": "exact-frame-selection",
+          "id": "tracker",
+          "clip": "pit.stand.hitstun",
+          "frames": 4
+        },
+        {
+          "kind": "exact-frame-selection",
+          "id": "tracker",
+          "clip": "pit.stand.light.recovery",
+          "frames": 2
+        },
+        {
+          "kind": "json-export",
+          "id": "tracker",
+          "clips": 28
+        },
+        {
+          "kind": "exact-frame-selection",
+          "id": "greyback",
+          "clip": "idle",
+          "frames": 4
+        },
+        {
+          "kind": "exact-frame-selection",
+          "id": "greyback",
+          "clip": "crouch",
+          "frames": 3
+        },
+        {
+          "kind": "exact-frame-selection",
+          "id": "greyback",
+          "clip": "pit.stand.hitstun",
+          "frames": 4
+        },
+        {
+          "kind": "exact-frame-selection",
+          "id": "greyback",
+          "clip": "pit.stand.light.recovery",
+          "frames": 2
+        },
+        {
+          "kind": "json-export",
+          "id": "greyback",
+          "clips": 28
+        },
+        {
+          "kind": "exact-frame-selection",
+          "id": "jungle-hunter",
+          "clip": "idle",
+          "frames": 4
+        },
+        {
+          "kind": "exact-frame-selection",
+          "id": "jungle-hunter",
+          "clip": "crouch",
+          "frames": 3
+        },
+        {
+          "kind": "exact-frame-selection",
+          "id": "jungle-hunter",
+          "clip": "pit.stand.hitstun",
+          "frames": 4
+        },
+        {
+          "kind": "exact-frame-selection",
+          "id": "jungle-hunter",
+          "clip": "pit.stand.light.recovery",
+          "frames": 2
+        },
+        {
+          "kind": "json-export",
+          "id": "jungle-hunter",
+          "clips": 13
+        },
+        {
+          "kind": "missing-facing",
+          "id": "jungle-hunter",
+          "clip": "walk",
+          "facing": "right",
+          "noMirror": true
+        },
+        {
+          "kind": "play-pause",
+          "stopped": "1"
+        },
+        {
+          "kind": "missing-atlas",
+          "id": "falconer"
+        },
+        {
+          "kind": "engine-phase-tempo",
+          "id": "tracker",
+          "phase": "light.recovery",
+          "frameTicks": [
+            6,
+            5
+          ],
+          "totalTicks": 11
+        },
+        {
+          "kind": "mobile-no-overflow",
+          "width": 390,
+          "height": 844,
+          "viewport": 390,
+          "documentWidth": 390,
+          "bodyWidth": 390,
+          "rootWidth": 390,
+          "offenders": []
+        },
+        {
+          "kind": "image-error",
+          "noFakeCoverage": true
+        }
+      ],
+      "errors": [],
+      "failedRequests": []
+    },
+    "virtualGamepad": {
+      "passed": true,
+      "checkedAt": "2026-09-13T01:01:38.770Z",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "input": "virtual-standard-gamepad",
+      "physicalControllerCertified": false,
+      "checks": [
+        {
+          "fighter": "tracker",
+          "forwardWrap": true,
+          "backwardWrap": true,
+          "progressionModesDisabled": true
+        },
+        {
+          "fighter": "greyback",
+          "forwardWrap": true,
+          "backwardWrap": true,
+          "progressionModesDisabled": true
+        },
+        {
+          "fighter": "jungle-hunter",
+          "historicalArcadeAccessible": true
+        }
+      ],
+      "errors": []
+    },
+    "publicDuels": [
+      {
+        "passed": true,
+        "checkedAt": "2026-09-13T01:01:47.869Z",
+        "surface": "full-application-play-pit-training",
+        "verifiedContentVersion": "V35",
+        "fighters": [
+          "tracker",
+          "greyback"
+        ],
+        "fighterArtStates": [
+          {
+            "slot": 0,
+            "fighterId": "tracker",
+            "facing": "right",
+            "idleStatus": "sprite-sheet-animation"
+          },
+          {
+            "slot": 1,
+            "fighterId": "greyback",
+            "facing": "left",
+            "idleStatus": "sprite-sheet-animation"
+          }
+        ],
+        "url": "https://yautja-la-longue-chasse.vercel.app",
+        "checks": [
+          {
+            "name": "live-match",
+            "arena": "arena-009-quais-du-premier-sang",
+            "planes": "P0,P1,P2,P3,P4,P5",
+            "source": "openai-v33-independent",
+            "loadedImages": 14,
+            "subplans": 14,
+            "missing": 0
+          }
+        ],
+        "loadedImageFiles": [
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p0-a-depth.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p1-a-distant-left.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p1-b-distant-right.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p2-a-support-left.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p2-b-support-right.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p2-c-central-structure.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-a-prop-left.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-b-prop-right.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-c-light-left.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-d-light-right.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p4-a-contact-floor.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p4-b-front-fascia.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png"
+        ],
+        "mobileNoOverflow": true,
+        "errors": [],
+        "failedRequests": []
+      },
+      {
+        "passed": true,
+        "checkedAt": "2026-09-13T01:02:20.632Z",
+        "surface": "full-application-play-pit-training",
+        "verifiedContentVersion": "V35",
+        "fighters": [
+          "greyback",
+          "tracker"
+        ],
+        "fighterArtStates": [
+          {
+            "slot": 0,
+            "fighterId": "greyback",
+            "facing": "right",
+            "idleStatus": "sprite-sheet-animation"
+          },
+          {
+            "slot": 1,
+            "fighterId": "tracker",
+            "facing": "left",
+            "idleStatus": "sprite-sheet-animation"
+          }
+        ],
+        "url": "https://yautja-la-longue-chasse.vercel.app",
+        "checks": [
+          {
+            "name": "live-match",
+            "arena": "arena-020-trone-fracture",
+            "planes": "P0,P1,P2,P3,P4,P5",
+            "source": "openai-v33-independent",
+            "loadedImages": 14,
+            "subplans": 14,
+            "missing": 0
+          }
+        ],
+        "loadedImageFiles": [
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p0-a-depth.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p1-a-distant-left.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p1-b-distant-right.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p2-a-support-left.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p2-b-support-right.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p2-c-central-structure.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-a-prop-left.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-b-prop-right.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-c-light-left.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-d-light-right.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-a-contact-floor.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-b-front-fascia.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p5-a-foreground-left.png",
+          "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p5-b-foreground-right.png"
+        ],
+        "mobileNoOverflow": true,
+        "errors": [],
+        "failedRequests": []
+      }
+    ]
+  },
+  "desktop": {
+    "manifest": {
+      "sourceCommit": "abd0fda5b4540bf315e7a72303d69fdcabb5f297",
+      "sourceDigest": "80f235ca915d4193d2c96021fc9084184c98d687b11a71f7938903f2909e9bb5",
+      "version": "1.0.35",
+      "electron": "44.2.0",
+      "platform": "win32-x64",
+      "createdAt": "2026-09-13T00:53:33.852Z",
+      "signed": false,
+      "networkRequired": false,
+      "hashes": {
+        "Yautja-La-Longue-Chasse.exe": "e4be4a4dda9cdf20dbca1e6442671d132a2212ee31f909114fb78ced1441cc85",
+        "resources/app.asar": "4c7b758e2bde28ee50b085c55958bcc7ac67bf50cc460c94c598ad05bbbeaf49"
+      }
+    },
+    "archive": {
+      "passed": true,
+      "releaseTag": "v35",
+      "sourceCommit": "abd0fda5b4540bf315e7a72303d69fdcabb5f297",
+      "sourceDigest": "80f235ca915d4193d2c96021fc9084184c98d687b11a71f7938903f2909e9bb5",
+      "version": "1.0.35",
+      "asarEntries": 2792,
+      "asarTopLevel": [
+        "/main.mjs",
+        "/package.json",
+        "/protocol.mjs",
+        "/release.mjs",
+        "/renderer"
+      ],
+      "audioManifestIncluded": true,
+      "manifestHashesVerified": true,
+      "zip": "tmp/desktop-release/v35/Yautja-La-Longue-Chasse-PC-V35.zip",
+      "zipBytes": 1409408353,
+      "zipSha256": "4732e923a82215c106e06d813dc7f772671c7676615d6705a993cf2c3cd17c26",
+      "zipEntries": 77,
+      "testedAt": "2026-09-13T00:58:44.739Z"
+    },
+    "gameplay": {
+      "passed": true,
+      "desktopVersion": "1.0.35",
+      "contentVersion": "V35",
+      "checks": [
+        "Packaged EXE boots with the expected release content marker, renderer sandboxed, network blocked, bundled art readable, private paths rejected.",
+        "Real setting persisted; campaign exported through the native download path.",
+        "Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.",
+        "Hub to THE PIT loads locally with authored Jungle Hunter and Berserker animations.",
+        "Packaged extension duel tracker/greyback on arena-009-quais-du-premier-sang: 14 bitmaps, six planes, both authored idle facings and advancing keyboard simulation; no borrowed progression.",
+        "Packaged extension duel greyback/tracker on arena-020-trone-fracture: 14 bitmaps, six planes, both authored idle facings and advancing keyboard simulation; no borrowed progression.",
+        "Local galaxy route to Oseris, mission briefing, deployment and suspended hunt saved.",
+        "Campaign bytes, suspended hunt, Homeworld evidence, Justice choice and setting retained after clean process exit and cold restart."
+      ],
+      "errors": [],
+      "failedLocalRequests": [],
+      "testedAt": "2026-09-13T01:01:49.552Z",
+      "limit": "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified."
+    },
+    "workshops": {
+      "passed": true,
+      "version": "1.0.35",
+      "checkedAt": "2026-09-13T00:59:24.851Z",
+      "actualNavigation": {
+        "main": "yautja://game/",
+        "lab": "yautja://game/pit-lab",
+        "productionReview": "yautja://game/game/assets/v34/production-review/index.html",
+        "vehicleAssemblyReview": "yautja://game/game/assets/v34/vehicle-assembly-review/index.html",
+        "windowCount": 4
+      },
+      "pitProductionAnimationLab": {
+        "markerPresent": true,
+        "fighterOptions": 14,
+        "checks": {
+          "tracker": {
+            "right": {
+              "fighter": "tracker",
+              "clip": "idle",
+              "facing": "right",
+              "renderStatus": "ready",
+              "frameIndex": "0"
+            },
+            "left": {
+              "fighter": "tracker",
+              "clip": "idle",
+              "facing": "left",
+              "renderStatus": "ready",
+              "frameIndex": "0"
+            }
+          },
+          "greyback": {
+            "right": {
+              "fighter": "greyback",
+              "clip": "idle",
+              "facing": "right",
+              "renderStatus": "ready",
+              "frameIndex": "0"
+            },
+            "left": {
+              "fighter": "greyback",
+              "clip": "idle",
+              "facing": "left",
+              "renderStatus": "ready",
+              "frameIndex": "0"
+            }
+          }
+        }
+      },
+      "sourceImageExportShaVerified": true,
+      "packagedManifestVerified": true,
+      "distinctAssemblyPoses": 4,
+      "packagedAssemblyManifest": {
+        "resources": 10,
+        "assemblies": 3
+      },
+      "ejectionSeatAssembly": {
+        "distinctPoses": 4,
+        "overflowSafe": true
+      },
+      "boneBisonAssembly": {
+        "facings": [
+          "right",
+          "left"
+        ],
+        "equippedAndBodyOnly": {
+          "right": {
+            "equipped": "75ca0350aa28c428c930943ab3ab5e84c899636d7e73f07393d7b7e44a7cc236",
+            "bodyOnly": "c7058faba37512c50b9dfbbc4182215b4172f9f26ab29e565683b3564421b298"
+          },
+          "left": {
+            "equipped": "436171356ad32ab270733e805feded1b25332d4a4a02162f4911fd17e9b2b68c",
+            "bodyOnly": "b56daf14db281cd7c2ad124230a14d84e1219d319a1883bf56097f73b64f2680"
+          }
+        },
+        "distinctCompositions": 4,
+        "modules": [
+          "war-saddle",
+          "flank-guard"
+        ],
+        "calibration": "static-module-fit-review",
+        "playable": false,
+        "overflowSafe": true
+      },
+      "razorwingAssembly": {
+        "facings": [
+          "right",
+          "left"
+        ],
+        "poseHashes": {
+          "right": [
+            "6ec8cacd69528c8f4c66e8be454bd17a2ce96ee6d6e55b3c40deae677a5606d1",
+            "b8c7721416f980ad4a8686c10c20d7a91c467a4acbcc35e8bda2cc283caf39cb",
+            "331191470b6e1717559b036a832599557561a7eaded79eb5b0c074329f70b66f",
+            "3e883bda04ae89c5362d4244625028effebac08004edd3983aabfd5941a3373f",
+            "11d437490cd1c9cc71ae541708ce32ada1a776f80357aa98d3f9c158ab45399e",
+            "317479af0f24660e696fa9afa245fc764f83a0ad5689c59402f968f4624ca940"
+          ],
+          "left": [
+            "e1bfe81e2595712d45bf20c79a7536cedac28a5a7fc93f9758d537ff31663255",
+            "b8e7b392dc16750a4ecf14860ec894f89902b039570884904aa5559ec6b890a3",
+            "30a990bebe0f12bd67682c133d0d87641299bf1e57d086a02d057d662016feb6",
+            "2e17017edea9bec281f0386adcb04ea74c9718bbab57c5c7218b4c0bc110c664",
+            "42c63edc614625f7348e7b2632ae8e3a6ce6c843dde879626854621ea0e62089",
+            "b7e94fbc6ba93c92ed023c4ebd6f7531bfcb95df12cdd4810071d49fa61534df"
+          ]
+        },
+        "distinctReviewCompositions": 12,
+        "phasesPerFacing": {
+          "right": 6,
+          "left": 6
+        },
+        "moduleCombinationHashes": {
+          "bothWings": "6ec8cacd69528c8f4c66e8be454bd17a2ce96ee6d6e55b3c40deae677a5606d1",
+          "farWingOnly": "690d94247865e146395bbe3731e44ae1854867330363c3dd0b0c237b8accc215",
+          "bodyOnly": "3ff6888d5e8fbebce173ec2c426448685b5db0b31962b994128b4ec6a314c87f",
+          "nearWingOnly": "0e727a0032a698646ebefedc7e87050fc227e04a1c2622842c0d8ca8bc5957d0"
+        },
+        "distinctModuleCombinations": 4,
+        "modules": [
+          "far-wing",
+          "near-wing"
+        ],
+        "calibration": "estimated-flight-rig-review",
+        "playable": false,
+        "overflowSafe": true
+      },
+      "routeWindowsWithoutDuplicates": true,
+      "networkBlocked": true,
+      "errors": [],
+      "failed": [],
+      "httpErrors": [],
+      "limit": "Hidden QA profile; button-stepped review compositions, not a visible-window framerate, flight-animation acceptance, or hardware certification."
+    },
+    "combatCaptures": [
+      {
+        "image": "tmp/desktop-qa/v35/pit-combat-pc-canvas.png",
+        "sha256": "f1b904295d73ebe055a172954f8ad17b25be1726c722084fad698d469ed3cb31",
+        "arena": {
+          "pitCameraMode": "follow",
+          "pitCameraZoom": "1.5726",
+          "pitCameraTargetZoom": "1.5726",
+          "pitCameraCenterX": "482.55",
+          "pitCameraCenterY": "359.00",
+          "pitArenaId": "the-pit",
+          "pitArenaArtStatus": "bitmap",
+          "pitArenaMissingAssets": "0",
+          "pitArenaArtSource": "openai-v33-independent",
+          "pitArenaLoadedImages": "22",
+          "pitArenaSubplans": "17",
+          "pitArenaPlanes": "P0,P1,P2,P3,P4,P5"
+        },
+        "simulationFrame": "42",
+        "fighters": [
+          {
+            "pitBitmapSlot": "0",
+            "pitBitmapId": "jungle-hunter",
+            "pitBitmapStatus": "sprite-sheet-animation"
+          },
+          {
+            "pitBitmapSlot": "1",
+            "pitBitmapId": "berserker",
+            "pitBitmapStatus": "sprite-sheet-animation"
+          }
+        ],
+        "combatPixelsSource": "HTMLCanvasElement.toDataURL",
+        "windowCompositorMayLagWhenHidden": true
+      },
+      {
+        "image": "tmp/desktop-qa/v35/pit-pc-arena-009-quais-du-premier-sang-canvas.png",
+        "sha256": "f12dfa9a8d9aaaf114d3af9ccd0522dd9fe0eee27bb0bafbd2eb5cfe0bd327fc",
+        "arena": {
+          "pitCameraMode": "follow",
+          "pitCameraZoom": "1.8187",
+          "pitCameraTargetZoom": "1.8537",
+          "pitCameraCenterX": "518.90",
+          "pitCameraCenterY": "359.00",
+          "pitArenaId": "arena-009-quais-du-premier-sang",
+          "pitArenaArtStatus": "bitmap",
+          "pitArenaMissingAssets": "0",
+          "pitArenaArtSource": "openai-v33-independent",
+          "pitArenaLoadedImages": "14",
+          "pitArenaSubplans": "14",
+          "pitArenaPlanes": "P0,P1,P2,P3,P4,P5"
+        },
+        "simulationFrame": "67",
+        "fighters": [
+          {
+            "pitBitmapSlot": "0",
+            "pitBitmapId": "tracker",
+            "pitBitmapStatus": "sprite-sheet-animation"
+          },
+          {
+            "pitBitmapSlot": "1",
+            "pitBitmapId": "greyback",
+            "pitBitmapStatus": "sprite-sheet-animation"
+          }
+        ],
+        "combatPixelsSource": "HTMLCanvasElement.toDataURL",
+        "windowCompositorMayLagWhenHidden": true
+      },
+      {
+        "image": "tmp/desktop-qa/v35/pit-pc-arena-020-trone-fracture-canvas.png",
+        "sha256": "3548761e36d6871bbb3b07a75f8a1d0bd4ee91ebab23b904c9f193238d09eb4e",
+        "arena": {
+          "pitCameraMode": "follow",
+          "pitCameraZoom": "1.8029",
+          "pitCameraTargetZoom": "1.8358",
+          "pitCameraCenterX": "525.11",
+          "pitCameraCenterY": "359.00",
+          "pitArenaId": "arena-020-trone-fracture",
+          "pitArenaArtStatus": "bitmap",
+          "pitArenaMissingAssets": "0",
+          "pitArenaArtSource": "openai-v33-independent",
+          "pitArenaLoadedImages": "14",
+          "pitArenaSubplans": "14",
+          "pitArenaPlanes": "P0,P1,P2,P3,P4,P5"
+        },
+        "simulationFrame": "67",
+        "fighters": [
+          {
+            "pitBitmapSlot": "0",
+            "pitBitmapId": "greyback",
+            "pitBitmapStatus": "sprite-sheet-animation"
+          },
+          {
+            "pitBitmapSlot": "1",
+            "pitBitmapId": "tracker",
+            "pitBitmapStatus": "sprite-sheet-animation"
+          }
+        ],
+        "combatPixelsSource": "HTMLCanvasElement.toDataURL",
+        "windowCompositorMayLagWhenHidden": true
+      }
+    ]
+  },
+  "coverage": {
+    "completeGameImplied": false,
+    "arenas": {
+      "requested": 100,
+      "playable": 20,
+      "reviewedKits": 20,
+      "selectedSourceImages": 288
+    },
+    "hunters": {
+      "runtimeFighters": 9,
+      "validatedClips": 204,
+      "initialFamiliesPerDesign": 10,
+      "completeMovesets": 0
+    },
+    "vehicles": {
+      "requested": 50,
+      "entriesWithSourceArt": 50,
+      "entriesWithNonRejectedDrafts": 50,
+      "acceptedAnimationClips": 0,
+      "rideableVehicles": 0
+    }
+  },
+  "galleryTotals": {
+    "arena": 288,
+    "hunter": 146,
+    "vehicle": 114
+  },
+  "proofHashes": [
+    {
+      "path": "work/v35/tests-release-verified.log",
+      "sha256": "469a9e3eee53a07e44355d57775404ad369444438728fd068ff417f8fa3bbad7"
+    },
+    {
+      "path": "work/v35/next-build-release.log",
+      "sha256": "0611cdcad9914314cad5b8d49e4503f0ee87bbcb58f7ac18592139ed7e7850f0"
+    },
+    {
+      "path": "work/v35/typecheck-release.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "work/v35/lint-release.log",
+      "sha256": "1129f51762e9e6aae60a2a17d11f8aad9460b83d4d0dc8fd8bf87f99b78437f1"
+    },
+    {
+      "path": "work/v35/desktop-qa-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "work/v35/public-review-qa/browser-qa.json",
+      "sha256": "dcf6ab74e24a21ccf0ebda5949d214b8daf6e6ef195975df267d804888c04f15"
+    },
+    {
+      "path": "work/v35/public-pit-lab-qa/browser-qa.json",
+      "sha256": "8b3244d38cf23ce17c1dd0784c256c161646924363ae93b5a8b3ff7b9b332287"
+    },
+    {
+      "path": "work/v35/public-gamepad-qa/browser-qa.json",
+      "sha256": "68b45c961ff64d3f138ab4d6fc8f247fb9753ee2de25e59c5933ef1f88de0ba5"
+    },
+    {
+      "path": "tmp/desktop-qa/v35/verification.json",
+      "sha256": "2a3828fd7b0ddbf6e9aa70e2681d42b59bf1317f9054d5858e0bc7ba715af9a9"
+    },
+    {
+      "path": "tmp/desktop-qa/v35/art-workshops/verification.json",
+      "sha256": "32942286326f17be6304af88d5b4f7d28c4f6ea298e47db7f97c3925275a04aa"
+    },
+    {
+      "path": "tmp/desktop-qa/v35/archive-verification.json",
+      "sha256": "10472fc6cb4558254a86bccea803162639b3cc898aaa3335c2e77d750315d1a5"
+    }
+  ],
+  "limits": [
+    "80 arena concepts remain unproduced; each extension has one neutral duel sector.",
+    "No complete hunter moveset and no rideable vehicle are claimed.",
+    "Unsigned fan project; no physical-controller, hardware-performance, or full-campaign certification.",
+    "Hidden-window compositor screenshots may lag; combat pixel evidence is captured directly from the real canvas."
+  ]
+}

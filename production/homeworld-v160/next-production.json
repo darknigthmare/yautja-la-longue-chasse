@@ -1,0 +1,81 @@
+{
+  "state": "A_GENERER",
+  "camera": {
+    "pitch": 35,
+    "yaw": 0,
+    "projection": "orthographic"
+  },
+  "specification": "Un prop indépendant par image ; fond alpha ; proportions non condensées ; pas de texte, cadre, planche, personnage ou grande base décorative. Les dimensions en mètres sont des propositions de jeu, non des valeurs officielles.",
+  "items": [
+    {
+      "id": "HWA160-N01",
+      "label": "Garde-corps trapézoïdal court",
+      "reference": "REF01",
+      "brief": "Module droit de parapet, trois ouvertures trapézoïdales, 6 m de long indicatifs ; aucun socle monumental.",
+      "targetId": "target-v81-55-21"
+    },
+    {
+      "id": "HWA160-N02",
+      "label": "Angle de garde-corps",
+      "reference": "REF01",
+      "brief": "Angle à 90° avec deux travées basses, connecteurs visibles ; vue native distincte, non miroir.",
+      "targetId": "target-v81-55-13"
+    },
+    {
+      "id": "HWA160-N03",
+      "label": "Tablier de passerelle supérieur",
+      "reference": "REF01",
+      "brief": "Une longue travée nue de 24 m indicatifs, garde-corps fins, deux raccords ; ni tour ni pylône fusionné.",
+      "targetId": "target-v81-55-33"
+    },
+    {
+      "id": "HWA160-N04",
+      "label": "Contrefort courbe de tour",
+      "reference": "REF01",
+      "brief": "Une nervure latérale architecturale élancée ; hauteur indicative 32 m, détails fins, aucune porte géante.",
+      "targetId": "target-v81-55-17"
+    },
+    {
+      "id": "HWA160-N05",
+      "label": "Paroi de falaise volcanique",
+      "reference": "REF02",
+      "brief": "Grand segment rocheux vertical, hauteur indicative 24 m ; aucun bâtiment, aucune chute peinte dessus.",
+      "targetId": "target-v81-69-245"
+    },
+    {
+      "id": "HWA160-N06",
+      "label": "Chute d’eau indépendante",
+      "reference": "REF02",
+      "brief": "Rideau d’eau vertical sans temple, sans plate-forme ; embruns alpha partiels ; hauteur indicative 22 m.",
+      "targetId": "extension-hydrologie"
+    },
+    {
+      "id": "HWA160-N07",
+      "label": "Crevasse naturelle étroite",
+      "reference": "REF03",
+      "brief": "Faille irrégulière au niveau du sol avec basalte brisé et lave orange profonde, sans maçonnerie ; 12 m indicatifs.",
+      "targetId": "target-v81-69-250"
+    },
+    {
+      "id": "HWA160-N08",
+      "label": "Crevasse naturelle ramifiée",
+      "reference": "REF03",
+      "brief": "Faille en Y naturelle, rives fragmentées ; 18 m indicatifs ; pas de murs, ni pylônes, ni symboles.",
+      "targetId": "target-v81-69-248"
+    },
+    {
+      "id": "HWA160-N09",
+      "label": "Massif sombre du premier plan",
+      "reference": "REF03",
+      "brief": "Touffe minérale/végétale basse gris charbon aux branches irrégulières ; interprétation non canonique, pas de monstre inventé.",
+      "targetId": "target-v81-70-261"
+    },
+    {
+      "id": "HWA160-N10",
+      "label": "Amas de basalte fracturé",
+      "reference": "REF03",
+      "brief": "Amas naturel bas et dissymétrique ; 4 m indicatifs ; relief visible à la caméra 35°, aucune architecture.",
+      "targetId": "target-v81-69-243"
+    }
+  ]
+}

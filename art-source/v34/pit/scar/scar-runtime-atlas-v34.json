@@ -1,0 +1,1322 @@
+{
+  "fighterId": "scar",
+  "bodyHeightPx": 410,
+  "pageBodyHeightPx": {
+    "scar-idle": 410,
+    "scar-repair-walk-backward-support": 405,
+    "scar-crouch": 365,
+    "scar-guard": 400,
+    "scar-hurt": 385,
+    "scar-repair-light-mount": 365,
+    "scar-medium": 332,
+    "scar-heavy": 390
+  },
+  "atlas": {
+    "schemaVersion": 1,
+    "id": "scar-pit-v34",
+    "characterId": "scar",
+    "variantId": "the-pit-v34-v5-identity",
+    "sourceKind": "authored-frames",
+    "status": "validated",
+    "pages": [
+      {
+        "id": "scar-idle",
+        "src": "/game/sprites/v34/pit/scar/scar-idle-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "scar-repair-walk-backward-support",
+        "src": "/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "scar-crouch",
+        "src": "/game/sprites/v34/pit/scar/scar-crouch-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "scar-guard",
+        "src": "/game/sprites/v34/pit/scar/scar-guard-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "scar-hurt",
+        "src": "/game/sprites/v34/pit/scar/scar-hurt-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "scar-repair-light-mount",
+        "src": "/game/sprites/v34/pit/scar/scar-repair-light-mount-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "scar-medium",
+        "src": "/game/sprites/v34/pit/scar/scar-medium-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "scar-heavy",
+        "src": "/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      }
+    ],
+    "clips": [
+      {
+        "id": "idle",
+        "facing": "right",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-idle",
+            "rect": [
+              72,
+              27,
+              257,
+              446
+            ],
+            "pivot": [
+              127.5,
+              442
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "scar-idle",
+            "rect": [
+              461,
+              26,
+              243,
+              447
+            ],
+            "pivot": [
+              124.5,
+              443
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "scar-idle",
+            "rect": [
+              832,
+              31,
+              249,
+              442
+            ],
+            "pivot": [
+              119,
+              438
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "scar-idle",
+            "rect": [
+              1205,
+              26,
+              250,
+              447
+            ],
+            "pivot": [
+              126,
+              443
+            ],
+            "durationTicks": 10
+          }
+        ]
+      },
+      {
+        "id": "idle",
+        "facing": "left",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-idle",
+            "rect": [
+              73,
+              540,
+              247,
+              441
+            ],
+            "pivot": [
+              120.5,
+              437
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "scar-idle",
+            "rect": [
+              451,
+              539,
+              241,
+              442
+            ],
+            "pivot": [
+              119,
+              438
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "scar-idle",
+            "rect": [
+              830,
+              543,
+              248,
+              436
+            ],
+            "pivot": [
+              128,
+              432
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "scar-idle",
+            "rect": [
+              1211,
+              540,
+              238,
+              441
+            ],
+            "pivot": [
+              119,
+              437
+            ],
+            "durationTicks": 10
+          }
+        ]
+      },
+      {
+        "id": "walk-backward",
+        "facing": "right",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-repair-walk-backward-support",
+            "rect": [
+              45,
+              39,
+              265,
+              432
+            ],
+            "pivot": [
+              140,
+              428
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "scar-repair-walk-backward-support",
+            "rect": [
+              430,
+              29,
+              261,
+              442
+            ],
+            "pivot": [
+              137,
+              438
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "scar-repair-walk-backward-support",
+            "rect": [
+              810,
+              38,
+              258,
+              433
+            ],
+            "pivot": [
+              136,
+              429
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "scar-repair-walk-backward-support",
+            "rect": [
+              1201,
+              32,
+              265,
+              438
+            ],
+            "pivot": [
+              119,
+              434
+            ],
+            "durationTicks": 8
+          }
+        ]
+      },
+      {
+        "id": "walk-backward",
+        "facing": "left",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-repair-walk-backward-support",
+            "rect": [
+              61,
+              537,
+              256,
+              436
+            ],
+            "pivot": [
+              139,
+              432
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "scar-repair-walk-backward-support",
+            "rect": [
+              426,
+              531,
+              271,
+              441
+            ],
+            "pivot": [
+              159,
+              437
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "scar-repair-walk-backward-support",
+            "rect": [
+              825,
+              537,
+              256,
+              434
+            ],
+            "pivot": [
+              135,
+              430
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "scar-repair-walk-backward-support",
+            "rect": [
+              1206,
+              531,
+              255,
+              438
+            ],
+            "pivot": [
+              130,
+              434
+            ],
+            "durationTicks": 8
+          }
+        ]
+      },
+      {
+        "id": "crouch",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-crouch",
+            "rect": [
+              54,
+              43,
+              256,
+              425
+            ],
+            "pivot": [
+              127.5,
+              421
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "scar-crouch",
+            "rect": [
+              453,
+              82,
+              251,
+              386
+            ],
+            "pivot": [
+              120.5,
+              382
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "scar-crouch",
+            "rect": [
+              852,
+              109,
+              226,
+              359
+            ],
+            "pivot": [
+              105.5,
+              355
+            ],
+            "durationTicks": 30
+          }
+        ]
+      },
+      {
+        "id": "crouch",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-crouch",
+            "rect": [
+              57,
+              541,
+              249,
+              410
+            ],
+            "pivot": [
+              129,
+              406
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "scar-crouch",
+            "rect": [
+              444,
+              567,
+              247,
+              384
+            ],
+            "pivot": [
+              131,
+              380
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "scar-crouch",
+            "rect": [
+              825,
+              593,
+              243,
+              356
+            ],
+            "pivot": [
+              126,
+              352
+            ],
+            "durationTicks": 30
+          }
+        ]
+      },
+      {
+        "id": "high-guard",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-guard",
+            "rect": [
+              44,
+              25,
+              262,
+              448
+            ],
+            "pivot": [
+              137,
+              444
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "scar-guard",
+            "rect": [
+              456,
+              25,
+              251,
+              446
+            ],
+            "pivot": [
+              120,
+              442
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "scar-guard",
+            "rect": [
+              835,
+              25,
+              262,
+              447
+            ],
+            "pivot": [
+              123.5,
+              443
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "scar-guard",
+            "rect": [
+              1208,
+              24,
+              250,
+              448
+            ],
+            "pivot": [
+              124,
+              444
+            ],
+            "durationTicks": 6
+          }
+        ]
+      },
+      {
+        "id": "high-guard",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-guard",
+            "rect": [
+              69,
+              537,
+              255,
+              438
+            ],
+            "pivot": [
+              121.5,
+              434
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "scar-guard",
+            "rect": [
+              451,
+              531,
+              244,
+              444
+            ],
+            "pivot": [
+              121.5,
+              440
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "scar-guard",
+            "rect": [
+              834,
+              532,
+              249,
+              444
+            ],
+            "pivot": [
+              124.5,
+              440
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "scar-guard",
+            "rect": [
+              1220,
+              534,
+              251,
+              441
+            ],
+            "pivot": [
+              125.5,
+              437
+            ],
+            "durationTicks": 6
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.hitstun",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-hurt",
+            "rect": [
+              87,
+              55,
+              239,
+              412
+            ],
+            "pivot": [
+              117,
+              408
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "scar-hurt",
+            "rect": [
+              477,
+              54,
+              237,
+              413
+            ],
+            "pivot": [
+              121,
+              409
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "scar-hurt",
+            "rect": [
+              837,
+              54,
+              237,
+              413
+            ],
+            "pivot": [
+              119.5,
+              409
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "scar-hurt",
+            "rect": [
+              1213,
+              48,
+              241,
+              418
+            ],
+            "pivot": [
+              127,
+              414
+            ],
+            "durationTicks": 3
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.hitstun",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-hurt",
+            "rect": [
+              102,
+              553,
+              238,
+              412
+            ],
+            "pivot": [
+              120,
+              408
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "scar-hurt",
+            "rect": [
+              462,
+              553,
+              243,
+              410
+            ],
+            "pivot": [
+              119,
+              406
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "scar-hurt",
+            "rect": [
+              842,
+              553,
+              241,
+              412
+            ],
+            "pivot": [
+              117,
+              408
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "scar-hurt",
+            "rect": [
+              1220,
+              546,
+              242,
+              419
+            ],
+            "pivot": [
+              118,
+              415
+            ],
+            "durationTicks": 3
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.startup",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-repair-light-mount",
+            "rect": [
+              48,
+              53,
+              251,
+              393
+            ],
+            "pivot": [
+              114,
+              389
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.active",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-repair-light-mount",
+            "rect": [
+              397,
+              46,
+              329,
+              400
+            ],
+            "pivot": [
+              122,
+              396
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.recovery",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-repair-light-mount",
+            "rect": [
+              810,
+              53,
+              243,
+              393
+            ],
+            "pivot": [
+              113,
+              389
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "scar-repair-light-mount",
+            "rect": [
+              1211,
+              50,
+              218,
+              396
+            ],
+            "pivot": [
+              106,
+              392
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.startup",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-repair-light-mount",
+            "rect": [
+              77,
+              541,
+              249,
+              393
+            ],
+            "pivot": [
+              130.5,
+              389
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.active",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-repair-light-mount",
+            "rect": [
+              402,
+              538,
+              337,
+              396
+            ],
+            "pivot": [
+              211,
+              392
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.recovery",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-repair-light-mount",
+            "rect": [
+              859,
+              541,
+              243,
+              393
+            ],
+            "pivot": [
+              124.5,
+              389
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "scar-repair-light-mount",
+            "rect": [
+              1237,
+              541,
+              217,
+              393
+            ],
+            "pivot": [
+              108.5,
+              389
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.startup",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-medium",
+            "rect": [
+              64,
+              55,
+              268,
+              397
+            ],
+            "pivot": [
+              124,
+              393
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.active",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-medium",
+            "rect": [
+              414,
+              64,
+              407,
+              388
+            ],
+            "pivot": [
+              153,
+              384
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.recovery",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-medium",
+            "rect": [
+              842,
+              55,
+              249,
+              398
+            ],
+            "pivot": [
+              124,
+              394
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "scar-medium",
+            "rect": [
+              1247,
+              58,
+              221,
+              395
+            ],
+            "pivot": [
+              110,
+              391
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.startup",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-medium",
+            "rect": [
+              69,
+              549,
+              256,
+              389
+            ],
+            "pivot": [
+              127.5,
+              385
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.active",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-medium",
+            "rect": [
+              342,
+              565,
+              405,
+              371
+            ],
+            "pivot": [
+              257,
+              367
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.recovery",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-medium",
+            "rect": [
+              837,
+              555,
+              266,
+              383
+            ],
+            "pivot": [
+              132.5,
+              379
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "scar-medium",
+            "rect": [
+              1244,
+              558,
+              228,
+              381
+            ],
+            "pivot": [
+              113.5,
+              377
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.startup",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-heavy",
+            "rect": [
+              40,
+              37,
+              304,
+              432
+            ],
+            "pivot": [
+              147,
+              428
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.active",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-heavy",
+            "rect": [
+              410,
+              46,
+              336,
+              422
+            ],
+            "pivot": [
+              142,
+              418
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.recovery",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-heavy",
+            "rect": [
+              787,
+              48,
+              308,
+              421
+            ],
+            "pivot": [
+              140,
+              417
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "scar-heavy",
+            "rect": [
+              1203,
+              39,
+              289,
+              431
+            ],
+            "pivot": [
+              133,
+              427
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.startup",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-heavy",
+            "rect": [
+              1188,
+              541,
+              310,
+              429
+            ],
+            "pivot": [
+              159.5,
+              425
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.active",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-heavy",
+            "rect": [
+              782,
+              550,
+              339,
+              420
+            ],
+            "pivot": [
+              194.5,
+              416
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.recovery",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "scar-heavy",
+            "rect": [
+              437,
+              549,
+              306,
+              420
+            ],
+            "pivot": [
+              162,
+              416
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "scar-heavy",
+            "rect": [
+              44,
+              544,
+              291,
+              425
+            ],
+            "pivot": [
+              156,
+              421
+            ],
+            "durationTicks": 1
+          }
+        ]
+      }
+    ]
+  }
+}

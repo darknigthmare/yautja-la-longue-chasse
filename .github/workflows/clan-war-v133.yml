@@ -1,0 +1,80 @@
+name: V134 W3 multi-squad and synchronized rally controls
+on:
+  push:
+    branches: [feat/v133-w3-multi-squad-rts-20261031]
+  pull_request:
+    branches: [feat/v130-clan-war-production-excel-qa-20261030]
+    paths:
+      - 'app/game/systems/clanWarRtsSquadsV133.ts'
+      - 'app/game/ClanWarRtsSquadsV133.*'
+      - 'app/game/ClanWarBibleV6Panel.tsx'
+      - 'tests/clan-war-rts-squads-v133.test.mjs'
+      - 'tests/clan-war-rts-rally-v134.test.mjs'
+      - 'tests/clan-war-production-v134.test.mjs'
+      - 'docs/clan-war-v134/**'
+      - 'docs/clan-war-v130/**'
+      - 'docs/clan-war-v133/**'
+      - 'tsconfig.clan-war-v133.json'
+      - '.github/workflows/clan-war-v133.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tactical-source-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Sparse checkout W3 source, multi-squad runtime, Excel and UI
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
+            /tsconfig.clan-war-v133.json
+            /types/clan-war-v120-css.d.ts
+            /app/game/clanWarBibleV6Source.json
+            /app/game/clanWarV85Source.json
+            /app/game/systems/clanWarBibleV6.ts
+            /app/game/systems/clanWarV85Data.ts
+            /app/game/systems/clanWarSourceMapsV128.ts
+            /app/game/systems/clanWarRtsSourceMissionsV129.ts
+            /app/game/systems/clanWarRtsSquadsV133.ts
+            /app/game/systems/clanWarVariantAtlasV120.ts
+            /app/game/data/clanWarOriginalPlacesV120.json
+            /app/game/data/clanWarLoreFramesV120.json
+            /app/game/data/clanWarHomageAssaultV120.json
+            /app/game/data/clanWarHomageOuterV120.json
+            /app/game/data/clanWarHomageStealthV120.json
+            /app/game/data/clanWarHomageRtsV120.json
+            /app/game/ClanWarRtsSquadsV133.tsx
+            /app/game/ClanWarRtsSquadsV133.module.css
+            /app/game/ClanWarBibleV6Panel.tsx
+            /docs/clan-war-v130/
+            /docs/clan-war-v133/
+            /docs/clan-war-v134/
+            /tests/clan-war-production-v130.test.mjs
+            /tests/clan-war-rts-squads-v133.test.mjs
+            /tests/clan-war-rts-rally-v134.test.mjs
+            /tests/clan-war-production-v134.test.mjs
+            /tests/clan-war-rts24-source-v129.test.mjs
+      - name: Node.js 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '22'}
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Objective and adversary tests (V133 + V129 + V130)
+        run: node --test --test-reporter=spec tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts-rally-v134.test.mjs tests/clan-war-production-v134.test.mjs tests/clan-war-rts24-source-v129.test.mjs tests/clan-war-production-v130.test.mjs
+      - name: Source-compatible TypeScript
+        if: always()
+        run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v133.json
+      - name: ESLint new prototype and tests
+        if: always()
+        run: npx --no-install eslint app/game/systems/clanWarRtsSquadsV133.ts app/game/ClanWarRtsSquadsV133.tsx tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts-rally-v134.test.mjs tests/clan-war-production-v134.test.mjs
+      - name: Assert Bible V6 navigation is wired without overwriting V129
+        if: always()
+        run: |
+          node --input-type=module -e "import {readFileSync} from 'node:fs';const s=readFileSync('app/game/ClanWarBibleV6Panel.tsx','utf8'); if(!s.includes('ClanWarRtsSquadsV133')||!s.includes('rtsSquads')||!s.includes('ClanWarRtsMissionStudyV129'))process.exit(1);"

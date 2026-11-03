@@ -1,0 +1,35 @@
+diff --git a/scripts/qa-planet-generator-v103.mjs b/scripts/qa-planet-generator-v103.mjs
+index 8fd187df..8a367c4c 100644
+--- a/scripts/qa-planet-generator-v103.mjs
++++ b/scripts/qa-planet-generator-v103.mjs
+@@ -156,7 +156,7 @@ try {
+   await generator(page).getByRole("button", { name: "Base extraterrestre", exact: true }).press("Enter");
+   let current = await values(page);
+   check("the extraterrestrial base preserves seed, both counts and independently locked palettes", ["seed", "territoryCount", "regionCount", "landPalette", "surfacePalette"].every(field => current[field] === lockedBefore[field]) && current.landVariant === "alien" && current.surfaceVariant === "alien");
+-  await generator(page).getByRole("button", { name: "Mélanger les réglages", exact: true }).press("Enter");
++  await generator(page).getByRole("button", { name: "Tout mélanger au hasard", exact: true }).press("Enter");
+   current = await values(page);
+   check("global randomization honors every active lock and leaves the applied world unchanged", ["seed", "territoryCount", "regionCount", "landPalette", "surfacePalette"].every(field => current[field] === lockedBefore[field]) && await code(page) === initial);
+   const moduleBefore = await values(page);
+@@ -257,7 +257,7 @@ try {
+   console.log("QA V103: exact legacy world, archive and explicit variant action");
+   await page.goto(`${baseUrl}/planet-generator-v102`, { waitUntil: "domcontentloaded", timeout: 90000 });
+   const oldEditor = page.getByTestId("planet-generator-v102"); await oldEditor.waitFor();
+-  await oldEditor.locator("canvas").scrollIntoViewIfNeeded();
++  await oldEditor.getByTestId("planet-material-v101").scrollIntoViewIfNeeded();
+   await oldEditor.locator('canvas[data-render-status="ready"], canvas[data-render-status="fallback"]').waitFor({ timeout: 90000 });
+   worldLegacy = await oldEditor.getAttribute("data-preview-planet-code");
+   const oldAtlas = oldEditor.getByTestId("clan-war-atlas-v95"); await map(oldAtlas);
+diff --git a/scripts/qa-planet-import-race-v103.mjs b/scripts/qa-planet-import-race-v103.mjs
+index 6acff771..9fbca162 100644
+--- a/scripts/qa-planet-import-race-v103.mjs
++++ b/scripts/qa-planet-import-race-v103.mjs
+@@ -201,7 +201,7 @@ try {
+   await staleRead("Rejected shuffle with a locked invalid seed supersedes the older file read", async () => {
+     await seedInput(page).fill("4294967296");
+     await root(page).getByRole("checkbox", { name: "Conserver : Graine du monde", exact: true }).setChecked(true);
+-  }, () => button(page, "Mélanger les réglages").click(), seedError);
++  }, () => button(page, "Tout mélanger au hasard").click(), seedError);
+   await staleRead("Rejected code import prepared before the file supersedes its pending read", () => codeInput(page).fill("invalid-world-code-v103"), () => button(page, "Retrouver le monde").click(), codeError);
+   await staleRead("Editing the code field after native reading preserves the newer unfinished input", async () => {}, async () => {
+     const before = await snapshot();

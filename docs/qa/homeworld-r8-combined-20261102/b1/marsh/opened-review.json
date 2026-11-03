@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 1,
+  "review": "R8 B1 marsh original-image review",
+  "reviewedAtUtc": "2026-11-02T07:52:15.066831+00:00",
+  "reviewer": "/root/homeworld_final_recovery",
+  "method": "Each original PNG was actually opened individually using view_image. Images were never edited, repainted, cropped or substituted.",
+  "completeRecipe": false,
+  "rawStatus": "PASS_TARGETED_COMPILED_APP",
+  "reviewStatus": "REVIEWED_WITH_EXPLICIT_LIMITS",
+  "rawResult": {
+    "file": "result.json",
+    "bytes": 44243,
+    "sha256": "26c397729cf720a267d18fe1c7f313d8509a9b7f9e2ca14d0a68655b9a98da13"
+  },
+  "production": {
+    "mode": "compiled-app",
+    "buildId": "wUnrV1ggo6EZPYklVbGCp",
+    "runtimeCommit": "a83d23911ad4b5370494de0ca0bb025bd1d89449",
+    "htmlResponsesVerified": 22
+  },
+  "criteriaPassed": 57,
+  "captureCount": 18,
+  "captures": [
+    {
+      "file": "central-camera.png",
+      "bytes": 1890975,
+      "sha256": "fa9a734cd7f9fc1a33c4d738132e31ed3ebde63b3bd53531da061a4d486c5f89",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5105.7px, -902.913px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6473,
+        "y": 2800
+      },
+      "opened": true,
+      "observation": "Parvis minéral continu au centre, façades/objets/acteurs présents ; aucune longue bande verticale artificielle observée dans cette caméra. Le point extérieur plus large y2800 n'est pas certifié traversable par cette vue."
+    },
+    {
+      "file": "rampart-upper-end-camera.png",
+      "bytes": 2135746,
+      "sha256": "4f386780fb752c7f1cb6039a414d1a8d3f95dad3cdcc1fe639740ed269f1b493",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4950px, -593.181px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6300,
+        "y": 2200
+      },
+      "opened": true,
+      "observation": "Extrémité haute : transition pavée continue dans le parvis entre bâtiments et piliers, sans trait vertical artificiel. Le grand bord extérieur sombre et la rive/relief en arrière-plan restent visibles et hors correctif."
+    },
+    {
+      "file": "rampart-lower-end-camera.png",
+      "bytes": 1738760,
+      "sha256": "df053f14d89bf1dafbe249b939b8dc24b63ec17a1fe7de23561d12b581ced54a",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4950px, -1186.83px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6300,
+        "y": 3350
+      },
+      "opened": true,
+      "observation": "Extrémité basse : parvis central et joint pavé lisibles sans bande verticale. Découpe extérieure sombre au sud-ouest et séparation avec le sol naturel existent encore ; ces grands bords/reliefs ne sont pas clôturés par les petits joints."
+    },
+    {
+      "file": "dock-upper-end-camera.png",
+      "bytes": 2052722,
+      "sha256": "4492b117823ded807365b280a382b7e52bc39fa06232bf02e1a10f6831679eb1",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5130px, -748.047px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6500,
+        "y": 2500
+      },
+      "opened": true,
+      "observation": "Extrémité haute du quai : sol minéral continu autour du petit joint ; façades de contrôle/piliers lisibles et aucune bande rapportée traversant la place. Falaise naturelle en arrière-plan et découpe extérieure haute restent hors clôture."
+    },
+    {
+      "file": "dock-lower-end-camera.png",
+      "bytes": 1775296,
+      "sha256": "7923fce81428e0b3cc61309e74fae0364d47ef4c6498764b495584306c3b1eae",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5130px, -1068.1px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6500,
+        "y": 3120
+      },
+      "opened": true,
+      "observation": "Extrémité basse du quai : jonction du parvis continue, objets de métier/porte conservés et pas de bande verticale artificielle. Grande découpe sombre au sud-ouest et jonction irrégulière au sol naturel restent visibles et ouvertes."
+    },
+    {
+      "file": "central-mobile-camera.png",
+      "bytes": 361776,
+      "sha256": "7b03e211148a56884ee0dedd1fe9969f5a4a66a8eb4be94f62ca10486610eaca",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5630.7px, -1065.97px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6473,
+        "y": 2800
+      },
+      "opened": true,
+      "observation": "Viewport 390×844 : pavage continu, acteur/PNJ/objets et contrôles mobiles visibles. L'en-tête compacte le titre (La Cité...) ; cette vue ne valide pas les grands bords hors écran."
+    },
+    {
+      "file": "cross-rampart-upper-camera.png",
+      "bytes": 1935676,
+      "sha256": "4be89f3de4283b6d004fd2bb01adea1653b427b12bfaef87383bb4feda9be032",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4837.5px, -748.047px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6175,
+        "y": 2500
+      },
+      "opened": true,
+      "observation": "Départ traversée haute : revêtement continu devant maison du clan, acteur visible sur le côté attendu. Aucun trait rapporté ne barre la zone de passage."
+    },
+    {
+      "file": "cross-rampart-upper-returned.png",
+      "bytes": 1853285,
+      "sha256": "c4ebe073e7dbaaad1d7e9a1e52798b7cb3e1065921b5a61a8b5a1510f8d9e9e0",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4832.75px, -748.047px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6170,
+        "y": 2500
+      },
+      "opened": true,
+      "observation": "Après vraie traversée aller/retour : acteur revenu devant la même maison, sol et façades continus ; lecture visuelle stable du joint sans obstacle ou bande verticale ajoutée. Le brut fournit les positions réelles."
+    },
+    {
+      "file": "cross-rampart-lower-camera.png",
+      "bytes": 1733803,
+      "sha256": "b3dc50ea88921266d76cec84aea1c18230a799a6d853a14067d4f9f577cb938d",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4837.5px, -1135.21px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6175,
+        "y": 3250
+      },
+      "opened": true,
+      "observation": "Départ traversée basse : petit joint dans le pavage continu devant la vigie ; scène/acteur/portes présents. Le grand vide extérieur au sud-ouest demeure visible et n'est pas masqué."
+    },
+    {
+      "file": "cross-rampart-lower-returned.png",
+      "bytes": 1682457,
+      "sha256": "aa2bb53d97eb4d0d38bd2a95c45864484d42325e7987159e045b7f09fa74e2db",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4832.75px, -1135.21px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6170,
+        "y": 3250
+      },
+      "opened": true,
+      "observation": "Retour traversée basse : acteur revenu, même lecture continue du sol dans le couloir ; pas de bande artificielle. Le brut permet la comparaison des positions. La découpe extérieure sombre n'est pas corrigée."
+    },
+    {
+      "file": "cross-dock-road-camera.png",
+      "bytes": 1953796,
+      "sha256": "3da2ed010f715b288d2a21cae0c1f6f2703f20a5141921a3db0520e07f54491a",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5220px, -851.291px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6600,
+        "y": 2700
+      },
+      "opened": true,
+      "observation": "Départ traversée du quai à y2700 : petit passage pavé vers l'approche de contrôle, acteur au départ ; aucune bande verticale rapportée. Cette vue ne qualifie pas le point plus large (6653,2800)."
+    },
+    {
+      "file": "cross-dock-road-returned.png",
+      "bytes": 1797606,
+      "sha256": "0d146bc7aa959528beab8233f78ac29eee67026afe595f12af5ac3b5b09b7338",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5224.75px, -851.291px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6605,
+        "y": 2700
+      },
+      "opened": true,
+      "observation": "Retour du quai : acteur revenu sur le côté initial, parvis et accès visibles sans bande traversante. La traversée y2700 du brut ne ferme pas le point extérieur plus large (6653,2800)."
+    },
+    {
+      "file": "marsh-watch-return-camera.png",
+      "bytes": 1981370,
+      "sha256": "8541d173ae81a347b7c7e4602acdf19115d4f1a6f1f2752ceb12b242e5f39035",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5017.5px, -799.669px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6375,
+        "y": 2600
+      },
+      "opened": true,
+      "observation": "Départ de la vigie : scène pavée et acteurs lisibles, pas de bande artificielle sur le chemin. Découpes rectangulaires du terrain naturel en arrière-plan et bord externe sombre toujours visibles, hors périmètre de correction."
+    },
+    {
+      "file": "marsh-watch-return-returned.png",
+      "bytes": 1931707,
+      "sha256": "33472f4630ddcc2cde52064060bbdd2fd088a3747bb5e74a5416a578fa470bd2",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5017.5px, -801.816px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6375,
+        "y": 2604
+      },
+      "opened": true,
+      "observation": "Retour de la vigie : acteur revenu près du coffre initial, décor/pavage stables ; les mesures du brut établissent l'aller/retour natif. Raccords rectangulaires du relief naturel et extérieur sombre demeurent ouverts."
+    },
+    {
+      "file": "dock-door-camera.png",
+      "bytes": 1890975,
+      "sha256": "fa9a734cd7f9fc1a33c4d738132e31ed3ebde63b3bd53531da061a4d486c5f89",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5105.7px, -902.913px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6473,
+        "y": 2800
+      },
+      "opened": true,
+      "observation": "Caméra initiale porte : contrôle des quais et parvis continus, acteurs/meubles conservés. Cette capture ouvre le scénario ; le guidage/entrée/sortie ne sont établis que par les étapes suivantes et le brut."
+    },
+    {
+      "file": "dock-door-door-approach.png",
+      "bytes": 1954356,
+      "sha256": "267486e475a86bb396ec97994e0561f4ba59a715ae776bda79a3d3918f67dbcc",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5569.05px, -1020.85px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6988,
+        "y": 3028
+      },
+      "opened": true,
+      "observation": "Après guidage Worker réel : acteur au seuil, action «Entrer · Contrôle des quais» visible, façade devient translucide de façon native à l'approche. Sol et chemin d'accès lisibles ; aucun changement d'ancien objet."
+    },
+    {
+      "file": "dock-door-entered.png",
+      "bytes": 518684,
+      "sha256": "4e6fc12c6f9c0bcf3c456815b22c1cdc6b50d0652f74e6fa3fbfdb10d8f0170b",
+      "camera": {
+        "zoom": "1.350",
+        "style": "pointer-events: none; width: 538px; height: 176.662px; transform: translate(356.85px, 404.653px) scale(1.35);"
+      },
+      "actor": {
+        "x": 269,
+        "y": 236
+      },
+      "opened": true,
+      "observation": "Intérieur réel «Quais · contrôle, inspection et relève» ouvert : acteur, bureau/réserve et sortie «VERS LA CITÉ» présents. Cette vue établit l'entrée rendue ; la marche et la sortie sont corroborées par le brut, pas par l'image seule."
+    },
+    {
+      "file": "dock-door-returned-outside.png",
+      "bytes": 1954417,
+      "sha256": "7008cf4184b4a700d14ec603dfb21318664efc4bf9de65b0e57a64da86908d7a",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5569.05px, -1020.85px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6988,
+        "y": 3028
+      },
+      "opened": true,
+      "observation": "Après E de sortie : acteur revenu au même seuil dans la cité, action d'entrée de nouveau visible et décor conservé. L'accès est réciproque dans le brut ; le rendu translucide de proximité est natif."
+    }
+  ],
+  "sourceUnchanged": true,
+  "errorCounts": {
+    "errors": 0,
+    "consoleErrors": 0,
+    "workerErrors": 0,
+    "requestsFailed": 0,
+    "httpErrors": 0
+  },
+  "nativeWalkObservations": [
+    {
+      "name": "cross-rampart-upper actual physical crossing follows served geometry",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "start": {
+          "x": 6175,
+          "y": 2500
+        },
+        "target": {
+          "x": 6080,
+          "y": 2500
+        },
+        "outward": {
+          "x": 6085,
+          "y": 2500,
+          "arrived": true,
+          "steps": 25
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-upper native return reaches the original side",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6175,
+          "y": 2500
+        },
+        "returned": {
+          "x": 6170,
+          "y": 2500,
+          "arrived": true,
+          "steps": 23
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-lower actual physical crossing follows served geometry",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "start": {
+          "x": 6175,
+          "y": 3250
+        },
+        "target": {
+          "x": 6050,
+          "y": 3250
+        },
+        "outward": {
+          "x": 6054,
+          "y": 3250,
+          "arrived": true,
+          "steps": 37
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-lower native return reaches the original side",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6175,
+          "y": 3250
+        },
+        "returned": {
+          "x": 6170,
+          "y": 3250,
+          "arrived": true,
+          "steps": 34
+        }
+      }
+    },
+    {
+      "name": "cross-dock-road actual physical crossing follows served geometry",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "start": {
+          "x": 6600,
+          "y": 2700
+        },
+        "target": {
+          "x": 6750,
+          "y": 2700
+        },
+        "outward": {
+          "x": 6748,
+          "y": 2700,
+          "arrived": true,
+          "steps": 40
+        }
+      }
+    },
+    {
+      "name": "cross-dock-road native return reaches the original side",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6600,
+          "y": 2700
+        },
+        "returned": {
+          "x": 6605,
+          "y": 2700,
+          "arrived": true,
+          "steps": 41
+        }
+      }
+    },
+    {
+      "name": "real marsh-watch lane outward traversal",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6375,
+          "y": 2600
+        },
+        "there": {
+          "x": 6375,
+          "y": 2796
+        }
+      }
+    },
+    {
+      "name": "real marsh-watch lane return traversal",
+      "status": "PASS"
+    },
+    {
+      "name": "real Worker reaches the retained dock door",
+      "status": "PASS",
+      "detail": {
+        "walked": 787.9467928051331,
+        "steps": 161,
+        "actor": {
+          "x": 6988,
+          "y": 3028
+        }
+      }
+    }
+  ],
+  "limits": [
+    "Only the thirteen narrow physical joints are qualified. The larger exterior point (6653,2800) remains unsupported/nontraversable and open; the successful quay crossing at y2700 does not correct it.",
+    "Large dark exterior cutouts, angular/rectangular terrain outlines and relief/background composition remain visible in the end views and open in docs/qa/homeworld-marsh-edge-diagnostic-20261101. No broad exterior platform or complete marsh composition correction is claimed.",
+    "Initial locations and completed First Tracks state are explicit local fixtures. Native keyboard crossings, returns and the Worker-guided dock approach are observed afterward; no played approach between separate cameras is claimed.",
+    "This is the after phase on B1 only. Historical before/after evidence remains unchanged in docs/qa/homeworld-marsh-ground-joints-v113-20261102. A future B2 requires fresh compiled-app runs.",
+    "Five local application/fixture inputs plus the executed driver are fingerprinted. This bounded recipe is not a complete served runtime inventory, full Homeworld-domain certificate or human artistic admission."
+  ]
+}

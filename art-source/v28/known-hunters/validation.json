@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-05T19:20:42.078Z",
+  "scope": "Actual V28 authored sprite review, no gameplay approval",
+  "manifestSha256": "554282574e5868945c6444516c711ea414ca9c3d6d83b4f2da54b8eb3d068068",
+  "fullRegression": {
+    "command": "npm test",
+    "buildPassed": true,
+    "testsPassed": 889,
+    "testsFailed": 0,
+    "logSha256": "937d43a36cfe5ebde67fb7881e79afa1534cd5e4ea7d4d5a2243f98955810d94"
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "passed": true
+  },
+  "lint": {
+    "command": "npm run lint",
+    "passed": true
+  },
+  "spriteContracts": {
+    "command": "npm run sprites:qa",
+    "testsPassed": 37,
+    "sourceHashesAndGeneratedOutputsMatched": true
+  },
+  "browser": {
+    "command": "node tmp/verify-known-hunter-v28.mjs",
+    "checksPassed": 850,
+    "portableFrames": 66,
+    "httpFrames": 66,
+    "mobileWidth": 390,
+    "spontaneousJavascriptErrors": 0,
+    "intentionalImageFailureChecked": true,
+    "evidence": "art-source/v28/known-hunters/browser-qa.json"
+  },
+  "newContent": {
+    "sheets": 6,
+    "cells": 36,
+    "subjects": 4
+  },
+  "cumulative": {
+    "sheets": 11,
+    "cells": 66,
+    "subjects": 8,
+    "variants": 9,
+    "humanSheets": 4,
+    "yautjaSheets": 7,
+    "statuses": {
+      "draft": 11,
+      "rejected": 0,
+      "validated": 0
+    }
+  },
+  "gameplayValidatedClips": 0,
+  "completeCharacters": 0,
+  "limits": [
+    "Distinct render hashes do not prove motion quality.",
+    "RGB sources use in-memory color key; no native-alpha claim.",
+    "Full animation sets, opposite authored orientations and combat integration remain missing."
+  ]
+}

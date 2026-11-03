@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "v104_compat_review",
+  "checkedAtUtc": "2026-10-22T20:10:28.017221+00:00",
+  "scopeFR": "Revue indépendante ciblée en lecture seule du runtime et mini-reproductions de modèles via esbuild. Les cinq constats relevés ont été corrigés et revérifiés dans les portées décrites. Ce rapport ne clôt ni les personnages, ni les modes complets, ni les classeurs source.",
+  "status": "PASS_CIBLE",
+  "runtime": {
+    "node": "22.23.3",
+    "bundler": "esbuild verrouillé dans le dépôt",
+    "browserInThisReview": false
+  },
+  "legacyReference": {
+    "commit": "6827c8cef1d0133baf44e15d674c0304ba57cb76",
+    "methodFR": "Trois fichiers extraits de Git, comparés par identifiant de blob, puis substitués uniquement dans les bundles de revue. Le checkout et son historique restent inchangés.",
+    "files": [
+      {
+        "path": "app/game/systems/pitCombat.ts",
+        "gitBlob": "2bf7903e5b45fd6e7178ac2873fa2154b51e3946",
+        "sha256": "3cc7ef9c6bd64d60539beda3616ccf365d46acc250724d1bb90a3114d3c6edc2"
+      },
+      {
+        "path": "app/game/systems/gameReserveV66.ts",
+        "gitBlob": "6ddc7660b14bd3b85a1355f4fdcd157f0806ecf8",
+        "sha256": "5d0860c16c799bdb15067904a0f8d1effdd8a3cf7d15aa2b4c3a669ae7cb3e94"
+      },
+      {
+        "path": "app/game/systems/pitReplay.ts",
+        "gitBlob": "0d44c0dcfd79f0f949309a2a506dba69e12619c8",
+        "sha256": "76e8329ba3eb68f8a96e74a7203a70bc1e4a11a43763493d6f61dc141f50ddb9"
+      }
+    ]
+  },
+  "correctedFindings": [
+    {
+      "id": "PIT-NATIVE-METADATA",
+      "observedFR": "Le clone Feral 5H V104 gardait des bornes visibles du lanceur V59 sans conserver les frames correspondantes. Le validateur réel rejetait cet atlas.",
+      "fixFR": "Pages, bornes visibles, hauteurs par page et poses tenues sont filtrées aux clips réellement conservés.",
+      "verification": {
+        "status": "PASS",
+        "acceptedDefinitions": 18,
+        "rejectedDefinitions": 0,
+        "methodFR": "Exposition virtuelle de isAcceptedDefinition pendant la compilation de revue seulement, puis application aux 18 définitions natives. Aucun export produit modifié."
+      }
+    },
+    {
+      "id": "PIT-SNAPSHOT-IDENTITY",
+      "observedFR": "Un snapshot de nouvelle recette marqué version 11 était accepté par le lecteur 11 historique, qui interprétait Feral 2M avec une préparation de 7 ticks au lieu de 11.",
+      "fixFR": "La recette workbook-v104 possède les identités de snapshot et replay 12. Les nouvelles parties sans cette recette conservent l’identité 11.",
+      "verification": {
+        "status": "PASS",
+        "oldReaderRejectsNewSnapshot12": true,
+        "newSnapshot12RoundTrips": true,
+        "rejectedSnapshotCases": [
+          "version 11 avec recette V104",
+          "version 12 sans recette V104",
+          "future version 13"
+        ],
+        "newReplayEngine12Normalizes": true,
+        "rejectedReplayCases": [
+          "moteur 11 avec recette V104",
+          "moteur 12 sans recette V104",
+          "future moteur 13"
+        ],
+        "oldEngine11CodecRejectsReplay12": true,
+        "oldCodecReproductionFR": "recordPitReplay de dix frames neutres sous la recette V104 et seed104 ; moteur12 constaté. Le normalizePitReplay du commit de référence, compilé avec son pitCombat historique, renvoie null."
+      }
+    },
+    {
+      "id": "CARTOGRAPHY-RETURN-INTERRUPTION",
+      "observedFR": "Après les deux approches, la phase return ignorait une interruption et ne permettait aucune reprise explicite au point sûr.",
+      "fixFR": "Le retour peut devenir interrupted avec deux approches conservées. La reprise restitue return et le carnet affiche le retour au pupitre, sans indexer un troisième repère. Le dialogue propre de rapport ne provoque pas cette interruption.",
+      "verification": {
+        "status": "PASS",
+        "realCivicMovementSteps": 169,
+        "measuredWalkWorldUnits": 838.2225440257405,
+        "approaches": 2,
+        "returnInterruptedAndResumed": true,
+        "walkedPrefixPreservedOnResume": true,
+        "foreignOwnerWrongFloorAndStaleRevisionRejected": true,
+        "actualWalkBackAndReportCompleted": true,
+        "completedReportReplayInert": true
+      }
+    },
+    {
+      "id": "PRESERVE-V1-LOOKOUT-CONTRADICTION",
+      "observedFR": "Le normaliseur V1 acceptait un champ lookout nouveau, y compris une observation tick 120 dans une expédition tick 0.",
+      "fixFR": "Une expédition V1 refuse désormais tout champ lookout présent. La géométrie et les états V1 publiés ne possédaient pas ce champ.",
+      "verification": {
+        "status": "PASS",
+        "v1WithLookoutRejected": true
+      }
+    },
+    {
+      "id": "CARTOGRAPHY-TRACE-CAP",
+      "observedFR": "Une marche réelle répétée entre le poste (5920,5190) et (6000,5190), sans approche attribuée, atteint la capacité de trace. Après interruption et reprise, la trace possède 500 points et tout nouvel échantillon devient immédiatement invalide ; aucune nouvelle liaison ne peut alors être terminée.",
+      "originalReproduction": {
+        "realMovementSteps": 3236,
+        "walkedWorldUnits": 17792.5,
+        "trailBeforeInterruption": 499,
+        "trailAfterResume": 500,
+        "resumeAcknowledged": true,
+        "nextRealWalkSampleInvalid": true
+      },
+      "fixFR": "La trace est compactée avant sa saturation. Son origine, les approches gagnées et les 200 derniers points sont conservés ; les omissions sont marquées comme des coupures et annoncées dans la carte. Les compteurs de distance saturent sans arrêter la marche.",
+      "verification": {
+        "status": "PASS",
+        "longWalkBeforeApproaches": {
+          "movementSteps": 5201,
+          "walkedWorldUnits": 28605.5,
+          "compactions": 2,
+          "freeApproachesGranted": 0
+        },
+        "maxRetainedTrailPoints": 479,
+        "completeRun": {
+          "movementSteps": 5370,
+          "walkedWorldUnits": 29442.450006725903,
+          "approaches": 2,
+          "phase": "completed",
+          "normalizes": true
+        },
+        "outwardInterruptionAndResumePreservesMeasuredDistance": true,
+        "returnInterruptionAndResumePreservesMeasuredDistance": true,
+        "reproductionFR": "400 allers simples alternés entre le poste (5920,5190) et (6000,5190), via stepHomeworldCivicActorV80 à 1/60 s. Interruption/reprise ; marche réelle vers les deux approches puis le pupitre, avec une seconde interruption/reprise pendant le retour et rapport final. Chaque échantillon a été accepté."
+      }
+    }
+  ],
+  "legacyComparisons": [
+    {
+      "id": "PIT-LEGACY-11",
+      "status": "PASS",
+      "fighters": [
+        "feral-hunter",
+        "scar"
+      ],
+      "steps": 90,
+      "factoryStateByteIdentical": true,
+      "finalStateByteIdentical": true,
+      "comparison": "JSON.stringify(oldState) === JSON.stringify(currentState)",
+      "inputsReproduction": "Pour tick=0..89: [{attack:tick%35===0?\"medium\":undefined,down:tick%70<35},{}]. Aucune recette normale V104 passée aux deux fabriques."
+    },
+    {
+      "id": "PRESERVE-LEGACY-1",
+      "status": "PASS",
+      "seed": 37,
+      "steps": 300,
+      "factoryStateByteIdentical": true,
+      "finalStateByteIdentical": true,
+      "comparison": "JSON.stringify(oldState) === JSON.stringify(currentState)",
+      "inputsReproduction": "Pour n=0..299: {move:n%100<50?1:0,jump:n%80===0,scan:n%30<15}."
+    }
+  ],
+  "preserveBoundaryChecks": {
+    "status": "PASS",
+    "v2FactoryNormalizes": true,
+    "oldV1ReaderRejectsV2": true,
+    "rejectedCases": [
+      "version 1 avec reserveId V2",
+      "version 2 avec reserveId V1",
+      "future version 3",
+      "V2 sans lookout",
+      "V1 avec lookout"
+    ],
+    "reviewedFR": "Lecture des règles de monotonie de checkpoint, de la sélection explicite des nouvelles expéditions, de la conservation du terrain à la reprise et du rejet des versions futures dans la sauvegarde."
+  },
+  "reproductionMethodFR": "Mini-programmes Node --input-type=module avec esbuild bundle:true, write:false, platform:node, format:esm, import du bundle en data:URL. Les anciens modules viennent du commit épinglé. Les assertions ont été exécutées directement ; aucun fichier de test nouveau ni grande suite n’a été ajouté par cette revue. Les recettes de sortie et jeux d’entrées sont décrits ci-dessus, pas présentés comme une commande npm existante.",
+  "sourceFingerprints": [
+    {
+      "path": "app/game/systems/pitCombat.ts",
+      "sha256": "5bbf8547fb3ce4d5cc2a2b08708f12579b8ce73f6085e790195750565e35f1bb"
+    },
+    {
+      "path": "app/game/systems/pitReplay.ts",
+      "sha256": "4e1fd580546c9b62b33688dbc8120b28dc4f2bc1ebe0eecba610850dc2d6bd60"
+    },
+    {
+      "path": "app/game/systems/pitReplayStorage.ts",
+      "sha256": "d3fc472fb1e30be27f3762b70a83b44adffaa00dbe5eba7f13d2ce4aab3d8e6b"
+    },
+    {
+      "path": "app/game/systems/pitTraining.ts",
+      "sha256": "f2e2772b92542b0d9a2aecc025e87493c48abdb24987ea9822ecac5c1dcf75ac"
+    },
+    {
+      "path": "app/game/systems/pitWorkbookNormalsV104.ts",
+      "sha256": "d4a79c3a6654cbf9864f6afb7b9a921557cc8f91fccbda6366ca037503b5177e"
+    },
+    {
+      "path": "app/game/pitWorkbookNormalRegistryV104.ts",
+      "sha256": "f8886674588f3adbe7a034142c5ee462cc6a61a971fe50f7ff95cacf7060268d"
+    },
+    {
+      "path": "app/game/pitSpriteSheetAnimation.ts",
+      "sha256": "7e58dadf09f042f3ee54f0c576e7a738becdaeba0d9e5b1a88f2a5e7df37b903"
+    },
+    {
+      "path": "app/game/pitCombatBitmapArt.ts",
+      "sha256": "86cc244c8f81d7f36b94cb170f5b344f036971ff8d6bfae6208fa3de73960b79"
+    },
+    {
+      "path": "app/game/hunterSpriteMotion.ts",
+      "sha256": "6add9fbff758acd9407657a98d02d33d8e60508dde67043dc286bd861fd2b88a"
+    },
+    {
+      "path": "app/game/PitCanvas.tsx",
+      "sha256": "c4210bf7d8a2dc68f6839a16a263fc2c3c49e25d93b2c66334bacaf5beaefbff"
+    },
+    {
+      "path": "app/game/systems/homeworldCartographyV104.ts",
+      "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f"
+    },
+    {
+      "path": "app/game/systems/homeworldCartographyLedgerV104.ts",
+      "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148"
+    },
+    {
+      "path": "app/game/systems/homeworldCartographyDefinitionV104.ts",
+      "sha256": "c5d3e4b7e0e34239810384984885cf6b2bf55aa096b1623481ae4adaad0d64f1"
+    },
+    {
+      "path": "app/game/HomeworldHub.tsx",
+      "sha256": "0b7363c0018dceb8a9a256d3f41e279cfc211ac20f12f3126c7a5475dda38146"
+    },
+    {
+      "path": "app/game/HomeworldCartographyV104.tsx",
+      "sha256": "9fa88febe6d9e15bbd69ed044bf21ff98d52bd8bc574a0d2ecc9ee6297980215"
+    },
+    {
+      "path": "app/game/HomeworldCartographerV104.tsx",
+      "sha256": "d624a29d72e14ba7f4efd5242375410b70b4b47b759e63db562955f883d44d40"
+    },
+    {
+      "path": "app/game/save.ts",
+      "sha256": "32fb66f9859703e6ab5c55cd72126d719843fc19ffeac7ed1ece0ffc8fd9959d"
+    },
+    {
+      "path": "app/game/systems/homeworld.ts",
+      "sha256": "ef0d4b893fdfd3ac7d7026b3f5ee8f719ca5237784225964925cd89a97c3671c"
+    },
+    {
+      "path": "app/game/systems/gameReserveV66.ts",
+      "sha256": "7076668aeef77a75fbb8ca63126b64bfb4179215e9b15fc9d48fc1153b898f33"
+    },
+    {
+      "path": "app/game/systems/gameReserveLookoutV104.ts",
+      "sha256": "ca7cff12aa8df630d3e3ea18f9c95d4dcf6aa81030b9ef1aa07f7e9fe6c4d32f"
+    },
+    {
+      "path": "app/game/GameReserveV66.tsx",
+      "sha256": "487798140e4b849df26fd2b4b4433c1dbc5879735fe5886eb987e01bf3d6601b"
+    },
+    {
+      "path": "app/game/GameReserveEntryV66.tsx",
+      "sha256": "22e412758caac974df5b9cd3ef71869f8b1a842653e14018b9db0eab46504b85"
+    },
+    {
+      "path": "app/game/MainMenuBonusModesV81.tsx",
+      "sha256": "d1794c0afdf2bae3af6ed557c762b12f93b84b1c5735b4c8e33ab557e6ec8344"
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "sha256": "462b7b121cd321f42402e80ba3ffef033fa49e394c9c8765b5795d4a929a0e25"
+    }
+  ],
+  "limitsFR": [
+    "Cette revue ne produit aucune nouvelle capture navigateur et ne constitue pas la recette visuelle de livraison. Les autres recettes et inspections sont rapportées séparément.",
+    "Le contrôle des 18 atlas porte ici sur les métadonnées acceptées par le validateur réel. Le décodage des PNG et les 108 résolutions de phase appartiennent à la recette de l’agent Pit, pas à ce mini-contrôle.",
+    "Les comparaisons de 90 et 300 pas ciblent les jeux d’entrées déclarés ; elles ne prouvent pas une équivalence exhaustive sur tous les états possibles.",
+    "La marche cartographique utilise le véritable intégrateur civique et le modèle de reçu, avec un contexte explicite de cour déjà connue. Elle ne prétend pas jouer toute une campagne dans un navigateur.",
+    "Les sources ont été empreintées au moment de cette revue ; toute modification ultérieure de ces fichiers demande d’évaluer de nouveau la portée des vérifications concernées.",
+    "Aucune feuille Excel, image native, classeur historique, branche ou commit n’a été modifié par cette revue. Seul ce rapport a été écrit après autorisation du parent."
+  ],
+  "reviewedRuntimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
+  "sourceFingerprintsMatchCommittedRuntime": true,
+  "typeOnlyFollowup": {
+    "commit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
+    "reviewedAtUtc": "2026-10-22T20:15:28.489510+00:00",
+    "path": "app/game/systems/homeworldCartographyLedgerV104.ts",
+    "comparisonBase": "40a4681105e5e65bae37c75ed261518fbb53e242",
+    "changeFR": "Alias local const trimmedCount = r.trimmedCount après le contrôle entier ; les deux usages de validation utilisent cet alias, dont le callback trail.some. Le diff ne change aucune valeur ni condition pour les données JSON prises en charge.",
+    "verificationFR": "Diff relu ; seule cette empreinte différait des 24 sources du rapport. Les mini-reproductions logiques précédentes restent celles décrites dans ce rapport. Aucune nouvelle grande suite ou nouvelle compilation n’est revendiquée par cette retouche de revue."
+  }
+}

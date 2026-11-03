@@ -1,0 +1,23 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(Number.isSafeInteger(row.bytes) && row.bytes > 0)
+
+    at proofShape (file:///workspace/yautja-homeworld-v110/scripts/lib/excel-followup-evidence.mjs:11:129)
+    at Array.forEach (<anonymous>)
+    at verifyRegistryV111 (file:///workspace/yautja-homeworld-v110/scripts/build-homeworld-followup-v111.mjs:79:123)
+    at collectFollowupV111 (file:///workspace/yautja-homeworld-v110/scripts/build-homeworld-followup-v111.mjs:150:43)
+    at async generateFollowupV111 (file:///workspace/yautja-homeworld-v110/scripts/build-homeworld-followup-v111.mjs:241:20)
+    at async file:///workspace/yautja-homeworld-v110/scripts/build-homeworld-followup-v111.mjs:251:18 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v22.23.3

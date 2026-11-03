@@ -1,0 +1,925 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-185-training",
+  "proposalId": "new-training",
+  "workbookStage": "A58:N58",
+  "sourceUrls": [
+    "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+  ],
+  "loreLimits": [
+    "Aire d’entraînement originale du projet, aucun emplacement canonique précis affirmé.",
+    "Instructeur et ancien sont anonymes, cible mécanique non armée. Le geste de l’ancien est une observation neutre ; l’annonce d’un vainqueur réservée à la fin du round du classeur reste une condition séparée non déclenchée pendant le duel."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "EDIT transparent atlas preserve this exact anonymousYautjainstructor costume/mask, coherentanatomy and6distincthandgestureposes. Correctpacking ONLY: canvas1536x1024, exact3cols2rows512x512cells. Each FULLFIGURE headtofeet drawnSMALLER insidecentral360x360interior, min70pxfullytransparentguttereveryedge. Heads mustnever touchcelltop. Fixedfeetbaseliney430 eachcelland stablebodycenterx256. Twoarms twolegs andcoherenthands, noextraweapons. Nofloor, shadow,gradient,background,text,labels,grid. LeaveTRUEALPHA. All6fullposes distinctand complete.",
+      "transparentRequested": true,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-d30e12d5-311e-4e7a-9a5f-b3437254333c.png",
+      "workspacePath": "work-local/v60/generated/arena-185-training/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six coherent instructor gestures, whole masks and feet inside cell; bronze armor and identity consistent. Original anonymous instructor.",
+      "sha256": "c277ea9bdf08660e50d2dc375d8a609293e46dca9f4d38e6fe7db760f944b978",
+      "bytes": 2024951,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7646325429280599,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            182,
+            13,
+            220,
+            482
+          ],
+          "pivot": [
+            292,
+            495
+          ],
+          "margins": [
+            182,
+            13,
+            110,
+            17
+          ],
+          "opaquePixelCount": 60562,
+          "contentSha256": "20ba7a8b878e8fc06c6e11cce99aab2230f12724f5a05c0529e7acc0dcdb349c"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            147,
+            14,
+            217,
+            481
+          ],
+          "pivot": [
+            255.5,
+            495
+          ],
+          "margins": [
+            147,
+            14,
+            148,
+            17
+          ],
+          "opaquePixelCount": 56249,
+          "contentSha256": "a447b291952f448be5f76a2af124759a0f540f5db28e09e61994107c3a6c1dcb"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            117,
+            14,
+            356,
+            481
+          ],
+          "pivot": [
+            233.5,
+            495
+          ],
+          "margins": [
+            117,
+            14,
+            39,
+            17
+          ],
+          "opaquePixelCount": 64524,
+          "contentSha256": "8336973f11b2f6044b70905deb56628d331cf834e78b05832ce14cf32c89f998"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            137,
+            36,
+            318,
+            446
+          ],
+          "pivot": [
+            276,
+            482
+          ],
+          "margins": [
+            137,
+            36,
+            57,
+            30
+          ],
+          "opaquePixelCount": 66492,
+          "contentSha256": "e318cd6693c0c635ae1490fe691126fbcb2dc26863e54b9f1131613498b6a012"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            151,
+            6,
+            222,
+            480
+          ],
+          "pivot": [
+            262,
+            486
+          ],
+          "margins": [
+            151,
+            6,
+            139,
+            26
+          ],
+          "opaquePixelCount": 56941,
+          "contentSha256": "9ea8e3286347fd2700fea0bbdf79bca33b969fc8988740f3f35d016fa456b91f"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            9,
+            304,
+            477
+          ],
+          "pivot": [
+            238,
+            486
+          ],
+          "margins": [
+            83,
+            9,
+            125,
+            26
+          ],
+          "opaquePixelCount": 65433,
+          "contentSha256": "8837135666afd1860e625a26266c8d944dbef873c97cf8480e90c75494dedff7"
+        }
+      ]
+    },
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One compact alien dojo practice mechanism: black bronze pedestal, simple blunt wooden torso-shaped target mounted on spring swivel, one short horizontal blunt crossbar at shoulder height, no hands or organic body. ORIGINAL Yautja training equipment. Sixdrawings: target centered, swivel10degreesleft, swivel20left, returncenter, swivel10right, settletowardcenter. Base and crossbar lengths consistent, base fixedsameposition. No weaponsrack, flags, people, sharpenedweapons, blood or flames. Muted bronzewarmdojo lighting.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-0ec37825-06b7-4acc-90a0-5042df795851.png",
+      "workspacePath": "work-local/v60/generated/arena-185-training/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six native swivel positions of the blunt training target; base remains readable and fixed, no combat weapon or actor.",
+      "sha256": "faca049c5300c4ea49324e406fafe8688d78033630f186f0b5b77037d48cdce3",
+      "bytes": 1903244,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7671095530192057,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            73,
+            27,
+            381,
+            459
+          ],
+          "pivot": [
+            263,
+            486
+          ],
+          "margins": [
+            73,
+            27,
+            58,
+            26
+          ],
+          "opaquePixelCount": 62570,
+          "contentSha256": "fab2f725073b703ca83608f6141ed8fcdc44b80ea8e81edc07a8f88693ab464c"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            86,
+            27,
+            337,
+            459
+          ],
+          "pivot": [
+            266.5,
+            486
+          ],
+          "margins": [
+            86,
+            27,
+            89,
+            26
+          ],
+          "opaquePixelCount": 59962,
+          "contentSha256": "2588dbada292e30a54dcdccc336fd7cb29f4277c80887937ce2b4780eebf6898"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            112,
+            28,
+            295,
+            459
+          ],
+          "pivot": [
+            259.5,
+            487
+          ],
+          "margins": [
+            112,
+            28,
+            105,
+            25
+          ],
+          "opaquePixelCount": 57793,
+          "contentSha256": "e03b1b6785d12f561dc0bd3ba49a40b19381af6182e930ecd66a3ee70e834ed7"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            73,
+            26,
+            381,
+            459
+          ],
+          "pivot": [
+            263,
+            485
+          ],
+          "margins": [
+            73,
+            26,
+            58,
+            27
+          ],
+          "opaquePixelCount": 62730,
+          "contentSha256": "839a452de7037685ea3a8ef46920021f7b553c5cc78f0a6e74514409776fddac"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            82,
+            26,
+            351,
+            460
+          ],
+          "pivot": [
+            266,
+            486
+          ],
+          "margins": [
+            82,
+            26,
+            79,
+            26
+          ],
+          "opaquePixelCount": 61254,
+          "contentSha256": "ce39daf2cb6d77086f8eb17e1e3ec693b767f078167cbbae0b91366a54edc96a"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            75,
+            27,
+            371,
+            458
+          ],
+          "pivot": [
+            259,
+            485
+          ],
+          "margins": [
+            75,
+            27,
+            66,
+            27
+          ],
+          "opaquePixelCount": 61996,
+          "contentSha256": "c4f80a5b11714b03da87e2bc8b1d506232d0293ed40e89aca1cc4d9c14ed2b64"
+        }
+      ]
+    },
+    {
+      "id": "life-03",
+      "prompt": "EDIT this native game animation sprite sheet. Preserveexactelderjudgecostume,mask,cloakand6coherentobservationalhandgestureposes. Correctpacking: all SIX headsarecurrentlytooclosetoTOPofcells. Makefigure25percentsmallerineachcell, leavinglargeemptyalphaaroundall4sides. Exact3cols2rows1536x1024, 512x512cells; eachwholefigureheadtofeetFITcentral360x360regionandfootbaseliney430. Noheadtochedge orothercells. No anatomychange, no extraobjects/weapons,text,grid,backgroundorshadows. Truealpha. Keepall6differentposes, notidenticalcopies.",
+      "referencedImagePaths": [
+        "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-f40222dd-c63e-4384-bd4d-0c2b28cbb13e.png"
+      ],
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-72430aea-5ecf-4f22-9e19-44a913b9c46d.png",
+      "workspacePath": "work-local/v60/generated/arena-185-training/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Native padding correction keeps full masks and feet comfortably inside cells; six elder observational gestures and consistent silver mask/mantle.",
+      "sha256": "199598916ffba1e3ec8335d007d357b2f6c74e0a556ef38ca175d427a4d42601",
+      "bytes": 1808852,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8201758066813151,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            197,
+            86,
+            189,
+            398
+          ],
+          "pivot": [
+            291.5,
+            484
+          ],
+          "margins": [
+            197,
+            86,
+            126,
+            28
+          ],
+          "opaquePixelCount": 45111,
+          "contentSha256": "7e7758a11946944741287272827f9a13d25495c67ef9bb9699757a8a5e3848fd"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            171,
+            86,
+            194,
+            398
+          ],
+          "pivot": [
+            269,
+            484
+          ],
+          "margins": [
+            171,
+            86,
+            147,
+            28
+          ],
+          "opaquePixelCount": 45648,
+          "contentSha256": "60c39d0a532700938f13a555d87ff8f6feb30ffe9ae86dffd6a333b77f5be758"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            161,
+            86,
+            190,
+            397
+          ],
+          "pivot": [
+            256.5,
+            483
+          ],
+          "margins": [
+            161,
+            86,
+            161,
+            29
+          ],
+          "opaquePixelCount": 46287,
+          "contentSha256": "86c5ed8fb35a8b95b34be8ba11c367c63e3c5b3f56303aee20af16036d751beb"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            177,
+            53,
+            299,
+            397
+          ],
+          "pivot": [
+            279.5,
+            450
+          ],
+          "margins": [
+            177,
+            53,
+            36,
+            62
+          ],
+          "opaquePixelCount": 52427,
+          "contentSha256": "535429771610274c63e44e72adcff4fd3ede32a6932ca81a6be3c691dc2ce350"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            167,
+            54,
+            205,
+            397
+          ],
+          "pivot": [
+            269.5,
+            451
+          ],
+          "margins": [
+            167,
+            54,
+            140,
+            61
+          ],
+          "opaquePixelCount": 46922,
+          "contentSha256": "c3918cb30e1f3f1948d8896dea40513f52e730f55c0a9e77348d6053cfa25c3f"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            155,
+            52,
+            202,
+            397
+          ],
+          "pivot": [
+            256,
+            449
+          ],
+          "margins": [
+            155,
+            52,
+            155,
+            63
+          ],
+          "opaquePixelCount": 46444,
+          "contentSha256": "a8b135f59f260423d7016ca46d6ccd5b1b7b682613da13a82ee3fe46cdb82fe0"
+        }
+      ]
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case: stylized-concept. Asset: opaque P0 distant backdrop for a professional 2D side-view fighting game set in an original Yautja clan training dojo. This is an original project location, not a canonical film reconstruction. Wide lateral view into a large vaulted alien training hall: dark stone, oxidised bronze ribs, bone-inlay ceremonial lintels, high slit windows with warm orange dusk light, broad raised rear observation gallery and quiet recessed training alcoves. Alien industrial ritual architecture, not Japanese human architecture. Layered perspective extending far into side corridors, asymmetric stair on the left. All background terraces level and horizontal, coherent eye-level perspective, detailed painted raster game art. Playable fighting floor will be a separate layer: no near floor/platform in this image; keep bottom20percent a calm shadow band. Reserve three clean low-detail pockets on the distant gallery for future separate animated instructor at x20percent, mechanical training target at x52percent, and referee at x82percent. Do NOT paint any people, weapons-rack, moving target, referee, flags, particles, smoke, fire or actors into this backdrop. No text, icons, logos, HUD, central vanishing-point aisle or chessboard. 1536x1024 landscape, full opaque backdrop, restrained copper/charcoal palette, sufficient lateral silhouettes with empty center for combat readability.",
+      "transparentRequested": false,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-b4afaa35-e884-4b3c-a613-deb8bd5ba0e7.png",
+      "workspacePath": "work-local/v60/generated/arena-185-training/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Vaulted bronze clan hall with a clear rear gallery; no characters baked into scenery. Original project layout, not asserted canon.",
+      "sha256": "f7c61c76533f1c5fbf8fb5482b6478af079ccb3182ad6a2f64d3e2094c3c7812",
+      "bytes": 2434792,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "rejectedAssets": [
+    {
+      "id": "life-01",
+      "prompt": "Use case: stylized-concept. Production native transparent PNG sprite atlas for hand-painted cinematic 2D fighting-game BACKGROUND life. Exactly SIX separately drawn poses in a precise three columns by two rows equal grid, canvas1536x1024, cell512x512. True alpha outside subject. Every complete subject fits in its cell with generous 48px transparent gutter on all four sides. NO labels, lines, floor, shadow, scenery, checkerboard, gradient or opaque background. Consistent scale, proportions, materials, side-view camera, stable ground attachment for all6frames. Clearly different native drawings, not 6 duplicate poses. Subject is one anonymous ADULT Yautja clan instructor, original generic training attendant (not a named canon character). Compact coherent muscular humanoid alien, twoarms twolegs, bronze and darkleather sparse ceremonial armor, plain closed smooth bronze biomask, black dreadlock-like tendrils, no blades or guns, no trophies or skullspikes. Fullbody threequarter sideview facingright. Fixedfeetbaseliney452, headtopabout70, widthbelow250px. Samecostumeandmaskinall6cells. Poses inreadingorder:1armsrelaxed;2raisesrighthandtochest;3extendsrighthandpalmdown instructing;4slightforwardlean;5handreturns tochest;6armslowerednearidle. Anatomically coherent hands, no addedlimbs, no headchanging, plantedstablefeet. Warmcopperdojo lighting, muted earth palette, detailedpainterly surfaces. Exactly6fullbodyfigures, no text.",
+      "transparentRequested": true,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-ce18e68c-3b6b-4e91-b349-b03524f9bb4c.png",
+      "workspacePath": "work-local/v60/generated/arena-185-training/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "rejected",
+      "visualNotes": "",
+      "sha256": "ff14e8247dd0cda2ad8401eeed37d4ba737e297024d3ccd8a9f4e090054461f6",
+      "bytes": 1931635,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7716712951660156,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            174,
+            6,
+            224,
+            491
+          ],
+          "pivot": [
+            286,
+            497
+          ],
+          "margins": [
+            174,
+            6,
+            114,
+            15
+          ],
+          "opaquePixelCount": 59888,
+          "contentSha256": "96eece2e61594e6199f543d13bf9e780f11a2c533c4afdc1ff46d94ca51637e8"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            6,
+            226,
+            491
+          ],
+          "pivot": [
+            244,
+            497
+          ],
+          "margins": [
+            131,
+            6,
+            155,
+            15
+          ],
+          "opaquePixelCount": 56954,
+          "contentSha256": "19ea5d23a42d0ffbd73451ee537aed00ab6d38eb925111f73b5db8bbbf64de38"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            97,
+            0,
+            354,
+            496
+          ],
+          "pivot": [
+            211,
+            496
+          ],
+          "margins": [
+            97,
+            0,
+            61,
+            16
+          ],
+          "opaquePixelCount": 62787,
+          "contentSha256": "2581fc52e0b894430aefca1b9c96d8b2c7e8347f0b5494638ecaae5332f9aaf9"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            166,
+            7,
+            223,
+            488
+          ],
+          "pivot": [
+            277.5,
+            495
+          ],
+          "margins": [
+            166,
+            7,
+            123,
+            17
+          ],
+          "opaquePixelCount": 63821,
+          "contentSha256": "98131cc6b0ddd4751c58c7a2d5d991cff4097c54498a154931c2e22ab7768e11"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            133,
+            7,
+            223,
+            487
+          ],
+          "pivot": [
+            244.5,
+            494
+          ],
+          "margins": [
+            133,
+            7,
+            156,
+            18
+          ],
+          "opaquePixelCount": 56821,
+          "contentSha256": "697fb53314c1bd52b5526fb76b0078b27e17fd331c08766ff2785e5725a44b6a"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            100,
+            7,
+            224,
+            487
+          ],
+          "pivot": [
+            212,
+            494
+          ],
+          "margins": [
+            100,
+            7,
+            188,
+            18
+          ],
+          "opaquePixelCount": 58859,
+          "contentSha256": "0da5c96c8a12b8d6fbd5d9861cda7c193f939a1d019aac4f7c385fdc5c527009"
+        }
+      ],
+      "rejection": "Replaced by native OpenAI edit to prevent cell-boundary clipping."
+    },
+    {
+      "id": "life-03",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One anonymous adult elder Yautja judge wearing muted silver plainclosedbiomask and short tan ceremonial mantle over darkbrowntrainingarmor; both hands empty, no trophy skulls/weapons. Fullbody threequarter viewleft with long blacktendrils. Sixnativeposes: calmhandsclasped at waist, looktowardduel, raiselefthandtochest, extendleftforearmslightly withopenpalm inobservationalinstruction (NOT a victorysalute), returnhandtocenter, backtoclam. Stablefeetbaseline, twoarmstwolegs, noextrafingers. Warmdimdojo light.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-f40222dd-c63e-4384-bd4d-0c2b28cbb13e.png",
+      "workspacePath": "work-local/v60/generated/arena-185-training/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "rejected",
+      "visualNotes": "Top alpha bounds touch cell border; native padding correction in progress.",
+      "sha256": "3e0a312d1ba561f82b858967aa1d8bf40c0c7cd6e789a5aa78ccf4868be4da88",
+      "bytes": 2036713,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7373682657877604,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            172,
+            0,
+            223,
+            507
+          ],
+          "pivot": [
+            283,
+            507
+          ],
+          "margins": [
+            172,
+            0,
+            117,
+            5
+          ],
+          "opaquePixelCount": 66958,
+          "contentSha256": "858d5d35dddc3d1fbd61d63656c5e68d83e5f5885c29e653aebf6a95374729f8"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            147,
+            0,
+            230,
+            504
+          ],
+          "pivot": [
+            262,
+            504
+          ],
+          "margins": [
+            147,
+            0,
+            135,
+            8
+          ],
+          "opaquePixelCount": 67962,
+          "contentSha256": "ba70810120fa4fd7972251e73f84af10279c157b96e3a1558e4edb09454cc62d"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            154,
+            0,
+            229,
+            507
+          ],
+          "pivot": [
+            270.5,
+            507
+          ],
+          "margins": [
+            154,
+            0,
+            129,
+            5
+          ],
+          "opaquePixelCount": 69366,
+          "contentSha256": "ffa2f9fd92fb068db15d92ea63d7f2b744800bf97c2f9e22c9544c4d66613ba7"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            128,
+            4,
+            341,
+            499
+          ],
+          "pivot": [
+            245.5,
+            503
+          ],
+          "margins": [
+            128,
+            4,
+            43,
+            9
+          ],
+          "opaquePixelCount": 75591,
+          "contentSha256": "b98b553fc46bcecb4cfb15cd9787ea170d3638367182e8cfe898c0f0f1ea4989"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            145,
+            4,
+            230,
+            500
+          ],
+          "pivot": [
+            260,
+            504
+          ],
+          "margins": [
+            145,
+            4,
+            137,
+            8
+          ],
+          "opaquePixelCount": 67102,
+          "contentSha256": "d92df92167df2b792dde4deab3d34999616e8eb93efe81bfb978e0db21c132d5"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            153,
+            4,
+            227,
+            499
+          ],
+          "pivot": [
+            267,
+            503
+          ],
+          "margins": [
+            153,
+            4,
+            132,
+            9
+          ],
+          "opaquePixelCount": 66105,
+          "contentSha256": "02fb095e267713a362e42a79bc2ccafeb4cb56dc91893df3a884c4baa9f71ccd"
+        }
+      ],
+      "rejection": "Replaced by native OpenAI edit to prevent cell-boundary clipping."
+    }
+  ],
+  "sourceReviewDate": "2026-09-30"
+}

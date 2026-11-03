@@ -1,0 +1,641 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-30",
+  "tool": "OpenAI built-in image_gen",
+  "operations": "Background extraction only; separate call per original, 4 targeted retries",
+  "assets": [
+    {
+      "id": 1,
+      "sourceName": "Yautja-Compagnion.jpg",
+      "sourceSHA256": "e50796131d01d51b8450fcaf926e8a3fb4054cd07df1198803a9ef4a91cbae2d",
+      "sourcePublicPath": "/game/user-pack/v56/source/Yautja-Compagnion.jpg",
+      "cutoutPublicPath": "/game/user-pack/v56/cutouts/companion-01.png",
+      "generatedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0efe8-f3fc-7050-b0b5-e68bf5775238\\exec-b5eb48d4-eb42-4192-8abd-8280a7141c5e.png",
+      "sha256": "1e22287b4b90b40429232120809a43e2002d265a499c80691db3bfd3658bc45c",
+      "width": 1517,
+      "height": 1037,
+      "mode": "RGBA",
+      "alphaBounds": [
+        0,
+        35,
+        1481,
+        1013
+      ],
+      "visibleAlphaBounds": [
+        269,
+        154,
+        1275,
+        929
+      ],
+      "visibleAlphaThresholdExclusive": 16,
+      "solidAlphaBounds": [
+        270,
+        155,
+        1274,
+        929
+      ],
+      "groundPivotPx": [
+        1199.0,
+        929
+      ],
+      "groundPivotNormalized": [
+        0.790376,
+        0.895853
+      ],
+      "pivotBasis": "midpoint of visible foot pixels in lowest row with alpha >=128; screen anchor only, not a rig or collision volume",
+      "facing": "left",
+      "frames": 1,
+      "nativeAnimationClips": 0,
+      "status": "accepted-static-cutout-presentation-only",
+      "identity": "user-original-companion",
+      "canonFidelityCertified": false,
+      "pixelPerfectToSource": false,
+      "generationAttempts": 2,
+      "validation": {
+        "realAlpha": true,
+        "visibleSilhouetteTouchesEdge": false,
+        "wholeSubjectVisuallyChecked": true,
+        "nativeBytesPreserved": true,
+        "note": "Native generated output preserved. Very faint alpha speckles may extend beyond visibleAlphaBounds; use the measured foot anchor, not raw transparent canvas bottom. No bitmap animation claimed.",
+        "whiteBackgroundCompositeChecked": true
+      },
+      "finalPrompt": "Edit this supplied image: remove the background and floor shadow completely, preserving the creature exactly. This is a cutout correction, NOT a redesign. Keep exactly the same single pose, left facing, silhouette, colors, texture, teeth, limbs, claws and tail. IMPORTANT FRAMING: zoom out substantially: the complete unchanged creature occupies only the central 65 percent of a wide canvas; reserve large fully transparent empty margins to the left of its muzzle, right of its tail, above its tallest spike, and below its feet. No part touches a canvas edge. No halo, grey backdrop, floor, cast shadow, checkerboard, text or extra subject. Output true transparent RGBA."
+    },
+    {
+      "id": 2,
+      "sourceName": "Yautja-Compagnion-2.jpg",
+      "sourceSHA256": "06a2b2f3c24d05b5f2b5b74aa95ae10f34c626d1314a3457fea6eb88601ce083",
+      "sourcePublicPath": "/game/user-pack/v56/source/Yautja-Compagnion-2.jpg",
+      "cutoutPublicPath": "/game/user-pack/v56/cutouts/companion-02.png",
+      "generatedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0efe8-f3fc-7050-b0b5-e68bf5775238\\exec-da03295a-5638-4c24-aa98-ea9bec52cfd3.png",
+      "sha256": "8a9b8176a80d8e1fcb6fb3c81ec0b84f95145276f645ef3ff9736387dd60971e",
+      "width": 1469,
+      "height": 1071,
+      "mode": "RGBA",
+      "alphaBounds": [
+        41,
+        21,
+        1383,
+        1046
+      ],
+      "visibleAlphaBounds": [
+        167,
+        48,
+        1380,
+        1028
+      ],
+      "visibleAlphaThresholdExclusive": 16,
+      "solidAlphaBounds": [
+        167,
+        49,
+        1379,
+        1027
+      ],
+      "groundPivotPx": [
+        442.5,
+        1027
+      ],
+      "groundPivotNormalized": [
+        0.301225,
+        0.958917
+      ],
+      "pivotBasis": "midpoint of visible foot pixels in lowest row with alpha >=128; screen anchor only, not a rig or collision volume",
+      "facing": "left",
+      "frames": 1,
+      "nativeAnimationClips": 0,
+      "status": "accepted-static-cutout-presentation-only",
+      "identity": "user-original-companion",
+      "canonFidelityCertified": false,
+      "pixelPerfectToSource": false,
+      "generationAttempts": 1,
+      "validation": {
+        "realAlpha": true,
+        "visibleSilhouetteTouchesEdge": false,
+        "wholeSubjectVisuallyChecked": true,
+        "nativeBytesPreserved": true,
+        "note": "Native generated output preserved. Very faint alpha speckles may extend beyond visibleAlphaBounds; use the measured foot anchor, not raw transparent canvas bottom. No bitmap animation claimed.",
+        "whiteBackgroundCompositeChecked": true
+      },
+      "finalPrompt": "Use case: background-extraction. Edit target: Yautja-Compagnion-2.jpg, original user creature. Remove ONLY background, floor and cast floor shadow to true transparent alpha. Preserve the exact existing drawing, single pose facing LEFT, proportions, facial features, teeth, claws, every limb, tail, dorsal plates/spikes, textures, original colors and lighting. Do not redesign or alter anatomy, pose, direction, or identity. Keep the ENTIRE creature, including tallest spikes, every toe and tail tip, fully visible with at least 5% transparent margin on EVERY side. If necessary uniformly scale the unchanged subject slightly down to preserve all parts. No cropping, no new objects, no new animation, no text, no painted checkerboard. One faithful static cutout."
+    },
+    {
+      "id": 3,
+      "sourceName": "Yautja-Compagnion-3.jpg",
+      "sourceSHA256": "526a797bb8e2f5ce3cdbbf360204bec67c1c8d0250738115ed318bfe00a8768a",
+      "sourcePublicPath": "/game/user-pack/v56/source/Yautja-Compagnion-3.jpg",
+      "cutoutPublicPath": "/game/user-pack/v56/cutouts/companion-03.png",
+      "generatedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0efe8-f3fc-7050-b0b5-e68bf5775238\\exec-805f5431-35ea-4968-a1cd-dbd49a5073cf.png",
+      "sha256": "13206d149a02b5f52117a9c00b23a7f12f0903f3580f0461c96e5073684a09bc",
+      "width": 1426,
+      "height": 1103,
+      "mode": "RGBA",
+      "alphaBounds": [
+        16,
+        21,
+        1426,
+        1085
+      ],
+      "visibleAlphaBounds": [
+        18,
+        138,
+        1422,
+        1028
+      ],
+      "visibleAlphaThresholdExclusive": 16,
+      "solidAlphaBounds": [
+        19,
+        139,
+        1421,
+        1027
+      ],
+      "groundPivotPx": [
+        619.5,
+        1027
+      ],
+      "groundPivotNormalized": [
+        0.434432,
+        0.931097
+      ],
+      "pivotBasis": "midpoint of visible foot pixels in lowest row with alpha >=128; screen anchor only, not a rig or collision volume",
+      "facing": "left",
+      "frames": 1,
+      "nativeAnimationClips": 0,
+      "status": "accepted-static-cutout-presentation-only",
+      "identity": "user-original-companion",
+      "canonFidelityCertified": false,
+      "pixelPerfectToSource": false,
+      "generationAttempts": 1,
+      "validation": {
+        "realAlpha": true,
+        "visibleSilhouetteTouchesEdge": false,
+        "wholeSubjectVisuallyChecked": true,
+        "nativeBytesPreserved": true,
+        "note": "Native generated output preserved. Very faint alpha speckles may extend beyond visibleAlphaBounds; use the measured foot anchor, not raw transparent canvas bottom. No bitmap animation claimed.",
+        "whiteBackgroundCompositeChecked": true
+      },
+      "finalPrompt": "Use case: background-extraction. Edit target: Yautja-Compagnion-3.jpg, original user creature. Remove ONLY background, floor and cast floor shadow to true transparent alpha. Preserve the exact existing drawing, single pose facing LEFT, proportions, facial features, teeth, claws, every limb, tail, dorsal plates/spikes, textures, original colors and lighting. Do not redesign or alter anatomy, pose, direction, or identity. Keep the ENTIRE creature, including tallest spikes, every toe and tail tip, fully visible with at least 5% transparent margin on EVERY side. If necessary uniformly scale the unchanged subject slightly down to preserve all parts. No cropping, no new objects, no new animation, no text, no painted checkerboard. One faithful static cutout."
+    },
+    {
+      "id": 4,
+      "sourceName": "Yautja-Compagnion-4.jpg",
+      "sourceSHA256": "41545a47e35e17b29771a6577babb80b3610c337fe67ed5b3d69a5461e008fe3",
+      "sourcePublicPath": "/game/user-pack/v56/source/Yautja-Compagnion-4.jpg",
+      "cutoutPublicPath": "/game/user-pack/v56/cutouts/companion-04.png",
+      "generatedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0efe8-f3fc-7050-b0b5-e68bf5775238\\exec-a9a8dee5-ef83-4bda-92d2-a77abcfcecf8.png",
+      "sha256": "5a70f4f8aa9ecd81a8d5d69d03ae9820b4e45442952d3789f5f5dc39db508634",
+      "width": 1426,
+      "height": 1103,
+      "mode": "RGBA",
+      "alphaBounds": [
+        0,
+        20,
+        1425,
+        1085
+      ],
+      "visibleAlphaBounds": [
+        16,
+        105,
+        1416,
+        1054
+      ],
+      "visibleAlphaThresholdExclusive": 16,
+      "solidAlphaBounds": [
+        17,
+        106,
+        1415,
+        1053
+      ],
+      "groundPivotPx": [
+        524.0,
+        1053
+      ],
+      "groundPivotNormalized": [
+        0.367461,
+        0.954669
+      ],
+      "pivotBasis": "midpoint of visible foot pixels in lowest row with alpha >=128; screen anchor only, not a rig or collision volume",
+      "facing": "left",
+      "frames": 1,
+      "nativeAnimationClips": 0,
+      "status": "accepted-static-cutout-presentation-only",
+      "identity": "user-original-companion",
+      "canonFidelityCertified": false,
+      "pixelPerfectToSource": false,
+      "generationAttempts": 1,
+      "validation": {
+        "realAlpha": true,
+        "visibleSilhouetteTouchesEdge": false,
+        "wholeSubjectVisuallyChecked": true,
+        "nativeBytesPreserved": true,
+        "note": "Native generated output preserved. Very faint alpha speckles may extend beyond visibleAlphaBounds; use the measured foot anchor, not raw transparent canvas bottom. No bitmap animation claimed.",
+        "whiteBackgroundCompositeChecked": true
+      },
+      "finalPrompt": "Use case: background-extraction. Edit target: Yautja-Compagnion-4.jpg, original user creature. Remove ONLY background, floor and cast floor shadow to true transparent alpha. Preserve the exact existing drawing, single pose facing LEFT, proportions, facial features, teeth, claws, every limb, tail, dorsal plates/spikes, textures, original colors and lighting. Do not redesign or alter anatomy, pose, direction, or identity. Keep the ENTIRE creature, including tallest spikes, every toe and tail tip, fully visible with at least 5% transparent margin on EVERY side. If necessary uniformly scale the unchanged subject slightly down to preserve all parts. No cropping, no new objects, no new animation, no text, no painted checkerboard. One faithful static cutout."
+    },
+    {
+      "id": 5,
+      "sourceName": "Yautja-Compagnion-5.jpg",
+      "sourceSHA256": "b28f30a528d78c137c80dda7f29767d881c801e1186e6ddd5bc837e4f9780688",
+      "sourcePublicPath": "/game/user-pack/v56/source/Yautja-Compagnion-5.jpg",
+      "cutoutPublicPath": "/game/user-pack/v56/cutouts/companion-05.png",
+      "generatedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0efe8-f3fc-7050-b0b5-e68bf5775238\\exec-8e4025db-c55e-451f-b4b6-cbfe25a349f9.png",
+      "sha256": "c515b6fd1a9bf1c37338c04684f9fbae2b20fc262e8614e24810b2eeb74ac849",
+      "width": 1746,
+      "height": 901,
+      "mode": "RGBA",
+      "alphaBounds": [
+        23,
+        21,
+        1647,
+        861
+      ],
+      "visibleAlphaBounds": [
+        220,
+        149,
+        1642,
+        858
+      ],
+      "visibleAlphaThresholdExclusive": 16,
+      "solidAlphaBounds": [
+        221,
+        155,
+        1637,
+        857
+      ],
+      "groundPivotPx": [
+        913.0,
+        857
+      ],
+      "groundPivotNormalized": [
+        0.52291,
+        0.951165
+      ],
+      "pivotBasis": "midpoint of visible foot pixels in lowest row with alpha >=128; screen anchor only, not a rig or collision volume",
+      "facing": "left",
+      "frames": 1,
+      "nativeAnimationClips": 0,
+      "status": "accepted-static-cutout-presentation-only",
+      "identity": "user-original-companion",
+      "canonFidelityCertified": false,
+      "pixelPerfectToSource": false,
+      "generationAttempts": 2,
+      "validation": {
+        "realAlpha": true,
+        "visibleSilhouetteTouchesEdge": false,
+        "wholeSubjectVisuallyChecked": true,
+        "nativeBytesPreserved": true,
+        "note": "Native generated output preserved. Very faint alpha speckles may extend beyond visibleAlphaBounds; use the measured foot anchor, not raw transparent canvas bottom. No bitmap animation claimed.",
+        "whiteBackgroundCompositeChecked": true
+      },
+      "finalPrompt": "Edit this supplied image: remove the background and floor shadow completely, preserving the creature exactly. This is a cutout correction, NOT a redesign. Keep exactly the same single pose, left facing, silhouette, colors, texture, teeth, limbs, claws and tail. IMPORTANT FRAMING: zoom out substantially: the complete unchanged creature occupies only the central 65 percent of a wide canvas; reserve large fully transparent empty margins to the left of its muzzle, right of its tail, above its tallest spike, and below its feet. No part touches a canvas edge. No halo, grey backdrop, floor, cast shadow, checkerboard, text or extra subject. Output true transparent RGBA."
+    },
+    {
+      "id": 6,
+      "sourceName": "Yautja-Compagnion-6.jpg",
+      "sourceSHA256": "150280be95c430068806be0c40943c8d1fcc5ea0af931c46768fc5c5da2d5c3e",
+      "sourcePublicPath": "/game/user-pack/v56/source/Yautja-Compagnion-6.jpg",
+      "cutoutPublicPath": "/game/user-pack/v56/cutouts/companion-06.png",
+      "generatedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0efe8-f3fc-7050-b0b5-e68bf5775238\\exec-dbee5236-b23b-4c59-9a4c-008ede62bb92.png",
+      "sha256": "2390dfc9ceae6edc19bcb869a5d27219db781ce3c9047115eca55145f2456cd1",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "alphaBounds": [
+        92,
+        20,
+        1738,
+        887
+      ],
+      "visibleAlphaBounds": [
+        243,
+        151,
+        1607,
+        808
+      ],
+      "visibleAlphaThresholdExclusive": 16,
+      "solidAlphaBounds": [
+        244,
+        152,
+        1606,
+        807
+      ],
+      "groundPivotPx": [
+        764.5,
+        807
+      ],
+      "groundPivotNormalized": [
+        0.430947,
+        0.909808
+      ],
+      "pivotBasis": "midpoint of visible foot pixels in lowest row with alpha >=128; screen anchor only, not a rig or collision volume",
+      "facing": "left",
+      "frames": 1,
+      "nativeAnimationClips": 0,
+      "status": "accepted-static-cutout-presentation-only",
+      "identity": "user-original-companion",
+      "canonFidelityCertified": false,
+      "pixelPerfectToSource": false,
+      "generationAttempts": 2,
+      "validation": {
+        "realAlpha": true,
+        "visibleSilhouetteTouchesEdge": false,
+        "wholeSubjectVisuallyChecked": true,
+        "nativeBytesPreserved": true,
+        "note": "Native generated output preserved. Very faint alpha speckles may extend beyond visibleAlphaBounds; use the measured foot anchor, not raw transparent canvas bottom. No bitmap animation claimed.",
+        "whiteBackgroundCompositeChecked": true
+      },
+      "finalPrompt": "Edit this supplied image: remove the background and floor shadow completely, preserving the creature exactly. This is a cutout correction, NOT a redesign. Keep exactly the same single pose, left facing, silhouette, colors, texture, teeth, limbs, claws and tail. IMPORTANT FRAMING: zoom out substantially: the complete unchanged creature occupies only the central 65 percent of a wide canvas; reserve large fully transparent empty margins to the left of its muzzle, right of its tail, above its tallest spike, and below its feet. No part touches a canvas edge. No halo, grey backdrop, floor, cast shadow, checkerboard, text or extra subject. Output true transparent RGBA."
+    },
+    {
+      "id": 7,
+      "sourceName": "Yautja-Compagnion-7.jpg",
+      "sourceSHA256": "dba8c98586bc3d9c5de879c531619aa0079f561b8b184940c81ab080eb1dddf3",
+      "sourcePublicPath": "/game/user-pack/v56/source/Yautja-Compagnion-7.jpg",
+      "cutoutPublicPath": "/game/user-pack/v56/cutouts/companion-07.png",
+      "generatedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0efe8-f3fc-7050-b0b5-e68bf5775238\\exec-8eac87c0-c990-49b5-a3f5-6f519d75d248.png",
+      "sha256": "6d318c74c9237cf93d46decbef930a69f807333271874306682c9706d9ff5ed8",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "alphaBounds": [
+        221,
+        88,
+        1657,
+        847
+      ],
+      "visibleAlphaBounds": [
+        223,
+        119,
+        1650,
+        825
+      ],
+      "visibleAlphaThresholdExclusive": 16,
+      "solidAlphaBounds": [
+        224,
+        120,
+        1649,
+        824
+      ],
+      "groundPivotPx": [
+        725.0,
+        824
+      ],
+      "groundPivotNormalized": [
+        0.408681,
+        0.928974
+      ],
+      "pivotBasis": "midpoint of visible foot pixels in lowest row with alpha >=128; screen anchor only, not a rig or collision volume",
+      "facing": "left",
+      "frames": 1,
+      "nativeAnimationClips": 0,
+      "status": "accepted-static-cutout-presentation-only",
+      "identity": "user-original-companion",
+      "canonFidelityCertified": false,
+      "pixelPerfectToSource": false,
+      "generationAttempts": 2,
+      "validation": {
+        "realAlpha": true,
+        "visibleSilhouetteTouchesEdge": false,
+        "wholeSubjectVisuallyChecked": true,
+        "nativeBytesPreserved": true,
+        "note": "Native generated output preserved. Very faint alpha speckles may extend beyond visibleAlphaBounds; use the measured foot anchor, not raw transparent canvas bottom. No bitmap animation claimed.",
+        "whiteBackgroundCompositeChecked": true
+      },
+      "finalPrompt": "Edit this supplied image: remove the background and floor shadow completely, preserving the creature exactly. This is a cutout correction, NOT a redesign. Keep exactly the same single pose, left facing, silhouette, colors, texture, teeth, limbs, claws and tail. IMPORTANT FRAMING: zoom out substantially: the complete unchanged creature occupies only the central 65 percent of a wide canvas; reserve large fully transparent empty margins to the left of its muzzle, right of its tail, above its tallest spike, and below its feet. No part touches a canvas edge. No halo, grey backdrop, floor, cast shadow, checkerboard, text or extra subject. Output true transparent RGBA."
+    },
+    {
+      "id": 8,
+      "sourceName": "Yautja-Compagnion-8.jpg",
+      "sourceSHA256": "347c7ac0223d1cb3cc9ba2d2d2c5a7f519cf50e479130bd27d70223639214daa",
+      "sourcePublicPath": "/game/user-pack/v56/source/Yautja-Compagnion-8.jpg",
+      "cutoutPublicPath": "/game/user-pack/v56/cutouts/companion-08.png",
+      "generatedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0efe8-f3fc-7050-b0b5-e68bf5775238\\exec-db30a2d0-f363-4b1f-a143-96d2e71476cb.png",
+      "sha256": "5bd2b0f4e2c01561db24eda830d0a445ef71277f9e00952890dc2b8b704b2730",
+      "width": 1426,
+      "height": 1103,
+      "mode": "RGBA",
+      "alphaBounds": [
+        27,
+        19,
+        1400,
+        1069
+      ],
+      "visibleAlphaBounds": [
+        31,
+        150,
+        1394,
+        995
+      ],
+      "visibleAlphaThresholdExclusive": 16,
+      "solidAlphaBounds": [
+        31,
+        151,
+        1393,
+        995
+      ],
+      "groundPivotPx": [
+        547.0,
+        995
+      ],
+      "groundPivotNormalized": [
+        0.38359,
+        0.902085
+      ],
+      "pivotBasis": "midpoint of visible foot pixels in lowest row with alpha >=128; screen anchor only, not a rig or collision volume",
+      "facing": "left",
+      "frames": 1,
+      "nativeAnimationClips": 0,
+      "status": "accepted-static-cutout-presentation-only",
+      "identity": "user-original-companion",
+      "canonFidelityCertified": false,
+      "pixelPerfectToSource": false,
+      "generationAttempts": 1,
+      "validation": {
+        "realAlpha": true,
+        "visibleSilhouetteTouchesEdge": false,
+        "wholeSubjectVisuallyChecked": true,
+        "nativeBytesPreserved": true,
+        "note": "Native generated output preserved. Very faint alpha speckles may extend beyond visibleAlphaBounds; use the measured foot anchor, not raw transparent canvas bottom. No bitmap animation claimed.",
+        "whiteBackgroundCompositeChecked": true
+      },
+      "finalPrompt": "Use case: background-extraction. Edit target: Yautja-Compagnion-8.jpg. Precisely isolate the EXISTING creature from this supplied image. Remove all background, ground and cast shadow to genuine transparent alpha. Preserve its current pose facing LEFT, all features, anatomy, appendages, teeth, claws, original colors, materials and texture. Do not redesign, change pose, stretch, mirror or alter any details. The complete creature must fit inside a spacious transparent canvas with clearly visible empty space on ALL four sides; subject uses no more than 80% of canvas width or height. No clipped muzzle, tail tip, claws or tallest spike. Background fully empty, no glow/halo/floor/checkerboard. Single static cutout only, no animation or text."
+    },
+    {
+      "id": 9,
+      "sourceName": "Yautja-Compagnion-9.jpg",
+      "sourceSHA256": "8c8478fd6153592af8e391daf99ccb74523289cc20f9089cab96fdad42a2a705",
+      "sourcePublicPath": "/game/user-pack/v56/source/Yautja-Compagnion-9.jpg",
+      "cutoutPublicPath": "/game/user-pack/v56/cutouts/companion-09.png",
+      "generatedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0efe8-f3fc-7050-b0b5-e68bf5775238\\exec-a92efe61-9aa4-44e7-9cad-e3789c6348ae.png",
+      "sha256": "85401774e7098ae52488455118be9d0a0eb9dfde48a02d4c80325e022f162eb1",
+      "width": 1426,
+      "height": 1103,
+      "mode": "RGBA",
+      "alphaBounds": [
+        57,
+        19,
+        1406,
+        1067
+      ],
+      "visibleAlphaBounds": [
+        69,
+        186,
+        1390,
+        957
+      ],
+      "visibleAlphaThresholdExclusive": 16,
+      "solidAlphaBounds": [
+        70,
+        187,
+        1389,
+        956
+      ],
+      "groundPivotPx": [
+        569.0,
+        956
+      ],
+      "groundPivotNormalized": [
+        0.399018,
+        0.866727
+      ],
+      "pivotBasis": "midpoint of visible foot pixels in lowest row with alpha >=128; screen anchor only, not a rig or collision volume",
+      "facing": "left",
+      "frames": 1,
+      "nativeAnimationClips": 0,
+      "status": "accepted-static-cutout-presentation-only",
+      "identity": "user-original-companion",
+      "canonFidelityCertified": false,
+      "pixelPerfectToSource": false,
+      "generationAttempts": 1,
+      "validation": {
+        "realAlpha": true,
+        "visibleSilhouetteTouchesEdge": false,
+        "wholeSubjectVisuallyChecked": true,
+        "nativeBytesPreserved": true,
+        "note": "Native generated output preserved. Very faint alpha speckles may extend beyond visibleAlphaBounds; use the measured foot anchor, not raw transparent canvas bottom. No bitmap animation claimed.",
+        "whiteBackgroundCompositeChecked": true
+      },
+      "finalPrompt": "Use case: background-extraction. Edit target: Yautja-Compagnion-9.jpg. Precisely isolate the EXISTING creature from this supplied image. Remove all background, ground and cast shadow to genuine transparent alpha. Preserve its current pose facing LEFT, all features, anatomy, appendages, teeth, claws, original colors, materials and texture. Do not redesign, change pose, stretch, mirror or alter any details. The complete creature must fit inside a spacious transparent canvas with clearly visible empty space on ALL four sides; subject uses no more than 80% of canvas width or height. No clipped muzzle, tail tip, claws or tallest spike. Background fully empty, no glow/halo/floor/checkerboard. Single static cutout only, no animation or text."
+    },
+    {
+      "id": 10,
+      "sourceName": "Yautja-Compagnion-10.jpg",
+      "sourceSHA256": "4b0cb6e71e4c80e9f5c4b628156a334b5f88ef6162606264fe8288b6db182575",
+      "sourcePublicPath": "/game/user-pack/v56/source/Yautja-Compagnion-10.jpg",
+      "cutoutPublicPath": "/game/user-pack/v56/cutouts/companion-10.png",
+      "generatedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0efe8-f3fc-7050-b0b5-e68bf5775238\\exec-cd352eba-aa91-4e11-848d-72beef17e8aa.png",
+      "sha256": "a3295fd37b3ac753a97748e32cc38a9edd7032edc0e464a0516cad8a87d2a7bf",
+      "width": 1426,
+      "height": 1103,
+      "mode": "RGBA",
+      "alphaBounds": [
+        57,
+        19,
+        1368,
+        1103
+      ],
+      "visibleAlphaBounds": [
+        71,
+        132,
+        1364,
+        1012
+      ],
+      "visibleAlphaThresholdExclusive": 16,
+      "solidAlphaBounds": [
+        72,
+        133,
+        1364,
+        1011
+      ],
+      "groundPivotPx": [
+        612.0,
+        1011
+      ],
+      "groundPivotNormalized": [
+        0.429173,
+        0.916591
+      ],
+      "pivotBasis": "midpoint of visible foot pixels in lowest row with alpha >=128; screen anchor only, not a rig or collision volume",
+      "facing": "left",
+      "frames": 1,
+      "nativeAnimationClips": 0,
+      "status": "accepted-static-cutout-presentation-only",
+      "identity": "user-original-companion",
+      "canonFidelityCertified": false,
+      "pixelPerfectToSource": false,
+      "generationAttempts": 1,
+      "validation": {
+        "realAlpha": true,
+        "visibleSilhouetteTouchesEdge": false,
+        "wholeSubjectVisuallyChecked": true,
+        "nativeBytesPreserved": true,
+        "note": "Native generated output preserved. Very faint alpha speckles may extend beyond visibleAlphaBounds; use the measured foot anchor, not raw transparent canvas bottom. No bitmap animation claimed.",
+        "whiteBackgroundCompositeChecked": true
+      },
+      "finalPrompt": "Use case: background-extraction. Edit target: Yautja-Compagnion-10.jpg. Precisely isolate the EXISTING creature from this supplied image. Remove all background, ground and cast shadow to genuine transparent alpha. Preserve its current pose facing LEFT, all features, anatomy, appendages, teeth, claws, original colors, materials and texture. Do not redesign, change pose, stretch, mirror or alter any details. The complete creature must fit inside a spacious transparent canvas with clearly visible empty space on ALL four sides; subject uses no more than 80% of canvas width or height. No clipped muzzle, tail tip, claws or tallest spike. Background fully empty, no glow/halo/floor/checkerboard. Single static cutout only, no animation or text."
+    },
+    {
+      "id": "preddog",
+      "sourceName": "Yautja-PredDog.jpg",
+      "sourceSHA256": "056ccb25e2735fb1376a10e00e2cd7fca2cbd12643bda4c2b7a4b70234b5736b",
+      "sourcePublicPath": "/game/user-pack/v56/source/Yautja-PredDog.jpg",
+      "cutoutPublicPath": "/game/user-pack/v56/cutouts/preddog.png",
+      "generatedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0efe8-f3fc-7050-b0b5-e68bf5775238\\exec-15c4ea64-df10-43cd-9499-84ef7d35f09b.png",
+      "sha256": "0b794f20ba61e85ae705729b3298065847b000798677a7e66cd2b308f0b7513f",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "alphaBounds": [
+        0,
+        31,
+        1260,
+        1199
+      ],
+      "visibleAlphaBounds": [
+        59,
+        43,
+        1248,
+        1189
+      ],
+      "visibleAlphaThresholdExclusive": 16,
+      "solidAlphaBounds": [
+        60,
+        44,
+        1247,
+        1188
+      ],
+      "groundPivotPx": [
+        788.5,
+        1188
+      ],
+      "groundPivotNormalized": [
+        0.600991,
+        0.990826
+      ],
+      "pivotBasis": "midpoint of visible foot pixels in lowest row with alpha >=128; screen anchor only, not a rig or collision volume",
+      "facing": "right",
+      "frames": 1,
+      "nativeAnimationClips": 0,
+      "status": "accepted-static-cutout-presentation-only",
+      "identity": "user-interpretation-preddog-2018",
+      "canonFidelityCertified": false,
+      "pixelPerfectToSource": false,
+      "generationAttempts": 1,
+      "validation": {
+        "realAlpha": true,
+        "visibleSilhouetteTouchesEdge": false,
+        "wholeSubjectVisuallyChecked": true,
+        "nativeBytesPreserved": true,
+        "note": "Native generated output preserved. Very faint alpha speckles may extend beyond visibleAlphaBounds; use the measured foot anchor, not raw transparent canvas bottom. No bitmap animation claimed.",
+        "whiteBackgroundCompositeChecked": true
+      },
+      "finalPrompt": "Use case: background-extraction. Edit target: Yautja-PredDog.jpg. Precisely isolate the EXISTING creature from this supplied image. Remove all background, ground and cast shadow to genuine transparent alpha. Preserve its current pose facing RIGHT, all features, anatomy, appendages, teeth, claws, original colors, materials and texture. Do not redesign, change pose, stretch, mirror or alter any details. The complete creature must fit inside a spacious transparent canvas with clearly visible empty space on ALL four sides; subject uses no more than 80% of canvas width or height. No clipped muzzle, tail tip, claws or tallest spike. Background fully empty, no glow/halo/floor/checkerboard. Single static cutout only, no animation or text."
+    }
+  ],
+  "limitations": [
+    "11 static drawings, no native movement/attack animation.",
+    "10 companions are original user designs, not identified as Tracker movie hounds.",
+    "PredDog is a separate user interpretation of the 2018 creature, not certified 1:1.",
+    "Transparent output differs at pixel level from the source; all untouched originals preserved."
+  ]
+}

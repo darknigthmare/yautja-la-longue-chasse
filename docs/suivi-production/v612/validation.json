@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "yautja-v612-final-validation-1",
+  "verifiedAtUtc": "2026-10-21T16:23:34.579Z",
+  "passed": true,
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "branch": "codex/enforcers-v612-20261021",
+  "pullRequestUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/9",
+  "auditedMainCommit": "dbd7625ade2c83d133875138516fb21fae2aa7bf",
+  "production": {
+    "newNativePngFiles": 36,
+    "cumulativeNativePngFiles": 72,
+    "groups": 18,
+    "newVariants": [
+      6,
+      7
+    ],
+    "priorVariants": [
+      4,
+      5
+    ],
+    "nativeDimensions": [
+      1024,
+      1536
+    ],
+    "realAlpha": true,
+    "distinctNativeHashes": 72,
+    "pixelsUnchangedAfterGeneration": true
+  },
+  "tracking": {
+    "uniqueVariantIds": 5120,
+    "statusCounts": {
+      "Présente dans main": 2125,
+      "Produite — à vérifier": 205,
+      "Conservée hors main": 36,
+      "Pas faite": 2754
+    },
+    "productionRows": 108,
+    "previousProductionRowsPreserved": 72,
+    "previousV611StatusesNowInMain": 36,
+    "newProductionRows": 36,
+    "historicalV610PngFilesStillNotRetrieved": 36
+  },
+  "workbook": {
+    "file": "Yautja_Suivi_Variantes_V612_2026-10-21.xlsx",
+    "bytes": 1672140,
+    "sha256": "26c1a5b62d93c73910c33964cb7a942010c8e9986bfb473ef59c537cd79bdb74",
+    "formulas": 595,
+    "tables": 6,
+    "conditionalFormats": 21,
+    "formulaErrors": [],
+    "preservedStyles": true,
+    "preservedPanes": true,
+    "preservedValidation": true,
+    "changedStatusRecalculationVerified": true,
+    "temporaryInputRestored": true
+  },
+  "runtime": {
+    "productionTestsPassed": 10,
+    "targetedV89ReferenceTestPassed": 1,
+    "typecheckPassed": true,
+    "eslintPassed": true,
+    "originalDefaultSelectionsPreserved": 973,
+    "humansKeptSeparateFromYautjaBodies": true,
+    "emptyAndNearlyTransparentPngsRejected": true
+  },
+  "gallery": {
+    "nativeImagesLoaded": 72,
+    "localLinksChecked": 74,
+    "filters": {
+      "all": 72,
+      "oneGroup": 4,
+      "currentGroup": 2,
+      "currentVariant": 1,
+      "empty": 0,
+      "reset": 72
+    },
+    "lightBackgroundToggle": true,
+    "mobileOverflow": false,
+    "pageErrors": [],
+    "externalNetworkRequests": [],
+    "screenshotsVisuallyReviewed": [
+      "gallery-desktop.png",
+      "human-accepted.png",
+      "four-armed.png",
+      "bionic.png",
+      "pilot-kok.png",
+      "gallery-mobile.png"
+    ]
+  },
+  "evidence": {
+    "runtime": {
+      "repoPath": "docs/suivi-production/v612/validation/runtime/runtime-validation.json",
+      "bytes": 6273,
+      "sha256": "19b65c87ae5114d3f0015e204510cec0482275622f49d9690cf73d13fa324931"
+    },
+    "workbook": {
+      "repoPath": "docs/suivi-production/v612/workbook-preview/openxml-verification.json",
+      "bytes": 5809,
+      "sha256": "459f16328a8294362330634cf9b2ba45d08e825f9013ae11fa1e4260b7c6a984"
+    },
+    "recalculation": {
+      "repoPath": "docs/suivi-production/v612/workbook-preview/recalculation-check.json",
+      "bytes": 236,
+      "sha256": "64f53b469783707d08088add3a3cab640c76e842a2cb905ef83a7676bb5b008c"
+    },
+    "gallery": {
+      "repoPath": "docs/suivi-production/v612/gallery-preview/browser-verification.json",
+      "bytes": 565,
+      "sha256": "ac13ce18d2dc7dc94b1d22286938faa4b5882bb42a98acd3f1f63345040f6406"
+    },
+    "visual": {
+      "repoPath": "docs/suivi-production/v612/gallery-preview/visual-review.json",
+      "bytes": 1554,
+      "sha256": "b6e419ec1ceacbd5c3502365fa7361cba7b298d5fb5d540d46dc04270cbf7080"
+    },
+    "checkpoint": {
+      "repoPath": "docs/suivi-production/v612/validation/runtime/checkpoint-empty-png-review.json",
+      "bytes": 3216,
+      "sha256": "415ba31d62afd0c5dbcfc37b9bc0176a2422939c815fed529a2bc69f939776e1"
+    },
+    "reconciliation": {
+      "repoPath": "docs/suivi-production/v612/data/main-reconciliation.json",
+      "bytes": 14249,
+      "sha256": "adb7b5a2f153b7894e2aa6188f117c95f8f54495ddf664f5329def5b670abca7"
+    },
+    "manifest": {
+      "repoPath": "docs/suivi-production/v612/data/production-manifest.json",
+      "bytes": 756233,
+      "sha256": "20736f64468c35bcb655168a19e3a7922580b8de744d28ba92b7eb84af3a8748"
+    }
+  },
+  "limitsFR": [
+    "La validation vise ce lot, ses raccords galerie/codex, le classeur et la galerie autonome. Elle ne constitue pas une validation exhaustive du jeu.",
+    "Le lot ajoute des poses fixes ; il ne crée aucun cycle d’animation ni placement supplémentaire sur les cartes.",
+    "Le contrôle du classeur porte sur OpenXML, ses valeurs, caches, formules, formats et le recalcul du moteur. Aucune session dans l’application Excel n’est revendiquée.",
+    "Les observations morphologiques sont consignées pour chaque image ; aucune certification de fidélité anatomique 1:1 ou de statut canonique des lignées créées n’est revendiquée.",
+    "La fusion de la PR nº 7 est constatée. La livraison V6.12 reste dans la PR nº 9 et n’est pas fusionnée par ce travail."
+  ]
+}

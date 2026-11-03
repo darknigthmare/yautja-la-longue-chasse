@@ -1,0 +1,443 @@
+{
+  "schemaVersion": 1,
+  "kind": "pit-rejected-original-preservation-plan",
+  "release": "V91",
+  "batch": "rejected-batch-02",
+  "exactOriginalOrdinals": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "exactOriginalCount": 10,
+  "excludedOrdinals": [
+    {
+      "ordinal": 16,
+      "reason": "No PNG was generated; do not create a placeholder or substitute a later original."
+    }
+  ],
+  "intendedArchiveRoot": "art-source/v91/pit/rejected-batch-02/",
+  "sourceLogRelative": "work-local/v91/generation/generation-log.json",
+  "sourceLogSha256": "b932a2f17529f59e709316f76b17aa8d524dab56ebaa420e9e4585571fe1145a",
+  "status": "ORIGINALS_PRESERVED_NOT_RUNTIME",
+  "rejected": 10,
+  "runtimeAccepted": 0,
+  "productionReady": 0,
+  "oneToOneCertified": 0,
+  "runtimeRegistryChanged": false,
+  "provenance": "Exactly the next ten physical original plaquettes after batch01, excluding ordinal16 with no generated PNG. No substitution by22or later candidates.",
+  "limitations": "All ten are rejected originals for historical preservation only. Motion/equipment or safe-cell failures are retained honestly. No archive or public copy is performed by this plan.",
+  "copyRules": [
+    "Copy exactly these ten original byte streams unchanged to the listed archive paths.",
+    "Verify each destination SHA256 and sourceBytes after copy.",
+    "Existing destination is allowed only if already byte-identical; never overwrite different evidence.",
+    "No public/game destination, source rewrite, crop, resize, alpha cleanup, mirror or recolor.",
+    "Keep full original prompts, rejected decisions and the missing ordinal16 explanation in the portable archive manifest."
+  ],
+  "entries": [
+    {
+      "ordinal": 11,
+      "filename": "011-enforcer-masked-walk-left-candidate.png",
+      "sourceRelative": "work-local/v91/generation/011-enforcer-masked-walk-left-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-02/011-enforcer-masked-walk-left-candidate.png",
+      "sourceSha256": "645d49a2cbf6052de0a6892f50b35f8edd5c51ec83a755c87d1129c8914110da",
+      "sourceBytes": 1954263,
+      "fighterId": "enforcer",
+      "variantId": "enforcer-avec-casque-ca164d8925",
+      "requestedClip": "walk",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/ca164d8925d0c7ed7e5d598d93512d4c39c528c6ad0ec7216b55353a933a4494.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "FACING LEFT IS THE PRIMARY CONSTRAINT, ALL FOUR MASKS POINT LEFT. Use case: identity-preserve. Asset: missing native2D fighting-game walking sprite sheet for Enforcer Predator, exact masked appearance enforcer-avec-casque-ca164d8925. Reference1 is identity: preserve silver helmet with3distinctcrownprongs and blue centralglyph, purple/cream mottledskin, silver sparse armor, dreadlocks/brassrings, blackloincloth, skull pendant, one original shoulder cannon and SINGLE longdouble-ended combistick with pointed tips held in bothhands. No added blades, cloak/cape, powers or firing. Generate exactly4 fullbody independently drawn forward WALK frames inONE1536x1024 transparentPNG regular2x2grid cells768x512 readrowmajor. Allfour characters FACE SCREEN LEFT: helmetnose, gaze and fronttoe direction towardLEFTedge, even though referencefacesright. Nearleg forward contact, oppositeleg passing bent at knee, oppositeleg forward contact, nearleg passing. Natural guarded slowwalk toward opponent, NOT spear attack. Same torso size and shallow sidecamera; arms keep rod at consistent upwarddiagonal, dreads respond subtly, feet alternateplanted support and stepping. Exactly2arms2legs, coherent5fingerhands grip rod, no fused wrists. HEADlocaly55/soleslocaly482/rootx384, all prongs/rodtips/hair/hands/toes insidecells with24pxemptymargins. Actual RGBA transparency, no backdropgradient/blackrectangle/checkerboard/groundshadow, text, scenery, floor or grid. Detailed realisticcomic/gamebitmap faithful to providedappearance. Original lore-compatible locomotion adaptation, not certifiedcanonicalanimation. Independently draw opposite-side views; not an image flip. Shoulder cannon, glyph and handgrips stay coherent on original anatomical sides, partly hidden by proper far-side occlusion. Everyhelmet nose pointsLEFT..",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Contacts 1 et 3 et levees 2 et 4 repetent la meme demi-foulee. Pas de contact oppose ni de deux passages opposes."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/011-enforcer-masked-walk-left-adaptive-technical-admission.json",
+        "reportSha256": "7b31463a16ed4399e2be06f32b84f468f64ac3f5db70b58893a53c2ce0e72205",
+        "sourceSha256": "645d49a2cbf6052de0a6892f50b35f8edd5c51ec83a755c87d1129c8914110da",
+        "technicalAccepted": true,
+        "cleanSourceCuts": null,
+        "issues": [],
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, original requested action and equipment continuity, supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 12,
+      "filename": "012-wolf-masked-walk-right-candidate.png",
+      "sourceRelative": "work-local/v91/generation/012-wolf-masked-walk-right-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-02/012-wolf-masked-walk-right-candidate.png",
+      "sourceSha256": "3c5f8165233475e49dbd5a69830c7b42198b88e6473704ce83a042cda00bb63a",
+      "sourceBytes": 1715510,
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "walk",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "PRIMARY TECHNICAL REQUIREMENT: the RIGHT-facing figures must be deliberately MUCH SMALLER than the input. Each cell768x512 contains its entire drawing between local x100..668 and local y70..440, with COMPLETELY EMPTY TRANSPARENT TOP70px and BOTTOM72px gutters. Do NOT fill the cell or put toes/helmet/weapon near y0/y512. Four sprite cells. Reserve empty clear padding even if the character appears small. Target total drawing height360px, including ALL weapons and dreadlocks; do not exceed370px. Body root atx384 and solid sole y435. Use case: identity-preserve. Asset type: missing native 2D game sprite-sheet for Wolf Predator, exact masked appearance wolf-avec-casque-4261aca172. Image1 is identity reference. Preserve the distinctive rough-silver serrated tall biomask, tan mottled skin, sparse silver armor, black dreadlocks and brass rings, ribbed whip on belt, skull pendant, dark brown loincloth, armored feet, exact compact hand plasma pistol, and anatomical equipment sides. Generate one transparent1536x1024 PNG of FOUR distinct full-body FORWARD WALK frames facing screenRIGHT, in2columns x2rows regular768x512cells read row-major. This is walking cautiously in a duel, NOT a gun attack; pistol remains held safely without firing, wrist blades exactly as reference, no added weapons. Full alternating bipedal gait: frame1 near leg extended in front far leg trailing; frame2 near supporting leg straight while far knee passes in front; frame3 FAR leg extended in front and near leg trailing visibly different from frame1; frame4 far supporting leg straight while NEAR knee passes in front visibly different from frame2. Clear change of knee positions and planted foot on each opposite contact. Same torso scale and camera every frame, small natural arm swing/dreadlock response. Rootcenterlocalx384, soles~localy482, head~localy60. Complete character/hands/weapons/hair stay inside each cell with at least24px transparent clearance. True RGBA transparency outside drawings; crisp detailed comic/game bitmap consistent with reference, neutral lighting. Exactly2arms2legs, coherent fingers/thumb and joints. No scene, floor, gradient, black backdrop, checkerboard artwork, drop shadows, text, marks, gridlines or borders. Original lore-compatible locomotion adaptation, not a claim of a1:1canonical movie animation. IMPORTANT override prior coordinate hints: use the NEW smaller360px drawing height, top70/bottom72 empty gutters and local soles435, NOT y482. Preserve all anatomy and exact identity. No background or alpha haze.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Case 3 repete la jambe avant de 1 ; le genou different en 4 ne fournit pas le contact oppose ni les deux passages attendus."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/012-wolf-masked-walk-right-candidate-native-measurements.json",
+        "reportSha256": "3b1ff7ef627bb5d6434259473cd5079a25a3761856877d3722915aa273cb9f64",
+        "sourceSha256": "3c5f8165233475e49dbd5a69830c7b42198b88e6473704ce83a042cda00bb63a",
+        "technicalAccepted": null,
+        "cleanSourceCuts": true,
+        "issues": [],
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, original requested action and equipment continuity, supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 13,
+      "filename": "013-falconer-masked-walk-left-candidate.png",
+      "sourceRelative": "work-local/v91/generation/013-falconer-masked-walk-left-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-02/013-falconer-masked-walk-left-candidate.png",
+      "sourceSha256": "eaa0de232155d29cdee042d213e36d22b66d23e3f5ea6060e83181724bccc99c",
+      "sourceBytes": 1696078,
+      "fighterId": "falconer",
+      "variantId": "falconer-avec-casque-f5618ed362",
+      "requestedClip": "walk",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/f5618ed36296630ec9061ebd115a5971e2c02a656412808a7e5bc0d6c8a7b96d.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "PRIMARY TECHNICAL REQUIREMENT: the LEFT-facing figures must be deliberately MUCH SMALLER than the input. Each cell768x512 contains its entire drawing between local x100..668 and local y70..440, with COMPLETELY EMPTY TRANSPARENT TOP70px and BOTTOM72px gutters. Do NOT fill the cell or put toes/helmet/weapon near y0/y512. Four sprite cells. Reserve empty clear padding even if the character appears small. Target total drawing height360px, including ALL weapons and dreadlocks; do not exceed370px. Body root atx384 and solid sole y435. ALL FOUR CHARACTERS MUST FACE LEFT. Helmet beak, eyes, chest gaze and wristblade tip point toward the LEFT EDGE of their cells. The reference faces right; construct a genuinely drawn new LEFT-facing view, do NOT output the reference orientation. This facing direction is the primary requirement. Preserve the exact identity of Falconer Predator from image1: long bronze falcon-beak biomask with angular crown, green-yellow mottled skin, sparse darkbronze armor, blackdreadlocks, one serrated wristblade on the original arm, other hand open. Four distinct fullbody WALK cycle drawings in1536x1024 transparentPNG, regular2columns2rows cells768x512. Frame1 leftward stride/nearleg leads; frame2 opposite knee passes; frame3 opposite planted leg leads; frame4 near knee passes. Walking slowly LEFT toward an adversary, not lunging. Camera sees opposite native side; keep anatomical blade attachment consistent, allow proper fararm occlusion. Nose/beak and blade all pointLEFT. Identical torso scale, fullbody insidecells with24pxempty margins, toes aroundy482, head aroundy60, centeredx384. Exactly2arms2legs, fingers grip sensibly, no gun, shouldercannon, drone or addedweapon. Detailed comic gamebitmap, actual alpha transparency, no backgroundgradient/checkerboard/blackrectangle/groundshadow, text, grid or floor. This is a lore-compatible walking adaptation. IMPORTANT override prior coordinate hints: use the NEW smaller360px drawing height, top70/bottom72 empty gutters and local soles435, NOT y482. Preserve all anatomy and exact identity. No background or alpha haze.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Cases 1 a 3 repetent une demi-foulee ; changement de jambe en 4, encore en contact plutot qu en passage. Boucle de marche incomplete."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/013-falconer-masked-walk-left-candidate-native-measurements.json",
+        "reportSha256": "87bae3428dda421adb4a3ae2cbc46ea26e3ff91e0d7f9622add40e0a606cb8b3",
+        "sourceSha256": "eaa0de232155d29cdee042d213e36d22b66d23e3f5ea6060e83181724bccc99c",
+        "technicalAccepted": null,
+        "cleanSourceCuts": true,
+        "issues": [],
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, original requested action and equipment continuity, supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 14,
+      "filename": "014-scarface-masked-walk-right-candidate.png",
+      "sourceRelative": "work-local/v91/generation/014-scarface-masked-walk-right-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-02/014-scarface-masked-walk-right-candidate.png",
+      "sourceSha256": "5ae447e6e175a6c572f807dbc0bb414a2c4f216514778df9751d06cd00202269",
+      "sourceBytes": 1792729,
+      "fighterId": "scarface",
+      "variantId": "scarface-avec-casque-bca00052d4",
+      "requestedClip": "walk",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "PRIMARY TECHNICAL REQUIREMENT: the RIGHT-facing figures must be deliberately MUCH SMALLER than the input. Each cell768x512 contains its entire drawing between local x100..668 and local y70..440, with COMPLETELY EMPTY TRANSPARENT TOP70px and BOTTOM72px gutters. Do NOT fill the cell or put toes/helmet/weapon near y0/y512. Four sprite cells. Reserve empty clear padding even if the character appears small. Target total drawing height360px, including ALL weapons and dreadlocks; do not exceed370px. Body root atx384 and solid sole y435. Use case: identity-preserve. Asset: native 2D fighting-game forward walking sprite sheet for Scarface Predator (Concrete Jungle), exact masked appearance scarface-avec-casque-bca00052d4. Image1 is the exact supplied appearance reference: preserve silver perforated biomask with RED crest marking, red handprint on silver chest armor, heavy segmented silver armor, black dreadlocks/brassrings, skull on shoulder and belt, red loincloth, golden mottled skin, and the SINGLE large dual-curved Maul held in two hands. Do not replace Maul by a sword/spear/bow or fire it; no energy or powers. One1536x1024 transparentPNG,4 fullbody WALK frames in regular2x2grid cells768x512 readrowmajor. Allcharacters faceSCREENRIGHT. Safe heavy armed walk cycle: nearleg forward contact, farleg passing at knee, farleg forward contact, nearleg passing. Full believable bentknees/ankles/twoarms/twolegs/fingers; keep Maul held close upright at consistent diagonal to fit eachcell. No attack. Same torso size/view/detaillight acrossframes, small dreadlock/cloth lag. Headlocaly55, toeslocaly480, rootx384, at least24px empty margins, ALL Maul tips/skulls/toes fullyinside eachcell with no overlap. Actual RGBA transparency, detailed realistic comic/game art matching source. No backdrops, gradient, floor, fakecheckerboard, castshadow, labels, text, grids or border. This original walk is lore-compatible adaptation, not certified1:1canonical game animation. IMPORTANT override prior coordinate hints: use the NEW smaller360px drawing height, top70/bottom72 empty gutters and local soles435, NOT y482. Preserve all anatomy and exact identity. No background or alpha haze.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Meme jambe devant aux contacts 1 et 3, levees arriere similaires en 2 et 4. Demi-foulee repetee."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/014-scarface-masked-walk-right-candidate-native-measurements.json",
+        "reportSha256": "29f68c115e42e785faae8c0314681aeeececf0fe7cd7f27dc83ac4dc3f8dd4f1",
+        "sourceSha256": "5ae447e6e175a6c572f807dbc0bb414a2c4f216514778df9751d06cd00202269",
+        "technicalAccepted": null,
+        "cleanSourceCuts": true,
+        "issues": [],
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, original requested action and equipment continuity, supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 15,
+      "filename": "015-scarface-masked-walk-left-rejected.png",
+      "sourceRelative": "work-local/v91/generation/015-scarface-masked-walk-left-rejected.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-02/015-scarface-masked-walk-left-rejected.png",
+      "sourceSha256": "0c473be144ee5828c58dca5f019f136017f3f9f992a734fd53f69a1f99fa3edf",
+      "sourceBytes": 1649789,
+      "fighterId": "scarface",
+      "variantId": "scarface-avec-casque-bca00052d4",
+      "requestedClip": "walk",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Create a TRUE WALK CYCLE, not four different standing poses. Identity reference: masked Scarface Predator from Concrete Jungle. Keep the provided silver perforated RED-crest biomask, red handprint chest, heavy segmented silver armor, skull shoulder/belt, golden mottled skin, red loincloth, black dreads with brass beads, SINGLE two-curved-bladed MAUL held in both hands upright close to body. Do not turn Maul into bow/sword. Four LEFT-facing full-body native drawings on one transparent 1536x1024 PNG in a 2x2 grid, four 768x512 cells read TL TR BL BR. Each must fit local x100..668,y60..445 with large invisible gutters; entire Maul tips and dreadlocks inside. Body pelvis at x384 feet ground y440, consistent body height340. Neutral armed walking, no attacks. Poses MUST alternate legs: Frame1 NEAR leg fully forward toward screenLEFT with nearfoot local x290 grounded, FARfoot behind at local x465 touching toe. Frame2 NEAR leg now underneath hip at x380 supporting, FAR knee raised and moving forward. Frame3 FAR leg fully forward screenLEFT with farfoot local x290 grounded; NEAR leg now BEHIND hip at x465 trailing toe. Frame4 FAR leg beneath hip supporting at x380, NEAR knee lifts and moves forward to return Frame1. Opposite contact phases in1vs3; nearleg really travels from x290 to x465, not always staysfront. Show anatomically valid knees/ankles/arms/fingers. Unchanging torso/helmet/Maul dimensions. Small vertical hip bob. Distinct dreadcloth lag. Pure RGBA transparency no backdrop/ground/shadow/text/labels/grid. All drawing smaller than ref with at least60px blank around, no adjacent frame interference. Lore-compatible original walk, NOT certified1:1gameanimation.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Meme jambe devant aux contacts 1 et 3 ; levees arriere repetent une demi-foulee. Contact oppose manque."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/015-scarface-masked-walk-left-rejected-native-measurements.json",
+        "reportSha256": "41eaa1d7a3f27d7eb81aabd9b2a390497ad4d4bbe4a7c7007daa6b012ce54c18",
+        "sourceSha256": "0c473be144ee5828c58dca5f019f136017f3f9f992a734fd53f69a1f99fa3edf",
+        "technicalAccepted": null,
+        "cleanSourceCuts": true,
+        "issues": [],
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, original requested action and equipment continuity, supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 17,
+      "filename": "017-wolf-eight-frame-walk-rejected.png",
+      "sourceRelative": "work-local/v91/generation/017-wolf-eight-frame-walk-rejected.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-02/017-wolf-eight-frame-walk-rejected.png",
+      "sourceSha256": "b657b5fd4c2c55ae2e80d234667446308da69064a94c3e9c4a27afc19ed31fa9",
+      "sourceBytes": 2577461,
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "walk",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "ANIMATION SHEET, NOT CHARACTER LINEUP. Eight key frames of a full walk cycle for WOLF Predator. Reference is IDENTITY AND EQUIPMENT ONLY; completely ignore its standing leg pose. Same silver pointed biomask, brass-ring dreads, golden/tan skin, sparse armor, wrist blades, belt whip, compact handheld pistol and shoulder cannon. 4 columns by2rows on one1536x1024 transparentPNG; eight cells384x512. SIDE VIEW FACING RIGHT. Small figure head y110 feet y430, no weapons cut, blankspace. One complete alternating gait: TOP ROW 1.right leg front long stride, 2.right leg underhip left knee raised, 3.right leg BEHIND long stride left leg FRONT, 4.left leg underhip right knee raised. BOTTOM ROW redraw repeat same four physical phases with slightly different secondary motion cloth/dreads, preserving opposite leg contacts inframes3and7. It is ESSENTIAL that visible right leg goes from in FRONT inframe1 to BEHIND inframe3, bending at knee; both legs alternate across the gait. The far leg crosses the near leg. Hold pistol low with hands good, noattack. Fixed camera, fixedbodydimensions, pelvisx192 percell. Actual leg bending, eight fullbody drawings. Realistic detailed inked game art faithful to supplied Wolf. RealRGBAalpha,no background,no floor,no shadow,no gradients,text,labels,frameborders. All bodyparts with at least40px transparentmargin within eachcell. Original lorecompatible cycle.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "equipment-disappears-and-unsafe-cell-layout",
+          "detail": "Pistolet absent aux dessins 3 et 7 ; canon d epaule non visible dans la sequence ; pieds/corps depassent les cellules regulieres attendues. Aucun substitut a une marche correcte."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/017-wolf-eight-frame-walk-rejected-native-measurements.json",
+        "reportSha256": "41fd4b74593f9c24ee2c5a3127fca533a4014da76134ddb49e174b6a030369e4",
+        "sourceSha256": "b657b5fd4c2c55ae2e80d234667446308da69064a94c3e9c4a27afc19ed31fa9",
+        "technicalAccepted": null,
+        "cleanSourceCuts": null,
+        "issues": [
+          "This private helper supports only four explicitly declared 2x2 drawings."
+        ],
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, original requested action and equipment continuity, supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 18,
+      "filename": "018-wolf-victory-right-rejected.png",
+      "sourceRelative": "work-local/v91/generation/018-wolf-victory-right-rejected.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-02/018-wolf-victory-right-rejected.png",
+      "sourceSha256": "48b963330a2dc62bce2780197acc8af344c062e394712ea2a44dc45eb0ad4650",
+      "sourceBytes": 1705262,
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "pit.presentation.victory",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "A four-keyframe one-shot VICTORY animation of WOLF Predator, same exact masked identity/equipment as the supplied image. Fullbody near-side profile facing RIGHT in EVERY frame. Neutral grounded stance, feet stationary, two legs two arms correct hands. Preserve serrated silver mask, brass-ring dreads, tan mottled skin, compact pistol, beltwhip, wrist blades, single shoulder plasma cannon. Frame1: pistol in FAR/right hand lowered safely forward, NEAR/left free hand at waist, relaxed knees. Frame2: free left forearm bends up toward chest, elbow rises, mask turns slightly upward. Frame3: free LEFT FIST raised above shoulder in triumph, pistol remains down held by FAR/RIGHT hand. Frame4: hold triumphant raised fist with slight dreadcloth settling and head proudly raised. Show four distinctly changing native arm poses, not copies translated or a walk. Same body dimensions and costume and equipment in all four, no lost pistol/cannon, no swapped hands, no invented glowing power. One transparent1536x1024 PNG,2x2 grid four768x512cells read rowmajor, each drawing deliberately small in middle x180..580,y70..445 including all weapons and dreads, footgroundy440, enough fully transparent space top bottom left right. Faraway full-body camera so no clipping across cells. Full real RGBA transparency: no backdrop, floor, shadow, glow, text, boxes or grid marks. Detailed realistic inked game art matching supplied approved reference. Lore-compatible celebratory adaptation, not a certified 1:1 existing game animation.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "pistol-hand-transfer-without-handoff",
+          "detail": "Pistolet passe de la main eloignee en dessins 1 et 2 a la main proche munie de lames en 3 et 4, sans geste de passation."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/018-wolf-victory-right-rejected-native-measurements.json",
+        "reportSha256": "fb3f998c42e816e1b4e5b2b0a75a545058bfd07ce998c7d63b2f006c1ec15367",
+        "sourceSha256": "48b963330a2dc62bce2780197acc8af344c062e394712ea2a44dc45eb0ad4650",
+        "technicalAccepted": null,
+        "cleanSourceCuts": true,
+        "issues": [],
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, original requested action and equipment continuity, supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 19,
+      "filename": "019-wolf-victory-right-extra-blade-rejected.png",
+      "sourceRelative": "work-local/v91/generation/019-wolf-victory-right-extra-blade-rejected.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-02/019-wolf-victory-right-extra-blade-rejected.png",
+      "sourceSha256": "945e5f7466f24a2071a7742eecd0fbe19f9eeaacde45e4463f9203093442b329",
+      "sourceBytes": 1811612,
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "pit.presentation.victory",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Four native keyframes one-shot victory of WOLF Predator facingRIGHT. Same provided exact helmet/skin/armor/dreads, cannon shoulder, belt whip, wrist blades. PISTOL IS SAFELY HOLSTERED VISIBLE on right belt in ALL FOUR frames, never held, never disappears. Both hands empty and correct five fingers or closed fist. Left NEAR hand carries blades on forearm and staysLOW atwaist for allfour. RIGHT FAR free arm performs gesture: 1 arm down neutral,2 rightfist atchest,3 rightfist raisedHIGH above shoulder,4 rightfist stillHIGH and headtiltsproudlyup. Always raise SAME FAR RIGHT arm; left forearmblade alwaysLOW. Do notswaparms/equipment. Feetremain grounded stationary, nobouncingwalk. Sameconstantheadbodyarmor size. Fourfullbodyfigures on transparent1536x1024PNG regular2x2cells768x512, rowmajor. Allparts safelyinsideeachcell x180..580 y60..450, footgroundy445; distantcamerawithbigtransparentgutters. Nativeanatomicalposechange, no backgroundshadowgradienttextgrids. Faithful detailedinkedgameart exactreferenceappearance. Thisisa lorecompatible gesture, not1:1canonmotion.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "wrong-wrist-blade-attachment",
+          "detail": "Une lame apparait sur l avant-bras qui ne se leve pas, contrairement a l attache du bras a lames de la reference. Refus root: extra wrist blades on nonraising forearm."
+        }
+      ],
+      "technicalEvidence": null,
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, original requested action and equipment continuity, supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 20,
+      "filename": "020-wolf-victory-right-candidate.png",
+      "sourceRelative": "work-local/v91/generation/020-wolf-victory-right-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-02/020-wolf-victory-right-candidate.png",
+      "sourceSha256": "74530d745804a5aa126dea2e6a58a9cd92a6beb50fe595c961941b31a58d8ec4",
+      "sourceBytes": 1811242,
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "pit.presentation.victory",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "EDIT this supplied Wolf VICTORY sprite sheet; preserve the existing four poses, all mask/armor/cannon/holstered pistol/colors/legs/cell layout exactly. Remove the EXTRA wrist blade on the DOWN/DANGLING arm (the arm on the right side of each pictured figure). That nonraising arm must have a plain metallic bracer, empty bare hand, NO projecting blades. The arm that bends/raises the fist, on the left side of each pictured figure, keeps its original wrist blades unchanged. One paired wrist blade ONLY on the RAISING arm, not both forearms. Keep pistol visibly holstered at same belt location in allfour frames, shoulder cannon remains. Correct no anatomy unless needed toremove thisextraequipment. Fourframes2x2. FullRGBAtransparency, no backdrop. Preserve cellgap and keepallpartsinsidecells, no shadows.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "uncut-body-overlap-no-safe-cells",
+          "detail": "Pas de separateur propre dans au moins une colonne entre corps du rang haut et poing leve du rang bas. Ne pas couper les silhouettes, nettoyer les pixels ni changer le type d action pour rendre le fichier admissible."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/020-wolf-victory-right-native-measurements.json",
+        "reportSha256": "1367941d6cca7c5bfea1aa9d5398e85ce7338744ce132e41ddbf6778a5060f40",
+        "sourceSha256": "74530d745804a5aa126dea2e6a58a9cd92a6beb50fe595c961941b31a58d8ec4",
+        "technicalAccepted": null,
+        "cleanSourceCuts": null,
+        "issues": [
+          "No clean separator in at least one column; do not cut or relabel this original."
+        ],
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, original requested action and equipment continuity, supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 21,
+      "filename": "021-wolf-victory-left-candidate.png",
+      "sourceRelative": "work-local/v91/generation/021-wolf-victory-left-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-02/021-wolf-victory-left-candidate.png",
+      "sourceSha256": "3e06c48530941bcc02eafa979ec0e3b51bcba9bdb5a5dde87ac6951bd83253bf",
+      "sourceBytes": 1810912,
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "pit.presentation.victory",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Create FOUR NATIVE keyframes of a one-shot grounded VICTORY, the character faces SCREEN_LEFT in EVERYcell. Look LEFT, noseLEFT, celebrate LEFT. Native opposite-angle drawings, not mirrored right artwork. Exact WOLF masked identity from reference1; reference2 is ONLY the desired celebration sequence, its rightward facing MUST be changed. Preserve detailed silver pointed mask, brassring dreads, tanmottledskin, single shoulder cannon, sparsearmor, beltwhip, pistol visibly HOLSTERED on belt inALLframes. No handheldgun or handoff. ONLY ONE wristbladed forearm; the other bracer hasNO blade. The wristbladed arm performs celebration:frame1 arm relaxed nearwaist,frame2 fisttoucheschest,frame3 fistliftedHIGHover shoulder,frame4 fistheldHIGHand headtiltproudlyup. SAME arm raises throughout, other bare-bracerarm staysLOW emptyhand, validhands/arms/legs. Feetstationarygrounded. Fourchangingposes of sameconstantbodydimensions,no copiedtranslations. 1536x1024 transparentRGBA PNG2x2gridcells768x512. Each fullbodydrawing smallcenteredlocalx180..580y70..445 ALLbodypartsinside including raisedfist/dreads/cannon, at least40pxblankmargins. No backdrops,floor,shadow,gradients,text,boxes,grid. Lorecompatible originalcelebration,notcertified1:1existingmotion.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "shoulder-cannon-points-opposite-facing",
+          "detail": "Masque et regard tournent a gauche, mais ouverture rouge du canon d epaule reste orientee vers la droite dans les quatre dessins. Direction de l equipement incoherente pour la vue native demandee."
+        }
+      ],
+      "technicalEvidence": null,
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, original requested action and equipment continuity, supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, canon certification or production admission"
+      }
+    }
+  ]
+}

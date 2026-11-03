@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "blood-beast",
+  "name": "Blood Beast",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Aggressive alien quadruped base with EXACTLY FOUR legs, heavy muscular shoulders and long strong forelimbs, dark maroon leathery hide and pale old HEALED scar lines, broad asymmetrical natural bony skull with huge closed jaw, short thick tail, broad claws. Small healed implant interface scars only. NO fresh injury, chains, metal plates, implants, harness or rider: these must be separate modules. Fierce neutral standing, not attacking anything. Same anatomy both directions.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Blood Beast — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/blood-beast/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/blood-beast/identity-r1.png",
+      "originId": "exec-aec9d540-c5c3-4d94-82dc-d1c39672609f.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "f3e6b025d83313d829e421755fad3fa479d619f6ca643cff12aef9a988501f7f",
+      "bytes": 1670705,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Bare animal layer: no saddle, tack or armor. Aggressive alien quadruped base with EXACTLY FOUR legs, heavy muscular shoulders and long strong forelimbs, dark maroon leathery hide and pale old HEALED scar lines, broad asymmetrical natural bony skull with huge closed jaw, short thick tail, broad claws. Small healed implant interface scars only. NO fresh injury, chains, metal plates, implants, harness or rider: these must be separate modules. Fierce neutral standing, not attacking anything. Same anatomy both directions.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 12,
+          "recoveredLine": 1150,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "OpenAI ImageGen original identity proposal; no canonical appearance is asserted.",
+        "Visually inspected at source resolution: both strict opposing side profiles expose exactly four anatomically connected legs and four complete clawed feet; healed pale scars only, with no fresh wound, blood, harness, implant, armor or rider.",
+        "Static bare-animal review sheet only; no gameplay, rig or animation acceptance implied. Runtime transparency is applied by the production review renderer."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            23,
+            106,
+            785,
+            644
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 224363,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            966,
+            106,
+            786,
+            644
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 223957,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

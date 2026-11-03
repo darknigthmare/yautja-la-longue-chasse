@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_COLD_PARTIAL_APPLICATION_AND_CANDIDATE_BOOTSTRAP",
+  "scope": "Manual real-network cold partial application checkout of published83768433, followed by the exact corrected CI bootstrap candidate outside that commit, current freeze verification and unchanged certificate test. This is not a hosted CI run.",
+  "sourceClone": {
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse.git",
+    "command": [
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "--no-checkout",
+      "--depth=1",
+      "--single-branch",
+      "--branch",
+      "codex/runtime-v113-r8-20261102",
+      "https://github.com/darknigthmare/yautja-la-longue-chasse.git",
+      "/workspace/r8-ci-cold-20261102/application"
+    ],
+    "head": "837684333b42ee1a5e3a0be9ce1967e2486a2fd3",
+    "HEADUnchanged": true,
+    "worktreeCleanAfterVerification": true,
+    "alternateObjectStore": false,
+    "initialObjectPackKiB": 786,
+    "publishedWorkflowSha256": "7eeab944bf469b2824e58ab3aa01c160b06875e1e10f68003ea24167476cc573"
+  },
+  "sparseCheckout": {
+    "patterns": 564,
+    "sha256": "a4acc9d1a1101b205f3c9f8050691fd5ce25a8438c8a2176ca6c0c90d239fe47",
+    "matchesPublishedApplicationJobExactly": true,
+    "regularFilesMaterialized": 6309,
+    "checkoutBytes": 2571512571,
+    "packBytesAfterCheckout": 2109558677,
+    "checkoutSeconds": 146.344
+  },
+  "runtimeBootstrap": {
+    "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+    "missingInitially": true,
+    "missingAfterCheckoutBeforeBootstrap": true,
+    "probeWithoutLazyFetchExitCode": 128,
+    "canonicalFetch": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "--filter=blob:none",
+      "--depth=1",
+      "https://github.com/darknigthmare/yautja-la-longue-chasse.git",
+      "719fe0d77e65be5349b76f507938309f56a67619"
+    ],
+    "candidateScript": {
+      "file": "executed-bootstrap.mjs",
+      "bytes": 1383,
+      "sha256": "076e09ce68237b9760fc13aa44bef94fd0eec24cc078984b72fa1a523825c96f",
+      "GIT_NO_LAZY_FETCH_guards": 2
+    },
+    "candidateOutsidePublished83768433": true,
+    "historyScope": "No full-history fetch. One explicit filtered depth1 runtime commit fetch; the report binds local file bytes to the matching Git tree blob IDs."
+  },
+  "freeze": {
+    "entries": 1964,
+    "bytes": 367432,
+    "sha256": "f39b5089fc130a726b87a6120470dacb3c3ef41098582a7203844620ce57f164"
+  },
+  "productionEvidence": [
+    {
+      "domain": "Homeworld",
+      "report": {
+        "file": "docs/v113-homeworld-validation.json",
+        "bytes": 866216,
+        "sha256": "7d42b5a70705d8720fca2a50818554b6e9973db988645d1b687d8862c8c61a66"
+      },
+      "status": "PASS_CIBLE",
+      "buildId": "OzWVxNAbS8mWbL_Pue9Zg",
+      "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+      "browserChecksPassed": 249,
+      "PNGFilesVerified": 39,
+      "rawEvidence": {
+        "path": "docs/qa/v113-homeworld/browser-result.json.gz",
+        "sha256": "62c6f7f2cea388e6b9480f1415d3e593c532aa0eb093667978aaf0b2be211ca9",
+        "bytes": 226095,
+        "decodedSha256": "70169c392664a2636d77da4acbf5c4605566d8a1ac706d359abd09ce9d030473",
+        "decodedBytes": 1005782
+      }
+    },
+    {
+      "domain": "Pit",
+      "report": {
+        "file": "docs/v113-pit-validation.json",
+        "bytes": 1379421,
+        "sha256": "e2440ed86acfdb81a1f5d68147e92993fa4636939586666d078055d6eb1eff6c"
+      },
+      "status": "PASS_CIBLE",
+      "buildId": "OzWVxNAbS8mWbL_Pue9Zg",
+      "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+      "browserChecksPassed": 127,
+      "PNGFilesVerified": 39,
+      "rawEvidence": {
+        "path": "docs/qa/v113-pit/browser-result.json.gz",
+        "sha256": "2c15e3025f642b1d1409339161e958ee8011b99f176d02b9dad010076825a296",
+        "bytes": 359991,
+        "decodedSha256": "af122dad7044fb7dfe4428a9a45d8f67230ffbd2a5464c2c7c13a04fa9818c8d",
+        "decodedBytes": 13025415
+      }
+    }
+  ],
+  "totalPNGFilesVerified": 78,
+  "dependencyReuse": {
+    "reused": true,
+    "freshInstall": false,
+    "link": "application/node_modules",
+    "target": "/workspace/yautja-la-longue-chasse/node_modules",
+    "manifestPins": [
+      {
+        "file": "package.json",
+        "bytes": 8454,
+        "sha256": "b5556cc5a7534534c43a186bbc60e2462235e0cb5ddbc5f87e5fe32a4cc53274",
+        "rootBytesIdentical": true
+      },
+      {
+        "file": "package-lock.json",
+        "bytes": 389978,
+        "sha256": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892",
+        "rootBytesIdentical": true
+      }
+    ],
+    "Node": "v22.23.4"
+  },
+  "commands": [
+    {
+      "command": [
+        "node",
+        "/workspace/r8-ci-cold-20261102/executed-bootstrap.mjs"
+      ],
+      "name": "runtime-bootstrap",
+      "exitCode": 0,
+      "seconds": 0.403,
+      "log": "runtime-bootstrap.log"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "docs/v113-runtime-freeze.json"
+      ],
+      "name": "freeze-check",
+      "exitCode": 0,
+      "seconds": 5.189,
+      "log": "freeze-check.log"
+    },
+    {
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-reporter=spec",
+        "--test-concurrency=1",
+        "tests/homeworld-current-production-v113.test.mjs"
+      ],
+      "name": "current-production-test",
+      "exitCode": 0,
+      "seconds": 13.979,
+      "log": "current-production-test.log"
+    }
+  ],
+  "limitations": [
+    "The node_modules directory was reused through the only allowed symlink after package.json and package-lock.json byte equality. No fresh npm install is claimed.",
+    "No new build, browser replay, image opening, screenshot generation or hosted CI execution was performed in this cold validation. The existing real production artifacts were verified.",
+    "The current-production test matches the SHA1 Git blob IDs in the B2 tree to the actual local frozen bytes; it does not need to download and separately open every historical blob object.",
+    "The corrected bootstrap is the candidate supplied by root and is not yet in the workflow of published83768433. The sparse patterns match that published workflow exactly.",
+    "The private clone, packs, node_modules and operational Python scripts are excluded from the notes archive."
+  ]
+}

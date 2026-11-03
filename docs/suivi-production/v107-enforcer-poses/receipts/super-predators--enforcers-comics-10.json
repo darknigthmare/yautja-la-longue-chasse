@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "yautja-imagegen-receipt-v107-1",
+  "id": "super-predators--enforcers-comics-10",
+  "method": "builtin-imagegen",
+  "tool": "image_gen.imagegen",
+  "nativeOutputId": "exec-ae7add61-eec8-413a-bb9e-e64267fe5c8b",
+  "nativeSourceName": "exec-ae7add61-eec8-413a-bb9e-e64267fe5c8b.png",
+  "sha256": "77637cec9151af56cf42edb5b2dd192090aaa307cdf292dc1e41e7a31fbb5538",
+  "bytes": 2282191,
+  "width": 1024,
+  "height": 1536,
+  "transparentBackgroundRequested": true,
+  "promptExact": "Create a NEW independent game character asset, Enforcers variant 10 ‘Chef de poursuite’, group ‘Lignée des Super Predators’. Use the referenced sprite ONLY as a rendering/costume-family guide, not a duplicate of the veteran09. Native high-detail painted game sprite, exactly one mature adult full body head to soles, standing confidently with a slight torso rotation, all hands and equipment readable, generous empty margins on every side. True transparent RGBA background, no ground, no backdrop, no vignette, no shadows outside the figure, no labels, no text, no border. Portrait composition 1024x1536. This is an original project variant, not a certified film reconstruction. Morphology: taller and leaner than classic Yautja, long athletic plantigrade limbs, narrow close-fitting silhouette, elongated cranium and dreadlocks swept tightly rearward, no wide lateral halo, no squat bodybuilder, no digitigrade canine legs. Five-finger hands. Brown slate mottled skin. Worn silver partial Enforcer armor, deep blue rank accents, visible net suit, silver biomask with a tall central point and lateral points fitted to this long skull, technical gauntlets and small tracking kit, closed continuous-toebox footwear. Keep costume family comic Enforcers, no heavy full military chestplate. Pursuit leader has a distinct restrained commanding posture, one hand at a small tracker kept below chest level, equipment never overlaps feet. Deliver a single isolated figure with genuine transparency.",
+  "submittedReferences": [
+    {
+      "path": "public/game/production/enforcers-v613/super-predators/enforcers-comics-09.png",
+      "sha256": "8d3595066db427753acf4affd5a87e024a743a38690c9895c46947b90292977c",
+      "scope": "Costume-family guide actually submitted in the accepted image_gen call; not a claim of certified morphology.",
+      "bytes": 2307900
+    }
+  ],
+  "generatedAtUtc": null,
+  "receiptCreatedAtUtc": "2026-10-23T20:41:53.866Z",
+  "generationTimeMeaning": "The tool supplies no exact generation timestamp; receiptCreatedAtUtc records retrieval, not model generation.",
+  "originalBytesCopied": true,
+  "visualInspection": {
+    "accepted": true,
+    "notes": "Silhouette adulte entière, masque Enforcer argenté, filet visible, accents bleus et posture de poursuite avec appareil tenu ; morphologie longue et jambes plantigrades. PNG relu individuellement.",
+    "limitations": [
+      "Marge supérieure et inférieure sous la cible de8pourcent ; contenu visible non coupé.",
+      "Appareil tenu plus haut que demandé ; aucune animation, fonction de combat ou fidélité canonique1:1 n’est déduite."
+    ]
+  },
+  "repoPngPath": "public/game/production/enforcer-alternatives-v107/super-predators/enforcers-comics-10.png",
+  "stableIdentityReused": true,
+  "newStableIdentity": false,
+  "role": "alternative-pose"
+}

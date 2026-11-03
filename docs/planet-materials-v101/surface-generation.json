@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "version": "v101",
+  "generatedOn": "2026-10-21",
+  "assetCount": 10,
+  "scope": "10 independent surface material families for the existing 30 clan-war planets; no new geography.",
+  "colorSpace": "sRGB",
+  "nativeAssets": true,
+  "postprocessing": "None. Native generated PNGs copied byte-for-byte; no crop, recolor or resampling.",
+  "limitations": [
+    "Artistic color textures, not measured PBR albedo, roughness, normal or scientific scattering maps.",
+    "Seamless borders were requested during generation but exact pixel continuity is not certified. Runtime should provide continuous wrapping if required.",
+    "Palettes represent material defaults; planet-specific palette variants are configured in the renderer.",
+    "Small local surface shading or emissive color may be baked into these textures; global lighting, clouds and atmospheric scattering remain separate renderer layers."
+  ],
+  "assets": [
+    {
+      "id": "surface-water",
+      "kind": "water",
+      "role": "intercontinental-surface-material",
+      "path": "public/game/planets/v101/materials/surface-water.png",
+      "sourcePath": "/workspace/scratch/b536ea8e89fc/generated_images/exec-2aef6eb1-7298-41de-b2b8-cb157e33c676.png",
+      "sourcePreserved": true,
+      "generation": {
+        "tool": "image_gen",
+        "mode": "built-in",
+        "transparent_background": false,
+        "prompt": "Use case: photorealistic-natural. Asset type: independent production albedo material for the surface between continent masks on original Yautja clan-war planets. One square 1024x1024 full-bleed opaque raster, strict orbital satellite nadir orthographic view, no perspective. Rich realistic fine surface detail suitable for a high-end space strategy game. Diffuse even neutral lighting, no baked global directional light, no shadow gradient. Seamless tile requested on all four edges; uniform material scale and distributed detail, no focal point. Fill every pixel. No globe, no planet sphere, no space, no stars, no horizon, no coastline, no landmass, no island, no buildings, no object, no border, no text, no labels, no vignette, no atmospheric halo, no cloud, no global haze. Subject: deep cobalt blue ocean water only, broad dark navy currents with delicate turquoise eddies and many tiny wind-streak ripples. Varied realistic fluid texture at a satellite scale, subtle pale wave glints distributed evenly. Palette #164e6d, #071c35, #4f9cac. Avoid white cloud-like shapes and shorelines."
+      },
+      "review": {
+        "inspected": true,
+        "notes": "Inspection visuelle : eau cobalt continue, tourbillons et rides fines, aucune île ni nuage. Les petits reflets sont contenus dans la couleur et ne constituent pas une carte de spéculaire séparée.",
+        "exactSeamlessCertified": false
+      },
+      "sha256": "e74de731671ce799f97cae542390732360edf3506ad89ad7a28a43dbb0469b3b",
+      "bytes": 3316932,
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 3,
+      "hasAlpha": false,
+      "fullyOpaque": true,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "surface-acid",
+      "kind": "acid",
+      "role": "intercontinental-surface-material",
+      "path": "public/game/planets/v101/materials/surface-acid.png",
+      "sourcePath": "/workspace/scratch/b536ea8e89fc/generated_images/exec-32fdb060-ea43-44e8-9c66-003d6305b111.png",
+      "sourcePreserved": true,
+      "generation": {
+        "tool": "image_gen",
+        "mode": "built-in",
+        "transparent_background": false,
+        "prompt": "Use case: photorealistic-natural. Asset type: independent production albedo material for the surface between continent masks on original Yautja clan-war planets. One square 1024x1024 full-bleed opaque raster, strict orbital satellite nadir orthographic view, no perspective. Rich realistic fine surface detail suitable for a high-end space strategy game. Diffuse even neutral lighting, no baked global directional light, no shadow gradient. Seamless tile requested on all four edges; uniform material scale and distributed detail, no focal point. Fill every pixel. No globe, no planet sphere, no space, no stars, no horizon, no coastline, no landmass, no island, no buildings, no object, no border, no text, no labels, no vignette, no atmospheric halo, no cloud, no global haze. Subject: an immense dense emerald acidic fluid sea only, subtle cellular convection, micro-bubble clusters, serpentine yellow-green mineral streaks, thin sulfur slicks between dark pools. Naturalistic chemical turbulence seen at orbital scale, small evenly scattered details, no large circular focal objects. Palette dark green #173620, olive #628d25, chartreuse #c6ef43, sparse pale sulfur #edff9b."
+      },
+      "review": {
+        "inspected": true,
+        "notes": "Inspection visuelle : liquide vert dense, bulles fines, turbulence et filaments jaunes, aucun terrain solide ou symbole ajouté.",
+        "exactSeamlessCertified": false
+      },
+      "sha256": "3be7818dda7d3f6b2986c209584f14f07928a88507c37a9e9b2b483ca582c940",
+      "bytes": 3502264,
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 3,
+      "hasAlpha": false,
+      "fullyOpaque": true,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "surface-ice",
+      "kind": "ice",
+      "role": "intercontinental-surface-material",
+      "path": "public/game/planets/v101/materials/surface-ice.png",
+      "sourcePath": "/workspace/scratch/b536ea8e89fc/generated_images/exec-2714dea1-9a3a-44c6-8a59-3d252d0e286d.png",
+      "sourcePreserved": true,
+      "generation": {
+        "tool": "image_gen",
+        "mode": "built-in",
+        "transparent_background": false,
+        "prompt": "Use case: photorealistic-natural. Asset type: independent production albedo material for the surface between continent masks on original Yautja clan-war planets. One square 1024x1024 full-bleed opaque raster, strict orbital satellite nadir orthographic view, no perspective. Rich realistic fine surface detail suitable for a high-end space strategy game. Diffuse even neutral lighting, no baked global directional light, no shadow gradient. Seamless tile requested on all four edges; uniform material scale and distributed detail, no focal point. Fill every pixel. No globe, no planet sphere, no space, no stars, no horizon, no coastline, no landmass, no island, no buildings, no object, no border, no text, no labels, no vignette, no atmospheric halo, no cloud, no global haze. Subject: continuous fractured azure pack ice, densely branching blue pressure cracks and many subtle ice floe boundaries, translucent cyan channels, frosted ivory granular plate surfaces with realistic crystallization, all viewed straight down at orbital satellite scale. Snow blown in small streaks, not huge pristine solid plates. Palette desaturated cyan #73aabd, deep blue #204a70, very pale glacier #f1ffff. Flat diffuse lighting, no mirror glare, no coastline."
+      },
+      "review": {
+        "inspected": true,
+        "notes": "Inspection visuelle : banquise blanche/bleue fracturée, détail homogène. Les plaques de glace sont le sujet de la matière et ne représentent pas les continents du gameplay.",
+        "exactSeamlessCertified": false
+      },
+      "sha256": "b519c9408a12a51a2122c051b884b2ba3f944eeda08f1862dbdf0d108cfc4567",
+      "bytes": 4150714,
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 3,
+      "hasAlpha": false,
+      "fullyOpaque": true,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "surface-sand",
+      "kind": "sand",
+      "role": "intercontinental-surface-material",
+      "path": "public/game/planets/v101/materials/surface-sand.png",
+      "sourcePath": "/workspace/scratch/b536ea8e89fc/generated_images/exec-95f87740-40b4-4418-bd82-f8a51f04213b.png",
+      "sourcePreserved": true,
+      "generation": {
+        "tool": "image_gen",
+        "mode": "built-in",
+        "transparent_background": false,
+        "prompt": "Use case: photorealistic-natural. Asset type: independent production albedo material for the surface between continent masks on original Yautja clan-war planets. One square 1024x1024 full-bleed opaque raster, strict orbital satellite nadir orthographic view, no perspective. Rich realistic fine surface detail suitable for a high-end space strategy game. Diffuse even neutral lighting, no baked global directional light, no shadow gradient. Seamless tile requested on all four edges; uniform material scale and distributed detail, no focal point. Fill every pixel. No globe, no planet sphere, no space, no stars, no horizon, no coastline, no landmass, no island, no buildings, no object, no border, no text, no labels, no vignette, no atmospheric halo, no cloud, no global haze. Subject: an uninterrupted enormous sea of wind-carved ochre sand dunes from directly overhead at orbital satellite scale, multiple natural dune fields and interlacing delicate rippled slip faces, fine granular swirls and thin wind transport streaks, varied but evenly distributed. Palette sand #ad773f, shadow-brown #68472e, pale gold #e6b66b. Subtle local relief only, low contrast albedo, no large rock island or canyon, no landscape perspective, no ground horizon."
+      },
+      "review": {
+        "inspected": true,
+        "notes": "Inspection visuelle : dunes ocre en vue zénithale, aucune perspective ou silhouette de bâtiment. Un léger ombrage de relief local est intégré à la couleur.",
+        "exactSeamlessCertified": false
+      },
+      "sha256": "87e26e91d393bee54d504f201ac53b20c9baebe4c12ab31df82d991b38908ae5",
+      "bytes": 3100037,
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 3,
+      "hasAlpha": false,
+      "fullyOpaque": true,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "surface-lava",
+      "kind": "lava",
+      "role": "intercontinental-surface-material",
+      "path": "public/game/planets/v101/materials/surface-lava.png",
+      "sourcePath": "/workspace/scratch/b536ea8e89fc/generated_images/exec-6731bbe9-7dd1-48ac-916a-b910a9e09d9f.png",
+      "sourcePreserved": true,
+      "generation": {
+        "tool": "image_gen",
+        "mode": "built-in",
+        "transparent_background": false,
+        "prompt": "Use case: photorealistic-natural. Asset type: independent production albedo material for the surface between continent masks on original Yautja clan-war planets. One square 1024x1024 full-bleed opaque raster, strict orbital satellite nadir orthographic view, no perspective. Rich realistic fine surface detail suitable for a high-end space strategy game. Diffuse even neutral lighting, no baked global directional light, no shadow gradient. Seamless tile requested on all four edges; uniform material scale and distributed detail, no focal point. Fill every pixel. No globe, no planet sphere, no space, no stars, no horizon, no coastline, no landmass, no island, no buildings, no object, no border, no text, no labels, no vignette, no atmospheric halo, no cloud, no global haze. Subject: vast molten lava material viewed straight down, fine cracked charcoal cooling crust riding dense magma, many branching orange seams and wrinkled pahoehoe flows, varied sizes but evenly dispersed, no volcano cone or island. Fine photoreal mineral detail. Dominant charcoal #2b1320 and dark burnt red #8a3021, warm orange #ff8d39 seams with very sparse pale hot spots. No smoke, sparks, flames or atmosphere. Glow is only thin emissive material lines with no external bloom."
+      },
+      "review": {
+        "inspected": true,
+        "notes": "Inspection visuelle : croûte basaltique refroidissante et veines de magma orange, sans fumée ni volcan isolé. La lueur est dans la couleur ; l'émission indépendante est une interprétation du renderer.",
+        "exactSeamlessCertified": false
+      },
+      "sha256": "92d05a38388d5fcca9009b35a91b59fd855b6a82fb1ddbe23ce32a838ec64467",
+      "bytes": 3915588,
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 3,
+      "hasAlpha": false,
+      "fullyOpaque": true,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "surface-brine",
+      "kind": "brine",
+      "role": "intercontinental-surface-material",
+      "path": "public/game/planets/v101/materials/surface-brine.png",
+      "sourcePath": "/workspace/scratch/b536ea8e89fc/generated_images/exec-823e777b-600f-49d2-b3cc-9cd518ec49b8.png",
+      "sourcePreserved": true,
+      "generation": {
+        "tool": "image_gen",
+        "mode": "built-in",
+        "transparent_background": false,
+        "prompt": "Use case: photorealistic-natural. Asset type: independent production albedo material for the surface between continent masks on original Yautja clan-war planets. One square 1024x1024 full-bleed opaque raster, strict orbital satellite nadir orthographic view, no perspective. Rich realistic fine surface detail suitable for a high-end space strategy game. Diffuse even neutral lighting, no baked global directional light, no shadow gradient. Seamless tile requested on all four edges; uniform material scale and distributed detail, no focal point. Fill every pixel. No globe, no planet sphere, no space, no stars, no horizon, no coastline, no landmass, no island, no buildings, no object, no border, no text, no labels, no vignette, no atmospheric halo, no cloud, no global haze. Subject: continuous mineral brine fluid material, dusty rose-gray saline solution with subtle pearly pink currents, fine salt microcrystallization veins and pale delicate mineral films. Very faint cellular eddies and ripples, top-down high satellite scale; no coast, no salt land plateau, no large empty areas. Palette muted #a65883, cool dark rose-gray #4d285f, pale pink #ef9cc1 and subtle #ffe1ef mineral flecks. Flat neutral lighting, realistic rich fine structure rather than glossy marble."
+      },
+      "review": {
+        "inspected": true,
+        "notes": "Inspection visuelle : saumure rose avec courants et dépôts minéraux fins, surface continue sans littoral. La matière peut évoquer une pellicule saline, selon son échelle d'échantillonnage.",
+        "exactSeamlessCertified": false
+      },
+      "sha256": "99f56cc4b3c50a77d64be2e14250919b4974a0f87acdd5f192e6d5922ab507f6",
+      "bytes": 3659681,
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 3,
+      "hasAlpha": false,
+      "fullyOpaque": true,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "surface-radioactive",
+      "kind": "radioactive",
+      "role": "intercontinental-surface-material",
+      "path": "public/game/planets/v101/materials/surface-radioactive.png",
+      "sourcePath": "/workspace/scratch/b536ea8e89fc/generated_images/exec-80504336-6bec-4bd2-88ec-86f33db3cc7f.png",
+      "sourcePreserved": true,
+      "generation": {
+        "tool": "image_gen",
+        "mode": "built-in",
+        "transparent_background": false,
+        "prompt": "Use case: photorealistic-natural. Asset type: independent production albedo material for the surface between continent masks on original Yautja clan-war planets. One square 1024x1024 full-bleed opaque raster, strict orbital satellite nadir orthographic view, no perspective. Rich realistic fine surface detail suitable for a high-end space strategy game. Diffuse even neutral lighting, no baked global directional light, no shadow gradient. Seamless tile requested on all four edges; uniform material scale and distributed detail, no focal point. Fill every pixel. No globe, no planet sphere, no space, no stars, no horizon, no coastline, no landmass, no island, no buildings, no object, no border, no text, no labels, no vignette, no atmospheric halo, no cloud, no global haze. Subject: imaginary dense radioactive mineral fluid material seen straight overhead at orbital scale: dark desaturated teal green liquid, many delicate neon chartreuse filaments tracing turbulent currents, clusters of very fine luminous sediment grains and branching fluorescence. Evenly distributed fine pattern, no large body or central basin, no solid land. Palette dark #132d30, mid #467b2b, slim bright veins #a7ff38, sparse glints #e8ff9d. These are fictional game-world fluids, no equipment, signs, nuclear symbols or text. Emission in material only, no global bloom, atmospheric glow or overexposure."
+      },
+      "review": {
+        "inspected": true,
+        "notes": "Inspection visuelle : fluide sombre et filaments verts fluorescents, aucun équipement ou symbole nucléaire. Représentation artistique d'un milieu fictif, aucune mesure physique de radioactivité.",
+        "exactSeamlessCertified": false
+      },
+      "sha256": "5afc149a764783490cb33a754997488c5f7732e27cdba98ebcbdde47bd944657",
+      "bytes": 3575196,
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 3,
+      "hasAlpha": false,
+      "fullyOpaque": true,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "surface-crystal",
+      "kind": "crystal",
+      "role": "intercontinental-surface-material",
+      "path": "public/game/planets/v101/materials/surface-crystal.png",
+      "sourcePath": "/workspace/scratch/b536ea8e89fc/generated_images/exec-633d7a23-ba9d-47d4-8753-9d1999b373e1.png",
+      "sourcePreserved": true,
+      "generation": {
+        "tool": "image_gen",
+        "mode": "built-in",
+        "transparent_background": false,
+        "prompt": "Use case: photorealistic-natural. Asset type: independent production albedo material for the surface between continent masks on original Yautja clan-war planets. One square 1024x1024 full-bleed opaque raster, strict orbital satellite nadir orthographic view, no perspective. Rich realistic fine surface detail suitable for a high-end space strategy game. Diffuse even neutral lighting, no baked global directional light, no shadow gradient. Seamless tile requested on all four edges; uniform material scale and distributed detail, no focal point. Fill every pixel. No globe, no planet sphere, no space, no stars, no horizon, no coastline, no landmass, no island, no buildings, no object, no border, no text, no labels, no vignette, no atmospheric halo, no cloud, no global haze. Subject: a continuous dense ocean-like mineral field of many tiny tightly packed amethyst crystals and interlocking facets, narrow prismatic violet shards across the entire field, arranged organically in varied clusters without focal crystals, glinting fractal granules and darker violet gaps. Extreme overhead satellite-scale detail. Palette #6e438d, deep #261d50, mid violet #be90ec, sparse pale facets #ecd6ff. No single giant crystal, no central geode, no perspective, no luminous bloom. Flat albedo mineral variations, moderate contrast."
+      },
+      "review": {
+        "inspected": true,
+        "notes": "Inspection visuelle : prismes violets serrés, nombreuses facettes en vue du dessus. La matière suggère le minéral ; sa densité doit être réglée à l'échelle du globe.",
+        "exactSeamlessCertified": false
+      },
+      "sha256": "a6b6e4cb0e8ff17414a000288f1161e6b1464bb617b758a59688f12820e43605",
+      "bytes": 4250373,
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 3,
+      "hasAlpha": false,
+      "fullyOpaque": true,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "surface-spores",
+      "kind": "spores",
+      "role": "intercontinental-surface-material",
+      "path": "public/game/planets/v101/materials/surface-spores.png",
+      "sourcePath": "/workspace/scratch/b536ea8e89fc/generated_images/exec-3bdaea9c-20fc-49e4-b0a1-ea383793aa0e.png",
+      "sourcePreserved": true,
+      "generation": {
+        "tool": "image_gen",
+        "mode": "built-in",
+        "transparent_background": false,
+        "prompt": "Use case: photorealistic-natural. Asset type: independent production albedo material for the surface between continent masks on original Yautja clan-war planets. One square 1024x1024 full-bleed opaque raster, strict orbital satellite nadir orthographic view, no perspective. Rich realistic fine surface detail suitable for a high-end space strategy game. Diffuse even neutral lighting, no baked global directional light, no shadow gradient. Seamless tile requested on all four edges; uniform material scale and distributed detail, no focal point. Fill every pixel. No globe, no planet sphere, no space, no stars, no horizon, no coastline, no landmass, no island, no buildings, no object, no border, no text, no labels, no vignette, no atmospheric halo, no cloud, no global haze. Subject: dense opaque sheets of floating alien spores forming a fluid-like carpet, fine drifting bioluminescent particulate granules and broad softly marbled organic currents, thousands of tiny olive spore flecks suspended in slate blue gray medium. Satellite nadir close texture, even composition, biological particulate texture visibly distinct from water or bubbles. Palette blue gray #4e6176, dark #222847, olive #b9d788, sparse yellow-green #e2ffbc grains. No mushrooms, land, horizon, plant silhouettes, clouds or empty space. Keep individual luminous spores tiny and intricate, no bokeh photographic blur."
+      },
+      "review": {
+        "inspected": true,
+        "notes": "Inspection visuelle : granules et filaments organiques olive sur milieu bleu-gris opaque, sans champignon isolé ni ciel.",
+        "exactSeamlessCertified": false
+      },
+      "sha256": "903be1ce74431f8ebb1cf2a40b496aaa0891cff279425e92b254084471aa6852",
+      "bytes": 3767392,
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 3,
+      "hasAlpha": false,
+      "fullyOpaque": true,
+      "nativeCopyVerified": true
+    },
+    {
+      "id": "surface-mist",
+      "kind": "mist",
+      "role": "intercontinental-surface-material",
+      "path": "public/game/planets/v101/materials/surface-mist.png",
+      "sourcePath": "/workspace/scratch/b536ea8e89fc/generated_images/exec-61d87825-6fd8-446d-b728-6cb87333728b.png",
+      "sourcePreserved": true,
+      "generation": {
+        "tool": "image_gen",
+        "mode": "built-in",
+        "transparent_background": false,
+        "prompt": "Use case: photorealistic-natural. Asset type: independent production albedo material for the surface between continent masks on original Yautja clan-war planets. One square 1024x1024 full-bleed opaque raster, strict orbital satellite nadir orthographic view, no perspective. Rich realistic fine surface detail suitable for a high-end space strategy game. Diffuse even neutral lighting, no baked global directional light, no shadow gradient. Seamless tile requested on all four edges; uniform material scale and distributed detail, no focal point. Fill every pixel. No globe, no planet sphere, no space, no stars, no horizon, no coastline, no landmass, no island, no buildings, no object, no border, no text, no labels, no vignette, no atmospheric halo, no cloud, no global haze. Exception to no-cloud/no-haze rule: the entire material IS an opaque cyan-gray bank of ground-level mist viewed strictly from above, broad smoothly swirling fluid fog valleys with intricate delicate fibrous wisps, dense pale gray opaque medium filling every pixel. No ground shows through, no sky or sunset. The fog is a surface substrate between existing continent masks and is distinct from separate transparent cloud overlays. Palette muted slate #548398, deep blue gray #26365e, pale cyan #a3dfe6 and cool white #e5ffff. Rich fine smooth vapor details, uniformly diffuse lighting with no overhead light hotspot. No central storm eye or focal point, no grainy glitter."
+      },
+      "review": {
+        "inspected": true,
+        "notes": "Inspection visuelle : brume cyan-gris dense et opaque, volutes continues, aucun sol, horizon ou halo. C'est le substrat de surface, distinct des nuages transparents séparés.",
+        "exactSeamlessCertified": false
+      },
+      "sha256": "3b77ba94ec4da96e77afeb6792068534a9916f3c17c40897278006822594b2fe",
+      "bytes": 2507862,
+      "width": 1254,
+      "height": 1254,
+      "format": "png",
+      "channels": 3,
+      "hasAlpha": false,
+      "fullyOpaque": true,
+      "nativeCopyVerified": true
+    }
+  ],
+  "totalBytes": 35746039
+}

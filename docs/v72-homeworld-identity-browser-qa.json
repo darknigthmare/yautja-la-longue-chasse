@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "contentVersion": "V73",
+  "url": "http://127.0.0.1:4192",
+  "buildCompletedAt": "2026-10-02T03:48:39.1986428Z",
+  "browserCompletedAt": "2026-10-02T03:52:48.6673522Z",
+  "checks": 15,
+  "captures": 24,
+  "verified": {
+    "facadesVisitedByPhysicalKeyboardMovement": 6,
+    "publicWingZonesVisitedByPhysicalKeyboardMovement": 18,
+    "nativeFurnitureObjectsInVisitedWings": 30,
+    "nativeUnbloodedWalkDrawingsPerFacing": 2,
+    "nativeLeftAndRightSheetsWithoutDoubleMirror": true,
+    "activeChiefLabelAboveActualPaintedHead": true,
+    "chiefPaintedHeadTopScreen": 340.25164794921875,
+    "chiefLabelBottomScreen": 330.49908447265625,
+    "mobileViewport": {"width": 393, "height": 852},
+    "largeInteriorCameraKeepsPlayableActorOnScreen": true,
+    "pauseFreezesPositionNativeCycleAndSave": true,
+    "furnitureCodexReadOnlyWithoutSaveMutation": true,
+    "preservedIdentityPngHttpShaChecks": 3,
+    "javascriptErrors": 0,
+    "httpFailures": 0
+  },
+  "evidence": {
+    "fullReport": "work-local/v72/qa/identity-final-local/report.json",
+    "street": "work-local/v72/qa/identity-final-local/street-multiple-civic-facades-and-clothed-citizens.png",
+    "chief": "work-local/v72/qa/identity-final-local/chief-dedicated-mantle-and-public-audience-wing.png",
+    "mobile": "work-local/v72/qa/identity-final-local/citadel-mobile-follow-camera-public-wing.png",
+    "nativeWalk": "work-local/v72/qa/identity-final-local/unblooded-native-left-walk.png"
+  },
+  "fixture": "Prior nursery, youth and First Tracks are model-played prerequisites loaded only into a new isolated browser context. The six physical building visits and every public wing traversal then use actual keyboard input without teleportation or collision exemptions.",
+  "limits": [
+    "This is local browser verification, not proof of production deployment.",
+    "The six principal public wings are refactored; the other 37 interiors retain earlier plans.",
+    "Private apartments and additional chief-citadel floors are not simulated.",
+    "Civilian residents use dedicated clothed portraits on their routes, not full civilian movement sheets.",
+    "The playable Unblooded uses two real native walk drawings per facing, not eight-direction animation sheets.",
+    "The local chief, architecture and civilian costumes are original lore-compatible adaptations rather than asserted canonical one-to-one designs."
+  ]
+}

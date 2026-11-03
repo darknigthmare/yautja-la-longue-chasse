@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "yautja-v613-public-record-final-check-1",
+  "passed": true,
+  "scopeFR": "Textes, JSON et JSON gzip du dossier V6.13. Les valeurs détectées ne sont pas recopiées dans le rapport.",
+  "checkedFiles": [
+    {
+      "path": "docs/suivi-production/v613/README.md",
+      "sha256": "3609ad88e4068d28c36f61d1f1446b05d2c1558f28ffdaaa7f8cebde1f68e727"
+    },
+    {
+      "path": "docs/suivi-production/v613/data/current-counts.json",
+      "sha256": "f95af288a199dd0a1642eeeb0bc02644ae2df5280c13fcc53f5da3711e28d160"
+    },
+    {
+      "path": "docs/suivi-production/v613/data/current-master.json.gz",
+      "sha256": "26723ff875d97548d62440b8062aae5e395a9048c3e9d4b1618fbcf87ae85513"
+    },
+    {
+      "path": "docs/suivi-production/v613/data/default-selections-before.json",
+      "sha256": "a1069f595f84def55ec2c7d37b96d5418144c6b6d161fc212d97a49996ee8ccd"
+    },
+    {
+      "path": "docs/suivi-production/v613/data/main-reconciliation.json",
+      "sha256": "8d2b45b478ae8620adbfb1609cdf7643637bc1db054ad58f998a6c4839725c6f"
+    },
+    {
+      "path": "docs/suivi-production/v613/data/production-manifest.json",
+      "sha256": "5332c1aab687a28868a56b196b4616b54c8d84e827da3291a0f5e04d4fc35bde"
+    },
+    {
+      "path": "docs/suivi-production/v613/gallery-preview/browser-verification.json",
+      "sha256": "c91f10290583e65b19b38a5a3d8e0cc108e792461a3bfb3e6e97ea3b3c4e3aca"
+    },
+    {
+      "path": "docs/suivi-production/v613/index.html",
+      "sha256": "6af5f83f3f5e0552284c61df043d88d77df3f6914a5dd33de8188ece49bbcfb7"
+    },
+    {
+      "path": "docs/suivi-production/v613/recovery/native-checkpoint.json",
+      "sha256": "be12a3a49b0ed199a0d66887d6774d163828a4df6f9ad729d0b435fd6ee25f6d"
+    },
+    {
+      "path": "docs/suivi-production/v613/recovery/verified-native-files.json",
+      "sha256": "51e4ee6e56b46a4af1398569d43e825b241e8d6124df3ad096ecb19734b0909e"
+    },
+    {
+      "path": "docs/suivi-production/v613/references/production-plan-v613.json",
+      "sha256": "d0c8f48033044df722f742e5767e18fef7dc0ef2a6a2b90d53df8a18eccdfdad"
+    },
+    {
+      "path": "docs/suivi-production/v613/validation/master-changes.json",
+      "sha256": "74a79985dc89c73d32e8f2467a1615c7e884cc62c03e808af71ffc8824860419"
+    },
+    {
+      "path": "docs/suivi-production/v613/validation/public-record-check.json",
+      "sha256": "32dcb37f8192ec1c6cddaa8a01022494004c5c48b5a390c8835fa56fa0add461"
+    },
+    {
+      "path": "docs/suivi-production/v613/validation/runtime-validation.json",
+      "sha256": "deaf740d550b388678b324299d8be7d2b05772c56621ee5aaca0e02f4b6ee590"
+    },
+    {
+      "path": "docs/suivi-production/v613/validation.json",
+      "sha256": "1e8438a93cea6244668e7297b519cd8d2742fa943693436b8f3eac160cba085f"
+    },
+    {
+      "path": "docs/suivi-production/v613/workbook-preview/checkpoint-input-validation.json",
+      "sha256": "30be89347ff74cf3d948e3bfc40c69abf810682dc320abe5fcae350102608539"
+    },
+    {
+      "path": "docs/suivi-production/v613/workbook-preview/openxml-verification.json",
+      "sha256": "937850c6155321a4d4b676a654e27f5af69c784d1d1e7761902d17a5370b639c"
+    },
+    {
+      "path": "docs/suivi-production/v613/workbook-preview/recalculation-check.json",
+      "sha256": "69e4db0b173c7a7228a63658a7bc85f11b7d5b92c824b9672e3b066c9a60a46f"
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "release": "V62",
+  "checkedAt": "2026-09-30T21:01:55.315Z",
+  "status": "PASS-with-declared-adaptation-limits",
+  "automatedCaptureCount": 101,
+  "allAutomatedCapturesManuallyReviewed": false,
+  "floorCorrection": {
+    "stages": [
+      126,
+      130
+    ],
+    "contactStripUnchanged": true,
+    "fasciaHeightBefore": 150,
+    "fasciaHeightAfter": 180,
+    "nativePngsEdited": 0,
+    "observation": "The actual wide camera exposed a 13px untiled lower strip. Raising the separate authored fascia fixes the union of contact strip and front panel. Native tapered tile joints remain the intended panel geometry, not a parallax loading void."
+  },
+  "stages": [
+    {
+      "stageId": "arena-126-avpr-2007-hospital-roof",
+      "compositionDigest": "a9e1af2f9f43e4bed8163a53a15efc58f09e22e50e1f27c1752e0e102b06a832",
+      "acceptedFor": "original-lateral-exhibition",
+      "observations": [
+        "Anonymous adults travel across the far-right service passage, scaled deliberately small for distance and clipped away from the foreground duel. Their native six-pose run also changes world position; they are hidden between occurrences.",
+        "Helicopter sits in open sky, separated from the architecture. Steam is mounted on the central rooftop HVAC housing. No named survivors or exact film aircraft claimed.",
+        "A first generated steam sheet crossed cell borders and was rejected without deleting its source. The accepted replacement has clean transparent margins.",
+        "Distant evacuation remains subtle in the rainy background and can be naturally occluded by foreground fighters. The public movement recipe separates fighters for visual inspection."
+      ],
+      "captures": [
+        {
+          "name": "wide",
+          "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\wide.png",
+          "sha256": "5f7938eee503c7e5147f5fb686c10552d0195127ad59f5c7740d35ca793795d6"
+        },
+        {
+          "name": "actual-game-camera",
+          "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\actual-game-camera.png",
+          "sha256": "1f31954ba35408a908e2b4b1f1ed0d42971e9d3962478e19b30966e5f66ea50d"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-130-avp-classic-2000-space-station",
+      "compositionDigest": "480d66142d5c87a36e149dd1bf65384ee386fb8327c113113d713811392ca5f2",
+      "acceptedFor": "original-lateral-exhibition",
+      "observations": [
+        "Anonymous marine crosses a small distant catwalk with a bounded clipping window; visible feet follow the catwalk plane, not the foreground fighting lane.",
+        "Door module is aligned to the right service balcony; the warning module is mounted beside it. These are original mechanisms, not a claimed exact recreation of a specific Classic 2000 level."
+      ],
+      "captures": [
+        {
+          "name": "wide",
+          "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\wide.png",
+          "sha256": "df47c3bd4f4482aaa8f351e5763e7ec44de825f286fb920afdd0c61ef95a8f5b"
+        },
+        {
+          "name": "actual-game-camera",
+          "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\actual-game-camera.png",
+          "sha256": "7e36bca3a4ec5ccb5101cbd8a1f2e477ec716049f9606a1029e473d60162fd7e"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-187-golgotha-uscm-airlock",
+      "compositionDigest": "01533662da65c21601b02e6fd0104a4892313650ff462c7cd7838c7a80b77798",
+      "acceptedFor": "original-lateral-exhibition",
+      "observations": [
+        "New opaque P0 establishes a closed steel USCM installation instead of stone waterfalls. Two independent framed observation modules stand at the distant raised platform; the sensor mounts on the central wall plate.",
+        "The native alpha around the modules is transparent, not black rectangles. Dark interiors are intentional opaque glass/recess artwork.",
+        "Anonymous protected sentries and generic Xenomorph are original six-pose adaptations. Exact Jaguar-era models, named Predator and route remain open.",
+        "P1–P5 are five explicitly declared reused modular industrial planes. They do not count as new paintings or as six new native planes."
+      ],
+      "captures": [
+        {
+          "name": "wide",
+          "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\wide.png",
+          "sha256": "58f2c150c20904920d928bcf500a608d23f36d1a34d2c588b57d2d66c9bc743b"
+        },
+        {
+          "name": "actual-game-camera",
+          "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\actual-game-camera.png",
+          "sha256": "dcc82ca7e923b599538c84155432c1ee1f6d60f3a10a4b9d46128b110ad144a7"
+        },
+        {
+          "name": "right-corner",
+          "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\right-corner.png",
+          "sha256": "7d6a31910093e87f891d60db3a25bfb0e79e41f1c1ceb2e735da947d27fac4fd"
+        }
+      ]
+    }
+  ],
+  "applicationCaptures": [
+    {
+      "file": "work-local\\v62\\qa\\stages\\application-final\\arena-126-avpr-2007-hospital-roof-event-0.png",
+      "sha256": "0af72e3b7ef6284b6e2ee6fca6369826c8d421f1f787d34f83a532b69cd698d8"
+    },
+    {
+      "file": "work-local\\v62\\qa\\stages\\application-final\\arena-126-avpr-2007-hospital-roof-event-2.png",
+      "sha256": "2bae42af12a3b690aad7771dd8e3685f4a77152ad4ae09736c2d62130db3596d"
+    },
+    {
+      "file": "work-local\\v62\\qa\\stages\\application-final\\arena-126-avpr-2007-hospital-roof-fighters-apart.png",
+      "sha256": "89e8e8066586edbedbb59d5511b798f60ebe667d07736247c58bf50de4e8a9cd"
+    },
+    {
+      "file": "work-local\\v62\\qa\\stages\\application-final\\arena-130-avp-classic-2000-space-station-event-1.png",
+      "sha256": "27e50ee174e7011700608fd27967e5994554cb7ffa1792ac48608f1c4a71b418"
+    },
+    {
+      "file": "work-local\\v62\\qa\\stages\\application-final\\arena-187-golgotha-uscm-airlock-event-1.png",
+      "sha256": "7f16e3fc5df849b8458e664fdb821fa7148a281af05cebf5de5df660440687d5"
+    },
+    {
+      "file": "work-local\\v62\\qa\\stages\\application-final\\reduced-motion.png",
+      "sha256": "ed9190121fde8e7a68a6a13ca817ac7bb884a4a18b79d22cdc9d41e74c4bd1f3"
+    },
+    {
+      "file": "work-local\\v62\\qa\\stages\\application-final\\mobile-landscape.png",
+      "sha256": "9734fa75daa0c7da6b096d7858d2e1d466787935cf90285c520d5f6f3bc88010"
+    },
+    {
+      "file": "work-local\\v62\\qa\\stages\\application-final\\mobile-portrait.png",
+      "sha256": "1e89d671a24928cb8823e354fdaba180d3b9daeb22143a0473f2d3167e7378ac"
+    },
+    {
+      "file": "work-local\\v62\\qa\\stages\\application-final\\native-png-retry-restored.png",
+      "sha256": "9e46b3df319c28aeed0230e3a906ccb0e5e68f6fa14716b6d882c1ccf42bc138"
+    }
+  ],
+  "limitations": [
+    "No stage is certified 1:1 to original screen geometry.",
+    "Anonymous exhibition ambience does not complete chapter routes or conditional cast continuity.",
+    "Mobile portrait keeps a wide canvas with letterboxing and separate touch controls; these black margins are outside the rendered stage."
+  ]
+}

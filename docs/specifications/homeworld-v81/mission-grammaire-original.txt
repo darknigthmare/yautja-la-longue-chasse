@@ -1,0 +1,2945 @@
+# MISSION CODEX — HOMEWORLD V81
+# REFONTE COMPLÈTE DE LA GRAMMAIRE DE LEVEL DESIGN,
+# PLACEMENT DES BÂTIMENTS, PROPS, MOBILIER ET ESPACES PUBLICS
+#
+# Projet : Yautja — La Longue Chasse
+#
+# IMPORTANT :
+# Ceci complète la refonte macro du Homeworld précédemment demandée.
+# Ne remplace PAS les régions, le Conseil, le palais, le spatioport,
+# les bas-quartiers, les transitions ou la verticalité précédemment définis.
+#
+# Cette passe traite le problème MICRO + MÉSO :
+# comment une vraie ville est construite, circulée, meublée et habitée.
+
+======================================================================
+0 — COMMENCER PAR LA VERSION RÉELLE DU PROJET
+======================================================================
+
+Travaille directement sur la dernière version de main.
+
+La base actuelle inspectée est la V80.
+
+Commence obligatoirement par relire au minimum :
+
+app/game/systems/homeworldCivicDecorV80.ts
+app/game/systems/homeworldCivicWorldV80.ts
+app/game/systems/homeworldCivicNeighborhoodsV80.ts
+app/game/systems/homeworldCivicArchitectureV80.ts
+app/game/systems/homeworldNaturalPlacementsV80.ts
+app/game/systems/homeworldPortShouldersV80.ts
+
+app/game/systems/homeworldStreetModulesV78.ts
+app/game/systems/homeworldUrbanLayoutV78.ts
+app/game/systems/homeworldUrbanNavigationV78.ts
+app/game/systems/homeworldUrbanFacadesV78.ts
+
+app/game/systems/homeworldFrontagePlacementsV76.ts
+app/game/systems/homeworldForecourtsV76.ts
+app/game/systems/homeworldBuildingPlacementsV76.ts
+
+app/game/systems/homeworldWorldV77.ts
+app/game/systems/homeworldCity.ts
+app/game/HomeworldWorldSceneV77.tsx
+app/game/HomeworldHub.tsx
+
+app/game/data/homeworldNativeDecorV80.json
+
+docs/homeworld-level-design-v80.md
+docs/homeworld-city-codex-v78.md
+docs/homeworld-urban-v78-audit.md
+
+ainsi que tous les tests Homeworld actuels.
+
+Ne te contente pas de lire la documentation :
+inspecte réellement les tableaux de coordonnées,
+les formules de placement,
+les footprints,
+les sprites utilisés
+et les placements finaux rendus.
+
+======================================================================
+1 — PROBLÈME STRUCTUREL ACTUEL À CORRIGER
+======================================================================
+
+Le problème actuel n'est PAS seulement :
+
+"il manque quelques props".
+
+Le système produit lui-même des compositions artificielles.
+
+Exemples actuels à supprimer/remplacer conceptuellement :
+
+1.
+Les cours du port sont distribuées régulièrement sur une ligne :
+x = 3500, 4140, 4780, 5420, 6060, 6700, 7340
+y = 5220.
+
+Cela produit immédiatement une impression de grille informatique.
+
+2.
+Une cour civique place actuellement ses objets suivant essentiellement :
+
+x = centre ±220
+
+et :
+
+y = centre +
+[-210,+210,-330,+330,-450,+450,-570,+570]
+
+Cela crée des colonnes et des alignements artificiels.
+
+3.
+Les devantures utilisent les mêmes slots autour des bâtiments :
+
+u basé sur quelques distances fixes,
+v basé sur :
+
+190
+330
+470
+100
+
+avec miroir gauche/droite.
+
+Cela signifie que des bâtiments différents reçoivent la même logique
+de composition.
+
+4.
+Un même type d'usage reçoit souvent les mêmes 4 familles de props.
+
+5.
+Une collision correcte ne signifie PAS un placement crédible.
+
+Deux bancs peuvent ne pas se chevaucher physiquement et néanmoins :
+- être collés ;
+- être inutilisables ;
+- regarder un mur ;
+- bloquer leur zone d'utilisation ;
+- donner une composition ridicule.
+
+6.
+113 objets placés ne signifient pas 113 objets différents.
+
+La V80 réutilise énormément un petit catalogue de sources.
+
+Il faut désormais distinguer :
+
+INSTANCE COUNT
+
+de
+
+ASSET VARIETY
+
+de
+
+COMPOSITION VARIETY.
+
+7.
+Les bâtiments héritent encore d'une topologie ancienne beaucoup plus petite.
+
+Le Homeworld agrandi ne doit pas simplement étirer cette ancienne grille.
+
+======================================================================
+2 — OBJECTIF
+======================================================================
+
+Créer un véritable système de :
+
+HOMEWORLD SPATIAL GRAMMAR
+
+qui contrôle :
+
+- bâtiments ;
+- rues ;
+- places ;
+- arrière-cours ;
+- parvis ;
+- passages ;
+- mobilier ;
+- barrières ;
+- végétation ;
+- rochers ;
+- décor ;
+- points d'intérêt ;
+- circulation joueur ;
+- circulation PNJ ;
+- utilisation réelle du mobilier ;
+- visibilité ;
+- orientation ;
+- densité ;
+- répétition ;
+- verticalité ;
+- occlusion ;
+- fonction des quartiers.
+
+Chaque objet doit avoir une RAISON d'être placé là.
+
+INTERDICTION de raisonner :
+
+"Il reste de l'espace, donc je mets un prop."
+
+Raisonner :
+
+"Cet espace est un quai de fret.
+Il nécessite une zone de chargement.
+Le chariot appartient à cette zone.
+Sa face fonctionnelle regarde le quai.
+Son espace de manipulation reste libre.
+Les caisses sont regroupées derrière lui.
+Aucun banc n'est placé au milieu du chargement."
+
+======================================================================
+3 — LE PRINCIPE POKÉMON BLACK / WHITE À RETENIR
+======================================================================
+
+Ne copie PAS Pokémon visuellement.
+
+Utilise uniquement sa philosophie de lecture urbaine.
+
+Une grande ville peut être composée :
+
+- d'axes principaux très lisibles ;
+- de rues possédant chacune une identité ;
+- de rues plus petites ;
+- de places ;
+- de quais ;
+- de passages secondaires ;
+- de bâtiments monumentaux ;
+- de bâtiments ordinaires ;
+- de silhouettes urbaines dépassant la zone jouable.
+
+La ville ne doit pas devenir :
+
+une grande grille carrée
++
+des bâtiments posés tous les 500 pixels
++
+un prop tous les 200 pixels.
+
+Chaque rue doit avoir une composition propre.
+
+======================================================================
+4 — NE PLUS UTILISER UN SIMPLE "PROP PLACER"
+======================================================================
+
+Créer un système central de règles.
+
+Suggestion :
+
+homeworldPlacementGrammarV81.ts
+homeworldPlacementRulesV81.ts
+homeworldPlacementSolverV81.ts
+homeworldUsageEnvelopesV81.ts
+homeworldUrbanBlocksV81.ts
+homeworldDistrictGrammarV81.ts
+homeworldAssetRolesV81.ts
+homeworldCompositionAuditV81.ts
+
+Et :
+
+docs/homeworld-placement-codex-v81.md
+docs/homeworld-asset-gap-v81.md
+docs/homeworld-composition-audit-v81.md
+
+Chaque objet doit posséder des métadonnées.
+
+Exemple conceptuel :
+
+{
+    assetId,
+    family,
+    function,
+    physicalFootprint,
+    visualFootprint,
+    interactionEnvelope,
+    serviceEnvelope,
+    observationEnvelope,
+
+    allowedDistricts,
+    forbiddenDistricts,
+
+    allowedSurfaces,
+    allowedEdges,
+
+    orientationPolicy,
+    facing,
+
+    requiresAdjacentTo,
+    prefersAdjacentTo,
+    forbidsAdjacentTo,
+
+    minObjectDistance,
+    minRouteDistance,
+    minDoorDistance,
+    minEdgeDistance,
+
+    clusterType,
+    clusterMin,
+    clusterMax,
+
+    maxSameAssetVisible,
+    maxSameFamilyVisible,
+
+    landmarkImportance,
+
+    solid,
+    interactive,
+
+    placementPriority
+}
+
+======================================================================
+5 — TROIS ENVELOPPES PAR OBJET
+======================================================================
+
+Ne plus contrôler seulement son collider.
+
+Chaque objet possède :
+
+A. PHYSICAL FOOTPRINT
+volume réellement occupé.
+
+B. USAGE ENVELOPE
+espace nécessaire pour utiliser l'objet.
+
+C. VISUAL / SOCIAL ENVELOPE
+espace nécessaire pour que l'objet paraisse correctement placé.
+
+Exemple :
+
+un banc peut physiquement faire :
+
+150 × 40
+
+mais il nécessite aussi :
+
+une zone libre devant lui,
+une zone d'approche,
+un minimum d'espace à ses extrémités.
+
+Deux bancs ne doivent donc jamais être considérés compatibles simplement
+parce que leurs collisions ne se touchent pas.
+
+======================================================================
+6 — ÉCHELLE DE RÉFÉRENCE DU PROJET
+======================================================================
+
+Conserver comme base la convention actuelle :
+
+Yautja adulte ≈ 100 unités.
+
+Corps physique actuel ≈ 48 × 28.
+
+Ne change pas arbitrairement ces valeurs.
+
+Créer les distances depuis cette échelle.
+
+Définir :
+
+ACTOR_WIDTH = 48
+ACTOR_DEPTH = 28
+
+Puis dériver les dégagements.
+
+MIN_PERSON_PASSAGE :
+environ 96 unités.
+
+MIN_COMFORT_PASSAGE :
+120 à 144.
+
+MIN_TWO_WAY_PASSAGE :
+144 à 176.
+
+MAIN_STREET :
+ne jamais descendre sous les 160 actuels.
+
+Nouvelle cible quand l'espace le permet :
+192 à 240.
+
+PROCESSIONAL_ROUTE :
+240 à 360 suivant contexte.
+
+Ces dimensions ne doivent pas devenir une nouvelle grille fixe.
+
+Ce sont des MINIMA de sécurité.
+
+======================================================================
+7 — RÈGLES ABSOLUES DE PASSAGE
+======================================================================
+
+Aucun prop ne peut réduire une route principale sous son minimum.
+
+Aucun prop ne peut empiéter sur :
+- une porte ;
+- une rampe ;
+- un escalier ;
+- un ascenseur ;
+- une sortie de région ;
+- une arrivée de transition ;
+- une trajectoire PNJ ;
+- un rayon de virage nécessaire ;
+- une interaction.
+
+Pour chaque porte :
+
+garder devant elle une zone de dégagement réelle.
+
+Largeur minimale conseillée :
+
+max(
+    largeur porte + 48,
+    128
+)
+
+Profondeur minimale :
+
+96 à 128.
+
+Pour une porte monumentale :
+beaucoup plus.
+
+Aucun banc,
+pupitre,
+bac,
+caisse,
+barrière,
+plante,
+PNJ permanent
+ou poteau
+
+dans cette zone.
+
+======================================================================
+8 — DISTANCE DE SÉCURITÉ DES INTERSECTIONS
+======================================================================
+
+À une intersection :
+
+ne pas placer un gros prop juste au coin.
+
+Créer une zone de visibilité.
+
+Les personnages doivent pouvoir :
+
+arriver,
+voir les branches,
+tourner,
+croiser un PNJ.
+
+Petite intersection :
+réserver environ 120 unités autour du point de décision.
+
+Intersection importante :
+160 à 240.
+
+Place monumentale :
+beaucoup plus.
+
+Les lampes ou signaux peuvent occuper la périphérie,
+jamais le cœur du flux.
+
+======================================================================
+9 — LES BÂTIMENTS NE SONT PAS DES PROPS
+======================================================================
+
+Créer un vrai système de LOTS / PARCELLES.
+
+Chaque bâtiment possède :
+
+- une parcelle ;
+- une façade publique ;
+- éventuellement une façade secondaire ;
+- un arrière ;
+- une zone de service ;
+- une entrée ;
+- un recul par rapport à la rue ;
+- des limites ;
+- éventuellement une cour.
+
+Ne place jamais un bâtiment simplement avec :
+
+x/y arbitraire.
+
+======================================================================
+10 — RÈGLES DE PARCELLE
+======================================================================
+
+Chaque bâtiment doit être entièrement supporté.
+
+Pas de bâtiment flottant.
+
+Pas de bâtiment dont 20 % reposent dans le vide.
+
+Pas de bâtiment traversant une route.
+
+Pas de façade principale contre une falaise inaccessible.
+
+Pas de porte ouvrant directement :
+
+dans une paroi,
+dans une barrière,
+dans un vide,
+dans un autre bâtiment,
+dans un prop,
+dans un précipice.
+
+Une habitation doit posséder un accès plausible.
+
+Un atelier doit posséder un accès de travail.
+
+Un hangar doit avoir suffisamment d'espace pour son activité.
+
+======================================================================
+11 — ORIENTATION DES BÂTIMENTS
+======================================================================
+
+Les bâtiments doivent réagir à la rue.
+
+Façade principale :
+
+→ tournée vers rue,
+place,
+parvis,
+cour
+ou autre espace public.
+
+Un bâtiment d'angle peut répondre à deux directions.
+
+Un bâtiment monumental peut volontairement casser l'orientation locale
+pour créer un axe cérémoniel.
+
+Mais cette exception doit être AUTHORED.
+
+Ne pas aligner automatiquement tous les bâtiments sur X.
+
+Ne pas aligner automatiquement tous les bâtiments sur Y.
+
+======================================================================
+12 — IMPORTANT : PAS DE ROTATION CSS ARTIFICIELLE
+======================================================================
+
+Le renderer actuel protège volontairement les sprites contre des rotations
+et miroirs arbitraires.
+
+Conserver ce principe.
+
+Si un bâtiment doit être orienté autrement :
+
+NE PAS prendre son PNG et le tourner en CSS.
+
+Créer/utiliser une variante graphique adaptée :
+
+front-left
+front-right
+diagonal-left
+diagonal-right
+side-left
+side-right
+monumental-front
+etc.
+
+Même principe pour les props.
+
+Si le sprite représente un banc regardant vers la droite,
+ne le pose pas devant une rue nécessitant un banc tourné vers le bas.
+
+Il faut l'asset correspondant.
+
+======================================================================
+13 — ANTI-GRILLE
+======================================================================
+
+Ajouter des règles détectant les alignements artificiels.
+
+Exemples à détecter :
+
+3+ props de nature différente partageant exactement le même X
+sans justification architecturale.
+
+3+ props partageant exactement le même Y
+sans être adossés au même mur/quai.
+
+4 bâtiments espacés à intervalles quasiment identiques.
+
+Plusieurs bâtiments utilisant la même baseline.
+
+Cour contenant des objets selon une parfaite symétrie
+alors qu'elle n'est pas cérémonielle.
+
+IMPORTANT :
+
+La symétrie est AUTORISÉE dans :
+
+- palais ;
+- Conseil ;
+- temple ;
+- grande porte ;
+- mémorial ;
+- axe rituel ;
+- monument.
+
+La symétrie est À ÉVITER dans :
+
+- habitation ;
+- marché ;
+- slums ;
+- ateliers ;
+- port logistique ;
+- petites places ;
+- rues ordinaires.
+
+======================================================================
+14 — VARIATION D'ESPACEMENT
+======================================================================
+
+Ne pas avoir :
+
+objet
+200u
+objet
+200u
+objet
+200u.
+
+Utiliser un rythme urbain.
+
+Exemple :
+
+petit vide
+→ cluster
+→ respiration
+→ bâtiment
+→ ruelle
+→ cluster fonctionnel
+→ grande respiration
+→ landmark.
+
+Les espaces VIDES ont également une fonction.
+
+======================================================================
+15 — RÈGLES DES BANCS
+======================================================================
+
+C'est un problème actuel important.
+
+Un banc doit :
+
+- posséder une orientation logique ;
+- regarder une place, une rue, un panorama ou un autre espace intéressant ;
+- avoir son devant accessible ;
+- permettre physiquement à un personnage de s'en approcher ;
+- conserver ses extrémités suffisamment dégagées.
+
+INTERDIT :
+
+4 bancs horizontaux collés les uns aux autres.
+
+INTERDIT :
+
+banc contre banc dos-à-dos sans intention.
+
+INTERDIT :
+
+banc regardant un mur à 20 unités.
+
+INTERDIT :
+
+banc au milieu d'une route.
+
+INTERDIT :
+
+banc devant une porte.
+
+INTERDIT :
+
+banc dans une aire de chargement.
+
+INTERDIT :
+
+banc devant une forge active.
+
+Pour plusieurs bancs :
+
+configuration possible :
+
+L
+U
+arc
+opposés autour d'un foyer
+dispersés autour d'une place
+adossés à un muret
+petites poches de repos.
+
+Distance entre deux bancs séparés :
+au minimum leur interaction envelope.
+
+Préférer environ 60–160 unités selon configuration.
+
+======================================================================
+16 — TABLES
+======================================================================
+
+Une table doit prévoir :
+
+- espace utilisateur ;
+- circulation ;
+- éventuels sièges ;
+- face de travail.
+
+Une table ne doit jamais être collée à une autre
+si elle n'est pas explicitement une longue table commune.
+
+Les tables d'un marché doivent être liées à un vendeur.
+
+Les tables de forge doivent être dans l'espace de travail.
+
+Les tables de clan peuvent former des ensembles sociaux.
+
+======================================================================
+17 — CAISSES / CARGO
+======================================================================
+
+Les caisses doivent avoir une raison logistique.
+
+Principalement :
+
+- spatioport ;
+- quai ;
+- entrepôt ;
+- atelier ;
+- marché ;
+- maintenance.
+
+Éviter dans :
+
+- palais ;
+- Conseil cérémoniel ;
+- logement noble ;
+- mémorial.
+
+Créer :
+
+caisses seules,
+empilements,
+petit lot,
+lot important.
+
+Mais jamais un damier de caisses.
+
+Préserver devant le lot une zone de manutention.
+
+======================================================================
+18 — RACKS
+======================================================================
+
+Un rack doit être :
+
+près d'un mur,
+près d'un atelier,
+dans un hangar,
+dans une zone de préparation.
+
+Pas posé isolé au milieu d'une place.
+
+Les racks d'armes doivent avoir une fonction correspondante.
+
+Les racks d'entretien ne doivent pas devenir des armureries.
+
+======================================================================
+19 — LAMPES
+======================================================================
+
+Les lampes doivent répondre à :
+
+- entrée ;
+- intersection ;
+- escalier ;
+- rupture de niveau ;
+- bord dangereux ;
+- activité nocturne ;
+- signal de quai.
+
+Ne pas poser une lampe tous les X pixels.
+
+Éviter une répétition métronomique.
+
+======================================================================
+20 — BANNIÈRES
+======================================================================
+
+Utiliser les bannières pour :
+
+- clans ;
+- cérémonies ;
+- bâtiments importants ;
+- entrée de quartier ;
+- grande avenue ;
+- arènes ;
+- Conseil ;
+- palais.
+
+Ne pas mettre deux bannières identiques devant toutes les maisons.
+
+Éviter de transformer chaque façade en copie.
+
+======================================================================
+21 — BACS / PLANTES / MINÉRAUX
+======================================================================
+
+Ils doivent se trouver :
+
+- hors voie principale ;
+- dans une cour ;
+- contre une terrasse ;
+- près d'une habitation ;
+- dans un espace civique adapté.
+
+Jamais directement au centre du passage.
+
+Former de petites compositions naturelles.
+
+Pas :
+
+bac
+bac
+bac
+bac
+
+sur une seule ligne.
+
+======================================================================
+22 — BARRIÈRES PHYSIQUES
+======================================================================
+
+Une barrière doit suivre une limite réelle :
+
+- falaise ;
+- lave ;
+- vide ;
+- enclos ;
+- zone militaire ;
+- zone technique ;
+- bord de terrasse.
+
+Elle doit former un ensemble cohérent.
+
+Créer les pièces :
+
+segment droit court
+segment droit long
+angle intérieur
+angle extérieur
+fin gauche
+fin droite
+poteau
+porte
+grande porte
+segment endommagé
+barrière énergétique
+émetteur énergétique.
+
+INTERDIT :
+
+une barrière qui commence sans support.
+
+INTERDIT :
+
+une barrière se terminant au milieu du vide visuellement.
+
+INTERDIT :
+
+une barrière traversant une entrée.
+
+INTERDIT :
+
+deux barrières qui se chevauchent.
+
+======================================================================
+23 — BARRIÈRES ÉNERGÉTIQUES
+======================================================================
+
+Une barrière énergétique doit avoir :
+
+émetteur gauche
++
+champ
++
+émetteur droit.
+
+Les émetteurs doivent reposer physiquement sur quelque chose.
+
+Ne pas dessiner simplement une ligne lumineuse dans le vide.
+
+======================================================================
+24 — STATUES
+======================================================================
+
+Les gigantesques statues Yautja sont des landmarks.
+
+Elles nécessitent :
+
+- socle ;
+- espace ;
+- perspective ;
+- axe visuel ;
+- dégagement.
+
+Ne pas poser une statue énorme à côté d'un petit banc
+sans composition intermédiaire.
+
+Les statues du passage vers Lava doivent encadrer réellement
+le canyon et la route du skiff.
+
+======================================================================
+25 — PLACES
+======================================================================
+
+Une place n'est PAS :
+
+un rectangle vide rempli de props.
+
+Définir son rôle :
+
+cérémonie
+commerce
+repos
+rassemblement clanique
+déchargement
+entraînement
+consultation.
+
+Puis créer sa composition autour de ce rôle.
+
+Le centre doit parfois rester libre.
+
+Exemple place cérémonielle :
+
+centre vide
++
+landmark
++
+circulation périphérique
++
+bannières
++
+spectateurs sur les bords.
+
+======================================================================
+26 — MARCHÉ
+======================================================================
+
+Créer une vraie grammaire de marché :
+
+axe de circulation
++
+poches marchandes
++
+vendeurs
++
+présentoirs
++
+stock
++
+zones clients.
+
+Ne pas placer les stands face au mur.
+
+Ne pas orienter tous les stands dans le même sens.
+
+Créer :
+L,
+alcôves,
+petites cours,
+façades ouvertes.
+
+======================================================================
+27 — FORGES
+======================================================================
+
+Composition type :
+
+atelier
+→ poste principal
+→ stockage matière
+→ outils
+→ zone chaude
+→ zone de refroidissement
+→ passage de service.
+
+Éviter bancs publics proches des zones dangereuses.
+
+Ajouter infrastructure cohérente :
+
+conduits
+ventilation
+évacuation de chaleur
+conteneurs
+supports
+pièces métalliques
+éclairage industriel.
+
+======================================================================
+28 — HABITATIONS
+======================================================================
+
+Une habitation doit posséder :
+
+entrée
++
+petit seuil
++
+éventuellement espace latéral.
+
+Ne pas donner exactement :
+
+banc gauche
+plante droite
+lampe devant
+
+à toutes les maisons.
+
+Créer plusieurs profils :
+
+minimal
+social
+artisan
+vétéran
+clan
+élite.
+
+======================================================================
+29 — BAS-QUARTIERS
+======================================================================
+
+Ici la densité doit être élevée mais crédible.
+
+Utiliser :
+
+ruelles irrégulières
+passages étroits mais praticables
+niveaux empilés
+ponts
+tuyaux
+structures réparées
+câbles
+échafaudages
+salvage
+petits marchés
+cages
+zones industrielles.
+
+Ne pas créer une grille.
+
+Beaucoup plus d'asymétrie.
+
+Conserver des axes principaux suffisamment larges.
+
+======================================================================
+30 — SPATIOPORT
+======================================================================
+
+Le port doit être organisé suivant sa fonction.
+
+Créer plusieurs sous-espaces :
+
+arrivée
+départ
+embarquement
+maintenance
+stockage
+chargement
+contrôle
+circulation piétonne
+circulation véhicule/skiff.
+
+Les sept cours actuelles alignées doivent être totalement repensées.
+
+Ne plus faire :
+
+cour
+640u
+cour
+640u
+cour
+640u.
+
+Créer plutôt :
+
+plateforme majeure
++
+petit quai
++
+zone technique
++
+long espace libre
++
+halte
++
+entrepôt
++
+embranchement
++
+autre plateforme.
+
+======================================================================
+31 — LE PORT DOIT AVOIR UNE HIÉRARCHIE
+======================================================================
+
+Les plus gros vaisseaux nécessitent :
+
+beaucoup de dégagement.
+
+Les petits skiffs peuvent être regroupés.
+
+La circulation piétonne ne traverse pas directement
+une zone de décollage.
+
+Les cargaisons ne bloquent pas les sas.
+
+======================================================================
+32 — VERTICALITÉ
+======================================================================
+
+La verticalité ne doit pas être uniquement graphique.
+
+Chaque quartier peut avoir :
+
+niveau rue
+niveau terrasse
+niveau supérieur
+niveau inférieur.
+
+Créer des connexions logiques :
+
+escalier
+rampe
+ascenseur
+pont
+passerelle
+tunnel.
+
+Chaque connexion doit avoir une destination visible ou compréhensible.
+
+INTERDIT :
+
+escalier vers rien.
+
+INTERDIT :
+
+pont décoratif traversant une rue sans supports.
+
+INTERDIT :
+
+plateforme accessible sans fonction.
+
+======================================================================
+33 — SUPPORTS ARCHITECTURAUX
+======================================================================
+
+Une terrasse suspendue doit avoir :
+
+pilier
+console
+roche
+mur
+structure
+ou technologie antigrav clairement identifiable.
+
+Un bâtiment au-dessus du vide doit sembler soutenu.
+
+======================================================================
+34 — POKÉMON B/W : IDENTITÉ DES RUES
+======================================================================
+
+Chaque rue majeure doit avoir un nom interne et un rôle.
+
+Exemple Homeworld :
+
+Voie des Forges
+Rue des Clans
+Promenade des Prises
+Quai des Chasses
+Montée du Conseil
+Voie du Palais
+Descente des Bas-Quartiers.
+
+Ce ne sont pas obligatoirement des noms affichés au joueur.
+
+Cela sert au level design.
+
+Chaque axe doit posséder :
+
+profil de largeur
+architecture
+densité
+props
+population
+son
+landmarks
+éclairage
+
+qui lui sont propres.
+
+======================================================================
+35 — LANDMARKS
+======================================================================
+
+Chaque quartier majeur doit avoir au moins :
+
+1 landmark principal
+
+et plusieurs landmarks secondaires.
+
+Un landmark doit permettre au joueur de penser :
+
+"je suis près de la forge"
+
+sans devoir ouvrir la carte.
+
+Exemples :
+
+grande cheminée
+statue
+grue
+bannière monumentale
+pyramide
+tour
+chute de lave
+arche
+gigantesque trophée.
+
+======================================================================
+36 — COMPOSITION VISUELLE
+======================================================================
+
+Pour chaque écran/caméra :
+
+vérifier :
+
+foreground
+gameplay plane
+midground
+background
+far background.
+
+Le joueur ne doit pas être entouré uniquement d'objets sur son propre plan.
+
+Utiliser les autres plans pour montrer la densité.
+
+======================================================================
+37 — OCCLUSION
+======================================================================
+
+Un prop ne doit pas être placé derrière une façade
+si le joueur ne peut pratiquement jamais le voir.
+
+Un PNJ important ne doit pas être caché par un décor.
+
+Un escalier ne doit pas disparaître derrière un bâtiment
+au point de devenir incompréhensible.
+
+======================================================================
+38 — RÉPÉTITION DES PROPS
+======================================================================
+
+Créer des contrôles de répétition.
+
+Dans une même vue caméra :
+
+éviter plus de 2 exemplaires strictement identiques
+d'un asset très reconnaissable.
+
+Exception :
+
+élément structurel volontairement répété :
+barrière,
+lampe d'une avenue,
+poteaux,
+colonnade.
+
+Même dans ces cas :
+
+varier séquence,
+espacement,
+élément terminal,
+cassure.
+
+======================================================================
+39 — RÉPÉTITION DES BÂTIMENTS
+======================================================================
+
+Deux bâtiments voisins ne doivent pas utiliser exactement :
+
+même silhouette
++
+même largeur
++
+même hauteur
++
+même façade
++
+même mobilier.
+
+Sauf :
+
+complexe architectural volontaire.
+
+Créer de véritables familles.
+
+======================================================================
+40 — GRAMMAIRE DE CLUSTERS
+======================================================================
+
+Remplacer la recette actuelle symétrique par plusieurs compositions.
+
+Créer au minimum :
+
+SINGLE_ANCHOR
+EDGE_STAGGER
+EDGE_CLUSTER
+L_CORNER
+U_COURT
+ARC
+RADIAL
+OPPOSITE_PAIR
+SERVICE_BAY
+MARKET_BAY
+REST_POCKET
+WORK_POCKET
+PROCESSIONAL_PAIR
+TERRACE_EDGE
+CLIFF_EDGE
+LOADING_BAY
+SOCIAL_CLUSTER
+LANDMARK_RING
+ASYMMETRIC_COURT.
+
+Chaque recette doit avoir :
+
+préconditions,
+fonction,
+nombre min/max,
+règles d'orientation,
+distances,
+zones interdites.
+
+======================================================================
+41 — PAS DE RANDOM RUNTIME
+======================================================================
+
+La ville doit paraître conçue.
+
+Ne pas redistribuer les props à chaque chargement.
+
+Si une génération assistée est utilisée :
+
+elle doit être déterministe,
+seedée,
+compilée en placements fixes,
+puis validée.
+
+Le jeu final charge les placements approuvés.
+
+======================================================================
+42 — ROUTES DE JOUEUR
+======================================================================
+
+Pour chaque district :
+
+définir :
+
+PRIMARY_ROUTE
+SECONDARY_ROUTE
+SERVICE_ROUTE
+OPTIONAL_ROUTE
+SECRET_ROUTE.
+
+Un prop possède un coût d'obstruction différent suivant la route.
+
+PRIMARY_ROUTE :
+protection maximale.
+
+SECRET_ROUTE :
+peut être plus étroite.
+
+======================================================================
+43 — BOUCLES
+======================================================================
+
+Éviter les longs culs-de-sac inutiles.
+
+Un quartier important doit généralement proposer :
+
+entrée
++
+boucle
++
+sortie/raccourci.
+
+Les véritables culs-de-sac doivent récompenser :
+
+exploration,
+interaction,
+vue,
+lore,
+objet,
+NPC.
+
+======================================================================
+44 — DISTANCE ENTRE BÂTIMENTS
+======================================================================
+
+Si deux bâtiments créent un passage entre eux :
+
+la largeur réellement disponible,
+après collisions,
+doit être suffisante.
+
+Passage normal :
+≈ 120+.
+
+Passage secondaire :
+≈ 96+.
+
+Passage majeur :
+≈ 160+.
+
+Ne pas mesurer seulement centre-à-centre.
+
+Mesurer les footprints réels.
+
+======================================================================
+45 — ANGLES ET COINS
+======================================================================
+
+Un angle de rue doit être traité comme une composition spécifique.
+
+Il peut recevoir :
+
+bâtiment d'angle
+landmark
+lampe
+petite signalétique
+petite zone vide.
+
+Pas un énorme prop occultant l'intersection.
+
+======================================================================
+46 — ENVIRONNEMENT NATUREL
+======================================================================
+
+Rochers/plantes ne doivent plus être traités comme remplissage.
+
+Créer des formations :
+
+isolé
+couple
+petit cluster
+affleurement
+ligne de falaise
+bord de canyon.
+
+Éviter :
+
+mêmes rochers régulièrement espacés.
+
+======================================================================
+47 — ROCHERS
+======================================================================
+
+Un gros rocher doit influencer la composition.
+
+On ne place pas une habitation à moitié dedans.
+
+Les petites pierres peuvent accompagner une falaise.
+
+Éviter les rochers sur :
+
+route,
+pad,
+seuil,
+marches,
+passerelle.
+
+======================================================================
+48 — LAVE
+======================================================================
+
+Créer une zone de sécurité autour de la lave.
+
+Les passages proches doivent posséder :
+
+barrière
+hauteur
+pont
+rebord
+ou autre justification.
+
+Pas de banc à 10 unités d'une rivière de lave.
+
+======================================================================
+49 — FALAISES
+======================================================================
+
+Les bâtiments contre une falaise peuvent :
+
+être intégrés dedans,
+être soutenus,
+posséder une terrasse.
+
+Mais ils doivent visuellement toucher la roche.
+
+Pas de petits vides accidentels donnant l'impression de flotter.
+
+======================================================================
+50 — NPC ET MOBILIER
+======================================================================
+
+Le mobilier doit tenir compte des animations PNJ.
+
+Si un PNJ travaille à une forge :
+
+réserver son espace animation.
+
+Si un PNJ s'assoit :
+
+le banc doit avoir un socket.
+
+Si plusieurs PNJ discutent :
+
+prévoir un cercle social.
+
+======================================================================
+51 — ESPACES SOCIAUX
+======================================================================
+
+Créer des SOCIAL_NODES.
+
+Exemple :
+
+2–4 Yautja discutant
++
+élément central éventuel
++
+circulation autour.
+
+Ne jamais poser 5 NPC exactement sur une ligne.
+
+======================================================================
+52 — ÉCHELLE DU JOUEUR
+======================================================================
+
+Toujours faire un test silhouette :
+
+1 Yautja devant chaque nouveau bâtiment/prop.
+
+Détecter automatiquement :
+
+banc trop haut
+porte trop petite
+barrière disproportionnée
+table géante
+lampe ridicule.
+
+======================================================================
+53 — AUDIT ASSETS : NE PLUS CONFONDRE INSTANCE ET VARIÉTÉ
+======================================================================
+
+Créer un rapport :
+
+assetId
+nombre d'instances
+nombre de quartiers
+nombre de vues simultanées
+nombre de variantes visuelles
+orientation disponible.
+
+Un asset utilisé 30 fois mais n'ayant qu'une seule apparence
+doit être considéré comme sous-varié.
+
+======================================================================
+54 — CRÉER UN CATALOGUE CIBLE COMPLET
+======================================================================
+
+Auditer les assets existants contre CE CATALOGUE.
+
+Pour chaque entrée :
+
+EXISTING_GOOD
+EXISTING_NEEDS_VARIANT
+EXISTING_WRONG_SCALE
+EXISTING_WRONG_FUNCTION
+MISSING
+MISSING_ORIENTATION
+MISSING_ANIMATION
+REPLACE
+REMOVE.
+
+Ne prétends pas qu'un asset manque sans vérifier le projet.
+
+======================================================================
+55 — ARCHITECTURE MANQUANTE / À COMPLÉTER
+======================================================================
+
+Le catalogue cible doit comprendre au minimum :
+
+STRUCTURE :
+fondation roche
+fondation métallique
+socle monumental
+mur droit court
+mur droit long
+mur diagonal gauche
+mur diagonal droite
+mur courbe
+mur bas
+mur haut
+mur de soutènement
+angle intérieur
+angle extérieur
+pilier
+colonne
+console
+contrefort
+poutre
+arche
+linteau
+parapet
+créneau Yautja
+toit
+toit terrasse
+corniche
+balcon
+terrasse
+plateforme
+plateforme suspendue
+pont court
+pont moyen
+pont monumental
+passerelle
+passerelle industrielle
+escalier court
+escalier monumental
+escalier latéral
+rampe
+rampe industrielle
+ascenseur
+cage ascenseur
+tunnel
+entrée tunnel.
+
+======================================================================
+56 — PORTES / ACCÈS
+======================================================================
+
+Petit seuil domestique
+entrée habitation
+porte atelier
+porte forge
+porte entrepôt
+porte clan
+porte militaire
+porte temple
+porte Conseil
+porte palais
+grande porte
+sas spatioport
+sas hangar
+grille
+porte énergétique.
+
+======================================================================
+57 — BARRIÈRES
+======================================================================
+
+Barrière courte
+barrière longue
+barrière diagonale gauche
+barrière diagonale droite
+angle
+extrémité
+poteau
+gate
+barrière massive
+barrière industrielle
+barrière de canyon
+barrière de lave
+émetteur énergie gauche
+émetteur énergie droit
+champ énergétique.
+
+======================================================================
+58 — HABITATIONS
+======================================================================
+
+Créer suffisamment de silhouettes différentes :
+
+petite habitation
+habitation moyenne
+habitation clan
+habitation artisan
+habitation vétéran
+habitation Elite
+logement vertical
+logement adossé falaise
+logement terrasse
+habitation ancienne
+habitation industrielle.
+
+Chaque famille doit posséder plusieurs variations visuelles.
+
+======================================================================
+59 — BÂTIMENTS CIVIQUES
+======================================================================
+
+Salle clanique
+maison de délégation
+archives
+registre
+cour de justice
+annexe du Conseil
+hall cérémoniel
+hall de trophées
+mausolée
+armurerie
+forge
+atelier
+marché
+entrepôt
+poste de garde
+bastion
+infirmerie/soins Yautja
+centre d'entraînement
+arène mineure
+dock control
+hangar
+atelier skiff.
+
+Ne pas inventer des fonctions humaines modernes inutiles.
+
+======================================================================
+60 — PROPS DE REPOS
+======================================================================
+
+Banc massif
+banc court
+banc long
+banc contre mur
+banc de terrasse
+banc cérémoniel
+assise individuelle
+tabouret/clan seat
+assise pierre
+plateforme de repos.
+
+Prévoir orientations natives distinctes.
+
+======================================================================
+61 — TABLES
+======================================================================
+
+Table petite
+table commune
+table de clan
+table atelier
+table forge
+table de marché
+table archive
+table de préparation
+table logistique.
+
+======================================================================
+62 — STOCKAGE
+======================================================================
+
+Caisse petite
+caisse moyenne
+caisse lourde
+caisse scellée
+conteneur
+conteneur long
+coffre trophée
+coffre équipement
+rack vertical
+rack mural
+rack industriel
+casier
+étagère archive
+étagère atelier
+support outils.
+
+======================================================================
+63 — FORGE
+======================================================================
+
+Forge active
+foyer
+table forge
+enclume/interprétation Yautja
+rack outils
+rack pièces
+bac refroidissement
+stock métal
+pièces suspendues
+ventilation
+conduit chaleur
+cheminée
+brasier
+support armure
+support masque
+support arme.
+
+======================================================================
+64 — MARCHÉ
+======================================================================
+
+Stall court
+stall long
+stand diagonal gauche
+stand diagonal droite
+auvent
+présentoir
+table marchand
+rack marchand
+plateforme trophées
+conteneur
+caisse marchand
+éclairage marchand
+bannière marchand
+zone de stock.
+
+======================================================================
+65 — CLANS
+======================================================================
+
+Bannière standard
+bannière haute
+bannière suspendue
+mât
+totem
+glyph marker
+lectern
+table clanique
+siège
+petit monument
+présentoir rituel
+trophée
+brasero.
+
+======================================================================
+66 — TROPHÉES
+======================================================================
+
+Socle petit
+socle moyen
+socle géant
+cabinet vide
+cabinet mural
+support crâne
+support arme
+support biomask
+crochet
+chaîne
+vitrine/alcôve Yautja
+panneau trophée
+grand trophée monumental.
+
+======================================================================
+67 — SPATIOPORT
+======================================================================
+
+Balise
+landing light
+console dock
+borne dock
+clamp
+support navette
+gantry
+grue
+bras mécanique
+chariot cargo
+chariot vide
+cart lourd
+caisse cargo
+rack cargo
+fuel/energy conduit
+câble énergie
+module maintenance
+plateforme maintenance
+échelle maintenance
+petit skiff
+support skiff
+signal de départ
+signal d'arrivée
+sas
+panneau de contrôle
+tour contrôle
+antenne.
+
+======================================================================
+68 — RUE
+======================================================================
+
+Lampadaire
+lampe basse
+balise murale
+borne
+bollard
+poteau
+marqueur clanique
+signal directionnel
+plaque/glyphe
+drainage
+grille
+caniveau
+trappe
+plaque sol
+joint de pavage
+ventilation sol
+conduit
+câble.
+
+======================================================================
+69 — DÉCOR ROCHE / VOLCANIQUE
+======================================================================
+
+Petit rocher A/B/C
+moyen rocher A/B/C
+gros rocher A/B/C
+affleurement
+basalte
+colonne basaltique
+roche fracturée
+roche volcanique
+fissure
+sol craquelé
+évent vapeur
+évent chaleur
+petite coulée
+cristal/minéral
+cendre.
+
+======================================================================
+70 — VÉGÉTATION YAUTJA PRIME
+======================================================================
+
+Petite plante
+plante basse
+plante minérale
+arbuste
+fourré
+plante sèche
+espèce côtière
+végétation falaise
+végétation bioluminescente pour région appropriée.
+
+Ne pas transformer la capitale en jardin terrestre.
+
+======================================================================
+71 — FAUNE
+======================================================================
+
+Enclos
+poteau enclos
+barrière enclos
+porte
+barrière énergie
+abreuvoir alien
+nourrisseur
+support harnais
+rack dressage
+plateforme observation
+cage petite
+cage moyenne
+cage lourde
+fosse
+signal danger.
+
+======================================================================
+72 — MONTURES
+======================================================================
+
+Zone d'attache
+support harnais
+harnais
+selle
+rack selle
+plateforme monte
+barrière
+mangeoire adaptée
+petite zone d'entraînement
+poste de soin.
+
+Ne pas faire une écurie humaine.
+
+======================================================================
+73 — BAS-QUARTIERS : PROPS
+======================================================================
+
+Plaque réparation
+panneau récupéré
+structure renforcée
+barrière bricolée
+câble suspendu
+tuyau apparent
+vent
+grille
+caisses usées
+conteneurs usés
+rack récupération
+pile scrap
+tôle Yautja
+petit auvent
+marché noir
+petite cage
+éclairage pauvre
+signal endommagé
+échafaudage
+passerelle légère.
+
+======================================================================
+74 — INDUSTRIEL
+======================================================================
+
+Générateur
+transformateur
+conduit
+câble lourd
+ventilation
+radiateur
+pompe
+réservoir
+cuve
+valve
+panneau technique
+maintenance rack
+chariot
+grue
+treuil
+palan
+rail
+support industriel.
+
+======================================================================
+75 — CONSEIL
+======================================================================
+
+Colonne
+socle
+statue
+brasero
+bannière haute
+glyph panel
+siège ancien
+plateforme ancien
+lectern
+tablette/registre
+porte monumentale
+balustrade
+grand escalier
+garde-corps cérémoniel.
+
+Composition beaucoup plus sobre que le marché.
+
+======================================================================
+76 — PALAIS / ROI
+======================================================================
+
+Socle royal
+statue majeure
+bannière royale/création locale clairement identifiée
+garde
+brasero monumental
+colonne
+trône
+plateforme trône
+grands escaliers
+portes
+balustrades
+trophées prestigieux
+alcôves.
+
+Ne pas affirmer qu'un symbole inventé est canonique.
+
+======================================================================
+77 — RÈGLE DE PROVENANCE LORE
+======================================================================
+
+Chaque asset doit être marqué :
+
+CANON_DIRECT
+REFERENCE_ADAPTATION
+LORE_COMPATIBLE_ORIGINAL
+GAMEPLAY_UTILITY.
+
+Ne jamais présenter une invention locale comme fait canonique.
+
+======================================================================
+78 — DIVERSITÉ MINIMALE
+======================================================================
+
+Pour les objets très fréquents :
+
+prévoir idéalement 4 à 8 variantes.
+
+Exemple :
+
+banc :
+plusieurs silhouettes + orientations.
+
+lampes :
+plusieurs modèles suivant quartier.
+
+caisse :
+plusieurs dimensions.
+
+habitations :
+beaucoup plus que trois silhouettes.
+
+Les grands landmarks peuvent évidemment rester uniques.
+
+======================================================================
+79 — DISTRICTS VISUELLEMENT DISTINCTS
+======================================================================
+
+NIVEAU 0 :
+dense mais organisé.
+
+CLANS :
+bannières, lieux sociaux, montures.
+
+ELITE :
+plus spacieux, trophées prestigieux.
+
+FORGES :
+industrie chaude.
+
+PORT :
+logistique.
+
+CONSEIL :
+monumental et dégagé.
+
+PALAIS :
+monumental et très hiérarchisé.
+
+BAS-QUARTIERS :
+dense, bricolé, vertical.
+
+Aucun quartier ne doit simplement être :
+
+même rue
++
+nouvelle couleur.
+
+======================================================================
+80 — RÈGLE DES GRANDES RESPIRATIONS
+======================================================================
+
+Ne cherche PAS à remplir chaque espace libre.
+
+Une grande cité nécessite aussi :
+
+places,
+perspectives,
+axes,
+espaces cérémoniels,
+zones de sécurité,
+quais ouverts.
+
+Le vide correctement composé renforce l'échelle.
+
+======================================================================
+81 — RÈGLE DE FOCAL POINT
+======================================================================
+
+Avant de meubler une zone :
+
+définir son focal point.
+
+Puis organiser le décor secondaire autour.
+
+Exemples :
+
+Forge → forge.
+Place royale → palais.
+Quai → vaisseau.
+Enclos → créature.
+Marché → circulation et stands.
+
+======================================================================
+82 — DENSITY MAP
+======================================================================
+
+Créer une carte de densité.
+
+Valeurs conceptuelles :
+
+0 = complètement vide
+1 = presque vide
+2 = léger
+3 = normal
+4 = dense
+5 = très dense.
+
+Ne jamais mettre toute la ville à 4 ou 5.
+
+======================================================================
+83 — NOISE VISUEL
+======================================================================
+
+Limiter les petits props à proximité d'un monument.
+
+Plus le landmark est important,
+plus sa zone immédiate doit respirer.
+
+======================================================================
+84 — LIGNES DE VUE
+======================================================================
+
+Préserver depuis plusieurs endroits :
+
+vue du palais
+vue Conseil
+vue statues
+vue lava
+vue port
+vue pyramides lointaines.
+
+Ne pas mettre un bâtiment aléatoire dans ces axes.
+
+======================================================================
+85 — CAMERA COMPOSITION
+======================================================================
+
+Créer des tests pour différents viewport :
+
+desktop
+mobile
+petit laptop.
+
+La ville doit rester compréhensible.
+
+Un objet correctement placé dans les coordonnées
+peut devenir incohérent une fois projeté.
+
+Tester les pixels réels.
+
+======================================================================
+86 — TESTS SÉMANTIQUES
+======================================================================
+
+Les tests actuels vérifient beaucoup :
+
+collision,
+route,
+support,
+asset,
+SSR.
+
+C'est nécessaire mais insuffisant.
+
+Ajouter maintenant des tests sémantiques.
+
+Exemple :
+
+BENCH_USE_ZONE_CLEAR
+
+DOOR_APPROACH_CLEAR
+
+STALL_CUSTOMER_ZONE_CLEAR
+
+FORGE_SAFETY_ZONE_CLEAR
+
+CARGO_LOADING_ZONE_CLEAR
+
+NPC_SOCIAL_ZONE_CLEAR
+
+INTERSECTION_SIGHT_CLEAR
+
+BARRIER_CONTINUITY
+
+BARRIER_GATE_CLEAR
+
+BUILDING_ENTRANCE_CONNECTED
+
+BUILDING_SERVICE_ZONE_VALID
+
+PROP_ROLE_MATCHES_DISTRICT
+
+IDENTICAL_PROP_REPETITION_LIMIT
+
+BUILDING_REPETITION_LIMIT
+
+GRID_ALIGNMENT_DETECTION
+
+COLLINEAR_CLUSTER_DETECTION
+
+LANDMARK_VIEW_CORRIDOR_CLEAR
+
+======================================================================
+87 — PLUS DE MILLE RÈGLES : LE FAIRE INTELLIGEMMENT
+======================================================================
+
+Je ne veux pas un fichier contenant artificiellement :
+
+rule001
+rule002
+...
+rule1000
+
+avec du remplissage.
+
+Créer d'abord des règles génériques fortes.
+
+Puis les MATÉRIALISER sur les objets réels.
+
+Par exemple :
+
+40 règles bâtiment
+×
+43 bâtiments
+
+produisent déjà énormément de vérifications concrètes.
+
+Chaque :
+
+bâtiment
+prop
+route
+intersection
+porte
+barrière
+cour
+district
+connector
+landmark
+
+doit être audité.
+
+Le rapport final doit contenir AU MINIMUM
+1000 ASSERTIONS / CONTRAINTES SPATIALES RÉELLEMENT ÉVALUÉES.
+
+Idéalement plusieurs milliers.
+
+Mais toutes doivent avoir un sens.
+
+======================================================================
+88 — FORMAT DES RÈGLES
+======================================================================
+
+Créer par exemple :
+
+interface HomeworldPlacementRuleV81 {
+    id: string;
+    family: string;
+    severity: 'fatal' | 'error' | 'warning' | 'info';
+    targetType: string;
+    description: string;
+    evaluate(...): RuleResult;
+}
+
+Chaque violation indique :
+
+ruleId
+objectId
+district
+position
+reason
+distance réelle
+distance requise
+objet conflit
+suggestedFix.
+
+======================================================================
+89 — PAS D'AUTOFIX STUPIDE
+======================================================================
+
+Un objet interdit ne doit pas être automatiquement déplacé
+de +100 X jusqu'à ce que le test passe.
+
+Cela recréerait le problème actuel.
+
+Un fix doit rechercher :
+
+bonne parcelle
+bonne fonction
+bonne orientation
+bonne composition.
+
+Sinon :
+refuser le candidat.
+
+======================================================================
+90 — COMPOSITION SCORE
+======================================================================
+
+En plus du booléen valide/invalide,
+calculer éventuellement :
+
+FUNCTION_SCORE
+ACCESS_SCORE
+VARIETY_SCORE
+COMPOSITION_SCORE
+SILHOUETTE_SCORE
+DISTRICT_SCORE.
+
+Ne jamais sacrifier une règle HARD
+pour améliorer un score esthétique.
+
+======================================================================
+91 — RECONSTRUIRE LES COURTS V80
+======================================================================
+
+Supprimer la dépendance conceptuelle actuelle à :
+
+x ± 220
+
+et aux huit offsets Y fixes.
+
+Conserver les IDs historiques si cela aide la compatibilité,
+mais leurs positions peuvent être entièrement recomposées.
+
+Chaque cour doit avoir une recette propre.
+
+Exemple port :
+
+port-0 :
+chargement.
+
+port-1 :
+maintenance.
+
+port-2 :
+halte voyageurs.
+
+port-3 :
+délégations.
+
+port-4 :
+consultation.
+
+port-5 :
+arrivées.
+
+port-6 :
+retours.
+
+Mais NE PAS forcer quatre props identiques à chacune.
+
+======================================================================
+92 — DEVANTURES
+======================================================================
+
+Remplacer :
+
+gauche x4
++
+droite x4
+
+appliqué partout.
+
+Une devanture peut avoir :
+
+0 prop
+1 prop
+2 props
+3 props
+un gros cluster latéral
+une cour
+un seul landmark.
+
+Certaines façades doivent rester presque vides.
+
+======================================================================
+93 — CONSERVER LA COMPATIBILITÉ
+======================================================================
+
+Préserver :
+
+save schema si possible,
+checkpoints,
+progression,
+missions,
+NPC,
+entrées,
+transitions,
+interactions.
+
+Si un ancien checkpoint tombe dans un nouveau bâtiment :
+
+utiliser le fallback sécurisé existant.
+
+Ne pas détruire la sauvegarde.
+
+======================================================================
+94 — REVOIR AUSSI LES BÂTIMENTS
+======================================================================
+
+Le problème n'est pas uniquement le mobilier.
+
+Effectuer un audit de TOUS les bâtiments.
+
+Pour chacun :
+
+ID
+fonction
+district
+sprite
+dimensions
+orientation
+entrée
+position
+voisins
+distance route
+distance bâtiment
+silhouette
+répétition
+visibilité
+intérieur.
+
+Classer :
+
+KEEP
+MOVE
+REORGANIZE_LOT
+NEW_ART_VARIANT
+REPLACE
+REMOVE.
+
+======================================================================
+95 — BUILDING BLOCKS
+======================================================================
+
+Créer une vraie topologie en îlots.
+
+Un îlot urbain peut contenir :
+
+2–6 bâtiments,
+cour intérieure,
+ruelle,
+petite place,
+service lane.
+
+Ne pas créer seulement :
+
+bâtiment / vide / bâtiment / vide.
+
+======================================================================
+96 — DENSITÉ DES BÂTIMENTS
+======================================================================
+
+Ville haute :
+densité moyenne-haute.
+
+Port :
+densité faible autour des pads,
+haute autour des bâtiments logistiques.
+
+Slums :
+très dense.
+
+Palais :
+faible autour du monument.
+
+Conseil :
+faible/modéré.
+
+Clans :
+moyen avec cours.
+
+======================================================================
+97 — FAÇADES
+======================================================================
+
+Réduire drastiquement l'impression de façades toutes frontales.
+
+Créer des variantes natives adaptées à la caméra.
+
+Le rapport V80 reconnaît encore de nombreuses façades frontales.
+
+Corriger réellement cela.
+
+======================================================================
+98 — BACKGROUND CITY
+======================================================================
+
+La grande densité visuelle ne doit PAS tout devenir collision.
+
+Créer une ville non jouable derrière :
+
+immeubles,
+terrasses,
+tours,
+ponts,
+structures,
+fumées,
+vaisseaux.
+
+Ces éléments donnent l'échelle
+sans encombrer le gameplay.
+
+======================================================================
+99 — CONTRÔLE DE "VILLE IA"
+======================================================================
+
+Créer un audit détectant les symptômes typiques d'une génération artificielle :
+
+alignements parfaits injustifiés
+répétitions
+symétrie excessive
+clusters copiés
+espacements constants
+props isolés sans fonction
+props collés
+bâtiments sans accès
+bâtiments tous identiques
+grandes zones remplies uniformément.
+
+Ce test doit échouer si la ville ressemble encore
+à un placement algorithmique brut.
+
+======================================================================
+100 — VISUAL QA OBLIGATOIRE
+======================================================================
+
+Ne considère PAS les tests unitaires comme preuve esthétique.
+
+Faire de vraies captures du jeu.
+
+Pour chaque zone :
+
+vue large
+vue moyenne
+vue proche.
+
+Minimum :
+
+Port
+marché
+forges
+clans
+mausolée
+Council
+Palais
+entrée bas-quartiers
+-1A
+-1B
+-1C
+route Lava
+route Côte
+zone montures.
+
+Ouvrir réellement toutes les captures.
+
+======================================================================
+101 — QA "PROP ISOLATION"
+======================================================================
+
+Pour CHAQUE nouvelle famille de prop :
+
+faire une capture seule
+avec personnage de référence.
+
+Vérifier :
+
+taille
+pivot
+contact sol
+orientation
+alpha
+silhouette.
+
+======================================================================
+102 — QA "PROP IN CONTEXT"
+======================================================================
+
+Ensuite vérifier le prop dans sa vraie zone.
+
+Un asset peut être correct seul
+mais mauvais dans son environnement.
+
+======================================================================
+103 — QA BANCS
+======================================================================
+
+Lister TOUS les bancs actifs.
+
+Pour chacun :
+
+orientation
+zone avant
+distance autre banc
+distance route
+distance mur
+distance porte.
+
+Échec automatique :
+
+banc inutilisable.
+
+======================================================================
+104 — QA BÂTIMENTS
+======================================================================
+
+Pour chacun des bâtiments :
+
+marcher réellement jusqu'à la porte.
+
+Entrer si visitable.
+
+Sortir.
+
+Faire le tour de sa façade accessible.
+
+Aucun bâtiment ne doit simplement "passer les tests" depuis un point injecté.
+
+======================================================================
+105 — QA ROUTES
+======================================================================
+
+Tester :
+
+centre route
+bords route
+intersections
+angles
+passages étroits
+ponts
+escaliers
+rampe.
+
+Tester joueur + PNJ.
+
+======================================================================
+106 — QA MOBILE
+======================================================================
+
+Le Homeworld doit rester jouable et lisible sur viewport mobile.
+
+Mais ne pas réduire la ville physiquement.
+
+Adapter caméra/interface,
+pas le level design.
+
+======================================================================
+107 — RAPPORT ASSET GAP
+======================================================================
+
+Créer :
+
+docs/homeworld-asset-gap-v81.md
+
+Avec colonnes :
+
+Family
+Required asset
+Existing asset
+Status
+Current instances
+Needed variants
+Needed orientation
+Priority
+District
+Lore status
+Notes.
+
+Je veux savoir précisément ce qui manque.
+
+======================================================================
+108 — RAPPORT PLACEMENT
+======================================================================
+
+Créer :
+
+docs/homeworld-placement-audit-v81.md
+
+avec :
+
+Total buildings
+Buildings moved
+Buildings replaced
+Buildings needing art
+Total props
+Props kept
+Props moved
+Props removed
+Props replaced
+Invalid overlaps
+Unusable interaction zones
+Repetition warnings
+Grid warnings
+Blocked doors
+Blocked streets
+Blocked intersections.
+
+======================================================================
+109 — PRIORITÉ DES CORRECTIONS
+======================================================================
+
+P0 :
+routes/portes/collisions.
+
+P1 :
+bâtiments et topologie.
+
+P2 :
+composition des grandes zones.
+
+P3 :
+mobilier fonctionnel.
+
+P4 :
+diversité.
+
+P5 :
+décor secondaire.
+
+P6 :
+micro-détails.
+
+Ne commence surtout pas par ajouter
+100 petites plantes dans un level design cassé.
+
+======================================================================
+110 — ORDRE D'EXÉCUTION
+======================================================================
+
+PHASE 1
+Audit exact V80.
+
+PHASE 2
+Extraire tous les objets/bâtiments/roads.
+
+PHASE 3
+Créer Spatial Grammar V81.
+
+PHASE 4
+Créer les use envelopes.
+
+PHASE 5
+Détecter toutes les incohérences actuelles.
+
+PHASE 6
+Refaire la topologie bâtiments/rues.
+
+PHASE 7
+Refaire le port.
+
+PHASE 8
+Refaire cité principale.
+
+PHASE 9
+Refaire zones clans/Elite.
+
+PHASE 10
+Refaire -1A/-1B/-1C.
+
+PHASE 11
+Refaire Conseil/palais.
+
+PHASE 12
+Refaire props.
+
+PHASE 13
+Ajouter assets réellement manquants.
+
+PHASE 14
+Décor background.
+
+PHASE 15
+Population.
+
+PHASE 16
+QA automatique.
+
+PHASE 17
+QA visuel réel.
+
+PHASE 18
+Corriger ce que les captures révèlent.
+
+Recommencer jusqu'à cohérence.
+
+======================================================================
+111 — CRITÈRE FINAL
+======================================================================
+
+Je ne veux plus pouvoir regarder une capture
+et immédiatement comprendre :
+
+"l'algorithme a placé quatre bancs ici."
+
+Je dois voir :
+
+"des Yautja ont construit une ville,
+puis ils l'ont utilisée pendant des générations."
+
+Chaque objet doit sembler avoir :
+
+une fonction,
+une histoire,
+une orientation,
+un espace nécessaire,
+une relation avec son voisinage.
+
+La ville doit sembler avoir été construite AVANT
+que le joueur arrive.
+
+======================================================================
+112 — TEST FINAL SIMPLE
+======================================================================
+
+Pour chaque prop, pose la question :
+
+POURQUOI EST-IL ICI ?
+
+Si la seule réponse est :
+
+"parce que la recette avait un slot libre"
+
+ALORS LE PLACEMENT EST MAUVAIS.
+
+Pour chaque bâtiment :
+
+POURQUOI EST-IL ICI ?
+COMMENT ENTRE-T-ON ?
+QU'EST-CE QU'IL DESSERT ?
+COMMENT LES HABITANTS Y ARRIVENT ?
+QU'EST-CE QUI SE PASSE DERRIÈRE ?
+COMMENT EST-IL SOUTENU ?
+POURQUOI A-T-IL CETTE ORIENTATION ?
+
+Toute absence de réponse claire est une anomalie à corriger.
+
+======================================================================
+113 — LIVRAISON ATTENDUE
+======================================================================
+
+À la fin je veux :
+
+1. le Homeworld réellement modifié ;
+2. Spatial Grammar V81 réellement utilisé par le jeu ;
+3. les anciennes formules répétitives supprimées/remplacées ;
+4. les bâtiments recomposés ;
+5. les props recomposés ;
+6. un catalogue d'assets considérablement enrichi ;
+7. le rapport exact des assets encore manquants ;
+8. >1000 contraintes spatiales effectivement évaluées ;
+9. tests automatiques ;
+10. captures réelles ;
+11. inspection réelle des captures ;
+12. corrections post-capture ;
+13. aucune régression progression/save ;
+14. aucune fausse déclaration de contenu terminé.
+
+NE PAS s'arrêter après avoir écrit le Codex de règles.
+
+APPLIQUER ces règles à toute la ville.
+
+Le but n'est pas d'avoir un excellent document décrivant
+comment le Homeworld devrait être.
+
+Le but est que LE HOMEWORLD LUI-MÊME
+respecte réellement ce document.

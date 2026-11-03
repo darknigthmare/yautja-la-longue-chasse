@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "variantId": "wolf-avec-casque-4261aca172",
+  "sourceReference": "public/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+  "originalsPreserved": 10,
+  "accepted": 2,
+  "refused": 8,
+  "missingNativeFamilies": [
+    "intro",
+    "victory",
+    "defeat"
+  ],
+  "canonicalFidelityCertified": false,
+  "reviews": [
+    {
+      "id": "v93-wolf-001",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-001-wolf-masked-dizzy.png",
+      "sha256": "e03681790bdb8c7422e5e0dde8ecce08dd54051e83143d6034ccae23939c936c",
+      "bytes": 2337879,
+      "decision": "refused",
+      "reason": "Native row separation insufficient: first-row foreground touches declared512-pixel divider.",
+      "originalIntakePath": "art-source/v93/pit/wolf/v93-wolf-001-intake.json",
+      "originalIntakePreserved": true,
+      "publicAdmission": false,
+      "pixelTransformation": "none"
+    },
+    {
+      "id": "v93-wolf-002",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-002-wolf-masked-taunt.png",
+      "sha256": "37c46be103666d00c8cda3d6ec0c2f251e43363a497f006222848a068d36f14f",
+      "bytes": 2312730,
+      "decision": "refused",
+      "reason": "Pistol changes anatomical hand and blades become inconsistent; final cell touches divider.",
+      "originalIntakePath": "art-source/v93/pit/wolf/v93-wolf-002-intake.json",
+      "originalIntakePreserved": true,
+      "publicAdmission": false,
+      "pixelTransformation": "none"
+    },
+    {
+      "id": "v93-wolf-003",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-003-wolf-masked-taunt-recovery.png",
+      "sha256": "0bdf5e0909c467b3d5387340b77ff4b5b912e86274aeb90203d7221c08012c71",
+      "bytes": 2096052,
+      "decision": "accepted",
+      "reason": "Taunt: two native sides, three isolated drawings each; pistol, wrist blades and shoulder device remain attached.",
+      "originalIntakePath": "art-source/v93/pit/wolf/v93-wolf-003-intake.json",
+      "originalIntakePreserved": true,
+      "publicAdmission": true,
+      "pixelTransformation": "none"
+    },
+    {
+      "id": "v93-wolf-004",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-004-wolf-masked-intro.png",
+      "sha256": "00daf9a06863db16a80816a05109777a35ccd3e5bbc0abef54d7ef583cf5c719",
+      "bytes": 2191087,
+      "decision": "refused",
+      "reason": "Pistol disappears or becomes a second bladed forearm, with source-cell clipping.",
+      "originalIntakePath": "art-source/v93/pit/wolf/v93-wolf-004-intake.json",
+      "originalIntakePreserved": true,
+      "publicAdmission": false,
+      "pixelTransformation": "none"
+    },
+    {
+      "id": "v93-wolf-005",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-005-wolf-masked-victory.png",
+      "sha256": "5ff8d70731248babb9b98dcc9f0d980728963ab9ba6fcba0cebbf6662dad7151",
+      "bytes": 2230383,
+      "decision": "refused",
+      "reason": "Left-facing second/third drawings lose pistol and substitute blade anatomy.",
+      "originalIntakePath": "art-source/v93/pit/wolf/v93-wolf-005-intake.json",
+      "originalIntakePreserved": true,
+      "publicAdmission": false,
+      "pixelTransformation": "none"
+    },
+    {
+      "id": "v93-wolf-006",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-006-wolf-masked-dizzy-recovery.png",
+      "sha256": "128e9df5ed9e15c3585967eee8556e904b34e3ef0ed8c4106e64197de1ef70b1",
+      "bytes": 2029019,
+      "decision": "accepted",
+      "reason": "Dizzy: native transparent isolated figures and coherent equipment; inactive shoulder cannon may rotate while staying attached.",
+      "originalIntakePath": "art-source/v93/pit/wolf/v93-wolf-006-intake.json",
+      "originalIntakePreserved": true,
+      "publicAdmission": true,
+      "pixelTransformation": "none"
+    },
+    {
+      "id": "v93-wolf-007",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-007-wolf-masked-defeat.png",
+      "sha256": "a7e094c8746e4f4087f42764c635a1a154a3f3ee8f33d1bc7398e1d55581eed2",
+      "bytes": 2069077,
+      "decision": "refused",
+      "reason": "One source-cell cuts foot and pistol ownership becomes inconsistent during kneel.",
+      "originalIntakePath": "art-source/v93/pit/wolf/v93-wolf-007-intake.json",
+      "originalIntakePreserved": true,
+      "publicAdmission": false,
+      "pixelTransformation": "none"
+    },
+    {
+      "id": "v93-wolf-008",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-008-wolf-masked-intro-edit.png",
+      "sha256": "e2e9fc99e8ff8ca4e27c5cf51095ed65821e83ba1960ef976e35d723c76bbe7d",
+      "bytes": 2338508,
+      "decision": "refused",
+      "reason": "Native edit failed transparency: only5 fully transparent pixels across original1024x1536; no alpha removal attempted.",
+      "originalIntakePath": "art-source/v93/pit/wolf/v93-wolf-008-intake.json",
+      "originalIntakePreserved": true,
+      "publicAdmission": false,
+      "pixelTransformation": "none"
+    },
+    {
+      "id": "v93-wolf-009",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-009-wolf-masked-victory-edit.png",
+      "sha256": "6f249e37e5d847818d715b5a1cbaebb0d06e02756aaa5a153e2b1e4ce1f44060",
+      "bytes": 2300110,
+      "decision": "refused",
+      "reason": "Native edit failed transparency: only2.2percent transparent pixels; cell edge alpha159.",
+      "originalIntakePath": "art-source/v93/pit/wolf/v93-wolf-009-intake.json",
+      "originalIntakePreserved": true,
+      "publicAdmission": false,
+      "pixelTransformation": "none"
+    },
+    {
+      "id": "v93-wolf-010",
+      "sourcePath": "art-source/v93/pit/wolf/v93-wolf-010-wolf-masked-defeat-final.png",
+      "sha256": "519515108212611679afba294ea33e9ad35c4f6c15db5261e4874b4c785d80a5",
+      "bytes": 1949472,
+      "decision": "refused",
+      "reason": "Root comparison with exact4261 reference proves shoulder cannon absent from all six drawings; two source dividers cut feet.",
+      "originalIntakePath": "art-source/v93/pit/wolf/v93-wolf-010-intake.json",
+      "originalIntakePreserved": true,
+      "publicAdmission": false,
+      "pixelTransformation": "none"
+    }
+  ]
+}

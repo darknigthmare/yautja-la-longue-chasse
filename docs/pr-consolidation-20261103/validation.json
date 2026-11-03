@@ -1,0 +1,419 @@
+{
+  "schemaVersion": 1,
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "scope": "local-consolidation-validation-only",
+  "status": "LOCAL_CHECKS_PASS_WITH_EXPLICIT_LIMITATIONS",
+  "codeCommit": "d5d2e16a2f0b6d4dd98802af018fff99bc63a941",
+  "codeTree": "cd2b5b8410b9231994630a68501453bee11792d7",
+  "publishedCommit": null,
+  "remoteCiStatus": "NOT_OBSERVED_IN_THIS_REPORT",
+  "deploymentStatus": "NOT_VERIFIED_IN_THIS_REPORT",
+  "provenance": "Revue des journaux déjà produits pendant la consolidation et contrôle indépendant de l’ascendance des 60 têtes. Cette attestation n’est pas un nouveau lancement des suites.",
+  "ancestry": {
+    "status": "PASS",
+    "baselineMain": "f322e0cb42f2b1b7e06c3be1dcfbb23cb24f02c8",
+    "checkedCommit": "d5d2e16a2f0b6d4dd98802af018fff99bc63a941",
+    "expectedPullRequests": 60,
+    "includedPullRequests": 60,
+    "missingPullRequests": [],
+    "baselineMainIsAncestor": true,
+    "method": "git merge-base --is-ancestor pour chacune des têtes et pour main de départ",
+    "evidence": [
+      {
+        "path": "docs/pr-consolidation-20261103/coverage.json",
+        "sha256": "f8d466fd10f3c8b2b1ae2f032fdf873e5c2c4ba47ebaf4c3ba24e0d4f9cc2773",
+        "bytes": 32809
+      }
+    ]
+  },
+  "build": {
+    "status": "PASS",
+    "command": "npm run build:production",
+    "framework": "Next.js 16.3.5 (webpack)",
+    "typescript": "PASS_AS_PART_OF_BUILD",
+    "staticPages": {
+      "generated": 9,
+      "expected": 9
+    },
+    "compiledCssGuard": "PASS",
+    "evidence": [
+      {
+        "path": "docs/pr-consolidation-20261103/logs/final-production-build.log",
+        "sha256": "535be211531ee094bb5b12323952e0cd978433552b7cc1353a4f7b5d017fbcd8",
+        "bytes": 4694
+      }
+    ],
+    "skippedGuards": [
+      {
+        "name": "native-origin",
+        "status": "SKIPPED",
+        "reason": "not-exact-linux-vercel-build-root"
+      },
+      {
+        "name": "static-output",
+        "status": "SKIPPED",
+        "reason": "not-exact-linux-vercel-build-root"
+      }
+    ]
+  },
+  "httpSmoke": {
+    "status": "PASS",
+    "command": "npm run qa:next-production",
+    "checks": 7,
+    "buildId": "mhqPByJWRopAqAxumzJKT",
+    "scope": "Serveur Next compilé, page d’accueil, JS client et cinq routes QA protégées ; aucun parcours utilisateur complet.",
+    "evidence": [
+      {
+        "path": "docs/pr-consolidation-20261103/logs/final-next-smoke.log",
+        "sha256": "5cd595a4936cd1688a4ad3e128a75305c2691ff93fc1c5fc8427a20ebf0a9746",
+        "bytes": 376
+      }
+    ]
+  },
+  "lint": {
+    "status": "PASS_WITH_WARNINGS",
+    "command": "npm run lint",
+    "errors": 0,
+    "warnings": 51,
+    "evidence": [
+      {
+        "path": "docs/pr-consolidation-20261103/logs/final-lint.log",
+        "sha256": "e547e338d6aaaaca01029034ac580d33dbb28a64c39b6e1b77d2be86e8d3a7e3",
+        "bytes": 8670
+      }
+    ]
+  },
+  "typecheck": {
+    "status": "PASS",
+    "finalVerification": "Le build final exécute TypeScript après intégration de PR100.",
+    "precedingStandaloneCheck": {
+      "command": "npm run typecheck -- --incremental false",
+      "stage": "combined-consolidation-before-pr100",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/combined-typecheck-final.log",
+          "sha256": "21d7120b397bfeca9e711ffddb3d0de0b6228432c01c0b1dd567dd1d0172de2e",
+          "bytes": 178
+        }
+      ]
+    },
+    "pr100TargetedEvidence": [
+      {
+        "path": "docs/pr-consolidation-20261103/logs/pr100-typecheck.log",
+        "sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f",
+        "bytes": 99
+      }
+    ]
+  },
+  "testSuites": [
+    {
+      "id": "clan-gauntlet-final",
+      "label": "Clans et gauntlets avec PR100",
+      "status": "PASS",
+      "validationStage": "final-consolidation-with-pr100",
+      "counts": {
+        "tests": 456,
+        "pass": 456,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "scope": "Régression des quatre modes, des gauntlets et de leurs intégrations après ajout de PR100.",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/pr100-clan-regressions.tap",
+          "sha256": "26dff02fc5316e5b3493e0229b8bb93b5e5a5a5ec9d4fabb9dda61cf5877cb9a",
+          "bytes": 109782
+        }
+      ]
+    },
+    {
+      "id": "pr100-targeted",
+      "label": "Props tactiques, clavier et zoom",
+      "status": "PASS",
+      "validationStage": "final-consolidation-with-pr100",
+      "counts": {
+        "tests": 47,
+        "pass": 47,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "scope": "Tests ciblés de PR100 et des contrats concernés ; chevauchement possible avec la suite clans.",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/pr100-targeted.tap",
+          "sha256": "9088f01fff52d57b6300e2f82158078a49ba0430dc1735c037982b7fec3d3e2f",
+          "bytes": 11301
+        }
+      ]
+    },
+    {
+      "id": "homeworld-planets-combined",
+      "label": "Homeworld, routes et cartes de chasse",
+      "status": "PASS",
+      "validationStage": "combined-consolidation-before-pr100",
+      "counts": {
+        "tests": 83,
+        "pass": 83,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "scope": "Régressions combinées des sauvegardes et géométries, exécutées avant le dernier ajout PR100.",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/combined-regressions.log",
+          "sha256": "9cda27f72fb41081776f7d102c0d94fda9cfa2a0747207817ef4e6d2be0b0bbf",
+          "bytes": 8221
+        }
+      ]
+    },
+    {
+      "id": "gauntlet-phg-integration",
+      "label": "Raccord gauntlet et matériaux PHG",
+      "status": "PASS",
+      "validationStage": "combined-consolidation-before-pr100",
+      "counts": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "scope": "Contrôles ciblés après correction des types et de l’initialisation React ; recoupement avec la suite clans.",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/gauntlet-integration-tests.log",
+          "sha256": "7d578eaaad677feb6e09f7cf5fb73c87de1c74bb1460d50f4e197ab2b3948964",
+          "bytes": 1419
+        }
+      ]
+    },
+    {
+      "id": "lint-targeted-regressions",
+      "label": "Régressions après corrections de lint",
+      "status": "PASS",
+      "validationStage": "combined-consolidation-before-pr100",
+      "counts": {
+        "tests": 73,
+        "pass": 73,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "scope": "Suite ciblée conservée comme preuve de son étape ; aucun total unique déduit.",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/lint-targeted-tests.tap",
+          "sha256": "fead4881d8cff4db09996be553964424be8fee750bb791cbd51e397d4b1deaf0",
+          "bytes": 20994
+        }
+      ]
+    },
+    {
+      "id": "reserve-pit-regressions",
+      "label": "Réserves et animations historiques PIT",
+      "status": "PASS",
+      "validationStage": "combined-consolidation-before-pr100",
+      "counts": {
+        "tests": 20,
+        "pass": 20,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "scope": "Régressions réserves et animations, ressources historiques matérialisées et assertion de reprise actualisée.",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/reserve-pit-regression.log",
+          "sha256": "d262cc9a65f5d7ed83769485913a7f3ac322402a1aecdd7eae03f1f050628eb7",
+          "bytes": 2380
+        }
+      ]
+    }
+  ],
+  "testCountingPolicy": {
+    "uniqueTotal": null,
+    "reason": "Les suites se recoupent. Leurs nombres sont reportés séparément et ne sont jamais additionnés pour annoncer un total de tests uniques."
+  },
+  "workflowReplays": [
+    {
+      "workflow": ".github/workflows/clan-war-v115.yml",
+      "status": "PASS_LOCAL_REPLAY",
+      "beforeStatus": "FAIL_LOCAL_REPLAY_MISSING_SPARSE_INPUTS",
+      "afterCounts": {
+        "tests": 77,
+        "pass": 77,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "checkedSteps": [
+        "tests",
+        "lint"
+      ],
+      "change": "Le sparse checkout inclut les dépendances du code fusionné ; les assertions des tests sont conservées.",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/workflow-review/clan-war-v115.yml.before.log",
+          "sha256": "762cacd81a4a4f987eb929ce760751bb35ffd1f350a89b96360a2d36f9263f1c",
+          "bytes": 1987
+        },
+        {
+          "path": "docs/pr-consolidation-20261103/logs/workflow-review/clan-war-v115.yml.after.log",
+          "sha256": "bf93269e1c9f365e2503cd47c968818d4615b22645fc951303c241646a7cba5b",
+          "bytes": 8798
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/clan-war-variants-v120.yml",
+      "status": "PASS_LOCAL_REPLAY",
+      "beforeStatus": "FAIL_LOCAL_REPLAY_MISSING_SPARSE_INPUTS",
+      "afterCounts": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "checkedSteps": [
+        "tests",
+        "typescript",
+        "lint",
+        "exports",
+        "1200-exported-records"
+      ],
+      "change": "Le sparse checkout inclut les dépendances du code fusionné ; les assertions des tests sont conservées.",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/workflow-review/clan-war-variants-v120.yml.before.log",
+          "sha256": "bca65fcd0aa5508e94edbe586eb3019dc83de813cb4ea4e9dbaa1cd8717d0cbb",
+          "bytes": 2804
+        },
+        {
+          "path": "docs/pr-consolidation-20261103/logs/workflow-review/clan-war-variants-v120.yml.after.log",
+          "sha256": "0d6f8ddee0d7c97a22507a45f271505398dec38bdc83816a5f575aa49a6d101b",
+          "bytes": 1580
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/clan-war-geo-ai-v126.yml",
+      "status": "PASS_LOCAL_REPLAY",
+      "beforeStatus": "FAIL_LOCAL_REPLAY_MISSING_SPARSE_INPUTS",
+      "afterCounts": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "checkedSteps": [
+        "tests",
+        "typescript",
+        "lint",
+        "exports",
+        "browser-target-bundle"
+      ],
+      "change": "Le sparse checkout inclut les dépendances du code fusionné ; les assertions des tests sont conservées.",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/workflow-review/clan-war-geo-ai-v126.yml.before.log",
+          "sha256": "b9037ff8feff7d433b254446663fc58cab890ce776c901bf711bf1c9ac470497",
+          "bytes": 991
+        },
+        {
+          "path": "docs/pr-consolidation-20261103/logs/workflow-review/clan-war-geo-ai-v126.yml.after.log",
+          "sha256": "ff2df7e2e428fac8cd88458ad72b7bac46c6d75c3b5ffb5413ac062a00a00655",
+          "bytes": 1857
+        }
+      ]
+    }
+  ],
+  "workflowReplayScope": "Exécutions locales des commandes pertinentes avec les sparse checkouts reproduits. Ces preuves ne constituent pas des résultats GitHub Actions sur un commit publié. Les trois changements de workflow étaient non commités au point de revue.",
+  "historicalEvidence": [
+    {
+      "path": "docs/pr-consolidation-20261103/logs/combined-production-build.log",
+      "sha256": "8d8b3c832f3e096f61bcfac0fbfc6bbfefac545dc667bf08563744dfac97ac4a",
+      "bytes": 5014
+    },
+    {
+      "path": "docs/pr-consolidation-20261103/logs/combined-next-smoke.log",
+      "sha256": "ed5918a1ecb1eda1ba48538c843c5a4f19f91764805a05975f3d00ddea2d6861",
+      "bytes": 376
+    },
+    {
+      "path": "docs/pr-consolidation-20261103/logs/combined-lint-final.log",
+      "sha256": "e547e338d6aaaaca01029034ac580d33dbb28a64c39b6e1b77d2be86e8d3a7e3",
+      "bytes": 8670
+    }
+  ],
+  "assetChecks": [
+    {
+      "status": "PASS_TECHNICAL_SOURCE_INTEGRITY",
+      "scope": "83 images de secteurs : intégrité et transparence techniques, pas de certification artistique ni de fidélité 1:1.",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/sector-assets.log",
+          "sha256": "4965ca7d23066ff05b01f1a9e7a950eea8ccc2a2b76483bfff1383330b3030cf",
+          "bytes": 243
+        }
+      ]
+    },
+    {
+      "status": "PASS_TECHNICAL_SOURCE_INTEGRITY",
+      "scope": "10 props fonctionnels, 20 PNG indépendants, 10 sources Blend ; admission runtime et certification canonique non accordées.",
+      "evidence": [
+        {
+          "path": "docs/pr-consolidation-20261103/logs/utility-assets.log",
+          "sha256": "fa40a95e5bede1f5d8fb8a5a6a217103502284b10d5e33972b98b1e4b4e03d25",
+          "bytes": 161
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    {
+      "id": "browser-alien-base",
+      "status": "NOT_EXECUTED",
+      "detail": "Le parcours navigateur local Alien Base est resté bloqué par l’absence de Chromium Playwright. Le banc compilé utilisait des images substitutives ; aucune interaction réussie n’est attestée.",
+      "reference": "docs/qa/consolidation-20261103/systems.json"
+    },
+    {
+      "id": "complete-gameplay",
+      "status": "NOT_CERTIFIED",
+      "detail": "Le build, le smoke HTTP et les tests ciblés ne prouvent pas un parcours utilisateur complet, toutes les scènes ou tous les assets."
+    },
+    {
+      "id": "art-and-canon",
+      "status": "UNCHANGED",
+      "detail": "Les statuts artistiques, les contrôles de captures et les dossiers de fidélité canonique ou visuelle 1:1 restent ouverts selon leurs registres. Aucune génération, compilation ou vérification de hash ne les clôture."
+    },
+    {
+      "id": "vercel-native-guards",
+      "status": "SKIPPED_LOCALLY",
+      "detail": "Les gardes native-origin et static-output sont sautées hors de la racine exacte Linux Vercel. Aucun déploiement Vercel ni contenu CDN, cache de service worker ou navigateur déployé n’est validé ici."
+    },
+    {
+      "id": "remote-delivery",
+      "status": "NOT_ATTESTED",
+      "detail": "Le SHA de publication n’est pas encore connu ; ce rapport n’atteste ni push, ni fusion distante, ni CI GitHub verte."
+    },
+    {
+      "id": "local-replay-runtime",
+      "status": "LOCAL_ONLY",
+      "detail": "Les reproductions des workflows sont des validations locales ; elles ne remplacent pas leur exécution sur les runners et versions Node configurés dans GitHub Actions."
+    }
+  ]
+}

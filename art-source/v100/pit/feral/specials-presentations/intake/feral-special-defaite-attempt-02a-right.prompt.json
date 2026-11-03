@@ -1,0 +1,24 @@
+{
+  "id": "feral-special-defaite-attempt-02a-right",
+  "actionId": "CIN_F006_DEFAITE",
+  "part": "A",
+  "side": "right",
+  "columns": 2,
+  "rows": 2,
+  "prompt": "Native illustrated full-body animation atlas of the SAME FERAL Predator as the attached single-direction reference: lean sinewy ochre-spotted skin, black dreads, ivory elongated skull biomask and red mandibles, dark ribbed loin armour, bone hip ornament, bronze wrist bracers, wrapped ankles and clawed bare feet. EXACT anatomical equipment: folding radial shield on LEFT forearm ONLY, twin curved wrist blades on RIGHT forearm ONLY. Two arms/two hands/two legs. Never transfer shield or blades to another arm. No shoulder cannon, no gun, spear, projectile or offensive effect. Real transparent alpha0 outside subject, no painted background, shadow, halo, floor, lettering or grid.\nPortrait1024x1536, exactly FOUR separate whole-body drawings in TWO COLUMNS TWO ROWS. Upper-left0=STANDING upright calibration, BOTH feet flat, LEFT shield open, no held weapon; calibration is outside animation. Upper-right1=phase1, lower-left2=phase2, lower-right3=phase3. Draw ALL figures small: standing body only330px tall, SAME anatomical scale in every cell. Each512x768 cell has at least100px fully empty transparent margins on every side of ENTIRE silhouette including dreads, toes, shield edge and wrist blades. Do not let any pixels touch cell/canvas edges or neighbor. Do not enlarge shortened kneeling poses. Different real articulated poses, no rigs or mirrors.\nALL FOUR drawings face RIGHT, FRONT three-quarter view, nose and front toes RIGHT. The LEFT shield arm is the far/front-facing arm; the RIGHT blade arm stays on the near side. Keep direction in every step.\nE10 DEFEAT / guard gives way, after KO. Phase1 upper-right: LEFT shield folds crookedly inward and stays crooked on that LEFT forearm, left shoulder drops and knees buckle. Phase2 lower-left: staggers on ONE visibly supporting leg with other foot lifted, LEFT arm hangs low with the same crooked shield, RIGHT free arm reaches out for balance with wrist blades still attached and pointing away from his body. Phase3 lower-right: sinks with one knee touching ground, RIGHT hand reaches the side of his skull mask as he tries to recover aim, RIGHT blades point away safely; LEFT crooked shield remains low on LEFT forearm, not in right hand. Mask remains worn. No attack, blood, explosion or victory gesture; tiny mud marks may touch the kneeling knee only, no backdrop.",
+  "source": "/workspace/generated_images/exec-f053ec61-d255-421d-b6ee-0e6e63eb6f68.png",
+  "sourceCell": "07_PRESENTATIONS!E10",
+  "sourcePlan": "app/game/data/pitWorkbookAnimationPlanV100.json",
+  "transparent_background": true,
+  "tool": "OpenAI built-in image_gen",
+  "cpuPixelEditing": false,
+  "status": "PENDING_NATIVE_MEASUREMENT_AND_SECOND_REVIEW",
+  "sha256": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d",
+  "bytes": 2122116,
+  "width": 1024,
+  "height": 1536,
+  "referenced_image_paths": [
+    "/workspace/yautja-la-longue-chasse/art-source/v100/pit/feral/intake/011-crouch-2h-right.png"
+  ],
+  "producerReview": "Initial visual review favorable: constant facing, left shield folds and lowers, one supporting leg then right hand seeks skullmask. Calibration excluded. Right page last pose reaches both knees sooner than the requested one-knee storyboard; judge against exact E10 rather than claiming the storyboard literally reproduced."
+}

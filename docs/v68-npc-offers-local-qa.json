@@ -1,0 +1,672 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4186",
+  "checks": [
+    {
+      "check": "npc-healer-safe-footing",
+      "status": "PASS",
+      "giverNpcId": "clan-healer",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "actor": {
+        "x": 269,
+        "y": 144
+      },
+      "title": "Des appuis pour le retour",
+      "regions": [
+        "Marais Luminescents",
+        "Grottes Thermiques"
+      ],
+      "persistedEntry": {
+        "id": "npc-healer-safe-footing",
+        "status": "active",
+        "acceptanceSerial": 1,
+        "stages": [
+          {
+            "regionId": "luminous-marshes",
+            "runId": null,
+            "proof": null,
+            "reportTick": null
+          },
+          {
+            "regionId": "thermal-caves",
+            "runId": null,
+            "proof": null,
+            "reportTick": null
+          }
+        ]
+      },
+      "captures": {
+        "offer": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\1-offer-clan-healer.png",
+        "accepted": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\1-accepted-clan-healer.png"
+      },
+      "routes": [
+        {
+          "kind": "city-and-door",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 3430,
+            "y": 1976.5
+          },
+          "distance": 4359.543286547536
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ],
+      "distanceNegative": {
+        "scope": "pure-model-only, not browser remote action",
+        "ok": false,
+        "changed": false,
+        "rewardMarks": 0,
+        "message": "Rejoins Soigneuse des délégations : cette remise ne se fait pas à distance."
+      }
+    },
+    {
+      "check": "npc-dock-return-line",
+      "status": "PASS",
+      "giverNpcId": "dock-officer",
+      "pointId": "dock-officer-point",
+      "buildingId": "dock-control",
+      "actor": {
+        "x": 195,
+        "y": 128
+      },
+      "title": "La route des guetteurs",
+      "regions": [
+        "Chaîne des Orages",
+        "Côte des Léviathans"
+      ],
+      "persistedEntry": {
+        "id": "npc-dock-return-line",
+        "status": "active",
+        "acceptanceSerial": 2,
+        "stages": [
+          {
+            "regionId": "storm-chain",
+            "runId": null,
+            "proof": null,
+            "reportTick": null
+          },
+          {
+            "regionId": "leviathan-coast",
+            "runId": null,
+            "proof": null,
+            "reportTick": null
+          }
+        ]
+      },
+      "captures": {
+        "offer": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\2-offer-dock-officer.png",
+        "accepted": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\2-accepted-dock-officer.png"
+      },
+      "routes": [
+        {
+          "kind": "exit",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 269,
+            "y": 144
+          },
+          "to": {
+            "x": 3430,
+            "y": 1977
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "dock-officer-point",
+          "buildingId": "dock-control",
+          "from": {
+            "x": 3430,
+            "y": 1977
+          },
+          "approach": {
+            "x": 650,
+            "y": 3015
+          },
+          "distance": 4846.464899438698
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "dock-officer-point",
+          "buildingId": "dock-control",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 195,
+            "y": 128
+          }
+        }
+      ],
+      "distanceNegative": {
+        "scope": "pure-model-only, not browser remote action",
+        "ok": false,
+        "changed": false,
+        "rewardMarks": 0,
+        "message": "Rejoins Officier des quais : cette remise ne se fait pas à distance."
+      }
+    },
+    {
+      "check": "npc-memory-two-histories",
+      "status": "PASS",
+      "giverNpcId": "memory-keeper",
+      "pointId": "memory-register-point",
+      "buildingId": "memory-vault",
+      "actor": {
+        "x": 195,
+        "y": 128
+      },
+      "title": "Deux mémoires du terrain",
+      "regions": [
+        "Ruines de la Première Cité",
+        "Couronne Froide"
+      ],
+      "persistedEntry": {
+        "id": "npc-memory-two-histories",
+        "status": "active",
+        "acceptanceSerial": 3,
+        "stages": [
+          {
+            "regionId": "first-city-ruins",
+            "runId": null,
+            "proof": null,
+            "reportTick": null
+          },
+          {
+            "regionId": "cold-crown",
+            "runId": null,
+            "proof": null,
+            "reportTick": null
+          }
+        ]
+      },
+      "captures": {
+        "offer": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\3-offer-memory-keeper.png",
+        "accepted": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\3-accepted-memory-keeper.png"
+      },
+      "routes": [
+        {
+          "kind": "exit",
+          "buildingId": "dock-control",
+          "from": {
+            "x": 195,
+            "y": 128
+          },
+          "to": {
+            "x": 650,
+            "y": 3015
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "memory-register-point",
+          "buildingId": "memory-vault",
+          "from": {
+            "x": 650,
+            "y": 3015
+          },
+          "approach": {
+            "x": 1160,
+            "y": 1108.5
+          },
+          "distance": 7089.206645154759
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "memory-register-point",
+          "buildingId": "memory-vault",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 195,
+            "y": 128
+          }
+        }
+      ],
+      "distanceNegative": {
+        "scope": "pure-model-only, not browser remote action",
+        "ok": false,
+        "changed": false,
+        "rewardMarks": 0,
+        "message": "Rejoins Conservatrice des marques : cette remise ne se fait pas à distance."
+      }
+    },
+    {
+      "check": "npc-forge-relay-cases",
+      "status": "PASS",
+      "giverNpcId": "forge-artisan",
+      "pointId": "forge-service",
+      "buildingId": "deep-forge",
+      "actor": {
+        "x": 269,
+        "y": 144
+      },
+      "title": "Des boîtiers sans trophée",
+      "regions": [
+        "Marches de Cendre",
+        "Désert de Verre"
+      ],
+      "persistedEntry": {
+        "id": "npc-forge-relay-cases",
+        "status": "active",
+        "acceptanceSerial": 4,
+        "stages": [
+          {
+            "regionId": "ash-marches",
+            "runId": null,
+            "proof": null,
+            "reportTick": null
+          },
+          {
+            "regionId": "glass-desert",
+            "runId": null,
+            "proof": null,
+            "reportTick": null
+          }
+        ]
+      },
+      "captures": {
+        "offer": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\4-offer-forge-artisan.png",
+        "accepted": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\4-accepted-forge-artisan.png"
+      },
+      "routes": [
+        {
+          "kind": "exit",
+          "buildingId": "memory-vault",
+          "from": {
+            "x": 195,
+            "y": 128
+          },
+          "to": {
+            "x": 1160,
+            "y": 1109
+          }
+        },
+        {
+          "kind": "city-and-door",
+          "pointId": "forge-service",
+          "buildingId": "deep-forge",
+          "from": {
+            "x": 1160,
+            "y": 1109
+          },
+          "approach": {
+            "x": 3080,
+            "y": 2968.5
+          },
+          "distance": 4091.4057372227826
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "forge-service",
+          "buildingId": "deep-forge",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ],
+      "distanceNegative": {
+        "scope": "pure-model-only, not browser remote action",
+        "ok": false,
+        "changed": false,
+        "rewardMarks": 0,
+        "message": "Rejoins Maîtresse des parures : cette remise ne se fait pas à distance."
+      }
+    },
+    {
+      "check": "reload-persistence-and-physical-revisit",
+      "status": "PASS",
+      "active": 4,
+      "completed": 0,
+      "proofCount": 0,
+      "confirmedReturns": 0,
+      "contractMarks": 0,
+      "walletBefore": 0,
+      "walletAfter": 0,
+      "journalCapture": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\5-four-active-journal.png"
+    }
+  ],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\1-offer-clan-healer.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\1-accepted-clan-healer.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\2-offer-dock-officer.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\2-accepted-dock-officer.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\3-offer-memory-keeper.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\3-accepted-memory-keeper.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\4-offer-forge-artisan.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\4-accepted-forge-artisan.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v68\\qa\\npc-contract-smoke\\5-four-active-journal.png"
+  ],
+  "routes": [
+    {
+      "kind": "city-and-door",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 1280,
+        "y": 4480
+      },
+      "approach": {
+        "x": 3430,
+        "y": 1976.5
+      },
+      "distance": 4359.543286547536
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    },
+    {
+      "kind": "exit",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 269,
+        "y": 144
+      },
+      "to": {
+        "x": 3430,
+        "y": 1977
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "dock-officer-point",
+      "buildingId": "dock-control",
+      "from": {
+        "x": 3430,
+        "y": 1977
+      },
+      "approach": {
+        "x": 650,
+        "y": 3015
+      },
+      "distance": 4846.464899438698
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "dock-officer-point",
+      "buildingId": "dock-control",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 195,
+        "y": 128
+      }
+    },
+    {
+      "kind": "exit",
+      "buildingId": "dock-control",
+      "from": {
+        "x": 195,
+        "y": 128
+      },
+      "to": {
+        "x": 650,
+        "y": 3015
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "memory-register-point",
+      "buildingId": "memory-vault",
+      "from": {
+        "x": 650,
+        "y": 3015
+      },
+      "approach": {
+        "x": 1160,
+        "y": 1108.5
+      },
+      "distance": 7089.206645154759
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "memory-register-point",
+      "buildingId": "memory-vault",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 195,
+        "y": 128
+      }
+    },
+    {
+      "kind": "exit",
+      "buildingId": "memory-vault",
+      "from": {
+        "x": 195,
+        "y": 128
+      },
+      "to": {
+        "x": 1160,
+        "y": 1109
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "forge-service",
+      "buildingId": "deep-forge",
+      "from": {
+        "x": 1160,
+        "y": 1109
+      },
+      "approach": {
+        "x": 3080,
+        "y": 2968.5
+      },
+      "distance": 4091.4057372227826
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "forge-service",
+      "buildingId": "deep-forge",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 1280,
+        "y": 4480
+      },
+      "approach": {
+        "x": 3430,
+        "y": 1976.5
+      },
+      "distance": 4359.543286547536
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    },
+    {
+      "kind": "exit",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 269,
+        "y": 144
+      },
+      "to": {
+        "x": 3430,
+        "y": 1977
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "dock-officer-point",
+      "buildingId": "dock-control",
+      "from": {
+        "x": 3430,
+        "y": 1977
+      },
+      "approach": {
+        "x": 650,
+        "y": 3015
+      },
+      "distance": 4846.464899438698
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "dock-officer-point",
+      "buildingId": "dock-control",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 195,
+        "y": 128
+      }
+    },
+    {
+      "kind": "exit",
+      "buildingId": "dock-control",
+      "from": {
+        "x": 195,
+        "y": 128
+      },
+      "to": {
+        "x": 650,
+        "y": 3015
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "memory-register-point",
+      "buildingId": "memory-vault",
+      "from": {
+        "x": 650,
+        "y": 3015
+      },
+      "approach": {
+        "x": 1160,
+        "y": 1108.5
+      },
+      "distance": 7089.206645154759
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "memory-register-point",
+      "buildingId": "memory-vault",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 195,
+        "y": 128
+      }
+    },
+    {
+      "kind": "exit",
+      "buildingId": "memory-vault",
+      "from": {
+        "x": 195,
+        "y": 128
+      },
+      "to": {
+        "x": 1160,
+        "y": 1109
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "forge-service",
+      "buildingId": "deep-forge",
+      "from": {
+        "x": 1160,
+        "y": 1109
+      },
+      "approach": {
+        "x": 3080,
+        "y": 2968.5
+      },
+      "distance": 4091.4057372227826
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "forge-service",
+      "buildingId": "deep-forge",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "requestFailures": [],
+  "fixture": "campaignFixture legacy adult save, no initial contract or regional proof",
+  "browserProvenance": "Real keyboard travel through city doors and traversable interior points, public E interaction and public accept clicks; no actor coordinate injection or synthetic gameplay events after entry.",
+  "scope": "Four NPC personal offers, acceptance, zero progression/payment and reload persistence only. The two regional stages of these NPC contracts are not played end to end by this smoke.",
+  "preparationNotes": [
+    {
+      "scope": "pre-browser harness environment only",
+      "error": "Initial campaignFixture esbuild failed with Access is denied reading ../../../.. before Chrome was launched. Exact defaultSave export through the project read-only TS QA loader supplied through the helper supported CAMPAIGN_QA_FIXTURE_FILE option."
+    },
+    {
+      "scope": "QA locator correction only",
+      "error": "Initial smoke had passed four acceptances but requested journal inside an NPC dialogue; journal exists under the public Journal de la cité button. The corrected run opens that control. Initial harness failure retained separately."
+    }
+  ],
+  "visualReview": "PASS. All nine captures were inspected. Four offer cards and four accepted cards show the correct giver, unique request title, two authored regions, French brief and restrictions. Accepted states display 0/2 confirmed returns and zero clan marks. The final journal shows all four active requests, zero deliveries and zero marks. Two accepted cards require normal card scrolling to fully show the bottom abandon button; request text, status and next objective remain readable."
+}

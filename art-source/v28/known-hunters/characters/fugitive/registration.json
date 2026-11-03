@@ -1,0 +1,671 @@
+{
+  "schemaVersion": 1,
+  "scope": "Fugitive2018 V28: read-only mechanical registration proposals; source pixels unchanged",
+  "reviewDate": "2026-09-05",
+  "entries": [
+    {
+      "id": "fugitive-hit-reaction",
+      "characterId": "fugitive",
+      "clip": "hit-reaction",
+      "status": "draft-registration-only",
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/fugitive-hit-reaction.png",
+        "sha256": "6cad1bfac5c15ab432b9aa045fb7dd36eaa8f357a3818a888346b79859d4dfce",
+        "sha256AfterRead": "6cad1bfac5c15ab432b9aa045fb7dd36eaa8f357a3818a888346b79859d4dfce",
+        "unchanged": true,
+        "bytes": 2021581,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "opaque magenta; no alpha conversion performed"
+      },
+      "measurementMethod": {
+        "separation": "Full-width column projection inside each half-height row, separated by12 consecutive empty columns; no512px-wide clipping.",
+        "boundsPolicy": "Union of t160/180/200 bounds plus8px margin.",
+        "pivotPolicy": "Midpoint of two measured sole contact spans, at lower/near sole baseline. Constant scale across the clip."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            145,
+            62,
+            301,
+            431
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                145,
+                62,
+                301,
+                430
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                145,
+                62,
+                301,
+                431
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                145,
+                61,
+                301,
+                432
+              ]
+            }
+          ],
+          "rectPx": [
+            137,
+            53,
+            317,
+            448
+          ],
+          "pivotSourcePx": {
+            "x": 269.5,
+            "y": 493
+          },
+          "pivotPx": {
+            "x": 132.5,
+            "y": 440
+          },
+          "pivotInNominalCellPx": {
+            "x": 269.5,
+            "y": 493
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 167.5,
+                "y": 493
+              },
+              "contactSpanPx": [
+                145,
+                190
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 371.5,
+                "y": 486
+              },
+              "contactSpanPx": [
+                340,
+                403
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Complete masked body; two hands, two blades per gauntlet and one anatomical-right shoulder caster observed. No held sword or obvious extra limb.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        },
+        {
+          "index": 2,
+          "stage": "impact-recoil",
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            555,
+            88,
+            351,
+            404
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                555,
+                88,
+                351,
+                404
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                555,
+                88,
+                351,
+                404
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                555,
+                88,
+                351,
+                405
+              ]
+            }
+          ],
+          "rectPx": [
+            547,
+            80,
+            367,
+            421
+          ],
+          "pivotSourcePx": {
+            "x": 749.75,
+            "y": 492
+          },
+          "pivotPx": {
+            "x": 202.75,
+            "y": 412
+          },
+          "pivotInNominalCellPx": {
+            "x": 237.75,
+            "y": 492
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 649,
+                "y": 492
+              },
+              "contactSpanPx": [
+                626,
+                672
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 850.5,
+                "y": 486
+              },
+              "contactSpanPx": [
+                819,
+                882
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Backward head/chest recoil; two plausible hands and four gauntlet blades remain present. Fine finger anatomy not certified.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        },
+        {
+          "index": 3,
+          "stage": "maximum-recoil",
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1024,
+            107,
+            358,
+            385
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1024,
+                107,
+                358,
+                385
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1024,
+                107,
+                358,
+                385
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1024,
+                106,
+                358,
+                387
+              ]
+            }
+          ],
+          "rectPx": [
+            1016,
+            98,
+            374,
+            403
+          ],
+          "pivotSourcePx": {
+            "x": 1244.25,
+            "y": 492
+          },
+          "pivotPx": {
+            "x": 228.25,
+            "y": 394
+          },
+          "pivotInNominalCellPx": {
+            "x": 220.25,
+            "y": 492
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1150.5,
+                "y": 492
+              },
+              "contactSpanPx": [
+                1127,
+                1174
+              ],
+              "lowerFootBandWidthPx": 48
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1338,
+                "y": 486
+              },
+              "contactSpanPx": [
+                1312,
+                1364
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Maximum recoil: near hand partly opens while far hand remains curled. Blade housings remain on forearms, not held objects. No obviously duplicated hand; exact digits not certified.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        },
+        {
+          "index": 4,
+          "stage": "forward-low-recovery",
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            152,
+            622,
+            271,
+            345
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                152,
+                622,
+                271,
+                345
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                152,
+                622,
+                271,
+                345
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                152,
+                622,
+                271,
+                345
+              ]
+            }
+          ],
+          "rectPx": [
+            144,
+            614,
+            287,
+            361
+          ],
+          "pivotSourcePx": {
+            "x": 269.5,
+            "y": 967
+          },
+          "pivotPx": {
+            "x": 125.5,
+            "y": 353
+          },
+          "pivotInNominalCellPx": {
+            "x": 269.5,
+            "y": 455
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 175.5,
+                "y": 967
+              },
+              "contactSpanPx": [
+                152,
+                199
+              ],
+              "lowerFootBandWidthPx": 48
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 363.5,
+                "y": 960
+              },
+              "contactSpanPx": [
+                332,
+                395
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Low forward recovery; two fists and two blade pairs visible. Forearms cross the torso but remain separable. Head/caster tilt follows the crouch.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        },
+        {
+          "index": 5,
+          "stage": "rising-recovery",
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            602,
+            562,
+            302,
+            407
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                602,
+                562,
+                302,
+                407
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                602,
+                562,
+                302,
+                407
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                602,
+                562,
+                302,
+                407
+              ]
+            }
+          ],
+          "rectPx": [
+            594,
+            554,
+            318,
+            423
+          ],
+          "pivotSourcePx": {
+            "x": 725.5,
+            "y": 969
+          },
+          "pivotPx": {
+            "x": 131.5,
+            "y": 415
+          },
+          "pivotInNominalCellPx": {
+            "x": 213.5,
+            "y": 457
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 624.5,
+                "y": 969
+              },
+              "contactSpanPx": [
+                602,
+                647
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 826.5,
+                "y": 962
+              },
+              "contactSpanPx": [
+                795,
+                858
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Rises with two hands and four blades still attached to housings. No obvious floating weapon or missing limb observed.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        },
+        {
+          "index": 6,
+          "stage": "ready-recovered",
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1078,
+            542,
+            300,
+            427
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1078,
+                542,
+                300,
+                427
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1078,
+                542,
+                300,
+                427
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1078,
+                542,
+                300,
+                427
+              ]
+            }
+          ],
+          "rectPx": [
+            1070,
+            534,
+            316,
+            443
+          ],
+          "pivotSourcePx": {
+            "x": 1201.75,
+            "y": 969
+          },
+          "pivotPx": {
+            "x": 131.75,
+            "y": 435
+          },
+          "pivotInNominalCellPx": {
+            "x": 177.75,
+            "y": 457
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1101,
+                "y": 969
+              },
+              "contactSpanPx": [
+                1078,
+                1124
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1302.5,
+                "y": 963
+              },
+              "contactSpanPx": [
+                1271,
+                1334
+              ],
+              "lowerFootBandWidthPx": 70
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Recovered guard; two hands, two blade pairs and one shoulder caster observed. Transition to normal guard requires playback review.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        }
+      ],
+      "checks": {
+        "frameCount": 6,
+        "rectanglesInsideSource": true,
+        "rectanglesDisjoint": true,
+        "thresholdCoverage": [
+          {
+            "threshold": 160,
+            "measuredForegroundPixels": 322481,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 180,
+            "measuredForegroundPixels": 323874,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 200,
+            "measuredForegroundPixels": 325546,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          }
+        ],
+        "actualFiguresOverlapObserved": false,
+        "nearFootWidthRangePx": [
+          47,
+          48
+        ],
+        "silhouetteHeightRangePx": [
+          345,
+          431
+        ],
+        "nominalRootXRangePx": [
+          177.75,
+          269.5
+        ],
+        "nominalRootYRangePx": [
+          455,
+          493
+        ],
+        "automaticRescaleRecommended": false,
+        "animationPlaybackVerified": false,
+        "anatomyCertified": false,
+        "cinemaFidelityCertified": false,
+        "promptMaxTotalHeightPx": 350,
+        "promptHeightLimitMet": false,
+        "promptMinimumMarginPx": 70,
+        "promptMarginMet": false,
+        "allSixPosesVisuallyDistinct": true,
+        "requestedUniformMagentaBackgroundMet": false
+      },
+      "actionReview": {
+        "requested": "Armored Fugitive2018: impact from screen right followed by recovery, six-frame one-shot.",
+        "observed": "Ready, backward recoil, maximum extension, low forward crouch, rising recovery and ready return are visually distinguishable. This is a hit-reaction candidate rather than a repeated idle.",
+        "recommendation": "One-shot frames1-6 then return to a separate ready/guard state. Do not loop impacts as an idle. Test timing at the3-to4 torso reversal.",
+        "limits": [
+          "Runtime playback and combat readability not verified here",
+          "Near hand opens in frame3 although prompt asked curled fists throughout; plausible response, explicit deviation",
+          "Perspective/contact thresholds shift the far foot contact midpoint; pivot is a measured proposal",
+          "Mask and exact wrist blade dimensions are adapted, no1:1 claim"
+        ]
+      },
+      "notes": [
+        "Source bitmap preserved verbatim from integrated OpenAI generation dataURL; no API key, no alpha conversion, no creative script edits.",
+        "Six silhouettes found using full-width row projection; regular512px cells are reference guides only.",
+        "Fugitive full armor/biomask variant2018; not Lab Escape, Assassin or Predator Killer. Official NECA reference screenshots were inspected.",
+        "Figures occupy345-431px in height rather than requested350px maximum, and margins are smaller than requested. Do not fit each frame to equal height.",
+        "Use one constant sprite scale. The height reduction in recoil/crouch comes from posture, not a request for rescaling.",
+        "Status remains draft-registration-only / usable for visual review, not gameplay-approved or anatomy/cinema-fidelity certified.",
+        "Actual background samples: corners232,11,237 /240,16,240 /229,33,235 /234,28,236; gutter247,4,250. Opaque nonuniform magenta, no fake checkerboard observed."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,653 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-168-hive-front",
+  "proposalId": "new-hive-front",
+  "name": "Front de la ruche",
+  "workbookStage": "09_STAGES!A32:N32",
+  "workbookLife": "10_VIE_DES_STAGES!A86:N88",
+  "sourceUrls": [
+    "https://store.necaonline.com/blogs/news/174240327-closer-look-predators-series-10-action-figures",
+    "https://store.necaonline.com/collections/horror-collection/products/aliens-40th-anniversary-ultimate-xenomorph-warrior-7-inch-scale-action-figure"
+  ],
+  "loreLimits": [
+    "Original AVP hive-front exhibition; no invented planet name or common personal place for Big Mama/Hashori.",
+    "Drone and anonymous adult guard remain distant, separated from combat and do not fire projectiles.",
+    "E87 is represented by one anonymous gate worker; a literal multi-person team is not contained in this sheet. E86 uses generic smooth-dome drone interpretation inspired by the primary classic anatomy reference."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "Use case stylized-concept. ReferenceimageisforclassicxenomorphanatomyONLY, do notcopyfigurephotographyfloororlogo. Create truealpha nativePNG sprite sheet1536x1024, exact3columns2rowsofsixsequentialposes. One SMALL jetblackbiomechanical xenomorphclinging upside-down to an invisibleceiling, sideview headfacingleft. Preserveclassiclongridgedhead, fourdorsaltubes, ribbedtorso, twoarms twolegs, one segmentedtail withpointtip. Bodybelowceilinggrip; fourlimbsbentupwardwithhandsandfeetnearonehorizontaluppercontactline. Tailcurlsclosearoundbody, entirelyinsideeachcell; noelongatedtailoutside. Sixdifferent quietcrawleridleposes:1still,2leftarmreachesslightly,3headturnsdown,4tailcoilstighter,5rightarmadjusts,6returnstostill. Sameidentityanatomysizeacrosssix. Eachcomplete MINIATURE creature fitscentral60percent of512cell withatleast90px transparentmargins; allheadtailhandsfeetfullyvisible. Detailed handpainted cinematicstyle, coolbluereflectededges, notplastictoy. Noceilingbeamdrawn,noscene,noblood,noprey,noegg,notext,nogrid,no shadows orfog. Sixindividualfulldrawings,nocrosscelloverlap.",
+      "referencedImagePaths": [
+        "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v60/references/neca-xenomorph-warrior-body.jpg"
+      ],
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-2bb592d1-2960-4486-9209-2daf62a62d4c.png",
+      "workspacePath": "work-local/v60/generated/arena-168-hive-front/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six complete inverted xenomorph idle poses, classic elongated head, two arms/two legs, segmented tail curled within frame. Primary NECA anatomy reference used; generated head follows smooth-dome drone interpretation rather than exact Warrior ridge match. Top-contact anchor required at rear ceiling.",
+      "anchorKind": "hanging-top",
+      "sha256": "268636c2a77ad6b0022eadf6eeecc1819a03334b09a0e4e3ad8c047ad074f51f",
+      "bytes": 2563741,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.5278447469075521,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            33,
+            49,
+            455,
+            414
+          ],
+          "pivot": [
+            295,
+            49
+          ],
+          "bodyCenterPivot": [
+            260,
+            463
+          ],
+          "opaquePixelCount": 103520,
+          "contentSha256": "b581ab46241b5da9821cd1bd3ca31d69593c6563aec23d1a30990151272efe6e",
+          "margins": [
+            33,
+            49,
+            24,
+            49
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            28,
+            48,
+            470,
+            416
+          ],
+          "pivot": [
+            273.5,
+            48
+          ],
+          "bodyCenterPivot": [
+            262.5,
+            464
+          ],
+          "opaquePixelCount": 110033,
+          "contentSha256": "78715821e5f01d8b31833d4aa01bc457e6f18a2926ec43c0995d24823da00dae",
+          "margins": [
+            28,
+            48,
+            14,
+            48
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            60,
+            50,
+            433,
+            419
+          ],
+          "pivot": [
+            291.5,
+            50
+          ],
+          "bodyCenterPivot": [
+            276,
+            469
+          ],
+          "opaquePixelCount": 101660,
+          "contentSha256": "572d820321a748de0a2d7aa9ab6da835a590379051ae3c82ad2b8e3242c351ab",
+          "margins": [
+            60,
+            50,
+            19,
+            43
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            21,
+            415,
+            372
+          ],
+          "pivot": [
+            292.5,
+            21
+          ],
+          "bodyCenterPivot": [
+            257,
+            393
+          ],
+          "opaquePixelCount": 92203,
+          "contentSha256": "572f673a4a5e00ea22bf6aeda36fc41dff3c43260b507135026363c5b1c37d1e",
+          "margins": [
+            50,
+            21,
+            47,
+            119
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            18,
+            458,
+            429
+          ],
+          "pivot": [
+            271,
+            18
+          ],
+          "bodyCenterPivot": [
+            259.5,
+            447
+          ],
+          "opaquePixelCount": 106785,
+          "contentSha256": "46a6e50aee2bbe7f21d7265224261bcf4318ccd5713ffb705f255f4d9a9c154f",
+          "margins": [
+            31,
+            18,
+            23,
+            65
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            19,
+            453,
+            418
+          ],
+          "pivot": [
+            269.5,
+            19
+          ],
+          "bodyCenterPivot": [
+            242,
+            437
+          ],
+          "opaquePixelCount": 104086,
+          "contentSha256": "2b8140e983542600dcff70149c5cf12935e61a6c4820db2c7e08e7ab934a9e45",
+          "margins": [
+            16,
+            19,
+            43,
+            75
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-02",
+      "prompt": "Native alpha PNG sprite sheet1536x1024, six sequential SMALL anonymousadult Yautja gateworker poses inexact3columns2rows,512squarecells. Guard wearsdarksilver biomask, blackdreadlocks, weatheredgunmetal shoulder/shinarmour, brownnettedlimbsandleatherskirt. No namedcharacter, noplacard, no weapon. Fullbody sideview facingright, both hands gripping a SMALL fourbar rectangular industrialgrillepanel immediatelybesidehim, feet firmlyplanted, calmbracingstance. Entiregrille panelincluded, no barsgoingoffcell. Sixdistinctsubtle poses:1bracesgrille,2elbowsbend,3leansweightforward,4headlooksslightlyupwhilegripping,5shiftsback,6relaxesbutkeepshandsconnected. Keep humanoid anatomy twoarms twohands twolegs; consistentmaskarmourallframes. Guardandgrille totalheight340width320pixels, minimum70px blankalpha margins onALLsides, completeheadfeetandgrille. Painterlycinematiccoolblue highlights onmutedmetal. Noceilings,floorpatches,shadows,backgroundfogs,xenomorphs,guns,projectiles,blood,text,labelsorgrid. Six separated miniature complete silhouettes.",
+      "referencedImagePaths": [],
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-58e0b641-8090-4939-bf41-67ce7fe61b03.png",
+      "workspacePath": "work-local/v60/generated/arena-168-hive-front/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six coherent anonymous adult Yautja bracing poses, both hands remain at grille, heads and feet complete. One gate worker sprite is supplied; an entire multi-person team is not literally drawn in this sheet.",
+      "anchorKind": "ground-bottom",
+      "sha256": "a1b777e424894f174fba192d27e5a14f89d8ef0db11ce50912a498e21238918d",
+      "bytes": 2224203,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6244449615478516,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            140,
+            7,
+            269,
+            478
+          ],
+          "pivot": [
+            183,
+            485
+          ],
+          "bodyCenterPivot": [
+            274,
+            485
+          ],
+          "opaquePixelCount": 88093,
+          "contentSha256": "39ff16556d0630a175a90421e94e136b558d3a2a0663d63dbe31027ca6968c05",
+          "margins": [
+            140,
+            7,
+            103,
+            27
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            129,
+            35,
+            284,
+            450
+          ],
+          "pivot": [
+            270,
+            485
+          ],
+          "bodyCenterPivot": [
+            270.5,
+            485
+          ],
+          "opaquePixelCount": 87788,
+          "contentSha256": "16374351a55c8f2012d5427d080c9294bd1261f1937e8a71e4e929144eca94c1",
+          "margins": [
+            129,
+            35,
+            99,
+            27
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            62,
+            65,
+            377,
+            416
+          ],
+          "pivot": [
+            251,
+            481
+          ],
+          "bodyCenterPivot": [
+            250,
+            481
+          ],
+          "opaquePixelCount": 85821,
+          "contentSha256": "377e586b8076a9b576fbc9bef3c5573f784e0bd3334ec22f97906a82673494ff",
+          "margins": [
+            62,
+            65,
+            73,
+            31
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            137,
+            2,
+            281,
+            482
+          ],
+          "pivot": [
+            274.5,
+            484
+          ],
+          "bodyCenterPivot": [
+            277,
+            484
+          ],
+          "opaquePixelCount": 89643,
+          "contentSha256": "ef367a8a11361c0b0aa1c78af6b5607603f2903115c19259219887676bd37c0e",
+          "margins": [
+            137,
+            2,
+            94,
+            28
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            94,
+            30,
+            328,
+            452
+          ],
+          "pivot": [
+            166,
+            482
+          ],
+          "bodyCenterPivot": [
+            257.5,
+            482
+          ],
+          "opaquePixelCount": 87331,
+          "contentSha256": "6e00b6bfe166b990f0cb0ad784ecf5c5674f8824e71bcf247ccaed360b49b9d0",
+          "margins": [
+            94,
+            30,
+            90,
+            30
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            5,
+            281,
+            475
+          ],
+          "pivot": [
+            267,
+            480
+          ],
+          "bodyCenterPivot": [
+            271,
+            480
+          ],
+          "opaquePixelCount": 87208,
+          "contentSha256": "ec4a2e020a2cb08627f962c2aaeeb81cc924ecb25f03e836597595ab25a62788",
+          "margins": [
+            131,
+            5,
+            100,
+            32
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-03",
+      "prompt": "Native transparent PNG6frame2Dpainted sprite sheet1536x1024,3columns2rows of512x512cells. Subject SMALL industrialdecontaminationpipe fitting partly wrapped by glossyblack alienhiveresin: shortvertical ribbedmetalpipe oncompactfoot, elbowoutletaimsdownintolowcatchbasin, circularvalvefront. Original environmentprop, no livingorganism, noeyesorlimbs. Sixdistinctstates:1dryresinshine,2small condensationbeadformsunderelbow,3dropreleases,4tinycontainedbasinripple,5resinhighlightsshiftwithmoisture,6dryrest. Pipeandresinstructure stayidentical, onlydrop/rippleandvalveanglemove slowly. Maxspritewidth280height320pixels, huge90pxalpha marginsallaround. Sideview cinematicpainting, coolbluebacklight amberrim, realmetalandorganicresincontrast. Allpipesendinsidesprite, nooffscreenlinks, nospraytowardcombat, nofogorlargecloud. Genuinelytransparentbackgroundandholes, nocastshadoworfloorpatch, nolettering,nogrids,nologo, noactors.",
+      "referencedImagePaths": [],
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-a7a26e20-b504-431e-b8c1-86407adbb3e7.png",
+      "workspacePath": "work-local/v60/generated/arena-168-hive-front/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six decontamination pipe states: stable resin/metal silhouette, visible droplet-to-ripple sequence, no projectile toward duel.",
+      "anchorKind": "ground-bottom",
+      "sha256": "7c62d418fea06ea2ce1f5c1a8fe841cf1b2f3fd9e1016e97197702b258ed8bcd",
+      "bytes": 2568919,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.507147471110026,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            15,
+            410,
+            469
+          ],
+          "pivot": [
+            289.5,
+            484
+          ],
+          "bodyCenterPivot": [
+            255.5,
+            484
+          ],
+          "opaquePixelCount": 122259,
+          "contentSha256": "865a52971034c6f3ffb1ad53d74cf44f6d32b58e0e3c9863905c9aeed34327da",
+          "margins": [
+            51,
+            15,
+            51,
+            28
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            14,
+            407,
+            469
+          ],
+          "pivot": [
+            285,
+            483
+          ],
+          "bodyCenterPivot": [
+            257,
+            483
+          ],
+          "opaquePixelCount": 122131,
+          "contentSha256": "835a94e47453eb953d4ce0f2d1a7b48fb975f97077e12ad8471f8b7790533b63",
+          "margins": [
+            54,
+            14,
+            51,
+            29
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            66,
+            14,
+            409,
+            469
+          ],
+          "pivot": [
+            304,
+            483
+          ],
+          "bodyCenterPivot": [
+            270,
+            483
+          ],
+          "opaquePixelCount": 123615,
+          "contentSha256": "361a82809155a0fe105b4f72c2d19eba17d678333323f07cd2902212195da29f",
+          "margins": [
+            66,
+            14,
+            37,
+            29
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            52,
+            15,
+            410,
+            468
+          ],
+          "pivot": [
+            288.5,
+            483
+          ],
+          "bodyCenterPivot": [
+            256.5,
+            483
+          ],
+          "opaquePixelCount": 122585,
+          "contentSha256": "49169b3423b01439bff7b0bd9b1539d8b5960d2278fbbca96184654b68213a7e",
+          "margins": [
+            52,
+            15,
+            50,
+            29
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            14,
+            408,
+            470
+          ],
+          "pivot": [
+            290,
+            484
+          ],
+          "bodyCenterPivot": [
+            257.5,
+            484
+          ],
+          "opaquePixelCount": 121915,
+          "contentSha256": "eae836758fed965898ff58aae5a8c60a3a4db1224045158b9740184b56613021",
+          "margins": [
+            54,
+            14,
+            50,
+            28
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            65,
+            13,
+            411,
+            470
+          ],
+          "pivot": [
+            300,
+            483
+          ],
+          "bodyCenterPivot": [
+            270,
+            483
+          ],
+          "opaquePixelCount": 122152,
+          "contentSha256": "3d82a425cc23e50614b31d5a0fcc318f245e5167e8342aaa3a26737787adf6e1",
+          "margins": [
+            65,
+            13,
+            36,
+            29
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case stylized-concept. Empty depthplate1536x1024 for a2D sideview Alien versus Predator hive-front fightinggame stage, original compositionnotclaimed filmset. Long industrialcontainment hall partlyovergrown with glossyblack biomechanical resin ribs, distantceilingarchesand emptycabletrays, dimcoldblue sidelight, mutedamber emergencylight recessedfarback. Farwallleft resinarcheswith small horizontalledgeunderceiling reserved forseparatecrawler; rightdistantsealedgrille opening reserved forseparateanonymousguard sprites. Allstatic architectureonly: no xenomorphs, no eggs, nopeople, no bodies, nofigures, no weapons, no pipevapor, no oozeanimation, nosignage orlogos. Horizontalstagingwithshallowtheatricalperspective; lowhorizon, broadsubduedbottom20percentbacking for independentlyoverlaidplayablefloor. Detailedpaintedcinematicgameart, believablemetal/resinmaterials, unsettlingbutclearcompositionsuitablebackground.",
+      "referencedImagePaths": [],
+      "transparentRequested": false,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-a532dde2-4e88-41f3-959d-9828dc9bceb6.png",
+      "workspacePath": "work-local/v60/generated/arena-168-hive-front/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected empty hive-front hall: coherent resin and industrial architecture, rear ceiling and gate placement zones, no characters or animated actors baked into depth plate.",
+      "anchorKind": "ground-bottom",
+      "sha256": "df9260b14a1e75d7e91ec1ac9545e705463eee4103d8b36c1b039a6bcec05946",
+      "bytes": 2553882,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "artStatus": "complete-4-native-pngs-awaiting-runtime-qa"
+}

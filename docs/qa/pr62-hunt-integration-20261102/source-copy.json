@@ -1,0 +1,140 @@
+{
+  "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+  "baseCommit": "03cf51badd450338d748da55599a317a71debd28",
+  "copied": [
+    {
+      "path": "app/game/ConservationPanelV112.module.css",
+      "beforeSha256": "c8c9bb5ae9a9e3b36e6f366529f919e23bce5dfdd50dc1435b7629065d8b35a4",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 1965,
+      "sha256": "374da9b461a5bef48d742bf60b7f455e6873e44874ac9514af1cefd5ac0940ce"
+    },
+    {
+      "path": "app/game/ConservationPanelV112.tsx",
+      "beforeSha256": "ee3873abaa2c72de3ff41e79b0f2001449099b22d9b7203d0e27c0c443a2ee9e",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 7644,
+      "sha256": "6f9dabeaa03f4f36aa2b2388c1afa7ba62d9b30742b9e7706b7a743902978a2b"
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "beforeSha256": "009b321edac73cb040a3af8c16c4e0cf77bdc41ae4ff266ca00a02708f52adc3",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 292863,
+      "sha256": "f034ac0de7136d6a4abd29e286dcdeaa5940f22b2968b8ea62e36c3f3026ef47"
+    },
+    {
+      "path": "app/game/HuntAccessibilityV112.module.css",
+      "beforeSha256": "0e526424f01a8fe47e4b577701db66e2f611363f634ccad4e6d1253e9d72339d",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 2129,
+      "sha256": "e931db3b3cb6efb58a75215e7f4e2ac5c8465f6d68406e71c69799005a21f369"
+    },
+    {
+      "path": "app/game/HuntCanvas.tsx",
+      "beforeSha256": "d0ab7444400e0fc9f5f1d008ff50e9a54a00cdfb6aebf83ace8b5500f7943dcb",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 413206,
+      "sha256": "8bf504951e6d7d6af9df2bf1d125b99d25f06009723efc96b47636b53b5471c5"
+    },
+    {
+      "path": "app/game/HuntFieldGuideV112.tsx",
+      "beforeSha256": "1ae1151d9ba5db09ed881a7862ab811b2de1a9946d9431b1bcc8f2806b301a31",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 7565,
+      "sha256": "c6d4e5f7feb34786deccc7668e6cb00f798cc5129776d3abdb16c59a1a19dcf3"
+    },
+    {
+      "path": "app/game/systems/harvestInventoryV112.ts",
+      "beforeSha256": "fd51d278185eb1aab36d4e061f1e75a20e414701ff3079e399709efe32710abe",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 17889,
+      "sha256": "a36764dda125def1bec5a6326ee907428ff90d63780f648848f23d1657d359b1"
+    },
+    {
+      "path": "app/game/useMenuGamepad.ts",
+      "beforeSha256": "c64afed1e08de167a8e226a4cecbd0b9eefd86ba68b9f76a998a65f5f520207a",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 6584,
+      "sha256": "7fcb3efdc52140d41c29f4901932fb7bf826fc88cfbfdb648a9e6ecb1a3ac5ba"
+    },
+    {
+      "path": "scripts/lib/qa-hunt-field-guide-v112.mjs",
+      "beforeSha256": null,
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 3686,
+      "sha256": "de63f60a480b2e1d87004afa9a20403f2960bea4abb503bd4bcaa9ebfc5ce1f4"
+    },
+    {
+      "path": "scripts/qa-hunt-lifecycle-browser-v112.mjs",
+      "beforeSha256": null,
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 22735,
+      "sha256": "2a52dc117c9a69587a56a7cfa42f54379d18e68401689722554e0a705dc8481a"
+    },
+    {
+      "path": "scripts/qa-hunt-mechanics-browser-v112.mjs",
+      "beforeSha256": "7a35cbb83e6ed6ede6f71d2f1c787470377a0f36823007d80b637f402c437caf",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 17205,
+      "sha256": "fc3d6abf29e83d37ba179dc32f64c814177129147d1ad837a439da0c9850eb92"
+    },
+    {
+      "path": "scripts/qa-hunt-native-performance-v112.mjs",
+      "beforeSha256": null,
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 15314,
+      "sha256": "e73ed15ba170b91d2de67e918cc6df765089e34d8d9a5dddcc1ff0351fbfe58c"
+    },
+    {
+      "path": "tests/browser/hunt-lifecycle-v112.fixture.jsx",
+      "beforeSha256": null,
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 9259,
+      "sha256": "4686aaf1337481cf78f393205d96dd802144cd6e91da4a67db16805c217982db"
+    },
+    {
+      "path": "tests/browser/hunt-mechanics-v112.fixture.jsx",
+      "beforeSha256": "12f042defc83998c7b706f7e93161e907115d3ebc8a665f5c4c59ddb3e244ba9",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 11366,
+      "sha256": "be3f290981c601dc294a7be55e38e7422d0b354b12b25f9e9e73acb21480dc73"
+    },
+    {
+      "path": "tests/cloud-account-gamepad-isolation-v71.test.mjs",
+      "beforeSha256": "88d94b4c3bee91990330951b11f7fb6f343c755733bcdbd9654fa8add48ccca1",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 2215,
+      "sha256": "8899081075d17bbe7a75d6bf04889b8295dc0e96484e4423c94c7cc1ff272abd"
+    },
+    {
+      "path": "tests/conservation-persistence-ui-v112.test.mjs",
+      "beforeSha256": "c858336022ce95bcf5abf5b6fc531a5bea8452ff35bd29ba3a6c3b779d606f04",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 13653,
+      "sha256": "cc504e152aa027806eb74e2452db30ee05cd09b99c859589ad8582b69b621453"
+    },
+    {
+      "path": "tests/hunt-catalogue-contract-v112.test.mjs",
+      "beforeSha256": null,
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 14315,
+      "sha256": "695460bdf1b91ce649be16f2ac63c6901fa21ef8b631455a18052969c9228de4"
+    },
+    {
+      "path": "tests/hunt-field-guide-v112.test.mjs",
+      "beforeSha256": null,
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 6580,
+      "sha256": "bea21ec146079205f553eeea300bbef460e459763e80c83edd488ce95adab369"
+    },
+    {
+      "path": "tests/hunt-ground-recovery-v112.test.mjs",
+      "beforeSha256": null,
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "bytes": 9322,
+      "sha256": "92d028896ff1e6ce8c25847f19c77c7972d8fb69aa25cd7a9b27a90ea2afd35f"
+    }
+  ],
+  "newProductionCertificate": false
+}

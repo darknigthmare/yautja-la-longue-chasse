@@ -1,0 +1,472 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "generated": [
+    {
+      "fighterId": "wolf",
+      "id": "idle",
+      "actionId": "idle",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nWOLF: use attached V23 project presentation as exact identity guide, not a film-certified replica. Scarred elongated silver mask, dark dreadlocks with gold cuffs, yellow olive mottled/netted skin, leather crossbelts and small skull necklace, belt canisters, brown skirt, silver shoulder/shin armor, coiled whip on belt. TWO shoulder-mounted plasma cannons, fixed consistently on upper back. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm gauntlet; never held in fist. LEFT hand empty, right hand empty below mounted blades. Both blade roots remain attached to gauntlet. Keep small gear and trophies consistent.\n\nACTION: idle. Subtle breathing loop. Both feet remain fixed. Four clearly separate but restrained breathing poses; no footstep.\n\nEach row successive columns: 1: neutral alert; 2: inhale shoulders slightly raised; 3: exhale relaxed knees; 4: return toward neutral",
+      "phase": [
+        "neutral alert",
+        "inhale shoulders slightly raised",
+        "exhale relaxed knees",
+        "return toward neutral"
+      ],
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "status": "authored-review",
+      "notes": [
+        "Eight separate poses; breathing and limbs plausible. Shoulder cannon axes diverge (one points backward), requires correction before runtime acceptance."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-idle-v34.png",
+      "originId": "exec-4bc635d9-b600-4b7e-b42c-0fd3e5026e91.png",
+      "sha256": "e2d937a4f242026cfdb32bb6660b057d61641509d2e3e843c04b241e0aa4bede",
+      "bytes": 2317120,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nWOLF: use attached V23 project presentation as exact identity guide, not a film-certified replica. Scarred elongated silver mask, dark dreadlocks with gold cuffs, yellow olive mottled/netted skin, leather crossbelts and small skull necklace, belt canisters, brown skirt, silver shoulder/shin armor, coiled whip on belt. TWO shoulder-mounted plasma cannons, fixed consistently on upper back. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm gauntlet; never held in fist. LEFT hand empty, right hand empty below mounted blades. Both blade roots remain attached to gauntlet. Keep small gear and trophies consistent. CRITICAL SIDE-VIEW CORRECTION: BOTH plasma cannon barrels point FORWARD toward the opponent, right in top row, left in bottom row. Neither cannon points behind the hunter. Preserve two shoulder mounts; far cannon may be partially occluded. Opposite-facing drawing reveals the opposite flank, not a mirrored near arm; anatomical right gauntlet stays right arm.\n\nACTION: walk-forward. Forward walk cycle. Both feet must alternate support. Phases1 and3 are opposite leg contacts, phases2 and4 opposite passing knees. Body remains in place on the sheet; no duplicates.\n\nEach row successive columns: 1: near right leg forward heel contact / far left leg behind; 2: right supporting leg vertical / LEFT knee passes forward; 3: far LEFT leg now forward heel contact / near RIGHT leg behind; 4: left supporting leg vertical / RIGHT knee passes forward",
+      "phase": [
+        "near right leg forward heel contact / far left leg behind",
+        "right supporting leg vertical / LEFT knee passes forward",
+        "far LEFT leg now forward heel contact / near RIGHT leg behind",
+        "left supporting leg vertical / RIGHT knee passes forward"
+      ],
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "status": "rejected",
+      "notes": [
+        "Near-leg contact repeats across columns1/3 and passing knee repeats2/4; not an acceptable walking loop. One cannon remains backward-facing."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-walk-forward-v34.png",
+      "originId": "exec-67319984-a59b-4781-953c-f9680e6f2f55.png",
+      "sha256": "13e34b5c76aac8fb1b054cdb5871aa5a7a6bd40b18a70cb2ce3d43bc7b9d91e4",
+      "bytes": 2277205,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nWOLF: use attached V23 project presentation as exact identity guide, not a film-certified replica. Scarred elongated silver mask, dark dreadlocks with gold cuffs, yellow olive mottled/netted skin, leather crossbelts and small skull necklace, belt canisters, brown skirt, silver shoulder/shin armor, coiled whip on belt. TWO shoulder-mounted plasma cannons, fixed consistently on upper back. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm gauntlet; never held in fist. LEFT hand empty, right hand empty below mounted blades. Both blade roots remain attached to gauntlet. Keep small gear and trophies consistent. CRITICAL SIDE-VIEW CORRECTION: BOTH plasma cannon barrels point FORWARD toward the opponent, right in top row, left in bottom row. Neither cannon points behind the hunter. Preserve two shoulder mounts; far cannon may be partially occluded. Opposite-facing drawing reveals the opposite flank, not a mirrored near arm; anatomical right gauntlet stays right arm.\n\nCANNON OVERRIDE: SHOW BOTH GUNS IN STRICT SIDE PROFILE with RECTANGULAR SEALED REAR ends behind head and TWO RED CIRCULAR MUZZLES ahead of head, aiming toward face direction, never a red muzzle behind the dreadlocks.\n\nACTION: walk-backward. Backward retreat cycle, still looking at opponent. Opposite legs clearly support phases1/3 and2/4. Track front-facing vs rear-facing direction independently; do not repurpose forward sheet.\n\nEach row successive columns: 1: near RIGHT leg behind, right toes contact; far LEFT leg forward; 2: right rear leg supports; LEFT knee travels backward; 3: far LEFT leg behind toes contact; near RIGHT leg forward; 4: left rear leg supports; RIGHT knee travels backward",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "status": "rejected",
+      "notes": [
+        "Both cannon axes corrected toward opponent. Backward walk repeats the same supporting leg and same lifted leg in columns2/4; requires opposite-leg contacts."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-walk-backward-v34.png",
+      "originId": "exec-f294c7b6-6a1b-40b8-98bd-052998e967d0.png",
+      "sha256": "499c52a8bb385e687248ffb2ef17b3f6385940f9e1a6ad3bcd59ecd98fc9699c",
+      "bytes": 2191238,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "crouch",
+      "actionId": "crouch",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nWOLF: use attached V23 project presentation as exact identity guide, not a film-certified replica. Scarred elongated silver mask, dark dreadlocks with gold cuffs, yellow olive mottled/netted skin, leather crossbelts and small skull necklace, belt canisters, brown skirt, silver shoulder/shin armor, coiled whip on belt. TWO shoulder-mounted plasma cannons, fixed consistently on upper back. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm gauntlet; never held in fist. LEFT hand empty, right hand empty below mounted blades. Both blade roots remain attached to gauntlet. Keep small gear and trophies consistent. CRITICAL SIDE-VIEW CORRECTION: BOTH plasma cannon barrels point FORWARD toward the opponent, right in top row, left in bottom row. Neither cannon points behind the hunter. Preserve two shoulder mounts; far cannon may be partially occluded. Opposite-facing drawing reveals the opposite flank, not a mirrored near arm; anatomical right gauntlet stays right arm. CANNON OVERRIDE: SHOW BOTH GUNS IN STRICT SIDE PROFILE with RECTANGULAR SEALED REAR ends behind head and TWO RED CIRCULAR MUZZLES aiming toward face direction. No red muzzle pointing behind dreadlocks.\n\nACTION: crouch. Four successive depths of controlled crouch and rise. Knees anatomically hinge, no extra legs, keep constant character scale.\n\nEach row successive columns: 1: standing combat stance; 2: half squat descending; 3: deep stable crouch with both heels grounded; 4: half squat rising",
+      "phase": [
+        "standing combat stance",
+        "half squat descending",
+        "deep stable crouch with both heels grounded",
+        "half squat rising"
+      ],
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "status": "authored-review",
+      "notes": [
+        "Crouch depths and complete limbs read clearly. One shoulder cannon still faces backward; correct its axis before runtime use."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-crouch-v34.png",
+      "originId": "exec-b6ba4eb3-c2a8-4d57-9f32-b54ea71f5dda.png",
+      "sha256": "8944096d8a0d45add646af3abcc2032ac9f97590b794bb95d05546dbddcaa444",
+      "bytes": 2302591,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nWOLF: use attached V23 project presentation as exact identity guide, not a film-certified replica. Scarred elongated silver mask, dark dreadlocks with gold cuffs, yellow olive mottled/netted skin, leather crossbelts and small skull necklace, belt canisters, brown skirt, silver shoulder/shin armor, coiled whip on belt. TWO shoulder-mounted plasma cannons, fixed consistently on upper back. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm gauntlet; never held in fist. LEFT hand empty, right hand empty below mounted blades. Both blade roots remain attached to gauntlet. Keep small gear and trophies consistent. CRITICAL SIDE-VIEW CORRECTION: BOTH plasma cannon barrels point FORWARD toward the opponent, right in top row, left in bottom row. Neither cannon points behind the hunter. Preserve two shoulder mounts; far cannon may be partially occluded. Opposite-facing drawing reveals the opposite flank, not a mirrored near arm; anatomical right gauntlet stays right arm. CANNON OVERRIDE: SHOW BOTH GUNS IN STRICT SIDE PROFILE with RECTANGULAR SEALED REAR ends behind head and TWO RED CIRCULAR MUZZLES aiming toward face direction. No red muzzle pointing behind dreadlocks.\n\nACTION: jump-land. Standing jump with visible launch, airborne rise, fall and landing. Clean empty air around body; no dust or effects. Each pose remains separate.\n\nEach row successive columns: 1: deep launch crouch; 2: airborne rising knees bent; 3: falling feet extending downward; 4: landing crouch absorbing impact\n\nFINAL HARD REQUIREMENT: both cannons same aiming direction as face. Top row both red muzzles point RIGHT and sealed rectangular backs LEFT; bottom row both red muzzles point LEFT and sealed rectangular backs RIGHT. Red muzzle never on trailing end. This overrides perspective of original presentation. Both hands clearly complete.",
+      "phase": [
+        "deep launch crouch",
+        "airborne rising knees bent",
+        "falling feet extending downward",
+        "landing crouch absorbing impact"
+      ],
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "status": "authored-review",
+      "notes": [
+        "Launch, rise, fall, landing are visually distinct and cannon direction corrected. Four sample poses do not yet supply a complete timed jump phase set; keep in review."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-jump-land-v34.png",
+      "originId": "exec-2614cb62-4305-46b8-a05d-acbc5ca3a23b.png",
+      "sha256": "e69321705b66d9ea054fd83b7b2a1a4b79521d90db53bd1c4e634a5a351a7cc6",
+      "bytes": 2249814,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "guard",
+      "actionId": "guard",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nWOLF: use attached V23 project presentation as exact identity guide, not a film-certified replica. Scarred elongated silver mask, dark dreadlocks with gold cuffs, yellow olive mottled/netted skin, leather crossbelts and small skull necklace, belt canisters, brown skirt, silver shoulder/shin armor, coiled whip on belt. TWO shoulder-mounted plasma cannons, fixed consistently on upper back. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm gauntlet; never held in fist. LEFT hand empty, right hand empty below mounted blades. Both blade roots remain attached to gauntlet. Keep small gear and trophies consistent. CRITICAL SIDE-VIEW CORRECTION: BOTH plasma cannon barrels point FORWARD toward the opponent, right in top row, left in bottom row. Neither cannon points behind the hunter. Preserve two shoulder mounts; far cannon may be partially occluded. Opposite-facing drawing reveals the opposite flank, not a mirrored near arm; anatomical right gauntlet stays right arm. CANNON OVERRIDE: SHOW BOTH GUNS IN STRICT SIDE PROFILE with RECTANGULAR SEALED REAR ends behind head and TWO RED CIRCULAR MUZZLES aiming toward face direction. No red muzzle pointing behind dreadlocks.\n\nACTION: guard. Unarmed defensive guard sequence. Do not touch mask or cover hands. Keep mounted blades pointed away from face. Final pose holds full guard, not neutral.\n\nEach row successive columns: 1: left forearm raises from chest; right closed empty fist near waist; 2: full guard left forearm vertical beside cheek; right forearm across sternum; 3: absorb guard with knees flexed and shoulders braced; 4: settled full guard held, both fists visible\n\nFINAL HARD REQUIREMENT: both cannons same aiming direction as face. Top row both red muzzles point RIGHT and sealed rectangular backs LEFT; bottom row both red muzzles point LEFT and sealed rectangular backs RIGHT. Red muzzle never on trailing end. This overrides perspective of original presentation. Both hands clearly complete.",
+      "phase": [
+        "left forearm raises from chest; right closed empty fist near waist",
+        "full guard left forearm vertical beside cheek; right forearm across sternum",
+        "absorb guard with knees flexed and shoulders braced",
+        "settled full guard held, both fists visible"
+      ],
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "status": "authored-review",
+      "notes": [
+        "Full guard partly occludes right fist against left elbow; clarify before acceptance."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-guard-v34.png",
+      "originId": "exec-09bafe58-d72e-42fe-80b3-fcb3946e82de.png",
+      "sha256": "63dea160ceff736033aeb0406a6ce6e373d49d30de875175479b12f7847495a5",
+      "bytes": 2284458,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "hurt",
+      "actionId": "hurt",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nWOLF: use attached V23 project presentation as exact identity guide, not a film-certified replica. Scarred elongated silver mask, dark dreadlocks with gold cuffs, yellow olive mottled/netted skin, leather crossbelts and small skull necklace, belt canisters, brown skirt, silver shoulder/shin armor, coiled whip on belt. TWO shoulder-mounted plasma cannons, fixed consistently on upper back. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm gauntlet; never held in fist. LEFT hand empty, right hand empty below mounted blades. Both blade roots remain attached to gauntlet. Keep small gear and trophies consistent. CRITICAL SIDE-VIEW CORRECTION: BOTH plasma cannon barrels point FORWARD toward the opponent, right in top row, left in bottom row. Neither cannon points behind the hunter. Preserve two shoulder mounts; far cannon may be partially occluded. Opposite-facing drawing reveals the opposite flank, not a mirrored near arm; anatomical right gauntlet stays right arm. CANNON OVERRIDE: SHOW BOTH GUNS IN STRICT SIDE PROFILE with RECTANGULAR SEALED REAR ends behind head and TWO RED CIRCULAR MUZZLES aiming toward face direction. No red muzzle pointing behind dreadlocks.\n\nACTION: hurt. Reaction to a chest impact. No blood, no injury, no attacker, no VFX. Feet remain planted, arms and hands coherent.\n\nEach row successive columns: 1: small torso recoil from chest hit; 2: larger backward torso lean, knees bent; 3: recover torso upright with protective arms; 4: return to neutral stance\n\nFINAL HARD REQUIREMENT: both cannons same aiming direction as face. Top row both red muzzles point RIGHT and sealed rectangular backs LEFT; bottom row both red muzzles point LEFT and sealed rectangular backs RIGHT. Red muzzle never on trailing end. This overrides perspective of original presentation. Both hands clearly complete.",
+      "phase": [
+        "small torso recoil from chest hit",
+        "larger backward torso lean, knees bent",
+        "recover torso upright with protective arms",
+        "return to neutral stance"
+      ],
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "status": "authored-review",
+      "notes": [
+        "Four chest-hit reaction phases are readable with coherent limbs and cannon directions. Requires real-state timing and alpha/renderer QA before validation."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-hurt-v34.png",
+      "originId": "exec-92e0401a-0c06-41d1-bc1d-d1aa8e981281.png",
+      "sha256": "0ea36a0bb1526899631eb52f9062aeb920172c895700aa08f0a87b4d0f492f2a",
+      "bytes": 2303054,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "light",
+      "actionId": "light",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nWOLF: use attached V23 project presentation as exact identity guide, not a film-certified replica. Scarred elongated silver mask, dark dreadlocks with gold cuffs, yellow olive mottled/netted skin, leather crossbelts and small skull necklace, belt canisters, brown skirt, silver shoulder/shin armor, coiled whip on belt. TWO shoulder-mounted plasma cannons, fixed consistently on upper back. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm gauntlet; never held in fist. LEFT hand empty, right hand empty below mounted blades. Both blade roots remain attached to gauntlet. Keep small gear and trophies consistent. CRITICAL SIDE-VIEW CORRECTION: BOTH plasma cannon barrels point FORWARD toward the opponent, right in top row, left in bottom row. Neither cannon points behind the hunter. Preserve two shoulder mounts; far cannon may be partially occluded. Opposite-facing drawing reveals the opposite flank, not a mirrored near arm; anatomical right gauntlet stays right arm. CANNON OVERRIDE: SHOW BOTH GUNS IN STRICT SIDE PROFILE with RECTANGULAR SEALED REAR ends behind head and TWO RED CIRCULAR MUZZLES aiming toward face direction. No red muzzle pointing behind dreadlocks.\n\nACTION: light. Fast short wrist blade jab. Mounted blade assembly physically attached to right gauntlet. EMPTY clenched right fist visible below blades; no handheld weapon.\n\nEach row successive columns: 1: short right forearm retract startup; 2: short forward right wrist-blade jab contact; 3: right forearm retracts halfway; 4: neutral combat stance\n\nFINAL HARD REQUIREMENT: both cannons same aiming direction as face. Top row both red muzzles point RIGHT and sealed rectangular backs LEFT; bottom row both red muzzles point LEFT and sealed rectangular backs RIGHT. Red muzzle never on trailing end. This overrides perspective of original presentation. Both hands clearly complete.\n\nATTACK HAND OVERRIDE: EMPTY RIGHT FIST extends well beyond gauntlet and is clearly visible BELOW two wrist blades. Both blade roots fixed on dorsal gauntlet behind knuckles. No sword grip. Maintain TWO parallel blades exactly.",
+      "phase": [
+        "short right forearm retract startup",
+        "short forward right wrist-blade jab contact",
+        "right forearm retracts halfway",
+        "neutral combat stance"
+      ],
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "status": "authored-review",
+      "notes": [
+        "Wrist-blade startup/contact/recovery readable with empty right fist. Far cannon occluded in profile. Requires explicit irregular rectangles and native renderer QA."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-light-v34.png",
+      "originId": "exec-7423bc62-af98-41c4-8b6c-fcd6dec0e8c6.png",
+      "sha256": "bf734957263608ec3d19a96c4d5edcfa4a426a5fc47480066e5bef12d8068eaf",
+      "bytes": 2245558,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "medium",
+      "actionId": "medium",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nWOLF: use attached V23 project presentation as exact identity guide, not a film-certified replica. Scarred elongated silver mask, dark dreadlocks with gold cuffs, yellow olive mottled/netted skin, leather crossbelts and small skull necklace, belt canisters, brown skirt, silver shoulder/shin armor, coiled whip on belt. TWO shoulder-mounted plasma cannons, fixed consistently on upper back. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm gauntlet; never held in fist. LEFT hand empty, right hand empty below mounted blades. Both blade roots remain attached to gauntlet. Keep small gear and trophies consistent. CRITICAL SIDE-VIEW CORRECTION: BOTH plasma cannon barrels point FORWARD toward the opponent, right in top row, left in bottom row. Neither cannon points behind the hunter. Preserve two shoulder mounts; far cannon may be partially occluded. Opposite-facing drawing reveals the opposite flank, not a mirrored near arm; anatomical right gauntlet stays right arm. CANNON OVERRIDE: SHOW BOTH GUNS IN STRICT SIDE PROFILE with RECTANGULAR SEALED REAR ends behind head and TWO RED CIRCULAR MUZZLES aiming toward face direction. No red muzzle pointing behind dreadlocks.\n\nACTION: medium. Medium reaching wrist blade thrust. No sword, no detached blades, no extra equipment. Right fist visibly empty beneath mounted blades.\n\nEach row successive columns: 1: right elbow draws back at waist; 2: right forearm extends horizontally to opponent at chest height; 3: right forearm retracts to ribs; 4: neutral stance\n\nFINAL HARD REQUIREMENT: both cannons same aiming direction as face. Top row both red muzzles point RIGHT and sealed rectangular backs LEFT; bottom row both red muzzles point LEFT and sealed rectangular backs RIGHT. Red muzzle never on trailing end. This overrides perspective of original presentation. Both hands clearly complete.\n\nEMPTY RIGHT FIST must extend past gauntlet visibly BELOW two parallel mounted blades. No handheld sword. All body parts fully inside own cell with60px empty margin; contact blade tips must not overlap next pose. Use SMALL body250px tall.",
+      "phase": [
+        "right elbow draws back at waist",
+        "right forearm extends horizontally to opponent at chest height",
+        "right forearm retracts to ribs",
+        "neutral stance"
+      ],
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "status": "authored-review",
+      "notes": [
+        "Medium thrust has clear empty fist and two mounted blades. Shoulder cannon rear muzzle error recurs; requires correction before runtime."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-medium-v34.png",
+      "originId": "exec-6768570a-668d-4d04-91c6-50bdd24d712e.png",
+      "sha256": "4273777e962fb086e113c0d5ea85e74ffac60de0935cba1d02a9e5f62bd89f9e",
+      "bytes": 2161366,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "heavy",
+      "actionId": "heavy",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nWOLF: use attached V23 project presentation as exact identity guide, not a film-certified replica. Scarred elongated silver mask, dark dreadlocks with gold cuffs, yellow olive mottled/netted skin, leather crossbelts and small skull necklace, belt canisters, brown skirt, silver shoulder/shin armor, coiled whip on belt. TWO shoulder-mounted plasma cannons, fixed consistently on upper back. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm gauntlet; never held in fist. LEFT hand empty, right hand empty below mounted blades. Both blade roots remain attached to gauntlet. Keep small gear and trophies consistent. CRITICAL SIDE-VIEW CORRECTION: BOTH plasma cannon barrels point FORWARD toward the opponent, right in top row, left in bottom row. Neither cannon points behind the hunter. Preserve two shoulder mounts; far cannon may be partially occluded. Opposite-facing drawing reveals the opposite flank, not a mirrored near arm; anatomical right gauntlet stays right arm. CANNON OVERRIDE: SHOW BOTH GUNS IN STRICT SIDE PROFILE with RECTANGULAR SEALED REAR ends behind head and TWO RED CIRCULAR MUZZLES aiming toward face direction. No red muzzle pointing behind dreadlocks.\n\nACTION: heavy. Heavy low diagonal mounted wrist blade attack, not overhead. Right empty fist remains visibly connected to the forearm; blades follow gauntlet axis. No motion trails or effects.\n\nEach row successive columns: 1: low loaded diagonal right arm drawn back at hip; 2: right forearm drives forward slightly upward in a heavy low diagonal slash; 3: right elbow retracts with body settling; 4: neutral stance\n\nFINAL HARD REQUIREMENT: both cannons same aiming direction as face. Top row both red muzzles point RIGHT and sealed rectangular backs LEFT; bottom row both red muzzles point LEFT and sealed rectangular backs RIGHT. Red muzzle never on trailing end. This overrides perspective of original presentation. Both hands clearly complete.\n\nHand-and-gear priority: TWO mounted parallel blades extend from dorsal RIGHT gauntlet over EMPTY RIGHT FIST, never a sword handle. Cannons point same way, both toward opponent. Small compact sprites250px body height, all8 drawings complete and isolated.",
+      "phase": [
+        "low loaded diagonal right arm drawn back at hip",
+        "right forearm drives forward slightly upward in a heavy low diagonal slash",
+        "right elbow retracts with body settling",
+        "neutral stance"
+      ],
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "status": "rejected",
+      "notes": [
+        "Heavy contact pose hides/removes the right fist beneath blades. A new hand-corrected drawing is required; never accepted as coverage."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-heavy-v34.png",
+      "originId": "exec-bf32358c-cce8-486a-9d5f-6833e1f1b8b5.png",
+      "sha256": "a9285f4e18f8c2d61dcda63ed255ba7ee87079f8a1fc0b69d88cbd0e459e7e70",
+      "bytes": 2303973,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "repair-idle-cannons",
+      "actionId": "idle",
+      "revision": 2,
+      "prompt": "Edit ONLY the FIRST attached sprite sheet, with the SECOND original presentation for identity. Preserve all eight Wolf breathing poses, their exact placement, hands, feet, two right wrist blades, body scale and flat solid #FF00FF background. Fix a concrete production error in ALL8 poses: the shoulder gun near the rear of the head is aimed backward. ROTATE that gun180 degrees on its existing pivot so BOTH plasma cannons point the SAME direction as the face: RIGHT in all top-row drawings, LEFT in all bottom-row drawings. Replace the rear-facing circular red muzzle with a rectangular CLOSED gun butt and put the circular red muzzle at the opposite forward end. No gun may point behind dreadlocks. Keep both guns, no omission. Do not change any other artwork.1536x1024 exact8drawings four columns two rows. No labels, no checkerboard, no new weapons.",
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "phase": [
+        "neutral alert",
+        "inhale shoulders slightly raised",
+        "exhale relaxed knees",
+        "return toward neutral"
+      ],
+      "status": "authored-review",
+      "notes": [
+        "Both cannon directions repaired in all8 idle poses; proportions/hands/wrist blades preserved. Candidate for validated idle after pixel and real renderer checks."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-repair-idle-cannons-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-repair-idle-cannons-v34.png",
+      "originId": "exec-fb8b5e6c-fcd9-4b73-ba55-b5da40562e35.png",
+      "sha256": "c8e870b7e8a38f4f7b3979767213e858355536ab95ec0c2a634dc72210f672ba",
+      "bytes": 2268960,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "repair-crouch-cannons",
+      "actionId": "crouch",
+      "revision": 2,
+      "prompt": "Edit ONLY FIRST attached8pose crouch sprite sheet; SECOND original Wolf presentation locks identity. Keep crouch depths, anatomy, face, two right-gauntlet blades, all gear colors, positions and magenta #FF00FF flat background. Correct ONLY both cannon aim: rotate backward-facing gun on its existing pivot so BOTH barrels point same direction as face. TOP8? No, TOP FOUR characters FACE RIGHT, both red muzzles point RIGHT, rectangular gun butts LEFT. BOTTOM FOUR face LEFT, both red muzzles LEFT, rectangular gun butts RIGHT. No muzzle pointing backward behind dreads. Existing two shoulder cannons must remain present. No other body edit, no labels. Exact1536x1024,4columns2rows.",
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "phase": [
+        "standing combat stance",
+        "half squat descending",
+        "deep stable crouch with both heels grounded",
+        "half squat rising"
+      ],
+      "status": "authored-review",
+      "notes": [
+        "Cannon axes corrected; crouch depths and complete hands remain readable. Candidate first3 phases held at deep crouch, fourth rise excluded from crouch hold."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-repair-crouch-cannons-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-repair-crouch-cannons-v34.png",
+      "originId": "exec-53d19472-bd87-4e35-add0-ba5a886a8b95.png",
+      "sha256": "d17a6db3c672db2806583cebf0fe36638e85770dbf086b6f70b465e69a1d2cf2",
+      "bytes": 2207423,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "repair-guard-hand",
+      "actionId": "guard",
+      "revision": 2,
+      "prompt": "Repair FIRST Wolf guard8pose sheet, SECOND original presentation identity. Preserve body, legs, mask, 2 shoulder cannons aiming with face, source colors, complete8 drawings in4x2 layout1536x1024 and flat #FF00FF background. Fix right hand visibility: in each full guard pose columns2,3,4 LOWER RIGHT FOREARM to horizontal at WAIST/LOWER RIB height, empty RIGHT FIST clearly sticking out past gauntlet, all knuckles visible, below the TWO dorsal mounted blades. Keep that right fist20pixels away from LEFT ELBOW so the arms cannot fuse. LEFT forearm remains raised vertically beside cheek, empty left fist. Stage1 raiseguard,2fullguard,3absorb knees bent,4settled fullguard. Both hands visible in all8 drawings. Keep two wrist blades, never held, no sword. Cannon muzzles all face RIGHT top row LEFT bottom row. No other edits.",
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "phase": [
+        "left forearm raises from chest; right closed empty fist near waist",
+        "full guard left forearm vertical beside cheek; right forearm across sternum",
+        "absorb guard with knees flexed and shoulders braced",
+        "settled full guard held, both fists visible"
+      ],
+      "status": "authored-review",
+      "notes": [
+        "Right fist separated from left elbow in all full-guard poses. Wrist blades became too short against reference in phases2–4; needs blade-length repair before acceptance."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-repair-guard-hand-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-repair-guard-hand-v34.png",
+      "originId": "exec-ed27b51b-9b03-40c0-bc0a-4635ed45ee79.png",
+      "sha256": "28c8d9ca1b07c3d7b74e45adb5199d3643a933374a41b5c2df6be72a5f78e621",
+      "bytes": 2219560,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "repair-medium-cannons",
+      "actionId": "medium",
+      "revision": 2,
+      "prompt": "Repair ONLY the FIRST attached Wolf medium wrist-blade attack sprite sheet; SECOND original locks identity. Preserve all8 poses, two mounted blades with EMPTY RIGHT FIST, complete bodies and exact placement. ONE precise correction: rotate backwards-facing shoulder cannon on its existing pivot so BOTH cannon red muzzles point RIGHT on top row and LEFT on bottom row. Each cannon rear is a CLOSED RECTANGULAR gun butt, never a circular red muzzle pointing behind dreads. Keep both shoulder cannons, and all other artwork unchanged. Flat #FF00FF source,1536x1024,4columns2rows; no text, no effects, no checkerboard. Every right fist stays visible below its two wrist blades.",
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "phase": [
+        "right elbow draws back at waist",
+        "right forearm extends horizontally to opponent at chest height",
+        "right forearm retracts to ribs",
+        "neutral stance"
+      ],
+      "status": "rejected",
+      "notes": [
+        "Targeted cannon correction did not rotate the rear gun; backward circular muzzle persists. Attack pose alone does not constitute accepted coverage."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-repair-medium-cannons-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-repair-medium-cannons-v34.png",
+      "originId": "exec-94615c83-67f6-4421-81bf-f9920bff9ba1.png",
+      "sha256": "85e989806dc9d178a06d4de291c62d81d26a2927511a8dd9043061c410a27cf9",
+      "bytes": 2097422,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "repair-heavy-hand",
+      "actionId": "heavy",
+      "revision": 2,
+      "prompt": "Repair FIRST attached Wolf heavy attack8pose sheet, SECOND original identity. Critical missing-hand correction in column2 BOTH rows: add a complete EMPTY RIGHT FIST with wrist, four curled fingers and thumb, extending past gauntlet below the TWO long dorsal mounted wrist blades. The arm cannot terminate in blades without a hand. Keep two blades at existing length, roots on gauntlet, nothing gripped by fist. Keep existing cannon direction, body anatomy and positions, all other poses unchanged. Flat solid #FF00FF magenta,4columns2rows1536x1024, all8 complete isolated drawings, no text, no effects.",
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "phase": [
+        "low loaded diagonal right arm drawn back at hip",
+        "right forearm drives forward slightly upward in a heavy low diagonal slash",
+        "right elbow retracts with body settling",
+        "neutral stance"
+      ],
+      "status": "authored-review",
+      "notes": [
+        "Left-facing contact fist restored; right-facing contact still has no readable right hand. Only independently reviewed left-facing heavy group may qualify; right group remains rejected."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-repair-heavy-hand-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-repair-heavy-hand-v34.png",
+      "originId": "exec-5fca2565-800e-4a03-b111-ec87eb1274ca.png",
+      "sha256": "bf0d3242f2968b50d9c3c8454648a7213c5a916fee86b1bc68cfbeafb3735ea3",
+      "bytes": 2244957,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "repair-walk-forward-joints",
+      "actionId": "walk-forward",
+      "revision": 2,
+      "prompt": "Repair FIRST Wolf forward-walk sheet; SECOND locks identity. Keep8sprite layout and character gear. FIX LEGS across BOTH rows: column1 camera-NEAR thigh slopes BACKWARD from hip, FAR leg planted FORWARD. Column2 NEAR foot swings FORWARD beneath pelvis while FAR leg supports. Column3 MUST be OPPOSITE column1: camera-NEAR THIGH SLOPES FORWARD from hip and its heel plants ahead of body; FAR leg trails BACKWARD. Column4 MUST be OPPOSITE column2: FAR foot swings forward while NEAR leg supports. Distinguish near vs far thigh by overlap, not identical duplicated knees. Two real opposite contact poses and two real opposite passing poses; four distinct stages of a walk loop. Hands/2rightwrist blades/two shoulder cannons coherent. Also BOTH cannons aim same way as face, RIGHT top row LEFT bottom, sealed rectangular rears not red muzzles pointing behind. Complete feet. Flat #FF00FF1536x1024 no text.",
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "phase": [
+        "near right leg forward heel contact / far left leg behind",
+        "right supporting leg vertical / LEFT knee passes forward",
+        "far LEFT leg now forward heel contact / near RIGHT leg behind",
+        "left supporting leg vertical / RIGHT knee passes forward"
+      ],
+      "status": "rejected",
+      "notes": [
+        "Passing feet changed, but near/far contact thigh still repeats in columns1/3. Backward-facing cannon also remains. No forward-walk clip accepted."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-repair-walk-forward-joints-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-repair-walk-forward-joints-v34.png",
+      "originId": "exec-f6aba60d-195c-4b22-b4b4-b256ad9ca5dd.png",
+      "sha256": "219e9c1e0ec7cac7fee3a39dbc44d4dbdfa0b8b2cb8fa1c85b2e44fa064efe6c",
+      "bytes": 2330642,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "repair-walk-backward-joints",
+      "actionId": "walk-backward",
+      "revision": 2,
+      "prompt": "Correct FIRST Wolf retreat animation sprite sheet, SECOND original reference. Keep all body/gear/arms/cannons and4x2 layout. Redraw LEGS ONLY of columns3and4 BOTH ROWS. Column1 camera-near thigh slopes BACKWARD and near foot contacts behind. Column3 must be the OPPOSITE contact: camera-NEAR THIGH slopes FORWARD toward face, near foot planted ahead; FAR thigh extends BACKWARD with far toes contacting behind. Show which thigh crosses in FRONT at pelvis. Column2 near leg lifts behind while far leg supports; column4 FAR leg lifts behind while NEAR leg visibly supports, opposite the other passing pose. Do not repeat the same leg support. Four distinct anatomically coherent gait poses each orientation. Both feet fully visible, no third leg. Maintain two wrist blades and two cannons already correctly aimed. Magenta #FF00FF1536x1024.",
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "status": "rejected",
+      "notes": [
+        "Retreat still repeats identical near-leg support and rear lifted foot in phases2/4; repair does not create a genuine alternating gait."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-repair-walk-backward-joints-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-repair-walk-backward-joints-v34.png",
+      "originId": "exec-92ab3ffc-5d38-46ee-9e67-f3f99b68bc63.png",
+      "sha256": "535828623b6bdb0034c44421a78a511de2531c5bdcc3a34d1efa3bdf0e15205f",
+      "bytes": 2120140,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "repair-light-spacing",
+      "actionId": "light",
+      "revision": 2,
+      "prompt": "Repair FIRST Wolf light jab8pose sheet spacing; SECOND original identity. Recompose same eight phases at much SMALLER uniform scale. Exactly1536x1024, four columns two rows. Each sprite INCLUDING extended blades must fit inside a240px-wide by320px-high bounding box CENTERED in its384x512cell, leaving72px minimum empty magenta on both horizontal sides. Standing BODY height only240px, lots of blank magenta. Do not cut or shorten body limbs/weapons to fit: uniformly reduce scale of whole character drawing. Top4faceRIGHT bottom4faceLEFT independently. Preserve startup empty right fist drawn back; contact empty right fist under two long mounted blades; early recovery; neutral. Two shoulder cannons both aim with face, far cannon can be obscured behind head but no backward muzzle. All8 complete, no neighbors touching. Perfect flat #FF00FF background, no effects, no text.",
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "phase": [
+        "short right forearm retract startup",
+        "short forward right wrist-blade jab contact",
+        "right forearm retracts halfway",
+        "neutral combat stance"
+      ],
+      "status": "authored-review",
+      "notes": [
+        "Uniform smaller sprites now have wide empty gutters;8 complete light-jab drawings, empty fists and two mounted blades preserved. Candidate for both facing phase groups after renderer QA."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-repair-light-spacing-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-repair-light-spacing-v34.png",
+      "originId": "exec-dd755e5b-4925-42de-9082-ea6640016a76.png",
+      "sha256": "dcdeb3758969669423af2c451c08588fe918df637b31baf876783dd37f8329d6",
+      "bytes": 1698307,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "wolf",
+      "id": "repair-guard-blades",
+      "actionId": "guard",
+      "revision": 3,
+      "prompt": "FIRST attached Wolf guard sprite sheet is target, SECOND original identity. Change ONLY TWO wrist blade lengths in full-guard poses columns2,3,4 both rows. Extend the TWO parallel dorsal-gauntlet blades forward60pixels beyond the EMPTY RIGHT FIST, maintaining original reference blade-to-forearm length ratio. Keep right fist exactly visible and in place BELOW blades, separate from left elbow. Blade roots stay on gauntlet, not handheld, no sword. Do not shrink, remove, fuse or cover either hand. Keep left forearm guarding cheek; two cannon directions unchanged and correct; legs/gear/body unchanged.8 complete drawings1536x1024 flat #FF00FF. No text.",
+      "referencePath": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "phase": [
+        "left forearm raises from chest; right closed empty fist near waist",
+        "full guard left forearm vertical beside cheek; right forearm across sternum",
+        "absorb guard with knees flexed and shoulders braced",
+        "settled full guard held, both fists visible"
+      ],
+      "status": "authored-review",
+      "notes": [
+        "Both fists separated and readable; two gauntlet-mounted blades restored to full reach; cannon directions coherent. Candidate high-guard entry/absorb/hold after native QA."
+      ],
+      "sourcePath": "art-source/v34/pit/wolf/wolf-repair-guard-blades-v34.png",
+      "publicPath": "/game/sprites/v34/pit/wolf/wolf-repair-guard-blades-v34.png",
+      "originId": "exec-c67d0d6f-d997-465b-b91c-6cc21a5eca00.png",
+      "sha256": "dfa820e2f3cfa4438f5c7ab2b8f9dad6f37a2c169938aeb599afccb3acee409e",
+      "bytes": 2187113,
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

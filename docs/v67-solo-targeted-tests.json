@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "verifiedAt": "2026-10-01T04:38:02.6933344Z",
+  "command": "node --test tests/first-hunt-solo-v67.test.mjs tests/campaign-solo-v67.test.mjs tests/solo-save-v67.test.mjs tests/solo-rendering-v67.test.mjs",
+  "tests": 19,
+  "failed": 0,
+  "lint": "PASS: four runtime TS/TSX files",
+  "scope": [
+    "two input-only routes through nine receipts",
+    "real charges and failed attempt recovery",
+    "pause, missing assets and hidden page",
+    "strict enums, future versions and receipt prefix",
+    "real save parser; no Young Blood rite or free rank",
+    "quota and silent write loss at every receipt",
+    "CAS owner and post-write reconciliation",
+    "manual checkpoints and chapter resume",
+    "bidirectional warning visible in the minimum320px logical viewport; 50ms sampled controls",
+    "actual renderer keeps world captions inside camera bounds at320/370/960px"
+  ],
+  "files": [
+    {
+      "path": "app/game/FirstHuntSoloV67.tsx",
+      "sha256": "404799bf1ef923b508adbff18e5d079b2e2732b7c83a4335060dd58695fe0098"
+    },
+    {
+      "path": "app/game/FirstHuntSoloV67.module.css",
+      "sha256": "bcb22ecad2287f97b1c9f8474469a95b82175e87431a43fd0f0f311aa9a523cc"
+    },
+    {
+      "path": "app/game/firstHuntSoloV67Rendering.ts",
+      "sha256": "38bdc112a1ed2f03c832e615bab736cdbaccea6f53f48a75c4efdca31c4c4c06"
+    },
+    {
+      "path": "app/game/systems/firstHuntSoloV67.ts",
+      "sha256": "89d6ff7bc20da877be489a970b7a719b26507165a929ffe00b7657bc0251655e"
+    },
+    {
+      "path": "app/game/systems/campaignSoloV67.ts",
+      "sha256": "19ff79371d62e12e415c61e223bf96cf9a58335920340674eeefb8a3f52a4b86"
+    },
+    {
+      "path": "tests/first-hunt-solo-v67.test.mjs",
+      "sha256": "4f2dfa2e6a1cf6697a65264861625d0f03160b1ffc473bceea7c33051bbf3096"
+    },
+    {
+      "path": "tests/campaign-solo-v67.test.mjs",
+      "sha256": "b1a8a25f279570747d4789e985010fbbeb8862ad15c6cbb2bf1ed57422c26943"
+    },
+    {
+      "path": "tests/solo-save-v67.test.mjs",
+      "sha256": "c91b139fd99d6646c0082fb73400afaecae0d201383750e67a4af146e0d57320"
+    },
+    {
+      "path": "tests/solo-rendering-v67.test.mjs",
+      "sha256": "1e833a4543b2e8971b0dadeb5300123209cff1956adb4885ca40c537a8bea28d"
+    }
+  ],
+  "browserStatus": "SEPARATE_RUNNING"
+}

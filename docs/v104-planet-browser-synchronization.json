@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_CIBLE",
+  "checkedAt": "2026-10-22T21:23:33.434687+00:00",
+  "scope": "QA V103 : disponibilité interactive, identité du monde et reprise exacte des archives ; aucune modification du runtime, des preuves V104 gelées ou des classeurs.",
+  "ci": {
+    "pullRequest": 12,
+    "head": "1111ec5c7f643379f4be99e7477f291ca166274d",
+    "runId": 39852218120,
+    "jobId": 120081548943,
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/39852218120/job/120081548943",
+    "step": "Exercise generated planets, independent bitmap layers and real saved fronts",
+    "annotationTitle": "Planet generator V103 browser journey",
+    "assertion": "reopening the large world after reload resumes its original saved state",
+    "sourceLineBeforeFix": 208,
+    "otherStepsPassed": 34
+  },
+  "finding": {
+    "proved": "Le générateur SSR est visible avant ses événements. Une importation effectuée pendant ce créneau peut être perdue ; Ouvrir lance alors le monde initial, tandis que les octets de l’archive attendue restent intacts.",
+    "historicalCiCause": "Mécanisme compatible avec l’assertion CI et reproduit sous contrôle ; état interne du runner non récupéré, occurrence exacte non certifiée.",
+    "archiveHydrationGuard": "Le sélecteur free-profile existe seulement après shared.loaded && strategic.loaded ; aucune corruption ou lecture prématurée de la fence n’est démontrée."
+  },
+  "change": {
+    "path": "scripts/qa-planet-generator-v103.mjs",
+    "sha256": "b5bd5f21bd992f1b5797d08d931b3dd43c4a67e023ae1fb01aa3c90d4caad5a0",
+    "barriers": [
+      "Attendre le vrai ready/fallback du quicklook, en vérifiant ses bounds et en le remettant dans le viewport si nécessaire pendant cette attente.",
+      "Attendre data-preview-planet-code égal au code importé avant Ouvrir.",
+      "Attendre identité du sélecteur et de l’atlas, tour attendu, confirmation locale, nombre exact de territoires et octets JSON originaux."
+    ],
+    "originalChecksUnchanged": 36,
+    "applicationFilesEdited": []
+  },
+  "finalValidation": {
+    "checks": 36,
+    "passed": true,
+    "errors": [],
+    "consoleErrors": [],
+    "restoredFrontChecks": [
+      {
+        "planetId": "proc-v103-7kbn6-543013110011311101031-hprk9",
+        "turn": 2,
+        "seed": 12705522,
+        "territories": 96,
+        "archiveSha256": "3d9ab0c0a5e6ebd645e33d0fa6bbbf9dc440ce63b8745faaa4a3ac2de9e7c50c",
+        "exactArchiveAndLiveAtlas": true
+      },
+      {
+        "planetId": "proc-v103-39kr9p-001013100011311101031-oqmyb",
+        "turn": 3,
+        "seed": 197483533,
+        "territories": 18,
+        "archiveSha256": "fad74bd519763a12d38f6afb52e2a0b73e12afd2b1b631e59db8834cfcfdf67c",
+        "exactArchiveAndLiveAtlas": true
+      }
+    ],
+    "reportSha256": "5a7e9a17252ff59a7fe69558be91cb1e591fe97313598d7651684081f4ebf515",
+    "localReport": "/tmp/yautja-planets-pr12-bhhwn6ft/qa-generator-v103-final/report.json",
+    "syntax": "node --check scripts/qa-planet-generator-v103.mjs : PASS",
+    "lint": "node node_modules/eslint/bin/eslint.js --max-warnings=0 scripts/qa-planet-generator-v103.mjs : PASS",
+    "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3143 YAUTJA_GENERATOR_V103_QA_OUTPUT=/tmp/yautja-planets-pr12-bhhwn6ft/qa-generator-v103-final YAUTJA_GENERATOR_V103_QA_REPORT=/tmp/yautja-planets-pr12-bhhwn6ft/qa-generator-v103-final/report.json CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium node scripts/qa-planet-generator-v103.mjs"
+  },
+  "controlledCounterexample": {
+    "reportSha256": "92894b733630c2250815d162ad79232539225bff53878725db8e0f46b99b9737",
+    "fixture": "Two existing generated archives advanced by the actual pure engine, not a played browser campaign. Next JS requests are held until after import to expose pre-hydration interaction. No runtime is mocked or modified.",
+    "results": [
+      {
+        "world": "proc-v103-39kr9p-001013100011311101031-oqmyb",
+        "turn": 3,
+        "territories": 18,
+        "seed": 197483533,
+        "heldScripts": 5,
+        "oldAssertionWouldFail": true,
+        "oldActive": "proc-v103-m9bf-331013100011300111100-m6545",
+        "originalArchiveUnchanged": true,
+        "semanticBarriersPass": true
+      },
+      {
+        "world": "proc-v103-7kbn6-543013110011311101031-hprk9",
+        "turn": 2,
+        "territories": 96,
+        "seed": 12705522,
+        "heldScripts": 5,
+        "oldAssertionWouldFail": true,
+        "oldActive": "proc-v103-m9bf-331013100011300111100-m6545",
+        "originalArchiveUnchanged": true,
+        "semanticBarriersPass": true
+      }
+    ]
+  },
+  "priorIsolatedRuns": [
+    {
+      "name": "regional",
+      "checks": 9,
+      "sha256": "c8f52f8fb4894c6c36c63745f09a84d31841004cca48956edb8e903591bb6a71",
+      "localReport": "/tmp/yautja-planets-pr12-bhhwn6ft/qa-regional/regional-material-checks.json"
+    },
+    {
+      "name": "generatorV102",
+      "checks": 35,
+      "sha256": "0cc99f1dcd720a2b641f3e44c0b182431a2886fb90001061ed94a42dab6c57ba",
+      "localReport": "/tmp/yautja-planets-pr12-bhhwn6ft/qa-generator-v102/report.json"
+    },
+    {
+      "name": "generatorV103BeforeFix",
+      "checks": 36,
+      "sha256": "cad5effd8594a4d5db433c462160be0e9198ca8d20adb1c6d3cd0cb82312a36b",
+      "localReport": "/tmp/yautja-planets-pr12-bhhwn6ft/qa-generator-v103/report.json"
+    }
+  ],
+  "limits": [
+    "Serveur isolé Next webpack sur 3143, source copié à 1111ec5c ; la CI utilise Next dev Turbopack et Chrome. Les fichiers applicatifs concernés sont identiques dans le runtime partagé.",
+    "La contrepreuve utilise deux archives valides avancées par le moteur pur, avec requêtes JavaScript retenues. Le parcours final de 36 contrôles joue réellement les tours et l’ordre de reconnaissance.",
+    "Rapports complets et captures locales conservés sous /tmp ; aucun nouveau contrôle GitHub Actions n’est déclaré réussi par cette recette locale.",
+    "Rapport indépendant volontairement hors des entrées des générateurs Excel V100/V104."
+  ]
+}

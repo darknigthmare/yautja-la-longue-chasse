@@ -1,0 +1,1004 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-051-golgotha-etude-jaguar",
+  "checkedAt": "2026-09-30T22:36:27.916Z",
+  "compositionDigest": "60b04c30335595e806ff80de7cf61c2d721fa51a2f23d3bce25709b2e26a482b",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "1c9629f792a7ff97dd37582a2400290e0047e477a6c0c7f61ec14168a62feb8f",
+    "app/game/pitArenaProduction.ts": "b35d28c21ee173b5b0d385b6e08ef085e10b7c75f4fef93734d645fcd8a4b11e",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "app/game/pitStageLifeV63.ts": "a6920fcebc2fc166e2eef92b8d7592b5acde82eec7ad0ab382dd81189ad0b7f2",
+    "app/game/pitStageLifeDirectorV63.ts": "0f6f091487bb9d9e31de051212eb6a91b2a8a7ddb661c35cea8d35dcdf362cd8",
+    "app/game/pitStageLifeRenderingV63.ts": "2fab9d67b019d927bf3f62ff881bd62c4616a67f7ce88c5941a49067fb040351",
+    "app/game/pitStageCompositionV63.ts": "bd26ea648513d2fffe3473c01dfd903c90b6b0f8227c0bed29eb69008b1e6192",
+    "app/game/data/pitStageCompositionV63.json": "d913c3910e52fb01b1efa7a21b7b8123db3431cf5ab53978df85ed016cc64845",
+    "scripts/verify-pit-stage-composition-v63.mjs": "65e78854abbb3307e5a6c1c815a835daf68dc3f5c80893895338c04767dbf78f",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "44d3a06d0355a204bdbd2aee3ee0c29425f5969f6359320b612d457ec6fe1b32",
+    "app/game/data/pitStageLifeV63.json": "3df78b5068a25b46b30d514962ce56504dd0e2e66bf013bc70c0414de0469ab6",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "compositionOverlay": [
+      {
+        "stageId": "arena-051-golgotha-etude-jaguar",
+        "assetId": "p4-p4-b-front-fascia",
+        "sourceSha256": "ffedbeb2d761a7e6143e2e216683d08dfa8244feb12e6d555f21259555d1b7bf",
+        "sourceCrop": {
+          "x": 100,
+          "y": 235,
+          "width": 1972,
+          "height": 194
+        },
+        "placements": [
+          {
+            "x": 0,
+            "y": 454,
+            "width": 1280,
+            "height": 160
+          }
+        ]
+      }
+    ],
+    "production": {
+      "number": 51,
+      "catalogueId": "arena-051-golgotha-etude-jaguar",
+      "assetDirectory": "/game/sprites/v42/pit-arenas/arena-051-golgotha-etude-jaguar",
+      "name": "Cataractes des Anciens · création originale",
+      "setting": "Ruines Yautja et cascades — création originale conservée, sans attribution au Camp Golgotha.",
+      "wave": "heritage-study",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "pending-dedicated-conversation",
+      "runtimeEnabled": true,
+      "planes": [
+        {
+          "id": "P0",
+          "role": "ciel ou profondeur atmosphérique",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Profondeur originale propre à cette composition",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": -160,
+                  "y": -100,
+                  "width": 1280,
+                  "height": 700
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v42/pit-arenas/arena-051-golgotha-etude-jaguar/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v42/pit-arenas/arena-051-golgotha-etude-jaguar/receipt-p0-depth.json",
+                    "sha256": "50a0de8c25e70ffa4d0c4218d56c88936aa783eafe532099f0f3273b68339d47",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v42/pit-arenas/arena-051-golgotha-etude-jaguar/p0-visual-review.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "silhouettes et repères lointains",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-p1-a-distant-left",
+              "role": "Repère éloigné gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.38,
+              "placements": [
+                {
+                  "x": -130,
+                  "y": -50,
+                  "width": 360,
+                  "height": 450
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-a-distant-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-017-puits-des-bannis/receipt-p1-a-distant-left-7dc4921c4107.json",
+                    "sha256": "7dc4921c41076aad939f4183282219d875faab5e4c799052f65a2f283ce2a3d0",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 104,
+                      "y": 21,
+                      "width": 830,
+                      "height": 982
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-017-puits-des-bannis-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-017-puits-des-bannis/p1-a-distant-left"
+            },
+            {
+              "id": "p1-p1-b-distant-right",
+              "role": "Repère éloigné droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.38,
+              "placements": [
+                {
+                  "x": 730,
+                  "y": -50,
+                  "width": 360,
+                  "height": 450
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-b-distant-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-017-puits-des-bannis/receipt-p1-b-distant-right-15c98b8d25c1.json",
+                    "sha256": "15c98b8d25c1683dee7a165a62a9ea0dfd94eff85abe39a6714e1c7df77dca15",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 7,
+                      "y": 11,
+                      "width": 1010,
+                      "height": 1513
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-017-puits-des-bannis-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-017-puits-des-bannis/p1-b-distant-right"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "architecture de fond",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-p2-a-support-left",
+              "role": "Support architectural gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.68,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -105,
+                  "y": 100,
+                  "width": 270,
+                  "height": 328
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-a-support-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/ruins-tribunal/receipt-p2-a-support-left-a27a6dabca2d.json",
+                    "sha256": "a27a6dabca2dbae390e69971894aa4a51e4bfab065f3d37756b848e24b60d26d",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 132,
+                      "y": 14,
+                      "width": 760,
+                      "height": 1488
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-ruins-tribunal-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-008-tribunal-des-ruines/p2-a-support-left"
+            },
+            {
+              "id": "p2-p2-b-support-right",
+              "role": "Support architectural droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.68,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 795,
+                  "y": 100,
+                  "width": 270,
+                  "height": 328
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-b-support-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/ruins-tribunal/receipt-p2-b-support-right-73e00657c487.json",
+                    "sha256": "73e00657c48766717931e61e6ba9adc678b7df22d0b2d2b80dd04f3b08fc1031",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 201,
+                      "y": 17,
+                      "width": 690,
+                      "height": 1487
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-ruins-tribunal-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-008-tribunal-des-ruines/p2-b-support-right"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "activité médiane et public",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-p3-a-prop-left",
+              "role": "Accessoire de sol gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 175,
+                  "y": 349,
+                  "width": 105,
+                  "height": 79
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-a-prop-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-017-puits-des-bannis/receipt-p3-a-prop-left-198b577fa1b8.json",
+                    "sha256": "198b577fa1b862639945c7ec645e1973c6d8cdfacfa32fcac6b2f2c79ba3262a",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 44,
+                      "y": 162,
+                      "width": 1686,
+                      "height": 613
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-017-puits-des-bannis-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-017-puits-des-bannis/p3-a-prop-left"
+            },
+            {
+              "id": "p3-p3-b-prop-right",
+              "role": "Accessoire de sol droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 680,
+                  "y": 349,
+                  "width": 105,
+                  "height": 79
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-b-prop-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-017-puits-des-bannis/receipt-p3-b-prop-right-d708a5035707.json",
+                    "sha256": "d708a5035707d26c5683e2a35890df31138a8fe9e1e6e7fba6e8e7aa8a893495",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 43,
+                      "y": 205,
+                      "width": 1450,
+                      "height": 617
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-017-puits-des-bannis-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-017-puits-des-bannis/p3-b-prop-right"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "sol de combat, ruptures et props actifs",
+          "nominalParallax": 1,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-p4-a-contact-floor",
+              "role": "Sol de contact",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 35,
+                "y": 286,
+                "width": 1979,
+                "height": 219
+              },
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 640,
+                  "height": 35
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-a-contact-floor.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/ruins-tribunal/receipt-p4-a-contact-floor-789d1488cfb3.json",
+                    "sha256": "789d1488cfb30adcc13b95468b03b1b50f1608fe1141542a5185975593be0675",
+                    "width": 2048,
+                    "height": 768,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 31,
+                      "y": 274,
+                      "width": 1986,
+                      "height": 231
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-ruins-tribunal-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-008-tribunal-des-ruines/p4-a-contact-floor"
+            },
+            {
+              "id": "p4-p4-b-front-fascia",
+              "role": "Façade du sol",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "strip-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 454,
+                  "width": 1280,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/ruins-tribunal/receipt-p4-b-front-fascia-ffedbeb2d761.json",
+                    "sha256": "ffedbeb2d761a7e6143e2e216683d08dfa8244feb12e6d555f21259555d1b7bf",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 14,
+                      "y": 137,
+                      "width": 2153,
+                      "height": 467
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-ruins-tribunal-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-008-tribunal-des-ruines/p4-b-front-fascia"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "avant-plan occultant avec fondu de lisibilité",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-p5-a-foreground-left",
+              "role": "Premier plan gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "verticalAlign": "top",
+              "placements": [
+                {
+                  "x": -70,
+                  "y": -20,
+                  "width": 175,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-a-foreground-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-017-puits-des-bannis/receipt-p5-a-foreground-left-0ccd48048366.json",
+                    "sha256": "0ccd48048366434cb7ca59011ccf35fccd8f9cc9561758835d211aeffd3c6c5c",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 36,
+                      "y": 0,
+                      "width": 240,
+                      "height": 1492
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-017-puits-des-bannis-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-017-puits-des-bannis/p5-a-foreground-left"
+            },
+            {
+              "id": "p5-p5-b-foreground-right",
+              "role": "Premier plan droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "verticalAlign": "top",
+              "placements": [
+                {
+                  "x": 855,
+                  "y": -20,
+                  "width": 175,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-b-foreground-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-017-puits-des-bannis/receipt-p5-b-foreground-right-f99c7ae057b8.json",
+                    "sha256": "f99c7ae057b87b8e22465daab73247cbf5e0c091402740c6cbc7ad1960bcd7e7",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 807,
+                      "y": 0,
+                      "width": 186,
+                      "height": 1495
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-017-puits-des-bannis-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-017-puits-des-bannis/p5-b-foreground-right"
+            }
+          ]
+        }
+      ],
+      "compositionContract": "v42-explicit-shared-library-compositions",
+      "signatureBacklog": [
+        {
+          "status": "not-yet-produced",
+          "requirement": "Independent close or animated signature asset for Golgotha — étude Jaguar",
+          "scope": "Required before claiming interactive/animated venue completion; current neutral composition may show this identity only in distant P0."
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-051-golgotha-etude-jaguar",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v42-arena-051-golgotha-etude-jaguar-renderer-qa.json",
+        "applicationEvidence": "docs/v42-arena-application-dev-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v42-arena-composition-visual-review.json",
+        "digest": "dc7ebf012d5465f9b11850afada1b534197fcda48b285963af53c3dd83f16311"
+      },
+      "loreReclassificationV62": {
+        "previousName": "Golgotha — étude Jaguar",
+        "preservedRuntimeId": true,
+        "preservedImagePaths": [
+          "/game/sprites/v42/pit-arenas/arena-051-golgotha-etude-jaguar/p0-depth.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-a-distant-left.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-b-distant-right.png",
+          "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-a-support-left.png",
+          "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-b-support-right.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-a-prop-left.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-b-prop-right.png",
+          "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-a-contact-floor.png",
+          "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-a-foreground-left.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-b-foreground-right.png"
+        ],
+        "reason": "The original image depicts stone ruins and waterfalls, inconsistent with the USCM installation documented by the original Jaguar manual.",
+        "replacementLoreStageId": "arena-187-golgotha-uscm-airlock",
+        "sourceUrl": "https://www.atariage.com/manual_html_page.php?SoftwareLabelID=1060"
+      }
+    },
+    "life": null,
+    "story": null,
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [],
+  "loaded": {
+    "independentKit": true,
+    "images": 11,
+    "expectedImages": 11,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV63Ambient": false,
+    "hasV61Story": false
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-051-golgotha-etude-jaguar\\center.png",
+      "sha256": "5028cb960f2af5d07e42bf57be6af3ef5f378be2be176b69aed7bfa6546038b7"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-051-golgotha-etude-jaguar\\left-corner.png",
+      "sha256": "5beb0fba721a9309883926dc4cfe609d2763b41db2263c75bc0a563409de5fa4"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-051-golgotha-etude-jaguar\\right-corner.png",
+      "sha256": "edfa978390415a5094676774e0ea29b0c2ef14bf5de3fd36d9929ad50d901cd5"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-051-golgotha-etude-jaguar\\wide.png",
+      "sha256": "e27016ecfaa4ba0c6dfe345ccaee04c31195c1d9739e542b13eb170ca4717de5"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-051-golgotha-etude-jaguar\\close.png",
+      "sha256": "dad7d1adf0bd035703ec7f9e1b3cfbeea482738b64ac60b9ae9acf6b5765df1b"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-051-golgotha-etude-jaguar\\reduced-motion.png",
+      "sha256": "ecb5ca579d167c880c0d4d54b933966d7b2d291d0ec80e21153be4d0bfc6c807"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-051-golgotha-etude-jaguar\\high-contrast.png",
+      "sha256": "e3a58595ccaaab5f8dadcd1abb885dbadb9a3290c5bf60ad50aff48ba17f8c58"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-051-golgotha-etude-jaguar\\actual-game-camera.png",
+      "sha256": "92da2bb9eaaead992760a566fca2209099d333c04a42ac9935d3267d22b30dc2"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-051-golgotha-etude-jaguar\\mobile-canvas.png",
+      "sha256": "75cc65e19f79d010a89e340d72976ecec2ded765ecee9705eb1e3f477fd71f98"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

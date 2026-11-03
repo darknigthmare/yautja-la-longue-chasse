@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "assetId": "witch-pit-static",
+  "fighterId": "witch",
+  "rosterIds": {
+    "yautja": "Y-249",
+    "game": "G-041"
+  },
+  "status": "integrated-static-candidate",
+  "scope": "Single static PIT identity plate; no animation frames and no separate drone asset in this file.",
+  "promptRecordType": "Post-generation fidelity and regeneration brief; not a verbatim record of the completed generation request.",
+  "generation": {
+    "provider": "OpenAI imagegen (built-in)",
+    "performed": true,
+    "sessionOutputId": "exec-56605dc0-4810-4cbe-b1c7-391ea478ff08",
+    "candidateMasterPath": "art-source/v31/known-yautja/sources/witch-chroma.png",
+    "candidateSha256": "3f7825368a1e04ec394da8e8f23c6f93f4adb94c562ca4d50f4563a16146970c",
+    "staticVisualReview": true,
+    "animationClipsReviewed": 0,
+    "officialCertification": false,
+    "oneToOneCertified": false
+  },
+  "sourceEvidence": [
+    {
+      "class": "official-developer-release-note",
+      "url": "https://forum.predator.illfonic.com/t/the-witch-predator-has-arrived/36352",
+      "reviewedAs": "IllFonic CommunityTeam News/Patch Notes post dated 2025-04-24; text reviewed directly.",
+      "supports": [
+        "official female Scout-type Witch Predator",
+        "ancient Britannia association",
+        "metal armor replaced by bone and hide",
+        "disposable cloaked tracking drones",
+        "drone pulse marks prey"
+      ]
+    },
+    {
+      "class": "secondary-community-index-only",
+      "url": "https://avp.fandom.com/wiki/Witch_Predator",
+      "reviewedAs": "Direct access returned HTTP 402; retained only as the V26 secondary index, with no visual claim adopted."
+    },
+    {
+      "class": "local-project-lore",
+      "path": "app/game/hunterLore.ts",
+      "sha256": "bd40f527f92efb26f0409c81aa4fedcf225ffd546db799c753a7033df73db7cc",
+      "supports": [
+        "athletic huntress direction",
+        "dark mottling",
+        "bone-and-trophy silhouette",
+        "local bow and snare concepts are adaptation only"
+      ]
+    },
+    {
+      "class": "local-gameplay-adaptation",
+      "path": "app/game/systems/pitFirstEdition.ts",
+      "sha256": "63d61e40a331652d4f19f71e3deed3c9ccfdea7a1ec7605dd10d21ac7900fd45",
+      "supports": [
+        "PIT bow-snare mechanic only; not official visual evidence"
+      ]
+    }
+  ],
+  "truthBoundary": {
+    "officialOrLicensed": [
+      "Witch is an official female Scout-type Hunting Grounds class associated with ancient Britannia.",
+      "The official release note anchors bone-and-hide armor and a dedicated cloaked tracking drone."
+    ],
+    "localInterpretation": [
+      "Dark mottling, feral palette, bow, snare, and PIT framing come from project adaptation."
+    ],
+    "productionInference": [
+      "The bow is omitted because the reviewed official source does not establish it.",
+      "The drone should be a separate body asset; include it in a character plate only when an attached primary capture proves its exact mounting state.",
+      "Exact mask, bones, hide layers, drone shape, and left/right anchors require direct game captures."
+    ],
+    "secondaryClaimsAdopted": [],
+    "oneToOneCertified": false
+  },
+  "structuredPrompt": {
+    "subject": "Witch Predator from Predator: Hunting Grounds, as original fan-made game art anchored to the official ancient-Britannia Scout concept.",
+    "anatomy": [
+      "adult female Yautja with agile Scout proportions",
+      "strong functional shoulders, arms, core, and legs",
+      "clearly Yautja hands, feet, mandible structure under the mask line, and black dreadlocks",
+      "nonsexualized combat silhouette",
+      "no supernatural or human-witch anatomy"
+    ],
+    "equipment": [
+      "bone-and-hide armor replacing a conventional metal suit",
+      "empty hands for the identity plate",
+      "reference-matched biomask only if visible in attached direct capture",
+      "omit bow and snare because they are local gameplay adaptations",
+      "omit the tracking drone unless an attached primary capture shows its exact mounted state; generate it separately otherwise"
+    ],
+    "asymmetry": [
+      "preserve exact bone pieces, hide overlaps, mask damage, pauldron, straps, trophies, pouches, and drone mount from the attached capture",
+      "do not mirror organic trophies or fabricate symmetry"
+    ],
+    "poseAndFraming": [
+      "one complete full-body fighter",
+      "right-facing three-quarter lateral Scout-ready pose",
+      "portrait canvas",
+      "subject about 80 percent of image height",
+      "at least 10 percent clear padding on every edge",
+      "feet, bone tips, hide edges, and dreadlock tips fully visible"
+    ],
+    "renderStyle": [
+      "dense cinematic 32-bit-era pre-rendered pixel art",
+      "crisp agile silhouette at gameplay size",
+      "clear skin, bone, hide, and limited metal separation",
+      "no photoreal live-action compositing"
+    ],
+    "background": [
+      "exact flat opaque chroma green #00FF00",
+      "no gradient, floor, shadow, fog, particles, occult aura, vignette, or scenery",
+      "no green light, spill, halo, reflection, or #00FF00 on the subject"
+    ],
+    "forbidden": [
+      "text",
+      "logo",
+      "UI",
+      "watermark",
+      "border",
+      "cropping",
+      "witch hat",
+      "magic staff",
+      "spell effects",
+      "bow",
+      "snare",
+      "invented drone",
+      "sexualized armor",
+      "extra limbs",
+      "copied official key art"
+    ]
+  },
+  "acceptanceGate": [
+    "Compare mask, anatomy, bone/hide topology, drone state, and asymmetry against attached direct Hunting Grounds captures.",
+    "Reject supernatural motifs, unproven bow imagery, and any claim of official, exact, or 1:1 fidelity.",
+    "Approve only as a static fan-made identity plate; the drone and all animation coverage remain separate and zero here."
+  ],
+  "rightsAndLabel": "Original fan-made derivative artwork for this project; non-official and not certified 1:1.",
+  "integration": {
+    "confirmed": true,
+    "manifestPath": "public/game/sprites/v31/film-plates/manifest.json",
+    "runtimeUrl": "/game/sprites/v31/film-plates/witch.png",
+    "runtimePath": "public/game/sprites/v31/film-plates/witch.png",
+    "runtimeKind": "static-bitmap",
+    "runtimeSha256": "a7ec3f48cee5f21243ab5e864c48a1d5ea6488fc4ca7180abbb2a0986efdf232"
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "thunder-fang",
+  "name": "Thunder Fang",
+  "lore": "Silhouette originale proposée à partir du nom demandé. Aucun design canonique ni aucune statistique précise inventée.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Thunder Fang — proposition d’identité",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/thunder-fang/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/thunder-fang/identity-r1.png",
+      "originId": "exec-4194cfcd-e446-4879-b80a-b59f7d50c5eb.png",
+      "width": 2048,
+      "height": 768,
+      "sha256": "4a88a4275ae6a0bb4467f2934f73b8c53937e708764bf83765604c806e9bc282",
+      "bytes": 1833211,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Empty vehicle chassis: removable weapons and props excluded. Heavy compact clan antigravity assault sled PROPOSAL, wedge-like split prow with two blunt reinforced bumper prongs (not organic tusks), short enclosed cockpit, low broad thruster chassis, two empty gun mounting sockets above the flanks, dark bronze angular hull with faint amber lamps. No gun or projectile mounted.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1108,
+            1108
+          ],
+          "role": "Requested catalogue name"
+        }
+      ],
+      "notes": [
+        "Proposition statique, en revue. Les équipements, effets et mouvements restent à produire séparément.",
+        "Inspection visuelle finale : deux vues obliques trois-quarts avec proue et plan supérieur dominants, incompatibles avec la lecture latérale 2D demandée. Rejet de cadrage, aucun clip runtime accepté."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1024,
+            768
+          ],
+          "alpha16Bounds": [
+            46,
+            162,
+            933,
+            357
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 222394,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1024,
+            0,
+            1024,
+            768
+          ],
+          "alpha16Bounds": [
+            1070,
+            162,
+            932,
+            357
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 222311,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-r2",
+      "actionId": "identity",
+      "label": "Thunder Fang — identité, profils corrigés",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/thunder-fang/identity-r2.png",
+      "publicPath": "/game/vehicles/v34/thunder-fang/identity-r2.png",
+      "originId": "exec-e86d4b6f-5c06-40da-8ffc-b37ba81c061a.png",
+      "width": 2048,
+      "height": 768,
+      "sha256": "1a8494e63a601f4e6d11aa7e1b8ca4de505c4f2e323e746e1dc084a6f6364ac1",
+      "bytes": 1630199,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Use the immediately preceding Thunder Fang sheet as the exact vehicle design reference, but correct the camera. Redraw an ORIGINAL non-canonical 2D game identity sheet with EXACTLY TWO complete independently authored TRUE FLAT ORTHOGRAPHIC SIDE ELEVATIONS side by side: left half vehicle faces RIGHT, right half same construction faces LEFT. ZERO three-quarter angle, ZERO front view, ZERO visible top-plane foreshortening; show the long hull as a strict horizontal side silhouette suitable for a side-scrolling game. Preserve the heavy compact clan antigravity assault sled: dark bronze angular armor, low broad thruster chassis, wedge-like split prow ending in two blunt reinforced bumper prongs that are mechanical and not tusks, short fully enclosed cockpit, two EMPTY circular gun mounting sockets above the flanks, faint amber lamps. No mounted gun or projectile. Both complete silhouettes at identical scale, each inside its half with at least ten percent blank outer margin and a wide empty central gutter. Pure uniform MAGENTA #FF00FF background. No rider, passenger, cargo, trophies, ground, shadow, scenery, effects, text, symbols, labels, grid, divider or watermark. Detailed hand-painted production bitmap.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/thunder-fang/identity-r1.png",
+          "sha256": "4a88a4275ae6a0bb4467f2934f73b8c53937e708764bf83765604c806e9bc282"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : deux élévations latérales opposées nettement plus plates que la R1 oblique, silhouettes complètes et emplacements d’armes vides. Une légère lecture du plan supérieur subsiste ; conserver en authored-review avant découpe runtime.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key appliqué par le renderer de revue V34."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1024,
+            768
+          ],
+          "alpha16Bounds": [
+            50,
+            232,
+            930,
+            289
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 183549,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1024,
+            0,
+            1024,
+            768
+          ],
+          "alpha16Bounds": [
+            1069,
+            232,
+            929,
+            289
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 183296,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 2,
+  "acceptedRuntimeClips": 0
+}

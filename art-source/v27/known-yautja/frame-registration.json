@@ -1,0 +1,3219 @@
+{
+  "schemaVersion": 1,
+  "scope": "Free rectangles and support pivots for five review sequences: Wolf high guard, Feral shield, Wolf hit reaction, Chopper idle, Greyback idle",
+  "reviewDate": "2026-09-05",
+  "method": {
+    "sourceMutation": false,
+    "imageGeneration": false,
+    "imageBackgroundRemoval": false,
+    "rawPixelRead": "sharp raw RGB buffers; images never rewritten",
+    "foregroundClassifier": "Measured foreground = NOT (r>=t && b>=t && g<=70 && r-g>110 && b-g>110), t in [160,180,200]. Color classification for bounds only; not alpha extraction.",
+    "boundsPolicy": "Union of threshold bounds, plus 8 source pixels padding on each side. Rectangles use [x,y,width,height], zero-based, right/bottom exclusive.",
+    "supportPolicy": "Read bottom 46 rows of each subject, isolate the two horizontal foot spans, use bottom four rows for each contact span. Contact Y is one pixel after the lowest measured foot pixel.",
+    "pivotPolicy": "Source X is midpoint of the two visible contact spans; source Y is lower (screen-left/near) sole baseline. This preserves the drawn 15-22px perspective offset between feet; it is not a limb-rig joint.",
+    "drawPolicy": "Use one constant scale s per actor. Destination x=worldRootX-pivotPx.x*s; y=worldRootY-pivotPx.y*s; width=rectPx[2]*s; height=rectPx[3]*s. No independent width/height stretch and no per-frame height fitting.",
+    "visualInspection": "Both complete original sheets and enlarged Wolf frame2/Feral frame4 inspected through read-only sharp previews. Anatomy/fidelity/loop require further QA."
+  },
+  "entries": [
+    {
+      "id": "wolf-high-guard",
+      "characterId": "wolf",
+      "clip": "high-guard",
+      "status": "draft-registration-only",
+      "source": {
+        "path": "art-source/v26/known-yautja/sources/wolf-high-guard.png",
+        "sha256": "d911dcc7763030c3ad64f4abe182d1e7a2d377c7eb367d04e74510062b7d9e8b",
+        "sha256AfterRead": "d911dcc7763030c3ad64f4abe182d1e7a2d377c7eb367d04e74510062b7d9e8b",
+        "unchanged": true,
+        "bytes": 2029087,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "opaque magenta; no alpha conversion performed"
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            172,
+            78,
+            271,
+            418
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                172,
+                78,
+                271,
+                418
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                172,
+                78,
+                271,
+                418
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                172,
+                78,
+                271,
+                418
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 60484,
+          "rectPx": [
+            164,
+            70,
+            287,
+            434
+          ],
+          "pivotSourcePx": {
+            "x": 300.25,
+            "y": 496
+          },
+          "pivotPx": {
+            "x": 136.25,
+            "y": 426
+          },
+          "pivotInNominalCellPx": {
+            "x": 300.25,
+            "y": 496
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 201.5,
+                "y": 496
+              },
+              "contactSpanPx": [
+                175,
+                228
+              ],
+              "lowerFootBandWidthPx": 59
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 399,
+                "y": 474
+              },
+              "contactSpanPx": [
+                378,
+                420
+              ],
+              "lowerFootBandWidthPx": 88
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Deux bras et deux poings lisibles ; contrôler le pouce et les griffes à la taille finale.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 2,
+          "stage": "raise-forearms",
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            633,
+            84,
+            271,
+            412
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                633,
+                84,
+                271,
+                412
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                633,
+                84,
+                271,
+                412
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                633,
+                84,
+                271,
+                412
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 55333,
+          "rectPx": [
+            625,
+            76,
+            287,
+            428
+          ],
+          "pivotSourcePx": {
+            "x": 760.75,
+            "y": 496
+          },
+          "pivotPx": {
+            "x": 135.75,
+            "y": 420
+          },
+          "pivotInNominalCellPx": {
+            "x": 248.75,
+            "y": 496
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 662,
+                "y": 496
+              },
+              "contactSpanPx": [
+                636,
+                688
+              ],
+              "lowerFootBandWidthPx": 58
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 859.5,
+                "y": 475
+              },
+              "contactSpanPx": [
+                839,
+                880
+              ],
+              "lowerFootBandWidthPx": 88
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Poings près du masque ; contacts visuels lisibles, articulation fine non certifiée.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 3,
+          "stage": "high-guard",
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1099,
+            101,
+            256,
+            395
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1099,
+                101,
+                256,
+                395
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1099,
+                101,
+                256,
+                395
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1099,
+                100,
+                256,
+                396
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 49838,
+          "rectPx": [
+            1091,
+            92,
+            272,
+            412
+          ],
+          "pivotSourcePx": {
+            "x": 1228,
+            "y": 496
+          },
+          "pivotPx": {
+            "x": 137,
+            "y": 404
+          },
+          "pivotInNominalCellPx": {
+            "x": 204,
+            "y": 496
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1128.5,
+                "y": 496
+              },
+              "contactSpanPx": [
+                1102,
+                1155
+              ],
+              "lowerFootBandWidthPx": 58
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1327.5,
+                "y": 475
+              },
+              "contactSpanPx": [
+                1307,
+                1348
+              ],
+              "lowerFootBandWidthPx": 86
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Occultation poings/masque plus forte : ne pas traiter une main cachée comme absente.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 4,
+          "stage": "absorb-recoil",
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            169,
+            605,
+            255,
+            364
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                169,
+                605,
+                255,
+                364
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                169,
+                605,
+                255,
+                364
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                169,
+                605,
+                255,
+                365
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 46768,
+          "rectPx": [
+            161,
+            597,
+            271,
+            381
+          ],
+          "pivotSourcePx": {
+            "x": 299,
+            "y": 969
+          },
+          "pivotPx": {
+            "x": 138,
+            "y": 372
+          },
+          "pivotInNominalCellPx": {
+            "x": 299,
+            "y": 457
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 198.5,
+                "y": 969
+              },
+              "contactSpanPx": [
+                172,
+                225
+              ],
+              "lowerFootBandWidthPx": 59
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 399.5,
+                "y": 948
+              },
+              "contactSpanPx": [
+                376,
+                423
+              ],
+              "lowerFootBandWidthPx": 86
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Flexion et recul réels ; le deuxième canon est partiellement occulté.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 5,
+          "stage": "recover",
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            634,
+            587,
+            267,
+            383
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                634,
+                587,
+                267,
+                382
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                634,
+                587,
+                267,
+                383
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                634,
+                587,
+                267,
+                383
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 52158,
+          "rectPx": [
+            626,
+            579,
+            283,
+            399
+          ],
+          "pivotSourcePx": {
+            "x": 761.75,
+            "y": 970
+          },
+          "pivotPx": {
+            "x": 135.75,
+            "y": 391
+          },
+          "pivotInNominalCellPx": {
+            "x": 249.75,
+            "y": 458
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 663.5,
+                "y": 970
+              },
+              "contactSpanPx": [
+                637,
+                690
+              ],
+              "lowerFootBandWidthPx": 59
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 860,
+                "y": 949
+              },
+              "contactSpanPx": [
+                839,
+                881
+              ],
+              "lowerFootBandWidthPx": 87
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Retour de bras distinct ; le deuxième canon reste partiellement occulté.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 6,
+          "stage": "return-ready",
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1109,
+            567,
+            270,
+            403
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1109,
+                567,
+                270,
+                402
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1109,
+                567,
+                270,
+                403
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1109,
+                567,
+                270,
+                403
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 58317,
+          "rectPx": [
+            1101,
+            559,
+            286,
+            419
+          ],
+          "pivotSourcePx": {
+            "x": 1236.25,
+            "y": 970
+          },
+          "pivotPx": {
+            "x": 135.25,
+            "y": 411
+          },
+          "pivotInNominalCellPx": {
+            "x": 212.25,
+            "y": 458
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1138,
+                "y": 970
+              },
+              "contactSpanPx": [
+                1112,
+                1164
+              ],
+              "lowerFootBandWidthPx": 59
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1334.5,
+                "y": 949
+              },
+              "contactSpanPx": [
+                1313,
+                1356
+              ],
+              "lowerFootBandWidthPx": 88
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Retour proche de 1, mais torse et tête ne sont pas exactement identiques.",
+          "status": "registration-proposal-not-art-approved"
+        }
+      ],
+      "checks": {
+        "frameCount": 6,
+        "rectanglesInsideSource": true,
+        "rectanglesDisjoint": true,
+        "nearFootWidthRangePx": [
+          58,
+          59
+        ],
+        "silhouetteHeightRangePx": [
+          364,
+          418
+        ],
+        "nominalRootXRangePx": [
+          204,
+          300.25
+        ],
+        "nominalRootYRangePx": [
+          457,
+          496
+        ],
+        "automaticRescaleRecommended": false,
+        "animationPlaybackVerified": false,
+        "anatomyCertified": false,
+        "cinemaFidelityCertified": false
+      },
+      "notes": [
+        "Masque et armure hérités de la référence de projet ; aucune certification 1:1 film.",
+        "Deux canons apparaissent clairement en 1,2,3 et6 ; occultations en4,5 à revoir en animation.",
+        "La réduction de hauteur en4 traduit surtout la flexion : ne pas appliquer un fit-height par frame.",
+        "Les six poses représentent une garde, pas une locomotion ; pas de certification du cycle temporel."
+      ]
+    },
+    {
+      "id": "feral-shield-guard",
+      "characterId": "feral-hunter",
+      "clip": "shield-guard",
+      "status": "draft-registration-only",
+      "source": {
+        "path": "art-source/v26/known-yautja/sources/feral-shield-guard.png",
+        "sha256": "e4d6057092cb7a495d7349c09cf7a77c0300309bc7bc23af3b5d63ef09f97e62",
+        "sha256AfterRead": "e4d6057092cb7a495d7349c09cf7a77c0300309bc7bc23af3b5d63ef09f97e62",
+        "unchanged": true,
+        "bytes": 2057533,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "opaque magenta; no alpha conversion performed"
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "folded-guard",
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            110,
+            56,
+            306,
+            425
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                110,
+                56,
+                306,
+                424
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                110,
+                56,
+                306,
+                425
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                110,
+                56,
+                307,
+                425
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 52295,
+          "rectPx": [
+            102,
+            48,
+            323,
+            441
+          ],
+          "pivotSourcePx": {
+            "x": 250,
+            "y": 481
+          },
+          "pivotPx": {
+            "x": 148,
+            "y": 433
+          },
+          "pivotInNominalCellPx": {
+            "x": 250,
+            "y": 481
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 148,
+                "y": 481
+              },
+              "contactSpanPx": [
+                129,
+                167
+              ],
+              "lowerFootBandWidthPx": 42
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 352,
+                "y": 466
+              },
+              "contactSpanPx": [
+                332,
+                372
+              ],
+              "lowerFootBandWidthPx": 77
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "La main droite ouverte présente des doigts partiellement confondus ; pas de décompte anatomique certifié.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 2,
+          "stage": "raise-and-start-unfold",
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            607,
+            61,
+            317,
+            420
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                607,
+                61,
+                317,
+                420
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                607,
+                61,
+                317,
+                420
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                607,
+                61,
+                317,
+                420
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 53054,
+          "rectPx": [
+            599,
+            53,
+            333,
+            436
+          ],
+          "pivotSourcePx": {
+            "x": 748.75,
+            "y": 481
+          },
+          "pivotPx": {
+            "x": 149.75,
+            "y": 428
+          },
+          "pivotInNominalCellPx": {
+            "x": 236.75,
+            "y": 481
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 646,
+                "y": 481
+              },
+              "contactSpanPx": [
+                627,
+                665
+              ],
+              "lowerFootBandWidthPx": 43
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 851.5,
+                "y": 466
+              },
+              "contactSpanPx": [
+                832,
+                871
+              ],
+              "lowerFootBandWidthPx": 76
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "La main gauche se superpose au mécanisme du bouclier : vérifier le pouce et le raccord.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 3,
+          "stage": "half-unfolded",
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1086,
+            64,
+            321,
+            417
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1086,
+                64,
+                321,
+                416
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1086,
+                64,
+                321,
+                417
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1086,
+                64,
+                322,
+                417
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 55375,
+          "rectPx": [
+            1078,
+            56,
+            338,
+            433
+          ],
+          "pivotSourcePx": {
+            "x": 1228,
+            "y": 481
+          },
+          "pivotPx": {
+            "x": 150,
+            "y": 425
+          },
+          "pivotInNominalCellPx": {
+            "x": 204,
+            "y": 481
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1125.5,
+                "y": 481
+              },
+              "contactSpanPx": [
+                1106,
+                1145
+              ],
+              "lowerFootBandWidthPx": 42
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1330.5,
+                "y": 466
+              },
+              "contactSpanPx": [
+                1311,
+                1350
+              ],
+              "lowerFootBandWidthPx": 76
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Bouclier en éventail plus ouvert ; vérifier la continuité du poignet derrière les segments.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 4,
+          "stage": "fully-deployed",
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            100,
+            540,
+            314,
+            423
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                100,
+                540,
+                314,
+                423
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                100,
+                540,
+                314,
+                423
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                100,
+                540,
+                314,
+                423
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 61061,
+          "rectPx": [
+            92,
+            532,
+            330,
+            439
+          ],
+          "pivotSourcePx": {
+            "x": 242.75,
+            "y": 963
+          },
+          "pivotPx": {
+            "x": 150.75,
+            "y": 431
+          },
+          "pivotInNominalCellPx": {
+            "x": 242.75,
+            "y": 451
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 138.5,
+                "y": 963
+              },
+              "contactSpanPx": [
+                119,
+                158
+              ],
+              "lowerFootBandWidthPx": 44
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 347,
+                "y": 948
+              },
+              "contactSpanPx": [
+                327,
+                367
+              ],
+              "lowerFootBandWidthPx": 79
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Le disque masque la main et une partie de l’avant-bras gauche : occultation physiquement normale possible. Elle ne prouve ni un détachement ni une mauvaise anatomie ; ne pas rendre le bouclier transparent. Vérifier la continuité temporelle depuis les poses voisines.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 5,
+          "stage": "fold-and-lower",
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            596,
+            542,
+            303,
+            421
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                596,
+                542,
+                303,
+                421
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                596,
+                542,
+                303,
+                421
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                596,
+                542,
+                304,
+                421
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 53212,
+          "rectPx": [
+            588,
+            534,
+            320,
+            437
+          ],
+          "pivotSourcePx": {
+            "x": 736.25,
+            "y": 963
+          },
+          "pivotPx": {
+            "x": 148.25,
+            "y": 429
+          },
+          "pivotInNominalCellPx": {
+            "x": 224.25,
+            "y": 451
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 634,
+                "y": 963
+              },
+              "contactSpanPx": [
+                615,
+                653
+              ],
+              "lowerFootBandWidthPx": 42
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 838.5,
+                "y": 948
+              },
+              "contactSpanPx": [
+                819,
+                858
+              ],
+              "lowerFootBandWidthPx": 78
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Repli visible, mais nombre et rayon des segments demandent une comparaison image par image.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 6,
+          "stage": "return-folded",
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1092,
+            546,
+            301,
+            417
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1092,
+                546,
+                301,
+                417
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1092,
+                546,
+                301,
+                417
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1092,
+                546,
+                301,
+                417
+              ]
+            }
+          ],
+          "measuredForegroundPixels": 50987,
+          "rectPx": [
+            1084,
+            538,
+            317,
+            433
+          ],
+          "pivotSourcePx": {
+            "x": 1229.5,
+            "y": 963
+          },
+          "pivotPx": {
+            "x": 145.5,
+            "y": 425
+          },
+          "pivotInNominalCellPx": {
+            "x": 205.5,
+            "y": 451
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1128,
+                "y": 963
+              },
+              "contactSpanPx": [
+                1109,
+                1147
+              ],
+              "lowerFootBandWidthPx": 42
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1331,
+                "y": 947
+              },
+              "contactSpanPx": [
+                1311,
+                1351
+              ],
+              "lowerFootBandWidthPx": 76
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Main droite et position du bouclier proches de1 ; aucune équivalence de boucle parfaite certifiée.",
+          "status": "registration-proposal-not-art-approved"
+        }
+      ],
+      "checks": {
+        "frameCount": 6,
+        "rectanglesInsideSource": true,
+        "rectanglesDisjoint": true,
+        "nearFootWidthRangePx": [
+          42,
+          44
+        ],
+        "silhouetteHeightRangePx": [
+          417,
+          425
+        ],
+        "nominalRootXRangePx": [
+          204,
+          250
+        ],
+        "nominalRootYRangePx": [
+          451,
+          481
+        ],
+        "automaticRescaleRecommended": false,
+        "animationPlaybackVerified": false,
+        "anatomyCertified": false,
+        "cinemaFidelityCertified": false
+      },
+      "notes": [
+        "Torse sans résille et masque osseux différenciés ; fidélité exacte à Prey non certifiée.",
+        "Bouclier côté anatomique gauche dans la pose trois-quarts droite ; boîtier et lames côté anatomique droit.",
+        "Aucune duplication grossière de membre observée ; cela ne valide pas les doigts fins ni l’attache occultée du bouclier.",
+        "Le bouclier déployé est dessiné en vue oblique ; ne pas le remplacer par un disque détaché.",
+        "Une attache occultée n’est pas à elle seule un défaut bloquant ; conserver l’occultation du bouclier opaque et juger sa continuité sur les frames voisines."
+      ]
+    },
+    {
+      "id": "wolf-hit-reaction",
+      "characterId": "wolf",
+      "clip": "hit-reaction",
+      "status": "draft-registration-only",
+      "source": {
+        "path": "art-source/v27/known-yautja/sources/wolf-hit-reaction.png",
+        "sha256": "09f217eeffe72b06cd941430df768f42fdfc52fda108e23c4f8d2899d1be54ac",
+        "sha256AfterRead": "09f217eeffe72b06cd941430df768f42fdfc52fda108e23c4f8d2899d1be54ac",
+        "unchanged": true,
+        "bytes": 2121285,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "opaque magenta; no alpha conversion performed"
+      },
+      "measurementMethod": {
+        "separation": "Full-width column projection inside each512px-high row, split only after12 consecutive empty columns. Not clipped to nominal512px-wide cells.",
+        "boundsPolicy": "Union of t160/180/200 bounds plus8px margin. Color classification is read-only; not a bitmap alpha edit.",
+        "pivotPolicy": "Midpoint X of measured near/far sole contact spans, Y of lower/near sole. Root-motion distance is not inferred; gameplay knockback remains external."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "initial-brace",
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            169,
+            98,
+            302,
+            412
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                169,
+                98,
+                302,
+                412
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                169,
+                98,
+                302,
+                412
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                169,
+                98,
+                302,
+                412
+              ]
+            }
+          ],
+          "rectPx": [
+            161,
+            90,
+            318,
+            428
+          ],
+          "pivotSourcePx": {
+            "x": 323.75,
+            "y": 510
+          },
+          "pivotPx": {
+            "x": 162.75,
+            "y": 420
+          },
+          "pivotInNominalCellPx": {
+            "x": 323.75,
+            "y": 510
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 217,
+                "y": 510
+              },
+              "contactSpanPx": [
+                192,
+                242
+              ],
+              "lowerFootBandWidthPx": 61
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 430.5,
+                "y": 492
+              },
+              "contactSpanPx": [
+                402,
+                459
+              ],
+              "lowerFootBandWidthPx": 98
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Deux poings et deux canons lisibles ; première crispation assez proche d’une garde. Les étapes suivantes donnent le sens de réaction.",
+          "clearlyVisibleCannonCount": 2,
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 2,
+          "stage": "backward-chest-recoil",
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            578,
+            104,
+            359,
+            403
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                579,
+                104,
+                358,
+                403
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                578,
+                104,
+                359,
+                403
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                578,
+                104,
+                359,
+                403
+              ]
+            }
+          ],
+          "rectPx": [
+            570,
+            96,
+            375,
+            419
+          ],
+          "pivotSourcePx": {
+            "x": 792.25,
+            "y": 507
+          },
+          "pivotPx": {
+            "x": 222.25,
+            "y": 411
+          },
+          "pivotInNominalCellPx": {
+            "x": 280.25,
+            "y": 507
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 677,
+                "y": 507
+              },
+              "contactSpanPx": [
+                651,
+                703
+              ],
+              "lowerFootBandWidthPx": 60
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 907.5,
+                "y": 492
+              },
+              "contactSpanPx": [
+                879,
+                936
+              ],
+              "lowerFootBandWidthPx": 99
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Recul du torse et tête rejetée en arrière ; deux poings raccordés. Un seul canon entièrement identifiable dans cette vue ; l’autre peut être occulté mais sa présence n’est pas prouvée. Paire de lames visible le long du poing proche.",
+          "clearlyVisibleCannonCount": 1,
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 3,
+          "stage": "maximum-backward-stagger",
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1001,
+            94,
+            412,
+            410
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1001,
+                95,
+                411,
+                409
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1001,
+                94,
+                412,
+                410
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1001,
+                94,
+                412,
+                410
+              ]
+            }
+          ],
+          "rectPx": [
+            993,
+            86,
+            428,
+            426
+          ],
+          "pivotSourcePx": {
+            "x": 1267.5,
+            "y": 504
+          },
+          "pivotPx": {
+            "x": 274.5,
+            "y": 418
+          },
+          "pivotInNominalCellPx": {
+            "x": 243.5,
+            "y": 504
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1145,
+                "y": 504
+              },
+              "contactSpanPx": [
+                1128,
+                1162
+              ],
+              "lowerFootBandWidthPx": 62
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1390,
+                "y": 489
+              },
+              "contactSpanPx": [
+                1369,
+                1411
+              ],
+              "lowerFootBandWidthPx": 94
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Cambrure maximale vers la gauche et bras écartés ; le canon gauche à l’image déborde de23px de la cellule nominale. Il ne touche pas la figure2.",
+          "clearlyVisibleCannonCount": 2,
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 4,
+          "stage": "low-forward-recovery",
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            155,
+            623,
+            285,
+            327
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                155,
+                623,
+                285,
+                327
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                155,
+                623,
+                285,
+                327
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                155,
+                623,
+                285,
+                328
+              ]
+            }
+          ],
+          "rectPx": [
+            147,
+            615,
+            301,
+            344
+          ],
+          "pivotSourcePx": {
+            "x": 288.5,
+            "y": 950
+          },
+          "pivotPx": {
+            "x": 141.5,
+            "y": 335
+          },
+          "pivotInNominalCellPx": {
+            "x": 288.5,
+            "y": 438
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 189,
+                "y": 950
+              },
+              "contactSpanPx": [
+                163,
+                215
+              ],
+              "lowerFootBandWidthPx": 63
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 388,
+                "y": 934
+              },
+              "contactSpanPx": [
+                359,
+                417
+              ],
+              "lowerFootBandWidthPx": 101
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Flexion basse et retour du torse en avant ; la forte baisse de hauteur est une pose et ne doit pas être normalisée par agrandissement.",
+          "clearlyVisibleCannonCount": 2,
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 5,
+          "stage": "rise-and-reset",
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            592,
+            544,
+            315,
+            406
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                593,
+                544,
+                314,
+                406
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                592,
+                544,
+                315,
+                406
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                592,
+                544,
+                316,
+                406
+              ]
+            }
+          ],
+          "rectPx": [
+            584,
+            536,
+            332,
+            422
+          ],
+          "pivotSourcePx": {
+            "x": 745,
+            "y": 950
+          },
+          "pivotPx": {
+            "x": 161,
+            "y": 414
+          },
+          "pivotInNominalCellPx": {
+            "x": 233,
+            "y": 438
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 626,
+                "y": 950
+              },
+              "contactSpanPx": [
+                600,
+                652
+              ],
+              "lowerFootBandWidthPx": 62
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 864,
+                "y": 934
+              },
+              "contactSpanPx": [
+                837,
+                891
+              ],
+              "lowerFootBandWidthPx": 96
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Remontée et restitution de la garde ; jambes plus écartées, avec redistribution visible des appuis.",
+          "clearlyVisibleCannonCount": 2,
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 6,
+          "stage": "recovered-guard",
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1096,
+            549,
+            268,
+            404
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1096,
+                549,
+                268,
+                404
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1096,
+                549,
+                268,
+                404
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1096,
+                549,
+                268,
+                404
+              ]
+            }
+          ],
+          "rectPx": [
+            1088,
+            541,
+            284,
+            420
+          ],
+          "pivotSourcePx": {
+            "x": 1232.75,
+            "y": 953
+          },
+          "pivotPx": {
+            "x": 144.75,
+            "y": 412
+          },
+          "pivotInNominalCellPx": {
+            "x": 208.75,
+            "y": 441
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1127,
+                "y": 953
+              },
+              "contactSpanPx": [
+                1103,
+                1151
+              ],
+              "lowerFootBandWidthPx": 58
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1338.5,
+                "y": 937
+              },
+              "contactSpanPx": [
+                1314,
+                1363
+              ],
+              "lowerFootBandWidthPx": 91
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Retour à une garde plus compacte que1. Taille du pied proche58px contre61px en1 : vérifier à échelle fixe en lecture, sans compenser automatiquement.",
+          "clearlyVisibleCannonCount": 2,
+          "status": "registration-proposal-not-art-approved"
+        }
+      ],
+      "checks": {
+        "frameCount": 6,
+        "rectanglesInsideSource": true,
+        "rectanglesDisjoint": true,
+        "thresholdCoverage": [
+          {
+            "threshold": 160,
+            "measuredForegroundPixels": 352446,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 180,
+            "measuredForegroundPixels": 354183,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 200,
+            "measuredForegroundPixels": 356271,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          }
+        ],
+        "actualFiguresOverlapObserved": false,
+        "figure2to3EmptyColumns": 64,
+        "paddedRects2to3GapPx": 48,
+        "frame3NominalLeftOverflowPx": 23,
+        "nominalGridSafe": false,
+        "freeRectanglesSolveNominalOverflow": true,
+        "nearFootWidthRangePx": [
+          58,
+          63
+        ],
+        "silhouetteHeightRangePx": [
+          327,
+          412
+        ],
+        "nominalRootXRangePx": [
+          208.75,
+          323.75
+        ],
+        "nominalRootYRangePx": [
+          438,
+          510
+        ],
+        "automaticRescaleRecommended": false,
+        "animationPlaybackVerified": false,
+        "anatomyCertified": false,
+        "cinemaFidelityCertified": false
+      },
+      "actionReview": {
+        "observedAction": "Hit reaction with backward chest/head recoil, maximum stagger, low forward recovery and return to guard.",
+        "readableAsHitReaction": true,
+        "notMerelyHighGuard": true,
+        "frame1FlinchStrength": "subtle",
+        "recoveryFrames": [
+          4,
+          5,
+          6
+        ],
+        "suggestedPlayback": "One-shot1→2→3→4→5→6, then return to the ordinary guard clip. Do not loop6→1 as locomotion.",
+        "timingAndRootMotionValidated": false,
+        "risks": [
+          "Transition3→4 has a strong reversal from back arch to low curl; timing must be checked dynamically.",
+          "Apparent blade length/orientation and mask deformation must be compared at playback scale.",
+          "Frame2 does not demonstrate two visible cannons; normal occlusion is possible but should not be reported as visibility compliance.",
+          "Near-foot width varies58–63px; a modest scale/foreshortening inconsistency remains possible. No per-frame fit-height correction."
+        ]
+      },
+      "notes": [
+        "Only source registration metadata added. No source image altered, no chroma removal, no rig and no image generation.",
+        "The canon crossing cell3→2 is isolated from figure2 and can be retained by the free rectangle.",
+        "No gross duplicate arm, leg or hand observed in whole-sheet and enlarged frame2 inspection; detailed finger anatomy remains unapproved.",
+        "No global1:1 claim. These measurements do not certify a delivered combat animation."
+      ]
+    },
+    {
+      "id": "chopper-idle",
+      "characterId": "chopper",
+      "clip": "idle-ready",
+      "status": "draft-registration-only",
+      "source": {
+        "path": "art-source/v27/known-yautja/sources/chopper-idle.png",
+        "sha256": "55bb85222b65f2127633b4edaabbb8ea205c9b59d91879a91ec6ce7871bb7fc0",
+        "sha256AfterRead": "55bb85222b65f2127633b4edaabbb8ea205c9b59d91879a91ec6ce7871bb7fc0",
+        "unchanged": true,
+        "bytes": 2379626,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "opaque magenta; no alpha conversion performed"
+      },
+      "measurementMethod": {
+        "separation": "Full-width column projection inside each half-height row, separated by12 consecutive empty columns; no512px-wide clipping.",
+        "boundsPolicy": "Union of t160/180/200 bounds plus8px margin.",
+        "pivotPolicy": "Midpoint of two measured sole contact spans, at lower/near sole baseline. Constant scale across the clip."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready-1",
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            113,
+            32,
+            353,
+            476
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                113,
+                32,
+                353,
+                476
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                113,
+                32,
+                353,
+                476
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                113,
+                32,
+                353,
+                476
+              ]
+            }
+          ],
+          "rectPx": [
+            105,
+            24,
+            369,
+            492
+          ],
+          "pivotSourcePx": {
+            "x": 280,
+            "y": 508
+          },
+          "pivotPx": {
+            "x": 175,
+            "y": 484
+          },
+          "pivotInNominalCellPx": {
+            "x": 280,
+            "y": 508
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 174,
+                "y": 508
+              },
+              "contactSpanPx": [
+                144,
+                204
+              ],
+              "lowerFootBandWidthPx": 63
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 386,
+                "y": 498
+              },
+              "contactSpanPx": [
+                359,
+                413
+              ],
+              "lowerFootBandWidthPx": 99
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Garde générale lisible, deux crânes sur piques et une scimitar par avant-bras. Doigts fins non certifiés.",
+          "status": "registration-proposal-not-art-approved",
+          "observedSkullPikeCount": 2,
+          "observedForearmScimitarCount": 2,
+          "observedShoulderCannonCount": 0
+        },
+        {
+          "index": 2,
+          "stage": "ready-2",
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            591,
+            32,
+            362,
+            476
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                591,
+                32,
+                362,
+                476
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                591,
+                32,
+                362,
+                476
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                591,
+                32,
+                362,
+                476
+              ]
+            }
+          ],
+          "rectPx": [
+            583,
+            24,
+            378,
+            492
+          ],
+          "pivotSourcePx": {
+            "x": 762.25,
+            "y": 508
+          },
+          "pivotPx": {
+            "x": 179.25,
+            "y": 484
+          },
+          "pivotInNominalCellPx": {
+            "x": 250.25,
+            "y": 508
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 654.5,
+                "y": 508
+              },
+              "contactSpanPx": [
+                624,
+                685
+              ],
+              "lowerFootBandWidthPx": 65
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 870,
+                "y": 499
+              },
+              "contactSpanPx": [
+                842,
+                898
+              ],
+              "lowerFootBandWidthPx": 101
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Petite variation bras/épaules, pas d’inspiration clairement démontrée.",
+          "status": "registration-proposal-not-art-approved",
+          "observedSkullPikeCount": 2,
+          "observedForearmScimitarCount": 2,
+          "observedShoulderCannonCount": 0
+        },
+        {
+          "index": 3,
+          "stage": "ready-3",
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1072,
+            32,
+            360,
+            476
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1072,
+                32,
+                360,
+                476
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1072,
+                32,
+                360,
+                476
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1072,
+                32,
+                360,
+                476
+              ]
+            }
+          ],
+          "rectPx": [
+            1064,
+            24,
+            376,
+            492
+          ],
+          "pivotSourcePx": {
+            "x": 1241.5,
+            "y": 508
+          },
+          "pivotPx": {
+            "x": 177.5,
+            "y": 484
+          },
+          "pivotInNominalCellPx": {
+            "x": 217.5,
+            "y": 508
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1133.5,
+                "y": 508
+              },
+              "contactSpanPx": [
+                1103,
+                1164
+              ],
+              "lowerFootBandWidthPx": 64
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1349.5,
+                "y": 499
+              },
+              "contactSpanPx": [
+                1322,
+                1377
+              ],
+              "lowerFootBandWidthPx": 101
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Très proche de2 ; crânes, deux lames et appuis conservés dans cette vue.",
+          "status": "registration-proposal-not-art-approved",
+          "observedSkullPikeCount": 2,
+          "observedForearmScimitarCount": 2,
+          "observedShoulderCannonCount": 0
+        },
+        {
+          "index": 4,
+          "stage": "ready-4",
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            113,
+            533,
+            354,
+            476
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                113,
+                533,
+                354,
+                476
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                113,
+                533,
+                354,
+                476
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                112,
+                533,
+                355,
+                476
+              ]
+            }
+          ],
+          "rectPx": [
+            104,
+            525,
+            371,
+            492
+          ],
+          "pivotSourcePx": {
+            "x": 280.5,
+            "y": 1009
+          },
+          "pivotPx": {
+            "x": 176.5,
+            "y": 484
+          },
+          "pivotInNominalCellPx": {
+            "x": 280.5,
+            "y": 497
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 174.5,
+                "y": 1009
+              },
+              "contactSpanPx": [
+                145,
+                204
+              ],
+              "lowerFootBandWidthPx": 63
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 386.5,
+                "y": 999
+              },
+              "contactSpanPx": [
+                359,
+                414
+              ],
+              "lowerFootBandWidthPx": 100
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Début de deuxième rangée, garde très proche de1. Recalage des appuis nécessaire.",
+          "status": "registration-proposal-not-art-approved",
+          "observedSkullPikeCount": 2,
+          "observedForearmScimitarCount": 2,
+          "observedShoulderCannonCount": 0
+        },
+        {
+          "index": 5,
+          "stage": "ready-5",
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            593,
+            533,
+            359,
+            476
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                593,
+                533,
+                359,
+                476
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                593,
+                533,
+                359,
+                476
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                592,
+                533,
+                360,
+                477
+              ]
+            }
+          ],
+          "rectPx": [
+            584,
+            525,
+            376,
+            493
+          ],
+          "pivotSourcePx": {
+            "x": 762,
+            "y": 1009
+          },
+          "pivotPx": {
+            "x": 178,
+            "y": 484
+          },
+          "pivotInNominalCellPx": {
+            "x": 250,
+            "y": 497
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 653.5,
+                "y": 1009
+              },
+              "contactSpanPx": [
+                623,
+                684
+              ],
+              "lowerFootBandWidthPx": 65
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 870.5,
+                "y": 1000
+              },
+              "contactSpanPx": [
+                843,
+                898
+              ],
+              "lowerFootBandWidthPx": 101
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Petits changements de buste et de bras, expiration non démontrée à elle seule.",
+          "status": "registration-proposal-not-art-approved",
+          "observedSkullPikeCount": 2,
+          "observedForearmScimitarCount": 2,
+          "observedShoulderCannonCount": 0
+        },
+        {
+          "index": 6,
+          "stage": "ready-6",
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1072,
+            534,
+            358,
+            475
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1072,
+                534,
+                358,
+                475
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1072,
+                534,
+                358,
+                475
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1071,
+                533,
+                359,
+                476
+              ]
+            }
+          ],
+          "rectPx": [
+            1063,
+            525,
+            375,
+            492
+          ],
+          "pivotSourcePx": {
+            "x": 1241.25,
+            "y": 1009
+          },
+          "pivotPx": {
+            "x": 178.25,
+            "y": 484
+          },
+          "pivotInNominalCellPx": {
+            "x": 217.25,
+            "y": 497
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1133.5,
+                "y": 1009
+              },
+              "contactSpanPx": [
+                1103,
+                1164
+              ],
+              "lowerFootBandWidthPx": 64
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1349,
+                "y": 1000
+              },
+              "contactSpanPx": [
+                1322,
+                1376
+              ],
+              "lowerFootBandWidthPx": 101
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Garde proche de1, retour de boucle à comparer après enregistrement.",
+          "status": "registration-proposal-not-art-approved",
+          "observedSkullPikeCount": 2,
+          "observedForearmScimitarCount": 2,
+          "observedShoulderCannonCount": 0
+        }
+      ],
+      "checks": {
+        "frameCount": 6,
+        "rectanglesInsideSource": true,
+        "rectanglesDisjoint": true,
+        "thresholdCoverage": [
+          {
+            "threshold": 160,
+            "measuredForegroundPixels": 477434,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 180,
+            "measuredForegroundPixels": 479683,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 200,
+            "measuredForegroundPixels": 482305,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          }
+        ],
+        "actualFiguresOverlapObserved": false,
+        "nearFootWidthRangePx": [
+          63,
+          65
+        ],
+        "silhouetteHeightRangePx": [
+          475,
+          476
+        ],
+        "nominalRootXRangePx": [
+          217.25,
+          280.5
+        ],
+        "nominalRootYRangePx": [
+          497,
+          508
+        ],
+        "automaticRescaleRecommended": false,
+        "animationPlaybackVerified": false,
+        "anatomyCertified": false,
+        "cinemaFidelityCertified": false,
+        "promptMaxTotalHeightPx": 340,
+        "promptHeightLimitMet": false,
+        "promptMinimumMarginPx": 40,
+        "promptMarginMet": false
+      },
+      "actionReview": {
+        "observedAction": "Six very similar ready poses with slight arm, shoulder and torso differences.",
+        "intendedAction": "Idle/ready breathing",
+        "breathingCycleClearlyDemonstrated": false,
+        "walkCycle": false,
+        "suggestedPlayback": "Loop candidate only; review after pivot registration. Do not invent intermediate deformations or claim a breathing loop from six near-static silhouettes.",
+        "timingAndRootMotionValidated": false,
+        "risks": [
+          "Breathing amplitude is visually weak; peak inhalation/exhalation cannot be confidently assigned.",
+          "Pose total height about475–476px exceeds340px requested; insufficient nominal cell margins.",
+          "Rigid skull-pike lengths and scimitar attachment look stable at sheet scale but must stay so in playback."
+        ]
+      },
+      "notes": [
+        "Only registration metadata added. Source PNG unchanged and opaque; no key removal or image generation.",
+        "Two human skulls on two pikes and two outside-forearm curved blades visible in each figure; no handheld swords or added caster observed.",
+        "Mask remains a project adaptation, not certified1:1 Gill/Chopper.",
+        "No independent rescale per frame. Metadata alignment cannot create missing breathing articulation."
+      ]
+    },
+    {
+      "id": "greyback-idle",
+      "characterId": "greyback",
+      "clip": "idle-ready",
+      "status": "draft-registration-only",
+      "source": {
+        "path": "art-source/v27/known-yautja/sources/greyback-idle.png",
+        "sha256": "d6893f4fbecce95f292d436be7ab311ee05882dbf96f774227d955003afd4b7f",
+        "sha256AfterRead": "d6893f4fbecce95f292d436be7ab311ee05882dbf96f774227d955003afd4b7f",
+        "unchanged": true,
+        "bytes": 2005723,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "opaque magenta; no alpha conversion performed"
+      },
+      "measurementMethod": {
+        "separation": "Full-width column projection inside each half-height row, separated by12 consecutive empty columns; no512px-wide clipping.",
+        "boundsPolicy": "Union of t160/180/200 bounds plus8px margin.",
+        "pivotPolicy": "Midpoint of two measured sole contact spans, at lower/near sole baseline. Constant scale across the clip."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready-1",
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            175,
+            53,
+            205,
+            448
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                175,
+                54,
+                205,
+                447
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                175,
+                53,
+                205,
+                448
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                174,
+                53,
+                207,
+                448
+              ]
+            }
+          ],
+          "rectPx": [
+            166,
+            45,
+            223,
+            464
+          ],
+          "pivotSourcePx": {
+            "x": 291.25,
+            "y": 501
+          },
+          "pivotPx": {
+            "x": 125.25,
+            "y": 456
+          },
+          "pivotInNominalCellPx": {
+            "x": 291.25,
+            "y": 501
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 231.5,
+                "y": 501
+              },
+              "contactSpanPx": [
+                208,
+                255
+              ],
+              "lowerFootBandWidthPx": 54
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 351,
+                "y": 486
+              },
+              "contactSpanPx": [
+                342,
+                360
+              ],
+              "lowerFootBandWidthPx": 80
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Complete unmasked figure; two plausible closed fists, one shoulder caster and belt-stowed flintlock visible. No obvious extra limb or floating weapon. Fine finger/mandible anatomy unconfirmed.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "unmasked",
+          "observedWeaponState": "flintlock stowed at near hip; hands not holding a weapon"
+        },
+        {
+          "index": 2,
+          "stage": "ready-2",
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            655,
+            50,
+            205,
+            451
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                656,
+                50,
+                204,
+                451
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                655,
+                50,
+                205,
+                451
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                655,
+                50,
+                206,
+                451
+              ]
+            }
+          ],
+          "rectPx": [
+            647,
+            42,
+            222,
+            467
+          ],
+          "pivotSourcePx": {
+            "x": 771.25,
+            "y": 501
+          },
+          "pivotPx": {
+            "x": 124.25,
+            "y": 459
+          },
+          "pivotInNominalCellPx": {
+            "x": 259.25,
+            "y": 501
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 711.5,
+                "y": 501
+              },
+              "contactSpanPx": [
+                688,
+                735
+              ],
+              "lowerFootBandWidthPx": 54
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 831,
+                "y": 486
+              },
+              "contactSpanPx": [
+                822,
+                840
+              ],
+              "lowerFootBandWidthPx": 80
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Complete unmasked figure; two plausible closed fists, one shoulder caster and belt-stowed flintlock visible. Head and body proportions broadly similar to frame1; breathing phase not reliably distinguishable.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "unmasked",
+          "observedWeaponState": "flintlock stowed at near hip; hands not holding a weapon"
+        },
+        {
+          "index": 3,
+          "stage": "ready-3",
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1155,
+            54,
+            204,
+            447
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1155,
+                54,
+                204,
+                447
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1155,
+                54,
+                204,
+                447
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1154,
+                53,
+                205,
+                448
+              ]
+            }
+          ],
+          "rectPx": [
+            1146,
+            45,
+            221,
+            464
+          ],
+          "pivotSourcePx": {
+            "x": 1270.75,
+            "y": 501
+          },
+          "pivotPx": {
+            "x": 124.75,
+            "y": 456
+          },
+          "pivotInNominalCellPx": {
+            "x": 246.75,
+            "y": 501
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1211,
+                "y": 501
+              },
+              "contactSpanPx": [
+                1187,
+                1235
+              ],
+              "lowerFootBandWidthPx": 55
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1330.5,
+                "y": 486
+              },
+              "contactSpanPx": [
+                1322,
+                1339
+              ],
+              "lowerFootBandWidthPx": 79
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Complete unmasked figure; two plausible closed fists, one shoulder caster and belt-stowed flintlock visible. No overt new equipment; breathing phase not reliably distinguishable.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "unmasked",
+          "observedWeaponState": "flintlock stowed at near hip; hands not holding a weapon"
+        },
+        {
+          "index": 4,
+          "stage": "ready-4",
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            176,
+            543,
+            204,
+            449
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                176,
+                543,
+                204,
+                449
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                176,
+                543,
+                204,
+                449
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                176,
+                543,
+                204,
+                449
+              ]
+            }
+          ],
+          "rectPx": [
+            168,
+            535,
+            220,
+            465
+          ],
+          "pivotSourcePx": {
+            "x": 292.25,
+            "y": 992
+          },
+          "pivotPx": {
+            "x": 124.25,
+            "y": 457
+          },
+          "pivotInNominalCellPx": {
+            "x": 292.25,
+            "y": 480
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 231.5,
+                "y": 992
+              },
+              "contactSpanPx": [
+                208,
+                255
+              ],
+              "lowerFootBandWidthPx": 55
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 353,
+                "y": 976
+              },
+              "contactSpanPx": [
+                335,
+                371
+              ],
+              "lowerFootBandWidthPx": 80
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Complete unmasked figure; two plausible closed fists, one shoulder caster and belt-stowed flintlock visible. Row position is higher in its nominal cell; sole-based registration compensates this placement drift without scaling.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "unmasked",
+          "observedWeaponState": "flintlock stowed at near hip; hands not holding a weapon"
+        },
+        {
+          "index": 5,
+          "stage": "ready-5",
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            654,
+            543,
+            206,
+            449
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                654,
+                543,
+                206,
+                448
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                654,
+                543,
+                206,
+                449
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                654,
+                543,
+                206,
+                449
+              ]
+            }
+          ],
+          "rectPx": [
+            646,
+            535,
+            222,
+            465
+          ],
+          "pivotSourcePx": {
+            "x": 771,
+            "y": 992
+          },
+          "pivotPx": {
+            "x": 125,
+            "y": 457
+          },
+          "pivotInNominalCellPx": {
+            "x": 259,
+            "y": 480
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 711,
+                "y": 992
+              },
+              "contactSpanPx": [
+                688,
+                734
+              ],
+              "lowerFootBandWidthPx": 54
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 831,
+                "y": 977
+              },
+              "contactSpanPx": [
+                822,
+                840
+              ],
+              "lowerFootBandWidthPx": 80
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Complete unmasked figure; two plausible closed fists, one shoulder caster and belt-stowed flintlock visible. Foot perspective offset remains; no anatomy certification from this scale.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "unmasked",
+          "observedWeaponState": "flintlock stowed at near hip; hands not holding a weapon"
+        },
+        {
+          "index": 6,
+          "stage": "ready-6",
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1156,
+            543,
+            203,
+            449
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1156,
+                543,
+                203,
+                449
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1156,
+                543,
+                203,
+                449
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1156,
+                543,
+                203,
+                449
+              ]
+            }
+          ],
+          "rectPx": [
+            1148,
+            535,
+            219,
+            465
+          ],
+          "pivotSourcePx": {
+            "x": 1271.5,
+            "y": 992
+          },
+          "pivotPx": {
+            "x": 123.5,
+            "y": 457
+          },
+          "pivotInNominalCellPx": {
+            "x": 247.5,
+            "y": 480
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1210.5,
+                "y": 992
+              },
+              "contactSpanPx": [
+                1187,
+                1234
+              ],
+              "lowerFootBandWidthPx": 55
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1332.5,
+                "y": 976
+              },
+              "contactSpanPx": [
+                1315,
+                1350
+              ],
+              "lowerFootBandWidthPx": 79
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Complete unmasked figure; two plausible closed fists, one shoulder caster and belt-stowed flintlock visible. Very similar ready pose; transition back to frame1 needs playback review.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "unmasked",
+          "observedWeaponState": "flintlock stowed at near hip; hands not holding a weapon"
+        }
+      ],
+      "checks": {
+        "frameCount": 6,
+        "rectanglesInsideSource": true,
+        "rectanglesDisjoint": true,
+        "thresholdCoverage": [
+          {
+            "threshold": 160,
+            "measuredForegroundPixels": 311062,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 180,
+            "measuredForegroundPixels": 312457,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 200,
+            "measuredForegroundPixels": 313938,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          }
+        ],
+        "actualFiguresOverlapObserved": false,
+        "nearFootWidthRangePx": [
+          54,
+          55
+        ],
+        "silhouetteHeightRangePx": [
+          447,
+          451
+        ],
+        "nominalRootXRangePx": [
+          246.75,
+          292.25
+        ],
+        "nominalRootYRangePx": [
+          480,
+          501
+        ],
+        "automaticRescaleRecommended": false,
+        "animationPlaybackVerified": false,
+        "anatomyCertified": false,
+        "cinemaFidelityCertified": false,
+        "promptMaxTotalHeightPx": 330,
+        "promptHeightLimitMet": false,
+        "promptMinimumMarginPx": 80,
+        "promptMarginMet": false,
+        "requestedUniformMagentaBackgroundMet": false
+      },
+      "actionReview": {
+        "requested": "Six-frame restrained idle/guard breathing, facing right three-quarter; unmasked Greyback, one shoulder caster, stowed Raphael Adolini1715 flintlock. This describes the supplied prompt, not independent canonical certification.",
+        "observed": "Six near-static complete ready figures with slight hand/shoulder changes. An unambiguous inhale/exhale progression is not established from the sheet.",
+        "usableFor": "Registered draft for review of ready-pose continuity at one fixed scale.",
+        "notEstablished": [
+          "Readable breathing amplitude and phase order",
+          "Seamless loop after frame6",
+          "Fine finger and mandible accuracy",
+          "1:1 film fidelity"
+        ],
+        "playbackRecommendation": "Review after sole-based translation only. Do not manufacture a breathing claim with per-frame scale, skeleton deformation or altered bitmaps."
+      },
+      "notes": [
+        "Original source PNG unchanged. Read-only raw measurements and previews only; no saved background removal or creative edit.",
+        "The complete original sheet was independently inspected. No obvious missing or additional limb or floating weapon was observed, but this is not an anatomy certification.",
+        "The pistol stays stowed at the near hip in all six figures. The date1715 is a prompt/reference intent, not legible text verified in the bitmap.",
+        "Measured body heights447-451px exceed the requested330px; minimum80px margins are not met. Figures remain complete within source bounds.",
+        "Opaque magenta background is not perfectly uniform. Runtime keying, edge quality and dynamic playback are reviewed separately by the parent agent.",
+        "Use one constant scale for all frames. Placement changes are corrected through measured sole pivots, not per-frame fitting.",
+        "Status stays draft-registration-only; this entry does not validate an idle animation or overall canon fidelity."
+      ]
+    }
+  ]
+}

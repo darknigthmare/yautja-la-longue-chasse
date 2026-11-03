@@ -1,0 +1,45 @@
+{
+  "version": 62,
+  "tool": "OpenAI built-in image_gen",
+  "status": "integrated-and-local-browser-qa-pass",
+  "compositionEvidence": "docs/v62-head-composition-qa.json",
+  "missionEvidence": "docs/v62-head-mission-qa.json",
+  "pixelPolicy": "Original PNG pixels and alpha copied without modification; drawing rectangles measured separately.",
+  "assets": [
+    {
+      "id": "feral-head-final",
+      "prompt": "Use case: stylized-concept. Create ONE isolated transparent game head cutout for the modular Yautja Feral morphology in a 2D fighting game. Reference image is the official NECA Prey figure sheet; take ONLY the UNMASKED extra head in the UPPER RIGHT as anatomy reference. Do not copy the skull mask or the broad Classic Predator face. Faithfully reproduce that very narrow elongated Feral face, low receding crown, rusty red stripe running along the central skull ridge, ochre-brown mottled skin, small widely separated deep-set eyes, slender nearly vertical jaw, FOUR muscular insectlike fleshy mandibles around a small tooth-filled central mouth, no nose and no external human ear. Quiet alert expression, jaw only slightly open. Three-quarter view looking RIGHT, visible left cheek. Crisp detailed pixel-art illustration with coherent large pixel clusters suitable for reducing to ~65x80 pixels, no blur. Include entire cranium, four mandibles, and a SHORT NECK only; no shoulders, chest, dreadlocks, armor, biomask, weapons or detached pieces. Generous clear alpha margin all around, one connected opaque subject centred, no lettering, no backdrop. The dreads will be added as separate game layers. Avoid rounded tall bulbous Classic forehead, avoid two walrus tusks, avoid human nose/ears.",
+      "references": [
+        "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v62/references/masks/feral-pack.jpg"
+      ],
+      "source": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-32660d73-c684-498d-8b85-cb11422a7043.png",
+      "path": "/game/sprites/v62/heads/feral-head.png",
+      "status": "visually-accepted",
+      "limitations": "Reference-based modular morphology, not a certified one-to-one named character portrait. Native static cutout animated by the existing bone rig, not a new facial animation sheet."
+    },
+    {
+      "id": "super-head-final",
+      "prompt": "Use case: stylized-concept. Create ONE isolated transparent game head cutout for a modular Super Predator / Berserker anatomy. Reference is the licensed KNB/Sideshow screen-prop bust; use the UNMASKED face anatomy and skin pattern faithfully. Gray olive pebbled mottled skin, red parallel crown ridges, wide low brow and central skull crease, amber deep-set small eyes, FOUR distinct large FLESHY mandibular flaps each with short ivory teeth enclosing the inner tooth-filled mouth. Quiet alert face with mandibles half closed, NOT a roaring giant open mouth. Three-quarter view looking RIGHT, visible left cheek. Detailed crisp pixel-art game illustration with coherent clusters to read at ~65x80px. Include entire cranium, four mandibles, a SHORT NECK, but NO shoulders, chest, armor, cannon, tubes, hair/dreadlocks, mask, backdrop or labels. Dreadlocks are separate game layers and must not be drawn. Single connected subject centred with generous alpha margin. No human nose or external ears, no xenomorph dome, no two long walrus tusks. Preserve true transparent background.",
+      "references": [
+        "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v62/references/heads/berserker-knb-angle.jpg"
+      ],
+      "source": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-b3162ac5-3b83-4902-aa62-3315c56cd9be.png",
+      "path": "/game/sprites/v62/heads/super-head.png",
+      "status": "visually-accepted",
+      "limitations": "Reference-based modular morphology, not a certified one-to-one named character portrait. Native static cutout animated by the existing bone rig, not a new facial animation sheet."
+    },
+    {
+      "id": "elder-head-final",
+      "prompt": "Use case: identity-preserve. Produce an ELDER AGE VARIANT of the supplied modular Yautja head sprite, preserving the same camera (three-quarter looking RIGHT), transparent cutout, short neck, style, overall anatomy, FOUR distinct fleshy mandibles with short teeth around the inner mouth, cranial silhouette and relative face proportions. Change only age features: subdued pale warm ochre skin with charcoal fine mottling, subtle old healed cheek scar, deep brow wrinkles, worn blunt ivory teeth and slightly narrower alert amber eyes. Calm closed or half-closed mandibles, not a large scream. This is an original elder morphology, NOT a claim to portray a particular named film character. No added armor, mask, hair/dreads, chest, text or backdrop. Keep clean generous transparent padding and a single connected head/short-neck cutout.",
+      "references": [
+        "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v62/public-sprites/heads/classic-head.png"
+      ],
+      "source": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-cf26eb8a-0739-40ca-8c8a-86b9138fa340.png",
+      "path": "/game/sprites/v62/heads/elder-head.png",
+      "status": "visually-accepted",
+      "limitations": "Reference-based modular morphology, not a certified one-to-one named character portrait. Native static cutout animated by the existing bone rig, not a new facial animation sheet."
+    }
+  ],
+  "preservation": "All earlier V3 head and full-body assets retained. Previous rejected generated heads not registered.",
+  "reuse": "Huntress and young explicitly reuse classic anatomy; four distinct images for six morphs."
+}

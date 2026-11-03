@@ -1,0 +1,102 @@
+{
+  "tool": "OpenAI built-in image_gen",
+  "useCase": "stylized-concept",
+  "sharedPrompt": {
+    "assetType": "Production master sprite atlas for a 2D side-scrolling alien hunting game",
+    "request": "Create an exact 5-row by 6-column atlas. Each row is one completely original enemy family. Each row shows the same creature in six consistent right-facing gameplay poses in this exact order: idle, locomotion A, locomotion B, attack, hit recoil, collapsed death.",
+    "style": "Highly detailed dark cinematic hand-painted pixel-art-like game sprites, realistic organic or material textures, strong readable silhouettes, side-view, consistent identity and scale within each row.",
+    "composition": "Exact regular 5x6 grid, 30 subjects total. Every subject is fully visible inside its own equal cell with generous empty margin. No overlap, no crossing cell boundaries, no grid lines.",
+    "backdrop": "Perfectly flat solid #ff00ff chroma-key background.",
+    "constraints": "Uniform #ff00ff only, no gradient, texture, shadow, ground, reflection or vignette. Crisp isolated opaque silhouettes. Do not use magenta in subjects. No detached particles or projectiles. No text, labels, icons, borders, watermark or recognizable franchise character. Original designs only."
+  },
+  "masters": [
+    {
+      "id": "new-biomes-overview",
+      "sourceGenerationId": "exec-86d2a83a-950e-41e2-b1e4-1a4c9915f951",
+      "chroma": "masters/openai-new-biomes-v8-chroma.png",
+      "alpha": "masters/openai-new-biomes-v8-alpha.png",
+      "rows": [
+        "Naraka swamp hydra: low amphibious six-legged predator, three petal-like jaw lobes, moss-dark hide, turquoise sensory sacs",
+        "Serekh desert sandmaw: long armored burrower, sandstone plates, shovel skull, hooked digging forelimbs",
+        "Pelagos leviathan juvenile: compact shoreline hunter, manta head fins, navy armor, cyan bioluminescent bands",
+        "Mycora fungal hiveling: hunched predator, mushroom plates, ivory mycelium cords and violet bulbs",
+        "Acheron ancient sentinel: non-human biomechanical guardian, stone-metal plates, amber core and shield forearm"
+      ]
+    },
+    {
+      "id": "naraka-delta",
+      "sourceGenerationId": "exec-15015bc2-475d-48e2-9911-98e1efdd231c",
+      "chroma": "masters/openai-naraka-delta-chroma.png",
+      "alpha": "masters/openai-naraka-delta-alpha.png",
+      "biomeSpecificPrompt": "NARAKA-DELTA SWAMP BIOME. Realistic wet organic materials without a scene background.",
+      "rows": [
+        "Mire hydra: amphibious six-legged apex predator with petal-like jaw lobes, moss-black hide and turquoise sensory sacs",
+        "Lantern leech: armored semi-aquatic crawler with paddle legs, amber lure and circular tooth mouth",
+        "Mangrove strangler: mobile hostile flora with root legs, carnivorous flower head and attached thorny vines",
+        "Bog stilt hunter: tall four-legged wading insectoid with reed-thin legs, hooked beak and olive carapace",
+        "Silt shellback: squat crustacean grazer with shield carapace and asymmetric crushing claw"
+      ]
+    },
+    {
+      "id": "serekh-9",
+      "sourceGenerationId": "exec-b868430e-d2d8-4e62-b1b8-f8f1e5dd39f1",
+      "chroma": "masters/openai-serekh-9-chroma.png",
+      "alpha": "masters/openai-serekh-9-alpha.png",
+      "biomeSpecificPrompt": "SEREKH-9 DESERT BIOME. Realistic dry mineral materials without loose sand or dust particles.",
+      "rows": [
+        "Sandmaw burrower: low armored predator with sandstone plates, black underbody, shovel skull and digging forelimbs",
+        "Glass dune scorpion: six-legged arthropod with fully opaque obsidian-glass armor, pincers and stinger tail",
+        "Solar carrion kite: ground-capable alien raptor with folded blade wings, bone beak and ochre feather-scales",
+        "Salt pillar mimic: mobile mineral flora with chalk trunk, root legs, radial stone teeth and cobalt veins",
+        "Dust ram: muscular quadrupedal grazer with crescent brow shield, worn tan hide and black hooves"
+      ]
+    },
+    {
+      "id": "pelagos-m",
+      "sourceGenerationId": "exec-09c2ece3-a3de-4cd2-842f-48a63bc5bef5",
+      "chroma": "masters/openai-pelagos-m-chroma.png",
+      "alpha": "masters/openai-pelagos-m-alpha.png",
+      "biomeSpecificPrompt": "PELAGOS-M OCEAN AND SHORE BIOME. Realistic wet but fully opaque organic materials, no water or bubbles.",
+      "rows": [
+        "Abyssal leviathan juvenile: quadrupedal shoreline hunter with manta head fins, navy armor, cyan bands and webbed talons",
+        "Reef crusher: crab-like six-legged animal with coral basalt shell, hammer claw and red sensory pits",
+        "Tide skimmer: sleek amphibious ray predator with opaque blade wings, grasping legs and whip tail",
+        "Brine anemone walker: mobile flora on root-tentacle legs with venomous fronds and pearl core",
+        "Trench eel hound: four-legged eel-bodied pursuer with armored skull, luminous jaw lines and powerful foreclaws"
+      ]
+    },
+    {
+      "id": "mycora-v",
+      "sourceGenerationId": "exec-0d277479-3478-490d-85e1-795e8dd3c332",
+      "chroma": "masters/openai-mycora-v-chroma.png",
+      "alpha": "masters/openai-mycora-v-alpha.png",
+      "biomeSpecificPrompt": "MYCORA-V FUNGAL HIVE BIOME. Realistic fungal textures; every spore, cord and tendril remains attached.",
+      "rows": [
+        "Mycelial hiveling: hunched predator with ivory mushroom plates, violet bulbs, bark-like skin and long claws",
+        "Puffball charger: heavy quadruped with armored puffball nodules, root-muscle legs and amber fungal eyes",
+        "Cordyceps stalker: original non-human fungal creature with split cap crown, mycelium cords and blade forearms",
+        "Spore tower walker: hostile flora with layered shelf mushrooms on six root legs and a central toothed opening",
+        "Veilwing moth: opaque alien moth predator with broad mushroom-like wings, chitin body and hooked legs"
+      ]
+    },
+    {
+      "id": "acheron-sigma",
+      "sourceGenerationId": "exec-72c1b5a0-e4ad-4bd6-91ff-e341bbc556bf",
+      "chroma": "masters/openai-acheron-sigma-chroma.png",
+      "alpha": "masters/openai-acheron-sigma-alpha.png",
+      "biomeSpecificPrompt": "ACHERON-SIGMA ANCIENT RUINS BIOME. Believable worn stone, oxidized metal and ceramic; every construct part physically attached.",
+      "rows": [
+        "Ancient sentinel: tall biomechanical guardian with asymmetric stone-metal armor, amber core and shield forearm",
+        "Reliquary crawler: six-legged brass-basalt automaton with sarcophagus back, red lenses and mandibles",
+        "Glyph warden: three-legged construct with circular carved torso, attached outer fins and cyan central eye",
+        "Vault mimic: statue-beast unfolding from a quadrupedal plinth with horned mask and granite claws",
+        "Dustbound custodian: lean four-armed maintenance construct with bronze frame, ceramic mask and tool claws"
+      ]
+    }
+  ],
+  "postProcess": {
+    "helper": "C:/Users/chuck/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py",
+    "arguments": "--auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill",
+    "runtimeBuilder": "scripts/build-v8-ecology-sprites.py"
+  }
+}

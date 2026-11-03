@@ -1,0 +1,1244 @@
+Réfléchi pendant 21s
+
+Oui. Le mieux est de donner à Codex un cahier des charges qui l’oblige d’abord à auditer la dernière version, puis à reconstruire réellement le Homeworld dans le jeu à partir de ton image, au lieu de simplement changer le décor ou d’ajouter quelques plateformes.
+
+Tu peux lui joindre l’image que nous venons de générer comme référence principale, puis lui donner ce prompt :
+
+# MISSION CODEX — REFONTE COMPLÈTE DU HOMEWORLD / YAUTJA PRIME
+## Projet : Yautja — La Longue Chasse
+
+Je veux que tu travailles DIRECTEMENT sur la dernière version actuelle du projet.
+
+IMPORTANT :
+- Commence par inspecter entièrement le projet avant de modifier quoi que ce soit.
+- Identifie le moteur/renderer actuel, les fichiers du Homeworld, le système de level design, les collisions, transitions de régions, PNJ, quêtes, sauvegarde, caméra, parallaxe, décor, interactions et système de chargement.
+- Ne recrée pas un prototype parallèle.
+- Ne crée pas une démo séparée.
+- Ne remplace pas le jeu existant.
+- Intègre cette refonte directement dans l'architecture actuelle du jeu.
+- Préserve les systèmes déjà fonctionnels.
+- Corrige au passage les problèmes qui empêcheraient cette nouvelle architecture de fonctionner.
+- Le résultat doit être réellement jouable, pas seulement documenté.
+- L'image jointe "YAUTJA PRIME — PLAN DU HOMEWORLD" est la référence principale de composition et d'organisation.
+- Les références visuelles officielles / franchise fournies servent de référence pour obtenir un Yautja Prime extrêmement fidèle visuellement.
+- Ne transforme surtout pas la ville en ville humaine/fantasy générique.
+- Le résultat doit immédiatement évoquer Yautja Prime / Predator / AVP.
+
+==================================================
+1. OBJECTIF GLOBAL
+==================================================
+
+Le Homeworld actuel est trop petit, trop plat et donne trop l'impression d'un simple niveau de plateformes.
+
+Je veux le transformer en une véritable CITÉ-MONDE YAUTJA gigantesque servant de hub principal.
+
+Il doit donner l'impression que nous n'en voyons qu'une partie, avec :
+- une ville très dense ;
+- énormément d'architecture visible en arrière-plan ;
+- plusieurs niveaux verticaux ;
+- plusieurs profondeurs ;
+- des quartiers construits les uns au-dessus des autres ;
+- des falaises naturelles utilisées comme fondations ;
+- des gouffres ;
+- des ponts ;
+- des terrasses ;
+- des ascenseurs ;
+- des rampes ;
+- des escaliers ;
+- des plateformes suspendues ;
+- des passerelles ;
+- des tunnels ;
+- des passages intérieurs ;
+- des niveaux inférieurs ;
+- des zones civiles ;
+- des zones cérémonielles ;
+- des quartiers de clans ;
+- des installations technologiques ;
+- des lieux plus anciens et tribaux.
+
+Le joueur doit constamment avoir l'impression que la ville continue :
+- en profondeur ;
+- au-dessus ;
+- en dessous ;
+- hors écran ;
+- derrière le décor ;
+- vers d'autres districts.
+
+Ce Homeworld ne doit PAS être un simple écran horizontal avec quelques bâtiments.
+
+Il doit fonctionner comme une véritable zone Metroidvania / exploration 2D-2.5D.
+
+==================================================
+2. DIRECTION ARTISTIQUE — FIDÉLITÉ YAUTJA PRIME
+==================================================
+
+Conserver une fidélité maximale avec les représentations connues de Yautja Prime.
+
+Références principales :
+- Aliens vs Predator: Requiem ;
+- Predator: Badlands ;
+- représentations étendues de Yautja Prime ;
+- architecture pyramidale Yautja ;
+- architecture de pierre sombre ;
+- structures métalliques Yautja ;
+- grandes statues de guerriers ;
+- canyons ;
+- falaises ;
+- monde désertique/volcanique ;
+- lave ;
+- spatioports ;
+- gigantesques pyramides ;
+- vaisseaux Yautja ;
+- lumière très chaude ;
+- plusieurs soleils ;
+- technologies très avancées intégrées dans une architecture ancienne.
+
+Palette générale :
+- roche brun/noir ;
+- métal Yautja sombre ;
+- bronze ;
+- rouge sombre ;
+- orange provenant de la lave ;
+- lumière jaune/or ;
+- éléments technologiques bleus/blancs très ponctuels ;
+- bannières tribales rouges/noires ;
+- ciel jaune/orange poussiéreux.
+
+Éviter :
+- architecture médiévale humaine ;
+- maisons humaines classiques ;
+- immeubles terrestres ;
+- gratte-ciel modernes humains ;
+- décoration générique sci-fi ;
+- plateformes flottantes sans justification architecturale ;
+- empilements artificiels d'échelles ;
+- plateformes de jeu visibles comme des plateformes de jeu.
+
+Chaque plateforme doit correspondre à quelque chose :
+- toit ;
+- passerelle ;
+- terrasse ;
+- corniche ;
+- structure métallique ;
+- roche ;
+- pont ;
+- balcon ;
+- rempart ;
+- ascenseur ;
+- quai ;
+- rampe ;
+- tunnel.
+
+==================================================
+3. ARCHITECTURE DU HOMEWORLD
+==================================================
+
+Reprendre l'organisation générale de l'image de référence fournie.
+
+La cité doit avoir plusieurs couches.
+
+----------------------
+NIVEAU +2 / ACROPOLE
+----------------------
+
+Tout en hauteur et visible depuis énormément d'endroits :
+
+TRÔNE DU ROI / PALAIS DU LEADER
+
+Construire un énorme complexe pyramidalo-Yautja.
+
+Éléments :
+- gigantesque pyramide ;
+- escaliers monumentaux ;
+- portes massives ;
+- statues ;
+- bannières ;
+- gardes ;
+- braseros ;
+- trophées ;
+- garde royale ;
+- salle du trône ;
+- antichambres ;
+- balcon extérieur dominant la cité ;
+- salles liées au pouvoir ;
+- passages interdits au joueur au début.
+
+Le palais doit être un véritable lieu exploré plus tard et pas uniquement un décor.
+
+Depuis certains endroits bas de la ville, on doit voir le palais très loin au-dessus du joueur.
+
+----------------------
+NIVEAU +1 / CONSEIL
+----------------------
+
+Créer le CONSEIL DES ANCIENS.
+
+Direction artistique très proche de la référence de Yautja Prime fournie :
+- architecture monumentale ;
+- colonnes massives ;
+- pierre et métal ;
+- architecture rituelle ;
+- statues ;
+- sièges / alcôves ;
+- salle du conseil ;
+- archives ;
+- salle de jugement ;
+- galerie des clans ;
+- zones réservées ;
+- plateforme extérieure.
+
+Y ajouter de véritables PNJ Anciens.
+
+Ils doivent :
+- discuter ;
+- se déplacer ;
+- observer ;
+- accomplir des animations contextuelles ;
+- réagir au rang du joueur ;
+- réagir à sa réputation ;
+- éventuellement réagir à son alignement.
+
+----------------------
+NIVEAU 0 / CITÉ HAUTE
+----------------------
+
+C'est la partie principale du Homeworld.
+
+Mais elle doit être considérablement agrandie.
+
+Créer plusieurs districts reliés naturellement :
+
+PLACE CENTRALE
+- grande place cérémonielle ;
+- statues ;
+- grandes bannières ;
+- circulation PNJ ;
+- chasseurs revenant de missions ;
+- trophées ;
+- interactions.
+
+DISTRICT MARCHAND
+- armuriers ;
+- marchands ;
+- accessoires ;
+- ressources ;
+- trophées ;
+- objets ;
+- artisans ;
+- stands intégrés dans de vrais bâtiments.
+
+DISTRICT DES FORGES
+- forges Yautja ;
+- métal incandescent ;
+- fabrication ;
+- réparations ;
+- amélioration d'équipement ;
+- animation des forgerons ;
+- équipements visibles.
+
+QUARTIER DES CLANS
+- bannières différentes ;
+- architecture légèrement différente suivant les clans ;
+- salles communes ;
+- entrées de bâtiments ;
+- zones d'entraînement ;
+- PNJ de différentes castes.
+
+DISTRICT ÉLITE
+- architecture plus noble ;
+- demeures ;
+- grands trophées ;
+- salles de guerriers ;
+- petites arènes ;
+- mémoriaux ;
+- chasseurs Elite ;
+- zones accessibles suivant la progression.
+
+ZONE TRIBALE
+- mélange architecture ancienne / technologie Yautja ;
+- clans ;
+- épreuves ;
+- entraînement ;
+- montures ;
+- zone moins urbaine ;
+- transition vers les zones naturelles.
+
+==================================================
+4. VERTICALITÉ
+==================================================
+
+C'est une priorité absolue.
+
+La ville ne doit plus paraître plate.
+
+Chaque écran doit idéalement montrer au moins 3 couches visuelles :
+
+PLAN 1 :
+avant-plan.
+
+PLAN 2 :
+plan jouable.
+
+PLAN 3 :
+architecture ou autre route derrière.
+
+Et si possible :
+PLAN 4 :
+ville distante / falaises / pyramides.
+
+Ajouter de vraies différences de hauteur.
+
+Exemples :
+- un quartier installé au-dessus du joueur ;
+- une route passant derrière ;
+- une passerelle traversant l'écran en profondeur ;
+- un ascenseur descendant plusieurs étages ;
+- un balcon accessible plus tard ;
+- une corniche ;
+- un tunnel sous une place ;
+- des bâtiments construits autour de falaises.
+
+La verticalité doit également être jouable.
+
+Ne pas faire seulement du parallaxe décoratif.
+
+Créer :
+- raccourcis verticaux ;
+- ascenseurs ;
+- escaliers ;
+- échelles uniquement lorsqu'elles ont un sens ;
+- rampes ;
+- sauts ;
+- plateformes ;
+- passages secrets ;
+- corniches ;
+- portes de bâtiments ;
+- tunnels ;
+- balcons.
+
+==================================================
+5. BAS-QUARTIERS / NIVEAU -1
+==================================================
+
+Créer un véritable niveau sous la ville.
+
+Il doit être atteint naturellement en descendant une longue route/rue en pente depuis le Niveau 0.
+
+Je veux ressentir que le joueur s'enfonce physiquement sous la cité.
+
+Transition :
+
+VILLE HAUTE
+↓
+rue descendante
+↓
+quartiers plus serrés
+↓
+lumière plus faible
+↓
+structures industrielles
+↓
+BAS-QUARTIERS -1
+
+Les bas-quartiers doivent évoquer le principe des niveaux inférieurs de Coruscant mais entièrement réinterprété en Yautja.
+
+Éléments :
+- densité extrême ;
+- bâtiments imbriqués ;
+- structures métalliques ;
+- roche ;
+- vapeur ;
+- tuyaux ;
+- câbles ;
+- moteurs ;
+- cages ;
+- marchés noirs ;
+- zones de maintenance ;
+- récupérateurs ;
+- trophées moins prestigieux ;
+- Bad Blood potentiels ;
+- contrebande ;
+- PNJ pauvres ou bannis ;
+- combattants clandestins ;
+- ruelles ;
+- passages cachés ;
+- ateliers ;
+- plateformes suspendues ;
+- tunnels.
+
+IMPORTANT :
+ne pas faire un simple étage inférieur rectiligne.
+
+Créer plusieurs sous-niveaux :
+-1A
+-1B
+-1C.
+
+Avec boucles et raccourcis.
+
+==================================================
+6. FAUNE ET CAGES
+==================================================
+
+Dans une partie basse du Homeworld, intégrer les animaux / monstres de Yautja Prime.
+
+Créer une zone de :
+- ménagerie ;
+- cages ;
+- enclos ;
+- préparation de chasse ;
+- dressage.
+
+Certains enclos utilisent :
+- barrières énergétiques ;
+- cages métalliques ;
+- fosses ;
+- plateformes d'observation.
+
+Les créatures ne doivent pas simplement rester immobiles.
+
+Prévoir :
+- déplacement ;
+- animation idle ;
+- rugissement ;
+- interaction avec la cage ;
+- réaction au joueur ;
+- tentative d'attaque derrière la barrière ;
+- alimentation ;
+- dressage pour certaines espèces.
+
+Utiliser comme référence visuelle la créature Yautja Prime fournie.
+
+==================================================
+7. MONTURES YAUTJA
+==================================================
+
+Refaire également les Yautja chevaucheurs et leurs montures.
+
+La monture doit respecter le plus possible le design de la référence fournie.
+
+Créer :
+- sprite/asset propre ;
+- proportions cohérentes ;
+- jambes articulées ;
+- animation idle ;
+- marche ;
+- course ;
+- arrêt ;
+- réaction ;
+- montée ;
+- descente ;
+- cavalier correctement positionné ;
+- équipement Yautja ;
+- selle / harnais adaptés.
+
+Créer une zone liée aux montures dans le quartier tribal.
+
+Elle ne doit pas ressembler à une écurie humaine.
+
+Créer une architecture Yautja spécifique.
+
+==================================================
+8. SPATIOPORT
+==================================================
+
+Placer le spatioport à la LIMITE DROITE de la ville.
+
+Pas au centre.
+
+Il doit servir de transition naturelle vers :
+- vaisseaux ;
+- autres territoires ;
+- carte galactique ;
+- certaines missions.
+
+Créer un grand complexe avec :
+- plateformes d'atterrissage ;
+- hangars ;
+- navettes ;
+- petits skiffs ;
+- vaisseaux Yautja ;
+- grues ;
+- ascenseurs ;
+- passerelles ;
+- mécaniciens ;
+- chasseurs revenant de mission ;
+- chargement de trophées ;
+- circulation aérienne.
+
+Le ciel doit être vivant.
+
+Afficher :
+- vaisseaux lointains ;
+- décollages ;
+- atterrissages ;
+- passages en parallaxe ;
+- silhouettes de navires.
+
+Mais conserver des performances correctes.
+
+==================================================
+9. PASSAGE VERS LA RÉGION LAVE
+==================================================
+
+Sur la limite GAUCHE / BAS-GAUCHE du Homeworld, créer la transition vers la Région Lave.
+
+Utiliser le concept suivant :
+
+deux gigantesques statues Yautja encadrent un canyon.
+
+Entre elles :
+- chute de lave ;
+- falaise ;
+- ponts ;
+- plateformes ;
+- brume chaude ;
+- vaisseaux/skiffs.
+
+Un passeur Yautja possède un SKIFF FLOTTANT.
+
+Interaction :
+joueur approche
+→ interaction
+→ dialogue court
+→ embarquement
+→ petite séquence de déplacement
+→ skiff passe entre les statues
+→ changement progressif d'ambiance
+→ arrivée Région Lave.
+
+Ne pas téléporter brutalement le joueur avec un bouton générique.
+
+Créer une vraie transition environnementale.
+
+==================================================
+10. RÉGION CÔTIÈRE
+==================================================
+
+Créer également la Région côtière / plages de Yautja Prime.
+
+Elle doit ressembler fortement à l'ambiance vue dans Predator: Badlands :
+
+- grande mer ;
+- plages sombres ;
+- roche ;
+- falaises ;
+- très peu de végétation ;
+- ciel jaune/bleu ;
+- plusieurs soleils ;
+- montagnes lointaines ;
+- silhouettes de structures Yautja au loin.
+
+Elle doit rester clairement située sur Yautja Prime.
+
+Ne pas la transformer en plage terrestre tropicale.
+
+Elle peut comporter :
+- ruines ;
+- camp de chasse ;
+- falaises ;
+- grottes ;
+- traces d'animaux ;
+- petites structures de clans ;
+- épaves ;
+- zones rituelles.
+
+==================================================
+11. AUTRES RÉGIONS DU HOMEWORLD
+==================================================
+
+Le Homeworld doit servir de NŒUD central donnant ensuite accès aux autres régions prévues.
+
+Prévoir dans la géographie générale :
+
+RÉGION LAVE
+- canyons volcaniques ;
+- lave ;
+- temples ;
+- épreuves ;
+- cavernes.
+
+RÉGION CÔTIÈRE
+- plages ;
+- falaises ;
+- mer ;
+- grottes.
+
+DÉSERT
+- grands espaces ;
+- roche ;
+- ruines ;
+- tempêtes ;
+- camps.
+
+FORÊT
+- arbres adaptés à Yautja Prime ;
+- canopées ;
+- branches ;
+- verticalité ;
+- chasse.
+
+JUNGLE SOMBRE BIOLUMINESCENTE
+- bioluminescence ;
+- flore étrange ;
+- nuit / faible lumière ;
+- prédateurs ;
+- plusieurs niveaux verticaux.
+
+ZONE TRIBALE
+- clans ;
+- anciennes traditions ;
+- montures ;
+- entraînement.
+
+DISTRICT ÉLITE
+- grands chasseurs ;
+- arènes ;
+- demeures ;
+- trophées.
+
+BAS-QUARTIERS
+- niveau inférieur de la cité.
+
+IMPORTANT :
+
+Ces régions ne doivent PAS toutes apparaître comme des portails regroupés au milieu de la ville.
+
+Les accès doivent être géographiques.
+
+Exemple :
+
+bord gauche
+→ Région côtière.
+
+bas gauche / canyon
+→ Région Lave.
+
+bord droit
+→ Spatioport / autres régions.
+
+hauteurs / périphérie
+→ Zone tribale / territoires naturels.
+
+route extérieure
+→ Désert.
+
+route forestière
+→ Forêt.
+
+passage plus profond
+→ Jungle sombre.
+
+Le joueur doit comprendre géographiquement où il se trouve.
+
+==================================================
+12. DENSITÉ DE LA VILLE
+==================================================
+
+La cité actuelle paraît trop petite.
+
+Multiplier énormément les éléments visibles.
+
+Mais éviter les plateformes aléatoires.
+
+Ajouter en arrière-plan :
+- centaines de structures ;
+- petits bâtiments ;
+- tours ;
+- toits ;
+- ponts ;
+- terrasses ;
+- pyramides ;
+- cheminées ;
+- fumées ;
+- vaisseaux ;
+- lumières ;
+- silhouettes de PNJ.
+
+Utiliser le principe de la référence de ville dense :
+une ville ne possède pas seulement quelques bâtiments isolés.
+
+Elle doit former un tissu urbain.
+
+Construire des groupes cohérents :
+Bâtiment
++ ruelle
++ bâtiment secondaire
++ terrasse
++ passerelle
++ cour
++ escalier
++ façade arrière
++ structure supérieure.
+
+==================================================
+13. PARALLAXE
+==================================================
+
+Refaire la parallaxe pour donner une immense profondeur.
+
+Prévoir au minimum :
+
+Layer 0 :
+éléments premier plan.
+
+Layer 1 :
+joueur / gameplay.
+
+Layer 2 :
+architecture immédiatement derrière.
+
+Layer 3 :
+quartier secondaire.
+
+Layer 4 :
+ville distante.
+
+Layer 5 :
+falaises / pyramides.
+
+Layer 6 :
+montagnes.
+
+Layer 7 :
+ciel / soleils / vaisseaux très lointains.
+
+Chaque couche doit se déplacer à une vitesse différente.
+
+Attention :
+les bâtiments directement derrière le joueur ne doivent pas avoir une parallaxe tellement forte qu'ils paraissent minuscules ou décollés du sol.
+
+==================================================
+14. INTÉRIEURS
+==================================================
+
+Ne pas limiter la ville aux façades.
+
+Créer plusieurs bâtiments réellement visitables.
+
+Priorité :
+
+- forge ;
+- marchand ;
+- salle de trophées ;
+- taverne / lieu social Yautja si cohérent ;
+- quartier de clan ;
+- salle d'entraînement ;
+- Conseil des Anciens ;
+- palais ;
+- spatioport ;
+- atelier ;
+- enclos de montures ;
+- marché des bas-quartiers.
+
+Utiliser des transitions fluides lorsque possible.
+
+==================================================
+15. POPULATION
+==================================================
+
+La ville doit sembler réellement habitée.
+
+Ajouter beaucoup plus de PNJ.
+
+Types :
+- Younglings ;
+- Unblooded ;
+- Young Blood ;
+- Blooded ;
+- Elite ;
+- Anciens ;
+- marchands ;
+- artisans ;
+- forgerons ;
+- chasseurs ;
+- gardes ;
+- pilotes ;
+- travailleurs ;
+- soigneurs ;
+- entraîneurs ;
+- soigneurs de montures ;
+- habitants des bas-quartiers.
+
+Ne pas placer simplement les PNJ debout.
+
+Prévoir :
+- marche ;
+- discussion ;
+- fabrication ;
+- réparation ;
+- entraînement ;
+- observation ;
+- transport ;
+- commerce ;
+- dispute ;
+- interaction avec des trophées ;
+- embarquement dans des véhicules ;
+- soins de montures.
+
+==================================================
+16. VIE AMBIANTE
+==================================================
+
+Ajouter de la vie partout.
+
+Exemples :
+- vaisseau passant très loin ;
+- chasseurs marchant sur une passerelle arrière ;
+- monture traversant une rue ;
+- fumée de forge ;
+- lave qui tombe ;
+- vapeur ;
+- vent sur bannière ;
+- oiseaux/faune alien si lore-compatible ;
+- cargos déplacés ;
+- portes automatiques ;
+- glyphes qui s'allument ;
+- ascenseurs visibles ;
+- PNJ sur d'autres niveaux.
+
+Le joueur doit pouvoir rester sans bouger et voir la ville vivre.
+
+==================================================
+17. CAMÉRA
+==================================================
+
+Utiliser la caméra pour montrer l'échelle.
+
+Sur certaines zones :
+- léger zoom arrière ;
+- montrer plusieurs étages ;
+- montrer le palais au loin ;
+- montrer le canyon ;
+- montrer les bas-quartiers.
+
+Dans des ruelles :
+- caméra plus proche.
+
+Sur une terrasse :
+- caméra plus large.
+
+Transitions progressives.
+
+Ne pas faire de cuts brutaux inutiles.
+
+==================================================
+18. LEVEL DESIGN
+==================================================
+
+Je veux un vrai level design professionnel.
+
+Éviter :
+
+plateforme
+→ échelle
+→ plateforme
+→ échelle
+→ plateforme.
+
+Construire plutôt :
+
+rue
+→ pente
+→ balcon
+→ bâtiment
+→ escalier
+→ toit
+→ pont
+→ intérieur
+→ sortie arrière
+→ ascenseur
+→ quartier supérieur.
+
+Ajouter :
+- boucles ;
+- raccourcis ;
+- passages alternatifs ;
+- zones cachées ;
+- passages accessibles plus tard ;
+- passages correspondant aux capacités du joueur.
+
+Faire en sorte que les joueurs puissent progressivement apprendre la ville.
+
+==================================================
+19. LISIBILITÉ
+==================================================
+
+Même avec énormément de densité, il faut distinguer immédiatement :
+
+- ce qui est jouable ;
+- ce qui est du décor ;
+- les portes ;
+- les ascenseurs ;
+- les chemins ;
+- les transitions ;
+- les PNJ interactifs.
+
+Ne pas utiliser de gros marqueurs artificiels partout.
+
+Utiliser plutôt :
+- lumière ;
+- composition ;
+- architecture ;
+- mouvement ;
+- couleur ;
+- silhouettes.
+
+==================================================
+20. CARTE DU HOMEWORLD
+==================================================
+
+Mettre à jour la carte du Homeworld.
+
+Elle doit montrer la structure globale et la verticalité.
+
+Afficher notamment :
+
+ACROPOLE
+├── Trône du Roi
+└── Conseil des Anciens
+
+NIVEAU 0
+├── Place centrale
+├── Marchands
+├── Forges
+├── Quartier des clans
+├── District Élite
+├── Zone tribale
+└── Spatioport
+
+NIVEAU -1
+├── Bas-quartiers
+├── Marché noir
+├── Cages
+├── Industrie
+└── Faune
+
+RÉGIONS EXTÉRIEURES
+├── Région côtière
+├── Région Lave
+├── Désert
+├── Forêt
+└── Jungle sombre bioluminescente
+
+La carte doit clairement montrer les connexions.
+
+==================================================
+21. PERFORMANCE
+==================================================
+
+La ville va devenir beaucoup plus grande.
+
+Éviter de tout rendre constamment.
+
+Mettre en place si nécessaire :
+- streaming / chargement sectorisé ;
+- activation des PNJ par distance ;
+- LOD ;
+- désactivation des animations très éloignées ;
+- limitation des particules ;
+- pooling ;
+- culling ;
+- parallaxe simplifiée pour arrière-plan lointain.
+
+Ne pas diminuer visiblement l'ambition du décor.
+
+==================================================
+22. ASSETS
+==================================================
+
+Avant de créer de nouveaux assets :
+
+1. vérifier les assets existants ;
+2. vérifier les sprites existants ;
+3. vérifier les architectures déjà présentes ;
+4. réutiliser uniquement ce qui reste qualitativement cohérent.
+
+Ne pas étirer de petits assets.
+
+Ne pas utiliser le même bâtiment vingt fois exactement.
+
+Créer des variantes cohérentes :
+- petites ;
+- moyennes ;
+- grandes ;
+- endommagées ;
+- anciennes ;
+- nobles ;
+- industrielles.
+
+Les Yautja doivent rester des sprites complets cohérents et pas devenir un assemblage visuellement évident de morceaux modulaires.
+
+==================================================
+23. COLLISIONS
+==================================================
+
+Repasser complètement sur les collisions.
+
+Tester :
+- rues ;
+- pentes ;
+- escaliers ;
+- ascenseurs ;
+- ponts ;
+- passerelles ;
+- bâtiments ;
+- falaises ;
+- bords ;
+- changements de niveau.
+
+Aucun PNJ ne doit traverser les murs.
+
+Aucun personnage ne doit apparaître devant/derrière une couche incorrecte.
+
+==================================================
+24. AUDIO
+==================================================
+
+Préparer une ambiance différente par quartier :
+
+VILLE HAUTE
+- foule ;
+- vent ;
+- moteurs ;
+- technologie.
+
+FORGES
+- métal ;
+- marteaux ;
+- chaleur ;
+- machinery.
+
+BAS-QUARTIERS
+- machines ;
+- vapeur ;
+- marchés ;
+- animaux.
+
+SPATIOPORT
+- moteurs ;
+- communications ;
+- décollages.
+
+CONSEIL
+- ambiance calme ;
+- réverbération ;
+- cérémonie.
+
+LAVE
+- grondement ;
+- magma ;
+- vents chauds.
+
+CÔTE
+- mer ;
+- vent ;
+- créatures.
+
+Respecter le système audio optionnel actuel :
+si un fichier réel existe, le jouer ;
+si le fichier manque, le jeu doit continuer à fonctionner.
+
+==================================================
+25. PAS DE FAUX CONTENU
+==================================================
+
+Très important :
+
+Ne considère pas une fonctionnalité comme terminée parce que :
+- un bouton existe ;
+- un texte existe ;
+- un placeholder existe ;
+- un commentaire TODO existe.
+
+Pour qu'une zone soit considérée comme terminée :
+- elle doit exister ;
+- être visitable ;
+- posséder ses collisions ;
+- être reliée au reste ;
+- être représentée sur la carte ;
+- posséder ses décors ;
+- posséder sa population appropriée ;
+- posséder ses transitions ;
+- être testée.
+
+==================================================
+26. QA OBLIGATOIRE
+==================================================
+
+Une fois la refonte réalisée, effectuer plusieurs parcours de test.
+
+QA 1 — nouveau joueur
+- entrée Homeworld ;
+- compréhension des chemins ;
+- lisibilité.
+
+QA 2 — exploration totale
+- toutes les routes ;
+- tous les niveaux ;
+- tous les ascenseurs.
+
+QA 3 — collisions
+- murs ;
+- falaises ;
+- ponts ;
+- bas-quartiers.
+
+QA 4 — progression
+- accès conditionnels ;
+- zones Elite ;
+- Conseil ;
+- palais.
+
+QA 5 — stress visuel
+- beaucoup de PNJ ;
+- vaisseaux ;
+- particules ;
+- grandes scènes.
+
+QA 6 — transitions
+Homeworld → Lave.
+Homeworld → Côte.
+Homeworld → Spatioport.
+Homeworld → autres régions.
+Niveau 0 → niveau -1.
+Niveau -1 → niveau 0.
+
+QA 7 — sauvegarde
+Quitter depuis différents quartiers puis recharger.
+
+Le joueur doit réapparaître au bon endroit.
+
+==================================================
+27. LIVRAISON
+==================================================
+
+Quand tout est terminé :
+
+- fournir la liste précise des fichiers modifiés ;
+- fournir la liste des nouveaux fichiers ;
+- expliquer l'architecture des nouvelles zones ;
+- indiquer les éléments temporairement visuels s'il en reste ;
+- donner les résultats QA ;
+- identifier tout problème restant ;
+- générer des captures réelles du jeu pour :
+  1. entrée de la ville ;
+  2. vue générale Niveau 0 ;
+  3. descente vers -1 ;
+  4. bas-quartiers ;
+  5. Conseil des Anciens ;
+  6. palais / Trône du Roi ;
+  7. spatioport ;
+  8. accès Région Lave ;
+  9. région côtière ;
+  10. quartier des clans / montures.
+
+Ne me donne pas uniquement un rapport :
+MODIFIE réellement le jeu.
+
+==================================================
+28. PRIORITÉ D'EXÉCUTION
+==================================================
+
+Procède dans cet ordre logique :
+
+PHASE A
+Audit complet du Homeworld actuel.
+
+PHASE B
+Nouvelle topologie complète de la ville.
+
+PHASE C
+Niveau 0.
+
+PHASE D
+Verticalité et niveaux supérieurs.
+
+PHASE E
+Bas-quartiers -1.
+
+PHASE F
+Conseil + Trône.
+
+PHASE G
+Spatioport.
+
+PHASE H
+Faune et montures.
+
+PHASE I
+Transitions régions.
+
+PHASE J
+Région côtière + accès Région Lave.
+
+PHASE K
+Parallaxe / profondeur / densité.
+
+PHASE L
+PNJ + ambiance + audio.
+
+PHASE M
+Carte.
+
+PHASE N
+Optimisation.
+
+PHASE O
+QA complet + corrections.
+
+Ne t'arrête pas après la première phase.
+Continue jusqu'à obtenir un Homeworld réellement vaste, cohérent, dense, vertical, explorable et fidèle à Yautja Prime.
+
+==================================================
+RÉSULTAT RECHERCHÉ
+==================================================
+
+Quand le joueur arrive sur Yautja Prime, il ne doit plus avoir l'impression d'être dans "un niveau".
+
+Il doit avoir l'impression d'arriver dans la capitale d'une civilisation extraterrestre extrêmement ancienne.
+
+Au premier regard :
+immense palais au loin,
+statues gigantesques,
+pyramides,
+centaines de bâtiments,
+vaisseaux,
+falaises,
+lave,
+plusieurs soleils.
+
+En avançant :
+marchands,
+forges,
+clans,
+montures,
+habitants.
+
+En descendant :
+la ville devient plus sombre,
+plus dense,
+plus industrielle,
+puis le joueur atteint les bas-quartiers.
+
+En remontant :
+il accède progressivement aux zones nobles,
+au Conseil,
+puis au pouvoir royal.
+
+Aux extrémités de la cité :
+le monde continue vers les autres régions de Yautja Prime.
+
+Le Homeworld doit devenir un des lieux centraux et mémorables de Yautja — La Longue Chasse.
+
+Un point que je renforcerais encore dans Codex : l'image doit servir de “macro-layout”, pas de simple concept art. Par exemple, si elle montre le palais très haut, les bas-quartiers dessous et le spatioport à droite, cette géographie doit réellement se retrouver dans la carte jouable. Cela évite que Codex fasse un beau décor en arrière-plan mais conserve en réalité le même petit niveau plat.
+
+Et le Homeworld doit rester distinct du hub personnel du vaisseau : la cité est la capitale/zone sociale et politique de Yautja Prime, alors que le vaisseau reste l'espace personnel et mobile du joueur.
+
+Si vous le souhaitez, je peux :
+
+Créer un plan détaillé pour la refonte du Homeworld
+
+Formuler des directives pour intégrer la verticalité jouable
+
+Rédiger un guide pour la population et vie vivante du Homeworld

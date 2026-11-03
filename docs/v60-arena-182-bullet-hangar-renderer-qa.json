@@ -1,0 +1,1526 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-182-bullet-hangar",
+  "compositionDigest": "8e982814935ddd35ed5dd82e1a6821e5af87f210cc56212fee61eda4834e16b7",
+  "checkedAt": "2026-09-30T15:12:19.784Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-182-bullet-hangar/p0-depth.png",
+      "sha256": "f548a849988b25ac10e9e9979fdeaf907f3ef47bc49cb53e0c71cc839e35290b",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p2-a-support-left.png",
+      "sha256": "a0948d91bf391c0ac823bab24d5b663c416bad660b6147c4c932c098cd00bb5c",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p2-b-support-right.png",
+      "sha256": "9b5589130e464328bffe76d6135b088743433d4f3d576be8936f52dd9e2ca749",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-a-prop-left.png",
+      "sha256": "c4ae7ccaae621307a1655cad89e419ee564efd9082e0cd71091b46bc635a6551",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-b-prop-right.png",
+      "sha256": "85a95f1428228f2550fbcfc464de1453210f0f125728de3524fcd755840dbc8b",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-160-rage-war-umf12/p4-floor.png",
+      "sha256": "09c6eab1fdd6ed2d1666edc29621e37d365f476803cd254f7f681984a2886bc2",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+      "sha256": "3a2f9560323db363ea66a59abefeec80b49dc2f2fc9db83fb8b1a60f2f9354df",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+      "sha256": "af8cc67c9636d77c37127ae0d20412d230caf0a0d8657bd7615bb6d00221d1d3",
+      "width": 1223,
+      "height": 1286,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-01.png",
+      "sha256": "08b7dbe616178ba1ffd82f73eaac97f66ccf1c7ed467a689b6a9b214525cd924",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-02.png",
+      "sha256": "91bf5233f37b3cb1a4d7c44c72ee86d949f658f7102af26a0dffa584f7389fb4",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-03.png",
+      "sha256": "65955686497ad660a95c676cd3b453f4d6e1dae411764cee323c2bda944c889d",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 12,
+    "expectedImages": 12,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            644,
+            106
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            205,
+            201
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            790,
+            392
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            644,
+            106
+          ],
+          "pivot": [
+            644,
+            106
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            205,
+            201
+          ],
+          "pivot": [
+            205,
+            201
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            790,
+            392
+          ],
+          "pivot": [
+            790,
+            392
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -304.4776
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -304.4776
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            648.51,
+            101.23312499999996
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            197.43749999999997,
+            198.84562499999996
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            798.525,
+            395.098125
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            648.51,
+            101.23312499999996
+          ],
+          "pivot": [
+            648.51,
+            101.23312499999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            197.43749999999997,
+            198.84562499999996
+          ],
+          "pivot": [
+            197.43749999999997,
+            198.84562499999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            798.525,
+            395.098125
+          ],
+          "pivot": [
+            798.5249999999999,
+            395.098125
+          ],
+          "exactCell": true,
+          "error": 1.1368683772161603e-13
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 501.99999999999994,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            657.915,
+            102.31
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            209.0375,
+            199.4475
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            807.2,
+            394.745
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            657.915,
+            102.31
+          ],
+          "pivot": [
+            657.915,
+            102.31
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            209.0375,
+            199.4475
+          ],
+          "pivot": [
+            209.0375,
+            199.4475
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            807.2,
+            394.745
+          ],
+          "pivot": [
+            807.2,
+            394.745
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 501.99999999999994,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            637.465,
+            102.31
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            188.5875,
+            199.4475
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            786.75,
+            394.745
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            637.465,
+            102.31
+          ],
+          "pivot": [
+            637.465,
+            102.31
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            188.5875,
+            199.4475
+          ],
+          "pivot": [
+            188.5875,
+            199.4475
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            786.75,
+            394.745
+          ],
+          "pivot": [
+            786.75,
+            394.745
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -8.320000000000007
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -8.320000000000007
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            642.3599999999999,
+            107.63999999999999
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            207.75,
+            201.69
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            786.9000000000001,
+            390.78
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            642.3599999999999,
+            107.63999999999999
+          ],
+          "pivot": [
+            642.3599999999999,
+            107.63999999999999
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            207.75,
+            201.69
+          ],
+          "pivot": [
+            207.75,
+            201.69
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            786.9000000000001,
+            390.78
+          ],
+          "pivot": [
+            786.9000000000001,
+            390.78
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -49.5
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -49.5
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            627.6,
+            122.4
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            232.5,
+            207.9
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            759,
+            379.8
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            627.6,
+            122.4
+          ],
+          "pivot": [
+            627.6,
+            122.4
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            232.5,
+            207.9
+          ],
+          "pivot": [
+            232.5,
+            207.9
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            759,
+            379.8
+          ],
+          "pivot": [
+            759,
+            379.8
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            644,
+            106
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            205,
+            201
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            790,
+            392
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            644,
+            106
+          ],
+          "pivot": [
+            644,
+            106
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            205,
+            201
+          ],
+          "pivot": [
+            205,
+            201
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            790,
+            392
+          ],
+          "pivot": [
+            790,
+            392
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            644,
+            106
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            205,
+            201
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-182-bullet-hangar/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            790,
+            392
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            644,
+            106
+          ],
+          "pivot": [
+            644,
+            106
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            205,
+            201
+          ],
+          "pivot": [
+            205,
+            201
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            790,
+            392
+          ],
+          "pivot": [
+            790,
+            392
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 1157,
+      "attachment": [
+        790,
+        392
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 1177,
+      "attachment": [
+        790,
+        392
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 1197,
+      "attachment": [
+        790,
+        392
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 1217,
+      "attachment": [
+        790,
+        392
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 1237,
+      "attachment": [
+        790,
+        392
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 1257,
+      "attachment": [
+        790,
+        392
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 2322,
+      "attachment": [
+        644,
+        106
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 2342,
+      "attachment": [
+        644,
+        106
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 2362,
+      "attachment": [
+        644,
+        106
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 2382,
+      "attachment": [
+        644,
+        106
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 2402,
+      "attachment": [
+        644,
+        106
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 2422,
+      "attachment": [
+        644,
+        106
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 3355,
+      "attachment": [
+        205,
+        201
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 3375,
+      "attachment": [
+        205,
+        201
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 3395,
+      "attachment": [
+        205,
+        201
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 3415,
+      "attachment": [
+        205,
+        201
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 3435,
+      "attachment": [
+        205,
+        201
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 3455,
+      "attachment": [
+        205,
+        201
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-160-rage-war-umf12/p4-floor.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-182-bullet-hangar\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-182-bullet-hangar\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-182-bullet-hangar\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-182-bullet-hangar\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-182-bullet-hangar\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-182-bullet-hangar\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-182-bullet-hangar\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-182-bullet-hangar\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "06b4b09b175d023e43f233683e5739268106abceb236092f7f5a74660281dc68",
+    "left-corner.png": "72d310b85723810b8fd7d05bf0bb3e4c6d1125e47cc34182df30b40b2fc3035c",
+    "right-corner.png": "b4c6dbf1a84b350ed76631891a87a70fbde1a627a778504d39144b5e5356e03f",
+    "wide.png": "f0177324f37b50615f5cbc2c58444d2fdf67af1edc23061a0daef575eaaa4402",
+    "life-03-active.png": "811e452f924ed5846b4f8e982f8ae94cd6d5054565ee08342157fbe5e84c628a",
+    "life-01-active.png": "ae8a914bcda1d6dfb4fe9f82be3939235a2395f862fc101526ade1e4be8daf00",
+    "life-02-active.png": "4abba864071ef61c3e8190a05e178d2ee06225c9783328ff929da1d02334604a",
+    "mobile.png": "10d3ee3dfa719e172034b8355caf56ce5625089320b41b298417d60af171bb27"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}

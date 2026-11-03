@@ -1,0 +1,286 @@
+{
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "phase": "before",
+  "scope": "Isolated QA browser contexts only. No real user saves inspected.",
+  "results": [
+    {
+      "scenario": "empty",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        ""
+      ],
+      "errors": [],
+      "originalBytesPreserved": true
+    },
+    {
+      "scenario": "normal",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nPartie 1 · Chasseur sans nom\n›",
+          "disabled": false
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": false
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "Sauvegarde confirmée."
+      ],
+      "errors": [],
+      "originalBytesPreserved": true
+    },
+    {
+      "scenario": "filled",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nPartie 1 · Chasseur QA 1\n›",
+          "disabled": false
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": true
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": false
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        ""
+      ],
+      "errors": [],
+      "originalBytesPreserved": true
+    },
+    {
+      "scenario": "corrupt",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": true
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "Archives protégées (protected-save). Aucune donnée remplacée."
+      ],
+      "errors": [],
+      "originalBytesPreserved": true
+    },
+    {
+      "scenario": "future",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": true
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "Archives protégées (future-version). Aucune donnée remplacée."
+      ],
+      "errors": [],
+      "originalBytesPreserved": true
+    },
+    {
+      "scenario": "readDenied",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": true
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "QA storage denied"
+      ],
+      "errors": [],
+      "originalBytesPreserved": true
+    },
+    {
+      "scenario": "writeDenied",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        ""
+      ],
+      "errors": [],
+      "originalBytesPreserved": true
+    },
+    {
+      "scenario": "heldLock",
+      "busy": "false",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": false
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": false
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": false
+        }
+      ],
+      "status": [
+        "Une autre session transfère ses archives. Réessayez après sa fermeture."
+      ],
+      "errors": [],
+      "originalBytesPreserved": true
+    },
+    {
+      "scenario": "hungLock",
+      "busy": "true",
+      "buttons": [
+        {
+          "text": "Continuer\nAucune campagne à reprendre\n›",
+          "disabled": true
+        },
+        {
+          "text": "Nouvelle partie\nCommencer le prologue dans la nurserie\n›",
+          "disabled": true
+        },
+        {
+          "text": "DLC / Chroniques de chasse\nVisiter le Mausolée des Grandes Chasses\n›",
+          "disabled": true
+        },
+        {
+          "text": "Charger une partie\nRetrouver une campagne et ses sauvegardes\n›",
+          "disabled": true
+        },
+        {
+          "text": "Actualiser les archives",
+          "disabled": true
+        }
+      ],
+      "status": [
+        "Vérification et enregistrement des archives…"
+      ],
+      "errors": [],
+      "originalBytesPreserved": true
+    }
+  ]
+}

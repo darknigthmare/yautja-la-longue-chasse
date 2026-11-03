@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "release": "V110",
+  "status": "FAILED_DEVELOPMENT_ATTEMPTS_PRESERVED_NOT_PROMOTED",
+  "scope": "Four complete failed exploratory development results, exact screenshots and raw logs. No attempt certifies the current compiled production runtime.",
+  "currentProductionCertification": false,
+  "countsIncludedInProduction": false,
+  "attempts": [
+    {
+      "id": "r1",
+      "status": "FAIL_PRESERVED_NOT_PROMOTED",
+      "mode": "development",
+      "runtimeCommit": null,
+      "buildId": null,
+      "originalOutput": "outputs/qa-v110-development-r1",
+      "baseUrl": "http://127.0.0.1:3110",
+      "executedScope": "Actual local application: K-17 consent, observation, copied provenance, native keyboard carry/park outside map, pause, ordinary Continue, voluntary recovery and current-objective Atlas Worker route; an actual nearby resident subject/advice interaction plus declared blur input suspension and physical out-of-reach refusal; actual council-stair descent refused by a precondition load placed through the real offline cargo model. No complete ROLE03 investigation, new body animation, cargo campaign completion or canon fidelity is certified.",
+      "checksRecorded": 2,
+      "checksPassed": 1,
+      "checksFailed": 1,
+      "browserExceptions": 0,
+      "consoleErrors": 11,
+      "sourceBeforeEqualsAfter": true,
+      "rawEvidence": {
+        "path": "docs/qa/v110-development-attempts/r1/browser-result-failed.json.gz",
+        "sha256": "d48379d844fbe1bf4a96a5b416957a5a2d823717ee3a34b3ed9139916e88c11d",
+        "bytes": 99471,
+        "decodedSha256": "729335a10e8fc21290f06f1076a8a1a7392146bf2f2eb950de241b5fcd859115",
+        "decodedBytes": 322947
+      },
+      "captures": [
+        {
+          "path": "docs/qa/v110-development-attempts/r1/k17-failure.png",
+          "sha256": "953e6bc7510b19c6059c11841e0d229a81b3583b0e0e04a441d1aba5055ac016",
+          "bytes": 1785467
+        }
+      ],
+      "log": {
+        "path": "docs/qa/v110-development-attempts/r1/browser-dev.log",
+        "sha256": "9cef5a0d24ab2f579a71473f9ae5486240fef80d41a57b423eee2e679326e539",
+        "bytes": 1959
+      },
+      "notes": {
+        "observed": "Le clic Continuer expire sur un bouton désactivé ; 11 erreurs console HMR sont retenues sur l’origine DEV 127.0.0.1. Aucun BUILD_ID ni commit runtime de production.",
+        "coordinatorFixNote": "Le pilote attend ensuite la disponibilité asynchrone réelle du catalogue de campagne ; les essais suivants emploient localhost. Aucun garde de sauvegarde ou bouton désactivé n’est contourné."
+      }
+    },
+    {
+      "id": "r2",
+      "status": "FAIL_PRESERVED_NOT_PROMOTED",
+      "mode": "development",
+      "runtimeCommit": null,
+      "buildId": null,
+      "originalOutput": "outputs/qa-v110-development-r2",
+      "baseUrl": "http://localhost:3110",
+      "executedScope": "Actual local application: K-17 consent, observation, copied provenance, native keyboard carry/park outside map, pause, ordinary Continue, voluntary recovery and current-objective Atlas Worker route; an actual nearby resident subject/advice interaction plus declared blur input suspension and physical out-of-reach refusal; actual council-stair descent refused by a precondition load placed through the real offline cargo model. No complete ROLE03 investigation, new body animation, cargo campaign completion or canon fidelity is certified.",
+      "checksRecorded": 7,
+      "checksPassed": 6,
+      "checksFailed": 1,
+      "browserExceptions": 0,
+      "consoleErrors": 0,
+      "sourceBeforeEqualsAfter": true,
+      "rawEvidence": {
+        "path": "docs/qa/v110-development-attempts/r2/browser-result-failed.json.gz",
+        "sha256": "3f209cd2fe1a6f6afffa43452c802c19332f37535fe0fd0860e40232e132aa13",
+        "bytes": 113713,
+        "decodedSha256": "bd72b311bb228ed4e5132089d2b633bfee65f5f67df1d36062814c153997831c",
+        "decodedBytes": 432025
+      },
+      "captures": [
+        {
+          "path": "docs/qa/v110-development-attempts/r2/k17-01-carried-record.png",
+          "sha256": "069eda078341de31a41f75e210264bf91b516cda336d55ed5ff7024beb027d39",
+          "bytes": 65533
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/r2/k17-failure.png",
+          "sha256": "5468b01bcc530e5175655a0b743ac7bb08a54bce15725934c6f396d7601dfcee",
+          "bytes": 134602
+        }
+      ],
+      "log": {
+        "path": "docs/qa/v110-development-attempts/r2/browser-dev.log",
+        "sha256": "5adae5b7247b4cf65d1d2731f54ab6b30ffdea1ac3d0acc7881fbf0f45f15e00",
+        "bytes": 2193
+      },
+      "notes": {
+        "observed": "Le parcours observe et porte réellement la plaque puis échoue à capturer le terrain invisible ; le carnet ouvert occupe la fenêtre et écrase le viewport jouable.",
+        "coordinatorFixNote": "Vrai défaut UI corrigé dans la disposition CSS du panneau avant le gel courant ; un contrôle ultérieur exige une fenêtre de terrain réellement visible et la marche avec carnet ouvert."
+      }
+    },
+    {
+      "id": "r3",
+      "status": "FAIL_PRESERVED_NOT_PROMOTED",
+      "mode": "development",
+      "runtimeCommit": null,
+      "buildId": null,
+      "originalOutput": "outputs/qa-v110-development-r3",
+      "baseUrl": "http://localhost:3110",
+      "executedScope": "Actual local application: K-17 consent, observation, copied provenance, native keyboard carry/park outside map, pause, ordinary Continue, voluntary recovery and current-objective Atlas Worker route; an actual nearby resident subject/advice interaction plus declared blur input suspension and physical out-of-reach refusal; actual council-stair descent refused by a precondition load placed through the real offline cargo model. No complete ROLE03 investigation, new body animation, cargo campaign completion or canon fidelity is certified.",
+      "checksRecorded": 17,
+      "checksPassed": 16,
+      "checksFailed": 1,
+      "browserExceptions": 0,
+      "consoleErrors": 0,
+      "sourceBeforeEqualsAfter": true,
+      "rawEvidence": {
+        "path": "docs/qa/v110-development-attempts/r3/browser-result-failed.json.gz",
+        "sha256": "d243c9fcabf645cdfce1184e9b1b4e9e5076b770d8efb4a862b5cb91798c6f43",
+        "bytes": 116810,
+        "decodedSha256": "cba02e023c67e229103685de1411c34f2204776a883f3333382b87addc2e1b1d",
+        "decodedBytes": 497580
+      },
+      "captures": [
+        {
+          "path": "docs/qa/v110-development-attempts/r3/k17-01-carried-record-map.png",
+          "sha256": "a2f4d5a644cfc5ca47114c9f78f732de2fbe95c64a9827bd41e889804ce64928",
+          "bytes": 8917
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/r3/k17-01-carried-record-plaque-facts.png",
+          "sha256": "7d69d22bb9c98bcbc3a34b1e5743f3debea85f886a0ba7565cd7b6dc894011f7",
+          "bytes": 18877
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/r3/k17-02-native-carried-plaque.png",
+          "sha256": "ad9da26fa0a1381200e48d159865f87d85f4f4af44da2623e62f70453f4f1db1",
+          "bytes": 1089068
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/r3/k17-03-outside-parked-record-map.png",
+          "sha256": "ebb8551d34ef3eb784ecb27836258baaa709c65b68bab5b8a00f45281a2df999",
+          "bytes": 9710
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/r3/k17-03-outside-parked-record-plaque-facts.png",
+          "sha256": "d2b6b022abe80963025905695b018cf8c4563d74a1fecec02ccba4b63855a61b",
+          "bytes": 19914
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/r3/k17-04-operation-aware-atlas.png",
+          "sha256": "35d697c6a10eb76c1f08617cec0e3e1a59dc634782a275c9ef3fcdde93d2e31f",
+          "bytes": 592975
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/r3/k17-failure.png",
+          "sha256": "559720d0454df145a14d68e7680dc09fba3ff785df7175ca0ca04bda3c914153",
+          "bytes": 645338
+        }
+      ],
+      "log": {
+        "path": "docs/qa/v110-development-attempts/r3/browser-dev.log",
+        "sha256": "2e0e84af6c678c6a5ca3081d400720cee33093c07c78ed39fbfea2cbbf30c449",
+        "bytes": 1592
+      },
+      "notes": {
+        "observed": "Le parcours consentement, observation, portage, pause, Continue, pose et choix de l’objectif actuel progresse, puis attend en vain le trajet Worker ; le texte visible indique Calcul indisponible. Sources stables et aucune exception JS ou console dans cet essai.",
+        "coordinatorFixNote": "Cause de cette indisponibilité DEV non attribuée. Le diagnostic direct séparé transmet la sauvegarde capturée à deux vrais Worker DEV qui répondent reachable ; il ne reproduit pas le parcours UI et ne certifie pas le build de production."
+      }
+    },
+    {
+      "id": "r4",
+      "status": "FAIL_PRESERVED_NOT_PROMOTED",
+      "mode": "development",
+      "runtimeCommit": null,
+      "buildId": null,
+      "originalOutput": "outputs/qa-v110-development-r4-residents-arrival",
+      "baseUrl": "http://localhost:3110",
+      "executedScope": "Actual local application: K-17 consent, observation, copied provenance, native keyboard carry/park outside map, pause, ordinary Continue, voluntary recovery and current-objective Atlas Worker route; an actual nearby resident subject/advice interaction plus declared blur input suspension and physical out-of-reach refusal; actual council-stair descent refused by a precondition load placed through the real offline cargo model. No complete ROLE03 investigation, new body animation, cargo campaign completion or canon fidelity is certified.",
+      "checksRecorded": 8,
+      "checksPassed": 7,
+      "checksFailed": 1,
+      "browserExceptions": 0,
+      "consoleErrors": 0,
+      "sourceBeforeEqualsAfter": true,
+      "rawEvidence": {
+        "path": "docs/qa/v110-development-attempts/r4/browser-result-failed.json.gz",
+        "sha256": "3977c9a487000248e82eeb7b53346d3c252b27eca6350790163e537df206b4f7",
+        "bytes": 109983,
+        "decodedSha256": "1b7238cdb179b8c7a90860eba5b4e40c9957ad36f13e72c1e0cbb15fde88b157",
+        "decodedBytes": 413871
+      },
+      "captures": [
+        {
+          "path": "docs/qa/v110-development-attempts/r4/residents-01-normal-known-place-advice.png",
+          "sha256": "08e6adebb7f4e429ceed10680557de04701c2446b3578d09deb8316a9aa81c62",
+          "bytes": 145234
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/r4/residents-02-suspended-advice.png",
+          "sha256": "50f8e54eccc74a809fb014d066dfec3386f16509ed4f116d23ae92eee3c823f5",
+          "bytes": 153044
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/r4/residents-03-advice-atlas.png",
+          "sha256": "7a9259f8be5a563c5172f7df39ba098d5e1ffbe212dbb529fc9d6019b3a2d3d0",
+          "bytes": 914601
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/r4/residents-failure.png",
+          "sha256": "2bb553bd899c8ab9aa12ceb2074b603220fe1916827c10af0ccc5ec4028edf02",
+          "bytes": 2361087
+        }
+      ],
+      "log": {
+        "path": "docs/qa/v110-development-attempts/r4/browser-dev.log",
+        "sha256": "f7dd3b18f7530f40aee77092bc0cdb6b05a50035c6786dc752cdecd859dfb765",
+        "bytes": 1203
+      },
+      "notes": {
+        "observed": "L’interaction résident, ses conseils locaux et la suspension inactive sont joués. Le pilotage clavier expire près du repère (7500, 3474.5) à la position (7490, 3475), sans écriture forcée de coordonnées.",
+        "coordinatorFixNote": "Tolérance du pilote de marche ordinaire portée à 12 unités pour éviter son oscillation près du point. La reprise métier conserve son rayon de 3 unités et le pilote exige ce rayon strict pour cette reprise. Les règles du jeu et gardes ne sont pas assouplis."
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "id": "R3-DIRECT-DEV-WORKER",
+      "status": "EXPLORATORY_DIAGNOSTIC_ONLY_NOT_PROMOTED",
+      "files": [
+        {
+          "path": "docs/qa/v110-development-attempts/diagnostics/worker-development/result.json",
+          "sha256": "6c3bac88b059ad3f3c8c8b6b7e69389048b0f68b492674c9606d81213ec60b96",
+          "bytes": 737
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/diagnostics/worker-development/probe-original.mjs",
+          "sha256": "963feae2839ca76e80860f0e763943fd52c2091bca9f9c31db7374bdaa83262e",
+          "bytes": 2609
+        }
+      ],
+      "capturedSave": {
+        "path": "docs/qa/v110-development-attempts/diagnostics/worker-development/r3-captured-save.json",
+        "sha256": "66716777d9a15d9d003c7c10b8ca4285047a5a864c3cc176888aced165daa8b6",
+        "bytes": 14587,
+        "source": "r3/browser-result-failed.json.gz",
+        "sourceJsonPointer": "/observations/2/storage/yautja-long-hunt.save",
+        "derivation": "Exact UTF-8 bytes of the captured storage string, without reserializing its JSON."
+      },
+      "requestOrigin": {
+        "actor": {
+          "x": 7520,
+          "y": 5350
+        },
+        "levelId": "0",
+        "interiorId": null
+      },
+      "capturedSavedLocation": {
+        "version": 1,
+        "layoutRevision": 1,
+        "ownerCreatedAt": "2026-09-20T10:00:00.000Z",
+        "levelId": "0",
+        "exterior": {
+          "x": 7378.5657141399715,
+          "y": 5350
+        },
+        "interiorId": null,
+        "local": null
+      },
+      "observed": "Two fresh direct Worker constructions answer message/planStatus reachable; zero recorded requestfailed/pageerror events.",
+      "limit": "The diagnostic uses the exact captured save but an explicitly constructed origin7520,5350, different from its saved exterior7378.5657141399715,5350. This is neither a replay of the failed UI journey nor an attributed cause or production PASS. The original script retains its original absolute paths."
+    }
+  ],
+  "earlierLocalFailures": [
+    {
+      "id": "INTEGRATED-VM-FIXTURE",
+      "status": "FAIL_PRESERVED_NOT_PROMOTED",
+      "source": "docs/qa/v110-homeworld/integrated-tests-initial.log",
+      "evidence": {
+        "path": "docs/qa/v110-development-attempts/checks/integrated-tests-initial.log",
+        "sha256": "5b553e37fcf57a5ce9d6de393e0a89d8845bc9a3bdc4231a97a503d3e9b29123",
+        "bytes": 21967
+      },
+      "note": "La fixture VM omet la liaison stepHomeworldTransitV110 : deux ReferenceError. Le responsable fournit ensuite la vraie fonction V110, sans supprimer les gardes du jeu."
+    },
+    {
+      "id": "INTEGRATED-VM-AFTER-FIX",
+      "status": "PASS_LOCAL_INPUT_ONLY",
+      "source": "docs/qa/v110-homeworld/input-runtime-final.log",
+      "evidence": {
+        "path": "docs/qa/v110-development-attempts/checks/input-runtime-final.log",
+        "sha256": "fd4533d7a1ed9cd73c0184b71ecd85cb91c764b9812de9e6dd7bf701a923406a",
+        "bytes": 8356
+      },
+      "note": "Les 32 tests des commandes réelles passent après liaison de la vraie dépendance V110 ; ce résultat local ne certifie pas le parcours navigateur compilé."
+    },
+    {
+      "id": "HISTORY-SANDBOX-INITIAL",
+      "status": "FAIL_PRESERVED_NOT_PROMOTED",
+      "source": "docs/qa/v110-homeworld/v109-history-current-failure.log",
+      "evidence": {
+        "path": "docs/qa/v110-development-attempts/checks/v109-history-current-failure.log",
+        "sha256": "6c338b6176a594925b6568dc29cbdd74f5f694f8bfbebb4eaa6695637e1d09e1",
+        "bytes": 1445
+      },
+      "note": "Premier lancement sandbox : le processus enfant échoue sans sortie exploitable ; le journal conserve 2 tests réussis et 1 échec. Le responsable relance les mêmes tests avec les permissions d’exécution requises."
+    },
+    {
+      "id": "HISTORY-AUTHORIZED-RERUN",
+      "status": "PASS_LOCAL_HISTORY_ONLY",
+      "source": "docs/qa/v110-homeworld/v109-history-current.log",
+      "evidence": {
+        "path": "docs/qa/v110-development-attempts/checks/v109-history-current.log",
+        "sha256": "55626e4a8261a23328ed25c73b3eae0c7cbb660e866f8403026383c50b7d199d",
+        "bytes": 875
+      },
+      "note": "Le journal existant de relance autorisée conserve 3 tests réussis et aucun échec. Les assertions historiques ne certifient pas le parcours navigateur courant."
+    }
+  ],
+  "totals": {
+    "failedDevelopmentAttempts": 4,
+    "exactPngCaptures": 14,
+    "productionChecksCredited": 0,
+    "productionCapturesCredited": 0
+  },
+  "readme": {
+    "path": "docs/qa/v110-development-attempts/README.md",
+    "sha256": "b0523a1a9d23ac49df30a971e5950ced881f014fd018b24ebd94575ee171bb68",
+    "bytes": 5970
+  },
+  "diskFailuresAndSeparateReruns": [
+    {
+      "id": "INITIAL-PRODUCTION-BUILD-DISK",
+      "status": "FAIL_DISK_PRESERVED_NOT_PROMOTED",
+      "originalPath": "docs/qa/v110-homeworld/production-build.log",
+      "evidence": {
+        "path": "docs/qa/v110-development-attempts/checks/production-build.log",
+        "sha256": "2cb2c209553c415f759eed361141e4a012c32dbe8ae756a07f0f3780d595cca0",
+        "bytes": 1245
+      },
+      "note": "Premier build interrompu par ENOSPC pendant le pré-rendu de /_global-error."
+    },
+    {
+      "id": "INITIAL-CURRENT-SUITE-DISK",
+      "status": "FAIL_DISK_PRESERVED_NOT_PROMOTED",
+      "originalPath": "docs/qa/v110-homeworld/current-v110-suite-failed-disk.log",
+      "evidence": {
+        "path": "docs/qa/v110-development-attempts/checks/current-v110-suite-failed-disk.log",
+        "sha256": "9f0746e6ec53c438faf06a72e5fc41224dc5e530e5d213c8f536fa6aac17a9c8",
+        "bytes": 2545
+      },
+      "note": "Premier groupe du suivi :4 tests réussis,1 échec ENOSPC pendant mkdtemp. La trace XML de refus volontaire appartient à un autre test réussi."
+    },
+    {
+      "id": "PRODUCTION-BUILD-AFTER-DISK",
+      "status": "PASS_COMPILED_BUILD_ONLY",
+      "originalPath": "docs/qa/v110-homeworld/production-build-r2.log",
+      "evidence": {
+        "path": "docs/qa/v110-development-attempts/checks/production-build-r2.log",
+        "sha256": "66dacafceb75f91272d5bc1403d9e31859e5eb32da00a358536dc30d5474decb",
+        "bytes": 4540
+      },
+      "note": "Relance de compilation réussie, distincte des parcours navigateur."
+    },
+    {
+      "id": "CURRENT-SUITE-AFTER-DISK",
+      "status": "PASS_LOCAL_56_ONLY",
+      "originalPath": "docs/qa/v110-homeworld/current-v110-suite.log",
+      "evidence": {
+        "path": "docs/qa/v110-development-attempts/checks/current-v110-suite.log",
+        "sha256": "bcc4622404d5c1207af8f1f6f45900298173f7d3632bf014a0775166ee653cc0",
+        "bytes": 17150
+      },
+      "note": "Relance locale :56 tests réussis dans huit groupes séparés, aucun échec ; aucune certification navigateur."
+    }
+  ]
+}

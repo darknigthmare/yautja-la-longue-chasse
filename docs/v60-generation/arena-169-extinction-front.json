@@ -1,0 +1,683 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-169-extinction-front",
+  "proposalId": "new-extinction-front",
+  "name": "Avant-poste Extinction",
+  "workbookStage": "09_STAGES!A33:N33",
+  "workbookLife": "10_VIE_DES_STAGES!A89:N91",
+  "sourceUrls": [
+    "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+  ],
+  "loreLimits": [
+    "Original lateral outpost inspired by EA Extinction; current exact RTS facility plan not certified.",
+    "Unverified Hydra-specific geometry replaced by an original shielded servicing machine. Literal Hydra background asset remains outstanding."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "Native transparent PNG sixframe sprite animation sheet1536x1024,exact3columns2rows of512squarecells. SMALL unmannedfrontieroutpost cargo trolley, original practical design for Alien versus Predator Extinction-inspired environment, NOT a canonicalnamedvehicle. Short lowgunmetal chassis withfourrubberwheels, two strapped greysealedcargo cases, tinyamber statuslamp, compactrearcoupler. NOgun,turret,driver,arms,logo,textorlicenseplate. Sixdifferent calmmechanicalstates ofidlemotor startup:1wheelspokesrest,2spokesrotatesmall,3spokesquarterturn,4smallpayloadstrapsettles,5spokesdifferentangle,6restagain. Allpartsandwheelcentersstaysameposition withineachcell, loadsecure, no wheelsbeyondframe. Sideviewfacingleft, detailedpaintedcinematicgameart, coolsteelandwhitefrostscuffs. TINYpropmax320wide200tall, minimum90pxtransparentmargins ALLsides, entireobjectcomplete. Genuinealphabackground, nofloorpatch,nocastshadow,nofog,noparticles,nogrid,notext. Sixunique full drawings.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-15da3525-4903-4aae-853e-ee49af58d265.png",
+      "workspacePath": "work-local/v60/generated/arena-169-extinction-front/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six cargo trolley states: stable chassis and cargo straps, distinct wheel orientations, no weapon or driver. Source requested distant transport; original generic transport adaptation.",
+      "anchorKind": "ground-bottom",
+      "frameRects": [
+        [
+          0,
+          0,
+          538,
+          512
+        ],
+        [
+          538,
+          0,
+          502,
+          512
+        ],
+        [
+          1040,
+          0,
+          496,
+          512
+        ],
+        [
+          0,
+          512,
+          538,
+          512
+        ],
+        [
+          538,
+          512,
+          502,
+          512
+        ],
+        [
+          1040,
+          512,
+          496,
+          512
+        ]
+      ],
+      "sha256": "d7e1024ccbd9096dd39fc93e20d932313d2f3271521c24573412c90adbf54783",
+      "bytes": 2104382,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6317113240559896,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            538,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            142,
+            464,
+            294
+          ],
+          "pivot": [
+            256.5,
+            436
+          ],
+          "bodyCenterPivot": [
+            282.5,
+            436
+          ],
+          "opaquePixelCount": 90910,
+          "contentSha256": "cd3da7f261e278a604869b50a5ba7702678de63fe49bc309567fb5595fced04d",
+          "margins": [
+            51,
+            142,
+            23,
+            76
+          ]
+        },
+        {
+          "rect": [
+            538,
+            0,
+            502,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            140,
+            463,
+            296
+          ],
+          "pivot": [
+            222.5,
+            436
+          ],
+          "bodyCenterPivot": [
+            249,
+            436
+          ],
+          "opaquePixelCount": 90753,
+          "contentSha256": "66fb4c28fd25eef9199da34dbdec081e7b9b5b136a6cf8bb319e9f1e5c0922ff",
+          "margins": [
+            18,
+            140,
+            21,
+            76
+          ]
+        },
+        {
+          "rect": [
+            1040,
+            0,
+            496,
+            512
+          ],
+          "alphaBounds": [
+            14,
+            140,
+            460,
+            296
+          ],
+          "pivot": [
+            217,
+            436
+          ],
+          "bodyCenterPivot": [
+            243.5,
+            436
+          ],
+          "opaquePixelCount": 90507,
+          "contentSha256": "00e915d0c1c9025a4d838667bc31af1b8f1ea51fb81db296fbb155c3833714e1",
+          "margins": [
+            14,
+            140,
+            22,
+            76
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            538,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            101,
+            462,
+            297
+          ],
+          "pivot": [
+            256.5,
+            398
+          ],
+          "bodyCenterPivot": [
+            281.5,
+            398
+          ],
+          "opaquePixelCount": 90672,
+          "contentSha256": "6e1ed5e680103e7940eaa14041928c950e4b7cf31ddd49d6d3affdcacae8085a",
+          "margins": [
+            51,
+            101,
+            25,
+            114
+          ]
+        },
+        {
+          "rect": [
+            538,
+            512,
+            502,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            101,
+            464,
+            297
+          ],
+          "pivot": [
+            222,
+            398
+          ],
+          "bodyCenterPivot": [
+            247.5,
+            398
+          ],
+          "opaquePixelCount": 90891,
+          "contentSha256": "8f149857ca61958c1d87a98580c6d2e05749e505aa16b5c342417b2918f3642c",
+          "margins": [
+            16,
+            101,
+            22,
+            114
+          ]
+        },
+        {
+          "rect": [
+            1040,
+            512,
+            496,
+            512
+          ],
+          "alphaBounds": [
+            15,
+            101,
+            460,
+            297
+          ],
+          "pivot": [
+            220,
+            398
+          ],
+          "bodyCenterPivot": [
+            244.5,
+            398
+          ],
+          "opaquePixelCount": 90618,
+          "contentSha256": "94a3c3b41aa77d08dba2434004a01fb45710f18324d40437ca14d0e442b42cd4",
+          "margins": [
+            15,
+            101,
+            21,
+            114
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-02",
+      "prompt": "Native truealpha PNG sprite sheet1536x1024,exact3columns2rows sixseparate SMALL original outpost maintenance apparatus props. Do NOTdepict a Hydra or any named canonicalAVPunit; this is explicitlyoriginal safeenvironmentalmachinery replacing an unverified reference. Subject squatdarkgunmetal servicingmachine: closed armouredrectangularbody onfourshortfeet, twoverticalfrosted ventilationlouvres, one compactmechanical clamp extendingfromside aroundan inertsealedcylinder. Sixcalmstages: clampclosed, slightlyopen, wideropen, cylinderrotatesslightly, clampcloses, louvresrest. No gunbarrels, no missile, no beam, no weapon, no driver orhumanoidbody. Sideview industrialpaintedgameart, coolblue grey wornsteel smallamber indicatorlights, pale frostedge. Maximumsprite320wide260high, huge90pxclearalpha margin allaroundeach512cell. Wholeobjectandallpartsinsidecell. Sixdistinctdrawings, samebasecylinderandarchitecture. No shadowpatch,noground,nofog,noparticles,notext,logosorgrids.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-9b0f678d-466d-42cb-b59e-6d09e56dfa3a.png",
+      "workspacePath": "work-local/v60/generated/arena-169-extinction-front/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six original maintenance machine states with articulated servicing clamps and fixed supported container location. Explicit environmental substitution, NOT the literal Hydra from workbook E90; canonical Hydra geometry remains unverified.",
+      "anchorKind": "ground-bottom",
+      "sha256": "e718703fd439caeb9b19c6e9952b8625889e5e733c79876d7e47bb2e98b9b54e",
+      "bytes": 1953911,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6621131896972656,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            56,
+            146,
+            377,
+            277
+          ],
+          "pivot": [
+            194.5,
+            423
+          ],
+          "bodyCenterPivot": [
+            244,
+            423
+          ],
+          "opaquePixelCount": 79471,
+          "contentSha256": "c48c5a569820bc92cc6b79822f7c8e9e0679b790e7824791454d2c63c7c0801a",
+          "margins": [
+            56,
+            146,
+            79,
+            89
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            145,
+            394,
+            278
+          ],
+          "pivot": [
+            184.5,
+            423
+          ],
+          "bodyCenterPivot": [
+            243.5,
+            423
+          ],
+          "opaquePixelCount": 81392,
+          "contentSha256": "eff13e4409f09024fb574214dec2d5c33848ec29cbe633bcde879e1dc4791e6e",
+          "margins": [
+            47,
+            145,
+            71,
+            89
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            14,
+            146,
+            455,
+            277
+          ],
+          "pivot": [
+            152,
+            423
+          ],
+          "bodyCenterPivot": [
+            241,
+            423
+          ],
+          "opaquePixelCount": 85851,
+          "contentSha256": "c6ceca490de134c944290c6062187168705d1c922e1c4b1d7d3c247db170c016",
+          "margins": [
+            14,
+            146,
+            43,
+            89
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            130,
+            417,
+            276
+          ],
+          "pivot": [
+            186.5,
+            406
+          ],
+          "bodyCenterPivot": [
+            256,
+            406
+          ],
+          "opaquePixelCount": 82208,
+          "contentSha256": "e2df92934c67fb71710a9e30680ef7f6c3275314fea7ee261fc35d6a4490c781",
+          "margins": [
+            48,
+            130,
+            47,
+            106
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            40,
+            129,
+            390,
+            277
+          ],
+          "pivot": [
+            179,
+            406
+          ],
+          "bodyCenterPivot": [
+            234.5,
+            406
+          ],
+          "opaquePixelCount": 80993,
+          "contentSha256": "4e24407fe6d7b9abca9be7c2cc964f342637b1f83710298afc38c616af63462f",
+          "margins": [
+            40,
+            129,
+            82,
+            106
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            33,
+            130,
+            377,
+            275
+          ],
+          "pivot": [
+            172,
+            405
+          ],
+          "bodyCenterPivot": [
+            221,
+            405
+          ],
+          "opaquePixelCount": 78984,
+          "contentSha256": "4760ebeabc4fe373c0f1347b72d08c384f15dbc34cc63ac2fe0e0082ca2de3ee",
+          "margins": [
+            33,
+            130,
+            102,
+            107
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-03",
+      "prompt": "Native transparent PNG animation sheet1536x1024, sixsmallfrontieroutpost beacon props inexact3columns2rowsof512x512cells. One squatportablealertbeacon onfrostedsteel tripodbase, shortverticalmast, enclosedamberlamp withthree revolving darkmechanicalshuttersaroundlens. Originalnonweaponoutpostequipment. Sixstatesofslowshuttercycle:1narrowamberstrip,2leftshutteropensslightly,3lenshalfvisible,4rightshuttercoversslightly,5lensnarrows,6closedstripagain. No brightnessflash, no pulsingfullscreenshine, no emittedlaser. Samebaselinescale andconstructioneveryframe, uniquevisible shutterpositions. Painterlycinematicgameart coolsteelbluewithrestrainedwarmamber, sideview, detailed frostscuffs. WholepropMAX300pixelstall,200wide incenterofeachcell, at least100pxtransparentmargins allaround. No background, nofloorpatch, nocastshadow, nocablesoutsidecell, no signs, letters, numbers, labels,watermarksorgrid. Truealpha preservedwithtransparentholes.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-0b4a0469-d07b-4ae9-bf3a-2da302d0410a.png",
+      "workspacePath": "work-local/v60/generated/arena-169-extinction-front/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six beacon shutter states: complete grounded tripod, differing mechanical shutters and contained amber light, no fast flash or projectile.",
+      "anchorKind": "ground-bottom",
+      "sha256": "540d402cfcf9ea8d9c5ef06d752dae6ea644b76d96e855a3d5d1294a596a2ddf",
+      "bytes": 1869293,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7377770741780599,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            112,
+            56,
+            314,
+            398
+          ],
+          "pivot": [
+            268.5,
+            454
+          ],
+          "bodyCenterPivot": [
+            268.5,
+            454
+          ],
+          "opaquePixelCount": 61882,
+          "contentSha256": "9d4807ba07b500a808b774ac8970a4382f09933060784d8c4f44ebd93cc0094c",
+          "margins": [
+            112,
+            56,
+            86,
+            58
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            56,
+            316,
+            398
+          ],
+          "pivot": [
+            256.5,
+            454
+          ],
+          "bodyCenterPivot": [
+            256.5,
+            454
+          ],
+          "opaquePixelCount": 66685,
+          "contentSha256": "4ea63aaa352ff26a5973306b29061e21e29882a50c75ee3b491508da6530bfc7",
+          "margins": [
+            99,
+            56,
+            97,
+            58
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            81,
+            56,
+            317,
+            398
+          ],
+          "pivot": [
+            239,
+            454
+          ],
+          "bodyCenterPivot": [
+            239,
+            454
+          ],
+          "opaquePixelCount": 64194,
+          "contentSha256": "3124484e0f84e00be5f773fb35fcac70020462ffffd4f1125e1b6b11988f33c0",
+          "margins": [
+            81,
+            56,
+            114,
+            58
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            110,
+            40,
+            318,
+            398
+          ],
+          "pivot": [
+            268.5,
+            438
+          ],
+          "bodyCenterPivot": [
+            268.5,
+            438
+          ],
+          "opaquePixelCount": 64002,
+          "contentSha256": "16d4f1794d1ab51b3cf151910ec23ecec7748171215e9756a38b98c978f24b1d",
+          "margins": [
+            110,
+            40,
+            84,
+            74
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            40,
+            316,
+            398
+          ],
+          "pivot": [
+            256.5,
+            438
+          ],
+          "bodyCenterPivot": [
+            256.5,
+            438
+          ],
+          "opaquePixelCount": 63619,
+          "contentSha256": "225a4d76658cf56c7876e113cb36120b58ef727d461d756d6875806b0f48e2ae",
+          "margins": [
+            99,
+            40,
+            97,
+            74
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            80,
+            40,
+            319,
+            398
+          ],
+          "pivot": [
+            239,
+            438
+          ],
+          "bodyCenterPivot": [
+            239,
+            438
+          ],
+          "opaquePixelCount": 62908,
+          "contentSha256": "9968216b9a75b8840d9566680a690d4926028486054cc42256dccd727a4e17d4",
+          "margins": [
+            80,
+            40,
+            113,
+            74
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case stylized-concept. Empty wide1536x1024 depth backdrop for 2D side-view Alien versus Predator Extinction-inspired fightinggame stage. Original cold rocky frontier outpost composition, not an exact copied RTS level or official facilityplan. Distantsteel grey prefabstructures and lowarmouredbulkheads setamong icybasaltcliffs, restrainedcyan coldsky, snowdust restingonroofs, oldserviceplatformright and distant horizontalcargo laneleft. Practicalindustrialstoragehall andclosedhangardoor inbackground, nohumans, noaliens, novehicles, noturrets, noweapons, nobigflag, nobanners, nolabels, noHUD. Lowhorizontalhorizon and shallowtheatricaldepth; foregroundlower20percent darksubduedhorizontalbacking for separateplayablefloor. Detailpainted cinematicgameenvironment, coolsteelblue restrainedamberwindows, clearreadablegeometry. Staticarchitecture only: nomovingactors, nofallingsnow, nosmoke, noactivebeacons. Leaveopenplaces for separatelyanimatedcargo, servicedmachine andbeacon.",
+      "transparentRequested": false,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-0b3eab2b-cd16-440b-8eac-fc3e16abbbd5.png",
+      "workspacePath": "work-local/v60/generated/arena-169-extinction-front/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected empty cold frontier outpost: static closed hangar and service platforms, no actors or moving mechanisms baked in. Original Extinction-inspired arrangement, not certified exact RTS geometry.",
+      "anchorKind": "ground-bottom",
+      "sha256": "81e30ecaebbc6bf3833a25ffa632ca914321aba1a463626e0b5cb2251a005731",
+      "bytes": 2770127,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "artStatus": "complete-4-native-pngs-awaiting-runtime-qa"
+}

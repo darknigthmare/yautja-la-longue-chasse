@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "yautja-imagegen-receipt-v107-1",
+  "id": "augmentes-assassin--enforcers-comics-10",
+  "method": "builtin-imagegen",
+  "tool": "image_gen.imagegen",
+  "nativeOutputId": "exec-01a7b76f-c402-4ff2-a9ab-f210f8b342a1",
+  "nativeSourceName": "exec-01a7b76f-c402-4ff2-a9ab-f210f8b342a1.png",
+  "repoPngPath": "public/game/production/enforcer-alternatives-v107/augmentes-assassin/enforcers-comics-10.png",
+  "stableIdentityReused": true,
+  "newStableIdentity": false,
+  "role": "alternative-pose",
+  "sha256": "632217d99f93735f7b883795b7c37627e5168dde0b4bb14c8c64709f41f793c2",
+  "bytes": 2092039,
+  "width": 1024,
+  "height": 1536,
+  "transparentBackgroundRequested": true,
+  "promptExact": "Correct only the lower-body anatomy of this original project Enforcer sprite. Keep the single adult's upper body, worn silver/blue partial armor, confident pose, genuine transparent background, full head-to-soles composition and1024x1536 portrait intact. This is the Assassin/Upgrade lineage from The Predator2018, so the legs MUST be unmistakably canine DIGITIGRADE: knees high, a long shin slopes backward to a visibly HIGH RAISED HEEL/H O C K behind the body, then a separate long metatarsus slopes FORWARD and DOWN to the small toe-contact area. Draw the visible reverse silhouette of that three-segment lower leg with clear air under each heel. No human boot sole, no heel touching ground, no ordinary plantigrade ankle hidden inside a boot. Use segmented silver greaves that leave the raised hock and long metatarsus visible. At each foot show exactly FIVE strong forward-pointing clawed toes, five tips only, contacting ground on the toe pads, with no lateral extra digit or dewclaw. Keep both legs independently readable, no fused or extra limbs, no upright human shoe. Preserve the giant muscular upper-body/exoskin versus narrower digitigrade lower legs. No pedestal or ground plane, no background or text. Maintain at least80px transparent clear margin around all visible parts and the existing pose.",
+  "submittedReferences": [
+    {
+      "path": "art-source/v107/enforcer-poses/augmentes-assassin--enforcers-comics-10-first-attempt.png",
+      "sha256": "2b677efd745b834831247e228e63d0711fc66e5c440237917a849c8b3a079ea5",
+      "bytes": 1918406
+    }
+  ],
+  "generatedAtUtc": null,
+  "receiptCreatedAtUtc": "2026-10-23T20:46:43.373Z",
+  "generationTimeMeaning": "The tool supplies no exact generation timestamp; receiptCreatedAtUtc records retrieval, not model generation.",
+  "originalBytesCopied": true,
+  "attempts": [
+    {
+      "nativeOutputId": "exec-fe7891e2-74ca-416c-a74a-632cd467b1d4",
+      "nativeSourceName": "exec-fe7891e2-74ca-416c-a74a-632cd467b1d4.png",
+      "promptExact": "Create one NEW independent mature adult full-body painted game character asset, Enforcers variant10 Chef de poursuite. Portrait PNG1024x1536, genuine transparent RGBA background. One individual only, head to soles fully visible, no scene, floor, glow outside the body, text, labels or border. Leave at least160px empty above the highest point and below the feet, and100px at the sides; the whole figure occupies at most78 percent of image height. Detailed polished illustrated game sprite, crisp readable silhouette, textured skin, worn silver partial comic-Enforcer armor, deep-blue rank accents and visible net textile. No complete military chestplate. Confident stance with slight torso rotation, distinct commanding posture and small tracking equipment held below chest level, both hands and feet readable. This is an original project variant, not a certified film reconstruction. Follow the group anatomy below over generic Predator anatomy. Never substitute a different lineage. A costume guide does not define the anatomy. Covered feet use continuous closed toe-box footwear; do not invent a biological toe count under boots.\n\nStable project identity: augmentes-assassin--enforcers-comics-10. Group: Cohorte des Augmentés — base Assassin. Role/name: Chef de poursuite. Life stage: adult.\n\nExact morphology direction: Corps géant massif, exopeau organique, crâne haut ridé, grandes mandibules, jambes digitigrades à talon relevé et métatarses allongés. Assassin/Upgrade Predator morphology from The Predator (2018): gigantic heavily muscled upper body and broad shoulders, organically armored dark grey exoskin with restrained reddish mottling, tall wrinkled blocklike cranium with small peripheral spikes, four large distensible external mandibles around a toothed inner mouth. Crucial: canine-like DIGITIGRADE legs, clearly elevated heel and elongated metatarsus, not classic plantigrade human legs. Five clawed front toes are visible in the licensed body reference when unobscured, five-finger hands. Biological shoulder reliefs, organic cranial tendrils, technical wrist gauntlets. Childhood is original game extrapolation: retain age-appropriate soft small anatomy with emerging exoskin and same leg plan rather than an adult miniature. Jarret digitigrade, talon relevé, métatarse allongé. Les pièces de chaussures ne changent pas le nombre de doigts anatomiques. Lignée et enfance extrapolées d’un individu augmenté.\n\nSkin: ivoire gris d’exopeau. Armor: argent patiné. Accent: bleu profond. Face: Masqué. Pose: présence assurée, légère rotation du thorax.",
+      "sha256": "2b677efd745b834831247e228e63d0711fc66e5c440237917a849c8b3a079ea5",
+      "bytes": 1918406,
+      "accepted": false,
+      "reason": "Appui digitigrade insuffisamment lisible ; reprise anatomique demandée."
+    }
+  ],
+  "visualInspection": {
+    "accepted": true,
+    "notes": "Reprise anatomique inspectée : exopeau massive, bas des jambes segmenté, talons relevés et métatarses visibles ; silhouette adulte entière et appuis lisibles.",
+    "limitations": [
+      "Pose fixe et variation de costume du projet ; les détails anatomiques cachés par le masque, les protections ou la perspective ne sont pas certifiés1:1.",
+      "Le total biologique des doigts de pied demeure non certifié sous les protections et selon l’orientation."
+    ]
+  }
+}

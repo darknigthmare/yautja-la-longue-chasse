@@ -1,0 +1,1675 @@
+{
+  "schemaVersion": 1,
+  "release": "V109",
+  "asOf": "2026-10-26",
+  "baseline": {
+    "path": "docs/YAUTJA_V108_SUIVI.xlsx",
+    "sha256": "2a9490d4e37ff63405039f4f7e7b8c473373f15f83414ca5ff46e142ca5cdaba"
+  },
+  "baselineFreeze": "FROZEN",
+  "closedOpenItemIds": [],
+  "runtimeModules": [
+    {
+      "id": "reserve",
+      "path": "app/game/systems/gameReserveV66.ts"
+    },
+    {
+      "id": "biomes",
+      "path": "app/game/systems/gameReserveExpeditionV109.ts"
+    },
+    {
+      "id": "pitForward",
+      "path": "app/game/pitWorkbookRegistryV109.ts"
+    },
+    {
+      "id": "homeworldPlaque",
+      "path": "app/game/systems/homeworldArchivePlaqueDefinitionV109.ts"
+    },
+    {
+      "id": "clanSupply",
+      "path": "app/game/systems/clanSupplyRouteV109.ts"
+    }
+  ],
+  "factProbes": [
+    {
+      "id": "preserveCurrentVersion",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "createGameReserveV109",
+          "args": [
+            109,
+            "khar-duun-canyon-expedition"
+          ],
+          "path": [
+            "version"
+          ]
+        }
+      ],
+      "expected": 5
+    },
+    {
+      "id": "preserveNewReserveIds",
+      "operation": "ids",
+      "calls": [
+        {
+          "module": "biomes",
+          "export": "GAME_RESERVE_V109_IDS"
+        }
+      ],
+      "expected": [
+        "iskhel-ice-expedition",
+        "khar-duun-canyon-expedition"
+      ]
+    },
+    {
+      "id": "preserveNewReserves",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "biomes",
+          "export": "GAME_RESERVE_CATALOGUE_V109"
+        }
+      ],
+      "expected": 2
+    },
+    {
+      "id": "preserveUniqueSectors",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV107",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV108",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 32
+    },
+    {
+      "id": "preserveNewSectors",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 16
+    },
+    {
+      "id": "preserveUniqueAdults",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV107",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV108",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 64
+    },
+    {
+      "id": "preserveNewAdults",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 32
+    },
+    {
+      "id": "preserveUniqueShips",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV107",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV108",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 16
+    },
+    {
+      "id": "preserveNewShips",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 8
+    },
+    {
+      "id": "preserveUniqueSurveyPosts",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV107",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV108",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 16
+    },
+    {
+      "id": "preserveNewSurveyPosts",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 8
+    },
+    {
+      "id": "pitForwardNativeBodyDrawings",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "nativeBodyDrawings"
+          ]
+        }
+      ],
+      "expected": 48
+    },
+    {
+      "id": "pitForwardFeralBound",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "feralBound"
+          ]
+        }
+      ],
+      "expected": true
+    },
+    {
+      "id": "pitForwardScarBound",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "scarBound"
+          ]
+        }
+      ],
+      "expected": true
+    },
+    {
+      "id": "pitForwardPartnerScope",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "partnerScope"
+          ]
+        }
+      ],
+      "expected": "unvaried-feral-scar-duo"
+    },
+    {
+      "id": "pitForwardSourceCompletion",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "sourceCompletion"
+          ]
+        }
+      ],
+      "expected": false
+    },
+    {
+      "id": "pitForwardBoundActionIds",
+      "operation": "ids",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "boundActionIds"
+          ]
+        }
+      ],
+      "expected": [
+        "M_F003_TH_F",
+        "M_F006_TH_F"
+      ]
+    },
+    {
+      "id": "homeworldPlaqueSceneId",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "homeworldPlaque",
+          "export": "HOMEWORLD_ARCHIVE_PLAQUE_V109",
+          "path": [
+            "sceneId"
+          ]
+        }
+      ],
+      "expected": "D6-W-PNJ-ROLE-03"
+    },
+    {
+      "id": "homeworldPlaqueObjects",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "homeworldPlaque",
+          "export": "HOMEWORLD_ARCHIVE_PLAQUE_V109",
+          "path": [
+            "objects"
+          ]
+        }
+      ],
+      "expected": 3
+    },
+    {
+      "id": "homeworldPlaqueSupports",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "homeworldPlaque",
+          "export": "HOMEWORLD_ARCHIVE_PLAQUE_V109",
+          "path": [
+            "supports"
+          ]
+        }
+      ],
+      "expected": 3
+    },
+    {
+      "id": "homeworldPlaqueSourceLines",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "homeworldPlaque",
+          "export": "HOMEWORLD_ARCHIVE_PLAQUE_LINES_V109"
+        }
+      ],
+      "expected": 8
+    },
+    {
+      "id": "homeworldPlaqueNativeArtAdmitted",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "homeworldPlaque",
+          "export": "archivePlaqueArtAdmittedV109",
+          "args": []
+        }
+      ],
+      "expected": true
+    },
+    {
+      "id": "clanSupplyArchiveVersion",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "clanSupply",
+          "export": "createSupplyV109",
+          "args": [],
+          "path": [
+            "version"
+          ]
+        }
+      ],
+      "expected": 2
+    },
+    {
+      "id": "clanSupplyContext",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "clanSupply",
+          "export": "CLAN_SUPPLY_CONTEXT_V109"
+        }
+      ],
+      "expected": "physical-supply-route-v109"
+    },
+    {
+      "id": "clanSupplyMountParkingCount",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "clanSupply",
+          "export": "CLAN_MOUNT_PARKING_V109"
+        }
+      ],
+      "expected": 2
+    },
+    {
+      "id": "clanSupplyMountClearance",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "clanSupply",
+          "export": "CLAN_MOUNT_CLEARANCE_V109"
+        }
+      ],
+      "expected": 56
+    },
+    {
+      "id": "clanSupplyInitialConservation",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "clanSupply",
+          "export": "supplyConservationV109",
+          "args": [
+            {
+              "call": {
+                "module": "clanSupply",
+                "export": "createSupplyV109",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "expected": true
+    },
+    {
+      "id": "pitForwardNativeAdmittedRoles",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "PIT_FORWARD_THROW_NATIVE_ADMISSIONS_V109"
+        }
+      ],
+      "expected": 8
+    },
+    {
+      "id": "pitForwardAttackerFeralDrawings",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "path": [
+            "attackerDrawings",
+            "feral-hunter"
+          ],
+          "args": []
+        }
+      ],
+      "expected": 12
+    },
+    {
+      "id": "pitForwardAttackerScarDrawings",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "path": [
+            "attackerDrawings",
+            "scar"
+          ],
+          "args": []
+        }
+      ],
+      "expected": 12
+    },
+    {
+      "id": "pitForwardVictimFeralDrawings",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "path": [
+            "victimDrawings",
+            "feral-hunter"
+          ],
+          "args": []
+        }
+      ],
+      "expected": 12
+    },
+    {
+      "id": "pitForwardVictimScarDrawings",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "path": [
+            "victimDrawings",
+            "scar"
+          ],
+          "args": []
+        }
+      ],
+      "expected": 12
+    }
+  ],
+  "workstreams": [
+    {
+      "id": "pit-roster-kits",
+      "domain": "The Pit",
+      "title": "The Pit : quatre identités/visuels à établir, deux références partielles et les kits",
+      "source": "4 dossiers avec visuel/incarnation encore à établir ; 2 références V79 déjà présentes mais une seule pose native droite ; 1 agrégat kits recouvrant actions/campagnes/variantes.",
+      "status": "OUVERT",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Héritage V108 : Les deux références statiques V79 et les dossiers distincts restent suivis ; aucune nouvelle incarnation ni kit complet admis.",
+      "tests": "Héritage V108 dans sa capsule originale ; tests V109 distincts.",
+      "browser": "A_VALIDER : aucun contenu source complet V109 livré.",
+      "implementation": [],
+      "proof": [],
+      "remaining": "Les quatre identités visuelles non résolues et les sept dossiers/kit agrégés restent ouverts."
+    },
+    {
+      "id": "war-structures",
+      "domain": "Guerre de clans",
+      "title": "Tournée physique de ravitaillement entre ouvrages",
+      "source": "Quai, montures, confinement, duel consenti, sons situés et navire orbital.",
+      "status": "VALIDE_CIBLE",
+      "validationScope": "Depuis un checkpoint V108 préparé et explicitement déclaré, le navigateur joue les six livraisons ordonnées, le même skiff, le rechargement physique, le retour au dépôt et la séparation des deux montures. Les six constructions et soins antérieurs appartiennent à la fixture.",
+      "runtime": "Tournée physique de deux à six étapes, réservation et débit de stocks finis dans le même dépôt/skiff, chargement réel, déplacement, livraisons ordonnées, reprise et retour. Archive version2 conservant l’archive V108 exacte dans la même clé et sous le même verrou ; deux places de montures et séparation continue de56 unités.",
+      "tests": "PASS_LOCAL : tournée réellement simulée, RAV finis, mêmeU19/skiff, navette/retour, refus géométriques, migration atomique, quota, conflits et archives différées. Groupe courant50tests inter-domaines épinglé.",
+      "browser": "PASS_CIBLE_PRODUCTION : 38 contrôles, 8 captures toutes inspectées ; build pVNPLCZV9ZFtFCd87NSTa, runtime c97c7d903486ed2c7cb2529ac27f713c0aba8987.",
+      "implementation": [
+        "app/game/systems/clanSupplyRouteV109.ts",
+        "app/game/systems/clanSupplySessionV109.ts",
+        "app/game/ClanSupplyRouteV109.tsx",
+        "docs/v109-clan-supply-route.md",
+        "tests/clan-supply-route-v109.test.mjs"
+      ],
+      "proof": [
+        {
+          "path": "docs/v109-validation-summary.json",
+          "sha256": "476c039ab05d05218a68f6cdc272be6261f27321ca96beb5d4177149645e855a",
+          "bytes": 17959
+        },
+        {
+          "path": "docs/v109-clans-validation.json",
+          "sha256": "8e2e2c5de4d16b178039bd80ff91d75ff0ac2d803d6dfbc39882cf97eab637d9",
+          "bytes": 15490
+        },
+        {
+          "path": "docs/qa/v109-clans/visual-inspection.json",
+          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
+          "bytes": 306
+        },
+        {
+          "path": "docs/qa/v109-validation/clans-browser-r3.log",
+          "sha256": "55737d8c1cfa27b86dc2d809044e7ab44c6af175e2229ac545174b0ca9a1cf09",
+          "bytes": 2777
+        },
+        {
+          "path": "docs/qa/v109-validation/unit-tests.log",
+          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
+          "bytes": 12263
+        }
+      ],
+      "remaining": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée."
+    },
+    {
+      "id": "enforcer-pngs",
+      "domain": "Enforcers",
+      "title": "Enforcers : dixième variante de18 groupes",
+      "source": "18 PNG de variante10 réellement absents de la ligne suivie ; une fiche n’est pas une soumission image.",
+      "status": "HERITE_STATIQUE",
+      "validationScope": "Portée historique explicitement héritée, sans nouvelle récupération ni nouvelle admission V109.",
+      "runtime": "Héritage V108 uniquement. Les 18 PNG source réconciliés V107 restent conservés ; les 18 poses alternatives gardent leurs identités stables.",
+      "tests": "Héritage ou contrôle de cohérence indépendant du gameplay.",
+      "browser": "HERITE_V108 : aucune nouvelle recette de provenance V109.",
+      "implementation": [],
+      "proof": [],
+      "remaining": "Aucune animation complète ou fidélité canonique certifiée par une pose."
+    },
+    {
+      "id": "preserve-expansion",
+      "domain": "Preserve Hunt",
+      "title": "Deux géographies adaptées : désert et glace",
+      "source": "4/80 secteurs et8/100 combattants hérités :76 secteurs et92 combattants restent visés, sans noms source inventés.",
+      "status": "VALIDE_CIBLE",
+      "validationScope": "Deux entrées publiques V5 neuves à seize adultes sains chacune, un combat/prélèvement réel par biome, clavier/tactile, entrée de campagne, stocks/travaux vivants. Les trajets terrain/quatre postes/caches/retour utilisent des fixtures déclarées à seize adultes déjà neutralisés. Les objectifs mécaniciens/interception Iskhel ne sont pas crédités par ce trajet préparé.",
+      "runtime": "Deux réserves V5 distinctes : Khar-Duun désertique et Iskhel glacée, huit secteurs et seize adultes chacune. Les quatre réserves donnent 32 secteurs et 64 adultes aux IDs uniques ; huit nouveaux relevés, caches et objectifs d’interception physiques. Les sprites humains sont réutilisés.",
+      "tests": "PASS_LOCAL :19scénarios métier/persistance/rendu, quatre postes par réserve par marche/sauts/canaux, caches distinctes,12 000ticks vivants par réserve, interception réellement préparée, tracesV1–V4 et protections des archives. Groupe courant50tests inter-domaines épinglé.",
+      "browser": "PASS_CIBLE_PRODUCTION : 50 contrôles, 27 captures toutes inspectées ; build pVNPLCZV9ZFtFCd87NSTa, runtime c97c7d903486ed2c7cb2529ac27f713c0aba8987.",
+      "implementation": [
+        "app/game/systems/gameReserveExpeditionV109.ts",
+        "docs/v109-preserve-public-inputs.json",
+        "docs/v109-preserve-hunt-biomes.md",
+        "tests/game-reserve-biomes-v109.test.mjs",
+        "tests/game-reserve-biomes-persistence-v109.test.mjs",
+        "tests/game-reserve-rendering-v109.test.mjs"
+      ],
+      "proof": [
+        {
+          "path": "docs/v109-validation-summary.json",
+          "sha256": "476c039ab05d05218a68f6cdc272be6261f27321ca96beb5d4177149645e855a",
+          "bytes": 17959
+        },
+        {
+          "path": "docs/v109-preserve-validation.json",
+          "sha256": "c578a4290e2a6dbf49d8426d5c0a96d0637e62fc5e8568e0b086fad2eb415d38",
+          "bytes": 30489
+        },
+        {
+          "path": "docs/qa/v109-preserve/visual-inspection.json",
+          "sha256": "3b82b2ef9ba97058363abe0487e20b74bccd2bf8869bad1ef599ea35d2e1e3e4",
+          "bytes": 740
+        },
+        {
+          "path": "docs/qa/v109-validation/preserve-browser-r3.log",
+          "sha256": "24400628327d9fe2c5c606008c23d15fa1f7a986e553f141c72cdf3236b0d7a6",
+          "bytes": 3164
+        },
+        {
+          "path": "docs/qa/v109-validation/unit-tests.log",
+          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
+          "bytes": 12263
+        },
+        {
+          "path": "docs/v109-preserve-public-inputs.json",
+          "sha256": "b6c4ce01157802ec1fb12cf1240c3a53b30ec9f573e8d2365f20c22a84443ffc",
+          "bytes": 3291
+        }
+      ],
+      "remaining": "Les cibles de 80 secteurs et 100 adultes restent ouvertes : 48 secteurs et 36 adultes à définir. Les trois atlas partagés ne livrent pas les fiches H001–H100 ; aucune canonicité 1:1 admise."
+    },
+    {
+      "id": "enforcer-provenance",
+      "domain": "Provenance Enforcers",
+      "title": "Provenance Enforcers : reçus et traces",
+      "source": "21 reçus finaux V6.13 non retrouvés ;36 traces V6.10 sans PNG récupéré.",
+      "status": "LIVRE_PARTIEL",
+      "validationScope": "Portée historique explicitement héritée, sans nouvelle récupération ni nouvelle admission V109.",
+      "runtime": "Héritage V108 uniquement. Outil en lecture seule d’admission des preuves PNG/reçus fournis : SHA, tentative sélectionnée, prompt effectivement soumis et limites alpha. Vérification de deux lots distincts de 18 fichiers chacun.",
+      "tests": "PASS_COHERENCE_LOCALE : huit cas de test, incluant la régénération des 36 résultats publiés depuis leurs vrais PNG et reçus épinglés. Aucune origine externe authentifiée.",
+      "browser": "HERITE_V108 : aucune nouvelle recette de provenance V109.",
+      "implementation": [
+        "scripts/inspect-production-evidence-v108.mjs",
+        "tests/production-evidence-admission-v108.test.mjs",
+        "docs/production-evidence-v108.md"
+      ],
+      "proof": [
+        {
+          "path": "docs/qa/v108-production-evidence/v107-enforcer-poses-input.json",
+          "sha256": "4cd7b3523d87cffd0e788321215a5a22b9c152e9276b16c3fca4d769b4ec8b5c",
+          "bytes": 8563
+        },
+        {
+          "path": "docs/qa/v108-production-evidence/v107-enforcer-poses-report.json",
+          "sha256": "5a6c421a3481bebcf77273d023c9c665af4b8bcaa3713f2db7f0f45514de2ec3",
+          "bytes": 15464
+        },
+        {
+          "path": "docs/qa/v108-production-evidence/v614-input.json",
+          "sha256": "95bca6bb1bde8b1c378a9250db3db93f46ca95b8d38b956b9697de926b23a784",
+          "bytes": 8077
+        },
+        {
+          "path": "docs/qa/v108-production-evidence/v614-report.json",
+          "sha256": "6a4c16bcdc6e39370ab3e75a1583a1b870a31260806de10deeebc6f90317544d",
+          "bytes": 15364
+        }
+      ],
+      "remaining": "Les 21 reçus V6.13 et 36 traces/PNG V6.10 historiques restent non récupérés ; contrôle de cohérence sans certification de provenance externe."
+    },
+    {
+      "id": "pit-actions",
+      "domain": "The Pit · action",
+      "title": "Projections avant avec deux acteurs natifs indépendants",
+      "source": "4 projections,2 spéciaux à entités (mine/shuriken),6 conclusions avec partenaire.",
+      "status": "VALIDE_CIBLE",
+      "validationScope": "Duo Feral/Scar sans costume, deux ordres, deux sens natifs : saisie, vol, impact, déchoppe fraîche, échec, commandes clavier/manette/bouton, victoire réellement jouée et replay V16 exporté/public. Les neuf actions source restent ouvertes.",
+      "runtime": "Deux projections avant liées M_F006_TH_F et M_F003_TH_F pour le duo sans costume. Huit admissions natives, 48 rectangles BODY distincts dans 29 pages utilisées, 12 dessins par héros/rôle. Les 48 bords UV alpha0, pivots et appuis sont revus ; les vrais appels drawImage montrent les deux corps au tick/rôle attendu, sans miroir ni pixel retouché. Capture, récupération punie indéchoppable, échappée fraîche, vol borné, impact et relève réellement joués ; sourceCompletion=false.",
+      "tests": "PASS_LOCAL :34tests Pit physique/PNG/UV/replay et compatibilité V11–V15 repassés après correction ; six cas Python spatiaux supplémentaires. Les95tests V109 antérieurs restent épinglés séparément. Recette compilée65contrôles.",
+      "browser": "PASS_CIBLE_PRODUCTION : 65 contrôles, 19 captures toutes inspectées ; build pVNPLCZV9ZFtFCd87NSTa, runtime c97c7d903486ed2c7cb2529ac27f713c0aba8987.",
+      "implementation": [
+        "app/game/pitWorkbookRegistryV109.ts",
+        "app/game/systems/pitWorkbookCombatV109.ts",
+        "app/game/systems/pitForwardThrowControlsV109.ts",
+        "app/game/data/pitWorkbookThrowsV109.json",
+        "tests/pit-forward-throws-v109.test.mjs",
+        "tests/pit-forward-throw-art-v109.test.mjs",
+        "tests/pit-engine-compatibility-v109.test.mjs",
+        "docs/v109-pit-forward-throws.md",
+        "docs/suivi-production/v109-pit-forward/native-frame-delivery.json",
+        "docs/suivi-production/v109-pit-forward/native-gutter-delivery.json",
+        "docs/suivi-production/v109-pit-forward/visual-review-gutters.json",
+        "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
+        "docs/suivi-production/v109-pit-forward/final-source-selection.json",
+        "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
+        "scripts/review-pit-native-borders-v109.py",
+        "docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json"
+      ],
+      "proof": [
+        {
+          "path": "docs/v109-validation-summary.json",
+          "sha256": "476c039ab05d05218a68f6cdc272be6261f27321ca96beb5d4177149645e855a",
+          "bytes": 17959
+        },
+        {
+          "path": "docs/v109-pit-validation.json",
+          "sha256": "d1e7ae6f075ba8a9a640c9d84f8eb1c258d2141792d53e14a4607dce0727a6c5",
+          "bytes": 90890
+        },
+        {
+          "path": "docs/qa/v109-pit/visual-inspection.json",
+          "sha256": "c2db23cbdc8ffc928518f72f1e522fd2cd5c87a64554b549c6d59023ded198e8",
+          "bytes": 6292
+        },
+        {
+          "path": "docs/qa/v109-validation/pit-browser-r3.log",
+          "sha256": "221d1517bd1275bd09d2c2189c04e52db2ed046e725753d10d39260a11f5fe27",
+          "bytes": 6609
+        },
+        {
+          "path": "docs/qa/v109-validation/unit-tests.log",
+          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
+          "bytes": 12263
+        },
+        {
+          "path": "docs/qa/v109-validation/pit-review-fixes-tests.log",
+          "sha256": "6f514715e516638d1e37ecc778af4e38b0135dca57996f255d5b00b91649c125",
+          "bytes": 4062
+        },
+        {
+          "path": "docs/qa/v109-validation/native-spatial-unit-tests.log",
+          "sha256": "0204e55f9cda69813b4ae9591552cd9e9716073a8a517735c7286699eb0fe581",
+          "bytes": 1302
+        },
+        {
+          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
+          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
+          "bytes": 34465
+        },
+        {
+          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json",
+          "sha256": "560a552eccb4c3085b4d6250c4ab3f553e79ba8b7e771a2d5c2525c7762f6d96",
+          "bytes": 36312
+        },
+        {
+          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
+          "sha256": "ebff201b8e89549aba240cb976b61ac315e6e8db3da22e5303b510d4ffaf0c4a",
+          "bytes": 24039
+        }
+      ],
+      "remaining": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1."
+    },
+    {
+      "id": "pit-campaigns",
+      "domain": "The Pit · campagne",
+      "title": "Routes de campagne source toujours ouvertes",
+      "source": "Deux routes de8 étapes, avec alliés/opposants, blessures, choix et fin alternative distincts.",
+      "status": "HERITE_STATIQUE",
+      "validationScope": "Héritage V108 uniquement ; aucune nouvelle scène ou recette de campagne V109 livrée.",
+      "runtime": "La continuité V108 est héritée. Les projections V109 ne livrent pas les seize scènes de campagne ni leurs acteurs manquants.",
+      "tests": "HERITE_V108 : assertions originales dans la capsule ; les tests de combat V109 ne couvrent pas les scènes source.",
+      "browser": "HERITE_V108 : aucune nouvelle recette de campagne V109.",
+      "implementation": [],
+      "proof": [],
+      "remaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace."
+    },
+    {
+      "id": "pit-variants",
+      "domain": "The Pit · variante",
+      "title": "Feral/Scar : quatorze contraintes de variantes",
+      "source": "7 contraintes par personnage : incarnation, masque/visage, équipement, dommages, directions et camouflage.",
+      "status": "OUVERT",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Héritage V108 : Contraintes source et deux sens natifs conservés dans le suivi ; aucune tenue statique ou miroir promu en animation de variante.",
+      "tests": "Héritage V108 dans sa capsule originale ; tests V109 distincts.",
+      "browser": "A_VALIDER : aucun contenu source complet V109 livré.",
+      "implementation": [],
+      "proof": [],
+      "remaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque."
+    },
+    {
+      "id": "homeworld-cargo",
+      "domain": "Homeworld",
+      "title": "Plaque et empreinte ROLE03 ; guidage des charges",
+      "source": "ROLE03 V6 : Scènes de dialogue383 ; Choix et actions788/789 ; Répliques3183–3190. ROLE19 hérité distinct : scène398, choix818/819, répliques3303–3310.",
+      "status": "VALIDE_CIBLE",
+      "validationScope": "Deux checkpoints initiaux vides jouent ROLE03 A/B par marche native, accord, lieux copiés, portages séparés, comparaison, échec/reprise et rapport. Un troisième joue l’Atlas autour de lots initiaux puis d’un lot réellement porté/posé/recalculé ; il ne prouve pas une nouvelle livraison ROLE19 complète.",
+      "runtime": "Scène ROLE03 : trois objets natifs distincts plaque/empreinte/fragment candidat, trois surfaces, accord, observation, lieux copiés, portage séparé, comparaison sans pression, échec/reprise et rapport. L’Atlas tient compte des lots ROLE19 existants puis réellement portés/posés ; déplacement d’une cible invalide le trajet. Aucun geste BODY du PNJ, réparation ou lignée admis.",
+      "tests": "PASS_LOCAL : carnetROLE03, propriété/choix/transport/refus, Atlas/Worker aux collisions cargo réelles, invalidation de cible déplacée, retours multiétages et point d’étude interrompu. Groupe courant50tests et135régressions d’entrées épinglés.",
+      "browser": "PASS_CIBLE_PRODUCTION : 55 contrôles, 11 captures toutes inspectées ; build pVNPLCZV9ZFtFCd87NSTa, runtime c97c7d903486ed2c7cb2529ac27f713c0aba8987.",
+      "implementation": [
+        "app/game/systems/homeworldArchivePlaqueDefinitionV109.ts",
+        "app/game/systems/homeworldArchivePlaqueV109.ts",
+        "app/game/systems/homeworldNavigationV109.ts",
+        "app/game/systems/homeworldWayfindingV109.ts",
+        "docs/v109-homeworld-archive-plaque.md",
+        "docs/v109-homeworld-dynamic-atlas.md",
+        "tests/homeworld-archive-plaque-v109.test.mjs",
+        "tests/homeworld-dynamic-navigation-v109.test.mjs"
+      ],
+      "proof": [
+        {
+          "path": "docs/v109-validation-summary.json",
+          "sha256": "476c039ab05d05218a68f6cdc272be6261f27321ca96beb5d4177149645e855a",
+          "bytes": 17959
+        },
+        {
+          "path": "docs/v109-homeworld-validation.json",
+          "sha256": "d899f03817cd74e5e6726b1777de4f5f7f70b6d6def3b9cf0ce90664d7f002ae",
+          "bytes": 23496
+        },
+        {
+          "path": "docs/qa/v109-homeworld/visual-inspection.json",
+          "sha256": "919d126bf2e3df2f9b2b02ceb8d3b15ccd59152d213e6b9c1637638337a0f5f8",
+          "bytes": 6601
+        },
+        {
+          "path": "docs/qa/v109-validation/homeworld-browser-r3.log",
+          "sha256": "89ad8cc0acc32dde14a0b121637e945a1d4184bb5ce4f3b07439a82cb51f937b",
+          "bytes": 3637
+        },
+        {
+          "path": "docs/qa/v109-validation/unit-tests.log",
+          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
+          "bytes": 12263
+        }
+      ],
+      "remaining": "Gestes BODY du PNJ, réparation effective du bord, attribution de l’empreinte, lignée et récompenses restent non livrés. ROLE03 (383/788–789/3183–3190) et ROLE19 (398/818–819/3303–3310) gardent leurs corpus, objets et états séparés."
+    }
+  ],
+  "validations": [
+    {
+      "id": "V109-HISTORICAL-V108",
+      "status": "PASS_HISTORICAL_ORIGINAL",
+      "scope": "Dix fichiers originaux,75 assertions inchangées et régénération exacte du classeur V108 dans son contexte privé.",
+      "command": "node scripts/check-excel-history-v109.mjs --check --tests",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-excel-followup/historical-v108.log",
+          "sha256": "56f4ab935a8ef864ca176f4e5615e6aa6e71729c43974b0a5673a4c8c281fe69",
+          "bytes": 20591
+        },
+        {
+          "path": "tests/fixtures/excel-history-v108-v109.json",
+          "sha256": "006c9fe4001c7a68fbc34776b4b9d3097d52369441b2940bf4255abd8b39fa6c",
+          "bytes": 430476
+        },
+        {
+          "path": "tests/fixtures/excel-history-v108-v109.json.gz",
+          "sha256": "0746d5176474cb5249ea262ec6ef0e0ad70ba439c1ec70de51bd8320d57e420c",
+          "bytes": 10463984
+        }
+      ],
+      "limit": "Ces tests vérifient les vrais fichiers V108 au commit 2d888 ; ils ne certifient pas le jeu V109. Les 72 PNG/reçus sont copiés dans le package privé pour garder le refus original des symlinks."
+    },
+    {
+      "id": "V109-EXCEL-STRUCTURE",
+      "status": "PASS_STRUCTURE_TARGETED",
+      "scope": "11 assertions finales sur97feuilles/85historiques,56besoins ouverts, quatre périmètresVALIDE_CIBLE, gel1361 et production208/65 ; reproductibilité, capsuleV108 et inventaire exacts.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/excel-history-v109.test.mjs tests/excel-followup-v109.test.mjs tests/production-publication-v109.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-excel-followup/excel-tests-r3.log",
+          "sha256": "4c971d90f09d6ee3c032d95f22ec37b9980edaadd34e27a48d4a1b042f4495cf",
+          "bytes": 1992
+        },
+        {
+          "path": "tests/excel-followup-v109.test.mjs",
+          "sha256": "1b50f68a0302c3a1b33ce926b83e69a4a30d55711118753f80c7b9ee4be8c6a0",
+          "bytes": 8304
+        },
+        {
+          "path": "tests/excel-history-v109.test.mjs",
+          "sha256": "18253aea7c45260b051b3a228d091c4a00c4d1977e7383c4f10b21312856b7ce",
+          "bytes": 2985
+        },
+        {
+          "path": "tests/production-publication-v109.test.mjs",
+          "sha256": "d2800b58ec7f0bee174f277c9a5359144048421d5cfa931c1626e712313f316a",
+          "bytes": 4702
+        }
+      ],
+      "limit": "Tests exécutés sur le registre final R3 avant ajout de leur journal ; génération puis vérification byte exacte après rattachement. Aucun navigateur niExcel natif lancé."
+    },
+    {
+      "id": "V109-INPUT-REGRESSIONS",
+      "status": "PASS_LOCAL_REGRESSION",
+      "scope": "135assertions,0échec/0ignorée. Entrées, interruptions, focus, stockage, manettes et chargeurs d’images du jeu courant.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-input-runtime.test.mjs tests/ship-hub-input-runtime.test.mjs tests/ash-expedition-input-runtime.test.mjs tests/regional-input-edges-v94.test.mjs tests/homeworld-motion-assets-v74.test.mjs tests/hunt-input-runtime.test.mjs tests/pit-gamepad-assignments.test.mjs tests/regional-lifecycle-v94.test.mjs tests/scene-image-loader-v94.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/input-runtime-regressions.log",
+          "sha256": "430252078c7ef82cab0ab61ec833c1c5fbbe8119881f7c58b6b4468f59650a1b",
+          "bytes": 13289
+        }
+      ],
+      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
+    },
+    {
+      "id": "V109-V104-REGRESSIONS",
+      "status": "PASS_LOCAL_REGRESSION",
+      "scope": "46assertions,0échec/0ignorée. Normales/UV, carte, frontières et suivi V104 ; anciennes preuves gardent leur contexte historique.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v104.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/v104-regressions.log",
+          "sha256": "e05fcaa3c70f181751af473df534ddd484015cbb7d609d1db5f1ca3f9dc3cf7f",
+          "bytes": 5370
+        }
+      ],
+      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
+    },
+    {
+      "id": "V109-V105-V106-REGRESSIONS",
+      "status": "PASS_LOCAL_REGRESSION",
+      "scope": "126assertions,0échec/0ignorée. Régressions V105/V106 et cohérence de leurs artefacts versionnés ; aucun ancien gel requalifié en V109.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v105.test.mjs tests/*-v106.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/v105-v106-regressions.log",
+          "sha256": "4e0c56e1e2206c0f45dc903504947c82f1235b88ea299bd26a7327dd7221f747",
+          "bytes": 14684
+        }
+      ],
+      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
+    },
+    {
+      "id": "V109-WORLDS-LOCAL",
+      "status": "PASS_LOCAL_REGRESSION",
+      "scope": "50assertions,0échec/0ignorée. Tournée physique et stockage, deux réservesV5, carnetROLE03 et navigation cargo dynamiques du vrai code courant.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/clan-supply-route-v109.test.mjs tests/game-reserve-biomes-persistence-v109.test.mjs tests/game-reserve-biomes-v109.test.mjs tests/game-reserve-rendering-v109.test.mjs tests/homeworld-archive-plaque-v109.test.mjs tests/homeworld-dynamic-navigation-v109.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/worlds-tests.log",
+          "sha256": "13b7dfaff411ca9d85627188b548832b81566b564cae95d6e0dacc9c863828cd",
+          "bytes": 6446
+        }
+      ],
+      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
+    },
+    {
+      "id": "V109-ARCHIVE-REGRESSIONS",
+      "status": "PASS_LOCAL_REGRESSION",
+      "scope": "81assertions,0échec/0ignorée. Slots, archives complètes et adversariales, transferts et intégrité atomique.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/campaign-slots.test.mjs tests/complete-archive.test.mjs tests/complete-archive-adversarial.test.mjs tests/archive-transfer-guard.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/archive-regressions.log",
+          "sha256": "5a102fe4450e1e7f4a45bd8978a58fea6d1b44c6c8c7bf58726160b21007008d",
+          "bytes": 8629
+        }
+      ],
+      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
+    },
+    {
+      "id": "V109-ALL-UNIT-TESTS",
+      "status": "PASS_LOCAL_95",
+      "scope": "Suite V109 initiale :95tests passés, groupes partiellement recouvrants. Après revue,34tests Pit et11tests du suivi final sont repassés et épinglés séparément ; ne pas additionner ces groupes.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v109.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/unit-tests.log",
+          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
+          "bytes": 12263
+        },
+        {
+          "path": "docs/qa/v109-validation/pit-tests.log",
+          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
+          "bytes": 4066
+        }
+      ],
+      "limit": "Exécution locale Node22 précédant la finalisation du classeur ; les 34 tests Pit en sont un sous-ensemble et ne sont pas additionnés à 95."
+    },
+    {
+      "id": "V109-TYPES-LINT",
+      "status": "PASS_TYPES_ZERO_LINT_ERRORS",
+      "scope": "TypeScript sans erreur ; lint global zéro erreur, 171 avertissements sur fichiers historiques inchangés. Les fichiers modifiés ont leur lint ciblé propre.",
+      "command": "npm run typecheck ; npm run lint",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/typecheck.log",
+          "sha256": "7e963cd266edc6da8946458eef070015c14509120a807963ef61b9535323931b",
+          "bytes": 59
+        },
+        {
+          "path": "docs/qa/v109-validation/lint.log",
+          "sha256": "ed752271e85241243cad663606cb3db64747cafbf5ff5f601f1a367fc1eb7e05",
+          "bytes": 23874
+        }
+      ],
+      "limit": "Les 171 avertissements historiques restent déclarés ; ceci ne remplace ni une preuve navigateur ni Excel natif."
+    },
+    {
+      "id": "V109-PRODUCTION-BUILD-R3",
+      "status": "PASS_COMPILED_BUILD",
+      "scope": "Compilation du runtime corrigé c97c7d903486ed2c7cb2529ac27f713c0aba8987, build pVNPLCZV9ZFtFCd87NSTa, gel1361entrées.",
+      "command": "npm run build:production",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/production-build-r3.log",
+          "sha256": "ed245af7c75250747e847c6fd65e2711e5225ed9028c058b9db090be41ac0d59",
+          "bytes": 4542
+        },
+        {
+          "path": "docs/v109-runtime-freeze.json",
+          "sha256": "b4f097daa655b119051675bd7acc2540a90cb4fd466c69955de6c0858519c4c0",
+          "bytes": 251728
+        }
+      ],
+      "limit": "La compilation et les vérifications serveur sont complétées par quatre recettes réelles ; ni déploiement externe, ni fumée native-origin/static-output hors du contexte Vercel exact n’est prétendue."
+    },
+    {
+      "id": "V109-CURRENT-PRODUCTION",
+      "status": "PASS_CIBLE_PRODUCTION",
+      "scope": "Quatre recettes complètes du troisième build commun après corrections de revue :208contrôles,65captures toutes inspectées, sources avant/après identiques et aucune erreurJavaScript/console.",
+      "command": "node scripts/build-validation-summary-v109.mjs --entry docs/qa/v109-pit/entry.json --entry docs/qa/v109-homeworld/entry.json --entry docs/qa/v109-clans/entry.json --entry docs/qa/v109-preserve/entry.json --runtime-commit c97c7d903486ed2c7cb2529ac27f713c0aba8987 --build-id pVNPLCZV9ZFtFCd87NSTa",
+      "evidence": [
+        {
+          "path": "docs/v109-validation-summary.json",
+          "sha256": "476c039ab05d05218a68f6cdc272be6261f27321ca96beb5d4177149645e855a",
+          "bytes": 17959
+        },
+        {
+          "path": "docs/v109-pit-validation.json",
+          "sha256": "d1e7ae6f075ba8a9a640c9d84f8eb1c258d2141792d53e14a4607dce0727a6c5",
+          "bytes": 90890
+        },
+        {
+          "path": "docs/v109-homeworld-validation.json",
+          "sha256": "d899f03817cd74e5e6726b1777de4f5f7f70b6d6def3b9cf0ce90664d7f002ae",
+          "bytes": 23496
+        },
+        {
+          "path": "docs/v109-clans-validation.json",
+          "sha256": "8e2e2c5de4d16b178039bd80ff91d75ff0ac2d803d6dfbc39882cf97eab637d9",
+          "bytes": 15490
+        },
+        {
+          "path": "docs/v109-preserve-validation.json",
+          "sha256": "c578a4290e2a6dbf49d8426d5c0a96d0637e62fc5e8568e0b086fad2eb415d38",
+          "bytes": 30489
+        },
+        {
+          "path": "docs/qa/v109-pit/visual-inspection.json",
+          "sha256": "c2db23cbdc8ffc928518f72f1e522fd2cd5c87a64554b549c6d59023ded198e8",
+          "bytes": 6292
+        },
+        {
+          "path": "docs/qa/v109-homeworld/visual-inspection.json",
+          "sha256": "919d126bf2e3df2f9b2b02ceb8d3b15ccd59152d213e6b9c1637638337a0f5f8",
+          "bytes": 6601
+        },
+        {
+          "path": "docs/qa/v109-clans/visual-inspection.json",
+          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
+          "bytes": 306
+        },
+        {
+          "path": "docs/qa/v109-preserve/visual-inspection.json",
+          "sha256": "3b82b2ef9ba97058363abe0487e20b74bccd2bf8869bad1ef599ea35d2e1e3e4",
+          "bytes": 740
+        }
+      ],
+      "limit": "65 Pit, 55 Homeworld, 38 Clans et 50 Preserve ; captures 19/11/8/27. Les anciens 175 contrôles et 47 captures V108 ne sont pas additionnés. Tous les 56 besoins source et les neuf actions restent ouverts."
+    },
+    {
+      "id": "V109-PIT-FIRST-PRODUCTION",
+      "status": "FAIL_PRESERVED_NOT_PROMOTED",
+      "scope": "Premier build : échec de couverture du sondage Pit conservé avec diagnostic, captures et JSON bruts. Les vrais événements drawImage couvraient les âges ; le lecteur QA a été corrigé et les quatre recettes complètes ont été rejouées sur un second build commun. App et art inchangés.",
+      "command": "node scripts/qa-pit-forward-throws-v109.mjs (premier build ; échec conservé)",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-pit-first-production/manifest.json",
+          "sha256": "1d347647db5d5ea880d164bdad8b4ebba6eb2079a915916b8c4fb42ea5c7ad41",
+          "bytes": 2153
+        },
+        {
+          "path": "docs/qa/v109-pit-first-production/browser-result-failed.json.gz",
+          "sha256": "09eda5336b1048f248c3ad89ed78feadbcfcd92c4485dffb9a2c48dce70019b4",
+          "bytes": 21783,
+          "decodedSha256": "961cca65733a54b11dff9ed56b4d1ed65548201424e3d40d1226d3b1d7dd4b1e",
+          "decodedBytes": 81607
+        },
+        {
+          "path": "docs/qa/v109-pit-first-production/continuity-diagnostic.json.gz",
+          "sha256": "b81ffe20916c8f3d0d3caec8b1ff6f6c643af5ad570eda3d07c51c88ab0814f9",
+          "bytes": 6251,
+          "decodedSha256": "e591cbb7de5d351ab1905f4e1b22b443a76a15f8f1c7f389d6aacaf1b1928391",
+          "decodedBytes": 354640
+        },
+        {
+          "path": "docs/qa/v109-pit-first-production/browser-failed.log",
+          "sha256": "50d1f1d7815f616209781a70a50f3f0bd2098d408b9bc0d9bd6a4810e3d11ff0",
+          "bytes": 1207
+        },
+        {
+          "path": "docs/qa/v109-pit-first-production/failure.png",
+          "sha256": "4de7033d36170ab7aa1b38f6b322f67ac514f07a2381a829f3318c329dff2a79",
+          "bytes": 1323182
+        },
+        {
+          "path": "docs/qa/v109-pit-first-production/feral-hunter-vs-scar-J1-capture.png",
+          "sha256": "ae9bf6b170be77a3b59be23bb4a644f57d92fb95b653e3c9a6a27aba28498d24",
+          "bytes": 1327136
+        },
+        {
+          "path": "docs/qa/v109-pit-first-production/feral-hunter-vs-scar-J1-flight.png",
+          "sha256": "ea5643718b743e8855a4fd4a4f6404aedb08e295c7154290068c1443831142c0",
+          "bytes": 1371805
+        },
+        {
+          "path": "docs/qa/v109-pit-first-production/feral-hunter-vs-scar-J1-landing.png",
+          "sha256": "e12d602f37ada95d1f49a804818023962d78ebc19a6d1de1554862d8eefa1e9c",
+          "bytes": 1333739
+        },
+        {
+          "path": "docs/qa/v109-validation/first-runtime-freeze.json",
+          "sha256": "c624a44168aa28873303093b915dbac8846fb7086506722df74993e906e6933f",
+          "bytes": 251341
+        },
+        {
+          "path": "docs/qa/v109-validation/pit-corrected-diagnostic.log",
+          "sha256": "d67bf1902d5836b0ac4a0887bb09284493d2a34c73064ed89e3cf6b31bc971ef",
+          "bytes": 1455
+        }
+      ],
+      "limit": "Résultat non promu, conservé sans réécriture ; aucun contrôle ni capture de cet essai n’entre dans les totaux PASS du master."
+    },
+    {
+      "id": "V109-PRESERVE-PAUSED-TRIAL",
+      "status": "FAILED_PAUSED_TRIAL_NOT_PROMOTED",
+      "scope": "Second build : essai Preserve interrompu par une pause Iskhel isolée au contrôle tactile, sans erreur navigateur/console ni mutation de source. Cause non attribuée ; aucun défaut reproductible confirmé. Une répétition intégrale sur le même code/build passe dans un dossier séparé.",
+      "command": "node scripts/qa-preserve-biomes-v109.mjs (essai interrompu ; résultat conservé)",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/manifest.json",
+          "sha256": "28c19d5e9b6ab2bc79d423670f42ca6964443d3d98ef827ce8d66a7de812d610",
+          "bytes": 3106
+        },
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/browser-result-failed.json.gz",
+          "sha256": "2b73da2a284f973d4a3a27019a6dd66f8ca9d0226081035cebb373511f6c2107",
+          "bytes": 7533,
+          "decodedSha256": "a5abe34710462ac114832b2ad3cf45ddc9ffb6d3b4aee9a7b1c70e2d8f7a2fd1",
+          "decodedBytes": 54492
+        },
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/browser-failed.log",
+          "sha256": "d492ca398e1d0f3bc89c4ebba60384aa1697a591fe4147e4063da169a47b13ba",
+          "bytes": 987
+        },
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/failure-0.png",
+          "sha256": "9c98c781b9c7c97e0c36b3ad7a35bc4042a059e7e00cfcee077d19f93f5f7dad",
+          "bytes": 172304
+        },
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/failure-1.png",
+          "sha256": "a77c6b1826f5f69ad6bceb24c3428c414b8de9d080fed1fefc7d77c328b87afb",
+          "bytes": 246660
+        },
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/iskhel-choice.png",
+          "sha256": "405489043549805e52f3cc29e004f0a36c021990f484ebf71a1220ff7cb94e10",
+          "bytes": 347519
+        },
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/iskhel-played-one-adult.png",
+          "sha256": "440fca7f75fbc63d55ef53deb33c9e32217bccb7087b20f0046e57e5cdfac93b",
+          "bytes": 399296
+        },
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/khar-choice.png",
+          "sha256": "a92421caee8ff4174cd5145c6c41e94f93e0c5e6c9c1eb3e1ee567130f899171",
+          "bytes": 347924
+        },
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/khar-native-landscape-touch.png",
+          "sha256": "302a16ffc62677869387ae050d9b20d6531c7b4f3911fd7ae186db866000ff27",
+          "bytes": 384436
+        },
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/khar-played-one-adult.png",
+          "sha256": "61775ce58d50a9a3cdf8ad5cb69b5240ccb28f676954aac1462dc2ed6985c9ae",
+          "bytes": 386036
+        },
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/diagnostic-note.json",
+          "sha256": "921d38976c4a4caaee7b8cda1b71ea03129fc771a226e91cece70b57fe97d722",
+          "bytes": 2471
+        },
+        {
+          "path": "docs/qa/v109-preserve-paused-trial/passive-diagnostic.json.gz",
+          "sha256": "d8d946d84a043c53b6b5e40781c9db1a600ab8d1c9a7f261a14ef174be06c248",
+          "bytes": 8840,
+          "decodedSha256": "e421be82ac1e6223e5821e0a050c4160ab11ed9d02b1be482c9101bff81db057",
+          "decodedBytes": 75612,
+          "scope": "Diagnostic JSON only, not a production PASS certificate."
+        }
+      ],
+      "limit": "Résultat non promu, conservé sans réécriture ; aucun contrôle ni capture de cet essai n’entre dans les totaux PASS. Les observations diagnostiques sont bornées : aucun blur constaté dans ce diagnostic, transitions de visibilité non journalisées ; aucune cause de pause n’est déduite."
+    },
+    {
+      "id": "V109-PRE-REVIEW-CERTIFICATE",
+      "status": "HERITE_FJ6_NON_COURANT",
+      "scope": "Ancien certificat FJ6 :208contrôles/65captures,95testsV109,438assertions de groupes partiellement recouvrants, types/lint/build. Les métadonnées exactes sont archivées avant correction ; elles ne certifient pas les nouveaux fichiers.",
+      "command": "Conservation byte exacte des métadonnées du contexte revu1252 ; voir previous-certified-manifest.json.",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-workstreams-source.json",
+          "sha256": "572a16ce8d2bf64587f2ad0d9740c44d965ef82f01bc300e684213d299878a79",
+          "bytes": 60235
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-workstreams.json",
+          "sha256": "09a18d720399564c5e19e72de4d95cf6b50f2f933addfdb9e8544fb8355cd566",
+          "bytes": 791608
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-excel-followup-qa.json",
+          "sha256": "920e5af00e985d9ac368b66da311d0afc4bef789d6cfad9887f3b4af156be48a",
+          "bytes": 5356
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-validation-summary.json",
+          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
+          "bytes": 17959
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-runtime-freeze.json",
+          "sha256": "e01f55d66dbae26b350101d3b06a9c306a2aa42ac19510944e82dcd60a1d19d1",
+          "bytes": 251341
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-runtime-public-inputs.json",
+          "sha256": "e9bcb1caedaecef71c4db979ba21c411234cbbdab244ed1609a5a3ce998e176f",
+          "bytes": 17780
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/excel-followup-v109.md",
+          "sha256": "6d85074fe2e5725d41c80deaf5dd69dfde521430b300645efe86813d152f0dd2",
+          "bytes": 7426
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-pit-validation.json",
+          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
+          "bytes": 90858
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-homeworld-validation.json",
+          "sha256": "d5ba15653acb2b813923b0fe82a178eebb261f0b83da0e8812a33c9ff38c0227",
+          "bytes": 23496
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-clans-validation.json",
+          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
+          "bytes": 15490
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-preserve-validation.json",
+          "sha256": "f3347498c8944de20abb19ffef4ec741e54a6781f02aa244e878ab80efb8229d",
+          "bytes": 30495
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-pit.json",
+          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
+          "bytes": 6187
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-homeworld.json",
+          "sha256": "7e57e7c96c1d68d7f3f40ceff16824910e35032c034be60f32b995c37b485932",
+          "bytes": 6596
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-clans.json",
+          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
+          "bytes": 306
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-preserve.json",
+          "sha256": "3b82b2ef9ba97058363abe0487e20b74bccd2bf8869bad1ef599ea35d2e1e3e4",
+          "bytes": 740
+        }
+      ],
+      "limit": "Ancien classeur6ea conservé en Git. Les références internes des JSON archivés ne sont pas redirigées vers le code corrigé ; aucune nouvelle recette ni nouveau gel ne sont prétendus."
+    },
+    {
+      "id": "V109-REVIEW-SPATIAL-ALPHA",
+      "status": "PASS_LOCAL_CORRECTION",
+      "scope": "Six cas de différence alpha spatiale : nombres égaux/disjonction/retrait seul/seuil/bords demi-ouverts/CLI stricte. Le nouveau rapport couvre48poses sans ajout ni retrait de pixels du cœur ; UV/SHA inchangés.",
+      "command": "python3 -m unittest discover -s tests -p test_pit_native_borders_v109.py -v",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-review-corrections/excel-native-border-unit.log",
+          "bytes": 1302,
+          "sha256": "661071561a82b98930e7bbb8acd7c04616741f2493c5fbbc05064d13b5f65280"
+        },
+        {
+          "path": "tests/test_pit_native_borders_v109.py",
+          "bytes": 4701,
+          "sha256": "3b8a9ba46c156d9bfc50dad7f8b75ed3ad8d207ba492ac164e6659e5ab41d184"
+        },
+        {
+          "path": "scripts/review-pit-native-borders-v109.py",
+          "bytes": 5625,
+          "sha256": "fc39ea46cb48c4040a44e042be5c6a0a96ae879747a5e7b10309918c2427fc07"
+        },
+        {
+          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json",
+          "bytes": 36312,
+          "sha256": "560a552eccb4c3085b4d6250c4ab3f553e79ba8b7e771a2d5c2525c7762f6d96"
+        }
+      ],
+      "limit": "Vérification locale du calcul corrigé et de ses vrais PNG, sans réécrire le rapport précédent ni certifier le futur build. AucunPNG, UV, pivot ou admission modifié."
+    },
+    {
+      "id": "V109-REVIEW-CORRECTIONS",
+      "status": "PASS_CIBLE_PRODUCTION",
+      "scope": "Titre/notice Preserve aux quatre réserves ; deux variables Chromium dans cinq lanceurs QA ; différence alpha spatiale sur48poses et constantes CPU nommées à valeurs inchangées. Quatre parcours complets repassés sur le build corrigé commun.",
+      "command": "npm run build:production ; node scripts/build-validation-summary-v109.mjs (quatre entrées R3)",
+      "evidence": [
+        {
+          "path": "docs/v109-validation-summary.json",
+          "sha256": "476c039ab05d05218a68f6cdc272be6261f27321ca96beb5d4177149645e855a",
+          "bytes": 17959
+        },
+        {
+          "path": "docs/qa/v109-validation/production-build-r3.log",
+          "sha256": "ed245af7c75250747e847c6fd65e2711e5225ed9028c058b9db090be41ac0d59",
+          "bytes": 4542
+        },
+        {
+          "path": "docs/qa/v109-validation/pit-review-fixes-tests.log",
+          "sha256": "6f514715e516638d1e37ecc778af4e38b0135dca57996f255d5b00b91649c125",
+          "bytes": 4062
+        },
+        {
+          "path": "docs/qa/v109-validation/native-spatial-unit-tests.log",
+          "sha256": "0204e55f9cda69813b4ae9591552cd9e9716073a8a517735c7286699eb0fe581",
+          "bytes": 1302
+        }
+      ],
+      "limit": "AucunPNG, UV ni mécanique de combat changé ;56besoins source, neufactions et sourceCompletion=false restent conservés. Python/PIL/SciPy sont des outils locaux complémentaires, pas des dépendancesCI ajoutées."
+    }
+  ],
+  "limits": [
+    "Les 56 exigences source restent ouvertes et toutes les anciennes colonnes/lignes sont conservées.",
+    "Les productions artistiques et liaisons V109 restent conditionnées à des admissions sur leurs vrais pixels et comportements ; aucune clôture par compteur.",
+    "Les projections prévues sont limitées aux deux personnages sans costume Feral/Scar ; elles ne livrent pas les réactions xéno, les prises avec tout partenaire ni les conclusions.",
+    "Les scènes de campagne, kits complets et quatorze contraintes de variantes restent ouverts.",
+    "Les deux nouveaux biomes sont des adaptations originales de géographies déjà proposées ; humains au sol et terrain continu, pas de navigation humaine verticale ou crevasse mortelle annoncée.",
+    "Trois atlas humains partagés ne livrent pas les fiches H001–H100.",
+    "Les six ouvrages restent des exercices sans acquisition de campagne ni correspondance arbitraire K01→CON-T.",
+    "Les 21 reçus V6.13 et 36 traces/PNG V6.10 restent non récupérés ; le contrôle de cohérence local ne certifie pas un fournisseur externe.",
+    "Le générateur contrôle le ZIP/XML et les caches de formules ; il ne lance pas Excel natif ni le navigateur.",
+    "Une pause isolée Preserve au contrôle tactile reste de cause non attribuée ; l’essai brut est conservé et la répétition complète inchangée passe. Aucun défaut reproductible confirmé ni correction causale n’est affirmé.",
+    "Le précédent certificatFJ6/63cf et ses208contrôles/65captures restent historiques. Le certificat courant est issu de quatre nouvelles recettes complètes surpVN/c97 après corrections de revue ; aucun résultat ancien n’entre dans ses totaux."
+  ],
+  "runtimeFreeze": {
+    "path": "docs/v109-runtime-freeze.json",
+    "sha256": "b4f097daa655b119051675bd7acc2540a90cb4fd466c69955de6c0858519c4c0",
+    "bytes": 251728
+  }
+}

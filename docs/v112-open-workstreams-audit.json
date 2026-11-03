@@ -1,0 +1,3636 @@
+{
+  "schemaVersion": 1,
+  "release": "V112",
+  "asOf": "2026-10-28",
+  "sourceSnapshot": {
+    "path": "docs/v111-homeworld-followup.json",
+    "sha256": "2c71e1d09de23d3adeef64ef10cc2065bcc8d9733dbc26670c862e59c28a7a3f",
+    "bytes": 1028584
+  },
+  "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+  "method": "Audit of the immutable V111 snapshot. Nine action requirements are already included in the 56 source rows. Homeworld needs and the 354 art targets are separate scopes. This index neither re-runs historical gameplay nor certifies current rendering.",
+  "facts": {
+    "openSourceRequirements": 56,
+    "includedSourceActions": 9,
+    "additionalSourceActions": 0,
+    "families": {
+      "enforcer-provenance": 2,
+      "pit-actions": 9,
+      "pit-campaigns": 16,
+      "pit-roster-kits": 7,
+      "pit-variants": 14,
+      "preserve-expansion": 2,
+      "war-structures": 6
+    },
+    "artTargets": 354,
+    "historicalV111ArtPresence": {
+      "EXISTING_NEEDS_VARIANT": 313,
+      "MISSING": 40,
+      "MISSING_ANIMATION": 1
+    },
+    "newClosures": 0
+  },
+  "sourceItems": [
+    {
+      "id": "add-bloodshed",
+      "familyId": "pit-roster-kits",
+      "family": "The Pit · identités et kits",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A200:V200",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Identité du tournoi attestée par Marvel ; apparence native et kit jouable manquants. Les dessins anonymes fournis ne permettent pas une attribution certaine.",
+      "latestRecordedRemaining": "Les quatre identités visuelles non résolues et les sept dossiers/kit agrégés restent ouverts.",
+      "acceptance": "Références nominatives, deux sens natifs, anatomie/équipement et kit complet réellement raccordé.",
+      "originalRowSha256": "61e2b695ea156d788bc38a35d2235f275a55209038fb36115e0a1df622a917c1"
+    },
+    {
+      "id": "add-last-hunt-super",
+      "familyId": "pit-roster-kits",
+      "family": "The Pit · identités et kits",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A201:V201",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Dossier distinct de Mr. Black. Référence de tenue et arsenal à verrouiller ; aucun ajout par simple renommage.",
+      "latestRecordedRemaining": "Les quatre identités visuelles non résolues et les sept dossiers/kit agrégés restent ouverts.",
+      "acceptance": "Références nominatives, deux sens natifs, anatomie/équipement et kit complet réellement raccordé.",
+      "originalRowSha256": "e970701e46faab4736df4007a940e25d8dc8ebb7450d892bf10762524af5be8a"
+    },
+    {
+      "id": "add-jaguar",
+      "familyId": "pit-roster-kits",
+      "family": "The Pit · identités et kits",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A202:V202",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Incarnation AVP Jaguar absente ; ne pas substituer Dark, Prince ou Jungle Hunter.",
+      "latestRecordedRemaining": "Les quatre identités visuelles non résolues et les sept dossiers/kit agrégés restent ouverts.",
+      "acceptance": "Références nominatives, deux sens natifs, anatomie/équipement et kit complet réellement raccordé.",
+      "originalRowSha256": "04c4869e9627550e67532578d07f3e73165da24506e4fcf44c5c6c65e324c513"
+    },
+    {
+      "id": "add-avp-classic",
+      "familyId": "pit-roster-kits",
+      "family": "The Pit · identités et kits",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A203:V203",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Incarnation AVP Classic 2000 absente ; user-classic-2010 appartient au film Predators.",
+      "latestRecordedRemaining": "Les quatre identités visuelles non résolues et les sept dossiers/kit agrégés restent ouverts.",
+      "acceptance": "Références nominatives, deux sens natifs, anatomie/équipement et kit complet réellement raccordé.",
+      "originalRowSha256": "d090440a1612287ee652665746e19a3d9b341c114082e8ca0524dde0e25aff4e"
+    },
+    {
+      "id": "add-blood-ties-father",
+      "familyId": "pit-roster-kits",
+      "family": "The Pit · identités et kits",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A204:V204",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Père de Blood Ties : attribution visuelle à établir avant création ou réaffectation.",
+      "latestRecordedRemaining": "Les quatre identités visuelles non résolues et les sept dossiers/kit agrégés restent ouverts.",
+      "acceptance": "Références nominatives, deux sens natifs, anatomie/équipement et kit complet réellement raccordé.",
+      "originalRowSha256": "880e2020509f098e746fa42d7e3f1c983b17f72e21bb5a76e57c8d746111c6f3"
+    },
+    {
+      "id": "add-blood-ties-son",
+      "familyId": "pit-roster-kits",
+      "family": "The Pit · identités et kits",
+      "domain": "The Pit",
+      "source": "02_PERSONNAGES!A205:V205",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Fils de Blood Ties : identité distincte à établir, sans fusion avec les cycles I et II.",
+      "latestRecordedRemaining": "Les quatre identités visuelles non résolues et les sept dossiers/kit agrégés restent ouverts.",
+      "acceptance": "Références nominatives, deux sens natifs, anatomie/équipement et kit complet réellement raccordé.",
+      "originalRowSha256": "c593520fe1df41a114930413f150c2ee42f7502273501637b975fbbce8763e45"
+    },
+    {
+      "id": "W3-S09",
+      "familyId": "war-structures",
+      "family": "Guerre de clans · ouvrages",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C14,D14,E14,F14,G14,H14,I14,J14,K14",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Raccorder un quai à une rive praticable et à un transport réellement identifié ; pas de téléportation de cargaison.",
+      "latestRecordedRemaining": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
+      "acceptance": "Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+      "originalRowSha256": "7090d126e1cd6514fa9e2d3bbbf52d332a7a1e41910d8564b3cd323f7ae660a8"
+    },
+    {
+      "id": "W3-S10",
+      "familyId": "war-structures",
+      "family": "Guerre de clans · ouvrages",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C15,D15,E15,F15,G15,H15,I15,J15,K15",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Identifier et déplacer les montures existantes, leurs gardiens et leur capacité ; ne pas créer une monture depuis un compteur.",
+      "latestRecordedRemaining": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
+      "acceptance": "Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+      "originalRowSha256": "f000ae16ca1b67d82e62d8f7ef0d35fb430d6f08606064e49a1efab69b8abbcf"
+    },
+    {
+      "id": "W3-S13",
+      "familyId": "war-structures",
+      "family": "Guerre de clans · ouvrages",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C18,D18,E18,F18,G18,H18,I18,J18,K18",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Raccorder l'alimentation et le coût réel de confinement ; aucun effet gratuit déduit de la description.",
+      "latestRecordedRemaining": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
+      "acceptance": "Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+      "originalRowSha256": "6c2145bae316c43a01801b2cc464949c2be85ecc38b3491d637dd79fcf49d633"
+    },
+    {
+      "id": "W3-S14",
+      "familyId": "war-structures",
+      "family": "Guerre de clans · ouvrages",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C19,D19,E19,F19,G19,H19,I19,J19,K19",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Raccorder un duel accepté par ses participants et son résultat réel ; pas de victoire automatique.",
+      "latestRecordedRemaining": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
+      "acceptance": "Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+      "originalRowSha256": "46d5caba30ed09ec7e48e6ce8f11b552f60270c9cde72ae267a5c898fdf09aab"
+    },
+    {
+      "id": "W3-S15",
+      "familyId": "war-structures",
+      "family": "Guerre de clans · ouvrages",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C20,D20,E20,F20,G20,H20,I20,J20,K20",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Raccorder des sons enregistrés et situés, leur portée et leur occultation ; une direction de voix écrite n'est pas un son.",
+      "latestRecordedRemaining": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
+      "acceptance": "Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+      "originalRowSha256": "f49b175563b949d4af6f64ee2f8a2df978410a612503861b55025582c0bc3ae1"
+    },
+    {
+      "id": "W3-S18",
+      "familyId": "war-structures",
+      "family": "Guerre de clans · ouvrages",
+      "domain": "Guerre de clans",
+      "source": "Structures de guerre!C23,D23,E23,F23,G23,H23,I23,J23,K23",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Raccorder un navire acquis et une route orbitale effective ; l'inspection documentaire ne donne ni navire ni voyage.",
+      "latestRecordedRemaining": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
+      "acceptance": "Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+      "originalRowSha256": "400bd4b486ffe6d194773b9a485d6fcffc62d6f0cde1be33ab9e34cd3ff02690"
+    },
+    {
+      "id": "PRESERVE-SECTEURS",
+      "familyId": "preserve-expansion",
+      "family": "Preserve Hunt · expansion",
+      "domain": "Preserve Hunt",
+      "source": "PRESERVE-EXPANSION-80",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "4/80 secteurs ; 76 encore à produire.",
+      "latestRecordedRemaining": "Les cibles de 80 secteurs et 100 adultes restent ouvertes : 48 secteurs et 36 adultes à définir. Les trois atlas partagés ne livrent pas les fiches H001–H100 ; aucune canonicité 1:1 admise.",
+      "acceptance": "Secteurs contigus réellement jouables et adultes uniques ; fiches H001–H100 et art ne sont pas remplacés par trois atlas partagés.",
+      "originalRowSha256": "90a1bca5ba94b6e55073882dce9465e6e657f08df22d82fdae4c8acd7c5f709e"
+    },
+    {
+      "id": "PRESERVE-COMBATTANTS",
+      "familyId": "preserve-expansion",
+      "family": "Preserve Hunt · expansion",
+      "domain": "Preserve Hunt",
+      "source": "PRESERVE-EXPANSION-80",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "8/100 combattants ; 92 encore à produire.",
+      "latestRecordedRemaining": "Les cibles de 80 secteurs et 100 adultes restent ouvertes : 48 secteurs et 36 adultes à définir. Les trois atlas partagés ne livrent pas les fiches H001–H100 ; aucune canonicité 1:1 admise.",
+      "acceptance": "Secteurs contigus réellement jouables et adultes uniques ; fiches H001–H100 et art ne sont pas remplacés par trois atlas partagés.",
+      "originalRowSha256": "3a7d2f923e9f2d894e44829d57d4b23501665c6e99312510a832afe3856c3ca2"
+    },
+    {
+      "id": "PIT-KITS-COMPLETS",
+      "familyId": "pit-roster-kits",
+      "family": "The Pit · identités et kits",
+      "domain": "The Pit",
+      "source": "05_MOVES_PROPOSES et 07_PRESENTATIONS, lignes Feral/Scar",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Personnages complets, spéciaux, projections, entités, finishers et costumes non clos.",
+      "latestRecordedRemaining": "Les quatre identités visuelles non résolues et les sept dossiers/kit agrégés restent ouverts.",
+      "acceptance": "Références nominatives, deux sens natifs, anatomie/équipement et kit complet réellement raccordé.",
+      "originalRowSha256": "68d1b7d01e375d764ffacd42a6e964bf1295bd557430523a7f224081190e6e7f"
+    },
+    {
+      "id": "ENFORCERS-V613-RECEIPTS",
+      "familyId": "enforcer-provenance",
+      "family": "Provenance Enforcers",
+      "domain": "Provenance Enforcers",
+      "source": "V6.13 production-manifest.json / summary",
+      "status": "OUVERT_SOURCE",
+      "priority": "P3",
+      "originalNeed": "21 prompts/reçus finaux non récupérés ; 15 retrouvés. Les prompts planifiés ne sont pas des soumissions attestées.",
+      "latestRecordedRemaining": "Les 21 reçus V6.13 et 36 traces/PNG V6.10 historiques restent non récupérés ; contrôle de cohérence sans certification de provenance externe.",
+      "acceptance": "Récupérer les reçus/traces historiques authentiques ; un nouveau dessin ou reçu ne répare pas leur absence.",
+      "originalRowSha256": "590d35184f14a857215fd1603b840e63276467952e637672212b565a02d5e4f9"
+    },
+    {
+      "id": "ENFORCERS-V610-TRACES",
+      "familyId": "enforcer-provenance",
+      "family": "Provenance Enforcers",
+      "domain": "Provenance Enforcers",
+      "source": "Attestation de réconciliation d71e995ae886df69c4165a1a153291449e8f22f6",
+      "status": "OUVERT_SOURCE",
+      "priority": "P3",
+      "originalNeed": "36 traces historiques V6.10 sans PNG récupéré ; zéro fichier produit ajouté à ce titre.",
+      "latestRecordedRemaining": "Les 21 reçus V6.13 et 36 traces/PNG V6.10 historiques restent non récupérés ; contrôle de cohérence sans certification de provenance externe.",
+      "acceptance": "Récupérer les reçus/traces historiques authentiques ; un nouveau dessin ou reçu ne répare pas leur absence.",
+      "originalRowSha256": "a09a43632b3eeac0bbb421f6bbe72d7347cf62759e51557150906d85c0ec1fc3"
+    },
+    {
+      "id": "M_F006_TH_F",
+      "familyId": "pit-actions",
+      "family": "The Pit · actions Feral / Scar",
+      "domain": "The Pit · action",
+      "source": "05_MOVES_PROPOSES!M10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nM_F006_TH_F · Projection avant\nCommande L+M · Projection · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nSaisie proche, pivot des hanches et rejet devant ; une échappée de projection reste possible.\nPréparation / actif / récupération : 8 / 3 / 30 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_TH_F\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+      "latestRecordedRemaining": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
+      "acceptance": "Vrais partenaires, objets et états autorisés ; collisions, coût, réaction, interruption, sauvegarde et recette compilée par sens.",
+      "originalRowSha256": "2faab041c54df7a3dc6e8979b4e5cfff6c6b84b6bc22ae1b2497c9e49a951c20"
+    },
+    {
+      "id": "M_F006_TH_B",
+      "familyId": "pit-actions",
+      "family": "The Pit · actions Feral / Scar",
+      "domain": "The Pit · action",
+      "source": "05_MOVES_PROPOSES!N10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nM_F006_TH_B · Projection arrière\nCommande 4+L+M · Projection · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nLe corps tourne sans téléportation, puis la cible est rejetée derrière sur un point valide.\nPréparation / actif / récupération : 10 / 3 / 32 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_TH_B\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+      "latestRecordedRemaining": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
+      "acceptance": "Vrais partenaires, objets et états autorisés ; collisions, coût, réaction, interruption, sauvegarde et recette compilée par sens.",
+      "originalRowSha256": "5a0d4190589ce7bc92ba1724ee477937f443e6a4f0df595835ae82f8aab111ea"
+    },
+    {
+      "id": "CIN_F006_FATALITE_1",
+      "familyId": "pit-actions",
+      "family": "The Pit · actions Feral / Scar",
+      "domain": "The Pit · action",
+      "source": "07_PRESENTATIONS!H10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nCIN_F006_FATALITE_1 · À portée de lame\nLa lance plaque la cible contre un relief ; le bouclier ferme le cadre avant le coup final. Un projectile de carreau n'est ajouté que si son masque est encore fonctionnel.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_FATALITE_1 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif",
+      "latestRecordedRemaining": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
+      "acceptance": "Vrais partenaires, objets et états autorisés ; collisions, coût, réaction, interruption, sauvegarde et recette compilée par sens.",
+      "originalRowSha256": "28d766e40376d34b5226380f524cf7f7697b3c6f6d567410bd2d00bbfb25157a"
+    },
+    {
+      "id": "CIN_F006_FATALITE_2",
+      "familyId": "pit-actions",
+      "family": "The Pit · actions Feral / Scar",
+      "domain": "The Pit · action",
+      "source": "07_PRESENTATIONS!I10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nCIN_F006_FATALITE_2 · Autre issue — À portée de lame\nLa première coupe dévie l'arme. Le chasseur entre au contact et termine avec la seconde lame. Il vérifie la fin de la menace puis rentre l'arme. Adapter les prises à Feral.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé. Variante validée seulement si l'arme correspondante est portée.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_FATALITE_2 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif",
+      "latestRecordedRemaining": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
+      "acceptance": "Vrais partenaires, objets et états autorisés ; collisions, coût, réaction, interruption, sauvegarde et recette compilée par sens.",
+      "originalRowSha256": "aa2eedfb291ecb88fb561c097ef57fe8fd093f17a61ce22c9e0260759381ab6c"
+    },
+    {
+      "id": "CIN_F006_CLEMENCE",
+      "familyId": "pit-actions",
+      "family": "The Pit · actions Feral / Scar",
+      "domain": "The Pit · action",
+      "source": "07_PRESENTATIONS!J10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nCIN_F006_CLEMENCE · Le duel suffit\nFeral désarme l'adversaire, recule d'un pas et lui laisse reprendre son souffle. Il reprend l'objet de la mission sans prélever de trophée anatomique.\nDéclenchement : Version d'entraînement / allié / option violence réduite ; même durée de sortie.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_CLEMENCE · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif",
+      "latestRecordedRemaining": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
+      "acceptance": "Vrais partenaires, objets et états autorisés ; collisions, coût, réaction, interruption, sauvegarde et recette compilée par sens.",
+      "originalRowSha256": "6595696f5539852401a7854ae6033192a008aea0457ee13c36eefb8cc207ddd2"
+    },
+    {
+      "id": "M_F003_TH_F",
+      "familyId": "pit-actions",
+      "family": "The Pit · actions Feral / Scar",
+      "domain": "The Pit · action",
+      "source": "05_MOVES_PROPOSES!M7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nM_F003_TH_F · Projection avant\nCommande L+M · Projection · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nSaisie proche, pivot des hanches et rejet devant ; une échappée de projection reste possible.\nPréparation / actif / récupération : 8 / 3 / 30 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_TH_F\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+      "latestRecordedRemaining": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
+      "acceptance": "Vrais partenaires, objets et états autorisés ; collisions, coût, réaction, interruption, sauvegarde et recette compilée par sens.",
+      "originalRowSha256": "e3a7a5a16dabc993d16ffb7504020441792cf2f237f55df2db60aec89c9175da"
+    },
+    {
+      "id": "M_F003_TH_B",
+      "familyId": "pit-actions",
+      "family": "The Pit · actions Feral / Scar",
+      "domain": "The Pit · action",
+      "source": "05_MOVES_PROPOSES!N7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nM_F003_TH_B · Projection arrière\nCommande 4+L+M · Projection · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nLe corps tourne sans téléportation, puis la cible est rejetée derrière sur un point valide.\nPréparation / actif / récupération : 10 / 3 / 32 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_TH_B\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+      "latestRecordedRemaining": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
+      "acceptance": "Vrais partenaires, objets et états autorisés ; collisions, coût, réaction, interruption, sauvegarde et recette compilée par sens.",
+      "originalRowSha256": "ba010c6a45815577728bce3aca5202f57876658e1c37ad8feebc93d3d6a9382f"
+    },
+    {
+      "id": "CIN_F003_FATALITE_1",
+      "familyId": "pit-actions",
+      "family": "The Pit · actions Feral / Scar",
+      "domain": "The Pit · action",
+      "source": "07_PRESENTATIONS!H7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nCIN_F003_FATALITE_1 · La pointe et le silence\nIl fixe un xénomorphe avec la lance puis tranche au shuriken ; la géométrie et les éclaboussures acides utilisent le module de victime xéno.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_FATALITE_1 · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif",
+      "latestRecordedRemaining": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
+      "acceptance": "Vrais partenaires, objets et états autorisés ; collisions, coût, réaction, interruption, sauvegarde et recette compilée par sens.",
+      "originalRowSha256": "b8a3d8cc015636b5f60e0a43e994037c5bb438aec0132150df0dd2c398035cc4"
+    },
+    {
+      "id": "CIN_F003_CLEMENCE",
+      "familyId": "pit-actions",
+      "family": "The Pit · actions Feral / Scar",
+      "domain": "The Pit · action",
+      "source": "07_PRESENTATIONS!J7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P1",
+      "originalNeed": "Un cycle BODY ne prouve pas le déclenchement, les partenaires, objets, collisions, inventaire ou états de jeu.\n\nTexte source exact :\nCIN_F003_CLEMENCE · Le duel suffit\nScar désarme l'adversaire, recule d'un pas et lui laisse reprendre son souffle. Il reprend l'objet de la mission sans prélever de trophée anatomique.\nDéclenchement : Version d'entraînement / allié / option violence réduite ; même durée de sortie.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_CLEMENCE · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif",
+      "latestRecordedRemaining": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
+      "acceptance": "Vrais partenaires, objets et états autorisés ; collisions, coût, réaction, interruption, sauvegarde et recette compilée par sens.",
+      "originalRowSha256": "096953035c9a3a35db57808a80543b6e1a613302b4d8c066fdd444b528e219da"
+    },
+    {
+      "id": "CAM-feral-hunter.01",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!D10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "1 — Cinématique · L'indice\nStage : arena-114-prey-2022-bear-river\nAdversaire : Aucun\nUne série de traces révèle une proie qui observe les habitudes du chasseur.\nObjectif / issue : Observer l'objet ou le passage qui motive la route ; aucune récompense de combat.\nKit ou sprite : F006_STORY_01\n\nBesoins visuels restant à livrer :\nTraces de la proie et observation du chasseur, dans le lieu référencé ; objets séparés du BODY.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "413d9d2cab483c231beea669b282c36a3079f7164de0ff564121e380c983db77"
+    },
+    {
+      "id": "CAM-feral-hunter.02",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!E10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "2 — Combat 1 · L'approche\nStage : arena-114-prey-2022-bear-river\nAdversaire : npc-bear\nRencontre de transition proposée pour Feral. Une première opposition teste la distance de carreaux guidés. Adversaire de cette version : Ours de la rencontre de Prey.\nObjectif / issue : Gagner le duel en gardant une voie de sortie ; défaite → reprise de cette rencontre.\nKit ou sprite : F006_ACT_S1\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "80d161d32113bad8db1d57df9efb9724077c91cfe2d4cb19982ed341f8cea591"
+    },
+    {
+      "id": "CAM-feral-hunter.03",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!F10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "3 — Combat 2 · Le contretemps\nStage : arena-113-prey-2022-trapper-clearing\nAdversaire : npc-trapper\nLe chemin vers « Traquer une proie qui apprend à retourner la visée contre le chasseur » se resserre. Un adversaire change la distance d'engagement et force l'usage de lance scindée. Adversaire de cette version : Trappeur armé — rôle de rencontre.\nObjectif / issue : Gagner le duel ; aucun obstacle de fond ne touche le joueur.\nKit ou sprite : F006_ACT_S3\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "002945a33fa2cb9d933f1e2d7945329e554993efd08bb710566384e96c8a2478"
+    },
+    {
+      "id": "CAM-feral-hunter.04",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!G10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "4 — Cinématique · La trace du rival\nStage : arena-113-prey-2022-trapper-clearing\nAdversaire : Aucun\nUn objet ou une marque visuelle désigne Naru. Feral vérifie son équipement. Ce rapprochement narratif est proposé pour la route, pas annoncé comme événement de l'œuvre.\nObjectif / issue : Afficher l'indice en sprite séparé ; adapter l'objet après référence de la scène.\nKit ou sprite : F006_STORY_04\n\nBesoins visuels restant à livrer :\nIndice visuel séparé à référencer avant dessin : Naru. Le rapprochement narratif reste une proposition, pas un événement canonique certifié.\nBODY vérifiant son équipement, avec continuité des objets réellement conservés.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "06c0be874a5eedce10f8b90944f047011d21d72a97173d7983b341982cbbca37"
+    },
+    {
+      "id": "CAM-feral-hunter.05",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!H10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "5 — Cinématique rival · Face-à-face\nStage : arena-115-prey-2022-mud-pit\nAdversaire : npc-naru\nLe bouclier se déploie dans un cliquetis d'os et de métal. Le masque fixe un point puis la lance se sépare. Contrechamp sur Naru : sa réponse est un geste de garde spécifique. Les portraits et les deux corps ne sont pas assemblés en une seule image.\nObjectif / issue : Deux entrées indépendantes ; duel non létal si mentor, allié ou rival d'épreuve.\nKit ou sprite : F006_STORY_05\n\nBesoins visuels restant à livrer :\nBouclier déployé, acquisition du point par le masque et séparation de la lance.\nContrechamp de garde spécifique de Naru, corps indépendant du chasseur.\nDeux entrées et portraits indépendants ; aucune image composite admise comme deux acteurs.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "f1c6138404ea331f083664abfa728935088d98bd158d21285b6c945f31326add"
+    },
+    {
+      "id": "CAM-feral-hunter.06",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!I10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "6 — Stage spécial · L'épreuve du lieu\nStage : arena-115-prey-2022-mud-pit\nAdversaire : npc-bear\nVariante narrative de Bourbier : ouverture d'un passage après trois échanges réussis. Un signal en fond change la tension, jamais les hitboxes du duel classé.\nObjectif / issue : Trois contres, esquives ou désarmements selon le kit ; le passage s'ouvre en cinématique. Pas de danger aléatoire non annoncé. Variante de scène alternative ; pas de duel de clan ajouté au milieu du film.\nKit ou sprite : F006_GUARD_H\n\nBesoins visuels restant à livrer :\nKit GUARD_H dédié référencé ; aucune quantité de dessins ou durée indiquée dans cette cellule.\nSignal de fond puis ouverture du passage en cinématique après trois contres, esquives ou désarmements.\nDécor indépendant des hitboxes classées ; aucune collision dangereuse aléatoire déduite du visuel.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "6e2a9a18ee608487eb17474352a823ca9c400a961f1c74c013a4f681e6456277"
+    },
+    {
+      "id": "CAM-feral-hunter.07",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!J10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "7 — Combat rival · Le choix à portée\nStage : arena-115-prey-2022-mud-pit\nAdversaire : npc-naru\nAffronter Naru. Le duel utilise les ressources réellement conservées ; Feral doit accomplir : traquer une proie qui apprend à retourner la visée contre le chasseur.\nObjectif / issue : Victoire → choix trophée / neutralisation selon adversaire ; défaite → reprise du rival, pas reprise de toute la route.\nKit ou sprite : F006_ACT_SUPER\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "8b91e7fba89b1438b739f7ba3b76a66bb80f9a82966d58c2d3a62746a665d125"
+    },
+    {
+      "id": "CAM-feral-hunter.08",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!K10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "8 — Cinématique outro · La preuve du retour\nStage : arena-115-prey-2022-mud-pit\nAdversaire : Aucun\nLe chasseur vainqueur récupère le masque hors de la boue ; un dernier plan montre la ligne de tir qui a failli le condamner. Issue alternative annoncée.\nObjectif / issue : Fin de route ; récompense cosmétique proposée, jamais une technique canonique inventée.\nKit ou sprite : F006_STORY_08\n\nBesoins visuels restant à livrer :\nRécupération du masque hors de la boue, puis plan distinct sur la ligne de tir.\nIssue alternative annoncée ; récompense cosmétique distincte d’une nouvelle technique canonique.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "18117e53f6fc4c18076dfbafc4e0f2d43fba96a09aa5ddd599377d8fd3b60c26"
+    },
+    {
+      "id": "VAR-feral-hunter.pilot-outfit",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!C10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Tenue pilote\nVerrouiller UNE incarnation et son jeu d'armes\nNe pas mélanger versions cinéma, figurine, jeu ou époque.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "970ad5d770ea6da2438c239cdbea0ec5bd78f48880d269c6b25de899d467bc2b"
+    },
+    {
+      "id": "VAR-feral-hunter.masked",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!D10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Masque porté\nRéférencer biomask et capteurs\nCanons / visée seulement si le dispositif et le chapitre l'autorisent.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "eee6ac958ea0b3d104e06fe199d042e86bcaea026e5e0d724128d91f348cb653"
+    },
+    {
+      "id": "VAR-feral-hunter.unmasked",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!E10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Visage découvert\nRéférence du visage ; sinon interprétation affichée\nAucune tête inventée annoncée 1:1 ; cicatrices et mandibules sur le bon côté.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "0864218b84760fe210d0eb23b269ae0ed128d02b8a04da5bffad3b4bc1be9d7a"
+    },
+    {
+      "id": "VAR-feral-hunter.lost-or-stowed-equipment",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!F10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Équipement perdu / rangé\nDessins de main vide et emplacement vide\nCoups d'arme désactivés jusqu'au ramassage/rééquipement ; pas de duplication.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "d2a651efe25eee0b919ddd8cb69ff4cee297ae9388dcc22564f1e43b4cf70fb2"
+    },
+    {
+      "id": "VAR-feral-hunter.damage-and-armor",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!G10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Dégâts / armure\nChangement de costume seulement quand documenté\nLes pièces cassées restent cassées dans l'intro/outro de l'état correspondant.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "f1b533aa68a5abce7a356533e7d9987565aa7ffc04df2e1365f1277571d5f9e4"
+    },
+    {
+      "id": "VAR-feral-hunter.native-directions",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!H10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Orientation gauche / droite\nDeux vues natives mesurées\nPas de miroir qui inverse canon, gantelet, cicatrice ou trophée.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "496844f14b2098e706f5d38b8fffb69668239c0d3f5696483819d529b19ac487"
+    },
+    {
+      "id": "VAR-feral-hunter.cloak",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!I10",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Camouflage\nEffet séparé si l'équipement le permet\nJamais une autre anatomie ou un téléport ; option inactive pour les incarnations non équipées.\nLimite propre au personnage : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "d53b28692ce9cfd3a4cf6a6891f59ae2ee7e96636f1d8dbc70a8381ff9edf05b"
+    },
+    {
+      "id": "CAM-scar.01",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!D7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "1 — Cinématique · L'indice\nStage : arena-123-avp-2004-whaling-station\nAdversaire : Aucun\nL'initiation est interrompue ; récupérer l'équipement devient aussi urgent que survivre au temple.\nObjectif / issue : Observer l'objet ou le passage qui motive la route ; aucune récompense de combat.\nKit ou sprite : F003_STORY_01\n\nBesoins visuels restant à livrer :\nIndice ou passage du temple et équipement à récupérer ; l'initiation est interrompue, sans marque anticipée.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "a63c6d78dfd65f1c8b8becc3a91a71b2da374b00d63c64bb38c8a02ff06347ce"
+    },
+    {
+      "id": "CAM-scar.02",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!E7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "2 — Combat 1 · L'approche\nStage : arena-123-avp-2004-whaling-station\nAdversaire : npc-xeno-drone\nRencontre de transition proposée pour Scar. Une première opposition teste la distance de allonge télescopique. Adversaire de cette version : Drone xénomorphe — incarnation à fixer.\nObjectif / issue : Gagner le duel en gardant une voie de sortie ; défaite → reprise de cette rencontre.\nKit ou sprite : F003_ACT_S1\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "ee3fded1109eafb9bf94aa5c8ae1a8733fec9781e3c80bb346883d12bc63a93e"
+    },
+    {
+      "id": "CAM-scar.03",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!F7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "3 — Combat 2 · Le contretemps\nStage : arena-122-avp-2004-sacrificial-chamber\nAdversaire : npc-grid\nLe chemin vers « Passer l'épreuve de la pyramide puis contenir la reine avec Lex » se resserre. Un adversaire change la distance d'engagement et force l'usage de tir de plasma. Adversaire de cette version : Grid.\nObjectif / issue : Gagner le duel ; aucun obstacle de fond ne touche le joueur.\nKit ou sprite : F003_ACT_S3\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "6bb16108eb31142c9f4bbac7a43ad1ccfb4e5c4ec81a88b11d383d0d966dc8db"
+    },
+    {
+      "id": "CAM-scar.04",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!G7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "4 — Cinématique · La trace du rival\nStage : arena-122-avp-2004-sacrificial-chamber\nAdversaire : Aucun\nUn objet ou une marque visuelle désigne Grid. Scar vérifie son équipement. Ce rapprochement narratif est proposé pour la route, pas annoncé comme événement de l'œuvre.\nObjectif / issue : Afficher l'indice en sprite séparé ; adapter l'objet après référence de la scène.\nKit ou sprite : F003_STORY_04\n\nBesoins visuels restant à livrer :\nIndice visuel séparé à référencer avant dessin : Grid. Le rapprochement narratif reste une proposition, pas un événement canonique certifié.\nBODY vérifiant son équipement, avec continuité des objets réellement conservés.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "c32444187dfaa0711844133d869eba53110c377dbd9c964f67892b39e1aa0d6a"
+    },
+    {
+      "id": "CAM-scar.05",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!H7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "5 — Cinématique rival · Face-à-face\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : npc-grid\nIl inspecte une gravure de la pyramide puis pose le pied hors de l'ombre. La marque n'est visible que dans la version déjà initiée. Contrechamp sur Grid : sa réponse est un geste de garde spécifique. Les portraits et les deux corps ne sont pas assemblés en une seule image.\nObjectif / issue : Deux entrées indépendantes ; duel non létal si mentor, allié ou rival d'épreuve.\nKit ou sprite : F003_STORY_05\n\nBesoins visuels restant à livrer :\nInspection de la gravure puis sortie de l’ombre ; marque seulement pour la version déjà initiée.\nContrechamp de garde spécifique de Grid, corps indépendant du chasseur.\nDeux entrées et portraits indépendants ; aucune image composite admise comme deux acteurs.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "729b71d830736fdd7d08523c007f6b808728ec30ca8715da9ef2962fa7d82b9e"
+    },
+    {
+      "id": "CAM-scar.06",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!I7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "6 — Stage spécial · L'épreuve du lieu\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : npc-xeno-drone\nVariante narrative de Avp 2004 queen chamber : ouverture d'un passage après trois échanges réussis. Un signal en fond change la tension, jamais les hitboxes du duel classé.\nObjectif / issue : Trois contres, esquives ou désarmements selon le kit ; le passage s'ouvre en cinématique. Pas de danger aléatoire non annoncé. Variante de scène alternative ; pas de duel de clan ajouté au milieu du film.\nKit ou sprite : F003_GUARD_H\n\nBesoins visuels restant à livrer :\nKit GUARD_H dédié référencé ; aucune quantité de dessins ou durée indiquée dans cette cellule.\nSignal de fond puis ouverture du passage en cinématique après trois contres, esquives ou désarmements.\nDécor indépendant des hitboxes classées ; aucune collision dangereuse aléatoire déduite du visuel.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "70ec326bc48b44f5ee5f81fd308234e6ee801b67ea5eccc0c5884a1c6f8d9d65"
+    },
+    {
+      "id": "CAM-scar.07",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!J7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "7 — Combat rival · Le choix à portée\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : npc-grid\nAffronter Grid. Le duel utilise les ressources réellement conservées ; Scar doit accomplir : passer l'épreuve de la pyramide puis contenir la reine avec lex.\nObjectif / issue : Victoire → choix trophée / neutralisation selon adversaire ; défaite → reprise du rival, pas reprise de toute la route.\nKit ou sprite : F003_ACT_SUPER\n\nBesoins visuels restant à livrer :\nRéutilisation du kit d’action cité possible ; elle ne livre ni route, adversaire, objectif ni continuité d’équipement.\nAdversaire, stage et issue de cette cellule à raccorder séparément.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "1b84d273b4abbee71a4c69594b242152b3546182bbf2de2d2045b5fffe2d1326"
+    },
+    {
+      "id": "CAM-scar.08",
+      "familyId": "pit-campaigns",
+      "family": "The Pit · campagnes",
+      "domain": "The Pit · campagne",
+      "source": "08_CAMPAGNES!K7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "8 — Cinématique outro · La preuve du retour\nStage : arena-124-avp-2004-queen-chamber\nAdversaire : Aucun\nBranche alternative : Scar et Lex rouvrent une sortie ensemble. Un épilogue distinct rappelle l'issue connue de l'œuvre sans la modifier.\nObjectif / issue : Fin de route ; récompense cosmétique proposée, jamais une technique canonique inventée.\nKit ou sprite : F003_STORY_08\n\nBesoins visuels restant à livrer :\nScar et Lex rouvrant une sortie ensemble : acteurs indépendants et équipement cohérent.\nÉpilogue distinct rappelant l’issue connue ; la fin jouée est annoncée comme branche alternative.",
+      "latestRecordedRemaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace.",
+      "acceptance": "Scène source et acteurs exacts ; les seize étapes ne sont pas remplacées par un exercice libre.",
+      "originalRowSha256": "ed5191998621a8bf21b4050e516d7489a8bc5d33fa3ccb1f53c3e1da07c6e009"
+    },
+    {
+      "id": "VAR-scar.pilot-outfit",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!C7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Tenue pilote\nVerrouiller UNE incarnation et son jeu d'armes\nNe pas mélanger versions cinéma, figurine, jeu ou époque.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "92ad21ee490e150f05fcbd23d96c800839d326c5d21a63fd2f9cfa99a1abfdfd"
+    },
+    {
+      "id": "VAR-scar.masked",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!D7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Masque porté\nRéférencer biomask et capteurs\nCanons / visée seulement si le dispositif et le chapitre l'autorisent.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "fa2d30ab597273a557e6b1ab15ba635c8cfb99cf7e88e4f0525c3c7fc1d8facf"
+    },
+    {
+      "id": "VAR-scar.unmasked",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!E7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Visage découvert\nRéférence du visage ; sinon interprétation affichée\nAucune tête inventée annoncée 1:1 ; cicatrices et mandibules sur le bon côté.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "f7cc3ff4d56a4fc52e4b51e8eae9d264a5a6c454784c48f2a12ee1770392d078"
+    },
+    {
+      "id": "VAR-scar.lost-or-stowed-equipment",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!F7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Équipement perdu / rangé\nDessins de main vide et emplacement vide\nCoups d'arme désactivés jusqu'au ramassage/rééquipement ; pas de duplication.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "5a8dc08ca82bf7886a91ccdb2ba587d1927aa53ef7f6d48673068a8b6398e692"
+    },
+    {
+      "id": "VAR-scar.damage-and-armor",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!G7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Dégâts / armure\nChangement de costume seulement quand documenté\nLes pièces cassées restent cassées dans l'intro/outro de l'état correspondant.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "c748fba232b10b625611aa37aaf2a8426385be787a61235fe0d3f54602b8652c"
+    },
+    {
+      "id": "VAR-scar.native-directions",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!H7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Orientation gauche / droite\nDeux vues natives mesurées\nPas de miroir qui inverse canon, gantelet, cicatrice ou trophée.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "ddd5c9484a538086b669c89524019e60cb363051358a65a2722ad4d242609daa"
+    },
+    {
+      "id": "VAR-scar.cloak",
+      "familyId": "pit-variants",
+      "family": "The Pit · variantes",
+      "domain": "The Pit · variante",
+      "source": "14_VARIANTES!I7",
+      "status": "OUVERT_SOURCE",
+      "priority": "P2",
+      "originalNeed": "Camouflage\nEffet séparé si l'équipement le permet\nJamais une autre anatomie ou un téléport ; option inactive pour les incarnations non équipées.\nLimite propre au personnage : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nÉtat : Disponibilité de cette variante précise non mesurée dans cet audit",
+      "latestRecordedRemaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque.",
+      "acceptance": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+      "originalRowSha256": "7ce50a07915044415d1314d2caee60cfad02ca1cd38fc9e014e22b58f2172650"
+    }
+  ],
+  "homeworldNeeds": [
+    {
+      "id": "HW112-SPATIAL-COHERENCE",
+      "section": "12 / 18 / 23",
+      "need": "Former des groupes urbains cohérents, des rues/ruelles/cours et des accès lisibles ; corriger les placements sans fermer les passages.",
+      "acceptance": "Mesurer les chevauchements et accès sur la géométrie réelle ; conserver les passages et vérifier les déplacements du moteur puis le rendu compilé."
+    },
+    {
+      "id": "HW112-MOBILITY-ACCESS",
+      "section": "18 / 20 / 23",
+      "need": "Raccorder les destinations, seuils et trajets à des points réellement atteignables, sans téléportation ni collision affaiblie.",
+      "acceptance": "Ancien cas bloqué reproduit, route suivie par le corps réel, changements de charge/phase invalidant les propositions périmées."
+    },
+    {
+      "id": "HW112-CITY-LIFE",
+      "section": "12 / 15 / 16 / 21",
+      "need": "Réduire les espaces visuellement vides avec un tissu urbain et une activité cohérente ; garder la lisibilité et les distances d’activation.",
+      "acceptance": "Éléments ancrés et réutilisés explicitement, aucun faux objet interactif ; captures du jeu compilé et contrôles des accès, mouvement réduit et pause."
+    },
+    {
+      "id": "HW112-OPEN-GAMEPLAY",
+      "section": "14 / 15 / 25",
+      "need": "Faire progresser une activité ou un besoin source vérifiable par son vrai comportement, pas par un compteur décoratif.",
+      "acceptance": "Préconditions, interaction effective, persistance et refus testés ; portée exacte liée au besoin sans clore un rôle ou une famille entière."
+    },
+    {
+      "id": "HW112-UPGRADE-RECOVERY",
+      "section": "23 / 26 — QA 7 sauvegarde",
+      "need": "Préserver une reprise cohérente quand un ancien checkpoint ou point de phase enregistré est occupé par un nouveau meuble V112.",
+      "acceptance": "Reproduire le même checkpoint V111 libre avant mise à jour et bloqué après, proposer une récupération explicitement confirmée avec sauvegarde des sept registres, refuser les reçus étrangers/périmés et vérifier le vrai moteur, le quota et le rechargement."
+    }
+  ],
+  "artTargets": [
+    {
+      "id": "target-v81-55-1",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "fondation roche",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-2",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "fondation métallique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-3",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "socle monumental",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-4",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "mur droit court",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-5",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "mur droit long",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-6",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "mur diagonal gauche",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-7",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "mur diagonal droite",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-8",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "mur courbe",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-9",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "mur bas",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-10",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "mur haut",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-11",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "mur de soutènement",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-12",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "angle intérieur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-13",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "angle extérieur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-14",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "pilier",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-15",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "colonne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-16",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "console",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-17",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "contrefort",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-18",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "poutre",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-19",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "arche",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-20",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "linteau",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-21",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "parapet",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-22",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "créneau Yautja",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-23",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "toit",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-24",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "toit terrasse",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-25",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "corniche",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-26",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "balcon",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-55-27",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "terrasse",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-28",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "plateforme",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-29",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "plateforme suspendue",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-30",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "pont court",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-31",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "pont moyen",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-32",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "pont monumental",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-33",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "passerelle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-34",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "passerelle industrielle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-35",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "escalier court",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-36",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "escalier monumental",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-37",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "escalier latéral",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-38",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "rampe",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-39",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "rampe industrielle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-55-40",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "ascenseur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-55-41",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "cage ascenseur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-55-42",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "tunnel",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-55-43",
+      "section": 55,
+      "family": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "label": "entrée tunnel",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-56-44",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "Petit seuil domestique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-45",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "entrée habitation",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-46",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "porte atelier",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-47",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "porte forge",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-48",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "porte entrepôt",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-49",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "porte clan",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-50",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "porte militaire",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-51",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "porte temple",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-52",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "porte Conseil",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-53",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "porte palais",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-54",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "grande porte",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-55",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "sas spatioport",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-56",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "sas hangar",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-56-57",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "grille",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-56-58",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "label": "porte énergétique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-57-59",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "Barrière courte",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-60",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "barrière longue",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-61",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "barrière diagonale gauche",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-62",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "barrière diagonale droite",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-63",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "angle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-64",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "extrémité",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-65",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "poteau",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-66",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "gate",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-67",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "barrière massive",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-68",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "barrière industrielle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-69",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "barrière de canyon",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-70",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "barrière de lave",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-57-71",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "émetteur énergie gauche",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-57-72",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "émetteur énergie droit",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-57-73",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "label": "champ énergétique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-58-74",
+      "section": 58,
+      "family": "HABITATIONS",
+      "label": "petite habitation",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-58-75",
+      "section": 58,
+      "family": "HABITATIONS",
+      "label": "habitation moyenne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-58-76",
+      "section": 58,
+      "family": "HABITATIONS",
+      "label": "habitation clan",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-58-77",
+      "section": 58,
+      "family": "HABITATIONS",
+      "label": "habitation artisan",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-58-78",
+      "section": 58,
+      "family": "HABITATIONS",
+      "label": "habitation vétéran",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-58-79",
+      "section": 58,
+      "family": "HABITATIONS",
+      "label": "habitation Elite",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-58-80",
+      "section": 58,
+      "family": "HABITATIONS",
+      "label": "logement vertical",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-58-81",
+      "section": 58,
+      "family": "HABITATIONS",
+      "label": "logement adossé falaise",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-58-82",
+      "section": 58,
+      "family": "HABITATIONS",
+      "label": "logement terrasse",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-58-83",
+      "section": 58,
+      "family": "HABITATIONS",
+      "label": "habitation ancienne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-58-84",
+      "section": 58,
+      "family": "HABITATIONS",
+      "label": "habitation industrielle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-85",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "Salle clanique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-86",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "maison de délégation",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-87",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "archives",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-88",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "registre",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-89",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "cour de justice",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-90",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "annexe du Conseil",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-91",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "hall cérémoniel",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-92",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "hall de trophées",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-93",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "mausolée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-94",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "armurerie",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-95",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "forge",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-96",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "atelier",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-97",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "marché",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-98",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "entrepôt",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-99",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "poste de garde",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-100",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "bastion",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-101",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "infirmerie/soins Yautja",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-102",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "centre d'entraînement",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-103",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "arène mineure",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-104",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "dock control",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-59-105",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "hangar",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-59-106",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "atelier skiff",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-60-107",
+      "section": 60,
+      "family": "PROPS DE REPOS",
+      "label": "Banc massif",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-60-108",
+      "section": 60,
+      "family": "PROPS DE REPOS",
+      "label": "banc court",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-60-109",
+      "section": 60,
+      "family": "PROPS DE REPOS",
+      "label": "banc long",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-60-110",
+      "section": 60,
+      "family": "PROPS DE REPOS",
+      "label": "banc contre mur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-60-111",
+      "section": 60,
+      "family": "PROPS DE REPOS",
+      "label": "banc de terrasse",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-60-112",
+      "section": 60,
+      "family": "PROPS DE REPOS",
+      "label": "banc cérémoniel",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-60-113",
+      "section": 60,
+      "family": "PROPS DE REPOS",
+      "label": "assise individuelle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-60-114",
+      "section": 60,
+      "family": "PROPS DE REPOS",
+      "label": "tabouret/clan seat",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-60-115",
+      "section": 60,
+      "family": "PROPS DE REPOS",
+      "label": "assise pierre",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-60-116",
+      "section": 60,
+      "family": "PROPS DE REPOS",
+      "label": "plateforme de repos",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-61-117",
+      "section": 61,
+      "family": "TABLES",
+      "label": "Table petite",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-61-118",
+      "section": 61,
+      "family": "TABLES",
+      "label": "table commune",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-61-119",
+      "section": 61,
+      "family": "TABLES",
+      "label": "table de clan",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-61-120",
+      "section": 61,
+      "family": "TABLES",
+      "label": "table atelier",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-61-121",
+      "section": 61,
+      "family": "TABLES",
+      "label": "table forge",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-61-122",
+      "section": 61,
+      "family": "TABLES",
+      "label": "table de marché",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-61-123",
+      "section": 61,
+      "family": "TABLES",
+      "label": "table archive",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-61-124",
+      "section": 61,
+      "family": "TABLES",
+      "label": "table de préparation",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-61-125",
+      "section": 61,
+      "family": "TABLES",
+      "label": "table logistique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-126",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "Caisse petite",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-127",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "caisse moyenne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-128",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "caisse lourde",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-129",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "caisse scellée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-130",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "conteneur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-131",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "conteneur long",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-132",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "coffre trophée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-133",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "coffre équipement",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-134",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "rack vertical",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-135",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "rack mural",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-136",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "rack industriel",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-137",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "casier",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-138",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "étagère archive",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-139",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "étagère atelier",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-62-140",
+      "section": 62,
+      "family": "STOCKAGE",
+      "label": "support outils",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-141",
+      "section": 63,
+      "family": "FORGE",
+      "label": "Forge active",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING_ANIMATION"
+    },
+    {
+      "id": "target-v81-63-142",
+      "section": 63,
+      "family": "FORGE",
+      "label": "foyer",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-143",
+      "section": 63,
+      "family": "FORGE",
+      "label": "table forge",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-144",
+      "section": 63,
+      "family": "FORGE",
+      "label": "enclume/interprétation Yautja",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-145",
+      "section": 63,
+      "family": "FORGE",
+      "label": "rack outils",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-146",
+      "section": 63,
+      "family": "FORGE",
+      "label": "rack pièces",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-147",
+      "section": 63,
+      "family": "FORGE",
+      "label": "bac refroidissement",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-148",
+      "section": 63,
+      "family": "FORGE",
+      "label": "stock métal",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-149",
+      "section": 63,
+      "family": "FORGE",
+      "label": "pièces suspendues",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-150",
+      "section": 63,
+      "family": "FORGE",
+      "label": "ventilation",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-151",
+      "section": 63,
+      "family": "FORGE",
+      "label": "conduit chaleur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-152",
+      "section": 63,
+      "family": "FORGE",
+      "label": "cheminée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-153",
+      "section": 63,
+      "family": "FORGE",
+      "label": "brasier",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-154",
+      "section": 63,
+      "family": "FORGE",
+      "label": "support armure",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-155",
+      "section": 63,
+      "family": "FORGE",
+      "label": "support masque",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-63-156",
+      "section": 63,
+      "family": "FORGE",
+      "label": "support arme",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-157",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "Stall court",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-158",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "stall long",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-159",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "stand diagonal gauche",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-160",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "stand diagonal droite",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-161",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "auvent",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-162",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "présentoir",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-163",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "table marchand",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-164",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "rack marchand",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-165",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "plateforme trophées",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-166",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "conteneur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-167",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "caisse marchand",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-168",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "éclairage marchand",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-169",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "bannière marchand",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-64-170",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "zone de stock",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-171",
+      "section": 65,
+      "family": "CLANS",
+      "label": "Bannière standard",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-172",
+      "section": 65,
+      "family": "CLANS",
+      "label": "bannière haute",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-173",
+      "section": 65,
+      "family": "CLANS",
+      "label": "bannière suspendue",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-174",
+      "section": 65,
+      "family": "CLANS",
+      "label": "mât",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-175",
+      "section": 65,
+      "family": "CLANS",
+      "label": "totem",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-65-176",
+      "section": 65,
+      "family": "CLANS",
+      "label": "glyph marker",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-177",
+      "section": 65,
+      "family": "CLANS",
+      "label": "lectern",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-178",
+      "section": 65,
+      "family": "CLANS",
+      "label": "table clanique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-179",
+      "section": 65,
+      "family": "CLANS",
+      "label": "siège",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-180",
+      "section": 65,
+      "family": "CLANS",
+      "label": "petit monument",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-181",
+      "section": 65,
+      "family": "CLANS",
+      "label": "présentoir rituel",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-182",
+      "section": 65,
+      "family": "CLANS",
+      "label": "trophée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-65-183",
+      "section": 65,
+      "family": "CLANS",
+      "label": "brasero",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-184",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "Socle petit",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-185",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "socle moyen",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-186",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "socle géant",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-187",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "cabinet vide",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-188",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "cabinet mural",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-189",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "support crâne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-190",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "support arme",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-191",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "support biomask",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-192",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "crochet",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-66-193",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "chaîne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-194",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "vitrine/alcôve Yautja",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-195",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "panneau trophée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-66-196",
+      "section": 66,
+      "family": "TROPHÉES",
+      "label": "grand trophée monumental",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-197",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "Balise",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-198",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "landing light",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-199",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "console dock",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-200",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "borne dock",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-201",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "clamp",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-202",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "support navette",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-203",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "gantry",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-204",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "grue",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-205",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "bras mécanique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-206",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "chariot cargo",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-207",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "chariot vide",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-208",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "cart lourd",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-209",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "caisse cargo",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-210",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "rack cargo",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-211",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "fuel/energy conduit",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-212",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "câble énergie",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-213",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "module maintenance",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-214",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "plateforme maintenance",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-215",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "échelle maintenance",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-216",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "petit skiff",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-217",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "support skiff",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-218",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "signal de départ",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-219",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "signal d'arrivée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-220",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "sas",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-221",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "panneau de contrôle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-222",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "tour contrôle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-67-223",
+      "section": 67,
+      "family": "SPATIOPORT",
+      "label": "antenne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-224",
+      "section": 68,
+      "family": "RUE",
+      "label": "Lampadaire",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-225",
+      "section": 68,
+      "family": "RUE",
+      "label": "lampe basse",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-226",
+      "section": 68,
+      "family": "RUE",
+      "label": "balise murale",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-227",
+      "section": 68,
+      "family": "RUE",
+      "label": "borne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-228",
+      "section": 68,
+      "family": "RUE",
+      "label": "bollard",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-229",
+      "section": 68,
+      "family": "RUE",
+      "label": "poteau",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-230",
+      "section": 68,
+      "family": "RUE",
+      "label": "marqueur clanique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-231",
+      "section": 68,
+      "family": "RUE",
+      "label": "signal directionnel",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-232",
+      "section": 68,
+      "family": "RUE",
+      "label": "plaque/glyphe",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-233",
+      "section": 68,
+      "family": "RUE",
+      "label": "drainage",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-234",
+      "section": 68,
+      "family": "RUE",
+      "label": "grille",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-235",
+      "section": 68,
+      "family": "RUE",
+      "label": "caniveau",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-236",
+      "section": 68,
+      "family": "RUE",
+      "label": "trappe",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-68-237",
+      "section": 68,
+      "family": "RUE",
+      "label": "plaque sol",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-238",
+      "section": 68,
+      "family": "RUE",
+      "label": "joint de pavage",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-239",
+      "section": 68,
+      "family": "RUE",
+      "label": "ventilation sol",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-240",
+      "section": 68,
+      "family": "RUE",
+      "label": "conduit",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-68-241",
+      "section": 68,
+      "family": "RUE",
+      "label": "câble",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-242",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "Petit rocher A/B/C",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-243",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "moyen rocher A/B/C",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-244",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "gros rocher A/B/C",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-245",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "affleurement",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-246",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "basalte",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-247",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "colonne basaltique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-248",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "roche fracturée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-249",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "roche volcanique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-250",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "fissure",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-251",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "sol craquelé",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-252",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "évent vapeur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-253",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "évent chaleur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-254",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "petite coulée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-255",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "cristal/minéral",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-69-256",
+      "section": 69,
+      "family": "DÉCOR ROCHE / VOLCANIQUE",
+      "label": "cendre",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-70-257",
+      "section": 70,
+      "family": "VÉGÉTATION YAUTJA PRIME",
+      "label": "Petite plante",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-70-258",
+      "section": 70,
+      "family": "VÉGÉTATION YAUTJA PRIME",
+      "label": "plante basse",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-70-259",
+      "section": 70,
+      "family": "VÉGÉTATION YAUTJA PRIME",
+      "label": "plante minérale",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-70-260",
+      "section": 70,
+      "family": "VÉGÉTATION YAUTJA PRIME",
+      "label": "arbuste",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-70-261",
+      "section": 70,
+      "family": "VÉGÉTATION YAUTJA PRIME",
+      "label": "fourré",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-70-262",
+      "section": 70,
+      "family": "VÉGÉTATION YAUTJA PRIME",
+      "label": "plante sèche",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-70-263",
+      "section": 70,
+      "family": "VÉGÉTATION YAUTJA PRIME",
+      "label": "espèce côtière",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-70-264",
+      "section": 70,
+      "family": "VÉGÉTATION YAUTJA PRIME",
+      "label": "végétation falaise",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-70-265",
+      "section": 70,
+      "family": "VÉGÉTATION YAUTJA PRIME",
+      "label": "végétation bioluminescente pour région appropriée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-71-266",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "Enclos",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-71-267",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "poteau enclos",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-71-268",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "barrière enclos",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-71-269",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "porte",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-71-270",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "barrière énergie",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-71-271",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "abreuvoir alien",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-71-272",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "nourrisseur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-71-273",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "support harnais",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-71-274",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "rack dressage",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-71-275",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "plateforme observation",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-71-276",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "cage petite",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-71-277",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "cage moyenne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-71-278",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "cage lourde",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-71-279",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "fosse",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-71-280",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "signal danger",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-72-281",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "Zone d'attache",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-72-282",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "support harnais",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-72-283",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "harnais",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-72-284",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "selle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-72-285",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "rack selle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-72-286",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "plateforme monte",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-72-287",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "barrière",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-72-288",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "mangeoire adaptée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-72-289",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "petite zone d'entraînement",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-72-290",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "poste de soin",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-291",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "Plaque réparation",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-292",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "panneau récupéré",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-293",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "barrière bricolée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-294",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "câble suspendu",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-295",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "tuyau apparent",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-73-296",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "vent",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-297",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "grille",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-298",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "caisses usées",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-299",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "conteneurs usés",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-300",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "rack récupération",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-301",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "pile scrap",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-73-302",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "tôle Yautja",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-303",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "petit auvent",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-304",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "marché noir",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-305",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "petite cage",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-73-306",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "éclairage pauvre",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-307",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "signal endommagé",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-73-308",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "échafaudage",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-73-309",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "label": "passerelle légère",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-310",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "Générateur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-74-311",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "transformateur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-74-312",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "conduit",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-313",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "câble lourd",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-314",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "ventilation",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-315",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "radiateur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-74-316",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "pompe",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-74-317",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "réservoir",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-318",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "cuve",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-319",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "valve",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    },
+    {
+      "id": "target-v81-74-320",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "panneau technique",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-321",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "maintenance rack",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-322",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "chariot",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-323",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "grue",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-324",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "treuil",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-325",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "palan",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-326",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "rail",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-74-327",
+      "section": 74,
+      "family": "INDUSTRIEL",
+      "label": "support industriel",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-328",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "Colonne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-329",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "socle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-330",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "statue",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-331",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "brasero",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-332",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "bannière haute",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-333",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "glyph panel",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-334",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "siège ancien",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-335",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "plateforme ancien",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-336",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "lectern",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-337",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "tablette/registre",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-338",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "porte monumentale",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-339",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "balustrade",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-340",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "grand escalier",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-75-341",
+      "section": 75,
+      "family": "CONSEIL",
+      "label": "garde-corps cérémoniel",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-342",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "Socle royal",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-343",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "statue majeure",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-344",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "bannière royale/création locale clairement identifiée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-345",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "garde",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-346",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "brasero monumental",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-347",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "colonne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-348",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "trône",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-349",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "plateforme trône",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-350",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "grands escaliers",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-351",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "portes",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-352",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "balustrades",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-353",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "trophées prestigieux",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "EXISTING_NEEDS_VARIANT"
+    },
+    {
+      "id": "target-v81-76-354",
+      "section": 76,
+      "family": "PALAIS / ROI",
+      "label": "alcôves",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "inventoryStatusV111": "MISSING"
+    }
+  ],
+  "limits": [
+    "Les 56 lignes source ne sont pas 56 petits correctifs Homeworld : les campagnes, partenaires, variantes et productions artistiques restent individuellement nécessaires.",
+    "Les neuf actions sont un sous-ensemble des 56 exigences, pas neuf lignes supplémentaires.",
+    "Les 313 candidats artistiques, 40 absences de candidats et une animation manquante sont un état de présence V111 ; une présence ne certifie ni admission ni qualité.",
+    "La mesure Preserve héritée V109 est 32 secteurs / 64 adultes, cibles 80 / 100 ; ces nombres ne sont pas une nouvelle mesure V112.",
+    "Les preuves V111 demeurent historiques ; chaque avancée V112 exige des preuves de son propre périmètre."
+  ]
+}

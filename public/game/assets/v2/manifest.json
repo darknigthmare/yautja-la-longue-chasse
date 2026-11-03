@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "artDirection": "original high-detail pixel-art alien hunting game assets generated with OpenAI",
+  "hunter": {
+    "body": "/game/assets/v2/actors/yautja/hunter/body/base.webp",
+    "dreads": {
+      "classic": "/game/assets/v2/actors/yautja/hunter/dreads/classic.webp",
+      "braided": "/game/assets/v2/actors/yautja/hunter/dreads/braided.webp",
+      "elder": "/game/assets/v2/actors/yautja/hunter/dreads/elder.webp"
+    },
+    "masks": {
+      "jungle": "/game/assets/v2/actors/yautja/hunter/masks/jungle.webp",
+      "scarred": "/game/assets/v2/actors/yautja/hunter/masks/scarred.webp",
+      "elder": "/game/assets/v2/actors/yautja/hunter/masks/elder.webp"
+    },
+    "armor": {
+      "scout": "/game/assets/v2/actors/yautja/hunter/armor/scout.webp",
+      "hunter": "/game/assets/v2/actors/yautja/hunter/armor/hunter.webp",
+      "berserker": "/game/assets/v2/actors/yautja/hunter/armor/berserker.webp"
+    },
+    "equipment": {
+      "plasmaCaster": "/game/assets/v2/actors/yautja/hunter/equipment/plasma-caster.webp",
+      "gauntletClosed": "/game/assets/v2/actors/yautja/hunter/equipment/gauntlet-closed.webp",
+      "gauntletOpen": "/game/assets/v2/actors/yautja/hunter/equipment/gauntlet-open.webp",
+      "wristbladesRetracted": "/game/assets/v2/actors/yautja/hunter/equipment/wristblades-retracted.webp",
+      "wristbladesExtended": "/game/assets/v2/actors/yautja/hunter/equipment/wristblades-extended.webp"
+    },
+    "trophies": {
+      "skullSpine": "/game/assets/v2/actors/yautja/hunter/trophies/skull-spine.webp"
+    }
+  },
+  "jungle": {
+    "layers": {
+      "far": "/game/assets/v2/environments/jungle/layers/far-lake.webp",
+      "foregroundFerns": "/game/assets/v2/environments/jungle/foreground/ferns.webp",
+      "foregroundReeds": "/game/assets/v2/environments/jungle/foreground/lake-reeds.webp",
+      "foregroundVines": "/game/assets/v2/environments/jungle/foreground/hanging-vines.webp"
+    },
+    "platforms": {
+      "treeCrown": "/game/assets/v2/environments/jungle/platforms/tree-crown.webp",
+      "rootBranch": "/game/assets/v2/environments/jungle/platforms/root-branch.webp",
+      "stoneSlab": "/game/assets/v2/environments/jungle/platforms/stone-slab.webp",
+      "expedition": "/game/assets/v2/environments/jungle/platforms/expedition-platform.webp"
+    },
+    "climbables": {
+      "treeTrunk": "/game/assets/v2/environments/jungle/climbables/tree-trunk.webp",
+      "vineLadder": "/game/assets/v2/environments/jungle/climbables/vine-ladder.webp"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+name: Alien Base bestiary archive contract
+on:
+  pull_request:
+    paths:
+      - 'app/game/alienBaseReferenceDataV1.ts'
+      - 'app/game/AlienBaseArchiveV1.tsx'
+      - 'app/game/AlienBaseArchiveV1.module.css'
+      - 'app/game/EnemyBestiaryV8.tsx'
+      - 'app/game/alienBaseYautjaBindingsV1.ts'
+      - 'app/game/CatalogueHunterBrowser.tsx'
+      - 'tests/alien-base-hunters-v1.test.mjs'
+      - 'tests/alien-base-archive-v1.test.mjs'
+      - 'tests/browser/alien-base-archive-v1.fixture.tsx'
+      - 'scripts/qa-alien-base-archive-v1.mjs'
+      - '.github/workflows/alien-base-archive-v1.yml'
+  push:
+    branches: [feat/alien-base-crossgame-bestiary-20261101]
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig.json
+            /eslint.config.mjs
+            /*.ts
+            /app/
+            /tests/
+            /scripts/
+            /desktop/
+            /types/
+            /lib/
+            /build/
+            /.openai/
+            /public/game/assets/v14/hunter-kit/manifest.json
+            /public/game/assets/v15/trophies/manifest.json
+            /public/game/assets/v16/franchise-trophies/manifest.json
+            /public/game/assets/v17/enemy-trophies/manifest.json
+            /public/game/assets/v18/enemy-trophy-gameplay/manifest.json
+            /public/game/assets/v28/sprite-review/manifest.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Restore locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate distinct film identities and no gameplay admission
+        run: node --experimental-strip-types --test tests/alien-base-archive-v1.test.mjs tests/alien-base-hunters-v1.test.mjs
+      - name: Typecheck
+        run: npx --no-install tsc --noEmit --incremental false
+      - name: Lint affected components and tests
+        run: npx --no-install eslint app/game/AlienBaseArchiveV1.tsx app/game/alienBaseReferenceDataV1.ts app/game/alienBaseYautjaBindingsV1.ts app/game/EnemyBestiaryV8.tsx app/game/CatalogueHunterBrowser.tsx tests/alien-base-archive-v1.test.mjs tests/alien-base-hunters-v1.test.mjs tests/browser/alien-base-archive-v1.fixture.tsx scripts/qa-alien-base-archive-v1.mjs
+      - name: Install Chromium
+        run: npx --no-install playwright-core install --with-deps chromium
+      - name: Inspect real bestiary and catalogue in Chromium
+        run: |
+          export AUDIT_CHROME_EXECUTABLE="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-alien-base-archive-v1.mjs

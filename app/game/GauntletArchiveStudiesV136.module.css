@@ -1,0 +1,4 @@
+.art{display:block;width:100%;height:auto;overflow:visible;max-height:270px;aspect-ratio:540 / 290}
+.lid{transform:translateX(0);transition:transform 380ms cubic-bezier(.2,.8,.18,1);pointer-events:none}
+.lid[data-cover-position="closed"]{transform:translateX(-96px)}
+@media(prefers-reduced-motion:reduce){.lid{transition:none!important}}

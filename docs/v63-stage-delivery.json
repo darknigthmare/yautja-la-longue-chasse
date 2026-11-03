@@ -1,0 +1,498 @@
+{
+  "schemaVersion": 1,
+  "release": "V63",
+  "scope": "stages-only",
+  "checkedAt": "2026-09-30T22:45:42.479Z",
+  "status": "INTEGRATED_AND_LOCAL_QA_PASS",
+  "counts": {
+    "affectedStages": 6,
+    "newPlayableStages": 0,
+    "currentRuntimeStages": 187,
+    "addedNativePngs": 7,
+    "addedAmbientSheets": 6,
+    "addedNativeAnimationDrawings": 36,
+    "addedBackdropPngs": 1,
+    "totalDrawingsIncludingBackdrop": 37,
+    "newAmbientEvents": 6,
+    "retainedV62Events": 5,
+    "retainedV62AnimationDrawings": 30,
+    "activeEventsAcrossTwoExpandedStages": 11,
+    "activeNativeFramesAcrossTwoExpandedStages": 66,
+    "preservedSuppressedAmbientSheets": 1,
+    "preservedSupersededBackdrops": 1,
+    "deletedNativePngs": 0,
+    "originalStagesWithNativeCropCorrections": 4,
+    "newStoryClips": 0,
+    "literalDossiersCertifiedComplete": 0
+  },
+  "stages": [
+    {
+      "stageId": "arena-126-avpr-2007-hospital-roof",
+      "workbookDossier": "ST167",
+      "newSourceCells": [
+        "10_VIE_DES_STAGES!E503",
+        "10_VIE_DES_STAGES!E504",
+        "10_VIE_DES_STAGES!E505"
+      ],
+      "activeEvents": 5,
+      "newEvents": [
+        {
+          "id": "ambient-04",
+          "name": "Gaine vibrante — raccord fixé au bloc HVAC",
+          "path": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+          "frames": 6
+        },
+        {
+          "id": "ambient-05",
+          "name": "Lumières urbaines — variation lente distante",
+          "path": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+          "frames": 6
+        },
+        {
+          "id": "ambient-06",
+          "name": "Panache avant destruction — cheminée de fond",
+          "path": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+          "frames": 6
+        }
+      ],
+      "retainedEvents": [
+        "ambient-02",
+        "ambient-03"
+      ],
+      "suppressedEvents": [
+        {
+          "id": "ambient-01",
+          "sourceCell": "10_VIE_DES_STAGES!E62",
+          "reason": "ST167/E505 interdit les spectateurs civils sur ce toit ; PNG V62 conservé, ancien événement E62 non livré dans cette continuité."
+        }
+      ],
+      "chapterReconstructionComplete": false
+    },
+    {
+      "stageId": "arena-130-avp-classic-2000-space-station",
+      "workbookDossier": "ST170",
+      "newSourceCells": [
+        "10_VIE_DES_STAGES!E512",
+        "10_VIE_DES_STAGES!E513",
+        "10_VIE_DES_STAGES!E514"
+      ],
+      "activeEvents": 6,
+      "newEvents": [
+        {
+          "id": "ambient-04",
+          "name": "Piston de maintenance — derrière barrière",
+          "path": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-04.png",
+          "frames": 6
+        },
+        {
+          "id": "ambient-05",
+          "name": "Purge intermittente — conduite du fond",
+          "path": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-05.png",
+          "frames": 6
+        },
+        {
+          "id": "ambient-06",
+          "name": "Trappe de contrôle — voyant ambre stable",
+          "path": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-06.png",
+          "frames": 6
+        }
+      ],
+      "retainedEvents": [
+        "ambient-01",
+        "ambient-02",
+        "ambient-03"
+      ],
+      "suppressedEvents": [],
+      "chapterReconstructionComplete": false
+    }
+  ],
+  "originalCompositionCorrections": [
+    {
+      "stageId": "arena-051-golgotha-etude-jaguar",
+      "source": "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+      "sourceSha256": "ffedbeb2d761a7e6143e2e216683d08dfa8244feb12e6d555f21259555d1b7bf",
+      "crop": {
+        "x": 100,
+        "y": 235,
+        "width": 1972,
+        "height": 194
+      },
+      "minAlpha": 250,
+      "originalPlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 110
+        }
+      ],
+      "runtimePlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ],
+      "sourcePngEdited": false
+    },
+    {
+      "stageId": "arena-081-cercle-obsidienne",
+      "source": "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+      "sourceSha256": "ffedbeb2d761a7e6143e2e216683d08dfa8244feb12e6d555f21259555d1b7bf",
+      "crop": {
+        "x": 100,
+        "y": 235,
+        "width": 1972,
+        "height": 194
+      },
+      "minAlpha": 250,
+      "originalPlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 110
+        }
+      ],
+      "runtimePlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ],
+      "sourcePngEdited": false
+    },
+    {
+      "stageId": "arena-085-cercle-sang",
+      "source": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-b-front-fascia.png",
+      "sourceSha256": "c554643b719d1b3a41d4766eea2f14ba60aa3d0ae9f5cc398c07ca7e618c7519",
+      "crop": {
+        "x": 100,
+        "y": 299,
+        "width": 1972,
+        "height": 186
+      },
+      "minAlpha": 250,
+      "originalPlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 110
+        }
+      ],
+      "runtimePlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ],
+      "sourcePngEdited": false
+    },
+    {
+      "stageId": "arena-087-cercle-ambre",
+      "source": "/game/sprites/v34/pit-arenas/glass-terrace/p4-b-front-fascia.png",
+      "sourceSha256": "141f81f50596b53c6fcb8db39dafb22dad11ada02c344c947ba34da1b9b66c1a",
+      "crop": {
+        "x": 100,
+        "y": 146,
+        "width": 1972,
+        "height": 109
+      },
+      "minAlpha": 250,
+      "originalPlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 110
+        }
+      ],
+      "runtimePlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ],
+      "sourcePngEdited": false
+    }
+  ],
+  "nativeEvidence": {
+    "path": "docs/v63-stage-native-assets-qa.json",
+    "sha256": "dde3803961f1c740137f0c72abb0fe5bded61931ed131ad8c9099ee893ac2a66",
+    "assets": [
+      {
+        "receipt": "docs/v63-generation/arena-126-avpr-2007-hospital-roof-ambient-04.json",
+        "path": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+        "sha256": "9458fc8aa098e7ecd7fd55aedf5ebd38f6b3e23527d5d3f2307377456c46d81b",
+        "drawings": 6,
+        "transparent": true,
+        "copyByteIdentical": true
+      },
+      {
+        "receipt": "docs/v63-generation/arena-126-avpr-2007-hospital-roof-ambient-05.json",
+        "path": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+        "sha256": "b0ab59efa18fc98a2ac901e5f2eca30f97a97f57ec24752a8bb70ddd112301ab",
+        "drawings": 6,
+        "transparent": true,
+        "copyByteIdentical": true
+      },
+      {
+        "receipt": "docs/v63-generation/arena-126-avpr-2007-hospital-roof-ambient-06.json",
+        "path": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+        "sha256": "003f580b715e04c8fe91c3c2dfa70d7065aaca6d57e5ca40e574a7eb93ba90be",
+        "drawings": 6,
+        "transparent": true,
+        "copyByteIdentical": true
+      },
+      {
+        "receipt": "docs/v63-generation/arena-126-avpr-2007-hospital-roof-p0-depth.json",
+        "path": "/game/sprites/v63/pit-arenas/arena-126-avpr-2007-hospital-roof/p0-depth.png",
+        "sha256": "50c7c2d4c31f44af82913b397105f3d7d87b8e4e574fb353331c6c4dcedd64eb",
+        "drawings": 1,
+        "transparent": false,
+        "copyByteIdentical": true
+      },
+      {
+        "receipt": "docs/v63-generation/arena-130-avp-classic-2000-space-station-ambient-04.json",
+        "path": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-04.png",
+        "sha256": "2bc8f60c2acd436a582a2083ea7a630a863b66244bd7033d53f2f95fd304ba5e",
+        "drawings": 6,
+        "transparent": true,
+        "copyByteIdentical": true
+      },
+      {
+        "receipt": "docs/v63-generation/arena-130-avp-classic-2000-space-station-ambient-05.json",
+        "path": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-05.png",
+        "sha256": "1913b40d70ec0cc711ffc6703a4af45f0bfcc23a0dcfd6d47cc86afb591ca1be",
+        "drawings": 6,
+        "transparent": true,
+        "copyByteIdentical": true
+      },
+      {
+        "receipt": "docs/v63-generation/arena-130-avp-classic-2000-space-station-ambient-06.json",
+        "path": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-06.png",
+        "sha256": "68388a50ef0130bcfadb9830f7e5305610bf69fafee88c0fb548ee1e1ef49680",
+        "drawings": 6,
+        "transparent": true,
+        "copyByteIdentical": true
+      }
+    ]
+  },
+  "rendererEvidence": {
+    "path": "work-local/v63/qa/stages/renderer/report.json",
+    "sha256": "d604559fed0a7a16569444d6a67e3f1bd8ebe1f8639b89f5da37d3a322df4f26",
+    "status": "PASS",
+    "stages": 6,
+    "cameraChecks": 58,
+    "nativeFrameChecks": 66,
+    "captures": 130
+  },
+  "visualEvidence": {
+    "path": "docs/v63-stage-composition-visual-review.json",
+    "reviewedCaptureCount": 16,
+    "scope": "Targeted independent visual inspection, separate from automated captures."
+  },
+  "applicationEvidence": {
+    "path": "docs/v63-stage-application-qa.json",
+    "status": "PASS",
+    "checks": 13,
+    "captures": 25,
+    "version": "V63",
+    "url": "http://127.0.0.1:4182"
+  },
+  "targetedTests": {
+    "command": "node --test tests/pit-stage-life-v62.test.mjs tests/pit-stage-life-v63.test.mjs tests/pit-arena-production.test.mjs",
+    "passed": 23,
+    "failed": 0
+  },
+  "workbookRemaining": {
+    "path": "docs/v63-stage-open-work.json",
+    "counts": {
+      "workbookDossiers": 174,
+      "workbookEvents": 522,
+      "uniqueTargets": 170,
+      "runtimeArenas": 187,
+      "dossiersWithoutRuntime": 0,
+      "dossiersWithoutNativeAmbientRegistry": 136,
+      "uniqueTargetsWithoutNativeAmbientRegistry": 135,
+      "uniqueTargetsWithNativeAmbientRegistry": 35,
+      "activeNativeAmbientEventsOnWorkbookTargets": 110,
+      "newWorkbookEventsAdaptedV63": 6,
+      "newStagesV63": 0,
+      "literalDossiersCertifiedComplete": 0
+    },
+    "priorityOpen": [
+      {
+        "stageKey": "ST103",
+        "targetStageId": "arena-187-golgotha-uscm-airlock",
+        "cells": [
+          "E311",
+          "E312",
+          "E313"
+        ],
+        "remaining": "Separate trio still unimplemented. E313 requires primary proof of scene presence before any silhouette."
+      },
+      {
+        "stageKey": "ST020",
+        "targetStageId": "arena-126-avpr-2007-hospital-roof",
+        "cells": [
+          "E62"
+        ],
+        "remaining": "Evacuation sprite preserved but inactive on the roof. A distinct validated off-roof or narrative continuity is still required; Wolf equipment/chronology remains open."
+      },
+      {
+        "stageNumber": 178,
+        "cells": [
+          "10_VIE_DES_STAGES!E131",
+          "10_VIE_DES_STAGES!E133"
+        ],
+        "remaining": "Commentary and betting screen must stop only after a story incident, not a random animation or any hit. The V61 adapter is present, but no verified narrative caller has been added by V63."
+      },
+      {
+        "stageNumber": 179,
+        "cells": [
+          "10_VIE_DES_STAGES!E136"
+        ],
+        "remaining": "Beacon deactivates after a completed objective; current asset is a neutral diagnostic loop. The V61 adapter is present, but no verified narrative caller has been added by V63."
+      },
+      {
+        "stageNumber": 180,
+        "cells": [
+          "10_VIE_DES_STAGES!E138"
+        ],
+        "remaining": "Captives only in the appropriate chapter. V60 crew is anonymous atmosphere, not a chapter-specific captive. The V61 adapter is present, but no verified narrative caller has been added by V63."
+      },
+      {
+        "stageKey": "ST001",
+        "targetStageId": "arena-103-predator-1987-final-trap-clearing",
+        "cells": [
+          "10_VIE_DES_STAGES!E5",
+          "10_VIE_DES_STAGES!E6",
+          "10_VIE_DES_STAGES!E7"
+        ],
+        "remaining": "Existing background has no V60–V63 dedicated native ambient registry. Audit primary references and exact conditions before generating its three events."
+      },
+      {
+        "stageKey": "ST002",
+        "targetStageId": "arena-106-predator-2-1990-trophy-ship",
+        "cells": [
+          "10_VIE_DES_STAGES!E8",
+          "10_VIE_DES_STAGES!E9",
+          "10_VIE_DES_STAGES!E10"
+        ],
+        "remaining": "Existing background has no V60–V63 dedicated native ambient registry. Audit primary references and exact conditions before generating its three events."
+      },
+      {
+        "stageKey": "ST003",
+        "targetStageId": "arena-122-avp-2004-sacrificial-chamber",
+        "cells": [
+          "10_VIE_DES_STAGES!E11",
+          "10_VIE_DES_STAGES!E12",
+          "10_VIE_DES_STAGES!E13"
+        ],
+        "remaining": "Existing background has no V60–V63 dedicated native ambient registry. Audit primary references and exact conditions before generating its three events."
+      },
+      {
+        "stageKey": "ST004",
+        "targetStageId": "arena-127-avpr-2007-forest-crash",
+        "cells": [
+          "10_VIE_DES_STAGES!E14",
+          "10_VIE_DES_STAGES!E15",
+          "10_VIE_DES_STAGES!E16"
+        ],
+        "remaining": "Existing background has no V60–V63 dedicated native ambient registry. Audit primary references and exact conditions before generating its three events."
+      },
+      {
+        "stageKey": "ST005",
+        "targetStageId": "arena-107-predators-2010-hunting-camp",
+        "cells": [
+          "10_VIE_DES_STAGES!E17",
+          "10_VIE_DES_STAGES!E18",
+          "10_VIE_DES_STAGES!E19"
+        ],
+        "remaining": "Existing background has no V60–V63 dedicated native ambient registry. Audit primary references and exact conditions before generating its three events."
+      },
+      {
+        "stageKey": "ST006",
+        "targetStageId": "arena-115-prey-2022-mud-pit",
+        "cells": [
+          "10_VIE_DES_STAGES!E20",
+          "10_VIE_DES_STAGES!E21",
+          "10_VIE_DES_STAGES!E22"
+        ],
+        "remaining": "Existing background has no V60–V63 dedicated native ambient registry. Audit primary references and exact conditions before generating its three events."
+      },
+      {
+        "stageKey": "ST007",
+        "targetStageId": "arena-112-the-predator-2018-forest-crash",
+        "cells": [
+          "10_VIE_DES_STAGES!E23",
+          "10_VIE_DES_STAGES!E24",
+          "10_VIE_DES_STAGES!E25"
+        ],
+        "remaining": "Existing background has no V60–V63 dedicated native ambient registry. Audit primary references and exact conditions before generating its three events."
+      },
+      {
+        "stageKey": "ST008",
+        "targetStageId": "arena-121-badlands-2025-clan-prologue",
+        "cells": [
+          "10_VIE_DES_STAGES!E26",
+          "10_VIE_DES_STAGES!E27",
+          "10_VIE_DES_STAGES!E28"
+        ],
+        "remaining": "Existing background has no V60–V63 dedicated native ambient registry. Audit primary references and exact conditions before generating its three events."
+      },
+      {
+        "stageKey": "ST009",
+        "targetStageId": "arena-118-killer-of-killers-2025-yautja-arena",
+        "cells": [
+          "10_VIE_DES_STAGES!E29",
+          "10_VIE_DES_STAGES!E30",
+          "10_VIE_DES_STAGES!E31"
+        ],
+        "remaining": "Existing background has no V60–V63 dedicated native ambient registry. Audit primary references and exact conditions before generating its three events."
+      },
+      {
+        "stageKey": "ST010",
+        "targetStageId": "arena-116-killer-of-killers-2025-viking-ice",
+        "cells": [
+          "10_VIE_DES_STAGES!E32",
+          "10_VIE_DES_STAGES!E33",
+          "10_VIE_DES_STAGES!E34"
+        ],
+        "remaining": "Existing background has no V60–V63 dedicated native ambient registry. Audit primary references and exact conditions before generating its three events."
+      }
+    ]
+  },
+  "primaryReferences": [
+    {
+      "url": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+      "supports": "Film identity and setting context only, not exact roof geometry or machinery."
+    },
+    {
+      "url": "https://cdn.akamai.steamstatic.com/steam/apps/3730/manuals/Aliens%20Versus%20Predator%20Classic%202000%20Manual.pdf?t=1415299874",
+      "supports": "Official game manual: industrial steam/electrical environment and screens. New piston/hatch are original workbook adaptations, not exact attested props."
+    }
+  ],
+  "limits": [
+    "174 workbook dossiers do not mean174 newly completed stages. Existing backgrounds map to170 targets among187 runtime arenas.",
+    "Six new event adaptations do not certify522 workbook events.",
+    "ST103 separate trio and its conditional silhouette remain open. E62 roof evacuation is now inactive until a coherent separate continuity is authored.",
+    "Bloodshed/Last Hunt/Sandpiper exact narrative callers and chapter conditions remain open.",
+    "Only six stages were visually audited in this lot.",
+    "No publication or public runtime verification performed by this local proof."
+  ],
+  "applicationVisualEvidence": {
+    "path": "docs/v63-stage-application-visual-review.json",
+    "status": "ACCEPTED_TARGETED_REVIEW",
+    "reviewedCaptures": 7
+  }
+}

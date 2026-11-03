@@ -1,0 +1,917 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "stageId": "arena-144-archie-riverdale",
+  "proposalId": "new-riverdale",
+  "workbookStage": "09_STAGES!A37:N37",
+  "workbookLife": "10_VIE_DES_STAGES!A101:N103",
+  "sourceUrls": [
+    "https://archiecomics.com/preview-the-archie-comics-on-sale-today-52015/",
+    "https://archiecomics.com/archie-comics-and-dark-horse-unveil-the-unthinkable-archie-meets-predator/"
+  ],
+  "loreLimits": [
+    "2015 Archie vs Predator setting; no 2019 continuity mixing.",
+    "Anonymous visibly adult townspeople only, not named teenage Archie cast. Generic diner accessory and ambulance, not exact canonical designs."
+  ],
+  "backgroundReview": {
+    "p0": "public/game/sprites/v55/pit-arenas/arena-144-archie-riverdale/p0-depth.png",
+    "composition": "work-local/v55/stage-renderer/arena-144-archie-riverdale/center.png",
+    "notes": "P0 and center renderer opened: orange-pink sunset main street, red/chrome diner center, striped shop awning, warm glass windows. Hanging sign attaches facade; ambulance on far street; adults masked behind glass."
+  },
+  "assets": [
+    {
+      "id": "ambient-01",
+      "prompt": "Use case: stylized-concept. Native true transparent PNG sprite animation atlas of a small retro American diner exterior accessory for Riverdale at warm orange sunset. Exactly SIX isolated drawings in3columns2rows on1536x1024. One coherent compact hanging assembly: short fixed metal wall bracket supporting a small oval cream enamel coffee-cup pictogram sign on two short chains, and a narrow striped redcream fabric valance beneath. No words or letters. Across sixframes physically animate sign's slight pendulumangle and fabric's distinct windblown folds while wall bracket staysfixed. Same construction, same scale, logical attachments with no loose floatingpieces. Side-facing facadeview suitable2D fighting stage, warm amber illumination, painteddetailed cinematic videogame style. Eachassembly SMALL within260wide260high at eachcellcenter, at least110pixels emptyalpha on all sides. No background/diner itself, no wall, no people, no scenery, no border/grid, no castshadow. Generic original prop matching a chrome/red diner, not a canonical named sign reproduction.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-e20bccbb-a85a-4806-93dd-7d6fa94973e9.png",
+      "workspacePath": "work-local/v61/generated/arena-144-archie-riverdale/ambient-01.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E101"
+      ],
+      "visualNotes": "Viewed native atlas: six distinct pendulum/fabric folds, cup pictogram, coherent chains and wall bracket. Original small diner accessory. Pivot must attach the metal wall plate to facade, never float over street.",
+      "sha256": "80a242611cb94ef9ac9bffc3f8c339911d5dd763a7088c764cf287dda635af3f",
+      "bytes": 1721904,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8031285603841146,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            162,
+            118,
+            254,
+            290
+          ],
+          "alphaBounds32": [
+            166,
+            120,
+            250,
+            286
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            190,
+            250
+          ],
+          "bodyCenterPivot": [
+            288.5,
+            408
+          ],
+          "opaquePixelCount": 47246,
+          "contentSha256": "2b3ae5f1cdc66308fe47c3358fe990e4ccb56934804bc22bc22c5f3c95609689",
+          "margins": [
+            162,
+            118,
+            96,
+            104
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            132,
+            113,
+            303,
+            300
+          ],
+          "alphaBounds32": [
+            136,
+            114,
+            297,
+            296
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            179.5,
+            250
+          ],
+          "bodyCenterPivot": [
+            283,
+            413
+          ],
+          "opaquePixelCount": 42651,
+          "contentSha256": "ec7f6007fd3530c4c8bb103b61b7687fab34ef5c16fe11c19c4f284ecef0e027",
+          "margins": [
+            132,
+            113,
+            77,
+            99
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            105,
+            328,
+            301
+          ],
+          "alphaBounds32": [
+            105,
+            107,
+            320,
+            297
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            179.5,
+            250
+          ],
+          "bodyCenterPivot": [
+            262.5,
+            406
+          ],
+          "opaquePixelCount": 37391,
+          "contentSha256": "e9f8a84aea705a78da9b136a68d01b024cc4b4c9cb5f7cc83098d67ed172cea8",
+          "margins": [
+            99,
+            105,
+            85,
+            106
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            140,
+            82,
+            272,
+            302
+          ],
+          "alphaBounds32": [
+            142,
+            83,
+            268,
+            300
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            190,
+            208
+          ],
+          "bodyCenterPivot": [
+            275.5,
+            384
+          ],
+          "opaquePixelCount": 47839,
+          "contentSha256": "239c21a18f51cb8adaeeb1fe79557895d7e8667e83230cab2e53da8e4b7f869c",
+          "margins": [
+            140,
+            82,
+            100,
+            128
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            113,
+            80,
+            269,
+            319
+          ],
+          "alphaBounds32": [
+            115,
+            81,
+            264,
+            316
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            179.5,
+            247
+          ],
+          "bodyCenterPivot": [
+            247,
+            399
+          ],
+          "opaquePixelCount": 47676,
+          "contentSha256": "20c7621260e454def49cdc7b0efe813c3334e3982ac366ae86915e6778fa6cdb",
+          "margins": [
+            113,
+            80,
+            130,
+            113
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            102,
+            82,
+            250,
+            302
+          ],
+          "alphaBounds32": [
+            105,
+            83,
+            247,
+            301
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            179.5,
+            250
+          ],
+          "bodyCenterPivot": [
+            226.5,
+            384
+          ],
+          "opaquePixelCount": 47727,
+          "contentSha256": "1bad9d26816507c68feddf060c816d2938c417830e31506890f05cf566f80056",
+          "margins": [
+            102,
+            82,
+            160,
+            128
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 0,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        }
+      ],
+      "anchorRegion": [
+        145,
+        70,
+        70,
+        180
+      ],
+      "anchorKind": "support-region"
+    },
+    {
+      "id": "ambient-02",
+      "prompt": "Use case: stylized-concept. Native transparent PNG sprite atlas: one original small-town emergency ambulance driving slowly along distant Riverdale street, warm orange-pink sunset. Exactly six isolated SMALL side-view drawings facing right,3columns2rows1536x1024. Consistent cream/white vintage1980s American box ambulance with one broad dark-red stripe, two wheels visible in clean side profile, bluegrey windows, tiny orange roof warninglamp at low steady intensity. No redcross logo, no letters, no words, no readable licenceplate, no driver detail. Six actual animation phases: distinct wheelhub rotations, small suspension compressions, slight engine vibration; same vehicle size and anatomy across all six. No flashing lights or motionblur, no dust, no street/background. Warmamberpainted detailed videogame art, not photo. Keep each ambulance SMALL inside300wide160high footprint centered each512cell, at least100pixels trueemptyalpha on everyedge. Fullbody, mirrors and bumpers complete. Genuine transparent PNG, no decorativeglow/shadow, no gridline.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-169caf58-48a9-4c0b-ae31-fed46138069b.png",
+      "workspacePath": "work-local/v61/generated/arena-144-archie-riverdale/ambient-02.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E102"
+      ],
+      "visualNotes": "Viewed native atlas: six wheelhub/suspension variations of intact matching generic ambulance, two visible wheels, no logo or strobe. Place small on distant street at road contact height. Vehicle pivot refined to mean-two-wheel-contacts to avoid animated-part anchoring. Vehicle pivot refined to mean-two-wheel-contacts to avoid animated-part anchoring.",
+      "sha256": "9cfe07467024e40039538e813160f30127be624a850f89e32a360c6f187c04b0",
+      "bytes": 1594160,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7360223134358724,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            60,
+            195,
+            426,
+            208
+          ],
+          "alphaBounds32": [
+            63,
+            200,
+            421,
+            201
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            293,
+            401
+          ],
+          "bodyCenterPivot": [
+            272.5,
+            403
+          ],
+          "opaquePixelCount": 60541,
+          "contentSha256": "ea1ecea165b49b620dcc52adb62d4ee3676882f41d7ce9110821848d9f7972d4",
+          "margins": [
+            60,
+            195,
+            26,
+            109
+          ],
+          "wheelAnchorMeasurements": [
+            {
+              "centerX": 176,
+              "bottom": 401
+            },
+            {
+              "centerX": 410,
+              "bottom": 401
+            }
+          ],
+          "pivotEvidence": "Mean of two tire centers and their native ground-contact bottoms, not one lowest wheel."
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            198,
+            426,
+            205
+          ],
+          "alphaBounds32": [
+            50,
+            201,
+            422,
+            200
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            280.5,
+            401
+          ],
+          "bodyCenterPivot": [
+            260.5,
+            403
+          ],
+          "opaquePixelCount": 60460,
+          "contentSha256": "cb621b724cb9a392955182bcee32e7c42aa9575f1f87269c1e3480959e0f1232",
+          "margins": [
+            48,
+            198,
+            38,
+            109
+          ],
+          "wheelAnchorMeasurements": [
+            {
+              "centerX": 163.5,
+              "bottom": 401
+            },
+            {
+              "centerX": 397.5,
+              "bottom": 401
+            }
+          ],
+          "pivotEvidence": "Mean of two tire centers and their native ground-contact bottoms, not one lowest wheel."
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            35,
+            196,
+            427,
+            207
+          ],
+          "alphaBounds32": [
+            37,
+            199,
+            424,
+            202
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            268.75,
+            401
+          ],
+          "bodyCenterPivot": [
+            248,
+            403
+          ],
+          "opaquePixelCount": 61172,
+          "contentSha256": "95bd0ad13e4706a5f9240ef4225206f7266b593baaa0324c3195995ee5adb93f",
+          "margins": [
+            35,
+            196,
+            50,
+            109
+          ],
+          "wheelAnchorMeasurements": [
+            {
+              "centerX": 151,
+              "bottom": 401
+            },
+            {
+              "centerX": 386.5,
+              "bottom": 401
+            }
+          ],
+          "pivotEvidence": "Mean of two tire centers and their native ground-contact bottoms, not one lowest wheel."
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            60,
+            106,
+            426,
+            203
+          ],
+          "alphaBounds32": [
+            62,
+            108,
+            422,
+            199
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            292.5,
+            307
+          ],
+          "bodyCenterPivot": [
+            272.5,
+            309
+          ],
+          "opaquePixelCount": 60273,
+          "contentSha256": "bc79eff4c5b670dd26dc83d2792f6e6911b9e4d565fd815dc364958d125b009d",
+          "margins": [
+            60,
+            106,
+            26,
+            203
+          ],
+          "wheelAnchorMeasurements": [
+            {
+              "centerX": 175.5,
+              "bottom": 307
+            },
+            {
+              "centerX": 409.5,
+              "bottom": 307
+            }
+          ],
+          "pivotEvidence": "Mean of two tire centers and their native ground-contact bottoms, not one lowest wheel."
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            106,
+            427,
+            204
+          ],
+          "alphaBounds32": [
+            48,
+            108,
+            424,
+            200
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            279.75,
+            307.5
+          ],
+          "bodyCenterPivot": [
+            260,
+            310
+          ],
+          "opaquePixelCount": 60942,
+          "contentSha256": "b84c965cca3871ed5666dffd5e02a4af0359b228bc01aec5dadbe209bf54cc31",
+          "margins": [
+            47,
+            106,
+            38,
+            202
+          ],
+          "wheelAnchorMeasurements": [
+            {
+              "centerX": 162,
+              "bottom": 308
+            },
+            {
+              "centerX": 397.5,
+              "bottom": 307
+            }
+          ],
+          "pivotEvidence": "Mean of two tire centers and their native ground-contact bottoms, not one lowest wheel."
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            103,
+            426,
+            206
+          ],
+          "alphaBounds32": [
+            39,
+            107,
+            422,
+            200
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            269.5,
+            307
+          ],
+          "bodyCenterPivot": [
+            248.5,
+            309
+          ],
+          "opaquePixelCount": 60685,
+          "contentSha256": "a78b500362ef500bf5d61ee7aa38e819aed1fc956b8cc4ae4ef8aa9c7d333353",
+          "margins": [
+            36,
+            103,
+            50,
+            203
+          ],
+          "wheelAnchorMeasurements": [
+            {
+              "centerX": 152.5,
+              "bottom": 307
+            },
+            {
+              "centerX": 386.5,
+              "bottom": 307
+            }
+          ],
+          "pivotEvidence": "Mean of two tire centers and their native ground-contact bottoms, not one lowest wheel."
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ],
+      "anchorKind": "mean-two-wheel-contacts"
+    },
+    {
+      "id": "ambient-03",
+      "prompt": "Use case: stylized-concept. Native transparent PNG six-frame run animation atlas of a pair of anonymous ADULT Riverdale townspeople evacuating behind a diner window. Exactly6isolated drawings in3columns2rows1536x1024. Eachcell shows same two visibly adult humans around40yearsold, fullbody sideprofile facingright: adultwoman in mustard cardigan and dark trousers, adultman in bluecoat and browntrousers. They run together in alternating six distinct correct run-cycle poses, arms and legs bend at natural joints, twoarms/twolegs perperson, hands simple coherent, no injury or violence. Strong separation between both silhouettes, no overlappinglimbs. No named Archie characters, no schooluniform, no teenfaces. Painted detailed videogame style warmamber indoorlight and muted sunsetpalette. Eachpair SMALL at most310wide300high centered in each512cell, shoes near local410, at least85pixels realclearalpha all sides. No window included (runtime will place them behind existing glass), no scenery/ground/groundshadow, no props held, no labels, no grid, no motionstreaks. Transparent background only.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-0c1262d7-9b5d-4abb-bf53-9b139c1a2c65.png",
+      "workspacePath": "work-local/v61/generated/arena-144-archie-riverdale/ambient-03.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E103"
+      ],
+      "visualNotes": "Viewed native atlas: six distinct adult pair run poses, hands/legs coherent and complete, no named teen cast or injury. Must be small, clipped behind existing diner glass; do not draw on fighting lane.",
+      "sha256": "6edbcafc9e4cc0089c9b49eddffa0a161ec77293e8a848001ddae2a5a26b6118",
+      "bytes": 1939237,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6995811462402344,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            33,
+            66,
+            434,
+            397
+          ],
+          "alphaBounds32": [
+            35,
+            68,
+            430,
+            394
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            288.5,
+            463
+          ],
+          "bodyCenterPivot": [
+            249.5,
+            463
+          ],
+          "opaquePixelCount": 74724,
+          "contentSha256": "fc854a5918a7f24599d99720bfde8ab81635681b0409ca33cdaae3f7bd11e86a",
+          "margins": [
+            33,
+            66,
+            45,
+            49
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            28,
+            65,
+            385,
+            397
+          ],
+          "alphaBounds32": [
+            30,
+            66,
+            381,
+            395
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            210.5,
+            462
+          ],
+          "bodyCenterPivot": [
+            220,
+            462
+          ],
+          "opaquePixelCount": 67747,
+          "contentSha256": "aedb9f70825bccb3c00f0ef59b8a56fd0630f68acae78a8127f5b5532303a2f2",
+          "margins": [
+            28,
+            65,
+            99,
+            50
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            53,
+            66,
+            378,
+            397
+          ],
+          "alphaBounds32": [
+            55,
+            69,
+            374,
+            393
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            186,
+            463
+          ],
+          "bodyCenterPivot": [
+            241.5,
+            463
+          ],
+          "opaquePixelCount": 67158,
+          "contentSha256": "5c5773f531b39a1a8ac5cfcf22e0283a295d49d7ff0bea5048e3582154a412e0",
+          "margins": [
+            53,
+            66,
+            81,
+            49
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            33,
+            41,
+            441,
+            403
+          ],
+          "alphaBounds32": [
+            36,
+            43,
+            436,
+            398
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            251,
+            444
+          ],
+          "bodyCenterPivot": [
+            253,
+            444
+          ],
+          "opaquePixelCount": 67282,
+          "contentSha256": "fb29a50ebc3ce37801704a7eb52580da1d498c2356866629a2436778e14e2d9a",
+          "margins": [
+            33,
+            41,
+            38,
+            68
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            38,
+            394,
+            397
+          ],
+          "alphaBounds32": [
+            43,
+            42,
+            390,
+            391
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            252.5,
+            435
+          ],
+          "bodyCenterPivot": [
+            237.5,
+            435
+          ],
+          "opaquePixelCount": 68279,
+          "contentSha256": "cb543808c360ce4e13e5f21ca1d2def57dd569e64678e1b21302a5ae879a786b",
+          "margins": [
+            41,
+            38,
+            77,
+            77
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            26,
+            43,
+            450,
+            395
+          ],
+          "alphaBounds32": [
+            28,
+            46,
+            446,
+            390
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            217.5,
+            438
+          ],
+          "bodyCenterPivot": [
+            250.5,
+            438
+          ],
+          "opaquePixelCount": 69838,
+          "contentSha256": "7aa0c2dee0bb02b726150b2adc8f1c6a1cf5067687c9e087aa634a8894b6c2f9",
+          "margins": [
+            26,
+            43,
+            36,
+            74
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "artStatus": "accepted-3-ambient-awaiting-runtime-composition"
+}

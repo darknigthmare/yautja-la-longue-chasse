@@ -1,0 +1,647 @@
+{"command": ["/workspace/.cloud-tools/node22/node_modules/node/bin/node", "--experimental-strip-types", "--test", "--test-concurrency=1", "tests/pit-backward-throws-v112.test.mjs", "tests/pit-backward-controls-v112.test.mjs", "tests/pit-backward-throw-art-v112.test.mjs", "tests/pit-backward-art-provenance-v112.test.mjs", "tests/pit-forward-throws-v109.test.mjs", "tests/pit-forward-throw-art-v109.test.mjs", "tests/pit-workbook-devices-v107.test.mjs", "tests/pit-replay.test.mjs", "tests/pit-training.test.mjs", "tests/hunterSpriteMotion.test.ts"], "exitCode": 0, "status": "PASS"}
+TAP version 13
+# Subtest: live Jungle light boundaries use 5/3/10 simulation ticks, not the global render frame
+ok 1 - live Jungle light boundaries use 5/3/10 simulation ticks, not the global render frame
+  ---
+  duration_ms: 8.003995
+  type: 'test'
+  ...
+# Subtest: phase clips use authored weights within the simulation window without tweening or changing timing
+ok 2 - phase clips use authored weights within the simulation window without tweening or changing timing
+  ---
+  duration_ms: 3.015737
+  type: 'test'
+  ...
+# Subtest: action mapping distinguishes standing, crouched, aerial and both explicitly authored orientations
+ok 3 - action mapping distinguishes standing, crouched, aerial and both explicitly authored orientations
+  ---
+  duration_ms: 0.848699
+  type: 'test'
+  ...
+# Subtest: all combatants retain their actual dedicated technique identity
+ok 4 - all combatants retain their actual dedicated technique identity
+  ---
+  duration_ms: 4.767644
+  type: 'test'
+  ...
+# Subtest: historical V4 throws retain 7/2/21 while V5 whiffs retain that timing
+ok 5 - historical V4 throws retain 7/2/21 while V5 whiffs retain that timing
+  ---
+  duration_ms: 3.397819
+  type: 'test'
+  ...
+# Subtest: V5 capture uses both roles and its eight-tick clock without substituting generic art
+ok 6 - V5 capture uses both roles and its eight-tick clock without substituting generic art
+  ---
+  duration_ms: 2.859586
+  type: 'test'
+  ...
+# Subtest: V5 tech uses the real twelve-tick recovery and cannot mutate replay state or hitboxes
+ok 7 - V5 tech uses the real twelve-tick recovery and cannot mutate replay state or hitboxes
+  ---
+  duration_ms: 2.054773
+  type: 'test'
+  ...
+# Subtest: locomotion uses facing-relative travel, never a run or discrete backstep substitute
+ok 8 - locomotion uses facing-relative travel, never a run or discrete backstep substitute
+  ---
+  duration_ms: 0.431285
+  type: 'test'
+  ...
+# Subtest: PIT positive vertical velocity rises, zero is apex, negative falls
+ok 9 - PIT positive vertical velocity rises, zero is apex, negative falls
+  ---
+  duration_ms: 0.50997
+  type: 'test'
+  ...
+# Subtest: guard entry cursor starts at observation zero, advances deterministically and survives an orientation change
+ok 10 - guard entry cursor starts at observation zero, advances deterministically and survives an orientation change
+  ---
+  duration_ms: 0.845954
+  type: 'test'
+  ...
+# Subtest: natural playback converts 60 Hz PIT ticks into the authored clip timebase
+ok 11 - natural playback converts 60 Hz PIT ticks into the authored clip timebase
+  ---
+  duration_ms: 0.655314
+  type: 'test'
+  ...
+# Subtest: reactions use real remaining counters and reset on another impact without trusting combo time as an onset
+ok 12 - reactions use real remaining counters and reset on another impact without trusting combo time as an onset
+  ---
+  duration_ms: 0.406799
+  type: 'test'
+  ...
+# Subtest: cloak uses its real startup/recovery countdown while concurrent effects never replace attack art
+ok 13 - cloak uses its real startup/recovery countdown while concurrent effects never replace attack art
+  ---
+  duration_ms: 0.244379
+  type: 'test'
+  ...
+# Subtest: missing, unreviewed, wrong-character and stale-phase inputs remain explicit nulls
+ok 14 - missing, unreviewed, wrong-character and stale-phase inputs remain explicit nulls
+  ---
+  duration_ms: 0.413468
+  type: 'test'
+  ...
+# Subtest: observing real fights cannot mutate simulation/replay serialization or hitboxes
+ok 15 - observing real fights cannot mutate simulation/replay serialization or hitboxes
+  ---
+  duration_ms: 16.218509
+  type: 'test'
+  ...
+# Subtest: adapter source is independent of Canvas, skeletal posing and hidden wall clocks
+ok 16 - adapter source is independent of Canvas, skeletal posing and hidden wall clocks
+  ---
+  duration_ms: 17.95301
+  type: 'test'
+  ...
+# Subtest: all48 backward BODY regions reproduce byte-exact metadata and remain22 unchanged native source pages
+ok 17 - all48 backward BODY regions reproduce byte-exact metadata and remain22 unchanged native source pages
+  ---
+  duration_ms: 1033.742847
+  type: 'test'
+  ...
+# Subtest: the native region admission rejects a nonzero source gutter and a displaced grounded support
+ok 18 - the native region admission rejects a nonzero source gutter and a displaced grounded support
+  ---
+  duration_ms: 101.819768
+  type: 'test'
+  ...
+# Subtest: a source-byte change or an edited/rejected generation receipt cannot publish an admitted native registry
+ok 19 - a source-byte change or an edited/rejected generation receipt cannot publish an admitted native registry
+  ---
+  duration_ms: 32.957643
+  type: 'test'
+  ...
+# Subtest: actual public forward button staysTH_F while either fighter holds retreat in either native facing
+ok 20 - actual public forward button staysTH_F while either fighter holds retreat in either native facing
+  ---
+  duration_ms: 6.686126
+  type: 'test'
+  ...
+# Subtest: actual backward button forces4 from the current fighter facing even with a forward direction held
+ok 21 - actual backward button forces4 from the current fighter facing even with a forward direction held
+  ---
+  duration_ms: 1.599432
+  type: 'test'
+  ...
+# Subtest: public keyboard and pad4+L+M remain contextual and preserve their held retreat direction
+ok 22 - public keyboard and pad4+L+M remain contextual and preserve their held retreat direction
+  ---
+  duration_ms: 1.905062
+  type: 'test'
+  ...
+# Subtest: actual forward button during a backward capture remains a fresh successful tech, including held retreat
+ok 23 - actual forward button during a backward capture remains a fresh successful tech, including held retreat
+  ---
+  duration_ms: 2.887408
+  type: 'test'
+  ...
+# Subtest: the independentV16 public forward option keeps its historical input shape and forward action
+ok 24 - the independentV16 public forward option keeps its historical input shape and forward action
+  ---
+  duration_ms: 0.375162
+  type: 'test'
+  ...
+# Subtest: the complete native duo admits exactly48 actual pixel-distinct drawings and both bounded runtime source IDs
+ok 25 - the complete native duo admits exactly48 actual pixel-distinct drawings and both bounded runtime source IDs
+  ---
+  duration_ms: 606.34911
+  type: 'test'
+  ...
+# Subtest: a failed independent victim PNG blocks the entire public pair instead of admitting a fallback body
+ok 26 - a failed independent victim PNG blocks the entire public pair instead of admitting a fallback body
+  ---
+  duration_ms: 625.332307
+  type: 'test'
+  ...
+# Subtest: all backward roles decoding successfully still cannot authorize a public recipe with absent forward roles
+ok 27 - all backward roles decoding successfully still cannot authorize a public recipe with absent forward roles
+  ---
+  duration_ms: 219.881994
+  type: 'test'
+  ...
+# Subtest: real capture/release/recovery and independent victim ticks select all48 decoded native drawings, including an unobserved flight seek
+ok 28 - real capture/release/recovery and independent victim ticks select all48 decoded native drawings, including an unobserved flight seek
+  ---
+  duration_ms: 52.280581
+  type: 'test'
+  ...
+# Subtest: a real whiff, fresh tech and training knockout draw only their explicit admitted held poses
+ok 29 - a real whiff, fresh tech and training knockout draw only their explicit admitted held poses
+  ---
+  duration_ms: 22.118278
+  type: 'test'
+  ...
+# Subtest: V17 is opt-in and source10/3/32 110/0 belongs only to the unvaried native duo
+ok 30 - V17 is opt-in and source10/3/32 110/0 belongs only to the unvaried native duo
+  ---
+  duration_ms: 2.46077
+  type: 'test'
+  ...
+# Subtest: assigned keyboard and actual pad L+M preserve4; fresh real fighter facing decides backward or forward
+ok 31 - assigned keyboard and actual pad L+M preserve4; fresh real fighter facing decides backward or forward
+  ---
+  duration_ms: 3.871235
+  type: 'test'
+  ...
+# Subtest: both fighters, slots and native orientations move one real target continuously over the thrower and damage only at a clear landing
+ok 32 - both fighters, slots and native orientations move one real target continuously over the thrower and damage only at a clear landing
+  ---
+  duration_ms: 27.584029
+  type: 'test'
+  ...
+# Subtest: first and last fresh tech edges cancel the backward capture with no hit, meter or teleport
+ok 33 - first and last fresh tech edges cancel the backward capture with no hit, meter or teleport
+  ---
+  duration_ms: 2.668256
+  type: 'test'
+  ...
+# Subtest: held Projection and an input after tick8 cannot undo the real flight or landing
+ok 34 - held Projection and an input after tick8 cannot undo the real flight or landing
+  ---
+  duration_ms: 5.028588
+  type: 'test'
+  ...
+# Subtest: continuous pair reconstruction owns native clocks, including a mid-flight snapshot without prior observation
+ok 35 - continuous pair reconstruction owns native clocks, including a mid-flight snapshot without prior observation
+  ---
+  duration_ms: 16.659929
+  type: 'test'
+  ...
+# Subtest: laboratory shows45source ticks and backward target phases, and reset preservesV17 while clearing both captures
+ok 36 - laboratory shows45source ticks and backward target phases, and reset preservesV17 while clearing both captures
+  ---
+  duration_ms: 1.11469
+  type: 'test'
+  ...
+# Subtest: real startup/active/recovery whiff is10/3/32 with no held-button cancel
+ok 37 - real startup/active/recovery whiff is10/3/32 with no held-button cancel
+  ---
+  duration_ms: 3.317531
+  type: 'test'
+  ...
+# Subtest: a wall truncates a safe rear landing and an insufficient rear clearance refuses capture
+ok 38 - a wall truncates a safe rear landing and an insufficient rear clearance refuses capture
+  ---
+  duration_ms: 17.691286
+  type: 'test'
+  ...
+# Subtest: capture eligibility refuses airborne, wake, knockdown and existing hitstun instead of resetting a combo
+ok 39 - capture eligibility refuses airborne, wake, knockdown and existing hitstun instead of resetting a combo
+  ---
+  duration_ms: 1.497472
+  type: 'test'
+  ...
+# Subtest: source capture consumes resource, attack and jump edges and preserves a deployed finite device
+ok 40 - source capture consumes resource, attack and jump edges and preserves a deployed finite device
+  ---
+  duration_ms: 3.980055
+  type: 'test'
+  ...
+# Subtest: the CPU reacts after five visible ticks and a training knockout holds native landing for sixty ticks
+ok 41 - the CPU reacts after five visible ticks and a training knockout holds native landing for sixty ticks
+  ---
+  duration_ms: 8.148437
+  type: 'test'
+  ...
+# Subtest: tampering cannot create a capture, alter a landing, importTH_B intoV16 or combine both throws
+ok 42 - tampering cannot create a capture, alter a landing, importTH_B intoV16 or combine both throws
+  ---
+  duration_ms: 1.499115
+  type: 'test'
+  ...
+# Subtest: timeout clears the real pair and round transition retains17 without carrying an old capture
+ok 43 - timeout clears the real pair and round transition retains17 without carrying an old capture
+  ---
+  duration_ms: 3.046201
+  type: 'test'
+  ...
+# Subtest: real walking4+Projection is recorded and replayed onV17; relabelling16orrecipe cannot forge it
+ok 44 - real walking4+Projection is recorded and replayed onV17; relabelling16orrecipe cannot forge it
+  ---
+  duration_ms: 27.378196
+  type: 'test'
+  ...
+# Subtest: a complete two-roundV17 match uses actual walking and back throws, then replays its genuine victory
+ok 45 - a complete two-roundV17 match uses actual walking and back throws, then replays its genuine victory
+  ---
+  duration_ms: 156.517775
+  type: 'test'
+  ...
+# Subtest: the complete native duo admits exactly48 actual pixel-distinct drawings and both bounded runtime source IDs
+ok 46 - the complete native duo admits exactly48 actual pixel-distinct drawings and both bounded runtime source IDs
+  ---
+  duration_ms: 809.043206
+  type: 'test'
+  ...
+# Subtest: a failed independent victim PNG blocks the entire public pair instead of admitting a fallback body
+ok 47 - a failed independent victim PNG blocks the entire public pair instead of admitting a fallback body
+  ---
+  duration_ms: 323.738
+  type: 'test'
+  ...
+# Subtest: real capture/release/recovery and independent victim ticks select all48 decoded native drawings, including an unobserved flight seek
+ok 48 - real capture/release/recovery and independent victim ticks select all48 decoded native drawings, including an unobserved flight seek
+  ---
+  duration_ms: 67.433996
+  type: 'test'
+  ...
+# Subtest: a real whiff, fresh tech and training knockout draw only their explicit admitted held poses
+ok 49 - a real whiff, fresh tech and training knockout draw only their explicit admitted held poses
+  ---
+  duration_ms: 14.699766
+  type: 'test'
+  ...
+# Subtest: V16 is opt-in, source 8/3/30 and 110/0, with an explicit unvaried native partner boundary
+ok 50 - V16 is opt-in, source 8/3/30 and 110/0, with an explicit unvaried native partner boundary
+  ---
+  duration_ms: 2.034312
+  type: 'test'
+  ...
+# Subtest: L+M resolves the current assigned keys, touch codes and actual pad buttons only in the opt-in recipe
+ok 51 - L+M resolves the current assigned keys, touch codes and actual pad buttons only in the opt-in recipe
+  ---
+  duration_ms: 0.989566
+  type: 'test'
+  ...
+# Subtest: both independent BODY roles reconstruct their actual source clocks on every tick and on an unobserved mid-flight seek
+ok 52 - both independent BODY roles reconstruct their actual source clocks on every tick and on an unobserved mid-flight seek
+  ---
+  duration_ms: 49.173552
+  type: 'test'
+  ...
+# Subtest: a genuine training knockout holds the native landing drawing through its actual sixty-tick counter
+ok 53 - a genuine training knockout holds the native landing drawing through its actual sixty-tick counter
+  ---
+  duration_ms: 6.916455
+  type: 'test'
+  ...
+# Subtest: the real laboratory exposes the source windows, independent target clock and original V16 reset rules
+ok 54 - the real laboratory exposes the source windows, independent target clock and original V16 reset rules
+  ---
+  duration_ms: 1.483041
+  type: 'test'
+  ...
+# Subtest: each hero, slot and native facing carries one independent body continuously and damages it only at landing
+ok 55 - each hero, slot and native facing carries one independent body continuously and damages it only at landing
+  ---
+  duration_ms: 21.484627
+  type: 'test'
+  ...
+# Subtest: fresh Projection escapes on the first and final reaction ticks, symmetrically, without damage or meter
+ok 56 - fresh Projection escapes on the first and final reaction ticks, symmetrically, without damage or meter
+  ---
+  duration_ms: 2.345981
+  type: 'test'
+  ...
+# Subtest: the CPU can react to the visible V16 capture after five ticks, including when its old resource condition would be true
+ok 57 - the CPU can react to the visible V16 capture after five ticks, including when its old resource condition would be true
+  ---
+  duration_ms: 1.227666
+  type: 'test'
+  ...
+# Subtest: held Projection cannot escape, and a new press after the deadline cannot undo a real landing
+ok 58 - held Projection cannot escape, and a new press after the deadline cannot undo a real landing
+  ---
+  duration_ms: 2.206336
+  type: 'test'
+  ...
+# Subtest: punishing a genuinely played5H recovery does not grant a fresh tech after its original action has been interrupted
+ok 59 - punishing a genuinely played5H recovery does not grant a fresh tech after its original action has been interrupted
+  ---
+  duration_ms: 2.716337
+  type: 'test'
+  ...
+# Subtest: capture consumes input edges and grants no free resource action, jump or queued attack
+ok 60 - capture consumes input edges and grants no free resource action, jump or queued attack
+  ---
+  duration_ms: 1.66502
+  type: 'test'
+  ...
+# Subtest: both actual consumed mission devices stay consumed throughout the new source throw
+ok 61 - both actual consumed mission devices stay consumed throughout the new source throw
+  ---
+  duration_ms: 30.526629
+  type: 'test'
+  ...
+# Subtest: an actual already-placed enemy mine retains its finite identity, age and stock across the bounded pair pause
+ok 62 - an actual already-placed enemy mine retains its finite identity, age and stock across the bounded pair pause
+  ---
+  duration_ms: 2.933566
+  type: 'test'
+  ...
+# Subtest: whiff keeps all source windows and recovery, without damage or a cancel into a held button
+ok 63 - whiff keeps all source windows and recovery, without damage or a cancel into a held button
+  ---
+  duration_ms: 2.642618
+  type: 'test'
+  ...
+# Subtest: simultaneous throws and an actual strike do not give slot one a capture advantage
+ok 64 - simultaneous throws and an actual strike do not give slot one a capture advantage
+  ---
+  duration_ms: 0.726949
+  type: 'test'
+  ...
+# Subtest: air, wake invulnerability, knockdown and existing hitstun are not source capture openings
+ok 65 - air, wake invulnerability, knockdown and existing hitstun are not source capture openings
+  ---
+  duration_ms: 1.304029
+  type: 'test'
+  ...
+# Subtest: either wall truncates the trajectory safely and leaves actual pushboxes separate
+ok 66 - either wall truncates the trajectory safely and leaves actual pushboxes separate
+  ---
+  duration_ms: 17.544951
+  type: 'test'
+  ...
+# Subtest: every source capture/flight/landing snapshot is exact and forged lifecycles are rejected
+ok 67 - every source capture/flight/landing snapshot is exact and forged lifecycles are rejected
+  ---
+  duration_ms: 5.181152
+  type: 'test'
+  ...
+# Subtest: timeout clears a captured or airborne pair without inventing damage or freezing the next round
+ok 68 - timeout clears a captured or airborne pair without inventing damage or freezing the next round
+  ---
+  duration_ms: 2.948998
+  type: 'test'
+  ...
+# Subtest: V16 replays retain real input edges and reject relabelled V15 archives
+ok 69 - V16 replays retain real input edges and reject relabelled V15 archives
+  ---
+  duration_ms: 35.623148
+  type: 'test'
+  ...
+# Subtest: a complete two-round V16 match reached only by actual walking and source throws round-trips its real winning archive
+ok 70 - a complete two-round V16 match reached only by actual walking and source throws round-trips its real winning archive
+  ---
+  duration_ms: 196.507459
+  type: 'test'
+  ...
+# Subtest: input packing round-trips both players without storing unrelated fields
+ok 71 - input packing round-trips both players without storing unrelated fields
+  ---
+  duration_ms: 2.260185
+  type: 'test'
+  ...
+# Subtest: RLE replay is compact, deterministic and equivalent to a direct simulation
+ok 72 - RLE replay is compact, deterministic and equivalent to a direct simulation
+  ---
+  duration_ms: 33.36894
+  type: 'test'
+  ...
+# Subtest: the selected fighter roster and arena survive deterministic replay
+ok 73 - the selected fighter roster and arena survive deterministic replay
+  ---
+  duration_ms: 5.095146
+  type: 'test'
+  ...
+# Subtest: Falconer reconnaissance marking stays deterministic in training replays
+ok 74 - Falconer reconnaissance marking stays deterministic in training replays
+  ---
+  duration_ms: 9.986401
+  type: 'test'
+  ...
+# Subtest: published engine V3 Falconer replays are rejected as incompatible
+ok 75 - published engine V3 Falconer replays are rejected as incompatible
+  ---
+  duration_ms: 0.492775
+  type: 'test'
+  ...
+# Subtest: JSON serialization round-trips canonically inside the 64 KiB sidecar budget
+ok 76 - JSON serialization round-trips canonically inside the 64 KiB sidecar budget
+  ---
+  duration_ms: 41.241033
+  type: 'test'
+  ...
+# Subtest: incremental reader yields the current P1/P2 inputs and reports its exact end
+ok 77 - incremental reader yields the current P1/P2 inputs and reports its exact end
+  ---
+  duration_ms: 1.005198
+  type: 'test'
+  ...
+# Subtest: completed match metadata carries duration, winner and a verified final checksum
+ok 78 - completed match metadata carries duration, winner and a verified final checksum
+  ---
+  duration_ms: 45.443014
+  type: 'test'
+  ...
+# Subtest: normalization rejects future, corrupt, non-canonical and reward-bearing payloads
+ok 79 - normalization rejects future, corrupt, non-canonical and reward-bearing payloads
+  ---
+  duration_ms: 1.880626
+  type: 'test'
+  ...
+# Subtest: hard tick, segment and serialized byte limits fail closed
+ok 80 - hard tick, segment and serialized byte limits fail closed
+  ---
+  duration_ms: 341.569844
+  type: 'test'
+  ...
+# Subtest: current schema supports training and reversed fighters while future schemas are rejected
+ok 81 - current schema supports training and reversed fighters while future schemas are rejected
+  ---
+  duration_ms: 3.389397
+  type: 'test'
+  ...
+# Subtest: published V2 Jungle/Berserker basalt replays migrate to V3 after checksum verification
+ok 82 - published V2 Jungle/Berserker basalt replays migrate to V3 after checksum verification
+  ---
+  duration_ms: 1.624911
+  type: 'test'
+  ...
+# Subtest: a published V2 technique replay validates with V2 melee semantics before V3 resimulation
+ok 83 - a published V2 technique replay validates with V2 melee semantics before V3 resimulation
+  ---
+  duration_ms: 19.994175
+  type: 'test'
+  ...
+# Subtest: legacy V1 and future replay envelopes are rejected with explicit compatibility codes
+ok 84 - legacy V1 and future replay envelopes are rejected with explicit compatibility codes
+  ---
+  duration_ms: 0.528567
+  type: 'test'
+  ...
+# Subtest: professional defaults and French labels expose every training control
+ok 85 - professional defaults and French labels expose every training control
+  ---
+  duration_ms: 1.358729
+  type: 'test'
+  ...
+# Subtest: versioned settings normalize defensively and reject unrelated campaign data
+ok 86 - versioned settings normalize defensively and reject unrelated campaign data
+  ---
+  duration_ms: 0.573253
+  type: 'test'
+  ...
+# Subtest: dummy presets are deterministic and the CPU never receives live player input
+ok 87 - dummy presets are deterministic and the CPU never receives live player input
+  ---
+  duration_ms: 0.885903
+  type: 'test'
+  ...
+# Subtest: position reset creates a clean training situation without mutating the source
+ok 88 - position reset creates a clean training situation without mutating the source
+  ---
+  duration_ms: 0.452296
+  type: 'test'
+  ...
+# Subtest: frame readout derives startup totals and defensive recovery without changing combat
+ok 89 - frame readout derives startup totals and defensive recovery without changing combat
+  ---
+  duration_ms: 2.472928
+  type: 'test'
+  ...
+# Subtest: short sequence recording is compact, exact and contains no reward surface
+ok 90 - short sequence recording is compact, exact and contains no reward surface
+  ---
+  duration_ms: 1.880517
+  type: 'test'
+  ...
+# Subtest: sequence normalization rejects future, corrupt, noncanonical and foreign payloads
+ok 91 - sequence normalization rejects future, corrupt, noncanonical and foreign payloads
+  ---
+  duration_ms: 0.563779
+  type: 'test'
+  ...
+# Subtest: once and loop readers expose exact cycle boundaries and reset cleanly
+ok 92 - once and loop readers expose exact cycle boundaries and reset cleanly
+  ---
+  duration_ms: 0.346149
+  type: 'test'
+  ...
+# Subtest: recording hard-stops at twelve seconds and an empty recording stays inert
+ok 93 - recording hard-stops at twelve seconds and an empty recording stays inert
+  ---
+  duration_ms: 2.102073
+  type: 'test'
+  ...
+# Subtest: mine and shuriken own exact source clocks/costs and first physically detached native drawing in both directions
+ok 94 - mine and shuriken own exact source clocks/costs and first physically detached native drawing in both directions
+  ---
+  duration_ms: 49.842507
+  type: 'test'
+  ...
+# Subtest: mine arming colors cause no free hit; only a real ground proximity at94 detonates once for105 base
+ok 95 - mine arming colors cause no free hit; only a real ground proximity at94 detonates once for105 base
+  ---
+  duration_ms: 9.188667
+  type: 'test'
+  ...
+# Subtest: mine arming alone never attacks a distant actor, and a genuine jump evades its low proximity
+ok 96 - mine arming alone never attacks a distant actor, and a genuine jump evades its low proximity
+  ---
+  duration_ms: 5.134324
+  type: 'test'
+  ...
+# Subtest: the mine requires a frontal low guard, and a new round issues exactly one fresh object
+ok 97 - the mine requires a frontal low guard, and a new round issues exactly one fresh object
+  ---
+  duration_ms: 23.525239
+  type: 'test'
+  ...
+# Subtest: a low physical strike destroys the independent mine without damage or free Traque
+ok 98 - a low physical strike destroys the independent mine without damage or free Traque
+  ---
+  duration_ms: 6.891007
+  type: 'test'
+  ...
+# Subtest: shuriken is one autonomous physical flight, blocked without chip and bounded on a whiff
+ok 99 - shuriken is one autonomous physical flight, blocked without chip and bounded on a whiff
+  ---
+  duration_ms: 28.373182
+  type: 'test'
+  ...
+# Subtest: single possession survives only unreleased interruption; deployed mine/star persists through a real enemy hit
+ok 100 - single possession survives only unreleased interruption; deployed mine/star persists through a real enemy hit
+  ---
+  duration_ms: 2.681815
+  type: 'test'
+  ...
+# Subtest: insufficient gauge, wrong character command and EQUIP never create or replenish an item
+ok 101 - insufficient gauge, wrong character command and EQUIP never create or replenish an item
+  ---
+  duration_ms: 6.128675
+  type: 'test'
+  ...
+# Subtest: new source motions22Feral/214Scar are recognized only under V15, at both facings
+ok 102 - new source motions22Feral/214Scar are recognized only under V15, at both facings
+  ---
+  duration_ms: 2.026331
+  type: 'test'
+  ...
+# Subtest: snapshots preserve both device lifecycles at native boundaries and reject possession/codec forgery
+ok 103 - snapshots preserve both device lifecycles at native boundaries and reject possession/codec forgery
+  ---
+  duration_ms: 137.373633
+  type: 'test'
+  ...
+# Subtest: V15 replay/training inputs admit only the two new codes and preserve old resource bits during recorder promotion
+ok 104 - V15 replay/training inputs admit only the two new codes and preserve old resource bits during recorder promotion
+  ---
+  duration_ms: 1.794921
+  type: 'test'
+  ...
+# Subtest: a real recorded V15 duel earns its gauge, deploys both physical objects and replays byte-exactly
+ok 105 - a real recorded V15 duel earns its gauge, deploys both physical objects and replays byte-exactly
+  ---
+  duration_ms: 28.646734
+  type: 'test'
+  ...
+# Subtest: both V14 traces remain byte-exact to the captured pre-device engine through960ticks each
+ok 106 - both V14 traces remain byte-exact to the captured pre-device engine through960ticks each
+  ---
+  duration_ms: 60.664672
+  type: 'test'
+  ...
+1..106
+# tests 106
+# suites 0
+# pass 106
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14023.198369

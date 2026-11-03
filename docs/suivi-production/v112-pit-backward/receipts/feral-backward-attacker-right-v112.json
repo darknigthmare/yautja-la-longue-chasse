@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-28",
+  "tool": "image_gen.imagegen",
+  "attemptId": "feral-backward-attacker-right-v112",
+  "submittedPrompt": "Create a NEW production six-frame 2D fighting-game sprite atlas from these two reference images. Reference 1 is an old animation study with a gray training mannequin. Reference 2 defines the clean Feral character style. Use them as visual reference only; paint a new original isolated Feral animation with all hidden anatomy correctly reconstructed. Deliver exactly ONE landscape 1536x1024 RGBA transparent PNG, 3 columns x 2 rows, exactly 6 completely separate full-body drawings. The background must be genuinely alpha=0, with absolutely NO dark brown glow, shadows, floor, vignette, grid, text, checkerboard pixels or labels. Each cell is512x512. Keep at least48px completely transparent on ALL FOUR sides of EACH cell. All body parts, dreadlocks, shields and blades remain strictly inside each cell, including horizontal poses. Head-to-sole anatomical height roughly340px at the same fixed scale in each cell. Grounded foot baseline y=458 inside each cell. Every pose has exactly two arms and two legs and coherent visible claws, no extra hands. Only ONE hunter in each cell. Remove the gray mannequin COMPLETELY; no victim, partner, other actor or disembodied partner hands anywhere. Character is Feral from Prey: bone skull mask with narrow red mouth area, long black dreadlocks, mottled ochre skin, lean muscular long limbs, rough hide waist armor, round shield on anatomical LEFT forearm, two wrist blades on anatomical RIGHT arm, NO shoulder cannon. Preserve those equipment sides naturally through all rotations. Paint an original BACKWARD THROW sequence, initial opponent would be screen RIGHT, final throw sends the ABSENT opponent screen LEFT behind the hunter. Read left-to-right then top-to-bottom: 0 starts facing screen RIGHT, guarded grounded stance stepping into grab; 1 reaches screen RIGHT with empty own grasping hand toward ABSENT opponent; 2 hips sink and torso twists to turn his back toward absent opponent, opening a throw over his own hip/shoulder; 3 he pivots and releases the ABSENT opponent OVER HIS SHOULDER BACKWARD toward screen LEFT, body twists naturally, own hands clearly empty; 4 controlled follow-through with weight grounded and throwing arm extended backward screen LEFT, no victim drawn; 5 recovers to the SAME original screen RIGHT guard and equipment. This is not a forward shove. It must visibly rotate and throw behind the starting stance. Naturally drawn anatomy, not a mirrored copy. Crisp detailed painted game art matching references, not a photo. Keep identical proportions, anatomy, mask and inventory in every drawing.",
+  "submittedReferences": [
+    {
+      "path": "public/game/sprites/v100/pit/feral/026-throw-back-right-a.png",
+      "bytes": 1769432,
+      "sha256": "c4c77a912ca14fea15805310cd3476ae6d9153f237607cf8a40c29d21f521485",
+      "preservedPath": "public/game/sprites/v100/pit/feral/026-throw-back-right-a.png"
+    },
+    {
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "bytes": 2316771,
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "preservedPath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png"
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-1df2922b-6a01-43b6-a0ca-dcbab001e3b5.png",
+  "output": {
+    "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-attacker-right-v112.png",
+    "sha256": "8df8ca393dafdf283b9c6919598ce5603e541967b1213159d9795480d3db6b30",
+    "bytes": 2388810,
+    "width": 1536,
+    "height": 1024
+  },
+  "filesEditedAfterGeneration": false,
+  "status": "SELECTED_SOURCE_REGIONS",
+  "scope": "Local tool call record, not an externally signed certificate. Only selected source UV regions may be admitted. Source action completion remains open.",
+  "selectedFrameIndices": [
+    0,
+    3,
+    4,
+    5
+  ]
+}

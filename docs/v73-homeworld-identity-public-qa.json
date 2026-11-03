@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "contentVersion": "V73",
+  "sourceCommitReportedByReleaseCoordinator": "86e404273157e5db61bfa7514fea56fac0c7f3ef",
+  "deploymentReportedReadyByReleaseCoordinator": "dpl_HcKUsEyJWKhUbSSMxDDAV3Yik398",
+  "browserCompletedAt": "2026-10-02T04:11:06.8860691Z",
+  "checks": 15,
+  "captures": 24,
+  "javascriptErrors": 0,
+  "httpFailures": 0,
+  "verified": [
+    "V73 content marker served by the public alias",
+    "Six native civic facades reached through actual keyboard navigation",
+    "All eighteen zones of the six public wings visited physically",
+    "Five independent native furniture sprites rendered per public wing",
+    "Dedicated native named civilian costumes and taller ceremonial chief",
+    "Active chief label above the actual painted head rather than covering it",
+    "Two genuine Unblooded walk drawings, native left/right sources and no double mirror",
+    "393x852 portrait camera keeps the playable actor visible in the large public wing",
+    "Pause freezes position, native cycle and local save",
+    "Real furniture codex remains read-only and freezes simulation without save mutation",
+    "Three identity PNG sources served with preserved SHA256 bytes"
+  ],
+  "visualReview": [
+    "Public street capture shows different architecture silhouettes and multiple clothed citizens",
+    "Public audience capture shows the chief's head, robe and mantle without label overlap",
+    "Public portrait capture shows normal actor scale, grounded feet and camera-following interior"
+  ],
+  "evidence": {
+    "fullReport": "work-local/v72/qa/identity-final-public/report.json",
+    "exitRecord": "work-local/v72/identity-browser-public-exit.json",
+    "street": "work-local/v72/qa/identity-final-public/street-multiple-civic-facades-and-clothed-citizens.png",
+    "chief": "work-local/v72/qa/identity-final-public/chief-dedicated-mantle-and-public-audience-wing.png",
+    "mobile": "work-local/v72/qa/identity-final-public/citadel-mobile-follow-camera-public-wing.png"
+  },
+  "limits": [
+    "Nursery, youth and First Tracks are model-played prerequisites in a new isolated browser context; the building and room traversal afterwards uses real keyboard input without teleportation or collision exemptions.",
+    "Six principal public wings are refactored; the other 37 interiors retain earlier plans.",
+    "Private citadel apartments and additional floors are not simulated.",
+    "Civilians move on their routes using dedicated clothed portraits, not full civilian movement sheets.",
+    "The Unblooded walk has two native drawings per facing, not complete eight-direction animation.",
+    "Local chief, architecture and civilian clothing are original lore-compatible adaptations, not claimed canonical one-to-one designs."
+  ]
+}

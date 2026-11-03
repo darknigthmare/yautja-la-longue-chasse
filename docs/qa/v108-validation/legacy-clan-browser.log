@@ -1,0 +1,52 @@
+PASS played preparation writes the canyon and survives reload without touching campaign bytes
+PASS parent suspension and an inert settings overlay stop the actual tactical clock
+PASS focus loss stops the clock before React cleanup; focus return resumes without catch-up
+PASS a returned formation is replaced by an available selection instead of blocking orders
+PASS dropped archive writes show an unconfirmed result and retry saves it without duplicate rewards
+CONCURRENCY_TRACE {"runs":[false,true],"traces":[{"writes":0,"turn":7,"persisted":false,"message":"Korthas : archive modifiée dans une autre session. Aucune écriture ; fermez puis rouvrez le panneau pour la relire."},{"writes":1,"turn":9,"persisted":true,"message":""}]}
+PASS two live stores use native locks and cannot overwrite one another from a stale snapshot
+PASS new bytes arriving while a native lock is held are refused before a delayed write
+PASS unmount cancels the tactical timer rather than advancing an invisible battle
+{
+  "scope": "Actual free exercise panel/stores, native Web Locks and localStorage; fixture profile and placeholder art; not a played campaign",
+  "browser": "154.0.8037.57",
+  "results": [
+    {
+      "name": "played preparation writes the canyon and survives reload without touching campaign bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "parent suspension and an inert settings overlay stop the actual tactical clock",
+      "status": "PASS"
+    },
+    {
+      "name": "focus loss stops the clock before React cleanup; focus return resumes without catch-up",
+      "status": "PASS"
+    },
+    {
+      "name": "a returned formation is replaced by an available selection instead of blocking orders",
+      "status": "PASS"
+    },
+    {
+      "name": "dropped archive writes show an unconfirmed result and retry saves it without duplicate rewards",
+      "status": "PASS"
+    },
+    {
+      "name": "two live stores use native locks and cannot overwrite one another from a stale snapshot",
+      "status": "PASS"
+    },
+    {
+      "name": "new bytes arriving while a native lock is held are refused before a delayed write",
+      "status": "PASS"
+    },
+    {
+      "name": "unmount cancels the tactical timer rather than advancing an invisible battle",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "status": "PASS",
+      "errors": []
+    }
+  ]
+}

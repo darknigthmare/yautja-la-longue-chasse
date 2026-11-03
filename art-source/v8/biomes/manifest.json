@@ -1,0 +1,37 @@
+{
+  "version": 8,
+  "generator": "OpenAI built-in image_gen",
+  "purpose": "original side-scrolling planet biome backgrounds",
+  "assets": [
+    {
+      "biome": "swamp",
+      "planet": "Naraka-Delta",
+      "master": "masters/openai-swamp-naraka-delta-v8.png",
+      "runtime": "/game/backgrounds/swamp-depth-v8.png"
+    },
+    {
+      "biome": "desert",
+      "planet": "Serekh-9",
+      "master": "masters/openai-desert-serekh-9-v8.png",
+      "runtime": "/game/backgrounds/desert-depth-v8.png"
+    },
+    {
+      "biome": "ocean",
+      "planet": "Pelagos-M",
+      "master": "masters/openai-ocean-pelagos-m-v8.png",
+      "runtime": "/game/backgrounds/ocean-depth-v8.png"
+    },
+    {
+      "biome": "fungal",
+      "planet": "Mycora-V",
+      "master": "masters/openai-fungal-mycora-v-v8.png",
+      "runtime": "/game/backgrounds/fungal-depth-v8.png"
+    },
+    {
+      "biome": "ruins",
+      "planet": "Acheron-Sigma",
+      "master": "masters/openai-ruins-acheron-sigma-v8.png",
+      "runtime": "/game/backgrounds/ruins-depth-v8.png"
+    }
+  ]
+}

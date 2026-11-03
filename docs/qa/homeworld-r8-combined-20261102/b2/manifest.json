@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "scope": "R8 B2 targeted evidence only; manifest excludes itself",
+  "fileCount": 39,
+  "bytes": 37969263,
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 1412,
+      "sha256": "18f8148e62b929191d046bd414328bb45a5d78d4bcf8c21c9f19b4861bfe2a09"
+    },
+    {
+      "file": "executed-drivers/qa-homeworld-forge-fire-v113.mjs",
+      "bytes": 21522,
+      "sha256": "8dd2056e15a458fadc794aad48b66851b119a05583dcb4c9265dbeeb2500c4b5"
+    },
+    {
+      "file": "executed-drivers/qa-homeworld-marsh-ground-joints-v113.mjs",
+      "bytes": 16875,
+      "sha256": "16a6f92f2b43128dc5a8e89058ce77c109ca63124aa4e7781e1e316098cc0282"
+    },
+    {
+      "file": "forge/00-context.png",
+      "bytes": 1756493,
+      "sha256": "54025009f309121973d89f7b087524426ccecad8c7e59d00c233a40cea3acb4d"
+    },
+    {
+      "file": "forge/frame-0.png",
+      "bytes": 489337,
+      "sha256": "22771f2fc2a32f3f24d67496e62f7c9ae63f968d443af262750c752ddf327fa5"
+    },
+    {
+      "file": "forge/frame-1.png",
+      "bytes": 489547,
+      "sha256": "56a3edb310239516d0cd0aeba766c98255b862ebae6c47764fe0fa423f265321"
+    },
+    {
+      "file": "forge/frame-2.png",
+      "bytes": 489435,
+      "sha256": "4e7ef3b8c0f761ebeb627ffe4f6269fcd966e89cace3f992c73d9ac0d558edda"
+    },
+    {
+      "file": "forge/frame-3.png",
+      "bytes": 489477,
+      "sha256": "0356685df3758d3f712d570060bb3aef25a9fc09a9205f9e58301d82442cede5"
+    },
+    {
+      "file": "forge/frame-4.png",
+      "bytes": 489382,
+      "sha256": "e60f77365872d0e7689bdf42d539e4e210311c4550cb008bfe13d24263952314"
+    },
+    {
+      "file": "forge/frame-5.png",
+      "bytes": 489423,
+      "sha256": "e5bd9540ae3371fe8b4eb7a16f2583338ba5116701d6e77c5a66e1ed99b61ebc"
+    },
+    {
+      "file": "forge/missing-facade-no-orphan-fire.png",
+      "bytes": 523735,
+      "sha256": "b83b666f7a550f4a20ae83fb8ab5b586f7ae0e3d52432db0e371766d5d0d1151"
+    },
+    {
+      "file": "forge/missing-resource-static.png",
+      "bytes": 515441,
+      "sha256": "61bcf17f07100c360feb52fdc0b5ca436d6b9006e8e7dc3f4a8c3300286f8b96"
+    },
+    {
+      "file": "forge/opened-review.json",
+      "bytes": 17819,
+      "sha256": "b6892dc0e93bb0f3e0785a62c5d58b0bcf4084a30096e73390a5fccea61ce441"
+    },
+    {
+      "file": "forge/opened-review.md",
+      "bytes": 3950,
+      "sha256": "781960b20ac0f9fec1ba36d43ae84ca36d43e3890a190b0fe011cbb67d48b867"
+    },
+    {
+      "file": "forge/pause.png",
+      "bytes": 154343,
+      "sha256": "095687facb2b8da98dd738ae815a338e15ac800a983572bd49497e1a38374710"
+    },
+    {
+      "file": "forge/reduced-motion.png",
+      "bytes": 516002,
+      "sha256": "7d41c735f7690003a76cb9df333f9e43fa00e1cb9d3e19e57c3cc4138cc4fd7d"
+    },
+    {
+      "file": "forge/result.json",
+      "bytes": 28320,
+      "sha256": "04bceb0c19f23d72f662816a3c3ecd0489cd4d50de8dac5eed066f57a99854f3"
+    },
+    {
+      "file": "marsh/central-camera.png",
+      "bytes": 1890975,
+      "sha256": "fa9a734cd7f9fc1a33c4d738132e31ed3ebde63b3bd53531da061a4d486c5f89"
+    },
+    {
+      "file": "marsh/central-mobile-camera.png",
+      "bytes": 361776,
+      "sha256": "7b03e211148a56884ee0dedd1fe9969f5a4a66a8eb4be94f62ca10486610eaca"
+    },
+    {
+      "file": "marsh/cross-dock-road-camera.png",
+      "bytes": 1953938,
+      "sha256": "013e4a747bef0f33123e0cb5bfd820f9ecabd9df306ff7bc8c61d298df1a1bff"
+    },
+    {
+      "file": "marsh/cross-dock-road-returned.png",
+      "bytes": 1936931,
+      "sha256": "f219432cf6d93573a2e8af0823e76616d3e6aafe63dc870f4307c26f00244f0a"
+    },
+    {
+      "file": "marsh/cross-rampart-lower-camera.png",
+      "bytes": 1761208,
+      "sha256": "a9d96c2f51c38444d1e8301fa2ade5405fb40c3bc1db2f476f980f8dab18f610"
+    },
+    {
+      "file": "marsh/cross-rampart-lower-returned.png",
+      "bytes": 1722973,
+      "sha256": "3cf031dc6c4b6124b48a29daaeab9bd374821a7fb5d4e0e2fa24e05541e6f92a"
+    },
+    {
+      "file": "marsh/cross-rampart-upper-camera.png",
+      "bytes": 1936449,
+      "sha256": "3e24f368ba9c79c545a7daa074fd4158c811a1b092e0abf0d796d5d3d533f6c6"
+    },
+    {
+      "file": "marsh/cross-rampart-upper-returned.png",
+      "bytes": 1912444,
+      "sha256": "bdc25741f0cb52909e9a5a74b05fc9f42415f6337d478c35199f7ae52faffc13"
+    },
+    {
+      "file": "marsh/dock-door-camera.png",
+      "bytes": 1890975,
+      "sha256": "fa9a734cd7f9fc1a33c4d738132e31ed3ebde63b3bd53531da061a4d486c5f89"
+    },
+    {
+      "file": "marsh/dock-door-door-approach.png",
+      "bytes": 1880232,
+      "sha256": "2aaca82126f1dc67d556380bbea49249fbb36ed4b2ad6a232a27934a8f1d0e4c"
+    },
+    {
+      "file": "marsh/dock-door-entered.png",
+      "bytes": 518684,
+      "sha256": "4e6fc12c6f9c0bcf3c456815b22c1cdc6b50d0652f74e6fa3fbfdb10d8f0170b"
+    },
+    {
+      "file": "marsh/dock-door-returned-outside.png",
+      "bytes": 1954420,
+      "sha256": "9dd6df7fc720c1db9ba9c6eff85a2ca80b21e160d522db8ccee61181458d2241"
+    },
+    {
+      "file": "marsh/dock-lower-end-camera.png",
+      "bytes": 1778584,
+      "sha256": "9700cda664b168b40927da5e2faec578c4f6c10b730c81f576fb6e25d68b7941"
+    },
+    {
+      "file": "marsh/dock-upper-end-camera.png",
+      "bytes": 2052722,
+      "sha256": "4492b117823ded807365b280a382b7e52bc39fa06232bf02e1a10f6831679eb1"
+    },
+    {
+      "file": "marsh/marsh-watch-return-camera.png",
+      "bytes": 1981444,
+      "sha256": "afdf02d41bbf5dc7ac8d1a0e211b7235a539e5e943a7370dde30e1f42de916f3"
+    },
+    {
+      "file": "marsh/marsh-watch-return-returned.png",
+      "bytes": 2001947,
+      "sha256": "fb99e7a18b04f793544cd26636b7c095735aea58ee518490586583993fc7ef3b"
+    },
+    {
+      "file": "marsh/opened-review.json",
+      "bytes": 16671,
+      "sha256": "8089e147b7cb6cbb1ac4d707c66a59a3b31258bc7963209cd5c4c2c8bb0066c4"
+    },
+    {
+      "file": "marsh/opened-review.md",
+      "bytes": 1832,
+      "sha256": "84c57839c7d85b36e93e9af05713d11bdd1e24ade379a86e647a246170d71a4d"
+    },
+    {
+      "file": "marsh/rampart-lower-end-camera.png",
+      "bytes": 1738692,
+      "sha256": "384c6c024bda26aa756c455973fd81d4824f60c213a8d04245a0f337edf3b296"
+    },
+    {
+      "file": "marsh/rampart-upper-end-camera.png",
+      "bytes": 2135746,
+      "sha256": "4f386780fb752c7f1cb6039a414d1a8d3f95dad3cdcc1fe639740ed269f1b493"
+    },
+    {
+      "file": "marsh/result.json",
+      "bytes": 44243,
+      "sha256": "ab8117ab957e0b85f7e4509cd999523da220eaa524c236d75b8d485f417a604b"
+    },
+    {
+      "file": "summary.json",
+      "bytes": 3864,
+      "sha256": "bbd0b5f99b8f17501b9b84b44591e69c02a1eda6e99180a6a8c8efc66b9b3c2c"
+    }
+  ]
+}

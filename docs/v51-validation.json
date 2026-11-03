@@ -1,0 +1,127 @@
+{
+  "version": "V51",
+  "date": "2026-09-26",
+  "scope": [
+    "PIT animated entrances, 3-2-1 countdown, input gates, round and match ceremonies outside replay ticks",
+    "Four original OpenAI PNGs for the exact supplied masked Jungle Hunter appearance, six native three-pose clips",
+    "Independent fixed-camera and reduced-motion settings; combat effects removed from ceremonies",
+    "Homeworld keeps unsaved visited districts until explicit acknowledged recovery before youth training"
+  ],
+  "verification": {
+    "build": {
+      "passed": true,
+      "report": "outputs/qa-commercial-audit/v51/build-final2.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "incremental": false,
+      "report": "outputs/qa-commercial-audit/v51/typecheck-final3.log"
+    },
+    "lint": {
+      "passed": true,
+      "errors": 0,
+      "existingWarnings": 1,
+      "warning": "ClanChroniclePanel.tsx:42 next/no-img-element",
+      "report": "outputs/qa-commercial-audit/v51/lint-final3.log"
+    },
+    "nodeTestSuite": {
+      "passed": true,
+      "tests": 1612,
+      "failed": 0,
+      "skipped": 0,
+      "report": "outputs/qa-commercial-audit/v51/tests-final3.log",
+      "scope": "Source contracts, systems, rendering and isolated browser fixtures; not only unit tests."
+    },
+    "browser": {
+      "distinctLocalChecks": 39,
+      "reports": [
+        {
+          "path": "outputs/qa-commercial-audit/v51/round-presentation-browser-qa-final/report.json",
+          "passed": true,
+          "distinctChecks": 10,
+          "scope": "round lifecycle, loading, pause, input neutralization and deterministic replay"
+        },
+        {
+          "path": "outputs/qa-commercial-audit/v51/presentation-art-browser-qa-final2/report.json",
+          "passed": true,
+          "distinctChecks": 8,
+          "scope": "six native clips and two motion preferences; mobile check counted separately below"
+        },
+        {
+          "path": "outputs/qa-commercial-audit/v51/countdown-layout-browser-qa-run1/report.json",
+          "passed": true,
+          "distinctChecks": 3,
+          "scope": "stable countdown at 390, 640 and 1280 pixels"
+        },
+        {
+          "path": "outputs/qa-commercial-audit/v51/homeworld-youth-entry-browser-qa/report.json",
+          "passed": true,
+          "distinctChecks": 4,
+          "scope": "failed visit writes, explicit recovery, then youth transition"
+        },
+        {
+          "path": "outputs/qa-commercial-audit/v51/combat-camera-regression/build2/immersive/report.json",
+          "passed": true,
+          "distinctChecks": 10,
+          "scope": "full viewport, HUD, pause, controls and lab"
+        },
+        {
+          "path": "outputs/qa-commercial-audit/v51/combat-camera-regression/build2/fixed-ahab/report.json",
+          "passed": true,
+          "distinctChecks": 4,
+          "scope": "Ahab authored body bounds and fixed camera"
+        }
+      ],
+      "duplicatePolicy": "The 390px layout check in the art report is counted once in the three-viewport layout report.",
+      "buildNote": "All six final browser reports target build2. Subsequent edits only strengthen QA recipes and documentation. Homeworld local report proves transition/persistence; its first capture preceded dojo art readiness. Public recipe now also waits for the loaded dojo canvas.",
+      "limitations": [
+        "Chrome/Chromium automation; touch and controller emulated, not physical hardware.",
+        "Real tab focus loss tested with CDP focus emulation disabled; document.hidden remained false. Hidden-clock behavior also covered by code/unit checks.",
+        "Homeworld write refusal is a targeted QuotaExceededError simulation, not real disk exhaustion.",
+        "Replay comparisons verify unchanged primary stores and exact campaign plus attachment payloads through permitted autosave rotation."
+      ]
+    },
+    "sourceAssets": {
+      "passed": true,
+      "count": 4,
+      "report": "outputs/qa-commercial-audit/v51/final2-local-assets/report.json",
+      "checks": "HTTP 200, content type, PNG signature, byte equality, dimensions and SHA256"
+    },
+    "targetedAudits": {
+      "renderTests": 60,
+      "homeworldYouthTests": 71,
+      "note": "Subsets of the full suite; not added to the 1612 count.",
+      "cameraContainmentChecks": 24480,
+      "cameraMinimumCanvasMarginPixels": 43.288543453432226
+    }
+  },
+  "art": {
+    "acceptedPhysicalPng": 4,
+    "acceptedLogicalPages": 6,
+    "sourceDrawings": 18,
+    "usedDistinctDrawings": 16,
+    "orientedClips": 6,
+    "clipFrameUses": 18,
+    "exactVariantId": "jungle-hunter-avec-casque-53f4eb349a",
+    "registryTotals": {
+      "fighterIdentities": 15,
+      "appearances": 18,
+      "logicalPages": 104,
+      "physicalPng": 92,
+      "distinctDrawings": 643,
+      "readyClips": 321
+    }
+  },
+  "limits": [
+    "New dedicated ceremonies cover one exact masked appearance only; other appearances keep their own existing idle animation or staged bitmap.",
+    "No full-roster animation, complete movement cycles or complete movesets claimed.",
+    "Final defeat wrist blade tips extend 12-13 source pixels below support pivots; feet, knee and palm remain grounded.",
+    "Canon 1:1 and fine anatomy are not certified. Rejected Wolf and incorrect victory blades are not integrated.",
+    "No new Windows executable; campaign, arena, Homeworld and vehicle backlog remains in docs/v51-backlog-audit.md."
+  ],
+  "publication": {
+    "canonical": "https://yautja-la-longue-chasse.vercel.app",
+    "proofRecordedAfterPush": "outputs/qa-commercial-audit/v51/publication-verified.json",
+    "strategy": "Push validated commit to main, verify Vercel READY and exact production alias SHA, replay public lifecycle, art and Homeworld checks, then verify all four PNG hashes."
+  }
+}

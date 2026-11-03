@@ -1,0 +1,293 @@
+{
+  "schema": 1,
+  "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+  "engineSourceSha256": "8bf504951e6d7d6af9df2bf1d125b99d25f06009723efc96b47636b53b5471c5",
+  "scope": "Simulation native numérique, admissions replay déclarées ; aucune validation de matériel physique, navigateur ou progression par cette matrice.",
+  "runCounts": {
+    "unladen": 24,
+    "harvestMode": 24,
+    "additionalRealCampaignReplays": 12,
+    "successfulExtractions": 58,
+    "failedExtractions": 2,
+    "exactObservedTerminalReplays": 60,
+    "canopyGripFrames": 0,
+    "canopySwingFrames": 0,
+    "authoredCanopyRestContactFrames": 0
+  },
+  "nonemptySuccessfulMissionArmorPairs": 18,
+  "maxSuccessfulLoadRatio": 0.3888888888888889,
+  "maxSuccessfulMassKg": 7.800000000000001,
+  "maxSuccessfulVolumeUnits": 9,
+  "limits": [
+    "Les charges apparaissent après des proies réellement tuées et récoltées ; le départ est vide.",
+    "Aucune charge pleine à ratio 1 ne termine une mission dans cette preuve.",
+    "Six couples mission/armure ne disposent toujours que de l’extraction à vide.",
+    "Deux replays palustres chargés échouent et restent conservés.",
+    "Une seed légale et un contrôleur automatisé ne couvrent pas tous les tirages ni toutes les difficultés.",
+    "L’égalité de replay porte sur brief() et l’outcome ; les horodatages et identifiants de trophée ne sont pas comparés."
+  ],
+  "requirements": {
+    "CHA112-02": "Critère moteur natif de route principale sans récolte optionnelle satisfait pour les huit missions et trois armures ; décision de clôture du suivi laissée au root.",
+    "ROU112-05": "Partiel : route intégrale à vide 24/24 et charges effectivement obtenues ; pas toutes les charges admissibles.",
+    "CHA112-05": "Partiel : aucun coefficient négatif observé, extractions chargées réelles ; maximum admissible intégral non vérifié.",
+    "REM112-08": "Partiel : huit missions et trois armures couvertes à vide ; couverture des charges encore bornée."
+  },
+  "matrix": [
+    {
+      "missionId": "jungle-vey",
+      "armors": [
+        {
+          "armorId": "scout",
+          "unladenSeconds": 56.433,
+          "unladenFile": "qualified-unladen/jungle-vey-scout.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/jungle-vey-scout.json",
+          "massKg": 0.4,
+          "volumeUnits": 1,
+          "loadRatio": 0.05555555555555555
+        },
+        {
+          "armorId": "hunter",
+          "unladenSeconds": 66.567,
+          "unladenFile": "qualified-unladen/jungle-vey-hunter.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/jungle-vey-hunter.json",
+          "massKg": 0.4,
+          "volumeUnits": 1,
+          "loadRatio": 0.041666666666666664
+        },
+        {
+          "armorId": "berserker",
+          "unladenSeconds": 69.333,
+          "unladenFile": "qualified-unladen/jungle-vey-berserker.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/jungle-vey-berserker.json",
+          "massKg": 0.4,
+          "volumeUnits": 1,
+          "loadRatio": 0.03333333333333333
+        }
+      ]
+    },
+    {
+      "missionId": "ice-cryostalker",
+      "armors": [
+        {
+          "armorId": "scout",
+          "unladenSeconds": 54.1,
+          "unladenFile": "qualified-unladen/ice-cryostalker-scout.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/ice-cryostalker-scout.json",
+          "massKg": 1.2,
+          "volumeUnits": 2,
+          "loadRatio": 0.1111111111111111
+        },
+        {
+          "armorId": "hunter",
+          "unladenSeconds": 52.883,
+          "unladenFile": "qualified-unladen/ice-cryostalker-hunter.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/ice-cryostalker-hunter.json",
+          "massKg": 1.2,
+          "volumeUnits": 2,
+          "loadRatio": 0.08333333333333333
+        },
+        {
+          "armorId": "berserker",
+          "unladenSeconds": 55.417,
+          "unladenFile": "qualified-unladen/ice-cryostalker-berserker.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/ice-cryostalker-berserker.json",
+          "massKg": 1.2,
+          "volumeUnits": 2,
+          "loadRatio": 0.06666666666666667
+        }
+      ]
+    },
+    {
+      "missionId": "volcano-bad-blood",
+      "armors": [
+        {
+          "armorId": "scout",
+          "unladenSeconds": 82.233,
+          "unladenFile": "qualified-unladen/volcano-bad-blood-scout.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/volcano-bad-blood-scout.json",
+          "massKg": 3.9999999999999996,
+          "volumeUnits": 6,
+          "loadRatio": 0.3333333333333333
+        },
+        {
+          "armorId": "hunter",
+          "unladenSeconds": 89.817,
+          "unladenFile": "qualified-unladen/volcano-bad-blood-hunter.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/volcano-bad-blood-hunter.json",
+          "massKg": 3.9999999999999996,
+          "volumeUnits": 6,
+          "loadRatio": 0.25
+        },
+        {
+          "armorId": "berserker",
+          "unladenSeconds": 111.683,
+          "unladenFile": "qualified-unladen/volcano-bad-blood-berserker.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/volcano-bad-blood-berserker.json",
+          "massKg": 4,
+          "volumeUnits": 6,
+          "loadRatio": 0.2
+        }
+      ]
+    },
+    {
+      "missionId": "swamp-hydra",
+      "armors": [
+        {
+          "armorId": "scout",
+          "unladenSeconds": 71.583,
+          "unladenFile": "qualified-unladen/swamp-hydra-scout.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/swamp-hydra-scout.json",
+          "massKg": 0,
+          "volumeUnits": 0,
+          "loadRatio": 0
+        },
+        {
+          "armorId": "hunter",
+          "unladenSeconds": 64.883,
+          "unladenFile": "qualified-unladen/swamp-hydra-hunter.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested-replays/swamp-hydra-hunter.json",
+          "massKg": 7.800000000000001,
+          "volumeUnits": 9,
+          "loadRatio": 0.375
+        },
+        {
+          "armorId": "berserker",
+          "unladenSeconds": 88.867,
+          "unladenFile": "qualified-unladen/swamp-hydra-berserker.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/swamp-hydra-berserker.json",
+          "massKg": 1.5,
+          "volumeUnits": 3,
+          "loadRatio": 0.1
+        }
+      ]
+    },
+    {
+      "missionId": "desert-sandmaw",
+      "armors": [
+        {
+          "armorId": "scout",
+          "unladenSeconds": 54.367,
+          "unladenFile": "qualified-unladen/desert-sandmaw-scout.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/desert-sandmaw-scout.json",
+          "massKg": 4.2,
+          "volumeUnits": 7,
+          "loadRatio": 0.3888888888888889
+        },
+        {
+          "armorId": "hunter",
+          "unladenSeconds": 67.183,
+          "unladenFile": "qualified-unladen/desert-sandmaw-hunter.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/desert-sandmaw-hunter.json",
+          "massKg": 1.2,
+          "volumeUnits": 2,
+          "loadRatio": 0.08333333333333333
+        },
+        {
+          "armorId": "berserker",
+          "unladenSeconds": 65.967,
+          "unladenFile": "qualified-unladen/desert-sandmaw-berserker.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/desert-sandmaw-berserker.json",
+          "massKg": 4.2,
+          "volumeUnits": 7,
+          "loadRatio": 0.23333333333333334
+        }
+      ]
+    },
+    {
+      "missionId": "ocean-leviathan",
+      "armors": [
+        {
+          "armorId": "scout",
+          "unladenSeconds": 116.733,
+          "unladenFile": "qualified-unladen/ocean-leviathan-scout.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested-replays/ocean-leviathan-scout.json",
+          "massKg": 1.2,
+          "volumeUnits": 2,
+          "loadRatio": 0.1111111111111111
+        },
+        {
+          "armorId": "hunter",
+          "unladenSeconds": 123.617,
+          "unladenFile": "qualified-unladen/ocean-leviathan-hunter.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested-replays/ocean-leviathan-hunter.json",
+          "massKg": 1.2,
+          "volumeUnits": 2,
+          "loadRatio": 0.08333333333333333
+        },
+        {
+          "armorId": "berserker",
+          "unladenSeconds": 135.733,
+          "unladenFile": "qualified-unladen/ocean-leviathan-berserker.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested-replays/ocean-leviathan-berserker.json",
+          "massKg": 1.2,
+          "volumeUnits": 2,
+          "loadRatio": 0.06666666666666667
+        }
+      ]
+    },
+    {
+      "missionId": "fungal-hivemind",
+      "armors": [
+        {
+          "armorId": "scout",
+          "unladenSeconds": 87.883,
+          "unladenFile": "qualified-unladen/fungal-hivemind-scout.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/fungal-hivemind-scout.json",
+          "massKg": 0,
+          "volumeUnits": 0,
+          "loadRatio": 0
+        },
+        {
+          "armorId": "hunter",
+          "unladenSeconds": 78.9,
+          "unladenFile": "qualified-unladen/fungal-hivemind-hunter.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/fungal-hivemind-hunter.json",
+          "massKg": 0,
+          "volumeUnits": 0,
+          "loadRatio": 0
+        },
+        {
+          "armorId": "berserker",
+          "unladenSeconds": 69.35,
+          "unladenFile": "qualified-unladen/fungal-hivemind-berserker.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/fungal-hivemind-berserker.json",
+          "massKg": 0,
+          "volumeUnits": 0,
+          "loadRatio": 0
+        }
+      ]
+    },
+    {
+      "missionId": "ruins-ancient-guardian",
+      "armors": [
+        {
+          "armorId": "scout",
+          "unladenSeconds": 59.367,
+          "unladenFile": "qualified-unladen/ruins-ancient-guardian-scout.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested-replays/ruins-ancient-guardian-scout.json",
+          "massKg": 1.2,
+          "volumeUnits": 2,
+          "loadRatio": 0.1111111111111111
+        },
+        {
+          "armorId": "hunter",
+          "unladenSeconds": 58.967,
+          "unladenFile": "qualified-unladen/ruins-ancient-guardian-hunter.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/ruins-ancient-guardian-hunter.json",
+          "massKg": 0,
+          "volumeUnits": 0,
+          "loadRatio": 0
+        },
+        {
+          "armorId": "berserker",
+          "unladenSeconds": 60.417,
+          "unladenFile": "qualified-unladen/ruins-ancient-guardian-berserker.json",
+          "bestSuccessfulHarvestedFile": "qualified-harvested/ruins-ancient-guardian-berserker.json",
+          "massKg": 0,
+          "volumeUnits": 0,
+          "loadRatio": 0
+        }
+      ]
+    }
+  ]
+}

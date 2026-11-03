@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/scar/intake/026-scar-jM-left-original.png",
+  "sourceSha256": "4d714b5f7f334d22250adfca8231a3abf3fa147dd18c1f5d9b36498f45560388",
+  "bytes": 1926192,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 2,
+  "strategy": "column-first",
+  "status": "MEASURED_REQUIRES_VISUAL_REVIEW",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "x",
+      "row": 1,
+      "start": 642,
+      "end": 928,
+      "cut": 785,
+      "primaryColumn": 1
+    },
+    {
+      "axis": "y",
+      "row": 0,
+      "column": 1,
+      "start": 516,
+      "end": 518,
+      "cut": 517,
+      "primaryColumn": 0
+    },
+    {
+      "axis": "y",
+      "row": 1,
+      "column": 1,
+      "start": 461,
+      "end": 490,
+      "cut": 475,
+      "primaryColumn": 1
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        786,
+        518
+      ],
+      "visibleRect": [
+        306,
+        12,
+        283,
+        504
+      ],
+      "alphaPixels": 85914,
+      "borderPixels": 0,
+      "visiblePixelSha256": "6e403c74dc46668487b94b9305108f768219e8bb30b040c6239412a2e6544878",
+      "pivotCandidate": [
+        532.5,
+        516
+      ],
+      "visibleHeightCandidate": 504
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        785,
+        0,
+        751,
+        476
+      ],
+      "visibleRect": [
+        929,
+        14,
+        352,
+        447
+      ],
+      "alphaPixels": 80071,
+      "borderPixels": 0,
+      "visiblePixelSha256": "f7402fdfcb633b3898c5e43fffaef4e723fc4e11fbd90d9b661cbdcb917632e3",
+      "pivotCandidate": [
+        374.5,
+        461
+      ],
+      "visibleHeightCandidate": 447
+    },
+    {
+      "index": 2,
+      "row": 1,
+      "column": 0,
+      "rect": [
+        0,
+        517,
+        786,
+        507
+      ],
+      "visibleRect": [
+        120,
+        519,
+        522,
+        452
+      ],
+      "alphaPixels": 91137,
+      "borderPixels": 0,
+      "visiblePixelSha256": "ed3d93c8190e07cb6577a45d58e9d8c3f911957d1345750cc78b392db6f4b5ee",
+      "pivotCandidate": [
+        564.5,
+        454
+      ],
+      "visibleHeightCandidate": 452
+    },
+    {
+      "index": 3,
+      "row": 1,
+      "column": 1,
+      "rect": [
+        785,
+        475,
+        751,
+        549
+      ],
+      "visibleRect": [
+        937,
+        491,
+        393,
+        527
+      ],
+      "alphaPixels": 90759,
+      "borderPixels": 0,
+      "visiblePixelSha256": "0f5cc5468de35b57dcec9b6bb70737173d21877d5991c5308ca2fb8562b2956a",
+      "pivotCandidate": [
+        335.5,
+        543
+      ],
+      "visibleHeightCandidate": 527
+    }
+  ],
+  "issues": []
+}

@@ -1,0 +1,209 @@
+{
+  "ordinal": 1,
+  "id": "celtic-v94-001-idle",
+  "family": "idle",
+  "part": null,
+  "targetDrawings": 16,
+  "targetPerFacing": 8,
+  "grid": {
+    "cols": 4,
+    "rows": 4,
+    "rightColumns": [
+      0,
+      1
+    ],
+    "leftColumns": [
+      2,
+      3
+    ],
+    "chronology": "row-major within native-facing half"
+  },
+  "reference": "public/game/sprites/v44/user-hunters/0764ed4b539cc40c2c3dc91cfca405f0e01ac7a528a3d3412da18552dbbccb4e.png",
+  "prompt": "Use case: identity-preserve. Asset: native RGBA transparent fighting-game sprite animation page. Match ONLY attached exact MASKED CELTIC reference: broad muscular AVP body; unique weathered SILVER domed Celtic biomask with narrow pale eyes, four orange-copper circular fittings and central vertical silver mouth grilles; dark dreadlocks with brass rings; yellow/tan black-mottled skin and black body netting; thick overlapping silver breast and shoulder armor, layered thigh plates, long silver plated loin apron, articulated shin armor and armored clawed feet; small skull necklace. Keep all equipment consistently anatomically attached: TWO jagged extended wrist blades only on CHARACTER RIGHT gauntlet; original single plasma caster visibly mounted above CHARACTER LEFT shoulder, with its original mounting and hose. No shoulder-device omission, opposite-arm weapon swap, pistol, spear, shield, blade on both arms, or new accessory. Opposite facings must be drawn independently with proper original anatomical gear, not mirrored. Match the supplied detailed painted 2D game-art style and neutral lighting, not a plastic action figure. Full bodies in a slight3/4 SIDE VIEW, facing an opponent at screen right or screen left. Same anatomy, costume, mask worn, equipment shape/length and drawing scale in EVERY frame/page. Plain fully TRANSPARENT background only; no ground, shadow, atmosphere, blood, particles, opponent, weapon discharge, captions, grid, frame numbers, backdrop, painted checkerboard or ornaments. Fingers simple and legible, one thumb and four claws, no floating hands/extra arms/fused digits; dreadlocks attached around back of head, draping behind shoulders without crossing chest or changing into blades. All body, cannon, hair and blade tips safely inside each cell, wide completely transparent gutters. Keep figure SMALL, approximately260pixels tall and180pixels wide at1024canvaswidth, at least30px transparent horizontal margins and55px vertical margins in its cell. Never increase figure to fill cell. Feet on a stable per-cell baseline unless a specified small nonlethal knee motion. A coherent restrained GAMEPLAY ADAPTATION, not alleged canon tribal ceremony. No dance, supernatural ritual, roar pose, mask removal, trophy or new power. Every chronological pose is genuinely independently drawn and slightly articulated, not duplicated or shifted copies.\nPORTRAIT1024x1536. Exactly SIXTEEN separate complete drawings in FOUR COLUMNS by FOUR ROWS. Columns1 and2 face SCREEN RIGHT (8 chronological poses read row1col1→row1col2→row2col1→row2col2→row3col1→row3col2→row4col1→row4col2). Columns3 and4 face SCREEN LEFT (the same8 chronological poses read row1col3→row1col4→row2col3→row2col4→row3col3→row3col4→row4col3→row4col4). Four256x384cells in eachrow, bigempty gutters; do not create2columns or only8figures.\nACTION: Eight-pose IDLE BREATH LOOP per facing:1 stable low ready stance,2 early inhale shoulders rise slightly,3 chest expands,4 inhale reaches peak,5 breathe out head settles,6 shoulders lower slightly,7 chest returns,8 near original ready stance. Both feet planted, hands kept low and separate from armor, right blade forearm points obliquely DOWN with long blades contained beside leg. Only restrained breathing, knee and dreadlock settling. No walking or attacking.",
+  "originalPath": "C:/Users/chuck/.codex/generated_images/01a134c5-dc8c-74f1-bc35-516803001422/exec-8a52b9e2-0056-48c7-b58d-1afbd0029a26.png",
+  "sourcePath": "art-source/v94/pit/celtic/001-celtic-masked-idle-v94.png",
+  "fileName": "001-celtic-masked-idle-v94.png",
+  "sha256": "dc90ec17e6b6ad41229b7d26a00725eba1a52cfb7ac604bc6c2bec659e13b7f5",
+  "bytes": 2912389,
+  "width": 1024,
+  "height": 1536,
+  "hasAlpha": true,
+  "channels": 4,
+  "zeroAlphaFraction": 0.4980297088623047,
+  "nativeColumnRanges": [
+    {
+      "col": 0,
+      "x0": 0,
+      "x1": 256,
+      "ranges": [
+        [
+          50,
+          402
+        ],
+        [
+          418,
+          766
+        ],
+        [
+          786,
+          1135
+        ],
+        [
+          1154,
+          1500
+        ]
+      ]
+    },
+    {
+      "col": 1,
+      "x0": 256,
+      "x1": 512,
+      "ranges": [
+        [
+          50,
+          401
+        ],
+        [
+          416,
+          767
+        ],
+        [
+          786,
+          1135
+        ],
+        [
+          1153,
+          1500
+        ]
+      ]
+    },
+    {
+      "col": 2,
+      "x0": 512,
+      "x1": 768,
+      "ranges": [
+        [
+          50,
+          401
+        ],
+        [
+          416,
+          768
+        ],
+        [
+          787,
+          1135
+        ],
+        [
+          1153,
+          1501
+        ]
+      ]
+    },
+    {
+      "col": 3,
+      "x0": 768,
+      "x1": 1024,
+      "ranges": [
+        [
+          50,
+          401
+        ],
+        [
+          418,
+          766
+        ],
+        [
+          787,
+          1135
+        ],
+        [
+          1153,
+          1500
+        ]
+      ]
+    }
+  ],
+  "status": "accepted-selected-native-cells-only",
+  "pixelTransformation": "none-byte-identical-copy",
+  "review": {
+    "ordinal": 1,
+    "sourcePath": "art-source/v94/pit/celtic/001-celtic-masked-idle-v94.png",
+    "publicPath": "public/game/sprites/v94/pit/celtic/001-celtic-masked-idle-v94.png",
+    "sha256": "dc90ec17e6b6ad41229b7d26a00725eba1a52cfb7ac604bc6c2bec659e13b7f5",
+    "bytes": 2912389,
+    "pageId": "celtic-masked-idle-v94",
+    "bodyHeightPx": 353,
+    "zeroAlphaFraction": 0.4980297088623047,
+    "reviewDecision": "accepted-selected-native-cells-only",
+    "acceptedCells": [
+      {
+        "row": 0,
+        "col": 0
+      },
+      {
+        "row": 0,
+        "col": 1
+      },
+      {
+        "row": 0,
+        "col": 2
+      },
+      {
+        "row": 0,
+        "col": 3
+      },
+      {
+        "row": 1,
+        "col": 0
+      },
+      {
+        "row": 1,
+        "col": 1
+      },
+      {
+        "row": 1,
+        "col": 2
+      },
+      {
+        "row": 1,
+        "col": 3
+      },
+      {
+        "row": 2,
+        "col": 0
+      },
+      {
+        "row": 2,
+        "col": 1
+      },
+      {
+        "row": 2,
+        "col": 2
+      },
+      {
+        "row": 2,
+        "col": 3
+      },
+      {
+        "row": 3,
+        "col": 0
+      },
+      {
+        "row": 3,
+        "col": 1
+      },
+      {
+        "row": 3,
+        "col": 2
+      },
+      {
+        "row": 3,
+        "col": 3
+      }
+    ],
+    "excludedCells": [],
+    "pixelTransformation": "none-byte-identical-copy",
+    "canonicalFidelityCertified": false
+  }
+}

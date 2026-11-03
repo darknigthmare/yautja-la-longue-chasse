@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4187",
+  "checks": [
+    {
+      "name": "threshold-route-and-real-access",
+      "region": "ash-marches"
+    },
+    {
+      "name": "threshold-route-and-real-access",
+      "region": "glass-desert"
+    },
+    {
+      "name": "threshold-route-and-real-access",
+      "region": "pillar-jungle"
+    },
+    {
+      "name": "threshold-route-and-real-access",
+      "region": "luminous-marshes"
+    },
+    {
+      "name": "threshold-route-and-real-access",
+      "region": "storm-chain"
+    },
+    {
+      "name": "threshold-route-and-real-access",
+      "region": "leviathan-coast"
+    },
+    {
+      "name": "threshold-route-and-real-access",
+      "region": "thermal-caves"
+    },
+    {
+      "name": "threshold-route-and-real-access",
+      "region": "cold-crown"
+    },
+    {
+      "name": "threshold-route-and-real-access",
+      "region": "first-city-ruins"
+    },
+    {
+      "name": "threshold-route-and-real-access",
+      "region": "forbidden-reserve"
+    },
+    {
+      "name": "physical-walking-to-threshold",
+      "region": "thermal-caves",
+      "position": {
+        "x": 3518,
+        "y": 2792
+      },
+      "noTeleport": true
+    },
+    {
+      "name": "portrait-focus-pause-no-grants"
+    }
+  ],
+  "captures": [
+    "work-local/v70/qa/atlas-final-local/ash-marches-atlas.jpg",
+    "work-local/v70/qa/atlas-final-local/thermal-caves-atlas.jpg",
+    "work-local/v70/qa/atlas-final-local/forbidden-reserve-atlas.jpg",
+    "work-local/v70/qa/atlas-final-local/physical-threshold-arrival.jpg",
+    "work-local/v70/qa/atlas-final-local/portrait-atlas-reserve-locked.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": "The ten city routes are traced against real solids. One city route is physically walked by keyboard. The ten complete regional connectors are not all played in this recipe. First Tracks uses declared model-played prerequisites. No discovery, grant or teleport is produced by atlas reading."
+}

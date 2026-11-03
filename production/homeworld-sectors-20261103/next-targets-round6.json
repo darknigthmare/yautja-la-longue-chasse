@@ -1,0 +1,782 @@
+{
+  "version": "MMK-20261103-PASS6",
+  "date": "2026-11-03",
+  "baselineCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+  "previousDeliveryCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+  "status": "GENERATED_REVIEWED_SOURCE_ART_CANDIDATES",
+  "previousSelectedPNGCount": 56,
+  "plannedAdditionalPNGCount": 14,
+  "targetTotalPNGCount": 70,
+  "newV81Targets": 0,
+  "newBuildingIdentities": 0,
+  "newAssetPlan": [
+    {
+      "area": "market",
+      "productionPass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Conserver la vue de la référence exacte ; aucune conversion à 0°/35° ni mesure de caméra revendiquée. Aucun miroir ou pivot arbitraire.",
+      "id": "HWM162-S18",
+      "priority": "P1",
+      "label": "Chariot de manutention — sans chargement",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "relatedOutOfScopeTargetIds": [
+        "target-v81-67-207"
+      ],
+      "expectedPath": "sprites/market/HWM162-S18-empty-cargo-sorting-cart.png",
+      "sourceAssetFiles": [
+        "public/game/homeworld/v78/port-cargo-sorting-cart.png"
+      ],
+      "sourceAssetIds": [],
+      "complements": [
+        "HWM162-S05",
+        "HWM162-S07",
+        "HWM162-S09",
+        "HWM162-S17"
+      ],
+      "gapClassification": "MISSING_EMPTY_STATE_OF_LOADED_HANDLING_PROP",
+      "purpose": "Composer le chargement de la réserve sur un support mobile libre au lieu de conserver toujours les marchandises peintes.",
+      "evidence": "Source V78 inspectée chargée ; recherche de noms et métadonnées sans état vide autonome identifié. Le catalogue V81 possède en outre la cible chariot vide207, hors des40cibles de ce lot : mention de réemploi possible sans élargir ni clore cette cible.",
+      "productionBrief": "Édition native du chariot exact : retirer les deux coffres, les trois contenants verticaux amovibles et le paquet textile. Préserver roues, essieux, poignée, châssis, cadre de retenue des contenants, treuil, câble fixe et taquet. Restaurer sobrement le plateau masqué. Un seul chariot entier, ni charges ni sol extérieur.",
+      "placementNote": "Gabarit du plateau, taille des charges, occlusion du cadre, pivot et raccord ouvert/chargé à tester en scène ; aucune animation de manutention introduite.",
+      "sourceAssetSha256": {
+        "public/game/homeworld/v78/port-cargo-sorting-cart.png": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f"
+      },
+      "canonicalOneToOneClaimed": false
+    },
+    {
+      "area": "market",
+      "productionPass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Conserver la vue de la référence exacte ; aucune conversion à 0°/35° ni mesure de caméra revendiquée. Aucun miroir ou pivot arbitraire.",
+      "id": "HWM162-S19",
+      "priority": "P1",
+      "label": "Sac marchand suspendu en filet autonome",
+      "kind": "Composant de stock",
+      "targetIds": [
+        "target-v81-64-164",
+        "target-v81-64-160"
+      ],
+      "expectedPath": "sprites/market/HWM162-S19-hanging-net-bag.png",
+      "sourceAssetFiles": [
+        "public/game/homeworld/v78/market-stall-right.png"
+      ],
+      "sourceAssetIds": [],
+      "complements": [
+        "HWM162-S15",
+        "HWM162-S16"
+      ],
+      "gapClassification": "COMPONENT_ONLY_PRESENT_INSIDE_COMPOSITE",
+      "purpose": "Garnir ou vider une accroche de stand indépendamment du comptoir, avec une charge suspendue transportable.",
+      "evidence": "Deux sacs en filet visibles à droite du stand V78 ; les deux ont été retirés de S15. Les résultats sac/panier sont des trophées organiques, un panier saisonnier ou des filets d’armure ; aucun petit sac marchand suspendu indépendant identifié.",
+      "productionBrief": "Isoler en génération native un seul des petits sacs de droite de V78, celui situé le plus à droite et le plus bas : forme ovale verticale close, maille de cordage, enveloppe sombre neutre et boucle d’accrochage complète. Conserver sa vue et sa famille visuelle. Aucun poteau, lampe, second sac, objet identifiable dans le sac ni contenu canonique ajouté.",
+      "placementNote": "Calibrer la boucle, la taille et le point d’accroche sur S15/S16 ; pas d’animation ni contenance attribuée.",
+      "sourceAssetSha256": {
+        "public/game/homeworld/v78/market-stall-right.png": "c98a90d777cf85e921681feb36c738216d8a99a945669e670234c65b65897796"
+      },
+      "canonicalOneToOneClaimed": false
+    },
+    {
+      "area": "market",
+      "productionPass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Conserver la vue de la référence exacte ; aucune conversion à 0°/35° ni mesure de caméra revendiquée. Aucun miroir ou pivot arbitraire.",
+      "id": "HWM162-S20",
+      "priority": "P2",
+      "label": "Halle — sol et structure arrière",
+      "kind": "Section de bâtiment",
+      "targetIds": [
+        "target-v81-59-97"
+      ],
+      "expectedPath": "sprites/market/HWM162-S20-market-hall-rear-interior.png",
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-S01"
+      ],
+      "complements": [
+        "HWM162-S21",
+        "HWM162-S02",
+        "HWM162-S03",
+        "HWM162-S11"
+      ],
+      "gapClassification": "BUILDING_GROUND_AND_FOREGROUND_FUSED",
+      "purpose": "Fournir la couche arrière sur laquelle placer le mobilier et les occupants des trois travées avant de dessiner la façade au premier plan.",
+      "evidence": "S01 est un PNG unique contenant le sol devant les ouvertures et les éléments qui les surplombent ; aucune couche sol/arrière de cette halle trouvée dans les fichiers, plans ou manifeste.",
+      "productionBrief": "Édition de S01 à vue constante : garder le dallage permanent des trois travées, les seuils de sol, maçonneries latérales/arrière, trois ouvertures arrière et seuls supports intérieurs situés derrière le plan des quatre piliers de façade. Retirer la totalité du toit, ses pointes et corniches, les quatre piliers frontaux avec leurs socles et lumières, leurs arcs/linteaux et draperies. Prolonger seulement les zones de sol ou de maçonnerie masquées nécessaires, sans modifier le plan à trois travées ni créer de mobilier.",
+      "placementNote": "Couche de fond proposée ; échelle, pivot, recouvrement et interaction des deux nouvelles sections à régler en scène. Aucun recollage pixel à pixel avec S01 garanti.",
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69"
+      },
+      "canonicalOneToOneClaimed": false
+    },
+    {
+      "area": "market",
+      "productionPass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Conserver la vue de la référence exacte ; aucune conversion à 0°/35° ni mesure de caméra revendiquée. Aucun miroir ou pivot arbitraire.",
+      "id": "HWM162-S21",
+      "priority": "P2",
+      "label": "Halle — façade et toiture au premier plan",
+      "kind": "Section de bâtiment",
+      "targetIds": [
+        "target-v81-59-97"
+      ],
+      "expectedPath": "sprites/market/HWM162-S21-market-hall-front-roof.png",
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-S01"
+      ],
+      "complements": [
+        "HWM162-S20"
+      ],
+      "gapClassification": "BUILDING_GROUND_AND_FOREGROUND_FUSED",
+      "purpose": "Faire passer le toit et les piliers devant les occupants sans peindre le sol et l’arrière de la halle au même ordre de profondeur.",
+      "evidence": "Même source unique S01 ; aucune façade/toiture isolée avec les quatre piliers avant dans le pack ou les sources apparentées.",
+      "productionBrief": "Édition de S01 à vue constante : garder la totalité du toit avec nervures, pointes et corniches, les quatre piliers de façade et leurs socles, arches/linteaux, draperies rouges et lumières fixes du premier rang. Les trois baies entre les piliers doivent devenir réellement transparentes. Retirer tous sols, seuils de dallage, murs arrière/latéraux et supports intérieurs situés derrière le plan de façade. Aucun pilier ni mur de S20 ne doit être dupliqué ici.",
+      "placementNote": "Couche avant proposée ; conserver le passage apparent des trois travées. La partition ne constitue pas une preuve d’occlusion correcte en moteur, d’échelle commune ni d’assemblage exact.",
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69"
+      },
+      "canonicalOneToOneClaimed": false
+    },
+    {
+      "area": "mounts",
+      "productionPass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "cameraMeasured": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "canonicalOneToOneClaimed": false,
+      "id": "HWM162-M19",
+      "label": "Meuble du poste de soin dégagé",
+      "expectedPath": "sprites/mounts/HWM162-M19-cleared-care-workstation.png",
+      "targetIds": [
+        "target-v81-72-290"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M06"
+      ],
+      "purpose": "Permettre une composition indépendante des éléments de surface pour préparation et entretien du poste.",
+      "include": [
+        "entire original cabinet with all feet",
+        "inset left basin",
+        "all four closed drawers and central lower door",
+        "metal retaining rails around central cushion recess",
+        "work surface revealed beneath the cushion and raised right module"
+      ],
+      "exclude": [
+        "red cushion",
+        "complete raised right control module, base, arm and lamp",
+        "loose tools or new medical contents"
+      ],
+      "absenceEvidence": "M06 is the only exact workstation identity; no cleared state is present among 56 selected assets. The V84 closed care cabinet is a different shape and function.",
+      "limits": [
+        "The newly exposed work surface is reconstructed, not observed in the source.",
+        "No claim that the source cushion or module has a real removable fixing, sterilization function or clinical capability.",
+        "Assembly, registration, scale and contact surfaces remain unverified."
+      ],
+      "priority": 1,
+      "cameraRequested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+        "actual_reference_view_inherited_requested": true,
+        "reference_original_brief": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "kind": "Meuble",
+      "placementNote": "Conserver le bassin, les tiroirs fermés, la porte centrale et les rails du coussin. M20 et M21 se posent sur les surfaces libérées ; raccords, échelle et contacts non validés.",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "referenceViewNote": "Vue et cadrage de la source hérités demandés ; aucune conversion vers une autre caméra, mesure d’angle ou superposition pixel par pixel revendiquée.",
+      "root_plan_approval": "Five components approved by root on2026-11-03; exact ownership partition retained.",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "canonicalOneToOne": false,
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da"
+      }
+    },
+    {
+      "area": "mounts",
+      "productionPass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "cameraMeasured": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "canonicalOneToOneClaimed": false,
+      "id": "HWM162-M20",
+      "label": "Coussin segmenté du poste de soin",
+      "expectedPath": "sprites/mounts/HWM162-M20-care-support-cushion.png",
+      "targetIds": [
+        "target-v81-72-290"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M06"
+      ],
+      "purpose": "Fournir séparément le petit appui rembourré central pour composer le poste.",
+      "include": [
+        "one complete joined red segmented cushion with original seams and side profile"
+      ],
+      "exclude": [
+        "metal retaining rails belonging to M19",
+        "cabinet or basin",
+        "straps, anatomy, cradle273 or M15"
+      ],
+      "absenceEvidence": "The exact cushion is incorporated in M06. M15 is a large four-contact soft cradle; M18 is a long padded hurdle rail, neither is this compact rectangular article. No exact standalone was identified in selected assets or inspected source indexes.",
+      "limits": [
+        "The underside previously concealed by M06 must be completed as an original adaptation.",
+        "Removal and mechanical fixing are proposed composition choices, not a documented device.",
+        "No species fit, load, clinical effect or exact placement certified."
+      ],
+      "priority": 1,
+      "cameraRequested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+        "actual_reference_view_inherited_requested": true,
+        "reference_original_brief": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "kind": "Coussin",
+      "placementNote": "Coussin rouge seul sans rails métalliques. Placement proposé dans le logement de M19 ; dessous reconstruit, appui et charge non validés.",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "referenceViewNote": "Vue et cadrage de la source hérités demandés ; aucune conversion vers une autre caméra, mesure d’angle ou superposition pixel par pixel revendiquée.",
+      "root_plan_approval": "Five components approved by root on2026-11-03; exact ownership partition retained.",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "canonicalOneToOne": false,
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da"
+      }
+    },
+    {
+      "area": "mounts",
+      "productionPass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "cameraMeasured": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "canonicalOneToOneClaimed": false,
+      "id": "HWM162-M21",
+      "label": "Module d’éclairage et de commande du poste de soin",
+      "expectedPath": "sprites/mounts/HWM162-M21-care-light-control-module.png",
+      "targetIds": [
+        "target-v81-72-290"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M06"
+      ],
+      "purpose": "Séparer l’éclairage local et sa commande pour l’assemblage du même poste de soin.",
+      "include": [
+        "the complete raised right wedge control module with its base",
+        "same amber indicators",
+        "all existing connected articulated links, joints, cable and lamp head"
+      ],
+      "exclude": [
+        "workbench top or feet",
+        "cushion or basin",
+        "new floor pedestal, needles, scanner screen or medical device"
+      ],
+      "absenceEvidence": "M06 combines this exact unit with the cabinet. V84 maintenance console is a separate tall pedestal identity; V33 archive lamps are suspended lights. None supplies this attached arm/base assembly independently.",
+      "limits": [
+        "Use lighting/control terminology only; no diagnostic, scan or treatment capability established.",
+        "The hidden underside of the base is a modest reconstruction.",
+        "Docking, arm movement, electricity, exact scale and compatibility remain unverified."
+      ],
+      "priority": 1,
+      "cameraRequested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+        "actual_reference_view_inherited_requested": true,
+        "reference_original_brief": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "kind": "Module",
+      "placementNote": "Embase, commande, bras, câble et lampe forment un seul article. Proposé sur la partie droite de M19 ; branchement, articulation et raccord non validés.",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "referenceViewNote": "Vue et cadrage de la source hérités demandés ; aucune conversion vers une autre caméra, mesure d’angle ou superposition pixel par pixel revendiquée.",
+      "root_plan_approval": "Five components approved by root on2026-11-03; exact ownership partition retained.",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "canonicalOneToOne": false,
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da"
+      }
+    },
+    {
+      "area": "mounts",
+      "productionPass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "cameraMeasured": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "canonicalOneToOneClaimed": false,
+      "id": "HWM162-M22",
+      "label": "Abri des montures — sol et structure arrière",
+      "expectedPath": "sprites/mounts/HWM162-M22-stable-floor-rear-structure.png",
+      "targetIds": [
+        "hw-sector-mount-stable-building"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M01"
+      ],
+      "purpose": "Fournir une couche arrière pour pouvoir proposer un animal entre le fond de l’abri et sa façade.",
+      "include": [
+        "one connected floor/foundation slab, including the three threshold strips",
+        "original rear wall and side walls",
+        "rear wall ribs and uprights already belonging to those walls"
+      ],
+      "exclude": [
+        "entire roof and front lintel/arch structure",
+        "all four front pillars including their flared feet",
+        "any animal, furnishing or new door"
+      ],
+      "absenceEvidence": "M01 is the only exact stable identity and is flattened into one PNG. A single layer cannot independently order a creature behind the four front pillars and ahead of the rear wall without an additional mask or separated sources. No complementary stable layer is in the selected pack.",
+      "limits": [
+        "Previously occluded floor and wall junctions are reconstructed, not canonical evidence.",
+        "Layer split is proposed source art; not runtime occlusion already implemented.",
+        "Keep source canvas and relative scale requested; no pixel-perfect registration guarantee."
+      ],
+      "priority": 2,
+      "cameraRequested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+        "actual_reference_view_inherited_requested": true,
+        "reference_original_brief": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "kind": "Couche arrière",
+      "placementNote": "Plancher, seuils et murs arrière/latéraux uniquement. Aucun des quatre piliers avant ni toiture. Couche proposée derrière animaux et équipements ; raccords et occlusion non validés.",
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-CAMERA"
+      ],
+      "referenceViewNote": "Vue et cadrage de la source hérités demandés ; aucune conversion vers une autre caméra, mesure d’angle ou superposition pixel par pixel revendiquée.",
+      "root_plan_approval": "Five components approved by root on2026-11-03; exact ownership partition retained.",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "canonicalOneToOne": false,
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518"
+      }
+    },
+    {
+      "area": "mounts",
+      "productionPass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "cameraMeasured": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "canonicalOneToOneClaimed": false,
+      "id": "HWM162-M23",
+      "label": "Abri des montures — façade et toiture",
+      "expectedPath": "sprites/mounts/HWM162-M23-stable-front-roof-structure.png",
+      "targetIds": [
+        "hw-sector-mount-stable-building"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M01"
+      ],
+      "purpose": "Fournir la couche avant complémentaire, couvrant les personnages aux endroits où la façade et la toiture les masquent.",
+      "include": [
+        "entire original roof with its connected front lintels/arches",
+        "exactly four original front pillars with complete flared feet"
+      ],
+      "exclude": [
+        "floor slab and threshold strips belonging to M22",
+        "all rear/side walls and rear uprights",
+        "any duplicate pillar or added closure"
+      ],
+      "absenceEvidence": "The front/roof structure is only incorporated in M01; no separate source of that exact structure was identified. This complements M22 rather than adding a fourth building identity.",
+      "limits": [
+        "The three opening interiors must be transparent except actual structural roof underside.",
+        "Pillar ownership is exclusive to this layer; threshold/floor ownership is exclusive to M22.",
+        "Composite contacts, scale, occlusion and navigation need a later scene check."
+      ],
+      "priority": 2,
+      "cameraRequested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+        "actual_reference_view_inherited_requested": true,
+        "reference_original_brief": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "kind": "Couche avant",
+      "placementNote": "Toiture, linteaux et exactement quatre piliers avant avec leurs pieds. Aucun plancher, seuil, mur arrière ou latéral. Couche proposée devant animaux/équipements ; raccords et occlusion non validés.",
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-CAMERA"
+      ],
+      "referenceViewNote": "Vue et cadrage de la source hérités demandés ; aucune conversion vers une autre caméra, mesure d’angle ou superposition pixel par pixel revendiquée.",
+      "root_plan_approval": "Five components approved by root on2026-11-03; exact ownership partition retained.",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "canonicalOneToOne": false,
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518"
+      }
+    },
+    {
+      "area": "kennels",
+      "targetIds": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K01"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png"
+      ],
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "sourceSha256": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+      },
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 6,
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_asset_id": "HWM162-K01",
+        "reference_original_request": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "actual_camera_measured": false
+      },
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "id": "HWM162-K22",
+      "label": "Intérieur des loges du chenil",
+      "expectedPath": "sprites/kennels/HWM162-K22-kennel-interior.png",
+      "purpose": "Module arrière des trois loges : sols, parois arrière et séparations internes, sans façade ni toiture, destiné à recevoir visuellement les créatures avant une couche avant séparée.",
+      "limitations": "Les surfaces que K01 cache sous la toiture devront être reconstruites comme adaptation. Un éventuel changement natif de cadre ou d’échelle sera consigné ; le raccord au pixel n’est pas établi.",
+      "absenceEvidence": "Aucun composant correspondant parmi les56sélections du manifeste ni les15cibles FAUNE du catalogue ; K01 est actuellement monobloc. Les portes K06/M09 concernent d’autres accès et ont un profil rectangulaire.",
+      "kind": "Couche arrière",
+      "placementNote": "Sol, parois arrière et séparations internes ; aucun toit ni pilier de façade. Placer les créatures devant cette couche ; surfaces masquées reconstruites, contacts et échelle à régler.",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "canonicalOneToOne": false,
+      "referenceViewNote": "Vue de la référence héritée sur demande ; angle réel, cadrage commun et raccord des composants non mesurés. Les surfaces cachées sont des reconstructions du projet.",
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+      }
+    },
+    {
+      "area": "kennels",
+      "targetIds": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K01"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png"
+      ],
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "sourceSha256": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+      },
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 6,
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_asset_id": "HWM162-K01",
+        "reference_original_request": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "actual_camera_measured": false
+      },
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "id": "HWM162-K23",
+      "label": "Façade et toiture des chenils",
+      "expectedPath": "sprites/kennels/HWM162-K23-kennel-facade-roof.png",
+      "purpose": "Module avant de K01 : façade et toit conservés ensemble, trois passages transparents, sans les fonds/sols de loge ; destiné à occulter le haut et les bords des créatures posées devant K22.",
+      "limitations": "Les trois baies devront être testées en alpha après génération. Le bâtiment complet K01 reste une source intacte ; aucun découpage ou nettoyage scripté. Empilement et échelle runtime non certifiés.",
+      "absenceEvidence": "Aucun composant correspondant parmi les56sélections du manifeste ni les15cibles FAUNE du catalogue ; K01 est actuellement monobloc. Les portes K06/M09 concernent d’autres accès et ont un profil rectangulaire.",
+      "kind": "Couche avant",
+      "placementNote": "Toiture et façade avec leurs quatre supports avant ; trois baies transparentes, aucun sol ou mur arrière. Raccord à K22 et occlusion en scène non validés.",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "canonicalOneToOne": false,
+      "referenceViewNote": "Vue de la référence héritée sur demande ; angle réel, cadrage commun et raccord des composants non mesurés. Les surfaces cachées sont des reconstructions du projet.",
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+      }
+    },
+    {
+      "area": "kennels",
+      "targetIds": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K01",
+        "HWM162-K23"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png"
+      ],
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "sourceSha256": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+      },
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 6,
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_asset_id": "HWM162-K01",
+        "reference_original_request": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "actual_camera_measured": false
+      },
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "id": "HWM162-K24",
+      "label": "Grille autonome de loge",
+      "expectedPath": "sprites/kennels/HWM162-K24-kennel-bay-grille.png",
+      "purpose": "Une grille trapézoïdale indépendante en pose de fermeture, inspirée du profil d’une baie centrale K01 ; un seul objet, sans bâtiment ni nouveau portique.",
+      "limitations": "Création de projet non observée : K01 fournit seulement la forme des baies et les matériaux. Aucun mécanisme d’ouverture ni de fixation n’est attesté ou à inventer en détail. Un panneau unique sans battants ouverts, rails, charnières, moteur, montant extérieur ou portique supplémentaire. Canon, raccord pixel et dimensionnement animal non certifiés.",
+      "absenceEvidence": "Aucun composant correspondant parmi les56sélections du manifeste ni les15cibles FAUNE du catalogue ; K01 est actuellement monobloc. Les portes K06/M09 concernent d’autres accès et ont un profil rectangulaire.",
+      "kind": "Grille",
+      "placementNote": "Grille seule inspirée du profil de la baie centrale de K01. Création originale non observée dans la référence, sans mécanisme d’ouverture ou fixation attesté ; dimensionnement et pose à définir.",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "canonicalOneToOne": false,
+      "referenceViewNote": "Vue de K01 héritée, avec K23 de la passe courante comme référence auxiliaire du contour de baie pour la correction native. Cadrage indicatif, aucun angle ou raccord physique mesuré.",
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png": "193e14f23bb198efe33ecb814d80e6adbe0d1932a010342d0fb853c106450c60"
+      }
+    },
+    {
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-277"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K11"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceSha256": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898"
+      },
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 6,
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_original_brief": "Orthographic elevated three-quarter approximately32degrees; literal historical request, actual rendering not measured",
+        "source_brief_pitch_degrees_approx": 32,
+        "actual_camera_measured": false
+      },
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "id": "HWM162-K25",
+      "label": "Corps de cage moyenne sans trappe mobile",
+      "expectedPath": "sprites/kennels/HWM162-K25-medium-cage-body.png",
+      "purpose": "Fournir le corps de la cage277 avec son accès gauche libre et sans panneau mobile, pour composer la fermeture séparément.",
+      "exact_partition_brief": "Conserver le corps entier277 : plancher plein, côtés et arrière à barreaux, toit à longs barreaux parallèles, épaules en basalte, petits pieds/supports, rails/guidages fixes et demi-façade droite fixe. Supprimer uniquement la trappe mobile complète et son loquet. L’accès à gauche est vide commeK11 ; la demi-façade droite retrouve les seuls barreaux fixes visibles dans277. Aucun panneau replié/rétracté/posé ailleurs. Ne pas supprimer les parois arrière visibles à travers l’accès : elles ne sont pas des barreaux fermant l’entrée.",
+      "absenceEvidence": "277 ferme la trappe à gauche ; K11 la rétracte à droite. Les deux PNG la contiennent toujours. Aucun corps dépourvu du panneau mobile ni panneau séparé correspondant ne figure au catalogue56 ou dans les candidats277 inspectés.",
+      "limitations": "Cage de faune générale, pas preuve d’adaptation auxHounds2010/2018. Vue héritée approximative non mesurée. Pièces et raccords destinés à une revue graphique ; scale, pivot, animation et runtime non certifiés.",
+      "kind": "Corps de cage",
+      "placementNote": "Conserver le plancher, les côtés, l’arrière, le toit, les pieds, les guidages et la demi-façade droite fixe. Retirer le panneau mobile et son loquet ; compléter avec K26 après réglage.",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "canonicalOneToOne": false,
+      "referenceViewNote": "Vue de la référence héritée sur demande ; angle réel, cadrage commun et raccord des composants non mesurés. Les surfaces cachées sont des reconstructions du projet.",
+      "sourceAssetSha256": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898"
+      }
+    },
+    {
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-277"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K11"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceSha256": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898"
+      },
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 6,
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_original_brief": "Orthographic elevated three-quarter approximately32degrees; literal historical request, actual rendering not measured",
+        "source_brief_pitch_degrees_approx": 32,
+        "actual_camera_measured": false
+      },
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "id": "HWM162-K26",
+      "label": "Trappe coulissante de cage moyenne autonome",
+      "expectedPath": "sprites/kennels/HWM162-K26-medium-cage-sliding-panel.png",
+      "purpose": "Fournir le panneau coulissant277 autonome avec son loquet, distinct du corps de cage K25.",
+      "exact_partition_brief": "Un seul panneau mobile277 dans sa vue/pose fermée source : cadre bronze rectangulaire projeté en diagonale, quatre coins boulonnés, barreaux verticaux et traverse médiane, loquet mobile sur le bord gauche avec la petite fente ambre (confirmé se déplaçant avec la trappe dansK11). Aucun poteau basalte, plancher, support, rail fixe, seconde façade ou arrière de cage. Transparence réelle entre barreaux. Le même panneau pourra être proposé pour les positions fermée/reculée avec recalage ultérieur ; aucune animation ni translation métrique certifiée.",
+      "absenceEvidence": "277 ferme la trappe à gauche ; K11 la rétracte à droite. Les deux PNG la contiennent toujours. Aucun corps dépourvu du panneau mobile ni panneau séparé correspondant ne figure au catalogue56 ou dans les candidats277 inspectés.",
+      "limitations": "Cage de faune générale, pas preuve d’adaptation auxHounds2010/2018. Vue héritée approximative non mesurée. Pièces et raccords destinés à une revue graphique ; scale, pivot, animation et runtime non certifiés.",
+      "kind": "Trappe",
+      "placementNote": "Panneau mobile seul avec son loquet et sa fente ambre. Aucun rail fixe, sol ou poteau. Vue fermée héritée de277 ; translation, raccord et animation à vérifier en scène.",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "canonicalOneToOne": false,
+      "referenceViewNote": "Vue de la référence héritée sur demande ; angle réel, cadrage commun et raccord des composants non mesurés. Les surfaces cachées sont des reconstructions du projet.",
+      "sourceAssetSha256": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898"
+      }
+    }
+  ],
+  "cameraDecision": "Fourteen requests inherit the exact reference views. Building partitions and equipment components retain requested source orientation; hidden surfaces are reconstructed, with no measured angle or pixel registration claim.",
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "humanValidated": false,
+  "generatedAdditionalPNGCount": 14,
+  "review": "review-round6.json"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-taunt-2-attempt-01.png",
+  "sourceSha256": "080c871415fb8e82d04613bd5f32805ac8d034e7428aa71c816a825ee886ef9b",
+  "bytes": 2170614,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 3,
+  "rows": 4,
+  "strategy": "row-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [],
+  "frames": [],
+  "issues": [
+    "No safe horizontal alpha gutter before row 2",
+    "No safe horizontal alpha gutter before row 3",
+    "No safe horizontal alpha gutter before row 4",
+    "Column-first: No safe horizontal alpha gutter before row 2",
+    "Column-first: No safe horizontal alpha gutter before row 3"
+  ]
+}

@@ -1,0 +1,1035 @@
+{
+  "status": "PASS",
+  "version": "V74",
+  "url": "http://127.0.0.1:4192",
+  "checks": [
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "convoy-workshop",
+      "archetype": "convoy-two-workbenches",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "convoy-workshop-v74-zone-0",
+        "convoy-workshop-v74-zone-1"
+      ],
+      "passageIds": [
+        "convoy-workshop-v74-passage-cross"
+      ],
+      "nativeFurniture": [
+        "convoy-workshop-v74-travail-ouest",
+        "convoy-workshop-v74-travail-est",
+        "convoy-workshop-v74-caisse",
+        "convoy-workshop-v74-parures",
+        "convoy-workshop-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-convoy-works-1",
+      "archetype": "home-convoy-wide-crossway",
+      "width": 408,
+      "depth": 228,
+      "zoneIds": [
+        "residence-convoy-works-1-v74-zone-0",
+        "residence-convoy-works-1-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-convoy-works-1-v74-passage-cross"
+      ],
+      "nativeFurniture": [
+        "residence-convoy-works-1-v74-table",
+        "residence-convoy-works-1-v74-travail",
+        "residence-convoy-works-1-v74-reserve",
+        "residence-convoy-works-1-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "convoy-south-shelter",
+      "archetype": "shelter-open-common-room",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "convoy-south-shelter-v74-zone-0",
+        "convoy-south-shelter-v74-zone-1"
+      ],
+      "passageIds": [],
+      "nativeFurniture": [
+        "convoy-south-shelter-v74-banc",
+        "convoy-south-shelter-v74-table",
+        "convoy-south-shelter-v74-parures",
+        "convoy-south-shelter-v74-contenants",
+        "convoy-south-shelter-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "convoy-store",
+      "archetype": "convoy-three-storage-bays",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "convoy-store-v74-zone-0",
+        "convoy-store-v74-zone-1",
+        "convoy-store-v74-zone-2",
+        "convoy-store-v74-zone-3"
+      ],
+      "passageIds": [
+        "convoy-store-v74-passage-bay-0",
+        "convoy-store-v74-passage-bay-1",
+        "convoy-store-v74-passage-bay-2"
+      ],
+      "nativeFurniture": [
+        "convoy-store-v74-pieces",
+        "convoy-store-v74-contenants",
+        "convoy-store-v74-chargements",
+        "convoy-store-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-convoy-works-2",
+      "archetype": "home-convoy-open-crates",
+      "width": 268,
+      "depth": 188,
+      "zoneIds": [
+        "residence-convoy-works-2-v74-zone-0",
+        "residence-convoy-works-2-v74-zone-1",
+        "residence-convoy-works-2-v74-zone-2"
+      ],
+      "passageIds": [],
+      "nativeFurniture": [
+        "residence-convoy-works-2-v74-caisse-ouest",
+        "residence-convoy-works-2-v74-caisse-est",
+        "residence-convoy-works-2-v74-parures",
+        "residence-convoy-works-2-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-undercity-2",
+      "archetype": "home-undercity-side-shelter",
+      "width": 408,
+      "depth": 228,
+      "zoneIds": [
+        "residence-undercity-2-v74-zone-0",
+        "residence-undercity-2-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-undercity-2-v74-passage-open-end"
+      ],
+      "nativeFurniture": [
+        "residence-undercity-2-v74-repos",
+        "residence-undercity-2-v74-table",
+        "residence-undercity-2-v74-contenants",
+        "residence-undercity-2-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "undercity-refuge",
+      "archetype": "refuge-screened-recess",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "undercity-refuge-v74-zone-0",
+        "undercity-refuge-v74-zone-1"
+      ],
+      "passageIds": [
+        "undercity-refuge-v74-passage-open-end"
+      ],
+      "nativeFurniture": [
+        "undercity-refuge-v74-repos",
+        "undercity-refuge-v74-repas",
+        "undercity-refuge-v74-contenants",
+        "undercity-refuge-v74-veille"
+      ],
+      "services": [
+        {
+          "pointId": "witness-point",
+          "dialogText": "TÉMOIN\nTémoin des galeries\n\n« Les galeries relient les quartiers du clan. Prends le temps d’écouter leurs habitants avant de te croire prêt à chasser. »\n« L\ne\ns"
+        }
+      ],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-undercity-1",
+      "archetype": "home-undercity-north-recess",
+      "width": 328,
+      "depth": 208,
+      "zoneIds": [
+        "residence-undercity-1-v74-zone-0",
+        "residence-undercity-1-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-undercity-1-v74-passage-cross"
+      ],
+      "nativeFurniture": [
+        "residence-undercity-1-v74-repos",
+        "residence-undercity-1-v74-veille",
+        "residence-undercity-1-v74-contenants",
+        "residence-undercity-1-v74-parures"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "rampart-south-lodge",
+      "archetype": "rampart-offset-common-room",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "rampart-south-lodge-v74-zone-0",
+        "rampart-south-lodge-v74-zone-1"
+      ],
+      "passageIds": [
+        "rampart-south-lodge-v74-passage-cross"
+      ],
+      "nativeFurniture": [
+        "rampart-south-lodge-v74-table",
+        "rampart-south-lodge-v74-repos",
+        "rampart-south-lodge-v74-parures",
+        "rampart-south-lodge-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "rampart-watch",
+      "archetype": "rampart-cross-observation",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "rampart-watch-v74-zone-0",
+        "rampart-watch-v74-zone-1"
+      ],
+      "passageIds": [
+        "rampart-watch-v74-passage-cross"
+      ],
+      "nativeFurniture": [
+        "rampart-watch-v74-registre",
+        "rampart-watch-v74-contenants",
+        "rampart-watch-v74-parures",
+        "rampart-watch-v74-banc"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-rampart-walk-1",
+      "archetype": "home-rampart-left-recess",
+      "width": 328,
+      "depth": 208,
+      "zoneIds": [
+        "residence-rampart-walk-1-v74-zone-0",
+        "residence-rampart-walk-1-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-rampart-walk-1-v74-passage-open-end"
+      ],
+      "nativeFurniture": [
+        "residence-rampart-walk-1-v74-repos",
+        "residence-rampart-walk-1-v74-banc",
+        "residence-rampart-walk-1-v74-parures",
+        "residence-rampart-walk-1-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "rampart-north-lodge",
+      "archetype": "rampart-east-rest-chamber",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "rampart-north-lodge-v74-zone-0",
+        "rampart-north-lodge-v74-zone-1"
+      ],
+      "passageIds": [
+        "rampart-north-lodge-v74-passage-lateral"
+      ],
+      "nativeFurniture": [
+        "rampart-north-lodge-v74-table",
+        "rampart-north-lodge-v74-repos",
+        "rampart-north-lodge-v74-banc",
+        "rampart-north-lodge-v74-parures"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "enforcer-bastion",
+      "archetype": "evidence-side-records",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "enforcer-bastion-v74-zone-0",
+        "enforcer-bastion-v74-zone-1"
+      ],
+      "passageIds": [
+        "enforcer-bastion-v74-passage-lateral"
+      ],
+      "nativeFurniture": [
+        "enforcer-bastion-v74-registre",
+        "enforcer-bastion-v74-preuves",
+        "enforcer-bastion-v74-deposition",
+        "enforcer-bastion-v74-veille"
+      ],
+      "services": [
+        {
+          "pointId": "enforcer-point",
+          "dialogText": "PREUVES\nCapitaine des Enforcers\n\n« Les règles du clan s’apprennent avec la maîtrise. Le chef et l’instructeur guideront tes premiers pas. »\n« L\ne\ns\n r\nè\ng\nl\ne\ns"
+        }
+      ],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-enforcers-1",
+      "archetype": "home-enforcer-offset-common",
+      "width": 408,
+      "depth": 228,
+      "zoneIds": [
+        "residence-enforcers-1-v74-zone-0",
+        "residence-enforcers-1-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-enforcers-1-v74-passage-cross"
+      ],
+      "nativeFurniture": [
+        "residence-enforcers-1-v74-table",
+        "residence-enforcers-1-v74-banc-arriere",
+        "residence-enforcers-1-v74-banc-accueil",
+        "residence-enforcers-1-v74-parures"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-clans-1",
+      "archetype": "home-clans-open-common",
+      "width": 328,
+      "depth": 208,
+      "zoneIds": [
+        "residence-clans-1-v74-zone-0",
+        "residence-clans-1-v74-zone-1"
+      ],
+      "passageIds": [],
+      "nativeFurniture": [
+        "residence-clans-1-v74-repos",
+        "residence-clans-1-v74-table",
+        "residence-clans-1-v74-veille",
+        "residence-clans-1-v74-parures"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-forges-2",
+      "archetype": "home-forge-west-materials",
+      "width": 268,
+      "depth": 188,
+      "zoneIds": [
+        "residence-forges-2-v74-zone-0",
+        "residence-forges-2-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-forges-2-v74-passage-open-end"
+      ],
+      "nativeFurniture": [
+        "residence-forges-2-v74-parures",
+        "residence-forges-2-v74-pieces",
+        "residence-forges-2-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-forges-1",
+      "archetype": "home-forge-cross-workroom",
+      "width": 408,
+      "depth": 228,
+      "zoneIds": [
+        "residence-forges-1-v74-zone-0",
+        "residence-forges-1-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-forges-1-v74-passage-cross"
+      ],
+      "nativeFurniture": [
+        "residence-forges-1-v74-table",
+        "residence-forges-1-v74-travail",
+        "residence-forges-1-v74-banc",
+        "residence-forges-1-v74-parures"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-terraces-1",
+      "archetype": "home-terrace-open-table",
+      "width": 408,
+      "depth": 228,
+      "zoneIds": [
+        "residence-terraces-1-v74-zone-0",
+        "residence-terraces-1-v74-zone-1"
+      ],
+      "passageIds": [],
+      "nativeFurniture": [
+        "residence-terraces-1-v74-table",
+        "residence-terraces-1-v74-banc",
+        "residence-terraces-1-v74-contenants",
+        "residence-terraces-1-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "market-canopy",
+      "archetype": "market-open-stalls",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "market-canopy-v74-zone-0",
+        "market-canopy-v74-zone-1",
+        "market-canopy-v74-zone-2"
+      ],
+      "passageIds": [],
+      "nativeFurniture": [
+        "market-canopy-v74-halte",
+        "market-canopy-v74-table",
+        "market-canopy-v74-chargement",
+        "market-canopy-v74-parures",
+        "market-canopy-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-market-2",
+      "archetype": "home-market-right-rest",
+      "width": 328,
+      "depth": 208,
+      "zoneIds": [
+        "residence-market-2-v74-zone-0",
+        "residence-market-2-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-market-2-v74-passage-lateral"
+      ],
+      "nativeFurniture": [
+        "residence-market-2-v74-table",
+        "residence-market-2-v74-repos",
+        "residence-market-2-v74-veille",
+        "residence-market-2-v74-parures"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-market-1",
+      "archetype": "home-market-north-store",
+      "width": 268,
+      "depth": 188,
+      "zoneIds": [
+        "residence-market-1-v74-zone-0",
+        "residence-market-1-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-market-1-v74-passage-cross"
+      ],
+      "nativeFurniture": [
+        "residence-market-1-v74-parures",
+        "residence-market-1-v74-contenants",
+        "residence-market-1-v74-caisse",
+        "residence-market-1-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-port-2",
+      "archetype": "home-port-side-pantry",
+      "width": 408,
+      "depth": 228,
+      "zoneIds": [
+        "residence-port-2-v74-zone-0",
+        "residence-port-2-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-port-2-v74-passage-lateral"
+      ],
+      "nativeFurniture": [
+        "residence-port-2-v74-table",
+        "residence-port-2-v74-banc",
+        "residence-port-2-v74-reserve",
+        "residence-port-2-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-port-1",
+      "archetype": "home-port-left-rest",
+      "width": 328,
+      "depth": 208,
+      "zoneIds": [
+        "residence-port-1-v74-zone-0",
+        "residence-port-1-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-port-1-v74-passage-lateral"
+      ],
+      "nativeFurniture": [
+        "residence-port-1-v74-repos",
+        "residence-port-1-v74-parures",
+        "residence-port-1-v74-contenants",
+        "residence-port-1-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "dock-control",
+      "archetype": "dock-side-office",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "dock-control-v74-zone-0",
+        "dock-control-v74-zone-1"
+      ],
+      "passageIds": [
+        "dock-control-v74-passage-lateral"
+      ],
+      "nativeFurniture": [
+        "dock-control-v74-registre",
+        "dock-control-v74-cargaison",
+        "dock-control-v74-contenants",
+        "dock-control-v74-veille"
+      ],
+      "services": [
+        {
+          "pointId": "dock-officer-point",
+          "dialogText": "AMARRAGE\nOfficier des quais\n\n« Ces appareils appartiennent au clan. Ta route commence dans la cité : le chef t’attend à la Citadelle, au nord-est. »\n« C\ne\ns\n a\n"
+        },
+        {
+          "pointId": "suspect-trophy-point",
+          "dialogText": "LA COURONNE DE CENDRES\nTrophée du convoi\n\nInspecter la marque sans prendre possession du trophée.\nI\nn\ns\np\ne\nc\nt\ne\nr\n l\na\n m\na\nr\nq\nu\ne\n s\na\nn\ns\n p\nr\ne\nn\nd\nr\ne\n p"
+        }
+      ],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-esplanade-1",
+      "archetype": "home-esplanade-open-supplies",
+      "width": 268,
+      "depth": 188,
+      "zoneIds": [
+        "residence-esplanade-1-v74-zone-0",
+        "residence-esplanade-1-v74-zone-1"
+      ],
+      "passageIds": [],
+      "nativeFurniture": [
+        "residence-esplanade-1-v74-banc",
+        "residence-esplanade-1-v74-parures",
+        "residence-esplanade-1-v74-contenants",
+        "residence-esplanade-1-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "trophy-mausoleum",
+      "archetype": "mausoleum-processional-aisle",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "trophy-mausoleum-v74-zone-0",
+        "trophy-mausoleum-v74-zone-1",
+        "trophy-mausoleum-v74-zone-2"
+      ],
+      "passageIds": [],
+      "nativeFurniture": [
+        "trophy-mausoleum-v74-registre",
+        "trophy-mausoleum-v74-archives",
+        "trophy-mausoleum-v74-banc-ouest",
+        "trophy-mausoleum-v74-banc-est",
+        "trophy-mausoleum-v74-marque"
+      ],
+      "services": [
+        {
+          "pointId": "trophy-service",
+          "dialogText": "RECONNAISSANCE\nHéraut des prises\n\n« Montre ce que tu as réellement rapporté. Une prise étrangère ne deviendra pas ton exploit. »\n« M\no\nn\nt\nr\ne\n c\ne\n q\nu\ne\n t\nu\n"
+        },
+        {
+          "pointId": "mausoleum-service",
+          "dialogText": "LA COURONNE DE CENDRES\nMausolée des Grandes Chasses\n\nLieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation.\n\nAccéder "
+        }
+      ],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-esplanade-2",
+      "archetype": "home-esplanade-open-rest",
+      "width": 328,
+      "depth": 208,
+      "zoneIds": [
+        "residence-esplanade-2-v74-zone-0",
+        "residence-esplanade-2-v74-zone-1"
+      ],
+      "passageIds": [],
+      "nativeFurniture": [
+        "residence-esplanade-2-v74-repos",
+        "residence-esplanade-2-v74-parures",
+        "residence-esplanade-2-v74-table",
+        "residence-esplanade-2-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-terraces-3",
+      "archetype": "home-terrace-three-open-bays",
+      "width": 408,
+      "depth": 228,
+      "zoneIds": [
+        "residence-terraces-3-v74-zone-0",
+        "residence-terraces-3-v74-zone-1",
+        "residence-terraces-3-v74-zone-2"
+      ],
+      "passageIds": [],
+      "nativeFurniture": [
+        "residence-terraces-3-v74-banc",
+        "residence-terraces-3-v74-table",
+        "residence-terraces-3-v74-contenants",
+        "residence-terraces-3-v74-parures",
+        "residence-terraces-3-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-terraces-4",
+      "archetype": "home-terrace-left-bench",
+      "width": 268,
+      "depth": 188,
+      "zoneIds": [
+        "residence-terraces-4-v74-zone-0",
+        "residence-terraces-4-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-terraces-4-v74-passage-lateral"
+      ],
+      "nativeFurniture": [
+        "residence-terraces-4-v74-banc",
+        "residence-terraces-4-v74-contenants",
+        "residence-terraces-4-v74-parures",
+        "residence-terraces-4-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-terraces-2",
+      "archetype": "home-terrace-east-store",
+      "width": 268,
+      "depth": 188,
+      "zoneIds": [
+        "residence-terraces-2-v74-zone-0",
+        "residence-terraces-2-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-terraces-2-v74-passage-open-end"
+      ],
+      "nativeFurniture": [
+        "residence-terraces-2-v74-caisse",
+        "residence-terraces-2-v74-contenants",
+        "residence-terraces-2-v74-parures",
+        "residence-terraces-2-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "pit-gate",
+      "archetype": "arena-lateral-preparation",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "pit-gate-v74-zone-0",
+        "pit-gate-v74-zone-1"
+      ],
+      "passageIds": [
+        "pit-gate-v74-passage-lateral"
+      ],
+      "nativeFurniture": [
+        "pit-gate-v74-gong",
+        "pit-gate-v74-registre",
+        "pit-gate-v74-parures",
+        "pit-gate-v74-repos",
+        "pit-gate-v74-contenants"
+      ],
+      "services": [
+        {
+          "pointId": "pit-service",
+          "dialogText": "THE PIT\nIntendant des arènes\n\n« Le temps des arènes viendra après ta formation. Présente-toi d’abord au chef, puis à l’instructeur. »\n« L\ne\n t\ne\nm\np\ns\n d\ne\ns\n a"
+        }
+      ],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-arenas-1",
+      "archetype": "home-arena-screened-rest",
+      "width": 328,
+      "depth": 208,
+      "zoneIds": [
+        "residence-arenas-1-v74-zone-0",
+        "residence-arenas-1-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-arenas-1-v74-passage-open-end"
+      ],
+      "nativeFurniture": [
+        "residence-arenas-1-v74-parures",
+        "residence-arenas-1-v74-repos",
+        "residence-arenas-1-v74-gong",
+        "residence-arenas-1-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-temple-1",
+      "archetype": "home-rite-screened-pantry",
+      "width": 408,
+      "depth": 228,
+      "zoneIds": [
+        "residence-temple-1-v74-zone-0",
+        "residence-temple-1-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-temple-1-v74-passage-open-end"
+      ],
+      "nativeFurniture": [
+        "residence-temple-1-v74-contenants",
+        "residence-temple-1-v74-table",
+        "residence-temple-1-v74-parures",
+        "residence-temple-1-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "rite-sanctum",
+      "archetype": "rite-central-passage",
+      "width": 538,
+      "depth": 308,
+      "zoneIds": [
+        "rite-sanctum-v74-zone-0",
+        "rite-sanctum-v74-zone-1"
+      ],
+      "passageIds": [
+        "rite-sanctum-v74-passage-cross"
+      ],
+      "nativeFurniture": [
+        "rite-sanctum-v74-gong",
+        "rite-sanctum-v74-tenture",
+        "rite-sanctum-v74-contenants",
+        "rite-sanctum-v74-veille"
+      ],
+      "services": [
+        {
+          "pointId": "temple-point",
+          "dialogText": "RITES\nGardienne des rites\n\n« La nurserie est derrière toi. Aucun autre rite ne sera reconnu avant les épreuves qui lui appartiennent. »\n« L\na\n n\nu\nr\ns\ne\nr\ni\ne\n "
+        }
+      ],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-temple-2",
+      "archetype": "home-rite-offset-store",
+      "width": 268,
+      "depth": 188,
+      "zoneIds": [
+        "residence-temple-2-v74-zone-0",
+        "residence-temple-2-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-temple-2-v74-passage-cross"
+      ],
+      "nativeFurniture": [
+        "residence-temple-2-v74-tenture",
+        "residence-temple-2-v74-contenants",
+        "residence-temple-2-v74-parures",
+        "residence-temple-2-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-citadel-1",
+      "archetype": "home-citadel-cross-study",
+      "width": 328,
+      "depth": 208,
+      "zoneIds": [
+        "residence-citadel-1-v74-zone-0",
+        "residence-citadel-1-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-citadel-1-v74-passage-cross"
+      ],
+      "nativeFurniture": [
+        "residence-citadel-1-v74-repos",
+        "residence-citadel-1-v74-registre",
+        "residence-citadel-1-v74-veille",
+        "residence-citadel-1-v74-tenture"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-memory-1",
+      "archetype": "home-memory-open-records",
+      "width": 268,
+      "depth": 188,
+      "zoneIds": [
+        "residence-memory-1-v74-zone-0",
+        "residence-memory-1-v74-zone-1"
+      ],
+      "passageIds": [],
+      "nativeFurniture": [
+        "residence-memory-1-v74-registre",
+        "residence-memory-1-v74-parures",
+        "residence-memory-1-v74-contenants",
+        "residence-memory-1-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-room-actual-keyboard-door-zones-passages-and-services",
+      "id": "residence-port-1",
+      "archetype": "home-port-left-rest",
+      "width": 328,
+      "depth": 208,
+      "zoneIds": [
+        "residence-port-1-v74-zone-0",
+        "residence-port-1-v74-zone-1"
+      ],
+      "passageIds": [
+        "residence-port-1-v74-passage-lateral"
+      ],
+      "nativeFurniture": [
+        "residence-port-1-v74-repos",
+        "residence-port-1-v74-parures",
+        "residence-port-1-v74-contenants",
+        "residence-port-1-v74-veille"
+      ],
+      "services": [],
+      "floorCaptionsChecked": true,
+      "noTeleport": true,
+      "noRuntimeReplacement": true
+    },
+    {
+      "name": "secondary-interior-portrait-camera-and-readable-native-actor",
+      "actor": {
+        "x": 179.20619201660156,
+        "y": 371.1239929199219,
+        "width": 31.93499755859375,
+        "height": 80.14501953125
+      },
+      "painted": {
+        "x": 180.16410061657666,
+        "y": 372.081901519897,
+        "width": 30.014469465886457,
+        "height": 78.70815663128735
+      },
+      "direction": "e",
+      "pose": "idle",
+      "viewport": {
+        "x": 0,
+        "y": 54,
+        "width": 393,
+        "height": 652
+      }
+    },
+    {
+      "name": "secondary-interior-pause-freezes-world-and-save"
+    },
+    {
+      "name": "v74-original-layout-codex-read-only",
+      "record": "v74-layout:residence-port-1"
+    },
+    {
+      "name": "preserved-native-kit-production-http-sha",
+      "src": "/game/homeworld/v72/civic-furniture-kit.png",
+      "sha256": "dd9193612dff71ddbe1a65c74ef5c55cd10a4202cabf08746ec94195a825a844"
+    }
+  ],
+  "captures": [
+    "work-local/v74/qa/secondary-interiors-local/convoy-workshop-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-convoy-works-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/convoy-south-shelter-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/convoy-store-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-convoy-works-2-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-undercity-2-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/undercity-refuge-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-undercity-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/rampart-south-lodge-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/rampart-watch-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-rampart-walk-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/rampart-north-lodge-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/enforcer-bastion-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-enforcers-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-clans-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-forges-2-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-forges-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-terraces-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/market-canopy-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-market-2-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-market-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-port-2-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-port-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/dock-control-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-esplanade-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/trophy-mausoleum-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-esplanade-2-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-terraces-3-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-terraces-4-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-terraces-2-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/pit-gate-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-arenas-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-temple-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/rite-sanctum-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-temple-2-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-citadel-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-memory-1-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-port-1-revisit-complete-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/residence-port-1-mobile-native-interior.png",
+    "work-local/v74/qa/secondary-interiors-local/secondary-layout-codex-mobile.png"
+  ],
+  "errors": [],
+  "failures": [],
+  "distinctRooms": 37,
+  "distinctZones": 80,
+  "distinctPassages": 29,
+  "requestedIds": [],
+  "captionChecks": true,
+  "limits": "New isolated profile seeds already model-tested prerequisite campaign. All37 secondary doors,80 functional zones and29 passages are traversed by actual keyboard; existing secondary service dialogs opened without choosing rewards. Source furniture PNG is unchanged. Original adaptation of this city, not canonical Yautja home customs. Civilian full walking sheets, private upper floors and new quests are outside this layout lot."
+}

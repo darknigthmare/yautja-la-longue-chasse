@@ -1,0 +1,1526 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-184-warp-threshold",
+  "compositionDigest": "202f2633e3589726942d73485a88778c369061980babcfdae16a99dae37fdcd9",
+  "checkedAt": "2026-09-30T15:21:33.992Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-184-warp-threshold/p0-depth.png",
+      "sha256": "3115e96be321a261bd6e5942afcc9b3744b39b91ab1901c869d7558dd8d92869",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p2-a-support-left.png",
+      "sha256": "a0948d91bf391c0ac823bab24d5b663c416bad660b6147c4c932c098cd00bb5c",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p2-b-support-right.png",
+      "sha256": "9b5589130e464328bffe76d6135b088743433d4f3d576be8936f52dd9e2ca749",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-a-prop-left.png",
+      "sha256": "c4ae7ccaae621307a1655cad89e419ee564efd9082e0cd71091b46bc635a6551",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-b-prop-right.png",
+      "sha256": "85a95f1428228f2550fbcfc464de1453210f0f125728de3524fcd755840dbc8b",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-165-kenner-throne/p4-dark-basalt.png",
+      "sha256": "ca356e984bb1978288fcfb0202d46927ff37e218dab2cdc9ecdc623cbf06a224",
+      "width": 2170,
+      "height": 725,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+      "sha256": "3a2f9560323db363ea66a59abefeec80b49dc2f2fc9db83fb8b1a60f2f9354df",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+      "sha256": "af8cc67c9636d77c37127ae0d20412d230caf0a0d8657bd7615bb6d00221d1d3",
+      "width": 1223,
+      "height": 1286,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-01.png",
+      "sha256": "14839bd74013b3b74c5a81f988432a4cb1de7c768018ebc55d88c1500e8431fd",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-02.png",
+      "sha256": "9c6998f137b540101d9f78ecb2ff35426402551d8270430f456399fb7d439b1c",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-03.png",
+      "sha256": "86a22c38a794d5af03e828a4d268e12b264e73a45241e8b5ffd1fefd3edc3a26",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 12,
+    "expectedImages": 12,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            496,
+            157
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            235,
+            314
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            740,
+            314
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            496,
+            157
+          ],
+          "pivot": [
+            496,
+            157
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            235,
+            314
+          ],
+          "pivot": [
+            235,
+            314
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            740,
+            314
+          ],
+          "pivot": [
+            740,
+            314
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -304.4776
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -304.4776
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            496.44,
+            153.63562499999998
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            228.26249999999996,
+            314.953125
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            747.15,
+            314.953125
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            496.44,
+            153.63562499999998
+          ],
+          "pivot": [
+            496.44,
+            153.63562499999998
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            228.26249999999996,
+            314.953125
+          ],
+          "pivot": [
+            228.26249999999996,
+            314.953125
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            747.15,
+            314.953125
+          ],
+          "pivot": [
+            747.15,
+            314.953125
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 501.99999999999994,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            506.585,
+            154.4575
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            239.7125,
+            314.99
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            756.075,
+            314.99
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            506.585,
+            154.4575
+          ],
+          "pivot": [
+            506.585,
+            154.4575
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            239.7125,
+            314.99
+          ],
+          "pivot": [
+            239.7125,
+            314.99
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            756.075,
+            314.99
+          ],
+          "pivot": [
+            756.075,
+            314.99
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 501.99999999999994,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            486.135,
+            154.4575
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            219.26250000000002,
+            314.99
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            735.625,
+            314.99
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            486.135,
+            154.4575
+          ],
+          "pivot": [
+            486.135,
+            154.4575
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            219.26250000000002,
+            314.99
+          ],
+          "pivot": [
+            219.26250000000002,
+            314.99
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            735.625,
+            314.99
+          ],
+          "pivot": [
+            735.625,
+            314.99
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -8.320000000000007
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -8.320000000000007
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            495.84000000000003,
+            158.13
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            237.45000000000002,
+            313.56
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            737.4000000000001,
+            313.56
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            495.84000000000003,
+            158.13
+          ],
+          "pivot": [
+            495.84000000000003,
+            158.13
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            237.45000000000002,
+            313.56
+          ],
+          "pivot": [
+            237.45000000000002,
+            313.56
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            737.4000000000001,
+            313.56
+          ],
+          "pivot": [
+            737.4000000000001,
+            313.56
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -49.5
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -49.5
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            494.40000000000003,
+            168.3
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            259.5,
+            309.6
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            714,
+            309.6
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            494.40000000000003,
+            168.3
+          ],
+          "pivot": [
+            494.40000000000003,
+            168.3
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            259.5,
+            309.6
+          ],
+          "pivot": [
+            259.5,
+            309.6
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            714,
+            309.6
+          ],
+          "pivot": [
+            714,
+            309.6
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            496,
+            157
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            235,
+            314
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            740,
+            314
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            496,
+            157
+          ],
+          "pivot": [
+            496,
+            157
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            235,
+            314
+          ],
+          "pivot": [
+            235,
+            314
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            740,
+            314
+          ],
+          "pivot": [
+            740,
+            314
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-a-support-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-b-support-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-a-prop-left",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-b-prop-right",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            496,
+            157
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            235,
+            314
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-184-warp-threshold/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            740,
+            314
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            496,
+            157
+          ],
+          "pivot": [
+            496,
+            157
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            235,
+            314
+          ],
+          "pivot": [
+            235,
+            314
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            740,
+            314
+          ],
+          "pivot": [
+            740,
+            314
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 860,
+      "attachment": [
+        496,
+        157
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 880,
+      "attachment": [
+        496,
+        157
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 900,
+      "attachment": [
+        496,
+        157
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 920,
+      "attachment": [
+        496,
+        157
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 940,
+      "attachment": [
+        496,
+        157
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 960,
+      "attachment": [
+        496,
+        157
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 1793,
+      "attachment": [
+        235,
+        314
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 1813,
+      "attachment": [
+        235,
+        314
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 1833,
+      "attachment": [
+        235,
+        314
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 1853,
+      "attachment": [
+        235,
+        314
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 1873,
+      "attachment": [
+        235,
+        314
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 1893,
+      "attachment": [
+        235,
+        314
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 2821,
+      "attachment": [
+        740,
+        314
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 2841,
+      "attachment": [
+        740,
+        314
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 2861,
+      "attachment": [
+        740,
+        314
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 2881,
+      "attachment": [
+        740,
+        314
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 2901,
+      "attachment": [
+        740,
+        314
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 2921,
+      "attachment": [
+        740,
+        314
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-165-kenner-throne/p4-dark-basalt.png",
+      "crop": {
+        "x": 0,
+        "y": 32,
+        "width": 2170,
+        "height": 693
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-184-warp-threshold\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-184-warp-threshold\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-184-warp-threshold\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-184-warp-threshold\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-184-warp-threshold\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-184-warp-threshold\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-184-warp-threshold\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-184-warp-threshold\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "b44c7e47aa5b6e1aecc8096cfeb6c2349058a85e8acc090080cfa128e221253d",
+    "left-corner.png": "1dc0280aaef852a727c8328f4ad4609b1bb824a6a9c93ba14cca8583e4b5190e",
+    "right-corner.png": "954b95828ec690fd92361e8a0cbc5b86a2c9452053a102ad9ef874d02d1c003e",
+    "wide.png": "ca2f3beb77a07d62610418b400ba1cd15ab1401c38e44538f4655010e7be7c42",
+    "life-03-active.png": "34184932403b2c69d2e1a5657ab94d63e631024ca530e0e7a2d57a99e1e1a7a4",
+    "life-01-active.png": "9a88523307368069115979cb1e9260665d788b633816a579a7522422e601ca5a",
+    "life-02-active.png": "256bd3e164bdd118fc00bca671ea3df38d10862bbd216019bcc39687d76926e1",
+    "mobile.png": "8fedbebb7b2d7848bed231bf852deebdb5ff0f418ddeb71867b92dd7a007c080"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}

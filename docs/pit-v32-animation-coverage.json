@@ -1,0 +1,802 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-09-12T17:41:33.019Z",
+  "status": "PASS",
+  "method": "Sharp PNG readback through the real atlas preparation and animation loader",
+  "fighters": [
+    "jungle-hunter",
+    "city-hunter"
+  ],
+  "pageCount": 4,
+  "sourceRequests": [
+    "/game/sprites/v32/pit/jungle-hunter-idle.png",
+    "/game/sprites/v32/pit/jungle-hunter-light.png",
+    "/game/sprites/v32/pit/city-hunter-idle.png",
+    "/game/sprites/v32/pit/city-hunter-light.png"
+  ],
+  "distinctDrawings": 32,
+  "readyPhaseClips": 16,
+  "actionSequencesIncludingFacings": 8,
+  "pages": [
+    {
+      "fighterId": "jungle-hunter",
+      "pageId": "jungle-hunter-idle",
+      "src": "/game/sprites/v32/pit/jungle-hunter-idle.png",
+      "width": 1536,
+      "height": 1024,
+      "sourceSha256": "89d2bd9132cbe381e90ec08fd873d20e78d43e0fc88b0b79e84e2228893238ae",
+      "sourceHasAlpha": false,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "keyedPixels": 1230617,
+      "fringePixels": 15716,
+      "distinctDrawings": 8,
+      "cells": [
+        {
+          "rect": [
+            58,
+            106,
+            260,
+            358
+          ],
+          "pivot": [
+            126.5,
+            353
+          ],
+          "visiblePixels": 41652,
+          "transparentPixels": 51428,
+          "borderPixels": 0,
+          "sha256": "93a6e909d0f0e414b3e390687ffe459d1458bee5bd3aa5d9136a94417a8f2024"
+        },
+        {
+          "rect": [
+            432,
+            105,
+            264,
+            359
+          ],
+          "pivot": [
+            131.5,
+            354
+          ],
+          "visiblePixels": 42423,
+          "transparentPixels": 52353,
+          "borderPixels": 0,
+          "sha256": "e449ee479bb02f1ea271a97d6650e5aaef06f79efb3cedaf16a34396e6ac33f6"
+        },
+        {
+          "rect": [
+            809,
+            102,
+            264,
+            362
+          ],
+          "pivot": [
+            131.5,
+            357
+          ],
+          "visiblePixels": 42960,
+          "transparentPixels": 52608,
+          "borderPixels": 0,
+          "sha256": "9cdad38d5a0adbc487c8d2e4034a488b49a0b0b8cc61822472da028a4b8d51e6"
+        },
+        {
+          "rect": [
+            1199,
+            108,
+            261,
+            356
+          ],
+          "pivot": [
+            130,
+            351
+          ],
+          "visiblePixels": 41837,
+          "transparentPixels": 51079,
+          "borderPixels": 0,
+          "sha256": "b57d81a7ee00cab2aaa0bc155d458e574b6e8290d60c1d23595278b962272af6"
+        },
+        {
+          "rect": [
+            71,
+            564,
+            263,
+            362
+          ],
+          "pivot": [
+            131,
+            357
+          ],
+          "visiblePixels": 42756,
+          "transparentPixels": 52450,
+          "borderPixels": 0,
+          "sha256": "e4f43a394511e2031c02252b844138996e9e1fce332b65f750fcf3d6a1d694fe"
+        },
+        {
+          "rect": [
+            452,
+            564,
+            274,
+            361
+          ],
+          "pivot": [
+            136.5,
+            356
+          ],
+          "visiblePixels": 43811,
+          "transparentPixels": 55103,
+          "borderPixels": 0,
+          "sha256": "9be4695deecc033f8a676ae245501ad2810835f58a01755c18d2019827b910f0"
+        },
+        {
+          "rect": [
+            835,
+            563,
+            271,
+            362
+          ],
+          "pivot": [
+            135,
+            357
+          ],
+          "visiblePixels": 43848,
+          "transparentPixels": 54254,
+          "borderPixels": 0,
+          "sha256": "f8a64f9d0dac123a51b5dfbfcdfe0cd8d1c4f41d67ed6b06d4bee3047968b138"
+        },
+        {
+          "rect": [
+            1210,
+            564,
+            268,
+            362
+          ],
+          "pivot": [
+            133.5,
+            357
+          ],
+          "visiblePixels": 42960,
+          "transparentPixels": 54056,
+          "borderPixels": 0,
+          "sha256": "1d5e0ad1f9bdfac0007b83b6ebf4c2af0874ba5e03fc82c79365711327884445"
+        }
+      ]
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "pageId": "jungle-hunter-light",
+      "src": "/game/sprites/v32/pit/jungle-hunter-light.png",
+      "width": 1536,
+      "height": 1024,
+      "sourceSha256": "1f8b188b0efbcbadd12afd70003717eaab74ae64fac176eb2578a4a876c44867",
+      "sourceHasAlpha": false,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "keyedPixels": 1269757,
+      "fringePixels": 15412,
+      "distinctDrawings": 8,
+      "cells": [
+        {
+          "rect": [
+            56,
+            126,
+            264,
+            333
+          ],
+          "pivot": [
+            121.5,
+            328
+          ],
+          "visiblePixels": 37613,
+          "transparentPixels": 50299,
+          "borderPixels": 0,
+          "sha256": "73c36fc736e7522c7ab9c7ee00e4268f91376daba5f1537dba9a5b3c5162bb12"
+        },
+        {
+          "rect": [
+            420,
+            122,
+            385,
+            336
+          ],
+          "pivot": [
+            134,
+            331
+          ],
+          "visiblePixels": 38893,
+          "transparentPixels": 90467,
+          "borderPixels": 0,
+          "sha256": "eca48d856083f8569aabad6d5fa83a73e761d528d8a6c0891fb26d7c05ccaf63"
+        },
+        {
+          "rect": [
+            812,
+            120,
+            262,
+            340
+          ],
+          "pivot": [
+            130.5,
+            335
+          ],
+          "visiblePixels": 34252,
+          "transparentPixels": 54828,
+          "borderPixels": 0,
+          "sha256": "f1ac14f5f527cee70280f03767d8af8184bbd15159cccc2fcc8b8540d55e1f8b"
+        },
+        {
+          "rect": [
+            1216,
+            116,
+            252,
+            346
+          ],
+          "pivot": [
+            125.5,
+            341
+          ],
+          "visiblePixels": 37554,
+          "transparentPixels": 49638,
+          "borderPixels": 0,
+          "sha256": "f2bca3a1825a26dc1a6970bb402ad5ee816c48faa3f6ad944aa22b92d662978f"
+        },
+        {
+          "rect": [
+            65,
+            583,
+            270,
+            341
+          ],
+          "pivot": [
+            142.5,
+            336
+          ],
+          "visiblePixels": 38623,
+          "transparentPixels": 53447,
+          "borderPixels": 0,
+          "sha256": "4d227c792ca8c849b367648c5e5c9bd47aecd899ed382e0db08167e33dd30cbf"
+        },
+        {
+          "rect": [
+            364,
+            580,
+            386,
+            344
+          ],
+          "pivot": [
+            243.5,
+            339
+          ],
+          "visiblePixels": 39930,
+          "transparentPixels": 92854,
+          "borderPixels": 0,
+          "sha256": "1908d4daba50f48be3825baeacb896c5d6b6ad93bc053b58636226ae3401aabc"
+        },
+        {
+          "rect": [
+            837,
+            581,
+            273,
+            344
+          ],
+          "pivot": [
+            139,
+            339
+          ],
+          "visiblePixels": 37660,
+          "transparentPixels": 56252,
+          "borderPixels": 0,
+          "sha256": "83b32317ec5d229af5900aa7aadc8319bd33b4fda67e14817f3a8d2f3ea08b95"
+        },
+        {
+          "rect": [
+            1212,
+            574,
+            266,
+            353
+          ],
+          "pivot": [
+            132.5,
+            348
+          ],
+          "visiblePixels": 38582,
+          "transparentPixels": 55316,
+          "borderPixels": 0,
+          "sha256": "dc70fb6c567d6193b017450d150713fcc1f6bdb96c95d8672d905f47750e9959"
+        }
+      ]
+    },
+    {
+      "fighterId": "city-hunter",
+      "pageId": "city-hunter-idle",
+      "src": "/game/sprites/v32/pit/city-hunter-idle.png",
+      "width": 1536,
+      "height": 1024,
+      "sourceSha256": "569f85110fa1b326732365d3bb9e5af0462597d49412ab9edf7c3a106679f2d0",
+      "sourceHasAlpha": false,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "keyedPixels": 1154779,
+      "fringePixels": 19119,
+      "distinctDrawings": 8,
+      "cells": [
+        {
+          "rect": [
+            73,
+            21,
+            239,
+            457
+          ],
+          "pivot": [
+            118.5,
+            452
+          ],
+          "visiblePixels": 51002,
+          "transparentPixels": 58221,
+          "borderPixels": 0,
+          "sha256": "3840601f18a988d8e1dda7f34aeb5ebf35bf3c8ccf71ab4e6f0331cb93e7cfe1"
+        },
+        {
+          "rect": [
+            458,
+            21,
+            238,
+            457
+          ],
+          "pivot": [
+            117.5,
+            452
+          ],
+          "visiblePixels": 51450,
+          "transparentPixels": 57316,
+          "borderPixels": 0,
+          "sha256": "081d5861502b94d106d3995013746876cf7a75c21a307b18c48fef873dab36c7"
+        },
+        {
+          "rect": [
+            839,
+            19,
+            241,
+            459
+          ],
+          "pivot": [
+            120.5,
+            454
+          ],
+          "visiblePixels": 51794,
+          "transparentPixels": 58825,
+          "borderPixels": 0,
+          "sha256": "a92fbf9973aa2a8c657a59778c53f61f06394989ac8ccd0e024368522519883d"
+        },
+        {
+          "rect": [
+            1228,
+            21,
+            236,
+            457
+          ],
+          "pivot": [
+            115.5,
+            452
+          ],
+          "visiblePixels": 50881,
+          "transparentPixels": 56971,
+          "borderPixels": 0,
+          "sha256": "51eb423f832899f922b368d5c9988893bc7a2230b1a84fb669df1ab994688b6e"
+        },
+        {
+          "rect": [
+            66,
+            530,
+            245,
+            459
+          ],
+          "pivot": [
+            122,
+            454
+          ],
+          "visiblePixels": 52968,
+          "transparentPixels": 59487,
+          "borderPixels": 0,
+          "sha256": "a27e187804c7e66572c548ba98d06215419e89fcbc611554b45dfeab5bff9af0"
+        },
+        {
+          "rect": [
+            449,
+            530,
+            245,
+            459
+          ],
+          "pivot": [
+            123,
+            454
+          ],
+          "visiblePixels": 53087,
+          "transparentPixels": 59368,
+          "borderPixels": 0,
+          "sha256": "a0435adeb88c22f4bc4a9eb702a3d1b3835b7b8d8d6f59efaa7e9c4ab42fe748"
+        },
+        {
+          "rect": [
+            834,
+            527,
+            245,
+            462
+          ],
+          "pivot": [
+            122,
+            457
+          ],
+          "visiblePixels": 53977,
+          "transparentPixels": 59213,
+          "borderPixels": 0,
+          "sha256": "d9f947172a1d32677ca0fb2f75d39e7e996dbf57f19e581c0e1eb093ba50e057"
+        },
+        {
+          "rect": [
+            1217,
+            530,
+            245,
+            459
+          ],
+          "pivot": [
+            123,
+            454
+          ],
+          "visiblePixels": 52926,
+          "transparentPixels": 59529,
+          "borderPixels": 0,
+          "sha256": "9382ff63c7b258b8a3a7520524eeb4c9e8c5d1d25ac44977f740baa0a47b62b5"
+        }
+      ]
+    },
+    {
+      "fighterId": "city-hunter",
+      "pageId": "city-hunter-light",
+      "src": "/game/sprites/v32/pit/city-hunter-light.png",
+      "width": 1536,
+      "height": 1024,
+      "sourceSha256": "703bfbc4fceb20af425f53301cbb50aef4ae0b0d964ddcdba5f8f00f59b3699d",
+      "sourceHasAlpha": false,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "keyedPixels": 1170960,
+      "fringePixels": 16341,
+      "distinctDrawings": 8,
+      "cells": [
+        {
+          "rect": [
+            55,
+            38,
+            274,
+            438
+          ],
+          "pivot": [
+            135.5,
+            433
+          ],
+          "visiblePixels": 50376,
+          "transparentPixels": 69636,
+          "borderPixels": 0,
+          "sha256": "fdbfb127b8f10d1293527eb80da3a3ae0cc5e34537237126cc1860af0e40606e"
+        },
+        {
+          "rect": [
+            407,
+            38,
+            385,
+            438
+          ],
+          "pivot": [
+            138,
+            433
+          ],
+          "visiblePixels": 49098,
+          "transparentPixels": 119532,
+          "borderPixels": 0,
+          "sha256": "081b6f1044b3e4b74e963c77202efff3c626d679ccfea2450b51d1f2be5b4799"
+        },
+        {
+          "rect": [
+            823,
+            37,
+            278,
+            439
+          ],
+          "pivot": [
+            138,
+            434
+          ],
+          "visiblePixels": 48732,
+          "transparentPixels": 73310,
+          "borderPixels": 0,
+          "sha256": "69c30eae25124e8ee44e43f72004e78e97851fda36e74221a49b9de3fa8e2f54"
+        },
+        {
+          "rect": [
+            1229,
+            36,
+            246,
+            442
+          ],
+          "pivot": [
+            119,
+            437
+          ],
+          "visiblePixels": 49703,
+          "transparentPixels": 59029,
+          "borderPixels": 0,
+          "sha256": "b4171fd5329d9120d625f191b5397f572bac0019b9d3bef5b39c348444359be1"
+        },
+        {
+          "rect": [
+            53,
+            536,
+            277,
+            439
+          ],
+          "pivot": [
+            144.5,
+            434
+          ],
+          "visiblePixels": 51403,
+          "transparentPixels": 70200,
+          "borderPixels": 0,
+          "sha256": "9bddeb9848fc3c837cd20e606c3a8240b481f9272c9ed01bdb6f314e132f895a"
+        },
+        {
+          "rect": [
+            351,
+            534,
+            387,
+            441
+          ],
+          "pivot": [
+            247,
+            436
+          ],
+          "visiblePixels": 50024,
+          "transparentPixels": 120643,
+          "borderPixels": 0,
+          "sha256": "6b5598d191e0310335bcdcd20ccd290782d0a8828cfe7da7314989660d3d1d9e"
+        },
+        {
+          "rect": [
+            812,
+            533,
+            284,
+            441
+          ],
+          "pivot": [
+            147.5,
+            436
+          ],
+          "visiblePixels": 50335,
+          "transparentPixels": 74909,
+          "borderPixels": 0,
+          "sha256": "b5212b0cb9eda4711ae1da60f57d9bd5dae1cac2edeb912d2442bf7318549a61"
+        },
+        {
+          "rect": [
+            1211,
+            533,
+            257,
+            442
+          ],
+          "pivot": [
+            134.5,
+            437
+          ],
+          "visiblePixels": 52233,
+          "transparentPixels": 61361,
+          "borderPixels": 0,
+          "sha256": "6bb81d496cc24006d6b850ea20b8dd4f374deba1ac54e67ca001cf0c24f2adf2"
+        }
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "fighterId": "jungle-hunter",
+      "clipId": "idle",
+      "facing": "right",
+      "drawnCells": 4,
+      "authoredTicks": 40,
+      "runtimePhaseTicks": null,
+      "ready": true
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "clipId": "idle",
+      "facing": "left",
+      "drawnCells": 4,
+      "authoredTicks": 40,
+      "runtimePhaseTicks": null,
+      "ready": true
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "clipId": "pit.stand.light.startup",
+      "facing": "right",
+      "drawnCells": 1,
+      "authoredTicks": 10,
+      "runtimePhaseTicks": 5,
+      "ready": true
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "clipId": "pit.stand.light.active",
+      "facing": "right",
+      "drawnCells": 1,
+      "authoredTicks": 10,
+      "runtimePhaseTicks": 3,
+      "ready": true
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "clipId": "pit.stand.light.recovery",
+      "facing": "right",
+      "drawnCells": 2,
+      "authoredTicks": 20,
+      "runtimePhaseTicks": 10,
+      "ready": true
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "clipId": "pit.stand.light.startup",
+      "facing": "left",
+      "drawnCells": 1,
+      "authoredTicks": 10,
+      "runtimePhaseTicks": 5,
+      "ready": true
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "clipId": "pit.stand.light.active",
+      "facing": "left",
+      "drawnCells": 1,
+      "authoredTicks": 10,
+      "runtimePhaseTicks": 3,
+      "ready": true
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "clipId": "pit.stand.light.recovery",
+      "facing": "left",
+      "drawnCells": 2,
+      "authoredTicks": 20,
+      "runtimePhaseTicks": 10,
+      "ready": true
+    },
+    {
+      "fighterId": "city-hunter",
+      "clipId": "idle",
+      "facing": "right",
+      "drawnCells": 4,
+      "authoredTicks": 40,
+      "runtimePhaseTicks": null,
+      "ready": true
+    },
+    {
+      "fighterId": "city-hunter",
+      "clipId": "idle",
+      "facing": "left",
+      "drawnCells": 4,
+      "authoredTicks": 40,
+      "runtimePhaseTicks": null,
+      "ready": true
+    },
+    {
+      "fighterId": "city-hunter",
+      "clipId": "pit.stand.light.startup",
+      "facing": "right",
+      "drawnCells": 1,
+      "authoredTicks": 10,
+      "runtimePhaseTicks": 4,
+      "ready": true
+    },
+    {
+      "fighterId": "city-hunter",
+      "clipId": "pit.stand.light.active",
+      "facing": "right",
+      "drawnCells": 1,
+      "authoredTicks": 10,
+      "runtimePhaseTicks": 3,
+      "ready": true
+    },
+    {
+      "fighterId": "city-hunter",
+      "clipId": "pit.stand.light.recovery",
+      "facing": "right",
+      "drawnCells": 2,
+      "authoredTicks": 20,
+      "runtimePhaseTicks": 9,
+      "ready": true
+    },
+    {
+      "fighterId": "city-hunter",
+      "clipId": "pit.stand.light.startup",
+      "facing": "left",
+      "drawnCells": 1,
+      "authoredTicks": 10,
+      "runtimePhaseTicks": 4,
+      "ready": true
+    },
+    {
+      "fighterId": "city-hunter",
+      "clipId": "pit.stand.light.active",
+      "facing": "left",
+      "drawnCells": 1,
+      "authoredTicks": 10,
+      "runtimePhaseTicks": 3,
+      "ready": true
+    },
+    {
+      "fighterId": "city-hunter",
+      "clipId": "pit.stand.light.recovery",
+      "facing": "left",
+      "drawnCells": 2,
+      "authoredTicks": 20,
+      "runtimePhaseTicks": 9,
+      "ready": true
+    }
+  ],
+  "limits": [
+    "Pixel validation does not replace the separate visual anatomy review.",
+    "Phase clips are not complete fighter animation libraries.",
+    "The 264 historical production entries are not 264 animation clips or distinct canonical individuals.",
+    "No complete character, synchronized throw, victim library or finisher is claimed."
+  ]
+}

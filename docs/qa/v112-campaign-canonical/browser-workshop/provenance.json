@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+  "sourceContext": {
+    "gitCommitIsBaseOnly": false,
+    "huntMatchesBaseCommit": true,
+    "gameClientMatchesBaseCommit": true,
+    "gameClientSourceSha256": "f034ac0de7136d6a4abd29e286dcdeaa5940f22b2968b8ea62e36c3f3026ef47"
+  },
+  "huntSourceSha256": "8bf504951e6d7d6af9df2bf1d125b99d25f06009723efc96b47636b53b5471c5",
+  "generatedAt": "2026-11-02T05:54:03.980Z",
+  "browser": "154.0.8037.57",
+  "scope": "One genuinely played Ice revisit, run1, through whole GameClient: real enemy combat, anatomical harvest, extraction, durable delivery, four conservation stages, paused job browser reload with exact ledger/balance, resume and targeted archive delta. No eight-contract browser qualification, human, hardware or artistic validation.",
+  "criterion": "REM112-06",
+  "closesCriterion": false,
+  "parentEvidence": {
+    "file": "../browser-ice/browser-report.json",
+    "sha256": "e27b0ad1c01ff6c850d671727875cfd49b5029945019ee835c91dcdc51a1cad1"
+  },
+  "outcome": {
+    "status": "BROWSER_HUNT_AND_SETTLEMENT_SUCCESS",
+    "elapsedSeconds": 137.65000000000168,
+    "kills": 11,
+    "scans": 8,
+    "settlement": {
+      "confirmed": true,
+      "beforeProgress": {
+        "status": "completed",
+        "attempts": 1,
+        "completions": 1,
+        "bestScore": 99,
+        "bestTimeSeconds": 99,
+        "bestDifficultyId": "hunter",
+        "completedObjectiveIds": [
+          "scan-ice-traces",
+          "hunt-cryorunners",
+          "defeat-cryostalker",
+          "extract-ice-trophy"
+        ],
+        "lastPlayedAt": "2026-11-02T05:35:17.643Z"
+      },
+      "afterProgress": {
+        "status": "completed",
+        "attempts": 2,
+        "completions": 2,
+        "bestScore": 99,
+        "bestTimeSeconds": 99,
+        "bestDifficultyId": "hunter",
+        "completedObjectiveIds": [
+          "scan-ice-traces",
+          "hunt-cryorunners",
+          "defeat-cryostalker",
+          "extract-ice-trophy"
+        ],
+        "lastPlayedAt": "2026-11-02T06:02:42.999Z"
+      }
+    },
+    "resumeBeforeElapsed": 21.50000000000006,
+    "resumeAfterElapsed": 21.50000000000006,
+    "retryCount": 0
+  },
+  "harvest": [
+    {
+      "missionId": "ice-cryostalker",
+      "bodyId": "ice-runners-1",
+      "actions": [
+        "analyze",
+        "flay",
+        "harvest-bone"
+      ],
+      "elapsed": 56.39999999999808,
+      "specimens": [
+        {
+          "id": "ice-cryostalker:1:ice-runners-1:bone",
+          "sourceId": "ice-cryostalker:1:ice-runners-1",
+          "speciesId": "nivalis-k--frost-xeno",
+          "partId": "bone",
+          "label": "Segment caudal de xénomorphe",
+          "quality": 82,
+          "massKg": 1.2,
+          "volumeUnits": 2,
+          "stage": "raw"
+        }
+      ]
+    }
+  ],
+  "workshop": [
+    {
+      "pausedAndReloaded": true,
+      "actions": [
+        "Nettoyer · 2 marques · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "pause-reload-exact-resume",
+        "Reprendre sans frais · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Traiter · 4 marques · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Sécher · 3 marques · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Monter · 5 marques · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Effectuer un geste · Segment caudal de xénomorphe",
+        "Ranger en réserve · Segment caudal de xénomorphe"
+      ],
+      "before": {
+        "version": 1,
+        "specimens": [
+          {
+            "id": "ice-cryostalker:1:ice-runners-1:bone",
+            "sourceId": "ice-cryostalker:1:ice-runners-1",
+            "speciesId": "nivalis-k--frost-xeno",
+            "partId": "bone",
+            "label": "Segment caudal de xénomorphe",
+            "quality": 82,
+            "massKg": 1.2,
+            "volumeUnits": 2,
+            "stage": "raw"
+          }
+        ],
+        "toolCondition": 90,
+        "toolUseIds": [
+          "ice-cryostalker:1:flay:ice-runners-1",
+          "ice-cryostalker:1:harvest-bone:ice-runners-1"
+        ],
+        "jobs": [],
+        "settledEncounterRuns": {
+          "jungle-vey": 0,
+          "ice-cryostalker": 1
+        },
+        "archive": []
+      },
+      "after": {
+        "version": 1,
+        "specimens": [],
+        "toolCondition": 90,
+        "toolUseIds": [
+          "ice-cryostalker:1:flay:ice-runners-1",
+          "ice-cryostalker:1:harvest-bone:ice-runners-1"
+        ],
+        "jobs": [],
+        "settledEncounterRuns": {
+          "jungle-vey": 0,
+          "ice-cryostalker": 1
+        },
+        "archive": [
+          {
+            "speciesId": "nivalis-k--frost-xeno",
+            "partId": "bone",
+            "label": "Segment caudal de xénomorphe",
+            "count": 1,
+            "qualityTotal": 82
+          }
+        ]
+      },
+      "marksBefore": 594,
+      "marksAfter": 580
+    }
+  ],
+  "errors": [],
+  "missingAssets": [],
+  "inspectedImages": [
+    "01-legacy-default-deck.png",
+    "earned-flaying-tool.png",
+    "ice-cryostalker-02-galaxy-map.png",
+    "ice-cryostalker-03-true-hunt-start.png",
+    "ice-cryostalker-04-attempt-terminal.png",
+    "ice-cryostalker-actual-anatomical-harvest.png",
+    "ice-cryostalker-body-discovery-visual-canvas.png",
+    "ice-cryostalker-phase-extraction.png",
+    "ice-cryostalker-phase-target.png",
+    "ice-cryostalker-phase-tracking.png",
+    "ice-cryostalker-phase-trophy.png",
+    "ice-cryostalker-suspended-to-deck.png",
+    "workshop-mounted-archive.png",
+    "workshop-paused.png"
+  ],
+  "independentInspection": "All14 PNG opened; all14 SHA and byte lengths matched. Parent save SHA, owner, sidecar21.5→21.5, settlement1→2, specimen identity, pause1/3, 14marks, tool100→90 and archive0→1 verified in independent read-only review.",
+  "command": "node scripts/qa-hunt-campaign-browser-v112.mjs --campaign-source outputs/qa-hunt-campaign-browser-v112/remaining-run-r3/report.json --missions ice-cryostalker --replay-completed --harvest-species nivalis-k--frost-xeno --output outputs/qa-hunt-campaign-browser-v112/targeted-ice-workshop --wall-seconds 900",
+  "artifacts": [
+    {
+      "file": "browser-raw.tar.gz",
+      "bytes": 16452528,
+      "sha256": "0faa70f842ba2728dc799ca0de199e0cb10339dca3fcc4a7b7438290ea7905c2"
+    },
+    {
+      "file": "browser-report.json",
+      "bytes": 1105054,
+      "sha256": "e4384bee18c3e1a50e4f2e7c6864c10a630679de795674b184d6020813e7806a"
+    },
+    {
+      "file": "ice-cryostalker-actual-anatomical-harvest.png",
+      "bytes": 1336981,
+      "sha256": "9a8c27fb38f94f010d42daea81321ef8a5c76b3bb6a0e261c1d88e9cb952dbda"
+    },
+    {
+      "file": "workshop-mounted-archive.png",
+      "bytes": 544855,
+      "sha256": "beddd808973214af968a01165fc69ac00d9ac920828fb9180c4c95d9bc45ff37"
+    },
+    {
+      "file": "workshop-paused.png",
+      "bytes": 469093,
+      "sha256": "f53d088f3c84768cb306534ea54abe1b1376cccd3424164fe1c374db6d79ed45"
+    }
+  ],
+  "sourceCommitIsExact": false,
+  "sourceCommitRole": "Git baseline only; the historical browser run did not record a full transitive source manifest.",
+  "sourceAttributionCorrection": {
+    "entryFilesMatchBase": [
+      "app/game/HuntCanvas.tsx",
+      "app/game/GameClient.tsx"
+    ],
+    "knownChangedDependencyAtBundle": "app/game/discoverySignalsV112.ts",
+    "bundleCreatedAt": "2026-11-02T05:54:03.980Z",
+    "hudFileModificationUtc": "2026-11-02T05:46:13.273809319Z",
+    "hudFileSha256ObservedAfterRun": "eaac00b22e9976499f2a7ce1e0439ba33eba0d2fd5aa1f40faa9c9887d4b6349",
+    "laterCarriedCorpseMenuFixUtc": "2026-11-02T06:00:23.519314242Z",
+    "originalContextFlagLimit": "gitCommitIsBaseOnly:false in the immutable raw report checked only HuntCanvas and GameClient, not all imported sources. It must not be read as a clean source-tree claim.",
+    "qualificationLimit": "Actual gameplay, storage and workshop result remain evidenced; exact application tree, current production build and artistic fidelity are not certified by this historical run."
+  }
+}

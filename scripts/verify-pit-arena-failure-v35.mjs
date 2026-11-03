@@ -1,0 +1,47 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {chromium} from 'playwright-core';
+const base=process.argv[2]??'http://127.0.0.1:4173';assert(base?.startsWith('http://'));
+const versionSource=await fs.readFile('app/game/buildInfo.ts','utf8');
+const expectedVersion=versionSource.match(/GAME_CONTENT_VERSION = "([^"]+)"/)[1];
+const id='arena-019-porte-des-reserves';
+const output='work/v35/arena-fullapp/png-failure';await fs.mkdir(output,{recursive:true});
+const production=JSON.parse(await fs.readFile('art-source/v33/pit-arenas/production-manifest.json','utf8'));
+const stage=production.stages.find(s=>s.catalogueId===id);
+const paths=stage.planes.flatMap(p=>p.assets.flatMap(a=>a.frames.map(f=>f.path)));
+const failedPath=paths.find(path=>path.includes('p4-a-contact-floor'));
+const errors=[],requests=[],failures=[];
+const browser=await chromium.launch({channel:'chrome',headless:true});
+try{
+ const page=await browser.newPage({viewport:{width:1280,height:900}});
+ page.on('pageerror',error=>errors.push(error.message));
+ page.on('request',request=>requests.push(new URL(request.url()).pathname));
+ page.on('response',response=>{if(response.status()>=400)failures.push({path:new URL(response.url()).pathname,status:response.status()});});
+ await page.route('**'+failedPath,route=>route.fulfill({status:404,contentType:'text/plain',body:'Intentional missing PNG for arena failure regression'}));
+ await page.goto(base,{waitUntil:'networkidle'});
+ await page.waitForFunction(version=>document.querySelector('[data-game-content-version='+version+']'),expectedVersion);
+ await page.getByRole('button',{name:'Jouer',exact:true}).click();
+ await page.getByRole('button',{name:'THE PIT · combat',exact:true}).click();
+ await page.getByRole('radio',{name:/Entraînement/}).click();
+ await page.getByRole('combobox',{name:'Arène',exact:true}).selectOption(id);
+ // Initial THE PIT preview is legitimate. Only requests after changing the arena are relevant to fallback.
+ const start=requests.length;
+ await page.getByRole('button',{name:/^ENTRER DANS L’ARÈNE/}).click();
+ await page.waitForFunction(id=>{const c=document.querySelector('canvas[data-pit-arena-id="'+id+'"]');return c?.dataset.pitArenaArtStatus==='unavailable';},id,{timeout:60000});
+ const canvas=page.locator('canvas[data-pit-arena-id="'+id+'"]');const data=await canvas.evaluate(c=>({...c.dataset}));
+ assert.equal(data.pitArenaArtStatus,'unavailable');assert.equal(data.pitArenaArtSource,'unavailable');
+ assert.equal(data.pitArenaMissingAssets,'1');assert.equal(data.pitArenaSubplans,'0');assert.equal(data.pitArenaLoadedImages,'13');
+ assert.equal(data.pitArenaPlanes,'');assert.deepEqual(errors,[]);
+ await page.locator('[data-pit-arena-warning=unavailable]').waitFor({state:'visible'});
+ assert((await page.locator('[data-pit-arena-warning=unavailable]').innerText()).includes('Décor indisponible ou incomplet'));
+ assert(failures.length>=1&&failures.every(f=>f.path===failedPath&&f.status===404));
+ const after=requests.slice(start);assert(!after.some(path=>path.startsWith('/game/assets/v19/biome-decor/')||path.startsWith('/game/ship-interior/')),'Legacy arena art was requested after extension failure');
+ await page.screenshot({path:output+'/unavailable-full.png',fullPage:true});
+ await canvas.screenshot({path:output+'/unavailable.png'});
+ const beforeFrame=Number(await page.locator('[data-pit-frame]').getAttribute('data-pit-frame'));
+ await page.keyboard.down('ArrowRight');await page.waitForTimeout(400);await page.keyboard.up('ArrowRight');
+ assert.equal(await canvas.getAttribute('data-pit-arena-art-status'),'unavailable');
+ const afterFrame=Number(await page.locator('[data-pit-frame]').getAttribute('data-pit-frame'));assert(afterFrame>beforeFrame);
+ const result={passed:true,surface:'full-application-pit-missing-png',verifiedContentVersion:expectedVersion,checkedAt:new Date().toISOString(),url:base,arenaId:id,failedPath,intentionalHttpStatus:404,canvas:data,errors,failures,visibleUnavailableWarning:true,noLegacyFallback:true,simulationContinues:true,beforeFrame,afterFrame};
+ await fs.writeFile(output+'/browser-qa.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
+}finally{await browser.close();}

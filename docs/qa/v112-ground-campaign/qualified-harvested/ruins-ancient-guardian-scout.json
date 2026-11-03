@@ -1,0 +1,1125 @@
+{
+  "missionId": "ruins-ancient-guardian",
+  "armorId": "scout",
+  "success": true,
+  "result": {
+    "missionId": "ruins-ancient-guardian",
+    "exploration": {
+      "abilityIds": [],
+      "openedGateIds": [],
+      "secretIds": [],
+      "discoveredRoomIds": [
+        "jungle-pilot-approach",
+        "jungle-pilot-underpass",
+        "jungle-pilot-module",
+        "jungle-pilot-ravine",
+        "jungle-pilot-river-caves",
+        "jungle-pilot-vey-camp",
+        "jungle-pilot-duel-extraction",
+        "ice-region-approach",
+        "ice-region-shaft",
+        "ice-region-return",
+        "ruins-oracle-approach",
+        "ruins-oracle-return"
+      ]
+    },
+    "difficultyId": "hunter",
+    "outcome": "success",
+    "score": 95,
+    "elapsedSeconds": 59,
+    "completedObjectiveIds": [
+      "ruins-ancient-guardian-scan",
+      "ruins-ancient-guardian-recover",
+      "ruins-ancient-guardian-hunt",
+      "ruins-ancient-guardian-boss",
+      "ruins-ancient-guardian-extract"
+    ],
+    "honorEvents": [
+      {
+        "id": "scan-trace-1",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "honor-rule:ruins-ancient-guardian-restraint",
+        "label": "Code rompu : Force mesurée",
+        "value": -15,
+        "kind": "violation"
+      },
+      {
+        "id": "scan-trace-2",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-ruins-ancient-guardian-foragers-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-3",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "objective-ruins-ancient-guardian-scan",
+        "label": "Déchiffrer les marques de chasse",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-ruins-ancient-guardian-foragers-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ruins-ancient-guardian-foragers-3",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "recover-technology-1",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-ruins-ancient-guardian-territorials-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "recover-technology-2",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-ruins-ancient-guardian-recover",
+        "label": "Extraire les prismes mémoriels",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-ruins-ancient-guardian-territorials-0",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ruins-ancient-guardian-territorials-2",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "objective-ruins-ancient-guardian-hunt",
+        "label": "Désassembler les sentinelles",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-ruins-ancient-guardian-boss",
+        "label": "Affronter Gardien d'obsidienne",
+        "value": 55,
+        "kind": "objective"
+      },
+      {
+        "id": "boss-honorable-kill",
+        "label": "Victoire sur Gardien d'obsidienne",
+        "value": 10,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "trophy-claimed",
+        "label": "Masque du Gardien",
+        "value": 12,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-ruins-ancient-guardian-extract",
+        "label": "Rejoindre le faisceau d'extraction",
+        "value": 15,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:ruins-ancient-guardian-study",
+        "label": "Code respecté : Cartographier avant de frapper",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:ruins-ancient-guardian-survive",
+        "label": "Code respecté : Chasseur inébranlable",
+        "value": 20,
+        "kind": "objective"
+      }
+    ],
+    "trophyQuality": "flawless",
+    "trophyClaims": [
+      {
+        "id": "ruins-ancient-guardian-apex-mvyt26sd-qw-axz75p9d",
+        "definitionId": "trophy-ruins-ancient-guardian",
+        "targetName": "Gardien d'obsidienne",
+        "targetKind": "beast",
+        "partId": "mask",
+        "quality": "flawless",
+        "condition": "intact"
+      }
+    ],
+    "specimensV112": [],
+    "toolUseIdsV112": [],
+    "harvestEncounterRunV112": 0,
+    "kills": 7,
+    "scans": 7,
+    "discoveredEnemyIds": [
+      "acheron-sigma--temple-xeno",
+      "acheron-sigma--stone-orchid",
+      "acheron-sigma--sentinel-drone",
+      "acheron-sigma--archive-mold"
+    ],
+    "secondWindUsed": false,
+    "completedAt": "2026-11-02T05:15:24.067Z"
+  },
+  "climbFrames": 0,
+  "swingFrames": 0,
+  "authoredCanopyContactFrames": 0,
+  "maxX": 7988.999999999991,
+  "terminal": {
+    "t": 59.367,
+    "phase": "finished",
+    "x": 7989,
+    "y": 173,
+    "vx": 0,
+    "vy": 0,
+    "health": 125,
+    "stamina": 115,
+    "energy": 110,
+    "kills": 6,
+    "boss": {
+      "active": true,
+      "alive": false,
+      "health": 0,
+      "x": 6793.1775707199395
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      true,
+      true
+    ],
+    "objectives": [
+      "ruins-ancient-guardian-scan",
+      "ruins-ancient-guardian-recover",
+      "ruins-ancient-guardian-hunt",
+      "ruins-ancient-guardian-boss",
+      "ruins-ancient-guardian-extract"
+    ],
+    "message": "Objectif accompli : Rejoindre le faisceau d'extraction",
+    "grounded": false,
+    "climbing": false,
+    "load": {
+      "massKg": 0,
+      "volumeUnits": 0,
+      "capacityMassKg": 24,
+      "capacityVolumeUnits": 18,
+      "ratio": 0,
+      "overloaded": false,
+      "movementMultiplier": 1,
+      "jumpMultiplier": 1,
+      "climbStaminaMultiplier": 1,
+      "noiseMultiplier": 1
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "ruins-ancient-guardian-foragers-1",
+        "x": 2253.2150092417896,
+        "y": 524,
+        "health": 34.49393199999999,
+        "width": 108,
+        "height": 100
+      },
+      {
+        "id": "ruins-ancient-guardian-foragers-4",
+        "x": 2202.7057983952736,
+        "y": 534,
+        "health": 88,
+        "width": 98,
+        "height": 90
+      },
+      {
+        "id": "ruins-ancient-guardian-territorials-3",
+        "x": 4761.651517055605,
+        "y": 527,
+        "health": 50.571200999999974,
+        "width": 68,
+        "height": 97
+      },
+      {
+        "id": "ruins-ancient-guardian-guardians-0",
+        "x": 4695.775919999982,
+        "y": 528,
+        "health": 86.70625900000003,
+        "width": 114,
+        "height": 96
+      },
+      {
+        "id": "ruins-ancient-guardian-guardians-1",
+        "x": 4713.097289574433,
+        "y": 524,
+        "health": 148.018,
+        "width": 108,
+        "height": 100
+      },
+      {
+        "id": "ruins-ancient-guardian-guardians-2",
+        "x": 4745.1685425554915,
+        "y": 517,
+        "health": 214.76726899999997,
+        "width": 88,
+        "height": 107
+      },
+      {
+        "id": "extraction-ruins-ancient-guardian-969-0",
+        "x": 7868.716093333347,
+        "y": 504,
+        "health": 281.67,
+        "width": 84,
+        "height": 120
+      },
+      {
+        "id": "extraction-ruins-ancient-guardian-970-1",
+        "x": 7792.426613333418,
+        "y": 400.7692245121895,
+        "health": 199.23,
+        "width": 90,
+        "height": 75
+      },
+      {
+        "id": "extraction-ruins-ancient-guardian-971-2",
+        "x": 7872.228739999972,
+        "y": 508,
+        "health": 254.18999999999997,
+        "width": 81,
+        "height": 116
+      }
+    ]
+  },
+  "admission": {
+    "missionId": "ruins-ancient-guardian",
+    "armorId": "scout",
+    "loadout": {
+      "armorId": "scout",
+      "weaponIds": [
+        "wristblades",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "inventory": {
+      "fieldToolIds": [
+        "flaying-tool"
+      ],
+      "harvestV112": {
+        "version": 1,
+        "specimens": [],
+        "toolCondition": 100,
+        "toolUseIds": [],
+        "jobs": [],
+        "settledEncounterRuns": {
+          "jungle-vey": 0,
+          "ice-cryostalker": 0
+        },
+        "archive": []
+      },
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster",
+        "yautja-bow",
+        "smart-disc"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy",
+        "netgun",
+        "snare"
+      ],
+      "unlockedArmorIds": [
+        "hunter",
+        "scout",
+        "berserker"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "toolOrigin": {
+      "path": "docs/qa/v112-ground-campaign/tool-origin.json",
+      "sha256": "0b489bc90df80e0643be22c971d0412ffbff434805812c75fc00f2690beef63b",
+      "missions": [
+        {
+          "missionId": "jungle-vey",
+          "outcome": "success",
+          "score": 98,
+          "elapsedSeconds": 61
+        },
+        {
+          "missionId": "ice-cryostalker",
+          "outcome": "success",
+          "score": 96,
+          "elapsedSeconds": 56
+        }
+      ],
+      "balanceBefore": 806,
+      "spentClanMarks": 120,
+      "balanceAfter": 686
+    },
+    "difficulty": "hunter",
+    "encounterRun": 0,
+    "random": {
+      "algorithm": "xorshift32",
+      "seed": 17965094
+    },
+    "spawn": {
+      "x": 225,
+      "y": 508
+    },
+    "initial": {
+      "t": 0,
+      "phase": "tracking",
+      "x": 225,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 125,
+      "stamina": 115,
+      "energy": 110,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 1250,
+        "x": 6895.2
+      },
+      "scans": [
+        false,
+        false,
+        false
+      ],
+      "recoveries": [
+        false,
+        false
+      ],
+      "objectives": [],
+      "message": "La chasse commence. Localise les signatures.",
+      "grounded": true,
+      "climbing": false,
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "ruins-ancient-guardian-foragers-0",
+          "x": 1536.6595276650041,
+          "y": 528,
+          "health": 135.3,
+          "width": 114,
+          "height": 96
+        }
+      ]
+    },
+    "world": {
+      "width": 8400,
+      "bossArena": {
+        "x": 6060,
+        "y": 272,
+        "width": 1740,
+        "height": 352
+      },
+      "extraction": {
+        "x": 8025,
+        "y": 624
+      },
+      "platforms": [
+        {
+          "x": 750,
+          "y": 320,
+          "width": 370,
+          "height": 24,
+          "id": "ruins-oracle-upper-floor",
+          "material": "ruin",
+          "routeId": "ruins-oracle-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1150,
+          "y": 410,
+          "width": 260,
+          "height": 24,
+          "id": "ruins-oracle-vault-underfloor",
+          "material": "ruin",
+          "routeId": "ruins-oracle-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1410,
+          "y": 410,
+          "width": 190,
+          "height": 24,
+          "id": "ruins-oracle-vault-floor",
+          "material": "ruin",
+          "routeId": "ruins-oracle-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1720,
+          "y": 0,
+          "width": 28,
+          "height": 434,
+          "id": "ruins-oracle-outer-wall",
+          "material": "ruin",
+          "routeId": "ruins-oracle-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1120,
+          "y": 0,
+          "width": 30,
+          "height": 434,
+          "id": "ruins-phase-grid",
+          "material": "ruin",
+          "routeId": "ruins-oracle-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1600,
+          "y": 410,
+          "width": 120,
+          "height": 24,
+          "id": "ruins-gravity-chain",
+          "material": "ruin",
+          "routeId": "ruins-oracle-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        }
+      ],
+      "hazards": [
+        {
+          "id": "v-steam-center",
+          "x": 4035,
+          "y": 310,
+          "width": 495,
+          "height": 314,
+          "kind": "nanite-field",
+          "routeId": "vent-flank",
+          "damagePerSecond": 7,
+          "movementMultiplier": 0.8,
+          "noisePerSecond": 0.22,
+          "trackMultiplier": 0.5,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.5,
+          "cycle": {
+            "periodSeconds": 12,
+            "activeSeconds": 4,
+            "phaseSeconds": 1.4
+          }
+        },
+        {
+          "id": "v-ash-east",
+          "x": 4980,
+          "y": 210,
+          "width": 1080,
+          "height": 414,
+          "kind": "laser-grid",
+          "routeId": "sanctum-floor",
+          "damagePerSecond": 22,
+          "movementMultiplier": 0.9,
+          "noisePerSecond": 0.85,
+          "trackMultiplier": 0,
+          "revealsCloak": true,
+          "telegraphSeconds": 0.9,
+          "cycle": {
+            "periodSeconds": 7,
+            "activeSeconds": 1,
+            "phaseSeconds": 1.5
+          }
+        },
+        {
+          "id": "v-arena-vents",
+          "x": 6450,
+          "y": 330,
+          "width": 1050,
+          "height": 294,
+          "kind": "gravity-pulse",
+          "routeId": "sanctum-floor",
+          "damagePerSecond": 10,
+          "movementMultiplier": 0.55,
+          "noisePerSecond": 0.7,
+          "trackMultiplier": 0.1,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.2,
+          "cycle": {
+            "periodSeconds": 9,
+            "activeSeconds": 2,
+            "phaseSeconds": 3
+          }
+        },
+        {
+          "id": "feature-ruins-3-ecology",
+          "x": 2811.5,
+          "y": 290,
+          "width": 290,
+          "height": 334,
+          "kind": "gravity-pulse",
+          "routeId": "sanctum-floor",
+          "damagePerSecond": 10,
+          "movementMultiplier": 0.55,
+          "noisePerSecond": 0.7,
+          "trackMultiplier": 0.1,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.2,
+          "cycle": {
+            "periodSeconds": 9,
+            "activeSeconds": 2,
+            "phaseSeconds": 1
+          }
+        },
+        {
+          "x": 1030,
+          "y": 204,
+          "width": 120,
+          "height": 116,
+          "id": "ruins-oracle-ability-hazard",
+          "kind": "laser-grid",
+          "routeId": "ruins-oracle-route",
+          "damagePerSecond": 20,
+          "movementMultiplier": 0.7,
+          "noisePerSecond": 0.66,
+          "trackMultiplier": 0.5,
+          "revealsCloak": true,
+          "telegraphSeconds": 1,
+          "cycle": {
+            "periodSeconds": 7.6,
+            "activeSeconds": 1.6,
+            "phaseSeconds": 0.5
+          }
+        }
+      ]
+    },
+    "scanNodes": [
+      {
+        "id": "trace-1",
+        "x": 924,
+        "y": 588,
+        "scanned": false
+      },
+      {
+        "id": "trace-2",
+        "x": 2016,
+        "y": 395,
+        "scanned": false
+      },
+      {
+        "id": "trace-3",
+        "x": 3108,
+        "y": 588,
+        "scanned": false
+      }
+    ],
+    "recoveryNodes": [
+      {
+        "id": "technology-1",
+        "x": 3922.999,
+        "y": 590,
+        "recovered": false
+      },
+      {
+        "id": "technology-2",
+        "x": 4717,
+        "y": 590,
+        "recovered": false
+      }
+    ]
+  },
+  "events": [
+    {
+      "t": 7.683,
+      "phase": "target",
+      "x": 2671.69,
+      "y": 508,
+      "vx": 344.41,
+      "vy": 0,
+      "health": 125,
+      "stamina": 115,
+      "energy": 52.7,
+      "kills": 1,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 1250,
+        "x": 6895.2
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false,
+        false
+      ],
+      "objectives": [
+        "ruins-ancient-guardian-scan"
+      ],
+      "message": "Gardien d'obsidienne peut désormais être pisté.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "ruins-ancient-guardian-foragers-1",
+          "x": 2253.2150092417896,
+          "y": 524,
+          "health": 34.49393199999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "ruins-ancient-guardian-foragers-2",
+          "x": 3018.862919999987,
+          "y": 416.4498069345804,
+          "health": 122.09999999999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "ruins-ancient-guardian-foragers-3",
+          "x": 3704.621310659779,
+          "y": 530,
+          "health": 108.9,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "ruins-ancient-guardian-foragers-4",
+          "x": 2202.7057983952736,
+          "y": 534,
+          "health": 88,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "ruins-ancient-guardian-territorials-0",
+          "x": 4845.999,
+          "y": 535,
+          "health": 177.59999999999997,
+          "width": 106,
+          "height": 89
+        }
+      ]
+    },
+    {
+      "t": 41.817,
+      "phase": "trophy",
+      "x": 6668.21,
+      "y": 477.31,
+      "vx": 0,
+      "vy": -115,
+      "health": 72.7,
+      "stamina": 106.5,
+      "energy": 12.72,
+      "kills": 6,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6793.1775707199395
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "ruins-ancient-guardian-scan",
+        "ruins-ancient-guardian-recover",
+        "ruins-ancient-guardian-hunt",
+        "ruins-ancient-guardian-boss"
+      ],
+      "message": "Gardien d'obsidienne est vaincu. Intégrité du trophée 79 %. Réclame le trophée avec [E].",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "ruins-ancient-guardian-foragers-1",
+          "x": 2253.2150092417896,
+          "y": 524,
+          "health": 34.49393199999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "ruins-ancient-guardian-foragers-4",
+          "x": 2202.7057983952736,
+          "y": 534,
+          "health": 88,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "ruins-ancient-guardian-territorials-3",
+          "x": 4958.068393255721,
+          "y": 527,
+          "health": 50.571200999999974,
+          "width": 68,
+          "height": 97
+        },
+        {
+          "id": "ruins-ancient-guardian-guardians-0",
+          "x": 5467.999,
+          "y": 528,
+          "health": 86.70625900000003,
+          "width": 114,
+          "height": 96
+        },
+        {
+          "id": "ruins-ancient-guardian-guardians-1",
+          "x": 4713.097289574433,
+          "y": 524,
+          "health": 148.018,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "ruins-ancient-guardian-guardians-2",
+          "x": 4903.386839917408,
+          "y": 517,
+          "health": 214.76726899999997,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 48.733,
+      "phase": "extraction",
+      "x": 6833.04,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 112.03,
+      "stamina": 115,
+      "energy": 95.72,
+      "kills": 6,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6793.1775707199395
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "ruins-ancient-guardian-scan",
+        "ruins-ancient-guardian-recover",
+        "ruins-ancient-guardian-hunt",
+        "ruins-ancient-guardian-boss"
+      ],
+      "message": "Masque du Gardien : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "ruins-ancient-guardian-foragers-1",
+          "x": 2253.2150092417896,
+          "y": 524,
+          "health": 34.49393199999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "ruins-ancient-guardian-foragers-4",
+          "x": 2202.7057983952736,
+          "y": 534,
+          "health": 88,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "ruins-ancient-guardian-territorials-3",
+          "x": 4860.018702265759,
+          "y": 527,
+          "health": 50.571200999999974,
+          "width": 68,
+          "height": 97
+        },
+        {
+          "id": "ruins-ancient-guardian-guardians-0",
+          "x": 5467.999,
+          "y": 528,
+          "health": 86.70625900000003,
+          "width": 114,
+          "height": 96
+        },
+        {
+          "id": "ruins-ancient-guardian-guardians-1",
+          "x": 4713.097289574433,
+          "y": 524,
+          "health": 148.018,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "ruins-ancient-guardian-guardians-2",
+          "x": 4807.0384563992875,
+          "y": 517,
+          "health": 214.76726899999997,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-ruins-ancient-guardian-969-0",
+          "x": 7528.90624,
+          "y": 504,
+          "health": 281.67,
+          "width": 84,
+          "height": 120
+        }
+      ]
+    },
+    {
+      "t": 59.367,
+      "phase": "finished",
+      "x": 7989,
+      "y": 173,
+      "vx": 0,
+      "vy": 0,
+      "health": 125,
+      "stamina": 115,
+      "energy": 110,
+      "kills": 6,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6793.1775707199395
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "ruins-ancient-guardian-scan",
+        "ruins-ancient-guardian-recover",
+        "ruins-ancient-guardian-hunt",
+        "ruins-ancient-guardian-boss",
+        "ruins-ancient-guardian-extract"
+      ],
+      "message": "Objectif accompli : Rejoindre le faisceau d'extraction",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "ruins-ancient-guardian-foragers-1",
+          "x": 2253.2150092417896,
+          "y": 524,
+          "health": 34.49393199999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "ruins-ancient-guardian-foragers-4",
+          "x": 2202.7057983952736,
+          "y": 534,
+          "health": 88,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "ruins-ancient-guardian-territorials-3",
+          "x": 4761.651517055605,
+          "y": 527,
+          "health": 50.571200999999974,
+          "width": 68,
+          "height": 97
+        },
+        {
+          "id": "ruins-ancient-guardian-guardians-0",
+          "x": 4695.775919999982,
+          "y": 528,
+          "health": 86.70625900000003,
+          "width": 114,
+          "height": 96
+        },
+        {
+          "id": "ruins-ancient-guardian-guardians-1",
+          "x": 4713.097289574433,
+          "y": 524,
+          "health": 148.018,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "ruins-ancient-guardian-guardians-2",
+          "x": 4745.1685425554915,
+          "y": 517,
+          "health": 214.76726899999997,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-ruins-ancient-guardian-969-0",
+          "x": 7868.716093333347,
+          "y": 504,
+          "health": 281.67,
+          "width": 84,
+          "height": 120
+        },
+        {
+          "id": "extraction-ruins-ancient-guardian-970-1",
+          "x": 7792.426613333418,
+          "y": 400.7692245121895,
+          "health": 199.23,
+          "width": 90,
+          "height": 75
+        },
+        {
+          "id": "extraction-ruins-ancient-guardian-971-2",
+          "x": 7872.228739999972,
+          "y": 508,
+          "health": 254.18999999999997,
+          "width": 81,
+          "height": 116
+        }
+      ]
+    }
+  ],
+  "traceFrames": 563,
+  "ticksExecuted": 3562,
+  "harvestActions": [],
+  "peakLoadRatio": 0,
+  "peakSpecimens": [],
+  "firstLoadAt": null,
+  "replay": {
+    "verified": true,
+    "ticks": 3562,
+    "terminalSha256": "859abb334bc4517c17cf9de92b2483b17ef1824d31d93aae46c233f363c26b73"
+  },
+  "rawData": {
+    "archive": "../native-runs-raw.tar.gz",
+    "member": "qualified-harvested/ruins-ancient-guardian-scout.json",
+    "sha256": "ebc806c93217601af48d0ce8ef7af438903dd54f4d9f74e1bdb783ef136c48d5"
+  }
+}

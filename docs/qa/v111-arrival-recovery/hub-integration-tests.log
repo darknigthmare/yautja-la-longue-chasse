@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: V111 actual Hub opens a read-only recovery at the walked exit, then atomically restores and reloads without changing cargo
+ok 1 - V111 actual Hub opens a read-only recovery at the walked exit, then atomically restores and reloads without changing cargo
+  ---
+  duration_ms: 2945.326474
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub rolls every temporary actor/room/level reference back on real quota refusal or a throwing save host
+ok 2 - V111 actual Hub rolls every temporary actor/room/level reference back on real quota refusal or a throwing save host
+  ---
+  duration_ms: 80.105247
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub refuses a delayed confirmation after local movement, owner replacement, pause or changed operation source
+ok 3 - V111 actual Hub refuses a delayed confirmation after local movement, owner replacement, pause or changed operation source
+  ---
+  duration_ms: 148.762225
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub rejects a source draft that would change the documents preserved by the preview
+ok 4 - V111 actual Hub rejects a source draft that would change the documents preserved by the preview
+  ---
+  duration_ms: 43.675588
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub preserves the other tab on a real same-owner storage conflict and leaves the recovery dialog retryable
+ok 5 - V111 actual Hub preserves the other tab on a real same-owner storage conflict and leaves the recovery dialog retryable
+  ---
+  duration_ms: 32.794647
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3263.839853

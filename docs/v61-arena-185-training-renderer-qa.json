@@ -1,0 +1,4463 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-185-training",
+  "checkedAt": "2026-09-30T19:06:49.475Z",
+  "compositionDigest": "146e3141ade55b6004484fee93d51cedb9cfb4a13e8766448021b2ec6d593739",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "f2eb599daec7425a0641060f179e0bf58e76e06d1c4e8a1750364f44b8ec125b",
+    "app/game/pitArenaProduction.ts": "982a0850cce006e2d65580d1e188fba485a2e94e006b2403dc38351f214aadef",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "scripts/verify-pit-stage-composition-v61.mjs": "9439af6528c100ae09453b6f235052d79f1b1e1cc79008908c82a25a8de6b17c",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "322eb124dd80d21fdbd9024f99dcd28d2c3cb87eb6d2818d16a52804fde449e7",
+    "app/game/data/pitStageLifeV61.json": "839d2bd0a110aeb0125f1b06879055a181836c7af1307b2ae202ce100e71f466",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "production": {
+      "number": 185,
+      "catalogueId": "arena-185-training",
+      "assetDirectory": "/game/sprites/v60/pit-arenas/arena-185-training",
+      "name": "Dojo des épreuves",
+      "setting": "Duel non létal sur aire claire ; mannequin comme cible de démonstration.",
+      "wave": "v60-workbook-stage-life",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v60-workbook-stage-life-compositions",
+      "authoringPlanDigest": "b61a4236ba761e9d18e10d54c5eedf3ea99142403ddc281cfc979311997c303d",
+      "sourceReceipt": "docs/v60-generation/arena-185-training.json",
+      "lifeDigest": "89c8f550830988057ac887497e9132465fa5528e9e781ee043553512aaadf945",
+      "screenReference": {
+        "kind": "original",
+        "workId": "v60-new-training",
+        "classification": "original-exhibition",
+        "sourceUrls": [],
+        "fidelityClaim": "original-lateral-layout-not-shot-exact"
+      },
+      "moduleProfile": {
+        "P2": 16,
+        "P3": 16,
+        "P4": "native-basalt",
+        "P5": 153,
+        "kind": "original",
+        "material": "basalt",
+        "notes": "Aire d’épreuves du projet ; appuis en basalte sombre et silhouettes anonymes uniquement."
+      },
+      "contactMeasurements": [
+        {
+          "plane": "P2",
+          "assetId": "p2-a-support-left",
+          "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p2-a-support-left.png",
+          "crop": {
+            "x": 144,
+            "y": 19,
+            "width": 417,
+            "height": 1486
+          },
+          "visibleBottomExclusive": 1505,
+          "alphaThreshold": 3,
+          "authoredBottoms": [
+            430
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-b-support-right",
+          "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p2-b-support-right.png",
+          "crop": {
+            "x": 288,
+            "y": 17,
+            "width": 773,
+            "height": 1296
+          },
+          "visibleBottomExclusive": 1313,
+          "alphaThreshold": 3,
+          "authoredBottoms": [
+            430
+          ]
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-a-prop-left",
+          "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p3-a-prop-left.png",
+          "crop": {
+            "x": 109,
+            "y": 275,
+            "width": 1317,
+            "height": 517
+          },
+          "visibleBottomExclusive": 792,
+          "alphaThreshold": 3,
+          "authoredBottoms": [
+            430
+          ]
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-b-prop-right",
+          "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p3-b-prop-right.png",
+          "crop": {
+            "x": 22,
+            "y": 8,
+            "width": 1307,
+            "height": 1137
+          },
+          "visibleBottomExclusive": 1145,
+          "alphaThreshold": 3,
+          "authoredBottoms": [
+            430
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur native indépendante du lieu",
+          "nominalParallax": 0.05,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Fond OpenAI natif dédié au lieu, sans figurant peint",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v60/pit-arenas/arena-185-training/p0-depth.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "docs/v60-generation/arena-185-training.json",
+                    "sha256": "f7c61c76533f1c5fbf8fb5482b6478af079ccb3182ad6a2f64d3e2094c3c7812",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v60-generation/arena-185-training.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Atmosphère distante indépendante",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-atmosphere",
+              "role": "Brume haute indépendante",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.09,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 180,
+                  "width": 1160,
+                  "height": 150
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "architecture de fond",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-a-support-left",
+              "role": "Support architectural gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.88,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -70,
+                  "y": 60,
+                  "width": 310,
+                  "height": 370
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p2-a-support-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/receipt-p2-a-support-left-53d7ac19e9d0.json",
+                    "sha256": "53d7ac19e9d0510c6f62d8abd6a6679648a1ffcd0b74b70cf0d1ee315228a949",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 144,
+                      "y": 19,
+                      "width": 417,
+                      "height": 1486
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-016-terrasse-des-jeunes-sangs-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v34-arena-016-terrasse-des-jeunes-sangs-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-016-terrasse-des-jeunes-sangs/p2-a-support-left"
+            },
+            {
+              "id": "p2-b-support-right",
+              "role": "Support architectural droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.88,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 720,
+                  "y": 60,
+                  "width": 310,
+                  "height": 370
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p2-b-support-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/receipt-p2-b-support-right-66397c793944.json",
+                    "sha256": "66397c7939445db7ccc32d13cda96fef4dea872148179a33c0448a8dd3996e01",
+                    "width": 1145,
+                    "height": 1374,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 288,
+                      "y": 17,
+                      "width": 773,
+                      "height": 1296
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-016-terrasse-des-jeunes-sangs-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v34-arena-016-terrasse-des-jeunes-sangs-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-016-terrasse-des-jeunes-sangs/p2-b-support-right"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "activité médiane et public",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-a-prop-left",
+              "role": "Accessoire de sol gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 205,
+                  "y": 337,
+                  "width": 118,
+                  "height": 93
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p3-a-prop-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/receipt-p3-a-prop-left-1e3357bd2295.json",
+                    "sha256": "1e3357bd2295e66e3d43845b7b70307015ed4ef280755fbee266faae44664196",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 109,
+                      "y": 275,
+                      "width": 1317,
+                      "height": 517
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-016-terrasse-des-jeunes-sangs-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v34-arena-016-terrasse-des-jeunes-sangs-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-016-terrasse-des-jeunes-sangs/p3-a-prop-left"
+            },
+            {
+              "id": "p3-b-prop-right",
+              "role": "Accessoire de sol droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 637,
+                  "y": 337,
+                  "width": 118,
+                  "height": 93
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p3-b-prop-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/receipt-p3-b-prop-right-a8c9fe43b325.json",
+                    "sha256": "a8c9fe43b325dbdb94d8a71750e43f7b6e480886c983729dbe5694727ae0216c",
+                    "width": 1349,
+                    "height": 1166,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 22,
+                      "y": 8,
+                      "width": 1307,
+                      "height": 1137
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-016-terrasse-des-jeunes-sangs-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v34-arena-016-terrasse-des-jeunes-sangs-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-016-terrasse-des-jeunes-sangs/p3-b-prop-right"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Sol de basalte sombre natif indépendant",
+          "nominalParallax": 1,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-dark-basalt",
+              "role": "Rebord horizontal de basalte, pixels natifs conservés",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 0,
+                "y": 32,
+                "width": 2170,
+                "height": 693
+              },
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 960,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v60/pit-arenas/arena-165-kenner-throne/p4-dark-basalt.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "docs/v60-generation/shared-basalt.json",
+                    "sha256": "ca356e984bb1978288fcfb0202d46927ff37e218dab2cdc9ecdc623cbf06a224",
+                    "width": 2170,
+                    "height": 725,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 2170,
+                      "height": 725
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v60-generation/shared-basalt.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ],
+              "libraryRef": "arena-165-kenner-throne/p4-dark-basalt"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Brume proche alpha discrète",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-near-atmosphere",
+              "role": "Brume haute indépendante",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.06,
+              "placements": [
+                {
+                  "x": -40,
+                  "y": 385,
+                  "width": 1040,
+                  "height": 90
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-185-training",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v60-arena-185-training-renderer-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v60-stage-composition-visual-review.json",
+        "digest": "8ab1c6c6ab38084beef6dd7eac669182188a81e6b4a2f59174ca1c7e8b32590c"
+      }
+    },
+    "life": null,
+    "story": {
+      "stageId": "arena-185-training",
+      "events": [
+        {
+          "id": "round-judgment",
+          "name": "Arbitre anonyme — jugement de fin de manche",
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "sha256": "b67b7342b4e3be4f2dd60c5e6e7cb73e0eb6abff5e3aff789883cb68f9774126",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 474,
+            "bottom": 160,
+            "height": 84.9421,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                490
+              ],
+              "pivot": [
+                277,
+                476
+              ],
+              "alphaBounds": [
+                171,
+                50,
+                213,
+                426
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                490
+              ],
+              "pivot": [
+                246,
+                475
+              ],
+              "alphaBounds": [
+                140,
+                50,
+                226,
+                425
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                490
+              ],
+              "pivot": [
+                245.5,
+                476
+              ],
+              "alphaBounds": [
+                139,
+                49,
+                242,
+                427
+              ]
+            },
+            {
+              "rect": [
+                0,
+                490,
+                512,
+                534
+              ],
+              "pivot": [
+                278,
+                495
+              ],
+              "alphaBounds": [
+                171,
+                15,
+                215,
+                480
+              ]
+            },
+            {
+              "rect": [
+                512,
+                490,
+                512,
+                534
+              ],
+              "pivot": [
+                246,
+                495
+              ],
+              "alphaBounds": [
+                140,
+                72,
+                212,
+                423
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                490,
+                512,
+                534
+              ],
+              "pivot": [
+                245,
+                495
+              ],
+              "alphaBounds": [
+                139,
+                72,
+                212,
+                423
+              ]
+            }
+          ],
+          "trigger": "round-end",
+          "idleVisibility": "hidden",
+          "replacesAmbientEventId": "life-03"
+        }
+      ]
+    },
+    "base": {
+      "stageId": "arena-185-training",
+      "events": [
+        {
+          "id": "life-01",
+          "name": "Instructeur anonyme — démonstration de posture",
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "c277ea9bdf08660e50d2dc375d8a609293e46dca9f4d38e6fe7db760f944b978",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                292,
+                495
+              ],
+              "alphaBounds": [
+                182,
+                13,
+                220,
+                482
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255.5,
+                495
+              ],
+              "alphaBounds": [
+                147,
+                14,
+                217,
+                481
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                233.5,
+                495
+              ],
+              "alphaBounds": [
+                117,
+                14,
+                356,
+                481
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                276,
+                482
+              ],
+              "alphaBounds": [
+                137,
+                36,
+                318,
+                446
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                262,
+                486
+              ],
+              "alphaBounds": [
+                151,
+                6,
+                222,
+                480
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                238,
+                486
+              ],
+              "alphaBounds": [
+                83,
+                9,
+                304,
+                477
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 264,
+            "bottom": 351,
+            "height": 104,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        {
+          "id": "life-02",
+          "name": "Mannequin mécanique — retour sur ressort",
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "faca049c5300c4ea49324e406fafe8688d78033630f186f0b5b77037d48cdce3",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                263,
+                486
+              ],
+              "alphaBounds": [
+                73,
+                27,
+                381,
+                459
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                266.5,
+                486
+              ],
+              "alphaBounds": [
+                86,
+                27,
+                337,
+                459
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                259.5,
+                487
+              ],
+              "alphaBounds": [
+                112,
+                28,
+                295,
+                459
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                263,
+                485
+              ],
+              "alphaBounds": [
+                73,
+                26,
+                381,
+                459
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                266,
+                486
+              ],
+              "alphaBounds": [
+                82,
+                26,
+                351,
+                460
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                259,
+                485
+              ],
+              "alphaBounds": [
+                75,
+                27,
+                371,
+                458
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 700,
+            "bottom": 351,
+            "height": 98,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        {
+          "id": "life-03",
+          "name": "Arbitre anonyme sur galerie — salut et observation",
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-03.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "199598916ffba1e3ec8335d007d357b2f6c74e0a556ef38ca175d427a4d42601",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                291.5,
+                484
+              ],
+              "alphaBounds": [
+                197,
+                86,
+                189,
+                398
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                269,
+                484
+              ],
+              "alphaBounds": [
+                171,
+                86,
+                194,
+                398
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                483
+              ],
+              "alphaBounds": [
+                161,
+                86,
+                190,
+                397
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                279.5,
+                450
+              ],
+              "alphaBounds": [
+                177,
+                53,
+                299,
+                397
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                269.5,
+                451
+              ],
+              "alphaBounds": [
+                167,
+                54,
+                205,
+                397
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                449
+              ],
+              "alphaBounds": [
+                155,
+                52,
+                202,
+                397
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 474,
+            "bottom": 160,
+            "height": 95,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        }
+      ]
+    }
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+      "sha256": "b67b7342b4e3be4f2dd60c5e6e7cb73e0eb6abff5e3aff789883cb68f9774126",
+      "bytes": 1976594,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7824484507242838,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            490
+          ],
+          "alphaBounds": [
+            171,
+            50,
+            213,
+            426
+          ],
+          "contentSha256": "68ad0d540f9c7001753f3330c13f6bd08258e4222b75510cc1a83b4c95a4dec8",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            490
+          ],
+          "alphaBounds": [
+            140,
+            50,
+            226,
+            425
+          ],
+          "contentSha256": "e324b5cea9591d32173f86475a5bbe7d51dfdf4d5e16f658de2c4ce083287175",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            490
+          ],
+          "alphaBounds": [
+            139,
+            49,
+            242,
+            427
+          ],
+          "contentSha256": "cdd4d8eaf65247bdf72afabe4118970290e6daac0247c0b5410de69d0f5a4eb9",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            490,
+            512,
+            534
+          ],
+          "alphaBounds": [
+            171,
+            15,
+            215,
+            480
+          ],
+          "contentSha256": "73297d3ca2f5bf3fd27af65b3ffb2873417640cebbc6c3d832014077c380654b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            490,
+            512,
+            534
+          ],
+          "alphaBounds": [
+            140,
+            72,
+            212,
+            423
+          ],
+          "contentSha256": "24167b49fd51708f13beeef3da2aff47b45e75925567cf3ee56c49002340a412",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            490,
+            512,
+            534
+          ],
+          "alphaBounds": [
+            139,
+            72,
+            212,
+            423
+          ],
+          "contentSha256": "234c78256c41eb82c8e776022c327d983a4d329bcaed3febd47fa442ea3c1417",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-185-training-round-judgment.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 11,
+    "expectedImages": 11,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV61Ambient": false,
+    "hasV61Story": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            474,
+            160
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            264,
+            351
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            700,
+            351
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            474,
+            160
+          ],
+          "pivot": [
+            474,
+            160
+          ],
+          "visibleBounds": [
+            456.4658203125,
+            86.15234375,
+            35.068359375,
+            73.84765625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            264,
+            351
+          ],
+          "pivot": [
+            264,
+            351
+          ],
+          "visibleBounds": [
+            241.65625,
+            253.09375,
+            44.6875,
+            97.90625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            700,
+            351
+          ],
+          "pivot": [
+            700,
+            351
+          ],
+          "visibleBounds": [
+            663.6328125,
+            263.14453125,
+            72.92578125,
+            87.85546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            484.09,
+            157.525
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            269.365,
+            352.8225
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            715.175,
+            352.8225
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            484.09,
+            157.525
+          ],
+          "pivot": [
+            484.09,
+            157.525
+          ],
+          "visibleBounds": [
+            466.16130126953124,
+            82.015771484375,
+            35.8573974609375,
+            75.509228515625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            269.365,
+            352.8225
+          ],
+          "pivot": [
+            269.365,
+            352.8225
+          ],
+          "visibleBounds": [
+            246.51851562500002,
+            252.71335937499998,
+            45.69296875,
+            100.10914062500001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            715.175,
+            352.8225
+          ],
+          "pivot": [
+            715.175,
+            352.8225
+          ],
+          "visibleBounds": [
+            677.98955078125,
+            262.990283203125,
+            74.56661132812499,
+            89.832216796875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            463.64,
+            157.525
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            248.91500000000002,
+            352.8225
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            694.725,
+            352.8225
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            463.64,
+            157.525
+          ],
+          "pivot": [
+            463.64,
+            157.525
+          ],
+          "visibleBounds": [
+            445.71130126953125,
+            82.015771484375,
+            35.8573974609375,
+            75.509228515625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            248.91500000000002,
+            352.8225
+          ],
+          "pivot": [
+            248.91500000000002,
+            352.8225
+          ],
+          "visibleBounds": [
+            226.06851562500003,
+            252.71335937499998,
+            45.69296875,
+            100.10914062500001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            694.725,
+            352.8225
+          ],
+          "pivot": [
+            694.725,
+            352.8225
+          ],
+          "visibleBounds": [
+            657.5395507812501,
+            262.990283203125,
+            74.56661132812499,
+            89.832216796875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            474.06,
+            161.1
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            266.16,
+            350.19
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            697.8,
+            350.19
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            474.06,
+            161.1
+          ],
+          "pivot": [
+            474.06,
+            161.1
+          ],
+          "visibleBounds": [
+            456.701162109375,
+            87.9908203125,
+            34.71767578125,
+            73.1091796875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            266.16,
+            350.19
+          ],
+          "pivot": [
+            266.16,
+            350.19
+          ],
+          "visibleBounds": [
+            244.0396875,
+            253.2628125,
+            44.240624999999994,
+            96.92718749999999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            697.8,
+            350.19
+          ],
+          "pivot": [
+            697.8,
+            350.19
+          ],
+          "visibleBounds": [
+            661.796484375,
+            263.2130859375,
+            72.19652343749999,
+            86.9769140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            473.835,
+            156.71812499999996
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            258.06,
+            352.970625
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            706.05,
+            352.970625
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            473.835,
+            156.71812499999996
+          ],
+          "pivot": [
+            473.835,
+            156.71812499999996
+          ],
+          "visibleBounds": [
+            455.8186303710937,
+            80.83965820312496,
+            36.0327392578125,
+            75.878466796875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            258.06,
+            352.970625
+          ],
+          "pivot": [
+            258.06,
+            352.970625
+          ],
+          "visibleBounds": [
+            235.10179687500002,
+            252.37195312499995,
+            45.91640625000001,
+            100.59867187500001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            706.05,
+            352.970625
+          ],
+          "pivot": [
+            706.05,
+            352.97062500000004
+          ],
+          "visibleBounds": [
+            668.6827148437499,
+            262.69913085937503,
+            74.93124023437501,
+            90.27149414062501
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            474.6,
+            171
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            285.6,
+            342.90000000000003
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            678,
+            342.90000000000003
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            474.6,
+            171
+          ],
+          "pivot": [
+            474.6,
+            171
+          ],
+          "visibleBounds": [
+            458.81923828125,
+            104.537109375,
+            31.5615234375,
+            66.462890625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            285.6,
+            342.90000000000003
+          ],
+          "pivot": [
+            285.6,
+            342.90000000000003
+          ],
+          "visibleBounds": [
+            265.490625,
+            254.78437500000004,
+            40.21875000000001,
+            88.11562500000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            678,
+            342.90000000000003
+          ],
+          "pivot": [
+            678,
+            342.90000000000003
+          ],
+          "visibleBounds": [
+            645.26953125,
+            263.830078125,
+            65.63320312500001,
+            79.069921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            474,
+            160
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            264,
+            351
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            700,
+            351
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            474,
+            160
+          ],
+          "pivot": [
+            474,
+            160
+          ],
+          "visibleBounds": [
+            456.4658203125,
+            86.15234375,
+            35.068359375,
+            73.84765625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            264,
+            351
+          ],
+          "pivot": [
+            264,
+            351
+          ],
+          "visibleBounds": [
+            241.65625,
+            253.09375,
+            44.6875,
+            97.90625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            700,
+            351
+          ],
+          "pivot": [
+            700,
+            351
+          ],
+          "visibleBounds": [
+            663.6328125,
+            263.14453125,
+            72.92578125,
+            87.85546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            473.85118474499996,
+            152.026749
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            257.66983474499995,
+            348.648834
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            706.5034947449999,
+            348.648834
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            473.85118474499996,
+            152.026749
+          ],
+          "pivot": [
+            473.85118474499996,
+            152.026749
+          ],
+          "visibleBounds": [
+            455.8008864783984,
+            76.00538698828124,
+            36.10059653320313,
+            76.02136201171876
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            257.66983474499995,
+            348.648834
+          ],
+          "pivot": [
+            257.66983474499995,
+            348.648834
+          ],
+          "visibleBounds": [
+            234.66839646374993,
+            247.86071353125,
+            46.002876562500006,
+            100.78812046875001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            706.5034947449999,
+            348.648834
+          ],
+          "pivot": [
+            706.5034947449999,
+            348.648834
+          ],
+          "visibleBounds": [
+            669.0658390809374,
+            258.2073395273438,
+            75.07235162109376,
+            90.44149447265626
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-judgment-center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            264,
+            351
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            700,
+            351
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            474,
+            160
+          ],
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [
+        "life-03"
+      ],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            264,
+            351
+          ],
+          "pivot": [
+            264,
+            351
+          ],
+          "visibleBounds": [
+            241.65625,
+            253.09375,
+            44.6875,
+            97.90625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            700,
+            351
+          ],
+          "pivot": [
+            700,
+            351
+          ],
+          "visibleBounds": [
+            663.6328125,
+            263.14453125,
+            72.92578125,
+            87.85546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            474,
+            160
+          ],
+          "pivot": [
+            474,
+            160
+          ],
+          "visibleBounds": [
+            455.45141897959184,
+            76.79141224489796,
+            37.27051326530612,
+            83.20858775510204
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-judgment-left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            269.365,
+            352.8225
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            715.175,
+            352.8225
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            484.09,
+            157.525
+          ],
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [
+        "life-03"
+      ],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            269.365,
+            352.8225
+          ],
+          "pivot": [
+            269.365,
+            352.8225
+          ],
+          "visibleBounds": [
+            246.51851562500002,
+            252.71335937499998,
+            45.69296875,
+            100.10914062500001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            715.175,
+            352.8225
+          ],
+          "pivot": [
+            715.175,
+            352.8225
+          ],
+          "visibleBounds": [
+            677.98955078125,
+            262.990283203125,
+            74.56661132812499,
+            89.832216796875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            484.09,
+            157.525
+          ],
+          "pivot": [
+            484.09,
+            157.525
+          ],
+          "visibleBounds": [
+            465.12407590663264,
+            72.44421902040818,
+            38.10909981377551,
+            85.08078097959184
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-judgment-right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            248.91500000000002,
+            352.8225
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            694.725,
+            352.8225
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            463.64,
+            157.525
+          ],
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [
+        "life-03"
+      ],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            248.91500000000002,
+            352.8225
+          ],
+          "pivot": [
+            248.91500000000002,
+            352.8225
+          ],
+          "visibleBounds": [
+            226.06851562500003,
+            252.71335937499998,
+            45.69296875,
+            100.10914062500001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            694.725,
+            352.8225
+          ],
+          "pivot": [
+            694.725,
+            352.8225
+          ],
+          "visibleBounds": [
+            657.5395507812501,
+            262.990283203125,
+            74.56661132812499,
+            89.832216796875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            463.64,
+            157.525
+          ],
+          "pivot": [
+            463.64,
+            157.525
+          ],
+          "visibleBounds": [
+            444.67407590663265,
+            72.44421902040818,
+            38.10909981377551,
+            85.08078097959184
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-judgment-wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            266.16,
+            350.19
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            697.8,
+            350.19
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            474.06,
+            161.1
+          ],
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [
+        "life-03"
+      ],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            266.16,
+            350.19
+          ],
+          "pivot": [
+            266.16,
+            350.19
+          ],
+          "visibleBounds": [
+            244.0396875,
+            253.2628125,
+            44.240624999999994,
+            96.92718749999999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            697.8,
+            350.19
+          ],
+          "pivot": [
+            697.8,
+            350.19
+          ],
+          "visibleBounds": [
+            661.796484375,
+            263.2130859375,
+            72.19652343749999,
+            86.9769140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            474.06,
+            161.1
+          ],
+          "pivot": [
+            474.06,
+            161.1
+          ],
+          "visibleBounds": [
+            455.6969047897959,
+            78.72349812244897,
+            36.89780813265306,
+            82.37650187755102
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-judgment-close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            258.06,
+            352.970625
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            706.05,
+            352.970625
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            473.835,
+            156.71812499999996
+          ],
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [
+        "life-03"
+      ],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            258.06,
+            352.970625
+          ],
+          "pivot": [
+            258.06,
+            352.970625
+          ],
+          "visibleBounds": [
+            235.10179687500002,
+            252.37195312499995,
+            45.91640625000001,
+            100.59867187500001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            706.05,
+            352.970625
+          ],
+          "pivot": [
+            706.05,
+            352.97062500000004
+          ],
+          "visibleBounds": [
+            668.6827148437499,
+            262.69913085937503,
+            74.93124023437501,
+            90.27149414062501
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            473.835,
+            156.71812499999996
+          ],
+          "pivot": [
+            473.835,
+            156.71812499999993
+          ],
+          "visibleBounds": [
+            454.7763330015306,
+            71.22130108163259,
+            38.29545238010205,
+            85.49682391836735
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-judgment-reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            285.6,
+            342.90000000000003
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            678,
+            342.90000000000003
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            474.6,
+            171
+          ],
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [
+        "life-03"
+      ],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            285.6,
+            342.90000000000003
+          ],
+          "pivot": [
+            285.6,
+            342.90000000000003
+          ],
+          "visibleBounds": [
+            265.490625,
+            254.78437500000004,
+            40.21875000000001,
+            88.11562500000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            678,
+            342.90000000000003
+          ],
+          "pivot": [
+            678,
+            342.90000000000003
+          ],
+          "visibleBounds": [
+            645.26953125,
+            263.830078125,
+            65.63320312500001,
+            79.069921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            474.6,
+            171
+          ],
+          "pivot": [
+            474.6,
+            171
+          ],
+          "visibleBounds": [
+            458.0622931836735,
+            104.53714053061223,
+            33.23142973469388,
+            66.46285946938775
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-judgment-high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            264,
+            351
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            700,
+            351
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            474,
+            160
+          ],
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [
+        "life-03"
+      ],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            264,
+            351
+          ],
+          "pivot": [
+            264,
+            351
+          ],
+          "visibleBounds": [
+            241.65625,
+            253.09375,
+            44.6875,
+            97.90625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            700,
+            351
+          ],
+          "pivot": [
+            700,
+            351
+          ],
+          "visibleBounds": [
+            663.6328125,
+            263.14453125,
+            72.92578125,
+            87.85546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            474,
+            160
+          ],
+          "pivot": [
+            474,
+            160
+          ],
+          "visibleBounds": [
+            455.45141897959184,
+            76.79141224489796,
+            37.27051326530612,
+            83.20858775510204
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-judgment-actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            257.66983474499995,
+            348.648834
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-185-training/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            706.5034947449999,
+            348.648834
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-judgment",
+          "trigger": "round-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            473.85118474499996,
+            152.026749
+          ],
+          "replacesAmbientEventId": "life-03"
+        }
+      ],
+      "replacedAmbientIds": [
+        "life-03"
+      ],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            257.66983474499995,
+            348.648834
+          ],
+          "pivot": [
+            257.66983474499995,
+            348.648834
+          ],
+          "visibleBounds": [
+            234.66839646374993,
+            247.86071353125,
+            46.002876562500006,
+            100.78812046875001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            706.5034947449999,
+            348.648834
+          ],
+          "pivot": [
+            706.5034947449999,
+            348.648834
+          ],
+          "visibleBounds": [
+            669.0658390809374,
+            258.2073395273438,
+            75.07235162109376,
+            90.44149447265626
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-judgment",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            473.85118474499996,
+            152.026749
+          ],
+          "pivot": [
+            473.85118474499996,
+            152.026749
+          ],
+          "visibleBounds": [
+            454.75662624225606,
+            66.36891646432652,
+            38.36757082327041,
+            85.65783253567348
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 860,
+      "attachment": [
+        700,
+        351
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 880,
+      "attachment": [
+        700,
+        351
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 900,
+      "attachment": [
+        700,
+        351
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 920,
+      "attachment": [
+        700,
+        351
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 940,
+      "attachment": [
+        700,
+        351
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 960,
+      "attachment": [
+        700,
+        351
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 1870,
+      "attachment": [
+        474,
+        160
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 1890,
+      "attachment": [
+        474,
+        160
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 1910,
+      "attachment": [
+        474,
+        160
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 1930,
+      "attachment": [
+        474,
+        160
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 1950,
+      "attachment": [
+        474,
+        160
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 1970,
+      "attachment": [
+        474,
+        160
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 2812,
+      "attachment": [
+        264,
+        351
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 2832,
+      "attachment": [
+        264,
+        351
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 2852,
+      "attachment": [
+        264,
+        351
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 2872,
+      "attachment": [
+        264,
+        351
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 2892,
+      "attachment": [
+        264,
+        351
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 2912,
+      "attachment": [
+        264,
+        351
+      ]
+    },
+    {
+      "kind": "story",
+      "trigger": "round-end",
+      "eventId": "round-judgment",
+      "nativeFrame": 0,
+      "attachment": [
+        474,
+        160
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "round-end",
+      "eventId": "round-judgment",
+      "nativeFrame": 1,
+      "attachment": [
+        474,
+        160
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "round-end",
+      "eventId": "round-judgment",
+      "nativeFrame": 2,
+      "attachment": [
+        474,
+        160
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "round-end",
+      "eventId": "round-judgment",
+      "nativeFrame": 3,
+      "attachment": [
+        474,
+        160
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "round-end",
+      "eventId": "round-judgment",
+      "nativeFrame": 4,
+      "attachment": [
+        474,
+        160
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "round-end",
+      "eventId": "round-judgment",
+      "nativeFrame": 5,
+      "attachment": [
+        474,
+        160
+      ],
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\center.png",
+      "sha256": "3909be00a2eeb40a71929fa805acd999da551047e4b9642f8abd4a7d22d222d4"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\left-corner.png",
+      "sha256": "69e8f3b66ea1cdd6d612974a547636e0eedfffe0608a9286e7a5369e4b52d9d3"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\right-corner.png",
+      "sha256": "e0e4c21456f27707556704c3568f41795235b3838433a3d4d150d21f05e78d3c"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\wide.png",
+      "sha256": "8ba79756cd8429ae1fd3b4c0c73e81b68b90b0f973a2ef379efe9fd203107e77"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\close.png",
+      "sha256": "bbb5e0692942ba2ce0f7bc5e13e88de36d1903b2bed9b3f8ac4dedce8826f471"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\reduced-motion.png",
+      "sha256": "619c9c99b0f81359e6be32032c16c284be1e5a14963b231627db6b2cd65911be"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\high-contrast.png",
+      "sha256": "e210c119bb9411e4d877f33af098c5e284d5a67d6032641bf20a152d8f08ac9b"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\actual-game-camera.png",
+      "sha256": "fa70f9c973f054249790c9a4c3e802dbc399473063e96b0768360f9eb9c35314"
+    },
+    {
+      "name": "ambient-life-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-02-frame-0.png",
+      "sha256": "4ee48be59f387d5f03e603912f61a6ab7553a5e296019c54b160b42f146d1baf"
+    },
+    {
+      "name": "ambient-life-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-02-frame-1.png",
+      "sha256": "0f4d66fb1ce6d8b90ac943003555509dccb793768921052328836e37760b3d53"
+    },
+    {
+      "name": "ambient-life-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-02-frame-2.png",
+      "sha256": "2028aba34b35e395069e94bb328dcaaad526eb56372e29829a8a628d18ea3a45"
+    },
+    {
+      "name": "ambient-life-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-02-frame-3.png",
+      "sha256": "012a460a53442c77d7adb49ced5e9402ee17ed7f9612e8fac9eb8dc7c3e71c5d"
+    },
+    {
+      "name": "ambient-life-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-02-frame-4.png",
+      "sha256": "69a38df0ea1a33f621d543dac3cb1e9328f76586b4040dc4dd0e09d1bfa904ae"
+    },
+    {
+      "name": "ambient-life-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-02-frame-5.png",
+      "sha256": "86b07606bdf13bb0a736b55c3b79b435eeb84bbc50d107efa5db76611f0f8b73"
+    },
+    {
+      "name": "ambient-life-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-03-frame-0.png",
+      "sha256": "5c052a5d61ac991bf0e49897b62b5b24b3c5eedf506989b146529f85e6d2e3d5"
+    },
+    {
+      "name": "ambient-life-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-03-frame-1.png",
+      "sha256": "8bc0553accf7fd15198471fe3a0a88f1aa9c7611e6a48174594c0967fbb134a9"
+    },
+    {
+      "name": "ambient-life-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-03-frame-2.png",
+      "sha256": "18e93c4bca68c647ebf4ffd3f626951a9f51abfef08e0a0819d738ddb03ae6d3"
+    },
+    {
+      "name": "ambient-life-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-03-frame-3.png",
+      "sha256": "54e5c21b97d33166ea59662679a96f84a85c1677411015c66927ac3cf895f3d9"
+    },
+    {
+      "name": "ambient-life-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-03-frame-4.png",
+      "sha256": "2e75a0fd74cc115a6a6286f61f9c47581949a7df2abb69a5e9d66f28c65a6a1f"
+    },
+    {
+      "name": "ambient-life-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-03-frame-5.png",
+      "sha256": "4d9109847ca8924e31b61c8836329c7b9ed9d35ae4e16dd96f78417c091e8dd0"
+    },
+    {
+      "name": "ambient-life-01-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-01-frame-0.png",
+      "sha256": "aa82559336a085feef2bfd67461d68aaebd66a39fed51e8b692a01005a60a0bd"
+    },
+    {
+      "name": "ambient-life-01-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-01-frame-1.png",
+      "sha256": "9ea0cdc6fa6be72248c683f0f114ef6fa21559bd5d91cdd99a6698427a76e8e0"
+    },
+    {
+      "name": "ambient-life-01-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-01-frame-2.png",
+      "sha256": "3cca1fa6a2656f44dd404114d554221a8063fdc71acf86ac77f05d3755f3f2cd"
+    },
+    {
+      "name": "ambient-life-01-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-01-frame-3.png",
+      "sha256": "0943dabf39d09141c04a395cea610f88ed33da0b00d1603f3fea56eb32bef65a"
+    },
+    {
+      "name": "ambient-life-01-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-01-frame-4.png",
+      "sha256": "248ed67e98c657399e31c8bf0725d6e1f56d399447458993ce4e037fc9503a3a"
+    },
+    {
+      "name": "ambient-life-01-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\ambient-life-01-frame-5.png",
+      "sha256": "322cc01dd7d4bb56caa6849b97277baffaf80071936fc379f867a97044888aad"
+    },
+    {
+      "name": "story-round-judgment-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-frame-0.png",
+      "sha256": "5029ab83b27cb31b0c9d62773202f8c4da808eb5b81635b9446e494f18a54c8f"
+    },
+    {
+      "name": "story-round-judgment-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-frame-1.png",
+      "sha256": "5f141d566aeda1d177af2cc4002e6b281324cffa76c879c6c295895025e637ef"
+    },
+    {
+      "name": "story-round-judgment-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-frame-2.png",
+      "sha256": "aaa82f28578906cd0a70c300f57bb48e1f9bba6a01e1b3ea8252160d90ae395d"
+    },
+    {
+      "name": "story-round-judgment-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-frame-3.png",
+      "sha256": "2bf2c5c76f46cb770748aeea1240a45a47f1a01b271297c0e3b063068fbae802"
+    },
+    {
+      "name": "story-round-judgment-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-frame-4.png",
+      "sha256": "3becf44020aa09ab399b08f4c3083add99f0e79e72a1571c264b00160982669b"
+    },
+    {
+      "name": "story-round-judgment-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-frame-5.png",
+      "sha256": "44ba2519dbad48d770b5d4e1d1a126233a1d750ea18306a592ae9aa23c291072"
+    },
+    {
+      "name": "story-round-judgment-center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-center.png",
+      "sha256": "e8f1c3c3e1bedf29a3c865b56dced91cddec1896bb34913e4a8b8f074353a29a"
+    },
+    {
+      "name": "story-round-judgment-left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-left-corner.png",
+      "sha256": "8ba4934c1e0d9473bd27736ca5f99dcb7f47a3142751c0c1305358f7ca8853a8"
+    },
+    {
+      "name": "story-round-judgment-right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-right-corner.png",
+      "sha256": "d25ee4a15298ff90827dce9e88b0508abd425b75f5ffdbf2b1c7767f83f60120"
+    },
+    {
+      "name": "story-round-judgment-wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-wide.png",
+      "sha256": "b55879407d0381d2a04b09d58fa4925cbdcd36adbf492dd5da5f603892c2dd74"
+    },
+    {
+      "name": "story-round-judgment-close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-close.png",
+      "sha256": "7de4976cf2880def22953ea7dc4556a6ec33a70fdc3ca4f4e9b7e9e97497d789"
+    },
+    {
+      "name": "story-round-judgment-reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-reduced-motion.png",
+      "sha256": "28359143b620211e9fd3d3b7bb332df0249badd0d1a81184a330a6bf6469ed4f"
+    },
+    {
+      "name": "story-round-judgment-high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-high-contrast.png",
+      "sha256": "4bf9964c6e83e7caa12d58f467314b120157a9bb401a3b156c9f7b4cbce864e1"
+    },
+    {
+      "name": "story-round-judgment-actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\story-round-judgment-actual-game-camera.png",
+      "sha256": "04f15e6d5a8de264adb300baba164903d3af5d26fd76745c0085bba1dd66b739"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-185-training\\mobile-canvas.png",
+      "sha256": "617a2970ef7de17649b8b6d837cc48da1ba862ab13c0fe2755afee5e3553bb15"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

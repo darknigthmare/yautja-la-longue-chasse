@@ -1,0 +1,525 @@
+{
+  "version": "V41",
+  "fighterId": "tracker",
+  "name": "Tracker",
+  "status": "pixel-and-browser-validated",
+  "newGenerations": 0,
+  "newDrawings": 0,
+  "sourcePreservedByteForByte": true,
+  "officialFidelityCertified": false,
+  "acceptedOrientedClips": 2,
+  "completeMovesets": 0,
+  "definition": {
+    "fighterId": "tracker",
+    "bodyHeightPx": 400,
+    "pageBodyHeightPx": {
+      "tracker-repair-walk-backward-contact": 400
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "tracker-walk-forward-v41",
+      "characterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "tracker-repair-walk-backward-contact",
+          "src": "/game/sprites/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "walk",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                71,
+                63,
+                288,
+                405
+              ],
+              "pivot": [
+                129,
+                401
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                1224,
+                65,
+                257,
+                404
+              ],
+              "pivot": [
+                132,
+                400
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                829,
+                64,
+                267,
+                407
+              ],
+              "pivot": [
+                134,
+                403
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                455,
+                64,
+                264,
+                405
+              ],
+              "pivot": [
+                127,
+                401
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                51,
+                554,
+                279,
+                404
+              ],
+              "pivot": [
+                149,
+                400
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                1203,
+                555,
+                258,
+                402
+              ],
+              "pivot": [
+                132,
+                398
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                811,
+                554,
+                269,
+                401
+              ],
+              "pivot": [
+                154,
+                397
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                437,
+                555,
+                266,
+                403
+              ],
+              "pivot": [
+                150,
+                399
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "tracker-repair-walk-backward-contact",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "4f720315955814926d4e20d758ed9f6f3740e8f249556545cc9d73ad6cc99602",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            71,
+            63,
+            288,
+            405
+          ],
+          "pivot": [
+            129,
+            401
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            455,
+            64,
+            264,
+            405
+          ],
+          "pivot": [
+            127,
+            401
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            829,
+            64,
+            267,
+            407
+          ],
+          "pivot": [
+            134,
+            403
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            1224,
+            65,
+            257,
+            404
+          ],
+          "pivot": [
+            132,
+            400
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            51,
+            554,
+            279,
+            404
+          ],
+          "pivot": [
+            149,
+            400
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            437,
+            555,
+            266,
+            403
+          ],
+          "pivot": [
+            150,
+            399
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            811,
+            554,
+            269,
+            401
+          ],
+          "pivot": [
+            154,
+            397
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            1203,
+            555,
+            258,
+            402
+          ],
+          "pivot": [
+            132,
+            398
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            71,
+            63,
+            288,
+            405
+          ],
+          "pivot": [
+            129,
+            401
+          ],
+          "durationTicks": 8,
+          "index": 0,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            1224,
+            65,
+            257,
+            404
+          ],
+          "pivot": [
+            132,
+            400
+          ],
+          "durationTicks": 8,
+          "index": 1,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            829,
+            64,
+            267,
+            407
+          ],
+          "pivot": [
+            134,
+            403
+          ],
+          "durationTicks": 8,
+          "index": 2,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            455,
+            64,
+            264,
+            405
+          ],
+          "pivot": [
+            127,
+            401
+          ],
+          "durationTicks": 8,
+          "index": 3,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            51,
+            554,
+            279,
+            404
+          ],
+          "pivot": [
+            149,
+            400
+          ],
+          "durationTicks": 8,
+          "index": 0,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            1203,
+            555,
+            258,
+            402
+          ],
+          "pivot": [
+            132,
+            398
+          ],
+          "durationTicks": 8,
+          "index": 1,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            811,
+            554,
+            269,
+            401
+          ],
+          "pivot": [
+            154,
+            397
+          ],
+          "durationTicks": 8,
+          "index": 2,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            437,
+            555,
+            266,
+            403
+          ],
+          "pivot": [
+            150,
+            399
+          ],
+          "durationTicks": 8,
+          "index": 3,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V41 : marche avant par lecture temporelle inverse [0,3,2,1] des huit dessins de recul corrigé V34, sans miroir ni nouveau dessin.",
+        "Recul existant conservé. Boucle courte de quatre appuis, pas de moveset complet ni de nouvelle marche dessinée sur mesure."
+      ]
+    }
+  ],
+  "operation": "Temporal reuse order [0,3,2,1] of the existing right and left corrected retreat cycles; no horizontal mirroring, deformation, source-pixel edit or interpolation.",
+  "limits": [
+    "Eight already integrated drawings are reused in reverse playback; no new image is counted.",
+    "Original forward-walk sources remain rejected.",
+    "Four-drawing cadence remains coarse; no complete moveset or official 1:1 fidelity is certified."
+  ]
+}

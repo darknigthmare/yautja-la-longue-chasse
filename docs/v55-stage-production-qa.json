@@ -1,0 +1,34 @@
+{
+  "result": "PASS",
+  "stages": 161,
+  "primaryPlaneTargets": 966,
+  "specifiedSubplans": 1583,
+  "requestedImageFiles": 1608,
+  "uniqueImageFiles": 472,
+  "sharedModuleInstances": 1116,
+  "fileStatus": {
+    "planned": 0,
+    "generated": 0,
+    "reviewed": 66,
+    "integrated": 1542
+  },
+  "legacyPlayable": 8,
+  "runtimePlayable": 161,
+  "concepts": 0,
+  "readyRuntimeKits": 161,
+  "uniqueVerifiedImagePaths": 472,
+  "checkedAt": "2026-09-30T01:49:05.078Z",
+  "scope": "Complete catalogue file/hash/alpha/provenance/runtime-kit audit after V55 activation; not an application-flow or deployment claim",
+  "sourceCommand": "node scripts/verify-pit-arena-production-v33.mjs",
+  "historical138ComparedToPreviousGitHEAD": true,
+  "renderer": {
+    "scenes": 23,
+    "scenarios": 184,
+    "inspectedCaptures": 69,
+    "visualReview": "docs/v55-stage-composition-visual-review.json"
+  },
+  "unitChecks": {
+    "pipeline": 15,
+    "characterAndLifeContracts": 11
+  }
+}

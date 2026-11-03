@@ -1,0 +1,90 @@
+[
+  {
+    "index": 1,
+    "name": "Fetch the exact public source snapshot without moving the current checkout",
+    "run": "git -c protocol.file.allow=never fetch --filter=blob:none --no-tags --depth=1 origin 03cf51badd450338d748da55599a317a71debd28",
+    "bashSyntax": "PASS",
+    "exitCode": 0,
+    "elapsedSeconds": 0.579,
+    "log": "/workspace/v114-ci-review-20261102/actual-step-01.log",
+    "logBytes": 138,
+    "logSha256": "d22f05625fad11439ade9472c77670e1e03508f02ea53a90d87ca4b39bb5ce2c"
+  },
+  {
+    "index": 2,
+    "name": "Reproduce the dated workbook from its pinned historical sources and current candidate files",
+    "run": "python3 scripts/build-open-production-workbook-v113.py --check",
+    "bashSyntax": "PASS",
+    "exitCode": 0,
+    "elapsedSeconds": 2.285,
+    "log": "/workspace/v114-ci-review-20261102/actual-step-02.log",
+    "logBytes": 362,
+    "logSha256": "0640bdd99fcf1521810111a438674f7415ede640e72ca15aea5d048f04dcbdc1"
+  },
+  {
+    "index": 3,
+    "name": "Compare all appended cells and preserve the original 122 worksheets",
+    "run": "python3 scripts/verify-open-production-workbook-v113.py",
+    "bashSyntax": "PASS",
+    "exitCode": 0,
+    "elapsedSeconds": 0.871,
+    "log": "/workspace/v114-ci-review-20261102/actual-step-03.log",
+    "logBytes": 296,
+    "logSha256": "fbced3800e1fc0a53cfc3d8122f4c6df68d70b09919837d7d05ea8516df09877"
+  },
+  {
+    "index": 4,
+    "name": "Reject altered source claims, historic cells and current products",
+    "run": "python3 tests/open-production-workbook-v113.test.py",
+    "bashSyntax": "PASS",
+    "exitCode": 0,
+    "elapsedSeconds": 2.267,
+    "log": "/workspace/v114-ci-review-20261102/actual-step-04.log",
+    "logBytes": 861,
+    "logSha256": "13020ff930cb748a76a079f62650a6c88072fa2fa9b300a5298a83e5681ecee0"
+  },
+  {
+    "index": 5,
+    "name": "Install pinned native PNG verification dependency in an isolated environment",
+    "run": "python3 -m venv \"$RUNNER_TEMP/v114-python\"\n\"$RUNNER_TEMP/v114-python/bin/python\" -m pip install --disable-pip-version-check --only-binary=:all: Pillow==12.3.0\necho \"$RUNNER_TEMP/v114-python/bin\" >> \"$GITHUB_PATH\"\n",
+    "bashSyntax": "PASS",
+    "exitCode": 0,
+    "elapsedSeconds": 2.455,
+    "log": "/workspace/v114-ci-review-20261102/actual-step-05.log",
+    "logBytes": 304,
+    "logSha256": "5555134a46bae5651ef911bfb01d53cb088910c3c152d82e9fc6deed01da5d94"
+  },
+  {
+    "index": 6,
+    "name": "Verify V114 native PNGs, source cells and all 130 historical worksheets",
+    "run": "python3 production/native-open-20261102/tools/verify-native-open-workbook-v114.py",
+    "bashSyntax": "PASS",
+    "exitCode": 0,
+    "elapsedSeconds": 2.773,
+    "log": "/workspace/v114-ci-review-20261102/actual-step-06.log",
+    "logBytes": 569,
+    "logSha256": "5eb56bca0e29581ad46a9e3a568425edf47beb724b57a6faffaf37b1fabe845c"
+  },
+  {
+    "index": 7,
+    "name": "Reproduce the five appended V114 sheets and their exact workbook bytes",
+    "run": "python3 production/native-open-20261102/tools/build-native-open-workbook-v114.py --check",
+    "bashSyntax": "PASS",
+    "exitCode": 0,
+    "elapsedSeconds": 0.799,
+    "log": "/workspace/v114-ci-review-20261102/actual-step-07.log",
+    "logBytes": 381,
+    "logSha256": "9864650a751dfc346f386a766838cb3756673a1073ecc8016472fc699ab0a43e"
+  },
+  {
+    "index": 8,
+    "name": "Reject corrupt V114 sources, titles, historical cells and false admissions",
+    "run": "python3 production/native-open-20261102/tools/test-native-open-workbook-v114.py",
+    "bashSyntax": "PASS",
+    "exitCode": 0,
+    "elapsedSeconds": 3.838,
+    "log": "/workspace/v114-ci-review-20261102/actual-step-08.log",
+    "logBytes": 1433,
+    "logSha256": "e3b84a5a2ea8b7f35b75e85ebc8eddc38408cd9550cddf0495d1778ee7723c0b"
+  }
+]

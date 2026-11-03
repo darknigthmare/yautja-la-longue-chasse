@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "generator": "OpenAI built-in image generation",
+  "asset": {
+    "id": "galaxy-overview-v10",
+    "useCase": "stylized-concept",
+    "master": "art-source/v10/galaxy-navigation/openai-galaxy-overview-master.png",
+    "runtime": "public/game/backgrounds/v10/galaxy-overview-v10.webp",
+    "dimensions": {
+      "width": 1672,
+      "height": 941
+    },
+    "masterBytes": 2675316,
+    "runtimeBytes": 284088,
+    "masterSha256": "eed8bf2b23aa01f02eccef0153b2fbe75613b23ce0ad57ae690068adb51aeaa1",
+    "runtimeSha256": "c4d8f232b60d742a4b8a422d30e25ab6c62d69acd52d0ec5e421ccb7eda94d2f"
+  },
+  "prompt": [
+    "Use case: stylized-concept. Full-screen 16:9 raster background for a 2D science-fiction game's interactive galactic navigation map.",
+    "Create an entirely original top-down spiral galaxy that naturally reads as several navigable sectors and distinct stellar regions; do not reproduce any existing game's interface, composition, labels, symbols, or assets.",
+    "Deep near-black outer space, controlled star field, branching arms and stellar clusters separated by readable dark dust lanes.",
+    "One complete galaxy disk with a compact luminous core that retains texture and is not blown out; include bright nebular knots, sparse frontier pockets, dark rifts, and star-cluster islands for future UI markers.",
+    "Premium original science-fiction concept art with an ominous extraterrestrial hunting mood and no recognizable franchise iconography.",
+    "Wide landscape composition with the galaxy inside the frame and clean negative-space pockets around the rim and between major arms; avoid any rigid grid or table-like arrangement.",
+    "Palette: black and charcoal space, copper, amber and gold stellar arms, restrained cyan and toxic teal-green accents, occasional muted rust-red dust.",
+    "No text, labels, letters, numbers, logos, watermark, interface, HUD, boundary lines, connecting lines, crosshairs, icons, orbit rings, close-up planets, spacecraft, characters, weapons, targeting lasers, panels, checkerboards or grids."
+  ]
+}

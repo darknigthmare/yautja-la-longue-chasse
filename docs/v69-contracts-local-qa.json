@@ -1,0 +1,1336 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4187",
+  "checks": [
+    {
+      "check": "physical-locked-giver-and-acceptance",
+      "status": "PASS",
+      "oldLedgerVersionPreservedUntilAcceptance": true,
+      "quotaRefusal": true,
+      "mobileLockedRoute": true
+    },
+    {
+      "check": "physical-ordered-stage-ash-marches",
+      "status": "PASS",
+      "tick": 7498,
+      "walked": 27369.995723843367,
+      "action": "track",
+      "publicKeyboardRoute": true
+    },
+    {
+      "check": "physical-ordered-stage-thermal-caves",
+      "status": "PASS",
+      "tick": 7259,
+      "walked": 26896.716967364093,
+      "action": "survey",
+      "publicKeyboardRoute": true
+    },
+    {
+      "check": "unique-payment-next-physical-giver-and-reload",
+      "status": "PASS",
+      "walletDelta": 44,
+      "quotaRetry": true,
+      "noAutoProof": true,
+      "mobileDestination": true,
+      "unrelatedProgressPreserved": true
+    }
+  ],
+  "captures": [
+    "work-local\\v69\\qa\\contracts-final\\01-commanditaire-verrouille.jpg",
+    "work-local\\v69\\qa\\contracts-final\\02-circuit-mobile-verrouille.jpg",
+    "work-local\\v69\\qa\\contracts-final\\03-premier-chapitre-accepte.jpg",
+    "work-local\\v69\\qa\\contracts-final\\04-terrain-ash-marches.jpg",
+    "work-local\\v69\\qa\\contracts-final\\04-guide-ash-marches.jpg",
+    "work-local\\v69\\qa\\contracts-final\\05-terrain-thermal-caves.jpg",
+    "work-local\\v69\\qa\\contracts-final\\05-guide-thermal-caves.jpg",
+    "work-local\\v69\\qa\\contracts-final\\06-remise-unique-et-relation.jpg",
+    "work-local\\v69\\qa\\contracts-final\\07-suite-physique-debloquee.jpg",
+    "work-local\\v69\\qa\\contracts-final\\08-suite-mobile-destination.jpg"
+  ],
+  "cityRoutes": [
+    {
+      "kind": "city-and-door",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 1280,
+        "y": 4480
+      },
+      "approach": {
+        "x": 3430,
+        "y": 1976.5
+      },
+      "distance": 4359.543286547536
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    },
+    {
+      "kind": "exit",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 269,
+        "y": 144
+      },
+      "to": {
+        "x": 3430,
+        "y": 1977
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "from": {
+        "x": 3430,
+        "y": 1977
+      },
+      "approach": {
+        "x": 1610,
+        "y": 2875.5
+      },
+      "distance": 2912.4811451936257
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    },
+    {
+      "kind": "exit",
+      "buildingId": "market-armory",
+      "from": {
+        "x": 269,
+        "y": 144
+      },
+      "to": {
+        "x": 1610,
+        "y": 2876
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "from": {
+        "x": 3520,
+        "y": 2799
+      },
+      "approach": {
+        "x": 1610,
+        "y": 2875.5
+      },
+      "distance": 2323.7173770766985
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    },
+    {
+      "kind": "exit",
+      "buildingId": "market-armory",
+      "from": {
+        "x": 269,
+        "y": 144
+      },
+      "to": {
+        "x": 1610,
+        "y": 2876
+      }
+    },
+    {
+      "kind": "city-and-door",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 1610,
+        "y": 2876
+      },
+      "approach": {
+        "x": 3430,
+        "y": 1976.5
+      },
+      "distance": 2907.0838951930427
+    },
+    {
+      "kind": "interior-and-dialog",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "from": {
+        "x": 269,
+        "y": 236
+      },
+      "to": {
+        "x": 269,
+        "y": 144
+      }
+    }
+  ],
+  "regionRoutes": [
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 360,
+        "y": 1500
+      },
+      "to": {
+        "x": 3110,
+        "y": 1500
+      },
+      "points": [
+        {
+          "x": 360,
+          "y": 1500
+        },
+        {
+          "x": 3100,
+          "y": 1500,
+          "name": "Corniche du clan"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 3110,
+        "y": 1500
+      },
+      "to": {
+        "x": 4603.255753112904,
+        "y": 982.1621339110427
+      },
+      "points": [
+        {
+          "x": 3110,
+          "y": 1500
+        },
+        {
+          "x": 4600,
+          "y": 980,
+          "name": "Premier ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 4603.255753112904,
+        "y": 982.1621339110427
+      },
+      "to": {
+        "x": 8799.755753112904,
+        "y": 982.1621339110427
+      },
+      "points": [
+        {
+          "x": 4603.255753112904,
+          "y": 982.1621339110427
+        },
+        {
+          "x": 8800,
+          "y": 980,
+          "name": "Balcon du territoire"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 8799.755753112904,
+        "y": 982.1621339110427
+      },
+      "to": {
+        "x": 11808.752973988756,
+        "y": 1797.2205503587516
+      },
+      "points": [
+        {
+          "x": 8799.755753112904,
+          "y": 982.1621339110427
+        },
+        {
+          "x": 11800,
+          "y": 1800,
+          "name": "Second ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 11808.752973988756,
+        "y": 1797.2205503587516
+      },
+      "to": {
+        "x": 16203.252973988756,
+        "y": 1797.2205503587516
+      },
+      "points": [
+        {
+          "x": 11808.752973988756,
+          "y": 1797.2205503587516
+        },
+        {
+          "x": 16200,
+          "y": 1800,
+          "name": "Lisière du village"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 16203.252973988756,
+        "y": 1797.2205503587516
+      },
+      "to": {
+        "x": 18202.994441751915,
+        "y": 1500
+      },
+      "points": [
+        {
+          "x": 16203.252973988756,
+          "y": 1797.2205503587516
+        },
+        {
+          "x": 18200,
+          "y": 1500,
+          "name": "Lisière du village"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 520,
+        "y": 2800
+      },
+      "to": {
+        "x": 1898.557141399484,
+        "y": 1549.1974037458335
+      },
+      "points": [
+        {
+          "x": 520,
+          "y": 2800
+        },
+        {
+          "x": 1215,
+          "y": 2430
+        },
+        {
+          "x": 1530,
+          "y": 1935
+        },
+        {
+          "x": 1900,
+          "y": 1545
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 1898.557141399484,
+        "y": 1549.1974037458335
+      },
+      "to": {
+        "x": 3896.383529048402,
+        "y": 2299.909103105567
+      },
+      "points": [
+        {
+          "x": 1898.557141399484,
+          "y": 1549.1974037458335
+        },
+        {
+          "x": 3900,
+          "y": 2300
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 3896.383529048402,
+        "y": 2299.909103105567
+      },
+      "to": {
+        "x": 4794.304758382117,
+        "y": 1800.4560133274585
+      },
+      "points": [
+        {
+          "x": 3896.383529048402,
+          "y": 2299.909103105567
+        },
+        {
+          "x": 4800,
+          "y": 1800,
+          "id": "trail-1",
+          "label": "Relevé 1"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 4794.304758382117,
+        "y": 1800.4560133274585
+      },
+      "to": {
+        "x": 5698.460312803887,
+        "y": 2846.48766226589
+      },
+      "points": [
+        {
+          "x": 4794.304758382117,
+          "y": 1800.4560133274585
+        },
+        {
+          "x": 5700,
+          "y": 2850,
+          "id": "trail-2",
+          "label": "Relevé 2"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 5698.460312803887,
+        "y": 2846.48766226589
+      },
+      "to": {
+        "x": 6600.061303708286,
+        "y": 1798.1353664017504
+      },
+      "points": [
+        {
+          "x": 5698.460312803887,
+          "y": 2846.48766226589
+        },
+        {
+          "x": 6600,
+          "y": 1800,
+          "id": "trail-3",
+          "label": "Relevé 3"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 6600.061303708286,
+        "y": 1798.1353664017504
+      },
+      "to": {
+        "x": 7098.855549319924,
+        "y": 2052.458105368517
+      },
+      "points": [
+        {
+          "x": 6600.061303708286,
+          "y": 1798.1353664017504
+        },
+        {
+          "x": 7100,
+          "y": 2050
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 7098.855549319924,
+        "y": 2052.458105368517
+      },
+      "to": {
+        "x": 6598.4503910048115,
+        "y": 1801.199495786892
+      },
+      "points": [
+        {
+          "x": 7098.855549319924,
+          "y": 2052.458105368517
+        },
+        {
+          "x": 6600,
+          "y": 1800
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 6598.4503910048115,
+        "y": 1801.199495786892
+      },
+      "to": {
+        "x": 5700.071225507361,
+        "y": 2851.3467170879817
+      },
+      "points": [
+        {
+          "x": 6598.4503910048115,
+          "y": 1801.199495786892
+        },
+        {
+          "x": 5700,
+          "y": 2850
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 5700.071225507361,
+        "y": 2851.3467170879817
+      },
+      "to": {
+        "x": 4794.581147306437,
+        "y": 1795.5969585053674
+      },
+      "points": [
+        {
+          "x": 5700.071225507361,
+          "y": 2851.3467170879817
+        },
+        {
+          "x": 4800,
+          "y": 1800
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 4794.581147306437,
+        "y": 1795.5969585053674
+      },
+      "to": {
+        "x": 3903.770830676196,
+        "y": 2298.1141776686172
+      },
+      "points": [
+        {
+          "x": 4794.581147306437,
+          "y": 1795.5969585053674
+        },
+        {
+          "x": 3900,
+          "y": 2300
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 3903.770830676196,
+        "y": 2298.1141776686172
+      },
+      "to": {
+        "x": 1893.3335303238036,
+        "y": 1550.4666076940257
+      },
+      "points": [
+        {
+          "x": 3903.770830676196,
+          "y": 2298.1141776686172
+        },
+        {
+          "x": 1900,
+          "y": 1545
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "village",
+      "from": {
+        "x": 1893.3335303238036,
+        "y": 1550.4666076940257
+      },
+      "to": {
+        "x": 516.3873016277937,
+        "y": 2795.6666666666692
+      },
+      "points": [
+        {
+          "x": 1893.3335303238036,
+          "y": 1550.4666076940257
+        },
+        {
+          "x": 1215,
+          "y": 2250
+        },
+        {
+          "x": 1215,
+          "y": 2430
+        },
+        {
+          "x": 900,
+          "y": 2610
+        },
+        {
+          "x": 520,
+          "y": 2800
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 18200,
+        "y": 1500
+      },
+      "to": {
+        "x": 16200.258532236843,
+        "y": 1797.2205503587516
+      },
+      "points": [
+        {
+          "x": 18200,
+          "y": 1500
+        },
+        {
+          "x": 16200,
+          "y": 1800,
+          "name": "Lisière du village"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 16200.258532236843,
+        "y": 1797.2205503587516
+      },
+      "to": {
+        "x": 11800.258532236843,
+        "y": 1797.2205503587516
+      },
+      "points": [
+        {
+          "x": 16200.258532236843,
+          "y": 1797.2205503587516
+        },
+        {
+          "x": 11800,
+          "y": 1800,
+          "name": "Second ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 11800.258532236843,
+        "y": 1797.2205503587516
+      },
+      "to": {
+        "x": 8798.372224064466,
+        "y": 979.098004525901
+      },
+      "points": [
+        {
+          "x": 11800.258532236843,
+          "y": 1797.2205503587516
+        },
+        {
+          "x": 8800,
+          "y": 980,
+          "name": "Balcon du territoire"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 8798.372224064466,
+        "y": 979.098004525901
+      },
+      "to": {
+        "x": 4596.372224064466,
+        "y": 979.098004525901
+      },
+      "points": [
+        {
+          "x": 8798.372224064466,
+          "y": 979.098004525901
+        },
+        {
+          "x": 4600,
+          "y": 980,
+          "name": "Premier ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 4596.372224064466,
+        "y": 979.098004525901
+      },
+      "to": {
+        "x": 3098.28373284114,
+        "y": 1496.4101491260994
+      },
+      "points": [
+        {
+          "x": 4596.372224064466,
+          "y": 979.098004525901
+        },
+        {
+          "x": 3100,
+          "y": 1500,
+          "name": "Corniche du clan"
+        }
+      ]
+    },
+    {
+      "id": "ash-marches",
+      "zone": "passage",
+      "from": {
+        "x": 3098.28373284114,
+        "y": 1496.4101491260994
+      },
+      "to": {
+        "x": 359.28373284114014,
+        "y": 1496.4101491260994
+      },
+      "points": [
+        {
+          "x": 3098.28373284114,
+          "y": 1496.4101491260994
+        },
+        {
+          "x": 360,
+          "y": 1500,
+          "name": "Parvis extérieur"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 360,
+        "y": 1500
+      },
+      "to": {
+        "x": 3110,
+        "y": 1500
+      },
+      "points": [
+        {
+          "x": 360,
+          "y": 1500
+        },
+        {
+          "x": 3100,
+          "y": 1500,
+          "name": "Corniche du clan"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 3110,
+        "y": 1500
+      },
+      "to": {
+        "x": 4603.255753112904,
+        "y": 982.1621339110427
+      },
+      "points": [
+        {
+          "x": 3110,
+          "y": 1500
+        },
+        {
+          "x": 4600,
+          "y": 980,
+          "name": "Premier ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 4603.255753112904,
+        "y": 982.1621339110427
+      },
+      "to": {
+        "x": 8799.755753112904,
+        "y": 982.1621339110427
+      },
+      "points": [
+        {
+          "x": 4603.255753112904,
+          "y": 982.1621339110427
+        },
+        {
+          "x": 8800,
+          "y": 980,
+          "name": "Balcon du territoire"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 8799.755753112904,
+        "y": 982.1621339110427
+      },
+      "to": {
+        "x": 11808.752973988756,
+        "y": 1797.2205503587516
+      },
+      "points": [
+        {
+          "x": 8799.755753112904,
+          "y": 982.1621339110427
+        },
+        {
+          "x": 11800,
+          "y": 1800,
+          "name": "Second ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 11808.752973988756,
+        "y": 1797.2205503587516
+      },
+      "to": {
+        "x": 16203.252973988756,
+        "y": 1797.2205503587516
+      },
+      "points": [
+        {
+          "x": 11808.752973988756,
+          "y": 1797.2205503587516
+        },
+        {
+          "x": 16200,
+          "y": 1800,
+          "name": "Lisière du village"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 16203.252973988756,
+        "y": 1797.2205503587516
+      },
+      "to": {
+        "x": 18202.994441751915,
+        "y": 1500
+      },
+      "points": [
+        {
+          "x": 16203.252973988756,
+          "y": 1797.2205503587516
+        },
+        {
+          "x": 18200,
+          "y": 1500,
+          "name": "Lisière du village"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "village",
+      "from": {
+        "x": 520,
+        "y": 2800
+      },
+      "to": {
+        "x": 2003.1716254404257,
+        "y": 1436.440537531756
+      },
+      "points": [
+        {
+          "x": 520,
+          "y": 2800
+        },
+        {
+          "x": 1395,
+          "y": 2340
+        },
+        {
+          "x": 1485,
+          "y": 1980
+        },
+        {
+          "x": 2000,
+          "y": 1435
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "village",
+      "from": {
+        "x": 2003.1716254404257,
+        "y": 1436.440537531756
+      },
+      "to": {
+        "x": 3906.1160684677643,
+        "y": 2303.0634320381178
+      },
+      "points": [
+        {
+          "x": 2003.1716254404257,
+          "y": 1436.440537531756
+        },
+        {
+          "x": 3900,
+          "y": 2300
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "village",
+      "from": {
+        "x": 3906.1160684677643,
+        "y": 2303.0634320381178
+      },
+      "to": {
+        "x": 4796.926385098004,
+        "y": 1800.5462128748677
+      },
+      "points": [
+        {
+          "x": 3906.1160684677643,
+          "y": 2303.0634320381178
+        },
+        {
+          "x": 4800,
+          "y": 1800,
+          "id": "trail-1",
+          "label": "Relevé 1"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "village",
+      "from": {
+        "x": 4796.926385098004,
+        "y": 1800.5462128748677
+      },
+      "to": {
+        "x": 5702.416463298929,
+        "y": 2847.6293047908152
+      },
+      "points": [
+        {
+          "x": 4796.926385098004,
+          "y": 1800.5462128748677
+        },
+        {
+          "x": 5700,
+          "y": 2850,
+          "id": "trail-2",
+          "label": "Relevé 2"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "village",
+      "from": {
+        "x": 5702.416463298929,
+        "y": 2847.6293047908152
+      },
+      "to": {
+        "x": 6600.128366906802,
+        "y": 1802.3411383118175
+      },
+      "points": [
+        {
+          "x": 5702.416463298929,
+          "y": 2847.6293047908152
+        },
+        {
+          "x": 6600,
+          "y": 1800,
+          "id": "trail-3",
+          "label": "Relevé 3"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "village",
+      "from": {
+        "x": 6600.128366906802,
+        "y": 1802.3411383118175
+      },
+      "to": {
+        "x": 6600.128366906802,
+        "y": 1802.3411383118175
+      },
+      "points": [
+        {
+          "x": 6600.128366906802,
+          "y": 1802.3411383118175
+        },
+        {
+          "x": 6600,
+          "y": 1800
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "village",
+      "from": {
+        "x": 6600.128366906802,
+        "y": 1802.3411383118175
+      },
+      "to": {
+        "x": 5697.860114112826,
+        "y": 2855.5524889980493
+      },
+      "points": [
+        {
+          "x": 6600.128366906802,
+          "y": 1802.3411383118175
+        },
+        {
+          "x": 5700,
+          "y": 2850
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "village",
+      "from": {
+        "x": 5697.860114112826,
+        "y": 2855.5524889980493
+      },
+      "to": {
+        "x": 4792.370035911901,
+        "y": 1799.802730415435
+      },
+      "points": [
+        {
+          "x": 5697.860114112826,
+          "y": 2855.5524889980493
+        },
+        {
+          "x": 4800,
+          "y": 1800
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "village",
+      "from": {
+        "x": 4792.370035911901,
+        "y": 1799.802730415435
+      },
+      "to": {
+        "x": 3896.0597192816595,
+        "y": 2302.319949578685
+      },
+      "points": [
+        {
+          "x": 4792.370035911901,
+          "y": 1799.802730415435
+        },
+        {
+          "x": 3900,
+          "y": 2300
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "village",
+      "from": {
+        "x": 3896.0597192816595,
+        "y": 2302.319949578685
+      },
+      "to": {
+        "x": 2004.7825381439,
+        "y": 1436.2227765610814
+      },
+      "points": [
+        {
+          "x": 3896.0597192816595,
+          "y": 2302.319949578685
+        },
+        {
+          "x": 2000,
+          "y": 1435
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "village",
+      "from": {
+        "x": 2004.7825381439,
+        "y": 1436.2227765610814
+      },
+      "to": {
+        "x": 522.6690475583121,
+        "y": 2794.6152236891517
+      },
+      "points": [
+        {
+          "x": 2004.7825381439,
+          "y": 1436.2227765610814
+        },
+        {
+          "x": 1395,
+          "y": 2070
+        },
+        {
+          "x": 1350,
+          "y": 2385
+        },
+        {
+          "x": 990,
+          "y": 2565
+        },
+        {
+          "x": 520,
+          "y": 2800
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 18200,
+        "y": 1500
+      },
+      "to": {
+        "x": 16198.647619533367,
+        "y": 1794.1564209736098
+      },
+      "points": [
+        {
+          "x": 18200,
+          "y": 1500
+        },
+        {
+          "x": 16200,
+          "y": 1800,
+          "name": "Lisière du village"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 16198.647619533367,
+        "y": 1794.1564209736098
+      },
+      "to": {
+        "x": 11798.647619533367,
+        "y": 1794.1564209736098
+      },
+      "points": [
+        {
+          "x": 16198.647619533367,
+          "y": 1794.1564209736098
+        },
+        {
+          "x": 11800,
+          "y": 1800,
+          "name": "Second ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 11798.647619533367,
+        "y": 1794.1564209736098
+      },
+      "to": {
+        "x": 8797.428573250567,
+        "y": 985.2262632961844
+      },
+      "points": [
+        {
+          "x": 11798.647619533367,
+          "y": 1794.1564209736098
+        },
+        {
+          "x": 8800,
+          "y": 980,
+          "name": "Balcon du territoire"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 8797.428573250567,
+        "y": 985.2262632961844
+      },
+      "to": {
+        "x": 4589.928573250567,
+        "y": 985.2262632961844
+      },
+      "points": [
+        {
+          "x": 8797.428573250567,
+          "y": 985.2262632961844
+        },
+        {
+          "x": 4600,
+          "y": 980,
+          "name": "Premier ouvrage"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 4589.928573250567,
+        "y": 985.2262632961844
+      },
+      "to": {
+        "x": 3095.061907434189,
+        "y": 1500
+      },
+      "points": [
+        {
+          "x": 4589.928573250567,
+          "y": 985.2262632961844
+        },
+        {
+          "x": 3100,
+          "y": 1500,
+          "name": "Corniche du clan"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "zone": "passage",
+      "from": {
+        "x": 3095.061907434189,
+        "y": 1500
+      },
+      "to": {
+        "x": 356.0619074341889,
+        "y": 1500
+      },
+      "points": [
+        {
+          "x": 3095.061907434189,
+          "y": 1500
+        },
+        {
+          "x": 360,
+          "y": 1500,
+          "name": "Parvis extérieur"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "fixture": "Isolated declared legacy campaign, no accepted contracts or field proof. After entry all travel and action controls are public keyboard/GUI; no coordinates or receipts injected.",
+  "scope": "First two-biome chapter of return-line, then actual delivery unlocking and acceptance of chapter 2 at its physical giver. Does not claim all eight chapters or a fresh youth prologue browser-playthrough.",
+  "visualReview": "PASS",
+  "visualReviewDetails": {
+    "inspectedCaptureCount": 10,
+    "viewports": [
+      "1440x1000",
+      "393x852"
+    ],
+    "findings": [
+      "Locked giver and prerequisite visible, acceptance disabled.",
+      "Ordered Ash observation and Thermal survey rendered with grounded actor and living fauna.",
+      "Both guide returns captured at the actual guide positions.",
+      "The native board shows one paid report and 44 cumulative marks.",
+      "Second chapter active at its physical giver with no automatically credited field stage.",
+      "Mobile prerequisite and destination paragraphs are visible after vertical scrolling, without horizontal overflow."
+    ],
+    "limits": [
+      "Long giver dialogs and their cards use vertical scrolling.",
+      "Regional HUD remains the general region activity prompt; contract destination is in the contract card and journal.",
+      "Screenshots do not prove all eight chapter routes, or a fresh youth prologue."
+    ],
+    "reviewedAtUtc": "2026-10-01T13:02:38.6061251Z"
+  },
+  "deployment": "local-only",
+  "reconstruction": "Final central V69 Next production build after city, campaign and village freeze; the full recipe was replayed on this reconstruction."
+}

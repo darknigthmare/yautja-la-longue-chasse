@@ -1,0 +1,117 @@
+{
+  "scope": "Independent read-only review using actual AST callbacks: GameClient homeworld/social/justice persistence, Justice interval, Hub incoming Save effect and explicit retry. Refusal assertions execute before optional backup repair/retry. No repository sources edited.",
+  "scenarioCount": 7,
+  "pass": true,
+  "scenarios": [
+    {
+      "scenario": "backup-throw",
+      "resultPath": "/tmp/v112-geometry-ack-justice-review-backup-throw-result.json",
+      "resultSha256": "cc99566368f337819cb1a05e01f11aa97b80420a4c272a2677e9689bacc479c6",
+      "actualMainWrites": 1,
+      "pendingAfterFinalStep": false,
+      "actorAfterFinalStep": {
+        "x": 4827.379122065994,
+        "y": 5030.736907870462
+      },
+      "refusedPrematureAdoption": true,
+      "retryWithoutSecondMainWrite": true,
+      "hubSourceSha256": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+      "clientSourceSha256": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c"
+    },
+    {
+      "scenario": "backup-missing",
+      "resultPath": "/tmp/v112-geometry-ack-justice-review-backup-missing-result.json",
+      "resultSha256": "91e83b7d42ea45bd0a1d4c3ce1b6dd98067ad90fd20170292e3560861f81f6ee",
+      "actualMainWrites": 1,
+      "pendingAfterFinalStep": false,
+      "actorAfterFinalStep": {
+        "x": 4827.379122065994,
+        "y": 5030.736907870462
+      },
+      "refusedPrematureAdoption": true,
+      "retryWithoutSecondMainWrite": true,
+      "hubSourceSha256": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+      "clientSourceSha256": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c"
+    },
+    {
+      "scenario": "backup-tampered",
+      "resultPath": "/tmp/v112-geometry-ack-justice-review-backup-tampered-result.json",
+      "resultSha256": "b46286ae876d3689aa9e15c0b9d330f86875538d8a4c0a5ecf908d43c3027e12",
+      "actualMainWrites": 1,
+      "pendingAfterFinalStep": false,
+      "actorAfterFinalStep": {
+        "x": 4827.379122065994,
+        "y": 5030.736907870462
+      },
+      "refusedPrematureAdoption": true,
+      "retryWithoutSecondMainWrite": true,
+      "hubSourceSha256": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+      "clientSourceSha256": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c"
+    },
+    {
+      "scenario": "foreign-owner",
+      "resultPath": "/tmp/v112-geometry-ack-justice-review-foreign-owner-result.json",
+      "resultSha256": "0d3aa32e1d30872e79b1c6d1256b6d28737773f0690e5fa22acafadef9fb3858",
+      "actualMainWrites": 1,
+      "pendingAfterFinalStep": true,
+      "actorAfterFinalStep": {
+        "x": 7780,
+        "y": 4480
+      },
+      "refusedPrematureAdoption": true,
+      "retryWithoutSecondMainWrite": false,
+      "hubSourceSha256": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+      "clientSourceSha256": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c"
+    },
+    {
+      "scenario": "changed-checkpoint",
+      "resultPath": "/tmp/v112-geometry-ack-justice-review-changed-checkpoint-result.json",
+      "resultSha256": "ae0d138fdb4165dec071c6c0840b50c6d64ae31ab34910d5a1ce53a7b3fabe27",
+      "actualMainWrites": 1,
+      "pendingAfterFinalStep": true,
+      "actorAfterFinalStep": {
+        "x": 7780,
+        "y": 4480
+      },
+      "refusedPrematureAdoption": true,
+      "retryWithoutSecondMainWrite": false,
+      "hubSourceSha256": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+      "clientSourceSha256": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c"
+    },
+    {
+      "scenario": "changed-document",
+      "resultPath": "/tmp/v112-geometry-ack-justice-review-changed-document-result.json",
+      "resultSha256": "2ef3754836047dad0df747397b3d808ba0d54762c44f73e700a6920a24ad1405",
+      "actualMainWrites": 1,
+      "pendingAfterFinalStep": true,
+      "actorAfterFinalStep": {
+        "x": 7780,
+        "y": 4480
+      },
+      "refusedPrematureAdoption": true,
+      "retryWithoutSecondMainWrite": false,
+      "hubSourceSha256": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+      "clientSourceSha256": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c"
+    },
+    {
+      "scenario": "not-submitted",
+      "resultPath": "/tmp/v112-geometry-ack-justice-review-not-submitted-result.json",
+      "resultSha256": "93f83a75eaccff58cc3f54fe83b0141bf0b8dcbd55de5825b74e522dba4b56bd",
+      "actualMainWrites": 1,
+      "pendingAfterFinalStep": true,
+      "actorAfterFinalStep": {
+        "x": 7780,
+        "y": 4480
+      },
+      "refusedPrematureAdoption": true,
+      "retryWithoutSecondMainWrite": false,
+      "hubSourceSha256": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+      "clientSourceSha256": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c"
+    }
+  ],
+  "sources": {
+    "app/game/HomeworldHub.tsx": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+    "app/game/GameClient.tsx": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c",
+    "app/game/systems/homeworldGeometryRecoveryV112.ts": "da3ed465f312e7278384ab614b4c57323ba2e2dd90740205e1cf4ec9c677cbf3"
+  }
+}

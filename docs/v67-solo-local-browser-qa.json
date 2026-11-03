@@ -1,0 +1,192 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "verifiedAt": "2026-10-01T04:39:16.6770683Z",
+  "environment": "Local Next production build, parent-confirmed READY after camera and floating-caption corrections",
+  "url": "http://127.0.0.1:4186",
+  "rawReport": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-final-ui/report.json",
+  "rawReportSha256": "89ae5bffcc63e7c78820fd03e5b05d37fd403ef0ea7c3770a6e5a04207c2e896",
+  "checks": [
+    {
+      "name": "physically-entered-dojo-explicit-start",
+      "routeDistance": 5821.9011259125045,
+      "earlierYouthProofs": 20
+    },
+    {
+      "name": "refused-checkpoint-freezes-and-retries",
+      "tick": 120,
+      "receiptsRetained": 2
+    },
+    {
+      "name": "encounter-pause-cold-resume-mobile",
+      "exactStoredTick": 874,
+      "receipts": 5,
+      "bounds": [
+        {
+          "text": "Pause",
+          "x": 248.046875,
+          "y": 5,
+          "right": 310.21875,
+          "bottom": 49,
+          "width": 62.171875,
+          "height": 44
+        },
+        {
+          "text": "Tactile",
+          "x": 318.21875,
+          "y": 5,
+          "right": 384,
+          "bottom": 49,
+          "width": 65.78125,
+          "height": 44
+        },
+        {
+          "text": "←",
+          "x": 54.875,
+          "y": 763.3125,
+          "right": 98.875,
+          "bottom": 807.3125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "→",
+          "x": 102.875,
+          "y": 763.3125,
+          "right": 146.875,
+          "bottom": 807.3125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Saut",
+          "x": 150.875,
+          "y": 763.3125,
+          "right": 196.640625,
+          "bottom": 807.3125,
+          "width": 45.765625,
+          "height": 44
+        },
+        {
+          "text": "Toucher",
+          "x": 200.640625,
+          "y": 763.3125,
+          "right": 266.765625,
+          "bottom": 807.3125,
+          "width": 66.125,
+          "height": 44
+        },
+        {
+          "text": "Interagir",
+          "x": 270.765625,
+          "y": 763.3125,
+          "right": 338.109375,
+          "bottom": 807.3125,
+          "width": 67.34375,
+          "height": 44
+        }
+      ],
+      "touchMovement": {
+        "before": 2375.5,
+        "after": 2323
+      }
+    },
+    {
+      "name": "portrait-warning-visible",
+      "facing": -1,
+      "projectedX": 326,
+      "logicalWidth": 370
+    },
+    {
+      "name": "portrait-warning-visible",
+      "facing": 1,
+      "projectedX": 54.5,
+      "logicalWidth": 370
+    },
+    {
+      "name": "all-nine-proofs-and-return-survive-reload",
+      "noAdultRewardsOrRanks": true
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "visualReview": {
+    "status": "PASS",
+    "personallyInspected": [
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-final-ui/mobile-warning-left.jpg",
+        "sha256": "c8e80ebdddd42819c007e9dee435232826c9b0c60d4d561c47d58e353e3c1708"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-final-ui/mobile-warning-right.jpg",
+        "sha256": "f7d9340501f4ad0032355362e655aa61e57c5f29f4e67de1cd1cc95878ad1ec5"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-final-ui/mobile-recovery.jpg",
+        "sha256": "5a305a0d8274a59c11f0d197dfe39314c9839705cd6131c8ccffd7fa88aef10f"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-final-ui/complete.jpg",
+        "sha256": "44c487366c5fc17681320d85b23ea972f7e3afc0a7ef9f98320fdeb059d78ee4"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-final-ui/durable-return.jpg",
+        "sha256": "3dad3d6821ebe3904a5ee644dc2dc6bf30b6fba75519dee0c8c3ebed08e37b22"
+      }
+    ],
+    "findings": [
+      "Both native grazer orientations show the head and horns before the charge on393x852 portrait.",
+      "All seven visible mobile buttons fit within the viewport and meet44px height. Actual touch movement verified.",
+      "Three touches and two avoided charges end with the animal retreating alive; the collected evidence is explicitly a field record.",
+      "Completion and return to Homeworld survive a fresh page reload with all9receipts and no new rite, rank, gear, kill statistics or ship.",
+      "Final fresh captures confirm both CHARGE IMMINENTE captions and FENETRE DE TOUCHE stay fully inside393px portrait after the measured-text clamp."
+    ],
+    "minorLimitation": null
+  },
+  "covered": "Ridge route played in the real browser; both ridge and ravine covered by input-only simulation tests. Fresh isolated context with synthetic campaign actually simulated through nursery, formation and Premières Pistes. No user saves read or modified.",
+  "storageEvidence": "Real browser periodic checkpoint refused by injected isolated quota, scene freezes and retries; cold resume at5proofs, nineproofcompletion and finalcityreload. All9receipt quota/drop/CAS cases tested separately by real save module in19targeted tests.",
+  "priorRuns": [
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-compiled/report.json",
+      "status": "FAIL",
+      "reason": "Harness clicked Pause after automatic quota pause had already opened."
+    },
+    {
+      "path": "I:/CodexTemp/yautja-v66-20261001/v67/solo-browser-compiled-final/report.json",
+      "status": "FAIL",
+      "reason": "Input driver stayed too far after charges and oscillated during attack orientation; incomplete run retained. Also exposed portrait warning range; runtime camera/range fixed before final build."
+    },
+    {
+      "path": "docs/v67-solo-local-browser-pre-caption-qa.json",
+      "status": "PASS_WITH_MINOR_VISUAL_LIMITATION",
+      "reason": "Complete pre-caption run preserved separately; final-ui rerun confirms captions fixed."
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": "app/game/FirstHuntSoloV67.tsx",
+      "sha256": "404799bf1ef923b508adbff18e5d079b2e2732b7c83a4335060dd58695fe0098"
+    },
+    {
+      "path": "app/game/FirstHuntSoloV67.module.css",
+      "sha256": "bcb22ecad2287f97b1c9f8474469a95b82175e87431a43fd0f0f311aa9a523cc"
+    },
+    {
+      "path": "app/game/firstHuntSoloV67Rendering.ts",
+      "sha256": "38bdc112a1ed2f03c832e615bab736cdbaccea6f53f48a75c4efdca31c4c4c06"
+    },
+    {
+      "path": "app/game/systems/firstHuntSoloV67.ts",
+      "sha256": "89d6ff7bc20da877be489a970b7a719b26507165a929ffe00b7657bc0251655e"
+    },
+    {
+      "path": "app/game/systems/campaignSoloV67.ts",
+      "sha256": "19ff79371d62e12e415c61e223bf96cf9a58335920340674eeefb8a3f52a4b86"
+    },
+    {
+      "path": "scripts/verify-first-hunt-solo-v67.mjs",
+      "sha256": "d51c6ce67795f524e30a46ef6e7641fe6c0425c6c58e9a0bffdf1d295b5f459d"
+    }
+  ],
+  "releaseStatus": "LOCAL_ONLY_V67_NOT_YET_PUBLIC"
+}

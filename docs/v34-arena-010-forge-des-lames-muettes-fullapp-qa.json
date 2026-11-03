@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-13T00:38:24.773Z",
+  "surface": "full-application-play-pit-training",
+  "verifiedContentVersion": "V35",
+  "fighters": [
+    "tracker",
+    "greyback"
+  ],
+  "fighterArtStates": [
+    {
+      "slot": 0,
+      "fighterId": "tracker",
+      "facing": "right",
+      "idleStatus": "sprite-sheet-animation"
+    },
+    {
+      "slot": 1,
+      "fighterId": "greyback",
+      "facing": "left",
+      "idleStatus": "sprite-sheet-animation"
+    }
+  ],
+  "url": "http://127.0.0.1:4173",
+  "checks": [
+    {
+      "name": "live-match",
+      "arena": "arena-010-forge-des-lames-muettes",
+      "planes": "P0,P1,P2,P3,P4,P5",
+      "source": "openai-v33-independent",
+      "loadedImages": 14,
+      "subplans": 14,
+      "missing": 0
+    }
+  ],
+  "loadedImageFiles": [
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p0-a-depth.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p1-a-distant-left.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p1-b-distant-right.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p2-a-support-left.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p2-b-support-right.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p2-c-central-structure.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-a-prop-left.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-b-prop-right.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-c-light-left.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-d-light-right.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-a-foreground-left.png",
+    "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-b-foreground-right.png"
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": []
+}

@@ -1,0 +1,355 @@
+TAP version 13
+# Subtest: V110 preserves its exact97 sheet baseline,56 open requirements and354 art targets as separate inventories
+ok 1 - V110 preserves its exact97 sheet baseline,56 open requirements and354 art targets as separate inventories
+  ---
+  duration_ms: 2512.824663
+  type: 'test'
+  ...
+# Subtest: unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+ok 2 - unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+  ---
+  duration_ms: 7.259824
+  type: 'test'
+  ...
+# Traceback (most recent call last):
+#   File "/tmp/yautja-v110-history-v111-tZjcDp/scripts/build-excel-followup-v110.py", line 25, in <module>
+#     json.dump(append.verify_workbook(payload), sys.stdout, ensure_ascii=True)
+#               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#   File "/tmp/yautja-v110-history-v111-tZjcDp/scripts/lib/excel_followup_append.py", line 105, in verify_workbook
+#     assert set(changed) <= ASSEMBLY_PARTS, changed
+#            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# AssertionError: ['[Content_Types].xml', 'xl/_rels/workbook.xml.rels', 'xl/styles.xml', 'xl/workbook.xml', 'xl/worksheets/v109-sheet-86.xml']
+# Subtest: 105 worksheets retain all97 historical parts, styles, formulas and cells exactly
+ok 3 - 105 worksheets retain all97 historical parts, styles, formulas and cells exactly
+  ---
+  duration_ms: 3128.705335
+  type: 'test'
+  ...
+# Subtest: a V109 browser recipe cannot be relabelled as V110 validation
+ok 4 - a V109 browser recipe cannot be relabelled as V110 validation
+  ---
+  duration_ms: 11.590545
+  type: 'test'
+  ...
+# Subtest: V110 workbook and metadata regenerate exactly without executing browser or nativeExcel
+ok 5 - V110 workbook and metadata regenerate exactly without executing browser or nativeExcel
+  ---
+  duration_ms: 6243.51524
+  type: 'test'
+  ...
+# Subtest: the certified V109 source and its 12 unchanged test files remain private while V110 imports stay current
+ok 6 - the certified V109 source and its 12 unchanged test files remain private while V110 imports stay current
+  ---
+  duration_ms: 3780.742965
+  type: 'test'
+  ...
+# Subtest: tampering with private V109 source is rejected without changing the current Homeworld
+ok 7 - tampering with private V109 source is rejected without changing the current Homeworld
+  ---
+  duration_ms: 1479.90507
+  type: 'test'
+  ...
+# Subtest: the V110 wrapper executes unchanged V109 publication assertions and refuses unreviewed tests
+ok 8 - the V110 wrapper executes unchanged V109 publication assertions and refuses unreviewed tests
+  ---
+  duration_ms: 3386.769472
+  type: 'test'
+  ...
+# Subtest: an actually carried then parked piece stays legible outside the K-17 map without changing its saved coordinates
+ok 9 - an actually carried then parked piece stays legible outside the K-17 map without changing its saved coordinates
+  ---
+  duration_ms: 193.732822
+  type: 'test'
+  ...
+# Subtest: the recorded discovery place stays distinct from current placement after moving and parking the actual object
+ok 10 - the recorded discovery place stays distinct from current placement after moving and parking the actual object
+  ---
+  duration_ms: 62.0609
+  type: 'test'
+  ...
+# Subtest: observation and copied provenance remain separate facts and unrevealed fragment records remain hidden
+ok 11 - observation and copied provenance remain separate facts and unrevealed fragment records remain hidden
+  ---
+  duration_ms: 30.094931
+  type: 'test'
+  ...
+# Subtest: the live journal exposes the map, real actor, provenance and preserved point while another floor never aliases the quay
+ok 12 - the live journal exposes the map, real actor, provenance and preserved point while another floor never aliases the quay
+  ---
+  duration_ms: 58.003715
+  type: 'test'
+  ...
+# Subtest: both completed approaches keep only their genuine observed pieces and retain uncertainty in the displayed record
+ok 13 - both completed approaches keep only their genuine observed pieces and retain uncertainty in the displayed record
+  ---
+  duration_ms: 321.154156
+  type: 'test'
+  ...
+# Subtest: all four outside directions remain projected inside the map while actual coordinates remain available
+ok 14 - all four outside directions remain projected inside the map while actual coordinates remain available
+  ---
+  duration_ms: 0.444936
+  type: 'test'
+  ...
+# Subtest: the two older archive interfaces distinguish their sealed dossiers from the K-17 pieces
+ok 15 - the two older archive interfaces distinguish their sealed dossiers from the K-17 pieces
+  ---
+  duration_ms: 76.510865
+  type: 'test'
+  ...
+# Subtest: V110: real 603-step doorway entry saves, reloads and exits through its actual free standing point
+ok 16 - V110: real 603-step doorway entry saves, reloads and exits through its actual free standing point
+  ---
+  duration_ms: 1499.837014
+  type: 'test'
+  ...
+# Subtest: V110: a legacy interior checkpoint with an occupied authored anchor is retained without inventing an exit
+ok 17 - V110: a legacy interior checkpoint with an occupied authored anchor is retained without inventing an exit
+  ---
+  duration_ms: 30.35604
+  type: 'test'
+  ...
+# Subtest: V110: a replaced cargo owner cannot enter a room or replace the exterior anchor
+ok 18 - V110: a replaced cargo owner cannot enter a room or replace the exterior anchor
+  ---
+  duration_ms: 22.131785
+  type: 'test'
+  ...
+# Subtest: V110 evidence: only a complete compiled recipe with every opened PNG can be certified
+ok 19 - V110 evidence: only a complete compiled recipe with every opened PNG can be certified
+  ---
+  duration_ms: 11.776731
+  type: 'test'
+  ...
+# Subtest: V110 evidence: served HTML identity and nested production counters cannot contradict raw execution
+ok 20 - V110 evidence: served HTML identity and nested production counters cannot contradict raw execution
+  ---
+  duration_ms: 1.070388
+  type: 'test'
+  ...
+# Subtest: V110 evidence: unchanged raw observations still refuse changed, absent or unfrozen source bytes
+ok 21 - V110 evidence: unchanged raw observations still refuse changed, absent or unfrozen source bytes
+  ---
+  duration_ms: 10.40686
+  type: 'test'
+  ...
+# Subtest: V110 evidence: original V109 freeze cannot be replaced to authorize different historical native inputs
+ok 22 - V110 evidence: original V109 freeze cannot be replaced to authorize different historical native inputs
+  ---
+  duration_ms: 3.553146
+  type: 'test'
+  ...
+# Subtest: V110 evidence: the recipe freeze follows the real transitive played fixture loaders
+ok 23 - V110 evidence: the recipe freeze follows the real transitive played fixture loaders
+  ---
+  duration_ms: 108.375018
+  type: 'test'
+  ...
+# Subtest: V110 empty and historical saves preserve intro recommendation and registered routes without ledger writes
+ok 24 - V110 empty and historical saves preserve intro recommendation and registered routes without ledger writes
+  ---
+  duration_ms: 431.163315
+  type: 'test'
+  ...
+# Subtest: V110 K-17 objective tracks real observe, provenance, pickup and own-surface deposit actions
+ok 25 - V110 K-17 objective tracks real observe, provenance, pickup and own-surface deposit actions
+  ---
+  duration_ms: 114.366691
+  type: 'test'
+  ...
+# Subtest: V110 interrupted K-17 retains the exact resumable point and rejects a worker proposal after its step changes
+ok 26 - V110 interrupted K-17 retains the exact resumable point and rejects a worker proposal after its step changes
+  ---
+  duration_ms: 49.94036
+  type: 'test'
+  ...
+# Subtest: V110 source failure recommends the consenting post and B report never invents a fragment objective
+ok 27 - V110 source failure recommends the consenting post and B report never invents a fragment objective
+  ---
+  duration_ms: 226.355344
+  type: 'test'
+  ...
+# Subtest: V110 cargo objective respects owner and depot consent, actual carried destination and physical passage test
+ok 28 - V110 cargo objective respects owner and depot consent, actual carried destination and physical passage test
+  ---
+  duration_ms: 1875.29545
+  type: 'test'
+  ...
+# Subtest: V110 comparison C requires preserved A/B, then directs to discovery, copied provenance, carried C and unobserved supports
+ok 29 - V110 comparison C requires preserved A/B, then directs to discovery, copied provenance, carried C and unobserved supports
+  ---
+  duration_ms: 1961.361819
+  type: 'test'
+  ...
+# Subtest: V110 separate A/B records follow the actual next dossier, carried support and walked report
+ok 30 - V110 separate A/B records follow the actual next dossier, carried support and walked report
+  ---
+  duration_ms: 1514.607306
+  type: 'test'
+  ...
+# Subtest: V110 active manipulation precedes a paused study in a contradictory input without changing either receipt
+ok 31 - V110 active manipulation precedes a paused study in a contradictory input without changing either receipt
+  ---
+  duration_ms: 1061.728173
+  type: 'test'
+  ...
+# Subtest: V110 strict foreign, future, malformed and unseen-port receipts never supply an operation objective
+ok 32 - V110 strict foreign, future, malformed and unseen-port receipts never supply an operation objective
+  ---
+  duration_ms: 7.271632
+  type: 'test'
+  ...
+# Subtest: V110 rejects historical phase lookalikes even where a legacy schema coerces them, without indexing a missing item
+ok 33 - V110 rejects historical phase lookalikes even where a legacy schema coerces them, without indexing a missing item
+  ---
+  duration_ms: 1286.503056
+  type: 'test'
+  ...
+# Subtest: V110 cartography A uses its actual +1 high point and exact interrupted floor instead of an unrelated intro service
+ok 34 - V110 cartography A uses its actual +1 high point and exact interrupted floor instead of an unrelated intro service
+  ---
+  duration_ms: 33.346126
+  type: 'test'
+  ...
+# Subtest: V110 local cartography uses the next real waypoint and frozen historical recommendation remains unchanged
+ok 35 - V110 local cartography uses the next real waypoint and frozen historical recommendation remains unchanged
+  ---
+  duration_ms: 13.642042
+  type: 'test'
+  ...
+# Subtest: V110 atlas renders the operational next action and its selectable marker using the same owner-scoped registry
+ok 36 - V110 atlas renders the operational next action and its selectable marker using the same owner-scoped registry
+  ---
+  duration_ms: 93.296793
+  type: 'test'
+  ...
+# Subtest: V110: the visible existing resident is reached through the same native pose and floor without rewriting the 98 people
+ok 37 - V110: the visible existing resident is reached through the same native pose and floor without rewriting the 98 people
+  ---
+  duration_ms: 8.020393
+  type: 'test'
+  ...
+# Subtest: V110: both real invisible-port reproductions retain a supported player but stop selecting the hidden speaker
+ok 38 - V110: both real invisible-port reproductions retain a supported player but stop selecting the hidden speaker
+  ---
+  duration_ms: 7.76707
+  type: 'test'
+  ...
+# Subtest: V110: a genuinely visible courier behind a blocked short approach cannot be addressed through the obstruction
+ok 39 - V110: a genuinely visible courier behind a blocked short approach cannot be addressed through the obstruction
+  ---
+  duration_ms: 3.47413
+  type: 'test'
+  ...
+# Subtest: V110: owner, room, floor, paused activity, transit, finite clock and exact radius are rechecked before dialogue admission
+ok 40 - V110: owner, room, floor, paused activity, transit, finite clock and exact radius are rechecked before dialogue admission
+  ---
+  duration_ms: 0.300473
+  type: 'test'
+  ...
+# Subtest: V110: resident advice retains only existing public buildings in the acknowledged speaker district and cannot grant discoveries
+ok 41 - V110: resident advice retains only existing public buildings in the acknowledged speaker district and cannot grant discoveries
+  ---
+  duration_ms: 9.618382
+  type: 'test'
+  ...
+# Subtest: V110: the retained callback reads live refs, rejects a replacement dialogue and can recover only after the same current context becomes valid again
+ok 42 - V110: the retained callback reads live refs, rejects a replacement dialogue and can recover only after the same current context becomes valid again
+  ---
+  duration_ms: 6.733083
+  type: 'test'
+  ...
+# Subtest: V110: a lot carried by the actual motor and parked beside the real resident invalidates the old callback until physically picked up again
+ok 43 - V110: a lot carried by the actual motor and parked beside the real resident invalidates the old callback until physically picked up again
+  ---
+  duration_ms: 3064.108538
+  type: 'test'
+  ...
+# Subtest: V110: real conversation subjects and recommended landmark buttons all disable during suspension or pause, while known-place filtering renders explicitly
+ok 44 - V110: real conversation subjects and recommended landmark buttons all disable during suspension or pause, while known-place filtering renders explicitly
+  ---
+  duration_ms: 89.084731
+  type: 'test'
+  ...
+# Subtest: V110: the actual Hub event closure rejects replaced dialogue refs and admission changes before passive owner/pause effects run
+ok 45 - V110: the actual Hub event closure rejects replaced dialogue refs and admission changes before passive owner/pause effects run
+  ---
+  duration_ms: 16.409901
+  type: 'test'
+  ...
+# Subtest: V110: a queued invalid-dialogue close cannot dismiss a newer conversation and otherwise returns focus once
+ok 46 - V110: a queued invalid-dialogue close cannot dismiss a newer conversation and otherwise returns focus once
+  ---
+  duration_ms: 2.977707
+  type: 'test'
+  ...
+# Subtest: V110: the actual opening publishes the exact live clock so a valid moving speaker at the radius edge is not immediately dismissed
+ok 47 - V110: the actual opening publishes the exact live clock so a valid moving speaker at the radius edge is not immediately dismissed
+  ---
+  duration_ms: 14.557196
+  type: 'test'
+  ...
+# Subtest: V110: real 1418-step cargo placement no longer traps a hunter descending the council stair
+ok 48 - V110: real 1418-step cargo placement no longer traps a hunter descending the council stair
+  ---
+  duration_ms: 4649.530078
+  type: 'test'
+  ...
+# Subtest: V110: every unchanged connector journey has frame-by-frame no-cargo parity
+ok 49 - V110: every unchanged connector journey has frame-by-frame no-cargo parity
+  ---
+  duration_ms: 28.224733
+  type: 'test'
+  ...
+# Subtest: V110: last-frame admission reads the latest placements and does not reuse a stale clear result
+ok 50 - V110: last-frame admission reads the latest placements and does not reuse a stale clear result
+  ---
+  duration_ms: 1.46815
+  type: 'test'
+  ...
+# Subtest: V110: paused and non-advancing transitions keep their exact previous objects even above an occupied arrival
+ok 51 - V110: paused and non-advancing transitions keep their exact previous objects even above an occupied arrival
+  ---
+  duration_ms: 0.431508
+  type: 'test'
+  ...
+# Subtest: V110: arrival admission uses the full current body, genuine static solids and the actual floor
+ok 52 - V110: arrival admission uses the full current body, genuine static solids and the actual floor
+  ---
+  duration_ms: 0.701427
+  type: 'test'
+  ...
+# Subtest: V110: all ordinary regional returns preserve the original authored arrival
+ok 53 - V110: all ordinary regional returns preserve the original authored arrival
+  ---
+  duration_ms: 1.500518
+  type: 'test'
+  ...
+# Subtest: V110: regional return skips occupied public approaches and refuses when all authored sockets are blocked
+ok 54 - V110: regional return skips occupied public approaches and refuses when all authored sockets are blocked
+  ---
+  duration_ms: 3.310584
+  type: 'test'
+  ...
+# Subtest: V110: interior exits retain every exact doorway and refuse a newly occupied anchor without changing it
+ok 55 - V110: interior exits retain every exact doorway and refuse a newly occupied anchor without changing it
+  ---
+  duration_ms: 5.70788
+  type: 'test'
+  ...
+# Subtest: V110: malformed, future or foreign cargo cannot be ignored to admit an exterior arrival
+ok 56 - V110: malformed, future or foreign cargo cannot be ignored to admit an exterior arrival
+  ---
+  duration_ms: 1.440931
+  type: 'test'
+  ...
+1..56
+# tests 56
+# suites 0
+# pass 56
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 51578.688777
+{"result":"PASS_HISTORICAL_REGENERATION","release":"V110","sourceCommit":"dff1f6734284891b5a24238f890070616a8325cc","frozenInputsVerified":1386,"originalTestFiles":8,"originalTestsExecuted":true,"sha256":"0b7d7890c8d235a9cda0f6d61c62001efe150f2c4022924c20d88196afcdbd7c","bytes":6260095,"currentRuntimeCovered":false,"sourceBaseCommit":"def899ad07fea582053c5c204e4e578d8e0d7f9b","originalCheckerUnmodified":true}

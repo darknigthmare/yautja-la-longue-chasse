@@ -1,0 +1,1536 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-05",
+  "provider": "OpenAI built-in imagegen",
+  "scope": "partial-character-animation-production",
+  "fullRosterManifest": "roster.json",
+  "completeCharacterIds": [],
+  "validatedClipCount": 0,
+  "integratedIntoGameplay": false,
+  "sourcePolicy": "Original opaque PNG preserved; explicit color-key only during preview rendering.",
+  "selectedSheets": [
+    {
+      "id": "jungle-walk-guided",
+      "characterId": "jungle-hunter",
+      "name": "Jungle Hunter",
+      "clip": "walk",
+      "cols": 4,
+      "rows": 2,
+      "status": "rejected",
+      "notes": [
+        "Cycle incomplet : les contacts des jambes ne s'alternent pas correctement.",
+        "Canvas 1672×941 : la grille 4×2 n'est pas divisible verticalement.",
+        "Pivots et retour de boucle à redessiner."
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            418,
+            470
+          ],
+          "pivot": [
+            209,
+            404.2
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 38240,
+          "edgePixels": 0,
+          "bbox": [
+            99,
+            56,
+            210,
+            348
+          ],
+          "pixelsSha256": "ab33e2ee8a43bf44c3e369bb42f80900864657ffd3d7661f5b1673325dca08f1",
+          "review": "Contact ambigu, jambe avant à comparer à la cellule5."
+        },
+        {
+          "index": 1,
+          "rect": [
+            418,
+            0,
+            418,
+            470
+          ],
+          "pivot": [
+            209,
+            404.2
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 36162,
+          "edgePixels": 0,
+          "bbox": [
+            94,
+            60,
+            175,
+            344
+          ],
+          "pixelsSha256": "c505f602e02132f0e0bf24e1bda93a8c18725d710f05524008955508def74d41",
+          "review": "Compression insuffisamment distincte du contact."
+        },
+        {
+          "index": 2,
+          "rect": [
+            836,
+            0,
+            418,
+            470
+          ],
+          "pivot": [
+            209,
+            404.2
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 35235,
+          "edgePixels": 0,
+          "bbox": [
+            95,
+            53,
+            163,
+            352
+          ],
+          "pixelsSha256": "f586b8eee0bb002b872d7b469f41cfff742e6e13ca2c37cad8d3272ddeca36c9",
+          "review": "Pose de passage présente, alternance à reprendre."
+        },
+        {
+          "index": 3,
+          "rect": [
+            1254,
+            0,
+            418,
+            470
+          ],
+          "pivot": [
+            209,
+            404.2
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 37486,
+          "edgePixels": 0,
+          "bbox": [
+            66,
+            59,
+            209,
+            343
+          ],
+          "pixelsSha256": "cb1b30ccde6f99f3e1388b7e9caf42d717fb293a2676e9d5aed31869a2935ae7",
+          "review": "Retour prématuré au contact de la première cellule."
+        },
+        {
+          "index": 4,
+          "rect": [
+            0,
+            470,
+            418,
+            471
+          ],
+          "pivot": [
+            209,
+            405.06
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 38285,
+          "edgePixels": 0,
+          "bbox": [
+            90,
+            21,
+            224,
+            348
+          ],
+          "pixelsSha256": "83e2ca720aec128f235669a4a362392d507fdaf9aab67ad578ec46ec0e8b7fae",
+          "review": "Contact trop semblable à1 pour représenter l'autre jambe."
+        },
+        {
+          "index": 5,
+          "rect": [
+            418,
+            470,
+            418,
+            471
+          ],
+          "pivot": [
+            209,
+            405.06
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 37417,
+          "edgePixels": 0,
+          "bbox": [
+            90,
+            29,
+            200,
+            342
+          ],
+          "pixelsSha256": "ef19cd5fbdec09de5a57803c20bce6b042940859cb699d63c3512f40cd666057",
+          "review": "Transfert d'appui incomplet."
+        },
+        {
+          "index": 6,
+          "rect": [
+            836,
+            470,
+            418,
+            471
+          ],
+          "pivot": [
+            209,
+            405.06
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 32413,
+          "edgePixels": 0,
+          "bbox": [
+            115,
+            21,
+            146,
+            352
+          ],
+          "pixelsSha256": "cf01939032e8deb835246af33797950391a7c75bedc875f992716882210d271d",
+          "review": "Autre pose de passage, ordre du cycle incohérent."
+        },
+        {
+          "index": 7,
+          "rect": [
+            1254,
+            470,
+            418,
+            471
+          ],
+          "pivot": [
+            209,
+            405.06
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 37568,
+          "edgePixels": 0,
+          "bbox": [
+            60,
+            22,
+            199,
+            349
+          ],
+          "pixelsSha256": "c53a22fdc62464aa6cbda56fc363f660463091b52c789cab9f3a13203542ba25",
+          "review": "Transition vers1 non validée."
+        }
+      ],
+      "file": "sources/jungle-walk-guided.png",
+      "promptPath": "prompts/jungle-walk-guided.txt",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1583363,
+      "hasAlpha": false,
+      "sha256": "4534e19c9f049cd91747a2c32b51fa4ce13433e93d0551124fea3d370c178645",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48
+      },
+      "orientation": "right",
+      "complete": false,
+      "filmOneToOneCertified": false,
+      "gridDivisible": false,
+      "cellsTouchingBorder": [],
+      "sourceReference": "public/game/assets/v23/pit/fighters/jungle-hunter-key-art.webp"
+    },
+    {
+      "id": "city-thrust-fixed",
+      "characterId": "city-hunter",
+      "name": "City Hunter",
+      "clip": "combistick-thrust",
+      "cols": 3,
+      "rows": 2,
+      "status": "draft",
+      "notes": [
+        "Mains et continuité du manche améliorées par la correction OpenAI.",
+        "La fente dépasse encore la cellule4 ; longueur apparente du manche variable.",
+        "Pivots et distance des prises à stabiliser avant intégration."
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 24746,
+          "edgePixels": 0,
+          "bbox": [
+            82,
+            142,
+            373,
+            283
+          ],
+          "pixelsSha256": "f75c76b97d8a18a8c30726ce41644842afd51a7ea64b3e5809ef95686d7a51eb",
+          "review": "Deux prises lisibles, arme entière."
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 25172,
+          "edgePixels": 0,
+          "bbox": [
+            26,
+            153,
+            373,
+            271
+          ],
+          "pixelsSha256": "754e302ca3efa01a18fba5b365fcfac69b89f1023fbfb2e4763ea5e58a85dde6",
+          "review": "Anticipation dessinée, vérifier fixité des prises."
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 24185,
+          "edgePixels": 0,
+          "bbox": [
+            6,
+            156,
+            416,
+            268
+          ],
+          "pixelsSha256": "da6c0c366270ff526c14366d544826710caa355ce7878474bd6b7b20a764faa8",
+          "review": "Partie arrière de la lance restaurée ; longueur à harmoniser."
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 24347,
+          "edgePixels": 6,
+          "bbox": [
+            81,
+            103,
+            431,
+            240
+          ],
+          "pixelsSha256": "76243b51705596d5bb90f5a2d8889a9395e76ecbb63b9cfb059e2a1d277fff30",
+          "review": "Fente lisible mais pointe hors cellule4."
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 24616,
+          "edgePixels": 6,
+          "bbox": [
+            0,
+            80,
+            446,
+            270
+          ],
+          "pixelsSha256": "8e89dde0f3f52d6146766eca089c64d5cc2206610aa720c9ca62f009a9a5013e",
+          "review": "Retrait et prises présents ; appuis à aligner."
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 23349,
+          "edgePixels": 0,
+          "bbox": [
+            6,
+            77,
+            375,
+            274
+          ],
+          "pixelsSha256": "ff461af826793a688882e87ed89bed63c421b4f5a496022015e3ba66ee3ada57",
+          "review": "Retour en garde ; comparer échelle et ancrage à1."
+        }
+      ],
+      "file": "sources/city-thrust-fixed.png",
+      "promptPath": "prompts/city-thrust-fixed.txt",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1579540,
+      "hasAlpha": false,
+      "sha256": "98e713cbaa1ff51d6af63ef16c5953abdaf048651a470f0b554624d08becebdc",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48
+      },
+      "orientation": "right",
+      "complete": false,
+      "filmOneToOneCertified": false,
+      "gridDivisible": true,
+      "cellsTouchingBorder": [
+        3,
+        4
+      ],
+      "sourceReference": "public/game/assets/v23/pit/fighters/city-hunter-key-art.webp"
+    },
+    {
+      "id": "wolf-high-guard",
+      "characterId": "wolf",
+      "name": "Wolf",
+      "clip": "high-guard",
+      "cols": 3,
+      "rows": 2,
+      "status": "draft",
+      "notes": [
+        "Six étapes de garde et réaction lisibles, deux canons conservés.",
+        "Pivots et taille apparente entre rangées à contrôler en lecture.",
+        "Fidélité du masque issue d'une adaptation de projet, pas certifiée1:1."
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 61003,
+          "edgePixels": 0,
+          "bbox": [
+            172,
+            78,
+            271,
+            418
+          ],
+          "pixelsSha256": "8f160a8ea7ab497d154eb778cfb358e23a039ae529563f375d3b12cab0262969",
+          "review": "Garde basse initiale et deux poings lisibles."
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 55787,
+          "edgePixels": 0,
+          "bbox": [
+            121,
+            84,
+            271,
+            412
+          ],
+          "pixelsSha256": "15232361341255305a1312147540fce51bc653bfd7bf5be302e7d6969a678a02",
+          "review": "Deux avant-bras montent vers le masque."
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 50229,
+          "edgePixels": 0,
+          "bbox": [
+            75,
+            100,
+            256,
+            396
+          ],
+          "pixelsSha256": "b974275db1aa8e6940b8a660036b961506db14f0d25cba31c91e0ea82a0efb57",
+          "review": "Protection haute et inclinaison du masque."
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 47168,
+          "edgePixels": 0,
+          "bbox": [
+            169,
+            92,
+            255,
+            366
+          ],
+          "pixelsSha256": "15f8d49ac8228f2ddccd6197cfbc3843f79d02628bc058e9a18697cf20276920",
+          "review": "Recul et flexion sous impact invisible."
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 52594,
+          "edgePixels": 0,
+          "bbox": [
+            122,
+            75,
+            267,
+            383
+          ],
+          "pixelsSha256": "779d17e4624f00ce4a33648894958bfeec08af16b0f1009df604ef7bea82eaf1",
+          "review": "Descente des bras et retour de poids."
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 58832,
+          "edgePixels": 0,
+          "bbox": [
+            85,
+            55,
+            271,
+            403
+          ],
+          "pixelsSha256": "bf18691d3725df81c009f5282c1099ce7a4a8e3fbc0e55dc3dc7f4daa44d697b",
+          "review": "Garde finale, retour temporel à contrôler."
+        }
+      ],
+      "file": "sources/wolf-high-guard.png",
+      "promptPath": "prompts/wolf-high-guard.txt",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2029087,
+      "hasAlpha": false,
+      "sha256": "d911dcc7763030c3ad64f4abe182d1e7a2d377c7eb367d04e74510062b7d9e8b",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48
+      },
+      "orientation": "right",
+      "complete": false,
+      "filmOneToOneCertified": false,
+      "gridDivisible": true,
+      "cellsTouchingBorder": [],
+      "sourceReference": "public/game/assets/v23/pit/fighters/wolf-key-art.webp"
+    },
+    {
+      "id": "celtic-shoulder-check",
+      "characterId": "celtic",
+      "name": "Celtic",
+      "clip": "shoulder-check",
+      "cols": 3,
+      "rows": 2,
+      "status": "rejected",
+      "notes": [
+        "La cellule3 représente un coup de poing, pas la percussion d'épaule attendue.",
+        "Débordement de cellule et déplacements d'appuis.",
+        "Biomask et armure à confronter aux vues officielles."
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 64626,
+          "edgePixels": 0,
+          "bbox": [
+            96,
+            62,
+            317,
+            419
+          ],
+          "pixelsSha256": "3739b1d43d09525ab1bdbd7453d09929b0c50d9a22a96269bdbe0c574b81841a",
+          "review": "Garde initiale, mains fermées."
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 57657,
+          "edgePixels": 75,
+          "bbox": [
+            74,
+            127,
+            438,
+            352
+          ],
+          "pixelsSha256": "b4e12d819648e82a55b3e102129197e300eaf214d3beb143c5d6ec6055b6b5b4",
+          "review": "Compression très profonde, appui arrière à contrôler."
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 61189,
+          "edgePixels": 75,
+          "bbox": [
+            0,
+            142,
+            447,
+            337
+          ],
+          "pixelsSha256": "4e88a67c6fa9c6c50ef58f5f10bd02a4bf306206ab7cc21a93dc8a267a06ef4f",
+          "review": "Action incorrecte : bras tendu en coup de poing ; débordement."
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 65964,
+          "edgePixels": 0,
+          "bbox": [
+            78,
+            86,
+            429,
+            351
+          ],
+          "pixelsSha256": "8fb864358643a44bbd9590e78203e38c9653db13c94de5be3342f4849faee847",
+          "review": "Épaule plus lisible, ancrage à reconstruire."
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 61014,
+          "edgePixels": 0,
+          "bbox": [
+            112,
+            36,
+            306,
+            402
+          ],
+          "pixelsSha256": "d92f80487e646398b4c4a3e61bbde7191600b358b01e9c5ba55cf000d65e9d7f",
+          "review": "Récupération dessinée mais translation marquée."
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 64655,
+          "edgePixels": 0,
+          "bbox": [
+            32,
+            27,
+            317,
+            418
+          ],
+          "pixelsSha256": "0496425ed9bd60f2911700f6e91090a16e1da9dcacc9c525a2ec331c525987d6",
+          "review": "Retour de garde à rapprocher de1."
+        }
+      ],
+      "file": "sources/celtic-shoulder-check.png",
+      "promptPath": "prompts/celtic-shoulder-check.txt",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2159508,
+      "hasAlpha": false,
+      "sha256": "a07ca99e8c6d3dfb7c965f9d6fbcef5677031a5ff79ac9164fb5c0dc39005076",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48
+      },
+      "orientation": "right",
+      "complete": false,
+      "filmOneToOneCertified": false,
+      "gridDivisible": true,
+      "cellsTouchingBorder": [
+        1,
+        2
+      ],
+      "sourceReference": "public/game/sprites/v5/film-plates/celtic.png"
+    },
+    {
+      "id": "scar-caster-aim",
+      "characterId": "scar",
+      "name": "Scar",
+      "clip": "caster-control",
+      "cols": 3,
+      "rows": 2,
+      "status": "rejected",
+      "notes": [
+        "Commande du gantelet anatomiquement ambiguë et boîtier sur mauvais avant-bras dans plusieurs cellules.",
+        "Trajectoire du doigt ne démontre pas l'appui correct sur le dispositif.",
+        "Ne pas recopier ces erreurs dans les autres actions."
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 57766,
+          "edgePixels": 0,
+          "bbox": [
+            148,
+            92,
+            277,
+            405
+          ],
+          "pixelsSha256": "70138835701ca47f643d966e241af22b792c490811f65b62c96ab1feb293c67f",
+          "review": "Boîtier visible côté proche : référence anatomique à corriger."
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 57235,
+          "edgePixels": 0,
+          "bbox": [
+            80,
+            95,
+            270,
+            402
+          ],
+          "pixelsSha256": "d8eaa07d5aab3b4ae1bc09f9fca727de1024ba594b94bb4e2fd2220ef88987c9",
+          "review": "Changement trop faible et même problème d'équipement."
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 52158,
+          "edgePixels": 0,
+          "bbox": [
+            46,
+            95,
+            305,
+            402
+          ],
+          "pixelsSha256": "a458763292b5ad41fa38245d7767446ea1b87c2a9a9126c3706bfbfccc2efb3b",
+          "review": "Main croisée mais contact avec le gantelet non établi."
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 50902,
+          "edgePixels": 0,
+          "bbox": [
+            144,
+            35,
+            285,
+            404
+          ],
+          "pixelsSha256": "fd62639b82707666c4f686ee099c510955c26159d7b96fed2dda201041cd4482",
+          "review": "Geste et côtés de gantelet incohérents."
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 56781,
+          "edgePixels": 0,
+          "bbox": [
+            86,
+            35,
+            322,
+            404
+          ],
+          "pixelsSha256": "3c10054a8fbfa468907883c5ba0ca0fc302da368020b919e9944d7cead0aa5b5",
+          "review": "Sortie du geste sans maintien cohérent du boîtier."
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 56808,
+          "edgePixels": 0,
+          "bbox": [
+            48,
+            37,
+            276,
+            402
+          ],
+          "pixelsSha256": "9db209a819ad85f08382d23da771e1cdc0b501c2e040fc27d2ba43724538b1f9",
+          "review": "Garde finale héritant du placement erroné."
+        }
+      ],
+      "file": "sources/scar-caster-aim.png",
+      "promptPath": "prompts/scar-caster-aim.txt",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2078138,
+      "hasAlpha": false,
+      "sha256": "84f765c03164473ab90d5c978ac62225bb2229af2106af826797d7ebd12e2b44",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48
+      },
+      "orientation": "right",
+      "complete": false,
+      "filmOneToOneCertified": false,
+      "gridDivisible": true,
+      "cellsTouchingBorder": [],
+      "sourceReference": "public/game/sprites/v5/film-plates/scar.png"
+    },
+    {
+      "id": "falconer-drone-command",
+      "characterId": "falconer",
+      "name": "Falconer",
+      "clip": "drone-control",
+      "cols": 3,
+      "rows": 2,
+      "status": "rejected",
+      "notes": [
+        "Motif de résille encore présent malgré la correction demandée.",
+        "Dispositif dorsal et boîtier ne démontrent pas le drone exact du film.",
+        "Canon visuel et manipulation à corriger avant acceptation."
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 54688,
+          "edgePixels": 0,
+          "bbox": [
+            185,
+            36,
+            241,
+            452
+          ],
+          "pixelsSha256": "e8badcc10d0e6c2a96fb1fc183c3babc7ae9fb7a82f2eaacb8a435c4e6a65ad5",
+          "review": "Résille incorrecte conservée sur le corps."
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 55772,
+          "edgePixels": 0,
+          "bbox": [
+            122,
+            36,
+            274,
+            452
+          ],
+          "pixelsSha256": "9aad74c37b49b14bb8919944359a713460f585e40e692511a11a70d148cdaf52",
+          "review": "Boîtier levé, identité visuelle toujours à corriger."
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 50123,
+          "edgePixels": 0,
+          "bbox": [
+            59,
+            39,
+            269,
+            451
+          ],
+          "pixelsSha256": "2fe173caaa6161b7c58fbba4aaf29017c42689d2f8d2f8ef263b8035e77b5f51",
+          "review": "Contact index/gantelet approximatif et objet dorsal ambigu."
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 54441,
+          "edgePixels": 0,
+          "bbox": [
+            185,
+            30,
+            266,
+            451
+          ],
+          "pixelsSha256": "dbabe00e6fe3dffbec4bfe68934e1a68664450176890a5637ac76e605b3d3874",
+          "review": "Regard relevé correctement, équipement non validé."
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 51607,
+          "edgePixels": 0,
+          "bbox": [
+            120,
+            32,
+            267,
+            451
+          ],
+          "pixelsSha256": "ff197c95fedac7774227e92110b99c0b790624db3c9c1265346bc6be525680c7",
+          "review": "Sortie de commande lisible mais résille incorrecte."
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 54654,
+          "edgePixels": 0,
+          "bbox": [
+            57,
+            35,
+            241,
+            451
+          ],
+          "pixelsSha256": "8ad5fe8bacde5453ab9723fcd9e7f8e1846eda35993a8ec242e824e1cb975e16",
+          "review": "Retour en garde ; silhouette drone non établie."
+        }
+      ],
+      "file": "sources/falconer-drone-command.png",
+      "promptPath": "prompts/falconer-drone-command.txt",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1992341,
+      "hasAlpha": false,
+      "sha256": "1f7f00d9c9100d9dfbc471e181259cc311851dcb2c62ae06fcfbb6370125a9c9",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48
+      },
+      "orientation": "right",
+      "complete": false,
+      "filmOneToOneCertified": false,
+      "gridDivisible": true,
+      "cellsTouchingBorder": [],
+      "sourceReference": "public/game/sprites/v5/film-plates/falconer.png"
+    },
+    {
+      "id": "feral-shield-guard",
+      "characterId": "feral-hunter",
+      "name": "Feral",
+      "clip": "shield-guard",
+      "cols": 3,
+      "rows": 2,
+      "status": "draft",
+      "notes": [
+        "Ouverture et fermeture segmentées du bouclier lisibles ; bouclier sur avant-bras gauche.",
+        "Contrôler le contact du bouclier avec le bras et l'anatomie des doigts à taille de jeu.",
+        "Aucune certification1:1 et aucune autre animation livrée pour ce personnage."
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 52872,
+          "edgePixels": 0,
+          "bbox": [
+            110,
+            55,
+            307,
+            426
+          ],
+          "pixelsSha256": "359ad70d532c978ac0554cd08d13d803445a9282707ce336ce4fe5f443366abc",
+          "review": "Bouclier replié, deux mains visibles."
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 53627,
+          "edgePixels": 0,
+          "bbox": [
+            95,
+            60,
+            317,
+            421
+          ],
+          "pixelsSha256": "63e01d9711aa2280ba9f37ccf4ea4b3f7fa69edcfe5f908b7eccb09c9d6482af",
+          "review": "Avant-bras gauche levé, segments partiellement ouverts."
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 56015,
+          "edgePixels": 0,
+          "bbox": [
+            62,
+            64,
+            322,
+            417
+          ],
+          "pixelsSha256": "b09d1b56676fbab3c703caaa1e509d2427e28c4cf8d2e40610173365abc1496d",
+          "review": "Ouverture plus large mais légère différence avec2."
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 61663,
+          "edgePixels": 0,
+          "bbox": [
+            100,
+            28,
+            314,
+            423
+          ],
+          "pixelsSha256": "d809bc7b220a15ebbf970999c2695a21ee9b97594bf7d7a2c751fde9c61699bd",
+          "review": "Bouclier déployé devant le torse, bras en partie occulté."
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 53827,
+          "edgePixels": 0,
+          "bbox": [
+            84,
+            30,
+            304,
+            421
+          ],
+          "pixelsSha256": "4b72921afa75c4ee31bdcd09466655a818544cd83c9589ebc29eae7686a3dc29",
+          "review": "Repli intermédiaire lisible."
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 51580,
+          "edgePixels": 0,
+          "bbox": [
+            68,
+            34,
+            301,
+            417
+          ],
+          "pixelsSha256": "5476020453ee42232d18f8a21a3412d90cb3d7435225acf96bc92f80b588448b",
+          "review": "Retour replié, appuis à aligner avec1."
+        }
+      ],
+      "file": "sources/feral-shield-guard.png",
+      "promptPath": "prompts/feral-shield-guard.txt",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2057533,
+      "hasAlpha": false,
+      "sha256": "e4d6057092cb7a495d7349c09cf7a77c0300309bc7bc23af3b5d63ef09f97e62",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48
+      },
+      "orientation": "right",
+      "complete": false,
+      "filmOneToOneCertified": false,
+      "gridDivisible": true,
+      "cellsTouchingBorder": [],
+      "sourceReference": "public/game/sprites/v5/film-plates/feral-hunter.png"
+    },
+    {
+      "id": "berserker-wrist-strike-repair",
+      "characterId": "berserker",
+      "name": "Berserker",
+      "clip": "wrist-strike",
+      "cols": 3,
+      "rows": 2,
+      "status": "draft",
+      "notes": [
+        "Pose2 réparée avec lame alignée sur l'avant-bras, sans manche tenu.",
+        "La lame de la cellule4 dépasse sa cellule ; silhouette du tranchant à vérifier à fort zoom.",
+        "Longueur de lame, ancrage du canon et continuité des appuis restent à valider."
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 64354,
+          "edgePixels": 0,
+          "bbox": [
+            83,
+            91,
+            388,
+            420
+          ],
+          "pixelsSha256": "5e9b05d1952618382d5d39ab2457a227ba12e8d46610edaa81aa9cf65c052dc1",
+          "review": "Lame unique sortie du gantelet, main séparée."
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 56911,
+          "edgePixels": 17,
+          "bbox": [
+            79,
+            17,
+            433,
+            494
+          ],
+          "pixelsSha256": "5a56839680812996d64da9e3ba99c302a7ddfd3333fdc595a2011a7c4ebc2746",
+          "review": "Correction : lame dans l'axe du gantelet ; vérifier les arêtes."
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 54808,
+          "edgePixels": 21,
+          "bbox": [
+            0,
+            123,
+            343,
+            388
+          ],
+          "pixelsSha256": "cc931be2f65a305ca295ca40b2b56c7f4bd92e140f587325a5c3889a99e3ab98",
+          "review": "Descente du bras et lame, trajectoire à rapprocher de2."
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 54749,
+          "edgePixels": 17,
+          "bbox": [
+            92,
+            99,
+            420,
+            357
+          ],
+          "pixelsSha256": "e1f28065d0c613d11f9b4e211e018d184624cb6db0768034b44fc3552d7327ad",
+          "review": "Fin de frappe ; dépassement de la pointe hors cellule4."
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 58318,
+          "edgePixels": 16,
+          "bbox": [
+            0,
+            64,
+            445,
+            403
+          ],
+          "pixelsSha256": "eafc754e1cd7e3e3030f7fd37d6943793f0351a9fa238f0f1ae5c5d940228740",
+          "review": "Retrait à droite, main libre visible."
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            440.32
+          ],
+          "durationTicks": 6,
+          "visiblePixels": 57175,
+          "edgePixels": 0,
+          "bbox": [
+            38,
+            74,
+            340,
+            397
+          ],
+          "pixelsSha256": "4dbfb1966e6702a00545b656670dba9688e92542891cada27353d9c48c2cb08c",
+          "review": "Retour en garde ; cohérence des appuis à reprendre."
+        }
+      ],
+      "file": "sources/berserker-wrist-strike-repair.png",
+      "promptPath": "prompts/berserker-wrist-strike-repair.txt",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2054502,
+      "hasAlpha": false,
+      "sha256": "387ecdbbd478bb61f6072db9d4c6557d5c04c752308ef367e95f5bdd6b08c749",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48
+      },
+      "orientation": "right",
+      "complete": false,
+      "filmOneToOneCertified": false,
+      "gridDivisible": true,
+      "cellsTouchingBorder": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "sourceReference": "public/game/assets/v23/pit/fighters/berserker-key-art.webp"
+    }
+  ],
+  "archivedSources": [
+    {
+      "file": "sources/berserker-wrist-strike.png",
+      "status": "rejected",
+      "reason": "Frame2 shows an incorrectly held/attached blade; superseded by the separately saved repair.",
+      "sha256": "c370fe4b9b7f5ecdf3df7ae9749457750d476ab35bf39ef714dd52688684ba00"
+    }
+  ]
+}

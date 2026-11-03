@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "release": "V65",
+  "status": "TARGETED_PASS_AFTER_NTFS_TEMP_FIX",
+  "checkedAt": "2026-10-01T01:39:17.6131821Z",
+  "diagnosis": "Environment mismatch: I: is exFAT and cannot provide the hard links and directory junctions exercised by six filesystem security tests. The same unchanged24tests pass on C: NTFS.",
+  "volumes": [
+    {
+      "drive": "I:",
+      "format": "exFAT"
+    },
+    {
+      "drive": "C:",
+      "format": "NTFS"
+    }
+  ],
+  "originalGlobalRun": {
+    "log": "I:/CodexTemp/yautja-v65-20261001/tests-full-final.log",
+    "temp": "I:/CodexTemp/yautja-v64-20261001/browser-temp",
+    "filesystemFailuresObserved": 6,
+    "passed": false,
+    "note": "The first full-suite run had failures. This targeted diagnosis does not overwrite that run or claim the global suite passed."
+  },
+  "correctedEnvironment": {
+    "TEMP": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v65\\test-temp",
+    "TMP": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v65\\test-temp",
+    "realpathEqualsConfiguredPath": true,
+    "physicalVolume": "C:",
+    "physicalFormat": "NTFS"
+  },
+  "targeted": {
+    "command": "node --test --test-concurrency=1 tests/chatgpt-download-guard.test.mjs tests/chatgpt-source-capture.test.mjs tests/desktop-build-paths.test.mjs",
+    "tests": 24,
+    "passed": 24,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "log": "work-local/v65/fs-regression-ntfs-final.log",
+    "logSha256": "d78f890ae157c5fb2bf034e5c3cc619bb96142e8941facae84bf9ca4d1f1235a"
+  },
+  "capabilityProbe": [
+    {
+      "base": "I:\\CodexTemp\\yautja-v65-20261001\\fs-regression-temp",
+      "fixture": "I:\\CodexTemp\\yautja-v65-20261001\\fs-regression-temp\\capability-proof-rvG7tT",
+      "operations": [
+        {
+          "operation": "hard-link",
+          "status": "unsupported",
+          "code": "EISDIR",
+          "message": "EISDIR: illegal operation on a directory, link 'I:\\CodexTemp\\yautja-v65-20261001\\fs-regression-temp\\capability-proof-rvG7tT\\source.bin' -> 'I:\\CodexTemp\\yautja-v65-20261001\\fs-regression-temp\\capability-proof-rvG7tT\\linked.bin'"
+        },
+        {
+          "operation": "directory-junction",
+          "status": "unsupported",
+          "code": "EISDIR",
+          "message": "EISDIR: illegal operation on a directory, symlink 'I:\\CodexTemp\\yautja-v65-20261001\\fs-regression-temp\\capability-proof-rvG7tT' -> 'I:\\CodexTemp\\yautja-v65-20261001\\fs-regression-temp\\capability-proof-rvG7tT\\link-dir'"
+        }
+      ]
+    },
+    {
+      "base": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v65\\test-temp",
+      "fixture": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v65\\test-temp\\capability-proof-tflZO2",
+      "operations": [
+        {
+          "operation": "hard-link",
+          "status": "supported"
+        },
+        {
+          "operation": "directory-junction",
+          "status": "supported"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "tests/chatgpt-download-guard.test.mjs",
+      "sha256": "5644dc3917eca5c4d97b81a5b75f028348352e122cde07dcf9580defd41eccac",
+      "changedDuringDiagnosis": false
+    },
+    {
+      "path": "tests/chatgpt-source-capture.test.mjs",
+      "sha256": "10bcd6fc5347d3bb523c60ca7bfe5ae5c47fdbd48e76625bad291c62a7cca936",
+      "changedDuringDiagnosis": false
+    },
+    {
+      "path": "tests/desktop-build-paths.test.mjs",
+      "sha256": "0c041b1c3516db1d096d4d3f19eab3e1db2dd3ff645015801627f96bec1f0cff",
+      "changedDuringDiagnosis": false
+    },
+    {
+      "path": "scripts/lib/chatgpt-download-guard.mjs",
+      "sha256": "d1fc1eb4e4f8102f6b0f0ca732b2ae6a57e1e16a7338e57d02c2d8ddb1c22e68",
+      "changedDuringDiagnosis": false
+    },
+    {
+      "path": "scripts/lib/chatgpt-source-capture.mjs",
+      "sha256": "86f45e1a44bac03bca269bc536a87f146b36afee51def9294549a2144d58f37c",
+      "changedDuringDiagnosis": false
+    },
+    {
+      "path": "desktop/build-paths.mjs",
+      "sha256": "603b545cd7cd1331b0c36bd0312d9328f0c304686caa146e1b59e081fcb47161",
+      "changedDuringDiagnosis": false
+    }
+  ],
+  "protections": {
+    "testsUnchanged": true,
+    "toolsUnchanged": true,
+    "exclusiveHardLinkPromotionRetained": true,
+    "privatePathAndJunctionRejectionRetained": true,
+    "budgetAndDiskChecksRetained": true,
+    "noUserDataRemoved": true
+  },
+  "fullSuiteRerunRequired": true,
+  "fullSuiteRerunVerifiedHere": false,
+  "resolution": "Use the exact verified NTFS TEMP/TMP above for the complete suite. Do not skip junction tests or replace exclusive hard-link promotion with an unsafe overwrite/copy fallback merely to accommodate exFAT."
+}

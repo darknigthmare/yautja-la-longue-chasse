@@ -1,0 +1,3993 @@
+{
+  "version": 8,
+  "assetOrigin": "Original OpenAI image_gen masters plus deterministic project-local morphology; no official bitmap redistributed.",
+  "catalogue": "app/game/ecologyV8.ts",
+  "runtimeRoot": "/game/sprites/v8/ecology",
+  "sheet": {
+    "width": 1536,
+    "height": 192,
+    "frameWidth": 256,
+    "frameHeight": 192,
+    "frameOrder": [
+      "idle",
+      "move-a",
+      "move-b",
+      "attack",
+      "hit",
+      "death"
+    ],
+    "format": "PNG RGBA"
+  },
+  "counts": {
+    "planets": 8,
+    "assignments": 240,
+    "endemicDefinitions": 192,
+    "sharedDefinitions": 6,
+    "physicalSheets": 198,
+    "explicitSupplementalSheets": 65,
+    "genericFallbackSheets": 0
+  },
+  "genericFallbackSpriteIds": [],
+  "entries": [
+    {
+      "spriteId": "v8/oseris-iv/canopy-razorwing",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/canopy-razorwing-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/canopy-razorwing-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#101811",
+          "#315e4c",
+          "#88d0a4"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/amber-jaw-stalker",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/hell-hound-stalker-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#09150f",
+          "#567348",
+          "#ddb65b"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/vineback-grazer",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/vineback-grazer-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Herbivore alien quadrupède lourd, museau brouteur large, quatre pattes porteuses et dos cuirassé couvert de lianes vivantes.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a1-oseris-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#180f0b",
+          "#6e4323",
+          "#e4a94d"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.08,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/mist-pouncer",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/mist-pouncer-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/hell-hound-stalker-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#09150f",
+          "#567348",
+          "#ddb65b"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.97,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/drumcrest-herdling",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/drumcrest-herdling-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/razorback-grazer-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#180f0b",
+          "#6e4323",
+          "#e4a94d"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.91,
+        "morphologyScaleY": 0.91
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/mirror-chameleon",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/mirror-chameleon-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Petit reptile alien bas sur pattes, quatre membres préhensiles, queue enroulée, œil tourelle et écailles prismatiques réfléchissantes.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a1-oseris-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#09150f",
+          "#567348",
+          "#ddb65b"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 1.05,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/root-burrower",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/root-burrower-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/volcanic-ashmaw-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#101811",
+          "#315e4c",
+          "#88d0a4"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.99,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/thunder-macaque",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/thunder-macaque-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Primate alien robuste, thorax massif, longs avant-bras, jambes plus courtes, poings lourds et nodules bioélectriques.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a1-oseris-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#180f0b",
+          "#6e4323",
+          "#e4a94d"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/needle-frog",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/needle-frog-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Grenouille alien toxique trapue, quatre membres amphibies écartés, gorge gonflable et aiguilles rigides sur le dos et les cuisses.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a1-oseris-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#09150f",
+          "#567348",
+          "#ddb65b"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 0.95
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/coil-serpent",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/coil-serpent-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Grand serpent arboricole sans membres, longues boucles musculaires, tête anguleuse, queue préhensile et crête d’écailles.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a1-oseris-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#180f0b",
+          "#6e4323",
+          "#e4a94d"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 0.91
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/carnivore-vine",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/carnivore-vine-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/carnivore-vine-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#101811",
+          "#315e4c",
+          "#88d0a4"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 1.08
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/spore-bloom",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/spore-bloom-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/spore-bloom-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#101811",
+          "#315e4c",
+          "#88d0a4"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 1.05
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/sentinel-orchid",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/sentinel-orchid-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/sentinel-orchid-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#09150f",
+          "#567348",
+          "#ddb65b"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.94,
+        "morphologyScaleY": 0.99
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/strangler-fig",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/strangler-fig-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/carnivore-vine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#180f0b",
+          "#6e4323",
+          "#e4a94d"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 0.98
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/dart-pod",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/dart-pod-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/acid-pitcher-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#09150f",
+          "#567348",
+          "#ddb65b"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.99,
+        "morphologyScaleY": 0.95
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/walking-mangrove",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/walking-mangrove-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Palétuvier alien conscient, tronc noueux unique, couronne de branches, feuillage pendant et six racines-échasses locomotrices distinctes.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a2-oseris-nivalis-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#180f0b",
+          "#6e4323",
+          "#e4a94d"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 1.08
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/resin-trap",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/resin-trap-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/grapple-root-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#180f0b",
+          "#6e4323",
+          "#e4a94d"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.08,
+        "morphologyScaleY": 0.96
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/vey-jungle-marine",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/vey-jungle-marine-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-marine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#101811",
+          "#315e4c",
+          "#88d0a4"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 1.08,
+        "morphologyScaleY": 0.95
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/owlf-counterhunter",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/owlf-counterhunter-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/owlf-commando-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#180f0b",
+          "#6e4323",
+          "#e4a94d"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.0,
+        "morphologyScaleY": 1.08
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/canopy-sniper",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/canopy-sniper-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-sniper-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#09150f",
+          "#567348",
+          "#ddb65b"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.03,
+        "morphologyScaleY": 1.05
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/frontier-poacher",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/frontier-poacher-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/frontier-raider-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#180f0b",
+          "#6e4323",
+          "#e4a94d"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 1.05,
+        "morphologyScaleY": 0.99
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/corporate-juggernaut",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/corporate-juggernaut-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/corporate-heavy-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#09150f",
+          "#567348",
+          "#ddb65b"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 1.0
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/jungle-smuggler-drone",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/jungle-smuggler-drone-sheet.png",
+      "anatomyFamily": "mech",
+      "anatomy": "Drone éclaireur volant compact, coque mécanique facettée, deux propulseurs latéraux, œil capteur et manipulateur-outil sous le châssis.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a2-oseris-nivalis-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#180f0b",
+          "#6e4323",
+          "#e4a94d"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 1.03
+      }
+    },
+    {
+      "spriteId": "v8/oseris-iv/jungle-xeno-scout",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/oseris-iv/jungle-xeno-scout-sheet.png",
+      "anatomyFamily": "xeno",
+      "anatomy": "Xenomorph body plan",
+      "source": "v7/xeno-drone-sheet.png",
+      "sourceMatch": "family-v7",
+      "transform": {
+        "palette": [
+          "#180f0b",
+          "#6e4323",
+          "#e4a94d"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 1.06,
+        "morphologyScaleY": 1.0
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/cryostalker-alpha-spawn",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/cryostalker-alpha-spawn-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/cryostalker-alpha-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#0c1020",
+          "#4b5f9d",
+          "#d9e4ff"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.05,
+        "morphologyScaleY": 1.08
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/kalisk-juvenile",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/kalisk-juvenile-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/kalisk-juvenile-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#10161a",
+          "#77939b",
+          "#edf7ec"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.05,
+        "morphologyScaleY": 0.93
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/lv1201-rimewing",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/lv1201-rimewing-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/canopy-razorwing-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#0c1020",
+          "#4b5f9d",
+          "#d9e4ff"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/razorback-grazer",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/razorback-grazer-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/razorback-grazer-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#10161a",
+          "#77939b",
+          "#edf7ec"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 1.03
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/ice-bore",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/ice-bore-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Fouisseur polaire trapu, corps cuirassé allongé, quatre membres excavateurs, griffes-pelles et rostre conique de forage.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a2-oseris-nivalis-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0c1020",
+          "#4b5f9d",
+          "#d9e4ff"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/rime-claw",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/rime-claw-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/cryostalker-alpha-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#07121b",
+          "#477d91",
+          "#d6f5f2"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 1.07,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/frost-manta",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/frost-manta-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Manta alien planeuse des neiges, corps plat en losange, deux nageoires latérales flexibles, longue queue stabilisatrice et crêtes gelées.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a2-oseris-nivalis-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0c1020",
+          "#4b5f9d",
+          "#d9e4ff"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.97,
+        "morphologyScaleY": 1.08
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/glacier-ram",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/glacier-ram-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Bélier glaciaire quadrupède lourd, quatre sabots, cou épais, crâne en coin et deux énormes cornes translucides recourbées vers l’avant.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a2-oseris-nivalis-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#10161a",
+          "#77939b",
+          "#edf7ec"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.97,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/pale-burrower",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/pale-burrower-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/volcanic-ashmaw-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#10161a",
+          "#77939b",
+          "#edf7ec"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.08,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/aurora-leech",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/aurora-leech-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Grande sangsue polaire sans membres, corps segmenté translucide, ventouse buccale circulaire dentée et organes internes bioluminescents cyan-violet.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a3-nivalis-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#10161a",
+          "#77939b",
+          "#edf7ec"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 0.94
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/snow-prowler",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Félin polaire alien élancé, quatre longues pattes, épaules basses, longue queue d’équilibre, plaques jugales et fourrure thermique blanche-grise.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a3-nivalis-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#10161a",
+          "#77939b",
+          "#edf7ec"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/brine-crawler",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/brine-crawler-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/amber-mire-lurker-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#10161a",
+          "#77939b",
+          "#edf7ec"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.9,
+        "morphologyScaleY": 0.95
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/heat-lichen",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/heat-lichen-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/spore-bloom-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#0c1020",
+          "#4b5f9d",
+          "#d9e4ff"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 1.0
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/thermal-pod",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/thermal-pod-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Cosse végétale mobile, corps-graine épais à évents thermiques ambrés, trois racines-tentacules locomotrices, deux vrilles et enveloppe antigel.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a3-nivalis-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0c1020",
+          "#4b5f9d",
+          "#d9e4ff"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 0.95
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/crystal-reed",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/crystal-reed-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/razor-reed-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#10161a",
+          "#77939b",
+          "#edf7ec"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 1.04,
+        "morphologyScaleY": 0.98
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/snow-bloom",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/snow-bloom-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/spore-bloom-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#0c1020",
+          "#4b5f9d",
+          "#d9e4ff"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 0.94
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/antifreeze-kelp",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/antifreeze-kelp-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/carnivore-vine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#10161a",
+          "#77939b",
+          "#edf7ec"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/ice-salvager",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/ice-salvager-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Récupérateur humain en combinaison polaire multicouche, capuche thermique, sac compact, piolet motorisé, carabine utilitaire et balise de récupération.",
+      "source": "art-source/v8/ecology/supplemental/c/masters/supplemental-c1-specialists-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#07121b",
+          "#477d91",
+          "#d6f5f2"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.91,
+        "morphologyScaleY": 0.91
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/cryo-prospector",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/cryo-prospector-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-marine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#07121b",
+          "#477d91",
+          "#d6f5f2"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 0.91
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/refinery-trooper",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/refinery-trooper-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-marine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#10161a",
+          "#77939b",
+          "#edf7ec"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 1.04
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/xenobiologist-field",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/xenobiologist-field-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Scientifique humain adulte en combinaison arctique blanche et orange, capuche à visière, sac capteur compact et scanner xénobiologique portatif.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a3-nivalis-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#10161a",
+          "#77939b",
+          "#edf7ec"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 0.94
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/rime-automaton",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/rime-automaton-sheet.png",
+      "anatomyFamily": "mech",
+      "anatomy": "Automate antique bipède de givre, torse bronze-pierre compact, deux bras articulés, deux jambes inversées, noyau optique bleu et plaques glacées.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a3-nivalis-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#07121b",
+          "#477d91",
+          "#d6f5f2"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.97,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/frost-xeno",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/frost-xeno-sheet.png",
+      "anatomyFamily": "xeno",
+      "anatomy": "Xenomorph body plan",
+      "source": "v7/xeno-drone-sheet.png",
+      "sourceMatch": "family-v7",
+      "transform": {
+        "palette": [
+          "#0c1020",
+          "#4b5f9d",
+          "#d9e4ff"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 1.08
+      }
+    },
+    {
+      "spriteId": "v8/nivalis-k/mining-exosuit",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/nivalis-k/mining-exosuit-sheet.png",
+      "anatomyFamily": "mech",
+      "anatomy": "Mechanical articulated chassis",
+      "source": "v7/corporate-heavy-sheet.png",
+      "sourceMatch": "family-v7",
+      "transform": {
+        "palette": [
+          "#07121b",
+          "#477d91",
+          "#d6f5f2"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 0.91
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/hell-hound-stalker",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/hell-hound-stalker-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/hell-hound-stalker-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#0a0a0b",
+          "#514544",
+          "#e85b28"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 0.98
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/river-ghost-brute",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/river-ghost-brute-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/river-ghost-brute-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#160b07",
+          "#8b4c20",
+          "#ffd06b"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.91,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/volcanic-ashmaw",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/volcanic-ashmaw-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/volcanic-ashmaw-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#120907",
+          "#7d2b18",
+          "#ff9c32"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/ember-crawler",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/ember-crawler-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/amber-mire-lurker-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#0a0a0b",
+          "#514544",
+          "#e85b28"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.97,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/lava-skimmer",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/lava-skimmer-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Reptile-poisson alien bas adapté à la lave, corps caréné cuirassé, tête en coin, quatre nageoires-pattes thermorésistantes et queue aplatie.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a4-cinder-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#120907",
+          "#7d2b18",
+          "#ff9c32"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.08,
+        "morphologyScaleY": 1.03
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/basalt-ram",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Bélier volcanique quadrupède musclé, peau de basalte fissurée à lueur orange et deux énormes cornes minérales recourbées vers l’avant.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a4-cinder-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0a0a0b",
+          "#514544",
+          "#e85b28"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/magma-tick",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/magma-tick-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/amber-mire-lurker-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#120907",
+          "#7d2b18",
+          "#ff9c32"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.97,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/smoke-wyvern",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Vouivre volcanique à deux pattes arrière, deux grandes ailes antérieures membraneuses, longue queue, crâne reptilien étroit et écailles de suie.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a4-cinder-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#120907",
+          "#7d2b18",
+          "#ff9c32"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.07,
+        "morphologyScaleY": 1.05
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/slag-beetle",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/slag-beetle-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Semantic reuse of v8/serekh-9/armored-scarab: Squat six-legged desert beetle with heavy bronze-sand carapace, obsidian joints, paired mandibles and compact horned head.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b1-serekh-alpha.png#row-5",
+      "sourceMatch": "semantic-supplemental-reuse",
+      "transform": {
+        "palette": [
+          "#0a0a0b",
+          "#514544",
+          "#e85b28"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/razor-reed",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/razor-reed-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/razor-reed-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#120907",
+          "#7d2b18",
+          "#ff9c32"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 0.98
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/grapple-root",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/grapple-root-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/grapple-root-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#120907",
+          "#7d2b18",
+          "#ff9c32"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 1.0
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/acid-pitcher",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/acid-pitcher-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/acid-pitcher-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#0a0a0b",
+          "#514544",
+          "#e85b28"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.0,
+        "morphologyScaleY": 0.96
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/cinder-orchid",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/cinder-orchid-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/sentinel-orchid-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#160b07",
+          "#8b4c20",
+          "#ffd06b"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.06,
+        "morphologyScaleY": 0.96
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/cinder-bulb",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/cinder-bulb-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/spore-bloom-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#0a0a0b",
+          "#514544",
+          "#e85b28"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.07,
+        "morphologyScaleY": 1.05
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/glass-thorn",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/glass-thorn-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Category-compatible flora silhouette",
+      "source": "v7/razor-reed-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#120907",
+          "#7d2b18",
+          "#ff9c32"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.05,
+        "morphologyScaleY": 1.04
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/bad-blood-duelist",
+      "category": "bad-blood",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/bad-blood-duelist-sheet.png",
+      "anatomyFamily": "bad-blood",
+      "anatomy": "Category-compatible articulated Bad Blood",
+      "source": "v7/bad-blood-duelist-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#160b07",
+          "#8b4c20",
+          "#ffd06b"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.06,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/bad-blood-plasma-gunner",
+      "category": "bad-blood",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/bad-blood-plasma-gunner-sheet.png",
+      "anatomyFamily": "bad-blood",
+      "anatomy": "Category-compatible articulated Bad Blood",
+      "source": "v7/bad-blood-plasma-gunner-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#160b07",
+          "#8b4c20",
+          "#ffd06b"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.94,
+        "morphologyScaleY": 1.08
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/bad-blood-netmaster",
+      "category": "bad-blood",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/bad-blood-netmaster-sheet.png",
+      "anatomyFamily": "bad-blood",
+      "anatomy": "Category-compatible articulated Bad Blood",
+      "source": "v7/bad-blood-netmaster-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#120907",
+          "#7d2b18",
+          "#ff9c32"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.07,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/bad-blood-cloaked-stalker",
+      "category": "bad-blood",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/bad-blood-cloaked-stalker-sheet.png",
+      "anatomyFamily": "bad-blood",
+      "anatomy": "Category-compatible articulated Bad Blood",
+      "source": "v7/bad-blood-cloaked-stalker-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#120907",
+          "#7d2b18",
+          "#ff9c32"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.89,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/bad-blood-trophy-butcher",
+      "category": "bad-blood",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/bad-blood-trophy-butcher-sheet.png",
+      "anatomyFamily": "bad-blood",
+      "anatomy": "Category-compatible articulated Bad Blood",
+      "source": "v7/bad-blood-trophy-butcher-sheet.png",
+      "sourceMatch": "exact-v7",
+      "transform": {
+        "palette": [
+          "#160b07",
+          "#8b4c20",
+          "#ffd06b"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 1.03
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/bad-blood-initiate",
+      "category": "bad-blood",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/bad-blood-initiate-sheet.png",
+      "anatomyFamily": "bad-blood",
+      "anatomy": "Jeune Yautja renégat grand et musclé, visage à mandibules partiellement visible, longues mèches, armure bronze légère, filet, lames de poignet et plasma compact.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a4-cinder-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0a0a0b",
+          "#514544",
+          "#e85b28"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.95,
+        "morphologyScaleY": 1.08
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/bad-blood-trapper",
+      "category": "bad-blood",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/bad-blood-trapper-sheet.png",
+      "anatomyFamily": "bad-blood",
+      "anatomy": "Yautja renégat vétéran masqué, longues mèches liées, armure sombre asymétrique, lames de poignet, lance-filet, câbles et pièges de ceinture.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a4-cinder-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#160b07",
+          "#8b4c20",
+          "#ffd06b"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/ash-recovery-synth",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/ash-recovery-synth-sheet.png",
+      "anatomyFamily": "synth",
+      "anatomy": "Humanoid synthetic chassis",
+      "source": "v7/weyland-synth-sheet.png",
+      "sourceMatch": "family-v7",
+      "transform": {
+        "palette": [
+          "#160b07",
+          "#8b4c20",
+          "#ffd06b"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.99,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/cinder-12/scorch-xeno",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/cinder-12/scorch-xeno-sheet.png",
+      "anatomyFamily": "xeno",
+      "anatomy": "Xenomorph body plan",
+      "source": "v7/xeno-drone-sheet.png",
+      "sourceMatch": "family-v7",
+      "transform": {
+        "palette": [
+          "#160b07",
+          "#8b4c20",
+          "#ffd06b"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.03,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/delta-hydra-juvenile",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/delta-hydra-juvenile-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-1",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#0b1514",
+          "#2e5e5d",
+          "#9bc5a2"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.04,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/bog-stalker",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/bog-stalker-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-2",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#071310",
+          "#355f43",
+          "#43d1bd"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 0.99
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/fen-leaper",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/fen-leaper-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#0b1514",
+          "#2e5e5d",
+          "#9bc5a2"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/iron-croc",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/iron-croc-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-5",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#151207",
+          "#65702c",
+          "#d3ba53"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.07,
+        "morphologyScaleY": 0.91
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/sludge-eel",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/sludge-eel-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-2",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#0b1514",
+          "#2e5e5d",
+          "#9bc5a2"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.0,
+        "morphologyScaleY": 0.96
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/blood-mosquito",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/blood-mosquito-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#071310",
+          "#355f43",
+          "#43d1bd"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.05,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/mire-shell",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-5",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#071310",
+          "#355f43",
+          "#43d1bd"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 0.98
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/reed-cat",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/reed-cat-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Félin alien amphibie élancé, quatre pattes palmées, épaules basses, tête prédatrice étroite, longue queue rayée et branchies latérales.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a5-naraka-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#151207",
+          "#65702c",
+          "#d3ba53"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 1.03
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/lantern-toad",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/lantern-toad-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Semantic reuse of v8/oseris-iv/needle-frog: Grenouille alien toxique trapue, quatre membres amphibies écartés, gorge gonflable et aiguilles rigides sur le dos et les cuisses.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a1-oseris-alpha.png#row-4",
+      "sourceMatch": "semantic-supplemental-reuse",
+      "transform": {
+        "palette": [
+          "#151207",
+          "#65702c",
+          "#d3ba53"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.9,
+        "morphologyScaleY": 0.91
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/hook-beak",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/hook-beak-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#151207",
+          "#65702c",
+          "#d3ba53"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 1.06
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/mud-crusher-crab",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/mud-crusher-crab-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-5",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#151207",
+          "#65702c",
+          "#d3ba53"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.03,
+        "morphologyScaleY": 0.91
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/strangler-lotus",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/strangler-lotus-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-3",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#151207",
+          "#65702c",
+          "#d3ba53"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/gas-bladder",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/gas-bladder-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-3",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#151207",
+          "#65702c",
+          "#d3ba53"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.05,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/blood-reed",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/blood-reed-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-3",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#0b1514",
+          "#2e5e5d",
+          "#9bc5a2"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.95,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/floating-jaw",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/floating-jaw-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-3",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#151207",
+          "#65702c",
+          "#d3ba53"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 0.96
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/snap-root",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/snap-root-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-3",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#0b1514",
+          "#2e5e5d",
+          "#9bc5a2"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.95,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/corpse-blossom",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/corpse-blossom-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-3",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#071310",
+          "#355f43",
+          "#43d1bd"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.95,
+        "morphologyScaleY": 0.93
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/mirror-moss",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/mirror-moss-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-naraka-delta-alpha.png#row-3",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#151207",
+          "#65702c",
+          "#d3ba53"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.0,
+        "morphologyScaleY": 0.95
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/marsh-poacher",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/marsh-poacher-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/frontier-raider-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#071310",
+          "#355f43",
+          "#43d1bd"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 0.94
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/delta-surveyor",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/delta-surveyor-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Arpenteuse humaine adulte, cuissardes étanches olive, gilet léger, capuche, sac compact, scanner de terrain et canne de mesure repliée.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a5-naraka-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#071310",
+          "#355f43",
+          "#43d1bd"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.9,
+        "morphologyScaleY": 0.91
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/field-medic-naraka",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/field-medic-naraka-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Médecin humain adulte en combinaison étanche teal et beige, sac médical, outil de diagnostic et cartouches de bandages.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a5-naraka-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#071310",
+          "#355f43",
+          "#43d1bd"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.04,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/mud-sniper",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/mud-sniper-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-sniper-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#071310",
+          "#355f43",
+          "#43d1bd"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/swamp-xeno-spitter",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/swamp-xeno-spitter-sheet.png",
+      "anatomyFamily": "xeno",
+      "anatomy": "Xénomorphe amphibie élancé, dôme crânien lisse allongé, corps biomécanique, deux bras, deux jambes digitigrades, queue-lame, griffes palmées et sacs buccaux acides.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a5-naraka-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0b1514",
+          "#2e5e5d",
+          "#9bc5a2"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.05,
+        "morphologyScaleY": 1.03
+      }
+    },
+    {
+      "spriteId": "v8/naraka-delta/drowned-synth",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/naraka-delta/drowned-synth-sheet.png",
+      "anatomyFamily": "synth",
+      "anatomy": "Androïde synthétique humanoïde noyé et corrodé, combinaison utilitaire déchirée, peau artificielle ouverte, muscles polymères blancs, articulations et câbles visibles.",
+      "source": "art-source/v8/ecology/supplemental/a/masters/supplemental-a5-naraka-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#071310",
+          "#355f43",
+          "#43d1bd"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 1.03,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/sandmaw-juvenile",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/sandmaw-juvenile-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-serekh-9-alpha.png#row-1",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#100b12",
+          "#554065",
+          "#b88bd0"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 0.96
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/dune-strider",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/dune-strider-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Tall swift four-legged desert runner with stilt legs, ochre hide, black joints, wedge head and swept sensory fins.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b1-serekh-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/glass-scorpion",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/glass-scorpion-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-serekh-9-alpha.png#row-2",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#100b12",
+          "#554065",
+          "#b88bd0"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.94,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/sun-vulture",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/sun-vulture-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-serekh-9-alpha.png#row-3",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#100b12",
+          "#554065",
+          "#b88bd0"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 0.95
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/dust-jackal",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/dust-jackal-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Lean six-limbed desert pack predator with charcoal hide, dusty tan dorsal mane, long ears, narrow canine skull and hooked feet.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b1-serekh-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#100b12",
+          "#554065",
+          "#b88bd0"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 1.05
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/burrow-snake",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Long low sand serpent with armored sandstone shovel head, segmented umber scales and two short digging forelimbs.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b1-serekh-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/armored-scarab",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/armored-scarab-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Squat six-legged desert beetle with heavy bronze-sand carapace, obsidian joints, paired mandibles and compact horned head.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b1-serekh-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#100b12",
+          "#554065",
+          "#b88bd0"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 1.04,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/mirage-cat",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/mirage-cat-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Sleek alien feline ambusher with pale sand hide, dark heat-ripple stripes, long tail, crystalline blue eyes and blade shoulder ridges.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b1-serekh-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 1.03
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/boneback-carrier",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/boneback-carrier-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-serekh-9-alpha.png#row-5",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#160f09",
+          "#8b5c2d",
+          "#e8c783"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/quill-lizard",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/quill-lizard-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Low muscular six-legged desert reptile with slate-brown scales, ochre dorsal quills, wedge head and hooked jaws.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b2-serekh-pelagos-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/salt-ram",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/salt-ram-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-serekh-9-alpha.png#row-5",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.95,
+        "morphologyScaleY": 0.99
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/water-thief-cactus",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/water-thief-cactus-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-serekh-9-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.04,
+        "morphologyScaleY": 1.06
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/razor-tumbleweed",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/razor-tumbleweed-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-serekh-9-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#160f09",
+          "#8b5c2d",
+          "#e8c783"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.03,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/hook-aloe",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/hook-aloe-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-serekh-9-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.99,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/sleeping-bulb",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/sleeping-bulb-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-serekh-9-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#100b12",
+          "#554065",
+          "#b88bd0"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.99,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/root-mine",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/root-mine-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-serekh-9-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#100b12",
+          "#554065",
+          "#b88bd0"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/dune-raider",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/dune-raider-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/frontier-raider-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#100b12",
+          "#554065",
+          "#b88bd0"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 1.0
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/silica-miner",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/silica-miner-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Mineur humain en combinaison désertique filtrante, visière, lourde foreuse rotative tenue à deux mains, sac de charges et bottes renforcées.",
+      "source": "art-source/v8/ecology/supplemental/c/masters/supplemental-c1-specialists-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/caravan-guard",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/caravan-guard-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-marine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.91,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/corporate-desert-ranger",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/corporate-desert-ranger-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-sniper-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#100b12",
+          "#554065",
+          "#b88bd0"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 0.99
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/fossil-archaeologist",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/fossil-archaeologist-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-marine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 1.06,
+        "morphologyScaleY": 0.94
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/desert-temple-guardian",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/desert-temple-guardian-sheet.png",
+      "anatomyFamily": "mech",
+      "anatomy": "Tall non-human stone-and-bronze automaton with amber sun core, slab forearm shield, attached heavy limbs and eroded carvings.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b2-serekh-pelagos-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 0.94
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/excavation-drone",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/excavation-drone-sheet.png",
+      "anatomyFamily": "mech",
+      "anatomy": "Compact industrial quadruped robot with sand-worn yellow ceramic shell, black pistons, front digging claws and cyan visor.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b2-serekh-pelagos-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#17110c",
+          "#76644c",
+          "#f1e0b7"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.91,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/serekh-9/fossil-parasite",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/serekh-9/fossil-parasite-sheet.png",
+      "anatomyFamily": "other-organic",
+      "anatomy": "Biome-native other-organic silhouette",
+      "source": "openai-serekh-9-alpha.png#row-2",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#100b12",
+          "#554065",
+          "#b88bd0"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/leviathan-spawn",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/leviathan-spawn-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-1",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#101019",
+          "#4d416e",
+          "#8ac7e8"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.08,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/reef-stalker",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/reef-stalker-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-1",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#06101a",
+          "#214f73",
+          "#5ddbe0"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.95,
+        "morphologyScaleY": 0.94
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/wavefin",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/wavefin-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-3",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#101019",
+          "#4d416e",
+          "#8ac7e8"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 0.99
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/armor-crab",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/armor-crab-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-2",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#06101a",
+          "#214f73",
+          "#5ddbe0"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.94,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/storm-eel",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/storm-eel-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Long muscular amphibious eel with four walking fins, indigo armored skull, cyan lateral bands and hooked jaws.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b3-pelagos-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#07131b",
+          "#356977",
+          "#a7ebd9"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 1.0
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/hunter-manta",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/hunter-manta-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-3",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#06101a",
+          "#214f73",
+          "#5ddbe0"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 0.93
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/razor-shark",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/razor-shark-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-5",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#07131b",
+          "#356977",
+          "#a7ebd9"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 0.93
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/tide-octopus",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/tide-octopus-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Opaque amphibious cephalopod walking on six stout tentacle legs, with navy skin, turquoise rings, beaked mantle and two attack arms.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b2-serekh-pelagos-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#101019",
+          "#4d416e",
+          "#8ac7e8"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.07,
+        "morphologyScaleY": 0.99
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/shellback",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-2",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#101019",
+          "#4d416e",
+          "#8ac7e8"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.9,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/skygull",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/skygull-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Ground-capable alien coastal raptor with folded blade wings, pearl-gray feather scales, navy beak, cyan throat sac and talons.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b2-serekh-pelagos-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#07131b",
+          "#356977",
+          "#a7ebd9"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.95,
+        "morphologyScaleY": 1.05
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/deep-lantern",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/deep-lantern-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Low abyssal quadruped with black-blue armor, attached cyan lure, oversized jaw, webbed claws and luminous cheek dots.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b3-pelagos-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#06101a",
+          "#214f73",
+          "#5ddbe0"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 0.95
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/foam-crawler",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/foam-crawler-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Squat six-legged shoreline crustacean with pearl foam-like carapace nodules, dark blue joints, shovel claws and cyan eye clusters.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b3-pelagos-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#07131b",
+          "#356977",
+          "#a7ebd9"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.95,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/siren-kelp",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/siren-kelp-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#06101a",
+          "#214f73",
+          "#5ddbe0"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.99,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/harpoon-coral",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/harpoon-coral-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#06101a",
+          "#214f73",
+          "#5ddbe0"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.06,
+        "morphologyScaleY": 0.98
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/venom-anemone",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/venom-anemone-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#06101a",
+          "#214f73",
+          "#5ddbe0"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.05,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/walking-reef",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/walking-reef-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#06101a",
+          "#214f73",
+          "#5ddbe0"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 0.96
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/bladder-vine",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/bladder-vine-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#06101a",
+          "#214f73",
+          "#5ddbe0"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 1.07,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/glass-sponge",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/glass-sponge-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-pelagos-m-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#06101a",
+          "#214f73",
+          "#5ddbe0"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 1.06,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/pelagic-diver",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/pelagic-diver-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-marine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#07131b",
+          "#356977",
+          "#a7ebd9"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 1.04
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/rig-security",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/rig-security-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-marine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#07131b",
+          "#356977",
+          "#a7ebd9"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 0.93
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/abyss-harpooner",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/abyss-harpooner-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Harponneur humain en armure de plongée pressurisée teal, casque rond, bouteilles compactes, bottes lestées et lance-harpon lourd à câble.",
+      "source": "art-source/v8/ecology/supplemental/c/masters/supplemental-c1-specialists-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#07131b",
+          "#356977",
+          "#a7ebd9"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.06,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/tide-smuggler",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/tide-smuggler-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/frontier-raider-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#07131b",
+          "#356977",
+          "#a7ebd9"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 0.96
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/swimmer-xeno",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/swimmer-xeno-sheet.png",
+      "anatomyFamily": "xeno",
+      "anatomy": "Original eyeless biomechanical ocean predator with smooth navy cranial crest, ribbed wet-black body, webbed limbs and finned tail.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b3-pelagos-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#06101a",
+          "#214f73",
+          "#5ddbe0"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.9,
+        "morphologyScaleY": 1.06
+      }
+    },
+    {
+      "spriteId": "v8/pelagos-m/salvage-synth",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/pelagos-m/salvage-synth-sheet.png",
+      "anatomyFamily": "synth",
+      "anatomy": "Humanoid marine salvage robot with corroded teal armor, brass joints, sealed blank diving mask, attached harpoon tool and ballast boots.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b3-pelagos-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#101019",
+          "#4d416e",
+          "#8ac7e8"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 1.0
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/spore-hound",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/spore-hound-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-mycora-v-alpha.png#row-1",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#150c18",
+          "#6d366f",
+          "#e2b8d5"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 0.98
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/mycelial-brute",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/mycelial-brute-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-mycora-v-alpha.png#row-1",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#150c18",
+          "#6d366f",
+          "#e2b8d5"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.9,
+        "morphologyScaleY": 0.98
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/puff-crawler",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/puff-crawler-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-mycora-v-alpha.png#row-2",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#15100c",
+          "#8a6044",
+          "#f0d4a0"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 0.94
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/cap-mimic",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/cap-mimic-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Squat quadrupedal fungal predator disguised as a layered ivory-violet mushroom cap, with bark-black legs, toothed underside and amber eyes.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b4-mycora-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#15100c",
+          "#8a6044",
+          "#f0d4a0"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.95,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/thread-leech",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/thread-leech-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Long low segmented parasite wrapped in ivory mycelial fibers, with charcoal flesh, circular mouth, six hooked legs and violet bulbs.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b4-mycora-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#150c18",
+          "#6d366f",
+          "#e2b8d5"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 0.98
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/rot-grazer",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/rot-grazer-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-mycora-v-alpha.png#row-2",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#0f1610",
+          "#46684a",
+          "#b7d18c"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.99,
+        "morphologyScaleY": 0.98
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/glow-moth",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/glow-moth-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-mycora-v-alpha.png#row-5",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#0f1610",
+          "#46684a",
+          "#b7d18c"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.91,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/mold-ape",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/mold-ape-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-mycora-v-alpha.png#row-3",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#150c18",
+          "#6d366f",
+          "#e2b8d5"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 1.05
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/hive-node",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/hive-node-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-mycora-v-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#150c18",
+          "#6d366f",
+          "#e2b8d5"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.95,
+        "morphologyScaleY": 0.93
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/spore-turret",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/spore-turret-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-mycora-v-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#150c18",
+          "#6d366f",
+          "#e2b8d5"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.9,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/walking-fungus",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/walking-fungus-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-mycora-v-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#15100c",
+          "#8a6044",
+          "#f0d4a0"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/neural-liana",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/neural-liana-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Mobile hostile vine organism with central violet neural bulb and attached ivory braided lianas forming four root legs and two whip arms.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b4-mycora-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#150c18",
+          "#6d366f",
+          "#e2b8d5"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.95,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/acid-puffball",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/acid-puffball-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Round armored fungal walker on six root legs with mottled yellow-green puffball plates, toothed aperture and dark seams.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b4-mycora-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#15100c",
+          "#8a6044",
+          "#f0d4a0"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.03,
+        "morphologyScaleY": 1.03
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/corpse-cap",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/corpse-cap-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-mycora-v-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#15100c",
+          "#8a6044",
+          "#f0d4a0"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.03,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/web-mold",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/web-mold-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Low crawling colony with black root chassis, ivory fungal web membranes stretched between six jointed legs, violet nodes and central maw.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b4-mycora-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0f1610",
+          "#46684a",
+          "#b7d18c"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 1.06
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/echo-mushroom",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/echo-mushroom-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-mycora-v-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#0f1610",
+          "#46684a",
+          "#b7d18c"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 1.06,
+        "morphologyScaleY": 1.06
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/queen-hypha",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/queen-hypha-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Biome-native flora silhouette",
+      "source": "openai-mycora-v-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#15100c",
+          "#8a6044",
+          "#f0d4a0"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/infected-colonist",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/infected-colonist-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Human-shaped frontier worker overtaken by fungus, with neutral utility suit, face-obscuring split mushroom crown and attached mycelium cords.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b5-mycora-acheron-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#15100c",
+          "#8a6044",
+          "#f0d4a0"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.9,
+        "morphologyScaleY": 0.93
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/spore-cultist",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/spore-cultist-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/frontier-raider-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#150c18",
+          "#6d366f",
+          "#e2b8d5"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.97,
+        "morphologyScaleY": 0.93
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/quarantine-trooper",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/quarantine-trooper-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-marine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#0f1610",
+          "#46684a",
+          "#b7d18c"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.04,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/fungal-xeno",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/fungal-xeno-sheet.png",
+      "anatomyFamily": "xeno",
+      "anatomy": "Original eyeless fungal alien with ivory mushroom-plated cranial crest, bark-black ribbed body, long claws and attached violet hyphae.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b5-mycora-acheron-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#150c18",
+          "#6d366f",
+          "#e2b8d5"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 1.08,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/assimilated-synth",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/assimilated-synth-sheet.png",
+      "anatomyFamily": "synth",
+      "anatomy": "Humanoid service robot colonized by fungus, with pale ceramic shell, dark joints, blank cracked faceplate, mushroom plates and mycelium cords.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b5-mycora-acheron-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#150c18",
+          "#6d366f",
+          "#e2b8d5"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.97,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/hive-avatar",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/hive-avatar-sheet.png",
+      "anatomyFamily": "other-organic",
+      "anatomy": "Biome-native other-organic silhouette",
+      "source": "openai-mycora-v-alpha.png#row-1",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#150c18",
+          "#6d366f",
+          "#e2b8d5"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 1.07,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/mycora-v/sterilization-mech",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/mycora-v/sterilization-mech-sheet.png",
+      "anatomyFamily": "mech",
+      "anatomy": "Mécha industriel bipède non humain, blindage céramique sur pistons, deux réservoirs chimiques, flexibles, buse de stérilisation lourde et pince utilitaire.",
+      "source": "art-source/v8/ecology/supplemental/c/masters/supplemental-c1-specialists-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#15100c",
+          "#8a6044",
+          "#f0d4a0"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.99,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/ruin-bat",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/ruin-bat-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Ground-capable alien ruin bat with folded stone-gray membrane wings, bronze struts, angular masked head, amber eyes and clawed hind legs.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b5-mycora-acheron-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0e0e0e",
+          "#5c4c39",
+          "#d9a441"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.02,
+        "morphologyScaleY": 0.93
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/stone-crawler",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/stone-crawler-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-acheron-sigma-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#0e0e0e",
+          "#5c4c39",
+          "#d9a441"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.91,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/vault-rat",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/vault-rat-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-acheron-sigma-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#0e0e0e",
+          "#5c4c39",
+          "#d9a441"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.03,
+        "morphologyScaleY": 1.04
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/glyph-serpent",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/glyph-serpent-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Long ruined-temple serpent with black stone scales, worn bronze glyph plates, angular carved head, cyan eye stone and two short forelimbs.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b5-mycora-acheron-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#101316",
+          "#4e6670",
+          "#86d6d3"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.89,
+        "morphologyScaleY": 1.07
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/dust-lion",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/dust-lion-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Biome-native fauna silhouette",
+      "source": "openai-acheron-sigma-alpha.png#row-4",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#17110d",
+          "#76614d",
+          "#e4d0a8"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 1.04,
+        "morphologyScaleY": 0.96
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/bronze-beetle",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/bronze-beetle-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Squat six-legged ruin beetle with overlapping oxidized bronze carapace, black stone joints, heavy mandibles and amber eye lenses.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b6-acheron-relics-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0e0e0e",
+          "#5c4c39",
+          "#d9a441"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.03,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/relic-mimic",
+      "category": "fauna",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/relic-mimic-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Quadrupedal temple beast unfolding from a cracked basalt reliquary shell, with carved horned mask, bronze hinge bones and granite claws.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b6-acheron-relics-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#17110d",
+          "#76614d",
+          "#e4d0a8"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 0.99
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/cable-ivy",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/cable-ivy-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Mobile techno-organic vine with corroded bronze junction core and attached black cables braided into four root legs and two hooked arms.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b6-acheron-relics-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0e0e0e",
+          "#5c4c39",
+          "#d9a441"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 0.9
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/stone-orchid",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/stone-orchid-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Mobile hostile temple flora with carved basalt flower head, layered stone petals, amber core, four root legs, two thorn arms and bronze veins.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b7-acheron-war-alpha.png#row-1",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0e0e0e",
+          "#5c4c39",
+          "#d9a441"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.04,
+        "morphologyScaleY": 0.92
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/archive-mold",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/archive-mold-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Low crawling data-fungus colony with black stone base, six root legs, patterned parchment shelf growths, amber nodes and central maw.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b6-acheron-relics-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0e0e0e",
+          "#5c4c39",
+          "#d9a441"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 1.04
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/crystal-creeper",
+      "category": "flora",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/crystal-creeper-sheet.png",
+      "anatomyFamily": "flora",
+      "anatomy": "Low six-legged mineral predator with charcoal rock body, opaque smoky-quartz dorsal crystals, bronze seams, wedge head and hooked feet.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b6-acheron-relics-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#17110d",
+          "#76614d",
+          "#e4d0a8"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.05,
+        "morphologyScaleY": 1.01
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/relic-raider",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/relic-raider-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/frontier-raider-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#0e0e0e",
+          "#5c4c39",
+          "#d9a441"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 0.95
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/corporate-archaeologist",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/corporate-archaeologist-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-marine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#101316",
+          "#4e6670",
+          "#86d6d3"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/mercenary-guardian",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/mercenary-guardian-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-marine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#101316",
+          "#4e6670",
+          "#86d6d3"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.05,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/ruin-zealot",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/ruin-zealot-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/frontier-raider-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#101316",
+          "#4e6670",
+          "#86d6d3"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.98,
+        "morphologyScaleY": 0.96
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/combat-engineer",
+      "category": "humanoid",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/combat-engineer-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Ingénieure humaine en équipement de combat archéologique, harnais technique, outil de réparation, sac de charges et carabine compacte.",
+      "source": "art-source/v8/ecology/supplemental/c/masters/supplemental-c1-specialists-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#101316",
+          "#4e6670",
+          "#86d6d3"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.96,
+        "morphologyScaleY": 1.06
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/relic-thief-bad-blood",
+      "category": "bad-blood",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/relic-thief-bad-blood-sheet.png",
+      "anatomyFamily": "bad-blood",
+      "anatomy": "Category-compatible articulated Bad Blood",
+      "source": "v7/bad-blood-duelist-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#17110d",
+          "#76614d",
+          "#e4d0a8"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.08,
+        "morphologyScaleY": 1.05
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/clan-deserter",
+      "category": "bad-blood",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/clan-deserter-sheet.png",
+      "anatomyFamily": "bad-blood",
+      "anatomy": "Category-compatible articulated Bad Blood",
+      "source": "v7/bad-blood-duelist-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#17110d",
+          "#76614d",
+          "#e4d0a8"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.89,
+        "morphologyScaleY": 0.98
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/trophy-seeker",
+      "category": "bad-blood",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/trophy-seeker-sheet.png",
+      "anatomyFamily": "bad-blood",
+      "anatomy": "Category-compatible articulated Bad Blood",
+      "source": "v7/bad-blood-trophy-butcher-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#17110d",
+          "#76614d",
+          "#e4d0a8"
+        ],
+        "markingFamily": 3,
+        "morphologyScaleX": 0.88,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/ancient-guardian",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/ancient-guardian-sheet.png",
+      "anatomyFamily": "mech",
+      "anatomy": "Biome-native mech silhouette",
+      "source": "openai-acheron-sigma-alpha.png#row-1",
+      "sourceMatch": "native-keyword",
+      "transform": {
+        "palette": [
+          "#101316",
+          "#4e6670",
+          "#86d6d3"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 0.97,
+        "morphologyScaleY": 0.99
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/sentinel-drone",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/sentinel-drone-sheet.png",
+      "anatomyFamily": "mech",
+      "anatomy": "Compact tripod guardian drone with circular carved bronze-stone body, cyan central eye, three articulated claw legs and attached shield fins.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b7-acheron-war-alpha.png#row-5",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0e0e0e",
+          "#5c4c39",
+          "#d9a441"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 1.08
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/temple-xeno",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/temple-xeno-sheet.png",
+      "anatomyFamily": "xeno",
+      "anatomy": "Original eyeless biomechanical ruin predator with basalt cranial crest, bronze glyph bands, ribbed black body, long claws and armored tail.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b7-acheron-war-alpha.png#row-2",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#0e0e0e",
+          "#5c4c39",
+          "#d9a441"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 1.04,
+        "morphologyScaleY": 1.06
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/war-construct",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/war-construct-sheet.png",
+      "anatomyFamily": "mech",
+      "anatomy": "Massive quadrupedal ancient combat automaton with basalt-bronze armor, amber chest furnace, slab shoulders and attached hammer forelimb.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b7-acheron-war-alpha.png#row-4",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#17110d",
+          "#76614d",
+          "#e4d0a8"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 1.06
+      }
+    },
+    {
+      "spriteId": "v8/acheron-sigma/nanite-swarm",
+      "category": "other",
+      "distribution": "endemic",
+      "sheet": "/game/sprites/v8/ecology/acheron-sigma/nanite-swarm-sheet.png",
+      "anatomyFamily": "mech",
+      "anatomy": "One cohesive low crawling swarm silhouette of tightly interlocked black-metal micro-shards connected around amber core points.",
+      "source": "art-source/v8/ecology/supplemental/b/masters/supplemental-b7-acheron-war-alpha.png#row-3",
+      "sourceMatch": "explicit-supplemental",
+      "transform": {
+        "palette": [
+          "#17110d",
+          "#76614d",
+          "#e4d0a8"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 1.06
+      }
+    },
+    {
+      "spriteId": "v8/common/interplanetary-scavenger",
+      "category": "fauna",
+      "distribution": "common",
+      "sheet": "/game/sprites/v8/ecology/common/interplanetary-scavenger-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/bonecrest-ravager-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#111014",
+          "#5e4d66",
+          "#ceb6b3"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.93,
+        "morphologyScaleY": 1.04
+      }
+    },
+    {
+      "spriteId": "v8/common/spore-tick",
+      "category": "fauna",
+      "distribution": "common",
+      "sheet": "/game/sprites/v8/ecology/common/spore-tick-sheet.png",
+      "anatomyFamily": "fauna",
+      "anatomy": "Category-compatible fauna silhouette",
+      "source": "v7/amber-mire-lurker-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#100e0b",
+          "#675a42",
+          "#d2b66f"
+        ],
+        "markingFamily": 0,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 1.02
+      }
+    },
+    {
+      "spriteId": "v8/common/colonial-patrol",
+      "category": "humanoid",
+      "distribution": "common",
+      "sheet": "/game/sprites/v8/ecology/common/colonial-patrol-sheet.png",
+      "anatomyFamily": "humanoid",
+      "anatomy": "Category-compatible articulated human",
+      "source": "v7/colonial-marine-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#0c1012",
+          "#4c6062",
+          "#b6c5b4"
+        ],
+        "markingFamily": 2,
+        "morphologyScaleX": 1.07,
+        "morphologyScaleY": 0.97
+      }
+    },
+    {
+      "spriteId": "v8/common/weyland-security-synth",
+      "category": "other",
+      "distribution": "common",
+      "sheet": "/game/sprites/v8/ecology/common/weyland-security-synth-sheet.png",
+      "anatomyFamily": "synth",
+      "anatomy": "Humanoid synthetic chassis",
+      "source": "v7/weyland-synth-sheet.png",
+      "sourceMatch": "family-v7",
+      "transform": {
+        "palette": [
+          "#100e0b",
+          "#675a42",
+          "#d2b66f"
+        ],
+        "markingFamily": 1,
+        "morphologyScaleX": 0.92,
+        "morphologyScaleY": 0.99
+      }
+    },
+    {
+      "spriteId": "v8/common/wandering-xeno-drone",
+      "category": "other",
+      "distribution": "common",
+      "sheet": "/game/sprites/v8/ecology/common/wandering-xeno-drone-sheet.png",
+      "anatomyFamily": "xeno",
+      "anatomy": "Xenomorph body plan",
+      "source": "v7/xeno-drone-sheet.png",
+      "sourceMatch": "family-v7",
+      "transform": {
+        "palette": [
+          "#0c1012",
+          "#4c6062",
+          "#b6c5b4"
+        ],
+        "markingFamily": 5,
+        "morphologyScaleX": 1.08,
+        "morphologyScaleY": 1.08
+      }
+    },
+    {
+      "spriteId": "v8/common/bad-blood-scout",
+      "category": "bad-blood",
+      "distribution": "common",
+      "sheet": "/game/sprites/v8/ecology/common/bad-blood-scout-sheet.png",
+      "anatomyFamily": "bad-blood",
+      "anatomy": "Category-compatible articulated Bad Blood",
+      "source": "v7/bad-blood-cloaked-stalker-sheet.png",
+      "sourceMatch": "semantic-v7",
+      "transform": {
+        "palette": [
+          "#100e0b",
+          "#675a42",
+          "#d2b66f"
+        ],
+        "markingFamily": 4,
+        "morphologyScaleX": 1.01,
+        "morphologyScaleY": 0.98
+      }
+    }
+  ]
+}

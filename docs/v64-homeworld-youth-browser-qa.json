@@ -1,0 +1,121 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4184",
+  "phase": "youth",
+  "checks": [
+    {
+      "id": "training-hall",
+      "kind": "civic",
+      "variant": "civic",
+      "atDoor": {
+        "x": 2231,
+        "y": 1873
+      },
+      "spawn": {
+        "x": 269,
+        "y": 236
+      },
+      "outside": {
+        "x": 2230,
+        "y": 1868
+      },
+      "routeDistance": 5821.9011259125045,
+      "input": "keyboard",
+      "dialogue": "ENTRAÎNEMENT\nInstructeur des terrasses\n\n« Présente-toi d’abord au chef du clan, dans la Citadelle au nord-est. Reviens me voir après cet accueil : nous parlerons de ta formation. »\n\nRejoins le chef du clan à la Citadelle, au nord-est de la cité, et parle-lui.\n\nAccueil original du clan, pas une preuve de formation. Les exercices se jouent dans le dojo, puis au camp.\n\nÉquipement de jeunesse : lame de poignet non acquise ; biomask non reçu. Aucun plasma, équipement adulte ou vaisseau accordé.\n\nLieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation.\n\nFormation préalable requise\nRevenir dans la salle"
+    },
+    {
+      "id": "market-armory",
+      "kind": "civic",
+      "variant": "civic",
+      "atDoor": {
+        "x": 1614,
+        "y": 2873
+      },
+      "spawn": {
+        "x": 269,
+        "y": 236
+      },
+      "outside": {
+        "x": 1610,
+        "y": 2876
+      },
+      "routeDistance": 2001.8480979114713,
+      "input": "gamepad",
+      "dialogue": "ÉQUIPEMENT\nArtisane du marché\n\n« Ton premier équipement viendra avec la formation. Observe les outils ; ils ne deviennent pas tiens par une simple visite. »\n\nLieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation.\n\nFormation préalable requise\nRevenir dans la salle"
+    },
+    {
+      "id": "throne-audience",
+      "kind": "civic",
+      "variant": "civic",
+      "atDoor": {
+        "x": 4516,
+        "y": 1049
+      },
+      "spawn": {
+        "x": 284,
+        "y": 236
+      },
+      "outside": {
+        "x": 4510,
+        "y": 1047
+      },
+      "routeDistance": 4423.01468946476,
+      "input": "keyboard",
+      "dialogue": "SOUVERAIN DE LA CITÉ\nAccueil du chef du clan\n\n« QA Nurserie V47, ton arrivée a été annoncée. La force seule ne suffit pas à servir le clan. Observe, écoute, puis rends-toi auprès de l’instructeur des terrasses. Ton apprentissage commence. »\n\nRejoins l’instructeur des terrasses, au centre de la cité, et parle-lui.\n\nAccueil original du clan, pas une preuve de formation. Les exercices se jouent dans le dojo, puis au camp.\n\nPrésente-toi au chef avant de rejoindre ton instructeur.\n\nRevenir dans la salle"
+    },
+    {
+      "id": "training-hall",
+      "kind": "civic",
+      "variant": "civic",
+      "atDoor": {
+        "x": 2234,
+        "y": 1861
+      },
+      "spawn": {
+        "x": 269,
+        "y": 236
+      },
+      "outside": {
+        "x": 2230,
+        "y": 1868
+      },
+      "routeDistance": 3531.7330574401653,
+      "input": "keyboard",
+      "dialogue": "ENTRAÎNEMENT\nInstructeur des terrasses\n\n« Le chef t’a accueilli. Avant de chasser, tu apprendras à te placer, à retenir un coup et à reconnaître une proie digne. Entre dans le dojo et exécute mes démonstrations. Ta première lame se mérite par les gestes ; l’armurerie et les épreuves du camp suivront. »\n\nLe maître t’attend : entre dans le dojo depuis son dialogue pour commencer les exercices.\n\nAccueil original du clan, pas une preuve de formation. Les exercices se jouent dans le dojo, puis au camp.\n\nEntrer dans le dojo avec le maître\n\nÉquipement de jeunesse : lame de poignet non acquise ; biomask non reçu. Aucun plasma, équipement adulte ou vaisseau accordé.\n\nLieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation.\n\nFormation préalable requise\nRevenir dans la salle"
+    }
+  ],
+  "errors": [],
+  "events": [
+    {
+      "at": "2026-10-01T01:09:28.722Z",
+      "kind": "navigation",
+      "url": "http://127.0.0.1:4184/"
+    },
+    {
+      "at": "2026-10-01T01:09:29.125Z",
+      "kind": "navigation",
+      "url": "http://127.0.0.1:4184/"
+    },
+    {
+      "at": "2026-10-01T01:09:29.800Z",
+      "kind": "navigation",
+      "url": "http://127.0.0.1:4184/"
+    },
+    {
+      "at": "2026-10-01T01:09:29.953Z",
+      "kind": "navigation",
+      "url": "http://127.0.0.1:4184/"
+    },
+    {
+      "at": "2026-10-01T01:11:55.594Z",
+      "kind": "navigation",
+      "url": "http://127.0.0.1:4184/"
+    },
+    {
+      "at": "2026-10-01T01:11:55.684Z",
+      "kind": "navigation",
+      "url": "http://127.0.0.1:4184/"
+    }
+  ],
+  "scope": "Actually played nursery QA archive; physical mentor before chief refusal, locked armory, chief then mentor, no fake training/equipment/proof; reload retains greetings. No real user saves."
+}

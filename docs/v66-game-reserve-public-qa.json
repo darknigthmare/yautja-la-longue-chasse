@@ -1,0 +1,916 @@
+{
+  "schemaVersion": 1,
+  "release": "V66",
+  "status": "PUBLIC_BROWSER_QA_PASS_WITH_DECLARED_ART_LIMITATIONS",
+  "testedAt": "2026-10-01T03:46:18.390Z",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "releaseIdentity": {
+    "commit": "d89792643d17c528282ca83ebba3582216585447",
+    "deploymentId": "dpl_4trWpDgrxHjVDRmEPAeggMVc3Zqk",
+    "identityVerification": "Parent release agent verified READY, commit and official alias before dispatch."
+  },
+  "browserChecks": 6,
+  "reviewedCaptures": 11,
+  "publicationRuntimeVerified": true,
+  "reports": [
+    {
+      "status": "PASS",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "checks": [
+        "Briefing waits for native assets and Start; keyboard movement advances the world; pause freezes player and both AI groups.",
+        "Quota refusal never advances the durable checkpoint; simulation stops, retains the physical state and retries successfully.",
+        "Mobile menu fits; cancelling New expedition preserves the entire active checkpoint; reopen restores its exact tick and position.",
+        "Real page reload, keyboard return and exposed extraction produce a persisted result without any profile, equipment, mission or trophy award."
+      ],
+      "captures": [
+        "work-local/v66/qa-public/game-reserve/01-expedition-briefing.jpg",
+        "work-local/v66/qa-public/game-reserve/02-first-tracks-native-art.jpg",
+        "work-local/v66/qa-public/game-reserve/03-storage-refusal-retained-state.jpg",
+        "work-local/v66/qa-public/game-reserve/04-mobile-pause.jpg",
+        "work-local/v66/qa-public/game-reserve/05-mobile-resumed-checkpoint.jpg",
+        "work-local/v66/qa-public/game-reserve/06-physical-extraction-result.jpg",
+        "work-local/v66/qa-public/game-reserve/07-durable-dossier-summary.jpg"
+      ],
+      "errors": [],
+      "failures": [],
+      "events": [],
+      "visualReview": {
+        "status": "PASS_WITH_DECLARED_ART_LIMITATIONS",
+        "reviewedCaptures": 7,
+        "notes": [
+          "Public runtime: briefing, ground contact, native sprite families, write refusal, portrait pause, resumed checkpoint, extraction and durable dossier inspected.",
+          "Dossier screenshot records the saved result; unrelated lower card thumbnails were not loaded at capture time and are not certified by this review.",
+          "No complete new hunter animation is claimed."
+        ]
+      },
+      "scope": "Isolated adult legacy fixture; actual UI/keyboard traversal, storage refusal/retry, pause, mobile, replacement cancellation, reload and physical return. Two complete AI escapes are engine-tested separately; 100 human artworks, ten reserves and complete new player animations are not claimed.",
+      "captureEvidence": [
+        {
+          "path": "work-local/v66/qa-public/game-reserve/01-expedition-briefing.jpg",
+          "sha256": "d8f9cd0cc870a21d9f6425745d6dfa40b8c92537ca157d47426db97459757c6e"
+        },
+        {
+          "path": "work-local/v66/qa-public/game-reserve/02-first-tracks-native-art.jpg",
+          "sha256": "b296f6d26e9db5a787e0f4ea3675ec02c42b6bb02a535d426997702c6fffb6df"
+        },
+        {
+          "path": "work-local/v66/qa-public/game-reserve/03-storage-refusal-retained-state.jpg",
+          "sha256": "1d302cf5ced74f1f6ce98e5557f2dae61d4b839e5321b312d65185c82af37a88"
+        },
+        {
+          "path": "work-local/v66/qa-public/game-reserve/04-mobile-pause.jpg",
+          "sha256": "7c00d8a28c568394fb7122d6376a021a6c6aa7efac0637dceaf9b1e289a92d44"
+        },
+        {
+          "path": "work-local/v66/qa-public/game-reserve/05-mobile-resumed-checkpoint.jpg",
+          "sha256": "784ce56f683692b64eb51d5d9ea3faf416ed3539a676c7cce1e3acf55b35e9ac"
+        },
+        {
+          "path": "work-local/v66/qa-public/game-reserve/06-physical-extraction-result.jpg",
+          "sha256": "79eefea587edb8ea33e76b12cfd4c4d473d5870011e6cef6b5316b4c6f7da43f"
+        },
+        {
+          "path": "work-local/v66/qa-public/game-reserve/07-durable-dossier-summary.jpg",
+          "sha256": "e7b0b74da59a235e45e1d77205ec101a5f548f95cb2fe2cb2de546e6e0c52941"
+        }
+      ]
+    },
+    {
+      "status": "PASS",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "checks": [
+        "All three connected sectors reached through real keyboard movement/jumps/cloak; no teleport, state injection or invulnerability.",
+        "Landscape fills at least 95% width and 60% height without stretching; every touch control remains at least44px; actual pointer hold moves the hunter; Escape resumes from a focused button."
+      ],
+      "captures": [
+        "work-local/v66/qa-public/game-reserve-tour/parachutes.jpg",
+        "work-local/v66/qa-public/game-reserve-tour/drill.jpg",
+        "work-local/v66/qa-public/game-reserve-tour/camp.jpg",
+        "work-local/v66/qa-public/game-reserve-tour/landscape-touch.jpg"
+      ],
+      "route": [
+        {
+          "tick": 26,
+          "x": 168,
+          "y": 323,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 36,
+          "x": 206,
+          "y": 308,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 47,
+          "x": 248,
+          "y": 357,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 57,
+          "x": 286,
+          "y": 438,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 71,
+          "x": 339,
+          "y": 323,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 81,
+          "x": 377,
+          "y": 308,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 92,
+          "x": 419,
+          "y": 357,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 102,
+          "x": 457,
+          "y": 365,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 116,
+          "x": 510,
+          "y": 250,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 126,
+          "x": 548,
+          "y": 235,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 137,
+          "x": 590,
+          "y": 284,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 148,
+          "x": 632,
+          "y": 292,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 161,
+          "x": 681,
+          "y": 182,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 172,
+          "x": 723,
+          "y": 162,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 182,
+          "x": 761,
+          "y": 204,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 193,
+          "x": 803,
+          "y": 292,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 206,
+          "x": 852,
+          "y": 182,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 217,
+          "x": 894,
+          "y": 162,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 227,
+          "x": 932,
+          "y": 204,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 238,
+          "x": 974,
+          "y": 314,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 249,
+          "x": 1016,
+          "y": 438,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 262,
+          "x": 1065,
+          "y": 328,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 272,
+          "x": 1103,
+          "y": 307,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 283,
+          "x": 1145,
+          "y": 338,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 296,
+          "x": 1194,
+          "y": 228,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 307,
+          "x": 1236,
+          "y": 208,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 318,
+          "x": 1278,
+          "y": 257,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 328,
+          "x": 1316,
+          "y": 338,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 342,
+          "x": 1369,
+          "y": 223,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 352,
+          "x": 1407,
+          "y": 208,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 363,
+          "x": 1449,
+          "y": 257,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 373,
+          "x": 1487,
+          "y": 360,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 385,
+          "x": 1532,
+          "y": 365,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 397,
+          "x": 1578,
+          "y": 260,
+          "health": 100,
+          "sector": "parachutes"
+        },
+        {
+          "tick": 408,
+          "x": 1620,
+          "y": 234,
+          "health": 100,
+          "sector": "drill"
+        },
+        {
+          "tick": 418,
+          "x": 1658,
+          "y": 270,
+          "health": 100,
+          "sector": "drill"
+        },
+        {
+          "tick": 430,
+          "x": 1703,
+          "y": 387,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 440,
+          "x": 1741,
+          "y": 438,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 453,
+          "x": 1791,
+          "y": 328,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 463,
+          "x": 1829,
+          "y": 307,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 475,
+          "x": 1874,
+          "y": 355,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 487,
+          "x": 1920,
+          "y": 250,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 498,
+          "x": 1962,
+          "y": 224,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 509,
+          "x": 2004,
+          "y": 267,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 520,
+          "x": 2045,
+          "y": 355,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 533,
+          "x": 2095,
+          "y": 245,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 543,
+          "x": 2133,
+          "y": 224,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 554,
+          "x": 2175,
+          "y": 267,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 565,
+          "x": 2216,
+          "y": 280,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 578,
+          "x": 2266,
+          "y": 170,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 588,
+          "x": 2304,
+          "y": 149,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 599,
+          "x": 2346,
+          "y": 192,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 610,
+          "x": 2387,
+          "y": 280,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 623,
+          "x": 2437,
+          "y": 170,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 633,
+          "x": 2475,
+          "y": 149,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 644,
+          "x": 2517,
+          "y": 192,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 655,
+          "x": 2558,
+          "y": 302,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 666,
+          "x": 2600,
+          "y": 438,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 678,
+          "x": 2646,
+          "y": 333,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 689,
+          "x": 2688,
+          "y": 307,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 701,
+          "x": 2733,
+          "y": 344,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 713,
+          "x": 2779,
+          "y": 239,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 724,
+          "x": 2821,
+          "y": 213,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 734,
+          "x": 2859,
+          "y": 249,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 746,
+          "x": 2904,
+          "y": 344,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 758,
+          "x": 2950,
+          "y": 239,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 769,
+          "x": 2992,
+          "y": 213,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 779,
+          "x": 3030,
+          "y": 249,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 791,
+          "x": 3075,
+          "y": 366,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 801,
+          "x": 3113,
+          "y": 438,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 814,
+          "x": 3163,
+          "y": 328,
+          "health": 92,
+          "sector": "drill"
+        },
+        {
+          "tick": 824,
+          "x": 3201,
+          "y": 307,
+          "health": 92,
+          "sector": "camp"
+        },
+        {
+          "tick": 836,
+          "x": 3246,
+          "y": 357,
+          "health": 92,
+          "sector": "camp"
+        },
+        {
+          "tick": 846,
+          "x": 3284,
+          "y": 362,
+          "health": 92,
+          "sector": "camp"
+        },
+        {
+          "tick": 859,
+          "x": 3334,
+          "y": 252,
+          "health": 92,
+          "sector": "camp"
+        },
+        {
+          "tick": 870,
+          "x": 3375,
+          "y": 232,
+          "health": 92,
+          "sector": "camp"
+        },
+        {
+          "tick": 881,
+          "x": 3417,
+          "y": 281,
+          "health": 92,
+          "sector": "camp"
+        },
+        {
+          "tick": 892,
+          "x": 3459,
+          "y": 397,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 902,
+          "x": 3497,
+          "y": 438,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 915,
+          "x": 3546,
+          "y": 328,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 926,
+          "x": 3588,
+          "y": 308,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 937,
+          "x": 3630,
+          "y": 357,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 947,
+          "x": 3668,
+          "y": 438,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 960,
+          "x": 3717,
+          "y": 328,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 971,
+          "x": 3759,
+          "y": 308,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 982,
+          "x": 3801,
+          "y": 357,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 992,
+          "x": 3839,
+          "y": 438,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1005,
+          "x": 3888,
+          "y": 328,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1016,
+          "x": 3930,
+          "y": 308,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1027,
+          "x": 3972,
+          "y": 351,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1039,
+          "x": 4018,
+          "y": 246,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1050,
+          "x": 4059,
+          "y": 220,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1062,
+          "x": 4105,
+          "y": 270,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1072,
+          "x": 4143,
+          "y": 351,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1085,
+          "x": 4192,
+          "y": 241,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1095,
+          "x": 4230,
+          "y": 220,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1107,
+          "x": 4276,
+          "y": 270,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1117,
+          "x": 4314,
+          "y": 365,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1130,
+          "x": 4363,
+          "y": 255,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1140,
+          "x": 4401,
+          "y": 234,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1152,
+          "x": 4447,
+          "y": 284,
+          "health": 84,
+          "sector": "camp"
+        },
+        {
+          "tick": 1162,
+          "x": 4485,
+          "y": 365,
+          "health": 84,
+          "sector": "camp"
+        }
+      ],
+      "layout": {
+        "width": 844,
+        "height": 390,
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 844,
+          "height": 281,
+          "logicalWidth": 1622,
+          "logicalHeight": 540
+        },
+        "buttons": [
+          {
+            "left": 181.9375,
+            "right": 225.9375,
+            "top": 341,
+            "bottom": 385,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "left": 230.9375,
+            "right": 274.9375,
+            "top": 341,
+            "bottom": 385,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "left": 279.9375,
+            "right": 329.703125,
+            "top": 341,
+            "bottom": 385,
+            "width": 49.765625,
+            "height": 44
+          },
+          {
+            "left": 334.703125,
+            "right": 395.921875,
+            "top": 341,
+            "bottom": 385,
+            "width": 61.21875,
+            "height": 44
+          },
+          {
+            "left": 400.921875,
+            "right": 465.640625,
+            "top": 341,
+            "bottom": 385,
+            "width": 64.71875,
+            "height": 44
+          },
+          {
+            "left": 470.640625,
+            "right": 541.65625,
+            "top": 341,
+            "bottom": 385,
+            "width": 71.015625,
+            "height": 44
+          },
+          {
+            "left": 546.65625,
+            "right": 596.828125,
+            "top": 341,
+            "bottom": 385,
+            "width": 50.171875,
+            "height": 44
+          },
+          {
+            "left": 601.828125,
+            "right": 662.046875,
+            "top": 341,
+            "bottom": 385,
+            "width": 60.21875,
+            "height": 44
+          }
+        ]
+      },
+      "errors": [],
+      "visualReview": {
+        "status": "PASS_WITH_DECLARED_ART_LIMITATIONS",
+        "reviewedCaptures": 4,
+        "notes": [
+          "Public runtime: all three sectors and landscape inspected; one moon, no repeated skyline.",
+          "Full-width 844x281 landscape canvas; all eight controls at least44px; pointer and focused-button Escape pass.",
+          "Held native hunter pose and reused rectangular machinery panel remain declared art limitations."
+        ]
+      },
+      "scope": "One isolated adult expedition traversed through keyboard and pointer inputs, no mocked runtime movement. No full hunt completion or character animation completeness claimed.",
+      "captureEvidence": [
+        {
+          "path": "work-local/v66/qa-public/game-reserve-tour/parachutes.jpg",
+          "sha256": "0a8da49074408fde970c360423fcfe811b9007e613f20fbb18579a99b8c14752"
+        },
+        {
+          "path": "work-local/v66/qa-public/game-reserve-tour/drill.jpg",
+          "sha256": "6463e37b3f7b437bf0159f6494cc8a819c8d7c2eb3e03b58dff1d44dda89a377"
+        },
+        {
+          "path": "work-local/v66/qa-public/game-reserve-tour/camp.jpg",
+          "sha256": "6e94939f44c1ccf3eb3906c12496f21cbe9584f70c128ef80e0014665114ceda"
+        },
+        {
+          "path": "work-local/v66/qa-public/game-reserve-tour/landscape-touch.jpg",
+          "sha256": "97c9f969d24face1004482033ce4e9b7abbb271d07802977cf47ad6ef3306aaf"
+        }
+      ]
+    }
+  ]
+}

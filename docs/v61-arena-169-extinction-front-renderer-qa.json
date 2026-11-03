@@ -1,0 +1,3300 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-169-extinction-front",
+  "checkedAt": "2026-09-30T19:05:57.378Z",
+  "compositionDigest": "3f77470217011f329c1f1cd4e26fc3d7e444efdd9dcd53f1df010504c9c0134d",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "f2eb599daec7425a0641060f179e0bf58e76e06d1c4e8a1750364f44b8ec125b",
+    "app/game/pitArenaProduction.ts": "982a0850cce006e2d65580d1e188fba485a2e94e006b2403dc38351f214aadef",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "scripts/verify-pit-stage-composition-v61.mjs": "9439af6528c100ae09453b6f235052d79f1b1e1cc79008908c82a25a8de6b17c",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "322eb124dd80d21fdbd9024f99dcd28d2c3cb87eb6d2818d16a52804fde449e7",
+    "app/game/data/pitStageLifeV61.json": "839d2bd0a110aeb0125f1b06879055a181836c7af1307b2ae202ce100e71f466",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "production": {
+      "number": 169,
+      "catalogueId": "arena-169-extinction-front",
+      "assetDirectory": "/game/sprites/v60/pit-arenas/arena-169-extinction-front",
+      "name": "Avant-poste Extinction",
+      "setting": "Installation de guerre xénomorphe / marine ; pas de conversion automatique des effets RTS en canon cinéma.",
+      "wave": "v60-workbook-stage-life",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v60-workbook-stage-life-compositions",
+      "authoringPlanDigest": "fd4d7c366c2fe5e516ddb7a11ef588ee8f67152295c3d658dee2aaf704938681",
+      "sourceReceipt": "docs/v60-generation/arena-169-extinction-front.json",
+      "lifeDigest": "c4a33a968689591d4aa72d59b5ea69325d0ca00e4d3591cb95a84cad84f187e4",
+      "screenReference": {
+        "kind": "game",
+        "workId": "v60-new-extinction-front",
+        "classification": "work-setting",
+        "sourceUrls": [
+          "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+        ],
+        "fidelityClaim": "original-lateral-layout-not-shot-exact"
+      },
+      "moduleProfile": {
+        "P2": 160,
+        "P3": 160,
+        "P4": 160,
+        "P5": 160,
+        "kind": "game",
+        "material": "metal",
+        "notes": "Supports industriels pour une installation de guerre recomposée, sans effet RTS dans le duel."
+      },
+      "contactMeasurements": [
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+          "crop": {
+            "x": 199,
+            "y": 0,
+            "width": 763,
+            "height": 1536
+          },
+          "visibleBottomExclusive": 1524,
+          "alphaThreshold": 3,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p3-utility-case.png",
+          "crop": {
+            "x": 41,
+            "y": 33,
+            "width": 1693,
+            "height": 798
+          },
+          "visibleBottomExclusive": 675,
+          "alphaThreshold": 3,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur native indépendante du lieu",
+          "nominalParallax": 0.05,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Fond OpenAI natif dédié au lieu, sans figurant peint",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v60/pit-arenas/arena-169-extinction-front/p0-depth.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "docs/v60-generation/arena-169-extinction-front.json",
+                    "sha256": "81e30ecaebbc6bf3833a25ffa632ca914321aba1a463626e0b5cb2251a005731",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v60-generation/arena-169-extinction-front.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Atmosphère distante indépendante",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-atmosphere",
+              "role": "Brume haute indépendante",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.09,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 180,
+                  "width": 1160,
+                  "height": 150
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-steel-upright",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.72,
+              "placements": [
+                {
+                  "x": -55,
+                  "y": 37.28047182175622,
+                  "width": 145,
+                  "height": 395
+                },
+                {
+                  "x": 870,
+                  "y": 37.28047182175622,
+                  "width": 145,
+                  "height": 395
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p2-steel-upright.json",
+                    "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 199,
+                      "y": 0,
+                      "width": 763,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p2-steel-upright.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p2-steel-upright"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-utility-case",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 40,
+                  "y": 361.97873597164795,
+                  "width": 130,
+                  "height": 80
+                },
+                {
+                  "x": 790,
+                  "y": 361.97873597164795,
+                  "width": 130,
+                  "height": 80
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p3-utility-case.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p3-utility-case.json",
+                    "sha256": "3cff01fa94f04a281ce76937cc2def0b0d2f0da125f87250db82cdea6fe8cdf7",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 41,
+                      "y": 33,
+                      "width": 1693,
+                      "height": 798
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p3-utility-case.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p3-utility-case"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Sol physique natif indépendant",
+          "nominalParallax": 1,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-floor",
+              "role": "Sol metal OpenAI indépendant",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 960,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-160-rage-war-umf12/p4-floor.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "09c6eab1fdd6ed2d1666edc29621e37d365f476803cd254f7f681984a2886bc2",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 2172,
+                      "height": 724
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ],
+              "libraryRef": "arena-160-rage-war-umf12/p4-floor"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.9,
+              "placements": [
+                {
+                  "x": -45,
+                  "y": -85,
+                  "width": 90,
+                  "height": 500
+                },
+                {
+                  "x": 915,
+                  "y": -85,
+                  "width": 90,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-169-extinction-front",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v60-arena-169-extinction-front-renderer-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v60-stage-composition-visual-review.json",
+        "digest": "b4b0924d976ee33481927f783251f44a7436952508f2d0c8a7398929698f460b"
+      }
+    },
+    "life": {
+      "stageId": "arena-169-extinction-front",
+      "replacesV60Stage": true,
+      "events": [
+        {
+          "id": "life-01",
+          "name": "Transport de maintenance anonyme — roues",
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "d7e1024ccbd9096dd39fc93e20d932313d2f3271521c24573412c90adbf54783",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                538,
+                512
+              ],
+              "pivot": [
+                256.5,
+                436
+              ],
+              "alphaBounds": [
+                51,
+                142,
+                464,
+                294
+              ]
+            },
+            {
+              "rect": [
+                538,
+                0,
+                502,
+                512
+              ],
+              "pivot": [
+                222.5,
+                436
+              ],
+              "alphaBounds": [
+                18,
+                140,
+                463,
+                296
+              ]
+            },
+            {
+              "rect": [
+                1040,
+                0,
+                496,
+                512
+              ],
+              "pivot": [
+                217,
+                436
+              ],
+              "alphaBounds": [
+                14,
+                140,
+                460,
+                296
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                538,
+                512
+              ],
+              "pivot": [
+                256.5,
+                398
+              ],
+              "alphaBounds": [
+                51,
+                101,
+                462,
+                297
+              ]
+            },
+            {
+              "rect": [
+                538,
+                512,
+                502,
+                512
+              ],
+              "pivot": [
+                222,
+                398
+              ],
+              "alphaBounds": [
+                16,
+                101,
+                464,
+                297
+              ]
+            },
+            {
+              "rect": [
+                1040,
+                512,
+                496,
+                512
+              ],
+              "pivot": [
+                220,
+                398
+              ],
+              "alphaBounds": [
+                15,
+                101,
+                460,
+                297
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 205,
+            "bottom": 272,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "reusedV60EventId": "life-01"
+        },
+        {
+          "id": "life-02",
+          "name": "Hydra — contrôle de la batterie dorsale",
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "081eb9a3c3cbe97f066435dfdfce3d906de44d59f74874549b2b5e34cad4b999",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                301.5,
+                502
+              ],
+              "alphaBounds": [
+                191,
+                76,
+                229,
+                426
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                257,
+                503
+              ],
+              "alphaBounds": [
+                138,
+                76,
+                238,
+                427
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                217.5,
+                502
+              ],
+              "alphaBounds": [
+                112,
+                79,
+                224,
+                423
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                299.5,
+                464
+              ],
+              "alphaBounds": [
+                185,
+                36,
+                234,
+                428
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                254,
+                466
+              ],
+              "alphaBounds": [
+                134,
+                36,
+                252,
+                430
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                217.5,
+                465
+              ],
+              "alphaBounds": [
+                103,
+                34,
+                235,
+                431
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 568,
+            "bottom": 355,
+            "height": 90,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "excludedFighterIds": [
+            "user-extinction-hydra"
+          ]
+        },
+        {
+          "id": "life-03",
+          "name": "Balise de front originale — volet diagnostique",
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "540d402cfcf9ea8d9c5ef06d752dae6ea644b76d96e855a3d5d1294a596a2ddf",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                268.5,
+                454
+              ],
+              "alphaBounds": [
+                112,
+                56,
+                314,
+                398
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                454
+              ],
+              "alphaBounds": [
+                99,
+                56,
+                316,
+                398
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                239,
+                454
+              ],
+              "alphaBounds": [
+                81,
+                56,
+                317,
+                398
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                268.5,
+                438
+              ],
+              "alphaBounds": [
+                110,
+                40,
+                318,
+                398
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                438
+              ],
+              "alphaBounds": [
+                99,
+                40,
+                316,
+                398
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                239,
+                438
+              ],
+              "alphaBounds": [
+                80,
+                40,
+                319,
+                398
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 750,
+            "bottom": 329,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "reusedV60EventId": "life-03"
+        }
+      ]
+    },
+    "story": null,
+    "base": {
+      "stageId": "arena-169-extinction-front",
+      "events": [
+        {
+          "id": "life-01",
+          "name": "Transport de maintenance anonyme — roues",
+          "src": "/game/sprites/v60/pit-life/arena-169-extinction-front/life-01.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "d7e1024ccbd9096dd39fc93e20d932313d2f3271521c24573412c90adbf54783",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                538,
+                512
+              ],
+              "pivot": [
+                256.5,
+                436
+              ],
+              "alphaBounds": [
+                51,
+                142,
+                464,
+                294
+              ]
+            },
+            {
+              "rect": [
+                538,
+                0,
+                502,
+                512
+              ],
+              "pivot": [
+                222.5,
+                436
+              ],
+              "alphaBounds": [
+                18,
+                140,
+                463,
+                296
+              ]
+            },
+            {
+              "rect": [
+                1040,
+                0,
+                496,
+                512
+              ],
+              "pivot": [
+                217,
+                436
+              ],
+              "alphaBounds": [
+                14,
+                140,
+                460,
+                296
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                538,
+                512
+              ],
+              "pivot": [
+                256.5,
+                398
+              ],
+              "alphaBounds": [
+                51,
+                101,
+                462,
+                297
+              ]
+            },
+            {
+              "rect": [
+                538,
+                512,
+                502,
+                512
+              ],
+              "pivot": [
+                222,
+                398
+              ],
+              "alphaBounds": [
+                16,
+                101,
+                464,
+                297
+              ]
+            },
+            {
+              "rect": [
+                1040,
+                512,
+                496,
+                512
+              ],
+              "pivot": [
+                220,
+                398
+              ],
+              "alphaBounds": [
+                15,
+                101,
+                460,
+                297
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 205,
+            "bottom": 272,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        {
+          "id": "life-02",
+          "name": "Machine de service originale — bras mécaniques",
+          "src": "/game/sprites/v60/pit-life/arena-169-extinction-front/life-02.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "e718703fd439caeb9b19c6e9952b8625889e5e733c79876d7e47bb2e98b9b54e",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                194.5,
+                423
+              ],
+              "alphaBounds": [
+                56,
+                146,
+                377,
+                277
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                184.5,
+                423
+              ],
+              "alphaBounds": [
+                47,
+                145,
+                394,
+                278
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                152,
+                423
+              ],
+              "alphaBounds": [
+                14,
+                146,
+                455,
+                277
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                186.5,
+                406
+              ],
+              "alphaBounds": [
+                48,
+                130,
+                417,
+                276
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                179,
+                406
+              ],
+              "alphaBounds": [
+                40,
+                129,
+                390,
+                277
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                172,
+                405
+              ],
+              "alphaBounds": [
+                33,
+                130,
+                377,
+                275
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 568,
+            "bottom": 355,
+            "height": 90,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        {
+          "id": "life-03",
+          "name": "Balise de front originale — volet diagnostique",
+          "src": "/game/sprites/v60/pit-life/arena-169-extinction-front/life-03.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "540d402cfcf9ea8d9c5ef06d752dae6ea644b76d96e855a3d5d1294a596a2ddf",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                268.5,
+                454
+              ],
+              "alphaBounds": [
+                112,
+                56,
+                314,
+                398
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                454
+              ],
+              "alphaBounds": [
+                99,
+                56,
+                316,
+                398
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                239,
+                454
+              ],
+              "alphaBounds": [
+                81,
+                56,
+                317,
+                398
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                268.5,
+                438
+              ],
+              "alphaBounds": [
+                110,
+                40,
+                318,
+                398
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                438
+              ],
+              "alphaBounds": [
+                99,
+                40,
+                316,
+                398
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                239,
+                438
+              ],
+              "alphaBounds": [
+                80,
+                40,
+                319,
+                398
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 750,
+            "bottom": 329,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      ]
+    }
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+      "sha256": "d7e1024ccbd9096dd39fc93e20d932313d2f3271521c24573412c90adbf54783",
+      "bytes": 2104382,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6539109547932942,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            538,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            142,
+            464,
+            294
+          ],
+          "contentSha256": "4bc5f97389438afc0fe3c413942544355d204f33a6b4d0fac1270b0fba8528c6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            538,
+            0,
+            502,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            140,
+            463,
+            296
+          ],
+          "contentSha256": "85f4b45f23407dc44645b8262ea3286e07c55b1ae6fbedb29585baee364b007a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1040,
+            0,
+            496,
+            512
+          ],
+          "alphaBounds": [
+            14,
+            140,
+            460,
+            296
+          ],
+          "contentSha256": "ead93917cf86bfa1d7a85d5b1c994d1872f1df5589bfb5d290c282ef8c19a794",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            538,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            101,
+            462,
+            297
+          ],
+          "contentSha256": "323aec05c1c26f534ddb5887c35509ca5daec76a46b4eabb5f647b35eea92156",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            538,
+            512,
+            502,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            101,
+            464,
+            297
+          ],
+          "contentSha256": "78bb5a266eb22c93523318daf25c4ee0a53ee64a3ccef3126159f56a364021ef",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1040,
+            512,
+            496,
+            512
+          ],
+          "alphaBounds": [
+            15,
+            101,
+            460,
+            297
+          ],
+          "contentSha256": "9850438d4d87a1525772127d1dbc8f32f7a543bcef9aead36d6b793afa505e89",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v60-generation\\arena-169-extinction-front.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+      "sha256": "081eb9a3c3cbe97f066435dfdfce3d906de44d59f74874549b2b5e34cad4b999",
+      "bytes": 1933241,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7622807820638021,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            191,
+            76,
+            229,
+            426
+          ],
+          "contentSha256": "363261032154b4e423663ceefff4e85c571e25c3fbe9af79eb4879d20c87ff33",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            138,
+            76,
+            238,
+            427
+          ],
+          "contentSha256": "0dc4bf9dbaffd5852246810013a57a3b5e4e6593050eb70122ec127f01b897f6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            112,
+            79,
+            224,
+            423
+          ],
+          "contentSha256": "96cb7ab9534775e4d8244632bb856920f2ad30126ddc569acba6afc6d11cc791",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            185,
+            36,
+            234,
+            428
+          ],
+          "contentSha256": "b61394d55447f863c60e5d3758800e99ea4ff21ce9c63e59b38a30ae0a616ac3",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            134,
+            36,
+            252,
+            430
+          ],
+          "contentSha256": "945ee290d4201abb111d0dba38d93e9c0b1b86a342b1f928e6c496a1f905030f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            103,
+            34,
+            235,
+            431
+          ],
+          "contentSha256": "ad3be44ae14014e7a6a97c8426129524a8a9adf2f4a9cf8416d7c6b94e91f051",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-169-extinction-front.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+      "sha256": "540d402cfcf9ea8d9c5ef06d752dae6ea644b76d96e855a3d5d1294a596a2ddf",
+      "bytes": 1869293,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.756310780843099,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            112,
+            56,
+            314,
+            398
+          ],
+          "contentSha256": "d62fc5984121e36a5ca7ef46f273cc923c29c8894ab56daa4d84fa98069590f2",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            56,
+            316,
+            398
+          ],
+          "contentSha256": "81497e28ac5418cea48f95e23d90a413595c8c535431393b4dab4027facf57ce",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            81,
+            56,
+            317,
+            398
+          ],
+          "contentSha256": "2201951a6ab778883ceb484e2a50500f007ee4bd35e2919924a1ff85b7449f19",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            110,
+            40,
+            318,
+            398
+          ],
+          "contentSha256": "93b349b6a4c5381023945fc354e9968f985fc3273105d231b01f71321d369e77",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            40,
+            316,
+            398
+          ],
+          "contentSha256": "33c11740568b70529aa2dd6ed7c6baa7bfc37dd8f29d3c82731eda7e205ec9c0",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            80,
+            40,
+            319,
+            398
+          ],
+          "contentSha256": "da29d548262e94e421040e23f6d7b99c0b7e2f7aed006a9d5f2cba387a63cf56",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v60-generation\\arena-169-extinction-front.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 9,
+    "expectedImages": 9,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV61Ambient": true,
+    "hasV61Story": false
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            205,
+            272
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            568,
+            355
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            750,
+            329
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            205,
+            272
+          ],
+          "pivot": [
+            205,
+            272
+          ],
+          "visibleBounds": [
+            178.9111328125,
+            234.67578125,
+            58.90625,
+            37.32421875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            568,
+            355
+          ],
+          "pivot": [
+            568,
+            355
+          ],
+          "visibleBounds": [
+            548.576171875,
+            280.1171875,
+            40.25390625,
+            74.8828125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            750,
+            329
+          ],
+          "pivot": [
+            750,
+            329
+          ],
+          "visibleBounds": [
+            730.1318359375,
+            278.47265625,
+            39.86328125,
+            50.52734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            209.0375,
+            272.045
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            580.2049999999999,
+            356.9125
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            766.3,
+            330.3275
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            209.0375,
+            272.045
+          ],
+          "pivot": [
+            209.03750000000002,
+            272.045
+          ],
+          "visibleBounds": [
+            182.36163330078125,
+            233.88098632812503,
+            60.231640625,
+            38.164013671875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            580.2049999999999,
+            356.9125
+          ],
+          "pivot": [
+            580.2049999999999,
+            356.9125
+          ],
+          "visibleBounds": [
+            560.3441357421875,
+            280.34482421875003,
+            41.159619140625,
+            76.56767578124999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            766.3,
+            330.3275
+          ],
+          "pivot": [
+            766.3,
+            330.3275
+          ],
+          "visibleBounds": [
+            745.9848022460936,
+            278.66329101562496,
+            40.760205078125,
+            51.664208984374994
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            188.5875,
+            272.045
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            559.755,
+            356.9125
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            745.85,
+            330.3275
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            188.5875,
+            272.045
+          ],
+          "pivot": [
+            188.58750000000003,
+            272.045
+          ],
+          "visibleBounds": [
+            161.91163330078126,
+            233.88098632812503,
+            60.231640625,
+            38.164013671875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            559.755,
+            356.9125
+          ],
+          "pivot": [
+            559.755,
+            356.9125
+          ],
+          "visibleBounds": [
+            539.8941357421875,
+            280.34482421875003,
+            41.159619140625,
+            76.56767578124999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            745.85,
+            330.3275
+          ],
+          "pivot": [
+            745.85,
+            330.3275
+          ],
+          "visibleBounds": [
+            725.5348022460937,
+            278.66329101562496,
+            40.760205078125,
+            51.664208984374994
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            207.75,
+            271.97999999999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            567.1200000000001,
+            354.15
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            747.3,
+            328.40999999999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            207.75,
+            271.97999999999996
+          ],
+          "pivot": [
+            207.75,
+            271.97999999999996
+          ],
+          "visibleBounds": [
+            181.92202148437502,
+            235.02902343749994,
+            58.31718749999999,
+            36.950976562499996
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            567.1200000000001,
+            354.15
+          ],
+          "pivot": [
+            567.1200000000001,
+            354.15
+          ],
+          "visibleBounds": [
+            547.89041015625,
+            280.01601562499997,
+            39.851367187499996,
+            74.133984375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            747.3,
+            328.40999999999997
+          ],
+          "pivot": [
+            747.3,
+            328.40999999999997
+          ],
+          "visibleBounds": [
+            727.630517578125,
+            278.3879296875,
+            39.464648437499996,
+            50.0220703125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            197.43749999999997,
+            271.79812499999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            570.42,
+            357.080625
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            757.4250000000001,
+            330.36562499999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            197.43749999999997,
+            271.79812499999997
+          ],
+          "pivot": [
+            197.43749999999994,
+            271.79812499999997
+          ],
+          "visibleBounds": [
+            170.63118896484372,
+            233.44749023437495,
+            60.526171875,
+            38.350634765625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            570.42,
+            357.080625
+          ],
+          "pivot": [
+            570.42,
+            357.080625
+          ],
+          "visibleBounds": [
+            550.4620166015624,
+            280.13853515625,
+            41.360888671875,
+            76.94208984375001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            757.4250000000001,
+            330.36562499999997
+          ],
+          "pivot": [
+            757.4250000000001,
+            330.36562499999997
+          ],
+          "visibleBounds": [
+            737.0104614257814,
+            278.448779296875,
+            40.959521484375,
+            51.916845703125006
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            232.5,
+            271.8
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            559.2,
+            346.5
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            723,
+            323.1
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            232.5,
+            271.8
+          ],
+          "pivot": [
+            232.5,
+            271.8
+          ],
+          "visibleBounds": [
+            209.02001953125,
+            238.208203125,
+            53.015625,
+            33.591796875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            559.2,
+            346.5
+          ],
+          "pivot": [
+            559.2,
+            346.5
+          ],
+          "visibleBounds": [
+            541.7185546875,
+            279.10546875,
+            36.228515625,
+            67.39453125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            723,
+            323.1
+          ],
+          "pivot": [
+            723,
+            323.1
+          ],
+          "visibleBounds": [
+            705.11865234375,
+            277.625390625,
+            35.876953125,
+            45.474609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            205,
+            272
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            568,
+            355
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            750,
+            329
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            205,
+            272
+          ],
+          "pivot": [
+            205,
+            272
+          ],
+          "visibleBounds": [
+            178.9111328125,
+            234.67578125,
+            58.90625,
+            37.32421875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            568,
+            355
+          ],
+          "pivot": [
+            568,
+            355
+          ],
+          "visibleBounds": [
+            548.576171875,
+            280.1171875,
+            40.25390625,
+            74.8828125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            750,
+            329
+          ],
+          "pivot": [
+            750,
+            329
+          ],
+          "visibleBounds": [
+            730.1318359375,
+            278.47265625,
+            39.86328125,
+            50.52734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            196.93316974499996,
+            267.323469
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            570.6180747450001,
+            352.766574
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            757.975244745,
+            326.001264
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            196.93316974499996,
+            267.323469
+          ],
+          "pivot": [
+            196.93316974499996,
+            267.323469
+          ],
+          "visibleBounds": [
+            170.0763767518359,
+            228.90061187109373,
+            60.64015546875002,
+            38.42285712890626
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            570.6180747450001,
+            352.766574
+          ],
+          "pivot": [
+            570.6180747450001,
+            352.766574
+          ],
+          "visibleBounds": [
+            550.6225062391408,
+            275.6795859140625,
+            41.43877998046875,
+            77.0869880859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            757.975244745,
+            326.001264
+          ],
+          "pivot": [
+            757.975244745,
+            326.001264
+          ],
+          "visibleBounds": [
+            737.5222612733204,
+            273.98664788671874,
+            41.03665693359376,
+            52.01461611328126
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 1207,
+      "attachment": [
+        205,
+        272
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 1227,
+      "attachment": [
+        205,
+        272
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 1247,
+      "attachment": [
+        205,
+        272
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 1267,
+      "attachment": [
+        205,
+        272
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 1287,
+      "attachment": [
+        205,
+        272
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 1307,
+      "attachment": [
+        205,
+        272
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 2408,
+      "attachment": [
+        568,
+        355
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 2428,
+      "attachment": [
+        568,
+        355
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 2448,
+      "attachment": [
+        568,
+        355
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 2468,
+      "attachment": [
+        568,
+        355
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 2488,
+      "attachment": [
+        568,
+        355
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 2508,
+      "attachment": [
+        568,
+        355
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 3499,
+      "attachment": [
+        750,
+        329
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 3519,
+      "attachment": [
+        750,
+        329
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 3539,
+      "attachment": [
+        750,
+        329
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 3559,
+      "attachment": [
+        750,
+        329
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 3579,
+      "attachment": [
+        750,
+        329
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 3599,
+      "attachment": [
+        750,
+        329
+      ]
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\center.png",
+      "sha256": "315cfc9e8ea6b6e2807565b228261075ed0a107807f4eb006e19fc49fbff80c3"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\left-corner.png",
+      "sha256": "9fc991b48cdd7c8c5ef01383f11decdfe321c57f5948546909429550b5110030"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\right-corner.png",
+      "sha256": "cbdbf6620a9b6f631ef3f8db7e59fa57f4c182dd0c73cee5ce4aa691593e0c51"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\wide.png",
+      "sha256": "e02e93f75c1766bf30e082667906088487e3899fccb75483c636854b1bf12357"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\close.png",
+      "sha256": "35ce56faa6ae6dbeac977f3a13522ca245ecd800f70972bcd454b32655b5f8c4"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\reduced-motion.png",
+      "sha256": "044f58e058ac595e9d50af555d4514ca04286d1f5d3d773a14c46089922339ef"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\high-contrast.png",
+      "sha256": "10192984cacbe026512d28d16861c62cf09e15b866158d256e73a362bb23f719"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\actual-game-camera.png",
+      "sha256": "cbef95e46d5c5ab42b08c6c4f27e712941628766cf38d3e41c7a4d44fafb7b5a"
+    },
+    {
+      "name": "ambient-life-01-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-01-frame-0.png",
+      "sha256": "2e67d17bcbe53adb6fffb34d0bb208cbbdc94587334b944662e35e13ebaf75de"
+    },
+    {
+      "name": "ambient-life-01-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-01-frame-1.png",
+      "sha256": "41a9321aca5b5bbd636d3f71c38985644944ad1350092086a3d76ef9d8dea4b9"
+    },
+    {
+      "name": "ambient-life-01-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-01-frame-2.png",
+      "sha256": "bd26d913b82494e6870388d6df81c0db3662aaa29f4ef2b8e3fb405f6a98af58"
+    },
+    {
+      "name": "ambient-life-01-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-01-frame-3.png",
+      "sha256": "ba87aa7622732a06edf08d80917688700bef712ddf12dceffc2c3eb7c8b6e5e6"
+    },
+    {
+      "name": "ambient-life-01-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-01-frame-4.png",
+      "sha256": "fec0c83b4f3eb80c8ca87897d071058f80eb63b188779d7a90752c856dc2fcc8"
+    },
+    {
+      "name": "ambient-life-01-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-01-frame-5.png",
+      "sha256": "f6785e809aa7a4e8224b82e5fe7838a2e442b2bd275344c4f7c51c075fbde330"
+    },
+    {
+      "name": "ambient-life-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-02-frame-0.png",
+      "sha256": "2e67d17bcbe53adb6fffb34d0bb208cbbdc94587334b944662e35e13ebaf75de"
+    },
+    {
+      "name": "ambient-life-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-02-frame-1.png",
+      "sha256": "541a0078016aa4256e540bfb50fd66e5deafc5cd7ebd2f31b619ab732633aa56"
+    },
+    {
+      "name": "ambient-life-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-02-frame-2.png",
+      "sha256": "0031ff7e0c448d655e39f61282d63bfe14c520d6dc86c3e8dc4ed5b2d7e75cd8"
+    },
+    {
+      "name": "ambient-life-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-02-frame-3.png",
+      "sha256": "0662f03bb7141224a075b4a0013567964c38540ee5904be6f999eb9e6f4fe0ec"
+    },
+    {
+      "name": "ambient-life-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-02-frame-4.png",
+      "sha256": "2ab3e783a3bac0f5120dfcf67ea8eb46b6cf7c1270881151aafbb8015c3c6ea5"
+    },
+    {
+      "name": "ambient-life-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-02-frame-5.png",
+      "sha256": "5bf2f2b1445631392a25fa89bbecebbbfa1e839625614cb497839f08033107ca"
+    },
+    {
+      "name": "ambient-life-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-03-frame-0.png",
+      "sha256": "1455e2b22238bb533cf451403bd866a48ab5745b5e605c0b3a31a219e921f14a"
+    },
+    {
+      "name": "ambient-life-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-03-frame-1.png",
+      "sha256": "edf881e10bd68496ff1fd262f6f07d03fbec78da9a756007deee89047f2ab351"
+    },
+    {
+      "name": "ambient-life-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-03-frame-2.png",
+      "sha256": "59c1c8e1bdda55652c76a52263affaa04c6da23d02e776906a466bdc0a1c2315"
+    },
+    {
+      "name": "ambient-life-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-03-frame-3.png",
+      "sha256": "7689a2cefc48fac523a50cf4b04ac650e48e69043c29c082c53921fe14fd05ef"
+    },
+    {
+      "name": "ambient-life-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-03-frame-4.png",
+      "sha256": "cc04df2133953b13a7330ad25256542bb5e3d9a3573df19d571364cfbb2c21e1"
+    },
+    {
+      "name": "ambient-life-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\ambient-life-03-frame-5.png",
+      "sha256": "19d395b5d512921af06769c6ea0c0059c4273c0069654aefa93b5f117d6a9153"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-169-extinction-front\\mobile-canvas.png",
+      "sha256": "3a93057378a0dcf35a9fe13888d57054477ebe61693cca55ef92059ace10f9b0"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

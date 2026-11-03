@@ -1,0 +1,364 @@
+{
+  "version": "V40",
+  "checkedAt": "2026-09-19T20:35:29.426Z",
+  "status": "passed-local",
+  "commands": {
+    "build": {
+      "exitCode": 0,
+      "engine": "Vinext",
+      "environment": "YAUTJA_KEEP_BUILD_ROOT=1",
+      "output": "Verified pre-cleaned existing D: output junction"
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "lint": {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 1,
+      "note": "Existing ClanChroniclePanel native image warning"
+    },
+    "tests": {
+      "total": 1318,
+      "passed": 1318,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "browser": {
+    "art": {
+      "passed": true,
+      "version": "V40",
+      "checkedAt": "2026-09-19T20:33:42.593Z",
+      "url": "http://127.0.0.1:4174",
+      "labChecks": [
+        {
+          "fighter": "scar",
+          "clip": "walk",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "scar",
+          "clip": "walk",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "high-guard",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "high-guard",
+          "facing": "left",
+          "drawings": 2
+        }
+      ],
+      "combatChecks": [
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "high-guard",
+          "facing": "right",
+          "drawings": 2,
+          "nativeOrientation": true,
+          "stableGround": true
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "high-guard",
+          "facing": "left",
+          "drawings": 2,
+          "nativeOrientation": true,
+          "stableGround": true
+        },
+        {
+          "fighter": "scar",
+          "clip": "walk",
+          "facing": "right",
+          "drawings": 4,
+          "realForwardMovement": true,
+          "advanceStopRetreat": true,
+          "sourceReuse": true
+        },
+        {
+          "fighter": "scar",
+          "clip": "walk",
+          "facing": "left",
+          "drawings": 4,
+          "realForwardMovement": true,
+          "advanceStopRetreat": true,
+          "sourceReuse": true
+        }
+      ],
+      "mobileNoOverflow": true,
+      "errors": [],
+      "failures": [],
+      "limitations": [
+        "Browser input only, no complete moveset or physical hardware certification.",
+        "Scar reuses eight existing retreat drawings in reverse order; no new Scar image is claimed.",
+        "Machiko guards are held defensive poses, not blockstun or low guard."
+      ]
+    },
+    "pitControls": {
+      "passed": true,
+      "version": "V40",
+      "checkedAt": "2026-09-19T20:34:23.905Z",
+      "url": "http://127.0.0.1:4174/",
+      "input": "virtual-standard-gamepads-and-real-DOM-callbacks",
+      "physicalControllerCertified": false,
+      "checks": [
+        {
+          "name": "identical-opponent-rejected",
+          "fighterId": "machiko-noguchi",
+          "validOpponentPreserved": "theta",
+          "enteredCombat": true
+        },
+        {
+          "name": "identical-opponent-rejected",
+          "fighterId": "scar",
+          "validOpponentPreserved": "theta",
+          "enteredCombat": true
+        },
+        {
+          "name": "changing-J1-preserves-distinct-opponent",
+          "fighterId": "theta"
+        },
+        {
+          "name": "sparse-pad-menu-to-combat",
+          "browserSlot": 2,
+          "role": "J1",
+          "phases": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "commands-pointer",
+          "focusRestored": true,
+          "heldGuardPurged": true,
+          "phases": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "laboratory-keyboard",
+          "focusRestored": true,
+          "heldGuardPurged": true,
+          "phases": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "commands-touch",
+          "focusRestored": true,
+          "heldGuardPurged": true,
+          "phases": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "sparse-pad-briefing",
+          "browserSlot": 2,
+          "explicitStart": true
+        },
+        {
+          "name": "two-sparse-pads-and-J1-loss",
+          "J1slot": 1,
+          "J2slot": 3,
+          "localOne": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ],
+          "localTwo": [
+            [],
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ]
+          ],
+          "afterDisconnect": [
+            [],
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ]
+          ],
+          "noRolePromotion": true
+        },
+        {
+          "name": "reconnect-and-J2-loss",
+          "heldInputSuppressed": true,
+          "reconnected": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ],
+          "afterJ2Disconnect": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "explicit-selection-reassigns-roles",
+          "newJ1slot": 3,
+          "phases": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "existing-save-unchanged",
+          "localStorageWrites": 0
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    "ashExpedition": {
+      "passed": true,
+      "expectedVersion": "V40",
+      "checkedAt": "2026-09-19T20:25:23.676Z",
+      "url": "http://127.0.0.1:4174",
+      "checks": [
+        "Entered the city, physically reached and inspected the convoy trophy, then used the real unlocked Ash door; no seeded progression.",
+        "Connected pad in slot 2: held connection inputs blocked, neutral then intentional stick moves actor.",
+        "Start pauses and resumes after release, without replaying a held direction.",
+        "B opens confirmation safely, Down cycles real choices, A continues once and B cancels without movement or auto-abandon.",
+        "Outside focus/settings cannot control expedition; P remapped through real UI pauses/resumes even from focused modal button, repeat ignored.",
+        "Window inactivity resumes intentionally; real movement plus X/Y inspect the nearby true trail, without awarding an unreported mission.",
+        "At 390px no horizontal overflow; deliberate B → Down → A abandons and returns to the actual city, preserving durable progression."
+      ],
+      "routeEvidence": [
+        {
+          "from": {
+            "x": 430,
+            "y": 2210
+          },
+          "target": {
+            "x": 1040,
+            "y": 1970
+          },
+          "actual": {
+            "x": 1030,
+            "y": 2005
+          },
+          "waypoints": 28
+        },
+        {
+          "from": {
+            "x": 1030,
+            "y": 2005
+          },
+          "target": {
+            "x": 970,
+            "y": 1770
+          },
+          "actual": {
+            "x": 973,
+            "y": 1803
+          },
+          "waypoints": 11
+        }
+      ],
+      "errors": [],
+      "failures": [],
+      "scope": "Real city-to-Ash expedition route, isolated profile and virtual pad in slot 2; no saved-state injection, no hardware controller certification. Unit callbacks separately cover report failure/saving states.",
+      "visualInspection": {
+        "reviewed": true,
+        "captures": [
+          "ash-controls-1280.png",
+          "ash-controls-390.png"
+        ],
+        "observations": [
+          "Terrain, personnage, trace inspectée et boutons visibles sur les deux captures.",
+          "Commandes réparties sur plusieurs lignes à 390 px sans débordement horizontal.",
+          "Le cadrage mobile et la taille réduite du personnage sont ceux de la scène existante ; aucune nouvelle validation artistique ou nouvelle animation annoncée."
+        ]
+      }
+    }
+  },
+  "logs": [
+    {
+      "file": "final-tests.log",
+      "sha256": "e5f554bb2dbdf52f92f4eb4ee0c982f630a47c387beaa02f1890c213b079df3d"
+    },
+    {
+      "file": "final-build.log",
+      "sha256": "c3edf26d0c17e8339913755c2d7133f7f50dd52f3bd2806fc6b4d1b248f3d51d"
+    },
+    {
+      "file": "typecheck.log",
+      "sha256": "fdd4010a5801a43e17e176b5cba5a4bd7484d414d207b9c36a14c36597cfde8e"
+    },
+    {
+      "file": "lint.log",
+      "sha256": "47f9ac92edcaa5111986f392eabf0cfbdfc37101c3dd2735ba9d737f29e0d51a"
+    }
+  ],
+  "coverage": {
+    "selectableFighters": 16,
+    "animatedFighters": 11,
+    "validatedOrientedClips": 263,
+    "addedClips": 4,
+    "completeMovesets": 0,
+    "playableArenas": 20,
+    "requestedArenas": 100,
+    "generationAttempts": 3,
+    "newSelectedSourceImages": 1,
+    "newDrawings": 4,
+    "reusedScarDrawings": 8,
+    "reviewSourceImages": 551
+  },
+  "visualReview": {
+    "machikoHandsWeaponCannonAndNativeLightDark": true,
+    "machikoBothGuardsInCombat": true,
+    "scarBothAdvancesStopRetreat": true,
+    "panelsMobile390": true
+  },
+  "limitations": [
+    "Machiko high guard only; no low guard or blockstun clip. Rifle and cannon remain slightly bulkier than V34.",
+    "Scar walk reuses existing retreat drawings in reverse order with the original coarse four-frame cadence.",
+    "Exact 1:1 official fidelity, full movesets, physical controller and Steam Deck certification are not claimed.",
+    "Windows portable remains V35."
+  ],
+  "harnessCorrection": "Initial art scenario forced a disabled duplicate fighter option with Playwright. The engine correctly rejects identical combatants. The art scenario now uses distinct opponents; selection and launch also reject inconsistent values before engine creation."
+}

@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Yautja : La Longue Chasse",
     description:
-      "Un jeu d’action 2D complet de chasse interstellaire, d’honneur et de trophées.",
+      "Un jeu de fan d’action 2D en développement : chasse interstellaire, honneur et trophées.",
     icons: {
       icon: "/game/sprites/hunter.webp",
       shortcut: "/game/sprites/hunter.webp",
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Choisissez votre mission, votre arsenal et rapportez un trophée digne du clan.",
       type: "website",
-      images: [{ url: socialImage, width: 1672, height: 941 }],
+      images: [{ url: socialImage, width: 1732, height: 908 }],
     },
     twitter: {
       card: "summary_large_image",

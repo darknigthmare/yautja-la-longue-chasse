@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-74-310",
+  "label": "Générateur",
+  "attempt": 1,
+  "family": "INDUSTRIEL",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "Create ONE complete original native game sprite for target-v81-74-310, Generateur: a freestanding alien industrial energy generator for the Yautja homeworld of the fan game La Longue Chasse. It is an original lore-compatible design, not an official prop reproduction. Whole independent machine, three-quarter isometric view looking down about 25 to 30 degrees, front and right side visible, restrained realistic prerendered 2.5D game-object finish. Match the observed project visual system: massive angular charcoal-black porous basalt and dark gunmetal housings, restrained weathered antique-bronze structural ribs with chamfered edges, shallow angular alien geometric engraving, fine worn material texture, warm neutral top-left illumination, small contained amber light apertures. Keep dark surfaces readable with midtone edge contrast. The generator must read immediately as an ENERGY GENERATOR, not a terminal or door: squat heavy horizontal base, two armored vent banks around one central ribbed cylindrical power core, thick internal conduits and four integral short feet. A narrow amber energy slit is inside its protective core housing; no glow or fog outside the physical object. Distinct asymmetric service end and exhaust grille, no human fuel can or car engine. All connections end neatly on this self-contained unit. Show the complete top, base and all four feet, no missing edge. Square native canvas with the entire machine occupying only the central 60 percent of the width and about 50 percent of height; request generous minimum 18 to 20 percent fully empty TRANSPARENT margins all around. Ground contact approximately horizontal center, around 75 percent of canvas height; preserve whatever exact native canvas size the tool emits. TRUE transparent background: outside the machine silhouette every pixel must be exact alpha zero, including all four canvas edges, no faint isolated speckles, no soft haze, no detached cast shadow, no ground plane. No painted background or checkerboard, no black rectangle, no vignette, no mockup board, no grid, no text or labels or numbers, no logos, no people, no creature, no scenery, no extra unattached object, no crop, no repeated copies or atlas. This is one new native drawing for a candidate asset; it does not imply a functional generator or approved art.",
+  "nativeSourcePath": "/workspace/generated_images/exec-91ba02ae-1faa-40c8-9a79-e4d367b5cf81.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-310-generateur-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v84/maintenance-console-right.png",
+    "public/game/homeworld/v75/architecture/convoy-workshop.png"
+  ],
+  "visualAssessment": {
+    "wholeSingleObject": true,
+    "visibleCroppedObject": false,
+    "duplicateGrid": false,
+    "functionReadable": true,
+    "materialCameraCoherent": true,
+    "notes": "Squat armored energy core and vents are readable; selected as the candidate direction for the industrial family. Padding and alpha require measured review, no human art approval.",
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "openedNativeOutput": true
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-74-310",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-310-generateur-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-91ba02ae-1faa-40c8-9a79-e4d367b5cf81.png",
+    "bytes": 1674710,
+    "sha256": "e32c32da91e1448a44099b905b1cc125541aed274e54cf1af7453b417da3958b",
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 956110,
+    "alpha1or2Pixels": 12254,
+    "alpha1to8Pixels": 16048,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          0,
+          19,
+          1224,
+          1254
+        ],
+        "margins": [
+          0,
+          19,
+          30,
+          0
+        ],
+        "visiblePixels": 616406,
+        "edgeVisiblePixels": 27
+      },
+      "2": {
+        "bboxExclusive": [
+          48,
+          220,
+          1215,
+          1025
+        ],
+        "margins": [
+          48,
+          220,
+          39,
+          229
+        ],
+        "visiblePixels": 604152,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          50,
+          221,
+          1213,
+          1023
+        ],
+        "margins": [
+          50,
+          221,
+          41,
+          231
+        ],
+        "visiblePixels": 600358,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": false,
+    "diagnosticImageAnchor": {
+      "x": 631,
+      "y": 1022,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/309"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/309"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/309"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 74,
+      "line": 2005
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 314,
+        "idCell": {
+          "cell": "A314",
+          "value": "target-v81-74-310"
+        },
+        "labelCell": {
+          "cell": "D314",
+          "value": "Générateur"
+        },
+        "historicalPresenceCell": {
+          "cell": "G314",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F314",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 314,
+        "idCell": {
+          "cell": "A314",
+          "value": "target-v81-74-310"
+        },
+        "labelCell": {
+          "cell": "C314",
+          "value": "Générateur"
+        },
+        "historicalPresenceCell": {
+          "cell": "D314",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E314",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT"
+  ],
+  "targetSpecificLimits": [
+    "Static generator candidate only, no native active/idle cycle or simulation; strong-alpha right margin41px fails the48px diagnostic."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

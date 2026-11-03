@@ -1,0 +1,271 @@
+{
+  "status": "PASS",
+  "scope": {
+    "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
+    "description": "One accepted initial checkpoint for the source journey plus one explicitly declared carried regression fixture at a foreground boundary; then actual UI and keyboard/native physics: source B, two visible separate carries, actual pause, parking/resume, carried Continue, refused actions/retry, explicit uncertainty report and mobile. Controlled browser clock. No physical-controller certification."
+  },
+  "production": {
+    "buildId": "PSbg8NXFktzLqpiyuoPMt",
+    "mode": "compiled-app",
+    "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
+    "checksPassed": 55,
+    "checksFailed": 0,
+    "browserErrors": 0,
+    "servedBuilds": [
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+        "foundInHtml": true
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "file": "docs/qa/v106-homeworld-archive/01-source-and-adaptation.png",
+      "sha256": "ef8e4ccc340ade3ae16afbfb61dc7032b6128599cddb8dc783fb49cf64d992a9",
+      "bytes": 244496
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/02-native-carry-a.png",
+      "sha256": "4da9df013dc63c9f92a05a935ab294a7673cea9b93844bbbc74d5b3e9d887022",
+      "bytes": 1098356
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/03-interrupted-load.png",
+      "sha256": "e10a65da4340ac2a91e43f6cd8545a314d6ebe363ad40c8aa498a9317de4ecfe",
+      "bytes": 1031242
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/04-parked-dossier.png",
+      "sha256": "99c7c1079506b6e753aef25e29ca636e346d5214c92c89c055eeeedade7762cb",
+      "bytes": 1129014
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/05-first-support.png",
+      "sha256": "5f6a73b5e937bae81088c731348ee5b23738ebfeacbb88b6bbf5eca2556d6102",
+      "bytes": 1125343
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/06-two-separate-supports.png",
+      "sha256": "c9306a462d7f188323fb987481319ebbc5ef79ac1794cc33d7b29248736ecab9",
+      "bytes": 1241054
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/07-completed-desktop.png",
+      "sha256": "f158f1aec7bf6c1909cfa1881b51fbcd5d20b12136b8637746b4afdb9d75e459",
+      "bytes": 188852
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/08-completed-mobile.png",
+      "sha256": "008494075da8f163e5d9736911684406b0bbf066097f2e0d47efc5a20538a98d",
+      "bytes": 137718
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/09-local-map-mobile.png",
+      "sha256": "5f6a8094e42f9eb818c158dbec4ba25459d20cd3832f9251a7c4a66c033ee6d8",
+      "bytes": 35936
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/10-foreground-carry-resume.png",
+      "sha256": "1ad8e179baae6af3289851179982eead2c05d81434dfc2a34495dd304012b9b5",
+      "bytes": 1036685
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/result.json",
+      "sha256": "379f94b45c4f3ea13fd613bf23b7d2fd03303418fbccf6f7f5a8cc5f710b31da",
+      "bytes": 16934
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/test.log",
+      "sha256": "4add87db84f0f012ded96f55575f0ccabc3c7bb7ad35bf3a04fdbac78514dae6",
+      "bytes": 10491
+    },
+    {
+      "file": "docs/qa/v106-homeworld-archive/lint.log",
+      "sha256": "4b9a80b4ea25a9c93312b0ad909e87a9a1aea91ba47453a88f499214e772f96a",
+      "bytes": 611
+    }
+  ],
+  "sourceBefore": [
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "5b7b17244f07b1e377b57098ed98a9aeed50cefd2b0468694801a25adf12f531"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "d8082f37df8ce343a1bd27cc325bb293641c046f1f0ae87e9fad271270cca00c"
+    },
+    {
+      "file": "app/game/HomeworldArchiveWorldV106.tsx",
+      "sha256": "ac5d96cd5a0b972fef67dcba3e8f0d36e2e835b25aa6e54b9695d25d4cec34f9"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.tsx",
+      "sha256": "61caf4fd0916c9e4369b76a6b1ca6779b0b209e3b21d9ba1dfca63d8afc4131b"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.module.css",
+      "sha256": "67dd39b845f524f0037a00f5e4ecf39f9a4dbe39284cca791b4ce3b8f61f406c"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveDefinitionV106.ts",
+      "sha256": "00abbffa9464bac97a74d78b9047cb11350302d1e04f60eb870fa3e3adb6842d"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveLedgerV106.ts",
+      "sha256": "cbd307cbe7374b542a16c1a6597ef65087f65da2b0f7d5df362be080da6ae6df"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveSolidsV106.ts",
+      "sha256": "fa00c983c41a8c4e236c574c8fb4f5ecc08101a33f695a19f86df8cd77cf7a88"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveV106.ts",
+      "sha256": "44e8eb79b319e01bd80f0eedd083572fa79918c202b05c47d6f5f20bed1dadaf"
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "3fd5d2f542a1b19f5ba4f58fa59a01387f9b58c1fe8789e25722cf8ba1c84994"
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV83.ts",
+      "sha256": "fbe63d7ab83deae70b299106684b6c71a8d8e68bb64da5e158e01ee54d257b65"
+    },
+    {
+      "file": "app/game/data/bibleArchiveSceneV106.json",
+      "sha256": "1460ecc3362a9ba4da794762e64dc36a110fade7233298808eafb23e8f6857f4"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "15b7cc2849748de024224b59318612e880ea1d748f783200978fd1ba1908ab82"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "ddef4c2efdabc306c674eff70226222c99e6393d21d2c0cadfc2627291ace2c6"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "eae1e08c11bc9b6f3a35a9aac9395bea35f1bb38b8d173ce235723cb4d2fe9cf"
+    },
+    {
+      "file": "scripts/qa-homeworld-archive-v106.mjs",
+      "sha256": "9a88ad0037f590f9ae0324ab19578641625a1cb4716ebca0dc9830ed9bbf3a03"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "5b7b17244f07b1e377b57098ed98a9aeed50cefd2b0468694801a25adf12f531"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "d8082f37df8ce343a1bd27cc325bb293641c046f1f0ae87e9fad271270cca00c"
+    },
+    {
+      "file": "app/game/HomeworldArchiveWorldV106.tsx",
+      "sha256": "ac5d96cd5a0b972fef67dcba3e8f0d36e2e835b25aa6e54b9695d25d4cec34f9"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.tsx",
+      "sha256": "61caf4fd0916c9e4369b76a6b1ca6779b0b209e3b21d9ba1dfca63d8afc4131b"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.module.css",
+      "sha256": "67dd39b845f524f0037a00f5e4ecf39f9a4dbe39284cca791b4ce3b8f61f406c"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveDefinitionV106.ts",
+      "sha256": "00abbffa9464bac97a74d78b9047cb11350302d1e04f60eb870fa3e3adb6842d"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveLedgerV106.ts",
+      "sha256": "cbd307cbe7374b542a16c1a6597ef65087f65da2b0f7d5df362be080da6ae6df"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveSolidsV106.ts",
+      "sha256": "fa00c983c41a8c4e236c574c8fb4f5ecc08101a33f695a19f86df8cd77cf7a88"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveV106.ts",
+      "sha256": "44e8eb79b319e01bd80f0eedd083572fa79918c202b05c47d6f5f20bed1dadaf"
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "3fd5d2f542a1b19f5ba4f58fa59a01387f9b58c1fe8789e25722cf8ba1c84994"
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV83.ts",
+      "sha256": "fbe63d7ab83deae70b299106684b6c71a8d8e68bb64da5e158e01ee54d257b65"
+    },
+    {
+      "file": "app/game/data/bibleArchiveSceneV106.json",
+      "sha256": "1460ecc3362a9ba4da794762e64dc36a110fade7233298808eafb23e8f6857f4"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "15b7cc2849748de024224b59318612e880ea1d748f783200978fd1ba1908ab82"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "ddef4c2efdabc306c674eff70226222c99e6393d21d2c0cadfc2627291ace2c6"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "eae1e08c11bc9b6f3a35a9aac9395bea35f1bb38b8d173ce235723cb4d2fe9cf"
+    },
+    {
+      "file": "scripts/qa-homeworld-archive-v106.mjs",
+      "sha256": "9a88ad0037f590f9ae0324ab19578641625a1cb4716ebca0dc9830ed9bbf3a03"
+    }
+  ],
+  "capturesOpened": [
+    "01-source-and-adaptation.png",
+    "02-native-carry-a.png",
+    "03-interrupted-load.png",
+    "04-parked-dossier.png",
+    "05-first-support.png",
+    "06-two-separate-supports.png",
+    "07-completed-desktop.png",
+    "08-completed-mobile.png",
+    "09-local-map-mobile.png",
+    "10-foreground-carry-resume.png"
+  ],
+  "completedAt": "2026-10-23T05:09:59.413Z"
+}

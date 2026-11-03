@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "assetId": "hashori-homeworld-static",
+  "fighterId": "hashori",
+  "name": "Hashori",
+  "rosterIds": {
+    "catalogue": "Y-106",
+    "dlc": "N-001"
+  },
+  "useCase": "homeworld-named-hero-plate",
+  "status": "static-reviewed-candidate",
+  "visualCanonStatus": "original-noncanonical-visual-interpretation",
+  "textInterpretation": true,
+  "scope": "One fixed full-body Homeworld interpretation plate; no canonical visual claim and no animation clips.",
+  "promptRecordType": "Post-generation fidelity and regeneration brief; not a verbatim record of the completed generation request.",
+  "generation": {
+    "provider": "OpenAI integrated ImageGen",
+    "performed": true,
+    "generationOutputId": "exec-da06fd87-2178-4482-a57d-7c18cfe7ed1f",
+    "sourcePath": "art-source/v31/known-yautja/sources/hashori-chroma.png",
+    "sourceMetadata": {
+      "bytes": 2110139,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": false,
+      "sha256": "51d3454cfe54641228a1990515624d379d87db8861301e2cace6ba719c5b0d5f"
+    },
+    "runtimeCandidatePath": "public/game/sprites/v31/film-plates/hashori.png",
+    "runtimeCandidateMetadata": {
+      "bytes": 1399303,
+      "width": 726,
+      "height": 1568,
+      "hasAlpha": true,
+      "sha256": "fd9718b7fd1b9341893a0c6cfe1d663a726b49135c68fb5c38106b25dd03ede5"
+    },
+    "staticVisualReview": true,
+    "reviewBasis": "Producing agent reported generation, chroma cleanup, alpha extraction, and static visual review of this explicitly noncanonical interpretation.",
+    "animationClipsReviewed": 0,
+    "officialCertification": false,
+    "oneToOneCertified": false
+  },
+  "integration": {
+    "publicManifestPath": "public/game/sprites/v31/film-plates/manifest.json",
+    "confirmed": true,
+    "runtimeUrl": "/game/sprites/v31/film-plates/hashori.png",
+    "runtimePath": "public/game/sprites/v31/film-plates/hashori.png",
+    "runtimeSha256": "fd9718b7fd1b9341893a0c6cfe1d663a726b49135c68fb5c38106b25dd03ede5",
+    "note": "Static Homeworld integration confirmed by the public V31 manifest; animation coverage remains zero.",
+    "manifestSnapshotRecordedIn": "art-source/v31/known-yautja/homeworld-named-nine-manifest.json"
+  },
+  "sourceEvidence": [
+    {
+      "class": "official-publisher-text-context",
+      "url": "https://titanbooks.com/8140-predator-incursion-the-rage-war-1/",
+      "access": "Titan Books page reviewed directly.",
+      "supports": [
+        "Predator: Incursion title",
+        "Tim Lebbon authorship",
+        "Rage War trilogy context",
+        "2015 publication context"
+      ],
+      "doesNotSupport": [
+        "The accessible page does not name Hashori, quote her physical description, or establish any character appearance."
+      ]
+    },
+    {
+      "class": "secondary-community-index-only",
+      "url": "https://avp.fandom.com/wiki/Hashori",
+      "access": "Direct fetch returned HTTP 402; no visual claim adopted."
+    },
+    {
+      "class": "local-roster-gate",
+      "path": "art-source/v26/known-yautja/roster.json",
+      "sha256": "bb3e020ba8a3bbc3fcdd31cfed8220790c74430ad464f95821096771a92b3f33",
+      "supports": [
+        "text-interpretation-not-canonical-visual flag",
+        "text-source-review-and-explicit-interpretation-label gate",
+        "no local primary visual",
+        "visual fidelity not certified"
+      ]
+    },
+    {
+      "class": "local-project-lore-and-interpretation",
+      "path": "app/game/hunterLore.ts",
+      "sha256": "bd40f527f92efb26f0409c81aa4fedcf225ffd546db799c753a7033df73db7cc",
+      "supports": [
+        "local giant muscular clan-leader reading",
+        "old scars",
+        "explicit statement that skin, biomask, dreadlocks, colors, and armor are not fixed by the novel and are original noncanonical choices"
+      ]
+    },
+    {
+      "class": "local-production-boundary",
+      "path": "docs/DLC-PRIVE-CATALOGUE.md",
+      "sha256": "7f2ecee2fa7393e399e68d3443c6fc823b666c4ad2fcabb8322c9d92d562eec0",
+      "supports": [
+        "no exploitable canonical view",
+        "textual details may constrain but never provide a turnaround",
+        "name and role still require verification in the licensed book"
+      ]
+    },
+    {
+      "class": "local-fidelity-rule",
+      "path": "docs/yautja-visual-fidelity-rule.md",
+      "sha256": "dc49c84db96616ff6c353f833649c892fadacc2ecbb7c8508451f75e9e4df3be",
+      "supports": [
+        "an OpenAI image or modular preset is not canonical visual proof"
+      ]
+    }
+  ],
+  "truthBoundary": {
+    "canonicalVisualAvailable": false,
+    "licensedText": [
+      "Titan Books confirms the novel and series context only in the accessible page.",
+      "No licensed character excerpt or visual turnaround was reviewed in this lot."
+    ],
+    "localLore": [
+      "The project describes Hashori as a giant, massively muscular, scarred clan leader, but labels its color, armor, biomask, and dread choices as original interpretation."
+    ],
+    "interpretation": [
+      "Every visible choice in this plate beyond a separately verified textual constraint is an original fan-made design decision.",
+      "The plate must always be labelled interpretation rather than official, canonical, exact, or 1:1."
+    ],
+    "secondaryClaimsAdopted": [],
+    "identityFidelityCertified": false,
+    "oneToOneCertified": false
+  },
+  "structuredPrompt": {
+    "subject": "An original noncanonical visual interpretation of Hashori from Predator: Incursion / The Rage War for an unofficial fan-made Homeworld game plate.",
+    "anatomy": [
+      "large adult female Yautja clan leader",
+      "massively muscular and marked by old scars only as local text interpretation",
+      "functional nonsexualized anatomy",
+      "correct Yautja hands, feet, mandibles, dreadlocks, and limb count"
+    ],
+    "equipment": [
+      "original restrained Yautja armor design",
+      "no biomask treated as canonical",
+      "empty hands unless a licensed text excerpt explicitly fixes an object",
+      "skin color, dread arrangement, armor color, trophies, and weapon shapes remain declared artistic choices"
+    ],
+    "asymmetry": [
+      "make scars, plates, straps, and wear physically coherent but clearly invented for the project",
+      "do not cite cover art or another Yautja as Hashori",
+      "do not imply a reference-proven left/right layout"
+    ],
+    "composition": [
+      "one complete full-body figure",
+      "right-facing three-quarter lateral leadership stance",
+      "portrait framing with at least 10 percent padding",
+      "feet, hands, armor, and dreadlocks fully inside frame"
+    ],
+    "style": [
+      "dense cinematic 32-bit-era pre-rendered pixel art",
+      "strong readable clan-leader silhouette at gameplay size",
+      "original fan-made interpretation, never copied or presented as canon"
+    ],
+    "background": [
+      "exact flat opaque #00FF00 chroma green",
+      "no floor, shadow, scenery, gradient, fog, particles, vignette, text, logo, UI, or watermark",
+      "no green spill, halo, reflection, or #00FF00 on the subject"
+    ],
+    "forbidden": [
+      "canonical appearance claim",
+      "official or 1:1 label",
+      "unverified novel quote",
+      "borrowed named Yautja design",
+      "cover assumed to portray Hashori",
+      "sexualized anatomy",
+      "extra limbs",
+      "malformed hands"
+    ]
+  },
+  "rightsNote": "Original unofficial fan-made OpenAI visual interpretation for this project; not rights-holder art, not a canonical depiction, and not certified 1:1."
+}

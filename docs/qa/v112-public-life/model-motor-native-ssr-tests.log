@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: V112 seven short public-link circuits have supported visible full bodies without moving existing citizens or operation sockets
+ok 1 - V112 seven short public-link circuits have supported visible full bodies without moving existing citizens or operation sockets
+  ---
+  duration_ms: 51.222742
+  type: 'test'
+  ...
+# Subtest: V112 the existing motor can actually traverse each complete circuit in both directions with its unchanged body
+ok 2 - V112 the existing motor can actually traverse each complete circuit in both directions with its unchanged body
+  ---
+  duration_ms: 210.288287
+  type: 'test'
+  ...
+# Subtest: V112 placement rejects unsupported routes, existing routes, source operations, bad data and duplicates instead of manufacturing support
+ok 3 - V112 placement rejects unsupported routes, existing routes, source operations, bad data and duplicates instead of manufacturing support
+  ---
+  duration_ms: 7.539118
+  type: 'test'
+  ...
+# Subtest: V112 city-time poses remain continuous and deterministic, holding a real native drawing at both halts
+ok 4 - V112 city-time poses remain continuous and deterministic, holding a real native drawing at both halts
+  ---
+  duration_ms: 165.889963
+  type: 'test'
+  ...
+# Subtest: V112 paint uses unchanged real left/right atlas bytes, native foot pivots, uniform scale and the correct floor elevation
+ok 5 - V112 paint uses unchanged real left/right atlas bytes, native foot pivots, uniform scale and the correct floor elevation
+  ---
+  duration_ms: 10.081929
+  type: 'test'
+  ...
+# Subtest: V112 real React layer paints only the active physical floor, complete source pivots and no synthetic mirrors or service controls
+ok 6 - V112 real React layer paints only the active physical floor, complete source pivots and no synthetic mirrors or service controls
+  ---
+  duration_ms: 1441.093708
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1896.812063

@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "base": "https://yautja-la-longue-chasse.vercel.app",
+  "checkedAt": "2026-10-01T05:01:01.245Z",
+  "checks": [
+    {
+      "asset": "/game/homeworld/v67/ash-causeway-vista.png",
+      "status": 200,
+      "bytes": 2293338,
+      "contentType": "image/png",
+      "localSha256": "8178a67f6f2b4b26bb08f5e330db99e5b5f75b3c6e893c4b991eab81a7af5c78",
+      "remoteSha256": "8178a67f6f2b4b26bb08f5e330db99e5b5f75b3c6e893c4b991eab81a7af5c78",
+      "match": true
+    },
+    {
+      "asset": "/game/homeworld/v67/glass-processional-vista.png",
+      "status": 200,
+      "bytes": 2693019,
+      "contentType": "image/png",
+      "localSha256": "95a9f2a9e8b7f9ec0897ef60cbe7fea720a914e935ab4a34ebe6c5d1f0fda787",
+      "remoteSha256": "95a9f2a9e8b7f9ec0897ef60cbe7fea720a914e935ab4a34ebe6c5d1f0fda787",
+      "match": true
+    },
+    {
+      "asset": "/game/homeworld/v67/processional-bridge.png",
+      "status": 200,
+      "bytes": 2063958,
+      "contentType": "image/png",
+      "localSha256": "d455aa0b4766460fbebf3b38d5e22c900c770977b3102fe617c9615853195ef9",
+      "remoteSha256": "d455aa0b4766460fbebf3b38d5e22c900c770977b3102fe617c9615853195ef9",
+      "match": true
+    }
+  ]
+}

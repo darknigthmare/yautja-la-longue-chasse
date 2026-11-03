@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "yautja-workbook-visual-review-v615-1",
+  "reviewedAtUtc": "2026-10-23T17:37:32.029310+00:00",
+  "accepted": true,
+  "workbook": "Yautja_Suivi_Variantes_V615_2026-10-23.xlsx",
+  "workbookSha256": "90f03e170a07d4867f8f8bc588e486d3055c11a826a496ce50790d6a35e3a2f8",
+  "previews": [
+    {
+      "path": "after-summary.png",
+      "sheet": "Synthèse",
+      "range": "A1:J23",
+      "sha256": "5870b27839e59e667b6f0a876849cc02538889a4b1ec2cfbe73a6296c532b9ab",
+      "accepted": true,
+      "notesFR": "Titres et notes lisibles ; les comptes 5 120 / 2 197 / 205 / 36 / 2 682 et les 18 nouveaux PNG sont corrects. Les 12 classeurs originaux distincts dans main restent séparés du nombre de fichiers XLSX livrés. Couleurs, alignements et explications historiques sont conservés."
+    },
+    {
+      "path": "after-production.png",
+      "sheet": "Production PR",
+      "range": "A168:J171",
+      "sha256": "73d841d1749b4e3b48c7bee2e5b9d7e48aac69c5c3fec02745f1383d386da97a",
+      "accepted": true,
+      "notesFR": "Transition lisible entre la dernière ligne V6.14 et les trois premières V6.15 ; les identifiants, noms et statuts Conservée hors main apparaissent sans chevauchement. Les lignes V6.14 restent hors main."
+    },
+    {
+      "path": "after-checks.png",
+      "sheet": "Contrôles",
+      "range": "A31:D41",
+      "sha256": "8b402fcd819b566154cebc4e24852f95262cb0557d60c096903c6d73520b6e56",
+      "accepted": true,
+      "notesFR": "Les dix contrôles rendus indiquent OK ; les valeurs attendues et calculées concordent, dont 5 120 identifiants, 2 682 variantes pas faites et 36 conservées hors main."
+    },
+    {
+      "path": "after-workbooks.png",
+      "sheet": "Classeurs",
+      "range": "A26:F28",
+      "sha256": "d5220891ee31091c1d2e54f79bbff8f697eb96def76fd54b5b04d9bda4dacbf3",
+      "accepted": true,
+      "notesFR": "Les références V104, V105 et V106 restent lisibles avec leur état dans main, leur nombre d’onglets, leur taille et leur chemin. La présentation historique est conservée."
+    }
+  ],
+  "limitationsFR": [
+    "Revue visuelle directe des quatre plages rendues ; le contrôle OpenXML porte sur l’ensemble du classeur.",
+    "Pas de session Excel native interactive ; le recalcul et la mutation temporaire suivie de restauration ont été vérifiés avec Artifact Tool.",
+    "Le rapport OpenXML documente la quantification de −1 milliseconde d’un nouvel horodatage lors de la conversion en numéro de série Excel ; les dates historiques sont inchangées."
+  ]
+}

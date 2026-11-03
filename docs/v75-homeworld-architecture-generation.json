@@ -1,0 +1,174 @@
+{
+  "method": "builtin-openai-imagegen",
+  "unchangedStyleReferences": [
+    "/game/homeworld/v64/civic-hall.png",
+    "/game/homeworld/v72/civic-identity-atlas.png"
+  ],
+  "nativeArtPreserved": true,
+  "oldRuntimeAssetsPreserved": true,
+  "lore": "original local clan-city adaptation; no canonical map asserted",
+  "callCounts": {
+    "initial": 13,
+    "entranceHeightCorrection": 11,
+    "marketWidthCorrection": 1,
+    "opaquePortalCorrection": 2
+  },
+  "geometry": "570x340 historical ground envelope; yaw0 pitch35; measured source foundation and front-floor threshold; no hidden logical overrides",
+  "initialPrompt": "Orthographic front yaw0 pitch35,570x340 ground footprint, trueRGBA transparent nativePNG. Centered open doorway and flush threshold/foundation. No additional ground, stairs, people, props, weapons, trophies. Same darkbasalt/agedbronze vocabulary as unchanged style references; original localclancity, not a canonicalbuilding.",
+  "entranceHeightCorrectionPrompt": "Preserve roof,side bays, foundation, exact style and truealpha; rebuild real center entrance taller with raisedlintel. Actual black opening>=400sourcepixels high and bottom300/top240wide. No panels,person,steps/lip beyond floorfront. Keep sourcepixelsnative with no stretching or manual substitutes.",
+  "marketWidthCorrectionPrompt": "The first height correction left an actual ~188sourcepixels/~70world footaperture. Rebuild centre with actual black opening330sourcepixels wide; move pylons and extend lintel, keep roof/canopies/foundation, flushfrontfloor and truealpha. No fake black rectangle over stone, no body, no reward.",
+  "opaquePortalCorrectionPrompt": "Repair mistakenly alpha0 inner doorway; preserve roof, facade, jambs, floor, dimensions, perspective and exterior transparency. Paint an OPAQUE recessed charcoal stone corridor with back wall and ceiling, not a closed door panel. Keep exterior cutout alpha0, but interior cavity opaque. No persons, props, weapons or trophies. Same canvas and no stretching.",
+  "variants": [
+    {
+      "id": "dock-control",
+      "design": "A compact low harbormaster/berthing-control hall. Two swept protective roof fins, an inset cyan communication window on each side, low horizontal roof, orange doorway lights. Recognizably a control office, no towering cathedral.",
+      "src": "/game/homeworld/v75/architecture/dock-control.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-0415f9fa-d253-4f36-9306-486d7d89fa14.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-1111649d-7900-44be-8bb7-20fa1fc81770.png",
+      "transparentDoorCandidate": "work-local/v75/architecture-candidates/dock-control-transparent-door-rejected.png",
+      "corrections": [
+        "opening-height",
+        "opaque-interior-cavity"
+      ],
+      "candidateArchive": "work-local/v75/architecture-candidates/dock-control-original-candidate.png"
+    },
+    {
+      "id": "market-canopy",
+      "design": "A broad covered trade gallery: three coherent low roof bays and oxblood woven canopies covering empty side vendor recesses. Closed masonry central entrance, generous clear central approach, different silhouette from an armory. No goods or hanging heads.",
+      "src": "/game/homeworld/v75/architecture/market-canopy.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-37a136f5-cf8e-4aa1-a4f5-16ab06abf8a9.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-b827c47e-51cd-41e3-b1ba-1128847e5d3d.png",
+      "corrections": [
+        "opening-height",
+        "opening-width"
+      ],
+      "candidateArchive": "work-local/v75/architecture-candidates/market-canopy-original-candidate.png"
+    },
+    {
+      "id": "undercity-refuge",
+      "design": "A sheltered basalt refuge for travelers in lower galleries: low rounded ribbed roof, small asymmetrical patched cloth porch on the left, protective side buttresses, warm subdued lights. A modest safe house, not a palace.",
+      "src": "/game/homeworld/v75/architecture/undercity-refuge.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-d3a7d8a8-2cca-4744-9eec-5277edefbbd6.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-e4622535-6a9b-4953-9149-67028b328639.png",
+      "corrections": [
+        "opening-height"
+      ],
+      "candidateArchive": "work-local/v75/architecture-candidates/undercity-refuge-original-candidate.png"
+    },
+    {
+      "id": "trophy-mausoleum",
+      "design": "A public memorial gallery: symmetrical stepped roof rising modestly to a central carved ribbed arch, shallow empty wall niches, restrained clan-line carvings. NO visible trophies, skulls or acquired prizes. It stores a save-owned collection, so the exterior must not manufacture trophies.",
+      "src": "/game/homeworld/v75/architecture/trophy-mausoleum.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-add61abe-8c71-4174-bd2c-7e8c47de92c9.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-add61abe-8c71-4174-bd2c-7e8c47de92c9.png",
+      "corrections": [],
+      "candidateArchive": "work-local/v75/architecture-candidates/trophy-mausoleum-original-candidate.png"
+    },
+    {
+      "id": "enforcer-bastion",
+      "design": "A compact guarded evidence bastion: thick squat walls, two low flanking guard turrets, broad central reinforced passage, narrow amber observation slits. It reads as an official fortified post, not a throne room.",
+      "src": "/game/homeworld/v75/architecture/enforcer-bastion.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-6d754e9d-8c76-41cf-91dd-2472f99862ef.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-00f4dbfc-1f3f-4778-a8ed-96c2355d9ece.png",
+      "corrections": [
+        "opening-height"
+      ],
+      "candidateArchive": "work-local/v75/architecture-candidates/enforcer-bastion-original-candidate.png"
+    },
+    {
+      "id": "pit-gate",
+      "design": "A public dueling-arena admission lodge: paired inward-curved structural fins around a broad central dark entry, semi-circular lintel, low side walls. A distinct arena entry silhouette, not a full arena, no fighters or weapons.",
+      "src": "/game/homeworld/v75/architecture/pit-gate.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-898bc59a-c8eb-40dd-9470-bb9cc70d77c9.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-898bc59a-c8eb-40dd-9470-bb9cc70d77c9.png",
+      "corrections": [],
+      "candidateArchive": "work-local/v75/architecture-candidates/pit-gate-original-candidate.png"
+    },
+    {
+      "id": "rite-sanctum",
+      "design": "A modest local clan rite sanctuary: three low layered ceremonial roof ribs, a central inset angular entrance, deep etched original clan patterns, two side recesses for quiet waiting. No human religious symbols, no throne and no recognizable canon relics.",
+      "src": "/game/homeworld/v75/architecture/rite-sanctum.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-1f8d46de-7801-4632-99f2-9950f1b2dabc.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-08929725-9c8a-4515-99ac-d1536e386964.png",
+      "transparentDoorCandidate": "work-local/v75/architecture-candidates/rite-sanctum-transparent-door-rejected.png",
+      "corrections": [
+        "opening-height",
+        "opaque-interior-cavity"
+      ],
+      "candidateArchive": "work-local/v75/architecture-candidates/rite-sanctum-original-candidate.png"
+    },
+    {
+      "id": "convoy-workshop",
+      "design": "A practical convoy maintenance workshop: long broad sloping segmented roof, two stubby ventilation housings, open empty side maintenance bays, a central human-sized entrance framed by heavy metal ribs. No large vehicles, no human garage door or Earth tools. Clearly an industrial workshop.",
+      "src": "/game/homeworld/v75/architecture/convoy-workshop.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-128a7c33-0259-4807-9299-be60317a1990.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-4abe3bdb-7ff0-4c73-bb14-ba873940ab6c.png",
+      "corrections": [
+        "opening-height"
+      ],
+      "candidateArchive": "work-local/v75/architecture-candidates/convoy-workshop-original-candidate.png"
+    },
+    {
+      "id": "convoy-store",
+      "design": "A convoy cargo depot: very low broad covered storage roof, three boxlike reinforced side volumes, central tall clear entrance, recessed sealed side storage doors. Braced functional warehouse silhouette with no church fins. No cargo baked into the foreground.",
+      "src": "/game/homeworld/v75/architecture/convoy-store.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-d3368552-e097-400d-bb9b-610278b8f4e6.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-46c35a3b-b3d4-4681-87a5-854828149de1.png",
+      "corrections": [
+        "opening-height"
+      ],
+      "candidateArchive": "work-local/v75/architecture-candidates/convoy-store-original-candidate.png"
+    },
+    {
+      "id": "convoy-south-shelter",
+      "design": "A low courtyard waystation: broad compact roof with gently curved ends, small oxblood shade awnings on the sides, quiet recessed windows and clear central entrance. A resting shelter, not a warehouse or watchtower.",
+      "src": "/game/homeworld/v75/architecture/convoy-south-shelter.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-c773c76d-9d3a-42fa-a4ff-441e2aad3ab5.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-d303a6af-7c29-44c0-9aa8-09c65250f504.png",
+      "corrections": [
+        "opening-height"
+      ],
+      "candidateArchive": "work-local/v75/architecture-candidates/convoy-south-shelter-original-candidate.png"
+    },
+    {
+      "id": "rampart-north-lodge",
+      "design": "An upper rampart relay lodge: a compact stone service hall with a modest short raised lookout roof at its rear, two protective side ribs, small signal window, central visible entry. Do not draw a bridge, city wall or ground outside the foundation.",
+      "src": "/game/homeworld/v75/architecture/rampart-north-lodge.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-30778695-678d-4f78-9363-b987ebb9bffe.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-55d59d6f-a6ca-4f20-9962-f3414e26c4eb.png",
+      "corrections": [
+        "opening-height"
+      ],
+      "candidateArchive": "work-local/v75/architecture-candidates/rampart-north-lodge-original-candidate.png"
+    },
+    {
+      "id": "rampart-watch",
+      "design": "A rampart observation and registry post: squat octagonal central roof, two narrow low observation lobes, inset pale cyan observation slits and stout support ribs. Different silhouette from the relay lodge and citadel. One centered entry.",
+      "src": "/game/homeworld/v75/architecture/rampart-watch.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-0909c9d2-5521-44a1-a41b-a6e47d98d30a.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-eb0fe4dd-c307-4c96-83e9-383b59c76d2a.png",
+      "corrections": [
+        "opening-height"
+      ],
+      "candidateArchive": "work-local/v75/architecture-candidates/rampart-watch-original-candidate.png"
+    },
+    {
+      "id": "rampart-south-lodge",
+      "design": "A lower rampart rest-and-meal relay: long low trapezoidal roof and a single restrained side awning, two inset warm windows, practical squat buttresses, centered clear entrance. A lived-in stone relay, no human tavern sign or tables baked outside.",
+      "src": "/game/homeworld/v75/architecture/rampart-south-lodge.png",
+      "initialGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-7ef42d9a-8b7a-4329-bee2-0e19cf86461b.png",
+      "acceptedGeneratedPath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-7261620a-3237-4986-af3b-e2d9e31b58dc.png",
+      "corrections": [
+        "opening-height"
+      ],
+      "candidateArchive": "work-local/v75/architecture-candidates/rampart-south-lodge-original-candidate.png"
+    }
+  ],
+  "runtimeMetadata": "app/game/data/homeworldArchitectureArtV75.json",
+  "sourceInspection": "scripts/measure-homeworld-architecture-v75.mjs",
+  "notes": [
+    "All accepted source bytes copied unchanged; no Python/Canvas/SVG background removal, scaling or repainting.",
+    "Imagegen originals remain in generated_images; rejected initial candidates archived non-destructively outside public bundle.",
+    "Widths in doorway metadata denote real foot aperture between jamb feet, not tapered lintel width."
+  ]
+}

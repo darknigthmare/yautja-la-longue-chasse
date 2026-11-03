@@ -1,0 +1,1502 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-183-homeworld-wilds",
+  "compositionDigest": "8ed1e833ee9c799cd9d032a28d3577785a96179cfeef42a7f9c599288e3060b3",
+  "checkedAt": "2026-09-30T15:12:25.908Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-183-homeworld-wilds/p0-depth.png",
+      "sha256": "ec0000a487c141a397ad91d4a949b682c33522a36dcc864aa6ba1b54de3db848",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p2-jungle-trunks.png",
+      "sha256": "dabc3da1e524b8d23e7a1b22c715655050eb4fba593c1a7c4b0dd6ebc9d990da",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p3-roots-rocks.png",
+      "sha256": "4e72d079e6c9aa19e74661a0afac49787b58b9920ab2648715bd380835de459e",
+      "width": 1774,
+      "height": 887,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p4-floor.png",
+      "sha256": "7717b3e45eccd10e21cf81fc287e1f618e4ee705e6e3ff2aa6ccf688593eda71",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+      "sha256": "28c441e22ed32c988fb20771eef0e40a76ace4ce503a2d7da5a0a74ee4b16e15",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-01.png",
+      "sha256": "ad6a925ef9a737d641fb75cdf80f79bbf630f94176ab687831a0e8e9fba8d1c1",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-02.png",
+      "sha256": "21d7e321a9da629f5ec5f9ff3a5c24176bd49148413071be81b636033f37f9db",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-03.png",
+      "sha256": "7314f950bc9fc77213018123aa83002a6ee499012a7b2541425b8de2046de430",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 9,
+    "expectedImages": 9,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            688,
+            243
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            826,
+            153
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            135,
+            427
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            688,
+            243
+          ],
+          "pivot": [
+            688,
+            243
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            826,
+            153
+          ],
+          "pivot": [
+            826,
+            153
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            135,
+            427
+          ],
+          "pivot": [
+            135,
+            427
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 510.25000000000006,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -304.4776
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -304.4776
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            693.72,
+            242.00062499999999
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            835.515,
+            149.52562499999996
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            78.07499999999996,
+            506.755
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            693.72,
+            242.00062499999999
+          ],
+          "pivot": [
+            693.72,
+            242.00062499999999
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            835.515,
+            149.52562499999996
+          ],
+          "pivot": [
+            835.515,
+            149.52562499999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            78.07499999999996,
+            506.755
+          ],
+          "pivot": [
+            78.07499999999996,
+            506.755
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 501.99999999999994,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            702.905,
+            242.3925
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            844.01,
+            150.3675
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            156.525,
+            498.595
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            702.905,
+            242.3925
+          ],
+          "pivot": [
+            702.905,
+            242.3925
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            844.01,
+            150.3675
+          ],
+          "pivot": [
+            844.01,
+            150.3675
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            156.525,
+            498.595
+          ],
+          "pivot": [
+            156.525,
+            498.595
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 501.99999999999994,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            682.455,
+            242.3925
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            823.56,
+            150.3675
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            20.325000000000017,
+            498.595
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            682.455,
+            242.3925
+          ],
+          "pivot": [
+            682.455,
+            242.3925
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            823.56,
+            150.3675
+          ],
+          "pivot": [
+            823.56,
+            150.3675
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            20.325000000000017,
+            498.595
+          ],
+          "pivot": [
+            20.325000000000017,
+            498.595
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 398.00000000000006,
+          "expected": 398,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -8.320000000000007
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -8.320000000000007
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            685.9200000000001,
+            243.26999999999998
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            822.54,
+            154.17
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            155.69999999999996,
+            395.18
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            685.9200000000001,
+            243.26999999999998
+          ],
+          "pivot": [
+            685.9200000000001,
+            243.26999999999998
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            822.54,
+            154.17
+          ],
+          "pivot": [
+            822.54,
+            154.17
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            155.69999999999996,
+            395.18
+          ],
+          "pivot": [
+            155.69999999999996,
+            395.18
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 414.00000000000006,
+          "expected": 414,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 414.00000000000006,
+          "expected": 414,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -49.5
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -49.5
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            667.2,
+            245.70000000000002
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            791.4,
+            164.70000000000002
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            169.5,
+            411.3
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            667.2,
+            245.70000000000002
+          ],
+          "pivot": [
+            667.2,
+            245.70000000000005
+          ],
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            791.4,
+            164.70000000000002
+          ],
+          "pivot": [
+            791.4,
+            164.70000000000002
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            169.5,
+            411.3
+          ],
+          "pivot": [
+            169.5,
+            411.3
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            688,
+            243
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            826,
+            153
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            135,
+            427
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            688,
+            243
+          ],
+          "pivot": [
+            688,
+            243
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            826,
+            153
+          ],
+          "pivot": [
+            826,
+            153
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            135,
+            427
+          ],
+          "pivot": [
+            135,
+            427
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            688,
+            243
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            826,
+            153
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-183-homeworld-wilds/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            135,
+            427
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            688,
+            243
+          ],
+          "pivot": [
+            688,
+            243
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            826,
+            153
+          ],
+          "pivot": [
+            826,
+            153
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            135,
+            427
+          ],
+          "pivot": [
+            135,
+            427
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 1177,
+      "attachment": [
+        688,
+        243
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 1197,
+      "attachment": [
+        688,
+        243
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 1217,
+      "attachment": [
+        688,
+        243
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 1237,
+      "attachment": [
+        688,
+        243
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 1257,
+      "attachment": [
+        688,
+        243
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 1277,
+      "attachment": [
+        688,
+        243
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 2458,
+      "attachment": [
+        826,
+        153
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 2478,
+      "attachment": [
+        826,
+        153
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 2498,
+      "attachment": [
+        826,
+        153
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 2518,
+      "attachment": [
+        826,
+        153
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 2538,
+      "attachment": [
+        826,
+        153
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 2558,
+      "attachment": [
+        826,
+        153
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 3694,
+      "attachment": [
+        135,
+        427
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 3714,
+      "attachment": [
+        135,
+        427
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 3734,
+      "attachment": [
+        135,
+        427
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 3754,
+      "attachment": [
+        135,
+        427
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 3774,
+      "attachment": [
+        135,
+        427
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 3794,
+      "attachment": [
+        135,
+        427
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p4-floor.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-183-homeworld-wilds\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-183-homeworld-wilds\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-183-homeworld-wilds\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-183-homeworld-wilds\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-183-homeworld-wilds\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-183-homeworld-wilds\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-183-homeworld-wilds\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-183-homeworld-wilds\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "c42e504aea8ea7de0cb1adb2eae2d42a62077cb790b56b054752d478ff4a4f20",
+    "left-corner.png": "6ac410d2ee864b3c5c84a44a27e94d2105b8276abe65f763b53183efcd5886e9",
+    "right-corner.png": "558fc242d80916cb91cdb8126ee5ddc7eb443b2092ee59c1717ba222efb63c5f",
+    "wide.png": "b2db78d8b6ce75149f6c46a73a08d5079945e051737ccd438034a1c5ddf9d5fd",
+    "life-01-active.png": "486973d929efacd40d4d8bd36b1d2d32319d745776c78dcff9c893015c681b1e",
+    "life-02-active.png": "82754f925c06392ad50bbc1cbbba76477793873c916ed301410e272672c677c5",
+    "life-03-active.png": "e6514d7ae6b172afd1300da7ecfbac39d27d12ef52a8dfc91e239e65d4a4036d",
+    "mobile.png": "637146ea0005da7399633bdc9be194b377e123557af748fbc57ca49079215ec6"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}

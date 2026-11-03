@@ -1,0 +1,2081 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-20T00:14:47.245Z",
+  "scope": {
+    "included": [
+      "Predator",
+      "Alien vs.Predator"
+    ],
+    "excluded": [
+      "Alien-only films and games",
+      "Crossover guest appearances",
+      "Cancelled games",
+      "Ports counted again"
+    ],
+    "historical100": "Preserved unchanged; no reassignment of old IDs",
+    "requestedPerWork": 3
+  },
+  "evidencePolicy": {
+    "oneToOneCertified": false,
+    "sourceTitleIsNotSceneProof": true,
+    "exactTimestampNeverGuessed": true,
+    "primaryArchiveCaution": "Archived publisher manuals remain primary documents; archive hosts are not the rights holders.",
+    "newArt": "Original fan-made2D adaptation guided by references; screenshots are references, not shipped textures.",
+    "promotion": "No proposed scene is runtime-enabled or integrated by this plan."
+  },
+  "filmCount": 9,
+  "filmArenaCount": 27,
+  "films": [
+    {
+      "id": "predator-1987",
+      "title": "Predator",
+      "year": 1987,
+      "kind": "film",
+      "titleStatus": "verified-primary-studio",
+      "sourceUrl": "https://www.20thcenturystudios.com/movies/predator",
+      "portsOrEditions": [],
+      "arenas": [
+        {
+          "number": 101,
+          "id": "arena-101-predator-1987-guerrilla-camp",
+          "workId": "predator-1987",
+          "kind": "film",
+          "workTitle": "Predator",
+          "name": "Camp de guérilla",
+          "screenLocation": "Cour du camp attaqué par le commando",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Hangars et baraquements bas, accès de cour, végétation périphérique.",
+          "remainingReferenceWork": "Architecture, ordre des bâtiments, tour et véhicule à relever sur un plan large ; ne pas remplacer par un temple Yautja.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/Vo3FmkleTEQ",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://lumiere-a.akamaihd.net/v1/images/image_6f6628e9.jpeg?region=0%2C0%2C1800%2C968",
+              "kind": "official-still-context-only",
+              "locator": "Jungle du commando ; ne prouve PAS les bâtiments du camp",
+              "visuallyInspected": true
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 102,
+          "id": "arena-102-predator-1987-rocky-riverbank",
+          "workId": "predator-1987",
+          "kind": "film",
+          "workTitle": "Predator",
+          "name": "Rive rocheuse",
+          "screenLocation": "Bassin et rive rocheuse de la jungle",
+          "referenceStatus": "official-still-inspected-2d-adaptation",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [
+            "Eau sombre bleu-gris",
+            "rochers irréguliers clairs",
+            "rive opposée caillouteuse",
+            "racines courbes au premier plan."
+          ],
+          "compositionToVerify": "Eau sombre bleu-gris, rochers irréguliers clairs, rive opposée caillouteuse, racines courbes au premier plan.",
+          "remainingReferenceWork": "La photographie ne montre pas de chute : ne pas en inventer ni revendiquer sa hauteur.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/Vo3FmkleTEQ",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://lumiere-a.akamaihd.net/v1/images/image_28bb5f7d.jpeg?region=0%2C0%2C1800%2C968",
+              "kind": "official-still",
+              "locator": "Galerie, première photographie ; bassin rocheux",
+              "visuallyInspected": true
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-102-predator-1987-rocky-riverbank",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 103,
+          "id": "arena-103-predator-1987-final-trap-clearing",
+          "workId": "predator-1987",
+          "kind": "film",
+          "workTitle": "Predator",
+          "name": "Clairière des pièges",
+          "screenLocation": "Terrain du duel final de Dutch",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Racines, troncs et terrain terreux ; pièges construits avec bois et cordages.",
+          "remainingReferenceWork": "Plan large de la séquence finale à relever ; le portrait promotionnel Dutch/Predator ne prouve pas sa géométrie.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/Vo3FmkleTEQ",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-103-predator-1987-final-trap-clearing",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ]
+    },
+    {
+      "id": "predator-2-1990",
+      "title": "Predator 2",
+      "year": 1990,
+      "kind": "film",
+      "titleStatus": "verified-primary-studio",
+      "sourceUrl": "https://www.20thcenturystudios.com/movies/predator-2",
+      "portsOrEditions": [],
+      "arenas": [
+        {
+          "number": 104,
+          "id": "arena-104-predator-2-1990-subway",
+          "workId": "predator-2-1990",
+          "kind": "film",
+          "workTitle": "Predator 2",
+          "name": "Métro de Los Angeles",
+          "screenLocation": "Intérieur de la rame du métro",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Rame étroite, portes, barres et éclairage artificiel.",
+          "remainingReferenceWork": "Ordre des portes, banquettes, signalétique et lumière à comparer au clip.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-2",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-2",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 105,
+          "id": "arena-105-predator-2-1990-slaughterhouse",
+          "workId": "predator-2-1990",
+          "kind": "film",
+          "workTitle": "Predator 2",
+          "name": "Chambre froide de l’abattoir",
+          "screenLocation": "Entrepôt réfrigéré où intervient Keyes",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Rails suspendus, carcasses et brume froide dans une halle industrielle.",
+          "remainingReferenceWork": "Dimensions des rails et ouverture de porte à relever ; aucun décor rituel ajouté.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-2",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-2",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-105-predator-2-1990-slaughterhouse",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 106,
+          "id": "arena-106-predator-2-1990-trophy-ship",
+          "workId": "predator-2-1990",
+          "kind": "film",
+          "workTitle": "Predator 2",
+          "name": "Salle des trophées du vaisseau",
+          "screenLocation": "Intérieur du vaisseau découvert par Harrigan",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Parois extraterrestres courbes, niche des crânes et éclairage chaud.",
+          "remainingReferenceWork": "Composition exacte des trophées et volumes à vérifier sur la séquence ; chaque trophée devient un prop séparé.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-2",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-2",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-106-predator-2-1990-trophy-ship",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ]
+    },
+    {
+      "id": "predators-2010",
+      "title": "Predators",
+      "year": 2010,
+      "kind": "film",
+      "titleStatus": "verified-primary-studio",
+      "sourceUrl": "https://www.20thcenturystudios.com/movies/predators",
+      "portsOrEditions": [],
+      "arenas": [
+        {
+          "number": 107,
+          "id": "arena-107-predators-2010-hunting-camp",
+          "workId": "predators-2010",
+          "kind": "film",
+          "workTitle": "Predators",
+          "name": "Camp de chasse",
+          "screenLocation": "Camp des Super Predators",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Clairière, totems/pieux, arbre portant le captif, foyer.",
+          "remainingReferenceWork": "Ne pas reprendre une salle cérémonielle des100 ; relever emplacements des pieux et lumière.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predators",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/uzqYqoVoU74",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-107-predators-2010-hunting-camp",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 108,
+          "id": "arena-108-predators-2010-tall-grass",
+          "workId": "predators-2010",
+          "kind": "film",
+          "workTitle": "Predators",
+          "name": "Champ de hautes herbes",
+          "screenLocation": "Lieu du duel Hanzo/Falconer",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Mer d’herbes hautes, horizon de jungle, éclairage nocturne.",
+          "remainingReferenceWork": "Le sol lisible du combat2D est une adaptation ; hauteur des herbes à vérifier.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predators",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/uzqYqoVoU74",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-108-predators-2010-tall-grass",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 109,
+          "id": "arena-109-predators-2010-noland-wreck",
+          "workId": "predators-2010",
+          "kind": "film",
+          "workTitle": "Predators",
+          "name": "Épave de Noland",
+          "screenLocation": "Abri métallique de Noland",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Structures métalliques usées et couloirs dans une épave.",
+          "remainingReferenceWork": "Ne pas inventer son nom de vaisseau ni mélanger Nostromo/Sulaco.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predators",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/uzqYqoVoU74",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-109-predators-2010-noland-wreck",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ]
+    },
+    {
+      "id": "the-predator-2018",
+      "title": "The Predator",
+      "year": 2018,
+      "kind": "film",
+      "titleStatus": "verified-primary-studio",
+      "sourceUrl": "https://www.20thcenturystudios.com/movies/the-predator",
+      "portsOrEditions": [],
+      "arenas": [
+        {
+          "number": 110,
+          "id": "arena-110-the-predator-2018-stargazer-lab",
+          "workId": "the-predator-2018",
+          "kind": "film",
+          "workTitle": "The Predator",
+          "name": "Laboratoire Stargazer",
+          "screenLocation": "Zone de contention et laboratoire",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Équipements médicaux, vitrage d’observation, murs et éclairage de laboratoire humain.",
+          "remainingReferenceWork": "Identifier le plan large et les portes ; ne pas importer les ruines d’AVP.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/the-predator",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/eDUP3gtKvhE",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-110-the-predator-2018-stargazer-lab",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 111,
+          "id": "arena-111-the-predator-2018-school-field",
+          "workId": "the-predator-2018",
+          "kind": "film",
+          "workTitle": "The Predator",
+          "name": "Terrain de l’école",
+          "screenLocation": "Terrain extérieur de la confrontation",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Pelouse, bordure scolaire et éclairage nocturne.",
+          "remainingReferenceWork": "Vérifier emplacement exact grillage/bâtiment avant dessin détaillé.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/the-predator",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/eDUP3gtKvhE",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-111-the-predator-2018-school-field",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 112,
+          "id": "arena-112-the-predator-2018-forest-crash",
+          "workId": "the-predator-2018",
+          "kind": "film",
+          "workTitle": "The Predator",
+          "name": "Épave dans la forêt",
+          "screenLocation": "Zone forestière du dernier affrontement",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Bois de nuit et éléments du vaisseau accidenté.",
+          "remainingReferenceWork": "Silhouette du vaisseau et orientation de l’épave à comparer au film.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/the-predator",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/eDUP3gtKvhE",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-112-the-predator-2018-forest-crash",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ]
+    },
+    {
+      "id": "prey-2022",
+      "title": "Prey",
+      "year": 2022,
+      "kind": "film",
+      "titleStatus": "verified-primary-studio",
+      "sourceUrl": "https://www.20thcenturystudios.com/movies/prey",
+      "portsOrEditions": [],
+      "arenas": [
+        {
+          "number": 113,
+          "id": "arena-113-prey-2022-trapper-clearing",
+          "workId": "prey-2022",
+          "kind": "film",
+          "workTitle": "Prey",
+          "name": "Clairière des trappeurs",
+          "screenLocation": "Forêt brûlée et piège des trappeurs",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Troncs dénudés, fumée et lumière froide.",
+          "remainingReferenceWork": "Position des troncs et accessoires historiques à relever ; pas de ruines Yautja.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/prey",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/wZ7LytagKlc",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 114,
+          "id": "arena-114-prey-2022-bear-river",
+          "workId": "prey-2022",
+          "kind": "film",
+          "workTitle": "Prey",
+          "name": "Rivière de l’ours",
+          "screenLocation": "Rivière et berge de la chasse à l’ours",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Eau peu profonde, bois et végétation de rive.",
+          "remainingReferenceWork": "Ne pas ajouter de créature statique au fond ; rochers et ligne de rive à comparer.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/prey",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/wZ7LytagKlc",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-114-prey-2022-bear-river",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 115,
+          "id": "arena-115-prey-2022-mud-pit",
+          "workId": "prey-2022",
+          "kind": "film",
+          "workTitle": "Prey",
+          "name": "Bourbier",
+          "screenLocation": "Bourbier du combat final",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Cuvette boueuse, racines et forêt sombre.",
+          "remainingReferenceWork": "Surface d’appui2D à adapter sans prétendre collision identique au film.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/prey",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/wZ7LytagKlc",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-115-prey-2022-mud-pit",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ]
+    },
+    {
+      "id": "killer-of-killers-2025",
+      "title": "Predator: Killer of Killers",
+      "year": 2025,
+      "kind": "film",
+      "titleStatus": "verified-primary-studio",
+      "sourceUrl": "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+      "portsOrEditions": [],
+      "arenas": [
+        {
+          "number": 116,
+          "id": "arena-116-killer-of-killers-2025-viking-ice",
+          "workId": "killer-of-killers-2025",
+          "kind": "film",
+          "workTitle": "Predator: Killer of Killers",
+          "name": "Lac gelé des Vikings",
+          "screenLocation": "Espace enneigé et glace du segment viking",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Glace, rochers et environnement nordique.",
+          "remainingReferenceWork": "Coupe jouable sous/sur glace à choisir après plan de séquence.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=fbddYji1F8s",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-116-killer-of-killers-2025-viking-ice",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 117,
+          "id": "arena-117-killer-of-killers-2025-japan-rooftops",
+          "workId": "killer-of-killers-2025",
+          "kind": "film",
+          "workTitle": "Predator: Killer of Killers",
+          "name": "Toits du Japon féodal",
+          "screenLocation": "Poursuite sur les toits",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Toitures inclinées et volumes de bâtiments du segment japonais.",
+          "remainingReferenceWork": "Clip officiel Rooftop Chase identifié ; reconstituer le toit exact, pas un temple japonais générique.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=fbddYji1F8s",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=mOr6ryoyHcg",
+              "kind": "official-named-clip",
+              "locator": "Rooftop Chase ; minutage à relever",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 118,
+          "id": "arena-118-killer-of-killers-2025-yautja-arena",
+          "workId": "killer-of-killers-2025",
+          "kind": "film",
+          "workTitle": "Predator: Killer of Killers",
+          "name": "Arène des captifs",
+          "screenLocation": "Arène finale Yautja",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Cercle de confrontation et enceinte des chasseurs.",
+          "remainingReferenceWork": "Plan large final requis ; ne pas recycler le Cercle de basalte sous un autre titre.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=fbddYji1F8s",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-118-killer-of-killers-2025-yautja-arena",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ]
+    },
+    {
+      "id": "badlands-2025",
+      "title": "Predator: Badlands",
+      "year": 2025,
+      "kind": "film",
+      "titleStatus": "verified-primary-studio",
+      "sourceUrl": "https://www.20thcenturystudios.com/movies/predator-badlands",
+      "portsOrEditions": [],
+      "arenas": [
+        {
+          "number": 119,
+          "id": "arena-119-badlands-2025-hostile-forest",
+          "workId": "badlands-2025",
+          "kind": "film",
+          "workTitle": "Predator: Badlands",
+          "name": "Forêt hostile",
+          "screenLocation": "Forêt de la planète de chasse",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Végétation agressive et troncs du clip Trees Attack.",
+          "remainingReferenceWork": "Nom précis du site non attesté par cette page ; ne pas inventer un temple ou des biomes canoniques.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-badlands",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=LkBqjfg8TGM",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=et7f2OuKI0g",
+              "kind": "official-named-clip",
+              "locator": "Trees Attack ; minutage à relever",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-119-badlands-2025-hostile-forest",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 120,
+          "id": "arena-120-badlands-2025-weyland-lab",
+          "workId": "badlands-2025",
+          "kind": "film",
+          "workTitle": "Predator: Badlands",
+          "name": "Installation Weyland-Yutani",
+          "screenLocation": "Installation montrée avec Tessa",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Technologie et espaces industriels de la séquence Tessa Online.",
+          "remainingReferenceWork": "Échelle, cloisons et disposition exacte à relever dans le clip.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-badlands",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=LkBqjfg8TGM",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=1A_It1x181Y",
+              "kind": "official-named-clip",
+              "locator": "Tessa Online ; minutage à relever",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-120-badlands-2025-weyland-lab",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 121,
+          "id": "arena-121-badlands-2025-clan-prologue",
+          "workId": "badlands-2025",
+          "kind": "film",
+          "workTitle": "Predator: Badlands",
+          "name": "Domaine du clan",
+          "screenLocation": "Lieu du prologue de Dek et Kwei",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Relief et architecture du clip Be Brave Brother.",
+          "remainingReferenceWork": "Ne pas extrapoler une capitale complète ni présenter les anciens décors tribaux comme modèle officiel.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/predator-badlands",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=LkBqjfg8TGM",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=i8dKccr9OiU",
+              "kind": "official-named-clip",
+              "locator": "Be Brave Brother ; minutage à relever",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-121-badlands-2025-clan-prologue",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ]
+    },
+    {
+      "id": "avp-2004",
+      "title": "Alien vs. Predator",
+      "year": 2004,
+      "kind": "film",
+      "titleStatus": "verified-primary-studio",
+      "sourceUrl": "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+      "portsOrEditions": [],
+      "arenas": [
+        {
+          "number": 122,
+          "id": "arena-122-avp-2004-sacrificial-chamber",
+          "workId": "avp-2004",
+          "kind": "film",
+          "workTitle": "Alien vs. Predator",
+          "name": "Chambre sacrificielle",
+          "screenLocation": "Chambre des hôtes dans la pyramide",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Dalles, sarcophages/autels et architecture de pierre.",
+          "remainingReferenceWork": "Nombre/placement des tables, porte et motifs à relever sur la séquence.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/c02eQqMbIBg",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-122-avp-2004-sacrificial-chamber",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 123,
+          "id": "arena-123-avp-2004-whaling-station",
+          "workId": "avp-2004",
+          "kind": "film",
+          "workTitle": "Alien vs. Predator",
+          "name": "Station baleinière",
+          "screenLocation": "Surface antarctique de la station abandonnée",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Bâtiments industriels gelés, neige et infrastructures de quai.",
+          "remainingReferenceWork": "Ne pas remplacer par une ville Yautja ; repérer bâtiments et treuils exacts.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/c02eQqMbIBg",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-123-avp-2004-whaling-station",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 124,
+          "id": "arena-124-avp-2004-queen-chamber",
+          "workId": "avp-2004",
+          "kind": "film",
+          "workTitle": "Alien vs. Predator",
+          "name": "Chambre de la reine",
+          "screenLocation": "Chambre de contention de la reine",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Volume souterrain, chaînes et mécanismes de contention.",
+          "remainingReferenceWork": "La reine n’est pas un décor immobile ; chaînes/structures indépendantes, comparaison d’écran requise.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://youtu.be/c02eQqMbIBg",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-124-avp-2004-queen-chamber",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ]
+    },
+    {
+      "id": "avpr-2007",
+      "title": "Aliens vs. Predator: Requiem",
+      "year": 2007,
+      "kind": "film",
+      "titleStatus": "verified-primary-studio",
+      "sourceUrl": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+      "portsOrEditions": [],
+      "arenas": [
+        {
+          "number": 125,
+          "id": "arena-125-avpr-2007-sewers",
+          "workId": "avpr-2007",
+          "kind": "film",
+          "workTitle": "Aliens vs. Predator: Requiem",
+          "name": "Égouts de Gunnison",
+          "screenLocation": "Galerie des égouts",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Couloir humide, conduites et eau peu profonde.",
+          "remainingReferenceWork": "Plans exploitables à retrouver ; ne pas éclaircir jusqu’à effacer la disposition réelle.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-125-avpr-2007-sewers",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 126,
+          "id": "arena-126-avpr-2007-hospital-roof",
+          "workId": "avpr-2007",
+          "kind": "film",
+          "workTitle": "Aliens vs. Predator: Requiem",
+          "name": "Toit de l’hôpital",
+          "screenLocation": "Toiture du duel final",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Équipements techniques, pluie, toiture et nuit.",
+          "remainingReferenceWork": "Vérifier garde-corps, volumes et accès ; adaptation2D sans monstre peint dans le fond.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-126-avpr-2007-hospital-roof",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "number": 127,
+          "id": "arena-127-avpr-2007-forest-crash",
+          "workId": "avpr-2007",
+          "kind": "film",
+          "workTitle": "Aliens vs. Predator: Requiem",
+          "name": "Forêt du crash",
+          "screenLocation": "Épave du vaisseau dans les bois",
+          "referenceStatus": "sequence-reference-needed",
+          "canonStatus": "Lieu candidat rattaché au film ; la géométrie du duel2D est une adaptation fan-made.",
+          "confirmedVisualElements": [],
+          "compositionToVerify": "Forêt terrestre nocturne et métal du vaisseau écrasé.",
+          "remainingReferenceWork": "La fiche studio japonaise confirme le crash en forêt du Colorado, pas la géométrie ; capture requise.",
+          "references": [
+            {
+              "url": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+              "kind": "studio-title-and-media-index",
+              "locator": "VIDÉOS / galerie officielle",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+              "kind": "official-trailer-or-film-page",
+              "locator": "Séquence du lieu à isoler ; aucune seconde inventée",
+              "visuallyInspected": false
+            },
+            {
+              "url": "https://www.20thcenturystudios.jp/movies/avp2",
+              "kind": "studio-synopsis",
+              "locator": "Synopsis : vaisseau accidenté dans une forêt du Colorado",
+              "visuallyInspected": false
+            }
+          ],
+          "frameTimeSeconds": null,
+          "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+          "outputDirectory": "/game/sprites/v43/pit-arenas/arena-127-avpr-2007-forest-crash",
+          "requiredPlanes": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "id": "predator-computers",
+      "title": "Predator — ordinateurs",
+      "year": 1987,
+      "kind": "game",
+      "inventoryStatus": "primary-manual",
+      "sourceUrl": "https://www.retro-commodore.eu/files/downloads/Game%20Manuals/C64/Predator%20%281988%29%28Activision%29/Predator%20%281988%29%28Activision%29%5BM3%5D%5Bocr%5D%5B600dpi%5D.pdf",
+      "countingNotes": "Regrouper les conversions micro ; ne pas multiplier parC64/CPC/Spectrum/Amiga/ST.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "predator-nes",
+      "title": "Predator — NES",
+      "year": 1988,
+      "kind": "game",
+      "inventoryStatus": "primary-manual",
+      "sourceUrl": "https://www.digitpress.com/library/manuals/nes/Predator.pdf",
+      "countingNotes": "Adaptation NES différente du jeu micro ; ne pas la fusionner par simple titre.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "predator2-computers",
+      "title": "Predator2 — ordinateurs",
+      "year": 1990,
+      "kind": "game",
+      "inventoryStatus": "primary-source-needed",
+      "sourceUrl": null,
+      "countingNotes": "Rail shooter micro ; différent de la version Sega. Année et édition à confirmer par manuel.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "predator2-sega",
+      "title": "Predator2 — Sega",
+      "year": 1992,
+      "kind": "game",
+      "inventoryStatus": "primary-source-needed",
+      "sourceUrl": null,
+      "countingNotes": "Ne pas compter MegaDrive/MasterSystem/GameGear comme trois titres ; comparer versions avant éventuelle subdivision.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp-snes",
+      "title": "Alien vs Predator — SNES",
+      "year": 1993,
+      "kind": "game",
+      "inventoryStatus": "primary-source-needed",
+      "sourceUrl": null,
+      "countingNotes": "Jeu distinct de Capcom arcade, de Jaguar et de GameBoy.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp-last-clan",
+      "title": "Alien vs Predator: The Last of His Clan",
+      "year": 1993,
+      "kind": "game",
+      "inventoryStatus": "primary-source-needed",
+      "sourceUrl": null,
+      "countingNotes": "GameBoy ; titre japonais abrégé n’est pas une œuvre supplémentaire.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp-capcom",
+      "title": "Alien vs. Predator — Capcom arcade",
+      "year": 1994,
+      "kind": "game",
+      "inventoryStatus": "official-reissue-trailer",
+      "sourceUrl": "https://www.youtube.com/watch?v=ErqIkPuaBlk",
+      "countingNotes": "CapcomHomeArcade est une réédition, pas trois nouveaux lieux à compter de nouveau.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp-jaguar",
+      "title": "Alien vs Predator — Jaguar",
+      "year": 1994,
+      "kind": "game",
+      "inventoryStatus": "primary-manual",
+      "sourceUrl": "https://www.digitpress.com/library/manuals/jaguar/alien%20vs%20predator.pdf",
+      "countingNotes": "Jeu Rebellion distinct de l’arcade Capcom.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp-classic",
+      "title": "Aliens versus Predator / Gold / Classic2000",
+      "year": 1999,
+      "kind": "game",
+      "inventoryStatus": "publisher-store-and-manual",
+      "sourceUrl": "https://store.steampowered.com/app/3730/Aliens_versus_Predator?l=english",
+      "countingNotes": "Original/Gold/Classic regroupés ; Millennium est une extension, pas un port à compter séparément.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp2",
+      "title": "Aliens versus Predator2",
+      "year": 2001,
+      "kind": "game",
+      "inventoryStatus": "licensed-official-guide",
+      "sourceUrl": "https://oldgamesdownload.com/wp-content/uploads/Aliens_versus_Predator_2_Prima_Guide.pdf",
+      "countingNotes": "PC/Mac regroupés. Guide Prima officiel©2001Fox hébergé par une archive tierce.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": "Forest Area1 / Ruins",
+          "locator": "Guide imprimép92 ; PDFp108 (index107)",
+          "composition": "Ruines en forêt ; proportions à relever dans les captures imprimées.",
+          "referenceStatus": "primary-location-text-verified-visual-comparison-needed",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": "Pod Skywalks",
+          "locator": "Guide imprimép69 ; PDFp85 (index84)",
+          "composition": "Passerelles entre structures de recherche ; pas décor Nostromo.",
+          "referenceStatus": "primary-location-text-verified-visual-comparison-needed",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": "Canyon Lava Flows",
+          "locator": "Guide imprimép114 ; PDFp130 (index129)",
+          "composition": "Canyon et coulées de lave ; silhouettes précises à comparer.",
+          "referenceStatus": "primary-location-text-verified-visual-comparison-needed",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp-extinction",
+      "title": "Aliens versus Predator: Extinction",
+      "year": 2003,
+      "kind": "game",
+      "inventoryStatus": "primary-manual",
+      "sourceUrl": "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf",
+      "countingNotes": "PS2/Xbox regroupés ; vue RTS à convertir en élévation2D explicitement.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "concrete-jungle",
+      "title": "Predator: Concrete Jungle",
+      "year": 2005,
+      "kind": "game",
+      "inventoryStatus": "primary-manual",
+      "sourceUrl": "https://oldgamesdownload.com/wp-content/uploads/Predator_Concrete_Jungle_Manual_Xbox_EN.pdf",
+      "countingNotes": "PS2/Xbox regroupés ; le manuel seul ne prouve pas trois plans de quartier.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avpr-psp",
+      "title": "Aliens vs. Predator: Requiem — PSP",
+      "year": 2007,
+      "kind": "game",
+      "inventoryStatus": "official-classification-record",
+      "sourceUrl": "https://www.classification.gov.au/titles/alien-vs-predator-requiem",
+      "countingNotes": "Rebellion/Sierra ; ne pas confondre le film avec le jeu ni le jeu mobile.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp-2010",
+      "title": "Aliens vs. Predator",
+      "year": 2010,
+      "kind": "game",
+      "inventoryStatus": "publisher-dlc-store",
+      "sourceUrl": "https://store.steampowered.com/app/10695/Aliens_vs_Predator_Swarm_Map_Pack/?l=english",
+      "countingNotes": "PC/PS3/Xbox360 regroupés. Les lieux proposés viennent du DLC Swarm, inclus dans cette œuvre, pas trois nouveaux jeux.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": "Docks",
+          "locator": "Pageéditeur Swarm / About This Content",
+          "composition": "Chantier naval abandonné Weyland-Yutani.",
+          "referenceStatus": "primary-location-text-verified-visual-comparison-needed",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": "Outpost",
+          "locator": "Pageéditeur Swarm / About This Content",
+          "composition": "Avant-poste deBG386 repris par la jungle.",
+          "referenceStatus": "primary-location-text-verified-visual-comparison-needed",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": "Hive",
+          "locator": "Pageéditeur Swarm / About This Content",
+          "composition": "Ruche deFreya’s Prospect.",
+          "referenceStatus": "primary-location-text-verified-visual-comparison-needed",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "predators-angry-mob",
+      "title": "Predators — AngryMobGames",
+      "year": 2010,
+      "kind": "game",
+      "inventoryStatus": "developer-page",
+      "sourceUrl": "https://www.angrymobgames.com/predators/",
+      "countingNotes": "iOS/Android regroupés ; page actuelle du développeur indique2011, première sortie2010à recouper avant certifier année.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "predators-gameloft",
+      "title": "Predators — Gameloft",
+      "year": 2010,
+      "kind": "game",
+      "inventoryStatus": "official-publisher-trailer",
+      "sourceUrl": "https://www.youtube.com/watch?v=rPavIJCMMWY",
+      "countingNotes": "Jeu mobile2D distinct d’AngryMob ; configurations Java ne font pas de nouveaux jeux.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp-evolution",
+      "title": "Alien vs. Predator: Evolution",
+      "year": 2013,
+      "kind": "game",
+      "inventoryStatus": "developer-page",
+      "sourceUrl": "https://www.angrymobgames.com/avp-evolution/",
+      "countingNotes": "iOS/Android/Ouya à regrouper ; captures de la galerie à comparer.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "hunting-grounds",
+      "title": "Predator: Hunting Grounds",
+      "year": 2020,
+      "kind": "game",
+      "inventoryStatus": "developer-and-publisher-posts",
+      "sourceUrl": "https://predator.illfonic.com/",
+      "countingNotes": "PS4/PS5/Windows/XboxSeries sont des versions du même jeu.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": "Airstrip",
+          "locator": "https://blog.playstation.com/2021/04/29/predator-hunting-grounds-comes-to-steam-with-april-update/",
+          "composition": "Piste, hangars, radio et appareils ; section New Airstrip Map.",
+          "referenceStatus": "primary-location-text-verified-visual-comparison-needed",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": "Excavation",
+          "locator": "https://blog.playstation.com/?p=341556",
+          "composition": "Fouilles et réseau de grottes multiniveaux ; article du directeur de design.",
+          "referenceStatus": "primary-location-text-verified-visual-comparison-needed",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": "Headquarters",
+          "locator": "https://blog.playstation.com/?p=350577",
+          "composition": "Base Stargazer au-dessus d’une cascade ; bâtiments/cabanes et relief.",
+          "referenceStatus": "primary-location-text-verified-visual-comparison-needed",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp-mobile-superscape-2d",
+      "title": "Alien vs.Predator — Superscape2D",
+      "year": 2004,
+      "kind": "game",
+      "inventoryStatus": "inventory-candidate-primary-needed",
+      "sourceUrl": null,
+      "countingNotes": "Jeu mobile à distinguer de3D etElite ; année/niveau à vérifier.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp-mobile-elite",
+      "title": "Alien vs.Predator — Elite/WickedWitch",
+      "year": 2004,
+      "kind": "game",
+      "inventoryStatus": "inventory-candidate-primary-needed",
+      "sourceUrl": null,
+      "countingNotes": "Jeu mobile de combat ; pas un port supposé du Superscape.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avp-mobile-superscape-3d",
+      "title": "Alien vs.Predator3D — Superscape",
+      "year": null,
+      "kind": "game",
+      "inventoryStatus": "developer-interview",
+      "sourceUrl": "https://www.avpgalaxy.net/website/interviews/greg-herboek-2/",
+      "countingNotes": "Entretien direct du développeur mentionne le railshooter3D et trois jeux ; date et décors à confirmer.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    },
+    {
+      "id": "avpr-mobile",
+      "title": "AVP Requiem — Superscape mobile",
+      "year": 2007,
+      "kind": "game",
+      "inventoryStatus": "developer-interview",
+      "sourceUrl": "https://www.avpgalaxy.net/website/interviews/greg-herboek-2/",
+      "countingNotes": "Déclaration directe du développeur ; distinct duPSP. Décors et dateprécise noncertifiés.",
+      "arenas": [
+        {
+          "slot": 1,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 2,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        },
+        {
+          "slot": 3,
+          "screenLocation": null,
+          "referenceStatus": "unresolved-do-not-invent-location",
+          "runtimeEnabled": false,
+          "integrated": false
+        }
+      ],
+      "numbering": "reserved-after127-only-after-work-and-location-validation"
+    }
+  ],
+  "extensionsNotSeparateGames": [
+    {
+      "title": "Aliens versus Predator2: Primal Hunt",
+      "year": 2002,
+      "status": "expansion-needs-primary-source-and-user-counting-decision"
+    },
+    {
+      "title": "AVP2010 Swarm/Bughunt",
+      "status": "DLClocationsbelongtobasework"
+    },
+    {
+      "title": "AVPClassic Millennium",
+      "status": "expansionincludedinClassic2000"
+    }
+  ],
+  "localContext": {
+    "sources": [
+      "docs/v42-arena-composition-visual-review.json",
+      "work/v42/arena-audit.md",
+      "app/game/systems/pitArenaCatalogue.ts",
+      "docs/v37-shared-source-recovery.json"
+    ],
+    "finding": "The dedicated100-arena conversation was not fully recovered. Historical51–60 are original retro-game studies, not fidelity evidence. Alien-only entries remain historical and are excluded from this new pack."
+  },
+  "firstProductionBatch": [
+    {
+      "id": "arena-101-predator-1987-guerrilla-camp",
+      "number": 101,
+      "name": "Camp de guérilla",
+      "priority": "needs-sequence-comparison",
+      "referenceStatus": "sequence-reference-needed"
+    },
+    {
+      "id": "arena-102-predator-1987-rocky-riverbank",
+      "number": 102,
+      "name": "Rive rocheuse",
+      "priority": "strongest-current-primary-still",
+      "referenceStatus": "official-still-inspected-2d-adaptation"
+    },
+    {
+      "id": "arena-103-predator-1987-final-trap-clearing",
+      "number": 103,
+      "name": "Clairière des pièges",
+      "priority": "needs-sequence-comparison",
+      "referenceStatus": "sequence-reference-needed"
+    }
+  ],
+  "limits": [
+    "This is a reference inventory and generation plan, not a claim that27 film scenes or any game scene are already drawn/playable.",
+    "Most film locations need an actual wide frame extracted/reviewed before claiming close screen fidelity.",
+    "The rare mobile inventory is provisional; unresolvedslotsareintentionalandnotinventedvenues."
+  ]
+}

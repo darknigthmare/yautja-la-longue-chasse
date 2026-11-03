@@ -1,0 +1,1508 @@
+{
+  "role": "herald",
+  "requested": 20,
+  "reference": "/workspace/scratch/41fc0564188e/npc-reference/civic-specialists-spaced-atlas.png",
+  "referenceCell": 3,
+  "generation": "built-in image_gen; one independent image per character",
+  "basePrompt": "Use case: stylized-concept. Asset type: ONE INDIVIDUAL full-body transparent NPC sprite for the Yautja: La Longue Chasse 2D game. Reference image is used ONLY for painterly rendering, anatomy and perspective, not as an image to copy or a sheet to reproduce. Generate exactly ONE newly designed adult Yautja, no extra characters. Realistic intricately hand-painted 2D game character, subtle linework, tactile weathered bronze, leather and woven fabric. Slight view from above, three-quarter facing RIGHT, standing idle or light work gesture. Correct adult Yautja anatomy with four mandibles around toothed mouth, alien brow, mottled scaly hide, dreadlock tendrils, alien clawed hands and bare clawed feet. Entire body and held props fully visible. Keep hairstyle, head shape, body silhouette, garment construction, accessories and pose visibly unique. Genuine transparent alpha outside character: no ground, no terrain, no cast shadow, no backdrop or environment, no text or UI, no labels, no watermark, no duplicate, no human face, no extra limbs. Neutral diffuse illumination. Framing: zoom out; character including hair and toes occupies at most82% of height with at least8% blank transparent margin above highest hair and below lowest claw, and generous side margins. ROLE: YAUTJA HERALD AND CIVIC ANNOUNCER. Use the BOTTOM LEFT figure (cell3) of the provided 2-by-3 reference: ivory ceremonial tunic, red geometric motifs, bronze announcement cylinder, light civic regalia. Preserve that role language, invent a new individual. No combat weapons; role props are announcement horns, sealed proclamations, civic standards and insignia. Garment markings are abstract shapes, not readable letters. Original design: ",
+  "framingInstruction": " FRAMING PRIORITY: pull the camera back; leave 8% of the image height fully empty and transparent above the highest hair tip AND below the lowest claw. Entire character and equipment must fit, no clipping.",
+  "anatomyReferenceAddedAtVariant": 17,
+  "completed": 20,
+  "visualNotes": "20 distinct full-body heralds visually approved against the official Stan Winston 1987 facial anatomy reference. Variants 01-16 received individual anatomy-only edits; variants 17-20 were preserved unchanged. All 20 show four external mandibles around a separate inner toothed mouth. PNG output bytes and GitHub blob hashes verified.",
+  "variants": [
+    {
+      "number": 1,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-01.png",
+      "design": "Tall lean herald with a narrow high forehead, slender mandibles and two short dreadlock knots at the back. Ivory straight two-panel sleeveless tabard with broad red angular border, thin crimson sash and bronze circular chest badge. Right hand holds a short vertical civic standard with a small triangular cream pennant, left holds a compact bronze call horn downward. Sand-gold mottled hide, upright composed stance.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-8b10dbd8-2ca6-4b1e-bce8-09d455235ddc.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2206685,
+      "sha256": "a5528172e2ebca3d7efae54872d92a833ec4956ac01974266ed0bf2bd10b5edc",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        20,
+        1004,
+        1496
+      ],
+      "fully_transparent_pixels": 1015713,
+      "githubBlobSha": "ae077419daf4b1fec5efdbbb3a09cc7653b82d94",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        75,
+        23,
+        974,
+        1465
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-01",
+      "role": "herald",
+      "slot": 1,
+      "description": "Tall lean herald with a narrow high forehead, slender mandibles and two short dreadlock knots at the back. Ivory straight two-panel sleeveless tabard with broad red angular border, thin crimson sash and bronze circular chest badge. Right hand holds a short vertical civic standard with a small triangular cream pennant, left holds a compact bronze call horn downward. Sand-gold mottled hide, upright composed stance.",
+      "gitBlobSha1": "ae077419daf4b1fec5efdbbb3a09cc7653b82d94",
+      "byte_count": 2206685,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        49,
+        20,
+        1004,
+        1496
+      ],
+      "transparent_fraction": 0.6457729339599609,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall lean herald with a narrow high forehead, slender mandibles and two short dreadlock knots at the back. Ivory straight two-panel sleeveless tabard with broad red angular border, thin crimson sash and bronze circular chest badge. Right hand holds a short vertical civic standard with a small triangular cream pennant, left holds a compact bronze call horn downward. Sand-gold mottled hide, upright composed stance.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-01.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-8b10dbd8-2ca6-4b1e-bce8-09d455235ddc.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-8b10dbd8-2ca6-4b1e-bce8-09d455235ddc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-01-before-face-review-90e973a92716.png",
+        "sha256": "90e973a9271659178e61300ddfc5cec60f8faa96b9d7a4af879e30765790da1a"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 0,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 2,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-02.png",
+      "design": "Short broad-shouldered herald with a domed skull, heavy squared mandibles and thick shoulder-length dreadlocks. Short ivory ceremonial tunic, red side chevrons, double wide brown belt and a square soft shoulder wrap. Holds a broad short flared announcement tube away from chest in the right hand; left palm lifted in an open speaking gesture. Rust-tan scale pattern, feet wide.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-59779e59-7baa-4c85-a7d3-eb009b76d1e8.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2486845,
+      "sha256": "8edd9f4eae3454b68f4529b4cbeb7f706a1dce84b906dc837bdb417078bd2cf1",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        32,
+        1024,
+        1518
+      ],
+      "fully_transparent_pixels": 882954,
+      "githubBlobSha": "d8df08334e2305d4b41b18ab8e96abde02845115",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        69,
+        36,
+        1018,
+        1500
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-02",
+      "role": "herald",
+      "slot": 2,
+      "description": "Short broad-shouldered herald with a domed skull, heavy squared mandibles and thick shoulder-length dreadlocks. Short ivory ceremonial tunic, red side chevrons, double wide brown belt and a square soft shoulder wrap. Holds a broad short flared announcement tube away from chest in the right hand; left palm lifted in an open speaking gesture. Rust-tan scale pattern, feet wide.",
+      "gitBlobSha1": "d8df08334e2305d4b41b18ab8e96abde02845115",
+      "byte_count": 2486845,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        0,
+        32,
+        1024,
+        1518
+      ],
+      "transparent_fraction": 0.5613670349121094,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Short broad-shouldered herald with a domed skull, heavy squared mandibles and thick shoulder-length dreadlocks. Short ivory ceremonial tunic, red side chevrons, double wide brown belt and a square soft shoulder wrap. Holds a broad short flared announcement tube away from chest in the right hand; left palm lifted in an open speaking gesture. Rust-tan scale pattern, feet wide.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-02.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-59779e59-7baa-4c85-a7d3-eb009b76d1e8.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-59779e59-7baa-4c85-a7d3-eb009b76d1e8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 2,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-02-before-face-review-ad2ce0be4158.png",
+        "sha256": "ad2ce0be4158d85ab0c6d7b0bebb4be432958ae0187c48a98e0154ef5ea31fd3"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 2,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 3,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-03.png",
+      "design": "Long-legged adult female herald with a smooth narrow cranium, fine curved lower mandibles and long dreadlocks swept into one low braid. Ivory asymmetrical half-cape, long narrow split tabard with red embroidered edges and one diagonal crimson sash. Slim curved bronze horn carried low in left hand, right hand rests over a chest seal. Pale stone-grey scales, light offset stance.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-408daef0-c75f-4f95-8504-bcf26de8920b.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2301393,
+      "sha256": "e659f033d9c96265283ba8fbd9264dde4918cca1434e8aee7714c4d3e1495656",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        72,
+        1,
+        966,
+        1514
+      ],
+      "fully_transparent_pixels": 957781,
+      "githubBlobSha": "ad1abde3370bec4cbe9313ec5508faca338e738b",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        202,
+        12,
+        962,
+        1495
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-03",
+      "role": "herald",
+      "slot": 3,
+      "description": "Long-legged adult female herald with a smooth narrow cranium, fine curved lower mandibles and long dreadlocks swept into one low braid. Ivory asymmetrical half-cape, long narrow split tabard with red embroidered edges and one diagonal crimson sash. Slim curved bronze horn carried low in left hand, right hand rests over a chest seal. Pale stone-grey scales, light offset stance.",
+      "gitBlobSha1": "ad1abde3370bec4cbe9313ec5508faca338e738b",
+      "byte_count": 2301393,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        72,
+        1,
+        966,
+        1514
+      ],
+      "transparent_fraction": 0.6089407602945963,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Long-legged adult female herald with a smooth narrow cranium, fine curved lower mandibles and long dreadlocks swept into one low braid. Ivory asymmetrical half-cape, long narrow split tabard with red embroidered edges and one diagonal crimson sash. Slim curved bronze horn carried low in left hand, right hand rests over a chest seal. Pale stone-grey scales, light offset stance.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-03.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-408daef0-c75f-4f95-8504-bcf26de8920b.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-408daef0-c75f-4f95-8504-bcf26de8920b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-03-before-face-review-a60ae3467447.png",
+        "sha256": "a60ae34674470009fb216ecf9d5f8c009f92b704cfe37d841ebc0ccd18f71748"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 0,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 4,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-04.png",
+      "design": "Tall elderly herald with a deeply ridged brow, thick downturned mandibles and pale short dreadlocks gathered loosely behind neck. Ivory and faded ochre long civic robe, broad collar, soft crimson shoulder stole. Left arm supports a flat framed proclamation tablet against torso; right grips a short ring-headed ceremonial staff. Weathered ash-grey hide, slight dignified stoop.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f2b4f34e-71a2-4330-9bf5-1f32c10d8533.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2357468,
+      "sha256": "c2a2f3aa1e98b5fa452a3e8a1dbe6ad4b992498770f67d8c8038720eab44832b",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        17,
+        957,
+        1518
+      ],
+      "fully_transparent_pixels": 925204,
+      "githubBlobSha": "fb9e8ae924cc7340a3c1600f1011d141d1604670",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        218,
+        23,
+        953,
+        1464
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-04",
+      "role": "herald",
+      "slot": 4,
+      "description": "Tall elderly herald with a deeply ridged brow, thick downturned mandibles and pale short dreadlocks gathered loosely behind neck. Ivory and faded ochre long civic robe, broad collar, soft crimson shoulder stole. Left arm supports a flat framed proclamation tablet against torso; right grips a short ring-headed ceremonial staff. Weathered ash-grey hide, slight dignified stoop.",
+      "gitBlobSha1": "fb9e8ae924cc7340a3c1600f1011d141d1604670",
+      "byte_count": 2357468,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        0,
+        17,
+        957,
+        1518
+      ],
+      "transparent_fraction": 0.5882288614908854,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall elderly herald with a deeply ridged brow, thick downturned mandibles and pale short dreadlocks gathered loosely behind neck. Ivory and faded ochre long civic robe, broad collar, soft crimson shoulder stole. Left arm supports a flat framed proclamation tablet against torso; right grips a short ring-headed ceremonial staff. Weathered ash-grey hide, slight dignified stoop.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-04.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-f2b4f34e-71a2-4330-9bf5-1f32c10d8533.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-f2b4f34e-71a2-4330-9bf5-1f32c10d8533.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-04-before-face-review-c22ffb3b727e.png",
+        "sha256": "c22ffb3b727e32faadd239aed5711694818a2cc3890294edb82e0ee213b3647a"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 1,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 5,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-05.png",
+      "design": "Large muscular herald with a wide flat forehead, heavy outward mandibles and black dreadlocks tied in a compact horizontal bundle. Long sleeveless ivory vest open at the sides, three broad crimson cloth panels at waist, low back harness bearing two short soft pennants. Both hands cradle a sealed large bronze announcement cylinder horizontally. Dark gold spotted hide, commanding stable stance.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-d005fbdf-6184-4d29-83ab-8760401ad43b.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2336165,
+      "sha256": "c9c49d386e97d89ed0731b94b627b540089be62a2266954ce39a97d6f31d1826",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        1,
+        1010,
+        1520
+      ],
+      "fully_transparent_pixels": 934294,
+      "githubBlobSha": "78999d2e70c3b26ee87364a0ffdd85980fcf258d",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        158,
+        11,
+        891,
+        1473
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-05",
+      "role": "herald",
+      "slot": 5,
+      "description": "Large muscular herald with a wide flat forehead, heavy outward mandibles and black dreadlocks tied in a compact horizontal bundle. Long sleeveless ivory vest open at the sides, three broad crimson cloth panels at waist, low back harness bearing two short soft pennants. Both hands cradle a sealed large bronze announcement cylinder horizontally. Dark gold spotted hide, commanding stable stance.",
+      "gitBlobSha1": "78999d2e70c3b26ee87364a0ffdd85980fcf258d",
+      "byte_count": 2336165,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        0,
+        1,
+        1010,
+        1520
+      ],
+      "transparent_fraction": 0.5940081278483073,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Large muscular herald with a wide flat forehead, heavy outward mandibles and black dreadlocks tied in a compact horizontal bundle. Long sleeveless ivory vest open at the sides, three broad crimson cloth panels at waist, low back harness bearing two short soft pennants. Both hands cradle a sealed large bronze announcement cylinder horizontally. Dark gold spotted hide, commanding stable stance.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-05.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-d005fbdf-6184-4d29-83ab-8760401ad43b.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-d005fbdf-6184-4d29-83ab-8760401ad43b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-05-before-face-review-b2d791a5136f.png",
+        "sha256": "b2d791a5136fa5944912b5c19082b1506aad4a095d273d97def2a4a449276e71"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 1,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 6,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-06.png",
+      "design": "Very slim agile herald with an angular swept forehead, long narrow mandibles and a thick dreadlock side braid over left shoulder. Knee-length ivory tunic with one loose sleeve, red geometric shoulder edging, broad woven sash with small ceremonial bone beads. Right hand holds a short bronze insignia baton upright at the chest, left hand lightly grasps sash. Muted olive mottled skin.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-bc3f78c3-b5ef-4a17-8c37-49ef0a9113b1.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2041323,
+      "sha256": "cf803828a25763b9698431a585949db6c424ad1a3a2815447d7185b54ff15ab1",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        64,
+        51,
+        1010,
+        1516
+      ],
+      "fully_transparent_pixels": 1078235,
+      "githubBlobSha": "6389246da34bbf0d1111db7e51c0e9a454d437eb",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        257,
+        57,
+        852,
+        1464
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-06",
+      "role": "herald",
+      "slot": 6,
+      "description": "Very slim agile herald with an angular swept forehead, long narrow mandibles and a thick dreadlock side braid over left shoulder. Knee-length ivory tunic with one loose sleeve, red geometric shoulder edging, broad woven sash with small ceremonial bone beads. Right hand holds a short bronze insignia baton upright at the chest, left hand lightly grasps sash. Muted olive mottled skin.",
+      "gitBlobSha1": "6389246da34bbf0d1111db7e51c0e9a454d437eb",
+      "byte_count": 2041323,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        64,
+        51,
+        1010,
+        1516
+      ],
+      "transparent_fraction": 0.6855233510335287,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very slim agile herald with an angular swept forehead, long narrow mandibles and a thick dreadlock side braid over left shoulder. Knee-length ivory tunic with one loose sleeve, red geometric shoulder edging, broad woven sash with small ceremonial bone beads. Right hand holds a short bronze insignia baton upright at the chest, left hand lightly grasps sash. Muted olive mottled skin.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-06.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-bc3f78c3-b5ef-4a17-8c37-49ef0a9113b1.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-bc3f78c3-b5ef-4a17-8c37-49ef0a9113b1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-06-before-face-review-cefc2ef6301b.png",
+        "sha256": "cefc2ef6301b359182920f4bc13eef459b167bebb358e747ac2aa9ac79af1fca"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 0,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 7,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-07.png",
+      "design": "Medium-height barrel-chested herald with a low oval skull, short broad mandibles and dreadlocks forming a wide rear fan. Off-white wrapped long vest, narrow red central banner strip, high leather belt with a small sealed scroll case. Holds a compact two-part bronze signal horn horizontally at waist, both hands naturally supporting it. Charcoal-grey scales with pale spots.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3744c45f-750b-441d-9220-963852163a3e.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2282604,
+      "sha256": "1086fa0d6fa1cfc4c4b02377eecbfb3a5b1af1e26e15380213249d14d91d95ff",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        64,
+        32,
+        1012,
+        1496
+      ],
+      "fully_transparent_pixels": 958197,
+      "githubBlobSha": "e7c2747bc808adafa06a0e2b561e4a22e73fd0a5",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        222,
+        34,
+        921,
+        1480
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-07",
+      "role": "herald",
+      "slot": 7,
+      "description": "Medium-height barrel-chested herald with a low oval skull, short broad mandibles and dreadlocks forming a wide rear fan. Off-white wrapped long vest, narrow red central banner strip, high leather belt with a small sealed scroll case. Holds a compact two-part bronze signal horn horizontally at waist, both hands naturally supporting it. Charcoal-grey scales with pale spots.",
+      "gitBlobSha1": "e7c2747bc808adafa06a0e2b561e4a22e73fd0a5",
+      "byte_count": 2282604,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        64,
+        32,
+        1012,
+        1496
+      ],
+      "transparent_fraction": 0.6092052459716797,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Medium-height barrel-chested herald with a low oval skull, short broad mandibles and dreadlocks forming a wide rear fan. Off-white wrapped long vest, narrow red central banner strip, high leather belt with a small sealed scroll case. Holds a compact two-part bronze signal horn horizontally at waist, both hands naturally supporting it. Charcoal-grey scales with pale spots.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-07.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-3744c45f-750b-441d-9220-963852163a3e.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-3744c45f-750b-441d-9220-963852163a3e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-07-before-face-review-ff889a6af8ed.png",
+        "sha256": "ff889a6af8edeab9dde463c6d133e26d28bb04a1fab3e391e12239adc35abb8a"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 0,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 8,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-08.png",
+      "design": "Compact powerful adult female herald with a broad smooth crown, strong four mandibles and thick dreadlocks in two low bunches. Ivory short layered poncho with serrated geometric crimson hem over a split ceremonial kilt, broad bronze clasp and wrist annunciator. One hand touches the wrist device while the other makes a restrained palm-out announcement gesture. Ochre mottled hide.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-d697920d-b507-417b-b31d-92dff2b0950b.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2177440,
+      "sha256": "6f0405795c639ae6c64d308f7a27e9d1a221340079786e429db491e869119415",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        41,
+        1012,
+        1480
+      ],
+      "fully_transparent_pixels": 1026396,
+      "githubBlobSha": "6e33766be718425778130bf38833d0cf58b1c0f6",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        214,
+        44,
+        1002,
+        1454
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-08",
+      "role": "herald",
+      "slot": 8,
+      "description": "Compact powerful adult female herald with a broad smooth crown, strong four mandibles and thick dreadlocks in two low bunches. Ivory short layered poncho with serrated geometric crimson hem over a split ceremonial kilt, broad bronze clasp and wrist annunciator. One hand touches the wrist device while the other makes a restrained palm-out announcement gesture. Ochre mottled hide.",
+      "gitBlobSha1": "6e33766be718425778130bf38833d0cf58b1c0f6",
+      "byte_count": 2177440,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        49,
+        41,
+        1012,
+        1480
+      ],
+      "transparent_fraction": 0.6525650024414062,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Compact powerful adult female herald with a broad smooth crown, strong four mandibles and thick dreadlocks in two low bunches. Ivory short layered poncho with serrated geometric crimson hem over a split ceremonial kilt, broad bronze clasp and wrist annunciator. One hand touches the wrist device while the other makes a restrained palm-out announcement gesture. Ochre mottled hide.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-08.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-d697920d-b507-417b-b31d-92dff2b0950b.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-d697920d-b507-417b-b31d-92dff2b0950b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-08-before-face-review-9b04f044c020.png",
+        "sha256": "9b04f044c0208efe12cca69170549638b9ce4403bb04a4c8836e3c3aba8f6971"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 0,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 9,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-09.png",
+      "design": "Very tall narrow-built herald with a pronounced red-brown central forehead ridge, long curved mandibles and long cream dreadlocks with dark roots. Layered ivory ankle-length ceremonial robe, short red shoulder mantle and wide asymmetric sash. Left hand displays a rigid narrow proclamation board, right hand points toward its blank surface. Pale sand scales, attentive forward incline.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-02fd52de-ef4e-4fa7-8b95-b29aeafea4be.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2310428,
+      "sha256": "bb8da0ad557c3b9398b5a0ad6e9ec46bb6b1e79d03add1bcd8275e6ab23f8c23",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        12,
+        1012,
+        1520
+      ],
+      "fully_transparent_pixels": 957390,
+      "githubBlobSha": "321a2e03824cb7aef62f9904666c435fe55a62f7",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        219,
+        14,
+        944,
+        1479
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-09",
+      "role": "herald",
+      "slot": 9,
+      "description": "Very tall narrow-built herald with a pronounced red-brown central forehead ridge, long curved mandibles and long cream dreadlocks with dark roots. Layered ivory ankle-length ceremonial robe, short red shoulder mantle and wide asymmetric sash. Left hand displays a rigid narrow proclamation board, right hand points toward its blank surface. Pale sand scales, attentive forward incline.",
+      "gitBlobSha1": "321a2e03824cb7aef62f9904666c435fe55a62f7",
+      "byte_count": 2310428,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        49,
+        12,
+        1012,
+        1520
+      ],
+      "transparent_fraction": 0.6086921691894531,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very tall narrow-built herald with a pronounced red-brown central forehead ridge, long curved mandibles and long cream dreadlocks with dark roots. Layered ivory ankle-length ceremonial robe, short red shoulder mantle and wide asymmetric sash. Left hand displays a rigid narrow proclamation board, right hand points toward its blank surface. Pale sand scales, attentive forward incline.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-09.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-02fd52de-ef4e-4fa7-8b95-b29aeafea4be.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-02fd52de-ef4e-4fa7-8b95-b29aeafea4be.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-09-before-face-review-4c9d5ed2ab94.png",
+        "sha256": "4c9d5ed2ab947f5251417946211d8cc809bb0f85c3ec9b46cd0751abb392682e"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 0,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 10,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-10.png",
+      "design": "Short stocky herald with a wide round crown, heavy lower mandibles and thick dark dreadlocks loosely tied at nape. Ivory chest wrap with a bold crimson geometric pendant panel, red split side skirts, braided belt. Large curved bronze horn slung diagonally at the back; right hand holds a folded cream-red ceremonial banner cloth, left rests at belt. Warm russet hide.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-2cb2d8c9-0281-4ca9-82e8-f5599ab83307.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2590343,
+      "sha256": "fee47f570097936a75b639f07eb835dc8773961e643ef1bed3343458a8292b7d",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        0,
+        994,
+        1518
+      ],
+      "fully_transparent_pixels": 821607,
+      "githubBlobSha": "34329be1642505df13bfea4d19e4793f0acd877b",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        94,
+        24,
+        925,
+        1482
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-10",
+      "role": "herald",
+      "slot": 10,
+      "description": "Short stocky herald with a wide round crown, heavy lower mandibles and thick dark dreadlocks loosely tied at nape. Ivory chest wrap with a bold crimson geometric pendant panel, red split side skirts, braided belt. Large curved bronze horn slung diagonally at the back; right hand holds a folded cream-red ceremonial banner cloth, left rests at belt. Warm russet hide.",
+      "gitBlobSha1": "34329be1642505df13bfea4d19e4793f0acd877b",
+      "byte_count": 2590343,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        0,
+        0,
+        994,
+        1518
+      ],
+      "transparent_fraction": 0.5223636627197266,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Short stocky herald with a wide round crown, heavy lower mandibles and thick dark dreadlocks loosely tied at nape. Ivory chest wrap with a bold crimson geometric pendant panel, red split side skirts, braided belt. Large curved bronze horn slung diagonally at the back; right hand holds a folded cream-red ceremonial banner cloth, left rests at belt. Warm russet hide.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-10.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-2cb2d8c9-0281-4ca9-82e8-f5599ab83307.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-2cb2d8c9-0281-4ca9-82e8-f5599ab83307.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-10-before-face-review-48dcd0387717.png",
+        "sha256": "48dcd03877176e196d5ee2d5e782c39ab68d6c5f657d0c4fd9d390b62ad9a6fd"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 1,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 11,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-11.png",
+      "design": "Athletic dark-grey herald with a tall angular brow, broad four mandibles and dreadlocks gathered high into a tight bun. Asymmetrical ivory poncho with red trim and one wide crimson scarf panel, simple ceremonial leg wraps. Holds a small suspended bronze announcement disc in the left hand and a short padded beater low in the right, away from body. Calm upright stance.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-74a40a9b-8097-42c1-ac1c-6e6a5629d7ba.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2275469,
+      "sha256": "4edd339442726ab8ef7714c409eb7150b0deff8b4de7674552f7443902eda9ee",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        27,
+        37,
+        1005,
+        1450
+      ],
+      "fully_transparent_pixels": 983594,
+      "githubBlobSha": "a998675d60205d9b87550ab1dfb2b878480f48a5",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        183,
+        42,
+        975,
+        1448
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-11",
+      "role": "herald",
+      "slot": 11,
+      "description": "Athletic dark-grey herald with a tall angular brow, broad four mandibles and dreadlocks gathered high into a tight bun. Asymmetrical ivory poncho with red trim and one wide crimson scarf panel, simple ceremonial leg wraps. Holds a small suspended bronze announcement disc in the left hand and a short padded beater low in the right, away from body. Calm upright stance.",
+      "gitBlobSha1": "a998675d60205d9b87550ab1dfb2b878480f48a5",
+      "byte_count": 2275469,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        27,
+        37,
+        1005,
+        1450
+      ],
+      "transparent_fraction": 0.6253522237141927,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Athletic dark-grey herald with a tall angular brow, broad four mandibles and dreadlocks gathered high into a tight bun. Asymmetrical ivory poncho with red trim and one wide crimson scarf panel, simple ceremonial leg wraps. Holds a small suspended bronze announcement disc in the left hand and a short padded beater low in the right, away from body. Calm upright stance.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-11.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-74a40a9b-8097-42c1-ac1c-6e6a5629d7ba.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-74a40a9b-8097-42c1-ac1c-6e6a5629d7ba.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-11-before-face-review-2013146d6bc1.png",
+        "sha256": "2013146d6bc18ded0ef7aff173512a17f5819f05b4b29b0ba3070642e3ca928b"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 0,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 12,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-12.png",
+      "design": "Older broad-hipped female herald with a short low forehead crest, fine weathered mandibles and long white-tipped dreadlocks tied into a low loop. Cream pleated long civic kilt and sleeveless waistcoat, two slender crimson banner sashes reaching calf, high bronze collar medallion. Both hands folded naturally around a small sealed proclamation cylinder at waist. Grey olive scale pattern.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6ddea64d-48cc-40f0-84fc-d0b196b5df53.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2218804,
+      "sha256": "28b1c7b1c23c68fb702140679106d3dbd0220a829452414b86eb0048b966558b",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        13,
+        860,
+        1536
+      ],
+      "fully_transparent_pixels": 972887,
+      "githubBlobSha": "4506bb6c2bdd1097606544dd36810d3fe3ecf341",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        237,
+        15,
+        839,
+        1489
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-12",
+      "role": "herald",
+      "slot": 12,
+      "description": "Older broad-hipped female herald with a short low forehead crest, fine weathered mandibles and long white-tipped dreadlocks tied into a low loop. Cream pleated long civic kilt and sleeveless waistcoat, two slender crimson banner sashes reaching calf, high bronze collar medallion. Both hands folded naturally around a small sealed proclamation cylinder at waist. Grey olive scale pattern.",
+      "gitBlobSha1": "4506bb6c2bdd1097606544dd36810d3fe3ecf341",
+      "byte_count": 2218804,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        0,
+        13,
+        860,
+        1536
+      ],
+      "transparent_fraction": 0.6185448964436849,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Older broad-hipped female herald with a short low forehead crest, fine weathered mandibles and long white-tipped dreadlocks tied into a low loop. Cream pleated long civic kilt and sleeveless waistcoat, two slender crimson banner sashes reaching calf, high bronze collar medallion. Both hands folded naturally around a small sealed proclamation cylinder at waist. Grey olive scale pattern.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-12.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-6ddea64d-48cc-40f0-84fc-d0b196b5df53.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-6ddea64d-48cc-40f0-84fc-d0b196b5df53.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-12-before-face-review-f26f61120db5.png",
+        "sha256": "f26f61120db573c60eb340778b91ffb8f9d07ced3ab293976d367875e54d8a4b"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 1,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 13,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-13.png",
+      "design": "Tall robust herald with a broad tapering skull, flared upper mandibles and medium black dreadlocks swept behind one shoulder. Ivory sleeveless robe with broad rectangular red-edged shoulder tabs, triangular front apron and belt of plain bronze plates. Right hand presents a small circular alien voice-projector device at chest level; left hand steady on its attached strap. Pale cream spotted hide.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-53e7695f-a398-4faa-ad5d-abdd2ac71533.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2347781,
+      "sha256": "23109e2139f5cb604e5bca1ab900ccddf5da6d9f1811176a65d560dd22c38c39",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        0,
+        944,
+        1520
+      ],
+      "fully_transparent_pixels": 928164,
+      "githubBlobSha": "98a97abfa735f9a288f9b81f9c82a7d08b70cc1b",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        215,
+        9,
+        941,
+        1468
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-13",
+      "role": "herald",
+      "slot": 13,
+      "description": "Tall robust herald with a broad tapering skull, flared upper mandibles and medium black dreadlocks swept behind one shoulder. Ivory sleeveless robe with broad rectangular red-edged shoulder tabs, triangular front apron and belt of plain bronze plates. Right hand presents a small circular alien voice-projector device at chest level; left hand steady on its attached strap. Pale cream spotted hide.",
+      "gitBlobSha1": "98a97abfa735f9a288f9b81f9c82a7d08b70cc1b",
+      "byte_count": 2347781,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        49,
+        0,
+        944,
+        1520
+      ],
+      "transparent_fraction": 0.5901107788085938,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall robust herald with a broad tapering skull, flared upper mandibles and medium black dreadlocks swept behind one shoulder. Ivory sleeveless robe with broad rectangular red-edged shoulder tabs, triangular front apron and belt of plain bronze plates. Right hand presents a small circular alien voice-projector device at chest level; left hand steady on its attached strap. Pale cream spotted hide.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-13.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-53e7695f-a398-4faa-ad5d-abdd2ac71533.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-53e7695f-a398-4faa-ad5d-abdd2ac71533.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 3,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-13-before-face-review-712fe6f235ea.png",
+        "sha256": "712fe6f235ea3a6c33da1e269eea04d60f849e4e7d7e8faa35380b2fea29b15b"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 3,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 14,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-14.png",
+      "design": "Lean middle-aged herald with a narrow sloped crown, long thin lower mandibles and a single low dreadlock knot plus a few loose side locks. Calf-length ivory tunic with thick crimson hem, fitted open brown civic vest and diagonal red sash. Left forearm carries a stack of flat sealed proclamations; right index claw raised in an explanatory gesture. Muted green-ochre hide.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-26ec031a-4a59-469b-aede-b4b4717951a4.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2231600,
+      "sha256": "e679070198db9815d8b3795eae22c0b323c70acd622743c2013fa345af80a6d2",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        75,
+        41,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 991031,
+      "githubBlobSha": "14177282bb25d026656f31fa99e3cd49e04d644f",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        197,
+        48,
+        944,
+        1488
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-14",
+      "role": "herald",
+      "slot": 14,
+      "description": "Lean middle-aged herald with a narrow sloped crown, long thin lower mandibles and a single low dreadlock knot plus a few loose side locks. Calf-length ivory tunic with thick crimson hem, fitted open brown civic vest and diagonal red sash. Left forearm carries a stack of flat sealed proclamations; right index claw raised in an explanatory gesture. Muted green-ochre hide.",
+      "gitBlobSha1": "14177282bb25d026656f31fa99e3cd49e04d644f",
+      "byte_count": 2231600,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        75,
+        41,
+        1012,
+        1536
+      ],
+      "transparent_fraction": 0.6300805409749349,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Lean middle-aged herald with a narrow sloped crown, long thin lower mandibles and a single low dreadlock knot plus a few loose side locks. Calf-length ivory tunic with thick crimson hem, fitted open brown civic vest and diagonal red sash. Left forearm carries a stack of flat sealed proclamations; right index claw raised in an explanatory gesture. Muted green-ochre hide.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-14.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-26ec031a-4a59-469b-aede-b4b4717951a4.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-26ec031a-4a59-469b-aede-b4b4717951a4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 1,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-14-before-face-review-c76053ca6669.png",
+        "sha256": "c76053ca666973e4632c29f079aae57a47f11c3b543517729bd0d4e73e7f27e9"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 1,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 15,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-15.png",
+      "design": "Broad adult female herald with a high smooth forehead plate, strong inward-curved mandibles and layered shoulder-length black dreadlocks. Ivory high-neck ceremonial wrap with three broad front panels and fine crimson angular borders, leather belt with a bronze oval seal. Holds a medium straight announcement horn vertically with both hands close to abdomen. Weathered grey mottled skin.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-bcea612e-bbbe-4d84-80ac-297761467b36.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2299072,
+      "sha256": "5ed9e03891f6f4b60ae870064dac26b0ed9039c2f684808a0c6b4111e026cfc9",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        13,
+        986,
+        1512
+      ],
+      "fully_transparent_pixels": 961023,
+      "githubBlobSha": "c8d52e1cc0636669fc88a617ae0551af3da6ff43",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        249,
+        15,
+        833,
+        1508
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-15",
+      "role": "herald",
+      "slot": 15,
+      "description": "Broad adult female herald with a high smooth forehead plate, strong inward-curved mandibles and layered shoulder-length black dreadlocks. Ivory high-neck ceremonial wrap with three broad front panels and fine crimson angular borders, leather belt with a bronze oval seal. Holds a medium straight announcement horn vertically with both hands close to abdomen. Weathered grey mottled skin.",
+      "gitBlobSha1": "c8d52e1cc0636669fc88a617ae0551af3da6ff43",
+      "byte_count": 2299072,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        49,
+        13,
+        986,
+        1512
+      ],
+      "transparent_fraction": 0.6110019683837891,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Broad adult female herald with a high smooth forehead plate, strong inward-curved mandibles and layered shoulder-length black dreadlocks. Ivory high-neck ceremonial wrap with three broad front panels and fine crimson angular borders, leather belt with a bronze oval seal. Holds a medium straight announcement horn vertically with both hands close to abdomen. Weathered grey mottled skin.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-15.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-bcea612e-bbbe-4d84-80ac-297761467b36.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-bcea612e-bbbe-4d84-80ac-297761467b36.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-15-before-face-review-dbed7da8a2ad.png",
+        "sha256": "dbed7da8a2ad745ea26f31d40ea3dde4f9b05bee12b86d900d9ef7fc0f47a4bf"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 0,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 16,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-16.png",
+      "design": "Very tall heavily built herald with a square deeply furrowed skull, short broad mandibles and thick dreadlocks tied into two back loops. Long ivory sleeveless robe, wide diagonal crimson waist wrap, prominent bronze chest insignia and three hanging plain civic seals. Right hand supports a short staff with one red-edged ivory square pennant; left hand relaxed at hip. Golden olive hide.",
+      "status": "validated",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-5ea59eb2-130f-4ec9-b503-8466c2638f9b.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2397872,
+      "sha256": "dab7a8d28f500c4611b90dc3e8172e6c7e206cb9dfe13959ca3e5530cc118f98",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        53,
+        20,
+        995,
+        1498
+      ],
+      "fully_transparent_pixels": 905966,
+      "githubBlobSha": "7779830312e066ea3c77e3413d534d97f0fe9cd2",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        174,
+        25,
+        993,
+        1472
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-16",
+      "role": "herald",
+      "slot": 16,
+      "description": "Very tall heavily built herald with a square deeply furrowed skull, short broad mandibles and thick dreadlocks tied into two back loops. Long ivory sleeveless robe, wide diagonal crimson waist wrap, prominent bronze chest insignia and three hanging plain civic seals. Right hand supports a short staff with one red-edged ivory square pennant; left hand relaxed at hip. Golden olive hide.",
+      "gitBlobSha1": "7779830312e066ea3c77e3413d534d97f0fe9cd2",
+      "byte_count": 2397872,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        53,
+        20,
+        995,
+        1498
+      ],
+      "transparent_fraction": 0.5759976704915365,
+      "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Very tall heavily built herald with a square deeply furrowed skull, short broad mandibles and thick dreadlocks tied into two back loops. Long ivory sleeveless robe, wide diagonal crimson waist wrap, prominent bronze chest insignia and three hanging plain civic seals. Right hand supports a short staff with one red-edged ivory square pennant; left hand relaxed at hip. Golden olive hide.",
+      "references": [
+        "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-16.png",
+        "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+      ],
+      "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-5ea59eb2-130f-4ec9-b503-8466c2638f9b.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-5ea59eb2-130f-4ec9-b503-8466c2638f9b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "maxBorderAlpha": 0,
+      "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+      "ancestor": {
+        "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-16-before-face-review-21810bd79be1.png",
+        "sha256": "21810bd79be109e6598a8136aeb897fbba5e6e4624f438f8b13bb99c0104dc57"
+      },
+      "validation": {
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true,
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true
+      },
+      "alphaCoreThreshold": 32,
+      "edgeAlphaMax": 0,
+      "strictFourMandiblesRequested": true,
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 17,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-17.png",
+      "design": "Short wiry herald with a pointed forehead crest, long slim mandibles and a compact upright fan of short dreadlocks. Overlapping ivory ceremonial tunic strips edged red, slim shoulder cape, strong cloth calf wraps and a narrow belt. Left hand carries a small bronze hand chime by its ring; right holds a short announcement scroll tube. Light tan speckled hide, one foot subtly forward.",
+      "status": "validated",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0c4320f8-6011-44d8-8b4a-848db5ebdea5.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2384531,
+      "sha256": "97ae7c34327a6f867bc3d905e7d7ea8acfcf56101311c1cd763ea2897dca419e",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        53,
+        1002,
+        1516
+      ],
+      "fully_transparent_pixels": 955552,
+      "githubBlobSha": "797d505f87fab7ea7accd56d33e0a579ed42bc8f",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        177,
+        60,
+        930,
+        1488
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-17",
+      "role": "herald",
+      "slot": 17,
+      "description": "Short wiry herald with a pointed forehead crest, long slim mandibles and a compact upright fan of short dreadlocks. Overlapping ivory ceremonial tunic strips edged red, slim shoulder cape, strong cloth calf wraps and a narrow belt. Left hand carries a small bronze hand chime by its ring; right holds a short announcement scroll tube. Light tan speckled hide, one foot subtly forward.",
+      "gitBlobSha1": "797d505f87fab7ea7accd56d33e0a579ed42bc8f",
+      "byte_count": 2384531,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        0,
+        53,
+        1002,
+        1516
+      ],
+      "transparent_fraction": 0.6075236002604166,
+      "validation": {
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true,
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true
+      },
+      "alphaCoreThreshold": 32,
+      "maxBorderAlpha": 1,
+      "edgeAlphaMax": 1,
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 18,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-18.png",
+      "design": "Older dark-skinned herald with a broad low brow, weathered angular four mandibles and pale dreadlocks looped loosely behind the crown. White travel ceremonial mantle with hood resting back to reveal entire face, red internal lining and long slim front banner strip. One hand holds a short curved bronze call horn near hip, other grasps mantle clasp. Dark slate mottled scales.",
+      "status": "validated",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6a42bbc6-af4a-4603-9833-1c68b4e39fa4.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2400584,
+      "sha256": "50461998e403bfab1ba4239058a8296a1eb51c1bec0805612be4ee32f5354167",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        28,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 913899,
+      "githubBlobSha": "488d7585eba46f41e2ede1e0ca564642a9e39cec",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        183,
+        30,
+        839,
+        1490
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-18",
+      "role": "herald",
+      "slot": 18,
+      "description": "Older dark-skinned herald with a broad low brow, weathered angular four mandibles and pale dreadlocks looped loosely behind the crown. White travel ceremonial mantle with hood resting back to reveal entire face, red internal lining and long slim front banner strip. One hand holds a short curved bronze call horn near hip, other grasps mantle clasp. Dark slate mottled scales.",
+      "gitBlobSha1": "488d7585eba46f41e2ede1e0ca564642a9e39cec",
+      "byte_count": 2400584,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        0,
+        28,
+        1012,
+        1536
+      ],
+      "transparent_fraction": 0.5810413360595703,
+      "validation": {
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true,
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true
+      },
+      "alphaCoreThreshold": 32,
+      "maxBorderAlpha": 1,
+      "edgeAlphaMax": 1,
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 19,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-19.png",
+      "design": "Tall slender adult female herald with an oval cranial crest, delicate pointed lower mandibles and thin long dreadlocks swept to the right shoulder. Ivory long wrap robe with a broad red angular stole and short structured shoulder collar, tiny bronze seal hanging at waist. Both hands open a small blank ceremonial proclamation scroll at chest, gaze lowered slightly. Deep brown spotted hide.",
+      "status": "validated",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f8100d0f-f13d-43ee-a98e-571103c34a01.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2103815,
+      "sha256": "8d2514a7f6b79e1af1926b96e6e1f75e7667b0fb3e87f0d2f772b379de3c23aa",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        40,
+        1010,
+        1493
+      ],
+      "fully_transparent_pixels": 1031243,
+      "githubBlobSha": "8251f19cf68453f027de41a3a2f319da78c9933d",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        229,
+        45,
+        898,
+        1491
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-19",
+      "role": "herald",
+      "slot": 19,
+      "description": "Tall slender adult female herald with an oval cranial crest, delicate pointed lower mandibles and thin long dreadlocks swept to the right shoulder. Ivory long wrap robe with a broad red angular stole and short structured shoulder collar, tiny bronze seal hanging at waist. Both hands open a small blank ceremonial proclamation scroll at chest, gaze lowered slightly. Deep brown spotted hide.",
+      "gitBlobSha1": "8251f19cf68453f027de41a3a2f319da78c9933d",
+      "byte_count": 2103815,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        49,
+        40,
+        1010,
+        1493
+      ],
+      "transparent_fraction": 0.6556466420491537,
+      "validation": {
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true,
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true
+      },
+      "alphaCoreThreshold": 32,
+      "maxBorderAlpha": 0,
+      "edgeAlphaMax": 0,
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    },
+    {
+      "number": 20,
+      "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-20.png",
+      "design": "Medium muscular herald with a wide arched forehead, substantial four mandibles and thick short dreadlocks tied at varying lengths. Ivory double-breasted civic tunic with bold crimson edging, long asymmetric rear cloth panel and wide belt. Hands resting on belt edges, prominent bronze civic badge on chest, compact curved announcement horn hanging from a strong side strap. Sage-green mottled scales, neutral welcoming posture.",
+      "status": "validated",
+      "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f1112c45-7836-4168-b171-57e00c8f8f0b.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2302356,
+      "sha256": "8b89e393a3a963b1401b2c8588ae5120c534de8bd4ee01689da89094668400bf",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        64,
+        39,
+        1012,
+        1516
+      ],
+      "fully_transparent_pixels": 957252,
+      "githubBlobSha": "69b49c2774145a7fb7ab798260ad936d8c88c903",
+      "visuallyInspected": true,
+      "alphaCoreBoundingBox": [
+        213,
+        60,
+        853,
+        1488
+      ],
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "id": "herald-20",
+      "role": "herald",
+      "slot": 20,
+      "description": "Medium muscular herald with a wide arched forehead, substantial four mandibles and thick short dreadlocks tied at varying lengths. Ivory double-breasted civic tunic with bold crimson edging, long asymmetric rear cloth panel and wide belt. Hands resting on belt edges, prominent bronze civic badge on chest, compact curved announcement horn hanging from a strong side strap. Sage-green mottled scales, neutral welcoming posture.",
+      "gitBlobSha1": "69b49c2774145a7fb7ab798260ad936d8c88c903",
+      "byte_count": 2302356,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        64,
+        39,
+        1012,
+        1516
+      ],
+      "transparent_fraction": 0.6086044311523438,
+      "validation": {
+        "full_body_visually_checked": true,
+        "face_visually_checked": true,
+        "four_mandibles_visually_checked": true,
+        "original_bytes_preserved": true,
+        "genuine_transparency": true,
+        "separate_individual": true
+      },
+      "alphaCoreThreshold": 32,
+      "maxBorderAlpha": 0,
+      "edgeAlphaMax": 0,
+      "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+    }
+  ],
+  "faceAnatomyReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter",
+  "validated": 20
+}

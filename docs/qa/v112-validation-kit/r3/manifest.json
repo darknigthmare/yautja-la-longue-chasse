@@ -1,0 +1,106 @@
+{
+  "result": "OK",
+  "scope": "LOCAL_CARNET_SOFTWARE_ONLY",
+  "command": "node scripts/qa-qualification-kit-v112.mjs",
+  "files": [
+    {
+      "path": "docs/qa/v112-validation-kit/r3/README.md",
+      "bytes": 2637,
+      "sha256": "5f7c50f9be43c55241bed79812ba8bab5e4be833983aa311004f5699310ae2ec"
+    },
+    {
+      "path": "docs/qa/v112-validation-kit/r3/carnet-1280.png",
+      "bytes": 144073,
+      "sha256": "456da38f4617d5eab8d5d501d1b216ea607e874c479309c82c112209d1618d1b"
+    },
+    {
+      "path": "docs/qa/v112-validation-kit/r3/carnet-390.png",
+      "bytes": 69579,
+      "sha256": "9ed2e825663298d8851b02b87bf054388fd660d9895316b060b643ea5c11c2cc"
+    },
+    {
+      "path": "docs/qa/v112-validation-kit/r3/carnet-documents-1280.png",
+      "bytes": 79014,
+      "sha256": "c0e86d542c6ca4766e01276e4c9c207b99257542d10dcdbaf1c54a38c97159c1"
+    },
+    {
+      "path": "docs/qa/v112-validation-kit/r3/carnet-documents-390.png",
+      "bytes": 80149,
+      "sha256": "7746329a9f87b325cb4f7c0f2bc6f4a1caee5f7ce4d441130c4e1500eb4b9cb6"
+    },
+    {
+      "path": "docs/qa/v112-validation-kit/r3/carnet-sans-js-1280.png",
+      "bytes": 1175805,
+      "sha256": "6d2a336b9f4bbbfc637c8e27dd371d16a9e41fc54a61bd8a80a803df1e242aae"
+    },
+    {
+      "path": "docs/qa/v112-validation-kit/r3/carnet-software-report.json",
+      "bytes": 4033,
+      "sha256": "53dc95175a837be2bd30cdf96fedc30806dea2b774e03e47d4884ffe5dbc8157"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "public/aide/qualification-chasse.html",
+      "bytes": 41379,
+      "sha256": "65bd83cc3981e35f3ef38b00ae7caab8d0cb57840654d46897928a384a99b0fd"
+    },
+    {
+      "path": "scripts/qa-qualification-kit-v112.mjs",
+      "bytes": 18498,
+      "sha256": "857a092abde9663424b8a53d463b88a303fcf9d4bc19670e466c227edd34215c"
+    },
+    {
+      "path": "docs/hunt-mechanics-v112.json",
+      "bytes": 432273,
+      "sha256": "47b91ad876359968ffaa7a41c8413e9bc69ebf01715dd2a5884a69b466f44b5e"
+    },
+    {
+      "path": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 740369,
+      "sha256": "39f9470537721b13766bf4436d0f43623e06d1bee8c860ec570a4ab1f4f867ec"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/hunt-review-v112.pdf",
+      "bytes": 1499808,
+      "sha256": "32f84c72fc965deb817b640b4cb8b17e837542a2b1dde6ed2a74c053b1461442"
+    },
+    {
+      "path": "public/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 740369,
+      "sha256": "39f9470537721b13766bf4436d0f43623e06d1bee8c860ec570a4ab1f4f867ec"
+    },
+    {
+      "path": "public/aide/YAUTJA_V112_REVUES_IMPRIMABLE.pdf",
+      "bytes": 1499808,
+      "sha256": "32f84c72fc965deb817b640b4cb8b17e837542a2b1dde6ed2a74c053b1461442"
+    }
+  ],
+  "r2Preserved": [
+    {
+      "path": "docs/qa/v112-validation-kit/r2/README.md",
+      "bytes": 2078,
+      "sha256": "cd4d453783c44f9f21b43cc0df9f9578612cd223b5acff3a30a7e970dbcadf17"
+    },
+    {
+      "path": "docs/qa/v112-validation-kit/r2/carnet-1280.png",
+      "bytes": 130181,
+      "sha256": "8458e0e04df2fc015d156c9a2eab7ba7f76220f444ea69d73e8c2ed9ff8adce8"
+    },
+    {
+      "path": "docs/qa/v112-validation-kit/r2/carnet-390.png",
+      "bytes": 69579,
+      "sha256": "9ed2e825663298d8851b02b87bf054388fd660d9895316b060b643ea5c11c2cc"
+    },
+    {
+      "path": "docs/qa/v112-validation-kit/r2/carnet-sans-js-1280.png",
+      "bytes": 1157208,
+      "sha256": "0bfdece651d9dac045f29956644c891798cf77d9ba9b7b0dcc77aecfe0a6b286"
+    },
+    {
+      "path": "docs/qa/v112-validation-kit/r2/carnet-software-report.json",
+      "bytes": 1993,
+      "sha256": "e75f61fd757072fa0dd5e71c4ed6800e54ce5d91c8a43026797c6f7e193c6eb9"
+    }
+  ]
+}

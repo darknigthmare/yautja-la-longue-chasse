@@ -1,0 +1,527 @@
+{
+  "version": "V32",
+  "generator": "OpenAI image_gen",
+  "sourcePreservation": "Original PNG files copied byte-for-byte; chroma key only in runtime Canvas.",
+  "entries": [
+    {
+      "id": "jungle-hunter-idle",
+      "sourceImage": "exec-9a1f0b2f-d7c4-43f0-ad7f-d982b02de6a8.png",
+      "prompt": "Create a NEW eight-frame IDLE/BREATHING animation atlas for the SAME Jungle Hunter from reference, preserving equipment and pixel sprite style. Landscape1536x1024, 4columns x2rows exactly8whole-body separate sprites. Flat vivid magenta #FF00FF background no grid/no text/no checker/no shadow. Same character height320px, mask-to-sole scale constant, feet soles y450 in each512px-tall row, stance center at cellx192. Wide blank gutters32px minimum. Row1: four successive breathing idle frames facingRIGHT in three-quarter side combat stance. Row2: four breathing idle frames facingLEFT, independently drawn view of OTHER side, not a mirrored flipped image. Keep anatomical LEFT shoulder cannon and RIGHT wrist blades attached correctly. Same silver smooth 1987 mask, yellow mottled skin and netting, metal ring dreadlocks, asymmetric bronze armor and brownloincloth as reference. Feet planted at identical stance/pivots, subtle chest/shoulder/forearm breathing cycle and hair secondary movement, actual distinct drawings not duplicate copies. All8 masks silhouettes and armor consistent, hands attached with coherent digits and two arms/two legs. Clear breathing cycle1inhale start,2chest rising,3full inhale,4exhale returning; never walk or turn. For each facing draw the same pose viewpoint consistently throughout all four frames. Crisp 2D pixelart intended180pixel-tall combat rendering. No added weapons.",
+      "accepted": true,
+      "bodyHeightPx": 350,
+      "sha256": "89d2bd9132cbe381e90ec08fd873d20e78d43e0fc88b0b79e84e2228893238ae",
+      "width": 1536,
+      "height": 1024,
+      "frames": [
+        {
+          "pageId": "jungle-hunter-idle",
+          "rect": [
+            58,
+            106,
+            260,
+            358
+          ],
+          "pivot": [
+            126.5,
+            353
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-idle",
+          "rect": [
+            432,
+            105,
+            264,
+            359
+          ],
+          "pivot": [
+            131.5,
+            354
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-idle",
+          "rect": [
+            809,
+            102,
+            264,
+            362
+          ],
+          "pivot": [
+            131.5,
+            357
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-idle",
+          "rect": [
+            1199,
+            108,
+            261,
+            356
+          ],
+          "pivot": [
+            130.0,
+            351
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-idle",
+          "rect": [
+            71,
+            564,
+            263,
+            362
+          ],
+          "pivot": [
+            131.0,
+            357
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-idle",
+          "rect": [
+            452,
+            564,
+            274,
+            361
+          ],
+          "pivot": [
+            136.5,
+            356
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-idle",
+          "rect": [
+            835,
+            563,
+            271,
+            362
+          ],
+          "pivot": [
+            135.0,
+            357
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-idle",
+          "rect": [
+            1210,
+            564,
+            268,
+            362
+          ],
+          "pivot": [
+            133.5,
+            357
+          ],
+          "durationTicks": 10
+        }
+      ]
+    },
+    {
+      "id": "jungle-hunter-light",
+      "sourceImage": "exec-716bbd66-632b-480a-adb9-675988bbf49b.png",
+      "prompt": "Create a NEW animation atlas based on the Jungle Hunter character in the supplied image (design reference, do not copy layout). Exactly EIGHT full body wrist-blade light-attack animation poses in 4 columns x 2 rows on a landscape 1536x1024 canvas. Each cell384x512. Entire backdrop perfectly flat solid RGB255,0,255 #FF00FF, absolutely no checkerboard, text, grids, shadows, effects or labels. All character silhouettes must be at least32px away from their cell edges; make characters small enough (standing height330px, soles at cell y450) for fully extended attack arms to fit. Crown-to-soles scale identical. Identity is 1987 Jungle Hunter: smooth silver bio-mask, yellow mottled skin, mesh net, brown loincloth, black dreadlocks metal bands, anatomical LEFT shoulder cannon, anatomical RIGHT wrist two blades, accurate equipment fixed to correct body parts, two arms/legs, correct attached hands.\nRow1 all face RIGHT (left-to-right sequential animation):1 anticipation crouched slightly with RIGHT weapon forearm drawn back;2 attack contact RIGHT wrist blades thrust horizontally towards right;3 follow-through right arm pulling back;4 recovery return ready. Clear distinct poses.\nRow2 all face LEFT with camera seeing the OTHER side of same character, independently redrawn, NOT mirrored equipment: 1anticipation;2contact wrist blades towards left;3followthrough;4ready recovery. Shoulder cannon remains on his anatomical LEFT side and wrist blades remain RIGHT wrist; body side swap reveals/hides far limbs naturally. Side-profile fighting game sprite camera, constant scale/baseline/camera. Crisp detailed pixel sprites for 2D combat, no photoreal render. Keep width at most310px even in extension. Exactly8 sprites with wide solid magenta gaps.",
+      "accepted": true,
+      "bodyHeightPx": 333,
+      "sha256": "1f8b188b0efbcbadd12afd70003717eaab74ae64fac176eb2578a4a876c44867",
+      "width": 1536,
+      "height": 1024,
+      "frames": [
+        {
+          "pageId": "jungle-hunter-light",
+          "rect": [
+            56,
+            126,
+            264,
+            333
+          ],
+          "pivot": [
+            121.5,
+            328
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-light",
+          "rect": [
+            420,
+            122,
+            385,
+            336
+          ],
+          "pivot": [
+            134.0,
+            331
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-light",
+          "rect": [
+            812,
+            120,
+            262,
+            340
+          ],
+          "pivot": [
+            130.5,
+            335
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-light",
+          "rect": [
+            1216,
+            116,
+            252,
+            346
+          ],
+          "pivot": [
+            125.5,
+            341
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-light",
+          "rect": [
+            65,
+            583,
+            270,
+            341
+          ],
+          "pivot": [
+            142.5,
+            336
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-light",
+          "rect": [
+            364,
+            580,
+            386,
+            344
+          ],
+          "pivot": [
+            243.5,
+            339
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-light",
+          "rect": [
+            837,
+            581,
+            273,
+            344
+          ],
+          "pivot": [
+            139.0,
+            339
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "jungle-hunter-light",
+          "rect": [
+            1212,
+            574,
+            266,
+            353
+          ],
+          "pivot": [
+            132.5,
+            348
+          ],
+          "durationTicks": 10
+        }
+      ]
+    },
+    {
+      "id": "city-hunter-idle",
+      "sourceImage": "exec-8862f45c-96aa-4b07-a8c8-6dc9cdd99317.png",
+      "prompt": "Use case stylized-concept. Game asset spritesheet, same exact named hunter as attached project image identity reference. Produce crisp finely shaded pixelart fullbody animation poses on perfectly flat vivid magenta RGB255,0,255 background, no checkerboard/no text/no grid/no shadow/no labels. Landscape1536x1024 exact4columns2rows of8sprites. Each cell384x512, figure height~330px with lowest soles y450, centered stancex192, entire character/weapon at least28px from cell edge; no overlap, consistent scale. Row1 FOUR distinct successive combat IDLE breathing frames facingRIGHT. Row2 FOUR distinct successive combat IDLE breathing frames facingLEFT with OTHER body side independently redrawn; not mirrored equipment. Keep all anatomical handedness and armor asymmetries correct. Feet planted, same stance within row, shoulders chest arms subtly breathe and dreadlocks secondary movement, four distinct drawings loop naturally. Exactly two arms/two legs, coherent hands with attached fingers, no weapon merging or broken wrists. Same design in all8frames; 1 inhale start,2 inhale rise,3 fullbreath,4 exhale back. No action, walking or turning. CITY HUNTER 1990 design: copper ridged elongated bio-mask, orange-red mottled skin and black netting, dark gray segmented armor, metal ring dreadlocks, left shoulder cannon, right wristblades, small round disc stored at hip. Adapt pose to combat ready with combistick stowed (DO NOT include long spear for this idle unarmed attack stance), keep mask/skin/armor from reference. Hands relaxed ready fists coherent anatomy.",
+      "accepted": true,
+      "bodyHeightPx": 448,
+      "sha256": "569f85110fa1b326732365d3bb9e5af0462597d49412ab9edf7c3a106679f2d0",
+      "width": 1536,
+      "height": 1024,
+      "frames": [
+        {
+          "pageId": "city-hunter-idle",
+          "rect": [
+            73,
+            21,
+            239,
+            457
+          ],
+          "pivot": [
+            118.5,
+            452
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-idle",
+          "rect": [
+            458,
+            21,
+            238,
+            457
+          ],
+          "pivot": [
+            117.5,
+            452
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-idle",
+          "rect": [
+            839,
+            19,
+            241,
+            459
+          ],
+          "pivot": [
+            120.5,
+            454
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-idle",
+          "rect": [
+            1228,
+            21,
+            236,
+            457
+          ],
+          "pivot": [
+            115.5,
+            452
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-idle",
+          "rect": [
+            66,
+            530,
+            245,
+            459
+          ],
+          "pivot": [
+            122.0,
+            454
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-idle",
+          "rect": [
+            449,
+            530,
+            245,
+            459
+          ],
+          "pivot": [
+            123.0,
+            454
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-idle",
+          "rect": [
+            834,
+            527,
+            245,
+            462
+          ],
+          "pivot": [
+            122.0,
+            457
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-idle",
+          "rect": [
+            1217,
+            530,
+            245,
+            459
+          ],
+          "pivot": [
+            123.0,
+            454
+          ],
+          "durationTicks": 10
+        }
+      ]
+    },
+    {
+      "id": "city-hunter-light",
+      "sourceImage": "exec-c149432b-4a2a-41dd-a343-75c40eee2534.png",
+      "prompt": "Edit ONLY equipment consistency on this existing City Hunter eight-pose spritesheet. Keep all eight poses, exact positions, proportions, anatomy, hands, pixel-art rendering, flat magenta background and 1536x1024 sheet size. On the LOWER ROW, the FIRST THREE poses accidentally have TWO round smart-disc holsters on their thighs. Remove the extra small round disc on the SCREEN-LEFT thigh of each of these three poses (approximately x120/y770, x529/y770, x886/y769), replacing that little area with matching orange netted thigh and ordinary armor strap. Leave the ONE larger round disc on the SCREEN-RIGHT thigh of each pose intact. The final lower-row pose already has ONE round disc, leave it unchanged. Upper row remains unchanged. The resulting character must have precisely one smart-disc on its belt/thigh in every pose. Do not add objects, move body parts or change hands. No labels or text.",
+      "accepted": true,
+      "bodyHeightPx": 430,
+      "sha256": "703bfbc4fceb20af425f53301cbb50aef4ae0b0d964ddcdba5f8f00f59b3699d",
+      "width": 1536,
+      "height": 1024,
+      "frames": [
+        {
+          "pageId": "city-hunter-light",
+          "rect": [
+            55,
+            38,
+            274,
+            438
+          ],
+          "pivot": [
+            135.5,
+            433
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-light",
+          "rect": [
+            407,
+            38,
+            385,
+            438
+          ],
+          "pivot": [
+            138.0,
+            433
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-light",
+          "rect": [
+            823,
+            37,
+            278,
+            439
+          ],
+          "pivot": [
+            138.0,
+            434
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-light",
+          "rect": [
+            1229,
+            36,
+            246,
+            442
+          ],
+          "pivot": [
+            119.0,
+            437
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-light",
+          "rect": [
+            53,
+            536,
+            277,
+            439
+          ],
+          "pivot": [
+            144.5,
+            434
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-light",
+          "rect": [
+            351,
+            534,
+            387,
+            441
+          ],
+          "pivot": [
+            247.0,
+            436
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-light",
+          "rect": [
+            812,
+            533,
+            284,
+            441
+          ],
+          "pivot": [
+            147.5,
+            436
+          ],
+          "durationTicks": 10
+        },
+        {
+          "pageId": "city-hunter-light",
+          "rect": [
+            1211,
+            533,
+            257,
+            442
+          ],
+          "pivot": [
+            134.5,
+            437
+          ],
+          "durationTicks": 10
+        }
+      ]
+    },
+    {
+      "id": "jungle-hunter-mixed-checker-rejected",
+      "sourceImage": "exec-86446b9e-f138-45ab-aa3f-96cd4f99ead0.png",
+      "prompt": "Use case: stylized-concept. Asset type: genuine 2D fighting game animation sprite sheet for Jungle Hunter, preserving the EXACT character design from the reference project image: silver smooth 1987 mask, yellow tan mottled skin, mesh bodysuit, brown loincloth, dreadlocks with metal rings, original asymmetric shoulder cannon and armor, two wrist blades. Reference image is identity/design guide, not the target layout.\nCreate a production spritesheet: 4 equal columns by 4 equal rows, exactly 16 separate full-body drawings. Portrait canvas 1024x1536, each cell exactly 256x384. Genuine transparent RGBA background everywhere outside silhouettes, no shadows, no checkerboard, no grid, no writing, no numbers. Every cell entirely contains exactly one identical character at consistent scale, soles at cell y=354, body crown around y=36, pelvis near cell x=128. Adequate padding, no spill into neighboring cells. Three-quarter fighting side view facing RIGHT in all frames. Whole-body pixel art clean finely shaded 2D sprite, crisp readable silhouette suitable for rendering 180px tall. No smooth interpolated copies: actually draw successive poses and limb changes; consistent anatomy and equipment, 5 digits if visible, two arms/two legs, hands attached and coherent.\nRow1 columns1-4: calm combat-ready breathing cycle, two bent knees, wrists held ready, subtle chest/shoulder/dreadlock changes, feet planted; four distinct drawings that loop naturally.\nRow2 columns1-4: walking forward fighting cycle facing right, alternating foot plant/passing positions with two distinct legs and weight transfer. No sliding pose duplicates.\nRow3 columns1-4: standing fast wrist-blade light attack: clear anticipation arms drawn back; active extension towards RIGHT with wrist blades and correct attached hand; follow-through; recovery near ready. Keep feet within cell, do not enlarge weapons, no detached trails.\nRow4 columns1-2: high guard standing with forearms raised protecting mask, guard brace variation. Columns3-4: standing hit recoil backward then recovering, equipment unchanged and coherent.\nNo extra weapons, staff, gun, disc, text, cropped feet, malformed hands or graphic violence. Identity must remain same across all 16 cells. Output is one usable sprite atlas, not a presentation collage.",
+      "accepted": false,
+      "bodyHeightPx": 0,
+      "sha256": "d7c05e457f02fadd79ee41f582494bd8bfc94323f295d4249e840fba3836424c"
+    },
+    {
+      "id": "jungle-hunter-mixed-layout-draft",
+      "sourceImage": "exec-dbabd2f8-6d20-4de8-bf6f-f78fa3238e44.png",
+      "prompt": "Edit the shown Jungle Hunter spritesheet. Preserve its character identity, equipment, row order and all 16 distinct poses. Correct ONLY background and pose containment: replace ALL checkerboard/background with perfectly flat solid vivid magenta RGB 255,0,255 (#FF00FF), no checker, no transparency depiction, no shadow, no magenta on character. Keep portrait 1024x1536, exact 4x4 grid of cells256x384 with no drawn lines. Slightly reduce each full silhouette uniformly (no squash) and place its stance midpoint at x128 and lowest sole at y352 inside its cell, head around y65. EACH silhouette including extended wrist blades, fingertips and hair must stay at least 14 pixels from all four cell edges, especially row3 col2 must not reach neighbor. Four breathing frames row1, four walk frames row2, anticipation/contact/followthrough/recovery row3, guard brace two frames and hurt/recovery two frames row4. Do not create new blades or hands, fix hand anatomy if necessary. Match reference 1987 silver mask, netted tan skin, cannon consistently on anatomical left shoulder, right wrist blades, armor topology constant. Crisp pixel sprite shading. Exactly sixteen separate characters no text.",
+      "accepted": false,
+      "bodyHeightPx": 0,
+      "sha256": "60a3b1f2d97a0da93456ca4daf6c178f958082b85c36cb924a043d6b2f89c496"
+    },
+    {
+      "id": "city-hunter-light-extra-disc-rejected",
+      "sourceImage": "exec-9d9ffe2c-ce27-441e-87e2-faa1ae056ed4.png",
+      "prompt": "Create a NEW LIGHT ATTACK animation atlas preserving the exact CITY HUNTER design in reference (copper ridged mask, orange mottled skin netting, dark gray segmented armor, metal-band dreadlocks, left shoulder caster, right wristblades, disc stored hip). Landscape1536x1024, exactly8separate full-body sprites,4columns2rows. Flat RGB255,0,255 #FF00FF background, no checker/grid/text/shadows/effects. Every sprite has same440px standing body scale as reference but fit full extended arms within cell384x512, ample32px horizontal margins by taking smaller stance if necessary; no overlap, crop or cropped fingers. Keep body proportions, no squash. Each sprite soles at row y475, head abouty35.\nRow1 all facingRIGHT,4animation keys:1 anticipation right blade arm bent back;2 contact right blade arm extended toward right with visible attached clenched fist and exactly two blades correctly attached to wrist;3 recovery arm retracting, torso untwisting;4 ready stance.\nRow2 all facingLEFT other body side redrawn independently retaining correct anatomical left/right equipment,4samekeys: anticipation; contactLEFT; retract; ready. Never mirrored armor, keep5digit hands where visible and2arms2legs. Crisp readable fighting-game pixelart. Stowed combistick no long spear, no added weapon. Exactly8drawings. If any horizontal arm would pass cell edges, uniformly reduce all figures to keep room.",
+      "accepted": false,
+      "bodyHeightPx": 0,
+      "sha256": "27a783908606a51b295070464875a48571b7741f806616cace27228af60c0489"
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-fatalite-1-attempt-01.png",
+  "sourceSha256": "da6d1b97d79aa4d82eba83a56e56b5fbd93bb59ffc2304f25c8c5d97ef4f57a6",
+  "bytes": 2119271,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 3,
+  "rows": 4,
+  "strategy": "row-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "y",
+      "row": 1,
+      "start": 276,
+      "end": 276,
+      "cut": 276
+    },
+    {
+      "axis": "y",
+      "row": 2,
+      "start": 522,
+      "end": 522,
+      "cut": 522
+    },
+    {
+      "axis": "x",
+      "row": 0,
+      "column": 1,
+      "start": 417,
+      "end": 620,
+      "cut": 518
+    },
+    {
+      "axis": "x",
+      "row": 0,
+      "column": 2,
+      "start": 1048,
+      "end": 1151,
+      "cut": 1099
+    },
+    {
+      "axis": "x",
+      "row": 1,
+      "column": 1,
+      "start": 493,
+      "end": 633,
+      "cut": 563
+    },
+    {
+      "axis": "x",
+      "row": 1,
+      "column": 2,
+      "start": 1058,
+      "end": 1173,
+      "cut": 1115
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        519,
+        277
+      ],
+      "visibleRect": [
+        188,
+        14,
+        229,
+        260
+      ],
+      "alphaPixels": 28127,
+      "borderPixels": 0,
+      "visiblePixelSha256": "0be5653cadb410c6763e9ba9452e0a4b2fdfc36f81851b33c87a894a29c7a2b5",
+      "pivotCandidate": [
+        285.5,
+        274
+      ],
+      "visibleHeightCandidate": 260
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        518,
+        0,
+        582,
+        277
+      ],
+      "visibleRect": [
+        621,
+        40,
+        427,
+        233
+      ],
+      "alphaPixels": 27605,
+      "borderPixels": 0,
+      "visiblePixelSha256": "4b60a4e80dd28c7d42ea9eb40d37a9fe118f9a787a29e706a5309563235e5435",
+      "pivotCandidate": [
+        228,
+        273
+      ],
+      "visibleHeightCandidate": 233
+    },
+    {
+      "index": 2,
+      "row": 0,
+      "column": 2,
+      "rect": [
+        1099,
+        0,
+        437,
+        277
+      ],
+      "visibleRect": [
+        1152,
+        41,
+        360,
+        235
+      ],
+      "alphaPixels": 28747,
+      "borderPixels": 0,
+      "visiblePixelSha256": "07f2c2215a8d54a1cb5b56c8c071dd1e90127a1481722cea5ce51973c428f3bf",
+      "pivotCandidate": [
+        160.5,
+        276
+      ],
+      "visibleHeightCandidate": 235
+    },
+    {
+      "index": 3,
+      "row": 1,
+      "column": 0,
+      "rect": [
+        0,
+        276,
+        564,
+        247
+      ],
+      "visibleRect": [
+        147,
+        289,
+        346,
+        233
+      ],
+      "alphaPixels": 27973,
+      "borderPixels": 0,
+      "visiblePixelSha256": "cb69f1ef60c7fe1f34112c1916227923ebea1ebbafb991c9cdf2a819b85ef225",
+      "pivotCandidate": [
+        178.5,
+        246
+      ],
+      "visibleHeightCandidate": 233
+    },
+    {
+      "index": 4,
+      "row": 1,
+      "column": 1,
+      "rect": [
+        563,
+        276,
+        553,
+        247
+      ],
+      "visibleRect": [
+        634,
+        305,
+        424,
+        217
+      ],
+      "alphaPixels": 31442,
+      "borderPixels": 0,
+      "visiblePixelSha256": "d7b75c019623d69262b00c9c6c2fcded5dfed0d561b12df5df60b224f32eef27",
+      "pivotCandidate": [
+        94.5,
+        246
+      ],
+      "visibleHeightCandidate": 217
+    },
+    {
+      "index": 5,
+      "row": 1,
+      "column": 2,
+      "rect": [
+        1115,
+        276,
+        421,
+        247
+      ],
+      "visibleRect": [
+        1174,
+        277,
+        229,
+        245
+      ],
+      "alphaPixels": 28906,
+      "borderPixels": 0,
+      "visiblePixelSha256": "6bcd9f196d961842ccdc41e32192fe935266f6af9a859ff256cd0cc8d307f1c6",
+      "pivotCandidate": [
+        105,
+        246
+      ],
+      "visibleHeightCandidate": 245
+    }
+  ],
+  "issues": [
+    "No safe horizontal alpha gutter before row 4",
+    "Column-first: No safe horizontal alpha gutter before row 3"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "assetId": "ahab-homeworld-static",
+  "fighterId": "ahab",
+  "name": "Ahab",
+  "rosterIds": {
+    "catalogue": "Y-004",
+    "dlc": "C-006"
+  },
+  "useCase": "homeworld-named-hero-plate",
+  "status": "static-reviewed-candidate",
+  "scope": "One fixed full-body Homeworld identity plate; no animation clips.",
+  "promptRecordType": "Post-generation fidelity and regeneration brief; not a verbatim record of the completed generation request.",
+  "generation": {
+    "provider": "OpenAI integrated ImageGen",
+    "performed": true,
+    "generationOutputId": "exec-b3ffb36c-5973-446e-9a90-ccbffbc183fc",
+    "sourcePath": "art-source/v31/known-yautja/sources/ahab-chroma.png",
+    "sourceMetadata": {
+      "bytes": 1816195,
+      "width": 1374,
+      "height": 1145,
+      "hasAlpha": false,
+      "sha256": "084b8516c2e9fd810e7f44a7964449ad528447660f7067aea4439e618c5536ca"
+    },
+    "runtimeCandidatePath": "public/game/sprites/v31/film-plates/ahab.png",
+    "runtimeCandidateMetadata": {
+      "bytes": 1338075,
+      "width": 869,
+      "height": 1270,
+      "hasAlpha": true,
+      "sha256": "c55e25057d734e877e71aec719a535b1bbfe15316f518141c6af45e30036ef0d"
+    },
+    "staticVisualReview": true,
+    "reviewBasis": "Producing agent reported generation, chroma cleanup, alpha extraction, and static visual review.",
+    "animationClipsReviewed": 0,
+    "officialCertification": false,
+    "oneToOneCertified": false
+  },
+  "integration": {
+    "publicManifestPath": "public/game/sprites/v31/film-plates/manifest.json",
+    "confirmed": true,
+    "runtimeUrl": "/game/sprites/v31/film-plates/ahab.png",
+    "runtimePath": "public/game/sprites/v31/film-plates/ahab.png",
+    "runtimeSha256": "c55e25057d734e877e71aec719a535b1bbfe15316f518141c6af45e30036ef0d",
+    "note": "Static Homeworld integration confirmed by the public V31 manifest; animation coverage remains zero.",
+    "manifestSnapshotRecordedIn": "art-source/v31/known-yautja/homeworld-named-nine-manifest.json"
+  },
+  "sourceEvidence": [
+    {
+      "class": "official-licensed-product-reference",
+      "url": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+      "access": "Direct fetch returned HTTP 403; indexed official text was reviewed.",
+      "supports": [
+        "Dark Horse comics appearance",
+        "new loin armor and skirt",
+        "new right gauntlet and knee armor",
+        "fabric cape",
+        "Engineer Gun",
+        "spear",
+        "two- and three-blade gauntlet options",
+        "Engineer skull trophy"
+      ]
+    },
+    {
+      "class": "official-publisher-context",
+      "url": "https://digital.darkhorse.com/pages/51/aliens-predator-avp-prometheus-fire-and-stone",
+      "access": "Page reviewed; accessible text was a broad licensed-franchise catalogue rather than a character turnaround.",
+      "supports": [
+        "publisher context only"
+      ]
+    },
+    {
+      "class": "secondary-community-index-only",
+      "url": "https://avp.fandom.com/wiki/Ahab",
+      "access": "Direct fetch returned HTTP 402; no visual claim adopted."
+    },
+    {
+      "class": "local-project-lore",
+      "path": "app/game/hunterLore.ts",
+      "sha256": "bd40f527f92efb26f0409c81aa4fedcf225ffd546db799c753a7033df73db7cc",
+      "supports": [
+        "elder body direction",
+        "one-eyed scarred hunter concept",
+        "patchwork armor",
+        "mutilated mandible and Engineer-hunt identity as local constraints"
+      ]
+    },
+    {
+      "class": "local-production-boundary",
+      "path": "docs/DLC-PRIVE-CATALOGUE.md",
+      "sha256": "7f2ecee2fa7393e399e68d3443c6fc823b666c4ad2fcabb8322c9d92d562eec0",
+      "supports": [
+        "comic pages and licensed turnaround remain required",
+        "each trophy and weapon must be confirmed individually"
+      ]
+    }
+  ],
+  "truthBoundary": {
+    "licensed": [
+      "The NECA reference explicitly lists the Engineer Gun, spear, blade configurations, cape, armor changes, and Engineer skull trophy."
+    ],
+    "localLore": [
+      "The project maps Ahab to an elder, ochre-mottled, scarred patchwork silhouette."
+    ],
+    "interpretation": [
+      "This plate selects a readable static loadout and pose; it is not proof that all listed accessories are worn simultaneously.",
+      "Exact eye, mandible, scars, armor damage, trophy placement, and left/right asymmetry require primary comic panels or a licensed turnaround."
+    ],
+    "secondaryClaimsAdopted": [],
+    "identityFidelityCertified": false,
+    "oneToOneCertified": false
+  },
+  "structuredPrompt": {
+    "subject": "Ahab from Predator: Fire and Stone / Life and Death as original unofficial fan-made Homeworld game art.",
+    "anatomy": [
+      "aged, powerful male Elder Yautja",
+      "one-eye and mandible damage only on the reference-proven side",
+      "old scars and long veteran dreadlocks",
+      "correct Yautja hands, feet, mandibles, and limb count"
+    ],
+    "equipment": [
+      "patchwork bronze armor",
+      "fabric cape",
+      "one Engineer Gun as the principal readable prop",
+      "Engineer skull trophy only at a reference-proven attachment",
+      "omit the spear and alternate blade configurations from this plate unless a supplied panel shows the exact simultaneous state"
+    ],
+    "asymmetry": [
+      "preserve exact damaged eye and mandible side",
+      "preserve right-gauntlet, knee armor, cape fastening, straps, trophy anchors, blade housing, and scars",
+      "never mirror unique damage or fabricate the unseen side"
+    ],
+    "composition": [
+      "one complete full-body figure",
+      "right-facing three-quarter lateral stance",
+      "portrait framing with at least 10 percent padding",
+      "feet, dreadlocks, cape, trophies, and weapon fully inside frame"
+    ],
+    "style": [
+      "dense cinematic 32-bit-era pre-rendered pixel art",
+      "clear silhouette and materials at gameplay size",
+      "original fan-made derivative design, not copied key art"
+    ],
+    "background": [
+      "exact flat opaque #00FF00 chroma green",
+      "no floor, shadow, scenery, gradient, fog, particles, vignette, text, logo, UI, or watermark",
+      "no green spill, halo, reflection, or #00FF00 on the subject"
+    ],
+    "forbidden": [
+      "generic Elder substitution",
+      "mirrored scars",
+      "extra limbs",
+      "malformed hands",
+      "floating trophies",
+      "invented Engineer technology",
+      "simultaneous accessory pile",
+      "1:1 or official claim"
+    ]
+  },
+  "rightsNote": "Original unofficial fan-made OpenAI artwork for this project; not rights-holder art and not certified 1:1."
+}

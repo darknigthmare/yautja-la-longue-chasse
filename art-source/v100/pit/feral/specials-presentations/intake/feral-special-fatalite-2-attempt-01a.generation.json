@@ -1,0 +1,20 @@
+{
+  "name": "feral-special-fatalite-2-attempt-01a",
+  "key": "FATALITE_2",
+  "part": "A",
+  "prompt": "Produce ONE sparse PORTRAIT native RGBA sprite sheet1024x1536: exactly TWO COLUMNS\u00d7FOUR ROWS, EIGHT isolated full-body drawings. Use attached images ONLY for Feral's identity/anatomy/style, not their backgrounds. New articulated poses, never mirror or rig. Accurate Feral: lean sinewy ochre-spotted skin, black dreads, ivory bone skull mask and exposed red mandibles, dark segmented loincloth, asymmetrical bone hip ornaments, bronze bracers, wrapped ankles and clawed bare toes. No shoulder cannon.\n\nEvery invisible cell512\u00d7384. Body about180px tall, never larger than210px, with at least80px ALPHA ZERO space above and below. Whole drawing including gear/any neutral stand-in below380px wide and inside its own cell. Huge empty transparent gutters; no touching/cropped silhouettes. LEFT COLUMN: Feral faces RIGHT, front/right-side view. RIGHT COLUMN: independently drawn Feral faces LEFT, back/left-side view; asymmetric gear stays on the same anatomical limbs. Same stage on each row. Same fixed body scale everywhere.\n\nBACKGROUND MUST BE ALPHA0 outside the exact figure/gear silhouettes: NO floor plane, no cast shadow, no aura, no ambient glow, no gradient, no fog, smoke or painted backdrop. Crisp narrow edges, no blur. No text, numbers, labels, borders or grid.\n\nGEAR AND SCOPE: Complete Feral body choreography study with a neutral jointed adult-sized gray training mannequin, NOT an actual victim/combat sprite. Feral holds TWO spear halves, one per hand, with no whole third spear. A simple training blade belongs only to the mannequin. Left shield folded, wrist blades retracted; no gore.\n\nROW1: Feral alone in neutral full-body guard with two spear halves held lowered, no mannequin in the calibration row. This neutral reference is outside the clip and must show complete standing anatomy for a fixed body-height review.\nROW2: The mannequin presents its short training blade; Feral deflects it outward using the first spear half in his RIGHT hand, contact and weight transfer clear.\nROW3: Feral steps close to the mannequin while maintaining the right-hand parry; left spear half draws back for the second action.\nROW4: He delivers a short LEFT-hand spear-half thrust against the mannequin's armored torso in silhouette, no wound or blood, right weapon keeps its parry line.",
+  "refs": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-left.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-left.png"
+  ],
+  "taskStore": "feralSpecialTasks",
+  "tool": "image_gen",
+  "originalSource": "/workspace/generated_images/exec-8332ea05-cde8-4a3c-ba48-8f8b3828f26e.png",
+  "originalSha256": "30a744e2c827b0edfbb24a61f1a43d41bb10243ccf918cb0eadd3c72b921d690",
+  "nativeTransparentBackground": true,
+  "cpuPixelEditing": false,
+  "matchesIntakePng": true
+}

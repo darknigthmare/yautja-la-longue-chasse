@@ -1,0 +1,762 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "extractionPath": "docs/v56-excel-priorities.json",
+    "extractionSha256": "fc8e1c6c81de62d8966e04746ed0751b0eeefc62f0458728c818896ad79972f4",
+    "workbookName": "THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx",
+    "workbookSha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+    "originalAvailable": false
+  },
+  "fighters": [
+    {
+      "fighterId": "feral-hunter",
+      "sourceRow": 10,
+      "appearanceId": "runtime-default",
+      "referenceSprites": [
+        "/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+        "/game/sprites/v34/pit/feral-hunter/feral-hunter-light-v34.png",
+        "/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-medium-spacing-v34.png",
+        "/game/sprites/v59/pit/feral/shield-right.png",
+        "/game/sprites/v59/pit/feral/shield-left.png",
+        "/game/sprites/v59/pit/feral/launcher-right.png",
+        "/game/sprites/v59/pit/feral/launcher-left.png"
+      ],
+      "actions": [
+        {
+          "id": "M_F006_5L",
+          "cell": "D10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "5L",
+          "label": "Jab de contrôle",
+          "sourceText": "M_F006_5L · Jab de contrôle\nCommande L · Haut · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nLe bras avant frappe court ; la main et les lames éventuelles gardent leur côté réel.\nPréparation / actif / récupération : 5 / 3 / 10 images · dégâts 45 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_5L\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "L",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 5,
+            "active": 3,
+            "recovery": 10
+          }
+        },
+        {
+          "id": "M_F006_5M",
+          "cell": "E10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "5M",
+          "label": "Revers d'ouverture",
+          "sourceText": "M_F006_5M · Revers d'ouverture\nCommande M · Milieu · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nRotation du buste et revers du gantelet ; pas de projectile associé à un simple coup.\nPréparation / actif / récupération : 9 / 4 / 16 images · dégâts 70 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_5M\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "M",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 9,
+            "active": 4,
+            "recovery": 16
+          }
+        },
+        {
+          "id": "M_F006_5H",
+          "cell": "F10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "5H",
+          "label": "Frappe d'engagement",
+          "sourceText": "M_F006_5H · Frappe d'engagement\nCommande H · Milieu · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nAvance du pied puis frappe lourde au contact avec l'arme de mêlée réellement portée.\nPréparation / actif / récupération : 16 / 5 / 26 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_5H\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "H",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 16,
+            "active": 5,
+            "recovery": 26
+          }
+        },
+        {
+          "id": "M_F006_2L",
+          "cell": "G10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "2L",
+          "label": "Arrêt de cheville",
+          "sourceText": "M_F006_2L · Arrêt de cheville\nCommande 2+L · Bas · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nAppui bas et coup court à la jambe ; silhouette accroupie dédiée.\nPréparation / actif / récupération : 6 / 3 / 12 images · dégâts 35 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_2L\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "2+L",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 6,
+            "active": 3,
+            "recovery": 12
+          }
+        },
+        {
+          "id": "M_F006_2M",
+          "cell": "H10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "2M",
+          "label": "Balayage de contrôle",
+          "sourceText": "M_F006_2M · Balayage de contrôle\nCommande 2+M · Bas · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nJambe ou manche balaie au ras du sol sans allonger artificiellement les membres.\nPréparation / actif / récupération : 11 / 4 / 21 images · dégâts 65 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_2M\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "2+M",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 11,
+            "active": 4,
+            "recovery": 21
+          }
+        },
+        {
+          "id": "M_F006_2H",
+          "cell": "I10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "2H",
+          "label": "Interception montante",
+          "sourceText": "M_F006_2H · Interception montante\nCommande 2+H · Milieu / anti-air · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nMontée du bras depuis la garde basse, zone de frappe limitée au geste.\nPréparation / actif / récupération : 14 / 5 / 29 images · dégâts 90 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_2H\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "2+H",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 14,
+            "active": 5,
+            "recovery": 29
+          }
+        },
+        {
+          "id": "M_F006_jL",
+          "cell": "J10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "jL",
+          "label": "Contact aérien court",
+          "sourceText": "M_F006_jL · Contact aérien court\nCommande Air+L · Haut · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nGenou ou coude bref en vol, sans nouveau saut ou vol permanent.\nPréparation / actif / récupération : 6 / 3 / 12 images · dégâts 35 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_jL\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "Air+L",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 6,
+            "active": 3,
+            "recovery": 12
+          }
+        },
+        {
+          "id": "M_F006_jM",
+          "cell": "K10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "jM",
+          "label": "Coupe aérienne",
+          "sourceText": "M_F006_jM · Coupe aérienne\nCommande Air+M · Haut · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nRevers en l'air cohérent avec l'arme disponible, puis reprise du même cycle de chute.\nPréparation / actif / récupération : 10 / 5 / 18 images · dégâts 65 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_jM\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "Air+M",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 10,
+            "active": 5,
+            "recovery": 18
+          }
+        },
+        {
+          "id": "M_F006_jH",
+          "cell": "L10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "jH",
+          "label": "Descente engagée",
+          "sourceText": "M_F006_jH · Descente engagée\nCommande Air+H · Haut · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nPoids engagé vers le sol ; la réception a sa propre récupération.\nPréparation / actif / récupération : 15 / 6 / 24 images · dégâts 100 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_jH\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "Air+H",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 15,
+            "active": 6,
+            "recovery": 24
+          }
+        },
+        {
+          "id": "M_F006_TH_F",
+          "cell": "M10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "TH_F",
+          "label": "Projection avant",
+          "sourceText": "M_F006_TH_F · Projection avant\nCommande L+M · Projection · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nSaisie proche, pivot des hanches et rejet devant ; une échappée de projection reste possible.\nPréparation / actif / récupération : 8 / 3 / 30 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_TH_F\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "L+M",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 8,
+            "active": 3,
+            "recovery": 30
+          }
+        },
+        {
+          "id": "M_F006_TH_B",
+          "cell": "N10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "TH_B",
+          "label": "Projection arrière",
+          "sourceText": "M_F006_TH_B · Projection arrière\nCommande 4+L+M · Projection · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nLe corps tourne sans téléportation, puis la cible est rejetée derrière sur un point valide.\nPréparation / actif / récupération : 10 / 3 / 32 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_TH_B\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "4+L+M",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 10,
+            "active": 3,
+            "recovery": 32
+          }
+        },
+        {
+          "id": "M_F006_6M",
+          "cell": "O10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "6M",
+          "label": "Pas de rupture",
+          "sourceText": "M_F006_6M · Pas de rupture\nCommande 6+M · Milieu · Base de duel\nArme : Lance scindée ; bouclier ; lance-carreaux\nPas d'approche et frappe de l'épaule ou du manche ; trajectoire spécifique à la masse de ce personnage.\nPréparation / actif / récupération : 17 / 5 / 26 images · dégâts 90 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F006_ACT_6M\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "6+M",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 17,
+            "active": 5,
+            "recovery": 26
+          }
+        },
+        {
+          "id": "M_F006_S1",
+          "cell": "P10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "S1",
+          "label": "Carreaux guidés",
+          "sourceText": "M_F006_S1 · Carreaux guidés\nCommande 236+S · Selon trajectoire / prototype · Spécial\nArme : Lance-carreaux\nLe masque fixe un point à l'instant du départ ; trois carreaux rejoignent ce point, sans poursuite infinie de la cible.\nPréparation / actif / récupération : 23 / 6 / 30 images · dégâts 115 · coût 30 %\nContre-jeu : Changer de hauteur après acquisition ; démasqué, trajectoire directe seulement.\nFeral : carreaux distincts et visée dépendante du masque ; aucune conversion en canon plasma. Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nCorps : F006_ACT_S1\nEntité : E_F006_bolt · équipement : W_F006_lance-carreaux\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+          "command": "236+S",
+          "weapon": "Lance-carreaux",
+          "phaseTicks": {
+            "startup": 23,
+            "active": 6,
+            "recovery": 30
+          }
+        },
+        {
+          "id": "M_F006_S2",
+          "cell": "Q10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "S2",
+          "label": "Déploiement du bouclier",
+          "sourceText": "M_F006_S2 · Déploiement du bouclier\nCommande 214+S · Selon trajectoire / prototype · Spécial\nArme : Bouclier de poignet\nLes segments s'ouvrent devant l'avant-bras ; garde directionnelle puis coup de bord à courte portée.\nPréparation / actif / récupération : 9 / 18 / 25 images · dégâts 70 · coût 15 %\nContre-jeu : Projection, frappe arrière ou attente ; la garde n'est pas permanente.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nCorps : F006_ACT_S2\nEntité : E_F006_shield · équipement : W_F006_bouclier-poignet\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+          "command": "214+S",
+          "weapon": "Bouclier de poignet",
+          "phaseTicks": {
+            "startup": 9,
+            "active": 18,
+            "recovery": 25
+          }
+        },
+        {
+          "id": "M_F006_S3",
+          "cell": "R10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "S3",
+          "label": "Lance scindée",
+          "sourceText": "M_F006_S3 · Lance scindée\nCommande 623+S · Selon trajectoire / prototype · Spécial\nArme : Lance séparable\nDissociation mécanique de la lance en deux armes ; courte chaîne alternée, puis remise en place.\nPréparation / actif / récupération : 16 / 7 / 24 images · dégâts 110 · coût 10 %\nContre-jeu : Punir le changement de prise ; ne pas afficher simultanément lance entière et moitiés.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nCorps : F006_ACT_S3\nEntité : Aucune · équipement : W_F006_lance-scindee\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+          "command": "623+S",
+          "weapon": "Lance séparable",
+          "phaseTicks": {
+            "startup": 16,
+            "active": 7,
+            "recovery": 24
+          }
+        },
+        {
+          "id": "M_F006_S4",
+          "cell": "S10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "S4",
+          "label": "Mine d'interdiction",
+          "sourceText": "M_F006_S4 · Mine d'interdiction\nCommande 22+S · Selon trajectoire / prototype · Spécial\nArme : Mine de chasse\nPose visible, clignotement d'armement puis activation de proximité ; armer n'inflige pas déjà des dégâts.\nPréparation / actif / récupération : 34 / 90 / 30 images · dégâts 105 · coût 35 %\nContre-jeu : Frapper la mine, sauter son rayon ou provoquer l'activation à distance.\nDispositif seulement si documenté pour le costume ; sinon option de gameplay explicitement dérivée. Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nCorps : F006_ACT_S4\nEntité : E_F006_mine · équipement : W_F006_mine\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+          "command": "22+S",
+          "weapon": "Mine de chasse",
+          "phaseTicks": {
+            "startup": 34,
+            "active": 90,
+            "recovery": 30
+          }
+        },
+        {
+          "id": "M_F006_SUPER",
+          "cell": "T10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "SUPER",
+          "label": "La signature — Pression et bouclier",
+          "sourceText": "M_F006_SUPER · La signature — Pression et bouclier\nCommande 236236+S · Ouverture bloquable · Super\nArme : Lance-carreaux\nConfirme un contact court, puis prolonge « Carreaux guidés » dans une séquence à caméra bornée. Si le premier contact est gardé, la scène ne se déclenche pas.\nPréparation / actif / récupération : 24 / 8 / 48 images · dégâts 280 · coût 100 %\nContre-jeu : Garder l'amorce ou sortir de portée ; récupération longue si manqué.\nPas de nouveaux pouvoirs. Réutilise uniquement armes/entités autorisées pour le costume ; la cinématique n'efface pas les blessures.\nCorps : F006_ACT_SUPER\nEntité : E_F006_bolt · équipement : W_F006_lance-carreaux\nAdaptation originale sourcée · Super original non implémenté",
+          "command": "236236+S",
+          "weapon": "Lance-carreaux",
+          "phaseTicks": {
+            "startup": 24,
+            "active": 8,
+            "recovery": 48
+          }
+        },
+        {
+          "id": "M_F006_EQUIP",
+          "cell": "U10",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "EQUIP",
+          "label": "Préparer / ranger l'arme",
+          "sourceText": "M_F006_EQUIP · Préparer / ranger l'arme\nCommande S+H · Sans dégâts · Équipement\nArme : Lance scindée ; bouclier ; lance-carreaux\nAnimation lisible de sortie ou rangement ; attaques d'arme interdites jusqu'à la fin de l'action. Les armes perdues ne réapparaissent pas.\nPréparation / actif / récupération : 20 / 0 / 20 images · dégâts 0 · coût 0 %\nContre-jeu : Punir le changement de prise ; on ne s'équipe pas pendant une saisie, un hitstun ou un saut.\nAnatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nCorps : F006_ACT_EQUIP\nEntité : Aucune · équipement : Voir feuille 06_ARMES\nAdaptation originale sourcée · Transition proposée ; inventaire à intégrer",
+          "command": "S+H",
+          "weapon": "Lance scindée ; bouclier ; lance-carreaux",
+          "phaseTicks": {
+            "startup": 20,
+            "active": 0,
+            "recovery": 20
+          }
+        },
+        {
+          "id": "CIN_F006_INTRO",
+          "cell": "C10",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "INTRO",
+          "label": "Entrée — La visée retournée",
+          "sourceText": "CIN_F006_INTRO · Entrée — La visée retournée\nLe bouclier se déploie dans un cliquetis d'os et de métal. Le masque fixe un point puis la lance se sépare.\nDéclenchement : Avant le premier round ; 3 plans puis retour sans déplacement des collisions.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_INTRO · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F006_VICTOIRE",
+          "cell": "D10",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "VICTOIRE",
+          "label": "Garder la preuve",
+          "sourceText": "CIN_F006_VICTOIRE · Garder la preuve\nIl récupère les parties de sa lance, contrôle les carreaux restants et écoute les bois plutôt que saluer des spectateurs.\nDéclenchement : Victoire de match ; ne pas déclencher de récompense de campagne depuis un duel libre.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_VICTOIRE · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F006_DEFAITE",
+          "cell": "E10",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "DEFAITE",
+          "label": "La garde cède",
+          "sourceText": "CIN_F006_DEFAITE · La garde cède\nLe bouclier se replie de travers ; il cherche sa visée et chute dans la boue. Aucun canon plasma ne surgit.\nDéclenchement : Après KO ; toutes les entités offensives sont coupées avant la scène.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_DEFAITE · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F006_TAUNT_1",
+          "cell": "F10",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "TAUNT_1",
+          "label": "Le défi",
+          "sourceText": "CIN_F006_TAUNT_1 · Le défi\nIl fait claquer le bord du bouclier contre sa lame, puis laisse volontairement une ouverture.\nDéclenchement : En garde neutre ; interrompable ; aucune invulnérabilité ni bonus caché.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_TAUNT_1 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F006_TAUNT_2",
+          "cell": "G10",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "TAUNT_2",
+          "label": "Vérifier l'arme",
+          "sourceText": "CIN_F006_TAUNT_2 · Vérifier l'arme\nFeral interrompt un instant sa garde pour vérifier lance-carreaux. La caméra reste fixe ; le geste utilise un accessoire réellement équipé.\nDéclenchement : Variation seulement ; aucune arme nouvelle ne peut apparaître pour le taunt.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_TAUNT_2 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F006_FATALITE_1",
+          "cell": "H10",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "FATALITE_1",
+          "label": "À portée de lame",
+          "sourceText": "CIN_F006_FATALITE_1 · À portée de lame\nLa lance plaque la cible contre un relief ; le bouclier ferme le cadre avant le coup final. Un projectile de carreau n'est ajouté que si son masque est encore fonctionnel.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_FATALITE_1 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F006_FATALITE_2",
+          "cell": "I10",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "FATALITE_2",
+          "label": "Autre issue — À portée de lame",
+          "sourceText": "CIN_F006_FATALITE_2 · Autre issue — À portée de lame\nLa première coupe dévie l'arme. Le chasseur entre au contact et termine avec la seconde lame. Il vérifie la fin de la menace puis rentre l'arme. Adapter les prises à Feral.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé. Variante validée seulement si l'arme correspondante est portée.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_FATALITE_2 · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F006_CLEMENCE",
+          "cell": "J10",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "CLEMENCE",
+          "label": "Le duel suffit",
+          "sourceText": "CIN_F006_CLEMENCE · Le duel suffit\nFeral désarme l'adversaire, recule d'un pas et lui laisse reprendre son souffle. Il reprend l'objet de la mission sans prélever de trophée anatomique.\nDéclenchement : Version d'entraînement / allié / option violence réduite ; même durée de sortie.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F006_CIN_CLEMENCE · objets : E_F006_bolt ; E_F006_shield ; E_F006_mine\nLore : Anatomie Feral spécifique ; pas de canon d'épaule classique ; la visée dépend du masque.\nAdaptation / embranchement alternatif"
+        }
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "sourceRow": 7,
+      "appearanceId": "runtime-default",
+      "referenceSprites": [
+        "/game/sprites/v34/pit/scar/scar-idle-v34.png",
+        "/game/sprites/v34/pit/scar/scar-repair-light-mount-v34.png",
+        "/game/sprites/v34/pit/scar/scar-medium-v34.png",
+        "/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+        "/game/sprites/v34/pit/scar/scar-guard-v34.png"
+      ],
+      "actions": [
+        {
+          "id": "M_F003_5L",
+          "cell": "D7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "5L",
+          "label": "Jab de contrôle",
+          "sourceText": "M_F003_5L · Jab de contrôle\nCommande L · Haut · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nLe bras avant frappe court ; la main et les lames éventuelles gardent leur côté réel.\nPréparation / actif / récupération : 5 / 3 / 10 images · dégâts 45 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_5L\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "L",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 5,
+            "active": 3,
+            "recovery": 10
+          }
+        },
+        {
+          "id": "M_F003_5M",
+          "cell": "E7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "5M",
+          "label": "Revers d'ouverture",
+          "sourceText": "M_F003_5M · Revers d'ouverture\nCommande M · Milieu · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nRotation du buste et revers du gantelet ; pas de projectile associé à un simple coup.\nPréparation / actif / récupération : 9 / 4 / 16 images · dégâts 70 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_5M\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "M",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 9,
+            "active": 4,
+            "recovery": 16
+          }
+        },
+        {
+          "id": "M_F003_5H",
+          "cell": "F7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "5H",
+          "label": "Frappe d'engagement",
+          "sourceText": "M_F003_5H · Frappe d'engagement\nCommande H · Milieu · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nAvance du pied puis frappe lourde au contact avec l'arme de mêlée réellement portée.\nPréparation / actif / récupération : 16 / 5 / 26 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_5H\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "H",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 16,
+            "active": 5,
+            "recovery": 26
+          }
+        },
+        {
+          "id": "M_F003_2L",
+          "cell": "G7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "2L",
+          "label": "Arrêt de cheville",
+          "sourceText": "M_F003_2L · Arrêt de cheville\nCommande 2+L · Bas · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nAppui bas et coup court à la jambe ; silhouette accroupie dédiée.\nPréparation / actif / récupération : 6 / 3 / 12 images · dégâts 35 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_2L\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "2+L",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 6,
+            "active": 3,
+            "recovery": 12
+          }
+        },
+        {
+          "id": "M_F003_2M",
+          "cell": "H7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "2M",
+          "label": "Balayage de contrôle",
+          "sourceText": "M_F003_2M · Balayage de contrôle\nCommande 2+M · Bas · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nJambe ou manche balaie au ras du sol sans allonger artificiellement les membres.\nPréparation / actif / récupération : 11 / 4 / 21 images · dégâts 65 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_2M\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "2+M",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 11,
+            "active": 4,
+            "recovery": 21
+          }
+        },
+        {
+          "id": "M_F003_2H",
+          "cell": "I7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "2H",
+          "label": "Interception montante",
+          "sourceText": "M_F003_2H · Interception montante\nCommande 2+H · Milieu / anti-air · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nMontée du bras depuis la garde basse, zone de frappe limitée au geste.\nPréparation / actif / récupération : 14 / 5 / 29 images · dégâts 90 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_2H\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "2+H",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 14,
+            "active": 5,
+            "recovery": 29
+          }
+        },
+        {
+          "id": "M_F003_jL",
+          "cell": "J7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "jL",
+          "label": "Contact aérien court",
+          "sourceText": "M_F003_jL · Contact aérien court\nCommande Air+L · Haut · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nGenou ou coude bref en vol, sans nouveau saut ou vol permanent.\nPréparation / actif / récupération : 6 / 3 / 12 images · dégâts 35 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_jL\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "Air+L",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 6,
+            "active": 3,
+            "recovery": 12
+          }
+        },
+        {
+          "id": "M_F003_jM",
+          "cell": "K7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "jM",
+          "label": "Coupe aérienne",
+          "sourceText": "M_F003_jM · Coupe aérienne\nCommande Air+M · Haut · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nRevers en l'air cohérent avec l'arme disponible, puis reprise du même cycle de chute.\nPréparation / actif / récupération : 10 / 5 / 18 images · dégâts 65 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_jM\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "Air+M",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 10,
+            "active": 5,
+            "recovery": 18
+          }
+        },
+        {
+          "id": "M_F003_jH",
+          "cell": "L7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "jH",
+          "label": "Descente engagée",
+          "sourceText": "M_F003_jH · Descente engagée\nCommande Air+H · Haut · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nPoids engagé vers le sol ; la réception a sa propre récupération.\nPréparation / actif / récupération : 15 / 6 / 24 images · dégâts 100 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_jH\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "Air+H",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 15,
+            "active": 6,
+            "recovery": 24
+          }
+        },
+        {
+          "id": "M_F003_TH_F",
+          "cell": "M7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "TH_F",
+          "label": "Projection avant",
+          "sourceText": "M_F003_TH_F · Projection avant\nCommande L+M · Projection · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nSaisie proche, pivot des hanches et rejet devant ; une échappée de projection reste possible.\nPréparation / actif / récupération : 8 / 3 / 30 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_TH_F\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "L+M",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 8,
+            "active": 3,
+            "recovery": 30
+          }
+        },
+        {
+          "id": "M_F003_TH_B",
+          "cell": "N7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "TH_B",
+          "label": "Projection arrière",
+          "sourceText": "M_F003_TH_B · Projection arrière\nCommande 4+L+M · Projection · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nLe corps tourne sans téléportation, puis la cible est rejetée derrière sur un point valide.\nPréparation / actif / récupération : 10 / 3 / 32 images · dégâts 110 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_TH_B\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "4+L+M",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 10,
+            "active": 3,
+            "recovery": 32
+          }
+        },
+        {
+          "id": "M_F003_6M",
+          "cell": "O7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "6M",
+          "label": "Pas de rupture",
+          "sourceText": "M_F003_6M · Pas de rupture\nCommande 6+M · Milieu · Base de duel\nArme : Lames ; combistick ; shuriken ; canon\nPas d'approche et frappe de l'épaule ou du manche ; trajectoire spécifique à la masse de ce personnage.\nPréparation / actif / récupération : 17 / 5 / 26 images · dégâts 90 · coût 0 %\nContre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.\nRègles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.\nCorps : F003_ACT_6M\nEntité : Aucune · équipement : Voir 06_ARMES\nAdaptation originale sourcée · Cible de design à 60 Hz, non implémentée",
+          "command": "6+M",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 17,
+            "active": 5,
+            "recovery": 26
+          }
+        },
+        {
+          "id": "M_F003_S1",
+          "cell": "P7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "S1",
+          "label": "Allonge télescopique",
+          "sourceText": "M_F003_S1 · Allonge télescopique\nCommande 236+S · Selon trajectoire / prototype · Spécial\nArme : Combistick\nLe bâton s'allonge depuis les deux mains ; estoc long, puis rétraction. La pointe guide la zone de frappe.\nPréparation / actif / récupération : 17 / 5 / 24 images · dégâts 100 · coût 0 %\nContre-jeu : Entrer sous l'allonge ou punir le retrait.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nCorps : F003_ACT_S1\nEntité : Aucune · équipement : W_F003_combistick\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+          "command": "236+S",
+          "weapon": "Combistick",
+          "phaseTicks": {
+            "startup": 17,
+            "active": 5,
+            "recovery": 24
+          }
+        },
+        {
+          "id": "M_F003_S2",
+          "cell": "Q7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "S2",
+          "label": "Étoile déployée",
+          "sourceText": "M_F003_S2 · Étoile déployée\nCommande 214+S · Selon trajectoire / prototype · Spécial\nArme : Shuriken\nOuverture mécanique des branches dans la main ; lancer et rotation lisible. Ne pas substituer le disque circulaire.\nPréparation / actif / récupération : 23 / 4 / 29 images · dégâts 90 · coût 25 %\nContre-jeu : Esquiver la ligne ; projectile dissipé après contact selon les règles du duel.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nCorps : F003_ACT_S2\nEntité : E_F003_shuriken · équipement : W_F003_shuriken\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+          "command": "214+S",
+          "weapon": "Shuriken",
+          "phaseTicks": {
+            "startup": 23,
+            "active": 4,
+            "recovery": 29
+          }
+        },
+        {
+          "id": "M_F003_S3",
+          "cell": "R7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "S3",
+          "label": "Tir de plasma",
+          "sourceText": "M_F003_S3 · Tir de plasma\nCommande 623+S · Selon trajectoire / prototype · Spécial\nArme : Canon d'épaule\nLe canon s'aligne ; la bouche s'illumine puis libère un trait rectiligne. Le corps peut être puni durant la visée.\nPréparation / actif / récupération : 20 / 3 / 28 images · dégâts 105 · coût 25 %\nContre-jeu : Baisser la tête sous le tir haut, sauter ou punir la récupération.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nCorps : F003_ACT_S3\nEntité : E_F003_plasma · équipement : W_F003_canon-epaule\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+          "command": "623+S",
+          "weapon": "Canon d'épaule",
+          "phaseTicks": {
+            "startup": 20,
+            "active": 3,
+            "recovery": 28
+          }
+        },
+        {
+          "id": "M_F003_S4",
+          "cell": "S7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "S4",
+          "label": "Garde de chasseur",
+          "sourceText": "M_F003_S4 · Garde de chasseur\nCommande 22+S · Selon trajectoire / prototype · Spécial\nArme : Gantelet / bras\nDévie une frappe de contact, puis répond du coude. Échoue contre une projection et ne renvoie pas automatiquement les tirs.\nPréparation / actif / récupération : 5 / 14 / 30 images · dégâts 85 · coût 10 %\nContre-jeu : Feinter, attendre la fin de fenêtre ou projeter.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nCorps : F003_ACT_S4\nEntité : Aucune · équipement : Corps / gantelet de la tenue\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+          "command": "22+S",
+          "weapon": "Gantelet / bras",
+          "phaseTicks": {
+            "startup": 5,
+            "active": 14,
+            "recovery": 30
+          }
+        },
+        {
+          "id": "M_F003_SUPER",
+          "cell": "T7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "SUPER",
+          "label": "La signature — Duel à portée moyenne",
+          "sourceText": "M_F003_SUPER · La signature — Duel à portée moyenne\nCommande 236236+S · Ouverture bloquable · Super\nArme : Combistick\nConfirme un contact court, puis prolonge « Allonge télescopique » dans une séquence à caméra bornée. Si le premier contact est gardé, la scène ne se déclenche pas.\nPréparation / actif / récupération : 24 / 8 / 48 images · dégâts 280 · coût 100 %\nContre-jeu : Garder l'amorce ou sortir de portée ; récupération longue si manqué.\nPas de nouveaux pouvoirs. Réutilise uniquement armes/entités autorisées pour le costume ; la cinématique n'efface pas les blessures.\nCorps : F003_ACT_SUPER\nEntité : Aucune · équipement : W_F003_combistick\nAdaptation originale sourcée · Super original non implémenté",
+          "command": "236236+S",
+          "weapon": "Combistick",
+          "phaseTicks": {
+            "startup": 24,
+            "active": 8,
+            "recovery": 48
+          }
+        },
+        {
+          "id": "M_F003_EQUIP",
+          "cell": "U7",
+          "sheet": "05_MOVES_PROPOSES",
+          "category": "move",
+          "key": "EQUIP",
+          "label": "Préparer / ranger l'arme",
+          "sourceText": "M_F003_EQUIP · Préparer / ranger l'arme\nCommande S+H · Sans dégâts · Équipement\nArme : Lames ; combistick ; shuriken ; canon\nAnimation lisible de sortie ou rangement ; attaques d'arme interdites jusqu'à la fin de l'action. Les armes perdues ne réapparaissent pas.\nPréparation / actif / récupération : 20 / 0 / 20 images · dégâts 0 · coût 0 %\nContre-jeu : Punir le changement de prise ; on ne s'équipe pas pendant une saisie, un hitstun ou un saut.\nNe pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nCorps : F003_ACT_EQUIP\nEntité : Aucune · équipement : Voir feuille 06_ARMES\nAdaptation originale sourcée · Transition proposée ; inventaire à intégrer",
+          "command": "S+H",
+          "weapon": "Lames ; combistick ; shuriken ; canon",
+          "phaseTicks": {
+            "startup": 20,
+            "active": 0,
+            "recovery": 20
+          }
+        },
+        {
+          "id": "CIN_F003_INTRO",
+          "cell": "C7",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "INTRO",
+          "label": "Entrée — La marque et l'alliance",
+          "sourceText": "CIN_F003_INTRO · Entrée — La marque et l'alliance\nIl inspecte une gravure de la pyramide puis pose le pied hors de l'ombre. La marque n'est visible que dans la version déjà initiée.\nDéclenchement : Avant le premier round ; 3 plans puis retour sans déplacement des collisions.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_INTRO · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F003_VICTOIRE",
+          "cell": "D7",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "VICTOIRE",
+          "label": "Garder la preuve",
+          "sourceText": "CIN_F003_VICTOIRE · Garder la preuve\nIl vérifie la menace, abaisse l'arme face à Lex et lui laisse une voie sûre ; le trophée n'est pas pris sur une alliée.\nDéclenchement : Victoire de match ; ne pas déclencher de récompense de campagne depuis un duel libre.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_VICTOIRE · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F003_DEFAITE",
+          "cell": "E7",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "DEFAITE",
+          "label": "La garde cède",
+          "sourceText": "CIN_F003_DEFAITE · La garde cède\nIl tombe à genou, le combistick échappe à sa prise ; Lex reste au fond uniquement si le chapitre l'autorise.\nDéclenchement : Après KO ; toutes les entités offensives sont coupées avant la scène.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_DEFAITE · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F003_TAUNT_1",
+          "cell": "F7",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "TAUNT_1",
+          "label": "Le défi",
+          "sourceText": "CIN_F003_TAUNT_1 · Le défi\nIl touche sa marque d'initiation, puis pointe la lame vers l'espace de duel, pas vers un civil.\nDéclenchement : En garde neutre ; interrompable ; aucune invulnérabilité ni bonus caché.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_TAUNT_1 · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F003_TAUNT_2",
+          "cell": "G7",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "TAUNT_2",
+          "label": "Vérifier l'arme",
+          "sourceText": "CIN_F003_TAUNT_2 · Vérifier l'arme\nScar interrompt un instant sa garde pour vérifier combistick. La caméra reste fixe ; le geste utilise un accessoire réellement équipé.\nDéclenchement : Variation seulement ; aucune arme nouvelle ne peut apparaître pour le taunt.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_TAUNT_2 · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F003_FATALITE_1",
+          "cell": "H7",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "FATALITE_1",
+          "label": "La pointe et le silence",
+          "sourceText": "CIN_F003_FATALITE_1 · La pointe et le silence\nIl fixe un xénomorphe avec la lance puis tranche au shuriken ; la géométrie et les éclaboussures acides utilisent le module de victime xéno.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_FATALITE_1 · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F003_FATALITE_2",
+          "cell": "I7",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "FATALITE_2",
+          "label": "Autre issue — La pointe et le silence",
+          "sourceText": "CIN_F003_FATALITE_2 · Autre issue — La pointe et le silence\nUn revers du manche ouvre la garde. La pointe arrête l'adversaire sur un seul appui, coup final en silhouette. L'arme est retirée puis rétractée. Adapter les prises à Scar.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé. Variante validée seulement si l'arme correspondante est portée.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_FATALITE_2 · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif"
+        },
+        {
+          "id": "CIN_F003_CLEMENCE",
+          "cell": "J7",
+          "sheet": "07_PRESENTATIONS",
+          "category": "presentation",
+          "key": "CLEMENCE",
+          "label": "Le duel suffit",
+          "sourceText": "CIN_F003_CLEMENCE · Le duel suffit\nScar désarme l'adversaire, recule d'un pas et lui laisse reprendre son souffle. Il reprend l'objet de la mission sans prélever de trophée anatomique.\nDéclenchement : Version d'entraînement / allié / option violence réduite ; même durée de sortie.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_CLEMENCE · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif"
+        }
+      ]
+    }
+  ]
+}

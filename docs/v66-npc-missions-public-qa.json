@@ -1,0 +1,220 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checks": [
+    {
+      "scenario": "empty-acceptance",
+      "status": "PASS",
+      "reportProvenance": "Empty request, accepted in actual UI",
+      "verifies": [
+        "walked city route and real door",
+        "walked giver proximity",
+        "wrong deduction refused if report present",
+        "quota refusal and retry",
+        "persistent acceptance or debrief",
+        "reload",
+        "no material reward or side-story mutation",
+        "mobile overflow"
+      ]
+    },
+    {
+      "scenario": "ash-report-fixture",
+      "status": "PASS",
+      "reportProvenance": "Explicit valid report fixture; expedition NOT played by this recipe",
+      "verifies": [
+        "walked city route and real door",
+        "walked giver proximity",
+        "wrong deduction refused if report present",
+        "quota refusal and retry",
+        "persistent acceptance or debrief",
+        "reload",
+        "no material reward or side-story mutation",
+        "mobile overflow"
+      ]
+    },
+    {
+      "scenario": "glass-report-fixture",
+      "status": "PASS",
+      "reportProvenance": "Explicit valid report fixture; expedition NOT played by this recipe",
+      "verifies": [
+        "walked city route and real door",
+        "walked giver proximity",
+        "wrong deduction refused if report present",
+        "quota refusal and retry",
+        "persistent acceptance or debrief",
+        "reload",
+        "no material reward or side-story mutation",
+        "mobile overflow"
+      ]
+    }
+  ],
+  "captures": [
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-public-ready\\empty-acceptance-offer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-public-ready\\empty-acceptance-mobile-confirmed.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-public-ready\\ash-report-fixture-offer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-public-ready\\ash-report-fixture-wrong-answer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-public-ready\\ash-report-fixture-mobile-confirmed.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-public-ready\\glass-report-fixture-offer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-public-ready\\glass-report-fixture-wrong-answer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-public-ready\\glass-report-fixture-mobile-confirmed.jpg"
+  ],
+  "routes": [
+    {
+      "scenario": "empty-acceptance",
+      "records": [
+        {
+          "kind": "city-and-door",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 3430,
+            "y": 1976.5
+          },
+          "distance": 4359.543286547536
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "ash-report-fixture",
+      "records": [
+        {
+          "kind": "city-and-door",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 3430,
+            "y": 1976.5
+          },
+          "distance": 4359.543286547536
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "glass-report-fixture",
+      "records": [
+        {
+          "kind": "city-and-door",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 3430,
+            "y": 1976.5
+          },
+          "distance": 4359.543286547536
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "events": [],
+  "scope": "NPC conversation and physical return QA. Two return scenarios use declared proof fixtures, not completed browser expeditions.",
+  "visualReview": {
+    "status": "PASS_WITH_MINOR_PRESENTATION_LIMITATION",
+    "reviewer": "agent",
+    "reviewedCount": 4,
+    "totalCaptures": 8,
+    "reviewedCaptures": [
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-public-ready/empty-acceptance-offer.jpg",
+        "sha256": "7f9eab3f4df349cd349a91786616b7efd78396fb5be35c718389772a4bae0dbb"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-public-ready/ash-report-fixture-wrong-answer.jpg",
+        "sha256": "10152cccc8c7cd4c01b27892aaadabee7f628e8f306045d0bc6dd25cef02ba7d"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-public-ready/ash-report-fixture-mobile-confirmed.jpg",
+        "sha256": "a051a81fbdbcfda3411c224f8ba9b419960b2ba13183a0081780e1cb04051f4b"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-public-ready/glass-report-fixture-mobile-confirmed.jpg",
+        "sha256": "bbef0344894073701f921750a854e340f77407b7917206ce0e8f3014a40b4d61"
+      }
+    ],
+    "observations": [
+      "French dialogue, destination, progress and consequences remain readable on desktop and mobile.",
+      "The reviewed completed/revisited states retain the authored consequence and do not promise a reward.",
+      "Mobile uses vertical scrolling without the horizontal overflow checked by the recipe."
+    ],
+    "limitations": [
+      "Local feedback and global toast can repeat the same message. The toast sometimes covers the bottom edge momentarily; the exercised controls remain reachable."
+    ]
+  },
+  "checkedAt": "2026-10-01T03:52:49.442Z",
+  "deployment": {
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "deploymentId": "dpl_4trWpDgrxHjVDRmEPAeggMVc3Zqk",
+    "commit": "d89792643d17c528282ca83ebba3582216585447",
+    "readyAuthority": "Root deployment verification; recipe independently asserts visible V66 and exercises the official alias"
+  },
+  "publicDeploymentVerified": true,
+  "rawReportEvidence": {
+    "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-public-ready/report.json",
+    "sha256": "713a9a739f2f533f6167594e62da5bf2c00c515ade9261c03fe723bc69bd9397"
+  },
+  "limitations": [
+    "Two return scenarios use explicit report fixtures. This proves physical city/giver movement and dialogue/save/reload, not browser expedition completion."
+  ],
+  "harnessCorrection": {
+    "originalFailure": {
+      "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-public/report.json",
+      "sha256": "dbf4a10cabad1c167296f44f0366e3b55ef987d7ada216a740c91471fc3892c7"
+    },
+    "correctedCopy": {
+      "path": "work-local/v66/verify-npc-public-ready.mjs",
+      "sha256": "1af75abad63589785c5f08e53e86fca30b106ecd109c80aa1fd6e8852322e037"
+    },
+    "change": "Wait for world image decoding and two real animation frames before installing the controlled clock. All movement, proximity, answer, save/refusal/reload and no-reward assertions unchanged. No game code changed for this recovery."
+  }
+}

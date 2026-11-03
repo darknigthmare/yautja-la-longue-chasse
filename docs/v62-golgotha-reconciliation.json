@@ -1,0 +1,53 @@
+{
+  "release": "V62",
+  "oldStage": {
+    "id": "arena-051-golgotha-etude-jaguar",
+    "name": "Cataractes des Anciens · création originale",
+    "preserved": true,
+    "imagePaths": [
+      "/game/sprites/v42/pit-arenas/arena-051-golgotha-etude-jaguar/p0-depth.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-a-distant-left.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-b-distant-right.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-a-support-left.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-b-support-right.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-a-prop-left.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-b-prop-right.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-a-contact-floor.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-a-foreground-left.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-b-foreground-right.png"
+    ]
+  },
+  "newStage": {
+    "id": "arena-187-golgotha-uscm-airlock",
+    "name": "Camp Golgotha — sas USCM",
+    "sourceUrl": "https://www.atariage.com/manual_html_page.php?SoftwareLabelID=1060"
+  },
+  "workbookMappings": [
+    {
+      "stageKey": "ST046",
+      "stageCells": "09_STAGES!A50:N50",
+      "events": [
+        "10_VIE_DES_STAGES!E140",
+        "10_VIE_DES_STAGES!E141",
+        "10_VIE_DES_STAGES!E142"
+      ],
+      "targetStageId": "arena-187-golgotha-uscm-airlock"
+    },
+    {
+      "stageKey": "ST103",
+      "stageCells": "09_STAGES!A107:N107",
+      "events": [
+        "10_VIE_DES_STAGES!E311",
+        "10_VIE_DES_STAGES!E312",
+        "10_VIE_DES_STAGES!E313"
+      ],
+      "targetStageId": "arena-187-golgotha-uscm-airlock",
+      "eventsImplemented": false
+    }
+  ],
+  "duplicateDossiersStillRetained": true,
+  "oldSavedStageIdsMigrated": false,
+  "oldSavedStageIdsStillPlayable": true,
+  "unverified": "Exact Jaguar geometry, named Predator model, chapter route and separate ST103 event trio remain open."
+}

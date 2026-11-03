@@ -1,0 +1,77 @@
+{
+  "number": 11,
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-11.png",
+  "design": "Athletic dark-grey herald with a tall angular brow, broad four mandibles and dreadlocks gathered high into a tight bun. Asymmetrical ivory poncho with red trim and one wide crimson scarf panel, simple ceremonial leg wraps. Holds a small suspended bronze announcement disc in the left hand and a short padded beater low in the right, away from body. Calm upright stance.",
+  "status": "validated",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-74a40a9b-8097-42c1-ac1c-6e6a5629d7ba.png",
+  "size": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "bytes": 2275469,
+  "sha256": "4edd339442726ab8ef7714c409eb7150b0deff8b4de7674552f7443902eda9ee",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alphaBoundingBox": [
+    27,
+    37,
+    1005,
+    1450
+  ],
+  "fully_transparent_pixels": 983594,
+  "githubBlobSha": "a998675d60205d9b87550ab1dfb2b878480f48a5",
+  "visuallyInspected": true,
+  "alphaCoreBoundingBox": [
+    183,
+    42,
+    975,
+    1448
+  ],
+  "finalFaceValidation": "cinematic-four-mandibles-verified",
+  "id": "herald-11",
+  "role": "herald",
+  "slot": 11,
+  "description": "Athletic dark-grey herald with a tall angular brow, broad four mandibles and dreadlocks gathered high into a tight bun. Asymmetrical ivory poncho with red trim and one wide crimson scarf panel, simple ceremonial leg wraps. Holds a small suspended bronze announcement disc in the left hand and a short padded beater low in the right, away from body. Calm upright stance.",
+  "gitBlobSha1": "a998675d60205d9b87550ab1dfb2b878480f48a5",
+  "byte_count": 2275469,
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "alpha_bounds": [
+    27,
+    37,
+    1005,
+    1450
+  ],
+  "transparent_fraction": 0.6253522237141927,
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Athletic dark-grey herald with a tall angular brow, broad four mandibles and dreadlocks gathered high into a tight bun. Asymmetrical ivory poncho with red trim and one wide crimson scarf panel, simple ceremonial leg wraps. Holds a small suspended bronze announcement disc in the left hand and a short padded beater low in the right, away from body. Calm upright stance.",
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/herald/herald-11.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-74a40a9b-8097-42c1-ac1c-6e6a5629d7ba.png",
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-74a40a9b-8097-42c1-ac1c-6e6a5629d7ba.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "maxBorderAlpha": 0,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/herald/herald-11-before-face-review-2013146d6bc1.png",
+    "sha256": "2013146d6bc18ded0ef7aff173512a17f5819f05b4b29b0ba3070642e3ca928b"
+  },
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  },
+  "alphaCoreThreshold": 32,
+  "edgeAlphaMax": 0,
+  "strictFourMandiblesRequested": true,
+  "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+  "faceReviewReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+}

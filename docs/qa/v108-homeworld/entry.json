@@ -1,0 +1,89 @@
+{
+  "domain": "Homeworld",
+  "status": "PASS_CIBLE",
+  "buildId": "xymWQOgijMpjLfRYw7ynF",
+  "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+  "driver": "scripts/qa-homeworld-cargo-v108.mjs",
+  "command": "node scripts/qa-homeworld-cargo-v108.mjs",
+  "report": {
+    "path": "docs/v108-homeworld-validation.json",
+    "sha256": "6a0a8b79c401e3a3e4929019bc62d7ee8c35b629d838e6ac9c896215166aa765",
+    "bytes": 25284
+  },
+  "browserChecksPassed": 56,
+  "capturesInspected": 13,
+  "portableFiles": [
+    {
+      "path": "docs/qa/v108-homeworld/browser-result.json.gz",
+      "sha256": "99b6b75e92259465fe6f100d49a1b5d9864301a5d967c7205468fbf8a43d3383",
+      "bytes": 5199,
+      "decodedSha256": "b09c76e1cb322b4962cf7599830ccf96f4a21b5814a9ece1770db0c12518080a",
+      "decodedBytes": 26412
+    },
+    {
+      "path": "docs/qa/v108-homeworld/a-00-migration-retry-mobile.png",
+      "sha256": "8abc1380b9ff2a8f7a3eb06eaef0a66f5480c593b2f25e5462333f55a6dc2bcc",
+      "bytes": 15833
+    },
+    {
+      "path": "docs/qa/v108-homeworld/a-00-migration-retry.png",
+      "sha256": "1dd44d4fcc84cc5515544f59cc394e787e8e503e5c59dfad3b0d24aef685c5b4",
+      "bytes": 16699
+    },
+    {
+      "path": "docs/qa/v108-homeworld/a-01-source.png",
+      "sha256": "514403dc7b52e2cc1dd9fde69878dbebc9a8865ba6874b5d1615e29fd515582c",
+      "bytes": 191941
+    },
+    {
+      "path": "docs/qa/v108-homeworld/a-02-carry.png",
+      "sha256": "a78ab3775052413aef1ea92c398b03fd24852c2557583fb8921f47f8eecaf29e",
+      "bytes": 867828
+    },
+    {
+      "path": "docs/qa/v108-homeworld/a-03-reprise.png",
+      "sha256": "685e869830a5f34da61cee18ce804c185911ebff62ee28f788b87ad11e50b572",
+      "bytes": 185833
+    },
+    {
+      "path": "docs/qa/v108-homeworld/a-04-placed.png",
+      "sha256": "6bad9db7e4351e961d6730ac32bc30981476f8d67b1525f8b24facebfbf4783e",
+      "bytes": 1126478
+    },
+    {
+      "path": "docs/qa/v108-homeworld/a-05-completed.png",
+      "sha256": "12000fa4b31706fcfa02dffacaade9ffae7d35df84ae1b334bb77ededb2fe765",
+      "bytes": 187609
+    },
+    {
+      "path": "docs/qa/v108-homeworld/a-06-mobile.png",
+      "sha256": "6a57071a972efe823fb1a23908d2c0565616c38d1a38fbff0f7b482846372b8c",
+      "bytes": 131669
+    },
+    {
+      "path": "docs/qa/v108-homeworld/b-01-source.png",
+      "sha256": "ec1f3db1982ea81b4a49a43facf7ed7d716542af3c2c5078e8c4b5b6cffd34c5",
+      "bytes": 189875
+    },
+    {
+      "path": "docs/qa/v108-homeworld/b-02-carry.png",
+      "sha256": "132e8f82a03288d7cb7f177aa7d0bbcba2a52e921b1d7f49c97a99088bfbb04c",
+      "bytes": 1120821
+    },
+    {
+      "path": "docs/qa/v108-homeworld/b-04-placed.png",
+      "sha256": "66bff77269e25f6c3d89a0d1adf6f918744d66188dacf14c30690072f57d5651",
+      "bytes": 1116098
+    },
+    {
+      "path": "docs/qa/v108-homeworld/b-05-completed.png",
+      "sha256": "91c5f37a5ee450118fc0193d7775b175cf7712c4791e1e9da685200d02ed6f16",
+      "bytes": 187691
+    },
+    {
+      "path": "docs/qa/v108-homeworld/b-06-mobile.png",
+      "sha256": "5c68863f9b246802363b0619a7c7c46b65101828c1b02102093191fb2d6c7692",
+      "bytes": 131918
+    }
+  ]
+}

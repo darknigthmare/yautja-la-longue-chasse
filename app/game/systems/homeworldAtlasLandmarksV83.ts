@@ -1,0 +1,89 @@
+import {HOMEWORLD_ARCHIVE_COMPARISON_V107} from './homeworldArchiveComparisonDefinitionV107';
+import {HOMEWORLD_ARCHIVE_V106} from './homeworldArchiveDefinitionV106';
+import {HOMEWORLD_CARGO_V108} from './homeworldCargoDefinitionV108';
+import type {SaveGame} from '../types';
+import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_POINTS_V77,HOMEWORLD_DISTRICTS_V77,HOMEWORLD_CONNECTORS_V77,type HomeworldLevelV77} from './homeworldWorldV77';
+import {homeworldBuildingDoorwayV64} from './homeworldGeometryV64';
+import {homeworldInteriorForPointV64,homeworldInteriorForBuildingV64} from './homeworldInteriorsV64';
+import {homeworldWayfindingDestinationsV75} from './homeworldWayfindingV75';
+
+export interface HomeworldAtlasLandmarkV83 {
+ readonly id:string;readonly label:string;readonly detail:string;readonly levelId:HomeworldLevelV77;
+ readonly district:string;readonly category:'building'|'service'|'person'|'region'|'transport'|'evidence';
+ readonly buildingId:string|null;readonly pointId:string|null;readonly regionId:string|null;
+ readonly position:{readonly x:number;readonly y:number};readonly access:'open'|'restricted'|'locked';
+ readonly reason:string;readonly keywords:readonly string[];
+}
+
+/** V75 supplies narrative visibility/descriptions ONLY. Every physical point
+ * comes from the real multi-floor world and current interior bindings. The
+ * old single-floor routes/port coordinates are never requested by this atlas. */
+export function homeworldAtlasLandmarksV83(save?:SaveGame):readonly HomeworldAtlasLandmarkV83[]{
+ const metadata=new Map(save?homeworldWayfindingDestinationsV75(save).map(record=>[record.id,record] as const):[]);
+ const district=(id:string)=>HOMEWORLD_DISTRICTS_V77.find(d=>d.id===id)?.name??'Cité';
+ const buildings=HOMEWORLD_BUILDINGS_V77.map(building=>{
+  const id='building:'+building.id,meta=metadata.get(id),room=homeworldInteriorForBuildingV64(building.id);
+  return{id,label:meta?.label??building.label,detail:room?.title??building.label,levelId:building.levelId,
+   district:district(building.districtId),category:'building' as const,buildingId:building.id,pointId:null,regionId:null,
+   position:homeworldBuildingDoorwayV64(building).approach,access:meta?.access??'open',
+   reason:meta?.reason??'Porte physique visitable. Les activités intérieures conservent les conditions de ta partie.',keywords:meta?.keywords??[]};
+ });
+ const points=HOMEWORLD_POINTS_V77.flatMap(point=>{
+  const region=point.kind==='region'&&point.regionId?point.regionId:null;
+  const id=region?'region:'+region:'point:'+point.id,meta=metadata.get(id);
+  // An ordinary closed departure remains visible with its real restriction.
+  // A sensitive reserve remains absent until its narrative authority reveals it.
+  if(region==='forbidden-reserve'&&(!save||!meta))return[];
+  const room=homeworldInteriorForPointV64(point.id),building=room?HOMEWORLD_BUILDINGS_V77.find(b=>b.id===room.buildingId):null;
+  const category:HomeworldAtlasLandmarkV83['category']=region?'region':point.kind==='service'?'service'
+   :point.kind==='ship'?'transport':point.kind==='evidence'?'evidence':'person';
+  return[{id,label:meta?.label??point.label,detail:meta?.detail??room?.title??point.label,
+   levelId:building?.levelId??point.levelId,district:district(building?.districtId??point.districtId),category,
+   buildingId:building?.id??null,pointId:point.id,regionId:region,
+   position:building?homeworldBuildingDoorwayV64(building).approach:{x:point.x,y:point.y},
+   access:meta?.access??(region?'locked':'open'),reason:meta?.reason??(region?'Consulte les conditions de ce départ sur place.':'Rejoins le lieu et interagis ; consulter ce repère ne valide aucune action.'),
+   keywords:meta?.keywords??[]}];
+ });
+ const archive:HomeworldAtlasLandmarkV83[]=save?.homeworld.visitedDistrictIds.includes('port')?[{
+  id:HOMEWORLD_ARCHIVE_V106.npcId,label:HOMEWORLD_ARCHIVE_V106.npcName,detail:'Quai oriental : deux dossiers d’étude à porter séparément vers leurs supports.',levelId:'0',
+  district:district('port'),category:'person',buildingId:null,pointId:null,regionId:null,position:HOMEWORLD_ARCHIVE_V106.post,
+  access:'open',reason:'Rejoins l’archiviste à pied. Le guide ne déplace aucun dossier et ne consigne aucune conclusion.',keywords:['archives','traces','dossiers','supports','incertitude']
+ }]:[];
+ const comparison:HomeworldAtlasLandmarkV83[]=save?.homeworld.visitedDistrictIds.includes('port')&&save.homeworld.archiveV106?.receipt?.phase==='completed'?[{
+  id:'archive-study-zone-v107',label:'Zone d’étude du quai',detail:'Objet C et lieu à relever sur place avant déplacement.',levelId:'0',district:district('port'),category:'evidence',buildingId:null,pointId:null,regionId:null,position:HOMEWORLD_ARCHIVE_COMPARISON_V107.evidence.origin,access:'open',reason:'Étude locale dans le quai connu ; aucune origine de lignée ni zone inconnue révélée.',keywords:['archives','preuve','provenance','étude']
+ },{id:HOMEWORLD_ARCHIVE_COMPARISON_V107.table.id,label:HOMEWORLD_ARCHIVE_COMPARISON_V107.table.label,detail:'Déposer C avec son relevé puis confronter les observations.',levelId:'0',district:district('port'),category:'service',buildingId:null,pointId:null,regionId:null,position:{x:HOMEWORLD_ARCHIVE_COMPARISON_V107.table.x,y:HOMEWORLD_ARCHIVE_COMPARISON_V107.table.y},access:'open',reason:'Pupitre physique ; aucun dossier déplacé par le guide.',keywords:['archives','comparaison']},...HOMEWORLD_ARCHIVE_COMPARISON_V107.references.map(s=>({id:s.caseId==='A'?'archive-reference-a-v107':'archive-reference-b-v107',label:`Support ${s.caseId} · dossier conservé`,detail:'Observation à effectuer physiquement auprès du dépôt séparé.',levelId:'0' as const,district:district('port'),category:'evidence' as const,buildingId:null,pointId:null,regionId:null,position:{x:s.x,y:s.y},access:'open' as const,reason:'Rejoins le support à pied ; le guide ne valide pas son observation.',keywords:['archives','support','observation']}))]:[];
+ const cargo:HomeworldAtlasLandmarkV83[]=save?.homeworld.visitedDistrictIds.includes('port')?[
+  {id:HOMEWORLD_CARGO_V108.npcId,label:HOMEWORLD_CARGO_V108.npcName,detail:'Tri situé de deux lots : dimensions, accord des propriétaires et passage libre.',levelId:'0',district:district('port'),category:'person',buildingId:null,pointId:null,regionId:null,position:HOMEWORLD_CARGO_V108.host,access:'open',reason:'Rejoins l’intendante à pied pour choisir une solution de rangement.',keywords:['cargaison','tri','intendance','racks']},
+  {id:HOMEWORLD_CARGO_V108.guardian.id,label:'Gardien des lots du quai',detail:'Consulter les propriétaires avant de déplacer un lot vers le dépôt.',levelId:'0',district:district('port'),category:'person',buildingId:null,pointId:null,regionId:null,position:HOMEWORLD_CARGO_V108.guardian.host,access:'open',reason:'L’itinéraire ne donne aucun accord ; parle au gardien sur place.',keywords:['cargaison','accord','gardien','dépôt']},
+  ...HOMEWORLD_CARGO_V108.racks.map(r=>({id:'cargo-rack-'+r.id+'-v108',label:r.label,detail:'Rangement compatible avec la largeur du lot.',levelId:'0' as const,district:district('port'),category:'service' as const,buildingId:null,pointId:null,regionId:null,position:{x:r.stand.x,y:r.stand.y-55},access:'open' as const,reason:'Le guide conduit au rack ; porte et range le lot sur place.',keywords:['cargaison','rack','rangement']})),
+  {id:HOMEWORLD_CARGO_V108.depot.id,label:HOMEWORLD_CARGO_V108.depot.label,detail:'Destination du lot large après autorisation explicite.',levelId:'0',district:district('port'),category:'service',buildingId:null,pointId:null,regionId:null,position:{x:HOMEWORLD_CARGO_V108.depot.stand.x,y:HOMEWORLD_CARGO_V108.depot.stand.y-55},access:'open',reason:'Un repère ne donne ni consentement ni livraison.',keywords:['cargaison','dépôt','large']},
+ ]:[];
+ return[...points,...buildings,...archive,...comparison,...cargo];
+}
+
+/** Accept IDs from old NPC advice, direct points and the current register.
+ * Aliases resolve to live records; no approximate coordinate is stored. */
+export function homeworldAtlasTargetV83(records:readonly HomeworldAtlasLandmarkV83[],requested?:string|null){
+ if(!requested)return null;
+ return records.find(record=>record.id===requested||record.pointId===requested||record.buildingId===requested||record.regionId===requested)??null;
+}
+const clean=(text:string)=>text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fr').replace(/[’']/g,' ');
+export function homeworldAtlasSearchV83(records:readonly HomeworldAtlasLandmarkV83[],query:string){
+ const tokens=clean(query).trim().split(/\s+/).filter(Boolean);
+ return records.filter(record=>tokens.every(token=>clean([record.label,record.detail,record.district,record.levelId,...record.keywords].join(' ')).includes(token)));
+}
+
+/** A topology hint, not a verified shortest/walkable route. The hunter still
+ * reaches real blue landing markers and interacts physically. Calling this
+ * function neither starts a transit nor moves the cabin or grants access. */
+export function homeworldAtlasFloorLinksV83(from:HomeworldLevelV77,to:HomeworldLevelV77){
+ const queue=[{level:from,links:[] as {id:string;name:string;from:HomeworldLevelV77;to:HomeworldLevelV77}[]}],seen=new Set<HomeworldLevelV77>([from]);
+ for(let i=0;i<queue.length;i++){
+  const state=queue[i];if(state.level===to)return state.links;
+  for(const connector of HOMEWORLD_CONNECTORS_V77){
+   const endpoint=connector.from.levelId===state.level?connector.to:connector.to.levelId===state.level?connector.from:null;
+   if(!endpoint||seen.has(endpoint.levelId))continue;seen.add(endpoint.levelId);
+   queue.push({level:endpoint.levelId,links:[...state.links,{id:connector.id,name:connector.name,from:state.level,to:endpoint.levelId}]});
+  }
+ }return null;
+}

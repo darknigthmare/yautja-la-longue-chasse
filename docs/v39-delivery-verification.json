@@ -1,0 +1,985 @@
+{
+  "version": "V39",
+  "checkedAt": "2026-09-19T20:03:34.570Z",
+  "status": "published-and-verified",
+  "production": {
+    "deploymentId": "dpl_BAPFmDDsPvYx5pNod7Szc3npMVvQ",
+    "state": "READY",
+    "gitCommit": "3953da73322457dffe92e82b97a9c83a290c2999",
+    "branch": "main",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "deploymentUrl": "https://yautja-la-longue-chasse-91b2eqwhg-darknigthmares-projects.vercel.app",
+    "framework": "nextjs",
+    "verificationMethod": "Vercel connector READY for the exact Git commit and production alias, followed by three public browser suites and public HTTP/SHA-256 checks"
+  },
+  "localCommands": {
+    "build": {
+      "exitCode": 0,
+      "engine": "Vinext",
+      "environment": "YAUTJA_KEEP_BUILD_ROOT=1",
+      "output": "Verified pre-cleaned existing D: output junction"
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "lint": {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 1,
+      "note": "Pre-existing ClanChroniclePanel native image warning"
+    },
+    "tests": {
+      "total": 1299,
+      "passed": 1299,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "browser": {
+    "humans": {
+      "passed": true,
+      "version": "V39",
+      "checkedAt": "2026-09-19T20:02:35.133Z",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "labChecks": [
+        {
+          "fighter": "theta",
+          "clip": "idle",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "idle",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "crouch",
+          "facing": "right",
+          "drawings": 3
+        },
+        {
+          "fighter": "theta",
+          "clip": "crouch",
+          "facing": "left",
+          "drawings": 3
+        },
+        {
+          "fighter": "theta",
+          "clip": "high-guard",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "high-guard",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.hitstun",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.hitstun",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.recovery",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.recovery",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "jungle-hunter",
+          "clip": "walk-backward",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "idle",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "idle",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "crouch",
+          "facing": "right",
+          "drawings": 3
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "crouch",
+          "facing": "left",
+          "drawings": 3
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.hitstun",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.hitstun",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.recovery",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.recovery",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "drawings": 2
+        }
+      ],
+      "combatChecks": [
+        {
+          "player": "theta",
+          "opponent": "machiko-noguchi",
+          "attacks": [
+            "light",
+            "medium",
+            "heavy"
+          ],
+          "opponentReaction": true,
+          "crouch": true
+        },
+        {
+          "player": "machiko-noguchi",
+          "opponent": "theta",
+          "attacks": [
+            "light",
+            "medium",
+            "heavy"
+          ],
+          "opponentReaction": true,
+          "crouch": true
+        },
+        {
+          "fighter": "jungle-hunter",
+          "action": "walk-backward",
+          "facing": "left",
+          "distinctDrawings": 4,
+          "movedRight": true
+        }
+      ],
+      "mobileNoOverflow": true,
+      "errors": [],
+      "failures": [],
+      "limitations": [
+        "Keyboard and browser only; no hardware controller or complete moveset certification.",
+        "Jungle retreat reuses four drawings in reversed playback, not new generated images."
+      ]
+    },
+    "briefing": {
+      "passed": true,
+      "checkedAt": "2026-09-19T20:01:24.346Z",
+      "url": "https://yautja-la-longue-chasse.vercel.app/",
+      "version": "V39",
+      "checks": [
+        {
+          "name": "cold-loading-and-reading",
+          "heldRequests": 5,
+          "frameBeforeStart": 0,
+          "noManualBypass": true
+        },
+        {
+          "name": "explicit-keyboard-start",
+          "realLowBlocks": 3,
+          "focusRestored": true
+        },
+        {
+          "name": "gamepad-rearm-retry-cancel",
+          "heldARejected": true,
+          "freshAStarts": true,
+          "bReturnsToFreeTraining": true
+        },
+        {
+          "name": "failed-art-mobile-touch",
+          "explicitWarning": true,
+          "explicitTouchStart": true,
+          "noOverflowAt390": true
+        },
+        {
+          "name": "atlas-only-briefing",
+          "fighterId": "theta",
+          "status": "sprite-sheet-animation",
+          "canBegin": true,
+          "frame": 0
+        },
+        {
+          "name": "atlas-only-briefing",
+          "fighterId": "machiko-noguchi",
+          "status": "sprite-sheet-animation",
+          "canBegin": true,
+          "frame": 0
+        }
+      ],
+      "errors": [],
+      "failures": [],
+      "intentionallyFailedImages": [
+        "https://yautja-la-longue-chasse.vercel.app/game/sprites/v32/pit/city-hunter-idle.png",
+        "https://yautja-la-longue-chasse.vercel.app/game/sprites/v32/pit/city-hunter-light.png",
+        "https://yautja-la-longue-chasse.vercel.app/game/sprites/v37/pit/city-hunter/high-guard-right.png",
+        "https://yautja-la-longue-chasse.vercel.app/game/sprites/v38/pit/city-hunter/high-guard-left.png",
+        "https://yautja-la-longue-chasse.vercel.app/game/sprites/v31/film-plates/city-hunter.png"
+      ],
+      "existingSaveUnchanged": true
+    },
+    "homeworld": {
+      "passed": true,
+      "expectedVersion": "V39",
+      "checkedAt": "2026-09-19T20:01:13.289Z",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "checks": [
+        "Initial held stick/A blocked; neutral then a new direction moves the actor.",
+        "Returning focus with stick/A held neither walks nor opens a dialogue.",
+        "Real ship dialogue opens once, Up/Down wrap correctly, B closes without leaking movement.",
+        "Start pauses/resumes after release; held Start and direction stay blocked until the next intentional input.",
+        "Window-blur inactivity resumes with one deliberate Start press after release.",
+        "Actual Enforcer service opens/closes without losing position or replaying a held direction; progression/inventory/trophies unchanged."
+      ],
+      "errors": [],
+      "failures": [],
+      "scope": "Real Homeworld component with virtual navigator.getGamepads input and controlled clock; no physical controller certification, no save injection.",
+      "initialMovement": {
+        "entry": {
+          "x": 430,
+          "y": 2210
+        },
+        "after": {
+          "x": 462,
+          "y": 2210
+        },
+        "focus": {
+          "ownsFocus": true,
+          "windowFocused": true,
+          "hidden": false,
+          "activeTag": "DIV",
+          "activeLabel": "QUARTIER 01Port des ChassesQUARTIER 02Marché des ClansQUARTIER 03Forges ProfondesQUARTIER 04Sous-Cit",
+          "pad": {
+            "connected": true,
+            "id": "Homeworld V39 virtual QA",
+            "index": 0,
+            "axes": [
+              0,
+              0
+            ],
+            "buttons": [
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "assets": {
+    "schemaVersion": 1,
+    "passed": true,
+    "startedAt": "2026-09-19T20:03:05.293Z",
+    "baseUrl": "https://yautja-la-longue-chasse.vercel.app",
+    "expectedReleaseCommit": "3953da73322457dffe92e82b97a9c83a290c2999",
+    "expectedDeployment": "dpl_BAPFmDDsPvYx5pNod7Szc3npMVvQ",
+    "readySignalReceived": true,
+    "scope": "Anonymous public HTTP and in-memory SHA verification only. Browser playability is verified separately.",
+    "routes": [
+      {
+        "path": "/",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 48186,
+        "sha256": "fad49e65bab280e75723a31293f95c75513c5c12523d7ccf90dcddb261b2b538",
+        "vercelRequestId": "cdg1::iad1::j492l-1789848186520-9106424e523b",
+        "vercelCache": "MISS",
+        "etag": null,
+        "checkedMarkers": [
+          "Yautja",
+          "La Longue Chasse"
+        ],
+        "passed": true
+      },
+      {
+        "path": "/pit-lab",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/pit-lab",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/pit-lab",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 15819,
+        "sha256": "e6c6f08cf80fa909e53f2896810ea512297a7561dc04cb6a2958f3fea42fa8f6",
+        "vercelRequestId": "cdg1::iad1::ggw9t-1789848186517-7b1f1b0f8c3a",
+        "vercelCache": "MISS",
+        "etag": null,
+        "checkedMarkers": [
+          "data-pit-production-lab",
+          "Machiko Noguchi",
+          "Theta",
+          "/game/assets/v34/production-review/index.html"
+        ],
+        "passed": true
+      },
+      {
+        "path": "/game/assets/v34/production-review/index.html",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/index.html",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/index.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 5519,
+        "sha256": "bcb7ecaa2c844336dbb0ca30138de3d14309e69b32a494e7ae505707a6a0def7",
+        "vercelRequestId": "cdg1::mvzqd-1789848186519-ac3c2ba125b0",
+        "vercelCache": "MISS",
+        "etag": "W/\"6363a153057c1032a66321f3f20057b1\"",
+        "checkedMarkers": [
+          "Atelier OpenAI",
+          "coverage-hunters",
+          "./review.js"
+        ],
+        "passed": true
+      }
+    ],
+    "manifest": {
+      "path": "/game/assets/v34/production-review/manifest.json",
+      "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/manifest.json",
+      "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/manifest.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 852123,
+      "sha256": "d753e57f696f04ad7dbbdcfb1f82f0f64b839abf2c01a26823063817a3976ea9",
+      "vercelRequestId": "cdg1::q862p-1789848186685-4cb2bc007f49",
+      "vercelCache": "MISS",
+      "etag": "W/\"4fcdb7cd9133c752faafb2e611f87c66\"",
+      "localSha256": "d753e57f696f04ad7dbbdcfb1f82f0f64b839abf2c01a26823063817a3976ea9",
+      "equalsLocal": true,
+      "entryCount": 550,
+      "coverage": {
+        "completeGameImplied": false,
+        "arenas": {
+          "requested": 100,
+          "playable": 20,
+          "reviewedKits": 20,
+          "selectedSourceImages": 288
+        },
+        "hunters": {
+          "runtimeFighters": 11,
+          "validatedClips": 259,
+          "initialFamiliesPerDesign": 10,
+          "completeMovesets": 0
+        },
+        "vehicles": {
+          "requested": 50,
+          "entriesWithSourceArt": 50,
+          "entriesWithNonRejectedDrafts": 50,
+          "acceptedAnimationClips": 0,
+          "rideableVehicles": 0
+        }
+      },
+      "allCandidateAssetsPresent": true,
+      "passed": true
+    },
+    "assets": [
+      {
+        "path": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2136880,
+        "sha256": "7f5e012aaf83713344e0bd46fbde6a7f21c17f00b9978cf8b1296cfeeb5457ac",
+        "vercelRequestId": "cdg1::rckr9-1789848187083-25516a70077c",
+        "vercelCache": "HIT",
+        "etag": "\"6c706c30207a718fc034bd8e9b754d8b\"",
+        "localSha256": "7f5e012aaf83713344e0bd46fbde6a7f21c17f00b9978cf8b1296cfeeb5457ac",
+        "provenanceSha256": "7f5e012aaf83713344e0bd46fbde6a7f21c17f00b9978cf8b1296cfeeb5457ac",
+        "provenancePath": "docs/art/v39/jungle-hunter/provenance.json",
+        "fighterId": "jungle-hunter",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-crouch-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-crouch-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-crouch-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1861082,
+        "sha256": "68f1271e63b08765ec35a7515047b148fcb329bf3cd9ce3ae4bea83fedbc6022",
+        "vercelRequestId": "cdg1::lnjb8-1789848187005-2f6f4ff95d3d",
+        "vercelCache": "HIT",
+        "etag": "\"4ad08c54441a119402e84f6cf40b4273\"",
+        "localSha256": "68f1271e63b08765ec35a7515047b148fcb329bf3cd9ce3ae4bea83fedbc6022",
+        "provenanceSha256": "68f1271e63b08765ec35a7515047b148fcb329bf3cd9ce3ae4bea83fedbc6022",
+        "provenancePath": "docs/art/v39/machiko-noguchi/provenance.json",
+        "fighterId": "machiko-noguchi",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-heavy-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-heavy-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-heavy-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1884847,
+        "sha256": "a468147d2677c6a28278da8541e9ba5a356e99d6a0b6c8d728601009ab903037",
+        "vercelRequestId": "cdg1::mzkdj-1789848187047-5e7cb27d28c7",
+        "vercelCache": "HIT",
+        "etag": "\"71299a92209be5f6d622eaf13c6fc776\"",
+        "localSha256": "a468147d2677c6a28278da8541e9ba5a356e99d6a0b6c8d728601009ab903037",
+        "provenanceSha256": "a468147d2677c6a28278da8541e9ba5a356e99d6a0b6c8d728601009ab903037",
+        "provenancePath": "docs/art/v39/machiko-noguchi/provenance.json",
+        "fighterId": "machiko-noguchi",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-hurt-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-hurt-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-hurt-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1889095,
+        "sha256": "f561c9010676b2fa3c6da141de6bafe0906d2d8fbea3c0cc8f34fa2b36124dd5",
+        "vercelRequestId": "cdg1::ggw9t-1789848187007-8b6f6d496cef",
+        "vercelCache": "HIT",
+        "etag": "\"d631210624bca3825a642d279fa7ed70\"",
+        "localSha256": "f561c9010676b2fa3c6da141de6bafe0906d2d8fbea3c0cc8f34fa2b36124dd5",
+        "provenanceSha256": "f561c9010676b2fa3c6da141de6bafe0906d2d8fbea3c0cc8f34fa2b36124dd5",
+        "provenancePath": "docs/art/v39/machiko-noguchi/provenance.json",
+        "fighterId": "machiko-noguchi",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-light-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-light-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-light-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1775690,
+        "sha256": "c5cff0205e757f54a61c97622d9fa6e81844d775bbcfee77eb5369b7cb37c141",
+        "vercelRequestId": "cdg1::lnjb8-1789848187044-4257fda1c3d4",
+        "vercelCache": "HIT",
+        "etag": "\"be6d36bd2ebb397de440f86d63a598b2\"",
+        "localSha256": "c5cff0205e757f54a61c97622d9fa6e81844d775bbcfee77eb5369b7cb37c141",
+        "provenanceSha256": "c5cff0205e757f54a61c97622d9fa6e81844d775bbcfee77eb5369b7cb37c141",
+        "provenancePath": "docs/art/v39/machiko-noguchi/provenance.json",
+        "fighterId": "machiko-noguchi",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-medium-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-medium-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-medium-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1827985,
+        "sha256": "ce8c95535416e6182fe3349e40b377f861d64e7854ee14fd60bb4e9d7d983895",
+        "vercelRequestId": "cdg1::jkzlz-1789848187144-6a6c7ca446a6",
+        "vercelCache": "HIT",
+        "etag": "\"f6150a01eb3a7aceab093cb82a5185e4\"",
+        "localSha256": "ce8c95535416e6182fe3349e40b377f861d64e7854ee14fd60bb4e9d7d983895",
+        "provenanceSha256": "ce8c95535416e6182fe3349e40b377f861d64e7854ee14fd60bb4e9d7d983895",
+        "provenancePath": "docs/art/v39/machiko-noguchi/provenance.json",
+        "fighterId": "machiko-noguchi",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1813441,
+        "sha256": "c9a288ba1dc97c8463922afe73363ccfa93fe9b21eabfc783f62f2ebe6f94e56",
+        "vercelRequestId": "cdg1::d6nhp-1789848186998-cd367b723296",
+        "vercelCache": "HIT",
+        "etag": "\"286fdeb8522d922427b185075121d043\"",
+        "localSha256": "c9a288ba1dc97c8463922afe73363ccfa93fe9b21eabfc783f62f2ebe6f94e56",
+        "provenanceSha256": "c9a288ba1dc97c8463922afe73363ccfa93fe9b21eabfc783f62f2ebe6f94e56",
+        "provenancePath": "docs/art/v39/machiko-noguchi/provenance.json",
+        "fighterId": "machiko-noguchi",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/theta/theta-crouch-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-crouch-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-crouch-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1878758,
+        "sha256": "7963593c876f003e37f1ea7d07039544d51a11c8175421b344724cd6abaaa020",
+        "vercelRequestId": "cdg1::ggw9t-1789848186897-0f039848573e",
+        "vercelCache": "HIT",
+        "etag": "\"ce43e98ed33f88419ce3155e077e1110\"",
+        "localSha256": "7963593c876f003e37f1ea7d07039544d51a11c8175421b344724cd6abaaa020",
+        "provenanceSha256": "7963593c876f003e37f1ea7d07039544d51a11c8175421b344724cd6abaaa020",
+        "provenancePath": "docs/art/v39/theta/provenance.json",
+        "fighterId": "theta",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/theta/theta-guard-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-guard-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-guard-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1754269,
+        "sha256": "2560a5dc546d58dd5f91dc7099c09b34732ee4e8981e85bee34203d288c9ee8a",
+        "vercelRequestId": "cdg1::ggw9t-1789848186900-1840727f652f",
+        "vercelCache": "HIT",
+        "etag": "\"2326e73aeff823b46f9d3fc9e6f16df2\"",
+        "localSha256": "2560a5dc546d58dd5f91dc7099c09b34732ee4e8981e85bee34203d288c9ee8a",
+        "provenanceSha256": "2560a5dc546d58dd5f91dc7099c09b34732ee4e8981e85bee34203d288c9ee8a",
+        "provenancePath": "docs/art/v39/theta/provenance.json",
+        "fighterId": "theta",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/theta/theta-heavy-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-heavy-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-heavy-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1874521,
+        "sha256": "20acbb12ab83db3a9df1ce53ad42ba5d4de942464b5195701ded14e6c6097ecc",
+        "vercelRequestId": "cdg1::ggw9t-1789848186970-eacf226e27fd",
+        "vercelCache": "HIT",
+        "etag": "\"e8d8007db5ef9f381ba12dcd158b4592\"",
+        "localSha256": "20acbb12ab83db3a9df1ce53ad42ba5d4de942464b5195701ded14e6c6097ecc",
+        "provenanceSha256": "20acbb12ab83db3a9df1ce53ad42ba5d4de942464b5195701ded14e6c6097ecc",
+        "provenancePath": "docs/art/v39/theta/provenance.json",
+        "fighterId": "theta",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/theta/theta-hurt-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-hurt-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-hurt-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1962544,
+        "sha256": "8b30a0cdd883bec937d3e38eaf8cd8805f89a44c7d7512300fef86e39e1e2f6d",
+        "vercelRequestId": "cdg1::7b4fn-1789848186931-7ddc8bea9c4c",
+        "vercelCache": "HIT",
+        "etag": "\"138594cee2aff5abbcae29cfc487901e\"",
+        "localSha256": "8b30a0cdd883bec937d3e38eaf8cd8805f89a44c7d7512300fef86e39e1e2f6d",
+        "provenanceSha256": "8b30a0cdd883bec937d3e38eaf8cd8805f89a44c7d7512300fef86e39e1e2f6d",
+        "provenancePath": "docs/art/v39/theta/provenance.json",
+        "fighterId": "theta",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/theta/theta-idle-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-idle-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-idle-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1832135,
+        "sha256": "d602cfc25fa345314472e6e6fe10f6f06ea35c2cb3bc42b7e339639a902d9fcf",
+        "vercelRequestId": "cdg1::lnjb8-1789848186898-164c43778df4",
+        "vercelCache": "HIT",
+        "etag": "\"485ffcc9716b93878016301ce3d65655\"",
+        "localSha256": "d602cfc25fa345314472e6e6fe10f6f06ea35c2cb3bc42b7e339639a902d9fcf",
+        "provenanceSha256": "d602cfc25fa345314472e6e6fe10f6f06ea35c2cb3bc42b7e339639a902d9fcf",
+        "provenancePath": "docs/art/v39/theta/provenance.json",
+        "fighterId": "theta",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/theta/theta-light-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-light-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-light-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1813757,
+        "sha256": "d3dde5b4975668431d826f68a1313229b1859e95fa72a489c1af96a7f069d665",
+        "vercelRequestId": "cdg1::fdmgw-1789848186985-fbe642fadf67",
+        "vercelCache": "HIT",
+        "etag": "\"474ca870eef7497da4a86e98b504805b\"",
+        "localSha256": "d3dde5b4975668431d826f68a1313229b1859e95fa72a489c1af96a7f069d665",
+        "provenanceSha256": "d3dde5b4975668431d826f68a1313229b1859e95fa72a489c1af96a7f069d665",
+        "provenancePath": "docs/art/v39/theta/provenance.json",
+        "fighterId": "theta",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v34/pit/theta/theta-medium-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-medium-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/theta/theta-medium-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1903373,
+        "sha256": "cf1bf28ab0483c280b3c3598e2150567fab7688b9f5edc9f27d2037651a08857",
+        "vercelRequestId": "cdg1::lnjb8-1789848186969-785727bed2f0",
+        "vercelCache": "HIT",
+        "etag": "\"34273dff80c3195dba71619c6f8d8a2e\"",
+        "localSha256": "cf1bf28ab0483c280b3c3598e2150567fab7688b9f5edc9f27d2037651a08857",
+        "provenanceSha256": "cf1bf28ab0483c280b3c3598e2150567fab7688b9f5edc9f27d2037651a08857",
+        "provenancePath": "docs/art/v39/theta/provenance.json",
+        "fighterId": "theta",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      }
+    ],
+    "errors": [],
+    "persistentPngDownloads": 0,
+    "localCommitAtVerification": "3953da73322457dffe92e82b97a9c83a290c2999",
+    "expectedUniquePngPages": 14,
+    "finishedAt": "2026-09-19T20:03:06.199Z",
+    "totalVerifiedPngBytes": 26208377
+  },
+  "coverage": {
+    "selectableFighters": 16,
+    "animatedFighters": 11,
+    "validatedOrientedClips": 259,
+    "addedClips": 51,
+    "completeMovesets": 0,
+    "playableArenas": 20,
+    "requestedArenas": 100,
+    "newGeneratedImages": 0,
+    "reviewSourceImages": 550
+  },
+  "limitations": [
+    "Theta and Machiko are selectable in CPU duels, local Versus and training only; twelve historical Arcade/Circuit/Descent routes are unchanged.",
+    "Machiko guard, human walking and jump phases, techniques, throws and finishers remain unapproved or incomplete; no complete moveset is declared.",
+    "Jungle Hunter left retreat reuses four existing left walk drawings in reverse playback. No new PNG generation or source image editing is counted.",
+    "The project has twenty playable arenas, not the requested one hundred. Youth campaign, Berceau and rideable vehicles remain outstanding.",
+    "Portable Windows package remains V35; browser virtual-gamepad verification does not certify a physical controller or Steam Deck.",
+    "Existing OpenAI project art is a fan-made adaptation; official 1:1 franchise fidelity and commercial licensing are not certified.",
+    "Private ChatGPT access remains deferred at the owner request."
+  ]
+}

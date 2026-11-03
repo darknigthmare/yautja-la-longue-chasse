@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "visually-accepted",
+  "release": "V65",
+  "stageId": "arena-076-atrium-des-mediateurs",
+  "kind": "atlas",
+  "tool": "OpenAI builtin image_gen",
+  "src": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+  "sha256": "42c66b504647fdee31d9b2fd353f99f44c64d55ffcd9c62c54bbbd952c7eab4f",
+  "width": 1254,
+  "height": 1254,
+  "hasAlpha": true,
+  "contentBounds": {
+    "x": 21,
+    "y": 104,
+    "width": 1214,
+    "height": 968
+  },
+  "receipt": "docs/v65-generation/arena-076-atrium-des-mediateurs-atlas.json",
+  "coverage": {
+    "threshold": 8,
+    "visiblePixels": 467590,
+    "assignedPixels": 467590,
+    "nativeDrawings": 4,
+    "animationFrames": 0
+  },
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-7ca6fef3-d0de-46c5-89b7-7d027d9cdf9e.png",
+  "nativeBytesUnchanged": true,
+  "prompt": "Use case: stylized-concept. One production sprite atlas for a 2D side-view fighting videogame: ORIGINAL lore-compatible Yautja clan 'Atrium des Médiateurs'. Supplied image is the accepted background and material/lighting reference only; do not include the background in this atlas. Match its stratified weathered stone, dark curved ribbed alien alloy, practical mechanical integration and soft ivory daylight with cool desaturated bronze and tiny amber recessed light accents. These are modular STATIC environment props, not animation frames.\nGenerate a square PNG sprite atlas ideally1536x1536 with REAL TRANSPARENT ALPHA background. Exactly FOUR distinct complete cutout objects in a regular2x2 grid, one independent object in each quadrant, no overlap between quadrants. Keep at least40pixels completely transparent padding around every object, especially outer image edges and cell midlines. No labels, no checkerboard pixels, no grid lines, no baked floor, no environment backdrop, no shadows outside an object's grounded contact area.\nTop-left/P1: a SMALL LOW WIDE clan mediation lodge or open alcove, strong slab-rock canopy/roof carried by grounded curved alloy rib supports, a deep sheltered alcove, no throne, suitable to stand far behind combatants. Entire freestanding silhouette complete. Top-right/P2: ONE solid practical curved ribbed alien architectural support with robust mechanical foot, weathered dark bronze alloy, restrained embedded cable conduits, no statue and no human face. Bottom-left/P3: ONE broad LOW mediation bench seating block made of layered grey stone with dark alien alloy reinforcement, clearly a simple meeting bench rather than a royal throne, two stable grounded feet. Bottom-right/P5: ONE low broken rocky border/curb fitted with a few grounded metal braces and recessed practical conduits, a horizontal foreground edge fragment, never a high pillar or giant face.\nFront-facing side-view game camera for ALL four sprites, slightly visible top surfaces with the same shallow downward angle, no dramatic foreshortening or Dutch angle, realistic coherent supports and contact pivots. All four full objects remain wholly inside their own cell with transparent gaps. Detailed realistic painterly 2D game cutouts, crisp silhouettes, no colored matte or glow halo, same lighting as reference. No people, animals, skull trophies, spaceships, text, icons, fantasy magic, humanoid figures, gothic arches, medieval furnishings, torches, faces, floating platforms or detached floating parts. Do not duplicate objects or produce extra views.\n",
+  "prompts": [
+    {
+      "file": "076-atlas.txt",
+      "prompt": "Use case: stylized-concept. One production sprite atlas for a 2D side-view fighting videogame: ORIGINAL lore-compatible Yautja clan 'Atrium des Médiateurs'. Supplied image is the accepted background and material/lighting reference only; do not include the background in this atlas. Match its stratified weathered stone, dark curved ribbed alien alloy, practical mechanical integration and soft ivory daylight with cool desaturated bronze and tiny amber recessed light accents. These are modular STATIC environment props, not animation frames.\nGenerate a square PNG sprite atlas ideally1536x1536 with REAL TRANSPARENT ALPHA background. Exactly FOUR distinct complete cutout objects in a regular2x2 grid, one independent object in each quadrant, no overlap between quadrants. Keep at least40pixels completely transparent padding around every object, especially outer image edges and cell midlines. No labels, no checkerboard pixels, no grid lines, no baked floor, no environment backdrop, no shadows outside an object's grounded contact area.\nTop-left/P1: a SMALL LOW WIDE clan mediation lodge or open alcove, strong slab-rock canopy/roof carried by grounded curved alloy rib supports, a deep sheltered alcove, no throne, suitable to stand far behind combatants. Entire freestanding silhouette complete. Top-right/P2: ONE solid practical curved ribbed alien architectural support with robust mechanical foot, weathered dark bronze alloy, restrained embedded cable conduits, no statue and no human face. Bottom-left/P3: ONE broad LOW mediation bench seating block made of layered grey stone with dark alien alloy reinforcement, clearly a simple meeting bench rather than a royal throne, two stable grounded feet. Bottom-right/P5: ONE low broken rocky border/curb fitted with a few grounded metal braces and recessed practical conduits, a horizontal foreground edge fragment, never a high pillar or giant face.\nFront-facing side-view game camera for ALL four sprites, slightly visible top surfaces with the same shallow downward angle, no dramatic foreshortening or Dutch angle, realistic coherent supports and contact pivots. All four full objects remain wholly inside their own cell with transparent gaps. Detailed realistic painterly 2D game cutouts, crisp silhouettes, no colored matte or glow halo, same lighting as reference. No people, animals, skull trophies, spaceships, text, icons, fantasy magic, humanoid figures, gothic arches, medieval furnishings, torches, faces, floating platforms or detached floating parts. Do not duplicate objects or produce extra views.\n"
+    }
+  ],
+  "preservedSupersededSources": [],
+  "drawings": 4,
+  "animationFrames": 0,
+  "sourceUrls": [
+    "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+    "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+  ],
+  "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+  "visualReview": [
+    "Paire produite par root puis inspectée indépendamment par stage-agent.",
+    "Atrium de clan ouvert sur le canyon, lumière douce ivoire ; aucune statue ni trône.",
+    "Quatre silhouettes alpha intactes, colonnes de largeur inégale mesurées plutôt que découpées arbitrairement en carrés."
+  ]
+}

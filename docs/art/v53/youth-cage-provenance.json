@@ -1,0 +1,94 @@
+{
+  "version": 53,
+  "generator": "OpenAI imagegen",
+  "sourceSpecification": {
+    "path": "work/v36/new-world-specs/youth-thread-page-1.json",
+    "userTurnId": "7efc0ab0-c5af-4bea-a1ba-c62bc14676e2",
+    "attested": "PIT secondaire après premier sommeil, quartier pauvre, combats contre récompenses; première Fosse petite, grillages murs et toit.",
+    "adaptation": "Décor, novice original, règle non létale sans lame, texte et insigne cosmétique originaux du projet. Placement après patrouille V52 pour préserver les anciens checkpoints."
+  },
+  "assets": [
+    {
+      "id": "cage-background",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-4cdfba77-1518-4cb1-852c-f9307a4fc192.png",
+      "runtimePath": "/game/youth/v53/cage-background.png",
+      "sha256": "1120d6deb39ce987508c6555a40e08772d9638ed208a7ca9604c6fc9064f8401",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "sourceBytesUnchanged": true
+    },
+    {
+      "id": "cage-structure",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-f9a23c20-c378-41ad-806c-0cf74931b157.png",
+      "runtimePath": "/game/youth/v53/cage-structure.png",
+      "sha256": "bdf49e15370251cb25fdee53c1619bf3b2c1b1fb4d79bd3f1a240f9daa2f3780",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGBA",
+      "sourceBytesUnchanged": true
+    },
+    {
+      "id": "cage-floor",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-345f2888-80cc-4128-84df-074f78a74954.png",
+      "runtimePath": "/game/youth/v53/cage-floor.png",
+      "sha256": "a5bf242a63aa04f30c5d07317bd26d01ae5457a2b438adf70326079ef69c6f96",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGBA",
+      "sourceBytesUnchanged": true
+    },
+    {
+      "id": "novice-right",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-d45fcad1-4b90-48c8-9dad-a678aca55b8b.png",
+      "runtimePath": "/game/youth/v53/novice-right.png",
+      "sha256": "dc76cbab1ea8337e8e43fc1e6cd745525fe0b7bca8796ff45ec06198aee4b9f8",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "sourceBytesUnchanged": true
+    },
+    {
+      "id": "novice-left",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-01c6eac1-bd54-4d59-86c5-dc066890df18.png",
+      "runtimePath": "/game/youth/v53/novice-left.png",
+      "sha256": "12e2753288d8bcf65916499b1a4579e3ee7545e0f037adf92fc569e83635662a",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "sourceBytesUnchanged": true
+    },
+    {
+      "id": "fosse-insignia",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-e2b461e9-6ec4-497e-a572-5c142e7654b0.png",
+      "runtimePath": "/game/youth/v53/fosse-insignia.png",
+      "sha256": "a05dabe71b5d12c98fbf1e934e323b96333ef7cdd01bce8d342da78403cc1431",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sourceBytesUnchanged": true
+    }
+  ],
+  "layers": [
+    "fond",
+    "sol et entrée",
+    "cage murs et toit",
+    "novice",
+    "joueur V48",
+    "insigne gagné"
+  ],
+  "nativeOpponentDrawings": 16,
+  "nativeOpponentDirections": 2,
+  "posesPerDirection": [
+    "guard",
+    "walk",
+    "jump",
+    "windup",
+    "punch",
+    "hurt",
+    "thrown",
+    "ko"
+  ],
+  "animationLimit": "16 poses, pas 16 cycles complets : garde/marche alternées ; anticipation, impact, blessure et résultat tenus. Aucun miroir, recoloration, découpe de fichier ou pixel synthétique. Rectangles et pivots mesurés, recadrage au rendu seulement.",
+  "visualReview": "Sources inspectées individuellement puis treize captures runtime locales en 1280x720, 390x844 et 640x360 : même novice gris/liens bleus, huit poses par direction, pas de membre supplémentaire flagrant ; murs/toit/sol raccordés, orientation native, insigne porté après gain. Détails outputs/qa-commercial-audit/v53/youth/*/visual-review.json."
+}

@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false
+  },
+  "include": [
+    "types/**/*.d.ts",
+    "app/game/PlanetGeneratorV103.tsx",
+    "app/game/ClanWarPanelV85.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

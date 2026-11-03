@@ -1,0 +1,2746 @@
+TAP version 13
+# Subtest: 12 independent original props, no atlas or film fidelity claim
+ok 1 - 12 independent original props, no atlas or film fidelity claim
+  ---
+  duration_ms: 8.36399
+  type: 'test'
+  ...
+# Subtest: all 12 PNG and WebP sprites retain alpha, margins and their own pixels
+ok 2 - all 12 PNG and WebP sprites retain alpha, margins and their own pixels
+  ---
+  duration_ms: 296.301261
+  type: 'test'
+  ...
+# Subtest: AZERTY/QWERTY/arrows issue exactly one safe input with no repeat
+ok 3 - AZERTY/QWERTY/arrows issue exactly one safe input with no repeat
+  ---
+  duration_ms: 4.99435
+  type: 'test'
+  ...
+# Subtest: sprite URLs cannot become external URLs or arbitrary save-controlled paths
+ok 4 - sprite URLs cannot become external URLs or arbitrary save-controlled paths
+  ---
+  duration_ms: 3.596586
+  type: 'test'
+  ...
+# Subtest: UI wiring keeps save locks, hidden actors and action preconditions
+ok 5 - UI wiring keeps save locks, hidden actors and action preconditions
+  ---
+  duration_ms: 1.892548
+  type: 'test'
+  ...
+# Subtest: Council accepts 24 isolated W3 victories with the unauthenticated-source caveat
+ok 6 - Council accepts 24 isolated W3 victories with the unauthenticated-source caveat
+  ---
+  duration_ms: 1024.370165
+  type: 'test'
+  ...
+# Subtest: Council V146: no speculative dossier before any of the four modes has finished
+ok 7 - Council V146: no speculative dossier before any of the four modes has finished
+  ---
+  duration_ms: 21.215609
+  type: 'test'
+  ...
+# Subtest: Council V146: completed V115 assault yields one traceable, non-conquering audit dossier
+ok 8 - Council V146: completed V115 assault yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 1.820622
+  type: 'test'
+  ...
+# Subtest: Council V146: completed V115 outer yields one traceable, non-conquering audit dossier
+ok 9 - Council V146: completed V115 outer yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 2.218563
+  type: 'test'
+  ...
+# Subtest: Council V146: completed V115 stealth yields one traceable, non-conquering audit dossier
+ok 10 - Council V146: completed V115 stealth yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 1.549409
+  type: 'test'
+  ...
+# Subtest: Council V146: completed V115 rts yields one traceable, non-conquering audit dossier
+ok 11 - Council V146: completed V115 rts yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 0.814619
+  type: 'test'
+  ...
+# Subtest: Council V146: completed W3 RTS receipt carries actual source-map, unit and task evidence
+ok 12 - Council V146: completed W3 RTS receipt carries actual source-map, unit and task evidence
+  ---
+  duration_ms: 14.074664
+  type: 'test'
+  ...
+# Subtest: Council V146: a V115 and standalone W3 result coexist without duplicate ID or overwriting V85
+ok 13 - Council V146: a V115 and standalone W3 result coexist without duplicate ID or overwriting V85
+  ---
+  duration_ms: 12.290756
+  type: 'test'
+  ...
+# Subtest: Council V146: forged V115 source, missing team or duplicate report never becomes evidence
+ok 14 - Council V146: forged V115 source, missing team or duplicate report never becomes evidence
+  ---
+  duration_ms: 1.312577
+  type: 'test'
+  ...
+# Subtest: Council V146: forged W3 receipt identity, map, RAV or completed tasks is rejected
+ok 15 - Council V146: forged W3 receipt identity, map, RAV or completed tasks is rejected
+  ---
+  duration_ms: 33.354231
+  type: 'test'
+  ...
+# Subtest: Council V146: 24 source mission scripts and neutral escort provenance remain immutable
+ok 16 - Council V146: 24 source mission scripts and neutral escort provenance remain immutable
+  ---
+  duration_ms: 52.955675
+  type: 'test'
+  ...
+# Subtest: Council V146: a self-consistent receipt cannot invent a finished phase, source mission, map or unit
+ok 17 - Council V146: a self-consistent receipt cannot invent a finished phase, source mission, map or unit
+  ---
+  duration_ms: 21.419652
+  type: 'test'
+  ...
+# Subtest: Council V146 rejects source geometry, mission instructions and numeric state changed together
+ok 18 - Council V146 rejects source geometry, mission instructions and numeric state changed together
+  ---
+  duration_ms: 24.086129
+  type: 'test'
+  ...
+# Subtest: Council accepts generated retreats and defeats across all 24 missions with casualties and evacuations
+ok 19 - Council accepts generated retreats and defeats across all 24 missions with casualties and evacuations
+  ---
+  duration_ms: 266.307472
+  type: 'test'
+  ...
+# Subtest: Council V146: V6 squad identities, combat stats, PC budget and entire W3 map are source-checked
+ok 20 - Council V146: V6 squad identities, combat stats, PC budget and entire W3 map are source-checked
+  ---
+  duration_ms: 47.457557
+  type: 'test'
+  ...
+# Subtest: Council V147: a W133 casualty or evacuee cannot be both active and down
+ok 21 - Council V147: a W133 casualty or evacuee cannot be both active and down
+  ---
+  duration_ms: 17.167583
+  type: 'test'
+  ...
+# Subtest: Council accepts 24 isolated W3 victories with the unauthenticated-source caveat
+ok 22 - Council accepts 24 isolated W3 victories with the unauthenticated-source caveat
+  ---
+  duration_ms: 934.300498
+  type: 'test'
+  ...
+# Subtest: Council V147: no speculative dossier before any of the four modes has finished
+ok 23 - Council V147: no speculative dossier before any of the four modes has finished
+  ---
+  duration_ms: 24.494174
+  type: 'test'
+  ...
+# Subtest: Council V147: completed V115 assault yields one traceable, non-conquering audit dossier
+ok 24 - Council V147: completed V115 assault yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 1.799139
+  type: 'test'
+  ...
+# Subtest: Council V147: completed V115 outer yields one traceable, non-conquering audit dossier
+ok 25 - Council V147: completed V115 outer yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 2.030943
+  type: 'test'
+  ...
+# Subtest: Council V147: completed V115 stealth yields one traceable, non-conquering audit dossier
+ok 26 - Council V147: completed V115 stealth yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 1.558622
+  type: 'test'
+  ...
+# Subtest: Council V147: completed V115 rts yields one traceable, non-conquering audit dossier
+ok 27 - Council V147: completed V115 rts yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 0.80204
+  type: 'test'
+  ...
+# Subtest: Council V147: completed W3 RTS receipt carries actual source-map, unit and task evidence
+ok 28 - Council V147: completed W3 RTS receipt carries actual source-map, unit and task evidence
+  ---
+  duration_ms: 14.868032
+  type: 'test'
+  ...
+# Subtest: Council V147: a V115 and standalone W3 result coexist without duplicate ID or overwriting V85
+ok 29 - Council V147: a V115 and standalone W3 result coexist without duplicate ID or overwriting V85
+  ---
+  duration_ms: 12.345047
+  type: 'test'
+  ...
+# Subtest: Council V147: forged V115 source, missing team or duplicate report never becomes evidence
+ok 30 - Council V147: forged V115 source, missing team or duplicate report never becomes evidence
+  ---
+  duration_ms: 1.087214
+  type: 'test'
+  ...
+# Subtest: Council V147: forged W3 receipt identity, map, RAV or completed tasks is rejected
+ok 31 - Council V147: forged W3 receipt identity, map, RAV or completed tasks is rejected
+  ---
+  duration_ms: 31.831602
+  type: 'test'
+  ...
+# Subtest: Council V147: 24 source mission scripts and neutral escort provenance remain immutable
+ok 32 - Council V147: 24 source mission scripts and neutral escort provenance remain immutable
+  ---
+  duration_ms: 53.204725
+  type: 'test'
+  ...
+# Subtest: Council V147: a self-consistent receipt cannot invent a finished phase, source mission, map or unit
+ok 33 - Council V147: a self-consistent receipt cannot invent a finished phase, source mission, map or unit
+  ---
+  duration_ms: 21.15486
+  type: 'test'
+  ...
+# Subtest: Council V147 rejects source geometry, mission instructions and numeric state changed together
+ok 34 - Council V147 rejects source geometry, mission instructions and numeric state changed together
+  ---
+  duration_ms: 23.074698
+  type: 'test'
+  ...
+# Subtest: Council accepts generated retreats and defeats across all 24 missions with casualties and evacuations
+ok 35 - Council accepts generated retreats and defeats across all 24 missions with casualties and evacuations
+  ---
+  duration_ms: 229.335734
+  type: 'test'
+  ...
+# Subtest: Council V147: V6 squad identities, combat stats, PC budget and entire W3 map are source-checked
+ok 36 - Council V147: V6 squad identities, combat stats, PC budget and entire W3 map are source-checked
+  ---
+  duration_ms: 57.532407
+  type: 'test'
+  ...
+# Subtest: V144 assault produces source-linked read-only debrief, not campaign capture
+ok 37 - V144 assault produces source-linked read-only debrief, not campaign capture
+  ---
+  duration_ms: 14.167983
+  type: 'test'
+  ...
+# Subtest: V144 Outer Ops final report is deferred, idempotent and source-traceable
+ok 38 - V144 Outer Ops final report is deferred, idempotent and source-traceable
+  ---
+  duration_ms: 2.130461
+  type: 'test'
+  ...
+# Subtest: V144 stealth, even on retreat, leaves no phantom lore reward or territory
+ok 39 - V144 stealth, even on retreat, leaves no phantom lore reward or territory
+  ---
+  duration_ms: 1.259849
+  type: 'test'
+  ...
+# Subtest: V144 physical RTS W3 receipt records real planet/map IDs but no V85 candidate
+ok 40 - V144 physical RTS W3 receipt records real planet/map IDs but no V85 candidate
+  ---
+  duration_ms: 19.724287
+  type: 'test'
+  ...
+# Subtest: V144 source SHA mismatch and forged casualty / foreign mission are rejected
+ok 41 - V144 source SHA mismatch and forged casualty / foreign mission are rejected
+  ---
+  duration_ms: 18.722681
+  type: 'test'
+  ...
+# Subtest: V144 duplicate receipts retain one trusted result and surface a rejected ID
+ok 42 - V144 duplicate receipts retain one trusted result and surface a rejected ID
+  ---
+  duration_ms: 0.867407
+  type: 'test'
+  ...
+# Subtest: V144 merged four-mode audit includes all reported modes without writes
+ok 43 - V144 merged four-mode audit includes all reported modes without writes
+  ---
+  duration_ms: 9.203226
+  type: 'test'
+  ...
+# Subtest: V144 all V6 debrief territory links only exact existing V85 IDs
+ok 44 - V144 all V6 debrief territory links only exact existing V85 IDs
+  ---
+  duration_ms: 9.857607
+  type: 'test'
+  ...
+# Subtest: V151 groups a real delegated report, recruit and paid wound treatment into one V115 archive
+ok 45 - V151 groups a real delegated report, recruit and paid wound treatment into one V115 archive
+  ---
+  duration_ms: 9.984876
+  type: 'test'
+  ...
+# Subtest: V151 resolves two independent field-medic orders once, without resurrecting anyone or duplicating personnel
+ok 46 - V151 resolves two independent field-medic orders once, without resurrecting anyone or duplicating personnel
+  ---
+  duration_ms: 10.132574
+  type: 'test'
+  ...
+# Subtest: V151 refuses a stale or malformed treatment without partially settling other source reports
+ok 47 - V151 refuses a stale or malformed treatment without partially settling other source reports
+  ---
+  duration_ms: 1.257476
+  type: 'test'
+  ...
+# Subtest: V151 UI schedules just one locked update for all due categories while manual Outer Ops remains intact
+ok 48 - V151 UI schedules just one locked update for all due categories while manual Outer Ops remains intact
+  ---
+  duration_ms: 0.85544
+  type: 'test'
+  ...
+# Subtest: Assault V144: two source teams regroup physically against 10 AP, no cloning or turn farming
+ok 49 - Assault V144: two source teams regroup physically against 10 AP, no cloning or turn farming
+  ---
+  duration_ms: 11.21414
+  type: 'test'
+  ...
+# Subtest: Assault V144: enemy block, low AP, inactive group, forged order all fail immutably
+ok 50 - Assault V144: enemy block, low AP, inactive group, forged order all fail immutably
+  ---
+  duration_ms: 0.794119
+  type: 'test'
+  ...
+# Subtest: Outer Ops V144: one physical passage inspection spends one RAV and adds exactly +2 at final report
+ok 51 - Outer Ops V144: one physical passage inspection spends one RAV and adds exactly +2 at final report
+  ---
+  duration_ms: 3.117816
+  type: 'test'
+  ...
+# Subtest: Outer Ops V144: duplicate check, recall, forged passage, low RAV and off-route time reject
+ok 52 - Outer Ops V144: duplicate check, recall, forged passage, low RAV and off-route time reject
+  ---
+  duration_ms: 2.160265
+  type: 'test'
+  ...
+# Subtest: Stealth V144: guard follows last genuinely observed location, never unseen current player
+ok 53 - Stealth V144: guard follows last genuinely observed location, never unseen current player
+  ---
+  duration_ms: 9.622057
+  type: 'test'
+  ...
+# Subtest: Stealth V144: bad investigation records fail and legacy archives without field remain readable
+ok 54 - Stealth V144: bad investigation records fail and legacy archives without field remain readable
+  ---
+  duration_ms: 1.77255
+  type: 'test'
+  ...
+# Subtest: RTS V144: active adjacent replacement retains real objective progress and consumes one enemy turn
+ok 55 - RTS V144: active adjacent replacement retains real objective progress and consumes one enemy turn
+  ---
+  duration_ms: 11.962169
+  type: 'test'
+  ...
+# Subtest: RTS V144: no remote handoff, missing task, duplicate use, KO or unpowered bypass
+ok 56 - RTS V144: no remote handoff, missing task, duplicate use, KO or unpowered bypass
+  ---
+  duration_ms: 2.310598
+  type: 'test'
+  ...
+# Subtest: V144 source boundaries: W3 scenario catalog and V85 campaign nonmutation preserved
+ok 57 - V144 source boundaries: W3 scenario catalog and V85 campaign nonmutation preserved
+  ---
+  duration_ms: 43.902803
+  type: 'test'
+  ...
+# Subtest: Assault V144: actual enemy hit consumes a real 16-AP base screen, never heals or recruits
+ok 58 - Assault V144: actual enemy hit consumes a real 16-AP base screen, never heals or recruits
+  ---
+  duration_ms: 15.115009
+  type: 'test'
+  ...
+# Subtest: Assault V144: screen expires after three ticks, forged screen or no AP is rejected
+ok 59 - Assault V144: screen expires after three ticks, forged screen or no AP is rejected
+  ---
+  duration_ms: 2.74927
+  type: 'test'
+  ...
+# Subtest: Outer V144: forced pace pays 3 RAV once, advances real deadline 8s but adds +2 threat
+ok 60 - Outer V144: forced pace pays 3 RAV once, advances real deadline 8s but adds +2 threat
+  ---
+  duration_ms: 3.247178
+  type: 'test'
+  ...
+# Subtest: Outer V144: forged risk, spent funds, recall or late departure cannot be exploited
+ok 61 - Outer V144: forged risk, spent funds, recall or late departure cannot be exploited
+  ---
+  duration_ms: 0.997831
+  type: 'test'
+  ...
+# Subtest: Stealth V144: second patrol is spawned on real terrain after alert and moves one step
+ok 62 - Stealth V144: second patrol is spawned on real terrain after alert and moves one step
+  ---
+  duration_ms: 4.477494
+  type: 'test'
+  ...
+# Subtest: Stealth V144: guards use separate actual movement, no off-map or walls on source regions
+ok 63 - Stealth V144: guards use separate actual movement, no off-map or walls on source regions
+  ---
+  duration_ms: 15.422254
+  type: 'test'
+  ...
+# Subtest: RTS V144: two real adjacent squads exchange their physical cells in one enemy tick
+ok 64 - RTS V144: two real adjacent squads exchange their physical cells in one enemy tick
+  ---
+  duration_ms: 6.708734
+  type: 'test'
+  ...
+# Subtest: RTS V144: nonadjacent, carrier, held post and powered-door restrictions reject without mutation
+ok 65 - RTS V144: nonadjacent, carrier, held post and powered-door restrictions reject without mutation
+  ---
+  duration_ms: 2.68934
+  type: 'test'
+  ...
+# Subtest: Source QA: W3 missions and V85 campaign ownership remain unchanged
+ok 66 - Source QA: W3 missions and V85 campaign ownership remain unchanged
+  ---
+  duration_ms: 37.709935
+  type: 'test'
+  ...
+# Subtest: assault: a deployed, physically nearby V6 unit protects its own damaged bastion, never free recruits
+ok 67 - assault: a deployed, physically nearby V6 unit protects its own damaged bastion, never free recruits
+  ---
+  duration_ms: 14.774332
+  type: 'test'
+  ...
+# Subtest: Outer Ops: one early retask keeps clock, route, original participant identities and source upkeep
+ok 68 - Outer Ops: one early retask keeps clock, route, original participant identities and source upkeep
+  ---
+  duration_ms: 3.699038
+  type: 'test'
+  ...
+# Subtest: Outer Ops: recon-to-intercept retask and delayed recall remain mutually exclusive and nonduplicating
+ok 69 - Outer Ops: recon-to-intercept retask and delayed recall remain mutually exclusive and nonduplicating
+  ---
+  duration_ms: 0.650165
+  type: 'test'
+  ...
+# Subtest: stealth: real-position diversion draws one patrol for limited turns and is non-repeatable
+ok 70 - stealth: real-position diversion draws one patrol for limited turns and is non-repeatable
+  ---
+  duration_ms: 3.404792
+  type: 'test'
+  ...
+# Subtest: RTS: visible-source suppressing fire costs two RAV, stops one real hostile reaction and then expires
+ok 71 - RTS: visible-source suppressing fire costs two RAV, stops one real hostile reaction and then expires
+  ---
+  duration_ms: 9.018832
+  type: 'test'
+  ...
+# Subtest: four modes: no free V85 land, no duplicated reports, no cross-mode hidden rewards
+ok 72 - four modes: no free V85 land, no duplicated reports, no cross-mode hidden rewards
+  ---
+  duration_ms: 0.958152
+  type: 'test'
+  ...
+# Subtest: Assault — V136 line hold has real deployed team, 15 AP cost and exactly three stationary ticks
+ok 73 - Assault — V136 line hold has real deployed team, 15 AP cost and exactly three stationary ticks
+  ---
+  duration_ms: 11.991133
+  type: 'test'
+  ...
+# Subtest: Assault — no distant fortification, free standing unit or invented AP
+ok 74 - Assault — no distant fortification, free standing unit or invented AP
+  ---
+  duration_ms: 0.711345
+  type: 'test'
+  ...
+# Subtest: Outer Ops — paid support preserves one true route/team and boosts only its final calculation
+ok 75 - Outer Ops — paid support preserves one true route/team and boosts only its final calculation
+  ---
+  duration_ms: 2.76341
+  type: 'test'
+  ...
+# Subtest: Outer Ops — support refuses expired time, no RAV, recall; no invalid archive replay
+ok 76 - Outer Ops — support refuses expired time, no RAV, recall; no invalid archive replay
+  ---
+  duration_ms: 1.60405
+  type: 'test'
+  ...
+# Subtest: Stealth — each mapped W3 region has physical cover reached by a legal source-ground path
+ok 77 - Stealth — each mapped W3 region has physical cover reached by a legal source-ground path
+  ---
+  duration_ms: 13.817743
+  type: 'test'
+  ...
+# Subtest: Stealth — hide occurs ON an unused authored cover and reduces alert only when physically unseen
+ok 78 - Stealth — hide occurs ON an unused authored cover and reduces alert only when physically unseen
+  ---
+  duration_ms: 2.901135
+  type: 'test'
+  ...
+# Subtest: Stealth — cover cannot make the hunter disappear in an adjacent guard's face
+ok 79 - Stealth — cover cannot make the hunter disappear in an adjacent guard's face
+  ---
+  duration_ms: 0.870642
+  type: 'test'
+  ...
+# Subtest: RTS — two-tick overwatch never fires unseen, and never consumes unused RAV
+ok 80 - RTS — two-tick overwatch never fires unseen, and never consumes unused RAV
+  ---
+  duration_ms: 6.235062
+  type: 'test'
+  ...
+# Subtest: RTS — one real enemy enters LOS and watch fires once after the AI response
+ok 81 - RTS — one real enemy enters LOS and watch fires once after the AI response
+  ---
+  duration_ms: 2.493199
+  type: 'test'
+  ...
+# Subtest: RTS — moving squad cancels its watch; no duplicate orders or free simultaneous fire
+ok 82 - RTS — moving squad cancels its watch; no duplicate orders or free simultaneous fire
+  ---
+  duration_ms: 3.196323
+  type: 'test'
+  ...
+# Subtest: Every V136 route remains scoped to the original planet, V6 units and V85 non-mutation
+ok 83 - Every V136 route remains scoped to the original planet, V6 units and V85 non-mutation
+  ---
+  duration_ms: 58.426714
+  type: 'test'
+  ...
+# Subtest: Assault V137: actual living team withdraws beside its home base, 10 AP and no duplicated dispatch
+ok 84 - Assault V137: actual living team withdraws beside its home base, 10 AP and no duplicated dispatch
+  ---
+  duration_ms: 14.935491
+  type: 'test'
+  ...
+# Subtest: Assault V137: remote, down, not deployed, no AP or forged extraction cannot pass
+ok 85 - Assault V137: remote, down, not deployed, no AP or forged extraction cannot pass
+  ---
+  duration_ms: 1.253429
+  type: 'test'
+  ...
+# Subtest: Outer Ops V137: reconnaissance halt delays resolution and gives only a modest documented bonus
+ok 86 - Outer Ops V137: reconnaissance halt delays resolution and gives only a modest documented bonus
+  ---
+  duration_ms: 3.231896
+  type: 'test'
+  ...
+# Subtest: Outer Ops V137: halt respects original midpoint, recalls, previous supplies and workbook source pinning
+ok 87 - Outer Ops V137: halt respects original midpoint, recalls, previous supplies and workbook source pinning
+  ---
+  duration_ms: 1.642286
+  type: 'test'
+  ...
+# Subtest: Stealth V137: protected one-tile movement into a real adjacent W3 cover uses one energy
+ok 88 - Stealth V137: protected one-tile movement into a real adjacent W3 cover uses one energy
+  ---
+  duration_ms: 3.672609
+  type: 'test'
+  ...
+# Subtest: Stealth V137: energy, actual cover, usage cap and adjacent guard prevent free concealment
+ok 89 - Stealth V137: energy, actual cover, usage cap and adjacent guard prevent free concealment
+  ---
+  duration_ms: 2.022641
+  type: 'test'
+  ...
+# Subtest: RTS V137: actual cover stance reduces damage for two ticks and then expires
+ok 90 - RTS V137: actual cover stance reduces damage for two ticks and then expires
+  ---
+  duration_ms: 9.230867
+  type: 'test'
+  ...
+# Subtest: RTS V137: no cover, inactive team, overwatch conflict and movement cannot preserve bonus
+ok 91 - RTS V137: no cover, inactive team, overwatch conflict and movement cannot preserve bonus
+  ---
+  duration_ms: 5.495093
+  type: 'test'
+  ...
+# Subtest: Source preservation: 24 scripts, 12 physical maps and no mutation of V85 territories
+ok 92 - Source preservation: 24 scripts, 12 physical maps and no mutation of V85 territories
+  ---
+  duration_ms: 54.709388
+  type: 'test'
+  ...
+# Subtest: Assault: one actual V6 team surges a bounded distance for 12 AP
+ok 93 - Assault: one actual V6 team surges a bounded distance for 12 AP
+  ---
+  duration_ms: 15.309636
+  type: 'test'
+  ...
+# Subtest: Assault: no burst through a rival, no free AP, no bypassing a defensive hold
+ok 94 - Assault: no burst through a rival, no free AP, no bypassing a defensive hold
+  ---
+  duration_ms: 1.016869
+  type: 'test'
+  ...
+# Subtest: Outer Ops: mid-route bulletin shows public terrain and existing fit members, never a victory forecast
+ok 95 - Outer Ops: mid-route bulletin shows public terrain and existing fit members, never a victory forecast
+  ---
+  duration_ms: 3.341828
+  type: 'test'
+  ...
+# Subtest: Outer Ops: recall or falsified time, source and packet cannot reveal distant opposition
+ok 96 - Outer Ops: recall or falsified time, source and packet cannot reveal distant opposition
+  ---
+  duration_ms: 1.921722
+  type: 'test'
+  ...
+# Subtest: Stealth: acoustic contact is available only from a real W3 covered location and returns bearing, not x
+ok 97 - Stealth: acoustic contact is available only from a real W3 covered location and returns bearing, not x
+  ---
+  duration_ms: 3.372064
+  type: 'test'
+  ...
+# Subtest: Stealth: fog of war hides an unobservable guard, and hearing has no permanent omniscience
+ok 98 - Stealth: fog of war hides an unobservable guard, and hearing has no permanent omniscience
+  ---
+  duration_ms: 1.791819
+  type: 'test'
+  ...
+# Subtest: RTS: real W3-U18 can stabilize a down squad at one physical step, spending 3 RAV
+ok 99 - RTS: real W3-U18 can stabilize a down squad at one physical step, spending 3 RAV
+  ---
+  duration_ms: 8.74781
+  type: 'test'
+  ...
+# Subtest: RTS: no remote medical teleport, unavailable RAV, false medic role or repeated rescue
+ok 100 - RTS: no remote medical teleport, unavailable RAV, false medic role or repeated rescue
+  ---
+  duration_ms: 5.416527
+  type: 'test'
+  ...
+# Subtest: Provenance: 24 real W3 missions and 12 distinct maps remain, free V6 practice cannot capture V85
+ok 101 - Provenance: 24 real W3 missions and 12 distinct maps remain, free V6 practice cannot capture V85
+  ---
+  duration_ms: 57.147856
+  type: 'test'
+  ...
+# Subtest: assault: controlled return advances only back toward real bastion, spends AP, retains member identity
+ok 102 - assault: controlled return advances only back toward real bastion, spends AP, retains member identity
+  ---
+  duration_ms: 17.011222
+  type: 'test'
+  ...
+# Subtest: assault: a rear enemy is never crossed and forbidden orders preserve exactly same state
+ok 103 - assault: a rear enemy is never crossed and forbidden orders preserve exactly same state
+  ---
+  duration_ms: 1.372887
+  type: 'test'
+  ...
+# Subtest: Outer Ops: dispatch freezes intel, sabotage, escort and pressure instead of retroactive cross-mode bonuses
+ok 104 - Outer Ops: dispatch freezes intel, sabotage, escort and pressure instead of retroactive cross-mode bonuses
+  ---
+  duration_ms: 3.383961
+  type: 'test'
+  ...
+# Subtest: Outer Ops: a new mandate captures what is already known; old archive without snapshot still parses
+ok 105 - Outer Ops: a new mandate captures what is already known; old archive without snapshot still parses
+  ---
+  duration_ms: 2.158572
+  type: 'test'
+  ...
+# Subtest: stealth: quiet relay sabotage consumes exactly two energy and avoids automatic alarm if guard is far
+ok 106 - stealth: quiet relay sabotage consumes exactly two energy and avoids automatic alarm if guard is far
+  ---
+  duration_ms: 3.660772
+  type: 'test'
+  ...
+# Subtest: stealth: no remote, close-guard, invisible-resource or forged silent action
+ok 107 - stealth: no remote, close-guard, invisible-resource or forged silent action
+  ---
+  duration_ms: 1.619403
+  type: 'test'
+  ...
+# Subtest: RTS: an actual living squad may leave at real exit but another must remain
+ok 108 - RTS: an actual living squad may leave at real exit but another must remain
+  ---
+  duration_ms: 8.524649
+  type: 'test'
+  ...
+# Subtest: RTS: completed objectives grant a unique receipt including evacuated allies, never free victory
+ok 109 - RTS: completed objectives grant a unique receipt including evacuated allies, never free victory
+  ---
+  duration_ms: 65.371819
+  type: 'test'
+  ...
+# Subtest: RTS: no remote evacuation, last team, holding or abandoning tracked physical cargo
+ok 110 - RTS: no remote evacuation, last team, holding or abandoning tracked physical cargo
+  ---
+  duration_ms: 4.785781
+  type: 'test'
+  ...
+# Subtest: source: all 24 W3 scripts, 72 physical objectives and no V85 mutation remain
+ok 111 - source: all 24 W3 scripts, 72 physical objectives and no V85 mutation remain
+  ---
+  duration_ms: 48.029096
+  type: 'test'
+  ...
+# Subtest: Assault: all regional profiles use only distinct source W3 teams and finite authored wave caps
+ok 112 - Assault: all regional profiles use only distinct source W3 teams and finite authored wave caps
+  ---
+  duration_ms: 13.885403
+  type: 'test'
+  ...
+# Subtest: Assault: a real V6 wave arrives on cadence, once, without overlapping live entry
+ok 113 - Assault: a real V6 wave arrives on cadence, once, without overlapping live entry
+  ---
+  duration_ms: 4.595409
+  type: 'test'
+  ...
+# Subtest: Assault: source profiles persist and finite wave counter never exceeds regional maximum
+ok 114 - Assault: source profiles persist and finite wave counter never exceeds regional maximum
+  ---
+  duration_ms: 2.610594
+  type: 'test'
+  ...
+# Subtest: Outer Ops: active progress displays only true V6 passage names and never a hidden garrison
+ok 115 - Outer Ops: active progress displays only true V6 passage names and never a hidden garrison
+  ---
+  duration_ms: 1.121063
+  type: 'test'
+  ...
+# Subtest: Outer Ops: a halt actually pauses passage travel and recalled teams traverse source IDs back
+ok 116 - Outer Ops: a halt actually pauses passage travel and recalled teams traverse source IDs back
+  ---
+  duration_ms: 1.041395
+  type: 'test'
+  ...
+# Subtest: Infiltration: all 6 W3 regions spawn guards on walkable ground, patrol one tile and avoid all walls
+ok 117 - Infiltration: all 6 W3 regions spawn guards on walkable ground, patrol one tile and avoid all walls
+  ---
+  duration_ms: 30.019684
+  type: 'test'
+  ...
+# Subtest: Infiltration: old legacy patrol inside a wall makes one legal step and saved guardY remains optional
+ok 118 - Infiltration: old legacy patrol inside a wall makes one legal step and saved guardY remains optional
+  ---
+  duration_ms: 2.446741
+  type: 'test'
+  ...
+# Subtest: RTS: environmental hazard hits real active enemy and ally on the same world tick
+ok 119 - RTS: environmental hazard hits real active enemy and ally on the same world tick
+  ---
+  duration_ms: 70.445147
+  type: 'test'
+  ...
+# Subtest: RTS: environment preview gives only source window, not an enemy position
+ok 120 - RTS: environment preview gives only source window, not an enemy position
+  ---
+  duration_ms: 51.145911
+  type: 'test'
+  ...
+# Subtest: Source boundary: no V85 mutation, all 24 scripts and 72 objectives remain
+ok 121 - Source boundary: no V85 mutation, all 24 scripts and 72 objectives remain
+  ---
+  duration_ms: 45.439263
+  type: 'test'
+  ...
+# Subtest: Assault V141: simultaneous combat does not let the array's first fighter kill before a riposte
+ok 122 - Assault V141: simultaneous combat does not let the array's first fighter kill before a riposte
+  ---
+  duration_ms: 9.437254
+  type: 'test'
+  ...
+# Subtest: Assault V141: movement never crosses a living rival, stays in side boundaries, and respects hold
+ok 123 - Assault V141: movement never crosses a living rival, stays in side boundaries, and respects hold
+  ---
+  duration_ms: 0.523627
+  type: 'test'
+  ...
+# Subtest: Assault V141: source V140 regional waves and V115 receipt still function after synchronous exchange
+ok 124 - Assault V141: source V140 regional waves and V115 receipt still function after synchronous exchange
+  ---
+  duration_ms: 4.289003
+  type: 'test'
+  ...
+# Subtest: Outer Ops V141: source movementCost rather than equal passage slots controls segment position
+ok 125 - Outer Ops V141: source movementCost rather than equal passage slots controls segment position
+  ---
+  duration_ms: 1.013995
+  type: 'test'
+  ...
+# Subtest: Outer Ops V141: recall reverses only reached passages; earlier halt costs real time
+ok 126 - Outer Ops V141: recall reverses only reached passages; earlier halt costs real time
+  ---
+  duration_ms: 0.522746
+  type: 'test'
+  ...
+# Subtest: Outer Ops V141: actual V115 routes remain sourced, no reveal of opponents, and no double settlement
+ok 127 - Outer Ops V141: actual V115 routes remain sourced, no reveal of opponents, and no double settlement
+  ---
+  duration_ms: 2.62155
+  type: 'test'
+  ...
+# Subtest: Stealth V141: source guard always follows a physical one-step route toward a real 2D decoy
+ok 128 - Stealth V141: source guard always follows a physical one-step route toward a real 2D decoy
+  ---
+  duration_ms: 22.885548
+  type: 'test'
+  ...
+# Subtest: Stealth V141: decoy saves exact emitted Y while archived older decoy without Y still loads
+ok 129 - Stealth V141: decoy saves exact emitted Y while archived older decoy without Y still loads
+  ---
+  duration_ms: 2.175948
+  type: 'test'
+  ...
+# Subtest: RTS V141: enemy planning avoids next-turn active hazard cells instead of deliberately entering them
+ok 130 - RTS V141: enemy planning avoids next-turn active hazard cells instead of deliberately entering them
+  ---
+  duration_ms: 10.893114
+  type: 'test'
+  ...
+# Subtest: RTS V141: regular source hazards still damage both factions; 24 maps keep their 72 tasks
+ok 131 - RTS V141: regular source hazards still damage both factions; 24 maps keep their 72 tasks
+  ---
+  duration_ms: 44.015691
+  type: 'test'
+  ...
+# Subtest: Assault V142: real paid focus shot is V6 range-limited, spends 12 AP once, then expires
+ok 132 - Assault V142: real paid focus shot is V6 range-limited, spends 12 AP once, then expires
+  ---
+  duration_ms: 14.283434
+  type: 'test'
+  ...
+# Subtest: Assault V142: remote target, obscuring rival, KO group, absent AP and forged save all fail safely
+ok 133 - Assault V142: remote target, obscuring rival, KO group, absent AP and forged save all fail safely
+  ---
+  duration_ms: 0.931502
+  type: 'test'
+  ...
+# Subtest: Outer Ops V142: each offered itinerary is a feasible V6 directed-capacity route
+ok 134 - Outer Ops V142: each offered itinerary is a feasible V6 directed-capacity route
+  ---
+  duration_ms: 381.824723
+  type: 'test'
+  ...
+# Subtest: Outer Ops V142: chosen alternative actually dispatches, debits once, locks the route in archive
+ok 135 - Outer Ops V142: chosen alternative actually dispatches, debits once, locks the route in archive
+  ---
+  duration_ms: 30.702046
+  type: 'test'
+  ...
+# Subtest: Stealth V142: all 6 regions give deterministic one-step path without consulting guard position
+ok 136 - Stealth V142: all 6 regions give deterministic one-step path without consulting guard position
+  ---
+  duration_ms: 58.731686
+  type: 'test'
+  ...
+# Subtest: Stealth V142: no teleport, automatic sabotage, external source, or action at completed waypoint
+ok 137 - Stealth V142: no teleport, automatic sabotage, external source, or action at completed waypoint
+  ---
+  duration_ms: 0.706929
+  type: 'test'
+  ...
+# Subtest: RTS V142: guided step obeys source map, power, next-turn weather and one enemy reaction
+ok 138 - RTS V142: guided step obeys source map, power, next-turn weather and one enemy reaction
+  ---
+  duration_ms: 161.952957
+  type: 'test'
+  ...
+# Subtest: RTS V142: hidden mission objective cannot be used as a waypoint before observing it
+ok 139 - RTS V142: hidden mission objective cannot be used as a waypoint before observing it
+  ---
+  duration_ms: 2.269086
+  type: 'test'
+  ...
+# Subtest: Assault V143: paid 14-AP stance mitigates actual incoming fire for two exchanges only
+ok 140 - Assault V143: paid 14-AP stance mitigates actual incoming fire for two exchanges only
+  ---
+  duration_ms: 15.787155
+  type: 'test'
+  ...
+# Subtest: Assault V143: fake source, remote base, depleted AP, forged guard until all reject safely
+ok 141 - Assault V143: fake source, remote base, depleted AP, forged guard until all reject safely
+  ---
+  duration_ms: 0.895609
+  type: 'test'
+  ...
+# Subtest: Outer Ops V143: only actual current V6 source-passage incidents can be resolved
+ok 142 - Outer Ops V143: only actual current V6 source-passage incidents can be resolved
+  ---
+  duration_ms: 3.297633
+  type: 'test'
+  ...
+# Subtest: Outer Ops V143: physically delayed detour spends no RAV and freezes route for ten seconds
+ok 143 - Outer Ops V143: physically delayed detour spends no RAV and freezes route for ten seconds
+  ---
+  duration_ms: 2.314525
+  type: 'test'
+  ...
+# Subtest: Outer Ops V143: forged incident, wrong resource cost, recall and second response are rejected
+ok 144 - Outer Ops V143: forged incident, wrong resource cost, recall and second response are rejected
+  ---
+  duration_ms: 1.643188
+  type: 'test'
+  ...
+# Subtest: Stealth V143: a two-tile dash burns two energy and triggers two actual patrol decisions
+ok 145 - Stealth V143: a two-tile dash burns two energy and triggers two actual patrol decisions
+  ---
+  duration_ms: 3.560013
+  type: 'test'
+  ...
+# Subtest: Stealth V143: no unauthorized wall-skipping, cloaked dash, no-energy dash or forged archive
+ok 146 - Stealth V143: no unauthorized wall-skipping, cloaked dash, no-energy dash or forged archive
+  ---
+  duration_ms: 1.986487
+  type: 'test'
+  ...
+# Subtest: RTS V143: three-step march advances physical tiles, enemy turns and preserves RAV
+ok 147 - RTS V143: three-step march advances physical tiles, enemy turns and preserves RAV
+  ---
+  duration_ms: 274.687833
+  type: 'test'
+  ...
+# Subtest: RTS V143: no hidden-objective autopilot, phase bypass, fake squad or new territory control
+ok 148 - RTS V143: no hidden-objective autopilot, phase bypass, fake squad or new territory control
+  ---
+  duration_ms: 3.070796
+  type: 'test'
+  ...
+# Subtest: V143 still preserves all 24 W3 scenarios and the V6 source without a campaign mutation
+ok 149 - V143 still preserves all 24 W3 scenarios and the V6 source without a campaign mutation
+  ---
+  duration_ms: 49.697481
+  type: 'test'
+  ...
+# Subtest: Assault V144: two real allies withdraw together, spend exactly 16 AP and retain IDs without an extra combat tick
+ok 150 - Assault V144: two real allies withdraw together, spend exactly 16 AP and retain IDs without an extra combat tick
+  ---
+  duration_ms: 11.21428
+  type: 'test'
+  ...
+# Subtest: Assault V144: a rear enemy, non-deployed team, cost shortage and forged receipt never yield a free regroup
+ok 151 - Assault V144: a rear enemy, non-deployed team, cost shortage and forged receipt never yield a free regroup
+  ---
+  duration_ms: 0.710164
+  type: 'test'
+  ...
+# Subtest: Outer Ops V144: an author-legal route switch can be ordered ONLY before leaving the first passage
+ok 152 - Outer Ops V144: an author-legal route switch can be ordered ONLY before leaving the first passage
+  ---
+  duration_ms: 32.120862
+  type: 'test'
+  ...
+# Subtest: Outer Ops V144: cannot forge passage IDs, RAV or the historical deadline after route change
+ok 153 - Outer Ops V144: cannot forge passage IDs, RAV or the historical deadline after route change
+  ---
+  duration_ms: 0.649694
+  type: 'test'
+  ...
+# Subtest: Infiltration V144: reinforcement is optional, uses a real walkable gate and acts on real ticks
+ok 154 - Infiltration V144: reinforcement is optional, uses a real walkable gate and acts on real ticks
+  ---
+  duration_ms: 2.536755
+  type: 'test'
+  ...
+# Subtest: Infiltration V144: two guards move physically and fake guard placement is refused
+ok 155 - Infiltration V144: two guards move physically and fake guard placement is refused
+  ---
+  duration_ms: 1.504012
+  type: 'test'
+  ...
+# Subtest: RTS V144: two physical shooters deal two hits for 2 RAV in exactly one AI turn
+ok 156 - RTS V144: two physical shooters deal two hits for 2 RAV in exactly one AI turn
+  ---
+  duration_ms: 19.577819
+  type: 'test'
+  ...
+# Subtest: RTS V144: duplicate squad, invisible target, 1 RAV and inactive phase reject without mutation
+ok 157 - RTS V144: duplicate squad, invisible target, 1 RAV and inactive phase reject without mutation
+  ---
+  duration_ms: 2.615511
+  type: 'test'
+  ...
+# Subtest: Source V6/W3: cross-mode V144 actions still cannot write a free mission result to the campaign
+ok 158 - Source V6/W3: cross-mode V144 actions still cannot write a free mission result to the campaign
+  ---
+  duration_ms: 36.605355
+  type: 'test'
+  ...
+# Subtest: V145 assault: guardian receives one actual damage point from his nearby protected ally; total damage conserved
+ok 159 - V145 assault: guardian receives one actual damage point from his nearby protected ally; total damage conserved
+  ---
+  duration_ms: 10.936868
+  type: 'test'
+  ...
+# Subtest: V145 assault: real paid interposition persists for two ticks, expires and rejects duplicate
+ok 160 - V145 assault: real paid interposition persists for two ticks, expires and rejects duplicate
+  ---
+  duration_ms: 3.809343
+  type: 'test'
+  ...
+# Subtest: V145 assault: no free damage-redirection from far, duplicate, down or counterfeit squads
+ok 161 - V145 assault: no free damage-redirection from far, duplicate, down or counterfeit squads
+  ---
+  duration_ms: 0.560962
+  type: 'test'
+  ...
+# Subtest: V145 Outer Ops: a V144 legal reroute consumes FIVE seconds without entering a source passage
+ok 162 - V145 Outer Ops: a V144 legal reroute consumes FIVE seconds without entering a source passage
+  ---
+  duration_ms: 32.066761
+  type: 'test'
+  ...
+# Subtest: V145 Outer Ops: source passage and delayed return dates survive weighted route and unique settlement
+ok 163 - V145 Outer Ops: source passage and delayed return dates survive weighted route and unique settlement
+  ---
+  duration_ms: 28.847033
+  type: 'test'
+  ...
+# Subtest: V145 stealth: second guard blocks silent sabotage when primary is far from physical relay
+ok 164 - V145 stealth: second guard blocks silent sabotage when primary is far from physical relay
+  ---
+  duration_ms: 2.634128
+  type: 'test'
+  ...
+# Subtest: V145 stealth: acoustic listening recognizes physically nearby secondary patrol, never cheats original guard
+ok 165 - V145 stealth: acoustic listening recognizes physically nearby secondary patrol, never cheats original guard
+  ---
+  duration_ms: 4.914993
+  type: 'test'
+  ...
+# Subtest: V145 stealth: two guards never merge into the same solid tile on a regular reaction
+ok 166 - V145 stealth: two guards never merge into the same solid tile on a regular reaction
+  ---
+  duration_ms: 3.087872
+  type: 'test'
+  ...
+# Subtest: V145 RTS: an actual W3 post can be physically transferred and its existing hold progress preserved
+ok 167 - V145 RTS: an actual W3 post can be physically transferred and its existing hold progress preserved
+  ---
+  duration_ms: 18.910659
+  type: 'test'
+  ...
+# Subtest: V145 RTS: same, distant, down, twice-relieved or missing holder cannot claim a free hold
+ok 168 - V145 RTS: same, distant, down, twice-relieved or missing holder cannot claim a free hold
+  ---
+  duration_ms: 13.383058
+  type: 'test'
+  ...
+# Subtest: V145 source boundaries: 24 RTS briefs, 72 goals, and untouched V85 results
+ok 169 - V145 source boundaries: 24 RTS briefs, 72 goals, and untouched V85 results
+  ---
+  duration_ms: 48.281774
+  type: 'test'
+  ...
+# Subtest: V147 V115 UI restores original active mission and territorial target on refresh
+ok 170 - V147 V115 UI restores original active mission and territorial target on refresh
+  ---
+  duration_ms: 1.068015
+  type: 'test'
+  ...
+# Subtest: V147 mounts real operational V6 rules and screens, not fabricated planet/war missions
+ok 171 - V147 mounts real operational V6 rules and screens, not fabricated planet/war missions
+  ---
+  duration_ms: 0.179737
+  type: 'test'
+  ...
+# Subtest: V147 browser includes all four real game modes, persisted reload and no false source-world claim
+ok 172 - V147 browser includes all four real game modes, persisted reload and no false source-world claim
+  ---
+  duration_ms: 0.270502
+  type: 'test'
+  ...
+# Subtest: V134 authoring exports seven transparent independent source layers
+ok 173 - V134 authoring exports seven transparent independent source layers
+  ---
+  duration_ms: 1.386347
+  type: 'test'
+  ...
+# Subtest: five segmented glyph rows, source-identified lid and true alpha source layers
+ok 174 - five segmented glyph rows, source-identified lid and true alpha source layers
+  ---
+  duration_ms: 0.262299
+  type: 'test'
+  ...
+# Subtest: the same layered asset is actually selected by the war view and armory
+ok 175 - the same layered asset is actually selected by the war view and armory
+  ---
+  duration_ms: 0.337911
+  type: 'test'
+  ...
+# Subtest: V134 authors all 44 study dossiers, with stable existing campaign missions
+ok 176 - V134 authors all 44 study dossiers, with stable existing campaign missions
+  ---
+  duration_ms: 2.564786
+  type: 'test'
+  ...
+# Subtest: no study unlock from rank alone, nonexistent trophies, wrong hunts or missing rites
+ok 177 - no study unlock from rank alone, nonexistent trophies, wrong hunts or missing rites
+  ---
+  duration_ms: 0.64676
+  type: 'test'
+  ...
+# Subtest: all 44 replicas can be earned only by validated study and exactly once
+ok 178 - all 44 replicas can be earned only by validated study and exactly once
+  ---
+  duration_ms: 1.180873
+  type: 'test'
+  ...
+# Subtest: owner mismatch and forged/duplicate/future gauntlet receipts are rejected
+ok 179 - owner mismatch and forged/duplicate/future gauntlet receipts are rejected
+  ---
+  duration_ms: 0.41775
+  type: 'test'
+  ...
+# Subtest: Save V13 path, transactional equip and source-protected campaign contracts are wired
+ok 180 - Save V13 path, transactional equip and source-protected campaign contracts are wired
+  ---
+  duration_ms: 2.082541
+  type: 'test'
+  ...
+# Subtest: V131 defaults to hologram and preserves the explicit classic preference
+ok 181 - V131 defaults to hologram and preserves the explicit classic preference
+  ---
+  duration_ms: 14.438225
+  type: 'test'
+  ...
+# Subtest: V131 uses one live atlas and keeps presentation separate from war writes
+ok 182 - V131 uses one live atlas and keeps presentation separate from war writes
+  ---
+  duration_ms: 0.981646
+  type: 'test'
+  ...
+# Subtest: V135 contains 16 physical independent SVG source layers, four families
+ok 183 - V135 contains 16 physical independent SVG source layers, four families
+  ---
+  duration_ms: 1.605863
+  type: 'test'
+  ...
+# Subtest: film-inspired controls do not accidentally reuse the Jungle Hunter five-row display
+ok 184 - film-inspired controls do not accidentally reuse the Jungle Hunter five-row display
+  ---
+  duration_ms: 0.479221
+  type: 'test'
+  ...
+# Subtest: live war and armory both reference same layered V135 renderer, retaining original fallback
+ok 185 - live war and armory both reference same layered V135 renderer, retaining original fallback
+  ---
+  duration_ms: 130.011312
+  type: 'test'
+  ...
+# Subtest: a real Sharp PNG export script maintains traceability for all 16 layers
+ok 186 - a real Sharp PNG export script maintains traceability for all 16 layers
+  ---
+  duration_ms: 0.358792
+  type: 'test'
+  ...
+# Subtest: 54 catalogued identities, individually traceable sources and no invented 1:1 certifications
+ok 187 - 54 catalogued identities, individually traceable sources and no invented 1:1 certifications
+  ---
+  duration_ms: 2.092946
+  type: 'test'
+  ...
+# Subtest: true ranks unlock only configured models, challenge models never auto-awarded
+ok 188 - true ranks unlock only configured models, challenge models never auto-awarded
+  ---
+  duration_ms: 0.477859
+  type: 'test'
+  ...
+# Subtest: preference isolated per hunter; malformed, cross-owner or locked choices safely fall back
+ok 189 - preference isolated per hunter; malformed, cross-owner or locked choices safely fall back
+  ---
+  duration_ms: 0.45141
+  type: 'test'
+  ...
+# Subtest: single live atlas, no combat patch, no duplicate campaign session and correct equip wiring
+ok 190 - single live atlas, no combat patch, no duplicate campaign session and correct equip wiring
+  ---
+  duration_ms: 1.104549
+  type: 'test'
+  ...
+# Subtest: global gauntlet equipment is isolated by hunter, rank and local storage permissions
+ok 191 - global gauntlet equipment is isolated by hunter, rank and local storage permissions
+  ---
+  duration_ms: 2.141738
+  type: 'test'
+  ...
+# Subtest: gauntlet UI integrates with the REAL ship armory, character and clan war
+ok 192 - gauntlet UI integrates with the REAL ship armory, character and clan war
+  ---
+  duration_ms: 3.063546
+  type: 'test'
+  ...
+# Subtest: Jungle Hunter blockout has corrected five horizontal glyph rows and safe unique SVG paint IDs
+ok 193 - Jungle Hunter blockout has corrected five horizontal glyph rows and safe unique SVG paint IDs
+  ---
+  duration_ms: 0.313476
+  type: 'test'
+  ...
+# Subtest: all modified TS and TSX files at least parse, including the full GameClient
+ok 194 - all modified TS and TSX files at least parse, including the full GameClient
+  ---
+  duration_ms: 959.443962
+  type: 'test'
+  ...
+# Subtest: gauntlet sounds are original synth events with non-combat integration
+ok 195 - gauntlet sounds are original synth events with non-combat integration
+  ---
+  duration_ms: 1.144668
+  type: 'test'
+  ...
+# Subtest: reconnaissance, sabotage, pressure and escorts visibly affect other V115 formats
+ok 196 - reconnaissance, sabotage, pressure and escorts visibly affect other V115 formats
+  ---
+  duration_ms: 13.420294
+  type: 'test'
+  ...
+# Subtest: V115 uses only V6 units, unique people and workbook RAV; it creates no V3/campaign front
+ok 197 - V115 uses only V6 units, unique people and workbook RAV; it creates no V3/campaign front
+  ---
+  duration_ms: 1.651721
+  type: 'test'
+  ...
+# Subtest: all four operation formats are dispatchable on validated passages, with single upkeep debit
+ok 198 - all four operation formats are dispatchable on validated passages, with single upkeep debit
+  ---
+  duration_ms: 13.500974
+  type: 'test'
+  ...
+# Subtest: missing routes, duplicate people, over-command formations and own home remain blocked
+ok 199 - missing routes, duplicate people, over-command formations and own home remain blocked
+  ---
+  duration_ms: 0.442797
+  type: 'test'
+  ...
+# Subtest: assault cannot spawn an unreserved unit or spend AP twice; tick advances and produces one report
+ok 200 - assault cannot spawn an unreserved unit or spend AP twice; tick advances and produces one report
+  ---
+  duration_ms: 5.887166
+  type: 'test'
+  ...
+# Subtest: stealth is grid-based: no remote sabotage, no walking through solid walls, and patrols react
+ok 201 - stealth is grid-based: no remote sabotage, no walking through solid walls, and patrols react
+  ---
+  duration_ms: 2.89788
+  type: 'test'
+  ...
+# Subtest: an actual stealth path reaches the relay, sabotages it and extracts with one unique V6 receipt
+ok 202 - an actual stealth path reaches the relay, sabotages it and extracts with one unique V6 receipt
+  ---
+  duration_ms: 7.086906
+  type: 'test'
+  ...
+# Subtest: RTS movement and enemy response are simultaneous per order, with controlled occupancy
+ok 203 - RTS movement and enemy response are simultaneous per order, with controlled occupancy
+  ---
+  duration_ms: 3.877283
+  type: 'test'
+  ...
+# Subtest: Outer Ops completes only at dueAt, reconciles missing UI time, and never awards twice
+ok 204 - Outer Ops completes only at dueAt, reconciles missing UI time, and never awards twice
+  ---
+  duration_ms: 1.420178
+  type: 'test'
+  ...
+# Subtest: up to three independent Outer Ops can run; the fourth is rejected
+ok 205 - up to three independent Outer Ops can run; the fourth is rejected
+  ---
+  duration_ms: 0.949218
+  type: 'test'
+  ...
+# Subtest: manual retreat produces a unique report and frees the same identified members
+ok 206 - manual retreat produces a unique report and frees the same identified members
+  ---
+  duration_ms: 0.638738
+  type: 'test'
+  ...
+# Subtest: archive roundtrip and source pinning reject corrupt or cross-context payloads
+ok 207 - archive roundtrip and source pinning reject corrupt or cross-context payloads
+  ---
+  duration_ms: 2.020889
+  type: 'test'
+  ...
+# Subtest: signal and late recall remain readable with original outbound deadline
+ok 208 - signal and late recall remain readable with original outbound deadline
+  ---
+  duration_ms: 6.652712
+  type: 'test'
+  ...
+# Subtest: late recall retains valid signal after forced pace, halt and incident detour
+ok 209 - late recall retains valid signal after forced pace, halt and incident detour
+  ---
+  duration_ms: 4.010421
+  type: 'test'
+  ...
+# Subtest: inspect actual public source passage once, pay one RAV, preserve team and defer benefit
+ok 210 - inspect actual public source passage once, pay one RAV, preserve team and defer benefit
+  ---
+  duration_ms: 6.905176
+  type: 'test'
+  ...
+# Subtest: new inspections refuse a paused convoi and can resume on same passage after pause
+ok 211 - new inspections refuse a paused convoi and can resume on same passage after pause
+  ---
+  duration_ms: 1.107233
+  type: 'test'
+  ...
+# Subtest: inspection and forced pace coexist without moving passage instantly or losing save
+ok 212 - inspection and forced pace coexist without moving passage instantly or losing save
+  ---
+  duration_ms: 1.406367
+  type: 'test'
+  ...
+# Subtest: new inspection is blocked throughout a real passage detour
+ok 213 - new inspection is blocked throughout a real passage detour
+  ---
+  duration_ms: 1.162004
+  type: 'test'
+  ...
+# Subtest: bulletin, inspected passage and late recall survive a complete save roundtrip
+ok 214 - bulletin, inspected passage and late recall survive a complete save roundtrip
+  ---
+  duration_ms: 0.965313
+  type: 'test'
+  ...
+# Subtest: real PR55 runtime archives, including prior inspection while halted, remain readable
+ok 215 - real PR55 runtime archives, including prior inspection while halted, remain readable
+  ---
+  duration_ms: 2.132915
+  type: 'test'
+  ...
+# Subtest: falsified inspection cannot become saved public source evidence
+ok 216 - falsified inspection cannot become saved public source evidence
+  ---
+  duration_ms: 1.222424
+  type: 'test'
+  ...
+# Subtest: force pace preserves exact position and advances continuously on the actual V6 passages
+ok 217 - force pace preserves exact position and advances continuously on the actual V6 passages
+  ---
+  duration_ms: 5.754419
+  type: 'test'
+  ...
+# Subtest: forced pace survives save, recall and cannot be combined with other route changes
+ok 218 - forced pace survives save, recall and cannot be combined with other route changes
+  ---
+  duration_ms: 5.35125
+  type: 'test'
+  ...
+# Subtest: halt, incident, diversion, insufficient RAV and late orders cannot be accelerated
+ok 219 - halt, incident, diversion, insufficient RAV and late orders cannot be accelerated
+  ---
+  duration_ms: 0.698346
+  type: 'test'
+  ...
+# Subtest: archives generated by the real PR57 runtime retain paid pace and recall on this branch
+ok 220 - archives generated by the real PR57 runtime retain paid pace and recall on this branch
+  ---
+  duration_ms: 2.070252
+  type: 'test'
+  ...
+# Subtest: field bulletin waits for actual halfway progress after pace acceleration
+ok 221 - field bulletin waits for actual halfway progress after pace acceleration
+  ---
+  duration_ms: 5.208999
+  type: 'test'
+  ...
+# Subtest: Outer Ops recalls require an authorized ongoing mission, not an instant team release
+ok 222 - Outer Ops recalls require an authorized ongoing mission, not an instant team release
+  ---
+  duration_ms: 4.811399
+  type: 'test'
+  ...
+# Subtest: due recalls end exactly once as safe withdrawals without XP, wounds or territory rewards
+ok 223 - due recalls end exactly once as safe withdrawals without XP, wounds or territory rewards
+  ---
+  duration_ms: 1.337424
+  type: 'test'
+  ...
+# Subtest: forged recall deadlines, foreign rules and impossible timestamps preserve archive protection
+ok 224 - forged recall deadlines, foreign rules and impossible timestamps preserve archive protection
+  ---
+  duration_ms: 2.247685
+  type: 'test'
+  ...
+# Subtest: voluntary immediate withdrawal does not wound or level a dormant combat team
+ok 225 - voluntary immediate withdrawal does not wound or level a dormant combat team
+  ---
+  duration_ms: 0.622744
+  type: 'test'
+  ...
+# Subtest: V140 workbook retains 45 inherited sheets and adds FOUR substantial backlog/QA/priority/dashboard worksheets
+ok 226 - V140 workbook retains 45 inherited sheets and adds FOUR substantial backlog/QA/priority/dashboard worksheets
+  ---
+  duration_ms: 1.075666
+  type: 'test'
+  ...
+# Subtest: V140 source backlog includes four unique implemented pilots, 26 open V139 requirements, 24 QA IDs
+ok 227 - V140 source backlog includes four unique implemented pilots, 26 open V139 requirements, 24 QA IDs
+  ---
+  duration_ms: 3.65556
+  type: 'test'
+  ...
+# Subtest: V140 preserves 1200 design-only variants, 24 RTS missions, 12 maps, 36 W5 and a formula-driven dashboard
+ok 228 - V140 preserves 1200 design-only variants, 24 RTS missions, 12 maps, 36 W5 and a formula-driven dashboard
+  ---
+  duration_ms: 6.978755
+  type: 'test'
+  ...
+# Subtest: V144 production supplement has 9 real worksheets and links to intact V143 historical workbook
+ok 229 - V144 production supplement has 9 real worksheets and links to intact V143 historical workbook
+  ---
+  duration_ms: 0.822501
+  type: 'test'
+  ...
+# Subtest: V144 has 48 unique production tasks, 40 QA and 16 cross-mode contracts
+ok 230 - V144 has 48 unique production tasks, 40 QA and 16 cross-mode contracts
+  ---
+  duration_ms: 0.724875
+  type: 'test'
+  ...
+# Subtest: V144 formulas and source counts are not hardcoded completion or corrupted history
+ok 231 - V144 formulas and source counts are not hardcoded completion or corrupted history
+  ---
+  duration_ms: 0.620271
+  type: 'test'
+  ...
+# Subtest: V144 incremental XLSX has 9 genuine tabs; it links to historical V143 instead of pretending 73 copies
+ok 232 - V144 incremental XLSX has 9 genuine tabs; it links to historical V143 instead of pretending 73 copies
+  ---
+  duration_ms: 0.840127
+  type: 'test'
+  ...
+# Subtest: V144 contains 52 distinct requirements, 32 QA receipts, 16 inter-mode checks, and all four source mechanics
+ok 233 - V144 contains 52 distinct requirements, 32 QA receipts, 16 inter-mode checks, and all four source mechanics
+  ---
+  duration_ms: 0.797783
+  type: 'test'
+  ...
+# Subtest: V144 dashboard has formula-driven status, historical design volumes, no spreadsheet errors
+ok 234 - V144 dashboard has formula-driven status, historical design volumes, no spreadsheet errors
+  ---
+  duration_ms: 0.241559
+  type: 'test'
+  ...
+# Subtest: V144 XLSX is the real companion of the preserved V143 73-sheet ledger
+ok 235 - V144 XLSX is the real companion of the preserved V143 73-sheet ledger
+  ---
+  duration_ms: 0.952313
+  type: 'test'
+  ...
+# Subtest: V144 companion contains 64 requirements, 24 QA, 12 mapping safeguards and 20 art/gameplay gaps
+ok 236 - V144 companion contains 64 requirements, 24 QA, 12 mapping safeguards and 20 art/gameplay gaps
+  ---
+  duration_ms: 0.989328
+  type: 'test'
+  ...
+# Subtest: V144 data retains no false claim of V85 writes or completed 1:1 levels
+ok 237 - V144 data retains no false claim of V85 writes or completed 1:1 levels
+  ---
+  duration_ms: 0.479071
+  type: 'test'
+  ...
+# Subtest: V145 binary XLSX has 19 real sheets and preserves every V144 companion page
+ok 238 - V145 binary XLSX has 19 real sheets and preserves every V144 companion page
+  ---
+  duration_ms: 1.030298
+  type: 'test'
+  ...
+# Subtest: V145 workbook retains 32 source-linked requirements, 24 QA, 14 guards and 12 map anti-forgery examples
+ok 239 - V145 workbook retains 32 source-linked requirements, 24 QA, 14 guards and 12 map anti-forgery examples
+  ---
+  duration_ms: 1.180501
+  type: 'test'
+  ...
+# Subtest: V145 ledger keeps W3-K unpaired with CON-T and formula-driven non-conquest status
+ok 240 - V145 ledger keeps W3-K unpaired with CON-T and formula-driven non-conquest status
+  ---
+  duration_ms: 0.637776
+  type: 'test'
+  ...
+# Subtest: V146 XLSX has 26 actual sheets, preserving all nine V144 and 19 V145 legacy sheets
+ok 241 - V146 XLSX has 26 actual sheets, preserving all nine V144 and 19 V145 legacy sheets
+  ---
+  duration_ms: 0.77516
+  type: 'test'
+  ...
+# Subtest: V146 workbook has 32 four-mode requirements, 24 QA, 12 historical map examples and 12 open roadmap tasks
+ok 242 - V146 workbook has 32 four-mode requirements, 24 QA, 12 historical map examples and 12 open roadmap tasks
+  ---
+  duration_ms: 2.899583
+  type: 'test'
+  ...
+# Subtest: V146 source-origin ledger maintains the no-fake-mapping barrier and dynamic dashboard
+ok 243 - V146 source-origin ledger maintains the no-fake-mapping barrier and dynamic dashboard
+  ---
+  duration_ms: 1.085521
+  type: 'test'
+  ...
+# Subtest: V147 XLSX has 33 true worksheets: all 26 V146 sheets plus 7 new production/QA views
+ok 244 - V147 XLSX has 33 true worksheets: all 26 V146 sheets plus 7 new production/QA views
+  ---
+  duration_ms: 0.979263
+  type: 'test'
+  ...
+# Subtest: V147 workbook tracks 20 requirements, 24 QA cases, 16 W3 invariants, 24 RTS source scenarios and 11 open PRs
+ok 245 - V147 workbook tracks 20 requirements, 24 QA cases, 16 W3 invariants, 24 RTS source scenarios and 11 open PRs
+  ---
+  duration_ms: 1.820001
+  type: 'test'
+  ...
+# Subtest: V147 fidelity register and dashboard do not claim cinema authenticity or automatic V85 conquest
+ok 246 - V147 fidelity register and dashboard do not claim cinema authenticity or automatic V85 conquest
+  ---
+  duration_ms: 0.985242
+  type: 'test'
+  ...
+# Subtest: le classeur V130 contient 17 vrais onglets, pas un CSV renommé
+ok 247 - le classeur V130 contient 17 vrais onglets, pas un CSV renommé
+  ---
+  duration_ms: 1.127683
+  type: 'test'
+  ...
+# Subtest: les 1 200 IDs réels de l'Excel correspondent exactement au générateur du jeu
+ok 248 - les 1 200 IDs réels de l'Excel correspondent exactement au générateur du jeu
+  ---
+  duration_ms: 8.182571
+  type: 'test'
+  ...
+# Subtest: les plans W3, W5, routes et backlog de production sont identifiables dans l'Excel
+ok 249 - les plans W3, W5, routes et backlog de production sont identifiables dans l'Excel
+  ---
+  duration_ms: 164.210227
+  type: 'test'
+  ...
+# Subtest: la source RTS doit venir de l'onglet Scénarios RTS même si un faux ID existe ailleurs
+ok 250 - la source RTS doit venir de l'onglet Scénarios RTS même si un faux ID existe ailleurs
+  ---
+  duration_ms: 2.132834
+  type: 'test'
+  ...
+# Subtest: XLSX V134 contains prior 17 sheets and one appended formatted, editable production sheet
+ok 251 - XLSX V134 contains prior 17 sheets and one appended formatted, editable production sheet
+  ---
+  duration_ms: 1.733101
+  type: 'test'
+  ...
+# Subtest: 43 V134 tasks (19 shared +24 W3) and eight new QA checks are traceable
+ok 252 - 43 V134 tasks (19 shared +24 W3) and eight new QA checks are traceable
+  ---
+  duration_ms: 2.698424
+  type: 'test'
+  ...
+# Subtest: original V120 design-only atlas and W3 catalogs survive intact
+ok 253 - original V120 design-only atlas and W3 catalogs survive intact
+  ---
+  duration_ms: 2.26468
+  type: 'test'
+  ...
+# Subtest: production Excel V135 preserves 18 sheets and adds separate parallel modes plus QA
+ok 254 - production Excel V135 preserves 18 sheets and adds separate parallel modes plus QA
+  ---
+  duration_ms: 1.317255
+  type: 'test'
+  ...
+# Subtest: 48 mode tasks and 24 QA IDs are unique, source V120/W3/W5 unchanged
+ok 255 - 48 mode tasks and 24 QA IDs are unique, source V120/W3/W5 unchanged
+  ---
+  duration_ms: 6.588586
+  type: 'test'
+  ...
+# Subtest: V136 workbook: 24 real XLSX worksheets; 20 inherited and 4 new production worksheets
+ok 256 - V136 workbook: 24 real XLSX worksheets; 20 inherited and 4 new production worksheets
+  ---
+  duration_ms: 1.222715
+  type: 'test'
+  ...
+# Subtest: V136 workbook: 48 uniquely tracked mode requirements, 32 tests, 16 cross-mode interfaces
+ok 257 - V136 workbook: 48 uniquely tracked mode requirements, 32 tests, 16 cross-mode interfaces
+  ---
+  duration_ms: 5.498541
+  type: 'test'
+  ...
+# Subtest: V136 workbook: source variations and W3/W5 geography remain untouched
+ok 258 - V136 workbook: source variations and W3/W5 geography remain untouched
+  ---
+  duration_ms: 2.955586
+  type: 'test'
+  ...
+# Subtest: V137 workbook has 31 worksheets and preserves 24 V136 sheets
+ok 259 - V137 workbook has 31 worksheets and preserves 24 V136 sheets
+  ---
+  duration_ms: 1.546405
+  type: 'test'
+  ...
+# Subtest: V137 includes 13 tasks and 10 QA checkpoints for each of four game modes
+ok 260 - V137 includes 13 tasks and 10 QA checkpoints for each of four game modes
+  ---
+  duration_ms: 6.2191
+  type: 'test'
+  ...
+# Subtest: V137 catalogue IDs, existing lore sheets and dashboard formulas survive
+ok 261 - V137 catalogue IDs, existing lore sheets and dashboard formulas survive
+  ---
+  duration_ms: 6.271898
+  type: 'test'
+  ...
+# Subtest: V138 production workbook contains 38 genuine Excel sheets, not renamed CSV
+ok 262 - V138 production workbook contains 38 genuine Excel sheets, not renamed CSV
+  ---
+  duration_ms: 1.008637
+  type: 'test'
+  ...
+# Subtest: V138 has 14 production requirements, 12 QA per mode and 24 shared interactions
+ok 263 - V138 has 14 production requirements, 12 QA per mode and 24 shared interactions
+  ---
+  duration_ms: 6.556091
+  type: 'test'
+  ...
+# Subtest: Source catalog fidelity and formula-based dashboard remain unchanged
+ok 264 - Source catalog fidelity and formula-based dashboard remain unchanged
+  ---
+  duration_ms: 6.44161
+  type: 'test'
+  ...
+# Subtest: V139 45 XLSX sheets retain all earlier V130-V138 production and QA
+ok 265 - V139 45 XLSX sheets retain all earlier V130-V138 production and QA
+  ---
+  duration_ms: 1.047825
+  type: 'test'
+  ...
+# Subtest: V139 contains 15 requirements and 14 QA per mode with 28 cross-mode contracts
+ok 266 - V139 contains 15 requirements and 14 QA per mode with 28 cross-mode contracts
+  ---
+  duration_ms: 6.96048
+  type: 'test'
+  ...
+# Subtest: V139 original 1200 dossiers plus 24 W3 RTS, 12 W3 maps and 36 W5 survive
+ok 267 - V139 original 1200 dossiers plus 24 W3 RTS, 12 W3 maps and 36 W5 survive
+  ---
+  duration_ms: 6.779863
+  type: 'test'
+  ...
+# Subtest: V140 workbook contains 52 original-plus-production sheets and preserves every V139 catalog
+ok 268 - V140 workbook contains 52 original-plus-production sheets and preserves every V139 catalog
+  ---
+  duration_ms: 1.618032
+  type: 'test'
+  ...
+# Subtest: V140 64 production specs, 64 QA checks and 32 cross-mode IDs are all unique
+ok 269 - V140 64 production specs, 64 QA checks and 32 cross-mode IDs are all unique
+  ---
+  duration_ms: 10.747621
+  type: 'test'
+  ...
+# Subtest: V140 old source catalog, QA links and formula dashboard remain physically intact
+ok 270 - V140 old source catalog, QA links and formula dashboard remain physically intact
+  ---
+  duration_ms: 10.577138
+  type: 'test'
+  ...
+# Subtest: V141 workbook has 59 real sheets and keeps all 52 V140 originals
+ok 271 - V141 workbook has 59 real sheets and keeps all 52 V140 originals
+  ---
+  duration_ms: 1.591221
+  type: 'test'
+  ...
+# Subtest: V141: 68 requirements, 72 QA checks, 36 interactions with unique IDs
+ok 272 - V141: 68 requirements, 72 QA checks, 36 interactions with unique IDs
+  ---
+  duration_ms: 12.407846
+  type: 'test'
+  ...
+# Subtest: V141 source variation IDs and formula-based dashboard survive intact
+ok 273 - V141 source variation IDs and formula-based dashboard survive intact
+  ---
+  duration_ms: 10.521435
+  type: 'test'
+  ...
+# Subtest: V142 workbook is real XLSX with 66 sheets and all V141 sheets retained
+ok 274 - V142 workbook is real XLSX with 66 sheets and all V141 sheets retained
+  ---
+  duration_ms: 1.770308
+  type: 'test'
+  ...
+# Subtest: V142 records 72 unique specifications, 80 unique QA and 40 cross-mode IDs
+ok 275 - V142 records 72 unique specifications, 80 unique QA and 40 cross-mode IDs
+  ---
+  duration_ms: 13.960449
+  type: 'test'
+  ...
+# Subtest: V142 preserves 1200 design variants, source missions, and formula-linked dashboard
+ok 276 - V142 preserves 1200 design variants, source missions, and formula-linked dashboard
+  ---
+  duration_ms: 6.931468
+  type: 'test'
+  ...
+# Subtest: V143 workbook is a real XLSX with 73 sheets retaining all V142 catalogs
+ok 277 - V143 workbook is a real XLSX with 73 sheets retaining all V142 catalogs
+  ---
+  duration_ms: 1.177668
+  type: 'test'
+  ...
+# Subtest: V143 tracks 76 unique requirements, 88 QA and 44 cross-mode rules
+ok 278 - V143 tracks 76 unique requirements, 88 QA and 44 cross-mode rules
+  ---
+  duration_ms: 11.630101
+  type: 'test'
+  ...
+# Subtest: V143 original 1,200 V120 IDs, 24 scenarios, 12 maps and 36 W5 remain intact
+ok 279 - V143 original 1,200 V120 IDs, 24 scenarios, 12 maps and 36 W5 remain intact
+  ---
+  duration_ms: 6.894682
+  type: 'test'
+  ...
+# Subtest: V144 Excel is a genuine eight-sheet production addendum, with V143 history explicitly referenced
+ok 280 - V144 Excel is a genuine eight-sheet production addendum, with V143 history explicitly referenced
+  ---
+  duration_ms: 1.090559
+  type: 'test'
+  ...
+# Subtest: V144 has 48 unique mode requirements, 32 real QA IDs and 12 cross-mode contracts
+ok 281 - V144 has 48 unique mode requirements, 32 real QA IDs and 12 cross-mode contracts
+  ---
+  duration_ms: 0.812446
+  type: 'test'
+  ...
+# Subtest: V144 formula-based dashboard and honest status do not certify an imaginary full release
+ok 282 - V144 formula-based dashboard and honest status do not certify an imaginary full release
+  ---
+  duration_ms: 0.206066
+  type: 'test'
+  ...
+# Subtest: V145 production workbook preserves all eight V144 sheets and adds eight real V145 sheets
+ok 283 - V145 production workbook preserves all eight V144 sheets and adds eight real V145 sheets
+  ---
+  duration_ms: 1.110579
+  type: 'test'
+  ...
+# Subtest: V145 requirements/QA/contracts have exact unique IDs and source code traceability
+ok 284 - V145 requirements/QA/contracts have exact unique IDs and source code traceability
+  ---
+  duration_ms: 1.492064
+  type: 'test'
+  ...
+# Subtest: V145 retains honest formula-driven progress, historical V144 IDs and no Excel errors
+ok 285 - V145 retains honest formula-driven progress, historical V144 IDs and no Excel errors
+  ---
+  duration_ms: 0.78857
+  type: 'test'
+  ...
+# Subtest: V146 XLSX really contains 24 sheets and preserves both V144/V145 addenda
+ok 286 - V146 XLSX really contains 24 sheets and preserves both V144/V145 addenda
+  ---
+  duration_ms: 1.389883
+  type: 'test'
+  ...
+# Subtest: V146 48 unique requirements, 32 QA, 12 cross-mode and 16 explicit V85 blockers
+ok 287 - V146 48 unique requirements, 32 QA, 12 cross-mode and 16 explicit V85 blockers
+  ---
+  duration_ms: 2.853535
+  type: 'test'
+  ...
+# Subtest: V146 dashboard status formulas and historical records survive export
+ok 288 - V146 dashboard status formulas and historical records survive export
+  ---
+  duration_ms: 0.893817
+  type: 'test'
+  ...
+# Subtest: V147 binary workbook really preserves V144–V146 and has eight new reconciliation sheets
+ok 289 - V147 binary workbook really preserves V144–V146 and has eight new reconciliation sheets
+  ---
+  duration_ms: 2.338081
+  type: 'test'
+  ...
+# Subtest: V147 contains exactly 48 tasks, 32 QA procedures and 12 cross-mode contracts
+ok 290 - V147 contains exactly 48 tasks, 32 QA procedures and 12 cross-mode contracts
+  ---
+  duration_ms: 2.155749
+  type: 'test'
+  ...
+# Subtest: V147 formula-driven dashboard and historical QA remain physically preserved
+ok 291 - V147 formula-driven dashboard and historical QA remain physically preserved
+  ---
+  duration_ms: 1.218308
+  type: 'test'
+  ...
+# Subtest: V152 companion has exactly 10 real sheets alongside untouched V151 5-sheet workbook
+ok 292 - V152 companion has exactly 10 real sheets alongside untouched V151 5-sheet workbook
+  ---
+  duration_ms: 0.847688
+  type: 'test'
+  ...
+# Subtest: V152 tracks 40 specs, 32 QA, 30 unverified geographies and 24 authored W3 missions
+ok 293 - V152 tracks 40 specs, 32 QA, 30 unverified geographies and 24 authored W3 missions
+  ---
+  duration_ms: 0.819747
+  type: 'test'
+  ...
+# Subtest: V152 source and canon labels explicitly prohibit auto-conquest and premature 1:1 claims
+ok 294 - V152 source and canon labels explicitly prohibit auto-conquest and premature 1:1 claims
+  ---
+  duration_ms: 2.535543
+  type: 'test'
+  ...
+# Subtest: V145: four real V115 modes produce distinct valid debrief candidates only on Korthas
+ok 295 - V145: four real V115 modes produce distinct valid debrief candidates only on Korthas
+  ---
+  duration_ms: 9.227195
+  type: 'test'
+  ...
+# Subtest: V145: explicit proof import adds exactly one documentary receipt without claiming game gains
+ok 296 - V145: explicit proof import adds exactly one documentary receipt without claiming game gains
+  ---
+  duration_ms: 2.954135
+  type: 'test'
+  ...
+# Subtest: V145: missing, stale, forged or mismatched receipts all reject without archive changes
+ok 297 - V145: missing, stale, forged or mismatched receipts all reject without archive changes
+  ---
+  duration_ms: 1.379307
+  type: 'test'
+  ...
+# Subtest: V145: cross-planet source V115 never writes a different world's V85 journal
+ok 298 - V145: cross-planet source V115 never writes a different world's V85 journal
+  ---
+  duration_ms: 1.028186
+  type: 'test'
+  ...
+# Subtest: V145: RTS W3 from source V133 does not map to a fictitious Korthas territory
+ok 299 - V145: RTS W3 from source V133 does not map to a fictitious Korthas territory
+  ---
+  duration_ms: 9.599407
+  type: 'test'
+  ...
+# Subtest: V145: a genuine documentary receipt survives V85 JSON reload but cannot be imported twice
+ok 300 - V145: a genuine documentary receipt survives V85 JSON reload but cannot be imported twice
+  ---
+  duration_ms: 2.285923
+  type: 'test'
+  ...
+# Subtest: V145: session writes through the existing V85 transaction gate, not the V115 or main save
+ok 301 - V145: session writes through the existing V85 transaction gate, not the V115 or main save
+  ---
+  duration_ms: 3.25421
+  type: 'test'
+  ...
+# Subtest: V145: registry limits cannot overflow V85 revision or report capacity
+ok 302 - V145: registry limits cannot overflow V85 revision or report capacity
+  ---
+  duration_ms: 1.187342
+  type: 'test'
+  ...
+# Subtest: V145: V85 destination archive invalidity is a hard stop, never an implicit reset
+ok 303 - V145: V85 destination archive invalidity is a hard stop, never an implicit reset
+  ---
+  duration_ms: 1.151079
+  type: 'test'
+  ...
+# Subtest: V152: no source requires explicit read and produces no secret information or V85 write
+ok 304 - V152: no source requires explicit read and produces no secret information or V85 write
+  ---
+  duration_ms: 4.032423
+  type: 'test'
+  ...
+# Subtest: V152: exact W3-K vs CON-T comparison never silently joins matching suffixes
+ok 305 - V152: exact W3-K vs CON-T comparison never silently joins matching suffixes
+  ---
+  duration_ms: 0.617997
+  type: 'test'
+  ...
+# Subtest: V152: even matching ID, name and region is a candidate, NOT authoritative sovereignty
+ok 306 - V152: even matching ID, name and region is a candidate, NOT authoritative sovereignty
+  ---
+  duration_ms: 0.534883
+  type: 'test'
+  ...
+# Subtest: V152: all four completed V115 game modes are documentary, not a live campaign result
+ok 307 - V152: all four completed V115 game modes are documentary, not a live campaign result
+  ---
+  duration_ms: 11.848391
+  type: 'test'
+  ...
+# Subtest: V152: identical person IDs are a collision warning, not authorization to transfer a casualty
+ok 308 - V152: identical person IDs are a collision warning, not authorization to transfer a casualty
+  ---
+  duration_ms: 0.821549
+  type: 'test'
+  ...
+# Subtest: V152: malformed foreign archive, source SHA tampering and oversized payload all reject
+ok 309 - V152: malformed foreign archive, source SHA tampering and oversized payload all reject
+  ---
+  duration_ms: 1.551072
+  type: 'test'
+  ...
+# Subtest: V152: a Korthas practice debrief cannot enter a different strategic planet
+ok 310 - V152: a Korthas practice debrief cannot enter a different strategic planet
+  ---
+  duration_ms: 0.881328
+  type: 'test'
+  ...
+# Subtest: V152: actual W133 source study stays on its planet and cannot become Korthas sovereignty
+ok 311 - V152: actual W133 source study stays on its planet and cannot become Korthas sovereignty
+  ---
+  duration_ms: 11.13364
+  type: 'test'
+  ...
+# Subtest: V152: modifying the map along with its receipt does not qualify as source-checked
+ok 312 - V152: modifying the map along with its receipt does not qualify as source-checked
+  ---
+  duration_ms: 5.397839
+  type: 'test'
+  ...
+# Subtest: V152: all 24 W3 missions and 72 source tasks remain available
+ok 313 - V152: all 24 W3 missions and 72 source tasks remain available
+  ---
+  duration_ms: 31.603704
+  type: 'test'
+  ...
+# Subtest: V146: geographic origin audit never joins W3-K and CON-T by matching numeric suffix
+ok 314 - V146: geographic origin audit never joins W3-K and CON-T by matching numeric suffix
+  ---
+  duration_ms: 2.55448
+  type: 'test'
+  ...
+# Subtest: V146: even identical ID/name/region metadata is only a candidate, not proof
+ok 315 - V146: even identical ID/name/region metadata is only a candidate, not proof
+  ---
+  duration_ms: 0.440083
+  type: 'test'
+  ...
+# Subtest: V146: distinct actor catalogs remain separate despite spoofed equality of one person ID
+ok 316 - V146: distinct actor catalogs remain separate despite spoofed equality of one person ID
+  ---
+  duration_ms: 3.041172
+  type: 'test'
+  ...
+# Subtest: V146: all four mode receipts expose stable source fingerprints, not military rights
+ok 317 - V146: all four mode receipts expose stable source fingerprints, not military rights
+  ---
+  duration_ms: 12.010432
+  type: 'test'
+  ...
+# Subtest: V146: fingerprint changes for different modes, outcomes, summaries or source SHA
+ok 318 - V146: fingerprint changes for different modes, outcomes, summaries or source SHA
+  ---
+  duration_ms: 0.481334
+  type: 'test'
+  ...
+# Subtest: V146: after a V145 documentary import, the audit reports imported but no territory/XP effect
+ok 319 - V146: after a V145 documentary import, the audit reports imported but no territory/XP effect
+  ---
+  duration_ms: 2.787926
+  type: 'test'
+  ...
+# Subtest: V146: invalid sources and other planets cannot leak reports or mapping
+ok 320 - V146: invalid sources and other planets cannot leak reports or mapping
+  ---
+  duration_ms: 1.916313
+  type: 'test'
+  ...
+# Subtest: V146: anonymous W3 RTS independent map receipts are never silently converted to CON-T sovereignty
+ok 321 - V146: anonymous W3 RTS independent map receipts are never silently converted to CON-T sovereignty
+  ---
+  duration_ms: 10.435954
+  type: 'test'
+  ...
+# Subtest: W3-RTS04 retains its proper original worksheet and requires real W3-U07 on W3-KR02
+ok 322 - W3-RTS04 retains its proper original worksheet and requires real W3-U07 on W3-KR02
+  ---
+  duration_ms: 7.642781
+  type: 'test'
+  ...
+# Subtest: guarded and uncontested circuit must survive four separate turns; periodic steam is reported
+ok 323 - guarded and uncontested circuit must survive four separate turns; periodic steam is reported
+  ---
+  duration_ms: 2.078785
+  type: 'test'
+  ...
+# Subtest: rivals at the circuit invalidate control, and three unguarded attacks destroy its integrity
+ok 324 - rivals at the circuit invalidate control, and three unguarded attacks destroy its integrity
+  ---
+  duration_ms: 1.092822
+  type: 'test'
+  ...
+# Subtest: eliminating every rival without holding the lever cannot score a scripted victory
+ok 325 - eliminating every rival without holding the lever cannot score a scripted victory
+  ---
+  duration_ms: 1.202845
+  type: 'test'
+  ...
+# Subtest: archive refuses fabricated integrity, altered turn counters and unexpected map identities
+ok 326 - archive refuses fabricated integrity, altered turn counters and unexpected map identities
+  ---
+  duration_ms: 5.042962
+  type: 'test'
+  ...
+# Subtest: announced vapor occludes the conduit for both sides without becoming a physical wall
+ok 327 - announced vapor occludes the conduit for both sides without becoming a physical wall
+  ---
+  duration_ms: 1.195394
+  type: 'test'
+  ...
+# Subtest: 24 missions W3: synchronized rally steps are physical, nonoverlapping and spend ONE enemy turn
+ok 328 - 24 missions W3: synchronized rally steps are physical, nonoverlapping and spend ONE enemy turn
+  ---
+  duration_ms: 645.856378
+  type: 'test'
+  ...
+# Subtest: invalid group orders never consume a tick, ammo or intelligence
+ok 329 - invalid group orders never consume a tick, ammo or intelligence
+  ---
+  duration_ms: 1.554857
+  type: 'test'
+  ...
+# Subtest: powered doors, water, lava and active hazards are not crossed by group pathfinding
+ok 330 - powered doors, water, lava and active hazards are not crossed by group pathfinding
+  ---
+  duration_ms: 145.088965
+  type: 'test'
+  ...
+# Subtest: fog of war: an unseen enemy position never changes a commander's rally route
+ok 331 - fog of war: an unseen enemy position never changes a commander's rally route
+  ---
+  duration_ms: 467.818398
+  type: 'test'
+  ...
+# Subtest: a survivor or a neutral witness can receive a physically adjacent escort leader after a casualty
+ok 332 - a survivor or a neutral witness can receive a physically adjacent escort leader after a casualty
+  ---
+  duration_ms: 6.22067
+  type: 'test'
+  ...
+# Subtest: handoff is rejected remotely and cargo never duplicates between squads
+ok 333 - handoff is rejected remotely and cargo never duplicates between squads
+  ---
+  duration_ms: 3.210234
+  type: 'test'
+  ...
+# Subtest: scripted RTS victory retains the last phases with one source-bound combat receipt
+ok 334 - scripted RTS victory retains the last phases with one source-bound combat receipt
+  ---
+  duration_ms: 7.454662
+  type: 'test'
+  ...
+# Subtest: manual retraction preserves already executed RTS phases without awarding a second report
+ok 335 - manual retraction preserves already executed RTS phases without awarding a second report
+  ---
+  duration_ms: 2.273981
+  type: 'test'
+  ...
+# Subtest: ten prior tactical actions remain bounded and untrusted log injection cannot bypass import
+ok 336 - ten prior tactical actions remain bounded and untrusted log injection cannot bypass import
+  ---
+  duration_ms: 6.307547
+  type: 'test'
+  ...
+# Subtest: six W3 RTS objective pilots preserve their authored maps; other 18 remain dossiers
+ok 337 - six W3 RTS objective pilots preserve their authored maps; other 18 remain dossiers
+  ---
+  duration_ms: 1.530806
+  type: 'test'
+  ...
+# Subtest: a source scenario requires real source-defined unit types and territory region
+ok 338 - a source scenario requires real source-defined unit types and territory region
+  ---
+  duration_ms: 1.592258
+  type: 'test'
+  ...
+# Subtest: W3-RTS01 has exactly one physically held cargo, persistent identities, and no instant victory
+ok 339 - W3-RTS01 has exactly one physically held cargo, persistent identities, and no instant victory
+  ---
+  duration_ms: 4.570695
+  type: 'test'
+  ...
+# Subtest: scout sight plus living porter at the real extraction wins without killing every rival
+ok 340 - scout sight plus living porter at the real extraction wins without killing every rival
+  ---
+  duration_ms: 2.349593
+  type: 'test'
+  ...
+# Subtest: escort cargo falls with bearer and can be carried only by a remaining real porter
+ok 341 - escort cargo falls with bearer and can be carried only by a remaining real porter
+  ---
+  duration_ms: 0.977403
+  type: 'test'
+  ...
+# Subtest: W3-RTS02 requires a present W3-U07 at the guard post for three uncontested ticks
+ok 342 - W3-RTS02 requires a present W3-U07 at the guard post for three uncontested ticks
+  ---
+  duration_ms: 0.568254
+  type: 'test'
+  ...
+# Subtest: malformed scenario, forged cargo, impossible marker, and wrong local region are refused on import
+ok 343 - malformed scenario, forged cargo, impossible marker, and wrong local region are refused on import
+  ---
+  duration_ms: 1.904511
+  type: 'test'
+  ...
+# Subtest: a lone W3-U07 can deliberately hold its real position for three alternating turns
+ok 344 - a lone W3-U07 can deliberately hold its real position for three alternating turns
+  ---
+  duration_ms: 1.158352
+  type: 'test'
+  ...
+# Subtest: W3-RTS03 keeps its original W3-MAP02 source and needs real logistics and artisan teams
+ok 345 - W3-RTS03 keeps its original W3-MAP02 source and needs real logistics and artisan teams
+  ---
+  duration_ms: 1.128778
+  type: 'test'
+  ...
+# Subtest: W3-RTS03 delivery does not finish or work on the same tick; artisans must operate in a safe area
+ok 346 - W3-RTS03 delivery does not finish or work on the same tick; artisans must operate in a safe area
+  ---
+  duration_ms: 0.806759
+  type: 'test'
+  ...
+# Subtest: W3-RTS03 cannot finish by wiping enemies or by forging instant repair in local archives
+ok 347 - W3-RTS03 cannot finish by wiping enemies or by forging instant repair in local archives
+  ---
+  duration_ms: 3.106839
+  type: 'test'
+  ...
+# Subtest: W3 defenders prioritize visible objectives without selecting a hidden preferred target
+ok 348 - W3 defenders prioritize visible objectives without selecting a hidden preferred target
+  ---
+  duration_ms: 0.265044
+  type: 'test'
+  ...
+# Subtest: W3-RTS03 switches defender priority from the regulator porter to repair artisans only after delivery
+ok 349 - W3-RTS03 switches defender priority from the regulator porter to repair artisans only after delivery
+  ---
+  duration_ms: 0.539512
+  type: 'test'
+  ...
+# Subtest: source: 24 mission W3 grids accept at least two distinct formations within true PC budgets
+ok 350 - source: 24 mission W3 grids accept at least two distinct formations within true PC budgets
+  ---
+  duration_ms: 119.824887
+  type: 'test'
+  ...
+# Subtest: planning: no free recruitment, no PC overspend, no branch/source mutation
+ok 351 - planning: no free recruitment, no PC overspend, no branch/source mutation
+  ---
+  duration_ms: 1.968726
+  type: 'test'
+  ...
+# Subtest: two separately controlled detachments obey independent one-cell orders
+ok 352 - two separately controlled detachments obey independent one-cell orders
+  ---
+  duration_ms: 2.348611
+  type: 'test'
+  ...
+# Subtest: commands: illegal moves, hidden targets and remote objectives do not tick or consume RAV
+ok 353 - commands: illegal moves, hidden targets and remote objectives do not tick or consume RAV
+  ---
+  duration_ms: 1.123721
+  type: 'test'
+  ...
+# Subtest: combat: one source-derived team's firing requires actual LOS/range and spends RAV
+ok 354 - combat: one source-derived team's firing requires actual LOS/range and spends RAV
+  ---
+  duration_ms: 1.355064
+  type: 'test'
+  ...
+# Subtest: environment & geography: power/pressure are local, no Earth city on alien planets
+ok 355 - environment & geography: power/pressure are local, no Earth city on alien planets
+  ---
+  duration_ms: 31.499717
+  type: 'test'
+  ...
+# Subtest: 24 isolated objective chains: 72 physical tasks, escorts, return and unique receipts
+ok 356 - 24 isolated objective chains: 72 physical tasks, escorts, return and unique receipts
+  ---
+  duration_ms: 535.78031
+  type: 'test'
+  ...
+# Subtest: V152 RTS start debits source V6 RAV only once and loads the REAL V115 realtime state
+ok 357 - V152 RTS start debits source V6 RAV only once and loads the REAL V115 realtime state
+  ---
+  duration_ms: 3.643826
+  type: 'test'
+  ...
+# Subtest: V152 native RTS ticks never debit upkeep a second time and can be resumed or finish with a unique report
+ok 358 - V152 native RTS ticks never debit upkeep a second time and can be resumed or finish with a unique report
+  ---
+  duration_ms: 7.082429
+  type: 'test'
+  ...
+# Subtest: V152 the real Chromium fixture never mocks the engine or campaign storage
+ok 359 - V152 the real Chromium fixture never mocks the engine or campaign storage
+  ---
+  duration_ms: 0.688744
+  type: 'test'
+  ...
+# Subtest: all 24 source RTS narratives map to exactly 12 proper W3 planets and 72 explicit objectives
+ok 360 - all 24 source RTS narratives map to exactly 12 proper W3 planets and 72 explicit objectives
+  ---
+  duration_ms: 173.392634
+  type: 'test'
+  ...
+# Subtest: every W3 RTS brief has its own V6 rival detachments and physically distinct initial positions
+ok 361 - every W3 RTS brief has its own V6 rival detachments and physically distinct initial positions
+  ---
+  duration_ms: 43.723898
+  type: 'test'
+  ...
+# Subtest: missions involving human tracks never manufacture a hostile human faction
+ok 362 - missions involving human tracks never manufacture a hostile human faction
+  ---
+  duration_ms: 3.304893
+  type: 'test'
+  ...
+# Subtest: 24 different titles, three distinct source-positioned tasks per mission, no fake city/planet
+ok 363 - 24 different titles, three distinct source-positioned tasks per mission, no fake city/planet
+  ---
+  duration_ms: 24.516055
+  type: 'test'
+  ...
+# Subtest: source-map and task association cannot be tampered into another planet
+ok 364 - source-map and task association cannot be tampered into another planet
+  ---
+  duration_ms: 0.58536
+  type: 'test'
+  ...
+# Subtest: cannot win mission by remote switch, incomplete tasks, invisible guard or simulated teleport
+ok 365 - cannot win mission by remote switch, incomplete tasks, invisible guard or simulated teleport
+  ---
+  duration_ms: 3.554744
+  type: 'test'
+  ...
+# Subtest: hold orders consume real consecutive turns and stepping off breaks the hold
+ok 366 - hold orders consume real consecutive turns and stepping off breaks the hold
+  ---
+  duration_ms: 2.599664
+  type: 'test'
+  ...
+# Subtest: vacuum pressure and power can disable the right W3 devices without blocking alternate corridors
+ok 367 - vacuum pressure and power can disable the right W3 devices without blocking alternate corridors
+  ---
+  duration_ms: 4.17727
+  type: 'test'
+  ...
+# Subtest: companion is placed at a real source tile, never duplicates, then walks one tile per tick
+ok 368 - companion is placed at a real source tile, never duplicates, then walks one tile per tick
+  ---
+  duration_ms: 2.579074
+  type: 'test'
+  ...
+# Subtest: 24 source missions all allow physical full-round-trip victory in a civilian-safe lab
+ok 369 - 24 source missions all allow physical full-round-trip victory in a civilian-safe lab
+  ---
+  duration_ms: 542.651214
+  type: 'test'
+  ...
+# Subtest: tidal passage, wind calibration, cracked ice and hot jets gate interaction on physical ticks
+ok 370 - tidal passage, wind calibration, cracked ice and hot jets gate interaction on physical ticks
+  ---
+  duration_ms: 6.682244
+  type: 'test'
+  ...
+# Subtest: 24 live Yautja rival formations cannot teleport, respawn or grant victory without an objective
+ok 371 - 24 live Yautja rival formations cannot teleport, respawn or grant victory without an objective
+  ---
+  duration_ms: 31.758401
+  type: 'test'
+  ...
+# Subtest: a lost real rescued team blocks mission completion and produces one immutable loss receipt
+ok 372 - a lost real rescued team blocks mission completion and produces one immutable loss receipt
+  ---
+  duration_ms: 1.283318
+  type: 'test'
+  ...
+# Subtest: V147 assault: one-HP guardian cannot swallow three simultaneous damage transfers
+ok 373 - V147 assault: one-HP guardian cannot swallow three simultaneous damage transfers
+  ---
+  duration_ms: 7.466039
+  type: 'test'
+  ...
+# Subtest: V147 assault: reversing actor insertion order leaves effective damage unchanged
+ok 374 - V147 assault: reversing actor insertion order leaves effective damage unchanged
+  ---
+  duration_ms: 0.959336
+  type: 'test'
+  ...
+# Subtest: V147 assault: old two-team protection and expiry remain possible without free HP
+ok 375 - V147 assault: old two-team protection and expiry remain possible without free HP
+  ---
+  duration_ms: 0.422047
+  type: 'test'
+  ...
+# Subtest: V147 cross-mode: source V6, closed receipts and V85 write protection are preserved
+ok 376 - V147 cross-mode: source V6, closed receipts and V85 write protection are preserved
+  ---
+  duration_ms: 3.290412
+  type: 'test'
+  ...
+# Subtest: 108 source-authored scenes, 12 campaigns, 12 maps, 15 doctrines, 18 accords are read verbatim
+ok 377 - 108 source-authored scenes, 12 campaigns, 12 maps, 15 doctrines, 18 accords are read verbatim
+  ---
+  duration_ms: 1.233293
+  type: 'test'
+  ...
+# Subtest: every W3-N, W3-RTS and W5-LM source cell survives into a dossier without invented narratives
+ok 378 - every W3-N, W3-RTS and W5-LM source cell survives into a dossier without invented narratives
+  ---
+  duration_ms: 1.548022
+  type: 'test'
+  ...
+# Subtest: all twelve linked campaign chapters are present, references validated, with no roster fabrication
+ok 379 - all twelve linked campaign chapters are present, references validated, with no roster fabrication
+  ---
+  duration_ms: 1.272241
+  type: 'test'
+  ...
+# Subtest: search respects accents, original mode, ID, title and class and never mutates source Bible
+ok 380 - search respects accents, original mode, ID, title and class and never mutates source Bible
+  ---
+  duration_ms: 18.881079
+  type: 'test'
+  ...
+# Subtest: alternate validated private rules keep caller-owned copies, not a global singleton
+ok 381 - alternate validated private rules keep caller-owned copies, not a global singleton
+  ---
+  duration_ms: 2.071189
+  type: 'test'
+  ...
+# Subtest: 12 maps preserve exact source dimensions and all authored W3 scene descriptions
+ok 382 - 12 maps preserve exact source dimensions and all authored W3 scene descriptions
+  ---
+  duration_ms: 51.802447
+  type: 'test'
+  ...
+# Subtest: every W3 world has three explicit alternatives and a physical out-and-back
+ok 383 - every W3 world has three explicit alternatives and a physical out-and-back
+  ---
+  duration_ms: 30.142008
+  type: 'test'
+  ...
+# Subtest: the sources have 12 distinct regions and do not place frozen terrain on lava/crater maps
+ok 384 - the sources have 12 distinct regions and do not place frozen terrain on lava/crater maps
+  ---
+  duration_ms: 40.942975
+  type: 'test'
+  ...
+# Subtest: a whole source-size scenario can be observed, interacted with and physically extracted without enemies
+ok 385 - a whole source-size scenario can be observed, interacted with and physically extracted without enemies
+  ---
+  duration_ms: 4.879754
+  type: 'test'
+  ...
+# Subtest: real tactical controls cannot bypass collision, range, or map geometry
+ok 386 - real tactical controls cannot bypass collision, range, or map geometry
+  ---
+  duration_ms: 5.56326
+  type: 'test'
+  ...
+# Subtest: disabling enemies does not create an occupation or trophy, but refusing reconnaissance blocks results
+ok 387 - disabling enemies does not create an occupation or trophy, but refusing reconnaissance blocks results
+  ---
+  duration_ms: 2.189935
+  type: 'test'
+  ...
+# Subtest: targeted attack is source-bounded, idempotent and consumes a turn only if valid
+ok 388 - targeted attack is source-bounded, idempotent and consumes a turn only if valid
+  ---
+  duration_ms: 3.196932
+  type: 'test'
+  ...
+# Subtest: 12 map IDs are strictly linked to W3 source, not to invented Earth or movie cities
+ok 389 - 12 map IDs are strictly linked to W3 source, not to invented Earth or movie cities
+  ---
+  duration_ms: 15.609765
+  type: 'test'
+  ...
+# Subtest: observation requires a physical vantage or direct sight of the actual W3 objective
+ok 390 - observation requires a physical vantage or direct sight of the actual W3 objective
+  ---
+  duration_ms: 1.160104
+  type: 'test'
+  ...
+# Subtest: powered doors exist on four applicable source maps, and a physical bypass survives a power failure
+ok 391 - powered doors exist on four applicable source maps, and a physical bypass survives a power failure
+  ---
+  duration_ms: 12.053228
+  type: 'test'
+  ...
+# Subtest: W3-MAP12 must stabilize its pressure before confirming the objective
+ok 392 - W3-MAP12 must stabilize its pressure before confirming the objective
+  ---
+  duration_ms: 1.168037
+  type: 'test'
+  ...
+# Subtest: source-specific ash and gust effects do not create enemies or a separate climate
+ok 393 - source-specific ash and gust effects do not create enemies or a separate climate
+  ---
+  duration_ms: 3.069904
+  type: 'test'
+  ...
+# Subtest: parent planets and strata are source-correct: ice-world galleries remain interior and ship hull stays orbital
+ok 394 - parent planets and strata are source-correct: ice-world galleries remain interior and ship hull stays orbital
+  ---
+  duration_ms: 2.867323
+  type: 'test'
+  ...
+# Subtest: three named structures per map originate in the source and occupy walkable physical tiles
+ok 395 - three named structures per map originate in the source and occupy walkable physical tiles
+  ---
+  duration_ms: 8.467047
+  type: 'test'
+  ...
+# Subtest: V147 hardened W133 debrief verifies the unmodified authored W3 source and never authorizes V85
+ok 396 - V147 hardened W133 debrief verifies the unmodified authored W3 source and never authorizes V85
+  ---
+  duration_ms: 20.024292
+  type: 'test'
+  ...
+# Subtest: V147 rejects a forged map even when the receipt and the state agree on all IDs
+ok 397 - V147 rejects a forged map even when the receipt and the state agree on all IDs
+  ---
+  duration_ms: 13.629324
+  type: 'test'
+  ...
+# Subtest: V147 rejects a changed mission objective geometry or invented mission source cells
+ok 398 - V147 rejects a changed mission objective geometry or invented mission source cells
+  ---
+  duration_ms: 8.281799
+  type: 'test'
+  ...
+# Subtest: V147 detects inflated W3 unit statistics and PC budget in a self-consistent client save
+ok 399 - V147 detects inflated W3 unit statistics and PC budget in a self-consistent client save
+  ---
+  duration_ms: 36.121427
+  type: 'test'
+  ...
+# Subtest: V147 rejects mutually forged victory and receipt before the 3 source objectives are done
+ok 400 - V147 rejects mutually forged victory and receipt before the 3 source objectives are done
+  ---
+  duration_ms: 10.745224
+  type: 'test'
+  ...
+# Subtest: V147 four V115 modes and one W133 study coexist in a Council without V85 conquest
+ok 401 - V147 four V115 modes and one W133 study coexist in a Council without V85 conquest
+  ---
+  duration_ms: 33.644201
+  type: 'test'
+  ...
+# Subtest: V147 source validators do not claim to authenticate arbitrary client telemetry
+ok 402 - V147 source validators do not claim to authenticate arbitrary client telemetry
+  ---
+  duration_ms: 5.801358
+  type: 'test'
+  ...
+# Subtest: primary guard investigates its last real sighting, not the hidden hunter's current location
+ok 403 - primary guard investigates its last real sighting, not the hidden hunter's current location
+  ---
+  duration_ms: 10.565637
+  type: 'test'
+  ...
+# Subtest: PR55 investigation survives reload and invalid records are rejected
+ok 404 - PR55 investigation survives reload and invalid records are rejected
+  ---
+  duration_ms: 3.656756
+  type: 'test'
+  ...
+# Subtest: an active sound decoy takes priority over the guard's stored sighting
+ok 405 - an active sound decoy takes priority over the guard's stored sighting
+  ---
+  duration_ms: 3.530859
+  type: 'test'
+  ...
+# Subtest: contact seen only by the second guard never creates a first-guard memory
+ok 406 - contact seen only by the second guard never creates a first-guard memory
+  ---
+  duration_ms: 1.746372
+  type: 'test'
+  ...
+# Subtest: lost diagonal contact follows the last observed tile
+ok 407 - lost diagonal contact follows the last observed tile
+  ---
+  duration_ms: 6.885105
+  type: 'test'
+  ...
+# Subtest: lost diagonal with second guard contact follows the last observed tile
+ok 408 - lost diagonal with second guard contact follows the last observed tile
+  ---
+  duration_ms: 2.548471
+  type: 'test'
+  ...
+# Subtest: lost cloaked contact follows the last observed tile
+ok 409 - lost cloaked contact follows the last observed tile
+  ---
+  duration_ms: 1.013394
+  type: 'test'
+  ...
+# Subtest: lost concealed by cover contact follows the last observed tile
+ok 410 - lost concealed by cover contact follows the last observed tile
+  ---
+  duration_ms: 1.197847
+  type: 'test'
+  ...
+# Subtest: still-visible contact keeps the ordinary patrol rather than chasing stale memory
+ok 411 - still-visible contact keeps the ordinary patrol rather than chasing stale memory
+  ---
+  duration_ms: 1.242934
+  type: 'test'
+  ...
+# Subtest: PR57 archive becomes canonical PR56 guard without losing location or old archives
+ok 412 - PR57 archive becomes canonical PR56 guard without losing location or old archives
+  ---
+  duration_ms: 6.394889
+  type: 'test'
+  ...
+# Subtest: conflicting or invalid legacy guard archives are refused without rewriting caller data
+ok 413 - conflicting or invalid legacy guard archives are refused without rewriting caller data
+  ---
+  duration_ms: 0.885694
+  type: 'test'
+  ...
+# Subtest: reinforcement never appears within two steps of the player
+ok 414 - reinforcement never appears within two steps of the player
+  ---
+  duration_ms: 1.825138
+  type: 'test'
+  ...
+# Subtest: automatic diversion rule is opt-in, persistent and spawns only one local guard
+ok 415 - automatic diversion rule is opt-in, persistent and spawns only one local guard
+  ---
+  duration_ms: 0.917932
+  type: 'test'
+  ...
+# Subtest: ambiguous legacy mission pauses until an explicit choice, preserving its state
+ok 416 - ambiguous legacy mission pauses until an explicit choice, preserving its state
+  ---
+  duration_ms: 1.517532
+  type: 'test'
+  ...
+# Subtest: every one of 54 roster identities has its OWN 256x384 arm-registered shell and lid
+ok 417 - every one of 54 roster identities has its OWN 256x384 arm-registered shell and lid
+  ---
+  duration_ms: 4.052664
+  type: 'test'
+  ...
+# Subtest: unknown or malicious model path falls back to a registered Jungle Hunter source
+ok 418 - unknown or malicious model path falls back to a registered Jungle Hunter source
+  ---
+  duration_ms: 0.158916
+  type: 'test'
+  ...
+# Subtest: live actor rig uses 54 authored sprites for left gauntlet and preserves wristblades on the opposite arm
+ok 419 - live actor rig uses 54 authored sprites for left gauntlet and preserves wristblades on the opposite arm
+  ---
+  duration_ms: 134.064872
+  type: 'test'
+  ...
+# Subtest: script can reproduce rig art exactly; no film accuracy or combat stat claims
+ok 420 - script can reproduce rig art exactly; no film accuracy or combat stat claims
+  ---
+  duration_ms: 0.353695
+  type: 'test'
+  ...
+# Subtest: local visual QA compares authentic rig attachment paths, not a decorative replacement
+ok 421 - local visual QA compares authentic rig attachment paths, not a decorative replacement
+  ---
+  duration_ms: 0.231714
+  type: 'test'
+  ...
+# Subtest: 49 non-canon individual gauntlet concepts now have 196 independent source layers
+ok 422 - 49 non-canon individual gauntlet concepts now have 196 independent source layers
+  ---
+  duration_ms: 6.593941
+  type: 'test'
+  ...
+# Subtest: the remaining 49 actual source variants render in both live interfaces without duplicating war state
+ok 423 - the remaining 49 actual source variants render in both live interfaces without duplicating war state
+  ---
+  duration_ms: 0.62556
+  type: 'test'
+  ...
+# Subtest: V136 regeneration is deterministic and the CLI declares 0 verified film assets
+ok 424 - V136 regeneration is deterministic and the CLI declares 0 verified film assets
+  ---
+  duration_ms: 0.379294
+  type: 'test'
+  ...
+# Subtest: the original concept renderer and visual QA parse as TSX
+ok 425 - the original concept renderer and visual QA parse as TSX
+  ---
+  duration_ms: 155.982651
+  type: 'test'
+  ...
+# Subtest: V136 reference visual QA uses only local object URLs and cleans up private image data
+ok 426 - V136 reference visual QA uses only local object URLs and cleans up private image data
+  ---
+  duration_ms: 0.45072
+  type: 'test'
+  ...
+# Subtest: Every legitimate V142 unlocked identity survives saved/reloaded sidecar configuration
+ok 427 - Every legitimate V142 unlocked identity survives saved/reloaded sidecar configuration
+  ---
+  duration_ms: 1.776411
+  type: 'test'
+  ...
+# Subtest: Saved Wolf stays Wolf after a different cosmetic preference is equipped elsewhere
+ok 428 - Saved Wolf stays Wolf after a different cosmetic preference is equipped elsewhere
+  ---
+  duration_ms: 0.164665
+  type: 'test'
+  ...
+# Subtest: Legacy V141 sidecar without optional model preserves previous behavior
+ok 429 - Legacy V141 sidecar without optional model preserves previous behavior
+  ---
+  duration_ms: 0.386735
+  type: 'test'
+  ...
+# Subtest: An old/future/hostile cosmetic receipt cannot unlock an unearned gauntlet
+ok 430 - An old/future/hostile cosmetic receipt cannot unlock an unearned gauntlet
+  ---
+  duration_ms: 0.367306
+  type: 'test'
+  ...
+# Subtest: V1 active hunt sidecar roundtrip persists optional selected identity, no schema break
+ok 431 - V1 active hunt sidecar roundtrip persists optional selected identity, no schema break
+  ---
+  duration_ms: 15.579417
+  type: 'test'
+  ...
+# Subtest: GameClient writes launch-time visual identity, preserves it across writes, and passes it to HuntCanvas on resume
+ok 432 - GameClient writes launch-time visual identity, preserves it across writes, and passes it to HuntCanvas on resume
+  ---
+  duration_ms: 2.339328
+  type: 'test'
+  ...
+# Subtest: the live mission chooses each real V139 source over the V3 fallback
+ok 433 - the live mission chooses each real V139 source over the V3 fallback
+  ---
+  duration_ms: 3.530027
+  type: 'test'
+  ...
+# Subtest: missing or rejected V139 art uses old V3 only then, without throwing or awarding a game stat
+ok 434 - missing or rejected V139 art uses old V3 only then, without throwing or awarding a game stat
+  ---
+  duration_ms: 0.408347
+  type: 'test'
+  ...
+# Subtest: unknown identity cannot inject an arbitrary asset path into active hunt
+ok 435 - unknown identity cannot inject an arbitrary asset path into active hunt
+  ---
+  duration_ms: 0.145566
+  type: 'test'
+  ...
+# Subtest: actual 12k-line HuntCanvas preloads per-hunter assets once and preserves battle rigs
+ok 436 - actual 12k-line HuntCanvas preloads per-hunter assets once and preserves battle rigs
+  ---
+  duration_ms: 3.46481
+  type: 'test'
+  ...
+# Subtest: V140 actual rig matches source pivots and all 54 model URLs stay owner-scoped
+ok 437 - V140 actual rig matches source pivots and all 54 model URLs stay owner-scoped
+  ---
+  duration_ms: 3.903302
+  type: 'test'
+  ...
+# Subtest: V140 rig study covers every pose/morph/phase/facing and keeps lid hinge fixed
+ok 438 - V140 rig study covers every pose/morph/phase/facing and keeps lid hinge fixed
+  ---
+  duration_ms: 12.723512
+  type: 'test'
+  ...
+# Subtest: V140 production rig inspector renders the actual hunter rig, never writes campaign progress
+ok 439 - V140 production rig inspector renders the actual hunter rig, never writes campaign progress
+  ---
+  duration_ms: 0.553022
+  type: 'test'
+  ...
+# Subtest: V144 locally remembered challenge keeps its exact cosmetic after a legitimate campaign claim
+ok 440 - V144 locally remembered challenge keeps its exact cosmetic after a legitimate campaign claim
+  ---
+  duration_ms: 1.061958
+  type: 'test'
+  ...
+# Subtest: V144 all 44 granted studies serialize and parse without rewriting the reward as Jungle Hunter
+ok 441 - V144 all 44 granted studies serialize and parse without rewriting the reward as Jungle Hunter
+  ---
+  duration_ms: 0.606201
+  type: 'test'
+  ...
+# Subtest: V144 archive ownership and rank remain authoritative over forged localStorage values
+ok 442 - V144 archive ownership and rank remain authoritative over forged localStorage values
+  ---
+  duration_ms: 0.334127
+  type: 'test'
+  ...
+# Subtest: V144 hook passes legitimate claim list into V132 local preference codec
+ok 443 - V144 hook passes legitimate claim list into V132 local preference codec
+  ---
+  duration_ms: 0.696846
+  type: 'test'
+  ...
+# Subtest: Both art laboratories use a server-only deny-by-default route
+ok 444 - Both art laboratories use a server-only deny-by-default route
+  ---
+  duration_ms: 67.243682
+  type: 'test'
+  ...
+# Subtest: The early proxy blocks both QA routes without altering gameplay or SVG asset paths
+ok 445 - The early proxy blocks both QA routes without altering gameplay or SVG asset paths
+  ---
+  duration_ms: 0.374968
+  type: 'test'
+  ...
+# Subtest: Browser previews still import the read-only client, not the server route
+ok 446 - Browser previews still import the read-only client, not the server route
+  ---
+  duration_ms: 0.282359
+  type: 'test'
+  ...
+# Subtest: Private gauntlet QA proxy returns actual 404 without local opt-in and on Vercel
+ok 447 - Private gauntlet QA proxy returns actual 404 without local opt-in and on Vercel
+  ---
+  duration_ms: 6.021151
+  type: 'test'
+  ...
+# Subtest: Private early middleware matches both gauntlet labs, not game or actual sprites
+ok 448 - Private early middleware matches both gauntlet labs, not game or actual sprites
+  ---
+  duration_ms: 0.214689
+  type: 'test'
+  ...
+# Subtest: fresh V13 campaign uses an owner-scoped empty gauntlet, no fabricated study rewards
+ok 449 - fresh V13 campaign uses an owner-scoped empty gauntlet, no fabricated study rewards
+  ---
+  duration_ms: 9.51927
+  type: 'test'
+  ...
+# Subtest: legacy V12 import upgrades to V13 without gifting any of 44 studies
+ok 450 - legacy V12 import upgrades to V13 without gifting any of 44 studies
+  ---
+  duration_ms: 2.659152
+  type: 'test'
+  ...
+# Subtest: rank-unlocked equipped Wolf survives a real V13 export/import roundtrip
+ok 451 - rank-unlocked equipped Wolf survives a real V13 export/import roundtrip
+  ---
+  duration_ms: 2.873871
+  type: 'test'
+  ...
+# Subtest: foreign/future/duplicated gauntlet study receipts are rejected BEFORE import
+ok 452 - foreign/future/duplicated gauntlet study receipts are rejected BEFORE import
+  ---
+  duration_ms: 0.782714
+  type: 'test'
+  ...
+# Subtest: transactional gauntlet equip preserves the persistent primary and backup
+ok 453 - transactional gauntlet equip preserves the persistent primary and backup
+  ---
+  duration_ms: 4.760586
+  type: 'test'
+  ...
+# Subtest: changed primary between visits is a conflict and cannot silently award/equip
+ok 454 - changed primary between visits is a conflict and cannot silently award/equip
+  ---
+  duration_ms: 1.811532
+  type: 'test'
+  ...
+# Subtest: visual QA route uses real source layers for all five models, not decorative mockups
+ok 455 - visual QA route uses real source layers for all five models, not decorative mockups
+  ---
+  duration_ms: 1.288044
+  type: 'test'
+  ...
+# Subtest: QA route supports keyboard/accessibility and doesn't claim 1:1 finished
+ok 456 - QA route supports keyboard/accessibility and doesn't claim 1:1 finished
+  ---
+  duration_ms: 82.932462
+  type: 'test'
+  ...
+1..456
+# tests 456
+# suites 0
+# pass 456
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 43948.344787

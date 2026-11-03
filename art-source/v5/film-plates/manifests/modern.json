@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "group": "modern",
+  "entries": [
+    {
+      "id": "fugitive",
+      "name": "Fugitive Predator",
+      "work": "The Predator (2018)",
+      "referenceUrls": [
+        "https://necaonline.com/2018/06/predator-2018-7-scale-action-figure-ultimate-predator/",
+        "https://www.prime1studio.com/tpr-fugitive-predator/PMTPR-01.html"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/fugitive/neca-front.jpg",
+        "tmp/yautja-film-references/fugitive/neca-three-quarter.jpg"
+      ],
+      "visualAnchor": "Fugitive masque, silhouette athletique, biomask graphite lisse, armure argent et or tres ajustee, double wrist blades et shoulder plasma caster articule.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of the Fugitive Predator from The Predator (2018), faithful to the supplied licensed NECA front and three-quarter references. Show the masked athletic hunter with his exact smooth graphite biomask, black dreadlocks with metal rings, fitted silver-and-gold segmented armor over black netting, mottled yellow-red skin, articulated shoulder plasma caster and correctly mounted long wrist blades on both gauntlets. Right-facing three-quarter lateral stance for a 2D side-scroller; keep the entire mask, caster, dreadlocks, blades, fingers and feet inside the canvas with generous padding. Dense crisp 32-bit-era pre-rendered pixel art, realistic worn metal and skin detail, neutral studio lighting. Perfectly flat uniform #00FF00 chroma background with no shadow, floor, gradient or texture. No text, logo, UI, border, second character, duplicate equipment or crop.",
+      "sourcePath": "art-source/v5/film-plates/sources/fugitive-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/fugitive.png",
+      "validation": {
+        "width": 1024,
+        "height": 1536,
+        "alpha": true,
+        "bounds": [145, 65, 871, 1413]
+      }
+    },
+    {
+      "id": "assassin",
+      "name": "Assassin / Upgrade Predator",
+      "work": "The Predator (2018)",
+      "referenceUrls": [
+        "https://www.prime1studio.com/tpr-assassin-predator/PMTPR-02DX.html",
+        "https://necaonline.com/2021/03/predator-2018-7-scale-action-figure-deluxe-ultimate-assassin-predator-unarmored/"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/assassin/prime1-full.jpg",
+        "tmp/yautja-film-references/assassin/prime1-three-quarter.jpg"
+      ],
+      "visualAnchor": "Upgrade Predator gigantesque et sans masque, peau charbon bio-blindee a nodules, crane epineux, dreadlocks courts, wrist cannon et longue lame amovible.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of the unarmored Assassin / Upgrade Predator from The Predator (2018), faithful to the supplied licensed Prime 1 Studio references. He must tower over a normal Yautja: enormous black-charcoal bio-armored musculature, circular scale nodules, ridged spined crown, short heavy dreadlocks, red eyes and an exposed roaring mandible face with no biomask. Show the film-final vulnerable state with no artificial chest armor, while retaining the detachable wrist blade and luminous red wrist cannon/gauntlet. Right-facing three-quarter lateral combat pose; entire blade, hands, toes and dreadlocks inside frame with margin. Dense crisp 32-bit-era pixel art, detailed organic armor texture and restrained metallic gauntlets. Flat pure #00FF00 background, no shadow, floor, gradient, text, logo, border, second character, duplicate limb or crop.",
+      "sourcePath": "art-source/v5/film-plates/sources/assassin-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/assassin.png",
+      "validation": {
+        "width": 1024,
+        "height": 1536,
+        "alpha": true,
+        "bounds": [49, 47, 975, 1450]
+      }
+    },
+    {
+      "id": "emissary-one",
+      "name": "Emissary Predator #1 (deleted scenes)",
+      "work": "The Predator (2018)",
+      "referenceUrls": [
+        "https://necaonline.com/2018/05/predator-2018-action-figure-2/",
+        "https://predator-movies.com/news/studio-adi-release-emissary-predator-concept-art-behind-scenes-footage"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/emissary-one/neca-front.jpg",
+        "tmp/yautja-film-references/emissary-one/neca-three-quarter.jpg"
+      ],
+      "visualAnchor": "Emissary #1 des scenes supprimees, visage decouvert ivoire et violet, longues dreadlocks noires, armure Yautja bronze portee sur tenue militaire multicam et fusil humain.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of Emissary Predator #1 from the deleted scenes of The Predator (2018), explicitly using the licensed NECA deleted-scene design rather than inventing a theatrical variant. Show his unmasked pale ivory-and-purple speckled head, yellow eyes, long black dreadlocks with gold bands, brown Yautja chest and shoulder plates, silver gauntlets, multicam combat trousers, pouches, knee pads and boots. He carries the licensed black human military rifle fully visible across but not hiding the torso. Right-facing three-quarter lateral stance with all rifle parts, hands, dreadlocks and feet inside the canvas. Crisp dense 32-bit pixel art. Perfect flat #00FF00 background, no shadow, floor, text, logo, border, biomask, second character, crop or duplicated equipment.",
+      "sourcePath": "art-source/v5/film-plates/sources/emissary-one-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/emissary-one.png",
+      "validation": {
+        "width": 1122,
+        "height": 1402,
+        "alpha": true,
+        "bounds": [166, 53, 980, 1356]
+      }
+    },
+    {
+      "id": "emissary-two",
+      "name": "Emissary Predator #2 (deleted scenes)",
+      "work": "The Predator (2018)",
+      "referenceUrls": [
+        "https://necaonline.com/2019/02/predator-2018-7-scale-action-figure-ultimate-emissary-2/",
+        "https://predator-movies.com/news/behind-the-scenes-the-emissary-predators"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/emissary-two/neca-front.jpg",
+        "tmp/yautja-film-references/emissary-two/neca-three-quarter.jpg"
+      ],
+      "visualAnchor": "Emissary #2 des scenes supprimees, visage beige a grande couronne osseuse bleue-verte, dreadlocks noires baguees, plaques bronze sur tenue multicam et fusil humain distinct.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of Emissary Predator #2 from the deleted scenes of The Predator (2018), faithful to the licensed NECA design and clearly distinct from Emissary #1. Show the unmasked broad beige head with its tall blue-teal spined crown and mottling, yellow eyes, black ringed dreadlocks, brown modular Yautja armor, silver gauntlets, multicam combat uniform, pouches, pads and boots. Carry the exact style of black human military rifle shown by the reference, entirely inside frame and not obscuring the identity details. Right-facing three-quarter lateral stance, crisp high-density 32-bit pixel art. Flat uniform #00FF00 background with no shadow, floor, text, logo, border, biomask, extra character, duplicate weapon or crop.",
+      "sourcePath": "art-source/v5/film-plates/sources/emissary-two-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/emissary-two.png",
+      "validation": {
+        "width": 1023,
+        "height": 1537,
+        "alpha": true,
+        "bounds": [137, 49, 979, 1449]
+      }
+    },
+    {
+      "id": "feral-hunter",
+      "name": "Feral Predator",
+      "work": "Prey (2022)",
+      "referenceUrls": [
+        "https://www.prime1studio.com/fp-feral-predator/MMPR-07DXS.html",
+        "https://necaonline.com/2023/05/prey-7-scale-action-figure-ultimate-feral-predator/"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/feral-hunter/prime1-full.jpg",
+        "tmp/yautja-film-references/feral-hunter/prime1-three-quarter.jpg",
+        "tmp/yautja-film-references/feral-hunter/neca-51725_UNP_10.jpg",
+        "tmp/yautja-film-references/feral-hunter/neca-51725_UNP_12.jpg"
+      ],
+      "visualAnchor": "Feral masque avec biomask osseux compact et asymetrique, peau ambree mouchetee, peu d'armure, spear-gun dorsal, combistick telescopique, wrist blades et bouclier circulaire radial; aucun plasma caster.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of the Feral Predator from Prey (2022), faithful to the supplied licensed Prime 1 and NECA references. Identity anchors: lanky powerful build, amber-brown spotted skin, long black dreadlocks, exact compact asymmetrical bone biomask with narrow red optic, exposed ribbed torso, primitive metal waist plates and wrapped lower legs. Equipment state must match the film and licensed figure: no shoulder plasma caster; show the dorsal spear-gun, long telescoping combistick, extended wrist blades and the complete deployed circular radial shield on the opposite forearm, each separately readable and fully in frame. Right-facing three-quarter lateral stance with generous margin and no overlaps hiding the body. Dense crisp 32-bit pixel art. Pure flat #00FF00 background with no shadow, floor, text, logo, border, second character, invented gear or crop.",
+      "sourcePath": "art-source/v5/film-plates/sources/feral-hunter-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/feral-hunter.png",
+      "validation": {
+        "width": 1024,
+        "height": 1536,
+        "alpha": true,
+        "bounds": [41, 79, 969, 1400]
+      }
+    },
+    {
+      "id": "kok-jotun",
+      "name": "Jotun Predator",
+      "work": "Predator: Killer of Killers (2025)",
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+        "https://forum.predator.illfonic.com/t/the-jotun-predator-has-arrived/37412"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/kok-jotun/20cs-still-5.jpg",
+        "tmp/yautja-film-references/kok-jotun/illfonic-full.jpg"
+      ],
+      "visualAnchor": "Jotun geant nordique sans masque, peau gris charbon a larges nodules, crane en plaques, longs dreads, harnais minimal, immense gauntlet cybernetique rouge de choc et armguard oppose.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of the Jotun Predator from Predator: Killer of Killers, grounded in the official 20th Century still and licensed IllFonic full-body model. Make him a massive Nordic-era killer: extremely broad charcoal-grey body with large circular hide nodules, plated crown, long black dreadlocks, exposed roaring mandibles and red eyes, sparse leather harness and layered dark loin armor. His signature oversized cybernetic shock gauntlet with red illuminated channels must dominate one forearm while the opposite angular armguard remains distinct; no biomask and no invented shoulder caster. Right-facing three-quarter lateral stance, entire body and both gauntlets inside frame. Crisp dense 32-bit pixel art, flat #00FF00 background, no shadow, floor, text, logo, border, extra character or crop.",
+      "sourcePath": "art-source/v5/film-plates/sources/kok-jotun-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/kok-jotun.png",
+      "validation": {
+        "width": 1024,
+        "height": 1536,
+        "alpha": true,
+        "bounds": [94, 47, 937, 1462]
+      }
+    },
+    {
+      "id": "kok-oni",
+      "name": "Oni Predator",
+      "work": "Predator: Killer of Killers (2025)",
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+        "https://forum.predator.illfonic.com/t/oni-predator-is-here/36985"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/kok-oni/illfonic-full.jpg",
+        "tmp/yautja-film-references/kok-oni/illfonic-chain-whip.jpg"
+      ],
+      "visualAnchor": "Oni fin et rapide, biomask samourai argent-noir, armure lamellaire asymetrique, tissus sombres, chain whip segmentee a lame et longues wrist blades.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of the Oni Predator from Predator: Killer of Killers, faithful to the licensed IllFonic full-body and chain-whip references. Distinguish him as the lean Japanese-era stealth hunter: exact angular silver-and-black Oni/samurai biomask, black dreadlocks, asymmetric layered lamellar pauldron, fitted dark chest harness, weathered cloth skirt, loose dark trousers, articulated greaves and sandals. Show his signature segmented chain whip with bladed end hanging in one clear loop entirely inside frame, plus extended long wrist blades on the opposite gauntlet; no bulky Nordic or pilot equipment. Right-facing three-quarter lateral stance, crisp dense 32-bit pixel art. Pure flat #00FF00 background, no shadow, floor, text, logo, border, second character, duplicate chain or crop.",
+      "sourcePath": "art-source/v5/film-plates/sources/kok-oni-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/kok-oni.png",
+      "validation": {
+        "width": 1024,
+        "height": 1536,
+        "alpha": true,
+        "bounds": [125, 76, 884, 1445]
+      }
+    },
+    {
+      "id": "kok-pilot",
+      "name": "Pilot Predator",
+      "work": "Predator: Killer of Killers (2025)",
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+        "https://predator-movies.com/news/arena-guard-pilot-predator-killer-killers-official-concept-art"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/kok-pilot/20cs-pilot-close.jpg",
+        "tmp/yautja-film-references/kok-pilot/marantz-sprex.jpg",
+        "tmp/yautja-film-references/kok-pilot/marantz-screenshot-2.jpg",
+        "tmp/yautja-film-references/kok-pilot/marantz-eye.jpg"
+      ],
+      "visualAnchor": "Pilot chauve sans dreadlocks, peau beige tachetee, implants temporaux, oeil ambre, demi-masque respiratoire argent, harnais technique blanc et gris, armure legere et triple wrist blades.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of the Pilot Predator from Predator: Killer of Killers, faithful to the official film cockpit still and the supplied official character concept sheets. Preserve the unusual identity: completely bald and dreadless elongated head, pale olive-beige spotted skin, small cybernetic nodes along the temple, one bright amber eye and the exact asymmetrical silver respirator/half-mask around the other side of the face. Reproduce the final clean silver-white cockpit harness and asymmetric chest plates, belt, hip segments, forearm gauntlets and shin armor over a sparse dark underlayer; show the curved triple wrist blades fixed to the gauntlet. Right-facing three-quarter lateral stance, full body and blades visible with margin. Crisp dense 32-bit pixel art on perfectly flat #00FF00, no shadow, floor, text, logo, border, dreadlocks, invented weapon, extra character or crop.",
+      "sourcePath": "art-source/v5/film-plates/sources/kok-pilot-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/kok-pilot.png",
+      "validation": {
+        "width": 1024,
+        "height": 1536,
+        "alpha": true,
+        "bounds": [137, 34, 871, 1489]
+      }
+    },
+    {
+      "id": "kok-warlord",
+      "name": "Warlord Predator",
+      "work": "Predator: Killer of Killers (2025)",
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+        "https://www.avpcentral.com/warlord-predator-grendel-king-profile"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/kok-warlord/film-hero.webp",
+        "tmp/yautja-film-references/kok-warlord/film-armor.webp",
+        "tmp/yautja-film-references/kok-warlord/film-arena.webp"
+      ],
+      "visualAnchor": "Warlord massif masque, biomask osseux bronze, cape dorsale en trophees squelettiques extraterrestres d'origine volontairement ambigue, longues chaines et enorme hache rituelle double.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of the Warlord Predator from Predator: Killer of Killers, faithful to the supplied film-frame references. Show a huge dark-brown arena ruler with long black dreadlocks, bone-bronze biomask and red eye slit, minimal heavy ritual armor, layered waist plates, armored shins and an enormous complete double-headed execution axe held low without hiding the body. Reproduce the towering back mantle and halo made from ambiguous alien skeletal remains and trophy spines exactly as a silhouette, without identifying or redesigning the species. Right-facing three-quarter lateral command stance; every trophy spine, mask, axe blade, hand and foot fully inside the wide canvas with margin. Dense crisp 32-bit pixel art on flat #00FF00, no shadow, floor, text, logo, border, arena, second character, Xenomorph reinterpretation or crop.",
+      "sourcePath": "art-source/v5/film-plates/sources/kok-warlord-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/kok-warlord.png",
+      "validation": {
+        "width": 1350,
+        "height": 1165,
+        "alpha": true,
+        "bounds": [195, 24, 1168, 1113]
+      }
+    },
+    {
+      "id": "dek",
+      "name": "Dek",
+      "work": "Predator: Badlands (2025)",
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands",
+        "https://www.artstation.com/artwork/98GeOL",
+        "https://store.necaonline.com/products/predator-badlands-ultimate-dek-training-armor-7-inch-scale-action-figure"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/dek/20cs-still-9.jpg",
+        "tmp/yautja-film-references/dek/neca-mobile.png",
+        "tmp/yautja-film-references/dek/neca-10.png",
+        "tmp/yautja-film-references/dek/weta-day.webp"
+      ],
+      "visualAnchor": "Dek jeune et compact sans masque, peau rouge-orange, croc inferieur gauche canonique casse, dreadlocks noires, kit d'entrainement bronze-noir, energy bow rouge, gauntlets et armes repliees.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of Dek in his Predator: Badlands training armor, faithful to the official 20th Century stills plus licensed Weta and NECA references. Show his unmasked compact young face, red-orange mottled skin, black dreadlocks, exact black-and-weathered-bronze layered chest, shoulder, waist and shin plates, asymmetric gauntlets, strapped sandals and stowed collapsed Yautja blades. Canon face rule: Dek's anatomical lower-left mandibular fang, on the viewer-right side, is broken off and must read as a tiny jagged stump while the opposite lower fang remains long. Show the complete activated red energy bow in one hand, entirely inside a wide canvas. Right-facing three-quarter lateral stance, all equipment separately readable. Dense crisp 32-bit pixel art, perfectly flat #00FF00 background, no shadow, floor, text, logo, border, biomask, extra character, duplicate weapon or crop.",
+      "sourcePath": "art-source/v5/film-plates/sources/dek-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/dek.png",
+      "validation": {
+        "width": 1383,
+        "height": 1137,
+        "alpha": true,
+        "bounds": [206, 48, 983, 1097]
+      }
+    },
+    {
+      "id": "kwei",
+      "name": "Kwei",
+      "work": "Predator: Badlands (2025)",
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands",
+        "https://www.artstation.com/artwork/98GeOL",
+        "https://www.avpgalaxy.net/2026/03/27/weta-workshop-shares-trophy-room-load-of-predator-badlands-behind-the-scenes-images/"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/kwei/20cs-still-13.jpg",
+        "tmp/yautja-film-references/kwei/weta-bts-4.webp",
+        "tmp/yautja-film-references/kwei/weta-bts-5.webp",
+        "tmp/yautja-film-references/kwei/weta-mask.webp"
+      ],
+      "visualAnchor": "Kwei tres grand et puissant, biomask final argent-bronze a joues cornees, lourdes plaques thoraciques bronze, pauldrons asymetriques, gauntlets argentes, wrist blades et energy bow rouge.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of Kwei from Predator: Badlands, faithful to the official 20th Century film still and Weta final costume and mask references. Make him unmistakably distinct from Dek: a very tall broad veteran with reddish-brown skin, long black dreadlocks, exact ornate silver-bronze closed biomask with red face accents, central vertical muzzle plates and swept horn-like cheek guards, heavy asymmetric weathered shoulder plates, broad overlapping ribbed bronze chest armor, engraved silver gauntlets, red hanging loincloth, dark greaves and sandals. Show his canonical activated red energy bow completely visible together with readable long wrist blades. Right-facing three-quarter lateral combat stance, entire figure and weapon inside frame with generous margin. Dense crisp 32-bit pixel art, flat pure #00FF00 background, no shadow, floor, text, logo, border, extra character, invented armor or crop.",
+      "sourcePath": "art-source/v5/film-plates/sources/kwei-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/kwei.png",
+      "validation": {
+        "width": 1024,
+        "height": 1536,
+        "alpha": true,
+        "bounds": [57, 91, 903, 1450]
+      }
+    },
+    {
+      "id": "dek-father",
+      "name": "Njohrr / Dek's Father",
+      "work": "Predator: Badlands (2025)",
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands",
+        "https://www.artstation.com/artwork/98GeOL",
+        "https://www.avpgalaxy.net/2026/03/29/weta-workshop-shares-behind-the-scenes-pictures-of-predator-badlands-njohrr-father-predator/"
+      ],
+      "localReferences": [
+        "tmp/yautja-film-references/dek-father/weta-bts-2.webp",
+        "tmp/yautja-film-references/dek-father/weta-bts-3.webp",
+        "tmp/yautja-film-references/dek-father/weta-bts-4.webp",
+        "tmp/yautja-film-references/dek-father/weta-costume.webp"
+      ],
+      "visualAnchor": "Njohrr chef de clan, enorme biomask trophee a bois asymetriques, dreadlocks ivoire, armure sombre en plaques d'os et metal, pauldrons trophees, long manteau de peau noire et plasma caster compact.",
+      "prompt": "Use case: stylized-concept. Asset type: high-detail 2D side-view game character plate. Create one original full-body pixel-art sprite of Njohrr, Dek's Father and clan leader from Predator: Badlands, faithful to the supplied Weta final practical costume. Show a towering broad leader wearing the exact huge bone-trophy biomask with two long asymmetric antler-like horns and smaller spikes, dark slit eyes, metal lower face rails and small red technology lights; long thick ivory-white dreadlocks; layered dark bronze and black trophy-bone chest armor; a spiked trophy pauldron opposite layered metal plates; engraved silver gauntlets; dark loin armor, greaves and bone-clawed footwear; and the ankle-length charcoal victim-pelt cloak. Keep the compact angular shoulder plasma caster housing visible over the shoulder. Restrained dark bronze, black, bone and ivory palette, no bright red fur and no invented hand weapon. Right-facing three-quarter lateral command stance, entire horns, cloak, caster, hands and feet inside frame. Dense crisp 32-bit pixel art on pure flat #00FF00, no shadow, floor, text, logo, border, second character or crop.",
+      "sourcePath": "art-source/v5/film-plates/sources/dek-father-chroma.png",
+      "runtimePath": "public/game/sprites/v5/film-plates/dek-father.png",
+      "validation": {
+        "width": 1023,
+        "height": 1537,
+        "alpha": true,
+        "bounds": [82, 62, 887, 1462]
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-28",
+  "tool": "image_gen.imagegen",
+  "attemptId": "feral-backward-attacker-left-v112",
+  "submittedPrompt": "Paint a NEW original native 2D fighting-game animation atlas using the supplied image ONLY as a reference for character incarnation, owned equipment and detailed painted game style. Do not reuse, mirror or crop its existing poses. ONE landscape RGBA PNG, intended1536x1024, EXACTLY6 full-body drawings arranged in a precise3columns by2rows. STRICT EMPTY GUTTERS: each512x512 cell contains a small centered character with anatomical standing head-to-sole height340px, baseline y=430; no silhouette wider than360px. At least60px COMPLETELY TRANSPARENT padding on EVERY side of every full silhouette. Never enlarge the poses to fill their cells. Frame0 at center(256,256),1(768,256),2(1280,256),3(256,768),4(768,768),5(1280,768). Everything outside the six bodies is genuine alpha0: no brown glow, dark vignette, drop shadow, floor, labels, text, grid or painted checkerboard. Exactly two arms and two legs, coherent joints and clawed fingers, stable anatomy and equipment. No gray mannequin, second actor, opponent, partner hands or loose severed body parts. All limbs/weapons/dreadlocks visible inside the canvas with no clipping. Anatomical character scale stays the SAME through bends and flight, do not resize a lying body to standing height. Character: Feral from Prey, bone skull mask with narrow red mouth area, long black dreadlocks, mottled ochre skin, lean muscular long limbs, rough hide waist armor, round shield on anatomical LEFT forearm and two wrist blades on anatomical RIGHT arm, NO shoulder cannon. Independently draw this starting screen LEFT orientation naturally; NEVER mirror the other orientation. The hunter's initial opponent is screen LEFT. Produce BACKWARD THROW ATTACKER frames, only the hunter and attached equipment. In reading order:0 grounded guard facing screen LEFT;1 reach toward an ABSENT opponent screen LEFT, own empty hand;2 lower hips and rotate trunk to load ABSENT opponent onto own hip/shoulder, shown in three-quarter back view while grounded;3 twist and release ABSENT opponent OVER own shoulder BACKWARD toward screen RIGHT, not forward, clear empty hands;4 controlled grounded follow-through toward screen RIGHT with stable legs;5 recover to same original screen LEFT guard. The backward shoulder rotation must be visibly different from a forward shove. Preserve equipment ownership through the rotation. This is an original game adaptation, not movie-exact evidence.",
+  "submittedReferences": [
+    {
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+      "bytes": 2390859,
+      "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+      "preservedPath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png"
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-bde6e136-f6cd-4d32-86d9-0d22a072796a.png",
+  "output": {
+    "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-attacker-left-v112.png",
+    "sha256": "d04e3938c2578cefebb2fe8a213aa5af6ac98bf339ae7c2a15b1d6f12077cec1",
+    "bytes": 2266096,
+    "width": 1536,
+    "height": 1024
+  },
+  "filesEditedAfterGeneration": false,
+  "status": "SELECTED_SOURCE_REGIONS",
+  "scope": "Local tool call record, not an externally signed certificate. Only selected source UV regions may be admitted. Source action completion remains open.",
+  "selectedFrameIndices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+}

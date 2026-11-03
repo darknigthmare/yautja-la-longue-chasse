@@ -1,0 +1,35 @@
+{
+  "id": "scar-v100-018",
+  "generator": "OpenAI image_gen",
+  "original": "art-source/v100/pit/scar/intake/018-scar-jM-left-original.png",
+  "generatedOriginal": "/workspace/generated_images/exec-1a1e3443-6e0f-4c19-bda5-6585befc5969.png",
+  "prompt": "018-prompt.txt",
+  "sourceCells": [
+    "05_MOVES_PROPOSES!K7"
+  ],
+  "fighterId": "scar",
+  "appearanceId": "runtime-default",
+  "facing": "left",
+  "transparentBackgroundRequested": true,
+  "sha256": "0871f19ae9c70e4ee90c2a817ac04a858bfc1e432f2b84bd7e7d40956202d0ff",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 1629176,
+  "status": "rejected-full-cycle-continuity",
+  "layout": {
+    "columns": 2,
+    "rows": 2,
+    "referenceFrameIndices": [
+      0
+    ],
+    "actionFrames": [
+      1,
+      2,
+      3
+    ]
+  },
+  "decision": "Independent qa_v100 visual review: Anticipation and recovery still face right, contact left.",
+  "referenceImages": [
+    "public/game/sprites/v34/pit/scar/scar-idle-v34.png"
+  ]
+}

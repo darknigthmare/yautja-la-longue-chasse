@@ -1,0 +1,7 @@
+PASS Editing the seed supersedes an older native file
+PASS Editing atmosphere supersedes an older native file
+PASS A rejected generation preserves its error after the older read
+PASS A rejected code import preserves its error after the older read
+PASS A newer unfinished code edit remains intact after the older read
+PASS A fresh V102 native import still succeeds after the cancelled reads
+{"status":"PASS","checks":6,"report":"/tmp/yautja-legacy-import-browser.json"}

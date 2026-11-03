@@ -1,0 +1,515 @@
+{
+  "fighterId": "feral-hunter",
+  "actionId": "CIN_F006_CLEMENCE",
+  "appearanceId": "runtime-default",
+  "atlasId": "feral-workbook-clemence-v100",
+  "clipIds": [
+    "workbook.CIN_F006_CLEMENCE"
+  ],
+  "definition": {
+    "fighterId": "feral-hunter",
+    "bodyHeightPx": 396,
+    "pageBodyHeightPx": {
+      "feral-special-clemence-a-right-v100": 396,
+      "feral-special-clemence-b-right-v100": 404,
+      "feral-special-clemence-a-left-v100": 371,
+      "feral-special-clemence-b-left-v100": 416
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "feral-special-clemence-a-right-v100",
+        "rect": [
+          0,
+          0,
+          664,
+          544
+        ],
+        "visibleRect": [
+          226,
+          98,
+          255,
+          398
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-a-right-v100",
+        "rect": [
+          663,
+          0,
+          873,
+          544
+        ],
+        "visibleRect": [
+          828,
+          148,
+          658,
+          348
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-a-right-v100",
+        "rect": [
+          0,
+          543,
+          788,
+          481
+        ],
+        "visibleRect": [
+          79,
+          600,
+          654,
+          345
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-a-right-v100",
+        "rect": [
+          787,
+          543,
+          749,
+          481
+        ],
+        "visibleRect": [
+          842,
+          592,
+          622,
+          366
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-b-right-v100",
+        "rect": [
+          0,
+          0,
+          720,
+          523
+        ],
+        "visibleRect": [
+          129,
+          62,
+          446,
+          406
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-b-right-v100",
+        "rect": [
+          719,
+          0,
+          817,
+          523
+        ],
+        "visibleRect": [
+          865,
+          106,
+          593,
+          379
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-b-right-v100",
+        "rect": [
+          0,
+          522,
+          775,
+          502
+        ],
+        "visibleRect": [
+          117,
+          560,
+          601,
+          400
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-b-right-v100",
+        "rect": [
+          774,
+          522,
+          762,
+          502
+        ],
+        "visibleRect": [
+          832,
+          561,
+          644,
+          399
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-a-left-v100",
+        "rect": [
+          0,
+          0,
+          688,
+          520
+        ],
+        "visibleRect": [
+          221,
+          86,
+          323,
+          381
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-a-left-v100",
+        "rect": [
+          687,
+          0,
+          849,
+          520
+        ],
+        "visibleRect": [
+          832,
+          150,
+          660,
+          313
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-a-left-v100",
+        "rect": [
+          0,
+          519,
+          775,
+          505
+        ],
+        "visibleRect": [
+          67,
+          607,
+          630,
+          334
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-a-left-v100",
+        "rect": [
+          774,
+          519,
+          762,
+          505
+        ],
+        "visibleRect": [
+          853,
+          572,
+          639,
+          370
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-b-left-v100",
+        "rect": [
+          0,
+          0,
+          717,
+          540
+        ],
+        "visibleRect": [
+          181,
+          69,
+          390,
+          427
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-b-left-v100",
+        "rect": [
+          716,
+          0,
+          820,
+          540
+        ],
+        "visibleRect": [
+          863,
+          134,
+          644,
+          369
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-b-left-v100",
+        "rect": [
+          0,
+          539,
+          777,
+          485
+        ],
+        "visibleRect": [
+          106,
+          576,
+          588,
+          407
+        ]
+      },
+      {
+        "pageId": "feral-special-clemence-b-left-v100",
+        "rect": [
+          776,
+          539,
+          760,
+          485
+        ],
+        "visibleRect": [
+          859,
+          577,
+          659,
+          406
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "feral-workbook-clemence-v100",
+      "characterId": "feral-hunter",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "feral-special-clemence-a-right-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-clemence-a-right-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-clemence-b-right-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-clemence-b-right-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-clemence-a-left-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-clemence-a-left-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-clemence-b-left-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-clemence-b-left-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.CIN_F006_CLEMENCE",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-clemence-a-right-v100",
+              "rect": [
+                663,
+                0,
+                873,
+                544
+              ],
+              "pivot": [
+                290,
+                496
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-clemence-a-right-v100",
+              "rect": [
+                0,
+                543,
+                788,
+                481
+              ],
+              "pivot": [
+                205,
+                398
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-clemence-a-right-v100",
+              "rect": [
+                787,
+                543,
+                749,
+                481
+              ],
+              "pivot": [
+                165,
+                408
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "feral-special-clemence-b-right-v100",
+              "rect": [
+                719,
+                0,
+                817,
+                523
+              ],
+              "pivot": [
+                278,
+                466
+              ],
+              "durationTicks": 50
+            },
+            {
+              "pageId": "feral-special-clemence-b-right-v100",
+              "rect": [
+                0,
+                522,
+                775,
+                502
+              ],
+              "pivot": [
+                256,
+                435
+              ],
+              "durationTicks": 50
+            },
+            {
+              "pageId": "feral-special-clemence-b-right-v100",
+              "rect": [
+                774,
+                522,
+                762,
+                502
+              ],
+              "pivot": [
+                224,
+                429
+              ],
+              "durationTicks": 60
+            }
+          ]
+        },
+        {
+          "id": "workbook.CIN_F006_CLEMENCE",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-clemence-a-left-v100",
+              "rect": [
+                687,
+                0,
+                849,
+                520
+              ],
+              "pivot": [
+                678,
+                463
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-clemence-a-left-v100",
+              "rect": [
+                0,
+                519,
+                775,
+                505
+              ],
+              "pivot": [
+                570,
+                401
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-clemence-a-left-v100",
+              "rect": [
+                774,
+                519,
+                762,
+                505
+              ],
+              "pivot": [
+                581,
+                409
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "feral-special-clemence-b-left-v100",
+              "rect": [
+                716,
+                0,
+                820,
+                540
+              ],
+              "pivot": [
+                579,
+                492
+              ],
+              "durationTicks": 50
+            },
+            {
+              "pageId": "feral-special-clemence-b-left-v100",
+              "rect": [
+                0,
+                539,
+                777,
+                485
+              ],
+              "pivot": [
+                531,
+                432
+              ],
+              "durationTicks": 50
+            },
+            {
+              "pageId": "feral-special-clemence-b-left-v100",
+              "rect": [
+                776,
+                539,
+                760,
+                485
+              ],
+              "pivot": [
+                521,
+                434
+              ],
+              "durationTicks": 60
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "source-presentation-native-disarm-breathing-space-case-recovery-exit-mannequin-scene-study-only",
+    "sourceSha256": "945574215a3b626e9b61a26e738a4214b89a70162738e9eb1850936134b1e17f",
+    "sourceHashes": {
+      "/game/sprites/v100/pit/feral/feral-special-clemence-a-right-v100.png": "945574215a3b626e9b61a26e738a4214b89a70162738e9eb1850936134b1e17f",
+      "/game/sprites/v100/pit/feral/feral-special-clemence-b-right-v100.png": "0fb80d6ec9d03dae0e60f6aeefc2e2da42ee1445bad681084b7e1f32635c5c98",
+      "/game/sprites/v100/pit/feral/feral-special-clemence-a-left-v100.png": "45748db10aa0aa3da3467b02a954349d03f15b1a562103332b6743172c9bcdcd",
+      "/game/sprites/v100/pit/feral/feral-special-clemence-b-left-v100.png": "fc9bb0f88e7a8b18cfbd1daed0dbeb171c534a8fcb383720c205b0c470f9ef7e"
+    },
+    "notes": "J10. Six actual action stages each facing: hook/disarm intact training blade, step back, open left palm allowing unharmed partner to breathe, take existing sealed mission case by handle, rise holding case, real departure step. Independent final QA opened all four originals and confirmed case present from A1 onward, not spawned at pickup; same two-latch closed case remains identifiable despite minor native proportions/trim variation. Shield stays anatomical LEFT, intact spear RIGHT and blades retracted. Final exit turns intentionally away from the partner and is not an erroneous mirrored facing. Gray articulated adult-sized neutral mannequin, dropped blade and case are baked scene-study props; no narrative victim, synchronized real opponent, campaign mission object/reward or inventory/disarm mechanic is implemented. Fixed MASK-crown-to-Feral-soles scale and manually reviewed Feral feet exclude mannequin, blade and case ground pixels. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+  }
+}

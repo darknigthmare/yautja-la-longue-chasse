@@ -1,0 +1,1039 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "canonicalFidelityCertified": false,
+  "items": [
+    {
+      "id": "scar-dizzy-v93",
+      "category": "dizzy",
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "prompt": "Create a SIX-DRAWING native fighting-game animation sheet from the attached exact SCAR masked reference, retaining his AVP silver angular etched mask, pale yellow black-spotted skin, extensive layered silver chest armor and long plate loin protection, armored claw feet, dark long dreadlocks with gold/red bands, necklace, black body netting. Equipment anatomical ownership never changes: original wrist blades ONLY on CHARACTER RIGHT wrist; single plasma caster on CHARACTER LEFT shoulder. Keep mask worn, no helmet swap or exposed face. Same richly painted detailed 2D game-sprite style and exact costume throughout. PORTRAIT RGBA with fully TRANSPARENT background. SIX separate full-body drawings in TWO COLUMNS by THREE ROWS: left column faces screen RIGHT, right column faces screen LEFT, sequential action frames top/middle/bottom in each column. Author the opposite-facing poses individually, never mirror the asymmetric gear. Every cell has large transparent gutters and outer margins; no limb/weapon/hair crossing cells, no clipping. Same consistent character scale and foot baseline per cell; hands must be anatomically coherent, five fingers, no extra arms or blades. No text, labels, grid, shadow, backdrop, glow or checkerboard. Three genuinely different poses for each facing, not clones. No shield, new spear or plasma shot. This is an authored restrained game gesture, not an alleged canonical film shot. FINISHER WAIT STUNNED IDLE LOOP. He remains upright living and planted on BOTH FEET, knees softly bent, wrist blades fully retracted. Frame1 torso slightly pitched forward, heavy arms hanging, covered head bowed; frame2 exhausted sway a few inches toward opponent, left empty hand loosens up for balance, shoulders slump; frame3 weak sway back close to original pose, head stays low. Never kneel, fall or die. Intact armor, no wounds, no blood, no dismemberment, no victory, no self destruct. Grounded repeated swaying cycle anatomically consistent.",
+      "ordinal": 1,
+      "fileName": "001-scar-masked-dizzy-v93.png",
+      "status": "rejected",
+      "rejectionReason": "Le premier essai ne respecte pas les marges de séparation/alpha aux limites des cellules. Originale conservée, pas admise au runtime.",
+      "sourceReference": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "path": "art-source/v93/pit/scar/001-scar-masked-dizzy-v93.png",
+      "sha256": "351e32e37f9eb14b43dcfecc0936c1c793e46b9275969c9c7052b9562431f93e",
+      "bytes": 2434968,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 1026274,
+        "opaque": 0,
+        "low": 53506,
+        "maxEdge": 3,
+        "zeroFraction": 0.6524874369303385
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            134,
+            0,
+            298,
+            511
+          ],
+          "maxEdgeAlpha": 3,
+          "visiblePixels": 82175,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              510
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            624,
+            7,
+            272,
+            501
+          ],
+          "maxEdgeAlpha": 2,
+          "visiblePixels": 79074,
+          "nonEmptyRowRanges": [
+            [
+              7,
+              507
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            132,
+            513,
+            353,
+            511
+          ],
+          "maxEdgeAlpha": 252,
+          "visiblePixels": 89149,
+          "nonEmptyRowRanges": [
+            [
+              1,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            604,
+            514,
+            310,
+            510
+          ],
+          "maxEdgeAlpha": 252,
+          "visiblePixels": 82459,
+          "nonEmptyRowRanges": [
+            [
+              2,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            136,
+            1024,
+            297,
+            492
+          ],
+          "maxEdgeAlpha": 252,
+          "visiblePixels": 81516,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              491
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            628,
+            1024,
+            284,
+            490
+          ],
+          "maxEdgeAlpha": 251,
+          "visiblePixels": 78711,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              489
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scar-taunt-v93",
+      "category": "taunt",
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "prompt": "Create a SIX-DRAWING native fighting-game animation sheet from the attached exact SCAR masked reference, retaining his AVP silver angular etched mask, pale yellow black-spotted skin, extensive layered silver chest armor and long plate loin protection, armored claw feet, dark long dreadlocks with gold/red bands, necklace, black body netting. Equipment anatomical ownership never changes: original wrist blades ONLY on CHARACTER RIGHT wrist; single plasma caster on CHARACTER LEFT shoulder. Keep mask worn, no helmet swap or exposed face. Same richly painted detailed 2D game-sprite style and exact costume throughout. PORTRAIT RGBA with fully TRANSPARENT background. SIX separate full-body drawings in TWO COLUMNS by THREE ROWS: left column faces screen RIGHT, right column faces screen LEFT, sequential action frames top/middle/bottom in each column. Author the opposite-facing poses individually, never mirror the asymmetric gear. Every cell has large transparent gutters and outer margins; no limb/weapon/hair crossing cells, no clipping. Same consistent character scale and foot baseline per cell; hands must be anatomically coherent, five fingers, no extra arms or blades. No text, labels, grid, shadow, backdrop, glow or checkerboard. Three genuinely different poses for each facing, not clones. No shield, new spear or plasma shot. This is an authored restrained game gesture, not an alleged canonical film shot. TAUNT challenge three frames. Frame1 planted neutral battle guard, right forearm at abdomen, wrist blades safely fully retracted. Frame2 broad sturdy chest rise and head faces opponent, CHARACTER LEFT empty clawed hand closes into a restrained fist near left chest, CHARACTER RIGHT forearm relaxes downward. Frame3 left fist opens into a brief beckoning challenge, right arm safely lowered, returning to guard. All six drawings keep blades retracted (NO extended blade in any cell), empty hands and stationary shoulder cannon; do not summon NPCs or trophies or invented objects. No mask removal. Visible coherent arm/hand gesture in exact Scar armor.",
+      "ordinal": 2,
+      "fileName": "002-scar-masked-taunt-v93.png",
+      "status": "rejected",
+      "rejectionReason": "Le premier essai ne respecte pas les marges de séparation/alpha aux limites des cellules. Originale conservée, pas admise au runtime.",
+      "sourceReference": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "path": "art-source/v93/pit/scar/002-scar-masked-taunt-v93.png",
+      "sha256": "0515d29a740cfa790ea5770a4f3a9d07bc980619b922c3b0eeb49f673c94af9f",
+      "bytes": 2532850,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 987616,
+        "opaque": 0,
+        "low": 62579,
+        "maxEdge": 4,
+        "zeroFraction": 0.6279093424479166
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            40,
+            6,
+            411,
+            506
+          ],
+          "maxEdgeAlpha": 251,
+          "visiblePixels": 81649,
+          "nonEmptyRowRanges": [
+            [
+              6,
+              489
+            ],
+            [
+              505,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            573,
+            0,
+            409,
+            512
+          ],
+          "maxEdgeAlpha": 251,
+          "visiblePixels": 79460,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              489
+            ],
+            [
+              505,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            61,
+            512,
+            395,
+            512
+          ],
+          "maxEdgeAlpha": 252,
+          "visiblePixels": 91684,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            565,
+            512,
+            389,
+            512
+          ],
+          "maxEdgeAlpha": 253,
+          "visiblePixels": 87872,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            42,
+            1024,
+            443,
+            493
+          ],
+          "maxEdgeAlpha": 252,
+          "visiblePixels": 91228,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              492
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            546,
+            1024,
+            436,
+            491
+          ],
+          "maxEdgeAlpha": 253,
+          "visiblePixels": 90776,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              490
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scar-dizzy-v93-r2",
+      "category": "dizzy",
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "prompt": "Create a SIX-DRAWING native fighting-game animation sheet from the attached exact SCAR masked reference, retaining his AVP silver angular etched mask, pale yellow black-spotted skin, extensive layered silver chest armor and long plate loin protection, armored claw feet, dark long dreadlocks with gold/red bands, necklace, black body netting. Equipment anatomical ownership never changes: original wrist blades ONLY on CHARACTER RIGHT wrist; single plasma caster on CHARACTER LEFT shoulder. Keep mask worn, no helmet swap or exposed face. Same richly painted detailed 2D game-sprite style and exact costume throughout. PORTRAIT RGBA with fully TRANSPARENT background. SIX separate full-body drawings in TWO COLUMNS by THREE ROWS: left column faces screen RIGHT, right column faces screen LEFT, sequential action frames top/middle/bottom in each column. Author the opposite-facing poses individually, never mirror the asymmetric gear. Every cell has large transparent gutters and outer margins; no limb/weapon/hair crossing cells, no clipping. Same consistent character scale and foot baseline per cell; hands must be anatomically coherent, five fingers, no extra arms or blades. No text, labels, grid, shadow, backdrop, glow or checkerboard. Three genuinely different poses for each facing, not clones. No shield, new spear or plasma shot. This is an authored restrained game gesture, not an alleged canonical film shot. FINISHER WAIT STUNNED IDLE LOOP. He remains upright living and planted on BOTH FEET, knees softly bent, wrist blades fully retracted. Frame1 torso slightly pitched forward, heavy arms hanging, covered head bowed; frame2 exhausted sway a few inches toward opponent, left empty hand loosens up for balance, shoulders slump; frame3 weak sway back close to original pose, head stays low. Never kneel, fall or die. Intact armor, no wounds, no blood, no dismemberment, no victory, no self destruct. Grounded repeated swaying cycle anatomically consistent.\nCritical layout: draw SIX SMALL MINIATURE full-body sprites, each onlyabout350pixels tall and at most340pixels wide, within six spacious512x512cells on1024x1536transparent canvas. The character occupies ONLY the central70percent of a cell: at least75clear transparent pixels above the head and belowfeet,65pixels clear beside all hands/hair/weapons. Huge approximately150pixel completely empty transparent bands between rows. No background or soft aura from reference copied. Accurate constant small body scale across all cells; same foot baseline. Never let any pixel of head, toes or equipment touch outeredge or y512/y1024/x512. Empty space is intentional, do not fillcanvas.",
+      "ordinal": 3,
+      "fileName": "003-scar-masked-dizzy-r2-v93.png",
+      "status": "pending-alpha-admission",
+      "visualReview": "Costume masqué et armure deScarconservés, visage couvert, bras et armes constants, troisposesverschaquecôté;gestureadaptationdujeu, noncertifié1:1.",
+      "sourceReference": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "path": "art-source/v93/pit/scar/003-scar-masked-dizzy-r2-v93.png",
+      "sha256": "f990b64ecbf5d4848a13c7c24d8bf2ed89371fff3f3ccfab18f377ea5709e0dd",
+      "bytes": 2021972,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 1186122,
+        "opaque": 0,
+        "low": 45851,
+        "maxEdge": 1,
+        "zeroFraction": 0.7541160583496094
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            142,
+            67,
+            214,
+            412
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 55655,
+          "nonEmptyRowRanges": [
+            [
+              67,
+              478
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            665,
+            70,
+            221,
+            409
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 54892,
+          "nonEmptyRowRanges": [
+            [
+              70,
+              478
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            134,
+            582,
+            282,
+            412
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 61735,
+          "nonEmptyRowRanges": [
+            [
+              70,
+              481
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            603,
+            585,
+            290,
+            409
+          ],
+          "maxEdgeAlpha": 0,
+          "visiblePixels": 58522,
+          "nonEmptyRowRanges": [
+            [
+              73,
+              481
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            134,
+            1100,
+            216,
+            408
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 55420,
+          "nonEmptyRowRanges": [
+            [
+              76,
+              483
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            673,
+            1101,
+            220,
+            408
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 54667,
+          "nonEmptyRowRanges": [
+            [
+              77,
+              484
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scar-taunt-v93-r2",
+      "category": "taunt",
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "prompt": "Create a SIX-DRAWING native fighting-game animation sheet from the attached exact SCAR masked reference, retaining his AVP silver angular etched mask, pale yellow black-spotted skin, extensive layered silver chest armor and long plate loin protection, armored claw feet, dark long dreadlocks with gold/red bands, necklace, black body netting. Equipment anatomical ownership never changes: original wrist blades ONLY on CHARACTER RIGHT wrist; single plasma caster on CHARACTER LEFT shoulder. Keep mask worn, no helmet swap or exposed face. Same richly painted detailed 2D game-sprite style and exact costume throughout. PORTRAIT RGBA with fully TRANSPARENT background. SIX separate full-body drawings in TWO COLUMNS by THREE ROWS: left column faces screen RIGHT, right column faces screen LEFT, sequential action frames top/middle/bottom in each column. Author the opposite-facing poses individually, never mirror the asymmetric gear. Every cell has large transparent gutters and outer margins; no limb/weapon/hair crossing cells, no clipping. Same consistent character scale and foot baseline per cell; hands must be anatomically coherent, five fingers, no extra arms or blades. No text, labels, grid, shadow, backdrop, glow or checkerboard. Three genuinely different poses for each facing, not clones. No shield, new spear or plasma shot. This is an authored restrained game gesture, not an alleged canonical film shot. TAUNT challenge three frames. Frame1 planted neutral battle guard, right forearm at abdomen, wrist blades safely fully retracted. Frame2 broad sturdy chest rise and head faces opponent, CHARACTER LEFT empty clawed hand closes into a restrained fist near left chest, CHARACTER RIGHT forearm relaxes downward. Frame3 left fist opens into a brief beckoning challenge, right arm safely lowered, returning to guard. All six drawings keep blades retracted (NO extended blade in any cell), empty hands and stationary shoulder cannon; do not summon NPCs or trophies or invented objects. No mask removal. Visible coherent arm/hand gesture in exact Scar armor.\nCritical layout: draw SIX SMALL MINIATURE full-body sprites, each onlyabout350pixels tall and at most340pixels wide, within six spacious512x512cells on1024x1536transparent canvas. The character occupies ONLY the central70percent of a cell: at least75clear transparent pixels above the head and belowfeet,65pixels clear beside all hands/hair/weapons. Huge approximately150pixel completely empty transparent bands between rows. No background or soft aura from reference copied. Accurate constant small body scale across all cells; same foot baseline. Never let any pixel of head, toes or equipment touch outeredge or y512/y1024/x512. Empty space is intentional, do not fillcanvas.",
+      "ordinal": 4,
+      "fileName": "004-scar-masked-taunt-r2-v93.png",
+      "status": "pending-alpha-admission",
+      "visualReview": "Costume masqué et armure deScarconservés, visage couvert, bras et armes constants, troisposesverschaquecôté;gestureadaptationdujeu, noncertifié1:1.",
+      "sourceReference": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "path": "art-source/v93/pit/scar/004-scar-masked-taunt-r2-v93.png",
+      "sha256": "4740d5b1a51d70173fb9237c975fc228f387c077254934313975a3405a671beb",
+      "bytes": 2353218,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 1058406,
+        "opaque": 0,
+        "low": 61971,
+        "maxEdge": 1,
+        "zeroFraction": 0.6729164123535156
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            81,
+            34,
+            361,
+            459
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 74020,
+          "nonEmptyRowRanges": [
+            [
+              34,
+              492
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            581,
+            34,
+            361,
+            460
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 74409,
+          "nonEmptyRowRanges": [
+            [
+              34,
+              493
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            126,
+            544,
+            326,
+            455
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 76268,
+          "nonEmptyRowRanges": [
+            [
+              32,
+              486
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            571,
+            544,
+            326,
+            457
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 75952,
+          "nonEmptyRowRanges": [
+            [
+              32,
+              488
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            80,
+            1046,
+            362,
+            439
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 75853,
+          "nonEmptyRowRanges": [
+            [
+              22,
+              460
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            581,
+            1042,
+            363,
+            443
+          ],
+          "maxEdgeAlpha": 0,
+          "visiblePixels": 75985,
+          "nonEmptyRowRanges": [
+            [
+              18,
+              460
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scar-idle-v93",
+      "category": "idle",
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "prompt": "Create a SIX-DRAWING native fighting-game animation sheet from the attached exact SCAR masked reference, retaining his AVP silver angular etched mask, pale yellow black-spotted skin, extensive layered silver chest armor and long plate loin protection, armored claw feet, dark long dreadlocks with gold/red bands, necklace, black body netting. Equipment anatomical ownership never changes: original wrist blades ONLY on CHARACTER RIGHT wrist; single plasma caster on CHARACTER LEFT shoulder. Keep mask worn, no helmet swap or exposed face. Same richly painted detailed 2D game-sprite style and exact costume throughout. PORTRAIT RGBA with fully TRANSPARENT background. SIX separate full-body drawings in TWO COLUMNS by THREE ROWS: left column faces screen RIGHT, right column faces screen LEFT, sequential action frames top/middle/bottom in each column. Author the opposite-facing poses individually, never mirror the asymmetric gear. Every cell has large transparent gutters and outer margins; no limb/weapon/hair crossing cells, no clipping. Same consistent character scale and foot baseline per cell; hands must be anatomically coherent, five fingers, no extra arms or blades. No text, labels, grid, shadow, backdrop, glow or checkerboard. Three genuinely different poses for each facing, not clones. No shield, new spear or plasma shot. This is an authored restrained game gesture, not an alleged canonical film shot. SUBTLE BATTLE IDLE LOOP in exact full Scar silver armor. All arms/hands/equipment stay in calm relaxed guard. Frame1 knees slightly bent, empty character LEFT hand raised modestly abdomen-height, character RIGHT forearm lowered, blades fully retracted; frame2 a calm breath chest rises a little, shoulders/dreadlocks move slightly, BOTH FEET remain planted; frame3 breathe out and settle toward original guard. No walking, no arm fist/beckon, no attacking, no mask removal, no weapon fired. Preserve his layered chest plate/loin/feet. THREE visibly different restrained drawn poses per facing. CRITICAL layout: each complete SMALL full-body figure only350pixels tall and less340pixels wide. At least75pixels entirely transparent abovehead/belowfeet and65pixels either side of each512x512cell. Six miniatures on1024x1536, wideempty150pixel horizontal gutters; do NOT fillcanvas. All limbs/head/equipment far away from outeredges or x512/y512/y1024. Anatomical scale constant source, no copied backdrop.",
+      "ordinal": 5,
+      "fileName": "005-scar-masked-idle-v93.png",
+      "status": "rejected",
+      "rejectionReason": "Lame de poignet étendue seulement dans la colonne vers la gauche ; équipement incohérent entre orientations.",
+      "sourceReference": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "path": "art-source/v93/pit/scar/005-scar-masked-idle-v93.png",
+      "sha256": "3f1020d278c309304e506788668f02749abad8ce996db3d37f72d1fe983e867f",
+      "bytes": 2398269,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 1028626,
+        "opaque": 0,
+        "low": 64401,
+        "maxEdge": 1,
+        "zeroFraction": 0.6539827982584635
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            60,
+            44,
+            322,
+            465
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 75475,
+          "nonEmptyRowRanges": [
+            [
+              44,
+              508
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            645,
+            40,
+            315,
+            470
+          ],
+          "maxEdgeAlpha": 2,
+          "visiblePixels": 77443,
+          "nonEmptyRowRanges": [
+            [
+              40,
+              40
+            ],
+            [
+              42,
+              509
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            77,
+            542,
+            328,
+            480
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 84426,
+          "nonEmptyRowRanges": [
+            [
+              30,
+              509
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            624,
+            530,
+            325,
+            493
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 84975,
+          "nonEmptyRowRanges": [
+            [
+              18,
+              510
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            67,
+            1040,
+            331,
+            462
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 79292,
+          "nonEmptyRowRanges": [
+            [
+              16,
+              477
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            640,
+            1041,
+            324,
+            461
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 78226,
+          "nonEmptyRowRanges": [
+            [
+              17,
+              477
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scar-idle-v93-r2",
+      "category": "idle",
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "prompt": "Create a SIX-DRAWING native fighting-game animation sheet from the attached exact SCAR masked reference, retaining his AVP silver angular etched mask, pale yellow black-spotted skin, extensive layered silver chest armor and long plate loin protection, armored claw feet, dark long dreadlocks with gold/red bands, necklace, black body netting. Equipment anatomical ownership never changes: original wrist blades ONLY on CHARACTER RIGHT wrist; single plasma caster on CHARACTER LEFT shoulder. Keep mask worn, no helmet swap or exposed face. Same richly painted detailed 2D game-sprite style and exact costume throughout. PORTRAIT RGBA with fully TRANSPARENT background. SIX separate full-body drawings in TWO COLUMNS by THREE ROWS: left column faces screen RIGHT, right column faces screen LEFT, sequential action frames top/middle/bottom in each column. Author the opposite-facing poses individually, never mirror the asymmetric gear. Every cell has large transparent gutters and outer margins; no limb/weapon/hair crossing cells, no clipping. Same consistent character scale and foot baseline per cell; hands must be anatomically coherent, five fingers, no extra arms or blades. No text, labels, grid, shadow, backdrop, glow or checkerboard. Three genuinely different poses for each facing, not clones. No shield, new spear or plasma shot. This is an authored restrained game gesture, not an alleged canonical film shot. SUBTLE BATTLE IDLE LOOP in exact full Scar silver armor. All arms/hands/equipment stay in calm relaxed guard. Frame1 knees slightly bent, empty character LEFT hand raised modestly abdomen-height, character RIGHT forearm lowered, blades fully retracted; frame2 a calm breath chest rises a little, shoulders/dreadlocks move slightly, BOTH FEET remain planted; frame3 breathe out and settle toward original guard. No walking, no arm fist/beckon, no attacking, no mask removal, no weapon fired. Preserve his layered chest plate/loin/feet. THREE visibly different restrained drawn poses per facing. CRITICAL layout: each complete SMALL full-body figure only350pixels tall and less340pixels wide. At least75pixels entirely transparent abovehead/belowfeet and65pixels either side of each512x512cell. Six miniatures on1024x1536, wideempty150pixel horizontal gutters; do NOT fillcanvas. All limbs/head/equipment far away from outeredges or x512/y512/y1024. Anatomical scale constant source, no copied backdrop.\nMOST IMPORTANT CORRECTION: BOTH wrist gauntlets have ZERO projecting blades in EVERY drawing, both facings. No blade tip, no single curved blade, no spike below hand. All blades fully sheathed in CLOSED right wrist gauntlet in all six poses. Do not add extended blades in the right column. Shoulder caster stays visibly attached to CHARACTER LEFT shoulder, do not omit it. Increase transparent space by drawing SMALLER 300pixels tall figures in each512square. Preserve mask and armor exactly.",
+      "ordinal": 6,
+      "fileName": "006-scar-masked-idle-r2-v93.png",
+      "status": "pending-alpha-admission",
+      "visualReview": "Six poses indépendantes, masque et équipement constants, lames rétractées dans les deux orientations. Geste de garde créé pour le jeu ; aucune certification canonique 1:1.",
+      "sourceReference": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "path": "art-source/v93/pit/scar/006-scar-masked-idle-r2-v93.png",
+      "sha256": "7f6ab1620ce5e7caf5cedece02819b38b39f885e9751087de36e9730d9345407",
+      "bytes": 2216983,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 1100253,
+        "opaque": 0,
+        "low": 72337,
+        "maxEdge": 1,
+        "zeroFraction": 0.6995220184326172
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            107,
+            78,
+            308,
+            430
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 65861,
+          "nonEmptyRowRanges": [
+            [
+              78,
+              507
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            609,
+            79,
+            306,
+            431
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 64800,
+          "nonEmptyRowRanges": [
+            [
+              79,
+              509
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            126,
+            563,
+            312,
+            446
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 69694,
+          "nonEmptyRowRanges": [
+            [
+              51,
+              496
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            590,
+            559,
+            313,
+            454
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 68927,
+          "nonEmptyRowRanges": [
+            [
+              47,
+              500
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            112,
+            1058,
+            302,
+            424
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 65591,
+          "nonEmptyRowRanges": [
+            [
+              34,
+              457
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            611,
+            1058,
+            307,
+            426
+          ],
+          "maxEdgeAlpha": 0,
+          "visiblePixels": 65401,
+          "nonEmptyRowRanges": [
+            [
+              34,
+              459
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

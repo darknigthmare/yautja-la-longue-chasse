@@ -1,0 +1,747 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-184-warp-threshold",
+  "proposalId": "new-warp-threshold",
+  "workbookStage": "A57:N57",
+  "sourceUrls": [
+    "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+  ],
+  "loreLimits": [
+    "Seuil Warp original du projet utilisateur, pas une technologie canonique Predator attestée.",
+    "Technicien, garde, barrière et portail sont des créations originales cohérentes entre elles ; aucune appartenance à une autre franchise affirmée."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One anonymous adult alien Yautja technician with unadorned shortdarkcloak, plainclosedcopperbiomask, longdarkheadtendrils andsimplebronzeforearmcuffs, civilianengineer notfighter. Holds a small round metalliccalibrationhoop atwaist inbothhands. Sixposes: inspecthoop, tiltitupslightly, rightfingersadjustouterrim, headlooksdown, leftthumbturnssmallknob, hoopreturnstostart. Entirebodyandhoopinside360pxbox, twoarms twohands twolegs, feetfixed. OriginalWarpUniverseprojectdesign, notacanonteleportationclaim. Mutedtealambientandcopperedge light.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-7d79a96c-b68f-420b-a961-ac376b83cb84.png",
+      "workspacePath": "work-local/v60/generated/arena-184-warp-threshold/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six calibration-hoop gestures, clear hands and intact body, mask and clothing consistent. Original project technician.",
+      "sha256": "14839bd74013b3b74c5a81f988432a4cb1de7c768018ebc55d88c1500e8431fd",
+      "bytes": 1942410,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7399876912434896,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            149,
+            7,
+            222,
+            491
+          ],
+          "pivot": [
+            265.5,
+            498
+          ],
+          "margins": [
+            149,
+            7,
+            141,
+            14
+          ],
+          "opaquePixelCount": 67860,
+          "contentSha256": "3f203929b34d8e1cad94650b1ccb69805dda41a3c2b0298f6d029ba94e525cfa"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            137,
+            9,
+            228,
+            491
+          ],
+          "pivot": [
+            256,
+            500
+          ],
+          "margins": [
+            137,
+            9,
+            147,
+            12
+          ],
+          "opaquePixelCount": 68943,
+          "contentSha256": "1076ab481bf596f40f565a7b742dcad62394b52b0ec0f77d197906d2b10e17b7"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            130,
+            8,
+            236,
+            491
+          ],
+          "pivot": [
+            251,
+            499
+          ],
+          "margins": [
+            130,
+            8,
+            146,
+            13
+          ],
+          "opaquePixelCount": 68704,
+          "contentSha256": "5cd18e90ddac488f925fca773de430ac1d5da48d0866e310feae1371841c2007"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            151,
+            13,
+            221,
+            484
+          ],
+          "pivot": [
+            266.5,
+            497
+          ],
+          "margins": [
+            151,
+            13,
+            140,
+            15
+          ],
+          "opaquePixelCount": 67157,
+          "contentSha256": "4b058deba232cc9bca68dbc91d69f3cfe95cf889dcbdbda7be70d96088ba83ea"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            141,
+            9,
+            232,
+            488
+          ],
+          "pivot": [
+            258,
+            497
+          ],
+          "margins": [
+            141,
+            9,
+            139,
+            15
+          ],
+          "opaquePixelCount": 68090,
+          "contentSha256": "f6503934d506062d2fabbe17f3398109e564d2490f3e3e6891d7696f4834d244"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            130,
+            7,
+            221,
+            490
+          ],
+          "pivot": [
+            247.5,
+            497
+          ],
+          "margins": [
+            130,
+            7,
+            161,
+            15
+          ],
+          "opaquePixelCount": 68210,
+          "contentSha256": "2913dbf3a1781c9055dac082ac14514f77e7e1ff777f0e2cfb744eeb104f6b34"
+        }
+      ]
+    },
+    {
+      "id": "life-02",
+      "prompt": "EDIT this native game animation sprite sheet. Preserveanonymousguardandbarrierdesign butcorrectmechanicalcoherence: BOTH vertical posts andtheirfeet have exactly SAME height/locationinall6cells. ONLY thecrossbar slidesup/downwithinguiderails by20px. Guardfeet planted consistently, hands followthemovingcrossbar, no otherbodychanges. Sixsmallphases riseholdlowerreturn. Sixcompletefiguresin3cols2rows1536x1024cells512x512, min35pxalphaallaround, no bordercross. Samearmorhandsmask. No extraobjects,background,shadow,grid orlabels. Keeptruealpha.",
+      "referencedImagePaths": [
+        "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-1c78876e-3356-44b2-9c2f-a834bcb5b261.png"
+      ],
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-9b76bd91-0e6d-4ece-bc62-16696c4abfd9.png",
+      "workspacePath": "work-local/v60/generated/arena-184-warp-threshold/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Guard and barrier animation corrected natively: fixed guideposts, sliding crossbar and coherent hand attachment. All six complete drawings preserve the same attire.",
+      "sha256": "9c6998f137b540101d9f78ecb2ff35426402551d8270430f456399fb7d439b1c",
+      "bytes": 2118359,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7010917663574219,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            98,
+            35,
+            335,
+            448
+          ],
+          "pivot": [
+            266,
+            483
+          ],
+          "margins": [
+            98,
+            35,
+            79,
+            29
+          ],
+          "opaquePixelCount": 77840,
+          "contentSha256": "321af462354900df49119a7707de72e71b553dd78d08af8898b1e371aa0ef90d"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            95,
+            38,
+            338,
+            444
+          ],
+          "pivot": [
+            264,
+            482
+          ],
+          "margins": [
+            95,
+            38,
+            79,
+            30
+          ],
+          "opaquePixelCount": 77874,
+          "contentSha256": "be990895f0f69d34bb7ecd8bfea49a3fb4797ceaff1a2202abab3030b9c0bc25"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            91,
+            37,
+            343,
+            446
+          ],
+          "pivot": [
+            262.5,
+            483
+          ],
+          "margins": [
+            91,
+            37,
+            78,
+            29
+          ],
+          "opaquePixelCount": 78040,
+          "contentSha256": "e0dcdbf6429411fbb39f736dcb09e7ebdb7ef41dddb6bb88c9655312799a1ae1"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            98,
+            33,
+            337,
+            443
+          ],
+          "pivot": [
+            266.5,
+            476
+          ],
+          "margins": [
+            98,
+            33,
+            77,
+            36
+          ],
+          "opaquePixelCount": 78467,
+          "contentSha256": "a5cddf2abd34d2be8fb30cc4942cc551c11009d42dd9f3d7656b0ec58879c2fc"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            95,
+            32,
+            338,
+            445
+          ],
+          "pivot": [
+            264,
+            477
+          ],
+          "margins": [
+            95,
+            32,
+            79,
+            35
+          ],
+          "opaquePixelCount": 78536,
+          "contentSha256": "8f84b4d2facf239354206711cc400ab094c13f308b04ab9d5b79317cff9bafc9"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            95,
+            32,
+            337,
+            445
+          ],
+          "pivot": [
+            263.5,
+            477
+          ],
+          "margins": [
+            95,
+            32,
+            80,
+            35
+          ],
+          "opaquePixelCount": 79385,
+          "contentSha256": "2f328bf098f41f27a43e3299c863558aec7af62b48c01355351fea6355177ecd"
+        }
+      ]
+    },
+    {
+      "id": "life-03",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One free-standing circular alien portal ENERGY DISC ONLY, no stoneorbronzeouterframe (framecomesfrombackdrop), diameter300pxcenteredwithwidealpha. OriginalWarpUniverse project portal visual, notcanonicalYautjapower. Deepdesaturatedteal interior withfinecopperorbitalfilaments forming gentlyevolvingconcentricripples, truealpha outsidecleancircularoutercontour. Sixdifferentnativefluidripplepatterns advancing a slowcontinuousclockwiseflow; softconsistentluminance, no strobingflash, nohighwhiteburst, no stars orsceneryvisibleinside. Allsixcircularprofiles samecentersizeandedge. Highdetailhandpaintedgameart.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-e0521b02-deed-4a7e-ac5d-dfd7b843841c.png",
+      "workspacePath": "work-local/v60/generated/arena-184-warp-threshold/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six distinct slow spiral drawings inside a consistent circular outline, restrained luminance. Original Warp portal, no canonical teleportation claim.",
+      "sha256": "86a22c38a794d5af03e828a4d268e12b264e73a45241e8b5ffd1fefd3edc3a26",
+      "bytes": 2373531,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.5375881195068359,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            78,
+            66,
+            399,
+            393
+          ],
+          "pivot": [
+            275.5,
+            459
+          ],
+          "margins": [
+            78,
+            66,
+            35,
+            53
+          ],
+          "opaquePixelCount": 121152,
+          "contentSha256": "265aebdae62c1f4dde714413d38af04e6e5420508b37abc30972e22a44156148"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            57,
+            66,
+            399,
+            393
+          ],
+          "pivot": [
+            255,
+            459
+          ],
+          "margins": [
+            57,
+            66,
+            56,
+            53
+          ],
+          "opaquePixelCount": 121169,
+          "contentSha256": "42ce1465045004f6c5053b10fa274bf152e10be3d063beb4b271c6133e02f729"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            66,
+            398,
+            394
+          ],
+          "pivot": [
+            235,
+            460
+          ],
+          "margins": [
+            36,
+            66,
+            78,
+            52
+          ],
+          "opaquePixelCount": 120915,
+          "contentSha256": "f650314b4fab51bdb4a94781af598f1dea9849bc950200ea4085000d4a2edf54"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            78,
+            49,
+            399,
+            391
+          ],
+          "pivot": [
+            277.5,
+            440
+          ],
+          "margins": [
+            78,
+            49,
+            35,
+            72
+          ],
+          "opaquePixelCount": 121449,
+          "contentSha256": "3b8c8bf83b23de5e476f764584be63ab0f1c1480c316c19de860fec4dd90bccd"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            57,
+            48,
+            399,
+            392
+          ],
+          "pivot": [
+            255,
+            440
+          ],
+          "margins": [
+            57,
+            48,
+            56,
+            72
+          ],
+          "opaquePixelCount": 121451,
+          "contentSha256": "b663f4f14a94772c87e061a862ba1f504db7597194b72ae3172ef13bec793369"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            47,
+            398,
+            393
+          ],
+          "pivot": [
+            234,
+            440
+          ],
+          "margins": [
+            36,
+            47,
+            78,
+            72
+          ],
+          "opaquePixelCount": 121175,
+          "contentSha256": "0d05a3bef9bd50d93152c6ee24cb2cfe5c4de18efc6f22a2c6797cb5e30fb7a3"
+        }
+      ]
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case: stylized-concept. Native opaque1536x1024 painted P0 distant-background layer for a professional2D sideview fighting game. Horizontal level platforms, eyelevel lateral perspective, detailedcinematic painterlyart, coherentarchitectureanddepth. Original lateral recomposition of the stated setting; do notclaimexactcanonicalgeometry. The gameplayfloor is suppliedseparately: bottom20% is subdued darkbackground, NOlargeemptyforegroundfloor, no centralaisle in perspective. No HUD/text/logos or labels, no actors or animated objects baked in. Leavequietclearareasfordistantanimatedsprites at20%,50%,80%width. Setting: original Warp Universe project portal chamber, NOT canonicalYautjateleportationfacility. Ancientalienbronzeandblackbasalthall, architectural concentric darkringframe on a raised farrearplatform, emptyblackinterior ready for separate portal sprite. Sidealcoves lefttechnician andrightbarrier. Copper bronze ribs, restrained cold greenambientlight. Maincircular aperturecenteratx55% y35%, diameterabout300px. PortalLIGHT is NOT baked. No guards, technician,barrierarm,energyglow,smoke or sparks. Distinct layered corridors visiblethrough sidevaults, richalienengineeredtexture.",
+      "transparentRequested": false,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-d2b580f4-5a0b-4b61-aff0-cd45237113e8.png",
+      "workspacePath": "work-local/v60/generated/arena-184-warp-threshold/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Original portal chamber with empty dark aperture and clear raised gallery. Energy remains a separate sprite; no character baked in.",
+      "sha256": "3115e96be321a261bd6e5942afcc9b3744b39b91ab1901c869d7558dd8d92869",
+      "bytes": 2339569,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "rejectedAssets": [
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One anonymous adult Yautja guard with darkbronzeclosedbiomask, mediumgreyarmor andblackheadtendrils standing beside a SHORT compact verticallyslidingbarriergate. Guardandbarrierformonesmallwholeassemblyunder350pxwidth. Gate is a simplebronzehorizontalcrossbar on two shortverticalguides, NOT aweapon. Sixdrawings: gatewaisthigh, handgripscontrol, gate risesabout20px, holds, lowers10px, nearstart. Sameguardandmechanicalgeometryconsistent, feetfixed, no addedlimbs. OriginalWarpUniverseprojectbackground. Noaggression,noportalglow inthissprite.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-1c78876e-3356-44b2-9c2f-a834bcb5b261.png",
+      "workspacePath": "work-local/v60/generated/arena-184-warp-threshold/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "rejected",
+      "visualNotes": "Pending native correction: upright guide-post height changes too much alongside gate motion; posts should stay fixed.",
+      "sha256": "275ec2caa265c1b850671158a89ae544250688afcfaace044b99ffc5c04a7cb6",
+      "bytes": 2054025,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7277507781982422,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            106,
+            38,
+            321,
+            440
+          ],
+          "pivot": [
+            266.5,
+            478
+          ],
+          "margins": [
+            106,
+            38,
+            85,
+            34
+          ],
+          "opaquePixelCount": 70973,
+          "contentSha256": "f94bc0e991b010dd69cba4c438bb8e3d29f1cd15103a72b933d1d963beb882ed"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            101,
+            38,
+            326,
+            440
+          ],
+          "pivot": [
+            264,
+            478
+          ],
+          "margins": [
+            101,
+            38,
+            85,
+            34
+          ],
+          "opaquePixelCount": 71808,
+          "contentSha256": "4d9c413e91d5fe39846a00bea4d5abc7b7307191878988fb2813bbccf76d0bfd"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            101,
+            37,
+            329,
+            441
+          ],
+          "pivot": [
+            265.5,
+            478
+          ],
+          "margins": [
+            101,
+            37,
+            82,
+            34
+          ],
+          "opaquePixelCount": 72138,
+          "contentSha256": "9e2785a2fa3d379f50190537082b69aa4be944361a52d0df3e16884c74a8e956"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            103,
+            31,
+            323,
+            439
+          ],
+          "pivot": [
+            264.5,
+            470
+          ],
+          "margins": [
+            103,
+            31,
+            86,
+            42
+          ],
+          "opaquePixelCount": 71030,
+          "contentSha256": "2d4f08a4f3eb495c5bd6b92c18e767020aba3bf71c55c3ef83a4287951356ef9"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            101,
+            32,
+            321,
+            441
+          ],
+          "pivot": [
+            261.5,
+            473
+          ],
+          "margins": [
+            101,
+            32,
+            90,
+            39
+          ],
+          "opaquePixelCount": 70780,
+          "contentSha256": "86ab51c993683f375c99a8402874b95e755268477ffaf76e1a5815e09c080e11"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            106,
+            32,
+            322,
+            441
+          ],
+          "pivot": [
+            267,
+            473
+          ],
+          "margins": [
+            106,
+            32,
+            84,
+            39
+          ],
+          "opaquePixelCount": 71482,
+          "contentSha256": "99be332c7e85af960ab548739b21744df3a0c4c6e6826cc4b8fc33c551537e32"
+        }
+      ],
+      "rejection": "Replaced by native OpenAI edit to prevent cell-boundary clipping."
+    }
+  ],
+  "sourceReviewDate": "2026-09-30"
+}

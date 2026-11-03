@@ -1,0 +1,371 @@
+{
+  "version": "V78",
+  "status": "PRODUCTION_PLAN_PARTIAL_NATIVE_CONSUMER_INTEGRATION_PENDING_BROWSER_QA",
+  "auditedSourceSha": "2094e1541ad305b38163ab8595d93da8852a7c2b",
+  "authority": "original-local-game-adaptation; no canonical city plan or universal monarchy claimed",
+  "camera": {
+    "projection": "orthographic",
+    "yawDegrees": 0,
+    "pitchDegrees": 35,
+    "depthScale": 0.573576436351046
+  },
+  "units": {
+    "adultHeightWorld": 100,
+    "adultMetresProjectConvention": 2.3,
+    "actorFootprintWorld": {
+      "width": 48,
+      "depth": 28
+    },
+    "minimumDoorWorld": {
+      "width": 80,
+      "height": 128
+    },
+    "targetDoorWorld": {
+      "width": 96,
+      "height": 140
+    },
+    "doorApproachWorld": 70,
+    "minimumPrimaryStreetWorld": 160,
+    "targetLocalPassageWorld": 96
+  },
+  "commonContract": {
+    "oneIndependentVolumePerPng": true,
+    "noConceptBoardCutout": true,
+    "noRendererRotationOrNonuniformScaling": true,
+    "requestedSilhouetteMarginPixels": 48,
+    "requestedTransparentBackground": true,
+    "alphaStillRequiresMeasurement": true,
+    "sourcePixelsAndOriginalsPreserved": true,
+    "lifecycleGate": "native review, SHA/dimensions/alpha, measured support/door/collision, real consumer placement and browser QA",
+    "animationStatus": "static-volumes-only; no native action clips delivered by this plan"
+  },
+  "referenceConcepts": [
+    {
+      "src": "/game/homeworld/v77/reference/homeworld-city-world-first.png",
+      "sha256": "c3ff27ba21b105421e43a65e27fdf0cabfd4695f8e72f8efaf56b6407f66d4ce",
+      "status": "earlier-concept-preserved-not-canonical-map"
+    },
+    {
+      "src": "/game/homeworld/v77/reference/homeworld-macro-layout-latest.png",
+      "sha256": "4d673e3672c5d056c62687e2874a9b876998eb28c115390a13eb14ef5ac7698b",
+      "status": "accepted-original-composition-reference-not-runtime-background"
+    }
+  ],
+  "modules": [
+    {
+      "id": "market-stall-right",
+      "order": 1,
+      "lifecycle": "SOURCE_CONSUMER_NATIVE_GEOMETRY_PRELOAD_CODEX_INTEGRATED_BROWSER_QA_PENDING",
+      "src": "/game/homeworld/v78/market-stall-right.png",
+      "sha256": "c98a90d777cf85e921681feb36c738216d8a99a945669e670234c65b65897796",
+      "category": "frontage",
+      "requestedWorldSize": {
+        "width": 190,
+        "depth": 125,
+        "height": 145
+      },
+      "orientation": "native-right-diagonal",
+      "pivotTarget": "front-most measured feet on ground",
+      "collision": "measured solid feet/counter; keep 96-unit customer aisle",
+      "occlusion": "painted canopy by ground depth on its own floor; alpha is not collision",
+      "materials": [
+        "basalt",
+        "patinated-bronze",
+        "dark-clan-fabric"
+      ],
+      "function": "merchant workplace with host behind and customer in front",
+      "lore": "original-local-adaptation; no invented canonical stock",
+      "generationBrief": "One complete independent covered market stall, native right-facing; no NPC, backdrop, readable baked text or separate object sheet.",
+      "generatedProvenanceId": "market-stall-right",
+      "actualPlacementId": "city-native-v78:market-stall-right"
+    },
+    {
+      "id": "merchant-house-right",
+      "order": 2,
+      "lifecycle": "COPIED_BYTE_IDENTICAL_WITHHELD_PENDING_REAL_ADULT_DOOR_LOT",
+      "src": null,
+      "sha256": null,
+      "category": "residence",
+      "requestedWorldSize": {
+        "width": 390,
+        "depth": 290,
+        "height": 270
+      },
+      "orientation": "native-right-diagonal",
+      "pivotTarget": "measured public doorway threshold",
+      "collision": "oriented masonry footprint; 96-by-140 clear door target and 70-unit forecourt",
+      "occlusion": "upright native facade on the same physical floor; no ghost doorway of other floors",
+      "materials": [
+        "basalt",
+        "patinated-bronze"
+      ],
+      "function": "merchant residence distinct from public stall",
+      "lore": "original-local-house; private upper floor not playable until authored",
+      "knownReviewRisk": "Superseded source touches right edge at alpha>128; selected safe source has silhouette margins left124/top87/right50/bottom66. Ground/door/collision placement remains pending.",
+      "generationBrief": "One full right-facing merchant house with a taller mass, all roof tips and foundations fully inside transparent canvas.",
+      "generatedProvenanceId": "merchant-home-right-safe",
+      "copiedPublicSrc": "/game/homeworld/v78/merchant-home-right-safe.png"
+    },
+    {
+      "id": "forge-workstation-left",
+      "order": 3,
+      "lifecycle": "SOURCE_CONSUMER_NATIVE_GEOMETRY_PRELOAD_CODEX_INTEGRATED_BROWSER_QA_PENDING",
+      "src": "/game/homeworld/v78/forge-workstation-left.png",
+      "sha256": "495980e1053bc95a64c639a1a0091f1a7fae5fa14c73671e0dd8567c09ab3fcb",
+      "category": "workstation",
+      "requestedWorldSize": {
+        "width": 190,
+        "depth": 135,
+        "height": 115
+      },
+      "orientation": "native-left-diagonal",
+      "pivotTarget": "front support feet",
+      "collision": "measured bench base and legs; 96-unit approach preserved",
+      "occlusion": "raised tools painted, tabletop interaction height measured separately around 55-65 units",
+      "materials": [
+        "basalt",
+        "aged-metal",
+        "leather"
+      ],
+      "function": "local forge post, not an acquired weapon or free crafting service",
+      "lore": "original-local-tools; known franchise weapon requires its own reference",
+      "generationBrief": "One independent forge workstation; no working character, smoke panorama or inventory reward.",
+      "generatedProvenanceId": "forge-workstation-left",
+      "actualPlacementId": "city-native-v78:forge-workstation-left"
+    },
+    {
+      "id": "archive-shelf-right",
+      "order": 4,
+      "lifecycle": "SOURCE_CONSUMER_NATIVE_GEOMETRY_PRELOAD_CODEX_INTEGRATED_BROWSER_QA_PENDING",
+      "src": "/game/homeworld/v78/archive-shelf-right.png",
+      "sha256": "bbd5cea8c92764140cc06422077102e1844d6c20b9fe703b1b1565714783829e",
+      "category": "interior-storage",
+      "requestedWorldSize": {
+        "width": 130,
+        "depth": 70,
+        "height": 170
+      },
+      "orientation": "native-right-diagonal",
+      "pivotTarget": "front base feet",
+      "collision": "conservative measured lower supports; wall-side placement away from exit",
+      "occlusion": "shelf height and contents painted above own ground pivot",
+      "materials": [
+        "basalt",
+        "patinated-bronze",
+        "local-document-cases"
+      ],
+      "function": "archives furnishing with actual archivist context",
+      "lore": "original-local-archive; no earned trophies or readable forged records",
+      "generationBrief": "One complete independent right-facing archive shelf, no librarian or separate prop collection.",
+      "generatedProvenanceId": "archive-shelf-right",
+      "actualPlacementId": "city-native-v78:archive-shelf-right"
+    },
+    {
+      "id": "clan-house-left",
+      "order": 5,
+      "lifecycle": "TO_GENERATE",
+      "src": null,
+      "sha256": null,
+      "category": "residence",
+      "requestedWorldSize": {
+        "width": 300,
+        "depth": 220,
+        "height": 220
+      },
+      "orientation": "native-left-diagonal; approximately -22 degrees measured after production",
+      "pivotTarget": "door threshold",
+      "collision": "solid house footprint behind threshold; 96-by-140 useful doorway target",
+      "occlusion": "low complete roof distinguishes domestic mass from merchant house",
+      "materials": [
+        "rough-basalt",
+        "limited-bronze",
+        "dark-red-fabric"
+      ],
+      "function": "inhabited domestic group for the under-quarter with separate court furnishings",
+      "lore": "original-clan-residence; no European cottage or claimed canonical house",
+      "generationBrief": "One low compact clan dwelling, left-facing, wide shallow roof and unmistakable different silhouette from merchant-house-right; no attached decorative furniture or NPC."
+    },
+    {
+      "id": "council-hall-front",
+      "order": 6,
+      "lifecycle": "TO_GENERATE",
+      "src": null,
+      "sha256": null,
+      "category": "civic-architecture",
+      "requestedWorldSize": {
+        "width": 650,
+        "depth": 420,
+        "height": 360
+      },
+      "orientation": "native-front",
+      "pivotTarget": "public threshold at flat forecourt",
+      "collision": "measured columns/masonry and useful central public entrance; interior envelope checked separately",
+      "occlusion": "hierarchical facade on +1 with no paint leaking from lower floors",
+      "materials": [
+        "basalt",
+        "bronze",
+        "restrained-amber"
+      ],
+      "function": "public local Council hall distinct from a residence",
+      "lore": "original-local-institution; not government of all Yautja",
+      "generationBrief": "One wide Council hall facade with a distinct civic rhythm of supports, full base and an accessible central threshold; no scene, banners with baked text or furniture sheet."
+    },
+    {
+      "id": "audience-porch-front",
+      "order": 7,
+      "lifecycle": "TO_GENERATE",
+      "src": null,
+      "sha256": null,
+      "category": "civic-architecture",
+      "requestedWorldSize": {
+        "width": 700,
+        "depth": 380,
+        "height": 450
+      },
+      "orientation": "native-front",
+      "pivotTarget": "real threshold of the public audience wing",
+      "collision": "actual porch supports and public door; preserve existing +2 audience permissions",
+      "occlusion": "monumental own-floor mass; closed wings not rendered as false passages",
+      "materials": [
+        "basalt",
+        "bronze",
+        "dark-red-clan-fabric"
+      ],
+      "function": "ceremonial entry of public wing rather than complete palace",
+      "lore": "local representative; no universal king assertion",
+      "generationBrief": "One monumental public audience porch, vertically distinct from the Council hall, complete support base and unclipped crown; no throne room, ruler or environment fused into the PNG.",
+      "relatedGeneratedVariant": {
+        "id": "palace-frontage-safe",
+        "status": "RELATED_SOURCE_ONLY_NOT_EXACT_PORCH_FULFILMENT"
+      }
+    },
+    {
+      "id": "port-waiting-house-right",
+      "order": 8,
+      "lifecycle": "TO_GENERATE",
+      "src": null,
+      "sha256": null,
+      "category": "port-architecture",
+      "requestedWorldSize": {
+        "width": 460,
+        "depth": 320,
+        "height": 250
+      },
+      "orientation": "native-right-diagonal",
+      "pivotTarget": "passenger threshold",
+      "collision": "real side-bay ground needed; door, navette pad and pedestrian lane remain clear",
+      "occlusion": "complete volume beside terminal on floor 0; no ship silhouette attached",
+      "materials": [
+        "basalt",
+        "aged-metal",
+        "limited-amber"
+      ],
+      "function": "civilian waiting shelter and convoy landmark",
+      "lore": "original-clan-port; no human franchise-company signage",
+      "generationBrief": "One independent port passenger shelter with a low broad reinforced silhouette and a clear entrance, right-facing; no ships, cargo piles or NPC."
+    },
+    {
+      "id": "basalt-retaining-wall-left",
+      "order": 9,
+      "lifecycle": "TO_GENERATE",
+      "src": null,
+      "sha256": null,
+      "category": "terrain-volume",
+      "requestedWorldSize": {
+        "width": 400,
+        "depth": 80,
+        "height": 220
+      },
+      "orientation": "native-left-diagonal",
+      "pivotTarget": "continuous front ground support line",
+      "collision": "masonry behind actual base only; no new upper support without physical terrain",
+      "occlusion": "own-floor upright terrace face; explicit elevation and top edge",
+      "materials": [
+        "stratified-basalt",
+        "sparse-bronze-bracing"
+      ],
+      "function": "terrace height readable between lower and upper groups",
+      "lore": "original-local-engineering",
+      "generationBrief": "One modular retaining wall segment, visibly vertical with measurable base and top, transparent exterior; no whole cliff panorama or baked road.",
+      "relatedGeneratedVariant": {
+        "id": "terrace-retaining-front",
+        "status": "DIFFERENT_NATIVE_ORIENTATION_FRONT_NOT_LEFT"
+      }
+    },
+    {
+      "id": "basalt-street-edge-corner",
+      "order": 10,
+      "lifecycle": "TO_GENERATE",
+      "src": null,
+      "sha256": null,
+      "category": "ground-edge",
+      "requestedWorldSize": {
+        "width": 320,
+        "depth": 72,
+        "height": 20
+      },
+      "orientation": "one native ground corner in fixed project camera",
+      "pivotTarget": "measured inner joining corner at ground level",
+      "collision": "decorative edge only unless a real raised curb is separately modeled; preserve useful path",
+      "occlusion": "same projected ground plane, no fake vertical wall",
+      "materials": [
+        "worn-basalt",
+        "bronze-drain-seam"
+      ],
+      "function": "threshold-to-path transition with localized wear",
+      "lore": "original-local-street-material",
+      "generationBrief": "One independent low basalt street-edge corner module with a clean joining edge, not a grid or atlas of multiple corner objects; no scenery or NPC."
+    },
+    {
+      "id": "forge-ventilation-left",
+      "order": 11,
+      "lifecycle": "TO_GENERATE",
+      "src": null,
+      "sha256": null,
+      "category": "technical-prop",
+      "requestedWorldSize": {
+        "width": 90,
+        "depth": 80,
+        "height": 180
+      },
+      "orientation": "native-left-diagonal",
+      "pivotTarget": "front plinth foot",
+      "collision": "measured plinth on an actual exterior reserved footprint",
+      "occlusion": "tall duct painted above ground depth; any smoke is a separate future action",
+      "materials": [
+        "basalt",
+        "heat-darkened-metal",
+        "limited-amber"
+      ],
+      "function": "forge ventilation and safety context",
+      "lore": "original-local-technology; no assumed canonical appliance",
+      "generationBrief": "One complete industrial ventilation tower on a clear measured plinth, left-facing; no smoke cloud, forge building or worker."
+    },
+    {
+      "id": "clan-courtyard-gate-front",
+      "order": 12,
+      "lifecycle": "TO_GENERATE",
+      "src": null,
+      "sha256": null,
+      "category": "courtyard-volume",
+      "requestedWorldSize": {
+        "width": 280,
+        "depth": 85,
+        "height": 210
+      },
+      "orientation": "native-front",
+      "pivotTarget": "two support feet plus center of ground opening",
+      "collision": "two independent jamb volumes; useful 140-unit opening and connected 96-unit paths",
+      "occlusion": "crossbeam can mask upright bodies but never closes the ground opening",
+      "materials": [
+        "basalt",
+        "patinated-bronze"
+      ],
+      "function": "domestic clan forecourt readable without blocking street",
+      "lore": "original-local-clan-marker; glyph text and known emblems require separate sources",
+      "generationBrief": "One freestanding clan courtyard arch with two full feet and unobstructed opening; no closed gate leaf, attached house, readable baked inscription or NPC."
+    }
+  ],
+  "generatedProvenance": "./homeworldCityGeneratedProvenanceV78.json",
+  "runtimeNote": "This12-module request plan is not the13-file generated set. Exactly7 files from generatedProvenance are consumed; only3 match this plan exactly. See per-source integration/withheld status and measured placement there."
+}

@@ -1,0 +1,887 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "stageId": "arena-139-batman-gotham-rooftops",
+  "proposalId": "new-gotham-roof",
+  "workbookStage": "09_STAGES!A34:N34",
+  "workbookLife": "10_VIE_DES_STAGES!A92:N94",
+  "sourceUrls": [
+    "https://www.dc.com/graphic-novels/dc-comics/dark-horse-comics-batman-vs-predator"
+  ],
+  "loreLimits": [
+    "Original Gotham roof composition based on crossover setting, not exact comic panel.",
+    "Helicopter and municipal officer are anonymous original production designs, not identified canonical model or named character."
+  ],
+  "backgroundReview": {
+    "p0": "public/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops/p0-depth.png",
+    "composition": "work-local/v55/stage-renderer/arena-139-batman-gotham-rooftops/center.png",
+    "notes": "Both opened: dark Gothic skyline, opposite roofs and ledges, blue wet palette. Sky actor high and small; officer feet must align an opposite ledge."
+  },
+  "assets": [
+    {
+      "id": "ambient-01",
+      "prompt": "Use case: stylized-concept. Transparent PNG animation atlas for a distant GCPD police helicopter above a dark rainy Gothic Gotham rooftop fighting stage. Exactly SIX independent SMALL drawings in3columns2rows grid1536x1024, each512x512cell. One ordinary noncombat police utility helicopter seen in clear side profile facing left, dark blue-grey fuselage, pale cabin-window reflections, modest skids, a correctly attached single main rotor and tail rotor. Original generic vehicle design, not any claimed exact canonical model. Across6drawings change both main rotor blade angles and tail rotor blade phases, with a very slight coherent hover pitch; no whole still merely translated. Same scale and position, all rotorblades, tail and skids completely contained in a300wide220high footprint centered local256,280. At least100pixels genuinely emptyalpha on every cell edge. Cool blue night lighting, restrained painted cinematic videogameart. No people outside, no weapons, no laser, no searchlight beam, no glowing halos, no surrounding scenery, no groundshadow, no labels or words, no gridlines. True alpha background. Keep image small inside cells, full rotor never cropped.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-13eda29f-d0d4-4a57-ba44-eba2c795014a.png",
+      "workspacePath": "work-local/v61/generated/arena-139-batman-gotham-rooftops/ambient-01.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E92"
+      ],
+      "visualNotes": "Six distinct main/tail rotor phases, coherent unarmed generic helicopter. All six full cells clear at alpha>32; night palette matches inspected roof.",
+      "sha256": "db88a2cc29db2790076faad0de56921defa2468e05da7456f374dbbe2fa649c2",
+      "bytes": 1554520,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7330201466878256,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            42,
+            251,
+            464,
+            169
+          ],
+          "alphaBounds32": [
+            47,
+            253,
+            457,
+            165
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            224,
+            420
+          ],
+          "bodyCenterPivot": [
+            273.5,
+            420
+          ],
+          "opaquePixelCount": 36174,
+          "contentSha256": "0596fbf7dad4dbff6dde65b014274e047d5cf2a7a0f224cbfba87999b136704b",
+          "margins": [
+            42,
+            251,
+            6,
+            92
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            70,
+            216,
+            432,
+            204
+          ],
+          "alphaBounds32": [
+            73,
+            216,
+            428,
+            202
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            221,
+            420
+          ],
+          "bodyCenterPivot": [
+            285.5,
+            420
+          ],
+          "opaquePixelCount": 39461,
+          "contentSha256": "4673fa54795e4f5ff4b128ffd4d97f58ecefdfc66eff93ccc7cef66c79c6fc00",
+          "margins": [
+            70,
+            216,
+            10,
+            92
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            194,
+            435,
+            228
+          ],
+          "alphaBounds32": [
+            55,
+            195,
+            429,
+            224
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            205.5,
+            422
+          ],
+          "bodyCenterPivot": [
+            267,
+            422
+          ],
+          "opaquePixelCount": 39025,
+          "contentSha256": "9437a31f358d973f63ac58469ba22bf4e41591f9cf29532ff30fb3e256a0d201",
+          "margins": [
+            50,
+            194,
+            27,
+            90
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            180,
+            453,
+            207
+          ],
+          "alphaBounds32": [
+            55,
+            182,
+            451,
+            203
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            224.5,
+            387
+          ],
+          "bodyCenterPivot": [
+            280,
+            387
+          ],
+          "opaquePixelCount": 40003,
+          "contentSha256": "66576e98f4b0d512b2801c06e6fb32f36b235f074a373e45f88342668eb4efed",
+          "margins": [
+            54,
+            180,
+            5,
+            125
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            193,
+            458,
+            191
+          ],
+          "alphaBounds32": [
+            48,
+            194,
+            454,
+            188
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            221,
+            384
+          ],
+          "bodyCenterPivot": [
+            275.5,
+            384
+          ],
+          "opaquePixelCount": 39401,
+          "contentSha256": "a64e9c8f1e245a6f86764cf7e6439867480f490097d1033fe57e0834c00a7ce8",
+          "margins": [
+            47,
+            193,
+            7,
+            128
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            174,
+            443,
+            210
+          ],
+          "alphaBounds32": [
+            56,
+            175,
+            440,
+            207
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            211.5,
+            384
+          ],
+          "bodyCenterPivot": [
+            275,
+            384
+          ],
+          "opaquePixelCount": 40237,
+          "contentSha256": "eb9f06d20bfea7dbc8e27501939283eaf5ae8db146eecc0609b65a1cc13ca1a7",
+          "margins": [
+            54,
+            174,
+            15,
+            128
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "ambient-02",
+      "prompt": "Use case: stylized-concept. Transparent six-frame animation sheet1536x1024,3columns2rows. One anonymous ADULT municipal police officer in a dark navy raincoat, plain peakedcap, greytrousers and boots, side-on3/4 view facing left, holding a small handheld radio. Original generic Gotham municipal officer setdressing, no named comic character, no precise canon uniform claim. Six native poses: calmlyobserve, lift radio, speak, turnhead slightly, lower radio, returnwatch. One head, twoarms, twohands of five natural fingers, twolegs and groundedboots consistently connected. Same costume/equipment/proportions everyframe. Small fullbody centered in EACH512x512cell; figure no taller than300pixels, bothfeet at localy425, totalwidth under180pixels; at least90px emptyalpha allaround. Cold blue rainynight lighting, detailed painted cinematic gameart matching distant darkGothic rooftops. No firing or wavinggun, no badgewording, no weapon, no otherpeople, no background, no plinth, no floor shadow, no rainlayer, no labels or gridlines. Real alpha background, six genuine changing poses.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-407e6b07-5b9a-42ad-85cf-0ff378df5f61.png",
+      "workspacePath": "work-local/v61/generated/arena-139-batman-gotham-rooftops/ambient-02.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E93"
+      ],
+      "visualNotes": "Six complete adult officer/radio gestures with coherent arms, hands and feet; no weapon or named identity. All six boundaries clear at alpha>32.",
+      "sha256": "f5b7d61870db9776c3683e5efccb29dc99862523b2d365c56522e9460e5a4f16",
+      "bytes": 1698501,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7799644470214844,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            212,
+            27,
+            173,
+            463
+          ],
+          "alphaBounds32": [
+            214,
+            29,
+            170,
+            459
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            290.5,
+            490
+          ],
+          "bodyCenterPivot": [
+            298,
+            490
+          ],
+          "opaquePixelCount": 50568,
+          "contentSha256": "c3c9a5882e3ce20155ce7da7dc0f8e8f85ab48405b7b5abf8345837455cffc8e",
+          "margins": [
+            212,
+            27,
+            127,
+            22
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            164,
+            27,
+            176,
+            463
+          ],
+          "alphaBounds32": [
+            166,
+            29,
+            173,
+            459
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            243.5,
+            490
+          ],
+          "bodyCenterPivot": [
+            251.5,
+            490
+          ],
+          "opaquePixelCount": 51866,
+          "contentSha256": "26b89e0199f7ba354be0ed2a6b9bdaa3c3a24c5147e96ef17697ad32a67e7f6f",
+          "margins": [
+            164,
+            27,
+            172,
+            22
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            167,
+            24,
+            173,
+            466
+          ],
+          "alphaBounds32": [
+            168,
+            26,
+            171,
+            462
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            244,
+            490
+          ],
+          "bodyCenterPivot": [
+            253,
+            490
+          ],
+          "opaquePixelCount": 51576,
+          "contentSha256": "3387d311108a8f99d1cb23beefe963862f0f94a927d3ba30b527e84872401bba",
+          "margins": [
+            167,
+            24,
+            172,
+            22
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            210,
+            24,
+            169,
+            466
+          ],
+          "alphaBounds32": [
+            213,
+            26,
+            164,
+            461
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            290,
+            490
+          ],
+          "bodyCenterPivot": [
+            294,
+            490
+          ],
+          "opaquePixelCount": 50969,
+          "contentSha256": "e27eae441ed120b0f492277c551a916b986516f2bf6206b99c3a0d5f60753b25",
+          "margins": [
+            210,
+            24,
+            133,
+            22
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            176,
+            34,
+            174,
+            456
+          ],
+          "alphaBounds32": [
+            176,
+            37,
+            173,
+            450
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            254,
+            490
+          ],
+          "bodyCenterPivot": [
+            262.5,
+            490
+          ],
+          "opaquePixelCount": 49980,
+          "contentSha256": "37f4b85a70ad84c1493b85cd9c6aa18a077b75be8954fc6e45d5e444af46456a",
+          "margins": [
+            176,
+            34,
+            162,
+            22
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            168,
+            28,
+            173,
+            462
+          ],
+          "alphaBounds32": [
+            168,
+            30,
+            172,
+            457
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            244.5,
+            490
+          ],
+          "bodyCenterPivot": [
+            254,
+            490
+          ],
+          "opaquePixelCount": 50371,
+          "contentSha256": "a9167a6ea718deea896a32d3d05243a4a92caa106b31f597f988dab19f8f041a",
+          "margins": [
+            168,
+            28,
+            171,
+            22
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "ambient-03",
+      "prompt": "Use case: stylized-concept. Transparent PNG atlas with exactly6drawings,3columns2rows,1536x1024,for a distant rainy Gothic Gotham rooftop2Dstage. One small grey weathered stone gargoyle on a SHORT stone cornice fragment. A rusted iron bracket protrudes from its base, holding a short clothesline and ONE faded grey cotton rag with two clothespins. Gargoyle is an inert carving, NOT alive. Six native frames show the cotton rag flapping through distinct wind phases; stone and all attachments remain fixed and coherent. Sideview, coolblue nightlight, painted detailedgameart. Each512x512cell contains the COMPLETE motif centered and no wider than300px and no taller than290px; keep100px fully clear alpha gutters. Fixedbase atlocaly420, same scale/anchor eachframe. Real transparent alpha everywhere else, no scenery or floor, no rainoverlay, no glowing halo, no shadow, no text or labels or gridlines. Cloth must visibly change folded shape not merely translate. Original architectural prop; not certified identical to a particular comic panel.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-9bbfb3a4-cfc5-4606-b366-f3f974d24c33.png",
+      "workspacePath": "work-local/v61/generated/arena-139-batman-gotham-rooftops/ambient-03.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E94"
+      ],
+      "visualNotes": "Gargoyle stays inert; six distinct attached cloth folds. Bottom-row clear gutter x535 preserves full cloth. Pivots use stone support region, not the lower flapping cloth edge. All six boundaries clear at alpha>32.",
+      "sha256": "5fdc4dd70ebcee5aaa84cff914ea09671afac1023d8646bec5aea2eceb2ad56f",
+      "bytes": 2054559,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6676762898763021,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            91,
+            390,
+            388
+          ],
+          "alphaBounds32": [
+            52,
+            91,
+            385,
+            388
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            144.5,
+            454
+          ],
+          "bodyCenterPivot": [
+            244.5,
+            479
+          ],
+          "opaquePixelCount": 74714,
+          "contentSha256": "3ea7b0d15b2b6d6f5548733a8a5ecabf464f96ddeb8cb1eb6a8b92caa26801fa",
+          "margins": [
+            50,
+            91,
+            72,
+            33
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            40,
+            89,
+            421,
+            371
+          ],
+          "alphaBounds32": [
+            43,
+            91,
+            417,
+            363
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            144.5,
+            454
+          ],
+          "bodyCenterPivot": [
+            250,
+            460
+          ],
+          "opaquePixelCount": 75166,
+          "contentSha256": "9de2d639b0fcee081e162f7a8f107d378d8b4f1997db7126723c229913505f64",
+          "margins": [
+            40,
+            89,
+            51,
+            52
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            37,
+            89,
+            461,
+            369
+          ],
+          "alphaBounds32": [
+            41,
+            91,
+            456,
+            363
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            144.5,
+            454
+          ],
+          "bodyCenterPivot": [
+            267,
+            458
+          ],
+          "opaquePixelCount": 75358,
+          "contentSha256": "ea628ae8a99ba7670cb5bb1516af22a471caaf0e8aa613e2e212791757c18378",
+          "margins": [
+            37,
+            89,
+            14,
+            54
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            535,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            64,
+            468,
+            368
+          ],
+          "alphaBounds32": [
+            52,
+            66,
+            464,
+            364
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            144.5,
+            430
+          ],
+          "bodyCenterPivot": [
+            283.5,
+            432
+          ],
+          "opaquePixelCount": 73579,
+          "contentSha256": "4a30783570f2154491a12f9d00dfd6e1593f96a749598c86e9bb1b8d3f4ab3f2",
+          "margins": [
+            50,
+            64,
+            17,
+            80
+          ]
+        },
+        {
+          "rect": [
+            535,
+            512,
+            489,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            64,
+            394,
+            367
+          ],
+          "alphaBounds32": [
+            20,
+            66,
+            390,
+            364
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            144.5,
+            430
+          ],
+          "bodyCenterPivot": [
+            214.5,
+            431
+          ],
+          "opaquePixelCount": 74227,
+          "contentSha256": "a534646270249c7a451d70b90ec007e9fffaa87b54f311152dc2c07567e8948a",
+          "margins": [
+            18,
+            64,
+            77,
+            81
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            38,
+            66,
+            391,
+            368
+          ],
+          "alphaBounds32": [
+            41,
+            66,
+            385,
+            367
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            144.5,
+            430
+          ],
+          "bodyCenterPivot": [
+            233,
+            434
+          ],
+          "opaquePixelCount": 74246,
+          "contentSha256": "e07de2198341f87ef24dc1e235b398cb47f39efdf280934a40b166c6a1c2fa1b",
+          "margins": [
+            38,
+            66,
+            83,
+            78
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "frameRects": [
+        [
+          0,
+          0,
+          512,
+          512
+        ],
+        [
+          512,
+          0,
+          512,
+          512
+        ],
+        [
+          1024,
+          0,
+          512,
+          512
+        ],
+        [
+          0,
+          512,
+          535,
+          512
+        ],
+        [
+          535,
+          512,
+          489,
+          512
+        ],
+        [
+          1024,
+          512,
+          512,
+          512
+        ]
+      ],
+      "anchorKind": "support-region",
+      "anchorRegion": [
+        65,
+        300,
+        160,
+        205
+      ],
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "artStatus": "accepted-3-native-ambient-pngs-awaiting-runtime-composition"
+}

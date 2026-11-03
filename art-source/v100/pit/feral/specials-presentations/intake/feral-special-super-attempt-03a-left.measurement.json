@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-super-attempt-03a-left.png",
+  "sourceSha256": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3",
+  "bytes": 2249370,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 2,
+  "strategy": "row-first",
+  "status": "MEASURED_REQUIRES_VISUAL_REVIEW",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "y",
+      "row": 1,
+      "start": 499,
+      "end": 522,
+      "cut": 510
+    },
+    {
+      "axis": "x",
+      "row": 0,
+      "column": 1,
+      "start": 628,
+      "end": 898,
+      "cut": 763
+    },
+    {
+      "axis": "x",
+      "row": 1,
+      "column": 1,
+      "start": 700,
+      "end": 794,
+      "cut": 747
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        764,
+        511
+      ],
+      "visibleRect": [
+        249,
+        10,
+        379,
+        489
+      ],
+      "alphaPixels": 101255,
+      "borderPixels": 0,
+      "visiblePixelSha256": "f8f72c5df3846cb29c2f861276d134001cba6abab87eaef8b7d82a568b99d32f",
+      "pivotCandidate": [
+        324.5,
+        499
+      ],
+      "visibleHeightCandidate": 489
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        763,
+        0,
+        773,
+        511
+      ],
+      "visibleRect": [
+        899,
+        17,
+        525,
+        479
+      ],
+      "alphaPixels": 123410,
+      "borderPixels": 0,
+      "visiblePixelSha256": "236b15e5ab5de8d61764e83ee7ccae7eb42a8de447ec52cabefea7924a07a36e",
+      "pivotCandidate": [
+        443.5,
+        496
+      ],
+      "visibleHeightCandidate": 479
+    },
+    {
+      "index": 2,
+      "row": 1,
+      "column": 0,
+      "rect": [
+        0,
+        510,
+        748,
+        514
+      ],
+      "visibleRect": [
+        163,
+        523,
+        537,
+        473
+      ],
+      "alphaPixels": 107859,
+      "borderPixels": 0,
+      "visiblePixelSha256": "6de22a02b6238f06f0548c8499114e3b08d2ee5d52be7de62d8f2d2a01fd12ef",
+      "pivotCandidate": [
+        506.5,
+        486
+      ],
+      "visibleHeightCandidate": 473
+    },
+    {
+      "index": 3,
+      "row": 1,
+      "column": 1,
+      "rect": [
+        747,
+        510,
+        789,
+        514
+      ],
+      "visibleRect": [
+        795,
+        523,
+        689,
+        472
+      ],
+      "alphaPixels": 111920,
+      "borderPixels": 0,
+      "visiblePixelSha256": "44a256c7463fcaaff579bd7c4679191360854a1a0eb23d3503db1a51e07f110a",
+      "pivotCandidate": [
+        526.5,
+        485
+      ],
+      "visibleHeightCandidate": 472
+    }
+  ],
+  "issues": []
+}

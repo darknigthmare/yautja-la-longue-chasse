@@ -1,0 +1,121 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { build } from 'esbuild';
+import {readFileSync} from 'node:fs';
+const load=async (...paths)=>{const r=await build({stdin:{contents:paths.map(path=>`export * from './${path}';`).join('\n'),resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});return import('data:text/javascript;base64,'+Buffer.from(r.outputFiles[0].text).toString('base64'));};
+const city=await load('app/game/systems/homeworldCity.ts'), codex=await load('app/game/systems/homeworldElementCodexV64.ts');
+const geo=await load('app/game/systems/homeworldGeometryV64.ts'), rooms=await load('app/game/systems/homeworldInteriorsV64.ts');
+const hw=await load('app/game/systems/homeworld.ts'), art=await load('app/game/systems/homeworldArtV64.ts');
+// Mount the same late solid collections as the real scene in one module graph.
+const world=await load('app/game/systems/homeworldWorldV77.ts','app/game/systems/homeworldCivicWorldV80.ts',
+  'app/game/systems/homeworldStreetDecorMountV84.ts','app/game/systems/homeworldStreetCompositionMountV92.ts');
+const runtime=world;
+const newDecorIds=city.HOMEWORLD_PROPS.filter(p=>p.id.startsWith('life-v68-')).map(p=>p.id);
+const v69DecorIds=city.HOMEWORLD_PROPS.filter(p=>p.id.startsWith('life-v69-')).map(p=>p.id);
+const close=(a,b)=>assert(Math.abs(a-b)<1e-8,`${a} != ${b}`);
+
+test('one35-degree camera preserves vertical adult/door scale, including inverse ground coordinates',()=>{
+  assert.equal(geo.HOMEWORLD_GEOMETRY_V64.adultHeight,100);
+  for(const p of [{x:0,y:0},{x:1280,y:4480},{x:6000,y:3200}])for(const z of [0,100,268]){
+    const q=geo.homeworldProjectGroundV64(p,z),r=geo.homeworldUnprojectGroundV64(q,z);
+    close(r.x,p.x);close(r.y,p.y);close(geo.homeworldProjectGroundV64(p).y-q.y,z);
+  }
+});
+test('43 actual solid envelopes never overlap on their physical floor, every door accepts only its accessible front passage',()=>{
+  const buildings=world.HOMEWORLD_BUILDINGS_V77;
+  assert.equal(buildings.length,43);
+  assert.deepEqual(buildings.map(b=>b.id),city.HOMEWORLD_BUILDINGS.map(b=>b.id));
+  for(let i=0;i<buildings.length;i++)for(let j=i+1;j<buildings.length;j++){
+    if(buildings[i].levelId!==buildings[j].levelId)continue;
+    assert(!geo.homeworldBuildingFootprintsOverlapV76(buildings[i],buildings[j]),`${buildings[i].id}/${buildings[j].id}`);
+  }
+  for(const building of buildings){
+    const door=geo.homeworldBuildingDoorwayV64(building);
+    assert.equal(world.nearestHomeworldDoorV77(building.levelId,door.approach)?.id,building.id);
+    for(const level of world.HOMEWORLD_LEVELS_V77.filter(level=>level.id!==building.levelId))
+      assert.notEqual(world.nearestHomeworldDoorV77(level.id,door.approach)?.id,building.id,'a different physical floor cannot open '+building.id);
+    const frame=geo.homeworldBuildingGroundFrameV76(building);
+    const worldPoint=(u,v)=>({x:building.x+u*frame.tangent.x+v*frame.normal.x,y:building.y+u*frame.tangent.y+v*frame.normal.y});
+    for(const p of [worldPoint(0,-20),worldPoint(building.width/2,25),worldPoint(0,130)])
+      assert.notEqual(world.nearestHomeworldDoorV77(building.levelId,p)?.id,building.id,`cannot enter ${building.id} through back/side/from afar`);
+    assert.equal(runtime.homeworldCivicWalkableV80(building.levelId,worldPoint(0,-70)),false,'front wall remains solid');
+  }
+});
+test('painted forward prop pivots and station volumes share the exact native width and depth',()=>{
+  assert.equal(newDecorIds.length,15,'V68 adds fifteen independent native furniture modules');
+  assert.equal(new Set(newDecorIds).size,15,'new furnishings remain distinct physical objects');
+  assert.equal(city.HOMEWORLD_PROPS.filter(p=>!newDecorIds.includes(p.id)&&!v69DecorIds.includes(p.id)).length,26,'all twenty-six original V64 props are retained');
+  assert.equal(v69DecorIds.length,3,'V69 adds three supported native braziers');
+  assert.equal(city.HOMEWORLD_PROPS.length,44);
+  assert.equal(city.HOMEWORLD_OUTDOOR_POINT_ART_V64.length,1,'the transfer terminal remains native V64; ten region beacons have become physical V72 approaches');
+  const originalBrazier=JSON.parse(readFileSync('app/game/data/homeworldLifeV69.json','utf8')).decorations.find(p=>p.id==='life-v69-brazier-citadel');
+  const seatedBrazier=city.HOMEWORLD_PROPS.find(p=>p.id===originalBrazier.id);
+  assert.deepEqual(seatedBrazier,{...originalBrazier,y:originalBrazier.y+12},'only the twelve-unit native support placement changes');
+  const originalCorner={x:originalBrazier.x-originalBrazier.footprint.halfWidth,y:originalBrazier.y-2*originalBrazier.footprint.halfDepth};
+  assert.equal(city.isHomeworldTerrainWalkable(originalCorner,{halfWidth:0,halfDepth:0}),false,'the former unsupported ground corner remains outside terrain');
+  assert.equal(city.isHomeworldTerrainWalkable({...originalCorner,y:originalCorner.y+11},{halfWidth:0,halfDepth:0}),false,'eleven whole ground units are insufficient');
+  assert.equal(city.isHomeworldTerrainWalkable({...originalCorner,y:originalCorner.y+12},{halfWidth:0,halfDepth:0}),true,'the minimum twelve-unit shift places the same support on real ground');
+  assert.deepEqual(world.HOMEWORLD_PROPS_V77.map(p=>p.id),city.HOMEWORLD_PROPS.map(p=>p.id));
+  for(const prop of world.HOMEWORLD_PROPS_V77){
+    const source=art.HOMEWORLD_PROP_ART_V64[prop.artId],p=city.homeworldPropArtPlacement(prop);
+    const sx=p.width/source.sourceRect.width,sy=p.height/source.sourceRect.height;
+    close(sx,sy);close(p.left+source.pivot.x*sx,prop.x);close(p.top+source.pivot.y*sy,geo.homeworldProjectGroundV64(prop).y);
+    const center={x:prop.x,y:prop.y-prop.footprint.halfDepth};
+    assert.equal(runtime.homeworldCivicCollisionV80(prop.levelId,center,{halfWidth:0,halfDepth:0})?.id,prop.id);
+    assert(world.homeworldTerrainV77(prop.levelId,center,prop.footprint),prop.id);
+  }
+  for(const point of city.HOMEWORLD_OUTDOOR_POINT_ART_V64){
+    const source=art.HOMEWORLD_PROP_ART_V64[point.artId],solid=city.HOMEWORLD_POINT_PROP_COLLIDERS.find(p=>p.id===point.id);
+    close(solid.radiusX*2,source.footprintWorld.width);close(solid.radiusY*2,source.footprintWorld.depth);
+    close(solid.y+solid.radiusY,point.y);
+  }
+});
+test('all19 civic IDs,26 interaction IDs and14 district IDs remain stable; indoor points cannot be used from the street',()=>{
+  assert.deepEqual(city.HOMEWORLD_BUILDINGS.slice(0,19).map(b=>b.id),city.HOMEWORLD_BUILDINGS_V54.map(b=>b.id));
+  assert.deepEqual(city.HOMEWORLD_DISTRICTS.map(d=>d.id),city.HOMEWORLD_DISTRICTS_V54.map(d=>d.id));
+  assert.deepEqual(Object.keys(city.HOMEWORLD_POINT_POSITIONS),Object.keys(city.HOMEWORLD_POINT_POSITIONS_V54));
+  assert.equal(rooms.HOMEWORLD_INTERIORS_V64.length,43);assert.equal(rooms.HOMEWORLD_INTERIOR_POINT_IDS_V64.size,15);
+  for(const point of hw.HOMEWORLD_POINTS.filter(p=>rooms.HOMEWORLD_INTERIOR_POINT_IDS_V64.has(p.id)))assert.notEqual(hw.nearestHomeworldPoint(point)?.id,point.id);
+  const old=hw.defaultHomeworldProgress();old.visitedDistrictIds=['port','clans'];old.greetedNpcIds=['dock-officer'];
+  assert.deepEqual(hw.normalizeHomeworldProgress(JSON.parse(JSON.stringify(old))),old);
+  assert(!('position' in old),'no obsolete coordinate persists in campaign progress');
+});
+test('the element codex enumerates actual spaces, source assets and measurements without granting actions',()=>{
+  const records=codex.HOMEWORLD_ELEMENT_CODEX_V64;
+  assert.equal(new Set(records.map(r=>r.id)).size,records.length);
+  assert.equal(records.filter(r=>r.category==='building').length,43);
+  assert.equal(records.filter(r=>r.category==='door').length,86);
+  assert.equal(records.filter(r=>r.category==='interior').length,43);
+  assert.equal(records.filter(r=>r.category==='service').length,26);
+  assert.equal(records.filter(r=>r.category==='npc').length,12);
+  assert.equal(records.filter(r=>r.category==='floor').length,43);
+  const expectedPanels=rooms.HOMEWORLD_INTERIORS_V64.reduce((total,room)=>total+Math.ceil(room.width/art.HOMEWORLD_INTERIOR_ART_V64.north.moduleLengthWorld)+Math.ceil(room.depth/art.HOMEWORLD_INTERIOR_ART_V64.west.moduleLengthWorld)+Math.ceil(room.depth/art.HOMEWORLD_INTERIOR_ART_V64.east.moduleLengthWorld),0);
+  assert.equal(records.filter(r=>r.category==='panel').length,expectedPanels,'every native perimeter panel is enumerated after functional wing dimensions change');
+  assert.equal(records.filter(r=>r.category==='prop'&&newDecorIds.some(id=>r.id===`prop:${id}`)).length,15,'the codex includes every additional native physical prop once');
+  const expectedRecords=city.HOMEWORLD_DISTRICTS.length+city.HOMEWORLD_STREETS.length+43+86+12+26+43+43+expectedPanels+2+
+    city.HOMEWORLD_PROPS.length+city.HOMEWORLD_OUTDOOR_POINT_ART_V64.length+3+8+rooms.HOMEWORLD_INTERIORS_V64.reduce((n,r)=>n+r.props.length,0);
+  assert.equal(records.length,expectedRecords,'the complete live city model is enumerated without duplicates or dropped classes');
+  assert.equal(records.filter(r=>r.category==='prop').length,city.HOMEWORLD_PROPS.length+city.HOMEWORLD_OUTDOOR_POINT_ART_V64.length+3+8+rooms.HOMEWORLD_INTERIORS_V64.reduce((n,r)=>n+r.props.length,0));
+  for(const r of records){
+    assert(Object.values(r.position).every(Number.isFinite),r.id);assert(Object.values(r.dimensions).every(v=>Number.isFinite(v)&&v>=0),r.id);
+    assert(r.constraints.length>0,r.id);assert.equal(r.lore,'original-adaptation');
+    if(r.category==='prop') {
+      if(r.id.startsWith('trophy-slot:')){assert.equal(r.asset,null);assert.equal(r.footprint,null);assert.match(r.constraints.join(' '),/déterminée uniquement par une prise déjà possédée/);}
+      else if(r.id==='interior-station:suspect-trophy-point')assert.equal(r.asset,'/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp');
+      else if(v69DecorIds.some(id=>r.id===`prop:${id}`)) assert.equal(r.asset,'/game/homeworld/v69/clan-brazier.png',r.id);
+      else assert.match(r.asset,/\/game\/homeworld\/v64\//,r.id);
+    }
+  }
+  for(const room of rooms.HOMEWORLD_INTERIORS_V64){
+    const b=city.HOMEWORLD_BUILDINGS.find(b=>b.id===room.buildingId);assert(room.width<b.footprint.width&&room.depth<b.footprint.depth);
+    for(const prop of room.props){const r=codex.homeworldElementByIdV64(`prop:${prop.id}`);close(r.footprint.top,prop.y-2*prop.halfDepth);close(r.footprint.bottom,prop.y);}
+  }
+});
+test('the same movement integrator recovers inside the current room, never at the port; pause is inert',()=>{
+  const room=rooms.HOMEWORLD_INTERIORS_V64[0];const fallback=()=>({...city.createHomeworldActor(),...room.spawn});
+  const floor=p=>rooms.isHomeworldInteriorWalkableV64(room,p);
+  const bad={...fallback(),x:NaN,y:Infinity};const input={moveX:0,climb:0,jumpPressed:false};
+  const recovered=city.stepHomeworldActorOnFloor(bad,input,1/60,floor,fallback);
+  assert.deepEqual({x:recovered.x,y:recovered.y},room.spawn);assert(floor(recovered));
+  assert.equal(city.stepHomeworldActorOnFloor(recovered,{...input,moveX:1},0,floor,fallback),recovered);
+});

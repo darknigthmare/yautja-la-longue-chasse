@@ -1,0 +1,32 @@
+{
+  "status": "PASS_WITH_DOCUMENTED_LIMITS",
+  "checkedAt": "2026-10-02",
+  "productionUrl": "https://yautja-la-longue-chasse.vercel.app",
+  "sourceCommit": "e409775173407a2cb21f42bb57eebc947a7003a8",
+  "includedV70Commit": "cf095db",
+  "gitHubMainPush": "CONFIRMED",
+  "vercel": {"deploymentId": "dpl_2hLyn51LArJ8tmJ1Tk9MfX34JuEa", "state": "READY", "target": "production", "sourceShaMatches": true, "productionAliasVerified": true},
+  "productionHttp": 200,
+  "publicBrowserRecipes": {
+    "shell": {"status": "PASS", "checks": 11, "reviewedCaptures": 2, "report": "v71-public-shell-qa.json", "realProviderReadOnly": true},
+    "account": {"status": "PASS", "checks": 10, "reviewedCaptures": 15, "report": "v71-cloud-account-public-qa.json", "providerTransport": "Fully intercepted QA Auth and REST; no real account or email", "rawArchiveIdentitiesCompared": true},
+    "outskirts": {"status": "PASS", "checks": 10, "reviewedCaptures": 8, "report": "v71-outskirts-public-qa.json", "physicalKeyboardTraversal": true, "realHouseVisited": true},
+    "nursery": {"status": "PASS", "checkGroups": 4, "reviewedCaptures": 8, "report": "v71-nursery-public-qa.json", "freshKeyboardWonDuel": true, "injectedVictory": false, "mobileCheckpoint": "Actual won desktop checkpoint"}
+  },
+  "publicNativeBitmaps": [
+    {"path": "/game/homeworld/v70/temple-modules.png", "http": 200, "bytes": 2390561, "sha256": "5490c9a2f87c6fe4b57364c72fc207362bf3d5d3f7ae335a4057136cf861ef93"},
+    {"path": "/game/homeworld/v71/outskirts-kit.png", "http": 200, "bytes": 2469209, "sha256": "9041169d7769db7cfb655a9166a87eab91332b508527a3cf16a7a8f7cfe306f4"},
+    {"path": "/game/homeworld/v71/cinder-ground.png", "http": 200, "bytes": 3543109, "sha256": "a8e5811e20dc9ff00c472d2cfeca9a50d81931db56210be0b4129387f531e4a3"}
+  ],
+  "validation": {"completeRegressionPassed": 2375, "completeRegressionFailed": 0, "portableBuild": "PASS", "nextWebpackBuild": "PASS", "typecheck": "PASS", "lintErrors": 0, "preexistingLintWarnings": 3, "pitCompiledCss": "PASS", "report": "v71-regression-qa.json"},
+  "realDatabase": {"appliedMigration": "20261001235556_yautja_cloud_saves_v71.sql", "roleAndRevisionChecks": 7, "status": "PASS", "qaWritesRolledBack": true, "qaRowsRemaining": 0, "anonymousBrowserHttp": 401, "report": "v71-account-backend-qa.json"},
+  "limits": [
+    "Real-user authentication, account creation, confirmation email delivery and live authenticated cross-device transfer were not performed or certified.",
+    "Old mobile saves must first be associated and uploaded from that same mobile. Two different existing branches require an explicit choice.",
+    "Local and cloud confirmation are separate. Offline progress was checked after the scene assets had loaded online; first scene asset loading offline is unsupported.",
+    "Original Homeworld environment adaptations are not certified canonical 1:1 architecture. Large squares remain open; selected city views and one real house were inspected.",
+    "V70 temple and villages were locally browser-tested before inclusion. This public round specifically replays the new accounts, outskirts and nursery; it is not a fresh public playthrough of every V70 mission.",
+    "Deep temple rooms, Queen, purge, actual Blooding, all earlier arena and animation requests and the entire commercial game are not declared complete.",
+    "Only QA recipes and evidence change after the published source commit. Diagnostic failures are retained separately; the evidence commit is not a new production release."
+  ]
+}

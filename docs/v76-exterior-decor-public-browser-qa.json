@@ -1,0 +1,4694 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checks": [
+    {
+      "name": "functional-native-exterior-view",
+      "view": "market-merchant-canopy-diagonal",
+      "requiredId": "exterior-v76-004",
+      "mounted": 10,
+      "paint": {
+        "painted": {
+          "left": 616.5185127258301,
+          "top": 517.8043711185455,
+          "right": 810.9123013814291,
+          "bottom": 673.6663746833801
+        },
+        "viewport": {
+          "left": 0,
+          "right": 1440,
+          "top": 56.5,
+          "bottom": 881.5
+        },
+        "visibleWidth": 194.393788655599,
+        "visibleHeight": 155.8620035648346,
+        "opacity": 0.24,
+        "imageVisible": true
+      },
+      "objects": [
+        {
+          "id": "exterior-v76-018",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 104.624,
+          "height": 104.624,
+          "left": 1337.92,
+          "top": 1155.57,
+          "imageWidth": 418.497,
+          "imageHeight": 313.873,
+          "zIndex": 2187,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-020",
+          "artId": "exterior-v76:training-gong",
+          "sourceRect": "0,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 179.147,
+          "height": 179.147,
+          "left": 1704.19,
+          "top": 1154.01,
+          "imageWidth": 716.587,
+          "imageHeight": 537.44,
+          "zIndex": 2301,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-067",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 81.638,
+          "height": 78.4807,
+          "left": 2531.81,
+          "top": 1565.41,
+          "imageWidth": 326.552,
+          "imageHeight": 244.914,
+          "zIndex": 2857,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-066",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 102.047,
+          "height": 98.1009,
+          "left": 1431.02,
+          "top": 1770.21,
+          "imageWidth": 408.19,
+          "imageHeight": 306.142,
+          "zIndex": 3246,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-007",
+          "artId": "exterior-v76:logistics-container-rack",
+          "sourceRect": "0,0,1312,1199",
+          "src": "/game/homeworld/v76/logistics-container-rack-native.png",
+          "width": 141.384,
+          "height": 129.207,
+          "left": 2254.15,
+          "top": 1759.81,
+          "imageWidth": 141.384,
+          "imageHeight": 129.207,
+          "zIndex": 3281,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-006",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 102.047,
+          "height": 98.1009,
+          "left": 1606.02,
+          "top": 1810.36,
+          "imageWidth": 408.19,
+          "imageHeight": 306.142,
+          "zIndex": 3316,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-005",
+          "artId": "exterior-v76:clothing-rack",
+          "sourceRect": "362,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 147.199,
+          "height": 147.199,
+          "left": 1437.99,
+          "top": 1787.22,
+          "imageWidth": 588.795,
+          "imageHeight": 441.596,
+          "zIndex": 3352,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-053",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 94.1618,
+          "height": 94.1618,
+          "left": 1608.63,
+          "top": 1853.17,
+          "imageWidth": 376.647,
+          "imageHeight": 282.486,
+          "zIndex": 3386,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-004",
+          "artId": "exterior-v76:merchant-canopy-diagonal",
+          "sourceRect": "0,0,1536,1024",
+          "src": "/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+          "width": 255.789,
+          "height": 170.526,
+          "left": 2011.03,
+          "top": 1825.7,
+          "imageWidth": 255.789,
+          "imageHeight": 170.526,
+          "zIndex": 3469,
+          "opacity": 0.24,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-046",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 81.638,
+          "height": 78.4807,
+          "left": 1987.81,
+          "top": 2016.25,
+          "imageWidth": 326.552,
+          "imageHeight": 244.914,
+          "zIndex": 3643,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "name": "functional-native-exterior-view",
+      "view": "market-canopy-mobile",
+      "requiredId": "exterior-v76-004",
+      "mounted": 3,
+      "paint": {
+        "painted": {
+          "left": 93.01851272583008,
+          "top": 408.04436135292053,
+          "right": 287.4123013814291,
+          "bottom": 563.9063649177551
+        },
+        "viewport": {
+          "left": 0,
+          "right": 393,
+          "top": 54,
+          "bottom": 706
+        },
+        "visibleWidth": 194.393788655599,
+        "visibleHeight": 155.8620035648346,
+        "opacity": 0.24,
+        "imageVisible": true
+      },
+      "objects": [
+        {
+          "id": "exterior-v76-007",
+          "artId": "exterior-v76:logistics-container-rack",
+          "sourceRect": "0,0,1312,1199",
+          "src": "/game/homeworld/v76/logistics-container-rack-native.png",
+          "width": 141.384,
+          "height": 129.207,
+          "left": 2254.15,
+          "top": 1759.81,
+          "imageWidth": 141.384,
+          "imageHeight": 129.207,
+          "zIndex": 3281,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-004",
+          "artId": "exterior-v76:merchant-canopy-diagonal",
+          "sourceRect": "0,0,1536,1024",
+          "src": "/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+          "width": 255.789,
+          "height": 170.526,
+          "left": 2011.03,
+          "top": 1825.7,
+          "imageWidth": 255.789,
+          "imageHeight": 170.526,
+          "zIndex": 3469,
+          "opacity": 0.24,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-046",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 81.638,
+          "height": 78.4807,
+          "left": 1987.81,
+          "top": 2016.25,
+          "imageWidth": 326.552,
+          "imageHeight": 244.914,
+          "zIndex": 3643,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "name": "functional-native-exterior-view",
+      "view": "terraces-terrace-bench-right",
+      "requiredId": "exterior-v76-019",
+      "mounted": 13,
+      "paint": {
+        "painted": {
+          "left": 635.3576011657715,
+          "top": 433.9145269393921,
+          "right": 786.5463339487711,
+          "bottom": 533.1073770523071
+        },
+        "viewport": {
+          "left": 0,
+          "right": 1440,
+          "top": 56.5,
+          "bottom": 881.5
+        },
+        "visibleWidth": 151.18873278299964,
+        "visibleHeight": 99.19285011291504,
+        "opacity": 1,
+        "imageVisible": true
+      },
+      "objects": [
+        {
+          "id": "exterior-v76-034",
+          "artId": "exterior-v76:terrace-bench-right",
+          "sourceRect": "0,0,1536,1024",
+          "src": "/game/homeworld/v76/terrace-bench-right-native.png",
+          "width": 167.419,
+          "height": 111.612,
+          "left": 1823.61,
+          "top": 504.014,
+          "imageWidth": 167.419,
+          "imageHeight": 111.612,
+          "zIndex": 1064,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-ornament:training-hall",
+          "artId": "exterior-v76:clan-banner",
+          "sourceRect": "736,710,306,376",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 96.6875,
+          "height": 118.806,
+          "left": 2355.97,
+          "top": 841.903,
+          "imageWidth": 457.528,
+          "imageHeight": 343.146,
+          "zIndex": 1810,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-022",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 94.1618,
+          "height": 94.1618,
+          "left": 2723.63,
+          "top": 969.863,
+          "imageWidth": 376.647,
+          "imageHeight": 282.486,
+          "zIndex": 1846,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-057",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 94.1618,
+          "height": 94.1618,
+          "left": 2758.63,
+          "top": 1010.01,
+          "imageWidth": 376.647,
+          "imageHeight": 282.486,
+          "zIndex": 1916,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-ornament:clan-lodge",
+          "artId": "exterior-v76:clan-banner",
+          "sourceRect": "736,710,306,376",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 96.6875,
+          "height": 118.806,
+          "left": 3195.97,
+          "top": 904.136,
+          "imageWidth": 457.528,
+          "imageHeight": 343.146,
+          "zIndex": 1919,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-019",
+          "artId": "exterior-v76:terrace-bench-right",
+          "sourceRect": "0,0,1536,1024",
+          "src": "/game/homeworld/v76/terrace-bench-right-native.png",
+          "width": 167.419,
+          "height": 111.612,
+          "left": 2753.61,
+          "top": 1073,
+          "imageWidth": 167.419,
+          "imageHeight": 111.612,
+          "zIndex": 2056,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-023",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 81.638,
+          "height": 78.4807,
+          "left": 3626.81,
+          "top": 1346.88,
+          "imageWidth": 326.552,
+          "imageHeight": 244.914,
+          "zIndex": 2476,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-009",
+          "artId": "exterior-v76:logistics-container-rack",
+          "sourceRect": "0,0,1312,1199",
+          "src": "/game/homeworld/v76/logistics-container-rack-native.png",
+          "width": 157.093,
+          "height": 143.563,
+          "left": 3468.27,
+          "top": 1352.2,
+          "imageWidth": 157.093,
+          "imageHeight": 143.563,
+          "zIndex": 2594,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-008",
+          "artId": "exterior-v76:artisan-bench",
+          "sourceRect": "724,0,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 138.504,
+          "height": 138.504,
+          "left": 3572.7,
+          "top": 1436.35,
+          "imageWidth": 554.017,
+          "imageHeight": 415.513,
+          "zIndex": 2735,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-010",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 102.047,
+          "height": 98.1009,
+          "left": 3571.02,
+          "top": 1527.02,
+          "imageWidth": 408.19,
+          "imageHeight": 306.142,
+          "zIndex": 2822,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-067",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 81.638,
+          "height": 78.4807,
+          "left": 2531.81,
+          "top": 1565.41,
+          "imageWidth": 326.552,
+          "imageHeight": 244.914,
+          "zIndex": 2857,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-012",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 94.1618,
+          "height": 94.1618,
+          "left": 3538.63,
+          "top": 1569.82,
+          "imageWidth": 376.647,
+          "imageHeight": 282.486,
+          "zIndex": 2892,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-054",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 104.624,
+          "height": 104.624,
+          "left": 3567.92,
+          "top": 1600.09,
+          "imageWidth": 418.497,
+          "imageHeight": 313.873,
+          "zIndex": 2962,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "name": "functional-native-exterior-view",
+      "view": "memory-mineral-planter-left",
+      "requiredId": "exterior-v76-029",
+      "mounted": 15,
+      "paint": {
+        "painted": {
+          "left": 832.8172378540039,
+          "top": 317.98101031780243,
+          "right": 1014.2535432179768,
+          "bottom": 433.34973895549774
+        },
+        "viewport": {
+          "left": 0,
+          "right": 1440,
+          "top": 56.5,
+          "bottom": 881.5
+        },
+        "visibleWidth": 181.4363053639729,
+        "visibleHeight": 115.36872863769531,
+        "opacity": 1,
+        "imageVisible": true
+      },
+      "objects": [
+        {
+          "id": "exterior-v76-059",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 104.624,
+          "height": 104.624,
+          "left": 847.919,
+          "top": 205.725,
+          "imageWidth": 418.497,
+          "imageHeight": 313.873,
+          "zIndex": 531,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-035",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 91.8427,
+          "height": 88.2908,
+          "left": 1848.41,
+          "top": 371.243,
+          "imageWidth": 367.371,
+          "imageHeight": 275.528,
+          "zIndex": 791,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-031",
+          "artId": "exterior-v76:stone-bench",
+          "sourceRect": "1042,724,406,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 190.138,
+          "height": 169.532,
+          "left": 632.824,
+          "top": 337.725,
+          "imageWidth": 678.127,
+          "imageHeight": 508.595,
+          "zIndex": 846,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-037",
+          "artId": "exterior-v76:training-gong",
+          "sourceRect": "0,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 143.317,
+          "height": 143.317,
+          "left": 1842.35,
+          "top": 397.357,
+          "imageWidth": 573.27,
+          "imageHeight": 429.952,
+          "zIndex": 924,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-030",
+          "artId": "exterior-v76:terrace-bench-right",
+          "sourceRect": "0,0,1536,1024",
+          "src": "/game/homeworld/v76/terrace-bench-right-native.png",
+          "width": 186.021,
+          "height": 124.014,
+          "left": 1573.45,
+          "top": 427.392,
+          "imageWidth": 186.021,
+          "imageHeight": 124.014,
+          "zIndex": 951,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-ornament:memory-vault",
+          "artId": "exterior-v76:clan-banner",
+          "sourceRect": "736,710,306,376",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 96.6875,
+          "height": 118.806,
+          "left": 920.969,
+          "top": 406.271,
+          "imageWidth": 457.528,
+          "imageHeight": 343.146,
+          "zIndex": 1051,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-034",
+          "artId": "exterior-v76:terrace-bench-right",
+          "sourceRect": "0,0,1536,1024",
+          "src": "/game/homeworld/v76/terrace-bench-right-native.png",
+          "width": 167.419,
+          "height": 111.612,
+          "left": 1823.61,
+          "top": 504.014,
+          "imageWidth": 167.419,
+          "imageHeight": 111.612,
+          "zIndex": 1064,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-032",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 83.6994,
+          "height": 83.6994,
+          "left": 824.335,
+          "top": 566.772,
+          "imageWidth": 334.798,
+          "imageHeight": 251.098,
+          "zIndex": 1126,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-029",
+          "artId": "exterior-v76:mineral-planter-left",
+          "sourceRect": "0,0,1536,1024",
+          "src": "/game/homeworld/v76/mineral-planter-left-native.png",
+          "width": 206.035,
+          "height": 137.357,
+          "left": 1397.05,
+          "top": 597.376,
+          "imageWidth": 206.035,
+          "imageHeight": 137.357,
+          "zIndex": 1266,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-033",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 91.8427,
+          "height": 88.2908,
+          "left": 1626.41,
+          "top": 744.068,
+          "imageWidth": 367.371,
+          "imageHeight": 275.528,
+          "zIndex": 1441,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-069",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 102.047,
+          "height": 98.1009,
+          "left": 1741.02,
+          "top": 846.754,
+          "imageWidth": 408.19,
+          "imageHeight": 306.142,
+          "zIndex": 1636,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-021",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 81.638,
+          "height": 78.4807,
+          "left": 1751.81,
+          "top": 925.303,
+          "imageWidth": 326.552,
+          "imageHeight": 244.914,
+          "zIndex": 1741,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-056",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 94.1618,
+          "height": 94.1618,
+          "left": 1343.63,
+          "top": 1125.3,
+          "imageWidth": 376.647,
+          "imageHeight": 282.486,
+          "zIndex": 2117,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-018",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 104.624,
+          "height": 104.624,
+          "left": 1337.92,
+          "top": 1155.57,
+          "imageWidth": 418.497,
+          "imageHeight": 313.873,
+          "zIndex": 2187,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-020",
+          "artId": "exterior-v76:training-gong",
+          "sourceRect": "0,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 179.147,
+          "height": 179.147,
+          "left": 1704.19,
+          "top": 1154.01,
+          "imageWidth": 716.587,
+          "imageHeight": 537.44,
+          "zIndex": 2301,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "name": "functional-native-exterior-view",
+      "view": "convoy-works-logistics-container-rack",
+      "requiredId": "exterior-v76-043",
+      "mounted": 6,
+      "paint": {
+        "painted": {
+          "left": 719.719181525998,
+          "top": 418.47071198247886,
+          "right": 844.9911971673732,
+          "bottom": 529.7814421156628
+        },
+        "viewport": {
+          "left": 0,
+          "right": 1440,
+          "top": 56.5,
+          "bottom": 881.5
+        },
+        "visibleWidth": 125.27201564137522,
+        "visibleHeight": 111.31073013318394,
+        "opacity": 1,
+        "imageVisible": true
+      },
+      "objects": [
+        {
+          "id": "exterior-v76-004",
+          "artId": "exterior-v76:merchant-canopy-diagonal",
+          "sourceRect": "0,0,1536,1024",
+          "src": "/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+          "width": 255.789,
+          "height": 170.526,
+          "left": 2011.03,
+          "top": 1825.7,
+          "imageWidth": 255.789,
+          "imageHeight": 170.526,
+          "zIndex": 3469,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-046",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 81.638,
+          "height": 78.4807,
+          "left": 1987.81,
+          "top": 2016.25,
+          "imageWidth": 326.552,
+          "imageHeight": 244.914,
+          "zIndex": 3643,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-043",
+          "artId": "exterior-v76:logistics-container-rack",
+          "sourceRect": "0,0,1312,1199",
+          "src": "/game/homeworld/v76/logistics-container-rack-native.png",
+          "width": 141.384,
+          "height": 129.207,
+          "left": 2733.15,
+          "top": 2406.23,
+          "imageWidth": 141.384,
+          "imageHeight": 129.207,
+          "zIndex": 4408,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-044",
+          "artId": "exterior-v76:convoy-crates",
+          "sourceRect": "382,724,354,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 103.686,
+          "height": 106.03,
+          "left": 2783.45,
+          "top": 2502.34,
+          "imageWidth": 424.118,
+          "imageHeight": 318.089,
+          "zIndex": 4521,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-063",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 94.1618,
+          "height": 94.1618,
+          "left": 2912.63,
+          "top": 2602.26,
+          "imageWidth": 376.647,
+          "imageHeight": 282.486,
+          "zIndex": 4692,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-045",
+          "artId": "exterior-v76:artisan-bench",
+          "sourceRect": "724,0,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 173.13,
+          "height": 173.13,
+          "left": 2854.63,
+          "top": 2608.34,
+          "imageWidth": 692.522,
+          "imageHeight": 519.391,
+          "zIndex": 4836,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "name": "functional-native-exterior-view",
+      "view": "rampart-walk-mineral-planter-left",
+      "requiredId": "exterior-v76-048",
+      "mounted": 12,
+      "paint": {
+        "painted": {
+          "left": 625.3189315795898,
+          "top": 535.6659866571426,
+          "right": 826.912935256958,
+          "bottom": 663.8578659296036
+        },
+        "viewport": {
+          "left": 0,
+          "right": 1440,
+          "top": 56.5,
+          "bottom": 881.5
+        },
+        "visibleWidth": 201.59400367736816,
+        "visibleHeight": 128.19187927246094,
+        "opacity": 0.24,
+        "imageVisible": true
+      },
+      "objects": [
+        {
+          "id": "exterior-v76-027",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 83.6994,
+          "height": 83.6994,
+          "left": 4974.34,
+          "top": 1005.56,
+          "imageWidth": 334.798,
+          "imageHeight": 251.098,
+          "zIndex": 1891,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-064",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 104.624,
+          "height": 104.624,
+          "left": 5192.92,
+          "top": 1022.5,
+          "imageWidth": 418.497,
+          "imageHeight": 313.873,
+          "zIndex": 1955,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-047",
+          "artId": "exterior-v76:terrace-bench-right",
+          "sourceRect": "0,0,1536,1024",
+          "src": "/game/homeworld/v76/terrace-bench-right-native.png",
+          "width": 167.419,
+          "height": 111.612,
+          "left": 5718.61,
+          "top": 1075.3,
+          "imageWidth": 167.419,
+          "imageHeight": 111.612,
+          "zIndex": 2060,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-049",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 104.624,
+          "height": 104.624,
+          "left": 5137.92,
+          "top": 1105.67,
+          "imageWidth": 418.497,
+          "imageHeight": 313.873,
+          "zIndex": 2100,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-058",
+          "artId": "exterior-v76:resin-lantern",
+          "sourceRect": "1086,362,362,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 104.624,
+          "height": 104.624,
+          "left": 4717.92,
+          "top": 1242.75,
+          "imageWidth": 418.497,
+          "imageHeight": 313.873,
+          "zIndex": 2339,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-024",
+          "artId": "exterior-v76:logistics-container-rack",
+          "sourceRect": "0,0,1312,1199",
+          "src": "/game/homeworld/v76/logistics-container-rack-native.png",
+          "width": 141.384,
+          "height": 129.207,
+          "left": 4631.15,
+          "top": 1311.27,
+          "imageWidth": 141.384,
+          "imageHeight": 129.207,
+          "zIndex": 2499,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-070",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 81.638,
+          "height": 78.4807,
+          "left": 4521.81,
+          "top": 1368.68,
+          "imageWidth": 326.552,
+          "imageHeight": 244.914,
+          "zIndex": 2514,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-025",
+          "artId": "exterior-v76:stone-bench",
+          "sourceRect": "1042,724,406,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 171.124,
+          "height": 152.579,
+          "left": 4794.54,
+          "top": 1312.07,
+          "imageWidth": 610.314,
+          "imageHeight": 457.736,
+          "zIndex": 2519,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-017",
+          "artId": "exterior-v76:mineral-planter-left",
+          "sourceRect": "0,0,1536,1024",
+          "src": "/game/homeworld/v76/mineral-planter-left-native.png",
+          "width": 228.928,
+          "height": 152.619,
+          "left": 4410.61,
+          "top": 1470.39,
+          "imageWidth": 228.928,
+          "imageHeight": 152.619,
+          "zIndex": 2813,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-048",
+          "artId": "exterior-v76:mineral-planter-left",
+          "sourceRect": "0,0,1536,1024",
+          "src": "/game/homeworld/v76/mineral-planter-left-native.png",
+          "width": 228.928,
+          "height": 152.619,
+          "left": 5310.61,
+          "top": 1680.89,
+          "imageWidth": 228.928,
+          "imageHeight": 152.619,
+          "zIndex": 3180,
+          "opacity": 0.24,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-068",
+          "artId": "exterior-v76:sealed-jars",
+          "sourceRect": "724,362,362,348",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 81.638,
+          "height": 78.4807,
+          "left": 4831.81,
+          "top": 1761,
+          "imageWidth": 326.552,
+          "imageHeight": 244.914,
+          "zIndex": 3198,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        },
+        {
+          "id": "exterior-v76-050",
+          "artId": "exterior-v76:stone-bench",
+          "sourceRect": "1042,724,406,362",
+          "src": "/game/homeworld/v72/civic-furniture-kit.png",
+          "width": 152.11,
+          "height": 135.625,
+          "left": 5382.26,
+          "top": 2047.23,
+          "imageWidth": 542.501,
+          "imageHeight": 406.876,
+          "zIndex": 3775,
+          "opacity": 1,
+          "transform": "none",
+          "imageTransform": "none",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "name": "four-original-native-png-sha",
+      "src": "/game/homeworld/v76/mineral-planter-left-native.png",
+      "sha256": "760776e5d6bb65ca2eddd6d22f3fac8dd17b1f0525a5fc95a5ac8d3795ab1af1"
+    },
+    {
+      "name": "four-original-native-png-sha",
+      "src": "/game/homeworld/v76/terrace-bench-right-native.png",
+      "sha256": "e82d165a885ee6f890fbef5c333cfd5820e5a440b0c431e2eb286e545e93cff2"
+    },
+    {
+      "name": "four-original-native-png-sha",
+      "src": "/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+      "sha256": "05a92ec51800422f1fbbe396555cee2de7025d1b18f2af0a8c57cde2a9e7e60b"
+    },
+    {
+      "name": "four-original-native-png-sha",
+      "src": "/game/homeworld/v76/logistics-container-rack-native.png",
+      "sha256": "e7e3097c0e665ad8a3a4c1d5dacd3f4dcffa8b01275b124895be4525d6345d90"
+    },
+    {
+      "name": "exterior-codex-ground-volume-read-only",
+      "itemId": "exterior-v76-004"
+    },
+    {
+      "name": "live-model-counts",
+      "solid": 70,
+      "wallOrnaments": 4,
+      "routines": 98,
+      "buildings": 43
+    }
+  ],
+  "routes": [
+    {
+      "itemId": "exterior-v76-004",
+      "from": {
+        "x": 1280,
+        "y": 4480
+      },
+      "to": {
+        "x": 2155,
+        "y": 3279
+      },
+      "distance": 3462.093183226978,
+      "publicKeyboard": true
+    },
+    {
+      "itemId": "exterior-v76-019",
+      "from": {
+        "x": 2155,
+        "y": 3279
+      },
+      "to": {
+        "x": 2848,
+        "y": 2120
+      },
+      "distance": 2127.32439542253,
+      "publicKeyboard": true
+    },
+    {
+      "itemId": "exterior-v76-029",
+      "from": {
+        "x": 2848,
+        "y": 2120
+      },
+      "to": {
+        "x": 1288,
+        "y": 1512
+      },
+      "distance": 2157.636447226497,
+      "publicKeyboard": true
+    },
+    {
+      "itemId": "exterior-v76-043",
+      "from": {
+        "x": 1288,
+        "y": 1512
+      },
+      "to": {
+        "x": 2739,
+        "y": 4478
+      },
+      "distance": 7255.67156817744,
+      "publicKeyboard": true
+    },
+    {
+      "itemId": "exterior-v76-048",
+      "from": {
+        "x": 2739,
+        "y": 4478
+      },
+      "to": {
+        "x": 5418,
+        "y": 3007
+      },
+      "distance": 8598.166757328137,
+      "publicKeyboard": true
+    }
+  ],
+  "captures": [
+    "work-local/v76/qa/exterior-decor-public/market-merchant-canopy-diagonal.jpg",
+    "work-local/v76/qa/exterior-decor-public/market-canopy-mobile.jpg",
+    "work-local/v76/qa/exterior-decor-public/terraces-terrace-bench-right.jpg",
+    "work-local/v76/qa/exterior-decor-public/memory-mineral-planter-left.jpg",
+    "work-local/v76/qa/exterior-decor-public/convoy-works-logistics-container-rack.jpg",
+    "work-local/v76/qa/exterior-decor-public/rampart-walk-mineral-planter-left.jpg",
+    "work-local/v76/qa/exterior-decor-public/native-merchant-linked-codex.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "serialization": [
+    {
+      "id": "exterior-v76-018",
+      "field": "imageWidth",
+      "actual": 418.497,
+      "expected": 418.4971098265896,
+      "scale": 0.28901734104046245,
+      "delta": 0.00010982658960756453,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-018",
+      "field": "imageHeight",
+      "actual": 313.873,
+      "expected": 313.8728323699422,
+      "scale": 0.28901734104046245,
+      "delta": 0.00016763005777420403,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-018",
+      "field": "width",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-018",
+      "field": "height",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-018",
+      "field": "left",
+      "actual": 1337.92,
+      "expected": 1337.9190751445087,
+      "scale": 0.28901734104046245,
+      "delta": 0.0009248554913483531,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-018",
+      "field": "top",
+      "actual": 1155.57,
+      "expected": 1155.5677356638996,
+      "scale": 0.28901734104046245,
+      "delta": 0.0022643361003247264,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "imageWidth",
+      "actual": 716.587,
+      "expected": 716.5870307167236,
+      "scale": 0.4948805460750853,
+      "delta": 0.00003071672358601063,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "imageHeight",
+      "actual": 537.44,
+      "expected": 537.4402730375426,
+      "scale": 0.4948805460750853,
+      "delta": 0.0002730375425699094,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "width",
+      "actual": 179.147,
+      "expected": 179.1467576791809,
+      "scale": 0.4948805460750853,
+      "delta": 0.00024232081909758563,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "height",
+      "actual": 179.147,
+      "expected": 179.1467576791809,
+      "scale": 0.4948805460750853,
+      "delta": 0.00024232081909758563,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "left",
+      "actual": 1704.19,
+      "expected": 1704.189419795222,
+      "scale": 0.4948805460750853,
+      "delta": 0.0005802047780889552,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "top",
+      "actual": 1154.01,
+      "expected": 1154.0143971086034,
+      "scale": 0.4948805460750853,
+      "delta": 0.004397108603370725,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "imageWidth",
+      "actual": 326.552,
+      "expected": 326.55192878338283,
+      "scale": 0.2255192878338279,
+      "delta": 0.00007121661718656469,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "imageHeight",
+      "actual": 244.914,
+      "expected": 244.9139465875371,
+      "scale": 0.2255192878338279,
+      "delta": 0.00005341246287571266,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "width",
+      "actual": 81.638,
+      "expected": 81.63798219584571,
+      "scale": 0.2255192878338279,
+      "delta": 0.000017804154296641173,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "height",
+      "actual": 78.4807,
+      "expected": 78.48071216617211,
+      "scale": 0.2255192878338279,
+      "delta": 0.000012166172112415552,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "left",
+      "actual": 2531.81,
+      "expected": 2531.813056379822,
+      "scale": 0.2255192878338279,
+      "delta": 0.003056379821828159,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "top",
+      "actual": 1565.41,
+      "expected": 1565.4141101089447,
+      "scale": 0.2255192878338279,
+      "delta": 0.0041101089445874095,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-066",
+      "field": "imageWidth",
+      "actual": 408.19,
+      "expected": 408.1899109792285,
+      "scale": 0.2818991097922849,
+      "delta": 0.00008902077149741672,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-066",
+      "field": "imageHeight",
+      "actual": 306.142,
+      "expected": 306.1424332344214,
+      "scale": 0.2818991097922849,
+      "delta": 0.00043323442139353574,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-066",
+      "field": "width",
+      "actual": 102.047,
+      "expected": 102.04747774480713,
+      "scale": 0.2818991097922849,
+      "delta": 0.00047774480712803324,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-066",
+      "field": "height",
+      "actual": 98.1009,
+      "expected": 98.10089020771514,
+      "scale": 0.2818991097922849,
+      "delta": 0.00000979228485675776,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-066",
+      "field": "left",
+      "actual": 1431.02,
+      "expected": 1431.0163204747773,
+      "scale": 0.2818991097922849,
+      "delta": 0.0036795252226511366,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-066",
+      "field": "top",
+      "actual": 1770.21,
+      "expected": 1770.2119017130028,
+      "scale": 0.2818991097922849,
+      "delta": 0.0019017130027805251,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "imageWidth",
+      "actual": 141.384,
+      "expected": 141.38398018166805,
+      "scale": 0.10776218001651529,
+      "delta": 0.00001981833193553939,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "imageHeight",
+      "actual": 129.207,
+      "expected": 129.20685383980182,
+      "scale": 0.10776218001651529,
+      "delta": 0.00014616019817026427,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "width",
+      "actual": 141.384,
+      "expected": 141.38398018166805,
+      "scale": 0.10776218001651529,
+      "delta": 0.00001981833193553939,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "height",
+      "actual": 129.207,
+      "expected": 129.20685383980182,
+      "scale": 0.10776218001651529,
+      "delta": 0.00014616019817026427,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "left",
+      "actual": 2254.15,
+      "expected": 2254.146366639141,
+      "scale": 0.10776218001651529,
+      "delta": 0.0036333608591121447,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "top",
+      "actual": 1759.81,
+      "expected": 1759.80973770907,
+      "scale": 0.10776218001651529,
+      "delta": 0.00026229092986795877,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-006",
+      "field": "imageWidth",
+      "actual": 408.19,
+      "expected": 408.1899109792285,
+      "scale": 0.2818991097922849,
+      "delta": 0.00008902077149741672,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-006",
+      "field": "imageHeight",
+      "actual": 306.142,
+      "expected": 306.1424332344214,
+      "scale": 0.2818991097922849,
+      "delta": 0.00043323442139353574,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-006",
+      "field": "width",
+      "actual": 102.047,
+      "expected": 102.04747774480713,
+      "scale": 0.2818991097922849,
+      "delta": 0.00047774480712803324,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-006",
+      "field": "height",
+      "actual": 98.1009,
+      "expected": 98.10089020771514,
+      "scale": 0.2818991097922849,
+      "delta": 0.00000979228485675776,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-006",
+      "field": "left",
+      "actual": 1606.02,
+      "expected": 1606.0163204747773,
+      "scale": 0.2818991097922849,
+      "delta": 0.0036795252226511366,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-006",
+      "field": "top",
+      "actual": 1810.36,
+      "expected": 1810.362252257576,
+      "scale": 0.2818991097922849,
+      "delta": 0.002252257576174088,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-005",
+      "field": "imageWidth",
+      "actual": 588.795,
+      "expected": 588.7951807228916,
+      "scale": 0.4066265060240964,
+      "delta": 0.00018072289162773814,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-005",
+      "field": "imageHeight",
+      "actual": 441.596,
+      "expected": 441.59638554216866,
+      "scale": 0.4066265060240964,
+      "delta": 0.00038554216865804847,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-005",
+      "field": "width",
+      "actual": 147.199,
+      "expected": 147.1987951807229,
+      "scale": 0.4066265060240964,
+      "delta": 0.00020481927711557546,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-005",
+      "field": "height",
+      "actual": 147.199,
+      "expected": 147.1987951807229,
+      "scale": 0.4066265060240964,
+      "delta": 0.00020481927711557546,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-005",
+      "field": "left",
+      "actual": 1437.99,
+      "expected": 1437.9939759036145,
+      "scale": 0.4066265060240964,
+      "delta": 0.003975903614445997,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-005",
+      "field": "top",
+      "actual": 1787.22,
+      "expected": 1787.221588142682,
+      "scale": 0.4066265060240964,
+      "delta": 0.001588142682066973,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-053",
+      "field": "imageWidth",
+      "actual": 376.647,
+      "expected": 376.6473988439307,
+      "scale": 0.2601156069364162,
+      "delta": 0.00039884393072497915,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-053",
+      "field": "imageHeight",
+      "actual": 282.486,
+      "expected": 282.485549132948,
+      "scale": 0.2601156069364162,
+      "delta": 0.0004508670519953739,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-053",
+      "field": "width",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-053",
+      "field": "height",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-053",
+      "field": "left",
+      "actual": 1608.63,
+      "expected": 1608.6271676300578,
+      "scale": 0.2601156069364162,
+      "delta": 0.0028323699423253856,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-053",
+      "field": "top",
+      "actual": 1853.17,
+      "expected": 1853.1702759123878,
+      "scale": 0.2601156069364162,
+      "delta": 0.0002759123876785452,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "imageWidth",
+      "actual": 255.789,
+      "expected": 255.78947368421055,
+      "scale": 0.1665296052631579,
+      "delta": 0.0004736842105614869,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "imageHeight",
+      "actual": 170.526,
+      "expected": 170.5263157894737,
+      "scale": 0.1665296052631579,
+      "delta": 0.00031578947368871013,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "width",
+      "actual": 255.789,
+      "expected": 255.78947368421055,
+      "scale": 0.1665296052631579,
+      "delta": 0.0004736842105614869,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "height",
+      "actual": 170.526,
+      "expected": 170.5263157894737,
+      "scale": 0.1665296052631579,
+      "delta": 0.00031578947368871013,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "left",
+      "actual": 2011.03,
+      "expected": 2011.0310444078948,
+      "scale": 0.1665296052631579,
+      "delta": 0.0010444078948239621,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "top",
+      "actual": 1825.7,
+      "expected": 1825.7049965175681,
+      "scale": 0.1665296052631579,
+      "delta": 0.004996517568088166,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "imageWidth",
+      "actual": 326.552,
+      "expected": 326.55192878338283,
+      "scale": 0.2255192878338279,
+      "delta": 0.00007121661718656469,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "imageHeight",
+      "actual": 244.914,
+      "expected": 244.9139465875371,
+      "scale": 0.2255192878338279,
+      "delta": 0.00005341246287571266,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "width",
+      "actual": 81.638,
+      "expected": 81.63798219584571,
+      "scale": 0.2255192878338279,
+      "delta": 0.000017804154296641173,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "height",
+      "actual": 78.4807,
+      "expected": 78.48071216617211,
+      "scale": 0.2255192878338279,
+      "delta": 0.000012166172112415552,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "left",
+      "actual": 1987.81,
+      "expected": 1987.813056379822,
+      "scale": 0.2255192878338279,
+      "delta": 0.0030563798220555327,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "top",
+      "actual": 2016.25,
+      "expected": 2016.2451890808668,
+      "scale": 0.2255192878338279,
+      "delta": 0.004810919133205971,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "imageWidth",
+      "actual": 141.384,
+      "expected": 141.38398018166805,
+      "scale": 0.10776218001651529,
+      "delta": 0.00001981833193553939,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "imageHeight",
+      "actual": 129.207,
+      "expected": 129.20685383980182,
+      "scale": 0.10776218001651529,
+      "delta": 0.00014616019817026427,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "width",
+      "actual": 141.384,
+      "expected": 141.38398018166805,
+      "scale": 0.10776218001651529,
+      "delta": 0.00001981833193553939,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "height",
+      "actual": 129.207,
+      "expected": 129.20685383980182,
+      "scale": 0.10776218001651529,
+      "delta": 0.00014616019817026427,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "left",
+      "actual": 2254.15,
+      "expected": 2254.146366639141,
+      "scale": 0.10776218001651529,
+      "delta": 0.0036333608591121447,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-007",
+      "field": "top",
+      "actual": 1759.81,
+      "expected": 1759.80973770907,
+      "scale": 0.10776218001651529,
+      "delta": 0.00026229092986795877,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "imageWidth",
+      "actual": 255.789,
+      "expected": 255.78947368421055,
+      "scale": 0.1665296052631579,
+      "delta": 0.0004736842105614869,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "imageHeight",
+      "actual": 170.526,
+      "expected": 170.5263157894737,
+      "scale": 0.1665296052631579,
+      "delta": 0.00031578947368871013,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "width",
+      "actual": 255.789,
+      "expected": 255.78947368421055,
+      "scale": 0.1665296052631579,
+      "delta": 0.0004736842105614869,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "height",
+      "actual": 170.526,
+      "expected": 170.5263157894737,
+      "scale": 0.1665296052631579,
+      "delta": 0.00031578947368871013,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "left",
+      "actual": 2011.03,
+      "expected": 2011.0310444078948,
+      "scale": 0.1665296052631579,
+      "delta": 0.0010444078948239621,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "top",
+      "actual": 1825.7,
+      "expected": 1825.7049965175681,
+      "scale": 0.1665296052631579,
+      "delta": 0.004996517568088166,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "imageWidth",
+      "actual": 326.552,
+      "expected": 326.55192878338283,
+      "scale": 0.2255192878338279,
+      "delta": 0.00007121661718656469,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "imageHeight",
+      "actual": 244.914,
+      "expected": 244.9139465875371,
+      "scale": 0.2255192878338279,
+      "delta": 0.00005341246287571266,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "width",
+      "actual": 81.638,
+      "expected": 81.63798219584571,
+      "scale": 0.2255192878338279,
+      "delta": 0.000017804154296641173,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "height",
+      "actual": 78.4807,
+      "expected": 78.48071216617211,
+      "scale": 0.2255192878338279,
+      "delta": 0.000012166172112415552,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "left",
+      "actual": 1987.81,
+      "expected": 1987.813056379822,
+      "scale": 0.2255192878338279,
+      "delta": 0.0030563798220555327,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "top",
+      "actual": 2016.25,
+      "expected": 2016.2451890808668,
+      "scale": 0.2255192878338279,
+      "delta": 0.004810919133205971,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "imageWidth",
+      "actual": 167.419,
+      "expected": 167.41868512110727,
+      "scale": 0.10899653979238755,
+      "delta": 0.0003148788927376245,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "imageHeight",
+      "actual": 111.612,
+      "expected": 111.61245674740485,
+      "scale": 0.10899653979238755,
+      "delta": 0.0004567474048542408,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "width",
+      "actual": 167.419,
+      "expected": 167.41868512110727,
+      "scale": 0.10899653979238755,
+      "delta": 0.0003148788927376245,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "height",
+      "actual": 111.612,
+      "expected": 111.61245674740485,
+      "scale": 0.10899653979238755,
+      "delta": 0.0004567474048542408,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "left",
+      "actual": 1823.61,
+      "expected": 1823.606401384083,
+      "scale": 0.10899653979238755,
+      "delta": 0.003598615916871495,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "top",
+      "actual": 504.014,
+      "expected": 504.01370197993515,
+      "scale": 0.10899653979238755,
+      "delta": 0.00029802006486079335,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:training-hall",
+      "field": "imageWidth",
+      "actual": 457.528,
+      "expected": 457.52777777777777,
+      "scale": 0.3159722222222222,
+      "delta": 0.00022222222224854704,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:training-hall",
+      "field": "imageHeight",
+      "actual": 343.146,
+      "expected": 343.1458333333333,
+      "scale": 0.3159722222222222,
+      "delta": 0.00016666666670062114,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:training-hall",
+      "field": "width",
+      "actual": 96.6875,
+      "expected": 96.6875,
+      "scale": 0.3159722222222222,
+      "delta": 0,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-ornament:training-hall",
+      "field": "height",
+      "actual": 118.806,
+      "expected": 118.80555555555556,
+      "scale": 0.3159722222222222,
+      "delta": 0.00044444444444025066,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:training-hall",
+      "field": "left",
+      "actual": 2355.97,
+      "expected": 2355.96875,
+      "scale": 0.3159722222222222,
+      "delta": 0.0012499999997999112,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-ornament:training-hall",
+      "field": "top",
+      "actual": 841.903,
+      "expected": 841.9025164620599,
+      "scale": 0.3159722222222222,
+      "delta": 0.0004835379401129103,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-022",
+      "field": "imageWidth",
+      "actual": 376.647,
+      "expected": 376.6473988439307,
+      "scale": 0.2601156069364162,
+      "delta": 0.00039884393072497915,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-022",
+      "field": "imageHeight",
+      "actual": 282.486,
+      "expected": 282.485549132948,
+      "scale": 0.2601156069364162,
+      "delta": 0.0004508670519953739,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-022",
+      "field": "width",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-022",
+      "field": "height",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-022",
+      "field": "left",
+      "actual": 2723.63,
+      "expected": 2723.627167630058,
+      "scale": 0.2601156069364162,
+      "delta": 0.002832369942098012,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-022",
+      "field": "top",
+      "actual": 969.863,
+      "expected": 969.8625639317767,
+      "scale": 0.2601156069364162,
+      "delta": 0.0004360682233937041,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-057",
+      "field": "imageWidth",
+      "actual": 376.647,
+      "expected": 376.6473988439307,
+      "scale": 0.2601156069364162,
+      "delta": 0.00039884393072497915,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-057",
+      "field": "imageHeight",
+      "actual": 282.486,
+      "expected": 282.485549132948,
+      "scale": 0.2601156069364162,
+      "delta": 0.0004508670519953739,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-057",
+      "field": "width",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-057",
+      "field": "height",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-057",
+      "field": "left",
+      "actual": 2758.63,
+      "expected": 2758.627167630058,
+      "scale": 0.2601156069364162,
+      "delta": 0.002832369942098012,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-057",
+      "field": "top",
+      "actual": 1010.01,
+      "expected": 1010.0129144763499,
+      "scale": 0.2601156069364162,
+      "delta": 0.0029144763499289184,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-ornament:clan-lodge",
+      "field": "imageWidth",
+      "actual": 457.528,
+      "expected": 457.52777777777777,
+      "scale": 0.3159722222222222,
+      "delta": 0.00022222222224854704,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:clan-lodge",
+      "field": "imageHeight",
+      "actual": 343.146,
+      "expected": 343.1458333333333,
+      "scale": 0.3159722222222222,
+      "delta": 0.00016666666670062114,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:clan-lodge",
+      "field": "width",
+      "actual": 96.6875,
+      "expected": 96.6875,
+      "scale": 0.3159722222222222,
+      "delta": 0,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-ornament:clan-lodge",
+      "field": "height",
+      "actual": 118.806,
+      "expected": 118.80555555555556,
+      "scale": 0.3159722222222222,
+      "delta": 0.00044444444444025066,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:clan-lodge",
+      "field": "left",
+      "actual": 3195.97,
+      "expected": 3195.96875,
+      "scale": 0.3159722222222222,
+      "delta": 0.0012499999997999112,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-ornament:clan-lodge",
+      "field": "top",
+      "actual": 904.136,
+      "expected": 904.1355598061485,
+      "scale": 0.3159722222222222,
+      "delta": 0.0004401938514320136,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-019",
+      "field": "imageWidth",
+      "actual": 167.419,
+      "expected": 167.41868512110727,
+      "scale": 0.10899653979238755,
+      "delta": 0.0003148788927376245,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-019",
+      "field": "imageHeight",
+      "actual": 111.612,
+      "expected": 111.61245674740485,
+      "scale": 0.10899653979238755,
+      "delta": 0.0004567474048542408,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-019",
+      "field": "width",
+      "actual": 167.419,
+      "expected": 167.41868512110727,
+      "scale": 0.10899653979238755,
+      "delta": 0.0003148788927376245,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-019",
+      "field": "height",
+      "actual": 111.612,
+      "expected": 111.61245674740485,
+      "scale": 0.10899653979238755,
+      "delta": 0.0004567474048542408,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-019",
+      "field": "left",
+      "actual": 2753.61,
+      "expected": 2753.6064013840833,
+      "scale": 0.10899653979238755,
+      "delta": 0.003598615916871495,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-019",
+      "field": "top",
+      "actual": 1073,
+      "expected": 1073.0015268401728,
+      "scale": 0.10899653979238755,
+      "delta": 0.001526840172800803,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-023",
+      "field": "imageWidth",
+      "actual": 326.552,
+      "expected": 326.55192878338283,
+      "scale": 0.2255192878338279,
+      "delta": 0.00007121661718656469,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-023",
+      "field": "imageHeight",
+      "actual": 244.914,
+      "expected": 244.9139465875371,
+      "scale": 0.2255192878338279,
+      "delta": 0.00005341246287571266,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-023",
+      "field": "width",
+      "actual": 81.638,
+      "expected": 81.63798219584571,
+      "scale": 0.2255192878338279,
+      "delta": 0.000017804154296641173,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-023",
+      "field": "height",
+      "actual": 78.4807,
+      "expected": 78.48071216617211,
+      "scale": 0.2255192878338279,
+      "delta": 0.000012166172112415552,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-023",
+      "field": "left",
+      "actual": 3626.81,
+      "expected": 3626.813056379822,
+      "scale": 0.2255192878338279,
+      "delta": 0.003056379821828159,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-023",
+      "field": "top",
+      "actual": 1346.88,
+      "expected": 1346.881487859196,
+      "scale": 0.2255192878338279,
+      "delta": 0.0014878591960041376,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-009",
+      "field": "imageWidth",
+      "actual": 157.093,
+      "expected": 157.0933113129645,
+      "scale": 0.11973575557390587,
+      "delta": 0.00031131296449871115,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-009",
+      "field": "imageHeight",
+      "actual": 143.563,
+      "expected": 143.56317093311313,
+      "scale": 0.11973575557390587,
+      "delta": 0.0001709331131394265,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-009",
+      "field": "width",
+      "actual": 157.093,
+      "expected": 157.0933113129645,
+      "scale": 0.11973575557390587,
+      "delta": 0.00031131296449871115,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-009",
+      "field": "height",
+      "actual": 143.563,
+      "expected": 143.56317093311313,
+      "scale": 0.11973575557390587,
+      "delta": 0.0001709331131394265,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-009",
+      "field": "left",
+      "actual": 3468.27,
+      "expected": 3468.2737407101567,
+      "scale": 0.11973575557390587,
+      "delta": 0.0037407101567623613,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-009",
+      "field": "top",
+      "actual": 1352.2,
+      "expected": 1352.196664829378,
+      "scale": 0.11973575557390587,
+      "delta": 0.003335170621994621,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-008",
+      "field": "imageWidth",
+      "actual": 554.017,
+      "expected": 554.0173913043478,
+      "scale": 0.3826086956521739,
+      "delta": 0.0003913043477723477,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-008",
+      "field": "imageHeight",
+      "actual": 415.513,
+      "expected": 415.5130434782609,
+      "scale": 0.3826086956521739,
+      "delta": 0.000043478260920437606,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-008",
+      "field": "width",
+      "actual": 138.504,
+      "expected": 138.50434782608696,
+      "scale": 0.3826086956521739,
+      "delta": 0.0003478260869655969,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-008",
+      "field": "height",
+      "actual": 138.504,
+      "expected": 138.50434782608696,
+      "scale": 0.3826086956521739,
+      "delta": 0.0003478260869655969,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-008",
+      "field": "left",
+      "actual": 3572.7,
+      "expected": 3572.704347826087,
+      "scale": 0.3826086956521739,
+      "delta": 0.004347826087268913,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-008",
+      "field": "top",
+      "actual": 1436.35,
+      "expected": 1436.3489447244588,
+      "scale": 0.3826086956521739,
+      "delta": 0.0010552755411481485,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-010",
+      "field": "imageWidth",
+      "actual": 408.19,
+      "expected": 408.1899109792285,
+      "scale": 0.2818991097922849,
+      "delta": 0.00008902077149741672,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-010",
+      "field": "imageHeight",
+      "actual": 306.142,
+      "expected": 306.1424332344214,
+      "scale": 0.2818991097922849,
+      "delta": 0.00043323442139353574,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-010",
+      "field": "width",
+      "actual": 102.047,
+      "expected": 102.04747774480713,
+      "scale": 0.2818991097922849,
+      "delta": 0.00047774480712803324,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-010",
+      "field": "height",
+      "actual": 98.1009,
+      "expected": 98.10089020771514,
+      "scale": 0.2818991097922849,
+      "delta": 0.00000979228485675776,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-010",
+      "field": "left",
+      "actual": 3571.02,
+      "expected": 3571.0163204747773,
+      "scale": 0.2818991097922849,
+      "delta": 0.0036795252226511366,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-010",
+      "field": "top",
+      "actual": 1527.02,
+      "expected": 1527.0154927001593,
+      "scale": 0.2818991097922849,
+      "delta": 0.004507299840724954,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "imageWidth",
+      "actual": 326.552,
+      "expected": 326.55192878338283,
+      "scale": 0.2255192878338279,
+      "delta": 0.00007121661718656469,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "imageHeight",
+      "actual": 244.914,
+      "expected": 244.9139465875371,
+      "scale": 0.2255192878338279,
+      "delta": 0.00005341246287571266,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "width",
+      "actual": 81.638,
+      "expected": 81.63798219584571,
+      "scale": 0.2255192878338279,
+      "delta": 0.000017804154296641173,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "height",
+      "actual": 78.4807,
+      "expected": 78.48071216617211,
+      "scale": 0.2255192878338279,
+      "delta": 0.000012166172112415552,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "left",
+      "actual": 2531.81,
+      "expected": 2531.813056379822,
+      "scale": 0.2255192878338279,
+      "delta": 0.003056379821828159,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-067",
+      "field": "top",
+      "actual": 1565.41,
+      "expected": 1565.4141101089447,
+      "scale": 0.2255192878338279,
+      "delta": 0.0041101089445874095,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-012",
+      "field": "imageWidth",
+      "actual": 376.647,
+      "expected": 376.6473988439307,
+      "scale": 0.2601156069364162,
+      "delta": 0.00039884393072497915,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-012",
+      "field": "imageHeight",
+      "actual": 282.486,
+      "expected": 282.485549132948,
+      "scale": 0.2601156069364162,
+      "delta": 0.0004508670519953739,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-012",
+      "field": "width",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-012",
+      "field": "height",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-012",
+      "field": "left",
+      "actual": 3538.63,
+      "expected": 3538.627167630058,
+      "scale": 0.2601156069364162,
+      "delta": 0.002832369942098012,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-012",
+      "field": "top",
+      "actual": 1569.82,
+      "expected": 1569.823516354971,
+      "scale": 0.2601156069364162,
+      "delta": 0.0035163549709977815,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-054",
+      "field": "imageWidth",
+      "actual": 418.497,
+      "expected": 418.4971098265896,
+      "scale": 0.28901734104046245,
+      "delta": 0.00010982658960756453,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-054",
+      "field": "imageHeight",
+      "actual": 313.873,
+      "expected": 313.8728323699422,
+      "scale": 0.28901734104046245,
+      "delta": 0.00016763005777420403,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-054",
+      "field": "width",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-054",
+      "field": "height",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-054",
+      "field": "left",
+      "actual": 3567.92,
+      "expected": 3567.9190751445085,
+      "scale": 0.28901734104046245,
+      "delta": 0.0009248554915757268,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-054",
+      "field": "top",
+      "actual": 1600.09,
+      "expected": 1600.0894738359602,
+      "scale": 0.28901734104046245,
+      "delta": 0.0005261640396838629,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-059",
+      "field": "imageWidth",
+      "actual": 418.497,
+      "expected": 418.4971098265896,
+      "scale": 0.28901734104046245,
+      "delta": 0.00010982658960756453,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-059",
+      "field": "imageHeight",
+      "actual": 313.873,
+      "expected": 313.8728323699422,
+      "scale": 0.28901734104046245,
+      "delta": 0.00016763005777420403,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-059",
+      "field": "width",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-059",
+      "field": "height",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-059",
+      "field": "left",
+      "actual": 847.919,
+      "expected": 847.9190751445087,
+      "scale": 0.28901734104046245,
+      "delta": 0.00007514450874168688,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-059",
+      "field": "top",
+      "actual": 205.725,
+      "expected": 205.7251570665673,
+      "scale": 0.28901734104046245,
+      "delta": 0.00015706656731140356,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-035",
+      "field": "imageWidth",
+      "actual": 367.371,
+      "expected": 367.3709198813057,
+      "scale": 0.2537091988130564,
+      "delta": 0.00008011869425672558,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-035",
+      "field": "imageHeight",
+      "actual": 275.528,
+      "expected": 275.5281899109793,
+      "scale": 0.2537091988130564,
+      "delta": 0.00018991097925891154,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-035",
+      "field": "width",
+      "actual": 91.8427,
+      "expected": 91.84272997032643,
+      "scale": 0.2537091988130564,
+      "delta": 0.000029970326437478434,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-035",
+      "field": "height",
+      "actual": 88.2908,
+      "expected": 88.29080118694364,
+      "scale": 0.2537091988130564,
+      "delta": 0.0000011869436349343232,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-035",
+      "field": "left",
+      "actual": 1848.41,
+      "expected": 1848.4146884272998,
+      "scale": 0.2537091988130564,
+      "delta": 0.004688427299697651,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-035",
+      "field": "top",
+      "actual": 371.243,
+      "expected": 371.2434715394341,
+      "scale": 0.2537091988130564,
+      "delta": 0.0004715394341019419,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-031",
+      "field": "imageWidth",
+      "actual": 678.127,
+      "expected": 678.1267217630855,
+      "scale": 0.46831955922865015,
+      "delta": 0.000278236914482477,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-031",
+      "field": "imageHeight",
+      "actual": 508.595,
+      "expected": 508.59504132231405,
+      "scale": 0.46831955922865015,
+      "delta": 0.00004132231401854369,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-031",
+      "field": "width",
+      "actual": 190.138,
+      "expected": 190.13774104683196,
+      "scale": 0.46831955922865015,
+      "delta": 0.0002589531680428081,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-031",
+      "field": "height",
+      "actual": 169.532,
+      "expected": 169.53168044077137,
+      "scale": 0.46831955922865015,
+      "delta": 0.00031955922864312925,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-031",
+      "field": "left",
+      "actual": 632.824,
+      "expected": 632.8236914600551,
+      "scale": 0.46831955922865015,
+      "delta": 0.00030853994485369185,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-031",
+      "field": "top",
+      "actual": 337.725,
+      "expected": 337.72500399596015,
+      "scale": 0.46831955922865015,
+      "delta": 0.000003995960128122533,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-037",
+      "field": "imageWidth",
+      "actual": 573.27,
+      "expected": 573.2696245733788,
+      "scale": 0.39590443686006827,
+      "delta": 0.00037542662118994485,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-037",
+      "field": "imageHeight",
+      "actual": 429.952,
+      "expected": 429.9522184300341,
+      "scale": 0.39590443686006827,
+      "delta": 0.00021843003412413964,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-037",
+      "field": "width",
+      "actual": 143.317,
+      "expected": 143.3174061433447,
+      "scale": 0.39590443686006827,
+      "delta": 0.00040614334469069036,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-037",
+      "field": "height",
+      "actual": 143.317,
+      "expected": 143.3174061433447,
+      "scale": 0.39590443686006827,
+      "delta": 0.00040614334469069036,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-037",
+      "field": "left",
+      "actual": 1842.35,
+      "expected": 1842.3515358361774,
+      "scale": 0.39590443686006827,
+      "delta": 0.0015358361774815421,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-037",
+      "field": "top",
+      "actual": 397.357,
+      "expected": 397.35664084024364,
+      "scale": 0.39590443686006827,
+      "delta": 0.00035915975638545206,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-030",
+      "field": "imageWidth",
+      "actual": 186.021,
+      "expected": 186.02076124567475,
+      "scale": 0.12110726643598616,
+      "delta": 0.00023875432523823292,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-030",
+      "field": "imageHeight",
+      "actual": 124.014,
+      "expected": 124.01384083044982,
+      "scale": 0.12110726643598616,
+      "delta": 0.0001591695501730328,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-030",
+      "field": "width",
+      "actual": 186.021,
+      "expected": 186.02076124567475,
+      "scale": 0.12110726643598616,
+      "delta": 0.00023875432523823292,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-030",
+      "field": "height",
+      "actual": 124.014,
+      "expected": 124.01384083044982,
+      "scale": 0.12110726643598616,
+      "delta": 0.0001591695501730328,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-030",
+      "field": "left",
+      "actual": 1573.45,
+      "expected": 1573.4515570934257,
+      "scale": 0.12110726643598616,
+      "delta": 0.001557093425617495,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-030",
+      "field": "top",
+      "actual": 427.392,
+      "expected": 427.39160619475825,
+      "scale": 0.12110726643598616,
+      "delta": 0.0003938052417424842,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:memory-vault",
+      "field": "imageWidth",
+      "actual": 457.528,
+      "expected": 457.52777777777777,
+      "scale": 0.3159722222222222,
+      "delta": 0.00022222222224854704,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:memory-vault",
+      "field": "imageHeight",
+      "actual": 343.146,
+      "expected": 343.1458333333333,
+      "scale": 0.3159722222222222,
+      "delta": 0.00016666666670062114,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:memory-vault",
+      "field": "width",
+      "actual": 96.6875,
+      "expected": 96.6875,
+      "scale": 0.3159722222222222,
+      "delta": 0,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-ornament:memory-vault",
+      "field": "height",
+      "actual": 118.806,
+      "expected": 118.80555555555556,
+      "scale": 0.3159722222222222,
+      "delta": 0.00044444444444025066,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:memory-vault",
+      "field": "left",
+      "actual": 920.969,
+      "expected": 920.96875,
+      "scale": 0.3159722222222222,
+      "delta": 0.0002500000000509317,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-ornament:memory-vault",
+      "field": "top",
+      "actual": 406.271,
+      "expected": 406.2712130534406,
+      "scale": 0.3159722222222222,
+      "delta": 0.000213053440575095,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "imageWidth",
+      "actual": 167.419,
+      "expected": 167.41868512110727,
+      "scale": 0.10899653979238755,
+      "delta": 0.0003148788927376245,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "imageHeight",
+      "actual": 111.612,
+      "expected": 111.61245674740485,
+      "scale": 0.10899653979238755,
+      "delta": 0.0004567474048542408,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "width",
+      "actual": 167.419,
+      "expected": 167.41868512110727,
+      "scale": 0.10899653979238755,
+      "delta": 0.0003148788927376245,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "height",
+      "actual": 111.612,
+      "expected": 111.61245674740485,
+      "scale": 0.10899653979238755,
+      "delta": 0.0004567474048542408,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "left",
+      "actual": 1823.61,
+      "expected": 1823.606401384083,
+      "scale": 0.10899653979238755,
+      "delta": 0.003598615916871495,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-034",
+      "field": "top",
+      "actual": 504.014,
+      "expected": 504.01370197993515,
+      "scale": 0.10899653979238755,
+      "delta": 0.00029802006486079335,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-032",
+      "field": "imageWidth",
+      "actual": 334.798,
+      "expected": 334.7976878612717,
+      "scale": 0.23121387283236997,
+      "delta": 0.00031213872830448963,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-032",
+      "field": "imageHeight",
+      "actual": 251.098,
+      "expected": 251.09826589595377,
+      "scale": 0.23121387283236997,
+      "delta": 0.00026589595375980934,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-032",
+      "field": "width",
+      "actual": 83.6994,
+      "expected": 83.69942196531792,
+      "scale": 0.23121387283236997,
+      "delta": 0.000021965317927197248,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-032",
+      "field": "height",
+      "actual": 83.6994,
+      "expected": 83.69942196531792,
+      "scale": 0.23121387283236997,
+      "delta": 0.000021965317927197248,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-032",
+      "field": "left",
+      "actual": 824.335,
+      "expected": 824.335260115607,
+      "scale": 0.23121387283236997,
+      "delta": 0.000260115606920408,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-032",
+      "field": "top",
+      "actual": 566.772,
+      "expected": 566.7719228226073,
+      "scale": 0.23121387283236997,
+      "delta": 0.00007717739276813518,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-029",
+      "field": "imageWidth",
+      "actual": 206.035,
+      "expected": 206.03548616039745,
+      "scale": 0.1341376863023421,
+      "delta": 0.0004861603974575246,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-029",
+      "field": "imageHeight",
+      "actual": 137.357,
+      "expected": 137.3569907735983,
+      "scale": 0.1341376863023421,
+      "delta": 0.000009226401687101315,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-029",
+      "field": "width",
+      "actual": 206.035,
+      "expected": 206.03548616039745,
+      "scale": 0.1341376863023421,
+      "delta": 0.0004861603974575246,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-029",
+      "field": "height",
+      "actual": 137.357,
+      "expected": 137.3569907735983,
+      "scale": 0.1341376863023421,
+      "delta": 0.000009226401687101315,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-029",
+      "field": "left",
+      "actual": 1397.05,
+      "expected": 1397.0493257629523,
+      "scale": 0.1341376863023421,
+      "delta": 0.0006742370476331416,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-029",
+      "field": "top",
+      "actual": 597.376,
+      "expected": 597.3755895701759,
+      "scale": 0.1341376863023421,
+      "delta": 0.0004104298241145443,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-033",
+      "field": "imageWidth",
+      "actual": 367.371,
+      "expected": 367.3709198813057,
+      "scale": 0.2537091988130564,
+      "delta": 0.00008011869425672558,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-033",
+      "field": "imageHeight",
+      "actual": 275.528,
+      "expected": 275.5281899109793,
+      "scale": 0.2537091988130564,
+      "delta": 0.00018991097925891154,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-033",
+      "field": "width",
+      "actual": 91.8427,
+      "expected": 91.84272997032643,
+      "scale": 0.2537091988130564,
+      "delta": 0.000029970326437478434,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-033",
+      "field": "height",
+      "actual": 88.2908,
+      "expected": 88.29080118694364,
+      "scale": 0.2537091988130564,
+      "delta": 0.0000011869436349343232,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-033",
+      "field": "left",
+      "actual": 1626.41,
+      "expected": 1626.4146884272998,
+      "scale": 0.2537091988130564,
+      "delta": 0.004688427299697651,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-033",
+      "field": "top",
+      "actual": 744.068,
+      "expected": 744.068155167614,
+      "scale": 0.2537091988130564,
+      "delta": 0.00015516761402523116,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-069",
+      "field": "imageWidth",
+      "actual": 408.19,
+      "expected": 408.1899109792285,
+      "scale": 0.2818991097922849,
+      "delta": 0.00008902077149741672,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-069",
+      "field": "imageHeight",
+      "actual": 306.142,
+      "expected": 306.1424332344214,
+      "scale": 0.2818991097922849,
+      "delta": 0.00043323442139353574,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-069",
+      "field": "width",
+      "actual": 102.047,
+      "expected": 102.04747774480713,
+      "scale": 0.2818991097922849,
+      "delta": 0.00047774480712803324,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-069",
+      "field": "height",
+      "actual": 98.1009,
+      "expected": 98.10089020771514,
+      "scale": 0.2818991097922849,
+      "delta": 0.00000979228485675776,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-069",
+      "field": "left",
+      "actual": 1741.02,
+      "expected": 1741.0163204747773,
+      "scale": 0.2818991097922849,
+      "delta": 0.0036795252226511366,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-069",
+      "field": "top",
+      "actual": 846.754,
+      "expected": 846.7538391878188,
+      "scale": 0.2818991097922849,
+      "delta": 0.000160812181206893,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-021",
+      "field": "imageWidth",
+      "actual": 326.552,
+      "expected": 326.55192878338283,
+      "scale": 0.2255192878338279,
+      "delta": 0.00007121661718656469,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-021",
+      "field": "imageHeight",
+      "actual": 244.914,
+      "expected": 244.9139465875371,
+      "scale": 0.2255192878338279,
+      "delta": 0.00005341246287571266,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-021",
+      "field": "width",
+      "actual": 81.638,
+      "expected": 81.63798219584571,
+      "scale": 0.2255192878338279,
+      "delta": 0.000017804154296641173,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-021",
+      "field": "height",
+      "actual": 78.4807,
+      "expected": 78.48071216617211,
+      "scale": 0.2255192878338279,
+      "delta": 0.000012166172112415552,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-021",
+      "field": "left",
+      "actual": 1751.81,
+      "expected": 1751.813056379822,
+      "scale": 0.2255192878338279,
+      "delta": 0.0030563798220555327,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-021",
+      "field": "top",
+      "actual": 925.303,
+      "expected": 925.302807141177,
+      "scale": 0.2255192878338279,
+      "delta": 0.00019285882297026546,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-056",
+      "field": "imageWidth",
+      "actual": 376.647,
+      "expected": 376.6473988439307,
+      "scale": 0.2601156069364162,
+      "delta": 0.00039884393072497915,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-056",
+      "field": "imageHeight",
+      "actual": 282.486,
+      "expected": 282.485549132948,
+      "scale": 0.2601156069364162,
+      "delta": 0.0004508670519953739,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-056",
+      "field": "width",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-056",
+      "field": "height",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-056",
+      "field": "left",
+      "actual": 1343.63,
+      "expected": 1343.6271676300578,
+      "scale": 0.2601156069364162,
+      "delta": 0.0028323699423253856,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-056",
+      "field": "top",
+      "actual": 1125.3,
+      "expected": 1125.3017781829103,
+      "scale": 0.2601156069364162,
+      "delta": 0.001778182910356918,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-018",
+      "field": "imageWidth",
+      "actual": 418.497,
+      "expected": 418.4971098265896,
+      "scale": 0.28901734104046245,
+      "delta": 0.00010982658960756453,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-018",
+      "field": "imageHeight",
+      "actual": 313.873,
+      "expected": 313.8728323699422,
+      "scale": 0.28901734104046245,
+      "delta": 0.00016763005777420403,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-018",
+      "field": "width",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-018",
+      "field": "height",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-018",
+      "field": "left",
+      "actual": 1337.92,
+      "expected": 1337.9190751445087,
+      "scale": 0.28901734104046245,
+      "delta": 0.0009248554913483531,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-018",
+      "field": "top",
+      "actual": 1155.57,
+      "expected": 1155.5677356638996,
+      "scale": 0.28901734104046245,
+      "delta": 0.0022643361003247264,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "imageWidth",
+      "actual": 716.587,
+      "expected": 716.5870307167236,
+      "scale": 0.4948805460750853,
+      "delta": 0.00003071672358601063,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "imageHeight",
+      "actual": 537.44,
+      "expected": 537.4402730375426,
+      "scale": 0.4948805460750853,
+      "delta": 0.0002730375425699094,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "width",
+      "actual": 179.147,
+      "expected": 179.1467576791809,
+      "scale": 0.4948805460750853,
+      "delta": 0.00024232081909758563,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "height",
+      "actual": 179.147,
+      "expected": 179.1467576791809,
+      "scale": 0.4948805460750853,
+      "delta": 0.00024232081909758563,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "left",
+      "actual": 1704.19,
+      "expected": 1704.189419795222,
+      "scale": 0.4948805460750853,
+      "delta": 0.0005802047780889552,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-020",
+      "field": "top",
+      "actual": 1154.01,
+      "expected": 1154.0143971086034,
+      "scale": 0.4948805460750853,
+      "delta": 0.004397108603370725,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "imageWidth",
+      "actual": 255.789,
+      "expected": 255.78947368421055,
+      "scale": 0.1665296052631579,
+      "delta": 0.0004736842105614869,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "imageHeight",
+      "actual": 170.526,
+      "expected": 170.5263157894737,
+      "scale": 0.1665296052631579,
+      "delta": 0.00031578947368871013,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "width",
+      "actual": 255.789,
+      "expected": 255.78947368421055,
+      "scale": 0.1665296052631579,
+      "delta": 0.0004736842105614869,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "height",
+      "actual": 170.526,
+      "expected": 170.5263157894737,
+      "scale": 0.1665296052631579,
+      "delta": 0.00031578947368871013,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "left",
+      "actual": 2011.03,
+      "expected": 2011.0310444078948,
+      "scale": 0.1665296052631579,
+      "delta": 0.0010444078948239621,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-004",
+      "field": "top",
+      "actual": 1825.7,
+      "expected": 1825.7049965175681,
+      "scale": 0.1665296052631579,
+      "delta": 0.004996517568088166,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "imageWidth",
+      "actual": 326.552,
+      "expected": 326.55192878338283,
+      "scale": 0.2255192878338279,
+      "delta": 0.00007121661718656469,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "imageHeight",
+      "actual": 244.914,
+      "expected": 244.9139465875371,
+      "scale": 0.2255192878338279,
+      "delta": 0.00005341246287571266,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "width",
+      "actual": 81.638,
+      "expected": 81.63798219584571,
+      "scale": 0.2255192878338279,
+      "delta": 0.000017804154296641173,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "height",
+      "actual": 78.4807,
+      "expected": 78.48071216617211,
+      "scale": 0.2255192878338279,
+      "delta": 0.000012166172112415552,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "left",
+      "actual": 1987.81,
+      "expected": 1987.813056379822,
+      "scale": 0.2255192878338279,
+      "delta": 0.0030563798220555327,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-046",
+      "field": "top",
+      "actual": 2016.25,
+      "expected": 2016.2451890808668,
+      "scale": 0.2255192878338279,
+      "delta": 0.004810919133205971,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-043",
+      "field": "imageWidth",
+      "actual": 141.384,
+      "expected": 141.38398018166805,
+      "scale": 0.10776218001651529,
+      "delta": 0.00001981833193553939,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-043",
+      "field": "imageHeight",
+      "actual": 129.207,
+      "expected": 129.20685383980182,
+      "scale": 0.10776218001651529,
+      "delta": 0.00014616019817026427,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-043",
+      "field": "width",
+      "actual": 141.384,
+      "expected": 141.38398018166805,
+      "scale": 0.10776218001651529,
+      "delta": 0.00001981833193553939,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-043",
+      "field": "height",
+      "actual": 129.207,
+      "expected": 129.20685383980182,
+      "scale": 0.10776218001651529,
+      "delta": 0.00014616019817026427,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-043",
+      "field": "left",
+      "actual": 2733.15,
+      "expected": 2733.146366639141,
+      "scale": 0.10776218001651529,
+      "delta": 0.0036333608591121447,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-043",
+      "field": "top",
+      "actual": 2406.23,
+      "expected": 2406.230381476699,
+      "scale": 0.10776218001651529,
+      "delta": 0.00038147669920363114,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-044",
+      "field": "imageWidth",
+      "actual": 424.118,
+      "expected": 424.1183431952663,
+      "scale": 0.29289940828402367,
+      "delta": 0.00034319526628223684,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-044",
+      "field": "imageHeight",
+      "actual": 318.089,
+      "expected": 318.0887573964497,
+      "scale": 0.29289940828402367,
+      "delta": 0.00024260355030492065,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-044",
+      "field": "width",
+      "actual": 103.686,
+      "expected": 103.68639053254438,
+      "scale": 0.29289940828402367,
+      "delta": 0.0003905325443724905,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-044",
+      "field": "height",
+      "actual": 106.03,
+      "expected": 106.02958579881657,
+      "scale": 0.29289940828402367,
+      "delta": 0.0004142011834318282,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-044",
+      "field": "left",
+      "actual": 2783.45,
+      "expected": 2783.449704142012,
+      "scale": 0.29289940828402367,
+      "delta": 0.0002958579880214529,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-044",
+      "field": "top",
+      "actual": 2502.34,
+      "expected": 2502.340252175032,
+      "scale": 0.29289940828402367,
+      "delta": 0.0002521750320738647,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-063",
+      "field": "imageWidth",
+      "actual": 376.647,
+      "expected": 376.6473988439307,
+      "scale": 0.2601156069364162,
+      "delta": 0.00039884393072497915,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-063",
+      "field": "imageHeight",
+      "actual": 282.486,
+      "expected": 282.485549132948,
+      "scale": 0.2601156069364162,
+      "delta": 0.0004508670519953739,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-063",
+      "field": "width",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-063",
+      "field": "height",
+      "actual": 94.1618,
+      "expected": 94.16184971098268,
+      "scale": 0.2601156069364162,
+      "delta": 0.00004971098267958496,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-063",
+      "field": "left",
+      "actual": 2912.63,
+      "expected": 2912.627167630058,
+      "scale": 0.2601156069364162,
+      "delta": 0.002832369942098012,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-063",
+      "field": "top",
+      "actual": 2602.26,
+      "expected": 2602.261101786854,
+      "scale": 0.2601156069364162,
+      "delta": 0.0011017868537237518,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-045",
+      "field": "imageWidth",
+      "actual": 692.522,
+      "expected": 692.5217391304348,
+      "scale": 0.4782608695652174,
+      "delta": 0.00026086956529525196,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-045",
+      "field": "imageHeight",
+      "actual": 519.391,
+      "expected": 519.3913043478261,
+      "scale": 0.4782608695652174,
+      "delta": 0.00030434782615884615,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-045",
+      "field": "width",
+      "actual": 173.13,
+      "expected": 173.1304347826087,
+      "scale": 0.4782608695652174,
+      "delta": 0.0004347826086927853,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-045",
+      "field": "height",
+      "actual": 173.13,
+      "expected": 173.1304347826087,
+      "scale": 0.4782608695652174,
+      "delta": 0.0004347826086927853,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-045",
+      "field": "left",
+      "actual": 2854.63,
+      "expected": 2854.6304347826085,
+      "scale": 0.4782608695652174,
+      "delta": 0.0004347826084085682,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-045",
+      "field": "top",
+      "actual": 2608.34,
+      "expected": 2608.3373853240937,
+      "scale": 0.4782608695652174,
+      "delta": 0.0026146759064431535,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-027",
+      "field": "imageWidth",
+      "actual": 334.798,
+      "expected": 334.7976878612717,
+      "scale": 0.23121387283236997,
+      "delta": 0.00031213872830448963,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-027",
+      "field": "imageHeight",
+      "actual": 251.098,
+      "expected": 251.09826589595377,
+      "scale": 0.23121387283236997,
+      "delta": 0.00026589595375980934,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-027",
+      "field": "width",
+      "actual": 83.6994,
+      "expected": 83.69942196531792,
+      "scale": 0.23121387283236997,
+      "delta": 0.000021965317927197248,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-027",
+      "field": "height",
+      "actual": 83.6994,
+      "expected": 83.69942196531792,
+      "scale": 0.23121387283236997,
+      "delta": 0.000021965317927197248,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-027",
+      "field": "left",
+      "actual": 4974.34,
+      "expected": 4974.335260115607,
+      "scale": 0.23121387283236997,
+      "delta": 0.004739884393529792,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-027",
+      "field": "top",
+      "actual": 1005.56,
+      "expected": 1005.5578966311575,
+      "scale": 0.23121387283236997,
+      "delta": 0.0021033688424267893,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-064",
+      "field": "imageWidth",
+      "actual": 418.497,
+      "expected": 418.4971098265896,
+      "scale": 0.28901734104046245,
+      "delta": 0.00010982658960756453,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-064",
+      "field": "imageHeight",
+      "actual": 313.873,
+      "expected": 313.8728323699422,
+      "scale": 0.28901734104046245,
+      "delta": 0.00016763005777420403,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-064",
+      "field": "width",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-064",
+      "field": "height",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-064",
+      "field": "left",
+      "actual": 5192.92,
+      "expected": 5192.9190751445085,
+      "scale": 0.28901734104046245,
+      "delta": 0.0009248554915757268,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-064",
+      "field": "top",
+      "actual": 1022.5,
+      "expected": 1022.4980024304568,
+      "scale": 0.28901734104046245,
+      "delta": 0.0019975695431639906,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-047",
+      "field": "imageWidth",
+      "actual": 167.419,
+      "expected": 167.41868512110727,
+      "scale": 0.10899653979238755,
+      "delta": 0.0003148788927376245,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-047",
+      "field": "imageHeight",
+      "actual": 111.612,
+      "expected": 111.61245674740485,
+      "scale": 0.10899653979238755,
+      "delta": 0.0004567474048542408,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-047",
+      "field": "width",
+      "actual": 167.419,
+      "expected": 167.41868512110727,
+      "scale": 0.10899653979238755,
+      "delta": 0.0003148788927376245,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-047",
+      "field": "height",
+      "actual": 111.612,
+      "expected": 111.61245674740485,
+      "scale": 0.10899653979238755,
+      "delta": 0.0004567474048542408,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-047",
+      "field": "left",
+      "actual": 5718.61,
+      "expected": 5718.606401384083,
+      "scale": 0.10899653979238755,
+      "delta": 0.0035986159164167475,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-047",
+      "field": "top",
+      "actual": 1075.3,
+      "expected": 1075.295832585577,
+      "scale": 0.10899653979238755,
+      "delta": 0.0041674144229091326,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-049",
+      "field": "imageWidth",
+      "actual": 418.497,
+      "expected": 418.4971098265896,
+      "scale": 0.28901734104046245,
+      "delta": 0.00010982658960756453,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-049",
+      "field": "imageHeight",
+      "actual": 313.873,
+      "expected": 313.8728323699422,
+      "scale": 0.28901734104046245,
+      "delta": 0.00016763005777420403,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-049",
+      "field": "width",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-049",
+      "field": "height",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-049",
+      "field": "left",
+      "actual": 5137.92,
+      "expected": 5137.9190751445085,
+      "scale": 0.28901734104046245,
+      "delta": 0.0009248554915757268,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-049",
+      "field": "top",
+      "actual": 1105.67,
+      "expected": 1105.6665857013586,
+      "scale": 0.28901734104046245,
+      "delta": 0.0034142986414735788,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-058",
+      "field": "imageWidth",
+      "actual": 418.497,
+      "expected": 418.4971098265896,
+      "scale": 0.28901734104046245,
+      "delta": 0.00010982658960756453,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-058",
+      "field": "imageHeight",
+      "actual": 313.873,
+      "expected": 313.8728323699422,
+      "scale": 0.28901734104046245,
+      "delta": 0.00016763005777420403,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-058",
+      "field": "width",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-058",
+      "field": "height",
+      "actual": 104.624,
+      "expected": 104.6242774566474,
+      "scale": 0.28901734104046245,
+      "delta": 0.00027745664741019027,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-058",
+      "field": "left",
+      "actual": 4717.92,
+      "expected": 4717.9190751445085,
+      "scale": 0.28901734104046245,
+      "delta": 0.0009248554915757268,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-058",
+      "field": "top",
+      "actual": 1242.75,
+      "expected": 1242.7513539892584,
+      "scale": 0.28901734104046245,
+      "delta": 0.0013539892584049085,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-024",
+      "field": "imageWidth",
+      "actual": 141.384,
+      "expected": 141.38398018166805,
+      "scale": 0.10776218001651529,
+      "delta": 0.00001981833193553939,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-024",
+      "field": "imageHeight",
+      "actual": 129.207,
+      "expected": 129.20685383980182,
+      "scale": 0.10776218001651529,
+      "delta": 0.00014616019817026427,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-024",
+      "field": "width",
+      "actual": 141.384,
+      "expected": 141.38398018166805,
+      "scale": 0.10776218001651529,
+      "delta": 0.00001981833193553939,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-024",
+      "field": "height",
+      "actual": 129.207,
+      "expected": 129.20685383980182,
+      "scale": 0.10776218001651529,
+      "delta": 0.00014616019817026427,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-024",
+      "field": "left",
+      "actual": 4631.15,
+      "expected": 4631.146366639141,
+      "scale": 0.10776218001651529,
+      "delta": 0.0036333608586573973,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-024",
+      "field": "top",
+      "actual": 1311.27,
+      "expected": 1311.2729644825522,
+      "scale": 0.10776218001651529,
+      "delta": 0.002964482552215486,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-070",
+      "field": "imageWidth",
+      "actual": 326.552,
+      "expected": 326.55192878338283,
+      "scale": 0.2255192878338279,
+      "delta": 0.00007121661718656469,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-070",
+      "field": "imageHeight",
+      "actual": 244.914,
+      "expected": 244.9139465875371,
+      "scale": 0.2255192878338279,
+      "delta": 0.00005341246287571266,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-070",
+      "field": "width",
+      "actual": 81.638,
+      "expected": 81.63798219584571,
+      "scale": 0.2255192878338279,
+      "delta": 0.000017804154296641173,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-070",
+      "field": "height",
+      "actual": 78.4807,
+      "expected": 78.48071216617211,
+      "scale": 0.2255192878338279,
+      "delta": 0.000012166172112415552,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-070",
+      "field": "left",
+      "actual": 4521.81,
+      "expected": 4521.813056379822,
+      "scale": 0.2255192878338279,
+      "delta": 0.003056379821828159,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-070",
+      "field": "top",
+      "actual": 1368.68,
+      "expected": 1368.6773924405359,
+      "scale": 0.2255192878338279,
+      "delta": 0.0026075594641952193,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-025",
+      "field": "imageWidth",
+      "actual": 610.314,
+      "expected": 610.314049586777,
+      "scale": 0.42148760330578516,
+      "delta": 0.000049586776981414005,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-025",
+      "field": "imageHeight",
+      "actual": 457.736,
+      "expected": 457.7355371900827,
+      "scale": 0.42148760330578516,
+      "delta": 0.0004628099172805378,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-025",
+      "field": "width",
+      "actual": 171.124,
+      "expected": 171.12396694214877,
+      "scale": 0.42148760330578516,
+      "delta": 0.00003305785122620364,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-025",
+      "field": "height",
+      "actual": 152.579,
+      "expected": 152.57851239669424,
+      "scale": 0.42148760330578516,
+      "delta": 0.0004876033057712448,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-025",
+      "field": "left",
+      "actual": 4794.54,
+      "expected": 4794.5413223140495,
+      "scale": 0.42148760330578516,
+      "delta": 0.0013223140495028929,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-025",
+      "field": "top",
+      "actual": 1312.07,
+      "expected": 1312.0704481269627,
+      "scale": 0.42148760330578516,
+      "delta": 0.0004481269627376605,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-017",
+      "field": "imageWidth",
+      "actual": 228.928,
+      "expected": 228.92831795599716,
+      "scale": 0.149041873669269,
+      "delta": 0.0003179559971613344,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-017",
+      "field": "imageHeight",
+      "actual": 152.619,
+      "expected": 152.61887863733145,
+      "scale": 0.149041873669269,
+      "delta": 0.00012136266855122813,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-017",
+      "field": "width",
+      "actual": 228.928,
+      "expected": 228.92831795599716,
+      "scale": 0.149041873669269,
+      "delta": 0.0003179559971613344,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-017",
+      "field": "height",
+      "actual": 152.619,
+      "expected": 152.61887863733145,
+      "scale": 0.149041873669269,
+      "delta": 0.00012136266855122813,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-017",
+      "field": "left",
+      "actual": 4410.61,
+      "expected": 4410.610361958836,
+      "scale": 0.149041873669269,
+      "delta": 0.00036195883603795664,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-017",
+      "field": "top",
+      "actual": 1470.39,
+      "expected": 1470.3903167329943,
+      "scale": 0.149041873669269,
+      "delta": 0.0003167329941788921,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-048",
+      "field": "imageWidth",
+      "actual": 228.928,
+      "expected": 228.92831795599716,
+      "scale": 0.149041873669269,
+      "delta": 0.0003179559971613344,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-048",
+      "field": "imageHeight",
+      "actual": 152.619,
+      "expected": 152.61887863733145,
+      "scale": 0.149041873669269,
+      "delta": 0.00012136266855122813,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-048",
+      "field": "width",
+      "actual": 228.928,
+      "expected": 228.92831795599716,
+      "scale": 0.149041873669269,
+      "delta": 0.0003179559971613344,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-048",
+      "field": "height",
+      "actual": 152.619,
+      "expected": 152.61887863733145,
+      "scale": 0.149041873669269,
+      "delta": 0.00012136266855122813,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-048",
+      "field": "left",
+      "actual": 5310.61,
+      "expected": 5310.610361958836,
+      "scale": 0.149041873669269,
+      "delta": 0.00036195883603795664,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-048",
+      "field": "top",
+      "actual": 1680.89,
+      "expected": 1680.8928688738283,
+      "scale": 0.149041873669269,
+      "delta": 0.0028688738282198756,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-068",
+      "field": "imageWidth",
+      "actual": 326.552,
+      "expected": 326.55192878338283,
+      "scale": 0.2255192878338279,
+      "delta": 0.00007121661718656469,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-068",
+      "field": "imageHeight",
+      "actual": 244.914,
+      "expected": 244.9139465875371,
+      "scale": 0.2255192878338279,
+      "delta": 0.00005341246287571266,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-068",
+      "field": "width",
+      "actual": 81.638,
+      "expected": 81.63798219584571,
+      "scale": 0.2255192878338279,
+      "delta": 0.000017804154296641173,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-068",
+      "field": "height",
+      "actual": 78.4807,
+      "expected": 78.48071216617211,
+      "scale": 0.2255192878338279,
+      "delta": 0.000012166172112415552,
+      "tolerance": 0.000050100000000000005
+    },
+    {
+      "id": "exterior-v76-068",
+      "field": "left",
+      "actual": 4831.81,
+      "expected": 4831.813056379822,
+      "scale": 0.2255192878338279,
+      "delta": 0.003056379821828159,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-068",
+      "field": "top",
+      "actual": 1761,
+      "expected": 1761.0036749046512,
+      "scale": 0.2255192878338279,
+      "delta": 0.003674904651234101,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-050",
+      "field": "imageWidth",
+      "actual": 542.501,
+      "expected": 542.5013774104683,
+      "scale": 0.3746556473829201,
+      "delta": 0.0003774104683316182,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-050",
+      "field": "imageHeight",
+      "actual": 406.876,
+      "expected": 406.87603305785126,
+      "scale": 0.3746556473829201,
+      "delta": 0.00003305785128304706,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-050",
+      "field": "width",
+      "actual": 152.11,
+      "expected": 152.11019283746558,
+      "scale": 0.3746556473829201,
+      "delta": 0.00019283746556197912,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-050",
+      "field": "height",
+      "actual": 135.625,
+      "expected": 135.62534435261708,
+      "scale": 0.3746556473829201,
+      "delta": 0.00034435261707699283,
+      "tolerance": 0.0005001
+    },
+    {
+      "id": "exterior-v76-050",
+      "field": "left",
+      "actual": 5382.26,
+      "expected": 5382.258953168044,
+      "scale": 0.3746556473829201,
+      "delta": 0.001046831956045935,
+      "tolerance": 0.0050001
+    },
+    {
+      "id": "exterior-v76-050",
+      "field": "top",
+      "actual": 2047.23,
+      "expected": 2047.234518299579,
+      "scale": 0.3746556473829201,
+      "delta": 0.004518299578876395,
+      "tolerance": 0.0050001
+    }
+  ],
+  "observations": [
+    {
+      "itemId": "exterior-v76-004",
+      "from": {
+        "x": 1280,
+        "y": 4480
+      },
+      "target": {
+        "x": 2150,
+        "y": 3277.704054597637
+      },
+      "rejected": [
+        {
+          "target": {
+            "x": 2150,
+            "y": 3539
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 2085,
+            "y": 3539
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 2215,
+            "y": 3539
+          },
+          "reason": "full-body-clearance"
+        }
+      ],
+      "clearance": {
+        "halfWidth": 36,
+        "halfDepth": 26
+      },
+      "distanceToItem": 191.29594540236303
+    },
+    {
+      "itemId": "exterior-v76-019",
+      "from": {
+        "x": 2155,
+        "y": 3279
+      },
+      "target": {
+        "x": 2845,
+        "y": 2126
+      },
+      "rejected": [],
+      "clearance": {
+        "halfWidth": 36,
+        "halfDepth": 26
+      },
+      "distanceToItem": 70
+    },
+    {
+      "itemId": "exterior-v76-029",
+      "from": {
+        "x": 2848,
+        "y": 2120
+      },
+      "target": {
+        "x": 1290,
+        "y": 1511
+      },
+      "rejected": [
+        {
+          "target": {
+            "x": 1500,
+            "y": 1336
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 1435,
+            "y": 1336
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 1565,
+            "y": 1336
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 1500,
+            "y": 1103.9473034673238
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 1450,
+            "y": 1103.9473034673238
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 1550,
+            "y": 1103.9473034673238
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 1358.011710432931,
+            "y": 1231
+          },
+          "reason": "no-connected-route"
+        },
+        {
+          "target": {
+            "x": 1641.988289567069,
+            "y": 1231
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 1358.011710432931,
+            "y": 1186
+          },
+          "reason": "no-connected-route"
+        },
+        {
+          "target": {
+            "x": 1641.988289567069,
+            "y": 1186
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 1500,
+            "y": 1391
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 1360,
+            "y": 1376
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 1640,
+            "y": 1376
+          },
+          "reason": "full-body-clearance"
+        }
+      ],
+      "clearance": {
+        "halfWidth": 36,
+        "halfDepth": 26
+      },
+      "distanceToItem": 322.684056005251
+    },
+    {
+      "itemId": "exterior-v76-043",
+      "from": {
+        "x": 1288,
+        "y": 1512
+      },
+      "target": {
+        "x": 2739,
+        "y": 4478
+      },
+      "rejected": [
+        {
+          "target": {
+            "x": 2804,
+            "y": 4478
+          },
+          "reason": "full-body-clearance"
+        }
+      ],
+      "clearance": {
+        "halfWidth": 36,
+        "halfDepth": 26
+      },
+      "distanceToItem": 95.524865872714
+    },
+    {
+      "itemId": "exterior-v76-048",
+      "from": {
+        "x": 2739,
+        "y": 4478
+      },
+      "target": {
+        "x": 5425,
+        "y": 3007.1636705192486
+      },
+      "rejected": [
+        {
+          "target": {
+            "x": 5425,
+            "y": 3250
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 5360,
+            "y": 3250
+          },
+          "reason": "full-body-clearance"
+        },
+        {
+          "target": {
+            "x": 5490,
+            "y": 3250
+          },
+          "reason": "full-body-clearance"
+        }
+      ],
+      "clearance": {
+        "halfWidth": 36,
+        "halfDepth": 26
+      },
+      "distanceToItem": 172.83632948075137
+    }
+  ],
+  "limits": "Four independently generated native PNGs, seventy solid exterior fixtures and four passive wall textiles. Five representative pockets reached by real keyboard, one mobile view; all43doors/tenregionthresholds/98continuousroutines are separate model gates, not each manually visited. Original civil furniture, no official canonical city plan or new loot/service. Source contact points measured visually; no raster edits or CSS rotations."
+}

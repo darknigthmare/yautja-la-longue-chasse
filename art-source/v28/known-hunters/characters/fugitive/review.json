@@ -1,0 +1,46 @@
+{
+  "verdict": "usable-for-review",
+  "reviewer": "modular_asset_audit",
+  "reviewKind": "self-review-plus-independent-second-reading",
+  "inspection": [
+    "Full sheet",
+    "Enlarged maximum recoil frame3",
+    "Enlarged low recovery frame4"
+  ],
+  "findings": [
+    "Six complete figures; distinct ready/recoil/maximum recoil/crouch/rise/ready return.",
+    "Two blades on each forearm remain attached to housings; no sword gripped in a hand.",
+    "One anatomical-right shoulder caster identifiable, following the official NECA frontal reference.",
+    "No obvious extra hand, missing limb or floating weapon."
+  ],
+  "reservations": [
+    "Near hand opens during maximum recoil despite prompt requesting curled fists; plausible response, deviation retained explicitly.",
+    "Exact digits, mask relief and blade projection not1:1 certified.",
+    "Body height and margins do not meet the prompt's maximum targets.",
+    "Opaque magenta varies rather than exact RGB255,0,255; runtime keying not tested here.",
+    "Maximum recoil to crouch is a strong reversal requiring timing review."
+  ],
+  "independentReview": {
+    "reviewer": "pit_animation_lab",
+    "date": "2026-09-05",
+    "inspection": "Full sheet and enlarged frame3",
+    "verdict": "usable-for-review",
+    "finding": "No new obvious anatomy/equipment blocker. Two blades per forearm point toward the hand, near hand partly open in3 is plausible; one right-shoulder caster. No exact digit or cinematic fidelity certification.",
+    "playbackVerified": false
+  },
+  "source": {
+    "path": "art-source/v28/known-hunters/sources/fugitive-hit-reaction.png",
+    "bytes": 2021581,
+    "sha256": "6cad1bfac5c15ab432b9aa045fb7dd36eaa8f357a3818a888346b79859d4dfce",
+    "width": 1536,
+    "height": 1024,
+    "channels": 3,
+    "hasAlpha": false
+  },
+  "registration": "art-source/v28/known-hunters/characters/fugitive/registration.json",
+  "reviewDate": "2026-09-05",
+  "fidelity1to1Certified": false,
+  "anatomyCertified": false,
+  "playbackVerified": false,
+  "gameplayApproved": false
+}

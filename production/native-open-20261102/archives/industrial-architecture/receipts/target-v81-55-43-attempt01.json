@@ -1,0 +1,299 @@
+{
+  "targetId": "target-v81-55-43",
+  "label": "entrée tunnel",
+  "attempt": 1,
+  "family": "tunnel-access",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "OMITTED_NEW_NATIVE_IMAGE",
+    "num_last_images_to_include": "OMITTED",
+    "requestedCanvas": [
+      1024,
+      1024
+    ],
+    "requestedMinimumEmptyMargin": 160,
+    "camera": "orthographic three-quarter elevation32degrees"
+  },
+  "prompt": "Create ONE original native standalone architecture game asset for an ancient alien hunter city. Realistic prerendered2.5D style, orthographicthreequarter view from32degrees above, warm upper-left keylight and neutralfill. Materials coherent with an angular industrial generator: charcoal weatheredbasalt slabs, thick patinatedbronze reinforcement ribs, wornbronze bevels, a few small recessed amberlightstrips. Matte physicalsurfaces with useful chunky detail, no brightcyan or blue, no ornatecastle or humansubway cues. Entire connectedobject shown at SMALLSCALE centered in a requested1024square true transparent RGBA PNG: object widthandheight at most65percent ofcanvas, aim160px empty alpha margin on EVERYside. Every foot, sill, roofcap, rearend and projection fullyincluded. No cropping or framefilling. No background scene, cliff, groundterrain tile, vignette, magenta/checkerboard, detachedcastshadow, labels/text, people, animals, duplicateviews, grids, UI orwatermark. SUBJECT: ONE THICK INDEPENDENT TUNNEL ENTRANCE MOUTH and short threshold. A broad rounded-angular basalt vault arch with patinatedbronze segmented innerlining, two squatbraced jambfeet and a shallow connected sill. Depth about25percent of its width, enough to see innerreveal and rightsidewall thickness, but NO corridorbody or recedinglongroof. Show the front empty opening as genuinely alpha-transparent air through the arch, not an opaqueblackfill or paintedbackdrop. One small amberpractical lamp recessedoneachinnerjamb, no energyfield, no actualdoorleaf, no stairs. Functional robust civil accessring with roundedarch profile, visibly different from a tall rectangulardoorportal or a shelterbuilding. Complete uncropped archcap, bothfootings and fullsill. Camera sees front and rightside. Singlewholeasset only, harmoniousmaterialfamily with a basalt/bronze tunneledpassage but this image is just its independentlydrawn entrance.",
+  "nativeSourcePath": "/workspace/generated_images/exec-c8da5958-8285-40be-975a-dcaefa20c7f0.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-55-43-entree-tunnel-native.png",
+  "referencesOpened": [
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v75/architecture/undercity-refuge.png",
+      "sha256": "3923720daf1bee1f3ecfc181597dd9b7689ab4b4a2e42da1ee2d51e40c5465c0",
+      "actuallyOpened": true
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v72/region-gateway-kit.png",
+      "sha256": "9f22da436027bd16dd4aac9c64c42d473afe5b7670f36172059db1d925d687dd",
+      "actuallyOpened": true
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v78/lower-quarter-ramp-front.png",
+      "sha256": "41ce9f8311df9d5fdfa34c8f2cadae6a56a949e3dd91f5f70b4ab1c73c9f4f20",
+      "actuallyOpened": true
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-310-generateur-native.png",
+      "sha256": "e32c32da91e1448a44099b905b1cc125541aed274e54cf1af7453b417da3958b",
+      "actuallyOpened": true
+    }
+  ],
+  "visualAssessment": {
+    "status": "CANDIDAT_NON_ADMIS",
+    "generatedResultActuallyViewed": true,
+    "nativeCopyActuallyOpened": true,
+    "initialFinding": "Whole thick shallow arch, independent construction, transparent hole and threshold; clearance and context not proven.",
+    "fullObjectVisible": true,
+    "oneConnectedArchitectureModuleObserved": true,
+    "notAtlasOrRepeatedViews": true,
+    "noVisibleSubstantiveClipping": true,
+    "requested160pxMarginSatisfied": false,
+    "requested1024DimensionsSatisfied": false,
+    "retryUsed": false,
+    "retryDecision": "No retry: both complete recognizable distinct objects, no clipping or repeated-object grid. Requested margins and faintalpha1/2noise remain explicit failures; no pixel editing.",
+    "observedConstruction": "Shallow independent rounded-angular stone/bronze arch with both feet, shallow sill and truly empty alpha opening, one amber lamp on each inner reveal.",
+    "continuityLimit": "No corridor body painted in this image. Pivot at sill and actual Yautja clearance remain unqualified."
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-c8da5958-8285-40be-975a-dcaefa20c7f0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "inspection": {
+    "targetId": "target-v81-55-43",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-55-43-entree-tunnel-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-c8da5958-8285-40be-975a-dcaefa20c7f0.png",
+    "bytes": 1521732,
+    "sha256": "5890107a3cefe673b65e746b9fc209362314d0176df0398df5a69365247d4886",
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 964237,
+    "alpha1or2Pixels": 13756,
+    "alpha1to8Pixels": 18110,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          0,
+          17,
+          1230,
+          1254
+        ],
+        "margins": [
+          0,
+          17,
+          24,
+          0
+        ],
+        "visiblePixels": 608279,
+        "edgeVisiblePixels": 76
+      },
+      "2": {
+        "bboxExclusive": [
+          89,
+          147,
+          1197,
+          1126
+        ],
+        "margins": [
+          89,
+          147,
+          57,
+          128
+        ],
+        "visiblePixels": 594523,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          91,
+          149,
+          1195,
+          1125
+        ],
+        "margins": [
+          91,
+          149,
+          59,
+          129
+        ],
+        "visiblePixels": 590169,
+        "edgeVisiblePixels": 0
+      },
+      "128": {
+        "bboxExclusive": [
+          91,
+          150,
+          1194,
+          1124
+        ],
+        "margins": [
+          91,
+          150,
+          60,
+          130
+        ],
+        "visiblePixels": 586048,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": true,
+    "diagnosticImageAnchor": {
+      "x": 642,
+      "y": 1124,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/42"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/42"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/42"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 55,
+      "line": 1630
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 47,
+        "idCell": {
+          "cell": "A47",
+          "value": "target-v81-55-43"
+        },
+        "labelCell": {
+          "cell": "D47",
+          "value": "entrée tunnel"
+        },
+        "historicalPresenceCell": {
+          "cell": "G47",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F47",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 47,
+        "idCell": {
+          "cell": "A47",
+          "value": "target-v81-55-43"
+        },
+        "labelCell": {
+          "cell": "C47",
+          "value": "entrée tunnel"
+        },
+        "historicalPresenceCell": {
+          "cell": "D47",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E47",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "specificAdmissionCriteria": [
+    "Montrer ouverture réellement vide/lisible, cadre, profondeur immédiate et seuil ; ne peindre ni panneau opaque ni fond de scène à la place du passage.",
+    "Conserver raccord visuel avec le tunnel mais livrer une ressource indépendante et son pivot de seuil.",
+    "Vérifier clearance du Yautja, masquage devant/derrière et accès dans les deux sens lors de l’intégration."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "alphaTopologyDiagnostic": {
+    "componentsAtAlphaGreater8": 29,
+    "largestAreas": [
+      590131,
+      6,
+      3,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "dominantComponentFraction": 0.9999356116637776,
+    "semanticObjectCountIsVisualNotComponentCount": true
+  },
+  "sha256AfterInspection": "5890107a3cefe673b65e746b9fc209362314d0176df0398df5a69365247d4886",
+  "sourceSha256AfterInspection": "5890107a3cefe673b65e746b9fc209362314d0176df0398df5a69365247d4886",
+  "status": "CANDIDAT_NON_ADMIS",
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT",
+    "ARCHITECTURE-ACCESS"
+  ],
+  "targetSpecificLimits": [
+    "One thick independent entrance arch with an alpha opening, not a full tunnel body.",
+    "Actual Yautja clearance, threshold pivot, occlusion and travel in both directions remain unqualified."
+  ],
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted.",
+  "independentParentReview": {
+    "nativeCopyActuallyOpened": true,
+    "status": "ASSISTANT_REVIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "notes": [
+      "One thick independent entrance arch with an alpha opening, not a full tunnel body.",
+      "Actual Yautja clearance, threshold pivot, occlusion and travel in both directions remain unqualified."
+    ]
+  }
+}

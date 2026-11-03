@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "stageId": "arena-169-extinction-front",
+  "workbookEvent": "10_VIE_DES_STAGES!A90:N90",
+  "workbookDescription": "Hydra non jouable derrière une plate-forme hors combat",
+  "sourceUrls": [
+    "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf",
+    "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/09/predator03.jpg"
+  ],
+  "references": [
+    {
+      "url": "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf",
+      "kind": "primary-original-manual-hosted-by-archive",
+      "publisher": "Electronic Arts / Fox Interactive",
+      "locator": "Printed page21; PDFpage10",
+      "localPath": "work-local/v61/references/avp-extinction-manual.pdf",
+      "visualReference": "work-local/v61/references/manual-hydra-detail-10.png",
+      "observed": "Named Hydra full body: upright heavy plated armor, broad shoulders, thick greaves/boots and back/shoulder equipment. Monochrome scan, small render; verifies class and silhouette, not exact colors or fine surface detail.",
+      "localSha256": "9f67bf4f91a9896add24bfb4035bf31a679830c2a9c84853274fa409c44c8400"
+    },
+    {
+      "url": "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/09/predator03.jpg",
+      "kind": "primary-game-render-reproduced-on-fan-reference-page",
+      "contextUrl": "https://www.avpgalaxy.net/games/avp-extinction/predators/",
+      "localPath": "work-local/v61/references/hydra-game-portrait.jpg",
+      "observed": "Original small color game render immediately before Hydra heading in inspected HTML; dark heavy armor, yellow ochre straps/bands and central chest inset, dorsal equipment. Matches manual silhouette. Fine anatomy and rear mechanical topology remain underdetermined.",
+      "localSha256": "cb5bf3ba5c914ec043b162b39900772e063a9b97927197b1156f4ab5058ea773"
+    }
+  ],
+  "loreLimits": [
+    "Actual Hydra class identity/silhouette replaces original maintenance prop; primary manual and small original game render are now visually inspected.",
+    "Source color render is only144x168. Ochre bands and dark armor are supported, but exact colors under neutral light, surface engravings and rear battery construction cannot be certified1:1.",
+    "Six stationary equipment-check poses are newly authored background animation, not ripped/reproduced game animation. No weapon is fired toward the duel.",
+    "Suppress this class representation when user-extinction-hydra is selected, to obey workbook duplicate-spectator rule."
+  ],
+  "artStatus": "native-art-accepted-runtime-qa-pending",
+  "assets": [
+    {
+      "id": "life-02",
+      "role": "hydra-calm-equipment-check",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected all six final native drawings. Broad armor/ochre panels and back missile battery follow inspected original small game render and EA manual, instead of V60 maintenance-machine substitute. Real elbow/wrist/neck changes depict calm equipment check; two complete arms and legs in each pose, fingers coherent at intended distant scale, no projectile or cast shadow. All feet and helmet crests visible; no silhouette intersects a cell boundary. Fine helmet sculpt and battery topology are reconstructed and not certified1:1.",
+      "prompt": "Use case: reference-faithful 2D painted videogame native animation sprite atlas. Create one true transparent PNG 1536 by 1024 pixels, EXACT 3 columns by 2 rows, SIX different fully articulated drawings of the same military HYDRA Predator from Aliens versus Predator: Extinction (2003), each isolated entirely inside its own 512x512 cell. The attached ORIGINAL game portrait and original EA/Fox manual illustration are authoritative identity references: follow their silhouette, helmet/head, bulky plated shoulder/chest armor, ribbed joints, gauntlets, greaves, heavy boots, small yellow ochre accents and back-mounted missile battery. This is not a dragon, maintenance machine, Blazer or generic hunter. Preserve reference shape instead of inventing extra shoulder cannons or rifles; no hand-held weapon, no cape, no fabricated insignia. Render the observed head as faithfully as the low resolution reference allows, no invented exposed jaw transformation or alternate mask. Three-quarter lateral view facing screen-left, neutral full-body sentry off the active fighting floor, entire same adult individual in every cell. Six-frame slow stationary equipment-check motion with real anatomical changes: 1 neutral arms lowered; 2 head starts turning left and left elbow bends; 3 left wrist raised near chest and right hand approaches wrist; 4 right fingers touch wrist with both elbows bent, head looks down; 5 hands separate with right elbow lowering and head rises; 6 hands return close to rest, slightly different shoulder settling pose. NO repeated identical poses, NO translation-only, NO mirror copies, NO brightness-only changes. Feet remain planted on exactly the same cell-local baseline y440 and body center x256; height maximum390 pixels, width maximum300; every edge has at least50 transparent pixels. Native painted detailed 2D realism, restrained matte gunmetal/olive with ochre elements visible in source, readable at small background scale, no toy/figurine style. No firing, projectile, energy, smoke, floating particles, floor, floor patch, cast shadow, environment, label, numbers, dividers or grid lines. Unassociated source manual text and its other units must NOT appear. True alpha around all six silhouettes and inside negative spaces, not a black or checkerboard background. Geometry adaptation into these six calm poses is original, but retain source identity and do not invent new equipment.",
+      "referencedImagePaths": [
+        "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v61/references/hydra-game-portrait.jpg",
+        "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v61/references/manual-hydra-detail-10.png"
+      ],
+      "repairPrompt": "Edit this native six-pose Hydra atlas. Keep all six distinct articulated poses and the exact same existing character identity, gear, color, facing, anatomy and true alpha. Correct ONLY the layout to a precise 3 columns by 2 rows of512x512cells in1536x1024. Each full figure must be REDRAWN SMALLER: max360 pixels HIGH from helmet top to boot soles (current figures nearly480px too large), center each at x256 local, both feet baseline y436 local. This leaves minimum76px clear alpha above and below each figure. Keep all shoulder battery tubes and dreadlocks fully visible. Every complete figure including equipment must fit in x80..432,y76..436 of its own cell. Current columns shifted off-center: fix centers to global256,768,1280. Do not add any extra object or glow. No ground shadow. No opaque black rectangle or checkerboard background. Preserve genuine transparent PNG and smooth native alpha edges. Six original distinct wrist-check drawings retained, no clone replacement.",
+      "transparentRequested": true,
+      "workspacePath": "work-local/v61/generated/arena-169-extinction-front/life-02-hydra.png",
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f27c-2525-7ea2-b002-3d890e2cc8f9/exec-6e416864-ab4d-413b-ba05-52df42eddf80.png",
+      "sha256": "081eb9a3c3cbe97f066435dfdfce3d906de44d59f74874549b2b5e34cad4b999",
+      "bytes": 1933241,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7403316497802734,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            191,
+            76,
+            229,
+            426
+          ],
+          "pivot": [
+            301.5,
+            502
+          ],
+          "margins": [
+            191,
+            76,
+            92,
+            10
+          ],
+          "maxEdgeAlpha": 0,
+          "opaquePixelCount": 63278,
+          "contentSha256": "363261032154b4e423663ceefff4e85c571e25c3fbe9af79eb4879d20c87ff33"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            138,
+            76,
+            238,
+            427
+          ],
+          "pivot": [
+            257,
+            503
+          ],
+          "margins": [
+            138,
+            76,
+            136,
+            9
+          ],
+          "maxEdgeAlpha": 1,
+          "opaquePixelCount": 60667,
+          "contentSha256": "0dc4bf9dbaffd5852246810013a57a3b5e4e6593050eb70122ec127f01b897f6"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            112,
+            79,
+            224,
+            423
+          ],
+          "pivot": [
+            217.5,
+            502
+          ],
+          "margins": [
+            112,
+            79,
+            176,
+            10
+          ],
+          "maxEdgeAlpha": 0,
+          "opaquePixelCount": 59009,
+          "contentSha256": "96cb7ab9534775e4d8244632bb856920f2ad30126ddc569acba6afc6d11cc791"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            185,
+            36,
+            234,
+            428
+          ],
+          "pivot": [
+            299.5,
+            464
+          ],
+          "margins": [
+            185,
+            36,
+            93,
+            48
+          ],
+          "maxEdgeAlpha": 0,
+          "opaquePixelCount": 61492,
+          "contentSha256": "b61394d55447f863c60e5d3758800e99ea4ff21ce9c63e59b38a30ae0a616ac3"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            134,
+            36,
+            252,
+            430
+          ],
+          "pivot": [
+            254,
+            466
+          ],
+          "margins": [
+            134,
+            36,
+            126,
+            46
+          ],
+          "maxEdgeAlpha": 1,
+          "opaquePixelCount": 63053,
+          "contentSha256": "945ee290d4201abb111d0dba38d93e9c0b1b86a342b1f928e6c496a1f905030f"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            103,
+            34,
+            235,
+            431
+          ],
+          "pivot": [
+            217.5,
+            465
+          ],
+          "margins": [
+            103,
+            34,
+            174,
+            47
+          ],
+          "maxEdgeAlpha": 0,
+          "opaquePixelCount": 66401,
+          "contentSha256": "ad3be44ae14014e7a6a97c8426129524a8a9adf2f4a9cf8416d7c6b94e91f051"
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "measurementsNote": "Alpha bounds and foot pivots use alpha>2; pixel data is never altered. extract() reads cells only into memory for hashing. Edge alpha<=1 is antialias residue, no anatomical silhouette intersects a border.",
+      "anchorKind": "ground-bottom",
+      "fps": 3,
+      "restFrame": 0,
+      "reducedMotionFrame": 0,
+      "placement": {
+        "x": 568,
+        "bottom": 355,
+        "height": 90,
+        "parallax": 0.05,
+        "renderPass": "P2",
+        "anchor": "world"
+      },
+      "placementStatus": "proposal-requires-real-renderer-review",
+      "activation": {
+        "kind": "ambient",
+        "excludedFighterIds": [
+          "user-extinction-hydra"
+        ]
+      },
+      "generationHistory": [
+        {
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f27c-2525-7ea2-b002-3d890e2cc8f9/exec-d107f9de-01dd-47be-81c4-2655020db125.png",
+          "sha256": "85c805965c2cbcd832f63268740e9f5793ed61d7c7cb9bd270d46788fd0a5fbb",
+          "status": "rejected-layout",
+          "reason": "Requested clear margins not met; generated correction improves separation."
+        },
+        {
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f27c-2525-7ea2-b002-3d890e2cc8f9/exec-6e416864-ab4d-413b-ba05-52df42eddf80.png",
+          "sha256": "081eb9a3c3cbe97f066435dfdfce3d906de44d59f74874549b2b5e34cad4b999",
+          "status": "accepted",
+          "reason": "Distinct complete silhouettes; measured border alpha at most1, cells separated and foot anchors supplied."
+        }
+      ],
+      "limitations": [
+        "Requested76px margins and360px body height were not matched exactly by generator. Actual measured margins and dimensions are retained honestly; complete silhouettes and empty borders are verified. Native PNG bytes unmodified.",
+        "Runtime placement, live cue behavior and public deployment are separate acceptance steps, not certified by this receipt."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "phase": "youth",
+  "checks": [
+    {
+      "id": "training-hall",
+      "kind": "civic",
+      "variant": "civic",
+      "atDoor": {
+        "x": 2236,
+        "y": 1873
+      },
+      "spawn": {
+        "x": 269,
+        "y": 236
+      },
+      "outside": {
+        "x": 2230,
+        "y": 1868
+      },
+      "routeDistance": 5821.9011259125045,
+      "input": "keyboard",
+      "dialogue": "ENTRAÎNEMENT\nInstructeur des terrasses\n\n« Présente-toi d’abord au chef du clan, dans la Citadelle au nord-est. Reviens me voir après cet accueil : nous parlerons de ta formation. »\n\nRejoins le chef du clan à la Citadelle, au nord-est de la cité, et parle-lui.\n\nAccueil original du clan, pas une preuve de formation. Les exercices se jouent dans le dojo, puis au camp.\n\nÉquipement de jeunesse : lame de poignet non acquise ; biomask non reçu. Aucun plasma, équipement adulte ou vaisseau accordé.\n\nLieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation.\n\nFormation préalable requise\nRevenir dans la salle"
+    },
+    {
+      "id": "market-armory",
+      "kind": "civic",
+      "variant": "civic",
+      "atDoor": {
+        "x": 1622,
+        "y": 2872
+      },
+      "spawn": {
+        "x": 269,
+        "y": 236
+      },
+      "outside": {
+        "x": 1610,
+        "y": 2876
+      },
+      "routeDistance": 2001.8480979114713,
+      "input": "gamepad",
+      "dialogue": "ÉQUIPEMENT\nArtisane du marché\n\n« Ton premier équipement viendra avec la formation. Observe les outils ; ils ne deviennent pas tiens par une simple visite. »\n\nLieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation.\n\nFormation préalable requise\nRevenir dans la salle"
+    },
+    {
+      "id": "throne-audience",
+      "kind": "civic",
+      "variant": "civic",
+      "atDoor": {
+        "x": 4509,
+        "y": 1045
+      },
+      "spawn": {
+        "x": 284,
+        "y": 236
+      },
+      "outside": {
+        "x": 4510,
+        "y": 1047
+      },
+      "routeDistance": 4423.01468946476,
+      "input": "keyboard",
+      "dialogue": "SOUVERAIN DE LA CITÉ\nAccueil du chef du clan\n\n« QA Nurserie V47, ton arrivée a été annoncée. La force seule ne suffit pas à servir le clan. Observe, écoute, puis rends-toi auprès de l’instructeur des terrasses. Ton apprentissage commence. »\n\nRejoins l’instructeur des terrasses, au centre de la cité, et parle-lui.\n\nAccueil original du clan, pas une preuve de formation. Les exercices se jouent dans le dojo, puis au camp.\n\nPrésente-toi au chef avant de rejoindre ton instructeur.\n\nRevenir dans la salle"
+    },
+    {
+      "id": "training-hall",
+      "kind": "civic",
+      "variant": "civic",
+      "atDoor": {
+        "x": 2236,
+        "y": 1865
+      },
+      "spawn": {
+        "x": 269,
+        "y": 236
+      },
+      "outside": {
+        "x": 2230,
+        "y": 1868
+      },
+      "routeDistance": 3531.7330574401653,
+      "input": "keyboard",
+      "dialogue": "ENTRAÎNEMENT\nInstructeur des terrasses\n\n« Le chef t’a accueilli. Avant de chasser, tu apprendras à te placer, à retenir un coup et à reconnaître une proie digne. Entre dans le dojo et exécute mes démonstrations. Ta première lame se mérite par les gestes ; l’armurerie et les épreuves du camp suivront. »\n\nLe maître t’attend : entre dans le dojo depuis son dialogue pour commencer les exercices.\n\nAccueil original du clan, pas une preuve de formation. Les exercices se jouent dans le dojo, puis au camp.\n\nEntrer dans le dojo avec le maître\n\nÉquipement de jeunesse : lame de poignet non acquise ; biomask non reçu. Aucun plasma, équipement adulte ou vaisseau accordé.\n\nLieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation.\n\nFormation préalable requise\nRevenir dans la salle"
+    }
+  ],
+  "errors": [],
+  "events": [
+    {
+      "at": "2026-10-01T01:57:17.604Z",
+      "kind": "navigation",
+      "url": "https://yautja-la-longue-chasse.vercel.app/"
+    },
+    {
+      "at": "2026-10-01T01:57:18.015Z",
+      "kind": "navigation",
+      "url": "https://yautja-la-longue-chasse.vercel.app/"
+    },
+    {
+      "at": "2026-10-01T01:57:18.491Z",
+      "kind": "navigation",
+      "url": "https://yautja-la-longue-chasse.vercel.app/"
+    },
+    {
+      "at": "2026-10-01T01:57:18.599Z",
+      "kind": "navigation",
+      "url": "https://yautja-la-longue-chasse.vercel.app/"
+    },
+    {
+      "at": "2026-10-01T01:59:16.611Z",
+      "kind": "navigation",
+      "url": "https://yautja-la-longue-chasse.vercel.app/"
+    },
+    {
+      "at": "2026-10-01T01:59:16.692Z",
+      "kind": "navigation",
+      "url": "https://yautja-la-longue-chasse.vercel.app/"
+    }
+  ],
+  "scope": "Actually played nursery QA archive; physical mentor before chief refusal, locked armory, chief then mentor, no fake training/equipment/proof; reload retains greetings. No real user saves.",
+  "release": "V65",
+  "deployment": {
+    "id": "dpl_AEiaWTqBjGRZ9iZjjPYp2snPEKfH",
+    "commit": "73c0f6e8fe5e0a1301c6aa9becb5a67f0fb34aa9",
+    "confirmation": "Release owner confirmed Vercel READY before these fresh browser recipes."
+  },
+  "reviewedAt": "2026-10-01T02:01:07.749Z",
+  "rawEvidence": "I:/CodexTemp/yautja-v64-20261001/public-v65/homeworld-youth/report.json",
+  "visualReview": {
+    "status": "REVIEWED",
+    "captures": [
+      {
+        "path": "I:/CodexTemp/yautja-v64-20261001/public-v65/homeworld-youth/4-training-hall-dialog.jpg",
+        "sha256": "f897c670e7ee890083ae7398d6a65226f0a774184a0ebae2411f6da15113664b"
+      }
+    ],
+    "observations": [
+      "Public mentor dialogue offers the dojo only after chief then mentor meetings.",
+      "No adult ship-training success notice remains in the youth conversation.",
+      "Required training still disables the adult service; the separate youth dojo entry remains visible."
+    ],
+    "limitations": [
+      "This recipe verifies four meetings, restrictions and reload, not a new full dojo/combat playthrough."
+    ]
+  },
+  "isolation": {
+    "freshBrowser": true,
+    "realUserSavesAccessed": false,
+    "runtimeModified": false,
+    "localEvidenceModified": false
+  },
+  "infrastructureNote": "An initial sandbox attempt was denied network access before page load; rerun used the explicit scoped network permission. That infrastructure refusal is not a gameplay failure."
+}

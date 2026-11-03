@@ -1,0 +1,755 @@
+{
+  "sourceCell": "05_MOVES_PROPOSES!F7",
+  "method": "Manual anatomical mask and two-foot ROIs, alpha>=128; fixed reference per page from actual action return, no per-pose body fitting. Source support plane is one pixel below last solid sole row. All pixels read-only.",
+  "records": [
+    {
+      "source": "art-source/v100/pit/scar/heavy-alpha/intake/001-scar-5h-right-alpha-original.png",
+      "sourceSha256": "3da7a25a272d0e9398170b2b5fff7f295494a56043336009e2c29ca55268521b",
+      "pageId": "scar-workbook-5h-v100-right",
+      "src": "/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+      "referenceActionFrameIndex": 3,
+      "referencePose": "Actual nearly upright return, kept in action; no separate calibration drawing",
+      "bodyReference": {
+        "side": "right",
+        "maskRoi": [
+          1020,
+          535,
+          90,
+          100
+        ],
+        "maskY": 549,
+        "feet": [
+          {
+            "roi": {
+              "x": 250,
+              "y": 455,
+              "w": 100,
+              "h": 45
+            },
+            "sole": 494,
+            "span": [
+              272,
+              334
+            ],
+            "centerX": 303
+          },
+          {
+            "roi": {
+              "x": 480,
+              "y": 450,
+              "w": 125,
+              "h": 40
+            },
+            "sole": 481,
+            "span": [
+              487,
+              597
+            ],
+            "centerX": 542
+          },
+          {
+            "roi": {
+              "x": 795,
+              "y": 455,
+              "w": 100,
+              "h": 45
+            },
+            "sole": 494,
+            "span": [
+              807,
+              869
+            ],
+            "centerX": 838
+          },
+          {
+            "roi": {
+              "x": 1030,
+              "y": 445,
+              "w": 160,
+              "h": 45
+            },
+            "sole": 481,
+            "span": [
+              1054,
+              1167
+            ],
+            "centerX": 1110.5
+          },
+          {
+            "roi": {
+              "x": 225,
+              "y": 950,
+              "w": 100,
+              "h": 50
+            },
+            "sole": 993,
+            "span": [
+              240,
+              307
+            ],
+            "centerX": 273.5
+          },
+          {
+            "roi": {
+              "x": 475,
+              "y": 945,
+              "w": 130,
+              "h": 45
+            },
+            "sole": 979,
+            "span": [
+              483,
+              596
+            ],
+            "centerX": 539.5
+          },
+          {
+            "roi": {
+              "x": 855,
+              "y": 955,
+              "w": 100,
+              "h": 48
+            },
+            "sole": 995,
+            "span": [
+              868,
+              933
+            ],
+            "centerX": 900.5
+          },
+          {
+            "roi": {
+              "x": 1060,
+              "y": 945,
+              "w": 150,
+              "h": 50
+            },
+            "sole": 982,
+            "span": [
+              1076,
+              1195
+            ],
+            "centerX": 1135.5
+          }
+        ],
+        "pivots": [
+          [
+            422.5,
+            495
+          ],
+          [
+            974.25,
+            495
+          ],
+          [
+            406.5,
+            994
+          ],
+          [
+            1018,
+            996
+          ]
+        ],
+        "bodyHeightPx": 447
+      },
+      "frames": [
+        {
+          "pageId": "scar-workbook-5h-v100-right",
+          "rect": [
+            0,
+            0,
+            708,
+            503
+          ],
+          "pivot": [
+            422.5,
+            495
+          ],
+          "durationTicks": 16
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-right",
+          "rect": [
+            707,
+            0,
+            829,
+            503
+          ],
+          "pivot": [
+            267.25,
+            495
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-right",
+          "rect": [
+            0,
+            502,
+            744,
+            522
+          ],
+          "pivot": [
+            406.5,
+            492
+          ],
+          "durationTicks": 13
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-right",
+          "rect": [
+            743,
+            502,
+            793,
+            522
+          ],
+          "pivot": [
+            275,
+            494
+          ],
+          "durationTicks": 13
+        }
+      ]
+    },
+    {
+      "source": "art-source/v100/pit/scar/heavy-alpha/intake/003-scar-5h-left-native-original.png",
+      "sourceSha256": "658a0587a4e2ca496c950028569c595bc5fec3ee614d164c760225845d17fee8",
+      "pageId": "scar-workbook-5h-v100-left",
+      "src": "/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+      "referenceActionFrameIndex": 3,
+      "referencePose": "Actual nearly upright return, kept in action; no separate calibration drawing",
+      "bodyReference": {
+        "side": "left",
+        "maskRoi": [
+          1005,
+          585,
+          85,
+          90
+        ],
+        "maskY": 594,
+        "feet": [
+          {
+            "roi": {
+              "x": 330,
+              "y": 450,
+              "w": 125,
+              "h": 45
+            },
+            "sole": 484,
+            "span": [
+              341,
+              439
+            ],
+            "centerX": 390
+          },
+          {
+            "roi": {
+              "x": 590,
+              "y": 450,
+              "w": 95,
+              "h": 50
+            },
+            "sole": 491,
+            "span": [
+              613,
+              673
+            ],
+            "centerX": 643
+          },
+          {
+            "roi": {
+              "x": 925,
+              "y": 445,
+              "w": 130,
+              "h": 45
+            },
+            "sole": 483,
+            "span": [
+              938,
+              1044
+            ],
+            "centerX": 991
+          },
+          {
+            "roi": {
+              "x": 1240,
+              "y": 450,
+              "w": 100,
+              "h": 50
+            },
+            "sole": 490,
+            "span": [
+              1261,
+              1323
+            ],
+            "centerX": 1292
+          },
+          {
+            "roi": {
+              "x": 320,
+              "y": 930,
+              "w": 130,
+              "h": 50
+            },
+            "sole": 964,
+            "span": [
+              331,
+              434
+            ],
+            "centerX": 382.5
+          },
+          {
+            "roi": {
+              "x": 590,
+              "y": 930,
+              "w": 95,
+              "h": 50
+            },
+            "sole": 974,
+            "span": [
+              607,
+              668
+            ],
+            "centerX": 637.5
+          },
+          {
+            "roi": {
+              "x": 920,
+              "y": 930,
+              "w": 125,
+              "h": 50
+            },
+            "sole": 972,
+            "span": [
+              931,
+              1031
+            ],
+            "centerX": 981
+          },
+          {
+            "roi": {
+              "x": 1165,
+              "y": 935,
+              "w": 100,
+              "h": 50
+            },
+            "sole": 978,
+            "span": [
+              1179,
+              1241
+            ],
+            "centerX": 1210
+          }
+        ],
+        "pivots": [
+          [
+            516.5,
+            492
+          ],
+          [
+            1141.5,
+            491
+          ],
+          [
+            510,
+            975
+          ],
+          [
+            1095.5,
+            979
+          ]
+        ],
+        "bodyHeightPx": 385
+      },
+      "frames": [
+        {
+          "pageId": "scar-workbook-5h-v100-left",
+          "rect": [
+            0,
+            0,
+            749,
+            507
+          ],
+          "pivot": [
+            516.5,
+            492
+          ],
+          "durationTicks": 16
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-left",
+          "rect": [
+            748,
+            0,
+            788,
+            507
+          ],
+          "pivot": [
+            393.5,
+            491
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-left",
+          "rect": [
+            0,
+            506,
+            801,
+            518
+          ],
+          "pivot": [
+            510,
+            469
+          ],
+          "durationTicks": 13
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-left",
+          "rect": [
+            800,
+            506,
+            736,
+            518
+          ],
+          "pivot": [
+            295.5,
+            473
+          ],
+          "durationTicks": 13
+        }
+      ]
+    }
+  ],
+  "replacedStudy": {
+    "fighterId": "scar",
+    "actionId": "M_F003_5H",
+    "appearanceId": "runtime-default",
+    "atlasId": "scar-pit-v34",
+    "clipIds": [
+      "pit.stand.heavy.startup",
+      "pit.stand.heavy.active",
+      "pit.stand.heavy.recovery"
+    ],
+    "review": {
+      "status": "validated",
+      "scope": "historical-native-wrist-blade-heavy-source-inspection",
+      "sourceHashes": {
+        "/game/sprites/v34/pit/scar/scar-heavy-v34.png": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3"
+      },
+      "notes": "Réemploi de la page BODY historique V34, pas de nouvel original alpha V100 : pas puis frappe lourde des lames, retrait en deux dessins,4dessins distincts par côté. Ordre gauche natif inverse des colonnes, déjà déclaré dans le registre, conservé. La référence debout390px de cette page et son traitement magenta historique restent inchangés. Correspondance visuelle sourceF7 revue par QA ; aucune nouvelle liaison mécanique au coup lourd actuellement nommé Ascension au plasma, aucune valeur Excel16/5/26 appliquée."
+    }
+  },
+  "admission": {
+    "fighterId": "scar",
+    "actionId": "M_F003_5H",
+    "appearanceId": "runtime-default",
+    "atlasId": "scar-workbook-5h-v100",
+    "clipIds": [
+      "workbook.M_F003_5H"
+    ],
+    "definition": {
+      "fighterId": "scar",
+      "bodyHeightPx": 447,
+      "pageBodyHeightPx": {
+        "scar-workbook-5h-v100-right": 447,
+        "scar-workbook-5h-v100-left": 385
+      },
+      "visibleFrameBounds": [
+        {
+          "pageId": "scar-workbook-5h-v100-right",
+          "rect": [
+            0,
+            0,
+            708,
+            503
+          ],
+          "visibleRect": [
+            259,
+            10,
+            352,
+            487
+          ]
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-right",
+          "rect": [
+            707,
+            0,
+            829,
+            503
+          ],
+          "visibleRect": [
+            804,
+            10,
+            441,
+            487
+          ]
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-right",
+          "rect": [
+            0,
+            502,
+            744,
+            522
+          ],
+          "visibleRect": [
+            238,
+            518,
+            385,
+            478
+          ]
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-right",
+          "rect": [
+            743,
+            502,
+            793,
+            522
+          ],
+          "visibleRect": [
+            864,
+            508,
+            335,
+            491
+          ]
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-left",
+          "rect": [
+            0,
+            0,
+            749,
+            507
+          ],
+          "visibleRect": [
+            332,
+            40,
+            344,
+            455
+          ]
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-left",
+          "rect": [
+            748,
+            0,
+            788,
+            507
+          ],
+          "visibleRect": [
+            822,
+            40,
+            505,
+            454
+          ]
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-left",
+          "rect": [
+            0,
+            506,
+            801,
+            518
+          ],
+          "visibleRect": [
+            328,
+            526,
+            344,
+            452
+          ]
+        },
+        {
+          "pageId": "scar-workbook-5h-v100-left",
+          "rect": [
+            800,
+            506,
+            736,
+            518
+          ],
+          "visibleRect": [
+            929,
+            518,
+            315,
+            462
+          ]
+        }
+      ],
+      "atlas": {
+        "schemaVersion": 1,
+        "id": "scar-workbook-5h-v100",
+        "characterId": "scar",
+        "variantId": "body-default-v100",
+        "sourceKind": "authored-frames",
+        "status": "validated",
+        "pages": [
+          {
+            "id": "scar-workbook-5h-v100-right",
+            "src": "/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+            "width": 1536,
+            "height": 1024,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          },
+          {
+            "id": "scar-workbook-5h-v100-left",
+            "src": "/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+            "width": 1536,
+            "height": 1024,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          }
+        ],
+        "clips": [
+          {
+            "id": "workbook.M_F003_5H",
+            "facing": "right",
+            "status": "validated",
+            "loop": false,
+            "ticksPerSecond": 60,
+            "frames": [
+              {
+                "pageId": "scar-workbook-5h-v100-right",
+                "rect": [
+                  0,
+                  0,
+                  708,
+                  503
+                ],
+                "pivot": [
+                  422.5,
+                  495
+                ],
+                "durationTicks": 16
+              },
+              {
+                "pageId": "scar-workbook-5h-v100-right",
+                "rect": [
+                  707,
+                  0,
+                  829,
+                  503
+                ],
+                "pivot": [
+                  267.25,
+                  495
+                ],
+                "durationTicks": 5
+              },
+              {
+                "pageId": "scar-workbook-5h-v100-right",
+                "rect": [
+                  0,
+                  502,
+                  744,
+                  522
+                ],
+                "pivot": [
+                  406.5,
+                  492
+                ],
+                "durationTicks": 13
+              },
+              {
+                "pageId": "scar-workbook-5h-v100-right",
+                "rect": [
+                  743,
+                  502,
+                  793,
+                  522
+                ],
+                "pivot": [
+                  275,
+                  494
+                ],
+                "durationTicks": 13
+              }
+            ]
+          },
+          {
+            "id": "workbook.M_F003_5H",
+            "facing": "left",
+            "status": "validated",
+            "loop": false,
+            "ticksPerSecond": 60,
+            "frames": [
+              {
+                "pageId": "scar-workbook-5h-v100-left",
+                "rect": [
+                  0,
+                  0,
+                  749,
+                  507
+                ],
+                "pivot": [
+                  516.5,
+                  492
+                ],
+                "durationTicks": 16
+              },
+              {
+                "pageId": "scar-workbook-5h-v100-left",
+                "rect": [
+                  748,
+                  0,
+                  788,
+                  507
+                ],
+                "pivot": [
+                  393.5,
+                  491
+                ],
+                "durationTicks": 5
+              },
+              {
+                "pageId": "scar-workbook-5h-v100-left",
+                "rect": [
+                  0,
+                  506,
+                  801,
+                  518
+                ],
+                "pivot": [
+                  510,
+                  469
+                ],
+                "durationTicks": 13
+              },
+              {
+                "pageId": "scar-workbook-5h-v100-left",
+                "rect": [
+                  800,
+                  506,
+                  736,
+                  518
+                ],
+                "pivot": [
+                  295.5,
+                  473
+                ],
+                "durationTicks": 13
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "review": {
+      "status": "validated",
+      "scope": "source-F7-native-alpha-heavy-wrist-blade-study-only",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png": "3da7a25a272d0e9398170b2b5fff7f295494a56043336009e2c29ca55268521b",
+        "/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png": "658a0587a4e2ca496c950028569c595bc5fec3ee614d164c760225845d17fee8"
+      },
+      "notes": "Deux nouvelles pages alpha natives, quatre gestes indépendants par sens : pas/engagement, lourde des lames anatomiques droites, retrait puis garde. Combistick continuellement dans la main anatomique gauche. Originaux imagegen inchangés et copies byte-identiques ; revues root/producteur, moteur et QA favorables, gouttières réelles, aucun magenta mesuré. Référence fixe masque→ligne des semelles alpha128 sur le vrai retour debout de chaque page : droite447, gauche385 ; pointe de lance et dreads exclues. Les pivots horizontaux sont les milieux des deux vrais pieds, jamais la pointe ou le seul pied le plus bas ; ROIs conservées dans reference-and-foot-review.json. La lecture source16/5/13/13 est indépendante de toute simulation. Remplace uniquement le recours historique V34 du lecteur ; page originale V34, son SHA et ses clips heavy de duel inchangés. Aucune nouvelle liaison mécanique au heavy actuel nommé Ascension au plasma."
+    }
+  }
+}

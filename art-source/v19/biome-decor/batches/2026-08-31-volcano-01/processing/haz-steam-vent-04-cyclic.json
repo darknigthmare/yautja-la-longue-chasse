@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-haz-steam-vent-04-cyclic",
+  "definitionId": "environment-prop-v19-volcano-haz-steam-vent-04-cyclic",
+  "biome": "volcano",
+  "role": "hazard",
+  "archetypeId": "steam-vent",
+  "variantId": "04-cyclic",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\haz-steam-vent-04-cyclic.png",
+    "bytes": 1567175,
+    "sha256": "90a252794bd9853b0a76efd29fade6158885d3e8a0594ef06487bc2e12e5a563",
+    "width": 1254,
+    "height": 1254
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\haz\\masters\\haz-steam-vent-04-cyclic-chroma.webp",
+    "bytes": 180836,
+    "sha256": "4b11140c3305c58810599d5b8695ad5316c21bf6c2f768e477712d287bb0c0f2"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\haz\\haz-steam-vent-04-cyclic.webp",
+    "bytes": 90634,
+    "sha256": "6141292c5e2ad33d0d8d197ac3556a9d2a6b079f6a06cb45749b71fb87b2780b"
+  },
+  "chromaInspection": {
+    "width": 1254,
+    "height": 1254,
+    "sampledKey": [
+      4,
+      250,
+      6
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 0.999867
+  },
+  "helperInspection": {
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.329154,
+    "transparentRatio": 0.6704,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 539,
+    "height": 768,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.469467,
+    "transparentRatio": 0.529788,
+    "dirtyTransparentPixels": 13043
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-JDMY7T\\haz-steam-vent-04-cyclic-alpha.png\r\nKey color: #04fa06\r\nTransparent pixels: 1054215/1572516\r\nPartially transparent pixels: 7631/1572516",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}

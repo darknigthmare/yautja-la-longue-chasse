@@ -1,0 +1,275 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import test from "node:test";
+import { runInNewContext } from "node:vm";
+import { createRequire } from "node:module";
+import ts from "typescript";
+import { build } from "esbuild";
+import { fileURLToPath } from "node:url";
+
+const activeHuntBundle = await build({
+  entryPoints: [fileURLToPath(new URL("../app/game/systems/activeHuntSave.ts", import.meta.url))],
+  bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent",
+});
+const { isBoundedJsonValue } = await import(
+  "data:text/javascript;base64," + Buffer.from(activeHuntBundle.outputFiles[0].text).toString("base64")
+);
+
+const bundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationMap"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/explorationRegions"; export * from "./app/game/systems/jumpAssist"; export * from "./app/game/systems/platformCollision"; export * from "./app/game/systems/huntMeleeCombat"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints"; export {worldScreensFor,getWorldScreenAtX} from "./app/game/worldScreens";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "cjs", platform: "node" });
+const compiled = { exports: {} };
+runInNewContext(bundle.outputFiles[0].text, { module: compiled, exports: compiled.exports });
+const world = compiled.exports;
+const source = await readFile(new URL("../app/game/HuntCanvas.tsx", import.meta.url), "utf8");
+const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+/** The isolated legacy functions receive the current production helpers.
+ * Their source and validation are bundled unchanged; no eligibility stub is used. */
+const nativeBundle = await build({ stdin: {
+  contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
+export {huntFieldLoadV112,discoveryActorsV112,riteSourceLabelV77,riteRuntimeOptionsV112,routeCorpseRiteGamepadV112,makeGameState};
+export {defaultSave} from "./save";
+export {MISSION_BY_ID} from "./data";
+export * from "./systems/canopyTraversalV112";
+export * from "./systems/fieldStashV112";
+export * from "./systems/corpseDiscoveryV112";
+export * from "./systems/huntRitesRuntimeV77";
+export * from "./systems/carcassSupportsV112";
+`,
+  resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),loader:"tsx",
+},bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",
+loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
+const nativeCompiled={exports:{}};
+runInNewContext(nativeBundle.outputFiles[0].text,{module:nativeCompiled,exports:nativeCompiled.exports,require:createRequire(import.meta.url)});
+const nativeHelpers=nativeCompiled.exports;
+
+const names = ["clonePlayerState", "cloneEnemyState", "cloneProjectileState", "cloneTrophyRitual", "cloneAiBrains", "cloneBossMechanics", "cloneArsenalRuntime", "captureCheckpoint", "isJsonObject", "isFiniteJsonNumber", "isStringArray", "hasFiniteFields", "isValidSerializedHuntActor", "isValidSerializedHuntProjectile", "activeHuntSnapshotChecksum", "isValidSerializedAiBrains", "isValidSerializedArsenal", "serializeActiveHuntCheckpoint", "deserializeActiveHuntCheckpoint", "restoreCheckpoint"];
+function codeFor(names) {
+  return names.map(name => { const declaration = ast.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === name); assert.ok(declaration, name); return declaration.getText(ast); }).join("\n");
+}
+function runtime(names, dependencies) {
+  // Extract shared tuning from production alongside the functions that close over it.
+  const climbTraversal = ast.statements.find(node =>
+    ts.isVariableStatement(node) && node.declarationList.declarations.some(declaration =>
+      ts.isIdentifier(declaration.name) && declaration.name.text === "CLIMB_TRAVERSAL"));
+  assert.ok(climbTraversal, "production CLIMB_TRAVERSAL declaration exists");
+  const code = ts.transpileModule(`${climbTraversal.getText(ast)}\n${codeFor(names)}`, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None } }).outputText;
+  return runInNewContext(`${code}\n({${names.join(",")}})`, {...nativeHelpers,...dependencies});
+}
+// The VM and host have different Object prototypes; bridge only JSON data to
+// the real bounded-value validator, as the app does within its single realm.
+const environment = { ...world, isBoundedJsonValue: value => isBoundedJsonValue(JSON.parse(JSON.stringify(value))), ACTIVE_HUNT_SNAPSHOT_VERSION: 1, ACTIVE_HUNT_PHASES: new Set(["tracking", "target", "trophy", "extraction"]), VIEW_WIDTH: 1280, VIEW_HEIGHT: 720, clamp: (n, min, max) => Math.max(min, Math.min(max, n)) };
+const api = runtime(names, environment);
+const plain = value => JSON.parse(JSON.stringify(value));
+const missionId = "jungle-vey";
+const rooms = world.worldScreensFor(missionId).screens;
+function fixture() {
+  const player = Object.fromEntries(["previousY", "velocityX", "velocityY", "medicomps", "activeWeaponSlot", "aimAngle", "gauntletOpen", "bladeExtension", "attackFlash", "invulnerability", "meleeCooldown", "weaponCooldown", "weaponChargeSeconds", "scanCooldown", "healCooldown"].map(key => [key, 0]));
+  Object.assign(player, { x: rooms[2].startX + 100, y: 400, width: 72, height: 116, health: 80, maxHealth: 100, stamina: 80, maxStamina: 100, energy: 50, maxEnergy: 100, facing: 1, grounded: true, cloaked: false, maskOn: true, aiming: false, climbing: false, aimPoint: { x: 100, y: 100 }, weaponAmmo: [6, -1], dreadAngles: [], dreadVelocities: [] });
+  const state = Object.fromEntries(["ecologySpawnIndex", "honor", "kills", "scans", "supportKills", "damageTaken", "trophyExtraction", "nextProjectileId", "nextSignalId"].map(key => [key, 0]));
+  Object.assign(state, { phase: "tracking", elapsed: 120, cameraX: 0, cameraY: 0, player, visitedScreenIds: [rooms[0].id, rooms[2].id], world: { width: 8400, missionId }, nextCheckpointIndex: 1, bossVulnerabilityMultiplier: 1, bossThermalVisibility: 1, boss: { x: 7400, y: 400, width: 120, height: 150, health: 300, maxHealth: 300, alive: true, active: false }, bossMechanics: { missionId }, aiBrains: {}, mud: {}, arsenal: { slots: [{}, {}], activeEffects: [] }, trophyRitual: null, trophyClaim: null, trophyVictory: null, dropShip: null });
+  for (const key of ["enemies", "projectiles", "scentNodes", "noiseEvents", "tracks", "scanNodes", "recoveryNodes", "purgeConsoleNodes", "regularTrophyDrops", "honorEvents", "traps"]) state[key] = [];
+  for (const key of ["spawnedWaves", "completedObjectives", "brokenPillarIds"]) state[key] = new Set();
+  for (const key of ["secondWindUsed", "energyWeaponsLocked", "bossHitPillar", "playerUsedRangedWeapon", "playerUsedEnergyWeapon", "trophyExtracting", "trophyCarried", "rangedBossViolation"]) state[key] = false;
+  return state;
+}
+
+test("checkpoint captures detached discovery and saves/restores it through the real checksum schema", () => {
+  const state = fixture();
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  state.visitedScreenIds.push(rooms[4].id);
+  assert.deepEqual(plain(checkpoint.visitedScreenIds), [rooms[0].id, rooms[2].id]);
+  const envelope = api.serializeActiveHuntCheckpoint(checkpoint, 1);
+  assert.ok(envelope);
+  const decoded = api.deserializeActiveHuntCheckpoint(envelope);
+  assert.ok(decoded);
+  const restored = api.restoreCheckpoint(state, decoded.checkpoint, "resume");
+  assert.deepEqual(plain(restored.visitedScreenIds), [rooms[0].id, rooms[2].id]);
+  assert.equal(restored.paused, true);
+  assert.equal(restored.cameraY, 0, "a ground checkpoint restores the neutral vertical camera");
+});
+
+test("vertical camera position is derived from the hunter and never serialized", () => {
+  const state = fixture();
+  state.exploration = world.mergeExplorationProgress(world.defaultExplorationProgress(), { abilityIds: ["aerial-boost"] });
+  state.world = world.applyPilotWorld(world.worldBlueprintFor(missionId), state.exploration);
+  state.player.x = 1300;
+  state.player.y = -300;
+  state.cameraY = -123;
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  assert.equal("cameraY" in checkpoint, false);
+  const restored = api.restoreCheckpoint(state, checkpoint, "resume");
+  assert.equal(restored.cameraY, world.targetOserisCameraY(missionId, -242, 720));
+  assert.ok(restored.cameraY < 0 && restored.cameraY >= world.OSERIS_VERTICAL_BOUNDS.minY);
+
+  state.world = world.worldBlueprintFor("ice-cryostalker");
+  const otherMission = api.restoreCheckpoint(state, api.captureCheckpoint(state, "resume"), "resume");
+  assert.equal(otherMission.cameraY, 0, "missions without a vertical layout always restore a neutral camera");
+});
+
+test("legacy checkpoints reveal only their actual room and foreign ids never enter the map", () => {
+  const state = fixture();
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  delete checkpoint.visitedScreenIds;
+  assert.ok(api.deserializeActiveHuntCheckpoint(api.serializeActiveHuntCheckpoint(checkpoint, 1)));
+  const legacy = api.restoreCheckpoint(state, checkpoint, "resume");
+  assert.deepEqual(plain(legacy.visitedScreenIds), [rooms[2].id]);
+  checkpoint.visitedScreenIds = ["ice-foreign", rooms[0].id, rooms[0].id];
+  assert.deepEqual(plain(api.restoreCheckpoint(state, checkpoint, "resume").visitedScreenIds), [rooms[0].id, rooms[2].id]);
+});
+
+test("retry preserves knowledge found after the checkpoint without revealing skipped rooms", () => {
+  const state = fixture();
+  const checkpoint = api.captureCheckpoint(state);
+  state.visitedScreenIds.push(rooms[5].id);
+  const restored = api.restoreCheckpoint(state, checkpoint, "retry");
+  assert.deepEqual(plain(restored.visitedScreenIds), [rooms[0].id, rooms[2].id, rooms[5].id]);
+  assert.equal(restored.paused, false);
+});
+
+test("a newly entered sector is discovered before the checkpoint on the same simulation frame", () => {
+  // The new controller route uses the real rites/world contracts; seed this
+  // ordering probe from the actual actor factory rather than a legacy payload.
+  const save=nativeHelpers.defaultSave("2026-10-28T00:00:00.000Z"),mission=nativeHelpers.MISSION_BY_ID[missionId];
+  const state=nativeHelpers.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,"sector-order",save.exploration);
+  state.enemies=[];state.elapsed = 1; state.player.x = 100; state.visitedScreenIds = [rooms[0].id]; state.worldScreenId = rooms[0].id;
+  Object.assign(state, { paused: false, messageTimer: 0, scanPulse: 0, screenShake: 0, cameraX: 0, cameraY: 0 });
+  const captures = [];
+  const noOp = () => {};
+  const { stepGame } = runtime(["stepGame"], { ...environment, pollGamepad: () => null, consume: () => false, tickArsenalRuntime: value => value,
+    updateRevealEffects: noOp, updatePlayer: game => { game.player.x = rooms[1].startX + 20; }, updateHuntTraps: noOp, updateHuntSignals: noOp, updateRegularEnemy: noOp, updateBoss: noOp, updateProjectiles: noOp, updateGoreParticles: noOp, updateHuntRitesV77: noOp, updateObjectiveFlow: noOp, announce: noOp,
+    updateMissionCheckpoint: game => captures.push(api.captureCheckpoint(game)),
+  });
+  const input={keyboardHeld:new Set(),touchHeld:new Set(),gamepadHeld:new Set(),pressed:new Set(),gamepadDialogActions:[]};
+  stepGame(state, { id: missionId }, {}, {}, {}, "hunter", input, 1 / 60, noOp);
+  assert.deepEqual(plain(captures[0].visitedScreenIds), [rooms[0].id, rooms[1].id]);
+});
+
+test("checksum-valid but malformed combat snapshots are rejected before restoration", () => {
+  const changes = [
+    value => { value.player.health = 0; },
+    value => { value.player.width = -72; },
+    value => { value.player.energy = -1; },
+    value => { value.boss.height = 0; },
+    value => { value.enemies = [null]; },
+    value => { value.enemies = [{}]; },
+    value => { value.projectiles = [{ x: 0, y: 0, velocityX: 1, velocityY: 0, radius: -2, damage: 1, life: 1, coverGraceSeconds: 0, hostile: true }]; },
+    value => { value.tracks = [null]; },
+    value => { value.visitedScreenIds = [123]; },
+  ];
+  for (const change of changes) {
+    const checkpoint = api.captureCheckpoint(fixture(), "resume"); change(checkpoint);
+    const envelope = api.serializeActiveHuntCheckpoint(checkpoint, 1);
+    assert.ok(envelope, "the bounded JSON envelope alone cannot validate combat semantics");
+    assert.equal(api.deserializeActiveHuntCheckpoint(envelope), null);
+  }
+});
+
+
+test("pilot acquisitions survive retry and resume without stacking the permanent energy bonus", () => {
+  const state = fixture();
+  // This progression case represents the current live runtime. makeGameState
+  // always creates both traces with the same run; an ecosystem without its
+  // source register is deliberately refused by checkpoint admission.
+  const runId = missionId + ":0";
+  Object.assign(state, {
+    huntRites: nativeHelpers.createRitesOfHuntV77(runId, missionId),
+    ecosystem: nativeHelpers.createCorpseDiscoveryV112(runId),
+    flayingToolOwned: false, harvestArmorIdV112: "hunter",
+    harvestDepotFreeV112: 256, riteToolInitialConditionV112: 100,
+  });
+  state.exploration = world.defaultExplorationProgress();
+  state.world = world.applyPilotWorld(world.worldBlueprintFor(missionId), state.exploration);
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  state.exploration = world.mergeExplorationProgress(state.exploration, {
+    abilityIds: ["aerial-boost"], openedGateIds: ["jungle-resonance-seal", "jungle-canopy-hatch"], secretIds: ["jungle-clan-cache"],
+  });
+  state.player.maxEnergy = 115;
+  const retried = api.restoreCheckpoint(state, checkpoint, "retry");
+  assert.equal(retried.player.maxEnergy, 115);
+  assert.equal(retried.exploration.secretIds.length, 1);
+  assert.equal(retried.world.platforms.some(p => p.id === "jungle-resonance-seal" || p.id === "jungle-canopy-hatch"), false);
+  const again = api.restoreCheckpoint(retried, checkpoint, "resume");
+  assert.equal(again.player.maxEnergy, 115);
+  const restoredEnvelope = api.deserializeActiveHuntCheckpoint(api.serializeActiveHuntCheckpoint(api.captureCheckpoint(again, "resume"), 1));
+  assert.ok(restoredEnvelope, "current acquisition progress retains coherent source and discovery registers");
+  assert.equal(restoredEnvelope.checkpoint.huntRites.runId, runId);
+  assert.equal(restoredEnvelope.checkpoint.ecosystem.runId, runId);
+  assert.deepEqual(plain(restoredEnvelope.checkpoint.exploration), plain(state.exploration));
+});
+
+test("legacy hunter embedded in a new floor returns safely to insertion with objectives intact", () => {
+  const state = fixture();
+  state.world = world.worldBlueprintFor(missionId);
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  checkpoint.player.x = 1700; checkpoint.player.y = 390;
+  checkpoint.completedObjectives.add("already-completed");
+  delete checkpoint.exploration;
+  const result = api.restoreCheckpoint(state, checkpoint, "resume");
+  assert.equal(result.player.x, state.world.spawn.x);
+  assert.equal(result.player.y + result.player.height, state.world.floorY);
+  assert.equal(result.player.climbing, false);
+  assert.equal(result.completedObjectives.has("already-completed"), true);
+  assert.match(result.message, /Géométrie actualisée/);
+});
+
+
+test("real jump handler grants one aerial pulse only and requires neutral after action locks", () => {
+  const { updatePlayerJump } = runtime(["applyPlayerJump", "updatePlayerJump"], {
+    ...environment, GRAVITY: 1850, emitNoise() {}, queueSound() {},
+    consume: (hub, action) => hub.pressed.delete(action), isHeld: (hub, action) => hub.held.has(action),
+  });
+  const state = fixture(); state.exploration = world.defaultExplorationProgress();
+  state.world = world.applyExplorationWorld(world.worldBlueprintFor(missionId), state.exploration);
+  state.player.grounded = false; state.player.aerialBoostUsed = false;
+  const input = { pressed: new Set(["jump"]), held: new Set(["jump"]) };
+  updatePlayerJump(state, input, 1 / 60, false);
+  assert.equal(state.player.velocityY, 0, "no aerial jump before acquisition");
+  state.exploration.abilityIds.push("aerial-boost");
+  input.pressed.add("jump");
+  updatePlayerJump(state, input, 1 / 60, true);
+  assert.equal(state.player.velocityY, 0, "ritual/action lock prevents movement");
+  input.pressed.add("jump"); updatePlayerJump(state, input, 1 / 60, false);
+  assert.equal(state.player.aerialBoostUsed, false, "held input must return to neutral");
+  input.held.clear(); updatePlayerJump(state, input, 1 / 60, false);
+  input.held.add("jump"); input.pressed.add("jump"); updatePlayerJump(state, input, 1 / 60, false);
+  assert.equal(state.player.velocityY, -720);
+  assert.equal(state.player.aerialBoostUsed, true);
+  state.player.velocityY = 100;
+  input.pressed.add("jump"); updatePlayerJump(state, input, 1 / 60, false);
+  assert.equal(state.player.velocityY, 100, "a third pulse is impossible");
+  state.player.climbing = true;
+  input.pressed.add("jump"); updatePlayerJump(state, input, 1 / 60, false);
+  assert.equal(state.player.aerialBoostUsed, true, "grabbing a rope does not refill the pulse");
+  assert.equal(state.player.climbing, false);
+});
+
+test("ice checkpoints keep campaign discoveries but cannot forge jungle acquisitions", () => {
+  const state = fixture(); state.world = world.worldBlueprintFor("ice-cryostalker");
+  state.exploration = world.defaultExplorationProgress();
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  checkpoint.exploration = { abilityIds: ["aerial-boost"], openedGateIds: ["ice-mine-relay", "jungle-resonance-seal"], secretIds: ["jungle-clan-cache", "ice-clan-cache"], discoveredRoomIds: [] };
+  const restored = api.restoreCheckpoint(state, checkpoint, "resume");
+  assert.deepEqual(plain(restored.exploration.abilityIds), []);
+  assert.deepEqual(plain(restored.exploration.secretIds), ["ice-clan-cache"]);
+  assert.deepEqual(plain(restored.exploration.openedGateIds), ["ice-mine-relay"]);
+  assert.equal(restored.player.maxEnergy, 115);
+  state.exploration = world.mergeExplorationProgress(state.exploration, { abilityIds: ["aerial-boost"], secretIds: ["jungle-clan-cache"] });
+  state.player.maxEnergy = 115;
+  const inherited = api.restoreCheckpoint(state, checkpoint, "resume");
+  assert.deepEqual(plain(inherited.exploration.abilityIds), ["aerial-boost"]);
+  assert.equal(inherited.player.maxEnergy, 130);
+  assert.equal(inherited.jumpAssist.requiresRelease, true);
+  assert.equal(inherited.jumpAssist.bufferSeconds, 0);
+});
+
+test("jump buffers and coyote timers never survive checkpoint roundtrip", () => {
+  const state = fixture();
+  state.jumpAssist = { coyoteSeconds: 0.1, bufferSeconds: 0.12, cutArmed: true, requiresRelease: false };
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  assert.equal("jumpAssist" in checkpoint, false);
+  const decoded = api.deserializeActiveHuntCheckpoint(api.serializeActiveHuntCheckpoint(checkpoint, 1));
+  assert.ok(decoded);
+  const restored = api.restoreCheckpoint(state, decoded.checkpoint, "resume");
+  assert.equal(restored.jumpAssist.requiresRelease, true);
+  assert.equal(restored.jumpAssist.coyoteSeconds, 0);
+  assert.equal(restored.jumpAssist.bufferSeconds, 0);
+});

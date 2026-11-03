@@ -1,0 +1,47 @@
+{
+  "version": 57,
+  "variantId": "jungle-hunter-final-duel-v57",
+  "tool": "OpenAI built-in imagegen",
+  "source": {
+    "src": "/game/sprites/v44/user-hunters/687c9751db173fa8bf3c743867c84727b3b72efbdaf6f10891ce2e17d61b69aa.png",
+    "sha256": "687c9751db173fa8bf3c743867c84727b3b72efbdaf6f10891ce2e17d61b69aa",
+    "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+    "sourceEntry": "YAUTJA_NECA_84_PAIRES/01_FILMS/jungle_hunter/sans_casque.png",
+    "sourcePreserved": true
+  },
+  "nativeAnimationClips": 0,
+  "mirrored": false,
+  "postprocessing": "None on delivered PNGs. Private renderer alpha noiseFloor 1 only; full-page frame rectangles with no optional camera pixel bounds.",
+  "limitations": [
+    "Two static held poses, no authored movement or attack animation.",
+    "Adaptation of supplied identity; cinema 1:1 accuracy not certified.",
+    "Requested eight percent transparent margin was not achieved; whole alpha>16 silhouette remains inside both canvases, verified in final outputs.",
+    "Left image has 19 alpha=1 boundary pixels, below private renderer noise floor; no opaque silhouette touches edge."
+  ],
+  "pages": [
+    {"facing":"right","src":"/game/sprites/v57/pit/jungle-hunter/final-duel-right.png","generatedFile":"exec-11b309a6-0b08-45b7-8210-162b876f91c6.png","sha256":"381043dd1d294855a734de53e4782297e74c474670ebb96443763cc1c76f66ce","bytes":2267286,"width":1024,"height":1536,"alphaExtrema":[0,254],"alphaBoundsOver16":[17,32,1013,1480],"pivot":[512,1479],"bodyHeightPx":1447,"status":"accepted native output"},
+    {"facing":"left","src":"/game/sprites/v57/pit/jungle-hunter/final-duel-left.png","generatedFile":"exec-65340296-842e-460c-9745-302a231f0ba9.png","sha256":"e0f3a003837eee6bf3e4ddf07db66cda32ddd37856fb3c7fd53d96bee4968c92","bytes":2246930,"width":1024,"height":1536,"alphaExtrema":[0,254],"alphaBoundsOver16":[6,34,1011,1491],"pivot":[512,1490],"bodyHeightPx":1456,"status":"accepted after anatomical wrist-device correction"}
+  ],
+  "calls": [
+    {
+      "id": "right-native",
+      "reference": "user source 687c9751db173fa8bf3c743867c84727b3b72efbdaf6f10891ce2e17d61b69aa.png",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit / background-extraction. Produce ONE full-body static fighting-game sprite of this exact Jungle Hunter identity, dedicated to the final unmasked hand-to-hand duel of Predator (1987), facing SCREEN RIGHT in a three-quarter side view. The reference is the edit target for skin markings, mandibled face, physique, dreadlocks, style and leg/forearm equipment. Remove the entire shoulder plasma cannon, its backpack, mounting arm, cables, chest harness and shoulder/chest metal plates. Bare netted upper torso, no gun anywhere; no biomask; retain the same loincloth, belt, wrist gauntlets and greaves. Anatomical RIGHT forearm still bears the two wrist blades, LEFT forearm the control gauntlet: do not swap hands or weapon side. Hands each have five coherent distinct digits with thumb on correct side, two arms/two legs only. Closed alert fighting guard with bent knees, both feet fully visible planted on the same baseline; face and chest oriented to SCREEN RIGHT, not frontal or toward camera. Faithful controlled edit, no new armor, weapons, accessories, powers or wounds. Actual transparent RGBA background, no floor, no ground shadow, no glow, no text or panel. Entire silhouette including dreadlocks, claws, wrist blades and feet framed with at least 8 percent clear transparent margin on all sides. One character one pose only, preserve detailed painted game-art treatment of reference. This asset is a game adaptation, do not add canon certification labels."
+    },
+    {
+      "id": "left-rejected",
+      "reference": "exec-11b309a6-0b08-45b7-8210-162b876f91c6.png",
+      "output": "exec-d4caf44a-8f2f-4067-b343-793981018684.png",
+      "transparent_background": true,
+      "rejection": "Wrist devices swapped anatomical sides; not integrated.",
+      "prompt": "Use case: identity-preserve. Reference image is the final-duel Jungle Hunter without mask, cannon, cannon harness or shoulder/chest armor. Create the same full-body static sprite seen from the OPPOSITE camera side, now facing SCREEN LEFT. This must be a genuinely redrawn counter-view, NEVER a mirrored anatomical design: the TWO WRIST BLADES remain on the character's anatomical RIGHT forearm (now the far-side forearm), and the CONTROL GAUNTLET remains on anatomical LEFT forearm (now the near-side forearm). No swapping wrist devices. Match the exact head, yellow-black mottled skin, netted chest, musculature, dreadlocks with rings, belt, loincloth, greaves, colors and detailed painted style. Both feet on one baseline, crouched alert stance. All four mandibular lobes coherent; two complete five-digit hands, correct thumbs and no extra fingers. No plasma cannon, no mask, no shoulder/chest plates, no backpack, no harness, no extra weapon or accessory. Camera shows enough of chest to recognize same hunter, face unmistakably looking toward SCREEN LEFT. ONE character, ONE static pose, no animation strip or text. Genuine RGBA transparent background, no painted floor, background, aura or shadow. Place entire silhouette within canvas with at least eight percent transparent margin, especially claws, dreadlocks and feet."
+    },
+    {
+      "id": "left-corrected-native",
+      "reference": "exec-d4caf44a-8f2f-4067-b343-793981018684.png",
+      "transparent_background": true,
+      "prompt": "Precise corrective edit of this exact SCREEN-LEFT facing Jungle Hunter sprite. The wrist equipment is currently on the wrong sides. Change ONLY the TWO WRIST DEVICES: (1) At IMAGE RIGHT the near lowered forearm currently has twin long blades: REMOVE BOTH BLADES completely and replace its device with the control gauntlet, retaining the same hand, forearm and all five fingers. (2) At IMAGE LEFT the far raised forearm currently has the control gauntlet: replace its device with the blade bracer and add the TWO wrist blades projecting forward toward SCREEN LEFT past that hand, realistically following the forearm axis. That makes anatomical right arm on far side bear blades and anatomical left near arm bear controller. Do NOT mirror the image, do NOT move the face or legs, do not change anatomy/identity/colors/pose, do not add cannon, mask, shoulder armor, chest harness or other weapon. Keep full body and all digits completely inside canvas with clear transparent margins. Preserve actual transparent background with no ground shadow or aura; one static left-facing sprite, no text."
+    }
+  ]
+}

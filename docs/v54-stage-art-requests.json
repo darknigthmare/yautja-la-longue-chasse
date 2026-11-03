@@ -1,0 +1,39 @@
+{
+  "status": "generated-and-reviewed-see-art-source-v54-records",
+  "layoutContract": "Side view for a 960x540 fighting game. Foreground fighting contact is y430; keep centre unobstructed. Background-only drawings never supply collision. Every new image is original fan-made adaptation, not a claim of shot-exact reconstruction.",
+  "requests": [
+    {
+      "id": "neonopolis-depth",
+      "target": "public/game/sprites/v54/pit-arenas/arena-137-concrete-jungle-neonopolis/p0-depth.png",
+      "transparent": false,
+      "references": ["https://store.necaonline.com/blogs/behind-the-scenes/closer-look-video-game-appearance-ultimate-scarface-predator"],
+      "localStyleReference": "public/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p0-depth.png",
+      "prompt": "Original premium illustrated 2D fighting-game background, landscape 3:2. Dedicated environment for Scarface in Predator: Concrete Jungle, Neonopolis futuristic industrial city at night, early 2000s dystopian game art: monumental concrete high rises, brutalist industrial service decks, cold cyan windows, warm amber pollution, pipes, elevated connecting bridges, deep fog. Straight side-on fighting camera, horizon upper third, no camera tilt, no isometric floor, no central vanishing-point runway. This is a FAR DEPTH P0 layer only: architecture mostly distant, clear central middle band for fighters. No characters, crowds, weapons, skull decoration, logos, letters, UI, borders, watermarks. Do not reproduce a specific official image. Exact city geography is not attested by reference; preserve only the setting and era. Bottom 22 percent dark unobtrusive industrial depth, no drawn contact platform; independent foreground floor modules will be composited over it. Crisp game-ready painterly detail, restrained contrast in centre."
+    },
+    {
+      "id": "ryushi-depth",
+      "target": "public/game/sprites/v54/pit-arenas/arena-138-avp-ryushi-prosperity-wells/p0-depth.png",
+      "transparent": false,
+      "references": ["https://titanbooks.com/8792-the-complete-aliens-vs-predator-omnibus/", "https://digital.darkhorse.com/books/9bb496a44e944fcda26662b44db247be/aliens-vs-predator-the-essential-comics-volume-1"],
+      "localStyleReference": "public/game/sprites/v43/pit-arenas/arena-108-predators-2010-tall-grass/p0-depth.png",
+      "prompt": "Original premium illustrated 2D fighting-game FAR BACKGROUND P0, landscape 3:2. Dedicated adaptation of Prosperity Wells ranching colony on Ryushi from Aliens vs Predator, associated with Machiko Noguchi and Broken Tusk. Remote dry colony: pale ochre mesas, dusty open land, low practical science-fiction prefabricated ranch buildings, distant water tanks and corrals, sun-bleached metal, warm late afternoon, utilitarian 1990s comic science-fiction atmosphere. Straight side-on fighting-game camera, horizon upper third, layered lateral depth, no isometric projection. Keep the middle central band unobstructed. No foreground ground plane or giant ramp: independent side-view floor supplied separately at runtime. No people, no animals baked in, no xenomorphs, no tropical jungle, no Yautja palace, no text or corporate logos, no UI or watermark. Geometry is an original lateral interpretation of a publisher-attested ranching colony, not an exact comic panel. Fine painterly game art with readable broad silhouettes."
+    },
+    {
+      "id": "colony-watchers-six-poses",
+      "target": "public/game/sprites/v54/pit-life/colony-watchers.png",
+      "transparent": true,
+      "prompt": "Transparent PNG spritesheet, exactly 6 equal square cells laid out in 3 columns by 2 rows, no gutters drawn. Each cell contains the SAME pair of small adult sci-fi colony workers, entire bodies visible, side view facing right, one woman and one man in practical dusty ochre and grey coveralls, no weapons, no armour or helmets. Noncombat background actors for a remote ranching colony, original characters. Six hand-drawn sequential loop poses: 1 relaxed watching; 2 woman lifts right hand toward forehead, man turns head slightly; 3 woman shades eyes, man leans a little; 4 woman shades eyes looking right, man folds arms; 5 woman lowers hand, man uncrosses arms; 6 return close to initial relaxed watching. Both feet have identical planted baseline and same positions in every cell. Human anatomy coherent, exactly two arms per person, clear separate silhouettes, no merged limbs. No horizontal travel and no duplicated pose six times. Same camera, body size, proportions, colours, linework and lighting all six cells. Compact side-view premium game illustration, transparent everywhere around figures, no floor, shadow, background, grid, text, numbers or watermark. Keep generous 12% transparent margin all around every cell."
+    },
+    {
+      "id": "yautja-spectators-six-poses",
+      "target": "public/game/sprites/v54/pit-life/yautja-spectators.png",
+      "transparent": true,
+      "prompt": "Transparent PNG spritesheet, exactly 6 equal square cells in 3 columns and 2 rows. SAME pair of original unnamed adult Yautja spectators throughout, full bodies side-on facing right, standing quietly behind an arena barrier supplied separately. No combat-ready poses, no weapons, no named franchise armour copy. Muted bronze ritual wraps and modest chest/shoulder armour, dark dreadlocks, unmistakable four mandible face silhouette on one spectator and a simple mask on the other. Six genuine sequential hand drawn poses in a subtle watching/approval loop: neutral; one spectator inclines head; other raises one closed fist to chest; both acknowledge; fist lowers; both return neutral. Feet planted at identical coordinates/baseline in all six cells, fixed body scale, no sliding, no bouncing the whole drawing. Anatomically consistent two arms and two legs each, no extra hands, entire figures inside each cell with generous 12 percent transparent margins. Premium side-view game sprite illustration, subdued distant-actor contrast. Transparent outside figures; no floor, shadows, podium, grid, text, UI or watermark. Intended only for original exhibition/ceremonial project arenas, not inserted into canonical film scenes."
+    }
+  ],
+  "modularReuse": {
+    "neonopolis": "P1 conduit, P2 steel upright, P3 utility case, P4 metal floor/fascia and P5 service cable from reviewed arena-104 subway kit, with explicit shared-library references. These are reused industrial modules, not new unique Neonopolis drawings.",
+    "ryushi": "Use reviewed desert/earth floor and stone modules, plus independent industrial utility props. No tree trunks or Yautja ceremonial architecture. New P0 establishes ranch setting; shared modules remain declared adaptation."
+  },
+  "animationContract": "Six drawn poses at 3 fps; deterministic presentation frame clock, freeze with paused clock, reduced motion fixed native cell; actual sheet crops only, no generated tweening, CSS motion or miniature combat sprite crowd. Colony pair only in Ryushi; Yautja pair only selected original ceremonial arenas. Optional visual layer cannot mutate combat or save state. Missing image is exposed as unavailable, never silently claimed animated."
+}

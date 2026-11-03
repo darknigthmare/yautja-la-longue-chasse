@@ -1,0 +1,45 @@
+name: V139 PHG visual/geometry Excel parity gate
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "docs/production/Yautja_PHG_QA_Visual_Morphologies_V139.xlsx"
+      - "docs/production/Yautja_PHG_QA_Visual_Morphologies_V140.xlsx"
+      - "docs/production/Yautja_PHG_QA_Visual_Morphologies_V141.xlsx"
+      - "scripts/verify-phg-official-v141.py"
+      - "tests/test_phg_official_v141.py"
+      - "scripts/verify-phg-filter-v140.py"
+      - "scripts/verify-phg-visual-v139.py"
+      - "tests/test_phg_visual_v139.py"
+      - ".github/workflows/phg-visual-qa-v139.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  visual-ledger-contract:
+    name: V139 preserve 1134 visual cases and verify 52 decal placements
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/production/Yautja_PHG_QA_Visual_Morphologies_V139.xlsx
+            /docs/production/Yautja_PHG_QA_Visual_Morphologies_V140.xlsx
+            /docs/production/Yautja_PHG_QA_Visual_Morphologies_V141.xlsx
+            /scripts/verify-phg-official-v141.py
+            /tests/test_phg_official_v141.py
+            /scripts/verify-phg-filter-v140.py
+            /scripts/verify-phg-visual-v139.py
+            /scripts/verify-phg-production-xlsx-v138.py
+            /tests/test_phg_visual_v139.py
+      - name: Reject false visual certification, altered geometry or hashes
+        run: |
+          python3 scripts/verify-phg-visual-v139.py
+          python3 -m unittest discover -s tests -p test_phg_visual_v139.py -v
+          python3 scripts/verify-phg-filter-v140.py
+          python3 scripts/verify-phg-official-v141.py
+          python3 -m unittest discover -s tests -p test_phg_official_v141.py -v

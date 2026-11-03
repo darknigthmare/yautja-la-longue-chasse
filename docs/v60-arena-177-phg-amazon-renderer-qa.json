@@ -1,0 +1,1502 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-177-phg-amazon",
+  "compositionDigest": "2a4789b838aad179d8551ce4941b9a48f03c2b930484680a40a6fb4a0bd33860",
+  "checkedAt": "2026-09-30T15:32:25.265Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-177-phg-amazon/p0-depth.png",
+      "sha256": "2fb74eb080d36b43418b353a9e59e5fde33f1092956e3737c0c1c0a32dd86089",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p2-jungle-trunks.png",
+      "sha256": "dabc3da1e524b8d23e7a1b22c715655050eb4fba593c1a7c4b0dd6ebc9d990da",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p3-roots-rocks.png",
+      "sha256": "4e72d079e6c9aa19e74661a0afac49787b58b9920ab2648715bd380835de459e",
+      "width": 1774,
+      "height": 887,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p4-floor.png",
+      "sha256": "7717b3e45eccd10e21cf81fc287e1f618e4ee705e6e3ff2aa6ccf688593eda71",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+      "sha256": "28c441e22ed32c988fb20771eef0e40a76ace4ce503a2d7da5a0a74ee4b16e15",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-01.png",
+      "sha256": "3a8fc8c697b92c0581198ef54fcbe79007ed857f63524902f7d167a998284884",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-02.png",
+      "sha256": "7fc6ad7aeb9a9bac12f352abe1f69173da0537b2b54bf41cef12ec57f642d873",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-03.png",
+      "sha256": "42a55b867a5b9354ce6ee198b90a4836789ebfb7d1a20b683704d428edf809cb",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 9,
+    "expectedImages": 9,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            155,
+            112
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            580,
+            370
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            805,
+            339
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            155,
+            112
+          ],
+          "pivot": [
+            155,
+            112
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            580,
+            370
+          ],
+          "pivot": [
+            580,
+            370
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            805,
+            339
+          ],
+          "pivot": [
+            805,
+            339
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 510.25000000000006,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -304.4776
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -304.4776
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            146.06249999999997,
+            107.39812499999996
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            582.75,
+            372.49312499999996
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            813.9375,
+            340.640625
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            146.06249999999997,
+            107.39812499999996
+          ],
+          "pivot": [
+            146.06249999999997,
+            107.39812499999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            582.75,
+            372.49312499999996
+          ],
+          "pivot": [
+            582.75,
+            372.49312499999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            813.9375,
+            340.640625
+          ],
+          "pivot": [
+            813.9375,
+            340.640625
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 501.99999999999994,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            157.9125,
+            108.44500000000001
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            592.4749999999999,
+            372.25
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            822.5374999999999,
+            340.5525
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            157.9125,
+            108.44500000000001
+          ],
+          "pivot": [
+            157.9125,
+            108.44500000000001
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            592.4749999999999,
+            372.25
+          ],
+          "pivot": [
+            592.4749999999999,
+            372.25
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            822.5374999999999,
+            340.5525
+          ],
+          "pivot": [
+            822.5374999999999,
+            340.5525
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 501.99999999999994,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            137.4625,
+            108.44500000000001
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            572.025,
+            372.25
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            802.0875,
+            340.5525
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            137.4625,
+            108.44500000000001
+          ],
+          "pivot": [
+            137.4625,
+            108.44500000000001
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            572.025,
+            372.25
+          ],
+          "pivot": [
+            572.025,
+            372.25
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            802.0875,
+            340.5525
+          ],
+          "pivot": [
+            802.0875,
+            340.5525
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 398.00000000000006,
+          "expected": 398,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -8.320000000000007
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -8.320000000000007
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            158.25,
+            113.57999999999998
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            579,
+            369
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            801.75,
+            338.31
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            158.25,
+            113.57999999999998
+          ],
+          "pivot": [
+            158.25,
+            113.57999999999998
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            579,
+            369
+          ],
+          "pivot": [
+            579,
+            369
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            801.75,
+            338.31
+          ],
+          "pivot": [
+            801.75,
+            338.31
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 414.00000000000006,
+          "expected": 414,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 414.00000000000006,
+          "expected": 414,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -49.5
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -49.5
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            187.5,
+            127.8
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            570,
+            360
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            772.5,
+            332.1
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            187.5,
+            127.8
+          ],
+          "pivot": [
+            187.5,
+            127.8
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            570,
+            360
+          ],
+          "pivot": [
+            570,
+            360
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            772.5,
+            332.1
+          ],
+          "pivot": [
+            772.5,
+            332.1
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            155,
+            112
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            580,
+            370
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            805,
+            339
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            155,
+            112
+          ],
+          "pivot": [
+            155,
+            112
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            580,
+            370
+          ],
+          "pivot": [
+            580,
+            370
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            805,
+            339
+          ],
+          "pivot": [
+            805,
+            339
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-jungle-trunks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-roots-rocks",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p5-close-foliage.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            155,
+            112
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            580,
+            370
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-177-phg-amazon/life-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            805,
+            339
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            155,
+            112
+          ],
+          "pivot": [
+            155,
+            112
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            580,
+            370
+          ],
+          "pivot": [
+            580,
+            370
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            805,
+            339
+          ],
+          "pivot": [
+            805,
+            339
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 1206,
+      "attachment": [
+        805,
+        339
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 1226,
+      "attachment": [
+        805,
+        339
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 1246,
+      "attachment": [
+        805,
+        339
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 1266,
+      "attachment": [
+        805,
+        339
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 1286,
+      "attachment": [
+        805,
+        339
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 1306,
+      "attachment": [
+        805,
+        339
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 2465,
+      "attachment": [
+        155,
+        112
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 2485,
+      "attachment": [
+        155,
+        112
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 2505,
+      "attachment": [
+        155,
+        112
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 2525,
+      "attachment": [
+        155,
+        112
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 2545,
+      "attachment": [
+        155,
+        112
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 2565,
+      "attachment": [
+        155,
+        112
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 3613,
+      "attachment": [
+        580,
+        370
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 3633,
+      "attachment": [
+        580,
+        370
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 3653,
+      "attachment": [
+        580,
+        370
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 3673,
+      "attachment": [
+        580,
+        370
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 3693,
+      "attachment": [
+        580,
+        370
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 3713,
+      "attachment": [
+        580,
+        370
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p4-floor.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-177-phg-amazon\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-177-phg-amazon\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-177-phg-amazon\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-177-phg-amazon\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-177-phg-amazon\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-177-phg-amazon\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-177-phg-amazon\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-177-phg-amazon\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "7c40266928101bcf283b906cedf80206dd7765daf2eefee874e875c8a9d38d3d",
+    "left-corner.png": "03bbbaa9882600edbd3e59c02895ba81a036804f48e002a1ce98c22e6598ce7a",
+    "right-corner.png": "e161efb0f03caa552c0fb68c91bda35a2a298c19b9a2c1347fa738098a5c99d5",
+    "wide.png": "04b971117c2053050958ad244f90b4a0dc38b2a0bd45679c46297f91d6a6f4de",
+    "life-03-active.png": "7c50dd5bfe0a92aa7c0aeb17e34722516c424f048135d5c1be0116fe1a74656b",
+    "life-01-active.png": "92a32e22867b5af90f78c0db16950ca26818b6fa123d70adc9bdeadcd75e6bb3",
+    "life-02-active.png": "d5773a0d37fce1f392368f2dbe5818cb1c5fb715480eda985bdbcef81b5d4968",
+    "mobile.png": "703513d0803cc95eafe75ba50b9d701a555a30669f0912f4eb3af50ab0c9a4eb"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}

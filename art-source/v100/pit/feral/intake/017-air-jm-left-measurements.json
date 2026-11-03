@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/feral/intake/017-air-jm-left.png",
+  "sourceSha256": "fff78ca1f1445eb74d2c9e4de4c5c9906388438e8c5461710e5de5d9023c02d9",
+  "bytes": 2078906,
+  "width": 1024,
+  "height": 1536,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 2,
+  "strategy": "row-first",
+  "status": "MEASURED_REQUIRES_VISUAL_REVIEW",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "y",
+      "row": 1,
+      "start": 716,
+      "end": 860,
+      "cut": 788
+    },
+    {
+      "axis": "x",
+      "row": 0,
+      "column": 1,
+      "start": 534,
+      "end": 643,
+      "cut": 588
+    },
+    {
+      "axis": "x",
+      "row": 1,
+      "column": 1,
+      "start": 628,
+      "end": 651,
+      "cut": 639
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        589,
+        789
+      ],
+      "visibleRect": [
+        88,
+        179,
+        446,
+        537
+      ],
+      "alphaPixels": 104604,
+      "borderPixels": 0,
+      "visiblePixelSha256": "578076ae71f1e48baf28323744e3aa23c9370d26359a9d19d8788f9680ed52ad",
+      "pivotCandidate": [
+        504,
+        716
+      ],
+      "visibleHeightCandidate": 537
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        588,
+        0,
+        436,
+        789
+      ],
+      "visibleRect": [
+        644,
+        128,
+        344,
+        541
+      ],
+      "alphaPixels": 90732,
+      "borderPixels": 0,
+      "visiblePixelSha256": "b1d85fc386b4440888f866069039d7b4e6fafa0adfb592bf3b236f3c62cba2f1",
+      "pivotCandidate": [
+        361.5,
+        669
+      ],
+      "visibleHeightCandidate": 541
+    },
+    {
+      "index": 2,
+      "row": 1,
+      "column": 0,
+      "rect": [
+        0,
+        788,
+        640,
+        748
+      ],
+      "visibleRect": [
+        40,
+        873,
+        588,
+        518
+      ],
+      "alphaPixels": 107176,
+      "borderPixels": 0,
+      "visiblePixelSha256": "0a92d9a6ed601a73ff977daff3214465a1cc2065c9bf0d918a60e7a2f16421e7",
+      "pivotCandidate": [
+        595,
+        603
+      ],
+      "visibleHeightCandidate": 518
+    },
+    {
+      "index": 3,
+      "row": 1,
+      "column": 1,
+      "rect": [
+        639,
+        788,
+        385,
+        748
+      ],
+      "visibleRect": [
+        652,
+        861,
+        353,
+        565
+      ],
+      "alphaPixels": 97913,
+      "borderPixels": 0,
+      "visiblePixelSha256": "febd72c7b9c42de3ee1167be83a64371647388d5241715cc373c9c99663f2bbf",
+      "pivotCandidate": [
+        321.5,
+        638
+      ],
+      "visibleHeightCandidate": 565
+    }
+  ],
+  "issues": []
+}

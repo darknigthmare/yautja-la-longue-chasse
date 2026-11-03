@@ -1,0 +1,237 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4184",
+  "checks": [
+    {
+      "scenario": "empty-acceptance",
+      "status": "PASS",
+      "reportProvenance": "Empty request, accepted in actual UI",
+      "verifies": [
+        "walked city route and real door",
+        "walked giver proximity",
+        "wrong deduction refused if report present",
+        "quota refusal and retry",
+        "persistent acceptance or debrief",
+        "reload",
+        "no material reward or side-story mutation",
+        "mobile overflow"
+      ]
+    },
+    {
+      "scenario": "ash-report-fixture",
+      "status": "PASS",
+      "reportProvenance": "Explicit valid report fixture; expedition NOT played by this recipe",
+      "verifies": [
+        "walked city route and real door",
+        "walked giver proximity",
+        "wrong deduction refused if report present",
+        "quota refusal and retry",
+        "persistent acceptance or debrief",
+        "reload",
+        "no material reward or side-story mutation",
+        "mobile overflow"
+      ]
+    },
+    {
+      "scenario": "glass-report-fixture",
+      "status": "PASS",
+      "reportProvenance": "Explicit valid report fixture; expedition NOT played by this recipe",
+      "verifies": [
+        "walked city route and real door",
+        "walked giver proximity",
+        "wrong deduction refused if report present",
+        "quota refusal and retry",
+        "persistent acceptance or debrief",
+        "reload",
+        "no material reward or side-story mutation",
+        "mobile overflow"
+      ]
+    }
+  ],
+  "captures": [
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-compiled\\empty-acceptance-offer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-compiled\\empty-acceptance-mobile-confirmed.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-compiled\\ash-report-fixture-offer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-compiled\\ash-report-fixture-wrong-answer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-compiled\\ash-report-fixture-mobile-confirmed.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-compiled\\glass-report-fixture-offer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-compiled\\glass-report-fixture-wrong-answer.jpg",
+    "I:\\CodexTemp\\yautja-v66-20261001\\npc-missions-compiled\\glass-report-fixture-mobile-confirmed.jpg"
+  ],
+  "routes": [
+    {
+      "scenario": "empty-acceptance",
+      "records": [
+        {
+          "kind": "city-and-door",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 3430,
+            "y": 1976.5
+          },
+          "distance": 4359.543286547536
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "ash-report-fixture",
+      "records": [
+        {
+          "kind": "city-and-door",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 3430,
+            "y": 1976.5
+          },
+          "distance": 4359.543286547536
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "glass-report-fixture",
+      "records": [
+        {
+          "kind": "city-and-door",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 3430,
+            "y": 1976.5
+          },
+          "distance": 4359.543286547536
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "medbay-service",
+          "buildingId": "clan-lodge",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "events": [],
+  "scope": "NPC conversation and physical return QA. Two return scenarios use declared proof fixtures, not completed browser expeditions.",
+  "visualReview": {
+    "status": "PASS_WITH_DOCUMENTED_MINOR_LIMITATION",
+    "reviewer": "agent",
+    "reviewedCaptures": [
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-compiled/empty-acceptance-offer.jpg",
+        "sha256": "7f9eab3f4df349cd349a91786616b7efd78396fb5be35c718389772a4bae0dbb"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-compiled/empty-acceptance-mobile-confirmed.jpg",
+        "sha256": "30e38f898f31b1dd02d360f9b4700ae24c30c191d47afddc80392ac9a7da76d6"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-compiled/ash-report-fixture-offer.jpg",
+        "sha256": "8ffd97b9e47a87b5d56cdd98fe34876f6d4428a36973cd6185776e7dde5fe691"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-compiled/ash-report-fixture-wrong-answer.jpg",
+        "sha256": "fc46501b45c7860900bd2a88211e0f3fbef5c70cf1512de39dea995a6f8c3b04"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-compiled/ash-report-fixture-mobile-confirmed.jpg",
+        "sha256": "726164d85f5ccdc2707289aa3b24b02aec1bb42ab635bf0972486390a874e1dd"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-compiled/glass-report-fixture-offer.jpg",
+        "sha256": "d965d0394c4a3be083be90b55857ff39b19273e3c263091a5206901ab7532d91"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-compiled/glass-report-fixture-wrong-answer.jpg",
+        "sha256": "5cba1241d97c96e01c106c008234ea78526ab09a7ccde801b39186991eb16dc5"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-compiled/glass-report-fixture-mobile-confirmed.jpg",
+        "sha256": "36207b832dee881332fc316773ce7744f32f0aa610cc8266e3c53776179cef97"
+      }
+    ],
+    "totalCaptures": 8,
+    "reviewedCount": 8,
+    "observations": [
+      "Giver, requested region and supported debrief options remain legible on desktop.",
+      "Mobile acceptance, first report and two-mission completion retain readable text without horizontal overflow.",
+      "Wrong deductions are refused; final text explicitly states no treatment, rank or equipment award."
+    ],
+    "limitations": [
+      "Mobile dialog uses vertical scrolling; not every control is simultaneously visible.",
+      "Some rejection/success feedback is repeated in the story panel, host dialog and global toast. Cosmetic redundancy observed; exercised actions remain usable."
+    ]
+  },
+  "schemaVersion": 1,
+  "release": "V66",
+  "checkedAt": "2026-10-01T03:12:49.980Z",
+  "environment": "First stable local compiled Next V66. Predates the final independent defaultSave, Solo departure and Reserve presentation corrections; no final build or public release claim.",
+  "reviewer": "agent",
+  "publicDeploymentVerified": false,
+  "reportEvidence": {
+    "path": "I:/CodexTemp/yautja-v66-20261001/npc-missions-compiled/report.json",
+    "sha256": "ee4b7fb34838129722c44cf5b42813a85c32cccb55318ac1438de9158b418a12"
+  },
+  "runScope": {
+    "cityAndGiverRoutes": 3,
+    "emptyAcceptancePlayed": true,
+    "returnReportFixtures": 2,
+    "actualReloads": 3,
+    "actorTeleportation": false,
+    "expeditionsPlayedInBrowser": false,
+    "fullBrowserMissionEndToEnd": false
+  },
+  "separateEngineProof": {
+    "evidence": {
+      "path": "docs/v66-npc-field-integration-proof.json",
+      "sha256": "cbac1a99e23b6bd585af4b5b53000b1554033170c9ad866f294dd867b9fe36a7"
+    },
+    "scope": "Six tests execute actual GameClient completion callbacks with fresh reports obtained by ordinary input through real field engines. This supplements but does not constitute browser expeditions."
+  }
+}

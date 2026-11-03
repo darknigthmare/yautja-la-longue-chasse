@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "characterId": "tracker",
+  "clipId": "tracker-guard-absorb",
+  "status": "draft-for-visual-review",
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "mode": "integrated-built-in",
+    "apiKeyUsed": false,
+    "model": "not exposed by tool",
+    "date": "2026-09-05",
+    "inputReferences": "Browser-rendered official/ licensed photo screenshots displayed in conversation; original downloaded photos not redistributed.",
+    "referencePathReadFailedWith": "Windows sandbox ACL helper failure; in-conversation reference previews used instead.",
+    "prompts": [
+      "art-source/v28/known-hunters/prompts/tracker-guard-absorb.txt",
+      "art-source/v28/known-hunters/prompts/tracker-guard-absorb-v2.txt"
+    ]
+  },
+  "selectedSource": {
+    "path": "art-source/v28/known-hunters/sources/tracker-guard-absorb-v2.png",
+    "bytes": 1932274,
+    "sha256": "e4e2be3dd53112d376deadce01dc982117ce9a476f57c51b6e510b024e23cb16",
+    "width": 1536,
+    "height": 1024,
+    "channels": 3,
+    "hasAlpha": false
+  },
+  "persistence": {
+    "originalDataUrlBytes": true,
+    "assembly": "24,000-character base64 fragments,12 workers, sorted then decoded once",
+    "bitmapMutation": false,
+    "creativeScriptRetouch": false,
+    "keyExtractionSaved": false
+  },
+  "rejectedDrafts": [
+    {
+      "file": "tracker-guard-absorb.png",
+      "sha256": "247730db4a1d9b12dd689c61d17deb6047d899853c12ac63e78e87b3e2b55136",
+      "reason": "Two barrel-like cannon openings in some poses; replaced by integrated correction, not selected.",
+      "path": "art-source/v28/known-hunters/sources/tracker-guard-absorb.png"
+    }
+  ],
+  "registration": "art-source/v28/known-hunters/characters/tracker/registration.json",
+  "references": "art-source/v28/known-hunters/characters/tracker/references.json",
+  "fidelity1to1Certified": false,
+  "anatomyCertified": false,
+  "playbackVerified": false,
+  "gameplayApproved": false
+}

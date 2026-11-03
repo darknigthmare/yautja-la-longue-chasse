@@ -1,0 +1,1029 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "shared-vehicle-fx",
+  "name": "Effets modulaires partagés",
+  "lore": "original-game-effects-library-not-a-vehicle",
+  "assets": [
+    {
+      "id": "antigrav-pulse-r1",
+      "actionId": "antigrav-pulse",
+      "label": "antigrav-pulse-r1",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/shared-vehicle-fx/antigrav-pulse-r1.png",
+      "publicPath": "/game/vehicles/v34/shared-vehicle-fx/antigrav-pulse-r1.png",
+      "originId": "exec-f148a745-35f3-4d0e-8fec-6b03bd758121.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "98cf824f4e52779a712abd070c0214c6be29852e9866651fd973d47e75269b1b",
+      "bytes": 827571,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "alpha"
+      },
+      "rawAlpha": {
+        "zero": 1119609,
+        "partial": 453929,
+        "opaque": 0
+      },
+      "prompt": "A reusable professional 2D sci-fi game EFFECTS animation sheet: exactly EIGHT distinct chronological drawings of a small cyan-teal ANTIGRAVITY EMITTER PULSE, in a regular four columns by two rows grid, read left-to-right top row then bottom row. Effects ONLY, no hardware, vehicles, riders, ground plane or scenery. The invisible emitter is centered at top of each effect: tiny cyan ignition orb; orb brightens with short downward cone; first elliptical energy ring expands below; two soft rings expand; cone briefly peaks brighter; rings spread thinner; outer ring fades; last delicate wisps return toward the small core. All eight share the same TOP-CENTER emitter origin, same scale and camera. Non-directional downward pulse, no left/right travel, suitable for reuse beneath hovercrafts. Rings have clear elliptical geometry seen from side, restrained soft alpha edges and crisp white-cyan core. Every effect fully inside central60percent width and height of its cell, large truly TRANSPARENT margins on all sides, no painted checkerboard, colored solid background, labels, grid, text, borders or watermark. Do not add smoke covering neighboring cells or opaque black rectangles. Actual changing ring and plume shapes, not translated copies.",
+      "references": [],
+      "notes": [
+        "Reusable effect library, not an additional vehicle or eight separately completed vehicle animations.",
+        "Direction-independent downward emitter pulse; all eight frames belong to one sequence.",
+        "Alpha-composited review on dark/light backgrounds: colored fringe samples have alpha at most 16/255, no red outliers above 16/255. Very faint glow may cross a regular cell cut; review windows retain the substantial effect.",
+        "Emitter-aligned preview only. Effect timing, vehicle mount points and world collision/interaction remain unimplemented."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "ignition",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            195,
+            120,
+            60,
+            127
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 5838,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "cone",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            593,
+            116,
+            150,
+            201
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 19307,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "first-ring",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            983,
+            115,
+            254,
+            230
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 35236,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "two-rings",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1386,
+            114,
+            337,
+            239
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 46577,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "right",
+          "phase": "peak",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            32,
+            546,
+            388,
+            277
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 61365,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "right",
+          "phase": "spread",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            457,
+            556,
+            424,
+            254
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 60772,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "right",
+          "phase": "fade",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            894,
+            557,
+            427,
+            255
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 56714,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "right",
+          "phase": "residual",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            1481,
+            558,
+            147,
+            208
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 16928,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            192,
+            117,
+            66,
+            133
+          ],
+          "pivot": [
+            32,
+            23
+          ],
+          "facing": "right",
+          "phase": "ignition",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            590,
+            113,
+            156,
+            207
+          ],
+          "pivot": [
+            76,
+            27
+          ],
+          "facing": "right",
+          "phase": "cone",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            980,
+            112,
+            260,
+            236
+          ],
+          "pivot": [
+            129,
+            28
+          ],
+          "facing": "right",
+          "phase": "first-ring",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1383,
+            111,
+            343,
+            245
+          ],
+          "pivot": [
+            171,
+            29
+          ],
+          "facing": "right",
+          "phase": "two-rings",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            29,
+            543,
+            394,
+            283
+          ],
+          "pivot": [
+            195,
+            39
+          ],
+          "facing": "right",
+          "phase": "peak",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            454,
+            553,
+            430,
+            260
+          ],
+          "pivot": [
+            212,
+            29
+          ],
+          "facing": "right",
+          "phase": "spread",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            891,
+            554,
+            433,
+            261
+          ],
+          "pivot": [
+            218,
+            28
+          ],
+          "facing": "right",
+          "phase": "fade",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1478,
+            555,
+            153,
+            214
+          ],
+          "pivot": [
+            76,
+            27
+          ],
+          "facing": "right",
+          "phase": "residual",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        200
+      ],
+      "alphaEdgeReview": {
+        "id": "antigrav-pulse-r1",
+        "redFringe": {
+          "invisible": 0,
+          "alpha1to16": 0,
+          "alpha17to63": 0,
+          "alpha64plus": 0
+        },
+        "lowAlphaOnColumnCuts": 205
+      }
+    },
+    {
+      "id": "dust-trail-r1",
+      "actionId": "dust-trail",
+      "label": "dust-trail-r1",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/shared-vehicle-fx/dust-trail-r1.png",
+      "publicPath": "/game/vehicles/v34/shared-vehicle-fx/dust-trail-r1.png",
+      "originId": "exec-d5693952-31b7-4f56-9792-7d96fca827db.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "3fac63d3a298d25637c919a893506fe5d39e8d51ad30c6008e166c022794217c",
+      "bytes": 811044,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "alpha"
+      },
+      "rawAlpha": {
+        "zero": 1201353,
+        "partial": 372184,
+        "opaque": 1
+      },
+      "prompt": "Create a professional 2D side-scrolling game sprite animation sheet of SAND DUST TRAILS ONLY for a desert antigravity skimmer. Eight separate complete effects in exact regular four columns by two rows. Top row represents vehicle moving RIGHT, so source at the RIGHT of each cell and tan dust streams toward LEFT. Bottom row represents moving LEFT, source at LEFT and dust streams toward RIGHT. Four chronological phases per row: a small kicked-up puff; larger elongated trailing plume; rolling turbulent broken cloud; thin separated dissipating wisps. Same source anchor and scale within each row, visibly different naturally evolving shapes. Warm light sandstone beige dust with fine grit, restrained semi-transparent edges, no fire, no cyan glow. No vehicle, ground, footprints, riders, wheels, text, icons, grid or scene. Each plume stays fully in central60percent of its own cell with broad TRUE TRANSPARENT ALPHA gutters all around. Do not paint a checkerboard or black background. Side view at ground height, full readable silhouette, no particles spilling into neighboring cells. Original hand-painted game VFX.",
+      "references": [],
+      "notes": [
+        "Reusable effect library, not an additional vehicle or eight separately completed vehicle animations.",
+        "Facing denotes the vehicle travel direction; wake trails in the opposite direction.",
+        "Alpha-composited review on dark/light backgrounds: colored fringe samples have alpha at most 16/255, no red outliers above 16/255. Very faint glow may cross a regular cell cut; review windows retain the substantial effect.",
+        "Emitter-aligned preview only. Effect timing, vehicle mount points and world collision/interaction remain unimplemented."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "small",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            132,
+            206,
+            237,
+            105
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 13528,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "plume",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            477,
+            164,
+            368,
+            151
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 38615,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "turbulence",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            916,
+            175,
+            371,
+            140
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 37314,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "fade",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1370,
+            176,
+            363,
+            131
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 27573,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "small",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            79,
+            607,
+            244,
+            110
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 14970,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "plume",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            476,
+            570,
+            377,
+            152
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 40684,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "turbulence",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            925,
+            582,
+            380,
+            141
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 38365,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "fade",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            1364,
+            585,
+            370,
+            131
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 29006,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            129,
+            203,
+            243,
+            111
+          ],
+          "pivot": [
+            239,
+            109
+          ],
+          "facing": "right",
+          "phase": "small",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            474,
+            161,
+            374,
+            157
+          ],
+          "pivot": [
+            368,
+            154
+          ],
+          "facing": "right",
+          "phase": "plume",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            913,
+            172,
+            377,
+            146
+          ],
+          "pivot": [
+            372,
+            143
+          ],
+          "facing": "right",
+          "phase": "turbulence",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1367,
+            173,
+            369,
+            137
+          ],
+          "pivot": [
+            363,
+            134
+          ],
+          "facing": "right",
+          "phase": "fade",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            76,
+            604,
+            250,
+            116
+          ],
+          "pivot": [
+            4,
+            112
+          ],
+          "facing": "left",
+          "phase": "small",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            473,
+            567,
+            383,
+            158
+          ],
+          "pivot": [
+            4,
+            155
+          ],
+          "facing": "left",
+          "phase": "plume",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            922,
+            579,
+            386,
+            147
+          ],
+          "pivot": [
+            3,
+            144
+          ],
+          "facing": "left",
+          "phase": "turbulence",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1361,
+            582,
+            376,
+            137
+          ],
+          "pivot": [
+            3,
+            134
+          ],
+          "facing": "left",
+          "phase": "fade",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        650
+      ],
+      "alphaEdgeReview": {
+        "id": "dust-trail-r1",
+        "redFringe": {
+          "invisible": 0,
+          "alpha1to16": 23018,
+          "alpha17to63": 0,
+          "alpha64plus": 0
+        },
+        "lowAlphaOnColumnCuts": 66
+      }
+    },
+    {
+      "id": "water-wake-r1",
+      "actionId": "water-wake",
+      "label": "water-wake-r1",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/shared-vehicle-fx/water-wake-r1.png",
+      "publicPath": "/game/vehicles/v34/shared-vehicle-fx/water-wake-r1.png",
+      "originId": "exec-00835284-891a-4235-812e-f55f1412d004.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "0e38263d15fa0095aea0a3708945322976799d9ba4ead4c8c8d4e69d8753d602",
+      "bytes": 717016,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "alpha"
+      },
+      "rawAlpha": {
+        "zero": 1274717,
+        "partial": 298821,
+        "opaque": 0
+      },
+      "prompt": "A professional eight-frame 2D game VFX sprite sheet of SHALLOW WATER WAKE AND SPLASH for a small antigravity jet-ski speeder, effects only. Exact regular four columns by two rows. Top four effects represent a vehicle traveling RIGHT: compact water disturbance source at RIGHT with wake trailing LEFT. Bottom four represent traveling LEFT: source at LEFT with wake trailing RIGHT. Four distinct chronological phases: small low white splash crest; broad aqua-white spray and foamy wake; broken descending droplets and rippling foam; few fading foam patches. Fixed source position and same scale in each row. Low side-view water effects, irregular hand-painted white foam and desaturated turquoise water, realistic translucent droplets, restrained highlights. No vehicle, rider, fish, terrain, horizon, UI, letters, labels, grid lines or water rectangle. All splashes entirely contained within central60percent width/height of each cell and wide truly TRANSPARENT alpha gutters; no opaque background or painted checker. Keep neighboring effects completely separate. Use actual evolving spray shapes, not transformed duplicates.",
+      "references": [],
+      "notes": [
+        "Reusable effect library, not an additional vehicle or eight separately completed vehicle animations.",
+        "Facing denotes the vehicle travel direction; wake trails in the opposite direction.",
+        "Alpha-composited review on dark/light backgrounds: colored fringe samples have alpha at most 16/255, no red outliers above 16/255. Very faint glow may cross a regular cell cut; review windows retain the substantial effect.",
+        "Emitter-aligned preview only. Effect timing, vehicle mount points and world collision/interaction remain unimplemented."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "small",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            86,
+            283,
+            315,
+            110
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 12538,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "spray",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            482,
+            200,
+            363,
+            200
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 35233,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "fall",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            934,
+            275,
+            355,
+            130
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 24172,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "fade",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1382,
+            316,
+            326,
+            87
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 12257,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "small",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            75,
+            651,
+            312,
+            133
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 14955,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "spray",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            492,
+            584,
+            361,
+            202
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 32749,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "fall",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            936,
+            661,
+            357,
+            127
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 22633,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "fade",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            1392,
+            712,
+            322,
+            76
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 12221,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            83,
+            280,
+            321,
+            116
+          ],
+          "pivot": [
+            312,
+            112
+          ],
+          "facing": "right",
+          "phase": "small",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            479,
+            197,
+            369,
+            206
+          ],
+          "pivot": [
+            361,
+            201
+          ],
+          "facing": "right",
+          "phase": "spray",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            931,
+            272,
+            361,
+            136
+          ],
+          "pivot": [
+            353,
+            131
+          ],
+          "facing": "right",
+          "phase": "fall",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1379,
+            313,
+            332,
+            93
+          ],
+          "pivot": [
+            325,
+            88
+          ],
+          "facing": "right",
+          "phase": "fade",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            72,
+            648,
+            318,
+            139
+          ],
+          "pivot": [
+            8,
+            134
+          ],
+          "facing": "left",
+          "phase": "small",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            489,
+            581,
+            367,
+            208
+          ],
+          "pivot": [
+            6,
+            204
+          ],
+          "facing": "left",
+          "phase": "spray",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            933,
+            658,
+            363,
+            133
+          ],
+          "pivot": [
+            5,
+            126
+          ],
+          "facing": "left",
+          "phase": "fall",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1389,
+            709,
+            328,
+            82
+          ],
+          "pivot": [
+            6,
+            77
+          ],
+          "facing": "left",
+          "phase": "fade",
+          "durationTicks": 6,
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        650
+      ],
+      "alphaEdgeReview": {
+        "id": "water-wake-r1",
+        "redFringe": {
+          "invisible": 0,
+          "alpha1to16": 69,
+          "alpha17to63": 0,
+          "alpha64plus": 0
+        },
+        "lowAlphaOnColumnCuts": 9
+      }
+    }
+  ],
+  "generatedSources": 3,
+  "acceptedRuntimeClips": 0,
+  "libraryType": "shared-vehicle-effects",
+  "catalogueVehicle": false
+}

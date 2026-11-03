@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "burrow-wyrm",
+  "name": "Burrow Wyrm",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Original subterranean mount PROPOSAL, long robust serpentine alien body with NO legs and NO wings, heavily armored segmented sand-grey dorsal scales, broad wedge-shaped digging head with CLOSED circular jaw rim, two tiny recessed eyes, muscular tapering tail. Body rests in a shallow horizontal S curve with the entire tail visible; clear single continuous spine, not a pile of coils. No rider, tunnel, rocks, mouth tentacles or dust. Opposite profile same creature.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Burrow Wyrm — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/burrow-wyrm/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/burrow-wyrm/identity-r1.png",
+      "originId": "exec-5246aaba-4088-44b1-b705-2422d3ddfde5.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "c8e6c7968f0f4618dc6c0e52b1bf4237d493643d760ce9f6779db46829b2989a",
+      "bytes": 1403033,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Bare animal layer: no saddle, tack or armor. Original subterranean mount PROPOSAL, long robust serpentine alien body with NO legs and NO wings, heavily armored segmented sand-grey dorsal scales, broad wedge-shaped digging head with CLOSED circular jaw rim, two tiny recessed eyes, muscular tapering tail. Body rests in a shallow horizontal S curve with the entire tail visible; clear single continuous spine, not a pile of coils. No rider, tunnel, rocks, mouth tentacles or dust. Opposite profile same creature.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 15,
+          "recoveredLine": 1155,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "OpenAI ImageGen original identity proposal; no canonical appearance is asserted.",
+        "Visually inspected: both opposing profiles preserve one continuous head-to-tail body in a shallow curve, with no leg, foot, arm, wing, tunnel, rock, dust or mouth tentacle; complete tails and closed circular jaw rims remain in frame.",
+        "Static bare-animal review sheet only; no gameplay, rig or animation acceptance implied. Runtime transparency is applied by the production review renderer."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            18,
+            216,
+            820,
+            397
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 131095,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            940,
+            215,
+            818,
+            398
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 130967,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

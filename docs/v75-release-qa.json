@@ -1,0 +1,375 @@
+{
+  "version": "V75",
+  "status": "PASS",
+  "verifiedAt": "2026-10-02T15:45:08.962Z",
+  "sourceCommit": "a1c1c4e41154d1c8c01d7b77bc6f6290caa99f8f",
+  "githubMain": "a1c1c4e41154d1c8c01d7b77bc6f6290caa99f8f",
+  "publicUrl": "https://yautja-la-longue-chasse.vercel.app",
+  "deployment": {
+    "id": "dpl_BKHfLXsMEKn4MLwzyqabNFFam4AX",
+    "state": "READY",
+    "target": "production",
+    "url": "yautja-la-longue-chasse-cjwd22a5l-darknigthmares-projects.vercel.app",
+    "sha": "a1c1c4e41154d1c8c01d7b77bc6f6290caa99f8f",
+    "aliases": [
+      "yautja-la-longue-chasse.vercel.app",
+      "yautja-la-longue-chasse-darknigthmares-projects.vercel.app",
+      "yautja-la-longue-chasse-git-main-darknigthmares-projects.vercel.app"
+    ],
+    "verifiedAt": "2026-10-02T15:35:26.492Z"
+  },
+  "delivered": {
+    "secondaryNativeFacades": 13,
+    "independentFrontageFurniture": 62,
+    "newLandscapeModules": 212,
+    "landscapePatches": 14,
+    "landscapeMaterials": 6,
+    "conversationDistricts": 14,
+    "conversationTopics": 3,
+    "contextCodexRecords": 1195,
+    "newNativePng": 14,
+    "existingResidents": 98,
+    "existingVisitableBuildings": 43
+  },
+  "local": {
+    "build": {
+      "version": "V75",
+      "portableExitCode": 0,
+      "nextExitCode": 0,
+      "completedAt": "2026-10-02T15:12:16.6433142Z",
+      "sourceFrozenAt": "2026-10-02T15:10:13.8324235Z",
+      "baseHead": "40524730b5f69676d3c679468323968660fc2d7c",
+      "note": "Final source freeze: selected-door annotation priority excludes physical native beacon sprites; native portals/props/models unchanged",
+      "limits": "Final local portable and Next builds; public deployment verified separately."
+    },
+    "regression": {
+      "version": "V75",
+      "status": "PASS",
+      "tests": 2502,
+      "passed": 2502,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "completedAt": "2026-10-02T15:20:10.7246990Z",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts",
+      "limits": "Model/runtime regression suite; native anatomy and visual composition are separately reviewed."
+    },
+    "staticChecks": {
+      "version": "V75",
+      "typecheckExitCode": 0,
+      "lintExitCode": 0,
+      "compiledCssExitCode": 0,
+      "completedAt": "2026-10-02T15:16:47.9079333Z",
+      "lintErrors": 0,
+      "preExistingImageWarnings": 3
+    },
+    "compiledCss": {
+      "status": "PASS",
+      "checkedAt": "2026-10-02T15:16:47.758Z",
+      "nextDir": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\.next",
+      "scope": "Root game route compiled CSS referenced by its webpack client manifest; no source CSS is read.",
+      "files": [
+        {
+          "path": "static/css/5a5c0d93c683a591.css",
+          "bytes": 123962,
+          "sha256": "58f455f6a3ac559f82d784c3272328f6581108b10cabc83ce428e0fb3415d015"
+        },
+        {
+          "path": "static/css/702593c94914f967.css",
+          "bytes": 16684,
+          "sha256": "2c262f7ca24acbc79d44752ef8fc729fe24dc92d8f94e9da2a4159f843dc087b"
+        }
+      ],
+      "checks": [
+        {
+          "id": "toast-does-not-intercept-hud",
+          "selector": "toast",
+          "property": "pointer-events",
+          "expected": "none",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".toast",
+              "value": "none",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        },
+        {
+          "id": "immersive-toast-above-desktop-menu",
+          "selector": "desktop",
+          "property": "bottom",
+          "expected": "max(76px, calc(env(safe-area-inset-bottom) + 64px))",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".game-shell:has([data-pit-immersive=true])>.toast",
+              "value": "max(76px,calc(env(safe-area-inset-bottom) + 64px))",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        },
+        {
+          "id": "touch-toast-below-health-hud",
+          "selector": "touch",
+          "property": "top",
+          "expected": "max(152px, calc(env(safe-area-inset-top) + 142px))",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast",
+              "value": "max(152px,calc(env(safe-area-inset-top) + 142px))",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        },
+        {
+          "id": "touch-toast-releases-bottom",
+          "selector": "touch",
+          "property": "bottom",
+          "expected": "auto",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast",
+              "value": "auto",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "Verifies these exact compiled selectors and declarations, not the entire CSS cascade or visual layout.",
+        "Does not certify CDN contents, service-worker caches, or the deployed browser; public smoke QA remains required.",
+        "The webpack manifest format is required and fails closed if it changes; equivalent unsupported CSS spellings need review."
+      ]
+    },
+    "recipes": [
+      {
+        "scope": "wayfinding",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 10,
+        "captures": 14,
+        "report": "docs/v75-wayfinding-local-browser-qa.json"
+      },
+      {
+        "scope": "conversations",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 3,
+        "captures": 7,
+        "report": "docs/v75-conversations-local-browser-qa.json"
+      },
+      {
+        "scope": "landscape",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 15,
+        "captures": 14,
+        "report": "docs/v75-landscape-local-browser-qa.json"
+      },
+      {
+        "scope": "architecture",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 18,
+        "captures": 17,
+        "report": "docs/v75-architecture-local-browser-qa.json"
+      },
+      {
+        "scope": "identity",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 15,
+        "captures": 24,
+        "report": "docs/v75-identity-local-browser-qa.json"
+      },
+      {
+        "scope": "youth-motion",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 27,
+        "captures": 13,
+        "report": "docs/v75-youth-motion-local-browser-qa.json"
+      },
+      {
+        "scope": "civilian-motion",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 14,
+        "captures": 4,
+        "report": "docs/v75-civilian-motion-local-browser-qa.json"
+      },
+      {
+        "scope": "motion-assets",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 3,
+        "captures": 3,
+        "report": "docs/v75-motion-assets-local-browser-qa.json"
+      },
+      {
+        "scope": "prologue",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 8,
+        "captures": 26,
+        "report": "docs/v75-prologue-local-browser-qa.json"
+      },
+      {
+        "scope": "shell",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 57,
+        "captures": null,
+        "report": "docs/v75-shell-local-browser-qa.json"
+      },
+      {
+        "scope": "connections",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 15,
+        "captures": 18,
+        "report": "docs/v75-connections-local-browser-qa.json"
+      },
+      {
+        "scope": "secondary-interiors",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 42,
+        "captures": 40,
+        "report": "docs/v75-secondary-interiors-local-browser-qa.json"
+      }
+    ]
+  },
+  "public": {
+    "recipes": [
+      {
+        "scope": "wayfinding",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 10,
+        "captures": 14,
+        "report": "docs/v75-wayfinding-public-browser-qa.json"
+      },
+      {
+        "scope": "conversations",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 3,
+        "captures": 7,
+        "report": "docs/v75-conversations-public-browser-qa.json"
+      },
+      {
+        "scope": "landscape",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 15,
+        "captures": 14,
+        "report": "docs/v75-landscape-public-browser-qa.json"
+      },
+      {
+        "scope": "architecture",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 18,
+        "captures": 17,
+        "report": "docs/v75-architecture-public-browser-qa.json"
+      },
+      {
+        "scope": "identity",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 15,
+        "captures": 24,
+        "report": "docs/v75-identity-public-browser-qa.json"
+      },
+      {
+        "scope": "youth-motion",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 27,
+        "captures": 13,
+        "report": "docs/v75-youth-motion-public-browser-qa.json"
+      },
+      {
+        "scope": "civilian-motion",
+        "status": "PASS",
+        "artStatus": "PARTIAL_ART",
+        "checks": 14,
+        "captures": 4,
+        "report": "docs/v75-civilian-motion-public-browser-qa.json"
+      },
+      {
+        "scope": "motion-assets",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 3,
+        "captures": 3,
+        "report": "docs/v75-motion-assets-public-browser-qa.json"
+      },
+      {
+        "scope": "prologue",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 8,
+        "captures": 26,
+        "report": "docs/v75-prologue-public-browser-qa.json"
+      },
+      {
+        "scope": "connections",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 15,
+        "captures": 18,
+        "report": "docs/v75-connections-public-browser-qa.json"
+      },
+      {
+        "scope": "shell",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 57,
+        "captures": 2,
+        "report": "docs/v75-shell-public-browser-qa.json"
+      },
+      {
+        "scope": "secondary-interiors",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 42,
+        "captures": 40,
+        "report": "docs/v75-secondary-interiors-public-browser-qa.json"
+      }
+    ],
+    "nativePngChecks": 53,
+    "allNativePngHttpAndShaPassed": true
+  },
+  "limits": [
+    "The playable city, architecture, daily customs and landscape are original lore-compatible adaptations, not a canon1:1 city or a universal Yautja monarchy.",
+    "Civilian V74 gait remains PARTIAL_ART; V75 does not claim to finish every native character cycle.",
+    "Native ground texture periodicity is visually reviewed but not mathematically certified.",
+    "QA uses isolated campaign fixtures and actual public keyboard/touch controls; it never uses the live user save.",
+    "Mobile checks use Chrome emulation, not a physical device or formal accessibility certification.",
+    "Real login/signup/email and account cross-device synchronization were not exercised.",
+    "This release covers this Homeworld lot, not every historical arena, campaign or commercial completion request."
+  ]
+}

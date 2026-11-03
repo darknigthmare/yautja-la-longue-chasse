@@ -1,0 +1,51 @@
+{
+  "status": "PASS-with-stated-scope",
+  "url": "http://127.0.0.1:4187",
+  "date": "2026-10-01",
+  "tenVillageFunctionalReport": "docs/v69-villages-local-qa.json",
+  "latestRepresentativeReport": "docs/v69-villages-appearance-local-qa.json",
+  "latestYouthReport": "docs/v69-youth-villages-local-qa.json",
+  "foundAndCorrectedRegression": "The original local youth journey functionally passed, but actual screenshots showed the hero changing from the authored Unblooded bitmap to an adult masked preset. The shared city visual policy and youth bitmap with a measured painted stature of 82 now cover connectors, villages and interiors without rewriting the saved appearance, grade, equipment or collisions.",
+  "finalCapturesInspectedAndPreserved": [
+    {
+      "file": "docs/v69/qa/village-life-final/ash-marches-dialogue.jpg",
+      "findings": "Translated text is a separate block; continue/settings buttons are below the speech. Ochre and dark native bodies replace the cyan choices for new residents."
+    },
+    {
+      "file": "docs/v69/qa/village-life-final/pillar-jungle-facade.jpg",
+      "findings": "Chest and beacon sit on the front architectural plinth. Opaque house facade, clear painted doorway, supported character feet and distinct terrace layout."
+    },
+    {
+      "file": "docs/v69/qa/village-life-final/cold-crown-interior.jpg",
+      "findings": "Centered cutaway room with native wall, bench, table and bed at supported positions. Adult appearance remains unchanged by the youth fix."
+    },
+    {
+      "file": "docs/v69/qa/village-life-final/unblooded-interior.jpg",
+      "findings": "The same authored youth bitmap remains visible at the room exit with its measured ground support and painted stature of 82."
+    },
+    {
+      "file": "docs/v69/qa/village-life-final/unblooded-reload.jpg",
+      "findings": "Cold reload preserves the youth body, original rank, village run and walked distance; no adult biomask metamorphosis or blank page."
+    }
+  ],
+  "additionalEarlierFinalBuildViewsInspected": [
+    "Ash activity, dialogue and house-n-0 front",
+    "Glass activity",
+    "Jungle house-n-1 and open interior",
+    "Marsh activity",
+    "Storm house-n-1",
+    "Coast house-n-0",
+    "Thermal house-n-0",
+    "Cold activity",
+    "Ruins house-n-0",
+    "Reserve activity"
+  ],
+  "limits": [
+    "The ten-village recipe starts from isolated village checkpoints; it does not claim full connector or contract playthroughs for all ten biomes.",
+    "The youth recipe genuinely walks the city, connector and village, visits an interior, exercises storage refusal/retry and cold reload. Nursery, training and First Tracks prerequisites were simulated through their actual model integrators, not played in its browser.",
+    "The 180 added props remain facade and foundation equipment inside pre-existing solid footprints. These snapshots do not certify all 180 objects or every occlusion angle.",
+    "Moving residents use existing native composed bodies and restrained dread movement. No new complete walking, forge or tool-use animation atlas is claimed.",
+    "These are original clan communities compatible with the game setting, not canonically certified 1:1 city maps.",
+    "These reports describe desktop local-browser validation, not a production deployment or mobile village audit."
+  ]
+}

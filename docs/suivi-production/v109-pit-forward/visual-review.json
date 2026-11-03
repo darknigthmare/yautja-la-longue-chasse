@@ -1,0 +1,470 @@
+{
+  "version": "v109",
+  "reviewedAtUtc": "2026-10-25T08:38:16.932868+00:00",
+  "reviewer": "v109_art_review",
+  "status": "source-art-visual-review-complete",
+  "scope": "Visual source illustration review of selected native forward-throw attacker and victim frames for the unvaried Feral and Scar duo, both facings. The 8 raw atlases and 14 selected isolated outputs were personally opened. Only the selectedFrameIndices listed for each source are covered.",
+  "coverage": {
+    "selectedNativePages": 22,
+    "selectedNativeFrameSlots": 48,
+    "fighters": 2,
+    "rolesPerFighter": 2,
+    "facingsPerRole": 2,
+    "framesPerRoleFacing": 6
+  },
+  "conclusion": "No confirmed blocking P1 or P2 visual finding in the 48 selected slots. Full silhouettes, two-arm/two-leg anatomy or natural limb occlusion, facing, and visible owned equipment were reviewed. The corrected Feral left attacker frames 3 and 4 retain the left forearm shield and right wrist blades. The corrected Scar left victim frame 4 retains its cannon and held spear.",
+  "findings": [],
+  "limits": [
+    "This record reviews source illustrations, not final runtime admission, animation timing, per-page physical body scale, pivots, opponent contact, collision, camera framing, or player input behavior.",
+    "A limb or owned item can be naturally occluded by the body or dreadlocks; absence is not inferred from a single hidden angle.",
+    "These are original adaptations. No film-exact 1:1 fidelity claim is made.",
+    "Raw atlas regions containing neighboring-pose pixels are excluded from this selection and replaced by separately generated native isolated outputs. This review did not edit, flip, rotate, segment, or mask an image.",
+    "This review does not mark spreadsheet source work, runtime checks, or any animation family beyond these selected forward-throw slots complete."
+  ],
+  "sources": [
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "selectedFrameIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-e0413089-db5f-41e5-9e03-25ccc601c0ab.png",
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "bytes": 2316771,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndices": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-5fd1bec6-8473-4151-bd5a-df16f56de687.png",
+      "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+      "bytes": 2390859,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "selectedFrameIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-bdc37956-832d-4396-9c64-0dbf6bbb00f0.png",
+      "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+      "bytes": 2258882,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndices": [
+        2,
+        5
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-fd1ca4b6-42fe-4dd7-b26e-5ef6ef4dee8c.png",
+      "sha256": "64b53fe5abfaed37324a809419cfb216aca16b83467115a1e555ee0864f7d048",
+      "bytes": 2358596,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "selectedFrameIndices": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-5773481e-a608-422c-a971-e8c59b697214.png",
+      "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+      "bytes": 2236163,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "selectedFrameIndices": [
+        0,
+        1,
+        2,
+        4,
+        5
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-efd5df1b-af04-4562-8367-29137af6c83a.png",
+      "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
+      "bytes": 2261067,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "selectedFrameIndices": [
+        0,
+        1,
+        2
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-76f8a6c6-fc3f-4d0b-9fb0-a3916308d6ca.png",
+      "sha256": "24cdb66b63f585ac952d035a27006805d3b04136448fb3c22f4a9b3d6c7dfcf9",
+      "bytes": 2164133,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "selectedFrameIndices": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-0f0c9148-0a95-44f6-bbb6-2d2fdb812f14.png",
+      "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+      "bytes": 2341573,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndices": [
+        3
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-5187634f-e79f-4d96-a581-488e9ada80ff.png",
+      "sha256": "151b49c54a3ec2321c5793bd10b6232a1e7542d48a8d1c09da2f8fb3cdd76ddb",
+      "bytes": 2071095,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndices": [
+        4
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-18cba075-4ab1-4eb3-b0e2-0402bee8f432.png",
+      "sha256": "fa54dd3f5a8e926c211d48dba1edd1b35a813cab02d013ee0294f68d3dd47ddc",
+      "bytes": 2138067,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndices": [
+        0
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-71dee190-387b-445b-8e5b-284769bb7348.png",
+      "sha256": "c5fb6df337079a263350702ddea4299b7ddb61f060dd7bed02eb6010632c9c96",
+      "bytes": 1707824,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndices": [
+        1
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-f1321cc8-b1db-4fb5-9022-6aaaec52a405.png",
+      "sha256": "6153788ab03fc3f246cae0b1b30990edd57b777283f2eff4c24d9a6ae5b7e95a",
+      "bytes": 1582563,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndices": [
+        3
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-c76c0027-8032-4dd2-9aaf-26c4210bc929.png",
+      "sha256": "13561262646615582d4c0687b4b59dc203e58747f62f8cf924a609abfeea44c6",
+      "bytes": 1748850,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndices": [
+        4
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-56542ea1-5de4-4c02-adf5-951ae4d9fa42.png",
+      "sha256": "0f2081b177fe949c0f52fa2d27dd4accfbd3aaf1da891ec8ffa11547cde0a00d",
+      "bytes": 1761722,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "selectedFrameIndices": [
+        3
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-065e27da-9af5-423b-b140-2e81e8904a8d.png",
+      "sha256": "b8ab2d58ffaf3f47853f01ef4a0e36104c6e6a0cfb1462b4d0155365ebb74d2a",
+      "bytes": 1807014,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "selectedFrameIndices": [
+        4
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-5906ed07-8d4e-452f-b091-fcc7dcb51d94.png",
+      "sha256": "f3b14134eaa1ba660342d52de1d84925f5888657d9c14c7c53ecb8647158d4f8",
+      "bytes": 1442943,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "selectedFrameIndices": [
+        3
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-88b236fc-be54-41eb-9ce3-7b9ae565c1c8.png",
+      "sha256": "8b91bf81569d5da2f5107c3515272ada6d19ad0acaefcdc5234626dc4a11c8ad",
+      "bytes": 2201016,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "selectedFrameIndices": [
+        3
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-8bb1dcf4-c848-4c1c-b400-bc0898406ef0.png",
+      "sha256": "bd1ca19aecfc3e6c1579838d826461dad56b885c167644452c91a276cd54bd2a",
+      "bytes": 1876383,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "selectedFrameIndices": [
+        4
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-3bd98f3c-1360-480f-869a-eec518e22836.png",
+      "sha256": "07f216fb8e1145169bb377fc5f11bc6da8193848a962ba23a8aea6f34c07cff6",
+      "bytes": 1377113,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "selectedFrameIndices": [
+        5
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-61d6a9fd-bc35-4227-9c64-a9746e787bc4.png",
+      "sha256": "2105306a7d2462540ba864498659c44f193983a49daac0e2a68c2b75053157e8",
+      "bytes": 1516350,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "selectedFrameIndices": [
+        3
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-df9ecf7d-edf2-41e6-a6eb-2f9eeeea9058.png",
+      "sha256": "89fa6f3142850eccf99932528a23ae67b0f115de00dce9db8ad1da124b2baf1a",
+      "bytes": 2110431,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "personallyViewed": true
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "selectedFrameIndices": [
+        4
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-653418d8-a56f-4c84-8fbe-68226ad238e1.png",
+      "sha256": "f102c0e286a3d566854b4581757aadf46728f64e548e14dfceabb7e6dd2dfca5",
+      "bytes": 1194875,
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "personallyViewed": true
+    }
+  ]
+}

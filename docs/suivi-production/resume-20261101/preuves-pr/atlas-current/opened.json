@@ -1,0 +1,22 @@
+{
+  "method": "Both capture files opened with view_image by the reviewing agent on 2026-11-01.",
+  "captures": [
+    {
+      "file": "actual-worker-cargo-detour.png",
+      "sha256": "d2a0c799645cf47817a129d91646acc1c2702488f17cd6fa756d5499a42ec371",
+      "bytes": 28051
+    },
+    {
+      "file": "mobile-cargo-register.png",
+      "sha256": "1fbe530cecfc727d458e47f14a298324fc70e661edba036fa862662c556cec9a",
+      "bytes": 65963
+    }
+  ],
+  "scope": "Actual React atlas and real module Worker in an isolated fixture, with prepared model-played cargo data; no compiled application, actor displacement, campaign completion or art admission is certified.",
+  "findings": [
+    "The map line visibly detours around the independent cargo polygons.",
+    "390px capture has no horizontal overflow; the second lot continues below the viewport and remains part of scrollable fixture content. This is not a claim that every control is simultaneously visible."
+  ],
+  "compiledAppCertified": false,
+  "physicalMobileTested": false
+}

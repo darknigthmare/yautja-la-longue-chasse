@@ -1,0 +1,395 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
+import { runInNewContext } from "node:vm";
+import test from "node:test";
+import { build } from "esbuild";
+import ts from "typescript";
+
+const canvasUrl = new URL("../app/game/HuntCanvas.tsx", import.meta.url);
+const source = await readFile(canvasUrl, "utf8");
+const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+// Export production functions only in this in-memory bundle. No movement,
+// collision, jump decision or actor initialization is reimplemented by the test.
+const bundled = await build({
+  stdin: {
+    contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
+export { makeGameState, applyPlayerJump, updatePlayerJump, updatePlayer, stepGame, pollGamepad, isHeldKeyboardAction, HUNT_CONTROL_ACTIONS, captureCheckpoint, restoreCheckpoint, snapshot, discoverWorldScreen, freshJumpAssistState, matchingControlActions, firstHuntObservation, createFirstHuntLearning, firstHuntHint, serializeActiveHuntCheckpoint, deserializeActiveHuntCheckpoint }; export { defaultSave } from "./save"; export { MISSION_BY_ID } from "./data"; export { DEFAULT_CONTROL_BINDINGS } from "./systems/controlBindings"; export {stepHoldTogglesV112,freshRitualAssistV112} from "./systems/huntAccessibilityV112";`,
+    resolveDir: fileURLToPath(new URL("../app/game/", import.meta.url)),
+    sourcefile: fileURLToPath(canvasUrl), loader: "tsx",
+  },
+  bundle: true, write: false, format: "cjs", platform: "node", jsx: "automatic",
+  // This suite executes simulation/lifecycle functions, never component styling.
+  loader: { ".module.css": "empty" },
+  external: ["react", "react/jsx-runtime", "react-dom"], logLevel: "silent",
+});
+const browser = { hidden: false, focused: true, pads: [] };
+const compiled = { exports: {} };
+runInNewContext(bundled.outputFiles[0].text, {
+  module: compiled, exports: compiled.exports, require: createRequire(import.meta.url),
+  document: { get hidden() { return browser.hidden; }, hasFocus: () => browser.focused },
+  navigator: { getGamepads: () => browser.pads },
+});
+const runtime = compiled.exports;
+const plain = value => JSON.parse(JSON.stringify(value));
+const close = (actual, expected, tolerance = 1e-6) => assert.ok(Math.abs(actual - expected) < tolerance, `${actual} expected ${expected}`);
+
+function lifecycle(name, environment) {
+  let declaration;
+  const visit = (node) => {
+    if (ts.isVariableDeclaration(node) && node.name.getText(ast) === name) declaration = node;
+    else ts.forEachChild(node, visit);
+  };
+  visit(ast);
+  assert.ok(declaration, `production ${name} handler exists`);
+  const code = ts.transpileModule(`const handler = ${declaration.initializer.getText(ast)};`, {
+    compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None },
+  }).outputText;
+  return runInNewContext(`(() => { ${code}; return handler; })()`, environment);
+}
+function flatWorld(state, platforms = []) {
+  state.world = { ...state.world, floorY: 624, platforms, climbables: [], hazards: [] };
+  state.enemies = [];
+  Object.assign(state.player, { x: 100, y: 508, previousY: 508, velocityX: 0, velocityY: 0, grounded: true, climbing: false });
+}
+function fixture({ boost = false, missionId = "jungle-vey" } = {}) {
+  browser.hidden = false; browser.focused = true; browser.pads = [];
+  const save = runtime.defaultSave("2026-08-31T00:00:00.000Z");
+  if (boost) save.exploration.abilityIds.push("aerial-boost");
+  const mission = runtime.MISSION_BY_ID[missionId];
+  const state = runtime.makeGameState(mission, save.loadout, save.inventory, "hunter", save.appearance, false, false, "jump-runtime-test", save.exploration);
+  flatWorld(state);
+  const input = { keyboardHeld: new Set(), touchHeld: new Set(), gamepadHeld: new Set(), pressed: new Set(), previousGamepadButtons: [], activeGamepadIndex: null, gamepadNeedsNeutral: true, gamepadDialogActions: [], pointerScreen: null };
+  const environment = {
+    ...runtime, input, game: state, mission, loadout: save.loadout, inventory: save.inventory,
+    appearance: save.appearance, difficulty: "hunter", reducedGore: false, screenShake: false,
+    ecologyRunSeed: "jump-retry", activeBindings: runtime.DEFAULT_CONTROL_BINDINGS,
+    Element: class Element {}, lastObservedPaused: false, lastTime: 0, accumulator: 0,
+    lastObservedPhase: state.phase, lastPersistedElapsed: 0, lastPersistedCheckpointIndex: 0,
+    performance: { now: () => 1234 }, setUi() {}, emitPersistence() {}, persistHuntRef: { current: undefined },
+    guideEnabled: mission.id === "jungle-vey",
+    guideLearning: runtime.createFirstHuntLearning(runtime.firstHuntObservation(state)),
+    openingHint: null,
+    setOpeningHint(hint) { environment.openingHint = hint; },
+  };
+  environment.isInteractiveControl = lifecycle("isInteractiveControl", environment);
+  const keyDown = lifecycle("onKeyDown", environment);
+  const keyUp = lifecycle("onKeyUp", environment);
+  const event = (code = "Space", repeat = false) => ({ code, key: code === "Space" ? " " : code, repeat, defaultPrevented: false, ctrlKey: false, altKey: false, metaKey: false, target: null, preventDefault() { this.defaultPrevented = true; } });
+  const frame = (delta = 1 / 120) => runtime.updatePlayer(environment.game, mission, save.loadout, save.inventory, save.appearance, "hunter", input, delta, () => {});
+  const step = (delta = 1 / 120) => runtime.stepGame(environment.game, mission, save.loadout, save.inventory, save.appearance, "hunter", input, delta, () => {});
+  return {
+    state, input, environment, frame, step,
+    down: (repeat = false) => keyDown(event("Space", repeat)), up: () => keyUp(event()),
+    blur: lifecycle("onBlur", environment), restart: lifecycle("restart", environment),
+    poll: () => runtime.pollGamepad(input),
+  };
+}
+const jumps = state => state.soundEvents.filter(sound => sound === "jump").length;
+const pad = () => ({ index: 2, connected: true, axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false, value: 0 })) });
+const ledge = (collision = "solid") => ({ id: "test-ledge", x: 0, y: 400, width: 240, height: 24, collision, routeId: "ground", material: "stone", noiseMultiplier: 1, trackPersistence: 1 });
+
+test("real keyboard handlers keep jump held, create only fresh edges and release the upward jump", () => {
+  const f = fixture();
+  f.down();
+  assert.equal(f.input.keyboardHeld.has("jump"), true);
+  assert.equal(f.input.pressed.has("jump"), true);
+  f.frame();
+  assert.equal(f.input.pressed.has("jump"), false);
+  const launchedVelocity = f.state.player.velocityY;
+  f.down(true); f.frame();
+  assert.equal(jumps(f.state), 1);
+  assert.ok(f.state.player.velocityY > launchedVelocity, "only gravity acts while held");
+  assert.ok(f.state.player.velocityY < -600);
+  f.up();
+  assert.equal(f.input.keyboardHeld.has("jump"), false);
+  f.frame();
+  assert.ok(f.state.player.velocityY >= -300 && f.state.player.velocityY < 0);
+  assert.equal(f.state.jumpAssist.cutArmed, false);
+});
+
+test("real movement and swept floor collision produce a higher held jump and no repeated jump on landing", () => {
+  function trajectory(releaseFrame) {
+    const f = fixture(); f.down();
+    let minimumY = f.state.player.y;
+    for (let tick = 0; tick < 180; tick++) {
+      if (tick === releaseFrame) f.up();
+      f.frame(); minimumY = Math.min(minimumY, f.state.player.y);
+    }
+    assert.equal(f.state.player.grounded, true);
+    close(f.state.player.y + f.state.player.height, 624);
+    close(f.state.player.velocityY, 0);
+    assert.equal(jumps(f.state), 1);
+    return 508 - minimumY;
+  }
+  const heldHeight = trajectory(Infinity);
+  const shortHeight = trajectory(3);
+  assert.ok(heldHeight > 130 && heldHeight < 141);
+  assert.ok(shortHeight > 25 && shortHeight < 65);
+  assert.ok(heldHeight > shortHeight * 2);
+});
+
+test("real gamepad A supplies held jump separately from the edge and release cuts ascent", () => {
+  const f = fixture(); const controller = pad(); browser.pads = [null, null, controller];
+  f.poll();
+  controller.buttons[0].pressed = true; f.poll();
+  assert.equal(f.input.gamepadHeld.has("jump"), true);
+  assert.equal(f.input.pressed.has("jump"), true);
+  f.frame(); f.poll();
+  assert.equal(f.input.pressed.has("jump"), false);
+  assert.equal(f.input.gamepadHeld.has("jump"), true);
+  f.frame();
+  assert.equal(jumps(f.state), 1);
+  controller.buttons[0].pressed = false; f.poll(); f.frame();
+  assert.equal(f.input.gamepadHeld.has("jump"), false);
+  assert.ok(f.state.player.velocityY >= -300 && f.state.player.velocityY < 0);
+});
+
+test("walking off a real ledge grants coyote time without spending boost, then expires", () => {
+  function leaveLedge(boost) {
+    const f = fixture({ boost }); flatWorld(f.state, [ledge()]);
+    Object.assign(f.state.player, { x: 230, y: 284, previousY: 284, velocityX: 300, grounded: true });
+    f.input.keyboardHeld.add("right");
+    for (let frame = 0; frame < 20 && f.state.player.grounded; frame++) f.frame();
+    assert.equal(f.state.player.grounded, false);
+    assert.ok(f.state.player.x >= 240);
+    assert.ok(f.state.jumpAssist.coyoteSeconds > 0);
+    return f;
+  }
+  const early = leaveLedge(true);
+  for (let frame = 0; frame < 4; frame++) early.frame();
+  early.down(); early.frame();
+  assert.ok(early.state.player.velocityY < -650);
+  assert.equal(early.state.player.aerialBoostUsed, false);
+  assert.equal(jumps(early.state), 1);
+  const late = leaveLedge(false);
+  for (let frame = 0; frame < 14; frame++) late.frame();
+  late.down(); late.frame();
+  assert.ok(late.state.player.velocityY > 0);
+  assert.equal(jumps(late.state), 0);
+});
+
+test("buffered landing launches on the collision frame without consuming the optional boost", () => {
+  for (const collision of ["solid", "one-way"]) {
+    const f = fixture({ boost: true }); flatWorld(f.state, [ledge(collision)]);
+    Object.assign(f.state.player, { x: 100, y: 280, previousY: 280, velocityY: 300, grounded: false });
+    f.down(); f.frame(1 / 60);
+    close(f.state.player.y, 284);
+    close(f.state.player.velocityY, -720);
+    assert.equal(f.state.player.grounded, false, "ground jump already launched this frame");
+    assert.equal(f.state.player.aerialBoostUsed, false);
+    assert.equal(f.state.jumpAssist.bufferSeconds, 0);
+    assert.equal(jumps(f.state), 1);
+    f.frame();
+    assert.ok(f.state.player.y < 284);
+    assert.equal(jumps(f.state), 1);
+  }
+});
+
+test("ground and coyote assistance cannot invent the persistent ability or allow repeated airborne boosts", () => {
+  for (const boost of [false, true]) {
+    const f = fixture({ boost, missionId: "ice-cryostalker" });
+    const originalProgress = plain(f.state.exploration);
+    f.down(); f.frame(); f.up(); f.frame(); f.down(); f.frame();
+    assert.equal(jumps(f.state), boost ? 2 : 1);
+    assert.equal(f.state.player.aerialBoostUsed, boost);
+    f.up(); f.frame(); f.down(); f.frame();
+    assert.equal(jumps(f.state), boost ? 2 : 1);
+    assert.deepEqual(plain(f.state.exploration), originalProgress);
+  }
+});
+
+test("stepGame clears pending jump on pause and requires release before accepting another press", () => {
+  const f = fixture({ boost: true });
+  f.down(); f.input.pressed.add("pause"); f.step();
+  assert.equal(f.state.paused, true);
+  assert.equal(f.state.elapsed, 0);
+  assert.equal(f.state.jumpAssist.requiresRelease, true);
+  assert.equal(jumps(f.state), 0);
+  f.input.pressed.add("pause"); f.step();
+  assert.equal(f.state.paused, false);
+  assert.equal(jumps(f.state), 0);
+  f.down(true); f.step();
+  assert.equal(jumps(f.state), 0, "held/repeated key cannot launch after resume");
+  f.up(); f.step(); f.down(); f.step();
+  assert.equal(jumps(f.state), 1);
+  assert.equal(f.state.player.aerialBoostUsed, false);
+});
+
+test("focus loss clears all input devices and ignores held A until neutral on return", () => {
+  const f = fixture(); const controller = pad(); browser.pads = [null, null, controller];
+  f.poll(); f.down(); f.input.touchHeld.add("jump");
+  controller.buttons[0].pressed = true; f.poll();
+  f.blur();
+  assert.equal(f.state.paused, true);
+  assert.equal(f.state.jumpAssist.requiresRelease, true);
+  for (const field of ["keyboardHeld", "touchHeld", "gamepadHeld", "pressed"]) assert.equal(f.input[field].size, 0);
+  f.input.pressed.add("pause"); f.step();
+  f.step(); assert.equal(jumps(f.state), 0);
+  controller.buttons[0].pressed = false; f.step();
+  controller.buttons[0].pressed = true; f.step();
+  assert.equal(jumps(f.state), 1);
+});
+
+test("real retry handler clears buffered and held inputs while preserving acquired traversal", () => {
+  const f = fixture({ boost: true });
+  const inherited = plain(f.state.exploration);
+  f.state.lastCheckpoint = runtime.captureCheckpoint(f.state);
+  f.down(); f.state.jumpAssist.bufferSeconds = 0.1;
+  f.input.touchHeld.add("jump"); f.input.gamepadHeld.add("jump");
+  f.restart();
+  const restarted = f.environment.game;
+  assert.equal(restarted.jumpAssist.requiresRelease, true);
+  assert.equal(restarted.jumpAssist.bufferSeconds, 0);
+  assert.equal(restarted.jumpAssist.coyoteSeconds, 0);
+  for (const field of ["keyboardHeld", "touchHeld", "gamepadHeld", "pressed"]) assert.equal(f.input[field].size, 0);
+  assert.equal(f.input.gamepadNeedsNeutral, true);
+  assert.deepEqual(plain(restarted.exploration), inherited);
+  assert.equal(f.environment.guideLearning.resumed, true, "checkpoint retries skip already introduced first steps");
+  assert.deepEqual(plain(f.environment.guideLearning.last), plain(runtime.firstHuntObservation(restarted)),
+    "the guide observes the actual restored actor, not the dead pre-retry state");
+  assert.deepEqual(plain(f.environment.openingHint), plain(runtime.firstHuntHint(f.environment.guideLearning)));
+  flatWorld(restarted); const before = jumps(restarted);
+  f.down(); f.frame(); assert.equal(jumps(restarted), before);
+  f.up(); f.frame(); f.down(); f.frame();
+  assert.equal(jumps(restarted), before + 1);
+  assert.equal(restarted.player.aerialBoostUsed, false);
+});
+
+
+test("real retry without checkpoint resets the guide from the new hunt and keeps it disabled outside Vey", () => {
+  for (const missionId of ["jungle-vey", "ice-cryostalker"]) {
+    const f = fixture({ missionId });
+    f.environment.guideLearning = { ...f.environment.guideLearning, distance: 500, jumped: true, resumed: true };
+    f.environment.openingHint = { id: "stale-hint" };
+    f.restart();
+    const restarted = f.environment.game;
+    assert.equal(f.environment.guideLearning.resumed, false);
+    assert.equal(f.environment.guideLearning.distance, 0);
+    assert.equal(f.environment.guideLearning.jumped, false);
+    assert.deepEqual(plain(f.environment.guideLearning.last), plain(runtime.firstHuntObservation(restarted)));
+    assert.deepEqual(plain(f.environment.openingHint), missionId === "jungle-vey"
+      ? plain(runtime.firstHuntHint(f.environment.guideLearning)) : null);
+    assert.equal(restarted.jumpAssist.requiresRelease, true);
+  }
+});
+
+
+function climbFixture(kind = "tree") {
+  const f = fixture();
+  const support = {
+    id: "test-support", x: 100, y: 100, width: 100, height: 440,
+    kind, routeId: "canopy", climbSpeedMultiplier: 1,
+    staminaPerSecond: 4, dismounts: [],
+  };
+  f.state.world = { ...f.state.world, climbables: [support] };
+  Object.assign(f.state.player, {
+    x: 112, y: 240, previousY: 240,
+    grounded: false, climbing: true, climbZoneId: support.id,
+    velocityX: 0, velocityY: 0,
+  });
+  return { ...f, support };
+}
+
+test("direction plus jump launches from each support without spending an aerial boost", () => {
+  for (const kind of ["tree", "vine", "rope", "chain"]) {
+    for (const direction of [-1, 1]) {
+      const f = climbFixture(kind);
+      f.state.player.facing = -direction;
+      f.input.keyboardHeld.add(direction > 0 ? "right" : "left");
+      f.input.keyboardHeld.add("jump");
+      f.input.pressed.add("jump");
+      f.frame();
+      assert.equal(f.state.player.climbing, false);
+      assert.equal(f.state.player.facing, direction);
+      assert.ok(f.state.player.velocityX * direction >= 350);
+      assert.ok(f.state.player.velocityY < 0);
+      assert.equal(f.state.player.aerialBoostUsed, false);
+      assert.ok(f.state.player.climbReattachSeconds > 0);
+      assert.equal(jumps(f.state), 1);
+    }
+  }
+});
+
+test("a real support leap preserves momentum and catches the next vine with up and direction held", () => {
+  const f = climbFixture();
+  f.state.world.climbables.push({
+    ...f.support, id: "next-vine", x: 245, width: 70, kind: "vine",
+  });
+  f.input.keyboardHeld.add("right");
+  f.input.keyboardHeld.add("jump");
+  f.input.pressed.add("jump");
+  f.frame();
+  const launchedVelocity = f.state.player.velocityX;
+  f.input.keyboardHeld.add("up");
+  for (let frame = 0; frame < 10; frame++) f.frame();
+  assert.equal(f.state.player.climbing, false, "release window prevents grabbing the original tree");
+  close(f.state.player.velocityX, launchedVelocity);
+  for (let frame = 0; frame < 35; frame++) f.frame();
+  assert.equal(f.state.player.climbing, true);
+  assert.equal(f.state.player.climbZoneId, "next-vine");
+  assert.equal(f.state.player.aerialBoostUsed, false);
+});
+
+test("an active support wins over an earlier overlapping climbable", () => {
+  const f = climbFixture("rope");
+  f.state.world.climbables.unshift({ ...f.support, id: "overlapping-tree", kind: "tree" });
+  f.input.keyboardHeld.add("up");
+  f.frame();
+  assert.equal(f.state.player.climbZoneId, "test-support");
+});
+
+test("exhaustion cannot be bypassed by airborne regeneration or checkpoint resume", () => {
+  const f = climbFixture();
+  f.state.player.stamina = 0.001;
+  f.input.keyboardHeld.add("up");
+  f.frame();
+  assert.equal(f.state.player.climbing, false);
+  assert.equal(f.state.player.climbGripExhausted, true);
+  for (let frame = 0; frame < 10; frame++) f.frame();
+  assert.ok(f.state.player.stamina > 0);
+  assert.equal(f.state.player.climbing, false);
+  f.state.player.stamina = 60;
+  f.frame();
+  assert.equal(f.state.player.climbing, false, "even recovered stamina requires grounded recovery");
+  const checkpoint = runtime.captureCheckpoint(f.state);
+  const resumed = runtime.restoreCheckpoint(f.state, checkpoint, "resume");
+  assert.equal(resumed.player.climbGripExhausted, true);
+  assert.equal(resumed.player.climbReattachSeconds, 0);
+  const retried = runtime.restoreCheckpoint(f.state, checkpoint, "retry");
+  assert.equal(retried.player.climbGripExhausted, false);
+  Object.assign(f.state.player, {
+    x: 112, y: 508, previousY: 508,
+    grounded: true, velocityX: 0, velocityY: 0,
+  });
+  f.frame();
+  assert.equal(f.state.player.climbGripExhausted, false);
+  assert.equal(f.state.player.climbing, true);
+});
+
+test("climb snapshot fields accept legacy checkpoints and reject malformed optional values", () => {
+  const f = climbFixture();
+  const readCheckpoint = checkpoint => runtime.deserializeActiveHuntCheckpoint(
+    runtime.serializeActiveHuntCheckpoint(checkpoint, 0));
+  const legacy = runtime.captureCheckpoint(f.state);
+  delete legacy.player.climbReattachSeconds;
+  delete legacy.player.climbGripExhausted;
+  assert.ok(readCheckpoint(legacy), "old checkpoints need no climb control fields");
+  for (const delay of [0, 0.24]) {
+    const checkpoint = runtime.captureCheckpoint(f.state);
+    checkpoint.player.climbReattachSeconds = delay;
+    checkpoint.player.climbGripExhausted = true;
+    assert.ok(readCheckpoint(checkpoint));
+  }
+  for (const delay of [-0.001, 0.241, "0.1", null, Infinity, NaN]) {
+    const checkpoint = runtime.captureCheckpoint(f.state);
+    checkpoint.player.climbReattachSeconds = delay;
+    assert.equal(readCheckpoint(checkpoint), null, `invalid release delay ${String(delay)}`);
+  }
+  for (const exhausted of [0, 1, "true", null, {}]) {
+    const checkpoint = runtime.captureCheckpoint(f.state);
+    checkpoint.player.climbGripExhausted = exhausted;
+    assert.equal(readCheckpoint(checkpoint), null, `invalid exhaustion flag ${String(exhausted)}`);
+  }
+});

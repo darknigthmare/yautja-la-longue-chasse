@@ -1,0 +1,1490 @@
+{
+  "missionId": "volcano-bad-blood",
+  "armorId": "berserker",
+  "success": true,
+  "result": {
+    "missionId": "volcano-bad-blood",
+    "exploration": {
+      "abilityIds": [],
+      "openedGateIds": [],
+      "secretIds": [],
+      "discoveredRoomIds": [
+        "jungle-pilot-approach",
+        "jungle-pilot-underpass",
+        "jungle-pilot-module",
+        "jungle-pilot-ravine",
+        "jungle-pilot-river-caves",
+        "jungle-pilot-vey-camp",
+        "jungle-pilot-duel-extraction",
+        "ice-region-approach",
+        "ice-region-shaft",
+        "ice-region-return",
+        "volcano-forge-approach",
+        "volcano-forge-return"
+      ]
+    },
+    "difficultyId": "hunter",
+    "outcome": "success",
+    "score": 93,
+    "elapsedSeconds": 148,
+    "completedObjectiveIds": [
+      "scan-fallen-hunters",
+      "recover-stolen-beacons",
+      "defeat-bad-blood",
+      "escape-self-destruct"
+    ],
+    "honorEvents": [
+      {
+        "id": "scan-trace-1",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-volcano-hounds-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-2",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-volcano-hounds-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-volcano-hounds-4",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-3",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "objective-scan-fallen-hunters",
+        "label": "Honorer les chasseurs tombés",
+        "value": 30,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-volcano-hounds-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-volcano-initiates-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-volcano-hounds-3",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "recover-technology-1",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-volcano-initiates-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-volcano-initiates-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "recover-technology-2",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "recover-technology-3",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-recover-stolen-beacons",
+        "label": "Détruire le piège",
+        "value": 30,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-volcano-ambush-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-volcano-ambush-3",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-volcano-ambush-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-volcano-ambush-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-primary-target",
+        "label": "Analyse de Le Bad Blood",
+        "value": 5,
+        "kind": "scan"
+      },
+      {
+        "id": "honor-rule:stop-purge",
+        "label": "Ne laisser aucune trace",
+        "value": 30,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-defeat-bad-blood",
+        "label": "Juger le Bad Blood",
+        "value": 60,
+        "kind": "objective"
+      },
+      {
+        "id": "boss-honorable-kill",
+        "label": "Victoire sur Le Bad Blood",
+        "value": 18,
+        "kind": "duel"
+      },
+      {
+        "id": "trophy-claimed",
+        "label": "Masque du Paria",
+        "value": 12,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-escape-self-destruct",
+        "label": "Empêcher l'effacement",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:honor-fallen",
+        "label": "Code respecté : Mémoire du clan",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:accept-final-duel",
+        "label": "Code respecté : Le dernier rite",
+        "value": 35,
+        "kind": "objective"
+      }
+    ],
+    "trophyQuality": "elite",
+    "trophyClaims": [
+      {
+        "id": "volcano-bad-blood-apex-mvyszr98-1fd-ya80pba3",
+        "definitionId": "trophy-bad-blood",
+        "targetName": "Le Bad Blood",
+        "targetKind": "yautja",
+        "partId": "mask",
+        "quality": "elite",
+        "condition": "intact"
+      }
+    ],
+    "specimensV112": [
+      {
+        "id": "volcano-bad-blood:0:volcano-initiates-1:hide",
+        "sourceId": "volcano-bad-blood:0:volcano-initiates-1",
+        "speciesId": "cinder-12--hell-hound-stalker",
+        "partId": "hide",
+        "label": "Cuir de chien de chasse",
+        "quality": 43,
+        "massKg": 2.4,
+        "volumeUnits": 3,
+        "stage": "raw"
+      },
+      {
+        "id": "volcano-bad-blood:0:volcano-initiates-1:tissue",
+        "sourceId": "volcano-bad-blood:0:volcano-initiates-1",
+        "speciesId": "cinder-12--hell-hound-stalker",
+        "partId": "tissue",
+        "label": "Tendon de poursuite",
+        "quality": 30,
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "stage": "raw"
+      },
+      {
+        "id": "volcano-bad-blood:0:volcano-initiates-0:bone",
+        "sourceId": "volcano-bad-blood:0:volcano-initiates-0",
+        "speciesId": "cinder-12--scorch-xeno",
+        "partId": "bone",
+        "label": "Segment caudal de xénomorphe",
+        "quality": 53,
+        "massKg": 1.2,
+        "volumeUnits": 2,
+        "stage": "raw"
+      }
+    ],
+    "toolUseIdsV112": [
+      "volcano-bad-blood:0:flay:volcano-initiates-1",
+      "volcano-bad-blood:0:harvest-hide:volcano-initiates-1",
+      "volcano-bad-blood:0:harvest-tissue:volcano-initiates-1",
+      "volcano-bad-blood:0:flay:volcano-initiates-0",
+      "volcano-bad-blood:0:harvest-bone:volcano-initiates-0"
+    ],
+    "harvestEncounterRunV112": 0,
+    "kills": 13,
+    "scans": 6,
+    "discoveredEnemyIds": [
+      "cinder-12--razor-reed",
+      "cinder-12--bad-blood-initiate",
+      "boss-volcano-bad-blood"
+    ],
+    "secondWindUsed": false,
+    "completedAt": "2026-11-02T05:13:30.821Z"
+  },
+  "climbFrames": 0,
+  "swingFrames": 0,
+  "authoredCanopyContactFrames": 0,
+  "maxX": 7988.99999999999,
+  "terminal": {
+    "t": 148.083,
+    "phase": "finished",
+    "x": 7989,
+    "y": 173,
+    "vx": 0,
+    "vy": 0,
+    "health": 137.5,
+    "stamina": 90,
+    "energy": 90,
+    "kills": 12,
+    "boss": {
+      "active": true,
+      "alive": false,
+      "health": 0,
+      "x": 6688.405472619479
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      true,
+      true,
+      true
+    ],
+    "objectives": [
+      "scan-fallen-hunters",
+      "recover-stolen-beacons",
+      "defeat-bad-blood",
+      "escape-self-destruct"
+    ],
+    "message": "Objectif accompli : Empêcher l'effacement",
+    "grounded": false,
+    "climbing": false,
+    "load": {
+      "massKg": 4,
+      "volumeUnits": 6,
+      "capacityMassKg": 52,
+      "capacityVolumeUnits": 30,
+      "ratio": 0.2,
+      "overloaded": false,
+      "movementMultiplier": 0.9359999999999999,
+      "jumpMultiplier": 0.968,
+      "climbStaminaMultiplier": 1.12,
+      "noiseMultiplier": 1.1600000000000001
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 0,
+    "threats": [
+      {
+        "id": "extraction-volcano-bad-blood-1850-0",
+        "x": 7623.5813333332335,
+        "y": 561.9504435760965,
+        "health": 64.35,
+        "width": 98,
+        "height": 82
+      },
+      {
+        "id": "extraction-volcano-bad-blood-1851-1",
+        "x": 7910.435666666706,
+        "y": 528,
+        "health": 79.95,
+        "width": 114,
+        "height": 96
+      },
+      {
+        "id": "extraction-volcano-bad-blood-1852-2",
+        "x": 7719.209199999978,
+        "y": 517,
+        "health": 72.14999999999999,
+        "width": 88,
+        "height": 107
+      }
+    ]
+  },
+  "admission": {
+    "missionId": "volcano-bad-blood",
+    "armorId": "berserker",
+    "loadout": {
+      "armorId": "berserker",
+      "weaponIds": [
+        "combistick",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "inventory": {
+      "fieldToolIds": [
+        "flaying-tool"
+      ],
+      "harvestV112": {
+        "version": 1,
+        "specimens": [],
+        "toolCondition": 100,
+        "toolUseIds": [],
+        "jobs": [],
+        "settledEncounterRuns": {
+          "jungle-vey": 0,
+          "ice-cryostalker": 0
+        },
+        "archive": []
+      },
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster",
+        "yautja-bow",
+        "smart-disc"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy",
+        "netgun",
+        "snare"
+      ],
+      "unlockedArmorIds": [
+        "hunter",
+        "scout",
+        "berserker"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "toolOrigin": {
+      "path": "docs/qa/v112-ground-campaign/tool-origin.json",
+      "sha256": "0b489bc90df80e0643be22c971d0412ffbff434805812c75fc00f2690beef63b",
+      "missions": [
+        {
+          "missionId": "jungle-vey",
+          "outcome": "success",
+          "score": 98,
+          "elapsedSeconds": 61
+        },
+        {
+          "missionId": "ice-cryostalker",
+          "outcome": "success",
+          "score": 96,
+          "elapsedSeconds": 56
+        }
+      ],
+      "balanceBefore": 806,
+      "spentClanMarks": 120,
+      "balanceAfter": 686
+    },
+    "difficulty": "hunter",
+    "encounterRun": 0,
+    "random": {
+      "algorithm": "xorshift32",
+      "seed": 17965094
+    },
+    "spawn": {
+      "x": 225,
+      "y": 508
+    },
+    "initial": {
+      "t": 0,
+      "phase": "tracking",
+      "x": 225,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 220,
+      "stamina": 90,
+      "energy": 90,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 850,
+        "x": 6895.2
+      },
+      "scans": [
+        false,
+        false,
+        false
+      ],
+      "recoveries": [
+        false,
+        false,
+        false
+      ],
+      "objectives": [],
+      "message": "La chasse commence. Localise les signatures.",
+      "grounded": true,
+      "climbing": false,
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "volcano-hounds-0",
+          "x": 1536.6595276650041,
+          "y": 534,
+          "health": 64.35,
+          "width": 98,
+          "height": 90
+        }
+      ]
+    },
+    "world": {
+      "width": 8400,
+      "bossArena": {
+        "x": 6060,
+        "y": 272,
+        "width": 1740,
+        "height": 352
+      },
+      "extraction": {
+        "x": 8025,
+        "y": 624
+      },
+      "platforms": [
+        {
+          "x": 690,
+          "y": 326,
+          "width": 340,
+          "height": 24,
+          "id": "volcano-forge-upper-floor",
+          "material": "obsidian",
+          "routeId": "volcano-forge-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.03
+        },
+        {
+          "x": 1060,
+          "y": 410,
+          "width": 140,
+          "height": 24,
+          "id": "volcano-forge-vault-underfloor",
+          "material": "obsidian",
+          "routeId": "volcano-forge-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.03
+        },
+        {
+          "x": 1200,
+          "y": 410,
+          "width": 200,
+          "height": 24,
+          "id": "volcano-forge-vault-floor",
+          "material": "obsidian",
+          "routeId": "volcano-forge-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.03
+        },
+        {
+          "x": 1520,
+          "y": 0,
+          "width": 28,
+          "height": 434,
+          "id": "volcano-forge-outer-wall",
+          "material": "obsidian",
+          "routeId": "volcano-forge-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.03
+        },
+        {
+          "x": 1030,
+          "y": 0,
+          "width": 30,
+          "height": 434,
+          "id": "volcano-heat-seal",
+          "material": "obsidian",
+          "routeId": "volcano-forge-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.03
+        },
+        {
+          "x": 1400,
+          "y": 410,
+          "width": 120,
+          "height": 24,
+          "id": "volcano-acid-return",
+          "material": "obsidian",
+          "routeId": "volcano-forge-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.03
+        }
+      ],
+      "hazards": [
+        {
+          "id": "v-ash-east",
+          "x": 4980,
+          "y": 210,
+          "width": 1080,
+          "height": 414,
+          "kind": "ash-squall",
+          "routeId": "sanctum-floor",
+          "damagePerSecond": 2,
+          "movementMultiplier": 0.8,
+          "noisePerSecond": 0.28,
+          "trackMultiplier": 1.8,
+          "revealsCloak": false,
+          "telegraphSeconds": 1.6,
+          "cycle": {
+            "periodSeconds": 13,
+            "activeSeconds": 4.5,
+            "phaseSeconds": 3
+          }
+        },
+        {
+          "id": "v-arena-vents",
+          "x": 6450,
+          "y": 330,
+          "width": 1050,
+          "height": 294,
+          "kind": "steam-vent",
+          "routeId": "sanctum-floor",
+          "damagePerSecond": 19,
+          "movementMultiplier": 0.76,
+          "noisePerSecond": 0.84,
+          "trackMultiplier": 0.35,
+          "revealsCloak": true,
+          "telegraphSeconds": 0.9,
+          "cycle": {
+            "periodSeconds": 7,
+            "activeSeconds": 1.6,
+            "phaseSeconds": 4
+          }
+        },
+        {
+          "id": "feature-v-vents-steam",
+          "x": 4355,
+          "y": 290,
+          "width": 290,
+          "height": 334,
+          "kind": "steam-vent",
+          "routeId": "vent-flank",
+          "damagePerSecond": 15,
+          "movementMultiplier": 0.74,
+          "noisePerSecond": 0.72,
+          "trackMultiplier": 0.25,
+          "revealsCloak": true,
+          "telegraphSeconds": 1,
+          "cycle": {
+            "periodSeconds": 6.5,
+            "activeSeconds": 1.8,
+            "phaseSeconds": 1
+          }
+        },
+        {
+          "id": "feature-v-arena-lava",
+          "x": 7455,
+          "y": 590,
+          "width": 360,
+          "height": 34,
+          "kind": "lava",
+          "routeId": "sanctum-floor",
+          "damagePerSecond": 34,
+          "movementMultiplier": 0.35,
+          "noisePerSecond": 0.5,
+          "trackMultiplier": 0,
+          "revealsCloak": true,
+          "telegraphSeconds": 0,
+          "cycle": null
+        },
+        {
+          "x": 890,
+          "y": 210,
+          "width": 170,
+          "height": 116,
+          "id": "volcano-forge-ability-hazard",
+          "kind": "heat-burst",
+          "routeId": "volcano-forge-route",
+          "damagePerSecond": 24,
+          "movementMultiplier": 0.7,
+          "noisePerSecond": 0.66,
+          "trackMultiplier": 0.5,
+          "revealsCloak": true,
+          "telegraphSeconds": 1,
+          "cycle": {
+            "periodSeconds": 7.63,
+            "activeSeconds": 1.6,
+            "phaseSeconds": 0.5
+          }
+        }
+      ]
+    },
+    "scanNodes": [
+      {
+        "id": "trace-1",
+        "x": 924,
+        "y": 588,
+        "scanned": false
+      },
+      {
+        "id": "trace-2",
+        "x": 2016,
+        "y": 395,
+        "scanned": false
+      },
+      {
+        "id": "trace-3",
+        "x": 3108,
+        "y": 588,
+        "scanned": false
+      }
+    ],
+    "recoveryNodes": [
+      {
+        "id": "technology-1",
+        "x": 3917.49925,
+        "y": 590,
+        "recovered": false
+      },
+      {
+        "id": "technology-2",
+        "x": 4138.9985,
+        "y": 590,
+        "recovered": false
+      },
+      {
+        "id": "technology-3",
+        "x": 4722.49975,
+        "y": 590,
+        "recovered": false
+      }
+    ]
+  },
+  "events": [
+    {
+      "t": 16.033,
+      "phase": "target",
+      "x": 2794.7,
+      "y": 508,
+      "vx": 237.36,
+      "vy": 0,
+      "health": 220,
+      "stamina": 90,
+      "energy": 24.58,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 850,
+        "x": 6895.2
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false,
+        false,
+        false
+      ],
+      "objectives": [
+        "scan-fallen-hunters"
+      ],
+      "message": "Le Bad Blood peut désormais être pisté.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 52,
+        "capacityVolumeUnits": 30,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 0,
+      "threats": [
+        {
+          "id": "volcano-hounds-2",
+          "x": 3183.906038548365,
+          "y": 508,
+          "health": 72.14999999999999,
+          "width": 81,
+          "height": 116
+        },
+        {
+          "id": "volcano-hounds-3",
+          "x": 3650.8114706597758,
+          "y": 542,
+          "health": 64.35,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "volcano-initiates-0",
+          "x": 3431.8826406829057,
+          "y": 528,
+          "health": 159.9,
+          "width": 114,
+          "height": 96
+        }
+      ]
+    },
+    {
+      "t": 129.733,
+      "phase": "trophy",
+      "x": 6565.14,
+      "y": 468.18,
+      "vx": 1.06,
+      "vy": -254.17,
+      "health": 155.42,
+      "stamina": 70.33,
+      "energy": 90,
+      "kills": 12,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6688.405472619479
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true,
+        true
+      ],
+      "objectives": [
+        "scan-fallen-hunters",
+        "recover-stolen-beacons",
+        "defeat-bad-blood"
+      ],
+      "message": "Le Bad Blood est vaincu. Intégrité du trophée 84 %. Réclame le trophée avec [E].",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 4,
+        "volumeUnits": 6,
+        "capacityMassKg": 52,
+        "capacityVolumeUnits": 30,
+        "ratio": 0.2,
+        "overloaded": false,
+        "movementMultiplier": 0.9359999999999999,
+        "jumpMultiplier": 0.968,
+        "climbStaminaMultiplier": 1.12,
+        "noiseMultiplier": 1.1600000000000001
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 0,
+      "threats": []
+    },
+    {
+      "t": 135.983,
+      "phase": "extraction",
+      "x": 6684.69,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 137.5,
+      "stamina": 90,
+      "energy": 90,
+      "kills": 12,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6688.405472619479
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true,
+        true
+      ],
+      "objectives": [
+        "scan-fallen-hunters",
+        "recover-stolen-beacons",
+        "defeat-bad-blood"
+      ],
+      "message": "Masque du Paria : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 4,
+        "volumeUnits": 6,
+        "capacityMassKg": 52,
+        "capacityVolumeUnits": 30,
+        "ratio": 0.2,
+        "overloaded": false,
+        "movementMultiplier": 0.9359999999999999,
+        "jumpMultiplier": 0.968,
+        "climbStaminaMultiplier": 1.12,
+        "noiseMultiplier": 1.1600000000000001
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 0,
+      "threats": [
+        {
+          "id": "extraction-volcano-bad-blood-1850-0",
+          "x": 7428.4456666666665,
+          "y": 542,
+          "health": 64.35,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 148.083,
+      "phase": "finished",
+      "x": 7989,
+      "y": 173,
+      "vx": 0,
+      "vy": 0,
+      "health": 137.5,
+      "stamina": 90,
+      "energy": 90,
+      "kills": 12,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6688.405472619479
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true,
+        true
+      ],
+      "objectives": [
+        "scan-fallen-hunters",
+        "recover-stolen-beacons",
+        "defeat-bad-blood",
+        "escape-self-destruct"
+      ],
+      "message": "Objectif accompli : Empêcher l'effacement",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 4,
+        "volumeUnits": 6,
+        "capacityMassKg": 52,
+        "capacityVolumeUnits": 30,
+        "ratio": 0.2,
+        "overloaded": false,
+        "movementMultiplier": 0.9359999999999999,
+        "jumpMultiplier": 0.968,
+        "climbStaminaMultiplier": 1.12,
+        "noiseMultiplier": 1.1600000000000001
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 0,
+      "threats": [
+        {
+          "id": "extraction-volcano-bad-blood-1850-0",
+          "x": 7623.5813333332335,
+          "y": 561.9504435760965,
+          "health": 64.35,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "extraction-volcano-bad-blood-1851-1",
+          "x": 7910.435666666706,
+          "y": 528,
+          "health": 79.95,
+          "width": 114,
+          "height": 96
+        },
+        {
+          "id": "extraction-volcano-bad-blood-1852-2",
+          "x": 7719.209199999978,
+          "y": 517,
+          "health": 72.14999999999999,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    }
+  ],
+  "traceFrames": 1804,
+  "ticksExecuted": 8885,
+  "harvestActions": [
+    {
+      "tick": 3385,
+      "t": 56.416666666664746,
+      "action": "open",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": null
+    },
+    {
+      "tick": 3386,
+      "t": 56.43333333333141,
+      "action": "flay",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 193.5,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 3454,
+      "t": 57.56666666666468,
+      "action": "flay",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 192.5,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 3488,
+      "t": 58.133333333331315,
+      "action": "flay",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 184,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 3522,
+      "t": 58.69999999999795,
+      "action": "flay",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 175.5,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 3556,
+      "t": 59.266666666664584,
+      "action": "flay",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 167,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 3748,
+      "t": 62.4666666666644,
+      "action": "harvest-hide",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "harvest-hide",
+        "elapsed": 0,
+        "startHealth": 167,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 3844,
+      "t": 64.06666666666432,
+      "action": "harvest-hide",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "harvest-hide",
+        "elapsed": 0,
+        "startHealth": 166,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 3878,
+      "t": 64.63333333333095,
+      "action": "harvest-hide",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "harvest-hide",
+        "elapsed": 0,
+        "startHealth": 157.5,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 3912,
+      "t": 65.19999999999759,
+      "action": "harvest-hide",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "harvest-hide",
+        "elapsed": 0,
+        "startHealth": 149,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 3946,
+      "t": 65.76666666666422,
+      "action": "harvest-hide",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "harvest-hide",
+        "elapsed": 0,
+        "startHealth": 140.5,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4182,
+      "t": 69.69999999999733,
+      "action": "harvest-tissue",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "harvest-tissue",
+        "elapsed": 0,
+        "startHealth": 140.5,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4234,
+      "t": 70.56666666666395,
+      "action": "harvest-tissue",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "harvest-tissue",
+        "elapsed": 0,
+        "startHealth": 139.5,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4268,
+      "t": 71.13333333333058,
+      "action": "harvest-tissue",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "harvest-tissue",
+        "elapsed": 0,
+        "startHealth": 131,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4302,
+      "t": 71.69999999999722,
+      "action": "harvest-tissue",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "harvest-tissue",
+        "elapsed": 0,
+        "startHealth": 122.5,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4336,
+      "t": 72.26666666666385,
+      "action": "harvest-tissue",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "harvest-tissue",
+        "elapsed": 0,
+        "startHealth": 114,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4337,
+      "t": 72.28333333333052,
+      "action": "harvest-tissue",
+      "corpseId": "volcano-initiates-1",
+      "sourceEnemyId": "cinder-12--hell-hound-stalker",
+      "operation": {
+        "corpseId": "volcano-initiates-1",
+        "action": "harvest-tissue",
+        "elapsed": 0,
+        "startHealth": 215.2,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4549,
+      "t": 75.81666666666365,
+      "action": "open",
+      "corpseId": "volcano-initiates-0",
+      "sourceEnemyId": "cinder-12--scorch-xeno",
+      "operation": null
+    },
+    {
+      "tick": 4550,
+      "t": 75.83333333333032,
+      "action": "flay",
+      "corpseId": "volcano-initiates-0",
+      "sourceEnemyId": "cinder-12--scorch-xeno",
+      "operation": {
+        "corpseId": "volcano-initiates-0",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 215.2,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4624,
+      "t": 77.06666666666358,
+      "action": "flay",
+      "corpseId": "volcano-initiates-0",
+      "sourceEnemyId": "cinder-12--scorch-xeno",
+      "operation": {
+        "corpseId": "volcano-initiates-0",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 214.2,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4658,
+      "t": 77.63333333333021,
+      "action": "flay",
+      "corpseId": "volcano-initiates-0",
+      "sourceEnemyId": "cinder-12--scorch-xeno",
+      "operation": {
+        "corpseId": "volcano-initiates-0",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 205.7,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4692,
+      "t": 78.19999999999685,
+      "action": "flay",
+      "corpseId": "volcano-initiates-0",
+      "sourceEnemyId": "cinder-12--scorch-xeno",
+      "operation": {
+        "corpseId": "volcano-initiates-0",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 197.2,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4726,
+      "t": 78.76666666666348,
+      "action": "flay",
+      "corpseId": "volcano-initiates-0",
+      "sourceEnemyId": "cinder-12--scorch-xeno",
+      "operation": {
+        "corpseId": "volcano-initiates-0",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 188.7,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 4937,
+      "t": 82.28333333332995,
+      "action": "harvest-bone",
+      "corpseId": "volcano-initiates-0",
+      "sourceEnemyId": "cinder-12--scorch-xeno",
+      "operation": {
+        "corpseId": "volcano-initiates-0",
+        "action": "harvest-bone",
+        "elapsed": 0,
+        "startHealth": 188.7,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 5014,
+      "t": 83.56666666666321,
+      "action": "harvest-bone",
+      "corpseId": "volcano-initiates-0",
+      "sourceEnemyId": "cinder-12--scorch-xeno",
+      "operation": {
+        "corpseId": "volcano-initiates-0",
+        "action": "harvest-bone",
+        "elapsed": 0,
+        "startHealth": 187.7,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 5048,
+      "t": 84.13333333332984,
+      "action": "harvest-bone",
+      "corpseId": "volcano-initiates-0",
+      "sourceEnemyId": "cinder-12--scorch-xeno",
+      "operation": {
+        "corpseId": "volcano-initiates-0",
+        "action": "harvest-bone",
+        "elapsed": 0,
+        "startHealth": 179.2,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 5082,
+      "t": 84.69999999999648,
+      "action": "harvest-bone",
+      "corpseId": "volcano-initiates-0",
+      "sourceEnemyId": "cinder-12--scorch-xeno",
+      "operation": {
+        "corpseId": "volcano-initiates-0",
+        "action": "harvest-bone",
+        "elapsed": 0,
+        "startHealth": 170.7,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 5116,
+      "t": 85.26666666666311,
+      "action": "harvest-bone",
+      "corpseId": "volcano-initiates-0",
+      "sourceEnemyId": "cinder-12--scorch-xeno",
+      "operation": {
+        "corpseId": "volcano-initiates-0",
+        "action": "harvest-bone",
+        "elapsed": 0,
+        "startHealth": 162.2,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    }
+  ],
+  "peakLoadRatio": 0.2,
+  "peakSpecimens": [
+    {
+      "id": "volcano-bad-blood:0:volcano-initiates-1:hide",
+      "sourceId": "volcano-bad-blood:0:volcano-initiates-1",
+      "speciesId": "cinder-12--hell-hound-stalker",
+      "partId": "hide",
+      "label": "Cuir de chien de chasse",
+      "quality": 43,
+      "massKg": 2.4,
+      "volumeUnits": 3,
+      "stage": "raw"
+    },
+    {
+      "id": "volcano-bad-blood:0:volcano-initiates-1:tissue",
+      "sourceId": "volcano-bad-blood:0:volcano-initiates-1",
+      "speciesId": "cinder-12--hell-hound-stalker",
+      "partId": "tissue",
+      "label": "Tendon de poursuite",
+      "quality": 30,
+      "massKg": 0.4,
+      "volumeUnits": 1,
+      "stage": "raw"
+    },
+    {
+      "id": "volcano-bad-blood:0:volcano-initiates-0:bone",
+      "sourceId": "volcano-bad-blood:0:volcano-initiates-0",
+      "speciesId": "cinder-12--scorch-xeno",
+      "partId": "bone",
+      "label": "Segment caudal de xénomorphe",
+      "quality": 53,
+      "massKg": 1.2,
+      "volumeUnits": 2,
+      "stage": "raw"
+    }
+  ],
+  "firstLoadAt": {
+    "tick": 4182,
+    "t": 69.717,
+    "phase": "target",
+    "x": 4410.81,
+    "y": 508,
+    "vx": 0,
+    "vy": 0,
+    "health": 140.5,
+    "stamina": 90,
+    "energy": 90,
+    "kills": 8,
+    "boss": {
+      "active": false,
+      "alive": true,
+      "health": 850,
+      "x": 6895.2
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      true,
+      false,
+      false
+    ],
+    "objectives": [
+      "scan-fallen-hunters"
+    ],
+    "message": "Le geste prend du temps ; la chasse continue autour de toi.",
+    "grounded": true,
+    "climbing": false,
+    "load": {
+      "massKg": 2.4,
+      "volumeUnits": 3,
+      "capacityMassKg": 52,
+      "capacityVolumeUnits": 30,
+      "ratio": 0.1,
+      "overloaded": false,
+      "movementMultiplier": 0.968,
+      "jumpMultiplier": 0.984,
+      "climbStaminaMultiplier": 1.06,
+      "noiseMultiplier": 1.08
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 0,
+    "threats": []
+  },
+  "replay": {
+    "verified": true,
+    "ticks": 8885,
+    "terminalSha256": "243a35cab1c99f887cb6036dbf30a9d047633125d3a72521e3ba13378ce54d64"
+  },
+  "rawData": {
+    "archive": "../native-runs-raw.tar.gz",
+    "member": "qualified-harvested/volcano-bad-blood-berserker.json",
+    "sha256": "2294a5deee356940cc0da099208aae6321d41b99baf5ce64ed0b89e9390e5f20"
+  }
+}

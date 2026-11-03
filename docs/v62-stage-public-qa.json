@@ -1,0 +1,644 @@
+{
+  "schemaVersion": 1,
+  "release": "V62",
+  "status": "PASS",
+  "surface": "public-production-alias",
+  "checkedAt": "2026-09-30T21:33:39.698Z",
+  "url": "https://yautja-la-longue-chasse.vercel.app/",
+  "rawReport": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/report.json",
+  "rawReportSha256": "05734a6de41df25982bc1c2330bc9d3ed0979eb0a399f9cb9dd5b89f817c30b1",
+  "scriptSha256": "e08273d1d25241c1080f321a0ec82d792467efcfc5dab9b29ac9c41e22036ca9",
+  "localEvidencePreserved": {
+    "docs/v62-stage-application-qa.json": "d08e12bdd86a69949e714d1fcd61a24a6144d99952be925517db8fd503eebfde",
+    "work-local/v62/qa/stages/application-final/report.json": "bdf5abdc37df9ce2efb558ed69f782817bbc516aa738d76d1f493ae9e7f54618"
+  },
+  "publicNativeAssets": [
+    {
+      "stageId": "arena-126-avpr-2007-hospital-roof",
+      "path": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-01.png",
+      "sha256": "a7cf93205d78536d05b81f344ae52b3ad4cb1c144da9af6336a2bc0e00a8cb53",
+      "httpStatus": 200,
+      "bytes": 1844000,
+      "contentType": "image/png"
+    },
+    {
+      "stageId": "arena-126-avpr-2007-hospital-roof",
+      "path": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+      "sha256": "dd7dda09f47359761670ad87d4e93bba2593c521cc4cfacb3b726f5c35da8209",
+      "httpStatus": 200,
+      "bytes": 1654091,
+      "contentType": "image/png"
+    },
+    {
+      "stageId": "arena-126-avpr-2007-hospital-roof",
+      "path": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+      "sha256": "03e496ae9570aef5d554f4436e99d484b7691d69952a33bf31cd110014b8ab2a",
+      "httpStatus": 200,
+      "bytes": 1685952,
+      "contentType": "image/png"
+    },
+    {
+      "stageId": "arena-130-avp-classic-2000-space-station",
+      "path": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+      "sha256": "29d448c1e45d4afad334de0a44b2d536f53ae4becbbdbf2cd6c420b9350bfd79",
+      "httpStatus": 200,
+      "bytes": 2012218,
+      "contentType": "image/png"
+    },
+    {
+      "stageId": "arena-130-avp-classic-2000-space-station",
+      "path": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+      "sha256": "7c88338eedccbc433248dafa28a77332af643ba29f32afc37eda313a5710d097",
+      "httpStatus": 200,
+      "bytes": 2201987,
+      "contentType": "image/png"
+    },
+    {
+      "stageId": "arena-130-avp-classic-2000-space-station",
+      "path": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+      "sha256": "8bbe4ad1a63b0341f4a3456ce84e0e6bdc6b9868e0dced818923f81d94e212af",
+      "httpStatus": 200,
+      "bytes": 2137072,
+      "contentType": "image/png"
+    },
+    {
+      "stageId": "arena-187-golgotha-uscm-airlock",
+      "path": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+      "sha256": "c1354791b2226240836b377ca9d31bb90c883b2be5a7fb2b1ac6d9aecb5ca661",
+      "httpStatus": 200,
+      "bytes": 2440207,
+      "contentType": "image/png"
+    },
+    {
+      "stageId": "arena-187-golgotha-uscm-airlock",
+      "path": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+      "sha256": "f46559eca972f66cc01ecb26c54bf67b0621546714bda00b506fb22746222ab5",
+      "httpStatus": 200,
+      "bytes": 1947006,
+      "contentType": "image/png"
+    },
+    {
+      "stageId": "arena-187-golgotha-uscm-airlock",
+      "path": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+      "sha256": "969b5ba76914281bb6584a6b1240f1c99549feaa9fb68d0181320d4f90f93e7a",
+      "httpStatus": 200,
+      "bytes": 2484502,
+      "contentType": "image/png"
+    },
+    {
+      "stageId": "arena-187-golgotha-uscm-airlock",
+      "path": "/game/sprites/v62/pit-arenas/arena-187-golgotha-uscm-airlock/p0-depth.png",
+      "sha256": "cb90f15c1ad7e6965b6050317e542c5115c7b0fbffb444a7a6f6019a885073bb",
+      "httpStatus": 200,
+      "bytes": 2268052,
+      "contentType": "image/png"
+    }
+  ],
+  "targets": [
+    "arena-126-avpr-2007-hospital-roof",
+    "arena-130-avp-classic-2000-space-station",
+    "arena-187-golgotha-uscm-airlock"
+  ],
+  "cases": [
+    "desktop",
+    "reduced",
+    "mobile",
+    "retry"
+  ],
+  "checks": [
+    {
+      "name": "public-movement-reveals-background",
+      "before": [
+        {
+          "x": 300,
+          "y": 0
+        },
+        {
+          "x": 660,
+          "y": 0
+        }
+      ],
+      "after": [
+        {
+          "x": 154.3,
+          "y": 0
+        },
+        {
+          "x": 815,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "name": "arena-126-avpr-2007-hospital-roof-pause",
+      "frame": 902,
+      "nativeFrames": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "arena-126-avpr-2007-hospital-roof-window-traversal-pause",
+      "frame": 3389,
+      "nativeFrames": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "arena-126-avpr-2007-hospital-roof-clipped-native-traversal",
+      "eventId": "ambient-01",
+      "samples": 110,
+      "clip": {
+        "x": 732,
+        "y": 185,
+        "width": 78,
+        "height": 36
+      },
+      "range": [
+        748,
+        788
+      ]
+    },
+    {
+      "name": "arena-126-avpr-2007-hospital-roof-application",
+      "loadedPaths": [
+        "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-01.png",
+        "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+        "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png"
+      ],
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-01.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bag": [
+        {
+          "eventId": "ambient-03",
+          "firstObservedRoundFrame": 878
+        },
+        {
+          "eventId": "ambient-02",
+          "firstObservedRoundFrame": 2086
+        },
+        {
+          "eventId": "ambient-01",
+          "firstObservedRoundFrame": 3299
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "arena-130-avp-classic-2000-space-station-window-traversal-pause",
+      "frame": 2094,
+      "nativeFrames": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "arena-130-avp-classic-2000-space-station-clipped-native-traversal",
+      "eventId": "ambient-01",
+      "samples": 111,
+      "clip": {
+        "x": 437,
+        "y": 276,
+        "width": 99,
+        "height": 47
+      },
+      "range": [
+        447,
+        524
+      ]
+    },
+    {
+      "name": "arena-130-avp-classic-2000-space-station-application",
+      "loadedPaths": [
+        "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+        "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+        "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png"
+      ],
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bag": [
+        {
+          "eventId": "ambient-03",
+          "firstObservedRoundFrame": 1018
+        },
+        {
+          "eventId": "ambient-01",
+          "firstObservedRoundFrame": 2004
+        },
+        {
+          "eventId": "ambient-02",
+          "firstObservedRoundFrame": 3284
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "arena-187-golgotha-uscm-airlock-application",
+      "loadedPaths": [
+        "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+        "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+        "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png"
+      ],
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bag": [
+        {
+          "eventId": "ambient-03",
+          "firstObservedRoundFrame": 1224
+        },
+        {
+          "eventId": "ambient-02",
+          "firstObservedRoundFrame": 2304
+        },
+        {
+          "eventId": "ambient-01",
+          "firstObservedRoundFrame": 3301
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "reduced-pause",
+      "frame": 3479,
+      "nativeFrames": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "reduced-motion",
+      "stageId": "arena-126-avpr-2007-hospital-roof",
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-01.png",
+          "seen": []
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "seen": [
+            0
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "seen": [
+            0
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "mobile-landscape",
+      "viewport": [
+        844,
+        390
+      ],
+      "documentWidth": 844,
+      "canvas": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390
+      }
+    },
+    {
+      "name": "mobile-portrait",
+      "viewport": [
+        390,
+        844
+      ],
+      "documentWidth": 390,
+      "canvas": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "name": "mobile-pause",
+      "frame": 3486,
+      "nativeFrames": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mobile-native-events",
+      "stageId": "arena-187-golgotha-uscm-airlock",
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true,
+      "limitation": "Chromium emulation, not a physical device."
+    },
+    {
+      "name": "native-png-retry-503",
+      "blockedPath": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+      "intentionalFailures": 1,
+      "loadedPaths": [
+        "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-01.png",
+        "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+        "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png"
+      ],
+      "realActorsAfterRetry": 2,
+      "savedBytesUnchanged": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-126-avpr-2007-hospital-roof-selection.png",
+      "sha256": "e74c4dd5e5f811797afede4bc1389c8a465e00858b2bf7088aafd2fb073847a0",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-126-avpr-2007-hospital-roof-rest.png",
+      "sha256": "9e46b3df319c28aeed0230e3a906ccb0e5e68f6fa14716b6d882c1ccf42bc138",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-126-avpr-2007-hospital-roof-fighters-apart.png",
+      "sha256": "d35f13425e7552d584a4b79dfeb3f28be9b6acdd9edf093a6b043901c0515ea2",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-126-avpr-2007-hospital-roof-paused.png",
+      "sha256": "e4be2022dd3d603467d83287cbd8b064a459ac2b1cb0d2adb7866d9abf400635",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-126-avpr-2007-hospital-roof-event-0.png",
+      "sha256": "641b5a773616e7cb1e5fd92f1947aece767e9593b9a3d28b0a6b9d5e4aaea6a3",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-126-avpr-2007-hospital-roof-event-1.png",
+      "sha256": "76df745e529da49362ef02bc1e010b42217dfa7c02795cd97b9a4e4c40688474",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-126-avpr-2007-hospital-roof-event-2.png",
+      "sha256": "ebadd30003056eeed3dcdfb2555a7457b8329b45a47dda0eeecc95b5a11c4b98",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-126-avpr-2007-hospital-roof-window-traversal-paused.png",
+      "sha256": "205895d4a10e1048ee5da36ca5a9166027c017f1bcd1f276306cbaeecd879008",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-130-avp-classic-2000-space-station-selection.png",
+      "sha256": "8ba39c5aa83dc1a58479f74c3007416a22a85e6956bc24f3c3902cdabb972c7f",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-130-avp-classic-2000-space-station-rest.png",
+      "sha256": "10998efe1a224f2dfddbb747565bd1a1536df411c5b07cd2b7e143bd1a3cf7e3",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-130-avp-classic-2000-space-station-event-0.png",
+      "sha256": "2f9fd669b001dbf2c37dd0730fa72aefe072b1e41575eb8b77b7af5be5966c45",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-130-avp-classic-2000-space-station-event-1.png",
+      "sha256": "27e50ee174e7011700608fd27967e5994554cb7ffa1792ac48608f1c4a71b418",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-130-avp-classic-2000-space-station-window-traversal-paused.png",
+      "sha256": "9bd9e9308924dfe2f63e589632731f161c9552de39f1ae6ca0622fbacc3c2365",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-130-avp-classic-2000-space-station-event-2.png",
+      "sha256": "d4141f06db96638c4fde563e14d479d70cba062b9f6da0b6233d59d23a4ac717",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-187-golgotha-uscm-airlock-selection.png",
+      "sha256": "1797463d66409d9cf63591212c41b3121f6bda36d45d54fdad54af1524cbd2aa",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-187-golgotha-uscm-airlock-rest.png",
+      "sha256": "c7df46559816d7f3a78d62c350198c972836a7e8fb43759f324afd3e2b15b524",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-187-golgotha-uscm-airlock-event-0.png",
+      "sha256": "8ea3eb7fa0f87a631c706bfefa5c121e6505daa15c03e930fec39f0c014ba63b",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-187-golgotha-uscm-airlock-event-1.png",
+      "sha256": "7f16e3fc5df849b8458e664fdb821fa7148a281af05cebf5de5df660440687d5",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/arena-187-golgotha-uscm-airlock-event-2.png",
+      "sha256": "0334dd05a69e38646c187f3741473007032d52c6ac41123f109d14e9d6101dea",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/reduced-paused.png",
+      "sha256": "2960c6a1f97595e5174fc75f7cdbe68efd00d315cfcf0510ed3e94f8b45f4d19",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/reduced-motion.png",
+      "sha256": "ed9190121fde8e7a68a6a13ca817ac7bb884a4a18b79d22cdc9d41e74c4bd1f3",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/mobile-landscape.png",
+      "sha256": "9734fa75daa0c7da6b096d7858d2e1d466787935cf90285c520d5f6f3bc88010",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/mobile-portrait.png",
+      "sha256": "1e89d671a24928cb8823e354fdaba180d3b9daeb22143a0473f2d3167e7378ac",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/mobile-paused.png",
+      "sha256": "e765ac09119684b246bff663ec74ba5189e0ffe69c7a6e4b6be3f2bf40618fb3",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/native-png-503-blocked.png",
+      "sha256": "3dfa8c748da6af8c8c355fd61da94d1d84d9ade616978fea2b0c0f733771bac6",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "work-local/v62/qa/stages/public/2026-09-30T21-29-03-952Z/native-png-retry-restored.png",
+      "sha256": "9e46b3df319c28aeed0230e3a906ccb0e5e68f6fa14716b6d882c1ccf42bc138",
+      "visualReview": "pending-separate-image-inspection"
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "failedRequests": [],
+  "limitations": [
+    "Browser timer control advances the normal simulation; no combat state or schedule was injected.",
+    "The compositor/alpha/native-pixel gates remain separate.",
+    "Screenshots require explicit independent visual review.",
+    "Mobile checks emulate Chromium, not physical devices.",
+    "This public run preserves all earlier local QA reports.",
+    "Public screenshot review is separate; native public asset bytes are checked independently."
+  ]
+}

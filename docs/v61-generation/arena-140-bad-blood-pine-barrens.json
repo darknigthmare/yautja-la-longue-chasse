@@ -1,0 +1,1418 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "stageId": "arena-140-bad-blood-pine-barrens",
+  "proposalId": "new-bad-blood-forest",
+  "workbookStage": "09_STAGES!A27:N27",
+  "workbookLife": "10_VIE_DES_STAGES!A71:N73",
+  "sourceUrls": [
+    "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-enforcer-predator-action-figure-from-series-12"
+  ],
+  "loreLimits": [
+    "Night-time Pine Barrens original lateral forest composition; no exact comic panel fidelity claimed.",
+    "E71 after-combat guard is separate from the ambient set. Ambient-01 will be an original terrestrial insect motif, not fulfillment of E71.",
+    "E72 offscreen prey never assigned an unverified species; beacon is original mechanical set dressing, not a canonical named device."
+  ],
+  "backgroundReview": {
+    "p0": "public/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p0-depth.png",
+    "composition": "work-local/v55/stage-renderer/arena-140-bad-blood-pine-barrens/center.png",
+    "notes": "Both opened: blue moonlit pines, distant scrub plane, gameplay floor Y430. Keep support motifs behind combat, in original recesses."
+  },
+  "assets": [
+    {
+      "id": "ambient-01",
+      "prompt": "Use case: stylized-concept. Transparent animation atlas, exactly SIX SMALL drawings in a clean3columns2rows grid,1536x1024. Every512x512cell must have at least90pixels fully transparent padding on ALL four sides. Draw a short horizontal pine twig with a few needles and THREE small common nocturnal moths fluttering just around the twig. Original terrestrial insects in a night New Jersey Pine Barrens forest; no named exotic species. Six distinct wingbeat states and tiny local position changes, still twig, moths orbit narrowly then settle; complete coherent moth wings and bodies. Same tiny motif centered localx256,y280 in EVERY cell, totalvisible footprint no more than300wide280high. Cold desaturated moonlight, dark olive needles and grey-brown moth wings, subtle readable pale rims. Detailed painted cinematic 2D game sprite, side view. This is an original ambient alternative, not a guard or a narrative event. Genuine alpha transparency including empty spaces, NO glowing dots or firefly glow, NO colored opaque backdrop, NO haze or groundshadow, NO scene, NO people, NO frame labels, NO gridlines. Critically: shrink the subjects; preserve generous EMPTY alpha gutters, do not let any insect or needle approach cell edges.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-effe0dd1-5416-443a-9fd6-28bed1530cd7.png",
+      "workspacePath": "work-local/v61/generated/arena-140-bad-blood-pine-barrens/ambient-01.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E71"
+      ],
+      "visualNotes": "Six coherent moth wing phases around the same pine twig. All native cells have zero alpha>32 edge pixels. Twig attachment must be matched to a visible branch in composition, not placed floating.",
+      "sha256": "5eb4db14eeb4250d0193d5560860f4c899d88844bff6b7de73afe74028719921",
+      "bytes": 1611273,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8296833038330078,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            178,
+            274,
+            251
+          ],
+          "alphaBounds32": [
+            136,
+            180,
+            267,
+            246
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            369,
+            335.5
+          ],
+          "bodyCenterPivot": [
+            267.5,
+            429
+          ],
+          "opaquePixelCount": 33120,
+          "contentSha256": "9b26ac728508e79d223ee97beb2c18c03db84dc72c8621bea408eea5102f7d3b",
+          "margins": [
+            131,
+            178,
+            107,
+            83
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            134,
+            190,
+            283,
+            228
+          ],
+          "alphaBounds32": [
+            136,
+            191,
+            281,
+            226
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            370,
+            347
+          ],
+          "bodyCenterPivot": [
+            275,
+            418
+          ],
+          "opaquePixelCount": 31610,
+          "contentSha256": "62c8cae1a90b171ddf235b3bf84e12abdca508cf00a7ec66a64e4c4bb0859682",
+          "margins": [
+            134,
+            190,
+            95,
+            94
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            137,
+            196,
+            307,
+            246
+          ],
+          "alphaBounds32": [
+            138,
+            199,
+            303,
+            240
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            394,
+            337.5
+          ],
+          "bodyCenterPivot": [
+            290,
+            442
+          ],
+          "opaquePixelCount": 32101,
+          "contentSha256": "06b195fdd16015ab08086c10fc2a21ee833e236014f07487ed439b938624e555",
+          "margins": [
+            137,
+            196,
+            68,
+            70
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            102,
+            166,
+            276,
+            223
+          ],
+          "alphaBounds32": [
+            105,
+            169,
+            271,
+            218
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            369,
+            320
+          ],
+          "bodyCenterPivot": [
+            239.5,
+            389
+          ],
+          "opaquePixelCount": 32641,
+          "contentSha256": "f40d5a37e2fa29ba159bff87cb329e171d84af90f24a75033bc99528af6f8bbe",
+          "margins": [
+            102,
+            166,
+            134,
+            123
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            125,
+            172,
+            277,
+            225
+          ],
+          "alphaBounds32": [
+            127,
+            174,
+            273,
+            218
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            370,
+            320
+          ],
+          "bodyCenterPivot": [
+            263,
+            397
+          ],
+          "opaquePixelCount": 34378,
+          "contentSha256": "d10869e90a78a079f6e8fe5298ed7ed92e99026b83961588168ab072b278918c",
+          "margins": [
+            125,
+            172,
+            110,
+            115
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            137,
+            153,
+            290,
+            251
+          ],
+          "alphaBounds32": [
+            138,
+            155,
+            286,
+            247
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            372,
+            347
+          ],
+          "bodyCenterPivot": [
+            281.5,
+            404
+          ],
+          "opaquePixelCount": 30948,
+          "contentSha256": "7656cc275cb79c3aa1727c0ebdab8e80c6a9845a5ab3829aab0249aaac8c4de8",
+          "margins": [
+            137,
+            153,
+            85,
+            108
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "sourceInterpretation": "Original ambient insect alternative; conditional E71 guard separately provided, not activated during round.",
+      "anchorKind": "region-right-tip",
+      "anchorRegion": [
+        320,
+        315,
+        75,
+        65
+      ],
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "ambient-02",
+      "prompt": "Use case: precise-object-edit. Correct this six-frame transparent foliage animation sheet. Preserve six distinct moonlit fern motion phases in a3columns2rows1536x1024atlas, but REDRAW EVERY FOLIAGE CLUMP MUCH SMALLER, about60percent of its current size, centered in its own512x512cell. Maximum visible footprint270wide260high percell, centered local256,280. The first two top-row plants currently cross their cell boundaries; eliminate ALL crossing and overlap. Keep ALL detached leaves inside the270x260footprint. Everycell must have at least110pixels completely clear alpha on four sides. Preserve coherent fixed root/deadwood and changing leaf bends, cold blue olive paintedstyle. Genuine alpha emptyspace, no backdrop gradients, no new objects, no labels, no gridlines or groundshadow. New native drawing, six completely isolated smallclumps; nothing at x512,x1024 ory512 boundaries.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-1014d672-1b3a-404d-bcd0-d5139d03130b.png",
+      "workspacePath": "work-local/v61/generated/arena-140-bad-blood-pine-barrens/ambient-02.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E72"
+      ],
+      "visualNotes": "Native regenerated sheet inspected: all six foliage drawings fully separated, root consistent, moving leaf shapes, zero alpha>32 edge pixels.",
+      "sha256": "2661b91ab3ea2c851ff404539a0fbb2fe7e4e722f96b8c3c5c694bb85624c0d9",
+      "bytes": 2357706,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6035683949788412,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            37,
+            129,
+            450,
+            335
+          ],
+          "alphaBounds32": [
+            40,
+            130,
+            445,
+            332
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            282.5,
+            464
+          ],
+          "bodyCenterPivot": [
+            261.5,
+            464
+          ],
+          "opaquePixelCount": 95245,
+          "contentSha256": "aace0b8fdbfcb6e38da69bd9eafc6431c45fb61950fff6c538ad86cff7272b6f",
+          "margins": [
+            37,
+            129,
+            25,
+            48
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            160,
+            430,
+            304
+          ],
+          "alphaBounds32": [
+            49,
+            162,
+            427,
+            301
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            264.5,
+            464
+          ],
+          "bodyCenterPivot": [
+            262.5,
+            464
+          ],
+          "opaquePixelCount": 83204,
+          "contentSha256": "8adea61df2f2cb652abc5f3cc4dd70c4fcf61894f97b0a62a9f8846a2fb66d2f",
+          "margins": [
+            48,
+            160,
+            34,
+            48
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            40,
+            146,
+            425,
+            318
+          ],
+          "alphaBounds32": [
+            42,
+            148,
+            422,
+            315
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            262.5,
+            464
+          ],
+          "bodyCenterPivot": [
+            252,
+            464
+          ],
+          "opaquePixelCount": 78858,
+          "contentSha256": "705658cb176a65c030f29bd3cd27e148f17f140fca6af25681f869920c17a8eb",
+          "margins": [
+            40,
+            146,
+            47,
+            48
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            65,
+            455,
+            365
+          ],
+          "alphaBounds32": [
+            52,
+            68,
+            451,
+            361
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            281.5,
+            430
+          ],
+          "bodyCenterPivot": [
+            277,
+            430
+          ],
+          "opaquePixelCount": 96015,
+          "contentSha256": "f1c58485de9fa7eb8f50af266e05d6bb7b3c915d4144f091ee70473896497d5e",
+          "margins": [
+            50,
+            65,
+            7,
+            82
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            61,
+            97,
+            408,
+            334
+          ],
+          "alphaBounds32": [
+            63,
+            99,
+            404,
+            330
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            293,
+            431
+          ],
+          "bodyCenterPivot": [
+            264.5,
+            431
+          ],
+          "opaquePixelCount": 89624,
+          "contentSha256": "783fed1350261e46bf680aa838bfb6109089224e1a9039f42d550437ef0960b6",
+          "margins": [
+            61,
+            97,
+            43,
+            81
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            40,
+            84,
+            436,
+            345
+          ],
+          "alphaBounds32": [
+            42,
+            90,
+            432,
+            336
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            283.5,
+            429
+          ],
+          "bodyCenterPivot": [
+            257.5,
+            429
+          ],
+          "opaquePixelCount": 95942,
+          "contentSha256": "7bbe7e9595afeccf088555d388a139f5c8a92963ed067383bc710399b7ad83ae",
+          "margins": [
+            40,
+            84,
+            36,
+            83
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "ambient-03",
+      "prompt": "Use case: stylized-concept. Asset: transparent PNG six-frame environmental animation sprite sheet for a2D fighting stage, nocturnal Pine Barrens forest inspired by Predator Bad Blood. Exactly SIX distinct drawings in a3columns2rows grid on1536x1024canvas, each512x512cell. One small ORIGINAL utilitarian weathered metal trail beacon with a capped vent and three short stabilizing feet, inactive lens, no symbols or weapon. It is original set dressing, NOT a named canonical Predator device. Side-on view, dim cold moonlight on dark grey metal. Six real drawings show a contained grey smoke puff emerging from vent, rising and bending gradually to right, thinning, and returning calm; fixed device remains coherent, exhaust plume visibly changes shape across all six poses. All device and plume safely inside eachcell localx100..405,y70..435 with50px clear alpha margin. Device feet at localy432 eachframe, consistent scale. True alpha transparent emptyspace including through thin smoke. No magic, no flame, no flashes, no luminous rings, no landscape, no text, no frame labels, no gridlines, no baked floor or cast shadow. Detailed painted cinematic game sprite.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-7c4c80ce-c50b-4197-b23f-c00c4e4deb78.png",
+      "workspacePath": "work-local/v61/generated/arena-140-bad-blood-pine-barrens/ambient-03.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E73"
+      ],
+      "visualNotes": "Six coherent mechanical beacon/smoke phases. Lower cells use real clear gutters at x560/x1080, no pixel editing; zero alpha>32 edge pixels. Minor alpha<=32 smoke halo may touch metadata edges; solid plume intact.",
+      "sha256": "be1f842d0ef0cd5a3ff62f1c15fcc5107bc69602fb0d0c73f137bb5a34c36a43",
+      "bytes": 1696709,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7413406372070312,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            117,
+            198,
+            251,
+            274
+          ],
+          "alphaBounds32": [
+            119,
+            200,
+            248,
+            269
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            242,
+            472
+          ],
+          "bodyCenterPivot": [
+            242,
+            472
+          ],
+          "opaquePixelCount": 34768,
+          "contentSha256": "621540165a8b2a3278c7cea807fe54ad0aa708b7d29bd3efdf17901666165dc2",
+          "margins": [
+            117,
+            198,
+            144,
+            40
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            126,
+            84,
+            250,
+            387
+          ],
+          "alphaBounds32": [
+            126,
+            90,
+            248,
+            379
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            250.5,
+            471
+          ],
+          "bodyCenterPivot": [
+            250.5,
+            471
+          ],
+          "opaquePixelCount": 43249,
+          "contentSha256": "3eb1675e82d7251bfedcb91c9f3fc27efc9b7b1765a0a1c77e377f5ce2fc0c0a",
+          "margins": [
+            126,
+            84,
+            136,
+            41
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            97,
+            9,
+            312,
+            464
+          ],
+          "alphaBounds32": [
+            98,
+            21,
+            272,
+            448
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            222,
+            473
+          ],
+          "bodyCenterPivot": [
+            252.5,
+            473
+          ],
+          "opaquePixelCount": 59217,
+          "contentSha256": "6c235ee005126c842c5d186ca764cee76bedd28facc8591d27f1cb2062feda0a",
+          "margins": [
+            97,
+            9,
+            103,
+            39
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            560,
+            512
+          ],
+          "alphaBounds": [
+            117,
+            2,
+            416,
+            473
+          ],
+          "alphaBounds32": [
+            119,
+            10,
+            402,
+            462
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            242,
+            475
+          ],
+          "bodyCenterPivot": [
+            324.5,
+            475
+          ],
+          "opaquePixelCount": 74488,
+          "contentSha256": "5e4789293340bfa857657dac44f68dc47e7907b3522a5137386d1c1da18255b7",
+          "margins": [
+            117,
+            2,
+            27,
+            37
+          ]
+        },
+        {
+          "rect": [
+            560,
+            512,
+            520,
+            512
+          ],
+          "alphaBounds": [
+            77,
+            13,
+            425,
+            461
+          ],
+          "alphaBounds32": [
+            79,
+            18,
+            414,
+            454
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            202,
+            474
+          ],
+          "bodyCenterPivot": [
+            289,
+            474
+          ],
+          "opaquePixelCount": 77867,
+          "contentSha256": "587971a92d60228a8927db12ba7e467a4b9f08859b3d28ff695e53c51d2dfe95",
+          "margins": [
+            77,
+            13,
+            18,
+            38
+          ]
+        },
+        {
+          "rect": [
+            1080,
+            512,
+            456,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            41,
+            371,
+            435
+          ],
+          "alphaBounds32": [
+            42,
+            53,
+            358,
+            419
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            166,
+            476
+          ],
+          "bodyCenterPivot": [
+            226,
+            476
+          ],
+          "opaquePixelCount": 53472,
+          "contentSha256": "548e47541c18803fa31cc3a931558ac9b4d2c1f50ec2b7330201bd48f7774a3b",
+          "margins": [
+            41,
+            41,
+            44,
+            36
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "frameRects": [
+        [
+          0,
+          0,
+          512,
+          512
+        ],
+        [
+          512,
+          0,
+          512,
+          512
+        ],
+        [
+          1024,
+          0,
+          512,
+          512
+        ],
+        [
+          0,
+          512,
+          560,
+          512
+        ],
+        [
+          560,
+          512,
+          520,
+          512
+        ],
+        [
+          1080,
+          512,
+          456,
+          512
+        ]
+      ],
+      "edgeAlphaMeasurements": [
+        {
+          "max": 2,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 2,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "conditional-guard-after-combat",
+      "prompt": "Use case: stylized-concept. Transparent six-frame animation sprite sheet1536x1024 in exactly3columns2rows. One anonymous ADULT Yautja forest guard, original supportingcharacter for a Predator Bad Blood Pine Barrens exhibition scene, NOT the named Enforcer, not Bad Blood, not an existing rostercharacter. Classic coherent Yautja anatomy: tall broadshoulders, mottled olive-skin, black tendrils fromhead, modest simple closed grey bio-mask, practical asymmetrical darkmetal shoulder/knee plates over sparse blackbody-netting, simpleloincloth, clawedhands, no horns. No gun, no exposed wristblades, no trophies or randomextraweapon. Fullbody viewed side-on3/4 facingright. Six genuine AFTER-COMBAT gesture poses: calmwatch, turnhead toward exit, lift one hand to signalhalt, holdopenpalm, lowerhand, resumewatch. This will only play aftercombat, never as randomduring-duel spectator. Consistent armor/anatomy across6poses. Cool moonlight and mutedblue/olives detailedpainted2Dgameart, NOT figurinephotography. Figure no taller than330pixels in EACH512x512cell, boots sameanchorlocaly425, wide generous70pxclearalpha allaround; nothing touchescellboundaries. No floor, pedestal, trees, scene, castshadow, glow, labels or gridlines. True transparentbackground.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-89eaac2e-cc9b-4bae-a7b1-b43e2952c769.png",
+      "workspacePath": "work-local/v61/generated/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E71"
+      ],
+      "visualNotes": "Six coherent anonymous adult Yautja guard gestures, complete body and hands, no active weapon. Zero alpha>32 edge pixels. Only after-combat, not ambient; not canonical named Enforcer.",
+      "activation": "after-combat only; original anonymous guard, not named Enforcer",
+      "loreLimit": "Does not establish canonical Enforcer survival or presence after a comic duel.",
+      "sha256": "ae57c714af4350c5c27246b3f982e0ba4af990f24755fe0d6f0e4223d772886b",
+      "bytes": 1994897,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7123279571533203,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            203,
+            0,
+            212,
+            496
+          ],
+          "alphaBounds32": [
+            205,
+            6,
+            209,
+            490
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            310,
+            496
+          ],
+          "bodyCenterPivot": [
+            308.5,
+            496
+          ],
+          "opaquePixelCount": 62188,
+          "contentSha256": "3e1fa76a6f37e343c3a1e1c4c9327782bd947c08477d91f5cb59728aeafd84e3",
+          "margins": [
+            203,
+            0,
+            97,
+            16
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            150,
+            6,
+            223,
+            492
+          ],
+          "alphaBounds32": [
+            152,
+            8,
+            220,
+            488
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            265,
+            498
+          ],
+          "bodyCenterPivot": [
+            261,
+            498
+          ],
+          "opaquePixelCount": 65746,
+          "contentSha256": "6d3665fa263721d52e7fdb322639eb8cd6ae3c829eddfab8f577d2bfd20e9384",
+          "margins": [
+            150,
+            6,
+            139,
+            14
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            1,
+            299,
+            495
+          ],
+          "alphaBounds32": [
+            102,
+            6,
+            295,
+            490
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            209,
+            496
+          ],
+          "bodyCenterPivot": [
+            248,
+            496
+          ],
+          "opaquePixelCount": 65183,
+          "contentSha256": "91f704df701e1b633017ae38f4f8361a95a762f99b68c12b74eb3d3a300fe45b",
+          "margins": [
+            99,
+            1,
+            114,
+            16
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            4,
+            312,
+            494
+          ],
+          "alphaBounds32": [
+            165,
+            6,
+            307,
+            490
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            273.5,
+            498
+          ],
+          "bodyCenterPivot": [
+            318.5,
+            498
+          ],
+          "opaquePixelCount": 66311,
+          "contentSha256": "dd3342e36e28eaf7207bf325554bc2670ff5ae67d288aeee2346f4bf1ca3310b",
+          "margins": [
+            163,
+            4,
+            37,
+            14
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            151,
+            8,
+            250,
+            488
+          ],
+          "alphaBounds32": [
+            154,
+            9,
+            246,
+            487
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            266.5,
+            496
+          ],
+          "bodyCenterPivot": [
+            275.5,
+            496
+          ],
+          "opaquePixelCount": 64869,
+          "contentSha256": "5aa4dfffe95e861e0b6f271276553560613d053ab0dd314c2195bf3fbba89628",
+          "margins": [
+            151,
+            8,
+            111,
+            16
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            105,
+            3,
+            214,
+            493
+          ],
+          "alphaBounds32": [
+            108,
+            6,
+            209,
+            490
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            211,
+            496
+          ],
+          "bodyCenterPivot": [
+            211.5,
+            496
+          ],
+          "opaquePixelCount": 62374,
+          "contentSha256": "bc1585e4b0dd403cd0156723fd164687550704ae63291221fdf2c2abc0b366e4",
+          "margins": [
+            105,
+            3,
+            193,
+            16
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 3,
+          "count": 19
+        },
+        {
+          "max": 2,
+          "count": 0
+        },
+        {
+          "max": 2,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ],
+      "edgeHaloReview": {
+        "accepted": true,
+        "notes": "All six drawings visually inspected at native output. Any edge pixels are faint translucent isolated halo (maximum alpha 3/255), with no silhouette or solid form cut; zero edge pixels above alpha32. Exact alpha>2 bounds retained and PNG bytes untouched."
+      }
+    }
+  ],
+  "artStatus": "accepted-3-ambient-plus-1-conditional-awaiting-runtime-composition",
+  "rejectedAssets": [
+    {
+      "id": "ambient-02",
+      "prompt": "Use case: stylized-concept. Asset: transparent PNG six-frame environmental animation sprite sheet for a 2D fighting stage, nocturnal Pine Barrens New Jersey forest inspired by Predator Bad Blood. Exactly 6 distinct hand-painted drawings arranged 3 columns by 2 rows on a1536x1024 canvas, each512x512cell. A low clump of dark olive woodland ferns and scrub leaves rooted around a small piece of pine deadwood. Side view, cold desaturated moonlight matching a deep blue forest. Six real motion drawings, left-to-right then top-to-bottom: still clump, several leaves jerk right as unseen ground prey brushes past behind it, leaves bend farthest with two detached leaves, recoil upright, slight sway left, settle. The offscreen animal must NOT be drawn. Fixed root attachment near localx256,y430, same object scale eachcell, whole clump inside localx85..425,y160..435. Only foliage and tiny root/deadwood patch, no background landscape. True alpha transparency all empty space and between leaves. No ground shadow, no mist overlay, no text, numbers, gridlines or border. Detailed painted gameart, natural coherent stems, anatomically sensible leaves, no photographic model.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-95c931c0-3a0d-4067-9029-9c7200ac3aed.png",
+      "workspacePath": "work-local/v61/generated/arena-140-bad-blood-pine-barrens/ambient-02.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "superseded-native",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E72"
+      ],
+      "visualNotes": "Six visible native phases; alpha and cell boundary measurements pending.",
+      "sha256": "d8c0ac93e68c51ea0181b89e183a9f5ad1c06bbf6fb7f71970626a0c1519b595",
+      "bytes": 2399306,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.4528573354085286,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            13,
+            114,
+            494,
+            364
+          ],
+          "alphaBounds32": [
+            14,
+            121,
+            491,
+            353
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            287,
+            478
+          ],
+          "bodyCenterPivot": [
+            259.5,
+            478
+          ],
+          "opaquePixelCount": 109768,
+          "contentSha256": "5efb2abebfe4086b70ce85396fe8e9e458bf79b0e69c4078fb22a76eb79584e4",
+          "margins": [
+            13,
+            114,
+            5,
+            34
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            29,
+            152,
+            483,
+            327
+          ],
+          "alphaBounds32": [
+            31,
+            154,
+            481,
+            323
+          ],
+          "edgePixelsAbove32": 65,
+          "pivot": [
+            256,
+            479
+          ],
+          "bodyCenterPivot": [
+            270,
+            479
+          ],
+          "opaquePixelCount": 100523,
+          "contentSha256": "04a44c5a91799a03fb1e17832d9bb34f1eaba740d7bd130b7974af43acca8c18",
+          "margins": [
+            29,
+            152,
+            0,
+            33
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            155,
+            503,
+            324
+          ],
+          "alphaBounds32": [
+            0,
+            156,
+            501,
+            321
+          ],
+          "edgePixelsAbove32": 63,
+          "pivot": [
+            244.5,
+            479
+          ],
+          "bodyCenterPivot": [
+            251,
+            479
+          ],
+          "opaquePixelCount": 90732,
+          "contentSha256": "81ed9fbc2498c0725a908db027a0386a59ac83e3c52a74bdec5745678f3da72c",
+          "margins": [
+            0,
+            155,
+            9,
+            33
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            13,
+            65,
+            499,
+            400
+          ],
+          "alphaBounds32": [
+            15,
+            75,
+            497,
+            388
+          ],
+          "edgePixelsAbove32": 4,
+          "pivot": [
+            268.5,
+            465
+          ],
+          "bodyCenterPivot": [
+            262,
+            465
+          ],
+          "opaquePixelCount": 115520,
+          "contentSha256": "2a2fa9300111e7609bde249c388d5239c67e7283039aa50e3d2d1b524d545dcb",
+          "margins": [
+            13,
+            65,
+            0,
+            47
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            98,
+            494,
+            366
+          ],
+          "alphaBounds32": [
+            0,
+            101,
+            492,
+            362
+          ],
+          "edgePixelsAbove32": 2,
+          "pivot": [
+            267,
+            464
+          ],
+          "bodyCenterPivot": [
+            246.5,
+            464
+          ],
+          "opaquePixelCount": 110170,
+          "contentSha256": "344d43dfb40bceefc9abc7f3b1bd8756d180877c2ad683af7a817ce39fa7fc13",
+          "margins": [
+            0,
+            98,
+            18,
+            48
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            10,
+            97,
+            496,
+            367
+          ],
+          "alphaBounds32": [
+            13,
+            103,
+            490,
+            359
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            267,
+            464
+          ],
+          "bodyCenterPivot": [
+            257.5,
+            464
+          ],
+          "opaquePixelCount": 110242,
+          "contentSha256": "88ecfb8e4b740063b92de734ed56dac9ef2775d6614699bdc16cb8390a89412d",
+          "margins": [
+            10,
+            97,
+            6,
+            48
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "rejectionReason": "Native correction of cell spacing."
+    }
+  ]
+}

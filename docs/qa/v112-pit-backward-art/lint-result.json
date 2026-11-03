@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "result": "PASS_TARGETED_LINT",
+  "exitCode": 0,
+  "command": "npx eslint app/game/pitWorkbookRegistryV112.ts app/game/pitCombatBitmapArt.ts app/game/pitSpriteSheetAnimation.ts scripts/build-pit-backward-art-v112.mjs tests/pit-backward-throw-art-v112.test.mjs tests/pit-backward-art-provenance-v112.test.mjs",
+  "observedLogBytes": 0,
+  "inputs": [
+    {
+      "file": "app/game/pitWorkbookRegistryV112.ts",
+      "sha256": "27ca31f4a2aa6cc5043a3b180e19189f08a53d83567d9bd23e6a3e14c9cf5ef9"
+    },
+    {
+      "file": "app/game/pitCombatBitmapArt.ts",
+      "sha256": "3eb5742ad8d6143794cf505b2072b131a946d9c254ee05def0808df3edd39a6a"
+    },
+    {
+      "file": "app/game/pitSpriteSheetAnimation.ts",
+      "sha256": "630726d0b720ac2b20ed97fb72e23487795968b4e0c5a6e4ed51f3bd1fe415be"
+    },
+    {
+      "file": "scripts/build-pit-backward-art-v112.mjs",
+      "sha256": "c6d39a1d54a52e36bf8e897cb416f3d96082e287279c6f71c415119e622d4cc3"
+    },
+    {
+      "file": "tests/pit-backward-throw-art-v112.test.mjs",
+      "sha256": "19a20a49544b69a9dcce493a3fe22fbf924da3ba4e5d8fbd08e543314cfb2249"
+    },
+    {
+      "file": "tests/pit-backward-art-provenance-v112.test.mjs",
+      "sha256": "1d661a1929e3f1d68eba9b1adbfa99d603c196feb80a8727b450d3e571b8424d"
+    }
+  ],
+  "scope": "ESLint on six art-registration, loader and test files; not a whole repository lint/typecheck certificate."
+}

@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: queued lift hydration never restores a previous owner and replacement hydration shares the polling frame
+ok 1 - queued lift hydration never restores a previous owner and replacement hydration shares the polling frame
+  ---
+  duration_ms: 322.676966
+  type: 'test'
+  ...
+# Subtest: a refused actual Port entry stays pending without a frame-write loop, then retries in place
+ok 2 - a refused actual Port entry stays pending without a frame-write loop, then retries in place
+  ---
+  duration_ms: 369.603748
+  type: 'test'
+  ...
+# Subtest: repeated refusal keeps the same visit available and writes at most once per explicit retry
+ok 3 - repeated refusal keeps the same visit available and writes at most once per explicit retry
+  ---
+  duration_ms: 218.728127
+  type: 'test'
+  ...
+# Subtest: several refused visited districts recover progressively; a second refusal does not erase the first ack
+ok 4 - several refused visited districts recover progressively; a second refusal does not erase the first ack
+  ---
+  duration_ms: 165.599786
+  type: 'test'
+  ...
+# Subtest: retry uses latest acknowledged evidence and relations, never a stale failed snapshot
+ok 5 - retry uses latest acknowledged evidence and relations, never a stale failed snapshot
+  ---
+  duration_ms: 186.858154
+  type: 'test'
+  ...
+# Subtest: a visit already durably acknowledged elsewhere clears pending state without another write
+ok 6 - a visit already durably acknowledged elsewhere clears pending state without another write
+  ---
+  duration_ms: 160.735402
+  type: 'test'
+  ...
+# Subtest: the retry is inert behind a suspended city and resumes only on a new explicit action
+ok 7 - the retry is inert behind a suspended city and resumes only on a new explicit action
+  ---
+  duration_ms: 211.468296
+  type: 'test'
+  ...
+# Subtest: owner replacement cannot replay pending visits before or after the live save-sync effect
+ok 8 - owner replacement cannot replay pending visits before or after the live save-sync effect
+  ---
+  duration_ms: 154.319942
+  type: 'test'
+  ...
+# Subtest: successful inline retry restores world focus and dialog retry stays navigable without held-A spill
+ok 9 - successful inline retry restores world focus and dialog retry stays navigable without held-A spill
+  ---
+  duration_ms: 336.399822
+  type: 'test'
+  ...
+# Subtest: entering youth training keeps refused visits alive until an explicit successful retry
+ok 10 - entering youth training keeps refused visits alive until an explicit successful retry
+  ---
+  duration_ms: 115.193885
+  type: 'test'
+  ...
+# Subtest: a partially recovered visit queue still blocks departure for youth training
+ok 11 - a partially recovered visit queue still blocks departure for youth training
+  ---
+  duration_ms: 129.558322
+  type: 'test'
+  ...
+# Subtest: youth entry ignores a suspended or stale-owner city even with no pending visits
+ok 12 - youth entry ignores a suspended or stale-owner city even with no pending visits
+  ---
+  duration_ms: 176.603229
+  type: 'test'
+  ...
+# Subtest: with no pending visits youth entry preserves the existing save-refusal feedback
+ok 13 - with no pending visits youth entry preserves the existing save-refusal feedback
+  ---
+  duration_ms: 187.631715
+  type: 'test'
+  ...
+# Subtest: Solo physical departure retains refused visits, then retries and handles a refused chapter save
+ok 14 - Solo physical departure retains refused visits, then retries and handles a refused chapter save
+  ---
+  duration_ms: 180.569502
+  type: 'test'
+  ...
+# Subtest: Solo entry stays blocked while one of several refused visits remains pending
+ok 15 - Solo entry stays blocked while one of several refused visits remains pending
+  ---
+  duration_ms: 203.592464
+  type: 'test'
+  ...
+# Subtest: Solo departure keeps its physical, suspension and owner guards even after visit recovery
+ok 16 - Solo departure keeps its physical, suspension and owner guards even after visit recovery
+  ---
+  duration_ms: 182.244803
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3321.292611

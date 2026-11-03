@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "characterId": "machiko",
+  "name": "Machiko Noguchi",
+  "biologicalSpecies": "human",
+  "adult": true,
+  "franchise": "Dark Horse Aliens vs. Predator comics",
+  "reviewedOn": "2026-09-05",
+  "identityRule": "Machiko est une humaine admise dans une société Yautja. Le port d'une armure de clan ne modifie pas son espèce.",
+  "sourcePolicy": "Générations originales par l'outil OpenAI intégré. Aucun appel API, aucune clé, aucune génération CLI. Références licenciées examinées visuellement dans un navigateur local, présentées au générateur comme images de contexte.",
+  "sources": [
+    {
+      "id": "darkhorse-essential-trilogy",
+      "role": "publisher-bibliographic-primary",
+      "url": "https://digital.darkhorse.com/books/9bb496a44e944fcda26662b44db247be/aliens-vs-predator-the-essential-comics-volume-1",
+      "textInspected": true,
+      "imageInspected": false,
+      "notes": "Éditeur : trilogie Machiko incluant AVP original, War et Three World War. Cette page confirme le corpus, pas le détail d'une tenue. Aucun intérieur complet de comic n'a été consulté."
+    },
+    {
+      "id": "prime1-ryushi",
+      "role": "licensed-visual-interpretation",
+      "url": "https://www.prime1studio.com/avpc-machiko-and-broken-tusk-predator/UPMAVP-01.html",
+      "textInspected": true,
+      "imageInspected": true,
+      "notes": "La page décrit une adaptation de la couverture AVP #4 de Dave Dorman. Prototype sous licence 20th Century Studios ; ce n'est pas une preuve de fidélité de chaque détail à une planche intérieure du comic. Tenue Ryushi uniquement."
+    },
+    {
+      "id": "neca-clan",
+      "role": "licensed-comic-derived-visual-reference",
+      "url": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+      "textInspected": true,
+      "imageInspected": true,
+      "notes": "Galerie officielle Series 18, références 51544 Machiko masquée/démasquée et emballage avec dessin Dark Horse réellement inspectés. La formulation commerciale female Predator ne reclassifie pas Machiko biologiquement. La page indique masque amovible, mains alternatives et fusil. L'ère War/Three World War est un regroupement de production ; les images inspectées n'identifient pas une case ni un numéro précis."
+    },
+    {
+      "id": "sideshow-screened-not-used",
+      "role": "research-only-not-used",
+      "url": "https://www.sideshow.com/whats-new/machiko-noguchi-premium-format-figure",
+      "textInspected": true,
+      "imageInspected": false,
+      "notes": "Résultat recherché mais non utilisé pour le modèle. Aucun mélange avec Hot Toys She-Predator."
+    }
+  ],
+  "inspectedVisuals": [
+    {
+      "id": "ryushi-general",
+      "sourceId": "prime1-ryushi",
+      "url": "https://www.prime1studio.com/on/demandware.static/-/Sites-p1s-master-catalog/default/dw8784b32e/images/UPMAVP-01/catalog/a001-l7CKDlbt.jpg",
+      "evidencePath": "tmp/v28-machiko-reference-0.png",
+      "sha256": "0ecf646649f4ce6689740ebb9a19a4ec83a5b6709cbc435b2f11a84fe8680812",
+      "observed": "Visage humain, cheveux noirs courts, haut olive manches longues, harnais bleu-gris, pantalon indigo, katana noir à poignée blanche, armes humaines."
+    },
+    {
+      "id": "ryushi-full-body",
+      "sourceId": "prime1-ryushi",
+      "url": "https://www.prime1studio.com/on/demandware.static/-/Sites-p1s-master-catalog/default/dwe4934b4b/images/UPMAVP-01/catalog/b017-68tp7wJC.jpg",
+      "evidencePath": "tmp/v28-machiko-reference-1.png",
+      "sha256": "76427578cba6d1c0c1d3e592e7ef120a29161f54196d8c8dae784066aa9a6d89",
+      "observed": "Vue d'ensemble, Machiko distincte de Broken Tusk, armes et proportions relatives."
+    },
+    {
+      "id": "ryushi-boots",
+      "sourceId": "prime1-ryushi",
+      "url": "https://www.prime1studio.com/on/demandware.static/-/Sites-p1s-master-catalog/default/dw609c3f69/images/UPMAVP-01/catalog/b036-Z6FZlXMv.jpg",
+      "evidencePath": "tmp/v28-machiko-detail-1.png",
+      "sha256": "d4e5b1d8b1bc95a79bd49bdfdcdb9d1cf60e61c8e7f62f00703f177e9e1d012a",
+      "observed": "Protection des jambes, chaussures humaines fermées, fourreau, poignée et port des armes."
+    },
+    {
+      "id": "clan-masked",
+      "sourceId": "neca-clan",
+      "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51544-Machiko1-1.jpg",
+      "evidencePath": "tmp/v28-machiko-clan-reference-0.png",
+      "sha256": "0dbd734457181366c2ebe38cfdf03b2f0f39d122ab43d19d7656aa8b252d43d4",
+      "observed": "Masque doré amovible, cuirasse segmentée grise, épaulières asymétriques, fusil bleu-vert, canon épaule gauche, résille sur cuisses, chaussures humaines."
+    },
+    {
+      "id": "clan-human-face",
+      "sourceId": "neca-clan",
+      "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51544-Machiko2-1.jpg",
+      "evidencePath": "tmp/v28-machiko-clan-reference-1.png",
+      "sha256": "60ae74f29af475b70c693bae84084a999ee37c34ecb9e12dbb7d85cc47f9fd58",
+      "observed": "Visage humain découvert, marque frontale très fine, cheveux humains noirs tressés/perlés, deux lames poignet droit visibles sur la figurine. Silhouette de référence conservée, articulations de jouet exclues."
+    },
+    {
+      "id": "clan-darkhorse-package",
+      "sourceId": "neca-clan",
+      "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51544-Machiko-pkg2.jpg",
+      "evidencePath": "tmp/v28-machiko-clan-reference-2.png",
+      "sha256": "d7c05ef40cfa6e76857065475f3d2d31a6bc5b3b9090ed12f2f5f1ef00c53647",
+      "observed": "Dessin de comic et logos Dark Horse/Fox sur l'emballage licencié, confirmant la piste graphique, sans identification d'une case précise."
+    }
+  ],
+  "evidencePolicy": "Les captures navigateur sont des preuves locales temporaires dans tmp, pas des sprites du jeu ni des images originales redistribuées dans le runtime. Les URL sont conservées pour retrouver les références.",
+  "variants": [
+    {
+      "id": "machiko-ryushi",
+      "displayName": "Machiko Noguchi · Ryushi",
+      "sourceIds": [
+        "prime1-ryushi",
+        "darkhorse-essential-trilogy"
+      ],
+      "visualInterpretation": "Adaptation de la tenue humaine Ryushi représentée par le prototype licencié Prime 1 UPMAVP-01.",
+      "gameplayAdaptations": [
+        "Arme longue passée à une prise à deux mains pour la séquence.",
+        "Pistolet rangé dans un étui de cuisse droite pour libérer les deux mains ; emplacement de port adapté au jeu, pas certifié par la pose source.",
+        "Hilt/fourreau conservés à gauche ; simplification des petits détails de l'arme et des inscriptions."
+      ],
+      "notInterchangeableWith": "machiko-clan"
+    },
+    {
+      "id": "machiko-clan",
+      "displayName": "Machiko Noguchi · Armure de clan",
+      "sourceIds": [
+        "neca-clan",
+        "darkhorse-essential-trilogy"
+      ],
+      "visualInterpretation": "Tenue de clan des comics d'après les références NECA Series 18 et son emballage Dark Horse, configuration démasquée.",
+      "gameplayAdaptations": [
+        "Lames entièrement rétractées dans la correction finale pour permettre le port du fusil sans pièces inversées.",
+        "Prise à deux mains et six étapes de réaction/récupération inventées comme mouvements de jeu, pas comme scènes canoniques.",
+        "Marque frontale demandée stable mais détails fins non certifiés par cette revue."
+      ],
+      "notInterchangeableWith": "machiko-ryushi"
+    }
+  ],
+  "fidelityStatus": "reference-based-interpretation-not-1-to-1-certified",
+  "restrictions": [
+    "Ne pas fusionner les deux variantes ni leurs cheveux/armes/armures.",
+    "Ne pas compter la variante Ryushi comme couverture d'une animation d'armure de clan.",
+    "Ne pas présenter les sources comme clips validés en jeu.",
+    "Pas d'anatomie Yautja ni de remplacement des bottes par des pieds griffus."
+  ]
+}

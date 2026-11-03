@@ -1,0 +1,385 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-29T13:15:52.432Z",
+  "route": "/planet-generator-v103",
+  "baseUrl": "http://127.0.0.1:3101",
+  "declaredServerMode": "development",
+  "viewport": [
+    1440,
+    1080
+  ],
+  "runtime": {
+    "node": "v24.22.1",
+    "next": "16.3.5",
+    "playwright": "1.62.1",
+    "chromium": "153.0.8010.0"
+  },
+  "scope": "Real Next route, React UI, procedural generator and original runtime textures; only native File.text delivery is delayed in a fresh isolated context.",
+  "limits": [
+    "This targeted import-order regression is not full-game, Homeworld, artistic or performance qualification.",
+    "The declared server mode is supplied by the runner; this script does not build or attest a deployed commit."
+  ],
+  "fileTextRestored": true,
+  "fixtures": [
+    {
+      "seed": 201,
+      "code": "proc-v103-5l-001013100011300111100-s0ldk",
+      "sha256": "7e789ef29edc7f4a3de0e31cdd5ecf8bb45b3d2bc1c10a9fd9982c78bad40361",
+      "bytes": 7822
+    },
+    {
+      "seed": 202,
+      "code": "proc-v103-5m-001013100011300111100-8xowb",
+      "sha256": "271d9431f1a8053d68f2946395a06f67956c50a6d5c3229242ceb11abb3bee1e",
+      "bytes": 7234
+    }
+  ],
+  "checks": [
+    {
+      "name": "Rejected Générer l’aperçu supersedes the older file read",
+      "status": "PASS",
+      "nativeRead": {
+        "name": "held-0.json",
+        "nativeFinished": true,
+        "nativeLength": 7111,
+        "released": true,
+        "delivered": true
+      },
+      "preserved": {
+        "message": "Une graine numérique doit être comprise entre 0 et 4 294 967 295.",
+        "preview": "proc-v103-5l-001013100011300111100-s0ldk",
+        "atlas": "proc-v103-5l-001013100011300111100-s0ldk",
+        "sharedCode": "proc-v103-5l-001013100011300111100-s0ldk",
+        "seed": "4294967296",
+        "importCode": "proc-v103-5l-001013100011300111100-s0ldk",
+        "modified": "true",
+        "fields": {
+          "seed": "4294967296",
+          "territoryCount": "18",
+          "regionCount": "3",
+          "landform": "continents",
+          "arrangement": "scattered",
+          "landCoverage": "balanced",
+          "coast": "peninsulas",
+          "territoryStyle": "organic",
+          "regionBalance": "balanced",
+          "landBiome": "temperate",
+          "biomeDiversity": "varied",
+          "landVariant": "native",
+          "landScale": "medium",
+          "landContrast": "balanced",
+          "landPalette": "native",
+          "surface": "water",
+          "hydrology": "mixed",
+          "surfaceVariant": "native",
+          "surfaceScale": "medium",
+          "surfaceContrast": "balanced",
+          "surfacePalette": "native",
+          "atmosphere": "haze"
+        }
+      }
+    },
+    {
+      "name": "Rejected Base terrestre supersedes the older file read",
+      "status": "PASS",
+      "nativeRead": {
+        "name": "held-1.json",
+        "nativeFinished": true,
+        "nativeLength": 7111,
+        "released": true,
+        "delivered": true
+      },
+      "preserved": {
+        "message": "Une graine numérique doit être comprise entre 0 et 4 294 967 295.",
+        "preview": "proc-v103-5l-001013100011300111100-s0ldk",
+        "atlas": "proc-v103-5l-001013100011300111100-s0ldk",
+        "sharedCode": "proc-v103-5l-001013100011300111100-s0ldk",
+        "seed": "4294967296",
+        "importCode": "proc-v103-5l-001013100011300111100-s0ldk",
+        "modified": "true",
+        "fields": {
+          "seed": "4294967296",
+          "territoryCount": "18",
+          "regionCount": "3",
+          "landform": "continents",
+          "arrangement": "scattered",
+          "landCoverage": "balanced",
+          "coast": "peninsulas",
+          "territoryStyle": "organic",
+          "regionBalance": "balanced",
+          "landBiome": "temperate",
+          "biomeDiversity": "varied",
+          "landVariant": "native",
+          "landScale": "medium",
+          "landContrast": "balanced",
+          "landPalette": "native",
+          "surface": "water",
+          "hydrology": "mixed",
+          "surfaceVariant": "native",
+          "surfaceScale": "medium",
+          "surfaceContrast": "balanced",
+          "surfacePalette": "native",
+          "atmosphere": "haze"
+        }
+      }
+    },
+    {
+      "name": "Rejected Base extraterrestre supersedes the older file read",
+      "status": "PASS",
+      "nativeRead": {
+        "name": "held-2.json",
+        "nativeFinished": true,
+        "nativeLength": 7111,
+        "released": true,
+        "delivered": true
+      },
+      "preserved": {
+        "message": "Une graine numérique doit être comprise entre 0 et 4 294 967 295.",
+        "preview": "proc-v103-5l-001013100011300111100-s0ldk",
+        "atlas": "proc-v103-5l-001013100011300111100-s0ldk",
+        "sharedCode": "proc-v103-5l-001013100011300111100-s0ldk",
+        "seed": "4294967296",
+        "importCode": "proc-v103-5l-001013100011300111100-s0ldk",
+        "modified": "true",
+        "fields": {
+          "seed": "4294967296",
+          "territoryCount": "18",
+          "regionCount": "3",
+          "landform": "continents",
+          "arrangement": "scattered",
+          "landCoverage": "balanced",
+          "coast": "peninsulas",
+          "territoryStyle": "organic",
+          "regionBalance": "balanced",
+          "landBiome": "temperate",
+          "biomeDiversity": "varied",
+          "landVariant": "native",
+          "landScale": "medium",
+          "landContrast": "balanced",
+          "landPalette": "native",
+          "surface": "water",
+          "hydrology": "mixed",
+          "surfaceVariant": "native",
+          "surfaceScale": "medium",
+          "surfaceContrast": "balanced",
+          "surfacePalette": "native",
+          "atmosphere": "haze"
+        }
+      }
+    },
+    {
+      "name": "Rejected shuffle with a locked invalid seed supersedes the older file read",
+      "status": "PASS",
+      "nativeRead": {
+        "name": "held-3.json",
+        "nativeFinished": true,
+        "nativeLength": 7111,
+        "released": true,
+        "delivered": true
+      },
+      "preserved": {
+        "message": "Une graine numérique doit être comprise entre 0 et 4 294 967 295.",
+        "preview": "proc-v103-5l-001013100011300111100-s0ldk",
+        "atlas": "proc-v103-5l-001013100011300111100-s0ldk",
+        "sharedCode": "proc-v103-5l-001013100011300111100-s0ldk",
+        "seed": "4294967296",
+        "importCode": "proc-v103-5l-001013100011300111100-s0ldk",
+        "modified": "true",
+        "fields": {
+          "seed": "4294967296",
+          "territoryCount": "18",
+          "regionCount": "3",
+          "landform": "continents",
+          "arrangement": "scattered",
+          "landCoverage": "balanced",
+          "coast": "peninsulas",
+          "territoryStyle": "organic",
+          "regionBalance": "balanced",
+          "landBiome": "temperate",
+          "biomeDiversity": "varied",
+          "landVariant": "native",
+          "landScale": "medium",
+          "landContrast": "balanced",
+          "landPalette": "native",
+          "surface": "water",
+          "hydrology": "mixed",
+          "surfaceVariant": "native",
+          "surfaceScale": "medium",
+          "surfaceContrast": "balanced",
+          "surfacePalette": "native",
+          "atmosphere": "haze"
+        }
+      }
+    },
+    {
+      "name": "Rejected code import prepared before the file supersedes its pending read",
+      "status": "PASS",
+      "nativeRead": {
+        "name": "held-4.json",
+        "nativeFinished": true,
+        "nativeLength": 7111,
+        "released": true,
+        "delivered": true
+      },
+      "preserved": {
+        "message": "Ce code de monde n’est pas reconnu. Vérifiez qu’il est complet.",
+        "preview": "proc-v103-5l-001013100011300111100-s0ldk",
+        "atlas": "proc-v103-5l-001013100011300111100-s0ldk",
+        "sharedCode": "proc-v103-5l-001013100011300111100-s0ldk",
+        "seed": "201",
+        "importCode": "invalid-world-code-v103",
+        "modified": "false",
+        "fields": {
+          "seed": "201",
+          "territoryCount": "18",
+          "regionCount": "3",
+          "landform": "continents",
+          "arrangement": "scattered",
+          "landCoverage": "balanced",
+          "coast": "peninsulas",
+          "territoryStyle": "organic",
+          "regionBalance": "balanced",
+          "landBiome": "temperate",
+          "biomeDiversity": "varied",
+          "landVariant": "native",
+          "landScale": "medium",
+          "landContrast": "balanced",
+          "landPalette": "native",
+          "surface": "water",
+          "hydrology": "mixed",
+          "surfaceVariant": "native",
+          "surfaceScale": "medium",
+          "surfaceContrast": "balanced",
+          "surfacePalette": "native",
+          "atmosphere": "haze"
+        }
+      }
+    },
+    {
+      "name": "Editing the code field after native reading preserves the newer unfinished input",
+      "status": "PASS",
+      "nativeRead": {
+        "name": "held-5.json",
+        "nativeFinished": true,
+        "nativeLength": 7111,
+        "released": true,
+        "delivered": true
+      },
+      "preserved": {
+        "message": "Shauun-5L retrouvé à partir de sa recette d’origine.",
+        "preview": "proc-v103-5l-001013100011300111100-s0ldk",
+        "atlas": "proc-v103-5l-001013100011300111100-s0ldk",
+        "sharedCode": "proc-v103-5l-001013100011300111100-s0ldk",
+        "seed": "201",
+        "importCode": "newer-unfinished-world-code",
+        "modified": "false",
+        "fields": {
+          "seed": "201",
+          "territoryCount": "18",
+          "regionCount": "3",
+          "landform": "continents",
+          "arrangement": "scattered",
+          "landCoverage": "balanced",
+          "coast": "peninsulas",
+          "territoryStyle": "organic",
+          "regionBalance": "balanced",
+          "landBiome": "temperate",
+          "biomeDiversity": "varied",
+          "landVariant": "native",
+          "landScale": "medium",
+          "landContrast": "balanced",
+          "landPalette": "native",
+          "surface": "water",
+          "hydrology": "mixed",
+          "surfaceVariant": "native",
+          "surfaceScale": "medium",
+          "surfaceContrast": "balanced",
+          "surfacePalette": "native",
+          "atmosphere": "haze"
+        }
+      }
+    },
+    {
+      "name": "A new valid native file import still succeeds after all cancelled reads",
+      "status": "PASS",
+      "imported": {
+        "message": "Fiche importée. Le monde conserve sa version et sa géographie d’origine.",
+        "preview": "proc-v103-5m-001013100011300111100-8xowb",
+        "atlas": "proc-v103-5m-001013100011300111100-8xowb",
+        "sharedCode": "proc-v103-5m-001013100011300111100-8xowb",
+        "seed": "202",
+        "importCode": "newer-unfinished-world-code",
+        "modified": "false",
+        "fields": {
+          "seed": "202",
+          "territoryCount": "18",
+          "regionCount": "3",
+          "landform": "continents",
+          "arrangement": "scattered",
+          "landCoverage": "balanced",
+          "coast": "peninsulas",
+          "territoryStyle": "organic",
+          "regionBalance": "balanced",
+          "landBiome": "temperate",
+          "biomeDiversity": "varied",
+          "landVariant": "native",
+          "landScale": "medium",
+          "landContrast": "balanced",
+          "landPalette": "native",
+          "surface": "water",
+          "hydrology": "mixed",
+          "surfaceVariant": "native",
+          "surfaceScale": "medium",
+          "surfaceContrast": "balanced",
+          "surfacePalette": "native",
+          "atmosphere": "haze"
+        }
+      }
+    }
+  ],
+  "textures": [
+    {
+      "path": "/game/planets/v101/runtime/land-temperate.webp",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "path": "/game/planets/v101/runtime/land-mountain.webp",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "path": "/game/planets/v101/runtime/land-jungle.webp",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "path": "/game/planets/v101/runtime/land-swamp.webp",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "path": "/game/planets/v101/runtime/land-tundra.webp",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "path": "/game/planets/v101/runtime/surface-water.webp",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "path": "/game/planets/v101/runtime/clouds-low.webp",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "path": "/game/planets/v101/runtime/haze-dust.webp",
+      "status": 200,
+      "contentType": "image/webp"
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": []
+}

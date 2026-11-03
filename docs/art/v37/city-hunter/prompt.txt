@@ -1,0 +1,23 @@
+Use case: identity-preserve, precise sprite costume correction.
+Asset type: original fan-game City Hunter RIGHT-facing high-guard atlas, 1536x1024 transparent PNG, 2 columns x 2 rows, four whole-body drawings.
+
+TWO IMAGE ROLES, STRICT PRIORITY:
+IMAGE 1 (magenta background, eight City Hunter idle drawings) is the AUTHORITATIVE FINAL CHARACTER DESIGN. Use only its TOP ROW right-facing views for identity, exact mask shape, proportions, every armor piece, skin color, netting, dreadlocks and equipment. This is the character already used in the game and the guard must transition from it without any costume change.
+IMAGE 2 (four guard poses, pale-grey preview background) is POSE REFERENCE ONLY and the EDIT TARGET for layout. Its mask, bulky build, large silver shield kneecaps, angular shin armor, pointed silver codpiece and silver disc are WRONG. Do NOT preserve those incorrect costume details. Replace the target character design in ALL FOUR poses with the exact City Hunter design from IMAGE 1. Image 1 overrides image 2 whenever there is any conflict.
+
+EXACT IDENTITY TO RESTORE FROM IMAGE 1:
+- Tall elongated copper/bronze OVAL bio-mask with a large raised oval crown ridge and long narrow front, not the target's short angular silver-mouth mask. Copy the silhouette and copper panel boundaries from the first image, not an interpretation.
+- Slender taller proportions, relatively narrow waist and long lower legs as image 1, not the bulky squat legs and huge shoulders of image 2.
+- Small dark grey SQUARE/RECTANGULAR knee plates on brown straps, visibly separated from the shin guards. Never large bright silver shield-shaped kneecaps.
+- Long straight rectangular grey shin protectors with the same horizontal rectangular segmented bands as image 1; same asymmetric brown equipment case outside the anatomical RIGHT upper shin. No angular pointed shin diamonds, no boots.
+- The compact belt, short layered dark-grey groin plates and short hip flaps from image 1, not long bright pointed overlapping triangles.
+- The original small dark bronze smart disc with bronze circular details at the anatomical LEFT thigh/hip. In these front three-quarter RIGHT-facing views it appears on the image-RIGHT thigh. Exactly ONE disc per frame. Never a silver disc and never the image-left hip.
+- Same warm orange-gold mottled skin, visible black mesh net, same dark grey segmented shoulder pads and wrist gauntlets, same black dreadlocks with small gold bands. Exactly ONE cannon on the anatomical LEFT shoulder; exactly TWO blades attached to the anatomical RIGHT wrist. Do not mirror these sides.
+- Same bare clawed feet and visible toe count as the authoritative first image.
+
+ANIMATION / COMPOSITION:
+Keep the four high-guard poses and overall 2x2 positions of image 2, but adapt limb lengths to the correct slim image-1 anatomy. All FOUR face RIGHT with the same camera angle as the TOP ROW of image 1. Arms raised in defensive high guard, two coherent closed fists protecting the mask/upper torso. Clearly attached wrists, forearms and hands. Right wrist blades point away from the face and away from the other hand. Exactly two arms/two hands/two legs. Do not invent digits or fuse the fist to the weapon.
+Four subtly distinct consecutive held-guard breathing drawings, feet planted, no walking or turning: settled guard, compressed exhale, slight inhale rise, settle back. Same equipment shape and attachment in all four. Preserve silhouette readability at a 180px runtime body height.
+Each invisible cell 768x512. Stance center x384 in its cell, planted soles y480. Whole body, all toes and blades fully inside each cell, clean generous transparent padding. Consistent body scale and baseline. Do not add text, labels or grid.
+The output background must have TRUE NATIVE TRANSPARENT ALPHA. Neither magenta from image 1 nor grey from image 2 is part of the sprite. No painted glow, shadow, terrain, FX, gradients, scene or backdrop. Crisp detailed 2D outlined game sprites in EXACTLY the rendering style of image 1, not photorealism.
+This is a continuity repair. Do not make a new armor variant. Prioritize accurate repeated costume and anatomy over decorative detail.

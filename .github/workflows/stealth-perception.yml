@@ -1,0 +1,46 @@
+name: Stealth perception regression
+on:
+  push:
+    branches: [codex/stealth-perception-20261102]
+  pull_request:
+    branches: [feat/v152-clan-war-provenance-gate-20261101]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  perception:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig*.json
+            /eslint.config.mjs
+            /app/game/
+            /types/
+            /lib/
+            /public/game/assets/v15/trophies/manifest.json
+            /tests/clan-war-stealth-perception.test.mjs
+            /tests/clan-war-stealth-last-contact.test.mjs
+            /tests/clan-war-stealth-reconciliation.test.mjs
+            /tests/clan-war-operations-v115.test.mjs
+            /tests/test_stealth_perception_tracker.py
+            /tests/__init__.py
+            /docs/clan-war-stealth-perception/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --experimental-strip-types --test tests/clan-war-stealth-perception.test.mjs tests/clan-war-stealth-last-contact.test.mjs tests/clan-war-stealth-reconciliation.test.mjs tests/clan-war-operations-v115.test.mjs
+      - run: npx tsc --noEmit -p tsconfig.clan-war-v152.json
+      - run: npx eslint app/game/systems/clanWarOperationsV115.ts
+      - run: python -m pip install openpyxl==3.1.5
+      - run: python tests/test_stealth_perception_tracker.py

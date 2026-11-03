@@ -1,0 +1,32 @@
+{
+  "scenario": "backup-missing",
+  "mainWrites": 1,
+  "scope": "Actual Hub callbacks, actual GameClient persistence and justice interval, actual incoming-save effect; one storage readback failure after successful write.",
+  "afterFailed": {
+    "pending": true,
+    "actor": {
+      "x": 7780,
+      "y": 4480
+    },
+    "durableCheckpoint": {
+      "x": 4827.379122065994,
+      "y": 5030.736907870462
+    }
+  },
+  "afterJusticeReconciliation": {
+    "pendingSocialWrite": null,
+    "hubPending": false,
+    "proposal": null,
+    "required": false,
+    "actor": {
+      "x": 4827.379122065994,
+      "y": 5030.736907870462
+    },
+    "checkpoint": {
+      "x": 4827.379122065994,
+      "y": 5030.736907870462
+    }
+  },
+  "hubSourceSha256": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+  "clientSourceSha256": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c"
+}

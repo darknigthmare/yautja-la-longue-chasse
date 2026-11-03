@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: actual public forward button staysTH_F while either fighter holds retreat in either native facing
+ok 1 - actual public forward button staysTH_F while either fighter holds retreat in either native facing
+  ---
+  duration_ms: 5.61204
+  type: 'test'
+  ...
+# Subtest: actual backward button forces4 from the current fighter facing even with a forward direction held
+ok 2 - actual backward button forces4 from the current fighter facing even with a forward direction held
+  ---
+  duration_ms: 1.185264
+  type: 'test'
+  ...
+# Subtest: public keyboard and pad4+L+M remain contextual and preserve their held retreat direction
+ok 3 - public keyboard and pad4+L+M remain contextual and preserve their held retreat direction
+  ---
+  duration_ms: 1.386431
+  type: 'test'
+  ...
+# Subtest: actual forward button during a backward capture remains a fresh successful tech, including held retreat
+ok 4 - actual forward button during a backward capture remains a fresh successful tech, including held retreat
+  ---
+  duration_ms: 2.100261
+  type: 'test'
+  ...
+# Subtest: the independentV16 public forward option keeps its historical input shape and forward action
+ok 5 - the independentV16 public forward option keeps its historical input shape and forward action
+  ---
+  duration_ms: 0.381552
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17.552547

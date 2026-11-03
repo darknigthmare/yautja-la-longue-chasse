@@ -1,0 +1,572 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-178-bloodshed-ring",
+  "proposalId": "new-bloodshed-ring",
+  "workbookStage": "A47:N47",
+  "sourceUrls": [
+    "https://www.marvel.com/comics/issue/134539/predator_bloodshed_2026_1_variant/variant",
+    "https://www.marvel.com/comics/issue/133277/predator_bloodshed_2026_3"
+  ],
+  "loreLimits": [
+    "Architecture latérale originale du tournoi, pas une reproduction certifiée de planche.",
+    "Annonceur, adulte bandagé et écran abstrait sont des motifs anonymes. Les coupures de commentaire et de paris conditionnées à un premier incident restent à implémenter séparément : aucune fausse coupure narrative n’est déclenchée au hasard."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "Native cinematic painterly 2D fighting-game background sprite atlas, true transparent PNG. Exactly SIX genuinely different drawn poses, arranged 3 columns by 2 rows on 1536x1024 canvas, each cell512x512. The entire subject must fit INSIDE the central340x340 of eachcell with at least80px transparent margin on all four sides. Same exact subject, scale, side-view camera and muted teal/amber lighting across all six poses. No background, floor, gradient, shadow plate, frame labels, letters or grid. No clipped parts, extra limbs or duplication. These are small background props or adult spectators, not the playable fighters. One adult anonymous underground tournament announcer in worn brown jacket over dark grey shirt, seated at a compact dark metal desk with a short microphone fixed to desk. Full desk and seated figure together intact, three-quarter side-on facingright. Six quiet nonviolent poses: head neutral and one hand on desk, glance at monitor below desk edge, slight lean toward mic, lower hand from mic, glance toward arena, return neutral. Mouth can change subtly. Keep desk identical, base horizontal, entire compact prop inside340x340. No cables leaving cell, no weapons. No promise of a story-triggered broadcast cutoff; purely ambient announcer movements.",
+      "referencedImagePaths": [],
+      "transparentRequested": true,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-a3038473-5271-4622-a39a-0a7eb513249b.png",
+      "workspacePath": "work-local/v60/generated/arena-178-bloodshed-ring/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six complete announcer poses with coherent desk and seated adult, distinct hand/head motion, alpha pending measurement.",
+      "sha256": "e72c6a3062712e76c4551e21e091ec76601bc540f8b565e31fdecdf5fe6d662b",
+      "bytes": 2190742,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.5854085286458334,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            39,
+            71,
+            427,
+            408
+          ],
+          "pivot": [
+            199,
+            479
+          ],
+          "margins": [
+            39,
+            71,
+            46,
+            33
+          ],
+          "opaquePixelCount": 109211,
+          "contentSha256": "495e5403a852e482c74794af02c9e463e2164fcaa7d991b8400d01eb65b30045"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            49,
+            84,
+            422,
+            395
+          ],
+          "pivot": [
+            204.5,
+            479
+          ],
+          "margins": [
+            49,
+            84,
+            41,
+            33
+          ],
+          "opaquePixelCount": 108071,
+          "contentSha256": "9233fabcdf37ddec3238e566c71a87a078dfd27109476fdf674f32fc80902715"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            53,
+            84,
+            420,
+            395
+          ],
+          "pivot": [
+            208,
+            479
+          ],
+          "margins": [
+            53,
+            84,
+            39,
+            33
+          ],
+          "opaquePixelCount": 109472,
+          "contentSha256": "e8fb297934331d1dda64fe27254202c0f592407a4b1824f4de1a02655b58324f"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            42,
+            74,
+            425,
+            400
+          ],
+          "pivot": [
+            202.5,
+            474
+          ],
+          "margins": [
+            42,
+            74,
+            45,
+            38
+          ],
+          "opaquePixelCount": 108323,
+          "contentSha256": "09d8ab104cb67b4bb483b14657cb7b36d6e9b5e1c08137c88939f3a70b7111f8"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            49,
+            66,
+            420,
+            408
+          ],
+          "pivot": [
+            195.5,
+            474
+          ],
+          "margins": [
+            49,
+            66,
+            43,
+            38
+          ],
+          "opaquePixelCount": 110866,
+          "contentSha256": "b4be38606f50a05b72c27cf64fdb94318ff5f4bc33ef3de4bb2b3c1593854ca8"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            53,
+            69,
+            420,
+            408
+          ],
+          "pivot": [
+            202,
+            477
+          ],
+          "margins": [
+            53,
+            69,
+            39,
+            35
+          ],
+          "opaquePixelCount": 106153,
+          "contentSha256": "3acbc96230933c79885b8fb09bd971174d61dd5134566ee754ecf20cc651280b"
+        }
+      ]
+    },
+    {
+      "id": "life-02",
+      "prompt": "Edit this native transparent six-pose sprite atlas. PRESERVE the 1536x1024 3x2 grid, subject style, complete figures, benches, colors, scale, lighting, transparency and all six different poses. One strict continuity correction: in the LOWER LEFT cell only remove the towel around the man's neck (it appears out of nowhere). Replace only that towel area with his same darkred sleeveless shirt, bare neck and skin as allothercells. No towel in ANY cell. Keep the upper-arm bandage and handwraps present consistently. Entirefigure+bench intact inside each512x512cell with clear transparent gutters. No backgroundadded. Absolutely no new props or bodyparts.",
+      "referencedImagePaths": [
+        "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-6f830406-2648-400b-8d58-ca47dc1ffe10.png"
+      ],
+      "transparentRequested": true,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-ab4c0e49-cc80-4777-a2ac-b68b56a8be86.png",
+      "workspacePath": "work-local/v60/generated/arena-178-bloodshed-ring/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Native edit removes towel continuity defect; six complete adult recovery poses. Read-only alpha bounds verify clear cell boundaries (minimum 2 pixels), including whole hair, shoes and bench. No part crosses between cells.",
+      "sha256": "d45b3798a4d385dc36362e5014a4dfb6ccaec04ce35b7d0fdb9cfd6c2c8f315c",
+      "bytes": 2313150,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6079603830973307,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            39,
+            60,
+            422,
+            450
+          ],
+          "pivot": [
+            301,
+            510
+          ],
+          "margins": [
+            39,
+            60,
+            51,
+            2
+          ],
+          "opaquePixelCount": 102272,
+          "contentSha256": "b5b8f9eccae01228244d11e7a4d53f080c80b0fca0168fa9c6881a3718a9f8ad"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            34,
+            11,
+            408,
+            496
+          ],
+          "pivot": [
+            191.5,
+            507
+          ],
+          "margins": [
+            34,
+            11,
+            70,
+            5
+          ],
+          "opaquePixelCount": 100088,
+          "contentSha256": "f8d56411327cb51f99f4448511ac2b063a84ad47035d6a83e0e311964c83906e"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            43,
+            25,
+            414,
+            484
+          ],
+          "pivot": [
+            296.5,
+            509
+          ],
+          "margins": [
+            43,
+            25,
+            55,
+            3
+          ],
+          "opaquePixelCount": 105743,
+          "contentSha256": "39841048f677ebdd005ab77606c078c5f23844ee835aff4054fbf656a9674359"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            39,
+            50,
+            426,
+            439
+          ],
+          "pivot": [
+            304.5,
+            489
+          ],
+          "margins": [
+            39,
+            50,
+            47,
+            23
+          ],
+          "opaquePixelCount": 101071,
+          "contentSha256": "8b84592cedd0744463827cbcb3aa8b8339430e9dd483cfe1f183845935b0dfdb"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            26,
+            428,
+            465
+          ],
+          "pivot": [
+            312,
+            491
+          ],
+          "margins": [
+            31,
+            26,
+            53,
+            21
+          ],
+          "opaquePixelCount": 104830,
+          "contentSha256": "9ab813bf384add3c2eacf9f06b277b1bff51ae654006b65c53b98d66c4540a82"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            34,
+            2,
+            422,
+            491
+          ],
+          "pivot": [
+            289,
+            493
+          ],
+          "margins": [
+            34,
+            2,
+            56,
+            19
+          ],
+          "opaquePixelCount": 102621,
+          "contentSha256": "a897e0a1bbb50bf2e609e71d7f606a29a0170f3de9c53f4526313fd8c54ea658"
+        }
+      ]
+    },
+    {
+      "id": "life-03",
+      "prompt": "Native cinematic painterly 2D fighting-game background sprite atlas, true transparent PNG. Exactly SIX genuinely different drawn poses, arranged 3 columns by 2 rows on 1536x1024 canvas, each cell512x512. The entire subject must fit INSIDE the central340x340 of eachcell with at least80px transparent margin on all four sides. Same exact subject, scale, side-view camera and muted teal/amber lighting across all six poses. No background, floor, gradient, shadow plate, frame labels, letters or grid. No clipped parts, extra limbs or duplication. These are small background props or adult spectators, not the playable fighters. One small rectangular battered industrial electronic betting board enclosed in a compact dark metal wall-mounted frame; frontview perfectly stationary and identical size all six cells. Six distinct restrained diagnostic/display states: dim amber rows, small amber cursor changes row, partial columns dim, small status dot changes amber to dull teal, all rows return dim amber, rest. Rows are tiny ABSTRACT blocks and points NOT readable words/numbers, no brand or text. No flicker glare, no strobing or flash, no spikes/wires beyondcompactframe. Slow subdued changes rather than a canon first-incident blackout. Whole monitor must fit340x340 with generous transparent borders.",
+      "referencedImagePaths": [],
+      "transparentRequested": true,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-4583e4d2-5b07-4866-8ad8-0541111dff3a.png",
+      "workspacePath": "work-local/v60/generated/arena-178-bloodshed-ring/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six discrete dim display states, fixed full wall mounted frame, low-contrast blocks, no flash or readable betting instructions.",
+      "sha256": "0926b4c735dbf0ce21498a205c2ca19e75fa6ff0fee15535658134bfc8c800a2",
+      "bytes": 1685317,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6830520629882812,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            150,
+            386,
+            247
+          ],
+          "pivot": [
+            243,
+            397
+          ],
+          "margins": [
+            83,
+            150,
+            43,
+            115
+          ],
+          "opaquePixelCount": 83033,
+          "contentSha256": "d6d732eec223c448758dd63e0bee079a599798af5b6355c0f49a477dee99a274"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            82,
+            150,
+            387,
+            248
+          ],
+          "pivot": [
+            244.5,
+            398
+          ],
+          "margins": [
+            82,
+            150,
+            43,
+            114
+          ],
+          "opaquePixelCount": 83285,
+          "contentSha256": "16e4878e9de8d86f2a56125224bf948dc1f3121ae7eccd68872a7bd674b77d19"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            149,
+            385,
+            249
+          ],
+          "pivot": [
+            243.5,
+            398
+          ],
+          "margins": [
+            83,
+            149,
+            44,
+            114
+          ],
+          "opaquePixelCount": 83529,
+          "contentSha256": "6d79b17b8691a1f087ed44a30d6d51f574f9af8befb55d607dbbc9cc9ea485c0"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            131,
+            386,
+            248
+          ],
+          "pivot": [
+            242,
+            379
+          ],
+          "margins": [
+            83,
+            131,
+            43,
+            133
+          ],
+          "opaquePixelCount": 82807,
+          "contentSha256": "81ececd9472644c3c8c157499387bf76a88a86f11c12983f91bf7e318d273654"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            132,
+            386,
+            248
+          ],
+          "pivot": [
+            244,
+            380
+          ],
+          "margins": [
+            83,
+            132,
+            43,
+            132
+          ],
+          "opaquePixelCount": 83098,
+          "contentSha256": "9ba27e95222d454d5206c7fd6a275f4def087251f350d76922454a3a363da380"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            134,
+            385,
+            247
+          ],
+          "pivot": [
+            243.5,
+            381
+          ],
+          "margins": [
+            83,
+            134,
+            44,
+            131
+          ],
+          "opaquePixelCount": 82764,
+          "contentSha256": "b7f8d3eb0c2a07d61e3396b20ccbf4cf52c565cbf70685a4bfa1efdff564265b"
+        }
+      ]
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Cinematic painterly 2D fighting-game BACKDROP, wide landscape 2.5:1, original lateral recomposition inspired by the clandestine near-future underground fighting tournament premise of Marvel Predator Bloodshed. The exact architecture is ORIGINAL, do not replicate an unverified comic panel or invent a named character. Empty illegal concrete-and-steel basement boxing venue, restrained grimy bluegreen and oldamber lights. CAMERA strictly side-on, horizontal ledges and walkways, no tilted horizon, deep coherent perspective vanishing into a dark central service tunnel. Upper left a small empty PA announcer booth with a visible horizontal sill; midrear right an empty horizontal holding walkway behind an architectural barred cage with enough open space to later place small adult figures. Upper right a rectangular EMPTY dark wall recess suitable for a separate betting monitor. Sparse practical hanging lights, steel mesh railings and pipes. Main lower35percent is a dark unobstructed recess where an independent foreground fighting platform will be composited; NO complete boxing ring, NO foreground ropes crossing the playable space, no floor covering the lower foreground, no foreground fighters. No spectators baked in, no human silhouettes, no Predator statue, no text, logos or readable displays, no blood or gore. These three placements need clear existing physical supports. Native opaque PNG.",
+      "referencedImagePaths": [],
+      "transparentRequested": false,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-93ac0f8e-9de9-4a35-921a-e3bdb21558fb.png",
+      "workspacePath": "work-local/v60/generated/arena-178-bloodshed-ring/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Original underground basement tournament setting; P0 clean of actors, three clear support locations and no ropes over combat.",
+      "sha256": "ba8453fe1e819fc512e5c839a962588cc1dd2255d999c7004ff4af2c4fd161c5",
+      "bytes": 2226021,
+      "width": 1983,
+      "height": 793,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "sourceEvidence": "Official Marvel synopses verify a near-future underground martial-arts tournament and confined survivors. They do not verify the exact architecture or anonymous background cast.",
+  "sourceReviewDate": "2026-09-30"
+}

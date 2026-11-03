@@ -1,0 +1,16 @@
+{
+  "baseHeadSha": "f54dd68ce1a8708409d0075f0dcc7a76f2be647b",
+  "candidateOnly": true,
+  "command": [
+    "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "--test",
+    "--test-reporter=spec",
+    "--test-concurrency=1",
+    "tests/planet-topology-advisor-v139.test.mjs",
+    "tests/planet-relief-v150.test.mjs",
+    "tests/planet-traversal-exercise-v154.test.mjs",
+    "tests/planet-traversal-section-v155.test.mjs"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 12.56
+}

@@ -1,0 +1,30 @@
+
+> yautja-la-longue-chasse@1.0.0 build:production
+> node scripts/build-production-v94.mjs
+
+[production] audio
+[audio] 37 slots, 22 supplied, 0 ignored
+[production] next
+▲ Next.js 16.3.5 (webpack)
+✓ Running next.config.ts took 33ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 33.8s
+  Running TypeScript ...
+  Finished TypeScript in 60s ...
+  Collecting page data using 4 workers ...
+  Generating static pages using 4 workers (0/9) ...
+  Generating static pages using 4 workers (2/9) 
+  Generating static pages using 4 workers (4/9) 
+  Generating static pages using 4 workers (6/9) 
+Error occurred prerendering page "/_global-error". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: ENOSPC: no space left on device, mkdir '/workspace/yautja-homeworld-v110/.next/server/app/_global-error.segments'
+    at ignore-listed frames {
+  errno: -28,
+  code: 'ENOSPC',
+  syscall: 'mkdir',
+  path: '/workspace/yautja-homeworld-v110/.next/server/app/_global-error.segments'
+}
+Export encountered an error on /_global-error/page: /_global-error, exiting the build.
+⨯ Next.js build worker exited with code: 1 and signal: null
+[production] Échec de next; les étapes suivantes ne seront pas exécutées.

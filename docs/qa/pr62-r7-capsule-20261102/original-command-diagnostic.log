@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: V112 retains every inherited requirement and keeps nine actions inside the 56 source rows
+ok 1 - V112 retains every inherited requirement and keeps nine actions inside the 56 source rows
+  ---
+  duration_ms: 6646.519908
+  type: 'test'
+  ...
+# Subtest: unrelated closures, partial closures, duplicate workstreams and unsupported browser promotions are refused
+ok 2 - unrelated closures, partial closures, duplicate workstreams and unsupported browser promotions are refused
+  ---
+  duration_ms: 18.016124
+  type: 'test'
+  ...
+# Traceback (most recent call last):
+#   File "/tmp/yautja-r7-publication-v113-VXl3E3/scripts/build-homeworld-followup-v112.py", line 35, in <module>
+#     raise ValueError('Historical workbook ZIP part changed: ' + name)
+# ValueError: Historical workbook ZIP part changed: xl/worksheets/v111-sheet-106.xml
+# Subtest: 122 worksheets retain all 113 historical parts and detect a cell-text-only mutation precisely
+ok 3 - 122 worksheets retain all 113 historical parts and detect a cell-text-only mutation precisely
+  ---
+  duration_ms: 5849.597459
+  type: 'test'
+  ...
+# Subtest: a historical V111 production report cannot certify V112
+not ok 4 - a historical V111 production report cannot certify V112
+  ---
+  duration_ms: 6.585026
+  type: 'test'
+  location: '/tmp/yautja-r7-publication-v113-VXl3E3/tests/homeworld-excel-followup-v112.test.mjs:68:1'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open 'docs/v111-homeworld-validation.json'"
+  code: 'ENOENT'
+  stack: |-
+    async open (node:internal/fs/promises:639:25)
+    async Object.readFile (node:internal/fs/promises:1252:14)
+    async TestContext.<anonymous> (file:///tmp/yautja-r7-publication-v113-VXl3E3/tests/homeworld-excel-followup-v112.test.mjs:69:31)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: failed or omitted network requests cannot receive a current production pass
+ok 5 - failed or omitted network requests cannot receive a current production pass
+  ---
+  duration_ms: 8.497414
+  type: 'test'
+  ...
+# Subtest: real raw file identities match frozen path identities without rewriting the executed evidence
+ok 6 - real raw file identities match frozen path identities without rewriting the executed evidence
+  ---
+  duration_ms: 0.72185
+  type: 'test'
+  ...
+# Subtest: conflicting path aliases, duplicate observations and changed frozen bytes cannot be hidden by normalization
+ok 7 - conflicting path aliases, duplicate observations and changed frozen bytes cannot be hidden by normalization
+  ---
+  duration_ms: 1.174514
+  type: 'test'
+  ...
+# Subtest: individually valid domain certificates cannot be mixed across runtime commits or compiled builds
+ok 8 - individually valid domain certificates cannot be mixed across runtime commits or compiled builds
+  ---
+  duration_ms: 0.544061
+  type: 'test'
+  ...
+# Subtest: V112 workbook and metadata reproduce exactly without executing historical gameplay or native Excel
+ok 9 - V112 workbook and metadata reproduce exactly without executing historical gameplay or native Excel
+  ---
+  duration_ms: 13366.023727
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 8
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 26628.028115
+Error: Original R7 command failed: --experimental-strip-types --test --test-reporter=tap --test-concurrency=1 tests/homeworld-excel-followup-v112.test.mjs
+    at originalCommand (file:///workspace/yautja-pr62-integration-20261102/scripts/check-homeworld-publication-history-v112-r7.mjs:210:29)
+    at runR7PublicationV113 (file:///workspace/yautja-pr62-integration-20261102/scripts/check-homeworld-publication-history-v112-r7.mjs:214:15)
+    at async file:///workspace/yautja-pr62-integration-20261102/[eval1]:3:13

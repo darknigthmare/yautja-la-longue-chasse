@@ -1,0 +1,27 @@
+{
+  "status": "PAINTED_BOUNDS_OVERLAP_NEEDS_BROWSER_OCCLUSION",
+  "residentId": "resident-memory-1",
+  "buildingId": "memory-vault",
+  "asset": "/game/homeworld/v64/civic-hall.png",
+  "groundPath": [
+    {
+      "x": 1165,
+      "y": 395.5
+    },
+    {
+      "x": 985,
+      "y": 485.5
+    }
+  ],
+  "allSampledSupportsWalkable": true,
+  "elevation": 0,
+  "residentDepthRange": [
+    395.5,
+    485.5
+  ],
+  "buildingGroundDepth": 1038.5,
+  "maxAlphaAtGroundFoot": 253,
+  "samples": 101,
+  "capture": "M:/CodexTemp/yautja-v71-20261002/qa/outskirts-final-local/memory-vault-physical-arrival.jpg",
+  "limits": "Source alpha only checks the foot point; apparent roof adjacency is not proof of a rooftop path or a rendering defect. Other residents do not overlap the memory building image rectangle in sampled routes."
+}

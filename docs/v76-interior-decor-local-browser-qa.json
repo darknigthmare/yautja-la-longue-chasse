@@ -1,0 +1,536 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4194",
+  "expectedVersion": "V76",
+  "checks": [
+    {
+      "name": "version-and-natural-native-readiness",
+      "expectedVersion": "V76"
+    },
+    {
+      "name": "production-native-png-HTTP-and-SHA",
+      "id": "bench-left",
+      "sha256": "3975f06649f34fbc3aa0d80c6f85b49d0695049e912982eea0b37b4c5daef02d"
+    },
+    {
+      "name": "production-native-png-HTTP-and-SHA",
+      "id": "worktable-right",
+      "sha256": "62f1a4020acb5f65d6b07486d772fa42d7d2aacd8470af43aa84e508743c319d"
+    },
+    {
+      "name": "production-native-png-HTTP-and-SHA",
+      "id": "rack-lateral",
+      "sha256": "441642d5ddacad9a03a45f068d0e95d588518ae18a5c02af897b2dd165436308"
+    },
+    {
+      "name": "production-native-png-HTTP-and-SHA",
+      "id": "chest-diagonal",
+      "sha256": "b7ca429b772870bc2d7413b894eab1400c6593fd4fa046ec0aef936575504a42"
+    },
+    {
+      "name": "native-shelf-collider-real-held-keyboard-input",
+      "before": {
+        "x": 438,
+        "y": 244
+      },
+      "after": {
+        "x": 454,
+        "y": 244
+      },
+      "bounds": {
+        "left": 478.22911999999997,
+        "right": 524.12288,
+        "top": 234.43532661857566,
+        "bottom": 264
+      },
+      "oldPlaceWasWalkable": true
+    },
+    {
+      "name": "real-keyboard-door-spaces-passages-and-existing-services",
+      "id": "dock-control",
+      "zones": [
+        "dock-control-v74-zone-0",
+        "dock-control-v74-zone-1"
+      ],
+      "services": [
+        "dock-officer-point",
+        "suspect-trophy-point"
+      ],
+      "native": [
+        {
+          "id": "dock-control-v76-0",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "231.5264,12.081549183840195,318.1712,64",
+          "left": 212.518,
+          "top": -35.0463,
+          "width": 121.651,
+          "height": 81.1008,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/bench-left.png",
+          "loaded": true
+        },
+        {
+          "id": "dock-control-v76-1",
+          "orientation": "lateral-left-open",
+          "solid": "true",
+          "bounds": "478.22911999999997,234.43532661857566,524.12288,264",
+          "left": 457.014,
+          "top": 63.0282,
+          "width": 87.5301,
+          "height": 93.5194,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/rack-lateral.png",
+          "loaded": true
+        },
+        {
+          "id": "dock-control-v76-2",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "447.376,15.215897799394774,525.01,56",
+          "left": 436.432,
+          "top": -39.4945,
+          "width": 94.05,
+          "height": 78.2496,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/chest-diagonal.png",
+          "loaded": true
+        },
+        {
+          "id": "dock-control-v76-3",
+          "orientation": "diagonal-right-front",
+          "solid": "true",
+          "bounds": "230.482,77.25523756665233,300.034,128",
+          "left": 210.07,
+          "top": -0.292216,
+          "width": 109.469,
+          "height": 82.1016,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/worktable-right.png",
+          "loaded": true
+        }
+      ],
+      "pointsUnchanged": true,
+      "noTeleport": true
+    },
+    {
+      "name": "real-keyboard-door-spaces-passages-and-existing-services",
+      "id": "convoy-workshop",
+      "zones": [
+        "convoy-workshop-v74-zone-0",
+        "convoy-workshop-v74-zone-1"
+      ],
+      "services": [],
+      "native": [
+        {
+          "id": "convoy-workshop-v76-1",
+          "orientation": "lateral-left-open",
+          "solid": "true",
+          "bounds": "478.22911999999997,178.43532661857566,524.12288,208",
+          "left": 457.014,
+          "top": 30.9079,
+          "width": 87.5301,
+          "height": 93.5194,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/rack-lateral.png",
+          "loaded": true
+        },
+        {
+          "id": "convoy-workshop-v76-2",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "343.376,167.21589779939478,421.01,208",
+          "left": 332.432,
+          "top": 47.6891,
+          "width": 94.05,
+          "height": 78.2496,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/chest-diagonal.png",
+          "loaded": true
+        }
+      ],
+      "pointsUnchanged": true,
+      "noTeleport": true
+    },
+    {
+      "name": "real-keyboard-door-spaces-passages-and-existing-services",
+      "id": "residence-port-1",
+      "zones": [
+        "residence-port-1-v74-zone-0",
+        "residence-port-1-v74-zone-1"
+      ],
+      "services": [],
+      "native": [
+        {
+          "id": "residence-port-1-v76-0",
+          "orientation": "lateral-left-open",
+          "solid": "true",
+          "bounds": "12.369279999999996,119.81072177883463,49.91872,144",
+          "left": -4.98848,
+          "top": 10.271,
+          "width": 71.6155,
+          "height": 76.5158,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/rack-lateral.png",
+          "loaded": true
+        }
+      ],
+      "pointsUnchanged": true,
+      "noTeleport": true
+    },
+    {
+      "name": "real-keyboard-door-spaces-passages-and-existing-services",
+      "id": "residence-port-2",
+      "zones": [
+        "residence-port-2-v74-zone-0",
+        "residence-port-2-v74-zone-1"
+      ],
+      "services": [],
+      "native": [
+        {
+          "id": "residence-port-2-v76-0",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "186.272,12.734624319866832,258.476,56",
+          "left": 170.432,
+          "top": -27.6757,
+          "width": 101.376,
+          "height": 67.584,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/bench-left.png",
+          "loaded": true
+        },
+        {
+          "id": "residence-port-2-v76-1",
+          "orientation": "lateral-left-open",
+          "solid": "true",
+          "bounds": "12.369279999999996,159.81072177883465,49.91872,184",
+          "left": -4.98848,
+          "top": 33.2141,
+          "width": 71.6155,
+          "height": 76.5158,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/rack-lateral.png",
+          "loaded": true
+        }
+      ],
+      "pointsUnchanged": true,
+      "noTeleport": true
+    },
+    {
+      "name": "real-keyboard-door-spaces-passages-and-existing-services",
+      "id": "market-armory",
+      "zones": [
+        "market-armory-foyer",
+        "market-armory-west",
+        "market-armory-east"
+      ],
+      "services": [
+        "market-service"
+      ],
+      "native": [
+        {
+          "id": "market-armory-v76-0",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "191.5264,220.0815491838402,278.1712,272",
+          "left": 172.518,
+          "top": 84.2576,
+          "width": 121.651,
+          "height": 81.1008,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/bench-left.png",
+          "loaded": true
+        },
+        {
+          "id": "market-armory-v76-1",
+          "orientation": "lateral-left-open",
+          "solid": "true",
+          "bounds": "478.22911999999997,242.43532661857566,524.12288,272",
+          "left": 457.014,
+          "top": 67.6168,
+          "width": 87.5301,
+          "height": 93.5194,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/rack-lateral.png",
+          "loaded": true
+        },
+        {
+          "id": "market-armory-v76-3",
+          "orientation": "diagonal-right-front",
+          "solid": "true",
+          "bounds": "454.482,29.255237566652326,524.034,80",
+          "left": 434.07,
+          "top": -27.8239,
+          "width": 109.469,
+          "height": 82.1016,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/worktable-right.png",
+          "loaded": true
+        }
+      ],
+      "pointsUnchanged": true,
+      "noTeleport": true
+    },
+    {
+      "name": "pit-gate-old-furnishing-approach-restored-by-new-shelf-placement",
+      "fixtureId": "pit-gate-v74-parures",
+      "position": {
+        "x": 501,
+        "y": 149
+      },
+      "distance": 39.28819797343726,
+      "bounds": {
+        "left": 383.75,
+        "right": 496.25,
+        "top": 63.5,
+        "bottom": 110
+      },
+      "noTeleport": true
+    },
+    {
+      "name": "real-keyboard-door-spaces-passages-and-existing-services",
+      "id": "pit-gate",
+      "zones": [
+        "pit-gate-v74-zone-0",
+        "pit-gate-v74-zone-1"
+      ],
+      "services": [
+        "pit-service"
+      ],
+      "native": [
+        {
+          "id": "pit-gate-v76-0",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "15.526400000000002,212.0815491838402,102.1712,264",
+          "left": -3.4816,
+          "top": 79.669,
+          "width": 121.651,
+          "height": 81.1008,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/bench-left.png",
+          "loaded": true
+        },
+        {
+          "id": "pit-gate-v76-1",
+          "orientation": "lateral-left-open",
+          "solid": "true",
+          "bounds": "142.22912,266.4353266185757,188.12288,296",
+          "left": 121.014,
+          "top": 81.3826,
+          "width": 87.5301,
+          "height": 93.5194,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/rack-lateral.png",
+          "loaded": true
+        },
+        {
+          "id": "pit-gate-v76-2",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "47.376,15.215897799394774,125.00999999999999,56",
+          "left": 36.432,
+          "top": -39.4945,
+          "width": 94.05,
+          "height": 78.2496,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/chest-diagonal.png",
+          "loaded": true
+        },
+        {
+          "id": "pit-gate-v76-3",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "47.5264,108.0815491838402,134.1712,160",
+          "left": 28.5184,
+          "top": 20.017,
+          "width": 121.651,
+          "height": 81.1008,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/bench-left.png",
+          "loaded": true
+        }
+      ],
+      "pointsUnchanged": true,
+      "noTeleport": true
+    },
+    {
+      "name": "real-keyboard-door-spaces-passages-and-existing-services",
+      "id": "memory-vault",
+      "zones": [
+        "memory-vault-foyer",
+        "memory-vault-west",
+        "memory-vault-east"
+      ],
+      "services": [
+        "memory-register-point",
+        "memory-service"
+      ],
+      "native": [
+        {
+          "id": "memory-vault-v76-0",
+          "orientation": "lateral-left-open",
+          "solid": "true",
+          "bounds": "14.229119999999995,18.435326618575665,60.12288,48",
+          "left": -6.98592,
+          "top": -60.8643,
+          "width": 87.5301,
+          "height": 93.5194,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/rack-lateral.png",
+          "loaded": true
+        },
+        {
+          "id": "memory-vault-v76-1",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "255.5264,300.0815491838402,342.1712,352",
+          "left": 236.518,
+          "top": 130.144,
+          "width": 121.651,
+          "height": 81.1008,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/bench-left.png",
+          "loaded": true
+        },
+        {
+          "id": "memory-vault-v76-2",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "15.375999999999998,295.2158977993948,93.00999999999999,336",
+          "left": 4.432,
+          "top": 121.107,
+          "width": 94.05,
+          "height": 78.2496,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/chest-diagonal.png",
+          "loaded": true
+        },
+        {
+          "id": "memory-vault-v76-3",
+          "orientation": "lateral-left-open",
+          "solid": "true",
+          "bounds": "478.22911999999997,378.4353266185757,524.12288,408",
+          "left": 457.014,
+          "top": 145.623,
+          "width": 87.5301,
+          "height": 93.5194,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/rack-lateral.png",
+          "loaded": true
+        }
+      ],
+      "pointsUnchanged": true,
+      "noTeleport": true
+    },
+    {
+      "name": "portrait-native-support-and-no-page-overflow",
+      "id": "memory-vault",
+      "native": [
+        {
+          "id": "memory-vault-v76-0",
+          "orientation": "lateral-left-open",
+          "solid": "true",
+          "bounds": "14.229119999999995,18.435326618575665,60.12288,48",
+          "left": -6.98592,
+          "top": -60.8643,
+          "width": 87.5301,
+          "height": 93.5194,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/rack-lateral.png",
+          "loaded": true
+        },
+        {
+          "id": "memory-vault-v76-1",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "255.5264,300.0815491838402,342.1712,352",
+          "left": 236.518,
+          "top": 130.144,
+          "width": 121.651,
+          "height": 81.1008,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/bench-left.png",
+          "loaded": true
+        },
+        {
+          "id": "memory-vault-v76-2",
+          "orientation": "diagonal-left-front",
+          "solid": "true",
+          "bounds": "15.375999999999998,295.2158977993948,93.00999999999999,336",
+          "left": 4.432,
+          "top": 121.107,
+          "width": 94.05,
+          "height": 78.2496,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/chest-diagonal.png",
+          "loaded": true
+        },
+        {
+          "id": "memory-vault-v76-3",
+          "orientation": "lateral-left-open",
+          "solid": "true",
+          "bounds": "478.22911999999997,378.4353266185757,524.12288,408",
+          "left": 457.014,
+          "top": 145.623,
+          "width": 87.5301,
+          "height": 93.5194,
+          "transform": "",
+          "imgTransform": "",
+          "src": "/game/homeworld/v76/interior/rack-lateral.png",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "name": "pause-focus-resume-and-physical-exit",
+      "noSaveGrant": true
+    }
+  ],
+  "captures": [
+    "work-local/v76/qa/interior-decor-local/dock-shelf-real-keyboard-collision.png",
+    "work-local/v76/qa/interior-decor-local/dock-control-native-oriented-decor.png",
+    "work-local/v76/qa/interior-decor-local/convoy-workshop-native-oriented-decor.png",
+    "work-local/v76/qa/interior-decor-local/residence-port-1-native-oriented-decor.png",
+    "work-local/v76/qa/interior-decor-local/residence-port-2-native-oriented-decor.png",
+    "work-local/v76/qa/interior-decor-local/market-armory-native-oriented-decor.png",
+    "work-local/v76/qa/interior-decor-local/pit-gate-preserved-parures-real-keyboard-approach.png",
+    "work-local/v76/qa/interior-decor-local/pit-gate-native-oriented-decor.png",
+    "work-local/v76/qa/interior-decor-local/memory-vault-native-oriented-decor.png",
+    "work-local/v76/qa/interior-decor-local/memory-vault-portrait-native-oriented-decor.png",
+    "work-local/v76/qa/interior-decor-local/portrait-pause-oriented-decor.png"
+  ],
+  "errors": [],
+  "failures": [],
+  "consoleErrors": [],
+  "limits": [
+    "7 selected actual rooms exercised with public keyboard movement; all43rooms additionally model-validated at four-unit clearance.",
+    "Campaign prerequisites are model-played fixtures, not a full browser replay.",
+    "Portrait is Chrome emulation, not a physical phone.",
+    "Native images keep generated alpha pixels; conservative ground AABBs are measured support bounds, not a 3D reconstruction."
+  ]
+}

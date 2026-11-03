@@ -1,0 +1,80 @@
+{
+  "version": "V45",
+  "verifiedAt": "2026-09-23T05:19:26.764007+00:00",
+  "status": "PASS",
+  "tests": {
+    "tests": 1460,
+    "pass": 1460,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 180257.2524,
+    "log": "work/v45/tests-final.tap",
+    "logSha256": "d4f917d1cc3338c10a1cc2775cea756559c4ea58d0c9b27922a4bd61cf0158df"
+  },
+  "typecheck": "PASS",
+  "lint": {
+    "errors": 0,
+    "warnings": 1,
+    "existingWarning": "app/game/ClanChroniclePanel.tsx:40 @next/next/no-img-element"
+  },
+  "build": {
+    "result": "PASS",
+    "command": "npm run build",
+    "log": "work/v45/build-final.log",
+    "guardLoop": false,
+    "warnings": [
+      "Existing large-bundle notice",
+      "Vinext static route classification limitation"
+    ]
+  },
+  "browser": [
+    {
+      "file": "v45-browser-qa.json",
+      "checks": 8,
+      "passed": true,
+      "url": "http://127.0.0.1:4174",
+      "checkedAt": "2026-09-23T05:12:03.361Z"
+    },
+    {
+      "file": "v45-user-roster-regression-qa.json",
+      "checks": 6,
+      "passed": true,
+      "url": "http://127.0.0.1:4174",
+      "checkedAt": "2026-09-23T05:06:10.339Z"
+    },
+    {
+      "file": "v45-selection-regression-qa.json",
+      "checks": 14,
+      "passed": true,
+      "url": "http://127.0.0.1:4174",
+      "checkedAt": "2026-09-23T05:07:21.879Z"
+    }
+  ],
+  "newContent": {
+    "rosterIcons": 177,
+    "sourcePngsUnchanged": 410,
+    "newAnimationSourcePages": 1,
+    "newAnimationDrawings": 4,
+    "newOrientedClips": 2,
+    "completeMovesets": 0,
+    "fighter": "user-ahab",
+    "appearance": "ahab-avec-casque-0c8ceb1c95",
+    "facing": "right"
+  },
+  "review": {
+    "artReport": "v45-ahab-art-review.json",
+    "provenance": "v45-ahab-generation.json",
+    "engineAudit": "PASS; exact-appearance ownership, missing facing, abort, source SHA; guard holds last frame at tick 1000",
+    "preliminaryFindings": [
+      "A preliminary SSR test was invalidated by rebuilding its output concurrently. The final full suite ran after compilation with output untouched.",
+      "The V34 production-count test expected 11 hunters and 267 clips. Ahab correctly makes 12 and 269; counts updated and full suite rerun."
+    ]
+  },
+  "limits": [
+    "Only Ahab masked idle and high guard facing right added.",
+    "Other poses retain the exact supplied static art.",
+    "No complete moveset, canon 1:1 certification, physical-controller certification, or Windows executable added.",
+    "Publication is recorded separately after live deployment verification."
+  ]
+}

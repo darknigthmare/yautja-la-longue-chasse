@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "classification": "CONSTRUCTED_NATIVE_MENU_REGRESSION_NOT_CAMPAIGN",
+  "result": "OK",
+  "cases": [
+    {
+      "case": "native-carry-menu-and-drop-callback",
+      "classification": "CONSTRUCTED_NATIVE_INTEGRATION_NOT_CAMPAIGN",
+      "menuTargetBeforeDrop": "unit-carried-body",
+      "dropButtonRenderedAndEnabled": true,
+      "carryingAfterDrop": null,
+      "otherCheckpointFieldsUnchanged": true
+    },
+    {
+      "case": "frozen-state-immutability",
+      "passed": true
+    },
+    {
+      "case": "missing carried identity",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "erased carried body",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "supported carried body",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "inconsistent hanging anchor",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "unflayed carried body",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "overweight carried body",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "nonphysical carried mass",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "nonfinite carried mass",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "nonfinite carried position",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "legacy omitted mass",
+      "expectedTarget": "unit-carried-body",
+      "actualTarget": "unit-carried-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "exact native reach",
+      "expectedTarget": "unit-carried-body",
+      "actualTarget": "unit-carried-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "outside native reach",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "vertical outside native reach",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "no carried body",
+      "expectedTarget": "unit-nearer-body",
+      "actualTarget": "unit-nearer-body",
+      "sourceStateUnchanged": true
+    },
+    {
+      "case": "invalid-actor-NaN",
+      "target": null
+    },
+    {
+      "case": "invalid-actor-Infinity",
+      "target": null
+    },
+    {
+      "case": "invalid-actor-1000000000",
+      "target": null
+    },
+    {
+      "case": "unavailable-menu",
+      "target": null
+    }
+  ],
+  "sourceSha256": "fa9098ff0f1c34cfb7849e515556398564bcd5c0d7f3439f4216a0338b318ab3",
+  "canvasSourceSha256": "8bf504951e6d7d6af9df2bf1d125b99d25f06009723efc96b47636b53b5471c5",
+  "testSourceSha256": "370a0f128bc0a63a8e796a2e69dcfefb40eb98e42c387d1cc4b2b57691687660",
+  "bundleSha256": "bcaba3477cd39413333842947c073ec5e602db53567aeb50188f58f4e2d68547",
+  "node": "v24.19.0",
+  "previousConstructedCounterexample": "docs/qa/v112-ground-deposit-composition/operator-report.json",
+  "limits": [
+    "Fixture actors and tool ownership are admitted for a focused integration regression.",
+    "The actual menu component is server-rendered and its production callback is exercised; this is not a mounted GameClient campaign or a hardware test.",
+    "The earlier geometric report remains an unchanged baseline."
+  ]
+}

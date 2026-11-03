@@ -1,0 +1,474 @@
+{
+  "schemaVersion": 1,
+  "characterId": "theta-berwick",
+  "name": "Theta Berwick",
+  "species": "human",
+  "family": "humans-in-yautja-armor",
+  "variantId": "marvel-2023-gold-armor-unmasked",
+  "variantLabel": "Marvel 2023 · armure dorée · démasquée",
+  "reviewDate": "2026-09-05",
+  "status": "draft",
+  "decision": "Keep both sheets as visible review drafts; no artistic or gameplay validation.",
+  "completion": {
+    "authoredSheets": 2,
+    "registeredCells": 12,
+    "validatedGameplayClips": 0,
+    "completeCharacter": false,
+    "distinctSemanticPosesCertified": false
+  },
+  "sourcePixelsModified": false,
+  "sourceAlpha": false,
+  "newImageGenerationPerformed": false,
+  "fidelityBasis": {
+    "localContract": "art-source/v28/known-hunters/characters/theta/fidelity.json",
+    "contractSha256": "e653bfde13d5bfd244d508adbe64f5c9a2ba1488344a0f5ae18e0a6eb9ae096d",
+    "basis": "Reviewed against the local selected-variant invariants and the two actual saved sheets. Official reference pages were not reopened in this registration subtask; prior reference inspection is recorded in fidelity.json.",
+    "exactOneToOneFidelityCertified": false
+  },
+  "inspection": {
+    "fullSheetsRead": true,
+    "fullSheetReadMethod": "Original source PNG decoded read-only; full1536x1024 sheets displayed using in-memory JPEG previews. No preview was substituted for the source asset.",
+    "enlargedReadOnlyWindows": [
+      {
+        "source": "theta-blade-guard",
+        "rectPx": [
+          680,
+          145,
+          160,
+          90
+        ],
+        "purpose": "Pose2 right-hand machete grip and separate left fist."
+      },
+      {
+        "source": "theta-blade-guard",
+        "rectPx": [
+          1125,
+          150,
+          160,
+          90
+        ],
+        "purpose": "Pose3 corrected upright blade, wrist, handle and pommel."
+      },
+      {
+        "source": "theta-blade-guard",
+        "rectPx": [
+          170,
+          625,
+          170,
+          120
+        ],
+        "purpose": "Pose4 recoil, grip, left fist and arm connections."
+      },
+      {
+        "source": "theta-hit-reaction",
+        "rectPx": [
+          145,
+          690,
+          190,
+          130
+        ],
+        "purpose": "Pose4 gripping hand, knife attachment and separate left hand on abdomen."
+      }
+    ],
+    "browser": "Headless installed Chrome through existing Playwright; the existing V28 review client drew original PNG cells with registered support pivots.",
+    "actualFramesChecked": 12,
+    "bothNonLoopClipsCompleted": true,
+    "javascriptErrors": [],
+    "renderedStillImagesInspected": [
+      "tmp/theta-blade-guard-registered-2.jpg",
+      "tmp/theta-blade-guard-registered-4.jpg",
+      "tmp/theta-hit-reaction-registered-4.jpg"
+    ],
+    "temporaryEvidence": [
+      "tmp/theta-v28-pixel-qa.json",
+      "tmp/theta-v28-browser-qa.json",
+      "tmp/theta-v28-registration-preview.html"
+    ],
+    "limitations": "Still images and automated non-loop playback were checked. No claim of a human-observed continuous video, motion capture, independent animator approval or simulation integration."
+  },
+  "sharedAnatomyReview": {
+    "observed": [
+      "An adult human face, short black hair and closed human boots remain visible in all twelve cells; no Yautja mandibles or clawed bare feet.",
+      "Two arms and two legs remain readable; the weapon hand is connected to its wrist and forearm in the inspected close-ups. No obvious extra or detached limb was found.",
+      "The other hand remains separate: held in a fist in guard/recoil poses, then brought to the abdomen in hit-reaction pose4.",
+      "The machete remains attached to the same anatomical right hand; its handle and pommel are distinguishable in the close-ups.",
+      "Gold armor, dark ribbed under-suit, central hanging plates, shoulder armor and forearm armor remain in the same broad configuration. No shoulder cannon is present."
+    ],
+    "notCertified": [
+      "Closed gloves and overlap hide individual digits; a five-finger anatomy certificate cannot be inferred from these views.",
+      "Facial likeness to every original comic panel was not established; identity is checked against the selected local contract only.",
+      "Decorative plate lines, face outlines and weapon surface marks drift between drawings; they are not a rigid-model consistency proof.",
+      "The green marks are baked into the source drawing, not separately controllable blood or combat effects."
+    ]
+  },
+  "entries": [
+    {
+      "id": "theta-blade-guard",
+      "status": "draft",
+      "species": "human",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "provenance": {
+        "tool": "OpenAI integrated imagegen",
+        "selectedSource": "art-source/v28/known-hunters/sources/theta-blade-guard.png",
+        "sha256": "27500ff6fbe935c3abb0fe94435e648b8d6ee9730810036d9d926706aa00c8e8",
+        "sha256AfterInspection": "27500ff6fbe935c3abb0fe94435e648b8d6ee9730810036d9d926706aa00c8e8",
+        "unchanged": true,
+        "bytes": 1836921,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "sourceGenerationClaimBasis": "Existing fidelity.json generatedSheets record; this subtask did not generate or edit an image."
+      },
+      "registration": {
+        "frames": 6,
+        "freeRectsInsideSource": true,
+        "overlappingRects": 0,
+        "classifiedForegroundOutsideRects": 0,
+        "thresholds": [
+          160,
+          180,
+          200
+        ],
+        "supportContacts": 12,
+        "reviewScale": 0.8,
+        "perFrameHeightNormalization": false,
+        "mirrored": false,
+        "frameInterpolation": false,
+        "durationTicks": [
+          8,
+          6,
+          10,
+          7,
+          8,
+          10
+        ],
+        "ticksPerSecond": 60,
+        "durationsAre": "Presentation proposals only, not authored combat timings or replay/simulation values."
+      },
+      "transparency": {
+        "source": "Opaque RGB, no native alpha",
+        "processing": "Existing explicit color-key and connected-magenta fringe processor, private buffers/Canvas only.",
+        "configuration": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 24,
+            "strength": 1
+          }
+        },
+        "keyedPixels": 1312357,
+        "fringePixels": 10951,
+        "visiblePixelsOnAllFrameBorders": 0,
+        "caveat": "Zero visible border pixels proves these chosen crops do not touch processed content; it does not validate anatomy, remove every colored fringe, or establish production readiness."
+      },
+      "pixelEvidence": {
+        "uniqueRawRgbCellHashes": 6,
+        "cells": [
+          {
+            "frame": 1,
+            "visiblePixels": 44880,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "bc1066e13d68bd217ad447f209249c6b43f17df1af9899897c7f098456318f0c"
+          },
+          {
+            "frame": 2,
+            "visiblePixels": 41864,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "df0c269b09edf715108f803e5c80763e8ffa3b3916246f73e6b2c61ebbff4c2a"
+          },
+          {
+            "frame": 3,
+            "visiblePixels": 42695,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "ab8243b6a6aae31701c87c93b6d7e47bbe995132d2f5b8b7af19242254d3b177"
+          },
+          {
+            "frame": 4,
+            "visiblePixels": 41142,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "a5eff20bb55598e4a1338397d1b5f94aa6448b3fb4931239e85e217d67df0034"
+          },
+          {
+            "frame": 5,
+            "visiblePixels": 44543,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "d926d63339c838b041b393b07d9f4c1e1173446444e3d418a04fd728ed4fa879"
+          },
+          {
+            "frame": 6,
+            "visiblePixels": 45383,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "b2c5c1b282fe94b48499794c1af8d28511413e39549e628d848f82f14bd12f7d"
+          }
+        ],
+        "supportAlignedSilhouetteComparisons": [
+          {
+            "frames": [
+              2,
+              3
+            ],
+            "supportAlignedSilhouetteIoU": 0.9269632195433207,
+            "rounding": "Each source support pivot rounded to nearest whole source pixel for analysis only; no source image written."
+          },
+          {
+            "frames": [
+              5,
+              6
+            ],
+            "supportAlignedSilhouetteIoU": 0.9538936207196246,
+            "rounding": "Each source support pivot rounded to nearest whole source pixel for analysis only; no source image written."
+          },
+          {
+            "frames": [
+              1,
+              6
+            ],
+            "supportAlignedSilhouetteIoU": 0.9607472575214511,
+            "rounding": "Each source support pivot rounded to nearest whole source pixel for analysis only; no source image written."
+          }
+        ],
+        "interpretation": "Different pixel hashes establish distinct cell bytes only. High silhouette IoU indicates near-hold poses, not motion completeness."
+      },
+      "observations": [
+        {
+          "frames": [
+            1
+          ],
+          "category": "weapon",
+          "assessment": "Broad curved machete low at the right side; separate left fist and stable wrist attachment."
+        },
+        {
+          "frames": [
+            2,
+            3
+          ],
+          "category": "weapon",
+          "assessment": "Both blades now point upward and handles/pommels remain attached to the gripping hand. The previously reported downward pose3 defect is not present in this selected PNG."
+        },
+        {
+          "frames": [
+            2,
+            3
+          ],
+          "category": "motion",
+          "assessment": "Near-equivalent high-guard silhouettes: support-aligned IoU0.926963. Treat them as entry/hold candidates, not two proven distinct transition stages."
+        },
+        {
+          "frames": [
+            4
+          ],
+          "category": "motion",
+          "assessment": "Backward torso lean and bent knees make the recoil readable. Both visible boot support bands remain preserved; the farther boot retains its authored perspective height."
+        },
+        {
+          "frames": [
+            5,
+            6
+          ],
+          "category": "motion",
+          "assessment": "Near-equivalent low-ready return silhouettes: IoU0.953894. They are hold/settling candidates; a meaningful lowering transition is not established."
+        },
+        {
+          "frames": [
+            1,
+            6
+          ],
+          "category": "continuity",
+          "assessment": "Start/end ready silhouettes overlap0.960747 after support alignment, with small drawing differences. This is not a seamless-loop certificate; the clip remains non-looping."
+        }
+      ],
+      "blockingIssuesBeforeProduction": [
+        "Add or redraw real intermediate poses for low-ready to high-guard and recoil to lowering; six cells presently include near-holds.",
+        "Review weapon length/curvature, gold plate contours and glove grip in a continuous slow-motion loop and across adjoining actions.",
+        "Author explicit entry/hold/exit timing and the opposite orientation as separately drawn assets before any guarded-combat claim."
+      ]
+    },
+    {
+      "id": "theta-hit-reaction",
+      "status": "draft",
+      "species": "human",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "provenance": {
+        "tool": "OpenAI integrated imagegen",
+        "selectedSource": "art-source/v28/known-hunters/sources/theta-hit-reaction.png",
+        "sha256": "ed417fd72d53d359835326cbc9d22962027e190453648d7a5199c257eef3bccb",
+        "sha256AfterInspection": "ed417fd72d53d359835326cbc9d22962027e190453648d7a5199c257eef3bccb",
+        "unchanged": true,
+        "bytes": 1900263,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "sourceGenerationClaimBasis": "Existing fidelity.json generatedSheets record; this subtask did not generate or edit an image."
+      },
+      "registration": {
+        "frames": 6,
+        "freeRectsInsideSource": true,
+        "overlappingRects": 0,
+        "classifiedForegroundOutsideRects": 0,
+        "thresholds": [
+          160,
+          180,
+          200
+        ],
+        "supportContacts": 12,
+        "reviewScale": 0.8,
+        "perFrameHeightNormalization": false,
+        "mirrored": false,
+        "frameInterpolation": false,
+        "durationTicks": [
+          8,
+          5,
+          7,
+          8,
+          8,
+          10
+        ],
+        "ticksPerSecond": 60,
+        "durationsAre": "Presentation proposals only, not authored combat timings or replay/simulation values."
+      },
+      "transparency": {
+        "source": "Opaque RGB, no native alpha",
+        "processing": "Existing explicit color-key and connected-magenta fringe processor, private buffers/Canvas only.",
+        "configuration": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 24,
+            "strength": 1
+          }
+        },
+        "keyedPixels": 1290382,
+        "fringePixels": 9878,
+        "visiblePixelsOnAllFrameBorders": 0,
+        "caveat": "Zero visible border pixels proves these chosen crops do not touch processed content; it does not validate anatomy, remove every colored fringe, or establish production readiness."
+      },
+      "pixelEvidence": {
+        "uniqueRawRgbCellHashes": 6,
+        "cells": [
+          {
+            "frame": 1,
+            "visiblePixels": 47478,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "ab4fb683af7485bb5213a33127c3d38f721a7f20f2b3e4e4b8188afa2eaa2fe6"
+          },
+          {
+            "frame": 2,
+            "visiblePixels": 49023,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "31084f7bf6a99f2838de7f53c042af72e058532132f5cae6961ffe7fa84311ae"
+          },
+          {
+            "frame": 3,
+            "visiblePixels": 48171,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "c725089921d3b8ec901516c5a3d9fe792cd479607568cd37b188db844a296ed6"
+          },
+          {
+            "frame": 4,
+            "visiblePixels": 44607,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "c88e6b65fd5f8244dfe89cf6010ee000643271149db0bc2bb3b9ecd1be577cf1"
+          },
+          {
+            "frame": 5,
+            "visiblePixels": 45992,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "9fee55b997200324fde3f0c13a8d61da82171bea5c7b11f47019eff483b1cba0"
+          },
+          {
+            "frame": 6,
+            "visiblePixels": 47211,
+            "visiblePixelsOnRectBorder": 0,
+            "rawRgbCellSha256": "b4c676120286d4a288efc5b4933df4a85411d0b3860b9224f25f4cf39a67f741"
+          }
+        ],
+        "supportAlignedSilhouetteComparisons": [
+          {
+            "frames": [
+              1,
+              6
+            ],
+            "supportAlignedSilhouetteIoU": 0.9008130081300812,
+            "rounding": "Each source support pivot rounded to nearest whole source pixel for analysis only; no source image written."
+          },
+          {
+            "frames": [
+              2,
+              3
+            ],
+            "supportAlignedSilhouetteIoU": 0.678594867189389,
+            "rounding": "Each source support pivot rounded to nearest whole source pixel for analysis only; no source image written."
+          }
+        ],
+        "interpretation": "Different pixel hashes establish distinct cell bytes only. High silhouette IoU indicates near-hold poses, not motion completeness."
+      },
+      "observations": [
+        {
+          "frames": [
+            1
+          ],
+          "category": "anatomy",
+          "assessment": "Readable human ready stance, closed gloves and boots; right-hand blade stays low."
+        },
+        {
+          "frames": [
+            2,
+            3
+          ],
+          "category": "motion",
+          "assessment": "Two visibly different backward recoils; support-aligned silhouette IoU0.678595 supports a larger pose change than the guard holds."
+        },
+        {
+          "frames": [
+            4
+          ],
+          "category": "anatomy",
+          "assessment": "Forward fold, bent knees and left hand at the abdomen are readable. Enlarged source inspection keeps the right-hand machete and left-hand abdomen contact distinct; no extra hand is obvious."
+        },
+        {
+          "frames": [
+            4,
+            5,
+            6
+          ],
+          "category": "motion",
+          "assessment": "The figure returns upright while keeping the same blade hand and broad armor configuration. Its reduced height during the fold is preserved, not normalized away."
+        },
+        {
+          "frames": [
+            1,
+            6
+          ],
+          "category": "continuity",
+          "assessment": "Ready-return silhouettes overlap0.900813 after support alignment; stance/contour shifts remain and are not resolved by pivot registration."
+        }
+      ],
+      "blockingIssuesBeforeProduction": [
+        "Review the abrupt transition from peak backward recoil to the deep forward fold with an animator; an added bridge pose may be needed.",
+        "Confirm how grounded torso recoil maps to a specific game hit reaction; these proposed durations do not define stun frames.",
+        "Draw and validate the opposite orientation and transitions from/to actual idle/guard clips before integration."
+      ]
+    }
+  ],
+  "remainingWork": [
+    "No opposite-facing drawn sheets were provided; no automatic mirror has been applied.",
+    "Idle locomotion, attacks, crouching, jumping, throws, knockdowns and the rest of the full character contract remain separate missing work.",
+    "Source-only registration does not grant validated atlas status. Keep all twelve cells draft until visual continuity and the needed clip contracts are approved."
+  ]
+}

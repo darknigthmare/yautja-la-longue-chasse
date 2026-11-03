@@ -1,0 +1,9 @@
+{
+  "testFile": "tests/homeworld-resident-contacts-v110.test.mjs",
+  "baselineCommit": "dff1f6734284891b5a24238f890070616a8325cc",
+  "scope": "Only the environment source-extraction end marker changes to stop before the newly adjacent recovery closure. Test names, bodies, assertions and expectations remain byte-identical after reverting that marker.",
+  "baselineSha256": "bbbca248bc87b30167db8639e8483267c33941803b68224731a62168b26bfe6c",
+  "currentSha256": "7580a0d94601159b604171f2e2d41888ef0bb687e7913b5bffeb01da9eb7af8d",
+  "markerRevertedSha256": "bbbca248bc87b30167db8639e8483267c33941803b68224731a62168b26bfe6c",
+  "markerRevertedByteIdentical": true
+}

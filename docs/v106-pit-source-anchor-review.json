@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "release": "V106",
+  "status": "PASS_SOURCE_COORDINATES",
+  "runtimeValidated": false,
+  "fullFighterKitsValidated": false,
+  "scope": "Five source contracts only: native BODY coordinates, independently painted orientations, phase adaptation, source hashes and production alpha-floor corrections. Runtime mechanics and production-browser review are separate.",
+  "sourceContracts": [
+    {
+      "path": "app/game/data/pitWorkbookEntityAnchorsV106.json",
+      "bytes": 13764,
+      "sha256": "3bc39ef4742cc9a818cdcb43c2b90bf3d6abefd4b985af059236e61c8715c65c"
+    },
+    {
+      "path": "app/game/data/pitWorkbookSuperAnchorsV106.json",
+      "bytes": 24556,
+      "sha256": "bcebc17f8c25a37f504bf80761a577648088b7314976ed1c16cf23b2512d3921"
+    }
+  ],
+  "modules": [
+    {
+      "path": "app/game/systems/pitWorkbookProjectileSourceV106.ts",
+      "bytes": 5760,
+      "sha256": "7966090dc4e86739c943ca63c3a7f84be09cf38389163f5270c776c0e8aa20c3"
+    },
+    {
+      "path": "app/game/systems/pitWorkbookSuperSourceV106.ts",
+      "bytes": 2237,
+      "sha256": "062bce6f0615036d68690761452a9205eb8f0ef6570330db6bbbb11cb1122147"
+    }
+  ],
+  "documentation": {
+    "path": "docs/pit-workbook-source-v106.md",
+    "bytes": 10974,
+    "sha256": "ee56bf16db9c5b89091c2736de70d272a9b235dd5e01808c78095fc29623fb1b"
+  },
+  "originalWorkbookAvailable": false,
+  "actionIds": [
+    "M_F006_S1",
+    "M_F003_S3",
+    "M_F006_S2",
+    "M_F006_SUPER",
+    "M_F003_SUPER"
+  ],
+  "nativePagesOpened": [
+    {
+      "path": "/game/sprites/v59/pit/feral/launcher-left.png",
+      "sha256": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14",
+      "sourcePixelsChanged": false
+    },
+    {
+      "path": "/game/sprites/v59/pit/feral/launcher-right.png",
+      "sha256": "feb0b99112cb55470b0c9211461793a85ac8c4538a59ed24026366ff8e7a31ca",
+      "sourcePixelsChanged": false
+    },
+    {
+      "path": "/game/sprites/v100/pit/scar/scar-special-s3-left.png",
+      "sha256": "3bb94e42a714645f89ff8ce0c7567ac46193179676e28adbcc0bf760ba3b4481",
+      "sourcePixelsChanged": false
+    },
+    {
+      "path": "/game/sprites/v100/pit/scar/scar-special-s3-right.png",
+      "sha256": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f",
+      "sourcePixelsChanged": false
+    },
+    {
+      "path": "/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+      "sha256": "a45d64a6c524828225f29fc1757e58a1218fdfbea9f81a9acd5b1db820112c1e",
+      "sourcePixelsChanged": false
+    },
+    {
+      "path": "/game/sprites/v100/pit/feral/feral-special-s2-b-v100.png",
+      "sha256": "1a341c55ddd26ecf1c626eb8baf791f558d2bc9ada9ac01c27463f0286c1cfce",
+      "sourcePixelsChanged": false
+    },
+    {
+      "path": "/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+      "sha256": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
+      "sourcePixelsChanged": false
+    },
+    {
+      "path": "/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+      "sha256": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3",
+      "sourcePixelsChanged": false
+    },
+    {
+      "path": "/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+      "sha256": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced",
+      "sourcePixelsChanged": false
+    },
+    {
+      "path": "/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+      "sha256": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b",
+      "sourcePixelsChanged": false
+    },
+    {
+      "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+      "sha256": "cd81a0503a546ad34281f2b8d221763aea15bcd54d5d1c92ed583bdbfd6830c3",
+      "sourcePixelsChanged": false
+    }
+  ],
+  "nativeMeasurement": {
+    "method": "Opened all eleven original public pages, inspected native full BODY and source-cell diagnostic zooms, selected independent right/left apertures and weapon enclosures. Preserved all admitted rects, pivots and fixed page BODY references. No pixel transforms in production assets.",
+    "floorCorrection": "Every calibrated frame is decoded from its unchanged PNG and measured by the production measureSpriteContact alpha algorithm; projectors subtract contactOffsetPx.",
+    "scarPlasma": "Front aperture partly occluded by native mask/dreads. Large rear red caps explicitly excluded. Charge is cosmetic and must be drawn behind BODY.",
+    "feralRailGaps": "Historical S1 right point has alpha2; SUPER right/left alpha1/3. These are measured emission gaps bordered by native opaque rails, not failed opaque-body measurements.",
+    "independentReview": "Renderer independently opened Scar S3 native pages and confirmed aperture anatomy and real entity-before-BODY occlusion; renderer also independently identified the production alpha floor correction.",
+    "superBranching": "BODY contains no painted victim; native drawings are retimed into24/8/48 with post-confirm-only extensions. Opener/miss holds introduce no new poses. Both continuations require runtime validation."
+  },
+  "checks": [
+    {
+      "name": "special source and spatial tests",
+      "status": "PASS",
+      "subtestsPassed": 7,
+      "subtestsFailed": 0,
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node tests/pit-workbook-source-v106.test.mjs",
+      "test": {
+        "path": "tests/pit-workbook-source-v106.test.mjs",
+        "bytes": 9771,
+        "sha256": "6fdb18aa1bfda52f7fe1f7bbc85425476af2ede9b07f235b9f584311c99917dd"
+      },
+      "log": {
+        "path": "docs/qa/v106-source-anchors/unit-tests.log",
+        "bytes": 2012,
+        "sha256": "3353fd8381bd91a8f231786327f7d152dd8385c52f8db4e50d3d27536981b97c"
+      }
+    },
+    {
+      "name": "SUPER source and spatial tests",
+      "status": "PASS",
+      "subtestsPassed": 5,
+      "subtestsFailed": 0,
+      "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node tests/pit-workbook-super-source-v106.test.mjs",
+      "test": {
+        "path": "tests/pit-workbook-super-source-v106.test.mjs",
+        "bytes": 7789,
+        "sha256": "773dd4438bae0fc5b64385ea7d67b47c289ca15cb388635e002af78057551f23"
+      },
+      "log": {
+        "path": "docs/qa/v106-source-anchors/super-unit-tests.log",
+        "bytes": 1465,
+        "sha256": "b04fa14b499746e0e69654ada9a4e4831d9a7d1b7e9af48dddf8327c2a98a642"
+      }
+    },
+    {
+      "name": "source module ESLint",
+      "status": "PASS",
+      "command": "npx eslint app/game/systems/pitWorkbookProjectileSourceV106.ts app/game/systems/pitWorkbookSuperSourceV106.ts",
+      "log": {
+        "path": "docs/qa/v106-source-anchors/eslint.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "remaining": {
+    "sourceActions": 52,
+    "runtimeValidatedAtV105": 35,
+    "additionalCandidates": 5,
+    "runtimeIfAllFiveValidated": 40,
+    "openIfAllFiveValidated": 12,
+    "campaignStagesOpen": 16,
+    "variantConstraintsOpen": 14,
+    "openCategories": [
+      "four throws with painted study partners",
+      "Feral mine autonomous entity",
+      "Scar shuriken autonomous entity",
+      "six context-dependent conclusions with painted study partners"
+    ]
+  }
+}

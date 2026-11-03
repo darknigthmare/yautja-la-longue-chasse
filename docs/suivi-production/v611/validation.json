@@ -1,0 +1,51 @@
+{
+  "validatedAtUtc": "2026-10-21T07:17:05.398700+00:00",
+  "scope": "Local targeted verification; not a deployed game session or a live Microsoft Excel session.",
+  "checks": [
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "node --test --test-isolation=none --test-reporter=spec tests/enforcer-production-v611.test.mjs",
+      "exitCode": 0,
+      "passedTests": 5
+    },
+    {
+      "command": "node --test --test-isolation=none --test-reporter=spec --test-name-pattern='all six full references' tests/drive-new-deposits-v89.test.mjs",
+      "exitCode": 0,
+      "passedTests": 1
+    },
+    {
+      "command": "python scripts/verify-enforcer-workbook-v611.py",
+      "exitCode": 0,
+      "report": "workbook-preview/openxml-verification.json"
+    }
+  ],
+  "nativePngFiles": 36,
+  "nativePngBytes": 82949641,
+  "groups": 18,
+  "previousDefaultSelectionsPreserved": 973,
+  "distinctReferencedHashesBefore": 1877,
+  "distinctReferencedHashesAfter": 1913,
+  "finalWorkbookSha256": "c154f8203cdd1894dfc384cf9704da56badab64417fa0d2e5920b4199cf6b32f",
+  "finalWorkbookBytes": 1642587,
+  "actualInputRecalculationCheck": "workbook-preview/recalculation-check.json",
+  "visualReview": {
+    "acceptedNativePngFiles": 36,
+    "notes": "data/production-manifest.json",
+    "workbookRangesReviewed": [
+      "Synthèse!A10:F16",
+      "Variantes!A6:G10",
+      "Production PR!A42:J45",
+      "Contrôles!A31:D41"
+    ],
+    "rendererLimitFR": "Le rendu global du tableau de bord avec cellules fusionnées reste partiellement blanc dans ce moteur. Les aperçus ciblés sont lisibles ; fusions, données, polices et couleurs sont vérifiées séparément dans l’OpenXML."
+  },
+  "datePrecisionLimitFR": "Trois dates de production subissent une troncature de 1 ms exactement reproduite par le trajet numérique série Excel. Les valeurs originales complètes restent dans le manifeste ; les exceptions sont détaillées dans le rapport.",
+  "historicalV610PngsRecovered": 0,
+  "newAnimations": 0,
+  "newMapPlacements": 0,
+  "fullSuiteRun": false,
+  "fullSuiteNoteFR": "Les tests ciblent les changements de ce lot. Le dépôt de travail est une extraction partielle des anciens fichiers volumineux."
+}

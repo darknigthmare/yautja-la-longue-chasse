@@ -1,0 +1,33 @@
+{
+  "id": "scar-v100-030",
+  "generator": "OpenAI image_gen",
+  "original": "art-source/v100/pit/scar/intake/030-scar-TH_F-left-original.png",
+  "generatedOriginal": "/workspace/generated_images/exec-37b7c089-1efd-4207-9722-232c9baca273.png",
+  "prompt": "030-prompt.txt",
+  "referenceImages": [
+    "/workspace/generated_images/exec-a0ebaf88-0019-4a7e-8122-64e26fa0e013.png"
+  ],
+  "sourceCells": [
+    "05_MOVES_PROPOSES!M7"
+  ],
+  "fighterId": "scar",
+  "appearanceId": "runtime-default",
+  "facing": "left",
+  "transparentBackgroundRequested": true,
+  "sha256": "c1bfbe0edd26d99d63a0e6fb97a78e9f341578337f6888c766f13a86194890b4",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 2260882,
+  "status": "partial-art-admitted-cropped-ending-excluded",
+  "layout": {
+    "columns": 3,
+    "rows": 2
+  },
+  "studyPartner": {
+    "type": "neutral-gray-training-mannequin",
+    "scope": "Baked visual study partner only; no real independently synchronized opponent and no combat binding"
+  },
+  "publicCopy": "/game/sprites/v100/pit/scar/scar-TH_F-left-partial-native.png",
+  "bodyHeightPx": 398,
+  "admission": "../native-admission.json"
+}

@@ -1,0 +1,21 @@
+$ node --experimental-strip-types --test --test-isolation=none --test-concurrency=1 tests/enforcer-production-v611.test.mjs tests/enforcer-production-v612.test.mjs
+✔ 36 previously unmade catalogue identities cover both variants of every requested group (13.008519ms)
+✔ every installed PNG has the accepted native bytes, a real alpha channel and complete frame bounds (5379.445922ms)
+✔ gallery and codex include the new identities while existing default selections and human body separation are preserved (8663.716991ms)
+✔ the 5120-ID master changes only the 36 new and 36 unrecovered production rows (82.860639ms)
+✔ generation receipts preserve exact prompts, verified references and lineage-specific requirements (18.095657ms)
+✔ V6.12 covers exactly variants 06 and 07 of all 18 requested groups (42.100122ms)
+✔ the 72 native PNGs retain their recorded bytes, and every new silhouette has real alpha and complete bounds (8980.987847ms)
+✔ gallery and codex expose V6.12 while all 973 defaults and the human body boundary stay unchanged (13630.636494ms)
+✔ the 5120-ID master adds 36 V6.12 statuses and reconciles the 36 merged V6.11 identities with main (1422.550393ms)
+✔ V6.12 preserves accepted prompts, verified same-group references and lineage-specific requirements (55.05479ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 42671.259299
+
+[exit code: 0]

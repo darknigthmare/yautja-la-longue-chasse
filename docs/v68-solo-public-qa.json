@@ -1,0 +1,182 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checks": [
+    {
+      "name": "prior-chapters-played-fixture-only-physical-mentor-start",
+      "routes": [
+        {
+          "kind": "city-and-door",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 2230,
+            "y": 1868
+          },
+          "distance": 5821.9011259125045
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    },
+    {
+      "name": "quota-refused-checkpoint-pauses-and-retries",
+      "tick": 240
+    },
+    {
+      "name": "triad-state-saved-quit-cold-resume",
+      "storedTick": 725
+    },
+    {
+      "name": "settings-freeze-encounter-no-click-through",
+      "tick": 885
+    },
+    {
+      "name": "portrait-controls-visible-and-real-touch-works",
+      "bounds": [
+        {
+          "label": "Pause",
+          "x": 248.046875,
+          "y": 5,
+          "right": 310.21875,
+          "bottom": 49,
+          "height": 44
+        },
+        {
+          "label": "Tactile",
+          "x": 318.21875,
+          "y": 5,
+          "right": 384,
+          "bottom": 49,
+          "height": 44
+        },
+        {
+          "label": "←",
+          "x": 30.796875,
+          "y": 715.3125,
+          "right": 74.796875,
+          "bottom": 759.3125,
+          "height": 44
+        },
+        {
+          "label": "→",
+          "x": 78.796875,
+          "y": 715.3125,
+          "right": 122.796875,
+          "bottom": 759.3125,
+          "height": 44
+        },
+        {
+          "label": "Saut",
+          "x": 126.796875,
+          "y": 715.3125,
+          "right": 172.5625,
+          "bottom": 759.3125,
+          "height": 44
+        },
+        {
+          "label": "Toucher",
+          "x": 176.5625,
+          "y": 715.3125,
+          "right": 242.6875,
+          "bottom": 759.3125,
+          "height": 44
+        },
+        {
+          "label": "Suivre / Attendre",
+          "x": 246.6875,
+          "y": 715.3125,
+          "right": 362.203125,
+          "bottom": 759.3125,
+          "height": 44
+        },
+        {
+          "label": "Interagir",
+          "x": 162.828125,
+          "y": 763.3125,
+          "right": 230.171875,
+          "bottom": 807.3125,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "earned-young-blood-city-footer-and-welcome-survive-reload",
+      "snapshots": [
+        {
+          "stage": "after-recognition",
+          "footer": "Young Blood · Cohorte reconnue",
+          "title": "Young Blood — La cohorte reconnue"
+        },
+        {
+          "stage": "after-reload",
+          "footer": "Young Blood · Cohorte reconnue",
+          "title": "Young Blood — La cohorte reconnue"
+        }
+      ]
+    },
+    {
+      "name": "13-proofs-triad-rescue-physical-return-final-rite-survive-reload",
+      "noBloodedOrShipOrKillRewards": true
+    }
+  ],
+  "captures": [
+    "work-local/v68/qa/public-solo/01-physical-mentor-start.jpg",
+    "work-local/v68/qa/public-solo/phase-briefing.jpg",
+    "work-local/v68/qa/public-solo/phase-formation.jpg",
+    "work-local/v68/qa/public-solo/phase-route.jpg",
+    "work-local/v68/qa/public-solo/phase-tracks.jpg",
+    "work-local/v68/qa/public-solo/quota-refusal-retains-triad.jpg",
+    "work-local/v68/qa/public-solo/phase-relay.jpg",
+    "work-local/v68/qa/public-solo/phase-encounter.jpg",
+    "work-local/v68/qa/public-solo/native-warning--1.jpg",
+    "work-local/v68/qa/public-solo/native-warning-1.jpg",
+    "work-local/v68/qa/public-solo/phase-shelter.jpg",
+    "work-local/v68/qa/public-solo/phase-medicine.jpg",
+    "work-local/v68/qa/public-solo/phase-rescue.jpg",
+    "work-local/v68/qa/public-solo/portrait-rescue-controls.jpg",
+    "work-local/v68/qa/public-solo/phase-extraction.jpg",
+    "work-local/v68/qa/public-solo/phase-return.jpg",
+    "work-local/v68/qa/public-solo/phase-debrief.jpg",
+    "work-local/v68/qa/public-solo/phase-recognition.jpg",
+    "work-local/v68/qa/public-solo/complete-Young-Blood-recognition.jpg",
+    "work-local/v68/qa/public-solo/young-blood-welcome-after-recognition.jpg",
+    "work-local/v68/qa/public-solo/durable-city-return.jpg",
+    "work-local/v68/qa/public-solo/young-blood-welcome-after-reload.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": "Fresh isolated browser. Initial fixture plays nursery, youth, V66, V67 models. After entry only normal keyboard/touch controls and declared quota failure are used. No runtime actor coordinates, progress or receipts injected. Native trainee/grazer assets reused; no new animations, Temple or Blooded rite claimed.",
+  "release": {
+    "sourceCommit": "b19b6530f32dc976a71b8a6abe3ea7772b2f773b",
+    "deploymentId": "dpl_D2hfFmco6wge1hkbkP6BfJ8HRzk1",
+    "identitySource": "Parent coordinator READY confirmation before this browser run"
+  },
+  "visualInspection": {
+    "status": "PASS",
+    "inspected": [
+      "portrait-rescue-controls.jpg",
+      "native-warning--1.jpg",
+      "complete-Young-Blood-recognition.jpg",
+      "young-blood-welcome-after-recognition.jpg",
+      "durable-city-return.jpg",
+      "young-blood-welcome-after-reload.jpg"
+    ],
+    "findings": "Ground placement, visible charge warning, portrait controls, triad recognition and retained Young Blood footer/welcome checked on actual public screenshots. Existing tutorial paragraphs remain historical onboarding; earned rank and next objective are correct. No new animation atlas or canon-perfect original NPC claim."
+  }
+}

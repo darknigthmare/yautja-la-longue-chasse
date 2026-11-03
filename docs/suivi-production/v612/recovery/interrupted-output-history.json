@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "yautja-v612-interruption-history-1",
+  "recordedAtUtc": "2026-10-21",
+  "baselineBranchCommit": "ac2bc04d0bb65f6f8b725aefa982a503f01a74e1",
+  "baselineMainCommit": "536ac53335e440747f6eccedd2cd757d1f817a99",
+  "baselineDriveZipId": "1EeetvR_QXasv_Q2iKRojJawNJ_IHK7DZ",
+  "baselineDriveZipBytes": 90907605,
+  "evidenceFR": "Empreintes et tailles observées dans les reçus locaux avant l’interruption. Le nettoyage de l’espace de travail a supprimé les fichiers non publiés. Les octets ci-dessous n’ont pas été retrouvés dans les emplacements vérifiés lors de la reprise. Ce relevé ne prouve pas une perte définitive et ne constitue pas une livraison de ces PNG.",
+  "recoveryChecksFR": [
+    "La tête de la PR nº 7 est toujours ac2bc04d0bb65f6f8b725aefa982a503f01a74e1 au début de la reprise ; elle conserve la production V6.11.",
+    "Le ZIP V6.11 sur Drive a été confirmé par son ID, son nom, sa taille et son dossier.",
+    "Les recherches ciblées de fichiers enregistrés V6.12 et les listes des créations récentes n’ont pas retrouvé ces PNG.",
+    "Le premier blob du téléversement séquentiel interrompu, feral06, a répondu 404 sur GitHub. Aucun succès de téléversement de ce lot n’avait été reçu.",
+    "Les 36 références de production ont été restaurées depuis le commit source puis vérifiées par SHA-256, taille, dimensions et SHA Git."
+  ],
+  "statusPolicyFR": "Le statut de production courant repose sur les nouveaux fichiers effectivement disponibles et vérifiés. Les éventuelles nouvelles générations de ces identités ont de nouvelles empreintes ; elles ne sont pas présentées comme les octets récupérés des images interrompues.",
+  "interruptedOutputs": [
+    {"id":"feral--enforcers-comics-06","bytes":2244174,"sha256":"10043e23588aa9d7dabb4b2e46c2b80a2862be5363bb5f26334c2750d83475ff","gitBlobSha1":"72d7513b0ad8694a863aa5e734300480264c248b"},
+    {"id":"feral--enforcers-comics-07","bytes":2262714,"sha256":"8ff52e9a0cbf3e21313c62320ccabf91276495a29b99b08dc3f9adb1851e4ac4","gitBlobSha1":"7c66b91097672f0dec7593f6a66ec205d1686da8"},
+    {"id":"super-predators--enforcers-comics-06","bytes":2302257,"sha256":"18ef6f80eec49edb542873c605abd05ce3d3e48750e4af2572bdbd63a2506947","gitBlobSha1":"d65c282014f1e2f6b33838317a6c1961ddc677eb"},
+    {"id":"super-predators--enforcers-comics-07","bytes":2386090,"sha256":"84722bd8a18878fd9d79966f010591997fdfb2eff963c7bd1eb3fda21891c952","gitBlobSha1":"0dd53ab3d1de869303802d06b56405a41ec2dc8d"},
+    {"id":"kaal-or--enforcers-comics-06","bytes":2813695,"sha256":"467113cc3d2151b6c5fa311ce08ea0dc9159b355261438a3b582b05b0a52aa30","gitBlobSha1":"11342337a74a35eba4dbd3d48c2d7582ff07673b"},
+    {"id":"kaal-or--enforcers-comics-07","bytes":2879757,"sha256":"fff7d676da37741ed9d2055c25c675d24e7e9f857ce076478d72e757a0def1c3","gitBlobSha1":"a0f2f7a76b41cd1c77f5f26271400ac26c97eb6d"},
+    {"id":"sha-rhess--enforcers-comics-06","bytes":2288097,"sha256":"70c0ff5cdf6096166f84f25a5443ddb804026eea76b9f310c53e75e028a89066","gitBlobSha1":"caf10ab9fab594ddbef682451bf6dfe8e7e1b0f6"},
+    {"id":"sha-rhess--enforcers-comics-07","bytes":2384687,"sha256":"df5309dd478812201bbc0e3a723427fc239d1ae6d7be85be0d1c7dafb2ca10c1","gitBlobSha1":"c87ff72b31ffb584c6f2a872412ae4fd59e26a92"},
+    {"id":"ul-khar--enforcers-comics-06","bytes":2691567,"sha256":"aba3e83a809839727bce5f222c5f6d2913a23fa6b143b3d7f08a480e180488ca","gitBlobSha1":"983427c579a7d98e12c4d443d5d9ff9f336b589b"},
+    {"id":"ul-khar--enforcers-comics-07","bytes":2585438,"sha256":"415637410b9e8ec177cd3ff30a5d39f6482cffc95c0c7fa46475c41a0e85e2f8","gitBlobSha1":"f48fd107748e7e966393b30349037d01c30c5bfe"},
+    {"id":"oni-kok--enforcers-comics-06","bytes":2031639,"sha256":"2651a615a1b64631d4a0e72e5d5cca5a0c739ba8638cc9c146af6171e22683eb","gitBlobSha1":"f47256c1a3527dd4d6c3e6d464adb75cd00a2beb"},
+    {"id":"oni-kok--enforcers-comics-07","bytes":2363168,"sha256":"0c97b2180b08c5ab1018470c147942fde9bfe7a952160d99312a3da162444c70","gitBlobSha1":"2b92a74586a596e23343bac5b967765dee60bcb6"}
+  ]
+}

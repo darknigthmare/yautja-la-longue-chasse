@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "id": "mausoleum-hall",
+      "prompt": "Use case: stylized-concept. Production asset for a premium 2.5D Yautja / Predator video game: BACKGROUND ONLY of the Mausoleum of Great Hunts, a solemn technological archive hall, an original clan architecture, not a recreation of any asserted canonical film location. Very wide landscape image, approximately 16:9. Camera centered facing the rear wall, lightly elevated frontal 2.5D perspective, single coherent vanishing point. Monumental black basalt and dark bronze structural ribs, six tall shallow archival wall niches divided by strongly built buttresses; upper-wall alien animal trophy skulls and engraved abstract geometric glyph plaques, dim amber recessed practical lights, light dusty atmospheric depth. Deep side alcoves visibly recede, two restrained braziers far rear. Lower 40 percent is an uninterrupted EMPTY tiled basalt floor with believable consistent perspective, usable for separately rendered physical mask pedestals. The center aisle leads to a sealed tall dark archive doorway. Cinematic hand-painted game environment with crisp material detail, restrained amber highlights, cool black shadows, readable floor values. No standalone pedestals in the foreground, no masks, no humans, no living characters, no floating objects, no interface, no readable words, no title or watermark. All architecture grounded, no stairs across the foreground walkable strip. A coherent sacred yet explicitly technological archive, no supernatural energy, no magic portal. Edge-to-edge opaque art.",
+      "transparentBackground": false,
+      "source": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-222cf745-f738-4793-a3d2-771cb719afb1.png",
+      "publicPath": "/game/homeworld/v56/mausoleum-hall.png",
+      "generator": "openai-imagegen",
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "sha256": "8d83d09f4986b0bf7d64731fbe62dc3ed2650a52858708d3fc4f39230dbbc04c",
+      "visualReviewed": true,
+      "reviewNotes": "Clear coherent central perspective, empty foreground floor for independent props, original clan archive architecture. No canon fidelity claim."
+    },
+    {
+      "id": "mask-pedestal",
+      "prompt": "Use case: stylized-concept. Single modular game prop: a freestanding Yautja hunting-archive mask display pedestal, original ceremonial clan technology for a Predator-universe 2.5D game. Actual transparent background. Exactly one complete pedestal centered, generous clear alpha padding, isolated with no room or backdrop, no floor patch, no baked ground shadow. Camera frontal with a slight elevated view showing the top ellipse, parallel upright sides, intended to combine with a lightly elevated frontal 2.5D hall. The whole column is short and heavy, wide grounded basalt plinth, tapered charcoal black basalt trunk, dark bronze ribs and three restrained recessed amber light slots. Top is an EMPTY shallow display support cradle with a single narrow central bracket, ready to hold a separate mask sprite at head height. No mask on it. No trophy, no figure, no floating component, no UI, no letters, no number, no bright aura. Premium hand-painted textured game prop; readable silhouette, believable physically assembled parts, accurate perspective, subtle front-left amber practical illumination, dim cool rim. Native full-height uncropped asset on true transparent alpha, not checkerboard.",
+      "transparentBackground": true,
+      "source": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-5c00ad07-6323-47fe-8a75-5e275f68350b.png",
+      "publicPath": "/game/homeworld/v56/mask-pedestal.png",
+      "correctionPrompt": "Use case: precise-object-edit. Correct this exact game pedestal for modular placement. Preserve its basalt/bronze construction, proportions, front perspective and amber light slots. Show the ENTIRE pedestal including both widest lower base corners with a generous 10 percent fully transparent padding on all four sides: nothing may touch or be cropped by the image border. Remove every trace of backdrop, diffuse brown/black glow, haze and ground shadow outside the pedestal silhouette. Keep only the physical isolated pedestal and its crisp antialiased silhouette on true transparent alpha. The display cradle remains empty, no mask or new object, no room, no text. Do not change into another design. Crisp cutout suitable for compositing onto an existing game hall.",
+      "rejectedOriginalSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-d695d54d-a9dc-404c-a95a-713e91ab1081.png",
+      "rejectionReason": "Base corners touched image borders; corrected through built-in image editing.",
+      "generator": "openai-imagegen",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "alphaBounds": {
+        "x": 8,
+        "y": 47,
+        "width": 1009,
+        "height": 1424
+      },
+      "sha256": "76113c1a51b5ee6422dfdde3cc9e536de8b91d941724be939922977c4d42ba3b",
+      "visualReviewed": true,
+      "reviewNotes": "Complete isolated pedestal, empty cradle, intact corners, alpha channel checked. Original game architecture, not a canonical prop replica."
+    }
+  ]
+}

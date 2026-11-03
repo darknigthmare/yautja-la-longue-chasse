@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "generated": [
+    {
+      "fighterId": "scar",
+      "id": "idle",
+      "actionId": "idle",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nSCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent.\nACTION idle: Subtle breathing loop. Both feet remain fixed. Four clearly separate but restrained breathing poses; no footstep. Phases left-to-right each row: neutral alert ; inhale shoulders slightly raised ; exhale relaxed knees ; return toward neutral. Keep the upright left-hand combistick within each cell, no blade or spear cropping. Output character standing height280px including mask and feet; spear totalheight330px, four separated columns.",
+      "phase": [
+        "neutral alert",
+        "inhale shoulders slightly raised",
+        "exhale relaxed knees",
+        "return toward neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "authored-review",
+      "notes": [
+        "Eight separated breathing poses, hand/spear grip and right mounted blades visible. Bottom-row shoulder cannon appears to aim away from facing and requires targeted correction before acceptance."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-idle-v34.png",
+      "originId": "exec-928b9d05-6fa6-4584-ac16-1eb79de5fc9f.png",
+      "sha256": "725a14de4bf905122f4585663b2654d7925f57089fdbdae383e06da1290ec8c4",
+      "bytes": 2216119,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "scar",
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nSCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent. IMPORTANT single shoulder CANNON AIM: top row barrel muzzle aims IMAGE RIGHT toward face direction; bottom row barrel muzzle aims IMAGE LEFT toward face direction, never backward. Do not mechanically mirror the asymmetrical gear.\nFORWARD COMBAT WALK. Four exact gait phases per row: 1 anatomical RIGHT near-camera leg trailing BEHIND, LEFT far leg contacts in FRONT.2LEFT leg straight supports weight, RIGHT leg raised passes behind.3RIGHT near-camera leg contacts FORWARD, its thigh crosses IN FRONT of left thigh; LEFT far leg trails.4RIGHT leg supports weight, LEFT leg raised passes behind. Columns1/3 must visibly reverse thigh overlap and contacts, columns2/4 opposite support legs. Not repeating same pose. Carry existing spear upright in left hand, do not transfer. Feet grounded in contacts, stable mask and equipment, small forward torso lean. Keep8separatefullbodies insidecells. Forward walk cycle. Both feet must alternate support. Phases1 and3 are opposite leg contacts, phases2 and4 opposite passing knees. Body remains in place on the sheet; no duplicates.",
+      "phase": [
+        "contact-left",
+        "pass-left-support",
+        "contact-right",
+        "pass-right-support"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "rejected",
+      "notes": [
+        "Columns1/3 repeat the same contact leg and2/4 repeat the same supporting leg. No true alternating walk cycle accepted. Equipment is coherent but gait must be repaired."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-walk-forward-v34.png",
+      "originId": "exec-e6676d9c-b19d-4a95-adc9-0bf7b6321850.png",
+      "sha256": "ae1b6f71e0b1a763f2cac9f7789156223903781090a66a8f4d4ccabb32c4876e",
+      "bytes": 1987856,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "scar",
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nSCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent. IMPORTANT single shoulder CANNON AIM: top row barrel muzzle aims IMAGE RIGHT toward face direction; bottom row barrel muzzle aims IMAGE LEFT toward face direction, never backward. Do not mechanically mirror the asymmetrical gear.\nBACKWARD CAUTIOUS COMBAT WALK with genuinely alternating legs. Exact4phasecycle per row:1 RIGHT near leg BEHIND body and LEFT far leg IN FRONT, both soles contact;2 RIGHT leg supports nearly straight behind pelvis while LEFT knee lifts and passes, left foot raised in front;3 RIGHT near leg IN FRONT and LEFT far leg BEHIND, RIGHT thigh crosses IN FRONT of the other thigh;4 LEFT leg supports nearly straight behind pelvis while RIGHT knee lifts and passes, right foot raised in front. Camera remains profile with enough quartertorso to distinguish hips. Different knee armor overlap in1vs3 and opposite support legs in2vs4 required. Existing left spear upright with visible grip, right blades mounted above emptyhand. All8figures separate, 4columns2rows, no labels or scenery.",
+      "phase": [
+        "contact-left-front",
+        "pass-right-support",
+        "contact-right-front",
+        "pass-left-support"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "authored-review",
+      "notes": [
+        "Contacts in columns1/3 appear to reverse near-leg overlap, but passing poses2/4 lift the same leg. Column2 needs anatomical support-leg repair; no runtime walk accepted yet."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-walk-backward-v34.png",
+      "originId": "exec-402d58e1-1647-4b5f-8128-837f814ad61a.png",
+      "sha256": "4c91a64252cc60633e9c24c3c356cdc4fb41b6d4ee9d088642703225da6c8cf9",
+      "bytes": 2200994,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "scar",
+      "id": "crouch",
+      "actionId": "crouch",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nSCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent. IMPORTANT single shoulder CANNON AIM: top row barrel muzzle aims IMAGE RIGHT toward face direction; bottom row barrel muzzle aims IMAGE LEFT toward face direction, never backward. Do not mechanically mirror the asymmetrical gear.\nACTION crouch: Four successive depths of controlled crouch and rise. Knees anatomically hinge, no extra legs, keep constant character scale. EXACT4phases left-to-right each row: standing combat stance ; half squat descending ; deep stable crouch with both heels grounded ; half squat rising. Keep LEFT spear upright gripped onehand, point above body within its cell, never substitute ground support for hand. Right empty fingers remain visible below wristblade gauntlet at waist or beside knee, no fused hand/leg. Distinct halfcrouch and deepcrouch; fixed planted feet. Fullbody height atmost280px so spear fits.",
+      "phase": [
+        "standing combat stance",
+        "half squat descending",
+        "deep stable crouch with both heels grounded",
+        "half squat rising"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "authored-review",
+      "notes": [
+        "Distinct standing/half/deep/rising poses. Complete right hand is visible beside knee with two mounted blades; left hand keeps spear grip. First3 drawings suitable for crouch entry/hold subject to pixel/Canvas validation. Cannons aim toward each facing."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-crouch-v34.png",
+      "originId": "exec-596c67a5-62d2-4bbc-8e54-e365d4442acb.png",
+      "sha256": "7b4a04c23132c2f89ddbfebed5fb715ddf5c0f266d0eae3ea8858d815f5a703e",
+      "bytes": 2062567,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "scar",
+      "id": "guard",
+      "actionId": "guard",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nSCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent. IMPORTANT single shoulder CANNON AIM: top row barrel muzzle aims IMAGE RIGHT toward face direction; bottom row barrel muzzle aims IMAGE LEFT toward face direction, never backward. Do not mechanically mirror the asymmetrical gear.\nDEFENSIVE GUARD only, no opponent or injury. Four phases each row: 1 neutral ready with spear in left hand;2 right forearm raises to chest, complete empty fist visible beneath2mountedblades;3 firm high guard right forearm protects mask but does not obscure entire face, left hand keeps spear upright;4 settled high guard with slight shoulder adjustment. Keep guard in finalpose, not neutral. Left spear remains in SAME left grip and entirely inside cell, pointup. No extra shield. Four distinct arm/head stances fixed plantedfeet. At most280pxbodyheightforroom.",
+      "phase": [
+        "neutral",
+        "raise-guard",
+        "brace-guard",
+        "held-guard"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "authored-review",
+      "notes": [
+        "Four distinct guard stages, left hand maintains spear and right forearm rises with two mounted blades. Final hand partially occluded by its own gauntlet/blades, not another limb. Candidate pending native readability and transparency checks."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-guard-v34.png",
+      "originId": "exec-4d86522b-892c-4381-b840-368793bbc239.png",
+      "sha256": "220d62176002c2695ce57f51179cbe11c324f8e0708ba47442ac979cd590d590",
+      "bytes": 2174399,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "scar",
+      "id": "hurt",
+      "actionId": "hurt",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nSCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent. IMPORTANT single shoulder CANNON AIM: top row barrel muzzle aims IMAGE RIGHT toward face direction; bottom row barrel muzzle aims IMAGE LEFT toward face direction, never backward. Do not mechanically mirror the asymmetrical gear.\nNON-GRAPHIC GAME REACTION, no injury marks or blood, no opponent. Four phases left-to-right each row:1brief shoulder recoil with helmet tiltedback,2stronger torso recoil knees bend but staysstanding,3regainbalance torso recovers,4neutralreadystance. Full anatomy staysintact, no broken limbs. Left hand keeps combistick secure closebesidebody, right EMPTY hand with continuous fingers staysbelowmountedblades. Two legs stay grounded, 4distinctposes, smallbodytofitallspeartipswithmargins.",
+      "phase": [
+        "recoil",
+        "strong-recoil",
+        "recover",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "authored-review",
+      "notes": [
+        "Four visible non-graphic recoil/recovery stages. Hands, feet, spear and mounted blades remain coherent in both facings; cannon tilts with torso. Candidate awaiting pixel/Canvas checks."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-hurt-v34.png",
+      "originId": "exec-6af0a693-ad49-49d7-a1b7-64e596cf747a.png",
+      "sha256": "7090d329fd96402ff5b73079345ed52dadb2effda04e3c5a74ad05e5ea5ea8de",
+      "bytes": 2126041,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "scar",
+      "id": "light",
+      "actionId": "light",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nSCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent. IMPORTANT single shoulder CANNON AIM: top row barrel muzzle aims IMAGE RIGHT toward face direction; bottom row barrel muzzle aims IMAGE LEFT toward face direction, never backward. Do not mechanically mirror the asymmetrical gear.\nLIGHT GAME ATTACK SOLO without opponent, wounds or effects. Four frames each row:1 short startup right elbowback, emptyrightfist pulledbesidewaist with2blades above wrist;2short horizontal rightarm jab toward facing, visible EMPTY CLOSED FIST beneath gauntlet, exactly2mountedparallelblades extendingbeyondwrist;3pullback recovery fistvisible besidechest;4relaxedneutral rightopenhanddown. Left hand keeps same spear upright slightly behind arm without intersecting it. NO HANDHELD SWORD. Total fullbodyplusblade reach atmost250pxW each384pxcell; body260pxheight and spear320px. Verywideemptygutters. Do not crop. Top4RIGHT,bottom4LEFT.",
+      "phase": [
+        "startup",
+        "active",
+        "recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "authored-review",
+      "notes": [
+        "Startup/recovery/neutral hands readable. At contact, blades run across the fist silhouette rather than clearly above its dorsal mount; targeted mount/hand separation required before acceptance. Spear grip remains separate."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-light-v34.png",
+      "originId": "exec-43311471-5221-4847-a7a3-282741bb5240.png",
+      "sha256": "578fe95aa6ef59e4f12efa42b2ba3e9ae9580db7e74b504820c2190ba263b823",
+      "bytes": 2078288,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "scar",
+      "id": "medium",
+      "actionId": "medium",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nSCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent. IMPORTANT single shoulder CANNON AIM: top row barrel muzzle aims IMAGE RIGHT toward face direction; bottom row barrel muzzle aims IMAGE LEFT toward face direction, never backward. Do not mechanically mirror the asymmetrical gear.\nMEDIUM GAME MOVE SOLO, no other person or wounds. Fourposes:1rightelbowdrawnbackwindup,2forwardlunge with rightforearmextended horizontally,3rightelbow retracts recovery,4readyneutral. CRITICAL WRIST GEOMETRY: right forearm ends in complete EMPTY CLOSED FIST with4knuckles+thumb visibly curledbelow. The TWO silver blades originate from TWO RAILS ON TOP OF THE METAL GAUNTLET, run parallel ABOVE THE BACK OF THE HAND, and extend beyond it. Leave visible dark/magenta AIR GAP BETWEEN blade loweredge and knuckletop, so blades NEVER emerge through fist or between fingers. Right hand grips NOTHING. Keep metalblade roots continuous with gauntlet. Left hand aloneholds upright combistick slightlybehind, no crossing spear through fist. Each silhouetteincludingreach less280pxW, body260pxH,8figures4x2, amplemagenta margins.",
+      "phase": [
+        "startup",
+        "active",
+        "recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "authored-review",
+      "notes": [
+        "Extended contact now shows the complete empty fist beneath two dorsal-mounted blades. Startup fist is separate; recovery wrist is partly occluded by blades beside waist. Both orientations and left spear grip coherent. Candidate pending rectangle/native checks."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-medium-v34.png",
+      "originId": "exec-862c1be7-4d39-47a0-b07b-2496ada09eea.png",
+      "sha256": "caa475bb7001a6795bdd677ce1d97b94f1078ccd1679f2d2961ea2498a5e1919",
+      "bytes": 1981066,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "scar",
+      "id": "heavy",
+      "actionId": "heavy",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nSCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent. IMPORTANT single shoulder CANNON AIM: top row barrel muzzle aims IMAGE RIGHT toward face direction; bottom row barrel muzzle aims IMAGE LEFT toward face direction, never backward. Do not mechanically mirror the asymmetrical gear.\nHEAVY GAME MOVE SOLO, no opponent or injury. Fourposes eachrow:1strong anticipation rightelbowfarback torso twists,2wideforward diagonal sweep of right wrist at chestheight withstrong hipturn,3followthrough right wrist down beside opposite hip,4readyneutral. RIGHT HAND MUST REMAIN COMPLETE AND EMPTY, fingers slightly open curled below two silver blades, wrist continuous from gauntlet. Exactly2 blades attached to dorsal gauntlet rails ABOVEhand with clearlyvisible mounting, never extending through hand or replacing fingers. LEFT hand retains upright combistick, held away to avoid interpenetration with rightarm. Heavy more pronouncedbodytwist than light/medium. Entirebody and weaponreach≤270pxW, body250pxH spear310pxH. Eight fully isolated figures top4RIGHT bottom4LEFT.",
+      "phase": [
+        "startup",
+        "active",
+        "recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "authored-review",
+      "notes": [
+        "Distinct heavy phases; right row startup/active/recovery/neutral, left row is reversed neutral/recovery/active/startup and must reorder [3,2,1,0]. Empty hand visible beneath active blades; followthrough wrist partly occluded. Pending pixel/Canvas checks."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+      "originId": "exec-50aa08dc-f759-4173-b77a-b64334920f27.png",
+      "sha256": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3",
+      "bytes": 2232291,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "scar",
+      "id": "repair-light-mount",
+      "actionId": "light",
+      "prompt": "Edit FIRST Scar lightmove sprite sheet, SECOND is identity only. Keep exact1536x1024,4columns2rows,flat#FF00FF,all8poses,allarmor,spear,masks,andspacing. ONLY repair RIGHT HAND / WRIST BLADE MOUNTING in secondcolumn BOTHROWS (extendedarm contact). Lower the complete closed empty right fist slightly beneath the two blades. Show FOUR knuckles and curledthumb at end of a continuous wrist. Move BOTH silver blades ABOVE the fist: both roots clearly attach to top/dorsal gauntlet metal rails, pass OVER backofhand with a tiny visible backgroundgap, extend beyondknuckles. Two parallel blades should NOT originate from knuckles, go THROUGH fist, or be held inhand. Anatomical right hand empty. Retain left hand gripping spear awayfromrightfist. Preserve allotherposes. Fullblade tips/feet visible, nointercelloverlap. No text/labels/othercharacters. SCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent. IMPORTANT single shoulder CANNON AIM: top row barrel muzzle aims IMAGE RIGHT toward face direction; bottom row barrel muzzle aims IMAGE LEFT toward face direction, never backward. Do not mechanically mirror the asymmetrical gear.",
+      "phase": [
+        "startup",
+        "active",
+        "recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "authored-review",
+      "notes": [
+        "Targeted repair visibly separates both complete contact fists below the two dorsal-mounted blade rails. Other phases retain original anatomy and spear grip. Candidate awaiting alpha/native validation."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-repair-light-mount-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-repair-light-mount-v34.png",
+      "originId": "exec-fec13655-41e7-433c-afff-46c228061616.png",
+      "sha256": "2c52131d1721389e910d3c48d90445d73fb833495ed38d7b173ca3d6a8b66486",
+      "bytes": 2036690,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "scar",
+      "id": "repair-walk-backward-support",
+      "actionId": "walk-backward",
+      "prompt": "Edit FIRST Scar backward gait spritesheet only SECOND COLUMN legs in BOTH ROWS; SECOND reference is identity only. Preserve1536x1024flatmagenta,4cols2rows,all8figures,othercolumnsunchanged. Column2currentlylifts same nearRIGHTleg as column4; FIX it to lift LEFT FARleg instead while RIGHT NEARleg supportsweight straightdown. Toprowcol2facingRIGHT: RIGHT anatomical near thigh from disc-trophyhip on imageLEFT slopes straight DOWN to knee then plantedfoot onimageLEFT; LEFT far thigh begins on imageRIGHTside ofpelvis, lifts FORWARD imageRIGHT withkneeup and foot suspended, passing BEHIND the near supporting thigh. Bottomrowcol2facingLEFT: RIGHT anatomical near thigh fromdisc-trophyhip onimageRIGHT slopes DOWN to plantedfoot imageRIGHT; LEFT far thigh fromleftsideofpelvis lifts FORWARD imageLEFT withkneeup andfoot suspended behind supporting nearthigh. This must reverse anatomical leg OVERLAP at hip, not just same pose moved. Keep EXACTLY2legs, coherent hip-knee-ankle connections and same armor. Do not change column4. Keepcolumns1and3oppositecontactposes. Keep spear/blades/hands/maskfixed. No text/arrows. SCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent. IMPORTANT single shoulder CANNON AIM: top row barrel muzzle aims IMAGE RIGHT toward face direction; bottom row barrel muzzle aims IMAGE LEFT toward face direction, never backward. Do not mechanically mirror the asymmetrical gear.",
+      "phase": [
+        "contact-left-front",
+        "pass-right-support",
+        "contact-right-front",
+        "pass-left-support"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "authored-review",
+      "notes": [
+        "Second-column near leg now supports straight while far leg lifts; fourth column keeps opposite support. Contacts1/3 reverse thigh overlap. A complete alternating backward gait candidate, pending Canvas/pixels."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+      "originId": "exec-b288f315-fff2-4ed9-923b-2e1b0572ccb9.png",
+      "sha256": "a235f315b4e00bdfabec9d49830d039a153a4e8b23d6743965fe99d4af838599",
+      "bytes": 2147132,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "scar",
+      "id": "repair-walk-forward-cycle",
+      "actionId": "walk-forward",
+      "prompt": "Generate a Scar forward cautious walking sheet adapted from FIRST corrected gait sheet; SECOND is identity reference. Preserve all8correctlyalternating leg poses, do not redraw samelegs. Reverse temporal arrangement of each row by SWAPPING columns2and4 only: NEWcolumn1 = original1, NEWcolumn2 = original4, NEWcolumn3 = original3, NEWcolumn4 = original2. Near-rightleg contactbehind then liftfront then contactfront then supportbehind, with oppositeLEFTleg phases, must retain thigh overlap distinctions. Add slight forward lean torso and helmet to distinguish forward movement, keep left spear upright steady and right hand empty with2mountedblades. Exact4x2grid1536x1024flat#FF00FF,top4RIGHTbottom4LEFTindependent,no text/labels. Equipment and hands unchanged. Wholebody andspeartips insidecell, amplegutter. SCAR, preserve the attached existing V5 project presentation. Muscular golden brown spotted skin under black mesh suit; elongated silver closed biomask with the single red diagonal scar slash on its forehead; black dreadlocks with gold rings. Silver heavy shoulder, shin and knee plates; dark red-brown split leather loincloth and segmented silver front belt plates. Two small bone skulls on the chest strap, skull trophy and circular metal disc at right hip. Exactly ONE shoulder plasma cannon behind the shoulder, never duplicate. Exactly TWO long parallel wrist blades mounted on anatomical RIGHT forearm, complete EMPTY right hand visible below; left hand holds the existing long segmented combistick spear with pointed metal tip upright beside/behind the body. Spear is NOT a new gun or sword, never switch hands, never duplicate. Preserve two arms/hands/legs, five anatomically coherent fingers per hand where visible. Reference is historical project art, not certified 1:1 film reconstruction. Both facings must be independently drawn and weapon anatomical sides consistent. IMPORTANT single shoulder CANNON AIM: top row barrel muzzle aims IMAGE RIGHT toward face direction; bottom row barrel muzzle aims IMAGE LEFT toward face direction, never backward. Do not mechanically mirror the asymmetrical gear.",
+      "phase": [
+        "contact-left-front",
+        "pass-left-support",
+        "contact-right-front",
+        "pass-right-support"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/scar.png",
+      "status": "rejected",
+      "notes": [
+        "Forward repair loses the alternating contacts and does not provide a clean opposite support passage; no runtime forward walk accepted. Corrected backward source is retained separately."
+      ],
+      "sourcePath": "art-source/v34/pit/scar/scar-repair-walk-forward-cycle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-repair-walk-forward-cycle-v34.png",
+      "originId": "exec-017c91c5-157e-4d96-be6a-6a768ccd4fe9.png",
+      "sha256": "50044b90d2c6c04391c42fec4762267e9815059c82e0527c4199a8c66e109982",
+      "bytes": 2166206,
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

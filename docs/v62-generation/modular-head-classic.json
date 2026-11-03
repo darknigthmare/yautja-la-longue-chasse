@@ -1,0 +1,41 @@
+{
+  "release": "V62",
+  "family": "classic",
+  "source": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-217cf106-83ad-4c9d-9fb0-c89bc90954a6.png",
+  "runtime": "/game/sprites/v62/heads/classic-head.png",
+  "tool": "builtin-imagegen",
+  "prompts": [
+    "Create ONE production-ready transparent PNG sprite: an anatomically faithful unmasked Yautja head and short neck only, for the modular hunter in a 2D game. Input 1 (existing full body) is ONLY the palette/rendering and three-quarter-right facing reference; its current elongated insect-like skull is incorrect and must NOT be copied. Input 2 (licensed Prime 1 Jungle Hunter bust) is the anatomical reference: broad rounded ridged cranium, mottled reptilian skin, very deep small eyes, no human nose, a recessed central toothed mouth, FOUR distinct articulated fleshy mandibles with ivory tusk tips, two upper and two lower. Keep the four-mandible arrangement anatomically readable; no extra jaws, horns, antennae, giant cheeks, human lips or skull mask. Original unnamed classic adult Yautja, not a claim to reproduce an individual character. Turn head three quarters to the viewer's right, same orientation as input1, gaze slightly right, calm alert resting face with mandibles folded close enough to wear a biomask. Short muscular neck ends cleanly at base, neck axis vertical. Preserve a broad rounded forehead rather than a long xenomorph dome. NO long dreadlocks: the game supplies independent dread strands; only tiny rear scalp attachment sockets if needed. No armor, necklaces, weapons, shoulder, bust base, text, logo, checkerboard or background. Detailed premium 1990s fighting-game pixel sprite style, crisp deliberate pixel clusters and dark contours, warm ochre/tan gold skin with black/brown mottling to match input1, ivory fangs, darker recessed red-brown mouth; avoid glossy photographic plastic. Native 1024x1024 canvas, centered single head plus short neck occupying about 75% width and 85% height, at least 64px completely transparent margin on every edge. Entire image background genuinely transparent. Do not make a contact sheet or multiple views. Lighting upper left like the existing body. Draw complete anatomy with no edge clipping.",
+    "EDIT input1, the transparent pixel-art head. It is still anatomically wrong. Input2 is the licensed Jungle Hunter facial anatomy reference and takes precedence for anatomy. Keep the crisp pixel-art rendering, ochre spotted palette, three-quarter-right gaze, neck orientation, single-head composition and genuine transparent background from input1, but CORRECT THE ANATOMY: (1) remove the visible human-shaped external ear completely, replace it with reptilian mottled skin / a discreet small dark auditory opening, no pinna or earlobe; (2) shorten the elongated rear cranium and broaden the flat domed forehead as in reference2, with a heavy horizontally wide brow; (3) replace the two enormous walrus/elephant downward tusks with exactly FOUR clearly separate articulated FLESHY MANDIBLES framing the recessed toothed mouth: a left/right UPPER pair and a left/right LOWER pair, each with a modest ivory fang at its tip. Upper pair must originate beside the upper cheeks, lower pair beside the lower jaw. Match the distinctive four-petal Predator mouth construction in reference2. Mandibles relaxed near the face but individually visible and separable, no giant paired mustache tusks, no humanoid nose or lips, no extra central jaw. Deep black eye sockets with small amber eyes. No long dreadlocks because separately animated dreads are added by the game. No armor, shoulder, text, logo, border or background. Keep entire head plus short neck isolated with at least 64px transparent margins, 1024x1024 square. This is a grounded original classic Yautja for a modular game sprite, anatomically based on the reference, not an orc, insect, xenomorph or human wearing tusks. Nothing else."
+  ],
+  "rejectedCandidate": {
+    "path": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-ef7274d7-f024-45e2-b576-6fda99b49846.png",
+    "reason": "External human ear and two oversize walrus-like tusks; not integrated."
+  },
+  "references": [
+    {
+      "url": "https://www.sideshow.com/collectibles/predator-jungle-hunter-predator-prime-1-studio-911387",
+      "local": "work-local/v62/references/heads/jungle-hunter-prime1-front.jpg",
+      "role": "Licensed anatomy reference, not copied pixels or proof of exact character identity"
+    },
+    {
+      "local": "public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp",
+      "role": "Project palette and orientation only; old incorrect head explicitly not anatomy reference"
+    }
+  ],
+  "limits": [
+    "Original modular Yautja, not a 1:1 individual Jungle Hunter reproduction.",
+    "Independent dreadlocks and body are added by the runtime; this asset contains only head and short neck.",
+    "Resting anatomy illustration, not a complete facial animation sheet."
+  ],
+  "review": {
+    "status": "integrated-and-local-browser-qa-pass",
+    "mandibles": 4,
+    "humanExternalEarRemoved": true,
+    "nativeTransparentOutput": true,
+    "needsInGameFitValidation": false,
+    "compositionEvidence": "docs/v62-head-composition-qa.json",
+    "missionEvidence": "docs/v62-head-mission-qa.json",
+    "scope": "68 DOM/Canvas compositions and two isolated campaign missions; not a complete new-game/prologue run."
+  }
+}

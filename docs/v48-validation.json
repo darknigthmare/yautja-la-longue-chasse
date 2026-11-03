@@ -1,0 +1,84 @@
+{
+  "version": "V48",
+  "verifiedAt": "2026-09-23T15:24:56.011713+00:00",
+  "build": "PASS",
+  "typecheck": "PASS",
+  "lint": {
+    "errors": 0,
+    "warnings": 1,
+    "warning": "Existing next/no-img-element in ClanChroniclePanel.tsx"
+  },
+  "fullRegression": {
+    "tests": 1544,
+    "passed": 1544,
+    "failed": 0,
+    "evidence": "work/v48/tests-final.tap"
+  },
+  "postFreezeFocusedTests": {
+    "tests": 43,
+    "passed": 43,
+    "evidence": "work/v48/youth-targeted-final.tap"
+  },
+  "browserChecks": 53,
+  "reports": {
+    "youthMechanics": {
+      "passed": true,
+      "checks": 9,
+      "evidence": "work/v48/final4-youth-scene-qa/report.json"
+    },
+    "youthAccessibility": {
+      "passed": true,
+      "checks": 6,
+      "evidence": "work/v48/final4-youth-accessibility-qa/report.json"
+    },
+    "youthReliability": {
+      "passed": true,
+      "checks": 5,
+      "evidence": "work/v48/final-youth-reliability-qa/report.json"
+    },
+    "nursery": {
+      "passed": true,
+      "checks": 7,
+      "evidence": "work/v48/nursery-regression-qa/report.json"
+    },
+    "nurseryAccessibility": {
+      "passed": true,
+      "checks": 14,
+      "evidence": "work/v48/nursery-accessibility-regression-qa/report.json"
+    },
+    "pitRoster": {
+      "passed": true,
+      "checks": 8,
+      "evidence": "work/v48/pit-roster-regression-qa/report.json"
+    },
+    "pitCamera": {
+      "passed": true,
+      "checks": 4,
+      "evidence": "work/v48/pit-camera-regression-qa/report.json"
+    }
+  },
+  "independentContinuityReview": "work/v48/continuity-visual-qa.json",
+  "art": {
+    "newPng": 8,
+    "nativeDrawings": 80,
+    "shortTwoDrawingClips": 40,
+    "independentProps": 8,
+    "sourceBytesPreserved": true,
+    "shaEvidence": "docs/v48-openai-prompts.json"
+  },
+  "qaProfiles": [
+    "novice and combat mechanics",
+    "accessibility, touch and virtual gamepad",
+    "persistence and legacy saves",
+    "source continuity and visual review"
+  ],
+  "publicationEvidence": "work/v48/publication-verified.json is produced separately after this source commit is deployed",
+  "limitations": [
+    "No physical gamepad certification or human tester claim",
+    "Desert chapter, youth cage PIT and full corridor/throne scene remain unfinished",
+    "Biomask stored for the later outing, no complete worn-equipment sprite set",
+    "Two drawings per animation clip are a first playable art pass",
+    "The three backdrops are not complete separate parallax-layer packs",
+    "Known adult hunter animation and arena production backlogs remain"
+  ]
+}

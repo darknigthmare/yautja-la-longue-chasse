@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "release": "V66",
+  "status": "HOST_SAVE_INTEGRATION_AND_CITY_DEBRIEF_QA_PASS_BROWSER_EXPEDITIONS_NOT_REPLAYED",
+  "checkedAt": "2026-10-01T03:12:49.980Z",
+  "scope": {
+    "originalChain": "Les passages de retour",
+    "missions": 2,
+    "giver": "clan-healer",
+    "pointId": "medbay-service",
+    "interiorId": "clan-lodge",
+    "reusedPlayableRegions": [
+      "ash-marches",
+      "glass-desert"
+    ],
+    "newLevels": 0,
+    "newNpcs": 0,
+    "newBitmapAssets": 0,
+    "materialRewards": 0,
+    "freeRites": 0
+  },
+  "checks": {
+    "targetedTests": 12,
+    "passed": 12,
+    "failed": 0,
+    "routeAndBeaconCombinations": 4,
+    "lint": "PASS",
+    "targetedTypescript": "PASS",
+    "testLog": "work-local/v66/npc-missions-tests.log",
+    "testLogSha256": "3378a172bee88b040bf338d08dccf1da077110e856613f13c5cb26163868a40b"
+  },
+  "files": [
+    {
+      "path": "app/game/systems/homeworldNpcMissionsV66.ts",
+      "sha256": "d7e1afd9fad30c3f37f0c7167759877eedb123d49a02fc06ef0319a2efd7018c"
+    },
+    {
+      "path": "app/game/HomeworldNpcMissionsV66.tsx",
+      "sha256": "de67e74b600cddb31076451df5920fba4cfaaa9cd42194ae4a5c390a822a1628"
+    },
+    {
+      "path": "tests/homeworld-npc-missions-v66.test.mjs",
+      "sha256": "49bfa281776a0ab99bf0a1b57f98d66aadb7202662c5b0ddfa974609537daa88"
+    },
+    {
+      "path": "docs/v66-npc-missions-integration.md",
+      "sha256": "c3223ac99ad396c3ba20320af9ee52e371e45a73cce826087f647ceac089ca56"
+    }
+  ],
+  "verifiedModelRules": [
+    "Acceptance before a new expedition completion callback; no old saved report automatically counts.",
+    "First complete report preserved without rewriting earlier region decisions.",
+    "Return and factual debrief at the original indoor NPC; remote, other-room, blocked-floor, suspended and youth contexts rejected.",
+    "Second request requires first delivery, then a separate acceptance and new field report.",
+    "Incomplete, future and contradictory states refuse mutation.",
+    "No inventory, honor, trophy, treatment, access unlock or rite written by the mission model."
+  ],
+  "hostRequirements": [
+    {
+      "requirement": "Additive state/default/normalizer and protection of future or contradictory narrative save versions",
+      "status": "PASS",
+      "evidence": "docs/v66-side-story-targeted-test-proof.json"
+    },
+    {
+      "requirement": "Fresh raw report merged atomically by real GameClient callbacks without crediting old regional aggregate history",
+      "status": "PASS",
+      "evidence": "docs/v66-npc-field-integration-proof.json"
+    },
+    {
+      "requirement": "Durable NPC acknowledgement, storage refusal/retry, actual proximity and ownership guards",
+      "status": "PASS",
+      "evidence": "docs/v66-side-story-targeted-test-proof.json"
+    },
+    {
+      "requirement": "Actual city/room/giver walking and acceptance/debrief with reload in compiled browser",
+      "status": "PASS_WITH_DECLARED_REPORT_FIXTURES",
+      "evidence": "docs/v66-npc-missions-application-qa.json"
+    },
+    {
+      "requirement": "Full expeditions played in browser as part of the mission chain",
+      "status": "NOT_REPLAYED",
+      "note": "Actual field engines and completion callbacks were played and tested separately, not represented as browser end-to-end completion."
+    }
+  ],
+  "applicationFlowVerified": false,
+  "fullSaveIntegrationVerified": true,
+  "publicDeploymentVerified": false,
+  "canonStatus": "Original city errand; no canonical institution, map or species-wide medical custom claimed.",
+  "applicationFlowScope": "Full browser mission chain including expeditions is not claimed. Actual city movement, giver dialogs and save/reload pass; two report-return scenarios use declared fixtures.",
+  "cityAndDebriefApplicationVerified": true,
+  "integration": {
+    "hubAndSaveTests": 7,
+    "liveCompletionAndFieldEngineTests": 6,
+    "applicationGroups": 3,
+    "captures": 8,
+    "capturesReviewed": 8,
+    "proofs": [
+      {
+        "path": "docs/v66-side-story-targeted-test-proof.json",
+        "sha256": "a0390a6145d66f34dcc6f9e5b4869cee2fb93df7e80b1c4ac6e3931f98d90b45"
+      },
+      {
+        "path": "docs/v66-npc-field-integration-proof.json",
+        "sha256": "cbac1a99e23b6bd585af4b5b53000b1554033170c9ad866f294dd867b9fe36a7"
+      },
+      {
+        "path": "docs/v66-npc-missions-application-qa.json",
+        "sha256": "e4a0eeee06e9064cedda8ed5c08cb8b61964c88efde512092f94f31d69113122"
+      }
+    ]
+  }
+}

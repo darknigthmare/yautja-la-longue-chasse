@@ -1,0 +1,173 @@
+{
+  "owner": "2026-10-28T10:00:00.000Z",
+  "checkpoint": {
+    "version": 1,
+    "layoutRevision": 1,
+    "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+    "levelId": "0",
+    "exterior": {
+      "x": 4799.825914935707,
+      "y": 4964.21758152965
+    },
+    "interiorId": null,
+    "local": null
+  },
+  "ledgers": {
+    "archivePlaqueV109": {
+      "version": 1,
+      "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+      "revision": 15,
+      "receipt": {
+        "sceneId": "D6-W-PNJ-ROLE-03",
+        "operationId": "port-k17-separated-plaque-study-v109",
+        "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+        "artSha256": "a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe",
+        "phase": "completed",
+        "resumePhase": null,
+        "option": "B",
+        "last": {
+          "x": 7520,
+          "y": 5350
+        },
+        "walked": 1121.1721317584952,
+        "objects": [
+          {
+            "id": "plaque",
+            "x": 7760,
+            "y": 5410,
+            "place": "support"
+          },
+          {
+            "id": "trace",
+            "x": 7880,
+            "y": 5410,
+            "place": "support"
+          },
+          {
+            "id": "fragment",
+            "x": 7520,
+            "y": 5470,
+            "place": "source"
+          }
+        ],
+        "carrier": null,
+        "pickupWalked": null,
+        "observations": [
+          "plaque",
+          "trace"
+        ],
+        "provenances": [
+          "plaque",
+          "trace"
+        ],
+        "ownerConsent": true,
+        "edgeObserved": false,
+        "mismatchObserved": false,
+        "failureSpoken": false,
+        "resumeSpoken": false,
+        "fragmentCompared": false,
+        "interruptedCount": 0,
+        "lineIds": [
+          "D6-W-PNJ-ROLE-03-OUV---01",
+          "D6-W-PNJ-ROLE-03-CHOIX-B-01",
+          "D6-W-PNJ-ROLE-03-REPONSE-B-01",
+          "D6-W-PNJ-ROLE-03-SUCCES---01"
+        ]
+      }
+    },
+    "archiveContinuationV111": {
+      "version": 1,
+      "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+      "revision": 14,
+      "receipt": {
+        "operationId": "port-k17-deferred-continuation-v111",
+        "baseLedgerJson": "{\"version\":1,\"ownerCreatedAt\":\"2026-10-28T10:00:00.000Z\",\"revision\":15,\"receipt\":{\"sceneId\":\"D6-W-PNJ-ROLE-03\",\"operationId\":\"port-k17-separated-plaque-study-v109\",\"sourceSha256\":\"87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183\",\"sourceCorpusSha256\":\"e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30\",\"artSha256\":\"a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe\",\"phase\":\"completed\",\"resumePhase\":null,\"option\":\"B\",\"last\":{\"x\":7520,\"y\":5350},\"walked\":1121.1721317584952,\"objects\":[{\"id\":\"plaque\",\"x\":7760,\"y\":5410,\"place\":\"support\"},{\"id\":\"trace\",\"x\":7880,\"y\":5410,\"place\":\"support\"},{\"id\":\"fragment\",\"x\":7520,\"y\":5470,\"place\":\"source\"}],\"carrier\":null,\"pickupWalked\":null,\"observations\":[\"plaque\",\"trace\"],\"provenances\":[\"plaque\",\"trace\"],\"ownerConsent\":true,\"edgeObserved\":false,\"mismatchObserved\":false,\"failureSpoken\":false,\"resumeSpoken\":false,\"fragmentCompared\":false,\"interruptedCount\":0,\"lineIds\":[\"D6-W-PNJ-ROLE-03-OUV---01\",\"D6-W-PNJ-ROLE-03-CHOIX-B-01\",\"D6-W-PNJ-ROLE-03-REPONSE-B-01\",\"D6-W-PNJ-ROLE-03-SUCCES---01\"]}}",
+        "phase": "active",
+        "ownerConsent": true,
+        "lineIds": [
+          "D6-W-PNJ-ROLE-03-OUV---01",
+          "D6-W-PNJ-ROLE-03-CHOIX-A-01",
+          "D6-W-PNJ-ROLE-03-REPONSE-A-01",
+          "D6-W-PNJ-ROLE-03-ECHEC---01",
+          "D6-W-PNJ-ROLE-03-REPRISE---01"
+        ],
+        "study": {
+          "version": 1,
+          "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+          "revision": 10,
+          "receipt": {
+            "sceneId": "D6-W-PNJ-ROLE-03",
+            "operationId": "port-k17-separated-plaque-study-v109",
+            "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+            "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+            "artSha256": "a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe",
+            "phase": "interrupted",
+            "resumePhase": "working",
+            "option": "A",
+            "last": {
+              "x": 4799.825914935707,
+              "y": 4964.21758152965
+            },
+            "walked": 4847.16212198981,
+            "objects": [
+              {
+                "id": "plaque",
+                "x": 7760,
+                "y": 5410,
+                "place": "support"
+              },
+              {
+                "id": "trace",
+                "x": 7880,
+                "y": 5410,
+                "place": "support"
+              },
+              {
+                "id": "fragment",
+                "x": 4799.825914935707,
+                "y": 4964.21758152965,
+                "place": "carried"
+              }
+            ],
+            "carrier": "fragment",
+            "pickupWalked": 1837.828446358451,
+            "observations": [
+              "plaque",
+              "trace",
+              "fragment"
+            ],
+            "provenances": [
+              "plaque",
+              "trace",
+              "fragment"
+            ],
+            "ownerConsent": true,
+            "edgeObserved": true,
+            "mismatchObserved": true,
+            "failureSpoken": true,
+            "resumeSpoken": true,
+            "fragmentCompared": false,
+            "interruptedCount": 2,
+            "lineIds": [
+              "D6-W-PNJ-ROLE-03-OUV---01",
+              "D6-W-PNJ-ROLE-03-CHOIX-A-01",
+              "D6-W-PNJ-ROLE-03-REPONSE-A-01",
+              "D6-W-PNJ-ROLE-03-ECHEC---01",
+              "D6-W-PNJ-ROLE-03-REPRISE---01"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "actor": {
+    "x": 4799.825914935707,
+    "y": 4964.21758152965,
+    "vx": -116.49661379668032,
+    "vy": -191.4284250970195,
+    "facing": -1,
+    "grounded": true
+  },
+  "oldNativeSteps": 947
+}

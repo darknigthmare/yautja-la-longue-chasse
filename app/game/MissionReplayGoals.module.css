@@ -1,0 +1,36 @@
+.cumulativeNote {
+  margin: 8px 0 0;
+  color: #9fb6af;
+  font-size: .75rem;
+  line-height: 1.5;
+}
+.goals {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(112, 244, 207, .18);
+  display: grid;
+  gap: 10px;
+}
+.goals h3 { margin: 0; font-size: .86rem; color: #d1e1d5; }
+.goals article {
+  padding: 11px 12px;
+  border: 1px solid rgba(112, 244, 207, .15);
+  border-radius: 5px;
+  background: rgba(3, 17, 18, .58);
+  display: grid;
+  gap: 5px;
+}
+.goals article small { color: #a3cfc0; font-size: .67rem; text-transform: uppercase; letter-spacing: .08em; }
+.goals article strong { color: #e2e7cd; font-size: .8rem; }
+.goals article p, .goals > p { margin: 0; color: #b8c7c1; font-size: .76rem; line-height: 1.55; }
+.goals article span { color: #b6cda4; font-size: .69rem; line-height: 1.45; }
+.goals .rewardNote { color: #8fa49d; font-size: .67rem; }
+
+/* A fixed-height orbital stage must scroll its complete content on mobile.
+   Intrinsic rows keep the scanner from painting over the contract buttons. */
+@media (max-width: 760px) {
+  .dossier:global(.galaxy-v10-dossier) {
+    grid-template-rows: 300px max-content max-content;
+    align-content: start;
+  }
+}

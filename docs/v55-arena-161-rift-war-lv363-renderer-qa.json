@@ -1,0 +1,824 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-161-rift-war-lv363",
+  "compositionDigest": "e18e3e6c73ad4d0605362513f41a923c5398017d729560b4a37f16a5cdc6358d",
+  "checkedAt": "2026-09-30T01:41:26.118Z",
+  "surface": "isolated-renderer-with-real-game-fighters-and-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-161-rift-war-lv363/p0-depth.png",
+      "sha256": "707c30b9c2f35952c555de8fde52a09a211a61cb0a56e256a4fa4dd3e43100a7",
+      "width": 1935,
+      "height": 812,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p2-module.png",
+      "sha256": "c696ef4a3964364e2d8e4752fe85edf9f29748fc212733dcf32988e4626d5fdc",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p3-module.png",
+      "sha256": "bd80ca27db0063578fad9c30bdf5642a237aabcdd8085fecf43e0350b8b3aa47",
+      "width": 1881,
+      "height": 836,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p4-floor.png",
+      "sha256": "787ea90595d21fadee070e050b88d01f371923211a2801926c7da4f8db720bfd",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 5,
+    "expectedImages": 5,
+    "failed": [],
+    "fighterFailures": [],
+    "decoded": [
+      {
+        "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+        "width": 1536,
+        "height": 1024,
+        "complete": true
+      },
+      {
+        "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p3-module.png",
+        "width": 1881,
+        "height": 836,
+        "complete": true
+      },
+      {
+        "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p2-module.png",
+        "width": 1024,
+        "height": 1536,
+        "complete": true
+      },
+      {
+        "path": "/game/sprites/v55/pit-arenas/arena-161-rift-war-lv363/p0-depth.png",
+        "width": 1935,
+        "height": 812,
+        "complete": true
+      },
+      {
+        "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p4-floor.png",
+        "width": 2172,
+        "height": 724,
+        "complete": true
+      }
+    ],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 0,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 1,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 0,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 1,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 0,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 1920,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 0,
+          "visibleFoot": 510.25000000000006,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 1,
+          "visibleFoot": 510.25000000000006,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 0,
+          "visibleFoot": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 1,
+          "visibleFoot": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -1752,
+          "y": 510.25,
+          "width": 1488.5,
+          "height": 496
+        },
+        {
+          "x": -264,
+          "y": 510.25,
+          "width": 1488.5,
+          "height": 496
+        },
+        {
+          "x": 1224,
+          "y": 510.25,
+          "width": 1488.5,
+          "height": 496
+        },
+        {
+          "x": 2712,
+          "y": 510.25,
+          "width": 1488.5,
+          "height": 496
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 0,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 1,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 0,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 1,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -2710,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": -1318,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 74,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 1466,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 2858,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 0,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 1,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 0,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 1,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -1898,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": -506,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 886,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 2278,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 3670,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 0,
+          "visibleFoot": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 1,
+          "visibleFoot": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 0,
+          "visibleFoot": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 1,
+          "visibleFoot": 398,
+          "expected": 398,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -1440,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        },
+        {
+          "x": -672,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        },
+        {
+          "x": 96,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        },
+        {
+          "x": 864,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        },
+        {
+          "x": 1632,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        },
+        {
+          "x": 2400,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 0,
+          "visibleFoot": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 1,
+          "visibleFoot": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 0,
+          "visibleFoot": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 1,
+          "visibleFoot": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -1680,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        },
+        {
+          "x": -816,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        },
+        {
+          "x": 48,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        },
+        {
+          "x": 912,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        },
+        {
+          "x": 1776,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        },
+        {
+          "x": 2640,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 0,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 1,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 0,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 1,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 0,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 1920,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 0,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-module",
+          "placement": 1,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 0,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-module",
+          "placement": 1,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 0,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 1920,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p4-floor.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "screenshots": [
+    "center.png",
+    "left-corner.png",
+    "right-corner.png",
+    "wide.png",
+    "mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "3db38a872a79bbb385a6f832abb9308470fffbcd6a7c79eb2131b41aaedb857f",
+    "left-corner.png": "d8b78cd98d28851fd8bc4e14329b4b303c41844f64dd4fb769c90a97799db144",
+    "right-corner.png": "b186654f6e93c1e77f7509c85a034eff38847c199e39e9e2d2f3b1d72d62806e",
+    "wide.png": "6224561d167a19a8974a2ec6afb979ad2f1bdebc0c2afd3267f9c1ff19eaa8d1",
+    "mobile.png": "5a140bf5dacee029530460a82a2a0eb72a33f073ee83511ffc8b25e8de1908f1"
+  },
+  "limit": "Real decoded scenes and eight controlled camera views; not 195 real application duels, hardware or canon certification."
+}

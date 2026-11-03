@@ -1,0 +1,21 @@
+{
+  "scope": "Actual browser recipe initializer and final collector extracted by AST; no browser or pixel certification",
+  "tests": {
+    "command": "node tests/pit-browser-worker-observation-v112.test.mjs",
+    "status": "PASS",
+    "tests": 3,
+    "log": "docs/qa/v112-pit-backward/worker-observation-tests.log"
+  },
+  "lint": {
+    "command": "eslint scripts/qa-pit-backward-throws-v112.mjs tests/pit-browser-worker-observation-v112.test.mjs",
+    "exitCode": 0,
+    "status": "PASS",
+    "stdoutBytes": 0,
+    "stderrMerged": true
+  },
+  "cases": [
+    "Native constructor throws, caught by app: observer records before rethrowing identical failure.",
+    "Asynchronous native error event remains recorded without filtering.",
+    "Actual final collector retains early-abort records once and reports observation failures; main finally invokes it before cleanup."
+  ]
+}

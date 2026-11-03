@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-09-30T19:35:53.063Z",
+  "scriptSha256": "f063dafa888856b032cc35bcbfa624be423687fed16572a089757c78de50a198",
+  "notes": "Existing .next untouched. Private fixtures alter only copied compiled CSS, including a case retaining unlinked good CSS.",
+  "results": [
+    {
+      "name": "positive-existing-build",
+      "exitCode": 0,
+      "status": "PASS",
+      "failedChecks": []
+    },
+    {
+      "name": "missing-rules-with-unused-good-css",
+      "exitCode": 1,
+      "status": "FAIL",
+      "failedChecks": [
+        "toast-does-not-intercept-hud",
+        "immersive-toast-above-desktop-menu",
+        "touch-toast-below-health-hud",
+        "touch-toast-releases-bottom"
+      ]
+    },
+    {
+      "name": "wrong-pointer-events",
+      "exitCode": 1,
+      "status": "FAIL",
+      "failedChecks": [
+        "toast-does-not-intercept-hud"
+      ]
+    },
+    {
+      "name": "wrong-desktop-bottom",
+      "exitCode": 1,
+      "status": "FAIL",
+      "failedChecks": [
+        "immersive-toast-above-desktop-menu"
+      ]
+    },
+    {
+      "name": "wrong-touch-top",
+      "exitCode": 1,
+      "status": "FAIL",
+      "failedChecks": [
+        "touch-toast-below-health-hud"
+      ]
+    },
+    {
+      "name": "wrong-touch-bottom",
+      "exitCode": 1,
+      "status": "FAIL",
+      "failedChecks": [
+        "touch-toast-releases-bottom"
+      ]
+    }
+  ]
+}

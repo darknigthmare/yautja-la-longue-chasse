@@ -1,0 +1,364 @@
+{
+  "version": "V85",
+  "summary": {
+    "pngEntriesImported": 41,
+    "uniquePngFiles": 41,
+    "nativePngBytes": 76710938,
+    "lots": 6,
+    "localV7BaseSprites": 118,
+    "badlandsSourceEntriesWithBase": 159,
+    "validation": "source-authoring-no-game-qa"
+  },
+  "archives": [
+    {
+      "id": "1hpXRGvXRJz-XKZY3LKyf23MgPbaFwyfz",
+      "title": "PREDATOR_BADLANDS_LOT8_8_AJOUTS.rar",
+      "url": "https://drive.google.com/file/d/1hpXRGvXRJz-XKZY3LKyf23MgPbaFwyfz/view?usp=drivesdk",
+      "mimeType": "application/vnd.rar",
+      "sourceBytes": "15129837",
+      "archiveSha256": "8bf8baf4f8cdea446bd417ab375f688156b07f29aeced3d95a79538f9de7513c",
+      "lot": 8,
+      "pngEntriesImported": 8,
+      "sourceMetadata": "badlands_pack_lot8/MANIFEST_BADLANDS.json"
+    },
+    {
+      "id": "1C7RhXsV0ioa1TfiR2Uk6xw_7-bESWVdW",
+      "title": "PREDATOR_BADLANDS_LOT9_10_AJOUTS.rar",
+      "url": "https://drive.google.com/file/d/1C7RhXsV0ioa1TfiR2Uk6xw_7-bESWVdW/view?usp=drivesdk",
+      "mimeType": "application/vnd.rar",
+      "sourceBytes": "18437265",
+      "archiveSha256": "ee38e0d175ab7f287e9fd731d6083ce307e62259be53969391902a9c7b488b9f",
+      "lot": 9,
+      "pngEntriesImported": 10,
+      "sourceMetadata": "badlands_pack_lot9/MANIFEST_BADLANDS.json"
+    },
+    {
+      "id": "1pO6RaxZ5gjTyjew2Cq8M9fhUfOAIECe0",
+      "title": "PREDATOR_BADLANDS_LOT10_4_AJOUTS.rar",
+      "url": "https://drive.google.com/file/d/1pO6RaxZ5gjTyjew2Cq8M9fhUfOAIECe0/view?usp=drivesdk",
+      "mimeType": "application/vnd.rar",
+      "sourceBytes": "10512357",
+      "archiveSha256": "b83d9211e40e1de9da79c60e98718c655805b894f26586539db59da9ca86568a",
+      "lot": 10,
+      "pngEntriesImported": 4,
+      "sourceMetadata": "badlands_pack_lot10/MANIFEST_BADLANDS.json"
+    },
+    {
+      "id": "1ZM7mI4E9DmCzyu1eJ-Xg47S5cDBN3blW",
+      "title": "PREDATOR_BADLANDS_LOT11_6_AJOUTS.rar",
+      "url": "https://drive.google.com/file/d/1ZM7mI4E9DmCzyu1eJ-Xg47S5cDBN3blW/view?usp=drivesdk",
+      "mimeType": "application/vnd.rar",
+      "sourceBytes": "13292152",
+      "archiveSha256": "9dc79337351574402dd9b6630a77119404d6b7b8ebdbe9cf45d4d3d55f728796",
+      "lot": 11,
+      "pngEntriesImported": 6,
+      "sourceMetadata": "badlands_pack_lot11/MANIFEST_BADLANDS.json"
+    },
+    {
+      "id": "1tEYISy7qqMySs275KDKudkdP3JeRvE5J",
+      "title": "PREDATOR_BADLANDS_LOT12_3_AJOUTS.rar",
+      "url": "https://drive.google.com/file/d/1tEYISy7qqMySs275KDKudkdP3JeRvE5J/view?usp=drivesdk",
+      "mimeType": "application/vnd.rar",
+      "sourceBytes": "5134196",
+      "archiveSha256": "8ae20352c9acd27d773ea53754585445feb54d7b3166cfd2cdbf20609910fb28",
+      "lot": 12,
+      "pngEntriesImported": 3,
+      "sourceMetadata": "badlands_pack_lot12/MANIFEST_BADLANDS.json"
+    },
+    {
+      "id": "1XusXXbDOyN2KhnnPpcPC5akyMj_CGVLp",
+      "title": "PREDATOR_BADLANDS_LOT13_10_AJOUTS.rar",
+      "url": "https://drive.google.com/file/d/1XusXXbDOyN2KhnnPpcPC5akyMj_CGVLp/view?usp=drivesdk",
+      "mimeType": "application/vnd.rar",
+      "sourceBytes": "21231336",
+      "archiveSha256": "bb892a6435a1213833450af4ab261919a5621ed2461510442a7616e6cfef073e",
+      "lot": 13,
+      "pngEntriesImported": 10,
+      "sourceMetadata": "badlands_pack_lot13/MANIFEST_BADLANDS.json"
+    }
+  ],
+  "sourceFolderUrl": "https://drive.google.com/drive/folders/13VlB259HBnziNldu6l1A6_rYjOEoZjT6",
+  "sourceCorrectionNotes": [
+    {
+      "sourceLot": 10,
+      "id": 28,
+      "note": "La nouvelle bande 138 corrige les lames trop larges et rigides de 28. Le PNG 28 reste conservé ; les silhouettes et ancrages ne sont pas alignés.",
+      "fields": {
+        "superseded_by_asset_id": 138,
+        "morphology_corrected_by_asset_id": 138,
+        "same_layout_as_correction": false,
+        "notes_fidelite": [
+          "Razor Grass reste une reconstruction d’après les descriptions ; bande d’obstacle recomposée, sans raccord de tuile garanti.",
+          "reconstruction_d_apres_description. Variation de disposition basse et large issue du sprite 11; pas de photographie nette de l’herbe écran vérifiée. Les lames, hauteurs et couleurs précises sont reconstituées. Ni texture raccordable garantie ni frame d’animation alignée.",
+          "Pose ou disposition adaptée au jeu à partir du sprite du premier lot ; les vues nouvelles et détails cachés sont reconstruits.",
+          "PNG statique indépendant : alignement entre poses et cycle d’animation non fournis.",
+          "Historique V8 : la touffe 126 a fourni la morphologie corrigée. La V10 ajoute désormais la bande 138, composée pour le jeu et sans raccord de tuile garanti."
+        ],
+        "usage_court": "Ancienne bande · préférer nº138"
+      }
+    },
+    {
+      "sourceLot": 10,
+      "id": 126,
+      "note": "Le sprite 138 complète cette touffe par une bande horizontale de même morphologie. Il ne remplace pas 126 et ne constitue pas une texture raccordable vérifiée.",
+      "fields": {
+        "complement_bande_asset_id": 138
+      }
+    },
+    {
+      "sourceLot": 10,
+      "id": 136,
+      "note": "Le petit arbre 139 reprend le modèle clairsemé de droite du catalogue ILP. Il complète 136 ; aucune espèce commune ni nouvel individu visible sous le même angle au montage final n’est certifié.",
+      "fields": {
+        "complement_variante_asset_id": 139,
+        "notes_fidelite": [
+          "Vue de jeu reconstituée : les détails non documentés sont précisés ci-dessous ; fidélité exacte 1:1 non certifiée.",
+          "Désignation descriptive : petit arbre de Genna à couronne irrégulière ; aucun taxon officiel attribué.",
+          "Ce végétal n’est pas identifié à l’Elephant Tree 51 et n’hérite d’aucun comportement agressif ou médicinal.",
+          "Historique V9 : seul le modèle feuillu était livré. La V10 ajoute le modèle clairsemé dans le fichier 139, en complément.",
+          "La référence principale est un catalogue de production ILP, pas un instant du film présentant cet individu entier.",
+          "Fidélité exacte 1:1 non certifiée ; revers, microdétails et parties occultées reconstitués.",
+          "Image statique indépendante, aucun cycle d’animation ni échelle physique canonique.",
+          "PNG original de génération copié sans retouche ; alpha natif conservé.",
+          "Image statique indépendante ; aucun cycle ni alignement de trames d’animation fourni."
+        ]
+      }
+    },
+    {
+      "sourceLot": 10,
+      "id": 107,
+      "note": "La séquence du scanner a été revue dans les reels des artistes Jake Mathew et Ignat Berbeci. Le vitrage et le diagnostic sont déjà représentés par 107 ; les sondes supérieures restent incomplètes dans ces vues.",
+      "fields": {
+        "sources": [
+          "https://www.jakemathew.com/predator-badlands/",
+          "https://www.experienceperception.com/work/predator-badlands/",
+          "https://www.ignatberbeci.com/predatorbadlands"
+        ]
+      }
+    },
+    {
+      "sourceLot": 11,
+      "id": 9,
+      "note": "La version au repos reçoit une correction de tige et de base au nº 141. Ancien PNG et ancien prompt conservés sans modification.",
+      "fields": {
+        "superseded_by_asset_id": 141,
+        "type_visuel": "sprite_version_anterieure",
+        "usage_court": "Version antérieure · préférer la correction nº 141"
+      }
+    },
+    {
+      "sourceLot": 11,
+      "id": 108,
+      "note": "Le nº 141 complète l’état gonflé par une Puffer au repos avec une tige distincte. Ces deux fichiers ne sont pas alignés pour former un cycle d’animation.",
+      "fields": {
+        "complement_repos_asset_id": 141
+      }
+    },
+    {
+      "sourceLot": 11,
+      "id": 135,
+      "note": "Le nº 142 ajoute une ramure aérée visible sur la même planche de végétation ILP ; aucune nouvelle espèce n’est affirmée.",
+      "fields": {
+        "complement_variante_asset_id": 142
+      }
+    },
+    {
+      "sourceLot": 11,
+      "id": 130,
+      "note": "Le nº 143 ajoute une forme compacte à plusieurs corolles ouvertes publiée par ILP. Ce n’est pas un bouton fermé ni une nouvelle phase d’animation.",
+      "fields": {
+        "complement_touffe_asset_id": 143
+      }
+    },
+    {
+      "sourceLot": 11,
+      "id": 124,
+      "note": "Le nº 143 fournit une touffe entière à fleurs sombres visuellement apparentée à la fleur isolée ; le rapprochement botanique reste descriptif.",
+      "fields": {
+        "complement_touffe_asset_id": 143
+      }
+    },
+    {
+      "sourceLot": 11,
+      "id": 104,
+      "note": "Le nº 146 isole le plastron métallique initial de Dek, distinct de l’équipement organique assemblé conservé ici.",
+      "fields": {
+        "complement_equipement_initial_asset_id": 146
+      }
+    },
+    {
+      "sourceLot": 11,
+      "id": 38,
+      "note": "Le nº 146 livre le plastron initial comme équipement isolé, à partir des photographies de costume. Il ne remplace pas le sprite du personnage entier.",
+      "fields": {
+        "complement_plastron_asset_id": 146
+      }
+    },
+    {
+      "sourceLot": 12,
+      "id": 6,
+      "note": "Le nº 147 apporte la tête corrigée dans un état calme sans jet ; le nº 129 conserve la projection active. Ancien PNG et prompt conservés sans modification.",
+      "fields": {
+        "morphology_corrected_by_asset_id": 147,
+        "correction_active_asset_id": 129,
+        "same_layout_as_correction": false,
+        "usage_court": "Morphologie antérieure · préférer nº 147 au repos ou nº 129 actif"
+      }
+    },
+    {
+      "sourceLot": 12,
+      "id": 65,
+      "note": "Le nº 147 complète et corrige cet état sans projection d’après les gros plans ILP. L’ancienne crête orangée et le visage restent dans le fichier historique.",
+      "fields": {
+        "superseded_by_asset_id": 147,
+        "morphology_corrected_by_asset_id": 147,
+        "same_layout_as_correction": false,
+        "type_visuel": "sprite_version_anterieure",
+        "usage_court": "Version antérieure · repos corrigé au nº 147"
+      }
+    },
+    {
+      "sourceLot": 12,
+      "id": 129,
+      "note": "Le nº 147 fournit un état calme sans jet avec la morphologie corrigée. Le nº 129 reste la version en projection active ; aucune continuité d’animation n’est certifiée.",
+      "fields": {
+        "complement_repos_asset_id": 147
+      }
+    },
+    {
+      "sourceLot": 12,
+      "id": 13,
+      "note": "Le nº 148 corrige les tiges épineuses et l’extrémité en racines ramifiées à partir de nouvelles références Baker/Wētā. La longueur isolée reste un composant de décor, pas une plante entière.",
+      "fields": {
+        "superseded_by_asset_id": 148,
+        "morphology_corrected_by_asset_id": 148,
+        "same_layout_as_correction": false,
+        "type_visuel": "sprite_version_anterieure",
+        "usage_court": "Version antérieure · liane épineuse corrigée au nº 148"
+      }
+    },
+    {
+      "sourceLot": 12,
+      "id": 26,
+      "note": "Cette pose conserve la morphologie du nº 13. Le nº 148 apporte une correction des épines et du bout préhensile dans une autre pose, sans alignement entre trames.",
+      "fields": {
+        "morphology_corrected_by_asset_id": 148,
+        "same_layout_as_correction": false,
+        "usage_court": "Pose antérieure · morphologie corrigée au nº 148"
+      }
+    },
+    {
+      "sourceLot": 12,
+      "id": 27,
+      "note": "Cette pose conserve la morphologie du nº 13. Le nº 148 apporte une correction des épines et du bout préhensile dans une autre pose, sans alignement entre trames.",
+      "fields": {
+        "morphology_corrected_by_asset_id": 148,
+        "same_layout_as_correction": false,
+        "usage_court": "Pose antérieure · morphologie corrigée au nº 148"
+      }
+    },
+    {
+      "sourceLot": 12,
+      "id": 12,
+      "note": "Le nº 148 documente mieux les épines et l’extrémité préhensile d’une liane isolée. Il ne reconstitue pas la structure entière du groupe.",
+      "fields": {
+        "complement_liane_corrigee_asset_id": 148
+      }
+    },
+    {
+      "sourceLot": 12,
+      "id": 51,
+      "note": "Les nouvelles références Baker/Wētā précisent les lianes, mais ne confirment toujours pas la forme entière du tronc, de la cime et des racines de cet arbre reconstitué. Le nº 148 est seulement un composant de liane corrigé.",
+      "fields": {
+        "complement_liane_corrigee_asset_id": 148
+      }
+    },
+    {
+      "sourceLot": 12,
+      "id": 146,
+      "note": "Le nº 149 isole la ceinture et les protections métalliques pendantes du costume initial. Il complète le plastron sans modifier ce dernier.",
+      "fields": {
+        "complement_ceinture_asset_id": 149
+      }
+    },
+    {
+      "sourceLot": 12,
+      "id": 38,
+      "note": "Le nº 149 fournit la ceinture et le tablier initial comme équipement indépendant, en complément du plastron nº 146.",
+      "fields": {
+        "complement_ceinture_asset_id": 149
+      }
+    },
+    {
+      "sourceLot": 13,
+      "id": 2,
+      "note": "Les nº 150 et 151 complètent Bud juvénile par deux états bipèdes entiers, fondés sur des vues supplémentaires du film et d’un prototype officiel sous licence. Le nº 2 reste conservé sans retouche.",
+      "fields": {
+        "complement_debout_asset_id": 150,
+        "complement_camp_asset_id": 151
+      }
+    },
+    {
+      "sourceLot": 13,
+      "id": 26,
+      "note": "Le nº 152 remplace cette pose repliée par un nouveau dessin avec épines et racines préhensiles fondées sur le nº 148. Les pixels et le prompt historiques restent conservés ; cadrage et pivot ne sont pas alignés.",
+      "fields": {
+        "superseded_by_asset_id": 152,
+        "morphology_corrected_by_asset_id": 152,
+        "same_layout_as_correction": false,
+        "type_visuel": "sprite_version_anterieure",
+        "usage_court": "Version antérieure · pose repliée corrigée au nº 152"
+      }
+    },
+    {
+      "sourceLot": 13,
+      "id": 27,
+      "note": "Le nº 153 remplace cette pose en frappe par un nouveau dessin avec épines et racines préhensiles fondées sur le nº 148. Les pixels et le prompt historiques restent conservés ; cadrage et pivot ne sont pas alignés.",
+      "fields": {
+        "superseded_by_asset_id": 153,
+        "morphology_corrected_by_asset_id": 153,
+        "same_layout_as_correction": false,
+        "type_visuel": "sprite_version_anterieure",
+        "usage_court": "Version antérieure · frappe corrigée au nº 153"
+      }
+    },
+    {
+      "sourceLot": 13,
+      "id": 148,
+      "note": "Les nº 152 et 153 déclinent cette morphologie dans deux poses de jeu corrigées, repliée et en frappe. Les trois fichiers sont des composants à raccorder au décor et ne constituent pas un cycle d’animation.",
+      "fields": {
+        "complement_replie_asset_id": 152,
+        "complement_frappe_asset_id": 153
+      }
+    },
+    {
+      "sourceLot": 13,
+      "id": 66,
+      "note": "Le nº 155 complète la capsule par une nouvelle vue vide avec capot ouvert, construite à partir du décor de production et d’un plan final ILP. Il précise la coque, la base et la charnière, mais ne remplace pas l’état occupé de ce fichier.",
+      "fields": {
+        "complement_vide_asset_id": 155
+      }
+    },
+    {
+      "sourceLot": 13,
+      "id": 38,
+      "note": "Le nº 158 isole les jambières initiales de Dek par paire, en complément du plastron nº 146 et de la ceinture nº 149. Formes aidées par NECA sous licence ; revers et attaches sont reconstruits.",
+      "fields": {
+        "complement_jambieres_asset_id": 158
+      }
+    },
+    {
+      "sourceLot": 13,
+      "id": 40,
+      "note": "Les nº 157 et 159 fournissent le plastron avec épaulières et la paire de jambières de Kwei comme équipements séparés. Le costume entier nº 40 reste inchangé.",
+      "fields": {
+        "complement_plastron_asset_id": 157,
+        "complement_jambieres_asset_id": 159
+      }
+    }
+  ],
+  "publicNamespace": "/game/imports/v85/drive-latest/badlands/",
+  "archiveScriptsExecuted": false,
+  "gameQaExecuted": false,
+  "pngBytesModified": false
+}

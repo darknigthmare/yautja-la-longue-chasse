@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "yautja-v613-runtime-validation-1",
+  "verifiedAtUtc": "2026-10-22T14:36:44.887Z",
+  "scope": "native-production-tracking-gallery-codex-and-default-selection-regressions",
+  "productionTests": {
+    "command": "node --test --test-isolation=none tests/enforcer-production-v611.test.mjs tests/enforcer-production-v612.test.mjs tests/enforcer-production-v613.test.mjs",
+    "passed": 16,
+    "failed": 0,
+    "log": "docs/suivi-production/v613/validation/production-tests.log"
+  },
+  "historicalReferenceRuntimeTest": {
+    "command": "node --test --test-isolation=none --test-name-pattern='all six full references' tests/drive-new-deposits-v89.test.mjs",
+    "passed": 1,
+    "failed": 0,
+    "log": "docs/suivi-production/v613/validation/v89-runtime-reference-test.log"
+  },
+  "eslint": {
+    "command": "npx eslint scripts/build-enforcer-production-v613.mjs scripts/reconcile-enforcer-main-v613.mjs tests/enforcer-production-v613.test.mjs app/game/systems/recentSpriteLibraryV85.ts app/game/RecentSpriteLibraryV85.tsx",
+    "exitCode": 0
+  },
+  "cumulativeNativePngsVerified": 108,
+  "newNativePngsVerified": 36,
+  "stableCatalogueIds": 5120,
+  "changedMasterCells": 720,
+  "changedMasterRows": 108,
+  "automaticChoicesVerifiedUnchanged": 973,
+  "uniqueReferencedRuntimeHashes": 1985,
+  "staticReactMarkupVerified": true,
+  "humanRecordsInGalleryAndCodex": true,
+  "humanRecordsExcludedFromYautjaBodySelector": true,
+  "newNativeReceiptsMatchingFinalSha": 15,
+  "newNativeFinalReceiptsNotRecovered": 21,
+  "limitationsFR": [
+    "Contrôles de données, de pixels, de choix automatiques et de rendu React côté serveur. Les contrôles navigateur et classeur sont enregistrés séparément.",
+    "Aucune animation, aucun nouveau placement en scène et aucune certification canonique 1:1 ajoutés."
+  ]
+}

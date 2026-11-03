@@ -1,0 +1,4844 @@
+{
+  "schemaVersion": 1,
+  "sessionDate": "2026-11-02",
+  "purpose": "Portable selection proposal for parent append-onlyV114135; no workbook/app/repository mutation performed here",
+  "status": "18_CANDIDATS_NON_ADMIS_PLUS_1_REJECTED_RAW_ATTEMPT",
+  "pathBase": ".",
+  "pathResolution": "Resolve each active path relative to this JSON directory. All active evidence/png paths begin fauna-energy/. Original absolute paths embedded in frozen documents are dated provenance only, not runtime or portable loading dependencies.",
+  "originalSourceRootHistorical": "/workspace/native-homeworld-open-20261102",
+  "counts": {
+    "targetIds": 18,
+    "selectedCandidatePNGs": 18,
+    "retainedRejectedPNGs": 1,
+    "allRawPNGs": 19,
+    "portableFilesIncludingFrozenInventory": 72,
+    "humanArtAdmissions": 0,
+    "technicalAdmissions": 0,
+    "sourceClosures": 0,
+    "runtimeActivations": 0
+  },
+  "frozenManifest": {
+    "path": "fauna-energy/fauna-energy-production-manifest.json",
+    "bytes": 168487,
+    "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79"
+  },
+  "frozenInventory": {
+    "path": "fauna-energy/fauna-energy-artifact-inventory.json",
+    "bytes": 22018,
+    "sha256": "9b1b33d302199b352e1ab1410381b83c2d9a6fe25f5cae95975962ccee3facc8"
+  },
+  "targets": [
+    {
+      "targetId": "target-v81-56-58",
+      "label": "porte énergétique",
+      "section": 56,
+      "family": "PORTES / ACCÈS",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/57"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/57"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/57"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 56,
+          "line": 1650
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 62,
+            "idCell": {
+              "cell": "A62",
+              "value": "target-v81-56-58"
+            },
+            "labelCell": {
+              "cell": "D62",
+              "value": "porte énergétique"
+            },
+            "historicalPresenceCell": {
+              "cell": "G62",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F62",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 62,
+            "idCell": {
+              "cell": "A62",
+              "value": "target-v81-56-58"
+            },
+            "labelCell": {
+              "cell": "C62",
+              "value": "porte énergétique"
+            },
+            "historicalPresenceCell": {
+              "cell": "D62",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E62",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS",
+        "AUTHORED-ANIMATION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-56-58",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/target-v81-56-58-energy-door-native.png",
+          "bytes": 1699095,
+          "sha256": "fed0391ae37a9f337ad5c7670489471063db40f52389d96498b9987171f3dbe9",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            628.0,
+            1195
+          ],
+          "normalized": [
+            0.5007974481658692,
+            0.9529505582137161
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/generation-batch-02.json",
+            "bytes": 3849,
+            "sha256": "c77231833bb0fe65a95203e28b3b83b758955e0bdf11cd9d639669a1f332754b",
+            "jsonPointer": "/generations/1",
+            "role": "GENERATION_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/0/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/native-technical-inspection.json",
+            "bytes": 50554,
+            "sha256": "d749bcc337fb8fb78b921aa8678c3ab5a765b3f7c839786e9ee070f1f2b4f643",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 96,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              0,
+              1236,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              0,
+              18,
+              0
+            ],
+            "canvasEdgePixels": 217,
+            "occupiedPixels": 703389
+          },
+          "2": {
+            "bboxExclusive": [
+              162,
+              68,
+              1094,
+              1198
+            ],
+            "marginsLTRB": [
+              162,
+              68,
+              160,
+              56
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 688011
+          },
+          "8": {
+            "bboxExclusive": [
+              164,
+              70,
+              1092,
+              1196
+            ],
+            "marginsLTRB": [
+              164,
+              70,
+              162,
+              58
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 684385
+          },
+          "128": {
+            "bboxExclusive": [
+              165,
+              71,
+              1091,
+              1196
+            ],
+            "marginsLTRB": [
+              165,
+              71,
+              163,
+              58
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 606152
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-4aac4af0-64b8-412d-ab9d-62208975aa5a.png",
+        "nativeSourceOriginalSha256": "fed0391ae37a9f337ad5c7670489471063db40f52389d96498b9987171f3dbe9",
+        "description": "Complete pedestrian arch with semitransparent membrane; bright cream/amber appearance needs actual terrain composite review. Static closed state only, no opening sequence.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-57-71",
+      "label": "émetteur énergie gauche",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/70"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/70"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/70"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 57,
+          "line": 1668
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 75,
+            "idCell": {
+              "cell": "A75",
+              "value": "target-v81-57-71"
+            },
+            "labelCell": {
+              "cell": "D75",
+              "value": "émetteur énergie gauche"
+            },
+            "historicalPresenceCell": {
+              "cell": "G75",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F75",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 75,
+            "idCell": {
+              "cell": "A75",
+              "value": "target-v81-57-71"
+            },
+            "labelCell": {
+              "cell": "C75",
+              "value": "émetteur énergie gauche"
+            },
+            "historicalPresenceCell": {
+              "cell": "D75",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E75",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "AUTHORED-ANIMATION",
+        "NATIVE-ORIENTATION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-57-71",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/target-v81-57-71-emitter-left-native.png",
+          "bytes": 1034401,
+          "sha256": "6223d55bf97da84de22798a24e39f3c54c3d92d9368c7cb53fb1b5cb0e48bfeb",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            639.5,
+            1122
+          ],
+          "normalized": [
+            0.5099681020733652,
+            0.8947368421052632
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/generation-prompts.json",
+            "bytes": 1855,
+            "sha256": "ecb39b11f444b2a796444f68cc87917bbfce10a40b8b9dcd992a203ea6d5dff1",
+            "jsonPointer": "/generations/0",
+            "role": "GENERATION_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/1/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/native-technical-inspection.json",
+            "bytes": 50554,
+            "sha256": "d749bcc337fb8fb78b921aa8678c3ab5a765b3f7c839786e9ee070f1f2b4f643",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 96,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              23,
+              19,
+              1240,
+              1254
+            ],
+            "marginsLTRB": [
+              23,
+              19,
+              14,
+              0
+            ],
+            "canvasEdgePixels": 94,
+            "occupiedPixels": 360106
+          },
+          "2": {
+            "bboxExclusive": [
+              309,
+              148,
+              970,
+              1125
+            ],
+            "marginsLTRB": [
+              309,
+              148,
+              284,
+              129
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 351623
+          },
+          "8": {
+            "bboxExclusive": [
+              311,
+              150,
+              968,
+              1123
+            ],
+            "marginsLTRB": [
+              311,
+              150,
+              286,
+              131
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 349085
+          },
+          "128": {
+            "bboxExclusive": [
+              313,
+              151,
+              967,
+              1121
+            ],
+            "marginsLTRB": [
+              313,
+              151,
+              287,
+              133
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 346154
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-4e9eb13d-1727-4379-b0bb-e9a95bde7e5a.png",
+        "nativeSourceOriginalSha256": "6223d55bf97da84de22798a24e39f3c54c3d92d9368c7cb53fb1b5cb0e48bfeb",
+        "description": "Whole left endpoint with right-facing slit and low rear service block. Candidate scale and inner contact plane not qualified with its partner.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-57-72",
+      "label": "émetteur énergie droit",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/71"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/71"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/71"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 57,
+          "line": 1669
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 76,
+            "idCell": {
+              "cell": "A76",
+              "value": "target-v81-57-72"
+            },
+            "labelCell": {
+              "cell": "D76",
+              "value": "émetteur énergie droit"
+            },
+            "historicalPresenceCell": {
+              "cell": "G76",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F76",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 76,
+            "idCell": {
+              "cell": "A76",
+              "value": "target-v81-57-72"
+            },
+            "labelCell": {
+              "cell": "C76",
+              "value": "émetteur énergie droit"
+            },
+            "historicalPresenceCell": {
+              "cell": "D76",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E76",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "AUTHORED-ANIMATION",
+        "NATIVE-ORIENTATION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-57-72",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/target-v81-57-72-emitter-right-native.png",
+          "bytes": 1489415,
+          "sha256": "c3977773ab717e3f3729bca56e27ae28bbd0d29bfd8d4087d6c2684cd6d3836e",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            647.0,
+            1199
+          ],
+          "normalized": [
+            0.5159489633173844,
+            0.956140350877193
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/generation-batch-02.json",
+            "bytes": 3849,
+            "sha256": "c77231833bb0fe65a95203e28b3b83b758955e0bdf11cd9d639669a1f332754b",
+            "jsonPointer": "/generations/0",
+            "role": "GENERATION_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/2/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/native-technical-inspection.json",
+            "bytes": 50554,
+            "sha256": "d749bcc337fb8fb78b921aa8678c3ab5a765b3f7c839786e9ee070f1f2b4f643",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 96,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              21,
+              1240,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              21,
+              14,
+              0
+            ],
+            "canvasEdgePixels": 97,
+            "occupiedPixels": 567039
+          },
+          "2": {
+            "bboxExclusive": [
+              174,
+              55,
+              1123,
+              1203
+            ],
+            "marginsLTRB": [
+              174,
+              55,
+              131,
+              51
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 553380
+          },
+          "8": {
+            "bboxExclusive": [
+              174,
+              57,
+              1120,
+              1200
+            ],
+            "marginsLTRB": [
+              174,
+              57,
+              134,
+              54
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 549570
+          },
+          "128": {
+            "bboxExclusive": [
+              176,
+              58,
+              1119,
+              1199
+            ],
+            "marginsLTRB": [
+              176,
+              58,
+              135,
+              55
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 545923
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-6f727e4e-fbd2-457a-bb3c-7180a48045ef.png",
+        "nativeSourceOriginalSha256": "c3977773ab717e3f3729bca56e27ae28bbd0d29bfd8d4087d6c2684cd6d3836e",
+        "description": "Independent right-endpoint drawing with left-facing slit and differently constructed outside service box. No pixel mirroring. Pair height/scale/aperture contact need in-context qualification.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-57-73",
+      "label": "champ énergétique",
+      "section": 57,
+      "family": "BARRIÈRES",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/72"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/72"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/72"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 57,
+          "line": 1670
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 77,
+            "idCell": {
+              "cell": "A77",
+              "value": "target-v81-57-73"
+            },
+            "labelCell": {
+              "cell": "D77",
+              "value": "champ énergétique"
+            },
+            "historicalPresenceCell": {
+              "cell": "G77",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F77",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 77,
+            "idCell": {
+              "cell": "A77",
+              "value": "target-v81-57-73"
+            },
+            "labelCell": {
+              "cell": "C77",
+              "value": "champ énergétique"
+            },
+            "historicalPresenceCell": {
+              "cell": "D77",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E77",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "AUTHORED-ANIMATION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-57-73",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/target-v81-57-73-energy-field-native.png",
+          "bytes": 1020023,
+          "sha256": "983e9e47aa434447fe72378c36f4ca30d62350ab247f48d52fdf8f46e267fb96",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            638.5,
+            1036
+          ],
+          "normalized": [
+            0.509170653907496,
+            0.8261562998405104
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/generation-batch-03.json",
+            "bytes": 4744,
+            "sha256": "6453ba73234568a9d3955810bf114d3e7aa6a2fa70e170a328f83bee55f94541",
+            "jsonPointer": "/generations/0",
+            "role": "GENERATION_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/3/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/native-technical-inspection.json",
+            "bytes": 50554,
+            "sha256": "d749bcc337fb8fb78b921aa8678c3ab5a765b3f7c839786e9ee070f1f2b4f643",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 120,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              0,
+              1254,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "canvasEdgePixels": 624,
+            "occupiedPixels": 521077
+          },
+          "2": {
+            "bboxExclusive": [
+              195,
+              248,
+              1082,
+              1038
+            ],
+            "marginsLTRB": [
+              195,
+              248,
+              172,
+              216
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 486015
+          },
+          "8": {
+            "bboxExclusive": [
+              197,
+              250,
+              1080,
+              1037
+            ],
+            "marginsLTRB": [
+              197,
+              250,
+              174,
+              217
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 475456
+          },
+          "128": {
+            "bboxExclusive": [
+              199,
+              251,
+              1078,
+              1036
+            ],
+            "marginsLTRB": [
+              199,
+              251,
+              176,
+              218
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 188952
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-f916f43d-51f3-4f06-9774-ee51aedae623.png",
+        "nativeSourceOriginalSha256": "983e9e47aa434447fe72378c36f4ca30d62350ab247f48d52fdf8f46e267fb96",
+        "description": "One independent translucent amber plane, no solid emitters. Includes irregular circular intensity spots/holes and edge glow; visual coherence and compositing remain open. No animation authored.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-71-266",
+      "label": "Enclos",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/265"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/265"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/265"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1943
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 270,
+            "idCell": {
+              "cell": "A270",
+              "value": "target-v81-71-266"
+            },
+            "labelCell": {
+              "cell": "D270",
+              "value": "Enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "G270",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F270",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 270,
+            "idCell": {
+              "cell": "A270",
+              "value": "target-v81-71-266"
+            },
+            "labelCell": {
+              "cell": "C270",
+              "value": "Enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "D270",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E270",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-71-266",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/target-v81-71-266-enclosure-native.png",
+          "bytes": 1029855,
+          "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            645.5,
+            954
+          ],
+          "normalized": [
+            0.5147527910685805,
+            0.7607655502392344
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/generation-batch-04.json",
+            "bytes": 5333,
+            "sha256": "d427f71a21383c15196d01813ce9dac205a1c7b4fd5d3861417d71a06a4d4652",
+            "jsonPointer": "/generations/0",
+            "role": "GENERATION_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/4/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/native-technical-inspection.json",
+            "bytes": 50554,
+            "sha256": "d749bcc337fb8fb78b921aa8678c3ab5a765b3f7c839786e9ee070f1f2b4f643",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 220,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              42,
+              1220,
+              1208
+            ],
+            "marginsLTRB": [
+              0,
+              42,
+              34,
+              46
+            ],
+            "canvasEdgePixels": 1,
+            "occupiedPixels": 392770
+          },
+          "2": {
+            "bboxExclusive": [
+              119,
+              296,
+              1172,
+              957
+            ],
+            "marginsLTRB": [
+              119,
+              296,
+              82,
+              297
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 363832
+          },
+          "8": {
+            "bboxExclusive": [
+              121,
+              298,
+              1170,
+              955
+            ],
+            "marginsLTRB": [
+              121,
+              298,
+              84,
+              299
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 352481
+          },
+          "128": {
+            "bboxExclusive": [
+              122,
+              299,
+              1169,
+              954
+            ],
+            "marginsLTRB": [
+              122,
+              299,
+              85,
+              300
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 343136
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-bc65c1aa-9d05-42ab-a962-8df61924c91b.png",
+        "nativeSourceOriginalSha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+        "description": "One connected empty polygon enclosure with a shut hinged front gate; transparent ground and bar gaps. Foreground/back occlusion and entry/collision would need native runtime layering design; no pixel split made.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-71-267",
+      "label": "poteau enclos",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/266"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/266"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/266"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1944
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 271,
+            "idCell": {
+              "cell": "A271",
+              "value": "target-v81-71-267"
+            },
+            "labelCell": {
+              "cell": "D271",
+              "value": "poteau enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "G271",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F271",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 271,
+            "idCell": {
+              "cell": "A271",
+              "value": "target-v81-71-267"
+            },
+            "labelCell": {
+              "cell": "C271",
+              "value": "poteau enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "D271",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E271",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-71-267",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/target-v81-71-267-enclosure-post-native.png",
+          "bytes": 1293842,
+          "sha256": "cd67258d8e3931edc4ba42401dcdfaea41f78de3e1995b46873aebdaf0efe9b0",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            626.0,
+            1179
+          ],
+          "normalized": [
+            0.49920255183413076,
+            0.9401913875598086
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/generation-batch-03.json",
+            "bytes": 4744,
+            "sha256": "6453ba73234568a9d3955810bf114d3e7aa6a2fa70e170a328f83bee55f94541",
+            "jsonPointer": "/generations/1",
+            "role": "GENERATION_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/5/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/native-technical-inspection.json",
+            "bytes": 50554,
+            "sha256": "d749bcc337fb8fb78b921aa8678c3ab5a765b3f7c839786e9ee070f1f2b4f643",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 100,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              32,
+              1230,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              32,
+              24,
+              0
+            ],
+            "canvasEdgePixels": 16,
+            "occupiedPixels": 499364
+          },
+          "2": {
+            "bboxExclusive": [
+              283,
+              70,
+              970,
+              1182
+            ],
+            "marginsLTRB": [
+              283,
+              70,
+              284,
+              72
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 492291
+          },
+          "8": {
+            "bboxExclusive": [
+              284,
+              72,
+              968,
+              1180
+            ],
+            "marginsLTRB": [
+              284,
+              72,
+              286,
+              74
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 488785
+          },
+          "128": {
+            "bboxExclusive": [
+              286,
+              73,
+              967,
+              1179
+            ],
+            "marginsLTRB": [
+              286,
+              73,
+              287,
+              75
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 485703
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-6a2ddbf6-6603-468a-8aa7-c5cf1bd281c3.png",
+        "nativeSourceOriginalSha256": "cd67258d8e3931edc4ba42401dcdfaea41f78de3e1995b46873aebdaf0efe9b0",
+        "description": "Whole compact stanchion with two right-hand sockets and a capped opposing socket; one amber lock indicator. Rail socket alignment and load-bearing footprint are not runtime qualified.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-71-268",
+      "label": "barrière enclos",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/267"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/267"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/267"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1945
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 272,
+            "idCell": {
+              "cell": "A272",
+              "value": "target-v81-71-268"
+            },
+            "labelCell": {
+              "cell": "D272",
+              "value": "barrière enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "G272",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F272",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 272,
+            "idCell": {
+              "cell": "A272",
+              "value": "target-v81-71-268"
+            },
+            "labelCell": {
+              "cell": "C272",
+              "value": "barrière enclos"
+            },
+            "historicalPresenceCell": {
+              "cell": "D272",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E272",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-71-268",
+        "attempt": 2,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+          "bytes": 364392,
+          "sha256": "522bec7b485f7d7742f835ca8a2f609970998f906247d6258b8a5e71aff927cf",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            651.5,
+            873
+          ],
+          "normalized": [
+            0.5195374800637959,
+            0.6961722488038278
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/generation-batch-04.json",
+            "bytes": 5333,
+            "sha256": "d427f71a21383c15196d01813ce9dac205a1c7b4fd5d3861417d71a06a4d4652",
+            "jsonPointer": "/generations/2",
+            "role": "GENERATION_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/6/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/native-technical-inspection.json",
+            "bytes": 50554,
+            "sha256": "d749bcc337fb8fb78b921aa8678c3ab5a765b3f7c839786e9ee070f1f2b4f643",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 220,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              41,
+              103,
+              1082,
+              1230
+            ],
+            "marginsLTRB": [
+              41,
+              103,
+              172,
+              24
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 115877
+          },
+          "2": {
+            "bboxExclusive": [
+              324,
+              434,
+              978,
+              875
+            ],
+            "marginsLTRB": [
+              324,
+              434,
+              276,
+              379
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 108059
+          },
+          "8": {
+            "bboxExclusive": [
+              326,
+              436,
+              977,
+              874
+            ],
+            "marginsLTRB": [
+              326,
+              436,
+              277,
+              380
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 104912
+          },
+          "128": {
+            "bboxExclusive": [
+              326,
+              437,
+              975,
+              873
+            ],
+            "marginsLTRB": [
+              326,
+              437,
+              279,
+              381
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 101665
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-e2b7a9c8-afda-454c-b045-e0ee87b94a3b.png",
+        "nativeSourceOriginalSha256": "522bec7b485f7d7742f835ca8a2f609970998f906247d6258b8a5e71aff927cf",
+        "description": "One short connected three-rail module with two whole footed posts and transparent air gaps. Preferred second native generation has broad margins; independent assets do not yet prove modular join alignment.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-71-270",
+      "label": "barrière énergie",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/269"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/269"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/269"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1947
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 274,
+            "idCell": {
+              "cell": "A274",
+              "value": "target-v81-71-270"
+            },
+            "labelCell": {
+              "cell": "D274",
+              "value": "barrière énergie"
+            },
+            "historicalPresenceCell": {
+              "cell": "G274",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F274",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 274,
+            "idCell": {
+              "cell": "A274",
+              "value": "target-v81-71-270"
+            },
+            "labelCell": {
+              "cell": "C274",
+              "value": "barrière énergie"
+            },
+            "historicalPresenceCell": {
+              "cell": "D274",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E274",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "AUTHORED-ANIMATION",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-71-270",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png",
+          "bytes": 423732,
+          "sha256": "1dcc79dda8a24c76617b0d76fdbdfee4a5771f381a839fd52548e39c49a44cec",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            632.5,
+            901
+          ],
+          "normalized": [
+            0.5043859649122807,
+            0.7185007974481659
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/generation-batch-04.json",
+            "bytes": 5333,
+            "sha256": "d427f71a21383c15196d01813ce9dac205a1c7b4fd5d3861417d71a06a4d4652",
+            "jsonPointer": "/generations/1",
+            "role": "GENERATION_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/7/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/native-technical-inspection.json",
+            "bytes": 50554,
+            "sha256": "d749bcc337fb8fb78b921aa8678c3ab5a765b3f7c839786e9ee070f1f2b4f643",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 220,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              41,
+              35,
+              1210,
+              1182
+            ],
+            "marginsLTRB": [
+              41,
+              35,
+              44,
+              72
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 153136
+          },
+          "2": {
+            "bboxExclusive": [
+              273,
+              472,
+              992,
+              904
+            ],
+            "marginsLTRB": [
+              273,
+              472,
+              262,
+              350
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 148888
+          },
+          "8": {
+            "bboxExclusive": [
+              275,
+              474,
+              990,
+              902
+            ],
+            "marginsLTRB": [
+              275,
+              474,
+              264,
+              352
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 147205
+          },
+          "128": {
+            "bboxExclusive": [
+              275,
+              474,
+              989,
+              901
+            ],
+            "marginsLTRB": [
+              275,
+              474,
+              265,
+              353
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 144242
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-5edf163f-ca46-4dae-b248-160debb26caa.png",
+        "nativeSourceOriginalSha256": "1dcc79dda8a24c76617b0d76fdbdfee4a5771f381a839fd52548e39c49a44cec",
+        "description": "One low connected two-post energy barrier with base rail and translucent membrane, visibly distinct from the tall pedestrian door. No live containment, collision or animated state proven.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-71-273",
+      "label": "support harnais",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/272"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/272"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/272"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1950
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 277,
+            "idCell": {
+              "cell": "A277",
+              "value": "target-v81-71-273"
+            },
+            "labelCell": {
+              "cell": "D277",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "G277",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F277",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 277,
+            "idCell": {
+              "cell": "A277",
+              "value": "target-v81-71-273"
+            },
+            "labelCell": {
+              "cell": "C277",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "D277",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E277",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-71-273",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+          "bytes": 1222952,
+          "sha256": "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            623.5,
+            1141
+          ],
+          "normalized": [
+            0.4972089314194577,
+            0.9098883572567783
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.receipt.json",
+            "bytes": 3964,
+            "sha256": "2b3e7ed5a7df03f153562156ee3739d26dbf53d9b4a2cd347263e178da9c68e8",
+            "role": "NATIVE_TOOL_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/8/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.prompt.txt",
+            "bytes": 2538,
+            "sha256": "b1eeab773951648f672f82e7f380071eb9b94276ea4c5e6dd35f89bce782a03c",
+            "role": "EXACT_PROMPT_TEXT"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 96,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              23,
+              1223,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              23,
+              31,
+              0
+            ],
+            "canvasEdgePixels": 13,
+            "occupiedPixels": 435406
+          },
+          "2": {
+            "bboxExclusive": [
+              25,
+              165,
+              1222,
+              1144
+            ],
+            "marginsLTRB": [
+              25,
+              165,
+              32,
+              110
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 419012
+          },
+          "8": {
+            "bboxExclusive": [
+              27,
+              167,
+              1220,
+              1142
+            ],
+            "marginsLTRB": [
+              27,
+              167,
+              34,
+              112
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 412812
+          },
+          "128": {
+            "bboxExclusive": [
+              28,
+              168,
+              1219,
+              1141
+            ],
+            "marginsLTRB": [
+              28,
+              168,
+              35,
+              113
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 406755
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-84f30631-75e6-43de-8734-af8488e478db.png",
+        "nativeSourceOriginalSha256": "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a",
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-71-276",
+      "label": "cage petite",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/275"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/275"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/275"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1953
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 280,
+            "idCell": {
+              "cell": "A280",
+              "value": "target-v81-71-276"
+            },
+            "labelCell": {
+              "cell": "D280",
+              "value": "cage petite"
+            },
+            "historicalPresenceCell": {
+              "cell": "G280",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F280",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 280,
+            "idCell": {
+              "cell": "A280",
+              "value": "target-v81-71-276"
+            },
+            "labelCell": {
+              "cell": "C280",
+              "value": "cage petite"
+            },
+            "historicalPresenceCell": {
+              "cell": "D280",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E280",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-71-276",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+          "bytes": 2077790,
+          "sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            636.5,
+            1172
+          ],
+          "normalized": [
+            0.5075757575757576,
+            0.9346092503987241
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/cages/target-v81-71-276-cage-petite.tool-receipt.json",
+            "bytes": 3194,
+            "sha256": "1c1552b4fa97f3ad31dccec09f636428465e68e2c561e33c2fcbf7c194b5b86f",
+            "role": "NATIVE_TOOL_RECEIPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/9/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/cages/target-v81-71-276-cage-petite.inspection.json",
+            "bytes": 5618,
+            "sha256": "4acd601f3c30a1048868e92cde8498f6762e49c042baf7cda5a2385f7b1ccd16",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          },
+          {
+            "path": "fauna-energy/cages/target-v81-71-276-cage-petite.prompt.txt",
+            "bytes": 2522,
+            "sha256": "35120ac714b68a968012ec499456bc14544767324643ba9ecca494480acc58c6",
+            "role": "EXACT_PROMPT_TEXT"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 64,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              23,
+              9,
+              1236,
+              1254
+            ],
+            "marginsLTRB": [
+              23,
+              9,
+              18,
+              0
+            ],
+            "canvasEdgePixels": 51,
+            "occupiedPixels": 825219
+          },
+          "2": {
+            "bboxExclusive": [
+              93,
+              121,
+              1180,
+              1175
+            ],
+            "marginsLTRB": [
+              93,
+              121,
+              74,
+              79
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 802326
+          },
+          "8": {
+            "bboxExclusive": [
+              95,
+              123,
+              1178,
+              1173
+            ],
+            "marginsLTRB": [
+              95,
+              123,
+              76,
+              81
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 789795
+          },
+          "128": {
+            "bboxExclusive": [
+              96,
+              124,
+              1177,
+              1172
+            ],
+            "marginsLTRB": [
+              96,
+              124,
+              77,
+              82
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 778542
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-19a5b7d9-f49d-425a-80f6-a8f5d76c0ea9.png",
+        "nativeSourceOriginalSha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+        "description": "Compact faceted cage, open geometric barred roof, shut near-facing latch door, six corner reinforcements and pitted basalt floor/base.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-71-277",
+      "label": "cage moyenne",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/276"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/276"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/276"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1954
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 281,
+            "idCell": {
+              "cell": "A281",
+              "value": "target-v81-71-277"
+            },
+            "labelCell": {
+              "cell": "D281",
+              "value": "cage moyenne"
+            },
+            "historicalPresenceCell": {
+              "cell": "G281",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F281",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 281,
+            "idCell": {
+              "cell": "A281",
+              "value": "target-v81-71-277"
+            },
+            "labelCell": {
+              "cell": "C281",
+              "value": "cage moyenne"
+            },
+            "historicalPresenceCell": {
+              "cell": "D281",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E281",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-71-277",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+          "bytes": 1691658,
+          "sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            632.0,
+            1046
+          ],
+          "normalized": [
+            0.5039872408293461,
+            0.8341307814992025
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/cages/target-v81-71-277-cage-moyenne.tool-receipt.json",
+            "bytes": 3301,
+            "sha256": "3e44e2945357e6386b1e61834635b1e061f1ce47e815934af0fdfac94c6c03a7",
+            "role": "NATIVE_TOOL_RECEIPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/10/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/cages/target-v81-71-277-cage-moyenne.inspection.json",
+            "bytes": 5639,
+            "sha256": "bf1d9f52a46c84750153cd8428abef8429225114c72a62589d377e6bbb666763",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          },
+          {
+            "path": "fauna-energy/cages/target-v81-71-277-cage-moyenne.prompt.txt",
+            "bytes": 2631,
+            "sha256": "71cea7ec228dc6e6d9018336a4dff06b3983fe98e92f0edd619f33ceaaad5dca",
+            "role": "EXACT_PROMPT_TEXT"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 64,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              33,
+              25,
+              1230,
+              1230
+            ],
+            "marginsLTRB": [
+              33,
+              25,
+              24,
+              24
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 678650
+          },
+          "2": {
+            "bboxExclusive": [
+              42,
+              210,
+              1221,
+              1048
+            ],
+            "marginsLTRB": [
+              42,
+              210,
+              33,
+              206
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 633333
+          },
+          "8": {
+            "bboxExclusive": [
+              44,
+              210,
+              1220,
+              1047
+            ],
+            "marginsLTRB": [
+              44,
+              210,
+              34,
+              207
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 607951
+          },
+          "128": {
+            "bboxExclusive": [
+              44,
+              211,
+              1218,
+              1046
+            ],
+            "marginsLTRB": [
+              44,
+              211,
+              36,
+              208
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 586214
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-a969f886-dd7f-442f-925b-5915d5dd9612.png",
+        "nativeSourceOriginalSha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+        "description": "Low elongated cage with reinforced chamfered basalt corners, long open bronze roof rails and closed long-side barred hatch.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-71-278",
+      "label": "cage lourde",
+      "section": 71,
+      "family": "FAUNE",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/277"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/277"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/277"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1955
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 282,
+            "idCell": {
+              "cell": "A282",
+              "value": "target-v81-71-278"
+            },
+            "labelCell": {
+              "cell": "D282",
+              "value": "cage lourde"
+            },
+            "historicalPresenceCell": {
+              "cell": "G282",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F282",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 282,
+            "idCell": {
+              "cell": "A282",
+              "value": "target-v81-71-278"
+            },
+            "labelCell": {
+              "cell": "C282",
+              "value": "cage lourde"
+            },
+            "historicalPresenceCell": {
+              "cell": "D282",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E282",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-71-278",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+          "bytes": 2244917,
+          "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            627.5,
+            1156
+          ],
+          "normalized": [
+            0.5003987240829346,
+            0.9218500797448166
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/cages/target-v81-71-278-cage-lourde.tool-receipt.json",
+            "bytes": 3454,
+            "sha256": "95596ea79b83d086dddc65dbda8e6a66e7e8fa1837b02299fbd7049f2a1dc42e",
+            "role": "NATIVE_TOOL_RECEIPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/11/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/cages/target-v81-71-278-cage-lourde.inspection.json",
+            "bytes": 5620,
+            "sha256": "4b27bbe329d8068860ed0f4fbf56798545d0038668ea137378698f4005256beb",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          },
+          {
+            "path": "fauna-energy/cages/target-v81-71-278-cage-lourde.prompt.txt",
+            "bytes": 2784,
+            "sha256": "f6d61d41e301fcd9434065f388d786590b2b93f9f9c7283c4823b6b992e7d811",
+            "role": "EXACT_PROMPT_TEXT"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 64,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              9,
+              1236,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              9,
+              18,
+              0
+            ],
+            "canvasEdgePixels": 61,
+            "occupiedPixels": 866345
+          },
+          "2": {
+            "bboxExclusive": [
+              28,
+              105,
+              1227,
+              1159
+            ],
+            "marginsLTRB": [
+              28,
+              105,
+              27,
+              95
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 838880
+          },
+          "8": {
+            "bboxExclusive": [
+              30,
+              107,
+              1225,
+              1157
+            ],
+            "marginsLTRB": [
+              30,
+              107,
+              29,
+              97
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 825728
+          },
+          "128": {
+            "bboxExclusive": [
+              31,
+              108,
+              1224,
+              1156
+            ],
+            "marginsLTRB": [
+              31,
+              108,
+              30,
+              98
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 814923
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-5cfe7ec9-8559-4ade-b3d6-392a5fbd5654.png",
+        "nativeSourceOriginalSha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+        "description": "Heavy cage with three massive transverse arches, double-height side bars, reinforced end door and two thick support runners.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-72-282",
+      "label": "support harnais",
+      "section": 72,
+      "family": "MONTURES",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/281"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/281"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/281"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1964
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 286,
+            "idCell": {
+              "cell": "A286",
+              "value": "target-v81-72-282"
+            },
+            "labelCell": {
+              "cell": "D286",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "G286",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F286",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 286,
+            "idCell": {
+              "cell": "A286",
+              "value": "target-v81-72-282"
+            },
+            "labelCell": {
+              "cell": "C286",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "D286",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E286",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-72-282",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png",
+          "bytes": 592752,
+          "sha256": "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            626.5,
+            1169
+          ],
+          "normalized": [
+            0.4996012759170654,
+            0.9322169059011164
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/gear/target-v81-72-282-mount-harness-support-native.receipt.json",
+            "bytes": 3851,
+            "sha256": "58036868b676e7c44f2e5be871f0fcd578c5caa6cbaf3f41beb7bfca1ee448ac",
+            "role": "NATIVE_TOOL_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/12/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/gear/target-v81-72-282-mount-harness-support-native.prompt.txt",
+            "bytes": 2423,
+            "sha256": "b7bb6ed06ea629b4b932c81de6960152aad4c314f56905e6fe4055cdecf733c1",
+            "role": "EXACT_PROMPT_TEXT"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 96,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              23,
+              21,
+              1224,
+              1254
+            ],
+            "marginsLTRB": [
+              23,
+              21,
+              30,
+              0
+            ],
+            "canvasEdgePixels": 10,
+            "occupiedPixels": 203622
+          },
+          "2": {
+            "bboxExclusive": [
+              336,
+              78,
+              917,
+              1173
+            ],
+            "marginsLTRB": [
+              336,
+              78,
+              337,
+              81
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 189117
+          },
+          "8": {
+            "bboxExclusive": [
+              338,
+              80,
+              915,
+              1170
+            ],
+            "marginsLTRB": [
+              338,
+              80,
+              339,
+              84
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 184616
+          },
+          "128": {
+            "bboxExclusive": [
+              339,
+              81,
+              914,
+              1170
+            ],
+            "marginsLTRB": [
+              339,
+              81,
+              340,
+              84
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 179958
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-cb284dad-b21a-4b5d-9dd7-25d31b231c8f.png",
+        "nativeSourceOriginalSha256": "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc",
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-72-283",
+      "label": "harnais",
+      "section": 72,
+      "family": "MONTURES",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/282"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/282"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/282"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1965
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 287,
+            "idCell": {
+              "cell": "A287",
+              "value": "target-v81-72-283"
+            },
+            "labelCell": {
+              "cell": "D287",
+              "value": "harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "G287",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F287",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 287,
+            "idCell": {
+              "cell": "A287",
+              "value": "target-v81-72-283"
+            },
+            "labelCell": {
+              "cell": "C287",
+              "value": "harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "D287",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E287",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-72-283",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+          "bytes": 1405605,
+          "sha256": "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            660.5,
+            1060
+          ],
+          "normalized": [
+            0.5267145135566188,
+            0.8452950558213717
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/gear/target-v81-72-283-mount-harness-native.receipt.json",
+            "bytes": 4033,
+            "sha256": "197e1ff7577e666da8982fb16e612e0fafb69f59ba6f23576af3487efbac2617",
+            "role": "NATIVE_TOOL_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/13/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/gear/target-v81-72-283-mount-harness-native.prompt.txt",
+            "bytes": 2620,
+            "sha256": "6a038fa726886e675d8008d3961e8801ce304e1c65c89e57f4b968ef310225a1",
+            "role": "EXACT_PROMPT_TEXT"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 96,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              31,
+              1206,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              31,
+              48,
+              0
+            ],
+            "canvasEdgePixels": 53,
+            "occupiedPixels": 531054
+          },
+          "2": {
+            "bboxExclusive": [
+              118,
+              154,
+              1202,
+              1061
+            ],
+            "marginsLTRB": [
+              118,
+              154,
+              52,
+              193
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 513276
+          },
+          "8": {
+            "bboxExclusive": [
+              121,
+              156,
+              1200,
+              1061
+            ],
+            "marginsLTRB": [
+              121,
+              156,
+              54,
+              193
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 505970
+          },
+          "128": {
+            "bboxExclusive": [
+              122,
+              157,
+              1197,
+              1060
+            ],
+            "marginsLTRB": [
+              122,
+              157,
+              57,
+              194
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 498815
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-43ebc76e-a7c7-49b5-8e47-aab143ccc882.png",
+        "nativeSourceOriginalSha256": "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45",
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-72-284",
+      "label": "selle",
+      "section": 72,
+      "family": "MONTURES",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/283"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/283"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/283"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1966
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 288,
+            "idCell": {
+              "cell": "A288",
+              "value": "target-v81-72-284"
+            },
+            "labelCell": {
+              "cell": "D288",
+              "value": "selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "G288",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F288",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 288,
+            "idCell": {
+              "cell": "A288",
+              "value": "target-v81-72-284"
+            },
+            "labelCell": {
+              "cell": "C288",
+              "value": "selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "D288",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E288",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-72-284",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/gear/target-v81-72-284-mount-saddle-native.png",
+          "bytes": 982818,
+          "sha256": "01569e77489c2296a019269eb863e7a3f48c16002991ad220b0a67b1719b4615",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            661.5,
+            1059
+          ],
+          "normalized": [
+            0.527511961722488,
+            0.8444976076555024
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/gear/target-v81-72-284-mount-saddle-native.receipt.json",
+            "bytes": 4062,
+            "sha256": "645261598b1dc1c727469f5df54f65178f9dc4037402ede95b898062089c9ed8",
+            "role": "NATIVE_TOOL_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/14/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/gear/target-v81-72-284-mount-saddle-native.prompt.txt",
+            "bytes": 2653,
+            "sha256": "108e027308af5dd9bb0c19d9a6846a2819c9737620e84bd1c6918372c7422ee5",
+            "role": "EXACT_PROMPT_TEXT"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 96,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              19,
+              1238,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              19,
+              16,
+              0
+            ],
+            "canvasEdgePixels": 26,
+            "occupiedPixels": 343921
+          },
+          "2": {
+            "bboxExclusive": [
+              246,
+              210,
+              1076,
+              1060
+            ],
+            "marginsLTRB": [
+              246,
+              210,
+              178,
+              194
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 326764
+          },
+          "8": {
+            "bboxExclusive": [
+              248,
+              212,
+              1075,
+              1060
+            ],
+            "marginsLTRB": [
+              248,
+              212,
+              179,
+              194
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 321203
+          },
+          "128": {
+            "bboxExclusive": [
+              249,
+              213,
+              1074,
+              1059
+            ],
+            "marginsLTRB": [
+              249,
+              213,
+              180,
+              195
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 316074
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-217ce8e1-4395-40aa-83c6-2d0ab4701620.png",
+        "nativeSourceOriginalSha256": "01569e77489c2296a019269eb863e7a3f48c16002991ad220b0a67b1719b4615",
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-72-285",
+      "label": "rack selle",
+      "section": 72,
+      "family": "MONTURES",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/284"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/284"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/284"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1967
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 289,
+            "idCell": {
+              "cell": "A289",
+              "value": "target-v81-72-285"
+            },
+            "labelCell": {
+              "cell": "D289",
+              "value": "rack selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "G289",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F289",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 289,
+            "idCell": {
+              "cell": "A289",
+              "value": "target-v81-72-285"
+            },
+            "labelCell": {
+              "cell": "C289",
+              "value": "rack selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "D289",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E289",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-72-285",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/gear/target-v81-72-285-saddle-rack-native.png",
+          "bytes": 571145,
+          "sha256": "ea4496e16d3e74bd5beb121445a3b72451b3712ac717277112ab55c615ee834c",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            659.5,
+            942
+          ],
+          "normalized": [
+            0.5259170653907496,
+            0.7511961722488039
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/gear/target-v81-72-285-saddle-rack-native.receipt.json",
+            "bytes": 3960,
+            "sha256": "8a83300db9cb045d4919a17addc6bf5a926b79ee5250633d762cbdd0c86c09cb",
+            "role": "NATIVE_TOOL_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/15/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/gear/target-v81-72-285-saddle-rack-native.prompt.txt",
+            "bytes": 2547,
+            "sha256": "8383aab3f6045890da8e65d39c493700464c9ee66e8a6ba8745b1152501df427",
+            "role": "EXACT_PROMPT_TEXT"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 96,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              23,
+              52,
+              1211,
+              1166
+            ],
+            "marginsLTRB": [
+              23,
+              52,
+              43,
+              88
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 205406
+          },
+          "2": {
+            "bboxExclusive": [
+              199,
+              319,
+              1121,
+              945
+            ],
+            "marginsLTRB": [
+              199,
+              319,
+              133,
+              309
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 195960
+          },
+          "8": {
+            "bboxExclusive": [
+              201,
+              321,
+              1118,
+              943
+            ],
+            "marginsLTRB": [
+              201,
+              321,
+              136,
+              311
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 191796
+          },
+          "128": {
+            "bboxExclusive": [
+              202,
+              322,
+              1117,
+              942
+            ],
+            "marginsLTRB": [
+              202,
+              322,
+              137,
+              312
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 187883
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-cf6b87ad-44b7-4f00-86c2-f8bf11d54c8a.png",
+        "nativeSourceOriginalSha256": "ea4496e16d3e74bd5beb121445a3b72451b3712ac717277112ab55c615ee834c",
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-72-288",
+      "label": "mangeoire adaptée",
+      "section": 72,
+      "family": "MONTURES",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/287"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/287"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/287"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1970
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 292,
+            "idCell": {
+              "cell": "A292",
+              "value": "target-v81-72-288"
+            },
+            "labelCell": {
+              "cell": "D292",
+              "value": "mangeoire adaptée"
+            },
+            "historicalPresenceCell": {
+              "cell": "G292",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F292",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 292,
+            "idCell": {
+              "cell": "A292",
+              "value": "target-v81-72-288"
+            },
+            "labelCell": {
+              "cell": "C292",
+              "value": "mangeoire adaptée"
+            },
+            "historicalPresenceCell": {
+              "cell": "D292",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E292",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "FAUNA-FUNCTION"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-72-288",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png",
+          "bytes": 1198158,
+          "sha256": "22f2344dc1fb0c67a2ef1c28fa01a4a8998bdac18a7d5c8509c16785f89dd953",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            656.0,
+            1100
+          ],
+          "normalized": [
+            0.5231259968102073,
+            0.8771929824561403
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.receipt.json",
+            "bytes": 4240,
+            "sha256": "2cfcb2ccdbfe90a3e75a202b5a88e70354e040b8f664e1f8f6111999d819fcf3",
+            "role": "NATIVE_TOOL_RECEIPT_WITH_EXACT_PROMPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/16/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.prompt.txt",
+            "bytes": 2809,
+            "sha256": "cdf4f23aedd7688cd5e8bddb2794976b7999b9c3935738b6eb9e33be845bcc77",
+            "role": "EXACT_PROMPT_TEXT"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 96,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              23,
+              1240,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              23,
+              14,
+              0
+            ],
+            "canvasEdgePixels": 72,
+            "occupiedPixels": 461530
+          },
+          "2": {
+            "bboxExclusive": [
+              132,
+              233,
+              1180,
+              1103
+            ],
+            "marginsLTRB": [
+              132,
+              233,
+              74,
+              151
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 451532
+          },
+          "8": {
+            "bboxExclusive": [
+              134,
+              235,
+              1178,
+              1101
+            ],
+            "marginsLTRB": [
+              134,
+              235,
+              76,
+              153
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 447860
+          },
+          "128": {
+            "bboxExclusive": [
+              135,
+              236,
+              1177,
+              1100
+            ],
+            "marginsLTRB": [
+              135,
+              236,
+              77,
+              154
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 444186
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-b40c8c36-4e9f-4f54-93be-64c73f8c17b0.png",
+        "nativeSourceOriginalSha256": "22f2344dc1fb0c67a2ef1c28fa01a4a8998bdac18a7d5c8509c16785f89dd953",
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    },
+    {
+      "targetId": "target-v81-73-305",
+      "label": "petite cage",
+      "section": 73,
+      "family": "BAS-QUARTIERS : PROPS",
+      "sourceLocatorsHistorical": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/304"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/304"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/304"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 73,
+          "line": 1995
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 309,
+            "idCell": {
+              "cell": "A309",
+              "value": "target-v81-73-305"
+            },
+            "labelCell": {
+              "cell": "D309",
+              "value": "petite cage"
+            },
+            "historicalPresenceCell": {
+              "cell": "G309",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F309",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 309,
+            "idCell": {
+              "cell": "A309",
+              "value": "target-v81-73-305"
+            },
+            "labelCell": {
+              "cell": "C309",
+              "value": "petite cage"
+            },
+            "historicalPresenceCell": {
+              "cell": "D309",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E309",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "historicalV111Status": "MISSING",
+      "historicalV112ArtStatus": "NON_CLOTURE_ART",
+      "requiredAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "selectedCandidate": {
+        "targetId": "target-v81-73-305",
+        "attempt": 1,
+        "selectedForReview": true,
+        "statusExact": "CANDIDAT_NON_ADMIS",
+        "humanValidated": false,
+        "technicalAdmission": false,
+        "sourceClosed": false,
+        "runtimeIntegrated": false,
+        "pixelsEdited": false,
+        "png": {
+          "path": "fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers-native.png",
+          "bytes": 1402545,
+          "sha256": "10e6f4a7e4d95a5daf1057c5968365c04566e71ae28f4267609cb7a3eb6a1499",
+          "role": "SELECTED_NATIVE_CANDIDATE"
+        },
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "wholeCanvasFrame": {
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "grid": [
+            1,
+            1
+          ],
+          "frameCount": 1,
+          "atlas": false,
+          "semanticConnectedPropAssembliesObserved": 1,
+          "overlappingIndependentObjectsObserved": false
+        },
+        "proposedPivot": {
+          "pixels": [
+            629.5,
+            1050
+          ],
+          "normalized": [
+            0.501993620414673,
+            0.8373205741626795
+          ],
+          "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+        },
+        "evidence": [
+          {
+            "path": "fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.tool-receipt.json",
+            "bytes": 3762,
+            "sha256": "26bc43d1ae87eebe62e85fe42eb7799e86994853d2da0a6a1bdb8e79a1ecf6bd",
+            "role": "NATIVE_TOOL_RECEIPT"
+          },
+          {
+            "path": "fauna-energy/fauna-energy-production-manifest.json",
+            "bytes": 168487,
+            "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+            "jsonPointer": "/targets/17/candidate",
+            "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+          },
+          {
+            "path": "fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.inspection.json",
+            "bytes": 5697,
+            "sha256": "58bcdc39b06a40f162cd8fedb8a4134d3334d904b73c7588894985e0d8bbead3",
+            "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+          },
+          {
+            "path": "fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.prompt.txt",
+            "bytes": 3088,
+            "sha256": "4588080aa637b8f2c0cd9d125c007e3873cb11d4fd7ab78867e76cb1654546b4",
+            "role": "EXACT_PROMPT_TEXT"
+          }
+        ],
+        "strictAlphaGreater0MarginContractMet": false,
+        "requestedMinimumMargin": 64,
+        "alphaGreater2MarginDiagnosticMeetsSameMargin": true,
+        "alphaThresholds": {
+          "0": {
+            "bboxExclusive": [
+              0,
+              23,
+              1218,
+              1254
+            ],
+            "marginsLTRB": [
+              0,
+              23,
+              36,
+              0
+            ],
+            "canvasEdgePixels": 2,
+            "occupiedPixels": 543551
+          },
+          "2": {
+            "bboxExclusive": [
+              84,
+              238,
+              1177,
+              1053
+            ],
+            "marginsLTRB": [
+              84,
+              238,
+              77,
+              201
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 514162
+          },
+          "8": {
+            "bboxExclusive": [
+              84,
+              240,
+              1175,
+              1051
+            ],
+            "marginsLTRB": [
+              84,
+              240,
+              79,
+              203
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 500063
+          },
+          "128": {
+            "bboxExclusive": [
+              87,
+              240,
+              1174,
+              1050
+            ],
+            "marginsLTRB": [
+              87,
+              240,
+              80,
+              204
+            ],
+            "canvasEdgePixels": 0,
+            "occupiedPixels": 487349
+          }
+        },
+        "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-15c98502-3543-49e9-8018-0a75a43462d1.png",
+        "nativeSourceOriginalSha256": "10e6f4a7e4d95a5daf1057c5968365c04566e71ae28f4267609cb7a3eb6a1499",
+        "description": "Distinct sloped trapezoidal salvage cage, repaired riveted tall rear corner, diagonal brace, mostly barred roof with a patch over rear quarter; lower near-end shut hatch.",
+        "limits": [
+          "Candidate only; no artistic human validation.",
+          "Whole raw PNG retained; actual1254² rather than requested1024².",
+          "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+          "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+          "One static image is not an authored animation cycle."
+        ]
+      },
+      "sourceClosureCountAdded": 0
+    }
+  ],
+  "retainedRejectedAttempts": [
+    {
+      "targetId": "target-v81-71-268",
+      "attempt": 1,
+      "selectedForReview": false,
+      "statusExact": "REJET_CADRAGE_MARGE_DROITE_1PX",
+      "humanValidated": false,
+      "technicalAdmission": false,
+      "sourceClosed": false,
+      "runtimeIntegrated": false,
+      "pixelsEdited": false,
+      "png": {
+        "path": "fauna-energy/target-v81-71-268-enclosure-barrier-native.png",
+        "bytes": 1381713,
+        "sha256": "5683daf01f9252c4127f077e70b964bf3f7c3b299d615f3da39cb35c52639039",
+        "role": "REJECTED_NATIVE_ATTEMPT"
+      },
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "wholeCanvasFrame": {
+        "rect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "frameCount": 1,
+        "atlas": false,
+        "semanticConnectedPropAssembliesObserved": 1,
+        "overlappingIndependentObjectsObserved": false
+      },
+      "proposedPivot": {
+        "pixels": [
+          631.0,
+          1110
+        ],
+        "normalized": [
+          0.5031897926634769,
+          0.8851674641148325
+        ],
+        "status": "DIAGNOSTIC_BBOX_ONLY_NOT_RUNTIME_APPROVED"
+      },
+      "evidence": [
+        {
+          "path": "fauna-energy/generation-batch-03.json",
+          "bytes": 4744,
+          "sha256": "6453ba73234568a9d3955810bf114d3e7aa6a2fa70e170a328f83bee55f94541",
+          "jsonPointer": "/generations/2",
+          "role": "GENERATION_RECEIPT_WITH_EXACT_PROMPT"
+        },
+        {
+          "path": "fauna-energy/fauna-energy-production-manifest.json",
+          "bytes": 168487,
+          "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+          "jsonPointer": "/rejectedAttempts/0",
+          "role": "FROZEN_PRODUCTION_MANIFEST_ENTRY"
+        },
+        {
+          "path": "fauna-energy/native-technical-inspection.json",
+          "bytes": 50554,
+          "sha256": "d749bcc337fb8fb78b921aa8678c3ab5a765b3f7c839786e9ee070f1f2b4f643",
+          "role": "TECHNICAL_OR_VISUAL_EVIDENCE"
+        }
+      ],
+      "strictAlphaGreater0MarginContractMet": false,
+      "requestedMinimumMargin": 100,
+      "alphaGreater2MarginDiagnosticMeetsSameMargin": false,
+      "alphaThresholds": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "marginsLTRB": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "canvasEdgePixels": 299,
+          "occupiedPixels": 500812
+        },
+        "2": {
+          "bboxExclusive": [
+            12,
+            144,
+            1253,
+            1113
+          ],
+          "marginsLTRB": [
+            12,
+            144,
+            1,
+            141
+          ],
+          "canvasEdgePixels": 0,
+          "occupiedPixels": 475495
+        },
+        "8": {
+          "bboxExclusive": [
+            14,
+            147,
+            1248,
+            1111
+          ],
+          "marginsLTRB": [
+            14,
+            147,
+            6,
+            143
+          ],
+          "canvasEdgePixels": 0,
+          "occupiedPixels": 468483
+        },
+        "128": {
+          "bboxExclusive": [
+            15,
+            148,
+            1247,
+            1110
+          ],
+          "marginsLTRB": [
+            15,
+            148,
+            7,
+            144
+          ],
+          "canvasEdgePixels": 0,
+          "occupiedPixels": 461600
+        }
+      },
+      "nativeSourceOriginalPathHistorical": "/workspace/generated_images/exec-af4e9a18-1613-4bc6-986a-e37398ffa498.png",
+      "nativeSourceOriginalSha256": "5683daf01f9252c4127f077e70b964bf3f7c3b299d615f3da39cb35c52639039",
+      "description": "One short connected three-rail module with two whole footed posts and transparent air gaps. Preferred second native generation has broad margins; independent assets do not yet prove modular join alignment.",
+      "limits": [
+        "Candidate only; no artistic human validation.",
+        "Whole raw PNG retained; actual1254² rather than requested1024².",
+        "Strict requested alpha>0 margin failed; alpha2/8 diagnostics do not change that result.",
+        "Actual world scale, runtime attachment/base pivot, contact, collision, occlusion and interaction are unqualified.",
+        "One static image is not an authored animation cycle."
+      ],
+      "rejectionReason": "Initial barrier268 had only1px substantive right margin; one new native attempt produced instead, original retained unchanged."
+    }
+  ],
+  "allPortableFiles": [
+    {
+      "path": "fauna-energy/all-native-opened.json",
+      "bytes": 5426,
+      "sha256": "db50d11b5bfb425322ade54cae872f3f23fee3b3201142888c52c26537447bf7",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/build_production_index.py",
+      "bytes": 10434,
+      "sha256": "2b705734cf41cb07d363a24d8286980d36fae25a0990dcce10ef278239f5e4f7",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/cages-artifact-inventory.json",
+      "bytes": 3912,
+      "sha256": "90d0bac84fe4070007f69780badd90de4c3eab23fe8fbbe2a591cc0fc615873d",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/cages-production-manifest.json",
+      "bytes": 30323,
+      "sha256": "93cc13b667bd06402d8a278192607b8b8a9a68afff13f392faace887d3296c17",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/cages-production-review.md",
+      "bytes": 2050,
+      "sha256": "6aa159d59e437eaf615b227c7c3414a64274e2a1e4c6ee63ffcddde05b8b0f6c",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/cages-reference-contract.json",
+      "bytes": 7549,
+      "sha256": "6f8713ad7b9f52de989e7b11cfb509da4ade26268cfe91af1707b9e093ee8fdb",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/cages-reference-contract.md",
+      "bytes": 1153,
+      "sha256": "fdd918829032f82efaaa6d685093189d16679ae2b7dbbb32d5387122d7411f59",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+      "bytes": 2077790,
+      "sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-276-cage-petite.inspection.json",
+      "bytes": 5618,
+      "sha256": "4acd601f3c30a1048868e92cde8498f6762e49c042baf7cda5a2385f7b1ccd16",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-276-cage-petite.prompt.txt",
+      "bytes": 2522,
+      "sha256": "35120ac714b68a968012ec499456bc14544767324643ba9ecca494480acc58c6",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-276-cage-petite.tool-receipt.json",
+      "bytes": 3194,
+      "sha256": "1c1552b4fa97f3ad31dccec09f636428465e68e2c561e33c2fcbf7c194b5b86f",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+      "bytes": 1691658,
+      "sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-277-cage-moyenne.inspection.json",
+      "bytes": 5639,
+      "sha256": "bf1d9f52a46c84750153cd8428abef8429225114c72a62589d377e6bbb666763",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-277-cage-moyenne.prompt.txt",
+      "bytes": 2631,
+      "sha256": "71cea7ec228dc6e6d9018336a4dff06b3983fe98e92f0edd619f33ceaaad5dca",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-277-cage-moyenne.tool-receipt.json",
+      "bytes": 3301,
+      "sha256": "3e44e2945357e6386b1e61834635b1e061f1ce47e815934af0fdfac94c6c03a7",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+      "bytes": 2244917,
+      "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-278-cage-lourde.inspection.json",
+      "bytes": 5620,
+      "sha256": "4b27bbe329d8068860ed0f4fbf56798545d0038668ea137378698f4005256beb",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-278-cage-lourde.prompt.txt",
+      "bytes": 2784,
+      "sha256": "f6d61d41e301fcd9434065f388d786590b2b93f9f9c7283c4823b6b992e7d811",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-71-278-cage-lourde.tool-receipt.json",
+      "bytes": 3454,
+      "sha256": "95596ea79b83d086dddc65dbda8e6a66e7e8fa1837b02299fbd7049f2a1dc42e",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers-native.png",
+      "bytes": 1402545,
+      "sha256": "10e6f4a7e4d95a5daf1057c5968365c04566e71ae28f4267609cb7a3eb6a1499",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.inspection.json",
+      "bytes": 5697,
+      "sha256": "58bcdc39b06a40f162cd8fedb8a4134d3334d904b73c7588894985e0d8bbead3",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.prompt.txt",
+      "bytes": 3088,
+      "sha256": "4588080aa637b8f2c0cd9d125c007e3873cb11d4fd7ab78867e76cb1654546b4",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.tool-receipt.json",
+      "bytes": 3762,
+      "sha256": "26bc43d1ae87eebe62e85fe42eb7799e86994853d2da0a6a1bdb8e79a1ecf6bd",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/energy-enclosure-opened.json",
+      "bytes": 2378,
+      "sha256": "aa48a4c50c26e0c2d9047cb77d1749ef5d569a5ff7ec8a6fb4c09d6ae986776f",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/energy-enclosure-reference-receipt.json",
+      "bytes": 4372,
+      "sha256": "7b77f2d875809ea6ece98f13c4c16be2f4509fadd207ca7ccf16dfc6c4085402",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/fauna-energy-production-manifest.json",
+      "bytes": 168487,
+      "sha256": "d694c4e40ec51174c7452bfc46a550e8dd5c217d74f460e4a4fe264eecaa9f79",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/fauna-energy-production-review.md",
+      "bytes": 3731,
+      "sha256": "d0c3c3687f27fe6b591615ec916f093e9b085f063c3a123bab7fdfd04431e6f8",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/gear-index.json",
+      "bytes": 47313,
+      "sha256": "526cee86aa2e7df2faa995aa33bdc7e08b3f0db90736d6510f4f6ff22e115707",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/gear-index.md",
+      "bytes": 3333,
+      "sha256": "765512431c330244fd27fbce629ff4a162bab731b558af7af14b414c46c244f9",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/reference-receipt.json",
+      "bytes": 2028,
+      "sha256": "ac2998385aa0954bde4888b8ce4777030e6101779a195fcd2c5e38146bb40100",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.inspection.json",
+      "bytes": 3986,
+      "sha256": "91e1a7eab5139f5be932090eb764cb7c7335c081701cda7d645a32d022d64971",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+      "bytes": 1222952,
+      "sha256": "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.prompt.txt",
+      "bytes": 2538,
+      "sha256": "b1eeab773951648f672f82e7f380071eb9b94276ea4c5e6dd35f89bce782a03c",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.receipt.json",
+      "bytes": 3964,
+      "sha256": "2b3e7ed5a7df03f153562156ee3739d26dbf53d9b4a2cd347263e178da9c68e8",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-282-mount-harness-support-native.inspection.json",
+      "bytes": 3777,
+      "sha256": "e34efcde2acb5b2fcdd243e5b4baabb15e49b623d08bb57866030b7dd45e6da0",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png",
+      "bytes": 592752,
+      "sha256": "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-282-mount-harness-support-native.prompt.txt",
+      "bytes": 2423,
+      "sha256": "b7bb6ed06ea629b4b932c81de6960152aad4c314f56905e6fe4055cdecf733c1",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-282-mount-harness-support-native.receipt.json",
+      "bytes": 3851,
+      "sha256": "58036868b676e7c44f2e5be871f0fcd578c5caa6cbaf3f41beb7bfca1ee448ac",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-283-mount-harness-native.inspection.json",
+      "bytes": 3732,
+      "sha256": "994647cf9ecfda40d154d57ec6d0ae54d7cdcecc1175ab2b97e67830af59fdd7",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+      "bytes": 1405605,
+      "sha256": "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-283-mount-harness-native.prompt.txt",
+      "bytes": 2620,
+      "sha256": "6a038fa726886e675d8008d3961e8801ce304e1c65c89e57f4b968ef310225a1",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-283-mount-harness-native.receipt.json",
+      "bytes": 4033,
+      "sha256": "197e1ff7577e666da8982fb16e612e0fafb69f59ba6f23576af3487efbac2617",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-284-mount-saddle-native.inspection.json",
+      "bytes": 3706,
+      "sha256": "0b58fc10d008a65956934aa537e266ff6bb2ddd3b34e1d80b2622bcbaba9f5bf",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-284-mount-saddle-native.png",
+      "bytes": 982818,
+      "sha256": "01569e77489c2296a019269eb863e7a3f48c16002991ad220b0a67b1719b4615",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-284-mount-saddle-native.prompt.txt",
+      "bytes": 2653,
+      "sha256": "108e027308af5dd9bb0c19d9a6846a2819c9737620e84bd1c6918372c7422ee5",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-284-mount-saddle-native.receipt.json",
+      "bytes": 4062,
+      "sha256": "645261598b1dc1c727469f5df54f65178f9dc4037402ede95b898062089c9ed8",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-285-saddle-rack-native.inspection.json",
+      "bytes": 3713,
+      "sha256": "b2d65c54e4c4159d92f3ce7297dcd5369978c5bd66e17103ef81f84e8e36abf8",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-285-saddle-rack-native.png",
+      "bytes": 571145,
+      "sha256": "ea4496e16d3e74bd5beb121445a3b72451b3712ac717277112ab55c615ee834c",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-285-saddle-rack-native.prompt.txt",
+      "bytes": 2547,
+      "sha256": "8383aab3f6045890da8e65d39c493700464c9ee66e8a6ba8745b1152501df427",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-285-saddle-rack-native.receipt.json",
+      "bytes": 3960,
+      "sha256": "8a83300db9cb045d4919a17addc6bf5a926b79ee5250633d762cbdd0c86c09cb",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.inspection.json",
+      "bytes": 3841,
+      "sha256": "c27db78bcd02a4e21148e03a9ce29d698b767e3abb84627a22f783f3c9966de2",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png",
+      "bytes": 1198158,
+      "sha256": "22f2344dc1fb0c67a2ef1c28fa01a4a8998bdac18a7d5c8509c16785f89dd953",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.prompt.txt",
+      "bytes": 2809,
+      "sha256": "cdf4f23aedd7688cd5e8bddb2794976b7999b9c3935738b6eb9e33be845bcc77",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.receipt.json",
+      "bytes": 4240,
+      "sha256": "2cfcb2ccdbfe90a3e75a202b5a88e70354e040b8f664e1f8f6111999d819fcf3",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/generation-batch-02.json",
+      "bytes": 3849,
+      "sha256": "c77231833bb0fe65a95203e28b3b83b758955e0bdf11cd9d639669a1f332754b",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/generation-batch-03.json",
+      "bytes": 4744,
+      "sha256": "6453ba73234568a9d3955810bf114d3e7aa6a2fa70e170a328f83bee55f94541",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/generation-batch-04.json",
+      "bytes": 5333,
+      "sha256": "d427f71a21383c15196d01813ce9dac205a1c7b4fd5d3861417d71a06a4d4652",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/generation-prompts.json",
+      "bytes": 1855,
+      "sha256": "ecb39b11f444b2a796444f68cc87917bbfce10a40b8b9dcd992a203ea6d5dff1",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/hero-native-inspection.json",
+      "bytes": 1326,
+      "sha256": "629e53bce2551d560e255abc2eae053300b0590a23babe9e727492a8c52f1429",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/inspect_native.py",
+      "bytes": 1954,
+      "sha256": "8126e576727c0f135a159394871dfe3074f868cd332a3c8256a4267c8cddf212",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/native-technical-inspection.json",
+      "bytes": 50554,
+      "sha256": "d749bcc337fb8fb78b921aa8678c3ab5a765b3f7c839786e9ee070f1f2b4f643",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/qualify_energy_enclosure.py",
+      "bytes": 4604,
+      "sha256": "b5b74cbd6dfa8f3bf83f10509661c044ec90c0f5babadb62696f4a4b06fdbc3b",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/target-v81-56-58-energy-door-native.png",
+      "bytes": 1699095,
+      "sha256": "fed0391ae37a9f337ad5c7670489471063db40f52389d96498b9987171f3dbe9",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/target-v81-57-71-emitter-left-native.png",
+      "bytes": 1034401,
+      "sha256": "6223d55bf97da84de22798a24e39f3c54c3d92d9368c7cb53fb1b5cb0e48bfeb",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/target-v81-57-72-emitter-right-native.png",
+      "bytes": 1489415,
+      "sha256": "c3977773ab717e3f3729bca56e27ae28bbd0d29bfd8d4087d6c2684cd6d3836e",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/target-v81-57-73-energy-field-native.png",
+      "bytes": 1020023,
+      "sha256": "983e9e47aa434447fe72378c36f4ca30d62350ab247f48d52fdf8f46e267fb96",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/target-v81-71-266-enclosure-native.png",
+      "bytes": 1029855,
+      "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/target-v81-71-267-enclosure-post-native.png",
+      "bytes": 1293842,
+      "sha256": "cd67258d8e3931edc4ba42401dcdfaea41f78de3e1995b46873aebdaf0efe9b0",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+      "bytes": 364392,
+      "sha256": "522bec7b485f7d7742f835ca8a2f609970998f906247d6258b8a5e71aff927cf",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/target-v81-71-268-enclosure-barrier-native.png",
+      "bytes": 1381713,
+      "sha256": "5683daf01f9252c4127f077e70b964bf3f7c3b299d615f3da39cb35c52639039",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png",
+      "bytes": 423732,
+      "sha256": "1dcc79dda8a24c76617b0d76fdbdfee4a5771f381a839fd52548e39c49a44cec",
+      "role": "FROZEN_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "fauna-energy/fauna-energy-artifact-inventory.json",
+      "bytes": 22018,
+      "sha256": "9b1b33d302199b352e1ab1410381b83c2d9a6fe25f5cae95975962ccee3facc8",
+      "role": "FROZEN_NATIVE_ARTIFACT_INVENTORY"
+    }
+  ],
+  "filePresenceCorrectionsSnapshot": [
+    {
+      "target": "target-v81-72-284",
+      "existing": "V34 kha-rha and bone-bison-de-guerre saddle modules exist; two opposing profiles on opaque magenta",
+      "newCandidatePurpose": "Single independent transparent three-quarter contextual proposal; not first saddle art."
+    },
+    {
+      "targets": [
+        "target-v81-71-276",
+        "target-v81-71-277",
+        "target-v81-71-278",
+        "target-v81-73-305"
+      ],
+      "existing": "V53 Youth cage-structure/floor/background scene layers exist.",
+      "newCandidatePurpose": "Four independent Homeworld three-quarter empty cage props; no global absence claim."
+    },
+    {
+      "targets": [
+        "target-v81-71-273",
+        "target-v81-72-282"
+      ],
+      "finding": "Both source labels are support harnais in two sectors.",
+      "productionInterpretation": "Low restraint-care support versus vertical storage stand are proposed contextual constructions, not canonical new families. Alias remains possible after review."
+    }
+  ],
+  "limitsSnapshot": [
+    "All19rawPNGs are native1254² rather than requested1024². No rescaling/cropping/padding/mirroring performed.",
+    "Strict alpha>0 borders and alpha>2/8 diagnostics remain separate; faint alpha1/2 noise is retained and not silently cleared.",
+    "No image has human art admission; no app integration or source/workbook closure.",
+    "The left/right emitters were independently generated; exact shared contact alignment and scale remain unqualified.",
+    "The single membrane/door/barrier images do not provide an animation cycle.",
+    "Saddle/harness anatomical fit is unproven; empty props do not activate any mount."
+  ],
+  "policy": {
+    "appendOnlyParentWorkbookUpdateProposed": true,
+    "doNotReplaceHistoricalManifests": true,
+    "doNotPromoteCandidatesToHumanValidated": true,
+    "doNotNormalizeOrEditPNG": true,
+    "doNotCopyIntoApplicationPublicOrActivate": true,
+    "thisOperationCopiedPNGs": false,
+    "frozenFaunaEnergyWritten": false,
+    "repositoryWritten": false,
+    "gitUsed": false
+  },
+  "integrityVerification": {
+    "all71FrozenInventoryFilesMatch": true,
+    "all19PNGCopiesEqualToolOriginal": true,
+    "selected18UniqueTargetIds": true,
+    "allPNGPathsRelativeAndInsideFrozenFaunaEnergy": true
+  }
+}

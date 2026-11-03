@@ -1,0 +1,4389 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-126-avpr-2007-hospital-roof",
+  "checkedAt": "2026-09-30T22:37:17.155Z",
+  "compositionDigest": "c2929830da8a2c9f9624e20c5e7c483232d544da3b799ea4d2d2ea1d43dafcd9",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "1c9629f792a7ff97dd37582a2400290e0047e477a6c0c7f61ec14168a62feb8f",
+    "app/game/pitArenaProduction.ts": "b35d28c21ee173b5b0d385b6e08ef085e10b7c75f4fef93734d645fcd8a4b11e",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "app/game/pitStageLifeV63.ts": "a6920fcebc2fc166e2eef92b8d7592b5acde82eec7ad0ab382dd81189ad0b7f2",
+    "app/game/pitStageLifeDirectorV63.ts": "0f6f091487bb9d9e31de051212eb6a91b2a8a7ddb661c35cea8d35dcdf362cd8",
+    "app/game/pitStageLifeRenderingV63.ts": "2fab9d67b019d927bf3f62ff881bd62c4616a67f7ce88c5941a49067fb040351",
+    "app/game/pitStageCompositionV63.ts": "bd26ea648513d2fffe3473c01dfd903c90b6b0f8227c0bed29eb69008b1e6192",
+    "app/game/data/pitStageCompositionV63.json": "d913c3910e52fb01b1efa7a21b7b8123db3431cf5ab53978df85ed016cc64845",
+    "scripts/verify-pit-stage-composition-v63.mjs": "65e78854abbb3307e5a6c1c815a835daf68dc3f5c80893895338c04767dbf78f",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "44d3a06d0355a204bdbd2aee3ee0c29425f5969f6359320b612d457ec6fe1b32",
+    "app/game/data/pitStageLifeV63.json": "3df78b5068a25b46b30d514962ce56504dd0e2e66bf013bc70c0414de0469ab6",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "compositionOverlay": [
+      {
+        "stageId": "arena-126-avpr-2007-hospital-roof",
+        "assetId": "p0-depth",
+        "sourceSha256": "239b9f095a7f4576f7ac7338c1abbdd7f99744221a8b6d4e663184b303e9ae4f",
+        "frame": {
+          "path": "/game/sprites/v63/pit-arenas/arena-126-avpr-2007-hospital-roof/p0-depth.png",
+          "status": "reviewed",
+          "generation": {
+            "generator": "openai-imagegen",
+            "source": "docs/v63-generation/arena-126-avpr-2007-hospital-roof-p0-depth.json",
+            "sha256": "50c7c2d4c31f44af82913b397105f3d7d87b8e4e574fb353331c6c4dcedd64eb",
+            "width": 1672,
+            "height": 941,
+            "hasAlpha": false,
+            "contentBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1672,
+              "height": 941
+            }
+          },
+          "review": {
+            "evidence": "docs/v63-stage-composition-visual-review.json",
+            "coherence": true,
+            "layout": true,
+            "alpha": true
+          }
+        }
+      }
+    ],
+    "production": {
+      "number": 126,
+      "catalogueId": "arena-126-avpr-2007-hospital-roof",
+      "assetDirectory": "/game/sprites/v43/pit-arenas/arena-126-avpr-2007-hospital-roof",
+      "name": "Toit de l’hôpital",
+      "setting": "Toiture du duel final",
+      "wave": "screen-reference-films",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v43-screen-reference-shared-library-compositions",
+      "screenReference": {
+        "kind": "film",
+        "workId": "avpr-2007",
+        "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+        "referenceStatus": "sequence-reference-needed"
+      },
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur adaptée du lieu référencé",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Profondeur OpenAI adaptée au lieu de référence",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-126-avpr-2007-hospital-roof/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-126-avpr-2007-hospital-roof/receipt-p0-depth.json",
+                    "sha256": "239b9f095a7f4576f7ac7338c1abbdd7f99744221a8b6d4e663184b303e9ae4f",
+                    "width": 1672,
+                    "height": 941,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1672,
+                      "height": 941
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-126-avpr-2007-hospital-roof/review-p0-depth.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-rail-conduit",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.25,
+              "placements": [
+                {
+                  "x": -50,
+                  "y": 320,
+                  "width": 1060,
+                  "height": 65
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p1-rail-conduit.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p1-rail-conduit.json",
+                    "sha256": "5acb60872bfa1e12a806289dc0db20724226388cf52feb187119071c936cee06",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 17,
+                      "y": 8,
+                      "width": 2139,
+                      "height": 674
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p1-rail-conduit.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p1-rail-conduit"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-steel-upright",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.72,
+              "placements": [
+                {
+                  "x": -55,
+                  "y": 35,
+                  "width": 145,
+                  "height": 395
+                },
+                {
+                  "x": 870,
+                  "y": 35,
+                  "width": 145,
+                  "height": 395
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p2-steel-upright.json",
+                    "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 199,
+                      "y": 0,
+                      "width": 763,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p2-steel-upright.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p2-steel-upright"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-utility-case",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 40,
+                  "y": 350,
+                  "width": 130,
+                  "height": 80
+                },
+                {
+                  "x": 790,
+                  "y": 350,
+                  "width": 130,
+                  "height": 80
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p3-utility-case.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p3-utility-case.json",
+                    "sha256": "3cff01fa94f04a281ce76937cc2def0b0d2f0da125f87250db82cdea6fe8cdf7",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 41,
+                      "y": 33,
+                      "width": 1693,
+                      "height": 798
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p3-utility-case.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p3-utility-case"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-metal-floor",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 760,
+                  "height": 40
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 0,
+                "y": 355,
+                "width": 2172,
+                "height": 41
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p4-metal-floor.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p4-metal-floor.json",
+                    "sha256": "b511bb879eff59392bc21080e581c09893cdc20900eb2aa15874ef3843ccfc79",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 248,
+                      "width": 2172,
+                      "height": 309
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p4-metal-floor.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p4-metal-floor"
+            },
+            {
+              "id": "p4-metal-fascia",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "strip-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 442,
+                  "width": 1280,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 29,
+                "y": 304,
+                "width": 2117,
+                "height": 111
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p4-metal-fascia.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p4-metal-fascia.json",
+                    "sha256": "ddd0540ec55d93960303b3138354b5508bee1013f86ab7ccc2e6e545b7db404d",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 26,
+                      "y": 190,
+                      "width": 2122,
+                      "height": 379
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p4-metal-fascia.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p4-metal-fascia"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.9,
+              "placements": [
+                {
+                  "x": -45,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                },
+                {
+                  "x": 915,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-126-avpr-2007-hospital-roof",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v43-arena-126-avpr-2007-hospital-roof-renderer-qa.json",
+        "applicationEvidence": "docs/v43-arena-application-compiled-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v43-arena-composition-visual-review.json",
+        "digest": "bf130a9803e49f6436f88f429e01577ba7f2cc98f1985477285cb08608ad6baa"
+      },
+      "v62FloorCorrection": {
+        "reason": "The separate fascia ended above the lower canvas edge at zoom0.8. Contact strip stays unchanged; only the authored fascia height grows from150 to180.",
+        "evidence": "docs/v62-arena-126-avpr-2007-hospital-roof-renderer-qa.json",
+        "pngsUnchanged": true
+      }
+    },
+    "life": {
+      "stageId": "arena-126-avpr-2007-hospital-roof",
+      "replacesV62Stage": true,
+      "suppressedV62Events": [
+        {
+          "id": "ambient-01",
+          "sourceCell": "10_VIE_DES_STAGES!E62",
+          "reason": "ST167/E505 interdit les spectateurs civils sur ce toit ; PNG V62 conservé, ancien événement E62 non livré dans cette continuité."
+        }
+      ],
+      "continuity": {
+        "mode": "exhibition-adaptation",
+        "sourceCells": [
+          "10_VIE_DES_STAGES!E503",
+          "10_VIE_DES_STAGES!E504",
+          "10_VIE_DES_STAGES!E505"
+        ],
+        "chapterReconstructionComplete": false,
+        "note": "Ambiances originales adaptées aux demandes du classeur ; aucune reconstruction canonique exacte de machinerie ou de chapitre revendiquée."
+      },
+      "events": [
+        {
+          "id": "ambient-02",
+          "name": "Hélicoptère anonyme — rotor d'évacuation",
+          "fps": 4,
+          "placement": {
+            "x": 290,
+            "bottom": 132,
+            "height": 76,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "sha256": "dd7dda09f47359761670ad87d4e93bba2593c521cc4cfacb3b726f5c35da8209",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                270,
+                414
+              ],
+              "alphaBounds": [
+                28,
+                191,
+                478,
+                223
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                258,
+                414
+              ],
+              "alphaBounds": [
+                18,
+                148,
+                466,
+                266
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                259,
+                415
+              ],
+              "alphaBounds": [
+                16,
+                140,
+                483,
+                275
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                382
+              ],
+              "alphaBounds": [
+                17,
+                109,
+                478,
+                273
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                258,
+                382
+              ],
+              "alphaBounds": [
+                20,
+                158,
+                477,
+                224
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                385
+              ],
+              "alphaBounds": [
+                15,
+                112,
+                474,
+                273
+              ]
+            }
+          ],
+          "reusedV62EventId": "ambient-02"
+        },
+        {
+          "id": "ambient-03",
+          "name": "Évent de toiture — vapeur dans le vent",
+          "fps": 3,
+          "placement": {
+            "x": 620,
+            "bottom": 177,
+            "height": 68,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "sha256": "03e496ae9570aef5d554f4436e99d484b7691d69952a33bf31cd110014b8ab2a",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                224.5,
+                434
+              ],
+              "alphaBounds": [
+                78,
+                192,
+                351,
+                242
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                225.5,
+                434
+              ],
+              "alphaBounds": [
+                80,
+                192,
+                349,
+                242
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                226.5,
+                434
+              ],
+              "alphaBounds": [
+                80,
+                192,
+                386,
+                242
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                226,
+                435
+              ],
+              "alphaBounds": [
+                80,
+                192,
+                370,
+                243
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                224.5,
+                434
+              ],
+              "alphaBounds": [
+                78,
+                192,
+                398,
+                242
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                226.5,
+                434
+              ],
+              "alphaBounds": [
+                80,
+                192,
+                367,
+                242
+              ]
+            }
+          ],
+          "reusedV62EventId": "ambient-03"
+        },
+        {
+          "id": "ambient-04",
+          "name": "Gaine vibrante — raccord fixé au bloc HVAC",
+          "fps": 2,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 555,
+            "bottom": 273,
+            "height": 56,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+          "sha256": "9458fc8aa098e7ecd7fd55aedf5ebd38f6b3e23527d5d3f2307377456c46d81b",
+          "width": 1536,
+          "height": 1024,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                265,
+                250
+              ],
+              "alphaBounds": [
+                42,
+                131,
+                446,
+                281
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                258,
+                250
+              ],
+              "alphaBounds": [
+                35,
+                131,
+                446,
+                281
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                249.5,
+                250
+              ],
+              "alphaBounds": [
+                29,
+                131,
+                441,
+                280
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                264,
+                217
+              ],
+              "alphaBounds": [
+                41,
+                98,
+                446,
+                281
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                257.5,
+                217
+              ],
+              "alphaBounds": [
+                34,
+                98,
+                447,
+                282
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                249.5,
+                217
+              ],
+              "alphaBounds": [
+                29,
+                98,
+                441,
+                280
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-05",
+          "name": "Lumières urbaines — variation lente distante",
+          "fps": 1,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 210,
+            "bottom": 213,
+            "height": 170,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+          "sha256": "b0ab59efa18fc98a2ac901e5f2eca30f97a97f57ec24752a8bb70ddd112301ab",
+          "width": 1536,
+          "height": 1024,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                152,
+                270
+              ],
+              "alphaBounds": [
+                47,
+                197,
+                447,
+                153
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                141,
+                270
+              ],
+              "alphaBounds": [
+                37,
+                195,
+                432,
+                155
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                125,
+                270
+              ],
+              "alphaBounds": [
+                25,
+                195,
+                441,
+                155
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                151,
+                265
+              ],
+              "alphaBounds": [
+                45,
+                187,
+                447,
+                161
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                140,
+                265
+              ],
+              "alphaBounds": [
+                35,
+                191,
+                435,
+                159
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                124,
+                265
+              ],
+              "alphaBounds": [
+                19,
+                191,
+                449,
+                157
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-06",
+          "name": "Panache avant destruction — cheminée de fond",
+          "fps": 2,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 749,
+            "bottom": 200,
+            "height": 77,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+          "sha256": "003f580b715e04c8fe91c3c2dfa70d7065aaca6d57e5ca40e574a7eb93ba90be",
+          "width": 1536,
+          "height": 1024,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                338,
+                477
+              ],
+              "alphaBounds": [
+                187,
+                161,
+                210,
+                316
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                337,
+                478
+              ],
+              "alphaBounds": [
+                96,
+                104,
+                301,
+                374
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                369,
+                478
+              ],
+              "alphaBounds": [
+                21,
+                65,
+                408,
+                413
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                338,
+                445
+              ],
+              "alphaBounds": [
+                39,
+                39,
+                358,
+                406
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                337,
+                446
+              ],
+              "alphaBounds": [
+                75,
+                65,
+                322,
+                381
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                369,
+                446
+              ],
+              "alphaBounds": [
+                31,
+                55,
+                398,
+                391
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "story": null,
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+      "sha256": "dd7dda09f47359761670ad87d4e93bba2593c521cc4cfacb3b726f5c35da8209",
+      "bytes": 1654091,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7911408742268881,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            28,
+            191,
+            478,
+            223
+          ],
+          "contentSha256": "30bc3b48a30d0090f4326eae910ab10deff7a3e9680a9fe06010967542de9051",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            148,
+            466,
+            266
+          ],
+          "contentSha256": "d839345d6f8d24bbcd6aed9c44699b6260646b3edffdfec6b9735000c0fcfe32",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            140,
+            483,
+            275
+          ],
+          "contentSha256": "952d3239bd19a4d54ca27c29c2c3fdf7b4193d80a7df91e75def7259168622ba",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            17,
+            109,
+            478,
+            273
+          ],
+          "contentSha256": "d3ea21755ebb64914ab1e3cff5398b7560369ec36ea800d3ffd67bb6734b8aba",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            20,
+            158,
+            477,
+            224
+          ],
+          "contentSha256": "68b7c69e3749ee67d331d9c30738ce41bffa44bbb965d36c005bfe18b580cd54",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            15,
+            112,
+            474,
+            273
+          ],
+          "contentSha256": "146eaccc4588f728586ea77047c4366eb1f5a197b7b9c25657da8f96cb947ae5",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v62-generation\\arena-126-avpr-2007-hospital-roof-ambient-02.json"
+    },
+    {
+      "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+      "sha256": "03e496ae9570aef5d554f4436e99d484b7691d69952a33bf31cd110014b8ab2a",
+      "bytes": 1685952,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.795989990234375,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            78,
+            192,
+            351,
+            242
+          ],
+          "contentSha256": "40ea720a5caa4a28560604503515cdeb0b97fe09ad9f795b85ce1271ec87e900",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            80,
+            192,
+            349,
+            242
+          ],
+          "contentSha256": "584893ea1a3e9cfc3cc32ed5589e87dbf0986c40d769742d797022e656929947",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            80,
+            192,
+            386,
+            242
+          ],
+          "contentSha256": "51947aa6c749ebeeb8fe84d87fa8696b19a07c89527e4bbeb735325cbf110827",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            80,
+            192,
+            370,
+            243
+          ],
+          "contentSha256": "e639bf2d78c7e05cc9a8940fc18dad7fb09872318600b0d94983b08911b6cef0",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            78,
+            192,
+            398,
+            242
+          ],
+          "contentSha256": "ca07c3a1563ac782fdc65251695f045b1c41c89ed6dcc8b0f0853d72b8e06824",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            80,
+            192,
+            367,
+            242
+          ],
+          "contentSha256": "d84e628c349ece429befe2bd42812c85f8af4736a65e99c9f37000ff5014e7af",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v62-generation\\arena-126-avpr-2007-hospital-roof-ambient-03.json"
+    },
+    {
+      "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+      "sha256": "9458fc8aa098e7ecd7fd55aedf5ebd38f6b3e23527d5d3f2307377456c46d81b",
+      "bytes": 2055904,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6521765391031902,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            42,
+            131,
+            446,
+            281
+          ],
+          "contentSha256": "30283b80e6ae0c90c82d784563a3abe991b743e65b76082467a75dcf5daee3e8",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            35,
+            131,
+            446,
+            281
+          ],
+          "contentSha256": "f4fee16719e04cf6e75242f2effe1ac14c779598acde321728d440f0cdc11584",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            29,
+            131,
+            441,
+            280
+          ],
+          "contentSha256": "ccda863e3a2404cf8662f20cd4606f8e31c6d8850eb8e76fd5fce1ce0b4c3907",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            98,
+            446,
+            281
+          ],
+          "contentSha256": "521144399b601c555b331ac42a8996a39c479fb998a792577c65cd306798d1f4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            34,
+            98,
+            447,
+            282
+          ],
+          "contentSha256": "01a4a64d45484c343866c1c709487b987f8cb746a6fc58e474c640c39a5d4e6b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            29,
+            98,
+            441,
+            280
+          ],
+          "contentSha256": "2b69082b878d4dc549dcc4c783860b01ff613fbdfd3927635fa64ebea3f2355f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v63-generation\\arena-126-avpr-2007-hospital-roof-ambient-04.json"
+    },
+    {
+      "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+      "sha256": "b0ab59efa18fc98a2ac901e5f2eca30f97a97f57ec24752a8bb70ddd112301ab",
+      "bytes": 1263066,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7853450775146484,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            197,
+            447,
+            153
+          ],
+          "contentSha256": "ea27482929dbd6a61ae9a561515512ef2472c122916263b6e8d2427981500f89",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            37,
+            195,
+            432,
+            155
+          ],
+          "contentSha256": "a7e832a9789b06565bb66ec828eabfc1c5e4412dfe35177d0c35a9fda3a47b0e",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            25,
+            195,
+            441,
+            155
+          ],
+          "contentSha256": "91c0518fbec2e7143be86a49a3ff81d1e8cf35537ca062c74aa7cc2613cf4533",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            45,
+            187,
+            447,
+            161
+          ],
+          "contentSha256": "627ee0649a7f029ee7352d2e551387aa1ef4d25a432d262ee2cc64e8584e029d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            35,
+            191,
+            435,
+            159
+          ],
+          "contentSha256": "cf97ca47cd0973120296087218067ca34e03f3ed9da50ada8f3f31b327e5ee84",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            19,
+            191,
+            449,
+            157
+          ],
+          "contentSha256": "0e8ef8648ea264e7a39cd2c598cf786e10472a730ec353ae349bec57b7db136d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v63-generation\\arena-126-avpr-2007-hospital-roof-ambient-05.json"
+    },
+    {
+      "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+      "sha256": "003f580b715e04c8fe91c3c2dfa70d7065aaca6d57e5ca40e574a7eb93ba90be",
+      "bytes": 1486944,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8330097198486328,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            187,
+            161,
+            210,
+            316
+          ],
+          "contentSha256": "11362db075068ee9a0bf706fd1338be6b114b8e4832ae0920ce6f631673f1c57",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            96,
+            104,
+            301,
+            374
+          ],
+          "contentSha256": "d6d5856f0ab8252c3d7fa5f064cf113c44335cfb1d33ab469486dca05330dc33",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            21,
+            65,
+            408,
+            413
+          ],
+          "contentSha256": "b2d7c8c16277b38dbb719d10d3767bd95909d9fc04a6ac1d1619782b0b6dd73e",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            39,
+            39,
+            358,
+            406
+          ],
+          "contentSha256": "a4914ca10552dc6d6a618cb3bf6b2190bb3ef316922bfff9b42de6004b3b873f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            75,
+            65,
+            322,
+            381
+          ],
+          "contentSha256": "9bb7564000d8f8d3140ad6e920a88b30246e4bf642c1e3fe06b507c67826f652",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            55,
+            398,
+            391
+          ],
+          "contentSha256": "7d58ebaa5573e5ddb2ace1bea6185ad08376ef27b3d35e1e2040fddaf07d787a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v63-generation\\arena-126-avpr-2007-hospital-roof-ambient-06.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 12,
+    "expectedImages": 12,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV63Ambient": true,
+    "hasV61Story": false
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 5,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            290,
+            132
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            620,
+            177
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-05",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            210,
+            213
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-06",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            749,
+            200
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-04",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            555,
+            273
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            290,
+            132
+          ],
+          "pivot": [
+            290,
+            132
+          ],
+          "visibleBounds": [
+            254.078125,
+            98.8984375,
+            70.953125,
+            33.1015625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            620,
+            177
+          ],
+          "pivot": [
+            620,
+            177
+          ],
+          "visibleBounds": [
+            600.54296875,
+            144.859375,
+            46.6171875,
+            32.140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-05",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            210,
+            213
+          ],
+          "pivot": [
+            210,
+            213
+          ],
+          "visibleBounds": [
+            175.13671875,
+            188.76171875,
+            148.41796875,
+            50.80078125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-06",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            749,
+            200
+          ],
+          "pivot": [
+            749,
+            200
+          ],
+          "visibleBounds": [
+            726.291015625,
+            152.4765625,
+            31.58203125,
+            47.5234375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-04",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            555,
+            273
+          ],
+          "pivot": [
+            555,
+            273
+          ],
+          "visibleBounds": [
+            530.609375,
+            259.984375,
+            48.78125,
+            30.734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 5,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            295.95,
+            128.895
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            633.375,
+            174.9075
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-05",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            214.15,
+            211.7175
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-06",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            765.2774999999999,
+            198.425
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-04",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            566.9124999999999,
+            273.0675
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            295.95,
+            128.895
+          ],
+          "pivot": [
+            295.95,
+            128.895
+          ],
+          "visibleBounds": [
+            259.2198828125,
+            95.04865234375,
+            72.5495703125,
+            33.846347656249996
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            633.375,
+            174.9075
+          ],
+          "pivot": [
+            633.375,
+            174.9075
+          ],
+          "visibleBounds": [
+            613.4801855468751,
+            142.04371093749998,
+            47.66607421875,
+            32.863789062500004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-05",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            214.15,
+            211.7175
+          ],
+          "pivot": [
+            214.15,
+            211.7175
+          ],
+          "visibleBounds": [
+            178.502294921875,
+            186.933857421875,
+            151.757373046875,
+            51.943798828125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-06",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            765.2774999999999,
+            198.425
+          ],
+          "pivot": [
+            765.2774999999999,
+            198.425
+          ],
+          "visibleBounds": [
+            742.0575634765623,
+            149.83228515625,
+            32.292626953125,
+            48.59271484375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-04",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            566.9124999999999,
+            273.0675
+          ],
+          "pivot": [
+            566.9124999999999,
+            273.0675
+          ],
+          "visibleBounds": [
+            541.9730859374998,
+            259.7590234375,
+            49.878828125,
+            31.4258984375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 5,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            275.5,
+            128.895
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            612.925,
+            174.9075
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-05",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            193.70000000000002,
+            211.7175
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-06",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            744.8275,
+            198.425
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-04",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            546.4625,
+            273.0675
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            275.5,
+            128.895
+          ],
+          "pivot": [
+            275.5,
+            128.895
+          ],
+          "visibleBounds": [
+            238.76988281250001,
+            95.04865234375,
+            72.5495703125,
+            33.846347656249996
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            612.925,
+            174.9075
+          ],
+          "pivot": [
+            612.925,
+            174.9075
+          ],
+          "visibleBounds": [
+            593.030185546875,
+            142.04371093749998,
+            47.66607421875,
+            32.863789062500004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-05",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            193.70000000000002,
+            211.7175
+          ],
+          "pivot": [
+            193.70000000000002,
+            211.7175
+          ],
+          "visibleBounds": [
+            158.05229492187502,
+            186.933857421875,
+            151.757373046875,
+            51.943798828125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-06",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            744.8275,
+            198.425
+          ],
+          "pivot": [
+            744.8275,
+            198.425
+          ],
+          "visibleBounds": [
+            721.6075634765624,
+            149.83228515625,
+            32.292626953125,
+            48.59271484375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-04",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            546.4625,
+            273.0675
+          ],
+          "pivot": [
+            546.4625,
+            273.0675
+          ],
+          "visibleBounds": [
+            521.5230859374999,
+            259.7590234375,
+            49.878828125,
+            31.4258984375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 5,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            291.90000000000003,
+            133.38
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            618.5999999999999,
+            177.92999999999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-05",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            212.70000000000002,
+            213.57
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-06",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            746.31,
+            200.7
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-04",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            554.25,
+            272.96999999999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            291.90000000000003,
+            133.38
+          ],
+          "pivot": [
+            291.90000000000003,
+            133.38
+          ],
+          "visibleBounds": [
+            256.33734375,
+            100.60945312499999,
+            70.24359375,
+            32.770546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            618.5999999999999,
+            177.92999999999998
+          ],
+          "pivot": [
+            618.5999999999999,
+            177.92999999999998
+          ],
+          "visibleBounds": [
+            599.3375390624999,
+            146.11078124999997,
+            46.15101562499999,
+            31.819218749999997
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-05",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            212.70000000000002,
+            213.57
+          ],
+          "pivot": [
+            212.70000000000002,
+            213.57
+          ],
+          "visibleBounds": [
+            178.18535156250002,
+            189.5741015625,
+            146.9337890625,
+            50.2927734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-06",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            746.31,
+            200.7
+          ],
+          "pivot": [
+            746.31,
+            200.7
+          ],
+          "visibleBounds": [
+            723.82810546875,
+            153.651796875,
+            31.266210937500002,
+            47.048203125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-04",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            554.25,
+            272.96999999999997
+          ],
+          "pivot": [
+            554.25,
+            272.96999999999997
+          ],
+          "visibleBounds": [
+            530.10328125,
+            260.08453124999994,
+            48.293437499999996,
+            30.42703125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 5,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            284.775,
+            127.94812499999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            623.85,
+            174.18562499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-05",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            202.57499999999996,
+            211.17562499999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-06",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            756.3975,
+            197.81812499999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-04",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            557.0625,
+            272.825625
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            284.775,
+            127.94812499999998
+          ],
+          "pivot": [
+            284.775,
+            127.94812499999998
+          ],
+          "visibleBounds": [
+            247.86527343749998,
+            93.93626953124998,
+            72.90433593750001,
+            34.01185546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            623.85,
+            174.18562499999996
+          ],
+          "pivot": [
+            623.85,
+            174.18562499999996
+          ],
+          "visibleBounds": [
+            603.857900390625,
+            141.16113281249994,
+            47.899160156250005,
+            33.0244921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-05",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            202.57499999999996,
+            211.17562499999997
+          ],
+          "pivot": [
+            202.57499999999996,
+            211.17562499999997
+          ],
+          "visibleBounds": [
+            166.75297851562496,
+            186.27079101562498,
+            152.499462890625,
+            52.197802734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-06",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            756.3975,
+            197.81812499999998
+          ],
+          "pivot": [
+            756.3975,
+            197.81812499999998
+          ],
+          "visibleBounds": [
+            733.0640185546874,
+            148.98779296874997,
+            32.450537109375006,
+            48.83033203125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-04",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            557.0625,
+            272.825625
+          ],
+          "pivot": [
+            557.0625,
+            272.825625
+          ],
+          "visibleBounds": [
+            532.0011328125,
+            259.4520703125,
+            50.12273437500001,
+            31.579570312500003
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 5,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            309,
+            145.8
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            606,
+            186.3
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-05",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            237,
+            218.70000000000002
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-06",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            722.1,
+            207
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-04",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            547.5,
+            272.70000000000005
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            309,
+            145.8
+          ],
+          "pivot": [
+            309,
+            145.8
+          ],
+          "visibleBounds": [
+            276.6703125,
+            116.00859375,
+            63.85781250000001,
+            29.79140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            606,
+            186.3
+          ],
+          "pivot": [
+            606,
+            186.3
+          ],
+          "visibleBounds": [
+            588.4886718749999,
+            157.37343750000002,
+            41.95546875,
+            28.926562500000003
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-05",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            237,
+            218.70000000000002
+          ],
+          "pivot": [
+            237,
+            218.70000000000002
+          ],
+          "visibleBounds": [
+            205.623046875,
+            196.88554687500002,
+            133.576171875,
+            45.720703125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-06",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            722.1,
+            207
+          ],
+          "pivot": [
+            722.1,
+            207
+          ],
+          "visibleBounds": [
+            701.6619140624999,
+            164.22890625,
+            28.423828125,
+            42.77109375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-04",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            547.5,
+            272.70000000000005
+          ],
+          "pivot": [
+            547.5,
+            272.70000000000005
+          ],
+          "visibleBounds": [
+            525.5484375,
+            260.98593750000003,
+            43.903124999999996,
+            27.6609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 5,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            290,
+            132
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            620,
+            177
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-05",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            210,
+            213
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-06",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            749,
+            200
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-04",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            555,
+            273
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            290,
+            132
+          ],
+          "pivot": [
+            290,
+            132
+          ],
+          "visibleBounds": [
+            254.078125,
+            98.8984375,
+            70.953125,
+            33.1015625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            620,
+            177
+          ],
+          "pivot": [
+            620,
+            177
+          ],
+          "visibleBounds": [
+            600.54296875,
+            144.859375,
+            46.6171875,
+            32.140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-05",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            210,
+            213
+          ],
+          "pivot": [
+            210,
+            213
+          ],
+          "visibleBounds": [
+            175.13671875,
+            188.76171875,
+            148.41796875,
+            50.80078125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-06",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            749,
+            200
+          ],
+          "pivot": [
+            749,
+            200
+          ],
+          "visibleBounds": [
+            726.291015625,
+            152.4765625,
+            31.58203125,
+            47.5234375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-04",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            555,
+            273
+          ],
+          "pivot": [
+            555,
+            273
+          ],
+          "visibleBounds": [
+            530.609375,
+            259.984375,
+            48.78125,
+            30.734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 5,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            284.43514474499995,
+            123.20256899999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            624.1486947450001,
+            169.527144
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-05",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            202.08034474499993,
+            206.586804
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-06",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            756.9458097449999,
+            193.204149
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-04",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            557.235419745,
+            268.352904
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            284.43514474499995,
+            123.20256899999998
+          ],
+          "pivot": [
+            284.43514474499995,
+            123.20256899999998
+          ],
+          "visibleBounds": [
+            247.45590935437494,
+            89.12666200781248,
+            73.041630234375,
+            34.075906992187505
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            624.1486947450001,
+            169.527144
+          ],
+          "pivot": [
+            624.1486947450001,
+            169.527144
+          ],
+          "visibleBounds": [
+            604.1189457801563,
+            136.440459703125,
+            47.9893644140625,
+            33.086684296875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-05",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            202.08034474499993,
+            206.586804
+          ],
+          "pivot": [
+            202.08034474499993,
+            206.586804
+          ],
+          "visibleBounds": [
+            166.1908628114062,
+            181.63506894140625,
+            152.78665166015625,
+            52.29610224609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-06",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            756.9458097449999,
+            193.204149
+          ],
+          "pivot": [
+            756.9458097449999,
+            193.204149
+          ],
+          "visibleBounds": [
+            733.5683864149219,
+            144.28185911718748,
+            32.51164833984375,
+            48.92228988281251
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-04",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            557.235419745,
+            268.352904
+          ],
+          "pivot": [
+            557.235419745,
+            268.352904
+          ],
+          "visibleBounds": [
+            532.1268566981249,
+            254.95416407812502,
+            50.217126093750004,
+            31.639041328125003
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 0,
+      "frame": 988,
+      "attachment": [
+        290,
+        132
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 1,
+      "frame": 1003,
+      "attachment": [
+        290,
+        132
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 2,
+      "frame": 1018,
+      "attachment": [
+        290,
+        132
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 3,
+      "frame": 1033,
+      "attachment": [
+        290,
+        132
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 4,
+      "frame": 1048,
+      "attachment": [
+        290,
+        132
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 5,
+      "frame": 1063,
+      "attachment": [
+        290,
+        132
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-04",
+      "nativeFrame": 0,
+      "frame": 1584,
+      "attachment": [
+        555,
+        273
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-04",
+      "nativeFrame": 1,
+      "frame": 1614,
+      "attachment": [
+        555,
+        273
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-04",
+      "nativeFrame": 2,
+      "frame": 1644,
+      "attachment": [
+        555,
+        273
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-04",
+      "nativeFrame": 3,
+      "frame": 1674,
+      "attachment": [
+        555,
+        273
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-04",
+      "nativeFrame": 4,
+      "frame": 1704,
+      "attachment": [
+        555,
+        273
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-04",
+      "nativeFrame": 5,
+      "frame": 1734,
+      "attachment": [
+        555,
+        273
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-06",
+      "nativeFrame": 0,
+      "frame": 2151,
+      "attachment": [
+        749,
+        200
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-06",
+      "nativeFrame": 1,
+      "frame": 2181,
+      "attachment": [
+        749,
+        200
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-06",
+      "nativeFrame": 2,
+      "frame": 2211,
+      "attachment": [
+        749,
+        200
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-06",
+      "nativeFrame": 3,
+      "frame": 2241,
+      "attachment": [
+        749,
+        200
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-06",
+      "nativeFrame": 4,
+      "frame": 2271,
+      "attachment": [
+        749,
+        200
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-06",
+      "nativeFrame": 5,
+      "frame": 2301,
+      "attachment": [
+        749,
+        200
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 0,
+      "frame": 2612,
+      "attachment": [
+        620,
+        177
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 1,
+      "frame": 2632,
+      "attachment": [
+        620,
+        177
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 2,
+      "frame": 2652,
+      "attachment": [
+        620,
+        177
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 3,
+      "frame": 2672,
+      "attachment": [
+        620,
+        177
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 4,
+      "frame": 2692,
+      "attachment": [
+        620,
+        177
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 5,
+      "frame": 2712,
+      "attachment": [
+        620,
+        177
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-05",
+      "nativeFrame": 0,
+      "frame": 3200,
+      "attachment": [
+        210,
+        213
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-05",
+      "nativeFrame": 1,
+      "frame": 3260,
+      "attachment": [
+        210,
+        213
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-05",
+      "nativeFrame": 2,
+      "frame": 3320,
+      "attachment": [
+        210,
+        213
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-05",
+      "nativeFrame": 3,
+      "frame": 3380,
+      "attachment": [
+        210,
+        213
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-05",
+      "nativeFrame": 4,
+      "frame": 3440,
+      "attachment": [
+        210,
+        213
+      ]
+    },
+    {
+      "kind": "v63-ambient",
+      "eventId": "ambient-05",
+      "nativeFrame": 5,
+      "frame": 3500,
+      "attachment": [
+        210,
+        213
+      ]
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\center.png",
+      "sha256": "bee66dc86c2504d87b7b00234545db2f108a3c675d8e8bfb2ba5b05784b49fdb"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\left-corner.png",
+      "sha256": "80c15214ec7d2b6c5a660046d107a571e9b7de8c70c783aacc54d946736c958a"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\right-corner.png",
+      "sha256": "f961a8a95c888efb9b32cea706abe96b79d366dfc538d5d5e3b07cf4016a1264"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\wide.png",
+      "sha256": "36fa68a801b5b9f3d5431c0f5d5596750b3b9983659988918cc969ae37283f8a"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\close.png",
+      "sha256": "068233823fe235ef322f16f1cba6ac4860a18806e296f33f17bfae92df88248a"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\reduced-motion.png",
+      "sha256": "056e7b58eb9afd6d222189499942faeef3a7947c853cda5f9411cd2639156cf8"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\high-contrast.png",
+      "sha256": "12c7f62414d74d98e6f74df2dc4e939c5b4e11fefa2d28e052b538af46171976"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\actual-game-camera.png",
+      "sha256": "7b73955017f8b4fbe55f7ee3f42269d498d6e18f783076a20da49a396d115c3f"
+    },
+    {
+      "name": "ambient-ambient-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-02-frame-0.png",
+      "sha256": "9531f68698d685808746c080ecd19ca8c3ecc6262b7b6dd21d0c288c79e3576a"
+    },
+    {
+      "name": "ambient-ambient-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-02-frame-1.png",
+      "sha256": "fe8fcb2bf6545297b2c2a65fd232dc0aeef842932c0d35e91672f48f086c5adc"
+    },
+    {
+      "name": "ambient-ambient-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-02-frame-2.png",
+      "sha256": "5a1f0148ccbbf2db6b8e8acde664dde23c1c853c32961601f8997628d0811948"
+    },
+    {
+      "name": "ambient-ambient-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-02-frame-3.png",
+      "sha256": "3e517bb82949ae7bd9fd3c68cb8a3e1cecd331875d30304d64eb3660ab4d8ff7"
+    },
+    {
+      "name": "ambient-ambient-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-02-frame-4.png",
+      "sha256": "26d5a2197508ae8205da59d7cfef630df059f70dd00ff692d0cb0a1c326205a9"
+    },
+    {
+      "name": "ambient-ambient-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-02-frame-5.png",
+      "sha256": "6986170a4a699c9e69d47c45861c4faaa2f5b51b420dc30fafd3b07e70759b5c"
+    },
+    {
+      "name": "ambient-ambient-04-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-04-frame-0.png",
+      "sha256": "9531f68698d685808746c080ecd19ca8c3ecc6262b7b6dd21d0c288c79e3576a"
+    },
+    {
+      "name": "ambient-ambient-04-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-04-frame-1.png",
+      "sha256": "433d28a9a1f824e1565485344f3c6e5cccd416b39887e8156046ababcc2706ac"
+    },
+    {
+      "name": "ambient-ambient-04-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-04-frame-2.png",
+      "sha256": "77b44979d822b0eaa9408ab84a8f74cb6845dba21f9fb00162782b539439fc36"
+    },
+    {
+      "name": "ambient-ambient-04-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-04-frame-3.png",
+      "sha256": "ad2a4f9a6ce3773ab88b8e35ca8c5773591d533e4d9b4fb17111c71776cd7cf9"
+    },
+    {
+      "name": "ambient-ambient-04-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-04-frame-4.png",
+      "sha256": "fcbf521264a8f708c51d286ce1904526f767fb377912fbe49decccf7f759e0ba"
+    },
+    {
+      "name": "ambient-ambient-04-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-04-frame-5.png",
+      "sha256": "eff761e23f0ad65f4d73be51f70a16aa43b83a6b734a3d941b14e4d559c5e184"
+    },
+    {
+      "name": "ambient-ambient-06-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-06-frame-0.png",
+      "sha256": "8abe5f034e6f66e2f6a8738341eb4c1f0c603a35384a3d14cb90e121d40918d3"
+    },
+    {
+      "name": "ambient-ambient-06-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-06-frame-1.png",
+      "sha256": "9fd229a30301f20737908ef83ad97d3a538447b077eb82d121e8d7bb784f074a"
+    },
+    {
+      "name": "ambient-ambient-06-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-06-frame-2.png",
+      "sha256": "ca7c6fad48f3427ec4cc89bd66860bfa00640dfad2e3a7503f155803de175ade"
+    },
+    {
+      "name": "ambient-ambient-06-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-06-frame-3.png",
+      "sha256": "a9b66c638806ffd3b78086e9255e9da62c6371691b6dcda509f54ad7c5e7c44a"
+    },
+    {
+      "name": "ambient-ambient-06-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-06-frame-4.png",
+      "sha256": "1d5ee4d2cf3ca4edca042537972166b737730433c99df11549f92d92727f8234"
+    },
+    {
+      "name": "ambient-ambient-06-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-06-frame-5.png",
+      "sha256": "01dac1545db5784fef43b504610157132813cda7cbc5aabe71646281b7378ac8"
+    },
+    {
+      "name": "ambient-ambient-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-03-frame-0.png",
+      "sha256": "16a5bcdc4fc627bbccbd6e5422f241e5ae263f1047e074aece55e89e97fb7d03"
+    },
+    {
+      "name": "ambient-ambient-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-03-frame-1.png",
+      "sha256": "389cb53a578b01f6d7804f83544bc05fb37d405b53a95e06eb4d55bbf2ca83e6"
+    },
+    {
+      "name": "ambient-ambient-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-03-frame-2.png",
+      "sha256": "9ef07d79a211a802ac27a548a1b5925569b731556f1da3bc17a02e4b352c478d"
+    },
+    {
+      "name": "ambient-ambient-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-03-frame-3.png",
+      "sha256": "eab01c030db159ff081599b8986883a881b99136b359b3eb38a8bbe7be0b50ae"
+    },
+    {
+      "name": "ambient-ambient-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-03-frame-4.png",
+      "sha256": "ebcccdff29af66b25ec0604b1145f9dca38e56067e7f74343d72ffe1f538f8bf"
+    },
+    {
+      "name": "ambient-ambient-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-03-frame-5.png",
+      "sha256": "8e60a9efe33173b68a3663b4dcbfc190574f48986ecea46c077909da610de102"
+    },
+    {
+      "name": "ambient-ambient-05-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-05-frame-0.png",
+      "sha256": "721a28c189cf3eb032a83cdba6a3e843bbf0732ea2ebc098df08c7eae0f42185"
+    },
+    {
+      "name": "ambient-ambient-05-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-05-frame-1.png",
+      "sha256": "8e0af9f15c7e75b91076060f94c9ba4c1a93c74b0a30e8c4f839e633fcf2692d"
+    },
+    {
+      "name": "ambient-ambient-05-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-05-frame-2.png",
+      "sha256": "9082bd3113a4ff5bb1c37e4ee32d439dc6abf5538d00cb1192f0569559a84741"
+    },
+    {
+      "name": "ambient-ambient-05-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-05-frame-3.png",
+      "sha256": "077a240315f59fce0c04205467268a07f67eafa7a880db7f9ad3302f3432d2d8"
+    },
+    {
+      "name": "ambient-ambient-05-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-05-frame-4.png",
+      "sha256": "1a2689b523d0cfed01dab27bb3570afa4a16999f911f619f04036128a28c3aca"
+    },
+    {
+      "name": "ambient-ambient-05-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\ambient-ambient-05-frame-5.png",
+      "sha256": "7acb6a09e4df4031a5dfe6a4643a67dc16c52ffc3124b472493dbda7c29ec2df"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-126-avpr-2007-hospital-roof\\mobile-canvas.png",
+      "sha256": "b51347fbe6ff185260323061e47278abbdb901e303138c6933a7a7a651410a94"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

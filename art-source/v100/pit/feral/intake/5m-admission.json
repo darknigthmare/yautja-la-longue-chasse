@@ -1,0 +1,436 @@
+{
+  "sourceCell": "05_MOVES_PROPOSES!E10",
+  "records": [
+    {
+      "source": "art-source/v100/pit/feral/intake/007-stand-5m-forward.png",
+      "destination": "public/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+      "bodyHeightPx": 484,
+      "admittedIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "row": 0,
+          "column": 0,
+          "rect": [
+            0,
+            0,
+            504,
+            511
+          ],
+          "visibleRect": [
+            83,
+            18,
+            334,
+            484
+          ],
+          "alphaPixels": 77259,
+          "borderPixels": 0,
+          "visiblePixelSha256": "4b2e278b496a2f87682711414dd1f29202aee8f9246041798403cd1ad206d202",
+          "pivotCandidate": [
+            124.5,
+            502
+          ],
+          "visibleHeightCandidate": 484,
+          "pivot": [
+            250.5,
+            500
+          ]
+        },
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            503,
+            0,
+            590,
+            511
+          ],
+          "visibleRect": [
+            590,
+            21,
+            486,
+            484
+          ],
+          "alphaPixels": 86389,
+          "borderPixels": 0,
+          "visiblePixelSha256": "0754c2c531d168db01cced8a7c5547b08d666192c86da996bb3402e4d9a221c7",
+          "pivotCandidate": [
+            120.5,
+            505
+          ],
+          "visibleHeightCandidate": 484,
+          "pivot": [
+            277,
+            502
+          ]
+        },
+        {
+          "index": 2,
+          "row": 0,
+          "column": 2,
+          "rect": [
+            1092,
+            0,
+            444,
+            511
+          ],
+          "visibleRect": [
+            1109,
+            22,
+            333,
+            481
+          ],
+          "alphaPixels": 80520,
+          "borderPixels": 0,
+          "visiblePixelSha256": "291f8e0543fe69c743034a1f345ee642c0e171195d9e3cc8767593d145701715",
+          "pivotCandidate": [
+            56,
+            503
+          ],
+          "visibleHeightCandidate": 481,
+          "pivot": [
+            183,
+            500
+          ]
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            510,
+            480,
+            514
+          ],
+          "visibleRect": [
+            91,
+            517,
+            377,
+            477
+          ],
+          "alphaPixels": 81104,
+          "borderPixels": 0,
+          "visiblePixelSha256": "15f7d8682e9bdd38ff142c594be533834d11494b002dfdd16ad3dcb43024bd46",
+          "pivotCandidate": [
+            434,
+            484
+          ],
+          "visibleHeightCandidate": 477,
+          "pivot": [
+            279,
+            482
+          ]
+        },
+        {
+          "index": 4,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            479,
+            510,
+            597,
+            514
+          ],
+          "visibleRect": [
+            491,
+            524,
+            522,
+            468
+          ],
+          "alphaPixels": 90480,
+          "borderPixels": 0,
+          "visiblePixelSha256": "1e8a2a5a408373ace1bd11f1a6440fd03e38d52dd5277a0c8271e5cb02c817e7",
+          "pivotCandidate": [
+            498,
+            482
+          ],
+          "visibleHeightCandidate": 468,
+          "pivot": [
+            333,
+            481
+          ]
+        },
+        {
+          "index": 5,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            1075,
+            510,
+            461,
+            514
+          ],
+          "visibleRect": [
+            1138,
+            516,
+            357,
+            478
+          ],
+          "alphaPixels": 85554,
+          "borderPixels": 0,
+          "visiblePixelSha256": "e6e17a0990319395250053628a5dadbc4bbf5e88dab6363622d471990d360388",
+          "pivotCandidate": [
+            388,
+            484
+          ],
+          "visibleHeightCandidate": 478,
+          "pivot": [
+            241,
+            482
+          ]
+        }
+      ]
+    }
+  ],
+  "admission": {
+    "fighterId": "feral-hunter",
+    "actionId": "M_F006_5M",
+    "appearanceId": "runtime-default",
+    "atlasId": "feral-source-5m-v100",
+    "clipIds": [
+      "workbook.M_F006_5M"
+    ],
+    "definition": {
+      "fighterId": "feral-hunter",
+      "bodyHeightPx": 484,
+      "pageBodyHeightPx": {
+        "feral-source-5m-v100-007": 484
+      },
+      "visibleFrameBounds": [
+        {
+          "pageId": "feral-source-5m-v100-007",
+          "rect": [
+            0,
+            0,
+            504,
+            511
+          ],
+          "visibleRect": [
+            83,
+            18,
+            334,
+            484
+          ]
+        },
+        {
+          "pageId": "feral-source-5m-v100-007",
+          "rect": [
+            503,
+            0,
+            590,
+            511
+          ],
+          "visibleRect": [
+            590,
+            21,
+            486,
+            484
+          ]
+        },
+        {
+          "pageId": "feral-source-5m-v100-007",
+          "rect": [
+            1092,
+            0,
+            444,
+            511
+          ],
+          "visibleRect": [
+            1109,
+            22,
+            333,
+            481
+          ]
+        },
+        {
+          "pageId": "feral-source-5m-v100-007",
+          "rect": [
+            0,
+            510,
+            480,
+            514
+          ],
+          "visibleRect": [
+            91,
+            517,
+            377,
+            477
+          ]
+        },
+        {
+          "pageId": "feral-source-5m-v100-007",
+          "rect": [
+            479,
+            510,
+            597,
+            514
+          ],
+          "visibleRect": [
+            491,
+            524,
+            522,
+            468
+          ]
+        },
+        {
+          "pageId": "feral-source-5m-v100-007",
+          "rect": [
+            1075,
+            510,
+            461,
+            514
+          ],
+          "visibleRect": [
+            1138,
+            516,
+            357,
+            478
+          ]
+        }
+      ],
+      "atlas": {
+        "schemaVersion": 1,
+        "id": "feral-source-5m-v100",
+        "characterId": "feral-hunter",
+        "variantId": "body-default-v100",
+        "sourceKind": "authored-frames",
+        "status": "validated",
+        "pages": [
+          {
+            "id": "feral-source-5m-v100-007",
+            "src": "/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+            "width": 1536,
+            "height": 1024,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          }
+        ],
+        "clips": [
+          {
+            "id": "workbook.M_F006_5M",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-5m-v100-007",
+                "rect": [
+                  0,
+                  0,
+                  504,
+                  511
+                ],
+                "pivot": [
+                  250.5,
+                  500
+                ],
+                "durationTicks": 9
+              },
+              {
+                "pageId": "feral-source-5m-v100-007",
+                "rect": [
+                  503,
+                  0,
+                  590,
+                  511
+                ],
+                "pivot": [
+                  277,
+                  502
+                ],
+                "durationTicks": 4
+              },
+              {
+                "pageId": "feral-source-5m-v100-007",
+                "rect": [
+                  1092,
+                  0,
+                  444,
+                  511
+                ],
+                "pivot": [
+                  183,
+                  500
+                ],
+                "durationTicks": 16
+              }
+            ]
+          },
+          {
+            "id": "workbook.M_F006_5M",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-5m-v100-007",
+                "rect": [
+                  0,
+                  510,
+                  480,
+                  514
+                ],
+                "pivot": [
+                  279,
+                  482
+                ],
+                "durationTicks": 9
+              },
+              {
+                "pageId": "feral-source-5m-v100-007",
+                "rect": [
+                  479,
+                  510,
+                  597,
+                  514
+                ],
+                "pivot": [
+                  333,
+                  481
+                ],
+                "durationTicks": 4
+              },
+              {
+                "pageId": "feral-source-5m-v100-007",
+                "rect": [
+                  1075,
+                  510,
+                  461,
+                  514
+                ],
+                "pivot": [
+                  241,
+                  482
+                ],
+                "durationTicks": 16
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "review": {
+      "status": "validated",
+      "scope": "source-E10-5M-body-cycle",
+      "sourceSha256": "c1b95635c5581dd0fa520e779e461433528640a1e83f2b0488ad05bc1acdcdbd",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/feral/007-stand-5m-forward.png": "c1b95635c5581dd0fa520e779e461433528640a1e83f2b0488ad05bc1acdcdbd"
+      },
+      "notes": "Originaux PNG copiés inchangés ; trois vrais dessins articulés par côté, calibration debout exclue. Double revue root/QA et texte exact E10 relu. Pivots manuels entre les deux appuis, soles alpha128 revues ; référence debout fixe indépendante par page, jamais par pose. Étude de revers source distincte de la percée à la lance actuelle ; aucune nouvelle liaison au coup moyen debout."
+    }
+  }
+}

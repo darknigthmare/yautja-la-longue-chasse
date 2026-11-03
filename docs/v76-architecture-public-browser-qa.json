@@ -1,0 +1,1134 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "expectedVersion": "V76",
+  "checks": [
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "convoy-workshop",
+      "distance": 727.2013700891996,
+      "start": {
+        "x": 1280,
+        "y": 4480
+      },
+      "approach": {
+        "x": 1906.1213778006543,
+        "y": 4256.44361879196
+      },
+      "noTeleport": true,
+      "activeDoorId": "convoy-workshop",
+      "regionalDirections": [],
+      "regionalNativeBeacons": [],
+      "paintedDoor": {
+        "threshold": {
+          "x": 1880,
+          "y": 4191.5
+        },
+        "approach": {
+          "x": 1906.1213778006543,
+          "y": 4256.44361879196
+        },
+        "clearWidth": 101.98095013576162,
+        "clearHeight": 186.0170795398297,
+        "paintedSocket": {
+          "x": 836,
+          "y": 405,
+          "width": 204,
+          "height": 448,
+          "threshold": {
+            "x": 938,
+            "y": 829.5
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 18.29765930834961,
+        "normal": {
+          "x": 0.3731625400093468,
+          "y": 0.9277659827422927
+        },
+        "groundOpening": {
+          "left": {
+            "x": 1832.6839348801432,
+            "y": 4210.505749898955
+          },
+          "right": {
+            "x": 1927.3160651198568,
+            "y": 4172.494250101045
+          }
+        }
+      },
+      "nativeSource": "/game/homeworld/v76/architecture/convoy-workshop.png",
+      "fixtureIds": [
+        "v75-frontage:convoy-workshop:1",
+        "v75-frontage:convoy-workshop:2"
+      ],
+      "preservedInterior": "convoy-two-workbenches"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "convoy-south-shelter",
+      "distance": 833.708941685565,
+      "start": {
+        "x": 1906,
+        "y": 4256
+      },
+      "approach": {
+        "x": 2390,
+        "y": 4751
+      },
+      "noTeleport": true,
+      "activeDoorId": "convoy-south-shelter",
+      "regionalDirections": [],
+      "regionalNativeBeacons": [],
+      "paintedDoor": {
+        "threshold": {
+          "x": 2390,
+          "y": 4681
+        },
+        "approach": {
+          "x": 2390,
+          "y": 4751
+        },
+        "clearWidth": 102.26912928759894,
+        "clearHeight": 180.4749340369393,
+        "paintedSocket": {
+          "x": 632,
+          "y": 398,
+          "width": 272,
+          "height": 480,
+          "threshold": {
+            "x": 768,
+            "y": 878
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 10.488281514554362
+      },
+      "nativeSource": "/game/homeworld/v75/architecture/convoy-south-shelter.png",
+      "fixtureIds": [
+        "v75-frontage:convoy-south-shelter:1",
+        "v75-frontage:convoy-south-shelter:2"
+      ],
+      "preservedInterior": "shelter-open-common-room"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "convoy-store",
+      "distance": 2851.6384445326175,
+      "start": {
+        "x": 2390,
+        "y": 4751
+      },
+      "approach": {
+        "x": 2581.221641027005,
+        "y": 4157.810704860716
+      },
+      "noTeleport": true,
+      "activeDoorId": "convoy-store",
+      "regionalDirections": [],
+      "regionalNativeBeacons": [],
+      "paintedDoor": {
+        "threshold": {
+          "x": 2610,
+          "y": 4094
+        },
+        "approach": {
+          "x": 2581.221641027005,
+          "y": 4157.810704860716
+        },
+        "clearWidth": 148.43478628219637,
+        "clearHeight": 177.71091390897385,
+        "paintedSocket": {
+          "x": 435,
+          "y": 377,
+          "width": 302,
+          "height": 469,
+          "threshold": {
+            "x": 586,
+            "y": 808.5
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 14.817177171024461,
+        "normal": {
+          "x": -0.4111194138999296,
+          "y": 0.9115814980102319
+        },
+        "groundOpening": {
+          "left": {
+            "x": 2541.8925177658502,
+            "y": 4064.511149422446
+          },
+          "right": {
+            "x": 2678.1074822341498,
+            "y": 4123.488850577553
+          }
+        }
+      },
+      "nativeSource": "/game/homeworld/v76/architecture/convoy-store.png",
+      "fixtureIds": [
+        "v75-frontage:convoy-store:1",
+        "v75-frontage:convoy-store:2"
+      ],
+      "preservedInterior": "convoy-three-storage-bays"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "market-canopy",
+      "distance": 3197.600377569805,
+      "start": {
+        "x": 2581,
+        "y": 4158
+      },
+      "approach": {
+        "x": 2180,
+        "y": 2736
+      },
+      "noTeleport": true,
+      "activeDoorId": "market-canopy",
+      "regionalDirections": [
+        {
+          "regionId": "glass-desert",
+          "visibility": "hidden",
+          "text": "↘ Arches du DépartRepère · rejoindre le seuil extérieur"
+        },
+        {
+          "regionId": "pillar-jungle",
+          "visibility": "hidden",
+          "text": "↑ Passerelle des PiliersRepère · rejoindre le seuil extérieur"
+        },
+        {
+          "regionId": "leviathan-coast",
+          "visibility": "hidden",
+          "text": "↖ Corniche des MaréesRepère · rejoindre le seuil extérieur"
+        }
+      ],
+      "regionalNativeBeacons": [
+        {
+          "regionId": "glass-desert",
+          "propId": "direction-v72:glass-desert",
+          "visibility": "visible",
+          "imageLoaded": true
+        },
+        {
+          "regionId": "pillar-jungle",
+          "propId": "direction-v72:pillar-jungle",
+          "visibility": "visible",
+          "imageLoaded": true
+        },
+        {
+          "regionId": "leviathan-coast",
+          "propId": "direction-v72:leviathan-coast",
+          "visibility": "visible",
+          "imageLoaded": true
+        }
+      ],
+      "paintedDoor": {
+        "threshold": {
+          "x": 2180,
+          "y": 2666
+        },
+        "approach": {
+          "x": 2180,
+          "y": 2736
+        },
+        "clearWidth": 122.94117647058823,
+        "clearHeight": 172.86274509803923,
+        "paintedSocket": {
+          "x": 603,
+          "y": 386,
+          "width": 330,
+          "height": 464,
+          "threshold": {
+            "x": 768,
+            "y": 850
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 4.54663576112953
+      },
+      "nativeSource": "/game/homeworld/v75/architecture/market-canopy.png",
+      "fixtureIds": [
+        "v75-frontage:market-canopy:1",
+        "v75-frontage:market-canopy:2"
+      ],
+      "preservedInterior": "market-open-stalls"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "dock-control",
+      "distance": 5151.99217444143,
+      "start": {
+        "x": 2180,
+        "y": 2736
+      },
+      "approach": {
+        "x": 511.6273831772375,
+        "y": 3028.9921449447406
+      },
+      "noTeleport": true,
+      "activeDoorId": "dock-control",
+      "regionalDirections": [
+        {
+          "regionId": "ash-marches",
+          "visibility": "hidden",
+          "text": "↖ Chaussée des CendresRepère · rejoindre le seuil extérieur"
+        }
+      ],
+      "regionalNativeBeacons": [
+        {
+          "regionId": "ash-marches",
+          "propId": "direction-v72:ash-marches",
+          "visibility": "visible",
+          "imageLoaded": true
+        }
+      ],
+      "paintedDoor": {
+        "threshold": {
+          "x": 540,
+          "y": 2965
+        },
+        "approach": {
+          "x": 511.6273831772375,
+          "y": 3028.9921449447406
+        },
+        "clearWidth": 115.37970592147386,
+        "clearHeight": 212.02520536863324,
+        "paintedSocket": {
+          "x": 490,
+          "y": 340,
+          "width": 233,
+          "height": 534,
+          "threshold": {
+            "x": 606.5,
+            "y": 843
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 7.8985972377070155,
+        "normal": {
+          "x": -0.405323097468036,
+          "y": 0.9141734992105804
+        },
+        "groundOpening": {
+          "left": {
+            "x": 487.6675075732081,
+            "y": 2940.7218334499653
+          },
+          "right": {
+            "x": 592.3324924267919,
+            "y": 2989.2781665500347
+          }
+        }
+      },
+      "nativeSource": "/game/homeworld/v76/architecture/dock-control.png",
+      "fixtureIds": [
+        "v75-frontage:dock-control:1",
+        "v75-frontage:dock-control:2"
+      ],
+      "preservedInterior": "dock-side-office"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "trophy-mausoleum",
+      "distance": 7013.754791517711,
+      "start": {
+        "x": 512,
+        "y": 3029
+      },
+      "approach": {
+        "x": 653.2703181035313,
+        "y": 2029.6956266351413
+      },
+      "noTeleport": true,
+      "activeDoorId": "trophy-mausoleum",
+      "regionalDirections": [
+        {
+          "regionId": "leviathan-coast",
+          "visibility": "hidden",
+          "text": "↖ Corniche des MaréesRepère · rejoindre le seuil extérieur"
+        }
+      ],
+      "regionalNativeBeacons": [
+        {
+          "regionId": "leviathan-coast",
+          "propId": "direction-v72:leviathan-coast",
+          "visibility": "visible",
+          "imageLoaded": true
+        }
+      ],
+      "paintedDoor": {
+        "threshold": {
+          "x": 680,
+          "y": 1965
+        },
+        "approach": {
+          "x": 653.2703181035313,
+          "y": 2029.6956266351413
+        },
+        "clearWidth": 110.58558631715283,
+        "clearHeight": 160.96888055648236,
+        "paintedSocket": {
+          "x": 494,
+          "y": 476,
+          "width": 222,
+          "height": 407,
+          "threshold": {
+            "x": 605,
+            "y": 855.5
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 8.471968381445201,
+        "normal": {
+          "x": -0.3818525985209811,
+          "y": 0.9242232376448747
+        },
+        "groundOpening": {
+          "left": {
+            "x": 629.2399268699729,
+            "y": 1943.0749469530535
+          },
+          "right": {
+            "x": 730.7600731300271,
+            "y": 1986.9250530469465
+          }
+        }
+      },
+      "nativeSource": "/game/homeworld/v76/architecture/trophy-mausoleum.png",
+      "fixtureIds": [
+        "v75-frontage:trophy-mausoleum:1",
+        "v75-frontage:trophy-mausoleum:2"
+      ],
+      "preservedInterior": "mausoleum-processional-aisle"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "pit-gate",
+      "distance": 3594.2332199398097,
+      "start": {
+        "x": 653,
+        "y": 2030
+      },
+      "approach": {
+        "x": 2300,
+        "y": 1062
+      },
+      "noTeleport": true,
+      "activeDoorId": "pit-gate",
+      "regionalDirections": [
+        {
+          "regionId": "pillar-jungle",
+          "visibility": "hidden",
+          "text": "↑ Passerelle des PiliersRepère · rejoindre le seuil extérieur"
+        },
+        {
+          "regionId": "first-city-ruins",
+          "visibility": "hidden",
+          "text": "← Voie des StèlesRepère · rejoindre le seuil extérieur"
+        }
+      ],
+      "regionalNativeBeacons": [
+        {
+          "regionId": "pillar-jungle",
+          "propId": "direction-v72:pillar-jungle",
+          "visibility": "visible",
+          "imageLoaded": true
+        },
+        {
+          "regionId": "first-city-ruins",
+          "propId": "direction-v72:first-city-ruins",
+          "visibility": "visible",
+          "imageLoaded": true
+        }
+      ],
+      "paintedDoor": {
+        "threshold": {
+          "x": 2300,
+          "y": 992
+        },
+        "approach": {
+          "x": 2300,
+          "y": 1062
+        },
+        "clearWidth": 121.24414715719064,
+        "clearHeight": 148.31438127090303,
+        "paintedSocket": {
+          "x": 609,
+          "y": 580,
+          "width": 318,
+          "height": 389,
+          "threshold": {
+            "x": 768,
+            "y": 969
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 1.9941766023492162
+      },
+      "nativeSource": "/game/homeworld/v75/architecture/pit-gate.png",
+      "fixtureIds": [
+        "v75-frontage:pit-gate:1",
+        "v75-frontage:pit-gate:2"
+      ],
+      "preservedInterior": "arena-lateral-preparation"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "rite-sanctum",
+      "distance": 3520.2376885097838,
+      "start": {
+        "x": 2300,
+        "y": 1062
+      },
+      "approach": {
+        "x": 3624.318473912295,
+        "y": 966.6400169605175
+      },
+      "noTeleport": true,
+      "activeDoorId": "rite-sanctum",
+      "regionalDirections": [
+        {
+          "regionId": "storm-chain",
+          "visibility": "hidden",
+          "text": "↗ Départ des Trois VentsRepère · rejoindre le seuil extérieur"
+        },
+        {
+          "regionId": "first-city-ruins",
+          "visibility": "hidden",
+          "text": "← Voie des StèlesRepère · rejoindre le seuil extérieur"
+        }
+      ],
+      "regionalNativeBeacons": [
+        {
+          "regionId": "storm-chain",
+          "propId": "direction-v72:storm-chain",
+          "visibility": "visible",
+          "imageLoaded": true
+        },
+        {
+          "regionId": "first-city-ruins",
+          "propId": "direction-v72:first-city-ruins",
+          "visibility": "visible",
+          "imageLoaded": true
+        }
+      ],
+      "paintedDoor": {
+        "threshold": {
+          "x": 3600,
+          "y": 901
+        },
+        "approach": {
+          "x": 3624.318473912295,
+          "y": 966.6400169605175
+        },
+        "clearWidth": 135.10953385511144,
+        "clearHeight": 208.07215580392636,
+        "paintedSocket": {
+          "x": 833,
+          "y": 386,
+          "width": 267,
+          "height": 490,
+          "threshold": {
+            "x": 966.5,
+            "y": 849
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 12.341813611188805,
+        "normal": {
+          "x": 0.3474067701756413,
+          "y": 0.9377145280073939
+        },
+        "groundOpening": {
+          "left": {
+            "x": 3536.2898330279263,
+            "y": 923.4646646764837
+          },
+          "right": {
+            "x": 3663.7101669720737,
+            "y": 878.5353353235163
+          }
+        }
+      },
+      "nativeSource": "/game/homeworld/v76/architecture/rite-sanctum.png",
+      "fixtureIds": [
+        "v75-frontage:rite-sanctum:1",
+        "v75-frontage:rite-sanctum:2"
+      ],
+      "preservedInterior": "rite-central-passage"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "enforcer-bastion",
+      "distance": 1611.884019170808,
+      "start": {
+        "x": 3624,
+        "y": 967
+      },
+      "approach": {
+        "x": 4520,
+        "y": 2038.5
+      },
+      "noTeleport": true,
+      "activeDoorId": "enforcer-bastion",
+      "regionalDirections": [
+        {
+          "regionId": "luminous-marshes",
+          "visibility": "hidden",
+          "text": "→ Chaussée des RacinesRepère · rejoindre le seuil extérieur"
+        },
+        {
+          "regionId": "forbidden-reserve",
+          "visibility": "hidden",
+          "text": "↘ Galerie des ObservateursRepère · rejoindre le seuil extérieur"
+        }
+      ],
+      "regionalNativeBeacons": [
+        {
+          "regionId": "luminous-marshes",
+          "propId": "direction-v72:luminous-marshes",
+          "visibility": "visible",
+          "imageLoaded": true
+        },
+        {
+          "regionId": "forbidden-reserve",
+          "propId": "direction-v72:forbidden-reserve",
+          "visibility": "visible",
+          "imageLoaded": true
+        }
+      ],
+      "paintedDoor": {
+        "threshold": {
+          "x": 4520,
+          "y": 1968.5
+        },
+        "approach": {
+          "x": 4520,
+          "y": 2038.5
+        },
+        "clearWidth": 97.4293405114401,
+        "clearHeight": 181.04979811574697,
+        "paintedSocket": {
+          "x": 641,
+          "y": 453,
+          "width": 254,
+          "height": 472,
+          "threshold": {
+            "x": 768,
+            "y": 925
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 10.700023402465959
+      },
+      "nativeSource": "/game/homeworld/v75/architecture/enforcer-bastion.png",
+      "fixtureIds": [
+        "v75-frontage:enforcer-bastion:1",
+        "v75-frontage:enforcer-bastion:2"
+      ],
+      "preservedInterior": "evidence-side-records"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "rampart-north-lodge",
+      "distance": 2285.31529351244,
+      "start": {
+        "x": 4520,
+        "y": 2039
+      },
+      "approach": {
+        "x": 5650,
+        "y": 1899
+      },
+      "noTeleport": true,
+      "activeDoorId": "rampart-north-lodge",
+      "regionalDirections": [
+        {
+          "regionId": "cold-crown",
+          "visibility": "hidden",
+          "text": "↗ Approche de la CouronneRepère · rejoindre le seuil extérieur"
+        },
+        {
+          "regionId": "forbidden-reserve",
+          "visibility": "hidden",
+          "text": "↘ Galerie des ObservateursRepère · rejoindre le seuil extérieur"
+        }
+      ],
+      "regionalNativeBeacons": [
+        {
+          "regionId": "cold-crown",
+          "propId": "direction-v72:cold-crown",
+          "visibility": "visible",
+          "imageLoaded": true
+        },
+        {
+          "regionId": "forbidden-reserve",
+          "propId": "direction-v72:forbidden-reserve",
+          "visibility": "visible",
+          "imageLoaded": true
+        }
+      ],
+      "paintedDoor": {
+        "threshold": {
+          "x": 5650,
+          "y": 1829
+        },
+        "approach": {
+          "x": 5650,
+          "y": 1899
+        },
+        "clearWidth": 117.40056818181819,
+        "clearHeight": 243.70738636363637,
+        "paintedSocket": {
+          "x": 623,
+          "y": 374,
+          "width": 290,
+          "height": 602,
+          "threshold": {
+            "x": 768,
+            "y": 976
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 8.469585285545676
+      },
+      "nativeSource": "/game/homeworld/v75/architecture/rampart-north-lodge.png",
+      "fixtureIds": [
+        "v75-frontage:rampart-north-lodge:1",
+        "v75-frontage:rampart-north-lodge:2"
+      ],
+      "preservedInterior": "rampart-east-rest-chamber"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "rampart-watch",
+      "distance": 1649.1082528649001,
+      "start": {
+        "x": 5650,
+        "y": 1899
+      },
+      "approach": {
+        "x": 5866.312298988585,
+        "y": 2885.866500768388
+      },
+      "noTeleport": true,
+      "activeDoorId": "rampart-watch",
+      "regionalDirections": [],
+      "regionalNativeBeacons": [],
+      "paintedDoor": {
+        "threshold": {
+          "x": 5840,
+          "y": 2821
+        },
+        "approach": {
+          "x": 5866.312298988585,
+          "y": 2885.866500768388
+        },
+        "clearWidth": 131.75492944673812,
+        "clearHeight": 217.8337494521318,
+        "paintedSocket": {
+          "x": 850,
+          "y": 363,
+          "width": 254,
+          "height": 510,
+          "threshold": {
+            "x": 977,
+            "y": 844
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 26.38807256357972,
+        "normal": {
+          "x": 0.3758899855512123,
+          "y": 0.9266642966912609
+        },
+        "groundOpening": {
+          "left": {
+            "x": 5778.794499600839,
+            "y": 2845.366515533967
+          },
+          "right": {
+            "x": 5901.205500399161,
+            "y": 2796.633484466033
+          }
+        }
+      },
+      "nativeSource": "/game/homeworld/v76/architecture/rampart-watch.png",
+      "fixtureIds": [
+        "v75-frontage:rampart-watch:1",
+        "v75-frontage:rampart-watch:2"
+      ],
+      "preservedInterior": "rampart-cross-observation"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "rampart-south-lodge",
+      "distance": 1601.7720158997843,
+      "start": {
+        "x": 5866,
+        "y": 2886
+      },
+      "approach": {
+        "x": 5610,
+        "y": 3635
+      },
+      "noTeleport": true,
+      "activeDoorId": "rampart-south-lodge",
+      "regionalDirections": [],
+      "regionalNativeBeacons": [],
+      "paintedDoor": {
+        "threshold": {
+          "x": 5610,
+          "y": 3565
+        },
+        "approach": {
+          "x": 5610,
+          "y": 3635
+        },
+        "clearWidth": 111.5047879616963,
+        "clearHeight": 184.8016415868673,
+        "paintedSocket": {
+          "x": 625,
+          "y": 399,
+          "width": 286,
+          "height": 474,
+          "threshold": {
+            "x": 768,
+            "y": 873
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 4.078377593039778
+      },
+      "nativeSource": "/game/homeworld/v75/architecture/rampart-south-lodge.png",
+      "fixtureIds": [
+        "v75-frontage:rampart-south-lodge:1",
+        "v75-frontage:rampart-south-lodge:2"
+      ],
+      "preservedInterior": "rampart-offset-common-room"
+    },
+    {
+      "name": "actual-keyboard-door-native-facade-foundation-and-fixtures",
+      "id": "undercity-refuge",
+      "distance": 6277.339603305675,
+      "start": {
+        "x": 5610,
+        "y": 3635
+      },
+      "approach": {
+        "x": 4520,
+        "y": 3278.5
+      },
+      "noTeleport": true,
+      "activeDoorId": "undercity-refuge",
+      "regionalDirections": [],
+      "regionalNativeBeacons": [],
+      "paintedDoor": {
+        "threshold": {
+          "x": 4520,
+          "y": 3208.5
+        },
+        "approach": {
+          "x": 4520,
+          "y": 3278.5
+        },
+        "clearWidth": 98.43373493975905,
+        "clearHeight": 208.3132530120482,
+        "paintedSocket": {
+          "x": 650,
+          "y": 348,
+          "width": 258,
+          "height": 546,
+          "threshold": {
+            "x": 779,
+            "y": 894
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 1.9955113925783654
+      },
+      "nativeSource": "/game/homeworld/v75/architecture/undercity-refuge.png",
+      "fixtureIds": [
+        "v75-frontage:undercity-refuge:1",
+        "v75-frontage:undercity-refuge:2"
+      ],
+      "preservedInterior": "refuge-screened-recess"
+    },
+    {
+      "name": "unchanged-domestic-architecture-native-fitting",
+      "id": "residence-port-1",
+      "distance": 4293.21025087996,
+      "start": {
+        "x": 4520,
+        "y": 3279
+      },
+      "approach": {
+        "x": 510,
+        "y": 3370
+      },
+      "noTeleport": true,
+      "activeDoorId": "residence-port-1",
+      "regionalDirections": [
+        {
+          "regionId": "ash-marches",
+          "visibility": "hidden",
+          "text": "↖ Chaussée des CendresRepère · rejoindre le seuil extérieur"
+        }
+      ],
+      "regionalNativeBeacons": [
+        {
+          "regionId": "ash-marches",
+          "propId": "direction-v72:ash-marches",
+          "visibility": "visible",
+          "imageLoaded": true
+        }
+      ],
+      "paintedDoor": {
+        "threshold": {
+          "x": 510,
+          "y": 3300
+        },
+        "approach": {
+          "x": 510,
+          "y": 3370
+        },
+        "clearWidth": 86.84210526315789,
+        "clearHeight": 129.1578947368421,
+        "paintedSocket": {
+          "x": 444,
+          "y": 839,
+          "width": 275,
+          "height": 409,
+          "threshold": {
+            "x": 584,
+            "y": 1250
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 5.5056214598560995
+      },
+      "nativeSource": "/game/homeworld/v64/house-a-basalt.png",
+      "fixtureIds": [
+        "v75-frontage:residence-port-1:1"
+      ]
+    },
+    {
+      "name": "unchanged-domestic-architecture-native-fitting",
+      "id": "residence-port-2",
+      "distance": 568.1756852205002,
+      "start": {
+        "x": 510,
+        "y": 3373
+      },
+      "approach": {
+        "x": 1070,
+        "y": 3410
+      },
+      "noTeleport": true,
+      "activeDoorId": "residence-port-2",
+      "regionalDirections": [
+        {
+          "regionId": "ash-marches",
+          "visibility": "hidden",
+          "text": "↖ Chaussée des CendresRepère · rejoindre le seuil extérieur"
+        }
+      ],
+      "regionalNativeBeacons": [
+        {
+          "regionId": "ash-marches",
+          "propId": "direction-v72:ash-marches",
+          "visibility": "visible",
+          "imageLoaded": true
+        }
+      ],
+      "paintedDoor": {
+        "threshold": {
+          "x": 1070,
+          "y": 3340
+        },
+        "approach": {
+          "x": 1070,
+          "y": 3410
+        },
+        "clearWidth": 80.53571428571428,
+        "clearHeight": 142.60714285714286,
+        "paintedSocket": {
+          "x": 480,
+          "y": 850,
+          "width": 205,
+          "height": 363,
+          "threshold": {
+            "x": 580,
+            "y": 1213
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 32.19149976200385
+      },
+      "nativeSource": "/game/homeworld/v64/house-b-basalt.png",
+      "fixtureIds": [
+        "v75-frontage:residence-port-2:1"
+      ]
+    },
+    {
+      "name": "unchanged-domestic-architecture-native-fitting",
+      "id": "residence-market-1",
+      "distance": 3639.739381357969,
+      "start": {
+        "x": 1069,
+        "y": 3411
+      },
+      "approach": {
+        "x": 1830,
+        "y": 3210
+      },
+      "noTeleport": true,
+      "activeDoorId": "residence-market-1",
+      "regionalDirections": [
+        {
+          "regionId": "ash-marches",
+          "visibility": "hidden",
+          "text": "↖ Chaussée des CendresRepère · rejoindre le seuil extérieur"
+        },
+        {
+          "regionId": "glass-desert",
+          "visibility": "hidden",
+          "text": "↘ Arches du DépartRepère · rejoindre le seuil extérieur"
+        }
+      ],
+      "regionalNativeBeacons": [
+        {
+          "regionId": "ash-marches",
+          "propId": "direction-v72:ash-marches",
+          "visibility": "visible",
+          "imageLoaded": true
+        },
+        {
+          "regionId": "glass-desert",
+          "propId": "direction-v72:glass-desert",
+          "visibility": "visible",
+          "imageLoaded": true
+        }
+      ],
+      "paintedDoor": {
+        "threshold": {
+          "x": 1830,
+          "y": 3140
+        },
+        "approach": {
+          "x": 1830,
+          "y": 3210
+        },
+        "clearWidth": 85.52036199095024,
+        "clearHeight": 152.71493212669685,
+        "paintedSocket": {
+          "x": 384,
+          "y": 884,
+          "width": 252,
+          "height": 450,
+          "threshold": {
+            "x": 512,
+            "y": 1350
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 11.833349291545916
+      },
+      "nativeSource": "/game/homeworld/v64/house-c-ribbed.png",
+      "fixtureIds": [
+        "v75-frontage:residence-market-1:1"
+      ]
+    },
+    {
+      "name": "mobile-native-facade-fittings-and-actor-visibility",
+      "activeDoorId": "market-canopy",
+      "regionalDirections": [
+        {
+          "regionId": "glass-desert",
+          "visibility": "hidden",
+          "text": "↘ Arches du DépartRepère · rejoindre le seuil extérieur"
+        }
+      ],
+      "regionalNativeBeacons": [
+        {
+          "regionId": "glass-desert",
+          "propId": "direction-v72:glass-desert",
+          "visibility": "visible",
+          "imageLoaded": true
+        }
+      ],
+      "paintedDoor": {
+        "threshold": {
+          "x": 2180,
+          "y": 2666
+        },
+        "approach": {
+          "x": 2180,
+          "y": 2736
+        },
+        "clearWidth": 122.94117647058823,
+        "clearHeight": 172.86274509803923,
+        "paintedSocket": {
+          "x": 603,
+          "y": 386,
+          "width": 330,
+          "height": 464,
+          "threshold": {
+            "x": 768,
+            "y": 850
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 4.54663576112953
+      },
+      "nativeSource": "/game/homeworld/v75/architecture/market-canopy.png",
+      "fixtureIds": [
+        "v75-frontage:market-canopy:1",
+        "v75-frontage:market-canopy:2"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 54,
+        "width": 393,
+        "height": 652
+      },
+      "actor": {
+        "x": 180.1351318359375,
+        "y": 378.724853515625,
+        "width": 31.934814453125,
+        "height": 80.14501953125
+      }
+    },
+    {
+      "name": "all13-served-native-sources-HTTP200-and-byte-exact-SHA",
+      "count": 13
+    }
+  ],
+  "captures": [
+    "work-local/v76/qa/architecture-public/convoy-workshop-native-frontage.png",
+    "work-local/v76/qa/architecture-public/convoy-south-shelter-native-frontage.png",
+    "work-local/v76/qa/architecture-public/convoy-store-native-frontage.png",
+    "work-local/v76/qa/architecture-public/market-canopy-native-frontage.png",
+    "work-local/v76/qa/architecture-public/dock-control-native-frontage.png",
+    "work-local/v76/qa/architecture-public/trophy-mausoleum-native-frontage.png",
+    "work-local/v76/qa/architecture-public/pit-gate-native-frontage.png",
+    "work-local/v76/qa/architecture-public/rite-sanctum-native-frontage.png",
+    "work-local/v76/qa/architecture-public/enforcer-bastion-native-frontage.png",
+    "work-local/v76/qa/architecture-public/rampart-north-lodge-native-frontage.png",
+    "work-local/v76/qa/architecture-public/rampart-watch-native-frontage.png",
+    "work-local/v76/qa/architecture-public/rampart-south-lodge-native-frontage.png",
+    "work-local/v76/qa/architecture-public/undercity-refuge-native-frontage.png",
+    "work-local/v76/qa/architecture-public/residence-port-1-native-frontage.png",
+    "work-local/v76/qa/architecture-public/residence-port-2-native-frontage.png",
+    "work-local/v76/qa/architecture-public/residence-market-1-native-frontage.png",
+    "work-local/v76/qa/architecture-public/market-canopy-mobile-native-frontage.png"
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "notes": [
+    "Campaign prerequisite fixture; walks, doors and native imagery use actual browser runtime.",
+    "Desktop13secondary services plus3unchanged houses and mobile market; full37layout validation is a separate recipe.",
+    "Original local-city architecture, not a canonical1:1 map."
+  ]
+}

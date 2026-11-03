@@ -1,0 +1,296 @@
+TAP version 13
+# Subtest: V113 native court collision reuses its private shape without repeating support projection
+ok 1 - V113 native court collision reuses its private shape without repeating support projection
+  ---
+  duration_ms: 22.882016
+  type: 'test'
+  ...
+# {"repeatedCourtQueries":100,"supportMapsAfterPreparation":0}
+# Subtest: V113 civic collision reuses bounds of its existing polygon without repeating four array maps
+ok 2 - V113 civic collision reuses bounds of its existing polygon without repeating four array maps
+  ---
+  duration_ms: 0.538572
+  type: 'test'
+  ...
+# {"repeatedCivicQueries":100,"polygonMapsAfterPreparation":0}
+# Subtest: V113 cached collision agrees with the native predicates for every mounted court and civic hull
+ok 3 - V113 cached collision agrees with the native predicates for every mounted court and civic hull
+  ---
+  duration_ms: 396.325726
+  type: 'test'
+  ...
+# Subtest: V113 court collision refreshes placement, art and in-place native geometry without changing public polygons
+ok 4 - V113 court collision refreshes placement, art and in-place native geometry without changing public polygons
+  ---
+  duration_ms: 87.671265
+  type: 'test'
+  ...
+# Subtest: V113 bounds follow edits to exposed legacy and civic polygons while retaining their existing cache semantics
+ok 5 - V113 bounds follow edits to exposed legacy and civic polygons while retaining their existing cache semantics
+  ---
+  duration_ms: 53.825171
+  type: 'test'
+  ...
+# Subtest: V113 connector obstruction comes from an actual 1,421-step carry and park, with no invented placement
+not ok 6 - V113 connector obstruction comes from an actual 1,421-step carry and park, with no invented placement
+  ---
+  duration_ms: 8615.999086
+  type: 'test'
+  location: '/workspace/yautja-la-longue-chasse/tests/homeworld-connector-detour-v113.test.mjs:148:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1394 !== 1421
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1421
+  actual: 1394
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-connector-detour-v113.test.mjs:150:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: V113 a carried load preserves the direct Council/acropolis chain and never becomes a ground obstruction
+ok 7 - V113 a carried load preserves the direct Council/acropolis chain and never becomes a ground obstruction
+  ---
+  duration_ms: 334.484819
+  type: 'test'
+  ...
+# Subtest: V113 a blocked departure takes the lift, reaches the real audience, and returns through an unoccupied landing
+ok 8 - V113 a blocked departure takes the lift, reaches the real audience, and returns through an unoccupied landing
+  ---
+  duration_ms: 18825.431234
+  type: 'test'
+  ...
+# {"outward":{"planMs":3340.413234999998,"ticks":854,"walked":4315.92830795082,"rideTicks":172},"returned":{"planMs":2702.4584749999995,"ticks":1940,"walked":9609.76251764046,"rideTicks":172}}
+# Subtest: V113 a free departure cannot select the Council stair when its ground arrival is occupied
+ok 9 - V113 a free departure cannot select the Council stair when its ground arrival is occupied
+  ---
+  duration_ms: 212.802431
+  type: 'test'
+  ...
+# Subtest: V113 the guide reaches a nearby safe corner when every farther candidate cuts the turn
+ok 10 - V113 the guide reaches a nearby safe corner when every farther candidate cuts the turn
+  ---
+  duration_ms: 736.470939
+  type: 'test'
+  ...
+# Subtest: V113 the guide rejoins the nearby path after an earlier safe shortcut leaves its long lookahead blocked
+ok 11 - V113 the guide rejoins the nearby path after an earlier safe shortcut leaves its long lookahead blocked
+  ---
+  duration_ms: 36.268358
+  type: 'test'
+  ...
+# Subtest: before native images decode the building child paints no orphan flame
+ok 12 - before native images decode the building child paints no orphan flame
+  ---
+  duration_ms: 59.512861
+  type: 'test'
+  ...
+# Subtest: six distinct native frames advance only with the supplied clock and hold in reduced motion
+ok 13 - six distinct native frames advance only with the supplied clock and hold in reduced motion
+  ---
+  duration_ms: 1.145608
+  type: 'test'
+  ...
+# Subtest: binding rejects a different building, old facade, different atlas cell and nonuniform scaling
+ok 14 - binding rejects a different building, old facade, different atlas cell and nonuniform scaling
+  ---
+  duration_ms: 0.274334
+  type: 'test'
+  ...
+# Subtest: native frame anchors share one physical hearth and one positive uniform image scale
+ok 15 - native frame anchors share one physical hearth and one positive uniform image scale
+  ---
+  duration_ms: 0.399122
+  type: 'test'
+  ...
+# Subtest: reused originals retain exact bytes, native dimensions and alpha without modifying Pit data
+ok 16 - reused originals retain exact bytes, native dimensions and alpha without modifying Pit data
+  ---
+  duration_ms: 7.692855
+  type: 'test'
+  ...
+# Subtest: the three same-level fissures produce bounded real joints without removing or changing retained support
+ok 17 - the three same-level fissures produce bounded real joints without removing or changing retained support
+  ---
+  duration_ms: 184.498548
+  type: 'test'
+  ...
+# Subtest: a full native actor can cross each repaired fissure and return through the actual civic controller
+ok 18 - a full native actor can cross each repaired fissure and return through the actual civic controller
+  ---
+  duration_ms: 212.0595
+  type: 'test'
+  ...
+# Subtest: the existing paving renderer and native exclusion mask consume every physical joint once
+ok 19 - the existing paving renderer and native exclusion mask consume every physical joint once
+  ---
+  duration_ms: 2330.855749
+  type: 'test'
+  ...
+# Subtest: retained objects, door approaches, solids and all sampled former support survive the added joints
+ok 20 - retained objects, door approaches, solids and all sampled former support survive the added joints
+  ---
+  duration_ms: 4197.887801
+  type: 'test'
+  ...
+# Subtest: identical source contracts still share one decoder in adult and youth batches
+ok 21 - identical source contracts still share one decoder in adult and youth batches
+  ---
+  duration_ms: 6.534716
+  type: 'test'
+  ...
+# Subtest: conflicting dimensions cannot be hidden by source order: correct declaration last
+ok 22 - conflicting dimensions cannot be hidden by source order: correct declaration last
+  ---
+  duration_ms: 1.088342
+  type: 'test'
+  ...
+# Subtest: conflicting dimensions cannot be hidden by source order: incorrect declaration last
+ok 23 - conflicting dimensions cannot be hidden by source order: incorrect declaration last
+  ---
+  duration_ms: 0.584001
+  type: 'test'
+  ...
+# Subtest: a duplicate of native metadata cannot erase a contradictory consumer of the same PNG
+ok 24 - a duplicate of native metadata cannot erase a contradictory consumer of the same PNG
+  ---
+  duration_ms: 0.642339
+  type: 'test'
+  ...
+# Subtest: retry retains all dimension contracts and refreshes the exact renderer URL
+ok 25 - retry retains all dimension contracts and refreshes the exact renderer URL
+  ---
+  duration_ms: 1.048882
+  type: 'test'
+  ...
+# Subtest: V113 a cold lift-to-steward request joins the coarse streets without a global fine-grid search
+ok 26 - V113 a cold lift-to-steward request joins the coarse streets without a global fine-grid search
+  ---
+  duration_ms: 10223.459245
+  type: 'test'
+  ...
+# {"coldMs":5579.5430910000005,"globalFineCalls":0,"distance":7101.073952597615,"points":16}
+# Subtest: atlas button cancels the request before the parent closes or a frame runs
+ok 27 - atlas button cancels the request before the parent closes or a frame runs
+  ---
+  duration_ms: 3375.075966
+  type: 'test'
+  ...
+# Subtest: atlas Escape cancels the request before the parent closes or a frame runs
+ok 28 - atlas Escape cancels the request before the parent closes or a frame runs
+  ---
+  duration_ms: 1948.539729
+  type: 'test'
+  ...
+# Subtest: atlas gamepad cancels the request before the parent closes or a frame runs
+ok 29 - atlas gamepad cancels the request before the parent closes or a frame runs
+  ---
+  duration_ms: 2150.374367
+  type: 'test'
+  ...
+# Subtest: an external atlas close rejects a response before the cancellation UI frame
+ok 30 - an external atlas close rejects a response before the cancellation UI frame
+  ---
+  duration_ms: 2009.24561
+  type: 'test'
+  ...
+# Subtest: reopening before the cancellation frame cannot revive the old request or leave planning stuck
+ok 31 - reopening before the cancellation frame cannot revive the old request or leave planning stuck
+  ---
+  duration_ms: 2361.133203
+  type: 'test'
+  ...
+# Subtest: cancelling a replacement keeps the previously confirmed route
+ok 32 - cancelling a replacement keeps the previously confirmed route
+  ---
+  duration_ms: 1814.612851
+  type: 'test'
+  ...
+# Subtest: suspension invalidates a pending replacement before RAF and preserves the confirmed route after resuming
+ok 33 - suspension invalidates a pending replacement before RAF and preserves the confirmed route after resuming
+  ---
+  duration_ms: 2205.376844
+  type: 'test'
+  ...
+# Subtest: an old cancellation frame cannot stop or clear a newer request after reopening
+ok 34 - an old cancellation frame cannot stop or clear a newer request after reopening
+  ---
+  duration_ms: 1995.236589
+  type: 'test'
+  ...
+# Subtest: voluntary recalculation while the atlas is closed still installs its current result
+ok 35 - voluntary recalculation while the atlas is closed still installs its current result
+  ---
+  duration_ms: 1677.453632
+  type: 'test'
+  ...
+# Subtest: late worker errors after cancellation cannot replace a new request notice or prevent retry
+ok 36 - late worker errors after cancellation cannot replace a new request notice or prevent retry
+  ---
+  duration_ms: 1884.583033
+  type: 'test'
+  ...
+# Subtest: Existing forge and medbay physical services give cosmetic access without moving their authored point IDs
+ok 37 - Existing forge and medbay physical services give cosmetic access without moving their authored point IDs
+  ---
+  duration_ms: 6.425101
+  type: 'test'
+  ...
+# Subtest: in-hunt layered sprite uses cached masked PHG composites for skin dread and outfit
+ok 38 - in-hunt layered sprite uses cached masked PHG composites for skin dread and outfit
+  ---
+  duration_ms: 9.490245
+  type: 'test'
+  ...
+# Subtest: PHG texture material lookup is applied to rig and Homeworld three layer categories
+ok 39 - PHG texture material lookup is applied to rig and Homeworld three layer categories
+  ---
+  duration_ms: 1.936531
+  type: 'test'
+  ...
+# Subtest: PHG materials are backed by actual checked-in PNG paths
+ok 40 - PHG materials are backed by actual checked-in PNG paths
+  ---
+  duration_ms: 4.981113
+  type: 'test'
+  ...
+# Subtest: Palette schema persists three independent material slots
+ok 41 - Palette schema persists three independent material slots
+  ---
+  duration_ms: 5.034499
+  type: 'test'
+  ...
+# Subtest: V113 accepts its own complete recipe and rejects historical, partial, erroneous or relabeled evidence
+ok 42 - V113 accepts its own complete recipe and rejects historical, partial, erroneous or relabeled evidence
+  ---
+  duration_ms: 21.253689
+  type: 'test'
+  ...
+# Subtest: V113 recipe inventory follows actual relative fixture imports through cycles and records JSON inputs
+ok 43 - V113 recipe inventory follows actual relative fixture imports through cycles and records JSON inputs
+  ---
+  duration_ms: 73.66728
+  type: 'test'
+  ...
+# Subtest: V113 source closure refuses path escapes and symlinked evidence rather than silently omitting them
+ok 44 - V113 source closure refuses path escapes and symlinked evidence rather than silently omitting them
+  ---
+  duration_ms: 12.076616
+  type: 'test'
+  ...
+1..44
+# tests 44
+# suites 0
+# pass 43
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 91204.834072

@@ -1,0 +1,3459 @@
+{
+  "schemaVersion": 1,
+  "release": "V55",
+  "status": "reference-audit-complete-with-explicit-primary-gaps",
+  "checkedOn": "2026-09-27",
+  "scope": {
+    "total": 93,
+    "referenceNeededV54": 30,
+    "identityUnverifiedV54": 63,
+    "excludedComicsOwnedElsewhere": 45,
+    "rosterTotal": 195,
+    "selectionUnit": "identity-not-appearance",
+    "allScopedIdsExplicitlyAssigned": true
+  },
+  "policy": {
+    "runtimeModified": false,
+    "personalStageCountAdded": 0,
+    "exactGeometryCertified": false,
+    "publicationClaim": "Ce fichier propose des associations et décors. Il ne prouve ni génération, ni intégration, ni publication.",
+    "noAutomaticCanonCompletion": "Une exposition choisie ne ferme pas une lacune de source biographique. identity-unverified V54 n’était pas une déclaration de personnage inventé.",
+    "originalExhibitions": "Les100 arènes originales sont des lieux du projet. Leur sélection ne les rend pas canoniques.",
+    "newPlanCounts": "Une nouvelle famille de lieu partagée se compte une fois, jamais une fois par variante/personnage.",
+    "primaryEvidence": "Les faits factuels utilisés viennent de notices officielles, manuels ou propos directs d’auteur. Les pistes secondaires ci-dessous ne sont pas des preuves primaires.",
+    "sourceArtwork": "Aucun fichier officiel téléchargé pour usage runtime ; images de packaging/manuels consultées seulement comme références."
+  },
+  "counts": {
+    "shared-work-setting": 22,
+    "original-exhibition": 62,
+    "shared-fan-film-setting": 3,
+    "deleted-concept-shared-work-setting": 2,
+    "work-attested-identity-link-pending": 4
+  },
+  "minimumNewLocationPlansExcludingDeadEnd": [
+    "avp2-lv1201-hunt",
+    "primal-hunt-pilot-ruins",
+    "extinction-lv742"
+  ],
+  "optionalSharedNovelPlans": [
+    "rage-war-umf12",
+    "rift-war-lv363"
+  ],
+  "sources": {
+    "extinction-manual": {
+      "title": "EA — Aliens Versus Predator: Extinction, manuel PS2",
+      "url": "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf",
+      "kind": "primary-publisher-manual-rehosted",
+      "checkedOn": "2026-09-27",
+      "claim": "LV-742 est une planète froide. Le manuel présente Brawler, Hunter, Spear Master, Stalker, Disc Master, Vanguard, Hydra et Blazer, ainsi que Shrine et Predgun.",
+      "limits": "PDF 16 pages ; introduction PDF8/imprimée6 ; unités PDF9–11/imprimées20–22. Ces pages ont été rendues et inspectées. Ancient ne figure pas dans cette liste de huit classes."
+    },
+    "avp2-prima": {
+      "title": "Prima/Fox — Aliens versus Predator 2, guide officiel",
+      "url": "https://oldgamesdownload.com/wp-content/uploads/Aliens_versus_Predator_2_Prima_Guide.pdf",
+      "kind": "primary-licensed-guide-rehosted",
+      "checkedOn": "2026-09-27",
+      "claim": "La campagne Predator commence avec un jeune chasseur sur LV-1201 ; Hunt comporte forêt et ruines.",
+      "limits": "PDF105–110, pages imprimées91–96. Le surnom Prince n’est pas établi dans les passages examinés. Géométrie non certifiée."
+    },
+    "primal-sierra-release": {
+      "title": "Sierra — annonce Primal Hunt, communiqué reproduit le 16 avril 2002",
+      "url": "https://www.ggmania.com/?smsid=aliens-vs-predator-2-expansion-announced-11091",
+      "kind": "primary-publisher-statement-reproduced",
+      "checkedOn": "2026-09-27",
+      "claim": "L’histoire du Predator ancien se déroule sur LV-1201, cinq siècles avant AVP2 ; elle implique des ruines des Pilotes et un artefact.",
+      "limits": "Source primaire = communiqué Sierra cité dans l’article, pas les commentaires. Aucune salle précise certifiée."
+    },
+    "primal-manual": {
+      "title": "Sierra/Fox — manuel Primal Hunt",
+      "url": "https://manuals.plus/m/8e3276e114e335d2d35b0a04f7890c5e10f243ad8cfa95c1d16e75087680cd2f",
+      "kind": "primary-publisher-manual-reproduced",
+      "checkedOn": "2026-09-27",
+      "claim": "Le manuel distingue le Predator ancien et son équipement de celui du jeu de base.",
+      "limits": "N’établit pas une apparence 1:1 des PNG fournis."
+    },
+    "stone-neca": {
+      "title": "NECA — Concrete Jungle Stone Heart",
+      "url": "https://store.necaonline.com/products/predator-7-scale-action-figure-concrete-jungle-stone-heart-predator",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Stone Heart provient de Concrete Jungle et a été transformé par Borgia Industries.",
+      "limits": "Ne certifie ni Long Spear/Swift Knife ni une salle particulière."
+    },
+    "scarface-neca": {
+      "title": "NECA — Scarface, Video Game Appearance",
+      "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-video-game-appearance-ultimate-scarface-predator",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Référence Concrete Jungle utilisée par le registre existant pour Neonopolis.",
+      "limits": "Réutilisation de lieu d’œuvre ; pas de nouveau lieu personnel."
+    },
+    "serpent-neca": {
+      "title": "NECA — Predator Series 17",
+      "url": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Serpent Hunter est issu du jeu Aliens vs. Predator de 2010.",
+      "limits": "Ne pas le rattacher au film AVP 2004 sur la seule base du dossier d’import."
+    },
+    "samurai-neca": {
+      "title": "NECA — Hunting Grounds Ultimate Samurai",
+      "url": "https://store.necaonline.com/products/predator-hunting-grounds-ultimate-samurai-predator-7-inch-scale-action-figure",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Samurai vient de Hunting Grounds ; sa présentation évoque des chasses au Japon féodal.",
+      "limits": "Aucun village, château ou siècle précis déduit."
+    },
+    "samurai-illfonic": {
+      "title": "IllFonic — arrivée de Samurai dans Hunting Grounds",
+      "url": "https://blog.playstation.com/?p=332767",
+      "kind": "primary-developer",
+      "checkedOn": "2026-09-27",
+      "claim": "IllFonic confirme la classe Samurai et son inspiration de légende japonaise.",
+      "limits": "Ne pas confondre avec Oni de Killer of Killers ou un avatar samouraï descriptif."
+    },
+    "alpha-illfonic": {
+      "title": "IllFonic — mise à jour gratuite juillet 2020",
+      "url": "https://blog.playstation.com/?p=333379",
+      "kind": "primary-developer",
+      "checkedOn": "2026-09-27",
+      "claim": "Alpha Predator est une classe jouable de Hunting Grounds.",
+      "limits": "Pas de planète d’origine individuelle déduite."
+    },
+    "alpha-neca": {
+      "title": "NECA — Alpha arrive dans Hunting Grounds",
+      "url": "https://necaonline.com/2020/06/the-alpha-is-coming-to-predator-hunting-grounds/",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Alpha possède une histoire originale NECA et une adaptation officielle dans Hunting Grounds.",
+      "limits": "L’origine détaillée sur l’emballage n’a pas été validée ici ; pas d’assimilation automatique à un roi canonique."
+    },
+    "phg-official": {
+      "title": "IllFonic — Predator Hunting Grounds",
+      "url": "https://predator.illfonic.com/",
+      "kind": "primary-developer",
+      "checkedOn": "2026-09-27",
+      "claim": "Le cadre général du jeu est la jungle sud-américaine.",
+      "limits": "Une recommandation Overgrowth est une association à l’œuvre, pas une chasse biographique attestée."
+    },
+    "bigred-neca": {
+      "title": "NECA — Series 7 Big Red",
+      "url": "https://store.necaonline.com/blogs/news/closer-look-predators-series-7-big-red-predator-action-figure",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Big Red est rattaché au fan-film Batman: Dead End.",
+      "limits": "Le statut fan-film doit rester visible ; pas de continuité cinéma officielle revendiquée."
+    },
+    "albino-neca": {
+      "title": "NECA — SDCC 2013 Albino",
+      "url": "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-2013-exclusive-meet-the-albino-predator-action-figure",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Albino est rattaché au fan-film Dead End.",
+      "limits": "Figurine licenciée ne transforme pas le fan-film en canon cinéma."
+    },
+    "wasp-neca": {
+      "title": "NECA — Shipping Series 11",
+      "url": "https://store.necaonline.com/blogs/news/174239303-shipping-predators-series-11-a-new-pacific-rim-action-figure-2-pack-and-tf2-blu-soldier-and-heavy",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Wasp est rattaché au fan-film Dead End.",
+      "limits": "Ne pas confondre avec un chasseur de Predator 2."
+    },
+    "deadend-director": {
+      "title": "Sandy Collora — entretien sur Batman: Dead End",
+      "url": "https://mediamikes.com/2011/02/interview-with-sandy-collora/",
+      "kind": "primary-creator-interview",
+      "checkedOn": "2026-09-27",
+      "claim": "Le réalisateur décrit son approche nocturne et l’emploi de la pluie.",
+      "limits": "Cette déclaration ne certifie pas les dimensions ou l’emplacement exact des props de la ruelle."
+    },
+    "avp-neca15": {
+      "title": "NECA — Predator Series 15",
+      "url": "https://necaonline.com/2016/04/closer-look-predator-series-15-action-figures/",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Ancient Warrior et Temple Guard sont associés à AVP 2004.",
+      "limits": "Aucune présence de chaque individu dans la chambre sacrificielle précise revendiquée."
+    },
+    "emissary-neca": {
+      "title": "NECA — Ultimate Emissary Predator #2",
+      "url": "https://store.necaonline.com/blogs/news/shipping-this-week-ultimate-emissary-predator-3",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Les Emissaries proviennent de scènes supprimées de The Predator ; ils devaient coopérer avec les Loonies.",
+      "limits": "Ne pas présenter leur présence comme une scène du montage cinéma sorti."
+    },
+    "kok-studio": {
+      "title": "20th Century Studios — Killer of Killers",
+      "url": "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+      "kind": "primary-studio",
+      "checkedOn": "2026-09-27",
+      "claim": "Le film comprend les époques viking, Japon féodal et Seconde Guerre mondiale.",
+      "limits": "La fiche studio ne confirme pas un nom personnel Bullet pour le Predator ni une identité de garde générique fournie."
+    },
+    "badlands-studio": {
+      "title": "20th Century Studios — Badlands",
+      "url": "https://www.20thcenturystudios.com/movies/predator-badlands",
+      "kind": "primary-studio",
+      "checkedOn": "2026-09-27",
+      "claim": "Le film est associé à un jeune Predator exilé de son clan et à une planète reculée.",
+      "limits": "Cette fiche ne valide pas le portrait fourni comme mère de Dek/Kwei ni un mélange de gardes de deux films."
+    },
+    "snes-box": {
+      "title": "Activision — boîte US Alien vs Predator SNES, SNS-AP-USA",
+      "url": "https://snescentral.com/0/2/0/0206/SNS-AP-USA-box-back.jpg",
+      "kind": "primary-packaging-reproduction",
+      "checkedOn": "2026-09-27",
+      "claim": "Le texte de la boîte situe la chasse à New Shanghai sur Vega 4, au XXVe siècle.",
+      "limits": "Photographie lue visuellement. Aucun nom personnel du protagoniste, aucune fidélité géométrique du décor 054 établie."
+    },
+    "viper-neca": {
+      "title": "NECA — Viper Series 12",
+      "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Viper est une création NECA approuvée, chef du Serpent Clan mercenaire et pilote du Blade Fighter.",
+      "limits": "Aucun hangar personnel ou port d’attache précis attesté."
+    },
+    "kenner10": {
+      "title": "NECA — hommage Kenner Series 10",
+      "url": "https://store.necaonline.com/blogs/news/174240327-closer-look-predators-series-10-action-figures",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Nightstorm, Lava Planet et Hive Wars sont des reprises Kenner officielles.",
+      "limits": "Le nom Lava Planet seul ne prouve pas une planète d’origine ; aucun lieu personnel validé."
+    },
+    "kenner13": {
+      "title": "NECA — Series 13",
+      "url": "https://store.necaonline.com/blogs/news/shipping-this-week-predator-7-scale-action-figures-series-13",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Renegade, Cracked Tusk et Scavage appartiennent à l’hommage Kenner.",
+      "limits": "Les mini-comics de packaging demandent une lecture séparée avant localisation biographique."
+    },
+    "kenner16": {
+      "title": "NECA — Series 16",
+      "url": "https://necaonline.com/?p=58371",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Spiked Tail, Stalker et Ghost sont des hommages Kenner officiels.",
+      "limits": "Stalker Kenner reste distinct de la classe Stalker Extinction."
+    },
+    "kenner-clan": {
+      "title": "NECA — Deluxe Clan Leader",
+      "url": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Clan Leader est une figure Kenner reprise officiellement par NECA.",
+      "limits": "Ne signifie pas souverain universel de tous les Yautja."
+    },
+    "kenner-laser": {
+      "title": "NECA — Ultimate Lasershot",
+      "url": "https://store.necaonline.com/blogs/news/shipping-this-week-ultimate-lasershot-predator-8-cloth-new-nightmare-freddy-and-restocks-of-the-life-size-groot-flasher-gremlins-and-e-t-stunt-puppets-1",
+      "kind": "primary-licensee",
+      "checkedOn": "2026-09-27",
+      "claim": "Lasershot est une reprise Kenner officielle.",
+      "limits": "Une technologie de figurine ne prouve ni sa planète natale ni un atelier personnel."
+    },
+    "rage-titan": {
+      "title": "Titan Books — Predator Incursion",
+      "url": "https://titanbooks.com/8140-predator-incursion-the-rage-war-1/",
+      "kind": "primary-publisher",
+      "checkedOn": "2026-09-27",
+      "claim": "Le livre appartient à la trilogie Rage War et met en jeu l’arrivée de grands vaisseaux Predator dans l’espace humain.",
+      "limits": "Le résumé ne donne pas les noms Hashori, Kalakta ou Yaquita."
+    },
+    "rage-author": {
+      "title": "Tim Lebbon — entretien Predator Incursion",
+      "url": "https://www.avpgalaxy.net/website/interviews/tim-lebbon-interview-predator-incursion/",
+      "kind": "primary-author-interview",
+      "checkedOn": "2026-09-27",
+      "claim": "L’auteur nomme l’habitat géant yautja UMF12.",
+      "limits": "Source suffisante pour un cadre partagé d’œuvre, pas pour sa géométrie ni pour la présence individuelle des trois chasseurs."
+    },
+    "rift-titan": {
+      "title": "Titan Books — catalogue automne/hiver 2022, page10",
+      "url": "https://media.titanbooks.com/rights/guides/files/autumn_-_winter_2022_fiction_rights_guide.pdf",
+      "kind": "primary-publisher",
+      "checkedOn": "2026-09-27",
+      "claim": "Rift War se déroule sur LV-363, planète utilisée pour l’entraînement de jeunes Predators et ensemencée d’œufs de Xénomorphes.",
+      "limits": "Le catalogue ne cite pas Ny’ytap ; sa liaison nominale reste à vérifier dans le roman."
+    },
+    "eyes-author": {
+      "title": "Bryan Thomas Schmidt — Eyes of the Demon",
+      "url": "https://bryanthomasschmidt.net/predator-eyes-of-the-demon/",
+      "kind": "primary-author-editor",
+      "checkedOn": "2026-09-27",
+      "claim": "L’auteur/éditeur confirme l’anthologie Titan et Aftermath à partir de la page47.",
+      "limits": "Le sommaire ne cite ni Yuahro ni Pisgah ; conserver la lacune primaire."
+    }
+  },
+  "researchLeads": [
+    {
+      "fighterIds": [
+        "user-hashori",
+        "user-kalakta",
+        "user-yaquita"
+      ],
+      "candidateWorks": [
+        "Predator: Incursion",
+        "Alien: Invasion",
+        "Alien vs. Predator: Armageddon"
+      ],
+      "secondaryLeadUrls": [
+        "https://avp.fandom.com/wiki/Hashori",
+        "https://www.avpcentral.com/alien-vs-predator-armageddon",
+        "https://www.avpcentral.com/yaquita-predator"
+      ],
+      "primaryGap": "Le résumé éditeur et l’entretien auteur établissent l’œuvre/UMF12, mais pas les trois identités et leurs lieux exacts. Passage primaire requis avant décor personnel ou certification de portrait.",
+      "doNotInfer": "Ne pas confondre une armure fournie ou un dessin de couverture avec le corps canonique de Yaquita."
+    },
+    {
+      "fighterIds": [
+        "user-ny-ytap"
+      ],
+      "candidateName": "Ny’ytap",
+      "candidateWork": "Aliens vs. Predators: Rift War",
+      "secondaryLeadUrls": [
+        "https://www.avpcentral.com/nyytap-predator"
+      ],
+      "primaryGap": "Le catalogue Titan atteste LV-363. Le nom orthographié et sa présence demandent un extrait du roman ; ne pas classer comme invention ni l’associer à Rage War."
+    },
+    {
+      "fighterIds": [
+        "user-yuahro"
+      ],
+      "candidateWork": "Predator: Eyes of the Demon — Aftermath",
+      "candidateSetting": "Pisgah National Forest",
+      "secondaryLeadUrls": [
+        "https://www.avpcentral.com/yuahro-predator",
+        "https://depredador-avp.fandom.com/es/wiki/Yuahro"
+      ],
+      "primaryGap": "Auteur confirme la nouvelle ; pages57/61/66 sont des pistes de vérification, non pages primaires consultées. Ne pas baptiser une forêt Pisgah avec fidélité certifiée."
+    }
+  ],
+  "rejectedEvidence": [
+    {
+      "url": "https://cdn.penguin.co.uk/dam-assets/books/9781804946824/9781804946824-sample.pdf",
+      "reason": "Faux positif du moteur de recherche : extrait Star Wars Dawn of the Jedi, pas Rage War. Aucun fait Predator tiré de ce PDF."
+    }
+  ],
+  "groups": [
+    {
+      "id": "concrete-jungle",
+      "fighterIds": [
+        "stone-heart",
+        "user-long-spear",
+        "user-swift-knife"
+      ],
+      "lieu": "Neonopolis — coursives industrielles",
+      "sources": [
+        "stone-neca",
+        "scarface-neca"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "suggestedExistingStage": "arena-137-concrete-jungle-neonopolis",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "identityEvidence": "Stone Heart confirmé par NECA ; Long Spear et Swift Knife rattachés au jeu par l’import, noms individuels non vérifiés dans une source primaire consultée.",
+      "sourceStatus": "primary-limited",
+      "reason": "Réutiliser le décor commun Concrete Jungle ; ne pas créer trois laboratoires personnels."
+    },
+    {
+      "id": "avp2-hunt",
+      "fighterIds": [
+        "user-prince"
+      ],
+      "lieu": "LV-1201 — forêt et ruines de Hunt",
+      "sources": [
+        "avp2-prima"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "suggestedExistingStage": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "primary-limited",
+      "reason": "Protagoniste et cadre du jeu attestés ; Prince reste un alias du roster non confirmé dans l’extrait primaire.",
+      "newPlan": {
+        "key": "avp2-lv1201-hunt",
+        "generationReady": true,
+        "setting": "Forêt alien de LV-1201 avec anciennes ruines ; adaptation latérale de la mission Hunt.",
+        "constraints": [
+          "Ne pas reprendre la colonie de Freya’s Prospect (autre jeu).",
+          "Aucun nom de clan ou temple inédit présenté comme canon.",
+          "P0 profondeur forestière ; ruines P2/P3 ; terrain praticable P4 ; végétation P5, séparés."
+        ]
+      }
+    },
+    {
+      "id": "primal-hunt",
+      "fighterIds": [
+        "user-ancient-primal-hunt"
+      ],
+      "lieu": "LV-1201 — ruines des Pilotes, époque ancienne",
+      "sources": [
+        "primal-sierra-release",
+        "primal-manual"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "suggestedExistingStage": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "resolved",
+      "reason": "Ancient est le Predator de Primal Hunt ; garder l’époque antérieure distincte de l’occupation humaine d’AVP2.",
+      "newPlan": {
+        "key": "primal-hunt-pilot-ruins",
+        "generationReady": true,
+        "setting": "Vestiges extraterrestres anciens dans la végétation de LV-1201.",
+        "constraints": [
+          "Pas de station humaine active dans la phase cinq siècles avant AVP2.",
+          "Pas de temple AVP2004 étiqueté Primal Hunt.",
+          "Géométrie et éclairage recomposés pour le jeu, aucune promesse 1:1."
+        ]
+      }
+    },
+    {
+      "id": "extinction",
+      "fighterIds": [
+        "user-extinction-ancient",
+        "user-extinction-blazer",
+        "user-extinction-brawler",
+        "user-extinction-disc-master",
+        "user-extinction-hunter",
+        "user-extinction-hydra",
+        "user-extinction-spear-master",
+        "user-extinction-stalker",
+        "user-extinction-vanguard"
+      ],
+      "lieu": "LV-742 — champ de bataille partagé",
+      "sources": [
+        "extinction-manual"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "suggestedExistingStage": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "resolved",
+      "identityEvidence": "Huit classes attestées ; Ancient n’est pas compté comme une neuvième classe officielle à partir de ce manuel.",
+      "reason": "Un théâtre de guerre commun suffit aux unités ; pas neuf planètes ou vies de chasseurs inventées.",
+      "newPlan": {
+        "key": "extinction-lv742",
+        "generationReady": true,
+        "setting": "Terrain froid et rocheux de LV-742 avec repères de déploiement Predator ; sanctuaire inspiré du Shrine attesté.",
+        "constraints": [
+          "Froid n’implique pas que tout le monde soit une calotte glaciaire.",
+          "Architecture locale adaptée, aucun nom de capitale inventé.",
+          "Shrine et Predgun éventuels en props séparés, ne pas les confondre avec des personnages."
+        ]
+      }
+    },
+    {
+      "id": "dead-end",
+      "fighterIds": [
+        "user-albino",
+        "user-big-red",
+        "user-wasp"
+      ],
+      "lieu": "Dead End — impasse nocturne",
+      "sources": [
+        "bigred-neca",
+        "albino-neca",
+        "wasp-neca",
+        "deadend-director"
+      ],
+      "adaptationStatut": "shared-fan-film-setting",
+      "suggestedExistingStage": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "resolved",
+      "reason": "Même fan-film et même famille de lieu ; un décor commun, trois associations.",
+      "newPlan": {
+        "key": "dead-end-alley",
+        "proposedStageId": "arena-142-dead-end-alley",
+        "generationReady": true,
+        "setting": "Ruelle nocturne humide recomposée à partir du fan-film.",
+        "constraints": [
+          "Afficher fan-film/adaptation ; aucune intégration dans la continuité des films revendiquée.",
+          "Ne pas assimiler au toit Gotham des comics Batman vs Predator."
+        ]
+      }
+    },
+    {
+      "id": "snes",
+      "fighterIds": [
+        "user-vega4-snes"
+      ],
+      "lieu": "New Shanghai, Vega 4 — étude SNES",
+      "sources": [
+        "snes-box"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "suggestedExistingStage": "arena-054-egouts-avp-etude-snes",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "resolved",
+      "reason": "Réemploi de l’étude latérale SNES existante ; la boîte confirme la ville et planète mais pas la fidélité des égouts.",
+      "optionalNewPlan": {
+        "key": "snes-new-shanghai",
+        "generationReady": true,
+        "setting": "Rue technique de New Shanghai sur Vega 4, adaptation latérale de l’œuvre ; ne pas la nommer Capcom 1994."
+      }
+    },
+    {
+      "id": "serpent-2010",
+      "fighterIds": [
+        "user-serpent-hunter"
+      ],
+      "lieu": "Freya’s Prospect — cadre du jeu AVP 2010",
+      "sources": [
+        "serpent-neca"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "suggestedExistingStage": "arena-131-avp-2010-freyas-prospect",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "resolved",
+      "reason": "Corriger l’association trop large du dossier d’import AVP : Serpent Hunter vient du jeu de2010."
+    },
+    {
+      "id": "samurai-phg",
+      "fighterIds": [
+        "user-samurai"
+      ],
+      "lieu": "Overgrowth — cadre de Hunting Grounds",
+      "sources": [
+        "samurai-neca",
+        "samurai-illfonic",
+        "phg-official"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "suggestedExistingStage": "arena-134-predator-hunting-grounds-overgrowth",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "resolved",
+      "reason": "La classe Samurai de Hunting Grounds partage les cartes du jeu. Son Japon féodal ne permet pas d’identifier un château précis.",
+      "optionalNewPlan": {
+        "key": "samurai-feudal-japan",
+        "generationReady": true,
+        "setting": "Cour japonaise historique originale inspirée de la biographie de la classe ; ni Oni ni site canonique nommé.",
+        "requiredLabel": "Interprétation de la légende Samurai ; lieu précis original."
+      }
+    },
+    {
+      "id": "alpha-phg",
+      "fighterIds": [
+        "user-alpha"
+      ],
+      "lieu": "Overgrowth — cadre de Hunting Grounds",
+      "sources": [
+        "alpha-illfonic",
+        "alpha-neca",
+        "phg-official"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "suggestedExistingStage": "arena-134-predator-hunting-grounds-overgrowth",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "resolved",
+      "reason": "Alpha est officiellement jouable ; ne pas inventer une planète ancestrale à partir du masque insectoïde."
+    },
+    {
+      "id": "avp-ancients",
+      "fighterIds": [
+        "user-ancient-warrior",
+        "user-temple-guard"
+      ],
+      "lieu": "Pyramide AVP 2004 — chambre sacrificielle",
+      "sources": [
+        "avp-neca15"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "suggestedExistingStage": "arena-122-avp-2004-sacrificial-chamber",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "resolved",
+      "reason": "Lieu commun de l’œuvre. Aucune présence individuelle dans cette salle exacte déclarée."
+    },
+    {
+      "id": "avp-1904",
+      "fighterIds": [
+        "user-avp-prologue-1904"
+      ],
+      "lieu": "Station baleinière — AVP 2004",
+      "sources": [
+        "avp-neca15"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "suggestedExistingStage": "arena-123-avp-2004-whaling-station",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "primary-limited",
+      "reason": "Le dossier fourni annonce un chasseur anonyme du prologue1904 ; le lien nominal/visuel précis n’est pas établi par la fiche NECA. Recommander le cadre de l’œuvre sans certifier ce modèle."
+    },
+    {
+      "id": "emissaries",
+      "fighterIds": [
+        "user-emissary-1",
+        "user-emissary-2"
+      ],
+      "lieu": "Épave dans la forêt — cadre de The Predator",
+      "sources": [
+        "emissary-neca"
+      ],
+      "adaptationStatut": "deleted-concept-shared-work-setting",
+      "suggestedExistingStage": "arena-112-the-predator-2018-forest-crash",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "resolved",
+      "reason": "Les deux Emissaries sont des concepts de scènes supprimées ; ne pas annoncer un duel ayant eu lieu dans le film sorti."
+    },
+    {
+      "id": "bullet-pilot",
+      "fighterIds": [
+        "user-pilot-bullet"
+      ],
+      "lieu": "Arène des captifs — Killer of Killers",
+      "sources": [
+        "kok-studio"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "suggestedExistingStage": "arena-118-killer-of-killers-2025-yautja-arena",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "primary-limited",
+      "reason": "Cadre commun du film associé par le dossier fourni ; The Bullet est un titre de segment, pas un nom personnel confirmé. Ne pas transformer un combat aérien en sol canonique."
+    },
+    {
+      "id": "anonymous-mixed-guard",
+      "fighterIds": [
+        "user-garde-clan-kok-badlands"
+      ],
+      "lieu": "Cercle d’obsidienne — exposition",
+      "sources": [
+        "kok-studio",
+        "badlands-studio"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "original-selected",
+      "identityEvidence": "Métadonnée mélangeant Killer of Killers et Badlands ; identité exacte non établie.",
+      "reason": "Exposition neutre en attendant séparation des références ; pas de garde biographique fusionné entre deux films.",
+      "canonicalResearchComplete": false
+    },
+    {
+      "id": "interpreted-mother",
+      "fighterIds": [
+        "user-mere-dek-kwei"
+      ],
+      "lieu": "Galerie des serments — exposition",
+      "sources": [
+        "badlands-studio"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "suggestedExistingStage": "arena-045-galerie-des-serments",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "original-selected",
+      "reason": "Le nom fourni précise interprétation ; la fiche studio ne valide pas ce portrait familial. Cadre original sans chambre maternelle prétendue canonique.",
+      "canonicalResearchComplete": false
+    },
+    {
+      "id": "viper-neca",
+      "fighterIds": [
+        "user-viper"
+      ],
+      "lieu": "Quais du premier sang — exposition de pilote",
+      "sources": [
+        "viper-neca"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "suggestedExistingStage": "arena-009-quais-du-premier-sang",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "original-selected",
+      "identityEvidence": "Identité NECA approuvée, non simple avatar inconnu.",
+      "reason": "Le quai est une mise en scène originale ; ce n’est pas le port d’attache attesté du Blade Fighter.",
+      "canonicalResearchComplete": false
+    },
+    {
+      "id": "kenner10",
+      "fighterIds": [
+        "user-hive-wars",
+        "user-lava-planet",
+        "user-nightstorm"
+      ],
+      "lieu": "Cercle de basalte — exposition Kenner",
+      "sources": [
+        "kenner10"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "suggestedExistingStage": "arena-001-cercle-de-basalte",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "original-selected",
+      "identityEvidence": "Trois figurines officielles authentifiées.",
+      "reason": "Exposition partagée ; ni Hive Wars ni Lava Planet ne suffisent à établir une géographie personnelle.",
+      "canonicalResearchComplete": false
+    },
+    {
+      "id": "kenner13",
+      "fighterIds": [
+        "user-cracked-tusk",
+        "user-renegade",
+        "user-scavage"
+      ],
+      "lieu": "Duel des lames — exposition Kenner",
+      "sources": [
+        "kenner13"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "suggestedExistingStage": "arena-091-duel-des-lames",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "original-selected",
+      "identityEvidence": "Trois figurines officielles authentifiées.",
+      "reason": "Terrain de duel du projet ; les mini-comics et biographies de packaging restent à dépouiller pour un lieu propre.",
+      "canonicalResearchComplete": false
+    },
+    {
+      "id": "kenner16",
+      "fighterIds": [
+        "user-ghost",
+        "user-spiked-tail",
+        "user-stalker-kenner"
+      ],
+      "lieu": "Cercle éclipse — exposition Kenner",
+      "sources": [
+        "kenner16"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "suggestedExistingStage": "arena-089-cercle-eclipse",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "original-selected",
+      "identityEvidence": "Trois figurines officielles authentifiées.",
+      "reason": "Choix de présentation partagé ; aucun clan d’origine ou monde natal ajouté.",
+      "canonicalResearchComplete": false
+    },
+    {
+      "id": "kenner-clan",
+      "fighterIds": [
+        "user-clan-leader"
+      ],
+      "lieu": "Duel des anciens — exposition Kenner",
+      "sources": [
+        "kenner-clan"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "suggestedExistingStage": "arena-095-duel-des-anciens",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "original-selected",
+      "identityEvidence": "Figurine officielle authentifiée.",
+      "reason": "Terrain d’exposition, pas trône du souverain universel de l’espèce.",
+      "canonicalResearchComplete": false
+    },
+    {
+      "id": "kenner-laser",
+      "fighterIds": [
+        "user-lasershot"
+      ],
+      "lieu": "Fonderie zéro — exposition technologique",
+      "sources": [
+        "kenner-laser"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "suggestedExistingStage": "arena-040-fonderie-zero",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "original-selected",
+      "identityEvidence": "Figurine officielle authentifiée.",
+      "reason": "Atelier original du projet, non lieu natal ou événement biographique déduit de l’armement.",
+      "canonicalResearchComplete": false
+    },
+    {
+      "id": "rage-war",
+      "fighterIds": [
+        "user-hashori",
+        "user-kalakta",
+        "user-yaquita"
+      ],
+      "lieu": "UMF12 — habitat partagé de Rage War, lien individuel à documenter",
+      "sources": [
+        "rage-titan",
+        "rage-author"
+      ],
+      "adaptationStatut": "work-attested-identity-link-pending",
+      "suggestedExistingStage": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "primary-limited",
+      "reason": "Ces noms sont des pistes littéraires, pas des avatars déclarés inventés. L’auteur atteste l’habitat ; la présence exacte et les apparences nécessitent des passages du roman.",
+      "canonicalResearchComplete": false,
+      "newPlan": {
+        "key": "rage-war-umf12",
+        "generationReady": true,
+        "setting": "Intérieur original d’un immense habitat yautja inspiré de l’UMF12 nommé par l’auteur.",
+        "requiredLabel": "Adaptation libre d’un lieu de Rage War ; présence individuelle et architecture non certifiées.",
+        "constraints": [
+          "Ne pas inventer salle privée de Hashori/Kalakta/Yaquita.",
+          "Ni trône universel ni pyramide censée provenir d’une description non lue."
+        ]
+      },
+      "provisionalExhibitionStage": "arena-079-salle-des-routes-stellaires"
+    },
+    {
+      "id": "rift-war",
+      "fighterIds": [
+        "user-ny-ytap"
+      ],
+      "lieu": "LV-363 — failles de Rift War, nom individuel à confirmer",
+      "sources": [
+        "rift-titan"
+      ],
+      "adaptationStatut": "work-attested-identity-link-pending",
+      "suggestedExistingStage": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "primary-limited",
+      "reason": "Piste orthographique Ny’ytap identifiée ; LV-363 est attestée par Titan. Ne pas ranger le nom fourni parmi les originaux génériques.",
+      "canonicalResearchComplete": false,
+      "newPlan": {
+        "key": "rift-war-lv363",
+        "generationReady": true,
+        "setting": "Faille alien avec végétation exotique de LV-363 ; largeur, plateformes et vue latérale originales.",
+        "requiredLabel": "Cadre du roman attesté ; association individuelle fondée sur une piste bibliographique en attente d’extrait primaire.",
+        "constraints": [
+          "Ne pas inventer de capitale, temple, statue familiale ou rang.",
+          "Aucune liaison à Rage War/UMF12 : œuvre différente."
+        ]
+      },
+      "provisionalExhibitionStage": "arena-007-pont-abyssal"
+    },
+    {
+      "id": "yuahro-aftermath",
+      "fighterIds": [
+        "user-yuahro"
+      ],
+      "lieu": "Clairière d’exposition — attente du passage Aftermath",
+      "sources": [
+        "eyes-author"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "suggestedExistingStage": "arena-003-chaussee-de-canopee",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "original-selected",
+      "reason": "L’auteur confirme Aftermath dans Eyes of the Demon mais pas le nom Yuahro ni Pisgah dans sa fiche. La piste roman demeure ouverte ; cette exposition ne clôt pas l’audit canonique.",
+      "canonicalResearchComplete": false,
+      "primaryPassageNeeded": "Eyes of the Demon, Aftermath, notamment pages57/61/66 suggérées par références secondaires ; lire une copie autorisée avant de nommer Pisgah."
+    },
+    {
+      "id": "warp-original",
+      "fighterIds": [
+        "user-warp-adjutant",
+        "user-warp-enforcer",
+        "user-warp-gardien"
+      ],
+      "lieu": "Galerie des serments — exposition des créations Warp",
+      "sources": [],
+      "adaptationStatut": "original-exhibition",
+      "suggestedExistingStage": "arena-045-galerie-des-serments",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "original-selected",
+      "reason": "Personnages des fichiers utilisateur. Leurs titres ne prouvent pas un rang universel de franchise ; cadre d’exposition sans biographie canonique.",
+      "canonicalResearchComplete": false
+    },
+    {
+      "id": "provided-descriptive-art",
+      "fighterIds": [
+        "user-lot2-13",
+        "user-chasseuse-yautja-en-garde-de-combat",
+        "user-chasseresse-yautja-masquee-au-combistick",
+        "user-chasseuse-yautja-au-masque-rituel",
+        "user-chasseresse-yautja-au-masque-d-elan",
+        "user-chasseresse-yautja-en-posture-de-combat",
+        "user-chasseur-alien-aux-runes-celtiques",
+        "user-a-full-body-high-detail-png-style-character-illus",
+        "user-chasseur-yautja-au-bio-masque",
+        "user-chasseur-yautja-masque-au-combistick",
+        "user-guerrier-yautja-sans-casque",
+        "user-combattant-en-armure-sur-fond-transparent",
+        "user-chasseur-extraterrestre-ceremoniel-en-armure",
+        "user-chasseur-extraterrestre-en-armure-de-combat",
+        "user-chasseur-extraterrestre-tribal-en-armure",
+        "user-yautja-insulaire-en-garde-armee",
+        "user-a-clean-png-illustration-style-scene-a-single-ful",
+        "user-chasseur-yautja-sans-biomasque-en-garde",
+        "user-chef-alien-masque-aux-scythes-d-avant-bras",
+        "user-lot2-14",
+        "user-lot2-15",
+        "user-lot2-16",
+        "user-donatiki-en-armure-doree",
+        "user-enforcer-yautja-au-disque-intelligent",
+        "user-entraineuse-yautja-masquee-couteau-en-garde",
+        "user-guerrier-alien-blinde-chasseur-d-acier",
+        "user-guerrier-cyborg-biomecanique-aux-lames-retractable",
+        "user-guerrier-extraterrestre-aux-lames-acerees",
+        "user-guerrier-yautja-aux-runes-nordiques",
+        "user-guerrier-yautja-exile-en-posture-de-chasse",
+        "user-guerriere-yautja-au-masque-biometrique",
+        "user-guerriere-yautja-masquee-en-garde",
+        "user-guerriere-yautja-aux-ornements-egyptiens",
+        "user-predator-egyptienne-en-armure-doree",
+        "user-predateur-capture-en-armure-ravagee",
+        "user-predateur-cybernetique-en-armure-de-combat",
+        "user-predateur-exalte-en-armure-ceremonielle",
+        "user-predateur-pirate-en-armure-corsaire",
+        "user-predateur-viking-en-armure-runique",
+        "user-predateur-yautja-en-armure-doree",
+        "user-samourai-yautja-en-armure-ecarlate",
+        "user-lot2-18",
+        "user-lot2-17",
+        "user-yautja-masque-en-garde-defensive"
+      ],
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sources": [],
+      "adaptationStatut": "original-exhibition",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles.",
+      "canonicalResearchComplete": false,
+      "identityDistinctions": [
+        "Ne pas fusionner samouraï écarlate avec Samurai Hunting Grounds.",
+        "Ne pas fusionner pirate, viking, exilé ou égyptienne descriptifs avec les classes du jeu sans preuve visuelle d’identité.",
+        "Ne pas confondre la créature quatre bras du lot2 avec le personnage comics Four-Armed.",
+        "Donatiki reste un nom fourni, sans origine de franchise revendiquée."
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "fighterId": "stone-heart",
+      "fighterName": "Stone Heart",
+      "previousCoverage": "reference-needed",
+      "group": "concrete-jungle",
+      "lieu": "Neonopolis — coursives industrielles",
+      "sourceIds": [
+        "stone-neca",
+        "scarface-neca"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/products/predator-7-scale-action-figure-concrete-jungle-stone-heart-predator",
+        "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-video-game-appearance-ultimate-scarface-predator"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": "arena-137-concrete-jungle-neonopolis",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/stone_heart/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/stone_heart/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-warp-adjutant",
+      "fighterName": "Adjutant Yautja",
+      "previousCoverage": "identity-unverified",
+      "group": "warp-original",
+      "lieu": "Galerie des serments — exposition des créations Warp",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-045-galerie-des-serments",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "Yautja_Warp_Universe_Galerie.html",
+          "entry": "module/06_adjutant_yautja.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-albino",
+      "fighterName": "Albino Predator — Dead End",
+      "previousCoverage": "reference-needed",
+      "group": "dead-end",
+      "lieu": "Dead End — impasse nocturne",
+      "sourceIds": [
+        "bigred-neca",
+        "albino-neca",
+        "wasp-neca",
+        "deadend-director"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/closer-look-predators-series-7-big-red-predator-action-figure",
+        "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-2013-exclusive-meet-the-albino-predator-action-figure",
+        "https://store.necaonline.com/blogs/news/174239303-shipping-predators-series-11-a-new-pacific-rim-action-figure-2-pack-and-tf2-blu-soldier-and-heavy",
+        "https://mediamikes.com/2011/02/interview-with-sandy-collora/"
+      ],
+      "adaptationStatut": "shared-fan-film-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "dead-end-alley",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/albino/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/albino/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-alpha",
+      "fighterName": "Alpha Predator",
+      "previousCoverage": "reference-needed",
+      "group": "alpha-phg",
+      "lieu": "Overgrowth — cadre de Hunting Grounds",
+      "sourceIds": [
+        "alpha-illfonic",
+        "alpha-neca",
+        "phg-official"
+      ],
+      "sourceUrls": [
+        "https://blog.playstation.com/?p=333379",
+        "https://necaonline.com/2020/06/the-alpha-is-coming-to-predator-hunting-grounds/",
+        "https://predator.illfonic.com/"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": "arena-134-predator-hunting-grounds-overgrowth",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/alpha/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/alpha/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-ancient-warrior",
+      "fighterName": "Ancient Warrior",
+      "previousCoverage": "reference-needed",
+      "group": "avp-ancients",
+      "lieu": "Pyramide AVP 2004 — chambre sacrificielle",
+      "sourceIds": [
+        "avp-neca15"
+      ],
+      "sourceUrls": [
+        "https://necaonline.com/2016/04/closer-look-predator-series-15-action-figures/"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": "arena-122-avp-2004-sacrificial-chamber",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/03_AVP/ancient_warrior/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/03_AVP/ancient_warrior/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-extinction-ancient",
+      "fighterName": "Ancient — AvP Extinction",
+      "previousCoverage": "reference-needed",
+      "group": "extinction",
+      "lieu": "LV-742 — champ de bataille partagé",
+      "sourceIds": [
+        "extinction-manual"
+      ],
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "primary-limited",
+      "suggestedExistingStage": null,
+      "newPlanKey": "extinction-lv742",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_ancient/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_ancient/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "individual-name-or-visual-link-primary-limited",
+      "note": "Le manuel valide le monde du jeu et huit classes, pas cette identité Ancient individuellement."
+    },
+    {
+      "fighterId": "user-ancient-primal-hunt",
+      "fighterName": "Ancient — Primal Hunt",
+      "previousCoverage": "reference-needed",
+      "group": "primal-hunt",
+      "lieu": "LV-1201 — ruines des Pilotes, époque ancienne",
+      "sourceIds": [
+        "primal-sierra-release",
+        "primal-manual"
+      ],
+      "sourceUrls": [
+        "https://www.ggmania.com/?smsid=aliens-vs-predator-2-expansion-announced-11091",
+        "https://manuals.plus/m/8e3276e114e335d2d35b0a04f7890c5e10f243ad8cfa95c1d16e75087680cd2f"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "primal-hunt-pilot-ruins",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/ancient_primal_hunt/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/ancient_primal_hunt/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-lot2-13",
+      "fighterName": "Armure de bronze, cape rouge et lance",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "THE_PIT_LOT2_6_SPRITES_V1.zip",
+          "entry": "THE_PIT_LOT2_6_SPRITES_V1/PNG/13_Bronze_Cape_Rouge_Lance.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-big-red",
+      "fighterName": "Big Red Predator — Dead End",
+      "previousCoverage": "reference-needed",
+      "group": "dead-end",
+      "lieu": "Dead End — impasse nocturne",
+      "sourceIds": [
+        "bigred-neca",
+        "albino-neca",
+        "wasp-neca",
+        "deadend-director"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/closer-look-predators-series-7-big-red-predator-action-figure",
+        "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-2013-exclusive-meet-the-albino-predator-action-figure",
+        "https://store.necaonline.com/blogs/news/174239303-shipping-predators-series-11-a-new-pacific-rim-action-figure-2-pack-and-tf2-blu-soldier-and-heavy",
+        "https://mediamikes.com/2011/02/interview-with-sandy-collora/"
+      ],
+      "adaptationStatut": "shared-fan-film-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "dead-end-alley",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/big_red/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/big_red/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-extinction-blazer",
+      "fighterName": "Blazer — AvP Extinction",
+      "previousCoverage": "reference-needed",
+      "group": "extinction",
+      "lieu": "LV-742 — champ de bataille partagé",
+      "sourceIds": [
+        "extinction-manual"
+      ],
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "extinction-lv742",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_blazer/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_blazer/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-extinction-brawler",
+      "fighterName": "Brawler — AvP Extinction",
+      "previousCoverage": "reference-needed",
+      "group": "extinction",
+      "lieu": "LV-742 — champ de bataille partagé",
+      "sourceIds": [
+        "extinction-manual"
+      ],
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "extinction-lv742",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_brawler/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_brawler/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-chasseuse-yautja-en-garde-de-combat",
+      "fighterName": "Chasseresse au combistick",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/chasseuse_yautja_en_garde_de_combat.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/guerriere_yautja_sans_masque.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chasseresse-yautja-masquee-au-combistick",
+      "fighterName": "Chasseresse au combistick rouge",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/chasseresse_yautja_masquee_au_combistick.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yautja_sans_biomasque_en_posture_de_combat.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chasseuse-yautja-au-masque-rituel",
+      "fighterName": "Chasseresse au disque, masque rituel",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/chasseuse_yautja_au_masque_rituel.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yautja_sans_masque_en_armure_argentee.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chasseresse-yautja-au-masque-d-elan",
+      "fighterName": "Chasseresse yautja au masque d élan",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/chasseresse_yautja_au_masque_d_élan.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chasseresse-yautja-en-posture-de-combat",
+      "fighterName": "Chasseresse yautja en posture de combat",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/chasseresse_yautja_en_posture_de_combat.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chasseur-alien-aux-runes-celtiques",
+      "fighterName": "Chasseur alien aux runes celtiques",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/chasseur_alien_aux_runes_celtiques.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-avp-prologue-1904",
+      "fighterName": "Chasseur anonyme du prologue 1904",
+      "previousCoverage": "reference-needed",
+      "group": "avp-1904",
+      "lieu": "Station baleinière — AVP 2004",
+      "sourceIds": [
+        "avp-neca15"
+      ],
+      "sourceUrls": [
+        "https://necaonline.com/2016/04/closer-look-predator-series-15-action-figures/"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "primary-limited",
+      "suggestedExistingStage": "arena-123-avp-2004-whaling-station",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/avp_prologue_1904/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/avp_prologue_1904/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "individual-name-or-visual-link-primary-limited"
+    },
+    {
+      "fighterId": "user-a-full-body-high-detail-png-style-character-illus",
+      "fighterName": "Chasseur argenté aux longues lames",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/a_full_body_high_detail_png_style_character_illus.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chasseur-yautja-au-bio-masque",
+      "fighterName": "Chasseur au biomasque",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/chasseur_yautja_au_bio_masque.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/guerrier_yautja_sans_biomasque.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chasseur-yautja-masque-au-combistick",
+      "fighterName": "Chasseur au combistick argenté",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/chasseur_yautja_masque_au_combistick.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yautja_sans_masque_pret_au_combat.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-guerrier-yautja-sans-casque",
+      "fighterName": "Chasseur au disque, armure argentée",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/guerrier_yautja_sans_casque.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yautja_masque_au_disque_intelligent.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-combattant-en-armure-sur-fond-transparent",
+      "fighterName": "Chasseur au disque, armure claire",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/combattant_en_armure_sur_fond_transparent.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/guerrier_yautja_sans_casque_cicatrice_au_menton.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chasseur-extraterrestre-ceremoniel-en-armure",
+      "fighterName": "Chasseur extraterrestre cérémoniel en armure",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/chasseur_extraterrestre_cérémoniel_en_armure.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chasseur-extraterrestre-en-armure-de-combat",
+      "fighterName": "Chasseur extraterrestre en armure de combat",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/chasseur_extraterrestre_en_armure_de_combat.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chasseur-extraterrestre-tribal-en-armure",
+      "fighterName": "Chasseur extraterrestre tribal en armure",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/chasseur_extraterrestre_tribal_en_armure.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-yautja-insulaire-en-garde-armee",
+      "fighterName": "Chasseur insulaire",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yautja_insulaire_en_garde_armee.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yautja_sans_casque_visage_revele.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-a-clean-png-illustration-style-scene-a-single-ful",
+      "fighterName": "Chasseur sombre, garde basse",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/a_clean_png_illustration_style_scene_a_single_ful.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chasseur-yautja-sans-biomasque-en-garde",
+      "fighterName": "Chasseur yautja sans biomasque en garde",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/chasseur_yautja_sans_biomasque_en_garde.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-chef-alien-masque-aux-scythes-d-avant-bras",
+      "fighterName": "Chef aux lames de poignet",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/chef_alien_masque_aux_scythes_d_avant_bras.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yautja_demasque_armure_intacte.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-clan-leader",
+      "fighterName": "Clan Leader Predator",
+      "previousCoverage": "identity-unverified",
+      "group": "kenner-clan",
+      "lieu": "Duel des anciens — exposition Kenner",
+      "sourceIds": [
+        "kenner-clan"
+      ],
+      "sourceUrls": [
+        "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-095-duel-des-anciens",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/clan_leader/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/clan_leader/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-lot2-14",
+      "fighterName": "Coiffe à plumes rouges et ornements de jade",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "THE_PIT_LOT2_6_SPRITES_V1.zip",
+          "entry": "THE_PIT_LOT2_6_SPRITES_V1/PNG/14_Coiffe_Plumes_Rouges_Jade_Trophee.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-lot2-15",
+      "fighterName": "Colosse blanc à mâchoire ouverte",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "THE_PIT_LOT2_6_SPRITES_V1.zip",
+          "entry": "THE_PIT_LOT2_6_SPRITES_V1/PNG/15_Colosse_Blanc_Machoire_Ouverte.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-cracked-tusk",
+      "fighterName": "Cracked Tusk Predator",
+      "previousCoverage": "identity-unverified",
+      "group": "kenner13",
+      "lieu": "Duel des lames — exposition Kenner",
+      "sourceIds": [
+        "kenner13"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-predator-7-scale-action-figures-series-13"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-091-duel-des-lames",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/cracked_tusk/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/cracked_tusk/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-lot2-16",
+      "fighterName": "Créature blanche et rouge à quatre bras",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "THE_PIT_LOT2_6_SPRITES_V1.zip",
+          "entry": "THE_PIT_LOT2_6_SPRITES_V1/PNG/16_Creature_Os_Rouge_Quatre_Bras.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-extinction-disc-master",
+      "fighterName": "Disc Master — AvP Extinction",
+      "previousCoverage": "reference-needed",
+      "group": "extinction",
+      "lieu": "LV-742 — champ de bataille partagé",
+      "sourceIds": [
+        "extinction-manual"
+      ],
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "extinction-lv742",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_disc_master/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_disc_master/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-donatiki-en-armure-doree",
+      "fighterName": "Donatiki — armure dorée",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/donatiki_en_armure_doree.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yautja_en_armure_maternelle_doree.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-emissary-1",
+      "fighterName": "Emissary #1",
+      "previousCoverage": "reference-needed",
+      "group": "emissaries",
+      "lieu": "Épave dans la forêt — cadre de The Predator",
+      "sourceIds": [
+        "emissary-neca"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-ultimate-emissary-predator-3"
+      ],
+      "adaptationStatut": "deleted-concept-shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": "arena-112-the-predator-2018-forest-crash",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/01_FILMS/emissary_1/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/01_FILMS/emissary_1/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-emissary-2",
+      "fighterName": "Emissary #2",
+      "previousCoverage": "reference-needed",
+      "group": "emissaries",
+      "lieu": "Épave dans la forêt — cadre de The Predator",
+      "sourceIds": [
+        "emissary-neca"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-ultimate-emissary-predator-3"
+      ],
+      "adaptationStatut": "deleted-concept-shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": "arena-112-the-predator-2018-forest-crash",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/01_FILMS/emissary_2/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/01_FILMS/emissary_2/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-warp-enforcer",
+      "fighterName": "Enforcer Yautja",
+      "previousCoverage": "identity-unverified",
+      "group": "warp-original",
+      "lieu": "Galerie des serments — exposition des créations Warp",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-045-galerie-des-serments",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "Yautja_Warp_Universe_Galerie.html",
+          "entry": "objets/48_enforcer_yautja.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-enforcer-yautja-au-disque-intelligent",
+      "fighterName": "Enforceuse au disque",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/enforcer_yautja_au_disque_intelligent.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/enforceuse_yautja_sans_masque.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-entraineuse-yautja-masquee-couteau-en-garde",
+      "fighterName": "Entraîneuse au couteau",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/entraineuse_yautja_masquee_couteau_en_garde.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yautja_sans_biomasque_en_garde_de_combat.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-garde-clan-kok-badlands",
+      "fighterName": "Garde anonyme du clan — modèle visuel",
+      "previousCoverage": "reference-needed",
+      "group": "anonymous-mixed-guard",
+      "lieu": "Cercle d’obsidienne — exposition",
+      "sourceIds": [
+        "kok-studio",
+        "badlands-studio"
+      ],
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+        "https://www.20thcenturystudios.com/movies/predator-badlands"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/garde_clan_kok_badlands/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/garde_clan_kok_badlands/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-warp-gardien",
+      "fighterName": "Gardien du Seuil",
+      "previousCoverage": "identity-unverified",
+      "group": "warp-original",
+      "lieu": "Galerie des serments — exposition des créations Warp",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-045-galerie-des-serments",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "Yautja_Warp_Universe_Galerie.html",
+          "entry": "module/07_gardien_du_seuil.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-ghost",
+      "fighterName": "Ghost Predator",
+      "previousCoverage": "identity-unverified",
+      "group": "kenner16",
+      "lieu": "Cercle éclipse — exposition Kenner",
+      "sourceIds": [
+        "kenner16"
+      ],
+      "sourceUrls": [
+        "https://necaonline.com/?p=58371"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-089-cercle-eclipse",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/ghost/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/ghost/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-guerrier-alien-blinde-chasseur-d-acier",
+      "fighterName": "Guerrier alien blindé chasseur d acier",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/guerrier_alien_blindé_chasseur_d_acier.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-guerrier-cyborg-biomecanique-aux-lames-retractable",
+      "fighterName": "Guerrier cyborg biomécanique aux lames rétractable",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/guerrier_cyborg_biomécanique_aux_lames_rétractable.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-guerrier-extraterrestre-aux-lames-acerees",
+      "fighterName": "Guerrier extraterrestre aux lames acérées",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/guerrier_extraterrestre_aux_lames_acérées.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-guerrier-yautja-aux-runes-nordiques",
+      "fighterName": "Guerrier yautja aux runes nordiques",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/guerrier_yautja_aux_runes_nordiques.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-guerrier-yautja-exile-en-posture-de-chasse",
+      "fighterName": "Guerrier yautja exilé en posture de chasse",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/guerrier_yautja_exilé_en_posture_de_chasse.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-guerriere-yautja-au-masque-biometrique",
+      "fighterName": "Guerrière au masque biométrique",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/guerriere_yautja_au_masque_biometrique.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/guerriere_yautja_sans_masque_en_garde.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-guerriere-yautja-masquee-en-garde",
+      "fighterName": "Guerrière en garde",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/guerriere_yautja_masquee_en_garde.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/guerriere_yautja_sans_biomasque.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-guerriere-yautja-aux-ornements-egyptiens",
+      "fighterName": "Guerrière yautja aux ornements égyptiens",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/guerrière_yautja_aux_ornements_égyptiens.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-hashori",
+      "fighterName": "Hashori",
+      "previousCoverage": "identity-unverified",
+      "group": "rage-war",
+      "lieu": "UMF12 — habitat partagé de Rage War, lien individuel à documenter",
+      "sourceIds": [
+        "rage-titan",
+        "rage-author"
+      ],
+      "sourceUrls": [
+        "https://titanbooks.com/8140-predator-incursion-the-rage-war-1/",
+        "https://www.avpgalaxy.net/website/interviews/tim-lebbon-interview-predator-incursion/"
+      ],
+      "adaptationStatut": "work-attested-identity-link-pending",
+      "sourceStatus": "primary-limited",
+      "suggestedExistingStage": null,
+      "newPlanKey": "rage-war-umf12",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/guerriere_yautja_hashori_sans_masque.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/hashori_chasseuse_yautja_au_trident.png"
+        }
+      ],
+      "identityEvidenceStatus": "novel-lead-primary-passage-needed"
+    },
+    {
+      "fighterId": "user-hive-wars",
+      "fighterName": "Hive Wars Predator",
+      "previousCoverage": "identity-unverified",
+      "group": "kenner10",
+      "lieu": "Cercle de basalte — exposition Kenner",
+      "sourceIds": [
+        "kenner10"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/174240327-closer-look-predators-series-10-action-figures"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-001-cercle-de-basalte",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/hive_wars/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/hive_wars/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-extinction-hunter",
+      "fighterName": "Hunter — AvP Extinction",
+      "previousCoverage": "reference-needed",
+      "group": "extinction",
+      "lieu": "LV-742 — champ de bataille partagé",
+      "sourceIds": [
+        "extinction-manual"
+      ],
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "extinction-lv742",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_hunter/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_hunter/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-extinction-hydra",
+      "fighterName": "Hydra — AvP Extinction",
+      "previousCoverage": "reference-needed",
+      "group": "extinction",
+      "lieu": "LV-742 — champ de bataille partagé",
+      "sourceIds": [
+        "extinction-manual"
+      ],
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "extinction-lv742",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_hydra/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_hydra/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-kalakta",
+      "fighterName": "Kalakta",
+      "previousCoverage": "identity-unverified",
+      "group": "rage-war",
+      "lieu": "UMF12 — habitat partagé de Rage War, lien individuel à documenter",
+      "sourceIds": [
+        "rage-titan",
+        "rage-author"
+      ],
+      "sourceUrls": [
+        "https://titanbooks.com/8140-predator-incursion-the-rage-war-1/",
+        "https://www.avpgalaxy.net/website/interviews/tim-lebbon-interview-predator-incursion/"
+      ],
+      "adaptationStatut": "work-attested-identity-link-pending",
+      "sourceStatus": "primary-limited",
+      "suggestedExistingStage": null,
+      "newPlanKey": "rage-war-umf12",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/kalakta_l_ancien_yautja_masque.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/kalakta_sans_casque_guerrier_yautja_ancestral.png"
+        }
+      ],
+      "identityEvidenceStatus": "novel-lead-primary-passage-needed"
+    },
+    {
+      "fighterId": "user-lasershot",
+      "fighterName": "Lasershot Predator",
+      "previousCoverage": "identity-unverified",
+      "group": "kenner-laser",
+      "lieu": "Fonderie zéro — exposition technologique",
+      "sourceIds": [
+        "kenner-laser"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-ultimate-lasershot-predator-8-cloth-new-nightmare-freddy-and-restocks-of-the-life-size-groot-flasher-gremlins-and-e-t-stunt-puppets-1"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-040-fonderie-zero",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/lasershot/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/lasershot/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-lava-planet",
+      "fighterName": "Lava Planet Predator",
+      "previousCoverage": "identity-unverified",
+      "group": "kenner10",
+      "lieu": "Cercle de basalte — exposition Kenner",
+      "sourceIds": [
+        "kenner10"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/174240327-closer-look-predators-series-10-action-figures"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-001-cercle-de-basalte",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/lava_planet/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/lava_planet/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-long-spear",
+      "fighterName": "Long Spear — cyborg",
+      "previousCoverage": "reference-needed",
+      "group": "concrete-jungle",
+      "lieu": "Neonopolis — coursives industrielles",
+      "sourceIds": [
+        "stone-neca",
+        "scarface-neca"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/products/predator-7-scale-action-figure-concrete-jungle-stone-heart-predator",
+        "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-video-game-appearance-ultimate-scarface-predator"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "primary-limited",
+      "suggestedExistingStage": "arena-137-concrete-jungle-neonopolis",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/long_spear/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/long_spear/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "individual-name-or-visual-link-primary-limited"
+    },
+    {
+      "fighterId": "user-mere-dek-kwei",
+      "fighterName": "Mère de Dek et Kwei — interprétation",
+      "previousCoverage": "reference-needed",
+      "group": "interpreted-mother",
+      "lieu": "Galerie des serments — exposition",
+      "sourceIds": [
+        "badlands-studio"
+      ],
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-045-galerie-des-serments",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/mere_dek_kwei/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/mere_dek_kwei/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-nightstorm",
+      "fighterName": "Nightstorm Predator",
+      "previousCoverage": "identity-unverified",
+      "group": "kenner10",
+      "lieu": "Cercle de basalte — exposition Kenner",
+      "sourceIds": [
+        "kenner10"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/174240327-closer-look-predators-series-10-action-figures"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-001-cercle-de-basalte",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/nightstorm/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/nightstorm/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-ny-ytap",
+      "fighterName": "Ny Ytap",
+      "previousCoverage": "identity-unverified",
+      "group": "rift-war",
+      "lieu": "LV-363 — failles de Rift War, nom individuel à confirmer",
+      "sourceIds": [
+        "rift-titan"
+      ],
+      "sourceUrls": [
+        "https://media.titanbooks.com/rights/guides/files/autumn_-_winter_2022_fiction_rights_guide.pdf"
+      ],
+      "adaptationStatut": "work-attested-identity-link-pending",
+      "sourceStatus": "primary-limited",
+      "suggestedExistingStage": null,
+      "newPlanKey": "rift-war-lv363",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/ny_ytap_capitaine_yautja_en_noir.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/ny_ytap_sans_masque_visage_marque.png"
+        }
+      ],
+      "identityEvidenceStatus": "novel-lead-primary-passage-needed"
+    },
+    {
+      "fighterId": "user-pilot-bullet",
+      "fighterName": "Pilote de The Bullet",
+      "previousCoverage": "reference-needed",
+      "group": "bullet-pilot",
+      "lieu": "Arène des captifs — Killer of Killers",
+      "sourceIds": [
+        "kok-studio"
+      ],
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "primary-limited",
+      "suggestedExistingStage": "arena-118-killer-of-killers-2025-yautja-arena",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/pilot_bullet/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/pilot_bullet/sans_casque.png"
+        },
+        {
+          "archive": "Yautja_Warp_Universe_Galerie.html",
+          "entry": "cinema/41_kok_pilote_yautja.png"
+        }
+      ],
+      "identityEvidenceStatus": "individual-name-or-visual-link-primary-limited"
+    },
+    {
+      "fighterId": "user-vega4-snes",
+      "fighterName": "Predator de Vega 4 — protagoniste SNES",
+      "previousCoverage": "reference-needed",
+      "group": "snes",
+      "lieu": "New Shanghai, Vega 4 — étude SNES",
+      "sourceIds": [
+        "snes-box"
+      ],
+      "sourceUrls": [
+        "https://snescentral.com/0/2/0/0206/SNS-AP-USA-box-back.jpg"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": "arena-054-egouts-avp-etude-snes",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/vega4_snes/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/vega4_snes/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-predator-egyptienne-en-armure-doree",
+      "fighterName": "Predator égyptienne en armure dorée",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/predator_égyptienne_en_armure_dorée.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-prince",
+      "fighterName": "Prince",
+      "previousCoverage": "reference-needed",
+      "group": "avp2-hunt",
+      "lieu": "LV-1201 — forêt et ruines de Hunt",
+      "sourceIds": [
+        "avp2-prima"
+      ],
+      "sourceUrls": [
+        "https://oldgamesdownload.com/wp-content/uploads/Aliens_versus_Predator_2_Prima_Guide.pdf"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "primary-limited",
+      "suggestedExistingStage": null,
+      "newPlanKey": "avp2-lv1201-hunt",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/prince/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/prince/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-predateur-capture-en-armure-ravagee",
+      "fighterName": "Prédateur capturé en armure ravagée",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/prédateur_capturé_en_armure_ravagée.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-predateur-cybernetique-en-armure-de-combat",
+      "fighterName": "Prédateur cybernétique en armure de combat",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/prédateur_cybernétique_en_armure_de_combat.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-predateur-exalte-en-armure-ceremonielle",
+      "fighterName": "Prédateur exalté en armure cérémonielle",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/prédateur_exalté_en_armure_cérémonielle.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-predateur-pirate-en-armure-corsaire",
+      "fighterName": "Prédateur pirate en armure corsaire",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/prédateur_pirate_en_armure_corsaire.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-predateur-viking-en-armure-runique",
+      "fighterName": "Prédateur viking en armure runique",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/prédateur_viking_en_armure_runique.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-predateur-yautja-en-armure-doree",
+      "fighterName": "Prédateur yautja en armure dorée",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/prédateur_yautja_en_armure_dorée.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-renegade",
+      "fighterName": "Renegade Predator",
+      "previousCoverage": "identity-unverified",
+      "group": "kenner13",
+      "lieu": "Duel des lames — exposition Kenner",
+      "sourceIds": [
+        "kenner13"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-predator-7-scale-action-figures-series-13"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-091-duel-des-lames",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/renegade/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/renegade/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-samourai-yautja-en-armure-ecarlate",
+      "fighterName": "Samouraï yautja en armure écarlate",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_TOUTES_LES_IMAGES_50_PNG.rar",
+          "entry": "YAUTJA_PACK_IMAGES_CONVERSATION/01_Personnages/samouraï_yautja_en_armure_écarlate.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-samurai",
+      "fighterName": "Samurai Predator",
+      "previousCoverage": "reference-needed",
+      "group": "samurai-phg",
+      "lieu": "Overgrowth — cadre de Hunting Grounds",
+      "sourceIds": [
+        "samurai-neca",
+        "samurai-illfonic",
+        "phg-official"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/products/predator-hunting-grounds-ultimate-samurai-predator-7-inch-scale-action-figure",
+        "https://blog.playstation.com/?p=332767",
+        "https://predator.illfonic.com/"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": "arena-134-predator-hunting-grounds-overgrowth",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/samurai/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/samurai/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-scavage",
+      "fighterName": "Scavage Predator",
+      "previousCoverage": "identity-unverified",
+      "group": "kenner13",
+      "lieu": "Duel des lames — exposition Kenner",
+      "sourceIds": [
+        "kenner13"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-predator-7-scale-action-figures-series-13"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-091-duel-des-lames",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/scavage/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/scavage/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-serpent-hunter",
+      "fighterName": "Serpent Hunter",
+      "previousCoverage": "reference-needed",
+      "group": "serpent-2010",
+      "lieu": "Freya’s Prospect — cadre du jeu AVP 2010",
+      "sourceIds": [
+        "serpent-neca"
+      ],
+      "sourceUrls": [
+        "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": "arena-131-avp-2010-freyas-prospect",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/03_AVP/serpent_hunter/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/03_AVP/serpent_hunter/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-extinction-spear-master",
+      "fighterName": "Spear Master — AvP Extinction",
+      "previousCoverage": "reference-needed",
+      "group": "extinction",
+      "lieu": "LV-742 — champ de bataille partagé",
+      "sourceIds": [
+        "extinction-manual"
+      ],
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "extinction-lv742",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_spear_master/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_spear_master/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-spiked-tail",
+      "fighterName": "Spiked Tail Predator",
+      "previousCoverage": "identity-unverified",
+      "group": "kenner16",
+      "lieu": "Cercle éclipse — exposition Kenner",
+      "sourceIds": [
+        "kenner16"
+      ],
+      "sourceUrls": [
+        "https://necaonline.com/?p=58371"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-089-cercle-eclipse",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/spiked_tail/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/spiked_tail/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-stalker-kenner",
+      "fighterName": "Stalker Predator — Kenner",
+      "previousCoverage": "identity-unverified",
+      "group": "kenner16",
+      "lieu": "Cercle éclipse — exposition Kenner",
+      "sourceIds": [
+        "kenner16"
+      ],
+      "sourceUrls": [
+        "https://necaonline.com/?p=58371"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-089-cercle-eclipse",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/stalker_kenner/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/04_KENNER/stalker_kenner/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-extinction-stalker",
+      "fighterName": "Stalker — AvP Extinction",
+      "previousCoverage": "reference-needed",
+      "group": "extinction",
+      "lieu": "LV-742 — champ de bataille partagé",
+      "sourceIds": [
+        "extinction-manual"
+      ],
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "extinction-lv742",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_stalker/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_stalker/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-swift-knife",
+      "fighterName": "Swift Knife — cyborg",
+      "previousCoverage": "reference-needed",
+      "group": "concrete-jungle",
+      "lieu": "Neonopolis — coursives industrielles",
+      "sourceIds": [
+        "stone-neca",
+        "scarface-neca"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/products/predator-7-scale-action-figure-concrete-jungle-stone-heart-predator",
+        "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-video-game-appearance-ultimate-scarface-predator"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "primary-limited",
+      "suggestedExistingStage": "arena-137-concrete-jungle-neonopolis",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/swift_knife/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/swift_knife/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "individual-name-or-visual-link-primary-limited"
+    },
+    {
+      "fighterId": "user-temple-guard",
+      "fighterName": "Temple Guard",
+      "previousCoverage": "reference-needed",
+      "group": "avp-ancients",
+      "lieu": "Pyramide AVP 2004 — chambre sacrificielle",
+      "sourceIds": [
+        "avp-neca15"
+      ],
+      "sourceUrls": [
+        "https://necaonline.com/2016/04/closer-look-predator-series-15-action-figures/"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": "arena-122-avp-2004-sacrificial-chamber",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/03_AVP/temple_guard/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/03_AVP/temple_guard/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-extinction-vanguard",
+      "fighterName": "Vanguard — AvP Extinction",
+      "previousCoverage": "reference-needed",
+      "group": "extinction",
+      "lieu": "LV-742 — champ de bataille partagé",
+      "sourceIds": [
+        "extinction-manual"
+      ],
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ],
+      "adaptationStatut": "shared-work-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "extinction-lv742",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_vanguard/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+          "entry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_vanguard/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-viper",
+      "fighterName": "Viper Predator",
+      "previousCoverage": "reference-needed",
+      "group": "viper-neca",
+      "lieu": "Quais du premier sang — exposition de pilote",
+      "sourceIds": [
+        "viper-neca"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-009-quais-du-premier-sang",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/viper/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/viper/sans_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/06_VARIANTES/ambush_viper/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/06_VARIANTES/ambush_viper/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-lot2-18",
+      "fighterName": "Visage orangé aux longues défenses",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "THE_PIT_LOT2_6_SPRITES_V1.zip",
+          "entry": "THE_PIT_LOT2_6_SPRITES_V1/PNG/18_Visage_Orange_Longues_Defenses_Reconstitution.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-wasp",
+      "fighterName": "Wasp Predator — Dead End",
+      "previousCoverage": "reference-needed",
+      "group": "dead-end",
+      "lieu": "Dead End — impasse nocturne",
+      "sourceIds": [
+        "bigred-neca",
+        "albino-neca",
+        "wasp-neca",
+        "deadend-director"
+      ],
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/closer-look-predators-series-7-big-red-predator-action-figure",
+        "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-2013-exclusive-meet-the-albino-predator-action-figure",
+        "https://store.necaonline.com/blogs/news/174239303-shipping-predators-series-11-a-new-pacific-rim-action-figure-2-pack-and-tf2-blu-soldier-and-heavy",
+        "https://mediamikes.com/2011/02/interview-with-sandy-collora/"
+      ],
+      "adaptationStatut": "shared-fan-film-setting",
+      "sourceStatus": "resolved",
+      "suggestedExistingStage": null,
+      "newPlanKey": "dead-end-alley",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/wasp/avec_casque.png"
+        },
+        {
+          "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+          "entry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/wasp/sans_casque.png"
+        }
+      ],
+      "identityEvidenceStatus": "official-work-or-licensee-confirmed"
+    },
+    {
+      "fighterId": "user-yaquita",
+      "fighterName": "Yaquita",
+      "previousCoverage": "identity-unverified",
+      "group": "rage-war",
+      "lieu": "UMF12 — habitat partagé de Rage War, lien individuel à documenter",
+      "sourceIds": [
+        "rage-titan",
+        "rage-author"
+      ],
+      "sourceUrls": [
+        "https://titanbooks.com/8140-predator-incursion-the-rage-war-1/",
+        "https://www.avpgalaxy.net/website/interviews/tim-lebbon-interview-predator-incursion/"
+      ],
+      "adaptationStatut": "work-attested-identity-link-pending",
+      "sourceStatus": "primary-limited",
+      "suggestedExistingStage": null,
+      "newPlanKey": "rage-war-umf12",
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yaquita_sans_masque_il_cybernetique.png"
+        },
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yaquita_yautja_sur_plateforme_blindee.png"
+        }
+      ],
+      "identityEvidenceStatus": "novel-lead-primary-passage-needed"
+    },
+    {
+      "fighterId": "user-lot2-17",
+      "fighterName": "Yautja de Noël, armure rouge et noire",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "THE_PIT_LOT2_6_SPRITES_V1.zip",
+          "entry": "THE_PIT_LOT2_6_SPRITES_V1/PNG/17_Yautja_Noel_Armure_Rouge_Sac.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-yautja-masque-en-garde-defensive",
+      "fighterName": "Yautja masqué en garde défensive",
+      "previousCoverage": "identity-unverified",
+      "group": "provided-descriptive-art",
+      "lieu": "Cercle d’obsidienne — exposition des images fournies",
+      "sourceIds": [],
+      "sourceUrls": [],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-081-cercle-obsidienne",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yautja_masque_en_garde_defensive.png"
+        }
+      ],
+      "identityEvidenceStatus": "provided-design-no-canonical-biography-claimed"
+    },
+    {
+      "fighterId": "user-yuahro",
+      "fighterName": "Yuahro",
+      "previousCoverage": "identity-unverified",
+      "group": "yuahro-aftermath",
+      "lieu": "Clairière d’exposition — attente du passage Aftermath",
+      "sourceIds": [
+        "eyes-author"
+      ],
+      "sourceUrls": [
+        "https://bryanthomasschmidt.net/predator-eyes-of-the-demon/"
+      ],
+      "adaptationStatut": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "suggestedExistingStage": "arena-003-chaussee-de-canopee",
+      "newPlanKey": null,
+      "exactGeometryCertified": false,
+      "exclusivePersonalStageCount": 0,
+      "sourceArchiveEntries": [
+        {
+          "archive": "YAUTJA_IMAGES_58_PNG.zip",
+          "entry": "YAUTJA_IMAGES_RECUPEREES/01_GENERATIONS_CONVERSATION/yuahro_yautja_masque_en_garde.png"
+        }
+      ],
+      "identityEvidenceStatus": "novel-lead-primary-passage-needed"
+    }
+  ]
+}

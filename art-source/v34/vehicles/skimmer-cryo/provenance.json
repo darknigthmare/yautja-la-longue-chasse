@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "skimmer-cryo",
+  "name": "Skimmer cryo",
+  "lore": "Nom seul dans la source : silhouette et construction proposées pour le jeu, sans validation canonique ni statistiques inventées.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Skimmer cryo — proposition de châssis",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/skimmer-cryo/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/skimmer-cryo/identity-r1.png",
+      "originId": "exec-5d8b08a9-88de-4304-aaee-1a30d6c6849d.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "ae3654a98f7bc02e23fe247edade16ec9f7bd6fe1321b3fc89587855dca9a4d8",
+      "bytes": 1429371,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Design an original modular vehicle for the 2D Yautja fan-game La Longue Chasse from its NAME-ONLY brief. This is an explicit new design proposal, not a reconstruction of an existing canonical film vehicle. Exactly TWO full side-profile views SIDE BY SIDE: left craft points RIGHT, right craft LEFT; identical construction and scale, separately drawn opposite sides. Full silhouette within each half, wide margins. Pure MAGENTA #FF00FF background. Detailed painted game bitmap, dark alien bronze/gunmetal hardware with subtle small status lamps. NO scenery, ground shadow, text, layout labels, rider, passenger, cargo, trophy or effects. Empty hardware sockets for detachable modules, no baked-in weapons. A compact polar skim-craft: enclosed low single-seat armored canopy, two long broad curved underside runners acting as emergency landing rails, recessed insulated grav thrusters, frost-resistant segmented ivory-grey and gunmetal plating, small amber thermal status lamps, sturdy prow ice deflector. No real snow or ice particles baked in. Low sleek silhouette, clean distinct geometry, mechanically connected pods, no wheels, wings or cannon.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1111,
+            1111
+          ],
+          "role": "Requested name only"
+        }
+      ],
+      "notes": [
+        "Le nom est demandé ; les choix mécaniques sont des propositions originales à valider.",
+        "Deux vues statiques en revue, aucun clip runtime. Pilote, armes et effets doivent rester indépendants."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            26,
+            283,
+            841,
+            302
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 161771,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            908,
+            285,
+            842,
+            300
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 162052,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

@@ -1,0 +1,53 @@
+{
+  "release": "V66",
+  "checkedAt": "2026-10-01T03:32:38.895Z",
+  "id": "dpl_4trWpDgrxHjVDRmEPAeggMVc3Zqk",
+  "state": "READY",
+  "commit": "d89792643d17c528282ca83ebba3582216585447",
+  "target": "production",
+  "project": "prj_BIXQYu9PfyNrwR53zzG1938KUgpP",
+  "alias": [
+    "yautja-la-longue-chasse.vercel.app",
+    "yautja-la-longue-chasse-darknigthmares-projects.vercel.app",
+    "yautja-la-longue-chasse-git-main-darknigthmares-projects.vercel.app"
+  ],
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "deploymentUrl": "https://yautja-la-longue-chasse-rnbp8nh1a-darknigthmares-projects.vercel.app",
+  "source": "git",
+  "publicQa": "PASS",
+  "publicQaCheckedAt": "2026-10-01T03:54:48.453Z",
+  "reports": [
+    {
+      "path": "docs/v66-solo-public-qa.json",
+      "sha256": "f5a2f550974e57ba9aab3915a70e177b92672a82443d5d7c639314206ce659c4"
+    },
+    {
+      "path": "docs/v66-campaign-menu-public-qa.json",
+      "sha256": "318f80d9eccd6d00bfd0c1b35b13b883866ae3e055a49f55f6957c62b50841fd"
+    },
+    {
+      "path": "docs/v66-side-story-public-qa.json",
+      "sha256": "f310bb6238ed63adcde551e5cad6c4fa20cdc26c2d1d31624b34676b23ac423d"
+    },
+    {
+      "path": "docs/v66-npc-missions-public-qa.json",
+      "sha256": "3e8a22565df5af52efe91a23fef54a6596e4eaad6da78a07164fadb8a287b958"
+    },
+    {
+      "path": "docs/v66-game-reserve-public-qa.json",
+      "sha256": "1c094a38688cd27fe8e72e554de03964a7cac19ef77d04859cd3f592d32e7e52"
+    },
+    {
+      "path": "docs/v66-stage-life-public-qa.json",
+      "sha256": "d2faf942bb33978e942eafddf8943f69f596f7a9bd8bd44da6428955a090db3e"
+    },
+    {
+      "path": "docs/v66-stage-life-public-visual-review.json",
+      "sha256": "c35c584073e73eb48cb89351d8bfceda693fed710ab3939a9ff9c3e7832d8067"
+    },
+    {
+      "path": "docs/v66-public-native-assets.json",
+      "sha256": "531596ec83437a6da1dc51db30b0963824f341b9c6fe2a839dcac4fca84b2a2a"
+    }
+  ]
+}

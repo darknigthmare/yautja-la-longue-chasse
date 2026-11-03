@@ -1,0 +1,75 @@
+{
+  "version": 75,
+  "generator": "OpenAI builtin image_gen",
+  "nativeSource": "C:/Users/chuck/.codex/generated_images/01a0fa65-ef9e-7cd3-b865-ae809f1684da/exec-f1b6c024-56be-40c7-88e9-b844965ff493.png",
+  "runtimeAsset": "/game/homeworld/v75/landscape-ground-materials-native.png",
+  "sha256": "b144ee16a08881cce91b7652c8f2d8801e6c51c25e441e6586d407857c7b6307",
+  "width": 1254,
+  "height": 1254,
+  "cells": 6,
+  "cellWidth": 418,
+  "cellHeight": 627,
+  "runtimeTileWorldWidth": 260,
+  "runtimeTileWorldDepth": 390,
+  "sourceBytesChanged": false,
+  "projection": "Top-down ground projected once at 35 degrees; upright props use preserved V71 native perspective.",
+  "status": "Native materials integrated and frozen; final compiled local browser recipe PASS at 2026-10-02 15:18 UTC with 15 checks, 10 routes and 14 captures. All 14 final captures inspected; northern floor, physical gate approaches and Reserve annotation confirmed.",
+  "lore": "original-adaptation, same volcanic plateau with local ecotones; distant full biomes remain in existing regions",
+  "preservedLegacyAssets": [
+    "/game/homeworld/v71/outskirts-kit.png",
+    "/game/homeworld/v71/cinder-ground.png"
+  ],
+  "promptSummary": "Six equal material areas in a 3-column, 2-row native atlas, edge-to-edge with no gutters, borders, words or panorama. Top-down diffuse volcanic ash, sandy grit, moss soil, damp gravel, cooled mineral crust and fractured basalt. Shared basalt substrate; no lava, standing objects or full climates. Each material requested as seam-friendly periodic ground.",
+  "limitations": "The native canvas is square rather than 3:2; cells measured 418 x 627 and runtime preserves their aspect. Periodicity requested but not mathematically certified; no apparent rectangular transition was found in the local frozen views. No derived crop bitmap produced. Public release verification is a separate gate.",
+  "cellMeasurements": [
+    {
+      "id": "dry-ash",
+      "x": 0,
+      "y": 0,
+      "width": 418,
+      "height": 627,
+      "rgbaWindowSha256": "80361e5aa497727180b0353d0e3df6d7b4979dde4ab54ae268a50eca203cf145"
+    },
+    {
+      "id": "sandy-grit",
+      "x": 418,
+      "y": 0,
+      "width": 418,
+      "height": 627,
+      "rgbaWindowSha256": "6398898b39ba8b71360d8456be8baf19080e37cf0d4e4b38aea4588b428564ec"
+    },
+    {
+      "id": "moss-soil",
+      "x": 836,
+      "y": 0,
+      "width": 418,
+      "height": 627,
+      "rgbaWindowSha256": "c686d32ea889ab203b7f4c345fa417f2beb97c51e644bceb5a5e85393593f4cb"
+    },
+    {
+      "id": "damp-gravel",
+      "x": 0,
+      "y": 627,
+      "width": 418,
+      "height": 627,
+      "rgbaWindowSha256": "587e1a92894b6e79e537a94e5e5367395c9f8987b4d0d1690ad9dfa127435d89"
+    },
+    {
+      "id": "mineral-crust",
+      "x": 418,
+      "y": 627,
+      "width": 418,
+      "height": 627,
+      "rgbaWindowSha256": "212fc17c427e6985c5bacfd9609b04045605afd49e5392de4c4daf218d9a0fcf"
+    },
+    {
+      "id": "fractured-bedrock",
+      "x": 836,
+      "y": 627,
+      "width": 418,
+      "height": 627,
+      "rgbaWindowSha256": "719bac0c4179241ff15f169c1882e8f694a9b5b0110986bfeca6f684d35d9859"
+    }
+  ],
+  "nonOpaquePixels": 0
+}

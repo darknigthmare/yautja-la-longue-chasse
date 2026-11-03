@@ -1,0 +1,414 @@
+{
+  "role": "hunter",
+  "requested": 20,
+  "ready": 20,
+  "status": "complete",
+  "generationMode": "built-in image_gen",
+  "reference": "/workspace/scratch/41fc0564188e/yautja-la-longue-chasse/public/game/homeworld/v72/civilian-roles-atlas.png",
+  "referenceCell": 4,
+  "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+  "promptCommon": "Use case: stylized-concept. Create ONE standalone FULL BODY 2D game sprite, transparent alpha. FIRST REFERENCE (Stan Winston 1987 Predator head photo) has ABSOLUTE PRIORITY for biological facial anatomy: wide back-swept cranium, deep alien orbital ridges, lateral fleshy lobes, FOUR SEPARATE EXTERNAL MANDIBULAR ARMS: upper-left and upper-right cheek tusks plus two long lower mandibular arms curling UP, all framing a SEPARATE inner toothed mouth. Thick scalp TENDRILS, not human hair. Do not reduce the face to2nose-tubes/two tusks, no human nose/lips/human face. SECOND REFERENCE (game atlas) is ONLY painterly rendering/camera/outfit material reference: bottom-left hunter type, NEVER copy its inaccurate narrow face. Subject an adult Yautja hunter returning to village, individual design below. Relaxed neutral standing, realistic painterly finish matching game, body3/4facing RIGHT but face turned toward spectator enough to make four mandibles readable where unmasked. No fighting, no active firing, modest clean DRY trophies only when described. Full head-to-clawed-feet and equipment visible,8% clear transparent margins ALL sides, subject<=82%height. ONE character, actual transparent background. No scenery, floor, cast shadow, smoke, glow, additional animals/people, contact sheet, atlas, writing, UI, watermark; do NOT copy photo background, clothing, logo, or watermark.",
+  "variants": [
+    {
+      "id": "hunter-01",
+      "name": "Returning spear hunter",
+      "design": "Tall lean adult male with warm ochre leopard-mottled hide, long thick black scalp tendrils with two bronze cuffs, broad film-accurate rear skull and deep brow. Face unmasked turned slightly toward viewer, four external mandibles relaxed partially spread so separately readable, inner toothed mouth distinct. Asymmetrical worn charcoal leather hunting harness, dark bronze small left pauldron, black mesh torso, three divided hide hip panels, wrapped shins. Holds a folded combistick down in right hand, a unique smooth bronze biomask clipped at opposite hip, two modest dry alien fang trophies on belt. Relaxed post-hunt stance.",
+      "status": "generated",
+      "file": "hunter-01.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0a9bb684-b47b-4fe7-bf6c-4a525d902c6e.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6482537587483724,
+      "sha256": "1b86ccc2ccd559ae26c2d5b24cf700a72ba037b6cdfe9eb196cfd4be36276193",
+      "githubBlobSha": "76acc5abb925bb66bc18d437be3683248472c9dc",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-02",
+      "name": "Carapace collector",
+      "design": "Broad powerful adult female with slate-grey reptilian hide and darker bands, four film-accurate external mandibles visible around inner mouth, heavy backward broad skull and amber eyes, scalp tendrils gathered in a thick rear bundle. Layered dark copper scale breastplate over black hunting mesh, wide irregular left shoulder plate, short dark hide waist panels and worn leg guards. Carries a small bundle of two DRY hard alien carapace plates strapped together under left arm, right hand rests on closed field kit at belt; no additional creature.",
+      "status": "generated",
+      "file": "hunter-02.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-eb4bb940-6a9e-49bc-9c06-bccfbe0c9b9e.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6371377309163412,
+      "sha256": "9b0538d9a1df4e107acad697f810ace0968484f41fe717f3bf8da630f8ffcda6",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "6f83feccb6bf3becdde7c4e2e0ec86f3f02ac799",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-03",
+      "name": "Veteran bone hunter",
+      "design": "Lean elderly male with ivory-tan speckled hide, four large external mandibles and a separate inner mouth, broad furrowed movie-style brow, long grey-black thick scalp tendrils to waist. Weathered charcoal sleeveless traveling coat over narrow bronze scale chest harness, asymmetric shoulder hide wrap, old dark leg bindings. Both hands calmly hold ONE small clean dry skull of an unrecognizable alien animal at waist, no flesh or blood; compact spear strapped vertically to back entirely inside frame.",
+      "status": "generated",
+      "file": "hunter-03.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f8a5de3d-3daa-495b-8e0c-0133ab4772d9.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6543960571289062,
+      "sha256": "d6df950c1c333c75b5157300b13f27619242aa427807f0afbe72c4b70bcf07d5",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "d95aeba5c31117d435315804417a4508858465c4",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-04",
+      "name": "Masked highland tracker",
+      "design": "Very tall athletic male with charcoal hide and subdued rusty mottling, thick black scalp tendrils. Face fully covered by a UNIQUE film-plausible Predator biomask: wide forehead curving backward, low central crest, narrow recessed eye lenses, angular cheek vents and tapered lower jaw, dark gunmetal with worn silver edges. Asymmetrical light dark plate and mesh hunting outfit, short ragged brown shoulder mantle, long divided leather hip panels. Slender alien hunting rifle safely slung across back muzzle down, small dried horn ring at belt, hands resting on crossed belt straps.",
+      "status": "generated",
+      "file": "hunter-04.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c08c15f7-f2c4-4746-905d-85188396a5d8.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6384010314941406,
+      "sha256": "6d4928ee583a0158d5b5603195b75b2284fc816ee03944941ef70277a94450e9",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "70d3b4dd5c30fa4aba3c246d122a8318954f2bc8",
+      "observedFace": "covered"
+    },
+    {
+      "id": "hunter-05",
+      "name": "Heavy blade tracker",
+      "design": "Short barrel-chested mature male, deep reddish speckled hide, broad rear cranium and thick eyebrow ridge, FOUR movie-accurate exposed mandibles framing a separate inner toothed mouth; one outer tusk tip chipped. Short heavy scalp tendrils with copper rings. Broad charcoal leather chest harness over sparse bronze plates, thick dark forearm bracers with blades RETRACTED, black hide skirt and sturdy knee wraps. Heavy alien glaive sheathed along back, three small dry fang ornaments on necklace, right hand loosely on leather field pouch, left relaxed.",
+      "status": "generated",
+      "file": "hunter-05.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-685e958e-aee0-4bc2-84c1-210a0455594f.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.5985774993896484,
+      "sha256": "c324661ca9eb355fcadf934d8590d725100f699dc95ae31e7d7b9c64dfae1de9",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "651eabb6cf0db6b73fe34d7c39a646fae3a03a86",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-06",
+      "name": "Marsh bow hunter",
+      "design": "Tall slender adult female with muted green-grey hide, flattened broad movie-style cranium with deep orbital ridges, FOUR exposed fleshy mandibles distinct around inner mouth, no human nose. Thick scalp tendrils tied into two low rear bundles. Dark woven hunting vest over black mesh, single curved bronze shoulder plate, lightweight dark olive hip wrap and leg bands. Holds an alien compact recurved bow down beside right thigh, compact quiver on back, small sealed specimen vial at belt; calm returned-from-hunt stance.",
+      "status": "generated",
+      "file": "hunter-06.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-84e56dd7-e01d-4751-9a12-5f7668f4f33b.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6532319386800131,
+      "sha256": "b2e4d2d01438a1e96232bc939af6b851ec35f3a314aa84f101280750a9be5587",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "e422632c44dd32ee620dc206aa7c833955c762f4",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-07",
+      "name": "Net specialist",
+      "design": "Extremely broad muscular male with dark umber hide and ochre mottling, wide rear skull, deep amber eyes, four external mandibular arms with visible ivory tusks; long thick black tendrils half tied at nape. Heavy short charcoal leather vest with worn bronze clamps, black mesh at abdomen and thighs, split dark pelt hip panels, minimal greaves. Large compact rolled net in a dark frame on back; left hand grips its shoulder strap, right carries a closed circular net launcher at hip. Dry bone charm tied at belt; no captive or companion.",
+      "status": "generated",
+      "file": "hunter-07.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-ac6f2a28-9aa7-472d-8b3f-c6a6a4b858fa.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.603844960530599,
+      "sha256": "f709c80898da2bdc63e59bd8f6d7c99dbe639d4b656d423a37805e3ef1f1080d",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "9f4683bae908497dea6eb3f99abc56c724339e67",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-08",
+      "name": "Horn trophy hunter",
+      "design": "Broad mature female with warm bronze-brown hide, heavy wide film-correct alien brow and four mandibles around separate inner teeth, thick scalp tendrils swept over one shoulder with two broad dark cuffs. Unique bone-toned left shoulder armor made from one modest dry shell segment, asymmetrical black bronze chest harness, wrapped right arm, long dark hide hip cloths. Two small dry alien horn tips secured to a compact back frame, short sheathed blade at thigh, arms loosely relaxed after travel.",
+      "status": "generated",
+      "file": "hunter-08.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-aba3c641-b649-4fe1-a4f3-7525aa53fbe5.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6334864298502604,
+      "sha256": "1693802ef1dbdfa1bf20fdf7bcea1fa280a71af5bd7c49b20d5a868422e53077",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "6f34a465cf545b13e0df7cd0e3cd2851a6858e3e",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-09",
+      "name": "Masked insect stalker",
+      "design": "Very tall narrow adult male with pale grey speckled hide, long black scalp tendrils. UNIQUE fully worn narrow dark bronze biomask with a broad backward domed upper half, two raised side sensor ribs, deep glass eyes and fine four-slot lower vents; unmistakable Predator mask. Lightweight dark segmented hunting plates and charcoal hoodless long vest, mesh legs, slim greaves. Holds one closed dark insect-shell sample case under right arm, compact folded spear at left belt; no insect creature shown.",
+      "status": "generated",
+      "file": "hunter-09.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-21ffac3b-3afe-4f70-a21a-1ece4427c1e0.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6508324940999349,
+      "sha256": "31c0a5d2cb9a2ef481817ef84b84e94d5af26d4f1f23a2154c0790c503d2eec3",
+      "alphaCorners": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "d3eb9fe7d954154bdabfb48f4dc92cf0cc5d3562",
+      "observedFace": "covered"
+    },
+    {
+      "id": "hunter-10",
+      "name": "Compact trail hunter",
+      "design": "Short agile adult male with deep moss-green speckled hide, wide cranium with strong cheek lobes, four external mandibles in correct film arrangement visible from front-biased three-quarter angle, thick dark tendrils arranged in high rear knot. Dark brown cross-wrapped hunting tunic, one small weathered black pauldron, mesh sleeves, short layered hip strips and cloth shins. Compact non-firing net gun holstered on thigh, one clean small dry alien fang hanging from belt; right hand adjusts wrist locator, left on hip.",
+      "status": "generated",
+      "file": "hunter-10.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-27243824-312a-47b1-b13b-b8cba9961314.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6807308197021484,
+      "sha256": "9504c1cf92a9a9912a244ef3c0232d546c9006f27a335df66d04f46b05ef2783",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "bf834069aa4244b60c91498289b1a0e0ef486eb4",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-11",
+      "name": "Cliff hunter",
+      "design": "Athletic female adult with warm golden leopard-mottled skin, broad rear skull and deep brow, FOUR distinct exterior mandibles partly open around inner mouth; thick black tendrils loosely gathered behind shoulders. Close fitted charcoal and bronze diagonal chest plates over hunting mesh, short asymmetrical black pelt skirt, broad leather bracers, light ankle wraps. Carries one neatly coiled climbing cable over left forearm, folded combistick horizontally at belt, small bone bead necklace. Resting upright stance.",
+      "status": "generated",
+      "file": "hunter-11.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-58477048-c49b-4b81-b729-bd56f20f9d02.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6528828938802084,
+      "sha256": "1e7ab770cff8a7c19470f29fadb28d4ec9ac14b3c0cb28a4230813872e60ac1a",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "9310bda4cdae5ad0128c2d2f52c1cb512e5ba942",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-12",
+      "name": "Masked expedition veteran",
+      "design": "Broad tall mature male with dusky purple-grey hide, heavy black scalp tendrils with tarnished bronze rings. UNIQUE full biomask with a wide flat backward crown, long angular jaw plate, three narrow lower vents and asymmetrical small sensor cluster at one temple, blackened bronze. Heavy weathered charcoal hunting plate over dark mesh, layered shoulder plates of different sizes, long split hide apron and worn greaves. Holds a long narrow spear upright beside body, one clean dry broken shell trophy at waist, quiet planted posture.",
+      "status": "generated",
+      "file": "hunter-12.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-dd21d97e-1fc6-4724-a3a1-d935d81e7d5f.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6268730163574219,
+      "sha256": "aa36eadf4048359540ec17a693fe86cf733e1432547ba7eb955af28bf6ba887d",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "08862cccfa197f40d9ad566cab1738bfb2dba648",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-13",
+      "name": "Lean desert scout",
+      "design": "Long-limbed male with terracotta speckled skin, broad rear alien skull, strong folded eyebrow ridges, four exposed mandibles and distinct inner teeth, black scalp tendrils reaching shoulders with leather ties. Open-sided dark grey oilcloth traveling vest over bronze-edged light harness, ochre-grey waist wrap, short mesh leggings, wrapped shins. Thin alien spear enclosed in a leather sleeve slung diagonally behind shoulder, closed water flask in left hand, small carved dry horn at belt. Calm slightly tired stance.",
+      "status": "generated",
+      "file": "hunter-13.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-ffbaffa3-bdbd-47c5-9cea-cbad00d22f28.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6630051930745443,
+      "sha256": "5015c01b4ab6a09f53abb889aebc67d4db309ee054e1e64746d237a5616c1007",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "7eb358a86f49ba7de425016144441f6bd47f6351",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-14",
+      "name": "Elder pelt hunter",
+      "design": "Tall elderly female with pale ivory-grey spotted hide, broad wrinkled movie-correct cranium and four exposed tusked mandibles, thick silver tendrils bundled low. Dark charcoal shoulder cape secured by two plain bone clasps over broad leather hunting harness, long split dark skirt panels and mesh beneath, simple shin bands. A small rolled DRY alien hide neatly strapped to back, long slender folded hunting staff held low in right hand; left hand rests over belt. No animal head, flesh or blood.",
+      "status": "generated",
+      "file": "hunter-14.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e4406e62-6382-4988-91e2-f5d66815c9de.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.5748074849446615,
+      "sha256": "c9f9e9bd8d4c28932f77842bd4e27993eb382f154df3127c7d36b27c49881b9d",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "2edfff5b975efa38fcf24dd0a99a63b1f908ddb6",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-15",
+      "name": "Shellfield collector",
+      "design": "Compact muscular adult male with russet-red hide, wide back-swept alien skull, heavy brow and four fleshy exterior mandibular arms with ivory teeth around a separate internal mouth; thick short scalp tendrils gathered backward. Narrow bronze brow-band without obscuring face, asymmetrical dark mesh-and-leather hunting outfit with one angular chest plate, long right hip panel and knee wraps. Carries a pair of clean dry iridescent alien shell plates bound like a book, small sealed tool kit at waist. Neutral stance.",
+      "status": "generated",
+      "file": "hunter-15.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3839e1ac-afbd-4b5d-8fd7-f352888dc21a.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6282151540120443,
+      "sha256": "f823189253432a7eeaac3369c80380bd02cb2597fd17053b0eb2cea4a8b0f503",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "a96077c0bfa63608d4783e6eaffbb6b87089fe82",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-16",
+      "name": "Long-range huntress",
+      "design": "Towering strongly built adult female with pale grey hide and charcoal patches, film-accurate broad rear cranium, deep-set eyes, FOUR exposed external mandibles, dense black tendrils to mid-back with simple rings. Angular dark green-black chest plates over hunting mesh, low single shoulder plate, broad leather belt, short rugged pelt panels, braced shins. Long compact alien bow strapped vertically to back, one modest dry tusk trophy attached to pack, hands resting together over folded cloak at abdomen. No pointed weapon aimed.",
+      "status": "generated",
+      "file": "hunter-16.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-2ea4f98d-1c1c-4a73-8184-1960e6adbe3f.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6334419250488281,
+      "sha256": "a766daa34a7b716d0800e26b664eae1081567d746a7b05591cc53c97f3903bf8",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "dcdda2c5a54247d17822219f8ef4f3f1a8abb590",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-17",
+      "name": "Wandering hunt elder",
+      "design": "Gaunt older male with dark grey-brown spotted skin, large backward skull and prominent brow folds, four external mandibles framing a separate inner mouth, thick grey-black tendrils tied in one long tail. Weathered charcoal sleeveless hooded cloak with hood DOWN, faded bronze harness, long split travel tunic and rough calf wraps. Short rolled net and two capped medicine cylinders at belt, a plain covered spear held vertically beside body, left hand cradles a closed water canteen. Reserved weary posture.",
+      "status": "generated",
+      "file": "hunter-17.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-ec270f85-2930-4046-b1a4-6ea1a8035404.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.5995629628499349,
+      "sha256": "5a6137887c71d23234bf7d1c36ba4cfc5a3d8f2b9387c4288251c6478109de02",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "360732ab95b490f9054f5c122fcbc266bafe59a1",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-18",
+      "name": "Masked quarry specialist",
+      "design": "Massive muscular male with dark terracotta hide, short thick scalp tendrils. UNIQUE dark Predator biomask with wide rear dome, two low lateral swept fins, heavy cheek ridges and a recessed triangular lower grille, dull black bronze finish. Asymmetrical hunting armor with small dry bone links on one shoulder, large crossed black leather chest straps, mesh torso, broad reinforced wrist gauntlets with blades RETRACTED, short divided hip panels. Folded heavy glaive held under left arm safely, right hand near field pouch. Neutral homecoming stance.",
+      "status": "generated",
+      "file": "hunter-18.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-da5480f3-025b-4409-bb19-680e9a9c7865.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.5886878967285156,
+      "sha256": "47d5b8909b6b55169dd5552cfb4e860a03d0122bf609aa50de4d85c903e6d1b2",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "e893156f0dbde38dff90368ee0d732d4fa5d46ed",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-19",
+      "name": "Mask-off returning huntress",
+      "design": "Lean mature female with silver-grey leopard-spotted skin, very broad movie-like skull sweeping back, deep orbital ridges and FOUR exterior mandibular lobes/tusks surrounding separate inner mouth; black thick scalp tendrils held in two rear loops. Small charcoal shoulder cape over narrow bronze webbed chest harness, practical dark hide skirt with two long split panels, cloth greaves. Holds her UNIQUE angular narrow gold-black biomask in right hand beside thigh; one clean small alien tooth on belt, left hand relaxed. No additional head or character.",
+      "status": "generated",
+      "file": "hunter-19.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-0ccb41bb-4377-4b98-88b5-8c43450c21cd.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6655476888020834,
+      "sha256": "b46d53dfe6419b9d915e5aad6bbbd5daba28e37b1ffd7ac1d199d4775f906309",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "dcbce21d6423159c6673d2155d5a5428250fab3b",
+      "observedFace": "visible-four-mandibles"
+    },
+    {
+      "id": "hunter-20",
+      "name": "Seasoned hunt leader",
+      "design": "Tall broad older male with mottled ochre and ivory skin, high wide backward cranium, deep alien orbital ridges, FOUR large exterior mandibles with ivory tusks clearly separate from internal toothed mouth; thick grey-black tendrils to waist. Worn bronze double-layer chest harness with black mesh abdomen, mismatched low bone-toned shoulder guards, dark three-panel pelt skirt, heavy old bracers and greaves. Compact combistick strapped to back, three modest clean dry alien bone pieces at belt; hands loosely joined over waist in calm proud homecoming pose.",
+      "status": "generated",
+      "file": "hunter-20.png",
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-20c346ee-a28d-49f6-9905-6de90da3b8e5.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaZeroFraction": 0.6042792002360026,
+      "sha256": "b8e4cc82f3803a460cdcdce4e3923dfc595b4759ec881f1445e76ecb9b523ffe",
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "githubBlobSha": "f0a7cb5c05dd790c98bd8bce543063c73c69af32",
+      "observedFace": "visible-four-mandibles"
+    }
+  ],
+  "faceReview": "face-review.json"
+}

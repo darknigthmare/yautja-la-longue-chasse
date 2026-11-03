@@ -1,0 +1,1963 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "blade-fighter-k-93",
+  "name": "Blade Fighter K-93",
+  "lore": "licensed-merchandise-inspired-game-adaptation",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Blade Fighter · identité latérale",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-k-93/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-k-93/identity-r1.png",
+      "originId": "exec-14870c49-baf8-43f0-8dfc-47ee7b4c5cd7.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "61860eff820eb3763905276c95ca1c83667e8bfa6cd9a1a8bbf3d98beae74de2",
+      "bytes": 2133777,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "alpha"
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Use the attached existing game Blade Fighter image as the visual identity REFERENCE, not as an editing target. Create a NEW 2D side-scrolling game vehicle sprite identity sheet: the same black-gunmetal alien hunting skimmer, bronze/bone ribbed rear seat fin, open central saddle/control handlebars, paired blue-core articulated cannons, two extremely long forward blade prongs, compact rear engine and cyan antigrav underside nodes. Preserve these recognizable shapes and material colors. This is the project's adaptation of a licensed-toy Blade Fighter, not a film replica. TWO separate fully lateral profile drawings, top row FACING RIGHT and bottom row FACING LEFT, independently drawn opposite views. Orthographic SIDE camera at vehicle mid-height, no overhead view, no isometric camera, no dramatic perspective. Keep the whole vehicle inside each row with generous 64-pixel transparent margins on all sides; equal vehicle length and scale in both rows. 1536 x1024 sheet, one vehicle in each half-height row. Empty cockpit: no rider, no humanoids, no human hands, no ground, no attached trophies, no shadows underneath, no firing/glow plume. Both long blade prongs remain mechanically attached to their hinges in front, one is near-side and one far-side, not extra jaws. Cannons physically mounted beside the central hull. Plain TRUE TRANSPARENT RGBA outside the sprites, no black or checkerboard background. Detailed painted 2D game art, sharp silhouettes readable at smaller game scale. NO writing, numbers, labels, logos, watermarks or comparison arrows. Two profiles only.",
+      "references": [
+        {
+          "path": "public/game/ships/v12/blade-fighter.webp",
+          "sha256": "1d7852a5e71ca89fa102c9d3f9ae529eb5cd714cdd70e46b21be3654a392df5a"
+        },
+        {
+          "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predator-blade-fighter-vehicle-and-packaging",
+          "role": "licensed merchandise description; no film replica claim"
+        }
+      ],
+      "notes": [
+        "Preserves the project's existing black/bronze Blade Fighter identity.",
+        "Slightly elevated side camera remains; not a certified orthographic or 1:1 toy reproduction.",
+        "Rejected for extraction: no actual alpha or declared removable color key."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            0,
+            0,
+            1536,
+            512
+          ],
+          "gridBorderPixels": 4092,
+          "visiblePixels": 786432,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            512,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            0,
+            512,
+            1536,
+            512
+          ],
+          "gridBorderPixels": 4092,
+          "visiblePixels": 786432,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-r2",
+      "actionId": "identity",
+      "label": "Blade Fighter · identité latérale",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-k-93/identity-r2.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-k-93/identity-r2.png",
+      "originId": "exec-dcffdd7a-88a4-4045-b895-6de7fe14d0f6.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "9d8186d4a1d09c3674ac8ea96483c4cb79d57c57332624933a3873b21be7dc9a",
+      "bytes": 1929925,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Edit the attached two-view Blade Fighter game identity sheet. CHANGE ONLY THE BACKGROUND: remove the entire grey-white checkerboard and replace it with perfectly uniform solid RGB(255,0,255) MAGENTA #FF00FF with absolutely no gradients, shadows, texture, grid or checker marks. Keep exactly the same TWO vehicle drawings, positions, colors, details, blade count, cannons, saddle, handlebars and body shape. Top vehicle faces RIGHT, bottom LEFT. Preserve clean sharp outlines; no extra objects, text, annotations or labels. No magenta lighting or color spill onto the actual vehicle. The flat magenta is an explicitly declared removable game color key. Do not make a checkerboard.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/blade-fighter-k-93/identity-r1.png",
+          "sha256": "61860eff820eb3763905276c95ca1c83667e8bfa6cd9a1a8bbf3d98beae74de2"
+        }
+      ],
+      "notes": [
+        "Same project identity; grey checkerboard replaced by an explicitly declared flat magenta key.",
+        "Presentation only; not a new animation and not a certified1:1 toy reproduction.",
+        "Eight-pose modules use individually measured hinge or emitter anchors. These are review frames, not approved driving clips.",
+        "Whole-vehicle assembly and source-camera fidelity remain under review; no pilotable vehicle is implied."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            74,
+            146,
+            1399,
+            354
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 258798,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            512,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            64,
+            594,
+            1395,
+            356
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 255701,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            70,
+            142,
+            1407,
+            362
+          ],
+          "pivot": [
+            610,
+            218
+          ],
+          "facing": "right",
+          "phase": "identity",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            0,
+            1536,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            60,
+            590,
+            1403,
+            364
+          ],
+          "pivot": [
+            660,
+            220
+          ],
+          "facing": "left",
+          "phase": "identity",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            512,
+            1536,
+            512
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        400
+      ]
+    },
+    {
+      "id": "chassis-r1",
+      "actionId": "chassis",
+      "label": "Blade Fighter · châssis sans armes",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-k-93/chassis-r1.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-k-93/chassis-r1.png",
+      "originId": "exec-025a9ee4-7ad1-44ed-b9e9-d589fef2c8c0.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "366364e3fc667521827866c5f19f915cb7ef70a25a0c852792742f952c6d8209",
+      "bytes": 1849915,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Use the attached two-view Blade Fighter sheet as exact project identity reference. Produce a NEW MODULAR MAIN CHASSIS sheet for the same side-scrolling game vehicle. Two separate independently drawn views, RIGHT-facing top row and LEFT-facing bottom row, same scale with 80-pixel safety margins. Only the central open dark gunmetal deck, control handlebars, front mounting coupler, rear ribbed bone-bronze seat fin, compact rear engine and cyan underside antigrav pods. REMOVE both long forward blade arms AND both side cannons as separate equipment modules: leave believable empty mechanical hinge hardpoints in front and weapon mounts beside the forward deck, not cut-off fragments. The chassis must look structurally complete and match the reference's materials and proportions. Empty cockpit, no rider or detached loose parts. Slightly elevated side view matching reference, no further camera rotation. 1536x1024 with2rows, one complete chassis per row. Solid uniform #FF00FF MAGENTA color-key background, NO checkerboard, NO shadows cast on the background, NO ground, NO text or symbols. Sharp detailed painted game sprite, no glow plumes. Opposite views are separately authored, not an image mirror. These are modular parts for a project adaptation, not a film replica.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/blade-fighter-k-93/identity-r1.png",
+          "sha256": "61860eff820eb3763905276c95ca1c83667e8bfa6cd9a1a8bbf3d98beae74de2"
+        }
+      ],
+      "notes": [
+        "Separate chassis with empty front hinge and cannon hardpoints, no rider or blade weapons.",
+        "Module scale and attachment positions must be measured before combined animation.",
+        "Eight-pose modules use individually measured hinge or emitter anchors. These are review frames, not approved driving clips.",
+        "Whole-vehicle assembly and source-camera fidelity remain under review; no pilotable vehicle is implied."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "chassis",
+          "reviewGridRect": [
+            0,
+            0,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            92,
+            69,
+            1101,
+            385
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 236030,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "chassis",
+          "reviewGridRect": [
+            0,
+            512,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            276,
+            535,
+            1129,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 244625,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            88,
+            65,
+            1109,
+            393
+          ],
+          "pivot": [
+            597,
+            270
+          ],
+          "facing": "right",
+          "phase": "chassis",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            0,
+            1536,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            272,
+            531,
+            1137,
+            388
+          ],
+          "pivot": [
+            468,
+            269
+          ],
+          "facing": "left",
+          "phase": "chassis",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            512,
+            1536,
+            512
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        400
+      ]
+    },
+    {
+      "id": "blades-r1",
+      "actionId": "capture-jaws",
+      "label": "blades-r1",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-k-93/blades-r1.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-k-93/blades-r1.png",
+      "originId": "exec-42d2b33a-660b-4355-82c4-20af218ba2b6.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "b8285cbf160f4f08d3255dafec867b87252944efab92284f39d90bae4e5c362c",
+      "bytes": 1484357,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Create an actual modular animation sprite sheet for the Blade Fighter K-93 in the provided project reference. Preserve exactly its black gunmetal, worn dark bronze trim and long angular twin front blades. This is the project's licensed-toy-inspired adaptation, not a film model. Isolate ONLY the detachable twin blade and capture-jaw assembly with its small central pivot hub. No chassis, no rider, no cannons, no words or grid lines. Uniform flat chroma-key magenta #FF00FF background, no checkerboard, no shadow outside the metal, no bloom contaminating the background. Eight separate complete drawings in an exact regular 4 columns by 2 rows grid, generous empty margins and gutters. First row faces RIGHT, second row faces LEFT as an independently drawn opposite-side view with coherent hardware. Within each row show four distinct mechanically plausible poses: closed narrow twin blades pointing forward, jaws spread moderately, jaws spread fully, jaws closing halfway. The hinge at the rear of the assembly stays at the same position in each cell. All drawings identical scale and the same restrained slightly elevated side camera as the reference; readable for a side-scrolling 2D game. Never rotate the entire sprite to fake animation. Vary the actual articulated blades around their hinge, keep their lengths consistent. No vehicles cut off, no extra fragments, no weapons or chassis from the reference except this front assembly. Sharp detailed painted game sprite finish.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/blade-fighter-k-93/identity-r2.png",
+          "sha256": "9d8186d4a1d09c3674ac8ea96483c4cb79d57c57332624933a3873b21be7dc9a"
+        }
+      ],
+      "notes": [
+        "Visual review: unwanted cockpit handlebars were included in the independent module; cannot assemble with chassis without duplication. Revision required.",
+        "Rejected after visual review: duplicated steering controls and sprites crossing uniform grid cell boundaries. Superseded by r2."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "closed",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            43,
+            162,
+            400,
+            181
+          ],
+          "gridBorderPixels": 10,
+          "visiblePixels": 31675,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "opening",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            443,
+            154,
+            435,
+            194
+          ],
+          "gridBorderPixels": 8,
+          "visiblePixels": 32458,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "open",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            916,
+            139,
+            393,
+            248
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 33165,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "closing",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1354,
+            154,
+            396,
+            197
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 33004,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "closed",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            30,
+            548,
+            398,
+            177
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 30687,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "opening",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            462,
+            545,
+            395,
+            188
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 32521,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "open",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            907,
+            530,
+            386,
+            241
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 32236,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "closing",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            1336,
+            544,
+            394,
+            191
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 32854,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "cannons-r1",
+      "actionId": "cannon-recoil",
+      "label": "cannons-r1",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-k-93/cannons-r1.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-k-93/cannons-r1.png",
+      "originId": "exec-f3702ad6-5d03-44e7-a1b3-cb5ab9104eb7.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "3ac9ac6afd9b87b0ce7ccd5bbcdd724f54ba22f9864db70e49d2c4914c0f3b74",
+      "bytes": 1634950,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Create an actual modular animation sprite sheet based on the Blade Fighter K-93 project reference, preserving its weapon design and side-scrolling camera. Isolate ONLY its paired forward plasma cannon module, black gunmetal angular housings, bronze mounting yoke, small cyan apertures. No chassis, blades, rider, UI, text, labels or grid lines. Eight complete separate drawings on a uniform flat chroma-key magenta #FF00FF background, exact 4 columns by 2 rows regular grid, generous empty margins and gutters. Top row faces RIGHT; bottom row faces LEFT, independently drawn opposite side. Four poses per facing: resting barrels fully extended; recoil compression with visibly shortened barrel extension and opened small heat shutters; return halfway; barrels extended with shutters closing. Mounting pivot stays fixed in every cell and all drawings use exactly the same scale. This is mechanical recoil animation with coherent sliding parts, NOT four translated copies. Keep each cannon and its mount complete within its cell. No large muzzle flash, energy beams or particles because effects are a separate module. Only restrained cyan at the barrel aperture, no bloom in magenta background. Clear hard silhouette, exact material continuity with reference, no extra floating weapons, no copied whole vehicle. Slightly elevated side view matching the provided image, with paired cannons visible and physically connected by their yoke.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/blade-fighter-k-93/identity-r2.png",
+          "sha256": "9d8186d4a1d09c3674ac8ea96483c4cb79d57c57332624933a3873b21be7dc9a"
+        }
+      ],
+      "notes": [
+        "Visual review: unwanted cockpit handlebars were included in the independent module; cannot assemble with chassis without duplication. Revision required.",
+        "Rejected after visual review: duplicated steering controls and sprites crossing uniform grid cell boundaries. Superseded by r2."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "rest",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            56,
+            144,
+            387,
+            218
+          ],
+          "gridBorderPixels": 97,
+          "visiblePixels": 52659,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "recoil",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            443,
+            144,
+            397,
+            219
+          ],
+          "gridBorderPixels": 97,
+          "visiblePixels": 48844,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "return",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            929,
+            144,
+            386,
+            218
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 50050,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "settle",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1331,
+            144,
+            397,
+            218
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 51276,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "rest",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            45,
+            518,
+            398,
+            217
+          ],
+          "gridBorderPixels": 108,
+          "visiblePixels": 51825,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "recoil",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            443,
+            518,
+            404,
+            219
+          ],
+          "gridBorderPixels": 104,
+          "visiblePixels": 45585,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "return",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            894,
+            518,
+            436,
+            217
+          ],
+          "gridBorderPixels": 91,
+          "visiblePixels": 50124,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "settle",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            1330,
+            518,
+            389,
+            217
+          ],
+          "gridBorderPixels": 93,
+          "visiblePixels": 52302,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "blades-r2",
+      "actionId": "capture-jaws",
+      "label": "blades-r2",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-k-93/blades-r2.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-k-93/blades-r2.png",
+      "originId": "exec-457e1e3c-bf60-4821-ab40-59b7d3201654.png",
+      "width": 1774,
+      "height": 886,
+      "sha256": "8b428d2b03d5ae07df4b78795b3b11d6ca39702d3b319b4af733cc78f5a6d64f",
+      "bytes": 1340007,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1571764
+      },
+      "prompt": "Correct the attached eight-pose detachable blade animation sheet. REMOVE EVERY HANDLEBAR and the entire vertical cockpit steering column in all eight drawings. The circular low metal hinge hub and the twin black-and-bronze blades must remain. There must be NO upright U shaped handle, grips, stalk, steering wheel, cockpit, rider or chassis. The module consists ONLY of the two long blades and their small low rear pivot. Preserve the four actual jaw articulation poses per facing: closed, opening, fully spread, half closed. Top four drawings face RIGHT, bottom four face LEFT. Keep the original blade style, proportions and metallic details. Recompose as a precise 4 columns by 2 rows sheet with all eight complete sprites at SAME scale, each sprite fitting inside the CENTRAL 70 percent of its individual cell with wide flat MAGENTA #FF00FF gutters on every side, including between adjacent sprites. No sprite may touch a cell boundary. Pivot at the same normalized point within each row. Use uniform pure #FF00FF background, no checker, text, grid, labels, shadows, sparks or extra parts. Sharp coherent illustrated game sprites.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/blade-fighter-k-93/blades-r1.png",
+          "sha256": "b8285cbf160f4f08d3255dafec867b87252944efab92284f39d90bae4e5c362c"
+        }
+      ],
+      "notes": [
+        "Independent modular candidate. Manual pivots and assembly review required before driving gameplay.",
+        "Eight-pose modules use individually measured hinge or emitter anchors. These are review frames, not approved driving clips.",
+        "Whole-vehicle assembly and source-camera fidelity remain under review; no pilotable vehicle is implied."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "closed",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            53,
+            225,
+            389,
+            114
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 25605,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "opening",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            492,
+            211,
+            372,
+            134
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 25186,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "open",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            916,
+            139,
+            386,
+            250
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 26899,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "closing",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1352,
+            213,
+            377,
+            135
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 26397,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "closed",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            34,
+            608,
+            386,
+            111
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 25110,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "opening",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            471,
+            588,
+            380,
+            141
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 26725,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "open",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            910,
+            530,
+            376,
+            239
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 26713,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "closing",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1341,
+            587,
+            380,
+            144
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 27110,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            49,
+            221,
+            394,
+            122
+          ],
+          "pivot": [
+            68,
+            60
+          ],
+          "facing": "right",
+          "phase": "closed",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            488,
+            207,
+            380,
+            142
+          ],
+          "pivot": [
+            67,
+            74
+          ],
+          "facing": "right",
+          "phase": "opening",
+          "durationTicks": 9,
+          "reviewWindow": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            912,
+            135,
+            394,
+            258
+          ],
+          "pivot": [
+            68,
+            146
+          ],
+          "facing": "right",
+          "phase": "open",
+          "durationTicks": 9,
+          "reviewWindow": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1348,
+            209,
+            385,
+            143
+          ],
+          "pivot": [
+            66,
+            72
+          ],
+          "facing": "right",
+          "phase": "closing",
+          "durationTicks": 9,
+          "reviewWindow": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            30,
+            604,
+            394,
+            119
+          ],
+          "pivot": [
+            326,
+            59
+          ],
+          "facing": "left",
+          "phase": "closed",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            443,
+            443,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            467,
+            584,
+            388,
+            149
+          ],
+          "pivot": [
+            318,
+            79
+          ],
+          "facing": "left",
+          "phase": "opening",
+          "durationTicks": 9,
+          "reviewWindow": [
+            443,
+            443,
+            444,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            906,
+            526,
+            384,
+            247
+          ],
+          "pivot": [
+            314,
+            137
+          ],
+          "facing": "left",
+          "phase": "open",
+          "durationTicks": 9,
+          "reviewWindow": [
+            887,
+            443,
+            443,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1337,
+            583,
+            388,
+            152
+          ],
+          "pivot": [
+            318,
+            80
+          ],
+          "facing": "left",
+          "phase": "closing",
+          "durationTicks": 9,
+          "reviewWindow": [
+            1330,
+            443,
+            444,
+            443
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        400
+      ]
+    },
+    {
+      "id": "cannons-r2",
+      "actionId": "cannon-recoil",
+      "label": "cannons-r2",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-k-93/cannons-r2.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-k-93/cannons-r2.png",
+      "originId": "exec-aaa7d46b-c5ca-4637-a585-107376f665ef.png",
+      "width": 1774,
+      "height": 886,
+      "sha256": "eb178755ffd43e4dfafa3e42812053f9ecc415f1a5dc2a245fb04f22351790c5",
+      "bytes": 1435074,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1571764
+      },
+      "prompt": "Correct the attached eight-pose twin cannon sprite sheet. REMOVE ALL U-shaped handlebars, grips, vertical steering columns and the large circular cockpit control pedestal in every drawing. Keep ONLY the paired cannon barrels, their recoil housings, the low connecting metal yoke and a compact rectangular underside mounting bracket. No cockpit parts, riders, chassis or blades. Preserve the gunmetal and dark bronze material, cyan chamber details, four distinct recoil and cooling-shutter phases per facing. Top row faces RIGHT; bottom row faces LEFT. Eight complete independent sprites on a regular 4 columns x 2 rows sheet, identical scale, each drawing shrunk enough to occupy at most 70 percent of its cell width. Wide flat magenta gutters must separate ALL adjacent sprites. Align the low rear weapon mounting point consistently within each row. The original picture has some sprites crossing their cell boundary: correct the layout so every module is fully inside its own cell with 15 percent empty margins on every side. Uniform flat RGB 255,0,255 MAGENTA background. No text, grid, checkerboard, effects, shadows or extra objects. Keep mechanical animation visible: long extension at rest, strong recoil with shutters open, partial return, extended rest. Detailed sharp game art.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/blade-fighter-k-93/cannons-r1.png",
+          "sha256": "3ac9ac6afd9b87b0ce7ccd5bbcdd724f54ba22f9864db70e49d2c4914c0f3b74"
+        }
+      ],
+      "notes": [
+        "Independent modular candidate. Manual pivots and assembly review required before driving gameplay.",
+        "Eight-pose modules use individually measured hinge or emitter anchors. These are review frames, not approved driving clips.",
+        "Whole-vehicle assembly and source-camera fidelity remain under review; no pilotable vehicle is implied."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "rest",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            63,
+            171,
+            356,
+            181
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 42335,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "recoil",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            518,
+            166,
+            277,
+            186
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 36411,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "return",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            947,
+            171,
+            312,
+            181
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 38900,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "settle",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1364,
+            171,
+            342,
+            181
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 40896,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "rest",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            72,
+            544,
+            343,
+            177
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 40385,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "recoil",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            549,
+            539,
+            276,
+            182
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 35883,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "return",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            966,
+            544,
+            296,
+            177
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 36816,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "settle",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1371,
+            544,
+            341,
+            177
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 40174,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            59,
+            167,
+            364,
+            189
+          ],
+          "pivot": [
+            33,
+            94
+          ],
+          "facing": "right",
+          "phase": "rest",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            514,
+            162,
+            285,
+            194
+          ],
+          "pivot": [
+            30,
+            99
+          ],
+          "facing": "right",
+          "phase": "recoil",
+          "durationTicks": 9,
+          "reviewWindow": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            943,
+            167,
+            320,
+            189
+          ],
+          "pivot": [
+            34,
+            94
+          ],
+          "facing": "right",
+          "phase": "return",
+          "durationTicks": 9,
+          "reviewWindow": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1360,
+            167,
+            350,
+            189
+          ],
+          "pivot": [
+            30,
+            94
+          ],
+          "facing": "right",
+          "phase": "settle",
+          "durationTicks": 9,
+          "reviewWindow": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            68,
+            540,
+            351,
+            185
+          ],
+          "pivot": [
+            318,
+            92
+          ],
+          "facing": "left",
+          "phase": "rest",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            443,
+            443,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            545,
+            535,
+            284,
+            190
+          ],
+          "pivot": [
+            255,
+            97
+          ],
+          "facing": "left",
+          "phase": "recoil",
+          "durationTicks": 9,
+          "reviewWindow": [
+            443,
+            443,
+            444,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            962,
+            540,
+            304,
+            185
+          ],
+          "pivot": [
+            273,
+            92
+          ],
+          "facing": "left",
+          "phase": "return",
+          "durationTicks": 9,
+          "reviewWindow": [
+            887,
+            443,
+            443,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1367,
+            540,
+            349,
+            185
+          ],
+          "pivot": [
+            318,
+            92
+          ],
+          "facing": "left",
+          "phase": "settle",
+          "durationTicks": 9,
+          "reviewWindow": [
+            1330,
+            443,
+            444,
+            443
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        400
+      ]
+    },
+    {
+      "id": "muzzle-fx-r1",
+      "actionId": "muzzle-flash",
+      "label": "muzzle-fx-r1",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-k-93/muzzle-fx-r1.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-k-93/muzzle-fx-r1.png",
+      "originId": "exec-51beed5c-e124-46ba-b2c9-b3344e509166.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "03a1269391b5144991b107f26c15a1a556d8d36be088eb0a8309c64835c8834d",
+      "bytes": 730418,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "alpha"
+      },
+      "rawAlpha": {
+        "zero": 1199384,
+        "partial": 374154,
+        "opaque": 0
+      },
+      "prompt": "A professional hand-painted 2D game sprite sheet containing eight independent small CYAN PLASMA MUZZLE FLASHES for an alien twin cannon vehicle. Effects only, no guns, chassis, vehicles, riders or symbols. Exact regular four columns by two rows. Row one fires toward RIGHT, row two fires toward LEFT, independently drawn with matching phases. Four phases each: tiny compact ignition spark; bright short expanding spear-shaped plasma flash with white core; softer cyan turbulent dissipating cone; several dim separated fading blue wisps. The emitter origin is fixed near the rear of each effect. Coherent progressive flame silhouette changes, never translated duplicates. Each effect fully contained inside central65percent of cell, large blank gutters. TRUE TRANSPARENT ALPHA background with no checkerboard. Do not paint a checker pattern. No labels, numbers, borders or grid lines. Crisp readable painted sci-fi game effects, short flashes suited to separate compositing at cannon barrel, consistent scale, no huge laser beams.",
+      "references": [],
+      "notes": [
+        "Independent modular candidate. Manual pivots and assembly review required before driving gameplay.",
+        "Eight-pose modules use individually measured hinge or emitter anchors. These are review frames, not approved driving clips.",
+        "Whole-vehicle assembly and source-camera fidelity remain under review; no pilotable vehicle is implied.",
+        "Nonuniform extraction windows preserve each effect independently; the generated layout did not follow an exact regular grid."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "ignition",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            129,
+            175,
+            314,
+            119
+          ],
+          "gridBorderPixels": 89,
+          "visiblePixels": 10543,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "flash",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            443,
+            148,
+            346,
+            177
+          ],
+          "gridBorderPixels": 92,
+          "visiblePixels": 33581,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "dissipation",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            908,
+            127,
+            399,
+            222
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 55153,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "fade",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1405,
+            155,
+            300,
+            180
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 25043,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "ignition",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            124,
+            582,
+            319,
+            121
+          ],
+          "gridBorderPixels": 35,
+          "visiblePixels": 10118,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "flash",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            443,
+            555,
+            444,
+            177
+          ],
+          "gridBorderPixels": 82,
+          "visiblePixels": 33286,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "dissipation",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            887,
+            543,
+            350,
+            214
+          ],
+          "gridBorderPixels": 45,
+          "visiblePixels": 50346,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "fade",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            1368,
+            570,
+            306,
+            166
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 21895,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            125,
+            171,
+            178,
+            127
+          ],
+          "pivot": [
+            5,
+            65
+          ],
+          "facing": "right",
+          "phase": "ignition",
+          "durationTicks": 4,
+          "reviewWindow": [
+            90,
+            80,
+            265,
+            330
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            415,
+            144,
+            378,
+            185
+          ],
+          "pivot": [
+            2,
+            93
+          ],
+          "facing": "right",
+          "phase": "flash",
+          "durationTicks": 4,
+          "reviewWindow": [
+            365,
+            70,
+            465,
+            340
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            904,
+            123,
+            407,
+            230
+          ],
+          "pivot": [
+            2,
+            117
+          ],
+          "facing": "right",
+          "phase": "dissipation",
+          "durationTicks": 4,
+          "reviewWindow": [
+            845,
+            45,
+            490,
+            380
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1401,
+            151,
+            308,
+            188
+          ],
+          "pivot": [
+            9,
+            89
+          ],
+          "facing": "right",
+          "phase": "fade",
+          "durationTicks": 4,
+          "reviewWindow": [
+            1350,
+            75,
+            405,
+            340
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            120,
+            578,
+            180,
+            129
+          ],
+          "pivot": [
+            180,
+            62
+          ],
+          "facing": "left",
+          "phase": "ignition",
+          "durationTicks": 4,
+          "reviewWindow": [
+            85,
+            470,
+            265,
+            350
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            389,
+            551,
+            356,
+            185
+          ],
+          "pivot": [
+            348,
+            89
+          ],
+          "facing": "left",
+          "phase": "flash",
+          "durationTicks": 4,
+          "reviewWindow": [
+            355,
+            465,
+            440,
+            370
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            849,
+            539,
+            392,
+            222
+          ],
+          "pivot": [
+            371,
+            101
+          ],
+          "facing": "left",
+          "phase": "dissipation",
+          "durationTicks": 4,
+          "reviewWindow": [
+            805,
+            455,
+            500,
+            380
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1364,
+            566,
+            314,
+            174
+          ],
+          "pivot": [
+            306,
+            84
+          ],
+          "facing": "left",
+          "phase": "fade",
+          "durationTicks": 4,
+          "reviewWindow": [
+            1330,
+            465,
+            415,
+            360
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        400
+      ]
+    }
+  ],
+  "generatedSources": 8,
+  "acceptedRuntimeClips": 0
+}

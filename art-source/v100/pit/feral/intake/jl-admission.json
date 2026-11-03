@@ -1,0 +1,698 @@
+{
+  "sourceCell": "05_MOVES_PROPOSES!J10",
+  "records": [
+    {
+      "source": "art-source/v100/pit/feral/intake/030-air-jl-right-calibrated.png",
+      "destination": "public/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
+      "bodyHeightPx": 624,
+      "bodyReference": {
+        "headTopY": 121,
+        "soleY": 745,
+        "upperPelvisSourcePoint": [
+          280,
+          350
+        ],
+        "upperPelvisToSolePx": 395,
+        "review": "Standing actual skull-mask-to-soles alpha128 source reference approved by root; excludes hair/noise."
+      },
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "excludedCalibrationIndices": [
+        0
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            518,
+            0,
+            506,
+            800
+          ],
+          "visibleRect": [
+            561,
+            145,
+            422,
+            486
+          ],
+          "alphaPixels": 99159,
+          "borderPixels": 0,
+          "visiblePixelSha256": "dd8a7e6b66c214ab61cfaf8959e65366f89b4fd2945d0a847075065a40284a76",
+          "pivotCandidate": [
+            282,
+            631
+          ],
+          "visibleHeightCandidate": 486,
+          "pivot": [
+            249,
+            745
+          ],
+          "pivotReview": {
+            "method": "Virtual plane from reviewed upper belt/pelvis plus standing same-page pelvis-to-sole distance",
+            "pelvisSourcePoint": [
+              767,
+              350
+            ],
+            "standingPelvisSourcePoint": [
+              280,
+              350
+            ],
+            "standingPelvisToSolePx": 395
+          }
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            799,
+            560,
+            737
+          ],
+          "visibleRect": [
+            33,
+            852,
+            509,
+            467
+          ],
+          "alphaPixels": 108798,
+          "borderPixels": 0,
+          "visiblePixelSha256": "2fab7b9a40a6b9742f5d80564957a2dedfebe0edd664b6d4bb3a1399734d384a",
+          "pivotCandidate": [
+            220.5,
+            520
+          ],
+          "visibleHeightCandidate": 467,
+          "pivot": [
+            300,
+            664
+          ],
+          "pivotReview": {
+            "method": "Virtual plane from reviewed upper belt/pelvis plus standing same-page pelvis-to-sole distance",
+            "pelvisSourcePoint": [
+              300,
+              1068
+            ],
+            "standingPelvisSourcePoint": [
+              280,
+              350
+            ],
+            "standingPelvisToSolePx": 395
+          }
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            559,
+            799,
+            465,
+            737
+          ],
+          "visibleRect": [
+            578,
+            858,
+            416,
+            461
+          ],
+          "alphaPixels": 94670,
+          "borderPixels": 0,
+          "visiblePixelSha256": "7818a077042c07732413a857644d6e3dd73016e98ec8f9cc2354574e6989705e",
+          "pivotCandidate": [
+            220.5,
+            520
+          ],
+          "visibleHeightCandidate": 461,
+          "pivot": [
+            211,
+            661
+          ],
+          "pivotReview": {
+            "method": "Virtual plane from reviewed upper belt/pelvis plus standing same-page pelvis-to-sole distance",
+            "pelvisSourcePoint": [
+              770,
+              1065
+            ],
+            "standingPelvisSourcePoint": [
+              280,
+              350
+            ],
+            "standingPelvisToSolePx": 395
+          }
+        }
+      ]
+    },
+    {
+      "source": "art-source/v100/pit/feral/intake/031-air-jl-left-calibrated.png",
+      "destination": "public/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
+      "bodyHeightPx": 636,
+      "bodyReference": {
+        "headTopY": 82,
+        "soleY": 718,
+        "upperPelvisSourcePoint": [
+          300,
+          332
+        ],
+        "upperPelvisToSolePx": 386,
+        "review": "Standing actual skull-mask-to-soles alpha128 source reference approved by root; excludes hair/noise."
+      },
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "excludedCalibrationIndices": [
+        0
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            540,
+            0,
+            484,
+            783
+          ],
+          "visibleRect": [
+            597,
+            114,
+            396,
+            461
+          ],
+          "alphaPixels": 103072,
+          "borderPixels": 0,
+          "visiblePixelSha256": "39da3c28223687bdc927d80e08df9d6553d30f1b37656a7772aeaa93924437a6",
+          "pivotCandidate": [
+            318,
+            575
+          ],
+          "visibleHeightCandidate": 461,
+          "pivot": [
+            265,
+            725
+          ],
+          "pivotReview": {
+            "method": "Virtual plane from reviewed upper belt/pelvis plus standing same-page pelvis-to-sole distance",
+            "pelvisSourcePoint": [
+              805,
+              339
+            ],
+            "standingPelvisSourcePoint": [
+              300,
+              332
+            ],
+            "standingPelvisToSolePx": 386
+          }
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            782,
+            569,
+            754
+          ],
+          "visibleRect": [
+            103,
+            850,
+            441,
+            502
+          ],
+          "alphaPixels": 108736,
+          "borderPixels": 0,
+          "visiblePixelSha256": "d6a461c00d63f864484c759c9e433cb61e6805689b35785084f8ebd378d5b0cb",
+          "pivotCandidate": [
+            399.5,
+            570
+          ],
+          "visibleHeightCandidate": 502,
+          "pivot": [
+            290,
+            678
+          ],
+          "pivotReview": {
+            "method": "Virtual plane from reviewed upper belt/pelvis plus standing same-page pelvis-to-sole distance",
+            "pelvisSourcePoint": [
+              290,
+              1074
+            ],
+            "standingPelvisSourcePoint": [
+              300,
+              332
+            ],
+            "standingPelvisToSolePx": 386
+          }
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            568,
+            782,
+            456,
+            754
+          ],
+          "visibleRect": [
+            594,
+            847,
+            407,
+            562
+          ],
+          "alphaPixels": 109330,
+          "borderPixels": 0,
+          "visiblePixelSha256": "97ea80a34506a20f45a861bac24d7967971f0db969fcf351036d7cbe17402552",
+          "pivotCandidate": [
+            348,
+            627
+          ],
+          "visibleHeightCandidate": 562,
+          "pivot": [
+            245,
+            664
+          ],
+          "pivotReview": {
+            "method": "Virtual plane from reviewed upper belt/pelvis plus standing same-page pelvis-to-sole distance",
+            "pelvisSourcePoint": [
+              813,
+              1060
+            ],
+            "standingPelvisSourcePoint": [
+              300,
+              332
+            ],
+            "standingPelvisToSolePx": 386
+          }
+        }
+      ]
+    }
+  ],
+  "admission": {
+    "fighterId": "feral-hunter",
+    "actionId": "M_F006_jL",
+    "appearanceId": "runtime-default",
+    "atlasId": "feral-source-jl-v100",
+    "clipIds": [
+      "workbook.M_F006_jL"
+    ],
+    "combatClipIds": [
+      "pit.air.light.startup",
+      "pit.air.light.active",
+      "pit.air.light.recovery"
+    ],
+    "definition": {
+      "fighterId": "feral-hunter",
+      "bodyHeightPx": 624,
+      "pageBodyHeightPx": {
+        "feral-source-jl-v100-right": 624,
+        "feral-source-jl-v100-left": 636
+      },
+      "visibleFrameBounds": [
+        {
+          "pageId": "feral-source-jl-v100-right",
+          "rect": [
+            518,
+            0,
+            506,
+            800
+          ],
+          "visibleRect": [
+            561,
+            145,
+            422,
+            486
+          ]
+        },
+        {
+          "pageId": "feral-source-jl-v100-right",
+          "rect": [
+            0,
+            799,
+            560,
+            737
+          ],
+          "visibleRect": [
+            33,
+            852,
+            509,
+            467
+          ]
+        },
+        {
+          "pageId": "feral-source-jl-v100-right",
+          "rect": [
+            559,
+            799,
+            465,
+            737
+          ],
+          "visibleRect": [
+            578,
+            858,
+            416,
+            461
+          ]
+        },
+        {
+          "pageId": "feral-source-jl-v100-left",
+          "rect": [
+            540,
+            0,
+            484,
+            783
+          ],
+          "visibleRect": [
+            597,
+            114,
+            396,
+            461
+          ]
+        },
+        {
+          "pageId": "feral-source-jl-v100-left",
+          "rect": [
+            0,
+            782,
+            569,
+            754
+          ],
+          "visibleRect": [
+            103,
+            850,
+            441,
+            502
+          ]
+        },
+        {
+          "pageId": "feral-source-jl-v100-left",
+          "rect": [
+            568,
+            782,
+            456,
+            754
+          ],
+          "visibleRect": [
+            594,
+            847,
+            407,
+            562
+          ]
+        }
+      ],
+      "atlas": {
+        "schemaVersion": 1,
+        "id": "feral-source-jl-v100",
+        "characterId": "feral-hunter",
+        "variantId": "body-default-v100",
+        "sourceKind": "authored-frames",
+        "status": "validated",
+        "pages": [
+          {
+            "id": "feral-source-jl-v100-right",
+            "src": "/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
+            "width": 1024,
+            "height": 1536,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          },
+          {
+            "id": "feral-source-jl-v100-left",
+            "src": "/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
+            "width": 1024,
+            "height": 1536,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          }
+        ],
+        "clips": [
+          {
+            "id": "workbook.M_F006_jL",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-jl-v100-right",
+                "rect": [
+                  518,
+                  0,
+                  506,
+                  800
+                ],
+                "pivot": [
+                  249,
+                  745
+                ],
+                "durationTicks": 6
+              },
+              {
+                "pageId": "feral-source-jl-v100-right",
+                "rect": [
+                  0,
+                  799,
+                  560,
+                  737
+                ],
+                "pivot": [
+                  300,
+                  664
+                ],
+                "durationTicks": 3
+              },
+              {
+                "pageId": "feral-source-jl-v100-right",
+                "rect": [
+                  559,
+                  799,
+                  465,
+                  737
+                ],
+                "pivot": [
+                  211,
+                  661
+                ],
+                "durationTicks": 12
+              }
+            ]
+          },
+          {
+            "id": "pit.air.light.startup",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-jl-v100-right",
+                "rect": [
+                  518,
+                  0,
+                  506,
+                  800
+                ],
+                "pivot": [
+                  249,
+                  745
+                ],
+                "durationTicks": 6
+              }
+            ]
+          },
+          {
+            "id": "pit.air.light.active",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-jl-v100-right",
+                "rect": [
+                  0,
+                  799,
+                  560,
+                  737
+                ],
+                "pivot": [
+                  300,
+                  664
+                ],
+                "durationTicks": 3
+              }
+            ]
+          },
+          {
+            "id": "pit.air.light.recovery",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-jl-v100-right",
+                "rect": [
+                  559,
+                  799,
+                  465,
+                  737
+                ],
+                "pivot": [
+                  211,
+                  661
+                ],
+                "durationTicks": 12
+              }
+            ]
+          },
+          {
+            "id": "workbook.M_F006_jL",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-jl-v100-left",
+                "rect": [
+                  540,
+                  0,
+                  484,
+                  783
+                ],
+                "pivot": [
+                  265,
+                  725
+                ],
+                "durationTicks": 6
+              },
+              {
+                "pageId": "feral-source-jl-v100-left",
+                "rect": [
+                  0,
+                  782,
+                  569,
+                  754
+                ],
+                "pivot": [
+                  290,
+                  678
+                ],
+                "durationTicks": 3
+              },
+              {
+                "pageId": "feral-source-jl-v100-left",
+                "rect": [
+                  568,
+                  782,
+                  456,
+                  754
+                ],
+                "pivot": [
+                  245,
+                  664
+                ],
+                "durationTicks": 12
+              }
+            ]
+          },
+          {
+            "id": "pit.air.light.startup",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-jl-v100-left",
+                "rect": [
+                  540,
+                  0,
+                  484,
+                  783
+                ],
+                "pivot": [
+                  265,
+                  725
+                ],
+                "durationTicks": 6
+              }
+            ]
+          },
+          {
+            "id": "pit.air.light.active",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-jl-v100-left",
+                "rect": [
+                  0,
+                  782,
+                  569,
+                  754
+                ],
+                "pivot": [
+                  290,
+                  678
+                ],
+                "durationTicks": 3
+              }
+            ]
+          },
+          {
+            "id": "pit.air.light.recovery",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-jl-v100-left",
+                "rect": [
+                  568,
+                  782,
+                  456,
+                  754
+                ],
+                "pivot": [
+                  245,
+                  664
+                ],
+                "durationTicks": 12
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "review": {
+      "status": "validated",
+      "scope": "source-J10-jL-native-air-knee-fall",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png": "f6dd75cb124e7db1224ab9f35c4273c4469464e0f14ac36b4ec6fbfcd5380cb5",
+        "/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png": "e40afc5ae89cdb482467ced9bdca55ed5ce8aad690b5dd648dedb7e64f9f9650"
+      },
+      "notes": "Originaux inchangés, références debout0 exclues, trois gestes articulés par côté et double revue root/QA. Échelle fixe par page depuis le vrai masque aux semelles alpha128 ; pivots aériens depuis le haut du bassin + distance debout aux soles, jamais depuis les pieds repliés. Repères source conservés dans le manifeste d’admission. Genou court en vol puis reprise de chute, compatible avec les phases de light réellement aérien ; altitude, trajectoire, durées et dégâts historiques restent ceux du moteur."
+    }
+  }
+}

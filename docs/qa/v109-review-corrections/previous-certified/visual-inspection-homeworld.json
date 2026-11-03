@@ -1,0 +1,120 @@
+{
+  "status": "PASS",
+  "scope": "Personal visual inspection of every new capture from the second common compiled ROLE03 A/B and dynamic cargo Atlas journey. Every PNG was opened from this run; the first run remains intact.",
+  "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
+  "buildId": "FJ6IbT6OZx1H51wYnNmex",
+  "rawResult": "outputs/qa-v109-production-r2/homeworld/result.json",
+  "rawResultSha256": "b148f7938e051fe381003b05780e735038ade6a8afb00250ddd447036a2a6daa",
+  "allRawCapturesOpened": true,
+  "captureCount": 11,
+  "opened": [
+    "a-01-opening-native-props.png",
+    "a-02-carried-native-plaque.png",
+    "a-03-confirmed-mismatch.png",
+    "a-04-voluntary-reprise.png",
+    "a-05-completed-independent-pieces.png",
+    "a-06-mobile-confirmed-study.png",
+    "b-01-opening-native-props.png",
+    "b-05-completed-independent-pieces.png",
+    "b-06-mobile-confirmed-study.png",
+    "c-01-real-atlas-initial-obstacles.png",
+    "c-02-real-atlas-parked-load.png"
+  ],
+  "captures": [
+    {
+      "file": "a-01-opening-native-props.png",
+      "sha256": "b93e933db436d639726e168cfcaa9ff4d24e0d601313974ee6575d38a2da688e",
+      "bytes": 191275,
+      "opened": true,
+      "method": "tools.view_image on the complete original capture from this second compiled run",
+      "observation": "Ouverture source3183 lisible ; plaque K-17 et empreinte distincte sont découpées dans leurs régions natives, sans débordement du voisin d’atlas."
+    },
+    {
+      "file": "a-02-carried-native-plaque.png",
+      "sha256": "9ff0c32a65802b55333ce63843f0b1af385b8f6e2406ee05178d902b5470b7a5",
+      "bytes": 1301576,
+      "opened": true,
+      "method": "tools.view_image on the complete original capture from this second compiled run",
+      "observation": "Vue du monde compilé : plaque portée à la position réelle du marcheur, empreinte indépendante au sol et surfaces séparées ; aucun carnet ne recouvre le bouton Atlas."
+    },
+    {
+      "file": "a-03-confirmed-mismatch.png",
+      "sha256": "6a0348cb176665418f53eeb0b9544f5207176561658744728707b089c211e528",
+      "bytes": 186842,
+      "opened": true,
+      "method": "tools.view_image on the complete original capture from this second compiled run",
+      "observation": "Échec source3185 lisible après comparaison ; plaque et empreinte restent sur leurs surfaces séparées et le bord de la plaque reste manquant."
+    },
+    {
+      "file": "a-04-voluntary-reprise.png",
+      "sha256": "b5d1b6883ad191060874e3dd9f01ef75274db3fa8fa59656c2fbd14e6b131b64",
+      "bytes": 189942,
+      "opened": true,
+      "method": "tools.view_image on the complete original capture from this second compiled run",
+      "observation": "Reprise source3186 lisible ; les trois objets natifs restent distincts, le fragment étant explicitement un candidat sans réparation certifiée."
+    },
+    {
+      "file": "a-05-completed-independent-pieces.png",
+      "sha256": "8ea937a5ca1df46e0d1bff4069b5275fb2d7c887ec2c3c6242f3541bab678ccd",
+      "bytes": 194736,
+      "opened": true,
+      "method": "tools.view_image on the complete original capture from this second compiled run",
+      "observation": "Succès source3184 confirmé ; plaque, empreinte et fragment sont chacun sur une surface indépendante, avec l’incertitude d’attribution conservée."
+    },
+    {
+      "file": "a-06-mobile-confirmed-study.png",
+      "sha256": "bdc0b34e94f8fa0346335b00a5e85f652945dc9fecdfec780a4d3620a0dd5b54",
+      "bytes": 123040,
+      "opened": true,
+      "method": "tools.view_image on the complete original capture from this second compiled run",
+      "observation": "Vue mobile390×844 : texte lisible, aucune coupe horizontale ; le dialogue long conserve un défilement vertical et la plaque reste indépendante."
+    },
+    {
+      "file": "b-01-opening-native-props.png",
+      "sha256": "b93e933db436d639726e168cfcaa9ff4d24e0d601313974ee6575d38a2da688e",
+      "bytes": 191275,
+      "opened": true,
+      "method": "tools.view_image on the complete original capture from this second compiled run",
+      "observation": "Ouverture de l’approche B : deux pièces natives distinctes, phrase source et deux choix présents."
+    },
+    {
+      "file": "b-05-completed-independent-pieces.png",
+      "sha256": "a001754617b6f9fd2d7e77c413ce5b9b582b4e08f387dda00abb41186bfb7cc3",
+      "bytes": 192349,
+      "opened": true,
+      "method": "tools.view_image on the complete original capture from this second compiled run",
+      "observation": "Approche B terminée : plaque et empreinte seules sur leurs surfaces ; surface du fragment vide, aucune réparation ou attribution annoncée."
+    },
+    {
+      "file": "b-06-mobile-confirmed-study.png",
+      "sha256": "6739a7d7fd693e95b8f8c345dba8410de91314728125cc4a7815091a7aa461ff",
+      "bytes": 123693,
+      "opened": true,
+      "method": "tools.view_image on the complete original capture from this second compiled run",
+      "observation": "Vue mobile de B : source de succès et incertitude lisibles, aucune coupe horizontale ; suite des pièces accessible par défilement vertical."
+    },
+    {
+      "file": "c-01-real-atlas-initial-obstacles.png",
+      "sha256": "847b5bae7f55c86ca3d8ec94daa468197661edbe0c48b5288c50fedc7010574a",
+      "bytes": 106712,
+      "opened": true,
+      "method": "tools.view_image on the complete original capture from this second compiled run",
+      "observation": "Véritable SVG de l’Atlas : deux empreintes de lots ambre, trois emprises fixes grises et trajet turquoise passant devant la charge initiale."
+    },
+    {
+      "file": "c-02-real-atlas-parked-load.png",
+      "sha256": "9f1ec7df92394d7344942df6e918a23421b34d3b3e911841f62461af92e34219",
+      "bytes": 135674,
+      "opened": true,
+      "method": "tools.view_image on the complete original capture from this second compiled run",
+      "observation": "Véritable SVG après transport et dépose : empreinte du lot déplacée et trajet turquoise recalculé autour de sa position confirmée."
+    }
+  ],
+  "limits": [
+    "Initial campaign checkpoints are declared fixtures; these journeys do not replay the earlier first-tracks campaign.",
+    "ROLE03 A/B are completed; cargo C verifies navigation before/after actual carrying and parking, without claiming another complete ROLE19 delivery.",
+    "No new NPC painted manipulation, repaired plaque, attribution of the impression, lineage or campaign reward is certified.",
+    "Mobile captures show one viewport of the vertically scrollable dialog."
+  ],
+  "openedAt": "2026-10-25T10:07:00.879565+00:00"
+}

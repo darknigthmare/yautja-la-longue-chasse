@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "generated": [
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "idle",
+      "actionId": "idle",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTHETA, adult human female hunter in the attached project's MARVEL-2023 GOLD ARMOR UNMASKED variant. Preserve adult human olive/tan skin, short close-cropped curly black hair, angular determined unmasked human face, no dreadlocks. Weathered mustard-gold full torso armor, thick layered gold shoulder plates, matching armored hips with long segmented golden front tabard, gold knee/shin guards and gold closed boots, dark charcoal ribbed undersuit entirely covering arms/legs under plates, dark gloves. Anatomical RIGHT armored forearm has short triangular armor spikes. RIGHT hand HOLDS ONE broad silver curved machete-like blade with dark handle (as attached reference). It is a HANDHELD blade, not wrist blades, not attached to gauntlet. Left hand EMPTY closed fist near chest. No rifle, no shoulder cannon, no helmet, no new spear, no second sword. Exactly two complete human arms/hands, five digits, no Yautja alien anatomy. Keep blade shape and single hand grip consistent, full tip visible. Both directions independently drawn preserving anatomical equipment. Original fan-made project identity, not certified official 1:1.\nIDLE BREATHING, four phases: neutral alert; inhale shoulders slightly raised; exhale relaxed knees; return toward neutral. Subtle breathing loop. Both feet remain fixed. Four clearly separate but restrained breathing poses; no footstep. RIGHT hand holds single broad blade DOWN beside right thigh, blade extends beyond fingers from a visible dark handle. LEFT empty fist rests at chest. Keep same blade length and width all8poses.",
+      "phase": [
+        "neutral alert",
+        "inhale shoulders slightly raised",
+        "exhale relaxed knees",
+        "return toward neutral"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Four idle drawings each facing, human hands and single handheld blade coherent. Same gold armor identity. Pending native Canvas review; no combat fighter wired."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-idle-v34.png",
+      "originId": "exec-f1d679ad-e973-4861-83ee-1944711d98de.png",
+      "sha256": "d602cfc25fa345314472e6e6fe10f6f06ea35c2cb3bc42b7e339639a902d9fcf",
+      "bytes": 1832135,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTHETA, adult human female hunter in the attached project's MARVEL-2023 GOLD ARMOR UNMASKED variant. Preserve adult human olive/tan skin, short close-cropped curly black hair, angular determined unmasked human face, no dreadlocks. Weathered mustard-gold full torso armor, thick layered gold shoulder plates, matching armored hips with long segmented golden front tabard, gold knee/shin guards and gold closed boots, dark charcoal ribbed undersuit entirely covering arms/legs under plates, dark gloves. Anatomical RIGHT armored forearm has short triangular armor spikes. RIGHT hand HOLDS ONE broad silver curved machete-like blade with dark handle (as attached reference). It is a HANDHELD blade, not wrist blades, not attached to gauntlet. Left hand EMPTY closed fist near chest. No rifle, no shoulder cannon, no helmet, no new spear, no second sword. Exactly two complete human arms/hands, five digits, no Yautja alien anatomy. Keep blade shape and single hand grip consistent, full tip visible. Both directions independently drawn preserving anatomical equipment. Original fan-made project identity, not certified official 1:1.\nFORWARD WALK CYCLE. Four phases: near right leg forward heel contact / far left leg behind; right supporting leg vertical / LEFT knee passes forward; far LEFT leg now forward heel contact / near RIGHT leg behind; left supporting leg vertical / RIGHT knee passes forward. Forward walk cycle. Both feet must alternate support. Phases1 and3 are opposite leg contacts, phases2 and4 opposite passing knees. Body remains in place on the sheet; no duplicates. Clearly show near-leg/far-leg overlap at HIP alternating: column1 near thigh goes forward, column3 near thigh goes BACKWARD; column2 far knee passes forward, column4 NEAR knee passes forward. Blade carried safely down beside right thigh without intersecting legs; right fingers keep dark handle. Do not repeat same raised knee twice.",
+      "phase": [
+        "near right leg forward heel contact / far left leg behind",
+        "right supporting leg vertical / LEFT knee passes forward",
+        "far LEFT leg now forward heel contact / near RIGHT leg behind",
+        "left supporting leg vertical / RIGHT knee passes forward"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "status": "rejected",
+      "notes": [
+        "Forward walking repeats same contact/support pattern in1/3 and2/4; blade also overlaps shin in left first pose. Not an alternating cycle."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-walk-forward-v34.png",
+      "originId": "exec-a658c66c-9a37-4988-ad84-7392887aae21.png",
+      "sha256": "8d03d8059918d813ff4c674bc09168ff678be8affbd1e20a84e04b2256b40e05",
+      "bytes": 1826653,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTHETA, adult human female hunter in the attached project's MARVEL-2023 GOLD ARMOR UNMASKED variant. Preserve adult human olive/tan skin, short close-cropped curly black hair, angular determined unmasked human face, no dreadlocks. Weathered mustard-gold full torso armor, thick layered gold shoulder plates, matching armored hips with long segmented golden front tabard, gold knee/shin guards and gold closed boots, dark charcoal ribbed undersuit entirely covering arms/legs under plates, dark gloves. Anatomical RIGHT armored forearm has short triangular armor spikes. RIGHT hand HOLDS ONE broad silver curved machete-like blade with dark handle (as attached reference). It is a HANDHELD blade, not wrist blades, not attached to gauntlet. Left hand EMPTY closed fist near chest. No rifle, no shoulder cannon, no helmet, no new spear, no second sword. Exactly two complete human arms/hands, five digits, no Yautja alien anatomy. Keep blade shape and single hand grip consistent, full tip visible. Both directions independently drawn preserving anatomical equipment. Original fan-made project identity, not certified official 1:1.\nBACKWARD RETREAT while looking toward opponent. Four phases: near RIGHT leg behind, right toes contact; far LEFT leg forward; right rear leg supports; LEFT knee travels backward; far LEFT leg behind toes contact; near RIGHT leg forward; left rear leg supports; RIGHT knee travels backward. Backward retreat cycle, still looking at opponent. Opposite legs clearly support phases1/3 and2/4. Track front-facing vs rear-facing direction independently; do not repurpose forward sheet. Distinct near/far thigh support: column1 NEAR leg trails, column3 NEAR leg leads. Column2 FAR leg is lifted behind, column4 NEAR leg is lifted behind. Keep blade carried down and OUTSIDE both legs, complete silver tip never through shin. Body in-place centered. No repeated same lifted leg.",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "status": "rejected",
+      "notes": [
+        "Backward gait repeats the same supporting/lifted leg, with blade crossing the rear shin. No coherent alternating cycle accepted."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-walk-backward-v34.png",
+      "originId": "exec-5e48945b-d38a-4206-bd26-b09b7c29a1c3.png",
+      "sha256": "308a5c06c06d4859aebad8bc3a0b3874e2c6139be8acf96b7ce9c43a5b94dfc2",
+      "bytes": 1887647,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "crouch",
+      "actionId": "crouch",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTHETA, adult human female hunter in the attached project's MARVEL-2023 GOLD ARMOR UNMASKED variant. Preserve adult human olive/tan skin, short close-cropped curly black hair, angular determined unmasked human face, no dreadlocks. Weathered mustard-gold full torso armor, thick layered gold shoulder plates, matching armored hips with long segmented golden front tabard, gold knee/shin guards and gold closed boots, dark charcoal ribbed undersuit entirely covering arms/legs under plates, dark gloves. Anatomical RIGHT armored forearm has short triangular armor spikes. RIGHT hand HOLDS ONE broad silver curved machete-like blade with dark handle (as attached reference). It is a HANDHELD blade, not wrist blades, not attached to gauntlet. Left hand EMPTY closed fist near chest. No rifle, no shoulder cannon, no helmet, no new spear, no second sword. Exactly two complete human arms/hands, five digits, no Yautja alien anatomy. Keep blade shape and single hand grip consistent, full tip visible. Both directions independently drawn preserving anatomical equipment. Original fan-made project identity, not certified official 1:1.\nCROUCH four stages: standing combat stance; half squat descending; deep stable crouch with both heels grounded; half squat rising. Four successive depths of controlled crouch and rise. Knees anatomically hinge, no extra legs, keep constant character scale. Right hand holds blade LOW OUTSIDE right knee, entire blade clear of shin and floor. Left fist remains protective beside chest, not merged with right hand. Body parts keep same size; crouching lowers via joint bending only. No extra legs or blade. Complete gold boots grounded.",
+      "phase": [
+        "standing combat stance",
+        "half squat descending",
+        "deep stable crouch with both heels grounded",
+        "half squat rising"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Coherent standing/half/low kneeling crouch/rise poses and complete hands. Low pose is an asymmetrical crouch with rear knee low, not both-heels squat; first three frames only for entering/holding crouch. Blade overlays shin in perspective but has continuous outline."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-crouch-v34.png",
+      "originId": "exec-94813e53-dbb5-46c7-a4e0-66ef4c38cf94.png",
+      "sha256": "7963593c876f003e37f1ea7d07039544d51a11c8175421b344724cd6abaaa020",
+      "bytes": 1878758,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTHETA, adult human female hunter in the attached project's MARVEL-2023 GOLD ARMOR UNMASKED variant. Preserve adult human olive/tan skin, short close-cropped curly black hair, angular determined unmasked human face, no dreadlocks. Weathered mustard-gold full torso armor, thick layered gold shoulder plates, matching armored hips with long segmented golden front tabard, gold knee/shin guards and gold closed boots, dark charcoal ribbed undersuit entirely covering arms/legs under plates, dark gloves. Anatomical RIGHT armored forearm has short triangular armor spikes. RIGHT hand HOLDS ONE broad silver curved machete-like blade with dark handle (as attached reference). It is a HANDHELD blade, not wrist blades, not attached to gauntlet. Left hand EMPTY closed fist near chest. No rifle, no shoulder cannon, no helmet, no new spear, no second sword. Exactly two complete human arms/hands, five digits, no Yautja alien anatomy. Keep blade shape and single hand grip consistent, full tip visible. Both directions independently drawn preserving anatomical equipment. Original fan-made project identity, not certified official 1:1.\nJUMP AND LANDING stages: deep launch crouch; airborne rising knees bent; falling feet extending downward; landing crouch absorbing impact. Standing jump with visible launch, airborne rise, fall and landing. Clean empty air around body; no dust or effects. Each pose remains separate. Right hand retains single handheld blade angled downward outside legs; left fist protective. Full human body and boots, no extra limbs; same body scale even airborne. No opponent, no effects. Source poses only, no background.",
+      "phase": [
+        "deep launch crouch",
+        "airborne rising knees bent",
+        "falling feet extending downward",
+        "landing crouch absorbing impact"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Four jump/landing poses; left row source rise/fall reversed, review order0,2,1,3. Blade and two human legs retained. One drawing per phase; not a complete runtime jump atlas."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-jump-land-v34.png",
+      "originId": "exec-31ce49f4-3054-4166-9355-601478f24743.png",
+      "sha256": "d16d67b807a3e65a689d9f5c205ee56bf81e05b5ef099b794ffcddf199102ddf",
+      "bytes": 1835450,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "guard",
+      "actionId": "guard",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTHETA, adult human female hunter in the attached project's MARVEL-2023 GOLD ARMOR UNMASKED variant. Preserve adult human olive/tan skin, short close-cropped curly black hair, angular determined unmasked human face, no dreadlocks. Weathered mustard-gold full torso armor, thick layered gold shoulder plates, matching armored hips with long segmented golden front tabard, gold knee/shin guards and gold closed boots, dark charcoal ribbed undersuit entirely covering arms/legs under plates, dark gloves. Anatomical RIGHT armored forearm has short triangular armor spikes. RIGHT hand HOLDS ONE broad silver curved machete-like blade with dark handle (as attached reference). It is a HANDHELD blade, not wrist blades, not attached to gauntlet. Left hand EMPTY closed fist near chest. No rifle, no shoulder cannon, no helmet, no new spear, no second sword. Exactly two complete human arms/hands, five digits, no Yautja alien anatomy. Keep blade shape and single hand grip consistent, full tip visible. Both directions independently drawn preserving anatomical equipment. Original fan-made project identity, not certified official 1:1.\nHIGH GUARD four stages: right sword hand raises from hip; single blade held diagonal upward in front of chest, left fist near cheek; knees flex behind blade guard; settled protective blade guard. Follow defensive blade pose in reference: right fist wraps dark handle, blade goes diagonally up toward opponent, kept clear of own head. Left hand empty fist separate, human fingers coherent. No second blade and no gauntlet blades. Four distinct stages, final held guard, not lowered neutral. Whole blade tip inside frame.",
+      "phase": [
+        "right sword hand raises from hip",
+        "single blade held diagonal upward in front of chest, left fist near cheek",
+        "knees flex behind blade guard",
+        "settled protective blade guard"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Four readable blade-guard stages each facing, separate empty fist and gripping right hand. Single blade tip complete, armor consistent. Page standing-body height differs from idle; requires uniform page-specific scale, never squash."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-guard-v34.png",
+      "originId": "exec-b1a38484-49fd-46ff-ba00-7e01e2d3a6c1.png",
+      "sha256": "2560a5dc546d58dd5f91dc7099c09b34732ee4e8981e85bee34203d288c9ee8a",
+      "bytes": 1754269,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "hurt",
+      "actionId": "hurt",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTHETA, adult human female hunter in the attached project's MARVEL-2023 GOLD ARMOR UNMASKED variant. Preserve adult human olive/tan skin, short close-cropped curly black hair, angular determined unmasked human face, no dreadlocks. Weathered mustard-gold full torso armor, thick layered gold shoulder plates, matching armored hips with long segmented golden front tabard, gold knee/shin guards and gold closed boots, dark charcoal ribbed undersuit entirely covering arms/legs under plates, dark gloves. Anatomical RIGHT armored forearm has short triangular armor spikes. RIGHT hand HOLDS ONE broad silver curved machete-like blade with dark handle (as attached reference). It is a HANDHELD blade, not wrist blades, not attached to gauntlet. Left hand EMPTY closed fist near chest. No rifle, no shoulder cannon, no helmet, no new spear, no second sword. Exactly two complete human arms/hands, five digits, no Yautja alien anatomy. Keep blade shape and single hand grip consistent, full tip visible. Both directions independently drawn preserving anatomical equipment. Original fan-made project identity, not certified official 1:1.\nHURT / NON-GRAPHIC CHEST RECOIL. Four stages: small torso recoil from chest hit; larger backward torso lean, knees bent; recover torso upright with protective arms; return to neutral stance. Reaction to a chest impact. No blood, no injury, no attacker, no VFX. Feet remain planted, arms and hands coherent. Blade stays in RIGHT hand lowered beside body, complete grip and tip, left fist reacts near chest. Armor rigid plates follow torso; do not stretch torso or change limb lengths. No wounds or blood.",
+      "phase": [
+        "small torso recoil from chest hit",
+        "larger backward torso lean, knees bent",
+        "recover torso upright with protective arms",
+        "return to neutral stance"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Four coherent recoil drawings with stable handheld blade and armor; source neutral/small/large/neutral needs order0,2,1,3 for impact then recovery. Both facings independent."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-hurt-v34.png",
+      "originId": "exec-ca475821-318b-4e25-b081-8b925a9d5fa6.png",
+      "sha256": "8b30a0cdd883bec937d3e38eaf8cd8805f89a44c7d7512300fef86e39e1e2f6d",
+      "bytes": 1962544,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "light",
+      "actionId": "light",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTHETA, adult human female hunter in the attached project's MARVEL-2023 GOLD ARMOR UNMASKED variant. Preserve adult human olive/tan skin, short close-cropped curly black hair, angular determined unmasked human face, no dreadlocks. Weathered mustard-gold full torso armor, thick layered gold shoulder plates, matching armored hips with long segmented golden front tabard, gold knee/shin guards and gold closed boots, dark charcoal ribbed undersuit entirely covering arms/legs under plates, dark gloves. Anatomical RIGHT armored forearm has short triangular armor spikes. RIGHT hand HOLDS ONE broad silver curved machete-like blade with dark handle (as attached reference). It is a HANDHELD blade, not wrist blades, not attached to gauntlet. Left hand EMPTY closed fist near chest. No rifle, no shoulder cannon, no helmet, no new spear, no second sword. Exactly two complete human arms/hands, five digits, no Yautja alien anatomy. Keep blade shape and single hand grip consistent, full tip visible. Both directions independently drawn preserving anatomical equipment. Original fan-made project identity, not certified official 1:1.\nLIGHT ATTACK four stages: right elbow pulls blade back slightly beside hip; short forward horizontal blade thrust at waist height; right hand retracts blade halfway; neutral stance blade lowered. Short compact controlled handheld sword thrust. Right gloved fist holds visible dark HANDLE, single curved blade begins beyond fist, no blade mounted on armor. Left empty fist near sternum, separate. Same sword size in each pose, point never clipped; no invented weapons, effects or target. Both rows same stages independently drawn.",
+      "phase": [
+        "right elbow pulls blade back slightly beside hip",
+        "short forward horizontal blade thrust at waist height",
+        "right hand retracts blade halfway",
+        "neutral stance blade lowered"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Four compact sword-thrust stages per facing with visible right-hand handle. Off-hand is partly occluded behind the extended arm during contact; no extra hand detected. Explicit occupied-span rectangles needed for contact over grid boundary."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-light-v34.png",
+      "originId": "exec-e89cfaf6-d364-4421-94b6-223f4f9474b2.png",
+      "sha256": "d3dde5b4975668431d826f68a1313229b1859e95fa72a489c1af96a7f069d665",
+      "bytes": 1813757,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "medium",
+      "actionId": "medium",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTHETA, adult human female hunter in the attached project's MARVEL-2023 GOLD ARMOR UNMASKED variant. Preserve adult human olive/tan skin, short close-cropped curly black hair, angular determined unmasked human face, no dreadlocks. Weathered mustard-gold full torso armor, thick layered gold shoulder plates, matching armored hips with long segmented golden front tabard, gold knee/shin guards and gold closed boots, dark charcoal ribbed undersuit entirely covering arms/legs under plates, dark gloves. Anatomical RIGHT armored forearm has short triangular armor spikes. RIGHT hand HOLDS ONE broad silver curved machete-like blade with dark handle (as attached reference). It is a HANDHELD blade, not wrist blades, not attached to gauntlet. Left hand EMPTY closed fist near chest. No rifle, no shoulder cannon, no helmet, no new spear, no second sword. Exactly two complete human arms/hands, five digits, no Yautja alien anatomy. Keep blade shape and single hand grip consistent, full tip visible. Both directions independently drawn preserving anatomical equipment. Original fan-made project identity, not certified official 1:1.\nMEDIUM ATTACK four stages: right sword hand draws back at right hip; horizontal medium sword sweep extending toward opponent at ribs; right elbow folds back with blade across waist; neutral low blade stance. Wider torso turn than light thrust; single handheld curved sword, dark hilt in right glove clearly visible. LEFT empty fist remains VISIBLE beside upper chest above attacking arm, never vanishes. Blade stays same rigid size. No wrist blade, no new sword, no effects, no opponent. Keep all weapon tips well within each sprite's area.",
+      "phase": [
+        "right sword hand draws back at right hip",
+        "horizontal medium sword sweep extending toward opponent at ribs",
+        "right elbow folds back with blade across waist",
+        "neutral low blade stance"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Four medium blade sweep stages with both fists visible, stable right-hand grip and single blade. Complete weapon outline, wider torso turn than light. Requires occupied-span cropping and page scale review."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-medium-v34.png",
+      "originId": "exec-b556e0df-f081-4932-bbf8-0769655d6740.png",
+      "sha256": "cf1bf28ab0483c280b3c3598e2150567fab7688b9f5edc9f27d2037651a08857",
+      "bytes": 1903373,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "heavy",
+      "actionId": "heavy",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTHETA, adult human female hunter in the attached project's MARVEL-2023 GOLD ARMOR UNMASKED variant. Preserve adult human olive/tan skin, short close-cropped curly black hair, angular determined unmasked human face, no dreadlocks. Weathered mustard-gold full torso armor, thick layered gold shoulder plates, matching armored hips with long segmented golden front tabard, gold knee/shin guards and gold closed boots, dark charcoal ribbed undersuit entirely covering arms/legs under plates, dark gloves. Anatomical RIGHT armored forearm has short triangular armor spikes. RIGHT hand HOLDS ONE broad silver curved machete-like blade with dark handle (as attached reference). It is a HANDHELD blade, not wrist blades, not attached to gauntlet. Left hand EMPTY closed fist near chest. No rifle, no shoulder cannon, no helmet, no new spear, no second sword. Exactly two complete human arms/hands, five digits, no Yautja alien anatomy. Keep blade shape and single hand grip consistent, full tip visible. Both directions independently drawn preserving anatomical equipment. Original fan-made project identity, not certified official 1:1.\nHEAVY ATTACK four stages: low loaded stance with right blade hand drawn back; heavy diagonal upward sword sweep from hip toward opponent; right elbow retracts and torso settles; neutral low sword stance. Strong low-to-high diagonal slash, NOT overhead. Single curved blade held by right fist on DARK HANDLE, never grows from gauntlet. Left EMPTY fist remains VISIBLE near cheek above attacking arm. Keep same blade size and golden armor in all poses. Compact enough for full blade silhouette and wide empty margins. No slash trail, VFX, blood, victim or new weapon. Independent right and left drawings.",
+      "phase": [
+        "low loaded stance with right blade hand drawn back",
+        "heavy diagonal upward sword sweep from hip toward opponent",
+        "right elbow retracts and torso settles",
+        "neutral low sword stance"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Four complete heavy diagonal sword stages each facing with both hands visible and coherent hilt. Bottom active sword begins above nominal512 row boundary; explicit row split485 required, never fixed-grid cropping."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-heavy-v34.png",
+      "originId": "exec-f39efddb-92c2-4325-808c-3ac681b969fe.png",
+      "sha256": "20acbb12ab83db3a9df1ce53ad42ba5d4de942464b5195701ded14e6c6097ecc",
+      "bytes": 1874521,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "repair-walk-forward-poses",
+      "actionId": "walk-forward",
+      "prompt": "Create a corrected THETA forward-walk sprite sheet. FIRST attached image is ONLY a leg-pose timing guide with alternating two-legged contacts; copy its hip/knee/ankle joint poses for each corresponding cell, but absolutely NONE of that creature's identity, costume or weapons. SECOND image is the ONLY character identity: THETA adult human female in gold full armor, short black hair, single handheld silver blade, no alien face, no dreadlocks. THETA, adult human female hunter in the attached project's MARVEL-2023 GOLD ARMOR UNMASKED variant. Preserve adult human olive/tan skin, short close-cropped curly black hair, angular determined unmasked human face, no dreadlocks. Weathered mustard-gold full torso armor, thick layered gold shoulder plates, matching armored hips with long segmented golden front tabard, gold knee/shin guards and gold closed boots, dark charcoal ribbed undersuit entirely covering arms/legs under plates, dark gloves. Anatomical RIGHT armored forearm has short triangular armor spikes. RIGHT hand HOLDS ONE broad silver curved machete-like blade with dark handle (as attached reference). It is a HANDHELD blade, not wrist blades, not attached to gauntlet. Left hand EMPTY closed fist near chest. No rifle, no shoulder cannon, no helmet, no new spear, no second sword. Exactly two complete human arms/hands, five digits, no Yautja alien anatomy. Keep blade shape and single hand grip consistent, full tip visible. Both directions independently drawn preserving anatomical equipment. Original fan-made project identity, not certified official 1:1.\nEight full-body human drawings1536x1024,4columns2rows,topRIGHTbottomLEFT,flat#FF00FF,noeffects. Use exactly the FIRST image's four different leg arrangements per row: column1 split contact with near leg behind; column2 bent FAR leg passing and NEAR support; column3 split contact with NEAR leg ahead; column4 bent NEAR leg passing and FAR support. Preserve human boots and leg armor, one blade held clear outside legs. This is body-pose guidance only; upper body must remain Theta, blade grip right and empty fist left.",
+      "phase": [
+        "near right leg forward heel contact / far left leg behind",
+        "right supporting leg vertical / LEFT knee passes forward",
+        "far LEFT leg now forward heel contact / near RIGHT leg behind",
+        "left supporting leg vertical / RIGHT knee passes forward"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "poseReferencePath": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png",
+      "status": "rejected",
+      "notes": [
+        "Pose-guide repair rejected: both rows face right, and boot toes become claw-like with armor drift. Cross-character pose guide contaminated anatomy; no part accepted."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-repair-walk-forward-poses-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-repair-walk-forward-poses-v34.png",
+      "originId": "exec-f8bff3de-8cd1-4a16-8bef-36cb65d4adfd.png",
+      "sha256": "188fbaa9d6757b9f6962414bf365759bbb59040926836414ac7298d9aac360b5",
+      "bytes": 2005534,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "repair-walk-backward-legs",
+      "actionId": "walk-backward",
+      "prompt": "Targeted correction of FIRST attached Theta backward walk, SECOND is identity reference. Keep four columns/two rows1536x1024, topfacesRIGHT,bottomfacesLEFT,solid#FF00FF. Upper bodies, heads, gold armor, human closed boots and handheld sword identical. ONLY change leg poses3 and4 in each row: pose3 NEAR thigh must clearly cross FORWARD over far thigh with NEAR knee and boot ahead; FAR leg trails backward. Pose4 FAR leg bears weight straight down and NEAR knee folds with near boot lifted behind. This must be opposite legs from poses1 and2, no same-leg repetition. Keep both knee armor shapes and human boots, no claws. Also angle right-hand blade further outside body so blade and knee/shin are separated by magenta gap in all4poses. No new equipment, no extra limbs, no third leg.",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+      "status": "rejected",
+      "notes": [
+        "Leg silhouettes changed but rear lifted shin remains intersected/obscured by blade; thigh/tabard overlap also differs substantially in3/4. Not approved as a clean backward cycle."
+      ],
+      "sourcePath": "art-source/v34/pit/theta/theta-repair-walk-backward-legs-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-repair-walk-backward-legs-v34.png",
+      "originId": "exec-ec83d312-44ae-4bbf-834e-b5de9fa26976.png",
+      "sha256": "a46c1b56edf0ce8337ba56f2c41df15cd1e177710ed246950a3879cdc3aec806",
+      "bytes": 1836943,
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

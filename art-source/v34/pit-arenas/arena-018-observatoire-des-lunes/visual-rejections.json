@@ -1,0 +1,19 @@
+{
+  "arenaId": "arena-018-observatoire-des-lunes",
+  "rejections": [
+    {
+      "id": "p0-a-depth",
+      "sha256Prefix": "c827d990bdf7",
+      "reason": "Trois lunes correctes mais terrain de premier plan non demandé ; incompatible avec un P0 exclusivement lointain. Nouveau dessin de ciel v2 sélectionné sans retouche.",
+      "selectedReplacement": "p0-a-depth-v2",
+      "countedInCoverage": false
+    },
+    {
+      "id": "p3-d-light-right",
+      "sha256Prefix": "596197044b86",
+      "reason": "Projecteur sans suspension avec câble posé au sol : incompatible avec son ancrage suspendu. Nouveau luminaire avec câble vertical v2 généré.",
+      "selectedReplacement": "p3-d-light-right-v2",
+      "countedInCoverage": false
+    }
+  ]
+}

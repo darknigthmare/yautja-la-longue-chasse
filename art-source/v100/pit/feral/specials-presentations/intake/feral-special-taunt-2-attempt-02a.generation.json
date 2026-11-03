@@ -1,0 +1,17 @@
+{
+  "name": "feral-special-taunt-2-attempt-02a",
+  "key": "TAUNT_2",
+  "columns": 2,
+  "rows": 4,
+  "refs": [
+    "/workspace/yautja-la-longue-chasse/art-source/v100/pit/feral/specials-presentations/intake/feral-special-taunt-2-attempt-01a.png"
+  ],
+  "prompt": "New native RGBA imagegen redraw of this authored Feral sprite sheet, retaining the SAME eight articulated source poses, identity, asymmetric anatomical gear and the exact TWO-COLUMNS\u00d7FOUR-ROWS layout. Draw all figures SMALLER, about65% of their present body height, centered separately in their cells; do not zoom the canvas to fill the bodies. Preserve all feet, hands and gear as complete separate figures and use huge empty native-alpha0 gutters. The source is not admitted because of unsafe gutters, not an invitation to remove or crop body parts. Native PNG alpha, NO ground, shadow, glow, halo, smoke, background, gradient, text or grid. No mirror, rig or procedural transform. Each column is independently drawn: left column facesRIGHT front/rightview, right column facesLEFT back/leftview. Gear cannot exchange arms. Left shield stays LEFT, right wrist blades stay RIGHT. Source07_PRESENTATIONS!G10, first half: calibration row1 lowlauncher outsideclip, row2 raise the SAME handheld three-rail launcher in LEFT hand with muzzle safelyup, row3 rotate LEFT wrist and inspect existinghousing, row4 RIGHT hand checks existinghousing near LEFT grip. Keep all six actual source poses unchanged in meaning, same launcher/redreceiver/three rails, LEFT hand retains grip. Right wrist blades fully RETRACTED in ALL8drawings, no silver blade tips, no extraammo/reload, projectile, laser or shoulder cannon. Ensure real transparent gutters between head and prior-rowfeet.",
+  "taskStore": "feralSpecialTauntMineRetries",
+  "tool": "image_gen",
+  "originalSource": "/workspace/generated_images/exec-50ab3229-5fee-4738-83b7-9e18837e3cd6.png",
+  "originalSha256": "0ac7341b1336007b9bf7fb32717c2af5749b03fc0183ac2ef96c74d9b12365d0",
+  "nativeTransparentBackground": true,
+  "cpuPixelEditing": false,
+  "matchesIntakePng": true
+}

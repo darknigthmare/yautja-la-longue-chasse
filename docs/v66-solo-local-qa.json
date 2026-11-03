@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "status": "SUPERSEDED_BY_COMPILED_FUNCTIONAL_AND_VISUAL_PASS",
+  "date": "2026-10-01T02:40:55.127Z",
+  "rawReport": "I:/CodexTemp/yautja-v66-20261001/solo-browser-r3/report.json",
+  "checks": [
+    {
+      "name": "physically-entered-dojo-explicit-start",
+      "routeDistance": 5821.9011259125045,
+      "earlierYouthProofs": 20
+    },
+    {
+      "name": "refused-checkpoint-freezes-and-retries",
+      "tick": 33,
+      "receiptsRetained": 1
+    },
+    {
+      "name": "stalk-pause-cold-resume-mobile",
+      "exactStoredTick": 688,
+      "receipts": 4,
+      "bounds": [
+        {
+          "text": "Pause",
+          "x": 248.046875,
+          "y": 5,
+          "right": 310.21875,
+          "bottom": 49,
+          "width": 62.171875,
+          "height": 44
+        },
+        {
+          "text": "Tactile",
+          "x": 318.21875,
+          "y": 5,
+          "right": 384,
+          "bottom": 49,
+          "width": 65.78125,
+          "height": 44
+        },
+        {
+          "text": "←",
+          "x": 49.109375,
+          "y": 763.3125,
+          "right": 93.109375,
+          "bottom": 807.3125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "→",
+          "x": 97.109375,
+          "y": 763.3125,
+          "right": 141.109375,
+          "bottom": 807.3125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Saut",
+          "x": 145.109375,
+          "y": 763.3125,
+          "right": 190.875,
+          "bottom": 807.3125,
+          "width": 45.765625,
+          "height": 44
+        },
+        {
+          "text": "Pas feutré",
+          "x": 194.875,
+          "y": 763.3125,
+          "right": 272.546875,
+          "bottom": 807.3125,
+          "width": 77.671875,
+          "height": 44
+        },
+        {
+          "text": "Interagir",
+          "x": 276.546875,
+          "y": 763.3125,
+          "right": 343.890625,
+          "bottom": 807.3125,
+          "width": 67.34375,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "all-seven-proofs-and-return-survive-reload",
+      "noAdultRewardsOrRanks": true
+    }
+  ],
+  "review": {
+    "captures": [
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-r3/phase-briefing.jpg",
+        "sha256": "87ee1e6bdc3ec84cc3b05380eff7baaece0c8a7fa19b1d517c5a93c7e99c73ed"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-r3/quota-retains-scene.jpg",
+        "sha256": "c2c7afe8681b16b58e3a3c8fd948becb795fe2d9a50e1acc57bf364d12ae3cdb"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-r3/mobile-stalk.jpg",
+        "sha256": "ebce7c85eab894edc074e1b4ac221b6f2fd8f3d3aed1144caa50615f549d41f1"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-r3/phase-return.jpg",
+        "sha256": "996b570b2121022f3e3b912a23b07d50cb08425c866dc2308f8a8745cb9bd407"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-r3/complete.jpg",
+        "sha256": "ddf2897e0f0de5529ab791ccaa68364f67f5f2116f5ef792e49a5035da7e0d8e"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v66-20261001/solo-browser-r3/durable-return.jpg",
+        "sha256": "84fa35409d2ed0ce8b5b67138d07e0e896b76380482fe0c9f01e948abae1d61b"
+      }
+    ],
+    "observations": [
+      "Actual physical mentor entry, native Unblooded and mentor, readable pause/refused-save and completion controls.",
+      "Parent milestone and actor equipment/rank preserved through chapter and reload.",
+      "Portrait 393x852 controls fit, but fixed960x540 view shrank the gameplay into a narrow strip.",
+      "The non-tileable native panorama showed a bright vertical repetition seam while walking."
+    ],
+    "correctionsSinceRun": [
+      "Bounded single-panorama draw, removed repeated lower-ground strip.",
+      "Dynamic logical canvas width320..960 keeps540 vertical units and shows less world on portrait screens."
+    ],
+    "remaining": [
+      "Fresh compiled browser run and visual reinspection after those corrections.",
+      "No new art, no new native animation cycle, no commercial campaign or canon rite completion claim."
+    ]
+  },
+  "tests": {
+    "dedicated": 16,
+    "combinedYouthAndSolo": 50,
+    "reserveCheckpointTests": 2,
+    "lint": "PASS",
+    "campaignSlotRegressionWithSoloAndReserve": 52
+  },
+  "runtimeFrozen": true,
+  "developmentRunStatus": "DEV_FUNCTIONAL_PASS_VISUAL_FIX_REQUIRES_COMPILED_RERUN",
+  "compiledProof": "docs/v66-solo-compiled-qa.json"
+}

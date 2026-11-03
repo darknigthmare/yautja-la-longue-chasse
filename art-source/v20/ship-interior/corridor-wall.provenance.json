@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "assetId": "corridor-wall",
+  "date": "2026-08-31",
+  "status": "integrated",
+  "generator": {
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "model": null,
+    "modelNote": "The builtin tool did not return an exact model identifier.",
+    "generatedSource": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-546b2686-64fd-41b5-8a30-97443503f56b.png"
+  },
+  "reference": {
+    "asset": "public/game/backgrounds/armory-war-room-v6.png",
+    "delivery": "thumbnail supplied in the generation conversation",
+    "localPathAttempt": "Rejected by a filesystem ACL error; full local path was not the successful reference mechanism."
+  },
+  "master": {
+    "path": "art-source/v20/ship-interior/corridor-wall.png",
+    "width": 1536,
+    "height": 1024,
+    "format": "png",
+    "bytes": 2964003,
+    "sha256": "fd4d7f092e37d3aae83e7bc06728a461ecda7b2d5259ba397ce5a0cd8c86a6cb"
+  },
+  "runtime": {
+    "path": "public/game/ship-interior/v20/corridor-wall.webp",
+    "url": "/game/ship-interior/v20/corridor-wall.webp",
+    "width": 1536,
+    "height": 1024,
+    "format": "webp",
+    "bytes": 577450,
+    "sha256": "3ee33442f266c8e84d8b2110d4c28758b84cff2ab04433bb6a81a8b2eaa1039a"
+  },
+  "conversion": {
+    "tool": "sharp",
+    "format": "webp",
+    "quality": 95,
+    "effort": 6,
+    "resized": false,
+    "cropped": false,
+    "compositionEdited": false
+  },
+  "validation": {
+    "technicalValidated": true,
+    "technicalChecks": [
+      "file-exists",
+      "format",
+      "dimensions",
+      "aspect-ratio-3:2",
+      "file-size",
+      "sha256"
+    ],
+    "visualInspected": true,
+    "visualInspectedBy": "coordinating-agent",
+    "visualNote": "Frontal dark gunmetal and bronze wall with two amber lamps; no text or baked gameplay geometry.",
+    "gameTested": false,
+    "seamlessVerified": false,
+    "repeatStrategy": "Cover horizontal tile joins with separate structural posts."
+  },
+  "prompt": "Use case: stylized-concept. Asset type: single modular BACK WALL TILE for the existing fan-made 2D side-scrolling game Yautja: La Longue Chasse.\nInput image 1 is a STYLE AND MATERIAL REFERENCE ONLY: the existing armory background. Create a new separate architectural module, not a full scene, room, interface or mockup.\nProduce ONE landscape 1536x1024 opaque rectangular wall material module, straight orthographic front elevation, no perspective depth, no floor or ceiling plane, no framing outside the rectangle. It will be repeated horizontally in a playable ship deck at 480 by 320 world units. Camera is perpendicular to wall. Dark ancient Yautja spacecraft blackened gunmetal and aged bronze ribbed panels, subtle ochre-gold wear, sparse amber light recesses. Closely match reference's painterly detailed bitmap game art and scale; materials feel dense and ritual but structurally functional.\nComposition: flat rear wall field spanning whole canvas, restrained vertical recessed ribs, subtle curved engraved linework, one or two dim amber recesses. Left/right outermost 10 percent are plain dark metal of equal brightness with no projecting objects so runtime metal posts can mask tile joins. Balanced lighting, restrained contrast so a 100-world-unit tall modular player silhouette reads in foreground.\nAbsolutely NO skulls, trophies, masks, characters, enemies, weapons, consoles, text, letters, numbers, logos, UI, watermarks, doors, floor, stairs, pillars, shelving, loose props, collectibles. No painted checkerboard, no green-screen. Do not paint any gameplay objects in this decorative layer. It is original fan-made architecture, not an official movie still. Output only the wall tile.",
+  "consumer": "app/game/PhysicalShipDeck.tsx"
+}

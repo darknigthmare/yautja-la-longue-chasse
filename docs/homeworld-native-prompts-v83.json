@@ -1,0 +1,137 @@
+{
+  "version": "V83",
+  "tool": "Built-in OpenAI image generation; no CLI/API call",
+  "scope": "Exact prompt arguments, original tool receipts and project PNG paths. Static props and original-compatible adaptations, not five authored animations or canonical 1:1 replicas.",
+  "sources": [
+    {
+      "id": "merchant-counter-left",
+      "src": "/game/homeworld/v83/merchant-counter-left.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sha256": "a0bf8a90c46ebd7ed1271a3a84d591856d3bed0d88b1abdde07c6fc76124f8da",
+      "alphaBounds": {
+        "x": 35,
+        "y": 204,
+        "width": 1194,
+        "height": 904
+      }
+    },
+    {
+      "id": "forge-bench-right",
+      "src": "/game/homeworld/v83/forge-bench-right.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sha256": "2cc32ab8e2288b4371a7281e7d4c9efb02bf875d2e56e6f04a8ce2102ed52f07",
+      "alphaBounds": {
+        "x": 22,
+        "y": 101,
+        "width": 1214,
+        "height": 1061
+      }
+    },
+    {
+      "id": "cargo-rack-right",
+      "src": "/game/homeworld/v83/cargo-rack-right.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4",
+      "alphaBounds": {
+        "x": 28,
+        "y": 55,
+        "width": 1213,
+        "height": 1126
+      }
+    },
+    {
+      "id": "basalt-planter-left",
+      "src": "/game/homeworld/v83/basalt-planter-left.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sha256": "bd60c8d5524421381ec5ac626857bebad19f8193bb8ad88506305ae0c89a1cfb",
+      "alphaBounds": {
+        "x": 26,
+        "y": 187,
+        "width": 1214,
+        "height": 914
+      }
+    },
+    {
+      "id": "clan-waymarker-right",
+      "src": "/game/homeworld/v83/clan-waymarker-right.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sha256": "60148ddbac32d32dec3a38a626ee11c3fcead4cec2947abf1dcc36d463fa8b6d",
+      "alphaBounds": {
+        "x": 363,
+        "y": 145,
+        "width": 540,
+        "height": 1011
+      }
+    }
+  ],
+  "entries": [
+    {
+      "id": "merchant-counter-left",
+      "args": {
+        "prompt": "Use case: stylized-concept. Asset type: ONE isolated native transparent PNG prop for an inhabited Yautja city in a 2.5D exploration game. Fixed orthographic game camera, looking north, 35-degree downward pitch; grounded on an oblique x/y floor, believable vertical height, no vanishing-point distortion. Carefully painted high-resolution game sprite, detailed black volcanic basalt and worn bronze/titanium ribs, restrained amber lights, warm sunset illumination from upper left. This is original lore-compatible city infrastructure, not a claimed canonical reproduction. Entire object visible with transparent margins around silhouette. Genuinely transparent background, no environment, no other separately standing objects, no characters, no labels, no Latin writing, no official insignia, no watermark, no inset/sprite grid/turnaround, one standalone modular prop. Keep all supporting feet and their contact planes clearly visible; no floating structure or large painted floor pad. Subject: ONE low heavy merchant exchange counter facing LEFT diagonally, an angular basalt base with four robust feet and bronze ribs. Open display on top has only a few small sealed alien trade capsules inset INTO the counter; closed drawers underneath. A local exchange terminal inset at the vendor side, with very subtle amber controls. No cloth tent, no human medieval market awning, no guns or bladed weapon resemblance, no skull/trophy motif, no neon multicolor screen. Barely taller than a standing adult's waist, width about two adults. Render one compact modular counter, not an entire shop or a scene. Square canvas.",
+        "transparent_background": true
+      },
+      "receipt": "Generated images are saved to C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6 as C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-a5240650-2a09-440c-ad99-6e5fb610491b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "workspaceAsset": "public/game/homeworld/v83/merchant-counter-left.png",
+      "status": "PROJECT_NATIVE_SOURCE_STATIC_NOT_ANIMATION"
+    },
+    {
+      "id": "forge-bench-right",
+      "args": {
+        "prompt": "Use case: stylized-concept. Asset type: ONE isolated native transparent PNG prop for an inhabited Yautja city in a 2.5D exploration game. Fixed orthographic game camera, looking north, 35-degree downward pitch; grounded on an oblique x/y floor, believable vertical height, no vanishing-point distortion. Carefully painted high-resolution game sprite, detailed black volcanic basalt and worn bronze/titanium ribs, restrained amber lights, warm sunset illumination from upper left. This is original lore-compatible city infrastructure, not a claimed canonical reproduction. Entire object visible with transparent margins around silhouette. Genuinely transparent background, no environment, no other separately standing objects, no characters, no labels, no Latin writing, no official insignia, no watermark, no inset/sprite grid/turnaround, one standalone modular prop. Keep all supporting feet and their contact planes clearly visible; no floating structure or large painted floor pad. Subject: ONE heavy forge finishing bench facing RIGHT diagonally, angled basalt pedestal worktable with bronze structural shell, sturdy short legs. Single integrated work-holder and small anvil embedded in its top, sealed amber induction coil and asymmetric tool recesses, mechanical mounts but no loose floating tools. Function reads as alien craft workshop, not human medieval blacksmith bellows or a glowing magical altar. Low waist-high working surface, width about two adults; restrained forge wear and heat patina. No canonical weapon invented; no firearms or weapon blades displayed. One compact individual prop, square canvas.",
+        "transparent_background": true
+      },
+      "receipt": "Generated images are saved to C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6 as C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-bc83528a-964b-47c6-9680-bb6c8b5f93c1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "workspaceAsset": "public/game/homeworld/v83/forge-bench-right.png",
+      "status": "PROJECT_NATIVE_SOURCE_STATIC_NOT_ANIMATION"
+    },
+    {
+      "id": "cargo-rack-right",
+      "args": {
+        "prompt": "Use case: stylized-concept. Asset type: ONE isolated native transparent PNG prop for an inhabited Yautja city in a 2.5D exploration game. Fixed orthographic game camera, looking north, 35-degree downward pitch; grounded on an oblique x/y floor, believable vertical height, no vanishing-point distortion. Carefully painted high-resolution game sprite, detailed black volcanic basalt and worn bronze/titanium ribs, restrained amber lights, warm sunset illumination from upper left. This is original lore-compatible city infrastructure, not a claimed canonical reproduction. Entire object visible with transparent margins around silhouette. Genuinely transparent background, no environment, no other separately standing objects, no characters, no labels, no Latin writing, no official insignia, no watermark, no inset/sprite grid/turnaround, one standalone modular prop. Keep all supporting feet and their contact planes clearly visible; no floating structure or large painted floor pad. Subject: ONE compact logistics rack for the spaceport quay, facing RIGHT diagonally. Three very sturdy bronze/basalt struts enclosing two low shelves. A few sealed angular alien maintenance cases locked into separate shelf slots, clearly part of this single rack object. Asymmetric braces and small amber inventory telltales, warm worn titanium, no readable words. Industrial alien warehouse furniture, not a weapon rack or human supermarket. Four visible grounded feet; the rack is only one adult high and about one-and-a-half adults wide. No immense mecha/vehicle, no extra loose crates around it. Square canvas.",
+        "transparent_background": true
+      },
+      "receipt": "Generated images are saved to C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6 as C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-abf64cb5-25f6-4a85-8a8c-dfb1598a2528.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "workspaceAsset": "public/game/homeworld/v83/cargo-rack-right.png",
+      "status": "PROJECT_NATIVE_SOURCE_STATIC_NOT_ANIMATION"
+    },
+    {
+      "id": "basalt-planter-left",
+      "args": {
+        "prompt": "Use case: stylized-concept. Asset type: ONE isolated native transparent PNG prop for an inhabited Yautja city in a 2.5D exploration game. Fixed orthographic game camera, looking north, 35-degree downward pitch; grounded on an oblique x/y floor, believable vertical height, no vanishing-point distortion. Carefully painted high-resolution game sprite, detailed black volcanic basalt and worn bronze/titanium ribs, restrained amber lights, warm sunset illumination from upper left. This is original lore-compatible city infrastructure, not a claimed canonical reproduction. Entire object visible with transparent margins around silhouette. Genuinely transparent background, no environment, no other separately standing objects, no characters, no labels, no Latin writing, no official insignia, no watermark, no inset/sprite grid/turnaround, one standalone modular prop. Keep all supporting feet and their contact planes clearly visible; no floating structure or large painted floor pad. Subject: ONE long low basalt cultivation trough facing LEFT diagonally, about three adult widths wide and knee high. Thick carved basalt rim with worn bronze corner braces and four clearly grounded raised feet. Inside are a restrained few hardy dark olive alien broad leaves, gray-green small fern-like fronds and compact tough succulent growth; believable local cultivated vegetation, NOT a named canonical species. Plant roots actually anchored in dark mineral soil. No magical glowing flowers, no neon, no modern terracotta garden pot, no humanoid anatomy or teeth. One standalone modular urban planting prop, no second plant pot or surrounding ground. Square canvas.",
+        "transparent_background": true
+      },
+      "receipt": "Generated images are saved to C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6 as C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-9f04c4c1-7e8c-4d06-9dc4-5cf680f34d9f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "workspaceAsset": "public/game/homeworld/v83/basalt-planter-left.png",
+      "status": "PROJECT_NATIVE_SOURCE_STATIC_NOT_ANIMATION"
+    },
+    {
+      "id": "clan-waymarker-right",
+      "args": {
+        "prompt": "Use case: stylized-concept. Asset type: ONE standalone native transparent game sprite for a modular Yautja city street. Subject: an original clan waymarker, ONE waist-to-chest-high black volcanic basalt stele with three asymmetrical bronze ribs fused into its upright shaft, thick worn beveled base with clearly visible grounded contact edges, a small restrained amber signal inset in one side. Very simple two diagonal carved ridges as a local invented civic mark, no official clan insignia, no readable words or random script, no skull head or weapon or trophy. This is original lore-compatible urban architecture, not a canonical object replica. Fixed orthographic city camera, north facing with 35 degree downward pitch. The stele itself faces diagonally RIGHT natively, side plane and front plane visible, no fake CSS rotation. Fine painted game sprite matching basalt/bronze architecture, clear adult-related scale; not an enormous monolith. Warm sunset light from upper left, practical wear. Entire isolated object centered on a square transparent canvas, all base edges visible, no floating, no painted surrounding plaza, no scenery, no characters, no shadow rectangle, no watermarks, no turnaround sheet. Genuinely transparent background.",
+        "transparent_background": true
+      },
+      "receipt": "Generated images are saved to C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6 as C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-067240bb-95bf-4754-9b1a-0d9d52538ed3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "workspaceAsset": null,
+      "status": "PRESERVED_SOURCE_REFERENCE_TOP_CLIPPED_NOT_RUNTIME"
+    },
+    {
+      "id": "clan-waymarker-right-complete",
+      "args": {
+        "prompt": "Edit this single transparent Yautja city waymarker sprite. The very top is cut by the canvas edge. Correct ONLY framing and complete the clipped tip: show the ENTIRE stele and its ENTIRE grounded base inside the image with at least80pixels of genuinely transparent margin at the top and bottom and ample side margins. Keep the same stone/bronze design, two diagonal carved ridges, right-facing native oblique orientation, amber inset, camera, light and textures. Scale the whole object uniformly within the canvas to fit; never distort width/height separately, never cut off any object part, no new symbols. Single isolated complete prop, genuine transparent background, no floor patch, no scene, no text or watermark. A compact full-length game sprite, not a closeup. Square canvas.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-067240bb-95bf-4754-9b1a-0d9d52538ed3.png"
+        ]
+      },
+      "receipt": "Generated images are saved to C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6 as C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-cf6d95c2-efe2-499f-ab21-e0e796a2a853.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "workspaceAsset": "public/game/homeworld/v83/clan-waymarker-right.png",
+      "status": "PROJECT_NATIVE_SOURCE_STATIC_NOT_ANIMATION"
+    }
+  ]
+}

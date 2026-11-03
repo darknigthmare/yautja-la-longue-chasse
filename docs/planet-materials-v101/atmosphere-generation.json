@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-21",
+  "tool": "image_gen.imagegen (built-in)",
+  "seamPolicy": "Native generated edges are not certified periodic; renderer uses world-space mirrored triplanar sampling.",
+  "assets": [
+    {
+      "id": "land-temperate",
+      "prompt": "Use case: photorealistic-natural. Asset type: production game texture, a seamless square land-temperate ALBEDO material, to be clipped by existing continent masks for the 30 planets of a Yautja clan warfare strategy atlas. Generate one full-bleed 1024x1024 texture, strict orthographic satellite nadir view from orbit, no perspective. Subject: temperate alien landmass interior only, dense muted moss green forest canopy, branching river valleys, weathered slate mountain ridges, subdued olive grassland patches. Very fine natural satellite detail, convincing rock erosion and drainage, no individual trees in perspective. No coastline, no ocean, no planet sphere, no space, no stars, no border, no labels, no text, no city, no recognizable Earth geography. Lighting: flat neutral diffuse albedo, minimal baked shadow, no global illumination gradient, no atmospheric haze, no clouds, no halo, no scattering, no vignette. Seamless wrap on all four edges, coherent feature sizes, evenly distributed detail, no focal point. Palette desaturated forest green #425847, olive #68755a, dark slate #344248, small warm exposed stone. Fill every pixel with land material. These are original project worlds, not official film cartography.",
+      "role": "land",
+      "transparent": false,
+      "observation": "Vue satellite de massifs forestiers tempérés et vallées; aucun océan, nuage ou éclairage global. Matière native conservée."
+    },
+    {
+      "id": "clouds-cirrus",
+      "prompt": "Use case: photorealistic-natural. Asset type: independent RGBA cloud texture layer for a planetary globe shader. Generate one square 1024x1024 texture of sparse white and cool pale gray CIRRUS clouds as seen straight down from orbit. Wispy feathered filaments, thin broken cloud bands, natural turbulent detail, fine soft translucent edges. Cover around 35 percent with clouds, leave clear true transparent gaps throughout and especially broad interconnected gaps. Strict orthographic satellite top view, absolutely no terrain, no water, no planet sphere, no space, no sky background, no lighting glow, no halo, no text, no frame, no ground shadows. Only white cloud pixels with soft partial alpha on a genuinely transparent background, not a black background or a checkerboard painted into the image. Uniform orbital scale across the whole square, tileable on all four borders, no large central focal object. Flat illumination so a renderer can apply sunlight separately. Production quality detailed bitmap.",
+      "role": "atmospheric-overlay",
+      "transparent": true,
+      "observation": "Calque natif indépendant; aucune surface ni planète incluse. La densité effective est modulée par le shader."
+    },
+    {
+      "id": "clouds-storm",
+      "prompt": "Use case: photorealistic-natural. Asset type: independent transparent RGBA planetary storm cloud layer. One square 1024x1024 image, strict orbital satellite nadir view. Dense white and silver-gray spiraling storm systems, broken cyclonic cloud arcs, cellular convection and fine cirrus fringes, about 60 percent coverage, significant genuinely transparent channels between systems. Cloud texture only with no sea, land, globe, horizon, blue sky, black space, shadowed ground, city lights, lightning, atmosphere rim, typography, margins or frame. Physically plausible satellite-scale white cloudy detail, neutral flat lighting, soft semitransparent alpha edges. Full-bleed distribution, not a vignette or an isolated centered disc. Tileable four edges. Actual transparent alpha background everywhere without clouds; never bake a checkerboard. Intended to rotate independently above planets.",
+      "role": "atmospheric-overlay",
+      "transparent": true,
+      "observation": "Calque natif indépendant; aucune surface ni planète incluse. La densité effective est modulée par le shader."
+    },
+    {
+      "id": "clouds-low",
+      "prompt": "Use case: photorealistic-natural. Asset type: separate RGBA planetary low cloud material. One square 1024x1024 production texture containing broken low stratocumulus and delicate mist banks in soft pearl white and light neutral gray, seen orthographically straight down from orbit. Shallow cellular texture and sinuous channels, light wispy edges, broad transparent areas, coverage around 30 percent. All gaps actual alpha zero, edges partially transparent. Full bleed seamless repeating distribution, not a centered object. No ground, water, land, globe sphere, atmosphere halo, stars, space, sky, horizon, sun, darkness, vignette, labels, frame, or checkerboard drawn into image. Flat neutral light, cloud veil only. Keep cloud colors neutral for independent shader tinting. Real transparency, fine natural clouds suitable for optional overlay above any surface.",
+      "role": "atmospheric-overlay",
+      "transparent": true,
+      "observation": "Calque natif indépendant; aucune surface ni planète incluse. La densité effective est modulée par le shader."
+    },
+    {
+      "id": "haze-dust",
+      "prompt": "Use case: photorealistic-natural. Asset type: independent modular atmospheric aerosol veil RGBA texture for a planet renderer. One square 1024x1024 genuinely transparent image containing sparse translucent drifting ochre mineral dust and fine pale warm beige wind streaks, viewed from straight above at satellite orbital scale. Delicate layers, soft wispy broad ribbons, finer turbulence and feathered edges. About 30 percent visual coverage and extensive fully transparent gaps, opacity low and spatially variable. No terrain whatsoever, no dunes, no rocks, no planet or circular silhouette, no horizon, no space, no blue sky, no sunlight gradient, no halo, no text or border, no image of a checkerboard. Texture fills square organically and can repeat on all four edges without a focal point. Only dust on true transparency; renderer supplies colored atmosphere and light separately.",
+      "role": "atmospheric-overlay",
+      "transparent": true,
+      "observation": "Calque natif indépendant; aucune surface ni planète incluse. La densité effective est modulée par le shader."
+    },
+    {
+      "id": "haze-ash",
+      "prompt": "Use case: background-extraction. Edit target: the attached ash texture. Preserve the soft charcoal gray volcanic ash whisps and their fine grain, but REMOVE the continuous white background and the continuous gray-white full-canvas fog. Create a production-ready independent atmospheric overlay on REAL TRANSPARENT ALPHA. The final image must contain ONLY 5 or 6 separate narrow irregular gray ash plumes drifting diagonally, isolated from each other, with soft translucent fading edges, over an otherwise empty transparent square. At least 65% of the pixels fully transparent, clear empty background showing between the plumes and in large parts of each corner. No white canvas, no black canvas, no checkerboard painted into image. Ash is subtle neutral gray with finer scattered flecks, viewed straight down from orbit. No terrain, no sphere, no landscape, no lighting halo, no text. Keep square full size, create actual alpha transparency. This revision fixes the previous unusable opaque full-image background.",
+      "previousAttempt": "Premier PNG rejeté : fond opaque détecté par le contrôle alpha. Version corrigée avec image_gen en mode édition; original conservé hors du pack.",
+      "role": "atmospheric-overlay",
+      "transparent": true,
+      "observation": "Voile de cendres dense; alpha à contrôler, intensité réduite dans la recette."
+    },
+    {
+      "id": "particles-spores",
+      "prompt": "Use case: stylized-concept. Asset type: independent RGBA orbital bioluminescent spore veil for alien fungal worlds in a game. One square 1024x1024 image. Top-down satellite scale abstract natural mycelial atmospheric particle field: sparse pale mint and cool lavender extremely fine luminous flecks, small softly glowing clusters and thin wispy swirling filaments. Restrained elegant bioluminescence, true transparent gaps over most of image, soft partial-alpha glows. No mushrooms, no trees, no ground, no land, no water, no nebula space image, no stars, no planet disc, no sky, no horizon, no large particles or bokeh circles. Uniform full-bleed repeatable density, no central composition. No words, labels, margins, frame, or checkerboard painted in. Transparent background with just sparse dustlike spore currents, a modular independent atmospheric layer, production-ready bitmap.",
+      "role": "atmospheric-overlay",
+      "transparent": true,
+      "observation": "Voiles bioluminescents stylisés; présence de nappes diffuses en plus des particules."
+    },
+    {
+      "id": "aurora",
+      "prompt": "Use case: photorealistic-natural. Asset type: independent transparent RGBA auroral emission texture for a globe shader. One square 1024x1024 production texture of delicate wavy ribbons of green cyan auroral light with very faint violet edging, seen from orbital straight-down view, not from the ground. Draw several thin long undulating bands, fine filament detail and soft diffuse translucent glow, broad truly transparent gaps. Keep all light in the narrow ribbons, no star field, black backdrop, sky, land, water, planet, spherical outline, horizon, background fog, scenery, text, frame or checkerboard. Neutral transparent RGB background; actual alpha transparency in empty space. Evenly distributed repeatable ribbon motif, no centered arc around a planet, no poles drawn into it. Renderer applies polar latitude mask and intensity independently. Thin subtle green emission designed for screen/additive blending.",
+      "role": "atmospheric-overlay",
+      "transparent": true,
+      "observation": "Calque natif indépendant; aucune surface ni planète incluse. La densité effective est modulée par le shader."
+    }
+  ]
+}

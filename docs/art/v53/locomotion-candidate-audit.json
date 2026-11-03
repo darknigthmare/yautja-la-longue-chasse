@@ -1,0 +1,374 @@
+{
+  "release": "V53",
+  "scope": "Original OpenAI locomotion candidates, withheld from the runtime and preload after visual gait review.",
+  "generationMode": "builtin image_gen; reference-conditioned original supplied masked costumes; prompts owned by release document",
+  "canonicalFidelityCertified": false,
+  "physicalPng": 4,
+  "sourceDrawings": 16,
+  "acceptedGameplayClips": 0,
+  "registeredPages": 0,
+  "unchangedSourceBytes": true,
+  "files": [
+    {
+      "fighterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "nativeFacing": "right",
+      "source": "exec-f213944b-e20c-4016-b3db-64e079d087c3.png",
+      "path": "art-source/v53/pit/locomotion-candidates/city-hunter-masked-walk-forward-right-candidate-v53.png",
+      "sha256": "a9ae6acf9afbd5ccffb6d4f0415a8f55727ba4c936dc095bdf9fe5eed4d09c64",
+      "size": [
+        1254,
+        1254
+      ],
+      "sourceBytesUnchanged": true,
+      "sourceHasAlpha": true,
+      "cells": [
+        {
+          "rect": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "visibleRect": [
+            181,
+            70,
+            370,
+            531
+          ],
+          "visiblePixels": 84035,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            627,
+            0,
+            627,
+            627
+          ],
+          "visibleRect": [
+            768,
+            67,
+            374,
+            529
+          ],
+          "visiblePixels": 82092,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            0,
+            627,
+            627,
+            627
+          ],
+          "visibleRect": [
+            163,
+            662,
+            397,
+            517
+          ],
+          "visiblePixels": 82453,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            627,
+            627,
+            627,
+            627
+          ],
+          "visibleRect": [
+            783,
+            659,
+            391,
+            514
+          ],
+          "visiblePixels": 79788,
+          "borderPixelsAboveNoiseFloor2": 0
+        }
+      ],
+      "runtimeAccepted": false,
+      "review": {
+        "anatomy": "Whole bodies, hands and feet visually inspected; no full anatomical or canon 1:1 certification.",
+        "movement": "Repeated split stance with the same forward leg; gathered and opposite-contact phases missing.",
+        "decision": "Rejected as a runtime walking loop. Four distinct pictures do not establish coherent gait."
+      }
+    },
+    {
+      "fighterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "nativeFacing": "left",
+      "source": "exec-18359fcc-b6e1-4d2d-b750-3dc866e2be2b.png",
+      "path": "art-source/v53/pit/locomotion-candidates/city-hunter-masked-walk-forward-left-candidate-v53.png",
+      "sha256": "191ce9d59941f2e0efc983c463ba6296d21291d09813114b6421ecf1f8890aed",
+      "size": [
+        1254,
+        1254
+      ],
+      "sourceBytesUnchanged": true,
+      "sourceHasAlpha": true,
+      "cells": [
+        {
+          "rect": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "visibleRect": [
+            164,
+            66,
+            352,
+            519
+          ],
+          "visiblePixels": 79011,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            627,
+            0,
+            627,
+            627
+          ],
+          "visibleRect": [
+            807,
+            66,
+            308,
+            524
+          ],
+          "visiblePixels": 72452,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            0,
+            627,
+            627,
+            627
+          ],
+          "visibleRect": [
+            171,
+            687,
+            367,
+            506
+          ],
+          "visiblePixels": 77337,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            627,
+            627,
+            627,
+            627
+          ],
+          "visibleRect": [
+            810,
+            687,
+            319,
+            509
+          ],
+          "visiblePixels": 76209,
+          "borderPixelsAboveNoiseFloor2": 0
+        }
+      ],
+      "runtimeAccepted": false,
+      "review": {
+        "anatomy": "Whole bodies, hands and feet visually inspected; no full anatomical or canon 1:1 certification.",
+        "movement": "Repeated contact and rear-leg lift; no convincing passing-to-opposite-contact progression.",
+        "decision": "Rejected as a runtime walking loop. Four distinct pictures do not establish coherent gait."
+      }
+    },
+    {
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "nativeFacing": "right",
+      "source": "exec-6ce8958d-0ee2-4daf-9eae-7fb1e6687f16.png",
+      "path": "art-source/v53/pit/locomotion-candidates/scar-masked-walk-forward-right-candidate-v53.png",
+      "sha256": "3cf084978fcc2f499a19ea405a06e498c7333adbd7dba4081be211e84f0af348",
+      "size": [
+        1254,
+        1254
+      ],
+      "sourceBytesUnchanged": true,
+      "sourceHasAlpha": true,
+      "cells": [
+        {
+          "rect": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "visibleRect": [
+            168,
+            45,
+            360,
+            552
+          ],
+          "visiblePixels": 99548,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            627,
+            0,
+            627,
+            627
+          ],
+          "visibleRect": [
+            756,
+            48,
+            340,
+            553
+          ],
+          "visiblePixels": 92681,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            0,
+            627,
+            627,
+            627
+          ],
+          "visibleRect": [
+            169,
+            648,
+            383,
+            542
+          ],
+          "visiblePixels": 100671,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            627,
+            627,
+            627,
+            627
+          ],
+          "visibleRect": [
+            780,
+            643,
+            321,
+            558
+          ],
+          "visiblePixels": 93915,
+          "borderPixelsAboveNoiseFloor2": 0
+        }
+      ],
+      "runtimeAccepted": false,
+      "review": {
+        "anatomy": "Whole bodies, hands and feet visually inspected; no full anatomical or canon 1:1 certification.",
+        "movement": "Repeated contact and rear-leg lift; no convincing passing-to-opposite-contact progression.",
+        "decision": "Rejected as a runtime walking loop. Four distinct pictures do not establish coherent gait."
+      }
+    },
+    {
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "nativeFacing": "left",
+      "source": "exec-c1d26c76-936b-4898-baee-9a6981572849.png",
+      "path": "art-source/v53/pit/locomotion-candidates/scar-masked-walk-forward-left-candidate-v53.png",
+      "sha256": "b34e632e1f0d6179794f13f15c7d3dd9d99b7a76268c49a1b0bf285c0943683b",
+      "size": [
+        1254,
+        1254
+      ],
+      "sourceBytesUnchanged": true,
+      "sourceHasAlpha": true,
+      "cells": [
+        {
+          "rect": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "visibleRect": [
+            141,
+            59,
+            378,
+            532
+          ],
+          "visiblePixels": 84167,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            627,
+            0,
+            627,
+            627
+          ],
+          "visibleRect": [
+            805,
+            59,
+            250,
+            536
+          ],
+          "visiblePixels": 77540,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            0,
+            627,
+            627,
+            627
+          ],
+          "visibleRect": [
+            120,
+            669,
+            399,
+            520
+          ],
+          "visiblePixels": 82590,
+          "borderPixelsAboveNoiseFloor2": 0
+        },
+        {
+          "rect": [
+            627,
+            627,
+            627,
+            627
+          ],
+          "visibleRect": [
+            799,
+            669,
+            257,
+            524
+          ],
+          "visiblePixels": 72729,
+          "borderPixelsAboveNoiseFloor2": 0
+        }
+      ],
+      "runtimeAccepted": false,
+      "review": {
+        "anatomy": "Whole bodies, hands and feet visually inspected; no full anatomical or canon 1:1 certification.",
+        "movement": "Repeated contact and rear-leg lift; no convincing passing-to-opposite-contact progression.",
+        "decision": "Rejected as a runtime walking loop. Four distinct pictures do not establish coherent gait."
+      }
+    }
+  ],
+  "rejectedEarlierSource": {
+    "source": "exec-b87802d4-daed-4b92-b92c-23c0a4d830ec.png",
+    "sha256": "a22781a15f39bb68831ec5ea7d7417ead53b2c99e92a34b2352149511838eaa1",
+    "reason": "City right upper-right mask/dreads touch image top with alpha252; repaired source retained above instead."
+  },
+  "nextRequiredDrawings": [
+    "Feet gathered beneath pelvis with a clear rear-leg passing phase.",
+    "Opposite contact: previously rear leg visibly ahead, consistent armor and planted support.",
+    "Independent native left and right drawings; no mirrored equipment and no backwards-loop substitution."
+  ],
+  "runtimeCorrection": {
+    "kind": "held-exact-intro-ending",
+    "states": "Standing idle only, alive, grounded at y0, vx0, vy0, no guard/action/cloak.",
+    "newAnimationClips": 0,
+    "physicsChanged": false,
+    "coverageTruth": "A held drawing is sprite-sheet-hold, never an authored idle loop."
+  }
+}

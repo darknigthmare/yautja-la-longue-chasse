@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-haz-heat-burst-fissure-05-unstable",
+  "definitionId": "environment-prop-v19-volcano-haz-heat-burst-fissure-05-unstable",
+  "biome": "volcano",
+  "role": "hazard",
+  "archetypeId": "heat-burst-fissure",
+  "variantId": "05-unstable",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\haz-heat-burst-fissure-05-unstable.png",
+    "bytes": 1618384,
+    "sha256": "562785146a0b1ec879da6a7ae3e12320443dbae2cf27cf1c78a72fbd70c79aed",
+    "width": 1536,
+    "height": 1024
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\haz\\masters\\haz-heat-burst-fissure-05-unstable-chroma.webp",
+    "bytes": 172740,
+    "sha256": "92bc8a281f0e8d4cfea1cf612abe62dd05fa5b75aa837a4212e6fa103c628fc3"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\haz\\haz-heat-burst-fissure-05-unstable.webp",
+    "bytes": 142572,
+    "sha256": "1efad54d518e22cc4b46089b007b38bb89c7ea1a02124a14ba917c64db8987e5"
+  },
+  "chromaInspection": {
+    "width": 1536,
+    "height": 1024,
+    "sampledKey": [
+      3,
+      249,
+      7
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 0.99987
+  },
+  "helperInspection": {
+    "width": 1536,
+    "height": 1024,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.327921,
+    "transparentRatio": 0.671616,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 768,
+    "height": 757,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.551887,
+    "transparentRatio": 0.447308,
+    "dirtyTransparentPixels": 24442
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-iQiFBX\\haz-heat-burst-fissure-05-unstable-alpha.png\r\nKey color: #03f907\r\nTransparent pixels: 1056360/1572864\r\nPartially transparent pixels: 12229/1572864",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "release": "V65",
+  "status": "PASS_STATIC_COMPOSITOR_VISUAL_REVIEW",
+  "checkedAt": "2026-10-01T01:28:48.8462803Z",
+  "reviewer": "stage-art-agent-independent-of-runtime-integration",
+  "scope": "Six existing stage static compositions only. Native drawings, contact supports, depth, framing and lower viewport coverage.",
+  "evidence": {
+    "report": "I:/CodexTemp/yautja-v65-20261001/stages/qa/renderer-frozen/report.json",
+    "automatedStatus": "PASS",
+    "cameraChecks": 60,
+    "capturesProduced": 66,
+    "finalCapturesViewed": 8,
+    "sourceChecks": [
+      {
+        "path": "app/game/pitStageCompositionV65.ts",
+        "sha256": "711a1c3e5cf6f4a53302ddfe474e23eac513bda98694ef4ab3ddbc7ad2034ef0",
+        "matchesFrozenReport": true
+      },
+      {
+        "path": "app/game/data/pitStageCompositionV65.json",
+        "sha256": "4fee1202e0b39e1aedcb50f45ed5c15982f4de0563e2d8e8356b2d8dc4e9d87f",
+        "matchesFrozenReport": true
+      },
+      {
+        "path": "app/game/pitArenaProduction.ts",
+        "sha256": "b49fbe048bce45c1328dd28e1c1985f6588a6f5a23d16f4323e2d995d8b94a7c",
+        "matchesFrozenReport": true
+      },
+      {
+        "path": "app/game/pitArenaRendering.ts",
+        "sha256": "1c9629f792a7ff97dd37582a2400290e0047e477a6c0c7f61ec14168a62feb8f",
+        "matchesFrozenReport": true
+      },
+      {
+        "path": "scripts/verify-pit-stage-static-v65.mjs",
+        "sha256": "f5cea370bb8bdbeb36d5d182b0d592e6103ccb828a9f398bcf1086cd4ee4cfe6",
+        "matchesFrozenReport": true
+      }
+    ],
+    "captures": [
+      {
+        "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+        "shot": "actual-camera",
+        "path": "I:/CodexTemp/yautja-v65-20261001/stages/qa/renderer-frozen/arena-012-balcon-du-roi-de-la-chasse/actual-camera.png",
+        "sha256": "18784a44376b7bf0e0fffc7c9e0b035310aff1ab51c36559637a96b451d12360",
+        "visualReview": "PASS"
+      },
+      {
+        "stageId": "arena-020-trone-fracture",
+        "shot": "actual-camera",
+        "path": "I:/CodexTemp/yautja-v65-20261001/stages/qa/renderer-frozen/arena-020-trone-fracture/actual-camera.png",
+        "sha256": "0b79a17af400cd9faae787495f4c9a4c204772f040fdb16f149e6f803ad487e1",
+        "visualReview": "PASS"
+      },
+      {
+        "stageId": "arena-020-trone-fracture",
+        "shot": "wide",
+        "path": "I:/CodexTemp/yautja-v65-20261001/stages/qa/renderer-frozen/arena-020-trone-fracture/wide.png",
+        "sha256": "94bab264c47c03d5e5f24dc9ae1dcb8c024d4816ac244b577b4b2e5179804cff",
+        "visualReview": "PASS"
+      },
+      {
+        "stageId": "arena-036-temple-de-la-double-lune",
+        "shot": "actual-camera",
+        "path": "I:/CodexTemp/yautja-v65-20261001/stages/qa/renderer-frozen/arena-036-temple-de-la-double-lune/actual-camera.png",
+        "sha256": "613db94c2afaa123cfe2d6967ea045088b5ab65204680dd574fb9727bf8cdd15",
+        "visualReview": "PASS"
+      },
+      {
+        "stageId": "arena-036-temple-de-la-double-lune",
+        "shot": "wide",
+        "path": "I:/CodexTemp/yautja-v65-20261001/stages/qa/renderer-frozen/arena-036-temple-de-la-double-lune/wide.png",
+        "sha256": "323390c488e03c37c9b2504786effd8d1b58f52b164ae7a74e3a611b626dc492",
+        "visualReview": "PASS"
+      },
+      {
+        "stageId": "arena-050-porte-de-l-audience",
+        "shot": "actual-camera",
+        "path": "I:/CodexTemp/yautja-v65-20261001/stages/qa/renderer-frozen/arena-050-porte-de-l-audience/actual-camera.png",
+        "sha256": "4adcdbd4371af4d091f0f0ec5566f7845b730992f759b154157d784a8f48f3f6",
+        "visualReview": "PASS"
+      },
+      {
+        "stageId": "arena-069-salle-du-porte-cendres",
+        "shot": "actual-camera",
+        "path": "I:/CodexTemp/yautja-v65-20261001/stages/qa/renderer-frozen/arena-069-salle-du-porte-cendres/actual-camera.png",
+        "sha256": "f90afb26b6423b3eec5c644ef3006a6053b218ec2bf65dfeddaa89de2e0f2b6f",
+        "visualReview": "PASS"
+      },
+      {
+        "stageId": "arena-076-atrium-des-mediateurs",
+        "shot": "actual-camera",
+        "path": "I:/CodexTemp/yautja-v65-20261001/stages/qa/renderer-frozen/arena-076-atrium-des-mediateurs/actual-camera.png",
+        "sha256": "c5aa04eee431b8fbcf4dbb8448770b05c51a941e30669a48a74e227c6082d461",
+        "visualReview": "PASS"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "result": "PASS",
+      "note": "Abri de clan bas sous canopees rocheuses. Consoles et supports lateraux poses, centre lisible, sol continu."
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "result": "PASS_AFTER_CORRECTION",
+      "note": "Trone unique. Ancien espace visible sous le socle supprime en abaissant sa pose; marches maintenant raccordees au bord du sol. Verification actual-camera et wide."
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "result": "PASS_AFTER_CORRECTION",
+      "note": "Les deux lunes restent visibles. Bas-reliefs generiques du vieux fascia desactives; les deux PNG techniques de sol020 sont reemployes inchanges. Verification actual-camera et wide."
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "result": "PASS",
+      "note": "Sas technique lisible au fond, terminaux bas en retrait, ligne de combat degagee."
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "result": "PASS",
+      "note": "Echangeur et coffres physiques poses; conduites fermees et colonne au sommet complet; profondeur differenciee sans brasero suspendu."
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "result": "PASS",
+      "note": "Atrium bas et bancs reutilises symetriquement, supports materiels lisibles, aucun palais ou statue humaine ajoute."
+    }
+  ],
+  "limitations": [
+    "These are original project adaptations, not six canon locations or certified 1:1 reproductions.",
+    "This review does not certify the remaining181 arenas or all174 workbook dossiers.",
+    "Each atlas contains four unique static objects; repeated runtime placements do not count as additional drawings.",
+    "No new stage animation, narrative condition or background event was delivered.",
+    "The compositor is real runtime rendering with recorded combat camera, but full application flow and public deployment checks are separate and not verified here."
+  ],
+  "applicationFlowVerified": false,
+  "publicDeploymentVerified": false
+}

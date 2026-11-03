@@ -1,0 +1,897 @@
+{
+  "fighterId": "wolf",
+  "bodyHeightPx": 405,
+  "pageBodyHeightPx": {
+    "wolf-repair-idle-cannons": 405,
+    "wolf-repair-crouch-cannons": 400,
+    "wolf-repair-guard-blades": 400,
+    "wolf-hurt": 420,
+    "wolf-repair-light-spacing": 250,
+    "wolf-repair-heavy-hand": 405
+  },
+  "atlas": {
+    "schemaVersion": 1,
+    "id": "wolf-pit-v34",
+    "characterId": "wolf",
+    "variantId": "the-pit-v34-v23-identity",
+    "sourceKind": "authored-frames",
+    "status": "validated",
+    "pages": [
+      {
+        "id": "wolf-repair-idle-cannons",
+        "src": "/game/sprites/v34/pit/wolf/wolf-repair-idle-cannons-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "wolf-repair-crouch-cannons",
+        "src": "/game/sprites/v34/pit/wolf/wolf-repair-crouch-cannons-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "wolf-repair-guard-blades",
+        "src": "/game/sprites/v34/pit/wolf/wolf-repair-guard-blades-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "wolf-hurt",
+        "src": "/game/sprites/v34/pit/wolf/wolf-hurt-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "wolf-repair-light-spacing",
+        "src": "/game/sprites/v34/pit/wolf/wolf-repair-light-spacing-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "wolf-repair-heavy-hand",
+        "src": "/game/sprites/v34/pit/wolf/wolf-repair-heavy-hand-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      }
+    ],
+    "clips": [
+      {
+        "id": "idle",
+        "facing": "right",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-idle-cannons",
+            "rect": [
+              65,
+              44,
+              274,
+              435
+            ],
+            "pivot": [
+              137,
+              431
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "wolf-repair-idle-cannons",
+            "rect": [
+              451,
+              45,
+              272,
+              435
+            ],
+            "pivot": [
+              133.5,
+              431
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "wolf-repair-idle-cannons",
+            "rect": [
+              828,
+              48,
+              268,
+              432
+            ],
+            "pivot": [
+              136.5,
+              428
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "wolf-repair-idle-cannons",
+            "rect": [
+              1215,
+              47,
+              257,
+              433
+            ],
+            "pivot": [
+              135,
+              429
+            ],
+            "durationTicks": 10
+          }
+        ]
+      },
+      {
+        "id": "idle",
+        "facing": "left",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-idle-cannons",
+            "rect": [
+              62,
+              547,
+              261,
+              438
+            ],
+            "pivot": [
+              126,
+              434
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "wolf-repair-idle-cannons",
+            "rect": [
+              436,
+              546,
+              267,
+              439
+            ],
+            "pivot": [
+              134.5,
+              435
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "wolf-repair-idle-cannons",
+            "rect": [
+              823,
+              561,
+              268,
+              424
+            ],
+            "pivot": [
+              132,
+              420
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "wolf-repair-idle-cannons",
+            "rect": [
+              1218,
+              546,
+              256,
+              439
+            ],
+            "pivot": [
+              121,
+              435
+            ],
+            "durationTicks": 10
+          }
+        ]
+      },
+      {
+        "id": "crouch",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-crouch-cannons",
+            "rect": [
+              32,
+              63,
+              306,
+              412
+            ],
+            "pivot": [
+              148,
+              408
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "wolf-repair-crouch-cannons",
+            "rect": [
+              412,
+              106,
+              315,
+              369
+            ],
+            "pivot": [
+              149.5,
+              365
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "wolf-repair-crouch-cannons",
+            "rect": [
+              806,
+              184,
+              287,
+              289
+            ],
+            "pivot": [
+              158,
+              285
+            ],
+            "durationTicks": 30
+          }
+        ]
+      },
+      {
+        "id": "crouch",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-crouch-cannons",
+            "rect": [
+              42,
+              543,
+              310,
+              412
+            ],
+            "pivot": [
+              161.5,
+              408
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "wolf-repair-crouch-cannons",
+            "rect": [
+              425,
+              586,
+              312,
+              369
+            ],
+            "pivot": [
+              164.5,
+              365
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "wolf-repair-crouch-cannons",
+            "rect": [
+              821,
+              662,
+              291,
+              293
+            ],
+            "pivot": [
+              131.5,
+              289
+            ],
+            "durationTicks": 30
+          }
+        ]
+      },
+      {
+        "id": "high-guard",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-guard-blades",
+            "rect": [
+              60,
+              56,
+              292,
+              416
+            ],
+            "pivot": [
+              137,
+              412
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "wolf-repair-guard-blades",
+            "rect": [
+              415,
+              56,
+              300,
+              417
+            ],
+            "pivot": [
+              143,
+              413
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "wolf-repair-guard-blades",
+            "rect": [
+              813,
+              85,
+              313,
+              389
+            ],
+            "pivot": [
+              137.5,
+              385
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "wolf-repair-guard-blades",
+            "rect": [
+              1184,
+              56,
+              302,
+              418
+            ],
+            "pivot": [
+              140,
+              414
+            ],
+            "durationTicks": 6
+          }
+        ]
+      },
+      {
+        "id": "high-guard",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-guard-blades",
+            "rect": [
+              61,
+              538,
+              291,
+              415
+            ],
+            "pivot": [
+              146,
+              411
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "wolf-repair-guard-blades",
+            "rect": [
+              443,
+              538,
+              288,
+              416
+            ],
+            "pivot": [
+              143.5,
+              412
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "wolf-repair-guard-blades",
+            "rect": [
+              810,
+              566,
+              297,
+              389
+            ],
+            "pivot": [
+              157,
+              385
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "wolf-repair-guard-blades",
+            "rect": [
+              1192,
+              538,
+              296,
+              416
+            ],
+            "pivot": [
+              153,
+              412
+            ],
+            "durationTicks": 6
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.hitstun",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-hurt",
+            "rect": [
+              45,
+              45,
+              260,
+              436
+            ],
+            "pivot": [
+              137.5,
+              432
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "wolf-hurt",
+            "rect": [
+              430,
+              61,
+              290,
+              416
+            ],
+            "pivot": [
+              160,
+              412
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "wolf-hurt",
+            "rect": [
+              826,
+              68,
+              246,
+              412
+            ],
+            "pivot": [
+              122.5,
+              408
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "wolf-hurt",
+            "rect": [
+              1221,
+              44,
+              266,
+              437
+            ],
+            "pivot": [
+              144,
+              433
+            ],
+            "durationTicks": 3
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.hitstun",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-hurt",
+            "rect": [
+              48,
+              539,
+              263,
+              432
+            ],
+            "pivot": [
+              125,
+              428
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "wolf-hurt",
+            "rect": [
+              425,
+              553,
+              288,
+              415
+            ],
+            "pivot": [
+              122.5,
+              411
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "wolf-hurt",
+            "rect": [
+              838,
+              559,
+              255,
+              413
+            ],
+            "pivot": [
+              127,
+              409
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "wolf-hurt",
+            "rect": [
+              1212,
+              536,
+              274,
+              435
+            ],
+            "pivot": [
+              127,
+              431
+            ],
+            "durationTicks": 3
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.startup",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-light-spacing",
+            "rect": [
+              93,
+              137,
+              181,
+              273
+            ],
+            "pivot": [
+              86.5,
+              269
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.active",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-light-spacing",
+            "rect": [
+              472,
+              136,
+              265,
+              274
+            ],
+            "pivot": [
+              87,
+              270
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.recovery",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-light-spacing",
+            "rect": [
+              851,
+              137,
+              186,
+              273
+            ],
+            "pivot": [
+              88,
+              269
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "wolf-repair-light-spacing",
+            "rect": [
+              1247,
+              137,
+              187,
+              273
+            ],
+            "pivot": [
+              88,
+              269
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.startup",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-light-spacing",
+            "rect": [
+              98,
+              610,
+              187,
+              278
+            ],
+            "pivot": [
+              95.5,
+              274
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.active",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-light-spacing",
+            "rect": [
+              419,
+              610,
+              271,
+              278
+            ],
+            "pivot": [
+              177.5,
+              274
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.recovery",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-light-spacing",
+            "rect": [
+              861,
+              610,
+              196,
+              278
+            ],
+            "pivot": [
+              104.5,
+              274
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "wolf-repair-light-spacing",
+            "rect": [
+              1238,
+              610,
+              194,
+              278
+            ],
+            "pivot": [
+              102,
+              274
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.startup",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-heavy-hand",
+            "rect": [
+              28,
+              569,
+              339,
+              376
+            ],
+            "pivot": [
+              181.5,
+              372
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.active",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-heavy-hand",
+            "rect": [
+              377,
+              567,
+              410,
+              382
+            ],
+            "pivot": [
+              250.5,
+              378
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.recovery",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "wolf-repair-heavy-hand",
+            "rect": [
+              835,
+              568,
+              313,
+              379
+            ],
+            "pivot": [
+              172.5,
+              375
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "wolf-repair-heavy-hand",
+            "rect": [
+              1238,
+              541,
+              222,
+              413
+            ],
+            "pivot": [
+              109.5,
+              409
+            ],
+            "durationTicks": 1
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1079 @@
+{
+  "sourceCell": "05_MOVES_PROPOSES!M10",
+  "records": [
+    {
+      "source": "art-source/v100/pit/feral/intake/022-throw-forward-right-a.png",
+      "destination": "public/game/sprites/v100/pit/feral/022-throw-forward-right-a.png",
+      "sourceSha256": "05efda7d52febc378376665c14e92af6a4dd97cf0926c0d4f49efa25d8a575f2",
+      "bodyHeightPx": 434,
+      "bodyReference": {
+        "headTopY": 41,
+        "soleY": 475,
+        "headSourceRoi": [
+          330,
+          20,
+          110,
+          140
+        ],
+        "review": "Fixed actual skull mask-to-soles reference alpha128 on standing cell0; excludes dreads and detached alpha2 halo."
+      },
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "excludedCalibrationIndices": [
+        0
+      ],
+      "facing": "right",
+      "pageId": "feral-source-th_f-v100-right-a",
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            711,
+            0,
+            825,
+            511
+          ],
+          "visibleRect": [
+            924,
+            44,
+            394,
+            435
+          ],
+          "alphaPixels": 89428,
+          "borderPixels": 0,
+          "visiblePixelSha256": "cda12c07a16bebf5f0ff63b35bbfca4ed1bfbfee86bf1c55d257b8164db3f1e7",
+          "pivotCandidate": [
+            395.5,
+            479
+          ],
+          "visibleHeightCandidate": 435,
+          "pivot": [
+            351.5,
+            477
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              900,
+              430,
+              330,
+              55
+            ],
+            "sourceSupportPoint": [
+              1062.5,
+              477
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            510,
+            770,
+            514
+          ],
+          "visibleRect": [
+            243,
+            566,
+            402,
+            392
+          ],
+          "alphaPixels": 78023,
+          "borderPixels": 0,
+          "visiblePixelSha256": "fa80609a348afe1bae28d96ec1be52f1889bfcebf95dd029eede6408da642f58",
+          "pivotCandidate": [
+            541,
+            448
+          ],
+          "visibleHeightCandidate": 392,
+          "pivot": [
+            405.5,
+            444
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              220,
+              910,
+              370,
+              55
+            ],
+            "sourceSupportPoint": [
+              405.5,
+              954
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            769,
+            510,
+            767,
+            514
+          ],
+          "visibleRect": [
+            894,
+            542,
+            521,
+            416
+          ],
+          "alphaPixels": 86106,
+          "borderPixels": 0,
+          "visiblePixelSha256": "b1672fb6604ebb937c120d02970837c45d8fc3039ea4ea1e763a6d26dc07e7e3",
+          "pivotCandidate": [
+            158,
+            448
+          ],
+          "visibleHeightCandidate": 416,
+          "pivot": [
+            280.5,
+            444
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              880,
+              910,
+              360,
+              55
+            ],
+            "sourceSupportPoint": [
+              1049.5,
+              954
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "source": "art-source/v100/pit/feral/intake/023-throw-forward-right-b.png",
+      "destination": "public/game/sprites/v100/pit/feral/023-throw-forward-right-b.png",
+      "sourceSha256": "c66026d3c77787d6d3b16926fa5b9386046a02e369c9c8edba31dd131cbbec5e",
+      "bodyHeightPx": 396,
+      "bodyReference": {
+        "headTopY": 81,
+        "soleY": 477,
+        "headSourceRoi": [
+          260,
+          55,
+          100,
+          150
+        ],
+        "review": "Fixed actual skull mask-to-soles reference alpha128 on standing cell0; excludes dreads and detached alpha2 halo."
+      },
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "excludedCalibrationIndices": [
+        0
+      ],
+      "facing": "right",
+      "pageId": "feral-source-th_f-v100-right-b",
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            667,
+            0,
+            869,
+            530
+          ],
+          "visibleRect": [
+            836,
+            50,
+            691,
+            429
+          ],
+          "alphaPixels": 78445,
+          "borderPixels": 0,
+          "visiblePixelSha256": "3c455dff6692f12688179fe159ab4f16524944d0f2c9196a0730a0eb308c754f",
+          "pivotCandidate": [
+            198,
+            479
+          ],
+          "visibleHeightCandidate": 429,
+          "pivot": [
+            299.5,
+            476
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              825,
+              430,
+              325,
+              55
+            ],
+            "sourceSupportPoint": [
+              966.5,
+              476
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            529,
+            812,
+            495
+          ],
+          "visibleRect": [
+            65,
+            596,
+            689,
+            380
+          ],
+          "alphaPixels": 69782,
+          "borderPixels": 0,
+          "visiblePixelSha256": "d50b44711a8fbf82f45747b1b507c1d5856e8212ae290ba0dddee70c95437582",
+          "pivotCandidate": [
+            91.5,
+            447
+          ],
+          "visibleHeightCandidate": 380,
+          "pivot": [
+            208,
+            445
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              55,
+              925,
+              325,
+              55
+            ],
+            "sourceSupportPoint": [
+              208,
+              974
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            811,
+            529,
+            725,
+            495
+          ],
+          "visibleRect": [
+            869,
+            580,
+            651,
+            397
+          ],
+          "alphaPixels": 72092,
+          "borderPixels": 0,
+          "visiblePixelSha256": "987c55f5f7f1d2fa839a9ffe297cf0d664085b6e4a0c2d97f1defcdf6f466995",
+          "pivotCandidate": [
+            88,
+            448
+          ],
+          "visibleHeightCandidate": 397,
+          "pivot": [
+            180.5,
+            444
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              860,
+              925,
+              265,
+              60
+            ],
+            "sourceSupportPoint": [
+              991.5,
+              973
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "source": "art-source/v100/pit/feral/intake/036-throw-forward-left-a-corrected.png",
+      "destination": "public/game/sprites/v100/pit/feral/036-throw-forward-left-a-corrected.png",
+      "sourceSha256": "38db19ddd67f164d36390061f8f75e5e2c92f1987fe04422fd23425c90260a16",
+      "bodyHeightPx": 459,
+      "bodyReference": {
+        "headTopY": 20,
+        "soleY": 479,
+        "headSourceRoi": [
+          300,
+          0,
+          100,
+          130
+        ],
+        "review": "Fixed actual skull mask-to-soles reference alpha128 on standing cell0; excludes dreads and detached alpha2 halo."
+      },
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "excludedCalibrationIndices": [
+        0
+      ],
+      "facing": "left",
+      "pageId": "feral-source-th_f-v100-left-a",
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            712,
+            0,
+            824,
+            495
+          ],
+          "visibleRect": [
+            874,
+            17,
+            515,
+            464
+          ],
+          "alphaPixels": 104870,
+          "borderPixels": 0,
+          "visiblePixelSha256": "019f90bd670f2c262f3e8eabfc0beab1482096e4938b7d4529d7d7e64a0943a9",
+          "pivotCandidate": [
+            357,
+            481
+          ],
+          "visibleHeightCandidate": 464,
+          "pivot": [
+            505.5,
+            478
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              1030,
+              430,
+              380,
+              55
+            ],
+            "sourceSupportPoint": [
+              1217.5,
+              478
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            494,
+            759,
+            530
+          ],
+          "visibleRect": [
+            202,
+            540,
+            489,
+            423
+          ],
+          "alphaPixels": 97204,
+          "borderPixels": 0,
+          "visiblePixelSha256": "1fbf60780c300c58510b7193ad167fc8f59b0b3512661922de973943823608ae",
+          "pivotCandidate": [
+            369,
+            469
+          ],
+          "visibleHeightCandidate": 423,
+          "pivot": [
+            510,
+            466
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              290,
+              910,
+              410,
+              60
+            ],
+            "sourceSupportPoint": [
+              510,
+              960
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            758,
+            494,
+            778,
+            530
+          ],
+          "visibleRect": [
+            827,
+            507,
+            553,
+            457
+          ],
+          "alphaPixels": 94988,
+          "borderPixels": 0,
+          "visiblePixelSha256": "7cce740c76b0ca2de87aaf4daf2a7a230fb64bf4ba2dfde9677447e1a666551a",
+          "pivotCandidate": [
+            272,
+            470
+          ],
+          "visibleHeightCandidate": 457,
+          "pivot": [
+            429.5,
+            467
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              955,
+              910,
+              445,
+              60
+            ],
+            "sourceSupportPoint": [
+              1187.5,
+              961
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "source": "art-source/v100/pit/feral/intake/037-throw-forward-left-b-corrected.png",
+      "destination": "public/game/sprites/v100/pit/feral/037-throw-forward-left-b-corrected.png",
+      "sourceSha256": "5e8759f9b38556cbd639807b35f2ff42b836ed249873f4c6c6322a0c034ab645",
+      "bodyHeightPx": 428,
+      "bodyReference": {
+        "headTopY": 48,
+        "soleY": 476,
+        "headSourceRoi": [
+          275,
+          20,
+          115,
+          140
+        ],
+        "review": "Fixed actual skull mask-to-soles reference alpha128 on standing cell0; excludes dreads and detached alpha2 halo."
+      },
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "excludedCalibrationIndices": [
+        0
+      ],
+      "facing": "left",
+      "pageId": "feral-source-th_f-v100-left-b",
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            682,
+            0,
+            854,
+            512
+          ],
+          "visibleRect": [
+            808,
+            59,
+            701,
+            420
+          ],
+          "alphaPixels": 99521,
+          "borderPixels": 0,
+          "visiblePixelSha256": "2fe5bdd9f60a0cb37a2f8993becdaa1d8059ed93bc2f1743de7781c181b128e5",
+          "pivotCandidate": [
+            658,
+            479
+          ],
+          "visibleHeightCandidate": 420,
+          "pivot": [
+            668.5,
+            476
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              1165,
+              430,
+              355,
+              55
+            ],
+            "sourceSupportPoint": [
+              1350.5,
+              476
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            511,
+            762,
+            513
+          ],
+          "visibleRect": [
+            20,
+            577,
+            709,
+            386
+          ],
+          "alphaPixels": 93417,
+          "borderPixels": 0,
+          "visiblePixelSha256": "9d2d214fdefcf5d91b0af8d23a4452e1c4d1ec1c1e64dac8c3fe873f33241e16",
+          "pivotCandidate": [
+            576,
+            452
+          ],
+          "visibleHeightCandidate": 386,
+          "pivot": [
+            589,
+            449
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              400,
+              910,
+              345,
+              65
+            ],
+            "sourceSupportPoint": [
+              589,
+              960
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            761,
+            511,
+            775,
+            513
+          ],
+          "visibleRect": [
+            794,
+            545,
+            632,
+            432
+          ],
+          "alphaPixels": 92260,
+          "borderPixels": 0,
+          "visiblePixelSha256": "9a5452ebdf5b2cabfe4133f1819a33427604054d4b56e1926dd4742709b90f11",
+          "pivotCandidate": [
+            442,
+            466
+          ],
+          "visibleHeightCandidate": 432,
+          "pivot": [
+            530,
+            463
+          ],
+          "pivotReview": {
+            "method": "Manually reviewed middle of Feral actual two feet; actual sole alpha128 measured only within Feral foot ROI, excluding grey training dummy",
+            "feralFootSourceRoi": [
+              1130,
+              925,
+              310,
+              60
+            ],
+            "sourceSupportPoint": [
+              1291,
+              974
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "admission": {
+    "fighterId": "feral-hunter",
+    "actionId": "M_F006_TH_F",
+    "appearanceId": "runtime-default",
+    "atlasId": "feral-source-th_f-v100",
+    "clipIds": [
+      "workbook.M_F006_TH_F"
+    ],
+    "definition": {
+      "fighterId": "feral-hunter",
+      "bodyHeightPx": 434,
+      "pageBodyHeightPx": {
+        "feral-source-th_f-v100-right-a": 434,
+        "feral-source-th_f-v100-right-b": 396,
+        "feral-source-th_f-v100-left-a": 459,
+        "feral-source-th_f-v100-left-b": 428
+      },
+      "visibleFrameBounds": [
+        {
+          "pageId": "feral-source-th_f-v100-right-a",
+          "rect": [
+            711,
+            0,
+            825,
+            511
+          ],
+          "visibleRect": [
+            924,
+            44,
+            394,
+            435
+          ]
+        },
+        {
+          "pageId": "feral-source-th_f-v100-right-a",
+          "rect": [
+            0,
+            510,
+            770,
+            514
+          ],
+          "visibleRect": [
+            243,
+            566,
+            402,
+            392
+          ]
+        },
+        {
+          "pageId": "feral-source-th_f-v100-right-a",
+          "rect": [
+            769,
+            510,
+            767,
+            514
+          ],
+          "visibleRect": [
+            894,
+            542,
+            521,
+            416
+          ]
+        },
+        {
+          "pageId": "feral-source-th_f-v100-right-b",
+          "rect": [
+            667,
+            0,
+            869,
+            530
+          ],
+          "visibleRect": [
+            836,
+            50,
+            691,
+            429
+          ]
+        },
+        {
+          "pageId": "feral-source-th_f-v100-right-b",
+          "rect": [
+            0,
+            529,
+            812,
+            495
+          ],
+          "visibleRect": [
+            65,
+            596,
+            689,
+            380
+          ]
+        },
+        {
+          "pageId": "feral-source-th_f-v100-right-b",
+          "rect": [
+            811,
+            529,
+            725,
+            495
+          ],
+          "visibleRect": [
+            869,
+            580,
+            651,
+            397
+          ]
+        },
+        {
+          "pageId": "feral-source-th_f-v100-left-a",
+          "rect": [
+            712,
+            0,
+            824,
+            495
+          ],
+          "visibleRect": [
+            874,
+            17,
+            515,
+            464
+          ]
+        },
+        {
+          "pageId": "feral-source-th_f-v100-left-a",
+          "rect": [
+            0,
+            494,
+            759,
+            530
+          ],
+          "visibleRect": [
+            202,
+            540,
+            489,
+            423
+          ]
+        },
+        {
+          "pageId": "feral-source-th_f-v100-left-a",
+          "rect": [
+            758,
+            494,
+            778,
+            530
+          ],
+          "visibleRect": [
+            827,
+            507,
+            553,
+            457
+          ]
+        },
+        {
+          "pageId": "feral-source-th_f-v100-left-b",
+          "rect": [
+            682,
+            0,
+            854,
+            512
+          ],
+          "visibleRect": [
+            808,
+            59,
+            701,
+            420
+          ]
+        },
+        {
+          "pageId": "feral-source-th_f-v100-left-b",
+          "rect": [
+            0,
+            511,
+            762,
+            513
+          ],
+          "visibleRect": [
+            20,
+            577,
+            709,
+            386
+          ]
+        },
+        {
+          "pageId": "feral-source-th_f-v100-left-b",
+          "rect": [
+            761,
+            511,
+            775,
+            513
+          ],
+          "visibleRect": [
+            794,
+            545,
+            632,
+            432
+          ]
+        }
+      ],
+      "atlas": {
+        "schemaVersion": 1,
+        "id": "feral-source-th_f-v100",
+        "characterId": "feral-hunter",
+        "variantId": "body-default-v100",
+        "sourceKind": "authored-frames",
+        "status": "validated",
+        "pages": [
+          {
+            "id": "feral-source-th_f-v100-right-a",
+            "src": "/game/sprites/v100/pit/feral/022-throw-forward-right-a.png",
+            "width": 1536,
+            "height": 1024,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          },
+          {
+            "id": "feral-source-th_f-v100-right-b",
+            "src": "/game/sprites/v100/pit/feral/023-throw-forward-right-b.png",
+            "width": 1536,
+            "height": 1024,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          },
+          {
+            "id": "feral-source-th_f-v100-left-a",
+            "src": "/game/sprites/v100/pit/feral/036-throw-forward-left-a-corrected.png",
+            "width": 1536,
+            "height": 1024,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          },
+          {
+            "id": "feral-source-th_f-v100-left-b",
+            "src": "/game/sprites/v100/pit/feral/037-throw-forward-left-b-corrected.png",
+            "width": 1536,
+            "height": 1024,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          }
+        ],
+        "clips": [
+          {
+            "id": "workbook.M_F006_TH_F",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-th_f-v100-right-a",
+                "rect": [
+                  711,
+                  0,
+                  825,
+                  511
+                ],
+                "pivot": [
+                  351.5,
+                  477
+                ],
+                "durationTicks": 4
+              },
+              {
+                "pageId": "feral-source-th_f-v100-right-a",
+                "rect": [
+                  0,
+                  510,
+                  770,
+                  514
+                ],
+                "pivot": [
+                  405.5,
+                  444
+                ],
+                "durationTicks": 4
+              },
+              {
+                "pageId": "feral-source-th_f-v100-right-a",
+                "rect": [
+                  769,
+                  510,
+                  767,
+                  514
+                ],
+                "pivot": [
+                  280.5,
+                  444
+                ],
+                "durationTicks": 2
+              },
+              {
+                "pageId": "feral-source-th_f-v100-right-b",
+                "rect": [
+                  667,
+                  0,
+                  869,
+                  530
+                ],
+                "pivot": [
+                  299.5,
+                  476
+                ],
+                "durationTicks": 1
+              },
+              {
+                "pageId": "feral-source-th_f-v100-right-b",
+                "rect": [
+                  0,
+                  529,
+                  812,
+                  495
+                ],
+                "pivot": [
+                  208,
+                  445
+                ],
+                "durationTicks": 15
+              },
+              {
+                "pageId": "feral-source-th_f-v100-right-b",
+                "rect": [
+                  811,
+                  529,
+                  725,
+                  495
+                ],
+                "pivot": [
+                  180.5,
+                  444
+                ],
+                "durationTicks": 15
+              }
+            ]
+          },
+          {
+            "id": "workbook.M_F006_TH_F",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-th_f-v100-left-a",
+                "rect": [
+                  712,
+                  0,
+                  824,
+                  495
+                ],
+                "pivot": [
+                  505.5,
+                  478
+                ],
+                "durationTicks": 4
+              },
+              {
+                "pageId": "feral-source-th_f-v100-left-a",
+                "rect": [
+                  0,
+                  494,
+                  759,
+                  530
+                ],
+                "pivot": [
+                  510,
+                  466
+                ],
+                "durationTicks": 4
+              },
+              {
+                "pageId": "feral-source-th_f-v100-left-a",
+                "rect": [
+                  758,
+                  494,
+                  778,
+                  530
+                ],
+                "pivot": [
+                  429.5,
+                  467
+                ],
+                "durationTicks": 2
+              },
+              {
+                "pageId": "feral-source-th_f-v100-left-b",
+                "rect": [
+                  682,
+                  0,
+                  854,
+                  512
+                ],
+                "pivot": [
+                  668.5,
+                  476
+                ],
+                "durationTicks": 1
+              },
+              {
+                "pageId": "feral-source-th_f-v100-left-b",
+                "rect": [
+                  0,
+                  511,
+                  762,
+                  513
+                ],
+                "pivot": [
+                  589,
+                  449
+                ],
+                "durationTicks": 15
+              },
+              {
+                "pageId": "feral-source-th_f-v100-left-b",
+                "rect": [
+                  761,
+                  511,
+                  775,
+                  513
+                ],
+                "pivot": [
+                  530,
+                  463
+                ],
+                "durationTicks": 15
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "review": {
+      "status": "validated",
+      "scope": "source-M10-TH_F-native-body-study-both-facings",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/feral/022-throw-forward-right-a.png": "05efda7d52febc378376665c14e92af6a4dd97cf0926c0d4f49efa25d8a575f2",
+        "/game/sprites/v100/pit/feral/023-throw-forward-right-b.png": "c66026d3c77787d6d3b16926fa5b9386046a02e369c9c8edba31dd131cbbec5e",
+        "/game/sprites/v100/pit/feral/036-throw-forward-left-a-corrected.png": "38db19ddd67f164d36390061f8f75e5e2c92f1987fe04422fd23425c90260a16",
+        "/game/sprites/v100/pit/feral/037-throw-forward-left-b-corrected.png": "5e8759f9b38556cbd639807b35f2ff42b836ed249873f4c6c6322a0c034ab645"
+      },
+      "notes": "Originaux PNG inchangés et copies byte-identiques ; double revue root/QA, calibrations0 exclues. Échelle fixe propre à chaque page, vraie référence masque→semelles alpha128. Six étapes de saisie/rotation/rejet/suivi/reprise par sens, avec mannequin gris distinct. Pivots isolés sur les seuls pieds Feral, jamais sur la victime. Bouclier parfois occlus dans le rejet/retrait : aucune manipulation ou rétraction d’accessoire certifiée. Aucune projection du duel ou synchronisation de victime ajoutée. 022A+023B droite et036A+037B gauche revus comme projection vers la cible initiale. Les durées Excel réparties servent uniquement à cette lecture, sans modifier simulation/replays/coûts/règles."
+    }
+  }
+}

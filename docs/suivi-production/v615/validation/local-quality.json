@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "yautja-v615-local-quality-1",
+  "verifiedAtUtc": "2026-10-23T17:29:43.975324+00:00",
+  "passed": true,
+  "eslint": {
+    "command": "node_modules/.bin/eslint --max-warnings=0 app/game/RecentSpriteLibraryV85.tsx app/game/systems/recentSpriteLibraryV85.ts scripts/build-npc-production-v615.mjs scripts/build-npc-workbook-v615.mjs scripts/reconcile-npc-main-v615.mjs scripts/prepare-npc-plan-v615.mjs scripts/build-npc-gallery-v615.mjs scripts/verify-npc-gallery-v615.mjs scripts/historical-runtime-context-v615.mjs tests/npc-production-v615.test.mjs tests/production-proofs-v106.test.mjs tests/enforcer-production-v611.test.mjs tests/enforcer-production-v612.test.mjs tests/enforcer-production-v613.test.mjs tests/enforcer-production-v614.test.mjs tests/drive-new-deposits-v89.test.mjs",
+    "exitCode": 0,
+    "files": [
+      "app/game/RecentSpriteLibraryV85.tsx",
+      "app/game/systems/recentSpriteLibraryV85.ts",
+      "scripts/build-npc-production-v615.mjs",
+      "scripts/build-npc-workbook-v615.mjs",
+      "scripts/reconcile-npc-main-v615.mjs",
+      "scripts/prepare-npc-plan-v615.mjs",
+      "scripts/build-npc-gallery-v615.mjs",
+      "scripts/verify-npc-gallery-v615.mjs",
+      "scripts/historical-runtime-context-v615.mjs",
+      "tests/npc-production-v615.test.mjs",
+      "tests/production-proofs-v106.test.mjs",
+      "tests/enforcer-production-v611.test.mjs",
+      "tests/enforcer-production-v612.test.mjs",
+      "tests/enforcer-production-v613.test.mjs",
+      "tests/enforcer-production-v614.test.mjs",
+      "tests/drive-new-deposits-v89.test.mjs"
+    ]
+  },
+  "pythonSyntax": {
+    "method": "ast.parse, read-only",
+    "files": [
+      "scripts/verify-npc-workbook-v615.py",
+      "scripts/package-npc-production-v615.py",
+      "scripts/audit-npc-public-records-v615.py"
+    ],
+    "passed": true
+  },
+  "typeScriptReport": "docs/suivi-production/v615/validation/runtime-integration.json",
+  "diffWhitespaceCheck": {
+    "command": "git diff --check",
+    "exitCode": 0
+  },
+  "fingerprints": [
+    {
+      "path": "app/game/RecentSpriteLibraryV85.tsx",
+      "sha256": "d04e3583c7968087cb233083d2efd30e37f2899627870ffaf85d09fa058cf584",
+      "bytes": 10237
+    },
+    {
+      "path": "app/game/systems/recentSpriteLibraryV85.ts",
+      "sha256": "ec2fa03e97cb5508a6c5fa002d265d791abe5d2e27f17d21defebb3c3ca799b5",
+      "bytes": 16362
+    },
+    {
+      "path": "scripts/build-npc-production-v615.mjs",
+      "sha256": "c1ee57715f02f5f9626d1d4a752f1e0a5fa7046ca160ebb5cbe9df56b3d16ce1",
+      "bytes": 12776
+    },
+    {
+      "path": "scripts/build-npc-workbook-v615.mjs",
+      "sha256": "39bc4fa5ddff6b29c007e7af90860b4a2da39cc7d4fe66877d1c46e4da4f9b97",
+      "bytes": 17608
+    },
+    {
+      "path": "scripts/reconcile-npc-main-v615.mjs",
+      "sha256": "1ebb70b6f9624ee31058987f36a8f30403447c0d2f71a6c572aa1bc9b535c569",
+      "bytes": 4175
+    },
+    {
+      "path": "scripts/prepare-npc-plan-v615.mjs",
+      "sha256": "bd14d91bced7abc197d14da2d9e0b02abcc305bce9fefc7010813c731c0990e7",
+      "bytes": 11634
+    },
+    {
+      "path": "scripts/build-npc-gallery-v615.mjs",
+      "sha256": "4e445e87cf070f595110c47397f7269431c3f153a980f0dfe713cd755d902866",
+      "bytes": 19478
+    },
+    {
+      "path": "scripts/verify-npc-gallery-v615.mjs",
+      "sha256": "7d92bef86a62be6e4f1ff56c103f965e1a4bbd55e2dcd9d2aaa6787c812f9dda",
+      "bytes": 10517
+    },
+    {
+      "path": "scripts/historical-runtime-context-v615.mjs",
+      "sha256": "b167d358178059d2afa7a7c62f5689fd7f9fad3af3a3624f5fbaf33ecfa08a34",
+      "bytes": 12769
+    },
+    {
+      "path": "tests/npc-production-v615.test.mjs",
+      "sha256": "b648083f380eff4b25b7564ea8cf8f63730fa002043d1af1a518c081e4302b24",
+      "bytes": 9810
+    },
+    {
+      "path": "tests/production-proofs-v106.test.mjs",
+      "sha256": "52312d32bbbe36cc3794c94ca37389bf942e0bbfc9eac82be7556691bc0e52e6",
+      "bytes": 7988
+    },
+    {
+      "path": "tests/enforcer-production-v611.test.mjs",
+      "sha256": "11cee8ec741d86afbf5d311022c52a5719930eae6d65ee943bc7bc940367e117",
+      "bytes": 7080
+    },
+    {
+      "path": "tests/enforcer-production-v612.test.mjs",
+      "sha256": "d7cae665804570bd23ad80d255d23c992059430e0d0e956c916b46af7853a423",
+      "bytes": 10734
+    },
+    {
+      "path": "tests/enforcer-production-v613.test.mjs",
+      "sha256": "9a6395990b993c9b2c09eca801266b25939811b24980d3ae94a9a1b1563582b2",
+      "bytes": 12565
+    },
+    {
+      "path": "tests/enforcer-production-v614.test.mjs",
+      "sha256": "61dfcbf91518324b41519af2f0723e12f61c2aa93b5312b758a2e41f29ed93a5",
+      "bytes": 10606
+    },
+    {
+      "path": "tests/drive-new-deposits-v89.test.mjs",
+      "sha256": "ba62b4d3aa6d19532248c84c428a42d720dd56f2613e6430ccf38d028a0f0eae",
+      "bytes": 9589
+    },
+    {
+      "path": "scripts/verify-npc-workbook-v615.py",
+      "sha256": "d1ac15aabc3c1e8964fc6e4d1b690568e5fe180653af762dda83e897ed80f0c9",
+      "bytes": 23633
+    },
+    {
+      "path": "scripts/package-npc-production-v615.py",
+      "sha256": "68f6c5e93d415126697ee43080dd8bae6ce937623a79e8f77f1aac40dde83157",
+      "bytes": 15518
+    },
+    {
+      "path": "scripts/audit-npc-public-records-v615.py",
+      "sha256": "9c7bd9b2319e4ee6ddfcf72580d556d578c4774b2754ace6c27902b87bacf904",
+      "bytes": 2903
+    }
+  ]
+}

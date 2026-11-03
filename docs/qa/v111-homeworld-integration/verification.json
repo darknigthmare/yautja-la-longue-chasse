@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "node": "22",
+  "typecheck": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit",
+    "exitCode": 0,
+    "log": "types.log"
+  },
+  "lint": {
+    "command": "node node_modules/eslint/bin/eslint.js app/game/HomeworldHub.tsx app/game/HomeworldWorldSceneV77.tsx app/game/HomeworldArchiveContinuationV111.tsx app/game/HomeworldArrivalRecoveryV111.tsx app/game/save.ts app/game/systems/homeworld.ts --max-warnings=0",
+    "exitCode": 0,
+    "log": "lint.log"
+  },
+  "nativeArtInspection": {
+    "method": "Original source PNGs opened individually without transformation",
+    "frames": [
+      "listen",
+      "explain",
+      "indicate",
+      "return"
+    ],
+    "scope": "Four V111 conversation drawings only; no closure of the 354 art targets"
+  }
+}

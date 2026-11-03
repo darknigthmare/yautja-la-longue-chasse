@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checks": [
+    {
+      "name": "civilian-met-through-public-keyboard-movement",
+      "id": "resident-convoy-works-4",
+      "districtId": "convoy-works",
+      "actor": {
+        "x": 1464,
+        "y": 4368
+      }
+    },
+    {
+      "name": "three-topics-freeze-city-and-do-not-write-save",
+      "topics": 3
+    },
+    {
+      "name": "portrait-local-advice-selects-real-target-then-public-keyboard-door-and-room",
+      "target": "building:convoy-workshop",
+      "buildingId": "convoy-workshop"
+    }
+  ],
+  "captures": [
+    "work-local/v75/qa/conversations-public/civilian-topic-daily.jpg",
+    "work-local/v75/qa/conversations-public/civilian-topic-places.jpg",
+    "work-local/v75/qa/conversations-public/civilian-topic-customs.jpg",
+    "work-local/v75/qa/conversations-public/portrait-civilian-local-directions.jpg",
+    "work-local/v75/qa/conversations-public/portrait-civilian-real-landmark-detail.jpg",
+    "work-local/v75/qa/conversations-public/civilian-recommended-door-reached-on-foot.jpg",
+    "work-local/v75/qa/conversations-public/civilian-recommended-interior-entered.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": "One actual civilian conversation, three topics and a recommended local door exercised in an isolated campaign fixture. All98 civilian districts additionally covered by model tests. No claim of 98 manual conversations or canonical universal Yautja customs."
+}

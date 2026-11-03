@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "release": "V112",
+  "status": "PASS_COMPATIBILITY_REGRESSION",
+  "domain": "LegacyHomeworldUI",
+  "runtimeCommit": "433ca03c651aad52de1cae02926152f4abfb4da3",
+  "buildId": "NRapDZCMK0dVatwXlwZcw",
+  "journeys": [
+    "Continuation",
+    "Recovery",
+    "MobileGuide",
+    "LegacyA"
+  ],
+  "checksPassed": 87,
+  "captures": 14,
+  "servedBuildResponses": 14,
+  "observedSources": 1458,
+  "sourceBeforeAfterIdentical": true,
+  "allObservedSourcesMatchV112Freeze": true,
+  "v112FreezeSources": 1560,
+  "finalSaveVersions": [
+    12,
+    12,
+    12,
+    12
+  ],
+  "preOwnedFieldToolPreserved": true,
+  "historicalV111CertificatesUnchanged": {
+    "docs/v111-runtime-freeze.json": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+    "docs/v111-homeworld-validation.json": "808c4d76e512207c9a0b757cb517624e836ac696c08614638e81e122bcd478b0",
+    "docs/YAUTJA_V111_SUIVI.xlsx": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05"
+  },
+  "rawSha256": "1235bcfd19f469184f0cc2bf2be2fedfe3983499b9d4e4dae555d351aa463510",
+  "rawBytes": 710225,
+  "archiveDestination": "docs/qa/v112-legacy-ui-regressions",
+  "archiveWritten": true,
+  "limits": [
+    "Compatibility rerun of four complete V111 UI journeys on this exact V112 compiled build, not a rewritten V111 certificate.",
+    "The historical recipe observes 1458 source inputs, a verified subset of the 1560-input V112 freeze; it does not replace the two complete V112 domain recipes.",
+    "Synthetic starting checkpoints and model-prepared cargo/B fixtures, pre-owned field tool and quota failure injection remain declared in the original raw scope.",
+    "Four distinct final durable saves preserve source B and own completed/interrupted study state; no campaign-wide or artwork/source-action completion is inferred."
+  ],
+  "runtimeFreeze": {
+    "path": "docs/qa/v112-legacy-ui-regressions/runtime-freeze-r2.json",
+    "originalPath": "docs/v112-runtime-freeze.json",
+    "sha256": "b9f6c61d12dc0bd65c6888b551a26ed028e89967dc232860c5b4afbab448186a",
+    "bytes": 290542,
+    "entries": 1560
+  },
+  "isV112ProductionCertificate": false,
+  "certifiesHistoricalV111": false,
+  "scope": "Four complete historical V111 UI journeys executed on the exact V112 R2 compiled build. The1458observed inputs are a verified subset of its1560-input freeze; no newer build is relabeled or certified."
+}

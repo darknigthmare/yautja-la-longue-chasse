@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-28",
+  "tool": "image_gen.imagegen",
+  "attemptId": "feral-backward-victim-right-v112-isolated-3-v112-r2",
+  "submittedPrompt": "Create one NEW isolated full-body native transparent animation sprite of Feral from Prey, in a backward somersault after being thrown, originally facing screen RIGHT. Use reference1 ONLY for identity and exact owned equipment; reference2 for the airborne curled two-leg pose. Independently paint the right-oriented airborne adaptation; never mirror or reuse pixels. ONE Feral only, exactly TWO arms and TWO legs. CRITICAL EQUIPMENT COUNT: there is EXACTLY ONE round red-brown shield, attached to anatomical LEFT forearm. The anatomical RIGHT forearm has ONLY its long twin wrist blades, with a slim rectangular wrist housing and ABSOLUTELY NO circular disk, buckle, shield or round object anywhere on that right arm. Do not duplicate the shield. Separate the two arms clearly: LEFT forearm carrying the single shield crosses in front of his chest; RIGHT blade arm extends away from his chest with empty hand; its blade wrist never overlaps the shield. Pose: body airborne, back/side curled into a backward somersault, head lower than hips, knees bent and two feet raised, black dreadlocks flowing. Bone skull mask, mottled ochre skin, rough hide waist equipment, no shoulder cannon. Preserve all owned anatomy and outfit. No external hands, no attacker, no second character, no mannequin, no injury/gore. Exactly one complete centered figure on one landscape1536x1024 RGBA PNG, moderate silhouette size at most1050px wide and720px tall, at least140px true alpha0 gutter on ALL FOUR canvas edges. Entire background genuine alpha0, no glow, vignette, floor, shadow, grid, text or checkerboard. Detailed painted fighting-game art matching the references. This is an original game adaptation, not movie-exact evidence.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/yautja-la-longue-chasse/public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "bytes": 2316771,
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "preservedPath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png"
+    },
+    {
+      "submittedPath": "/workspace/generated_images/exec-f516977f-5051-49b8-8602-ddf6ffb15184.png",
+      "path": null,
+      "bytes": 1567696,
+      "sha256": "4fdeb3442b3689336cda1441605affcdcb51d33318d3adf44d9c8b31b9ad180f",
+      "preservedPath": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-left-v112-isolated-3-v112.png"
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-48130018-daa1-4e5d-90f1-ff27ebd21409.png",
+  "output": {
+    "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-right-v112-isolated-3-v112-r2.png",
+    "sha256": "9b41ad610cbd0093d8d250589067954f15acfb16dc260485c81e5bf088e747e3",
+    "bytes": 1731841,
+    "width": 1536,
+    "height": 1024
+  },
+  "filesEditedAfterGeneration": false,
+  "status": "SELECTED_SOURCE_REGIONS",
+  "replacesSource": "feral-backward-victim-right-v112",
+  "frameIndex": 3,
+  "scope": "Local tool call record, not an externally signed certificate. Only selected source UV regions may be admitted. Source action completion remains open.",
+  "selectedFrameIndices": [
+    3
+  ]
+}

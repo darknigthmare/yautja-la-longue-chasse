@@ -1,0 +1,11 @@
+# Feral et Scar : capacités de variantes V107
+
+Le module pur `app/game/pitWorkbookVariantCapabilitiesV107.ts` mesure les dessins disponibles et filtre les états non admis. Il conserve les 14 contraintes source ouvertes : cette vérification ne termine ni une variante, ni une action mécanique, ni un kit.
+
+Les 26 actions d’étude natives par personnage par défaut possèdent leurs pages réelles droite/gauche, SHA, dimensions et clips admis. Leur présence autorise l’inspection de ces dessins, sans qualifier la mécanique des 52 actions. La recette source demeure réservée à l’apparence par défaut.
+
+Scar masqué `scar-avec-casque-6a0a69930d` possède déjà sept séquences natives partielles et 14 clips : attente, marche, étourdissement, provocation, introduction, victoire et défaite. Les sept fichiers PNG ont été mesurés et leurs SHA sont épinglés dans le module. Cette présence ne lui attribue aucune attaque V54. Les autres apparences V44 mesurées ici gardent une pose native droite statique ; leur rendu gauche provisoire ne devient pas une seconde vue native.
+
+`getPitWorkbookVariantCapabilitiesV107(fighterId, variantId?)` retourne les actions d’étude, clips partiels, références statiques et contraintes exactes `14_VARIANTES!C:I`. `guardPitWorkbookVariantCapabilityV107(request)` contrôle l’action ou le clip exact et l’orientation demandée. Un équipement perdu, rangé ou cassé, une armure endommagée et une transition de masque sont refusés tant que leurs états fonctionnels et dessins ne sont pas admis. Un geste EQUIP ne crée pas un inventaire persistant. Le camouflage est séparé du dessin : Feral n’est pas équipé dans cette incarnation ; Scar nécessite l’autorisation de son véritable équipement et chapitre. Aucun téléport, nouvelle anatomie ou effacement des blessures n’est déduit du camouflage.
+
+Les six tests vérifient les vrais fichiers PNG, SHA et dimensions, les 52 admissions d’étude et leurs deux orientations, les sept séquences partielles de Scar, les12 portraits statiques existants, les exclusions de costumes et les gardes d’état. Le module n’importe aucun moteur de combat ni rendu à l’exécution, afin de permettre son utilisation par leurs gardes sans cycle. Aucun navigateur production n’est déclaré par ces tests ; le raccord effectif doit être vérifié dans la recette commune V107.

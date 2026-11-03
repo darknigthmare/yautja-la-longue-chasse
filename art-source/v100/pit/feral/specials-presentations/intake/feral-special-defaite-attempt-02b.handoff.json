@@ -1,0 +1,23 @@
+{
+  "id": "feral-special-defaite-attempt-02b",
+  "actionId": "CIN_F006_DEFAITE",
+  "part": "B",
+  "columns": 2,
+  "rows": 4,
+  "prompt": "Edit this existing native transparent defeat atlas to fix its cropped last pose and unsafe margins, preserving the SAME eight actual articulated body poses and anatomy. Preserve portrait1024x1536, TWO COLUMNS FOUR ROWS. Redraw every whole figure/gear/mud patch MUCH SMALLER, about55percent of its existing size: STANDING calibration200px tall at maximum, constant anatomical scale for all eight figures, never enlarge collapsed poses. Every512x384 cell needs at least65px completely transparent alpha0 empty space on ALL sides of the whole silhouette and local mud marks, including skull, toes, wrist blades and shield edge. The bottom-right collapsed figure must be ENTIRELY visible with generous margin; no silhouette pixel can touch outer canvas or any cell boundary. Exact same FERAL lean ochre-spotted body, black dreads, ivory skullmask, red mandibles, ribbed loincloth, bronze bracers, anklewraps, bare clawed feet. Radial SHIELD stays on anatomical LEFT forearm ONLY, twin wristblades stay attached to RIGHT forearm ONLY in every drawing, even during fall; never swap arms or add equipment. LEFT COLUMN all face RIGHT, FRONT three-quarter. RIGHT COLUMN all face LEFT, independently drawn BACK three-quarter. Row1: STANDING upright full-body calibration, TWO feet planted, shield already crooked and partly folded left, no weapon held; these two references are not action. Row2: both knees give way, kneels and leans forward, crooked LEFT shield low, same limbs. Row3: falls sideways, reaching to catch the fall, skullmask remains worn. Row4: lies collapsed with relaxed limbs in TINY local mud smear directly under body, crooked shield alongside LEFT forearm, all limbs/head/feet complete inside cell. No gore, plasma, projectile, explosion, shadow, glow, floor plane, background, captions, extra limbs or missing detached parts. This is only an after-KO body study; no new mechanics.",
+  "source": "/workspace/generated_images/exec-66395720-9b3c-4219-8646-7d1793cbe27a.png",
+  "sourceCell": "07_PRESENTATIONS!E10",
+  "sourcePlan": "app/game/data/pitWorkbookAnimationPlanV100.json",
+  "transparent_background": true,
+  "tool": "OpenAI built-in image_gen",
+  "cpuPixelEditing": false,
+  "status": "PENDING_NATIVE_MEASUREMENT_AND_SECOND_REVIEW",
+  "sha256": "7176468913588842dcefafca72fa8e7bade281233dc23d79bf7bc651a3a3e89c",
+  "bytes": 1925293,
+  "width": 1024,
+  "height": 1536,
+  "referenced_image_paths": [
+    "/workspace/yautja-la-longue-chasse/art-source/v100/pit/feral/specials-presentations/intake/feral-special-defaite-attempt-01b.png"
+  ],
+  "producerReview": "Initial visual review favorable: full collapsed poses remain inside canvas, shield belongs to left and wrist blades to right, same directional sequence. Alpha gutter measurement and independent source review still required."
+}

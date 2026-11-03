@@ -1,0 +1,17 @@
+# Homeworld V112 — itinéraires et portée réelle
+
+Le guide affichait « À portée » devant plusieurs services alors que le bouton d’interaction ne trouvait encore personne. La destination intérieure était déjà un point d’approche à moins de 48 unités du personnage ; son halo de 24 unités pouvait annoncer l’arrivée à presque 72 unités, au-delà du rayon réel strict de 64. Au contrôle d’amarrage, le point (173, 164) est ainsi annoncé arrivé alors que l’officier reste à 68 unités et que `nearestHomeworldInteriorTargetV64` renvoie `null`.
+
+`homeworldRouteGuidanceV112` consulte cette même autorité du Hub avant d’annoncer une arrivée intérieure. Le déplacement reste manuel et le guide n’ouvre aucune conversation. L’archiviste des dossiers séparés reçoit aussi sa véritable vérification publique : à (7350, 5335), l’ancien halo annonçait l’arrivée à 75 unités du poste, dont le rayon est de 74. Un pas réel du moteur vers le point d’approche suffit désormais avant l’annonce correcte.
+
+La marche complète jusqu’aux services a aussi reproduit des arrêts devant les angles du mobilier. Au mausolée, le segment (269, 236) → (353, 188) passait entre les échantillons de quatre unités de l’ancienne simplification, mais coupait le volume natif autour de (344, 193). `homeworldInteriorNavigationV112` vérifie les segments à une unité au maximum avec une marge supplémentaire de 0,75 unité hors des extrémités. Il conserve le corps natif de demi-largeur 24 et demi-profondeur 14, toutes les partitions, le mobilier et les points d’interaction. Un parcours intérieur réellement insuffisant est recalculé sur un graphe de pas 12 ; les parties extérieures et les seuils existants restent conservés.
+
+Le guidage intérieur utilise ce même échantillonnage fin et accepte le dernier petit pas sûr avant un coude. Il ne désigne pas une ligne qui traverse le meuble derrière l’angle. Le BFS marque un nœud visité après l’admission d’une arête valide : une première approche refusée ne cache plus une autre approche libre du même nœud. La régression correspondante utilise un véritable volume elliptique de PNJ et une sortie accessible par le couloir nord.
+
+## Vérification de modèle
+
+Les neuf tests de `tests/homeworld-mobility-v112.test.mjs` passent. Ils examinent 90 positions d’approche autour des 15 services, interlocuteurs et audiences intérieurs, puis suivent leurs guides avec plus de 500 pas du moteur natif sans réinitialisation ni repli de position. L’arrivée n’est acceptée que si le véritable interlocuteur demandé est à portée. Les tests exécutent aussi le gestionnaire du nouveau Worker, la réparation du segment du mausolée, la reprise de calcul depuis le point réel où l’ancien guide du marché s’arrêtait, le rayon de l’archiviste et les refus de propriétaire, de géométrie ou de destination périmés.
+
+Les premiers échecs du parcours au moteur sont conservés dans `docs/qa/v112-homeworld-mobility/` ; ils ont permis de distinguer les défauts d’arrivée, de simplification et de guidage. Les sources V111 et leurs preuves publiées restent historiques. Le nouveau Worker est `homeworldRouteWorkerV112.ts` ; l’Atlas doit importer les fonctions V112 pour utiliser cette livraison.
+
+Ces tests prouvent le modèle et les pas du moteur exécutés en JavaScript. Ils ne certifient pas à eux seuls le rendu, l’hydratation, le transport Worker dans le navigateur ou le parcours réel des boutons. La recette compilée et ses captures relèvent de la validation finale intégrée. Aucune des exigences source agrégées du classeur n’est déclarée terminée par ces seuls contrôles.

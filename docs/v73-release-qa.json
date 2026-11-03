@@ -1,0 +1,84 @@
+{
+  "version": "V73",
+  "status": "PASS",
+  "checkedAt": "2026-10-02T04:14:43.357Z",
+  "sourceCommit": "86e404273157e5db61bfa7514fea56fac0c7f3ef",
+  "publication": {
+    "githubMain": "86e404273157e5db61bfa7514fea56fac0c7f3ef",
+    "deploymentId": "dpl_HcKUsEyJWKhUbSSMxDDAV3Yik398",
+    "deploymentState": "READY",
+    "target": "production",
+    "deploymentCommit": "86e404273157e5db61bfa7514fea56fac0c7f3ef",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "readyAt": "2026-10-02T04:02:30.157Z",
+    "http": 200,
+    "nativeBitmapFilesMatchedBySha256": 15
+  },
+  "localValidation": {
+    "fullRegression": {
+      "status": "PASS",
+      "tests": 2405,
+      "failed": 0,
+      "exitCode": 0,
+      "report": "docs/v73-regression-qa.json"
+    },
+    "build": {
+      "portableExitCode": 0,
+      "nextExitCode": 0,
+      "report": "docs/v73-build-qa.json"
+    },
+    "typecheck": "PASS",
+    "lint": {
+      "errors": 0,
+      "preExistingNoImgWarnings": 3
+    },
+    "compiledCss": {
+      "status": "PASS",
+      "report": "docs/v73-compiled-css-qa.json"
+    }
+  },
+  "publicBrowserRecipes": [
+    {
+      "scope": "Menu, account modal and native image delivery",
+      "status": "PASS",
+      "checks": 19,
+      "report": "docs/v73-shell-public-browser-qa.json"
+    },
+    {
+      "scope": "New campaign, genuine keyboard CPU win, complete prologue, durable entry into Homeworld, portrait, save refusal and recovery",
+      "status": "PASS",
+      "checks": 8,
+      "captures": 26,
+      "report": "docs/v73-prologue-public-browser-qa.json"
+    },
+    {
+      "scope": "Six physical facades, eighteen functional zones, role costumes, chief, native Unblooded walk, pause, read-only codex and portrait camera",
+      "status": "PASS",
+      "checks": 15,
+      "captures": 24,
+      "report": "docs/v73-homeworld-identity-public-browser-qa.json"
+    },
+    {
+      "scope": "Ten keyboard-accessible physical region gates, two immediate regional returns, durable ledger reload, portrait and read-only codex",
+      "status": "PASS",
+      "checks": 15,
+      "captures": 18,
+      "report": "docs/v73-homeworld-connections-public-browser-qa.json"
+    }
+  ],
+  "scopeCompleted": {
+    "prologue": "Context before the practice duel, instructor and rival, recovery after the duel, animated walkout, explicit training ellipse, named terminal invitation, animated door veil, chief audience, physical walk to the city.",
+    "homeworld": "Six distinct main facades; six public wings with three zones each; fourteen civilian roles, twelve named NPC costumes and a dedicated chief; native two-drawing Unblooded walk in both facings.",
+    "regionalConnections": "Ten real approaches and thresholds, four native arch styles, forty separate shoulder props, twenty solid lateral arch bases, directional signs and one hundred connected codex records.",
+    "context": "Ten new native OpenAI PNG files integrated without altering their pixels; previous source artwork retained. Context codex export contains 421 records."
+  },
+  "limits": [
+    "The clan, city map and civilian clothing are original lore-compatible adaptations. No canonical one-to-one city map or universal Yautja monarchy is claimed.",
+    "Only the six principal public wings are redesigned; the other thirty-seven interior plans remain as before, and private palace floors are not simulated.",
+    "Civilian costumes are distinct, but complete civilian walking sheets were not produced. The Unblooded currently has a native two-drawing walk per facing, not a complete eight-direction animation set.",
+    "Prologue dialogue is readable text with glyph translation effects, without new voice acting.",
+    "The mobile prologue resume uses an isolated copy of a campaign genuinely won by keyboard. These recipes do not verify real account signup, login, email or cross-device cloud synchronization.",
+    "Immediate regional returns land at the same physical gate. Reload preserves the durable campaign ledger but returns the hero to the existing Port spawn; instantaneous city position is not saved.",
+    "The Homeworld recipes use model-played prerequisite campaigns and do not replay every complete regional journey or the whole campaign."
+  ]
+}

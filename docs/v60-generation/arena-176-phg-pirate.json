@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "generator": "OpenAI built-in image_gen",
+  "nativeUnmodified": true,
+  "status": "visually-accepted",
+  "placementNote": "Base960x540, placements proposés dans les zones observées du P0 ; confirmer au harnais avec transformation exacte et pivots.",
+  "arenaId": "arena-176-phg-pirate",
+  "proposalId": "new-phg-pirate",
+  "sources": [
+    {
+      "url": "https://forum.predator.illfonic.com/t/hunting-party-dlc-pack-2/29712",
+      "supports": "Annonce officielle IllFonic : Pirate préfère les chasses en mer ; pas de navire nommé."
+    }
+  ],
+  "loreLimits": [
+    "Épaves, équipage et architecture originaux ; aucun navire ou siècle canonique affirmé.",
+    "Adultes anonymes sans armes ; oiseau et voile non interactifs.",
+    "Sol du duel séparé : shared/p4-weathered-deck.png."
+  ],
+  "events": [
+    {
+      "id": "ST041_BG_01",
+      "asset": "life-01.png",
+      "description": "Marins adultes se cachant entre les mâts."
+    },
+    {
+      "id": "ST041_BG_02",
+      "asset": "life-02.png",
+      "description": "Voile à plis lents."
+    },
+    {
+      "id": "ST041_BG_03",
+      "asset": "life-03.png",
+      "description": "Oiseau marin distant."
+    }
+  ],
+  "assets": [
+    {
+      "key": "p0",
+      "file": "p0-depth.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-3fdaecc5-ae75-4929-85d6-c2c4747b934b.png",
+      "prompt": "Native1536x1024opaque handpainted2Dfightinggame depth-onlyP0 backdrop arena176 Pontdesépaves. Originalmarinewreck background inspired officialPiratePredator open-sea hunts, NO namedship/dateclaimed. Camera strictlyfrontlateral levelhorizon, stormclearingbluegreen sea anddistantbrokenwoodenhulls, riggingandmasts onBACKGROUND wrecks only, rearbulkhead andweatheredshipsternfacade extendingdownwardtobottomedge. No visiblehorizontalplayabledeck, NO foregroundfloor, no giantforegroundmast. Reserveleftdarkrearpassagebetweenmasts forlateradultmariners; uppermidleft twoBARE spars withNOsails forlaterclothasset; clearupperrightsky forlatersmallseabird. Do notdrawhumans/birds/sails/flags/flames/smoke/wavescrests/monsters/weapons. Quiettexturedsea, distantmist, desaturatedmaritimedusk withsubtleamberwindowlight. No skullsymbolsorcanonicalshipname invented. Lowerthird rearwall/hullverticalstructure only; floorwill be a separatewoodPNG. Clearfightercenter, professionalpainted2Dmodularscenery, noUI/text/frame.",
+      "status": "visually-accepted",
+      "visualNotes": "Coque arrière verticale et traverses nues pour voile ; sol jouable absent. Plusieurs épaves distantes donnent une profondeur marine distincte.",
+      "path": "work-local/v60/generated/arena-176-phg-pirate/p0-depth.png",
+      "sha256": "f0bc1ec723450545a5464ad1b0e604d86e0cd8359c00c489bc98ab71fd131977",
+      "bytes": 2667716,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "alpha": {
+        "transparentPixels": 0,
+        "transparentRatio": 0,
+        "partialPixels": 0
+      }
+    },
+    {
+      "key": "life01",
+      "file": "life-01.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-ac9d58a6-090a-4dbd-aaba-34565c34e87b.png",
+      "prompt": "Native alphaPNG1536x1024 EXACT3columns2rows512cells sixseparateposes. Two anonymous ADULT mariners in plainweatheredshirts/vests/trousers, no weapons, no fantasycostumeorPiratePredatorduplicate. Sameadults perframe, maturemanandwoman; hidingbetweendistantmasts notshown. Serioushandpainted2Dgame maritimebluegraylight. Frame1 bothcrouchedlookingright;2 manraisesopenhandtolowstop womanturnsheadleft;3 bothduckdeeperelbowsbend;4 womanpeeksaroundunseenmast armnearface;5 manleansforwardwomanlowersarm;6 settlescrouch. Genuineanatomicalposechanges, coherenttwoarmsandlegs/headperadult, allhandsandfeetcomplete. SMALLpair centeredwithinlocalx85..427 y85..427 eachcell, consistentbootsbaseline425, generouspadding. Trueemptytransparentalpha, no masts/wall/floor/castshadow/scenery/glow/text/grid. Noninteractivebackgroundhiding, no injury/gore, nonamedcreworethnicity.",
+      "status": "visually-accepted",
+      "visualNotes": "Deux adultes accroupis en six attitudes, regards et mains changent ; aucune arme ou blessure. La quatrième pose redistribue le couple sans anomalie anatomique visible.",
+      "placement": {
+        "x": 115,
+        "bottom": 330,
+        "height": 100,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-176-phg-pirate/life-01.png",
+      "sha256": "cb90e3430ded0f3a3a74d52b3efe0a9d303b4206adcc58d563244b71ff63ff32",
+      "bytes": 2124576,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1018200,
+        "transparentRatio": 0.6473541259765625,
+        "partialPixels": 554664
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            59,
+            111,
+            474,
+            450
+          ],
+          "pivot": [
+            256,
+            450
+          ],
+          "nonzeroAlpha24": 90642
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            45,
+            111,
+            451,
+            449
+          ],
+          "pivot": [
+            256,
+            449
+          ],
+          "nonzeroAlpha24": 89523
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            42,
+            178,
+            471,
+            450
+          ],
+          "pivot": [
+            256,
+            450
+          ],
+          "nonzeroAlpha24": 76217
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            104,
+            104,
+            468,
+            424
+          ],
+          "pivot": [
+            256,
+            424
+          ],
+          "nonzeroAlpha24": 78609
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            46,
+            116,
+            474,
+            430
+          ],
+          "pivot": [
+            256,
+            430
+          ],
+          "nonzeroAlpha24": 79878
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            47,
+            107,
+            469,
+            430
+          ],
+          "pivot": [
+            256,
+            430
+          ],
+          "nonzeroAlpha24": 84461
+        }
+      ]
+    },
+    {
+      "key": "life02",
+      "file": "life-02.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-d0411555-5c63-427d-943a-e05cccac0126.png",
+      "prompt": "Native transparentPNG1536x1024spritesheet EXACT3cols2rows512cells. One SMALL weatheredcanvas sail attachedalongtop toashortwoodenyard withtwohangingropes, no fullmast. Six genuinelypainteddifferentwindposes:1 heavyclothslack;2 leftedge curls;3 centerbillowswide changingseams'curvature;4 rightcornerliftsandfoldoverlap;5 clothflattenswithoppositeverticalfold;6 slackreturn. Sameoldtansail tears/seamlocation andyardpivotthroughout, actualchangingfabriccontours nottranslationormirror. Entireassemblyineachcelllocalx80..432 y75..437, verygeneroustransparentmargins, samefrontlateralviewandscale. Moodyhandpainted2Dgame maritimedusk blueedgesandtannedcloth, no pirateflag/skull/emblems/magic. Transparentbackground,no ocean/boat/people/floor/castshadow/gradienthalo. No text/gridlabels. Quietfarbackgroundmovement.",
+      "status": "visually-accepted",
+      "visualNotes": "Six contours et plis marins authentiques, mêmes coutures et barre. Les bouts de cordage restent complets.",
+      "placement": {
+        "x": 337,
+        "bottom": 241,
+        "height": 170,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-176-phg-pirate/life-02.png",
+      "sha256": "582a2ac307666b012ddc35100c1659666d4220c243b84a3270ba70d8fba5e0d7",
+      "bytes": 2155250,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 836912,
+        "transparentRatio": 0.5320943196614584,
+        "partialPixels": 735952
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            38,
+            54,
+            480,
+            431
+          ],
+          "pivot": [
+            256,
+            431
+          ],
+          "nonzeroAlpha24": 110625
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            30,
+            54,
+            498,
+            432
+          ],
+          "pivot": [
+            256,
+            432
+          ],
+          "nonzeroAlpha24": 94643
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            23,
+            54,
+            490,
+            432
+          ],
+          "pivot": [
+            256,
+            432
+          ],
+          "nonzeroAlpha24": 103423
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            37,
+            48,
+            484,
+            397
+          ],
+          "pivot": [
+            256,
+            397
+          ],
+          "nonzeroAlpha24": 97962
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            34,
+            48,
+            501,
+            427
+          ],
+          "pivot": [
+            256,
+            427
+          ],
+          "nonzeroAlpha24": 103781
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            28,
+            50,
+            471,
+            428
+          ],
+          "pivot": [
+            256,
+            428
+          ],
+          "nonzeroAlpha24": 111021
+        }
+      ]
+    },
+    {
+      "key": "life03",
+      "file": "life-03.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-dcdad08c-7d86-45ca-92c6-74c08bfd26a7.png",
+      "prompt": "Native alphaPNG1536x1024 EXACT3columns2rows512cells. SIX realarticulated frames ofone distantsea gull in gentleflight, sideview facingLEFT, graywhitefeathers darkwingtips, yellowbeak, twoanatomicallycorrectwings andtail. Cycle1wingsabovehead;2elbowsunfold;3wingsstretchedsideways;4strongdownstroke;5wingelbowsfoldpartly;6wingtipsliftback. Samebodycenter[256,256]andbodysize, truefeatherandwinggeometryredrawn nottranslated/mirroredcopies. Entirebird SMALL within cellx90..422 y90..422 everyframe, generoustransparentpadding. Desaturatedstormyduskhandpainted2Dgame, notphotograph, no glow, no water/spray/land/perch/floor orcastshadow, no text/grid. A passivebackgroundanimal farfromcombat, no attack.",
+      "status": "visually-accepted",
+      "visualNotes": "Six battements d'ailes anatomiquement différents. Un bout d'aile de la troisième pose dépasse la limite régulière512 ; découpe native irrégulière demandée pour conserver le motif entier, pas de correction pixel. La colonne x1016 est intégralement vide à alpha>=24 sur la première ligne ; les rects corrigés ne coupent plus l'aile et ne touchent pas le dessin voisin.",
+      "placement": {
+        "x": 753,
+        "bottom": 180,
+        "height": 60,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-176-phg-pirate/life-03.png",
+      "sha256": "8bb4451f7222417d8a48f2d3c1e6a224ba1b9ff4cf332d895ae0f951a8c63cc5",
+      "bytes": 1743495,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1225103,
+        "transparentRatio": 0.7788995107014974,
+        "partialPixels": 347761
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "irregularNativeRects": true
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            91,
+            39,
+            424,
+            443
+          ],
+          "pivot": [
+            256,
+            443
+          ],
+          "nonzeroAlpha24": 61860
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            504,
+            512
+          ],
+          "boundsAlpha24": [
+            79,
+            136,
+            436,
+            443
+          ],
+          "pivot": [
+            256,
+            443
+          ],
+          "nonzeroAlpha24": 56038
+        },
+        {
+          "index": 2,
+          "rect": [
+            1016,
+            0,
+            520,
+            512
+          ],
+          "boundsAlpha24": [
+            1,
+            261,
+            475,
+            443
+          ],
+          "pivot": [
+            264,
+            443
+          ],
+          "nonzeroAlpha24": 37948
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            104,
+            201,
+            466,
+            453
+          ],
+          "pivot": [
+            256,
+            453
+          ],
+          "nonzeroAlpha24": 46007
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            81,
+            143,
+            416,
+            355
+          ],
+          "pivot": [
+            256,
+            355
+          ],
+          "nonzeroAlpha24": 43236
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            89,
+            55,
+            425,
+            353
+          ],
+          "pivot": [
+            256,
+            353
+          ],
+          "nonzeroAlpha24": 48931
+        }
+      ]
+    }
+  ]
+}

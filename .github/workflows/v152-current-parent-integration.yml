@@ -1,0 +1,60 @@
+name: V152 current parent integration
+on:
+  pull_request:
+    branches: [feat/v152-clan-war-provenance-gate-20261101]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig*.json
+            /eslint.config.mjs
+            /app/game/
+            /types/
+            /lib/
+            /tests/
+            /scripts/
+            /docs/clan-war-v147/
+            /docs/clan-war-v152/
+            /docs/Yautja_ClanWar_V151_Quatre_Modes_Verrou.xlsx
+            /docs/Yautja_ClanWar_V152_RTS_Deux_Onglets.xlsx
+            /public/game/assets/v15/trophies/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Council, archive migration, provenance and RTS lock regressions
+        run: |
+          node --experimental-strip-types --test --test-concurrency=1 \
+            tests/clan-war-v115-multitab-v151.test.mjs \
+            tests/clan-war-operations-v115.test.mjs \
+            tests/clan-war-stealth-last-contact.test.mjs \
+            tests/clan-war-outer-pace-reconcile.test.mjs \
+            tests/clan-war-council-v146.test.mjs \
+            tests/clan-war-source-consolidation-v147.test.mjs \
+            tests/clan-war-provenance-gate-v152.test.mjs \
+            tests/clan-war-production-v152.test.mjs \
+            tests/clan-war-production-v147.test.mjs \
+            tests/clan-war-rts-web-lock-v152.test.mjs
+      - run: npx --no-install tsc --noEmit -p tsconfig.clan-war-v152.json
+      - run: npx --no-install eslint app/game/ClanWarOperationsV115.tsx app/game/ClanWarPanelV85.tsx app/game/systems/clanWarProvenanceGateV152.ts app/game/systems/clanWarCouncilAuditV146.ts tests/clan-war-council-v146.test.mjs tests/clan-war-rts-web-lock-v152.test.mjs scripts/qa-clan-war-rts-two-tabs-v152.mjs
+      - run: npx --no-install playwright-core install --with-deps chromium
+      - name: V115 two-tab races, timers and stale reset
+        run: |
+          export AUDIT_CHROME_EXECUTABLE="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-clan-war-v115-multitab-v151.mjs
+      - name: Native RTS freeze, resume and stale tab recovery
+        run: |
+          export AUDIT_CHROME_EXECUTABLE="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-clan-war-rts-two-tabs-v152.mjs

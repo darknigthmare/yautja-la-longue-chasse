@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "status": "visually-accepted",
+  "release": "V65",
+  "stageId": "arena-069-salle-du-porte-cendres",
+  "kind": "atlas",
+  "tool": "OpenAI builtin image_gen",
+  "src": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+  "sha256": "c4e55e62509e797705771b6b2f609d43da033a9fbeb88b8f2936af6a40548931",
+  "width": 1254,
+  "height": 1254,
+  "hasAlpha": true,
+  "contentBounds": {
+    "x": 32,
+    "y": 70,
+    "width": 1201,
+    "height": 1122
+  },
+  "receipt": "docs/v65-generation/arena-069-salle-du-porte-cendres-atlas.json",
+  "coverage": {
+    "threshold": 8,
+    "visiblePixels": 748486,
+    "assignedPixels": 748486,
+    "nativeDrawings": 4,
+    "animationFrames": 0
+  },
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-c52f270e-a001-4c84-ad90-8a8a715d2a6e.png",
+  "nativeBytesUnchanged": true,
+  "prompt": "Use case: precise-object-edit. Production correction of this exact four-object transparent game sprite atlas. Preserve all FOUR object identities, materials, colors, viewpoint and lighting. Correct ONLY the upper-right tall support: its current top looks abruptly cut by a straight boundary. Give this support a complete physically finished upper end: a rounded solid dark alloy end-cap bolted across the rib and three CLOSED pipe termini under it, all attached to the stone core. The top must read as an intentionally finished freestanding support module, not a cropped fragment of a longer image. Keep it fully inside its upper-right cell with at least60px transparent margin above and to the right. Reduce that support's displayed scale slightly if needed, without distorting its proportions. Do not extend into other cells. Keep the other three objects unchanged: top-left contained heat exchanger, bottom-left sealed equipment chest, bottom-right low rock/conduit edge. Preserve genuine native alpha, wide alpha gaps, all four grounded bases, no extra objects, no detached parts, text, labels, animation poses or background.\n",
+  "prompts": [
+    {
+      "file": "069-atlas.txt",
+      "prompt": "Use case: stylized-concept. STATIC native-alpha modular sprite atlas for an original Yautja clan geothermal command room 'Salle du Porte-Cendres'. Reference1 supplies MATERIALS AND LIGHT only; do not duplicate its scene. Exactly FOUR independent complete objects arranged in a2x2 grid, square1536x1536, minimum60px transparent margin to ALL canvas edges and clear wide transparent gaps. Each object fits wholly inside its cell. Level frontal fighting-stage camera, shallow top surfaces, no rotated isometric view. No shared scenery or ground sheet, no labels, lines, text, checkerboard or UI.\nTOP LEFT P1: one compact distant heat-exchanger panel assembly with three sealed dark amber ceramic shields in a chunky ribbed alloy frame, low broad basalt footing, protected pipes physically connected behind the housing. Contained amber warmth, not open fire. Complete unit.\nTOP RIGHT P2: one tall curved alien support-pipe column, thick blackened bronze ribs brace natural ash-grey basalt, ceramic clamps and three protected conduits attached to the solid broad foot. Structurally plausible, not a temple pillar.\nBOTTOM LEFT P3: one low sealed clan equipment chest, broad heavy worn dark alloy case with two secure mechanical clamps, recessed dull amber identification strips without lettering, a squat basalt cradle and physically attached short cable connector. No skulls, mask faces, weapons sticking out or magical glow. All bottom corners visible, well inside the cell.\nBOTTOM RIGHT P5: one low cooled basalt/slag retaining-edge fragment with an embedded bent bronze thermal conduit and ribbed protective cover. No red-hot lava, loose fire, flying sparks or disconnected pebbles.\nDetailed realistic hand-painted game sprites, muted warm amber reflections upperleft, charcoal volcanic material and dark bronze, coherent material palette matching reference. No people, animals, statues, deities, giant masks, floating bowl, levitating objects, torches, braziers, Gothic arches or human heraldry. Four unique static cutouts, no animations. Genuine native transparency with all four object silhouettes completely intact.\n"
+    },
+    {
+      "file": "069-atlas-repair.txt",
+      "prompt": "Use case: precise-object-edit. Production correction of this exact four-object transparent game sprite atlas. Preserve all FOUR object identities, materials, colors, viewpoint and lighting. Correct ONLY the upper-right tall support: its current top looks abruptly cut by a straight boundary. Give this support a complete physically finished upper end: a rounded solid dark alloy end-cap bolted across the rib and three CLOSED pipe termini under it, all attached to the stone core. The top must read as an intentionally finished freestanding support module, not a cropped fragment of a longer image. Keep it fully inside its upper-right cell with at least60px transparent margin above and to the right. Reduce that support's displayed scale slightly if needed, without distorting its proportions. Do not extend into other cells. Keep the other three objects unchanged: top-left contained heat exchanger, bottom-left sealed equipment chest, bottom-right low rock/conduit edge. Preserve genuine native alpha, wide alpha gaps, all four grounded bases, no extra objects, no detached parts, text, labels, animation poses or background.\n"
+    }
+  ],
+  "preservedSupersededSources": [
+    "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-7b062bcc-b40d-4e2e-94b8-8a760d19d811.png"
+  ],
+  "drawings": 4,
+  "animationFrames": 0,
+  "sourceUrls": [
+    "https://www.linkedin.com/posts/alexniceartist_predatorbadlands-yautja-predator-activity-7405352080015622144-QEtm",
+    "https://theyard-vfx.com/2026/04/15/designing-environments-predator-badlands/"
+  ],
+  "loreStatus": "original-project-adaptation-not-canonical-1-to-1",
+  "visualReview": [
+    "Chambre technique géothermique remplaçant le brasero lévitant, aucune magie ni lave dans la piste.",
+    "Correction native du sommet de support : capuchon et extrémités de conduites fermées ; première image conservée.",
+    "Quatre modules complets séparés ; coffre matériel bas, aucune nouvelle interaction ni animation."
+  ]
+}

@@ -1,0 +1,44 @@
+TAP version 13
+# Subtest: enforcer-production-v613 remains reproducible in the exact reviewed PR15 state
+ok 1 - enforcer-production-v613 remains reproducible in the exact reviewed PR15 state
+  ---
+  duration_ms: 9125.175619
+  type: 'test'
+  ...
+# TAP version 13\\n\# Subtest: V6.13 delivers exactly the 36 previously unmade Enforcer 08/09 identities\\nok 1 - V6.13 delivers exactly the 36 previously unmade Enforcer 08/09 identities\\n  ---\\n  duration_ms: 4.429078\\n  type: 'test'\\n  ...\\n\# Subtest: all 108 PNG hashes remain intact and the 36 recovered files are native RGBA with complete visible bounds\\nok 2 - all 108 PNG hashes remain intact and the 36 recovered files are native RGBA with complete visible bounds\\n  ---\\n  duration_ms: 1735.870412\\n  type: 'test'\\n  ...\\n\# Subtest: gallery and codex expose all new identities, with the 973 automatic choices and human body boundary unchanged\\nok 3 - gallery and codex expose all new identities, with the 973 automatic choices and human body boundary unchanged\\n  ---\\n  duration_ms: 2641.497742\\n  type: 'test'\\n  ...\\n\# Subtest: the master preserves all 5120 identities and limits its 720 changes to 108 production rows\\nok 4 - the master preserves all 5120 identities and limits its 720 changes to 108 production rows\\n  ---\\n  duration_ms: 88.774889\\n  type: 'test'\\n  ...\\n\# Subtest: the reconciliation proves both merged native lots without inventing placements or performing a merge\\nok 5 - the reconciliation proves both merged native lots without inventing placements or performing a merge\\n  ---\\n  duration_ms: 240.132208\\n  type: 'test'\\n  ...\\n\# Subtest: missing final receipts remain explicit and only matching accepted attempts supply exact prompts or dates\\nok 6 - missing final receipts remain explicit and only matching accepted attempts supply exact prompts or dates\\n  ---\\n  duration_ms: 7.276341\\n  type: 'test'\\n  ...\\n1..6\\n\# tests 6\\n\# suites 0\\n\# pass 6\\n\# fail 0\\n\# cancelled 0\\n\# skipped 0\\n\# todo 0\\n\# duration_ms 5417.891298\\n
+# Subtest: enforcer-production-v614 remains reproducible in the exact reviewed PR15 state
+ok 2 - enforcer-production-v614 remains reproducible in the exact reviewed PR15 state
+  ---
+  duration_ms: 8186.251795
+  type: 'test'
+  ...
+# TAP version 13\\n\# Subtest: V6.14 delivers the 18 Enforcer 10 identities still unmade on the V106 base\\nok 1 - V6.14 delivers the 18 Enforcer 10 identities still unmade on the V106 base\\n  ---\\n  duration_ms: 4.295189\\n  type: 'test'\\n  ...\\n\# Subtest: the cumulative 126 PNGs retain their native hashes and every new file has real alpha and complete visible bounds\\nok 2 - the cumulative 126 PNGs retain their native hashes and every new file has real alpha and complete visible bounds\\n  ---\\n  duration_ms: 1074.463426\\n  type: 'test'\\n  ...\\n\# Subtest: all 18 final outputs retain the submitted prompt and a matching accepted receipt\\nok 3 - all 18 final outputs retain the submitted prompt and a matching accepted receipt\\n  ---\\n  duration_ms: 14.317809\\n  type: 'test'\\n  ...\\n\# Subtest: gallery and codex expose V6.14 while the 973 default choices and human body boundary stay unchanged\\nok 4 - gallery and codex expose V6.14 while the 973 default choices and human body boundary stay unchanged\\n  ---\\n  duration_ms: 2461.822574\\n  type: 'test'\\n  ...\\n\# Subtest: the master changes only the 36 merged V6.13 rows and 18 new rows, preserving all other identities and placements\\nok 5 - the master changes only the 36 merged V6.13 rows and 18 new rows, preserving all other identities and placements\\n  ---\\n  duration_ms: 76.299095\\n  type: 'test'\\n  ...\\n\# Subtest: the new reconciliation proves all 108 prior native files against main without changing historical claims\\nok 6 - the new reconciliation proves all 108 prior native files against main without changing historical claims\\n  ---\\n  duration_ms: 347.844085\\n  type: 'test'\\n  ...\\n1..6\\n\# tests 6\\n\# suites 0\\n\# pass 6\\n\# fail 0\\n\# cancelled 0\\n\# skipped 0\\n\# todo 0\\n\# duration_ms 4677.890283\\n
+# Subtest: npc-production-v615 remains reproducible in the exact reviewed PR15 state
+ok 3 - npc-production-v615 remains reproducible in the exact reviewed PR15 state
+  ---
+  duration_ms: 8301.796077
+  type: 'test'
+  ...
+# TAP version 13\\n\# Subtest: V6.15 delivers the 18 infant civilian identities still unmade after V6.14\\nok 1 - V6.15 delivers the 18 infant civilian identities still unmade after V6.14\\n  ---\\n  duration_ms: 4.201951\\n  type: 'test'\\n  ...\\n\# Subtest: the cumulative 144 PNGs retain their native hashes and every new file has real alpha and complete visible bounds\\nok 2 - the cumulative 144 PNGs retain their native hashes and every new file has real alpha and complete visible bounds\\n  ---\\n  duration_ms: 1052.342996\\n  type: 'test'\\n  ...\\n\# Subtest: all 18 final outputs retain the submitted prompt and a matching accepted receipt\\nok 3 - all 18 final outputs retain the submitted prompt and a matching accepted receipt\\n  ---\\n  duration_ms: 24.862249\\n  type: 'test'\\n  ...\\n\# Subtest: gallery and codex expose V6.15 while the 973 defaults and human body boundary stay unchanged\\nok 4 - gallery and codex expose V6.15 while the 973 defaults and human body boundary stay unchanged\\n  ---\\n  duration_ms: 2701.863772\\n  type: 'test'\\n  ...\\n\# Subtest: the master changes only the 18 new rows and preserves all V6.14 identities, evidence and placements\\nok 5 - the master changes only the 18 new rows and preserves all V6.14 identities, evidence and placements\\n  ---\\n  duration_ms: 69.793796\\n  type: 'test'\\n  ...\\n\# Subtest: all 17 previously published workbooks retain their exact native bytes\\nok 6 - all 17 previously published workbooks retain their exact native bytes\\n  ---\\n  duration_ms: 31.670851\\n  type: 'test'\\n  ...\\n1..6\\n\# tests 6\\n\# suites 0\\n\# pass 6\\n\# fail 0\\n\# cancelled 0\\n\# skipped 0\\n\# todo 0\\n\# duration_ms 4615.33271\\n
+# Subtest: the exact PR15 production proofs and strict V614/V615 runtime delta assertions pass in their original private context
+ok 4 - the exact PR15 production proofs and strict V614/V615 runtime delta assertions pass in their original private context
+  ---
+  duration_ms: 6126.01075
+  type: 'test'
+  ...
+# TAP version 13\\n\# Subtest: the V106 production freeze still matches its historical sources, without claiming V6.15 browser QA\\nok 1 - the V106 production freeze still matches its historical sources, without claiming V6.15 browser QA\\n  ---\\n  duration_ms: 2088.705823\\n  type: 'test'\\n  ...\\n\# Subtest: the current runtime differs only by the two exact library edits and the static V6.14 and V6.15 registries\\nok 2 - the current runtime differs only by the two exact library edits and the static V6.14 and V6.15 registries\\n  ---\\n  duration_ms: 330.338112\\n  type: 'test'\\n  ...\\n\# Subtest: the V6.15 boundary rejects unrelated changes, removed inputs, extra files and altered allowed payloads\\nok 3 - the V6.15 boundary rejects unrelated changes, removed inputs, extra files and altered allowed payloads\\n  ---\\n  duration_ms: 50.638599\\n  type: 'test'\\n  ...\\n\# Subtest: all three production journeys share the same build and preserve their portable evidence bytes\\nok 4 - all three production journeys share the same build and preserve their portable evidence bytes\\n  ---\\n  duration_ms: 122.440555\\n  type: 'test'\\n  ...\\n1..4\\n\# tests 4\\n\# suites 0\\n\# pass 4\\n\# fail 0\\n\# cancelled 0\\n\# skipped 0\\n\# todo 0\\n\# duration_ms 2722.988063\\n
+# Subtest: the historical overlay preserves17 original workbooks and does not expand V106 coverage to V107
+ok 5 - the historical overlay preserves17 original workbooks and does not expand V106 coverage to V107
+  ---
+  duration_ms: 1852.774961
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16451.440062

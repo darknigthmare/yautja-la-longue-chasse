@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 1,
+  "release": "V108",
+  "status": "PASS_CIBLE",
+  "scope": {
+    "context": "linked-physical-logistics-v108",
+    "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+    "stateInjection": false,
+    "fixtureIO": [
+      {
+        "kind": "DOM-inert-activity-boundary",
+        "scope": "The already mounted logistics region receives/removes HTML inert to exercise the same browser boundary as an enclosing settings modal. No model state or movement result is injected."
+      },
+      {
+        "kind": "deferred-file-read",
+        "files": [
+          {
+            "name": "deferred-a-v108.json",
+            "sha256": "466c16567bc7c12c7486c7f99be75c44e7a524b75863ed79cdf301a71a9fa024",
+            "source": "authentic previously played persisted logistics archive"
+          },
+          {
+            "name": "current-b-v108.json",
+            "sha256": "7669fd632a6c006784c6d22bd62d387664abe910ccf66b6ef1fd330190a11baf",
+            "source": "actual complete UI export"
+          }
+        ],
+        "scope": "File.text scheduling only; no state injection"
+      },
+      {
+        "kind": "storage-write-denial",
+        "scope": "Only the next local logistics setItem throws quota; no persisted bytes or model data are injected"
+      }
+    ],
+    "resumedFrom": null
+  },
+  "production": {
+    "mode": "production",
+    "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+    "buildId": "xymWQOgijMpjLfRYw7ynF",
+    "browserErrors": 0,
+    "checksFailed": 0,
+    "checksPassed": 42,
+    "servedBuilds": [
+      {
+        "status": 200,
+        "expectedBuildId": "xymWQOgijMpjLfRYw7ynF",
+        "foundInHtml": true
+      },
+      {
+        "status": 200,
+        "expectedBuildId": "xymWQOgijMpjLfRYw7ynF",
+        "foundInHtml": true
+      }
+    ]
+  },
+  "invocation": {
+    "command": "node scripts/qa-clan-logistics-v108.mjs"
+  },
+  "sourceBefore": [
+    {
+      "file": "app/game/systems/clanLogisticsV108.ts",
+      "sha256": "164c846a0cb9c44e826309b0ffd8e4d31a5d2fefc22f17f477de6588578a44dd",
+      "bytes": 31921
+    },
+    {
+      "file": "app/game/systems/clanLogisticsSessionV108.ts",
+      "sha256": "84cd1bf9fdd2731accc9bf888229971b7ee6671e183e1f9dcde24dcbe232e6bf",
+      "bytes": 3734
+    },
+    {
+      "file": "app/game/ClanLogisticsV108.tsx",
+      "sha256": "d260f79df82016080b0ffc9d9302b754e94c0e142824864078104be3339df049",
+      "bytes": 29904
+    },
+    {
+      "file": "app/game/ClanLogisticsV108.module.css",
+      "sha256": "00dd97b435e7cb2ced371fc17ee641d96b290718b5cd8dba960044c437324e05",
+      "bytes": 2221
+    },
+    {
+      "file": "app/game/ClanWarBibleV6Panel.tsx",
+      "sha256": "14580aefd1dd8b8e2fa1b44e2969e85f31c5a1df220b475c951c6adaaf171424",
+      "bytes": 19788
+    },
+    {
+      "file": "app/game/systems/clanWarSpecializedV107.ts",
+      "sha256": "dd8fc139aab8a20e64e93e00cd78211eb938119a58f6dcc03e13a55b7720410c",
+      "bytes": 41365
+    },
+    {
+      "file": "app/game/clanWarBibleV6Source.json",
+      "sha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+      "bytes": 1362699
+    },
+    {
+      "file": "scripts/qa-clan-logistics-v108.mjs",
+      "sha256": "cd9b22159939b25cccf15965debc149ddf0236b92228484c8e68730cd2627efd",
+      "bytes": 30086
+    },
+    {
+      "file": "public/game/homeworld/v77/lava-transit-skiff.png",
+      "sha256": "ad4e5303e5a6d2a84cdf69e647aa904919fdf6f796e723aa4f22ef811a71d0b1",
+      "bytes": 2422116
+    },
+    {
+      "file": "public/game/homeworld/v77/fauna/yautja-horse-corrected.png",
+      "sha256": "d7d8014ff3ace59f3eca4070cca8fa6534accd17b6a38d26cc8b8aecb95a130f",
+      "bytes": 1463703
+    },
+    {
+      "file": "public/game/homeworld/v64/clan-shuttle.png",
+      "sha256": "c9868a99fc4af4716150cdecbdeda502e662fd8bcc6334acfa3f0055c59deedd",
+      "bytes": 1982506
+    },
+    {
+      "file": "public/audio/ambience/ship/v54.wav",
+      "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371",
+      "bytes": 418994
+    },
+    {
+      "file": "public/audio/sfx/scan/v54.wav",
+      "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d",
+      "bytes": 33560
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/systems/clanLogisticsV108.ts",
+      "sha256": "164c846a0cb9c44e826309b0ffd8e4d31a5d2fefc22f17f477de6588578a44dd",
+      "bytes": 31921
+    },
+    {
+      "file": "app/game/systems/clanLogisticsSessionV108.ts",
+      "sha256": "84cd1bf9fdd2731accc9bf888229971b7ee6671e183e1f9dcde24dcbe232e6bf",
+      "bytes": 3734
+    },
+    {
+      "file": "app/game/ClanLogisticsV108.tsx",
+      "sha256": "d260f79df82016080b0ffc9d9302b754e94c0e142824864078104be3339df049",
+      "bytes": 29904
+    },
+    {
+      "file": "app/game/ClanLogisticsV108.module.css",
+      "sha256": "00dd97b435e7cb2ced371fc17ee641d96b290718b5cd8dba960044c437324e05",
+      "bytes": 2221
+    },
+    {
+      "file": "app/game/ClanWarBibleV6Panel.tsx",
+      "sha256": "14580aefd1dd8b8e2fa1b44e2969e85f31c5a1df220b475c951c6adaaf171424",
+      "bytes": 19788
+    },
+    {
+      "file": "app/game/systems/clanWarSpecializedV107.ts",
+      "sha256": "dd8fc139aab8a20e64e93e00cd78211eb938119a58f6dcc03e13a55b7720410c",
+      "bytes": 41365
+    },
+    {
+      "file": "app/game/clanWarBibleV6Source.json",
+      "sha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+      "bytes": 1362699
+    },
+    {
+      "file": "scripts/qa-clan-logistics-v108.mjs",
+      "sha256": "cd9b22159939b25cccf15965debc149ddf0236b92228484c8e68730cd2627efd",
+      "bytes": 30086
+    },
+    {
+      "file": "public/game/homeworld/v77/lava-transit-skiff.png",
+      "sha256": "ad4e5303e5a6d2a84cdf69e647aa904919fdf6f796e723aa4f22ef811a71d0b1",
+      "bytes": 2422116
+    },
+    {
+      "file": "public/game/homeworld/v77/fauna/yautja-horse-corrected.png",
+      "sha256": "d7d8014ff3ace59f3eca4070cca8fa6534accd17b6a38d26cc8b8aecb95a130f",
+      "bytes": 1463703
+    },
+    {
+      "file": "public/game/homeworld/v64/clan-shuttle.png",
+      "sha256": "c9868a99fc4af4716150cdecbdeda502e662fd8bcc6334acfa3f0055c59deedd",
+      "bytes": 1982506
+    },
+    {
+      "file": "public/audio/ambience/ship/v54.wav",
+      "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371",
+      "bytes": 418994
+    },
+    {
+      "file": "public/audio/sfx/scan/v54.wav",
+      "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d",
+      "bytes": 33560
+    }
+  ],
+  "checks": [
+    {
+      "name": "Served build matches frozen production",
+      "status": "PASS"
+    },
+    {
+      "name": "Unintegrated real U19 cannot load a reserved kit",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancelling away from depot does not mint a refund",
+      "status": "PASS"
+    },
+    {
+      "name": "One actual returned unworked kit releases its exact reservation once",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S09: source work turns and actual delivered kit/operators construct one retained site",
+      "status": "PASS"
+    },
+    {
+      "name": "Same identified skiff, civil pilot and original U19 manifest reach the opposite bank",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S10: source work turns and actual delivered kit/operators construct one retained site",
+      "status": "PASS"
+    },
+    {
+      "name": "Both original mounts reach the same physical care area and consume four finite waters",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S10: same people physically return to depot before reserve; stocks remain conserved",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S13: source work turns and actual delivered kit/operators construct one retained site",
+      "status": "PASS"
+    },
+    {
+      "name": "One real interception consumes one cell charge; adjacent rail remains passable",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S13: same people physically return to depot before reserve; stocks remain conserved",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S14: source work turns and actual delivered kit/operators construct one retained site",
+      "status": "PASS"
+    },
+    {
+      "name": "A physically entering third team suspends only the local duel",
+      "status": "PASS"
+    },
+    {
+      "name": "Three actual contact touches and movement dodges transfer one existing chest only",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S14: same people physically return to depot before reserve; stocks remain conserved",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S15: source work turns and actual delivered kit/operators construct one retained site",
+      "status": "PASS"
+    },
+    {
+      "name": "Entering an inert settings boundary stops the real pending walk and pauses media",
+      "status": "PASS"
+    },
+    {
+      "name": "Removing inert neither resumes the old walk nor retains previously heard recording time",
+      "status": "PASS"
+    },
+    {
+      "name": "Selecting another real workshop pauses the previously playing source media",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual HTMLMedia playback from both situated source files enables one local comparison",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S15: same people physically return to depot before reserve; stocks remain conserved",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S18: source work turns and actual delivered kit/operators construct one retained site",
+      "status": "PASS"
+    },
+    {
+      "name": "One physical hull, occupants and cargo progress seven flight steps with one fuel debit",
+      "status": "PASS"
+    },
+    {
+      "name": "Served build matches frozen production",
+      "status": "PASS"
+    },
+    {
+      "name": "Reload resumes exact whole convoy including midflight position and all five other works",
+      "status": "PASS"
+    },
+    {
+      "name": "Original U19 reaches the distinct orbital layer without a surface walk",
+      "status": "PASS"
+    },
+    {
+      "name": "Same shuttle and original crew return with two unique arrival receipts and finite fuel",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S18: same people physically return to depot before reserve; stocks remain conserved",
+      "status": "PASS"
+    },
+    {
+      "name": "All six retained physical works share the original U19 and one finite conserved supply ledger",
+      "status": "PASS"
+    },
+    {
+      "name": "Future import rejects atomically and preserves every stock/person/object byte",
+      "status": "PASS"
+    },
+    {
+      "name": "A legitimate complete history replays and confirms the identical whole convoy",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancelling a pending draft invalidates its old text",
+      "status": "PASS"
+    },
+    {
+      "name": "Selecting pending file immediately clears the old import draft and disables it",
+      "status": "PASS"
+    },
+    {
+      "name": "An obsolete A file read cannot replace the current B archive draft",
+      "status": "PASS"
+    },
+    {
+      "name": "B import retains the exact current convoy instead of loading obsolete A",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancelling a pending file invalidates its late completion and leaves an empty draft",
+      "status": "PASS"
+    },
+    {
+      "name": "A real rejected browser write preserves the previous confirmed whole convoy",
+      "status": "PASS"
+    },
+    {
+      "name": "Campaign and historical archive bytes stay untouched",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile page has no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser runtime or console errors",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "Source, driver and public asset SHA remain unchanged during production play",
+      "status": "PASS"
+    }
+  ],
+  "captures": [
+    {
+      "file": "docs/qa/v108-clans/01-same-skiff-east-bank.png",
+      "sha256": "7883a3ddaae39f7f949adbf4fdc000e3fcc2db7a6491c41a6ac0f981fd9b7327",
+      "bytes": 258077
+    },
+    {
+      "file": "docs/qa/v108-clans/02-two-mounts-one-water-container.png",
+      "sha256": "6ea79d14fb6073d230afa4a5d0e004a341c19ef4b206abf64ff4711ff44e0ab7",
+      "bytes": 254005
+    },
+    {
+      "file": "docs/qa/v108-clans/03-finite-cell-adjacent-open-rail.png",
+      "sha256": "2c3001c98ccf2ac32bcae3c8ed8ee8ae591fde20080d1eb41baac99800dddb3d",
+      "bytes": 254204
+    },
+    {
+      "file": "docs/qa/v108-clans/04-consented-duel-unique-chest.png",
+      "sha256": "27c32f98bcf7d86f8dd075eb9430616526863530a5742e152b97bb86557e609a",
+      "bytes": 255628
+    },
+    {
+      "file": "docs/qa/v108-clans/05-two-situated-real-audio-files.png",
+      "sha256": "2050cfec7f63b9efaebd83055700873e2cfc86438a0f3630da165eb5c71ce361",
+      "bytes": 253031
+    },
+    {
+      "file": "docs/qa/v108-clans/06-orbital-arrival-persistent-six-sites.png",
+      "sha256": "cc25d5a3c06327bafca738b51d0dfcfb85e6d149ba458c89c1a02fae3f32b553",
+      "bytes": 254237
+    },
+    {
+      "file": "docs/qa/v108-clans/07-mobile-shared-terrain.png",
+      "sha256": "c16b52eb7986373244265b23d7c140f4b85b71df5022aed56cee8438b6d30e82",
+      "bytes": 54200
+    }
+  ],
+  "capturesOpened": [
+    "docs/qa/v108-clans/01-same-skiff-east-bank.png",
+    "docs/qa/v108-clans/02-two-mounts-one-water-container.png",
+    "docs/qa/v108-clans/03-finite-cell-adjacent-open-rail.png",
+    "docs/qa/v108-clans/04-consented-duel-unique-chest.png",
+    "docs/qa/v108-clans/05-two-situated-real-audio-files.png",
+    "docs/qa/v108-clans/06-orbital-arrival-persistent-six-sites.png",
+    "docs/qa/v108-clans/07-mobile-shared-terrain.png"
+  ],
+  "rawEvidence": {
+    "path": "docs/qa/v108-clans/browser-result.json.gz",
+    "sha256": "76fd1cfdfdb6570bf395e6a71d903c91f1bb5328a1f99c099a88628d19fec2bc",
+    "bytes": 3587,
+    "decodedSha256": "3673975298ba4b4263be7bb441aaeb4bf3b9831c6e22cc280485cacf421b5b3e",
+    "decodedBytes": 13383
+  }
+}

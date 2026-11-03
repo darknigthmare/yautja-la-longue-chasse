@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "publicationCommit": "837684333b42ee1a5e3a0be9ce1967e2486a2fd3",
+  "patterns": 564,
+  "sparseSha256": "a4acc9d1a1101b205f3c9f8050691fd5ce25a8438c8a2176ca6c0c90d239fe47",
+  "publishedWorkflowSha256": "7eeab944bf469b2824e58ab3aa01c160b06875e1e10f68003ea24167476cc573",
+  "checkoutFiles": 6309,
+  "checkoutBytes": 2571512571,
+  "packBytes": 2109558677,
+  "gitObjectStats": "count: 0\nsize: 0\nin-pack: 7757\npacks: 3\nsize-pack: 2060331\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+  "events": [
+    {
+      "command": [
+        "git",
+        "show",
+        "HEAD:.github/workflows/audit-v94.yml"
+      ],
+      "name": "published-workflow",
+      "exitCode": 0,
+      "seconds": 0.408,
+      "log": "published-workflow.log"
+    },
+    {
+      "command": [
+        "git",
+        "sparse-checkout",
+        "init",
+        "--no-cone"
+      ],
+      "name": "sparse-init",
+      "exitCode": 0,
+      "seconds": 0.002,
+      "log": "sparse-init.log"
+    },
+    {
+      "command": [
+        "git",
+        "sparse-checkout",
+        "set",
+        "--no-cone",
+        "--stdin"
+      ],
+      "name": "sparse-set",
+      "exitCode": 0,
+      "seconds": 0.002,
+      "log": "sparse-set.log"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "advice.detachedHead=false",
+        "checkout",
+        "--detach",
+        "837684333b42ee1a5e3a0be9ce1967e2486a2fd3"
+      ],
+      "name": "checkout",
+      "exitCode": 0,
+      "seconds": 146.344,
+      "log": "checkout.log"
+    }
+  ]
+}

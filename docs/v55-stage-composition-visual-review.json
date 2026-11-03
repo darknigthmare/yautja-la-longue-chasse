@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "release": "V55",
+  "reviewedAt": "2026-09-30T01:42:55.647Z",
+  "reviewer": "Codex visual inspection of actual local renderer captures",
+  "scope": "23 scenes, three inspected camera captures each; runtime renderer qualification is separate from full application flow and canon certification.",
+  "compositions": [
+    {
+      "arenaId": "arena-139-batman-gotham-rooftops",
+      "compositionDigest": "6c1fb5eaebbd2d8eb91a6b6f5dce941dd4ffd8b094ee410fe60139d0c731f0fe",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-139-batman-gotham-rooftops\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-139-batman-gotham-rooftops\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-139-batman-gotham-rooftops\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés après correction des suspentes P3/P5 : elles sortent du cadre supérieur, sans fragment flottant. Skyline dégagée, appuis sur pavage continu sans trou au cadrage large."
+    },
+    {
+      "arenaId": "arena-140-bad-blood-pine-barrens",
+      "compositionDigest": "d4c6d7fec196be1b88ff12563bf4c9c36d1cf2e6bd3a2c8f0c985972222b42b2",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-140-bad-blood-pine-barrens\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-140-bad-blood-pine-barrens\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-140-bad-blood-pine-barrens\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés après changement du P4 et des branches. La terre couvre toute la partie basse sans trou ni raccord noir ; les branches partent hors cadre, les troncs et pieds touchent leur appui."
+    },
+    {
+      "arenaId": "arena-141-theta-tundra-outpost",
+      "compositionDigest": "1f58e797cfc6dc85b624a78c612c565ba208117e4456174ca8e35cb47bcaaaf1",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-141-theta-tundra-outpost\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-141-theta-tundra-outpost\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-141-theta-tundra-outpost\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. La nouvelle glace supprime l’encoche au niveau des pieds et couvre le bas même en recul. Les arbres morts restent latéraux, les branches traversent le bord supérieur ; aucun drapeau viking ni prop de temple."
+    },
+    {
+      "arenaId": "arena-142-dead-end-alley",
+      "compositionDigest": "1c2cb0369fa833542767076ccde4b7e631d1a4ee2c68f6a549d7ec1aefd1fd3a",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-142-dead-end-alley\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-142-dead-end-alley\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-142-dead-end-alley\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Les suspentes corrigées rejoignent le cadre, les poteaux restent aux limites et la ruelle conserve son axe vide ; pavage sans rupture et silhouettes lisibles devant les briques sombres."
+    },
+    {
+      "arenaId": "arena-143-big-game-new-mexico",
+      "compositionDigest": "f0b162721fc8f36d07bb112d21e93b4f8a45288546dc15284b4caa26add6dc2b",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-143-big-game-new-mexico\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-143-big-game-new-mexico\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-143-big-game-new-mexico\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Mesas lointaines, roches latérales et sol minéral dégagent la piste ; aucune fente ou bande noire, contacts des combattants cohérents."
+    },
+    {
+      "arenaId": "arena-144-archie-riverdale",
+      "compositionDigest": "3f1d93820114ad02e0dccfe4df5e036315341eae0bde5bb7959d07903609fae7",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-144-archie-riverdale\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-144-archie-riverdale\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-144-archie-riverdale\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche réinspectés après correction des câbles. Les suspentes ne flottent plus isolées dans le ciel ; façades et diner restent dégagés. Appui de combat continu, sans trou au sol ni prop couvrant les silhouettes."
+    },
+    {
+      "arenaId": "arena-145-avp2-lv1201-forest",
+      "compositionDigest": "f3b8bcbfc78b307ec0102a3dfa3a5b061ba92cf33178e4d34dd60e40fcd875a1",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-145-avp2-lv1201-forest\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-145-avp2-lv1201-forest\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-145-avp2-lv1201-forest\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. La jungle et les arches lointaines restent distinctes des troncs latéraux, avec végétation proche raccordée au cadre. Le nouveau sol terreux couvre tout le bas et conserve les appuis."
+    },
+    {
+      "arenaId": "arena-146-primal-hunt-pilot-ruins",
+      "compositionDigest": "61443197ecb5c0c2e6adc967f5ff6cee26da7264dbcb1f41bd735c2c6e4a0f4d",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-146-primal-hunt-pilot-ruins\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-146-primal-hunt-pilot-ruins\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-146-primal-hunt-pilot-ruins\\left-corner.png"
+      ],
+      "notes": "Trois captures centre, large et limite gauche inspectées. Les roches indépendantes encadrent les ruines sans masquer le duel ; aucun trou au sol minéral, appuis visibles et profondeur lisible."
+    },
+    {
+      "arenaId": "arena-147-extinction-lv742",
+      "compositionDigest": "b1f064b1e9efa3c308094b51486ea027a3707d3fcfe5ac5f0e00532381459aad",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-147-extinction-lv742\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-147-extinction-lv742\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-147-extinction-lv742\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Le désert rocheux froid reste lisible, modules géologiques cohérents et appuis au bord continu du P4 ; pas de caisses ou végétation déplacées."
+    },
+    {
+      "arenaId": "arena-148-ahab-lv223",
+      "compositionDigest": "ac211132e30dd1305db28e3401849d01e35ee2b3941dabf7ff70eee231512200",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-148-ahab-lv223\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-148-ahab-lv223\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-148-ahab-lv223\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Profondeur de vallée volcanique et roches indépendantes sans accessoire humain incongru ; appuis lisibles et sol continu malgré la différence de luminosité avec l’arrière-plan."
+    },
+    {
+      "arenaId": "arena-149-dark-horse-new-york",
+      "compositionDigest": "e1c7b72c7772fd7cc8bd967f0b76bfa0285643f07cd2478d78ed5b727f04454b",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-149-dark-horse-new-york\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-149-dark-horse-new-york\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-149-dark-horse-new-york\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. La silhouette new-yorkaise est dégagée, les câbles sont suspendus depuis le haut et les supports restent latéraux. Pavage sans manque, séparation lisible entre duel et ville en profondeur."
+    },
+    {
+      "arenaId": "arena-150-skinner-subway",
+      "compositionDigest": "628fc3bccb1510a5ad8f7b0981f2aaffd0d281ed7adb2ec94678e59691e3b602",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-150-skinner-subway\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-150-skinner-subway\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-150-skinner-subway\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Métro sombre avec montants/câbles cohérents, zone centrale libre ; aucun manque du sol pavé, pieds et supports reposent sur leur appui sans recouvrement gênant."
+    },
+    {
+      "arenaId": "arena-151-wolverine-canada",
+      "compositionDigest": "37896369230f35e13cad3efc4e6fb595d8a4f7a707dcc423ca1f4d3a12d40e87",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-151-wolverine-canada\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-151-wolverine-canada\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-151-wolverine-canada\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. La forêt enneigée conserve son horizon profond ; glace opaque continue, aucun décroché sous les combattants. Branches raccordées au bord et troncs latéraux sans silhouette flottante."
+    },
+    {
+      "arenaId": "arena-152-marvel-wakanda",
+      "compositionDigest": "353e3b30fe9f66f8d68631c12047c79794f87c79db3625f719bc9cf28bb06cc8",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-152-marvel-wakanda\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-152-marvel-wakanda\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-152-marvel-wakanda\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. La ville et ses cascades restent au fond, la végétation encadre sans masquer les personnages ; terre continue et racines appuyées, aucun élément suspendu isolé."
+    },
+    {
+      "arenaId": "arena-153-big-mama-skyliner",
+      "compositionDigest": "91f10fd7b06ffc84ba9fa09017f09002a2d3c90a970a7c88293d17c61d9ba740",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-153-big-mama-skyliner\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-153-big-mama-skyliner\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-153-big-mama-skyliner\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Le panorama aérien reste ouvert et le mobilier civil se situe derrière les silhouettes ; sol pavé continu, banquettes et montants sur l’appui. Adaptation intérieure originale sans plan du vaisseau certifié."
+    },
+    {
+      "arenaId": "arena-154-life-death-tartarus",
+      "compositionDigest": "22d589e23b1d7470825f0e09806ffdf2932c12ca40e48d15b527ed91f3db10b1",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-154-life-death-tartarus\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-154-life-death-tartarus\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-154-life-death-tartarus\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Le site rocheux et le vestige lointain restent séparés de la piste ; roches latérales bien appuyées, P4 sans fente ni bande noire."
+    },
+    {
+      "arenaId": "arena-155-judge-dredd-megacity",
+      "compositionDigest": "468f750e3347b4aefbb16f01dffc2fed5740776b7b5b95968a1824c6eceb7c18",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-155-judge-dredd-megacity\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-155-judge-dredd-megacity\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-155-judge-dredd-megacity\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. La mégastructure et les voies aériennes restent lisibles derrière le combat, les supports n’occupent que les bords. Sol opaque continu et suspentes raccordées au haut."
+    },
+    {
+      "arenaId": "arena-156-sinestro-earth",
+      "compositionDigest": "18f1d5feed445e5c2c420abd6d0964626f63becaab91848544633f15660c88cc",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-156-sinestro-earth\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-156-sinestro-earth\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-156-sinestro-earth\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Les constructions lumineuses restent dans le ciel et ne recouvrent pas les combattants ; ville en profondeur, sol continu, supports latéraux et câbles raccordés au cadre."
+    },
+    {
+      "arenaId": "arena-157-mindhunter-orbital-prison",
+      "compositionDigest": "4336397032a86ec1329ae15fb0c67e6e5e862870bfafe6247a131a1d64480875",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-157-mindhunter-orbital-prison\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-157-mindhunter-orbital-prison\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-157-mindhunter-orbital-prison\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Nervures, conduits et sol organique cohérents avec le fond, sans module industriel humain. Contraste des deux combattants conservé, piste continue et appuis stables."
+    },
+    {
+      "arenaId": "arena-158-thicker-blood-charter",
+      "compositionDigest": "4e18f8ed118c5e969d69ae01f7e990fdba17dea3ac7d005e748772b675d17206",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-158-thicker-blood-charter\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-158-thicker-blood-charter\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-158-thicker-blood-charter\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Coursive civile lisible, mobilier à l’écart du centre, aucune caisse militaire ; pavage et silhouettes appuyés sans fente. Le décor reste une adaptation de cadre d’œuvre."
+    },
+    {
+      "arenaId": "arena-159-primal-alaska",
+      "compositionDigest": "7d4aadfac89d048c70174eed52ffc295122efc51318509a6525da89bb685ecaf",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-159-primal-alaska\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-159-primal-alaska\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-159-primal-alaska\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Conifères, reliefs et ruisseau restent en profondeur ; la terre neuve élimine les trous et les branches proches ne flottent plus. Troncs et pieds conservent une assise stable."
+    },
+    {
+      "arenaId": "arena-160-rage-war-umf12",
+      "compositionDigest": "de96455dc4e3a8aa6a8bec2bdda3d283a4f22026ef353f686c70a25200fd674b",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-160-rage-war-umf12\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-160-rage-war-umf12\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-160-rage-war-umf12\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Le nouveau plancher métal couvre le bas sans encoche ni bande noire ; caisses et pieds restent appuyés, câbles raccordés au plafond et profondeur de la mégastructure dégagée."
+    },
+    {
+      "arenaId": "arena-161-rift-war-lv363",
+      "compositionDigest": "e18e3e6c73ad4d0605362513f41a923c5398017d729560b4a37f16a5cdc6358d",
+      "accepted": true,
+      "captures": [
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-161-rift-war-lv363\\center.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-161-rift-war-lv363\\wide.png",
+        "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v55\\stage-renderer\\arena-161-rift-war-lv363\\left-corner.png"
+      ],
+      "notes": "Centre, large et limite gauche inspectés. Failles et plateaux restent au fond, les roches latérales encadrent le combat sans recouvrir les silhouettes. Sol minéral continu dans le plan large et appui des pieds lisible."
+    }
+  ]
+}

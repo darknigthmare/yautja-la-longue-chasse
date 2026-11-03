@@ -1,0 +1,564 @@
+{
+  "schemaVersion": 1,
+  "release": 77,
+  "date": "2026-10-03",
+  "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+  "bytePreservation": true,
+  "sourceTurnCount": 30,
+  "assets": [
+    {
+      "id": "yautja-horse-corrected",
+      "speciesId": "horse-statue-reference",
+      "label": "Monture rouge · référence de statuette",
+      "variant": "source-held",
+      "held": true,
+      "referenceOnly": true,
+      "facing": "left-three-quarter",
+      "format": "held",
+      "nativePoses": 1,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/yautja-horse-corrected.png",
+      "sourceWidth": 1212,
+      "sourceHeight": 1298,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1212,
+        "height": 1298
+      },
+      "alphaBounds": {
+        "x": 38,
+        "y": 0,
+        "width": 1172,
+        "height": 1294
+      },
+      "pivot": {
+        "x": 624,
+        "y": 1294
+      },
+      "heightWorld": 140,
+      "sha256": "d7d8014ff3ace59f3eca4070cca8fa6534accd17b6a38d26cc8b8aecb95a130f",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 22,
+      "fileId": "00000000-73f8-820a-87a0-77531e61c4e7",
+      "sourceStatus": "LATEST_HORSE_SOURCE_CANON_FIDELITY_UNVERIFIED",
+      "bytes": 1463703,
+      "hasAlpha": true,
+      "alphaThreshold": 24,
+      "borderPixels": 8,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "Visible source pixels touch the original frame; the original is preserved without inventing missing anatomy.",
+        "Reference only; no rideable mount, recruitment, discovery or gameplay animation.",
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    },
+    {
+      "id": "mounts-bestiary-sheet-1",
+      "label": "Bestiaire des montures Yautja",
+      "referenceOnly": true,
+      "format": "reference-board",
+      "nativePoses": 0,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/mounts-bestiary-sheet-1.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024
+      },
+      "alphaBounds": {
+        "x": 24,
+        "y": 8,
+        "width": 1482,
+        "height": 992
+      },
+      "pivot": {
+        "x": 765,
+        "y": 1000
+      },
+      "heightWorld": 140,
+      "sha256": "649f7ff3bfebfda07a79002b9c50d63b7861d35ec64997897096971cf9d41d0b",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 24,
+      "fileId": "00000000-c290-820a-b696-d59261e438c6",
+      "sourceStatus": "ORIGINAL_MULTI_SUBJECT_REFERENCE",
+      "bytes": 2816101,
+      "hasAlpha": true,
+      "alphaThreshold": 24,
+      "borderPixels": 0,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "Reference only; no rideable mount, recruitment, discovery or gameplay animation.",
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    },
+    {
+      "id": "long-hunt-bestiary-sheet-2",
+      "label": "Bestiaire de la longue chasse Yautja",
+      "referenceOnly": true,
+      "format": "reference-board",
+      "nativePoses": 0,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/long-hunt-bestiary-sheet-2.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024
+      },
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024
+      },
+      "pivot": {
+        "x": 768,
+        "y": 1024
+      },
+      "heightWorld": 140,
+      "sha256": "0bfea968e95495ad154c79271fc2a0579b82feabf0377bd9fe86ad977695bfdd",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 30,
+      "fileId": "00000000-513c-820a-8971-e03d9c3b6600",
+      "sourceStatus": "ORIGINAL_MULTI_SUBJECT_REFERENCE",
+      "bytes": 2846499,
+      "hasAlpha": false,
+      "alphaThreshold": 24,
+      "borderPixels": 5116,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "Visible source pixels touch the original frame; the original is preserved without inventing missing anatomy.",
+        "Reference only; no rideable mount, recruitment, discovery or gameplay animation.",
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    },
+    {
+      "id": "prime-bestiary-sheet-1",
+      "label": "Bestiaire de Yautja Prime : La Grande Chasse",
+      "referenceOnly": true,
+      "format": "reference-board",
+      "nativePoses": 0,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/prime-bestiary-sheet-1.png",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1672,
+        "height": 941
+      },
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1672,
+        "height": 941
+      },
+      "pivot": {
+        "x": 836,
+        "y": 941
+      },
+      "heightWorld": 140,
+      "sha256": "726d71bd5bcd9c9e03632f092841e88f58e0aee7600ef4b3d8729fd0aaf58ef6",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 28,
+      "fileId": "00000000-2008-820a-95a3-a2e76cf8a667",
+      "sourceStatus": "ORIGINAL_MULTI_SUBJECT_REFERENCE",
+      "bytes": 2548029,
+      "hasAlpha": false,
+      "alphaThreshold": 24,
+      "borderPixels": 5222,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "Visible source pixels touch the original frame; the original is preserved without inventing missing anatomy.",
+        "Reference only; no rideable mount, recruitment, discovery or gameplay animation.",
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    },
+    {
+      "id": "mounts-bestiary-sheet-2",
+      "label": "Bestiaire des montures Yautja",
+      "referenceOnly": true,
+      "format": "reference-board",
+      "nativePoses": 0,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/mounts-bestiary-sheet-2.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024
+      },
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024
+      },
+      "pivot": {
+        "x": 768,
+        "y": 1024
+      },
+      "heightWorld": 140,
+      "sha256": "909d16848b3aeb981cd83e4d5361edfebfa20ec9e4ab4eee8b63ef3f81d1af58",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 26,
+      "fileId": "00000000-090c-820a-bf6a-d77eeb947770",
+      "sourceStatus": "ORIGINAL_MULTI_SUBJECT_REFERENCE",
+      "bytes": 2555951,
+      "hasAlpha": false,
+      "alphaThreshold": 24,
+      "borderPixels": 5116,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "Visible source pixels touch the original frame; the original is preserved without inventing missing anatomy.",
+        "Reference only; no rideable mount, recruitment, discovery or gameplay animation.",
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    },
+    {
+      "id": "crustacean-symmetric-tusks-v2",
+      "speciesId": "double-tusk-reference",
+      "label": "Deux défenses · correction intermédiaire",
+      "variant": "symmetric-tusks-v2",
+      "held": true,
+      "facing": "right-three-quarter",
+      "format": "held",
+      "nativePoses": 1,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/crustacean-symmetric-tusks-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 6,
+        "y": 133,
+        "width": 1246,
+        "height": 1026
+      },
+      "pivot": {
+        "x": 629,
+        "y": 1159
+      },
+      "heightWorld": 140,
+      "sha256": "8a4ec180fb50e54271f5aa10f347ea6bfb305ca0266c3b47320182fdd16bba9a",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 8,
+      "fileId": "00000000-95b8-820a-b58c-8ae40e5ec10f",
+      "sourceStatus": "SUPERSEDED_BY_TURN_10",
+      "bytes": 1630446,
+      "hasAlpha": true,
+      "alphaThreshold": 24,
+      "borderPixels": 0,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    },
+    {
+      "id": "armored-rhinoceros-titan",
+      "speciesId": "armored-titan-reference",
+      "label": "Titan cuirassé · référence fournie",
+      "variant": "source-held",
+      "held": true,
+      "regionId": "ash-marches",
+      "heightWorld": 155,
+      "facing": "left-three-quarter",
+      "format": "held",
+      "nativePoses": 1,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/armored-rhinoceros-titan.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 10,
+        "y": 228,
+        "width": 1234,
+        "height": 829
+      },
+      "pivot": {
+        "x": 627,
+        "y": 1057
+      },
+      "sha256": "767faf2ab68b882bbdcaa4c53beecc7179792026206ac060bfb3d6796ed603bd",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 16,
+      "fileId": "00000000-75bc-820a-ab9a-f542d88b6756",
+      "sourceStatus": "LATEST_ISOLATED_SOURCE",
+      "bytes": 1470696,
+      "hasAlpha": true,
+      "alphaThreshold": 24,
+      "borderPixels": 0,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    },
+    {
+      "id": "winged-insect-turquoise",
+      "speciesId": "turquoise-wing-reference",
+      "label": "Créature ailée · ailes turquoise",
+      "variant": "source-held",
+      "held": true,
+      "regionId": "pillar-jungle",
+      "heightWorld": 132,
+      "facing": "left-three-quarter",
+      "format": "held",
+      "nativePoses": 1,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/winged-insect-turquoise.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 89,
+        "y": 13,
+        "width": 1142,
+        "height": 1221
+      },
+      "pivot": {
+        "x": 660,
+        "y": 1234
+      },
+      "sha256": "6506fefd9e4b3dac7fea1ea74b8b64cb39f38515e91359d28849b225a368fb3e",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 12,
+      "fileId": "00000000-5fa8-820a-ab14-47cf532001b2",
+      "sourceStatus": "LATEST_ISOLATED_SOURCE",
+      "bytes": 1886626,
+      "hasAlpha": true,
+      "alphaThreshold": 24,
+      "borderPixels": 0,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    },
+    {
+      "id": "volcanic-insect-amber",
+      "speciesId": "amber-wing-reference",
+      "label": "Créature volcanique · ailes ambrées",
+      "variant": "source-held",
+      "held": true,
+      "regionId": "thermal-caves",
+      "heightWorld": 136,
+      "facing": "left-three-quarter",
+      "format": "held",
+      "nativePoses": 1,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/volcanic-insect-amber.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 3,
+        "y": 259,
+        "width": 1250,
+        "height": 737
+      },
+      "pivot": {
+        "x": 628,
+        "y": 996
+      },
+      "sha256": "85da7168186edfada24519c78621944865856dd5c8f63676b29a70add4752f19",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 14,
+      "fileId": "00000000-c50c-820a-aaee-fcfe5984acfa",
+      "sourceStatus": "LATEST_ISOLATED_SOURCE",
+      "bytes": 1070757,
+      "hasAlpha": true,
+      "alphaThreshold": 24,
+      "borderPixels": 0,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    },
+    {
+      "id": "crustacean-restored-tusks-final",
+      "speciesId": "double-tusk-reference",
+      "label": "Bête cuirassée · deux défenses restaurées",
+      "variant": "restored-final",
+      "held": true,
+      "regionId": "luminous-marshes",
+      "heightWorld": 150,
+      "facing": "right-three-quarter",
+      "format": "held",
+      "nativePoses": 1,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/crustacean-restored-tusks-final.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 6,
+        "y": 132,
+        "width": 1247,
+        "height": 1028
+      },
+      "pivot": {
+        "x": 629.5,
+        "y": 1160
+      },
+      "sha256": "a4daec5b430a8906cae06388975d1e339e308061fa8f632c52dc86f0bb5eecee",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 10,
+      "fileId": "00000000-f6bc-820a-a985-4ecefb760dcd",
+      "sourceStatus": "LATEST_CORRECTED_SOURCE",
+      "bytes": 1605760,
+      "hasAlpha": true,
+      "alphaThreshold": 24,
+      "borderPixels": 0,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    },
+    {
+      "id": "crustacean-broken-tusk-v1",
+      "speciesId": "double-tusk-reference",
+      "label": "Défense brisée · version conservée",
+      "variant": "broken-tusk-v1",
+      "held": true,
+      "facing": "right-three-quarter",
+      "format": "held",
+      "nativePoses": 1,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/crustacean-broken-tusk-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 6,
+        "y": 137,
+        "width": 1245,
+        "height": 1022
+      },
+      "pivot": {
+        "x": 628.5,
+        "y": 1159
+      },
+      "heightWorld": 140,
+      "sha256": "8afe9aa370af17d50355299993466e1fe881b0fea3ea782687e5f19bdc1b792a",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 6,
+      "fileId": "00000000-3dc4-820a-9e1f-d422306148f6",
+      "sourceStatus": "SUPERSEDED_BY_TURN_10",
+      "bytes": 1748693,
+      "hasAlpha": true,
+      "alphaThreshold": 24,
+      "borderPixels": 0,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    },
+    {
+      "id": "cavern-scene-reference",
+      "label": "Affrontement dans la caverne sombre",
+      "referenceOnly": true,
+      "format": "reference-board",
+      "nativePoses": 0,
+      "nativeAnimationClips": 0,
+      "src": "/game/homeworld/v77/fauna/cavern-scene-reference.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024
+      },
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024
+      },
+      "pivot": {
+        "x": 768,
+        "y": 1024
+      },
+      "heightWorld": 140,
+      "sha256": "c4c6454db1718fdc5918447628fc0ad138705bd3700a143189c59cb94e8fcbaa",
+      "sourceShare": "https://chatgpt.com/share/6ac06513-5e1c-83ed-a065-941a547058c9",
+      "sourceTurn": 4,
+      "fileId": "00000000-f4c8-820a-8c59-d90adbc15ed1",
+      "sourceStatus": "REFERENCE_SCENE",
+      "bytes": 2196030,
+      "hasAlpha": false,
+      "alphaThreshold": 24,
+      "borderPixels": 5116,
+      "canonicalFidelity": "unverified",
+      "supportMeasurement": "Silhouette bottom and midpoint measured from alpha; visual anchor only, not physical dimensions.",
+      "limitations": [
+        "Visible source pixels touch the original frame; the original is preserved without inventing missing anatomy.",
+        "Reference only; no rideable mount, recruitment, discovery or gameplay animation.",
+        "The uploaded reference originals are unavailable in the public share; 1:1 comparison cannot be certified."
+      ]
+    }
+  ],
+  "loreChecks": [
+    {
+      "assetId": "yautja-horse-corrected",
+      "url": "https://avp.fandom.com/wiki/Horse_(Yautja_creature)",
+      "checkedAt": "2026-10-03",
+      "note": "Secondary reference identifies a Fewture/Sideshow collectible statue; cinematic or game canon and 1:1 fidelity are not established."
+    }
+  ],
+  "limits": [
+    "Five latest isolated static drawings, two preserved prior versions, four multi-subject reference boards and one scene reference.",
+    "No six-cell slicing, synthetic opposite side or claimed drawing animation.",
+    "World placement is an original scenic adaptation, not a new canonical species identification."
+  ]
+}

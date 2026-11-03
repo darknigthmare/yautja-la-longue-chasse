@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-28",
+  "tool": "image_gen.imagegen",
+  "attemptId": "scar-backward-victim-left-v112",
+  "submittedPrompt": "Paint a NEW original native 2D fighting-game animation atlas using the supplied image ONLY as a reference for character incarnation, owned equipment and detailed painted game style. Do not reuse, mirror or crop its existing poses. ONE landscape RGBA PNG, intended1536x1024, EXACTLY6 full-body drawings arranged in a precise3columns by2rows. STRICT EMPTY GUTTERS: each512x512 cell contains a small centered character with anatomical standing head-to-sole height340px, baseline y=430; no silhouette wider than360px. At least60px COMPLETELY TRANSPARENT padding on EVERY side of every full silhouette. Never enlarge the poses to fill their cells. Frame0 at center(256,256),1(768,256),2(1280,256),3(256,768),4(768,768),5(1280,768). Everything outside the six bodies is genuine alpha0: no brown glow, dark vignette, drop shadow, floor, labels, text, grid or painted checkerboard. Exactly two arms and two legs, coherent joints and clawed fingers, stable anatomy and equipment. No gray mannequin, second actor, opponent, partner hands or loose severed body parts. All limbs/weapons/dreadlocks visible inside the canvas with no clipping. Anatomical character scale stays the SAME through bends and flight, do not resize a lying body to standing height. Character: Scar from Alien vs Predator, smooth silver biomask with red brow marking, long black dreadlocks with gold beads, golden ochre netted skin, silver shoulder and leg armor, dark red/brown leather loincloth, circular red belt device, attached plasma shoulder cannon and long combi-spear held in its original reference hand; preserve the anatomical wrist-blade arm and spear hand exactly as in the reference, never swap sides. Independently draw this INITIAL facing screen LEFT orientation naturally, NEVER mirrored. This hunter is the VICTIM of an unseen opponent's BACKWARD THROW. The unseen attacker starts on screen RIGHT (opposite the victim's initial facing), then throws this victim OVER the unseen attacker's shoulder TOWARD screen RIGHT, past that attacker to the opposite side. Only draw the VICTIM'S OWN BODY and attached equipment, absolutely no attacker or gripping external hands. Exactly6distinct phases reading order:0 caught upright initially facing screen LEFT, arms reacting at own chest;1 yielding with knees bending and torso pulled toward screen LEFT;2 body lifted, hips elevated and torso rolled backward over the unseen shoulder toward screen RIGHT, own limbs naturally tucked;3 unmistakable backward somersault flight toward screen RIGHT, body rotates naturally and legs rise, not upright floating;4 safe back/side landing after the roll, body lying naturally at the same anatomical scale and head oriented screen LEFT, equipment remains owned and anatomically attached;5 rising on one knee, returns attention/guard toward screen LEFT. Keep face/mask identity and inventory coherent. For the spear it may naturally rotate in the same OWN hand, never disappear or cross neighboring cell. Non-graphic choreography, no injury/gore. Original game adaptation.",
+  "submittedReferences": [
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png",
+      "bytes": 2358596,
+      "sha256": "64b53fe5abfaed37324a809419cfb216aca16b83467115a1e555ee0864f7d048",
+      "preservedPath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png"
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-da3e1d81-5fff-445f-a197-915de38abed3.png",
+  "output": {
+    "path": "public/game/sprites/v112/pit/scar/scar-backward-victim-left-v112.png",
+    "sha256": "76a4c7ae546b9d1cbc46316136a4e4626f9747a732a7d1790ef1a9d6edcc26f5",
+    "bytes": 2213663,
+    "width": 1536,
+    "height": 1024
+  },
+  "filesEditedAfterGeneration": false,
+  "status": "SELECTED_SOURCE_REGIONS",
+  "scope": "Local tool call record, not an externally signed certificate. Only selected source UV regions may be admitted. Source action completion remains open.",
+  "selectedFrameIndices": [
+    1,
+    2
+  ]
+}

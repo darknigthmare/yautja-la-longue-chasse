@@ -1,0 +1,1606 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-02T05:47:52.092Z",
+  "sourcePath": "app/game/discoverySignalsV112.ts",
+  "sourceSha256": "eaac00b22e9976499f2a7ce1e0439ba33eba0d2fd5aa1f40faa9c9887d4b6349",
+  "browser": "154.0.8037.57",
+  "qualification": "CHROME_TEXT_BOUNDS_PASS",
+  "cases": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 720
+      },
+      "deviceScaleFactor": 1,
+      "layout": {
+        "width": 132,
+        "height": 26,
+        "causeBaseline": -2,
+        "responseBaseline": 9,
+        "causeFontPx": 9,
+        "responseFontPx": 8,
+        "textLeft": -39,
+        "textMaximumWidth": 101
+      },
+      "rows": [
+        {
+          "channel": "visual",
+          "response": "investigate",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 68.02734375,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.5,
+          "gapDevicePx": 1.5
+        },
+        {
+          "channel": "visual",
+          "response": "avoid",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 75.578125,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 2,
+          "responseBottom": 9,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 1
+        },
+        {
+          "channel": "visual",
+          "response": "inspect",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 81.796875,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 11,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.5,
+          "gapDevicePx": 1.5
+        },
+        {
+          "channel": "visual",
+          "response": "guard",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 64.9140625,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.5,
+          "gapDevicePx": 1.5
+        },
+        {
+          "channel": "radio",
+          "response": "investigate",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 68.02734375,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.5,
+          "gapDevicePx": 1.5
+        },
+        {
+          "channel": "radio",
+          "response": "avoid",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 75.578125,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 2,
+          "responseBottom": 9,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 1
+        },
+        {
+          "channel": "radio",
+          "response": "inspect",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 81.796875,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 11,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.5,
+          "gapDevicePx": 1.5
+        },
+        {
+          "channel": "radio",
+          "response": "guard",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 64.9140625,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.5,
+          "gapDevicePx": 1.5
+        },
+        {
+          "channel": "scent",
+          "response": "investigate",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 68.02734375,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.5,
+          "gapDevicePx": 1.5
+        },
+        {
+          "channel": "scent",
+          "response": "avoid",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 75.578125,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 2,
+          "responseBottom": 9,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 1
+        },
+        {
+          "channel": "scent",
+          "response": "inspect",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 81.796875,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 11,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.5,
+          "gapDevicePx": 1.5
+        },
+        {
+          "channel": "scent",
+          "response": "guard",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 64.9140625,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.5,
+          "gapDevicePx": 1.5
+        }
+      ],
+      "logicalCanvas": {
+        "width": 1280,
+        "height": 720
+      },
+      "cssCanvasWidth": 320,
+      "screenshot": "label-matrix-320-dpr1.png"
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 720
+      },
+      "deviceScaleFactor": 2,
+      "layout": {
+        "width": 132,
+        "height": 26,
+        "causeBaseline": -2,
+        "responseBaseline": 9,
+        "causeFontPx": 9,
+        "responseFontPx": 8,
+        "textLeft": -39,
+        "textMaximumWidth": 101
+      },
+      "rows": [
+        {
+          "channel": "visual",
+          "response": "investigate",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 68.02734375,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 2
+        },
+        {
+          "channel": "visual",
+          "response": "avoid",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 75.578125,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 1,
+          "responseBottom": 10,
+          "gapLogicalPx": 2,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 0.5,
+          "gapDevicePx": 1
+        },
+        {
+          "channel": "visual",
+          "response": "inspect",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 81.796875,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 11,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 2
+        },
+        {
+          "channel": "visual",
+          "response": "guard",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 64.9140625,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 2
+        },
+        {
+          "channel": "radio",
+          "response": "investigate",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 68.02734375,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 2
+        },
+        {
+          "channel": "radio",
+          "response": "avoid",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 75.578125,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 1,
+          "responseBottom": 10,
+          "gapLogicalPx": 2,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 0.5,
+          "gapDevicePx": 1
+        },
+        {
+          "channel": "radio",
+          "response": "inspect",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 81.796875,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 11,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 2
+        },
+        {
+          "channel": "radio",
+          "response": "guard",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 64.9140625,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 2
+        },
+        {
+          "channel": "scent",
+          "response": "investigate",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 68.02734375,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 2
+        },
+        {
+          "channel": "scent",
+          "response": "avoid",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 75.578125,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 1,
+          "responseBottom": 10,
+          "gapLogicalPx": 2,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 0.5,
+          "gapDevicePx": 1
+        },
+        {
+          "channel": "scent",
+          "response": "inspect",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 81.796875,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 11,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 2
+        },
+        {
+          "channel": "scent",
+          "response": "guard",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 64.9140625,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1,
+          "gapDevicePx": 2
+        }
+      ],
+      "logicalCanvas": {
+        "width": 1280,
+        "height": 720
+      },
+      "cssCanvasWidth": 320,
+      "screenshot": "label-matrix-320-dpr2.png"
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 720
+      },
+      "deviceScaleFactor": 1,
+      "layout": {
+        "width": 132,
+        "height": 26,
+        "causeBaseline": -2,
+        "responseBaseline": 9,
+        "causeFontPx": 9,
+        "responseFontPx": 8,
+        "textLeft": -39,
+        "textMaximumWidth": 101
+      },
+      "rows": [
+        {
+          "channel": "visual",
+          "response": "investigate",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 68.02734375,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 3.6,
+          "gapDevicePx": 3.6
+        },
+        {
+          "channel": "visual",
+          "response": "avoid",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 75.578125,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 2,
+          "responseBottom": 9,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 2.4
+        },
+        {
+          "channel": "visual",
+          "response": "inspect",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 81.796875,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 11,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 3.6,
+          "gapDevicePx": 3.6
+        },
+        {
+          "channel": "visual",
+          "response": "guard",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 64.9140625,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 3.6,
+          "gapDevicePx": 3.6
+        },
+        {
+          "channel": "radio",
+          "response": "investigate",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 68.02734375,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 3.6,
+          "gapDevicePx": 3.6
+        },
+        {
+          "channel": "radio",
+          "response": "avoid",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 75.578125,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 2,
+          "responseBottom": 9,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 2.4
+        },
+        {
+          "channel": "radio",
+          "response": "inspect",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 81.796875,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 11,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 3.6,
+          "gapDevicePx": 3.6
+        },
+        {
+          "channel": "radio",
+          "response": "guard",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 64.9140625,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 3.6,
+          "gapDevicePx": 3.6
+        },
+        {
+          "channel": "scent",
+          "response": "investigate",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 68.02734375,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 3.6,
+          "gapDevicePx": 3.6
+        },
+        {
+          "channel": "scent",
+          "response": "avoid",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 75.578125,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 2,
+          "responseBottom": 9,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 2.4
+        },
+        {
+          "channel": "scent",
+          "response": "inspect",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 81.796875,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 11,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 3.6,
+          "gapDevicePx": 3.6
+        },
+        {
+          "channel": "scent",
+          "response": "guard",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 64.9140625,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 3.6,
+          "gapDevicePx": 3.6
+        }
+      ],
+      "logicalCanvas": {
+        "width": 1280,
+        "height": 720
+      },
+      "cssCanvasWidth": 768,
+      "screenshot": "label-matrix-768-dpr1.png"
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 720
+      },
+      "deviceScaleFactor": 2,
+      "layout": {
+        "width": 132,
+        "height": 26,
+        "causeBaseline": -2,
+        "responseBaseline": 9,
+        "causeFontPx": 9,
+        "responseFontPx": 8,
+        "textLeft": -39,
+        "textMaximumWidth": 101
+      },
+      "rows": [
+        {
+          "channel": "visual",
+          "response": "investigate",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 68.02734375,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 4.8
+        },
+        {
+          "channel": "visual",
+          "response": "avoid",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 75.578125,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 1,
+          "responseBottom": 10,
+          "gapLogicalPx": 2,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.2,
+          "gapDevicePx": 2.4
+        },
+        {
+          "channel": "visual",
+          "response": "inspect",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 81.796875,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 11,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 4.8
+        },
+        {
+          "channel": "visual",
+          "response": "guard",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 64.9140625,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 4.8
+        },
+        {
+          "channel": "radio",
+          "response": "investigate",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 68.02734375,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 4.8
+        },
+        {
+          "channel": "radio",
+          "response": "avoid",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 75.578125,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 1,
+          "responseBottom": 10,
+          "gapLogicalPx": 2,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.2,
+          "gapDevicePx": 2.4
+        },
+        {
+          "channel": "radio",
+          "response": "inspect",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 81.796875,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 11,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 4.8
+        },
+        {
+          "channel": "radio",
+          "response": "guard",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 64.9140625,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 4.8
+        },
+        {
+          "channel": "scent",
+          "response": "investigate",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 68.02734375,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 4.8
+        },
+        {
+          "channel": "scent",
+          "response": "avoid",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 75.578125,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 1,
+          "responseBottom": 10,
+          "gapLogicalPx": 2,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 1.2,
+          "gapDevicePx": 2.4
+        },
+        {
+          "channel": "scent",
+          "response": "inspect",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 81.796875,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 11,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 4.8
+        },
+        {
+          "channel": "scent",
+          "response": "guard",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 64.9140625,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2.4,
+          "gapDevicePx": 4.8
+        }
+      ],
+      "logicalCanvas": {
+        "width": 1280,
+        "height": 720
+      },
+      "cssCanvasWidth": 768,
+      "screenshot": "label-matrix-768-dpr2.png"
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "deviceScaleFactor": 1,
+      "layout": {
+        "width": 132,
+        "height": 26,
+        "causeBaseline": -2,
+        "responseBaseline": 9,
+        "causeFontPx": 9,
+        "responseFontPx": 8,
+        "textLeft": -39,
+        "textMaximumWidth": 101
+      },
+      "rows": [
+        {
+          "channel": "visual",
+          "response": "investigate",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 68.02734375,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 6,
+          "gapDevicePx": 6
+        },
+        {
+          "channel": "visual",
+          "response": "avoid",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 75.578125,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 2,
+          "responseBottom": 9,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 4
+        },
+        {
+          "channel": "visual",
+          "response": "inspect",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 81.796875,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 11,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 6,
+          "gapDevicePx": 6
+        },
+        {
+          "channel": "visual",
+          "response": "guard",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 64.9140625,
+          "causeTop": -10,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 6,
+          "gapDevicePx": 6
+        },
+        {
+          "channel": "radio",
+          "response": "investigate",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 68.02734375,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 6,
+          "gapDevicePx": 6
+        },
+        {
+          "channel": "radio",
+          "response": "avoid",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 75.578125,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 2,
+          "responseBottom": 9,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 4
+        },
+        {
+          "channel": "radio",
+          "response": "inspect",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 81.796875,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 11,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 6,
+          "gapDevicePx": 6
+        },
+        {
+          "channel": "radio",
+          "response": "guard",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 64.9140625,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 6,
+          "gapDevicePx": 6
+        },
+        {
+          "channel": "scent",
+          "response": "investigate",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 68.02734375,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 6,
+          "gapDevicePx": 6
+        },
+        {
+          "channel": "scent",
+          "response": "avoid",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 75.578125,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 2,
+          "responseBottom": 9,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 4
+        },
+        {
+          "channel": "scent",
+          "response": "inspect",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 81.796875,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 11,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 6,
+          "gapDevicePx": 6
+        },
+        {
+          "channel": "scent",
+          "response": "guard",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 64.9140625,
+          "causeTop": -8,
+          "causeBottom": -2,
+          "responseTop": 4,
+          "responseBottom": 9,
+          "gapLogicalPx": 6,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 6,
+          "gapDevicePx": 6
+        }
+      ],
+      "logicalCanvas": {
+        "width": 1280,
+        "height": 720
+      },
+      "cssCanvasWidth": 1280,
+      "screenshot": "label-matrix-1280-dpr1.png"
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "deviceScaleFactor": 2,
+      "layout": {
+        "width": 132,
+        "height": 26,
+        "causeBaseline": -2,
+        "responseBaseline": 9,
+        "causeFontPx": 9,
+        "responseFontPx": 8,
+        "textLeft": -39,
+        "textMaximumWidth": 101
+      },
+      "rows": [
+        {
+          "channel": "visual",
+          "response": "investigate",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 68.02734375,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 8
+        },
+        {
+          "channel": "visual",
+          "response": "avoid",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 75.578125,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 1,
+          "responseBottom": 10,
+          "gapLogicalPx": 2,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2,
+          "gapDevicePx": 4
+        },
+        {
+          "channel": "visual",
+          "response": "inspect",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 81.796875,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 11,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 8
+        },
+        {
+          "channel": "visual",
+          "response": "guard",
+          "text": {
+            "cause": "CORPS REPÉRÉ",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 71.5166015625,
+          "responseWidth": 64.9140625,
+          "causeTop": -10,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 8
+        },
+        {
+          "channel": "radio",
+          "response": "investigate",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 68.02734375,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 8
+        },
+        {
+          "channel": "radio",
+          "response": "avoid",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 75.578125,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 1,
+          "responseBottom": 10,
+          "gapLogicalPx": 2,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2,
+          "gapDevicePx": 4
+        },
+        {
+          "channel": "radio",
+          "response": "inspect",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 81.796875,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 11,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 8
+        },
+        {
+          "channel": "radio",
+          "response": "guard",
+          "text": {
+            "cause": "RADIO · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 69.0029296875,
+          "responseWidth": 64.9140625,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 8
+        },
+        {
+          "channel": "scent",
+          "response": "investigate",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Examen demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 68.02734375,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 8
+        },
+        {
+          "channel": "scent",
+          "response": "avoid",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Évitement demandé"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 75.578125,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 1,
+          "responseBottom": 10,
+          "gapLogicalPx": 2,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 2,
+          "gapDevicePx": 4
+        },
+        {
+          "channel": "scent",
+          "response": "inspect",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Inspection demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 81.796875,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 11,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 8
+        },
+        {
+          "channel": "scent",
+          "response": "guard",
+          "text": {
+            "cause": "ODEUR · CORPS",
+            "response": "Garde demandée"
+          },
+          "causeWidth": 72.50537109375,
+          "responseWidth": 64.9140625,
+          "causeTop": -9,
+          "causeBottom": -1,
+          "responseTop": 3,
+          "responseBottom": 10,
+          "gapLogicalPx": 4,
+          "insideBadge": true,
+          "noVerticalOverlap": true,
+          "withinNativeTextWidth": true,
+          "gapCssPx": 4,
+          "gapDevicePx": 8
+        }
+      ],
+      "logicalCanvas": {
+        "width": 1280,
+        "height": 720
+      },
+      "cssCanvasWidth": 1280,
+      "screenshot": "label-matrix-1280-dpr2.png"
+    }
+  ],
+  "scope": "12 cause/response combinations at three CSS widths and two DPR values, native draw function and real Chrome TextMetrics. These are explicit layout fixtures, not live encounters.",
+  "limits": [
+    "Geometric non-overlap under uniform Canvas scaling does not certify human reading on a phone",
+    "No physical display or controller qualification",
+    "Native encounter captures are recorded separately"
+  ]
+}

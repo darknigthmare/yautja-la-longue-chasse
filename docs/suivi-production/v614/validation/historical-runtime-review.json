@@ -1,0 +1,126 @@
+{
+  "version": "V6.14",
+  "reviewedAtUtc": "2026-10-23T13:25:19.229672Z",
+  "assessment": "favorable-with-explicit-execution-scope",
+  "assessmentFR": "Avis indépendant favorable : aucun défaut concret détecté dans le périmètre relu et les contrôles isolés exécutés. La validation complète des preuves historiques est une exécution séparée.",
+  "historicalRuntimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
+  "sourceMainCommitV614": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+  "currentRuntimeCoveredByHistoricalQA": false,
+  "reviewedFiles": [
+    {
+      "path": "tests/production-proofs-v106.test.mjs",
+      "bytes": 7634,
+      "sha256": "c17be8003d9027a721fcda4330db8298db5e9f12600b09d51f6ed02d656b3f1a"
+    },
+    {
+      "path": "scripts/historical-runtime-context-v614.mjs",
+      "bytes": 11804,
+      "sha256": "44efbe68d00e8c613ed25b75ec42535718712a7d4f933a1650c80bc4cb30460d"
+    },
+    {
+      "path": "tests/fixtures/runtime-history-v106-v614.json",
+      "bytes": 29563,
+      "sha256": "674c2ce278f937a6aa52d041c4071a1a5f93bfac418266a3e7b404d3e9615b5c"
+    },
+    {
+      "path": "scripts/snapshot-runtime-v106.mjs",
+      "bytes": 3566,
+      "sha256": "97ab4eca6e1faf7521641561131defeb6a87d23967863f2f82e2922a68c7f71f"
+    }
+  ],
+  "reviewInputFiles": [
+    {
+      "path": "app/game/RecentSpriteLibraryV85.tsx",
+      "bytes": 10168,
+      "sha256": "b13a4adc663c3a9e0618a2f8ec155a593cdd9e977f3b2ae77e2f302245e70c31"
+    },
+    {
+      "path": "app/game/systems/recentSpriteLibraryV85.ts",
+      "bytes": 16108,
+      "sha256": "b5e984478c0397aa6feb3b31341aa4e4478ef6249347485d9f8849b9526a0c03"
+    },
+    {
+      "path": "app/game/data/enforcerProductionV614.json",
+      "bytes": 49256,
+      "sha256": "721bf64fce4b7c88e98b139b690123f70e05e402c853e50032cca8ff43ad412a"
+    },
+    {
+      "path": "docs/v106-runtime-freeze.json",
+      "bytes": 170740,
+      "sha256": "5f17fda63e669a842289752295f83cd4b276090d9f897a12fefdb01b9872bfb1"
+    },
+    {
+      "path": "docs/v106-validation-summary.json",
+      "bytes": 12554,
+      "sha256": "9fb50b0322c506f63db0aee95148b48725240559b0bf2d8d91ae99f4f5c81216"
+    },
+    {
+      "path": "docs/suivi-production/v614/data/production-manifest.json",
+      "bytes": 424809,
+      "sha256": "c5bb571b38f02d76526de2c98634abcda46fee15541f6ef21b10dc03e223fbcd"
+    }
+  ],
+  "codeReviewFindingsFR": [
+    "Le gel V106 et son résumé sont vérifiés contre leurs SHA d’origine. Les deux sources archivées sont vérifiées contre les entrées gelées ; le script snapshot-runtime-v106.mjs historique n’est pas modifié.",
+    "Le contrôle du runtime actuel autorise exactement deux remplacements de source et un ajout de registre. Les chemins sont fixes, les empreintes avant/après sont fixées, et les deux sources doivent résulter des seules insertions littérales documentées.",
+    "Le helper exige que les 961 autres entrées gardent les métadonnées et empreintes du gel. Tout autre ajout, retrait, modification ou changement des contenus autorisés doit échouer.",
+    "Le registre complet est vérifié par son SHA et par les propriétés statiques de ses 18 assets : priorité 47, poses fixes, aucune identité remplacée, aucune nouvelle implantation en scène et correspondance au manifeste.",
+    "Le second test historique sur les trois parcours, leurs sources observées et leurs preuves portables reste inchangé. Les sources concernées par V6.14 ne sont pas assimilées à une nouvelle exécution des parcours V106."
+  ],
+  "isolatedExecution": {
+    "command": "node --input-type=module -",
+    "mode": "read-only inline review of exported validation functions",
+    "positiveChecks": {
+      "actualModifiedSourceBytesChecked": 2,
+      "actualRegistryChecked": true,
+      "staticManifestAssociationChecked": true,
+      "historicalMetadataEntries": 963,
+      "unchangedMetadataEntries": 961,
+      "allowedModifiedPaths": [
+        "app/game/RecentSpriteLibraryV85.tsx",
+        "app/game/systems/recentSpriteLibraryV85.ts"
+      ],
+      "allowedAddedPaths": [
+        "app/game/data/enforcerProductionV614.json"
+      ]
+    },
+    "negativeCases": [
+      {
+        "case": "append-unreviewed-bytes-to-RecentSpriteLibraryV85.tsx",
+        "rejected": true
+      },
+      {
+        "case": "append-unreviewed-bytes-to-recentSpriteLibraryV85.ts",
+        "rejected": true
+      },
+      {
+        "case": "change-pitCombat.ts-fingerprint-outside-scope",
+        "rejected": true
+      },
+      {
+        "case": "remove-a-historical-input",
+        "rejected": true
+      },
+      {
+        "case": "add-app-unreviewed.ts",
+        "rejected": true
+      },
+      {
+        "case": "change-registry-asset-priority-to-1000",
+        "rejected": true
+      }
+    ],
+    "negativeCasesPassed": 6,
+    "exitCode": 0,
+    "scopeFR": "Les deux sources modifiées et le registre ont été lus réellement. Pour tester isolément la logique de délimitation, les 961 autres entrées provenaient des métadonnées du gel ; cette exécution ne prétend pas avoir relu leurs 961 fichiers."
+  },
+  "fullHistoricalExecution": {
+    "includedInThisReport": false,
+    "status": "reported-separately",
+    "explanationFR": "La récupération des fichiers publics absents du checkout partiel et l’exécution sur les 963 vrais fichiers historiques sont prises en charge séparément. Aucun succès de cette exécution complète n’est revendiqué ici."
+  },
+  "limitationsFR": [
+    "Cette relecture et ses six mutations négatives ne remplacent ni l’exécution complète des preuves historiques ni une nouvelle QA navigateur du runtime du jeu V6.14.",
+    "Les empreintes ci-dessus identifient les fichiers relus ; une modification ultérieure de ces fichiers nécessite une nouvelle vérification ciblée."
+  ]
+}

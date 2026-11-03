@@ -1,0 +1,20 @@
+{
+  "name": "feral-special-intro-attempt-01a",
+  "key": "INTRO",
+  "part": "A",
+  "prompt": "Produce ONE sparse PORTRAIT native RGBA sprite sheet1024x1536: exactly TWO COLUMNS\u00d7FOUR ROWS, EIGHT isolated full-body drawings. Use attached images ONLY for Feral's identity/anatomy/style, not their backgrounds. New articulated poses, never mirror or rig. Accurate Feral: lean sinewy ochre-spotted skin, black dreads, ivory bone skull mask and exposed red mandibles, dark segmented loincloth, asymmetrical bone hip ornaments, bronze bracers, wrapped ankles and clawed bare toes. No shoulder cannon.\n\nEvery invisible cell512\u00d7384. Body about180px tall, never larger than210px, with at least80px ALPHA ZERO space above and below. Whole drawing including gear/any neutral stand-in below380px wide and inside its own cell. Huge empty transparent gutters; no touching/cropped silhouettes. LEFT COLUMN: Feral faces RIGHT, front/right-side view. RIGHT COLUMN: independently drawn Feral faces LEFT, back/left-side view; asymmetric gear stays on the same anatomical limbs. Same stage on each row. Same fixed body scale everywhere.\n\nBACKGROUND MUST BE ALPHA0 outside the exact figure/gear silhouettes: NO floor plane, no cast shadow, no aura, no ambient glow, no gradient, no fog, smoke or painted backdrop. Crisp narrow edges, no blur. No text, numbers, labels, borders or grid.\n\nGEAR AND SCOPE: Source introduction study: folding shield, mask aim, then spear separation. Spear is exactly one intact weapon until split; left forearm shield folds before the two-handed split. Right wrist blades retracted; no launcher.\n\nROW1: Neutral standing guard, shield folded left, one intact spear lowered in right hand at knee-to-waist level. This neutral reference is outside the clip and must show complete standing anatomy for a fixed body-height review.\nROW2: Left forearm raises and the radial shield fan begins to unfold while right hand holds the intact spear lowered.\nROW3: Shield is fully open in front of the left forearm, head raises toward the duel space, knees flex into guard.\nROW4: Feral rotates his mask and shoulders toward an exact point in the duel space, shield steady and spear still whole, no laser line.",
+  "refs": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-left.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-left.png"
+  ],
+  "taskStore": "feralSpecialTasks",
+  "tool": "image_gen",
+  "originalSource": "/workspace/generated_images/exec-07edb958-48d0-4021-a58c-b034a33604cd.png",
+  "originalSha256": "3459bbf5c90f43f57195185b321c8c7b20c69d3117ae78b3310c49761c2d21a1",
+  "nativeTransparentBackground": true,
+  "cpuPixelEditing": false,
+  "matchesIntakePng": true
+}

@@ -1,0 +1,583 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-20T00:59:16.580Z",
+  "scope": "Real renderer screenshots inspected; reference-based fan adaptations, not certified1:1 geometry.",
+  "compositions": [
+    {
+      "arenaId": "arena-101-predator-1987-guerrilla-camp",
+      "accepted": true,
+      "compositionDigest": "660af0e97dedae0bbe3c7603d270d2f53cec1491e0fa329e2ba83b480018d8c8",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-101-predator-1987-guerrilla-camp/center.png",
+        "work/v43/arena-renderer-qa/arena-101-predator-1987-guerrilla-camp/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-101-predator-1987-guerrilla-camp/right-corner.png"
+      ],
+      "notes": "Cour, baraquements et tour restent lisibles au centre et aux deux coins. Racines et troncs alpha ne couvrent pas la zone centrale. Pieds posés sur la ligne du sol mesurée. Adaptation du camp, géométrie non certifiée conforme au plateau. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-102-predator-1987-rocky-riverbank",
+      "accepted": true,
+      "compositionDigest": "ae4d7d6e38ae85e8f4c4e91de4c2e4fa6df92508cafafe42300fc72f9a1bdb1b",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-102-predator-1987-rocky-riverbank/center.png",
+        "work/v43/arena-renderer-qa/arena-102-predator-1987-rocky-riverbank/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-102-predator-1987-rocky-riverbank/right-corner.png"
+      ],
+      "notes": "Bassin, rive rocheuse et végétation restent lisibles aux trois cadrages. Sol de duel sec ajouté par adaptation2D. Chute présente dans le P0 généré mais non confirmée par la photographie officielle consultée ; ne pas revendiquer reconstruction exacte. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-103-predator-1987-final-trap-clearing",
+      "accepted": true,
+      "compositionDigest": "c40117cc4b6232234910788cd2c9467152abbe0e39365279bdb63fec207b0361",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-103-predator-1987-final-trap-clearing/center.png",
+        "work/v43/arena-renderer-qa/arena-103-predator-1987-final-trap-clearing/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-103-predator-1987-final-trap-clearing/right-corner.png"
+      ],
+      "notes": "Clairière nocturne et bois suspendu restent identifiables au centre et aux deux coins. Les modules naturels encadrent sans couvrir les combattants. Piège décoratif peint uniquement, aucune interaction ou physique du piège déclarée. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-104-predator-2-1990-subway",
+      "accepted": true,
+      "compositionDigest": "8b748f4648b114b0c81460f92d11b6d0844761ae562306f5ca3b2ce8752852ec",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-104-predator-2-1990-subway/center.png",
+        "work/v43/arena-renderer-qa/arena-104-predator-2-1990-subway/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-104-predator-2-1990-subway/right-corner.png"
+      ],
+      "notes": "Portes et banquettes du métro restent identifiables, rails et câbles sont des modules humains distincts. Caisses basses périphériques, centre de combat dégagé. Aucune fidélité exacte aux dimensions du wagon déclarée. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-105-predator-2-1990-slaughterhouse",
+      "accepted": true,
+      "compositionDigest": "5b0e7fa9ddad29fa043b2eb228c31aa2ac48c58641fe26d986e464942e30c3fd",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-105-predator-2-1990-slaughterhouse/center.png",
+        "work/v43/arena-renderer-qa/arena-105-predator-2-1990-slaughterhouse/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-105-predator-2-1990-slaughterhouse/right-corner.png"
+      ],
+      "notes": "Carcasses suspendues et chambre froide gardent leur profondeur aux trois cadrages. Ossature et conduites industrielles neutres, aucun élément Yautja ajouté au décor humain. Combat lisible devant le sol mesuré. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-106-predator-2-1990-trophy-ship",
+      "accepted": true,
+      "compositionDigest": "90c5fca984b2f10e3484160a6e5c89b46042b019290fa4fc50ba311ff79603b4",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-106-predator-2-1990-trophy-ship/center.png",
+        "work/v43/arena-renderer-qa/arena-106-predator-2-1990-trophy-ship/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-106-predator-2-1990-trophy-ship/right-corner.png"
+      ],
+      "notes": "Chambre bronze et alcôves conservées aux trois cadrages. Deux trophées sont des PNG indépendants du P0 et restent visibles sur les côtés. Les crânes sont les dessins originaux du projet, pas les trophées exacts du film. Modules vaisseau du Hall réemployés explicitement, aucun équipement industriel humain.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation not yet verified",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-107-predators-2010-hunting-camp",
+      "accepted": true,
+      "compositionDigest": "775ace0f4fc91b57f51fa4392d208ad45f27f8799738fb8a1c2b9255f337f42e",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-107-predators-2010-hunting-camp/center.png",
+        "work/v43/arena-renderer-qa/arena-107-predators-2010-hunting-camp/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-107-predators-2010-hunting-camp/right-corner.png"
+      ],
+      "notes": "Camp forestier et foyer peint conservent leur lecture au centre et aux deux coins. Les troncs et racines réels encadrent la piste sans masquer les combattants. Flammes du P0 statiques, aucune animation du foyer déclarée. Géométrie de duel adaptée et non certifiée1:1. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-108-predators-2010-tall-grass",
+      "accepted": true,
+      "compositionDigest": "85d46f8969a15ae7257f90fbe737ef296bd10d41301f3b4f955bf746b6661448",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-108-predators-2010-tall-grass/center.png",
+        "work/v43/arena-renderer-qa/arena-108-predators-2010-tall-grass/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-108-predators-2010-tall-grass/right-corner.png"
+      ],
+      "notes": "Hautes herbes alpha bien séparées, sans halo bleu visible dans les trois cadrages. Champ et lune restent lisibles ; piste ouverte volontairement pour duel. Pas de simulation du vent déclarée. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-109-predators-2010-noland-wreck",
+      "accepted": true,
+      "compositionDigest": "4b7f798b04614e8c92651181285cfd5d0af2134b5c385f88ec9005fe8ada990a",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-109-predators-2010-noland-wreck/center.png",
+        "work/v43/arena-renderer-qa/arena-109-predators-2010-noland-wreck/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-109-predators-2010-noland-wreck/right-corner.png"
+      ],
+      "notes": "Épave et ouvertures restent distinctes du laboratoire et du métro. Modules utilitaires périphériques adaptés au refuge, aucune prétention que ces caisses correspondent aux accessoires exacts du film. Foyer peint statique. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-110-the-predator-2018-stargazer-lab",
+      "accepted": true,
+      "compositionDigest": "f0fb3c5dd7dc82a2f5c6ca9bbe733d082cb9e4350496f70d5c10bf9891f2a975",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-110-the-predator-2018-stargazer-lab/center.png",
+        "work/v43/arena-renderer-qa/arena-110-the-predator-2018-stargazer-lab/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-110-the-predator-2018-stargazer-lab/right-corner.png"
+      ],
+      "notes": "Laboratoire éclairé, vitres et portes restent lisibles au centre et aux deux coins. Accessoires industriels humains séparés, pas de collision fictive sur les caisses. Surface métallique de contact conforme au groundY. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-111-the-predator-2018-school-field",
+      "accepted": true,
+      "compositionDigest": "ed5cffcb8e03fdc1da91dedb4c4b7bcca4420547d17d8334e9479c28fbdb264e",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-111-the-predator-2018-school-field/center.png",
+        "work/v43/arena-renderer-qa/arena-111-the-predator-2018-school-field/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-111-the-predator-2018-school-field/right-corner.png"
+      ],
+      "notes": "Terrain scolaire éclairé et gradins restent lisibles. Les arbres périphériques tempérés ne masquent ni buts ni centre ; bordure de terrain recomposée pour le duel. Aucune jungle tropicale. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-112-the-predator-2018-forest-crash",
+      "accepted": true,
+      "compositionDigest": "eaac75efbd7035d69ddccc315ea721164236e2b6bfd67172711c49385e852b64",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-112-the-predator-2018-forest-crash/center.png",
+        "work/v43/arena-renderer-qa/arena-112-the-predator-2018-forest-crash/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-112-the-predator-2018-forest-crash/right-corner.png"
+      ],
+      "notes": "Coque accidentée en retrait clairement distincte des troncs, forêt tempérée sans palmes. Bord de duel ajouté devant, pas de collision sur la coque peinte ; fumée et flammes statiques. Trois cadrages contrôlés : appuis cohérents et aucun module ne masque le centre.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation not yet verified",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-113-prey-2022-trapper-clearing",
+      "accepted": true,
+      "compositionDigest": "a4c010c9c9d6b434084c9979ce09d555f475f05785dd196988cbc81baf953b62",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-113-prey-2022-trapper-clearing/center.png",
+        "work/v43/arena-renderer-qa/arena-113-prey-2022-trapper-clearing/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-113-prey-2022-trapper-clearing/right-corner.png"
+      ],
+      "notes": "Bois morts et clairière brûlée conservent leurs silhouettes ; modules tempérés sans palmes. Contact sol/terre continu au centre et aux coins, combat dégagé. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-114-prey-2022-bear-river",
+      "accepted": true,
+      "compositionDigest": "1999a17f71a3c7df570b4a13150dfc2465454a4e5848dcd5c0834d2eff3bafde",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-114-prey-2022-bear-river/center.png",
+        "work/v43/arena-renderer-qa/arena-114-prey-2022-bear-river/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-114-prey-2022-bear-river/right-corner.png"
+      ],
+      "notes": "Rivière, galets et bois tempérés gardent leur profondeur. Combattants posés sur la rive ajoutée, eau peinte en retrait sans collision aquatique. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-115-prey-2022-mud-pit",
+      "accepted": true,
+      "compositionDigest": "916bc624d47b7e838b6ad9b026c1417b444607011c3294afafbbe5dbbbafe103",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-115-prey-2022-mud-pit/center.png",
+        "work/v43/arena-renderer-qa/arena-115-prey-2022-mud-pit/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-115-prey-2022-mud-pit/right-corner.png"
+      ],
+      "notes": "Petit bourbier forestier, racines et eau sombre restent lisibles. Rive de duel stable devant le piège peint ; aucun enlisement ni danger implicite dans ce profil neutre. Trois cadrages contrôlés : appuis cohérents et aucun module ne masque le centre.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation not yet verified",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-116-killer-of-killers-2025-viking-ice",
+      "accepted": true,
+      "compositionDigest": "6d95651c5650e9e8348f281994baea338989a936ef3f8dc856edb862f46260a7",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-116-killer-of-killers-2025-viking-ice/center.png",
+        "work/v43/arena-renderer-qa/arena-116-killer-of-killers-2025-viking-ice/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-116-killer-of-killers-2025-viking-ice/right-corner.png"
+      ],
+      "notes": "Lac gelé et relief enneigé lisibles aux trois cadrages ; troncs nus maintenus aux bords, plancher de glace et façade indépendante correctement raccordés aux pieds. Fractures décoratives, aucune glace cassable ni glissade revendiquée.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-117-killer-of-killers-2025-japan-rooftops",
+      "accepted": true,
+      "compositionDigest": "0743e5209642c56fc428450f1cfce7b3a8b35ccbcabc25b6668b7ea656e9c8d7",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-117-killer-of-killers-2025-japan-rooftops/center.png",
+        "work/v43/arena-renderer-qa/arena-117-killer-of-killers-2025-japan-rooftops/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-117-killer-of-killers-2025-japan-rooftops/right-corner.png"
+      ],
+      "notes": "Toitures de tuiles bleu-gris et charpentes japonaises cohérentes aux trois cadrages. Modules indépendants recadrés sur alpha solide ; contact des pieds mesuré et corniche de toit continue. Poteaux et petits tas de tuiles périphériques, avant-toits en hauteur sans gêner le duel. Aucun module industriel ou Yautja ajouté. Adaptation latérale de la poursuite, géométrie exacte du film non certifiée.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-118-killer-of-killers-2025-yautja-arena",
+      "accepted": true,
+      "compositionDigest": "50e95d5c299caa442ed9c6fedf564af4508f3dc72544cbbded455ec24e8d5527",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-118-killer-of-killers-2025-yautja-arena/center.png",
+        "work/v43/arena-renderer-qa/arena-118-killer-of-killers-2025-yautja-arena/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-118-killer-of-killers-2025-yautja-arena/right-corner.png"
+      ],
+      "notes": "Rampe du vaisseau et désert restent lisibles au centre et aux deux coins. Sol de pierre réel raccordé aux pieds, piliers et braseros originaux du projet explicitement réemployés en périphérie. Adaptation de l’angle de la rampe d’arrivée, pas reconstitution exacte de toute l’enceinte ; braseros statiques.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-119-badlands-2025-hostile-forest",
+      "accepted": true,
+      "compositionDigest": "452ee56c06b9f8f51c598ecb4d00f9fd1391afc14ef1259435fd5921063264af",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-119-badlands-2025-hostile-forest/center.png",
+        "work/v43/arena-renderer-qa/arena-119-badlands-2025-hostile-forest/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-119-badlands-2025-hostile-forest/right-corner.png"
+      ],
+      "notes": "Forêt de très hauts troncs et fougères, lumière chaude diagonale conservée. Modules naturels en périphérie seulement, pas de végétal fantastique ni symbole ajouté. Trois cadrages contrôlés : appuis cohérents et aucun module ne masque le centre.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation not yet verified",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-120-badlands-2025-weyland-lab",
+      "accepted": true,
+      "compositionDigest": "49f1d4796a4320868d0c5cfd9b4f1f418e933493acf5b8345937961d1c943a6f",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-120-badlands-2025-weyland-lab/center.png",
+        "work/v43/arena-renderer-qa/arena-120-badlands-2025-weyland-lab/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-120-badlands-2025-weyland-lab/right-corner.png"
+      ],
+      "notes": "Installation greige et bras de service gardent leur lecture. Module métal humain neutre, aucun glyphe Yautja ou néon cyan emprunté. Les bras peints ne sont pas des animations. Trois cadrages contrôlés : appuis cohérents et aucun module ne masque le centre.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation not yet verified",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-121-badlands-2025-clan-prologue",
+      "accepted": true,
+      "compositionDigest": "d0340aea41ec78cb5ccc34fbe0bb6b97f384bcfeb36d0c78289374b32eb09c61",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-121-badlands-2025-clan-prologue/center.png",
+        "work/v43/arena-renderer-qa/arena-121-badlands-2025-clan-prologue/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-121-badlands-2025-clan-prologue/right-corner.png"
+      ],
+      "notes": "Horizon rocheux orange et monolithe conservés aux trois cadrages ; sol de pierre indépendant et accessoires rituels aux extrémités, sans masquer les combattants. Les accessoires du projet ne sont pas présentés comme des objets exacts du film ; rebord sans collision ou passage additionnel.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-122-avp-2004-sacrificial-chamber",
+      "accepted": true,
+      "compositionDigest": "6c7778589e772d8c5b63cca99d0e93fb2c5b8d21c9fabb4ed481aceca4887aca",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-122-avp-2004-sacrificial-chamber/center.png",
+        "work/v43/arena-renderer-qa/arena-122-avp-2004-sacrificial-chamber/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-122-avp-2004-sacrificial-chamber/right-corner.png"
+      ],
+      "notes": "Chambre pyramidale grise et porte monumentale visibles au centre et aux deux coins. Linteaux, piliers, blocs et façade de pierre indépendants cohérents avec le fond, contact des pieds continu. Aucun métal extraterrestre de kits antérieurs importé dans cette scène.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-123-avp-2004-whaling-station",
+      "accepted": true,
+      "compositionDigest": "9edb2b0d17fdda0e9429b1f6d5ef4e7f49496ddc22d361b1b4410a3eb1432049",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-123-avp-2004-whaling-station/center.png",
+        "work/v43/arena-renderer-qa/arena-123-avp-2004-whaling-station/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-123-avp-2004-whaling-station/right-corner.png"
+      ],
+      "notes": "Station baleinière, neige et équipements humains gardent leur identité aux trois cadrages. Modules industriels périphériques discrets et sol de glace raccordé sans arbres antarctiques ni symboles Yautja. Scène de duel fixe ; machines et portes restent décoratives.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-124-avp-2004-queen-chamber",
+      "accepted": true,
+      "compositionDigest": "499774893fbca3a2a956b955f4a829ec4b3a09ed6a7263bf04b5248154f9c273",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-124-avp-2004-queen-chamber/center.png",
+        "work/v43/arena-renderer-qa/arena-124-avp-2004-queen-chamber/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-124-avp-2004-queen-chamber/right-corner.png"
+      ],
+      "notes": "Chaînes, chambre profonde et plateforme peinte conservées aux trois cadrages ; modules de pierre indépendants et sol de combat continu au premier plan. La reine et les mécanismes ne sont pas des acteurs interactifs ; aucune transition de secteur revendiquée.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-125-avpr-2007-sewers",
+      "accepted": true,
+      "compositionDigest": "0fa6229e6511b2571fb03a790aebdeb21bef708a00ba3a721d9beb157c58294f",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-125-avpr-2007-sewers/center.png",
+        "work/v43/arena-renderer-qa/arena-125-avpr-2007-sewers/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-125-avpr-2007-sewers/right-corner.png"
+      ],
+      "notes": "Égouts de brique, conduits et eau sombre distincts du laboratoire. Passage métallique au premier plan, ouvertures peintes sans sortie ni collision aquatique. Trois cadrages contrôlés : appuis cohérents et aucun module ne masque le centre.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation not yet verified",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-126-avpr-2007-hospital-roof",
+      "accepted": true,
+      "compositionDigest": "bf130a9803e49f6436f88f429e01577ba7f2cc98f1985477285cb08608ad6baa",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-126-avpr-2007-hospital-roof/center.png",
+        "work/v43/arena-renderer-qa/arena-126-avpr-2007-hospital-roof/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-126-avpr-2007-hospital-roof/right-corner.png"
+      ],
+      "notes": "Toit et équipements hospitaliers, horizon urbain visible. Conduit éloigné abaissé pour ne pas barrer le ciel. Pas de chute ni extension de bordure jouable supplémentaire. Trois cadrages contrôlés : appuis cohérents et aucun module ne masque le centre.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation not yet verified",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-127-avpr-2007-forest-crash",
+      "accepted": true,
+      "compositionDigest": "e016bc1890d911e45c4e04136cca8c7d48337faba56e4f7a0f587d0a7b7b9bac",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-127-avpr-2007-forest-crash/center.png",
+        "work/v43/arena-renderer-qa/arena-127-avpr-2007-forest-crash/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-127-avpr-2007-forest-crash/right-corner.png"
+      ],
+      "notes": "Débris de vaisseau, fumée et forêt nocturne conservés. Troncs tempérés et sous-sol terre distincts, centre dégagé et feu uniquement peint. Trois cadrages contrôlés : appuis cohérents et aucun module ne masque le centre.",
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation not yet verified",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-128-avp-classic-2000-colonial-base",
+      "accepted": true,
+      "compositionDigest": "8fd6039d1d2f5b6421854b2231144b944a721e009b2730de11e97edcec3f4b46",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-128-avp-classic-2000-colonial-base/center.png",
+        "work/v43/arena-renderer-qa/arena-128-avp-classic-2000-colonial-base/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-128-avp-classic-2000-colonial-base/right-corner.png"
+      ],
+      "notes": "Base coloniale : travées, baies et sas restent lisibles. Sol et façade métalliques indépendants au premier plan. Lieu-type officiel, pas une mission exacte ni une géométrie certifiée. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-129-avp-classic-2000-starship",
+      "accepted": true,
+      "compositionDigest": "04223f86224701b3515db9e4584f8c42a3c642fca34f297239a2aa64f52d7440",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-129-avp-classic-2000-starship/center.png",
+        "work/v43/arena-renderer-qa/arena-129-avp-classic-2000-starship/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-129-avp-classic-2000-starship/right-corner.png"
+      ],
+      "notes": "Vaisseau : côtes métalliques et pont peint lisibles ; le vrai sol de duel est une passerelle plus proche. Le bord peint en retrait ne reçoit pas de collision fictive. Lieu-type, pas mission identifiée. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-130-avp-classic-2000-space-station",
+      "accepted": true,
+      "compositionDigest": "2660ea38937414aee1362fa5408aa8baf0d575f58ffa51f119840b1bf46ded27",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-130-avp-classic-2000-space-station/center.png",
+        "work/v43/arena-renderer-qa/arena-130-avp-classic-2000-space-station/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-130-avp-classic-2000-space-station/right-corner.png"
+      ],
+      "notes": "Station : puits profond et passerelles de fond lisibles, sol permanent indépendant devant. Aucun vide létal ou accès aux étages peints déclaré. Lieu-type adapté. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-131-avp-2010-freyas-prospect",
+      "accepted": true,
+      "compositionDigest": "83da63cac5c8739e79d751697633e697486d4b817a56ba60770cfa63acf84bff",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-131-avp-2010-freyas-prospect/center.png",
+        "work/v43/arena-renderer-qa/arena-131-avp-2010-freyas-prospect/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-131-avp-2010-freyas-prospect/right-corner.png"
+      ],
+      "notes": "Freya : colonie derrière le marais, vraie passerelle métallique indépendante au premier plan. Eau en retrait, aucun gameplay aquatique ni fidélité de plan certifiée. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-132-avp-2010-refinery",
+      "accepted": true,
+      "compositionDigest": "711ff25ae14b20e86c54993244373367038310316c91741367b428316c7a69fb",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-132-avp-2010-refinery/center.png",
+        "work/v43/arena-renderer-qa/arena-132-avp-2010-refinery/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-132-avp-2010-refinery/right-corner.png"
+      ],
+      "notes": "Machine : raffinerie industrielle et passerelles peintes distinctes, lieu de la carte Survivor Swarm. Piste réelle devant, aucune activation des passerelles décoratives. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-133-avp-2010-docks",
+      "accepted": true,
+      "compositionDigest": "760f3ea8f5419f8b8984d681d3c66e797e05520d9ee579974a6deab63ab5c781",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-133-avp-2010-docks/center.png",
+        "work/v43/arena-renderer-qa/arena-133-avp-2010-docks/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-133-avp-2010-docks/right-corner.png"
+      ],
+      "notes": "Docks : grues et bassin restent lisibles. Quai de duel métallique séparé devant les eaux ; grues et conteneurs peints statiques, pas modules animés. Façade indépendante recadrée sur les pixels visibles, raccord au sol contrôlé sans bande vide.",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation must match this exact updated layout",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-134-predator-hunting-grounds-overgrowth",
+      "accepted": true,
+      "compositionDigest": "03f7a003a3dc6539adf7d8abdf9812911bc57b886493926f1b0627b912e06ea5",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-134-predator-hunting-grounds-overgrowth/center.png",
+        "work/v43/arena-renderer-qa/arena-134-predator-hunting-grounds-overgrowth/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-134-predator-hunting-grounds-overgrowth/right-corner.png"
+      ],
+      "notes": "Ruines et rivière amazonienne gardent leur profondeur. Sol réel ajouté devant les eaux, modules forestiers séparés ; pas de traversée aquatique ou prédation environnementale simulée. Trois cadrages contrôlés : appuis cohérents et aucun module ne masque le centre.",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation not yet verified",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-135-predator-hunting-grounds-excavation",
+      "accepted": true,
+      "compositionDigest": "59f37b0b0062aa6d39533fe77728e2e23ddbc0a771e8dbd267543072816a0ce5",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-135-predator-hunting-grounds-excavation/center.png",
+        "work/v43/arena-renderer-qa/arena-135-predator-hunting-grounds-excavation/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-135-predator-hunting-grounds-excavation/right-corner.png"
+      ],
+      "notes": "Galeries d’excavation, échafaudages et ouvertures distincts. Passerelle réelle au premier plan, galeries du P0 purement décoratives sans Predkour ni accès fictif. Trois cadrages contrôlés : appuis cohérents et aucun module ne masque le centre.",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation not yet verified",
+        "No interactive sector transitions or animated props"
+      ]
+    },
+    {
+      "arenaId": "arena-136-predator-hunting-grounds-airstrip",
+      "accepted": true,
+      "compositionDigest": "1ffff2829913e51b4b4b25a3b9b38c104e41c0fe2a896db5438e8280706e5c55",
+      "captures": [
+        "work/v43/arena-renderer-qa/arena-136-predator-hunting-grounds-airstrip/center.png",
+        "work/v43/arena-renderer-qa/arena-136-predator-hunting-grounds-airstrip/left-corner.png",
+        "work/v43/arena-renderer-qa/arena-136-predator-hunting-grounds-airstrip/right-corner.png"
+      ],
+      "notes": "Piste, hangars et tour radio conservés, avions peints en fond. Modules utilitaires indépendants, sol proche adapté au duel ; aucun véhicule animé ou pilotable déclaré. Trois cadrages contrôlés : appuis cohérents et aucun module ne masque le centre.",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "remainingScope": [
+        "Full application navigation not yet verified",
+        "No interactive sector transitions or animated props"
+      ]
+    }
+  ]
+}

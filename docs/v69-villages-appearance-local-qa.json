@@ -1,0 +1,575 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4187",
+  "checks": [
+    {
+      "id": "ash-marches",
+      "status": "PASS",
+      "totalPopulation": 30,
+      "additionalResidents": 18,
+      "visibleAdditional": 6,
+      "activities": 4,
+      "props": 18,
+      "talked": true,
+      "routes": [
+        {
+          "id": "ash-marches",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1932.1573400905547,
+            "y": 2086.057853261968
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 1935,
+              "y": 2085
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "village",
+          "from": {
+            "x": 1932.1573400905547,
+            "y": 2086.057853261968
+          },
+          "to": {
+            "x": 1932.1573400905547,
+            "y": 2311.391186595309
+          },
+          "points": [
+            {
+              "x": 1932.1573400905547,
+              "y": 2086.057853261968
+            },
+            {
+              "x": 1935,
+              "y": 2305,
+              "facing": 1,
+              "moving": false,
+              "yielding": false,
+              "progress": 1
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "village",
+          "from": {
+            "x": 1932.1573400905547,
+            "y": 2311.391186595309
+          },
+          "to": {
+            "x": 655.3166670918172,
+            "y": 746.395504838709
+          },
+          "points": [
+            {
+              "x": 1932.1573400905547,
+              "y": 2311.391186595309
+            },
+            {
+              "x": 1710,
+              "y": 1890
+            },
+            {
+              "x": 650,
+              "y": 745
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "village",
+          "from": {
+            "x": 655.3166670918172,
+            "y": 746.395504838709
+          },
+          "to": {
+            "x": 1199.8166670918172,
+            "y": 746.395504838709
+          },
+          "points": [
+            {
+              "x": 655.3166670918172,
+              "y": 746.395504838709
+            },
+            {
+              "x": 1200,
+              "y": 745
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "village",
+          "from": {
+            "x": 1199.8166670918172,
+            "y": 746.395504838709
+          },
+          "to": {
+            "x": 1905.1708332270457,
+            "y": 1245.7957569452547
+          },
+          "points": [
+            {
+              "x": 1199.8166670918172,
+              "y": 746.395504838709
+            },
+            {
+              "x": 1575,
+              "y": 1215
+            },
+            {
+              "x": 1900,
+              "y": 1250
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 303.6666666666667
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        },
+        {
+          "id": "ash-marches",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 303.6666666666667
+          },
+          "to": {
+            "x": 380,
+            "y": 615.6666666666666
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 303.6666666666667
+            },
+            {
+              "x": 380,
+              "y": 620
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar-jungle",
+      "status": "PASS",
+      "totalPopulation": 30,
+      "additionalResidents": 18,
+      "visibleAdditional": 5,
+      "activities": 4,
+      "props": 18,
+      "talked": true,
+      "routes": [
+        {
+          "id": "pillar-jungle",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1936.599205235717,
+            "y": 2086.8915352688095
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 945,
+              "y": 2520
+            },
+            {
+              "x": 1935,
+              "y": 2085
+            }
+          ]
+        },
+        {
+          "id": "pillar-jungle",
+          "zone": "village",
+          "from": {
+            "x": 1936.599205235717,
+            "y": 2086.8915352688095
+          },
+          "to": {
+            "x": 1936.599205235717,
+            "y": 2195.2248686021467
+          },
+          "points": [
+            {
+              "x": 1936.599205235717,
+              "y": 2086.8915352688095
+            },
+            {
+              "x": 1935,
+              "y": 2194.6,
+              "facing": -1,
+              "moving": true,
+              "yielding": false,
+              "progress": 0.49818181818181817
+            }
+          ]
+        },
+        {
+          "id": "pillar-jungle",
+          "zone": "village",
+          "from": {
+            "x": 1936.599205235717,
+            "y": 2195.2248686021467
+          },
+          "to": {
+            "x": 563.1986117134077,
+            "y": 814.151673705762
+          },
+          "points": [
+            {
+              "x": 1936.599205235717,
+              "y": 2195.2248686021467
+            },
+            {
+              "x": 1755,
+              "y": 1980
+            },
+            {
+              "x": 1710,
+              "y": 1890
+            },
+            {
+              "x": 570,
+              "y": 815
+            }
+          ]
+        },
+        {
+          "id": "pillar-jungle",
+          "zone": "village",
+          "from": {
+            "x": 563.1986117134077,
+            "y": 814.151673705762
+          },
+          "to": {
+            "x": 1258.8676592717195,
+            "y": 777.3821210840622
+          },
+          "points": [
+            {
+              "x": 563.1986117134077,
+              "y": 814.151673705762
+            },
+            {
+              "x": 1250,
+              "y": 775
+            }
+          ]
+        },
+        {
+          "id": "pillar-jungle",
+          "zone": "village",
+          "from": {
+            "x": 1258.8676592717195,
+            "y": 777.3821210840622
+          },
+          "to": {
+            "x": 1860.4365081389606,
+            "y": 1030.3454565552204
+          },
+          "points": [
+            {
+              "x": 1258.8676592717195,
+              "y": 777.3821210840622
+            },
+            {
+              "x": 1575,
+              "y": 1035
+            },
+            {
+              "x": 1850,
+              "y": 1030
+            }
+          ]
+        },
+        {
+          "id": "pillar-jungle",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 308
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        },
+        {
+          "id": "pillar-jungle",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 308
+          },
+          "to": {
+            "x": 380,
+            "y": 620
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 308
+            },
+            {
+              "x": 380,
+              "y": 620
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cold-crown",
+      "status": "PASS",
+      "totalPopulation": 30,
+      "additionalResidents": 18,
+      "visibleAdditional": 5,
+      "activities": 4,
+      "props": 18,
+      "talked": true,
+      "routes": [
+        {
+          "id": "cold-crown",
+          "zone": "village",
+          "from": {
+            "x": 520,
+            "y": 2800
+          },
+          "to": {
+            "x": 1937.6573400905547,
+            "y": 2086.057853261968
+          },
+          "points": [
+            {
+              "x": 520,
+              "y": 2800
+            },
+            {
+              "x": 1935,
+              "y": 2085
+            }
+          ]
+        },
+        {
+          "id": "cold-crown",
+          "zone": "village",
+          "from": {
+            "x": 1937.6573400905547,
+            "y": 2086.057853261968
+          },
+          "to": {
+            "x": 1937.6573400905547,
+            "y": 2168.391186595304
+          },
+          "points": [
+            {
+              "x": 1937.6573400905547,
+              "y": 2086.057853261968
+            },
+            {
+              "x": 1935,
+              "y": 2166.6000000000004,
+              "facing": 1,
+              "moving": true,
+              "yielding": false,
+              "progress": 0.3709090909090916
+            }
+          ]
+        },
+        {
+          "id": "cold-crown",
+          "zone": "village",
+          "from": {
+            "x": 1937.6573400905547,
+            "y": 2168.391186595304
+          },
+          "to": {
+            "x": 748.3783732841227,
+            "y": 837.0501824447693
+          },
+          "points": [
+            {
+              "x": 1937.6573400905547,
+              "y": 2168.391186595304
+            },
+            {
+              "x": 1755,
+              "y": 2025
+            },
+            {
+              "x": 1755,
+              "y": 1935
+            },
+            {
+              "x": 750,
+              "y": 835
+            }
+          ]
+        },
+        {
+          "id": "cold-crown",
+          "zone": "village",
+          "from": {
+            "x": 748.3783732841227,
+            "y": 837.0501824447693
+          },
+          "to": {
+            "x": 1433.4382938076944,
+            "y": 769.6393359716529
+          },
+          "points": [
+            {
+              "x": 748.3783732841227,
+              "y": 837.0501824447693
+            },
+            {
+              "x": 1430,
+              "y": 765
+            }
+          ]
+        },
+        {
+          "id": "cold-crown",
+          "zone": "village",
+          "from": {
+            "x": 1433.4382938076944,
+            "y": 769.6393359716529
+          },
+          "to": {
+            "x": 1996.2307537506174,
+            "y": 1135.0515771388045
+          },
+          "points": [
+            {
+              "x": 1433.4382938076944,
+              "y": 769.6393359716529
+            },
+            {
+              "x": 1710,
+              "y": 1125
+            },
+            {
+              "x": 2000,
+              "y": 1140
+            }
+          ]
+        },
+        {
+          "id": "cold-crown",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 620
+          },
+          "to": {
+            "x": 380,
+            "y": 308
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 620
+            },
+            {
+              "x": 380,
+              "y": 310
+            }
+          ]
+        },
+        {
+          "id": "cold-crown",
+          "zone": "interior",
+          "from": {
+            "x": 380,
+            "y": 308
+          },
+          "to": {
+            "x": 380,
+            "y": 620
+          },
+          "points": [
+            {
+              "x": 380,
+              "y": 308
+            },
+            {
+              "x": 380,
+              "y": 620
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "captures": [
+    "work-local/v69/qa/villages-appearance-final/ash-marches-activity.jpg",
+    "work-local/v69/qa/villages-appearance-final/ash-marches-inhabitant-dialogue.jpg",
+    "work-local/v69/qa/villages-appearance-final/ash-marches-house-n-0-props.jpg",
+    "work-local/v69/qa/villages-appearance-final/ash-marches-house-n-1-props.jpg",
+    "work-local/v69/qa/villages-appearance-final/ash-marches-interior-open.jpg",
+    "work-local/v69/qa/villages-appearance-final/ash-marches-interior-service.jpg",
+    "work-local/v69/qa/villages-appearance-final/pillar-jungle-activity.jpg",
+    "work-local/v69/qa/villages-appearance-final/pillar-jungle-inhabitant-dialogue.jpg",
+    "work-local/v69/qa/villages-appearance-final/pillar-jungle-house-n-0-props.jpg",
+    "work-local/v69/qa/villages-appearance-final/pillar-jungle-house-n-1-props.jpg",
+    "work-local/v69/qa/villages-appearance-final/pillar-jungle-interior-open.jpg",
+    "work-local/v69/qa/villages-appearance-final/pillar-jungle-interior-service.jpg",
+    "work-local/v69/qa/villages-appearance-final/cold-crown-activity.jpg",
+    "work-local/v69/qa/villages-appearance-final/cold-crown-inhabitant-dialogue.jpg",
+    "work-local/v69/qa/villages-appearance-final/cold-crown-house-n-0-props.jpg",
+    "work-local/v69/qa/villages-appearance-final/cold-crown-house-n-1-props.jpg",
+    "work-local/v69/qa/villages-appearance-final/cold-crown-interior-open.jpg",
+    "work-local/v69/qa/villages-appearance-final/cold-crown-interior-service.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "scope": "Isolated V68 village checkpoint fixtures, then real keyboard movement, pause, resident conversation, door, service and exit. No injected movement or field proof. Not a full connector/contract playthrough; those are separate recipes."
+}

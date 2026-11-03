@@ -1,0 +1,467 @@
+{
+  "version": "V76",
+  "status": "PASS",
+  "verifiedAt": "2026-10-03T03:33:50.382Z",
+  "sourceCommit": "fffa1105cefc77f3272774161b3a6362ddea15b9",
+  "githubMain": "fffa1105cefc77f3272774161b3a6362ddea15b9",
+  "publicUrl": "https://yautja-la-longue-chasse.vercel.app",
+  "deployment": {
+    "id": "dpl_4H1AJEHLiVu1Kjm4fDtcakrFRTBd",
+    "state": "READY",
+    "target": "production",
+    "sha": "fffa1105cefc77f3272774161b3a6362ddea15b9",
+    "url": "yautja-la-longue-chasse-hqpurwvtm-darknigthmares-projects.vercel.app",
+    "aliases": [
+      "yautja-la-longue-chasse.vercel.app",
+      "yautja-la-longue-chasse-darknigthmares-projects.vercel.app",
+      "yautja-la-longue-chasse-git-main-darknigthmares-projects.vercel.app"
+    ],
+    "checkedAt": "2026-10-03T03:08:00.739Z"
+  },
+  "delivered": {
+    "nativeAngledFacades": 6,
+    "interiorDecor": 92,
+    "exteriorDecor": 74,
+    "exteriorSolids": 70,
+    "exteriorOrnaments": 4,
+    "buildings": 43,
+    "contextCodexRecords": 1367,
+    "allCodexRecords": 2078,
+    "scenePreloadSources": 15,
+    "newNativePng": 14,
+    "buildingPlacementOffsets": {
+      "dock-control": {
+        "x": -110,
+        "y": 20,
+        "reason": "Passage conservé entre les deux routines du port, ancien signe des Cendres et maisons du quai."
+      },
+      "trophy-mausoleum": {
+        "x": -240,
+        "y": -50,
+        "reason": "Libération de la promenade des archives, du porteur de l’esplanade et de la route vers les Ruines."
+      },
+      "rite-sanctum": {
+        "x": 200,
+        "y": -60,
+        "reason": "Dégagement des trois habitants du temple et du patrouilleur des arènes, sans déplacer leur routine."
+      },
+      "convoy-workshop": {
+        "x": 120,
+        "y": -40,
+        "reason": "Balise de sol QUAIS dégagée avec la marge corporelle du guidage, et routine de manutention libre autour du vrai socle oblique."
+      },
+      "convoy-store": {
+        "x": -20,
+        "y": -60,
+        "reason": "Allée de la messagère des convois libre devant la réserve orientée et ses deux meubles."
+      }
+    },
+    "pavedForecourts": 6,
+    "newPavedLinks": 1,
+    "existingResidents": 98,
+    "existingFrontageFurniture": 62
+  },
+  "local": {
+    "build": {
+      "version": "V76",
+      "portableExitCode": 0,
+      "nextExitCode": 0,
+      "completedAt": "2026-10-03T02:32:26.3925035Z",
+      "sourceFrozenAt": "2026-10-03T02:27:52.060Z",
+      "baseHead": "d191df92f43da7223364ea1005eaafb3e7c0c3bb",
+      "limits": "Local portable and Next builds; production checked separately."
+    },
+    "regression": {
+      "version": "V76",
+      "status": "PASS",
+      "tests": 2597,
+      "passed": 2597,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "completedAt": "2026-10-03T02:45:38.0472265Z"
+    },
+    "staticChecks": {
+      "version": "V76",
+      "typecheckExitCode": 0,
+      "lintExitCode": 0,
+      "compiledCssExitCode": 0,
+      "completedAt": "2026-10-03T02:36:30.4706798Z",
+      "lintErrors": 0,
+      "preExistingImageWarnings": 3
+    },
+    "compiledCss": {
+      "status": "PASS",
+      "checkedAt": "2026-10-03T02:36:30.376Z",
+      "nextDir": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\.next",
+      "scope": "Root game route compiled CSS referenced by its webpack client manifest; no source CSS is read.",
+      "files": [
+        {
+          "path": "static/css/5a5c0d93c683a591.css",
+          "bytes": 123962,
+          "sha256": "58f455f6a3ac559f82d784c3272328f6581108b10cabc83ce428e0fb3415d015"
+        },
+        {
+          "path": "static/css/702593c94914f967.css",
+          "bytes": 16684,
+          "sha256": "2c262f7ca24acbc79d44752ef8fc729fe24dc92d8f94e9da2a4159f843dc087b"
+        }
+      ],
+      "checks": [
+        {
+          "id": "toast-does-not-intercept-hud",
+          "selector": "toast",
+          "property": "pointer-events",
+          "expected": "none",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".toast",
+              "value": "none",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        },
+        {
+          "id": "immersive-toast-above-desktop-menu",
+          "selector": "desktop",
+          "property": "bottom",
+          "expected": "max(76px, calc(env(safe-area-inset-bottom) + 64px))",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".game-shell:has([data-pit-immersive=true])>.toast",
+              "value": "max(76px,calc(env(safe-area-inset-bottom) + 64px))",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        },
+        {
+          "id": "touch-toast-below-health-hud",
+          "selector": "touch",
+          "property": "top",
+          "expected": "max(152px, calc(env(safe-area-inset-top) + 142px))",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast",
+              "value": "max(152px,calc(env(safe-area-inset-top) + 142px))",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        },
+        {
+          "id": "touch-toast-releases-bottom",
+          "selector": "touch",
+          "property": "bottom",
+          "expected": "auto",
+          "status": "PASS",
+          "declarations": [
+            {
+              "file": "static/css/5a5c0d93c683a591.css",
+              "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast",
+              "value": "auto",
+              "important": false,
+              "unconditional": true,
+              "matches": true
+            }
+          ],
+          "resets": []
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "Verifies these exact compiled selectors and declarations, not the entire CSS cascade or visual layout.",
+        "Does not certify CDN contents, service-worker caches, or the deployed browser; public smoke QA remains required.",
+        "The webpack manifest format is required and fails closed if it changes; equivalent unsupported CSS spellings need review."
+      ]
+    },
+    "recipes": [
+      {
+        "scope": "exterior-decor",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 12,
+        "captures": 7,
+        "report": "docs/v76-exterior-decor-local-browser-qa.json"
+      },
+      {
+        "scope": "scene-assets",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 3,
+        "captures": 3,
+        "report": "docs/v76-scene-assets-local-browser-qa.json"
+      },
+      {
+        "scope": "interior-decor",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 16,
+        "captures": 11,
+        "report": "docs/v76-interior-decor-local-browser-qa.json"
+      },
+      {
+        "scope": "angles",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 9,
+        "captures": 15,
+        "report": "docs/v76-angles-local-browser-qa.json"
+      },
+      {
+        "scope": "wayfinding",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 10,
+        "captures": 14,
+        "report": "docs/v76-wayfinding-local-browser-qa.json"
+      },
+      {
+        "scope": "conversations",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 3,
+        "captures": 7,
+        "report": "docs/v76-conversations-local-browser-qa.json"
+      },
+      {
+        "scope": "landscape",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 15,
+        "captures": 14,
+        "report": "docs/v76-landscape-local-browser-qa.json"
+      },
+      {
+        "scope": "architecture",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 18,
+        "captures": 17,
+        "report": "docs/v76-architecture-local-browser-qa.json"
+      },
+      {
+        "scope": "identity",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 15,
+        "captures": 24,
+        "report": "docs/v76-identity-local-browser-qa.json"
+      },
+      {
+        "scope": "youth-motion",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 27,
+        "captures": 13,
+        "report": "docs/v76-youth-motion-local-browser-qa.json"
+      },
+      {
+        "scope": "civilian-motion",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 14,
+        "captures": 4,
+        "report": "docs/v76-civilian-motion-local-browser-qa.json"
+      },
+      {
+        "scope": "motion-assets",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 3,
+        "captures": 3,
+        "report": "docs/v76-motion-assets-local-browser-qa.json"
+      },
+      {
+        "scope": "prologue",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 8,
+        "captures": 26,
+        "report": "docs/v76-prologue-local-browser-qa.json"
+      },
+      {
+        "scope": "shell",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 71,
+        "captures": null,
+        "report": "docs/v76-shell-local-browser-qa.json"
+      },
+      {
+        "scope": "connections",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 15,
+        "captures": 18,
+        "report": "docs/v76-connections-local-browser-qa.json"
+      },
+      {
+        "scope": "secondary-interiors",
+        "exitCode": 0,
+        "status": "PASS",
+        "checks": 42,
+        "captures": 40,
+        "report": "docs/v76-secondary-interiors-local-browser-qa.json"
+      }
+    ]
+  },
+  "public": {
+    "recipes": [
+      {
+        "scope": "exterior-decor",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 12,
+        "captures": 7,
+        "report": "docs/v76-exterior-decor-public-browser-qa.json"
+      },
+      {
+        "scope": "scene-assets",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 3,
+        "captures": 3,
+        "report": "docs/v76-scene-assets-public-browser-qa.json"
+      },
+      {
+        "scope": "interior-decor",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 16,
+        "captures": 11,
+        "report": "docs/v76-interior-decor-public-browser-qa.json"
+      },
+      {
+        "scope": "angles",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 9,
+        "captures": 15,
+        "report": "docs/v76-angles-public-browser-qa.json"
+      },
+      {
+        "scope": "wayfinding",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 10,
+        "captures": 14,
+        "report": "docs/v76-wayfinding-public-browser-qa.json"
+      },
+      {
+        "scope": "conversations",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 3,
+        "captures": 7,
+        "report": "docs/v76-conversations-public-browser-qa.json"
+      },
+      {
+        "scope": "landscape",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 15,
+        "captures": 14,
+        "report": "docs/v76-landscape-public-browser-qa.json"
+      },
+      {
+        "scope": "architecture",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 18,
+        "captures": 17,
+        "report": "docs/v76-architecture-public-browser-qa.json"
+      },
+      {
+        "scope": "identity",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 15,
+        "captures": 24,
+        "report": "docs/v76-identity-public-browser-qa.json"
+      },
+      {
+        "scope": "youth-motion",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 27,
+        "captures": 13,
+        "report": "docs/v76-youth-motion-public-browser-qa.json"
+      },
+      {
+        "scope": "civilian-motion",
+        "status": "PASS",
+        "artStatus": "PARTIAL_ART",
+        "checks": 14,
+        "captures": 4,
+        "report": "docs/v76-civilian-motion-public-browser-qa.json"
+      },
+      {
+        "scope": "motion-assets",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 3,
+        "captures": 3,
+        "report": "docs/v76-motion-assets-public-browser-qa.json"
+      },
+      {
+        "scope": "connections",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 15,
+        "captures": 18,
+        "report": "docs/v76-connections-public-browser-qa.json"
+      },
+      {
+        "scope": "prologue",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 8,
+        "captures": 26,
+        "report": "docs/v76-prologue-public-browser-qa.json"
+      },
+      {
+        "scope": "shell",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 71,
+        "captures": 2,
+        "report": "docs/v76-shell-public-browser-qa.json"
+      },
+      {
+        "scope": "secondary-interiors",
+        "status": "PASS",
+        "artStatus": null,
+        "checks": 42,
+        "captures": 40,
+        "report": "docs/v76-secondary-interiors-public-browser-qa.json"
+      }
+    ],
+    "nativePngChecks": 67,
+    "allNativePngHttpAndShaPassed": true
+  },
+  "limits": [
+    "Original lore-compatible city and civilian furniture, not a canon1:1 city or universal monarchy.",
+    "Native PNG perspectives are visually guided drawings, not a mathematically calibrated 3D reconstruction; the accepted facade yaw is measured20–24degrees.",
+    "Interior collision rectangles conservatively enclose measured native supports; exterior angled supports use actual quadrilateral SAT.",
+    "V74 civilian gait remains PARTIAL_ART. This Homeworld lot does not complete every historical animation, arena or campaign request.",
+    "Mobile browser coverage is Chrome emulation, not a physical low-memory device. The39 source set represents about234MiB decoded pixels in total, not measured JS heap.",
+    "New physical scenery is decoded before controls; the existing retry label still says animations, while decor failures identify their PNG in French.",
+    "Isolated played prerequisite saves and public keyboard/touch controls; no live user save is touched.",
+    "Real login/signup/email and account multi-device synchronization are outside this lot."
+  ]
+}

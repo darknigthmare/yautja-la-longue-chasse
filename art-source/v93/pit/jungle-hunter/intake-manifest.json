@@ -1,0 +1,1065 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "canonicalFidelityCertified": false,
+  "items": [
+    {
+      "id": "jungle-idle-v93",
+      "category": "idle",
+      "prompt": "Use the attached exact masked Jungle Hunter costume as the visual identity reference for a native 2D fighting game animation sprite sheet. Preserve the smooth silver 1987 bio-mask, yellow/ochre mottled skin, black net suit, dark dreadlocks with golden rings, metallic armor, teeth necklace, loincloth and asymmetric original equipment. His plasma caster is on the CHARACTER'S LEFT shoulder; his TWO wrist blades belong to the CHARACTER'S RIGHT wrist, never extra swords, spears or unrelated weapons. The face stays covered throughout. Detailed clean painted game sprites in the same visual style as the reference, consistent anatomical scale and equipment from cell to cell. Generate SIX genuinely separately drawn full-body poses on a PORTRAIT transparent RGBA canvas with TWO COLUMNS and THREE ROWS. LEFT COLUMN: the character faces screen RIGHT, three sequential frames from top to bottom. RIGHT COLUMN: the same character faces screen LEFT, three separately authored reverse-facing frames from top to bottom preserving equipment on its anatomical side, not a horizontal mirror. Each sprite confined to its own equal cell with broad fully transparent gutters between every row and column and margins at all outer edges. Every head, hand, dreadlock, foot and blade fully inside its cell. Same ground baseline relative to each cell, fixed source scale, no ground shadows or pedestal. No background whatsoever, no baked checkerboard, no glow, no lettering, no numbers, no watermark, no cell lines. Five coherent fingers per hand, normal two arms/two legs, no detached parts or equipment changes. This is a modest authored game gesture, not a claim of a shot-for-shot film scene. The animation is a subtle grounded battle IDLE LOOP, not walking or attacking. Frame 1 planted relaxed combat guard with right wrist blades REtracted inside the right wrist gauntlet; frame 2 chest expands in a calm inhale with slight shoulder/dreadlock motion and hands loosen, both feet remain planted; frame 3 exhale returns toward original guard, slight weight shift without moving feet. All six cells show retracted wrist blades with no blades sticking out. Three visibly different small anatomical poses, fixed head proportions and feet. No red target beam or projectiles.",
+      "fighterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "ordinal": 1,
+      "fileName": "001-jungle-hunter-masked-idle-v93.png",
+      "status": "rejected",
+      "rejectionReason": "Les gouttières du premier essai sont insuffisantes et une découpe en cellules512 rogne les pieds. Originale conservée, pas admise au runtime.",
+      "sourceReference": "public/game/sprites/v44/user-hunters/53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8.png",
+      "path": "art-source/v93/pit/jungle-hunter/001-jungle-hunter-masked-idle-v93.png",
+      "sha256": "59d875503f194ec224d4fc59ecf8279a447d93370559f39c159b3b05df69a761",
+      "bytes": 2436161,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 1016337,
+        "opaque": 0,
+        "low": 63283,
+        "maxEdge": 1,
+        "zeroFraction": 0.6461696624755859
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            88,
+            19,
+            344,
+            493
+          ],
+          "maxEdgeAlpha": 153,
+          "visiblePixels": 81371,
+          "nonEmptyRowRanges": [
+            [
+              19,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            593,
+            18,
+            354,
+            494
+          ],
+          "maxEdgeAlpha": 205,
+          "visiblePixels": 81352,
+          "nonEmptyRowRanges": [
+            [
+              18,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            114,
+            512,
+            331,
+            512
+          ],
+          "maxEdgeAlpha": 253,
+          "visiblePixels": 84101,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            583,
+            512,
+            342,
+            512
+          ],
+          "maxEdgeAlpha": 253,
+          "visiblePixels": 86114,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            80,
+            1024,
+            364,
+            490
+          ],
+          "maxEdgeAlpha": 253,
+          "visiblePixels": 78883,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              10
+            ],
+            [
+              18,
+              489
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            587,
+            1024,
+            366,
+            488
+          ],
+          "maxEdgeAlpha": 253,
+          "visiblePixels": 81423,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              11
+            ],
+            [
+              18,
+              487
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jungle-dizzy-v93",
+      "category": "dizzy",
+      "prompt": "Use the attached exact masked Jungle Hunter costume as the visual identity reference for a native 2D fighting game animation sprite sheet. Preserve the smooth silver 1987 bio-mask, yellow/ochre mottled skin, black net suit, dark dreadlocks with golden rings, metallic armor, teeth necklace, loincloth and asymmetric original equipment. His plasma caster is on the CHARACTER'S LEFT shoulder; his TWO wrist blades belong to the CHARACTER'S RIGHT wrist, never extra swords, spears or unrelated weapons. The face stays covered throughout. Detailed clean painted game sprites in the same visual style as the reference, consistent anatomical scale and equipment from cell to cell. Generate SIX genuinely separately drawn full-body poses on a PORTRAIT transparent RGBA canvas with TWO COLUMNS and THREE ROWS. LEFT COLUMN: the character faces screen RIGHT, three sequential frames from top to bottom. RIGHT COLUMN: the same character faces screen LEFT, three separately authored reverse-facing frames from top to bottom preserving equipment on its anatomical side, not a horizontal mirror. Each sprite confined to its own equal cell with broad fully transparent gutters between every row and column and margins at all outer edges. Every head, hand, dreadlock, foot and blade fully inside its cell. Same ground baseline relative to each cell, fixed source scale, no ground shadows or pedestal. No background whatsoever, no baked checkerboard, no glow, no lettering, no numbers, no watermark, no cell lines. Five coherent fingers per hand, normal two arms/two legs, no detached parts or equipment changes. This is a modest authored game gesture, not a claim of a shot-for-shot film scene. The animation is a FINISHER-WAITING STUNNED LOOP after a lost final match, distinct from falling down or dying. The living hunter remains on BOTH FEET in all six cells; right wrist blades fully retracted safely. Frame 1 knees weakly bent, torso leans slightly forward, arms sag, head low; frame 2 a restrained dazed sway toward camera, left empty palm loosely raised near abdomen for balance; frame 3 weak sway back and shoulders slump, head lower, same planted feet. No decapitation, no dismemberment, no blood, no victory, no self destruct, no new weapons. Distinct drawn poses, not duplicated cells. Keep the exact costume and intact covered mask.",
+      "fighterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "ordinal": 2,
+      "fileName": "002-jungle-hunter-masked-dizzy-v93.png",
+      "status": "rejected",
+      "rejectionReason": "Les gouttières du premier essai sont insuffisantes et une découpe en cellules512 rogne les pieds. Originale conservée, pas admise au runtime.",
+      "sourceReference": "public/game/sprites/v44/user-hunters/53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8.png",
+      "path": "art-source/v93/pit/jungle-hunter/002-jungle-hunter-masked-dizzy-v93.png",
+      "sha256": "a34236be280821bb688d8e5dd344d6def4cda6313b7342546825c4a447a3f0a3",
+      "bytes": 2284687,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 1085763,
+        "opaque": 0,
+        "low": 42945,
+        "maxEdge": 1,
+        "zeroFraction": 0.6903095245361328
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            163,
+            34,
+            256,
+            478
+          ],
+          "maxEdgeAlpha": 253,
+          "visiblePixels": 74887,
+          "nonEmptyRowRanges": [
+            [
+              34,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            612,
+            34,
+            244,
+            478
+          ],
+          "maxEdgeAlpha": 253,
+          "visiblePixels": 72630,
+          "nonEmptyRowRanges": [
+            [
+              34,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            164,
+            512,
+            275,
+            512
+          ],
+          "maxEdgeAlpha": 252,
+          "visiblePixels": 75422,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              11
+            ],
+            [
+              14,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            608,
+            512,
+            259,
+            512
+          ],
+          "maxEdgeAlpha": 253,
+          "visiblePixels": 75791,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              12
+            ],
+            [
+              15,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            163,
+            1024,
+            270,
+            476
+          ],
+          "maxEdgeAlpha": 251,
+          "visiblePixels": 73698,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              475
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            619,
+            1024,
+            244,
+            478
+          ],
+          "maxEdgeAlpha": 251,
+          "visiblePixels": 71728,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              477
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jungle-taunt-v93",
+      "category": "taunt",
+      "prompt": "Use the attached exact masked Jungle Hunter costume as the visual identity reference for a native 2D fighting game animation sprite sheet. Preserve the smooth silver 1987 bio-mask, yellow/ochre mottled skin, black net suit, dark dreadlocks with golden rings, metallic armor, teeth necklace, loincloth and asymmetric original equipment. His plasma caster is on the CHARACTER'S LEFT shoulder; his TWO wrist blades belong to the CHARACTER'S RIGHT wrist, never extra swords, spears or unrelated weapons. The face stays covered throughout. Detailed clean painted game sprites in the same visual style as the reference, consistent anatomical scale and equipment from cell to cell. Generate SIX genuinely separately drawn full-body poses on a PORTRAIT transparent RGBA canvas with TWO COLUMNS and THREE ROWS. LEFT COLUMN: the character faces screen RIGHT, three sequential frames from top to bottom. RIGHT COLUMN: the same character faces screen LEFT, three separately authored reverse-facing frames from top to bottom preserving equipment on its anatomical side, not a horizontal mirror. Each sprite confined to its own equal cell with broad fully transparent gutters between every row and column and margins at all outer edges. Every head, hand, dreadlock, foot and blade fully inside its cell. Same ground baseline relative to each cell, fixed source scale, no ground shadows or pedestal. No background whatsoever, no baked checkerboard, no glow, no lettering, no numbers, no watermark, no cell lines. Five coherent fingers per hand, normal two arms/two legs, no detached parts or equipment changes. This is a modest authored game gesture, not a claim of a shot-for-shot film scene. The animation is a short intimidating TAUNT that can recover to combat guard. Frame 1 standing planted, covered mask turning toward opponent, right forearm raises modestly chest-height with wrist blades retracted; frame 2 TWO original wrist blades extend from CHARACTER RIGHT wrist as he opens CHARACTER LEFT empty hand beckoning opponent with curled fingers, left shoulder cannon remains stationary and never fires; frame 3 he lowers the right blade-bearing forearm into guard, left hand relaxes, two blades still coherent. Both feet planted throughout. No mask removal, no invented supernatural effect, no extra weapons, no trophy, no NPC. Entire blade tips inside cells and never intersect his torso. A clear anatomical three frame sequence with exact equipment continuity.",
+      "fighterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "ordinal": 3,
+      "fileName": "003-jungle-hunter-masked-taunt-v93.png",
+      "status": "rejected",
+      "rejectionReason": "Les gouttières du premier essai sont insuffisantes et une découpe en cellules512 rogne les pieds. Originale conservée, pas admise au runtime.",
+      "sourceReference": "public/game/sprites/v44/user-hunters/53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8.png",
+      "path": "art-source/v93/pit/jungle-hunter/003-jungle-hunter-masked-taunt-v93.png",
+      "sha256": "5e5366ea33df3b96026fc599a2f11365654c4208b5d4c86e73df9c80887748fb",
+      "bytes": 2511934,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 964742,
+        "opaque": 0,
+        "low": 72528,
+        "maxEdge": 1,
+        "zeroFraction": 0.613366444905599
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            78,
+            11,
+            385,
+            501
+          ],
+          "maxEdgeAlpha": 253,
+          "visiblePixels": 84564,
+          "nonEmptyRowRanges": [
+            [
+              11,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            552,
+            9,
+            393,
+            503
+          ],
+          "maxEdgeAlpha": 251,
+          "visiblePixels": 84143,
+          "nonEmptyRowRanges": [
+            [
+              9,
+              511
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            50,
+            512,
+            430,
+            511
+          ],
+          "maxEdgeAlpha": 253,
+          "visiblePixels": 93078,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              3
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              7,
+              510
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            554,
+            512,
+            422,
+            511
+          ],
+          "maxEdgeAlpha": 246,
+          "visiblePixels": 92396,
+          "nonEmptyRowRanges": [
+            [
+              0,
+              3
+            ],
+            [
+              6,
+              510
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            61,
+            1027,
+            394,
+            487
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 90646,
+          "nonEmptyRowRanges": [
+            [
+              3,
+              489
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            568,
+            1025,
+            401,
+            489
+          ],
+          "maxEdgeAlpha": 2,
+          "visiblePixels": 90767,
+          "nonEmptyRowRanges": [
+            [
+              1,
+              489
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jungle-idle-v93-r2",
+      "category": "idle",
+      "prompt": "Use the attached exact masked Jungle Hunter costume as the visual identity reference for a native 2D fighting game animation sprite sheet. Preserve the smooth silver 1987 bio-mask, yellow/ochre mottled skin, black net suit, dark dreadlocks with golden rings, metallic armor, teeth necklace, loincloth and asymmetric original equipment. His plasma caster is on the CHARACTER'S LEFT shoulder; his TWO wrist blades belong to the CHARACTER'S RIGHT wrist, never extra swords, spears or unrelated weapons. The face stays covered throughout. Detailed clean painted game sprites in the same visual style as the reference, consistent anatomical scale and equipment from cell to cell. Generate SIX genuinely separately drawn full-body poses on a PORTRAIT transparent RGBA canvas with TWO COLUMNS and THREE ROWS. LEFT COLUMN: the character faces screen RIGHT, three sequential frames from top to bottom. RIGHT COLUMN: the same character faces screen LEFT, three separately authored reverse-facing frames from top to bottom preserving equipment on its anatomical side, not a horizontal mirror. Each sprite confined to its own equal cell with broad fully transparent gutters between every row and column and margins at all outer edges. Every head, hand, dreadlock, foot and blade fully inside its cell. Same ground baseline relative to each cell, fixed source scale, no ground shadows or pedestal. No background whatsoever, no baked checkerboard, no glow, no lettering, no numbers, no watermark, no cell lines. Five coherent fingers per hand, normal two arms/two legs, no detached parts or equipment changes. This is a modest authored game gesture, not a claim of a shot-for-shot film scene. The animation is a subtle grounded battle IDLE LOOP, not walking or attacking. Frame 1 planted relaxed combat guard with right wrist blades REtracted inside the right wrist gauntlet; frame 2 chest expands in a calm inhale with slight shoulder/dreadlock motion and hands loosen, both feet remain planted; frame 3 exhale returns toward original guard, slight weight shift without moving feet. All six cells show retracted wrist blades with no blades sticking out. Three visibly different small anatomical poses, fixed head proportions and feet. No red target beam or projectiles.\nCRITICAL COMPOSITION CORRECTION: the character must be a SMALL sprite inside each cell, NOT fill the portrait height. Each complete body including hair and feet must be only about350pixels tall and no more than340pixels wide on a1024x1536canvas. In each512x512cell leave at least75pixels fully clear above head and75pixels clear below feet, at least65pixels clear to either side. Six SMALL FULL-BODY figures separated by approximately150pixels empty transparent horizontal bands. Even the tallest pose/blade is bounded by these margins. Center each figure identically within its own cell. Scale the drawn sprites uniformly small at source during generation; do not simply shrink a composed raster. Do not reuse any source background or shadow. Wide empty transparent gutters are more important than filling the canvas; six miniatures. No limb may touch or cross y512/y1024/x512 or canvas border. Draw three distinct animation poses while preserving EXACT anatomical scale and same costume from attached original.",
+      "fighterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "ordinal": 4,
+      "fileName": "004-jungle-hunter-masked-idle-r2-v93.png",
+      "status": "pending-alpha-admission",
+      "visualReview": "Costume masqué conservé, membres/armes lisibles, deux faces indépendantes, aucune coupe visible; gestescrééspourlejeu, canon1:1noncertifié.",
+      "rowCuts": [
+        0,
+        560,
+        1040,
+        1536
+      ],
+      "sourceReference": "public/game/sprites/v44/user-hunters/53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8.png",
+      "path": "art-source/v93/pit/jungle-hunter/004-jungle-hunter-masked-idle-r2-v93.png",
+      "sha256": "12d339692c1d34e72035f1b733979a570b6475e799c7d610bdf566b00abbfdc3",
+      "bytes": 2046433,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 1162761,
+        "opaque": 0,
+        "low": 66475,
+        "maxEdge": 1,
+        "zeroFraction": 0.7392635345458984
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            560
+          ],
+          "visibleRect": [
+            126,
+            121,
+            288,
+            398
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 56609,
+          "nonEmptyRowRanges": [
+            [
+              121,
+              518
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            560
+          ],
+          "visibleRect": [
+            611,
+            122,
+            289,
+            396
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 57022,
+          "nonEmptyRowRanges": [
+            [
+              122,
+              517
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            560,
+            512,
+            480
+          ],
+          "visibleRect": [
+            136,
+            592,
+            279,
+            414
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 58987,
+          "nonEmptyRowRanges": [
+            [
+              32,
+              445
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            560,
+            512,
+            480
+          ],
+          "visibleRect": [
+            608,
+            592,
+            293,
+            414
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 59713,
+          "nonEmptyRowRanges": [
+            [
+              32,
+              445
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1040,
+            512,
+            496
+          ],
+          "visibleRect": [
+            125,
+            1084,
+            289,
+            390
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 55405,
+          "nonEmptyRowRanges": [
+            [
+              44,
+              433
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1040,
+            512,
+            496
+          ],
+          "visibleRect": [
+            609,
+            1084,
+            290,
+            388
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 55892,
+          "nonEmptyRowRanges": [
+            [
+              44,
+              431
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jungle-dizzy-v93-r2",
+      "category": "dizzy",
+      "prompt": "Use the attached exact masked Jungle Hunter costume as the visual identity reference for a native 2D fighting game animation sprite sheet. Preserve the smooth silver 1987 bio-mask, yellow/ochre mottled skin, black net suit, dark dreadlocks with golden rings, metallic armor, teeth necklace, loincloth and asymmetric original equipment. His plasma caster is on the CHARACTER'S LEFT shoulder; his TWO wrist blades belong to the CHARACTER'S RIGHT wrist, never extra swords, spears or unrelated weapons. The face stays covered throughout. Detailed clean painted game sprites in the same visual style as the reference, consistent anatomical scale and equipment from cell to cell. Generate SIX genuinely separately drawn full-body poses on a PORTRAIT transparent RGBA canvas with TWO COLUMNS and THREE ROWS. LEFT COLUMN: the character faces screen RIGHT, three sequential frames from top to bottom. RIGHT COLUMN: the same character faces screen LEFT, three separately authored reverse-facing frames from top to bottom preserving equipment on its anatomical side, not a horizontal mirror. Each sprite confined to its own equal cell with broad fully transparent gutters between every row and column and margins at all outer edges. Every head, hand, dreadlock, foot and blade fully inside its cell. Same ground baseline relative to each cell, fixed source scale, no ground shadows or pedestal. No background whatsoever, no baked checkerboard, no glow, no lettering, no numbers, no watermark, no cell lines. Five coherent fingers per hand, normal two arms/two legs, no detached parts or equipment changes. This is a modest authored game gesture, not a claim of a shot-for-shot film scene. The animation is a FINISHER-WAITING STUNNED LOOP after a lost final match, distinct from falling down or dying. The living hunter remains on BOTH FEET in all six cells; right wrist blades fully retracted safely. Frame 1 knees weakly bent, torso leans slightly forward, arms sag, head low; frame 2 a restrained dazed sway toward camera, left empty palm loosely raised near abdomen for balance; frame 3 weak sway back and shoulders slump, head lower, same planted feet. No decapitation, no dismemberment, no blood, no victory, no self destruct, no new weapons. Distinct drawn poses, not duplicated cells. Keep the exact costume and intact covered mask.\nCRITICAL COMPOSITION CORRECTION: the character must be a SMALL sprite inside each cell, NOT fill the portrait height. Each complete body including hair and feet must be only about350pixels tall and no more than340pixels wide on a1024x1536canvas. In each512x512cell leave at least75pixels fully clear above head and75pixels clear below feet, at least65pixels clear to either side. Six SMALL FULL-BODY figures separated by approximately150pixels empty transparent horizontal bands. Even the tallest pose/blade is bounded by these margins. Center each figure identically within its own cell. Scale the drawn sprites uniformly small at source during generation; do not simply shrink a composed raster. Do not reuse any source background or shadow. Wide empty transparent gutters are more important than filling the canvas; six miniatures. No limb may touch or cross y512/y1024/x512 or canvas border. Draw three distinct animation poses while preserving EXACT anatomical scale and same costume from attached original.",
+      "fighterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "ordinal": 5,
+      "fileName": "005-jungle-hunter-masked-dizzy-r2-v93.png",
+      "status": "pending-alpha-admission",
+      "visualReview": "Costume masqué conservé, membres/armes lisibles, deux faces indépendantes, aucune coupe visible; gestescrééspourlejeu, canon1:1noncertifié.",
+      "sourceReference": "public/game/sprites/v44/user-hunters/53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8.png",
+      "path": "art-source/v93/pit/jungle-hunter/005-jungle-hunter-masked-dizzy-r2-v93.png",
+      "sha256": "543db5bcf74420efc7b5dab9481da477e36b3dcc18c035aa4807d4372d8d3091",
+      "bytes": 1840313,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 1262199,
+        "opaque": 0,
+        "low": 42663,
+        "maxEdge": 1,
+        "zeroFraction": 0.8024845123291016
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            184,
+            104,
+            183,
+            377
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 44951,
+          "nonEmptyRowRanges": [
+            [
+              104,
+              480
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            660,
+            101,
+            185,
+            380
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 45669,
+          "nonEmptyRowRanges": [
+            [
+              101,
+              480
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            194,
+            584,
+            219,
+            391
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 46570,
+          "nonEmptyRowRanges": [
+            [
+              72,
+              462
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            627,
+            587,
+            220,
+            386
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 45982,
+          "nonEmptyRowRanges": [
+            [
+              75,
+              460
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            184,
+            1089,
+            187,
+            374
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 42530,
+          "nonEmptyRowRanges": [
+            [
+              65,
+              438
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            652,
+            1090,
+            193,
+            373
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 42300,
+          "nonEmptyRowRanges": [
+            [
+              66,
+              438
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jungle-taunt-v93-r2",
+      "category": "taunt",
+      "prompt": "Use the attached exact masked Jungle Hunter costume as the visual identity reference for a native 2D fighting game animation sprite sheet. Preserve the smooth silver 1987 bio-mask, yellow/ochre mottled skin, black net suit, dark dreadlocks with golden rings, metallic armor, teeth necklace, loincloth and asymmetric original equipment. His plasma caster is on the CHARACTER'S LEFT shoulder; his TWO wrist blades belong to the CHARACTER'S RIGHT wrist, never extra swords, spears or unrelated weapons. The face stays covered throughout. Detailed clean painted game sprites in the same visual style as the reference, consistent anatomical scale and equipment from cell to cell. Generate SIX genuinely separately drawn full-body poses on a PORTRAIT transparent RGBA canvas with TWO COLUMNS and THREE ROWS. LEFT COLUMN: the character faces screen RIGHT, three sequential frames from top to bottom. RIGHT COLUMN: the same character faces screen LEFT, three separately authored reverse-facing frames from top to bottom preserving equipment on its anatomical side, not a horizontal mirror. Each sprite confined to its own equal cell with broad fully transparent gutters between every row and column and margins at all outer edges. Every head, hand, dreadlock, foot and blade fully inside its cell. Same ground baseline relative to each cell, fixed source scale, no ground shadows or pedestal. No background whatsoever, no baked checkerboard, no glow, no lettering, no numbers, no watermark, no cell lines. Five coherent fingers per hand, normal two arms/two legs, no detached parts or equipment changes. This is a modest authored game gesture, not a claim of a shot-for-shot film scene. The animation is a short intimidating TAUNT that can recover to combat guard. Frame 1 standing planted, covered mask turning toward opponent, right forearm raises modestly chest-height with wrist blades retracted; frame 2 TWO original wrist blades extend from CHARACTER RIGHT wrist as he opens CHARACTER LEFT empty hand beckoning opponent with curled fingers, left shoulder cannon remains stationary and never fires; frame 3 he lowers the right blade-bearing forearm into guard, left hand relaxes, two blades still coherent. Both feet planted throughout. No mask removal, no invented supernatural effect, no extra weapons, no trophy, no NPC. Entire blade tips inside cells and never intersect his torso. A clear anatomical three frame sequence with exact equipment continuity.\nCRITICAL COMPOSITION CORRECTION: the character must be a SMALL sprite inside each cell, NOT fill the portrait height. Each complete body including hair and feet must be only about350pixels tall and no more than340pixels wide on a1024x1536canvas. In each512x512cell leave at least75pixels fully clear above head and75pixels clear below feet, at least65pixels clear to either side. Six SMALL FULL-BODY figures separated by approximately150pixels empty transparent horizontal bands. Even the tallest pose/blade is bounded by these margins. Center each figure identically within its own cell. Scale the drawn sprites uniformly small at source during generation; do not simply shrink a composed raster. Do not reuse any source background or shadow. Wide empty transparent gutters are more important than filling the canvas; six miniatures. No limb may touch or cross y512/y1024/x512 or canvas border. Draw three distinct animation poses while preserving EXACT anatomical scale and same costume from attached original.",
+      "fighterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "ordinal": 6,
+      "fileName": "006-jungle-hunter-masked-taunt-r2-v93.png",
+      "status": "pending-alpha-admission",
+      "visualReview": "Costume masqué conservé, membres/armes lisibles, deux faces indépendantes, aucune coupe visible; gestescrééspourlejeu, canon1:1noncertifié.",
+      "sourceReference": "public/game/sprites/v44/user-hunters/53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8.png",
+      "path": "art-source/v93/pit/jungle-hunter/006-jungle-hunter-masked-taunt-r2-v93.png",
+      "sha256": "744298d7b4cd18a20a35e062ee439eca23bc9850a9570d8ea69caf9b83937f03",
+      "bytes": 2042714,
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "zeros": 1183033,
+        "opaque": 0,
+        "low": 53183,
+        "maxEdge": 1,
+        "zeroFraction": 0.7521521250406901
+      },
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            133,
+            65,
+            266,
+            417
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 54480,
+          "nonEmptyRowRanges": [
+            [
+              65,
+              481
+            ]
+          ]
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleRect": [
+            628,
+            65,
+            267,
+            416
+          ],
+          "maxEdgeAlpha": 0,
+          "visiblePixels": 55165,
+          "nonEmptyRowRanges": [
+            [
+              65,
+              480
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            117,
+            578,
+            315,
+            414
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 55450,
+          "nonEmptyRowRanges": [
+            [
+              66,
+              479
+            ]
+          ]
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleRect": [
+            610,
+            578,
+            317,
+            413
+          ],
+          "maxEdgeAlpha": 0,
+          "visiblePixels": 56776,
+          "nonEmptyRowRanges": [
+            [
+              66,
+              478
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "rect": [
+            0,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            127,
+            1070,
+            286,
+            410
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 57850,
+          "nonEmptyRowRanges": [
+            [
+              46,
+              455
+            ]
+          ]
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "rect": [
+            512,
+            1024,
+            512,
+            512
+          ],
+          "visibleRect": [
+            619,
+            1074,
+            278,
+            407
+          ],
+          "maxEdgeAlpha": 1,
+          "visiblePixels": 56927,
+          "nonEmptyRowRanges": [
+            [
+              50,
+              456
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,734 @@
+{
+  "role": "rite-keeper",
+  "requested": 20,
+  "reference": "/workspace/scratch/41fc0564188e/npc-reference/civic-specialists-spaced-atlas.png",
+  "referenceCell": 5,
+  "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+  "generation": "built-in image_gen; one independent image per character",
+  "anatomyPrompt": "CRITICAL ANATOMICAL PRIORITY. Input image1 is the official Stan Winston Predator1987 mechanical head; use it as the strict reference for facial anatomy, never copy its photo background, logo or watermark. Input image2 is ONLY the civilian role/clothing/rendering reference, and its simplified face must NOT be copied. The new character is unequivocally a cinematic YAUTJA/PREDATOR, not a human-faced fantasy alien: broad rear cranium, deep alien orbital ridges, mottled leathery scales and small facial quills. Show FOUR clearly DISTINCT external fleshy mandibles arranged as TWO upper cheek jaw-lobes with tusks and TWO larger lower jaw-arms curling upward, around a SEPARATE tooth-filled inner mouth. Keep all four external mandibular tips visible and spatially separated. No human nose, human lips, human jaw, two nasal tubes, or mere paired descending fangs. Thick fleshy scalp tendrils, not human hair. BODY three-quarter facing right; HEAD slightly turned toward the spectator in near-frontal three-quarter so every mandible is visible. Neutral alert civic expression with the outer jaw-lobes slightly parted, not roaring. Any head-shape variation in the design must remain within these cinematic Yautja anatomical invariants. ",
+  "basePrompt": "Use case: stylized-concept. Asset type: ONE INDIVIDUAL full-body transparent NPC sprite for the Yautja: La Longue Chasse 2D game. Reference image is used ONLY for painterly rendering, anatomy and perspective, not as an image to copy or a sheet to reproduce. Generate exactly ONE newly designed adult Yautja, no extra characters. Realistic intricately hand-painted 2D game character, subtle linework, tactile weathered bronze, leather and woven fabric. Slight view from above, three-quarter facing RIGHT, standing idle or light work gesture. Correct adult Yautja anatomy with four mandibles around toothed mouth, alien brow, mottled scaly hide, dreadlock tendrils, alien clawed hands and bare clawed feet. Entire body and held props fully visible. Keep hairstyle, head shape, body silhouette, garment construction, accessories and pose visibly unique. Genuine transparent alpha outside character: no ground, no terrain, no cast shadow, no backdrop or environment, no text or UI, no labels, no watermark, no duplicate, no human face, no extra limbs. Neutral diffuse illumination. Framing: zoom out; character including hair and toes occupies at most82% of height with at least8% blank transparent margin above highest hair and below lowest claw, and generous side margins. ROLE: YAUTJA RITE KEEPER AND CEREMONIAL CUSTODIAN. Input image2's BOTTOM RIGHT figure (cell5) defines role clothing: long purple layered robes with bronze edges, shoulder mantle, ceremonial medallion, weathered teal sacred tablet. Use role clothing/rendering only; official input image1 controls the anatomy. Calm adult ritual attendant, full body, no combat weapons, no magic glow or effects. Each design uses practical ceremonial regalia and one carefully handled ritual object. Original design: ",
+  "framingInstruction": " FRAMING PRIORITY: pull the camera back; leave 8% of the image height fully empty and transparent above the highest hair tip AND below the lowest claw. Entire character and equipment must fit, no clipping.",
+  "entries": [
+    {
+      "number": 1,
+      "path": "rite-keeper-01.png",
+      "design": "Tall elderly rite keeper with a broad rear cranium, three shallow forehead ridges, heavy natural cheek lobes and long silver scalp tendrils bundled low. Long plum robe with three straight front panels, stepped short mantle, bronze circular chest seal and one loose sleeve. Left arm holds a closed weathered teal ritual tablet, right palm displays a small bronze disc. Ash-grey mottled hide; all four mandibles clearly visible.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3e853695-4eea-4173-ba63-dc6b3deb4314.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2542462,
+      "sha256": "7487f2aa884187643698f51aa886249f6e498772a9cc8e469e7539f7353398e9",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        64,
+        51,
+        966,
+        1512
+      ],
+      "fully_transparent_pixels": 837743,
+      "githubBlobSha": "dcfea868d74ad440f97bd168e45e5200a0dbaf1e",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        191,
+        57,
+        885,
+        1499
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 2,
+      "path": "rite-keeper-02.png",
+      "design": "Short broad mature keeper with a rounded wide crown, thick natural mandibles and dark scalp tendrils gathered into a high compact loop. Deep violet robe with a wide square shoulder cape and hood resting down behind neck, heavy soft belt with two small side seals. Both hands carefully hold a closed bronze-and-teal rectangular reliquary box at abdomen. Copper grey spotted scales.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-45c5e2d7-4004-46e7-99be-62aa5606be17.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2428117,
+      "sha256": "c582fde08a3468414d5290d6f46958b9a8732b474b14dc0fae2d643b8cde6b34",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        49,
+        996,
+        1520
+      ],
+      "fully_transparent_pixels": 885135,
+      "githubBlobSha": "f4c3730dd89493d2a4631c378b19ff8cf47c2772",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        177,
+        52,
+        868,
+        1484
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 3,
+      "path": "rite-keeper-03.png",
+      "design": "Powerful adult female rite keeper with a broad skull, deep orbital ridges and substantial external mandible lobes, thick grey scalp tendrils swept into a low side bundle. Wrapped purple sleeveless outer vest over an ivory long robe, thick bronze torc and small ceremonial bone beads. Right hand holds a short ring-headed ritual staff, left secures a teal flat seal case at waist. Warm stone hide.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-d4b8503e-641e-4d9f-b793-ffb66bc24091.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2369446,
+      "sha256": "0f9afe70b3f870a8a1971d9bb694f240ff67ee0c0a6b1f3331201df839dee1d1",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        27,
+        1010,
+        1502
+      ],
+      "fully_transparent_pixels": 945603,
+      "githubBlobSha": "304f45969ce7e571fd9885e6190d9094cd1f5037",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        212,
+        68,
+        837,
+        1481
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 4,
+      "path": "rite-keeper-04.png",
+      "design": "Very tall lanky keeper with a wide rear skull and deeply furrowed forehead, correctly separated four mandibles, short thick black scalp tendrils fanning behind crown. Narrow dark-purple robe with long asymmetric hanging sleeves and a broad loose cowl resting below neck. Left forearm carries a tall narrow teal ceremonial slate upright, right index claw points to an abstract engraved mark. Pale grey-green scales.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f5aa7ad2-5f28-4b6c-ba42-72e07ae242db.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2384540,
+      "sha256": "0fdaf1e6504aae9d96bc7cd89d6b95dbcf580af103a8c79a6194e161b4d81ca3",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        49,
+        1004,
+        1514
+      ],
+      "fully_transparent_pixels": 911910,
+      "githubBlobSha": "a326262dc54306720f75a548786adc212d01b6a2",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        220,
+        54,
+        909,
+        1484
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 5,
+      "path": "rite-keeper-05.png",
+      "design": "Tall muscular custodian with a low broad cranium, rugged cheek lobes and a dense backward fan of silver-tipped tendrils. Three-tier heavy plum shoulder mantle over a long sleeveless charcoal-purple robe, broad bronze-plate belt and two wide hem panels. Both hands present a shallow empty bronze ceremonial bowl level at the waist. Deep charcoal mottled hide, calm grounded posture.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-590f4545-956e-46fb-a973-ff14e3ee38ed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2359561,
+      "sha256": "58ed96e36103cbc81dd63cb2c5bab495c7cdaf462bb4a8fbae331db6721a59a9",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        49,
+        49,
+        976,
+        1500
+      ],
+      "fully_transparent_pixels": 927573,
+      "githubBlobSha": "31c0b0df85a201e0e6f5beef16931c9ed50174a4",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        207,
+        55,
+        836,
+        1497
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 6,
+      "path": "rite-keeper-06.png",
+      "design": "Old slender female rite keeper with a broad weathered cranium, deep alien eye sockets and fine quills, a few long thick white scalp tendrils gathered with simple bronze pins. Faded violet layered robe, narrow white inner panel and looped knotted cord belt. Left hand supports a narrow teal-and-bronze relic cylinder; right hand checks its small clasp. Soft bowed posture, sandstone-grey spotted skin.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-07437ff7-9ca0-4755-a025-f41ac51e9a20.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2288887,
+      "sha256": "e736fbaefa93cce1188894c4991a70ec8abe11ac87a73c757289044d842cf2ee",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        55,
+        1012,
+        1512
+      ],
+      "fully_transparent_pixels": 964510,
+      "githubBlobSha": "7cc00f9b41d2ab6bd2d8e45c84ff5cd051ca1c4a",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        213,
+        66,
+        837,
+        1489
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 7,
+      "path": "rite-keeper-07.png",
+      "design": "Compact heavily built keeper with a broad flattened crown, massive lower jaw-lobes and short dark scalp tendrils separated into two low bunches. Wide eggplant robe with a trapezoid mantle and short divided sleeves, large oval chest medallion, one thick wrist bead cord. Holds a heavy square teal ritual tablet case close against chest with both forearms. Brown-olive mottled hide.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-4fced7b2-048c-486f-9bf3-ed86cfbe6cd1.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2490839,
+      "sha256": "81c8a753543f4c099d9863df822b3e5e3b626be999d36cf9da93b771b7115d44",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        17,
+        1012,
+        1518
+      ],
+      "fully_transparent_pixels": 872911,
+      "githubBlobSha": "395b5e3dfac23350db3b0f9519d46fa6b7bf710c",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        179,
+        70,
+        875,
+        1483
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 8,
+      "path": "rite-keeper-08.png",
+      "design": "Lean adult keeper with a broad domed rear skull, sharply defined alien orbital ridges and long black scalp tendrils drawn over one shoulder. Asymmetrical amethyst robe with a small half-cape, long bronze-edged central strip and grey leg wraps visible above bare claws. Right hand offers a large plain ceremonial key, left palm relaxed open at waist. Golden ochre skin; no magic effects.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-66568bb4-d3ab-44c8-9916-5752f284b602.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2327471,
+      "sha256": "36435e15abbda44bb27e93e2e95e941431d6bfae0757479c2cb6246e86d0091a",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        33,
+        998,
+        1496
+      ],
+      "fully_transparent_pixels": 951893,
+      "githubBlobSha": "06923c7150a89a375f486f5bb5014e88183f0435",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        192,
+        59,
+        857,
+        1481
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 9,
+      "path": "rite-keeper-09.png",
+      "design": "Medium-height robust female keeper with wide cranium, prominent fleshy cheeks and layered short thick tendrils with plain bronze rings. Red-violet raised shoulder wrap, long charcoal-purple robe with overlapping curved side panels and slim golden chest chains. Left arm presses a closed teal-bordered ritual codex against torso, right palm placed on chest. Dark slate mottled scales.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-2358a416-8704-4233-8141-c6849eb1af54.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2260592,
+      "sha256": "fb773890a113a7a01d05cd9fbed144c99bb3f43e86c9e44760ad077339b475f9",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        64,
+        65,
+        1008,
+        1518
+      ],
+      "fully_transparent_pixels": 954187,
+      "githubBlobSha": "485f800e1d97abbda414e92b8b26a00ad60e758e",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        244,
+        70,
+        850,
+        1488
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 10,
+      "path": "rite-keeper-10.png",
+      "design": "Exceptionally large elderly keeper with a broad squared skull, four substantial mandibles and long grey scalp tendrils gathered in two low loops. Rigid bronze torc, sleeveless deep-purple outer robe, wide apron-like front panel and tiny pale bone beads on belt. Carries three smooth natural ceremony stones in a shallow rectangular bronze tray supported by both hands. Granite-grey hide.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e5201f18-a4db-48db-86a9-93827783d51e.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2462061,
+      "sha256": "47cae8d168a8f766d9feaad7bb6373fa1f133671cdeab04208ad2846f30f247a",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        55,
+        1004,
+        1514
+      ],
+      "fully_transparent_pixels": 902412,
+      "githubBlobSha": "e7b2bb1e20ef226361039cdfbdaeaed405090bf2",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        192,
+        95,
+        913,
+        1486
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 11,
+      "path": "rite-keeper-11.png",
+      "design": "Very tall thin elder keeper with a broad rear dome, uneven age-worn forehead ridges and long white-tipped tendrils tied into one narrow rear bundle. Long plum robe with a very wide bronze-edged stole reaching calves, soft short sleeves and a narrow braided belt. Right hand holds a circular teal ritual seal upright, left gently supports a short closed bead cord. Muted beige-grey skin.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7ef0d721-2986-4f02-a98c-6b624b8f9b63.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2295931,
+      "sha256": "f46fd45f8b69833c2536f2c86bf10bbecf886b9f4fedec808127ceb49d4b2768",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        35,
+        1006,
+        1503
+      ],
+      "fully_transparent_pixels": 966081,
+      "githubBlobSha": "f63141385e09927dd820e4253aa2d6177745f153",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        228,
+        41,
+        866,
+        1499
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 12,
+      "path": "rite-keeper-12.png",
+      "design": "Short strong adult female custodian with a broad skull and asymmetric brow ridges, all four mandibles intact and distinct, thick black tendrils banded at staggered heights. Long structured violet sleeveless vest over a pale grey robe with wide folded sleeves. Both hands support a carefully folded ivory ceremonial cloth bearing only a simple teal geometric border. Grey olive speckled hide.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c83562fc-df1d-4953-a1ef-d0096a2a4aa4.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2297678,
+      "sha256": "925acb00600c1238e3ee266c80e2f7d6f20689b8cd06c6e559d71530915fd7b0",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        35,
+        988,
+        1512
+      ],
+      "fully_transparent_pixels": 962924,
+      "githubBlobSha": "c32aebf7edcf7fb2830d6c42fafbfe8829f01f55",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        227,
+        75,
+        835,
+        1488
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 13,
+      "path": "rite-keeper-13.png",
+      "design": "Broad mature rite keeper with a flattened wide crown, one healed brow ridge scar, robust four jaw-lobes and long silver tendrils in a low heavy knot. Dark-purple mantle with one square bronze badge and long stepped skirt panels, bare scaled forearms with restrained wrist wraps. Right holds a short staff topped by a blunt closed triangular frame; left carries a small teal plaque. Dark umber-grey skin.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-16b1cc3f-d49a-4937-83bf-9e52e178643a.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2519747,
+      "sha256": "dffa27dce7886dd921ef1bc2ad25e23844bc3e8b86872f99408f0b31e56775d1",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        37,
+        1015,
+        1514
+      ],
+      "fully_transparent_pixels": 880967,
+      "githubBlobSha": "261d570cf07b118899ab9204a2473a0602cba308",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        133,
+        64,
+        943,
+        1489
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 14,
+      "path": "rite-keeper-14.png",
+      "design": "Tall lean female keeper with broad rear cranium and shallow central brow ridge, strong four mandibles and thick scalp tendrils arranged in a low loose arc. Deep violet robe with three linked bronze collar medallions, single diagonal shoulder drape and long asymmetrical ivory inner panel. Both hands clasp a large ceremonial relic key against the abdomen. Pale warm-grey mottled hide.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-541f8060-eef0-457e-8305-b044cb3e4a02.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2331503,
+      "sha256": "60818470c3c7fb6599fda698ce8bd395ee390b70f2a606db990e6196632927d0",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        33,
+        1010,
+        1506
+      ],
+      "fully_transparent_pixels": 934350,
+      "githubBlobSha": "9aa7a8ed419ccf0a7b5bd96ffbc618ef7dc9945a",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        215,
+        37,
+        812,
+        1503
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 15,
+      "path": "rite-keeper-15.png",
+      "design": "Short heavily weathered elder with broad cranial dome, massive natural lower mandibles and dense short silver scalp tendrils in a low fan. Old eggplant robe with visible carefully stitched cloth repairs, narrow bronze trim and a small slanted shoulder mantle. Left hand lifts a tiny teal token for inspection, right balances a shallow closed bronze ritual vessel by its base. Ochre-grey skin.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-27204eab-ed7a-4333-b981-f6644b7df29e.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2493661,
+      "sha256": "0a8d062a1b7daa8135a5c1166a3297e25cf705801dcf6dd8522fe249d90e2d80",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        75,
+        1010,
+        1481
+      ],
+      "fully_transparent_pixels": 882980,
+      "githubBlobSha": "121676cfc372e0f514501d71bf934b90c6dc370d",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        182,
+        82,
+        881,
+        1478
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 16,
+      "path": "rite-keeper-16.png",
+      "design": "Tall athletic keeper with a broad head plate and deeply inset eyes, black thick scalp tendrils gathered high with two red-brown bands. Layered purple stole over a fitted grey long wrap robe, triangular bronze collar and a diagonal teal tablet case worn across torso. Right hand draws a closed slim ritual slate from its sleeve, left steadies the case. Sage skin with dark spotting.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f040465a-264e-44fc-ae8c-838bc342d7fe.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2429385,
+      "sha256": "5ff24ef219433849ed32bd5d944432bc776e42a0bb8dc8daf92b11e8ea269ce6",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        43,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 908659,
+      "githubBlobSha": "1c8858c18c21df7108399878f94130624a2ba09e",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        140,
+        46,
+        834,
+        1479
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 17,
+      "path": "rite-keeper-17.png",
+      "design": "Heavy-built adult female keeper with wide low skull and strong cheek jaw-lobes, pale thick scalp tendrils falling loosely to shoulders. Triangular bronze collar over a purple-and-ivory layered long robe, split broad sleeves and a strong leather sash. Both hands hold an open hinged ritual diptych with two matte teal panels in a bronze frame, no readable lettering. Mottled dark-grey hide.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-9fcfd9f5-a473-47a9-8d6e-effe29f82f6e.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2420880,
+      "sha256": "b41c6fc873a73e2e15110a70529f504a8c5772959b0274fcbcaaaf67ea397abe",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        49,
+        1012,
+        1514
+      ],
+      "fully_transparent_pixels": 894099,
+      "githubBlobSha": "34dcff2e49a66caa78bfd6d39f1907d8610c7706",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        201,
+        55,
+        914,
+        1493
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 18,
+      "path": "rite-keeper-18.png",
+      "design": "Old broad-shouldered keeper with a wide angular cranium, uneven natural forehead ridges and short white scalp tendrils forming two small rear loops. Plum mantle with elbow openings, long bronze-edged central panel and simple thick belt carrying three rank seals. Right arm carries a closed teal ritual book, left palm extended in a quiet ceremonial greeting. Warm grey spotted skin.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-fbef7693-d0ca-4a63-ab02-07ac148694f1.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2484901,
+      "sha256": "ff99882213be34410cabf0c7ee4c0ea40a0b612d5ce7e3d22c5df65d9da3c7d5",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        20,
+        991,
+        1518
+      ],
+      "fully_transparent_pixels": 904381,
+      "githubBlobSha": "077fd1a636c1f536b4398d1483eafbdd5937f523",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        183,
+        59,
+        985,
+        1488
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 19,
+      "path": "rite-keeper-19.png",
+      "design": "Medium barrel-chested keeper with a flat broad crown, thick cheek lobes and dark scalp tendrils swept entirely to the back. Short sleeveless purple ceremonial vest over a long pleated violet robe, bare forearms with plain bronze wrist bands, broad cloth waist knot. Holds a large flat bronze ceremonial disc vertically against abdomen with both hands. Green-brown mottled skin.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-bf06b72f-8ae4-4c40-9ac7-7cca3463b04b.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2345607,
+      "sha256": "9596ed3afceeaef0890b0fa8b0cc7c0b08e2fa570a36fe7cfb89afb935bec37d",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        47,
+        42,
+        966,
+        1536
+      ],
+      "fully_transparent_pixels": 939744,
+      "githubBlobSha": "49428ef2667a7fe144092f3d9d22db7b9ef24315",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        212,
+        45,
+        848,
+        1493
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 20,
+      "path": "rite-keeper-20.png",
+      "design": "Tall graceful adult female custodian with a broad silver-scaled forehead, four distinct natural mandibles and thick black-and-grey tendrils gathered into a high compact bundle. Narrow gold-stitched shoulders, long purple sleeveless vest, asymmetric layered lower robe with two pale inner folds. Presents a small sealed matte teal rectangular reliquary box in both palms slightly forward. Pale warm-grey skin.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-620e16aa-35f3-425e-85e9-8847cfb448c0.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2073529,
+      "sha256": "0205e6873b67035f6d0b214a2dde06f27e8b8973f4e455c6e35930e5c7a1f63c",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        33,
+        1010,
+        1498
+      ],
+      "fully_transparent_pixels": 1049701,
+      "githubBlobSha": "9901f4200e3e1f3f4982022f674eb2c35ffeb048",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        298,
+        37,
+        826,
+        1495
+      ],
+      "edgeAlphaMax": 1
+    }
+  ],
+  "completed": 20
+}

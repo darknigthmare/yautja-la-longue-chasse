@@ -1,0 +1,83 @@
+{
+  "status": "ACCEPTED_TARGETED_REVIEW",
+  "checkedAt": "2026-09-30T22:45:42.472Z",
+  "reviewed": [
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-126-avpr-2007-hospital-roof/center.png",
+      "sha256": "bee66dc86c2504d87b7b00234545db2f108a3c675d8e8bfb2ba5b05784b49fdb"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-126-avpr-2007-hospital-roof/wide.png",
+      "sha256": "36fa68a801b5b9f3d5431c0f5d5596750b3b9983659988918cc969ae37283f8a"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-126-avpr-2007-hospital-roof/ambient-ambient-06-frame-3.png",
+      "sha256": "a9b66c638806ffd3b78086e9255e9da62c6371691b6dcda509f54ad7c5e7c44a"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-130-avp-classic-2000-space-station/center.png",
+      "sha256": "458ca9d3616fcba18a2ad1a87c3a4922fbed0304a0751caa5bb9ddbe544d5832"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-130-avp-classic-2000-space-station/wide.png",
+      "sha256": "1960115b92b28d73c02f503282f05bd40954963588a8c1825c76b4b3c8feb563"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-130-avp-classic-2000-space-station/ambient-ambient-04-frame-3.png",
+      "sha256": "604063ec9d16e71fd37fd116e51a7714ea226b004c2de12cea6cfc71f7583c62"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-130-avp-classic-2000-space-station/ambient-ambient-05-frame-3.png",
+      "sha256": "beafe8f2858e9b72172de945f16b049a9541d46c7a49ebc428544f1fbc643d3c"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-130-avp-classic-2000-space-station/ambient-ambient-06-frame-3.png",
+      "sha256": "8c8d918b9f1fe33d5cecc96436ed1beb87bfdaba641e3aa63a5d9ca53a1a8499"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-051-golgotha-etude-jaguar/wide.png",
+      "sha256": "e27016ecfaa4ba0c6dfe345ccaee04c31195c1d9739e542b13eb170ca4717de5"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-051-golgotha-etude-jaguar/left-corner.png",
+      "sha256": "5beb0fba721a9309883926dc4cfe609d2763b41db2263c75bc0a563409de5fa4"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-081-cercle-obsidienne/wide.png",
+      "sha256": "79ee9077fbf1130796c54c8b1a93537ebc1889352e0cde3ef118dafdb2b24b61"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-081-cercle-obsidienne/right-corner.png",
+      "sha256": "e5b436148463bf46f375ff4d5abed668a47a40947c9c529fb5dcc4ecdca68b60"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-085-cercle-sang/wide.png",
+      "sha256": "25b83f9406c09a3397c79971fcfc2ef32338b8147b44285819a2fdb4cb4d29e0"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-085-cercle-sang/actual-game-camera.png",
+      "sha256": "a629c3d2bf7420477d0de66750b16f12fec477eeeb806a04f370d6e0dc770cd7"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-087-cercle-ambre/wide.png",
+      "sha256": "7bb131299afaf213f0ca99a2c3f74e84c52cafb1cf153d1f524ea0350f0e345e"
+    },
+    {
+      "path": "work-local/v63/qa/stages/renderer/arena-087-cercle-ambre/reduced-motion.png",
+      "sha256": "4a69a7b75d9920ee98d558067090466268a8c98356beffc82f8799e82247b272"
+    }
+  ],
+  "observations": [
+    "Roof: civil evacuation excluded; third native P0 edit removes the tiny human silhouettes from the right distant opening. HVAC coupling attaches to a pipe; town lights remain distant; smoke uses rooftop exhaust support.",
+    "Station: piston is on the left service balcony behind its own safety rail; steam pipe sits on the rear ledge, well above the fighter head lane; hatch mounts against the structural wall/beam and retains a steady amber lamp.",
+    "Four originals: verified blank lower fascia at zoom.8 and reduced.9 before correction. Native opaque panel crop and160px authored height remove the blank band; source art and old stage identities remain unchanged.",
+    "Inspection covers the listed perspectives and props, not an exhaustive187-stage art audit. The original arenas are exhibition creations, not canonical Amengi/Yautja home locations."
+  ],
+  "rejectedP0Attempts": 2,
+  "pixelEditingOutsideImagegen": false,
+  "limitations": [
+    "No exact film/game geometry or machinery1:1 certification.",
+    "No newly authored narrative chapter or canonical character presence.",
+    "Original stage floors reuse existing assets and crop them at runtime; no four new floor PNGs claimed."
+  ]
+}

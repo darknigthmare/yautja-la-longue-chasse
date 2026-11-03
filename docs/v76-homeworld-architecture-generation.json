@@ -1,0 +1,290 @@
+{
+  "mode": "builtin-image_gen",
+  "intent": "precise-object-edit",
+  "transparent": true,
+  "camera": {
+    "yawDegrees": 0,
+    "pitchDegrees": 35
+  },
+  "instructions": "One native bitmap per call. Six initial views, six geometric/floor refinements, one additional workshop floor repair. All historical V75 bytes and generated candidates preserved. No pixel transformation, crop, CSS rotation or mirror.",
+  "callCount": 13,
+  "acceptedCount": 6,
+  "acceptance": "Ground segments, useful aperture feet, minimum vertical jamb heights, opaque cavity and native floor alpha edge measured after visual inspection. Requested yaw +/-25deg; actual measured yaw takes precedence.",
+  "generationStages": [
+    {
+      "id": "convoy-workshop",
+      "initialOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-155365fd-cb0b-403f-ad7a-67f5ac75b28a.png",
+      "refinement": {
+        "id": "convoy-workshop",
+        "reference": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-155365fd-cb0b-403f-ad7a-67f5ac75b28a.png",
+        "prompt": "Use case: precise-object-edit. Input image is the edit target, the SAME native building identity. Correct only its geometric ground support and entrance. Keep every original material, roof detail, amber/cyan light, empty alcove, and functional identity. Keep transparent alpha outside; doorway interior must remain fully opaque dark painted stone.\nThis must be a rigid LEFT-side-visible building on level ground viewed by the unchanged ORTHOGRAPHIC camera with pitch/elevation35° and yaw0°. Increase the building's true ground yaw to -25°; do NOT tilt the camera or image, do NOT skew/mirror. All vertical inner door jambs remain upright. Front foundation edge must be a visibly straight diagonal slope of −0.267 (falls DOWN toward the LEFT) in screen pixels. Its actual corner supports should be approximately front LEFT at17% of image width/93% of image height, front RIGHT at97% width/60% height on a landscape3:2 canvas. This is deliberately stronger than the shallow front slope of the edit target; the visible exterior side wall needs consistent depth. Draw roof and side-wall planes coherently for this changed orientation.\nCRITICAL entrance correction: remove the horizontal VERTICAL FACE of the raised stone strip currently crossing the bottom of the door. No raised entrance plinth, no step, no stair, no lip, no block across the opening. The doorway floor ends in a sharp zero-height edge flush with the flat ground; from inner cavity floor to outside ground is level. The two inner jamb feet land on that same diagonal floor edge, continuous with the front wall contact plane. Side wall base stones may remain, but the opening between jambs is unobstructed and not raised.\nDoor: very generous useful width between inner jamb feet, at least25% of the full front edge span; minimum usable upright height450pixels in a1536×1024 output. There must be no opaque door leaf, silhouette or external prop obstructing it, just dark recessed floor and walls with alpha255. Keep whole single building centered, full roof tips and side walls visible, a little true transparent margin. No text, characters, furniture, ground patch, horizon or shadow outside the building. Produce ONE corrected raster cutout, not a diagram or multiple views."
+      },
+      "refinementOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-e8e3d8f2-a748-474e-91ae-75d1e0a13cfe.png",
+      "additionalFloorRepair": {
+        "reference": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-e8e3d8f2-a748-474e-91ae-75d1e0a13cfe.png",
+        "prompt": "Use case: precise-object-edit. Edit target: the supplied angled industrial Yautja workshop sprite. Preserve the ENTIRE building, three-quarter LEFT view, roof planes, ventilator stacks, basalt/bronze materials, lighting, open tool bays and silhouette EXACTLY. Change ONLY the central walk-through doorway bottom floor. The entrance still has a thick VERTICAL stone step/riser spanning between the inner jamb feet; remove that raised riser completely. Lower the entire doorway floor to the ground contact level of the surrounding wall base blocks and extend the two inner jamb feet to that same level. The floor must meet transparency at a single thin zero-height diagonal edge with no vertical band or face underneath: a truly STEP-FREE walk-through entrance. Side masonry support blocks and raised tool-bay floors can remain unchanged; only the central opening must be flush and accessible. Paint the opening with an opaque dark cavity and floor texture, alpha255. Never make the doorway a transparent hole. Do not enlarge a ramp/platform out of the building. Keep the opening very tall and wide. Do not change camera, ground yaw, facade geometry, materials or other details. Transparent alpha outside the building preserved. ONE landscape building sprite only, no writing, diagrams, people, props, shadows or background."
+      },
+      "acceptedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-ce8e458a-d0c4-479b-82bf-b641f1114067.png",
+      "runtimeSource": "/game/homeworld/v76/architecture/convoy-workshop.png",
+      "sha256": "5f238a9b689cebe0aaf61b9faf3c5fe324dbd721a3ba447713b2cf339bad6b51",
+      "groundFrame": {
+        "frontLeft": {
+          "x": 348,
+          "y": 990
+        },
+        "frontRight": {
+          "x": 1488,
+          "y": 727
+        },
+        "doorLeft": {
+          "x": 836,
+          "y": 853
+        },
+        "doorRight": {
+          "x": 1040,
+          "y": 806
+        },
+        "doorClearHeightPixels": 401,
+        "yawDegrees": -21.910792036302766
+      },
+      "sourceReferenceSha256": "da7787f9ad19485ecc3a056164a9cca08d0001278420b4d6ca26df15cc9b3155",
+      "rejectedInitialReason": "Angle too shallow and raised entrance lip; native redraw required.",
+      "rejectedRefinementReason": "Remaining raised vertical riser across useful entrance floor."
+    },
+    {
+      "id": "dock-control",
+      "initialOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-85284032-5cf1-44d7-a802-1c6be2f1e296.png",
+      "refinement": {
+        "id": "dock-control",
+        "reference": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-85284032-5cf1-44d7-a802-1c6be2f1e296.png",
+        "prompt": "Use case: precise-object-edit. Input image is the edit target, the SAME native building identity. Correct only its geometric ground support and entrance. Keep every original material, roof detail, amber/cyan light, empty alcove, and functional identity. Keep transparent alpha outside; doorway interior must remain fully opaque dark painted stone.\nThis must be a rigid RIGHT-side-visible building on level ground viewed by the unchanged ORTHOGRAPHIC camera with pitch/elevation35° and yaw0°. Increase the building's true ground yaw to 25°; do NOT tilt the camera or image, do NOT skew/mirror. All vertical inner door jambs remain upright. Front foundation edge must be a visibly straight diagonal slope of +0.267 (falls DOWN toward the RIGHT) in screen pixels. Its actual corner supports should be approximately front LEFT at3% width/60% height, front RIGHT at83% width/93% height on a landscape3:2 canvas. This is deliberately stronger than the shallow front slope of the edit target; the visible exterior side wall needs consistent depth. Draw roof and side-wall planes coherently for this changed orientation.\nCRITICAL entrance correction: remove the horizontal VERTICAL FACE of the raised stone strip currently crossing the bottom of the door. No raised entrance plinth, no step, no stair, no lip, no block across the opening. The doorway floor ends in a sharp zero-height edge flush with the flat ground; from inner cavity floor to outside ground is level. The two inner jamb feet land on that same diagonal floor edge, continuous with the front wall contact plane. Side wall base stones may remain, but the opening between jambs is unobstructed and not raised.\nDoor: very generous useful width between inner jamb feet, at least25% of the full front edge span; minimum usable upright height450pixels in a1536×1024 output. There must be no opaque door leaf, silhouette or external prop obstructing it, just dark recessed floor and walls with alpha255. Keep whole single building centered, full roof tips and side walls visible, a little true transparent margin. No text, characters, furniture, ground patch, horizon or shadow outside the building. Produce ONE corrected raster cutout, not a diagram or multiple views."
+      },
+      "refinementOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-c5d90ede-bcae-4a59-a697-9e4623d11336.png",
+      "additionalFloorRepair": null,
+      "acceptedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-c5d90ede-bcae-4a59-a697-9e4623d11336.png",
+      "runtimeSource": "/game/homeworld/v76/architecture/dock-control.png",
+      "sha256": "bd96ea2fdfd665ba6b97e1a18b3375aa92a56d7f8ee998f14177151064198782",
+      "groundFrame": {
+        "frontLeft": {
+          "x": 48,
+          "y": 712
+        },
+        "frontRight": {
+          "x": 1208,
+          "y": 1007
+        },
+        "doorLeft": {
+          "x": 490,
+          "y": 812
+        },
+        "doorRight": {
+          "x": 723,
+          "y": 874
+        },
+        "doorClearHeightPixels": 472,
+        "yawDegrees": 23.911375672914353
+      },
+      "sourceReferenceSha256": "c8f15bd38428b918aea98270a3f32fc3cc81c4dc37c00aeb4596baa6ef2f8e93",
+      "rejectedInitialReason": "Angle too shallow and raised entrance lip; native redraw required.",
+      "rejectedRefinementReason": null
+    },
+    {
+      "id": "rite-sanctum",
+      "initialOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-bb4ce72f-dfaa-4127-9500-edd8307b6670.png",
+      "refinement": {
+        "id": "rite-sanctum",
+        "reference": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-bb4ce72f-dfaa-4127-9500-edd8307b6670.png",
+        "prompt": "Use case: precise-object-edit. Input image is the edit target, the SAME native building identity. Correct only its geometric ground support and entrance. Keep every original material, roof detail, amber/cyan light, empty alcove, and functional identity. Keep transparent alpha outside; doorway interior must remain fully opaque dark painted stone.\nThis must be a rigid LEFT-side-visible building on level ground viewed by the unchanged ORTHOGRAPHIC camera with pitch/elevation35° and yaw0°. Increase the building's true ground yaw to -25°; do NOT tilt the camera or image, do NOT skew/mirror. All vertical inner door jambs remain upright. Front foundation edge must be a visibly straight diagonal slope of −0.267 (falls DOWN toward the LEFT) in screen pixels. Its actual corner supports should be approximately front LEFT at17% of image width/93% of image height, front RIGHT at97% width/60% height on a landscape3:2 canvas. This is deliberately stronger than the shallow front slope of the edit target; the visible exterior side wall needs consistent depth. Draw roof and side-wall planes coherently for this changed orientation.\nCRITICAL entrance correction: remove the horizontal VERTICAL FACE of the raised stone strip currently crossing the bottom of the door. No raised entrance plinth, no step, no stair, no lip, no block across the opening. The doorway floor ends in a sharp zero-height edge flush with the flat ground; from inner cavity floor to outside ground is level. The two inner jamb feet land on that same diagonal floor edge, continuous with the front wall contact plane. Side wall base stones may remain, but the opening between jambs is unobstructed and not raised.\nDoor: very generous useful width between inner jamb feet, at least25% of the full front edge span; minimum usable upright height450pixels in a1536×1024 output. There must be no opaque door leaf, silhouette or external prop obstructing it, just dark recessed floor and walls with alpha255. Keep whole single building centered, full roof tips and side walls visible, a little true transparent margin. No text, characters, furniture, ground patch, horizon or shadow outside the building. Produce ONE corrected raster cutout, not a diagram or multiple views."
+      },
+      "refinementOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-a8da16f0-155e-4e5b-a8cf-84a8486a766d.png",
+      "additionalFloorRepair": null,
+      "acceptedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-a8da16f0-155e-4e5b-a8cf-84a8486a766d.png",
+      "runtimeSource": "/game/homeworld/v76/architecture/rite-sanctum.png",
+      "sha256": "ef9a74e596794652081395a942aae8c0951ebd18af986ebd03c79e79a16d1775",
+      "groundFrame": {
+        "frontLeft": {
+          "x": 368,
+          "y": 992
+        },
+        "frontRight": {
+          "x": 1488,
+          "y": 754
+        },
+        "doorLeft": {
+          "x": 833,
+          "y": 876
+        },
+        "doorRight": {
+          "x": 1100,
+          "y": 822
+        },
+        "doorClearHeightPixels": 436,
+        "yawDegrees": -20.328783383627794
+      },
+      "sourceReferenceSha256": "24b5fdce488d7f32d4f630a4ab86b7d8974fb85f07411838849160462364e989",
+      "rejectedInitialReason": "Angle too shallow and raised entrance lip; native redraw required.",
+      "rejectedRefinementReason": null
+    },
+    {
+      "id": "trophy-mausoleum",
+      "initialOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-04b3e33a-84e3-49f1-88b0-d28736ced797.png",
+      "refinement": {
+        "id": "trophy-mausoleum",
+        "reference": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-04b3e33a-84e3-49f1-88b0-d28736ced797.png",
+        "prompt": "Use case: precise-object-edit. Input image is the edit target, the SAME native building identity. Correct only its geometric ground support and entrance. Keep every original material, roof detail, amber/cyan light, empty alcove, and functional identity. Keep transparent alpha outside; doorway interior must remain fully opaque dark painted stone.\nThis must be a rigid RIGHT-side-visible building on level ground viewed by the unchanged ORTHOGRAPHIC camera with pitch/elevation35° and yaw0°. Increase the building's true ground yaw to 25°; do NOT tilt the camera or image, do NOT skew/mirror. All vertical inner door jambs remain upright. Front foundation edge must be a visibly straight diagonal slope of +0.267 (falls DOWN toward the RIGHT) in screen pixels. Its actual corner supports should be approximately front LEFT at3% width/60% height, front RIGHT at83% width/93% height on a landscape3:2 canvas. This is deliberately stronger than the shallow front slope of the edit target; the visible exterior side wall needs consistent depth. Draw roof and side-wall planes coherently for this changed orientation.\nCRITICAL entrance correction: remove the horizontal VERTICAL FACE of the raised stone strip currently crossing the bottom of the door. No raised entrance plinth, no step, no stair, no lip, no block across the opening. The doorway floor ends in a sharp zero-height edge flush with the flat ground; from inner cavity floor to outside ground is level. The two inner jamb feet land on that same diagonal floor edge, continuous with the front wall contact plane. Side wall base stones may remain, but the opening between jambs is unobstructed and not raised.\nDoor: very generous useful width between inner jamb feet, at least25% of the full front edge span; minimum usable upright height450pixels in a1536×1024 output. There must be no opaque door leaf, silhouette or external prop obstructing it, just dark recessed floor and walls with alpha255. Keep whole single building centered, full roof tips and side walls visible, a little true transparent margin. No text, characters, furniture, ground patch, horizon or shadow outside the building. Produce ONE corrected raster cutout, not a diagram or multiple views."
+      },
+      "refinementOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-c0ef03a5-09bb-4c1b-9c90-3600a7e973b6.png",
+      "additionalFloorRepair": null,
+      "acceptedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-c0ef03a5-09bb-4c1b-9c90-3600a7e973b6.png",
+      "runtimeSource": "/game/homeworld/v76/architecture/trophy-mausoleum.png",
+      "sha256": "0cd37636f533ef9924b9938b490ca5d43f03db1f4b97638060c553bbf36632e8",
+      "groundFrame": {
+        "frontLeft": {
+          "x": 48,
+          "y": 735
+        },
+        "frontRight": {
+          "x": 1200,
+          "y": 1008
+        },
+        "doorLeft": {
+          "x": 494,
+          "y": 828
+        },
+        "doorRight": {
+          "x": 716,
+          "y": 883
+        },
+        "doorClearHeightPixels": 352,
+        "yawDegrees": 22.44848417489998
+      },
+      "sourceReferenceSha256": "e6e858914c92eb4a8af0c0fb7569dc540a354718c670e6cbd70c117790e56092",
+      "rejectedInitialReason": "Angle too shallow and raised entrance lip; native redraw required.",
+      "rejectedRefinementReason": null
+    },
+    {
+      "id": "rampart-watch",
+      "initialOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-9d9205f8-1d3c-44e8-8391-b602c9bb6c54.png",
+      "refinement": {
+        "id": "rampart-watch",
+        "reference": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-9d9205f8-1d3c-44e8-8391-b602c9bb6c54.png",
+        "prompt": "Use case: precise-object-edit. Input image is the edit target, the SAME native building identity. Correct only its geometric ground support and entrance. Keep every original material, roof detail, amber/cyan light, empty alcove, and functional identity. Keep transparent alpha outside; doorway interior must remain fully opaque dark painted stone.\nThis must be a rigid LEFT-side-visible building on level ground viewed by the unchanged ORTHOGRAPHIC camera with pitch/elevation35° and yaw0°. Increase the building's true ground yaw to -25°; do NOT tilt the camera or image, do NOT skew/mirror. All vertical inner door jambs remain upright. Front foundation edge must be a visibly straight diagonal slope of −0.267 (falls DOWN toward the LEFT) in screen pixels. Its actual corner supports should be approximately front LEFT at17% of image width/93% of image height, front RIGHT at97% width/60% height on a landscape3:2 canvas. This is deliberately stronger than the shallow front slope of the edit target; the visible exterior side wall needs consistent depth. Draw roof and side-wall planes coherently for this changed orientation.\nCRITICAL entrance correction: remove the horizontal VERTICAL FACE of the raised stone strip currently crossing the bottom of the door. No raised entrance plinth, no step, no stair, no lip, no block across the opening. The doorway floor ends in a sharp zero-height edge flush with the flat ground; from inner cavity floor to outside ground is level. The two inner jamb feet land on that same diagonal floor edge, continuous with the front wall contact plane. Side wall base stones may remain, but the opening between jambs is unobstructed and not raised.\nDoor: very generous useful width between inner jamb feet, at least25% of the full front edge span; minimum usable upright height450pixels in a1536×1024 output. There must be no opaque door leaf, silhouette or external prop obstructing it, just dark recessed floor and walls with alpha255. Keep whole single building centered, full roof tips and side walls visible, a little true transparent margin. No text, characters, furniture, ground patch, horizon or shadow outside the building. Produce ONE corrected raster cutout, not a diagram or multiple views."
+      },
+      "refinementOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-d5b2756a-d675-4416-95cc-ab4b2f3e6516.png",
+      "additionalFloorRepair": null,
+      "acceptedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-d5b2756a-d675-4416-95cc-ab4b2f3e6516.png",
+      "runtimeSource": "/game/homeworld/v76/architecture/rampart-watch.png",
+      "sha256": "3ce3f5be95d6648e3a132f048f0aa4967888fd252f1ef831ebb8815874dd879a",
+      "groundFrame": {
+        "frontLeft": {
+          "x": 392,
+          "y": 1014
+        },
+        "frontRight": {
+          "x": 1488,
+          "y": 759
+        },
+        "doorLeft": {
+          "x": 850,
+          "y": 873
+        },
+        "doorRight": {
+          "x": 1104,
+          "y": 815
+        },
+        "doorClearHeightPixels": 452,
+        "yawDegrees": -22.079330058414957
+      },
+      "sourceReferenceSha256": "b450450aa1b7874e5596ba965998a5179de18176318900ef3b8361474c75c5c3",
+      "rejectedInitialReason": "Angle too shallow and raised entrance lip; native redraw required.",
+      "rejectedRefinementReason": null
+    },
+    {
+      "id": "convoy-store",
+      "initialOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-07d1bbca-befe-4621-85be-0e590de3ae23.png",
+      "refinement": {
+        "id": "convoy-store",
+        "reference": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-07d1bbca-befe-4621-85be-0e590de3ae23.png",
+        "prompt": "Use case: precise-object-edit. Input image is the edit target, the SAME native building identity. Correct only its geometric ground support and entrance. Keep every original material, roof detail, amber/cyan light, empty alcove, and functional identity. Keep transparent alpha outside; doorway interior must remain fully opaque dark painted stone.\nThis must be a rigid RIGHT-side-visible building on level ground viewed by the unchanged ORTHOGRAPHIC camera with pitch/elevation35° and yaw0°. Increase the building's true ground yaw to 25°; do NOT tilt the camera or image, do NOT skew/mirror. All vertical inner door jambs remain upright. Front foundation edge must be a visibly straight diagonal slope of +0.267 (falls DOWN toward the RIGHT) in screen pixels. Its actual corner supports should be approximately front LEFT at3% width/60% height, front RIGHT at83% width/93% height on a landscape3:2 canvas. This is deliberately stronger than the shallow front slope of the edit target; the visible exterior side wall needs consistent depth. Draw roof and side-wall planes coherently for this changed orientation.\nCRITICAL entrance correction: remove the horizontal VERTICAL FACE of the raised stone strip currently crossing the bottom of the door. No raised entrance plinth, no step, no stair, no lip, no block across the opening. The doorway floor ends in a sharp zero-height edge flush with the flat ground; from inner cavity floor to outside ground is level. The two inner jamb feet land on that same diagonal floor edge, continuous with the front wall contact plane. Side wall base stones may remain, but the opening between jambs is unobstructed and not raised.\nDoor: very generous useful width between inner jamb feet, at least25% of the full front edge span; minimum usable upright height450pixels in a1536×1024 output. There must be no opaque door leaf, silhouette or external prop obstructing it, just dark recessed floor and walls with alpha255. Keep whole single building centered, full roof tips and side walls visible, a little true transparent margin. No text, characters, furniture, ground patch, horizon or shadow outside the building. Produce ONE corrected raster cutout, not a diagram or multiple views."
+      },
+      "refinementOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-48bbcd89-fa09-46b6-b05d-f6ffd4cfa7b9.png",
+      "additionalFloorRepair": null,
+      "acceptedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a0fa65-933c-7371-8501-b76c974c58b0\\exec-48bbcd89-fa09-46b6-b05d-f6ffd4cfa7b9.png",
+      "runtimeSource": "/game/homeworld/v76/architecture/convoy-store.png",
+      "sha256": "233af518fd73df74e5331cabdbaea94706979cbde5624200000265f82af1ea65",
+      "groundFrame": {
+        "frontLeft": {
+          "x": 48,
+          "y": 690
+        },
+        "frontRight": {
+          "x": 1200,
+          "y": 988
+        },
+        "doorLeft": {
+          "x": 435,
+          "y": 771
+        },
+        "doorRight": {
+          "x": 737,
+          "y": 846
+        },
+        "doorClearHeightPixels": 394,
+        "yawDegrees": 24.275174050043102
+      },
+      "sourceReferenceSha256": "d873a6fea3a8522a74e850b8011a5e55f0f745a5efc23692bcc4c24e595a50de",
+      "rejectedInitialReason": "Angle too shallow and raised entrance lip; native redraw required.",
+      "rejectedRefinementReason": null
+    }
+  ],
+  "targets": [
+    {
+      "id": "convoy-workshop",
+      "side": "LEFT",
+      "yaw": -25,
+      "identity": "Keep the pair of industrial ventilation stacks, open tool bays on both front wings, low sculpted wing roofs, central rib, dark basalt/bronze stone, and amber strips. These bays are empty work architecture, no people or weapons.",
+      "reference": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/public/game/homeworld/v75/architecture/convoy-workshop.png",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE native transparent PNG building sprite for an orthographic 2.5D game.\nInput image: edit target and exact architectural identity reference, not a backdrop.\nPrimary request: redraw this SAME entire building as a true three-quarter LEFT-side-visible view by turning the rigid building on the flat ground about its vertical axis -25 degrees. The world camera MUST remain yaw0 and elevation/pitch35 degrees; no perspective lens, no camera roll, all upright jambages stay vertical. We must see the LEFT exterior side wall and the front, genuinely drawn depth and roof planes, not a skewed front image, not a mirror. The front ground foundation edge slopes about 15 degrees DOWN toward IMAGE LEFT; its left and right ground support points have visibly different vertical pixel positions.\nIdentity invariants: Keep the pair of industrial ventilation stacks, open tool bays on both front wings, low sculpted wing roofs, central rib, dark basalt/bronze stone, and amber strips. These bays are empty work architecture, no people or weapons.\nComposition/framing: whole single building centered in a landscape canvas, matching the reference's high-detail realistic game illustration and lighting. Building occupies nearly full width with a little transparent margin. All roof tips, side wall and front support corners completely visible; no crop. Camera shows modest roof depth, dominant front facade, not a top-down view.\nEntrance: ONE very tall and wide walk-through doorway on the front facade, empty open dark recessed cavity. Paint its entire interior with fully OPAQUE very dark stone pixels, never a transparent hole. Entrance width at the useful inner jamb feet at least one quarter of the front facade span; useful vertical opening height at least half the building body height, so an adult game actor fits comfortably. Floor ends flush at the true doorway ground threshold and meets the same flat ground as the wall bases. NO staircase, NO raised plinth/platform, NO lip, NO step or external ramp. Thin wall foot support allowed, never a block across the opening.\nBackground: genuinely transparent alpha outside the building, including all margins; no colored background, no checkerboard, no landscape or painted ground patch, no cast ground shadow. Door cavity must NOT use this transparency.\nAvoid: people, vehicles, furniture, extra props, weapons, skulls, trophies, labels, logos, writing, borders, multi-view sheets, a second building, symmetric frontal facade, CSS rotation or mirroring, fake human suburban architecture. This is original architecture adapted from the supplied reference, do not introduce new franchise canon. Change only the ground orientation/view; preserve the materials and architectural identity."
+    },
+    {
+      "id": "dock-control",
+      "side": "RIGHT",
+      "yaw": 25,
+      "identity": "Keep the distinctive tall curved horn-like roof fins, two cyan circular navigation-screen windows on the front wings, low curved roof wings, basalt/bronze shell and amber door lights.",
+      "reference": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/public/game/homeworld/v75/architecture/dock-control.png",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE native transparent PNG building sprite for an orthographic 2.5D game.\nInput image: edit target and exact architectural identity reference, not a backdrop.\nPrimary request: redraw this SAME entire building as a true three-quarter RIGHT-side-visible view by turning the rigid building on the flat ground about its vertical axis 25 degrees. The world camera MUST remain yaw0 and elevation/pitch35 degrees; no perspective lens, no camera roll, all upright jambages stay vertical. We must see the RIGHT exterior side wall and the front, genuinely drawn depth and roof planes, not a skewed front image, not a mirror. The front ground foundation edge slopes about 15 degrees DOWN toward IMAGE RIGHT; its left and right ground support points have visibly different vertical pixel positions.\nIdentity invariants: Keep the distinctive tall curved horn-like roof fins, two cyan circular navigation-screen windows on the front wings, low curved roof wings, basalt/bronze shell and amber door lights.\nComposition/framing: whole single building centered in a landscape canvas, matching the reference's high-detail realistic game illustration and lighting. Building occupies nearly full width with a little transparent margin. All roof tips, side wall and front support corners completely visible; no crop. Camera shows modest roof depth, dominant front facade, not a top-down view.\nEntrance: ONE very tall and wide walk-through doorway on the front facade, empty open dark recessed cavity. Paint its entire interior with fully OPAQUE very dark stone pixels, never a transparent hole. Entrance width at the useful inner jamb feet at least one quarter of the front facade span; useful vertical opening height at least half the building body height, so an adult game actor fits comfortably. Floor ends flush at the true doorway ground threshold and meets the same flat ground as the wall bases. NO staircase, NO raised plinth/platform, NO lip, NO step or external ramp. Thin wall foot support allowed, never a block across the opening.\nBackground: genuinely transparent alpha outside the building, including all margins; no colored background, no checkerboard, no landscape or painted ground patch, no cast ground shadow. Door cavity must NOT use this transparency.\nAvoid: people, vehicles, furniture, extra props, weapons, skulls, trophies, labels, logos, writing, borders, multi-view sheets, a second building, symmetric frontal facade, CSS rotation or mirroring, fake human suburban architecture. This is original architecture adapted from the supplied reference, do not introduce new franchise canon. Change only the ground orientation/view; preserve the materials and architectural identity."
+    },
+    {
+      "id": "rite-sanctum",
+      "side": "LEFT",
+      "yaw": -25,
+      "identity": "Keep the original ceremonial swept roof ribs and central crown, two engraved closed alcoves, low curved wing roofs and amber lights. No throne, no skulls, no trophies, no statues.",
+      "reference": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/public/game/homeworld/v75/architecture/rite-sanctum.png",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE native transparent PNG building sprite for an orthographic 2.5D game.\nInput image: edit target and exact architectural identity reference, not a backdrop.\nPrimary request: redraw this SAME entire building as a true three-quarter LEFT-side-visible view by turning the rigid building on the flat ground about its vertical axis -25 degrees. The world camera MUST remain yaw0 and elevation/pitch35 degrees; no perspective lens, no camera roll, all upright jambages stay vertical. We must see the LEFT exterior side wall and the front, genuinely drawn depth and roof planes, not a skewed front image, not a mirror. The front ground foundation edge slopes about 15 degrees DOWN toward IMAGE LEFT; its left and right ground support points have visibly different vertical pixel positions.\nIdentity invariants: Keep the original ceremonial swept roof ribs and central crown, two engraved closed alcoves, low curved wing roofs and amber lights. No throne, no skulls, no trophies, no statues.\nComposition/framing: whole single building centered in a landscape canvas, matching the reference's high-detail realistic game illustration and lighting. Building occupies nearly full width with a little transparent margin. All roof tips, side wall and front support corners completely visible; no crop. Camera shows modest roof depth, dominant front facade, not a top-down view.\nEntrance: ONE very tall and wide walk-through doorway on the front facade, empty open dark recessed cavity. Paint its entire interior with fully OPAQUE very dark stone pixels, never a transparent hole. Entrance width at the useful inner jamb feet at least one quarter of the front facade span; useful vertical opening height at least half the building body height, so an adult game actor fits comfortably. Floor ends flush at the true doorway ground threshold and meets the same flat ground as the wall bases. NO staircase, NO raised plinth/platform, NO lip, NO step or external ramp. Thin wall foot support allowed, never a block across the opening.\nBackground: genuinely transparent alpha outside the building, including all margins; no colored background, no checkerboard, no landscape or painted ground patch, no cast ground shadow. Door cavity must NOT use this transparency.\nAvoid: people, vehicles, furniture, extra props, weapons, skulls, trophies, labels, logos, writing, borders, multi-view sheets, a second building, symmetric frontal facade, CSS rotation or mirroring, fake human suburban architecture. This is original architecture adapted from the supplied reference, do not introduce new franchise canon. Change only the ground orientation/view; preserve the materials and architectural identity."
+    },
+    {
+      "id": "trophy-mausoleum",
+      "side": "RIGHT",
+      "yaw": 25,
+      "identity": "Keep the tall stepped central memorial arch/crown, curved low wings, EMPTY tall wall niches, engraved basalt/bronze walls and amber lantern strips. Niches MUST remain empty, no skulls or trophies.",
+      "reference": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/public/game/homeworld/v75/architecture/trophy-mausoleum.png",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE native transparent PNG building sprite for an orthographic 2.5D game.\nInput image: edit target and exact architectural identity reference, not a backdrop.\nPrimary request: redraw this SAME entire building as a true three-quarter RIGHT-side-visible view by turning the rigid building on the flat ground about its vertical axis 25 degrees. The world camera MUST remain yaw0 and elevation/pitch35 degrees; no perspective lens, no camera roll, all upright jambages stay vertical. We must see the RIGHT exterior side wall and the front, genuinely drawn depth and roof planes, not a skewed front image, not a mirror. The front ground foundation edge slopes about 15 degrees DOWN toward IMAGE RIGHT; its left and right ground support points have visibly different vertical pixel positions.\nIdentity invariants: Keep the tall stepped central memorial arch/crown, curved low wings, EMPTY tall wall niches, engraved basalt/bronze walls and amber lantern strips. Niches MUST remain empty, no skulls or trophies.\nComposition/framing: whole single building centered in a landscape canvas, matching the reference's high-detail realistic game illustration and lighting. Building occupies nearly full width with a little transparent margin. All roof tips, side wall and front support corners completely visible; no crop. Camera shows modest roof depth, dominant front facade, not a top-down view.\nEntrance: ONE very tall and wide walk-through doorway on the front facade, empty open dark recessed cavity. Paint its entire interior with fully OPAQUE very dark stone pixels, never a transparent hole. Entrance width at the useful inner jamb feet at least one quarter of the front facade span; useful vertical opening height at least half the building body height, so an adult game actor fits comfortably. Floor ends flush at the true doorway ground threshold and meets the same flat ground as the wall bases. NO staircase, NO raised plinth/platform, NO lip, NO step or external ramp. Thin wall foot support allowed, never a block across the opening.\nBackground: genuinely transparent alpha outside the building, including all margins; no colored background, no checkerboard, no landscape or painted ground patch, no cast ground shadow. Door cavity must NOT use this transparency.\nAvoid: people, vehicles, furniture, extra props, weapons, skulls, trophies, labels, logos, writing, borders, multi-view sheets, a second building, symmetric frontal facade, CSS rotation or mirroring, fake human suburban architecture. This is original architecture adapted from the supplied reference, do not introduce new franchise canon. Change only the ground orientation/view; preserve the materials and architectural identity."
+    },
+    {
+      "id": "rampart-watch",
+      "side": "LEFT",
+      "yaw": -25,
+      "identity": "Keep the compact polygonal watch roof, small central ribbed crown, two cyan slit windows on low side wings, basalt/bronze material and amber lights.",
+      "reference": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/public/game/homeworld/v75/architecture/rampart-watch.png",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE native transparent PNG building sprite for an orthographic 2.5D game.\nInput image: edit target and exact architectural identity reference, not a backdrop.\nPrimary request: redraw this SAME entire building as a true three-quarter LEFT-side-visible view by turning the rigid building on the flat ground about its vertical axis -25 degrees. The world camera MUST remain yaw0 and elevation/pitch35 degrees; no perspective lens, no camera roll, all upright jambages stay vertical. We must see the LEFT exterior side wall and the front, genuinely drawn depth and roof planes, not a skewed front image, not a mirror. The front ground foundation edge slopes about 15 degrees DOWN toward IMAGE LEFT; its left and right ground support points have visibly different vertical pixel positions.\nIdentity invariants: Keep the compact polygonal watch roof, small central ribbed crown, two cyan slit windows on low side wings, basalt/bronze material and amber lights.\nComposition/framing: whole single building centered in a landscape canvas, matching the reference's high-detail realistic game illustration and lighting. Building occupies nearly full width with a little transparent margin. All roof tips, side wall and front support corners completely visible; no crop. Camera shows modest roof depth, dominant front facade, not a top-down view.\nEntrance: ONE very tall and wide walk-through doorway on the front facade, empty open dark recessed cavity. Paint its entire interior with fully OPAQUE very dark stone pixels, never a transparent hole. Entrance width at the useful inner jamb feet at least one quarter of the front facade span; useful vertical opening height at least half the building body height, so an adult game actor fits comfortably. Floor ends flush at the true doorway ground threshold and meets the same flat ground as the wall bases. NO staircase, NO raised plinth/platform, NO lip, NO step or external ramp. Thin wall foot support allowed, never a block across the opening.\nBackground: genuinely transparent alpha outside the building, including all margins; no colored background, no checkerboard, no landscape or painted ground patch, no cast ground shadow. Door cavity must NOT use this transparency.\nAvoid: people, vehicles, furniture, extra props, weapons, skulls, trophies, labels, logos, writing, borders, multi-view sheets, a second building, symmetric frontal facade, CSS rotation or mirroring, fake human suburban architecture. This is original architecture adapted from the supplied reference, do not introduce new franchise canon. Change only the ground orientation/view; preserve the materials and architectural identity."
+    },
+    {
+      "id": "convoy-store",
+      "side": "RIGHT",
+      "yaw": 25,
+      "identity": "Keep the low closed industrial warehouse wings, central vaulted storage bay, angular roof reinforcement ribs, two sealed front wall panels and small amber door lights. No crates outside, no furniture, no characters.",
+      "reference": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/public/game/homeworld/v75/architecture/convoy-store.png",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE native transparent PNG building sprite for an orthographic 2.5D game.\nInput image: edit target and exact architectural identity reference, not a backdrop.\nPrimary request: redraw this SAME entire building as a true three-quarter RIGHT-side-visible view by turning the rigid building on the flat ground about its vertical axis 25 degrees. The world camera MUST remain yaw0 and elevation/pitch35 degrees; no perspective lens, no camera roll, all upright jambages stay vertical. We must see the RIGHT exterior side wall and the front, genuinely drawn depth and roof planes, not a skewed front image, not a mirror. The front ground foundation edge slopes about 15 degrees DOWN toward IMAGE RIGHT; its left and right ground support points have visibly different vertical pixel positions.\nIdentity invariants: Keep the low closed industrial warehouse wings, central vaulted storage bay, angular roof reinforcement ribs, two sealed front wall panels and small amber door lights. No crates outside, no furniture, no characters.\nComposition/framing: whole single building centered in a landscape canvas, matching the reference's high-detail realistic game illustration and lighting. Building occupies nearly full width with a little transparent margin. All roof tips, side wall and front support corners completely visible; no crop. Camera shows modest roof depth, dominant front facade, not a top-down view.\nEntrance: ONE very tall and wide walk-through doorway on the front facade, empty open dark recessed cavity. Paint its entire interior with fully OPAQUE very dark stone pixels, never a transparent hole. Entrance width at the useful inner jamb feet at least one quarter of the front facade span; useful vertical opening height at least half the building body height, so an adult game actor fits comfortably. Floor ends flush at the true doorway ground threshold and meets the same flat ground as the wall bases. NO staircase, NO raised plinth/platform, NO lip, NO step or external ramp. Thin wall foot support allowed, never a block across the opening.\nBackground: genuinely transparent alpha outside the building, including all margins; no colored background, no checkerboard, no landscape or painted ground patch, no cast ground shadow. Door cavity must NOT use this transparency.\nAvoid: people, vehicles, furniture, extra props, weapons, skulls, trophies, labels, logos, writing, borders, multi-view sheets, a second building, symmetric frontal facade, CSS rotation or mirroring, fake human suburban architecture. This is original architecture adapted from the supplied reference, do not introduce new franchise canon. Change only the ground orientation/view; preserve the materials and architectural identity."
+    }
+  ]
+}

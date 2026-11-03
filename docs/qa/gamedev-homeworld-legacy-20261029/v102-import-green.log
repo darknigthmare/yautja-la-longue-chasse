@@ -1,0 +1,22 @@
+✔ the V102 seed draft survives a file that started before the edit (10.177143ms)
+✔ the V102 landform draft survives a file that started before the edit (5.142653ms)
+✔ the V102 coverage draft survives a file that started before the edit (9.437469ms)
+✔ the V102 coast draft survives a file that started before the edit (1.794686ms)
+✔ the V102 diversity draft survives a file that started before the edit (3.241877ms)
+✔ the V102 land biome draft survives a file that started before the edit (7.825498ms)
+✔ the V102 surface draft survives a file that started before the edit (1.174621ms)
+✔ the V102 atmosphere draft survives a file that started before the edit (1.339149ms)
+✔ a rejected V102 generation cancels an older file even with invalid input prepared before reading (1.86356ms)
+✔ a refused V102 shared code keeps its error when a previously started file succeeds or rejects (10.493922ms)
+✔ editing a V102 shared code cancels a previous file without automatically opening the typed world (42.711214ms)
+✔ a newly selected V102 file still restores its exact historical recipe after an edit cancelled another read (13.379562ms)
+✔ a successful V102 generation and manual import remain newer than a pending file (4.228285ms)
+✔ the latest V102 file wins in either completion order and keeps the front unopened (19.877549ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2077.285642

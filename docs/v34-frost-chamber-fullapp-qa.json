@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-12T20:37:37.132Z",
+  "surface": "full-application-play-pit-training",
+  "verifiedContentVersion": "V34",
+  "url": "http://[::1]:4173",
+  "checks": [
+    {
+      "name": "live-match",
+      "arena": "frost-chamber",
+      "planes": "P0,P1,P2,P3,P4,P5",
+      "source": "openai-v33-independent",
+      "loadedImages": 14,
+      "subplans": 14,
+      "missing": 0
+    }
+  ],
+  "loadedImageFiles": [
+    "/game/sprites/v34/pit-arenas/frost-chamber/p0-a-depth.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p1-a-distant-left.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p1-b-distant-right.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p2-a-support-left-v2.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p2-b-support-right.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p2-c-central-structure.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p3-a-prop-left.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p3-b-prop-right.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p3-c-light-left.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p3-d-light-right.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p4-a-contact-floor.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p4-b-front-fascia.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p5-a-foreground-left.png",
+    "/game/sprites/v34/pit-arenas/frost-chamber/p5-b-foreground-right.png"
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": []
+}

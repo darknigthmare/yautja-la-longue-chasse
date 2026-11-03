@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T08:44:27.229608+00:00",
+  "tool": "image_gen.imagegen",
+  "attemptId": "scar-throw-forward-right",
+  "submittedPrompt": "Edit the supplied animation study reference image(s) into a NEW production hunter-only animation atlas. Preserve the reference character incarnation and detailed painted game style. The gray training mannequin is baked into the old reference: remove it COMPLETELY from every pose and redraw the hunter anatomy previously occluded by it. No victim, mannequin, second actor, partner hands, floating prop, gray residue, text, numbers, grid lines, ground, brown glow or vignette may remain. True transparent RGBA background, not black or checkerboard. Deliver ONE landscape sprite sheet, intended 1536x1024, EXACTLY 6 separate drawings arranged THREE columns by TWO rows, six equal square cells, 48px minimum transparent gutter around every complete silhouette. Character is Scar, exactly the silver biomask hunter of the reference, brown gold mottled skin, black gold-tied dreadlocks, silver shoulder and leg armor, mesh suit and leather skirt, his own shoulder cannon and wrist blades, his spear kept securely in the same non-grabbing hand, no initiation mark added. All six are drawn naturally facing screen RIGHT; this orientation must be separately rendered with correct equipment sides, NEVER a mirror of the opposite direction. Stable character proportions and scale, head-to-sole roughly350px per512px cell; ground baseline y=488 within each cell; no limb/weapon/dreadlock may leave its cell. Exactly two arms and two legs in each drawing, coherent joints and clawed hands. Read left-to-right then top-to-bottom: 0 ready and step into a close forward throw; 1 reach to seize an ABSENT partner's upper torso, own empty grabbing hand clearly visible; 2 lower hips and load the ABSENT partner over the leading hip/shoulder with both own limbs anatomically reconstructed; 3 drive and release the ABSENT partner FORWARD toward screen RIGHT, open grabbing hand and weight transfer; 4 controlled forward follow-through; 5 recover to the SAME ready guard and equipment. Each image depicts only the hunter's own body and attached owned equipment. Preserve shield/spear ownership through all six phases; do not invent or drop equipment. New original adaptation of the proposed game move, not a claim of a movie frame.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/yautja-la-longue-chasse/public/game/sprites/v100/pit/scar/scar-TH_F-right-native.png",
+      "preservedPath": "public/game/sprites/v100/pit/scar/scar-TH_F-right-native.png",
+      "sha256": "3d27ef4ea3cf48a2a8e25d94f2087143d552bfcf37c54fae2086d926af6ebb4f",
+      "bytes": 1906763
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-bdc37956-832d-4396-9c64-0dbf6bbb00f0.png",
+  "output": {
+    "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+    "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+    "bytes": 2258882,
+    "width": 1536,
+    "height": 1024
+  },
+  "status": "SELECTED_SOURCE_REGIONS",
+  "filesEditedAfterGeneration": false,
+  "scope": "Local tool call record, not an external signed certificate. Original adaptations; no film-exact fidelity or source action completion is inferred."
+}

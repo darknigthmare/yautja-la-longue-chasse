@@ -1,0 +1,2454 @@
+{
+  "version": "V39",
+  "fighterId": "theta",
+  "name": "Theta",
+  "source": "Existing OpenAI V34 source bytes",
+  "newGenerations": 0,
+  "sourcePreservedByteForByte": true,
+  "officialFidelityCertified": false,
+  "status": "pixel-and-browser-validated",
+  "reference": {
+    "path": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+    "sha256": "27500ff6fbe935c3abb0fe94435e648b8d6ee9730810036d9d926706aa00c8e8",
+    "decision": "Existing project presentation inspected and displayed before each call; fan-made identity guidance, not certified1:1 film replica."
+  },
+  "identityReferences": [
+    "https://www.marvel.com/comics/issue/89618/",
+    "https://www.marvel.com/comics/series/43644/predator_the_theta_saga_2025"
+  ],
+  "acceptedOrientedClips": 26,
+  "completeMovesets": 0,
+  "definition": {
+    "fighterId": "theta",
+    "bodyHeightPx": 382,
+    "pageBodyHeightPx": {
+      "theta-idle-v39": 382,
+      "theta-crouch-v39": 387,
+      "theta-guard-v39": 340,
+      "theta-hurt-v39": 406,
+      "theta-light-v39": 346,
+      "theta-medium-v39": 367,
+      "theta-heavy-v39": 346
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "theta-duel-v39",
+      "characterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "theta-idle-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-idle-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-crouch-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-crouch-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-guard-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-guard-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-hurt-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-hurt-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-light-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-light-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-medium-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-medium-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-heavy-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-heavy-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                140,
+                77,
+                191,
+                390
+              ],
+              "pivot": [
+                97.5,
+                386
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                498,
+                75,
+                188,
+                392
+              ],
+              "pivot": [
+                95,
+                388
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                848,
+                91,
+                192,
+                376
+              ],
+              "pivot": [
+                96.5,
+                372
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                1209,
+                78,
+                191,
+                389
+              ],
+              "pivot": [
+                97,
+                385
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                118,
+                556,
+                195,
+                391
+              ],
+              "pivot": [
+                94.5,
+                387
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                474,
+                551,
+                196,
+                397
+              ],
+              "pivot": [
+                94.5,
+                393
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                846,
+                570,
+                188,
+                377
+              ],
+              "pivot": [
+                91.5,
+                373
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                1201,
+                556,
+                192,
+                392
+              ],
+              "pivot": [
+                93.5,
+                388
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                113,
+                76,
+                235,
+                395
+              ],
+              "pivot": [
+                118.5,
+                391
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                477,
+                129,
+                237,
+                342
+              ],
+              "pivot": [
+                118,
+                338
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                849,
+                193,
+                217,
+                274
+              ],
+              "pivot": [
+                108,
+                270
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                91,
+                547,
+                244,
+                395
+              ],
+              "pivot": [
+                119,
+                391
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                468,
+                595,
+                239,
+                346
+              ],
+              "pivot": [
+                119,
+                342
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                839,
+                666,
+                218,
+                272
+              ],
+              "pivot": [
+                108.5,
+                268
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                134,
+                117,
+                198,
+                348
+              ],
+              "pivot": [
+                98.5,
+                344
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                485,
+                122,
+                223,
+                343
+              ],
+              "pivot": [
+                100,
+                339
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                837,
+                117,
+                206,
+                348
+              ],
+              "pivot": [
+                99.5,
+                344
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                1196,
+                108,
+                210,
+                357
+              ],
+              "pivot": [
+                99.5,
+                353
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                135,
+                567,
+                202,
+                348
+              ],
+              "pivot": [
+                100.5,
+                344
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                479,
+                569,
+                221,
+                346
+              ],
+              "pivot": [
+                120,
+                342
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                850,
+                570,
+                201,
+                344
+              ],
+              "pivot": [
+                100.5,
+                340
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                1211,
+                556,
+                201,
+                358
+              ],
+              "pivot": [
+                101,
+                354
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                116,
+                55,
+                223,
+                411
+              ],
+              "pivot": [
+                112.5,
+                407
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                820,
+                84,
+                258,
+                381
+              ],
+              "pivot": [
+                141.5,
+                377
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                482,
+                73,
+                236,
+                393
+              ],
+              "pivot": [
+                122,
+                389
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                1200,
+                54,
+                221,
+                413
+              ],
+              "pivot": [
+                111,
+                409
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                103,
+                530,
+                237,
+                417
+              ],
+              "pivot": [
+                117,
+                413
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                805,
+                555,
+                249,
+                392
+              ],
+              "pivot": [
+                115,
+                388
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                460,
+                541,
+                245,
+                406
+              ],
+              "pivot": [
+                115.5,
+                402
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                1195,
+                531,
+                233,
+                419
+              ],
+              "pivot": [
+                112.5,
+                415
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                87,
+                92,
+                240,
+                356
+              ],
+              "pivot": [
+                123,
+                352
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                430,
+                102,
+                389,
+                346
+              ],
+              "pivot": [
+                128.5,
+                342
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                854,
+                100,
+                242,
+                348
+              ],
+              "pivot": [
+                120.5,
+                344
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                1218,
+                91,
+                226,
+                358
+              ],
+              "pivot": [
+                112.5,
+                354
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                99,
+                557,
+                241,
+                360
+              ],
+              "pivot": [
+                120,
+                356
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                381,
+                562,
+                385,
+                355
+              ],
+              "pivot": [
+                253,
+                351
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                858,
+                562,
+                251,
+                355
+              ],
+              "pivot": [
+                125,
+                351
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                1221,
+                553,
+                233,
+                364
+              ],
+              "pivot": [
+                116,
+                360
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                64,
+                88,
+                290,
+                373
+              ],
+              "pivot": [
+                157.5,
+                369
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                454,
+                87,
+                362,
+                374
+              ],
+              "pivot": [
+                132.5,
+                370
+              ],
+              "durationTicks": 4
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                840,
+                84,
+                257,
+                377
+              ],
+              "pivot": [
+                126,
+                373
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                1234,
+                85,
+                231,
+                377
+              ],
+              "pivot": [
+                115,
+                373
+              ],
+              "durationTicks": 9
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                88,
+                575,
+                285,
+                374
+              ],
+              "pivot": [
+                132,
+                370
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                403,
+                575,
+                356,
+                373
+              ],
+              "pivot": [
+                222.5,
+                369
+              ],
+              "durationTicks": 4
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                845,
+                573,
+                257,
+                376
+              ],
+              "pivot": [
+                128,
+                372
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                1216,
+                572,
+                238,
+                378
+              ],
+              "pivot": [
+                118.5,
+                374
+              ],
+              "durationTicks": 9
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                57,
+                126,
+                294,
+                347
+              ],
+              "pivot": [
+                151,
+                343
+              ],
+              "durationTicks": 16
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                462,
+                26,
+                315,
+                446
+              ],
+              "pivot": [
+                128,
+                442
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                845,
+                115,
+                243,
+                357
+              ],
+              "pivot": [
+                117.5,
+                353
+              ],
+              "durationTicks": 13
+            },
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                1229,
+                118,
+                228,
+                354
+              ],
+              "pivot": [
+                113.5,
+                350
+              ],
+              "durationTicks": 13
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                94,
+                596,
+                290,
+                344
+              ],
+              "pivot": [
+                136,
+                340
+              ],
+              "durationTicks": 16
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                432,
+                499,
+                308,
+                440
+              ],
+              "pivot": [
+                185,
+                436
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                867,
+                588,
+                230,
+                355
+              ],
+              "pivot": [
+                114.5,
+                351
+              ],
+              "durationTicks": 13
+            },
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                1233,
+                585,
+                225,
+                359
+              ],
+              "pivot": [
+                112,
+                355
+              ],
+              "durationTicks": 13
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "idle",
+      "label": "idle",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-idle-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "d602cfc25fa345314472e6e6fe10f6f06ea35c2cb3bc42b7e339639a902d9fcf",
+      "bodyHeightPx": 382,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "theta-idle-v39",
+          "rect": [
+            140,
+            77,
+            191,
+            390
+          ],
+          "pivot": [
+            97.5,
+            386
+          ],
+          "durationTicks": 24,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-idle-v39",
+          "rect": [
+            498,
+            75,
+            188,
+            392
+          ],
+          "pivot": [
+            95,
+            388
+          ],
+          "durationTicks": 24,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-idle-v39",
+          "rect": [
+            848,
+            91,
+            192,
+            376
+          ],
+          "pivot": [
+            96.5,
+            372
+          ],
+          "durationTicks": 24,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-idle-v39",
+          "rect": [
+            1209,
+            78,
+            191,
+            389
+          ],
+          "pivot": [
+            97,
+            385
+          ],
+          "durationTicks": 24,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-idle-v39",
+          "rect": [
+            118,
+            556,
+            195,
+            391
+          ],
+          "pivot": [
+            94.5,
+            387
+          ],
+          "durationTicks": 24,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-idle-v39",
+          "rect": [
+            474,
+            551,
+            196,
+            397
+          ],
+          "pivot": [
+            94.5,
+            393
+          ],
+          "durationTicks": 24,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-idle-v39",
+          "rect": [
+            846,
+            570,
+            188,
+            377
+          ],
+          "pivot": [
+            91.5,
+            373
+          ],
+          "durationTicks": 24,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-idle-v39",
+          "rect": [
+            1201,
+            556,
+            192,
+            392
+          ],
+          "pivot": [
+            93.5,
+            388
+          ],
+          "durationTicks": 24,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
+      ]
+    },
+    {
+      "id": "crouch",
+      "label": "crouch",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-crouch-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "7963593c876f003e37f1ea7d07039544d51a11c8175421b344724cd6abaaa020",
+      "bodyHeightPx": 387,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "theta-crouch-v39",
+          "rect": [
+            113,
+            76,
+            235,
+            395
+          ],
+          "pivot": [
+            118.5,
+            391
+          ],
+          "durationTicks": 2,
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-crouch-v39",
+          "rect": [
+            477,
+            129,
+            237,
+            342
+          ],
+          "pivot": [
+            118,
+            338
+          ],
+          "durationTicks": 2,
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-crouch-v39",
+          "rect": [
+            849,
+            193,
+            217,
+            274
+          ],
+          "pivot": [
+            108,
+            270
+          ],
+          "durationTicks": 12,
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-crouch-v39",
+          "rect": [
+            91,
+            547,
+            244,
+            395
+          ],
+          "pivot": [
+            119,
+            391
+          ],
+          "durationTicks": 2,
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-crouch-v39",
+          "rect": [
+            468,
+            595,
+            239,
+            346
+          ],
+          "pivot": [
+            119,
+            342
+          ],
+          "durationTicks": 2,
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-crouch-v39",
+          "rect": [
+            839,
+            666,
+            218,
+            272
+          ],
+          "pivot": [
+            108.5,
+            268
+          ],
+          "durationTicks": 12,
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
+      ]
+    },
+    {
+      "id": "guard",
+      "label": "guard",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-guard-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "2560a5dc546d58dd5f91dc7099c09b34732ee4e8981e85bee34203d288c9ee8a",
+      "bodyHeightPx": 340,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "theta-guard-v39",
+          "rect": [
+            134,
+            117,
+            198,
+            348
+          ],
+          "pivot": [
+            98.5,
+            344
+          ],
+          "durationTicks": 2,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-guard-v39",
+          "rect": [
+            485,
+            122,
+            223,
+            343
+          ],
+          "pivot": [
+            100,
+            339
+          ],
+          "durationTicks": 2,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-guard-v39",
+          "rect": [
+            837,
+            117,
+            206,
+            348
+          ],
+          "pivot": [
+            99.5,
+            344
+          ],
+          "durationTicks": 4,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-guard-v39",
+          "rect": [
+            1196,
+            108,
+            210,
+            357
+          ],
+          "pivot": [
+            99.5,
+            353
+          ],
+          "durationTicks": 12,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-guard-v39",
+          "rect": [
+            135,
+            567,
+            202,
+            348
+          ],
+          "pivot": [
+            100.5,
+            344
+          ],
+          "durationTicks": 2,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-guard-v39",
+          "rect": [
+            479,
+            569,
+            221,
+            346
+          ],
+          "pivot": [
+            120,
+            342
+          ],
+          "durationTicks": 2,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-guard-v39",
+          "rect": [
+            850,
+            570,
+            201,
+            344
+          ],
+          "pivot": [
+            100.5,
+            340
+          ],
+          "durationTicks": 4,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-guard-v39",
+          "rect": [
+            1211,
+            556,
+            201,
+            358
+          ],
+          "pivot": [
+            101,
+            354
+          ],
+          "durationTicks": 12,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
+      ]
+    },
+    {
+      "id": "hurt",
+      "label": "hurt",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-hurt-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "8b30a0cdd883bec937d3e38eaf8cd8805f89a44c7d7512300fef86e39e1e2f6d",
+      "bodyHeightPx": 406,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "theta-hurt-v39",
+          "rect": [
+            116,
+            55,
+            223,
+            411
+          ],
+          "pivot": [
+            112.5,
+            407
+          ],
+          "durationTicks": 2,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-hurt-v39",
+          "rect": [
+            820,
+            84,
+            258,
+            381
+          ],
+          "pivot": [
+            141.5,
+            377
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-hurt-v39",
+          "rect": [
+            482,
+            73,
+            236,
+            393
+          ],
+          "pivot": [
+            122,
+            389
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-hurt-v39",
+          "rect": [
+            1200,
+            54,
+            221,
+            413
+          ],
+          "pivot": [
+            111,
+            409
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-hurt-v39",
+          "rect": [
+            103,
+            530,
+            237,
+            417
+          ],
+          "pivot": [
+            117,
+            413
+          ],
+          "durationTicks": 2,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-hurt-v39",
+          "rect": [
+            805,
+            555,
+            249,
+            392
+          ],
+          "pivot": [
+            115,
+            388
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-hurt-v39",
+          "rect": [
+            460,
+            541,
+            245,
+            406
+          ],
+          "pivot": [
+            115.5,
+            402
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-hurt-v39",
+          "rect": [
+            1195,
+            531,
+            233,
+            419
+          ],
+          "pivot": [
+            112.5,
+            415
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
+      ]
+    },
+    {
+      "id": "light",
+      "label": "light",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-light-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "d3dde5b4975668431d826f68a1313229b1859e95fa72a489c1af96a7f069d665",
+      "bodyHeightPx": 346,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "theta-light-v39",
+          "rect": [
+            87,
+            92,
+            240,
+            356
+          ],
+          "pivot": [
+            123,
+            352
+          ],
+          "durationTicks": 5,
+          "facing": "right",
+          "clipId": "pit.stand.light.startup",
+          "phase": "pit.stand.light.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-light-v39",
+          "rect": [
+            430,
+            102,
+            389,
+            346
+          ],
+          "pivot": [
+            128.5,
+            342
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.light.active",
+          "phase": "pit.stand.light.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-light-v39",
+          "rect": [
+            854,
+            100,
+            242,
+            348
+          ],
+          "pivot": [
+            120.5,
+            344
+          ],
+          "durationTicks": 6,
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-light-v39",
+          "rect": [
+            1218,
+            91,
+            226,
+            358
+          ],
+          "pivot": [
+            112.5,
+            354
+          ],
+          "durationTicks": 5,
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-light-v39",
+          "rect": [
+            99,
+            557,
+            241,
+            360
+          ],
+          "pivot": [
+            120,
+            356
+          ],
+          "durationTicks": 5,
+          "facing": "left",
+          "clipId": "pit.stand.light.startup",
+          "phase": "pit.stand.light.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-light-v39",
+          "rect": [
+            381,
+            562,
+            385,
+            355
+          ],
+          "pivot": [
+            253,
+            351
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.light.active",
+          "phase": "pit.stand.light.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-light-v39",
+          "rect": [
+            858,
+            562,
+            251,
+            355
+          ],
+          "pivot": [
+            125,
+            351
+          ],
+          "durationTicks": 6,
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-light-v39",
+          "rect": [
+            1221,
+            553,
+            233,
+            364
+          ],
+          "pivot": [
+            116,
+            360
+          ],
+          "durationTicks": 5,
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
+      ]
+    },
+    {
+      "id": "medium",
+      "label": "medium",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-medium-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "cf1bf28ab0483c280b3c3598e2150567fab7688b9f5edc9f27d2037651a08857",
+      "bodyHeightPx": 367,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "theta-medium-v39",
+          "rect": [
+            64,
+            88,
+            290,
+            373
+          ],
+          "pivot": [
+            157.5,
+            369
+          ],
+          "durationTicks": 10,
+          "facing": "right",
+          "clipId": "pit.stand.medium.startup",
+          "phase": "pit.stand.medium.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-medium-v39",
+          "rect": [
+            454,
+            87,
+            362,
+            374
+          ],
+          "pivot": [
+            132.5,
+            370
+          ],
+          "durationTicks": 4,
+          "facing": "right",
+          "clipId": "pit.stand.medium.active",
+          "phase": "pit.stand.medium.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-medium-v39",
+          "rect": [
+            840,
+            84,
+            257,
+            377
+          ],
+          "pivot": [
+            126,
+            373
+          ],
+          "durationTicks": 9,
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-medium-v39",
+          "rect": [
+            1234,
+            85,
+            231,
+            377
+          ],
+          "pivot": [
+            115,
+            373
+          ],
+          "durationTicks": 9,
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-medium-v39",
+          "rect": [
+            88,
+            575,
+            285,
+            374
+          ],
+          "pivot": [
+            132,
+            370
+          ],
+          "durationTicks": 10,
+          "facing": "left",
+          "clipId": "pit.stand.medium.startup",
+          "phase": "pit.stand.medium.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-medium-v39",
+          "rect": [
+            403,
+            575,
+            356,
+            373
+          ],
+          "pivot": [
+            222.5,
+            369
+          ],
+          "durationTicks": 4,
+          "facing": "left",
+          "clipId": "pit.stand.medium.active",
+          "phase": "pit.stand.medium.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-medium-v39",
+          "rect": [
+            845,
+            573,
+            257,
+            376
+          ],
+          "pivot": [
+            128,
+            372
+          ],
+          "durationTicks": 9,
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-medium-v39",
+          "rect": [
+            1216,
+            572,
+            238,
+            378
+          ],
+          "pivot": [
+            118.5,
+            374
+          ],
+          "durationTicks": 9,
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
+      ]
+    },
+    {
+      "id": "heavy",
+      "label": "heavy",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-heavy-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "20acbb12ab83db3a9df1ce53ad42ba5d4de942464b5195701ded14e6c6097ecc",
+      "bodyHeightPx": 346,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "theta-heavy-v39",
+          "rect": [
+            57,
+            126,
+            294,
+            347
+          ],
+          "pivot": [
+            151,
+            343
+          ],
+          "durationTicks": 16,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.startup",
+          "phase": "pit.stand.heavy.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-heavy-v39",
+          "rect": [
+            462,
+            26,
+            315,
+            446
+          ],
+          "pivot": [
+            128,
+            442
+          ],
+          "durationTicks": 5,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.active",
+          "phase": "pit.stand.heavy.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-heavy-v39",
+          "rect": [
+            845,
+            115,
+            243,
+            357
+          ],
+          "pivot": [
+            117.5,
+            353
+          ],
+          "durationTicks": 13,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-heavy-v39",
+          "rect": [
+            1229,
+            118,
+            228,
+            354
+          ],
+          "pivot": [
+            113.5,
+            350
+          ],
+          "durationTicks": 13,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-heavy-v39",
+          "rect": [
+            94,
+            596,
+            290,
+            344
+          ],
+          "pivot": [
+            136,
+            340
+          ],
+          "durationTicks": 16,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.startup",
+          "phase": "pit.stand.heavy.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-heavy-v39",
+          "rect": [
+            432,
+            499,
+            308,
+            440
+          ],
+          "pivot": [
+            185,
+            436
+          ],
+          "durationTicks": 5,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.active",
+          "phase": "pit.stand.heavy.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-heavy-v39",
+          "rect": [
+            867,
+            588,
+            230,
+            355
+          ],
+          "pivot": [
+            114.5,
+            351
+          ],
+          "durationTicks": 13,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "theta-heavy-v39",
+          "rect": [
+            1233,
+            585,
+            225,
+            359
+          ],
+          "pivot": [
+            112,
+            355
+          ],
+          "durationTicks": 13,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
+      ]
+    }
+  ],
+  "limits": [
+    "No accepted walk or jump phase set, technique, throw or finisher drawings.",
+    "Duel extension only: CPU, local two-player and training; no invented Arcade/Circuit/Descent progression.",
+    "Attacks and balance are original game adaptations, not canonical named techniques."
+  ]
+}

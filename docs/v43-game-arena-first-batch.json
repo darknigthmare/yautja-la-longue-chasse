@@ -1,0 +1,761 @@
+{
+  "version": 1,
+  "researchedAt": "2026-09-20",
+  "scope": "Neuf propositions d'arènes issues de trois jeux ; recherche et direction de composition, sans génération ni activation runtime par ce document.",
+  "fidelityPolicy": "Les faits sourcés sont séparés des propositions artistiques. Les noms français des arènes sont des libellés de projet, pas des traductions officielles certifiées. Aucune fidélité 1:1 n'est certifiée. Les palettes, le cadrage latéral, les dimensions, les plans et les modules sont des adaptations originales pour The Pit.",
+  "visualInspectionLimit": "Les pages officielles ont été lues. Les références de médias ci-dessous sont des pistes officielles, pas des captures de niveaux inspectées : le navigateur de référence n'a pas démarré (erreur d'initialisation locale) et les résultats image du lecteur web n'ont pas fourni de pixels inspectables. Aucun fichier d'art officiel n'a été téléchargé, copié ou livré.",
+  "works": [
+    {
+      "id": "avp-classic-2000",
+      "title": "Aliens versus Predator Classic 2000",
+      "kind": "game"
+    },
+    {
+      "id": "avp-2010",
+      "title": "Aliens vs. Predator (2010)",
+      "kind": "game"
+    },
+    {
+      "id": "predator-hunting-grounds-2020",
+      "title": "Predator: Hunting Grounds",
+      "kind": "game"
+    }
+  ],
+  "sources": [
+    {
+      "id": "classic-rebellion",
+      "publisher": "Rebellion, développeur et éditeur",
+      "title": "Aliens versus Predator Classic 2000",
+      "url": "https://shop.rebellion.com/products/aliens-versus-predator-classic-2000",
+      "evidenceType": "official-product-description",
+      "supports": "Présence de vaisseaux, stations spatiales et bases coloniales. La page ne rattache pas ces lieux-types à des noms de missions."
+    },
+    {
+      "id": "classic-steam",
+      "publisher": "Rebellion via Steam",
+      "title": "Aliens versus Predator Classic 2000 — fiche officielle",
+      "url": "https://store.steampowered.com/app/3730/Aliens_versus_Predator_Classic_2000/",
+      "evidenceType": "official-product-description",
+      "supports": "Identité du jeu et familles de lieux ; les titres Tyrargo, Temple ou Colony n'ont pas été établis par cette page."
+    },
+    {
+      "id": "classic-manual",
+      "publisher": "Manuel Rebellion/Fox distribué sur Steam",
+      "title": "Aliens Versus Predator Classic 2000 Manual",
+      "url": "https://cdn.akamai.steamstatic.com/steam/apps/3730/manuals/Aliens%20Versus%20Predator%20Classic%202000%20Manual.pdf?t=1415299874",
+      "evidenceType": "official-manual-text",
+      "supports": "Le manuel décrit les épisodes mais son texte accessible ne donne pas leurs noms. Il ne permet pas de certifier l'identité des trois propositions Classic."
+    },
+    {
+      "id": "avp2010-steam",
+      "publisher": "SEGA/Rebellion via Steam",
+      "title": "Aliens vs. Predator — fiche officielle",
+      "url": "https://store.steampowered.com/app/10680/?cc=uk&l=english",
+      "evidenceType": "official-product-description",
+      "supports": "La colonie Freya's Prospect est entourée de jungle et de marais."
+    },
+    {
+      "id": "avp2010-swarm",
+      "publisher": "SEGA/Rebellion via Steam",
+      "title": "Aliens vs. Predator Swarm Map Pack",
+      "url": "https://store.steampowered.com/app/10695/Aliens_vs_Predator_Swarm_Map_Pack/",
+      "evidenceType": "official-dlc-description",
+      "supports": "Docks est un site portuaire abandonné de Weyland-Yutani ; Machine est une carte Survivor située dans la raffinerie. Le DLC appartient au jeu de 2010."
+    },
+    {
+      "id": "phg-overgrowth",
+      "publisher": "Jordan Mathewson, Design Director, IllFonic — PlayStation Blog",
+      "title": "Predator: Hunting Grounds — Trial Weekend Overview",
+      "publishedAt": "2020-03-24",
+      "url": "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+      "evidenceType": "developer-map-description",
+      "supports": "Overgrowth : vallée montagneuse sud-américaine, jungle dense, rivière sinueuse, ruines anciennes, présence de guérilleros et de Stargazer."
+    },
+    {
+      "id": "phg-excavation",
+      "publisher": "Jordan Mathewson, Design Director, IllFonic — PlayStation Blog",
+      "title": "New map and mode arrive today in Predator: Hunting Grounds",
+      "publishedAt": "2020-09-29",
+      "url": "https://blog.playstation.com/2020/09/29/new-map-and-mode-arrive-today-in-predator-hunting-grounds/",
+      "evidenceType": "developer-map-description",
+      "supports": "Excavation : ancien site scientifique de fouilles repris par Stargazer, jungle et grottes sur plusieurs niveaux ; pas de Predkour dans les grottes."
+    },
+    {
+      "id": "phg-airstrip",
+      "publisher": "Charles Brungardt, CEO, IllFonic — PlayStation Blog",
+      "title": "Predator: Hunting Grounds comes to Steam with April update",
+      "publishedAt": "2021-04-29",
+      "url": "https://blog.playstation.com/2021/04/29/predator-hunting-grounds-comes-to-steam-with-april-update/",
+      "evidenceType": "developer-map-description",
+      "supports": "Airstrip : piste de contrebande Stargazer dans la jungle, hangars, tours radio vétustes, avions et hélicoptères ; espaces ouverts exposés."
+    }
+  ],
+  "commonLayout2D": {
+    "status": "original-design-adaptation-not-source-level-geometry",
+    "camera": "Vue latérale lisible pour duel 2D ; ne pas reproduire une caméra FPS ni une perspective qui rend le sol ambigu.",
+    "groundRule": "La bande de combat centrale reste continue, lisible et sans occlusion des pieds ; les reliefs hauts des sources deviennent du décor tant que le moteur ne fournit pas une collision dédiée testée.",
+    "layers": [
+      {
+        "id": "P0",
+        "role": "Fond d'identité propre au lieu ; architecture distante ou horizon, sans combattants, interface ni logo."
+      },
+      {
+        "id": "P1",
+        "role": "Profondeur distante indépendante : forêt, volumes bâtis ou parois."
+      },
+      {
+        "id": "P2",
+        "role": "Structure intermédiaire et ouvertures en modules séparés."
+      },
+      {
+        "id": "P3",
+        "role": "Sol de combat continu raccordé visuellement, avec dimensions et collisions vérifiées par le pipeline."
+      },
+      {
+        "id": "P4",
+        "role": "Accessoires séparés du sol et des murs ; pas de machine géante aplatie à la place d'objets indépendants."
+      },
+      {
+        "id": "P5",
+        "role": "Occlusion proche limitée aux bords, sans masquer le duel central."
+      }
+    ],
+    "modulePolicy": "Les familles indiquées sont des besoins de composition, pas des actifs existants certifiés. Réutiliser un module uniquement s'il est visuellement compatible ; ne pas faire passer un simple recoloriage de jungle pour une nouvelle identité de lieu.",
+    "doorPolicy": "Toute porte dessinée reste décorative et clairement hors parcours tant qu'une interaction testée ne lui est pas raccordée. Aucun passage jouable, danger, destructible ou changement d'arène n'est promis par ce document.",
+    "activationGate": "Art source et provenance, découpe/alpha si applicable, validation des modules, chargement ciblé et recette réelle du renderer avant de déclarer une arène jouable."
+  },
+  "arenas": [
+    {
+      "id": "arena-128-avp-classic-2000-colonial-base",
+      "catalogueNumber": 128,
+      "name": "Base coloniale — Classic 2000",
+      "title": "Aliens versus Predator Classic 2000",
+      "workId": "avp-classic-2000",
+      "workTitle": "Aliens versus Predator Classic 2000",
+      "kind": "game",
+      "setting": "Intérieur d'une base coloniale, lieu-type confirmé ; mission précise non identifiée.",
+      "referenceStatus": "official-setting-type-confirmed-exact-level-unverified-2d-adaptation",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "palette": {
+        "sky": "#10191c",
+        "ground": "#303738",
+        "accent": "#d1b969"
+      },
+      "paletteStatus": "proposed-not-sampled",
+      "confirmedElements": [
+        {
+          "element": "Les bases coloniales font partie des environnements annoncés du jeu.",
+          "sourceIds": [
+            "classic-rebellion",
+            "classic-steam"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "classic-rebellion",
+        "classic-steam",
+        "classic-manual"
+      ],
+      "visualReferences": [
+        {
+          "url": "https://store.steampowered.com/app/3730/Aliens_versus_Predator_Classic_2000/",
+          "type": "official-store-media",
+          "status": "not-visually-inspected",
+          "limitation": "Aucune capture rattachée à une mission ou à cette base précise."
+        }
+      ],
+      "layout2D": {
+        "status": "adaptation",
+        "p0Identity": "Hall colonial rectiligne à travées métalliques, baies techniques éloignées et éclairage industriel rare ; pas de jungle ni de temple.",
+        "composition": "Ligne de sol horizontale ; local technique en retrait à gauche, sas fermé hors parcours à droite, espace central dégagé.",
+        "moduleFamiliesNeeded": [
+          "colonial-metal-wall",
+          "industrial-door-frame",
+          "service-pipe",
+          "floor-grating",
+          "supply-crate"
+        ],
+        "unverifiedDetails": [
+          "Architecture des murs",
+          "Éclairage",
+          "Sas et accessoires",
+          "Nom et géométrie de mission"
+        ]
+      },
+      "generation": {
+        "generator": "openai-imagegen",
+        "mode": "built-in",
+        "promptEvidence": "work/v43/game-p0-generation/prompts.json",
+        "publicPath": "/game/sprites/v43/pit-arenas/arena-128-avp-classic-2000-colonial-base/p0-depth.png",
+        "receiptPath": "art-source/v43/pit-arenas/arena-128-avp-classic-2000-colonial-base/receipt-p0-depth.json",
+        "sha256": "8bbfad6aa188bc4a8947988c494ccbfe574be23a8e9daab481eb5f61972db452",
+        "width": 1536,
+        "height": 1024,
+        "reviewStatus": "visually-reviewed-p0-only-runtime-not-certified",
+        "fidelityCertified1to1": false
+      }
+    },
+    {
+      "id": "arena-129-avp-classic-2000-starship",
+      "catalogueNumber": 129,
+      "name": "Coursive du vaisseau — Classic 2000",
+      "title": "Aliens versus Predator Classic 2000",
+      "workId": "avp-classic-2000",
+      "workTitle": "Aliens versus Predator Classic 2000",
+      "kind": "game",
+      "setting": "Intérieur d'un vaisseau spatial, lieu-type confirmé ; aucun nom de vaisseau attribué.",
+      "referenceStatus": "official-setting-type-confirmed-exact-level-unverified-2d-adaptation",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "palette": {
+        "sky": "#111522",
+        "ground": "#343d49",
+        "accent": "#83b3c6"
+      },
+      "paletteStatus": "proposed-not-sampled",
+      "confirmedElements": [
+        {
+          "element": "Des vaisseaux spatiaux sont explicitement cités parmi les environnements.",
+          "sourceIds": [
+            "classic-rebellion",
+            "classic-steam"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "classic-rebellion",
+        "classic-steam",
+        "classic-manual"
+      ],
+      "visualReferences": [
+        {
+          "url": "https://store.steampowered.com/app/3730/Aliens_versus_Predator_Classic_2000/",
+          "type": "official-store-media",
+          "status": "not-visually-inspected",
+          "limitation": "Ne permet pas de certifier un décor nommé Tyrargo."
+        }
+      ],
+      "layout2D": {
+        "status": "adaptation",
+        "p0Identity": "Long volume pressurisé de vaisseau, nervures de coque cintrées, cloisons répétées et fond technique obscur ; pas de baie planétaire inventée comme preuve.",
+        "composition": "Coursive élargie de duel, deux cadres de cloison reculés ; conduites au-dessus et sous le sol, sans collision implicite.",
+        "moduleFamiliesNeeded": [
+          "ship-rib",
+          "bulkhead",
+          "ceiling-conduit",
+          "deck-plate",
+          "maintenance-console"
+        ],
+        "unverifiedDetails": [
+          "Identité du vaisseau",
+          "Forme des nervures",
+          "Consoles",
+          "Disposition des cloisons"
+        ]
+      },
+      "generation": {
+        "generator": "openai-imagegen",
+        "mode": "built-in",
+        "promptEvidence": "work/v43/game-p0-generation/prompts.json",
+        "publicPath": "/game/sprites/v43/pit-arenas/arena-129-avp-classic-2000-starship/p0-depth.png",
+        "receiptPath": "art-source/v43/pit-arenas/arena-129-avp-classic-2000-starship/receipt-p0-depth.json",
+        "sha256": "2f35937a54444da970ad96c188b7ec5b5cf1189754321d50cdd1431fb2ad89c0",
+        "width": 1536,
+        "height": 1024,
+        "reviewStatus": "visually-reviewed-p0-only-runtime-not-certified",
+        "fidelityCertified1to1": false
+      }
+    },
+    {
+      "id": "arena-130-avp-classic-2000-space-station",
+      "catalogueNumber": 130,
+      "name": "Nœud de station — Classic 2000",
+      "title": "Aliens versus Predator Classic 2000",
+      "workId": "avp-classic-2000",
+      "workTitle": "Aliens versus Predator Classic 2000",
+      "kind": "game",
+      "setting": "Station spatiale, lieu-type confirmé ; architecture exacte non documentée.",
+      "referenceStatus": "official-setting-type-confirmed-exact-level-unverified-2d-adaptation",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "palette": {
+        "sky": "#181322",
+        "ground": "#3e3946",
+        "accent": "#c59b69"
+      },
+      "paletteStatus": "proposed-not-sampled",
+      "confirmedElements": [
+        {
+          "element": "Les stations spatiales figurent dans la description officielle des environnements.",
+          "sourceIds": [
+            "classic-rebellion",
+            "classic-steam"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "classic-rebellion",
+        "classic-steam",
+        "classic-manual"
+      ],
+      "visualReferences": [
+        {
+          "url": "https://cdn.akamai.steamstatic.com/steam/apps/3730/manuals/Aliens%20Versus%20Predator%20Classic%202000%20Manual.pdf?t=1415299874",
+          "type": "official-manual",
+          "status": "text-read-images-not-inspected",
+          "limitation": "Pas de plan ni de nom de station établi par le texte accessible."
+        }
+      ],
+      "layout2D": {
+        "status": "adaptation",
+        "p0Identity": "Volume de station plus haut qu'une coursive, puits technique distant encadré de passerelles et de piliers industriels ; aucun vaisseau ou planète spécifique à inventer.",
+        "composition": "Terrasse de maintenance stable devant un vide purement visuel ; passerelles hautes en arrière-plan, combat maintenu au même niveau.",
+        "moduleFamiliesNeeded": [
+          "station-support",
+          "background-catwalk",
+          "ventilation-bank",
+          "deck-edge",
+          "service-cabinet"
+        ],
+        "unverifiedDetails": [
+          "Puits central",
+          "Passerelles",
+          "Échelle et disposition",
+          "Nom de station"
+        ]
+      },
+      "generation": {
+        "generator": "openai-imagegen",
+        "mode": "built-in",
+        "promptEvidence": "work/v43/game-p0-generation/prompts.json",
+        "publicPath": "/game/sprites/v43/pit-arenas/arena-130-avp-classic-2000-space-station/p0-depth.png",
+        "receiptPath": "art-source/v43/pit-arenas/arena-130-avp-classic-2000-space-station/receipt-p0-depth.json",
+        "sha256": "c3ca5ec0deada9b84545f5face57876511b8622b3af2a0f3bb3077cc9c7513c8",
+        "width": 1536,
+        "height": 1024,
+        "reviewStatus": "visually-reviewed-p0-only-runtime-not-certified",
+        "fidelityCertified1to1": false
+      }
+    },
+    {
+      "id": "arena-131-avp-2010-freyas-prospect",
+      "catalogueNumber": 131,
+      "name": "Lisière de Freya's Prospect",
+      "title": "Aliens vs. Predator (2010)",
+      "workId": "avp-2010",
+      "workTitle": "Aliens vs. Predator (2010)",
+      "kind": "game",
+      "setting": "Abords de la colonie Freya's Prospect, entre implantation humaine, jungle et marais.",
+      "referenceStatus": "official-named-location-text-confirmed-visual-layout-unverified",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "palette": {
+        "sky": "#23302b",
+        "ground": "#353a29",
+        "accent": "#b2ad72"
+      },
+      "paletteStatus": "proposed-not-sampled",
+      "confirmedElements": [
+        {
+          "element": "Colonie nommée Freya's Prospect, entourée de jungle et de marais.",
+          "sourceIds": [
+            "avp2010-steam"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "avp2010-steam"
+      ],
+      "visualReferences": [
+        {
+          "url": "https://store.steampowered.com/app/10680/?cc=uk&l=english",
+          "type": "official-store-media",
+          "status": "not-visually-inspected",
+          "limitation": "La source ne situe pas un point de vue 2D précis à la lisière de la colonie."
+        }
+      ],
+      "layout2D": {
+        "status": "adaptation",
+        "p0Identity": "Silhouette distante de colonie émergeant d'une jungle humide ; nappe marécageuse en retrait, architecture humaine lisible entre les arbres.",
+        "composition": "Sol de service ferme devant la lisière, végétation et eau au fond ; accès latéraux dégagés et silhouettes coloniales séparées des troncs.",
+        "moduleFamiliesNeeded": [
+          "colonial-outbuilding",
+          "jungle-tree",
+          "swamp-bank",
+          "service-walkway",
+          "low-fern"
+        ],
+        "unverifiedDetails": [
+          "Bâtiments choisis",
+          "Rive exacte",
+          "Heure et météo",
+          "Plan latéral"
+        ]
+      },
+      "generation": {
+        "generator": "openai-imagegen",
+        "mode": "built-in",
+        "promptEvidence": "work/v43/game-p0-generation/prompts.json",
+        "publicPath": "/game/sprites/v43/pit-arenas/arena-131-avp-2010-freyas-prospect/p0-depth.png",
+        "receiptPath": "art-source/v43/pit-arenas/arena-131-avp-2010-freyas-prospect/receipt-p0-depth.json",
+        "sha256": "6f4d3d69d4cb92776101b862438064dd47fc4160d8ae82606b60ad363d576b21",
+        "width": 1536,
+        "height": 1024,
+        "reviewStatus": "visually-reviewed-p0-only-runtime-not-certified",
+        "fidelityCertified1to1": false
+      }
+    },
+    {
+      "id": "arena-132-avp-2010-refinery",
+      "catalogueNumber": 132,
+      "name": "Raffinerie — Machine",
+      "title": "Aliens vs. Predator (2010)",
+      "workId": "avp-2010",
+      "workTitle": "Aliens vs. Predator (2010)",
+      "kind": "game",
+      "setting": "Raffinerie de la carte Survivor Machine du Swarm Map Pack.",
+      "referenceStatus": "official-named-map-text-confirmed-visual-layout-unverified",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "palette": {
+        "sky": "#171c20",
+        "ground": "#373939",
+        "accent": "#dba362"
+      },
+      "paletteStatus": "proposed-not-sampled",
+      "confirmedElements": [
+        {
+          "element": "Machine est une carte Survivor du DLC officiel située dans une raffinerie.",
+          "sourceIds": [
+            "avp2010-swarm"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "avp2010-swarm"
+      ],
+      "visualReferences": [
+        {
+          "url": "https://store.steampowered.com/app/10695/Aliens_vs_Predator_Swarm_Map_Pack/",
+          "type": "official-dlc-media",
+          "status": "not-visually-inspected",
+          "limitation": "Aucune assimilation certifiée de sa géométrie à celle de la carte multijoueur Refinery."
+        }
+      ],
+      "layout2D": {
+        "status": "adaptation",
+        "p0Identity": "Profondeur d'usine fermée, grands volumes de traitement industriels et réseaux de conduites distincts ; tonalité d'atelier éclairé, pas de flammes ou lave ajoutées comme fait du jeu.",
+        "composition": "Plateforme de maintenance horizontale devant les machines ; canalisations hautes et cuves éloignées, caisse ou pupitre en marge seulement.",
+        "moduleFamiliesNeeded": [
+          "processing-vessel",
+          "industrial-pipe",
+          "maintenance-platform",
+          "control-console",
+          "steel-brace"
+        ],
+        "unverifiedDetails": [
+          "Types et formes des machines",
+          "Position des conduites",
+          "Éclairage exact",
+          "Coupe latérale"
+        ]
+      },
+      "generation": {
+        "generator": "openai-imagegen",
+        "mode": "built-in",
+        "promptEvidence": "work/v43/game-p0-generation/prompts.json",
+        "publicPath": "/game/sprites/v43/pit-arenas/arena-132-avp-2010-refinery/p0-depth.png",
+        "receiptPath": "art-source/v43/pit-arenas/arena-132-avp-2010-refinery/receipt-p0-depth.json",
+        "sha256": "2b12270f71fcee7381cfc1be29aaeb422b9ea67ea7cbe8fcd6fe228e22dd2bb4",
+        "width": 1536,
+        "height": 1024,
+        "reviewStatus": "visually-reviewed-p0-only-runtime-not-certified",
+        "fidelityCertified1to1": false
+      }
+    },
+    {
+      "id": "arena-133-avp-2010-docks",
+      "catalogueNumber": 133,
+      "name": "Docks abandonnés de Weyland-Yutani",
+      "title": "Aliens vs. Predator (2010)",
+      "workId": "avp-2010",
+      "workTitle": "Aliens vs. Predator (2010)",
+      "kind": "game",
+      "setting": "Site portuaire abandonné de Weyland-Yutani, carte Docks du Swarm Map Pack.",
+      "referenceStatus": "official-named-map-text-confirmed-visual-layout-unverified",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "palette": {
+        "sky": "#152b35",
+        "ground": "#303c42",
+        "accent": "#b9c0a5"
+      },
+      "paletteStatus": "proposed-not-sampled",
+      "confirmedElements": [
+        {
+          "element": "Docks désigne les installations portuaires abandonnées de Weyland-Yutani.",
+          "sourceIds": [
+            "avp2010-swarm"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "avp2010-swarm"
+      ],
+      "visualReferences": [
+        {
+          "url": "https://store.steampowered.com/app/10695/Aliens_vs_Predator_Swarm_Map_Pack/",
+          "type": "official-dlc-media",
+          "status": "not-visually-inspected",
+          "limitation": "Le bassin, les grues et les modules proposés doivent être vérifiés visuellement avant toute revendication de fidélité précise."
+        }
+      ],
+      "layout2D": {
+        "status": "adaptation",
+        "p0Identity": "Grande infrastructure de quai abandonné, ouvertures de manutention et volumes industriels éloignés ; atmosphère froide distincte de la raffinerie.",
+        "composition": "Quai stable de face, bassin au second plan sans chute jouable, équipements portuaires indépendants cantonnés aux extrémités.",
+        "moduleFamiliesNeeded": [
+          "dock-pier",
+          "cargo-crane",
+          "warehouse-opening",
+          "cargo-container",
+          "quay-bollard"
+        ],
+        "unverifiedDetails": [
+          "Grues et conteneurs spécifiques",
+          "Présence et niveau d'eau à ce point de vue",
+          "Météo",
+          "Géométrie du quai"
+        ]
+      },
+      "generation": {
+        "generator": "openai-imagegen",
+        "mode": "built-in",
+        "promptEvidence": "work/v43/game-p0-generation/prompts.json",
+        "publicPath": "/game/sprites/v43/pit-arenas/arena-133-avp-2010-docks/p0-depth.png",
+        "receiptPath": "art-source/v43/pit-arenas/arena-133-avp-2010-docks/receipt-p0-depth.json",
+        "sha256": "2f949b08b5cba5e18b61222d7ae39c469a204d8444967bccd153354bf4a62e90",
+        "width": 1536,
+        "height": 1024,
+        "reviewStatus": "visually-reviewed-p0-only-runtime-not-certified",
+        "fidelityCertified1to1": false
+      }
+    },
+    {
+      "id": "arena-134-predator-hunting-grounds-overgrowth",
+      "catalogueNumber": 134,
+      "name": "Overgrowth — rivière des ruines",
+      "title": "Predator: Hunting Grounds",
+      "workId": "predator-hunting-grounds-2020",
+      "workTitle": "Predator: Hunting Grounds",
+      "kind": "game",
+      "setting": "Vallée cachée d'Overgrowth : rivière sinueuse, ruines et jungle montagneuse sud-américaine.",
+      "referenceStatus": "developer-named-map-text-confirmed-visual-layout-unverified",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "palette": {
+        "sky": "#2e4236",
+        "ground": "#494b31",
+        "accent": "#c8bd78"
+      },
+      "paletteStatus": "proposed-not-sampled",
+      "confirmedElements": [
+        {
+          "element": "Jungle dense dans une vallée montagneuse sud-américaine.",
+          "sourceIds": [
+            "phg-overgrowth"
+          ]
+        },
+        {
+          "element": "Ruines anciennes autour d'une rivière sinueuse ; présence de Stargazer et de guérilleros.",
+          "sourceIds": [
+            "phg-overgrowth"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "phg-overgrowth"
+      ],
+      "visualReferences": [
+        {
+          "url": "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+          "type": "developer-article-concept-art-and-video",
+          "status": "not-visually-inspected",
+          "limitation": "La page mentionne un concept art ; une vignette de couverture n'est pas une preuve de la géométrie d'Overgrowth."
+        }
+      ],
+      "layout2D": {
+        "status": "adaptation",
+        "p0Identity": "Vallée encaissée de jungle, rivière ondulante et silhouettes de ruines distantes visibles entre les arbres ; pas de monument emprunté à AVP2004.",
+        "composition": "Berge de duel au premier niveau, ruines reculées sur une rive opposée ; branches et troncs en plans séparés, aucune branche imposée comme voie jouable.",
+        "moduleFamiliesNeeded": [
+          "jungle-trunk",
+          "canopy-branch",
+          "ancient-ruin-block",
+          "river-bank",
+          "foreground-root"
+        ],
+        "unverifiedDetails": [
+          "Civilisation des ruines",
+          "Forme précise des monuments",
+          "Coude de rivière choisi",
+          "Trajet 2D"
+        ]
+      },
+      "generation": {
+        "generator": "openai-imagegen",
+        "mode": "built-in",
+        "promptEvidence": "work/v43/game-p0-generation/prompts.json",
+        "publicPath": "/game/sprites/v43/pit-arenas/arena-134-predator-hunting-grounds-overgrowth/p0-depth.png",
+        "receiptPath": "art-source/v43/pit-arenas/arena-134-predator-hunting-grounds-overgrowth/receipt-p0-depth.json",
+        "sha256": "0d72c6728a9261f035b1410ba03b1767d9aa1f4cd0d75fea8c39058ac5058fe7",
+        "width": 1536,
+        "height": 1024,
+        "reviewStatus": "visually-reviewed-p0-only-runtime-not-certified",
+        "fidelityCertified1to1": false
+      }
+    },
+    {
+      "id": "arena-135-predator-hunting-grounds-excavation",
+      "catalogueNumber": 135,
+      "name": "Excavation — galeries de fouille",
+      "title": "Predator: Hunting Grounds",
+      "workId": "predator-hunting-grounds-2020",
+      "workTitle": "Predator: Hunting Grounds",
+      "kind": "game",
+      "setting": "Anciennes fouilles scientifiques dans les grottes d'Excavation, reprises par Stargazer.",
+      "referenceStatus": "developer-named-map-text-confirmed-visual-layout-unverified",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "palette": {
+        "sky": "#1d2524",
+        "ground": "#49443a",
+        "accent": "#c4ac77"
+      },
+      "paletteStatus": "proposed-not-sampled",
+      "confirmedElements": [
+        {
+          "element": "Ancien site scientifique de recherche d'artefacts dans les grottes, occupé ensuite par Stargazer.",
+          "sourceIds": [
+            "phg-excavation"
+          ]
+        },
+        {
+          "element": "Grottes sur plusieurs niveaux, passages resserrés ; le Predkour n'y fonctionne pas.",
+          "sourceIds": [
+            "phg-excavation"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "phg-excavation"
+      ],
+      "visualReferences": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2020/09/50395392956_85bdd831f8_k.jpg?crop_strategy=smart&resize=1088%2C612",
+          "pageUrl": "https://blog.playstation.com/2020/09/29/new-map-and-mode-arrive-today-in-predator-hunting-grounds/",
+          "type": "official-article-cover",
+          "status": "link-resolved-pixels-not-inspected",
+          "limitation": "Couverture officielle localisée ; représentation de la carte et détails non vérifiés visuellement."
+        }
+      ],
+      "layout2D": {
+        "status": "adaptation",
+        "p0Identity": "Cavité à étagement minéral, couloirs de fouilles au fond et traces d'installation humaine distinctes de la roche ; jungle seulement à une ouverture lointaine facultative.",
+        "composition": "Terrasse rocheuse stable ; galeries supérieures en décor et appareils de chantier indépendants ; pas de canopée ni de Predkour dans la chambre de duel.",
+        "moduleFamiliesNeeded": [
+          "cave-wall",
+          "rock-ledge",
+          "excavation-support",
+          "work-lamp",
+          "survey-equipment"
+        ],
+        "unverifiedDetails": [
+          "Forme des galeries",
+          "Équipement scientifique précis",
+          "Étaiement",
+          "Position des ouvertures"
+        ]
+      },
+      "generation": {
+        "generator": "openai-imagegen",
+        "mode": "built-in",
+        "promptEvidence": "work/v43/game-p0-generation/prompts.json",
+        "publicPath": "/game/sprites/v43/pit-arenas/arena-135-predator-hunting-grounds-excavation/p0-depth.png",
+        "receiptPath": "art-source/v43/pit-arenas/arena-135-predator-hunting-grounds-excavation/receipt-p0-depth.json",
+        "sha256": "9abaaad147ab59f35a7dd23f7cd54060bebabc2cab41612eb165b37f72eae13b",
+        "width": 1536,
+        "height": 1024,
+        "reviewStatus": "visually-reviewed-p0-only-runtime-not-certified",
+        "fidelityCertified1to1": false
+      }
+    },
+    {
+      "id": "arena-136-predator-hunting-grounds-airstrip",
+      "catalogueNumber": 136,
+      "name": "Airstrip — piste de Stargazer",
+      "title": "Predator: Hunting Grounds",
+      "workId": "predator-hunting-grounds-2020",
+      "workTitle": "Predator: Hunting Grounds",
+      "kind": "game",
+      "setting": "Piste de contrebande Stargazer au cœur de la jungle, entre hangars et tours radio.",
+      "referenceStatus": "developer-named-map-text-confirmed-visual-layout-unverified",
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "palette": {
+        "sky": "#5d7777",
+        "ground": "#545347",
+        "accent": "#d5c18a"
+      },
+      "paletteStatus": "proposed-not-sampled",
+      "confirmedElements": [
+        {
+          "element": "Piste utilisée par Stargazer pour la contrebande, entourée de jungle.",
+          "sourceIds": [
+            "phg-airstrip"
+          ]
+        },
+        {
+          "element": "Hangars, tours radio délabrées, avions, hélicoptères et zones ouvertes exposées.",
+          "sourceIds": [
+            "phg-airstrip"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "phg-airstrip"
+      ],
+      "visualReferences": [
+        {
+          "url": "https://blog.playstation.com/tachyon/2021/04/51130469929_dc245e9afb_k.jpg?crop_strategy=smart&resize=1088%2C612",
+          "pageUrl": "https://blog.playstation.com/2021/04/29/predator-hunting-grounds-comes-to-steam-with-april-update/",
+          "type": "official-article-cover",
+          "status": "link-resolved-pixels-not-inspected",
+          "limitation": "Couverture officielle localisée ; aucun modèle d'avion ni agencement de hangar certifié par inspection."
+        }
+      ],
+      "layout2D": {
+        "status": "adaptation",
+        "p0Identity": "Ligne ouverte de piste, hangars bas séparés, tour radio vieillie et jungle en recul ; avions et hélicoptères en silhouettes secondaires sans modèle militaire inventé comme canon.",
+        "composition": "Bande de tarmac de duel dégagée ; aéronef au fond, caisses et bidons à distance des pieds ; toits et tours uniquement en arrière-plan.",
+        "moduleFamiliesNeeded": [
+          "hangar-shell",
+          "radio-tower",
+          "parked-aircraft",
+          "runway-section",
+          "fuel-drum"
+        ],
+        "unverifiedDetails": [
+          "Modèles des véhicules",
+          "Signalétique de piste",
+          "Disposition des hangars",
+          "Météo et palette"
+        ]
+      },
+      "generation": {
+        "generator": "openai-imagegen",
+        "mode": "built-in",
+        "promptEvidence": "work/v43/game-p0-generation/prompts.json",
+        "publicPath": "/game/sprites/v43/pit-arenas/arena-136-predator-hunting-grounds-airstrip/p0-depth.png",
+        "receiptPath": "art-source/v43/pit-arenas/arena-136-predator-hunting-grounds-airstrip/receipt-p0-depth.json",
+        "sha256": "a826792c40d9f48c2d7cd7c04a9b156d2625ae749d175be705736bd29414999a",
+        "width": 1536,
+        "height": 1024,
+        "reviewStatus": "visually-reviewed-p0-only-runtime-not-certified",
+        "fidelityCertified1to1": false
+      }
+    }
+  ]
+}

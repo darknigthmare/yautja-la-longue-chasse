@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-orn-profaned-trophy-rack-04-fallen",
+  "definitionId": "environment-prop-v19-volcano-orn-profaned-trophy-rack-04-fallen",
+  "biome": "volcano",
+  "role": "decoration",
+  "archetypeId": "profaned-trophy-rack",
+  "variantId": "04-fallen",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\orn-profaned-trophy-rack-04-fallen.png",
+    "bytes": 1600373,
+    "sha256": "22787fd76b541781fb17ded5e240bea6dfda93c374b1a1bb0c7a373a82756f14",
+    "width": 1536,
+    "height": 1024
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\orn\\masters\\orn-profaned-trophy-rack-04-fallen-chroma.webp",
+    "bytes": 164932,
+    "sha256": "8f74b8b5f3dab2999a3e6359b36e10208660250710f8f8eb61d6baef606bebfb"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\orn\\orn-profaned-trophy-rack-04-fallen.webp",
+    "bytes": 68262,
+    "sha256": "c1babcabb2cdfde8deaab6d1b6f048370c8e476eb49b9ca81ff2951214cc139e"
+  },
+  "chromaInspection": {
+    "width": 1536,
+    "height": 1024,
+    "sampledKey": [
+      3,
+      249,
+      5
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 1
+  },
+  "helperInspection": {
+    "width": 1536,
+    "height": 1024,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.261518,
+    "transparentRatio": 0.737943,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 768,
+    "height": 498,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.356175,
+    "transparentRatio": 0.643153,
+    "dirtyTransparentPixels": 22194
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-5nGZNE\\orn-profaned-trophy-rack-04-fallen-alpha.png\r\nKey color: #03f905\r\nTransparent pixels: 1160684/1572864\r\nPartially transparent pixels: 15627/1572864",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}

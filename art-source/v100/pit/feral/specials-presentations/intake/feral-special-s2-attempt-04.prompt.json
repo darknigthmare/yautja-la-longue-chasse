@@ -1,0 +1,10 @@
+{
+  "actionId": "M_F006_S2",
+  "attempt": 4,
+  "prompt": "Edit THIS newly generated sprite sheet as a production cleanup pass. Preserve the twelve independently drawn Feral figures and their chronological shield action; do not mirror, stretch, add figures, add equipment, or change his identity. The ONLY desired edit is to remove EVERY background pixel, brown glow, atmospheric haze, colored soft wash, ground shadow and aura so that every non-character pixel is completely TRANSPARENT (alpha0). Preserve all actual body and shield silhouette pixels with crisp contours. The current brown panels and brown halos are unwanted background, not part of the sprite. The result must look like twelve clean stickers floating on absolute alpha transparency, with NO drop shadow, NO light emitted outside the silhouette, NO glow and NO background color. Keep six poses facing right in the upper half and six independently drawn poses facing left in the lower half. Give each pose a wide transparent gap from its neighbors; if needed move entire whole figures slightly to clear the gutters, without cutting or deforming any arm, foot, dreadlock or shield. No body part may touch another character. No captions or grid. Maintain image1536x1024.",
+  "referenced_image_paths": [
+    "/workspace/yautja-la-longue-chasse/art-source/v100/pit/feral/specials-presentations/intake/feral-special-s2-attempt-01.png"
+  ],
+  "transparent_background": true,
+  "operation": "Native imagegen alpha/background correction; no programmatic pixel rewrite."
+}

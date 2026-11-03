@@ -1,0 +1,21 @@
+Create a native transparent-alpha production sprite page of the exact historical SCAR BODY in the reference. Preserve silver helmet/red ridge, spotted yellow skin, net undersuit, dark silver armor, skirt, necklace and black/gold dreadlocks. The anatomical RIGHT forearm has wrist blades; LEFT hand holds one long combistick; stowed shoulder cannon. Keep weapons on those anatomical sides even in the left-facing rear-three-quarter view. Two arms and two legs, complete feet and hands. No new costume. Render four independently articulated drawings of this same character, not copies shifted or rotated.
+
+Landscape 1536x1024 PNG with transparent background. Exactly FOUR complete drawings arranged in TWO COLUMNS and TWO ROWS. Each cell 768x512 pixels. Leave very wide, genuinely alpha0 gutters: at least80pixels of completely empty transparent space between rows and columns; at least50pixels alpha0 around the outer page edges. Whole figures AND every weapon tip stay entirely inside cells. The body from helmet to soles is about300pixels when standing, total including spear no more380pixels. All poses share exactly that anatomical scale. Low poses remain shorter; never enlarge them. Plain isolated small game sprites. No floor, shadows, glows, gray haze, background, border, checkerboard, labels, text, numbers, motion streaks or sparks. No loose weapon effects. Transparent background is mandatory.
+
+Read row-major: top-left is an upright neutral guard used ONLY for scale reference. Top-right is anticipation; bottom-left is contact; bottom-right is recovery. The three action drawings have visibly different joint angles and actual movement through hips/torso/limbs. Keep grips and weapon ownership consistent.
+
+Every one of the FOUR figures faces RIGHT, including its helmet, body, knees, toes and attack direction. Use the front-three-quarter view as in the upper half of the reference.
+
+ACTION: A true LOW LEG SWEEP, entirely distinct from any arm jab or spear thrust. Anticipation drops into a deep squat and winds the RIGHT leg inward. Contact braces on the bent LEFT leg while the RIGHT leg extends sideways along the ground to sweep an opponent's ankles, toe only a few pixels above the virtual floor. Torso stays low. Recovery draws that RIGHT leg back into a compact crouch. LEFT hand keeps the combistick upright, right bladed arm folded safely in guard; neither arm strikes. Show both legs clearly, normal leg length.
+
+Exact source specification:
+M_F003_2M · Balayage de contrôle
+Commande 2+M · Bas · Base de duel
+Arme : Lames ; combistick ; shuriken ; canon
+Jambe ou manche balaie au ras du sol sans allonger artificiellement les membres.
+Préparation / actif / récupération : 11 / 4 / 21 images · dégâts 65 · coût 0 %
+Contre-jeu : Garde adaptée à la hauteur ; projection esquivable/techable ; punir la récupération.
+Règles de cancel à tester ; aucune boucle infinie ; pas d'invulnérabilité déduite du visuel.
+Corps : F003_ACT_2M
+Entité : Aucune · équipement : Voir 06_ARMES
+Adaptation originale sourcée · Cible de design à 60 Hz, non implémentée

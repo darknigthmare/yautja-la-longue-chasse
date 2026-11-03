@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "v104_compat_review",
+  "status": "PASS_CIBLE",
+  "checkedAtUtc": "2026-10-22T21:07:45Z",
+  "sourceRuntimeCommit": "4fecb68b23d39570aa809587aef2b23b4160a9d5",
+  "scope": "Revue indépendante bornée du correctif de reprise après refus d'enregistrement avant la marche du cartographe V104.",
+  "finding": {
+    "before": "Le journal était absent si le reçu était absent, choice ou ready, même avec writePaused=true. Fermer le dialogue après le refus de choose-b/reply/start cachait donc son contrôle de réessai tout en conservant le blocage du moteur.",
+    "after": "Le journal reste rendu dès que writePaused=true, indépendamment de la phase. Le contrôle de réessai reste actif ; les contrôles et descriptions de marche dépendent encore d'un reçu walking/return/interrupted. Le succès du réessai pré-marche invite à reprendre la demande auprès du cartographe.",
+    "conclusion": "Corrigé dans le périmètre vérifié ; aucun nouveau défaut certain identifié."
+  },
+  "preconditions": [
+    "Même campagne chargée, contexte de sol valide au pupitre connu du port, aucun autre transit ou modal dans le mini-repro.",
+    "Le callback durable retourne false au premier enregistrement et au second réessai, puis true au réessai autorisé.",
+    "Les refus sont testés depuis offer pour choose-b, choice pour reply et ready pour start ; un réessai rétablit l'enregistrement sans rejouer l'action refusée."
+  ],
+  "independentEvidence": {
+    "callbackMiniReproducer": {
+      "command": "PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node /tmp/v104-cartography-retry-independent-review.mjs",
+      "temporaryScriptSha256": "22c6623a04c20eda57fe2d6bda157222f827683c8b7982e20467c3f767aa92cc",
+      "nodeVersion": "22.23.3",
+      "exitCode": 0,
+      "method": "Extraction AST des callbacks réels onProgress, cartographyContextV104, cartographyWriteRefusedV104, submitCartographyV104, retryCartographyV104 et closeDialog ; vrais modèles V104 et créateur de checkpoint chargés. Seule la frontière persistProgress retourne successivement false/true.",
+      "phases": [
+        {
+          "phase": "offer",
+          "action": "choose-b",
+          "explicitResubmitPhase": "choice"
+        },
+        {
+          "phase": "choice",
+          "action": "reply",
+          "explicitResubmitPhase": "ready"
+        },
+        {
+          "phase": "ready",
+          "action": "start",
+          "explicitResubmitPhase": "walking"
+        }
+      ],
+      "verified": [
+        "Le refus initial et le second réessai refusé ne publient aucun reçu ni aucune révision nouvelle.",
+        "Fermer le dialogue remet bien dialogStateRef/dialog à null sans retirer writePaused.",
+        "Le réessai accepté enlève writePaused et conserve exactement le reçu initial ; il ne rejoue pas l'action.",
+        "Seule une nouvelle soumission explicite produit la phase suivante et revision+1 ; nextWaypoint reste 0 et walked reste 0.",
+        "Une soumission avec ancienne révision ne persiste rien ; un changement de propriétaire vivant refuse le réessai sans publier le draft.",
+        "onProgress refuse un reçu de révision inférieure à la révision courante."
+      ]
+    },
+    "reactSsr": {
+      "command": "PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node --experimental-strip-types --test-name-pattern='V104 storage retry' tests/homeworld-cartography-v104.test.mjs",
+      "exitCode": 0,
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "log": "/tmp/v104-cartography-retry-ssr-review.log",
+      "logSha256": "38556cb45b010eb7ef19a200dff129872b36528600d629e8f58b7969e0a1f336",
+      "verified": "Composant réel du journal rendu pour reçu absent/choice/ready avec writePaused : bouton Réessayer actif malgré blocked, status présent, aucune approche ou reprise anticipée ; sans writePaused, le journal pré-marche reste absent."
+    },
+    "sourceReview": [
+      "closeDialog conserve le marqueur d'échec et efface les entrées ; le journal est monté dès que le dialogue est fermé.",
+      "Les gardes owner/revision de onProgress et les transactions V104 restent inchangées par ce patch.",
+      "La recette navigateur compare le reçu durable entier avant/après chaque refus et chaque réessai ; elle exige un déplacement réel après récupération sans transition automatique de phase."
+    ]
+  },
+  "externalBrowserEvidence": {
+    "path": "outputs/qa-v104/homeworld-cartography-review-retry/result.json",
+    "sha256": "f0b81c8e60d97a648c5558e18859411da84e2dabd4a45203a62672790e1c325d",
+    "status": "PASS",
+    "checks": 29,
+    "failedChecks": 0,
+    "sourceUnchanged": true,
+    "provenance": "Recette dev exécutée par excel_backlog_oct22 ; résultat et assertions lus par ce reviewer, sans nouvelle exécution navigateur ni inspection des captures ici."
+  },
+  "sources": [
+    {
+      "path": "app/game/HomeworldCartographyV104.tsx",
+      "sha256": "0bdd68a99046e9c3d5218c239b9b16d0a5d2c99dcab8f3c4cc32b5ba3c53b15c"
+    },
+    {
+      "path": "app/game/HomeworldHub.tsx",
+      "sha256": "edf9202e33b0821047f9c43b2fccee33aa7c0b21f1ff8fc557951b5691085d76"
+    },
+    {
+      "path": "tests/homeworld-cartography-v104.test.mjs",
+      "sha256": "6f7b6c102f62e0b503e32dc37c2d8e7c2a391c025132fd5b342b00de4934aa6b"
+    },
+    {
+      "path": "scripts/qa-homeworld-cartography-v104.mjs",
+      "sha256": "a086d4fd1fa0943712d800199ab9c17beb7598501116cd2e7eca309d8afc255b"
+    },
+    {
+      "path": "app/game/systems/homeworldCartographyLedgerV104.ts",
+      "sha256": "b57fb3ea503ad5f5ce78d39fe3796ac820d9595352c1b59e48b5674e02987148"
+    },
+    {
+      "path": "app/game/systems/homeworldCartographyV104.ts",
+      "sha256": "8e937365d1867047663487f9703b28d8283fd959d01b5cb765117d39e8c7780f"
+    },
+    {
+      "path": "app/game/systems/homeworldLocationV77.ts",
+      "sha256": "daf535eb1452b1ba6e2f5cffd9147d319d0f7e23052d848b3b2e8cba1b923613"
+    },
+    {
+      "path": "tests/helpers/homeworld-scene-ssr-v78.mjs",
+      "sha256": "3f584f4c7d49d5e39abc99488db144091b61d4c54ee6bde0b00c16e613ea935a"
+    }
+  ],
+  "historicalReport": {
+    "path": "docs/v104-compatibility-review.json",
+    "sha256": "af0c464ee01026709ce41cde869e2cc5482d98ac5104108a905d37bd02693b95",
+    "unchanged": true,
+    "note": "Conserve son périmètre historique et ses empreintes initiales ; ce rapport séparé atteste le correctif ultérieur, sans réécrire les preuves figées."
+  },
+  "limits": [
+    "Le mini-repro contrôle la réponse du callback durable ; seule la recette navigateur externe teste les refus effectifs de localStorage.",
+    "Le test SSR ne prouve ni disposition visuelle ni hydratation, et les 8 captures de la recette externe n'ont pas été ouvertes par ce reviewer.",
+    "Le script indépendant est temporaire sous /tmp ; son empreinte identifie l'exécution locale mais ce fichier n'est pas livré au dépôt.",
+    "Cette revue ne renouvelle pas toutes les preuves de production antérieures ; la reconstruction et la recette de production après ce patch sont gérées séparément par root."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "release": "V65",
+  "checkedAt": "2026-10-01T02:01:50.7497280Z",
+  "status": "PASS_MENU_PUBLIC_FLOW_AND_SELECTED_VISUALS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "expectedReleaseCommitFromReleaseTask": "73c0f6e8fe5e0a1301c6aa9becb5a67f0fb34aa9",
+  "runner": "scripts/verify-campaign-menu-v63.mjs",
+  "fixtures": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\menu\\public-fixtures.json",
+  "fixtureSha256": "15dcc8460d16d732661c98e1b45e8d566ff92ecb23f9ec47fd83df76316b06da",
+  "phase": "v65-public",
+  "automatedProof": "docs/v63-menu-v65-public-qa.json",
+  "automatedProofSha256": "4a353ad9d447f2b6a4062dcfd6360dea716bb1e5fbbdb3353ebd13e3be1a1d1d",
+  "scenarios": 12,
+  "passedScenarios": 12,
+  "browserErrors": 0,
+  "manualCheckpointReplacement": "PASS",
+  "capturesViewed": [
+    {
+      "name": "replacement-confirmation",
+      "path": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v63/qa/menu/v65-public/replacement-confirmation.png",
+      "sha256": "6b73024c5a529d02e0fad2c47ee2f186aad5284a8d652dc2e48a9a98ae5f9738",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "replacement-mobile",
+      "path": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v63/qa/menu/v65-public/replacement-mobile.png",
+      "sha256": "c398d975c30beb5e1615c6a992333420bf0800e4587ee701e6bab6c215bb32bc",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "filled-nursery",
+      "path": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v63/qa/menu/v65-public/filled-nursery.png",
+      "sha256": "79b57fcc8b73564bd05026f519b841f2040048c383d91e9466cf4976c17018b9",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "empty-nursery",
+      "path": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v63/qa/menu/v65-public/empty-nursery.png",
+      "sha256": "79b57fcc8b73564bd05026f519b841f2040048c383d91e9466cf4976c17018b9",
+      "visualReview": "PASS"
+    }
+  ],
+  "observations": [
+    "Desktop replacement names the target campaign and describes10manual saves,2autosaves and the retained rescue archive. Both choices are visible.",
+    "Mobile390x844 replacement dialog stays within the viewport; all warning text and cancel/confirm buttons are readable.",
+    "Both empty creation and confirmed replacement reach the nursery entry prompt with the configured QA name persisted by the automated assertions."
+  ],
+  "safety": {
+    "isolatedBrowserContexts": true,
+    "realUserSavesRead": false,
+    "realUserSavesModified": false,
+    "runtimeModified": false
+  },
+  "limits": [
+    "The nursery screenshots show the entry prompt before pressing Enter. They do not verify the full playable prologue or nursery artwork.",
+    "Only the four named screenshots were visually inspected here; all12scenarios were behaviorally asserted by the browser runner.",
+    "The deployed commit identity is supplied by the release task; this runner validates behavior at the public alias and does not independently inspect Vercel metadata."
+  ]
+}

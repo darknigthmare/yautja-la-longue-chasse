@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checks": [
+    {
+      "morph": "classic",
+      "mask": "jungle",
+      "headDraws": 39,
+      "maskDraws": 1,
+      "bareHeadDraws": 16,
+      "registeredDestination": [
+        88.83758,
+        11.42584,
+        96.98817,
+        96.98817
+      ],
+      "keyboardMovement": true,
+      "maskToggleObserved": true,
+      "fixture": "Isolated legacy campaign with selected appearance; not a full new-game/prologue test"
+    },
+    {
+      "morph": "feral",
+      "mask": "feral",
+      "headDraws": 39,
+      "maskDraws": 1,
+      "bareHeadDraws": 16,
+      "registeredDestination": [
+        96.29784,
+        11.91847,
+        79.34276,
+        99.14309
+      ],
+      "keyboardMovement": true,
+      "maskToggleObserved": true,
+      "fixture": "Isolated legacy campaign with selected appearance; not a full new-game/prologue test"
+    }
+  ],
+  "errors": [],
+  "failures": [],
+  "visualReview": "Four public mission screenshots inspected: fitted native head and mask, no whole-canvas stretch, mask removal visible. Scope is head composition; the legacy mission environment is not certified visually complete.",
+  "captures": [
+    "work-local/v62/qa/head-mission-public/classic-masked.png",
+    "work-local/v62/qa/head-mission-public/classic-bare.png",
+    "work-local/v62/qa/head-mission-public/feral-masked.png",
+    "work-local/v62/qa/head-mission-public/feral-bare.png"
+  ]
+}

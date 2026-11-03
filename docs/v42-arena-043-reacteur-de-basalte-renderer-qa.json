@@ -1,0 +1,1425 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-043-reacteur-de-basalte",
+  "compositionDigest": "06c1d2fa707ea2f2de1df596b5a31d9390eb6a511620f5cca020cd7af1134e8f",
+  "conceptPreview": true,
+  "playablePromotion": false,
+  "checkedAt": "2026-09-19T23:30:17.078Z",
+  "surface": "isolated-renderer-with-real-game-fighters-and-images",
+  "ambienceProof": {
+    "passed": true,
+    "flameLoops": [
+      {
+        "asset": "p3-p3-c-brazier-flame",
+        "drawings": 6,
+        "reference": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+        "changed": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png"
+      }
+    ],
+    "driftingAlpha": [],
+    "reducedMotionHolds": true,
+    "floorUnchanged": true
+  },
+  "applicationFlowVerified": false,
+  "loaded": {
+    "independentKit": true,
+    "images": 17,
+    "expectedImages": 17,
+    "failed": [],
+    "fighterFailures": []
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            721.525706940874,
+            324,
+            64.94858611825192,
+            62
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -640,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            0,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            640,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1280,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1920,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -511.3053097345133,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            0,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            511.3053097345133,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1022.6106194690266,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1533.91592920354,
+            454,
+            511.8053097345133,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "close",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            778.6465366323907,
+            379.181,
+            80.3089267352185,
+            76.663
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -1256,
+            510.25,
+            992.5,
+            96.4241531664212
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -264,
+            510.25,
+            992.5,
+            96.4241531664212
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            728,
+            510.25,
+            992.5,
+            96.4241531664212
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1720,
+            510.25,
+            992.5,
+            96.4241531664212
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            2712,
+            510.25,
+            992.5,
+            96.4241531664212
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -1056.5232300884957,
+            547.45,
+            793.0232300884957,
+            170.50000000000003
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -264,
+            547.45,
+            793.0232300884957,
+            170.50000000000003
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            528.5232300884957,
+            547.45,
+            793.0232300884957,
+            170.50000000000003
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1321.0464601769913,
+            547.45,
+            793.0232300884957,
+            170.50000000000003
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            2113.569690265487,
+            547.45,
+            793.0232300884957,
+            170.50000000000003
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "left-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            870.9019312339333,
+            375.489,
+            77.51613753213367,
+            73.997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -1782,
+            502,
+            928.5,
+            90.20324005891017
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -854,
+            502,
+            928.5,
+            90.20324005891017
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            74,
+            502,
+            928.5,
+            90.20324005891017
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1002,
+            502,
+            928.5,
+            90.20324005891017
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1930,
+            502,
+            928.5,
+            90.20324005891017
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -1408.7853982300885,
+            536.8,
+            741.8926991150443,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -667.3926991150443,
+            536.8,
+            741.8926991150443,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            74,
+            536.8,
+            741.8926991150443,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            815.3926991150443,
+            536.8,
+            741.8926991150443,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1556.7853982300885,
+            536.8,
+            741.8926991150443,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            2298.1780973451328,
+            536.8,
+            741.8926991150443,
+            159.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "right-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            665.6199312339332,
+            375.489,
+            77.51613753213367,
+            73.997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -1434,
+            502,
+            928.5,
+            90.20324005891017
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -506,
+            502,
+            928.5,
+            90.20324005891017
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            422,
+            502,
+            928.5,
+            90.20324005891017
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1350,
+            502,
+            928.5,
+            90.20324005891017
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            2278,
+            502,
+            928.5,
+            90.20324005891017
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -1247.3926991150443,
+            536.8,
+            741.8926991150443,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -506,
+            536.8,
+            741.8926991150443,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            235.39269911504425,
+            536.8,
+            741.8926991150443,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            976.7853982300885,
+            536.8,
+            741.8926991150443,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1718.1780973451328,
+            536.8,
+            741.8926991150443,
+            159.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "wide",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            700.7544961439589,
+            301.116,
+            59.36300771208226,
+            56.668
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -928,
+            398,
+            512.5,
+            49.767304860088366
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -416,
+            398,
+            512.5,
+            49.767304860088366
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            96,
+            398,
+            512.5,
+            49.767304860088366
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            608,
+            398,
+            512.5,
+            49.767304860088366
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1120,
+            398,
+            512.5,
+            49.767304860088366
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1632,
+            398,
+            512.5,
+            49.767304860088366
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -722.0884955752213,
+            417.20000000000005,
+            409.54424778761063,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -313.04424778761063,
+            417.20000000000005,
+            409.54424778761063,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            96,
+            417.20000000000005,
+            409.54424778761063,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            505.04424778761063,
+            417.20000000000005,
+            409.54424778761063,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            914.0884955752213,
+            417.20000000000005,
+            409.54424778761063,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1323.132743362832,
+            417.20000000000005,
+            409.54424778761063,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1732.1769911504425,
+            417.20000000000005,
+            409.54424778761063,
+            88
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "reduced-motion",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            697.3731362467867,
+            318.59999999999997,
+            58.45372750642673,
+            55.800000000000004
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -1104,
+            414,
+            576.5,
+            55.98821796759941
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -528,
+            414,
+            576.5,
+            55.98821796759941
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            48,
+            414,
+            576.5,
+            55.98821796759941
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            624,
+            414,
+            576.5,
+            55.98821796759941
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1200,
+            414,
+            576.5,
+            55.98821796759941
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1776,
+            414,
+            576.5,
+            55.98821796759941
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -872.349557522124,
+            435.6,
+            460.674778761062,
+            99.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -412.174778761062,
+            435.6,
+            460.674778761062,
+            99.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            48,
+            435.6,
+            460.674778761062,
+            99.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            508.174778761062,
+            435.6,
+            460.674778761062,
+            99.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            968.349557522124,
+            435.6,
+            460.674778761062,
+            99.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1428.524336283186,
+            435.6,
+            460.674778761062,
+            99.00000000000001
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "high-contrast",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            721.525706940874,
+            324,
+            64.94858611825192,
+            62
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -640,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            0,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            640,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1280,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1920,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -511.3053097345133,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            0,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            511.3053097345133,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1022.6106194690266,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1533.91592920354,
+            454,
+            511.8053097345133,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            721.525706940874,
+            324,
+            64.94858611825192,
+            62
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            -640,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            0,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            640,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1280,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+          "args": [
+            68,
+            331,
+            2037,
+            198,
+            1920,
+            430,
+            640.5,
+            62.209131075110456
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            -511.3053097345133,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            0,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            511.3053097345133,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1022.6106194690266,
+            454,
+            511.8053097345133,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+          "args": [
+            36,
+            125,
+            2101,
+            452,
+            1533.91592920354,
+            454,
+            511.8053097345133,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "screenshots": [
+    "center.png",
+    "left-corner.png",
+    "right-corner.png",
+    "mobile.png"
+  ],
+  "limit": "Controlled Chromium renderer harness. Full-app navigation, physical hardware cadence, gamepad and deployment are not certified here."
+}

@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "release": "V111",
+  "status": "admitted-native-conversation",
+  "actorId": "archive-plaque-steward-v109",
+  "nativeFacing": 1,
+  "heightWorld": 100,
+  "nativeHeight": 1245,
+  "camera": "fixed-south35-original-world-camera",
+  "scalePolicy": "One common uniform positive scale for all four whole PNG canvases; per-source native foot registration only.",
+  "frames": [
+    {
+      "id": "listen",
+      "src": "/game/homeworld/v111/archivist-conversation/listen.png",
+      "raw": "art-source/v111/archivist-conversation/raw/listen.png",
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "bytes": 1738415,
+      "sha256": "b0d2d1710be551d4b1b1be10f1860a73406c18a55f47c4eb16a2371c4e480d03",
+      "pixelSha256": "f51b02a49ee2a0664001ced2be5eb8344d212698a24bf7a7bc00fb09885e7e62",
+      "alphaBounds": {
+        "x": 232,
+        "y": 150,
+        "width": 617,
+        "height": 1245
+      },
+      "pivot": {
+        "x": 527.75,
+        "y": 1394
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "zeroPixels": 1157273,
+        "transparentRatio": 0.7357743581136068,
+        "visibleBorderPixels": 0
+      },
+      "footBands": [
+        {
+          "min": 250,
+          "max": 396
+        },
+        {
+          "min": 617,
+          "max": 848
+        }
+      ]
+    },
+    {
+      "id": "explain",
+      "src": "/game/homeworld/v111/archivist-conversation/explain.png",
+      "raw": "art-source/v111/archivist-conversation/raw/explain.png",
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "bytes": 1940541,
+      "sha256": "5a655cebec21b8efdf07ec4c56614892fa21b17bbfdb331a0e6399a8ccddec34",
+      "pixelSha256": "7957af6242b6ea122f1c29fdf5a59ec98127460c348dca119a06c874de8983a8",
+      "alphaBounds": {
+        "x": 214,
+        "y": 107,
+        "width": 781,
+        "height": 1308
+      },
+      "pivot": {
+        "x": 520,
+        "y": 1414
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "zeroPixels": 1136471,
+        "transparentRatio": 0.7225488026936849,
+        "visibleBorderPixels": 0
+      },
+      "footBands": [
+        {
+          "min": 214,
+          "max": 374
+        },
+        {
+          "min": 619,
+          "max": 873
+        }
+      ]
+    },
+    {
+      "id": "indicate",
+      "src": "/game/homeworld/v111/archivist-conversation/indicate.png",
+      "raw": "art-source/v111/archivist-conversation/raw/indicate.png",
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "bytes": 1907698,
+      "sha256": "cf359e4b01e573876afc711dc85481d14c59558ac3678cd524dc21d72d698793",
+      "pixelSha256": "2ef9fce4ecc57a00ae538e65d56149fc5c0efccabc2348ba3e00347545e327fd",
+      "alphaBounds": {
+        "x": 137,
+        "y": 97,
+        "width": 742,
+        "height": 1298
+      },
+      "pivot": {
+        "x": 458.25,
+        "y": 1394
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "zeroPixels": 1133624,
+        "transparentRatio": 0.7207387288411459,
+        "visibleBorderPixels": 0
+      },
+      "footBands": [
+        {
+          "min": 137,
+          "max": 307
+        },
+        {
+          "min": 557,
+          "max": 832
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "src": "/game/homeworld/v111/archivist-conversation/return.png",
+      "raw": "art-source/v111/archivist-conversation/raw/return.png",
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "bytes": 1723190,
+      "sha256": "f6ea87e15053a67987f43117dd9654b2baff6eb5adbae58e70b06593353fe7a8",
+      "pixelSha256": "1cee59bb35b15002e856330ffcb29c91d8899ebd46d2e9b3aa370bdd33128906",
+      "alphaBounds": {
+        "x": 251,
+        "y": 150,
+        "width": 654,
+        "height": 1247
+      },
+      "pivot": {
+        "x": 529,
+        "y": 1396
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "zeroPixels": 1191531,
+        "transparentRatio": 0.7575550079345703,
+        "visibleBorderPixels": 0
+      },
+      "footBands": [
+        {
+          "min": 251,
+          "max": 398
+        },
+        {
+          "min": 616,
+          "max": 851
+        }
+      ]
+    }
+  ],
+  "durationMs": 1200,
+  "frameEndMs": [
+    220,
+    520,
+    820,
+    1100
+  ],
+  "sourceCompletion": false,
+  "closedCatalogue354Ids": [],
+  "source": {
+    "brief": "docs/specifications/homeworld-v81/mission-homeworld-original.txt",
+    "section": 15,
+    "lines": [
+      757,
+      770
+    ],
+    "bibleScene": "D6-W-PNJ-ROLE-03",
+    "bibleLines": [
+      3183,
+      3190
+    ]
+  },
+  "generationReceipt": "art-source/v111/archivist-conversation/generation-receipts.json",
+  "visualReview": "art-source/v111/archivist-conversation/visual-review.json",
+  "limits": [
+    "Four conversation key drawings for this local K-17 actor and one native facing only.",
+    "No walking, object grasping, remote manipulation, new identity, quest receipt or campaign reward.",
+    "Related V74 walking art and V84 static portraits remain distinct; all354 target families remain unclosed.",
+    "Active conversation uses a bounded elapsed clock that freezes on pause, hidden page and lost focus; reduced motion remains listening."
+  ]
+}

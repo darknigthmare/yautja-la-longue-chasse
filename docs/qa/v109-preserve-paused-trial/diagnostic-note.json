@@ -1,0 +1,59 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
+  "buildId": "FJ6IbT6OZx1H51wYnNmex",
+  "failed": {
+    "raw": "outputs/qa-v109-production-r2/preserve/result.json",
+    "status": "FAIL",
+    "failure": "TimeoutError: locator.boundingBox: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-reserve-action=\"left\"]')\u001b[22m\n",
+    "errors": [],
+    "consoleErrors": [],
+    "sourcesExact": true,
+    "observedScreenshot": "outputs/qa-v109-production-r2/preserve/failure-1.png",
+    "concreteState": "Iskhel remains under the Chasse suspendue dialog at844x390, without touch buttons visible.",
+    "notRecorded": "The failed run did not record its final DOM or aria-pressed immediately before the click, so neither a double-toggle nor the cause of the pause is established."
+  },
+  "completeRetry": {
+    "raw": "outputs/qa-v109-production-r2-retry/preserve/result.json",
+    "opened": "outputs/qa-v109-production-r2-retry/preserve/opened.json",
+    "status": "PASS",
+    "checks": 50,
+    "capturesInspected": 27,
+    "errors": [],
+    "consoleErrors": [],
+    "sourcesExact": true
+  },
+  "lastPassivePair": {
+    "raw": "outputs/qa-v109-touch-diagnostic-passive/observations/result.json",
+    "status": "DIAGNOSTIC_ONLY",
+    "checks": 14,
+    "errors": [],
+    "consoleErrors": [],
+    "observations": [
+      {
+        "label": "khar completed touch",
+        "paused": "false",
+        "tactilePressed": "true",
+        "touchButtons": 8,
+        "allEnabled": true,
+        "hasFocus": true,
+        "visibility": "visible",
+        "tactileClicks": 1,
+        "windowBlurEvents": 0
+      },
+      {
+        "label": "iskhel completed touch",
+        "paused": "false",
+        "tactilePressed": "true",
+        "touchButtons": 8,
+        "allEnabled": true,
+        "hasFocus": true,
+        "visibility": "visible",
+        "tactileClicks": 1,
+        "windowBlurEvents": 0
+      }
+    ],
+    "visibilityLimit": "visibilityState was read at observation points; transitions visibilitychange were not journaled."
+  },
+  "conclusion": "The initial timeout is retained separately with its observed paused state. One complete unmodified-driver retry passed all50 checks; the final instrumented pair did not reproduce the failure. No causal explanation or reproducible application/save defect is established. No further diagnostic loop, frozen file edit, or safety-guard bypass performed."
+}

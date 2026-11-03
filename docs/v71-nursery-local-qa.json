@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4191",
+  "at": "2026-10-02T00:58:25.858Z",
+  "checks": [
+    "Fresh campaign: actual keyboard nursery duel won, without seeded state, fabricated hit points or injected receipts.",
+    "Native first and raised-arm drawings observed; rival stays prone; pause freezes the actual scene clock and its camera.",
+    "Mobile portrait resumes the genuine keyboard-won checkpoint; reduced-motion victory pose and camera are static.",
+    "Wide village celebration is followed by the original moon title and the genuine next chapter, without extra rank or ship."
+  ],
+  "captures": [
+    "work-local/v71/qa/nursery-final-local/desktop-nonlethal-ko.png",
+    "work-local/v71/qa/nursery-final-local/desktop-village-first-native-gesture.png",
+    "work-local/v71/qa/nursery-final-local/desktop-village-raised-arm.png",
+    "work-local/v71/qa/nursery-final-local/desktop-village-raised-arm-native-canvas.png",
+    "work-local/v71/qa/nursery-final-local/mobile-reduced-motion-wide-victory.png",
+    "work-local/v71/qa/nursery-final-local/mobile-reduced-motion-native-canvas.png",
+    "work-local/v71/qa/nursery-final-local/desktop-full-reveal-arena-and-moon.png",
+    "work-local/v71/qa/nursery-final-local/moon-title-without-floating-actors.png"
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": "The fresh nursery duel was browser-played. Mobile uses its actually saved victory checkpoint. Existing native V47 art is preserved; the gesture has two distinct bitmap drawings, not a newly generated longer atlas. No canonical map or complete game claim.",
+  "phase": "v71-final-local",
+  "sourceCommit": null,
+  "captureReview": {
+    "count": 8,
+    "inspected": 8,
+    "status": "PASS",
+    "notes": "Native bitmap poses distinct; both sprites grounded on sandy floor; late wide shot keeps arena and moon together; mobile decoded art reviewed; sky-only title has no floating sprites."
+  }
+}

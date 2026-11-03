@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-victoire-attempt-02b-left.png",
+  "sourceSha256": "554d9f119fc95daa8d919be0c92a06374c1970d71a35ad70164fd68c07732b30",
+  "bytes": 2436828,
+  "width": 1024,
+  "height": 1536,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 2,
+  "strategy": "row-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "y",
+      "row": 1,
+      "start": 715,
+      "end": 788,
+      "cut": 751
+    },
+    {
+      "axis": "x",
+      "row": 1,
+      "column": 1,
+      "start": 542,
+      "end": 574,
+      "cut": 558
+    }
+  ],
+  "frames": [
+    {
+      "index": 2,
+      "row": 1,
+      "column": 0,
+      "rect": [
+        0,
+        751,
+        559,
+        785
+      ],
+      "visibleRect": [
+        100,
+        815,
+        442,
+        618
+      ],
+      "alphaPixels": 128833,
+      "borderPixels": 0,
+      "visiblePixelSha256": "02c4460e6bd745d48b390b65fc924f03f544f6bb591c73e502033d401449b21c",
+      "pivotCandidate": [
+        237.5,
+        682
+      ],
+      "visibleHeightCandidate": 618
+    },
+    {
+      "index": 3,
+      "row": 1,
+      "column": 1,
+      "rect": [
+        558,
+        751,
+        466,
+        785
+      ],
+      "visibleRect": [
+        575,
+        789,
+        422,
+        649
+      ],
+      "alphaPixels": 140845,
+      "borderPixels": 0,
+      "visiblePixelSha256": "d426c61bde5f52181904a940342939eebbfe75073c2d9dac6ca2b2f05c0348fc",
+      "pivotCandidate": [
+        169,
+        687
+      ],
+      "visibleHeightCandidate": 649
+    }
+  ],
+  "issues": [
+    "No safe vertical alpha gutter in row 1, before column 2",
+    "Column-first: No safe horizontal alpha gutter before row 2"
+  ]
+}

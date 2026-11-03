@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-187-golgotha-uscm-airlock",
+  "id": "ambient-02",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-d781f4e3-a4ee-4bf7-a075-8a6bb5c7665b.png",
+  "workspacePath": "work-local/v62/generated/arena-187-golgotha-uscm-airlock/ambient-02.png",
+  "sha256": "f46559eca972f66cc01ecb26c54bf67b0621546714bda00b506fb22746222ab5",
+  "bytes": 1947006,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.6221510569254557,
+  "copyByteIdentical": true,
+  "prompt": "Use case: stylized-concept. Asset type: production native 2D fighting-game background animation sprite sheet. Output exactly 1536x1024 PNG with genuinely transparent background. EXACTLY six independently drawn animation frames in a perfectly regular 3 columns by 2 rows grid: each cell 512x512. No visible grid, no cell outlines, no labels, no text, no checkerboard painting. Each drawing must fit completely inside its own cell with at least 48 pixels of transparent gutter on every side; nothing crosses a cell boundary. The same subject with the same scale, proportions, color and orthographic side camera in all six cells. Hand-painted realistic production game art, crisp isolated alpha silhouette, realistic anatomy/materials, subdued cool blue night or steel light, not cartoon. Transparent outside the isolated subject, including negative spaces. Do not draw a scene, a floor, backdrop, shadow card or border. Six actual different poses, never six identical pasted copies. Read chronological order left-to-right top row then left-to-right bottom row. Subject: a compact original industrial alarm sensor mounted on a dark square steel panel, one shallow red glass dome on top and a small black mechanical scanner below. Six clearly distinct positions of the scanner head slowly rotating left to right then resting center; the red lamp stays dim and steady, absolutely no flashes. Practical hardwired USCM-training-base utility, black cable ends attached to the panel. Same tiny device, same camera, same scale and mounting silhouette across sixcells. No labels, no text, no magic beam, no sparks, no weapon. All drawing stays safely centered in each512cell with at least80pxtransparentmargin. Six separate native scanner/head-angle changes.",
+  "referencedImagePaths": [],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E141"
+  ],
+  "loreLimits": [
+    "Original lateral adaptation of the manual-attested USCM base setting, not exact game geometry or sprites.",
+    "No chapter-specific alive/allied/selected-character claim."
+  ],
+  "rejectedAttempts": [],
+  "visualNotes": "Six scanner directions, steady red dome without strobe; stable mechanical mounting.",
+  "status": "visually-accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        120,
+        72,
+        342,
+        327
+      ],
+      "pivot": [
+        291,
+        399
+      ],
+      "margins": [
+        120,
+        72,
+        50,
+        113
+      ],
+      "opaquePixelCount": 99185,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "41222506e91f08d219cdf14ace7ee3e0cb5bb9b28fbe1e7d2e462a473314e2e1"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        94,
+        72,
+        342,
+        328
+      ],
+      "pivot": [
+        265,
+        400
+      ],
+      "margins": [
+        94,
+        72,
+        76,
+        112
+      ],
+      "opaquePixelCount": 98833,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "1bb04562fbeea692ffad7172a416267165a6e05c3099506893f29ce9bd9ba4ba"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        66,
+        73,
+        344,
+        326
+      ],
+      "pivot": [
+        238,
+        399
+      ],
+      "margins": [
+        66,
+        73,
+        102,
+        113
+      ],
+      "opaquePixelCount": 98899,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "6a89eb7cf843ecefc2a3ab14a11fc3c9a91704e5d30e174fc0753e272e629cdf"
+    },
+    {
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        120,
+        70,
+        342,
+        328
+      ],
+      "pivot": [
+        291,
+        398
+      ],
+      "margins": [
+        120,
+        70,
+        50,
+        114
+      ],
+      "opaquePixelCount": 99322,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "ee9a4759a45dc699d9f9689d383b79ba506f3ffe2e0b05821da89b36907b234a"
+    },
+    {
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        94,
+        70,
+        342,
+        329
+      ],
+      "pivot": [
+        265,
+        399
+      ],
+      "margins": [
+        94,
+        70,
+        76,
+        113
+      ],
+      "opaquePixelCount": 98901,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "0eca05d59fefa4615feb1d87fa73de123a72e0302ae116da6444cbc60a20a958"
+    },
+    {
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        66,
+        70,
+        344,
+        329
+      ],
+      "pivot": [
+        238,
+        399
+      ],
+      "margins": [
+        66,
+        70,
+        102,
+        113
+      ],
+      "opaquePixelCount": 99165,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "c7fdf805e10bfad1901a31945ab3aeabc447490a988054b7856ab6ec9d5de482"
+    }
+  ]
+}

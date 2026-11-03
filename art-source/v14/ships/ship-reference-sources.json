@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "pipelineVersion": "V14",
+  "policy": {
+    "referenceRequired": true,
+    "exactIncarnationRequired": true,
+    "crossIncarnationMixingForbidden": true,
+    "downloadedReferenceDirectory": "tmp/ship-v14-references",
+    "downloadedReferencesVersioned": false,
+    "runtimeUsesOfficialArtwork": false,
+    "manualInspectionRequired": true
+  },
+  "ships": {
+    "avp-predator-mothership": {
+      "exactIncarnation": "Alien vs. Predator (2004) — Predator mothership",
+      "primarySourcePages": [
+        "https://www.avpgalaxy.net/predator/spacecrafts/",
+        "https://www.mpcvfx.com/en/filmography/alien-vs-predator/"
+      ],
+      "supportingImageUrls": [
+        "https://www.avpcentral.com/images/predator-spaceships/predator-mothership.webp",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/11/avp2004-bluray-154.jpg",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/11/avp2004-bluray-155.jpg"
+      ],
+      "visualLocks": [
+        "immense broad carrier",
+        "bulbous armored center",
+        "long sweeping lateral extensions",
+        "dark silver and charcoal layered Yautja paneling",
+        "underbody docking geometry"
+      ],
+      "forbiddenMixes": [
+        "AVPR scout ship",
+        "Predators 2010 ship",
+        "The Predator 2018 ships",
+        "Prey 2022 ship"
+      ]
+    },
+    "avpr-scout-ship": {
+      "exactIncarnation": "Aliens vs. Predator: Requiem (2007) — scout ship",
+      "primarySourcePages": [
+        "https://www.avpgalaxy.net/predator/spacecrafts/",
+        "https://www.avpgalaxy.net/avp-movies/avp-requiem/gallery/concept-art/"
+      ],
+      "supportingImageUrls": [
+        "https://www.avpcentral.com/images/predator-spaceships/predator-scout-ship.webp",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/11/avpr-bluray-0004.jpg",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/11/avpr-bluray-0011.jpg"
+      ],
+      "visualLocks": [
+        "low elongated organic hull",
+        "broad rounded prow",
+        "exactly three rear thrusters",
+        "dark gunmetal ribbed shell"
+      ],
+      "forbiddenMixes": [
+        "Wolf personal ship",
+        "AVP 2004 mothership"
+      ]
+    },
+    "wolf-ship": {
+      "exactIncarnation": "Aliens vs. Predator: Requiem (2007) — Wolf personal ship",
+      "primarySourcePages": [
+        "https://www.avpgalaxy.net/predator/spacecrafts/",
+        "https://www.avpgalaxy.net/avp-movies/avp-requiem/gallery/concept-art/"
+      ],
+      "supportingImageUrls": [
+        "https://www.avpcentral.com/images/predator-spaceships/wolf-predators-ship.webp",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/11/avpr-bluray-0103.jpg",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/11/avpr-bluray-0104.jpg"
+      ],
+      "visualLocks": [
+        "compact veteran-hunter craft",
+        "flower-like multi-prong prow",
+        "exactly one large rear thruster",
+        "weathered bronze and gunmetal"
+      ],
+      "forbiddenMixes": [
+        "three-engine AVPR scout ship"
+      ]
+    },
+    "game-preserve-ship": {
+      "exactIncarnation": "Predators (2010) — Game Preserve DropShip",
+      "primarySourcePages": [
+        "https://alex_toader.artstation.com/projects/EVB6n0",
+        "https://www.avpgalaxy.net/predator/spacecrafts/"
+      ],
+      "supportingImageUrls": [
+        "https://www.avpcentral.com/images/predator-spaceships/game-preserve-ship.webp",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2026/07/alex-toader-pred-ship-modelat-ver02-detl.jpg",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2026/07/alex-toader-pred-ship-modelat-ver02.jpg"
+      ],
+      "visualLocks": [
+        "Alex Toader production-maquette silhouette",
+        "long teardrop beetle carapace",
+        "four peripheral propulsion pods",
+        "two propulsion pods on each side",
+        "gunmetal with iridescent green and brass wear"
+      ],
+      "forbiddenMixes": [
+        "Fugitive ship",
+        "Upgrade ship"
+      ]
+    },
+    "fugitive-spaceship": {
+      "exactIncarnation": "The Predator (2018) — Fugitive spacecraft",
+      "primarySourcePages": [
+        "https://www.victor-martinez.com/new-gallery-1",
+        "https://www.avpgalaxy.net/predator/spacecrafts/the-predator/"
+      ],
+      "supportingImageUrls": [
+        "https://www.avpcentral.com/images/predator-spaceships/fugitive-predator-ship.webp",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/11/predator4-concept-001-victor-martinez.jpg",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2021/01/fugitive-ship-01.jpg"
+      ],
+      "visualLocks": [
+        "broad low flattened beetle carapace",
+        "compact central dome",
+        "exactly two dominant rounded side thruster pods",
+        "cool blue rear exhaust"
+      ],
+      "forbiddenMixes": [
+        "Upgrade spacecraft",
+        "Predators 2010 ship"
+      ]
+    },
+    "upgrade-spaceship": {
+      "exactIncarnation": "The Predator (2018) — Upgrade or Assassin spacecraft",
+      "primarySourcePages": [
+        "https://www.avpgalaxy.net/2018/10/04/shane-baxley-shares-upgrade-predator-ship-concept-art/",
+        "https://www.cgw.com/Press-Center/Web-Exclusives/2018/Envisioning-Alien-Technology-for-The-Predator.aspx"
+      ],
+      "supportingImageUrls": [
+        "https://www.avpcentral.com/images/predator-spaceships/assassin-predator-ship.webp",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2021/01/upgrade-spaceship-01.jpg",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2021/01/upgrade-spaceship-03.jpg"
+      ],
+      "visualLocks": [
+        "sweeping wide-rear arrowhead",
+        "long narrow pointed nose",
+        "dark gray armor with deep red dorsal accents",
+        "two outer orange nacelles and one central blue engine",
+        "smaller rotatable maneuvering thrusters"
+      ],
+      "forbiddenMixes": [
+        "Fugitive spacecraft",
+        "human stealth aircraft"
+      ]
+    },
+    "feral-spaceship": {
+      "exactIncarnation": "Prey (2022) — Feral Predator spacecraft",
+      "primarySourcePages": [
+        "https://www.avpgalaxy.net/predator/spacecrafts/",
+        "https://www.artofvfx.com/prey-ryan-cook-production-vfx-supervisor/"
+      ],
+      "supportingImageUrls": [
+        "https://www.avpcentral.com/images/predator-spaceships/feral-predator-ship.webp"
+      ],
+      "visualLocks": [
+        "symmetrical low flattened scarab hull",
+        "two substantial flank rotating thrusters",
+        "layered chitinous armor",
+        "dark primal metal",
+        "restrained orange-red cloak accents"
+      ],
+      "forbiddenMixes": [
+        "Fugitive spacecraft",
+        "Game Preserve DropShip",
+        "modern polished fighter"
+      ]
+    },
+    "avp-predator-drop-pod": {
+      "exactIncarnation": "Alien vs. Predator (2004) — individual Predator drop pod",
+      "primarySourcePages": [
+        "https://www.avpgalaxy.net/predator/spacecrafts/",
+        "https://www.mpcvfx.com/en/filmography/alien-vs-predator/"
+      ],
+      "supportingImageUrls": [
+        "https://www.avpcentral.com/images/predator-spaceships/predator-drop-pod.webp"
+      ],
+      "visualLocks": [
+        "individual sleek capsule",
+        "exactly three swept rear fins",
+        "three distinct red rear emitter points",
+        "black and silver organic shell"
+      ],
+      "forbiddenMixes": [
+        "fighter cockpit",
+        "multi-seat ship",
+        "single oversized circular rear engine"
+      ]
+    }
+  }
+}

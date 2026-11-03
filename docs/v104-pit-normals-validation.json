@@ -1,0 +1,5567 @@
+{
+  "schemaVersion": 1,
+  "release": "V104",
+  "scope": "Opt-in Feral/Scar BODY normal attacks only. Existing PNGs and historical default11 values are preserved. Source-normal snapshots and replays use12.",
+  "source": {
+    "workbook": "THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx",
+    "originalAvailable": false,
+    "extraction": "docs/v56-excel-priorities.json",
+    "extractionSha256": "fc8e1c6c81de62d8966e04746ed0751b0eeefc62f0458728c818896ad79972f4",
+    "cells": {
+      "feral-hunter": "05_MOVES_PROPOSES!D10:L10",
+      "scar": "05_MOVES_PROPOSES!D7:L7"
+    },
+    "normalActions": 18,
+    "nativeOrientations": 36,
+    "nativePhaseBindings": 108,
+    "newPngFiles": 0
+  },
+  "unit": {
+    "newNormalTests": 11,
+    "newNormalTestsIncludedIn": "coreRegressionGroup",
+    "coreRegressionGroup": {
+      "status": "PASS",
+      "passed": 86,
+      "failed": 0,
+      "skipped": 0,
+      "command": "node --test --test-reporter=spec --test-concurrency=1 tests/pit-workbook-normals-v104.test.mjs tests/pit-replay-storage.test.mjs tests/pit-replay.test.mjs tests/pit-combat.test.mjs tests/pit-authored-movesets-v92.test.mjs",
+      "localLog": "/tmp/pit-normals-v104-version12-regressions.log",
+      "logSha256": "8b3c344cbdd2e426a26127d3fe8b5f50c1cf11099124fb311e568e4ae2e22888"
+    },
+    "equipmentRegressionGroup": {
+      "status": "PASS",
+      "passed": 90,
+      "failed": 0,
+      "skipped": 0,
+      "command": "node --test --test-reporter=spec --test-concurrency=1 tests/pit-throw-tech.test.mjs tests/pit-bible-equipment-v56.test.mjs tests/pit-tracker-hound-v56.test.mjs tests/pit-equipment-drone-v57.test.mjs tests/pit-feral-bolts-v58.test.mjs tests/pit-feral-muzzle-v59.test.mjs tests/pit-user-training-reset-v44.test.mjs tests/pit-authored-movesets-ui-v92.test.mjs tests/hunterSpriteMotion.test.ts",
+      "localLog": "/tmp/pit-normals-v104-equipment-final.log",
+      "logSha256": "addfbd65b07c4e0242df040eb96302ff7d79defa94a6a681083c4307543d6a99"
+    },
+    "countingLimit": "The11 new tests are part of86; do not add that subgroup again."
+  },
+  "lint": {
+    "status": "PASS",
+    "warnings": 0,
+    "runtimeFiles": 10,
+    "qaScripts": 1,
+    "runtimeLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "finalQaScriptLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "production": {
+    "status": "PASS_CIBLE",
+    "buildId": "KfYVJdIUFim-1m9MRRQ6_",
+    "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
+    "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3100 YAUTJA_PIT_NORMALS_QA_OUTPUT=outputs/qa-v104/pit-normals-production node scripts/qa-pit-normals-v104.mjs",
+    "script": "scripts/qa-pit-normals-v104.mjs",
+    "scriptSha256": "a22d4daf9c67cd456d199c877a1f37a24caf1208be3c989209c7de9b60baeeb7",
+    "rawReport": "outputs/qa-v104/pit-normals-production/result.json",
+    "rawReportSha256": "f9ec9e05ef5102067dc4dd3f78f89d36a386879eb9ee2d0541152e37f5577afd",
+    "completedAt": "2026-10-22T20:26:19.403Z",
+    "checksPassed": 312,
+    "checksFailed": 0,
+    "browserErrors": [],
+    "coverage": {
+      "linkedActions": [
+        {
+          "fighterId": "feral-hunter",
+          "actionId": "M_F006_5L",
+          "atlasId": "feral-source-5l-v100-normal-v104-5L"
+        },
+        {
+          "fighterId": "feral-hunter",
+          "actionId": "M_F006_5M",
+          "atlasId": "feral-source-5m-v100-normal-v104-5M"
+        },
+        {
+          "fighterId": "feral-hunter",
+          "actionId": "M_F006_5H",
+          "atlasId": "feral-actions-v59-normal-v104-5H"
+        },
+        {
+          "fighterId": "feral-hunter",
+          "actionId": "M_F006_2L",
+          "atlasId": "feral-source-2l-v100-normal-v104-2L"
+        },
+        {
+          "fighterId": "feral-hunter",
+          "actionId": "M_F006_2M",
+          "atlasId": "feral-source-2m-v100-normal-v104-2M"
+        },
+        {
+          "fighterId": "feral-hunter",
+          "actionId": "M_F006_2H",
+          "atlasId": "feral-source-2h-v100-normal-v104-2H"
+        },
+        {
+          "fighterId": "feral-hunter",
+          "actionId": "M_F006_jL",
+          "atlasId": "feral-source-jl-v100-normal-v104-jL"
+        },
+        {
+          "fighterId": "feral-hunter",
+          "actionId": "M_F006_jM",
+          "atlasId": "feral-source-jm-v100-normal-v104-jM"
+        },
+        {
+          "fighterId": "feral-hunter",
+          "actionId": "M_F006_jH",
+          "atlasId": "feral-source-jh-v100-normal-v104-jH"
+        },
+        {
+          "fighterId": "scar",
+          "actionId": "M_F003_5L",
+          "atlasId": "scar-workbook-5L-v100-normal-v104-5L"
+        },
+        {
+          "fighterId": "scar",
+          "actionId": "M_F003_5M",
+          "atlasId": "scar-workbook-5m-v100-normal-v104-5M"
+        },
+        {
+          "fighterId": "scar",
+          "actionId": "M_F003_5H",
+          "atlasId": "scar-workbook-5h-v100-normal-v104-5H"
+        },
+        {
+          "fighterId": "scar",
+          "actionId": "M_F003_2L",
+          "atlasId": "scar-workbook-2L-v100-normal-v104-2L"
+        },
+        {
+          "fighterId": "scar",
+          "actionId": "M_F003_2M",
+          "atlasId": "scar-workbook-2m-v100-normal-v104-2M"
+        },
+        {
+          "fighterId": "scar",
+          "actionId": "M_F003_2H",
+          "atlasId": "scar-workbook-2h-v100-normal-v104-2H"
+        },
+        {
+          "fighterId": "scar",
+          "actionId": "M_F003_jL",
+          "atlasId": "scar-workbook-jl-v100-normal-v104-jL"
+        },
+        {
+          "fighterId": "scar",
+          "actionId": "M_F003_jM",
+          "atlasId": "scar-workbook-jm-v100-normal-v104-jM"
+        },
+        {
+          "fighterId": "scar",
+          "actionId": "M_F003_jH",
+          "atlasId": "scar-workbook-jh-v100-normal-v104-jH"
+        }
+      ],
+      "nativeOrientations": 36,
+      "mixedOptInFights": 2,
+      "suppliedAppearances": 12,
+      "testedCostumeOrientations": 4
+    },
+    "fixtures": [
+      {
+        "label": "body-match-1",
+        "mode": "Public Versus local, fresh browser storage; no campaign or actor fixture",
+        "identities": [
+          "feral-hunter",
+          "scar"
+        ],
+        "appearances": [
+          "",
+          ""
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "mode": "Public Versus local, fresh browser storage; no campaign or actor fixture",
+        "identities": [
+          "scar",
+          "feral-hunter"
+        ],
+        "appearances": [
+          "",
+          ""
+        ]
+      },
+      {
+        "label": "supplied-1-feral-hunter",
+        "mode": "Public Versus local, fresh browser storage; no campaign or actor fixture",
+        "identities": [
+          "feral-hunter",
+          "scar"
+        ],
+        "appearances": [
+          "feral-avec-casque-b99fbf82fe",
+          "scar-avec-casque-6a0a69930d"
+        ]
+      },
+      {
+        "label": "supplied-1-scar",
+        "mode": "Public Versus local, fresh browser storage; no campaign or actor fixture",
+        "identities": [
+          "scar",
+          "feral-hunter"
+        ],
+        "appearances": [
+          "scar-avec-casque-6a0a69930d",
+          "feral-avec-casque-b99fbf82fe"
+        ]
+      },
+      {
+        "label": "mixed-body-1-costume-2",
+        "mode": "Public Versus local, fresh browser storage; no campaign or actor fixture",
+        "identities": [
+          "feral-hunter",
+          "scar"
+        ],
+        "appearances": [
+          "",
+          "scar-avec-casque-6a0a69930d"
+        ]
+      },
+      {
+        "label": "mixed-body-2-costume-1",
+        "mode": "Public Versus local, fresh browser storage; no campaign or actor fixture",
+        "identities": [
+          "feral-hunter",
+          "scar"
+        ],
+        "appearances": [
+          "feral-avec-casque-b99fbf82fe",
+          ""
+        ]
+      }
+    ],
+    "assertions": [
+      {
+        "name": "M_F006_5L: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_5L: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_5M: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_5M: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_5H: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_5H: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_5H: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_2L: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_2L: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_2L: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_2M: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_2M: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_2H: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_2H: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_2H: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_jL: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_jL: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_jL: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_jM: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_jM: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_jM: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_jH: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_jH: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F006_jH: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_5L: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_5L: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_5M: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_5M: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_5M: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_5H: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_5H: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_5H: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_2L: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_2L: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_2M: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_2M: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_2M: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_2H: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_2H: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_2H: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_2H: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_jL: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_jL: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_jL: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_jM: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_jM: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_jM: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_jH: reviewed default BODY phases are actually in the duel registry",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_jH: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_jH: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "M_F003_jH: admitted PNG hash is still the reviewed original",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1: source normals require a visible explicit choice",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1: source tables belong only to the selected BODY fighters",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1: live match records the selected recipe",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1: the public local-versus launch keeps both requested appearances",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1: actual keyboard walking separates both real actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5L: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5L/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5L/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5L/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5M: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5M/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5M/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5M/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5H: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5H/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5H/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_5H/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2L: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2L/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2L/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2L/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2M: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2M/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2M/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2M/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2H: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2H/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2H/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_2H/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jL: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jL/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jL/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jL/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jL/right: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jM: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jM/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jM/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jM/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jM/right: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jH: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jH/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jH/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jH/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F006_jH/right: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5L: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5L/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5L/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5L/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5M: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5M/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5M/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5M/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5H: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5H/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5H/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_5H/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2L: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2L/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2L/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2L/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2M: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2M/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2M/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2M/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2H: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2H/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2H/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_2H/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jL: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jL/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jL/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jL/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jL/left: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jM: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jM/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jM/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jM/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jM/left: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jH: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jH/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jH/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jH/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1/M_F003_jH/left: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-1: real local-versus actions leave stored progression and settings unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "Native local duel fits a 390px viewport",
+        "status": "PASS"
+      },
+      {
+        "name": "Mobile native duel exposes the real Canvas without a pause overlay",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v59/pit/feral/shield-right.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v59/pit/feral/shield-left.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/002-crouch-2l.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/013-crouch-2l-left.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/005-crouch-2m.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/011-crouch-2h-right.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/012-crouch-2h-left.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/041-air-jm-right-spaced.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/042-air-jm-left-spaced.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-5L-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-5M-right-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-5M-left-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-2L-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-2M-right-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-2M-left-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-2H-right-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-2H-left-contact-recovery-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-jL-right-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-jL-left-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-jM-left-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-jM-right-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-jH-right-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-jH-left-startup-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "Actual server supplies the admitted native PNG: /game/sprites/v100/pit/scar/scar-jH-left-contact-recovery-native.png",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2: source normals require a visible explicit choice",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2: source tables belong only to the selected BODY fighters",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2: live match records the selected recipe",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2: the public local-versus launch keeps both requested appearances",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2: actual keyboard walking separates both real actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5L: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5L/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5L/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5L/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5M: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5M/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5M/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5M/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5H: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5H/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5H/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_5H/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2L: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2L/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2L/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2L/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2M: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2M/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2M/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2M/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2H: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2H/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2H/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_2H/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jL: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jL/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jL/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jL/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jL/right: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jM: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jM/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jM/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jM/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jM/right: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jH: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jH/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jH/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jH/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F003_jH/right: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5L: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5L/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5L/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5L/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5M: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5M/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5M/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5M/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5H: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5H/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5H/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_5H/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2L: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2L/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2L/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2L/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2M: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2M/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2M/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2M/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2H: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2H/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2H/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_2H/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jL: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jL/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jL/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jL/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jL/left: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jM: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jM/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jM/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jM/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jM/left: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jH: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jH/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jH/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jH/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2/M_F006_jH/left: latched air phases follow the real actor through flight or landing and retain the native pivot",
+        "status": "PASS"
+      },
+      {
+        "name": "body-match-2: real local-versus actions leave stored progression and settings unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-feral-hunter: supplied costumes have no BODY normal opt-in",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-feral-hunter: live match records the selected recipe",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-feral-hunter: the public local-versus launch keeps both requested appearances",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-feral-hunter: actual keyboard walking separates both real actors",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-feral-hunter: supplied costumes never borrow any new default BODY page",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-feral-hunter/feral-avec-casque-b99fbf82fe: exact supplied pixels and selected identity survive the real input sequence",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-feral-hunter/scar-avec-casque-6a0a69930d: exact supplied pixels and selected identity survive the real input sequence",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-feral-hunter: local-versus costume checks preserve stored progression and settings",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-scar: supplied costumes have no BODY normal opt-in",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-scar: live match records the selected recipe",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-scar: the public local-versus launch keeps both requested appearances",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-scar: actual keyboard walking separates both real actors",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-scar: supplied costumes never borrow any new default BODY page",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-scar/scar-avec-casque-6a0a69930d: exact supplied pixels and selected identity survive the real input sequence",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-scar/feral-avec-casque-b99fbf82fe: exact supplied pixels and selected identity survive the real input sequence",
+        "status": "PASS"
+      },
+      {
+        "name": "supplied-1-scar: local-versus costume checks preserve stored progression and settings",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2: source normals require a visible explicit choice",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2: source tables belong only to the selected BODY fighters",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2: live match records the selected recipe",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2: the public local-versus launch keeps both requested appearances",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2: actual keyboard walking separates both real actors",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F006_5L: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F006_5L/right: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F006_5L/right: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F006_5L/right: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F003_5L: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F003_5M: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F003_5H: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F003_2L: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F003_2M: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F003_2H: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F003_jL: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F003_jM: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2/M_F003_jH: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2: an actually enabled V104 bank never supplies BODY pixels to the selected costume",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2: public mixed-duel commands keep the exact supplied costume pixels and identity",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-1-costume-2: mixed source-normal play preserves stored progression and settings",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1: source normals require a visible explicit choice",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1: source tables belong only to the selected BODY fighters",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1: live match records the selected recipe",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1: the public local-versus launch keeps both requested appearances",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1: actual keyboard walking separates both real actors",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F003_5L: public pause holds the real duel frame and both actors",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F003_5L/left: public input draws every exact admitted combat crop",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F003_5L/left: startup, active and recovery run in order",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F003_5L/left: independent native orientation and BODY scale remain exact",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F006_5L: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F006_5M: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F006_5H: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F006_2L: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F006_2M: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F006_2H: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F006_jL: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F006_jM: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1/M_F006_jH: the supplied actor never receives a source-normal action key",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1: an actually enabled V104 bank never supplies BODY pixels to the selected costume",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1: public mixed-duel commands keep the exact supplied costume pixels and identity",
+        "status": "PASS"
+      },
+      {
+        "name": "mixed-body-2-costume-1: mixed source-normal play preserves stored progression and settings",
+        "status": "PASS"
+      },
+      {
+        "name": "Every native combat and supplied costume journey has no browser error",
+        "status": "PASS"
+      }
+    ],
+    "nativeJourneys": [
+      {
+        "label": "body-match-1",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_5L",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyJ",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          5,
+          8
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 18,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5L.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-5l-source-v100",
+            "rect": [
+              0,
+              0,
+              486,
+              270
+            ],
+            "pivot": [
+              263,
+              260
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-5l-source-v100",
+            "rect": [
+              485,
+              0,
+              562,
+              270
+            ],
+            "pivot": [
+              253,
+              260
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-5l-source-v100",
+            "rect": [
+              1046,
+              0,
+              490,
+              263
+            ],
+            "pivot": [
+              195,
+              259
+            ],
+            "durationTicks": 10,
+            "src": "/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_5M",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyK",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          9,
+          13
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 29,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5M.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-5m-v100-007",
+            "rect": [
+              0,
+              0,
+              504,
+              511
+            ],
+            "pivot": [
+              250.5,
+              500
+            ],
+            "durationTicks": 9,
+            "src": "/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5M.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-5m-v100-007",
+            "rect": [
+              503,
+              0,
+              590,
+              511
+            ],
+            "pivot": [
+              277,
+              502
+            ],
+            "durationTicks": 4,
+            "src": "/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5M.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-5m-v100-007",
+            "rect": [
+              1092,
+              0,
+              444,
+              511
+            ],
+            "pivot": [
+              183,
+              500
+            ],
+            "durationTicks": 16,
+            "src": "/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_5H",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyL",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          16,
+          21
+        ],
+        "nativeSourceFrames": 5,
+        "observedDraws": 47,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5H.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-shield-v59-right",
+            "rect": [
+              0,
+              0,
+              768,
+              504
+            ],
+            "pivot": [
+              397,
+              492
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v59/pit/feral/shield-right.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.startup",
+            "phase": "startup",
+            "index": 1,
+            "pageId": "feral-shield-v59-right",
+            "rect": [
+              768,
+              0,
+              768,
+              504
+            ],
+            "pivot": [
+              294,
+              493
+            ],
+            "durationTicks": 7,
+            "src": "/game/sprites/v59/pit/feral/shield-right.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-shield-v59-right",
+            "rect": [
+              0,
+              504,
+              850,
+              520
+            ],
+            "pivot": [
+              391,
+              479
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v59/pit/feral/shield-right.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-shield-v59-right",
+            "rect": [
+              0,
+              504,
+              850,
+              520
+            ],
+            "pivot": [
+              391,
+              479
+            ],
+            "durationTicks": 8,
+            "src": "/game/sprites/v59/pit/feral/shield-right.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.recovery",
+            "phase": "recovery",
+            "index": 1,
+            "pageId": "feral-shield-v59-right",
+            "rect": [
+              850,
+              504,
+              686,
+              520
+            ],
+            "pivot": [
+              246,
+              478
+            ],
+            "durationTicks": 14,
+            "src": "/game/sprites/v59/pit/feral/shield-right.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_2L",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyJ",
+          "down": "ArrowDown"
+        },
+        "firstPhase": [
+          0,
+          6,
+          9
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 21,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-2l-v100-002",
+            "rect": [
+              375,
+              0,
+              367,
+              505
+            ],
+            "pivot": [
+              187.5,
+              477
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/feral/002-crouch-2l.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-2l-v100-002",
+            "rect": [
+              741,
+              0,
+              430,
+              505
+            ],
+            "pivot": [
+              180.5,
+              475
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/feral/002-crouch-2l.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-2l-v100-002",
+            "rect": [
+              1170,
+              0,
+              366,
+              505
+            ],
+            "pivot": [
+              163,
+              477
+            ],
+            "durationTicks": 12,
+            "src": "/game/sprites/v100/pit/feral/002-crouch-2l.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_2M",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyK",
+          "down": "ArrowDown"
+        },
+        "firstPhase": [
+          0,
+          11,
+          15
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 36,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-2m-source-v100",
+            "rect": [
+              0,
+              425,
+              499,
+              277
+            ],
+            "pivot": [
+              281,
+              259
+            ],
+            "durationTicks": 11,
+            "src": "/game/sprites/v100/pit/feral/005-crouch-2m.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-2m-source-v100",
+            "rect": [
+              498,
+              425,
+              552,
+              277
+            ],
+            "pivot": [
+              161,
+              262
+            ],
+            "durationTicks": 4,
+            "src": "/game/sprites/v100/pit/feral/005-crouch-2m.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-2m-source-v100",
+            "rect": [
+              1049,
+              425,
+              487,
+              277
+            ],
+            "pivot": [
+              180,
+              260
+            ],
+            "durationTicks": 21,
+            "src": "/game/sprites/v100/pit/feral/005-crouch-2m.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_2H",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyL",
+          "down": "ArrowDown"
+        },
+        "firstPhase": [
+          0,
+          14,
+          19
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 48,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-2h-v100-011",
+            "rect": [
+              489,
+              0,
+              535,
+              733
+            ],
+            "pivot": [
+              273.5,
+              696
+            ],
+            "durationTicks": 14,
+            "src": "/game/sprites/v100/pit/feral/011-crouch-2h-right.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-2h-v100-011",
+            "rect": [
+              0,
+              732,
+              545,
+              804
+            ],
+            "pivot": [
+              249.5,
+              753
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/feral/011-crouch-2h-right.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-2h-v100-011",
+            "rect": [
+              544,
+              732,
+              480,
+              804
+            ],
+            "pivot": [
+              250.5,
+              748
+            ],
+            "durationTicks": 29,
+            "src": "/game/sprites/v100/pit/feral/011-crouch-2h-right.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_jL",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyJ",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          6,
+          9
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 21,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jL.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-jl-v100-right",
+            "rect": [
+              518,
+              0,
+              506,
+              800
+            ],
+            "pivot": [
+              249,
+              745
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jL.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-jl-v100-right",
+            "rect": [
+              0,
+              799,
+              560,
+              737
+            ],
+            "pivot": [
+              300,
+              664
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jL.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-jl-v100-right",
+            "rect": [
+              559,
+              799,
+              465,
+              737
+            ],
+            "pivot": [
+              211,
+              661
+            ],
+            "durationTicks": 12,
+            "src": "/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_jM",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyK",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          10,
+          15
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 33,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jM.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-jm-v100-right",
+            "rect": [
+              507,
+              0,
+              517,
+              780
+            ],
+            "pivot": [
+              246,
+              642
+            ],
+            "durationTicks": 10,
+            "src": "/game/sprites/v100/pit/feral/041-air-jm-right-spaced.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jM.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-jm-v100-right",
+            "rect": [
+              0,
+              779,
+              544,
+              757
+            ],
+            "pivot": [
+              279,
+              614
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/feral/041-air-jm-right-spaced.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jM.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-jm-v100-right",
+            "rect": [
+              543,
+              779,
+              481,
+              757
+            ],
+            "pivot": [
+              240,
+              618
+            ],
+            "durationTicks": 18,
+            "src": "/game/sprites/v100/pit/feral/041-air-jm-right-spaced.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_jH",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyL",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          15,
+          21
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 45,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jH.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-jh-v100-right",
+            "rect": [
+              514,
+              0,
+              510,
+              810
+            ],
+            "pivot": [
+              280,
+              750
+            ],
+            "durationTicks": 15,
+            "src": "/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jH.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-jh-v100-right",
+            "rect": [
+              0,
+              809,
+              589,
+              727
+            ],
+            "pivot": [
+              313,
+              675
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jH.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-jh-v100-right",
+            "rect": [
+              588,
+              809,
+              436,
+              727
+            ],
+            "pivot": [
+              201,
+              578
+            ],
+            "durationTicks": 24,
+            "src": "/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "scar",
+        "actionId": "M_F003_5L",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad1",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          5,
+          8
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 18,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5L.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-5L-v100",
+            "rect": [
+              0,
+              503,
+              490,
+              521
+            ],
+            "pivot": [
+              262.5,
+              479
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/scar/scar-5L-native.png",
+            "contactOffsetY": 2
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-5L-v100",
+            "rect": [
+              490,
+              503,
+              616,
+              521
+            ],
+            "pivot": [
+              359,
+              477
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/scar/scar-5L-native.png",
+            "contactOffsetY": 2
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-5L-v100",
+            "rect": [
+              1106,
+              503,
+              430,
+              521
+            ],
+            "pivot": [
+              234.5,
+              477
+            ],
+            "durationTicks": 10,
+            "src": "/game/sprites/v100/pit/scar/scar-5L-native.png",
+            "contactOffsetY": 1
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "scar",
+        "actionId": "M_F003_5M",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad3",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          9,
+          13
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 29,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5M.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-5M-left-v100",
+            "rect": [
+              759,
+              0,
+              777,
+              506
+            ],
+            "pivot": [
+              358.5,
+              494
+            ],
+            "durationTicks": 9,
+            "src": "/game/sprites/v100/pit/scar/scar-5M-left-native.png",
+            "contactOffsetY": 3
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5M.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-5M-left-v100",
+            "rect": [
+              0,
+              505,
+              793,
+              519
+            ],
+            "pivot": [
+              447,
+              479
+            ],
+            "durationTicks": 4,
+            "src": "/game/sprites/v100/pit/scar/scar-5M-left-native.png",
+            "contactOffsetY": 2
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5M.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-5M-left-v100",
+            "rect": [
+              792,
+              505,
+              744,
+              519
+            ],
+            "pivot": [
+              321,
+              480
+            ],
+            "durationTicks": 16,
+            "src": "/game/sprites/v100/pit/scar/scar-5M-left-native.png",
+            "contactOffsetY": 3
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "scar",
+        "actionId": "M_F003_5H",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad5",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          16,
+          21
+        ],
+        "nativeSourceFrames": 4,
+        "observedDraws": 47,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5H.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-5h-v100-left",
+            "rect": [
+              0,
+              0,
+              749,
+              507
+            ],
+            "pivot": [
+              516.5,
+              492
+            ],
+            "durationTicks": 16,
+            "src": "/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-5h-v100-left",
+            "rect": [
+              748,
+              0,
+              788,
+              507
+            ],
+            "pivot": [
+              393.5,
+              491
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-5h-v100-left",
+            "rect": [
+              0,
+              506,
+              801,
+              518
+            ],
+            "pivot": [
+              510,
+              469
+            ],
+            "durationTicks": 13,
+            "src": "/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.recovery",
+            "phase": "recovery",
+            "index": 1,
+            "pageId": "scar-workbook-5h-v100-left",
+            "rect": [
+              800,
+              506,
+              736,
+              518
+            ],
+            "pivot": [
+              295.5,
+              473
+            ],
+            "durationTicks": 13,
+            "src": "/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "scar",
+        "actionId": "M_F003_2L",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad1",
+          "down": "Numpad2"
+        },
+        "firstPhase": [
+          0,
+          6,
+          9
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 21,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-2L-v100",
+            "rect": [
+              769,
+              294,
+              767,
+              243
+            ],
+            "pivot": [
+              362.5,
+              236
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/scar/scar-2L-native.png",
+            "contactOffsetY": 2
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-2L-v100",
+            "rect": [
+              782,
+              536,
+              754,
+              242
+            ],
+            "pivot": [
+              352.5,
+              234
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/scar/scar-2L-native.png",
+            "contactOffsetY": 2
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-2L-v100",
+            "rect": [
+              762,
+              777,
+              774,
+              247
+            ],
+            "pivot": [
+              363,
+              228
+            ],
+            "durationTicks": 12,
+            "src": "/game/sprites/v100/pit/scar/scar-2L-native.png",
+            "contactOffsetY": 4
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "scar",
+        "actionId": "M_F003_2M",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad3",
+          "down": "Numpad2"
+        },
+        "firstPhase": [
+          0,
+          11,
+          15
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 36,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-2M-left-v100",
+            "rect": [
+              830,
+              0,
+              706,
+              519
+            ],
+            "pivot": [
+              323,
+              491
+            ],
+            "durationTicks": 11,
+            "src": "/game/sprites/v100/pit/scar/scar-2M-left-native.png",
+            "contactOffsetY": 3
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-2M-left-v100",
+            "rect": [
+              0,
+              518,
+              843,
+              506
+            ],
+            "pivot": [
+              629.5,
+              438
+            ],
+            "durationTicks": 4,
+            "src": "/game/sprites/v100/pit/scar/scar-2M-left-native.png",
+            "contactOffsetY": 3
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-2M-left-v100",
+            "rect": [
+              842,
+              518,
+              694,
+              506
+            ],
+            "pivot": [
+              330,
+              441
+            ],
+            "durationTicks": 21,
+            "src": "/game/sprites/v100/pit/scar/scar-2M-left-native.png",
+            "contactOffsetY": 2
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "scar",
+        "actionId": "M_F003_2H",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad5",
+          "down": "Numpad2"
+        },
+        "firstPhase": [
+          0,
+          14,
+          19
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 48,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-2L-v100",
+            "rect": [
+              769,
+              294,
+              767,
+              243
+            ],
+            "pivot": [
+              362.5,
+              236
+            ],
+            "durationTicks": 14,
+            "src": "/game/sprites/v100/pit/scar/scar-2L-native.png",
+            "contactOffsetY": 2
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-2H-left-partial-v100",
+            "rect": [
+              0,
+              494,
+              748,
+              530
+            ],
+            "pivot": [
+              417,
+              485
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/scar/scar-2H-left-contact-recovery-native.png",
+            "contactOffsetY": 1
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-2H-left-partial-v100",
+            "rect": [
+              747,
+              494,
+              789,
+              530
+            ],
+            "pivot": [
+              334,
+              486
+            ],
+            "durationTicks": 29,
+            "src": "/game/sprites/v100/pit/scar/scar-2H-left-contact-recovery-native.png",
+            "contactOffsetY": 2
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "scar",
+        "actionId": "M_F003_jL",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad1",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          6,
+          9
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 21,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jL.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-jL-left-v100",
+            "rect": [
+              745,
+              0,
+              791,
+              465
+            ],
+            "pivot": [
+              381,
+              516
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/scar/scar-jL-left-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jL.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-jL-left-v100",
+            "rect": [
+              0,
+              509,
+              746,
+              515
+            ],
+            "pivot": [
+              439,
+              489
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/scar/scar-jL-left-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jL.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-jL-left-v100",
+            "rect": [
+              745,
+              464,
+              791,
+              560
+            ],
+            "pivot": [
+              366,
+              530
+            ],
+            "durationTicks": 12,
+            "src": "/game/sprites/v100/pit/scar/scar-jL-left-native.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "scar",
+        "actionId": "M_F003_jM",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad3",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          10,
+          15
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 33,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jM.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-jM-left-v100",
+            "rect": [
+              785,
+              0,
+              751,
+              476
+            ],
+            "pivot": [
+              318,
+              524
+            ],
+            "durationTicks": 10,
+            "src": "/game/sprites/v100/pit/scar/scar-jM-left-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jM.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-jM-left-v100",
+            "rect": [
+              0,
+              517,
+              786,
+              507
+            ],
+            "pivot": [
+              460,
+              487
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/scar/scar-jM-left-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jM.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-jM-left-v100",
+            "rect": [
+              785,
+              475,
+              751,
+              549
+            ],
+            "pivot": [
+              327,
+              515
+            ],
+            "durationTicks": 18,
+            "src": "/game/sprites/v100/pit/scar/scar-jM-left-native.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-1",
+        "fighterId": "scar",
+        "actionId": "M_F003_jH",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad5",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          15,
+          21
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 45,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jH.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-jH-left-startup-v100",
+            "rect": [
+              743,
+              0,
+              793,
+              1024
+            ],
+            "pivot": [
+              340,
+              970
+            ],
+            "durationTicks": 15,
+            "src": "/game/sprites/v100/pit/scar/scar-jH-left-startup-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jH.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-jH-left-partial-v100",
+            "rect": [
+              0,
+              539,
+              832,
+              485
+            ],
+            "pivot": [
+              419,
+              520
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/scar/scar-jH-left-contact-recovery-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jH.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-jH-left-partial-v100",
+            "rect": [
+              831,
+              539,
+              705,
+              485
+            ],
+            "pivot": [
+              302.5,
+              441
+            ],
+            "durationTicks": 24,
+            "src": "/game/sprites/v100/pit/scar/scar-jH-left-contact-recovery-native.png",
+            "contactOffsetY": 2
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "scar",
+        "actionId": "M_F003_5L",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyJ",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          5,
+          8
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 18,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5L.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-5L-v100",
+            "rect": [
+              0,
+              0,
+              474,
+              503
+            ],
+            "pivot": [
+              238,
+              490
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/scar/scar-5L-native.png",
+            "contactOffsetY": 3
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-5L-v100",
+            "rect": [
+              474,
+              0,
+              600,
+              503
+            ],
+            "pivot": [
+              255.5,
+              490
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/scar/scar-5L-native.png",
+            "contactOffsetY": 3
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-5L-v100",
+            "rect": [
+              1074,
+              0,
+              462,
+              503
+            ],
+            "pivot": [
+              221.5,
+              490
+            ],
+            "durationTicks": 10,
+            "src": "/game/sprites/v100/pit/scar/scar-5L-native.png",
+            "contactOffsetY": 3
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "scar",
+        "actionId": "M_F003_5M",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyK",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          9,
+          13
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 29,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5M.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-5M-right-v100",
+            "rect": [
+              776,
+              0,
+              760,
+              503
+            ],
+            "pivot": [
+              319,
+              486
+            ],
+            "durationTicks": 9,
+            "src": "/game/sprites/v100/pit/scar/scar-5M-right-native.png",
+            "contactOffsetY": 2
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5M.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-5M-right-v100",
+            "rect": [
+              0,
+              502,
+              883,
+              522
+            ],
+            "pivot": [
+              581.5,
+              466
+            ],
+            "durationTicks": 4,
+            "src": "/game/sprites/v100/pit/scar/scar-5M-right-native.png",
+            "contactOffsetY": 1
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5M.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-5M-right-v100",
+            "rect": [
+              882,
+              502,
+              654,
+              522
+            ],
+            "pivot": [
+              224,
+              468
+            ],
+            "durationTicks": 16,
+            "src": "/game/sprites/v100/pit/scar/scar-5M-right-native.png",
+            "contactOffsetY": 3
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "scar",
+        "actionId": "M_F003_5H",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyL",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          16,
+          21
+        ],
+        "nativeSourceFrames": 4,
+        "observedDraws": 47,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5H.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-5h-v100-right",
+            "rect": [
+              0,
+              0,
+              708,
+              503
+            ],
+            "pivot": [
+              422.5,
+              495
+            ],
+            "durationTicks": 16,
+            "src": "/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-5h-v100-right",
+            "rect": [
+              707,
+              0,
+              829,
+              503
+            ],
+            "pivot": [
+              267.25,
+              495
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-5h-v100-right",
+            "rect": [
+              0,
+              502,
+              744,
+              522
+            ],
+            "pivot": [
+              406.5,
+              492
+            ],
+            "durationTicks": 13,
+            "src": "/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.recovery",
+            "phase": "recovery",
+            "index": 1,
+            "pageId": "scar-workbook-5h-v100-right",
+            "rect": [
+              743,
+              502,
+              793,
+              522
+            ],
+            "pivot": [
+              275,
+              494
+            ],
+            "durationTicks": 13,
+            "src": "/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "scar",
+        "actionId": "M_F003_2L",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyJ",
+          "down": "ArrowDown"
+        },
+        "firstPhase": [
+          0,
+          6,
+          9
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 21,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-2L-v100",
+            "rect": [
+              0,
+              294,
+              770,
+              243
+            ],
+            "pivot": [
+              406,
+              236
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/scar/scar-2L-native.png",
+            "contactOffsetY": 2
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-2L-v100",
+            "rect": [
+              0,
+              536,
+              783,
+              242
+            ],
+            "pivot": [
+              402.5,
+              233
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/scar/scar-2L-native.png",
+            "contactOffsetY": 1
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-2L-v100",
+            "rect": [
+              0,
+              777,
+              763,
+              247
+            ],
+            "pivot": [
+              411.5,
+              228
+            ],
+            "durationTicks": 12,
+            "src": "/game/sprites/v100/pit/scar/scar-2L-native.png",
+            "contactOffsetY": 4
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "scar",
+        "actionId": "M_F003_2M",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyK",
+          "down": "ArrowDown"
+        },
+        "firstPhase": [
+          0,
+          11,
+          15
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 36,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-2M-right-v100",
+            "rect": [
+              806,
+              0,
+              730,
+              525
+            ],
+            "pivot": [
+              301,
+              510
+            ],
+            "durationTicks": 11,
+            "src": "/game/sprites/v100/pit/scar/scar-2M-right-native.png",
+            "contactOffsetY": 3
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-2M-right-v100",
+            "rect": [
+              0,
+              524,
+              912,
+              500
+            ],
+            "pivot": [
+              385,
+              428
+            ],
+            "durationTicks": 4,
+            "src": "/game/sprites/v100/pit/scar/scar-2M-right-native.png",
+            "contactOffsetY": 3
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-2M-right-v100",
+            "rect": [
+              911,
+              524,
+              625,
+              500
+            ],
+            "pivot": [
+              213.5,
+              436
+            ],
+            "durationTicks": 21,
+            "src": "/game/sprites/v100/pit/scar/scar-2M-right-native.png",
+            "contactOffsetY": 1
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "scar",
+        "actionId": "M_F003_2H",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyL",
+          "down": "ArrowDown"
+        },
+        "firstPhase": [
+          0,
+          14,
+          19
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 48,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-2H-right-v100",
+            "rect": [
+              746,
+              0,
+              790,
+              491
+            ],
+            "pivot": [
+              340,
+              479
+            ],
+            "durationTicks": 14,
+            "src": "/game/sprites/v100/pit/scar/scar-2H-right-native.png",
+            "contactOffsetY": 2
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-2H-right-v100",
+            "rect": [
+              0,
+              490,
+              780,
+              534
+            ],
+            "pivot": [
+              424,
+              498
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/scar/scar-2H-right-native.png",
+            "contactOffsetY": 4
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-2H-right-v100",
+            "rect": [
+              779,
+              490,
+              757,
+              534
+            ],
+            "pivot": [
+              321,
+              494
+            ],
+            "durationTicks": 29,
+            "src": "/game/sprites/v100/pit/scar/scar-2H-right-native.png",
+            "contactOffsetY": 3
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "scar",
+        "actionId": "M_F003_jL",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyJ",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          6,
+          9
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 21,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jL.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-jL-right-v100",
+            "rect": [
+              765,
+              0,
+              771,
+              496
+            ],
+            "pivot": [
+              355,
+              494
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/scar/scar-jL-right-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jL.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-jL-right-v100",
+            "rect": [
+              0,
+              495,
+              787,
+              529
+            ],
+            "pivot": [
+              409,
+              468
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/scar/scar-jL-right-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jL.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-jL-right-v100",
+            "rect": [
+              786,
+              495,
+              750,
+              529
+            ],
+            "pivot": [
+              364,
+              479
+            ],
+            "durationTicks": 12,
+            "src": "/game/sprites/v100/pit/scar/scar-jL-right-native.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "scar",
+        "actionId": "M_F003_jM",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyK",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          10,
+          15
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 33,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jM.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-jM-right-v100",
+            "rect": [
+              881,
+              0,
+              655,
+              470
+            ],
+            "pivot": [
+              236,
+              491
+            ],
+            "durationTicks": 10,
+            "src": "/game/sprites/v100/pit/scar/scar-jM-right-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jM.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-jM-right-v100",
+            "rect": [
+              0,
+              510,
+              882,
+              514
+            ],
+            "pivot": [
+              513,
+              475
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/scar/scar-jM-right-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jM.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-jM-right-v100",
+            "rect": [
+              881,
+              469,
+              655,
+              555
+            ],
+            "pivot": [
+              262,
+              524
+            ],
+            "durationTicks": 18,
+            "src": "/game/sprites/v100/pit/scar/scar-jM-right-native.png",
+            "contactOffsetY": 1
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "scar",
+        "actionId": "M_F003_jH",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyL",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          15,
+          21
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 45,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jH.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-jH-right-v100",
+            "rect": [
+              762,
+              0,
+              774,
+              522
+            ],
+            "pivot": [
+              363,
+              505
+            ],
+            "durationTicks": 15,
+            "src": "/game/sprites/v100/pit/scar/scar-jH-right-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jH.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-jH-right-v100",
+            "rect": [
+              0,
+              521,
+              817,
+              503
+            ],
+            "pivot": [
+              421,
+              502
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/scar/scar-jH-right-native.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jH.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-jH-right-v100",
+            "rect": [
+              816,
+              521,
+              720,
+              503
+            ],
+            "pivot": [
+              331,
+              454
+            ],
+            "durationTicks": 24,
+            "src": "/game/sprites/v100/pit/scar/scar-jH-right-native.png",
+            "contactOffsetY": 3
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_5L",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad1",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          5,
+          8
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 18,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5L.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-5l-source-v100",
+            "rect": [
+              0,
+              269,
+              486,
+              246
+            ],
+            "pivot": [
+              286,
+              241
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-5l-source-v100",
+            "rect": [
+              485,
+              269,
+              562,
+              246
+            ],
+            "pivot": [
+              310,
+              244
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-5l-source-v100",
+            "rect": [
+              1046,
+              262,
+              490,
+              256
+            ],
+            "pivot": [
+              228,
+              250
+            ],
+            "durationTicks": 10,
+            "src": "/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_5M",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad3",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          9,
+          13
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 29,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5M.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-5m-v100-007",
+            "rect": [
+              0,
+              510,
+              480,
+              514
+            ],
+            "pivot": [
+              279,
+              482
+            ],
+            "durationTicks": 9,
+            "src": "/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5M.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-5m-v100-007",
+            "rect": [
+              479,
+              510,
+              597,
+              514
+            ],
+            "pivot": [
+              333,
+              481
+            ],
+            "durationTicks": 4,
+            "src": "/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5M.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-5m-v100-007",
+            "rect": [
+              1075,
+              510,
+              461,
+              514
+            ],
+            "pivot": [
+              241,
+              482
+            ],
+            "durationTicks": 16,
+            "src": "/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_5H",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad5",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          16,
+          21
+        ],
+        "nativeSourceFrames": 5,
+        "observedDraws": 47,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5H.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-shield-v59-left",
+            "rect": [
+              0,
+              0,
+              820,
+              490
+            ],
+            "pivot": [
+              518,
+              480
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v59/pit/feral/shield-left.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.startup",
+            "phase": "startup",
+            "index": 1,
+            "pageId": "feral-shield-v59-left",
+            "rect": [
+              820,
+              0,
+              716,
+              490
+            ],
+            "pivot": [
+              369,
+              479
+            ],
+            "durationTicks": 7,
+            "src": "/game/sprites/v59/pit/feral/shield-left.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-shield-v59-left",
+            "rect": [
+              0,
+              490,
+              875,
+              534
+            ],
+            "pivot": [
+              560,
+              472
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v59/pit/feral/shield-left.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-shield-v59-left",
+            "rect": [
+              0,
+              490,
+              875,
+              534
+            ],
+            "pivot": [
+              560,
+              472
+            ],
+            "durationTicks": 8,
+            "src": "/game/sprites/v59/pit/feral/shield-left.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5H.recovery",
+            "phase": "recovery",
+            "index": 1,
+            "pageId": "feral-shield-v59-left",
+            "rect": [
+              875,
+              490,
+              661,
+              534
+            ],
+            "pivot": [
+              354,
+              480
+            ],
+            "durationTicks": 14,
+            "src": "/game/sprites/v59/pit/feral/shield-left.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_2L",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad1",
+          "down": "Numpad2"
+        },
+        "firstPhase": [
+          0,
+          6,
+          9
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 21,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-2l-v100-013",
+            "rect": [
+              549,
+              0,
+              475,
+              838
+            ],
+            "pivot": [
+              254,
+              715
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/feral/013-crouch-2l-left.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-2l-v100-013",
+            "rect": [
+              0,
+              837,
+              598,
+              699
+            ],
+            "pivot": [
+              382.5,
+              578
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/feral/013-crouch-2l-left.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2L.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-2l-v100-013",
+            "rect": [
+              597,
+              837,
+              427,
+              699
+            ],
+            "pivot": [
+              222.5,
+              592
+            ],
+            "durationTicks": 12,
+            "src": "/game/sprites/v100/pit/feral/013-crouch-2l-left.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_2M",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad3",
+          "down": "Numpad2"
+        },
+        "firstPhase": [
+          0,
+          11,
+          15
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 36,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-2m-source-v100",
+            "rect": [
+              0,
+              701,
+              490,
+              323
+            ],
+            "pivot": [
+              306,
+              271
+            ],
+            "durationTicks": 11,
+            "src": "/game/sprites/v100/pit/feral/005-crouch-2m.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-2m-source-v100",
+            "rect": [
+              489,
+              701,
+              552,
+              323
+            ],
+            "pivot": [
+              406,
+              274
+            ],
+            "durationTicks": 4,
+            "src": "/game/sprites/v100/pit/feral/005-crouch-2m.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2M.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-2m-source-v100",
+            "rect": [
+              1040,
+              701,
+              496,
+              323
+            ],
+            "pivot": [
+              215,
+              272
+            ],
+            "durationTicks": 21,
+            "src": "/game/sprites/v100/pit/feral/005-crouch-2m.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_2H",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad5",
+          "down": "Numpad2"
+        },
+        "firstPhase": [
+          0,
+          14,
+          19
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 48,
+        "expectedFrames": [
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-2h-v100-012",
+            "rect": [
+              543,
+              0,
+              481,
+              770
+            ],
+            "pivot": [
+              259.5,
+              718
+            ],
+            "durationTicks": 14,
+            "src": "/game/sprites/v100/pit/feral/012-crouch-2h-left.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-2h-v100-012",
+            "rect": [
+              0,
+              769,
+              572,
+              767
+            ],
+            "pivot": [
+              346,
+              679
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/feral/012-crouch-2h-left.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.crouch.workbook-v104.2H.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-2h-v100-012",
+            "rect": [
+              571,
+              769,
+              453,
+              767
+            ],
+            "pivot": [
+              244,
+              676
+            ],
+            "durationTicks": 29,
+            "src": "/game/sprites/v100/pit/feral/012-crouch-2h-left.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_jL",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad1",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          6,
+          9
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 21,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jL.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-jl-v100-left",
+            "rect": [
+              540,
+              0,
+              484,
+              783
+            ],
+            "pivot": [
+              265,
+              725
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jL.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-jl-v100-left",
+            "rect": [
+              0,
+              782,
+              569,
+              754
+            ],
+            "pivot": [
+              290,
+              678
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jL.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-jl-v100-left",
+            "rect": [
+              568,
+              782,
+              456,
+              754
+            ],
+            "pivot": [
+              245,
+              664
+            ],
+            "durationTicks": 12,
+            "src": "/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_jM",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad3",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          10,
+          15
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 33,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jM.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-jm-v100-left",
+            "rect": [
+              547,
+              0,
+              477,
+              799
+            ],
+            "pivot": [
+              254,
+              724
+            ],
+            "durationTicks": 10,
+            "src": "/game/sprites/v100/pit/feral/042-air-jm-left-spaced.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jM.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-jm-v100-left",
+            "rect": [
+              0,
+              798,
+              604,
+              738
+            ],
+            "pivot": [
+              302,
+              603
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/feral/042-air-jm-left-spaced.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jM.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-jm-v100-left",
+            "rect": [
+              603,
+              798,
+              421,
+              738
+            ],
+            "pivot": [
+              211,
+              605
+            ],
+            "durationTicks": 18,
+            "src": "/game/sprites/v100/pit/feral/042-air-jm-left-spaced.png",
+            "contactOffsetY": 7
+          }
+        ]
+      },
+      {
+        "label": "body-match-2",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_jH",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad5",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          15,
+          21
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 45,
+        "expectedFrames": [
+          {
+            "clipId": "pit.air.workbook-v104.jH.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-source-jh-v100-left",
+            "rect": [
+              526,
+              0,
+              498,
+              825
+            ],
+            "pivot": [
+              280,
+              755
+            ],
+            "durationTicks": 15,
+            "src": "/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jH.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-source-jh-v100-left",
+            "rect": [
+              0,
+              824,
+              557,
+              712
+            ],
+            "pivot": [
+              317,
+              691
+            ],
+            "durationTicks": 6,
+            "src": "/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.air.workbook-v104.jH.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-source-jh-v100-left",
+            "rect": [
+              556,
+              824,
+              468,
+              712
+            ],
+            "pivot": [
+              264.5,
+              543
+            ],
+            "durationTicks": 24,
+            "src": "/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "mixed-body-1-costume-2",
+        "fighterId": "feral-hunter",
+        "actionId": "M_F006_5L",
+        "facing": "right",
+        "slot": 0,
+        "command": {
+          "key": "KeyJ",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          5,
+          8
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 18,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5L.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "feral-5l-source-v100",
+            "rect": [
+              0,
+              0,
+              486,
+              270
+            ],
+            "pivot": [
+              263,
+              260
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "feral-5l-source-v100",
+            "rect": [
+              485,
+              0,
+              562,
+              270
+            ],
+            "pivot": [
+              253,
+              260
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+            "contactOffsetY": 0
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "feral-5l-source-v100",
+            "rect": [
+              1046,
+              0,
+              490,
+              263
+            ],
+            "pivot": [
+              195,
+              259
+            ],
+            "durationTicks": 10,
+            "src": "/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+            "contactOffsetY": 0
+          }
+        ]
+      },
+      {
+        "label": "mixed-body-2-costume-1",
+        "fighterId": "scar",
+        "actionId": "M_F003_5L",
+        "facing": "left",
+        "slot": 1,
+        "command": {
+          "key": "Numpad1",
+          "down": null
+        },
+        "firstPhase": [
+          0,
+          5,
+          8
+        ],
+        "nativeSourceFrames": 3,
+        "observedDraws": 18,
+        "expectedFrames": [
+          {
+            "clipId": "pit.stand.workbook-v104.5L.startup",
+            "phase": "startup",
+            "index": 0,
+            "pageId": "scar-workbook-5L-v100",
+            "rect": [
+              0,
+              503,
+              490,
+              521
+            ],
+            "pivot": [
+              262.5,
+              479
+            ],
+            "durationTicks": 5,
+            "src": "/game/sprites/v100/pit/scar/scar-5L-native.png",
+            "contactOffsetY": 2
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.active",
+            "phase": "active",
+            "index": 0,
+            "pageId": "scar-workbook-5L-v100",
+            "rect": [
+              490,
+              503,
+              616,
+              521
+            ],
+            "pivot": [
+              359,
+              477
+            ],
+            "durationTicks": 3,
+            "src": "/game/sprites/v100/pit/scar/scar-5L-native.png",
+            "contactOffsetY": 2
+          },
+          {
+            "clipId": "pit.stand.workbook-v104.5L.recovery",
+            "phase": "recovery",
+            "index": 0,
+            "pageId": "scar-workbook-5L-v100",
+            "rect": [
+              1106,
+              503,
+              430,
+              521
+            ],
+            "pivot": [
+              234.5,
+              477
+            ],
+            "durationTicks": 10,
+            "src": "/game/sprites/v100/pit/scar/scar-5L-native.png",
+            "contactOffsetY": 1
+          }
+        ]
+      }
+    ],
+    "costumeExclusions": [
+      {
+        "kind": "supplied-costume-exclusion",
+        "label": "supplied-1-feral-hunter",
+        "fighterId": "feral-hunter",
+        "variantId": "feral-avec-casque-b99fbf82fe",
+        "slot": 0,
+        "facing": "right",
+        "source": "/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png",
+        "sourceDraws": 842,
+        "defaultBodyDraws": 0
+      },
+      {
+        "kind": "supplied-costume-exclusion",
+        "label": "supplied-1-feral-hunter",
+        "fighterId": "scar",
+        "variantId": "scar-avec-casque-6a0a69930d",
+        "slot": 1,
+        "facing": "left",
+        "source": "/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+        "sourceDraws": 331,
+        "defaultBodyDraws": 0
+      },
+      {
+        "kind": "supplied-costume-exclusion",
+        "label": "supplied-1-scar",
+        "fighterId": "scar",
+        "variantId": "scar-avec-casque-6a0a69930d",
+        "slot": 0,
+        "facing": "right",
+        "source": "/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+        "sourceDraws": 331,
+        "defaultBodyDraws": 0
+      },
+      {
+        "kind": "supplied-costume-exclusion",
+        "label": "supplied-1-scar",
+        "fighterId": "feral-hunter",
+        "variantId": "feral-avec-casque-b99fbf82fe",
+        "slot": 1,
+        "facing": "left",
+        "source": "/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png",
+        "sourceDraws": 842,
+        "defaultBodyDraws": 0
+      },
+      {
+        "kind": "mixed-opt-in-costume-exclusion",
+        "label": "mixed-body-1-costume-2",
+        "fighterId": "scar",
+        "variantId": "scar-avec-casque-6a0a69930d",
+        "slot": 1,
+        "facing": "left",
+        "source": "/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+        "sourceDraws": 369,
+        "defaultBodyDraws": 0
+      },
+      {
+        "kind": "mixed-opt-in-costume-exclusion",
+        "label": "mixed-body-2-costume-1",
+        "fighterId": "feral-hunter",
+        "variantId": "feral-avec-casque-b99fbf82fe",
+        "slot": 0,
+        "facing": "right",
+        "source": "/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png",
+        "sourceDraws": 907,
+        "defaultBodyDraws": 0
+      }
+    ],
+    "servedNativePages": [
+      {
+        "src": "/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+        "status": 200,
+        "sha256": "cc17f91b2471c6731d3449983d35cf627162ae4803cafdfed997007354fc5735",
+        "bytes": 2018648
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+        "status": 200,
+        "sha256": "c1b95635c5581dd0fa520e779e461433528640a1e83f2b0488ad05bc1acdcdbd",
+        "bytes": 2351936
+      },
+      {
+        "src": "/game/sprites/v59/pit/feral/shield-right.png",
+        "status": 200,
+        "sha256": "a562123e1c19cc98b8614d479ef9f70b5499482142a8895f2aaaa7e8cd0953d2",
+        "bytes": 2267581
+      },
+      {
+        "src": "/game/sprites/v59/pit/feral/shield-left.png",
+        "status": 200,
+        "sha256": "b5f2f91c9beb78c9d78bd83f30ae40af54f3f5546e919a6016ac3299eff27585",
+        "bytes": 2340749
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/002-crouch-2l.png",
+        "status": 200,
+        "sha256": "9cc63fc5a91565f6bb281c11138000e3b1078245581aabd65b60d53d372eb605",
+        "bytes": 2248775
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/013-crouch-2l-left.png",
+        "status": 200,
+        "sha256": "d6faa6692304c6191bc28f1ee1d3e8856603a62b263c320f3de4f9e7f169fdb6",
+        "bytes": 2145770
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/005-crouch-2m.png",
+        "status": 200,
+        "sha256": "91ab7a7ac6dc903dce4aa15ee2f39a9b8bf35113eb8d2bb3ea688debe610208f",
+        "bytes": 2166671
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/011-crouch-2h-right.png",
+        "status": 200,
+        "sha256": "4f094d0f2d3cccadd5f661158d4b4f412c1d769da823fca2e9e00cabd5b3d40d",
+        "bytes": 2214051
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/012-crouch-2h-left.png",
+        "status": 200,
+        "sha256": "1cf32461860771ded634e7ec9ba119a15f29c13f4ef5341d97c1ae5129042c6b",
+        "bytes": 2154824
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
+        "status": 200,
+        "sha256": "f6dd75cb124e7db1224ab9f35c4273c4469464e0f14ac36b4ec6fbfcd5380cb5",
+        "bytes": 2062492
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
+        "status": 200,
+        "sha256": "e40afc5ae89cdb482467ced9bdca55ed5ce8aad690b5dd648dedb7e64f9f9650",
+        "bytes": 2145482
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/041-air-jm-right-spaced.png",
+        "status": 200,
+        "sha256": "922ca6e1397c90865c513a5ee022fcab6f54d25630f21fcdf3c3019e9ace3088",
+        "bytes": 1739401
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/042-air-jm-left-spaced.png",
+        "status": 200,
+        "sha256": "af39b7568c24d53e5b2834932553f651e747ec4cf2e9db936c862562b8e56ae8",
+        "bytes": 1957052
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
+        "status": 200,
+        "sha256": "f5ac5871db20a4bb8dd4512538979fa6bd75b0b032afaaa5c40032dd5aed04a4",
+        "bytes": 2119746
+      },
+      {
+        "src": "/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
+        "status": 200,
+        "sha256": "da38a240b9bdb96b99152ce3d222de3f47ee321d2a902f972dfd37355fe5c5e0",
+        "bytes": 2088633
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-5L-native.png",
+        "status": 200,
+        "sha256": "c4e42f89fc367b442ed1cb4ac67cd1bf45868de4cc97cabf072ae5caac0d0cac",
+        "bytes": 2204395
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-5M-right-native.png",
+        "status": 200,
+        "sha256": "54a70c307c11f41fc1252174cc863141eef3f10957972774493f9962dddf90d4",
+        "bytes": 1716500
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-5M-left-native.png",
+        "status": 200,
+        "sha256": "56de9c7ca3110ed40ec810320788d37305b3f57dd8664b2abae54a0d612181f5",
+        "bytes": 1708232
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+        "status": 200,
+        "sha256": "3da7a25a272d0e9398170b2b5fff7f295494a56043336009e2c29ca55268521b",
+        "bytes": 1868855
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+        "status": 200,
+        "sha256": "658a0587a4e2ca496c950028569c595bc5fec3ee614d164c760225845d17fee8",
+        "bytes": 1736766
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-2L-native.png",
+        "status": 200,
+        "sha256": "ba74a5756a0951847bdf7e78ae90761f131a17d1b63863e31124f51b4420f644",
+        "bytes": 1571563
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-2M-right-native.png",
+        "status": 200,
+        "sha256": "5cd1f926dd04d74e139fe88faef820262eec047c2ad266febda6b23f5610d384",
+        "bytes": 1680416
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-2M-left-native.png",
+        "status": 200,
+        "sha256": "74ad6714525cbba91bc6ef65c4d3798ce835b339893041b175ee2f40a530e283",
+        "bytes": 1746646
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-2H-right-native.png",
+        "status": 200,
+        "sha256": "50cb107f553f54bf7519bd97939046c510f0aebae82223358ddc44ac1d9245d0",
+        "bytes": 1664701
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-2H-left-contact-recovery-native.png",
+        "status": 200,
+        "sha256": "ebb4dd8320217091c3bbd8a8e6486231d19cf9b6c959b92d49231eaa419e5456",
+        "bytes": 1644642
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-jL-right-native.png",
+        "status": 200,
+        "sha256": "fdb5f6a6dc8e4ca68b9c96a04bdea057748a6ad796b223fb377dd006e8810fb7",
+        "bytes": 1573763
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-jL-left-native.png",
+        "status": 200,
+        "sha256": "e3d2bc9e010351e37f9b208d6f8c06f417b9f0475c8bc9c991b578cfc82babc9",
+        "bytes": 1848518
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-jM-left-native.png",
+        "status": 200,
+        "sha256": "4d714b5f7f334d22250adfca8231a3abf3fa147dd18c1f5d9b36498f45560388",
+        "bytes": 1926192
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-jM-right-native.png",
+        "status": 200,
+        "sha256": "63c91bce12397c460cd8f5a60b41eb0dcb3a02261e819a269db42337c26d8a7f",
+        "bytes": 1738717
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-jH-right-native.png",
+        "status": 200,
+        "sha256": "9b48ac15b53a50d62ddea8a77189744352b3fb5661c5366940f77c87836fe199",
+        "bytes": 1715074
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-jH-left-startup-native.png",
+        "status": 200,
+        "sha256": "d906629e65873b4fba00377fec0a8f7528e98ce6791b02727f18cc596c9b5501",
+        "bytes": 2049049
+      },
+      {
+        "src": "/game/sprites/v100/pit/scar/scar-jH-left-contact-recovery-native.png",
+        "status": 200,
+        "sha256": "9b3bb6de48183ddaec9e89268564012d8465d7bec120664b60b7adf1b307fbbe",
+        "bytes": 2026413
+      }
+    ],
+    "sourceUnchanged": true,
+    "sourceFingerprintFiles": 60,
+    "sourceFingerprints": [
+      {
+        "file": "app/game/buildInfo.ts",
+        "sha256": "ffdf1b19c12172ee76289b0274d7606a7fa5f9c0d3551aae288260274a1aa839"
+      },
+      {
+        "file": "app/game/PitCanvas.tsx",
+        "sha256": "c4210bf7d8a2dc68f6839a16a263fc2c3c49e25d93b2c66334bacaf5beaefbff"
+      },
+      {
+        "file": "app/game/PitSelectionFlow.tsx",
+        "sha256": "509472947cdccaf275a26a5c3bd90b3a9cac50d30c4f2710d4814a795dd49beb"
+      },
+      {
+        "file": "app/game/pitWorkbookAnimationV100.ts",
+        "sha256": "d1120ca77376b54a3f38a958520e23f58d1f93879fff13cb32161cae4956af6a"
+      },
+      {
+        "file": "app/game/pitWorkbookCombatRegistryV100.ts",
+        "sha256": "708e1540d4f805e1293e08f327bcd65582ffead672bd39df845cd40897be9b91"
+      },
+      {
+        "file": "app/game/pitSpriteSheetRegistry.ts",
+        "sha256": "ccf79d56ec0399e417b57b2406e8de1a785f585054e10b5c50d72e5cb96a5433"
+      },
+      {
+        "file": "app/game/pitSpriteSheetAnimation.ts",
+        "sha256": "7e58dadf09f042f3ee54f0c576e7a738becdaeba0d9e5b1a88f2a5e7df37b903"
+      },
+      {
+        "file": "app/game/hunterSpriteMotion.ts",
+        "sha256": "6add9fbff758acd9407657a98d02d33d8e60508dde67043dc286bd861fd2b88a"
+      },
+      {
+        "file": "app/game/systems/pitCombat.ts",
+        "sha256": "5bbf8547fb3ce4d5cc2a2b08708f12579b8ce73f6085e790195750565e35f1bb"
+      },
+      {
+        "file": "app/game/systems/controlBindings.ts",
+        "sha256": "75d493beb7c72279152408ab1903d0537c9544ce1fecf23220e7c9d36583a51e"
+      },
+      {
+        "file": "app/game/data/pitWorkbookAnimationsV100.json",
+        "sha256": "5de70a8a5a08ac1c2bbe56f11fddfac52b6285cde4e606970141e74b8cc21956"
+      },
+      {
+        "file": "app/game/data/pitUserHuntersV44.json",
+        "sha256": "dbdb6d2dc993a93481d2d96a4dbe99bd75f0e37f3a1b70a7e4124feae79af7d7"
+      },
+      {
+        "file": "app/game/systems/pitWorkbookNormalsV104.ts",
+        "sha256": "d4a79c3a6654cbf9864f6afb7b9a921557cc8f91fccbda6366ca037503b5177e"
+      },
+      {
+        "file": "app/game/pitWorkbookNormalRegistryV104.ts",
+        "sha256": "f8886674588f3adbe7a034142c5ee462cc6a61a971fe50f7ff95cacf7060268d"
+      },
+      {
+        "file": "app/game/systems/pitReplay.ts",
+        "sha256": "4e1fd580546c9b62b33688dbc8120b28dc4f2bc1ebe0eecba610850dc2d6bd60"
+      },
+      {
+        "file": "app/game/systems/pitTraining.ts",
+        "sha256": "f2e2772b92542b0d9a2aecc025e87493c48abdb24987ea9822ecac5c1dcf75ac"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+        "sha256": "cc17f91b2471c6731d3449983d35cf627162ae4803cafdfed997007354fc5735"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+        "sha256": "c1b95635c5581dd0fa520e779e461433528640a1e83f2b0488ad05bc1acdcdbd"
+      },
+      {
+        "file": "public/game/sprites/v59/pit/feral/shield-right.png",
+        "sha256": "a562123e1c19cc98b8614d479ef9f70b5499482142a8895f2aaaa7e8cd0953d2"
+      },
+      {
+        "file": "public/game/sprites/v59/pit/feral/shield-left.png",
+        "sha256": "b5f2f91c9beb78c9d78bd83f30ae40af54f3f5546e919a6016ac3299eff27585"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/002-crouch-2l.png",
+        "sha256": "9cc63fc5a91565f6bb281c11138000e3b1078245581aabd65b60d53d372eb605"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/013-crouch-2l-left.png",
+        "sha256": "d6faa6692304c6191bc28f1ee1d3e8856603a62b263c320f3de4f9e7f169fdb6"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/005-crouch-2m.png",
+        "sha256": "91ab7a7ac6dc903dce4aa15ee2f39a9b8bf35113eb8d2bb3ea688debe610208f"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/011-crouch-2h-right.png",
+        "sha256": "4f094d0f2d3cccadd5f661158d4b4f412c1d769da823fca2e9e00cabd5b3d40d"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/012-crouch-2h-left.png",
+        "sha256": "1cf32461860771ded634e7ec9ba119a15f29c13f4ef5341d97c1ae5129042c6b"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
+        "sha256": "f6dd75cb124e7db1224ab9f35c4273c4469464e0f14ac36b4ec6fbfcd5380cb5"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
+        "sha256": "e40afc5ae89cdb482467ced9bdca55ed5ce8aad690b5dd648dedb7e64f9f9650"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/041-air-jm-right-spaced.png",
+        "sha256": "922ca6e1397c90865c513a5ee022fcab6f54d25630f21fcdf3c3019e9ace3088"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/042-air-jm-left-spaced.png",
+        "sha256": "af39b7568c24d53e5b2834932553f651e747ec4cf2e9db936c862562b8e56ae8"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
+        "sha256": "f5ac5871db20a4bb8dd4512538979fa6bd75b0b032afaaa5c40032dd5aed04a4"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
+        "sha256": "da38a240b9bdb96b99152ce3d222de3f47ee321d2a902f972dfd37355fe5c5e0"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-5L-native.png",
+        "sha256": "c4e42f89fc367b442ed1cb4ac67cd1bf45868de4cc97cabf072ae5caac0d0cac"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-5M-right-native.png",
+        "sha256": "54a70c307c11f41fc1252174cc863141eef3f10957972774493f9962dddf90d4"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-5M-left-native.png",
+        "sha256": "56de9c7ca3110ed40ec810320788d37305b3f57dd8664b2abae54a0d612181f5"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+        "sha256": "3da7a25a272d0e9398170b2b5fff7f295494a56043336009e2c29ca55268521b"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+        "sha256": "658a0587a4e2ca496c950028569c595bc5fec3ee614d164c760225845d17fee8"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-2L-native.png",
+        "sha256": "ba74a5756a0951847bdf7e78ae90761f131a17d1b63863e31124f51b4420f644"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-2M-right-native.png",
+        "sha256": "5cd1f926dd04d74e139fe88faef820262eec047c2ad266febda6b23f5610d384"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-2M-left-native.png",
+        "sha256": "74ad6714525cbba91bc6ef65c4d3798ce835b339893041b175ee2f40a530e283"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-2H-right-native.png",
+        "sha256": "50cb107f553f54bf7519bd97939046c510f0aebae82223358ddc44ac1d9245d0"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-2H-left-contact-recovery-native.png",
+        "sha256": "ebb4dd8320217091c3bbd8a8e6486231d19cf9b6c959b92d49231eaa419e5456"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-jL-right-native.png",
+        "sha256": "fdb5f6a6dc8e4ca68b9c96a04bdea057748a6ad796b223fb377dd006e8810fb7"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-jL-left-native.png",
+        "sha256": "e3d2bc9e010351e37f9b208d6f8c06f417b9f0475c8bc9c991b578cfc82babc9"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-jM-left-native.png",
+        "sha256": "4d714b5f7f334d22250adfca8231a3abf3fa147dd18c1f5d9b36498f45560388"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-jM-right-native.png",
+        "sha256": "63c91bce12397c460cd8f5a60b41eb0dcb3a02261e819a269db42337c26d8a7f"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-jH-right-native.png",
+        "sha256": "9b48ac15b53a50d62ddea8a77189744352b3fb5661c5366940f77c87836fe199"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-jH-left-startup-native.png",
+        "sha256": "d906629e65873b4fba00377fec0a8f7528e98ce6791b02727f18cc596c9b5501"
+      },
+      {
+        "file": "public/game/sprites/v100/pit/scar/scar-jH-left-contact-recovery-native.png",
+        "sha256": "9b3bb6de48183ddaec9e89268564012d8465d7bec120664b60b7adf1b307fbbe"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png",
+        "sha256": "b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/75100c4c5ea328bed53bbf85eae53308d4f5885b304ca5ed505a857f7206c75c.png",
+        "sha256": "75100c4c5ea328bed53bbf85eae53308d4f5885b304ca5ed505a857f7206c75c"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/5c1f22922acb62a481ace765d088c17acafd5f6290d2bf1b4bcbdafd8b462e70.png",
+        "sha256": "5c1f22922acb62a481ace765d088c17acafd5f6290d2bf1b4bcbdafd8b462e70"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/2eb5851afca29f1752e9e6e52569e604dde12fa10a7a94f8214e56d84ecacc3c.png",
+        "sha256": "2eb5851afca29f1752e9e6e52569e604dde12fa10a7a94f8214e56d84ecacc3c"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/7f369e7b4699a938e6bb9b4852d037a572bfaaceceffbaa762a825fe541b9e1d.png",
+        "sha256": "7f369e7b4699a938e6bb9b4852d037a572bfaaceceffbaa762a825fe541b9e1d"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/8b307ed73e51c864afaf24d13ea4520d6f9c5a28d946d65de7424534dd164711.png",
+        "sha256": "8b307ed73e51c864afaf24d13ea4520d6f9c5a28d946d65de7424534dd164711"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/93998c80935325b6d74b6886ed3a3915f0b39e64b5b5ff81641d6447fe20b85b.png",
+        "sha256": "93998c80935325b6d74b6886ed3a3915f0b39e64b5b5ff81641d6447fe20b85b"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+        "sha256": "6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/14ea113f7631b2a5d49c9978aee36219db375e6d9b97ad8c358dc912102c21ea.png",
+        "sha256": "14ea113f7631b2a5d49c9978aee36219db375e6d9b97ad8c358dc912102c21ea"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/fd76dc521da920bdd9843242ae00ca1d062c4b85119c7eba967980a0d1ba6907.png",
+        "sha256": "fd76dc521da920bdd9843242ae00ca1d062c4b85119c7eba967980a0d1ba6907"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/e97f40300227edea43e44158610f81cf8e259c313701b0651515afaa829fe7cd.png",
+        "sha256": "e97f40300227edea43e44158610f81cf8e259c313701b0651515afaa829fe7cd"
+      },
+      {
+        "file": "public/game/sprites/v44/user-hunters/576b29993ae77b41649bb0ef603640ed1ecd3da8408a737f03e5136b3e0ecdda.png",
+        "sha256": "576b29993ae77b41649bb0ef603640ed1ecd3da8408a737f03e5136b3e0ecdda"
+      }
+    ],
+    "globalSourceSnapshot": {
+      "before": "outputs/qa-v104/source-before-build.json",
+      "beforeSha256": "cd259b8d392208fda80e1f6950b7c22501936d567aa411b3c8ffb869d51db002",
+      "afterBuild": "outputs/qa-v104/source-after-build.json",
+      "afterBuildSha256": "cd259b8d392208fda80e1f6950b7c22501936d567aa411b3c8ffb869d51db002",
+      "files": 897,
+      "bytes": 258609494,
+      "scope": "All app sources, production configuration and public assets consumed by the V100 follow-up. Other historical art is outside this snapshot.",
+      "measuredHelpers": [
+        {
+          "path": "app/game/spriteContact.ts",
+          "bytes": 3886,
+          "sha256": "3267276073ad8e006dfc9e0aa8a1f4c299287d0c2ab9bec9839e4564b4f53a10",
+          "unchangedAfterRecipe": true
+        },
+        {
+          "path": "app/game/hunterSpriteAtlas.ts",
+          "bytes": 32604,
+          "sha256": "be0c4d820b2900708a3391a546269fa1c9bdd6b27f4f9a610d6ed43ce4ad606e",
+          "unchangedAfterRecipe": true
+        }
+      ]
+    },
+    "inspectionReports": [
+      {
+        "path": "outputs/qa-v104/pit-normals-production/inspection-engine.json",
+        "sha256": "84e5f6721228588ecf8108352b02b35b3fb99210c8be3ecbd63c3ffb980c3cb0",
+        "captures": 24
+      },
+      {
+        "path": "outputs/qa-v104/pit-normals-production/inspection-reviewer.json",
+        "sha256": "e9aebc12947f919647391fcc05cd069c98497a0e5ea0e8b8965839f15870403a",
+        "captures": 24
+      }
+    ],
+    "captures": [
+      {
+        "file": "body-match-1-M_F003_2H-left-active.png",
+        "sha256": "3bd5e16081e52bb5e86f9f17fe596e21b80bb04ceab7078aaa2ad94ab78ab53a",
+        "bytes": 1292661,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : silhouette, membres et arme contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F003_2L-left-active.png",
+        "sha256": "9a94a67ccf79097711b3d43599dc174fe109caafad989aade769e7666f4de937",
+        "bytes": 1287615,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : silhouette, membres et arme contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F003_2M-left-active.png",
+        "sha256": "6aff4c545c6b771ac44885c01d00ebe5aaa050316f5d8d552e6d08ea34b42acf",
+        "bytes": 1288859,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : silhouette, membres et arme contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F003_5H-left-active.png",
+        "sha256": "39553122b39e31c8336b49b0fe33053ac4d63d873344d36572c22b4c8145b74d",
+        "bytes": 1295426,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : silhouette, membres et arme contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F003_5L-left-active.png",
+        "sha256": "971627c003fa14d542fee880a0a15d6f6ba073015f2d98f8c97fc752fac43901",
+        "bytes": 1292297,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : silhouette, membres et arme contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F003_5M-left-active.png",
+        "sha256": "bdc4f34c2bbb9d581594b771c54b8a2ee60ad6717321ebdfd9926c0cb96c576c",
+        "bytes": 1291174,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : silhouette, membres et arme contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F003_jH-left-active.png",
+        "sha256": "29c1b93567c887a9d44ad2d319b0e9592fb5fd9acbbf1a62300bc4a68dd57226",
+        "bytes": 1299254,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible : pose aérienne et équipement contenus dans le cadre, sans occultation par le HUD ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F003_jL-left-active.png",
+        "sha256": "04881fef937c0d53f4221bf417599c3ddc9e3b01960f0fb9c68771b2957709b4",
+        "bytes": 1293910,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible : pose aérienne et équipement contenus dans le cadre, sans occultation par le HUD ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F003_jM-left-active.png",
+        "sha256": "c255dfe663bfd40210276848a667a11e2e9bf6dfc5182f90ed7594ecba92690d",
+        "bytes": 1297019,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible : pose aérienne et équipement contenus dans le cadre, sans occultation par le HUD ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F006_2H-right-active.png",
+        "sha256": "0b7044ce2c7fe097365267351ec9c42009f1a9e6b8829cb656d6284f16ede086",
+        "bytes": 1293221,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : appuis, silhouette et arme restent contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F006_2L-right-active.png",
+        "sha256": "8b6e586eed820e18bcb9dbde4e330438e59ea6c8056d54bfc2325fb92b7039f0",
+        "bytes": 1288237,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : appuis, silhouette et arme restent contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F006_2M-right-active.png",
+        "sha256": "30411b26ea46182ce0aacf19d33e7674fcf0036aec3970d698151002507cda4f",
+        "bytes": 1288342,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : appuis, silhouette et arme restent contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F006_5H-right-active.png",
+        "sha256": "62f75b169d0902f436841112e0751c999df6ad4aa17e6a978555f8d0a28cf692",
+        "bytes": 1299299,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : appuis, silhouette et arme restent contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F006_5L-right-active.png",
+        "sha256": "bd46ef1cc18ebb29c14d1d62882310e48f463e016d722685dfd3f5130907cc1e",
+        "bytes": 1293994,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : appuis, silhouette et arme restent contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F006_5M-right-active.png",
+        "sha256": "017b261718dd7479d6010175826cf960e201c4f8a9b5c42d556b78eb78f86b7a",
+        "bytes": 1292447,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible à la taille d’affichage : appuis, silhouette et arme restent contenus dans le Canvas ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F006_jH-right-active.png",
+        "sha256": "1acedba478dd5084d84a4c2c50539335665709e0e9190c379c46079edde08ca1",
+        "bytes": 1293604,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible : pose aérienne et équipement contenus dans le cadre, sans occultation par le HUD ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F006_jL-right-active.png",
+        "sha256": "b6db5f0c67da24dde7c2f52affa649c26a67787e45a483d42ca76280b2d9b2f8",
+        "bytes": 1293270,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible : pose aérienne et équipement contenus dans le cadre, sans occultation par le HUD ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-M_F006_jM-right-active.png",
+        "sha256": "b9bf6bb2e24430f020ea6f9fd60141556d6664256b339032ebe0c76f9fd41e62",
+        "bytes": 1294154,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Aucun défaut certain visible : pose aérienne et équipement contenus dans le cadre, sans occultation par le HUD ; constat statique seulement."
+      },
+      {
+        "file": "body-match-1-source-options.png",
+        "sha256": "bb71b524969620a744c13a7057ef7b8c613eefca01a67dc642ec769c9b816164",
+        "bytes": 248661,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Options lisibles ; groupes de valeurs présents uniquement pour les BODY sélectionnés ; constat statique."
+      },
+      {
+        "file": "body-match-2-M_F003_2H-right-active.png",
+        "sha256": "4e7e5b4da2d501b6104e3de73c5ecf116cdc7183fb389c21d2bbfa36a697c386",
+        "bytes": 1292928,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Scar casqué est entièrement cadré, appui au sol et lame de poignet levée visibles ; Feral garde sa silhouette et son arme distinctes. Aucune coupure ou duplication de membre visible à cette échelle."
+      },
+      {
+        "file": "body-match-2-M_F003_2L-right-active.png",
+        "sha256": "81468c31db0363ed3303da5820a3be3d4d22f882562d24eebdae0e2f22f25435",
+        "bytes": 1289169,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Pose basse de Scar lisible, bras armé prolongé vers la droite, membres et arme dans le cadre ; silhouette de Feral distincte et interface dégagée."
+      },
+      {
+        "file": "body-match-2-M_F003_2M-right-active.png",
+        "sha256": "40b69b5743b719bf4013a89f5bc25db17f54394dca256026aa969f5bc1d5ada1",
+        "bytes": 1288063,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Scar accroupi garde des appuis et une lame basse visibles ; aucun débordement du cadre ni mélange apparent avec le sprite de Feral."
+      },
+      {
+        "file": "body-match-2-M_F003_5H-right-active.png",
+        "sha256": "e1363425e93393061f5295b5fb3dbd6d8e0daf1b802c7f5e285f46c3428e2216",
+        "bytes": 1291672,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Scar en extension haute reste entièrement cadré ; casque, armure et lames sont lisibles, sans membre supplémentaire apparent. Les deux personnages restent séparés du HUD."
+      },
+      {
+        "file": "body-match-2-M_F003_5L-right-active.png",
+        "sha256": "417ea9a0aa543c9beb73d59c47b8226e6dc2e8014c9fe54db24f07291cff2e7c",
+        "bytes": 1291234,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Jab de Scar orienté à droite visible avec bras et lames continus à cette échelle ; pieds au sol et silhouette distincte de Feral, aucune coupure visible."
+      },
+      {
+        "file": "body-match-2-M_F003_5M-right-active.png",
+        "sha256": "f22bb3c6f7f8d864a77c23fd8b9f824112cc2071b75f21472d907e5697712d61",
+        "bytes": 1291667,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Revers de Scar lisible en profil, lames et bras dans le cadre ; silhouette native armurée conservée, sans chevauchement d'interface."
+      },
+      {
+        "file": "body-match-2-M_F003_jH-right-active.png",
+        "sha256": "057a179b84c8ed92b2c515b4c9bdad09767cd47f341b3b50688128f913bf5648",
+        "bytes": 1292371,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Pose aérienne diagonale de Scar entière dans la scène ; casque, jambes repliées et lames visibles sans rognage ni contact avec le HUD."
+      },
+      {
+        "file": "body-match-2-M_F003_jL-right-active.png",
+        "sha256": "c4891178c83f32c22d6961c27f756b5c999c2d1c3baea67afe4b256ce7f305f6",
+        "bytes": 1289674,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Scar aérien compact conserve une silhouette unique et ses membres repliés visibles ; arme et personnage restent dans le cadre, distincts du décor."
+      },
+      {
+        "file": "body-match-2-M_F003_jM-right-active.png",
+        "sha256": "6862205b7325707afa05f8cd089643e07d841177bb548ade25bfd71e067f0ff4",
+        "bytes": 1293092,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Coupe aérienne de Scar orientée à droite lisible : bras armé tendu, jambes repliées, corps entièrement cadré ; aucune pièce de costume Feral apparente."
+      },
+      {
+        "file": "body-match-2-M_F006_2H-left-active.png",
+        "sha256": "e967a0892cc3ee96f67a3a740a3bd16937134c2e2a7a18535746acd50158618e",
+        "bytes": 1293692,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Feral orienté à gauche, bras et lame levés ; crâne clair, peau et dreadlocks le distinguent de Scar. Corps et arme entièrement cadrés, appuis visibles."
+      },
+      {
+        "file": "body-match-2-M_F006_2L-left-active.png",
+        "sha256": "6e0a83a9e363735d86a75b6e7d59d82bc1d3534daca1d482d853ba78a1e41954",
+        "bytes": 1289269,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Pose accroupie de Feral avec lame basse orientée à gauche lisible ; pas de rognage ni substitution visible par le sprite armuré de Scar."
+      },
+      {
+        "file": "body-match-2-M_F006_2M-left-active.png",
+        "sha256": "745c6505a955443f81bbe29292811f8a5b98fae01b46015dc5f96a7fa84f8962",
+        "bytes": 1288042,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Balayage bas de Feral visible avec jambe étendue à gauche et buste replié, tout le corps dans le cadre ; Scar conserve sa silhouette opposée."
+      },
+      {
+        "file": "body-match-2-M_F006_5H-left-active.png",
+        "sha256": "32c23ab8ac1e033c23e520354f90a1eb900ad25410371d2a28e3d295fbb845e7",
+        "bytes": 1302774,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Feral pousse son bouclier à gauche, avec bras arrière et lames visibles ; pieds, bouclier et tête restent dans le cadre, sans fusion apparente avec Scar."
+      },
+      {
+        "file": "body-match-2-M_F006_5L-left-active.png",
+        "sha256": "f10fcea1e5bce8fa206a37f45820941f0ecc59a7b24a28d4241e177871f57329",
+        "bytes": 1294801,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Jab de Feral orienté à gauche lisible, bras armé et jambes cohérents à cette échelle ; silhouette nue et casque clair distincts de Scar."
+      },
+      {
+        "file": "body-match-2-M_F006_5M-left-active.png",
+        "sha256": "5b52ec0031a8ed93fea22b2d720d7cb2e2da1684c233a3ef6b10755259f75135",
+        "bytes": 1293007,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Revers de Feral avec lames tendues à gauche et appuis séparés visibles ; aucun rognage de l'arme, du crâne ou des pieds."
+      },
+      {
+        "file": "body-match-2-M_F006_jH-left-active.png",
+        "sha256": "cd70c8dcb7cc00b9accb72d3e4b8005817d8971e651a59ca40cc1d2ee83ccac7",
+        "bytes": 1295959,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Feral aérien orienté à gauche entièrement cadré, jambes repliées, lames basses et bouclier dorsal visibles ; HUD et bord du cadre dégagés."
+      },
+      {
+        "file": "body-match-2-M_F006_jL-left-active.png",
+        "sha256": "63e7e0bda5a97defaf3f9696021aeb3dfb9596555cb023676ae02ed566934af3",
+        "bytes": 1295032,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Pose aérienne compacte de Feral lisible près du sol, avec jambes repliées et armes distinctes ; aucun rognage visible du corps."
+      },
+      {
+        "file": "body-match-2-M_F006_jM-left-active.png",
+        "sha256": "4bd5be683916a5dfa4928ac7db09481cbd6df8e7721ef5d564e73a41f92193d6",
+        "bytes": 1296262,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Feral en coupe aérienne diagonale vers la gauche garde membres, lames et bouclier dans le cadre ; silhouette opposée de Scar inchangée sur cette image."
+      },
+      {
+        "file": "body-match-2-source-options.png",
+        "sha256": "22b0f2acf8dda0fb4849fa32e0b2e3315d7b06ba416148b6079215afc9d97a06",
+        "bytes": 248562,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Panneau Options lisible dans la zone visible : option du classeur cochée et tableaux BODY Scar puis Feral affichés avec neuf attaques chacun. Fermeture visible, texte sans chevauchement ; bas du panneau hors portion visible."
+      },
+      {
+        "file": "mixed-body-1-costume-2-M_F006_5L-right-active.png",
+        "sha256": "1f7799258e1b5e2fdece14dfe56730ef9ed14668475c2071552b823fad2025d9",
+        "bytes": 1293376,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "BODY Feral et costume Scar distincts et contenus ; cette image ne certifie aucune nouvelle animation du costume."
+      },
+      {
+        "file": "mixed-body-1-costume-2-source-options.png",
+        "sha256": "5b46be13539bd28975146b50aa38b5b7e06d0421603b821d40f778a85ed97065",
+        "bytes": 257754,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Options lisibles ; groupes de valeurs présents uniquement pour les BODY sélectionnés ; constat statique."
+      },
+      {
+        "file": "mixed-body-1-costume-2.png",
+        "sha256": "bf26e1e3f26685ce6b3633356f91e5a934b0e48b87bbffa4d98e88bc85127a57",
+        "bytes": 1291384,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "BODY Feral et costume Scar distincts et contenus ; cette image ne certifie aucune nouvelle animation du costume."
+      },
+      {
+        "file": "mixed-body-2-costume-1-M_F003_5L-left-active.png",
+        "sha256": "8ed46bac3546a64a54e1756f2429abc683bd679da221fa49eaa295074c36b4a8",
+        "bytes": 1295625,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Match mixte : Scar BODY à droite exécute son jab vers la gauche ; Feral à gauche conserve une silhouette de costume distincte. Les deux corps et lames sont dans le cadre, sans remplacement apparent par l'autre apparence."
+      },
+      {
+        "file": "mixed-body-2-costume-1-source-options.png",
+        "sha256": "a633c26cc8d990e5e6a4511375b106ad701f6338729bd75f33766c5c35f824d5",
+        "bytes": 257904,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Options du match mixte affichent uniquement le tableau Scar apparence BODY ; Feral n'a pas de tableau BODY visible. Option cochée, texte et contrôle de fermeture lisibles, sans chevauchement dans la portion affichée."
+      },
+      {
+        "file": "mixed-body-2-costume-1.png",
+        "sha256": "1015d5f83fe25e56c6ebcf2ac411deff3c1f833b8adc68d10f6632ccd24b0371",
+        "bytes": 1295204,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Match mixte cadré avec Feral costume à gauche et Scar BODY armuré à droite, deux silhouettes distinctes et entières. L'image statique montre les apparences conservées ; elle ne démontre pas le mouvement du costume."
+      },
+      {
+        "file": "native-duel-mobile-pause.png",
+        "sha256": "3296e50231cad2c455a40c4f50c3e1b89142d55f0ae435235dc5bbce1d2bd497",
+        "bytes": 132742,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Pause lisible et commandes contenues dans390px ; constat statique, sans essai tactile."
+      },
+      {
+        "file": "native-duel-mobile.png",
+        "sha256": "3afe83ba3edca14acbed542388c7edf4404b6d88deeb3ca6cd2df64cb8ea8ae8",
+        "bytes": 156410,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "pit_normals_v104",
+        "conclusion": "Canvas et HUD contenus dans390px, avec bandes noires et personnages réduits par le cadrage fixe ; constat statique, sans qualification tactile."
+      },
+      {
+        "file": "supplied-1-feral-hunter.png",
+        "sha256": "bf00fc0a5311a55ac1dfbf4ae617112ecee04e0ef49de5c82d773362cb337eba",
+        "bytes": 1287776,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Feral costume à gauche et Scar costume armuré à droite restent distincts et entièrement cadrés ; visages, membres et équipements visibles sans rognage. Les commandes basses sont dans le cadre. Cette image seule ne démontre pas une animation du costume."
+      },
+      {
+        "file": "supplied-1-scar.png",
+        "sha256": "6d2ebd64eaa62515c1169301c63bd017061832bb9d5cb9498fb581394b878028",
+        "bytes": 1287279,
+        "inspection": "PASS_CIBLE_STATIQUE",
+        "openedByReviewer": true,
+        "openedWith": "view_image",
+        "reviewer": "v104_compat_review",
+        "conclusion": "Scar costume à gauche et Feral costume à droite ont des silhouettes distinctes et entières, sans substitution apparente par une pose BODY ; HUD et commandes basses visibles. Aucun défaut anatomique grossier ou rognage constaté à cette échelle."
+      }
+    ]
+  },
+  "limits": [
+    "Timings, base damage, guard height and the2H anti-air flag follow the extracted source. Range, physical boxes, power, stun, pushback and combo rules remain existing engine adaptations. No full-kit, balancing or lore-fidelity certification is claimed.",
+    "The18 actions reuse admitted V100/V59 drawings;108 phase clips are not108 new drawings. Supplied costumes and other characters retain their existing behavior.",
+    "Browser journeys use fresh browser storage and public local-versus controls, without campaign/actor injection. Contact/guard damage contracts are covered by model tests; these separated-actor image journeys mainly exercise whiffs.",
+    "Static capture inspection cannot establish motion continuity, fine anatomical detail, full lore fidelity or physical mobile touch behavior. The390px viewport remains letterboxed and its fighters are small.",
+    "The browser costume matrix covers one supplied appearance per fighter in both directions plus2 mixed opt-in fights. It does not certify new costume animations.",
+    "Read-only expected-pivot measurement includes the renderer’s bounded native-alpha contact offset; tolerance is unchanged. The raw-pivot-assumption run is retained separately and excluded from this proof.",
+    "The60-file local recipe manifest is complemented by the global897-file build snapshot for spriteContact.ts and hunterSpriteAtlas.ts; the root consolidated validation records the full final post-recipe snapshot.",
+    "Local compiled build and localhost native-image delivery are proven; this report does not certify Vercel/CDN delivery, a whole campaign, or all remaining mechanics."
+  ],
+  "excludedRuns": [
+    "outputs/qa-v104/pit-normals-dev",
+    "outputs/qa-v104/pit-normals-dev-final",
+    "outputs/qa-v104/pit-normals-dev-v12",
+    "outputs/qa-v104/pit-normals-production-rejected-raw-pivot"
+  ]
+}

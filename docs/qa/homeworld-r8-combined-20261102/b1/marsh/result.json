@@ -1,0 +1,1531 @@
+{
+  "schemaVersion": 1,
+  "release": "V113",
+  "domain": "Homeworld marsh ground joints V113",
+  "completeRecipe": false,
+  "status": "PASS_TARGETED_COMPILED_APP",
+  "phase": "after",
+  "baseUrl": "http://127.0.0.1:3108",
+  "production": {
+    "mode": "compiled-app",
+    "runtimeCommit": "a83d23911ad4b5370494de0ca0bb025bd1d89449",
+    "buildId": "wUnrV1ggo6EZPYklVbGCp",
+    "servedBuilds": [
+      {
+        "scenario": "central",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "central",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "rampart-upper-end",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "rampart-upper-end",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "rampart-lower-end",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "rampart-lower-end",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "dock-upper-end",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "dock-upper-end",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "dock-lower-end",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "dock-lower-end",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "central-mobile",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "central-mobile",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "cross-rampart-upper",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "cross-rampart-upper",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "cross-rampart-lower",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "cross-rampart-lower",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "cross-dock-road",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "cross-dock-road",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "marsh-watch-return",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "marsh-watch-return",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "dock-door",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "scenario": "dock-door",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      }
+    ]
+  },
+  "driver": {
+    "file": "scripts/qa-homeworld-marsh-ground-joints-v113.mjs",
+    "bytes": 16875,
+    "sha256": "16a6f92f2b43128dc5a8e89058ce77c109ca63124aa4e7781e1e316098cc0282"
+  },
+  "invocation": {
+    "command": "node scripts/qa-homeworld-marsh-ground-joints-v113.mjs",
+    "environment": {
+      "YAUTJA_QA_MODE": "compiled-app",
+      "YAUTJA_QA_BASE_URL": "http://127.0.0.1:3108",
+      "YAUTJA_QA_BUILD_ID": "wUnrV1ggo6EZPYklVbGCp",
+      "YAUTJA_QA_RUNTIME_COMMIT": "a83d23911ad4b5370494de0ca0bb025bd1d89449",
+      "YAUTJA_MARSH_PHASE": "after",
+      "YAUTJA_MARSH_OUTPUT": "/tmp/homeworld-marsh-r8-b1-20261102"
+    }
+  },
+  "scope": "Bounded comparison at six declared cameras, three real fissure crossings/returns (old-layout refusal expected only in before), native marsh-watch return and Worker-guided dock-door entry/exit. Initial checkpoints are explicit fixtures. This is not a complete Homeworld campaign or V112 production certificate; no artwork validated status.",
+  "sourceObservationScope": "Five local application/fixture inputs plus this driver are fingerprinted. This is not the complete served runtime inventory. In before, these local V113 comparison inputs are not claimed as the separately identified baseline server sources.",
+  "sourceBefore": [
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25627,
+      "sha256": "b616e13d21e118804c776446bf85b366d1c9b92093cdd48e6985d449ad86c40f"
+    },
+    {
+      "file": "app/game/systems/homeworldWorldV77.ts",
+      "bytes": 36518,
+      "sha256": "e9f6da87934bdfab044a17b5d3ea46f3d16bfe5dab998c36021f699cfc6585de"
+    },
+    {
+      "file": "app/game/systems/homeworldMarshGroundJointsV113.ts",
+      "bytes": 11068,
+      "sha256": "8f2fb324502bed8221373da485f0b07500820ba0f7fbd22bdb8fec94f34eed21"
+    },
+    {
+      "file": "app/game/systems/homeworldGeometryRecoveryV112.ts",
+      "bytes": 23508,
+      "sha256": "52b9a63831661b90bace0047a63ab98b95249b19d9c6b54f4d5fdf9221c70c69"
+    },
+    {
+      "file": "tests/helpers/solo-v67-campaign-route.mjs",
+      "bytes": 1270,
+      "sha256": "50dc9c5ddbd91306cca8fc6bf1eebca9829cd46242cbe78f254c87f738e6c411"
+    },
+    {
+      "file": "scripts/qa-homeworld-marsh-ground-joints-v113.mjs",
+      "bytes": 16875,
+      "sha256": "16a6f92f2b43128dc5a8e89058ce77c109ca63124aa4e7781e1e316098cc0282"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25627,
+      "sha256": "b616e13d21e118804c776446bf85b366d1c9b92093cdd48e6985d449ad86c40f"
+    },
+    {
+      "file": "app/game/systems/homeworldWorldV77.ts",
+      "bytes": 36518,
+      "sha256": "e9f6da87934bdfab044a17b5d3ea46f3d16bfe5dab998c36021f699cfc6585de"
+    },
+    {
+      "file": "app/game/systems/homeworldMarshGroundJointsV113.ts",
+      "bytes": 11068,
+      "sha256": "8f2fb324502bed8221373da485f0b07500820ba0f7fbd22bdb8fec94f34eed21"
+    },
+    {
+      "file": "app/game/systems/homeworldGeometryRecoveryV112.ts",
+      "bytes": 23508,
+      "sha256": "52b9a63831661b90bace0047a63ab98b95249b19d9c6b54f4d5fdf9221c70c69"
+    },
+    {
+      "file": "tests/helpers/solo-v67-campaign-route.mjs",
+      "bytes": 1270,
+      "sha256": "50dc9c5ddbd91306cca8fc6bf1eebca9829cd46242cbe78f254c87f738e6c411"
+    },
+    {
+      "file": "scripts/qa-homeworld-marsh-ground-joints-v113.mjs",
+      "bytes": 16875,
+      "sha256": "16a6f92f2b43128dc5a8e89058ce77c109ca63124aa4e7781e1e316098cc0282"
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "central",
+      "point": {
+        "x": 6473,
+        "y": 2800
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "rampart-upper-end",
+      "point": {
+        "x": 6300,
+        "y": 2200
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "rampart-lower-end",
+      "point": {
+        "x": 6300,
+        "y": 3350
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "dock-upper-end",
+      "point": {
+        "x": 6500,
+        "y": 2500
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "dock-lower-end",
+      "point": {
+        "x": 6500,
+        "y": 3120
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "central-mobile",
+      "point": {
+        "x": 6473,
+        "y": 2800
+      },
+      "levelId": "0",
+      "width": 390,
+      "height": 844,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "cross-rampart-upper",
+      "point": {
+        "x": 6175,
+        "y": 2500
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "cross-rampart-lower",
+      "point": {
+        "x": 6175,
+        "y": 3250
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "cross-dock-road",
+      "point": {
+        "x": 6600,
+        "y": 2700
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "marsh-watch-return",
+      "point": {
+        "x": 6375,
+        "y": 2600
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "dock-door",
+      "point": {
+        "x": 6473,
+        "y": 2800
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    }
+  ],
+  "responses": [
+    {
+      "scenario": "central",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "central",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "rampart-upper-end",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "rampart-upper-end",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "rampart-lower-end",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "rampart-lower-end",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "dock-upper-end",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "dock-upper-end",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "dock-lower-end",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "dock-lower-end",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "central-mobile",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "central-mobile",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "cross-rampart-upper",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "cross-rampart-upper",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "cross-rampart-lower",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "cross-rampart-lower",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "cross-dock-road",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "cross-dock-road",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "marsh-watch-return",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "marsh-watch-return",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "dock-door",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "scenario": "dock-door",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "central restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6473,
+          "y": 2800
+        },
+        "actual": {
+          "x": 6473,
+          "y": 2800
+        }
+      }
+    },
+    {
+      "name": "central mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "central actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "rampart-upper-end restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6300,
+          "y": 2200
+        },
+        "actual": {
+          "x": 6300,
+          "y": 2200
+        }
+      }
+    },
+    {
+      "name": "rampart-upper-end mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "rampart-upper-end actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "rampart-lower-end restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6300,
+          "y": 3350
+        },
+        "actual": {
+          "x": 6300,
+          "y": 3350
+        }
+      }
+    },
+    {
+      "name": "rampart-lower-end mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "rampart-lower-end actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "dock-upper-end restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6500,
+          "y": 2500
+        },
+        "actual": {
+          "x": 6500,
+          "y": 2500
+        }
+      }
+    },
+    {
+      "name": "dock-upper-end mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "dock-upper-end actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "dock-lower-end restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6500,
+          "y": 3120
+        },
+        "actual": {
+          "x": 6500,
+          "y": 3120
+        }
+      }
+    },
+    {
+      "name": "dock-lower-end mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "dock-lower-end actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "central-mobile restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6473,
+          "y": 2800
+        },
+        "actual": {
+          "x": 6473,
+          "y": 2800
+        }
+      }
+    },
+    {
+      "name": "central-mobile mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "central-mobile actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-rampart-upper restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6175,
+          "y": 2500
+        },
+        "actual": {
+          "x": 6175,
+          "y": 2500
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-upper mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "cross-rampart-upper actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-rampart-upper actual physical crossing follows served geometry",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "start": {
+          "x": 6175,
+          "y": 2500
+        },
+        "target": {
+          "x": 6080,
+          "y": 2500
+        },
+        "outward": {
+          "x": 6085,
+          "y": 2500,
+          "arrived": true,
+          "steps": 25
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-upper native return reaches the original side",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6175,
+          "y": 2500
+        },
+        "returned": {
+          "x": 6170,
+          "y": 2500,
+          "arrived": true,
+          "steps": 23
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-upper actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-rampart-lower restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6175,
+          "y": 3250
+        },
+        "actual": {
+          "x": 6175,
+          "y": 3250
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-lower mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "cross-rampart-lower actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-rampart-lower actual physical crossing follows served geometry",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "start": {
+          "x": 6175,
+          "y": 3250
+        },
+        "target": {
+          "x": 6050,
+          "y": 3250
+        },
+        "outward": {
+          "x": 6054,
+          "y": 3250,
+          "arrived": true,
+          "steps": 37
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-lower native return reaches the original side",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6175,
+          "y": 3250
+        },
+        "returned": {
+          "x": 6170,
+          "y": 3250,
+          "arrived": true,
+          "steps": 34
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-lower actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-dock-road restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6600,
+          "y": 2700
+        },
+        "actual": {
+          "x": 6600,
+          "y": 2700
+        }
+      }
+    },
+    {
+      "name": "cross-dock-road mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "cross-dock-road actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-dock-road actual physical crossing follows served geometry",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "start": {
+          "x": 6600,
+          "y": 2700
+        },
+        "target": {
+          "x": 6750,
+          "y": 2700
+        },
+        "outward": {
+          "x": 6748,
+          "y": 2700,
+          "arrived": true,
+          "steps": 40
+        }
+      }
+    },
+    {
+      "name": "cross-dock-road native return reaches the original side",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6600,
+          "y": 2700
+        },
+        "returned": {
+          "x": 6605,
+          "y": 2700,
+          "arrived": true,
+          "steps": 41
+        }
+      }
+    },
+    {
+      "name": "cross-dock-road actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "marsh-watch-return restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6375,
+          "y": 2600
+        },
+        "actual": {
+          "x": 6375,
+          "y": 2600
+        }
+      }
+    },
+    {
+      "name": "marsh-watch-return mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "marsh-watch-return actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "real marsh-watch lane outward traversal",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6375,
+          "y": 2600
+        },
+        "there": {
+          "x": 6375,
+          "y": 2796
+        }
+      }
+    },
+    {
+      "name": "real marsh-watch lane return traversal",
+      "status": "PASS"
+    },
+    {
+      "name": "marsh-watch-return actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "dock-door restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6473,
+          "y": 2800
+        },
+        "actual": {
+          "x": 6473,
+          "y": 2800
+        }
+      }
+    },
+    {
+      "name": "dock-door mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "dock-door actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "real Worker reaches the retained dock door",
+      "status": "PASS",
+      "detail": {
+        "walked": 787.9467928051331,
+        "steps": 161,
+        "actor": {
+          "x": 6988,
+          "y": 3028
+        }
+      }
+    },
+    {
+      "name": "dock-door actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "real E enters retained dock-control interior",
+      "status": "PASS"
+    },
+    {
+      "name": "dock-door actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "retained dock exit is actually reachable",
+      "status": "PASS"
+    },
+    {
+      "name": "real E returns through the retained dock door",
+      "status": "PASS"
+    },
+    {
+      "name": "dock-door actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "no page error",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "no console.error",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "no Worker error",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "no failed request",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "no HTTP error",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "captures": [
+    {
+      "file": "central-camera.png",
+      "bytes": 1890975,
+      "sha256": "fa9a734cd7f9fc1a33c4d738132e31ed3ebde63b3bd53531da061a4d486c5f89",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5105.7px, -902.913px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6473,
+        "y": 2800
+      }
+    },
+    {
+      "file": "rampart-upper-end-camera.png",
+      "bytes": 2135746,
+      "sha256": "4f386780fb752c7f1cb6039a414d1a8d3f95dad3cdcc1fe639740ed269f1b493",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4950px, -593.181px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6300,
+        "y": 2200
+      }
+    },
+    {
+      "file": "rampart-lower-end-camera.png",
+      "bytes": 1738760,
+      "sha256": "df053f14d89bf1dafbe249b939b8dc24b63ec17a1fe7de23561d12b581ced54a",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4950px, -1186.83px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6300,
+        "y": 3350
+      }
+    },
+    {
+      "file": "dock-upper-end-camera.png",
+      "bytes": 2052722,
+      "sha256": "4492b117823ded807365b280a382b7e52bc39fa06232bf02e1a10f6831679eb1",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5130px, -748.047px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6500,
+        "y": 2500
+      }
+    },
+    {
+      "file": "dock-lower-end-camera.png",
+      "bytes": 1775296,
+      "sha256": "7923fce81428e0b3cc61309e74fae0364d47ef4c6498764b495584306c3b1eae",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5130px, -1068.1px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6500,
+        "y": 3120
+      }
+    },
+    {
+      "file": "central-mobile-camera.png",
+      "bytes": 361776,
+      "sha256": "7b03e211148a56884ee0dedd1fe9969f5a4a66a8eb4be94f62ca10486610eaca",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5630.7px, -1065.97px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6473,
+        "y": 2800
+      }
+    },
+    {
+      "file": "cross-rampart-upper-camera.png",
+      "bytes": 1935676,
+      "sha256": "4be89f3de4283b6d004fd2bb01adea1653b427b12bfaef87383bb4feda9be032",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4837.5px, -748.047px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6175,
+        "y": 2500
+      }
+    },
+    {
+      "file": "cross-rampart-upper-returned.png",
+      "bytes": 1853285,
+      "sha256": "c4ebe073e7dbaaad1d7e9a1e52798b7cb3e1065921b5a61a8b5a1510f8d9e9e0",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4832.75px, -748.047px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6170,
+        "y": 2500
+      }
+    },
+    {
+      "file": "cross-rampart-lower-camera.png",
+      "bytes": 1733803,
+      "sha256": "b3dc50ea88921266d76cec84aea1c18230a799a6d853a14067d4f9f577cb938d",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4837.5px, -1135.21px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6175,
+        "y": 3250
+      }
+    },
+    {
+      "file": "cross-rampart-lower-returned.png",
+      "bytes": 1682457,
+      "sha256": "aa2bb53d97eb4d0d38bd2a95c45864484d42325e7987159e045b7f09fa74e2db",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4832.75px, -1135.21px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6170,
+        "y": 3250
+      }
+    },
+    {
+      "file": "cross-dock-road-camera.png",
+      "bytes": 1953796,
+      "sha256": "3da2ed010f715b288d2a21cae0c1f6f2703f20a5141921a3db0520e07f54491a",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5220px, -851.291px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6600,
+        "y": 2700
+      }
+    },
+    {
+      "file": "cross-dock-road-returned.png",
+      "bytes": 1797606,
+      "sha256": "0d146bc7aa959528beab8233f78ac29eee67026afe595f12af5ac3b5b09b7338",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5224.75px, -851.291px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6605,
+        "y": 2700
+      }
+    },
+    {
+      "file": "marsh-watch-return-camera.png",
+      "bytes": 1981370,
+      "sha256": "8541d173ae81a347b7c7e4602acdf19115d4f1a6f1f2752ceb12b242e5f39035",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5017.5px, -799.669px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6375,
+        "y": 2600
+      }
+    },
+    {
+      "file": "marsh-watch-return-returned.png",
+      "bytes": 1931707,
+      "sha256": "33472f4630ddcc2cde52064060bbdd2fd088a3747bb5e74a5416a578fa470bd2",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5017.5px, -801.816px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6375,
+        "y": 2604
+      }
+    },
+    {
+      "file": "dock-door-camera.png",
+      "bytes": 1890975,
+      "sha256": "fa9a734cd7f9fc1a33c4d738132e31ed3ebde63b3bd53531da061a4d486c5f89",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5105.7px, -902.913px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6473,
+        "y": 2800
+      }
+    },
+    {
+      "file": "dock-door-door-approach.png",
+      "bytes": 1954356,
+      "sha256": "267486e475a86bb396ec97994e0561f4ba59a715ae776bda79a3d3918f67dbcc",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5569.05px, -1020.85px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6988,
+        "y": 3028
+      }
+    },
+    {
+      "file": "dock-door-entered.png",
+      "bytes": 518684,
+      "sha256": "4e6fc12c6f9c0bcf3c456815b22c1cdc6b50d0652f74e6fa3fbfdb10d8f0170b",
+      "camera": {
+        "zoom": "1.350",
+        "style": "pointer-events: none; width: 538px; height: 176.662px; transform: translate(356.85px, 404.653px) scale(1.35);"
+      },
+      "actor": {
+        "x": 269,
+        "y": 236
+      }
+    },
+    {
+      "file": "dock-door-returned-outside.png",
+      "bytes": 1954417,
+      "sha256": "7008cf4184b4a700d14ec603dfb21318664efc4bf9de65b0e57a64da86908d7a",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5569.05px, -1020.85px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6988,
+        "y": 3028
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "workerErrors": [],
+  "requestsFailed": [],
+  "httpErrors": [],
+  "failure": null
+}

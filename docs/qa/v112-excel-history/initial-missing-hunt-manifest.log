@@ -1,0 +1,1072 @@
+file:///workspace/yautja-la-longue-chasse/scripts/lib/historical-excel-context.mjs:85
+    catch (error) {throw new Error('Original ' + release + ' assertions failed:\n' + String(error.stdout ?? '') + String(error.stderr ?? ''), {cause: error});}
+                         ^
+
+Error: Original V111 assertions failed:
+TAP version 13
+# Subtest: V110 preimages are copied privately and later tampering fails the original freeze
+ok 1 - V110 preimages are copied privately and later tampering fails the original freeze
+  ---
+  duration_ms: 14.063372
+  type: 'test'
+  ...
+# Subtest: a wrong Git blob, escaping path or symlink cannot overwrite a source
+ok 2 - a wrong Git blob, escaping path or symlink cannot overwrite a source
+  ---
+  duration_ms: 3.137996
+  type: 'test'
+  ...
+# Subtest: all original V110 assertion files and changed preimages have explicit Git identities
+ok 3 - all original V110 assertion files and changed preimages have explicit Git identities
+  ---
+  duration_ms: 0.280223
+  type: 'test'
+  ...
+# Subtest: a refused purchase acknowledgement never announces acquisition or grants a tool
+ok 4 - a refused purchase acknowledgement never announces acquisition or grants a tool
+  ---
+  duration_ms: 38.17582
+  type: 'test'
+  ...
+# Subtest: the same pre-render purchase closure reads the updated ref and debits exactly once
+ok 5 - the same pre-render purchase closure reads the updated ref and debits exactly once
+  ---
+  duration_ms: 11.011872
+  type: 'test'
+  ...
+# Subtest: the UI refuses unknown tools or insufficient funds before persistence
+ok 6 - the UI refuses unknown tools or insufficient funds before persistence
+  ---
+  duration_ms: 24.751458
+  type: 'test'
+  ...
+# Subtest: a pending purchase reconciles the exact inventory and profile without a second primary write
+ok 7 - a pending purchase reconciles the exact inventory and profile without a second primary write
+  ---
+  duration_ms: 21.700128
+  type: 'test'
+  ...
+# Subtest: pending updates with identical balances but different inventory cannot be mistaken for the same purchase
+ok 8 - pending updates with identical balances but different inventory cannot be mistaken for the same purchase
+  ---
+  duration_ms: 19.357511
+  type: 'test'
+  ...
+# Subtest: an unresolved pending write or another campaign transaction cannot falsely confirm acquisition
+ok 9 - an unresolved pending write or another campaign transaction cannot falsely confirm acquisition
+  ---
+  duration_ms: 69.210768
+  type: 'test'
+  ...
+# Subtest: a field tool is purchased once with clan marks and does not use either charged gear slot
+ok 10 - a field tool is purchased once with clan marks and does not use either charged gear slot
+  ---
+  duration_ms: 3.105059
+  type: 'test'
+  ...
+# Subtest: unknown tools, invalid balances and insufficient funds never grant or debit anything
+ok 11 - unknown tools, invalid balances and insufficient funds never grant or debit anything
+  ---
+  duration_ms: 0.754821
+  type: 'test'
+  ...
+# Subtest: save normalization preserves a purchased tool, deduplicates it, and grants none to older campaigns
+ok 12 - save normalization preserves a purchased tool, deduplicates it, and grants none to older campaigns
+  ---
+  duration_ms: 13.76289
+  type: 'test'
+  ...
+# Subtest: the real runtime only unlocks flaying with a purchased tool and keeps suspension locked
+ok 13 - the real runtime only unlocks flaying with a purchased tool and keeps suspension locked
+  ---
+  duration_ms: 1.653453
+  type: 'test'
+  ...
+# Subtest: damage or departure cancels flaying; pause preserves its exact unfinished progress
+ok 14 - damage or departure cancels flaying; pause preserves its exact unfinished progress
+  ---
+  duration_ms: 0.220655
+  type: 'test'
+  ...
+# Subtest: marked and flayed discoveries retain their actual different fear through checkpoint restore
+ok 15 - marked and flayed discoveries retain their actual different fear through checkpoint restore
+  ---
+  duration_ms: 1.361153
+  type: 'test'
+  ...
+# Subtest: legacy marks restore without a tool or invented historic corpses
+ok 16 - legacy marks restore without a tool or invented historic corpses
+  ---
+  duration_ms: 0.307182
+  type: 'test'
+  ...
+# Subtest: an unfinished flaying gesture only resumes under the same real owner with the tool
+ok 17 - an unfinished flaying gesture only resumes under the same real owner with the tool
+  ---
+  duration_ms: 0.307803
+  type: 'test'
+  ...
+# Subtest: V111 opens a later A episode only from a genuinely completed B, preserving the exact original JSON and all source history
+ok 18 - V111 opens a later A episode only from a genuinely completed B, preserving the exact original JSON and all source history
+  ---
+  duration_ms: 4.297421
+  type: 'test'
+  ...
+# Subtest: V111 physically completes edge, mismatch, voluntary reprise and a separately carried candidate, without repeating the two B deposits
+ok 19 - V111 physically completes edge, mismatch, voluntary reprise and a separately carried candidate, without repeating the two B deposits
+  ---
+  duration_ms: 269.78117
+  type: 'test'
+  ...
+# Subtest: V111 refusal guards require the current consenting owner, visible post, fresh revision and a separate new choice and consent
+ok 20 - V111 refusal guards require the current consenting owner, visible post, fresh revision and a separate new choice and consent
+  ---
+  duration_ms: 4.988538
+  type: 'test'
+  ...
+# Subtest: V111 quota, stale/foreign B replacement and impossible movement never mutate either confirmed receipt
+ok 21 - V111 quota, stale/foreign B replacement and impossible movement never mutate either confirmed receipt
+  ---
+  duration_ms: 38.93621
+  type: 'test'
+  ...
+# Subtest: V111 strict imports reject future/forged/unbound episodes and preserve completed B source lines independently
+ok 22 - V111 strict imports reject future/forged/unbound episodes and preserve completed B source lines independently
+  ---
+  duration_ms: 2.15562
+  type: 'test'
+  ...
+# Subtest: V111 a carried candidate survives serialization, interrupt/park/resume and retains the old discovery places
+ok 23 - V111 a carried candidate survives serialization, interrupt/park/resume and retains the old discovery places
+  ---
+  duration_ms: 125.292544
+  type: 'test'
+  ...
+# Subtest: four independent native whole-body PNGs retain their untouched raw bytes and measured alpha registration
+ok 24 - four independent native whole-body PNGs retain their untouched raw bytes and measured alpha registration
+  ---
+  duration_ms: 261.583924
+  type: 'test'
+  ...
+# Subtest: local decorative clock is bounded, suspends without catch-up and never advances while inactive or hidden
+ok 25 - local decorative clock is bounded, suspends without catch-up and never advances while inactive or hidden
+  ---
+  duration_ms: 0.934224
+  type: 'test'
+  ...
+# Subtest: actual drawing renders the entire native canvas at one uniform positive scale with its measured foot pivot
+ok 26 - actual drawing renders the entire native canvas at one uniform positive scale with its measured foot pivot
+  ---
+  duration_ms: 62.663109
+  type: 'test'
+  ...
+# Subtest: situated K-17 preserves physical pieces and only reveals the fragment after the real source reprise
+ok 27 - situated K-17 preserves physical pieces and only reveals the fragment after the real source reprise
+  ---
+  duration_ms: 1727.492459
+  type: 'test'
+  ...
+# Subtest: dialogue portrait reuses the same native component and keeps an honest original fallback before decode
+ok 28 - dialogue portrait reuses the same native component and keeps an honest original fallback before decode
+  ---
+  duration_ms: 52.563928
+  type: 'test'
+  ...
+# Subtest: V111 source note describes the four conversation drawings while the rest of the source UI stays exact
+ok 29 - V111 source note describes the four conversation drawings while the rest of the source UI stays exact
+  ---
+  duration_ms: 1261.644163
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub opens a read-only recovery at the walked exit, then atomically restores and reloads without changing cargo
+ok 30 - V111 actual Hub opens a read-only recovery at the walked exit, then atomically restores and reloads without changing cargo
+  ---
+  duration_ms: 2403.285945
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub rolls every temporary actor/room/level reference back on real quota refusal or a throwing save host
+ok 31 - V111 actual Hub rolls every temporary actor/room/level reference back on real quota refusal or a throwing save host
+  ---
+  duration_ms: 73.901905
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub refuses a delayed confirmation after local movement, owner replacement, pause or changed operation source
+ok 32 - V111 actual Hub refuses a delayed confirmation after local movement, owner replacement, pause or changed operation source
+  ---
+  duration_ms: 134.973013
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub rejects a source draft that would change the documents preserved by the preview
+ok 33 - V111 actual Hub rejects a source draft that would change the documents preserved by the preview
+  ---
+  duration_ms: 25.790947
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub preserves the other tab on a real same-owner storage conflict and leaves the recovery dialog retryable
+ok 34 - V111 actual Hub preserves the other tab on a real same-owner storage conflict and leaves the recovery dialog retryable
+  ---
+  duration_ms: 34.026842
+  type: 'test'
+  ...
+# Subtest: V111: the real603-step legacy trap proposes only its recorded empty-handed exterior point at the walked interior exit
+ok 35 - V111: the real603-step legacy trap proposes only its recorded empty-handed exterior point at the walked interior exit
+  ---
+  duration_ms: 2228.338572
+  type: 'test'
+  ...
+# Subtest: V111: quota failure and throwing storage acknowledgements never consume the restoration or its original documents
+ok 36 - V111: quota failure and throwing storage acknowledgements never consume the restoration or its original documents
+  ---
+  duration_ms: 5.423239
+  type: 'test'
+  ...
+# Subtest: V111: a delayed confirmation rechecks ledger revision, interior pose, owner, pause and live obstacles
+ok 37 - V111: a delayed confirmation rechecks ledger revision, interior pose, owner, pause and live obstacles
+  ---
+  duration_ms: 11.030808
+  type: 'test'
+  ...
+# Subtest: V111: an occupied or distant recorded point, another carrier or an unknown/future document cannot be restored
+ok 38 - V111: an occupied or distant recorded point, another carrier or an unknown/future document cannot be restored
+  ---
+  duration_ms: 6.00877
+  type: 'test'
+  ...
+# Subtest: V111: free ordinary anchors and unwalked interior positions retain the existing exit instead of granting recovery
+ok 39 - V111: free ordinary anchors and unwalked interior positions retain the existing exit instead of granting recovery
+  ---
+  duration_ms: 2.153378
+  type: 'test'
+  ...
+# Subtest: V111: strict backup import rejects forged destination, source revision, owner, shape and future recovery versions
+ok 40 - V111: strict backup import rejects forged destination, source revision, owner, shape and future recovery versions
+  ---
+  duration_ms: 3.097578
+  type: 'test'
+  ...
+# Subtest: V111: one real atomic save retains the original interior checkpoint and all ledgers through load and ordinary egress
+ok 41 - V111: one real atomic save retains the original interior checkpoint and all ledgers through load and ordinary egress
+  ---
+  duration_ms: 11.300595
+  type: 'test'
+  ...
+# Subtest: V111: the real save quota adapter refuses the entire checkpoint/backup pair and leaves the old campaign intact
+ok 42 - V111: the real save quota adapter refuses the entire checkpoint/backup pair and leaves the old campaign intact
+  ---
+  duration_ms: 4.113401
+  type: 'test'
+  ...
+# Subtest: V111: the actual same-owner storage conflict prevents a stale-tab restore despite an unchanged local preview
+ok 43 - V111: the actual same-owner storage conflict prevents a stale-tab restore despite an unchanged local preview
+  ---
+  duration_ms: 3.403096
+  type: 'test'
+  ...
+# Subtest: current354 art families retain their original source IDs and candidate statuses without pretending to be all absent or complete
+ok 44 - current354 art families retain their original source IDs and candidate statuses without pretending to be all absent or complete
+  ---
+  duration_ms: 15.865991
+  type: 'test'
+  ...
+# Subtest: a family candidate, copied native asset or mismatched count cannot be promoted to visual/source completion
+ok 45 - a family candidate, copied native asset or mismatched count cannot be promoted to visual/source completion
+  ---
+  duration_ms: 64.510766
+  type: 'test'
+  ...
+# Subtest: current source bytes and four new PNGs are mandatory; old image repository identity is checked without claiming visual quality
+ok 46 - current source bytes and four new PNGs are mandatory; old image repository identity is checked without claiming visual quality
+  ---
+  duration_ms: 7462.254103
+  type: 'test'
+  ...
+# Subtest: V111 real Save import, write and load preserve B byte-exact across offer, active carry and completed continuation
+ok 47 - V111 real Save import, write and load preserve B byte-exact across offer, active carry and completed continuation
+  ---
+  duration_ms: 617.445924
+  type: 'test'
+  ...
+# Subtest: V111 real Save rejects future, foreign, no-B, mutated-base and unsupported actor/object pairs before writing
+ok 48 - V111 real Save rejects future, foreign, no-B, mutated-base and unsupported actor/object pairs before writing
+  ---
+  duration_ms: 7.943957
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub sampler and onProgress persist the carried candidate with its new checkpoint without changing archived B
+ok 49 - V111 actual Hub sampler and onProgress persist the carried candidate with its new checkpoint without changing archived B
+  ---
+  duration_ms: 63.03388
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub quota refusal freezes new actions without rewriting either durable receipt, then Retry can persist the same episode
+ok 50 - V111 actual Hub quota refusal freezes new actions without rewriting either durable receipt, then Retry can persist the same episode
+  ---
+  duration_ms: 61.986138
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub callbacks refuse replaced owners, stale outer revisions and an old legacy adapter
+ok 51 - V111 actual Hub callbacks refuse replaced owners, stale outer revisions and an old legacy adapter
+  ---
+  duration_ms: 46.527197
+  type: 'test'
+  ...
+# Subtest: V111 continuation UI uses newly played source lines and binds its inner controls to the outer render revision
+ok 52 - V111 continuation UI uses newly played source lines and binds its inner controls to the outer render revision
+  ---
+  duration_ms: 105.618767
+  type: 'test'
+  ...
+# Subtest: V111 actual motor and render gates stop an interrupted carried candidate, despite its archived B being completed
+ok 53 - V111 actual motor and render gates stop an interrupted carried candidate, despite its archived B being completed
+  ---
+  duration_ms: 7.221905
+  type: 'test'
+  ...
+# Subtest: V111 actual interact refuses an available doorway while A carries the fragment and B is completed
+ok 54 - V111 actual interact refuses an available doorway while A carries the fragment and B is completed
+  ---
+  duration_ms: 1216.603492
+  type: 'test'
+  ...
+# Subtest: V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing empty fieldToolIds
+ok 55 - V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing empty fieldToolIds
+  ---
+  duration_ms: 3829.505899
+  type: 'test'
+  ...
+# Subtest: V111 actual V110 client treats a12 campaign as future and cannot drop its new continuation or overwrite its bytes
+ok 56 - V111 actual V110 client treats a12 campaign as future and cannot drop its new continuation or overwrite its bytes
+  ---
+  duration_ms: 818.613379
+  type: 'test'
+  ...
+# Subtest: V111 integrated main keeps a real field-tool purchase through Save11 migration and a quota-refused B to A continuation write
+ok 57 - V111 integrated main keeps a real field-tool purchase through Save11 migration and a quota-refused B to A continuation write
+  ---
+  duration_ms: 5.909503
+  type: 'test'
+  ...
+# Subtest: V111 prelude keeps the first record and K17 controls in the same labelled scrollport through the actual offer and consent
+ok 58 - V111 prelude keeps the first record and K17 controls in the same labelled scrollport through the actual offer and consent
+  ---
+  duration_ms: 15.617825
+  type: 'test'
+  ...
+# Subtest: V111 active and interrupted journals group the continuation counter, first record and current study under one scrollport
+ok 59 - V111 active and interrupted journals group the continuation counter, first record and current study under one scrollport
+  ---
+  duration_ms: 9.623467
+  type: 'test'
+  ...
+# Subtest: V111 evidence: only a complete compiled recipe with every opened PNG can be certified
+ok 60 - V111 evidence: only a complete compiled recipe with every opened PNG can be certified
+  ---
+  duration_ms: 10.209869
+  type: 'test'
+  ...
+# Subtest: V111 evidence: served HTML identity and nested production counters cannot contradict raw execution
+ok 61 - V111 evidence: served HTML identity and nested production counters cannot contradict raw execution
+  ---
+  duration_ms: 1.193385
+  type: 'test'
+  ...
+# Subtest: V111 evidence: unchanged raw observations still refuse changed, absent or unfrozen source bytes
+ok 62 - V111 evidence: unchanged raw observations still refuse changed, absent or unfrozen source bytes
+  ---
+  duration_ms: 9.165863
+  type: 'test'
+  ...
+# Subtest: V111 evidence: original V110 freeze cannot be replaced to authorize different historical native inputs
+ok 63 - V111 evidence: original V110 freeze cannot be replaced to authorize different historical native inputs
+  ---
+  duration_ms: 3.121623
+  type: 'test'
+  ...
+# Subtest: V111 evidence: the recipe freeze follows the real transitive played fixture loaders
+ok 64 - V111 evidence: the recipe freeze follows the real transitive played fixture loaders
+  ---
+  duration_ms: 117.499521
+  type: 'test'
+  ...
+# Subtest: V111 evidence: new native inputs cannot replace old artwork or lose their source receipt
+ok 65 - V111 evidence: new native inputs cannot replace old artwork or lose their source receipt
+  ---
+  duration_ms: 5.205318
+  type: 'test'
+  ...
+# Subtest: V111 preserves its exact 105 sheet baseline, 56 open requirements and 354 art targets as separate inventories
+ok 66 - V111 preserves its exact 105 sheet baseline, 56 open requirements and 354 art targets as separate inventories
+  ---
+  duration_ms: 5502.32448
+  type: 'test'
+  ...
+# Subtest: unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+ok 67 - unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+  ---
+  duration_ms: 5.251885
+  type: 'test'
+  ...
+# Traceback (most recent call last):
+#   File "/tmp/yautja-excel-history-v111-2GuKSv/scripts/build-homeworld-followup-v111.py", line 25, in <module>
+#     json.dump(append.verify_workbook(payload), sys.stdout, ensure_ascii=True)
+#               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#   File "/tmp/yautja-excel-history-v111-2GuKSv/scripts/lib/excel_followup_append.py", line 105, in verify_workbook
+#     assert set(changed) <= ASSEMBLY_PARTS, changed
+#            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# AssertionError: ['[Content_Types].xml', 'xl/_rels/workbook.xml.rels', 'xl/styles.xml', 'xl/workbook.xml', 'xl/worksheets/v110-sheet-98.xml']
+# Subtest: 113 worksheets retain all 105 historical parts, styles, formulas and cells exactly
+ok 68 - 113 worksheets retain all 105 historical parts, styles, formulas and cells exactly
+  ---
+  duration_ms: 6539.013171
+  type: 'test'
+  ...
+# Subtest: a V110 browser recipe cannot be relabelled as V111 validation
+ok 69 - a V110 browser recipe cannot be relabelled as V111 validation
+  ---
+  duration_ms: 5.828885
+  type: 'test'
+  ...
+# Subtest: V111 workbook and metadata regenerate exactly without executing browser or native Excel
+ok 70 - V111 workbook and metadata regenerate exactly without executing browser or native Excel
+  ---
+  duration_ms: 18479.458543
+  type: 'test'
+  ...
+# Subtest: historical art fallback binds the audited bytes to the current regular Git blob, while sparse identity is not visual admission
+ok 71 - historical art fallback binds the audited bytes to the current regular Git blob, while sparse identity is not visual admission
+  ---
+  duration_ms: 8.111763
+  type: 'test'
+  ...
+# Subtest: the certified V110 sources and eight original tests remain private while V111 imports stay current
+ok 72 - the certified V110 sources and eight original tests remain private while V111 imports stay current
+  ---
+  duration_ms: 6912.472007
+  type: 'test'
+  ...
+# Subtest: tampering with private V110 source is rejected without changing the current Homeworld
+ok 73 - tampering with private V110 source is rejected without changing the current Homeworld
+  ---
+  duration_ms: 2353.197151
+  type: 'test'
+  ...
+# Subtest: the V111 Homeworld wrapper executes unchanged V110 doorway assertions and refuses unreviewed tests
+ok 74 - the V111 Homeworld wrapper executes unchanged V110 doorway assertions and refuses unreviewed tests
+  ---
+  duration_ms: 6776.675055
+  type: 'test'
+  ...
+# Subtest: V111 keeps every legacy-only recommendation, landmark and path without saved-state changes
+ok 75 - V111 keeps every legacy-only recommendation, landmark and path without saved-state changes
+  ---
+  duration_ms: 9.667402
+  type: 'test'
+  ...
+# Subtest: V111 actual later choice, reply and consent receive distinct current-objective IDs at the unchanged K17 post
+ok 76 - V111 actual later choice, reply and consent receive distinct current-objective IDs at the unchanged K17 post
+  ---
+  duration_ms: 18.364943
+  type: 'test'
+  ...
+# Subtest: V111 continuation offers do not steal the current objective from another actual in-progress operation
+ok 77 - V111 continuation offers do not steal the current objective from another actual in-progress operation
+  ---
+  duration_ms: 1336.566717
+  type: 'test'
+  ...
+# Subtest: V111 voluntary interruption keeps its real exact stand, three-unit route and stale-result rejection
+ok 78 - V111 voluntary interruption keeps its real exact stand, three-unit route and stale-result rejection
+  ---
+  duration_ms: 67.239993
+  type: 'test'
+  ...
+# Subtest: V111 real failure and return recommend only the next source action, preserving physical legacy IDs and B bytes
+ok 79 - V111 real failure and return recommend only the next source action, preserving physical legacy IDs and B bytes
+  ---
+  duration_ms: 260.000899
+  type: 'test'
+  ...
+# Subtest: V111 owner, changed-base, future and unknown-port continuation receipts cannot supply objectives or fragment locations
+ok 80 - V111 owner, changed-base, future and unknown-port continuation receipts cannot supply objectives or fragment locations
+  ---
+  duration_ms: 72.533015
+  type: 'test'
+  ...
+# Subtest: V111 uses the real603-step doorway stand and only a motor-valid bounded departure before ordinary street clearance
+ok 81 - V111 uses the real603-step doorway stand and only a motor-valid bounded departure before ordinary street clearance
+  ---
+  duration_ms: 5564.25388
+  type: 'test'
+  ...
+# Subtest: V111 the actual native motor follows the side-door guide into the normal street route without a phantom movement or cargo mutation
+ok 82 - V111 the actual native motor follows the side-door guide into the normal street route without a phantom movement or cargo mutation
+  ---
+  duration_ms: 2991.909914
+  type: 'test'
+  ...
+# Subtest: V111 a real later pickup invalidates the accepted side-door prefix just like every other cargo route
+ok 83 - V111 a real later pickup invalidates the accepted side-door prefix just like every other cargo route
+  ---
+  duration_ms: 26.284807
+  type: 'test'
+  ...
+# Subtest: V111 cannot use a foreign, wrong-room, wrong-floor or blocked old checkpoint as a side-door departure
+ok 84 - V111 cannot use a foreign, wrong-room, wrong-floor or blocked old checkpoint as a side-door departure
+  ---
+  duration_ms: 8.180119
+  type: 'test'
+  ...
+# Subtest: V111 arrived guide collapses to its real destination and mapped action while options remain accessible and pause/stale hide action advice
+ok 85 - V111 arrived guide collapses to its real destination and mapped action while options remain accessible and pause/stale hide action advice
+  ---
+  duration_ms: 27.632142
+  type: 'test'
+  ...
+# /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1748
+#   let error = new Error(text);
+#               ^
+# Error: Build failed with 1 error:
+# app/game/enemyTrophyGameplayV18.ts:1:44: ERROR: Could not resolve "../../public/game/assets/v18/enemy-trophy-gameplay/manifest.json"
+#     at failureErrorWithLog (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1748:15)
+#     at /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1207:25
+#     at /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1159:52
+#     at buildResponseToResult (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1205:7)
+#     at /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1232:16
+#     at responseCallbacks.<computed> (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:884:9)
+#     at handleIncomingPacket (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:939:12)
+#     at Socket.readFromStdout (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:862:7)
+#     at Socket.emit (node:events:519:28)
+#     at addChunk (node:internal/streams/readable:561:12) {
+#   errors: [Getter/Setter],
+#   warnings: [Getter/Setter]
+# }
+# Node.js v22.23.4
+# Subtest: tests/hunt-harvest-runtime-v111.test.mjs
+not ok 15 - tests/hunt-harvest-runtime-v111.test.mjs
+  ---
+  duration_ms: 810.226237
+  type: 'test'
+  location: '/tmp/yautja-excel-history-v111-2GuKSv/tests/hunt-harvest-runtime-v111.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: a canopy trophy stays on the actual corpse rather than the world floor
+ok 87 - a canopy trophy stays on the actual corpse rather than the world floor
+  ---
+  duration_ms: 1.70549
+  type: 'test'
+  ...
+# Subtest: secondary provenance requires the same defeated active non-boss actor and claim
+ok 88 - secondary provenance requires the same defeated active non-boss actor and claim
+  ---
+  duration_ms: 0.371407
+  type: 'test'
+  ...
+# Subtest: stable footing is required throughout a field rite, including after a fall or climb
+ok 89 - stable footing is required throughout a field rite, including after a fall or climb
+  ---
+  duration_ms: 0.160306
+  type: 'test'
+  ...
+# Subtest: a close corpse behind a solid wall cannot be harvested; a one-way ledge is not a wall
+ok 90 - a close corpse behind a solid wall cannot be harvested; a one-way ledge is not a wall
+  ---
+  duration_ms: 0.277649
+  type: 'test'
+  ...
+# Subtest: vertical separation and drift must still satisfy the reach at the final gesture
+ok 91 - vertical separation and drift must still satisfy the reach at the final gesture
+  ---
+  duration_ms: 0.358928
+  type: 'test'
+  ...
+# Subtest: malformed body, target or reach never grants access
+ok 92 - malformed body, target or reach never grants access
+  ---
+  duration_ms: 0.227064
+  type: 'test'
+  ...
+1..92
+# tests 92
+# suites 0
+# pass 91
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 98818.6243
+
+    at runTests (file:///workspace/yautja-la-longue-chasse/scripts/lib/historical-excel-context.mjs:85:26)
+    at async checkHomeworldExcelHistoryV112 (file:///workspace/yautja-la-longue-chasse/scripts/check-excel-history-homeworld-v112.mjs:9:30)
+    at async file:///workspace/yautja-la-longue-chasse/scripts/check-excel-history-homeworld-v112.mjs:25:30 {
+  [cause]: Error: Command failed: /workspace/.cloud-tools/node22/node_modules/node/bin/node --experimental-strip-types --test --test-reporter=tap --test-concurrency=1 tests/excel-history-preservation-v111.test.mjs tests/field-tool-purchase-ui-v111.test.mjs tests/field-tools-rites-v111.test.mjs tests/homeworld-archive-continuation-v111.test.mjs tests/homeworld-archivist-motion-v111.test.mjs tests/homeworld-arrival-recovery-integration-v111.test.mjs tests/homeworld-arrival-recovery-v111.test.mjs tests/homeworld-art-inventory-v111.test.mjs tests/homeworld-continuation-integration-v111.test.mjs tests/homeworld-continuation-journal-v111.test.mjs tests/homeworld-evidence-v111.test.mjs tests/homeworld-excel-followup-v111.test.mjs tests/homeworld-excel-history-v111.test.mjs tests/homeworld-objectives-v111.test.mjs tests/hunt-harvest-runtime-v111.test.mjs tests/trophy-harvest-v111.test.mjs
+      at genericNodeError (node:internal/errors:983:15)
+      at wrappedFn (node:internal/errors:537:14)
+      at checkExecSyncError (node:child_process:916:11)
+      at execFileSync (node:child_process:952:15)
+      at runTests (file:///workspace/yautja-la-longue-chasse/scripts/lib/historical-excel-context.mjs:84:19)
+      at async checkHomeworldExcelHistoryV112 (file:///workspace/yautja-la-longue-chasse/scripts/check-excel-history-homeworld-v112.mjs:9:30)
+      at async file:///workspace/yautja-la-longue-chasse/scripts/check-excel-history-homeworld-v112.mjs:25:30 {
+    status: 1,
+    signal: null,
+    output: [
+      null,
+      'TAP version 13\n' +
+        '# Subtest: V110 preimages are copied privately and later tampering fails the original freeze\n' +
+        'ok 1 - V110 preimages are copied privately and later tampering fails the original freeze\n' +
+        '  ---\n' +
+        '  duration_ms: 14.063372\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: a wrong Git blob, escaping path or symlink cannot overwrite a source\n' +
+        'ok 2 - a wrong Git blob, escaping path or symlink cannot overwrite a source\n' +
+        '  ---\n' +
+        '  duration_ms: 3.137996\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: all original V110 assertion files and changed preimages have explicit Git identities\n' +
+        'ok 3 - all original V110 assertion files and changed preimages have explicit Git identities\n' +
+        '  ---\n' +
+        '  duration_ms: 0.280223\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: a refused purchase acknowledgement never announces acquisition or grants a tool\n' +
+        'ok 4 - a refused purchase acknowledgement never announces acquisition or grants a tool\n' +
+        '  ---\n' +
+        '  duration_ms: 38.17582\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: the same pre-render purchase closure reads the updated ref and debits exactly once\n' +
+        'ok 5 - the same pre-render purchase closure reads the updated ref and debits exactly once\n' +
+        '  ---\n' +
+        '  duration_ms: 11.011872\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: the UI refuses unknown tools or insufficient funds before persistence\n' +
+        'ok 6 - the UI refuses unknown tools or insufficient funds before persistence\n' +
+        '  ---\n' +
+        '  duration_ms: 24.751458\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: a pending purchase reconciles the exact inventory and profile without a second primary write\n' +
+        'ok 7 - a pending purchase reconciles the exact inventory and profile without a second primary write\n' +
+        '  ---\n' +
+        '  duration_ms: 21.700128\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: pending updates with identical balances but different inventory cannot be mistaken for the same purchase\n' +
+        'ok 8 - pending updates with identical balances but different inventory cannot be mistaken for the same purchase\n' +
+        '  ---\n' +
+        '  duration_ms: 19.357511\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: an unresolved pending write or another campaign transaction cannot falsely confirm acquisition\n' +
+        'ok 9 - an unresolved pending write or another campaign transaction cannot falsely confirm acquisition\n' +
+        '  ---\n' +
+        '  duration_ms: 69.210768\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: a field tool is purchased once with clan marks and does not use either charged gear slot\n' +
+        'ok 10 - a field tool is purchased once with clan marks and does not use either charged gear slot\n' +
+        '  ---\n' +
+        '  duration_ms: 3.105059\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: unknown tools, invalid balances and insufficient funds never grant or debit anything\n' +
+        'ok 11 - unknown tools, invalid balances and insufficient funds never grant or debit anything\n' +
+        '  ---\n' +
+        '  duration_ms: 0.754821\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: save normalization preserves a purchased tool, deduplicates it, and grants none to older campaigns\n' +
+        'ok 12 - save normalization preserves a purchased tool, deduplicates it, and grants none to older campaigns\n' +
+        '  ---\n' +
+        '  duration_ms: 13.76289\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: the real runtime only unlocks flaying with a purchased tool and keeps suspension locked\n' +
+        'ok 13 - the real runtime only unlocks flaying with a purchased tool and keeps suspension locked\n' +
+        '  ---\n' +
+        '  duration_ms: 1.653453\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: damage or departure cancels flaying; pause preserves its exact unfinished progress\n' +
+        'ok 14 - damage or departure cancels flaying; pause preserves its exact unfinished progress\n' +
+        '  ---\n' +
+        '  duration_ms: 0.220655\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: marked and flayed discoveries retain their actual different fear through checkpoint restore\n' +
+        'ok 15 - marked and flayed discoveries retain their actual different fear through checkpoint restore\n' +
+        '  ---\n' +
+        '  duration_ms: 1.361153\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: legacy marks restore without a tool or invented historic corpses\n' +
+        'ok 16 - legacy marks restore without a tool or invented historic corpses\n' +
+        '  ---\n' +
+        '  duration_ms: 0.307182\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: an unfinished flaying gesture only resumes under the same real owner with the tool\n' +
+        'ok 17 - an unfinished flaying gesture only resumes under the same real owner with the tool\n' +
+        '  ---\n' +
+        '  duration_ms: 0.307803\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 opens a later A episode only from a genuinely completed B, preserving the exact original JSON and all source history\n' +
+        'ok 18 - V111 opens a later A episode only from a genuinely completed B, preserving the exact original JSON and all source history\n' +
+        '  ---\n' +
+        '  duration_ms: 4.297421\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 physically completes edge, mismatch, voluntary reprise and a separately carried candidate, without repeating the two B deposits\n' +
+        'ok 19 - V111 physically completes edge, mismatch, voluntary reprise and a separately carried candidate, without repeating the two B deposits\n' +
+        '  ---\n' +
+        '  duration_ms: 269.78117\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 refusal guards require the current consenting owner, visible post, fresh revision and a separate new choice and consent\n' +
+        'ok 20 - V111 refusal guards require the current consenting owner, visible post, fresh revision and a separate new choice and consent\n' +
+        '  ---\n' +
+        '  duration_ms: 4.988538\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 quota, stale/foreign B replacement and impossible movement never mutate either confirmed receipt\n' +
+        'ok 21 - V111 quota, stale/foreign B replacement and impossible movement never mutate either confirmed receipt\n' +
+        '  ---\n' +
+        '  duration_ms: 38.93621\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 strict imports reject future/forged/unbound episodes and preserve completed B source lines independently\n' +
+        'ok 22 - V111 strict imports reject future/forged/unbound episodes and preserve completed B source lines independently\n' +
+        '  ---\n' +
+        '  duration_ms: 2.15562\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 a carried candidate survives serialization, interrupt/park/resume and retains the old discovery places\n' +
+        'ok 23 - V111 a carried candidate survives serialization, interrupt/park/resume and retains the old discovery places\n' +
+        '  ---\n' +
+        '  duration_ms: 125.292544\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: four independent native whole-body PNGs retain their untouched raw bytes and measured alpha registration\n' +
+        'ok 24 - four independent native whole-body PNGs retain their untouched raw bytes and measured alpha registration\n' +
+        '  ---\n' +
+        '  duration_ms: 261.583924\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: local decorative clock is bounded, suspends without catch-up and never advances while inactive or hidden\n' +
+        'ok 25 - local decorative clock is bounded, suspends without catch-up and never advances while inactive or hidden\n' +
+        '  ---\n' +
+        '  duration_ms: 0.934224\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: actual drawing renders the entire native canvas at one uniform positive scale with its measured foot pivot\n' +
+        'ok 26 - actual drawing renders the entire native canvas at one uniform positive scale with its measured foot pivot\n' +
+        '  ---\n' +
+        '  duration_ms: 62.663109\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: situated K-17 preserves physical pieces and only reveals the fragment after the real source reprise\n' +
+        'ok 27 - situated K-17 preserves physical pieces and only reveals the fragment after the real source reprise\n' +
+        '  ---\n' +
+        '  duration_ms: 1727.492459\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: dialogue portrait reuses the same native component and keeps an honest original fallback before decode\n' +
+        'ok 28 - dialogue portrait reuses the same native component and keeps an honest original fallback before decode\n' +
+        '  ---\n' +
+        '  duration_ms: 52.563928\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 source note describes the four conversation drawings while the rest of the source UI stays exact\n' +
+        'ok 29 - V111 source note describes the four conversation drawings while the rest of the source UI stays exact\n' +
+        '  ---\n' +
+        '  duration_ms: 1261.644163\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 actual Hub opens a read-only recovery at the walked exit, then atomically restores and reloads without changing cargo\n' +
+        'ok 30 - V111 actual Hub opens a read-only recovery at the walked exit, then atomically restores and reloads without changing cargo\n' +
+        '  ---\n' +
+        '  duration_ms: 2403.285945\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 actual Hub rolls every temporary actor/room/level reference back on real quota refusal or a throwing save host\n' +
+        'ok 31 - V111 actual Hub rolls every temporary actor/room/level reference back on real quota refusal or a throwing save host\n' +
+        '  ---\n' +
+        '  duration_ms: 73.901905\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 actual Hub refuses a delayed confirmation after local movement, owner replacement, pause or changed operation source\n' +
+        'ok 32 - V111 actual Hub refuses a delayed confirmation after local movement, owner replacement, pause or changed operation source\n' +
+        '  ---\n' +
+        '  duration_ms: 134.973013\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 actual Hub rejects a source draft that would change the documents preserved by the preview\n' +
+        'ok 33 - V111 actual Hub rejects a source draft that would change the documents preserved by the preview\n' +
+        '  ---\n' +
+        '  duration_ms: 25.790947\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111 actual Hub preserves the other tab on a real same-owner storage conflict and leaves the recovery dialog retryable\n' +
+        'ok 34 - V111 actual Hub preserves the other tab on a real same-owner storage conflict and leaves the recovery dialog retryable\n' +
+        '  ---\n' +
+        '  duration_ms: 34.026842\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111: the real603-step legacy trap proposes only its recorded empty-handed exterior point at the walked interior exit\n' +
+        'ok 35 - V111: the real603-step legacy trap proposes only its recorded empty-handed exterior point at the walked interior exit\n' +
+        '  ---\n' +
+        '  duration_ms: 2228.338572\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111: quota failure and throwing storage acknowledgements never consume the restoration or its original documents\n' +
+        'ok 36 - V111: quota failure and throwing storage acknowledgements never consume the restoration or its original documents\n' +
+        '  ---\n' +
+        '  duration_ms: 5.423239\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111: a delayed confirmation rechecks ledger revision, interior pose, owner, pause and live obstacles\n' +
+        'ok 37 - V111: a delayed confirmation rechecks ledger revision, interior pose, owner, pause and live obstacles\n' +
+        '  ---\n' +
+        '  duration_ms: 11.030808\n' +
+        "  type: 'test'\n" +
+        '  ...\n' +
+        '# Subtest: V111: a'... 17412 more characters,
+      ''
+    ],
+    pid: 25446,
+    stdout: 'TAP version 13\n' +
+      '# Subtest: V110 preimages are copied privately and later tampering fails the original freeze\n' +
+      'ok 1 - V110 preimages are copied privately and later tampering fails the original freeze\n' +
+      '  ---\n' +
+      '  duration_ms: 14.063372\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: a wrong Git blob, escaping path or symlink cannot overwrite a source\n' +
+      'ok 2 - a wrong Git blob, escaping path or symlink cannot overwrite a source\n' +
+      '  ---\n' +
+      '  duration_ms: 3.137996\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: all original V110 assertion files and changed preimages have explicit Git identities\n' +
+      'ok 3 - all original V110 assertion files and changed preimages have explicit Git identities\n' +
+      '  ---\n' +
+      '  duration_ms: 0.280223\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: a refused purchase acknowledgement never announces acquisition or grants a tool\n' +
+      'ok 4 - a refused purchase acknowledgement never announces acquisition or grants a tool\n' +
+      '  ---\n' +
+      '  duration_ms: 38.17582\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: the same pre-render purchase closure reads the updated ref and debits exactly once\n' +
+      'ok 5 - the same pre-render purchase closure reads the updated ref and debits exactly once\n' +
+      '  ---\n' +
+      '  duration_ms: 11.011872\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: the UI refuses unknown tools or insufficient funds before persistence\n' +
+      'ok 6 - the UI refuses unknown tools or insufficient funds before persistence\n' +
+      '  ---\n' +
+      '  duration_ms: 24.751458\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: a pending purchase reconciles the exact inventory and profile without a second primary write\n' +
+      'ok 7 - a pending purchase reconciles the exact inventory and profile without a second primary write\n' +
+      '  ---\n' +
+      '  duration_ms: 21.700128\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: pending updates with identical balances but different inventory cannot be mistaken for the same purchase\n' +
+      'ok 8 - pending updates with identical balances but different inventory cannot be mistaken for the same purchase\n' +
+      '  ---\n' +
+      '  duration_ms: 19.357511\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: an unresolved pending write or another campaign transaction cannot falsely confirm acquisition\n' +
+      'ok 9 - an unresolved pending write or another campaign transaction cannot falsely confirm acquisition\n' +
+      '  ---\n' +
+      '  duration_ms: 69.210768\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: a field tool is purchased once with clan marks and does not use either charged gear slot\n' +
+      'ok 10 - a field tool is purchased once with clan marks and does not use either charged gear slot\n' +
+      '  ---\n' +
+      '  duration_ms: 3.105059\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: unknown tools, invalid balances and insufficient funds never grant or debit anything\n' +
+      'ok 11 - unknown tools, invalid balances and insufficient funds never grant or debit anything\n' +
+      '  ---\n' +
+      '  duration_ms: 0.754821\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: save normalization preserves a purchased tool, deduplicates it, and grants none to older campaigns\n' +
+      'ok 12 - save normalization preserves a purchased tool, deduplicates it, and grants none to older campaigns\n' +
+      '  ---\n' +
+      '  duration_ms: 13.76289\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: the real runtime only unlocks flaying with a purchased tool and keeps suspension locked\n' +
+      'ok 13 - the real runtime only unlocks flaying with a purchased tool and keeps suspension locked\n' +
+      '  ---\n' +
+      '  duration_ms: 1.653453\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: damage or departure cancels flaying; pause preserves its exact unfinished progress\n' +
+      'ok 14 - damage or departure cancels flaying; pause preserves its exact unfinished progress\n' +
+      '  ---\n' +
+      '  duration_ms: 0.220655\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: marked and flayed discoveries retain their actual different fear through checkpoint restore\n' +
+      'ok 15 - marked and flayed discoveries retain their actual different fear through checkpoint restore\n' +
+      '  ---\n' +
+      '  duration_ms: 1.361153\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: legacy marks restore without a tool or invented historic corpses\n' +
+      'ok 16 - legacy marks restore without a tool or invented historic corpses\n' +
+      '  ---\n' +
+      '  duration_ms: 0.307182\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: an unfinished flaying gesture only resumes under the same real owner with the tool\n' +
+      'ok 17 - an unfinished flaying gesture only resumes under the same real owner with the tool\n' +
+      '  ---\n' +
+      '  duration_ms: 0.307803\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 opens a later A episode only from a genuinely completed B, preserving the exact original JSON and all source history\n' +
+      'ok 18 - V111 opens a later A episode only from a genuinely completed B, preserving the exact original JSON and all source history\n' +
+      '  ---\n' +
+      '  duration_ms: 4.297421\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 physically completes edge, mismatch, voluntary reprise and a separately carried candidate, without repeating the two B deposits\n' +
+      'ok 19 - V111 physically completes edge, mismatch, voluntary reprise and a separately carried candidate, without repeating the two B deposits\n' +
+      '  ---\n' +
+      '  duration_ms: 269.78117\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 refusal guards require the current consenting owner, visible post, fresh revision and a separate new choice and consent\n' +
+      'ok 20 - V111 refusal guards require the current consenting owner, visible post, fresh revision and a separate new choice and consent\n' +
+      '  ---\n' +
+      '  duration_ms: 4.988538\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 quota, stale/foreign B replacement and impossible movement never mutate either confirmed receipt\n' +
+      'ok 21 - V111 quota, stale/foreign B replacement and impossible movement never mutate either confirmed receipt\n' +
+      '  ---\n' +
+      '  duration_ms: 38.93621\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 strict imports reject future/forged/unbound episodes and preserve completed B source lines independently\n' +
+      'ok 22 - V111 strict imports reject future/forged/unbound episodes and preserve completed B source lines independently\n' +
+      '  ---\n' +
+      '  duration_ms: 2.15562\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 a carried candidate survives serialization, interrupt/park/resume and retains the old discovery places\n' +
+      'ok 23 - V111 a carried candidate survives serialization, interrupt/park/resume and retains the old discovery places\n' +
+      '  ---\n' +
+      '  duration_ms: 125.292544\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: four independent native whole-body PNGs retain their untouched raw bytes and measured alpha registration\n' +
+      'ok 24 - four independent native whole-body PNGs retain their untouched raw bytes and measured alpha registration\n' +
+      '  ---\n' +
+      '  duration_ms: 261.583924\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: local decorative clock is bounded, suspends without catch-up and never advances while inactive or hidden\n' +
+      'ok 25 - local decorative clock is bounded, suspends without catch-up and never advances while inactive or hidden\n' +
+      '  ---\n' +
+      '  duration_ms: 0.934224\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: actual drawing renders the entire native canvas at one uniform positive scale with its measured foot pivot\n' +
+      'ok 26 - actual drawing renders the entire native canvas at one uniform positive scale with its measured foot pivot\n' +
+      '  ---\n' +
+      '  duration_ms: 62.663109\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: situated K-17 preserves physical pieces and only reveals the fragment after the real source reprise\n' +
+      'ok 27 - situated K-17 preserves physical pieces and only reveals the fragment after the real source reprise\n' +
+      '  ---\n' +
+      '  duration_ms: 1727.492459\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: dialogue portrait reuses the same native component and keeps an honest original fallback before decode\n' +
+      'ok 28 - dialogue portrait reuses the same native component and keeps an honest original fallback before decode\n' +
+      '  ---\n' +
+      '  duration_ms: 52.563928\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 source note describes the four conversation drawings while the rest of the source UI stays exact\n' +
+      'ok 29 - V111 source note describes the four conversation drawings while the rest of the source UI stays exact\n' +
+      '  ---\n' +
+      '  duration_ms: 1261.644163\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 actual Hub opens a read-only recovery at the walked exit, then atomically restores and reloads without changing cargo\n' +
+      'ok 30 - V111 actual Hub opens a read-only recovery at the walked exit, then atomically restores and reloads without changing cargo\n' +
+      '  ---\n' +
+      '  duration_ms: 2403.285945\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 actual Hub rolls every temporary actor/room/level reference back on real quota refusal or a throwing save host\n' +
+      'ok 31 - V111 actual Hub rolls every temporary actor/room/level reference back on real quota refusal or a throwing save host\n' +
+      '  ---\n' +
+      '  duration_ms: 73.901905\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 actual Hub refuses a delayed confirmation after local movement, owner replacement, pause or changed operation source\n' +
+      'ok 32 - V111 actual Hub refuses a delayed confirmation after local movement, owner replacement, pause or changed operation source\n' +
+      '  ---\n' +
+      '  duration_ms: 134.973013\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 actual Hub rejects a source draft that would change the documents preserved by the preview\n' +
+      'ok 33 - V111 actual Hub rejects a source draft that would change the documents preserved by the preview\n' +
+      '  ---\n' +
+      '  duration_ms: 25.790947\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111 actual Hub preserves the other tab on a real same-owner storage conflict and leaves the recovery dialog retryable\n' +
+      'ok 34 - V111 actual Hub preserves the other tab on a real same-owner storage conflict and leaves the recovery dialog retryable\n' +
+      '  ---\n' +
+      '  duration_ms: 34.026842\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111: the real603-step legacy trap proposes only its recorded empty-handed exterior point at the walked interior exit\n' +
+      'ok 35 - V111: the real603-step legacy trap proposes only its recorded empty-handed exterior point at the walked interior exit\n' +
+      '  ---\n' +
+      '  duration_ms: 2228.338572\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111: quota failure and throwing storage acknowledgements never consume the restoration or its original documents\n' +
+      'ok 36 - V111: quota failure and throwing storage acknowledgements never consume the restoration or its original documents\n' +
+      '  ---\n' +
+      '  duration_ms: 5.423239\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111: a delayed confirmation rechecks ledger revision, interior pose, owner, pause and live obstacles\n' +
+      'ok 37 - V111: a delayed confirmation rechecks ledger revision, interior pose, owner, pause and live obstacles\n' +
+      '  ---\n' +
+      '  duration_ms: 11.030808\n' +
+      "  type: 'test'\n" +
+      '  ...\n' +
+      '# Subtest: V111: a'... 17412 more characters,
+    stderr: ''
+  }
+}
+
+Node.js v22.23.4

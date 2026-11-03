@@ -1,0 +1,5147 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-142-dead-end-alley",
+  "checkedAt": "2026-09-30T19:04:39.144Z",
+  "compositionDigest": "bf4f90694ea7fa19e2c4c5e2e52df3a1ecce9b5ffdf45e91178c6958565a8dd6",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "f2eb599daec7425a0641060f179e0bf58e76e06d1c4e8a1750364f44b8ec125b",
+    "app/game/pitArenaProduction.ts": "982a0850cce006e2d65580d1e188fba485a2e94e006b2403dc38351f214aadef",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "scripts/verify-pit-stage-composition-v61.mjs": "9439af6528c100ae09453b6f235052d79f1b1e1cc79008908c82a25a8de6b17c",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "322eb124dd80d21fdbd9024f99dcd28d2c3cb87eb6d2818d16a52804fde449e7",
+    "app/game/data/pitStageLifeV61.json": "839d2bd0a110aeb0125f1b06879055a181836c7af1307b2ae202ce100e71f466",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "production": {
+      "number": 142,
+      "catalogueId": "arena-142-dead-end-alley",
+      "assetDirectory": "/game/sprites/v55/pit-arenas/arena-142-dead-end-alley",
+      "name": "Dead End — impasse sous la pluie",
+      "setting": "Impasse urbaine nocturne du fan-film, adaptation originale pour Big Red et les chasseurs associés.",
+      "wave": "v55-character-stage-coverage",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v55-character-lore-shared-library-compositions",
+      "authoringPlanDigest": "0806e5ab6de9bda7cd174e1389c1333f43678a339b78fe5978a3bae206e077b8",
+      "screenReference": {
+        "kind": "film",
+        "workId": "batman-dead-end-2003",
+        "classification": "work-setting",
+        "sourceUrls": [
+          "https://store.necaonline.com/blogs/news/closer-look-predators-series-7-big-red-predator-action-figure"
+        ],
+        "fidelityClaim": "original-lateral-layout-not-shot-exact"
+      },
+      "moduleProfile": "urban-roof",
+      "contactMeasurements": [
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+          "crop": {
+            "x": 199,
+            "y": 0,
+            "width": 763,
+            "height": 1536
+          },
+          "visibleBottomExclusive": 1522,
+          "alphaThreshold": 16,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur dédiée : interprétation latérale originale",
+          "nominalParallax": 0.05,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "PNG OpenAI dédié au lieu",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-142-dead-end-alley/p0-depth.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "11abb7a402b492eb2cec6e9a59f04cb83505f5aa1db23c3e1a6aa926967db7c7",
+                    "width": 1916,
+                    "height": 821,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1916,
+                      "height": 821
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Atmosphère alpha indépendante",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-atmosphere",
+              "role": "Brume haute indépendante",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.12,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 190,
+                  "width": 1160,
+                  "height": 150
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-steel-upright",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.72,
+              "placements": [
+                {
+                  "x": -55,
+                  "y": 37.6605504587156,
+                  "width": 145,
+                  "height": 395
+                },
+                {
+                  "x": 870,
+                  "y": 37.6605504587156,
+                  "width": 145,
+                  "height": 395
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p2-steel-upright.json",
+                    "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 199,
+                      "y": 0,
+                      "width": 763,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p2-steel-upright.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p2-steel-upright"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.82,
+              "opacity": 0.6,
+              "placements": [
+                {
+                  "x": 85,
+                  "y": -85,
+                  "width": 90,
+                  "height": 180
+                },
+                {
+                  "x": 785,
+                  "y": -85,
+                  "width": 90,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Sol physique natif indépendant",
+          "nominalParallax": 1,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-floor",
+              "role": "Sol pavement OpenAI indépendant",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 960,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops/p4-floor.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "f656789e75cc874648652d0fd4e3743b5c503749f80ea4673b59e7cec7d7720c",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 2172,
+                      "height": 724
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ],
+              "libraryRef": "arena-139-batman-gotham-rooftops/p4-floor"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.9,
+              "placements": [
+                {
+                  "x": -45,
+                  "y": -85,
+                  "width": 90,
+                  "height": 500
+                },
+                {
+                  "x": 915,
+                  "y": -85,
+                  "width": 90,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-142-dead-end-alley",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v55-arena-142-dead-end-alley-renderer-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v55-stage-composition-visual-review.json",
+        "digest": "1c2cb0369fa833542767076ccde4b7e631d1a4ee2c68f6a549d7ec1aefd1fd3a"
+      }
+    },
+    "life": {
+      "stageId": "arena-142-dead-end-alley",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Ombre de xénomorphe — mouvement sur la brique",
+          "opacity": 0.65,
+          "placement": {
+            "x": 230,
+            "bottom": 235,
+            "height": 120,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "sha256": "6cb701e33a943640cf2ebdaffc2bad20f73c42d19fb6ac6473ac549bd649e376",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                215,
+                457
+              ],
+              "alphaBounds": [
+                36,
+                144,
+                475,
+                313
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                459
+              ],
+              "alphaBounds": [
+                61,
+                141,
+                451,
+                318
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                238.5,
+                458
+              ],
+              "alphaBounds": [
+                55,
+                143,
+                434,
+                315
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                244,
+                415
+              ],
+              "alphaBounds": [
+                32,
+                106,
+                471,
+                309
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                260.5,
+                416
+              ],
+              "alphaBounds": [
+                56,
+                108,
+                446,
+                308
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                246,
+                416
+              ],
+              "alphaBounds": [
+                48,
+                92,
+                432,
+                324
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Ventilation murale — vapeur et gouttes",
+          "placement": {
+            "x": 733,
+            "bottom": 182,
+            "height": 120,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "sha256": "cc2d5a3431c18a5e9b3a042659c9e8be3b0e8e4e3e94002f06d3b0b8cd764527",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                290,
+                274
+              ],
+              "alphaBounds": [
+                172,
+                117,
+                196,
+                293
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                287,
+                275
+              ],
+              "alphaBounds": [
+                171,
+                122,
+                195,
+                308
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                284,
+                275
+              ],
+              "alphaBounds": [
+                166,
+                162,
+                196,
+                285
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                290.5,
+                239
+              ],
+              "alphaBounds": [
+                172,
+                115,
+                197,
+                299
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                286,
+                241
+              ],
+              "alphaBounds": [
+                171,
+                95,
+                195,
+                267
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                284,
+                239
+              ],
+              "alphaBounds": [
+                168,
+                106,
+                194,
+                277
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Câble et tissu — souffle de la ruelle",
+          "placement": {
+            "x": 175,
+            "bottom": 130,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "sha256": "26357dc10b21f7308011fdcf02e3fdb3ddecf5e9bbcdcb7227eab8513a24666d",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                192,
+                42
+              ],
+              "alphaBounds": [
+                127,
+                23,
+                220,
+                471
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                235,
+                42
+              ],
+              "alphaBounds": [
+                173,
+                23,
+                228,
+                478
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                281,
+                42
+              ],
+              "alphaBounds": [
+                223,
+                23,
+                238,
+                442
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                196.5,
+                43
+              ],
+              "alphaBounds": [
+                131,
+                24,
+                255,
+                448
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                568,
+                512
+              ],
+              "pivot": [
+                239,
+                43
+              ],
+              "alphaBounds": [
+                173,
+                24,
+                345,
+                386
+              ]
+            },
+            {
+              "rect": [
+                1080,
+                512,
+                456,
+                512
+              ],
+              "pivot": [
+                233,
+                43
+              ],
+              "alphaBounds": [
+                166,
+                24,
+                236,
+                448
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "story": {
+      "stageId": "arena-142-dead-end-alley",
+      "events": [
+        {
+          "id": "conditional-patrol-after-match",
+          "name": "Deux chasseurs anonymes — relève après le duel",
+          "trigger": "match-end",
+          "idleVisibility": "hidden",
+          "placement": {
+            "x": 500,
+            "bottom": 363,
+            "height": 78,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "sha256": "c282d2e34c9daab5a9626e5b6a825f7c471be88b517c11b407feaac15a4f49a3",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                241,
+                479
+              ],
+              "alphaBounds": [
+                36,
+                65,
+                425,
+                414
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                478
+              ],
+              "alphaBounds": [
+                52,
+                64,
+                428,
+                414
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                263,
+                478
+              ],
+              "alphaBounds": [
+                46,
+                68,
+                434,
+                410
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                252,
+                476
+              ],
+              "alphaBounds": [
+                56,
+                59,
+                412,
+                417
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                261.5,
+                473
+              ],
+              "alphaBounds": [
+                68,
+                65,
+                410,
+                408
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                275,
+                472
+              ],
+              "alphaBounds": [
+                88,
+                58,
+                397,
+                414
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+      "sha256": "6cb701e33a943640cf2ebdaffc2bad20f73c42d19fb6ac6473ac549bd649e376",
+      "bytes": 1326842,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8367932637532552,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            144,
+            475,
+            313
+          ],
+          "contentSha256": "8f1dff61d3bd364b0498f72f38fd473b88f5442054ad09d36ba433b7753554ac",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            61,
+            141,
+            451,
+            318
+          ],
+          "contentSha256": "8de038bc4a94549dbac1690049565ad66b07505c8409a7ff36524e011cb779ed",
+          "borderPixels": 5,
+          "borderMaxAlpha": 3,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            55,
+            143,
+            434,
+            315
+          ],
+          "contentSha256": "beaf05293a073b81c57451826ee5c0f82955d2e838fd5cd13553597604327eaf",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            32,
+            106,
+            471,
+            309
+          ],
+          "contentSha256": "0491d661a73ec2dadf0619d5537810dff8604dc0136dcba6e968d73a8ff1e267",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            56,
+            108,
+            446,
+            308
+          ],
+          "contentSha256": "464e6ce033d1ec78651531705239a7f789d7e1179e2806018073217dac8362c4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            92,
+            432,
+            324
+          ],
+          "contentSha256": "84b9787c1ce60f8eea688940bd3172c80d51e3eee46bef97bdec3bab94e3cf12",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-142-dead-end-alley.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+      "sha256": "cc2d5a3431c18a5e9b3a042659c9e8be3b0e8e4e3e94002f06d3b0b8cd764527",
+      "bytes": 1425576,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8767814636230469,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            172,
+            117,
+            196,
+            293
+          ],
+          "contentSha256": "3c4cc0d372fdad336d9de6eda840fcb63438d603b208f2327e72e6c117b8d331",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            171,
+            122,
+            195,
+            308
+          ],
+          "contentSha256": "58eba732a229e8f0ec49b3a979a94683be47092ec0177c8d97634f4c2b689d13",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            166,
+            162,
+            196,
+            285
+          ],
+          "contentSha256": "8e2a0bc34c406401cc2cf37a75ec4cab87f0993a932496f142c2edb9b85a1b0b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            172,
+            115,
+            197,
+            299
+          ],
+          "contentSha256": "68949c6911f4562b389cc32c9be09badc8b4f1415cbdc2cbcd608fb0ad300d0b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            171,
+            95,
+            195,
+            267
+          ],
+          "contentSha256": "44fca65385f616a4b48615a07c025484044776d568dd494e1125b0601e984e63",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            168,
+            106,
+            194,
+            277
+          ],
+          "contentSha256": "b91bfef6d43d2fd418b38f7d0d3f67e09ad59f3774c1271518266312112c94ff",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-142-dead-end-alley.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+      "sha256": "26357dc10b21f7308011fdcf02e3fdb3ddecf5e9bbcdcb7227eab8513a24666d",
+      "bytes": 1605190,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8658784230550131,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            127,
+            23,
+            220,
+            471
+          ],
+          "contentSha256": "0168bcc1039941f095bc79cf667743d351d08c462cea1f41a9ec04c80332dbb6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            173,
+            23,
+            228,
+            478
+          ],
+          "contentSha256": "8e7f967ec6b11b5687a76a86899ce6f48e68827eca7bcb99704b72a0fd52cb4b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            223,
+            23,
+            238,
+            442
+          ],
+          "contentSha256": "a0763f6d7cbc01b78567452928abc77342e678334f0803a8a9994e657c5cfeb5",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            24,
+            255,
+            448
+          ],
+          "contentSha256": "c1db6d6fae0b9e63e7df0915c015a2a27fa08d0242c38a8b78d3899c81066129",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            568,
+            512
+          ],
+          "alphaBounds": [
+            173,
+            24,
+            345,
+            386
+          ],
+          "contentSha256": "5f3bebd08a20f82802d2b02d77d1f52beee83adca6430de899184afdb38c5f33",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1080,
+            512,
+            456,
+            512
+          ],
+          "alphaBounds": [
+            166,
+            24,
+            236,
+            448
+          ],
+          "contentSha256": "5bcdaf67d0524256aa120a8cac059f2ba13798cadeed4d71e9ea284fb7096f31",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-142-dead-end-alley.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+      "sha256": "c282d2e34c9daab5a9626e5b6a825f7c471be88b517c11b407feaac15a4f49a3",
+      "bytes": 2211674,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6889247894287109,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            65,
+            425,
+            414
+          ],
+          "contentSha256": "2c08beba089e5a3412ff06f8af3b08de890c68bdc11703f82259154b6fc1fabd",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            52,
+            64,
+            428,
+            414
+          ],
+          "contentSha256": "224dce6f38be676a79ae1cd71668c75587ff9d1786cec12cbbac9e76dcccac1d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            46,
+            68,
+            434,
+            410
+          ],
+          "contentSha256": "5dfd32ab8d3255b7cb56bc549c3e9a527bb9febec81617b614abd956c53b6b69",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            56,
+            59,
+            412,
+            417
+          ],
+          "contentSha256": "00a1122bf74ccfbd2c9550035898761aaf78512eb142c1e08c9950852f0636be",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            68,
+            65,
+            410,
+            408
+          ],
+          "contentSha256": "882f82cd65b42bbf1d1f59430977f5fa374a884383da30197de8e99be472ce6b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            88,
+            58,
+            397,
+            414
+          ],
+          "contentSha256": "8f7c1fb7b58e0376898dc87a6adc4b6e9c4d0a303367119f8affa0d9406173cb",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-142-dead-end-alley.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 9,
+    "expectedImages": 9,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV61Ambient": true,
+    "hasV61Story": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            230,
+            235
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            733,
+            182
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            175,
+            130
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            230,
+            235
+          ],
+          "pivot": [
+            230,
+            235
+          ],
+          "visibleBounds": [
+            188.046875,
+            161.640625,
+            111.328125,
+            73.359375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            733,
+            182
+          ],
+          "pivot": [
+            733,
+            182
+          ],
+          "visibleBounds": [
+            705.34375,
+            145.203125,
+            45.9375,
+            68.671875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            175,
+            130
+          ],
+          "pivot": [
+            175,
+            130
+          ],
+          "visibleBounds": [
+            162.3046875,
+            126.2890625,
+            42.96875,
+            91.9921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            234.6,
+            234.2125
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            748.9175,
+            180.02
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            178.3625,
+            126.85
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            234.6,
+            234.2125
+          ],
+          "pivot": [
+            234.6,
+            234.2125
+          ],
+          "visibleBounds": [
+            191.7029296875,
+            159.20253906250002,
+            113.83300781249999,
+            75.0099609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            748.9175,
+            180.02
+          ],
+          "pivot": [
+            748.9175,
+            180.02
+          ],
+          "visibleBounds": [
+            720.6389843750001,
+            142.39519531250002,
+            46.971093749999994,
+            70.2169921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            178.3625,
+            126.85
+          ],
+          "pivot": [
+            178.3625,
+            126.85
+          ],
+          "visibleBounds": [
+            165.38154296875,
+            123.05556640625,
+            43.935546875,
+            94.06201171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            214.15,
+            234.2125
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            728.4675,
+            180.02
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            157.91250000000002,
+            126.85
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            214.15,
+            234.2125
+          ],
+          "pivot": [
+            214.15,
+            234.2125
+          ],
+          "visibleBounds": [
+            171.2529296875,
+            159.20253906250002,
+            113.83300781249999,
+            75.0099609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            728.4675,
+            180.02
+          ],
+          "pivot": [
+            728.4675,
+            180.02
+          ],
+          "visibleBounds": [
+            700.188984375,
+            142.39519531250002,
+            46.971093749999994,
+            70.2169921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            157.91250000000002,
+            126.85
+          ],
+          "pivot": [
+            157.91250000000002,
+            126.85
+          ],
+          "visibleBounds": [
+            144.93154296875002,
+            123.05556640625,
+            43.935546875,
+            94.06201171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            232.5,
+            235.35
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            730.47,
+            182.88
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            178.05,
+            131.39999999999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            232.5,
+            235.35
+          ],
+          "pivot": [
+            232.5,
+            235.35000000000002
+          ],
+          "visibleBounds": [
+            190.96640625,
+            162.72421875,
+            110.21484375,
+            72.62578125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            730.47,
+            182.88
+          ],
+          "pivot": [
+            730.47,
+            182.88
+          ],
+          "visibleBounds": [
+            703.0903125,
+            146.45109375,
+            45.478125,
+            67.98515625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            178.05,
+            131.39999999999998
+          ],
+          "pivot": [
+            178.05,
+            131.39999999999998
+          ],
+          "visibleBounds": [
+            165.481640625,
+            127.72617187499998,
+            42.5390625,
+            91.072265625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            223.12499999999997,
+            233.78062499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            739.9575,
+            179.32312499999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            166.61249999999995,
+            125.89312499999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            223.12499999999997,
+            233.78062499999996
+          ],
+          "pivot": [
+            223.12499999999997,
+            233.78062499999996
+          ],
+          "visibleBounds": [
+            180.01816406249998,
+            158.40386718749994,
+            114.38964843750001,
+            75.3767578125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            739.9575,
+            179.32312499999998
+          ],
+          "pivot": [
+            739.9575,
+            179.32312499999998
+          ],
+          "visibleBounds": [
+            711.5407031249999,
+            141.51433593749996,
+            47.200781250000006,
+            70.5603515625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            166.61249999999995,
+            125.89312499999997
+          ],
+          "pivot": [
+            166.61249999999995,
+            125.89312499999997
+          ],
+          "visibleBounds": [
+            153.56806640624995,
+            122.08013671874997,
+            44.15039062500001,
+            94.52197265625001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            255,
+            238.5
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            707.7,
+            190.8
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            205.5,
+            144
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            255,
+            238.5
+          ],
+          "pivot": [
+            255,
+            238.5
+          ],
+          "visibleBounds": [
+            217.2421875,
+            172.4765625,
+            100.1953125,
+            66.0234375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            707.7,
+            190.8
+          ],
+          "pivot": [
+            707.7,
+            190.8
+          ],
+          "visibleBounds": [
+            682.809375,
+            157.6828125,
+            41.34375,
+            61.8046875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            205.5,
+            144
+          ],
+          "pivot": [
+            205.5,
+            144
+          ],
+          "visibleBounds": [
+            194.07421875,
+            140.66015625,
+            38.671875,
+            82.79296875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            230,
+            235
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            733,
+            182
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            175,
+            130
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            230,
+            235
+          ],
+          "pivot": [
+            230,
+            235
+          ],
+          "visibleBounds": [
+            188.046875,
+            161.640625,
+            111.328125,
+            73.359375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.20800000000000002,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            733,
+            182
+          ],
+          "pivot": [
+            733,
+            182
+          ],
+          "visibleBounds": [
+            705.34375,
+            145.203125,
+            45.9375,
+            68.671875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            175,
+            130
+          ],
+          "pivot": [
+            175,
+            130
+          ],
+          "visibleBounds": [
+            162.3046875,
+            126.2890625,
+            42.96875,
+            91.9921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            222.66904474499995,
+            229.234374
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            740.474849745,
+            174.674319
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            166.05011974499993,
+            121.143699
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            222.66904474499995,
+            229.234374
+          ],
+          "pivot": [
+            222.66904474499995,
+            229.234374
+          ],
+          "visibleBounds": [
+            179.48102951062492,
+            153.715665796875,
+            114.60506835937501,
+            75.51870820312502
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            740.474849745,
+            174.674319
+          ],
+          "pivot": [
+            740.474849745,
+            174.674319
+          ],
+          "visibleBounds": [
+            712.0045380262501,
+            136.794327984375,
+            47.28967031250001,
+            70.69323164062502
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            166.05011974499993,
+            121.143699
+          ],
+          "pivot": [
+            166.05011974499993,
+            121.143699
+          ],
+          "visibleBounds": [
+            152.98112072156243,
+            117.3235300546875,
+            44.23353515625001,
+            94.69997753906252
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-patrol-after-match-center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            230,
+            235
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            733,
+            182
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            175,
+            130
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            500,
+            363
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            230,
+            235
+          ],
+          "pivot": [
+            230,
+            235
+          ],
+          "visibleBounds": [
+            188.046875,
+            161.640625,
+            111.328125,
+            73.359375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            733,
+            182
+          ],
+          "pivot": [
+            733,
+            182
+          ],
+          "visibleBounds": [
+            705.34375,
+            145.203125,
+            45.9375,
+            68.671875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            175,
+            130
+          ],
+          "pivot": [
+            175,
+            130
+          ],
+          "visibleBounds": [
+            162.3046875,
+            126.2890625,
+            42.96875,
+            91.9921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            500,
+            363
+          ],
+          "pivot": [
+            500,
+            363
+          ],
+          "visibleBounds": [
+            470.140625,
+            299.47265625,
+            62.765625,
+            63.52734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-patrol-after-match-left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            234.6,
+            234.2125
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            748.9175,
+            180.02
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            178.3625,
+            126.85
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            510.675,
+            365.0925
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            234.6,
+            234.2125
+          ],
+          "pivot": [
+            234.6,
+            234.2125
+          ],
+          "visibleBounds": [
+            191.7029296875,
+            159.20253906250002,
+            113.83300781249999,
+            75.0099609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            748.9175,
+            180.02
+          ],
+          "pivot": [
+            748.9175,
+            180.02
+          ],
+          "visibleBounds": [
+            720.6389843750001,
+            142.39519531250002,
+            46.971093749999994,
+            70.2169921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            178.3625,
+            126.85
+          ],
+          "pivot": [
+            178.3625,
+            126.85
+          ],
+          "visibleBounds": [
+            165.38154296875,
+            123.05556640625,
+            43.935546875,
+            94.06201171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            510.675,
+            365.0925
+          ],
+          "pivot": [
+            510.675,
+            365.0925
+          ],
+          "visibleBounds": [
+            480.1437890625,
+            300.135791015625,
+            64.1778515625,
+            64.956708984375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-patrol-after-match-right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            214.15,
+            234.2125
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            728.4675,
+            180.02
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            157.91250000000002,
+            126.85
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            490.225,
+            365.0925
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            214.15,
+            234.2125
+          ],
+          "pivot": [
+            214.15,
+            234.2125
+          ],
+          "visibleBounds": [
+            171.2529296875,
+            159.20253906250002,
+            113.83300781249999,
+            75.0099609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            728.4675,
+            180.02
+          ],
+          "pivot": [
+            728.4675,
+            180.02
+          ],
+          "visibleBounds": [
+            700.188984375,
+            142.39519531250002,
+            46.971093749999994,
+            70.2169921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            157.91250000000002,
+            126.85
+          ],
+          "pivot": [
+            157.91250000000002,
+            126.85
+          ],
+          "visibleBounds": [
+            144.93154296875002,
+            123.05556640625,
+            43.935546875,
+            94.06201171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            490.225,
+            365.0925
+          ],
+          "pivot": [
+            490.225,
+            365.0925
+          ],
+          "visibleBounds": [
+            459.6937890625,
+            300.135791015625,
+            64.1778515625,
+            64.956708984375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-patrol-after-match-wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            232.5,
+            235.35
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            730.47,
+            182.88
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            178.05,
+            131.39999999999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            499.8,
+            362.07
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            232.5,
+            235.35
+          ],
+          "pivot": [
+            232.5,
+            235.35000000000002
+          ],
+          "visibleBounds": [
+            190.96640625,
+            162.72421875,
+            110.21484375,
+            72.62578125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            730.47,
+            182.88
+          ],
+          "pivot": [
+            730.47,
+            182.88
+          ],
+          "visibleBounds": [
+            703.0903125,
+            146.45109375,
+            45.478125,
+            67.98515625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            178.05,
+            131.39999999999998
+          ],
+          "pivot": [
+            178.05,
+            131.39999999999998
+          ],
+          "visibleBounds": [
+            165.481640625,
+            127.72617187499998,
+            42.5390625,
+            91.072265625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            499.8,
+            362.07
+          ],
+          "pivot": [
+            499.8,
+            362.07
+          ],
+          "visibleBounds": [
+            470.23921875,
+            299.1779296875,
+            62.13796875,
+            62.892070312499996
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-patrol-after-match-close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            223.12499999999997,
+            233.78062499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            739.9575,
+            179.32312499999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            166.61249999999995,
+            125.89312499999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            500.54999999999995,
+            365.30062499999997
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            223.12499999999997,
+            233.78062499999996
+          ],
+          "pivot": [
+            223.12499999999997,
+            233.78062499999996
+          ],
+          "visibleBounds": [
+            180.01816406249998,
+            158.40386718749994,
+            114.38964843750001,
+            75.3767578125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            739.9575,
+            179.32312499999998
+          ],
+          "pivot": [
+            739.9575,
+            179.32312499999998
+          ],
+          "visibleBounds": [
+            711.5407031249999,
+            141.51433593749996,
+            47.200781250000006,
+            70.5603515625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            166.61249999999995,
+            125.89312499999997
+          ],
+          "pivot": [
+            166.61249999999995,
+            125.89312499999997
+          ],
+          "visibleBounds": [
+            153.56806640624995,
+            122.08013671874997,
+            44.15039062500001,
+            94.52197265625001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            500.54999999999995,
+            365.30062499999997
+          ],
+          "pivot": [
+            500.54999999999995,
+            365.30062499999997
+          ],
+          "visibleBounds": [
+            469.86949218749993,
+            300.0262792968749,
+            64.49167968750001,
+            65.27434570312501
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-patrol-after-match-reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            255,
+            238.5
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            707.7,
+            190.8
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            205.5,
+            144
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            498,
+            353.7
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            255,
+            238.5
+          ],
+          "pivot": [
+            255,
+            238.5
+          ],
+          "visibleBounds": [
+            217.2421875,
+            172.4765625,
+            100.1953125,
+            66.0234375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            707.7,
+            190.8
+          ],
+          "pivot": [
+            707.7,
+            190.8
+          ],
+          "visibleBounds": [
+            682.809375,
+            157.6828125,
+            41.34375,
+            61.8046875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            205.5,
+            144
+          ],
+          "pivot": [
+            205.5,
+            144
+          ],
+          "visibleBounds": [
+            194.07421875,
+            140.66015625,
+            38.671875,
+            82.79296875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            498,
+            353.7
+          ],
+          "pivot": [
+            498,
+            353.69999999999993
+          ],
+          "visibleBounds": [
+            469.892578125,
+            296.93671874999995,
+            58.271484375,
+            56.763281250000006
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-patrol-after-match-high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            230,
+            235
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            733,
+            182
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            175,
+            130
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            500,
+            363
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            230,
+            235
+          ],
+          "pivot": [
+            230,
+            235
+          ],
+          "visibleBounds": [
+            188.046875,
+            161.640625,
+            111.328125,
+            73.359375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.20800000000000002,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            733,
+            182
+          ],
+          "pivot": [
+            733,
+            182
+          ],
+          "visibleBounds": [
+            705.34375,
+            145.203125,
+            45.9375,
+            68.671875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            175,
+            130
+          ],
+          "pivot": [
+            175,
+            130
+          ],
+          "visibleBounds": [
+            162.3046875,
+            126.2890625,
+            42.96875,
+            91.9921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            500,
+            363
+          ],
+          "pivot": [
+            500,
+            363
+          ],
+          "visibleBounds": [
+            470.140625,
+            299.47265625,
+            62.765625,
+            63.52734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-patrol-after-match-actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            222.66904474499995,
+            229.234374
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            740.474849745,
+            174.674319
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            166.05011974499993,
+            121.143699
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-patrol-after-match",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            500.616494745,
+            361.002054
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            222.66904474499995,
+            229.234374
+          ],
+          "pivot": [
+            222.66904474499995,
+            229.234374
+          ],
+          "visibleBounds": [
+            179.48102951062492,
+            153.715665796875,
+            114.60506835937501,
+            75.51870820312502
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            740.474849745,
+            174.674319
+          ],
+          "pivot": [
+            740.474849745,
+            174.674319
+          ],
+          "visibleBounds": [
+            712.0045380262501,
+            136.794327984375,
+            47.28967031250001,
+            70.69323164062502
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            166.05011974499993,
+            121.143699
+          ],
+          "pivot": [
+            166.05011974499993,
+            121.143699
+          ],
+          "visibleBounds": [
+            152.98112072156243,
+            117.3235300546875,
+            44.23353515625001,
+            94.69997753906252
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-patrol-after-match",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            500.616494745,
+            361.002054
+          ],
+          "pivot": [
+            500.616494745,
+            361.00205400000004
+          ],
+          "visibleBounds": [
+            469.87820904187504,
+            295.60478288671874,
+            64.61313117187501,
+            65.39727111328126
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 0,
+      "frame": 838,
+      "attachment": [
+        733,
+        182
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 1,
+      "frame": 858,
+      "attachment": [
+        733,
+        182
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 2,
+      "frame": 878,
+      "attachment": [
+        733,
+        182
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 3,
+      "frame": 898,
+      "attachment": [
+        733,
+        182
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 4,
+      "frame": 918,
+      "attachment": [
+        733,
+        182
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 5,
+      "frame": 938,
+      "attachment": [
+        733,
+        182
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 0,
+      "frame": 1853,
+      "attachment": [
+        230,
+        235
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 1,
+      "frame": 1873,
+      "attachment": [
+        230,
+        235
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 2,
+      "frame": 1893,
+      "attachment": [
+        230,
+        235
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 3,
+      "frame": 1913,
+      "attachment": [
+        230,
+        235
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 4,
+      "frame": 1933,
+      "attachment": [
+        230,
+        235
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 5,
+      "frame": 1953,
+      "attachment": [
+        230,
+        235
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 0,
+      "frame": 2948,
+      "attachment": [
+        175,
+        130
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 1,
+      "frame": 2968,
+      "attachment": [
+        175,
+        130
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 2,
+      "frame": 2988,
+      "attachment": [
+        175,
+        130
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 3,
+      "frame": 3008,
+      "attachment": [
+        175,
+        130
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 4,
+      "frame": 3028,
+      "attachment": [
+        175,
+        130
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 5,
+      "frame": 3048,
+      "attachment": [
+        175,
+        130
+      ]
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-patrol-after-match",
+      "nativeFrame": 0,
+      "attachment": [
+        500,
+        363
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-patrol-after-match",
+      "nativeFrame": 1,
+      "attachment": [
+        500,
+        363
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-patrol-after-match",
+      "nativeFrame": 2,
+      "attachment": [
+        500,
+        363
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-patrol-after-match",
+      "nativeFrame": 3,
+      "attachment": [
+        500,
+        363
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-patrol-after-match",
+      "nativeFrame": 4,
+      "attachment": [
+        500,
+        363
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-patrol-after-match",
+      "nativeFrame": 5,
+      "attachment": [
+        500,
+        363
+      ],
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\center.png",
+      "sha256": "894d7135d26208fdd7df34e3d58eb180f5074a76e5f9dd0c9d0b72c1660467e2"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\left-corner.png",
+      "sha256": "8935d87cee2c063c52ec9e82f51913182ca015304e6dc6c2595b005eb5ca9835"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\right-corner.png",
+      "sha256": "a167725cf7106959c0d86d59ea168aff07046a53f9e0783b6bc2c71e1d7b08b8"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\wide.png",
+      "sha256": "2622046a63b736f1e9b10f93fe83544f6d80113b5fa3b13be00e6843ddbf0382"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\close.png",
+      "sha256": "68fb6d81e38044e3568912103b9c35a078c78b2d07790b24bf74e3b4517b72d8"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\reduced-motion.png",
+      "sha256": "ae81347641a9a82bbb1ab2e519f2b4041380be234f946ba34e53129876720b72"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\high-contrast.png",
+      "sha256": "95093a06bd14f785607064625259f4d71ca196bbd33ebcb018c643f674e3b549"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\actual-game-camera.png",
+      "sha256": "bc6977a39eb2466a2a2a0eaa30dcf310b0e71ce2eced84cb384192dc6308a597"
+    },
+    {
+      "name": "ambient-ambient-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-02-frame-0.png",
+      "sha256": "fee498274468a740be3b980f49ea9075d2ad7dac1739d8a523c5977391e9e5bb"
+    },
+    {
+      "name": "ambient-ambient-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-02-frame-1.png",
+      "sha256": "9291864417a5c5583a96f4d6e175c2398c8cf6d756a4ead0feaaeec0aa461782"
+    },
+    {
+      "name": "ambient-ambient-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-02-frame-2.png",
+      "sha256": "cd4a181c8ce0c0bb4cf73a844e61e450e360dc52e060579812620e1408429434"
+    },
+    {
+      "name": "ambient-ambient-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-02-frame-3.png",
+      "sha256": "0fda21c85ada8c7a2031bfa542b7f82c01e478b412d679b8b8e5b23bccf2be8e"
+    },
+    {
+      "name": "ambient-ambient-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-02-frame-4.png",
+      "sha256": "1b56949b9bec44dfb3d3cc7aeac515901fa72b1e78e7b0713d983ac98866675f"
+    },
+    {
+      "name": "ambient-ambient-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-02-frame-5.png",
+      "sha256": "8dce333bee70bc16c0b958a7ce328bfcfcd06dd1c7011e89317dee9372746271"
+    },
+    {
+      "name": "ambient-ambient-01-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-01-frame-0.png",
+      "sha256": "8f56aeb33be558f6d6d272173a2989da2a4843b8d4ed8293158d600837803c4a"
+    },
+    {
+      "name": "ambient-ambient-01-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-01-frame-1.png",
+      "sha256": "d7bfeb8cb678dc856797b86663169e7796d26c817de2f38a56ece59eb1081819"
+    },
+    {
+      "name": "ambient-ambient-01-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-01-frame-2.png",
+      "sha256": "a08a8b7775915ca72b9f1315bde04d75b36ac5d82a430773b2575cdb43b0c8c8"
+    },
+    {
+      "name": "ambient-ambient-01-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-01-frame-3.png",
+      "sha256": "9d24191ef1a7c90150f68f1dd8076cf064984cf33992fb52abd4bebf118d955f"
+    },
+    {
+      "name": "ambient-ambient-01-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-01-frame-4.png",
+      "sha256": "f2f74dcb126d4a888d0e11495694ce36ecfdd662db4a78324a2ab7b4ece263fb"
+    },
+    {
+      "name": "ambient-ambient-01-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-01-frame-5.png",
+      "sha256": "f92733a4705d225b07fa8605c25f4f124d1319bf22b032365873f248c69d5321"
+    },
+    {
+      "name": "ambient-ambient-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-03-frame-0.png",
+      "sha256": "37b60acedafd8a0d2fb7b3bfa57eb5ebdbed90de68964ab15a503e5d615d3576"
+    },
+    {
+      "name": "ambient-ambient-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-03-frame-1.png",
+      "sha256": "0a1a468725d9ff4ecfae2f72e006fb2624e09db596d7f6bdc90ebb54aec1d09b"
+    },
+    {
+      "name": "ambient-ambient-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-03-frame-2.png",
+      "sha256": "3372f09d90b7fd8ad5bb4d1a32632c8007206a32062260a30389ff5a3404e3e6"
+    },
+    {
+      "name": "ambient-ambient-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-03-frame-3.png",
+      "sha256": "989fbd8f2c7c796f9fed2a429f3a856ec78fd8f6e00cdfbe0e866154fa070e35"
+    },
+    {
+      "name": "ambient-ambient-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-03-frame-4.png",
+      "sha256": "7c750af369d0b37d288234953c034a2d888deee0db7c4d1f2448760db25f6ce5"
+    },
+    {
+      "name": "ambient-ambient-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\ambient-ambient-03-frame-5.png",
+      "sha256": "b640f42ac9cdf9573e135fe6fd3b01e4fc01702ecbdef086efe8d8e5eef291cc"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-frame-0.png",
+      "sha256": "454ed8bbcaa6fb2ab4e003fdac787859e77a78bc130aaa3bc7684e1685e620b0"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-frame-1.png",
+      "sha256": "df7ec7076708108301c6e64e236ccb852e08e64db530a910f41b363ff9b2c963"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-frame-2.png",
+      "sha256": "973f67f4fce65e30026d69731d0174ca46a17977a4a956db2557e0ae4df2eb01"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-frame-3.png",
+      "sha256": "e77d2f124fdd1043c0f080a47f31e833590f66c3d490382f421a8350df4936b0"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-frame-4.png",
+      "sha256": "04964140cf56e31cba2c0a095aaa6a9db82cc249a285f904c68f3fde2f9f8b39"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-frame-5.png",
+      "sha256": "53cdffd451b68c9328863158dd92f5248e0afcc3e898957abd1886429dc5599a"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-center.png",
+      "sha256": "e77d2f124fdd1043c0f080a47f31e833590f66c3d490382f421a8350df4936b0"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-left-corner.png",
+      "sha256": "4227e0650574e2c686a851c30fd9ab081f77be4edc2930d5f085ed0556e4fd67"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-right-corner.png",
+      "sha256": "099fdcc763a58e4c80fdd8bd1ff802331ec44d735258c04a58b8cec797bf5a94"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-wide.png",
+      "sha256": "9b8ae7ae5802010c6bd3fe3212718eba427a368c8a5c55c5e9bf3ec00831ed0c"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-close.png",
+      "sha256": "6f04379582754db4f73c9a43aebc15fd45a6de0e4d2b429854c7e2f8650fbf80"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-reduced-motion.png",
+      "sha256": "ad9b120693f8bf4d4426b78e9e3e77ce18e53d473b0961eb267f1ad56329511f"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-high-contrast.png",
+      "sha256": "d04134f274c5ca1d07f11c8dbe42e3a5c7e8a90f7b2644e35830dafb374e4156"
+    },
+    {
+      "name": "story-conditional-patrol-after-match-actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\story-conditional-patrol-after-match-actual-game-camera.png",
+      "sha256": "fd776b0132ed5ac29855aecc61db8f69f0b7475b2121e58b96362ab2ae23f531"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-142-dead-end-alley\\mobile-canvas.png",
+      "sha256": "df649319b011d694dde98ec7a080409f2b803f77fe9db34e2729d5e58abbbfd8"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

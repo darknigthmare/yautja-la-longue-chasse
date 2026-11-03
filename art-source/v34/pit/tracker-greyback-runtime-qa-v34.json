@@ -1,0 +1,481 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-09-13T00:07:54.338Z",
+  "keyboardChecks": [
+    {
+      "kind": "attack-keyboard",
+      "fighter": "tracker",
+      "action": "light",
+      "slot": 0,
+      "facing": "right",
+      "phases": [
+        "pit.stand.light.startup",
+        "pit.stand.light.active",
+        "pit.stand.light.recovery"
+      ],
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "attack-keyboard",
+      "fighter": "tracker",
+      "action": "medium",
+      "slot": 0,
+      "facing": "right",
+      "phases": [
+        "pit.stand.medium.startup",
+        "pit.stand.medium.active",
+        "pit.stand.medium.recovery"
+      ],
+      "uniqueDrawings": 3
+    },
+    {
+      "kind": "attack-keyboard",
+      "fighter": "tracker",
+      "action": "heavy",
+      "slot": 0,
+      "facing": "right",
+      "phases": [
+        "pit.stand.heavy.startup",
+        "pit.stand.heavy.active",
+        "pit.stand.heavy.recovery"
+      ],
+      "uniqueDrawings": 3
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "tracker",
+      "action": "crouch",
+      "slot": 0,
+      "facing": "right",
+      "uniqueDrawings": 3
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "tracker",
+      "action": "high-guard",
+      "slot": 0,
+      "facing": "right",
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "tracker",
+      "action": "walk-backward",
+      "slot": 0,
+      "facing": "right",
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "forward-held-keyboard",
+      "fighter": "tracker",
+      "slot": 0,
+      "facing": "right",
+      "status": "sprite-sheet-hold"
+    },
+    {
+      "kind": "attack-keyboard",
+      "fighter": "tracker",
+      "action": "light",
+      "slot": 1,
+      "facing": "left",
+      "phases": [
+        "pit.stand.light.startup",
+        "pit.stand.light.active",
+        "pit.stand.light.recovery"
+      ],
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "attack-keyboard",
+      "fighter": "tracker",
+      "action": "medium",
+      "slot": 1,
+      "facing": "left",
+      "phases": [
+        "pit.stand.medium.startup",
+        "pit.stand.medium.active",
+        "pit.stand.medium.recovery"
+      ],
+      "uniqueDrawings": 3
+    },
+    {
+      "kind": "attack-keyboard",
+      "fighter": "tracker",
+      "action": "heavy",
+      "slot": 1,
+      "facing": "left",
+      "phases": [
+        "pit.stand.heavy.startup",
+        "pit.stand.heavy.active",
+        "pit.stand.heavy.recovery"
+      ],
+      "uniqueDrawings": 3
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "tracker",
+      "action": "crouch",
+      "slot": 1,
+      "facing": "left",
+      "uniqueDrawings": 3
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "tracker",
+      "action": "high-guard",
+      "slot": 1,
+      "facing": "left",
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "tracker",
+      "action": "walk-backward",
+      "slot": 1,
+      "facing": "left",
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "forward-held-keyboard",
+      "fighter": "tracker",
+      "slot": 1,
+      "facing": "left",
+      "status": "sprite-sheet-hold"
+    },
+    {
+      "kind": "attack-keyboard",
+      "fighter": "greyback",
+      "action": "light",
+      "slot": 0,
+      "facing": "right",
+      "phases": [
+        "pit.stand.light.startup",
+        "pit.stand.light.active",
+        "pit.stand.light.recovery"
+      ],
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "attack-keyboard",
+      "fighter": "greyback",
+      "action": "medium",
+      "slot": 0,
+      "facing": "right",
+      "phases": [
+        "pit.stand.medium.startup",
+        "pit.stand.medium.active",
+        "pit.stand.medium.recovery"
+      ],
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "attack-keyboard",
+      "fighter": "greyback",
+      "action": "heavy",
+      "slot": 0,
+      "facing": "right",
+      "phases": [
+        "pit.stand.heavy.startup",
+        "pit.stand.heavy.active",
+        "pit.stand.heavy.recovery"
+      ],
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "greyback",
+      "action": "crouch",
+      "slot": 0,
+      "facing": "right",
+      "uniqueDrawings": 3
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "greyback",
+      "action": "high-guard",
+      "slot": 0,
+      "facing": "right",
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "greyback",
+      "action": "walk-backward",
+      "slot": 0,
+      "facing": "right",
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "forward-held-keyboard",
+      "fighter": "greyback",
+      "slot": 0,
+      "facing": "right",
+      "status": "sprite-sheet-hold"
+    },
+    {
+      "kind": "attack-keyboard",
+      "fighter": "greyback",
+      "action": "light",
+      "slot": 1,
+      "facing": "left",
+      "phases": [
+        "pit.stand.light.startup",
+        "pit.stand.light.active",
+        "pit.stand.light.recovery"
+      ],
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "attack-keyboard",
+      "fighter": "greyback",
+      "action": "medium",
+      "slot": 1,
+      "facing": "left",
+      "phases": [
+        "pit.stand.medium.startup",
+        "pit.stand.medium.active",
+        "pit.stand.medium.recovery"
+      ],
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "attack-keyboard",
+      "fighter": "greyback",
+      "action": "heavy",
+      "slot": 1,
+      "facing": "left",
+      "phases": [
+        "pit.stand.heavy.startup",
+        "pit.stand.heavy.active",
+        "pit.stand.heavy.recovery"
+      ],
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "greyback",
+      "action": "crouch",
+      "slot": 1,
+      "facing": "left",
+      "uniqueDrawings": 3
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "greyback",
+      "action": "high-guard",
+      "slot": 1,
+      "facing": "left",
+      "uniqueDrawings": 3
+    },
+    {
+      "kind": "state-keyboard",
+      "fighter": "greyback",
+      "action": "walk-backward",
+      "slot": 1,
+      "facing": "left",
+      "uniqueDrawings": 4
+    },
+    {
+      "kind": "forward-held-keyboard",
+      "fighter": "greyback",
+      "slot": 1,
+      "facing": "left",
+      "status": "sprite-sheet-hold"
+    }
+  ],
+  "interfaceChecks": [
+    {
+      "kind": "selection-progression-gate",
+      "id": "tracker",
+      "portraits": [
+        {
+          "status": "authored-idle-pose",
+          "facing": "right"
+        },
+        {
+          "status": "authored-idle-pose",
+          "facing": "left"
+        }
+      ]
+    },
+    {
+      "kind": "training",
+      "id": "tracker",
+      "statuses": [
+        {
+          "id": "tracker",
+          "status": "sprite-sheet-animation"
+        },
+        {
+          "id": "greyback",
+          "status": "sprite-sheet-animation"
+        }
+      ]
+    },
+    {
+      "kind": "selection-progression-gate",
+      "id": "greyback",
+      "portraits": [
+        {
+          "status": "authored-idle-pose",
+          "facing": "right"
+        },
+        {
+          "status": "authored-idle-pose",
+          "facing": "left"
+        }
+      ]
+    },
+    {
+      "kind": "training",
+      "id": "greyback",
+      "statuses": [
+        {
+          "id": "greyback",
+          "status": "sprite-sheet-animation"
+        },
+        {
+          "id": "tracker",
+          "status": "sprite-sheet-animation"
+        }
+      ]
+    },
+    {
+      "kind": "complete-match-download",
+      "fighters": [
+        "tracker",
+        "greyback"
+      ],
+      "ticks": 2093
+    },
+    {
+      "kind": "replay-ui",
+      "fighters": [
+        "tracker",
+        "greyback"
+      ],
+      "statuses": [
+        {
+          "id": "tracker",
+          "status": "sprite-sheet-animation"
+        },
+        {
+          "id": "greyback",
+          "status": "sprite-sheet-animation"
+        }
+      ]
+    },
+    {
+      "kind": "missing-portrait",
+      "status": "missing",
+      "honestNotice": true
+    },
+    {
+      "kind": "missing-atlas-keeps-real-static-fallback",
+      "statuses": [
+        {
+          "id": "tracker",
+          "status": "static-bitmap"
+        },
+        {
+          "id": "berserker",
+          "status": "sprite-sheet-animation"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "tests": {
+    "targeted": 56,
+    "typecheck": "PASS",
+    "lint": "PASS"
+  },
+  "coverage": {
+    "sourceSheets": 31,
+    "acceptedPages": 16,
+    "drawings": 119,
+    "engineClips": 56,
+    "orientedActionSequences": 32
+  },
+  "portraitBounds": [
+    {
+      "kind": "portrait-bounds",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "bounds": [
+        {
+          "canvas": {
+            "x": 143,
+            "y": 335.953125,
+            "width": 378,
+            "height": 320
+          },
+          "parent": {
+            "x": 143,
+            "y": 335.953125,
+            "width": 378,
+            "height": 320
+          },
+          "facing": "right"
+        },
+        {
+          "canvas": {
+            "x": 758.984375,
+            "y": 335.953125,
+            "width": 378.015625,
+            "height": 320
+          },
+          "parent": {
+            "x": 758.984375,
+            "y": 335.953125,
+            "width": 378.015625,
+            "height": 320
+          },
+          "facing": "left"
+        }
+      ]
+    },
+    {
+      "kind": "portrait-bounds",
+      "viewport": {
+        "width": 640,
+        "height": 900
+      },
+      "bounds": [
+        {
+          "canvas": {
+            "x": 29,
+            "y": 240.734375,
+            "width": 246,
+            "height": 240
+          },
+          "parent": {
+            "x": 29,
+            "y": 240.734375,
+            "width": 246,
+            "height": 240
+          },
+          "facing": "right"
+        },
+        {
+          "canvas": {
+            "x": 365,
+            "y": 240.734375,
+            "width": 246,
+            "height": 240
+          },
+          "parent": {
+            "x": 365,
+            "y": 240.734375,
+            "width": 246,
+            "height": 240
+          },
+          "facing": "left"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,917 @@
+{
+  "status": "PASS_CIBLE",
+  "scope": {
+    "runtimeCommit": "e93d43046dde641e1637faf9f72b4e5fa8d48404",
+    "description": "Real compiled local menu and Canvas. Ordinary V3 starts with sixteen living original adult combatants and four physical aircraft; normal keyboard and touch are exercised. Full geometry/four-site/return journey starts at extraction with all sixteen already down in an explicit normalized fixture; positions, visits and results are never assigned during the journey. Channels, refusal/retry, pause, reload and return use the mounted UI. Static captures require visual inspection. This does not certify a played combat victory, all80sectors, H001–H100 art, canonical fidelity, campaign rewards or deployment.",
+    "limitations": [
+      "Parcours complet de géométrie et relevés : fixture explicite des seize combattants déjà neutralisés ; aucune victoire de combat jouée revendiquée.",
+      "Huit secteurs sur80 et seize combattants originaux effectifs sur100 ; les images H001–H100 ne sont pas intégrées.",
+      "Images historiques partagées ; aucune nouvelle illustration de secteur, fidélité canonique1:1 ou publication publique certifiée."
+    ]
+  },
+  "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 YAUTJA_QA_BUILD_ID=7SF-x09qAzuBDG33EbB1i YAUTJA_QA_RUNTIME_COMMIT=e93d43046dde641e1637faf9f72b4e5fa8d48404 YAUTJA_PRESERVE_V107_OUTPUT=outputs/qa-preserve-v107/production node scripts/qa-preserve-expedition-v107.mjs > /tmp/v107-preserve-production.log 2>&1",
+  "nodeVersion": "v22.23.3",
+  "production": {
+    "mode": "compiled-app",
+    "runtimeCommit": "e93d43046dde641e1637faf9f72b4e5fa8d48404",
+    "buildId": "7SF-x09qAzuBDG33EbB1i",
+    "browserErrors": 0,
+    "checksPassed": 31,
+    "checksFailed": 0,
+    "servedBuilds": [
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+        "foundInHtml": true,
+        "htmlSha256": "6c9fcee1885af3f245912efd7807e992bd76665c2ff6911d6e8befbc2246050e"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+        "foundInHtml": true,
+        "htmlSha256": "6c9fcee1885af3f245912efd7807e992bd76665c2ff6911d6e8befbc2246050e"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+        "foundInHtml": true,
+        "htmlSha256": "5054b1b8fbd9c1d73e0b74d0be58e9daa27a52770a53e52dc333372b1b1feb58"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+        "foundInHtml": true,
+        "htmlSha256": "4f75437c46cfd392ec849dfa8480ebf2ab61be119b430461ebf699e69f8092d7"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+        "foundInHtml": true,
+        "htmlSha256": "7db80db219411134a9ecd2c891edf83bd91cf560ddcdf9927cfe537e8ab97219"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+        "foundInHtml": true,
+        "htmlSha256": "4f75437c46cfd392ec849dfa8480ebf2ab61be119b430461ebf699e69f8092d7"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+        "foundInHtml": true,
+        "htmlSha256": "7db80db219411134a9ecd2c891edf83bd91cf560ddcdf9927cfe537e8ab97219"
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+        "foundInHtml": true,
+        "htmlSha256": "4f75437c46cfd392ec849dfa8480ebf2ab61be119b430461ebf699e69f8092d7"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "name": "The ordinary free-menu choice defaults to the historical three-sector expedition",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit V3 selection creates eight sectors, sixteen living adults and four physical aircraft",
+      "status": "PASS"
+    },
+    {
+      "name": "Normal keyboard input moves the V3 actor",
+      "status": "PASS"
+    },
+    {
+      "name": "The real V3 touch-control pointer path moves the hunter",
+      "status": "PASS"
+    },
+    {
+      "name": "All eight touch targets fit the landscape viewport and are at least44px",
+      "status": "PASS"
+    },
+    {
+      "name": "The played V3 checkpoint returns to its independent free profile",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancelling an explicit V3 replacement preserves the V1 document byte for byte",
+      "status": "PASS"
+    },
+    {
+      "name": "Resuming V1 retains the4800-unit world and three sectors",
+      "status": "PASS"
+    },
+    {
+      "name": "The ordinary campaign dossier also defaults a new expedition to V1",
+      "status": "PASS"
+    },
+    {
+      "name": "The dossier selection reaches the real campaign callback and stores an explicit V3 checkpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "Campaign launch does not mint or overwrite an independent free profile",
+      "status": "PASS"
+    },
+    {
+      "name": "A future expedition remains protected and cannot be overwritten by the new choice",
+      "status": "PASS"
+    },
+    {
+      "name": "The actor physically traverses all four sectors and jumps onto the280-unit lookout",
+      "status": "PASS"
+    },
+    {
+      "name": "Survey work is a real unfinished channel after one second",
+      "status": "PASS"
+    },
+    {
+      "name": "Holding the physical upper interaction completes the survey",
+      "status": "PASS"
+    },
+    {
+      "name": "The root-basin ground post records independently through its physical channel",
+      "status": "PASS"
+    },
+    {
+      "name": "The third site is physically reached on the226-unit greenhouse platform",
+      "status": "PASS"
+    },
+    {
+      "name": "The quarry shelves form a distinct native jump route",
+      "status": "PASS"
+    },
+    {
+      "name": "The eastern quay completes four separate records after eight physically traversed sectors",
+      "status": "PASS"
+    },
+    {
+      "name": "The notebook checkpoints four exact site positions and eight physical visits",
+      "status": "PASS"
+    },
+    {
+      "name": "The notebook uses eight sectors, sixteen roles and four uninspected distant escape circuits",
+      "status": "PASS"
+    },
+    {
+      "name": "Reading the notebook pauses the real expedition",
+      "status": "PASS"
+    },
+    {
+      "name": "A real storage refusal blocks resumption and preserves the durable V3 document",
+      "status": "PASS"
+    },
+    {
+      "name": "Storage retry resumes the same physical V3 position and four records",
+      "status": "PASS"
+    },
+    {
+      "name": "The eight-sector notebook and four route records fit a390px viewport",
+      "status": "PASS"
+    },
+    {
+      "name": "Reload restores V3, sixteen identities and all four recorded observations",
+      "status": "PASS"
+    },
+    {
+      "name": "The survey returns to extraction through real leftward movement and its final channel",
+      "status": "PASS"
+    },
+    {
+      "name": "The durable outcome contains no campaign inventory, rank or honor reward",
+      "status": "PASS"
+    },
+    {
+      "name": "The closed expedition reports its completed survey without offering field actions",
+      "status": "PASS"
+    },
+    {
+      "name": "No JavaScript error occurred in the isolated browser journeys",
+      "status": "PASS"
+    },
+    {
+      "name": "Preserve runtime sources remained unchanged during the recipe",
+      "status": "PASS"
+    }
+  ],
+  "fixtures": [
+    {
+      "kind": "legacy",
+      "version": 1,
+      "reserveId": "vharuun-first-expedition",
+      "start": {
+        "x": 115,
+        "y": 438,
+        "vy": 0,
+        "facing": 1,
+        "hp": 100,
+        "energy": 100,
+        "cloak": false,
+        "cooldown": 0,
+        "moving": false
+      },
+      "visited": [
+        0
+      ],
+      "humansAlreadyDown": 0
+    },
+    {
+      "kind": "legacy-adult-campaign-entry",
+      "description": "Isolated legacy adult defaultSave fixture, not a campaign rite played in this browser",
+      "owner": "2026-09-20T00:00:00.000Z"
+    },
+    {
+      "kind": "future",
+      "version": 4,
+      "reserveId": "vharuun-transect-expedition",
+      "start": {
+        "x": 115,
+        "y": 438,
+        "vy": 0,
+        "facing": 1,
+        "hp": 100,
+        "energy": 100,
+        "cloak": false,
+        "cooldown": 0,
+        "moving": false
+      },
+      "visited": [
+        0
+      ],
+      "humansAlreadyDown": 0
+    },
+    {
+      "kind": "quiet",
+      "version": 3,
+      "reserveId": "vharuun-transect-expedition",
+      "start": {
+        "x": 115,
+        "y": 438,
+        "vy": 0,
+        "facing": 1,
+        "hp": 100,
+        "energy": 100,
+        "cloak": false,
+        "cooldown": 0,
+        "moving": false
+      },
+      "visited": [
+        0
+      ],
+      "humansAlreadyDown": 16
+    }
+  ],
+  "sourceBefore": [
+    {
+      "file": "app/game/systems/gameReserveV66.ts",
+      "sha256": "f51f44adc6128bf4d48e5418cf347827b7ffb4ba734eb4fed09c06c0e7144f43"
+    },
+    {
+      "file": "app/game/systems/gameReserveLookoutV104.ts",
+      "sha256": "ca7cff12aa8df630d3e3ea18f9c95d4dcf6aa81030b9ef1aa07f7e9fe6c4d32f"
+    },
+    {
+      "file": "app/game/systems/gameReserveExpeditionV107.ts",
+      "sha256": "a7ed34b0c944c490d4e8bc28d1ad3c35901670069e0a116a7137790b9d861b73"
+    },
+    {
+      "file": "app/game/GameClient.tsx",
+      "sha256": "d3b75ba9243ee87c7db9763faba8d5ca14b26e2876c625f90a7fc3f29e0c5a92"
+    },
+    {
+      "file": "app/game/ClanChroniclePanel.tsx",
+      "sha256": "c9f766b743fd733d25f5c2273975f19830c269c0f70b0100ad076398854c7cef"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "3d188f726510f6a3816148ca3e60c4dfcea3ef52b4bdadc8bf513b8a90425a98"
+    },
+    {
+      "file": "scripts/qa-preserve-expedition-v107.mjs",
+      "sha256": "aca397562f6076b5ba03799bdbb126da0ae7cd1a87b2a300e563273f61659048"
+    },
+    {
+      "file": "app/game/systems/gameReserveTacticalV98.ts",
+      "sha256": "97debf823149c5b3c0f07eac5fcc4fb8dc088edd19e975ea6b8978129f009ca4"
+    },
+    {
+      "file": "app/game/GameReserveV66.tsx",
+      "sha256": "69bf3bf963ccc78a4b5ca098ddfc85e9810045e7881ccd680482c4752124f0e3"
+    },
+    {
+      "file": "app/game/GameReserveEntryV66.tsx",
+      "sha256": "5e55de7da83584270b604dbd7d2898666deb0205245f6ce173ec1cf0a4720717"
+    },
+    {
+      "file": "app/game/GameReserveEntryV104.module.css",
+      "sha256": "670e0f1ebca8bd823ac05fab0988e717a9d41ba23fcb05ee13e6456bdfbdbb4c"
+    },
+    {
+      "file": "app/game/GameReserveV66.module.css",
+      "sha256": "a119b98893d28290a6f15834b4871f34c9677adb82a0ee84766dfc316bce976d"
+    },
+    {
+      "file": "app/game/GameReserveTacticalV98.tsx",
+      "sha256": "925c66bcaa389fa1e16a80697c5ec8b3b1f964dd2b187f5972d1e71cbefd2b48"
+    },
+    {
+      "file": "app/game/gameReserveV66Rendering.ts",
+      "sha256": "8973af506a5e63aaaa1dae3fa3cde4ba1eb3378ac958401d340270312b4b18c0"
+    },
+    {
+      "file": "app/game/MainMenuBonusModesV81.tsx",
+      "sha256": "259f6fb1f79977ba08b08c657bc5a91dcde6f619ae02085fc1f92922d67e85bd"
+    },
+    {
+      "file": "public/game/assets/v2/environments/jungle/layers/far-lake.webp",
+      "sha256": "f49837b76f10080e669c080ab97b3fb8a75f04d5f05ad78077ae980ccc2b76c4"
+    },
+    {
+      "file": "public/game/props/v4/root-platform.png",
+      "sha256": "8a7abf0d92d9d38b985d2c6d18bb7e441c9d5f7bd7b2c22c4bae83bbf57319db"
+    },
+    {
+      "file": "public/game/props/v4/expedition-platform.png",
+      "sha256": "e525a4a4b1393c0b4f61ef0174418512578386908f8a7b96b2c0e87f816512dd"
+    },
+    {
+      "file": "public/game/props/v4/foreground-ferns.png",
+      "sha256": "ce81d33f394f9e53188f4c0476d7c22d3a8f18e8f8514c6349bff6a0f13eb8bf"
+    },
+    {
+      "file": "public/game/ship-interior/v21/wall-machinery.webp",
+      "sha256": "3cd834ad4097567f202f8610253531e8162669447691e30c459b61a8a9d4727f"
+    },
+    {
+      "file": "public/game/sprites/hunter.webp",
+      "sha256": "629a996bda8940091263287c9ef54d100ab3e49f450ce4974e3806a54f346c6a"
+    },
+    {
+      "file": "public/game/ships/v14/game-preserve-ship.webp",
+      "sha256": "cce2adbdc45991fa2c5764d5de74bda3cf96403da7b13c5bbb05a5ccd441f8e2"
+    },
+    {
+      "file": "public/game/sprites/v7/enemies/humanoid-badblood/frontier-raider-sheet.png",
+      "sha256": "1469c756acd68d3085e9b27c1179d637813ff42a5a7790f14cbfb36bf6c4e1bb"
+    },
+    {
+      "file": "public/game/sprites/v7/enemies/humanoid-badblood/colonial-marine-sheet.png",
+      "sha256": "ee0549e4e4c97c4a9ec625069a785f3300313a99b12adbc275d46619ddacdb22"
+    },
+    {
+      "file": "public/game/sprites/v7/enemies/humanoid-badblood/colonial-sniper-sheet.png",
+      "sha256": "2bd8587014c13569142372a6b0cadbe2a34df046843536078b8c5ac6588c6599"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/systems/gameReserveV66.ts",
+      "sha256": "f51f44adc6128bf4d48e5418cf347827b7ffb4ba734eb4fed09c06c0e7144f43"
+    },
+    {
+      "file": "app/game/systems/gameReserveLookoutV104.ts",
+      "sha256": "ca7cff12aa8df630d3e3ea18f9c95d4dcf6aa81030b9ef1aa07f7e9fe6c4d32f"
+    },
+    {
+      "file": "app/game/systems/gameReserveExpeditionV107.ts",
+      "sha256": "a7ed34b0c944c490d4e8bc28d1ad3c35901670069e0a116a7137790b9d861b73"
+    },
+    {
+      "file": "app/game/GameClient.tsx",
+      "sha256": "d3b75ba9243ee87c7db9763faba8d5ca14b26e2876c625f90a7fc3f29e0c5a92"
+    },
+    {
+      "file": "app/game/ClanChroniclePanel.tsx",
+      "sha256": "c9f766b743fd733d25f5c2273975f19830c269c0f70b0100ad076398854c7cef"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "3d188f726510f6a3816148ca3e60c4dfcea3ef52b4bdadc8bf513b8a90425a98"
+    },
+    {
+      "file": "scripts/qa-preserve-expedition-v107.mjs",
+      "sha256": "aca397562f6076b5ba03799bdbb126da0ae7cd1a87b2a300e563273f61659048"
+    },
+    {
+      "file": "app/game/systems/gameReserveTacticalV98.ts",
+      "sha256": "97debf823149c5b3c0f07eac5fcc4fb8dc088edd19e975ea6b8978129f009ca4"
+    },
+    {
+      "file": "app/game/GameReserveV66.tsx",
+      "sha256": "69bf3bf963ccc78a4b5ca098ddfc85e9810045e7881ccd680482c4752124f0e3"
+    },
+    {
+      "file": "app/game/GameReserveEntryV66.tsx",
+      "sha256": "5e55de7da83584270b604dbd7d2898666deb0205245f6ce173ec1cf0a4720717"
+    },
+    {
+      "file": "app/game/GameReserveEntryV104.module.css",
+      "sha256": "670e0f1ebca8bd823ac05fab0988e717a9d41ba23fcb05ee13e6456bdfbdbb4c"
+    },
+    {
+      "file": "app/game/GameReserveV66.module.css",
+      "sha256": "a119b98893d28290a6f15834b4871f34c9677adb82a0ee84766dfc316bce976d"
+    },
+    {
+      "file": "app/game/GameReserveTacticalV98.tsx",
+      "sha256": "925c66bcaa389fa1e16a80697c5ec8b3b1f964dd2b187f5972d1e71cbefd2b48"
+    },
+    {
+      "file": "app/game/gameReserveV66Rendering.ts",
+      "sha256": "8973af506a5e63aaaa1dae3fa3cde4ba1eb3378ac958401d340270312b4b18c0"
+    },
+    {
+      "file": "app/game/MainMenuBonusModesV81.tsx",
+      "sha256": "259f6fb1f79977ba08b08c657bc5a91dcde6f619ae02085fc1f92922d67e85bd"
+    },
+    {
+      "file": "public/game/assets/v2/environments/jungle/layers/far-lake.webp",
+      "sha256": "f49837b76f10080e669c080ab97b3fb8a75f04d5f05ad78077ae980ccc2b76c4"
+    },
+    {
+      "file": "public/game/props/v4/root-platform.png",
+      "sha256": "8a7abf0d92d9d38b985d2c6d18bb7e441c9d5f7bd7b2c22c4bae83bbf57319db"
+    },
+    {
+      "file": "public/game/props/v4/expedition-platform.png",
+      "sha256": "e525a4a4b1393c0b4f61ef0174418512578386908f8a7b96b2c0e87f816512dd"
+    },
+    {
+      "file": "public/game/props/v4/foreground-ferns.png",
+      "sha256": "ce81d33f394f9e53188f4c0476d7c22d3a8f18e8f8514c6349bff6a0f13eb8bf"
+    },
+    {
+      "file": "public/game/ship-interior/v21/wall-machinery.webp",
+      "sha256": "3cd834ad4097567f202f8610253531e8162669447691e30c459b61a8a9d4727f"
+    },
+    {
+      "file": "public/game/sprites/hunter.webp",
+      "sha256": "629a996bda8940091263287c9ef54d100ab3e49f450ce4974e3806a54f346c6a"
+    },
+    {
+      "file": "public/game/ships/v14/game-preserve-ship.webp",
+      "sha256": "cce2adbdc45991fa2c5764d5de74bda3cf96403da7b13c5bbb05a5ccd441f8e2"
+    },
+    {
+      "file": "public/game/sprites/v7/enemies/humanoid-badblood/frontier-raider-sheet.png",
+      "sha256": "1469c756acd68d3085e9b27c1179d637813ff42a5a7790f14cbfb36bf6c4e1bb"
+    },
+    {
+      "file": "public/game/sprites/v7/enemies/humanoid-badblood/colonial-marine-sheet.png",
+      "sha256": "ee0549e4e4c97c4a9ec625069a785f3300313a99b12adbc275d46619ddacdb22"
+    },
+    {
+      "file": "public/game/sprites/v7/enemies/humanoid-badblood/colonial-sniper-sheet.png",
+      "sha256": "2bd8587014c13569142372a6b0cadbe2a34df046843536078b8c5ac6588c6599"
+    }
+  ],
+  "sourceBeforeAfterEqual": true,
+  "capturesOpened": [
+    "docs/qa/v107-preserve-expedition/choice-v3-desktop.png",
+    "docs/qa/v107-preserve-expedition/v3-landscape-touch.png",
+    "docs/qa/v107-preserve-expedition/legacy-v1-preserved.png",
+    "docs/qa/v107-preserve-expedition/campaign-v3-entry.png",
+    "docs/qa/v107-preserve-expedition/ridge-before-survey.png",
+    "docs/qa/v107-preserve-expedition/ridge-survey-in-progress.png",
+    "docs/qa/v107-preserve-expedition/ridge-survey-recorded.png",
+    "docs/qa/v107-preserve-expedition/root-basin-recorded.png",
+    "docs/qa/v107-preserve-expedition/greenhouse-upper-recorded.png",
+    "docs/qa/v107-preserve-expedition/quarry-native-route.png",
+    "docs/qa/v107-preserve-expedition/eastern-quay-recorded.png",
+    "docs/qa/v107-preserve-expedition/route-notebook-desktop.png",
+    "docs/qa/v107-preserve-expedition/route-notebook-mobile.png",
+    "docs/qa/v107-preserve-expedition/survey-returned-outcome.png"
+  ],
+  "recordedCaptures": [
+    {
+      "file": "docs/qa/v107-preserve-expedition/choice-v3-desktop.png",
+      "sha256": "95cc082280ccfd99bce840f769c2d7a2e4480237ddfbcfc20e4d3b4d344b426f",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 341856
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/v3-landscape-touch.png",
+      "sha256": "c706974bdebe6a12bba3b99604ce6e34ae973e7ac760d432fd47bab9e091a86e",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "bytes": 395275
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/legacy-v1-preserved.png",
+      "sha256": "dd392084a29e2c79932de7868357d593d366c28c8412c9e6a386cfb84306e3b0",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 580919
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/campaign-v3-entry.png",
+      "sha256": "ba319045f43295e53e24c686d8ef502606c997c492e9dc3bfb3d60f6fab3b8f7",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 348661
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/ridge-before-survey.png",
+      "sha256": "b4c9f326ccb5a84370fb84d987a10394e098f45e1cfed3c9f6aa837c95f40bd9",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 1571943
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/ridge-survey-in-progress.png",
+      "sha256": "e18f6c720dba0d8398c333f2a65f82b70e161e0cf27de45961fd74e8de413f86",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 1570792
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/ridge-survey-recorded.png",
+      "sha256": "8c0422668413988695b0a832ea7b5eeeb2768c30418324b95b6afce18b8dd4f2",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 1588414
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/root-basin-recorded.png",
+      "sha256": "60f4232ee74c4bc8ba8f10a8cacb4a622f961ffbba368182c73f38de17300e23",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 1492309
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/greenhouse-upper-recorded.png",
+      "sha256": "0b8b43b165df948002ed7822cd370c064493443add605e58cec038fcabb328e0",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 1591669
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/quarry-native-route.png",
+      "sha256": "1b9e983170eac2dc2fff031d078c55d84e1c7e0837436bdf1543b1646a3f889c",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 1490695
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/eastern-quay-recorded.png",
+      "sha256": "5ad59c2b86ffa6d4a43a663985013b409a122676fc3fb677e22b953644243e87",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 1534029
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/route-notebook-desktop.png",
+      "sha256": "e3aae023c37dee2bf35b15a2c929588dc16581da5b8248bc875d7f788721ed51",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 311571
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/route-notebook-mobile.png",
+      "sha256": "d1d513b06f7318c672934c22c581e4b11abdddeb355dca6e0dedbb4b89e5377e",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "bytes": 130397
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/survey-returned-outcome.png",
+      "sha256": "a7b7fb8880603229424da0f48344fbe0685ee589ec6f178d22dca559e099abe3",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 191966
+    }
+  ],
+  "outcomes": {
+    "surveyed": {
+      "tick": 4000,
+      "player": {
+        "x": 12423.199999999466,
+        "y": 290,
+        "vy": 0,
+        "facing": 1,
+        "hp": 100,
+        "energy": 100,
+        "cloak": false,
+        "cooldown": 0,
+        "moving": false
+      },
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "routeV107": {
+        "siteRecords": [
+          {
+            "recordedAt": 1688,
+            "hunterX": 5841.600000000164,
+            "hunterY": 280
+          },
+          {
+            "recordedAt": 2244,
+            "hunterX": 7411.000000000239,
+            "hunterY": 438
+          },
+          {
+            "recordedAt": 2849,
+            "hunterX": 8991.800000000123,
+            "hunterY": 226
+          },
+          {
+            "recordedAt": 3985,
+            "hunterX": 12423.199999999466,
+            "hunterY": 290
+          }
+        ]
+      }
+    },
+    "returned": {
+      "tick": 7312,
+      "status": "returned",
+      "player": {
+        "x": 118.79999999999886,
+        "y": 438,
+        "vy": 0,
+        "facing": -1,
+        "hp": 100,
+        "energy": 100,
+        "cloak": false,
+        "cooldown": 0,
+        "moving": false
+      },
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "routeV107": {
+        "siteRecords": [
+          {
+            "recordedAt": 1688,
+            "hunterX": 5841.600000000164,
+            "hunterY": 280
+          },
+          {
+            "recordedAt": 2244,
+            "hunterX": 7411.000000000239,
+            "hunterY": 438
+          },
+          {
+            "recordedAt": 2849,
+            "hunterX": 8991.800000000123,
+            "hunterY": 226
+          },
+          {
+            "recordedAt": 3985,
+            "hunterX": 12423.199999999466,
+            "hunterY": 290
+          }
+        ]
+      }
+    }
+  },
+  "routeSamples": 1071,
+  "evidence": [
+    {
+      "file": "docs/qa/v107-preserve-expedition/browser.log",
+      "sha256": "14146fa106c27571de5ad28780ba2e9a5fefdeb267fbbf56f97abc36bac635ff",
+      "bytes": 3239
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/campaign-v3-entry.png",
+      "sha256": "ba319045f43295e53e24c686d8ef502606c997c492e9dc3bfb3d60f6fab3b8f7",
+      "bytes": 348661
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/choice-v3-desktop.png",
+      "sha256": "95cc082280ccfd99bce840f769c2d7a2e4480237ddfbcfc20e4d3b4d344b426f",
+      "bytes": 341856
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/eastern-quay-recorded.png",
+      "sha256": "5ad59c2b86ffa6d4a43a663985013b409a122676fc3fb677e22b953644243e87",
+      "bytes": 1534029
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/greenhouse-upper-recorded.png",
+      "sha256": "0b8b43b165df948002ed7822cd370c064493443add605e58cec038fcabb328e0",
+      "bytes": 1591669
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/legacy-v1-preserved.png",
+      "sha256": "dd392084a29e2c79932de7868357d593d366c28c8412c9e6a386cfb84306e3b0",
+      "bytes": 580919
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/quarry-native-route.png",
+      "sha256": "1b9e983170eac2dc2fff031d078c55d84e1c7e0837436bdf1543b1646a3f889c",
+      "bytes": 1490695
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/result.json",
+      "sha256": "4e15368133cbd76d415f123ee05f5aad49979cc621e6dcad5d0c829f4057a953",
+      "bytes": 151722
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/ridge-before-survey.png",
+      "sha256": "b4c9f326ccb5a84370fb84d987a10394e098f45e1cfed3c9f6aa837c95f40bd9",
+      "bytes": 1571943
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/ridge-survey-in-progress.png",
+      "sha256": "e18f6c720dba0d8398c333f2a65f82b70e161e0cf27de45961fd74e8de413f86",
+      "bytes": 1570792
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/ridge-survey-recorded.png",
+      "sha256": "8c0422668413988695b0a832ea7b5eeeb2768c30418324b95b6afce18b8dd4f2",
+      "bytes": 1588414
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/root-basin-recorded.png",
+      "sha256": "60f4232ee74c4bc8ba8f10a8cacb4a622f961ffbba368182c73f38de17300e23",
+      "bytes": 1492309
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/route-notebook-desktop.png",
+      "sha256": "e3aae023c37dee2bf35b15a2c929588dc16581da5b8248bc875d7f788721ed51",
+      "bytes": 311571
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/route-notebook-mobile.png",
+      "sha256": "d1d513b06f7318c672934c22c581e4b11abdddeb355dca6e0dedbb4b89e5377e",
+      "bytes": 130397
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/survey-returned-outcome.png",
+      "sha256": "a7b7fb8880603229424da0f48344fbe0685ee589ec6f178d22dca559e099abe3",
+      "bytes": 191966
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/tests.log",
+      "sha256": "bd253762445cdd2070fe7931c192dadb3d1bc13abfa32bfecfba46a5b1910cf8",
+      "bytes": 7512
+    },
+    {
+      "file": "docs/qa/v107-preserve-expedition/v3-landscape-touch.png",
+      "sha256": "c706974bdebe6a12bba3b99604ce6e34ae973e7ac760d432fd47bab9e091a86e",
+      "bytes": 395275
+    }
+  ],
+  "visualInspection": {
+    "status": "PASS_CIBLE",
+    "method": "Les quatorze captures finales ont été ouvertes individuellement avec view_image en détail original et inspectées. Aucun blocage visuel observé dans ces parcours.",
+    "captures": [
+      {
+        "file": "docs/qa/v107-preserve-expedition/choice-v3-desktop.png",
+        "status": "PASS_CIBLE",
+        "observations": "Choix V3 explicite lisible, boutons accessibles dans le cadre desktop."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/v3-landscape-touch.png",
+        "status": "PASS_CIBLE",
+        "observations": "Canvas visible, huit commandes tactiles dans le cadre paysage, repère extraction et acteurs lisibles."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/legacy-v1-preserved.png",
+        "status": "PASS_CIBLE",
+        "observations": "Briefing historique trois secteurs/huit combattants conservé après annulation de remplacement."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/campaign-v3-entry.png",
+        "status": "PASS_CIBLE",
+        "observations": "Briefing campagne V3 à seize combattants/quatre groupes et quatre relevés, sans profil libre créé."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/ridge-before-survey.png",
+        "status": "PASS_CIBLE",
+        "observations": "Acteur sur le poste haut des Balises, pieds sur le support et travail encore absent."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/ridge-survey-in-progress.png",
+        "status": "PASS_CIBLE",
+        "observations": "Jauge de canal en cours et compteur encore à zéro ; acteur stationnaire."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/ridge-survey-recorded.png",
+        "status": "PASS_CIBLE",
+        "observations": "Premier relevé consigné, compteur1/4 et repère terminé."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/root-basin-recorded.png",
+        "status": "PASS_CIBLE",
+        "observations": "Poste des Racines au sol et compteur2/4, relief bas distinct."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/greenhouse-upper-recorded.png",
+        "status": "PASS_CIBLE",
+        "observations": "Troisième relevé au poste des Serres sur son support haut."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/quarry-native-route.png",
+        "status": "PASS_CIBLE",
+        "observations": "Corniches de la Carrière, appui sur la hauteur365 après sauts réels."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/eastern-quay-recorded.png",
+        "status": "PASS_CIBLE",
+        "observations": "Dernier poste du Quai sur support haut, compteur4/4."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/route-notebook-desktop.png",
+        "status": "PASS_CIBLE",
+        "observations": "Carnet suspendu lisible, carte huit secteurs et informations non observées conservées comme inconnues."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/route-notebook-mobile.png",
+        "status": "PASS_CIBLE",
+        "observations": "Carnet390px lisible et défilable verticalement sans débordement horizontal."
+      },
+      {
+        "file": "docs/qa/v107-preserve-expedition/survey-returned-outcome.png",
+        "status": "PASS_CIBLE",
+        "observations": "Bilan fermé et huit secteurs traversés visibles ; les4/4 relevés rapportés sont aussi vérifiés dans le DOM par la recette, sous la partie capturée du carnet."
+      }
+    ]
+  },
+  "targetedTests": {
+    "passed": 64,
+    "failed": 0,
+    "file": "docs/qa/v107-preserve-expedition/tests.log",
+    "lint": "docs/qa/v107-preserve-expedition/lint.log"
+  },
+  "portableFiles": [
+    "docs/v107-preserve-expedition-validation.json",
+    "docs/qa/v107-preserve-expedition/browser.log",
+    "docs/qa/v107-preserve-expedition/campaign-v3-entry.png",
+    "docs/qa/v107-preserve-expedition/choice-v3-desktop.png",
+    "docs/qa/v107-preserve-expedition/eastern-quay-recorded.png",
+    "docs/qa/v107-preserve-expedition/greenhouse-upper-recorded.png",
+    "docs/qa/v107-preserve-expedition/legacy-v1-preserved.png",
+    "docs/qa/v107-preserve-expedition/lint.log",
+    "docs/qa/v107-preserve-expedition/quarry-native-route.png",
+    "docs/qa/v107-preserve-expedition/result.json",
+    "docs/qa/v107-preserve-expedition/ridge-before-survey.png",
+    "docs/qa/v107-preserve-expedition/ridge-survey-in-progress.png",
+    "docs/qa/v107-preserve-expedition/ridge-survey-recorded.png",
+    "docs/qa/v107-preserve-expedition/root-basin-recorded.png",
+    "docs/qa/v107-preserve-expedition/route-notebook-desktop.png",
+    "docs/qa/v107-preserve-expedition/route-notebook-mobile.png",
+    "docs/qa/v107-preserve-expedition/survey-returned-outcome.png",
+    "docs/qa/v107-preserve-expedition/tests.log",
+    "docs/qa/v107-preserve-expedition/v3-landscape-touch.png"
+  ]
+}

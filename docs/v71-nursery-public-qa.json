@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "at": "2026-10-02T01:51:40.66Z",
+  "firstDrawingObserved": true,
+  "firstNativeDrawingState": {
+    "phase": "village-reveal",
+    "tick": 679,
+    "positions": [
+      530.4,
+      616.6
+    ],
+    "poses": [
+      "idle",
+      "ko"
+    ],
+    "victory": "youngling-arm-raised-rival-ko",
+    "victoryTick": 9
+  },
+  "checks": [
+    "Fresh campaign: actual keyboard nursery duel won, without seeded state, fabricated hit points or injected receipts.",
+    "Native first and raised-arm drawings observed; rival stays prone; pause freezes the actual scene clock and its camera.",
+    "Mobile portrait resumes the genuine keyboard-won checkpoint; reduced-motion victory pose and camera are static.",
+    "Wide village celebration is followed by the original moon title and the genuine next chapter, without extra rank or ship."
+  ],
+  "captures": [
+    "work-local/v71/qa/nursery-final-public/desktop-nonlethal-ko.png",
+    "work-local/v71/qa/nursery-final-public/desktop-village-first-native-gesture.png",
+    "work-local/v71/qa/nursery-final-public/desktop-village-raised-arm.png",
+    "work-local/v71/qa/nursery-final-public/desktop-village-raised-arm-native-canvas.png",
+    "work-local/v71/qa/nursery-final-public/mobile-reduced-motion-wide-victory.png",
+    "work-local/v71/qa/nursery-final-public/mobile-reduced-motion-native-canvas.png",
+    "work-local/v71/qa/nursery-final-public/desktop-full-reveal-arena-and-moon.png",
+    "work-local/v71/qa/nursery-final-public/moon-title-without-floating-actors.png"
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": "The fresh nursery duel was browser-played. Mobile uses its actually saved victory checkpoint. Existing native V47 art is preserved; the gesture has two distinct bitmap drawings, not a newly generated longer atlas. No canonical map or complete game claim.",
+  "phase": "v71-final-public",
+  "sourceSHA": "e409775173407a2cb21f42bb57eebc947a7003a8",
+  "deploymentId": "dpl_2hLyn51LArJ8tmJ1Tk9MfX34JuEa",
+  "captureReview": {
+    "count": 8,
+    "inspected": 8,
+    "status": "PASS",
+    "notes": "All eight public PNG captures visually inspected. The first native gesture was genuinely paused at victoryTick 9 and is visible under the normal scenery crossfade; the raised-arm native pose and prone rival remain anchored to the arena floor through the wide reveal. Mobile portrait uses decoded artwork and the genuine won checkpoint; red-moon title has no floating actors."
+  },
+  "retainedDiagnostic": "work-local/v71/qa/nursery-public-first-frame-window-diagnostic/report.json",
+  "qaMethod": "Read-only MutationObserver activates the existing visible Pause button at victoryTick 8. No simulation clock, combat state, checkpoint or durable progress is injected. Actual frozen public canvas pixels are captured."
+}

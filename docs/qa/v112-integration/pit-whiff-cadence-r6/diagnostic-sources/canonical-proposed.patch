@@ -1,0 +1,53 @@
+--- a/scripts/qa-pit-backward-throws-v112.mjs
++++ b/scripts/qa-pit-backward-throws-v112.mjs
+@@ -170,7 +170,7 @@
+ async function observedOutOfRangeWhiff(slot, label, ids) {
+   const spec = api.PIT_WORKBOOK_BACKWARD_THROW_V112, totalFrames = spec.startup + spec.active + spec.recovery;
+   const before = await read(), observation = {kind: 'played-observed-whiff', label, slot, before,
+-    started: null, recovered: null, startFrame: null, effectiveFrames: null, samples: [before], maximumPolls: 180};
++    started: null, recovered: null, startFrame: null, effectiveFrames: null, samples: [before], clockAdvances: [], maximumPolls: 180};
+   observations.push(observation);
+   const require = (name, condition, state) => {if (!condition) check(label + ': ' + name, false, {before, started: observation.started, state, samples: observation.samples});};
+   const validate = state => {
+@@ -209,7 +209,10 @@
+         Number.isInteger(action.actionFrame) && action.actionFrame >= 0 && action.actionFrame < totalFrames &&
+         state.frame - action.actionFrame === observation.startFrame && action.phase === expectedPhase, state);
+     }
+-    await page.clock.runFor(17); state = await read();
++    const remainingFrames = observation.started ? totalFrames - (state.frame - observation.startFrame) : totalFrames;
++    const clockStepMs = remainingFrames <= 3 ? 1 : 17;
++    observation.clockAdvances.push({fromFrame: state.frame, milliseconds: clockStepMs});
++    await page.clock.runFor(clockStepMs); state = await read();
+   }
+   check(label + ': actual startup and recovery are both observed within the bounded whiff', Boolean(observation.started && observation.recovered), observation);
+   check(label + ': real out-of-range4+L+M whiffs without damage or an invented target', observation.samples.every(sample =>
+--- a/tests/pit-browser-whiff-observation-v112.test.mjs
++++ b/tests/pit-browser-whiff-observation-v112.test.mjs
+@@ -9,7 +9,7 @@
+ const bundled=await build({stdin:{contents:"export * from './app/game/systems/pitCombat';export * from './app/game/systems/pitWorkbookCombatV112';",resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node'});
+ const api=await import('data:text/javascript;base64,'+Buffer.from(bundled.outputFiles[0].text).toString('base64'));
+ function actualRoutine({consume=true,stall=false,fault}={}){
+- let state=api.createPitCombatState('feral-hunter','scar',{normalMoves:'workbook-v112',mode:'training'}),calls=0;
++ let state=api.createPitCombatState('feral-hunter','scar',{normalMoves:'workbook-v112',mode:'training'}),calls=0,clockMillis=0;
+  const observations=[],checks=[];
+  const read=async()=>{
+   const snapshot={frame:state.frame,phase:'fight',combatPhase:state.phase,blocked:'false',throw:state.sourceThrowV112,forwardThrow:state.sourceThrowV109,
+@@ -19,7 +19,7 @@
+  };
+  const scope={api,read,observations,launch:async()=>{if(consume)state=api.stepPitCombat(state,[{throw:true,left:true},{}]);},
+   check:(name,condition,detail)=>{checks.push({name,condition});if(!condition){const error=Error(name);error.detail=detail;throw error;}},
+-  page:{clock:{runFor:async ms=>{assert.equal(ms,17);calls++;if(!stall&&calls%3!==0)state=api.stepPitCombat(state);}}}};
++  page:{clock:{runFor:async ms=>{assert([1,17].includes(ms));calls++;if(!stall&&calls%3!==0){clockMillis+=ms;while(clockMillis>=1000/60){clockMillis-=1000/60;state=api.stepPitCombat(state);}}}}}};
+  vm.runInNewContext(declaration.getText(source)+';globalThis.execute=observedOutOfRangeWhiff;',scope);
+  return{execute:()=>scope.execute(0,'actual-observer-fixture',['feral-hunter','scar']),observations,checks,calls:()=>calls};
+ }
+@@ -49,3 +49,9 @@
+   const x=actualRoutine({fault});await assert.rejects(x.execute(),/before all source frames|source windows stay coherent|source-frame bound/);
+  }
+ });
++
++test('the actual observer narrows only its final three source frames and preserves the existing 46-frame upper bound', async()=>{
++ const x=actualRoutine();await x.execute();const o=x.observations[0];
++ assert.equal(o.effectiveFrames,45);assert(o.clockAdvances.some(a=>a.milliseconds===1));assert(o.clockAdvances.some(a=>a.milliseconds===17));
++ assert(o.clockAdvances.filter(a=>a.milliseconds===1).every(a=>45-(a.fromFrame-o.startFrame)<=3));
++});

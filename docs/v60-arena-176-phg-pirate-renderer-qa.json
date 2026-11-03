@@ -1,0 +1,1374 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-176-phg-pirate",
+  "compositionDigest": "9258fa53b1f93d2e94b727d61f49bc545e83b91347ae97f4797e425080d8de67",
+  "checkedAt": "2026-09-30T15:43:50.477Z",
+  "surface": "isolated-renderer-with-real-native-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-176-phg-pirate/p0-depth.png",
+      "sha256": "f0bc1ec723450545a5464ad1b0e604d86e0cd8359c00c489bc98ab71fd131977",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-176-phg-pirate/p2-maritime-post.png",
+      "sha256": "17247b134af125aad68bf3aebd0a74ee8c579ddab5874f307970a76e36b725ed",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-176-phg-pirate/p3-maritime-crate.png",
+      "sha256": "5637a6b50e39807e4a03168b4360f4d23654f4cc3d4d0d8f8aa6580c5a7a0010",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-176-phg-pirate/p4-weathered-deck.png",
+      "sha256": "5b0d5e7164d050832fae2c3340a9b5983f64002d7bd6ab62d67778c2dade6be9",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-01.png",
+      "sha256": "cb90e3430ded0f3a3a74d52b3efe0a9d303b4206adcc58d563244b71ff63ff32",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-02.png",
+      "sha256": "582a2ac307666b012ddc35100c1659666d4220c243b84a3270ba70d8fba5e0d7",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-03.png",
+      "sha256": "8bb4451f7222417d8a48f2d3c1e6a224ba1b9ff4cf332d895ae0f951a8c63cc5",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 8,
+    "expectedImages": 8,
+    "failed": [],
+    "fighterFailures": [],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-maritime-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-maritime-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-maritime-crate",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            341,
+            98
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            750,
+            140
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            244,
+            341
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            341,
+            98
+          ],
+          "pivot": [
+            341,
+            98
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            750,
+            140
+          ],
+          "pivot": [
+            750,
+            140
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            244,
+            341
+          ],
+          "pivot": [
+            244,
+            341
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "asset": "p2-maritime-post",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p2-maritime-post",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "asset": "p3-maritime-crate",
+          "visible": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            337.1775,
+            93.01312499999996
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            757.4250000000001,
+            136.16812499999997
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            237.50999999999996,
+            342.695625
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            337.1775,
+            93.01312499999996
+          ],
+          "pivot": [
+            337.1775,
+            93.01312499999996
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            757.4250000000001,
+            136.16812499999997
+          ],
+          "pivot": [
+            757.4250000000001,
+            136.16812499999997
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            237.50999999999996,
+            342.695625
+          ],
+          "pivot": [
+            237.50999999999996,
+            342.695625
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-maritime-post",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-maritime-post",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-maritime-crate",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            348.0975,
+            94.13000000000001
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            766.3,
+            137.07500000000002
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            248.915,
+            342.5975
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            348.0975,
+            94.13000000000001
+          ],
+          "pivot": [
+            348.0975,
+            94.13000000000001
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            766.3,
+            137.07500000000002
+          ],
+          "pivot": [
+            766.3,
+            137.07500000000002
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            248.915,
+            342.5975
+          ],
+          "pivot": [
+            248.915,
+            342.5975
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "asset": "p2-maritime-post",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p2-maritime-post",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "asset": "p3-maritime-crate",
+          "visible": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            327.64750000000004,
+            94.13000000000001
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            745.85,
+            137.07500000000002
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            228.465,
+            342.5975
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            327.64750000000004,
+            94.13000000000001
+          ],
+          "pivot": [
+            327.64750000000004,
+            94.13000000000001
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            745.85,
+            137.07500000000002
+          ],
+          "pivot": [
+            745.85,
+            137.07500000000002
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            228.465,
+            342.5975
+          ],
+          "pivot": [
+            228.465,
+            342.5975
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "asset": "p2-maritime-post",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p2-maritime-post",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "asset": "p3-maritime-crate",
+          "visible": 398,
+          "expected": 398,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            342.39,
+            99.71999999999998
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            747.3,
+            141.29999999999998
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            246.36,
+            340.28999999999996
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            342.39,
+            99.71999999999998
+          ],
+          "pivot": [
+            342.39,
+            99.71999999999998
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            747.3,
+            141.29999999999998
+          ],
+          "pivot": [
+            747.3,
+            141.29999999999998
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            246.36,
+            340.28999999999996
+          ],
+          "pivot": [
+            246.36,
+            340.28999999999996
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "asset": "p2-maritime-post",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p2-maritime-post",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "asset": "p3-maritime-crate",
+          "visible": 414,
+          "expected": 414,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            354.90000000000003,
+            115.2
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            723,
+            153
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            267.6,
+            333.90000000000003
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            354.90000000000003,
+            115.2
+          ],
+          "pivot": [
+            354.90000000000003,
+            115.2
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            723,
+            153
+          ],
+          "pivot": [
+            723,
+            153
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            267.6,
+            333.90000000000003
+          ],
+          "pivot": [
+            267.6,
+            333.90000000000003
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-maritime-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-maritime-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-maritime-crate",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            341,
+            98
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            750,
+            140
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            244,
+            341
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            341,
+            98
+          ],
+          "pivot": [
+            341,
+            98
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            750,
+            140
+          ],
+          "pivot": [
+            750,
+            140
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            244,
+            341
+          ],
+          "pivot": [
+            244,
+            341
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "asset": "p2-maritime-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p2-maritime-post",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "asset": "p3-maritime-crate",
+          "visible": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorCoversScreen": true,
+      "hangingProps": [],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            341,
+            98
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            750,
+            140
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-176-phg-pirate/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            244,
+            341
+          ]
+        }
+      ],
+      "lifeAttachments": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            341,
+            98
+          ],
+          "pivot": [
+            341,
+            98
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "pass": "P1",
+          "attachment": [
+            750,
+            140
+          ],
+          "pivot": [
+            750,
+            140
+          ],
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "pass": "P2",
+          "attachment": [
+            244,
+            341
+          ],
+          "pivot": [
+            244,
+            341
+          ],
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "lifeAttachmentsStable": true
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 1128,
+      "attachment": [
+        750,
+        140
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 1148,
+      "attachment": [
+        750,
+        140
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 1168,
+      "attachment": [
+        750,
+        140
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 1188,
+      "attachment": [
+        750,
+        140
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 1208,
+      "attachment": [
+        750,
+        140
+      ]
+    },
+    {
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 1228,
+      "attachment": [
+        750,
+        140
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 2115,
+      "attachment": [
+        244,
+        341
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 2135,
+      "attachment": [
+        244,
+        341
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 2155,
+      "attachment": [
+        244,
+        341
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 2175,
+      "attachment": [
+        244,
+        341
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 2195,
+      "attachment": [
+        244,
+        341
+      ]
+    },
+    {
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 2215,
+      "attachment": [
+        244,
+        341
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 3402,
+      "attachment": [
+        341,
+        98
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 3422,
+      "attachment": [
+        341,
+        98
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 3442,
+      "attachment": [
+        341,
+        98
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 3462,
+      "attachment": [
+        341,
+        98
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 3482,
+      "attachment": [
+        341,
+        98
+      ]
+    },
+    {
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 3502,
+      "attachment": [
+        341,
+        98
+      ]
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v60/pit-arenas/arena-176-phg-pirate/p4-weathered-deck.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-176-phg-pirate\\center.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-176-phg-pirate\\left-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-176-phg-pirate\\right-corner.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-176-phg-pirate\\wide.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-176-phg-pirate\\life-03-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-176-phg-pirate\\life-01-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-176-phg-pirate\\life-02-active.png",
+    "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v60\\qa\\renderer\\arena-176-phg-pirate\\mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "a643eb397ca3f5788d3b939e338e40b383f06b482c711c1b97eedb712649f52f",
+    "left-corner.png": "2ff3fb1cda54a5c3f7910b8fc702ad79f9366f3f04efddb3bae04495de1aeae1",
+    "right-corner.png": "a0cf8b66183b6271fd125560e3df0819d670295081f4097deaac9aa30c18a9e6",
+    "wide.png": "993c47f77a4125be19041ecb0b8d670e080898cf3f750204b0fbbfb967d06691",
+    "life-03-active.png": "520d145d0e97af023759452b7fc273c822204b2efcb58f0fbab6348950f94e93",
+    "life-01-active.png": "911b8e5ce1d26c10e5f4acfede06b266ca8f23c3048c7ea2bd9dd5dc75dd7148",
+    "life-02-active.png": "d3cbf0ccd01692b1b07616b3a905eb74c4b078b8cea1f8841797c4f3705dcdf3",
+    "mobile.png": "9f5645b4c994b539103566a5907fb8ba6ba1a7ad85dc10b81825e58e910c8f2f"
+  },
+  "limit": "Eight camera views and eighteen actual native source cells; full application and manual visual review remain separate."
+}

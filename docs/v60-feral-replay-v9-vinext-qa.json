@@ -1,0 +1,118 @@
+{
+  "status": "PASS",
+  "version": "V60",
+  "url": "http://127.0.0.1:4187",
+  "setup": "A fresh isolated browser context starts with an explicitly seeded pre-existing campaign and V9 replay sidecar. Playback is launched by the actual REVOIR LE DERNIER DUEL UI button; this is not file-import QA and no runtime combat state is injected.",
+  "fixture": "tests/fixtures/pit-replay-v58-feral-v9.json",
+  "engineVersion": 9,
+  "checksum": "b3244626",
+  "expectedHealth": [
+    960,
+    438
+  ],
+  "final": {
+    "frame": 360,
+    "phase": "round",
+    "life": [
+      960,
+      438
+    ],
+    "entities": [],
+    "plasma": 0
+  },
+  "nativeLauncherDrawCount": 0,
+  "legacyBodySources": {
+    "/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png": 337,
+    "/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png": 12,
+    "/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-backward-contacts-v34.png": 12
+  },
+  "observedBoltFrames": 121,
+  "firstBoltSample": {
+    "frame": 10,
+    "entities": [
+      {
+        "id": 1,
+        "ownerSlot": 0,
+        "techniqueId": "feral-guided-bolts-v58",
+        "phase": "active",
+        "age": 1,
+        "hitCount": 0,
+        "x": 324.57595685481556,
+        "y": 50.82014022723866,
+        "bolt": {
+          "volleyId": 1,
+          "index": 0,
+          "guided": true,
+          "targetX": 612.9999999999995,
+          "targetY": 69.6,
+          "velocityX": 13.97595685481552,
+          "velocityY": 0.8201402272386606
+        }
+      },
+      {
+        "id": 2,
+        "ownerSlot": 0,
+        "techniqueId": "feral-guided-bolts-v58",
+        "phase": "active",
+        "age": 1,
+        "hitCount": 0,
+        "x": 324.59317843186363,
+        "y": 58.43698669776925,
+        "bolt": {
+          "volleyId": 1,
+          "index": 1,
+          "guided": true,
+          "targetX": 612.9999999999995,
+          "targetY": 69.6,
+          "velocityX": 13.993178431863605,
+          "velocityY": 0.43698669776924826
+        }
+      },
+      {
+        "id": 3,
+        "ownerSlot": 0,
+        "techniqueId": "feral-guided-bolts-v58",
+        "phase": "active",
+        "age": 1,
+        "hitCount": 0,
+        "x": 324.59990025303875,
+        "y": 66.0528479419298,
+        "bolt": {
+          "volleyId": 1,
+          "index": 2,
+          "guided": true,
+          "targetX": 612.9999999999995,
+          "targetY": 69.6,
+          "velocityX": 13.999900253038728,
+          "velocityY": 0.05284794192979597
+        }
+      }
+    ],
+    "positions": [
+      {
+        "x": 300,
+        "y": 0
+      },
+      {
+        "x": 613,
+        "y": 0
+      }
+    ]
+  },
+  "storageUnchanged": true,
+  "captures": [
+    "v9-physical-flight-without-v59-launcher.png",
+    "v9-replay-completed.png"
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "visualInspection": {
+    "status": "reviewed",
+    "reviewer": "v60_stage_runtime_audit",
+    "notes": "Both native browser screenshots inspected: historical V9 torso-origin physical bolts and Feral body appear in the duel; no modern V59 launcher pose substituted. Replay completion dialog readable and life bars consistent with recorded final state. This validates historical playback, not new import UI or new V60 animations.",
+    "captures": {
+      "v9-physical-flight-without-v59-launcher.png": "1349317141128d02726ab80a78c36f57084661ce1524afbbc60a45b34a2fbcda",
+      "v9-replay-completed.png": "ea634d56deae0000bcdb873ff5a30f8a309749e202a12521b68c85c040f3046c"
+    }
+  }
+}

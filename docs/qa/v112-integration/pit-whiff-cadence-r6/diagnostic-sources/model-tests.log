@@ -1,0 +1,15 @@
+✔ the actual whiff observer proves real startup and45 effective frames even when clock calls sometimes produce no simulation tick (14.96186ms)
+✔ an input never consumed by the real simulation cannot masquerade as a successful whiff (2.12941ms)
+✔ a capture during the observed interval is refused immediately and remains in the failure trace (1.128331ms)
+✔ a health change during the observed interval is refused rather than hidden by a later recovery (1.125386ms)
+✔ a stopped or blocked simulation cannot pass and cannot make the actual observer wait forever (13.90784ms)
+✔ premature idle, oversized action clocks and frame-window overruns are rejected by the actual routine (15.841395ms)
+✔ the actual observer narrows only its final three source frames and preserves the existing 46-frame upper bound (27.460696ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1784.450033

@@ -1,0 +1,125 @@
+TAP version 13
+# Subtest: V112 reproduces 77 natural contacts on later public paving and admits the other 315 unchanged sources without relocating or shrinking anything
+ok 1 - V112 reproduces 77 natural contacts on later public paving and admits the other 315 unchanged sources without relocating or shrinking anything
+  ---
+  duration_ms: 276.616572
+  type: 'test'
+  ...
+# Subtest: all 39 drawing formations and material masks derive solely from admitted roots, preserving deliberate native civic planters
+ok 2 - all 39 drawing formations and material masks derive solely from admitted roots, preserving deliberate native civic planters
+  ---
+  duration_ms: 685.744648
+  type: 'test'
+  ...
+# Subtest: the current scene renders all 315 native roots exactly once, no refused sprite, and no natural plane on other floors
+ok 3 - the current scene renders all 315 native roots exactly once, no refused sprite, and no natural plane on other floors
+  ---
+  duration_ms: 1505.794862
+  type: 'test'
+  ...
+# Subtest: the live codex marks refused placements as authoring with no world footprint and retains exact admitted roots
+not ok 4 - the live codex marks refused placements as authoring with no world footprint and retains exact admitted roots
+  ---
+  duration_ms: 397.697335
+  type: 'test'
+  location: '/workspace/yautja-la-longue-chasse/tests/homeworld-natural-placements-v112.test.mjs:67:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + null
+    - {
+    -   bottom: 4470,
+    -   left: 8087.5,
+    -   right: 8332.5,
+    -   top: 4375
+    - }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    left: 8087.5
+    right: 8332.5
+    top: 4375
+    bottom: 4470
+  actual: ~
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-natural-placements-v112.test.mjs:76:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V112 natural fronts remain attached to their source top edge and use no second piece below an intervening floor
+ok 5 - V112 natural fronts remain attached to their source top edge and use no second piece below an intervening floor
+  ---
+  duration_ms: 1.022745
+  type: 'test'
+  ...
+# Subtest: V112 sweeps floor corners and sloping boundaries without exposing faces through the first paved surface
+ok 6 - V112 sweeps floor corners and sloping boundaries without exposing faces through the first paved surface
+  ---
+  duration_ms: 0.276016
+  type: 'test'
+  ...
+# Subtest: the real causeway witness has no retained old floating quad and every natural face paints from one local native source row
+ok 7 - the real causeway witness has no retained old floating quad and every natural face paints from one local native source row
+  ---
+  duration_ms: 2758.152312
+  type: 'test'
+  ...
+# Subtest: V112 admits six fixed places, retains four explicit refusals, and recompiles without colliding against itself
+ok 8 - V112 admits six fixed places, retains four explicit refusals, and recompiles without colliding against itself
+  ---
+  duration_ms: 57.402125
+  type: 'test'
+  ...
+# Subtest: every admitted contact is supported and solid on its own floor while the actual operator body and route stay free
+ok 9 - every admitted contact is supported and solid on its own floor while the actual operator body and route stay free
+  ---
+  duration_ms: 7142.267345
+  type: 'test'
+  ...
+# Subtest: the retained native bytes, scale, source orientation, projected foot and depth drive the actual six-instance renderer
+ok 10 - the retained native bytes, scale, source orientation, projected foot and depth drive the actual six-instance renderer
+  ---
+  duration_ms: 17.962427
+  type: 'test'
+  ...
+# Subtest: the real actor walks then stops against a visible V112 place without teleporting and every retained door approach remains free
+ok 11 - the real actor walks then stops against a visible V112 place without teleporting and every retained door approach remains free
+  ---
+  duration_ms: 139.080852
+  type: 'test'
+  ...
+# Subtest: V112 reproduces six unsupported retained foundations then supports every native edge of all 51 facades
+ok 12 - V112 reproduces six unsupported retained foundations then supports every native edge of all 51 facades
+  ---
+  duration_ms: 1567.261159
+  type: 'test'
+  ...
+# Subtest: foundation lips remain local to retained solids on their true floor and never relocate a threshold or make a whole outside district walkable
+ok 13 - foundation lips remain local to retained solids on their true floor and never relocate a threshold or make a whole outside district walkable
+  ---
+  duration_ms: 2.688327
+  type: 'test'
+  ...
+# Subtest: the real world draw pass paints the exact six physical plinth polygons and shares exposed foundation extraction
+ok 14 - the real world draw pass paints the exact six physical plinth polygons and shares exposed foundation extraction
+  ---
+  duration_ms: 1819.308191
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 13
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 22672.821468

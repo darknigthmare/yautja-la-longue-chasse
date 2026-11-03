@@ -1,0 +1,78 @@
+{
+  "surface": "Next.js https://yautja-la-longue-chasse.vercel.app, real GameClient navigation, no injected progress",
+  "stages": [
+    "stable title loaded",
+    "Play opens real deck",
+    "Port trophy inspected and durably stored",
+    "Full expedition completed; durable proof saved and same port position restored",
+    "Armory service suspends and preserves city position",
+    "PIT right opponent V23 faces left with verified mirrored bitmap",
+    "PIT training displays two loaded static bitmaps and keeps city suspended",
+    "PIT suspends city and returns to same arena entrance",
+    "Reload preserves proof and renders completed report in city journal"
+  ],
+  "proof": {
+    "expeditionId": "ash-marches",
+    "trueTrailInspected": true,
+    "falseTrailRejected": true,
+    "obstacleMoved": true,
+    "convoyRecovered": true,
+    "shortcutOpened": true,
+    "secretFound": true,
+    "ticks": 1326
+  },
+  "pitSelectionArt": {
+    "src": "/game/assets/v23/pit/fighters/berserker-key-art.webp",
+    "nativeFacing": "right",
+    "facing": "left",
+    "transform": "matrix(-1, 0, 0, 1, 0, 0)",
+    "naturalWidth": 1024,
+    "naturalHeight": 1536
+  },
+  "pitCombatArt": [
+    {
+      "fighter": "jungle-hunter",
+      "status": "static-bitmap",
+      "text": "Jungle Hunter · image du chasseur · pose fixe provisoire"
+    },
+    {
+      "fighter": "berserker",
+      "status": "static-bitmap",
+      "text": "Berserker / Mr. Black · image du chasseur · pose fixe provisoire"
+    }
+  ],
+  "positions": {
+    "beforeExpeditionCity": {
+      "x": 1083,
+      "y": 1500
+    },
+    "servicePosition": {
+      "x": 1698,
+      "y": 1500
+    },
+    "pitPosition": {
+      "x": 1703,
+      "y": 500
+    }
+  },
+  "checks": {
+    "titleToDeck": true,
+    "portEvidencePersisted": true,
+    "fullExpeditionThroughKeyboard": true,
+    "citySuspendedDuringExpedition": true,
+    "durableProof": true,
+    "serviceReturnsSamePosition": true,
+    "pitSuspendsCity": true,
+    "rightOpponentFacesLeft": true,
+    "trainingShowsTwoLoadedBitmaps": true,
+    "reloadKeepsProofAndJournal": true
+  },
+  "errors": [],
+  "failedAssets": [],
+  "notes": [
+    "PIT exit button names the city destination when entered from its arena."
+  ],
+  "sourceCommit": "866a797343761a8d0ee23d3fb88707a597d427ba",
+  "deploymentId": "dpl_74EH6GwPL9HEVmCHNXoBiXG944dv",
+  "passed": true
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-srf-obsidian-shard-bed-03-ridge",
+  "definitionId": "environment-prop-v19-volcano-srf-obsidian-shard-bed-03-ridge",
+  "biome": "volcano",
+  "role": "surface",
+  "archetypeId": "obsidian-shard-bed",
+  "variantId": "03-ridge",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\srf-obsidian-shard-bed-03-ridge.png",
+    "bytes": 1552760,
+    "sha256": "a55452550ab512308d73c2428959715081a5970e947f079cf1a1047293d18e0e",
+    "width": 1536,
+    "height": 1024
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\srf\\masters\\srf-obsidian-shard-bed-03-ridge-chroma.webp",
+    "bytes": 149044,
+    "sha256": "f23e4847e006d0d74764cfb3e1181a77241d16ae8c9e56902e5e04061c6d56a8"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\srf\\srf-obsidian-shard-bed-03-ridge.webp",
+    "bytes": 44492,
+    "sha256": "833c6df118e6c42ebc9db3a5e1d00495998a0adcf94d6b0776ea719783b8ec30"
+  },
+  "chromaInspection": {
+    "width": 1536,
+    "height": 1024,
+    "sampledKey": [
+      5,
+      249,
+      18
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 1
+  },
+  "helperInspection": {
+    "width": 1536,
+    "height": 1024,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.159833,
+    "transparentRatio": 0.839762,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 768,
+    "height": 205,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.382412,
+    "transparentRatio": 0.616514,
+    "dirtyTransparentPixels": 11210
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-wR4rOj\\srf-obsidian-shard-bed-03-ridge-alpha.png\r\nKey color: #05f912\r\nTransparent pixels: 1320831/1572864\r\nPartially transparent pixels: 9326/1572864",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}

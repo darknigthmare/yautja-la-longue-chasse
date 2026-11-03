@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-22T19:47:00.494Z",
+  "scope": "Focused PR11 review follow-up, local browser reproduction and deterministic V100 refresh. Counts are separate scopes and must not be added to historical totals.",
+  "source": {
+    "isolatedCommit": "a6418130cc5b453255c347efaee3576255100c89",
+    "codeFixCommit": "b69f437c95f52e3ec92fd397931fd52338e6eb61",
+    "baseMainIncludesMergedPr10": "d71e995a",
+    "isolation": "git archive of the exact committed tree; selected historical inputs plus committed app/scripts/tests/config; only node_modules symlinked to the existing locked installation. No dirty V104 app files copied.",
+    "node": "22.23.3"
+  },
+  "changes": [
+    "Reuse canonical cached V102/V103 worlds before parsing again, and dispatch by validated version prefix without repeated full parsing at every supply node.",
+    "Keep all browser assertions. Emit escaped, bounded GitHub Actions failure annotations only on failed journeys so their exact cause can be read through the annotations API.",
+    "Allow an isolated V102 report path, consistent with the existing V103 report override.",
+    "Refresh V100 source fingerprints and derived OOXML from the clean committed tree, without changing V100 facts, statuses, provenance or open work."
+  ],
+  "targetedNodeTests": {
+    "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/planet-generator-v102.test.mjs tests/planet-generator-v103.test.mjs tests/planet-generator-integration-v103.test.mjs",
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0,
+    "log": {
+      "path": "/tmp/planet-cache-review-oct22.log",
+      "sha256": "15dc09796c1eea1f00840747537f5afbc83dd57d0c551a0d1b89385c449fb25b",
+      "bytes": 3609
+    },
+    "limits": "Targeted generator/domain/integration suite. Overlaps the historical 148-test evidence; not a new unique global total."
+  },
+  "planetBrowser": {
+    "commandOrder": [
+      "node scripts/qa-planet-regional-materials-v102.mjs",
+      "node scripts/qa-planet-generator-v102.mjs",
+      "node scripts/qa-planet-generator-v103.mjs"
+    ],
+    "server": "Next dev 16.3.5 on loopback port3101",
+    "browser": "Chromium / SwiftShader",
+    "node": "22.23.3",
+    "results": [
+      {
+        "name": "regionalMaterialsV102",
+        "path": "outputs/qa-planet-regional-oct22/regional-material-checks.json",
+        "sha256": "43d0f270ac8f8a47c38665f787919592dd3b6d811d489c5c66365155e83a306b",
+        "passed": true,
+        "checks": 9,
+        "errors": []
+      },
+      {
+        "name": "generatorV102",
+        "path": "outputs/qa-planet-generator-oct22/ui-qa.json",
+        "sha256": "d37cf26c0319d3fabef5c1714307e8c30f04da5605f6437937ffa033f77b5426",
+        "passed": true,
+        "checks": 35,
+        "errors": []
+      },
+      {
+        "name": "generatorV103",
+        "path": "outputs/qa-planet-generator-v103-oct22/ui-qa.json",
+        "sha256": "75bab46e488cdbaaffed6942faf5d74555d19bfceb80b4b0efe51d9bc2a808d4",
+        "passed": true,
+        "checks": 36,
+        "errors": []
+      }
+    ],
+    "sourceReceiptsMatchCommittedGeneratorFiles": true,
+    "inspectedScreenshots": [
+      {
+        "path": "outputs/qa-planet-generator-v103-oct22/desktop-generator.png",
+        "sha256": "409188e42a084789f2e8253f9a3390b030002ca8993f926968e99a2aa1d059f4",
+        "opened": true,
+        "conclusion": "No certain blocking visual defect in this static screenshot."
+      },
+      {
+        "path": "outputs/qa-planet-generator-v103-oct22/large-fragmented-atlas.png",
+        "sha256": "a88fcf984cd70fb8cd6b2716d9ba9c30f029f6e1363abc8043b3d4af246000ff",
+        "opened": true,
+        "conclusion": "No certain blocking visual defect in this static screenshot."
+      },
+      {
+        "path": "outputs/qa-planet-generator-v103-oct22/mobile-large-atlas.png",
+        "sha256": "1252adacc4c6ef0e991ea16b8e565a00ef2b5324437aa1d91931b6df8650caac",
+        "opened": true,
+        "conclusion": "No certain blocking visual defect in this static screenshot."
+      }
+    ],
+    "logs": [
+      {
+        "path": "/tmp/planet-regional-oct22.log",
+        "sha256": "a2af45ce6b3ddba50801c787cfd6730c0ce7ee4d15232052eb895d5ede64744c",
+        "bytes": 145
+      },
+      {
+        "path": "/tmp/planet-generator-v102-oct22.log",
+        "sha256": "71154906b6f0419cb2341de95c64adb77d195d2b46a05315c2987c5a789e8bc5",
+        "bytes": 529
+      },
+      {
+        "path": "/tmp/planet-generator-v103-oct22.log",
+        "sha256": "9bfe123978f51fb91ef5791e3cfe0d653a52b38c01d665eaf1900fade1fced79",
+        "bytes": 465
+      }
+    ],
+    "limits": [
+      "Local development server, not a production/CDN certification.",
+      "Three named static V103 screenshots opened; remaining captures were generated but not visually certified by this report.",
+      "V102 run overlapped the parent cache performance edits; V103 ran after those edits. No frozen whole-app snapshot asserted.",
+      "Original failed CI logs remain inaccessible; local journeys did not reproduce the failure. CI-only escaped annotations were added for the next exact-commit run."
+    ]
+  },
+  "clanBrowser": {
+    "command": "AUDIT_CHROME_EXECUTABLE=/usr/bin/chromium AUDIT_CHROME_HEADED=1 xvfb-run -a node scripts/qa-clan-war-browser-v94.mjs",
+    "node": "22.23.3",
+    "browser": "154.0.8037.57",
+    "runs": 2,
+    "groupsPerRun": 9,
+    "uniqueGroups": 9,
+    "passed": true,
+    "report": {
+      "path": "outputs/qa-audit-v94/clan-war-browser.json",
+      "sha256": "6e27792d05835ea24bf8a8e9470bdc5feb0e82ec463b56ebdc7f92a5d68ec9c1",
+      "bytes": 1405
+    },
+    "logs": [
+      {
+        "path": "/tmp/clan-browser-ci-headed-oct22.log",
+        "sha256": "11da52880d8d7bd8401b652eece59b64b738fc57b8a8c47eef321a7c12276e9a",
+        "bytes": 2402
+      },
+      {
+        "path": "/tmp/clan-browser-ci-headed-repeat-oct22.log",
+        "sha256": "11da52880d8d7bd8401b652eece59b64b738fc57b8a8c47eef321a7c12276e9a",
+        "bytes": 2402
+      }
+    ],
+    "scope": "Actual free exercise panel/stores, native Web Locks and localStorage; fixture profile and placeholder art; not a played campaign",
+    "limits": "Eight behavioral scenarios plus uncaught-error absence per run. Production esbuild fixture, native focus/Web Locks/localStorage/IndexedDB, isolated profile and 1px placeholder artwork; no played campaign or real-art visual certification. Both successful runs preceded the catch-only annotation change."
+  },
+  "v100Refresh": {
+    "commands": [
+      "node scripts/build-excel-followup-v100.mjs",
+      "node scripts/build-excel-followup-v100.mjs --check",
+      "node --test --test-reporter=spec tests/excel-followup-v100.test.mjs"
+    ],
+    "result": "PASS_STRUCTURE",
+    "tests": {
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 50131.625285
+    },
+    "inputFingerprints": 325,
+    "changedInputs": [
+      {
+        "path": "app/game/systems/clanWarPlanetGeneratorV102.ts",
+        "sha256": "be410dd6586c18c849b38b8f6219c0b70a99603e672577a5ca742a072c282b29"
+      },
+      {
+        "path": "app/game/systems/clanWarPlanetGeneratorV103.ts",
+        "sha256": "9dddcfda7f76c723eacaee713abe310af307c82909da42a82a43c2719bfbdac9"
+      },
+      {
+        "path": "app/game/systems/clanWarProceduralV103.ts",
+        "sha256": "ad4dae6be01e9f779efc56ae19cb172cab221be9c0cedc382fa64c95565c3e6f"
+      }
+    ],
+    "allOtherSnapshotFieldsIdentical": true,
+    "noV104Inputs": true,
+    "enforcerV613Scope": "The clean archive contains the merged V6.13 application files. The V100 collector does not read their registry transitively; no unconsumed Enforcer fingerprint is invented.",
+    "historicalV99Sha256": "53116e8f0fe10867702cccdb2d7bf2c8bbc5baa7c6a9c528085c12f780392a15",
+    "products": [
+      {
+        "path": "docs/v100-workstreams.json",
+        "sha256": "b05c098a1b5e3154d51dd8dfc3953cab0d626c91dc736c126194681b47edb721",
+        "bytes": 623148
+      },
+      {
+        "path": "docs/YAUTJA_V100_SUIVI.xlsx",
+        "sha256": "ca4cfbf5e4096f023d76c7ee0a271bf7a97cc59e83bd96291b287a1eee8319c4",
+        "bytes": 1861215
+      },
+      {
+        "path": "docs/v100-excel-followup-qa.json",
+        "sha256": "d54d8bb94620b34c0f77083d5d778eb9bba51f89b1ab6022ca1f5632b5b82832",
+        "bytes": 5103
+      }
+    ],
+    "logs": [
+      {
+        "path": "/tmp/v100-clean-head-generate-oct22.log",
+        "sha256": "783f371a11b171e75e0beaa2e28f590c192f560ae1a12ac55492dec2202e9ea3",
+        "bytes": 1686
+      },
+      {
+        "path": "/tmp/v100-clean-head-check-oct22.log",
+        "sha256": "b2ce3509d73b39f403d7b89bc18b29aa74ce011d1f651ec71e98a025f258c23c",
+        "bytes": 1683
+      },
+      {
+        "path": "/tmp/v100-clean-head-tests-oct22.log",
+        "sha256": "7ec4b804874bc353b35584536727396f12cc56f882acee7c0b3189f418346f56",
+        "bytes": 1133
+      }
+    ],
+    "nativeExcelApplicationExecuted": false
+  },
+  "priorCi": {
+    "run": 39811869953,
+    "job": 119948564932,
+    "localFailureReproduced": false,
+    "scope": "The failed archived CI logs were inaccessible in this environment; annotations only reported exit1. The three planet journeys and two headed clan runs pass locally. The next pushed-commit GitHub checks remain authoritative."
+  },
+  "limits": [
+    "Local focused development/fixture checks, not a complete game, production deployment or physical mobile-GPU certification.",
+    "Source receipt comparison covers the three corrected generator files; the first V102 journey overlapped cache edits and is not described as a frozen whole-app production run.",
+    "V100 mechanics, characters, entities, variants, six historical Pit dossiers and six structures remain open. No V104 completion is certified by this refresh.",
+    "Raw outputs/logs are local ignored evidence. Their hashes and summarized scopes are preserved here; those paths are not required to generate the workbook in CI."
+  ]
+}

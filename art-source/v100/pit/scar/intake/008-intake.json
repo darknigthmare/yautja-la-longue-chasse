@@ -1,0 +1,23 @@
+{
+  "id": "scar-v100-008",
+  "generator": "OpenAI image_gen",
+  "original": "art-source/v100/pit/scar/intake/008-scar-5H-original.png",
+  "generatedOriginal": "/workspace/generated_images/exec-30f3fe86-9d5f-40da-892f-c3099897a4ec.png",
+  "prompt": "008-prompt.txt",
+  "sourceCells": [
+    "05_MOVES_PROPOSES!F7"
+  ],
+  "fighterId": "scar",
+  "appearanceId": "runtime-default",
+  "transparentBackgroundRequested": true,
+  "sha256": "82ff25e83540262041ebab6657d2795066c02abf3b5a3bcd7141485c84c5dfd9",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 1521845,
+  "status": "rejected-crop",
+  "decision": "Missing true alpha gutters; cell cropping unsafe.",
+  "referenceImages": [
+    "public/game/sprites/v34/pit/scar/scar-idle-v34.png",
+    "public/game/sprites/v34/pit/scar/scar-medium-v34.png"
+  ]
+}

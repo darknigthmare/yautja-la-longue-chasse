@@ -1,0 +1,1918 @@
+{
+  "checkedAt": "2026-11-02T05:14:47.688019Z",
+  "scope": "Remote read-only GitHub audit; output files only in /workspace/pr-status-20261102. No repository checkout/fetch/Git mutation or external message.",
+  "main": {
+    "committedAt": "2026-11-02T05:07:07Z",
+    "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/03cf51badd450338d748da55599a317a71debd28",
+    "message": "Merge pull request #89 from darknigthmare/codex/homeworld-access-followup-20261101\n\nPréserver les accès Homeworld et finaliser les preuves R7 et le suivi Excel",
+    "sha": "03cf51badd450338d748da55599a317a71debd28"
+  },
+  "changesSince03cf51b": {
+    "status": "identical",
+    "aheadBy": 0,
+    "behindBy": 0,
+    "totalCommits": 0,
+    "files": 0
+  },
+  "openPullRequests": {
+    "count": 55,
+    "drafts": 47,
+    "targetingMain": [
+      83,
+      82,
+      81,
+      80,
+      79,
+      73,
+      62,
+      29,
+      27
+    ]
+  },
+  "priorityPullRequests": {
+    "89": {
+      "headRefOid": "f76422715dc5ec54937a26fe4c2d9283c67240f9",
+      "mergeCommit": {
+        "oid": "03cf51badd450338d748da55599a317a71debd28"
+      },
+      "mergedAt": "2026-11-02T05:07:07Z",
+      "number": 89,
+      "state": "MERGED",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41392006336/job/125105233459",
+          "name": "gameplay-cloud",
+          "startedAt": "2026-11-02T05:05:39Z",
+          "status": "QUEUED",
+          "workflowName": "V94 campaign routes and bounded cloud transport"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41392006317/job/125105329702",
+          "name": "Targeted V94 regressions (not full game QA)",
+          "startedAt": "2026-11-02T05:05:58Z",
+          "status": "QUEUED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41392006325/job/125105233566",
+          "name": "persistence",
+          "startedAt": "2026-11-02T05:09:12Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "V94 transactional exercises and trophy confirmation"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T05:10:47Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41392006323/job/125105238235",
+          "name": "Full application TypeScript (planet PR)",
+          "startedAt": "2026-11-02T05:09:23Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T05:08:40Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41392006338/job/125105233914",
+          "name": "World versions V103 and V115 both play",
+          "startedAt": "2026-11-02T05:08:13Z",
+          "status": "COMPLETED",
+          "workflowName": "V122 Planet V103 / V115 compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T05:12:50Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41392006347/job/125105233517",
+          "name": "ship-training",
+          "startedAt": "2026-11-02T05:10:13Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 ship training persistence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41392006317/job/125105329990",
+          "name": "Application compile, types, runtime lint and browser integration",
+          "startedAt": "2026-11-02T05:05:58Z",
+          "status": "QUEUED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T05:10:53Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41392006323/job/125105237791",
+          "name": "domain",
+          "startedAt": "2026-11-02T05:08:42Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41392006323/job/125106729979",
+          "name": "V124 live PNG and ZIP verification",
+          "startedAt": "2026-11-02T05:10:53Z",
+          "status": "QUEUED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "StatusContext",
+          "context": "Vercel",
+          "startedAt": "2026-11-02T05:05:34Z",
+          "state": "FAILURE",
+          "targetUrl": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T05:05:42Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+          "name": "CodeRabbit",
+          "startedAt": "2026-11-02T05:05:42Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        }
+      ],
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/89"
+    },
+    "62": {
+      "baseRefName": "main",
+      "headRefName": "codex/v112-close-open-qualifications",
+      "headRefOid": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "isDraft": false,
+      "mergeCommit": null,
+      "mergeStateStatus": "UNKNOWN",
+      "mergeable": "UNKNOWN",
+      "mergedAt": null,
+      "number": 62,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:01:20Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993962/job/125086853465",
+          "name": "Full application TypeScript (planet PR)",
+          "startedAt": "2026-11-02T03:59:52Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:03:54Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993860/job/125086853361",
+          "name": "Native rules, types, CPU and reproducible workbook",
+          "startedAt": "2026-11-02T03:59:52Z",
+          "status": "COMPLETED",
+          "workflowName": "V112 hunt closure qualifications"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:00:01Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993965/job/125086853390",
+          "name": "V113 PNG integrity, registration and cosmetic surfaces",
+          "startedAt": "2026-11-02T03:59:52Z",
+          "status": "COMPLETED",
+          "workflowName": "V113 native PHG-inspired materials and renderer wiring"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:00:13Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993826/job/125086853198",
+          "name": "World versions V103 and V115 both play",
+          "startedAt": "2026-11-02T03:59:52Z",
+          "status": "COMPLETED",
+          "workflowName": "V122 Planet V103 / V115 compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:02:24Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993821/job/125086853407",
+          "name": "gameplay-cloud",
+          "startedAt": "2026-11-02T03:59:52Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 campaign routes and bounded cloud transport"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:59:58Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993868/job/125086853516",
+          "name": "Targeted V94 regressions (not full game QA)",
+          "startedAt": "2026-11-02T03:59:52Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:02:27Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993825/job/125086853034",
+          "name": "ship-training",
+          "startedAt": "2026-11-02T03:59:52Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 ship training persistence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:04:03Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993817/job/125086853374",
+          "name": "persistence",
+          "startedAt": "2026-11-02T03:59:52Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 transactional exercises and trophy confirmation"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:01:14Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993962/job/125086853718",
+          "name": "domain",
+          "startedAt": "2026-11-02T03:59:52Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:01:32Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993860/job/125086853598",
+          "name": "Mounted hunting controls, guide, lifecycle and durable workshop",
+          "startedAt": "2026-11-02T03:59:52Z",
+          "status": "COMPLETED",
+          "workflowName": "V112 hunt closure qualifications"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:36:40Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993868/job/125086853688",
+          "name": "Application compile, types, runtime lint and browser integration",
+          "startedAt": "2026-11-02T03:59:52Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:05:00Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41385993962/job/125087277779",
+          "name": "V124 live PNG and ZIP verification",
+          "startedAt": "2026-11-02T04:01:22Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:37:42Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+          "name": "CodeRabbit",
+          "startedAt": "2026-11-02T04:37:42Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        },
+        {
+          "__typename": "StatusContext",
+          "context": "Vercel",
+          "startedAt": "2026-11-02T04:32:26Z",
+          "state": "SUCCESS",
+          "targetUrl": "https://vercel.com/darknigthmares-projects/yautja-la-longue-chasse/CGRfEDZE1Tq9kYz8ngp3e6zdVFEA"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:32:27Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://vercel.com/github",
+          "name": "Vercel Preview Comments",
+          "startedAt": "2026-11-02T04:32:27Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        }
+      ],
+      "title": "Chasse V112 : atelier, guide et clôture du suivi Excel",
+      "updatedAt": "2026-11-02T04:52:48Z",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/62"
+    },
+    "27": {
+      "baseRefName": "main",
+      "headRefName": "feat/v113-chromatic-hunter-phg-20261030",
+      "headRefOid": "8113d729009071d9fbf516d3dbf6733fbb054422",
+      "isDraft": false,
+      "mergeCommit": null,
+      "mergeStateStatus": "UNKNOWN",
+      "mergeable": "UNKNOWN",
+      "mergedAt": null,
+      "number": 27,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:08:50Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588444/job/124886845458",
+          "name": "Full application TypeScript (planet PR)",
+          "startedAt": "2026-11-01T15:07:46Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:07:34Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588403/job/124886754954",
+          "name": "V113 PNG integrity, registration and cosmetic surfaces",
+          "startedAt": "2026-11-01T15:07:24Z",
+          "status": "COMPLETED",
+          "workflowName": "V113 native PHG-inspired materials and renderer wiring"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:07:36Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588438/job/124886755123",
+          "name": "integrity",
+          "startedAt": "2026-11-01T15:07:24Z",
+          "status": "COMPLETED",
+          "workflowName": "V114 Yautja PHG material integrity and channel contract"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:07:40Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588465/job/124886755249",
+          "name": "World versions V103 and V115 both play",
+          "startedAt": "2026-11-01T15:07:24Z",
+          "status": "COMPLETED",
+          "workflowName": "V122 Planet V103 / V115 compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:07:29Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588745/job/124886756853",
+          "name": "Preserve all 34 sources and reject invented UV evidence",
+          "startedAt": "2026-11-01T15:07:24Z",
+          "status": "COMPLETED",
+          "workflowName": "V123 PHG YouTube and selected-screenshot evidence integrity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:07:28Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588512/job/124886755336",
+          "name": "V137 workbook hashes, structure and 389-ticket integrity",
+          "startedAt": "2026-11-01T15:07:24Z",
+          "status": "COMPLETED",
+          "workflowName": "V138 PHG production Excel fidelity gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:07:31Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588457/job/124886755048",
+          "name": "V139 preserve 1134 visual cases and verify 52 decal placements",
+          "startedAt": "2026-11-01T15:07:24Z",
+          "status": "COMPLETED",
+          "workflowName": "V139 PHG visual/geometry Excel parity gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:10:32Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588481/job/124886755408",
+          "name": "gameplay-cloud",
+          "startedAt": "2026-11-01T15:07:24Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 campaign routes and bounded cloud transport"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:07:52Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588455/job/124886844407",
+          "name": "Targeted V94 regressions (not full game QA)",
+          "startedAt": "2026-11-01T15:07:45Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:09:59Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588409/job/124886755148",
+          "name": "ship-training",
+          "startedAt": "2026-11-01T15:07:24Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 ship training persistence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:11:45Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588636/job/124886800307",
+          "name": "persistence",
+          "startedAt": "2026-11-01T15:07:35Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 transactional exercises and trophy confirmation"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T16:27:46Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588455/job/124886844738",
+          "name": "Application compile, types, runtime lint and browser integration",
+          "startedAt": "2026-11-01T15:07:46Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:11:13Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588444/job/124886845193",
+          "name": "domain",
+          "startedAt": "2026-11-01T15:07:46Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:09:05Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588438/job/124886754792",
+          "name": "TypeScript and lint on the complete game source",
+          "startedAt": "2026-11-01T15:07:24Z",
+          "status": "COMPLETED",
+          "workflowName": "V114 Yautja PHG material integrity and channel contract"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:15:54Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588444/job/124887748090",
+          "name": "V124 live PNG and ZIP verification",
+          "startedAt": "2026-11-01T15:11:16Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "StatusContext",
+          "context": "Vercel",
+          "startedAt": "2026-11-01T15:07:18Z",
+          "state": "FAILURE",
+          "targetUrl": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T15:07:24Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+          "name": "CodeRabbit",
+          "startedAt": "2026-11-01T15:07:24Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        }
+      ],
+      "title": "V113 — Ateliers chromatiques Yautja et textures PHG liées à la campagne",
+      "updatedAt": "2026-11-01T15:15:10Z",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/27"
+    },
+    "73": {
+      "baseRefName": "main",
+      "headRefName": "claude/ccgs-workflow-and-fixes",
+      "headRefOid": "13f4da1b2b81f2b63716b54e823dff82915d587e",
+      "isDraft": false,
+      "mergeStateStatus": "DIRTY",
+      "mergeable": "CONFLICTING",
+      "number": 73,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:33:14Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41383601014/job/125079486091",
+          "name": "Full application TypeScript (planet PR)",
+          "startedAt": "2026-11-02T03:31:56Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:34:51Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41383600987/job/125079485918",
+          "name": "gameplay-cloud",
+          "startedAt": "2026-11-02T03:31:55Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 campaign routes and bounded cloud transport"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:32:04Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41383600985/job/125079486176",
+          "name": "Targeted V94 regressions (not full game QA)",
+          "startedAt": "2026-11-02T03:31:56Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:34:21Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41383601000/job/125079486234",
+          "name": "ship-training",
+          "startedAt": "2026-11-02T03:31:56Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 ship training persistence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:35:18Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41383601013/job/125079486152",
+          "name": "persistence",
+          "startedAt": "2026-11-02T03:31:56Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 transactional exercises and trophy confirmation"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:51:55Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41383600985/job/125079485912",
+          "name": "Application compile, types, runtime lint and browser integration",
+          "startedAt": "2026-11-02T03:31:55Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:34:06Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41383601014/job/125079486273",
+          "name": "domain",
+          "startedAt": "2026-11-02T03:31:55Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:38:04Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41383601014/job/125080096165",
+          "name": "V124 live PNG and ZIP verification",
+          "startedAt": "2026-11-02T03:34:09Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:31:56Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+          "name": "CodeRabbit",
+          "startedAt": "2026-11-02T03:31:56Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        },
+        {
+          "__typename": "StatusContext",
+          "context": "Vercel",
+          "startedAt": "2026-11-02T03:44:09Z",
+          "state": "SUCCESS",
+          "targetUrl": "https://vercel.com/darknigthmares-projects/yautja-la-longue-chasse/D1p6PSGSuE7HBdPrpR8tMfpkK97v"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:44:10Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://vercel.com/github",
+          "name": "Vercel Preview Comments",
+          "startedAt": "2026-11-02T03:44:10Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        }
+      ],
+      "title": "fix(tests) V111 migration + fixture V112, workflow Claude Code Game Studios",
+      "updatedAt": "2026-11-02T03:44:10Z",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/73"
+    },
+    "79": {
+      "baseRefName": "main",
+      "headRefName": "claude/planet-level-design-coherence-v156",
+      "headRefOid": "77038a43563127c3e4a3b97c1ba9810242151389",
+      "isDraft": false,
+      "mergeStateStatus": "UNSTABLE",
+      "mergeable": "MERGEABLE",
+      "number": 79,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T17:10:07Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41329959424/job/124917778592",
+          "name": "Full application TypeScript (planet PR)",
+          "startedAt": "2026-11-01T17:08:57Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T17:11:58Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41329959509/job/124917778776",
+          "name": "gameplay-cloud",
+          "startedAt": "2026-11-01T17:08:57Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 campaign routes and bounded cloud transport"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T17:09:04Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41329959481/job/124917779167",
+          "name": "Targeted V94 regressions (not full game QA)",
+          "startedAt": "2026-11-01T17:08:57Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T17:11:18Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41329959465/job/124917778715",
+          "name": "ship-training",
+          "startedAt": "2026-11-01T17:08:58Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 ship training persistence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T17:12:55Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41329959332/job/124917778285",
+          "name": "persistence",
+          "startedAt": "2026-11-01T17:08:57Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 transactional exercises and trophy confirmation"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T18:28:57Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41329959481/job/124917778961",
+          "name": "Application compile, types, runtime lint and browser integration",
+          "startedAt": "2026-11-01T17:08:57Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T17:11:28Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41329959424/job/124917778276",
+          "name": "domain",
+          "startedAt": "2026-11-01T17:08:57Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T17:16:04Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41329959424/job/124918475606",
+          "name": "V124 live PNG and ZIP verification",
+          "startedAt": "2026-11-01T17:11:30Z",
+          "status": "COMPLETED",
+          "workflowName": "Planet V114 focused regressions"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T17:09:00Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+          "name": "CodeRabbit",
+          "startedAt": "2026-11-01T17:09:00Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        },
+        {
+          "__typename": "StatusContext",
+          "context": "Vercel",
+          "startedAt": "2026-11-01T17:21:57Z",
+          "state": "SUCCESS",
+          "targetUrl": "https://vercel.com/darknigthmares-projects/yautja-la-longue-chasse/GLtMcn9TSY4MNT2foZuhnAii5NFu"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T17:21:58Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://vercel.com/github",
+          "name": "Vercel Preview Comments",
+          "startedAt": "2026-11-01T17:21:58Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        }
+      ],
+      "title": "V156 : level design des planètes — chaque frontière affichée est une route",
+      "updatedAt": "2026-11-01T17:21:58Z",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/79"
+    },
+    "80": {
+      "baseRefName": "main",
+      "headRefName": "claude/reserve-level-design",
+      "headRefOid": "1833549aae63566e3e51964d114721d56cbd62bc",
+      "isDraft": false,
+      "mergeStateStatus": "UNSTABLE",
+      "mergeable": "MERGEABLE",
+      "number": 80,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:36:56Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41352648349/job/124985972935",
+          "name": "gameplay-cloud",
+          "startedAt": "2026-11-01T21:33:56Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 campaign routes and bounded cloud transport"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:34:03Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41352648351/job/124985973534",
+          "name": "Targeted V94 regressions (not full game QA)",
+          "startedAt": "2026-11-01T21:33:56Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:36:11Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41352648413/job/124985973212",
+          "name": "ship-training",
+          "startedAt": "2026-11-01T21:33:56Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 ship training persistence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:36:49Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41352648343/job/124985972631",
+          "name": "persistence",
+          "startedAt": "2026-11-01T21:33:56Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 transactional exercises and trophy confirmation"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T22:53:56Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41352648351/job/124985973816",
+          "name": "Application compile, types, runtime lint and browser integration",
+          "startedAt": "2026-11-01T21:33:56Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "StatusContext",
+          "context": "Vercel",
+          "startedAt": "2026-11-01T21:33:51Z",
+          "state": "FAILURE",
+          "targetUrl": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:33:59Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+          "name": "CodeRabbit",
+          "startedAt": "2026-11-01T21:33:59Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        }
+      ],
+      "title": "fix(preserve): level design des réserves — coques, rampes et machines",
+      "updatedAt": "2026-11-01T21:34:10Z",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/80"
+    },
+    "81": {
+      "baseRefName": "main",
+      "headRefName": "feat/alien-base-crossgame-bestiary-20261101",
+      "headRefOid": "ce16a85bb74ab704284b22b6199f0d5c1c81a91a",
+      "isDraft": false,
+      "mergeStateStatus": "UNSTABLE",
+      "mergeable": "MERGEABLE",
+      "number": 81,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:41:40Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41353028764/job/124987100719",
+          "name": "contract",
+          "startedAt": "2026-11-01T21:38:16Z",
+          "status": "COMPLETED",
+          "workflowName": "Alien Base bestiary archive contract"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:42:01Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41353024294/job/124987087293",
+          "name": "contract",
+          "startedAt": "2026-11-01T21:38:13Z",
+          "status": "COMPLETED",
+          "workflowName": "Alien Base bestiary archive contract"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:41:14Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41353028803/job/124987100770",
+          "name": "gameplay-cloud",
+          "startedAt": "2026-11-01T21:38:16Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 campaign routes and bounded cloud transport"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:38:40Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41353028817/job/124987166187",
+          "name": "Targeted V94 regressions (not full game QA)",
+          "startedAt": "2026-11-01T21:38:32Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:41:00Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41353028768/job/124987100836",
+          "name": "ship-training",
+          "startedAt": "2026-11-01T21:38:16Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 ship training persistence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:42:14Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41353028777/job/124987100777",
+          "name": "persistence",
+          "startedAt": "2026-11-01T21:38:16Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 transactional exercises and trophy confirmation"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T22:58:32Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41353028817/job/124987166352",
+          "name": "Application compile, types, runtime lint and browser integration",
+          "startedAt": "2026-11-01T21:38:32Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "StatusContext",
+          "context": "Vercel",
+          "startedAt": "2026-11-01T21:38:10Z",
+          "state": "FAILURE",
+          "targetUrl": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-01T21:38:18Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+          "name": "CodeRabbit",
+          "startedAt": "2026-11-01T21:38:18Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        }
+      ],
+      "title": "feat: relier le bestiaire à Alien_base avec six dossiers documentaires et IDs communs",
+      "updatedAt": "2026-11-01T21:38:18Z",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/81"
+    },
+    "82": {
+      "baseRefName": "main",
+      "headRefName": "claude/reserve-grand-hunts",
+      "headRefOid": "a0f85c961551e4664f754776ff4e483c067ab3e2",
+      "isDraft": false,
+      "mergeStateStatus": "UNSTABLE",
+      "mergeable": "MERGEABLE",
+      "number": 82,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:06:29Z",
+          "conclusion": "FAILURE",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41386491560/job/125088366243",
+          "name": "gameplay-cloud",
+          "startedAt": "2026-11-02T04:05:21Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 campaign routes and bounded cloud transport"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:05:29Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41386491566/job/125088365825",
+          "name": "V113 PNG integrity, registration and cosmetic surfaces",
+          "startedAt": "2026-11-02T04:05:20Z",
+          "status": "COMPLETED",
+          "workflowName": "V113 native PHG-inspired materials and renderer wiring"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:05:28Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41386491617/job/125088368576",
+          "name": "Targeted V94 regressions (not full game QA)",
+          "startedAt": "2026-11-02T04:05:21Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:08:05Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41386491584/job/125088365956",
+          "name": "ship-training",
+          "startedAt": "2026-11-02T04:05:21Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 ship training persistence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:08:49Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41386491606/job/125088366396",
+          "name": "persistence",
+          "startedAt": "2026-11-02T04:05:21Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 transactional exercises and trophy confirmation"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41386491617/job/125088368623",
+          "name": "Application compile, types, runtime lint and browser integration",
+          "startedAt": "2026-11-02T04:05:21Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "StatusContext",
+          "context": "Vercel",
+          "startedAt": "2026-11-02T03:52:24Z",
+          "state": "FAILURE",
+          "targetUrl": "https://vercel.com/darknigthmares-projects/yautja-la-longue-chasse/76d7ArBxdvzPdxDqU3mH4fRA1135"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:03:05Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+          "name": "CodeRabbit",
+          "startedAt": "2026-11-02T04:03:05Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:52:26Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://vercel.com/github",
+          "name": "Vercel Preview Comments",
+          "startedAt": "2026-11-02T03:52:26Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        }
+      ],
+      "title": "feat(preserve): grandes traques V6, dangers actifs et décor natif",
+      "updatedAt": "2026-11-02T04:05:16Z",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/82"
+    },
+    "83": {
+      "baseRefName": "main",
+      "headRefName": "claude/hunt-planet-level-design-v157",
+      "headRefOid": "a15f07995d902ae6c06fe52fcb7ffd63b4ebab6f",
+      "isDraft": false,
+      "mergeStateStatus": "UNSTABLE",
+      "mergeable": "MERGEABLE",
+      "number": 83,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:43:55Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41384501962/job/125082243775",
+          "name": "gameplay-cloud",
+          "startedAt": "2026-11-02T03:42:03Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 campaign routes and bounded cloud transport"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:42:10Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41384502001/job/125082244393",
+          "name": "Targeted V94 regressions (not full game QA)",
+          "startedAt": "2026-11-02T03:42:03Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:44:38Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41384501964/job/125082243725",
+          "name": "ship-training",
+          "startedAt": "2026-11-02T03:42:03Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 ship training persistence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:45:35Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41384503295/job/125082247853",
+          "name": "persistence",
+          "startedAt": "2026-11-02T03:42:04Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 transactional exercises and trophy confirmation"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T05:02:03Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41384502001/job/125082244179",
+          "name": "Application compile, types, runtime lint and browser integration",
+          "startedAt": "2026-11-02T03:42:03Z",
+          "status": "COMPLETED",
+          "workflowName": "V94 regression tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T03:42:05Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+          "name": "CodeRabbit",
+          "startedAt": "2026-11-02T03:42:05Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        },
+        {
+          "__typename": "StatusContext",
+          "context": "Vercel",
+          "startedAt": "2026-11-02T04:21:08Z",
+          "state": "SUCCESS",
+          "targetUrl": "https://vercel.com/darknigthmares-projects/yautja-la-longue-chasse/CBJVppbE89iieknfmtfEVpRbKFXA"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:21:10Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://vercel.com/github",
+          "name": "Vercel Preview Comments",
+          "startedAt": "2026-11-02T04:21:10Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        }
+      ],
+      "title": "V157 : level design des planètes de chasse — cartes propres et conflits de géométrie corrigés",
+      "updatedAt": "2026-11-02T04:21:09Z",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/83"
+    },
+    "84": {
+      "baseRefName": "claude/reserve-grand-hunts",
+      "headRefName": "codex/reserve-v6-typecheck-20261102",
+      "headRefOid": "8e0bb249fbb85192bad03b28faa9480c80809fd2",
+      "isDraft": true,
+      "mergeStateStatus": "UNSTABLE",
+      "mergeable": "MERGEABLE",
+      "number": 84,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:34:55Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41389133732/job/125096443793",
+          "name": "typecheck",
+          "startedAt": "2026-11-02T04:33:32Z",
+          "status": "COMPLETED",
+          "workflowName": "Reserve V6 route typecheck"
+        },
+        {
+          "__typename": "StatusContext",
+          "context": "Vercel",
+          "startedAt": "2026-11-02T04:33:26Z",
+          "state": "FAILURE",
+          "targetUrl": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-02T04:33:33Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+          "name": "CodeRabbit",
+          "startedAt": "2026-11-02T04:33:33Z",
+          "status": "COMPLETED",
+          "workflowName": ""
+        }
+      ],
+      "title": "Corriger le typage des relevés des grandes traques",
+      "updatedAt": "2026-11-02T04:33:37Z",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/84"
+    }
+  },
+  "applicationJobs": {
+    "27": {
+      "completed_at": "2026-11-01T16:27:46Z",
+      "conclusion": "cancelled",
+      "failed": [
+        {
+          "completed_at": "2026-11-01T15:12:13Z",
+          "name": "Exercise current V112 hunting mechanics and invariants",
+          "number": 7,
+          "started_at": "2026-11-01T15:09:32Z"
+        },
+        {
+          "completed_at": "2026-11-01T15:16:13Z",
+          "name": "Verify gamedev archive, asset, import and route regressions",
+          "number": 17,
+          "started_at": "2026-11-01T15:15:34Z"
+        },
+        {
+          "completed_at": "2026-11-01T15:22:28Z",
+          "name": "Exercise generated planets, independent bitmap layers and real saved fronts",
+          "number": 35,
+          "started_at": "2026-11-01T15:21:30Z"
+        },
+        {
+          "completed_at": "2026-11-01T15:28:50Z",
+          "name": "Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation",
+          "number": 40,
+          "started_at": "2026-11-01T15:28:27Z"
+        }
+      ],
+      "head_sha": "8113d729009071d9fbf516d3dbf6733fbb054422",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41319588455/job/124886844738",
+      "id": 124886844738,
+      "run_id": 41319588455,
+      "running": [
+        {
+          "name": "Exercise current V111 regressions across the parallel workstreams",
+          "number": 52,
+          "started_at": "2026-11-01T15:37:19Z"
+        }
+      ],
+      "started_at": "2026-11-01T15:07:46Z",
+      "status": "completed"
+    },
+    "73": {
+      "completed_at": "2026-11-02T04:51:55Z",
+      "conclusion": "cancelled",
+      "failed": [
+        {
+          "completed_at": "2026-11-02T03:38:24Z",
+          "name": "Lint changed game runtime",
+          "number": 16,
+          "started_at": "2026-11-02T03:37:34Z"
+        },
+        {
+          "completed_at": "2026-11-02T03:46:07Z",
+          "name": "Exercise generated planets, independent bitmap layers and real saved fronts",
+          "number": 35,
+          "started_at": "2026-11-02T03:42:57Z"
+        },
+        {
+          "completed_at": "2026-11-02T03:51:03Z",
+          "name": "Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation",
+          "number": 40,
+          "started_at": "2026-11-02T03:50:45Z"
+        }
+      ],
+      "head_sha": "13f4da1b2b81f2b63716b54e823dff82915d587e",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41383600985/job/125079485912",
+      "id": 125079485912,
+      "run_id": 41383600985,
+      "running": [
+        {
+          "name": "Exercise current V111 regressions across the parallel workstreams",
+          "number": 52,
+          "started_at": "2026-11-02T03:57:46Z"
+        }
+      ],
+      "started_at": "2026-11-02T03:31:55Z",
+      "status": "completed"
+    },
+    "79": {
+      "completed_at": "2026-11-01T18:28:57Z",
+      "conclusion": "cancelled",
+      "failed": [
+        {
+          "completed_at": "2026-11-01T17:11:44Z",
+          "name": "Exercise current V112 hunting mechanics and invariants",
+          "number": 7,
+          "started_at": "2026-11-01T17:10:27Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:14:58Z",
+          "name": "Exercise actual V112 controls, workshop, corpse rites and canopy in Chromium",
+          "number": 9,
+          "started_at": "2026-11-01T17:11:44Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:17:28Z",
+          "name": "Lint changed game runtime",
+          "number": 16,
+          "started_at": "2026-11-01T17:16:41Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:17:58Z",
+          "name": "Verify gamedev archive, asset, import and route regressions",
+          "number": 17,
+          "started_at": "2026-11-01T17:17:28Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:24:45Z",
+          "name": "Exercise current Homeworld Atlas Worker cancellation in Chromium",
+          "number": 20,
+          "started_at": "2026-11-01T17:18:03Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:29:16Z",
+          "name": "Exercise generated planets, independent bitmap layers and real saved fronts",
+          "number": 35,
+          "started_at": "2026-11-01T17:28:26Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:34:12Z",
+          "name": "Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation",
+          "number": 40,
+          "started_at": "2026-11-01T17:33:55Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:35:39Z",
+          "name": "Execute unchanged V107 assertions and regenerate its immutable published workbook",
+          "number": 46,
+          "started_at": "2026-11-01T17:35:38Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:35:40Z",
+          "name": "Execute unchanged V108 assertions and regenerate its immutable published workbook",
+          "number": 47,
+          "started_at": "2026-11-01T17:35:39Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:36:33Z",
+          "name": "Exercise current V109 throws, supply routes, Preserve biomes, plaque and evidence boundaries",
+          "number": 48,
+          "started_at": "2026-11-01T17:35:40Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:36:34Z",
+          "name": "Execute unchanged V109 assertions and regenerate its immutable certified workbook",
+          "number": 49,
+          "started_at": "2026-11-01T17:36:33Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:36:59Z",
+          "name": "Exercise current V110 Homeworld gameplay and evidence regressions",
+          "number": 50,
+          "started_at": "2026-11-01T17:36:34Z"
+        },
+        {
+          "completed_at": "2026-11-01T17:37:01Z",
+          "name": "Execute unchanged V110 Homeworld assertions and regenerate its immutable workbook",
+          "number": 51,
+          "started_at": "2026-11-01T17:36:59Z"
+        }
+      ],
+      "head_sha": "77038a43563127c3e4a3b97c1ba9810242151389",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41329959481/job/124917778961",
+      "id": 124917778961,
+      "run_id": 41329959481,
+      "running": [
+        {
+          "name": "Exercise current V111 regressions across the parallel workstreams",
+          "number": 52,
+          "started_at": "2026-11-01T17:37:01Z"
+        }
+      ],
+      "started_at": "2026-11-01T17:08:57Z",
+      "status": "completed"
+    },
+    "80": {
+      "completed_at": "2026-11-01T22:53:56Z",
+      "conclusion": "cancelled",
+      "failed": [
+        {
+          "completed_at": "2026-11-01T21:38:26Z",
+          "name": "Exercise current V112 hunting mechanics and invariants",
+          "number": 7,
+          "started_at": "2026-11-01T21:35:43Z"
+        },
+        {
+          "completed_at": "2026-11-01T21:41:39Z",
+          "name": "Exercise actual V112 controls, workshop, corpse rites and canopy in Chromium",
+          "number": 9,
+          "started_at": "2026-11-01T21:38:26Z"
+        },
+        {
+          "completed_at": "2026-11-01T21:44:47Z",
+          "name": "Lint changed game runtime",
+          "number": 16,
+          "started_at": "2026-11-01T21:43:45Z"
+        },
+        {
+          "completed_at": "2026-11-01T21:45:28Z",
+          "name": "Verify gamedev archive, asset, import and route regressions",
+          "number": 17,
+          "started_at": "2026-11-01T21:44:47Z"
+        },
+        {
+          "completed_at": "2026-11-01T21:52:20Z",
+          "name": "Exercise current Homeworld Atlas Worker cancellation in Chromium",
+          "number": 20,
+          "started_at": "2026-11-01T21:45:34Z"
+        },
+        {
+          "completed_at": "2026-11-01T21:59:40Z",
+          "name": "Exercise generated planets, independent bitmap layers and real saved fronts",
+          "number": 35,
+          "started_at": "2026-11-01T21:58:43Z"
+        },
+        {
+          "completed_at": "2026-11-01T22:06:02Z",
+          "name": "Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation",
+          "number": 40,
+          "started_at": "2026-11-01T22:05:40Z"
+        }
+      ],
+      "head_sha": "1833549aae63566e3e51964d114721d56cbd62bc",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41352648351/job/124985973816",
+      "id": 124985973816,
+      "run_id": 41352648351,
+      "running": [
+        {
+          "name": "Exercise current V111 regressions across the parallel workstreams",
+          "number": 52,
+          "started_at": "2026-11-01T22:15:23Z"
+        }
+      ],
+      "started_at": "2026-11-01T21:33:56Z",
+      "status": "completed"
+    },
+    "81": {
+      "completed_at": "2026-11-01T22:58:32Z",
+      "conclusion": "cancelled",
+      "failed": [
+        {
+          "completed_at": "2026-11-01T21:41:11Z",
+          "name": "Exercise current V112 hunting mechanics and invariants",
+          "number": 7,
+          "started_at": "2026-11-01T21:39:40Z"
+        },
+        {
+          "completed_at": "2026-11-01T21:44:15Z",
+          "name": "Exercise actual V112 controls, workshop, corpse rites and canopy in Chromium",
+          "number": 9,
+          "started_at": "2026-11-01T21:41:11Z"
+        },
+        {
+          "completed_at": "2026-11-01T21:46:00Z",
+          "name": "Lint changed game runtime",
+          "number": 16,
+          "started_at": "2026-11-01T21:45:27Z"
+        },
+        {
+          "completed_at": "2026-11-01T21:46:21Z",
+          "name": "Verify gamedev archive, asset, import and route regressions",
+          "number": 17,
+          "started_at": "2026-11-01T21:46:00Z"
+        },
+        {
+          "completed_at": "2026-11-01T21:53:04Z",
+          "name": "Exercise current Homeworld Atlas Worker cancellation in Chromium",
+          "number": 20,
+          "started_at": "2026-11-01T21:46:25Z"
+        },
+        {
+          "completed_at": "2026-11-01T21:56:29Z",
+          "name": "Exercise generated planets, independent bitmap layers and real saved fronts",
+          "number": 35,
+          "started_at": "2026-11-01T21:55:45Z"
+        },
+        {
+          "completed_at": "2026-11-01T22:00:00Z",
+          "name": "Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation",
+          "number": 40,
+          "started_at": "2026-11-01T21:59:47Z"
+        }
+      ],
+      "head_sha": "ce16a85bb74ab704284b22b6199f0d5c1c81a91a",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41353028817/job/124987166352",
+      "id": 124987166352,
+      "run_id": 41353028817,
+      "running": [
+        {
+          "name": "Exercise current V111 regressions across the parallel workstreams",
+          "number": 52,
+          "started_at": "2026-11-01T22:05:01Z"
+        }
+      ],
+      "started_at": "2026-11-01T21:38:32Z",
+      "status": "completed"
+    },
+    "82": {
+      "completed_at": null,
+      "conclusion": null,
+      "failed": [
+        {
+          "completed_at": "2026-11-02T04:07:07Z",
+          "name": "Check application TypeScript",
+          "number": 6,
+          "started_at": "2026-11-02T04:06:09Z"
+        },
+        {
+          "completed_at": "2026-11-02T04:09:52Z",
+          "name": "Exercise current V112 hunting mechanics and invariants",
+          "number": 7,
+          "started_at": "2026-11-02T04:07:07Z"
+        },
+        {
+          "completed_at": "2026-11-02T04:12:58Z",
+          "name": "Exercise actual V112 controls, workshop, corpse rites and canopy in Chromium",
+          "number": 9,
+          "started_at": "2026-11-02T04:09:53Z"
+        },
+        {
+          "completed_at": "2026-11-02T04:14:48Z",
+          "name": "Compile Next application source (not full release packaging)",
+          "number": 14,
+          "started_at": "2026-11-02T04:13:20Z"
+        },
+        {
+          "completed_at": "2026-11-02T04:15:46Z",
+          "name": "Lint changed game runtime",
+          "number": 16,
+          "started_at": "2026-11-02T04:14:48Z"
+        },
+        {
+          "completed_at": "2026-11-02T04:16:26Z",
+          "name": "Verify gamedev archive, asset, import and route regressions",
+          "number": 17,
+          "started_at": "2026-11-02T04:15:46Z"
+        },
+        {
+          "completed_at": "2026-11-02T04:23:19Z",
+          "name": "Exercise current Homeworld Atlas Worker cancellation in Chromium",
+          "number": 20,
+          "started_at": "2026-11-02T04:16:32Z"
+        },
+        {
+          "completed_at": "2026-11-02T04:28:43Z",
+          "name": "Exercise generated planets, independent bitmap layers and real saved fronts",
+          "number": 35,
+          "started_at": "2026-11-02T04:27:47Z"
+        },
+        {
+          "completed_at": "2026-11-02T04:35:07Z",
+          "name": "Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation",
+          "number": 40,
+          "started_at": "2026-11-02T04:34:44Z"
+        },
+        {
+          "completed_at": "2026-11-02T04:40:49Z",
+          "name": "Exercise current V109 throws, supply routes, Preserve biomes, plaque and evidence boundaries",
+          "number": 48,
+          "started_at": "2026-11-02T04:39:31Z"
+        }
+      ],
+      "head_sha": "a0f85c961551e4664f754776ff4e483c067ab3e2",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41386491617/job/125088368623",
+      "id": 125088368623,
+      "run_id": 41386491617,
+      "running": [
+        {
+          "name": "Exercise current V111 regressions across the parallel workstreams",
+          "number": 52,
+          "started_at": "2026-11-02T04:44:18Z"
+        }
+      ],
+      "started_at": "2026-11-02T04:05:21Z",
+      "status": "in_progress"
+    },
+    "83": {
+      "completed_at": "2026-11-02T05:02:03Z",
+      "conclusion": "cancelled",
+      "failed": [
+        {
+          "completed_at": "2026-11-02T03:46:23Z",
+          "name": "Exercise current V112 hunting mechanics and invariants",
+          "number": 7,
+          "started_at": "2026-11-02T03:43:46Z"
+        },
+        {
+          "completed_at": "2026-11-02T03:49:29Z",
+          "name": "Exercise actual V112 controls, workshop, corpse rites and canopy in Chromium",
+          "number": 9,
+          "started_at": "2026-11-02T03:46:23Z"
+        },
+        {
+          "completed_at": "2026-11-02T03:52:29Z",
+          "name": "Lint changed game runtime",
+          "number": 16,
+          "started_at": "2026-11-02T03:51:33Z"
+        },
+        {
+          "completed_at": "2026-11-02T03:53:07Z",
+          "name": "Verify gamedev archive, asset, import and route regressions",
+          "number": 17,
+          "started_at": "2026-11-02T03:52:29Z"
+        },
+        {
+          "completed_at": "2026-11-02T03:59:58Z",
+          "name": "Exercise current Homeworld Atlas Worker cancellation in Chromium",
+          "number": 20,
+          "started_at": "2026-11-02T03:53:12Z"
+        },
+        {
+          "completed_at": "2026-11-02T04:05:19Z",
+          "name": "Exercise generated planets, independent bitmap layers and real saved fronts",
+          "number": 35,
+          "started_at": "2026-11-02T04:04:22Z"
+        },
+        {
+          "completed_at": "2026-11-02T04:11:32Z",
+          "name": "Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation",
+          "number": 40,
+          "started_at": "2026-11-02T04:11:10Z"
+        }
+      ],
+      "head_sha": "a15f07995d902ae6c06fe52fcb7ffd63b4ebab6f",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41384502001/job/125082244179",
+      "id": 125082244179,
+      "run_id": 41384502001,
+      "running": [
+        {
+          "name": "Exercise current V111 regressions across the parallel workstreams",
+          "number": 52,
+          "started_at": "2026-11-02T04:19:50Z"
+        }
+      ],
+      "started_at": "2026-11-02T03:42:03Z",
+      "status": "completed"
+    },
+    "89": {
+      "completed_at": null,
+      "conclusion": null,
+      "failed": [],
+      "head_sha": "f76422715dc5ec54937a26fe4c2d9283c67240f9",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41392006317/job/125105329990",
+      "id": 125105329990,
+      "run_id": 41392006317,
+      "running": [],
+      "started_at": "2026-11-02T05:05:58Z",
+      "status": "queued"
+    }
+  },
+  "pr62Merge": {
+    "additions": 9899,
+    "base": "f3a1acec8c2603b3442da774457dfe75947d97d8",
+    "changed_files": 60,
+    "deletions": 453,
+    "head": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+    "mergeable": false,
+    "mergeable_state": "dirty",
+    "number": 62,
+    "updated_at": "2026-11-02T04:52:48Z"
+  },
+  "pr27Merge": {
+    "additions": 11840,
+    "base": "f3a1acec8c2603b3442da774457dfe75947d97d8",
+    "changed_files": 165,
+    "deletions": 334,
+    "head": "8113d729009071d9fbf516d3dbf6733fbb054422",
+    "mergeable": true,
+    "mergeable_state": "unstable",
+    "number": 27,
+    "updated_at": "2026-11-01T15:15:10Z"
+  },
+  "precisePR82TypeErrors": [
+    {
+      "path": "app/game/GameReserveV66.tsx",
+      "blob_href": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a0f85c961551e4664f754776ff4e483c067ab3e2/app/game/GameReserveV66.tsx",
+      "start_line": 158,
+      "start_column": 213,
+      "end_line": 158,
+      "end_column": 213,
+      "annotation_level": "failure",
+      "title": "",
+      "message": "Parameter 'site' implicitly has an 'any' type.",
+      "raw_details": ""
+    },
+    {
+      "path": "app/game/GameReserveV66.tsx",
+      "blob_href": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a0f85c961551e4664f754776ff4e483c067ab3e2/app/game/GameReserveV66.tsx",
+      "start_line": 158,
+      "start_column": 183,
+      "end_line": 158,
+      "end_column": 183,
+      "annotation_level": "failure",
+      "title": "",
+      "message": "Property 'routeV107' does not exist on type '(GameReserveV66BaseState & { version: 1; reserveId: \"vharuun-first-expedition\"; }) | (GameReserveV66BaseState & { version: 2; reserveId: \"vharuun-lookout-expedition\"; lookout: GameReserveLookoutV104Record; }) | (GameReserveV66BaseState & { ...; })'.",
+      "raw_details": ""
+    },
+    {
+      "path": "app/game/GameReserveV66.tsx",
+      "blob_href": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a0f85c961551e4664f754776ff4e483c067ab3e2/app/game/GameReserveV66.tsx",
+      "start_line": 124,
+      "start_column": 353,
+      "end_line": 124,
+      "end_column": 353,
+      "annotation_level": "failure",
+      "title": "",
+      "message": "Parameter 'site' implicitly has an 'any' type.",
+      "raw_details": ""
+    },
+    {
+      "path": "app/game/GameReserveV66.tsx",
+      "blob_href": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a0f85c961551e4664f754776ff4e483c067ab3e2/app/game/GameReserveV66.tsx",
+      "start_line": 124,
+      "start_column": 323,
+      "end_line": 124,
+      "end_column": 323,
+      "annotation_level": "failure",
+      "title": "",
+      "message": "Property 'routeV107' does not exist on type '(GameReserveV66BaseState & { version: 1; reserveId: \"vharuun-first-expedition\"; }) | (GameReserveV66BaseState & { version: 2; reserveId: \"vharuun-lookout-expedition\"; lookout: GameReserveLookoutV104Record; }) | (GameReserveV66BaseState & { ...; })'.",
+      "raw_details": ""
+    }
+  ],
+  "recommendation": {
+    "mainIntegration": "Reconcile PR62 in an isolated branch based on exact current main, preserving published R7 proofs and all current assertions; verify the combined runtime before merging. Historical green PR62 checks precede this main integration.",
+    "smallParentBranchIntegration": "PR84 targets PR82 and fixes exactly both routeV107 union narrowing errors with 2 source-line replacements; its dedicated TypeScript/lint check is green. Integrating this correction into its parent branch is bounded, but does not qualify the entire PR82 gameplay.",
+    "other": "Refresh PR27 on current main with its owner before interpreting historical failures; review 47 draft dependency PRs by their bases rather than merging the whole stack blindly."
+  },
+  "limits": [
+    "Historical CI job failures on old heads are not evidence of identical failures after main03cf integration.",
+    "Only PR82 TypeScript source assertions were accessible as exact annotations; other listed failures are precise stage verdicts, not full root-cause diagnoses.",
+    "The final PR89 broad application job remains queued, so its global result is still unknown.",
+    "GitHub mergeability may be recomputed asynchronously after main advances; both API states and timestamps are retained."
+  ],
+  "evidenceFiles": [
+    {
+      "path": "changes-since-03cf51b.json",
+      "bytes": 580,
+      "sha256": "94b688ee33bc1c34fa4841ef90149d2da2acec7df6e3cc98467d7c604ab8521b"
+    },
+    {
+      "path": "main-final-check.json",
+      "bytes": 382,
+      "sha256": "2696983bf1060f30652b2b7a936ac8d7621c38e6a56a3fc8c64287c591f6d63e"
+    },
+    {
+      "path": "main.json",
+      "bytes": 891,
+      "sha256": "73abf089144816a0e9619b2ca95345ad82125710ec56ab70ecd2db49721862d4"
+    },
+    {
+      "path": "open-prs.json",
+      "bytes": 24746,
+      "sha256": "5deb82bed9fbafd75f6b95051bad5fbea657fe56bfa92069ae69a8b30bba230b"
+    },
+    {
+      "path": "pr27-application-job.json",
+      "bytes": 1150,
+      "sha256": "5967e5d335598fba14797a6ec3e0cf3896cfb6474de5098852fadfd1e764deae"
+    },
+    {
+      "path": "pr27-merge.json",
+      "bytes": 250,
+      "sha256": "d6370817b6a08a3e1fbcb5445c37339107ce7c7bbce673f50160ec715e080453"
+    },
+    {
+      "path": "pr27.json",
+      "bytes": 6331,
+      "sha256": "a98e89f8c4bba4cb17cd75eff1cd80ddb0ce9d803e0e1a3581fec38fdf648fd0"
+    },
+    {
+      "path": "pr62-files-pages.json",
+      "bytes": 6335,
+      "sha256": "fc1ab92ad13161ab82018b2c1b45541f784b4cc4f534e074aa0d07cd9bc8c81b"
+    },
+    {
+      "path": "pr62-merge.json",
+      "bytes": 246,
+      "sha256": "a233d698bbffbe1b41a416df7f2d00ee3b71fede0cd8b1902689bd772432220b"
+    },
+    {
+      "path": "pr62.json",
+      "bytes": 5409,
+      "sha256": "118c364385938d7557fbfe8744ca564f7c260fe9b4020257d1c2e27c1d6c3c2c"
+    },
+    {
+      "path": "pr73-application-job.json",
+      "bytes": 965,
+      "sha256": "819fd81039e9282f1470e51fa191b5e69d6cc2cadc69435d08a85bbe55bff268"
+    },
+    {
+      "path": "pr73.json",
+      "bytes": 3896,
+      "sha256": "7d82647641d7a64edad0fa6c5b79aeac650d78733b8264a5ce55c44bacebe41e"
+    },
+    {
+      "path": "pr79-application-job.json",
+      "bytes": 2677,
+      "sha256": "fa931e5d326080827e1315d12fed8e05a995f01c1150c891182cfeae38d0d941"
+    },
+    {
+      "path": "pr79.json",
+      "bytes": 3912,
+      "sha256": "dd45fa3063050c76b4c4ce9a153f3be2fd706db01b3c732e0bc2335037d23377"
+    },
+    {
+      "path": "pr80-application-job.json",
+      "bytes": 1608,
+      "sha256": "493d36054b958cf21e0b7cf2265bab58e32b9f7d2df91412fce806835f4c0ccd"
+    },
+    {
+      "path": "pr80.json",
+      "bytes": 2610,
+      "sha256": "ba6f3e7912535126d57042d29534d4a30fc0f970a23add84cbbc0825af29f41b"
+    },
+    {
+      "path": "pr81-application-job.json",
+      "bytes": 1608,
+      "sha256": "2eb2bf512dff5f5e9329c858088ff80e132204a0b18f9f0d93a19a5e8844f8d4"
+    },
+    {
+      "path": "pr81.json",
+      "bytes": 3296,
+      "sha256": "fc9151e148083e01f75bc67e0bf11b5cc195401c891413f384af774a294d2e17"
+    },
+    {
+      "path": "pr82-application-job.json",
+      "bytes": 2058,
+      "sha256": "4f4865bfe32d2015fa76729979668a1acbf248508178434ece5aa8f52bb711ed"
+    },
+    {
+      "path": "pr82-gameplay-annotations.json",
+      "bytes": 2919,
+      "sha256": "9c0c358fde595bd081a02be2774072be4b04522f963f8a58372e0e5beced83a9"
+    },
+    {
+      "path": "pr82-gameplay-job.json",
+      "bytes": 3972,
+      "sha256": "0328588e854abf39421fb661c3f6c3bdba577c8f64eb47c93581b6899e5f830e"
+    },
+    {
+      "path": "pr82.json",
+      "bytes": 3245,
+      "sha256": "b8a62bebfee14afaf6b3f8555a009a071ee781bc08f618fcf584a0b5b98b0a18"
+    },
+    {
+      "path": "pr83-application-job.json",
+      "bytes": 1608,
+      "sha256": "d729e184e655d543a2500d94339c48c0558ec49012d2c77191536286e79a2623"
+    },
+    {
+      "path": "pr83.json",
+      "bytes": 2903,
+      "sha256": "4a4bf728e91120acead23d074bfd6ea230aa89361f5ebb9cd7fb38825090535b"
+    },
+    {
+      "path": "pr84-exact-head-checks.json",
+      "bytes": 650,
+      "sha256": "a4efd221e98014e0163e9e2b7974ad5abac3f63ec4c4f8890591efd4a5071aa0"
+    },
+    {
+      "path": "pr84-exact-head-status.json",
+      "bytes": 272,
+      "sha256": "2a7b71a97e7377a9a8e3810ccb51e26f0d88d8f9b8c49a5b07d8a4faaabdad13"
+    },
+    {
+      "path": "pr84-files-pages.json",
+      "bytes": 6725,
+      "sha256": "a432e43ae2e3294f4c87bc6240c9db5f3efe5c10e879aed2d8352c2e2c52b461"
+    },
+    {
+      "path": "pr84-latest-merge.json",
+      "bytes": 310,
+      "sha256": "a27782b8c6ecbbc4d66bfa83156a8a4f11c56080313b1726cc726c76debc139a"
+    },
+    {
+      "path": "pr84.json",
+      "bytes": 1203,
+      "sha256": "e7c145a46ebc632f71207780ca08381708389b057c050710e03caaf1d99ab951"
+    },
+    {
+      "path": "pr89-application-job.json",
+      "bytes": 324,
+      "sha256": "c9a13715baec97d2bf94e47a23eb447073e8e5669a1daf4fb69e02d6c1bba065"
+    },
+    {
+      "path": "pr89-final-check.json",
+      "bytes": 3794,
+      "sha256": "a54856dfc39752a4d1632cdecf7e91a1aaed12879cae0bf19e43c5bac522fecc"
+    },
+    {
+      "path": "pr89.json",
+      "bytes": 3708,
+      "sha256": "465984846fbb7f1536833b115ec6437622c0584cdd85a64a48d726401384bee7"
+    }
+  ],
+  "pr84ExactHeadVerification": {
+    "checkedAt": "2026-11-02T05:16:12.508229Z",
+    "merge": {
+      "additions": 47,
+      "base": "a0f85c961551e4664f754776ff4e483c067ab3e2",
+      "baseRef": "claude/reserve-grand-hunts",
+      "changed_files": 2,
+      "deletions": 2,
+      "draft": true,
+      "head": "8e0bb249fbb85192bad03b28faa9480c80809fd2",
+      "mergeable": true,
+      "mergeable_state": "unstable",
+      "number": 84,
+      "state": "open",
+      "updated_at": "2026-11-02T04:33:37Z"
+    },
+    "checks": {
+      "check_runs": [
+        {
+          "completed_at": "2026-11-02T04:33:33Z",
+          "conclusion": "skipped",
+          "details_url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github",
+          "head_sha": "8e0bb249fbb85192bad03b28faa9480c80809fd2",
+          "id": 125096461422,
+          "name": "CodeRabbit",
+          "started_at": "2026-11-02T04:33:33Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-02T04:34:55Z",
+          "conclusion": "success",
+          "details_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41389133732/job/125096443793",
+          "head_sha": "8e0bb249fbb85192bad03b28faa9480c80809fd2",
+          "id": 125096443793,
+          "name": "typecheck",
+          "started_at": "2026-11-02T04:33:32Z",
+          "status": "completed"
+        }
+      ],
+      "total_count": 2
+    },
+    "status": {
+      "sha": "8e0bb249fbb85192bad03b28faa9480c80809fd2",
+      "state": "failure",
+      "statuses": [
+        {
+          "context": "Vercel",
+          "description": "Deployment rate limited — retry in 24 hours.",
+          "state": "failure",
+          "target_url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        }
+      ]
+    },
+    "verdict": "No source or conflict defect found preventing ready promotion and normal merge into parent PR82; latest exact-head TypeScript/lint check is green. This does not qualify all PR82 gameplay."
+  }
+}

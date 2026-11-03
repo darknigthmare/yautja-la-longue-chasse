@@ -1,0 +1,208 @@
+TAP version 13
+# Subtest: import W3-S09 after selecting the duel rival restores a real movable carrier
+ok 1 - import W3-S09 after selecting the duel rival restores a real movable carrier
+  ---
+  duration_ms: 133.635841
+  type: 'test'
+  ...
+# Subtest: import W3-S10 after selecting the duel rival restores a real movable carrier
+ok 2 - import W3-S10 after selecting the duel rival restores a real movable carrier
+  ---
+  duration_ms: 96.831261
+  type: 'test'
+  ...
+# Subtest: import W3-S13 after selecting the duel rival restores a real movable carrier
+ok 3 - import W3-S13 after selecting the duel rival restores a real movable carrier
+  ---
+  duration_ms: 84.612831
+  type: 'test'
+  ...
+# Subtest: import W3-S15 after selecting the duel rival restores a real movable carrier
+ok 4 - import W3-S15 after selecting the duel rival restores a real movable carrier
+  ---
+  duration_ms: 59.424706
+  type: 'test'
+  ...
+# Subtest: import W3-S18 after selecting the duel rival restores a real movable carrier
+ok 5 - import W3-S18 after selecting the duel rival restores a real movable carrier
+  ---
+  duration_ms: 56.865428
+  type: 'test'
+  ...
+# Subtest: a refused import preserves the duel checkpoint and its valid rival selection
+ok 6 - a refused import preserves the duel checkpoint and its valid rival selection
+  ---
+  duration_ms: 8.039178
+  type: 'test'
+  ...
+# Subtest: choosing a pending file clears the old draft and blocks even the previous import callback
+ok 7 - choosing a pending file clears the old draft and blocks even the previous import callback
+  ---
+  duration_ms: 87.235906
+  type: 'test'
+  ...
+# Subtest: file B remains selected when older file A completes last
+ok 8 - file B remains selected when older file A completes last
+  ---
+  duration_ms: 110.401414
+  type: 'test'
+  ...
+# Subtest: an older completion cannot unlock import while the newer file is still pending
+ok 9 - an older completion cannot unlock import while the newer file is still pending
+  ---
+  duration_ms: 52.006408
+  type: 'test'
+  ...
+# Subtest: a late read error from A neither rejects nor changes the accepted file B
+ok 10 - a late read error from A neither rejects nor changes the accepted file B
+  ---
+  duration_ms: 17.629175
+  type: 'test'
+  ...
+# Subtest: the current read rejection is caught and cannot reimport the old valid draft
+ok 11 - the current read rejection is caught and cannot reimport the old valid draft
+  ---
+  duration_ms: 18.1799
+  type: 'test'
+  ...
+# Subtest: empty selection never reads or reimports the old draft and invalidates a pending file
+ok 12 - empty selection never reads or reimports the old draft and invalidates a pending file
+  ---
+  duration_ms: 101.316639
+  type: 'test'
+  ...
+# Subtest: oversized selection never reads or reimports the old draft and invalidates a pending file
+ok 13 - oversized selection never reads or reimports the old draft and invalidates a pending file
+  ---
+  duration_ms: 47.97591
+  type: 'test'
+  ...
+# Subtest: an empty selection abandons the pending read without restoring the old draft
+ok 14 - an empty selection abandons the pending read without restoring the old draft
+  ---
+  duration_ms: 11.146246
+  type: 'test'
+  ...
+# Subtest: native file cancellation invalidates a pending read, including a later rejection
+ok 15 - native file cancellation invalidates a pending read, including a later rejection
+  ---
+  duration_ms: 7.737195
+  type: 'test'
+  ...
+# Subtest: a queued manual edit cancels an outstanding read and preserves the latest typed draft
+ok 16 - a queued manual edit cancels an outstanding read and preserves the latest typed draft
+  ---
+  duration_ms: 22.201806
+  type: 'test'
+  ...
+# Subtest: a whitespace-only file releases loading but remains empty and cannot replace the current checkpoint
+ok 17 - a whitespace-only file releases loading but remains empty and cannot replace the current checkpoint
+  ---
+  duration_ms: 7.342916
+  type: 'test'
+  ...
+# Subtest: six contracts extract exact source costs, operator, cells and finite real members
+ok 18 - six contracts extract exact source costs, operator, cells and finite real members
+  ---
+  duration_ms: 98.490975
+  type: 'test'
+  ...
+# Subtest: reserve, physical delivery, distinct supports and source work turns cannot be skipped or duplicated
+ok 19 - reserve, physical delivery, distinct supports and source work turns cannot be skipped or duplicated
+  ---
+  duration_ms: 118.026226
+  type: 'test'
+  ...
+# Subtest: all six can actually be built, supplied and staffed without campaign or historical changes
+ok 20 - all six can actually be built, supplied and staffed without campaign or historical changes
+  ---
+  duration_ms: 753.864087
+  type: 'test'
+  ...
+# Subtest: local portage conserves every RAV, refuses remote unload and pauses service on local shortage
+ok 21 - local portage conserves every RAV, refuses remote unload and pauses service on local shortage
+  ---
+  duration_ms: 218.902107
+  type: 'test'
+  ...
+# Subtest: dock traverses real positions with unique pilot, current window and identical passenger IDs
+ok 22 - dock traverses real positions with unique pilot, current window and identical passenger IDs
+  ---
+  duration_ms: 125.752178
+  type: 'test'
+  ...
+# Subtest: mounts already exist, are led by U21, consume finite water and refuse the narrow gap
+ok 23 - mounts already exist, are led by U21, consume finite water and refuse the narrow gap
+  ---
+  duration_ms: 256.431248
+  type: 'test'
+  ...
+# Subtest: releasing and retaking the lead cannot teleport a mount through the pedestrian gap
+ok 24 - releasing and retaking the lead cannot teleport a mount through the pedestrian gap
+  ---
+  duration_ms: 67.995506
+  type: 'test'
+  ...
+# Subtest: confinement requires delivered finite cell, blocks only its actual corridor and leaves adjacent route open
+ok 25 - confinement requires delivered finite cell, blocks only its actual corridor and leaves adjacent route open
+  ---
+  duration_ms: 219.794602
+  type: 'test'
+  ...
+# Subtest: accepted duel binds two actual U08 members, permits physical dodge, credits one result only
+ok 26 - accepted duel binds two actual U08 members, permits physical dodge, credits one result only
+  ---
+  duration_ms: 114.967549
+  type: 'test'
+  ...
+# Subtest: a non-signatory remains movable and actually interrupts a duel when entering its space
+ok 27 - a non-signatory remains movable and actually interrupts a duel when entering its space
+  ---
+  duration_ms: 88.156822
+  type: 'test'
+  ...
+# Subtest: listening uses two real located WAVs, enforces range and wall, compares only on return to station
+ok 28 - listening uses two real located WAVs, enforces range and wall, compares only on return to station
+  ---
+  duration_ms: 332.602905
+  type: 'test'
+  ...
+# Subtest: orbital manifest, finite fuel and midflight checkpoint survive strict replay without repeated departure
+ok 29 - orbital manifest, finite fuel and midflight checkpoint survive strict replay without repeated departure
+  ---
+  duration_ms: 207.240225
+  type: 'test'
+  ...
+# Subtest: surface U26 and U19 cannot walk to the projected orbital layer before boarding
+ok 30 - surface U26 and U19 cannot walk to the projected orbital layer before boarding
+  ---
+  duration_ms: 88.816035
+  type: 'test'
+  ...
+# Subtest: future, wrong source, extra keys, forged quantity and invalid history fail atomically; state is immutable
+ok 31 - future, wrong source, extra keys, forged quantity and invalid history fail atomically; state is immutable
+  ---
+  duration_ms: 587.816471
+  type: 'test'
+  ...
+# Subtest: the same stamped command is idempotent, and an identifier cannot be reassigned to another intent
+ok 32 - the same stamped command is idempotent, and an identifier cannot be reassigned to another intent
+  ---
+  duration_ms: 2.681782
+  type: 'test'
+  ...
+# Subtest: retries of a real RAV transfer and an engaged crossing cannot debit or embark twice
+ok 33 - retries of a real RAV transfer and an engaged crossing cannot debit or embark twice
+  ---
+  duration_ms: 188.359223
+  type: 'test'
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 33
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4303.343217

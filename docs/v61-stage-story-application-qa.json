@@ -1,0 +1,1012 @@
+{
+  "result": "PASS",
+  "checkedAt": "2026-09-30T19:14:40.144Z",
+  "applicationCheckedAt": "2026-09-30T19:12:20.350Z",
+  "url": "http://127.0.0.1:4177",
+  "version": "V61",
+  "surface": "full-application-public-roster-stage-real-keyboard-round",
+  "report": {
+    "path": "work-local/v61/qa/story-application-final/report.json",
+    "sha256": "5c440c3c527107b589cc58c4bf3325735151d844c0733699adcf8494e64298cd"
+  },
+  "sourceHashes": {
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV61.json": "839d2bd0a110aeb0125f1b06879055a181836c7af1307b2ae202ce100e71f466",
+    "app/globals.css": "5874c40730967111adc0829edfcd3ca335320b7d25902fbdf5a49624aaca5040",
+    "app/game/PitCanvas.tsx": "444d1ae76aa1a8f3d796b8e2343f50d5779efe907ec9b5fab7e072bfcc883922",
+    "app/game/pitArenaRendering.ts": "f2eb599daec7425a0641060f179e0bf58e76e06d1c4e8a1750364f44b8ec125b",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "scripts/verify-pit-stage-story-v61.mjs": "b5c7693c876b5e2def9a387b6bac844e1ebd29523adfe41370df8bed320ff6b3",
+    "scripts/lib/pit-stage-story-observation-v61.mjs": "569bbd5e51033eafc4cd9a788cc77f0f347333c3857a4ecdc5a0d86ec222a732"
+  },
+  "targets": [
+    "arena-140-bad-blood-pine-barrens",
+    "arena-142-dead-end-alley",
+    "arena-165-kenner-throne",
+    "arena-173-phg-japan",
+    "arena-185-training"
+  ],
+  "cases": [
+    {
+      "label": "arena-140-bad-blood-pine-barrens-desktop",
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "reduced": false,
+      "mobile": false,
+      "retry": false,
+      "nativeFrames": [
+        {
+          "nativeFrame": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "keyboardResolvedRound": true,
+      "keyboardResolvedMatch": true,
+      "pauseResumeVerified": true,
+      "menuClickDuringToast": true,
+      "toastControlClearance": {
+        "toast": {
+          "x": 931.125,
+          "y": 603.9090576171875,
+          "width": 336.875,
+          "height": 43.265625,
+          "right": 1268,
+          "bottom": 647.1746826171875
+        },
+        "controls": [
+          {
+            "label": "Pause et menu du combat",
+            "rect": {
+              "x": 1202.25,
+              "y": 664,
+              "width": 65.75,
+              "height": 44,
+              "right": 1268,
+              "bottom": 708
+            }
+          }
+        ],
+        "overlapping": [],
+        "withinViewport": true
+      },
+      "intentionalHttp503": 0,
+      "savedBytesUnchanged": false,
+      "persistenceNote": "A legitimately completed local duel may persist its normal replay/result; the gesture director has no storage access.",
+      "mixedTransitionSamples": []
+    },
+    {
+      "label": "arena-142-dead-end-alley-desktop",
+      "stageId": "arena-142-dead-end-alley",
+      "reduced": false,
+      "mobile": false,
+      "retry": false,
+      "nativeFrames": [
+        {
+          "nativeFrame": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "keyboardResolvedRound": true,
+      "keyboardResolvedMatch": true,
+      "pauseResumeVerified": true,
+      "menuClickDuringToast": true,
+      "toastControlClearance": {
+        "toast": {
+          "x": 931.125,
+          "y": 603.909423828125,
+          "width": 336.875,
+          "height": 43.265625,
+          "right": 1268,
+          "bottom": 647.175048828125
+        },
+        "controls": [
+          {
+            "label": "Pause et menu du combat",
+            "rect": {
+              "x": 1202.25,
+              "y": 664,
+              "width": 65.75,
+              "height": 44,
+              "right": 1268,
+              "bottom": 708
+            }
+          }
+        ],
+        "overlapping": [],
+        "withinViewport": true
+      },
+      "intentionalHttp503": 0,
+      "savedBytesUnchanged": false,
+      "persistenceNote": "A legitimately completed local duel may persist its normal replay/result; the gesture director has no storage access.",
+      "mixedTransitionSamples": []
+    },
+    {
+      "label": "arena-165-kenner-throne-desktop",
+      "stageId": "arena-165-kenner-throne",
+      "reduced": false,
+      "mobile": false,
+      "retry": false,
+      "nativeFrames": [
+        {
+          "nativeFrame": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "keyboardResolvedRound": true,
+      "keyboardResolvedMatch": false,
+      "pauseResumeVerified": true,
+      "menuClickDuringToast": false,
+      "toastControlClearance": null,
+      "intentionalHttp503": 0,
+      "savedBytesUnchanged": true,
+      "persistenceNote": null,
+      "mixedTransitionSamples": []
+    },
+    {
+      "label": "arena-173-phg-japan-desktop",
+      "stageId": "arena-173-phg-japan",
+      "reduced": false,
+      "mobile": false,
+      "retry": false,
+      "nativeFrames": [
+        {
+          "nativeFrame": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "keyboardResolvedRound": false,
+      "keyboardResolvedMatch": false,
+      "pauseResumeVerified": true,
+      "menuClickDuringToast": false,
+      "toastControlClearance": null,
+      "intentionalHttp503": 0,
+      "savedBytesUnchanged": true,
+      "persistenceNote": null,
+      "mixedTransitionSamples": []
+    },
+    {
+      "label": "arena-185-training-desktop",
+      "stageId": "arena-185-training",
+      "reduced": false,
+      "mobile": false,
+      "retry": false,
+      "nativeFrames": [
+        {
+          "nativeFrame": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            490
+          ]
+        },
+        {
+          "nativeFrame": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            490
+          ]
+        },
+        {
+          "nativeFrame": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            490
+          ]
+        },
+        {
+          "nativeFrame": 3,
+          "rect": [
+            0,
+            490,
+            512,
+            534
+          ]
+        },
+        {
+          "nativeFrame": 4,
+          "rect": [
+            512,
+            490,
+            512,
+            534
+          ]
+        },
+        {
+          "nativeFrame": 5,
+          "rect": [
+            1024,
+            490,
+            512,
+            534
+          ]
+        }
+      ],
+      "keyboardResolvedRound": true,
+      "keyboardResolvedMatch": false,
+      "pauseResumeVerified": true,
+      "menuClickDuringToast": false,
+      "toastControlClearance": null,
+      "intentionalHttp503": 0,
+      "savedBytesUnchanged": true,
+      "persistenceNote": null,
+      "mixedTransitionSamples": []
+    },
+    {
+      "label": "arena-173-phg-japan-reduced",
+      "stageId": "arena-173-phg-japan",
+      "reduced": true,
+      "mobile": false,
+      "retry": false,
+      "nativeFrames": [
+        {
+          "nativeFrame": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        }
+      ],
+      "keyboardResolvedRound": false,
+      "keyboardResolvedMatch": false,
+      "pauseResumeVerified": false,
+      "menuClickDuringToast": false,
+      "toastControlClearance": null,
+      "intentionalHttp503": 0,
+      "savedBytesUnchanged": true,
+      "persistenceNote": null,
+      "mixedTransitionSamples": []
+    },
+    {
+      "label": "arena-140-bad-blood-pine-barrens-mobile",
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "reduced": false,
+      "mobile": true,
+      "retry": false,
+      "nativeFrames": [
+        {
+          "nativeFrame": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "keyboardResolvedRound": true,
+      "keyboardResolvedMatch": true,
+      "pauseResumeVerified": false,
+      "menuClickDuringToast": false,
+      "toastControlClearance": {
+        "toast": {
+          "x": 503.125,
+          "y": 156.23947143554688,
+          "width": 328.875,
+          "height": 35.265625,
+          "right": 832,
+          "bottom": 191.50509643554688
+        },
+        "controls": [
+          {
+            "label": "Pause et menu du combat",
+            "rect": {
+              "x": 766.25,
+              "y": 82,
+              "width": 65.75,
+              "height": 44,
+              "right": 832,
+              "bottom": 126
+            }
+          },
+          {
+            "label": "◀",
+            "rect": {
+              "x": 8,
+              "y": 338,
+              "width": 44,
+              "height": 44,
+              "right": 52,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "▼",
+            "rect": {
+              "x": 56,
+              "y": 338,
+              "width": 44,
+              "height": 44,
+              "right": 100,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "▶",
+            "rect": {
+              "x": 104,
+              "y": 338,
+              "width": 44,
+              "height": 44,
+              "right": 148,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "SAUT",
+            "rect": {
+              "x": 152,
+              "y": 338,
+              "width": 46,
+              "height": 44,
+              "right": 198,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "R",
+            "rect": {
+              "x": 423.0625,
+              "y": 338,
+              "width": 44,
+              "height": 44,
+              "right": 467.0625,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "M",
+            "rect": {
+              "x": 471.0625,
+              "y": 338,
+              "width": 44,
+              "height": 44,
+              "right": 515.0625,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "L",
+            "rect": {
+              "x": 519.0625,
+              "y": 338,
+              "width": 44,
+              "height": 44,
+              "right": 563.0625,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "TECH.",
+            "rect": {
+              "x": 567.0625,
+              "y": 338,
+              "width": 44,
+              "height": 44,
+              "right": 611.0625,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "GARDE ↑",
+            "rect": {
+              "x": 615.0625,
+              "y": 338,
+              "width": 56.046875,
+              "height": 44,
+              "right": 671.109375,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "GARDE ↓",
+            "rect": {
+              "x": 675.109375,
+              "y": 338,
+              "width": 56.046875,
+              "height": 44,
+              "right": 731.15625,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "PROJ.",
+            "rect": {
+              "x": 735.15625,
+              "y": 338,
+              "width": 46,
+              "height": 44,
+              "right": 781.15625,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "TRAQUE",
+            "rect": {
+              "x": 785.15625,
+              "y": 338,
+              "width": 50.84375,
+              "height": 44,
+              "right": 836,
+              "bottom": 382
+            }
+          },
+          {
+            "label": "J2 ◀",
+            "rect": {
+              "x": 85.859375,
+              "y": 286,
+              "width": 44,
+              "height": 44,
+              "right": 129.859375,
+              "bottom": 330
+            }
+          },
+          {
+            "label": "J2 ▼",
+            "rect": {
+              "x": 133.859375,
+              "y": 286,
+              "width": 44,
+              "height": 44,
+              "right": 177.859375,
+              "bottom": 330
+            }
+          },
+          {
+            "label": "J2 ▶",
+            "rect": {
+              "x": 181.859375,
+              "y": 286,
+              "width": 44,
+              "height": 44,
+              "right": 225.859375,
+              "bottom": 330
+            }
+          },
+          {
+            "label": "J2 SAUT",
+            "rect": {
+              "x": 229.859375,
+              "y": 286,
+              "width": 51.53125,
+              "height": 44,
+              "right": 281.390625,
+              "bottom": 330
+            }
+          },
+          {
+            "label": "J2 R",
+            "rect": {
+              "x": 285.390625,
+              "y": 286,
+              "width": 44,
+              "height": 44,
+              "right": 329.390625,
+              "bottom": 330
+            }
+          },
+          {
+            "label": "J2 M",
+            "rect": {
+              "x": 333.390625,
+              "y": 286,
+              "width": 44,
+              "height": 44,
+              "right": 377.390625,
+              "bottom": 330
+            }
+          },
+          {
+            "label": "J2 L",
+            "rect": {
+              "x": 381.390625,
+              "y": 286,
+              "width": 44,
+              "height": 44,
+              "right": 425.390625,
+              "bottom": 330
+            }
+          },
+          {
+            "label": "J2 TECH.",
+            "rect": {
+              "x": 429.390625,
+              "y": 286,
+              "width": 54.40625,
+              "height": 44,
+              "right": 483.796875,
+              "bottom": 330
+            }
+          },
+          {
+            "label": "J2 GARDE ↑",
+            "rect": {
+              "x": 487.796875,
+              "y": 286,
+              "width": 70.234375,
+              "height": 44,
+              "right": 558.03125,
+              "bottom": 330
+            }
+          },
+          {
+            "label": "J2 GARDE ↓",
+            "rect": {
+              "x": 562.03125,
+              "y": 286,
+              "width": 70.234375,
+              "height": 44,
+              "right": 632.265625,
+              "bottom": 330
+            }
+          },
+          {
+            "label": "J2 PROJ.",
+            "rect": {
+              "x": 636.265625,
+              "y": 286,
+              "width": 52.828125,
+              "height": 44,
+              "right": 689.09375,
+              "bottom": 330
+            }
+          },
+          {
+            "label": "J2 TRAQUE",
+            "rect": {
+              "x": 693.09375,
+              "y": 286,
+              "width": 65.03125,
+              "height": 44,
+              "right": 758.125,
+              "bottom": 330
+            }
+          }
+        ],
+        "overlapping": [],
+        "withinViewport": true
+      },
+      "intentionalHttp503": 0,
+      "savedBytesUnchanged": false,
+      "persistenceNote": "A legitimately completed local duel may persist its normal replay/result; the gesture director has no storage access.",
+      "mixedTransitionSamples": []
+    },
+    {
+      "label": "arena-173-phg-japan-retry",
+      "stageId": "arena-173-phg-japan",
+      "reduced": false,
+      "mobile": false,
+      "retry": true,
+      "nativeFrames": [
+        {
+          "nativeFrame": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "nativeFrame": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "keyboardResolvedRound": false,
+      "keyboardResolvedMatch": false,
+      "pauseResumeVerified": false,
+      "menuClickDuringToast": false,
+      "toastControlClearance": null,
+      "intentionalHttp503": 1,
+      "savedBytesUnchanged": true,
+      "persistenceNote": null,
+      "mixedTransitionSamples": []
+    }
+  ],
+  "counts": {
+    "cases": 8,
+    "desktopConditionalSheets": 5,
+    "uniqueDesktopNativeCells": 30,
+    "menuActualClickDuringToast": 2,
+    "toastControlNonOverlapCases": 3,
+    "mixedObserverHandoffsInFinalRun": 0,
+    "unexpectedConsoleErrors": 0,
+    "unexpectedHttpFailures": 0,
+    "unexpectedFailedRequests": 0
+  },
+  "captures": [
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-140-bad-blood-pine-barrens-desktop-status-layout.png",
+      "sha256": "a4d522cb90385b7e58d9acad3eabbd9a863920482d5032868c71e291252163e6"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-140-bad-blood-pine-barrens-desktop-paused.png",
+      "sha256": "9909786563d8a2ef05effb58cd711913391cb8ba3cfd251b3903dbff36312940"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-140-bad-blood-pine-barrens-desktop-active.png",
+      "sha256": "11f35d1d8ffb4887c6b7fbbfa72e3b6464153c6fc0ced865beadc6f1c8d08681"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-142-dead-end-alley-desktop-status-layout.png",
+      "sha256": "f8fe9e27d29417d41e95458801726a0d50095850effb8fd2bca5a873df0610d9"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-142-dead-end-alley-desktop-paused.png",
+      "sha256": "5f3d5612cbda5bbef84a9ac2b56efa22141e64fd67b210ac153e0ee27b6f40b1"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-142-dead-end-alley-desktop-active.png",
+      "sha256": "933a1b3a7dc05a7031295eda8a77905f1deb381b89e1b31235c7001eb58acf5d"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-165-kenner-throne-desktop-paused.png",
+      "sha256": "0e4020a39e237e2ae2962fc6f2ff822959d18b7f6800ccfef0667b72e2d9e158"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-165-kenner-throne-desktop-active.png",
+      "sha256": "65a374aa273e6070894aafe56b20411ae0ec1e1dda610fb7901a6f735036e8c0"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-173-phg-japan-desktop-paused.png",
+      "sha256": "46322076be795ab48f3e121cefc7df3522fc748323b2bd1d277e634ee0879a0a"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-173-phg-japan-desktop-active.png",
+      "sha256": "bba1691d9dd4404050fe7cde33751953a7745bfcee8fb5359543ec6e6b5070e2"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-185-training-desktop-paused.png",
+      "sha256": "edb9bff8905607dee43f1858e151911bd84033469ee82fcd164f9c0b5408693a"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-185-training-desktop-active.png",
+      "sha256": "489265ed774d99bccf6a3b889383a7dc822406d7b0de662d678a09e05bdc8de6"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-173-phg-japan-reduced-active.png",
+      "sha256": "4c676f6f64aba9cae29cdb24078086606e22a662b96a83fd6c3dbdb658003dad"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-140-bad-blood-pine-barrens-mobile-status-layout.png",
+      "sha256": "3bb35d7097367796d4139132fc1a7625eac608edca8769dd50c201bc8025c3f1"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-140-bad-blood-pine-barrens-mobile-active.png",
+      "sha256": "5bee4597b791ec2539dc740ceab8970d5660b6fed2f1c46a4161774774d1dba4"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-140-bad-blood-pine-barrens-mobile-layout.png",
+      "sha256": "aac9aaaf4d70432e9635332491cff37b869ded8658a3ca08371b42b64d7b73f8"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-173-phg-japan-503.png",
+      "sha256": "6eb8e73ea3d766ec7cc992c19077ab5b05d33746cbada5af73fd4e98ecf3815f"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/arena-173-phg-japan-retry-active.png",
+      "sha256": "bba1691d9dd4404050fe7cde33751953a7745bfcee8fb5359543ec6e6b5070e2"
+    }
+  ],
+  "visualReview": "docs/v61-stage-story-application-visual-review.json",
+  "observerRegression": {
+    "tests": 3,
+    "result": "PASS",
+    "command": "node --test tests/pit-stage-story-observation-v61.test.mjs",
+    "helperSha256": "569bbd5e51033eafc4cd9a788cc77f0f347333c3857a4ecdc5a0d86ec222a732",
+    "testSha256": "c27b8ddf8a529969c7828b8129c38885cdb0fa8099ce90316fb7abc404a5e5a7",
+    "priorFailure": {
+      "path": "work-local/v61/qa/story-observer-failure/failure.json",
+      "sha256": "b565455d03e20374420ef6e8938bb498ea4450a507f3352fc752892f501b9bee",
+      "capturePath": "work-local/v61/qa/story-observer-failure/failure.png",
+      "captureSha256": "55b42e424660996fbd1ce2c0cdc7cdc1cb0df9e1e00e1747267fe9b227f55dbb"
+    },
+    "correction": "The harness only permits one last native pose explicitly belonging to the previous resolved round, bounded by the previous result observation and an immediately following inactive current-round observation at the identical simulation tick. Current-round cues during intro/countdown still fail. No runtime tolerance or trigger changed."
+  },
+  "runtimeModifiedDuringFinalRun": false,
+  "publicDeploymentVerified": false,
+  "limits": [
+    "Browser clock controls real timers only; no combat state, engine event or result is injected.",
+    "Narrative scenarios without callers are not exercised or claimed.",
+    "Mobile is Chromium emulation.",
+    "Composition acceptance is a separate actual image review.",
+    "Five desktop sheets were fully exercised; reduced motion and retry are representative173 checks, mobile is representative140.",
+    "Match-end tests legitimately persist their normal replay/result, so unchanged saved bytes are asserted for round gestures only.",
+    "Narrative cues without existing callers remain explicitly unimplemented; no fake story event is injected."
+  ]
+}

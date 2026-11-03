@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_TARGETED_SCOPE_AND_INTEGRITY_NOT_COMPOSITE_PRODUCTION",
+  "sourceManifest": {
+    "path": "docs/qa/hunt-pr62-followup-r8-20261102/source-manifest.json",
+    "bytes": 7793,
+    "sha256": "400ae766d9568f0d936991546679e373c7945bbff2cca2617c94f252b1895c15"
+  },
+  "frozenRuntimeAndSupportFiles": 5,
+  "currentSourceCopiesByteIdentical": 5,
+  "canonicalPrApplicationFilesByteIdentical": 2,
+  "newUniqueTestCases": 35,
+  "regressionFiles": 6,
+  "lintFiles": 5,
+  "canvasConfigurations": 6,
+  "canvasMeasurements": 72,
+  "screenshotsOpened": 6,
+  "typedCodeArchiveCopiesCompiledByTsconfig": 0,
+  "independentReview": {
+    "path": "docs/qa/hunt-pr62-followup-r8-20261102/independent-review.json",
+    "bytes": 5014,
+    "sha256": "21bf9c2079a6d6a446a8d9bfc55725411ca50fb916ebcffe5a5571fbcdc19a10"
+  },
+  "protectedWorkbooksUnchanged": [
+    {
+      "path": "docs/YAUTJA_V112_SUIVI.xlsx",
+      "bytes": 9433700,
+      "sha256": "723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc"
+    },
+    {
+      "path": "production/YAUTJA_V113_SUIVI.xlsx",
+      "bytes": 10373135,
+      "sha256": "082ccfdd584a8989124f81851bdcb50e1c6206940c9d1f46b328d758e428d84f"
+    },
+    {
+      "path": "production/YAUTJA_V114_SUIVI.xlsx",
+      "bytes": 10600088,
+      "sha256": "1367ac28a95c1ecf069ee1b5ee84b9438857c28ed5fb1b4e3b7059e4db619240"
+    }
+  ],
+  "gitMutations": 0,
+  "compositeB2Attested": false,
+  "humanValidated": false,
+  "sourceCompletion": false
+}

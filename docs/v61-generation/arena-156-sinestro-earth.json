@@ -1,0 +1,853 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "stageId": "arena-156-sinestro-earth",
+  "proposalId": "new-sinestro",
+  "workbookStage": "09_STAGES!A39:N39",
+  "workbookLife": "10_VIE_DES_STAGES!A107:N109",
+  "sourceUrls": [
+    "https://store.necaonline.com/blogs/news/nycc-2019-convention-exclusives-complete-roundup-and-pre-sale-details-1",
+    "https://www.dc.com/characters/sinestro"
+  ],
+  "loreLimits": [
+    "NECA confirms Sinestro Corps Yautja attack Earth with power rings; exact terrace and energy geometry are original adaptations.",
+    "E108 visitors require validated continuity and are not currently identified or certified present. Ambient-02 original mundane turbine substitutes during random ambient playback; E108 literal event remains open."
+  ],
+  "backgroundReview": {
+    "p0": "public/game/sprites/v55/pit-arenas/arena-156-sinestro-earth/p0-depth.png",
+    "composition": "work-local/v55/stage-renderer/arena-156-sinestro-earth/center.png",
+    "notes": "P0 and renderer viewed: dark-blue moonlit terrestrial skyline, yellow energy arcs far sky, solid rooftop supports. Energy assets must stay small/high, rooftop turbine contacts rear roof."
+  },
+  "assets": [
+    {
+      "id": "ambient-01",
+      "prompt": "Use case: stylized-concept. Native transparent PNG six-frame animation atlas of a small peaceful yellow energy architectural construct floating far above a nighttime terrestrial city, inspired by Sinestro yellow energy visual vocabulary. Exactly SIX isolated small drawings3columns2rows1536x1024. One elegant open polygonal arch made of thin gold-yellow translucent ribs and three articulated rectangular light-panels. Six clearly distinct panel tilts/folding positions in a slowcalm breathingmotion, same underlying non-aggressive construct, noweaponshape, no beams, no explosion, no ringlogo, no flyingcharacter, no letters. Detailed painted cinematic videogame effect, restrained golden light matching darkblue moonlit skyline. Each complete construct occupies maximum280wide220high centered each512cell; at least100pixels completelyemptyalpha allcellborders. Glow must be compact within that footprint with clear truealpha outside. No scene/background, no ground/shadow, no gridlines or decorativeborders. Original noncanonical exact shape, not a claimed comic panel.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-57fd9519-57b5-4f69-ba46-7049cdcc7b68.png",
+      "workspacePath": "work-local/v61/generated/arena-156-sinestro-earth/ambient-01.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E107"
+      ],
+      "visualNotes": "Viewed six distinct small energy-panel fold positions; coherent nonweapon geometry. Exact shape is original; restrained gold matches inspected skyline. At edge only translucent halo max alpha3, no hard form cut.",
+      "sha256": "6aed14616f4b48d443d075127514b49895cedc4728f504b36b24db970fe562b9",
+      "bytes": 2161678,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.5618953704833984,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            46,
+            77,
+            466,
+            388
+          ],
+          "alphaBounds32": [
+            50,
+            94,
+            454,
+            371
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            277,
+            279.5
+          ],
+          "bodyCenterPivot": [
+            278.5,
+            465
+          ],
+          "opaquePixelCount": 77244,
+          "contentSha256": "797f96ee506fad3c9655a3803a53fb48b242d2fa2b42117b10a87521f63396bf",
+          "margins": [
+            46,
+            77,
+            0,
+            47
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            49,
+            448,
+            429
+          ],
+          "alphaBounds32": [
+            56,
+            59,
+            436,
+            418
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            274,
+            268
+          ],
+          "bodyCenterPivot": [
+            271.5,
+            478
+          ],
+          "opaquePixelCount": 70575,
+          "contentSha256": "e76999401fd4be60799aeba4fe6e40df91ab8c36ec9e039b8e9981178d32566e",
+          "margins": [
+            48,
+            49,
+            16,
+            34
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            57,
+            98,
+            407,
+            383
+          ],
+          "alphaBounds32": [
+            63,
+            105,
+            398,
+            374
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            262,
+            292
+          ],
+          "bodyCenterPivot": [
+            260,
+            481
+          ],
+          "opaquePixelCount": 64609,
+          "contentSha256": "5e367b22507c88d841880cbf9454eed6b360d2a8693bcd7953fe9570e818ac47",
+          "margins": [
+            57,
+            98,
+            48,
+            31
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            53,
+            34,
+            428,
+            400
+          ],
+          "alphaBounds32": [
+            58,
+            41,
+            421,
+            392
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            268.5,
+            237
+          ],
+          "bodyCenterPivot": [
+            266.5,
+            434
+          ],
+          "opaquePixelCount": 77759,
+          "contentSha256": "96bc5747ff3897cf2ac71cdb4ea6425e6198c79622f85b6c974299f867b8e6a2",
+          "margins": [
+            53,
+            34,
+            31,
+            78
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            71,
+            47,
+            397,
+            387
+          ],
+          "alphaBounds32": [
+            76,
+            48,
+            390,
+            385
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            271,
+            240.5
+          ],
+          "bodyCenterPivot": [
+            269,
+            434
+          ],
+          "opaquePixelCount": 69898,
+          "contentSha256": "b80c37f6e0b2829d003258e0b9bb17dcabfaf42dc6e40c174b0f1fdaa8c522b5",
+          "margins": [
+            71,
+            47,
+            44,
+            78
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            46,
+            481,
+            391
+          ],
+          "alphaBounds32": [
+            19,
+            48,
+            470,
+            387
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            254,
+            241.5
+          ],
+          "bodyCenterPivot": [
+            256,
+            437
+          ],
+          "opaquePixelCount": 77664,
+          "contentSha256": "5f3c96f9ce81dc577b53e2292ab18fcaaba493d6c9e88b3d470a792b765385dd",
+          "margins": [
+            16,
+            46,
+            15,
+            75
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 3,
+          "count": 18
+        },
+        {
+          "max": 2,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ],
+      "edgeHaloReview": {
+        "accepted": true,
+        "notes": "All six drawings visually inspected at native output. Any edge pixels are faint translucent isolated halo (maximum alpha 3/255), with no silhouette or solid form cut; zero edge pixels above alpha32. Exact alpha>2 bounds retained and PNG bytes untouched."
+      },
+      "anchorKind": "effect-center"
+    },
+    {
+      "id": "ambient-02",
+      "prompt": "Use case: stylized-concept. Native transparent PNG animation sheet for a small mechanical rooftop extractor ventilator at night. Exactly SIX isolated drawings3columns2rows on1536x1024. One compact weathered darkblue galvanized rooftop whirlybird wind turbine ventilator with fixed square mounting flange and round curved vanes, ordinary Earth city architecture. Six distinct slow rotations of its curved vanes and tiny mechanical wobble, fixed lowerpipe and flange, consistent silhouette and size. Cool moonlight blue highlights with a faint warm yellowreflection from distant skyline energy, muted painted detailed videogameart. Device no more than220wide280high centered each512cell with at least100pixels empty realalpha allcellborders. No smoke, no lightbeam, no people, no surroundingroof, no scene, no words/logos/grid. Transparent background only. This original mundane ambient prop substitutes for unverified conditional visitors; no exotic species or canonical character.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-534a4b79-e807-4b95-95ad-d2162b806fb2.png",
+      "workspacePath": "work-local/v61/generated/arena-156-sinestro-earth/ambient-02.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E108"
+      ],
+      "visualNotes": "Viewed six distinct vane rotations on intact conventional rooftop extractor. Fixed base bolts and pipe; no unrelated lore actor. Feet/base must contact rear roof. E108 visitors remain conditional and unfulfilled literally.",
+      "sha256": "01a23b352a4145c76a0793db918c1f74fe03a658a3a1b82f4ff5bf13ab851661",
+      "bytes": 2189015,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6370849609375,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            105,
+            67,
+            318,
+            404
+          ],
+          "alphaBounds32": [
+            107,
+            69,
+            314,
+            400
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            279.5,
+            471
+          ],
+          "bodyCenterPivot": [
+            263.5,
+            471
+          ],
+          "opaquePixelCount": 90990,
+          "contentSha256": "2c5f9e10aa5dcf79ca6feb4456dbe9edc806cb34706ab4d049948f7a349e69e8",
+          "margins": [
+            105,
+            67,
+            89,
+            41
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            98,
+            66,
+            316,
+            406
+          ],
+          "alphaBounds32": [
+            100,
+            68,
+            311,
+            402
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            272,
+            472
+          ],
+          "bodyCenterPivot": [
+            255.5,
+            472
+          ],
+          "opaquePixelCount": 90610,
+          "contentSha256": "5707059bc4c91dcf73c102ac1928b512d8e865c4fe94fe47e6c6b65856b7accb",
+          "margins": [
+            98,
+            66,
+            98,
+            40
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            67,
+            310,
+            406
+          ],
+          "alphaBounds32": [
+            101,
+            70,
+            306,
+            401
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            273.5,
+            473
+          ],
+          "bodyCenterPivot": [
+            253.5,
+            473
+          ],
+          "opaquePixelCount": 89572,
+          "contentSha256": "745623025f8d404eabf81cdd7e0c7eadc45a3c7caeab35bf1751cec22947aa55",
+          "margins": [
+            99,
+            67,
+            103,
+            39
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            105,
+            56,
+            316,
+            406
+          ],
+          "alphaBounds32": [
+            107,
+            58,
+            312,
+            403
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            284.5,
+            462
+          ],
+          "bodyCenterPivot": [
+            262.5,
+            462
+          ],
+          "opaquePixelCount": 90933,
+          "contentSha256": "02aec7dd40824fa17098ba86160aef983c8f78c99ffcfb411994bd672232f52a",
+          "margins": [
+            105,
+            56,
+            91,
+            50
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            57,
+            317,
+            402
+          ],
+          "alphaBounds32": [
+            101,
+            59,
+            313,
+            398
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            281.5,
+            459
+          ],
+          "bodyCenterPivot": [
+            257,
+            459
+          ],
+          "opaquePixelCount": 89691,
+          "contentSha256": "72c471ead8a6946a3a3e2ec53a2545cec92358e1a1d095071a1bbf8dd70d0138",
+          "margins": [
+            99,
+            57,
+            96,
+            53
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            95,
+            57,
+            317,
+            402
+          ],
+          "alphaBounds32": [
+            96,
+            59,
+            313,
+            398
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            269.5,
+            459
+          ],
+          "bodyCenterPivot": [
+            253,
+            459
+          ],
+          "opaquePixelCount": 89937,
+          "contentSha256": "352cd47db03b42d391f1ab022b1d63acd1545da9cbdbc86315e41579ec800d5e",
+          "margins": [
+            95,
+            57,
+            100,
+            53
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "ambient-03",
+      "prompt": "Use case: stylized-concept. A native transparent PNG six-frame sheet of a distant steady gold-yellow energy halo above darkblue city rooftops. Exactly SIX isolated small drawings3columns2rows1536x1024. One open thin circular halo, viewed slightly obliquely as a broad ellipse, with a second incomplete finer innerarc and exactly three tiny geometric golden motes orbiting within its circumference. Across sixdrawings motes advance distinct measured positions and innerarc gently rolls, outerhalo sameoutline and same lowbrightness; calmcontinuous motion, no pulse/strobe/flash/explosion. Painterly detailed gameVFX consistent with yellow-energy comicworld, originalexactshape, nonaggressive. Entire effect including softlight contained in SMALL300wide220high region centered every512cell, minimum100pixels completelyclearalpha around allborders. Ringinterior transparent, backgroundgenuinetransparent, no blackrectangles, no skyline/scenery/characters/weapons, no text/logos/grid. Halo is steady illumination; changes are orbit and fine contour, not brightness.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-4bfb8829-d31e-4967-ad30-b6ddc094cc10.png",
+      "workspacePath": "work-local/v61/generated/arena-156-sinestro-earth/ambient-03.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E109"
+      ],
+      "visualNotes": "Viewed six distinct mote orbital positions and internalarc phases, outerhalo steady shape/illumination with no strobe. All cell edge contacts are faint halo max alpha6, no ring silhouette cut. Sky placement, subdued opacity needed.",
+      "sha256": "21de84a199b39390b98e16aa7572e5d4e13d9f57542d83affdbe4241fd17d229",
+      "bytes": 1556528,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6273479461669922,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            15,
+            145,
+            497,
+            243
+          ],
+          "alphaBounds32": [
+            38,
+            167,
+            459,
+            201
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            267.5,
+            267.5
+          ],
+          "bodyCenterPivot": [
+            263,
+            388
+          ],
+          "opaquePixelCount": 77265,
+          "contentSha256": "c0395b2b1671600990fc0c980a4073beed40664a2247bf50fd05bce527cdaa43",
+          "margins": [
+            15,
+            145,
+            0,
+            124
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            145,
+            512,
+            243
+          ],
+          "alphaBounds32": [
+            30,
+            168,
+            453,
+            201
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            256.5,
+            268.5
+          ],
+          "bodyCenterPivot": [
+            255.5,
+            388
+          ],
+          "opaquePixelCount": 76356,
+          "contentSha256": "2b2a923c02ae2d4b10f72623a1b8692376113e1453ca90c0434a89237ba6e840",
+          "margins": [
+            0,
+            145,
+            0,
+            124
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            145,
+            498,
+            242
+          ],
+          "alphaBounds32": [
+            18,
+            169,
+            460,
+            199
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            248,
+            268.5
+          ],
+          "bodyCenterPivot": [
+            248.5,
+            387
+          ],
+          "opaquePixelCount": 76326,
+          "contentSha256": "9f92d08804a5e5bb9202a6a139e6a1bbce3a97f698c85a66e7d4e49495ef08d6",
+          "margins": [
+            0,
+            145,
+            14,
+            125
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            134,
+            494,
+            242
+          ],
+          "alphaBounds32": [
+            40,
+            158,
+            453,
+            197
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            266.5,
+            256.5
+          ],
+          "bodyCenterPivot": [
+            264.5,
+            376
+          ],
+          "opaquePixelCount": 76077,
+          "contentSha256": "bc46e6a5127e1de77db4e40119a4a08c3224b0b78cf0a8b0965560390bc341f6",
+          "margins": [
+            18,
+            134,
+            0,
+            136
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            131,
+            512,
+            249
+          ],
+          "alphaBounds32": [
+            29,
+            157,
+            459,
+            201
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            258.5,
+            257.5
+          ],
+          "bodyCenterPivot": [
+            255.5,
+            380
+          ],
+          "opaquePixelCount": 77700,
+          "contentSha256": "6b03b87f03a431dc7be59c5dfcd49dbc96d708613c1b868ead87f47dd11968e2",
+          "margins": [
+            0,
+            131,
+            0,
+            132
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            131,
+            496,
+            247
+          ],
+          "alphaBounds32": [
+            20,
+            158,
+            456,
+            197
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            248,
+            256.5
+          ],
+          "bodyCenterPivot": [
+            247.5,
+            378
+          ],
+          "opaquePixelCount": 76363,
+          "contentSha256": "4ef502013657d3c008e716941477b8b9cf28bbe75c3d59ff04727365834101b4",
+          "margins": [
+            0,
+            131,
+            16,
+            134
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 6,
+          "count": 50
+        },
+        {
+          "max": 5,
+          "count": 76
+        },
+        {
+          "max": 4,
+          "count": 37
+        },
+        {
+          "max": 5,
+          "count": 38
+        },
+        {
+          "max": 4,
+          "count": 63
+        },
+        {
+          "max": 3,
+          "count": 32
+        }
+      ],
+      "edgeHaloReview": {
+        "accepted": true,
+        "notes": "All six drawings visually inspected at native output. Any edge pixels are faint translucent isolated halo (maximum alpha 6/255), with no silhouette or solid form cut; zero edge pixels above alpha32. Exact alpha>2 bounds retained and PNG bytes untouched."
+      },
+      "anchorKind": "effect-center"
+    }
+  ],
+  "artStatus": "accepted-3-ambient-awaiting-runtime-composition"
+}

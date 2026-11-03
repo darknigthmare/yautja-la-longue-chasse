@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "house-b-basalt",
+  "tool": "OpenAI builtin image_gen",
+  "path": "/game/homeworld/v64/house-b-basalt.png",
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-8d3ca3ef-f16d-443a-9241-95aa822343ce.png",
+  "sourcePreserved": true,
+  "nativeBytesUnchanged": true,
+  "sha256": "a5354df52b86c6994d4c0ade9db91822a9501b352af6b9b9b5d8c41c4645d746",
+  "width": 1161,
+  "height": 1355,
+  "drawings": 1,
+  "animationFrames": 0,
+  "alphaOutside": true,
+  "prompts": [
+    {
+      "file": "house-b-prompt.txt",
+      "prompt": "Use case: stylized-concept. ONE isolated transparent PNG building sprite for a polished 2.5D Yautja videogame, family B: a broad layered basalt clan dwelling. Original lore-compatible design, not a named canonical movie building. Dense dark volcanic stone, charcoal alloy panels embedded in stone, two broad angled buttresses, a shallow gently curved layered stone canopy supported by understated aged bronze metal ribs. A distinct WIDE asymmetrical ROOF silhouette with low uneven stone ledges, but the front doorway remains dead center. Subtle amber light slits and durable alien engineering. No medieval house, no wood cottage, no human windows, no skull ornament.\nCAMERA: fixed ORTHOGRAPHIC camera exactly centered on front SOUTH facade, yaw ZERO, 35 degrees downward to north. Front wall horizontals perfectly HORIZONTAL, verticals perfectly VERTICAL. North-south roof depth goes straight UP screen. See substantial TOP of roof and FRONT facade, not left or right wall. NO diamond/isometric corner view, NO perspective convergence.\nPROPORTIONS: physical foundation width440 world units and depth260. Facade height270world units, layered roof adds30. Ground depth foreshortens by sin35deg. Door opening centered and FLUSH with front ground foundation, no stairs or terrace. CLEAR OPEN PASSAGE width100units and height150units. Door top only55% of facade height: a LARGE BAND OF STONE WALL ABOVE the door, then roof. This is a tall facade with a comfortably sized open passage, not a giant doorway occupying the entire house. Thick dark metallic jambs and genuinely dark visible interior. Front base is a clean measurable horizontal stone foundation. No separate floor patch. Minimal contact shadow.\nCOMPOSITION: square or near square portrait canvas, entire roof/foundation visible with generous transparent margin at every edge, target canvas1536². Native building width~1280px, front-wall physical height~785px; projected roof depth~435px. Front ground contact abouty1440, roof highest point aroundy160. Main clear doorway approximately290px wide×435px high, exact bottom-center of building. Do not crop.\nSTYLE: detailed hand-painted realistic HD2D game asset, same neutral warm upper-left light on bronze and basalt, readable clean silhouette, richly authored stone texture, no environment, no people, no text, no glow fog, true transparent alpha. Single building only."
+    },
+    {
+      "file": "house-b-edit-prompt.txt",
+      "prompt": "Edit this isolated alien building sprite precisely. Keep the whole same roof design, stone and bronze materials, perfectly centered front orthographic camera looking downward, and width. Correct the facade and open door geometry ONLY. Make the entire front wall 60 percent taller by adding a substantial stone wall band above the doorway and raising the roof accordingly. ENLARGE the clear open doorway by 35 percent in height and 20 percent in width, keeping it centered. Move its ground threshold DOWN to the horizontal ground line shared by the bottoms of the two front buttress feet. This fills the current empty rectangular notch below the center facade with a solid stone facade extension to ground level; doorway now begins exactly at the southern edge of the complete foundation, not recessed behind projecting feet. No stairs, no raised platform. A tall stone facade with large dark open passage, wall height around1.8times door opening height. Fit the enlarged asset into a taller PORTRAIT canvas with at least40px transparent margin on every edge, if necessary. Do not crop. Camera: yaw exactlyzero, no visible sidewalls, roof depth straight up, front horizontal edges horizontal, walls vertical, no perspective convergence. Native transparent alpha; isolated single building, no people, labels, scenery or terrain patch."
+    }
+  ],
+  "loreStatus": "original-game-adaptation-not-canonical-1-to-1"
+}

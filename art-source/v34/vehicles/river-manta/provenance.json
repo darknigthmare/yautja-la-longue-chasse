@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "river-manta",
+  "name": "River Manta",
+  "lore": "Nom seul dans la source : silhouette et construction proposées pour le jeu, sans validation canonique ni statistiques inventées.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "River Manta — proposition de châssis",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/river-manta/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/river-manta/identity-r1.png",
+      "originId": "exec-3b972896-10a1-4c6c-8af4-f8706703a9de.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "0105183722aa7d352b2c4ef4f0774f964ad22abc27a1558848a1914263c01e73",
+      "bytes": 1299343,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Design an original modular vehicle for the 2D Yautja fan-game La Longue Chasse from its NAME-ONLY brief. This is an explicit new design proposal, not a reconstruction of an existing canonical film vehicle. Exactly TWO full side-profile views SIDE BY SIDE: left craft points RIGHT, right craft LEFT; identical construction and scale, separately drawn opposite sides. Full silhouette within each half, wide margins. Pure MAGENTA #FF00FF background. Detailed painted game bitmap, dark alien bronze/gunmetal hardware with subtle small status lamps. NO scenery, ground shadow, text, layout labels, rider, passenger, cargo, trophy or effects. Empty hardware sockets for detachable modules, no baked-in weapons. A small river-going alien hydrofoil skimmer with a broad flattened manta-like hull, low central empty pilot recess and short handlebars, curved front bow with a flat bumper, protected underside twin folding hydrofoil blades STOWED horizontally, shallow outboard stabilization sponsons and rear water-jet nozzle. Teal-black metal and bronze trim, subtle weathering. This is a machine, not a biological manta animal; no fins growing as flesh. Side view with a mild elevation only enough to read low wide hull; no top-down camera.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1115,
+            1115
+          ],
+          "role": "Requested name only"
+        }
+      ],
+      "notes": [
+        "Le nom est demandé ; les choix mécaniques sont des propositions originales à valider.",
+        "Deux vues statiques en revue, aucun clip runtime. Pilote, armes et effets doivent rester indépendants."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            38,
+            278,
+            815,
+            269
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 145657,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            922,
+            278,
+            814,
+            269
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 145698,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

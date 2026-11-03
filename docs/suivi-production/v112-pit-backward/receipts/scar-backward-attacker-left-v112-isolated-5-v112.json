@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-28",
+  "tool": "image_gen.imagegen",
+  "attemptId": "scar-backward-attacker-left-v112-isolated-5-v112",
+  "submittedPrompt": "Redraw EXACTLY ONE isolated FULL BODY sprite, matching the character and pose from the BOTTOM RIGHT cell (reading-order frame5, zero-based) of this reference sheet. The other five reference drawings must be completely ABSENT. Do not simply crop the sheet: paint a NEW original complete native source that preserves the intended pose, correct anatomy and owned equipment without contamination from neighboring frames. Character Scar with silver red-marked biomask, gold-beaded black dreadlocks, ochre netted skin, silver armor, brown-red waistcloth, attached shoulder plasma cannon, spear in the original own hand, wrist blades on original arm. Role ATTACKER of an original backward throw; original initial facing screen LEFT. Required exact phase: grounded recovery to the SAME original ready guard with the original inventory. Keep the natural anatomical equipment sides through rotation; NEVER mirror. Exactly TWO arms and TWO legs, no extra hands/heads/feet, no second character, no mannequin, no attacker/victim or external gripping hand. Preserve the incarnation and painted game style of the reference. One landscape1536x1024 RGBA image with ONE centered entire pose only. Render the full body at moderate scale, silhouette maximum1100px wide and760px high, with at least120px entirely transparent clear gutter on all four outer canvas edges. NO part may touch or leave canvas. Background must be strictly genuine alpha0 with NO brown glow/vignette/shadow/floor/grid/checkerboard/text/labels or colored background. Owned spear/blades/shield remain fully inside canvas and don't disappear. Anatomical body scale is constant: lying/bent bodies must retain natural proportions. This is one clean standalone production animation drawing, no collage and no secondary poses.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/yautja-la-longue-chasse/public/game/sprites/v112/pit/scar/scar-backward-attacker-left-v112.png",
+      "path": "public/game/sprites/v112/pit/scar/scar-backward-attacker-left-v112.png",
+      "bytes": 2299496,
+      "sha256": "2aba79c37dae31e6e8d2e28c68519310d2c2e37a98677fe6a5e62b858f352b09",
+      "preservedPath": "public/game/sprites/v112/pit/scar/scar-backward-attacker-left-v112.png"
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-7a64bb9d-cca0-41e0-a005-3d6b8abe0504.png",
+  "output": {
+    "path": "public/game/sprites/v112/pit/scar/scar-backward-attacker-left-v112-isolated-5-v112.png",
+    "sha256": "34ce67acee00b2e48b1cd9235acce53d7e97f7d87f02a67f89dcaeeef94bb203",
+    "bytes": 1602508,
+    "width": 1536,
+    "height": 1024
+  },
+  "filesEditedAfterGeneration": false,
+  "status": "SELECTED_SOURCE_REGIONS",
+  "replacesSource": "scar-backward-attacker-left-v112",
+  "frameIndex": 5,
+  "scope": "Local tool call record, not an externally signed certificate. Only selected source UV regions may be admitted. Source action completion remains open.",
+  "selectedFrameIndices": [
+    5
+  ]
+}

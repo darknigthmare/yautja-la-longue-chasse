@@ -1,0 +1,1293 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-02T04:54:39.615Z",
+  "revision": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+  "qualification": "TECHNICAL_SOURCE_AND_RASTER_SAMPLE",
+  "status": "PASS_WITH_UNQUALIFIED_ARTISTIC_REVIEW",
+  "scope": {
+    "checked": "Native HuntCanvas source, default classic hunter bitmap sample, V62 classic head, literal runtime image paths, audio manifest and provenance.",
+    "notChecked": [
+      "Human artistic approval",
+      "Canonical film portrait equivalence",
+      "Every hunter variant and pose",
+      "Physical speaker output or listening quality",
+      "Complete runtime asset load inventory: see renderer reference report."
+    ]
+  },
+  "references": {
+    "local": [
+      "AGENTS.md",
+      "docs/GAMEDEV_AGENT_GUIDE.md",
+      "docs/gamedev-skill-sources.json",
+      "public/game/assets/v3/manifest.json",
+      "app/game/hunterVisuals.ts",
+      "app/game/hunterRig.ts",
+      "app/game/hunterHeadArtV62.ts",
+      "app/game/hunterDreadsV63.ts",
+      "app/game/hunterMaterialsV113.ts"
+    ],
+    "upstreamCommit": "19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9",
+    "upstreamRead": [
+      "router/references/custom-engines.md",
+      "skills/disciplines/create-game-assets/SKILL.md"
+    ]
+  },
+  "nativeContract": {
+    "renderer": "Canvas 2D",
+    "view": {
+      "width": 1280,
+      "height": 720,
+      "deviceScaleClamp": [
+        1,
+        2
+      ]
+    },
+    "player": {
+      "width": 72,
+      "height": 116
+    },
+    "rig": {
+      "width": 256,
+      "height": 384,
+      "groundY": 366,
+      "root": {
+        "x": 128,
+        "y": 366
+      },
+      "runtimeUniformScale": 0.3020833333333333
+    },
+    "defaultAppearance": {
+      "presetId": "jungle-hunter",
+      "bodyMorphId": "classic",
+      "headStyleId": "reference",
+      "skinId": "ochre-mottle",
+      "biomaskId": "jungle",
+      "dreadStyleId": "classic",
+      "dreadTintId": "obsidian",
+      "armorStyleId": "classic",
+      "armorTintId": "bronze",
+      "skinMaterialId": null,
+      "dreadMaterialId": null,
+      "outfitMaterialId": null,
+      "trophyAdornmentId": "skull-spine",
+      "laserColorId": "crimson"
+    }
+  },
+  "identity": {
+    "sourceArtUnchanged": true,
+    "rasterHeadBlobMatches": true,
+    "humanValidatedStatusChanged": false,
+    "headFamily": "V62 family adaptation; young and huntress share classic anatomical family. Source explicitly excludes named film portrait equivalence.",
+    "materials": "V113 PHG-inspired reconstructed V85 texture swatches, explicitly not original PHG game textures; not selected by default.",
+    "bodySource": "V3 bare anatomy source remains authoritative; legacy net/loin reference is not exported as V3 bare body.",
+    "dreads": "Existing single curved strand bitmap rendered as seven registered strands; rear scalp socket preserved."
+  },
+  "literalImageReferences": {
+    "count": 16,
+    "tracked": 16,
+    "missing": [],
+    "entries": [
+      {
+        "url": "/game/assets/v2/environments/jungle/layers/far-lake.webp",
+        "tracked": true,
+        "gitBlobSha": "beec942ff0a9a60850c1af6187c89ee37ed808dd"
+      },
+      {
+        "url": "/game/assets/v3/actors/yautja/hunter/gear/motion-sensor.webp",
+        "tracked": true,
+        "gitBlobSha": "21f9a42a5bcfc1c53ee5b19fc8fea8840a8526b9"
+      },
+      {
+        "url": "/game/props/v4/tree-trunk.png",
+        "tracked": true,
+        "gitBlobSha": "6acda40a095823ee270fe32c470026d05dcbfe9a"
+      },
+      {
+        "url": "/game/assets/v2/environments/jungle/climbables/vine-ladder.webp",
+        "tracked": true,
+        "gitBlobSha": "ea1a277bbeeaa9e28a92cd351e8ef4a1b33f455e"
+      },
+      {
+        "url": "/game/props/v4/root-platform.png",
+        "tracked": true,
+        "gitBlobSha": "20437869a79d7c1fa48bf7872d6903559d646424"
+      },
+      {
+        "url": "/game/props/v4/ruin-platform.png",
+        "tracked": true,
+        "gitBlobSha": "8912963ef020c2b31df84807531f2142eb916f03"
+      },
+      {
+        "url": "/game/props/v4/crown-platform.png",
+        "tracked": true,
+        "gitBlobSha": "f0f9ec553b1da68ade4d25e15a8e0c55fd2ffbd0"
+      },
+      {
+        "url": "/game/props/v4/expedition-platform.png",
+        "tracked": true,
+        "gitBlobSha": "eb50b5b3d49e494b46940c07228bd300e955b206"
+      },
+      {
+        "url": "/game/props/v4/foreground-ferns.png",
+        "tracked": true,
+        "gitBlobSha": "4a7cd22a209b7d8bfd34dbbc1cca526ea71e017b"
+      },
+      {
+        "url": "/game/sprites/mercenary.webp",
+        "tracked": true,
+        "gitBlobSha": "1fc73d6ee5aa998011f48af2956586da76c61166"
+      },
+      {
+        "url": "/game/sprites/cryostalker.webp",
+        "tracked": true,
+        "gitBlobSha": "b13f11ac581affb32795d3cf06df5177eb04045d"
+      },
+      {
+        "url": "/game/sprites/bad-blood.webp",
+        "tracked": true,
+        "gitBlobSha": "dd0946a8f568cfb1be7b748830a8d736994feb0c"
+      },
+      {
+        "url": "/game/sprites/v6/ships-atlas.png",
+        "tracked": true,
+        "gitBlobSha": "64082f36a8af4b99470f02644ead78d60116f34a"
+      },
+      {
+        "url": "/game/sprites/v6/prey-atlas.png",
+        "tracked": true,
+        "gitBlobSha": "622317885b82519e68b0272518d7cbdb96ec2527"
+      },
+      {
+        "url": "/game/sprites/v6/masks-trophies-atlas.png",
+        "tracked": true,
+        "gitBlobSha": "4d34a8addb7d6c53e8ebf5020915bb8d86cc0141"
+      },
+      {
+        "url": "/game/sprites/v6/ranks-lasers-atlas.png",
+        "tracked": true,
+        "gitBlobSha": "f5d4f7d7afe812947e848fed287b1d07c88e65b7"
+      }
+    ]
+  },
+  "rasterSample": {
+    "decoder": "sharp ensureAlpha().raw(); full native pixels, alpha>0 visibility, alpha=0 transparency, inclusive occupied bounds.",
+    "count": 17,
+    "allMatchHead": true,
+    "all256x384": true,
+    "emptyImages": 0,
+    "fullyOpaqueImages": 0,
+    "entries": [
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 31876,
+        "transparent": 66428,
+        "partial": 7966,
+        "bounds": [
+          30,
+          16,
+          224,
+          365
+        ],
+        "byteLength": 80094,
+        "sha256": "82805f7c868f82cc619ca35217add18062911b541dd0882f9cd25ac5a56f751d",
+        "gitBlobSha": "fb4cc80be7ad8b419fbd62bc348bb2ae49a262a2",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 2600,
+        "transparent": 95704,
+        "partial": 975,
+        "bounds": [
+          52,
+          37,
+          155,
+          188
+        ],
+        "byteLength": 6490,
+        "sha256": "af57e5c656a0df4297c6a73f5f460ecf9ea43068b952b7042221b80dfbb3fa3a",
+        "gitBlobSha": "2e936b61e9f5635ee06e43d0d115e6a4d78942d7",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 22194,
+        "transparent": 76110,
+        "partial": 20650,
+        "bounds": [
+          30,
+          66,
+          237,
+          326
+        ],
+        "byteLength": 62568,
+        "sha256": "c855a9042e9a3795fb9906104a5e6182cafb31b27795f6f8231f25bcb50a64f9",
+        "gitBlobSha": "92d8f669a0f171ea09a75ff94ebf14e0d0dfe6fc",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 891,
+        "transparent": 97413,
+        "partial": 397,
+        "bounds": [
+          48,
+          331,
+          89,
+          365
+        ],
+        "byteLength": 2970,
+        "sha256": "412becddc6cd2b4bf78f61f848fe847afff6ad682850eb430672a498e54ec544",
+        "gitBlobSha": "da389f92f0b47b7b9523ace10012f36463f544f4",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 707,
+        "transparent": 97597,
+        "partial": 382,
+        "bounds": [
+          164,
+          335,
+          219,
+          357
+        ],
+        "byteLength": 2462,
+        "sha256": "ea30cb687a1e6eb28762dec97495e39951dc655179d8a9270c1b95cffa8ad1b9",
+        "gitBlobSha": "e9db04a05b6b7d90ea91f43cbbf00920709439a4",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 828,
+        "transparent": 97476,
+        "partial": 561,
+        "bounds": [
+          30,
+          211,
+          74,
+          249
+        ],
+        "byteLength": 2906,
+        "sha256": "27545f03f48de88c5f64634f7372e36fd503c0077f6ad39413c4035a0d8b2435",
+        "gitBlobSha": "2e651826b4dfdf4abcc4d2c136a4c56d9fa8835c",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 1110,
+        "transparent": 97194,
+        "partial": 630,
+        "bounds": [
+          180,
+          210,
+          224,
+          280
+        ],
+        "byteLength": 3834,
+        "sha256": "fda2af229ced15fe2dd1e00392c0c8a04d149e81ac6a80132e72b8873afb0c46",
+        "gitBlobSha": "b6e478f804781820aba77f812243df1bec334374",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 2046,
+        "transparent": 96258,
+        "partial": 700,
+        "bounds": [
+          33,
+          139,
+          74,
+          225
+        ],
+        "byteLength": 6562,
+        "sha256": "c8e43e27fb057de7048346b3f3b176029860b32a3c8ce2fec365fe6ea77fe4e4",
+        "gitBlobSha": "2256707151db47455f938897b5b84d42f511cde0",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 1655,
+        "transparent": 96649,
+        "partial": 851,
+        "bounds": [
+          163,
+          155,
+          221,
+          228
+        ],
+        "byteLength": 5770,
+        "sha256": "ebdb67e2130b46c3892552d3b77103c2e9c387cbf6616313b1e10c70fbc148de",
+        "gitBlobSha": "082f74ab5a3ba5c3da1606332fd91f805069b204",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 3278,
+        "transparent": 95026,
+        "partial": 399,
+        "bounds": [
+          91,
+          187,
+          168,
+          245
+        ],
+        "byteLength": 9576,
+        "sha256": "0d34e7d21f68366fbc0159395e66798452cea56a731b591b62c4f001a79af681",
+        "gitBlobSha": "ea7a5352b3096f3e09a77dd4aa48b7c5612936d3",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 1800,
+        "transparent": 96504,
+        "partial": 542,
+        "bounds": [
+          56,
+          271,
+          103,
+          349
+        ],
+        "byteLength": 5694,
+        "sha256": "ac103c84c6adb451e4779ff4c28ca6965cd4484cc96213d90a68fe0a34d75064",
+        "gitBlobSha": "33f23f18242ff7df706d185437c03b6beb4ae8cd",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 2197,
+        "transparent": 96107,
+        "partial": 594,
+        "bounds": [
+          153,
+          267,
+          194,
+          352
+        ],
+        "byteLength": 6838,
+        "sha256": "15d09331c50d9dc59828c69dc44de5a6cebff322a6107911555cbcb1eb5492d1",
+        "gitBlobSha": "31b3b1528ad48caf949558a06597a334206dcdba",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 2033,
+        "transparent": 96271,
+        "partial": 542,
+        "bounds": [
+          73,
+          204,
+          123,
+          291
+        ],
+        "byteLength": 6402,
+        "sha256": "7d3a8803e0877655c455914f07dd01738c9d40ef4a7fb2051a660b5d89cdee0e",
+        "gitBlobSha": "598dae7e5d22f32098e15efc04d2ecd907577a8e",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 2042,
+        "transparent": 96262,
+        "partial": 339,
+        "bounds": [
+          143,
+          201,
+          189,
+          289
+        ],
+        "byteLength": 6364,
+        "sha256": "4ebbab85960059eee93d4f64f246fab27c6ace6f041dfb20368fa1512777f92a",
+        "gitBlobSha": "51bb49a4335b774a5ecc8877ac3308de97fffd0d",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 5739,
+        "transparent": 92565,
+        "partial": 408,
+        "bounds": [
+          85,
+          89,
+          165,
+          202
+        ],
+        "byteLength": 14142,
+        "sha256": "a7e6741ff184bde8af00b25867c675b1c10835935004f32308dc049c5f50297e",
+        "gitBlobSha": "a3f9c2dd309561d4b58a1ccdb096ee6e19aa9d25",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 3122,
+        "transparent": 95182,
+        "partial": 822,
+        "bounds": [
+          42,
+          74,
+          105,
+          157
+        ],
+        "byteLength": 9632,
+        "sha256": "a530fcb2b93dadd0753e7a2ce325cd2d77aca2a3f997e9786d65b501671411ac",
+        "gitBlobSha": "ba86131e09a33dc1fdaee4a95bf8669f0e212032",
+        "matchesHeadBlob": true
+      },
+      {
+        "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+        "width": 256,
+        "height": 384,
+        "visible": 1768,
+        "transparent": 96536,
+        "partial": 372,
+        "bounds": [
+          150,
+          97,
+          190,
+          181
+        ],
+        "byteLength": 5454,
+        "sha256": "a6c83af29fdb0a346b49f5827088afa17708b434d011b8e3029588d5b400c8d7",
+        "gitBlobSha": "8afd4fa9bca4b076852b8cc7c25a36a8aeda0164",
+        "matchesHeadBlob": true
+      }
+    ]
+  },
+  "classicHead": {
+    "path": "public/game/sprites/v62/heads/classic-head.png",
+    "width": 1254,
+    "height": 1254,
+    "visiblePixels": 772469,
+    "transparentPixels": 800047,
+    "inclusiveBounds": [
+      0,
+      51,
+      1231,
+      1253
+    ],
+    "byteLength": 1434487,
+    "sha256": "10c91cfc7807fec0a5c50e612eb3e394e182d432515cb0195bf8c4e7fac4f9bd",
+    "placement": {
+      "x": 88.83758,
+      "y": 11.42584,
+      "width": 96.98817,
+      "height": 96.98817
+    },
+    "observation": "Viewed native source: ochre spotted skull, visible mandibles, transparent cutout. Occupied pixels touch left and bottom source edges; retain native crop and inspect context before inferring a defect."
+  },
+  "audio": {
+    "manifestSha256": "b04f4b6a67526ccd67f29851f550d3312a01e57e61c4b4d7023a5debbb0176ce",
+    "manifestVersion": "8fc91660f981314e26f3da696c7a9f0c8ce1c21bd132cfa8df4e9dacf5332e6f",
+    "entryCount": 37,
+    "sourceCount": 22,
+    "sourceBytes": 1572214,
+    "sourcesTracked": true,
+    "authoredSfx": 21,
+    "authoredAmbiences": [
+      "ship"
+    ],
+    "proceduralMissionAmbiences": [
+      "jungle",
+      "ice",
+      "volcano",
+      "swamp",
+      "desert",
+      "ocean",
+      "fungal",
+      "ruins"
+    ],
+    "silentOptionalMusic": [
+      "menu",
+      "ship",
+      "galaxy",
+      "exploration",
+      "combat",
+      "boss",
+      "homeworld"
+    ],
+    "provenance": {
+      "path": "public/audio/provenance-v54.json",
+      "sha256": "bcba9bc2d56318434fe0d3e7dfe836a30fa616c3a57b6f208ee33cfbc16caf71",
+      "canonicalFranchiseAudio": false,
+      "recordedAssetCount": 22,
+      "kinds": [
+        "external-cc0-adaptation",
+        "original-procedural"
+      ],
+      "recordedSampleRates": [
+        44100
+      ],
+      "recordedChannels": [
+        1
+      ],
+      "recordedBits": [
+        16
+      ],
+      "recordedMaximumPeak": 0.29998779296875,
+      "note": "All 22 manifest sources now checked against actual bytes and SHA-256. Native audio state and active buses belong to renderer reference report. No physical listening certification.",
+      "manifestSourceMismatches": [],
+      "allManifestSourcesMatchRecord": true
+    },
+    "integration": {
+      "source": "GameClient owns GameAudio, unlocks from input, forwards HuntCanvas soundEvents through playSfx, sets biome ambience and Hunt music context. Audio does not control simulation clocks.",
+      "fallback": "SFX and ambiences can fall back to procedural audio; absent optional music remains silent. Empty source arrays are intentional manifest states."
+    },
+    "entries": [
+      {
+        "id": "ui",
+        "category": "sfx",
+        "folder": "sfx/ui",
+        "sources": [
+          {
+            "url": "/audio/sfx/ui/v54.wav?v=05830b46be4e5976",
+            "mime": "audio/wav",
+            "bytes": 8610,
+            "sha256": "05830b46be4e59761024d276b6bec18a4025964a819d188ed68304fe92b40bed",
+            "path": "public/audio/sfx/ui/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/ui/v54.wav",
+              "status": 200,
+              "gitBlob": "23c546256af180508bb6949b206ccece68e7543d",
+              "origin": "exact-git-blob",
+              "bytes": 8610,
+              "sha256": "05830b46be4e59761024d276b6bec18a4025964a819d188ed68304fe92b40bed"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "select",
+        "category": "sfx",
+        "folder": "sfx/select",
+        "sources": [
+          {
+            "url": "/audio/sfx/select/v54.wav?v=68771760d2a5810f",
+            "mime": "audio/wav",
+            "bytes": 47584,
+            "sha256": "68771760d2a5810f9f020ee00be44f97dcbc989ef251e6b03a2049b4e02ab8c3",
+            "path": "public/audio/sfx/select/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/select/v54.wav",
+              "status": 200,
+              "gitBlob": "9bba9f97245352d39717d3dcd420f467df06a4d6",
+              "origin": "exact-git-blob",
+              "bytes": 47584,
+              "sha256": "68771760d2a5810f9f020ee00be44f97dcbc989ef251e6b03a2049b4e02ab8c3"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "jump",
+        "category": "sfx",
+        "folder": "sfx/jump",
+        "sources": [
+          {
+            "url": "/audio/sfx/jump/v54.wav?v=b07f7f28dbe2b6eb",
+            "mime": "audio/wav",
+            "bytes": 58346,
+            "sha256": "b07f7f28dbe2b6ebef4508f0fb3b45f1b2c8d909ca4d7659773b1e32529aeb16",
+            "path": "public/audio/sfx/jump/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/jump/v54.wav",
+              "status": 200,
+              "gitBlob": "2f247afc0946b33d99accce216c0fe404ed09029",
+              "origin": "exact-git-blob",
+              "bytes": 58346,
+              "sha256": "b07f7f28dbe2b6ebef4508f0fb3b45f1b2c8d909ca4d7659773b1e32529aeb16"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "footstep",
+        "category": "sfx",
+        "folder": "sfx/footstep",
+        "sources": [
+          {
+            "url": "/audio/sfx/footstep/v54.wav?v=d7c8ed478556cf7c",
+            "mime": "audio/wav",
+            "bytes": 23770,
+            "sha256": "d7c8ed478556cf7c747bcee2f85136438dea0b4c8926ee0450b100c03758fbac",
+            "path": "public/audio/sfx/footstep/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/footstep/v54.wav",
+              "status": 200,
+              "gitBlob": "38a6c61fb145829c0a384ed05ca9069223626a34",
+              "origin": "exact-git-blob",
+              "bytes": 23770,
+              "sha256": "d7c8ed478556cf7c747bcee2f85136438dea0b4c8926ee0450b100c03758fbac"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "slash",
+        "category": "sfx",
+        "folder": "sfx/slash",
+        "sources": [
+          {
+            "url": "/audio/sfx/slash/v54.wav?v=dd4efed6463c40b7",
+            "mime": "audio/wav",
+            "bytes": 52922,
+            "sha256": "dd4efed6463c40b749a4c832f501f7af6fbc5423164ccf0e09992e1f3ece0dd4",
+            "path": "public/audio/sfx/slash/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/slash/v54.wav",
+              "status": 200,
+              "gitBlob": "4107c68f208050dbe0b07ba6c22afc992aba251d",
+              "origin": "exact-git-blob",
+              "bytes": 52922,
+              "sha256": "dd4efed6463c40b749a4c832f501f7af6fbc5423164ccf0e09992e1f3ece0dd4"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "plasma",
+        "category": "sfx",
+        "folder": "sfx/plasma",
+        "sources": [
+          {
+            "url": "/audio/sfx/plasma/v54.wav?v=d336712da21eea79",
+            "mime": "audio/wav",
+            "bytes": 59724,
+            "sha256": "d336712da21eea798974387a7bcf2520878317044f5182806947252184e86a4c",
+            "path": "public/audio/sfx/plasma/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/plasma/v54.wav",
+              "status": 200,
+              "gitBlob": "60524791d98bd8fada8b5802a184a25995835509",
+              "origin": "exact-git-blob",
+              "bytes": 59724,
+              "sha256": "d336712da21eea798974387a7bcf2520878317044f5182806947252184e86a4c"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "scan",
+        "category": "sfx",
+        "folder": "sfx/scan",
+        "sources": [
+          {
+            "url": "/audio/sfx/scan/v54.wav?v=86e2562187736d34",
+            "mime": "audio/wav",
+            "bytes": 33560,
+            "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d",
+            "path": "public/audio/sfx/scan/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/scan/v54.wav",
+              "status": 200,
+              "gitBlob": "d8209d44cae679fb354b54a02adcc887166b5da0",
+              "origin": "checkout",
+              "bytes": 33560,
+              "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "cloak-on",
+        "category": "sfx",
+        "folder": "sfx/cloak-on",
+        "sources": [
+          {
+            "url": "/audio/sfx/cloak-on/v54.wav?v=c20114f57d3fb83b",
+            "mime": "audio/wav",
+            "bytes": 84188,
+            "sha256": "c20114f57d3fb83b7a5fde25ea6787644519f0d80fbd34bf5c079bfdb31681f0",
+            "path": "public/audio/sfx/cloak-on/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/cloak-on/v54.wav",
+              "status": 200,
+              "gitBlob": "ea64c2a249c1ab5e8dae90ff7561535650a24ea3",
+              "origin": "exact-git-blob",
+              "bytes": 84188,
+              "sha256": "c20114f57d3fb83b7a5fde25ea6787644519f0d80fbd34bf5c079bfdb31681f0"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "cloak-off",
+        "category": "sfx",
+        "folder": "sfx/cloak-off",
+        "sources": [
+          {
+            "url": "/audio/sfx/cloak-off/v54.wav?v=d1b347e76fe796e4",
+            "mime": "audio/wav",
+            "bytes": 84136,
+            "sha256": "d1b347e76fe796e4776bf235eb49b2c5becb3e868dfd9bd7045eefdcfe773815",
+            "path": "public/audio/sfx/cloak-off/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/cloak-off/v54.wav",
+              "status": 200,
+              "gitBlob": "e98c5a3047534864645c51692dae6a49339fae98",
+              "origin": "exact-git-blob",
+              "bytes": 84136,
+              "sha256": "d1b347e76fe796e4776bf235eb49b2c5becb3e868dfd9bd7045eefdcfe773815"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "mask-on",
+        "category": "sfx",
+        "folder": "sfx/mask-on",
+        "sources": [
+          {
+            "url": "/audio/sfx/mask-on/v54.wav?v=b29adbb030624b3c",
+            "mime": "audio/wav",
+            "bytes": 23092,
+            "sha256": "b29adbb030624b3c904fc38e9f0f40ec10dec8f82547a490a34eafe7f8eb625f",
+            "path": "public/audio/sfx/mask-on/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/mask-on/v54.wav",
+              "status": 200,
+              "gitBlob": "c642b8db6fcd2f4227c90316adec910b680010d0",
+              "origin": "exact-git-blob",
+              "bytes": 23092,
+              "sha256": "b29adbb030624b3c904fc38e9f0f40ec10dec8f82547a490a34eafe7f8eb625f"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "mask-off",
+        "category": "sfx",
+        "folder": "sfx/mask-off",
+        "sources": [
+          {
+            "url": "/audio/sfx/mask-off/v54.wav?v=6e7cef893466b939",
+            "mime": "audio/wav",
+            "bytes": 39366,
+            "sha256": "6e7cef893466b939a2bcf7bb1705b85447cbc6f1fce44dc350f8575dba8ec516",
+            "path": "public/audio/sfx/mask-off/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/mask-off/v54.wav",
+              "status": 200,
+              "gitBlob": "58b7d90ed59d210c4e34669e47c951e280d3d020",
+              "origin": "exact-git-blob",
+              "bytes": 39366,
+              "sha256": "6e7cef893466b939a2bcf7bb1705b85447cbc6f1fce44dc350f8575dba8ec516"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "weapon-switch",
+        "category": "sfx",
+        "folder": "sfx/weapon-switch",
+        "sources": [
+          {
+            "url": "/audio/sfx/weapon-switch/v54.wav?v=ae907ea016243a48",
+            "mime": "audio/wav",
+            "bytes": 39366,
+            "sha256": "ae907ea016243a4853bd6f430a109a24c7e03ca81fbf45106f1f9dacee1e9814",
+            "path": "public/audio/sfx/weapon-switch/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/weapon-switch/v54.wav",
+              "status": 200,
+              "gitBlob": "5a85b2f1a06e66fa8c4a26ece955ecd8c9f65302",
+              "origin": "exact-git-blob",
+              "bytes": 39366,
+              "sha256": "ae907ea016243a4853bd6f430a109a24c7e03ca81fbf45106f1f9dacee1e9814"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "medicomp",
+        "category": "sfx",
+        "folder": "sfx/medicomp",
+        "sources": [
+          {
+            "url": "/audio/sfx/medicomp/v54.wav?v=94f68331a930ddf1",
+            "mime": "audio/wav",
+            "bytes": 30408,
+            "sha256": "94f68331a930ddf1658f7fa7601cfd6bc8f12a7ec9da6ce88f268ee6f238d8f5",
+            "path": "public/audio/sfx/medicomp/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/medicomp/v54.wav",
+              "status": 200,
+              "gitBlob": "7752cf72a930942843003b8a55f5331e24647b12",
+              "origin": "exact-git-blob",
+              "bytes": 30408,
+              "sha256": "94f68331a930ddf1658f7fa7601cfd6bc8f12a7ec9da6ce88f268ee6f238d8f5"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "netgun",
+        "category": "sfx",
+        "folder": "sfx/netgun",
+        "sources": [
+          {
+            "url": "/audio/sfx/netgun/v54.wav?v=2cd320068b282e8e",
+            "mime": "audio/wav",
+            "bytes": 24740,
+            "sha256": "2cd320068b282e8e2cba7a2758d5d76f913a905426bb06e2ab5b696d651aca00",
+            "path": "public/audio/sfx/netgun/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/netgun/v54.wav",
+              "status": 200,
+              "gitBlob": "2cfa3a861941e96aec6145ab76a86080c8ef0ee9",
+              "origin": "exact-git-blob",
+              "bytes": 24740,
+              "sha256": "2cd320068b282e8e2cba7a2758d5d76f913a905426bb06e2ab5b696d651aca00"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "snare",
+        "category": "sfx",
+        "folder": "sfx/snare",
+        "sources": [
+          {
+            "url": "/audio/sfx/snare/v54.wav?v=3e1304aff0657366",
+            "mime": "audio/wav",
+            "bytes": 63770,
+            "sha256": "3e1304aff0657366b8fafdfb3e5295b0840265253b08c176d28ef4aadc172b6e",
+            "path": "public/audio/sfx/snare/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/snare/v54.wav",
+              "status": 200,
+              "gitBlob": "e8032477da77af328b1014646fba6dca829c7edb",
+              "origin": "exact-git-blob",
+              "bytes": 63770,
+              "sha256": "3e1304aff0657366b8fafdfb3e5295b0840265253b08c176d28ef4aadc172b6e"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "enemy-alert",
+        "category": "sfx",
+        "folder": "sfx/enemy-alert",
+        "sources": [
+          {
+            "url": "/audio/sfx/enemy-alert/v54.wav?v=8ed0cbb863886386",
+            "mime": "audio/wav",
+            "bytes": 29114,
+            "sha256": "8ed0cbb86388638679a2b6e9d7ff5970bd6a4084a875a331de1cd4061019a97d",
+            "path": "public/audio/sfx/enemy-alert/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/enemy-alert/v54.wav",
+              "status": 200,
+              "gitBlob": "fd81a70af66a0f5ad90703a912c9fed9997c556f",
+              "origin": "exact-git-blob",
+              "bytes": 29114,
+              "sha256": "8ed0cbb86388638679a2b6e9d7ff5970bd6a4084a875a331de1cd4061019a97d"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "objective",
+        "category": "sfx",
+        "folder": "sfx/objective",
+        "sources": [
+          {
+            "url": "/audio/sfx/objective/v54.wav?v=371d585b27834066",
+            "mime": "audio/wav",
+            "bytes": 43298,
+            "sha256": "371d585b2783406698c4a9e94cb1acc2a8c00e006a40ecae51d1e7b3a359e07e",
+            "path": "public/audio/sfx/objective/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/objective/v54.wav",
+              "status": 200,
+              "gitBlob": "3fc6157ea3ea1302d6369a544dea55a0db2e1e91",
+              "origin": "exact-git-blob",
+              "bytes": 43298,
+              "sha256": "371d585b2783406698c4a9e94cb1acc2a8c00e006a40ecae51d1e7b3a359e07e"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "hit",
+        "category": "sfx",
+        "folder": "sfx/hit",
+        "sources": [
+          {
+            "url": "/audio/sfx/hit/v54.wav?v=c9fab9d00656beaa",
+            "mime": "audio/wav",
+            "bytes": 36654,
+            "sha256": "c9fab9d00656beaaaed4d150a574742b04fea3ccb988fd35cf51365e56fcb0c7",
+            "path": "public/audio/sfx/hit/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/hit/v54.wav",
+              "status": 200,
+              "gitBlob": "76c8649347e85025e2e75ccb88a455cec567ba3a",
+              "origin": "exact-git-blob",
+              "bytes": 36654,
+              "sha256": "c9fab9d00656beaaaed4d150a574742b04fea3ccb988fd35cf51365e56fcb0c7"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "trophy",
+        "category": "sfx",
+        "folder": "sfx/trophy",
+        "sources": [
+          {
+            "url": "/audio/sfx/trophy/v54.wav?v=f58c1995dd144316",
+            "mime": "audio/wav",
+            "bytes": 105884,
+            "sha256": "f58c1995dd144316b8474448a621440c6c8a58f4a077ace922b6d8360c1c97a4",
+            "path": "public/audio/sfx/trophy/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/trophy/v54.wav",
+              "status": 200,
+              "gitBlob": "3353a51c18a741f207e6efa91cde85d78e1186f9",
+              "origin": "exact-git-blob",
+              "bytes": 105884,
+              "sha256": "f58c1995dd144316b8474448a621440c6c8a58f4a077ace922b6d8360c1c97a4"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "victory",
+        "category": "sfx",
+        "folder": "sfx/victory",
+        "sources": [
+          {
+            "url": "/audio/sfx/victory/v54.wav?v=c13708e8a33adaa0",
+            "mime": "audio/wav",
+            "bytes": 141164,
+            "sha256": "c13708e8a33adaa0f988aab76671bf39b7b5c4e80177d3f496437e1eb219575a",
+            "path": "public/audio/sfx/victory/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/victory/v54.wav",
+              "status": 200,
+              "gitBlob": "238f00015188c69ee4b3b66a6758c33c06127f11",
+              "origin": "exact-git-blob",
+              "bytes": 141164,
+              "sha256": "c13708e8a33adaa0f988aab76671bf39b7b5c4e80177d3f496437e1eb219575a"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "defeat",
+        "category": "sfx",
+        "folder": "sfx/defeat",
+        "sources": [
+          {
+            "url": "/audio/sfx/defeat/v54.wav?v=e302f3ee18a421d1",
+            "mime": "audio/wav",
+            "bytes": 123524,
+            "sha256": "e302f3ee18a421d1940a80a4f35bb61826c546dcade2359ad8822e38f989a35c",
+            "path": "public/audio/sfx/defeat/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Native renderer smoke HTTP bytes SHA-256",
+              "url": "/audio/sfx/defeat/v54.wav",
+              "status": 200,
+              "gitBlob": "e3895f1034313a7767ed4c2888aaf7667d49d12a",
+              "origin": "exact-git-blob",
+              "bytes": 123524,
+              "sha256": "e302f3ee18a421d1940a80a4f35bb61826c546dcade2359ad8822e38f989a35c"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "ship",
+        "category": "ambience",
+        "folder": "ambience/ship",
+        "sources": [
+          {
+            "url": "/audio/ambience/ship/v54.wav?v=b2ed760f17352aca",
+            "mime": "audio/wav",
+            "bytes": 418994,
+            "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371",
+            "path": "public/audio/ambience/ship/v54.wav",
+            "trackedAtRevision": true,
+            "bytesVerified": true,
+            "sha256Verified": true,
+            "verificationEvidence": {
+              "method": "Direct existing checkout bytes SHA-256",
+              "path": "public/audio/ambience/ship/v54.wav"
+            }
+          }
+        ],
+        "fallback": "procedural"
+      },
+      {
+        "id": "jungle",
+        "category": "ambience",
+        "folder": "ambience/jungle",
+        "sources": [],
+        "fallback": "procedural"
+      },
+      {
+        "id": "ice",
+        "category": "ambience",
+        "folder": "ambience/ice",
+        "sources": [],
+        "fallback": "procedural"
+      },
+      {
+        "id": "volcano",
+        "category": "ambience",
+        "folder": "ambience/volcano",
+        "sources": [],
+        "fallback": "procedural"
+      },
+      {
+        "id": "swamp",
+        "category": "ambience",
+        "folder": "ambience/swamp",
+        "sources": [],
+        "fallback": "procedural"
+      },
+      {
+        "id": "desert",
+        "category": "ambience",
+        "folder": "ambience/desert",
+        "sources": [],
+        "fallback": "procedural"
+      },
+      {
+        "id": "ocean",
+        "category": "ambience",
+        "folder": "ambience/ocean",
+        "sources": [],
+        "fallback": "procedural"
+      },
+      {
+        "id": "fungal",
+        "category": "ambience",
+        "folder": "ambience/fungal",
+        "sources": [],
+        "fallback": "procedural"
+      },
+      {
+        "id": "ruins",
+        "category": "ambience",
+        "folder": "ambience/ruins",
+        "sources": [],
+        "fallback": "procedural"
+      },
+      {
+        "id": "menu",
+        "category": "music",
+        "folder": "music/menu",
+        "sources": [],
+        "fallback": "silence"
+      },
+      {
+        "id": "ship",
+        "category": "music",
+        "folder": "music/ship",
+        "sources": [],
+        "fallback": "silence"
+      },
+      {
+        "id": "galaxy",
+        "category": "music",
+        "folder": "music/galaxy",
+        "sources": [],
+        "fallback": "silence"
+      },
+      {
+        "id": "exploration",
+        "category": "music",
+        "folder": "music/exploration",
+        "sources": [],
+        "fallback": "silence"
+      },
+      {
+        "id": "combat",
+        "category": "music",
+        "folder": "music/combat",
+        "sources": [],
+        "fallback": "silence"
+      },
+      {
+        "id": "boss",
+        "category": "music",
+        "folder": "music/boss",
+        "sources": [],
+        "fallback": "silence"
+      },
+      {
+        "id": "homeworld",
+        "category": "music",
+        "folder": "music/homeworld",
+        "sources": [],
+        "fallback": "silence"
+      }
+    ],
+    "verifiedSourceCount": 22,
+    "allSourceBytesAndSha256Verified": true,
+    "runtimeSfxVerifiedCount": 21,
+    "verificationScope": "21 SFX served and decoded in native Chromium smoke; ship ambience verified directly from existing checkout bytes. Physical playback/listening quality unqualified."
+  },
+  "resourceGeneration": {
+    "requested": false,
+    "reason": "No missing literal HuntCanvas image path identified; optional audio absences are explicit runtime fallback contracts. Generation without an identified required resource would not improve 1:1 repository fidelity."
+  },
+  "browserSmoke": {
+    "revision": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+    "evidencePath": "assets-smoke.json",
+    "phase": "Smoke observation before final measured passes; final evidence file can contain additional mission resources.",
+    "smokeSnapshotSha256": "badec89c9dac5498cf1ce65f2a5f826c229e5e94fa5b42c4556fad8e5600c35d",
+    "loadedImageCount": 146,
+    "failedImages": [],
+    "allImageDimensionsPositive": true,
+    "allImageSamplesContainVisiblePixels": true,
+    "imagesWithSampledNonOpaquePixels": 144,
+    "alphaMethod": "Browser readback from a canvas sample with each axis capped at 256. This is a reduced image sample, separate from the 17 full-resolution sharp alpha measurements above.",
+    "nonResourceFailure": [
+      {
+        "url": "/favicon.ico",
+        "status": 404,
+        "tracked": false
+      }
+    ],
+    "audioSources": 21,
+    "integrityEvidence": "Each SFX entry retains observed bytes, SHA-256, original Git blob and serving origin in audio.entries."
+  }
+}

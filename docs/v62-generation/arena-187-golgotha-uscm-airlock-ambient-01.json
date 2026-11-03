@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-187-golgotha-uscm-airlock",
+  "id": "ambient-01",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-7c84a2e0-9bbe-4b5f-934e-f27ef2e48852.png",
+  "workspacePath": "work-local/v62/generated/arena-187-golgotha-uscm-airlock/ambient-01.png",
+  "sha256": "c1354791b2226240836b377ca9d31bb90c883b2be5a7fb2b1ac6d9aecb5ca661",
+  "bytes": 2440207,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.3955567677815755,
+  "copyByteIdentical": true,
+  "prompt": "Use case: stylized-concept. Asset type: production native 2D fighting-game background animation sprite sheet. Output exactly 1536x1024 PNG with genuinely transparent background. EXACTLY six independently drawn animation frames in a perfectly regular 3 columns by 2 rows grid: each cell 512x512. No visible grid, no cell outlines, no labels, no text, no checkerboard painting. Each drawing must fit completely inside its own cell with at least 48 pixels of transparent gutter on every side; nothing crosses a cell boundary. The same subject with the same scale, proportions, color and orthographic side camera in all six cells. Hand-painted realistic production game art, crisp isolated alpha silhouette, realistic anatomy/materials, subdued cool blue night or steel light, not cartoon. Transparent outside the isolated subject, including negative spaces. Do not draw a scene, a floor, backdrop, shadow card or border. Six actual different poses, never six identical pasted copies. Read chronological order left-to-right top row then left-to-right bottom row. Subject: one square dark steel observation-window module with two anonymous ADULT Colonial Marines standing in a small sealed airlock seen through its slightly blue-tinted reinforced glass. Full bodies of both marines visible, dull olive helmets and armor over grey-green fatigues, no gun in their hands and no visible weapon. The module is an original USCM-base adaptation, not named heroes. Six poses: two sentries quietly look down the hall, one turns his helmet, talks over shoulder, the other checks wrist, both return watch. Small clear head/hand position changes, no waving support for the duel. Fixed square frame, fixed threshold, glass and perspective identical across all6cells; each scene has exactlytwoadultmarineswithtwoarms/twolegs. Transparent outside the isolated complete window module; inside is dark empty airlock wall. Entire frame fits with64pxtransparentmargin. No logos or lettering.",
+  "referencedImagePaths": [],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E140"
+  ],
+  "loreLimits": [
+    "Original lateral adaptation of the manual-attested USCM base setting, not exact game geometry or sprites.",
+    "No chapter-specific alive/allied/selected-character claim."
+  ],
+  "rejectedAttempts": [],
+  "visualNotes": "Two anonymous adult military sentries remain behind their closed observation window. Six distinct head/arm states; no named character or chapter presence certified. Original protective uniform, not exact Jaguar model.",
+  "status": "visually-accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        83,
+        50,
+        413,
+        414
+      ],
+      "pivot": [
+        289.5,
+        464
+      ],
+      "margins": [
+        83,
+        50,
+        16,
+        48
+      ],
+      "opaquePixelCount": 158709,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "f958a4e5670f5fe775737110d43e5eeca20df7c4a8b72cb019d28a72cbb02068"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        51,
+        50,
+        412,
+        415
+      ],
+      "pivot": [
+        257,
+        465
+      ],
+      "margins": [
+        51,
+        50,
+        49,
+        47
+      ],
+      "opaquePixelCount": 158699,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "ca44b73dc8016fc348f1e62898684b90b782e56988524384eae199d3762e5daa"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        19,
+        50,
+        413,
+        415
+      ],
+      "pivot": [
+        225.5,
+        465
+      ],
+      "margins": [
+        19,
+        50,
+        80,
+        47
+      ],
+      "opaquePixelCount": 158696,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "3b02e55b933ad2e233511bb9531d0de9cf3c6f2d53d1044e97b131d093543861"
+    },
+    {
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        83,
+        34,
+        413,
+        416
+      ],
+      "pivot": [
+        289.5,
+        450
+      ],
+      "margins": [
+        83,
+        34,
+        16,
+        62
+      ],
+      "opaquePixelCount": 158125,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "dd737b1d18e27492394ae78eefbf229e27aa40c25ce6a1cb59f235af107fd20c"
+    },
+    {
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        51,
+        34,
+        413,
+        416
+      ],
+      "pivot": [
+        257.5,
+        450
+      ],
+      "margins": [
+        51,
+        34,
+        48,
+        62
+      ],
+      "opaquePixelCount": 158330,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "1f74a2c765b15c39b640c5304fefa3fb76be6f144a349fe2642030eb4d66afc7"
+    },
+    {
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        19,
+        34,
+        413,
+        416
+      ],
+      "pivot": [
+        225.5,
+        450
+      ],
+      "margins": [
+        19,
+        34,
+        80,
+        62
+      ],
+      "opaquePixelCount": 158148,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "877c787d8887bfd6fb88d595c611dd546fba0247d12c48c1514f4af22d3881d5"
+    }
+  ]
+}

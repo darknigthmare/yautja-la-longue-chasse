@@ -1,0 +1,22 @@
+{
+  "classification": "CONSTRUCTED_NATIVE_MENU_REGRESSION_NOT_CAMPAIGN",
+  "files": {
+    "README.md": {
+      "sha256": "8d7f079440656622ff66e79bb82ea719e2aba02b74b96c720ac681ea68da4a23",
+      "bytes": 3180
+    },
+    "native-report.json": {
+      "sha256": "91771e4b8b4a26986446e7cc449e93d882ce7d6e40af89811d74fc22fa02bac1",
+      "bytes": 4051
+    }
+  },
+  "productionSource": {
+    "path": "app/game/systems/huntRitesRuntimeV77.ts",
+    "sha256": "fa9098ff0f1c34cfb7849e515556398564bcd5c0d7f3439f4216a0338b318ab3"
+  },
+  "testSource": {
+    "path": "tests/hunt-carried-corpse-menu-v112.test.mjs",
+    "sha256": "370a0f128bc0a63a8e796a2e69dcfefb40eb98e42c387d1cc4b2b57691687660"
+  },
+  "historicalGeometricReportUnchanged": "docs/qa/v112-ground-deposit-composition/operator-report.json"
+}

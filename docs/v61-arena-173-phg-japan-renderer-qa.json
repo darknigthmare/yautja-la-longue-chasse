@@ -1,0 +1,4844 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-173-phg-japan",
+  "checkedAt": "2026-09-30T19:06:31.776Z",
+  "compositionDigest": "e85f2cde3dee6c40e8fce443cd4586fe3c4525062c5baf009b137f61a0afe81f",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "f2eb599daec7425a0641060f179e0bf58e76e06d1c4e8a1750364f44b8ec125b",
+    "app/game/pitArenaProduction.ts": "982a0850cce006e2d65580d1e188fba485a2e94e006b2403dc38351f214aadef",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "scripts/verify-pit-stage-composition-v61.mjs": "9439af6528c100ae09453b6f235052d79f1b1e1cc79008908c82a25a8de6b17c",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "322eb124dd80d21fdbd9024f99dcd28d2c3cb87eb6d2818d16a52804fde449e7",
+    "app/game/data/pitStageLifeV61.json": "839d2bd0a110aeb0125f1b06879055a181836c7af1307b2ae202ce100e71f466",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "production": {
+      "number": 173,
+      "catalogueId": "arena-173-phg-japan",
+      "assetDirectory": "/game/sprites/v60/pit-arenas/arena-173-phg-japan",
+      "name": "Cour du chasseur Samurai",
+      "setting": "Cour japonaise inspirée de la biographie publiée ; distincte des toits d’Oni.",
+      "wave": "v60-workbook-stage-life",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v60-workbook-stage-life-compositions",
+      "authoringPlanDigest": "e490aab31d79237c56d7ebfde210856c124e9264790d28d7483874b90dad93e4",
+      "sourceReceipt": "docs/v60-generation/arena-173-phg-japan.json",
+      "lifeDigest": "d963c059485c95562ca9547fc71d0df900d912032ef6d09ff0f096e70899fce2",
+      "screenReference": {
+        "kind": "original",
+        "workId": "v60-new-phg-japan",
+        "classification": "original-exhibition",
+        "sourceUrls": [
+          "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/",
+          "https://predator.illfonic.com/",
+          "https://store.necaonline.com/products/predator-hunting-grounds-ultimate-samurai-predator-7-inch-scale-action-figure"
+        ],
+        "fidelityClaim": "original-lateral-layout-not-shot-exact"
+      },
+      "moduleProfile": {
+        "P2": 117,
+        "P3": 143,
+        "P4": 139,
+        "P5": 117,
+        "kind": "original",
+        "material": "pavement",
+        "notes": "Cour pavée avec bois et avant-toit ; aucune tuile de toit sous les combattants."
+      },
+      "contactMeasurements": [
+        {
+          "plane": "P2",
+          "assetId": "p2-wooden-post",
+          "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p2-wooden-post.png",
+          "crop": {
+            "x": 353,
+            "y": 115,
+            "width": 373,
+            "height": 1307
+          },
+          "visibleBottomExclusive": 1422,
+          "alphaThreshold": 3,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-module",
+          "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p3-module.png",
+          "crop": {
+            "x": 185,
+            "y": 205,
+            "width": 1521,
+            "height": 561
+          },
+          "visibleBottomExclusive": 766,
+          "alphaThreshold": 3,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur native indépendante du lieu",
+          "nominalParallax": 0.05,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Fond OpenAI natif dédié au lieu, sans figurant peint",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v60/pit-arenas/arena-173-phg-japan/p0-depth.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "docs/v60-generation/arena-173-phg-japan.json",
+                    "sha256": "9d042883bf93292e24c990ff12f48a3d0195119dc197c12f762b9738fa93cdea",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v60-generation/arena-173-phg-japan.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Atmosphère distante indépendante",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-atmosphere",
+              "role": "Brume haute indépendante",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.09,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 180,
+                  "width": 1160,
+                  "height": 150
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-wooden-post",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.85,
+              "placements": [
+                {
+                  "x": -30,
+                  "y": 125,
+                  "width": 90,
+                  "height": 305
+                },
+                {
+                  "x": 885,
+                  "y": 125,
+                  "width": 90,
+                  "height": 305
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 353,
+                "y": 115,
+                "width": 373,
+                "height": 1307
+              },
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p2-wooden-post.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/receipt-p2-wooden-post.json",
+                    "sha256": "dfe674548e931adbc655e5736a5e40ab28de0ecd3a2cde84143704735ffb33d4",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 29,
+                      "width": 945,
+                      "height": 1435
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/review-p2-wooden-post.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-117-killer-of-killers-2025-japan-rooftops/p2-wooden-post"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module natif dédié au milieu",
+          "nominalParallax": 0.85,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-module",
+              "role": "Module natif indépendant nature-mineral",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "anchorToGround": true,
+              "parallax": 0.85,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 45,
+                  "y": 360,
+                  "width": 145,
+                  "height": 70
+                },
+                {
+                  "x": 775,
+                  "y": 360,
+                  "width": 145,
+                  "height": 70
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p3-module.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "bd80ca27db0063578fad9c30bdf5642a237aabcdd8085fecf43e0350b8b3aa47",
+                    "width": 1881,
+                    "height": 836,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 185,
+                      "y": 205,
+                      "width": 1521,
+                      "height": 561
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ],
+              "libraryRef": "arena-143-big-game-new-mexico/p3-module"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Sol physique natif indépendant",
+          "nominalParallax": 1,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-floor",
+              "role": "Sol pavement OpenAI indépendant",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 960,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops/p4-floor.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "f656789e75cc874648652d0fd4e3743b5c503749f80ea4673b59e7cec7d7720c",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 2172,
+                      "height": 724
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ],
+              "libraryRef": "arena-139-batman-gotham-rooftops/p4-floor"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-eaves",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": -80,
+                  "y": -85,
+                  "width": 290,
+                  "height": 63
+                },
+                {
+                  "x": 755,
+                  "y": -85,
+                  "width": 290,
+                  "height": 63
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 189,
+                "y": 307,
+                "width": 1397,
+                "height": 299
+              },
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/receipt-p5-eaves.json",
+                    "sha256": "94551d84d199342e14ca7a43e5deda253879e250f8d30c8548948f570fa6b426",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 21,
+                      "width": 1526,
+                      "height": 810
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-117-killer-of-killers-2025-japan-rooftops/review-p5-eaves.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-117-killer-of-killers-2025-japan-rooftops/p5-eaves"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-173-phg-japan",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v60-arena-173-phg-japan-renderer-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v60-stage-composition-visual-review.json",
+        "digest": "46f226cd8bf278d8525e043706774e099cdd6ac0f47c383f87cc1a86b6d15b4d"
+      }
+    },
+    "life": null,
+    "story": {
+      "stageId": "arena-173-phg-japan",
+      "events": [
+        {
+          "id": "round-bell",
+          "name": "Cloche de départ — frappe unique du battant",
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "sha256": "206cbb9644d69870a6632d27c6b94a0a4b7eb4a8ae5969d459586755234081e6",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 305,
+            "bottom": 171,
+            "height": 120,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                271,
+                104
+              ],
+              "alphaBounds": [
+                89,
+                90,
+                333,
+                325
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                264,
+                104
+              ],
+              "alphaBounds": [
+                67,
+                90,
+                348,
+                324
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                281,
+                104
+              ],
+              "alphaBounds": [
+                57,
+                90,
+                369,
+                324
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                272,
+                80
+              ],
+              "alphaBounds": [
+                85,
+                64,
+                344,
+                332
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                270,
+                80
+              ],
+              "alphaBounds": [
+                117,
+                64,
+                308,
+                331
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                269.5,
+                80
+              ],
+              "alphaBounds": [
+                57,
+                64,
+                366,
+                329
+              ]
+            }
+          ],
+          "trigger": "round-start",
+          "idleVisibility": "rest"
+        }
+      ]
+    },
+    "base": {
+      "stageId": "arena-173-phg-japan",
+      "events": [
+        {
+          "id": "life-01",
+          "name": "Gardes anonymes sur le chemin de ronde",
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "e2756de56ecb84713d0eb398c506cd4eac7ba9f7745b8d5033f09f743dc14d06",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                466
+              ],
+              "alphaBounds": [
+                76,
+                25,
+                371,
+                443
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                467
+              ],
+              "alphaBounds": [
+                35,
+                34,
+                427,
+                435
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                467
+              ],
+              "alphaBounds": [
+                72,
+                26,
+                414,
+                443
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                469
+              ],
+              "alphaBounds": [
+                59,
+                34,
+                393,
+                437
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                468
+              ],
+              "alphaBounds": [
+                66,
+                30,
+                408,
+                440
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                469
+              ],
+              "alphaBounds": [
+                24,
+                28,
+                436,
+                443
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 252,
+            "bottom": 313,
+            "height": 96,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        {
+          "id": "life-02",
+          "name": "Feuilles d’érable — tourbillon au vent",
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "6505d70a2f8555f4149bd199f79b2a79d32c9ef77348e75ef1945fa2c5555bcd",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                445
+              ],
+              "alphaBounds": [
+                28,
+                35,
+                457,
+                411
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                450
+              ],
+              "alphaBounds": [
+                78,
+                34,
+                393,
+                417
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                447
+              ],
+              "alphaBounds": [
+                76,
+                35,
+                404,
+                412
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                459
+              ],
+              "alphaBounds": [
+                64,
+                30,
+                397,
+                430
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                449
+              ],
+              "alphaBounds": [
+                90,
+                32,
+                354,
+                417
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                449
+              ],
+              "alphaBounds": [
+                36,
+                32,
+                449,
+                418
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 440,
+            "bottom": 180,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        {
+          "id": "life-03",
+          "name": "Lanterne passive — vent et ruban",
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "06e15f6ab586c6db257cda82245aa0d18967d9844aa6ea2e4c403aa9863d7587",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                248,
+                11
+              ],
+              "alphaBounds": [
+                161,
+                5,
+                174,
+                490
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                178,
+                10
+              ],
+              "alphaBounds": [
+                142,
+                0,
+                239,
+                478
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                244,
+                15
+              ],
+              "alphaBounds": [
+                150,
+                7,
+                235,
+                495
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                249,
+                4
+              ],
+              "alphaBounds": [
+                162,
+                2,
+                177,
+                433
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                288,
+                4
+              ],
+              "alphaBounds": [
+                94,
+                2,
+                256,
+                473
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                249,
+                4
+              ],
+              "alphaBounds": [
+                163,
+                2,
+                229,
+                462
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 820,
+            "bottom": 137,
+            "height": 130,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        }
+      ]
+    }
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+      "sha256": "206cbb9644d69870a6632d27c6b94a0a4b7eb4a8ae5969d459586755234081e6",
+      "bytes": 1905690,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7787075042724609,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            89,
+            90,
+            333,
+            325
+          ],
+          "contentSha256": "bea38ae39a17b1e30fccfad20f458544f7c5db08bc43a2ddbefdcde993860430",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            67,
+            90,
+            348,
+            324
+          ],
+          "contentSha256": "fcd35e7d83eef8979fa20bc0c32d2dac0a2ce02708ffc43b718d9efae3f2b66c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            57,
+            90,
+            369,
+            324
+          ],
+          "contentSha256": "f3b1eb2bd2a426011d574cd943bd4cd36a7f0b735aa1d253cd25dcb43f344c8b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            85,
+            64,
+            344,
+            332
+          ],
+          "contentSha256": "71bc41d17baa7b5eb211df79be9925178920500e5715ac88aecc83e3a84c7329",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            117,
+            64,
+            308,
+            331
+          ],
+          "contentSha256": "c0db4b599c1464dcb7eaaae7949b0c0de57be482ef1f55d55ecd473fe5ab025b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            57,
+            64,
+            366,
+            329
+          ],
+          "contentSha256": "4a997a455a32d35ef895f5478e03da72a44da8a8d21f1d2601af2c4c9e3cda5b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-173-phg-japan-round-bell.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 10,
+    "expectedImages": 10,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV61Ambient": false,
+    "hasV61Story": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            440,
+            180
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            820,
+            137
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            252,
+            313
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": false,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 240,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            305,
+            171
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            440,
+            180
+          ],
+          "pivot": [
+            440,
+            180
+          ],
+          "visibleBounds": [
+            411.0546875,
+            127.94921875,
+            58.017578125,
+            52.177734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            820,
+            137
+          ],
+          "pivot": [
+            820,
+            137
+          ],
+          "visibleBounds": [
+            797.91015625,
+            135.4765625,
+            44.1796875,
+            124.4140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            252,
+            313
+          ],
+          "pivot": [
+            252,
+            313
+          ],
+          "visibleBounds": [
+            218.25,
+            230.3125,
+            69.5625,
+            83.0625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            305,
+            171
+          ],
+          "pivot": [
+            305,
+            171
+          ],
+          "visibleBounds": [
+            262.34375,
+            167.71875,
+            78.046875,
+            76.171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            449.325,
+            177.975
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            837.875,
+            134.0075
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            257.095,
+            313.9675
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": false,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 240,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            311.2875,
+            168.7725
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            449.325,
+            177.975
+          ],
+          "pivot": [
+            449.325,
+            177.975
+          ],
+          "visibleBounds": [
+            419.72841796875,
+            124.753076171875,
+            59.32297363281249,
+            53.351733398437496
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            837.875,
+            134.0075
+          ],
+          "pivot": [
+            837.875,
+            134.0075
+          ],
+          "visibleBounds": [
+            815.2881347656249,
+            132.44978515625,
+            45.173730468749994,
+            127.21337890624999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            257.095,
+            313.9675
+          ],
+          "pivot": [
+            257.095,
+            313.9675
+          ],
+          "visibleBounds": [
+            222.58562500000005,
+            229.41953124999998,
+            71.12765625,
+            84.93140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            311.2875,
+            168.7725
+          ],
+          "pivot": [
+            311.2875,
+            168.7725
+          ],
+          "visibleBounds": [
+            267.67148437500003,
+            165.417421875,
+            79.8029296875,
+            77.88574218749999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            428.875,
+            177.975
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            817.425,
+            134.0075
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            236.64500000000004,
+            313.9675
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": false,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 240,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            290.83750000000003,
+            168.7725
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            428.875,
+            177.975
+          ],
+          "pivot": [
+            428.875,
+            177.975
+          ],
+          "visibleBounds": [
+            399.27841796875003,
+            124.753076171875,
+            59.32297363281249,
+            53.351733398437496
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            817.425,
+            134.0075
+          ],
+          "pivot": [
+            817.425,
+            134.0075
+          ],
+          "visibleBounds": [
+            794.8381347656249,
+            132.44978515625,
+            45.173730468749994,
+            127.21337890624999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            236.64500000000004,
+            313.9675
+          ],
+          "pivot": [
+            236.64500000000004,
+            313.9675
+          ],
+          "visibleBounds": [
+            202.13562500000006,
+            229.41953124999998,
+            71.12765625,
+            84.93140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            290.83750000000003,
+            168.7725
+          ],
+          "pivot": [
+            290.83750000000003,
+            168.7725
+          ],
+          "visibleBounds": [
+            247.22148437500005,
+            165.417421875,
+            79.8029296875,
+            77.88574218749999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            440.40000000000003,
+            180.89999999999998
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            816.5999999999999,
+            138.32999999999998
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            254.28,
+            312.57
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": false,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 240,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            306.75,
+            171.98999999999998
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            440.40000000000003,
+            180.89999999999998
+          ],
+          "pivot": [
+            440.40000000000003,
+            180.89999999999998
+          ],
+          "visibleBounds": [
+            411.744140625,
+            129.36972656249998,
+            57.437402343749994,
+            51.65595703125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            816.5999999999999,
+            138.32999999999998
+          ],
+          "pivot": [
+            816.5999999999999,
+            138.32999999999998
+          ],
+          "visibleBounds": [
+            794.7310546875,
+            136.821796875,
+            43.737890625,
+            123.16992187499999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            254.28,
+            312.57
+          ],
+          "pivot": [
+            254.27999999999997,
+            312.57
+          ],
+          "visibleBounds": [
+            220.86749999999998,
+            230.709375,
+            68.866875,
+            82.23187499999999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            306.75,
+            171.98999999999998
+          ],
+          "pivot": [
+            306.75,
+            171.98999999999998
+          ],
+          "visibleBounds": [
+            264.5203125,
+            168.7415625,
+            77.26640625,
+            75.41015625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            438.9,
+            177.26812499999997
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            829.35,
+            133.08562499999996
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            245.72999999999996,
+            313.92562499999997
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": false,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 240,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            300.1875,
+            168.02062499999997
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            438.9,
+            177.26812499999997
+          ],
+          "pivot": [
+            438.9,
+            177.26812499999997
+          ],
+          "visibleBounds": [
+            409.15869140624994,
+            123.78594726562497,
+            59.61306152343751,
+            53.612622070312504
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            829.35,
+            133.08562499999996
+          ],
+          "pivot": [
+            829.3499999999999,
+            133.08562499999996
+          ],
+          "visibleBounds": [
+            806.652685546875,
+            131.52029296874997,
+            45.394628906250006,
+            127.83544921875001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 1.1368683772161603e-13
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            245.72999999999996,
+            313.92562499999997
+          ],
+          "pivot": [
+            245.72999999999996,
+            313.92562499999997
+          ],
+          "visibleBounds": [
+            211.05187499999997,
+            228.96421874999996,
+            71.47546875,
+            85.34671875000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            300.1875,
+            168.02062499999997
+          ],
+          "pivot": [
+            300.1875,
+            168.02062499999997
+          ],
+          "visibleBounds": [
+            256.358203125,
+            164.64914062499997,
+            80.1931640625,
+            78.26660156250001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            444,
+            189
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            786,
+            150.3
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            274.8,
+            308.7
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": false,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 240,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            322.5,
+            180.9
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            444,
+            189
+          ],
+          "pivot": [
+            444,
+            189
+          ],
+          "visibleBounds": [
+            417.94921875,
+            142.154296875,
+            52.2158203125,
+            46.9599609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            786,
+            150.3
+          ],
+          "pivot": [
+            786,
+            150.3
+          ],
+          "visibleBounds": [
+            766.119140625,
+            148.92890625,
+            39.76171875,
+            111.97265625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            274.8,
+            308.7
+          ],
+          "pivot": [
+            274.8,
+            308.7
+          ],
+          "visibleBounds": [
+            244.425,
+            234.28125,
+            62.60625,
+            74.75625000000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            322.5,
+            180.9
+          ],
+          "pivot": [
+            322.5,
+            180.9
+          ],
+          "visibleBounds": [
+            284.109375,
+            177.946875,
+            70.2421875,
+            68.5546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            440,
+            180
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            820,
+            137
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            252,
+            313
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": false,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 240,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            305,
+            171
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            440,
+            180
+          ],
+          "pivot": [
+            440,
+            180
+          ],
+          "visibleBounds": [
+            411.0546875,
+            127.94921875,
+            58.017578125,
+            52.177734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            820,
+            137
+          ],
+          "pivot": [
+            820,
+            137
+          ],
+          "visibleBounds": [
+            797.91015625,
+            135.4765625,
+            44.1796875,
+            124.4140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            252,
+            313
+          ],
+          "pivot": [
+            252,
+            313
+          ],
+          "visibleBounds": [
+            218.25,
+            230.3125,
+            69.5625,
+            83.0625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            305,
+            171
+          ],
+          "pivot": [
+            305,
+            171
+          ],
+          "visibleBounds": [
+            262.34375,
+            167.71875,
+            78.046875,
+            76.171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            438.85039474499996,
+            172.61544899999998
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            830.035694745,
+            128.349744
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            245.31661474499992,
+            309.530304
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": false,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 240,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            299.87666974499996,
+            163.35053399999998
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            438.85039474499996,
+            172.61544899999998
+          ],
+          "pivot": [
+            438.85039474499996,
+            172.61544899999998
+          ],
+          "visibleBounds": [
+            409.05307697156246,
+            119.03255300390622,
+            59.725325537109384,
+            53.713585986328134
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            830.035694745,
+            128.349744
+          ],
+          "pivot": [
+            830.035694745,
+            128.349744
+          ],
+          "visibleBounds": [
+            807.2956364442188,
+            126.78146411718748,
+            45.48011660156251,
+            128.07619042968753
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            245.31661474499992,
+            309.530304
+          ],
+          "pivot": [
+            245.31661474499992,
+            309.530304
+          ],
+          "visibleBounds": [
+            210.5731834949999,
+            224.4088974375,
+            71.6100721875,
+            85.5074446875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            299.87666974499996,
+            163.35053399999998
+          ],
+          "pivot": [
+            299.87666974499996,
+            163.35053399999998
+          ],
+          "visibleBounds": [
+            255.96483302624995,
+            159.97270040624997,
+            80.34418476562502,
+            78.41399414062501
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-bell-center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            440,
+            180
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            820,
+            137
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            252,
+            313
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            305,
+            171
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            440,
+            180
+          ],
+          "pivot": [
+            440,
+            180
+          ],
+          "visibleBounds": [
+            411.0546875,
+            127.94921875,
+            58.017578125,
+            52.177734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            820,
+            137
+          ],
+          "pivot": [
+            820,
+            137
+          ],
+          "visibleBounds": [
+            797.91015625,
+            135.4765625,
+            44.1796875,
+            124.4140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            252,
+            313
+          ],
+          "pivot": [
+            252,
+            313
+          ],
+          "visibleBounds": [
+            218.25,
+            230.3125,
+            69.5625,
+            83.0625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            305,
+            171
+          ],
+          "pivot": [
+            305,
+            171
+          ],
+          "visibleBounds": [
+            261.171875,
+            167.25,
+            80.625,
+            77.8125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-bell-left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            449.325,
+            177.975
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            837.875,
+            134.0075
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            257.095,
+            313.9675
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            311.2875,
+            168.7725
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            449.325,
+            177.975
+          ],
+          "pivot": [
+            449.325,
+            177.975
+          ],
+          "visibleBounds": [
+            419.72841796875,
+            124.753076171875,
+            59.32297363281249,
+            53.351733398437496
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            837.875,
+            134.0075
+          ],
+          "pivot": [
+            837.875,
+            134.0075
+          ],
+          "visibleBounds": [
+            815.2881347656249,
+            132.44978515625,
+            45.173730468749994,
+            127.21337890624999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            257.095,
+            313.9675
+          ],
+          "pivot": [
+            257.095,
+            313.9675
+          ],
+          "visibleBounds": [
+            222.58562500000005,
+            229.41953124999998,
+            71.12765625,
+            84.93140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            311.2875,
+            168.7725
+          ],
+          "pivot": [
+            311.2875,
+            168.7725
+          ],
+          "visibleBounds": [
+            266.47324218750003,
+            164.938125,
+            82.43906249999999,
+            79.56328124999999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-bell-right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            428.875,
+            177.975
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            817.425,
+            134.0075
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            236.64500000000004,
+            313.9675
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            290.83750000000003,
+            168.7725
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            428.875,
+            177.975
+          ],
+          "pivot": [
+            428.875,
+            177.975
+          ],
+          "visibleBounds": [
+            399.27841796875003,
+            124.753076171875,
+            59.32297363281249,
+            53.351733398437496
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            817.425,
+            134.0075
+          ],
+          "pivot": [
+            817.425,
+            134.0075
+          ],
+          "visibleBounds": [
+            794.8381347656249,
+            132.44978515625,
+            45.173730468749994,
+            127.21337890624999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            236.64500000000004,
+            313.9675
+          ],
+          "pivot": [
+            236.64500000000004,
+            313.9675
+          ],
+          "visibleBounds": [
+            202.13562500000006,
+            229.41953124999998,
+            71.12765625,
+            84.93140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            290.83750000000003,
+            168.7725
+          ],
+          "pivot": [
+            290.83750000000003,
+            168.7725
+          ],
+          "visibleBounds": [
+            246.02324218750005,
+            164.938125,
+            82.43906249999999,
+            79.56328124999999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-bell-wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            440.40000000000003,
+            180.89999999999998
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            816.5999999999999,
+            138.32999999999998
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            254.28,
+            312.57
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            306.75,
+            171.98999999999998
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            440.40000000000003,
+            180.89999999999998
+          ],
+          "pivot": [
+            440.40000000000003,
+            180.89999999999998
+          ],
+          "visibleBounds": [
+            411.744140625,
+            129.36972656249998,
+            57.437402343749994,
+            51.65595703125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            816.5999999999999,
+            138.32999999999998
+          ],
+          "pivot": [
+            816.5999999999999,
+            138.32999999999998
+          ],
+          "visibleBounds": [
+            794.7310546875,
+            136.821796875,
+            43.737890625,
+            123.16992187499999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            254.28,
+            312.57
+          ],
+          "pivot": [
+            254.27999999999997,
+            312.57
+          ],
+          "visibleBounds": [
+            220.86749999999998,
+            230.709375,
+            68.866875,
+            82.23187499999999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            306.75,
+            171.98999999999998
+          ],
+          "pivot": [
+            306.75,
+            171.98999999999998
+          ],
+          "visibleBounds": [
+            263.36015625,
+            168.27749999999997,
+            79.81875,
+            77.034375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-bell-close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            438.9,
+            177.26812499999997
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            829.35,
+            133.08562499999996
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            245.72999999999996,
+            313.92562499999997
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            300.1875,
+            168.02062499999997
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            438.9,
+            177.26812499999997
+          ],
+          "pivot": [
+            438.9,
+            177.26812499999997
+          ],
+          "visibleBounds": [
+            409.15869140624994,
+            123.78594726562497,
+            59.61306152343751,
+            53.612622070312504
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            829.35,
+            133.08562499999996
+          ],
+          "pivot": [
+            829.3499999999999,
+            133.08562499999996
+          ],
+          "visibleBounds": [
+            806.652685546875,
+            131.52029296874997,
+            45.394628906250006,
+            127.83544921875001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 1.1368683772161603e-13
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            245.72999999999996,
+            313.92562499999997
+          ],
+          "pivot": [
+            245.72999999999996,
+            313.92562499999997
+          ],
+          "visibleBounds": [
+            211.05187499999997,
+            228.96421874999996,
+            71.47546875,
+            85.34671875000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            300.1875,
+            168.02062499999997
+          ],
+          "pivot": [
+            300.1875,
+            168.02062499999997
+          ],
+          "visibleBounds": [
+            255.1541015625,
+            164.16749999999996,
+            82.84218750000001,
+            79.95234375000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-bell-reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            444,
+            189
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            786,
+            150.3
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            274.8,
+            308.7
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            322.5,
+            180.9
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            444,
+            189
+          ],
+          "pivot": [
+            444,
+            189
+          ],
+          "visibleBounds": [
+            417.94921875,
+            142.154296875,
+            52.2158203125,
+            46.9599609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            786,
+            150.3
+          ],
+          "pivot": [
+            786,
+            150.3
+          ],
+          "visibleBounds": [
+            766.119140625,
+            148.92890625,
+            39.76171875,
+            111.97265625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            274.8,
+            308.7
+          ],
+          "pivot": [
+            274.8,
+            308.7
+          ],
+          "visibleBounds": [
+            244.425,
+            234.28125,
+            62.60625,
+            74.75625000000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            322.5,
+            180.9
+          ],
+          "pivot": [
+            322.5,
+            180.9
+          ],
+          "visibleBounds": [
+            284.109375,
+            177.946875,
+            70.2421875,
+            68.5546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-bell-high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            440,
+            180
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            820,
+            137
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            252,
+            313
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            305,
+            171
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            440,
+            180
+          ],
+          "pivot": [
+            440,
+            180
+          ],
+          "visibleBounds": [
+            411.0546875,
+            127.94921875,
+            58.017578125,
+            52.177734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            820,
+            137
+          ],
+          "pivot": [
+            820,
+            137
+          ],
+          "visibleBounds": [
+            797.91015625,
+            135.4765625,
+            44.1796875,
+            124.4140625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            252,
+            313
+          ],
+          "pivot": [
+            252,
+            313
+          ],
+          "visibleBounds": [
+            218.25,
+            230.3125,
+            69.5625,
+            83.0625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            305,
+            171
+          ],
+          "pivot": [
+            305,
+            171
+          ],
+          "visibleBounds": [
+            261.171875,
+            167.25,
+            80.625,
+            77.8125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-round-bell-actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "life-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            438.85039474499996,
+            172.61544899999998
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            830.035694745,
+            128.349744
+          ]
+        },
+        {
+          "eventId": "life-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v60/pit-life/arena-173-phg-japan/life-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            245.31661474499992,
+            309.530304
+          ]
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "round-bell",
+          "trigger": "round-start",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:start",
+          "elapsedFrames": 61,
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            299.87666974499996,
+            163.35053399999998
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "base",
+          "eventId": "life-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            438.85039474499996,
+            172.61544899999998
+          ],
+          "pivot": [
+            438.85039474499996,
+            172.61544899999998
+          ],
+          "visibleBounds": [
+            409.05307697156246,
+            119.03255300390622,
+            59.725325537109384,
+            53.713585986328134
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            830.035694745,
+            128.349744
+          ],
+          "pivot": [
+            830.035694745,
+            128.349744
+          ],
+          "visibleBounds": [
+            807.2956364442188,
+            126.78146411718748,
+            45.48011660156251,
+            128.07619042968753
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "base",
+          "eventId": "life-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            245.31661474499992,
+            309.530304
+          ],
+          "pivot": [
+            245.31661474499992,
+            309.530304
+          ],
+          "visibleBounds": [
+            210.5731834949999,
+            224.4088974375,
+            71.6100721875,
+            85.5074446875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "round-bell",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            299.87666974499996,
+            163.35053399999998
+          ],
+          "pivot": [
+            299.87666974499996,
+            163.35053399999998
+          ],
+          "visibleBounds": [
+            254.75846388562496,
+            159.49015275,
+            82.998196875,
+            80.10291093750001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 0,
+      "frame": 1216,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 1,
+      "frame": 1236,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 2,
+      "frame": 1256,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 3,
+      "frame": 1276,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 4,
+      "frame": 1296,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-03",
+      "nativeFrame": 5,
+      "frame": 1316,
+      "attachment": [
+        820,
+        137
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 0,
+      "frame": 2402,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 1,
+      "frame": 2422,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 2,
+      "frame": 2442,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 3,
+      "frame": 2462,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 4,
+      "frame": 2482,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-01",
+      "nativeFrame": 5,
+      "frame": 2502,
+      "attachment": [
+        252,
+        313
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 0,
+      "frame": 3674,
+      "attachment": [
+        440,
+        180
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 1,
+      "frame": 3694,
+      "attachment": [
+        440,
+        180
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 2,
+      "frame": 3714,
+      "attachment": [
+        440,
+        180
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 3,
+      "frame": 3734,
+      "attachment": [
+        440,
+        180
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 4,
+      "frame": 3754,
+      "attachment": [
+        440,
+        180
+      ]
+    },
+    {
+      "kind": "v60-retained",
+      "eventId": "life-02",
+      "nativeFrame": 5,
+      "frame": 3774,
+      "attachment": [
+        440,
+        180
+      ]
+    },
+    {
+      "kind": "story",
+      "trigger": "round-start",
+      "eventId": "round-bell",
+      "nativeFrame": 0,
+      "attachment": [
+        305,
+        171
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "round-start",
+      "eventId": "round-bell",
+      "nativeFrame": 1,
+      "attachment": [
+        305,
+        171
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "round-start",
+      "eventId": "round-bell",
+      "nativeFrame": 2,
+      "attachment": [
+        305,
+        171
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "round-start",
+      "eventId": "round-bell",
+      "nativeFrame": 3,
+      "attachment": [
+        305,
+        171
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "round-start",
+      "eventId": "round-bell",
+      "nativeFrame": 4,
+      "attachment": [
+        305,
+        171
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "round-start",
+      "eventId": "round-bell",
+      "nativeFrame": 5,
+      "attachment": [
+        305,
+        171
+      ],
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\center.png",
+      "sha256": "eb87e8dfa77fccc76ed9fa9139a69286eabd4b370fcf14be3f90f9968642a74f"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\left-corner.png",
+      "sha256": "b2cbae1a563f12918dc0bfe73039f98fdf5c367dd25e550118c97d78c579cb34"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\right-corner.png",
+      "sha256": "5047304ce2fc2433ddaa8111e8523ca526595919850f29d941038d0d6d4cd04b"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\wide.png",
+      "sha256": "5107721f737c477a1538c2dbd5189b78e80f3006e580499c37f761b87cfa94e2"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\close.png",
+      "sha256": "5fcdf50692fe0690eba9a92cf0871900cbc28c9405c30b220b2ad44533fe08f2"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\reduced-motion.png",
+      "sha256": "f4846ee7e13b68833916fea6b0818308f49d524f442b42bfbe3e1374d09882f1"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\high-contrast.png",
+      "sha256": "dd416d699cee7ca92dfd26e6e14bdf7f024731d2b513b8973a91b17659e1ad7a"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\actual-game-camera.png",
+      "sha256": "d8d6cd1315a0f0a644c587d68818e4b374d19716b25fee3c24fbffb340c5db02"
+    },
+    {
+      "name": "ambient-life-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-03-frame-0.png",
+      "sha256": "f5cf5e9bac830346b094adb8d8ea8b4d723d79d8f3f4607b860ac7369052e2d2"
+    },
+    {
+      "name": "ambient-life-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-03-frame-1.png",
+      "sha256": "9689880d25646fe641c785ac92d11d907b3d7eb22ac1e4d3af356b70db837a5e"
+    },
+    {
+      "name": "ambient-life-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-03-frame-2.png",
+      "sha256": "8dbb3d660fab77ef88c183d2e95667305652be64449bcb2df62802dae4392196"
+    },
+    {
+      "name": "ambient-life-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-03-frame-3.png",
+      "sha256": "668bb9d35913b87d0317d21c2a68233f73dd28dd641c2fa4d13ba50d09c5452a"
+    },
+    {
+      "name": "ambient-life-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-03-frame-4.png",
+      "sha256": "ad9d97a8ef447bd04f6e937a43d029f786a4b82d498c85434d35ffc313d2daf9"
+    },
+    {
+      "name": "ambient-life-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-03-frame-5.png",
+      "sha256": "873d2b04b9abd9e5f09470b1f531a6c9c4b1ce8a80ddcd4938f48d391d043025"
+    },
+    {
+      "name": "ambient-life-01-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-01-frame-0.png",
+      "sha256": "c6b2ba453c5419cee03881c01c158383ea599131f34fb6ae6c7d7aeb14a5df3b"
+    },
+    {
+      "name": "ambient-life-01-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-01-frame-1.png",
+      "sha256": "805160279e0000121ed414f8a314fba519925acbbb4dab04abca5acbfde11628"
+    },
+    {
+      "name": "ambient-life-01-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-01-frame-2.png",
+      "sha256": "168093655d2daf4f1e62fc873ea09efcc648c16f67579d77f2cce2004799e92f"
+    },
+    {
+      "name": "ambient-life-01-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-01-frame-3.png",
+      "sha256": "6351a23f81ac035e6063d73a27990b5ad6ab8b7b80ff5e697e7535e10aa7c0d8"
+    },
+    {
+      "name": "ambient-life-01-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-01-frame-4.png",
+      "sha256": "773c4fcab1b1033d5370aee05c989f61b0417a675221d352eb0b154848cd186e"
+    },
+    {
+      "name": "ambient-life-01-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-01-frame-5.png",
+      "sha256": "d713776945136504568959c8a43c27c5e3d773cb0e020b487437546ffd391286"
+    },
+    {
+      "name": "ambient-life-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-02-frame-0.png",
+      "sha256": "b1deaa260c28983643b3a0d9da6fdcfd10e2f3f64e5b85f71df9323e0ae22e6b"
+    },
+    {
+      "name": "ambient-life-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-02-frame-1.png",
+      "sha256": "82cc08969e8e6d1b5f77b4f438927f452e2cfc1531b3071091438d9d49ee6f5b"
+    },
+    {
+      "name": "ambient-life-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-02-frame-2.png",
+      "sha256": "e9ad620936ff0a40cd11ad447d0d4cc3754bb76ccb1809b9c44d5d792c9e8534"
+    },
+    {
+      "name": "ambient-life-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-02-frame-3.png",
+      "sha256": "c79b5a43ba24242c47e656bbaa378cc367b6a4206c45a3ef06027283cec09e89"
+    },
+    {
+      "name": "ambient-life-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-02-frame-4.png",
+      "sha256": "874278e9f0cd62ea835d5d30689f09472cee0744c0f9a11fa786e774f8090b2e"
+    },
+    {
+      "name": "ambient-life-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\ambient-life-02-frame-5.png",
+      "sha256": "ca7067c7d7c246830a9adc70b235c06c7f540c3ce43b842530ffdb1c0379cd6e"
+    },
+    {
+      "name": "story-round-bell-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-frame-0.png",
+      "sha256": "c6b2ba453c5419cee03881c01c158383ea599131f34fb6ae6c7d7aeb14a5df3b"
+    },
+    {
+      "name": "story-round-bell-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-frame-1.png",
+      "sha256": "000bb0761428800afb5034fca1709d07236168af5e2ad854574f7c8aeaf7eb75"
+    },
+    {
+      "name": "story-round-bell-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-frame-2.png",
+      "sha256": "86357ea4746ca47c41cf78055252883a7fffe6c3fbeb336c339bc83f1fb77b58"
+    },
+    {
+      "name": "story-round-bell-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-frame-3.png",
+      "sha256": "d2ef5b8b8d18d156410f2d1b2fb71081e24029fe1aeaee8d3287b7781dd4d461"
+    },
+    {
+      "name": "story-round-bell-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-frame-4.png",
+      "sha256": "ffa2d597eeb89f683f67eae50a1cfc3b53e889149af56f79b82cf96745add6df"
+    },
+    {
+      "name": "story-round-bell-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-frame-5.png",
+      "sha256": "80b2217bba7ddb7ba8b2787358f54b41b12634c534beb8ab8d9ee1ce0aad173f"
+    },
+    {
+      "name": "story-round-bell-center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-center.png",
+      "sha256": "619a47420eb5f60ae479acf03349a388248dbe23b8bd884fd6251b92a9d5b32f"
+    },
+    {
+      "name": "story-round-bell-left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-left-corner.png",
+      "sha256": "463c2945a364055ad35bbdd14acee9e51d811a6ab595245527ba1a58d98e4cc7"
+    },
+    {
+      "name": "story-round-bell-right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-right-corner.png",
+      "sha256": "8612801bd78b66fd92a09d5002a0ced27b31710c0a8d14f731a2e21a8b5d7294"
+    },
+    {
+      "name": "story-round-bell-wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-wide.png",
+      "sha256": "de4cfd1f439c8008ab25920a18e1d06781cfcbcd82567e40b2a74c1c8b11d352"
+    },
+    {
+      "name": "story-round-bell-close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-close.png",
+      "sha256": "54bb575c38e408f2628cd9de761b3b928c86d8d9495bafb642df0650fd2d7233"
+    },
+    {
+      "name": "story-round-bell-reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-reduced-motion.png",
+      "sha256": "f4846ee7e13b68833916fea6b0818308f49d524f442b42bfbe3e1374d09882f1"
+    },
+    {
+      "name": "story-round-bell-high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-high-contrast.png",
+      "sha256": "296f5a4aa29d46770664c492344ff9ab77dd4442146115c93ab89f2892288b16"
+    },
+    {
+      "name": "story-round-bell-actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\story-round-bell-actual-game-camera.png",
+      "sha256": "2c47c9064ce17d8e4c8b6db3075c415d17816d9105f20bbdf621a596cfa3dd9c"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-173-phg-japan\\mobile-canvas.png",
+      "sha256": "55bfb823562da5fb7a976c042c4149e238a77e62cb2093056e0a30081e3ca813"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

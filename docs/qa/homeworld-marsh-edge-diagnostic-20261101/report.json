@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "status": "OPEN_COMPOSITION_DIAGNOSTIC",
+  "scope": "Read-only attribution and temporary browser visibility/filter interventions; not a gameplay or production certificate.",
+  "observedRuntime": "0f79d3d8eac494cec4c418ac5b2f867929850bb7",
+  "observedBuildId": "vxOXqmuKalwQbkLqTZnwN",
+  "fixture": {
+    "actor": {
+      "x": 6473,
+      "y": 2800
+    },
+    "levelId": "0",
+    "viewport": {
+      "width": 1440,
+      "height": 1050
+    },
+    "source": "Declared normalized checkpoint after the existing completed First Tracks model; not claimed as played travel."
+  },
+  "camera": {
+    "zoom": 0.9,
+    "worldTransform": "translate(-5105.7px, -902.913px) scale(0.9)",
+    "depthScale": 0.573576436351046
+  },
+  "originalCaptures": [
+    {
+      "executionPath": "/tmp/homeworld-production-final/life-marsh-watch-native-grounded.png",
+      "bytes": 1838787,
+      "sha256": "99cffdf9358a22052a4cb5e26f93fed5c740f7c80098358349dbef77bfb0ce4f",
+      "actuallyOpened": true
+    },
+    {
+      "executionPath": "/tmp/homeworld-production-r6/life-marsh-watch-native-grounded.png",
+      "bytes": 1838791,
+      "sha256": "907bd6ae4a49cd7a28848730ad8e84dc56ba38e5b5cd0b2c87ca1d99766394a7",
+      "actuallyOpened": true
+    }
+  ],
+  "sources": [
+    {
+      "path": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25424,
+      "sha256": "f005423055fa37eb3fcadae2ae22a8d7cdbbed577a2bcf5ec4d3020e4d773acc"
+    },
+    {
+      "path": "app/game/HomeworldBackdropV81.tsx",
+      "bytes": 6706,
+      "sha256": "1213e733a517f03c6edd7fc9a6e7be7880baa3b7623454f74b282aa92a388331"
+    },
+    {
+      "path": "app/game/HomeworldEcotonesV112.tsx",
+      "bytes": 5107,
+      "sha256": "1578ffabebeb86deb3bee51d000ec6b3ec943cf324d2eb0a4a25c03f9d43a4e3"
+    },
+    {
+      "path": "app/game/HomeworldCity.module.css",
+      "bytes": 23775,
+      "sha256": "05f8f7e11fd01a9bd0491f2d39e1b283d3120f64eb7ba9e406474b75d1e47e19"
+    },
+    {
+      "path": "app/game/systems/homeworldWorldV77.ts",
+      "bytes": 35885,
+      "sha256": "f455bf1c80940cc2736667b524d4e892ed6e8089ff4e95eef44e5cc137660206"
+    },
+    {
+      "path": "app/game/systems/homeworldNaturalPlacementsV112.ts",
+      "bytes": 5486,
+      "sha256": "57da3bde7bbc4969b624ee9d8df10184fa7a946e52dd709c5ae807bfb46b2ddd"
+    },
+    {
+      "path": "app/game/systems/homeworldNaturalRockFacesV112.ts",
+      "bytes": 4188,
+      "sha256": "b1a4fab55394f022a4c5a7b45c69bcb3a7c2e940a0bef5fafce9bb2f1f17f033"
+    },
+    {
+      "path": "app/game/systems/homeworldBackdropV81.ts",
+      "bytes": 4629,
+      "sha256": "0c13ce472f42924453bc95431f558812b8a155af96a8454ed0b8ec9be29949f8"
+    },
+    {
+      "path": "app/game/systems/homeworldFoundationPaintV90.ts",
+      "bytes": 876,
+      "sha256": "56fadbd50d5cd93e455b6c4378ca43fa00dadf3de04c17e03e9671e93845ca84"
+    },
+    {
+      "path": "public/game/homeworld/v81/paving-civic.png",
+      "bytes": 3207782,
+      "sha256": "e2c5110b113c80321fda55394bc7e3cb053158b00f52444b23266e94c6b7e065"
+    },
+    {
+      "path": "public/game/homeworld/v81/basalt-city-foundation.png",
+      "bytes": 2613948,
+      "sha256": "4a0518652fca7f76f50a6a9de388d52fb980bc54eb6e5fa017733d8f98969e73"
+    }
+  ],
+  "openedExploratoryImages": [
+    "baseline.png",
+    "without-foundations.png",
+    "without-natural.png",
+    "without-ecotones.png",
+    "without-depth-background.png",
+    "without-floor-filter.png"
+  ],
+  "findings": [
+    "The earlier .96 projection estimate sampled neighboring supported ground. Actual exterior zoom is .9; DOM screen matrices supply the corrected exact points.",
+    "At the six sampled band pixels, exact point-support probes find no current public ground polygon. These are narrow exterior interstices between retained pavement contours, not newly found holes inside the traversed pedestrian lane.",
+    "Hiding V81 exposed foundation drawing changes zero pixels in all three measured regions; it does not remove these strips.",
+    "Hiding natural V112 drawing changes the left strips; hiding ecotones changes part of the right strip. The latter also intersects the v71:rampart-walk natural top outside the public pavement mask.",
+    "Removing the floor drop-shadow alters the wider paving render and does not eliminate the lower-left strip. This experiment is not an admitted correction."
+  ],
+  "unresolved": "No one-line renderer-only fix is qualified. The exact contributor inside the complete natural paint/mask pipeline is not isolated to a single primitive. A future authored boundary treatment must retain current native source identity, public support and collision contracts.",
+  "productSourcesChanged": false,
+  "geometryChanged": false,
+  "nativeImagesEdited": false,
+  "sourceCompletion": false,
+  "closedSourceIds": []
+}

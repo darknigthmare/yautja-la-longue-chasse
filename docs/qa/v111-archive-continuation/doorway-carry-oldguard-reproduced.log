@@ -1,0 +1,53 @@
+TAP version 13
+# Subtest: V111 actual interact refuses an available doorway while A carries the fragment and B is completed
+not ok 1 - V111 actual interact refuses an available doorway while A carries the fragment and B is completed
+  ---
+  duration_ms: 1946.323962
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/.v111-continuation-old-door-guard.test.mjs:166:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    carrying cannot dispatch an interruption, write, room/activity entry or actor movement
+    + actual - expected
+    
+    + [
+    +   'interrupt-plaque',
+    +   'progress',
+    +   'interruptCargoV108',
+    +   'interruptComparisonV107',
+    +   'interruptArchiveV106',
+    +   'interruptCartographyV104',
+    +   'interruptCartographyV105',
+    +   'enter:residence-port-2'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'interrupt-plaque'
+    1: 'progress'
+    2: 'interruptCargoV108'
+    3: 'interruptComparisonV107'
+    4: 'interruptArchiveV106'
+    5: 'interruptCartographyV104'
+    6: 'interruptCartographyV105'
+    7: 'enter:residence-port-2'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/.v111-continuation-old-door-guard.test.mjs:193:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5815.608946

@@ -1,0 +1,19 @@
+✔ PR25 experimental tints survive as V113 colors, without separate source fields (6.901477ms)
+✔ special-case old V85 ids map to their existing V113 save IDs (0.492892ms)
+✔ explicit null or newly selected modern material overrides any conflicting old PR25 field (0.218839ms)
+✔ unregistered or malicious legacy input never turns into an asset URL (0.229496ms)
+✔ every declared HunterSkinId and retained migration alias has a finite visible filter (8.741051ms)
+✔ every declared DreadTintId and retained migration alias has a finite visible filter (0.284108ms)
+✔ every declared ArmorTintId and retained migration alias has a finite visible filter (0.208684ms)
+✔ both Homeworld and combat rig use the same palette source (0.149255ms)
+✔ the three previously published family values retain their original visual filters (0.882418ms)
+✔ V121: V114 filters and V117 canonical PHG chromatic masks coexist without duplicate renders (0.283577ms)
+✔ all thirteen retained tint aliases migrate exactly and never override explicit modern choices (6.161253ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 552.696089

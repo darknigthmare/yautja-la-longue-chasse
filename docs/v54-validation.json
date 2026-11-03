@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "version": "V54",
+  "checkedAt": "2026-09-26T23:51:16.231Z",
+  "scope": "Local release gates before publication. Public evidence is recorded separately after Vercel Ready.",
+  "baselineCommit": "eee95eefedd688af29503734c237e7ae960e72d8",
+  "gates": {
+    "webBuild": {
+      "passed": true,
+      "path": "outputs/qa-commercial-audit/v54-build-publish.log",
+      "sha256": "627977713c0b47524f8626bc09c0344b2e9e54765e15bf94239d91402e0a2341"
+    },
+    "typecheck": {
+      "passed": true,
+      "path": "outputs/qa-commercial-audit/v54-typecheck-publish.log",
+      "sha256": "fdd4010a5801a43e17e176b5cba5a4bd7484d414d207b9c36a14c36597cfde8e"
+    },
+    "lint": {
+      "passed": true,
+      "errors": 0,
+      "warnings": 1,
+      "warning": "Existing next/no-img-element in ClanChroniclePanel.tsx:42",
+      "path": "outputs/qa-commercial-audit/v54-lint-publish.log",
+      "sha256": "c6b35ddc6589a0041d5f5761ef823c755a674aaacef73a39ae21f0d17d62ae62"
+    },
+    "tests": {
+      "passed": 1740,
+      "failed": 0,
+      "skipped": 0,
+      "path": "outputs/qa-commercial-audit/v54-tests-publish.log",
+      "sha256": "3371d25edbec297aef9f3eb8a8a284d90c3e50a62484c5b8a93ae89610f17325"
+    },
+    "desktopRenderer": {
+      "passed": true,
+      "sourceDigest": "374341e6deabef9aa194f3d89fba309482922b560481200e0121989eaafa1dcc",
+      "sourceFiles": 3910,
+      "outputRoot": "E:/CodexTemp/yautja-v54-renderer-qa-20260927",
+      "windowsPackageQualified": false,
+      "note": "Renderer build only. Existing V52 executable/ZIP preserved.",
+      "path": "outputs/qa-commercial-audit/v54-desktop-renderer-publish.log",
+      "sha256": "2f7bc287255faa8da8677354a3258e011c23bdca6ef8c6af1ad45d7595c8dfe8"
+    },
+    "arenaProduction": {
+      "passed": true,
+      "stages": 138,
+      "uniqueImages": 437,
+      "instances": 1470,
+      "path": "outputs/qa-commercial-audit/v54-arena-production-final.log",
+      "sha256": "dd62de8218968479c5f1d75ce0b779b9deb2f444046f2b1af16d835204e066bd"
+    }
+  },
+  "applicationBrowser": {
+    "passed": true,
+    "totalChecks": 57,
+    "reports": [
+      {
+        "path": "outputs/qa-commercial-audit/v54/pit-grounding-final/report.json",
+        "sha256": "c57dab7cf3b73eccb2fd83f3f5749c1b6464a848e1fbf23fb2c6b6a36b7cf8a7",
+        "checks": 18,
+        "passed": true
+      },
+      {
+        "path": "docs/v54-character-stages-application-qa.json",
+        "sha256": "51d52113e7dd2e9601de8ec4fc272bc0c2be89205eaa757cdf883b99da985f9a",
+        "checks": 12,
+        "passed": true
+      },
+      {
+        "path": "outputs/qa-commercial-audit/v54/homeworld-spatial-browser-qa-run3/report.json",
+        "sha256": "eee6a6c2380f6babe347b83522adaa9e49d92167494b81edc8e15e5599248192",
+        "checks": 13,
+        "passed": true
+      },
+      {
+        "path": "outputs/qa-commercial-audit/v54/youth/final-contact-help-browser-qa/report.json",
+        "sha256": "07d46cd8c73c0718032f7378d49b210d86acad73ad3aedce5b42d5cfb177f01e",
+        "checks": 7,
+        "passed": true
+      },
+      {
+        "path": "outputs/qa-commercial-audit/v54/youth/final-nursery-browser-qa/report.json",
+        "sha256": "4b2e7395f20ddfedceeb0505025743b3757ff3f627526511238b9214e437e648",
+        "checks": 7,
+        "passed": true
+      }
+    ],
+    "note": "Homeworld and youth modules unchanged after their respective local runs. Contact/help samples a controlled browser clock; Homeworld uses real-time keyboard play. Virtual controllers do not certify physical hardware."
+  },
+  "isolatedAudio": {
+    "passed": true,
+    "checks": 9,
+    "path": "outputs/qa-commercial-audit/v54/audio/browser-qa/report.json",
+    "sha256": "11f911ccb6a5c40cbcb78ee3a75e291e56dfe199be6f70f11d03c73ff913f911",
+    "note": "Real Chromium audio-engine harness, not subjective listening or full application qualification."
+  },
+  "localAssets": {
+    "passed": true,
+    "files": 29,
+    "path": "outputs/qa-commercial-audit/v54/final-local-assets.json",
+    "sha256": "7df9213b1ffe69754f422b14253872d037b238373d5c01ad15e13f459dd50afa"
+  },
+  "downloadableAssets": {
+    "path": "outputs/qa-commercial-audit/v54/Yautja-V54-images-sons-provenance.zip",
+    "sha256": "d211430cf52bc243ab41cf7dfd99fbc44eb954bfd13cc2c94bc8f8c9c79eeefe",
+    "bytes": 15980947,
+    "acceptedOpenAiPng": 7,
+    "wav": 22,
+    "note": "Images, sounds, prompts, licences and provenance; not a game executable."
+  },
+  "discoveredAndFixed": [
+    "Independent preview retry left combat art bank failed; parent reload and readiness gates added.",
+    "Homeworld path skipped a short impassable segment; 4-unit sampling, clearance and physical regression added.",
+    "Waypoints skipped too early; intermediate threshold reduced from 80 to 8.",
+    "Ship backdrop covered spawn; image occlusion fades without changing collision.",
+    "Shared crate PNG alpha1 residue caused visual floating; offsets calibrated only in stages137/138, source pixels and owner crop unchanged.",
+    "Imported opaque readiness function caused React compiler lint errors; equivalent loader invariants are inline."
+  ],
+  "intermediateRejectedGates": [
+    "Desktop freshness gate correctly rejected source edits during an earlier build; final identical before/after digest passed.",
+    "Library alias crop change rejected by provenance tests and removed."
+  ],
+  "remaining": [
+    "7 music contexts, 8 biome ambiences and voice production; artistic listening and Safari/iOS QA.",
+    "Personal stages for unverified or unknown-origin roster entries; no all-195 coverage claimed.",
+    "Complete fighter movesets and additional living-background casts.",
+    "Further youth rites, adult Homeworld campaign and building interiors.",
+    "V54 Windows executable packaging and actual desktop hardware qualification.",
+    "New private ChatGPT conversations not recovered are not assumed read."
+  ]
+}

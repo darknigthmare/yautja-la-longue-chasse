@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T08:44:27.236262+00:00",
+  "tool": "image_gen.imagegen",
+  "attemptId": "scar-throw-forward-left-r2",
+  "submittedPrompt": "Correct the LAYOUT of this existing six-pose LEFT-facing hunter-only animation atlas. Preserve all six LEFT-facing poses and the same SCAR from the silver-mask reference: silver biomask without initiation mark, gold-brown mottled skin, mesh suit, silver armor, black gold-tied dreadlocks, shoulder cannon, wrist blades, his complete owned spear retained in its same hand in every pose, anatomy and attached equipment. Deliver1536x1024 landscape true RGBA transparency with exactly3columns and2rows. Each512x512cell must contain ONLY its own complete hunter, NO silhouette or weapon reaching into another cell. Make EACH full silhouette distinctly SMALLER, at most340px wide and390px high, contained within x86..426 andy65..455 of its cell, baseliney455. Transparent gutters at least64px. In particular the forward-reaching arm of bottom-left may NOT enter bottom-middle, and no foot or spear crosses cells. Preserve all six different phases in reading order: ready, reach, load lowered hips, forward release toward LEFT, follow-through, recover. No mannequin/victim/second actor/loose limbs may appear. No text, lines, ground, brown glow, vignette or checkerboard; fully transparent between objects. Never mirror the right-facing drawing. Same scale across frames; all two arms and two legs complete. Keep blades/shield/spear attached to their actual anatomical sides as in the LEFT reference. This is a corrected production sprite atlas, not a composite fight image.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/generated_images/exec-fde34d01-3286-4a8c-927d-58b748e37517.png",
+      "preservedPath": "art-source/v109-pit-forward/scar-throw-forward-left-v109.png",
+      "sha256": "6d407f9378c7e15c5e0212ec1746fce121e39fc5cd0d230f24a5dea7e2338550",
+      "bytes": 2404783
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-fd1ca4b6-42fe-4dd7-b26e-5ef6ef4dee8c.png",
+  "output": {
+    "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png",
+    "sha256": "64b53fe5abfaed37324a809419cfb216aca16b83467115a1e555ee0864f7d048",
+    "bytes": 2358596,
+    "width": 1536,
+    "height": 1024
+  },
+  "status": "SELECTED_SOURCE_REGIONS",
+  "filesEditedAfterGeneration": false,
+  "scope": "Local tool call record, not an external signed certificate. Original adaptations; no film-exact fidelity or source action completion is inferred."
+}

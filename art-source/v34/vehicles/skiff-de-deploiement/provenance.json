@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "skiff-de-deploiement",
+  "name": "Skiff de déploiement",
+  "lore": "original-game-design-proposal",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Identité · châssis de transport",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/skiff-de-deploiement/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/skiff-de-deploiement/identity-r1.png",
+      "originId": "exec-cb77de39-0296-4bef-bacb-9b2093dc7084.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "dbcb7d4aafb0cf93d2be8266f21c366db713777eed8c0c9a2b834235561db477",
+      "bytes": 1498885,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572528
+      },
+      "prompt": "Create an ORIGINAL Yautja-inspired fan-game transport design for La Longue Chasse, not a film vehicle replica. Two complete independent orthographic SIDE PROFILE views, SIDE BY SIDE in TWO COLUMNS and ONE ROW: left craft facing RIGHT, right craft facing LEFT. Identical scale, matching structural layout seen from opposite sides. Horizontal side-scrolling gameplay camera, no isometric or top view. Complete nose, rear, landing assemblies and equipment mounting points with wide clear margins. Each craft within central70percent of its half; broad center gutter. Detailed sharp hand-painted sci-fi game bitmap, weathered dark gunmetal and bronze, functional alien hunting technology. NO pilots, riders, creatures, corpses, trophies, cargo, guns, fire, exhaust, shadow, scenery, logos, writing, grid or checkerboard. The empty chassis and fixed structural framework only; riders, loads, weapons, effects and movable accessories are separate later modules. Uniform flat pure MAGENTA #FF00FF background, no colored lighting spill. Vehicle: SKIFF DE DEPLOIEMENT, a compact atmospheric antigravity hunting-clan insertion craft for a small squad. Low angular armored prow with protected front pilot well, long open rear boarding deck with six distinct empty fold-down seat or standing harness stations visible behind low protective side panels, rear landing/boarding opening with ramp stowed, compact paired rear engine housings and underside antigravity nodes, short fin-like rear stabilizers. Side silhouette clearly a crew transport, not a fighter jet, boat with sails, wheeled truck, or huge interstellar mothership. Restrained dark bronze and black mechanical panels, small cyan position lights. Keep the same six stations, rear opening and engine layout on opposite sides.",
+      "references": [
+        {
+          "source": "recovered-vehicle-conversation",
+          "lines": [
+            361,
+            377
+          ],
+          "role": "Original game description; exact construction is a new design proposal."
+        }
+      ],
+      "notes": [
+        "Six empty transport positions in this proposal, within the conversation's four-to-eight crew brief. No passengers or landing animation are integrated."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            28,
+            138,
+            1016,
+            368
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 187018,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1086,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            1129,
+            138,
+            1015,
+            368
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 186987,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

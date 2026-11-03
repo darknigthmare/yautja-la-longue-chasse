@@ -1,0 +1,80 @@
+✔ the certified V109 source and its 12 unchanged test files remain private while V110 imports stay current (3900.296279ms)
+✔ tampering with private V109 source is rejected without changing the current Homeworld (1939.469677ms)
+✖ the V110 wrapper executes unchanged V109 publication assertions and refuses unreviewed tests (1166.373263ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7158.281435
+
+✖ failing tests:
+
+test at tests/excel-history-v110.test.mjs:33:1
+✖ the V110 wrapper executes unchanged V109 publication assertions and refuses unreviewed tests (1166.373263ms)
+  Error: Original V109 assertions failed:
+  TAP version 13
+  # Subtest: publication rejects exploratory modes, console errors, changed sources, wrong builds and incomplete inspection
+  ok 1 - publication rejects exploratory modes, console errors, changed sources, wrong builds and incomplete inspection
+    ---
+    duration_ms: 25.134056
+    type: 'test'
+    ...
+  # Subtest: served HTML evidence retains its actual SHA and refuses missing or contradictory identity
+  ok 2 - served HTML evidence retains its actual SHA and refuses missing or contradictory identity
+    ---
+    duration_ms: 1.033455
+    type: 'test'
+    ...
+  # Subtest: current runtime inventory contains all native deliveries, four source-only references and every real receipt
+  not ok 3 - current runtime inventory contains all native deliveries, four source-only references and every real receipt
+    ---
+    duration_ms: 976.374394
+    type: 'test'
+    location: '/tmp/yautja-excel-history-v109-SZdKHW/tests/production-publication-v109.test.mjs:32:1'
+    failureType: 'testCodeFailure'
+    error: 'Native review packages contain JSON documents only'
+    code: 'ERR_ASSERTION'
+    name: 'AssertionError'
+    expected: true
+    actual: 0
+    operator: '=='
+    stack: |-
+      snapshotRuntimeV109 (file:///tmp/yautja-excel-history-v109-SZdKHW/scripts/snapshot-runtime-v109.mjs:33:53)
+      async TestContext.<anonymous> (file:///tmp/yautja-excel-history-v109-SZdKHW/tests/production-publication-v109.test.mjs:38:27)
+      async Test.run (node:internal/test_runner/test:1054:7)
+      async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+    ...
+  1..3
+  # tests 3
+  # suites 0
+  # pass 2
+  # fail 1
+  # cancelled 0
+  # skipped 0
+  # todo 0
+  # duration_ms 1114.537834
+  
+      at runTests (file:///workspace/yautja-homeworld-v110/scripts/lib/historical-excel-context.mjs:85:26)
+      at async TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/excel-history-v110.test.mjs:34:18)
+      at async Test.run (node:internal/test_runner/test:1054:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7) {
+    [cause]: Error: Command failed: /workspace/.cloud-tools/node22/node_modules/node/bin/node --experimental-strip-types --test --test-reporter=tap --test-concurrency=1 tests/production-publication-v109.test.mjs
+        at genericNodeError (node:internal/errors:983:15)
+        at wrappedFn (node:internal/errors:537:14)
+        at checkExecSyncError (node:child_process:916:11)
+        at execFileSync (node:child_process:952:15)
+        at runTests (file:///workspace/yautja-homeworld-v110/scripts/lib/historical-excel-context.mjs:84:19)
+        at async TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/excel-history-v110.test.mjs:34:18)
+        at async Test.run (node:internal/test_runner/test:1054:7)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:744:7) {
+      status: 1,
+      signal: null,
+      output: [ null, "TAP version 13\n# Subtest: publication rejects exploratory modes, console errors, changed sources, wrong builds and incomplete inspection\nok 1 - publication rejects exploratory modes, console errors, changed sources, wrong builds and incomplete inspection\n  ---\n  duration_ms: 25.134056\n  type: 'test'\n  ...\n# Subtest: served HTML evidence retains its actual SHA and refuses missing or contradictory identity\nok 2 - served HTML evidence retains its actual SHA and refuses missing or contradictory identity\n  ---\n  duration_ms: 1.033455\n  type: 'test'\n  ...\n# Subtest: current runtime inventory contains all native deliveries, four source-only references and every real receipt\nnot ok 3 - current runtime inventory contains all native deliveries, four source-only references and every real receipt\n  ---\n  duration_ms: 976.374394\n  type: 'test'\n  location: '/tmp/yautja-excel-history-v109-SZdKHW/tests/production-publication-v109.test.mjs:32:1'\n  failureType: 'testCodeFailure'\n  error: 'Native review packages contain JSON documents only'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: 0\n  operator: '=='\n  stack: |-\n    snapshotRuntimeV109 (file:///tmp/yautja-excel-history-v109-SZdKHW/scripts/snapshot-runtime-v109.mjs:33:53)\n    async TestContext.<anonymous> (file:///tmp/yautja-excel-history-v109-SZdKHW/tests/production-publication-v109.test.mjs:38:27)\n    async Test.run (node:internal/test_runner/test:1054:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ...\n1..3\n# tests 3\n# suites 0\n# pass 2\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 1114.537834\n", '' ],
+      pid: 833030,
+      stdout: "TAP version 13\n# Subtest: publication rejects exploratory modes, console errors, changed sources, wrong builds and incomplete inspection\nok 1 - publication rejects exploratory modes, console errors, changed sources, wrong builds and incomplete inspection\n  ---\n  duration_ms: 25.134056\n  type: 'test'\n  ...\n# Subtest: served HTML evidence retains its actual SHA and refuses missing or contradictory identity\nok 2 - served HTML evidence retains its actual SHA and refuses missing or contradictory identity\n  ---\n  duration_ms: 1.033455\n  type: 'test'\n  ...\n# Subtest: current runtime inventory contains all native deliveries, four source-only references and every real receipt\nnot ok 3 - current runtime inventory contains all native deliveries, four source-only references and every real receipt\n  ---\n  duration_ms: 976.374394\n  type: 'test'\n  location: '/tmp/yautja-excel-history-v109-SZdKHW/tests/production-publication-v109.test.mjs:32:1'\n  failureType: 'testCodeFailure'\n  error: 'Native review packages contain JSON documents only'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: 0\n  operator: '=='\n  stack: |-\n    snapshotRuntimeV109 (file:///tmp/yautja-excel-history-v109-SZdKHW/scripts/snapshot-runtime-v109.mjs:33:53)\n    async TestContext.<anonymous> (file:///tmp/yautja-excel-history-v109-SZdKHW/tests/production-publication-v109.test.mjs:38:27)\n    async Test.run (node:internal/test_runner/test:1054:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ...\n1..3\n# tests 3\n# suites 0\n# pass 2\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 1114.537834\n",
+      stderr: ''
+    }
+  }

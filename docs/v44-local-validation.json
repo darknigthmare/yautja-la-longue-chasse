@@ -1,0 +1,46 @@
+{
+  "version": "V44",
+  "checkedAt": "2026-09-23T04:04:55.942780+00:00",
+  "scope": "Supplied hunters in THE PIT with grouped static variants",
+  "roster": {
+    "selectableIdentities": 195,
+    "suppliedIdentityGroups": 193,
+    "newIdentityGroups": 177,
+    "suppliedStaticVariants": 410,
+    "sourceLabelledGroups": 150,
+    "descriptiveUnconfirmedGroups": 43,
+    "arenasUnchanged": 136
+  },
+  "validation": {
+    "tests": {
+      "passed": 1444,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 142923.6294,
+      "log": "work/v44/tests-release.tap"
+    },
+    "typecheck": "pass",
+    "lint": {
+      "errors": 0,
+      "warnings": 1,
+      "existingWarning": "ClanChroniclePanel.tsx:40 next/no-img-element"
+    },
+    "compiledBuild": "pass",
+    "originalPngSha256Verified": 410,
+    "browser": {
+      "userRoster": "docs/v44-user-roster-compiled-qa.json",
+      "selectionRegression": "docs/v44-selection-compiled-qa.json",
+      "pageErrors": 0,
+      "httpErrors": 0
+    }
+  },
+  "limits": [
+    "Supplied variants are static poses, not complete animation sheets.",
+    "177 new identities use a shared balanced duel profile, not individually authored combat moves.",
+    "New identities and bosses enter CPU/local/training only; no fabricated chronicle progression.",
+    "Full canonical likeness and per-finger anatomy are not certified.",
+    "Physical controllers and a new Windows executable were not certified.",
+    "New animations, personal chronicles and further Homeworld content remain separate work."
+  ],
+  "publication": "Recorded separately after Git/Vercel readiness and live browser verification."
+}

@@ -1,0 +1,90 @@
+name: Clan field props — individual sprites and controls
+on:
+  push:
+    branches: [main, feat/clan-war-field-sprites-20261103]
+    paths:
+      - '.github/workflows/clan-field-sprites-20261103.yml'
+      - 'app/game/**'
+      - 'tests/clan-field-pack-20261103.test.mjs'
+      - 'tests/browser/clan-field-20261103.fixture.tsx'
+      - 'scripts/qa-clan-field-20261103.mjs'
+      - 'public/game/assets/clan-field-20261103/**'
+      - 'tsconfig.clan-field-20261103.json'
+      - 'package*.json'
+  pull_request:
+    paths:
+      - '.github/workflows/clan-field-sprites-20261103.yml'
+      - 'app/game/**'
+      - 'tests/clan-field-pack-20261103.test.mjs'
+      - 'tests/browser/clan-field-20261103.fixture.tsx'
+      - 'scripts/qa-clan-field-20261103.mjs'
+      - 'public/game/assets/clan-field-20261103/**'
+      - 'tsconfig.clan-field-20261103.json'
+      - 'package*.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-committed-pack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig*.json
+            /eslint.config.mjs
+            /app/game/
+            /types/
+            /lib/
+            /tests/
+            /scripts/build-clan-field-pack.mjs
+            /scripts/apply-clan-field-ui.mjs
+            /scripts/qa-clan-war-v115-multitab-v151.mjs
+            /scripts/qa-clan-field-20261103.mjs
+            /public/game/assets/v15/trophies/manifest.json
+            /public/game/assets/clan-field-20261103/
+            /docs/clan-war-field-pack/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Asset, controls and source-engine regressions
+        run: |
+          node --experimental-strip-types --test --test-concurrency=1 \
+            tests/clan-field-pack-20261103.test.mjs \
+            tests/clan-war-v115-multitab-v151.test.mjs \
+            tests/clan-war-operations-v115.test.mjs \
+            tests/clan-war-stealth-last-contact.test.mjs \
+            tests/clan-war-outer-pace-reconcile.test.mjs \
+            tests/clan-war-council-v146.test.mjs \
+            tests/clan-war-source-consolidation-v147.test.mjs
+      - name: Check committed interfaces
+        run: npx --no-install tsc --noEmit -p tsconfig.clan-field-20261103.json
+      - name: Lint changed source and generation scripts
+        run: npx --no-install eslint app/game/ClanWarOperationsV115.tsx app/game/ClanWarRtsSquadsV133.tsx app/game/ClanWarFieldSprite.tsx app/game/systems/clanWarFieldControls.ts scripts/build-clan-field-pack.mjs scripts/apply-clan-field-ui.mjs scripts/qa-clan-field-20261103.mjs tests/browser/clan-field-20261103.fixture.tsx tests/clan-field-pack-20261103.test.mjs
+      - name: Install Chromium
+        run: npx --no-install playwright-core install --with-deps chromium
+      - name: Exercise keyboard, actual zoom and two-tab save locks
+        run: |
+          export AUDIT_CHROME_EXECUTABLE="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-clan-field-20261103.mjs
+          node scripts/qa-clan-war-v115-multitab-v151.mjs
+      - name: Ensure verification left committed source and assets unchanged
+        run: git diff --exit-code -- app/game public/game/assets/clan-field-20261103
+      - name: Preserve committed pack and browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clan-field-12-original-props-and-qa
+          path: |
+            public/game/assets/clan-field-20261103/
+            outputs/clan-field-20261103/
+            outputs/clan-war-v115-multitab-v151/
+          retention-days: 30
+          if-no-files-found: warn

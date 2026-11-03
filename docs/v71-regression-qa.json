@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-02T01:30:38.4186144Z",
+  "completeRegression": {
+    "command": "node --experimental-strip-types --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts",
+    "tests": 2375,
+    "passed": 2375,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 447855.6735,
+    "log": "work-local/v71/regression-final-complete.log",
+    "temporaryFilesystem": "workspace NTFS"
+  },
+  "targeted": {"passed": 69, "failed": 0, "log": "work-local/v71/new-features-final-tests.log", "scope": "Cloud archive/controller/REST/gamepad, native outskirts, nursery victory, existing real menu hook"},
+  "builds": {"portableVinextExitCode": 0, "nextWebpackExitCode": 0, "completedAt": "2026-10-02T01:26:01.2039259Z", "log": "work-local/v71/build-exit.json"},
+  "typecheck": {"exitCode": 0, "log": "work-local/v71/typecheck-final.log"},
+  "lint": {"exitCode": 0, "errors": 0, "preexistingWarnings": 3, "log": "work-local/v71/lint-final.log"},
+  "pitCompiledCss": {"exitCode": 0, "log": "work-local/v71/pit-css-final.log"},
+  "gitDiffWhitespace": "PASS",
+  "diagnosticsPreserved": [
+    "First regression: 2366/2368; an isolated Chrome launch terminated and the SSR menu expectation lacked the new account entry. Accessibility rerun passed; menu expectation now preserves protected game actions and permits account access.",
+    "Second regression: 2369/2370; the old navigation test fake root lacked closest after inert isolation was added. Its DOM fixture was completed; no runtime guard was weakened.",
+    "Final regression includes five additional real-controller cases for a first game created after login; all 2375 pass with no exclusions.",
+    "A typecheck attempted while generated Next route types were being replaced failed on those intermediate generated files. The final standalone typecheck and Next integrated TypeScript both pass after compilation."
+  ],
+  "limits": "Automated suite and compilation are distinct from browser capture review, real Auth email/login and public deployment. See separate local and backend reports; no complete-game or canonical-map claim."
+}

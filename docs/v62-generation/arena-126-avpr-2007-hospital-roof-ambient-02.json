@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-126-avpr-2007-hospital-roof",
+  "id": "ambient-02",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-e3b8d8e9-cddb-4635-8d08-d4a020591202.png",
+  "workspacePath": "work-local/v62/generated/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+  "sha256": "dd7dda09f47359761670ad87d4e93bba2593c521cc4cfacb3b726f5c35da8209",
+  "bytes": 1654091,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.7911408742268881,
+  "copyByteIdentical": true,
+  "prompt": "Use case: stylized-concept. Asset type: production native 2D fighting-game background animation sprite sheet. Output exactly 1536x1024 PNG with genuinely transparent background. EXACTLY six independently drawn animation frames in a perfectly regular 3 columns by 2 rows grid: each cell 512x512. No visible grid, no cell outlines, no labels, no text, no checkerboard painting. Each drawing must fit completely inside its own cell with at least 48 pixels of transparent gutter on every side; nothing crosses a cell boundary. The same subject with the same scale, proportions, color and orthographic side camera in all six cells. Hand-painted realistic production game art, crisp isolated alpha silhouette, realistic anatomy/materials, subdued cool blue night or steel light, not cartoon. Transparent outside the isolated subject, including negative spaces. Do not draw a scene, a floor, backdrop, shadow card or border. Six actual different poses, never six identical pasted copies. Read chronological order left-to-right top row then left-to-right bottom row. Subject: a small original anonymous early-2000s civilian medical utility helicopter seen in exact side profile, nose facing right. Ordinary enclosed cockpit, one main rotor, one tail rotor, landing skids, neutral dark graphite body, tiny desaturated red identification light, no logos or lettering or missiles or guns. Six animation poses of the same stationary hovering aircraft: main rotor and tail rotor distinct angular blade positions, extremely small landing-skid tilt changes only. All six helicopter bodies retain exactly the same fuselage, size and centered placement. Entire rotor and tail fully inside each cell with generous margins. No painted blur disks, contrails or spotlight beam. This is an original anonymous distant evacuation helicopter adaptation, not a certified film aircraft reproduction.",
+  "referencedImagePaths": [],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E63"
+  ],
+  "loreLimits": [
+    "Original anonymous background adaptation, not certified 1:1.",
+    "The separate workbook chapter variant remains open."
+  ],
+  "rejectedAttempts": [],
+  "visualNotes": "Six rotor/tail phases with stable fuselage and skids; civilian anonymous adaptation, not exact film aircraft.",
+  "status": "visually-accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        28,
+        191,
+        478,
+        223
+      ],
+      "pivot": [
+        270,
+        414
+      ],
+      "margins": [
+        28,
+        191,
+        6,
+        98
+      ],
+      "opaquePixelCount": 53933,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "30bc3b48a30d0090f4326eae910ab10deff7a3e9680a9fe06010967542de9051"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        18,
+        148,
+        466,
+        266
+      ],
+      "pivot": [
+        258,
+        414
+      ],
+      "margins": [
+        18,
+        148,
+        28,
+        98
+      ],
+      "opaquePixelCount": 54218,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "d839345d6f8d24bbcd6aed9c44699b6260646b3edffdfec6b9735000c0fcfe32"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        16,
+        140,
+        483,
+        275
+      ],
+      "pivot": [
+        259,
+        415
+      ],
+      "margins": [
+        16,
+        140,
+        13,
+        97
+      ],
+      "opaquePixelCount": 54944,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "952d3239bd19a4d54ca27c29c2c3fdf7b4193d80a7df91e75def7259168622ba"
+    },
+    {
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        17,
+        109,
+        478,
+        273
+      ],
+      "pivot": [
+        256,
+        382
+      ],
+      "margins": [
+        17,
+        109,
+        17,
+        130
+      ],
+      "opaquePixelCount": 56413,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "d3ea21755ebb64914ab1e3cff5398b7560369ec36ea800d3ffd67bb6734b8aba"
+    },
+    {
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        20,
+        158,
+        477,
+        224
+      ],
+      "pivot": [
+        258,
+        382
+      ],
+      "margins": [
+        20,
+        158,
+        15,
+        130
+      ],
+      "opaquePixelCount": 54367,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "68b7c69e3749ee67d331d9c30738ce41bffa44bbb965d36c005bfe18b580cd54"
+    },
+    {
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        15,
+        112,
+        474,
+        273
+      ],
+      "pivot": [
+        255,
+        385
+      ],
+      "margins": [
+        15,
+        112,
+        23,
+        127
+      ],
+      "opaquePixelCount": 54632,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "146eaccc4588f728586ea77047c4366eb1f5a197b7b9c25657da8f96cb947ae5"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+TAP version 13
+# Subtest: V111 preserves its exact 105 sheet baseline, 56 open requirements and 354 art targets as separate inventories
+ok 1 - V111 preserves its exact 105 sheet baseline, 56 open requirements and 354 art targets as separate inventories
+  ---
+  duration_ms: 6826.433678
+  type: 'test'
+  ...
+# Subtest: unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+ok 2 - unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+  ---
+  duration_ms: 14.427408
+  type: 'test'
+  ...
+Traceback (most recent call last):
+  File "/workspace/yautja-homeworld-v110/scripts/build-homeworld-followup-v111.py", line 25, in <module>
+    json.dump(append.verify_workbook(payload), sys.stdout, ensure_ascii=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/yautja-homeworld-v110/scripts/lib/excel_followup_append.py", line 105, in verify_workbook
+    assert set(changed) <= ASSEMBLY_PARTS, changed
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ['[Content_Types].xml', 'xl/_rels/workbook.xml.rels', 'xl/styles.xml', 'xl/workbook.xml', 'xl/worksheets/v110-sheet-98.xml']
+# Subtest: 113 worksheets retain all 105 historical parts, styles, formulas and cells exactly
+ok 3 - 113 worksheets retain all 105 historical parts, styles, formulas and cells exactly
+  ---
+  duration_ms: 7923.424169
+  type: 'test'
+  ...
+# Subtest: a V110 browser recipe cannot be relabelled as V111 validation
+ok 4 - a V110 browser recipe cannot be relabelled as V111 validation
+  ---
+  duration_ms: 8.542923
+  type: 'test'
+  ...
+# Subtest: V111 workbook and metadata regenerate exactly without executing browser or native Excel
+ok 5 - V111 workbook and metadata regenerate exactly without executing browser or native Excel
+  ---
+  duration_ms: 14275.547933
+  type: 'test'
+  ...
+# Subtest: historical art fallback binds the audited bytes to the current regular Git blob, while sparse identity is not visual admission
+ok 6 - historical art fallback binds the audited bytes to the current regular Git blob, while sparse identity is not visual admission
+  ---
+  duration_ms: 4.805735
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 29069.461364

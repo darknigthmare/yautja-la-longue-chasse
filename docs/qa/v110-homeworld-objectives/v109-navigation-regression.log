@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: V109 routes around the real initial cargo hulls and every waypoint is traversed by the unchanged native motor
+ok 1 - V109 routes around the real initial cargo hulls and every waypoint is traversed by the unchanged native motor
+  ---
+  duration_ms: 207.478132
+  type: 'test'
+  ...
+# Subtest: V109 a genuinely carried then parked lot changes the cached route while ordinary carried walking does not change ground geometry
+ok 2 - V109 a genuinely carried then parked lot changes the cached route while ordinary carried walking does not change ground geometry
+  ---
+  duration_ms: 202.12741
+  type: 'test'
+  ...
+# Subtest: V109 guidance follows a real parked-load detour and stops offering an old route after the ground changes
+ok 3 - V109 guidance follows a real parked-load detour and stops offering an old route after the ground changes
+  ---
+  duration_ms: 574.441317
+  type: 'test'
+  ...
+# Subtest: V109 worker result admission rejects changed lots, changed target, slot, floor, room and a far moved origin
+ok 4 - V109 worker result admission rejects changed lots, changed target, slot, floor, room and a far moved origin
+  ---
+  duration_ms: 49.418832
+  type: 'test'
+  ...
+# Subtest: V109 current lot landmarks preserve observed placements and hide their positions before the port is visited
+ok 5 - V109 current lot landmarks preserve observed placements and hide their positions before the port is visited
+  ---
+  duration_ms: 44.030512
+  type: 'test'
+  ...
+# Subtest: V109 a physically moved K-17 object invalidates its destination even when cargo geometry is unchanged
+ok 6 - V109 a physically moved K-17 object invalidates its destination even when cargo geometry is unchanged
+  ---
+  duration_ms: 1267.947551
+  type: 'test'
+  ...
+# Subtest: V109 a parked K-17 study guides back to its exact preserved point and remains walking between three and five units
+ok 7 - V109 a parked K-17 study guides back to its exact preserved point and remains walking between three and five units
+  ---
+  duration_ms: 1201.395118
+  type: 'test'
+  ...
+# Subtest: V109 keeps actual multi-floor connectors and interior endpoints with all exterior cargo edges checked
+ok 8 - V109 keeps actual multi-floor connectors and interior endpoints with all exterior cargo edges checked
+  ---
+  duration_ms: 3990.066834
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7551.92323

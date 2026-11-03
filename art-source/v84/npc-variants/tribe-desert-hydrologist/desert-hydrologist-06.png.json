@@ -1,0 +1,40 @@
+{
+  "id": "06",
+  "name": "Sondeur de profondeur",
+  "description": "Very tall slender adult Yautja, long arms, narrow copper-speckled head, two diagonal ash marks across the brow, many fine black dreadlocks with sparse bronze bands. Beige poncho-like short shoulder drape over knee-length split tunic, angular bronze greaves. Holds a hand spool with a thin coiled measuring line and a small bronze weighted probe hanging only to knee level, safely inside sprite bounds; pouch of water-testing ampoules. One foot ahead, looking right.",
+  "prompt": "Use case: stylized-concept. Asset type: one production-ready transparent 2D NPC sprite for the game Yautja: La Longue Chasse. Generate exactly ONE distinct adult Yautja HYDROLOGIST of the desert tribe 'Peuple des Citernes', full body including feet, all held equipment and dreadlocks, generous clear margin on all sides. Image 1 is reference only for desert tribal identity: practical sand-worn beige fabrics, dark leather straps, weathered bronze cistern engineering fittings and restrained turquoise-blue glass water containers. Image 2 is reference only for cinematic realistically hand-painted 2D game rendering, anatomical proportions, readable idle pose, camera looking slightly down, three-quarter view FACING RIGHT. Do not reproduce the multiple-figure atlas. This is one new individual, not the reference person with a recolour. Maintain unmistakable Predator/Yautja adult anatomy: ridged alien cranium, four mandibular jaws unless concealed by described work mask, long tendril dreadlocks, clawed hands, digitigrade-looking clawed alien feet. Practical water systems specialist, no combat action. Delicate texture, crisp readable silhouette, internally consistent soft overhead-left lighting, no colored rim glow. Actual transparent alpha background, no backdrop, no landscape, no ground plane or platform, no ground contact shadow, no text, no labels, no symbols pretending to be letters, no watermark, no border, no collage. One character only. Neither head, foot nor tool may be cropped.\nIndividual design: Very tall slender adult Yautja, long arms, narrow copper-speckled head, two diagonal ash marks across the brow, many fine black dreadlocks with sparse bronze bands. Beige poncho-like short shoulder drape over knee-length split tunic, angular bronze greaves. Holds a hand spool with a thin coiled measuring line and a small bronze weighted probe hanging only to knee level, safely inside sprite bounds; pouch of water-testing ampoules. One foot ahead, looking right.\nFraming priority: at least 6% truly empty transparent margin above head and below both feet. Show a NEW face, clearly different clothing tailoring and body silhouette from previous hydrologists.",
+  "status": "generated",
+  "file": "desert-hydrologist-06.png",
+  "source_path": "/workspace/scratch/41fc0564188e/generated_images/exec-c1b20463-9e90-4e2c-9544-230cf3048461.png",
+  "validation": {
+    "size": [
+      1024,
+      1536
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_pixels": 963213,
+    "pixel_count": 1572864,
+    "sha256": "71ae681cef0cbdfc180956dce107ce7d7d156d63ca5978cf582b5b31f808e9f2"
+  },
+  "revisions": [
+    {
+      "file": "/workspace/scratch/41fc0564188e/npc-generation-revisions/desert-hydrologist/desert-hydrologist-06-1024858223dc.png",
+      "sha256": "1024858223dc62b57d95c626180e445d9f493298f0eafa723cc1d0bda8bb3c22",
+      "githubBlobSha": null,
+      "reason": "Exposed head had simplified noncinematic mandibular anatomy"
+    }
+  ],
+  "revisionKind": "official-yautja-face-anatomy",
+  "revisionPrompt": "Edit IMAGE1, the complete original Yautja game sprite, with only a targeted correction of the uncovered FACE and its mandibular anatomy. IMAGE2 is the official 1987 Predator mechanical head photograph, used solely as exact facial anatomical reference.\nPRESERVE the same full-body adult NPC identity: body height and build, every piece of clothing, fabric colors, armor, tools, harness, held objects, hands, feet, thick biological scalp tendrils, pose, lighting, and overall game rendering style. Lock everything from neck downward. Keep the entire original character and all held equipment visible inside transparent margins. Do not zoom in, crop, add scenery, ground, shadow, text, watermark, or a second person. Real alpha transparent background.\nCorrect the exposed head to ultra-faithful cinematic Yautja anatomy seen in image2: broad alien cranial dome and heavy orbital folds, small recessed alien eyes, reptilian granular mottled hide. No human nose bridge, no human lips, no human chin, no two nasal tubes. EXACTLY FOUR distinct EXTERNAL FLESHY MANDIBLE LOBES around a separate INNER TOOTHED MOUTH: two UPPER CHEEK lobes each ending in a short inward/downward tusk, plus two large LOWER fleshy jaw lobes each ending in a long tusk curving UPWARDS. Their fleshy bases must visibly belong to four separate jaw appendages. Do not replace these with two smooth hanging tubes or two ordinary cheek fangs. Relaxed slightly parted four jaws, neutral attentive NPC expression, enough face turned three-quarter toward viewer that ALL FOUR external mandibles can be read. Keep the original person's cranial proportions, skin color, distinguishing spots/scars and tendril arrangement as much as the anatomical fix permits. Biological thick dreadlock tendrils, not human hair.\nThe intended result is the same original full-body character after a precise facial-anatomy correction, retaining all non-face design details. Do not copy the photo background, clothes, logos or watermark.",
+  "githubBlobSha": "f8f8164d8e4213ee0d9569c0072ec3064a3e3c27",
+  "faceReview": {
+    "status": "approved",
+    "face": "visible-four-mandibles",
+    "sha256": "71ae681cef0cbdfc180956dce107ce7d7d156d63ca5978cf582b5b31f808e9f2",
+    "review": "Complete generated PNG visually inspected against official 1987 reference."
+  }
+}

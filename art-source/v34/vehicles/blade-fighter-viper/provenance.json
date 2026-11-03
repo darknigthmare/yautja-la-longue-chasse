@@ -1,0 +1,517 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "blade-fighter-viper",
+  "name": "Blade Fighter Viper",
+  "lore": "Adaptation du Blade Fighter NECA moderne (2014), que le fabricant associe à Viper. Ce nom de variante appartient au catalogue du jeu ; il ne prouve pas un modèle cinématographique ni un châssis exclusif à Viper.",
+  "assets": [
+    {
+      "id": "neca2014-identity-r1",
+      "actionId": "identity",
+      "label": "Blade Fighter Viper — identité NECA 2014",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-viper/neca2014-identity-r1.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-viper/neca2014-identity-r1.png",
+      "originId": "exec-596a96c1-d093-46ff-b497-8bc1189d0493.png",
+      "width": 1526,
+      "height": 1030,
+      "sha256": "9fdf0a63d18d32c3ff078431a3ec0524f74ef13387f621324749f95030af9cf5",
+      "bytes": 1778314,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1571780
+      },
+      "prompt": "Use the supplied official NECA Blade Fighter modern 2014 SIDE PROFILE photograph as the exact design reference. Preserve the compact wide dark chassis, swept metallic warm bronze side wings, black dorsal fin with red stripe and subtle blue lightning paint pattern, twin cylindrical blue-black/red front engine pods, pointed bronze canopy nose with black teardrop insets, ribbed dark rear hardware, and the exceptionally LONG thin forward-pointing pair of openwork dark steel scimitar blades on a red under-nose attachment. Vehicle nose and long blades are toward the RIGHT in the reference. Preserve the ratio: extended blade region is nearly as long as the main vehicle body. Do not reinterpret it as a motorcycle or add handlebars, wheels, dragons or skulls. REMOVE the Predator pilot entirely: empty pilot cavity, no hands/legs/face or anatomy embedded. Draw a clean original painted GAME BITMAP adaptation, NOT a cutout photograph or reference page. Orthographic 2D side elevation with just enough visible width to distinguish the paired blade rails and side wing. Exactly TWO complete profiles stacked vertically: TOP faces RIGHT, BOTTOM faces LEFT. Same scale and baseline within their equal halves; conserve asymmetrical hardware correctly in the independently drawn opposite side. Every blade tip and rear projection remains within wide 10-percent empty margins. The aircraft has its canopy closed with no pilot. Pure flat MAGENTA #FF00FF background, no shadow, ground, smoke, text, packaging, logo or watermark. Do not copy the words Figure not included.",
+      "references": [
+        {
+          "path": "work/v34/primary-reference-review/Blade-Fighter3-1300x.jpg",
+          "sha256": "7ba71613851870219f5a3b99f06e91f065de084b35b596b481bc797076fd6e03"
+        },
+        {
+          "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predator-blade-fighter-vehicle-and-packaging",
+          "role": "Primary manufacturer photographs and product features inspected"
+        },
+        {
+          "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12",
+          "role": "Manufacturer confirms Viper uses the Blade Fighter"
+        }
+      ],
+      "notes": [
+        "Adaptation du produit sous licence NECA ; ce n’est pas une nouvelle preuve de canon cinématographique.",
+        "Le pilote est retiré des sprites véhicule. Fidélité des détails cachés et animation encore en revue.",
+        "Éléments orange et volumes du cockpit ambigus après retrait du pilote ; remplacé par r2, siège vide et attaches nettoyées."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1526,
+            515
+          ],
+          "alpha16Bounds": [
+            54,
+            56,
+            1422,
+            421
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 233748,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            515,
+            1526,
+            515
+          ],
+          "alpha16Bounds": [
+            49,
+            548,
+            1427,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 235250,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "neca2014-chassis-r1",
+      "actionId": "chassis",
+      "label": "Blade Fighter Viper — châssis sans lames",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-viper/neca2014-chassis-r1.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-viper/neca2014-chassis-r1.png",
+      "originId": "exec-8b5cee46-2780-40d6-b6b7-bc120062476b.png",
+      "width": 1527,
+      "height": 1030,
+      "sha256": "6a304d7bfad73d8e576dc8b3ca5735e30a26884e1fe794727cb572622ef65414",
+      "bytes": 1722478,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572810
+      },
+      "prompt": "Use the supplied official NECA Blade Fighter modern 2014 SIDE PROFILE photograph as the exact design reference. Preserve the compact wide dark chassis, swept metallic warm bronze side wings, black dorsal fin with red stripe and subtle blue lightning paint pattern, twin cylindrical blue-black/red front engine pods, pointed bronze canopy nose with black teardrop insets, ribbed dark rear hardware, and the exceptionally LONG thin forward-pointing pair of openwork dark steel scimitar blades on a red under-nose attachment. Vehicle nose and long blades are toward the RIGHT in the reference. Preserve the ratio: extended blade region is nearly as long as the main vehicle body. Do not reinterpret it as a motorcycle or add handlebars, wheels, dragons or skulls. REMOVE the Predator pilot entirely: empty pilot cavity, no hands/legs/face or anatomy embedded. Draw a clean original painted GAME BITMAP adaptation, NOT a cutout photograph or reference page. Orthographic 2D side elevation with just enough visible width to distinguish the paired blade rails and side wing. For MODULAR assembly show ONLY the main vehicle chassis and fixed wings/engine pods, with the entire long forward openwork scimitar blade assembly DETACHED AND ABSENT. Show the red front coupling socket cleanly where the blades would attach, no broken metal. No detached blade elsewhere on the sheet. Exactly TWO complete main-body side elevations stacked vertically, TOP facing RIGHT, BOTTOM facing LEFT, same scale. Canopy closed, empty pilot cavity. Preserve the source proportions of this compact body, do not stretch it to compensate for missing blades. Pure magenta #FF00FF background, large clear margins, no text, watermark, rider, ground or shadows.",
+      "references": [
+        {
+          "path": "work/v34/primary-reference-review/Blade-Fighter3-1300x.jpg",
+          "sha256": "7ba71613851870219f5a3b99f06e91f065de084b35b596b481bc797076fd6e03"
+        },
+        {
+          "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predator-blade-fighter-vehicle-and-packaging",
+          "role": "Primary manufacturer photographs and product features inspected"
+        },
+        {
+          "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12",
+          "role": "Manufacturer confirms Viper uses the Blade Fighter"
+        }
+      ],
+      "notes": [
+        "Adaptation du produit sous licence NECA ; ce n’est pas une nouvelle preuve de canon cinématographique.",
+        "Le pilote est retiré des sprites véhicule. Fidélité des détails cachés et animation encore en revue.",
+        "Éléments orange et volumes du cockpit ambigus après retrait du pilote ; remplacé par r2, siège vide et attaches nettoyées."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "chassis",
+          "reviewGridRect": [
+            0,
+            0,
+            1527,
+            515
+          ],
+          "alpha16Bounds": [
+            172,
+            43,
+            861,
+            462
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 238439,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "chassis",
+          "reviewGridRect": [
+            0,
+            515,
+            1527,
+            515
+          ],
+          "alpha16Bounds": [
+            495,
+            521,
+            860,
+            460
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 238076,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "neca2014-blade-module-r1",
+      "actionId": "blade-module",
+      "label": "Blade Fighter Viper — lames détachables",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-viper/neca2014-blade-module-r1.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-viper/neca2014-blade-module-r1.png",
+      "originId": "exec-2a2cfc88-d412-455a-ad55-7e2a3c18d07d.png",
+      "width": 1527,
+      "height": 1030,
+      "sha256": "aef0ce5bfa1575fe9dca953cfe7241d28113c239dd98464d8d2b9c7acbf091a0",
+      "bytes": 1490496,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572810
+      },
+      "prompt": "Use the supplied official NECA Blade Fighter modern 2014 SIDE PROFILE photograph as the exact design reference. Preserve the compact wide dark chassis, swept metallic warm bronze side wings, black dorsal fin with red stripe and subtle blue lightning paint pattern, twin cylindrical blue-black/red front engine pods, pointed bronze canopy nose with black teardrop insets, ribbed dark rear hardware, and the exceptionally LONG thin forward-pointing pair of openwork dark steel scimitar blades on a red under-nose attachment. Vehicle nose and long blades are toward the RIGHT in the reference. Preserve the ratio: extended blade region is nearly as long as the main vehicle body. Do not reinterpret it as a motorcycle or add handlebars, wheels, dragons or skulls. REMOVE the Predator pilot entirely: empty pilot cavity, no hands/legs/face or anatomy embedded. Draw a clean original painted GAME BITMAP adaptation, NOT a cutout photograph or reference page. Orthographic 2D side elevation with just enough visible width to distinguish the paired blade rails and side wing. Now show ONLY the entire LONG FORWARD DETACHABLE BLADE MODULE: the pair of thin dark steel openwork scimitar blades and small red aft coupling base. NO vehicle body, wings, fins, cockpit, guns, engines or pilot. Exactly TWO module profiles stacked vertically, TOP blade points RIGHT, BOTTOM blade points LEFT, equal size. Preserve large smooth open cutouts and long narrow spear-like tips from the official reference, correct physical paired rails converging to one red rear coupling. Blade interior cutouts must show pure background, not panels. Wide blank margins, flat MAGENTA #FF00FF backdrop, no shadow, text, logo or watermark. Detailed faithful game bitmap component.",
+      "references": [
+        {
+          "path": "work/v34/primary-reference-review/Blade-Fighter3-1300x.jpg",
+          "sha256": "7ba71613851870219f5a3b99f06e91f065de084b35b596b481bc797076fd6e03"
+        },
+        {
+          "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predator-blade-fighter-vehicle-and-packaging",
+          "role": "Primary manufacturer photographs and product features inspected"
+        },
+        {
+          "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12",
+          "role": "Manufacturer confirms Viper uses the Blade Fighter"
+        }
+      ],
+      "notes": [
+        "Adaptation du produit sous licence NECA ; ce n’est pas une nouvelle preuve de canon cinématographique.",
+        "Le pilote est retiré des sprites véhicule. Fidélité des détails cachés et animation encore en revue."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "blade-module",
+          "reviewGridRect": [
+            0,
+            0,
+            1527,
+            515
+          ],
+          "alpha16Bounds": [
+            70,
+            203,
+            1394,
+            235
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 163493,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "blade-module",
+          "reviewGridRect": [
+            0,
+            515,
+            1527,
+            515
+          ],
+          "alpha16Bounds": [
+            67,
+            575,
+            1387,
+            235
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 163966,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "neca2014-identity-r2",
+      "actionId": "identity",
+      "label": "Blade Fighter Viper — identité NECA 2014",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-viper/neca2014-identity-r2.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-viper/neca2014-identity-r2.png",
+      "originId": "exec-f98faa40-19d6-4db7-a72e-75629411836d.png",
+      "width": 1526,
+      "height": 1030,
+      "sha256": "fa3a0a4c979d1a9f0a1f99fd9af8a469c9e1a9ef2414231ed794739f24999f5e",
+      "bytes": 1730438,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1571780
+      },
+      "prompt": "Edit ONLY the FIRST of the THREE supplied images: the two-view COMPLETE Blade Fighter sheet with long forward blades. Do not output the other sheets. Change only ambiguous rider-remnant areas: remove BOTH small orange head/foot-shaped objects protruding above the bronze side wing near its rear, leaving a clean empty metal storage clip there. Ensure the cockpit is an unmistakably EMPTY upholstered bucket seat with clean legroom: remove any diagonal thigh/boot/arm-like lump inside it and expose the plain dark seat pan. No humanoid fingers, toes, face, limbs or armour fragments anywhere. Preserve every fixed wing, engine pod, canopy, dorsal fin, machine structure, red stripe, blue lightning paint, opposite-facing layout, dimensions and background. Keep pure magenta #FF00FF and all outlines, no added parts or text. Preserve the FULL long blade modules and their exact tips/attachments on both vehicles.",
+      "references": [
+        {
+          "path": "work/v34/primary-reference-review/Blade-Fighter3-1300x.jpg",
+          "sha256": "7ba71613851870219f5a3b99f06e91f065de084b35b596b481bc797076fd6e03"
+        },
+        {
+          "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predator-blade-fighter-vehicle-and-packaging",
+          "role": "Primary manufacturer photographs and product features inspected"
+        },
+        {
+          "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12",
+          "role": "Manufacturer confirms Viper uses the Blade Fighter"
+        },
+        {
+          "path": "public/game/vehicles/v34/blade-fighter-viper/neca2014-identity-r1.png",
+          "sha256": "9fdf0a63d18d32c3ff078431a3ec0524f74ef13387f621324749f95030af9cf5"
+        }
+      ],
+      "notes": [
+        "Adaptation du produit sous licence NECA ; ce n’est pas une nouvelle preuve de canon cinématographique.",
+        "Le pilote est retiré des sprites véhicule. Fidélité des détails cachés et animation encore en revue.",
+        "Éléments orange ambigus et formes de membre dans le cockpit retirés ; siège vide inspecté."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1526,
+            515
+          ],
+          "alpha16Bounds": [
+            54,
+            56,
+            1422,
+            421
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 232244,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            515,
+            1526,
+            515
+          ],
+          "alpha16Bounds": [
+            50,
+            549,
+            1426,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 233360,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "neca2014-chassis-r2",
+      "actionId": "chassis",
+      "label": "Blade Fighter Viper — châssis sans lames",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/blade-fighter-viper/neca2014-chassis-r2.png",
+      "publicPath": "/game/vehicles/v34/blade-fighter-viper/neca2014-chassis-r2.png",
+      "originId": "exec-5f3787de-9f48-47dd-bdd5-e57f8a7a25b8.png",
+      "width": 1527,
+      "height": 1030,
+      "sha256": "63caa3e162982eb50130bdf51331ed6bd63c77e4f15e15d561f9017dd0fea6eb",
+      "bytes": 1719698,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572810
+      },
+      "prompt": "Edit ONLY the FIRST of the TWO supplied images: the compact two-view Blade Fighter CHASSIS WITHOUT LONG BLADES. Do not output the separate blade sheet. Change only ambiguous rider-remnant areas: remove BOTH small orange head/foot-shaped objects protruding above the bronze side wing near its rear, leaving a clean empty metal storage clip there. Ensure the cockpit is an unmistakably EMPTY upholstered bucket seat with clean legroom: remove any diagonal thigh/boot/arm-like lump inside it and expose the plain dark seat pan. No humanoid fingers, toes, face, limbs or armour fragments anywhere. Preserve every fixed wing, engine pod, canopy, dorsal fin, machine structure, red stripe, blue lightning paint, opposite-facing layout, dimensions and background. Keep pure magenta #FF00FF and all outlines, no added parts or text. Keep the long blades absent and the red coupling socket intact.",
+      "references": [
+        {
+          "path": "work/v34/primary-reference-review/Blade-Fighter3-1300x.jpg",
+          "sha256": "7ba71613851870219f5a3b99f06e91f065de084b35b596b481bc797076fd6e03"
+        },
+        {
+          "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predator-blade-fighter-vehicle-and-packaging",
+          "role": "Primary manufacturer photographs and product features inspected"
+        },
+        {
+          "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12",
+          "role": "Manufacturer confirms Viper uses the Blade Fighter"
+        },
+        {
+          "path": "public/game/vehicles/v34/blade-fighter-viper/neca2014-chassis-r1.png",
+          "sha256": "6a304d7bfad73d8e576dc8b3ca5735e30a26884e1fe794727cb572622ef65414"
+        }
+      ],
+      "notes": [
+        "Adaptation du produit sous licence NECA ; ce n’est pas une nouvelle preuve de canon cinématographique.",
+        "Le pilote est retiré des sprites véhicule. Fidélité des détails cachés et animation encore en revue.",
+        "Éléments orange ambigus et formes de membre dans le cockpit retirés ; siège vide inspecté."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "chassis",
+          "reviewGridRect": [
+            0,
+            0,
+            1527,
+            515
+          ],
+          "alpha16Bounds": [
+            173,
+            43,
+            860,
+            462
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 237371,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "chassis",
+          "reviewGridRect": [
+            0,
+            515,
+            1527,
+            515
+          ],
+          "alpha16Bounds": [
+            494,
+            521,
+            861,
+            461
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 237453,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 5,
+  "acceptedRuntimeClips": 0
+}

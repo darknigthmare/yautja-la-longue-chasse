@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checkedAt": "2026-09-30T21:31:56.661Z",
+  "files": [
+    {
+      "href": "/_next/static/css/fe982126559f09c7.css",
+      "bytes": 123272,
+      "sha256": "049306e1e74f88d29a4dfe3e263d3c3807a43e1b461e205dca5b1341a53dbc9c"
+    },
+    {
+      "href": "/_next/static/css/21025a6b8695d8ed.css",
+      "bytes": 14305,
+      "sha256": "ad1a878642ec7f08ed1319d100bab7fada5c8ec1884e609fe7b28f05358ca131"
+    }
+  ],
+  "checks": [
+    {
+      "selector": ".toast",
+      "property": "pointer-events",
+      "value": "none",
+      "status": "PASS",
+      "declarations": [
+        {
+          "selector": ".toast",
+          "property": "pointer-events",
+          "value": "none",
+          "unconditional": true
+        }
+      ]
+    },
+    {
+      "selector": ".game-shell:has([data-pit-immersive=true])>.toast",
+      "property": "bottom",
+      "value": "max(76px,calc(env(safe-area-inset-bottom)+64px))",
+      "status": "PASS",
+      "declarations": [
+        {
+          "selector": ".game-shell:has([data-pit-immersive=true])>.toast",
+          "property": "bottom",
+          "value": "max(76px,calc(env(safe-area-inset-bottom) + 64px))",
+          "unconditional": true
+        }
+      ]
+    },
+    {
+      "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast",
+      "property": "top",
+      "value": "max(152px,calc(env(safe-area-inset-top)+142px))",
+      "status": "PASS",
+      "declarations": [
+        {
+          "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast",
+          "property": "top",
+          "value": "max(152px,calc(env(safe-area-inset-top) + 142px))",
+          "unconditional": true
+        }
+      ]
+    },
+    {
+      "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast",
+      "property": "bottom",
+      "value": "auto",
+      "status": "PASS",
+      "declarations": [
+        {
+          "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast",
+          "property": "bottom",
+          "value": "auto",
+          "unconditional": true
+        }
+      ]
+    }
+  ],
+  "scope": "The four V61 HUD toast contracts in stylesheets linked by the public production HTML; not the entire computed cascade."
+}

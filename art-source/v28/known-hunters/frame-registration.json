@@ -1,0 +1,4210 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-05",
+  "scope": "Six new authored sheets, two humans and two Yautja. Per-character source measurements preserved.",
+  "sourcePixelsModified": false,
+  "gameplayValidated": false,
+  "entries": [
+    {
+      "id": "machiko-ryushi-high-guard",
+      "characterId": "machiko",
+      "biologicalSpecies": "human",
+      "variantId": "machiko-ryushi",
+      "clip": "high-guard",
+      "status": "draft-registration-only",
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/machiko-ryushi-high-guard.png",
+        "sha256": "acb10f71b1ffe6298854a403407573bc46ea30eb597173f321c0dd47515169ee",
+        "sha256AfterRead": "acb10f71b1ffe6298854a403407573bc46ea30eb597173f321c0dd47515169ee",
+        "unchanged": true,
+        "bytes": 1730916,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "Opaque varying magenta; no alpha conversion performed.",
+        "cornerSamples": [
+          {
+            "x": 0,
+            "y": 0,
+            "rgb": [
+              234,
+              11,
+              233
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 0,
+            "rgb": [
+              240,
+              14,
+              236
+            ]
+          },
+          {
+            "x": 0,
+            "y": 1023,
+            "rgb": [
+              231,
+              36,
+              230
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 1023,
+            "rgb": [
+              238,
+              29,
+              235
+            ]
+          }
+        ]
+      },
+      "measurementMethod": {
+        "separation": "Full-width column projection in each half-height row, split by twelve consecutive empty columns; no fixed-width clipping.",
+        "keyClassifier": "Background iff r>=threshold and b>=threshold and g<=120 and r-g>=70 and b-g>=70. Thresholds160/180/200. This only measures pixels; it does not modify them.",
+        "boundsPolicy": "Union of three threshold bounds plus eight pixels of margin.",
+        "pivotPolicy": "Midpoint of two measured boot sole contact spans, at the lower sole baseline; constant scale1. Sole span is the union of foreground pixels in each boot's bottom four rows, after separating the lower60px boot bands by largest empty-column gap.",
+        "caveat": "Mechanical suggestions only. Foot contact geometry and action timing require playback review; no fit-to-height scaling."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "low-ready",
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            113,
+            61,
+            264,
+            416
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                113,
+                61,
+                264,
+                416
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                113,
+                61,
+                264,
+                416
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                113,
+                61,
+                264,
+                416
+              ]
+            }
+          ],
+          "rectPx": [
+            105,
+            53,
+            280,
+            432
+          ],
+          "pivotSourcePx": {
+            "x": 240.5,
+            "y": 477
+          },
+          "pivotPx": {
+            "x": 135.5,
+            "y": 424
+          },
+          "pivotInNominalCellPx": {
+            "x": 240.5,
+            "y": 477
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 128.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                113,
+                144
+              ],
+              "lowerFootBandWidthPx": 40
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 352.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                329,
+                376
+              ],
+              "lowerFootBandWidthPx": 59
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human hands; long gun held with two hands; handgun holstered on anatomical right thigh; black katana sheath at anatomical left hip.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 2,
+          "stage": "raise-rifle",
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            599,
+            62,
+            289,
+            415
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                600,
+                62,
+                287,
+                415
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                599,
+                62,
+                289,
+                415
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                599,
+                62,
+                289,
+                415
+              ]
+            }
+          ],
+          "rectPx": [
+            591,
+            54,
+            305,
+            431
+          ],
+          "pivotSourcePx": {
+            "x": 722.25,
+            "y": 477
+          },
+          "pivotPx": {
+            "x": 131.25,
+            "y": 423
+          },
+          "pivotInNominalCellPx": {
+            "x": 210.25,
+            "y": 477
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 615,
+                "y": 477
+              },
+              "contactSpanPx": [
+                599,
+                631
+              ],
+              "lowerFootBandWidthPx": 40
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 829.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                806,
+                853
+              ],
+              "lowerFootBandWidthPx": 60
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human hands; long gun held with two hands; handgun holstered on anatomical right thigh; black katana sheath at anatomical left hip.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 3,
+          "stage": "raised-defensive-aim",
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1088,
+            61,
+            259,
+            416
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1088,
+                61,
+                259,
+                416
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1088,
+                61,
+                259,
+                416
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1088,
+                61,
+                260,
+                416
+              ]
+            }
+          ],
+          "rectPx": [
+            1080,
+            53,
+            276,
+            432
+          ],
+          "pivotSourcePx": {
+            "x": 1210.5,
+            "y": 477
+          },
+          "pivotPx": {
+            "x": 130.5,
+            "y": 424
+          },
+          "pivotInNominalCellPx": {
+            "x": 186.5,
+            "y": 477
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1103.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                1088,
+                1119
+              ],
+              "lowerFootBandWidthPx": 40
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1317.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                1294,
+                1341
+              ],
+              "lowerFootBandWidthPx": 60
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human hands; long gun held with two hands; handgun holstered on anatomical right thigh; black katana sheath at anatomical left hip.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 4,
+          "stage": "braced-recoil",
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            141,
+            538,
+            256,
+            422
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                141,
+                538,
+                256,
+                422
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                141,
+                538,
+                256,
+                422
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                141,
+                537,
+                257,
+                424
+              ]
+            }
+          ],
+          "rectPx": [
+            133,
+            529,
+            273,
+            440
+          ],
+          "pivotSourcePx": {
+            "x": 263.25,
+            "y": 960
+          },
+          "pivotPx": {
+            "x": 130.25,
+            "y": 431
+          },
+          "pivotInNominalCellPx": {
+            "x": 263.25,
+            "y": 448
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 158,
+                "y": 960
+              },
+              "contactSpanPx": [
+                142,
+                174
+              ],
+              "lowerFootBandWidthPx": 43
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 368.5,
+                "y": 960
+              },
+              "contactSpanPx": [
+                341,
+                396
+              ],
+              "lowerFootBandWidthPx": 64
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human hands; long gun held with two hands; handgun holstered on anatomical right thigh; black katana sheath at anatomical left hip.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 5,
+          "stage": "lower-rifle",
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            597,
+            535,
+            266,
+            425
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                597,
+                535,
+                266,
+                425
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                597,
+                535,
+                266,
+                425
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                597,
+                535,
+                266,
+                425
+              ]
+            }
+          ],
+          "rectPx": [
+            589,
+            527,
+            282,
+            441
+          ],
+          "pivotSourcePx": {
+            "x": 724.75,
+            "y": 960
+          },
+          "pivotPx": {
+            "x": 135.75,
+            "y": 433
+          },
+          "pivotInNominalCellPx": {
+            "x": 212.75,
+            "y": 448
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 613,
+                "y": 960
+              },
+              "contactSpanPx": [
+                597,
+                629
+              ],
+              "lowerFootBandWidthPx": 40
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 836.5,
+                "y": 960
+              },
+              "contactSpanPx": [
+                811,
+                862
+              ],
+              "lowerFootBandWidthPx": 64
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human hands; long gun held with two hands; handgun holstered on anatomical right thigh; black katana sheath at anatomical left hip.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 6,
+          "stage": "low-ready",
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1083,
+            544,
+            263,
+            416
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1083,
+                544,
+                263,
+                416
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1083,
+                544,
+                263,
+                416
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1083,
+                544,
+                263,
+                416
+              ]
+            }
+          ],
+          "rectPx": [
+            1075,
+            536,
+            279,
+            432
+          ],
+          "pivotSourcePx": {
+            "x": 1209.75,
+            "y": 960
+          },
+          "pivotPx": {
+            "x": 134.75,
+            "y": 424
+          },
+          "pivotInNominalCellPx": {
+            "x": 185.75,
+            "y": 448
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1098.5,
+                "y": 960
+              },
+              "contactSpanPx": [
+                1083,
+                1114
+              ],
+              "lowerFootBandWidthPx": 40
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1321,
+                "y": 960
+              },
+              "contactSpanPx": [
+                1297,
+                1345
+              ],
+              "lowerFootBandWidthPx": 60
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human hands; long gun held with two hands; handgun holstered on anatomical right thigh; black katana sheath at anatomical left hip.",
+          "status": "registration-proposal-not-art-approved"
+        }
+      ],
+      "species": "human"
+    },
+    {
+      "id": "machiko-clan-hit-reaction",
+      "characterId": "machiko",
+      "biologicalSpecies": "human",
+      "variantId": "machiko-clan",
+      "clip": "hit-reaction",
+      "status": "draft-registration-only",
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/machiko-clan-hit-reaction.png",
+        "sha256": "a90bfaf2a5f4f02dff7c066ec16eb610394b01bd34b2940373c543b78bf16b44",
+        "sha256AfterRead": "a90bfaf2a5f4f02dff7c066ec16eb610394b01bd34b2940373c543b78bf16b44",
+        "unchanged": true,
+        "bytes": 1824504,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "Opaque varying magenta; no alpha conversion performed.",
+        "cornerSamples": [
+          {
+            "x": 0,
+            "y": 0,
+            "rgb": [
+              223,
+              14,
+              231
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 0,
+            "rgb": [
+              230,
+              21,
+              232
+            ]
+          },
+          {
+            "x": 0,
+            "y": 1023,
+            "rgb": [
+              221,
+              36,
+              228
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 1023,
+            "rgb": [
+              226,
+              33,
+              230
+            ]
+          }
+        ]
+      },
+      "measurementMethod": {
+        "separation": "Full-width column projection in each half-height row, split by twelve consecutive empty columns; no fixed-width clipping.",
+        "keyClassifier": "Background iff r>=threshold and b>=threshold and g<=120 and r-g>=70 and b-g>=70. Thresholds160/180/200. This only measures pixels; it does not modify them.",
+        "boundsPolicy": "Union of three threshold bounds plus eight pixels of margin.",
+        "pivotPolicy": "Midpoint of two measured boot sole contact spans, at the lower sole baseline; constant scale1. Sole span is the union of foreground pixels in each boot's bottom four rows, after separating the lower60px boot bands by largest empty-column gap.",
+        "caveat": "Mechanical suggestions only. Foot contact geometry and action timing require playback review; no fit-to-height scaling."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            125,
+            51,
+            257,
+            444
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                125,
+                51,
+                257,
+                444
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                125,
+                51,
+                257,
+                444
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                125,
+                51,
+                258,
+                444
+              ]
+            }
+          ],
+          "rectPx": [
+            117,
+            43,
+            274,
+            460
+          ],
+          "pivotSourcePx": {
+            "x": 252.5,
+            "y": 495
+          },
+          "pivotPx": {
+            "x": 135.5,
+            "y": 452
+          },
+          "pivotInNominalCellPx": {
+            "x": 252.5,
+            "y": 495
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 143,
+                "y": 495
+              },
+              "contactSpanPx": [
+                125,
+                161
+              ],
+              "lowerFootBandWidthPx": 49
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 362,
+                "y": 495
+              },
+              "contactSpanPx": [
+                343,
+                381
+              ],
+              "lowerFootBandWidthPx": 66
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face/hands/closed boots; one anatomical-left shoulder caster; one blue-green rifle gripped with both hands; wrist blades fully retracted in the corrected source.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 2,
+          "stage": "initial-impact",
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            584,
+            81,
+            291,
+            412
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                584,
+                81,
+                291,
+                412
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                584,
+                81,
+                291,
+                412
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                584,
+                80,
+                291,
+                414
+              ]
+            }
+          ],
+          "rectPx": [
+            576,
+            72,
+            307,
+            430
+          ],
+          "pivotSourcePx": {
+            "x": 738.25,
+            "y": 493
+          },
+          "pivotPx": {
+            "x": 162.25,
+            "y": 421
+          },
+          "pivotInNominalCellPx": {
+            "x": 226.25,
+            "y": 493
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 633,
+                "y": 493
+              },
+              "contactSpanPx": [
+                616,
+                650
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 843.5,
+                "y": 492
+              },
+              "contactSpanPx": [
+                814,
+                873
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face/hands/closed boots; one anatomical-left shoulder caster; one blue-green rifle gripped with both hands; wrist blades fully retracted in the corrected source.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 3,
+          "stage": "peak-standing-recoil",
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1033,
+            100,
+            326,
+            395
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1033,
+                100,
+                326,
+                395
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1033,
+                100,
+                326,
+                395
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1033,
+                100,
+                326,
+                395
+              ]
+            }
+          ],
+          "rectPx": [
+            1025,
+            92,
+            342,
+            411
+          ],
+          "pivotSourcePx": {
+            "x": 1212.5,
+            "y": 495
+          },
+          "pivotPx": {
+            "x": 187.5,
+            "y": 403
+          },
+          "pivotInNominalCellPx": {
+            "x": 188.5,
+            "y": 495
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1083.5,
+                "y": 495
+              },
+              "contactSpanPx": [
+                1066,
+                1101
+              ],
+              "lowerFootBandWidthPx": 56
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1341.5,
+                "y": 491
+              },
+              "contactSpanPx": [
+                1325,
+                1358
+              ],
+              "lowerFootBandWidthPx": 62
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face/hands/closed boots; one anatomical-left shoulder caster; one blue-green rifle gripped with both hands; wrist blades fully retracted in the corrected source.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 4,
+          "stage": "catch-balance",
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            125,
+            592,
+            234,
+            381
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                125,
+                592,
+                234,
+                381
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                125,
+                592,
+                234,
+                381
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                125,
+                592,
+                234,
+                381
+              ]
+            }
+          ],
+          "rectPx": [
+            117,
+            584,
+            250,
+            397
+          ],
+          "pivotSourcePx": {
+            "x": 213.5,
+            "y": 973
+          },
+          "pivotPx": {
+            "x": 96.5,
+            "y": 389
+          },
+          "pivotInNominalCellPx": {
+            "x": 213.5,
+            "y": 461
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 143,
+                "y": 973
+              },
+              "contactSpanPx": [
+                125,
+                161
+              ],
+              "lowerFootBandWidthPx": 61
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 284,
+                "y": 971
+              },
+              "contactSpanPx": [
+                266,
+                302
+              ],
+              "lowerFootBandWidthPx": 65
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face/hands/closed boots; one anatomical-left shoulder caster; one blue-green rifle gripped with both hands; wrist blades fully retracted in the corrected source.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 5,
+          "stage": "rising-recovery",
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            602,
+            542,
+            240,
+            431
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                602,
+                543,
+                240,
+                430
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                602,
+                542,
+                240,
+                431
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                602,
+                542,
+                240,
+                431
+              ]
+            }
+          ],
+          "rectPx": [
+            594,
+            534,
+            256,
+            447
+          ],
+          "pivotSourcePx": {
+            "x": 704.25,
+            "y": 973
+          },
+          "pivotPx": {
+            "x": 110.25,
+            "y": 439
+          },
+          "pivotInNominalCellPx": {
+            "x": 192.25,
+            "y": 461
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 620,
+                "y": 973
+              },
+              "contactSpanPx": [
+                602,
+                638
+              ],
+              "lowerFootBandWidthPx": 46
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 788.5,
+                "y": 971
+              },
+              "contactSpanPx": [
+                769,
+                808
+              ],
+              "lowerFootBandWidthPx": 64
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face/hands/closed boots; one anatomical-left shoulder caster; one blue-green rifle gripped with both hands; wrist blades fully retracted in the corrected source.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 6,
+          "stage": "ready",
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1068,
+            536,
+            257,
+            443
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1068,
+                536,
+                257,
+                443
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1068,
+                536,
+                257,
+                443
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1068,
+                535,
+                257,
+                444
+              ]
+            }
+          ],
+          "rectPx": [
+            1060,
+            527,
+            273,
+            460
+          ],
+          "pivotSourcePx": {
+            "x": 1190.75,
+            "y": 979
+          },
+          "pivotPx": {
+            "x": 130.75,
+            "y": 452
+          },
+          "pivotInNominalCellPx": {
+            "x": 166.75,
+            "y": 467
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1086,
+                "y": 979
+              },
+              "contactSpanPx": [
+                1068,
+                1104
+              ],
+              "lowerFootBandWidthPx": 49
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1295.5,
+                "y": 978
+              },
+              "contactSpanPx": [
+                1267,
+                1324
+              ],
+              "lowerFootBandWidthPx": 66
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face/hands/closed boots; one anatomical-left shoulder caster; one blue-green rifle gripped with both hands; wrist blades fully retracted in the corrected source.",
+          "status": "registration-proposal-not-art-approved"
+        }
+      ],
+      "species": "human"
+    },
+    {
+      "id": "theta-blade-guard",
+      "characterId": "theta-berwick",
+      "species": "human",
+      "biologicalSpecies": "human",
+      "family": "humans-in-yautja-armor",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "clip": "blade-guard",
+      "status": "draft-registration-only",
+      "ticksPerSecond": 60,
+      "loop": false,
+      "reviewScale": 0.8,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/theta-blade-guard.png",
+        "sha256": "27500ff6fbe935c3abb0fe94435e648b8d6ee9730810036d9d926706aa00c8e8",
+        "sha256AfterRead": "27500ff6fbe935c3abb0fe94435e648b8d6ee9730810036d9d926706aa00c8e8",
+        "unchanged": true,
+        "bytes": 1836921,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "Opaque varying magenta; no alpha conversion performed.",
+        "cornerSamples": [
+          {
+            "x": 0,
+            "y": 0,
+            "rgb": [
+              222,
+              13,
+              223
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 0,
+            "rgb": [
+              227,
+              23,
+              227
+            ]
+          },
+          {
+            "x": 0,
+            "y": 1023,
+            "rgb": [
+              220,
+              38,
+              221
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 1023,
+            "rgb": [
+              224,
+              35,
+              224
+            ]
+          }
+        ]
+      },
+      "measurementMethod": {
+        "separation": "Full-width foreground column projection per half-height row, with at least twelve empty columns between figures; not a fixed512px crop.",
+        "keyClassifier": "Background iff r>=threshold and b>=threshold and g<=120 and r-g>=70 and b-g>=70, thresholds160/180/200. Measurement only, pixels unchanged.",
+        "boundsPolicy": "Union of threshold bounds plus8px margin; clipping only at source borders.",
+        "pivotPolicy": "Midpoint of two measured boot sole spans, at lower sole baseline. Each span uses bottom4rows of its boot, separated by largest empty-column gap in bottom60px band.",
+        "drawPolicy": "One reviewScale0.8 across all frames; do not fit or normalize frame heights individually.",
+        "timingPolicy": "Proposed durations in presentation ticks at60Hz, not combat timings or simulation/replay changes.",
+        "caveat": "Mechanical registration proposals; no anatomy, fidelity, alpha or gameplay validation."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "low-ready",
+          "durationTicks": 8,
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            182,
+            56,
+            224,
+            420
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                183,
+                56,
+                223,
+                419
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                183,
+                56,
+                223,
+                419
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                182,
+                56,
+                224,
+                420
+              ]
+            }
+          ],
+          "rectPx": [
+            174,
+            48,
+            240,
+            436
+          ],
+          "pivotSourcePx": {
+            "x": 296.75,
+            "y": 476
+          },
+          "pivotPx": {
+            "x": 122.75,
+            "y": 428
+          },
+          "pivotInNominalCellPx": {
+            "x": 296.75,
+            "y": 476
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 206.5,
+                "y": 476
+              },
+              "contactSpanPx": [
+                192,
+                221
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 387,
+                "y": 461
+              },
+              "contactSpanPx": [
+                369,
+                405
+              ],
+              "lowerFootBandWidthPx": 68
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 2,
+          "stage": "raise-blade-guard",
+          "durationTicks": 6,
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            636,
+            58,
+            232,
+            418
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                636,
+                58,
+                232,
+                417
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                636,
+                58,
+                232,
+                418
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                636,
+                58,
+                232,
+                418
+              ]
+            }
+          ],
+          "rectPx": [
+            628,
+            50,
+            248,
+            434
+          ],
+          "pivotSourcePx": {
+            "x": 745.5,
+            "y": 476
+          },
+          "pivotPx": {
+            "x": 117.5,
+            "y": 426
+          },
+          "pivotInNominalCellPx": {
+            "x": 233.5,
+            "y": 476
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 655,
+                "y": 476
+              },
+              "contactSpanPx": [
+                640,
+                670
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 836,
+                "y": 461
+              },
+              "contactSpanPx": [
+                818,
+                854
+              ],
+              "lowerFootBandWidthPx": 68
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 3,
+          "stage": "high-guard-hold",
+          "durationTicks": 10,
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1085,
+            53,
+            242,
+            422
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1085,
+                54,
+                242,
+                421
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1085,
+                53,
+                242,
+                422
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1085,
+                53,
+                242,
+                422
+              ]
+            }
+          ],
+          "rectPx": [
+            1077,
+            45,
+            258,
+            438
+          ],
+          "pivotSourcePx": {
+            "x": 1194.5,
+            "y": 475
+          },
+          "pivotPx": {
+            "x": 117.5,
+            "y": 430
+          },
+          "pivotInNominalCellPx": {
+            "x": 170.5,
+            "y": 475
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1103.5,
+                "y": 475
+              },
+              "contactSpanPx": [
+                1088,
+                1119
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1285.5,
+                "y": 461
+              },
+              "contactSpanPx": [
+                1268,
+                1303
+              ],
+              "lowerFootBandWidthPx": 68
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 4,
+          "stage": "absorb-recoil",
+          "durationTicks": 7,
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            176,
+            528,
+            262,
+            436
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                176,
+                529,
+                262,
+                435
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                176,
+                529,
+                262,
+                435
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                176,
+                528,
+                262,
+                436
+              ]
+            }
+          ],
+          "rectPx": [
+            168,
+            520,
+            278,
+            452
+          ],
+          "pivotSourcePx": {
+            "x": 316.75,
+            "y": 964
+          },
+          "pivotPx": {
+            "x": 148.75,
+            "y": 444
+          },
+          "pivotInNominalCellPx": {
+            "x": 316.75,
+            "y": 452
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 213.5,
+                "y": 964
+              },
+              "contactSpanPx": [
+                198,
+                229
+              ],
+              "lowerFootBandWidthPx": 52
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 420,
+                "y": 948
+              },
+              "contactSpanPx": [
+                403,
+                437
+              ],
+              "lowerFootBandWidthPx": 71
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 5,
+          "stage": "lower-blade",
+          "durationTicks": 8,
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            636,
+            549,
+            224,
+            420
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                636,
+                549,
+                223,
+                420
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                636,
+                549,
+                223,
+                420
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                636,
+                549,
+                224,
+                420
+              ]
+            }
+          ],
+          "rectPx": [
+            628,
+            541,
+            240,
+            436
+          ],
+          "pivotSourcePx": {
+            "x": 750,
+            "y": 969
+          },
+          "pivotPx": {
+            "x": 122,
+            "y": 428
+          },
+          "pivotInNominalCellPx": {
+            "x": 238,
+            "y": 457
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 659,
+                "y": 969
+              },
+              "contactSpanPx": [
+                644,
+                674
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 841,
+                "y": 955
+              },
+              "contactSpanPx": [
+                825,
+                857
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 6,
+          "stage": "return-ready",
+          "durationTicks": 10,
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1084,
+            549,
+            226,
+            421
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1085,
+                549,
+                225,
+                421
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1085,
+                549,
+                225,
+                421
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1084,
+                549,
+                226,
+                421
+              ]
+            }
+          ],
+          "rectPx": [
+            1076,
+            541,
+            242,
+            437
+          ],
+          "pivotSourcePx": {
+            "x": 1200,
+            "y": 970
+          },
+          "pivotPx": {
+            "x": 124,
+            "y": 429
+          },
+          "pivotInNominalCellPx": {
+            "x": 176,
+            "y": 458
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1108,
+                "y": 970
+              },
+              "contactSpanPx": [
+                1093,
+                1123
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1292,
+                "y": 956
+              },
+              "contactSpanPx": [
+                1275,
+                1309
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        }
+      ]
+    },
+    {
+      "id": "theta-hit-reaction",
+      "characterId": "theta-berwick",
+      "species": "human",
+      "biologicalSpecies": "human",
+      "family": "humans-in-yautja-armor",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "clip": "hit-reaction",
+      "status": "draft-registration-only",
+      "ticksPerSecond": 60,
+      "loop": false,
+      "reviewScale": 0.8,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/theta-hit-reaction.png",
+        "sha256": "ed417fd72d53d359835326cbc9d22962027e190453648d7a5199c257eef3bccb",
+        "sha256AfterRead": "ed417fd72d53d359835326cbc9d22962027e190453648d7a5199c257eef3bccb",
+        "unchanged": true,
+        "bytes": 1900263,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "Opaque varying magenta; no alpha conversion performed.",
+        "cornerSamples": [
+          {
+            "x": 0,
+            "y": 0,
+            "rgb": [
+              213,
+              11,
+              220
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 0,
+            "rgb": [
+              222,
+              22,
+              227
+            ]
+          },
+          {
+            "x": 0,
+            "y": 1023,
+            "rgb": [
+              207,
+              33,
+              215
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 1023,
+            "rgb": [
+              217,
+              32,
+              222
+            ]
+          }
+        ]
+      },
+      "measurementMethod": {
+        "separation": "Full-width foreground column projection per half-height row, with at least twelve empty columns between figures; not a fixed512px crop.",
+        "keyClassifier": "Background iff r>=threshold and b>=threshold and g<=120 and r-g>=70 and b-g>=70, thresholds160/180/200. Measurement only, pixels unchanged.",
+        "boundsPolicy": "Union of threshold bounds plus8px margin; clipping only at source borders.",
+        "pivotPolicy": "Midpoint of two measured boot sole spans, at lower sole baseline. Each span uses bottom4rows of its boot, separated by largest empty-column gap in bottom60px band.",
+        "drawPolicy": "One reviewScale0.8 across all frames; do not fit or normalize frame heights individually.",
+        "timingPolicy": "Proposed durations in presentation ticks at60Hz, not combat timings or simulation/replay changes.",
+        "caveat": "Mechanical registration proposals; no anatomy, fidelity, alpha or gameplay validation."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "durationTicks": 8,
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            151,
+            59,
+            237,
+            423
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                151,
+                59,
+                237,
+                423
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                151,
+                59,
+                237,
+                423
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                151,
+                59,
+                237,
+                423
+              ]
+            }
+          ],
+          "rectPx": [
+            143,
+            51,
+            253,
+            439
+          ],
+          "pivotSourcePx": {
+            "x": 270,
+            "y": 482
+          },
+          "pivotPx": {
+            "x": 127,
+            "y": 431
+          },
+          "pivotInNominalCellPx": {
+            "x": 270,
+            "y": 482
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 171,
+                "y": 482
+              },
+              "contactSpanPx": [
+                156,
+                186
+              ],
+              "lowerFootBandWidthPx": 46
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 369,
+                "y": 471
+              },
+              "contactSpanPx": [
+                351,
+                387
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 2,
+          "stage": "impact-recoil",
+          "durationTicks": 5,
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            625,
+            65,
+            263,
+            413
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                625,
+                65,
+                262,
+                412
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                625,
+                65,
+                263,
+                413
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                625,
+                65,
+                263,
+                413
+              ]
+            }
+          ],
+          "rectPx": [
+            617,
+            57,
+            279,
+            429
+          ],
+          "pivotSourcePx": {
+            "x": 772,
+            "y": 478
+          },
+          "pivotPx": {
+            "x": 155,
+            "y": 421
+          },
+          "pivotInNominalCellPx": {
+            "x": 260,
+            "y": 478
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 680.5,
+                "y": 478
+              },
+              "contactSpanPx": [
+                666,
+                695
+              ],
+              "lowerFootBandWidthPx": 86
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 863.5,
+                "y": 465
+              },
+              "contactSpanPx": [
+                845,
+                882
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 3,
+          "stage": "recoil-peak",
+          "durationTicks": 7,
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1109,
+            86,
+            262,
+            391
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1109,
+                86,
+                262,
+                390
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1109,
+                86,
+                262,
+                390
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1109,
+                86,
+                262,
+                391
+              ]
+            }
+          ],
+          "rectPx": [
+            1101,
+            78,
+            278,
+            407
+          ],
+          "pivotSourcePx": {
+            "x": 1250.25,
+            "y": 477
+          },
+          "pivotPx": {
+            "x": 149.25,
+            "y": 399
+          },
+          "pivotInNominalCellPx": {
+            "x": 226.25,
+            "y": 477
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1157.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                1143,
+                1172
+              ],
+              "lowerFootBandWidthPx": 115
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1343,
+                "y": 465
+              },
+              "contactSpanPx": [
+                1325,
+                1361
+              ],
+              "lowerFootBandWidthPx": 73
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 4,
+          "stage": "fold-forward",
+          "durationTicks": 8,
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            152,
+            599,
+            227,
+            349
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                152,
+                599,
+                227,
+                349
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                152,
+                599,
+                227,
+                349
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                152,
+                599,
+                227,
+                349
+              ]
+            }
+          ],
+          "rectPx": [
+            144,
+            591,
+            243,
+            365
+          ],
+          "pivotSourcePx": {
+            "x": 266,
+            "y": 948
+          },
+          "pivotPx": {
+            "x": 122,
+            "y": 357
+          },
+          "pivotInNominalCellPx": {
+            "x": 266,
+            "y": 436
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 173.5,
+                "y": 948
+              },
+              "contactSpanPx": [
+                158,
+                189
+              ],
+              "lowerFootBandWidthPx": 126
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 358.5,
+                "y": 939
+              },
+              "contactSpanPx": [
+                340,
+                377
+              ],
+              "lowerFootBandWidthPx": 75
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 5,
+          "stage": "recover-upright",
+          "durationTicks": 8,
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            635,
+            551,
+            227,
+            405
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                635,
+                552,
+                227,
+                404
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                635,
+                551,
+                227,
+                405
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                635,
+                551,
+                227,
+                405
+              ]
+            }
+          ],
+          "rectPx": [
+            627,
+            543,
+            243,
+            421
+          ],
+          "pivotSourcePx": {
+            "x": 749,
+            "y": 956
+          },
+          "pivotPx": {
+            "x": 122,
+            "y": 413
+          },
+          "pivotInNominalCellPx": {
+            "x": 237,
+            "y": 444
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 655,
+                "y": 956
+              },
+              "contactSpanPx": [
+                640,
+                670
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 843,
+                "y": 944
+              },
+              "contactSpanPx": [
+                826,
+                860
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 6,
+          "stage": "return-ready",
+          "durationTicks": 10,
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1096,
+            538,
+            238,
+            423
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1096,
+                538,
+                238,
+                423
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1096,
+                538,
+                238,
+                423
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1096,
+                538,
+                238,
+                423
+              ]
+            }
+          ],
+          "rectPx": [
+            1088,
+            530,
+            254,
+            439
+          ],
+          "pivotSourcePx": {
+            "x": 1215.5,
+            "y": 961
+          },
+          "pivotPx": {
+            "x": 127.5,
+            "y": 431
+          },
+          "pivotInNominalCellPx": {
+            "x": 191.5,
+            "y": 449
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1116,
+                "y": 961
+              },
+              "contactSpanPx": [
+                1102,
+                1130
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1315,
+                "y": 951
+              },
+              "contactSpanPx": [
+                1297,
+                1333
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        }
+      ]
+    },
+    {
+      "id": "tracker-guard-absorb",
+      "characterId": "tracker",
+      "clip": "guard-absorb",
+      "status": "draft-registration-only",
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/tracker-guard-absorb-v2.png",
+        "sha256": "e4e2be3dd53112d376deadce01dc982117ce9a476f57c51b6e510b024e23cb16",
+        "sha256AfterRead": "e4e2be3dd53112d376deadce01dc982117ce9a476f57c51b6e510b024e23cb16",
+        "unchanged": true,
+        "bytes": 1932274,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "opaque magenta; no alpha conversion performed"
+      },
+      "measurementMethod": {
+        "separation": "Full-width column projection inside each half-height row, separated by12 consecutive empty columns; no512px-wide clipping.",
+        "boundsPolicy": "Union of t160/180/200 bounds plus8px margin.",
+        "pivotPolicy": "Midpoint of two measured sole contact spans, at lower/near sole baseline. Constant scale across the clip."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            148,
+            35,
+            282,
+            435
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                148,
+                35,
+                282,
+                435
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                148,
+                35,
+                282,
+                435
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                148,
+                35,
+                283,
+                435
+              ]
+            }
+          ],
+          "rectPx": [
+            140,
+            27,
+            299,
+            451
+          ],
+          "pivotSourcePx": {
+            "x": 275,
+            "y": 470
+          },
+          "pivotPx": {
+            "x": 135,
+            "y": 443
+          },
+          "pivotInNominalCellPx": {
+            "x": 275,
+            "y": 470
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 185.5,
+                "y": 470
+              },
+              "contactSpanPx": [
+                158,
+                213
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 364.5,
+                "y": 462
+              },
+              "contactSpanPx": [
+                322,
+                407
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Two plausible empty hands, single right forearm blade, two mask tusks. Corrected sheet shows one open shoulder-caster bore; lower duplicate muzzle from first draft removed.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        },
+        {
+          "index": 2,
+          "stage": "raising-high-guard",
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            612,
+            38,
+            260,
+            434
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                612,
+                38,
+                260,
+                434
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                612,
+                38,
+                260,
+                434
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                612,
+                38,
+                260,
+                434
+              ]
+            }
+          ],
+          "rectPx": [
+            604,
+            30,
+            276,
+            450
+          ],
+          "pivotSourcePx": {
+            "x": 739,
+            "y": 472
+          },
+          "pivotPx": {
+            "x": 135,
+            "y": 442
+          },
+          "pivotInNominalCellPx": {
+            "x": 227,
+            "y": 472
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 649,
+                "y": 472
+              },
+              "contactSpanPx": [
+                621,
+                677
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 829,
+                "y": 465
+              },
+              "contactSpanPx": [
+                787,
+                871
+              ],
+              "lowerFootBandWidthPx": 90
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Two fists raised near head; single right forearm blade follows housing. Single caster partly obscured by mask/guard, no second muzzle observed.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        },
+        {
+          "index": 3,
+          "stage": "high-guard",
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1086,
+            35,
+            259,
+            438
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1086,
+                35,
+                259,
+                437
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1086,
+                35,
+                259,
+                438
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1086,
+                35,
+                259,
+                438
+              ]
+            }
+          ],
+          "rectPx": [
+            1078,
+            27,
+            275,
+            454
+          ],
+          "pivotSourcePx": {
+            "x": 1212.75,
+            "y": 473
+          },
+          "pivotPx": {
+            "x": 134.75,
+            "y": 446
+          },
+          "pivotInNominalCellPx": {
+            "x": 188.75,
+            "y": 473
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1123.5,
+                "y": 473
+              },
+              "contactSpanPx": [
+                1096,
+                1151
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1302,
+                "y": 465
+              },
+              "contactSpanPx": [
+                1260,
+                1344
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "High guard: both fists present and separate. Mask tusks retained, no held sword. Fine finger/thumb arrangement not anatomically certified.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        },
+        {
+          "index": 4,
+          "stage": "blocked-impact-compression",
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            155,
+            572,
+            272,
+            392
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                155,
+                572,
+                272,
+                392
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                155,
+                572,
+                272,
+                392
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                154,
+                572,
+                274,
+                392
+              ]
+            }
+          ],
+          "rectPx": [
+            146,
+            564,
+            290,
+            408
+          ],
+          "pivotSourcePx": {
+            "x": 292.75,
+            "y": 964
+          },
+          "pivotPx": {
+            "x": 146.75,
+            "y": 400
+          },
+          "pivotInNominalCellPx": {
+            "x": 292.75,
+            "y": 452
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 201.5,
+                "y": 964
+              },
+              "contactSpanPx": [
+                174,
+                229
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 384,
+                "y": 955
+              },
+              "contactSpanPx": [
+                342,
+                426
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Blocked-hit recoil with knees bent and torso backward. Two hands remain in guard. Caster can be normally occluded by head/guard; hidden equipment is not certified absent or present from this frame alone.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        },
+        {
+          "index": 5,
+          "stage": "guard-recovery",
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            612,
+            534,
+            259,
+            430
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                612,
+                535,
+                259,
+                429
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                612,
+                534,
+                259,
+                430
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                612,
+                534,
+                260,
+                430
+              ]
+            }
+          ],
+          "rectPx": [
+            604,
+            526,
+            276,
+            446
+          ],
+          "pivotSourcePx": {
+            "x": 738.25,
+            "y": 964
+          },
+          "pivotPx": {
+            "x": 134.25,
+            "y": 438
+          },
+          "pivotInNominalCellPx": {
+            "x": 226.25,
+            "y": 452
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 648.5,
+                "y": 964
+              },
+              "contactSpanPx": [
+                621,
+                676
+              ],
+              "lowerFootBandWidthPx": 65
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 828,
+                "y": 957
+              },
+              "contactSpanPx": [
+                786,
+                870
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Return toward ready with two hands and one wrist blade. One shoulder caster visible; corrected sheet preserves the tusked mask and armor.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        },
+        {
+          "index": 6,
+          "stage": "ready-recovered",
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1092,
+            535,
+            282,
+            430
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1092,
+                535,
+                282,
+                430
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1092,
+                535,
+                282,
+                430
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1092,
+                534,
+                282,
+                431
+              ]
+            }
+          ],
+          "rectPx": [
+            1084,
+            526,
+            298,
+            447
+          ],
+          "pivotSourcePx": {
+            "x": 1219,
+            "y": 965
+          },
+          "pivotPx": {
+            "x": 135,
+            "y": 439
+          },
+          "pivotInNominalCellPx": {
+            "x": 195,
+            "y": 453
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1129.5,
+                "y": 965
+              },
+              "contactSpanPx": [
+                1102,
+                1157
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1308.5,
+                "y": 957
+              },
+              "contactSpanPx": [
+                1267,
+                1350
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Ready recovered: two hands, one right forearm blade and one shoulder caster observed. No duplicate lower muzzle. Loop/transition alignment needs playback review.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        }
+      ],
+      "checks": {
+        "frameCount": 6,
+        "rectanglesInsideSource": true,
+        "rectanglesDisjoint": true,
+        "thresholdCoverage": [
+          {
+            "threshold": 160,
+            "measuredForegroundPixels": 345466,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 180,
+            "measuredForegroundPixels": 346538,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 200,
+            "measuredForegroundPixels": 347966,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          }
+        ],
+        "actualFiguresOverlapObserved": false,
+        "nearFootWidthRangePx": [
+          65,
+          66
+        ],
+        "silhouetteHeightRangePx": [
+          392,
+          438
+        ],
+        "nominalRootXRangePx": [
+          188.75,
+          292.75
+        ],
+        "nominalRootYRangePx": [
+          452,
+          473
+        ],
+        "automaticRescaleRecommended": false,
+        "animationPlaybackVerified": false,
+        "anatomyCertified": false,
+        "cinemaFidelityCertified": false,
+        "promptMaxTotalHeightPx": 340,
+        "promptHeightLimitMet": false,
+        "promptMinimumMarginPx": 75,
+        "promptMarginMet": false,
+        "requestedUniformMagentaBackgroundMet": false,
+        "correctedEquipmentIssue": "Second barrel-like opening from original draft replaced through integrated image generation; original preserved."
+      },
+      "actionReview": {
+        "requested": "Tracker2010 raises high guard, absorbs a blocked impact, recovers.",
+        "observed": "Ready, raised forearms, high guard, backward compression, recovery and ready return are visible. Frames2/3 are close, frame4 is the clearest absorption pose.",
+        "recommendation": "Treat as guard entry1-3, optional held frame3, blocked-hit reaction4-5, return6; do not loop impacts as an idle.",
+        "limits": [
+          "Actual playback/transition timing not verified here",
+          "Pose2/3 difference is small; not a locomotion clip",
+          "Caster in frame4 can be hidden by ordinary overlap",
+          "Mask proportions and blade projection are not a1:1 film match"
+        ]
+      },
+      "notes": [
+        "Selected PNG is tracker-guard-absorb-v2.png, generated solely through integrated OpenAI correction. Original tracker-guard-absorb.png is retained as rejected equipment draft.",
+        "No creative script retouching or source overwrite. Source RGB PNG bytes reconstructed from integrated dataURL and SHA verified.",
+        "Read-only official Hot Toys/Sideshow browser references were inspected before generation; V5 two-blade/netting approximations were not treated as canon.",
+        "Body heights392-438px exceed the requested340px maximum; silhouettes remain complete and frame rectangles do not overlap. No per-frame rescaling.",
+        "Near-foot width65-66px is stable across poses; source sheet placement drifts and is corrected only by pivots at one constant scale.",
+        "Magenta is opaque and nonuniform despite the prompt. No checkerboard observed. Color-key rendering and final hand/edge review remain runtime work.",
+        "Self-review supports usable-for-review after registration, not gameplay approval, anatomy certification or global1:1 fidelity.",
+        "Selected v2 background samples: corners223,13,228 /227,22,230 /218,36,224 /224,33,227; gutter239,5,241. Integrated correction is a new source; unchanged-source SHA refers to preserving its bytes after generation, not matching the first draft."
+      ],
+      "species": "yautja"
+    },
+    {
+      "id": "fugitive-hit-reaction",
+      "characterId": "fugitive",
+      "clip": "hit-reaction",
+      "status": "draft-registration-only",
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/fugitive-hit-reaction.png",
+        "sha256": "6cad1bfac5c15ab432b9aa045fb7dd36eaa8f357a3818a888346b79859d4dfce",
+        "sha256AfterRead": "6cad1bfac5c15ab432b9aa045fb7dd36eaa8f357a3818a888346b79859d4dfce",
+        "unchanged": true,
+        "bytes": 2021581,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "opaque magenta; no alpha conversion performed"
+      },
+      "measurementMethod": {
+        "separation": "Full-width column projection inside each half-height row, separated by12 consecutive empty columns; no512px-wide clipping.",
+        "boundsPolicy": "Union of t160/180/200 bounds plus8px margin.",
+        "pivotPolicy": "Midpoint of two measured sole contact spans, at lower/near sole baseline. Constant scale across the clip."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            145,
+            62,
+            301,
+            431
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                145,
+                62,
+                301,
+                430
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                145,
+                62,
+                301,
+                431
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                145,
+                61,
+                301,
+                432
+              ]
+            }
+          ],
+          "rectPx": [
+            137,
+            53,
+            317,
+            448
+          ],
+          "pivotSourcePx": {
+            "x": 269.5,
+            "y": 493
+          },
+          "pivotPx": {
+            "x": 132.5,
+            "y": 440
+          },
+          "pivotInNominalCellPx": {
+            "x": 269.5,
+            "y": 493
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 167.5,
+                "y": 493
+              },
+              "contactSpanPx": [
+                145,
+                190
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 371.5,
+                "y": 486
+              },
+              "contactSpanPx": [
+                340,
+                403
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Complete masked body; two hands, two blades per gauntlet and one anatomical-right shoulder caster observed. No held sword or obvious extra limb.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        },
+        {
+          "index": 2,
+          "stage": "impact-recoil",
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            555,
+            88,
+            351,
+            404
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                555,
+                88,
+                351,
+                404
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                555,
+                88,
+                351,
+                404
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                555,
+                88,
+                351,
+                405
+              ]
+            }
+          ],
+          "rectPx": [
+            547,
+            80,
+            367,
+            421
+          ],
+          "pivotSourcePx": {
+            "x": 749.75,
+            "y": 492
+          },
+          "pivotPx": {
+            "x": 202.75,
+            "y": 412
+          },
+          "pivotInNominalCellPx": {
+            "x": 237.75,
+            "y": 492
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 649,
+                "y": 492
+              },
+              "contactSpanPx": [
+                626,
+                672
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 850.5,
+                "y": 486
+              },
+              "contactSpanPx": [
+                819,
+                882
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Backward head/chest recoil; two plausible hands and four gauntlet blades remain present. Fine finger anatomy not certified.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        },
+        {
+          "index": 3,
+          "stage": "maximum-recoil",
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1024,
+            107,
+            358,
+            385
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1024,
+                107,
+                358,
+                385
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1024,
+                107,
+                358,
+                385
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1024,
+                106,
+                358,
+                387
+              ]
+            }
+          ],
+          "rectPx": [
+            1016,
+            98,
+            374,
+            403
+          ],
+          "pivotSourcePx": {
+            "x": 1244.25,
+            "y": 492
+          },
+          "pivotPx": {
+            "x": 228.25,
+            "y": 394
+          },
+          "pivotInNominalCellPx": {
+            "x": 220.25,
+            "y": 492
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1150.5,
+                "y": 492
+              },
+              "contactSpanPx": [
+                1127,
+                1174
+              ],
+              "lowerFootBandWidthPx": 48
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1338,
+                "y": 486
+              },
+              "contactSpanPx": [
+                1312,
+                1364
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Maximum recoil: near hand partly opens while far hand remains curled. Blade housings remain on forearms, not held objects. No obviously duplicated hand; exact digits not certified.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        },
+        {
+          "index": 4,
+          "stage": "forward-low-recovery",
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            152,
+            622,
+            271,
+            345
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                152,
+                622,
+                271,
+                345
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                152,
+                622,
+                271,
+                345
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                152,
+                622,
+                271,
+                345
+              ]
+            }
+          ],
+          "rectPx": [
+            144,
+            614,
+            287,
+            361
+          ],
+          "pivotSourcePx": {
+            "x": 269.5,
+            "y": 967
+          },
+          "pivotPx": {
+            "x": 125.5,
+            "y": 353
+          },
+          "pivotInNominalCellPx": {
+            "x": 269.5,
+            "y": 455
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 175.5,
+                "y": 967
+              },
+              "contactSpanPx": [
+                152,
+                199
+              ],
+              "lowerFootBandWidthPx": 48
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 363.5,
+                "y": 960
+              },
+              "contactSpanPx": [
+                332,
+                395
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Low forward recovery; two fists and two blade pairs visible. Forearms cross the torso but remain separable. Head/caster tilt follows the crouch.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        },
+        {
+          "index": 5,
+          "stage": "rising-recovery",
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            602,
+            562,
+            302,
+            407
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                602,
+                562,
+                302,
+                407
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                602,
+                562,
+                302,
+                407
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                602,
+                562,
+                302,
+                407
+              ]
+            }
+          ],
+          "rectPx": [
+            594,
+            554,
+            318,
+            423
+          ],
+          "pivotSourcePx": {
+            "x": 725.5,
+            "y": 969
+          },
+          "pivotPx": {
+            "x": 131.5,
+            "y": 415
+          },
+          "pivotInNominalCellPx": {
+            "x": 213.5,
+            "y": 457
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 624.5,
+                "y": 969
+              },
+              "contactSpanPx": [
+                602,
+                647
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 826.5,
+                "y": 962
+              },
+              "contactSpanPx": [
+                795,
+                858
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Rises with two hands and four blades still attached to housings. No obvious floating weapon or missing limb observed.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        },
+        {
+          "index": 6,
+          "stage": "ready-recovered",
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1078,
+            542,
+            300,
+            427
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1078,
+                542,
+                300,
+                427
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1078,
+                542,
+                300,
+                427
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1078,
+                542,
+                300,
+                427
+              ]
+            }
+          ],
+          "rectPx": [
+            1070,
+            534,
+            316,
+            443
+          ],
+          "pivotSourcePx": {
+            "x": 1201.75,
+            "y": 969
+          },
+          "pivotPx": {
+            "x": 131.75,
+            "y": 435
+          },
+          "pivotInNominalCellPx": {
+            "x": 177.75,
+            "y": 457
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1101,
+                "y": 969
+              },
+              "contactSpanPx": [
+                1078,
+                1124
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1302.5,
+                "y": 963
+              },
+              "contactSpanPx": [
+                1271,
+                1334
+              ],
+              "lowerFootBandWidthPx": 70
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Recovered guard; two hands, two blade pairs and one shoulder caster observed. Transition to normal guard requires playback review.",
+          "status": "registration-proposal-not-art-approved",
+          "observedShoulderCannonCount": 1,
+          "observedMaskState": "masked",
+          "observedBladeConfiguration": "two blades per forearm gauntlet; empty hands"
+        }
+      ],
+      "checks": {
+        "frameCount": 6,
+        "rectanglesInsideSource": true,
+        "rectanglesDisjoint": true,
+        "thresholdCoverage": [
+          {
+            "threshold": 160,
+            "measuredForegroundPixels": 322481,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 180,
+            "measuredForegroundPixels": 323874,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 200,
+            "measuredForegroundPixels": 325546,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          }
+        ],
+        "actualFiguresOverlapObserved": false,
+        "nearFootWidthRangePx": [
+          47,
+          48
+        ],
+        "silhouetteHeightRangePx": [
+          345,
+          431
+        ],
+        "nominalRootXRangePx": [
+          177.75,
+          269.5
+        ],
+        "nominalRootYRangePx": [
+          455,
+          493
+        ],
+        "automaticRescaleRecommended": false,
+        "animationPlaybackVerified": false,
+        "anatomyCertified": false,
+        "cinemaFidelityCertified": false,
+        "promptMaxTotalHeightPx": 350,
+        "promptHeightLimitMet": false,
+        "promptMinimumMarginPx": 70,
+        "promptMarginMet": false,
+        "allSixPosesVisuallyDistinct": true,
+        "requestedUniformMagentaBackgroundMet": false
+      },
+      "actionReview": {
+        "requested": "Armored Fugitive2018: impact from screen right followed by recovery, six-frame one-shot.",
+        "observed": "Ready, backward recoil, maximum extension, low forward crouch, rising recovery and ready return are visually distinguishable. This is a hit-reaction candidate rather than a repeated idle.",
+        "recommendation": "One-shot frames1-6 then return to a separate ready/guard state. Do not loop impacts as an idle. Test timing at the3-to4 torso reversal.",
+        "limits": [
+          "Runtime playback and combat readability not verified here",
+          "Near hand opens in frame3 although prompt asked curled fists throughout; plausible response, explicit deviation",
+          "Perspective/contact thresholds shift the far foot contact midpoint; pivot is a measured proposal",
+          "Mask and exact wrist blade dimensions are adapted, no1:1 claim"
+        ]
+      },
+      "notes": [
+        "Source bitmap preserved verbatim from integrated OpenAI generation dataURL; no API key, no alpha conversion, no creative script edits.",
+        "Six silhouettes found using full-width row projection; regular512px cells are reference guides only.",
+        "Fugitive full armor/biomask variant2018; not Lab Escape, Assassin or Predator Killer. Official NECA reference screenshots were inspected.",
+        "Figures occupy345-431px in height rather than requested350px maximum, and margins are smaller than requested. Do not fit each frame to equal height.",
+        "Use one constant sprite scale. The height reduction in recoil/crouch comes from posture, not a request for rescaling.",
+        "Status remains draft-registration-only / usable for visual review, not gameplay-approved or anatomy/cinema-fidelity certified.",
+        "Actual background samples: corners232,11,237 /240,16,240 /229,33,235 /234,28,236; gutter247,4,250. Opaque nonuniform magenta, no fake checkerboard observed."
+      ],
+      "species": "yautja"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "source": "/workspace/generated_images/exec-3982e0b9-ea80-498b-b0e7-9114f0d2d1d9.png",
+  "sourceSha256": "658a0587a4e2ca496c950028569c595bc5fec3ee614d164c760225845d17fee8",
+  "bytes": 1736766,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 2,
+  "strategy": "row-first",
+  "status": "MEASURED_REQUIRES_VISUAL_REVIEW",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "y",
+      "row": 1,
+      "start": 495,
+      "end": 517,
+      "cut": 506
+    },
+    {
+      "axis": "x",
+      "row": 0,
+      "column": 1,
+      "start": 676,
+      "end": 821,
+      "cut": 748
+    },
+    {
+      "axis": "x",
+      "row": 1,
+      "column": 1,
+      "start": 672,
+      "end": 928,
+      "cut": 800
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        749,
+        507
+      ],
+      "visibleRect": [
+        332,
+        40,
+        344,
+        455
+      ],
+      "alphaPixels": 63215,
+      "borderPixels": 0,
+      "visiblePixelSha256": "9c727a5aff10f781cdb0967f1d29090fc10818f684a768c50ef324cb7dfaf04f",
+      "pivotCandidate": [
+        643.5,
+        495
+      ],
+      "visibleHeightCandidate": 455
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        748,
+        0,
+        788,
+        507
+      ],
+      "visibleRect": [
+        822,
+        40,
+        505,
+        454
+      ],
+      "alphaPixels": 72435,
+      "borderPixels": 0,
+      "visiblePixelSha256": "2699f2969fac2c97781cc2575b71043bdc16b1d10038606f55aa244c1030d60f",
+      "pivotCandidate": [
+        537,
+        494
+      ],
+      "visibleHeightCandidate": 454
+    },
+    {
+      "index": 2,
+      "row": 1,
+      "column": 0,
+      "rect": [
+        0,
+        506,
+        801,
+        518
+      ],
+      "visibleRect": [
+        328,
+        526,
+        344,
+        452
+      ],
+      "alphaPixels": 63607,
+      "borderPixels": 0,
+      "visiblePixelSha256": "7281d388577a891d611f64ff725df8239fd9d3dda3613ab6e4bf0bb5cad15d64",
+      "pivotCandidate": [
+        636.5,
+        472
+      ],
+      "visibleHeightCandidate": 452
+    },
+    {
+      "index": 3,
+      "row": 1,
+      "column": 1,
+      "rect": [
+        800,
+        506,
+        736,
+        518
+      ],
+      "visibleRect": [
+        929,
+        518,
+        315,
+        462
+      ],
+      "alphaPixels": 62390,
+      "borderPixels": 0,
+      "visiblePixelSha256": "c255ff797db45aeef658f408b1270b51a8e44899e8d0ebea7961716c5529af6f",
+      "pivotCandidate": [
+        410.5,
+        474
+      ],
+      "visibleHeightCandidate": 462
+    }
+  ],
+  "issues": [],
+  "alphaReview": {
+    "noiseFloor": 2,
+    "visiblePixels": 261647,
+    "opaquePixels": 203338,
+    "magentaPixels": 0,
+    "borderPixels": 0
+  },
+  "producerBodyReferenceCandidate": {
+    "frameIndex": 3,
+    "headRoi": [
+      1005,
+      585,
+      85,
+      90
+    ],
+    "headTopY": 594,
+    "soleY": 980,
+    "bodyHeightPx": 386,
+    "meaning": "Standing return pose, anatomical mask crown to soles; spear tip, cannon and dreadlocks excluded; verify before admission"
+  }
+}

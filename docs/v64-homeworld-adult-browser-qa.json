@@ -1,0 +1,141 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4184",
+  "phase": "adult",
+  "checks": [
+    {
+      "id": "residence-port-2",
+      "kind": "domestic",
+      "variant": "meal",
+      "atDoor": {
+        "x": 1075,
+        "y": 3409
+      },
+      "spawn": {
+        "x": 204,
+        "y": 156
+      },
+      "outside": {
+        "x": 1070,
+        "y": 3410
+      },
+      "routeDistance": 1129.2476493919642,
+      "input": "keyboard",
+      "dialogue": null
+    },
+    {
+      "id": "residence-port-1",
+      "kind": "domestic",
+      "variant": "rest",
+      "atDoor": {
+        "x": 498,
+        "y": 3376
+      },
+      "spawn": {
+        "x": 164,
+        "y": 136
+      },
+      "outside": {
+        "x": 510,
+        "y": 3370
+      },
+      "routeDistance": 566.804808140264,
+      "input": "gamepad",
+      "dialogue": null
+    },
+    {
+      "id": "residence-market-1",
+      "kind": "domestic",
+      "variant": "storage",
+      "atDoor": {
+        "x": 1824,
+        "y": 3207
+      },
+      "spawn": {
+        "x": 134,
+        "y": 116
+      },
+      "outside": {
+        "x": 1830,
+        "y": 3210
+      },
+      "routeDistance": 4073.5609343865067,
+      "input": "keyboard",
+      "dialogue": null
+    },
+    {
+      "id": "dock-control",
+      "kind": "civic",
+      "variant": "civic",
+      "atDoor": {
+        "x": 657,
+        "y": 3016
+      },
+      "spawn": {
+        "x": 269,
+        "y": 236
+      },
+      "outside": {
+        "x": 650,
+        "y": 3015
+      },
+      "routeDistance": 4291.573515680042,
+      "input": "keyboard",
+      "dialogue": "AMARRAGE\nOfficier des quais\n\n« Ton sas reste libre. Un convoi a rapporté une prise dont la marque devrait être scellée à la Maison de la Mémoire. »\n\nÉcouter les nouvelles du convoi.\n\nContre-enquête du convoi\n\nÀ obtenir durablement : rapport des Marches, rapport du Désert, première audience. Les visites seules ne valent pas rapport.\n\nTon sas reste libre. Un convoi a rapporté une prise dont la marque devrait être scellée à la Maison de la Mémoire.\nRevenir dans la salle"
+    },
+    {
+      "id": "market-armory",
+      "kind": "civic",
+      "variant": "civic",
+      "atDoor": {
+        "x": 1616,
+        "y": 2873
+      },
+      "spawn": {
+        "x": 269,
+        "y": 236
+      },
+      "outside": {
+        "x": 1610,
+        "y": 2876
+      },
+      "routeDistance": 4770.147059531093,
+      "input": "keyboard",
+      "dialogue": "ÉQUIPEMENT\nArtisane du marché\n\n« Les marques de clan règlent une commande ; l'honneur ne se dépense pas. Prépare tes armes ici ou à bord. »\n\nService partagé avec ton vaisseau : ton équipement et ta progression sont conservés.\n\nLes marques de clan règlent une commande ; l'honneur ne se dépense pas. Prépare tes armes ici ou à bord.\nAccéder au service\nRevenir dans la salle"
+    },
+    {
+      "id": "trophy-mausoleum",
+      "kind": "civic",
+      "variant": "civic",
+      "atDoor": {
+        "x": 917,
+        "y": 2080
+      },
+      "spawn": {
+        "x": 269,
+        "y": 236
+      },
+      "outside": {
+        "x": 920,
+        "y": 2085
+      },
+      "routeDistance": 1397.8900282461004,
+      "input": "keyboard",
+      "dialogue": "RECONNAISSANCE\nHéraut des prises\n\n« Montre ce que tu as réellement rapporté. Une prise étrangère ne deviendra pas ton exploit. »\n\nService partagé avec ton vaisseau : ton équipement et ta progression sont conservés.\n\nMontre ce que tu as réellement rapporté. Une prise étrangère ne deviendra pas ton exploit. Tes archives contiennent 0 prise(s) personnelle(s).\nAccéder au service\nRevenir dans la salle"
+    }
+  ],
+  "errors": [],
+  "events": [
+    {
+      "at": "2026-10-01T01:09:28.722Z",
+      "kind": "navigation",
+      "url": "http://127.0.0.1:4184/"
+    },
+    {
+      "at": "2026-10-01T01:09:29.107Z",
+      "kind": "navigation",
+      "url": "http://127.0.0.1:4184/"
+    }
+  ],
+  "scope": "Six actual keyboard/gamepad door crossings and physical exits; three domestic plans, three civic rooms and existing dialogues, pause and one mobile domestic view. No teleportation or real user saves. Geometry coverage is separately43 rooms."
+}

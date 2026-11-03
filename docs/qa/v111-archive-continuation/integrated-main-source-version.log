@@ -1,0 +1,7 @@
+Source: commit 96ba117a, merge public PR21, app/game/save.ts
+Commande lecture seule: git show 96ba117a:app/game/save.ts | rg -n 'SAVE_VERSION =|fieldToolIds:'
+Le module app/game/systems/fieldToolsV111.ts est identique à ce commit (git diff --exit-code: 0).
+
+87:export const SAVE_VERSION = 11;
+329:      fieldToolIds: [],
+1191:      fieldToolIds: normalizeFieldToolIdsV111(rawInventory.fieldToolIds),

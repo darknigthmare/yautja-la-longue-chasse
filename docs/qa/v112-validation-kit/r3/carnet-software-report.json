@@ -1,0 +1,127 @@
+{
+  "result": "OK",
+  "scope": "LOCAL_CARNET_SOFTWARE_ONLY",
+  "chromeVersion": "154.0.8037.57",
+  "nodeVersion": "v24.19.0",
+  "viewports": [
+    "390x844",
+    "1280x900"
+  ],
+  "criteriaAutomaticallyClosed": [],
+  "referenceReviewedDecisions": [
+    {
+      "target": "CHA112-02",
+      "status": "VALIDE_AUTOMATISE"
+    },
+    {
+      "target": "ROU112-06",
+      "status": "VALIDE_AUTOMATISE"
+    },
+    {
+      "target": "ROU112-05",
+      "status": "VALIDE_AUTOMATISE"
+    },
+    {
+      "target": "CHA112-05",
+      "status": "VALIDE_AUTOMATISE"
+    }
+  ],
+  "remainingCriteriaOpen": [
+    "REM112-01",
+    "REM112-02",
+    "REM112-03",
+    "REM112-04",
+    "REM112-05",
+    "REM112-06",
+    "REM112-07",
+    "REM112-08"
+  ],
+  "sourceGuard": {
+    "result": "UNCHANGED_DURING_RUN",
+    "files": [
+      {
+        "path": "public/aide/qualification-chasse.html",
+        "bytes": 41379,
+        "sha256": "65bd83cc3981e35f3ef38b00ae7caab8d0cb57840654d46897928a384a99b0fd"
+      },
+      {
+        "path": "scripts/qa-qualification-kit-v112.mjs",
+        "bytes": 18498,
+        "sha256": "857a092abde9663424b8a53d463b88a303fcf9d4bc19670e466c227edd34215c"
+      },
+      {
+        "path": "docs/hunt-mechanics-v112.json",
+        "bytes": 432273,
+        "sha256": "47b91ad876359968ffaa7a41c8413e9bc69ebf01715dd2a5884a69b466f44b5e"
+      },
+      {
+        "path": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+        "bytes": 740369,
+        "sha256": "39f9470537721b13766bf4436d0f43623e06d1bee8c860ec570a4ab1f4f867ec"
+      },
+      {
+        "path": "docs/qa/v112-hunt-continuation/hunt-review-v112.pdf",
+        "bytes": 1499808,
+        "sha256": "32f84c72fc965deb817b640b4cb8b17e837542a2b1dde6ed2a74c053b1461442"
+      },
+      {
+        "path": "public/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+        "bytes": 740369,
+        "sha256": "39f9470537721b13766bf4436d0f43623e06d1bee8c860ec570a4ab1f4f867ec"
+      },
+      {
+        "path": "public/aide/YAUTJA_V112_REVUES_IMPRIMABLE.pdf",
+        "bytes": 1499808,
+        "sha256": "32f84c72fc965deb817b640b4cb8b17e837542a2b1dde6ed2a74c053b1461442"
+      }
+    ]
+  },
+  "checks": [
+    "source criteria unchanged",
+    "four reference decisions match Reprise with and without JavaScript",
+    "all eight remaining qualifications stay open",
+    "45 novice observations empty by default",
+    "manual consent and revocation",
+    "invalid attestations rejected",
+    "Excel / LibreOffice distinction",
+    "reviewed JSON equals download",
+    "edit invalidates review",
+    "field labels and keyboard skip link",
+    "no horizontal page overflow",
+    "no automatic follow-up network requests",
+    "no browser storage",
+    "reload clears report",
+    "JavaScript disabled: six complete protocols expanded",
+    "JavaScript disabled: nine shared novice objectives and observations",
+    "JavaScript disabled: no result or export fabricated",
+    "voluntary XLSX/PDF downloads preserve exact bytes with and without JavaScript"
+  ],
+  "downloadChecks": [
+    {
+      "javaScriptEnabled": true,
+      "path": "/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 740369,
+      "sha256": "39f9470537721b13766bf4436d0f43623e06d1bee8c860ec570a4ab1f4f867ec"
+    },
+    {
+      "javaScriptEnabled": true,
+      "path": "/aide/YAUTJA_V112_REVUES_IMPRIMABLE.pdf",
+      "bytes": 1499808,
+      "sha256": "32f84c72fc965deb817b640b4cb8b17e837542a2b1dde6ed2a74c053b1461442"
+    },
+    {
+      "javaScriptEnabled": false,
+      "path": "/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 740369,
+      "sha256": "39f9470537721b13766bf4436d0f43623e06d1bee8c860ec570a4ab1f4f867ec"
+    },
+    {
+      "javaScriptEnabled": false,
+      "path": "/aide/YAUTJA_V112_REVUES_IMPRIMABLE.pdf",
+      "bytes": 1499808,
+      "sha256": "32f84c72fc965deb817b640b4cb8b17e837542a2b1dde6ed2a74c053b1461442"
+    }
+  ],
+  "htmlSha256": "65bd83cc3981e35f3ef38b00ae7caab8d0cb57840654d46897928a384a99b0fd",
+  "workbookSha256": "39f9470537721b13766bf4436d0f43623e06d1bee8c860ec570a4ab1f4f867ec"
+}

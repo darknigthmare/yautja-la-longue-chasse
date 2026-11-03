@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: the actual whiff observer proves real startup and45 effective frames even when clock calls sometimes produce no simulation tick
+ok 1 - the actual whiff observer proves real startup and45 effective frames even when clock calls sometimes produce no simulation tick
+  ---
+  duration_ms: 9.314786
+  type: 'test'
+  ...
+# Subtest: an input never consumed by the real simulation cannot masquerade as a successful whiff
+ok 2 - an input never consumed by the real simulation cannot masquerade as a successful whiff
+  ---
+  duration_ms: 1.659355
+  type: 'test'
+  ...
+# Subtest: a capture during the observed interval is refused immediately and remains in the failure trace
+ok 3 - a capture during the observed interval is refused immediately and remains in the failure trace
+  ---
+  duration_ms: 0.955618
+  type: 'test'
+  ...
+# Subtest: a health change during the observed interval is refused rather than hidden by a later recovery
+ok 4 - a health change during the observed interval is refused rather than hidden by a later recovery
+  ---
+  duration_ms: 1.023628
+  type: 'test'
+  ...
+# Subtest: a stopped or blocked simulation cannot pass and cannot make the actual observer wait forever
+ok 5 - a stopped or blocked simulation cannot pass and cannot make the actual observer wait forever
+  ---
+  duration_ms: 4.96773
+  type: 'test'
+  ...
+# Subtest: premature idle, oversized action clocks and frame-window overruns are rejected by the actual routine
+ok 6 - premature idle, oversized action clocks and frame-window overruns are rejected by the actual routine
+  ---
+  duration_ms: 2.910108
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 27.994481

@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "generator": "OpenAI built-in image_gen",
+  "nativeUnmodified": true,
+  "status": "visually-accepted",
+  "placementNote": "Base960x540, placements proposés dans les zones observées du P0 ; confirmer au harnais avec transformation exacte et pivots.",
+  "arenaId": "arena-177-phg-amazon",
+  "proposalId": "new-phg-amazon",
+  "sources": [
+    {
+      "url": "https://forum.predator.illfonic.com/t/hunting-party-dlc-pack-2/29712",
+      "supports": "IllFonic situe la première observation d'Amazon au cœur de la jungle brésilienne ; n'atteste ni cette rive ni sa date."
+    }
+  ],
+  "loreLimits": [
+    "Rive brésilienne originale, explicitement variante contemporaine d'exhibition ; le bateau moderne ne prétend pas dater une chasse biographique.",
+    "Oiseaux tropicaux et humain adulte anonyme ; pas de rhinocéros africain, tribu ou identité inventée."
+  ],
+  "events": [
+    {
+      "id": "ST042_BG_01",
+      "asset": "life-01.png",
+      "description": "Oiseaux tropicaux sur branche lointaine."
+    },
+    {
+      "id": "ST042_BG_02",
+      "asset": "life-02.png",
+      "description": "Barque moderne dans la variante contemporaine originale.",
+      "stageVariant": "contemporary-original",
+      "workbookCondition": "L'époque est choisie et déclarée contemporaine pour cette adaptation, sans prétendre qu'elle est attestée pour la chasse d'Amazon."
+    },
+    {
+      "id": "ST042_BG_03",
+      "asset": "life-03.png",
+      "description": "Feuillage réagissant à un mouvement discret du fond."
+    }
+  ],
+  "assets": [
+    {
+      "key": "p0",
+      "file": "p0-depth.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-3c347e4d-f906-4908-84d1-4e464dc74f2a.png",
+      "prompt": "Native1536x1024 opaque P0 depth-only handpainted2Dgame background arena177 Rivedelachasseuse. OriginalcontemporaryBrazilianjungle riverbend inspired published AmazonPredator HuntingGrounds biography, nothistoricalduelsite. Frontlateral levelcamera horizonnear55%, immenselayeredhumidbroadleafcanopy, buttressedtrees farbank, quietmuddygreentealriver, warmcloudedlateafternoonbeamstraversingfoliage. Leftmidupper barebranch forlaterbirds, centralright clearwaterchannel forlater SMALLmodernboat, rightmidbottomdarkgap inleafybank for separateanimatedfoliage. NO birds/boat/people/animals/fires/smoke/raindrops/giantsnakes/rhinos orotheranimatedprops drawninP0. Unmoving stillfoliageonly. Loweredge is distantrootwallandwaterdepth, NOT a playableforegroundsandbar/floor, no nearframingtrees. Lowcontrastmiddle forfighters, richdetailedpainterlytextures, no landmarks/unverifiedtribalcultureorweapons, no text/border. Entireoriginalgeography.",
+      "status": "visually-accepted",
+      "visualNotes": "Rive de jungle stratifiée, branche gauche libre et eau ouverte ; aucun bateau, animal ou acteur dessiné dans P0. La géographie reste originale.",
+      "path": "work-local/v60/generated/arena-177-phg-amazon/p0-depth.png",
+      "sha256": "2fb74eb080d36b43418b353a9e59e5fde33f1092956e3737c0c1c0a32dd86089",
+      "bytes": 3242072,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "alpha": {
+        "transparentPixels": 0,
+        "transparentRatio": 0,
+        "partialPixels": 0
+      }
+    },
+    {
+      "key": "life01",
+      "file": "life-01.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-81b6c4a0-5d97-4a0d-96be-3ef901645f4c.png",
+      "prompt": "Native truealpha1536x1024 PNG sprite sheet EXACT3cols2rows512cells. Two SMALL tropicalBrazilianbirds perched ononeSHORTbranch: a blue-and-yellowmacaw andasmallgreenparakeet, anatomicallycorrect twolegs/twowings/onehead each. Sixdistinctpainted2Danimationposes:1 bothrest;2 macawturnsheadleft parakeettiltsright;3 macawhalfopensonewing parakeetpreensbreast;4 macawfoldswing liftingtail parakeetstretchesneck;5 bothturntowardoneanother parakeetflutterswings;6 returnquietrest. Genuinebody/neck/wingarticulation,notsamepicturetranslationsormirrors. Samebranchanchorandscaleineachcell, entirecluster smallinsidecellx90..422 y90..422, generouspadding. Mutedjunglelight teal shadows naturalfeathercolors, handpaintedgame notphoto. Realalphaemptybackground no canopy/water/floor/glow/shadow/text/grid. No Africanwildlife, no magic, no attacks.",
+      "status": "visually-accepted",
+      "visualNotes": "Six comportements distincts de deux oiseaux tropicaux, plumes et membres cohérents. Couleurs plus saturées que P0 : motif à petite taille et dans son éclairage de fond, pas au premier plan.",
+      "placement": {
+        "x": 154,
+        "bottom": 165,
+        "height": 84,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-177-phg-amazon/life-01.png",
+      "sha256": "3a8fc8c697b92c0581198ef54fcbe79007ed857f63524902f7d167a998284884",
+      "bytes": 2087432,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1005388,
+        "transparentRatio": 0.6392084757486979,
+        "partialPixels": 567476
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            50,
+            49,
+            449,
+            471
+          ],
+          "pivot": [
+            256,
+            471
+          ],
+          "nonzeroAlpha24": 65536
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            48,
+            51,
+            455,
+            479
+          ],
+          "pivot": [
+            256,
+            479
+          ],
+          "nonzeroAlpha24": 70442
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            8,
+            61,
+            473,
+            477
+          ],
+          "pivot": [
+            256,
+            477
+          ],
+          "nonzeroAlpha24": 87754
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            58,
+            25,
+            465,
+            460
+          ],
+          "pivot": [
+            256,
+            460
+          ],
+          "nonzeroAlpha24": 77423
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            45,
+            92,
+            486,
+            470
+          ],
+          "pivot": [
+            256,
+            470
+          ],
+          "nonzeroAlpha24": 73684
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            66,
+            58,
+            461,
+            471
+          ],
+          "pivot": [
+            256,
+            471
+          ],
+          "nonzeroAlpha24": 66404
+        }
+      ]
+    },
+    {
+      "key": "life02",
+      "file": "life-02.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-b49b2496-0c11-41c1-8bfe-f5b9ffb6e1b8.png",
+      "prompt": "Native truealpha1536x1024 PNG spritesheet EXACT3cols2rows512cells. One SMALL contemporary ordinary aluminum riverboat with a compact outboardengine, ONE anonymous ADULT pilot wearingplainworkshirt andlifevest, no militarygear/weapons/insignia. ORIGINAL contemporaryBrazilianriver variant, notclaimedhistoricalAmazonPredatorbiographyscene. BoatfacesLEFT in allsixframes, no namedbrandorlettering. Sixdistinct articulateddrawings:1 pilotsitsneutral handontiller;2 turnsheadright checkingbehind andbendselbow;3 torsoleans forwardadjustingtiller engineyawsleft;4 pilotsitsupright andraisesopenfreehandbriefly;5 freearmlowers enginetilleranglesright;6 returnsneutral. Samehull, motorattachedtosternineveryframe, anatomicallycoherenttwoarms/twolegs, no duplicatepeople. Trueposechanges nottranslatedhullcopies. Entireboatpilotandmotor SMALL withinlocalx70..442 y110..405 eachcell, generouspadding, consistentwaterlinepivot[256,390]. Handpainted2Dgame mutedjunglelight, no waterrectangle/ripples/floor/castshadow/background/halos/text/grid.",
+      "status": "visually-accepted",
+      "visualNotes": "Six poses du pilote adulte et orientations du moteur différentes. Coque complète, gilet de sauvetage, aucune arme. Variante contemporaine explicitement choisie, pas reconstitution d'époque canonique.",
+      "placement": {
+        "x": 661,
+        "bottom": 356,
+        "height": 112,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-177-phg-amazon/life-02.png",
+      "sha256": "7fc6ad7aeb9a9bac12f352abe1f69173da0537b2b54bf41cef12ec57f642d873",
+      "bytes": 1524883,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1263601,
+        "transparentRatio": 0.8033758799235026,
+        "partialPixels": 309263
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            39,
+            205,
+            489,
+            408
+          ],
+          "pivot": [
+            256,
+            408
+          ],
+          "nonzeroAlpha24": 43312
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            27,
+            200,
+            470,
+            409
+          ],
+          "pivot": [
+            256,
+            409
+          ],
+          "nonzeroAlpha24": 42957
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            5,
+            215,
+            463,
+            409
+          ],
+          "pivot": [
+            256,
+            409
+          ],
+          "nonzeroAlpha24": 44016
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            46,
+            142,
+            491,
+            366
+          ],
+          "pivot": [
+            256,
+            366
+          ],
+          "nonzeroAlpha24": 44474
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            33,
+            162,
+            479,
+            366
+          ],
+          "pivot": [
+            256,
+            366
+          ],
+          "nonzeroAlpha24": 42954
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            12,
+            159,
+            448,
+            363
+          ],
+          "pivot": [
+            256,
+            363
+          ],
+          "nonzeroAlpha24": 41830
+        }
+      ]
+    },
+    {
+      "key": "life03",
+      "file": "life-03.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-18f63541-ba3a-419c-aeb1-51776873135c.png",
+      "prompt": "Create nativealphaPNG1536x1024 exact3columns2rows six512cells. One SMALL cluster ofBrazilianrainforestfernfronds andwidebroadleaves with visible shortstems butno soil. Sixgenuinelydifferenthandpainted2Danimationdrawings ofleavesrespondingtoadiscreetunseenpassingmovement:1 restupright;2 leftfrondbendsrightatstem joints;3 centralbroadleaf foldsaside withundersideshowing;4 otherfrondsrecoiloppositedirection;5 leavesbounceback withsmallerbend;6 settlealmostrest. Distinctgeometricalbending andchangingvisibleleafsurfaces, notentireobjecttranslation/recolor/mirror. Sameplantstructure, naturalbotanynoteyes/monster, no visiblecreature,no magicglow. Allsixclusters centeredlocal256 bottom425, entireplantinside x70..442 y70..442 withwidealphamargins. Mutedolive/tealgreen withsubtlelateafternoongoldedges tofitrearjunglebank. Trueemptytransparentbackground, no terrain/pot/tree/bird/people/floorcastshadow/gradienthalo/text/grid. Passivefarbackgroundlife.",
+      "status": "visually-accepted",
+      "visualNotes": "Six flexions réelles des tiges et feuilles ; faces inférieures visibles et contours changés. Pas d'yeux, créature ou magie ajoutée.",
+      "placement": {
+        "x": 841,
+        "bottom": 337,
+        "height": 95,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-177-phg-amazon/life-03.png",
+      "sha256": "42a55b867a5b9354ce6ee198b90a4836789ebfb7d1a20b683704d428edf809cb",
+      "bytes": 2470750,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 793339,
+        "transparentRatio": 0.5043913523356119,
+        "partialPixels": 779525
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            26,
+            33,
+            495,
+            484
+          ],
+          "pivot": [
+            256,
+            484
+          ],
+          "nonzeroAlpha24": 105656
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            35,
+            71,
+            482,
+            492
+          ],
+          "pivot": [
+            256,
+            492
+          ],
+          "nonzeroAlpha24": 96147
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            11,
+            66,
+            478,
+            486
+          ],
+          "pivot": [
+            256,
+            486
+          ],
+          "nonzeroAlpha24": 102763
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            26,
+            70,
+            497,
+            460
+          ],
+          "pivot": [
+            256,
+            460
+          ],
+          "nonzeroAlpha24": 94730
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            36,
+            34,
+            481,
+            476
+          ],
+          "pivot": [
+            256,
+            476
+          ],
+          "nonzeroAlpha24": 99150
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            20,
+            40,
+            479,
+            477
+          ],
+          "pivot": [
+            256,
+            477
+          ],
+          "nonzeroAlpha24": 101964
+        }
+      ]
+    }
+  ]
+}

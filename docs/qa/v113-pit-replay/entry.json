@@ -1,0 +1,146 @@
+{
+  "status": "REAL_B2_EXPORTED_REPLAY_PRESERVED",
+  "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+  "buildId": "OzWVxNAbS8mWbL_Pue9Zg",
+  "canonicalReport": {
+    "path": "docs/v113-pit-validation.json",
+    "bytes": 1379421,
+    "sha256": "e2440ed86acfdb81a1f5d68147e92993fa4636939586666d078055d6eb1eff6c"
+  },
+  "canonicalRawObservationKind": "actual-victory-and-replay",
+  "replay": {
+    "path": "docs/qa/v113-pit-replay/feral-hunter-vs-scar-actual-replay.json",
+    "bytes": 1047,
+    "sha256": "1de1cc40bbc998da8a220b8b83f86456a5292733eb4c2c83c73e560406459bf2"
+  },
+  "executedObservation": {
+    "kind": "actual-victory-and-replay",
+    "terminal": {
+      "frame": 1971,
+      "phase": "match-result",
+      "combatPhase": "match-over",
+      "terminal": "true",
+      "blocked": "true",
+      "recipe": "workbook-v112",
+      "throw": null,
+      "forwardThrow": null,
+      "facings": [
+        1,
+        -1
+      ],
+      "positions": [
+        {
+          "x": 824.5,
+          "y": 0
+        },
+        {
+          "x": 878.5,
+          "y": 0
+        }
+      ],
+      "actions": [
+        {
+          "phase": "active",
+          "normalMove": "5H",
+          "workbookMove": null,
+          "actionFrame": 16,
+          "connected": true,
+          "superConfirmed": null
+        },
+        {
+          "phase": "knockdown",
+          "normalMove": null,
+          "workbookMove": null,
+          "actionFrame": null,
+          "connected": null,
+          "superConfirmed": null
+        }
+      ],
+      "life": [
+        960,
+        0
+      ],
+      "meter": [
+        1000,
+        1000
+      ],
+      "inventory": [
+        {
+          "item": "mine",
+          "status": "spent",
+          "effectId": null
+        },
+        {
+          "item": "shuriken",
+          "status": "spent",
+          "effectId": null
+        }
+      ]
+    },
+    "replayed": {
+      "frame": 1971,
+      "phase": "match-result",
+      "combatPhase": "match-over",
+      "terminal": "true",
+      "blocked": "true",
+      "recipe": "workbook-v112",
+      "throw": null,
+      "forwardThrow": null,
+      "facings": [
+        1,
+        -1
+      ],
+      "positions": [
+        {
+          "x": 824.5,
+          "y": 0
+        },
+        {
+          "x": 878.5,
+          "y": 0
+        }
+      ],
+      "actions": [
+        {
+          "phase": "active",
+          "normalMove": "5H",
+          "workbookMove": null,
+          "actionFrame": 16,
+          "connected": true,
+          "superConfirmed": null
+        },
+        {
+          "phase": "knockdown",
+          "normalMove": null,
+          "workbookMove": null,
+          "actionFrame": null,
+          "connected": null,
+          "superConfirmed": null
+        }
+      ],
+      "life": [
+        960,
+        0
+      ],
+      "meter": [
+        1000,
+        1000
+      ],
+      "inventory": [
+        {
+          "item": "mine",
+          "status": "spent",
+          "effectId": null
+        },
+        {
+          "item": "shuriken",
+          "status": "spent",
+          "effectId": null
+        }
+      ]
+    },
+    "archive": "feral-hunter-vs-scar-actual-replay.json",
+    "sha256": "1de1cc40bbc998da8a220b8b83f86456a5292733eb4c2c83c73e560406459bf2"
+  },
+  "scope": "Only the unique actual FeralScar export produced by the unchanged B2 driver. The second orientation has no second victory or replay export. Original exact JSON bytes are preserved; driver verified engine V17 and native public replay health, stock and final frame. B1 export stays diagnostic separately."
+}

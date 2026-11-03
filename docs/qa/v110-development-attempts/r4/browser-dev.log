@@ -1,0 +1,13 @@
+PASS Resident normal nearby interaction opens the actual visible Convoyeur
+PASS Resident normal subject click shows only a known local public destination
+PASS Resident inactivity suspension disables all subjects and retained advice
+PASS Resident disabled advice cannot open Atlas or alter durable Homeworld progress
+PASS Resident ordinary advice click opens the existing destination in the real Atlas
+PASS Resident advice creates no discovery, permission, inventory, trophy or profile reward
+Error: Bounded actual keyboard walk timed out: {"target":{"x":7500,"y":3474.5},"actor":{"x":7490,"y":3475,"level":"0"}}
+    at steer (file:///workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:120:13)
+    at async nativeWalk (file:///workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:127:60)
+    at async journey (file:///workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:261:7)
+    at async file:///workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:288:30
+PASS Executed sources unchanged
+{"status":"FAIL","checks":8,"captures":4,"output":"/workspace/yautja-homeworld-v110/outputs/qa-v110-development-r4-residents-arrival"}

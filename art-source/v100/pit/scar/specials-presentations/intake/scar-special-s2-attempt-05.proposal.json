@@ -1,0 +1,273 @@
+{
+  "fighterId": "scar",
+  "actionId": "M_F003_S2",
+  "appearanceId": "runtime-default",
+  "atlasId": "scar-special-s2-body-v100",
+  "clipIds": [
+    "workbook.M_F003_S2"
+  ],
+  "source": {
+    "planPath": "app/game/data/pitWorkbookAnimationPlanV100.json",
+    "planSha256": "e320476807a1e5c36bb82202d243761097497e48b4d893884a8771bbf01f3141",
+    "sheet": "05_MOVES_PROPOSES",
+    "cell": "Q7",
+    "sourceText": "M_F003_S2 · Étoile déployée\nCommande 214+S · Selon trajectoire / prototype · Spécial\nArme : Shuriken\nOuverture mécanique des branches dans la main ; lancer et rotation lisible. Ne pas substituer le disque circulaire.\nPréparation / actif / récupération : 23 / 4 / 29 images · dégâts 90 · coût 25 %\nContre-jeu : Esquiver la ligne ; projectile dissipé après contact selon les règles du duel.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nCorps : F003_ACT_S2\nEntité : E_F003_shuriken · équipement : W_F003_shuriken\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+    "phaseTicks": {
+      "startup": 23,
+      "active": 4,
+      "recovery": 29
+    }
+  },
+  "intake": {
+    "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s2-attempt-05.png",
+    "sha256": "fa8e84622de3acde190f6cd564c28fc82dc082f681ac518ff8ff2b5c036af752",
+    "measurement": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s2-attempt-05.measurement.json",
+    "prompt": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s2-attempt-05.prompt.txt",
+    "references": [
+      {
+        "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s2-attempt-04.png",
+        "sha256": "e4853a8c22a7ec089b7e183a20883122066f6ec43e4c615f24d082919e321bf3"
+      }
+    ]
+  },
+  "definition": {
+    "fighterId": "scar",
+    "bodyHeightPx": 233,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-special-s2-body-v100",
+      "characterId": "scar",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-special-s2-page-01",
+          "src": "/game/sprites/v100/pit/scar/scar-special-s2-corrected.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.M_F003_S2",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                0,
+                0,
+                337,
+                448
+              ],
+              "pivot": [
+                166,
+                388
+              ],
+              "durationTicks": 11
+            },
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                336,
+                0,
+                343,
+                448
+              ],
+              "pivot": [
+                175,
+                388
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                678,
+                0,
+                346,
+                448
+              ],
+              "pivot": [
+                179,
+                390
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                0,
+                447,
+                362,
+                339
+              ],
+              "pivot": [
+                160,
+                286
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                361,
+                447,
+                349,
+                339
+              ],
+              "pivot": [
+                150,
+                288
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                709,
+                447,
+                315,
+                339
+              ],
+              "pivot": [
+                144,
+                288
+              ],
+              "durationTicks": 15
+            }
+          ]
+        },
+        {
+          "id": "workbook.M_F003_S2",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                0,
+                785,
+                352,
+                357
+              ],
+              "pivot": [
+                171,
+                293
+              ],
+              "durationTicks": 11
+            },
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                351,
+                785,
+                341,
+                357
+              ],
+              "pivot": [
+                186,
+                293
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                691,
+                785,
+                333,
+                357
+              ],
+              "pivot": [
+                171,
+                293
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                0,
+                1141,
+                350,
+                395
+              ],
+              "pivot": [
+                199,
+                282
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                349,
+                1141,
+                353,
+                395
+              ],
+              "pivot": [
+                186,
+                283
+              ],
+              "durationTicks": 14
+            },
+            {
+              "pageId": "scar-special-s2-page-01",
+              "rect": [
+                701,
+                1141,
+                323,
+                395
+              ],
+              "pivot": [
+                160,
+                282
+              ],
+              "durationTicks": 15
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "Native BODY artwork, source action choreography, alpha separation and manually reviewed foot pivots; not confirmation of combat mechanics.",
+    "sourceSha256": "fa8e84622de3acde190f6cd564c28fc82dc082f681ac518ff8ff2b5c036af752",
+    "notes": [
+      "Six independently articulated drawings for each facing, with preparation, equipment action and recovery.",
+      "Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels.",
+      "One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting.",
+      "Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips.",
+      "Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing.",
+      "BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate.",
+      "Corrected replacement for suspended S2 admission: ONE shuriken only. After extraction, hip slots are plain empty straps in every postdraw pose including left release and both returns. Actual hand opening, throwing, followthrough and reset remain six native drawings per facing. No restocking at belt, invented second device/holster explanation, inventory or projectile mechanic. First left reach is partly occluded by its hand; later half-open to fully-open weapon stages remain visible. This candidate uses a new public filename so the previously admitted PNG is preserved byte-identically."
+    ]
+  },
+  "bodyReferenceReview": [
+    {
+      "pageId": "scar-special-s2-page-01",
+      "frameIndex": 0,
+      "maskCrownAbsolute": [
+        183,
+        155
+      ],
+      "soleGroundAbsoluteY": 388,
+      "bodyHeightPx": 233,
+      "method": "Fixed neutral crown/sole reference checked by read-only alpha ROI; no per-pose fit."
+    }
+  ]
+}

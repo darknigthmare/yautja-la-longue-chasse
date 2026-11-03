@@ -1,0 +1,24 @@
+{
+  "scope": "Two failed frozen whole-recipe attempts at the first-whiff check; original results retained without relabelling. The exploratory observation is separate, non-certifying and records a real TH_B startup then45 effective frames to recovery.",
+  "runtimeCommit": "433ca03c651aad52de1cae02926152f4abfb4da3",
+  "buildId": "NRapDZCMK0dVatwXlwZcw",
+  "attempts": [
+    {
+      "attempt": "initial",
+      "rawSha256": "cde6d7b7b510aa636295a3f8cd3c2306407e6407a1a4d36777a5ee937981c3aa",
+      "rawBytes": 582977,
+      "gzipSha256": "467af08df041835efa833736e7f9b921229f41fcfac13321e49c6524f42479d3",
+      "status": "FAIL",
+      "certificate": false
+    },
+    {
+      "attempt": "byte-identical-retry",
+      "rawSha256": "de210e70635b544c222cf8d8d1323b51c2ce3146949fb0b70b983f7213589685",
+      "rawBytes": 582984,
+      "gzipSha256": "76adf296795f944682b14372fecd19e7bc00e6c3f105d7c56f59bf17a1369d85",
+      "status": "FAIL",
+      "certificate": false
+    }
+  ],
+  "next": "Strengthen the first-whiff recipe to require an observed start and bounded effective-frame recovery, retaining zero-target/zero-damage checks; new freeze and production build before complete V112 certificates."
+}

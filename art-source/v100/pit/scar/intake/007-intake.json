@@ -1,0 +1,23 @@
+{
+  "id": "scar-v100-007",
+  "generator": "OpenAI image_gen",
+  "original": "art-source/v100/pit/scar/intake/007-scar-5M-original.png",
+  "generatedOriginal": "/workspace/generated_images/exec-29e0833b-1d4f-4b07-8c10-93def0901cd0.png",
+  "prompt": "007-prompt.txt",
+  "sourceCells": [
+    "05_MOVES_PROPOSES!E7"
+  ],
+  "fighterId": "scar",
+  "appearanceId": "runtime-default",
+  "transparentBackgroundRequested": true,
+  "sha256": "584710a88e4266ae350dd7cc199369afd281639370ec062af5389891c3a3a12e",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 1616123,
+  "status": "rejected-crop",
+  "decision": "Missing true alpha gutters; also no confident distinct backhand.",
+  "referenceImages": [
+    "public/game/sprites/v34/pit/scar/scar-idle-v34.png",
+    "public/game/sprites/v34/pit/scar/scar-medium-v34.png"
+  ]
+}

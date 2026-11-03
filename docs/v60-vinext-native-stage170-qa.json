@@ -1,0 +1,176 @@
+{
+  "status": "PASS",
+  "surface": "full-application-public-roster-stage-duel-flow",
+  "checkedAt": "2026-09-30T15:57:31.467Z",
+  "url": "http://127.0.0.1:4187",
+  "version": "V60",
+  "complete25StageGate": false,
+  "targets": [
+    "arena-170-gotham-bloodties"
+  ],
+  "cases": [
+    "desktop"
+  ],
+  "sourceHashes": {
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "6f84b78b48faacbcbfaafb749f7547571a4dbb857b5b5afd722bb96896274600",
+    "app/game/PitCanvas.tsx": "d3d7773f8edef0e07a44eae28a7281608d973bce72e270faf8c15ae390006601",
+    "scripts/verify-pit-stage-life-v60.mjs": "5ff5c7b4e58ebe1be0e69c7b86d43dbdf7d8e7acfa74bd20a024458cc95a7cda"
+  },
+  "checks": [
+    {
+      "name": "public-movement-reveals-background",
+      "before": [
+        {
+          "x": 300,
+          "y": 0
+        },
+        {
+          "x": 660,
+          "y": 0
+        }
+      ],
+      "after": [
+        {
+          "x": 154.3,
+          "y": 0
+        },
+        {
+          "x": 815,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "name": "arena-170-gotham-bloodties-pause",
+      "frame": 1380,
+      "nativeFrames": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "arena-170-gotham-bloodties-application",
+      "loadedPaths": [
+        "/game/sprites/v60/pit-life/arena-170-gotham-bloodties/life-01.png",
+        "/game/sprites/v60/pit-life/arena-170-gotham-bloodties/life-02.png",
+        "/game/sprites/v60/pit-life/arena-170-gotham-bloodties/life-03.png"
+      ],
+      "nativeFrames": [
+        {
+          "eventId": "life-01",
+          "src": "/game/sprites/v60/pit-life/arena-170-gotham-bloodties/life-01.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "life-02",
+          "src": "/game/sprites/v60/pit-life/arena-170-gotham-bloodties/life-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "life-03",
+          "src": "/game/sprites/v60/pit-life/arena-170-gotham-bloodties/life-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bag": [
+        {
+          "eventId": "life-03",
+          "firstObservedRoundFrame": 1356
+        },
+        {
+          "eventId": "life-02",
+          "firstObservedRoundFrame": 2384
+        },
+        {
+          "eventId": "life-01",
+          "firstObservedRoundFrame": 3617
+        }
+      ],
+      "savedBytesUnchanged": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "arena-170-gotham-bloodties-selection.png",
+      "sha256": "f96d364944fa17d7ffe8aec68a44644d0b3052eaeea0ef9903af1adf68e3ba09",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-170-gotham-bloodties-rest.png",
+      "sha256": "3fb1feaabe9a00b84d9eff2e5675af40a98cb4257ba5875c39508227719cadff",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-170-gotham-bloodties-fighters-apart.png",
+      "sha256": "399cbcd7a41ec20e1f09f235d04e019c95d3aee23e6ab29a2c2e856aa6c18f92",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-170-gotham-bloodties-paused.png",
+      "sha256": "6e0b51e8ef9aa6c5b578d2d5d84d6022e455a6bef60e65c3b8c0f1bd02099c29",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-170-gotham-bloodties-event-0.png",
+      "sha256": "ffe725c3eee8c3326417a603e3f02cbd8bcac2643b2606ad97fabedd3e27fa4a",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-170-gotham-bloodties-event-1.png",
+      "sha256": "97000577b0017165d67c91edb345467e274b69d50dbe25aa7da823ca89b46eb6",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-170-gotham-bloodties-event-2.png",
+      "sha256": "834b1a7823c06a3305ddada1dd9c6bba3c374908f2cffb362d5b07f56a7f0388",
+      "visualReview": "pending-separate-image-inspection"
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "failedRequests": [],
+  "limitations": [
+    "Browser timer control advances the normal simulation; no combat state or schedule was injected.",
+    "The compositor/alpha/native-pixel gates remain separate.",
+    "Screenshots require explicit independent visual review.",
+    "Mobile checks emulate Chromium, not physical devices."
+  ],
+  "visualReview": {
+    "status": "accepted",
+    "reviewer": "v60_stage_runtime_audit",
+    "notes": "Public selection lists186 playable stages and displays the composed stage preview. Fullscreen duel keeps HUD clear; after real player movement police are visible on the left dock, crane remains suspended under its beam and anonymous watcher rests on the right balcony. Native event captures show distinct poses and pause dialog is readable. This is one desktop stage on Vinext, not the25-stage Next gate or mobile coverage.",
+    "captureHashes": {
+      "arena-170-gotham-bloodties-selection.png": "f96d364944fa17d7ffe8aec68a44644d0b3052eaeea0ef9903af1adf68e3ba09",
+      "arena-170-gotham-bloodties-fighters-apart.png": "399cbcd7a41ec20e1f09f235d04e019c95d3aee23e6ab29a2c2e856aa6c18f92",
+      "arena-170-gotham-bloodties-event-0.png": "ffe725c3eee8c3326417a603e3f02cbd8bcac2643b2606ad97fabedd3e27fa4a",
+      "arena-170-gotham-bloodties-event-1.png": "97000577b0017165d67c91edb345467e274b69d50dbe25aa7da823ca89b46eb6",
+      "arena-170-gotham-bloodties-event-2.png": "834b1a7823c06a3305ddada1dd9c6bba3c374908f2cffb362d5b07f56a7f0388",
+      "arena-170-gotham-bloodties-paused.png": "6e0b51e8ef9aa6c5b578d2d5d84d6022e455a6bef60e65c3b8c0f1bd02099c29"
+    }
+  }
+}

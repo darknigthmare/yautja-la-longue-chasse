@@ -1,0 +1,172 @@
+TAP version 13
+# Subtest: V112 actual Hub preview retains the occupied saved checkpoint and all seven draft/actor references while ordinary position saves remain blocked
+ok 1 - V112 actual Hub preview retains the occupied saved checkpoint and all seven draft/actor references while ordinary position saves remain blocked
+  ---
+  duration_ms: 141.761582
+  type: 'test'
+  ...
+# Subtest: V112 actual Hub adopts only its submitted exact proposal when a successful write receives a delayed acknowledgement
+ok 2 - V112 actual Hub adopts only its submitted exact proposal when a successful write receives a delayed acknowledgement
+  ---
+  duration_ms: 193.059402
+  type: 'test'
+  ...
+# Subtest: V112 an unrelated incoming Save or missing exact backup cannot acknowledge a submitted restoration
+ok 3 - V112 an unrelated incoming Save or missing exact backup cannot acknowledge a submitted restoration
+  ---
+  duration_ms: 666.608329
+  type: 'test'
+  ...
+# Subtest: V112 actual Hub backup/save quota and a throwing persistence host retain every actor, room, level and draft reference; retry commits once
+ok 4 - V112 actual Hub backup/save quota and a throwing persistence host retain every actor, room, level and draft reference; retry commits once
+  ---
+  duration_ms: 484.313114
+  type: 'test'
+  ...
+# Subtest: V112 actual Hub delayed confirmation refuses owner replacement, a changed actor, hidden document or replaced operation bytes
+ok 5 - V112 actual Hub delayed confirmation refuses owner replacement, a changed actor, hidden document or replaced operation bytes
+  ---
+  duration_ms: 321.749278
+  type: 'test'
+  ...
+# Subtest: V112 actual Hub remote study and parked object confirmations preserve the exact free actor/room/level/checkpoint
+ok 6 - V112 actual Hub remote study and parked object confirmations preserve the exact free actor/room/level/checkpoint
+  ---
+  duration_ms: 9226.698037
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-v104-played-blocked-fixture.json preserves coupled documents and exact original bytes
+ok 7 - V112 genuine played receipt v112-v104-played-blocked-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 621.635482
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-v105-walking-fixture.json preserves coupled documents and exact original bytes
+ok 8 - V112 genuine played receipt v112-reviewed-v105-walking-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 45.573792
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-cargo-wide-carried-fixture.json preserves coupled documents and exact original bytes
+ok 9 - V112 genuine played receipt v112-reviewed-cargo-wide-carried-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 45.269694
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-cargo-wide-ground-fixture.json preserves coupled documents and exact original bytes
+ok 10 - V112 genuine played receipt v112-reviewed-cargo-wide-ground-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 63.874736
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-archive106-carried-fixture.json preserves coupled documents and exact original bytes
+ok 11 - V112 genuine played receipt v112-reviewed-archive106-carried-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 30.655714
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-archive106-ground-fixture.json preserves coupled documents and exact original bytes
+ok 12 - V112 genuine played receipt v112-reviewed-archive106-ground-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 32.523431
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-comparison107-carried-fixture.json preserves coupled documents and exact original bytes
+ok 13 - V112 genuine played receipt v112-reviewed-comparison107-carried-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 30.434859
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-comparison107-ground-fixture.json preserves coupled documents and exact original bytes
+ok 14 - V112 genuine played receipt v112-reviewed-comparison107-ground-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 36.789021
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-continuation-carried-fragment-fixture.json preserves coupled documents and exact original bytes
+ok 15 - V112 genuine played receipt v112-reviewed-continuation-carried-fragment-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 42.280351
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-carried-plaque-fixture.json preserves coupled documents and exact original bytes
+ok 16 - V112 genuine played receipt v112-reviewed-carried-plaque-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 32.143936
+  type: 'test'
+  ...
+# Subtest: V112 parked wide cargo cannot be restored onto its conserved owner; the actual native motor can leave afterwards
+ok 17 - V112 parked wide cargo cannot be restored onto its conserved owner; the actual native motor can leave afterwards
+  ---
+  duration_ms: 10236.142459
+  type: 'test'
+  ...
+# Subtest: V112 a schema-boundary512-point trace compacts safely before its declared geometry break without doubling interruptions
+ok 18 - V112 a schema-boundary512-point trace compacts safely before its declared geometry break without doubling interruptions
+  ---
+  duration_ms: 33.200982
+  type: 'test'
+  ...
+# Subtest: V112 revision and interruption bounds refuse the whole proposal without changing any supplied receipt
+ok 19 - V112 revision and interruption bounds refuse the whole proposal without changing any supplied receipt
+  ---
+  duration_ms: 17352.089414
+  type: 'test'
+  ...
+# Subtest: V112 continuation resume attaches a nearby real checkpoint and its carried fragment while immutable B stays exact
+ok 20 - V112 continuation resume attaches a nearby real checkpoint and its carried fragment while immutable B stays exact
+  ---
+  duration_ms: 55.459257
+  type: 'test'
+  ...
+# Subtest: V112 reproduces the pinned old543-step occupied checkpoint then previews a local geometry migration without changing one input byte
+ok 21 - V112 reproduces the pinned old543-step occupied checkpoint then previews a local geometry migration without changing one input byte
+  ---
+  duration_ms: 113.992807
+  type: 'test'
+  ...
+# Subtest: V112 confirmation writes an exact readable backup before one atomic campaign write and makes real K17 resumption possible
+ok 22 - V112 confirmation writes an exact readable backup before one atomic campaign write and makes real K17 resumption possible
+  ---
+  duration_ms: 125.579021
+  type: 'test'
+  ...
+# Subtest: V112 quota, unreadable backup and conflicting retained bytes refuse before a campaign write; retry keeps the original copy
+ok 23 - V112 quota, unreadable backup and conflicting retained bytes refuse before a campaign write; retry keeps the original copy
+  ---
+  duration_ms: 250.106698
+  type: 'test'
+  ...
+# Subtest: V112 an owner, actor, document, availability or nonce change invalidates confirmation before it can mutate a campaign
+ok 24 - V112 an owner, actor, document, availability or nonce change invalidates confirmation before it can mutate a campaign
+  ---
+  duration_ms: 126.966756
+  type: 'test'
+  ...
+# Subtest: V112 a genuinely free actor remains at its checkpoint while its remote interrupted study receives only a local anchor migration
+ok 25 - V112 a genuinely free actor remains at its checkpoint while its remote interrupted study receives only a local anchor migration
+  ---
+  duration_ms: 6678.214762
+  type: 'test'
+  ...
+# Subtest: V112 a genuinely parked and documented piece is migrated locally without moving its free owner or granting a pickup/provenance
+ok 26 - V112 a genuinely parked and documented piece is migrated locally without moving its free owner or granting a pickup/provenance
+  ---
+  duration_ms: 3820.35421
+  type: 'test'
+  ...
+# Subtest: V112 real resume within the admitted four-unit range attaches the exact active checkpoint without fabricating walking
+ok 27 - V112 real resume within the admitted four-unit range attaches the exact active checkpoint without fabricating walking
+  ---
+  duration_ms: 45.130734
+  type: 'test'
+  ...
+1..27
+# tests 27
+# suites 0
+# pass 27
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 31217.337216

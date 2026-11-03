@@ -1,0 +1,24 @@
+{
+  "id": "feral-special-clemence-attempt-03a-left",
+  "actionId": "CIN_F006_CLEMENCE",
+  "sourceCell": "07_PRESENTATIONS!J10",
+  "part": "A",
+  "side": "left",
+  "columns": 2,
+  "rows": 2,
+  "referenced_image_paths": [
+    "/workspace/generated_images/exec-67ddd8a5-30b1-4a74-9330-01ee56395c16.png"
+  ],
+  "prompt": "Repair ONE missing shield in this EXISTING native transparent1536x1024 four-scene mercy atlas. Preserve all4 whole-body poses, spear, case, mannequin, dropped blade, scale, true alpha and margins. Change ONLY the LOWER-RIGHT scene: the existing extended OPEN PALM toward imageLEFT is Feral's anatomical LEFT hand. Restore exactly ONE SAME ROUND RIBBED SHIELD attached to that LEFT FOREARM, on its outside facing camera, between left elbow and wrist (rough center image1270,700). The LEFT hand remains openly visible at image1200,675 giving space to the unhurt mannequin; mount/tilt the shield BEHIND/above that palm on the forearm so the gesture is still clear. It must be the same round bronze rim and radial ribbed disc seen on LEFT forearm in the other3cells, not a new weapon. The shield is FIXED to the LEFT forearm continuously, never stored, never dropped, never transferred to the trailing RIGHT arm that holds the long spear behind him. Keep exactly ONE intact spear in RIGHT hand, no wristblade tips, no duplicates. Do not move/erase the existing sealed case on the ground, mannequin or dropped training sword in this last scene. The other3cells are already correct and must keep their poses and left-arm shield unchanged. No reorientation, mirror, extra arm, background, floor, shadow, glow, caption or crop. Complete silhouettes separated inside their existing cells. This is a nonlethal source scene study, no actual game mechanics.",
+  "source": "/workspace/generated_images/exec-07c439ed-441b-498f-b08c-7b0a0144bc3d.png",
+  "sha256": "021a41b3caae8af44b72dcf81e751829af574a0742e8a60731d05607454cedaa",
+  "bytes": 2305607,
+  "width": 1536,
+  "height": 1024,
+  "sourcePlan": "app/game/data/pitWorkbookAnimationPlanV100.json",
+  "transparent_background": true,
+  "tool": "OpenAI built-in image_gen",
+  "cpuPixelEditing": false,
+  "status": "PENDING_NATIVE_MEASUREMENT_AND_SECOND_REVIEW",
+  "producerReview": "Targeted native correction visually restores the round ribbed shield on the extended LEFT forearm during the lower-right open-palm pose. RIGHT arm retains the intact spear. The sealed case and dropped training blade remain on the ground, and the neutral mannequin remains unharmed. Independent measurement and second review are required."
+}

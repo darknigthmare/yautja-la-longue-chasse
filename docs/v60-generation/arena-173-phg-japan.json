@@ -1,0 +1,534 @@
+{
+  "schemaVersion": 1,
+  "generator": "OpenAI built-in image_gen",
+  "nativeUnmodified": true,
+  "status": "visually-accepted",
+  "placementNote": "Base960x540, placements proposés dans les zones observées du P0 ; confirmer au harnais avec transformation exacte et pivots.",
+  "arenaId": "arena-173-phg-japan",
+  "proposalId": "new-phg-japan",
+  "sources": [
+    {
+      "url": "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/",
+      "supports": "Samurai et ses chasses aux guerriers du Japon ; la cour précise n'est pas attestée."
+    }
+  ],
+  "loreLimits": [
+    "Cour originale inspirée de la biographie publiée, pas un monument ou duel nommé.",
+    "Sentinelles adultes anonymes, arme au fourreau uniquement.",
+    "Lanterne passive originale sans symboles, magie ni signal de début de combat. Cloche du classeur conservée séparément, non activée."
+  ],
+  "events": [
+    {
+      "id": "ST038_BG_01",
+      "asset": "life-01.png",
+      "description": "Sentinelles adultes à la porte."
+    },
+    {
+      "id": "ST038_BG_02",
+      "asset": "life-02.png",
+      "description": "Feuilles d'érable clairsemées."
+    },
+    {
+      "id": "ST038_BG_03",
+      "asset": "life-03.png",
+      "description": "Lanterne de porte et tissu remués par une brise discrète.",
+      "workbookDeviation": "La cloche uniquement au gong du classeur est conservée comme extra natif horsmanifest. Ce troisième événement ambiant utilise une lanterne originale pour respecter le nouveau minimum de3animationsaléatoires indépendantes du combat."
+    }
+  ],
+  "assets": [
+    {
+      "key": "p0",
+      "file": "p0-depth.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-9de273c3-9e9e-490b-adbe-3233522c9f30.png",
+      "prompt": "Native1536x1024 opaque handpainted2Dgame P0 DEPTH ONLY. Original courtyard rearenvironment inspired by Predator Hunting Grounds Samurai's published feudalJapan hunts, not exact knowncourt. Strict level lateral front elevation: elegant weathered Japanese wooden gate facade with lowroof at middepth, stone rear retaining wall extending DOWNtoimagebottom so NO horizontalplayablefloor shown, distant maplecanopy and mistymountains. Autumn dusk mutedslateblue, brownwood, restrainedamberlanterns. Leftgate openingclear forlateradultsentinels; uppercenter canopygap for sparseanimatedleaves; rightemptytimber bellstand arch with NO bell/clapper/rope currently installed. No characters, birds, falling leaves, swaying cloth, flames, weapons, magicalrunes or text. Emptycenter and depthbehindfuturefighters; lowerthird verticalstonewallonly, NOT path or courtyardpavement. Fixedarchitecture andattachedstillfoliageonly. No foregroundprops or framingobjects. Detailed painterlygamebackground coherentwithmoody2Dcinematic stages.",
+      "status": "visually-accepted",
+      "visualNotes": "Porte, mur de soutènement et support de cloche séparés des acteurs ; pas de sol jouable intégré. Clairière de feuilles et ouverture de sentinelles lisibles.",
+      "path": "work-local/v60/generated/arena-173-phg-japan/p0-depth.png",
+      "sha256": "9d042883bf93292e24c990ff12f48a3d0195119dc197c12f762b9738fa93cdea",
+      "bytes": 3032980,
+      "width": 1536,
+      "height": 1024,
+      "channels": 3,
+      "alpha": {
+        "transparentPixels": 0,
+        "transparentRatio": 0,
+        "partialPixels": 0
+      }
+    },
+    {
+      "key": "life01",
+      "file": "life-01.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-0462572c-5268-47f2-b42c-dfd725a00698.png",
+      "prompt": "Native transparent PNG sheet1536x1024 exact3cols2rows six512cells. Six distinct articulated drawings of SAME pair of anonymous ADULT Japanese sentinels in restrained historicallygrounded feudalperiod lamellararmor and cloth clothing, simplehelmets, swords sheathed, no drawnweapons, no symbols or identifiable historicalhero. Adults only, no children. Quietbackgroundwatch on gate, serious painted2Dstyle in cooldusk with amberrim. Frame1 bothrest;2 leftsentinelturnshead andraisesopenhand;3 rightsentinelbowshead slightly andleansforward;4 bothlookleft, left handonhelmetbrim;5 armslower andshouldersturnback;6 rest withsubtlecloaksettle. Correcttwoarms/twolegs perperson, completefeet/handsvisible. No samuraiPredator duplicate. Eachpair is a SMALL spritecluster inside cell x70..442 y65..445, fixedfeetscale andpivot [256,445], sixnewdrawings notmirror/translation. Genuine transparentalpha, no gate/floor/castshadow/scenery, no background glow, no gridlinesor text.",
+      "status": "visually-accepted",
+      "visualNotes": "Six attitudes avec salutation, inclinaison et rotation des corps. Deux adultes complets sans identité attribuée ni arme brandie.",
+      "placement": {
+        "x": 257,
+        "bottom": 305,
+        "height": 86,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-173-phg-japan/life-01.png",
+      "sha256": "e2756de56ecb84713d0eb398c506cd4eac7ba9f7745b8d5033f09f743dc14d06",
+      "bytes": 2253057,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 913277,
+        "transparentRatio": 0.5806458791097006,
+        "partialPixels": 659587
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            77,
+            26,
+            445,
+            466
+          ],
+          "pivot": [
+            256,
+            466
+          ],
+          "nonzeroAlpha24": 93408
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            39,
+            36,
+            460,
+            467
+          ],
+          "pivot": [
+            256,
+            467
+          ],
+          "nonzeroAlpha24": 96575
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            74,
+            27,
+            484,
+            467
+          ],
+          "pivot": [
+            256,
+            467
+          ],
+          "nonzeroAlpha24": 90683
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            61,
+            36,
+            450,
+            469
+          ],
+          "pivot": [
+            256,
+            469
+          ],
+          "nonzeroAlpha24": 101085
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            69,
+            31,
+            472,
+            468
+          ],
+          "pivot": [
+            256,
+            468
+          ],
+          "nonzeroAlpha24": 94102
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            26,
+            28,
+            457,
+            469
+          ],
+          "pivot": [
+            256,
+            469
+          ],
+          "nonzeroAlpha24": 98918
+        }
+      ]
+    },
+    {
+      "key": "life02",
+      "file": "life-02.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-39d17bb3-1b7a-47a0-a1b9-c298325a6aeb.png",
+      "prompt": "Native transparent1536x1024 PNG sprite sheet, exact3columns2rows six512cells. Six distinct painted drawings of a sparse cluster of FIVE red-brown Japanese maple leaves tumbling in gentle autumnair. No branch, no trunk, no scenery, no glowingparticles. Same5recognizable leaves acrosscycle, different real orientation and flexing shape:1 openpalms ofleaves frontview;2 tilting partlyedgeon curlinglobes;3 turning backsvisible;4 folded withstems rising;5 unfurling oppositeangledfaces;6 returning towardinitialshape. Positions remain confined to central250x300area ineachcell, no crosscell leaves; fixed clusterpivot [256,280], 90px+transparentmargins onall sides. Genuine alpha, no paintedbackground or shadow. Lowcontrast natural sunsetcolors, detailed visibleveins, true contourchanges no merely translating/rotating samefinishedbitmap, no symmetry mirroring copies. Professional2Dgame distantbackground sprite, no border, labelsorgrid.",
+      "status": "visually-accepted",
+      "visualNotes": "Cinq feuilles changent véritablement de face, de pli et de contour en six étapes. Aucune particule lumineuse surnaturelle.",
+      "placement": {
+        "x": 448,
+        "bottom": 193,
+        "height": 76,
+        "parallax": 0.25,
+        "renderPass": "P1",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-173-phg-japan/life-02.png",
+      "sha256": "6505d70a2f8555f4149bd199f79b2a79d32c9ef77348e75ef1945fa2c5555bcd",
+      "bytes": 1851858,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1159655,
+        "transparentRatio": 0.7372887929280599,
+        "partialPixels": 413209
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            29,
+            36,
+            484,
+            445
+          ],
+          "pivot": [
+            256,
+            445
+          ],
+          "nonzeroAlpha24": 49691
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            80,
+            35,
+            470,
+            450
+          ],
+          "pivot": [
+            256,
+            450
+          ],
+          "nonzeroAlpha24": 32706
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            77,
+            37,
+            478,
+            447
+          ],
+          "pivot": [
+            256,
+            447
+          ],
+          "nonzeroAlpha24": 46145
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            64,
+            31,
+            458,
+            459
+          ],
+          "pivot": [
+            256,
+            459
+          ],
+          "nonzeroAlpha24": 27900
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            91,
+            34,
+            438,
+            449
+          ],
+          "pivot": [
+            256,
+            449
+          ],
+          "nonzeroAlpha24": 38240
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            37,
+            32,
+            484,
+            449
+          ],
+          "pivot": [
+            256,
+            449
+          ],
+          "nonzeroAlpha24": 52684
+        }
+      ]
+    },
+    {
+      "key": "life03",
+      "file": "life-03.png",
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-15a5bcb2-13a4-48b7-b318-62c8868c3a3a.png",
+      "prompt": "Create native truealpha1536x1024PNG sprite sheet EXACT3cols2rows512cells. SIX separate drawings of SAME small quiet Japanese gate paperlantern, simple square darkwoodframe with creamricepaperpanels, one fine hangingcord and short clothstreamer underneath. NO inscriptions or emblems, no person, no bell, no gong. Muted amberinnerlight fixed anddim, blue dusk rim. Gentle random breeze animation only:1 lanternrests streamerhangs;2 uppercordbendsleft lowerstreamercurlsright;3 paperribsflexsubtly sidepanelreveals aslanternyawsright andstreamerformsS;4 lanternreverses withfrontpanelsquare andstreamerfoldedunder;5 sidepanelrevealsleft streamerrollsopposite;6 returningrest clothunfurls. Sixarticulatedredraws, actualfabricandcordshapechanges NOTsixidenticalrotatedpictures. EntireobjectSMALL insideeachcellx110..402 y70..442, hanginganchor fixedlocal256,80 consistentframe. Native transparentbackground nohalo/gradientoutsideobject, noscenery/floor/shadow, no text/grid. Serioushandpainted2Dbackgroundsprite. Passivebackgroundprop, never a roundannouncement.",
+      "status": "visually-accepted",
+      "visualNotes": "Six poses distinctes de lanterne passive : cordon incliné, faces latérales visibles et streamer de tissu plié différemment. Aucun gong, frappe, flash ou annonce de combat. Le cordon reste entier.",
+      "placement": {
+        "x": 822,
+        "bottom": 235,
+        "height": 100,
+        "parallax": 0.38,
+        "renderPass": "P2",
+        "anchor": "world"
+      },
+      "path": "work-local/v60/generated/arena-173-phg-japan/life-03.png",
+      "sha256": "06e15f6ab586c6db257cda82245aa0d18967d9844aa6ea2e4c403aa9863d7587",
+      "bytes": 1525206,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "alpha": {
+        "transparentPixels": 1312796,
+        "transparentRatio": 0.8346532185872396,
+        "partialPixels": 260068
+      },
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            163,
+            8,
+            334,
+            495
+          ],
+          "pivot": [
+            256,
+            495
+          ],
+          "nonzeroAlpha24": 36852
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            144,
+            7,
+            379,
+            477
+          ],
+          "pivot": [
+            256,
+            477
+          ],
+          "nonzeroAlpha24": 37308
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            152,
+            7,
+            385,
+            501
+          ],
+          "pivot": [
+            256,
+            501
+          ],
+          "nonzeroAlpha24": 39684
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            165,
+            3,
+            338,
+            434
+          ],
+          "pivot": [
+            256,
+            434
+          ],
+          "nonzeroAlpha24": 34988
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            95,
+            3,
+            348,
+            472
+          ],
+          "pivot": [
+            256,
+            472
+          ],
+          "nonzeroAlpha24": 41037
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "boundsAlpha24": [
+            165,
+            3,
+            390,
+            462
+          ],
+          "pivot": [
+            256,
+            462
+          ],
+          "nonzeroAlpha24": 36000
+        }
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "sourcePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-7ef9b41a-18d8-4ea2-b8b7-06603d3fbdda.png",
+      "prompt": "Repair this sprite sheet's framing. The third and sixth bells are CUT OFF at right edge: unacceptable. Repaint SAME bell and external log striker with SAMEsixposes, but make each COMPLETE bell-crossbar-rope-log assembly only60percent current size insideitscell. ALLsixassemblies must be fullyvisible includingbothendswoodencrossbar andfullbellrim. Final1536x1024exact3by2grid, eachcell512x512, eachentireassembly must fitinside localx85..427 y85..427. Keep centeredinsideitsowncell, no crossingedges. SIX isolatedSMALLthumbnailassemblies withlargeCLEARtransparentmargins, nootherprops, nofloor,noscenery. Genuinealpha. Retainpaintedbronzeandwoodstyle, no labelsorgridlines. Sixlogstrikerpositions/articulatedropes, bellbodyfixed. Do notscaleentiresheetasoneimage; remakeeachobjectsmallwithin its own equalcell.",
+      "file": "gong-extra-native.png",
+      "status": "visually-accepted",
+      "visualNotes": "Six dessins natifs de cloche cérémonielle conservés horsmanifest ; aucun déclenchement runtime.",
+      "sha256": "206cbb9644d69870a6632d27c6b94a0a4b7eb4a8ae5969d459586755234081e6",
+      "bytes": 1905690,
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "nativeUnmodified": true,
+      "path": "work-local/v60/generated/arena-173-phg-japan/gong-extra-native.png"
+    }
+  ]
+}

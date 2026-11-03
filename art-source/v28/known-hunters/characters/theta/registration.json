@@ -1,0 +1,1471 @@
+{
+  "schemaVersion": 1,
+  "scope": "Theta Berwick V28: twelve free rectangles and support pivots; human Marvel2023 gold armor variant; original PNG pixels unchanged.",
+  "reviewDate": "2026-09-05",
+  "gameplayValidated": false,
+  "sourcePixelsModified": false,
+  "entries": [
+    {
+      "id": "theta-blade-guard",
+      "characterId": "theta-berwick",
+      "species": "human",
+      "biologicalSpecies": "human",
+      "family": "humans-in-yautja-armor",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "clip": "blade-guard",
+      "status": "draft-registration-only",
+      "ticksPerSecond": 60,
+      "loop": false,
+      "reviewScale": 0.8,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/theta-blade-guard.png",
+        "sha256": "27500ff6fbe935c3abb0fe94435e648b8d6ee9730810036d9d926706aa00c8e8",
+        "sha256AfterRead": "27500ff6fbe935c3abb0fe94435e648b8d6ee9730810036d9d926706aa00c8e8",
+        "unchanged": true,
+        "bytes": 1836921,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "Opaque varying magenta; no alpha conversion performed.",
+        "cornerSamples": [
+          {
+            "x": 0,
+            "y": 0,
+            "rgb": [
+              222,
+              13,
+              223
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 0,
+            "rgb": [
+              227,
+              23,
+              227
+            ]
+          },
+          {
+            "x": 0,
+            "y": 1023,
+            "rgb": [
+              220,
+              38,
+              221
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 1023,
+            "rgb": [
+              224,
+              35,
+              224
+            ]
+          }
+        ]
+      },
+      "measurementMethod": {
+        "separation": "Full-width foreground column projection per half-height row, with at least twelve empty columns between figures; not a fixed512px crop.",
+        "keyClassifier": "Background iff r>=threshold and b>=threshold and g<=120 and r-g>=70 and b-g>=70, thresholds160/180/200. Measurement only, pixels unchanged.",
+        "boundsPolicy": "Union of threshold bounds plus8px margin; clipping only at source borders.",
+        "pivotPolicy": "Midpoint of two measured boot sole spans, at lower sole baseline. Each span uses bottom4rows of its boot, separated by largest empty-column gap in bottom60px band.",
+        "drawPolicy": "One reviewScale0.8 across all frames; do not fit or normalize frame heights individually.",
+        "timingPolicy": "Proposed durations in presentation ticks at60Hz, not combat timings or simulation/replay changes.",
+        "caveat": "Mechanical registration proposals; no anatomy, fidelity, alpha or gameplay validation."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "low-ready",
+          "durationTicks": 8,
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            182,
+            56,
+            224,
+            420
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                183,
+                56,
+                223,
+                419
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                183,
+                56,
+                223,
+                419
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                182,
+                56,
+                224,
+                420
+              ]
+            }
+          ],
+          "rectPx": [
+            174,
+            48,
+            240,
+            436
+          ],
+          "pivotSourcePx": {
+            "x": 296.75,
+            "y": 476
+          },
+          "pivotPx": {
+            "x": 122.75,
+            "y": 428
+          },
+          "pivotInNominalCellPx": {
+            "x": 296.75,
+            "y": 476
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 206.5,
+                "y": 476
+              },
+              "contactSpanPx": [
+                192,
+                221
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 387,
+                "y": 461
+              },
+              "contactSpanPx": [
+                369,
+                405
+              ],
+              "lowerFootBandWidthPx": 68
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 2,
+          "stage": "raise-blade-guard",
+          "durationTicks": 6,
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            636,
+            58,
+            232,
+            418
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                636,
+                58,
+                232,
+                417
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                636,
+                58,
+                232,
+                418
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                636,
+                58,
+                232,
+                418
+              ]
+            }
+          ],
+          "rectPx": [
+            628,
+            50,
+            248,
+            434
+          ],
+          "pivotSourcePx": {
+            "x": 745.5,
+            "y": 476
+          },
+          "pivotPx": {
+            "x": 117.5,
+            "y": 426
+          },
+          "pivotInNominalCellPx": {
+            "x": 233.5,
+            "y": 476
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 655,
+                "y": 476
+              },
+              "contactSpanPx": [
+                640,
+                670
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 836,
+                "y": 461
+              },
+              "contactSpanPx": [
+                818,
+                854
+              ],
+              "lowerFootBandWidthPx": 68
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 3,
+          "stage": "high-guard-hold",
+          "durationTicks": 10,
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1085,
+            53,
+            242,
+            422
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1085,
+                54,
+                242,
+                421
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1085,
+                53,
+                242,
+                422
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1085,
+                53,
+                242,
+                422
+              ]
+            }
+          ],
+          "rectPx": [
+            1077,
+            45,
+            258,
+            438
+          ],
+          "pivotSourcePx": {
+            "x": 1194.5,
+            "y": 475
+          },
+          "pivotPx": {
+            "x": 117.5,
+            "y": 430
+          },
+          "pivotInNominalCellPx": {
+            "x": 170.5,
+            "y": 475
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1103.5,
+                "y": 475
+              },
+              "contactSpanPx": [
+                1088,
+                1119
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1285.5,
+                "y": 461
+              },
+              "contactSpanPx": [
+                1268,
+                1303
+              ],
+              "lowerFootBandWidthPx": 68
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 4,
+          "stage": "absorb-recoil",
+          "durationTicks": 7,
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            176,
+            528,
+            262,
+            436
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                176,
+                529,
+                262,
+                435
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                176,
+                529,
+                262,
+                435
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                176,
+                528,
+                262,
+                436
+              ]
+            }
+          ],
+          "rectPx": [
+            168,
+            520,
+            278,
+            452
+          ],
+          "pivotSourcePx": {
+            "x": 316.75,
+            "y": 964
+          },
+          "pivotPx": {
+            "x": 148.75,
+            "y": 444
+          },
+          "pivotInNominalCellPx": {
+            "x": 316.75,
+            "y": 452
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 213.5,
+                "y": 964
+              },
+              "contactSpanPx": [
+                198,
+                229
+              ],
+              "lowerFootBandWidthPx": 52
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 420,
+                "y": 948
+              },
+              "contactSpanPx": [
+                403,
+                437
+              ],
+              "lowerFootBandWidthPx": 71
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 5,
+          "stage": "lower-blade",
+          "durationTicks": 8,
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            636,
+            549,
+            224,
+            420
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                636,
+                549,
+                223,
+                420
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                636,
+                549,
+                223,
+                420
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                636,
+                549,
+                224,
+                420
+              ]
+            }
+          ],
+          "rectPx": [
+            628,
+            541,
+            240,
+            436
+          ],
+          "pivotSourcePx": {
+            "x": 750,
+            "y": 969
+          },
+          "pivotPx": {
+            "x": 122,
+            "y": 428
+          },
+          "pivotInNominalCellPx": {
+            "x": 238,
+            "y": 457
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 659,
+                "y": 969
+              },
+              "contactSpanPx": [
+                644,
+                674
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 841,
+                "y": 955
+              },
+              "contactSpanPx": [
+                825,
+                857
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 6,
+          "stage": "return-ready",
+          "durationTicks": 10,
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1084,
+            549,
+            226,
+            421
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1085,
+                549,
+                225,
+                421
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1085,
+                549,
+                225,
+                421
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1084,
+                549,
+                226,
+                421
+              ]
+            }
+          ],
+          "rectPx": [
+            1076,
+            541,
+            242,
+            437
+          ],
+          "pivotSourcePx": {
+            "x": 1200,
+            "y": 970
+          },
+          "pivotPx": {
+            "x": 124,
+            "y": 429
+          },
+          "pivotInNominalCellPx": {
+            "x": 176,
+            "y": 458
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1108,
+                "y": 970
+              },
+              "contactSpanPx": [
+                1093,
+                1123
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1292,
+                "y": 956
+              },
+              "contactSpanPx": [
+                1275,
+                1309
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        }
+      ]
+    },
+    {
+      "id": "theta-hit-reaction",
+      "characterId": "theta-berwick",
+      "species": "human",
+      "biologicalSpecies": "human",
+      "family": "humans-in-yautja-armor",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "clip": "hit-reaction",
+      "status": "draft-registration-only",
+      "ticksPerSecond": 60,
+      "loop": false,
+      "reviewScale": 0.8,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/theta-hit-reaction.png",
+        "sha256": "ed417fd72d53d359835326cbc9d22962027e190453648d7a5199c257eef3bccb",
+        "sha256AfterRead": "ed417fd72d53d359835326cbc9d22962027e190453648d7a5199c257eef3bccb",
+        "unchanged": true,
+        "bytes": 1900263,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "Opaque varying magenta; no alpha conversion performed.",
+        "cornerSamples": [
+          {
+            "x": 0,
+            "y": 0,
+            "rgb": [
+              213,
+              11,
+              220
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 0,
+            "rgb": [
+              222,
+              22,
+              227
+            ]
+          },
+          {
+            "x": 0,
+            "y": 1023,
+            "rgb": [
+              207,
+              33,
+              215
+            ]
+          },
+          {
+            "x": 1535,
+            "y": 1023,
+            "rgb": [
+              217,
+              32,
+              222
+            ]
+          }
+        ]
+      },
+      "measurementMethod": {
+        "separation": "Full-width foreground column projection per half-height row, with at least twelve empty columns between figures; not a fixed512px crop.",
+        "keyClassifier": "Background iff r>=threshold and b>=threshold and g<=120 and r-g>=70 and b-g>=70, thresholds160/180/200. Measurement only, pixels unchanged.",
+        "boundsPolicy": "Union of threshold bounds plus8px margin; clipping only at source borders.",
+        "pivotPolicy": "Midpoint of two measured boot sole spans, at lower sole baseline. Each span uses bottom4rows of its boot, separated by largest empty-column gap in bottom60px band.",
+        "drawPolicy": "One reviewScale0.8 across all frames; do not fit or normalize frame heights individually.",
+        "timingPolicy": "Proposed durations in presentation ticks at60Hz, not combat timings or simulation/replay changes.",
+        "caveat": "Mechanical registration proposals; no anatomy, fidelity, alpha or gameplay validation."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "durationTicks": 8,
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            151,
+            59,
+            237,
+            423
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                151,
+                59,
+                237,
+                423
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                151,
+                59,
+                237,
+                423
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                151,
+                59,
+                237,
+                423
+              ]
+            }
+          ],
+          "rectPx": [
+            143,
+            51,
+            253,
+            439
+          ],
+          "pivotSourcePx": {
+            "x": 270,
+            "y": 482
+          },
+          "pivotPx": {
+            "x": 127,
+            "y": 431
+          },
+          "pivotInNominalCellPx": {
+            "x": 270,
+            "y": 482
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 171,
+                "y": 482
+              },
+              "contactSpanPx": [
+                156,
+                186
+              ],
+              "lowerFootBandWidthPx": 46
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 369,
+                "y": 471
+              },
+              "contactSpanPx": [
+                351,
+                387
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 2,
+          "stage": "impact-recoil",
+          "durationTicks": 5,
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            625,
+            65,
+            263,
+            413
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                625,
+                65,
+                262,
+                412
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                625,
+                65,
+                263,
+                413
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                625,
+                65,
+                263,
+                413
+              ]
+            }
+          ],
+          "rectPx": [
+            617,
+            57,
+            279,
+            429
+          ],
+          "pivotSourcePx": {
+            "x": 772,
+            "y": 478
+          },
+          "pivotPx": {
+            "x": 155,
+            "y": 421
+          },
+          "pivotInNominalCellPx": {
+            "x": 260,
+            "y": 478
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 680.5,
+                "y": 478
+              },
+              "contactSpanPx": [
+                666,
+                695
+              ],
+              "lowerFootBandWidthPx": 86
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 863.5,
+                "y": 465
+              },
+              "contactSpanPx": [
+                845,
+                882
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 3,
+          "stage": "recoil-peak",
+          "durationTicks": 7,
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1109,
+            86,
+            262,
+            391
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1109,
+                86,
+                262,
+                390
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1109,
+                86,
+                262,
+                390
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1109,
+                86,
+                262,
+                391
+              ]
+            }
+          ],
+          "rectPx": [
+            1101,
+            78,
+            278,
+            407
+          ],
+          "pivotSourcePx": {
+            "x": 1250.25,
+            "y": 477
+          },
+          "pivotPx": {
+            "x": 149.25,
+            "y": 399
+          },
+          "pivotInNominalCellPx": {
+            "x": 226.25,
+            "y": 477
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1157.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                1143,
+                1172
+              ],
+              "lowerFootBandWidthPx": 115
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1343,
+                "y": 465
+              },
+              "contactSpanPx": [
+                1325,
+                1361
+              ],
+              "lowerFootBandWidthPx": 73
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 4,
+          "stage": "fold-forward",
+          "durationTicks": 8,
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            152,
+            599,
+            227,
+            349
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                152,
+                599,
+                227,
+                349
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                152,
+                599,
+                227,
+                349
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                152,
+                599,
+                227,
+                349
+              ]
+            }
+          ],
+          "rectPx": [
+            144,
+            591,
+            243,
+            365
+          ],
+          "pivotSourcePx": {
+            "x": 266,
+            "y": 948
+          },
+          "pivotPx": {
+            "x": 122,
+            "y": 357
+          },
+          "pivotInNominalCellPx": {
+            "x": 266,
+            "y": 436
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 173.5,
+                "y": 948
+              },
+              "contactSpanPx": [
+                158,
+                189
+              ],
+              "lowerFootBandWidthPx": 126
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 358.5,
+                "y": 939
+              },
+              "contactSpanPx": [
+                340,
+                377
+              ],
+              "lowerFootBandWidthPx": 75
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 5,
+          "stage": "recover-upright",
+          "durationTicks": 8,
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            635,
+            551,
+            227,
+            405
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                635,
+                552,
+                227,
+                404
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                635,
+                551,
+                227,
+                405
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                635,
+                551,
+                227,
+                405
+              ]
+            }
+          ],
+          "rectPx": [
+            627,
+            543,
+            243,
+            421
+          ],
+          "pivotSourcePx": {
+            "x": 749,
+            "y": 956
+          },
+          "pivotPx": {
+            "x": 122,
+            "y": 413
+          },
+          "pivotInNominalCellPx": {
+            "x": 237,
+            "y": 444
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 655,
+                "y": 956
+              },
+              "contactSpanPx": [
+                640,
+                670
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 843,
+                "y": 944
+              },
+              "contactSpanPx": [
+                826,
+                860
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        },
+        {
+          "index": 6,
+          "stage": "return-ready",
+          "durationTicks": 10,
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1096,
+            538,
+            238,
+            423
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1096,
+                538,
+                238,
+                423
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1096,
+                538,
+                238,
+                423
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1096,
+                538,
+                238,
+                423
+              ]
+            }
+          ],
+          "rectPx": [
+            1088,
+            530,
+            254,
+            439
+          ],
+          "pivotSourcePx": {
+            "x": 1215.5,
+            "y": 961
+          },
+          "pivotPx": {
+            "x": 127.5,
+            "y": 431
+          },
+          "pivotInNominalCellPx": {
+            "x": 191.5,
+            "y": 449
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1116,
+                "y": 961
+              },
+              "contactSpanPx": [
+                1102,
+                1130
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1315,
+                "y": 951
+              },
+              "contactSpanPx": [
+                1297,
+                1333
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "sourcePixelsOutsideRect": [
+            {
+              "threshold": 160,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 180,
+              "outsidePixels": 0
+            },
+            {
+              "threshold": 200,
+              "outsidePixels": 0
+            }
+          ],
+          "anatomyReview": "Human face and closed boots; one machete remains attached to the anatomical right hand, left hand separate. Gloved individual digits and inter-frame equipment continuity remain an artistic review concern.",
+          "status": "registration-proposal-not-art-approved"
+        }
+      ]
+    }
+  ]
+}

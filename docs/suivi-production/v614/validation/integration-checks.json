@@ -1,0 +1,208 @@
+{
+  "version": "V6.14",
+  "recordedAtUtc": "2026-10-23T12:58:46.141424Z",
+  "sourceMainCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+  "nodeVersion": "v24.19.0",
+  "workingDirectory": "repository-root",
+  "scopeFR": "Intégration V6.11 à V6.14 et test V89 du branchement galerie/codex. Le diagnostic V89 complet est présenté séparément avec sa limitation de fixtures locales.",
+  "summary": {
+    "passed": true,
+    "tests": 23,
+    "pass": 23,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "enforcerTests": 22,
+    "targetedV89Tests": 1,
+    "subtestCounts": {
+      "V611": 5,
+      "V612": 5,
+      "V613": 6,
+      "V614": 6,
+      "V89Targeted": 1
+    }
+  },
+  "runs": [
+    {
+      "command": "node --experimental-strip-types tests/enforcer-production-v611.test.mjs",
+      "startedAtUtc": "2026-10-23T12:49:51.649955Z",
+      "finishedAtUtc": "2026-10-23T12:50:11.466145Z",
+      "exitCode": 0,
+      "counts": {
+        "tests": 5,
+        "suites": 0,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "durationMs": 15036.374872,
+      "subtests": [
+        "36 previously unmade catalogue identities cover both variants of every requested group (13.329049ms)",
+        "every installed PNG has the accepted native bytes, a real alpha channel and complete frame bounds (6778.357871ms)",
+        "gallery and codex include the new identities while existing default selections and human body separation are preserved (8179.227493ms)",
+        "the 5120-ID master changes only the 36 new and 36 unrecovered production rows (40.631603ms)",
+        "generation receipts preserve exact prompts, verified references and lineage-specific requirements (8.130281ms)"
+      ]
+    },
+    {
+      "command": "node --experimental-strip-types tests/enforcer-production-v612.test.mjs",
+      "startedAtUtc": "2026-10-23T12:50:11.466454Z",
+      "finishedAtUtc": "2026-10-23T12:50:23.724653Z",
+      "exitCode": 0,
+      "counts": {
+        "tests": 5,
+        "suites": 0,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "durationMs": 10547.839453,
+      "subtests": [
+        "V6.12 covers exactly variants 06 and 07 of all 18 requested groups (14.005335ms)",
+        "the 72 native PNGs retain their recorded bytes, and every new silhouette has real alpha and complete bounds (4451.065323ms)",
+        "gallery and codex expose V6.12 while all 973 defaults and the human body boundary stay unchanged (5541.520672ms)",
+        "the 5120-ID master adds 36 V6.12 statuses and reconciles the 36 merged V6.11 identities with main (506.066473ms)",
+        "V6.12 preserves accepted prompts, verified same-group references and lineage-specific requirements (13.611148ms)"
+      ]
+    },
+    {
+      "command": "node --experimental-strip-types tests/enforcer-production-v613.test.mjs",
+      "startedAtUtc": "2026-10-23T12:50:23.724933Z",
+      "finishedAtUtc": "2026-10-23T12:50:36.105369Z",
+      "exitCode": 0,
+      "counts": {
+        "tests": 6,
+        "suites": 0,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "durationMs": 11340.772577,
+      "subtests": [
+        "V6.13 delivers exactly the 36 previously unmade Enforcer 08/09 identities (13.057921ms)",
+        "all 108 PNG hashes remain intact and the 36 recovered files are native RGBA with complete visible bounds (4377.590959ms)",
+        "gallery and codex expose all new identities, with the 973 automatic choices and human body boundary unchanged (6196.715162ms)",
+        "the master preserves all 5120 identities and limits its 720 changes to 108 production rows (110.34781ms)",
+        "the reconciliation proves both merged native lots without inventing placements or performing a merge (574.012187ms)",
+        "missing final receipts remain explicit and only matching accepted attempts supply exact prompts or dates (19.076666ms)"
+      ]
+    },
+    {
+      "command": "node --experimental-strip-types tests/enforcer-production-v614.test.mjs",
+      "startedAtUtc": "2026-10-23T12:58:25.903963Z",
+      "finishedAtUtc": "2026-10-23T12:58:46.140332Z",
+      "exitCode": 0,
+      "counts": {
+        "tests": 6,
+        "suites": 0,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "durationMs": 18712.498286,
+      "subtests": [
+        "V6.14 delivers the 18 Enforcer 10 identities still unmade on the V106 base (5.329395ms)",
+        "the cumulative 126 PNGs retain their native hashes and every new file has real alpha and complete visible bounds (6136.798603ms)",
+        "all 18 final outputs retain the submitted prompt and a matching accepted receipt (24.683243ms)",
+        "gallery and codex expose V6.14 while the 973 default choices and human body boundary stay unchanged (11003.315927ms)",
+        "the master changes only the 36 merged V6.13 rows and 18 new rows, preserving all other identities and placements (314.738827ms)",
+        "the new reconciliation proves all 108 prior native files against main without changing historical claims (1154.695483ms)"
+      ]
+    },
+    {
+      "command": "node --experimental-strip-types \"--test-name-pattern=all six full references\" tests/drive-new-deposits-v89.test.mjs",
+      "startedAtUtc": "2026-10-23T12:50:47.456078Z",
+      "finishedAtUtc": "2026-10-23T12:50:49.257148Z",
+      "exitCode": 0,
+      "counts": {
+        "tests": 1,
+        "suites": 0,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "durationMs": 1573.279813,
+      "subtests": [
+        "all six full references are connected to the runtime viewer and codex without becoming gameplay bodies (1541.835194ms)"
+      ]
+    }
+  ],
+  "verifiedInvariants": {
+    "nativePngCountV611ThroughV614": 126,
+    "newNativePngCountV614": 18,
+    "defaultSelectionsUnchanged": 973,
+    "masterIdentities": 5120,
+    "changedMasterRows": 54,
+    "promotedV613Rows": 36,
+    "newV614Rows": 18,
+    "finalPromptReceiptsV614": 18,
+    "historicalMissingFinalPromptsV613": 21,
+    "humanAssetsExcludedFromYautjaBodySelection": true
+  },
+  "fullV89Diagnostic": {
+    "command": "node --experimental-strip-types tests/drive-new-deposits-v89.test.mjs",
+    "exitCode": 1,
+    "counts": {
+      "tests": 8,
+      "suites": 0,
+      "pass": 6,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "durationMs": 1398.5153,
+    "status": "blocked-by-historical-files-absent-from-local-checkout",
+    "failures": [
+      {
+        "subtest": "new native PNG counts and bytes are deduplicated independently from logical source entries",
+        "code": "ENOENT",
+        "missingRepoPath": "public/game/imports/v89/4fceb7756f3297a0c0b8fe001fbd2304cc4c416bea6f2fc606bcfc2a39e164bd.png",
+        "existsInMainTree": true,
+        "mainGitBlobSha": "f2c82fcd8025b443f295be49692fc000554f32cc"
+      },
+      {
+        "subtest": "existing cumulative archive PNGs remain original runtime files rather than inflated new imports",
+        "code": "ENOENT",
+        "missingRepoPath": "public/game/imports/v85/library/78551b2ebfb5fa3bb0b85b7fe09ce925571d46830d77c128da300dbf65f2327e.png",
+        "existsInMainTree": true,
+        "mainGitBlobSha": "6405eb0c59665ba2305f9c489d4a22fbca68d257"
+      }
+    ],
+    "mainTreeVerificationCommand": "git ls-tree 92e7c824fd80d6b8152855b3d66560448f8c48c0 -- public/game/imports/v89/4fceb7756f3297a0c0b8fe001fbd2304cc4c416bea6f2fc606bcfc2a39e164bd.png public/game/imports/v85/library/78551b2ebfb5fa3bb0b85b7fe09ce925571d46830d77c128da300dbf65f2327e.png",
+    "limitationsFR": "Les deux PNG historiques sont référencés dans main mais absents du checkout local. Ce diagnostic complet V89 ne passe donc pas dans cet environnement. Le test ciblé qui valide notre adaptation du décompte et le branchement galerie/codex passe. Aucun test historique n’a été assoupli pour masquer ces absences.",
+    "executionEvidenceFR": "Résultat du diagnostic exécuté avant les cinq contrôles détaillés ci-dessus ; ses 8 sous-tests ne sont pas inclus dans les 23 succès du périmètre d’intégration."
+  },
+  "limitsFR": [
+    "Ces contrôles couvrent les assets, leurs reçus, le master et leur intégration dans la bibliothèque/codex. Le contrôle navigateur de la galerie est publié séparément après création de l’Excel.",
+    "Le succès des 23 sous-tests ciblés ne signifie pas que toute la suite de tests du dépôt a été exécutée."
+  ],
+  "finalInputEvidence": {
+    "manifestSha256": "c5bb571b38f02d76526de2c98634abcda46fee15541f6ef21b10dc03e223fbcd",
+    "registrySha256": "721bf64fce4b7c88e98b139b690123f70e05e402c853e50032cca8ff43ad412a",
+    "correctedNativeAssets": [
+      {
+        "id": "city-hunter--enforcers-comics-10",
+        "sha256": "7a20ef4dd3eba9a18d593e38838f0e463342463c28e0ea9f6ac3267692d8f7de",
+        "bytes": 2295942
+      },
+      {
+        "id": "bionic--enforcers-comics-10",
+        "sha256": "42aa084be55359bb9004e185c5bf265cebf3d30e002b5614040478374f4c23a1",
+        "bytes": 2381604
+      }
+    ]
+  },
+  "finalRerunFR": "Les six sous-tests V6.14 ont été relancés après les corrections natives Bionic et City Hunter et la normalisation des 18 sourceNote en chaînes. Les 17 autres sous-tests du périmètre conservent leurs résultats précédents, horodatés dans runs ; les tests historiques n’ont pas été relancés inutilement."
+}

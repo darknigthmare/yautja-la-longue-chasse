@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "productionSha256": "eaac00b22e9976499f2a7ce1e0439ba33eba0d2fd5aa1f40faa9c9887d4b6349",
+  "unitAndNativeRegression": {
+    "command": "node --experimental-strip-types --test --test-isolation=none --test-reporter=spec tests/discovery-signals-hud-v112.test.mjs tests/corpse-discovery-v112.test.mjs",
+    "passed": 35,
+    "failed": 0,
+    "observedDurationMs": 887.72239
+  },
+  "chromeLayout": {
+    "configurations": 6,
+    "combinations": 72,
+    "allBoundsPass": true,
+    "minimumLogicalGapPx": 2,
+    "maximumResponseWidthPx": 81.796875
+  },
+  "resume": {
+    "classification": "PLAYED_SIDECAR_RESUME_AND_HUD_ONLY",
+    "originalSidecarIdentityPreserved": true,
+    "sourceParentReportHashMatchesBaseline": true,
+    "earnedConfigurationMatched": true,
+    "nativeElapsed": 22.89999999999998,
+    "radioReaction": {
+      "actorId": "ice-salvagers-1",
+      "corpseId": "ice-runners-2",
+      "channel": "radio",
+      "response": "investigate",
+      "startedAt": 19.416666666666845,
+      "until": 26.416666666666845
+    },
+    "pageErrors": [],
+    "missingAssets": []
+  },
+  "humanUnderstandingQualified": false,
+  "physicalDeviceQualified": false
+}

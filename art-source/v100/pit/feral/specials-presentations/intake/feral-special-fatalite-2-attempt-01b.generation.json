@@ -1,0 +1,20 @@
+{
+  "name": "feral-special-fatalite-2-attempt-01b",
+  "key": "FATALITE_2",
+  "part": "B",
+  "prompt": "Produce ONE sparse PORTRAIT native RGBA sprite sheet1024x1536: exactly TWO COLUMNS\u00d7FOUR ROWS, EIGHT isolated full-body drawings. Use attached images ONLY for Feral's identity/anatomy/style, not their backgrounds. New articulated poses, never mirror or rig. Accurate Feral: lean sinewy ochre-spotted skin, black dreads, ivory bone skull mask and exposed red mandibles, dark segmented loincloth, asymmetrical bone hip ornaments, bronze bracers, wrapped ankles and clawed bare toes. No shoulder cannon.\n\nEvery invisible cell512\u00d7384. Body about180px tall, never larger than210px, with at least80px ALPHA ZERO space above and below. Whole drawing including gear/any neutral stand-in below380px wide and inside its own cell. Huge empty transparent gutters; no touching/cropped silhouettes. LEFT COLUMN: Feral faces RIGHT, front/right-side view. RIGHT COLUMN: independently drawn Feral faces LEFT, back/left-side view; asymmetric gear stays on the same anatomical limbs. Same stage on each row. Same fixed body scale everywhere.\n\nBACKGROUND MUST BE ALPHA0 outside the exact figure/gear silhouettes: NO floor plane, no cast shadow, no aura, no ambient glow, no gradient, no fog, smoke or painted backdrop. Crisp narrow edges, no blur. No text, numbers, labels, borders or grid.\n\nGEAR AND SCOPE: Complete Feral body choreography study with a neutral jointed adult-sized gray training mannequin, NOT an actual victim/combat sprite. Feral holds TWO spear halves, one per hand, with no whole third spear. A simple training blade belongs only to the mannequin. Left shield folded, wrist blades retracted; no gore.\n\nROW1: Feral alone in neutral full-body guard with two spear halves held lowered, no mannequin in the calibration row. This neutral reference is outside the clip and must show complete standing anatomy for a fixed body-height review.\nROW2: Feral withdraws the LEFT half while the gray mannequin slumps and drops its simple training blade, neither Feral weapon disappears.\nROW3: Feral looks down to verify the slumped mannequin is no longer advancing; his own two weapons remain controlled and lowered, no victory salute.\nROW4: He aligns and rejoins the two halves into one compact spear and begins stowing it, left shield folded, mannequin still slumped, no anatomical trophy.",
+  "refs": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/shield-left.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-right.png",
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v59/pit/feral/launcher-left.png"
+  ],
+  "taskStore": "feralSpecialTasks",
+  "tool": "image_gen",
+  "originalSource": "/workspace/generated_images/exec-cceac504-6cf0-46d4-948a-71358f1a63b6.png",
+  "originalSha256": "6ba848b3c36d898491a9878fccb5d8ce9858287a6f5472d02da7c6478fda5918",
+  "nativeTransparentBackground": true,
+  "cpuPixelEditing": false,
+  "matchesIntakePng": true
+}

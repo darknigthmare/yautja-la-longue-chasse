@@ -1,0 +1,40 @@
+C:\Users\chuck\Documents\Codex\2026-08-31\pour-mon-jeux-yautja-la-longue\work-local\v56\dependencies\node_modules\esbuild\lib\main.js:1748
+  let error = new Error(text);
+              ^
+
+Error: Build failed with 5 errors:
+error: Cannot read directory "../../../..": Access is denied.
+<stdin>:1:14: ERROR: Could not resolve "./app/game/pitSpriteSheetAnimation.ts"
+<stdin>:2:15: ERROR: Could not resolve "./app/game/hunterSpriteAtlas.ts"
+<stdin>:2:81: ERROR: Could not resolve "./app/game/spriteContact.ts"
+<stdin>:3:63: ERROR: Could not resolve "./app/game/systems/pitCombat.ts"
+    at failureErrorWithLog (C:\Users\chuck\Documents\Codex\2026-08-31\pour-mon-jeux-yautja-la-longue\work-local\v56\dependencies\node_modules\esbuild\lib\main.js:1748:15)
+    at C:\Users\chuck\Documents\Codex\2026-08-31\pour-mon-jeux-yautja-la-longue\work-local\v56\dependencies\node_modules\esbuild\lib\main.js:1207:25
+    at C:\Users\chuck\Documents\Codex\2026-08-31\pour-mon-jeux-yautja-la-longue\work-local\v56\dependencies\node_modules\esbuild\lib\main.js:1159:52
+    at buildResponseToResult (C:\Users\chuck\Documents\Codex\2026-08-31\pour-mon-jeux-yautja-la-longue\work-local\v56\dependencies\node_modules\esbuild\lib\main.js:1205:7)
+    at C:\Users\chuck\Documents\Codex\2026-08-31\pour-mon-jeux-yautja-la-longue\work-local\v56\dependencies\node_modules\esbuild\lib\main.js:1232:16
+    at responseCallbacks.<computed> (C:\Users\chuck\Documents\Codex\2026-08-31\pour-mon-jeux-yautja-la-longue\work-local\v56\dependencies\node_modules\esbuild\lib\main.js:884:9)
+    at handleIncomingPacket (C:\Users\chuck\Documents\Codex\2026-08-31\pour-mon-jeux-yautja-la-longue\work-local\v56\dependencies\node_modules\esbuild\lib\main.js:939:12)
+    at Socket.readFromStdout (C:\Users\chuck\Documents\Codex\2026-08-31\pour-mon-jeux-yautja-la-longue\work-local\v56\dependencies\node_modules\esbuild\lib\main.js:862:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+
+Node.js v24.15.0
+✖ tests\pit-celtic-lifecycle-v94.test.mjs (231.5179ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 241.6888
+
+✖ failing tests:
+
+test at tests\pit-celtic-lifecycle-v94.test.mjs:1:1
+✖ tests\pit-celtic-lifecycle-v94.test.mjs (231.5179ms)
+  'test failed'

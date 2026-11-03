@@ -1,0 +1,5 @@
+# Revue visuelle du module p2-wooden-post
+
+Poteau de bois sombre, traverse et renfort lisibles, capot de tuiles cohérent. Aucun symbole Yautja ou mélange industriel. Recomposition sobre ; cet accessoire précis n’est pas identifié dans le film. Appui inférieur complet. Le halo apparent de la prévisualisation sur noir ne se manifeste pas comme une plaque dans les aplats gris clair/sombre réellement composités. Contrôle alpha natif : majorité extérieure alpha0, bordure anti-crénelée réelle, mais quelques pixels parasites d’alpha1–15 subsistent loin de la silhouette. Aucun seuil, découpage, nettoyage ou retouche appliqué au PNG. Fond clair #eeeeee et sombre #444444 inspectés ; pas de halo visible à l’échelle d’affichage. Les bornes alpha>0 ne doivent donc pas être interprétées comme les bornes solides pour le placement. Mesures complètes sous work/v43/roof-modules/inspection-a.json.
+
+Module original OpenAI indépendant ; il ne reproduit pas un accessoire identifié du film à l’identique. Alpha natif conservé, pixels non retouchés.

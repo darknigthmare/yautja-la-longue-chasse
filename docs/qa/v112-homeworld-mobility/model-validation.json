@@ -1,0 +1,28 @@
+{
+  "release": "V112",
+  "scope": "MODEL_AND_ACTUAL_NATIVE_MOTOR_NOT_BROWSER",
+  "command": "env PATH=\"/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH\" node tests/homeworld-mobility-v112.test.mjs",
+  "exitCode": 0,
+  "tests": 9,
+  "passed": 9,
+  "failed": 0,
+  "interiorTargets": 15,
+  "sampledArrivalPositions": 90,
+  "nativeMotorSteps": ">500",
+  "motorFallbackOrResetAllowed": false,
+  "nativeActorHalfBody": {
+    "width": 24,
+    "depth": 14
+  },
+  "newInteriorSampler": {
+    "maxSpacing": 1,
+    "extraClearance": 0.75,
+    "endpointMargin": 0
+  },
+  "sourceRequirementsClosed": [],
+  "limits": [
+    "Model and native motor execution only. Does not certify hydration, pixels, actual browser Worker transport or real UI interactions.",
+    "Exterior routes, geometry keys, campaign owner checks and original collision dimensions remain inherited.",
+    "Public street scans are a bounded initial campaign inventory, not every valid cargo arrangement or story state."
+  ]
+}

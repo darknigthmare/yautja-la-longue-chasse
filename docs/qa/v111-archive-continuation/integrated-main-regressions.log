@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: V111 real Save import, write and load preserve B byte-exact across offer, active carry and completed continuation
+ok 1 - V111 real Save import, write and load preserve B byte-exact across offer, active carry and completed continuation
+  ---
+  duration_ms: 1005.134713
+  type: 'test'
+  ...
+# Subtest: V111 real Save rejects future, foreign, no-B, mutated-base and unsupported actor/object pairs before writing
+ok 2 - V111 real Save rejects future, foreign, no-B, mutated-base and unsupported actor/object pairs before writing
+  ---
+  duration_ms: 23.103318
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub sampler and onProgress persist the carried candidate with its new checkpoint without changing archived B
+ok 3 - V111 actual Hub sampler and onProgress persist the carried candidate with its new checkpoint without changing archived B
+  ---
+  duration_ms: 102.817504
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub quota refusal freezes new actions without rewriting either durable receipt, then Retry can persist the same episode
+ok 4 - V111 actual Hub quota refusal freezes new actions without rewriting either durable receipt, then Retry can persist the same episode
+  ---
+  duration_ms: 103.551868
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub callbacks refuse replaced owners, stale outer revisions and an old legacy adapter
+ok 5 - V111 actual Hub callbacks refuse replaced owners, stale outer revisions and an old legacy adapter
+  ---
+  duration_ms: 91.574942
+  type: 'test'
+  ...
+# Subtest: V111 continuation UI uses newly played source lines and binds its inner controls to the outer render revision
+ok 6 - V111 continuation UI uses newly played source lines and binds its inner controls to the outer render revision
+  ---
+  duration_ms: 201.871264
+  type: 'test'
+  ...
+# Subtest: V111 actual motor and render gates stop an interrupted carried candidate, despite its archived B being completed
+ok 7 - V111 actual motor and render gates stop an interrupted carried candidate, despite its archived B being completed
+  ---
+  duration_ms: 9.931618
+  type: 'test'
+  ...
+# Subtest: V111 pure Save11 to12 migration preserves the genuine V110 campaign and its complete B document exactly
+ok 8 - V111 pure Save11 to12 migration preserves the genuine V110 campaign and its complete B document exactly
+  ---
+  duration_ms: 5880.529675
+  type: 'test'
+  ...
+# Subtest: V111 actual V110 client treats a12 campaign as future and cannot drop its new continuation or overwrite its bytes
+ok 9 - V111 actual V110 client treats a12 campaign as future and cannot drop its new continuation or overwrite its bytes
+  ---
+  duration_ms: 1080.266487
+  type: 'test'
+  ...
+# Subtest: V111 integrated main keeps a real field-tool purchase through Save11 migration and a quota-refused B to A continuation write
+ok 10 - V111 integrated main keeps a real field-tool purchase through Save11 migration and a quota-refused B to A continuation write
+  ---
+  duration_ms: 21.366212
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8527.824171

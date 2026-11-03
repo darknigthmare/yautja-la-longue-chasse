@@ -1,0 +1,85 @@
+{
+  "id": "maintenance-rack",
+  "input": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-9c575419-ee3d-4161-bf15-3de21cb92cb6.png",
+  "heightWorld": 125,
+  "nativeGroundSupport": [
+    {
+      "x": 219,
+      "y": 1009
+    },
+    {
+      "x": 298,
+      "y": 1031
+    },
+    {
+      "x": 445,
+      "y": 991
+    },
+    {
+      "x": 724,
+      "y": 1182
+    },
+    {
+      "x": 818,
+      "y": 1214
+    },
+    {
+      "x": 1029,
+      "y": 1111
+    }
+  ],
+  "label": "Râtelier de maintenance",
+  "function": "Outillage civil près de l'atelier et du port ; accès côté travail libre",
+  "lore": "Outils utilitaires originaux de clan ; aucune nouvelle arme canonique affirmée",
+  "prompt": "Use case: stylized-concept. Asset: ONE independent transparent native2D raster prop for original Yautja clan-city2.5D game. NEW subject: VERTICAL CIVILIAN MAINTENANCE RACK, one heavy bronze-rib frame over two basalt support feet on the SAME floor. Three orderly shelves and hanging rails with two heavy pincers, utilitarian spanners, folded straps and plain maintenance containers, neatly dense functional workshop equipment, no guns or novel canon weapons. Frame height125worldunits, footprint70x42units, adultYautjaheight100units. Show rack facing slightly LEFT, intrinsic angled base, camera orthographic yaw0 pitch35degrees, depth compression0.574; painted top/front/side volume aligned to this fixed projection. Detail-rich realistic hand-painted raster, dark volcanic basalt, weathered metallic bronze, subdued amber inset utility lamp, warm upperleft lighting. Genuinely transparent PNG alpha, entire single installation including all support feet framed in square1024canvas with15percent clear marginsALLsides, no croppedtips. Short attached footshadow. All content stays attached to rack, no standalone items outsidebase. NO people, faces, dreads, skulls, trophies, text/wording, landscapes, floorplane, opaque glow or backdrop, collage, atlas or watermark. This is an original maintenance adaptation, not a claim of canonical technology.",
+  "tool": "OpenAI built-in image_gen",
+  "reviewedAt": "2026-10-03",
+  "review": "Single native rack complete; tools/straps attached and two independent support feet inspected, metrology remains visually estimated",
+  "sha256": "7f5e1579691085f0df4330d3c6fe8d97201e6691d0e0ca8762bd113462fd9d20",
+  "sourceWidth": 1254,
+  "sourceHeight": 1254,
+  "alphaBounds": {
+    "x": 206,
+    "y": 30,
+    "width": 847,
+    "height": 1201
+  },
+  "transparentPixels": 941309,
+  "totalPixels": 1572516,
+  "destination": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\homeworld\\v80\\maintenance-rack.png",
+  "sourceByteIdentical": true,
+  "installedAt": "2026-10-03T18:40:07.369Z",
+  "status": "SOURCE_MEASURED_AND_INSTALLED_RUNTIME_PLACEMENT_SEPARATE",
+  "supportRevisions": [
+    {
+      "at": "2026-10-03T19:02:21.019Z",
+      "previous": [
+        {
+          "x": 219,
+          "y": 1009
+        },
+        {
+          "x": 298,
+          "y": 1031
+        },
+        {
+          "x": 445,
+          "y": 991
+        },
+        {
+          "x": 724,
+          "y": 1182
+        },
+        {
+          "x": 818,
+          "y": 1214
+        },
+        {
+          "x": 1040,
+          "y": 1132
+        }
+      ],
+      "reason": "Visual foot-boundary correction verified against native alpha>=128; source PNG and SHA unchanged"
+    }
+  ]
+}

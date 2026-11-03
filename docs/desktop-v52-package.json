@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "releaseTag": "v52",
+  "sourceCommit": "ce63b1f6b351da8960a12d8372db237f52a45ed2",
+  "sourceDigest": "6a47def5090d3237c4468fb7011aa2953d2b07be0cdbb3313518c22100d14b9b",
+  "version": "1.0.52",
+  "asarEntries": 4168,
+  "asarTopLevel": [
+    "/main.mjs",
+    "/package.json",
+    "/protocol.mjs",
+    "/release.mjs",
+    "/renderer"
+  ],
+  "audioManifestIncluded": true,
+  "manifestHashesVerified": true,
+  "zip": "work/v52-pc/release/v52/Yautja-La-Longue-Chasse-PC-V52.zip",
+  "zipBytes": 3112088081,
+  "zipSha256": "82303f52f894b129a8d98cd89c8ed79a3e7507d0196c9c90d3a2559f0ced1d2f",
+  "zipEntries": 77,
+  "testedAt": "2026-09-26T20:19:39.433Z",
+  "scope": "Package, ZIP and seven new embedded PNG hashes verified; actual EXE gameplay qualification is recorded separately in work/v52-pc/qa/v52/verification.json after its full run.",
+  "embeddedV52PngVerified": 7,
+  "packagedPatrolCode": true,
+  "signed": false,
+  "physicalHardwareCertified": false
+}

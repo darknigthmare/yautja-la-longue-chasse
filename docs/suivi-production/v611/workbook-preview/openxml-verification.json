@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "file": "Yautja_Suivi_Variantes_2026-10-21.xlsx",
+  "bytes": 1642587,
+  "sha256": "c154f8203cdd1894dfc384cf9704da56badab64417fa0d2e5920b4199cf6b32f",
+  "sheets": [
+    "Synthèse",
+    "Variantes",
+    "Production PR",
+    "Sources jeu",
+    "Classeurs",
+    "Contrôles"
+  ],
+  "uniqueVariantIds": 5120,
+  "statusCounts": {
+    "Présente dans main": 2089,
+    "Produite — à vérifier": 205,
+    "Conservée hors main": 36,
+    "Pas faite": 2790
+  },
+  "productionRows": 72,
+  "historicalProductionRowsPreserved": 36,
+  "newProductionRows": 36,
+  "unchangedSourceSheets": [
+    "Sources jeu",
+    "Classeurs"
+  ],
+  "nativeTables": 6,
+  "nativeAutoFiltersVerified": 6,
+  "activeSolidConditionalFormats": 21,
+  "formulaErrors": [],
+  "exactExportedFormulas": 559,
+  "conditionalRuleIdentitiesVerified": 21,
+  "newProductionEvidenceRowsVerified": 36,
+  "newTypedProductionDatesVerified": 36,
+  "typedVerificationDatesVerified": 72,
+  "formulaNormalization": "Only one optional leading = is removed; no whitespace, case or reference rewriting.",
+  "dateNormalization": "Explicit UTC instants at JavaScript Date millisecond precision; numeric Excel serials rounded to milliseconds. Historical N and all Y dates remain exact. A new N date may differ only by -1 ms when the specific Excel-epoch double roundtrip reproduces the exported value exactly. Date cells and display formats checked separately.",
+  "dateQuantizationExceptions": [
+    {
+      "cell": "N44",
+      "id": "super-predators--enforcers-comics-05",
+      "manifestTimestamp": "2026-10-21T06:24:37.252449+00:00",
+      "expectedUtcMs": "2026-10-21T06:24:37.252+00:00",
+      "exportedUtcMs": "2026-10-21T06:24:37.251+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    },
+    {
+      "cell": "N47",
+      "id": "augmentes-assassin--enforcers-comics-04",
+      "manifestTimestamp": "2026-10-21T06:31:14.596758+00:00",
+      "expectedUtcMs": "2026-10-21T06:31:14.596+00:00",
+      "exportedUtcMs": "2026-10-21T06:31:14.595+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    },
+    {
+      "cell": "N77",
+      "id": "human-accepted--enforcers-comics-04",
+      "manifestTimestamp": "2026-10-21T06:43:16.384998+00:00",
+      "expectedUtcMs": "2026-10-21T06:43:16.384+00:00",
+      "exportedUtcMs": "2026-10-21T06:43:16.383+00:00",
+      "deltaMs": -1,
+      "floatingRoundtripErrorMs": -0.00048828125,
+      "reason": "Exactly reproduced by Excel-epoch double conversion followed by JavaScript Date millisecond truncation."
+    }
+  ],
+  "mergedRangesPreservedBySheet": {
+    "Synthèse": 27,
+    "Variantes": 2,
+    "Production PR": 2,
+    "Sources jeu": 2,
+    "Classeurs": 2,
+    "Contrôles": 17
+  },
+  "summaryFontAndFillCellsVerified": 1000,
+  "summaryFontsFillsAndColorsPreserved": true,
+  "freezePanesPreserved": true,
+  "statusValidationPreserved": true,
+  "scope": "OpenXML data, formulas, caches, tables, panes and conditional fills; not a live Excel application session."
+}

@@ -1,0 +1,17 @@
+node:internal/fs/promises:1028
+  const result = await PromisePrototypeThen(
+                 ^
+
+Error: ENOENT: no such file or directory, lstat '/tmp/homeworld-final-ci-sparse-20261102/docs/qa/homeworld-resume-20261102/pit-preserved-verification.json'
+    at async Object.lstat (node:internal/fs/promises:1028:18)
+    at async verifyProof (file:///tmp/homeworld-final-ci-sparse-20261102/scripts/build-homeworld-followup-v112.mjs:33:63)
+    at async collectFollowupV112 (file:///tmp/homeworld-final-ci-sparse-20261102/scripts/build-homeworld-followup-v112.mjs:194:29)
+    at async generateFollowupV112 (file:///tmp/homeworld-final-ci-sparse-20261102/scripts/build-homeworld-followup-v112.mjs:269:20)
+    at async file:///tmp/homeworld-final-ci-sparse-20261102/scripts/build-homeworld-followup-v112.mjs:285:18 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'lstat',
+  path: '/tmp/homeworld-final-ci-sparse-20261102/docs/qa/homeworld-resume-20261102/pit-preserved-verification.json'
+}
+
+Node.js v22.23.4

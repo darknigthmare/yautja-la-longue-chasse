@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "version": "V36",
+  "sourceCommit": "88d5dbd24ead72cd4d29159afc3b90f3f269f690",
+  "recordedAt": "2026-09-19T16:25:10.836Z",
+  "publication": {
+    "id": "dpl_CHAMinsXs8zKb2NuEDJoB2vMC7ww",
+    "state": "READY",
+    "sourceCommit": "88d5dbd24ead72cd4d29159afc3b90f3f269f690",
+    "target": "production",
+    "url": "https://yautja-la-longue-chasse-r2iiz92kv-darknigthmares-projects.vercel.app",
+    "domain": "https://yautja-la-longue-chasse.vercel.app",
+    "aliases": [
+      "yautja-la-longue-chasse.vercel.app",
+      "yautja-la-longue-chasse-darknigthmares-projects.vercel.app",
+      "yautja-la-longue-chasse-git-main-darknigthmares-projects.vercel.app"
+    ],
+    "checkedAt": "2026-09-19T16:24:23.237Z"
+  },
+  "tests": {
+    "total": 1205,
+    "passed": 1205,
+    "failed": 0
+  },
+  "lint": "passed",
+  "builds": {
+    "next": "passed --webpack; existing Windows junctions unsupported by Turbopack locally",
+    "vinext": "passed"
+  },
+  "browser": {
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "version": "V36",
+    "checkedAt": "2026-09-19T16:24:47.402Z",
+    "checks": [
+      "Historical Elder recognition preserved; nursery does not require a later hunt; all seven rites clearly unfinished.",
+      "Five Homeworld families and ten proposed preserves visible; original dark-surface/underground-forest rule retained.",
+      "All 100 text profiles present; exact ID, accent-insensitive search and empty-result recovery verified.",
+      "390px layout has no horizontal overflow; returning to menu leaves all localStorage bytes unchanged.",
+      "Existing adult campaign still opens its ship with THE PIT access."
+    ],
+    "errors": [],
+    "failedRequests": [],
+    "limitations": [
+      "No playable youth chapter or new art claimed.",
+      "No physical controller or PC package verification in this run."
+    ]
+  },
+  "controller": {
+    "url": "http://localhost:4174",
+    "checkedAt": "2026-09-19T16:19:59.232Z",
+    "simulatedController": true,
+    "physicalController": false,
+    "checks": [
+      "Directional input focuses and scrolls from H001 to H002 on narrow screen.",
+      "Back button returns from the dossier to title, not the ship."
+    ]
+  },
+  "desktop": "V35 / 1.0.35 retained; no new package built or claimed",
+  "sources": {
+    "recentChatsRead": 9,
+    "truncatedLongMessages": 4,
+    "userReferencesInspected": 3,
+    "generatedPacksImported": 0
+  },
+  "runtimeLimits": {
+    "youthCampaignPlayable": false,
+    "newExpeditionRendererIntegrated": false,
+    "newPlayableArenas": 0,
+    "newGeneratedSpritesImported": 0
+  }
+}

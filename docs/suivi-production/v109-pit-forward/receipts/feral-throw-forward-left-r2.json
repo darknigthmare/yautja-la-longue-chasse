@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T08:44:27.234188+00:00",
+  "tool": "image_gen.imagegen",
+  "attemptId": "feral-throw-forward-left-r2",
+  "submittedPrompt": "Correct the LAYOUT of this existing six-pose LEFT-facing hunter-only animation atlas. Preserve all six LEFT-facing poses and the same FERAL from the bone-mask reference: ochre mottled skin, bony mask, long black dreadlocks, rough hide skirt, LEFT anatomical forearm round shield, RIGHT anatomical wrist blades, no shoulder cannon, anatomy and attached equipment. Deliver1536x1024 landscape true RGBA transparency with exactly3columns and2rows. Each512x512cell must contain ONLY its own complete hunter, NO silhouette or weapon reaching into another cell. Make EACH full silhouette distinctly SMALLER, at most340px wide and390px high, contained within x86..426 andy65..455 of its cell, baseliney455. Transparent gutters at least64px. In particular the forward-reaching arm of bottom-left may NOT enter bottom-middle, and no foot or spear crosses cells. Preserve all six different phases in reading order: ready, reach, load lowered hips, forward release toward LEFT, follow-through, recover. No mannequin/victim/second actor/loose limbs may appear. No text, lines, ground, brown glow, vignette or checkerboard; fully transparent between objects. Never mirror the right-facing drawing. Same scale across frames; all two arms and two legs complete. Keep blades/shield/spear attached to their actual anatomical sides as in the LEFT reference. This is a corrected production sprite atlas, not a composite fight image.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/generated_images/exec-2c19372d-b2a9-4524-8963-cfd5b6be32f6.png",
+      "preservedPath": "art-source/v109-pit-forward/feral-throw-forward-left-v109.png",
+      "sha256": "75ddb07fa2db78118494f20a8634aafbb453c64bd654ca8a9560bc8b35c30686",
+      "bytes": 2405332
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-5fd1bec6-8473-4151-bd5a-df16f56de687.png",
+  "output": {
+    "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+    "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+    "bytes": 2390859,
+    "width": 1536,
+    "height": 1024
+  },
+  "status": "SELECTED_SOURCE_REGIONS",
+  "filesEditedAfterGeneration": false,
+  "scope": "Local tool call record, not an external signed certificate. Original adaptations; no film-exact fidelity or source action completion is inferred."
+}

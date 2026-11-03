@@ -1,0 +1,5164 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-140-bad-blood-pine-barrens",
+  "checkedAt": "2026-09-30T19:04:13.783Z",
+  "compositionDigest": "31ee0ff64a3b21b9b734d87fc81998a8c7509bc95c02e362f9b23d2576278448",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "f2eb599daec7425a0641060f179e0bf58e76e06d1c4e8a1750364f44b8ec125b",
+    "app/game/pitArenaProduction.ts": "982a0850cce006e2d65580d1e188fba485a2e94e006b2403dc38351f214aadef",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "scripts/verify-pit-stage-composition-v61.mjs": "9439af6528c100ae09453b6f235052d79f1b1e1cc79008908c82a25a8de6b17c",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "322eb124dd80d21fdbd9024f99dcd28d2c3cb87eb6d2818d16a52804fde449e7",
+    "app/game/data/pitStageLifeV61.json": "839d2bd0a110aeb0125f1b06879055a181836c7af1307b2ae202ce100e71f466",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "production": {
+      "number": 140,
+      "catalogueId": "arena-140-bad-blood-pine-barrens",
+      "assetDirectory": "/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens",
+      "name": "Pine Barrens — chasse au renégat",
+      "setting": "Bois des Pine Barrens dans le New Jersey, recomposés pour un duel latéral.",
+      "wave": "v55-character-stage-coverage",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v55-character-lore-shared-library-compositions",
+      "authoringPlanDigest": "6d7de3805431ad87e51d4cc59e096ab37baea39ab70a6957ae954eacd620ae1b",
+      "screenReference": {
+        "kind": "comic",
+        "workId": "predator-bad-blood",
+        "classification": "character-setting",
+        "sourceUrls": [
+          "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-enforcer-predator-action-figure-from-series-12",
+          "https://store.necaonline.com/blogs/news/shipping-this-week-nightmare-on-elm-street-accessory-set-ultimate-bad-blood-enforcer-predator-2-pack-1",
+          "https://prhcomics.com/wp-content/uploads/2022/02/PREVIEWS2021006_MAY_2022_FINAL.pdf"
+        ],
+        "fidelityClaim": "original-lateral-layout-not-shot-exact"
+      },
+      "moduleProfile": "forest",
+      "contactMeasurements": [
+        {
+          "plane": "P2",
+          "assetId": "p2-bare-trunk",
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p2-bare-trunk.png",
+          "crop": {
+            "x": 65,
+            "y": 0,
+            "width": 947,
+            "height": 1536
+          },
+          "visibleBottomExclusive": 1526,
+          "alphaThreshold": 16,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-stones-deadwood",
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p3-stones-deadwood.png",
+          "crop": {
+            "x": 11,
+            "y": 19,
+            "width": 1755,
+            "height": 844
+          },
+          "visibleBottomExclusive": 821,
+          "alphaThreshold": 16,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur dédiée : interprétation latérale originale",
+          "nominalParallax": 0.05,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "PNG OpenAI dédié au lieu",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p0-depth.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "60a6d9b4562cdf584b9fdd8db984c6338de587f32d6ac4587d52667cfa1bcd4e",
+                    "width": 1981,
+                    "height": 793,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1981,
+                      "height": 793
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Atmosphère alpha indépendante",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-atmosphere",
+              "role": "Brume haute indépendante",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.12,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 190,
+                  "width": 1160,
+                  "height": 150
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-bare-trunk",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.65,
+              "placements": [
+                {
+                  "x": -80,
+                  "y": 62.408854166666664,
+                  "width": 260,
+                  "height": 370
+                },
+                {
+                  "x": 780,
+                  "y": 72.32312565997888,
+                  "width": 220,
+                  "height": 360
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p2-bare-trunk.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/receipt-p2-bare-trunk.json",
+                    "sha256": "79c421d8bd380b3ac35a4f096dec36b3ef11cdd607c1e979f622dd0f06cc1872",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 0,
+                      "width": 947,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/review-p2-bare-trunk.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-113-prey-2022-trapper-clearing/p2-bare-trunk"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-stones-deadwood",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 60,
+                  "y": 358.1111111111111,
+                  "width": 130,
+                  "height": 75
+                },
+                {
+                  "x": 810,
+                  "y": 362.87179487179486,
+                  "width": 120,
+                  "height": 70
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p3-stones-deadwood.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/receipt-p3-stones-deadwood.json",
+                    "sha256": "34c32c65a6513ee649563e7e36ec61e99deb6f85aeff38b11130a1b0d874c7a0",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 11,
+                      "y": 19,
+                      "width": 1755,
+                      "height": 844
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/review-p3-stones-deadwood.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-113-prey-2022-trapper-clearing/p3-stones-deadwood"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Sol physique natif indépendant",
+          "nominalParallax": 1,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-floor",
+              "role": "Sol earth OpenAI indépendant",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 960,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p4-floor.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "7717b3e45eccd10e21cf81fc287e1f618e4ee705e6e3ff2aa6ccf688593eda71",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 2172,
+                      "height": 724
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-close-branches",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": -65,
+                  "y": -85,
+                  "width": 150,
+                  "height": 530
+                },
+                {
+                  "x": 900,
+                  "y": -85,
+                  "width": 135,
+                  "height": 530
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/receipt-p5-close-branches.json",
+                    "sha256": "42caea41563c56b42c1d912d29c3e26a9daeeab054c040265e24b53e44db599e",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 998,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/review-p5-close-branches.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-113-prey-2022-trapper-clearing/p5-close-branches"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-140-bad-blood-pine-barrens",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v55-arena-140-bad-blood-pine-barrens-renderer-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v55-stage-composition-visual-review.json",
+        "digest": "d4c6d7fec196be1b88ff12563bf4c9c36d1cf2e6bd3a2c8f0c985972222b42b2"
+      }
+    },
+    "life": {
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Papillons nocturnes sur un rameau de pin",
+          "placement": {
+            "x": 270,
+            "bottom": 245,
+            "height": 75,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "sha256": "5eb4db14eeb4250d0193d5560860f4c899d88844bff6b7de73afe74028719921",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                369,
+                335.5
+              ],
+              "alphaBounds": [
+                131,
+                178,
+                274,
+                251
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                370,
+                347
+              ],
+              "alphaBounds": [
+                134,
+                190,
+                283,
+                228
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                394,
+                337.5
+              ],
+              "alphaBounds": [
+                137,
+                196,
+                307,
+                246
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                369,
+                320
+              ],
+              "alphaBounds": [
+                102,
+                166,
+                276,
+                223
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                370,
+                320
+              ],
+              "alphaBounds": [
+                125,
+                172,
+                277,
+                225
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                372,
+                347
+              ],
+              "alphaBounds": [
+                137,
+                153,
+                290,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Broussailles frôlées par une proie hors champ",
+          "placement": {
+            "x": 340,
+            "bottom": 350,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "sha256": "2661b91ab3ea2c851ff404539a0fbb2fe7e4e722f96b8c3c5c694bb85624c0d9",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                282.5,
+                464
+              ],
+              "alphaBounds": [
+                37,
+                129,
+                450,
+                335
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                264.5,
+                464
+              ],
+              "alphaBounds": [
+                48,
+                160,
+                430,
+                304
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                262.5,
+                464
+              ],
+              "alphaBounds": [
+                40,
+                146,
+                425,
+                318
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                281.5,
+                430
+              ],
+              "alphaBounds": [
+                50,
+                65,
+                455,
+                365
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                293,
+                431
+              ],
+              "alphaBounds": [
+                61,
+                97,
+                408,
+                334
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                283.5,
+                429
+              ],
+              "alphaBounds": [
+                40,
+                84,
+                436,
+                345
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Balise mécanique originale — fumée résiduelle",
+          "placement": {
+            "x": 635,
+            "bottom": 363,
+            "height": 125,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "sha256": "be1f842d0ef0cd5a3ff62f1c15fcc5107bc69602fb0d0c73f137bb5a34c36a43",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                242,
+                472
+              ],
+              "alphaBounds": [
+                117,
+                198,
+                251,
+                274
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                250.5,
+                471
+              ],
+              "alphaBounds": [
+                126,
+                84,
+                250,
+                387
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                222,
+                473
+              ],
+              "alphaBounds": [
+                97,
+                9,
+                312,
+                464
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                560,
+                512
+              ],
+              "pivot": [
+                242,
+                475
+              ],
+              "alphaBounds": [
+                117,
+                2,
+                416,
+                473
+              ]
+            },
+            {
+              "rect": [
+                560,
+                512,
+                520,
+                512
+              ],
+              "pivot": [
+                202,
+                474
+              ],
+              "alphaBounds": [
+                77,
+                13,
+                425,
+                461
+              ]
+            },
+            {
+              "rect": [
+                1080,
+                512,
+                456,
+                512
+              ],
+              "pivot": [
+                166,
+                476
+              ],
+              "alphaBounds": [
+                41,
+                41,
+                371,
+                435
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "story": {
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "events": [
+        {
+          "id": "conditional-guard-after-combat",
+          "name": "Garde anonyme — observation après le duel",
+          "trigger": "match-end",
+          "idleVisibility": "hidden",
+          "placement": {
+            "x": 750,
+            "bottom": 354,
+            "height": 110,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "sha256": "ae57c714af4350c5c27246b3f982e0ba4af990f24755fe0d6f0e4223d772886b",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                310,
+                496
+              ],
+              "alphaBounds": [
+                203,
+                0,
+                212,
+                496
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                265,
+                498
+              ],
+              "alphaBounds": [
+                150,
+                6,
+                223,
+                492
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                209,
+                496
+              ],
+              "alphaBounds": [
+                99,
+                1,
+                299,
+                495
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                273.5,
+                498
+              ],
+              "alphaBounds": [
+                163,
+                4,
+                312,
+                494
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                266.5,
+                496
+              ],
+              "alphaBounds": [
+                151,
+                8,
+                250,
+                488
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                211,
+                496
+              ],
+              "alphaBounds": [
+                105,
+                3,
+                214,
+                493
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+      "sha256": "5eb4db14eeb4250d0193d5560860f4c899d88844bff6b7de73afe74028719921",
+      "bytes": 1611273,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8761507670084635,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            178,
+            274,
+            251
+          ],
+          "contentSha256": "d25cf45d631cab3f9c542eb9865f729764bed5f27679aeb6828c383cf3d7152d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            134,
+            190,
+            283,
+            228
+          ],
+          "contentSha256": "4b9d95bc1998a3c4c5cd26ecfba19cf2b816cb0b25977a3cd67fe701e508d1ab",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            137,
+            196,
+            307,
+            246
+          ],
+          "contentSha256": "87fd3cc1120e103f5ac11632f61bfaaa5cfe50ed6d610ed7a2236c0a89ca93ab",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            102,
+            166,
+            276,
+            223
+          ],
+          "contentSha256": "c0647147e15861dfa87a3d041fba8795d9769d961ffd53ada63b1bbb6a3a96d0",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            125,
+            172,
+            277,
+            225
+          ],
+          "contentSha256": "a2bfd86dda35d086ac279cb8be3eecf123937b02725cfc0ef930a178a7d360ed",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            137,
+            153,
+            290,
+            251
+          ],
+          "contentSha256": "00cfc5acd5b63b207c6205bda6855efcbd9d540adcdf8e344a5b4e8217f3043d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-140-bad-blood-pine-barrens.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+      "sha256": "2661b91ab3ea2c851ff404539a0fbb2fe7e4e722f96b8c3c5c694bb85624c0d9",
+      "bytes": 2357706,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6573842366536458,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            37,
+            129,
+            450,
+            335
+          ],
+          "contentSha256": "af0750265ff3f9fa542c3252cd762fd3de78c0aba6bc98633814fb4383fc3e0e",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            160,
+            430,
+            304
+          ],
+          "contentSha256": "f7c574ed6c45d6ce7f11d4ac35883e6ce9318b06bfe5f373e09c3b033b71446f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            40,
+            146,
+            425,
+            318
+          ],
+          "contentSha256": "a69d68195aed28a3780df58aab1a22928e1f9c3638141a4db2e1a9ff720e765b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            65,
+            455,
+            365
+          ],
+          "contentSha256": "471acbe88ca6597a8c3f28a10f83dbc975ce988601e6a985c655009cfd8e27e6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            61,
+            97,
+            408,
+            334
+          ],
+          "contentSha256": "066966082acad5dee09cc8340634087340f05347fd0ae7f64c4e3bd81f64ad92",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            40,
+            84,
+            436,
+            345
+          ],
+          "contentSha256": "147f1bdbe0bc6a238af3f6c6ffc085bac57d348057e9c74863a3843078726a2c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-140-bad-blood-pine-barrens.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+      "sha256": "be1f842d0ef0cd5a3ff62f1c15fcc5107bc69602fb0d0c73f137bb5a34c36a43",
+      "bytes": 1696709,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7818876902262369,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            117,
+            198,
+            251,
+            274
+          ],
+          "contentSha256": "0188d9e874d88e2b70e5314349285821de52360516c1fb5a50868be30f694d41",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            126,
+            84,
+            250,
+            387
+          ],
+          "contentSha256": "124155bd26501da013c22ed222c9a75a94af033f794d71deaa1186d7473ed33c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            97,
+            9,
+            312,
+            464
+          ],
+          "contentSha256": "de76c03d2a33f592be4827fca25126f8437804e52e97b0a07a6dda4d00390c00",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            560,
+            512
+          ],
+          "alphaBounds": [
+            117,
+            2,
+            416,
+            473
+          ],
+          "contentSha256": "33ca06f9570aa7b1a51e936bab1c3a638cdabe20241af2df60ba9eb22c22cf86",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            560,
+            512,
+            520,
+            512
+          ],
+          "alphaBounds": [
+            77,
+            13,
+            425,
+            461
+          ],
+          "contentSha256": "2fd43f6212306b8ea9cebf7e13b9eab4eecc3cf06c28a99267cac8edfe15f328",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1080,
+            512,
+            456,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            41,
+            371,
+            435
+          ],
+          "contentSha256": "ef6071952453d3f4bcd129ee64b2ae87bf761c0181bce1dc0879bad1f58709a4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-140-bad-blood-pine-barrens.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+      "sha256": "ae57c714af4350c5c27246b3f982e0ba4af990f24755fe0d6f0e4223d772886b",
+      "bytes": 1994897,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7541611989339193,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            203,
+            0,
+            212,
+            496
+          ],
+          "contentSha256": "28f5d1bcc8eb2e08a368161c449ba2928312e35b9f6530cd48d13bdeb1fd4aac",
+          "borderPixels": 19,
+          "borderMaxAlpha": 3,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            150,
+            6,
+            223,
+            492
+          ],
+          "contentSha256": "45b24e627a027888e1827a389c3aa18b0bba1218d5af5ce7ed37b99f1a208992",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            1,
+            299,
+            495
+          ],
+          "contentSha256": "af7a3602f659f0a51aca9d9c668302b407308253c3f8bdd9832b38381285a0f4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            4,
+            312,
+            494
+          ],
+          "contentSha256": "56a4d402676d95a4ee19354d5824211f264f5c3a6c1a5f830a601d36fd782aac",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            151,
+            8,
+            250,
+            488
+          ],
+          "contentSha256": "5f309bc65e9ed8efd28e7ca87eada104137b7b5093da9062a3bfd934bd20107d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            105,
+            3,
+            214,
+            493
+          ],
+          "contentSha256": "77290eea5a712072f7cb174b4bed1865971628b0f0950c20c3f7bf004cc2a16b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-140-bad-blood-pine-barrens.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 10,
+    "expectedImages": 10,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV61Ambient": true,
+    "hasV61Story": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            270,
+            245
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            340,
+            350
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            635,
+            363
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            270,
+            245
+          ],
+          "pivot": [
+            270,
+            245
+          ],
+          "visibleBounds": [
+            235.13671875,
+            221.9287109375,
+            40.13671875,
+            36.767578125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            340,
+            350
+          ],
+          "pivot": [
+            340,
+            350
+          ],
+          "visibleBounds": [
+            292.05078125,
+            284.5703125,
+            87.890625,
+            65.4296875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            635,
+            363
+          ],
+          "pivot": [
+            635,
+            363
+          ],
+          "visibleBounds": [
+            604.482421875,
+            296.10546875,
+            61.279296875,
+            66.89453125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            275.5,
+            244.4375
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            347.075,
+            351.8
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            648.7125000000001,
+            365.0925
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            275.5,
+            244.4375
+          ],
+          "pivot": [
+            275.5,
+            244.4375
+          ],
+          "visibleBounds": [
+            239.852294921875,
+            220.84710693359375,
+            41.039794921875,
+            37.5948486328125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            347.075,
+            351.8
+          ],
+          "pivot": [
+            347.075,
+            351.8
+          ],
+          "visibleBounds": [
+            298.046923828125,
+            284.89814453125,
+            89.8681640625,
+            66.90185546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            648.7125000000001,
+            365.0925
+          ],
+          "pivot": [
+            648.7125000000001,
+            365.0925
+          ],
+          "visibleBounds": [
+            617.5082763671876,
+            296.692841796875,
+            62.6580810546875,
+            68.399658203125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            255.05,
+            244.4375
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            326.625,
+            351.8
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            628.2625,
+            365.0925
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            255.05,
+            244.4375
+          ],
+          "pivot": [
+            255.05,
+            244.4375
+          ],
+          "visibleBounds": [
+            219.402294921875,
+            220.84710693359375,
+            41.039794921875,
+            37.5948486328125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            326.625,
+            351.8
+          ],
+          "pivot": [
+            326.625,
+            351.8
+          ],
+          "visibleBounds": [
+            277.596923828125,
+            284.89814453125,
+            89.8681640625,
+            66.90185546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            628.2625,
+            365.0925
+          ],
+          "pivot": [
+            628.2625,
+            365.0925
+          ],
+          "visibleBounds": [
+            597.0582763671875,
+            296.692841796875,
+            62.6580810546875,
+            68.399658203125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            272.1,
+            245.25
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            341.40000000000003,
+            349.2
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            633.45,
+            362.07
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            272.1,
+            245.25
+          ],
+          "pivot": [
+            272.1,
+            245.25
+          ],
+          "visibleBounds": [
+            237.58535156250002,
+            222.409423828125,
+            39.7353515625,
+            36.39990234375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            341.40000000000003,
+            349.2
+          ],
+          "pivot": [
+            341.40000000000003,
+            349.2
+          ],
+          "visibleBounds": [
+            293.93027343750003,
+            284.424609375,
+            87.01171875,
+            64.775390625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            633.45,
+            362.07
+          ],
+          "pivot": [
+            633.45,
+            362.07
+          ],
+          "visibleBounds": [
+            603.23759765625,
+            295.8444140625,
+            60.66650390625,
+            66.2255859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            264.22499999999997,
+            244.05562499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            336.15,
+            351.94312499999995
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            639.2625,
+            365.30062499999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            264.22499999999997,
+            244.05562499999996
+          ],
+          "pivot": [
+            264.22499999999997,
+            244.05562499999996
+          ],
+          "visibleBounds": [
+            228.40297851562497,
+            220.3498754882812,
+            41.240478515625,
+            37.7786865234375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            336.15,
+            351.94312499999995
+          ],
+          "pivot": [
+            336.15,
+            351.94312499999995
+          ],
+          "visibleBounds": [
+            286.882177734375,
+            284.71412109374995,
+            90.30761718750001,
+            67.22900390625001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            639.2625,
+            365.30062499999997
+          ],
+          "pivot": [
+            639.2625,
+            365.30062499999997
+          ],
+          "visibleBounds": [
+            607.9056884765625,
+            296.56649414062497,
+            62.9644775390625,
+            68.734130859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            291,
+            247.5
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            354,
+            342
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            619.5,
+            353.7
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            291,
+            247.5
+          ],
+          "pivot": [
+            291,
+            247.5
+          ],
+          "visibleBounds": [
+            259.623046875,
+            226.73583984375,
+            36.123046875,
+            33.0908203125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            354,
+            342
+          ],
+          "pivot": [
+            354,
+            342
+          ],
+          "visibleBounds": [
+            310.845703125,
+            283.11328125,
+            79.1015625,
+            58.88671875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            619.5,
+            353.7
+          ],
+          "pivot": [
+            619.5,
+            353.7
+          ],
+          "visibleBounds": [
+            592.0341796875,
+            293.494921875,
+            55.1513671875,
+            60.205078125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            270,
+            245
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            340,
+            350
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            635,
+            363
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            270,
+            245
+          ],
+          "pivot": [
+            270,
+            245
+          ],
+          "visibleBounds": [
+            235.13671875,
+            221.9287109375,
+            40.13671875,
+            36.767578125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            340,
+            350
+          ],
+          "pivot": [
+            340,
+            350
+          ],
+          "visibleBounds": [
+            292.05078125,
+            284.5703125,
+            87.890625,
+            65.4296875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            635,
+            363
+          ],
+          "pivot": [
+            635,
+            363
+          ],
+          "visibleBounds": [
+            604.482421875,
+            296.10546875,
+            61.279296875,
+            66.89453125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            263.8464447449999,
+            239.52872399999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            335.90689474499993,
+            347.619399
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            639.590219745,
+            361.002054
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": false,
+          "visible": false,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": null,
+          "elapsedFrames": null,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            263.8464447449999,
+            239.52872399999998
+          ],
+          "pivot": [
+            263.8464447449999,
+            239.52872399999998
+          ],
+          "visibleBounds": [
+            227.95696281140619,
+            215.7783315439453,
+            41.31814306640625,
+            37.84983178710938
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            335.90689474499993,
+            347.619399
+          ],
+          "pivot": [
+            335.90689474499993,
+            347.619399
+          ],
+          "visibleBounds": [
+            286.5462907410937,
+            280.26378864843747,
+            90.47768554687501,
+            67.3556103515625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            639.590219745,
+            361.002054
+          ],
+          "pivot": [
+            639.590219745,
+            361.002054
+          ],
+          "visibleBounds": [
+            608.1743567078906,
+            292.13848222265625,
+            63.08305297851564,
+            68.86357177734376
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-guard-after-combat-center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            270,
+            245
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            340,
+            350
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            635,
+            363
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            750,
+            354
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            270,
+            245
+          ],
+          "pivot": [
+            270,
+            245
+          ],
+          "visibleBounds": [
+            235.13671875,
+            221.9287109375,
+            40.13671875,
+            36.767578125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            340,
+            350
+          ],
+          "pivot": [
+            340,
+            350
+          ],
+          "visibleBounds": [
+            292.05078125,
+            284.5703125,
+            87.890625,
+            65.4296875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            635,
+            363
+          ],
+          "pivot": [
+            635,
+            363
+          ],
+          "visibleBounds": [
+            604.482421875,
+            296.10546875,
+            61.279296875,
+            66.89453125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            750,
+            354
+          ],
+          "pivot": [
+            750,
+            354
+          ],
+          "visibleBounds": [
+            726.259765625,
+            247.8671875,
+            67.03125,
+            106.1328125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-guard-after-combat-left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            275.5,
+            244.4375
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            347.075,
+            351.8
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            648.7125000000001,
+            365.0925
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            766.3,
+            355.89
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            275.5,
+            244.4375
+          ],
+          "pivot": [
+            275.5,
+            244.4375
+          ],
+          "visibleBounds": [
+            239.852294921875,
+            220.84710693359375,
+            41.039794921875,
+            37.5948486328125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            347.075,
+            351.8
+          ],
+          "pivot": [
+            347.075,
+            351.8
+          ],
+          "visibleBounds": [
+            298.046923828125,
+            284.89814453125,
+            89.8681640625,
+            66.90185546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            648.7125000000001,
+            365.0925
+          ],
+          "pivot": [
+            648.7125000000001,
+            365.0925
+          ],
+          "visibleBounds": [
+            617.5082763671876,
+            296.692841796875,
+            62.6580810546875,
+            68.399658203125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            766.3,
+            355.89
+          ],
+          "pivot": [
+            766.3,
+            355.89
+          ],
+          "visibleBounds": [
+            742.0256103515625,
+            247.36919921875,
+            68.539453125,
+            108.52080078124999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-guard-after-combat-right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            255.05,
+            244.4375
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            326.625,
+            351.8
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            628.2625,
+            365.0925
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            745.85,
+            355.89
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            255.05,
+            244.4375
+          ],
+          "pivot": [
+            255.05,
+            244.4375
+          ],
+          "visibleBounds": [
+            219.402294921875,
+            220.84710693359375,
+            41.039794921875,
+            37.5948486328125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            326.625,
+            351.8
+          ],
+          "pivot": [
+            326.625,
+            351.8
+          ],
+          "visibleBounds": [
+            277.596923828125,
+            284.89814453125,
+            89.8681640625,
+            66.90185546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            628.2625,
+            365.0925
+          ],
+          "pivot": [
+            628.2625,
+            365.0925
+          ],
+          "visibleBounds": [
+            597.0582763671875,
+            296.692841796875,
+            62.6580810546875,
+            68.399658203125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            745.85,
+            355.89
+          ],
+          "pivot": [
+            745.85,
+            355.89
+          ],
+          "visibleBounds": [
+            721.5756103515625,
+            247.36919921875,
+            68.539453125,
+            108.52080078124999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-guard-after-combat-wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            272.1,
+            245.25
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            341.40000000000003,
+            349.2
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            633.45,
+            362.07
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            747.3,
+            353.15999999999997
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            272.1,
+            245.25
+          ],
+          "pivot": [
+            272.1,
+            245.25
+          ],
+          "visibleBounds": [
+            237.58535156250002,
+            222.409423828125,
+            39.7353515625,
+            36.39990234375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            341.40000000000003,
+            349.2
+          ],
+          "pivot": [
+            341.40000000000003,
+            349.2
+          ],
+          "visibleBounds": [
+            293.93027343750003,
+            284.424609375,
+            87.01171875,
+            64.775390625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            633.45,
+            362.07
+          ],
+          "pivot": [
+            633.45,
+            362.07
+          ],
+          "visibleBounds": [
+            603.23759765625,
+            295.8444140625,
+            60.66650390625,
+            66.2255859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            747.3,
+            353.15999999999997
+          ],
+          "pivot": [
+            747.3,
+            353.15999999999997
+          ],
+          "visibleBounds": [
+            723.7971679687499,
+            248.08851562499996,
+            66.3609375,
+            105.07148437500001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-guard-after-combat-close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            264.22499999999997,
+            244.05562499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            336.15,
+            351.94312499999995
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            639.2625,
+            365.30062499999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            757.4250000000001,
+            356.05312499999997
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            264.22499999999997,
+            244.05562499999996
+          ],
+          "pivot": [
+            264.22499999999997,
+            244.05562499999996
+          ],
+          "visibleBounds": [
+            228.40297851562497,
+            220.3498754882812,
+            41.240478515625,
+            37.7786865234375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            336.15,
+            351.94312499999995
+          ],
+          "pivot": [
+            336.15,
+            351.94312499999995
+          ],
+          "visibleBounds": [
+            286.882177734375,
+            284.71412109374995,
+            90.30761718750001,
+            67.22900390625001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            639.2625,
+            365.30062499999997
+          ],
+          "pivot": [
+            639.2625,
+            365.30062499999997
+          ],
+          "visibleBounds": [
+            607.9056884765625,
+            296.56649414062497,
+            62.9644775390625,
+            68.734130859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            757.4250000000001,
+            356.05312499999997
+          ],
+          "pivot": [
+            757.4250000000001,
+            356.05312499999997
+          ],
+          "visibleBounds": [
+            733.0319091796875,
+            247.00166015624995,
+            68.874609375,
+            109.05146484375001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-guard-after-combat-reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            291,
+            247.5
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            354,
+            342
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            619.5,
+            353.7
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 0,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            723,
+            345.6
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            291,
+            247.5
+          ],
+          "pivot": [
+            291,
+            247.5
+          ],
+          "visibleBounds": [
+            259.623046875,
+            226.73583984375,
+            36.123046875,
+            33.0908203125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            354,
+            342
+          ],
+          "pivot": [
+            354,
+            342
+          ],
+          "visibleBounds": [
+            310.845703125,
+            283.11328125,
+            79.1015625,
+            58.88671875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            619.5,
+            353.7
+          ],
+          "pivot": [
+            619.5,
+            353.7
+          ],
+          "visibleBounds": [
+            592.0341796875,
+            293.494921875,
+            55.1513671875,
+            60.205078125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            723,
+            345.6
+          ],
+          "pivot": [
+            723,
+            345.6
+          ],
+          "visibleBounds": [
+            702.310546875,
+            249.69375000000002,
+            40.9921875,
+            95.90625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-guard-after-combat-high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            270,
+            245
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            340,
+            350
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            635,
+            363
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            750,
+            354
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            270,
+            245
+          ],
+          "pivot": [
+            270,
+            245
+          ],
+          "visibleBounds": [
+            235.13671875,
+            221.9287109375,
+            40.13671875,
+            36.767578125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            340,
+            350
+          ],
+          "pivot": [
+            340,
+            350
+          ],
+          "visibleBounds": [
+            292.05078125,
+            284.5703125,
+            87.890625,
+            65.4296875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            635,
+            363
+          ],
+          "pivot": [
+            635,
+            363
+          ],
+          "visibleBounds": [
+            604.482421875,
+            296.10546875,
+            61.279296875,
+            66.89453125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            750,
+            354
+          ],
+          "pivot": [
+            750,
+            354
+          ],
+          "visibleBounds": [
+            726.259765625,
+            247.8671875,
+            67.03125,
+            106.1328125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "story-conditional-guard-after-combat-actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            263.8464447449999,
+            239.52872399999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            335.90689474499993,
+            347.619399
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            639.590219745,
+            361.002054
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [
+        {
+          "eventId": "conditional-guard-after-combat",
+          "trigger": "match-end",
+          "active": true,
+          "visible": true,
+          "held": false,
+          "nativeFrame": 3,
+          "occurrence": "round:1:result",
+          "elapsedFrames": 60.99999999999999,
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            757.975244745,
+            351.737139
+          ]
+        }
+      ],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            263.8464447449999,
+            239.52872399999998
+          ],
+          "pivot": [
+            263.8464447449999,
+            239.52872399999998
+          ],
+          "visibleBounds": [
+            227.95696281140619,
+            215.7783315439453,
+            41.31814306640625,
+            37.84983178710938
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            335.90689474499993,
+            347.619399
+          ],
+          "pivot": [
+            335.90689474499993,
+            347.619399
+          ],
+          "visibleBounds": [
+            286.5462907410937,
+            280.26378864843747,
+            90.47768554687501,
+            67.3556103515625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            639.590219745,
+            361.002054
+          ],
+          "pivot": [
+            639.590219745,
+            361.002054
+          ],
+          "visibleBounds": [
+            608.1743567078906,
+            292.13848222265625,
+            63.08305297851564,
+            68.86357177734376
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "story",
+          "eventId": "conditional-guard-after-combat",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            757.975244745,
+            351.737139
+          ],
+          "pivot": [
+            757.975244745,
+            351.737139
+          ],
+          "visibleBounds": [
+            733.536216571172,
+            242.4803071640625,
+            69.00431484375001,
+            109.2568318359375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 0,
+      "frame": 1460,
+      "attachment": [
+        340,
+        350
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 1,
+      "frame": 1480,
+      "attachment": [
+        340,
+        350
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 2,
+      "frame": 1500,
+      "attachment": [
+        340,
+        350
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 3,
+      "frame": 1520,
+      "attachment": [
+        340,
+        350
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 4,
+      "frame": 1540,
+      "attachment": [
+        340,
+        350
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 5,
+      "frame": 1560,
+      "attachment": [
+        340,
+        350
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 0,
+      "frame": 2504,
+      "attachment": [
+        635,
+        363
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 1,
+      "frame": 2524,
+      "attachment": [
+        635,
+        363
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 2,
+      "frame": 2544,
+      "attachment": [
+        635,
+        363
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 3,
+      "frame": 2564,
+      "attachment": [
+        635,
+        363
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 4,
+      "frame": 2584,
+      "attachment": [
+        635,
+        363
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 5,
+      "frame": 2604,
+      "attachment": [
+        635,
+        363
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 0,
+      "frame": 3709,
+      "attachment": [
+        270,
+        245
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 1,
+      "frame": 3729,
+      "attachment": [
+        270,
+        245
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 2,
+      "frame": 3749,
+      "attachment": [
+        270,
+        245
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 3,
+      "frame": 3769,
+      "attachment": [
+        270,
+        245
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 4,
+      "frame": 3789,
+      "attachment": [
+        270,
+        245
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 5,
+      "frame": 3809,
+      "attachment": [
+        270,
+        245
+      ]
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-guard-after-combat",
+      "nativeFrame": 0,
+      "attachment": [
+        750,
+        354
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-guard-after-combat",
+      "nativeFrame": 1,
+      "attachment": [
+        750,
+        354
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-guard-after-combat",
+      "nativeFrame": 2,
+      "attachment": [
+        750,
+        354
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-guard-after-combat",
+      "nativeFrame": 3,
+      "attachment": [
+        750,
+        354
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-guard-after-combat",
+      "nativeFrame": 4,
+      "attachment": [
+        750,
+        354
+      ],
+      "syntheticNarrativeCue": false
+    },
+    {
+      "kind": "story",
+      "trigger": "match-end",
+      "eventId": "conditional-guard-after-combat",
+      "nativeFrame": 5,
+      "attachment": [
+        750,
+        354
+      ],
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\center.png",
+      "sha256": "e57e22d723731e91fddc18e57d89c160c3b28fb92f17d6012f637452fc211de6"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\left-corner.png",
+      "sha256": "ee3a2d1d6527daad5247afcc5f8c92963823c988a795f840cf8702fb1f3ad9eb"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\right-corner.png",
+      "sha256": "c3b9efebf752f5bb31ab4421555413f24df12aa6b124c2c1598a8d140c98c618"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\wide.png",
+      "sha256": "a28c581a22e1092a08dc25ad7d67769daafddf31cb980127663cc19e6681517f"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\close.png",
+      "sha256": "fdffdb202bacce1b443a85e8a73eb0a2ed51b42722b91177c624b491f85e60f4"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\reduced-motion.png",
+      "sha256": "d60232e12e082d27b61bfed595124419b9e683c641b7e0e5049f84e98811e0f7"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\high-contrast.png",
+      "sha256": "c44a4baf728244ad30cd45a8e7248573afe15110c81a1183c5cafe7a67d86052"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\actual-game-camera.png",
+      "sha256": "9fe2c00bf47b54019bd60af0832daecd153997d7e77411f4b6b0f3f5ccd8f895"
+    },
+    {
+      "name": "ambient-ambient-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-02-frame-0.png",
+      "sha256": "30d99d1cf98ba3093640bee8b45bbfcb69f29206bd38f728c61027914edb353f"
+    },
+    {
+      "name": "ambient-ambient-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-02-frame-1.png",
+      "sha256": "a961cc907288536dbb47828de2faca99b749b70582b1617c6177822be7075aa1"
+    },
+    {
+      "name": "ambient-ambient-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-02-frame-2.png",
+      "sha256": "df052a85465d556bbff0761ecb7148027ac27d7ee903155886e79e680f64eb72"
+    },
+    {
+      "name": "ambient-ambient-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-02-frame-3.png",
+      "sha256": "80856ba9ecb3d29672360524fa62721038630e5d2347ec68226ac36cc6b1c0c1"
+    },
+    {
+      "name": "ambient-ambient-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-02-frame-4.png",
+      "sha256": "1aca9d4fa82a13c935f55bec53dec7b003c9c8d24618c2c2d1837e64783e9b1d"
+    },
+    {
+      "name": "ambient-ambient-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-02-frame-5.png",
+      "sha256": "f03aaee27196db06c3ca3cfce1e8eda8bdb16a25e31df2b3f2b3d40632e81140"
+    },
+    {
+      "name": "ambient-ambient-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-03-frame-0.png",
+      "sha256": "30d99d1cf98ba3093640bee8b45bbfcb69f29206bd38f728c61027914edb353f"
+    },
+    {
+      "name": "ambient-ambient-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-03-frame-1.png",
+      "sha256": "3ffb654b5b027fffac3a49f3b1c7c19a4041a6fb60a1f0a35004bb18e466f6c0"
+    },
+    {
+      "name": "ambient-ambient-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-03-frame-2.png",
+      "sha256": "67987eccf23339e838208298770d9f54c490f04242813b528e5cabadee3925b5"
+    },
+    {
+      "name": "ambient-ambient-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-03-frame-3.png",
+      "sha256": "4ba76f5e1fb77cc7ec3f3753af369147d928adc9a13417f198be62ac5859bd14"
+    },
+    {
+      "name": "ambient-ambient-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-03-frame-4.png",
+      "sha256": "1076d8c6af1140cb48299cffc3bfcbf66052ab2aa8f719f877394c9841a50d50"
+    },
+    {
+      "name": "ambient-ambient-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-03-frame-5.png",
+      "sha256": "a4ba514e2cfa11be21ff03a5ebf21001586d817bd04d65ee99a475e518ed50ca"
+    },
+    {
+      "name": "ambient-ambient-01-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-01-frame-0.png",
+      "sha256": "30d99d1cf98ba3093640bee8b45bbfcb69f29206bd38f728c61027914edb353f"
+    },
+    {
+      "name": "ambient-ambient-01-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-01-frame-1.png",
+      "sha256": "06543e6b265389a1feb1505d56c13425990228f10ec6ab7fcc4df30efeb91958"
+    },
+    {
+      "name": "ambient-ambient-01-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-01-frame-2.png",
+      "sha256": "2287331be4207ea1d40be72e15abc00f1106a1d91ff2fbad96a62fc9a65340b1"
+    },
+    {
+      "name": "ambient-ambient-01-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-01-frame-3.png",
+      "sha256": "efdcad44cdd657bb169f006c754aa92da5aae4b130a54fae9d161968a173c2af"
+    },
+    {
+      "name": "ambient-ambient-01-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-01-frame-4.png",
+      "sha256": "9880eaf7e9063c4e0673748166be5d21309d842847abf2088cccd6dcb22f540a"
+    },
+    {
+      "name": "ambient-ambient-01-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\ambient-ambient-01-frame-5.png",
+      "sha256": "17af1a63e7c5a381df7690455c9b3a93b5d7767b7d5596dc94b22f14a21c4269"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-frame-0.png",
+      "sha256": "95c1a9c14c675eaaf255cdf368025cea65dd6c5d88f64d265e5618c4b5e84645"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-frame-1.png",
+      "sha256": "4fe84d8cea3d5a81f1a1d6af37e4660688c1b93b9e8dd6d802a3838bf50ff260"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-frame-2.png",
+      "sha256": "58c0fb4c67d33aa9abb38bbb0a4cef46c9118cc3aa08c3d4e2d58f63291c2212"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-frame-3.png",
+      "sha256": "bb916786f5a14824dcdbd938d975c2ac64330d283546b382c46f72347c753fc8"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-frame-4.png",
+      "sha256": "61cde220b1484759a4ac3dc13f6369618ec087ad27a9e09458743ac2c3150545"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-frame-5.png",
+      "sha256": "42185188d7e1a38f5162e9a2bf1f2166db465aa855317933c45b4ebb34b7d6da"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-center.png",
+      "sha256": "bb916786f5a14824dcdbd938d975c2ac64330d283546b382c46f72347c753fc8"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-left-corner.png",
+      "sha256": "5d7a516eaa0bf6a77cfc3e33be18183a4a80956ad33c325fc280a4445e5015b1"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-right-corner.png",
+      "sha256": "cd5019fd4c9808a20fc5cc1dcc8c3eb5f15100715ad9648ebca407d770142682"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-wide.png",
+      "sha256": "a920952b74dd1a3968d551dd44fd4b1aedad8eecd1f60b5bdb51b6d0172c914a"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-close.png",
+      "sha256": "0bd8ee197997a96ea1ee97f369b14b4d2595dc1144f72bd60c9ee2ed43b3eb89"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-reduced-motion.png",
+      "sha256": "4bcd16b2d792cf03da80c9f3bdd6dec754fbab9ee7a61f509970ea8724369725"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-high-contrast.png",
+      "sha256": "51973483361f7d5817166a84f7098296e27aa6190bc2d0618de4913d635473ce"
+    },
+    {
+      "name": "story-conditional-guard-after-combat-actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\story-conditional-guard-after-combat-actual-game-camera.png",
+      "sha256": "93e466c6965afc758c2dc0efec09ebdaf15e6cbd2a1d286ce3cc3615e7b272a1"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-140-bad-blood-pine-barrens\\mobile-canvas.png",
+      "sha256": "23c0a5e81acc7b6b34e3adee82347c77493643764e09ab96db3f071a5a922062"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "version": "V38",
+  "fighterId": "city-hunter",
+  "name": "City Hunter",
+  "generator": "OpenAI image_gen intégré",
+  "generatedOutput": "exec-23c3af84-2671-42af-a34c-bc14843dc67b.png",
+  "officialFidelityCertified": false,
+  "sourcePreservedByteForByte": true,
+  "acceptedOrientedClips": 1,
+  "completeMovesets": 0,
+  "assets": [
+    {
+      "id": "v38-high-guard-left",
+      "label": "Garde haute · gauche · deux dessins",
+      "actionId": "high-guard",
+      "publicPath": "/game/sprites/v38/pit/city-hunter/high-guard-left.png",
+      "status": "integrated",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "cb581407eb92306b4d1b3e9afec0b03f4f5960e6c6dd0736b2adaa52048666b6",
+      "transparency": {
+        "mode": "alpha"
+      },
+      "runtimeClips": [
+        {
+          "id": "high-guard",
+          "facing": "left"
+        }
+      ],
+      "reviewFrames": [
+        {
+          "pageId": "city-hunter-high-guard-left-v38",
+          "rect": [
+            140,
+            45,
+            551,
+            911
+          ],
+          "pivot": [
+            272,
+            895
+          ],
+          "durationTicks": 60,
+          "facing": "left",
+          "phase": "high-guard"
+        },
+        {
+          "pageId": "city-hunter-high-guard-left-v38",
+          "rect": [
+            880,
+            60,
+            541,
+            897
+          ],
+          "pivot": [
+            268,
+            881
+          ],
+          "durationTicks": 60,
+          "facing": "left",
+          "phase": "high-guard"
+        }
+      ],
+      "notes": [
+        "Garde haute gauche dessinée indépendamment, deux poses respiratoires de 60 ticks ; aucun miroir ni réaction blockstun.",
+        "Masque cuivre, disque, genouillères carrées, tibias, deux mains et gantelet portant les lames comparés au V32 gauche.",
+        "Une génération OpenAI native et une correction ; première version rejetée pour lames sur le mauvais bras.",
+        "Alpha natif, crops irréguliers et pivots stables ; fidélité officielle absolue non certifiée."
+      ]
+    }
+  ]
+}

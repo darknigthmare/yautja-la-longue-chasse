@@ -1,0 +1,5588 @@
+{
+  "schemaVersion": 1,
+  "id": "machiko-noguchi-production-v34",
+  "fighterId": "machiko-noguchi",
+  "checkedAt": "2026-09-12T22:28:55.635Z",
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "reference": {
+    "path": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+    "sha256": "a90bfaf2a5f4f02dff7c066ec16eb610394b01bd34b2940373c543b78bf16b44",
+    "decision": "Existing project presentation inspected and displayed before each call; fan-made identity guidance, not certified1:1 film replica."
+  },
+  "generatedSheets": 14,
+  "generatedPoseSamples": 112,
+  "validatedRuntimeClips": 0,
+  "acceptedSourcePages": 0,
+  "runtimeDrawings": 0,
+  "actionSequencesIncludingFacings": 0,
+  "counts": {
+    "validated": 0,
+    "authoredReview": 8,
+    "rejected": 6
+  },
+  "runtimeLimitations": [
+    "Human fighter is not present in PIT_FIGHTERS; no combat stats, hitboxes, attack timings or playable selection wired.",
+    "Workshop review frames and review timing are not runtime coverage.",
+    "Walking families remain rejected; no false alternating cycle or engine mirror.",
+    "Jump page has four key poses, not complete rise/fall/landing phase clips.",
+    "Clan armor only; Ryushi variant is a separate identity and is not included.",
+    "Left idle keeps only two coherent drawings; two other cannon placements excluded.",
+    "Corrected guard rifle is more compact than the presentation; fidelity limitation retained.",
+    "Existing V28 fan-made reference, not a certified1:1 official design. Original gameplay moves are adaptations."
+  ],
+  "assets": [
+    {
+      "id": "idle",
+      "actionId": "idle",
+      "label": "idle",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-idle-v34.png",
+      "originId": "exec-1f65ad19-c1ad-4a69-bffb-63f0c6323d6f.png",
+      "sha256": "13eddea06675dc75b4fd7f709d7a2a7fa7abc1cf7a23fb79c9b41e687f1b4e25",
+      "bytes": 1855462,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four idle stages and complete rifle grips drawn both orientations. Left row shoulder cannon appears duplicated or rear-facing; needs targeted orientation review before any runtime acceptance.",
+        "Excluded from approved workshop phase playback; original source retained for inspection."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1278385,
+        "fringePixels": 16092
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38051,
+          "alpha16Bounds": [
+            135,
+            71,
+            214,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 15,
+          "pixelDigest": "41009eb7e506e7dab65773028da9e0ebb4a6cc70392e4bc4d9c394075fabc71e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37800,
+          "alpha16Bounds": [
+            519,
+            70,
+            212,
+            412
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 27,
+          "pixelDigest": "60d5b7a7b398a301e51bba412383907997bc43322bb7c14b548dbc62659e4c5c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36659,
+          "alpha16Bounds": [
+            881,
+            88,
+            202,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 53,
+          "pixelDigest": "2f374c79325cbb4737cd4678dadc81299ad941170a31bab185583d284e6f16cc",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37554,
+          "alpha16Bounds": [
+            1236,
+            71,
+            212,
+            410
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 21,
+          "pixelDigest": "f22c67595e01e074c375553cf08aaa75ed026bf41a1d4fa7b04bed191e672229",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36163,
+          "alpha16Bounds": [
+            90,
+            555,
+            205,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 11,
+          "pixelDigest": "b170c4e50383421e863f38393283fdb0ba10eb0b13d80e020af89ad2ff2ef234",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36331,
+          "alpha16Bounds": [
+            472,
+            552,
+            203,
+            409
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 24,
+          "pixelDigest": "282e43a35fc465c933a1c1a9a48b5b2ce897fa088996329c5ba8853879b14712",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36014,
+          "alpha16Bounds": [
+            837,
+            573,
+            199,
+            388
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 39,
+          "pixelDigest": "8f18153abbc9004af1f14ab7f1c60b9074940fa6653b8ee3612544479981b3a6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35907,
+          "alpha16Bounds": [
+            1201,
+            555,
+            205,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 39,
+          "pixelDigest": "2c0f2822a18f1a4c62d8b13ab58fb494323c2b2d0434c698e1847721003e7862",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 0,
+          "pageId": "machiko-noguchi-idle",
+          "rect": [
+            132,
+            68,
+            220,
+            417
+          ],
+          "pivot": [
+            91.5,
+            413
+          ],
+          "durationTicks": 10,
+          "phase": "neutral alert",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 1,
+          "pageId": "machiko-noguchi-idle",
+          "rect": [
+            516,
+            67,
+            218,
+            418
+          ],
+          "pivot": [
+            91,
+            414
+          ],
+          "durationTicks": 10,
+          "phase": "inhale shoulders slightly raised",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 2,
+          "pageId": "machiko-noguchi-idle",
+          "rect": [
+            878,
+            85,
+            208,
+            400
+          ],
+          "pivot": [
+            90.5,
+            396
+          ],
+          "durationTicks": 10,
+          "phase": "exhale relaxed knees",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 3,
+          "pageId": "machiko-noguchi-idle",
+          "rect": [
+            1233,
+            68,
+            218,
+            416
+          ],
+          "pivot": [
+            90.5,
+            412
+          ],
+          "durationTicks": 10,
+          "phase": "return toward neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.idle",
+          "index": 0,
+          "pageId": "machiko-noguchi-idle",
+          "rect": [
+            87,
+            552,
+            211,
+            412
+          ],
+          "pivot": [
+            116,
+            408
+          ],
+          "durationTicks": 10,
+          "phase": "neutral alert",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.idle",
+          "index": 1,
+          "pageId": "machiko-noguchi-idle",
+          "rect": [
+            469,
+            549,
+            209,
+            415
+          ],
+          "pivot": [
+            117,
+            411
+          ],
+          "durationTicks": 10,
+          "phase": "inhale shoulders slightly raised",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.idle",
+          "index": 2,
+          "pageId": "machiko-noguchi-idle",
+          "rect": [
+            834,
+            570,
+            205,
+            394
+          ],
+          "pivot": [
+            113,
+            390
+          ],
+          "durationTicks": 10,
+          "phase": "exhale relaxed knees",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.idle",
+          "index": 3,
+          "pageId": "machiko-noguchi-idle",
+          "rect": [
+            1198,
+            552,
+            211,
+            412
+          ],
+          "pivot": [
+            117.5,
+            408
+          ],
+          "durationTicks": 10,
+          "phase": "return toward neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor"
+    },
+    {
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-walk-forward-v34.png",
+      "originId": "exec-9646bdd8-891e-4e86-aed6-3dcf3c61042c.png",
+      "sha256": "a7df1b6cad80bfea0932ab7231bc67bd303f8b504f7b91ca7badbd54bc37fc1f",
+      "bytes": 1933077,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Forward gait rejected: same leading leg in contacts1/3 and same lifted knee in passes2/4. Cannon aim improved but gait not alternating.",
+        "Excluded from approved workshop phase playback; original source retained for inspection."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1250395,
+        "fringePixels": 16997
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41765,
+          "alpha16Bounds": [
+            109,
+            62,
+            272,
+            417
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 19,
+          "pixelDigest": "cbbfbc0f4c0c07c39c026bca4251f43c5e225cf3b28c95635005389a9585fb4d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39517,
+          "alpha16Bounds": [
+            530,
+            60,
+            205,
+            421
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 14,
+          "pixelDigest": "f71273fb974949ae5e91515c4826af809f3144888da0cf174dcac21f8db98b79",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39446,
+          "alpha16Bounds": [
+            839,
+            64,
+            256,
+            416
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 18,
+          "pixelDigest": "5d79f348b5fd2b96d4246f35015485aea9d2104d42ee2f644d62758b79a25e3f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39603,
+          "alpha16Bounds": [
+            1241,
+            61,
+            211,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 15,
+          "pixelDigest": "3185ad6cffc0b64e41057f60cbafd96b7d8ececd75c5a82dd534cb5819296568",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41879,
+          "alpha16Bounds": [
+            89,
+            546,
+            279,
+            416
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 21,
+          "pixelDigest": "0cba2358b2bee4bb00e7690476c37363de021d4edea90ea9b4cf064fbc999b19",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39879,
+          "alpha16Bounds": [
+            473,
+            540,
+            204,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 14,
+          "pixelDigest": "9ac98b33018f5c08d1a1e06b4750bef60c44ceb56469c5079020c8239782dd51",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40603,
+          "alpha16Bounds": [
+            829,
+            546,
+            258,
+            416
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 24,
+          "pixelDigest": "228a62c470ab3a222d2a9b86ed32f0292d149fdf6faf5d6c5a22ea84797a5880",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39777,
+          "alpha16Bounds": [
+            1193,
+            541,
+            208,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 22,
+          "pixelDigest": "bcb8b0fe58e0796afda98baa999da6769b4f80f7a0f024db5e77d3d41ce480e5",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "machiko-noguchi-walk-forward",
+          "rect": [
+            106,
+            59,
+            278,
+            423
+          ],
+          "pivot": [
+            138.5,
+            419
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "machiko-noguchi-walk-forward",
+          "rect": [
+            527,
+            57,
+            211,
+            427
+          ],
+          "pivot": [
+            40.5,
+            423
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "machiko-noguchi-walk-forward",
+          "rect": [
+            836,
+            61,
+            262,
+            422
+          ],
+          "pivot": [
+            127,
+            418
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "machiko-noguchi-walk-forward",
+          "rect": [
+            1238,
+            58,
+            217,
+            426
+          ],
+          "pivot": [
+            51.5,
+            422
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "machiko-noguchi-walk-forward",
+          "rect": [
+            86,
+            543,
+            285,
+            422
+          ],
+          "pivot": [
+            142,
+            418
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "machiko-noguchi-walk-forward",
+          "rect": [
+            470,
+            537,
+            210,
+            430
+          ],
+          "pivot": [
+            164,
+            426
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "machiko-noguchi-walk-forward",
+          "rect": [
+            826,
+            543,
+            264,
+            422
+          ],
+          "pivot": [
+            131.5,
+            418
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "machiko-noguchi-walk-forward",
+          "rect": [
+            1190,
+            538,
+            214,
+            429
+          ],
+          "pivot": [
+            170.5,
+            425
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor"
+    },
+    {
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-walk-backward-v34.png",
+      "originId": "exec-aba38710-5fa1-463f-b495-b82dad9b5b56.png",
+      "sha256": "1a6a808f0979c70649987315528c7e696760f41ea410c5ac7b22fd5d5970832b",
+      "bytes": 1768206,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Backward gait repeats the same contact and rear lifted leg in columns1/3 and2/4. Small isolated stray marks near belt. No usable alternating cycle.",
+        "Excluded from approved workshop phase playback; original source retained for inspection."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1311756,
+        "fringePixels": 15571
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 33769,
+          "alpha16Bounds": [
+            86,
+            102,
+            273,
+            369
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 22,
+          "pixelDigest": "70d287a2c932d2eabc8a47fe6fd64fc57068264efe34dbabb7ee4df2e7044e6b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 30689,
+          "alpha16Bounds": [
+            514,
+            101,
+            217,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 21,
+          "pixelDigest": "e95d6da23170f600b43eb1d318365fb3620d6a1ecb16811e97b952f99d0936ca",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 32611,
+          "alpha16Bounds": [
+            849,
+            102,
+            277,
+            369
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 16,
+          "pixelDigest": "373393cbfaddd7c3f963bff3a004ddddc9b13c07958004bd56913a986886879d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 30139,
+          "alpha16Bounds": [
+            1272,
+            101,
+            215,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 26,
+          "pixelDigest": "db1fe932ce60667fa6776a4282937204815a4547412a77b72c7dad8158939360",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35568,
+          "alpha16Bounds": [
+            68,
+            561,
+            282,
+            383
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 19,
+          "pixelDigest": "f7261198dc721b88476c3d521040ddd21db74a6fafaeb691748167e74ce740e3",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 32401,
+          "alpha16Bounds": [
+            460,
+            561,
+            225,
+            383
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 30,
+          "pixelDigest": "3f45f377865c6a98fa0563060e5ddd2c00c2828942177db66a71fc2f5930aae0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 34538,
+          "alpha16Bounds": [
+            837,
+            561,
+            281,
+            383
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 20,
+          "pixelDigest": "f6b53a747be5c36ce3d17a8a25e835f580912ef5af13aa74295549be6035d498",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 31393,
+          "alpha16Bounds": [
+            1223,
+            561,
+            218,
+            383
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 27,
+          "pixelDigest": "3ee0e3cf9e8f9c9cb581b39c9cca6039c7d7a6881882590a8f0ab7c13ed18726",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "machiko-noguchi-walk-backward",
+          "rect": [
+            83,
+            99,
+            279,
+            375
+          ],
+          "pivot": [
+            120.5,
+            371
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "machiko-noguchi-walk-backward",
+          "rect": [
+            511,
+            98,
+            223,
+            376
+          ],
+          "pivot": [
+            102.5,
+            372
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "machiko-noguchi-walk-backward",
+          "rect": [
+            846,
+            99,
+            283,
+            375
+          ],
+          "pivot": [
+            109,
+            371
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "machiko-noguchi-walk-backward",
+          "rect": [
+            1269,
+            98,
+            221,
+            376
+          ],
+          "pivot": [
+            92.5,
+            372
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "machiko-noguchi-walk-backward",
+          "rect": [
+            65,
+            558,
+            288,
+            389
+          ],
+          "pivot": [
+            163.5,
+            385
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "machiko-noguchi-walk-backward",
+          "rect": [
+            457,
+            558,
+            231,
+            389
+          ],
+          "pivot": [
+            124,
+            385
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "machiko-noguchi-walk-backward",
+          "rect": [
+            834,
+            558,
+            287,
+            389
+          ],
+          "pivot": [
+            174,
+            385
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "machiko-noguchi-walk-backward",
+          "rect": [
+            1220,
+            558,
+            224,
+            389
+          ],
+          "pivot": [
+            127.5,
+            385
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor"
+    },
+    {
+      "id": "crouch",
+      "actionId": "crouch",
+      "label": "crouch",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-crouch-v34.png",
+      "originId": "exec-42250d82-eca5-4531-9f35-b4e993b47fa7.png",
+      "sha256": "68f1271e63b08765ec35a7515047b148fcb329bf3cd9ce3ae4bea83fedbc6022",
+      "bytes": 1861082,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Both rows have four coherent crouch depths with intact rifle grips and single forward-aimed shoulder cannon. First three drawings are candidate entry/held-crouch; rising fourth must not loop while crouching. Measured alpha and pivots passed review; no human combat fighter runtime exists yet.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1262385,
+        "fringePixels": 16093
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41619,
+          "alpha16Bounds": [
+            101,
+            77,
+            259,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 24,
+          "pixelDigest": "fb0fda5df553872e262a26aad967e16ef91bf7d3190214a912bb33d2a1de89da",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39736,
+          "alpha16Bounds": [
+            488,
+            123,
+            260,
+            360
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 36,
+          "pixelDigest": "e398cb8016f0f1308daadd9b97afaae4a5ffafe31876527cc88d42313946408b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 35773,
+          "alpha16Bounds": [
+            873,
+            193,
+            232,
+            290
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 38,
+          "pixelDigest": "4ee7376d80a0dbee45f00efb1923a704349d4516f0f25817f7e305c171c471be",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38635,
+          "alpha16Bounds": [
+            1215,
+            123,
+            245,
+            360
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 20,
+          "pixelDigest": "794f10c03a4bae766a1498968031704a23a3f224373b351c5986ffe69532fa08",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42058,
+          "alpha16Bounds": [
+            78,
+            553,
+            257,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 18,
+          "pixelDigest": "1124c479375e96f348ba28d9cd0426e7b77928767d40debc6d2924db1716a9c2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38860,
+          "alpha16Bounds": [
+            445,
+            606,
+            256,
+            358
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 17,
+          "pixelDigest": "631ed5d959d131ad8c919442688e8e3f68d34200f54e7bff981076e9defb0321",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35231,
+          "alpha16Bounds": [
+            813,
+            675,
+            233,
+            289
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 4,
+          "pixelDigest": "bf8f852f38c20c2616cbb49f2d50a0e10a4b4e1b874f5962cab710e32236efe2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38567,
+          "alpha16Bounds": [
+            1172,
+            606,
+            254,
+            358
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 34,
+          "pixelDigest": "0e293b996cc6f3bd947d845a908b3158fbec63ec8c9e2c396028895a3e146c2e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.crouch",
+          "index": 0,
+          "rect": [
+            98,
+            74,
+            265,
+            412
+          ],
+          "pivot": [
+            126,
+            408
+          ],
+          "pageId": "machiko-noguchi-crouch",
+          "durationTicks": 2,
+          "phase": "entry",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.crouch",
+          "index": 1,
+          "rect": [
+            485,
+            120,
+            266,
+            366
+          ],
+          "pivot": [
+            99.5,
+            362
+          ],
+          "pageId": "machiko-noguchi-crouch",
+          "durationTicks": 2,
+          "phase": "descending",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.crouch",
+          "index": 2,
+          "rect": [
+            870,
+            190,
+            238,
+            296
+          ],
+          "pivot": [
+            75,
+            292
+          ],
+          "pageId": "machiko-noguchi-crouch",
+          "durationTicks": 30,
+          "phase": "held",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.crouch",
+          "index": 0,
+          "rect": [
+            75,
+            550,
+            263,
+            417
+          ],
+          "pivot": [
+            136,
+            413
+          ],
+          "pageId": "machiko-noguchi-crouch",
+          "durationTicks": 2,
+          "phase": "entry",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.crouch",
+          "index": 1,
+          "rect": [
+            442,
+            603,
+            262,
+            364
+          ],
+          "pivot": [
+            164,
+            360
+          ],
+          "pageId": "machiko-noguchi-crouch",
+          "durationTicks": 2,
+          "phase": "descending",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.crouch",
+          "index": 2,
+          "rect": [
+            810,
+            672,
+            239,
+            295
+          ],
+          "pivot": [
+            164,
+            291
+          ],
+          "pageId": "machiko-noguchi-crouch",
+          "durationTicks": 30,
+          "phase": "held",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 404,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 404
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.260Z"
+      }
+    },
+    {
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "label": "jump-land",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-jump-land-v34.png",
+      "originId": "exec-d5ea8ec1-7e6e-4291-9cf1-e74fd0fc8b3e.png",
+      "sha256": "a2fdf3da59a31d9c88ac9d6b64e8eea1920298940a183f820c4afb08e9f9bd31",
+      "bytes": 1858437,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four readable launch/rise/fall/landing poses per facing, consistent rifle and adult human anatomy. Review sheet only: one drawing per distinct jump phase is insufficient for complete engine phase clips.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1281754,
+        "fringePixels": 14225
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "deep launch crouch",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37365,
+          "alpha16Bounds": [
+            106,
+            193,
+            247,
+            298
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 45,
+          "pixelDigest": "2f6dd5a61d3af6d16ecaa2e23b18da08069e6e973886a5503d6ef84d83e66eb6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "airborne rising knees bent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36062,
+          "alpha16Bounds": [
+            522,
+            60,
+            205,
+            354
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 101,
+          "pixelDigest": "833da5815fed8beb0be9476983d702067ebc520dec7035c3ed00dd9ca2d62aff",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "falling feet extending downward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38892,
+          "alpha16Bounds": [
+            859,
+            96,
+            205,
+            393
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 38,
+          "pixelDigest": "410604547c59fae217c39b105edb58899cac5c5b5ac19eb219976245ff2cef50",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "landing crouch absorbing impact",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 33710,
+          "alpha16Bounds": [
+            1221,
+            208,
+            229,
+            283
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 23,
+          "pixelDigest": "4a65f07457904915801feac82581c90d35f432fd72eddc91d8c91723b81f5659",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "deep launch crouch",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37003,
+          "alpha16Bounds": [
+            103,
+            669,
+            250,
+            299
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 54,
+          "pixelDigest": "1ba1423c557aa168ee4de8dcd892e574c9fdf00ebd5c8e52072156c76835d158",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "airborne rising knees bent",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35153,
+          "alpha16Bounds": [
+            486,
+            535,
+            206,
+            353
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 89,
+          "pixelDigest": "9e7d4486181a7a63c405973ebe69cbd73b6ba97b1a17167c14c9940ea6aa8088",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "falling feet extending downward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38752,
+          "alpha16Bounds": [
+            836,
+            576,
+            205,
+            392
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 58,
+          "pixelDigest": "65f3a6b5a7901eec51d3e403196a24d0c87694666616f98ac2dea165ce6781f2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "landing crouch absorbing impact",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 34173,
+          "alpha16Bounds": [
+            1190,
+            679,
+            230,
+            289
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 33,
+          "pixelDigest": "3e41b8a08302970fe9a044122e09e19b57aa66ddd3de99311413c62f64024ebb",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "rect": [
+            103,
+            190,
+            253,
+            304
+          ],
+          "pivot": [
+            97,
+            300
+          ],
+          "pageId": "machiko-noguchi-jump-land",
+          "durationTicks": 5,
+          "phase": "launch",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "rect": [
+            519,
+            57,
+            211,
+            360
+          ],
+          "pivot": [
+            81,
+            356
+          ],
+          "pageId": "machiko-noguchi-jump-land",
+          "durationTicks": 4,
+          "phase": "rise",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "rect": [
+            856,
+            93,
+            211,
+            399
+          ],
+          "pivot": [
+            118.5,
+            395
+          ],
+          "pageId": "machiko-noguchi-jump-land",
+          "durationTicks": 6,
+          "phase": "fall",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "rect": [
+            1218,
+            205,
+            235,
+            289
+          ],
+          "pivot": [
+            98,
+            285
+          ],
+          "pageId": "machiko-noguchi-jump-land",
+          "durationTicks": 7,
+          "phase": "landing",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "rect": [
+            100,
+            666,
+            256,
+            305
+          ],
+          "pivot": [
+            156,
+            301
+          ],
+          "pageId": "machiko-noguchi-jump-land",
+          "durationTicks": 5,
+          "phase": "launch",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "rect": [
+            483,
+            532,
+            212,
+            359
+          ],
+          "pivot": [
+            120.5,
+            355
+          ],
+          "pageId": "machiko-noguchi-jump-land",
+          "durationTicks": 4,
+          "phase": "rise",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "rect": [
+            833,
+            573,
+            211,
+            398
+          ],
+          "pivot": [
+            95,
+            394
+          ],
+          "pageId": "machiko-noguchi-jump-land",
+          "durationTicks": 6,
+          "phase": "fall",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "rect": [
+            1187,
+            676,
+            236,
+            295
+          ],
+          "pivot": [
+            138,
+            291
+          ],
+          "pageId": "machiko-noguchi-jump-land",
+          "durationTicks": 7,
+          "phase": "landing",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 388,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 388
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.268Z"
+      }
+    },
+    {
+      "id": "guard",
+      "actionId": "guard",
+      "label": "guard",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-guard-v34.png",
+      "originId": "exec-e7a216f9-2686-4a4a-ad05-4ea081e7effc.png",
+      "sha256": "0ad597dbabbfeb086e7a2d80fd78b91e8ce32537b433a46c18cdd4e2edfd87f6",
+      "bytes": 1919884,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four readable raising/bracing guard stages, complete glove grips, cannon aimed correctly. Rifle stock extends more in high poses than in low pose; rigid weapon-length consistency needs final review before acceptance.",
+        "Excluded from approved workshop phase playback; original source retained for inspection."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1259322,
+        "fringePixels": 17201
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "rifle lifts from waist toward upper chest",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39911,
+          "alpha16Bounds": [
+            81,
+            79,
+            242,
+            401
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 20,
+          "pixelDigest": "5acecee9d4cf955eb671cb36ba45682d2b38393acd0bfda3229df74bd5eddac9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "rifle horizontal protective brace at collarbone",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40094,
+          "alpha16Bounds": [
+            460,
+            79,
+            244,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 18,
+          "pixelDigest": "91fd0a5946927f1a8de63abfa4ec26b51b3ed554edacfd6ba5f5c3cfe57234d3",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "knees flex and torso absorbs impact behind rifle",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38238,
+          "alpha16Bounds": [
+            838,
+            118,
+            241,
+            362
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 14,
+          "pixelDigest": "b822b8d1dbe6fad53da17ea9ffb5add0f71d739f3817d149c6cf94fb0962ebd9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "settled high protective rifle brace",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38125,
+          "alpha16Bounds": [
+            1205,
+            88,
+            238,
+            392
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 2,
+          "pixelDigest": "61e5bb784fca70c6fe9a0b14f241c947ba3cbcc6f703af0facf4ea018a21654a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "rifle lifts from waist toward upper chest",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40038,
+          "alpha16Bounds": [
+            98,
+            553,
+            244,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 17,
+          "pixelDigest": "dae9334b4915c1a51a3c4778abd4cea6ade9c16b6b2571d7e620ff019bcb07cd",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "rifle horizontal protective brace at collarbone",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40036,
+          "alpha16Bounds": [
+            454,
+            551,
+            246,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 11,
+          "pixelDigest": "32f93814b1889ee3e22ea8a2f4faac5c06bdd9757aef891693d9c90450e0b345",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "knees flex and torso absorbs impact behind rifle",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37982,
+          "alpha16Bounds": [
+            825,
+            591,
+            237,
+            364
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 14,
+          "pixelDigest": "7d2fa529b2bcb6f2e453e1fc05c2e7a797734edf571a8536e5fc4ab9a11a767a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "settled high protective rifle brace",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39118,
+          "alpha16Bounds": [
+            1208,
+            559,
+            243,
+            396
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 8,
+          "pixelDigest": "b390b4ba90890a61808a8901f72c03859fbf990b9fa5b0a88014f71976e0b768",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 0,
+          "pageId": "machiko-noguchi-guard",
+          "rect": [
+            78,
+            76,
+            248,
+            407
+          ],
+          "pivot": [
+            119,
+            403
+          ],
+          "durationTicks": 10,
+          "phase": "rifle lifts from waist toward upper chest",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 1,
+          "pageId": "machiko-noguchi-guard",
+          "rect": [
+            457,
+            76,
+            250,
+            408
+          ],
+          "pivot": [
+            122,
+            404
+          ],
+          "durationTicks": 10,
+          "phase": "rifle horizontal protective brace at collarbone",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 2,
+          "pageId": "machiko-noguchi-guard",
+          "rect": [
+            835,
+            115,
+            247,
+            368
+          ],
+          "pivot": [
+            104.5,
+            364
+          ],
+          "durationTicks": 10,
+          "phase": "knees flex and torso absorbs impact behind rifle",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 3,
+          "pageId": "machiko-noguchi-guard",
+          "rect": [
+            1202,
+            85,
+            244,
+            398
+          ],
+          "pivot": [
+            119.5,
+            394
+          ],
+          "durationTicks": 10,
+          "phase": "settled high protective rifle brace",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 0,
+          "pageId": "machiko-noguchi-guard",
+          "rect": [
+            95,
+            550,
+            250,
+            408
+          ],
+          "pivot": [
+            129,
+            404
+          ],
+          "durationTicks": 10,
+          "phase": "rifle lifts from waist toward upper chest",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 1,
+          "pageId": "machiko-noguchi-guard",
+          "rect": [
+            451,
+            548,
+            252,
+            410
+          ],
+          "pivot": [
+            130,
+            406
+          ],
+          "durationTicks": 10,
+          "phase": "rifle horizontal protective brace at collarbone",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 2,
+          "pageId": "machiko-noguchi-guard",
+          "rect": [
+            822,
+            588,
+            243,
+            370
+          ],
+          "pivot": [
+            138.5,
+            366
+          ],
+          "durationTicks": 10,
+          "phase": "knees flex and torso absorbs impact behind rifle",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 3,
+          "pageId": "machiko-noguchi-guard",
+          "rect": [
+            1205,
+            556,
+            249,
+            402
+          ],
+          "pivot": [
+            126.5,
+            398
+          ],
+          "durationTicks": 10,
+          "phase": "settled high protective rifle brace",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor"
+    },
+    {
+      "id": "hurt",
+      "actionId": "hurt",
+      "label": "hurt",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-hurt-v34.png",
+      "originId": "exec-dad9eb8a-d508-449e-8d92-a0ec730215a1.png",
+      "sha256": "f561c9010676b2fa3c6da141de6bafe0906d2d8fbea3c0cc8f34fa2b36124dd5",
+      "bytes": 1889095,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Coherent rifle grips, cannon orientation, armor and four recoil drawings. Source order is neutral/small recoil/large recoil/neutral; review playback uses 0,2,1,3 for impact then recovery. No runtime fighter currently wired.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1261791,
+        "fringePixels": 16623
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "small torso recoil from chest hit",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39862,
+          "alpha16Bounds": [
+            95,
+            81,
+            232,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 31,
+          "pixelDigest": "370a5aad70da1597c498b2565e3856905d7eaa65f47ef998e2788e74953b0b5e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "larger backward torso lean, knees bent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38671,
+          "alpha16Bounds": [
+            500,
+            96,
+            225,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 18,
+          "pixelDigest": "517056301466ee9d8d6b4675c2c03f0aee57aa8c8df12e34537da11d0a219e54",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recover torso upright with protective arms",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37057,
+          "alpha16Bounds": [
+            863,
+            126,
+            241,
+            360
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 8,
+          "pixelDigest": "6df94ef1dcea99e2b956e7a790c2c6e8381630382039e2f78f6105e9ba968798",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return to neutral stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39465,
+          "alpha16Bounds": [
+            1241,
+            81,
+            229,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 28,
+          "pixelDigest": "4564c977321db9c3c8c03770db5997f9ec60ec9f5ec0e091ea5bb0ca5de15cb9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "small torso recoil from chest hit",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40058,
+          "alpha16Bounds": [
+            70,
+            559,
+            229,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 27,
+          "pixelDigest": "2510e92e6b2feda07b99d6e3138ae3d906a94a9aade1296aaeab36e7d9366dd2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "larger backward torso lean, knees bent",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38672,
+          "alpha16Bounds": [
+            446,
+            573,
+            221,
+            392
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 19,
+          "pixelDigest": "11bec9c9bce1edeff85c6940aa444129244c825541c2d98d58128cd04e8c3504",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recover torso upright with protective arms",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37010,
+          "alpha16Bounds": [
+            825,
+            603,
+            231,
+            362
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 11,
+          "pixelDigest": "768ba4ea94d504a43c34f2c3a25ee9163a2af1ffd86a7685077dba50ccaf5e49",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return to neutral stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40278,
+          "alpha16Bounds": [
+            1217,
+            559,
+            231,
+            407
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 20,
+          "pixelDigest": "62598d2c56490ba06988d375d3532d1952ffc5996876a223e91a106eb97696ba",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 0,
+          "rect": [
+            92,
+            78,
+            238,
+            412
+          ],
+          "pivot": [
+            113,
+            408
+          ],
+          "pageId": "machiko-noguchi-hurt",
+          "durationTicks": 2,
+          "phase": "small-recoil",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 1,
+          "rect": [
+            860,
+            123,
+            247,
+            366
+          ],
+          "pivot": [
+            132.5,
+            362
+          ],
+          "pageId": "machiko-noguchi-hurt",
+          "durationTicks": 3,
+          "phase": "maximum-recoil",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 2,
+          "rect": [
+            497,
+            93,
+            231,
+            396
+          ],
+          "pivot": [
+            111.5,
+            392
+          ],
+          "pageId": "machiko-noguchi-hurt",
+          "durationTicks": 3,
+          "phase": "settling",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 3,
+          "rect": [
+            1238,
+            78,
+            235,
+            411
+          ],
+          "pivot": [
+            111.5,
+            407
+          ],
+          "pageId": "machiko-noguchi-hurt",
+          "durationTicks": 3,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 0,
+          "rect": [
+            67,
+            556,
+            235,
+            412
+          ],
+          "pivot": [
+            121,
+            408
+          ],
+          "pageId": "machiko-noguchi-hurt",
+          "durationTicks": 2,
+          "phase": "small-recoil",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 1,
+          "rect": [
+            822,
+            600,
+            237,
+            368
+          ],
+          "pivot": [
+            111.5,
+            364
+          ],
+          "pageId": "machiko-noguchi-hurt",
+          "durationTicks": 3,
+          "phase": "maximum-recoil",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 2,
+          "rect": [
+            443,
+            570,
+            227,
+            398
+          ],
+          "pivot": [
+            114,
+            394
+          ],
+          "pageId": "machiko-noguchi-hurt",
+          "durationTicks": 3,
+          "phase": "settling",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 3,
+          "rect": [
+            1214,
+            556,
+            237,
+            413
+          ],
+          "pivot": [
+            123,
+            409
+          ],
+          "pageId": "machiko-noguchi-hurt",
+          "durationTicks": 3,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 404,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 404
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.284Z"
+      }
+    },
+    {
+      "id": "light",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-light-v34.png",
+      "originId": "exec-8ffd6a07-9e6b-4761-9e9d-3dae7ba251fa.png",
+      "sha256": "c5cff0205e757f54a61c97622d9fa6e81844d775bbcfee77eb5369b7cb37c141",
+      "bytes": 1775690,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four coherent two-handed rifle shove stages both facings. Right hand remains on rear grip and left under fore-end; no new blade or firearm effect. Original game move adaptation, not a canonical named technique.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1313006,
+        "fringePixels": 15433
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "rifle retracts toward ribs",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 32621,
+          "alpha16Bounds": [
+            70,
+            111,
+            220,
+            347
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 31,
+          "pixelDigest": "0279f6bef715b04c21b067adb616961dee94d034d94e56ec8f10d9d6f887a15d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "short two-handed forward rifle shove contact",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 32862,
+          "alpha16Bounds": [
+            425,
+            121,
+            343,
+            337
+          ],
+          "gridBorderPixels": 1,
+          "residualMagentaPixels": 3,
+          "pixelDigest": "021aea4a2f4bb1a77f054f770f3394e7da272ea04680f18691b7a386a0d18af6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "rifle retracts halfway with elbows bending",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 30976,
+          "alpha16Bounds": [
+            832,
+            121,
+            237,
+            337
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 18,
+          "pixelDigest": "71795f66fdfbd72e5cff8ea081021a2faecd3d1052667eb45e6c523260b51c31",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return to compact low ready",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 31295,
+          "alpha16Bounds": [
+            1217,
+            122,
+            222,
+            336
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 16,
+          "pixelDigest": "48100071bd222b6eb8d1e8e89de2cc82a73b5315362fdd837fcca87a09e23d73",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "rifle retracts toward ribs",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 32644,
+          "alpha16Bounds": [
+            80,
+            570,
+            228,
+            347
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 12,
+          "pixelDigest": "173a772092bc27735e59750468358e2ed485d065c3e00776b1be1668142e3a9f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "short two-handed forward rifle shove contact",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 34625,
+          "alpha16Bounds": [
+            388,
+            572,
+            344,
+            346
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 7,
+          "pixelDigest": "f1e7daa7cb04e8ce9b9b27b67a09c23e330d4fa3e157d1a2e87a6d2841630c49",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "rifle retracts halfway with elbows bending",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 32448,
+          "alpha16Bounds": [
+            839,
+            574,
+            239,
+            343
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 23,
+          "pixelDigest": "425f36167c9510123b0c8a84b9462a211e3607274b425c791eb4ee72190139e8",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return to compact low ready",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 32387,
+          "alpha16Bounds": [
+            1221,
+            577,
+            228,
+            340
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 13,
+          "pixelDigest": "bc80620374d89c29b79d453a72b0b1669ac75bd40c698b079319455d8919ad16",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 0,
+          "rect": [
+            67,
+            108,
+            226,
+            353
+          ],
+          "pivot": [
+            112.5,
+            349
+          ],
+          "pageId": "machiko-noguchi-light",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 1,
+          "rect": [
+            422,
+            118,
+            349,
+            343
+          ],
+          "pivot": [
+            122,
+            339
+          ],
+          "pageId": "machiko-noguchi-light",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 2,
+          "rect": [
+            829,
+            118,
+            243,
+            343
+          ],
+          "pivot": [
+            115.5,
+            339
+          ],
+          "pageId": "machiko-noguchi-light",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 3,
+          "rect": [
+            1214,
+            119,
+            228,
+            342
+          ],
+          "pivot": [
+            102.5,
+            338
+          ],
+          "pageId": "machiko-noguchi-light",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 0,
+          "rect": [
+            77,
+            567,
+            234,
+            353
+          ],
+          "pivot": [
+            119.5,
+            349
+          ],
+          "pageId": "machiko-noguchi-light",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 1,
+          "rect": [
+            385,
+            569,
+            350,
+            352
+          ],
+          "pivot": [
+            227.5,
+            348
+          ],
+          "pageId": "machiko-noguchi-light",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 2,
+          "rect": [
+            836,
+            571,
+            245,
+            349
+          ],
+          "pivot": [
+            127.5,
+            345
+          ],
+          "pageId": "machiko-noguchi-light",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 3,
+          "rect": [
+            1218,
+            574,
+            234,
+            346
+          ],
+          "pivot": [
+            128.5,
+            342
+          ],
+          "pageId": "machiko-noguchi-light",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 345,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 345
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.292Z"
+      }
+    },
+    {
+      "id": "medium",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-medium-v34.png",
+      "originId": "exec-5eaf55e4-ccf9-401e-b949-1a33573331b7.png",
+      "sha256": "ce8c95535416e6182fe3349e40b377f861d64e7854ee14fd60bb4e9d7d983895",
+      "bytes": 1827985,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Front kick has coherent human hip/knee/boot, rifle held consistently and cannon facing opponent. Source order is neutral/chamber/contact/retract; review playback is reordered 1,2,3,0. Original game adaptation, no canonical move claim.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1278558,
+        "fringePixels": 15918
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right knee chambers at waist, left foot planted",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38481,
+          "alpha16Bounds": [
+            97,
+            82,
+            241,
+            392
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 21,
+          "pixelDigest": "db64af71c2b5578f8546955b3e73f5fa55cc243ec49e5d56fdb03fdd15017aa4",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right foot extends short front kick toward opponent, left leg supports",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 35057,
+          "alpha16Bounds": [
+            481,
+            76,
+            211,
+            397
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 33,
+          "pixelDigest": "8bfc818d8cc770f0081446aa3053b640f054e916332676b311f2321d05d3ba23",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right knee folds back after kick",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36078,
+          "alpha16Bounds": [
+            811,
+            82,
+            320,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 37,
+          "pixelDigest": "bdbfd3c4f11fa22426a3bfb210fb474485f807283b08058e0ddb7cee62c43c07",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "right foot down return to neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 34811,
+          "alpha16Bounds": [
+            1213,
+            81,
+            208,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 87,
+          "pixelDigest": "0e40a057562c49f9670c37ed3b555cc25038cbc31c9a1ff52b7725772c8f2b94",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right knee chambers at waist, left foot planted",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40270,
+          "alpha16Bounds": [
+            87,
+            556,
+            248,
+            401
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 23,
+          "pixelDigest": "08839e1f1fb231f16b9ee1fec49a366b2dfa3f6dde800229877cb153541c8d9b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right foot extends short front kick toward opponent, left leg supports",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35907,
+          "alpha16Bounds": [
+            466,
+            553,
+            212,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 28,
+          "pixelDigest": "4c74796fb73ce5ac91d97b6ed92c0d8e9ba92c51798953a5f5cfedcee462e883",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right knee folds back after kick",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37003,
+          "alpha16Bounds": [
+            784,
+            553,
+            320,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 34,
+          "pixelDigest": "d41a865ca0d0541b56a524f4049762a3440f75bbeba762c7d1c4c3ab959ba013",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "right foot down return to neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36699,
+          "alpha16Bounds": [
+            1238,
+            554,
+            212,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 87,
+          "pixelDigest": "f16a715dd551dce83a8268e2b20fca8cc361150e6d58a1514f3eaaeea11235cb",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 0,
+          "rect": [
+            478,
+            73,
+            217,
+            403
+          ],
+          "pivot": [
+            62,
+            399
+          ],
+          "pageId": "machiko-noguchi-medium",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 1,
+          "rect": [
+            808,
+            79,
+            326,
+            400
+          ],
+          "pivot": [
+            76,
+            396
+          ],
+          "pageId": "machiko-noguchi-medium",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 2,
+          "rect": [
+            1210,
+            78,
+            214,
+            400
+          ],
+          "pivot": [
+            64,
+            396
+          ],
+          "pageId": "machiko-noguchi-medium",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 3,
+          "rect": [
+            94,
+            79,
+            247,
+            398
+          ],
+          "pivot": [
+            121.5,
+            394
+          ],
+          "pageId": "machiko-noguchi-medium",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 0,
+          "rect": [
+            463,
+            550,
+            218,
+            411
+          ],
+          "pivot": [
+            152,
+            407
+          ],
+          "pageId": "machiko-noguchi-medium",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 1,
+          "rect": [
+            781,
+            550,
+            326,
+            409
+          ],
+          "pivot": [
+            246.5,
+            405
+          ],
+          "pageId": "machiko-noguchi-medium",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 2,
+          "rect": [
+            1235,
+            551,
+            218,
+            412
+          ],
+          "pivot": [
+            154,
+            408
+          ],
+          "pageId": "machiko-noguchi-medium",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 3,
+          "rect": [
+            84,
+            553,
+            254,
+            407
+          ],
+          "pivot": [
+            128.5,
+            403
+          ],
+          "pageId": "machiko-noguchi-medium",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 394,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 394
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.298Z"
+      }
+    },
+    {
+      "id": "heavy",
+      "actionId": "heavy",
+      "label": "heavy",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-heavy-v34.png",
+      "originId": "exec-4c2c7ecf-bfb6-4b66-8467-0a11cdacb1fb.png",
+      "sha256": "a468147d2677c6a28278da8541e9ba5a356e99d6a0b6c8d728601009ab903037",
+      "bytes": 1884847,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Heavy forward rifle shove has four grounded stages both orientations, complete gloves and coherent weapon grips. Wider silhouettes require explicit occupied-column rectangles rather than fixed cells. Original game adaptation, not canonical named move.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1274901,
+        "fringePixels": 17229
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "low brace loads weight onto rear leg, rifle close to chest",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39059,
+          "alpha16Bounds": [
+            72,
+            120,
+            250,
+            366
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 25,
+          "pixelDigest": "4869786714887382e536056802e6cc828c3ac70491cb06067666649c175f2e5d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "powerful forward body lunge with both hands pushing rifle outward at chest height",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36466,
+          "alpha16Bounds": [
+            421,
+            128,
+            347,
+            358
+          ],
+          "gridBorderPixels": 50,
+          "residualMagentaPixels": 8,
+          "pixelDigest": "86ab63196f47aa48a87442719efab84d190b41c21dd257450f2521061b31c66f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "elbows retract while knees absorb return",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38805,
+          "alpha16Bounds": [
+            768,
+            141,
+            315,
+            345
+          ],
+          "gridBorderPixels": 50,
+          "residualMagentaPixels": 28,
+          "pixelDigest": "9a27d76e3caf583928b1405e9aa7068be96dd0e01947f5bb5857bb62c7dea2c0",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "settled upright low ready",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 35662,
+          "alpha16Bounds": [
+            1239,
+            116,
+            225,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 14,
+          "pixelDigest": "c71eb6e3a3d264a9c3a4de47dbacf4df3d207ec62de90c93e2bbee35b0aa1607",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "low brace loads weight onto rear leg, rifle close to chest",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36678,
+          "alpha16Bounds": [
+            102,
+            593,
+            240,
+            355
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 11,
+          "pixelDigest": "71aa75f91972cb614518e6b07a55d02012f1825b06a1fba3ce8c906fef7ba99c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "powerful forward body lunge with both hands pushing rifle outward at chest height",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37016,
+          "alpha16Bounds": [
+            402,
+            596,
+            366,
+            352
+          ],
+          "gridBorderPixels": 56,
+          "residualMagentaPixels": 5,
+          "pixelDigest": "2abca6deac9944c61e7f4bbcfa32e5bf339915cd1c4ee94e64d77ac02debc989",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "elbows retract while knees absorb return",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38240,
+          "alpha16Bounds": [
+            768,
+            600,
+            340,
+            348
+          ],
+          "gridBorderPixels": 55,
+          "residualMagentaPixels": 16,
+          "pixelDigest": "47daf822c806adc034c80433e27535f2d2708ba7af2c7ae37bf8117e9aa5a889",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "settled upright low ready",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36037,
+          "alpha16Bounds": [
+            1231,
+            583,
+            235,
+            365
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 21,
+          "pixelDigest": "ac1c8459586692783b917f1ec6c3c46d422ca984630760b5945b4db02a54e42d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 0,
+          "rect": [
+            69,
+            117,
+            256,
+            372
+          ],
+          "pivot": [
+            122.5,
+            368
+          ],
+          "pageId": "machiko-noguchi-heavy",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 1,
+          "rect": [
+            418,
+            125,
+            412,
+            364
+          ],
+          "pivot": [
+            159.5,
+            360
+          ],
+          "pageId": "machiko-noguchi-heavy",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 2,
+          "rect": [
+            833,
+            138,
+            253,
+            351
+          ],
+          "pivot": [
+            107.5,
+            347
+          ],
+          "pageId": "machiko-noguchi-heavy",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 3,
+          "rect": [
+            1236,
+            113,
+            231,
+            376
+          ],
+          "pivot": [
+            115,
+            372
+          ],
+          "pageId": "machiko-noguchi-heavy",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 0,
+          "rect": [
+            99,
+            590,
+            246,
+            361
+          ],
+          "pivot": [
+            128.5,
+            357
+          ],
+          "pageId": "machiko-noguchi-heavy",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 1,
+          "rect": [
+            399,
+            593,
+            393,
+            358
+          ],
+          "pivot": [
+            235.5,
+            354
+          ],
+          "pageId": "machiko-noguchi-heavy",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 2,
+          "rect": [
+            862,
+            597,
+            249,
+            354
+          ],
+          "pivot": [
+            140.5,
+            350
+          ],
+          "pageId": "machiko-noguchi-heavy",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 3,
+          "rect": [
+            1228,
+            580,
+            241,
+            371
+          ],
+          "pivot": [
+            120,
+            367
+          ],
+          "pageId": "machiko-noguchi-heavy",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 368,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 368
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.303Z"
+      }
+    },
+    {
+      "id": "repair-idle-cannon",
+      "actionId": "idle",
+      "label": "idle",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
+      "originId": "exec-08bf5fe4-2b45-433a-bf61-533933c2f168.png",
+      "sha256": "c9a288ba1dc97c8463922afe73363ccfa93fe9b21eabfc783f62f2ebe6f94e56",
+      "bytes": 1813441,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Repair removes duplicated cannon. Right row all four candidate idle drawings. Left row columns1/3 have consistent forward cannon; columns2/4 cannon mounting position changes across shoulder and remain excluded from candidate playback.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1279929,
+        "fringePixels": 15517
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37818,
+          "alpha16Bounds": [
+            135,
+            72,
+            213,
+            410
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 24,
+          "pixelDigest": "8141891dc40b7a1c8085228f0603440e3cf1f42433168ab4f95a062564b0626a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37438,
+          "alpha16Bounds": [
+            518,
+            71,
+            212,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 29,
+          "pixelDigest": "1ce78693d5713d1f5627cbe4ba87afdc9e400d24b4b1829aff5bb7c4ace9e76f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36414,
+          "alpha16Bounds": [
+            881,
+            89,
+            201,
+            393
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 46,
+          "pixelDigest": "82ba27d71d942ad1c8ea1335c2564fffc71cd4d88855a7aecb365bf472e0b25e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37243,
+          "alpha16Bounds": [
+            1236,
+            72,
+            211,
+            410
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 30,
+          "pixelDigest": "122dcc935ea9efa7509b4243fda93475992ec8d5531fb610a9e2be047a63294d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36246,
+          "alpha16Bounds": [
+            91,
+            556,
+            204,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 19,
+          "pixelDigest": "e01e5f74b6f225e39c80765e545252c752b2dee8a749476283a0b337ae90a534",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36093,
+          "alpha16Bounds": [
+            472,
+            553,
+            202,
+            408
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 32,
+          "pixelDigest": "ac2a052393d0d16831f87eb9620a5304abc034149e4fc2635d0b81e01c726b50",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35976,
+          "alpha16Bounds": [
+            837,
+            573,
+            198,
+            388
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 32,
+          "pixelDigest": "a0189758f46dcc6c6abe2f858989d23e9f5eec9a6c556ddd3ce6bacd31711978",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35707,
+          "alpha16Bounds": [
+            1201,
+            555,
+            204,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 29,
+          "pixelDigest": "324ec2077ac5bbc0be4a7f5aa63aea27e605bc149f4dd298949d145be1bb5975",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 0,
+          "rect": [
+            132,
+            69,
+            219,
+            416
+          ],
+          "pivot": [
+            91.5,
+            412
+          ],
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "durationTicks": 10,
+          "phase": "breathing-0",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 1,
+          "rect": [
+            515,
+            68,
+            218,
+            417
+          ],
+          "pivot": [
+            91,
+            413
+          ],
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "durationTicks": 10,
+          "phase": "breathing-1",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 2,
+          "rect": [
+            878,
+            86,
+            207,
+            399
+          ],
+          "pivot": [
+            90,
+            395
+          ],
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "durationTicks": 10,
+          "phase": "breathing-2",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 3,
+          "rect": [
+            1233,
+            69,
+            217,
+            416
+          ],
+          "pivot": [
+            90,
+            412
+          ],
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "durationTicks": 10,
+          "phase": "breathing-3",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.idle",
+          "index": 0,
+          "rect": [
+            88,
+            553,
+            210,
+            411
+          ],
+          "pivot": [
+            115.5,
+            407
+          ],
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "durationTicks": 10,
+          "phase": "breathing-0",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.idle",
+          "index": 1,
+          "rect": [
+            834,
+            570,
+            204,
+            394
+          ],
+          "pivot": [
+            112.5,
+            390
+          ],
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "durationTicks": 10,
+          "phase": "breathing-1",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 410,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 410
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.309Z"
+      }
+    },
+    {
+      "id": "repair-walk-forward-legs",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-repair-walk-forward-legs-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-walk-forward-legs-v34.png",
+      "originId": "exec-8666ba81-e23b-431c-9023-36e4d50533e5.png",
+      "sha256": "b1c673c60d3aabe1b9502bc6ac7b44c39394cdb2641cf1ca7df44dd4e61c83a2",
+      "bytes": 1873199,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Repair changes near-thigh occlusion and lifted knee in columns3/4. Candidate contact/pass/opposite contact/opposite pass; requires native-size leg-support review before animation approval. Gear unchanged.",
+        "Excluded from approved workshop phase playback; original source retained for inspection."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1252491,
+        "fringePixels": 16354
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41657,
+          "alpha16Bounds": [
+            109,
+            63,
+            272,
+            417
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 23,
+          "pixelDigest": "eb39817b32e67829017f7660ce3e599483a19fa6a5c47e7f33658cc772c19a9b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39357,
+          "alpha16Bounds": [
+            530,
+            61,
+            205,
+            421
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 22,
+          "pixelDigest": "a8ea5c5439a6b392616f73e99dea6df42d308677fdb0bcde7c8181e429323c25",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40056,
+          "alpha16Bounds": [
+            832,
+            64,
+            276,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 24,
+          "pixelDigest": "5ec1be54db8dcf807fc40aba497493b901a7291e2876d0559485ad01831f187d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37910,
+          "alpha16Bounds": [
+            1241,
+            62,
+            211,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 96,
+          "pixelDigest": "ba2b2cf1dfd4c8da0d21a5516136a2f29ab589c15b0d8311870e5d8f5e6d369d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41807,
+          "alpha16Bounds": [
+            90,
+            546,
+            279,
+            416
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 19,
+          "pixelDigest": "36616229615a529a854d04f21801cc8136d2a9f413d4562b30901a06ae0e5262",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39858,
+          "alpha16Bounds": [
+            473,
+            541,
+            203,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 14,
+          "pixelDigest": "bd356c4b0db8c2fe43d2fdde5bc0816f632073e3d42b5b185266c093b173894b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41163,
+          "alpha16Bounds": [
+            823,
+            545,
+            271,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 16,
+          "pixelDigest": "fe521e41d69d7f1aa703034056ca3512976d84297f3065cf2d68ea28d7c7e162",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38565,
+          "alpha16Bounds": [
+            1193,
+            541,
+            208,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 106,
+          "pixelDigest": "52e174916ad65915b512be353e345f2c7fcc70c4cb23d02d84255c2875b1a74e",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "machiko-noguchi-repair-walk-forward-legs",
+          "rect": [
+            106,
+            60,
+            278,
+            423
+          ],
+          "pivot": [
+            138.5,
+            419
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "machiko-noguchi-repair-walk-forward-legs",
+          "rect": [
+            527,
+            58,
+            211,
+            427
+          ],
+          "pivot": [
+            40,
+            423
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "machiko-noguchi-repair-walk-forward-legs",
+          "rect": [
+            829,
+            61,
+            282,
+            424
+          ],
+          "pivot": [
+            140.5,
+            420
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "machiko-noguchi-repair-walk-forward-legs",
+          "rect": [
+            1238,
+            59,
+            217,
+            426
+          ],
+          "pivot": [
+            51.5,
+            422
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "machiko-noguchi-repair-walk-forward-legs",
+          "rect": [
+            87,
+            543,
+            285,
+            422
+          ],
+          "pivot": [
+            142,
+            418
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "machiko-noguchi-repair-walk-forward-legs",
+          "rect": [
+            470,
+            538,
+            209,
+            429
+          ],
+          "pivot": [
+            164,
+            425
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "machiko-noguchi-repair-walk-forward-legs",
+          "rect": [
+            820,
+            542,
+            277,
+            424
+          ],
+          "pivot": [
+            138,
+            420
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "machiko-noguchi-repair-walk-forward-legs",
+          "rect": [
+            1190,
+            538,
+            214,
+            429
+          ],
+          "pivot": [
+            172.5,
+            425
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor"
+    },
+    {
+      "id": "repair-walk-backward-legs",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-repair-walk-backward-legs-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-walk-backward-legs-v34.png",
+      "originId": "exec-92ec6f30-db65-48ec-ac45-8a8eca78f308.png",
+      "sha256": "a8b69221c2f780b9b4068e076f862b391e29d52545790fd6d9bf438f339acd30",
+      "bytes": 1722644,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Repair still does not establish clearly alternating backward support; glove/gauntlet color also drifts in lower row. No backward cycle accepted.",
+        "Excluded from approved workshop phase playback; original source retained for inspection."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1310450,
+        "fringePixels": 14244
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 33592,
+          "alpha16Bounds": [
+            86,
+            101,
+            273,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 19,
+          "pixelDigest": "babea48b4727daee931fd5ab05204774e4ddcb66a5e16eb397ff19a4bd64ccfd",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 31073,
+          "alpha16Bounds": [
+            508,
+            101,
+            223,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 30,
+          "pixelDigest": "3aa0cdc2ca2392acb71761e8f8fccecee518488748a11da4a0c2271fed5a5456",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 33003,
+          "alpha16Bounds": [
+            847,
+            101,
+            279,
+            371
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 21,
+          "pixelDigest": "eee5e4d747423b5af811586bd86562e1c943c0ce181fc6f945d63e7d29cb07b5",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 30656,
+          "alpha16Bounds": [
+            1267,
+            101,
+            220,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 36,
+          "pixelDigest": "0e97b264c96866ae5dd99881908a54de3d99f89af04175fceceb9fa73dfd6790",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35459,
+          "alpha16Bounds": [
+            68,
+            561,
+            279,
+            384
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 21,
+          "pixelDigest": "28367572a47b44036119216a258ae0e2bfb797585c6a90537e52ec9f8e659a20",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 32474,
+          "alpha16Bounds": [
+            460,
+            561,
+            224,
+            383
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 24,
+          "pixelDigest": "a97730c19917b7455eff5a2ad601f03afd0ec298a984cbc3678c790b50cc53a0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 34667,
+          "alpha16Bounds": [
+            836,
+            561,
+            283,
+            384
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 17,
+          "pixelDigest": "c946a3864e96f136cf058160dd62790656102f37dea5b1b464153b6eab0aefe5",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 31490,
+          "alpha16Bounds": [
+            1223,
+            561,
+            218,
+            383
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 24,
+          "pixelDigest": "a94cdfdb655adfc4d7b2e986ab1f26caff21a76c84a07e0eeaf2f82de523a569",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "machiko-noguchi-repair-walk-backward-legs",
+          "rect": [
+            83,
+            98,
+            279,
+            376
+          ],
+          "pivot": [
+            121.5,
+            372
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "machiko-noguchi-repair-walk-backward-legs",
+          "rect": [
+            505,
+            98,
+            229,
+            376
+          ],
+          "pivot": [
+            109.5,
+            372
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "machiko-noguchi-repair-walk-backward-legs",
+          "rect": [
+            844,
+            98,
+            285,
+            377
+          ],
+          "pivot": [
+            120,
+            373
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "machiko-noguchi-repair-walk-backward-legs",
+          "rect": [
+            1264,
+            98,
+            226,
+            376
+          ],
+          "pivot": [
+            98.5,
+            372
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "machiko-noguchi-repair-walk-backward-legs",
+          "rect": [
+            65,
+            558,
+            285,
+            390
+          ],
+          "pivot": [
+            162,
+            386
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "machiko-noguchi-repair-walk-backward-legs",
+          "rect": [
+            457,
+            558,
+            230,
+            389
+          ],
+          "pivot": [
+            123,
+            385
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "machiko-noguchi-repair-walk-backward-legs",
+          "rect": [
+            833,
+            558,
+            289,
+            390
+          ],
+          "pivot": [
+            170.5,
+            386
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "machiko-noguchi-repair-walk-backward-legs",
+          "rect": [
+            1220,
+            558,
+            224,
+            389
+          ],
+          "pivot": [
+            127,
+            385
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor"
+    },
+    {
+      "id": "repair-guard-rifle",
+      "actionId": "guard",
+      "label": "guard",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-repair-guard-rifle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-guard-rifle-v34.png",
+      "originId": "exec-b831fe13-a4d5-40be-84bc-ec072486e308.png",
+      "sha256": "bb24a6ced1f88cc941333f8d27e4062a9b14804444475fc59c4b4bdd0c53a3c3",
+      "bytes": 1856132,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Long invented stock removed across guard stages; short rigid receiver preserved within this corrected page. Both grips and forward cannon visible. Rifle is somewhat more compact than presentation; fidelity limitation retained.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1268189,
+        "fringePixels": 15077
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "rifle lifts from waist toward upper chest",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39413,
+          "alpha16Bounds": [
+            81,
+            79,
+            233,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 24,
+          "pixelDigest": "5fb8e5402189618aba75cbdffd826feac113862d51da05c38952a82187d79897",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "rifle horizontal protective brace at collarbone",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38894,
+          "alpha16Bounds": [
+            460,
+            78,
+            239,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 11,
+          "pixelDigest": "55c400b5e6654c8559ad3dccb578a4afd2c777f42674d4fec0fad1f35bf73e4c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "knees flex and torso absorbs impact behind rifle",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36624,
+          "alpha16Bounds": [
+            837,
+            118,
+            215,
+            363
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 12,
+          "pixelDigest": "59840e3efc8df80c4ddfbff27c4acf18c958f5fb46d27243e8c71039f1a6ce27",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "settled high protective rifle brace",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36995,
+          "alpha16Bounds": [
+            1205,
+            88,
+            234,
+            393
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 7,
+          "pixelDigest": "43db883fb51f47ffa974fb50f8cf476589b34ad538fd047674a875c9bb9b25fb",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "rifle lifts from waist toward upper chest",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39609,
+          "alpha16Bounds": [
+            106,
+            553,
+            236,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 15,
+          "pixelDigest": "b78d407cc15a840046fa2cc17f62c1a5079d378f14480f1d8322234f811bac73",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "rifle horizontal protective brace at collarbone",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38322,
+          "alpha16Bounds": [
+            463,
+            551,
+            238,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 4,
+          "pixelDigest": "987d045371b3f7ced6109ced488a30514b8eab3f6adcf6fad4cea3aba70120f3",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "knees flex and torso absorbs impact behind rifle",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36830,
+          "alpha16Bounds": [
+            844,
+            592,
+            218,
+            363
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 17,
+          "pixelDigest": "51e0f880ce13f5c1589d8103c16903e7840a3a09e2cdbf3026b4eb269bdc59a7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "settled high protective rifle brace",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37988,
+          "alpha16Bounds": [
+            1212,
+            559,
+            239,
+            396
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 7,
+          "pixelDigest": "ff09e96600240a62b7ae78bfc167f0255d26d033dcc278c1d404ec5535b2dd67",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 0,
+          "rect": [
+            78,
+            76,
+            239,
+            408
+          ],
+          "pivot": [
+            119,
+            404
+          ],
+          "pageId": "machiko-noguchi-repair-guard-rifle",
+          "durationTicks": 3,
+          "phase": "raise",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 1,
+          "rect": [
+            457,
+            75,
+            245,
+            409
+          ],
+          "pivot": [
+            122,
+            405
+          ],
+          "pageId": "machiko-noguchi-repair-guard-rifle",
+          "durationTicks": 3,
+          "phase": "brace",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 2,
+          "rect": [
+            834,
+            115,
+            221,
+            369
+          ],
+          "pivot": [
+            105,
+            365
+          ],
+          "pageId": "machiko-noguchi-repair-guard-rifle",
+          "durationTicks": 3,
+          "phase": "absorb",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 3,
+          "rect": [
+            1202,
+            85,
+            240,
+            399
+          ],
+          "pivot": [
+            119.5,
+            395
+          ],
+          "pageId": "machiko-noguchi-repair-guard-rifle",
+          "durationTicks": 6,
+          "phase": "held",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 0,
+          "rect": [
+            103,
+            550,
+            242,
+            408
+          ],
+          "pivot": [
+            120.5,
+            404
+          ],
+          "pageId": "machiko-noguchi-repair-guard-rifle",
+          "durationTicks": 3,
+          "phase": "raise",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 1,
+          "rect": [
+            460,
+            548,
+            244,
+            410
+          ],
+          "pivot": [
+            121.5,
+            406
+          ],
+          "pageId": "machiko-noguchi-repair-guard-rifle",
+          "durationTicks": 3,
+          "phase": "brace",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 2,
+          "rect": [
+            841,
+            589,
+            224,
+            369
+          ],
+          "pivot": [
+            119,
+            365
+          ],
+          "pageId": "machiko-noguchi-repair-guard-rifle",
+          "durationTicks": 3,
+          "phase": "absorb",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 3,
+          "rect": [
+            1209,
+            556,
+            245,
+            402
+          ],
+          "pivot": [
+            122,
+            398
+          ],
+          "pageId": "machiko-noguchi-repair-guard-rifle",
+          "durationTicks": 6,
+          "phase": "held",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 398,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 398
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.327Z"
+      }
+    }
+  ],
+  "variantId": "machiko-clan-armor",
+  "species": "human",
+  "family": "humans-in-yautja-armor",
+  "initialFamiliesProduced": 10,
+  "targetedRepairSheets": 4,
+  "reviewedSourcePages": 8,
+  "reviewedDrawings": 60,
+  "reviewedSequencesIncludingFacings": 16,
+  "nativeContrastReview": {
+    "captures": 120,
+    "bodyHeightPx": 120,
+    "devicePixelRatio": 1,
+    "backgrounds": [
+      "#f4f4ed",
+      "#0b1110"
+    ],
+    "errors": 0,
+    "failedRequests": 0,
+    "borderPixels": 0,
+    "maxResidualMagentaPixels": 8,
+    "method": "Real prepareHunterSpriteAtlasPage and drawHunterSpriteAtlasFrame in Chrome; no source editing."
+  }
+}

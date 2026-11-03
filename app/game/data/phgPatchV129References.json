@@ -1,0 +1,89 @@
+{
+  "schema": "phg-v129-reference-studies",
+  "atlasPath": "/game/assets/v129/phg-patches/atlas.webp",
+  "atlasSha256": "4eac66e3dc679a207791f8d10d1ca75970a61db0c5c20b3547d52b91833d6b8f",
+  "atlasSizeBytes": 409912,
+  "bundleSha256": "a3ed68f538c64ec5105f2f157801bd85d35b5d63fa57332a4268d9dc3ee61732",
+  "certified1to1": false,
+  "originalGameUVIncluded": false,
+  "records": [
+    {
+      "id": "mottle_dread_skin",
+      "label": "Mottle Dread · peau",
+      "channel": "skin",
+      "atlas": {
+        "columns": 2,
+        "rows": 2,
+        "column": 0,
+        "row": 0
+      },
+      "patch": "2.08",
+      "classes": [
+        "Scout",
+        "Hunter",
+        "Berserker"
+      ],
+      "sourceUrl": "https://forum.predator.illfonic.com/t/patch-notes-2-08/15883",
+      "note": "Official skin-pattern tint, not predlocks",
+      "selectable": true
+    },
+    {
+      "id": "gator_waves_skin",
+      "label": "Waves / Gator · peau",
+      "channel": "skin",
+      "atlas": {
+        "columns": 2,
+        "rows": 2,
+        "column": 1,
+        "row": 0
+      },
+      "patch": "2.19",
+      "classes": [
+        "Alpha Predator",
+        "Berserker",
+        "City Hunter ’97",
+        "Elder",
+        "Hunter",
+        "Jungle Hunter ’87",
+        "Scout"
+      ],
+      "sourceUrl": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "note": "Official skin-pattern tint, exact colors not verified",
+      "selectable": true
+    },
+    {
+      "id": "tank_predlock_surface",
+      "label": "Tank · surface de predlocks",
+      "channel": "dreads",
+      "atlas": {
+        "columns": 2,
+        "rows": 2,
+        "column": 0,
+        "row": 1
+      },
+      "patch": "2.40",
+      "classes": [],
+      "sourceUrl": "https://forum.predator.illfonic.com/t/patch-notes-2-40/28174",
+      "note": "Material only, not Tank dread geometry; original PHG unlock level 150",
+      "selectable": true
+    },
+    {
+      "id": "alpha_ogre_biomask_tint",
+      "label": "Ogre · biomask Alpha",
+      "channel": "biomask",
+      "atlas": {
+        "columns": 2,
+        "rows": 2,
+        "column": 1,
+        "row": 1
+      },
+      "patch": "2.19",
+      "classes": [
+        "Alpha Predator"
+      ],
+      "sourceUrl": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "note": "Biomask-only reference, never armor",
+      "selectable": false
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: V106 keeps the exact three source targets, cells, entity identities and historical source hashes
+ok 1 - V106 keeps the exact three source targets, cells, entity identities and historical source hashes
+  ---
+  duration_ms: 18.982493
+  type: 'test'
+  ...
+# Subtest: Feral reuses the admitted V59 active cell and explicitly retimes its references without changing history
+ok 2 - Feral reuses the admitted V59 active cell and explicitly retimes its references without changing history
+  ---
+  duration_ms: 0.543693
+  type: 'test'
+  ...
+# Subtest: Scar release, recoil and charge anchors keep independent native rectangles, feet and fixed page references
+ok 3 - Scar release, recoil and charge anchors keep independent native rectangles, feet and fixed page references
+  ---
+  duration_ms: 0.268327
+  type: 'test'
+  ...
+# Subtest: native apertures and the historical open rail gap retain independent unreflected source directions
+ok 4 - native apertures and the historical open rail gap retain independent unreflected source directions
+  ---
+  duration_ms: 98.646441
+  type: 'test'
+  ...
+# Subtest: shield geometry follows the real V100 guard and edge drawings with a declared conservative window split
+ok 5 - shield geometry follows the real V100 guard and edge drawings with a declared conservative window split
+  ---
+  duration_ms: 0.607377
+  type: 'test'
+  ...
+# Subtest: source projection applies the exact production alpha contact correction to every native cell
+ok 6 - source projection applies the exact production alpha contact correction to every native cell
+  ---
+  duration_ms: 248.624926
+  type: 'test'
+  ...
+# Subtest: world projection preserves native vertical height and rejects unsupported actors, faces or frames
+ok 7 - world projection preserves native vertical height and rejects unsupported actors, faces or frames
+  ---
+  duration_ms: 0.558506
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 373.048179

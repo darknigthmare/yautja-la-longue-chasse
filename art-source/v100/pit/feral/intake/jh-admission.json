@@ -1,0 +1,537 @@
+{
+  "sourceCell": "05_MOVES_PROPOSES!L10",
+  "records": [
+    {
+      "source": "art-source/v100/pit/feral/intake/034-air-jh-right-calibrated.png",
+      "destination": "public/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
+      "bodyHeightPx": 598,
+      "bodyReference": {
+        "headTopY": 128,
+        "soleY": 726,
+        "upperPelvisSourcePoint": [
+          279,
+          365
+        ],
+        "upperPelvisToSolePx": 361,
+        "review": "Standing actual skull-mask-to-soles alpha128 source reference approved by root; excludes hair/noise."
+      },
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "excludedCalibrationIndices": [
+        0
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            514,
+            0,
+            510,
+            810
+          ],
+          "visibleRect": [
+            589,
+            50,
+            390,
+            652
+          ],
+          "alphaPixels": 106443,
+          "borderPixels": 0,
+          "visiblePixelSha256": "1be4e0a572e48abba4c57a363ab6199b46816e21f39bb91a213860a83e0053fb",
+          "pivotCandidate": [
+            113,
+            702
+          ],
+          "visibleHeightCandidate": 652,
+          "pivot": [
+            280,
+            750
+          ],
+          "pivotReview": {
+            "method": "Virtual plane from reviewed upper belt/pelvis plus standing same-page pelvis-to-sole distance",
+            "pelvisSourcePoint": [
+              794,
+              389
+            ],
+            "standingPelvisSourcePoint": [
+              279,
+              365
+            ],
+            "standingPelvisToSolePx": 361
+          }
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            809,
+            589,
+            727
+          ],
+          "visibleRect": [
+            35,
+            892,
+            496,
+            521
+          ],
+          "alphaPixels": 104165,
+          "borderPixels": 0,
+          "visiblePixelSha256": "4af91b88b3a841883d4f0e12a2de01e9efebf4bf6aa10d6466476dc8f4d3def5",
+          "pivotCandidate": [
+            87.5,
+            604
+          ],
+          "visibleHeightCandidate": 521,
+          "pivot": [
+            313,
+            675
+          ],
+          "pivotReview": {
+            "method": "Virtual plane from reviewed upper belt/pelvis plus standing same-page pelvis-to-sole distance",
+            "pelvisSourcePoint": [
+              313,
+              1123
+            ],
+            "standingPelvisSourcePoint": [
+              279,
+              365
+            ],
+            "standingPelvisToSolePx": 361
+          }
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            588,
+            809,
+            436,
+            727
+          ],
+          "visibleRect": [
+            646,
+            946,
+            356,
+            445
+          ],
+          "alphaPixels": 98475,
+          "borderPixels": 0,
+          "visiblePixelSha256": "4080b2623ad9151b3b60c1f46b3370b0c13a1dc6c2a2410051da42a905818088",
+          "pivotCandidate": [
+            114,
+            582
+          ],
+          "visibleHeightCandidate": 445,
+          "pivot": [
+            201,
+            578
+          ],
+          "pivotReview": {
+            "method": "Actual grounded landing support soles alpha>=128, both feet visually reviewed"
+          }
+        }
+      ]
+    },
+    {
+      "source": "art-source/v100/pit/feral/intake/035-air-jh-left-calibrated.png",
+      "destination": "public/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
+      "bodyHeightPx": 592,
+      "bodyReference": {
+        "headTopY": 135,
+        "soleY": 727,
+        "upperPelvisSourcePoint": [
+          291,
+          360
+        ],
+        "upperPelvisToSolePx": 367,
+        "review": "Standing actual skull-mask-to-soles alpha128 source reference approved by root; excludes hair/noise."
+      },
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "excludedCalibrationIndices": [
+        0
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            526,
+            0,
+            498,
+            825
+          ],
+          "visibleRect": [
+            581,
+            52,
+            377,
+            677
+          ],
+          "alphaPixels": 110556,
+          "borderPixels": 0,
+          "visiblePixelSha256": "5675306615664e85ed46a9efed70017d9e5fb77345a494a4e04fda223ee39011",
+          "pivotCandidate": [
+            397,
+            729
+          ],
+          "visibleHeightCandidate": 677,
+          "pivot": [
+            280,
+            755
+          ],
+          "pivotReview": {
+            "method": "Virtual plane from reviewed upper belt/pelvis plus standing same-page pelvis-to-sole distance",
+            "pelvisSourcePoint": [
+              806,
+              388
+            ],
+            "standingPelvisSourcePoint": [
+              291,
+              360
+            ],
+            "standingPelvisToSolePx": 367
+          }
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            824,
+            557,
+            712
+          ],
+          "visibleRect": [
+            83,
+            921,
+            448,
+            446
+          ],
+          "alphaPixels": 97267,
+          "borderPixels": 0,
+          "visiblePixelSha256": "80d60a7b3b2efd03a0f1dce515a94a82de0cc7716b2813cf648b2a1af16b9615",
+          "pivotCandidate": [
+            495.5,
+            543
+          ],
+          "visibleHeightCandidate": 446,
+          "pivot": [
+            317,
+            691
+          ],
+          "pivotReview": {
+            "method": "Virtual plane from reviewed upper belt/pelvis plus standing same-page pelvis-to-sole distance",
+            "pelvisSourcePoint": [
+              317,
+              1148
+            ],
+            "standingPelvisSourcePoint": [
+              291,
+              360
+            ],
+            "standingPelvisToSolePx": 367
+          }
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            556,
+            824,
+            468,
+            712
+          ],
+          "visibleRect": [
+            582,
+            968,
+            403,
+            405
+          ],
+          "alphaPixels": 101825,
+          "borderPixels": 0,
+          "visiblePixelSha256": "9f883fd876303522982a66a9d534b4634e07bf5da8891204cc854b470ccf788a",
+          "pivotCandidate": [
+            156,
+            549
+          ],
+          "visibleHeightCandidate": 405,
+          "pivot": [
+            264.5,
+            543
+          ],
+          "pivotReview": {
+            "method": "Actual grounded landing support soles alpha>=128, both feet visually reviewed"
+          }
+        }
+      ]
+    }
+  ],
+  "admission": {
+    "fighterId": "feral-hunter",
+    "actionId": "M_F006_jH",
+    "appearanceId": "runtime-default",
+    "atlasId": "feral-source-jh-v100",
+    "clipIds": [
+      "workbook.M_F006_jH"
+    ],
+    "definition": {
+      "fighterId": "feral-hunter",
+      "bodyHeightPx": 598,
+      "pageBodyHeightPx": {
+        "feral-source-jh-v100-right": 598,
+        "feral-source-jh-v100-left": 592
+      },
+      "visibleFrameBounds": [
+        {
+          "pageId": "feral-source-jh-v100-right",
+          "rect": [
+            514,
+            0,
+            510,
+            810
+          ],
+          "visibleRect": [
+            589,
+            50,
+            390,
+            652
+          ]
+        },
+        {
+          "pageId": "feral-source-jh-v100-right",
+          "rect": [
+            0,
+            809,
+            589,
+            727
+          ],
+          "visibleRect": [
+            35,
+            892,
+            496,
+            521
+          ]
+        },
+        {
+          "pageId": "feral-source-jh-v100-right",
+          "rect": [
+            588,
+            809,
+            436,
+            727
+          ],
+          "visibleRect": [
+            646,
+            946,
+            356,
+            445
+          ]
+        },
+        {
+          "pageId": "feral-source-jh-v100-left",
+          "rect": [
+            526,
+            0,
+            498,
+            825
+          ],
+          "visibleRect": [
+            581,
+            52,
+            377,
+            677
+          ]
+        },
+        {
+          "pageId": "feral-source-jh-v100-left",
+          "rect": [
+            0,
+            824,
+            557,
+            712
+          ],
+          "visibleRect": [
+            83,
+            921,
+            448,
+            446
+          ]
+        },
+        {
+          "pageId": "feral-source-jh-v100-left",
+          "rect": [
+            556,
+            824,
+            468,
+            712
+          ],
+          "visibleRect": [
+            582,
+            968,
+            403,
+            405
+          ]
+        }
+      ],
+      "atlas": {
+        "schemaVersion": 1,
+        "id": "feral-source-jh-v100",
+        "characterId": "feral-hunter",
+        "variantId": "body-default-v100",
+        "sourceKind": "authored-frames",
+        "status": "validated",
+        "pages": [
+          {
+            "id": "feral-source-jh-v100-right",
+            "src": "/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
+            "width": 1024,
+            "height": 1536,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          },
+          {
+            "id": "feral-source-jh-v100-left",
+            "src": "/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
+            "width": 1024,
+            "height": 1536,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          }
+        ],
+        "clips": [
+          {
+            "id": "workbook.M_F006_jH",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-jh-v100-right",
+                "rect": [
+                  514,
+                  0,
+                  510,
+                  810
+                ],
+                "pivot": [
+                  280,
+                  750
+                ],
+                "durationTicks": 15
+              },
+              {
+                "pageId": "feral-source-jh-v100-right",
+                "rect": [
+                  0,
+                  809,
+                  589,
+                  727
+                ],
+                "pivot": [
+                  313,
+                  675
+                ],
+                "durationTicks": 6
+              },
+              {
+                "pageId": "feral-source-jh-v100-right",
+                "rect": [
+                  588,
+                  809,
+                  436,
+                  727
+                ],
+                "pivot": [
+                  201,
+                  578
+                ],
+                "durationTicks": 24
+              }
+            ]
+          },
+          {
+            "id": "workbook.M_F006_jH",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-jh-v100-left",
+                "rect": [
+                  526,
+                  0,
+                  498,
+                  825
+                ],
+                "pivot": [
+                  280,
+                  755
+                ],
+                "durationTicks": 15
+              },
+              {
+                "pageId": "feral-source-jh-v100-left",
+                "rect": [
+                  0,
+                  824,
+                  557,
+                  712
+                ],
+                "pivot": [
+                  317,
+                  691
+                ],
+                "durationTicks": 6
+              },
+              {
+                "pageId": "feral-source-jh-v100-left",
+                "rect": [
+                  556,
+                  824,
+                  468,
+                  712
+                ],
+                "pivot": [
+                  264.5,
+                  543
+                ],
+                "durationTicks": 24
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "review": {
+      "status": "validated",
+      "scope": "source-L10-jH-native-descending-landing-study",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png": "f5ac5871db20a4bb8dd4512538979fa6bd75b0b032afaaa5c40032dd5aed04a4",
+        "/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png": "da38a240b9bdb96b99152ce3d222de3f47ee321d2a902f972dfd37355fe5c5e0"
+      },
+      "notes": "Originaux inchangés, références debout0 exclues, trois gestes articulés par côté et double revue root/QA. Échelle fixe par page depuis le vrai masque aux semelles alpha128 ; pivots aériens depuis le haut du bassin + distance debout aux soles, jamais depuis les pieds repliés. Repères source conservés dans le manifeste d’admission. Lourde descendante avec réception distincte accroupie ; étude seule, aucun atterrissage, anti-air ou raccord de récupération encore aérienne imposé au moteur."
+    }
+  }
+}

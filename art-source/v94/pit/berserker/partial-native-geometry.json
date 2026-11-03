@@ -1,0 +1,2341 @@
+{
+  "method": "native-alpha>2, genuinely blank seams, independent partial cells",
+  "noiseFloor": 2,
+  "pixelTransformation": "none",
+  "pages": [
+    {
+      "file": "001-berserker-masked-idle-v94.png",
+      "sourceSha256": "1a4d86e2b56caae431aa8c4059bc1cc38f615a8c5d74455470f7f890f2a36895",
+      "width": 1254,
+      "height": 1254,
+      "rows": 4,
+      "cols": 4,
+      "cells": [],
+      "attempts": [
+        {
+          "order": "rows-first",
+          "primaryCuts": [
+            0,
+            null,
+            null,
+            null,
+            1254
+          ]
+        },
+        {
+          "order": "columns-first",
+          "primaryCuts": [
+            0,
+            313,
+            627,
+            940,
+            1254
+          ]
+        }
+      ],
+      "expectedCells": 16,
+      "isolatedCells": 0,
+      "rejectedGeometryCells": [
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 1
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 3
+        },
+        {
+          "row": 1,
+          "col": 0
+        },
+        {
+          "row": 1,
+          "col": 1
+        },
+        {
+          "row": 1,
+          "col": 2
+        },
+        {
+          "row": 1,
+          "col": 3
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 1
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 3
+        },
+        {
+          "row": 3,
+          "col": 0
+        },
+        {
+          "row": 3,
+          "col": 1
+        },
+        {
+          "row": 3,
+          "col": 2
+        },
+        {
+          "row": 3,
+          "col": 3
+        }
+      ]
+    },
+    {
+      "file": "002-berserker-masked-intro-a-v94.png",
+      "sourceSha256": "15016cb564e833865a795543ff343134b0c1b10a8eb9dc682a840e059ca4d531",
+      "width": 1254,
+      "height": 1254,
+      "rows": 3,
+      "cols": 4,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            0,
+            320,
+            424
+          ],
+          "visibleRect": [
+            20,
+            54,
+            299,
+            369
+          ],
+          "pivot": [
+            164,
+            422
+          ],
+          "foregroundPixels": 55397,
+          "borderAlpha": 2,
+          "drawingSha256": "8c0c0291680974bcc326cd0c49f859ecfa40ea5a326a4a7387a09eaabb5ff2e3"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            320,
+            0,
+            307,
+            424
+          ],
+          "visibleRect": [
+            333,
+            52,
+            267,
+            370
+          ],
+          "pivot": [
+            146.5,
+            421
+          ],
+          "foregroundPixels": 51223,
+          "borderAlpha": 2,
+          "drawingSha256": "43e2211cf7941e8047fba58963c19fadf9a21ae9564630e51a89c54495ef4db3"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            0,
+            315,
+            424
+          ],
+          "visibleRect": [
+            657,
+            58,
+            284,
+            364
+          ],
+          "pivot": [
+            180,
+            421
+          ],
+          "foregroundPixels": 52834,
+          "borderAlpha": 2,
+          "drawingSha256": "9200650304cfb54c294c5e236672a66102063ddf35267677034b42c2b240e944"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            942,
+            0,
+            312,
+            424
+          ],
+          "visibleRect": [
+            964,
+            57,
+            276,
+            364
+          ],
+          "pivot": [
+            165.5,
+            420
+          ],
+          "foregroundPixels": 54084,
+          "borderAlpha": 2,
+          "drawingSha256": "8d9d9a616b7a3be0b1b183be48d68f2910d9e52effaeaed247f6e98386bcbd59"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            424,
+            319,
+            412
+          ],
+          "visibleRect": [
+            31,
+            453,
+            287,
+            363
+          ],
+          "pivot": [
+            167,
+            391
+          ],
+          "foregroundPixels": 54790,
+          "borderAlpha": 2,
+          "drawingSha256": "653acc873bd5377583181f1dbea22d29f5cc84d8848f9449dab48c382757b7a0"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            319,
+            424,
+            308,
+            412
+          ],
+          "visibleRect": [
+            337,
+            455,
+            276,
+            363
+          ],
+          "pivot": [
+            153,
+            393
+          ],
+          "foregroundPixels": 52417,
+          "borderAlpha": 2,
+          "drawingSha256": "7a295d307b9bdf040806bf5c1e3ce5b20244fd6cc95a4d37d7b18fca5ca66538"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            424,
+            313,
+            412
+          ],
+          "visibleRect": [
+            652,
+            453,
+            285,
+            362
+          ],
+          "pivot": [
+            172.5,
+            390
+          ],
+          "foregroundPixels": 53944,
+          "borderAlpha": 1,
+          "drawingSha256": "55ce9a8f8117a4510bc87c78c54abfbdb3d723782fafe5f9879d4ecb5ba32d4d"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            424,
+            314,
+            412
+          ],
+          "visibleRect": [
+            970,
+            453,
+            259,
+            364
+          ],
+          "pivot": [
+            159.5,
+            392
+          ],
+          "foregroundPixels": 52077,
+          "borderAlpha": 1,
+          "drawingSha256": "051f983f49cfcc8184f4a9c8cae85b527b0094e4014f077e609bc625c9a5a7a5"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            836,
+            336,
+            418
+          ],
+          "visibleRect": [
+            21,
+            846,
+            314,
+            358
+          ],
+          "pivot": [
+            164.5,
+            367
+          ],
+          "foregroundPixels": 55757,
+          "borderAlpha": 2,
+          "drawingSha256": "18eacebd2f6eb5349c87609156d0be96ac502825d15b7beb2d750338337c0388"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            336,
+            836,
+            291,
+            418
+          ],
+          "visibleRect": [
+            345,
+            842,
+            269,
+            360
+          ],
+          "pivot": [
+            143,
+            365
+          ],
+          "foregroundPixels": 49285,
+          "borderAlpha": 1,
+          "drawingSha256": "c0602ff6c4842e7c3440b501bd393533ce4740f4e5f1f4a2dea4c6ccfd681ed4"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            836,
+            313,
+            418
+          ],
+          "visibleRect": [
+            661,
+            847,
+            275,
+            354
+          ],
+          "pivot": [
+            171.5,
+            364
+          ],
+          "foregroundPixels": 49768,
+          "borderAlpha": 1,
+          "drawingSha256": "4bab8e3dfcb2c54e3be6ae56c90f9e337b97ed4f866ed3c20181216c33bbbc5b"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            836,
+            314,
+            418
+          ],
+          "visibleRect": [
+            968,
+            849,
+            271,
+            355
+          ],
+          "pivot": [
+            163,
+            367
+          ],
+          "foregroundPixels": 49620,
+          "borderAlpha": 1,
+          "drawingSha256": "19fda38ed46947ed24598922caa0645805fb2be1c963ea1748c0ec2751b3bc7b"
+        }
+      ],
+      "attempts": [
+        {
+          "order": "rows-first",
+          "primaryCuts": [
+            0,
+            424,
+            836,
+            1254
+          ]
+        },
+        {
+          "order": "columns-first",
+          "primaryCuts": [
+            0,
+            null,
+            627,
+            942,
+            1254
+          ]
+        }
+      ],
+      "expectedCells": 12,
+      "isolatedCells": 12,
+      "rejectedGeometryCells": []
+    },
+    {
+      "file": "003-berserker-masked-intro-b-v94.png",
+      "sourceSha256": "ce71473d32f4fc6ab018eaa0c946fc17a63f6001e6721572ceb279e8a0682564",
+      "width": 1254,
+      "height": 1254,
+      "rows": 3,
+      "cols": 4,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            0,
+            314,
+            434
+          ],
+          "visibleRect": [
+            27,
+            49,
+            286,
+            384
+          ],
+          "pivot": [
+            169.5,
+            432
+          ],
+          "foregroundPixels": 52105,
+          "borderAlpha": 1,
+          "drawingSha256": "3bcee8747783d53af073c985f8fbd24b6dc09d84759b0b7b4664e8d6abad6d8d"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            314,
+            0,
+            313,
+            434
+          ],
+          "visibleRect": [
+            335,
+            49,
+            273,
+            384
+          ],
+          "pivot": [
+            157,
+            432
+          ],
+          "foregroundPixels": 49171,
+          "borderAlpha": 1,
+          "drawingSha256": "5cbd8d3a511db75e76bf930a2728ddea4cb150e89ba5c36ac7a6014825fd0454"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            0,
+            313,
+            434
+          ],
+          "visibleRect": [
+            665,
+            48,
+            274,
+            384
+          ],
+          "pivot": [
+            174.5,
+            431
+          ],
+          "foregroundPixels": 50467,
+          "borderAlpha": 1,
+          "drawingSha256": "38dd44269e89ce4de9233e2c106ef027729f1eca64198988025c690a9545fd29"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            0,
+            314,
+            434
+          ],
+          "visibleRect": [
+            973,
+            51,
+            266,
+            379
+          ],
+          "pivot": [
+            165.5,
+            429
+          ],
+          "foregroundPixels": 51638,
+          "borderAlpha": 0,
+          "drawingSha256": "2ecbe4d3948f99ba097319e0b424c79718069e3fbc67ed603a988a8302db077a"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "facing": "left",
+          "order": "columns-first",
+          "rect": [
+            627,
+            433,
+            316,
+            400
+          ],
+          "visibleRect": [
+            659,
+            442,
+            283,
+            389
+          ],
+          "pivot": [
+            172.5,
+            397
+          ],
+          "foregroundPixels": 57062,
+          "borderAlpha": 2,
+          "drawingSha256": "e99f2c54eea533cf71279b8a074cf43311b04597852b46d67ba2406f44959dfb"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "facing": "left",
+          "order": "columns-first",
+          "rect": [
+            627,
+            833,
+            316,
+            421
+          ],
+          "visibleRect": [
+            647,
+            835,
+            293,
+            376
+          ],
+          "pivot": [
+            169.5,
+            377
+          ],
+          "foregroundPixels": 52838,
+          "borderAlpha": 1,
+          "drawingSha256": "2ff2b6db03f6224af35083ec2de099f01a49a26c957f268ab2a7615dfcd6ac46"
+        }
+      ],
+      "attempts": [
+        {
+          "order": "rows-first",
+          "primaryCuts": [
+            0,
+            434,
+            null,
+            1254
+          ]
+        },
+        {
+          "order": "columns-first",
+          "primaryCuts": [
+            0,
+            null,
+            627,
+            943,
+            1254
+          ]
+        }
+      ],
+      "expectedCells": 12,
+      "isolatedCells": 6,
+      "rejectedGeometryCells": [
+        {
+          "row": 1,
+          "col": 0
+        },
+        {
+          "row": 1,
+          "col": 1
+        },
+        {
+          "row": 1,
+          "col": 3
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 1
+        },
+        {
+          "row": 2,
+          "col": 3
+        }
+      ]
+    },
+    {
+      "file": "004-berserker-masked-victory-a-v94.png",
+      "sourceSha256": "803970642d1ab464d50070dcebc3b4b0cac2494bbbec95b164b55c4220fdd67d",
+      "width": 1254,
+      "height": 1254,
+      "rows": 3,
+      "cols": 4,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            0,
+            313,
+            408
+          ],
+          "visibleRect": [
+            27,
+            19,
+            253,
+            385
+          ],
+          "pivot": [
+            153,
+            403
+          ],
+          "foregroundPixels": 56521,
+          "borderAlpha": 1,
+          "drawingSha256": "120e253adbae46af723e0223c94f06a262d0d79bfb3ea901180657056870e492"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            313,
+            0,
+            314,
+            408
+          ],
+          "visibleRect": [
+            341,
+            25,
+            254,
+            379
+          ],
+          "pivot": [
+            155,
+            403
+          ],
+          "foregroundPixels": 53866,
+          "borderAlpha": 1,
+          "drawingSha256": "be02a5405a8624927457fce742fd8caea2089c2fb85377d192a339388d7e2d02"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            0,
+            313,
+            408
+          ],
+          "visibleRect": [
+            676,
+            24,
+            255,
+            380
+          ],
+          "pivot": [
+            176.5,
+            403
+          ],
+          "foregroundPixels": 55218,
+          "borderAlpha": 0,
+          "drawingSha256": "31fa2e656c6904c73b4fc07218dcc32a943c3a21b97bb5ddcf73513770de8043"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            0,
+            314,
+            408
+          ],
+          "visibleRect": [
+            994,
+            25,
+            254,
+            379
+          ],
+          "pivot": [
+            182.5,
+            403
+          ],
+          "foregroundPixels": 54727,
+          "borderAlpha": 2,
+          "drawingSha256": "b5e244e34e59a45c7a68280b32d5c6676a7b6884da421178f967f9fbd8a932e2"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "order": "columns-first",
+          "rect": [
+            0,
+            408,
+            313,
+            417
+          ],
+          "visibleRect": [
+            31,
+            410,
+            261,
+            414
+          ],
+          "pivot": [
+            157,
+            415
+          ],
+          "foregroundPixels": 60016,
+          "borderAlpha": 2,
+          "drawingSha256": "21c8ec57f9cd12a3e6aaddab2ebdd768b465ffe73098ea03972258549c330007"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "facing": "left",
+          "order": "columns-first",
+          "rect": [
+            627,
+            414,
+            313,
+            417
+          ],
+          "visibleRect": [
+            673,
+            416,
+            251,
+            413
+          ],
+          "pivot": [
+            177,
+            414
+          ],
+          "foregroundPixels": 58622,
+          "borderAlpha": 1,
+          "drawingSha256": "0b79cf4b00bc9c801eb81e1bc17922af051e9b6d922b394301f0325dd32aab4e"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "facing": "left",
+          "order": "columns-first",
+          "rect": [
+            940,
+            413,
+            314,
+            423
+          ],
+          "visibleRect": [
+            986,
+            415,
+            250,
+            414
+          ],
+          "pivot": [
+            174,
+            415
+          ],
+          "foregroundPixels": 58435,
+          "borderAlpha": 1,
+          "drawingSha256": "2f35eb537ee27370aca66268e4ea037a819a9e13be46b1a1b80cfc9daa7e95c8"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "order": "columns-first",
+          "rect": [
+            0,
+            825,
+            313,
+            429
+          ],
+          "visibleRect": [
+            32,
+            827,
+            259,
+            403
+          ],
+          "pivot": [
+            156,
+            404
+          ],
+          "foregroundPixels": 57981,
+          "borderAlpha": 2,
+          "drawingSha256": "8d68b7d26213d7ab3bb382e761bf00b2b4b90987d50bb0fe70dad4cdc7823635"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "facing": "left",
+          "order": "columns-first",
+          "rect": [
+            627,
+            831,
+            313,
+            423
+          ],
+          "visibleRect": [
+            659,
+            833,
+            257,
+            397
+          ],
+          "pivot": [
+            168.5,
+            398
+          ],
+          "foregroundPixels": 56425,
+          "borderAlpha": 1,
+          "drawingSha256": "6a3aed581fd34f8fe5e725c2af920a7dfe73867d1c5b80924b306d567b39d5ee"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "facing": "left",
+          "order": "columns-first",
+          "rect": [
+            940,
+            836,
+            314,
+            418
+          ],
+          "visibleRect": [
+            995,
+            839,
+            243,
+            391
+          ],
+          "pivot": [
+            175.5,
+            393
+          ],
+          "foregroundPixels": 53533,
+          "borderAlpha": 1,
+          "drawingSha256": "91309533761d7ad001fa181d903ee7c0276251f1c2729c2b4fda7de7025096c0"
+        }
+      ],
+      "attempts": [
+        {
+          "order": "rows-first",
+          "primaryCuts": [
+            0,
+            408,
+            null,
+            1254
+          ]
+        },
+        {
+          "order": "columns-first",
+          "primaryCuts": [
+            0,
+            313,
+            627,
+            940,
+            1254
+          ]
+        }
+      ],
+      "expectedCells": 12,
+      "isolatedCells": 10,
+      "rejectedGeometryCells": [
+        {
+          "row": 1,
+          "col": 1
+        },
+        {
+          "row": 2,
+          "col": 1
+        }
+      ]
+    },
+    {
+      "file": "005-berserker-masked-victory-b-v94.png",
+      "sourceSha256": "80d5376fa710ded3d11f6a6a8599e5eea434a7831587b3d8dc5a06e4ac63cdc3",
+      "width": 1254,
+      "height": 1254,
+      "rows": 3,
+      "cols": 4,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "order": "columns-first",
+          "rect": [
+            0,
+            0,
+            320,
+            422
+          ],
+          "visibleRect": [
+            30,
+            17,
+            261,
+            404
+          ],
+          "pivot": [
+            159.5,
+            420
+          ],
+          "foregroundPixels": 60196,
+          "borderAlpha": 2,
+          "drawingSha256": "f254d03f01c75ad02be36aba78b5ddb44923184e7f38bd47077ae265054f1a8c"
+        }
+      ],
+      "attempts": [
+        {
+          "order": "rows-first",
+          "primaryCuts": [
+            0,
+            null,
+            null,
+            1254
+          ]
+        },
+        {
+          "order": "columns-first",
+          "primaryCuts": [
+            0,
+            320,
+            627,
+            940,
+            1254
+          ]
+        }
+      ],
+      "expectedCells": 12,
+      "isolatedCells": 1,
+      "rejectedGeometryCells": [
+        {
+          "row": 0,
+          "col": 1
+        },
+        {
+          "row": 0,
+          "col": 2
+        },
+        {
+          "row": 0,
+          "col": 3
+        },
+        {
+          "row": 1,
+          "col": 0
+        },
+        {
+          "row": 1,
+          "col": 1
+        },
+        {
+          "row": 1,
+          "col": 2
+        },
+        {
+          "row": 1,
+          "col": 3
+        },
+        {
+          "row": 2,
+          "col": 0
+        },
+        {
+          "row": 2,
+          "col": 1
+        },
+        {
+          "row": 2,
+          "col": 2
+        },
+        {
+          "row": 2,
+          "col": 3
+        }
+      ]
+    },
+    {
+      "file": "006-berserker-masked-defeat-a-v94.png",
+      "sourceSha256": "7f427ed4e85569015147a5c60966fe661d21280a9d2423051cb103a6d8c6a579",
+      "width": 1254,
+      "height": 1254,
+      "rows": 3,
+      "cols": 4,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            0,
+            313,
+            447
+          ],
+          "visibleRect": [
+            42,
+            8,
+            240,
+            437
+          ],
+          "pivot": [
+            161,
+            444
+          ],
+          "foregroundPixels": 58467,
+          "borderAlpha": 2,
+          "drawingSha256": "a694f55e5a30a52875221ac5b81ed7bc3edaa457c9cf8f8a46b4dcb79ed8abf6"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            313,
+            0,
+            314,
+            447
+          ],
+          "visibleRect": [
+            353,
+            33,
+            228,
+            411
+          ],
+          "pivot": [
+            153.5,
+            443
+          ],
+          "foregroundPixels": 57028,
+          "borderAlpha": 1,
+          "drawingSha256": "f7529aad25d66d0735e2695c8ce8a5c54c0c6acf6e1dca1c9d1c8d1f58b0097a"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            0,
+            313,
+            447
+          ],
+          "visibleRect": [
+            677,
+            34,
+            237,
+            410
+          ],
+          "pivot": [
+            167.5,
+            443
+          ],
+          "foregroundPixels": 51263,
+          "borderAlpha": 1,
+          "drawingSha256": "fb304a10466d8de27ec4c1d13bcdd977a9c07b9b2db2dfff56826bfddaee6afb"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            0,
+            314,
+            447
+          ],
+          "visibleRect": [
+            1007,
+            35,
+            219,
+            411
+          ],
+          "pivot": [
+            178.5,
+            445
+          ],
+          "foregroundPixels": 54945,
+          "borderAlpha": 2,
+          "drawingSha256": "3bb2810d1e6a9fbcbe02bb481cc145c684c096dfd263b3be979b9180e105c2c7"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            447,
+            313,
+            426
+          ],
+          "visibleRect": [
+            40,
+            470,
+            242,
+            402
+          ],
+          "pivot": [
+            160,
+            424
+          ],
+          "foregroundPixels": 54399,
+          "borderAlpha": 1,
+          "drawingSha256": "da2f812d45f72a0723723e50708b38889dfa067bfbded6aeb87fb512d7d80fd2"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            313,
+            447,
+            314,
+            426
+          ],
+          "visibleRect": [
+            348,
+            508,
+            234,
+            364
+          ],
+          "pivot": [
+            150,
+            424
+          ],
+          "foregroundPixels": 47958,
+          "borderAlpha": 2,
+          "drawingSha256": "db7d97c7e947c77512b965aaa6ef1e7b9c5a544e1611c4be2eca3ad6a1f067ae"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            447,
+            313,
+            426
+          ],
+          "visibleRect": [
+            681,
+            485,
+            232,
+            387
+          ],
+          "pivot": [
+            170,
+            424
+          ],
+          "foregroundPixels": 53239,
+          "borderAlpha": 1,
+          "drawingSha256": "d499c3038eaa4d322a017d3fe61501e336bbde32c7c749efd9f4ae616f0b3fbd"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            447,
+            314,
+            426
+          ],
+          "visibleRect": [
+            1012,
+            503,
+            220,
+            368
+          ],
+          "pivot": [
+            181.5,
+            423
+          ],
+          "foregroundPixels": 47476,
+          "borderAlpha": 1,
+          "drawingSha256": "454eaeeee41219946f6bcbb85a0f0fa853d5b498ecd1814d865ce259387c2b68"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            873,
+            313,
+            381
+          ],
+          "visibleRect": [
+            23,
+            920,
+            263,
+            300
+          ],
+          "pivot": [
+            153,
+            346
+          ],
+          "foregroundPixels": 47583,
+          "borderAlpha": 1,
+          "drawingSha256": "e97183f591c75894f5ee660ad2dfb02f820cfff67f9c1b482a00c4f617807921"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            313,
+            873,
+            314,
+            381
+          ],
+          "visibleRect": [
+            337,
+            929,
+            252,
+            289
+          ],
+          "pivot": [
+            148.5,
+            344
+          ],
+          "foregroundPixels": 43329,
+          "borderAlpha": 1,
+          "drawingSha256": "b22da4d2c96df880e9f15773d63a8304a2ca6abfc66fef797b40f228b14dbf7e"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            873,
+            313,
+            381
+          ],
+          "visibleRect": [
+            675,
+            931,
+            245,
+            287
+          ],
+          "pivot": [
+            170,
+            344
+          ],
+          "foregroundPixels": 42726,
+          "borderAlpha": 1,
+          "drawingSha256": "5aee0b96eff74e13261f38445027537fbf8cb4f9a6f3717cfca6ff898c4746fc"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            873,
+            314,
+            381
+          ],
+          "visibleRect": [
+            993,
+            949,
+            246,
+            271
+          ],
+          "pivot": [
+            175,
+            346
+          ],
+          "foregroundPixels": 42646,
+          "borderAlpha": 1,
+          "drawingSha256": "3abf42fff84bd972508909389af5249f858ddf220cfa37b2a8135fd80cd3202d"
+        }
+      ],
+      "attempts": [
+        {
+          "order": "rows-first",
+          "primaryCuts": [
+            0,
+            447,
+            873,
+            1254
+          ]
+        },
+        {
+          "order": "columns-first",
+          "primaryCuts": [
+            0,
+            313,
+            627,
+            940,
+            1254
+          ]
+        }
+      ],
+      "expectedCells": 12,
+      "isolatedCells": 12,
+      "rejectedGeometryCells": []
+    },
+    {
+      "file": "007-berserker-masked-defeat-b-v94.png",
+      "sourceSha256": "693a635082ac6c31df691425addeccdf5f09138c5a8b7ebfcbc4b947c69dda30",
+      "width": 1254,
+      "height": 1254,
+      "rows": 3,
+      "cols": 4,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            0,
+            313,
+            478
+          ],
+          "visibleRect": [
+            35,
+            34,
+            240,
+            443
+          ],
+          "pivot": [
+            154,
+            476
+          ],
+          "foregroundPixels": 67075,
+          "borderAlpha": 2,
+          "drawingSha256": "e2b5d3ab19815d83c9609eab333d9223ef7f3ccb161013ddedab631041dc461a"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            313,
+            0,
+            314,
+            478
+          ],
+          "visibleRect": [
+            334,
+            78,
+            270,
+            396
+          ],
+          "pivot": [
+            143.5,
+            473
+          ],
+          "foregroundPixels": 60575,
+          "borderAlpha": 1,
+          "drawingSha256": "7efefc6c70afb59f98e25fd1820bd1614434554f71b0c0bd884acd32cb75df2d"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            0,
+            315,
+            478
+          ],
+          "visibleRect": [
+            685,
+            51,
+            256,
+            426
+          ],
+          "pivot": [
+            192.5,
+            476
+          ],
+          "foregroundPixels": 62502,
+          "borderAlpha": 2,
+          "drawingSha256": "25761137445b6a4e632db8c5b801009777a7cfb3f785638ce1fd35b247c768cb"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            942,
+            0,
+            312,
+            478
+          ],
+          "visibleRect": [
+            1000,
+            90,
+            240,
+            374
+          ],
+          "pivot": [
+            178.5,
+            463
+          ],
+          "foregroundPixels": 58436,
+          "borderAlpha": 2,
+          "drawingSha256": "49550be22af0c41b7738c71ae54854abe17fcad3c88a8044132e5b89b5ab305e"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            478,
+            313,
+            389
+          ],
+          "visibleRect": [
+            17,
+            532,
+            269,
+            333
+          ],
+          "pivot": [
+            150.5,
+            386
+          ],
+          "foregroundPixels": 56401,
+          "borderAlpha": 1,
+          "drawingSha256": "8610f4ddd42821bed6f57587e143402e8091e391794f644f99c7e8b5c4e5c6be"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            313,
+            478,
+            314,
+            389
+          ],
+          "visibleRect": [
+            331,
+            548,
+            272,
+            318
+          ],
+          "pivot": [
+            154,
+            387
+          ],
+          "foregroundPixels": 53797,
+          "borderAlpha": 2,
+          "drawingSha256": "a2111c52b88d9b6435367fc745c561e3c73215eea7f53b0700c8d52e61382f27"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            478,
+            331,
+            389
+          ],
+          "visibleRect": [
+            672,
+            533,
+            285,
+            332
+          ],
+          "pivot": [
+            187,
+            386
+          ],
+          "foregroundPixels": 55750,
+          "borderAlpha": 1,
+          "drawingSha256": "3e1f715615e88a17f3145a70e7b3b4873cfab2289d90bc0569722e3185c43d73"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            958,
+            478,
+            296,
+            389
+          ],
+          "visibleRect": [
+            1006,
+            563,
+            239,
+            302
+          ],
+          "pivot": [
+            166.5,
+            386
+          ],
+          "foregroundPixels": 48819,
+          "borderAlpha": 1,
+          "drawingSha256": "e1dd33c2e52a61ba8dbe05d379cd3785131eb506267eb87293a536ef1f46205b"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            867,
+            313,
+            387
+          ],
+          "visibleRect": [
+            26,
+            914,
+            262,
+            310
+          ],
+          "pivot": [
+            155.5,
+            356
+          ],
+          "foregroundPixels": 51139,
+          "borderAlpha": 1,
+          "drawingSha256": "528b317850c26c62a72b3f887b11dd019b2e8c232dd910da3ac9d1c0c563aa39"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            313,
+            867,
+            314,
+            387
+          ],
+          "visibleRect": [
+            336,
+            919,
+            268,
+            304
+          ],
+          "pivot": [
+            155.5,
+            355
+          ],
+          "foregroundPixels": 49986,
+          "borderAlpha": 1,
+          "drawingSha256": "a525acc8761ead86523c5f9f96a5e426eb601bd0b1470dbd26c42d48fbd0b875"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            867,
+            321,
+            387
+          ],
+          "visibleRect": [
+            673,
+            917,
+            274,
+            307
+          ],
+          "pivot": [
+            181,
+            356
+          ],
+          "foregroundPixels": 51156,
+          "borderAlpha": 2,
+          "drawingSha256": "17ad72248bdea10abbe3a76cd956813eb1448f7c6842ba87cd576c4126a0b339"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            948,
+            867,
+            306,
+            387
+          ],
+          "visibleRect": [
+            989,
+            933,
+            252,
+            291
+          ],
+          "pivot": [
+            166,
+            356
+          ],
+          "foregroundPixels": 47281,
+          "borderAlpha": 1,
+          "drawingSha256": "e1e0f5dbad7c166de3fd3cde67b7ed415e3f99d9ce80cdb75a3269050ed608d8"
+        }
+      ],
+      "attempts": [
+        {
+          "order": "rows-first",
+          "primaryCuts": [
+            0,
+            478,
+            867,
+            1254
+          ]
+        },
+        {
+          "order": "columns-first",
+          "primaryCuts": [
+            0,
+            313,
+            627,
+            958,
+            1254
+          ]
+        }
+      ],
+      "expectedCells": 12,
+      "isolatedCells": 12,
+      "rejectedGeometryCells": []
+    },
+    {
+      "file": "009-berserker-masked-taunt-a-v94.png",
+      "sourceSha256": "3f6f50cae65e454056c83a25dab9aec7e13b4bb4e32b24ac83682aae6a0af349",
+      "width": 1254,
+      "height": 1254,
+      "rows": 3,
+      "cols": 4,
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            0,
+            313,
+            419
+          ],
+          "visibleRect": [
+            33,
+            22,
+            269,
+            396
+          ],
+          "pivot": [
+            166.5,
+            417
+          ],
+          "foregroundPixels": 59397,
+          "borderAlpha": 1,
+          "drawingSha256": "eeaac80874c60503f41b729bfa5e688cd5c30fc0df1a88eed9302841f2956127"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            313,
+            0,
+            314,
+            419
+          ],
+          "visibleRect": [
+            339,
+            45,
+            255,
+            372
+          ],
+          "pivot": [
+            153,
+            416
+          ],
+          "foregroundPixels": 55013,
+          "borderAlpha": 2,
+          "drawingSha256": "64f5b5e462ff0dfcc8357c1eac10f5420b3821d037b59d609cfe8febd4d9b29d"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            0,
+            313,
+            419
+          ],
+          "visibleRect": [
+            654,
+            39,
+            263,
+            378
+          ],
+          "pivot": [
+            158,
+            416
+          ],
+          "foregroundPixels": 56873,
+          "borderAlpha": 1,
+          "drawingSha256": "37f88b3b881689224788bd16c77ee40c007ebf85bff2a7c33b0d2e3f56629153"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            0,
+            314,
+            419
+          ],
+          "visibleRect": [
+            955,
+            36,
+            268,
+            382
+          ],
+          "pivot": [
+            149,
+            417
+          ],
+          "foregroundPixels": 56398,
+          "borderAlpha": 1,
+          "drawingSha256": "ee6a2440d929708fae8e0f668ceee67c4f1010c0f275ce7e32001145833a48cd"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            419,
+            313,
+            403
+          ],
+          "visibleRect": [
+            29,
+            431,
+            278,
+            387
+          ],
+          "pivot": [
+            165,
+            398
+          ],
+          "foregroundPixels": 58877,
+          "borderAlpha": 1,
+          "drawingSha256": "19b1bbb53efe9691b147e271b9b7456cb5553890be0aebcb0b6cacc65683cc3e"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            313,
+            419,
+            314,
+            403
+          ],
+          "visibleRect": [
+            331,
+            437,
+            280,
+            379
+          ],
+          "pivot": [
+            149.5,
+            396
+          ],
+          "foregroundPixels": 56838,
+          "borderAlpha": 1,
+          "drawingSha256": "779655f71531560106ad2c0b8527136e39655dc0038fc37794c42b8d0c3677f6"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            419,
+            313,
+            403
+          ],
+          "visibleRect": [
+            646,
+            436,
+            278,
+            380
+          ],
+          "pivot": [
+            162.5,
+            396
+          ],
+          "foregroundPixels": 57464,
+          "borderAlpha": 1,
+          "drawingSha256": "c9d1c01dd789a09e539bb4aa326b09dfc103a370194dd3b274f5927cc1d6c109"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            419,
+            314,
+            403
+          ],
+          "visibleRect": [
+            949,
+            432,
+            276,
+            386
+          ],
+          "pivot": [
+            148.5,
+            398
+          ],
+          "foregroundPixels": 59123,
+          "borderAlpha": 1,
+          "drawingSha256": "6ed468225f8f609d2b16d2525602fddf84060be8df65dd1ac08ce7b9a4e7b9bd"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            822,
+            313,
+            432
+          ],
+          "visibleRect": [
+            32,
+            824,
+            271,
+            386
+          ],
+          "pivot": [
+            164.5,
+            387
+          ],
+          "foregroundPixels": 57823,
+          "borderAlpha": 1,
+          "drawingSha256": "c25b63136ec349f205507839e2e6844422122ada5eca5f165722923b0760ced8"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            313,
+            822,
+            314,
+            432
+          ],
+          "visibleRect": [
+            334,
+            828,
+            259,
+            382
+          ],
+          "pivot": [
+            150,
+            387
+          ],
+          "foregroundPixels": 55955,
+          "borderAlpha": 1,
+          "drawingSha256": "bea5c0a9542e29568f2ef3b4b8e3366b719007961e80814393f7c069778f37ec"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            822,
+            313,
+            432
+          ],
+          "visibleRect": [
+            657,
+            828,
+            263,
+            382
+          ],
+          "pivot": [
+            160.5,
+            387
+          ],
+          "foregroundPixels": 55870,
+          "borderAlpha": 1,
+          "drawingSha256": "95c2d2a75e80d8d89d24a612c09260b312ca17f480fc3e0b371e3db63c45bb8e"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            822,
+            314,
+            432
+          ],
+          "visibleRect": [
+            952,
+            824,
+            271,
+            386
+          ],
+          "pivot": [
+            148.5,
+            387
+          ],
+          "foregroundPixels": 58089,
+          "borderAlpha": 2,
+          "drawingSha256": "2097a485e800d69482b54d98579b2eb42a72a2a9486e334b417de20dd4790b11"
+        }
+      ],
+      "attempts": [
+        {
+          "order": "rows-first",
+          "primaryCuts": [
+            0,
+            419,
+            822,
+            1254
+          ]
+        },
+        {
+          "order": "columns-first",
+          "primaryCuts": [
+            0,
+            313,
+            627,
+            940,
+            1254
+          ]
+        }
+      ],
+      "expectedCells": 12,
+      "isolatedCells": 12,
+      "rejectedGeometryCells": []
+    },
+    {
+      "file": "010-berserker-masked-taunt-b-v94.png",
+      "sourceSha256": "64971402b5eb2e25b28a55d2293dc558a7b3b9ac81544a81ff3d742d652e6f39",
+      "width": 1254,
+      "height": 1254,
+      "rows": 3,
+      "cols": 4,
+      "cells": [
+        {
+          "row": 0,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            0,
+            319,
+            421
+          ],
+          "visibleRect": [
+            643,
+            35,
+            302,
+            385
+          ],
+          "pivot": [
+            174.5,
+            419
+          ],
+          "foregroundPixels": 59056,
+          "borderAlpha": 2,
+          "drawingSha256": "bce9392fd494605dac25f0f780812dc8423e598b990f52ef19905df01bca4d6c"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            946,
+            0,
+            308,
+            421
+          ],
+          "visibleRect": [
+            960,
+            36,
+            276,
+            382
+          ],
+          "pivot": [
+            149,
+            417
+          ],
+          "foregroundPixels": 58328,
+          "borderAlpha": 2,
+          "drawingSha256": "15ef41bfd982301b21e8f28b283726bda6dc6a32418ef36a82722e2f4b75e2ff"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            421,
+            323,
+            399
+          ],
+          "visibleRect": [
+            24,
+            432,
+            298,
+            381
+          ],
+          "pivot": [
+            163,
+            391
+          ],
+          "foregroundPixels": 56191,
+          "borderAlpha": 1,
+          "drawingSha256": "5867e10e63393eac472e0eb72aa5f32cce673298fcb343197f9f0e0b463cdfe2"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            323,
+            421,
+            304,
+            399
+          ],
+          "visibleRect": [
+            337,
+            431,
+            280,
+            382
+          ],
+          "pivot": [
+            149.5,
+            391
+          ],
+          "foregroundPixels": 56892,
+          "borderAlpha": 1,
+          "drawingSha256": "23d4f77a2f1f4107024051ccde0e375644649ccfd40833168989e1502dc421ee"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            421,
+            313,
+            399
+          ],
+          "visibleRect": [
+            652,
+            432,
+            287,
+            381
+          ],
+          "pivot": [
+            172,
+            391
+          ],
+          "foregroundPixels": 58740,
+          "borderAlpha": 1,
+          "drawingSha256": "0fb05d432da2cb0b8d49d3fe66491d1c84e8d03c918d9f2a648cc38bd5ad7058"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            421,
+            314,
+            399
+          ],
+          "visibleRect": [
+            958,
+            432,
+            277,
+            381
+          ],
+          "pivot": [
+            158,
+            391
+          ],
+          "foregroundPixels": 58250,
+          "borderAlpha": 1,
+          "drawingSha256": "dba91750b024e18a97b62a39e57641ee32376baa09176c671ed7e1b34a57a2fe"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            0,
+            820,
+            313,
+            434
+          ],
+          "visibleRect": [
+            25,
+            822,
+            276,
+            385
+          ],
+          "pivot": [
+            162,
+            386
+          ],
+          "foregroundPixels": 60306,
+          "borderAlpha": 1,
+          "drawingSha256": "670c4035afcaae8c95a6c0d18ef87a7d9127eb8c79d6adca6c52c83212633755"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "facing": "right",
+          "order": "rows-first",
+          "rect": [
+            313,
+            820,
+            314,
+            434
+          ],
+          "visibleRect": [
+            332,
+            822,
+            277,
+            385
+          ],
+          "pivot": [
+            156,
+            386
+          ],
+          "foregroundPixels": 60241,
+          "borderAlpha": 1,
+          "drawingSha256": "e434dd81d0979aa7e5a1211960a633b8f95627f973c500c64436a842e6612493"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            627,
+            820,
+            313,
+            434
+          ],
+          "visibleRect": [
+            661,
+            822,
+            278,
+            385
+          ],
+          "pivot": [
+            172,
+            386
+          ],
+          "foregroundPixels": 60075,
+          "borderAlpha": 1,
+          "drawingSha256": "35f994d126327138ec8ad025c69a65e3255a92c5aa96b2e81c32a94d9ec4e080"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "facing": "left",
+          "order": "rows-first",
+          "rect": [
+            940,
+            820,
+            314,
+            434
+          ],
+          "visibleRect": [
+            961,
+            822,
+            274,
+            385
+          ],
+          "pivot": [
+            158.5,
+            386
+          ],
+          "foregroundPixels": 61464,
+          "borderAlpha": 1,
+          "drawingSha256": "f27281a636aaf07f8ff53608983756565075f489d8ee1f50ce215eb1481c37db"
+        }
+      ],
+      "attempts": [
+        {
+          "order": "rows-first",
+          "primaryCuts": [
+            0,
+            421,
+            820,
+            1254
+          ]
+        },
+        {
+          "order": "columns-first",
+          "primaryCuts": [
+            0,
+            null,
+            627,
+            946,
+            1254
+          ]
+        }
+      ],
+      "expectedCells": 12,
+      "isolatedCells": 10,
+      "rejectedGeometryCells": [
+        {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 1
+        }
+      ]
+    }
+  ]
+}

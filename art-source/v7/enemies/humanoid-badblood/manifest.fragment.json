@@ -1,0 +1,210 @@
+{
+  "version": 7,
+  "lot": "humanoid-badblood",
+  "assetOrigin": "Original fan-made artwork generated with the built-in OpenAI image_gen tool; no official bitmap is redistributed.",
+  "generation": {
+    "tool": "OpenAI built-in image_gen",
+    "useCase": "stylized-concept",
+    "masterLayout": {
+      "rows": 5,
+      "columns": 6,
+      "chromaKey": "#ff00ff"
+    },
+    "runtimeSheet": {
+      "width": 1536,
+      "height": 192,
+      "frameWidth": 256,
+      "frameHeight": 192,
+      "frameCount": 6,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "walk-b",
+        "attack",
+        "hit",
+        "death"
+      ],
+      "facing": "right",
+      "format": "PNG RGBA"
+    },
+    "postProcess": "remove_chroma_key.py --auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill; isolate each pose; fit with one shared per-enemy scale inside six 256x192 cells"
+  },
+  "references": {
+    "predators-film": "https://www.20thcenturystudios.com/movies/predators",
+    "avp-classic-manual": "https://cdn.akamai.steamstatic.com/steam/apps/3730/manuals/Aliens%20Versus%20Predator%20Classic%202000%20Manual.pdf?t=1415299874",
+    "avp-jaguar-manual": "https://www.digitpress.com/library/manuals/jaguar/alien%20vs%20predator.pdf",
+    "hunting-grounds-official": "https://predator.illfonic.com/",
+    "owlf-update": "https://blog.playstation.com/2020/08/19/predator-hunting-grounds-august-update/",
+    "yautja-equipment": "https://www.avpcentral.com/predator-equipment-and-hunting-gear",
+    "yautja-weapons-studio": "https://wetaworkshopdesignstudio.artstation.com/projects/rlxRPa",
+    "bad-blood-series": "https://www.comics.org/series/42029/"
+  },
+  "masters": [
+    {
+      "id": "humanoids-master",
+      "chromaSource": "art-source/v7/enemies/humanoid-badblood/masters/openai-humanoids-chroma-master.png",
+      "alphaSource": "art-source/v7/enemies/humanoid-badblood/masters/openai-humanoids-alpha-master.png",
+      "rows": [
+        "colonial-marine",
+        "owlf-commando",
+        "colonial-sniper",
+        "frontier-raider",
+        "corporate-heavy"
+      ]
+    },
+    {
+      "id": "bad-bloods-master",
+      "chromaSource": "art-source/v7/enemies/humanoid-badblood/masters/openai-bad-bloods-chroma-master.png",
+      "alphaSource": "art-source/v7/enemies/humanoid-badblood/masters/openai-bad-bloods-alpha-master.png",
+      "rows": [
+        "bad-blood-duelist",
+        "bad-blood-plasma-gunner",
+        "bad-blood-netmaster",
+        "bad-blood-cloaked-stalker",
+        "bad-blood-trophy-butcher"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "id": "colonial-marine",
+      "displayName": "Marine colonial",
+      "category": "humanoid",
+      "role": "rifleman",
+      "master": "humanoids-master",
+      "row": 0,
+      "sheet": "/game/sprites/v7/enemies/humanoid-badblood/colonial-marine-sheet.png",
+      "prompt": "Infanterie humaine originale en armure segmentée olive sur treillis sombre, casque de combat ouvert, radio dorsale et fusil caseless rétrofuturiste compact avec lanceur inférieur; six poses latérales cohérentes vers la droite: idle, marche A, marche B, tir, impact et mort.",
+      "sourceUrls": [
+        "https://cdn.akamai.steamstatic.com/steam/apps/3730/manuals/Aliens%20Versus%20Predator%20Classic%202000%20Manual.pdf?t=1415299874",
+        "https://www.digitpress.com/library/manuals/jaguar/alien%20vs%20predator.pdf"
+      ]
+    },
+    {
+      "id": "owlf-commando",
+      "displayName": "Commando OWLF",
+      "category": "humanoid",
+      "role": "anti-cloak",
+      "master": "humanoids-master",
+      "row": 1,
+      "sheet": "/game/sprites/v7/enemies/humanoid-badblood/owlf-commando-sheet.png",
+      "prompt": "Opérateur anti-extraterrestre original en combinaison tactique anthracite résistante à la chaleur, harnais de capteurs, casque scellé à petit oculaire bleu, carabine lourde silencieuse et scanner d'épaule; six poses latérales cohérentes vers la droite.",
+      "sourceUrls": [
+        "https://predator.illfonic.com/",
+        "https://blog.playstation.com/2020/08/19/predator-hunting-grounds-august-update/"
+      ]
+    },
+    {
+      "id": "colonial-sniper",
+      "displayName": "Tireur colonial",
+      "category": "humanoid",
+      "role": "sniper",
+      "master": "humanoids-master",
+      "row": 2,
+      "sheet": "/game/sprites/v7/enemies/humanoid-badblood/colonial-sniper-sheet.png",
+      "prompt": "Tireur humain original en armure légère sable et olive, capuche sous visière étroite, long fusil magnétique de précision, bipied replié et sac minimal; six poses latérales cohérentes vers la droite dont un tir épaulé.",
+      "sourceUrls": [
+        "https://cdn.akamai.steamstatic.com/steam/apps/3730/manuals/Aliens%20Versus%20Predator%20Classic%202000%20Manual.pdf?t=1415299874",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "id": "frontier-raider",
+      "displayName": "Pillard de frontière",
+      "category": "humanoid",
+      "role": "skirmisher",
+      "master": "humanoids-master",
+      "row": 3,
+      "sheet": "/game/sprites/v7/enemies/humanoid-badblood/frontier-raider-sheet.png",
+      "prompt": "Récupérateur humain original en armure pressurisée rapiécée rouille et brune, plaques de récupération asymétriques, foulard respiratoire, fusil à tambour court et couperet utilitaire; six poses latérales cohérentes vers la droite.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predators",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "id": "corporate-heavy",
+      "displayName": "Lourd corporatif",
+      "category": "humanoid",
+      "role": "heavy-gunner",
+      "master": "humanoids-master",
+      "row": 4,
+      "sheet": "/game/sprites/v7/enemies/humanoid-badblood/corporate-heavy-sheet.png",
+      "prompt": "Gunner humain original très large en armure industrielle motorisée blanc cassé et graphite, accents de danger rouges sans logo, visière renforcée, harnais de munitions articulé et canon rotatif intelligent; six poses latérales cohérentes vers la droite.",
+      "sourceUrls": [
+        "https://www.digitpress.com/library/manuals/jaguar/alien%20vs%20predator.pdf",
+        "https://cdn.akamai.steamstatic.com/steam/apps/3730/manuals/Aliens%20Versus%20Predator%20Classic%202000%20Manual.pdf?t=1415299874"
+      ]
+    },
+    {
+      "id": "bad-blood-duelist",
+      "displayName": "Bad Blood duelliste",
+      "category": "bad-blood",
+      "role": "melee-elite",
+      "master": "bad-bloods-master",
+      "row": 0,
+      "sheet": "/game/sprites/v7/enemies/humanoid-badblood/bad-blood-duelist-sheet.png",
+      "prompt": "Chasseur extraterrestre rogue original, fin et rapide, peau ocre tachetée, armure asymétrique bronze/noire, biomask étroit, aucun canon d'épaule et deux lames courbes courtes; attaque en double entaille; six poses latérales cohérentes vers la droite.",
+      "sourceUrls": [
+        "https://www.comics.org/series/42029/",
+        "https://www.avpcentral.com/predator-equipment-and-hunting-gear"
+      ]
+    },
+    {
+      "id": "bad-blood-plasma-gunner",
+      "displayName": "Bad Blood canonnier plasma",
+      "category": "bad-blood",
+      "role": "artillery",
+      "master": "bad-bloods-master",
+      "row": 1,
+      "sheet": "/game/sprites/v7/enemies/humanoid-badblood/bad-blood-plasma-gunner-sheet.png",
+      "prompt": "Chasseur extraterrestre rogue original massif, presque entièrement couvert d'armure noire et gunmetal, biomask renforcé, canon plasma d'épaule surdimensionné et répétiteur plasma compact à deux mains; six poses latérales cohérentes vers la droite.",
+      "sourceUrls": [
+        "https://wetaworkshopdesignstudio.artstation.com/projects/rlxRPa",
+        "https://cdn.akamai.steamstatic.com/steam/apps/3730/manuals/Aliens%20Versus%20Predator%20Classic%202000%20Manual.pdf?t=1415299874"
+      ]
+    },
+    {
+      "id": "bad-blood-netmaster",
+      "displayName": "Bad Blood maître des filets",
+      "category": "bad-blood",
+      "role": "controller",
+      "master": "bad-bloods-master",
+      "row": 2,
+      "sheet": "/game/sprites/v7/enemies/humanoid-badblood/bad-blood-netmaster-sheet.png",
+      "prompt": "Trappeur extraterrestre rogue original, peau olive sombre, armure de cuivre légère et hérissée, demi-masque, large bobine dorsale, projecteur de filet à l'avant-bras et lance de récupération; six poses latérales cohérentes vers la droite.",
+      "sourceUrls": [
+        "https://www.avpcentral.com/predator-equipment-and-hunting-gear",
+        "https://wetaworkshopdesignstudio.artstation.com/projects/rlxRPa"
+      ]
+    },
+    {
+      "id": "bad-blood-cloaked-stalker",
+      "displayName": "Bad Blood traqueur camouflé",
+      "category": "bad-blood",
+      "role": "assassin",
+      "master": "bad-bloods-master",
+      "row": 3,
+      "sheet": "/game/sprites/v7/enemies/humanoid-badblood/bad-blood-cloaked-stalker-sheet.png",
+      "prompt": "Chasseur extraterrestre rogue original très mince montré entièrement décloqué et opaque, peau gris pâle, plaques de camouflage argent/anthracite, biomask lisse, nœuds de projecteur de cape et longues wristblades; six poses latérales cohérentes vers la droite.",
+      "sourceUrls": [
+        "https://www.avpcentral.com/predator-equipment-and-hunting-gear",
+        "https://cdn.akamai.steamstatic.com/steam/apps/3730/manuals/Aliens%20Versus%20Predator%20Classic%202000%20Manual.pdf?t=1415299874"
+      ]
+    },
+    {
+      "id": "bad-blood-trophy-butcher",
+      "displayName": "Bad Blood boucher de trophées",
+      "category": "bad-blood",
+      "role": "brute",
+      "master": "bad-bloods-master",
+      "row": 4,
+      "sheet": "/game/sprites/v7/enemies/humanoid-badblood/bad-blood-trophy-butcher-sheet.png",
+      "prompt": "Chasseur extraterrestre rogue original énorme, peau brun rouille, lourde armure rouge ébréchée sanglée d'os secs, biomask large fissuré, petits trophées sans gore et gigantesque hache-couperet; six poses latérales cohérentes vers la droite.",
+      "sourceUrls": [
+        "https://www.comics.org/series/42029/",
+        "https://www.avpcentral.com/predator-equipment-and-hunting-gear"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "release": "V60",
+  "status": "accepted-with-stated-limitations",
+  "checkedAt": "2026-09-30T16:28:56.268Z",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "deployedCommitConfirmedByRoot": "56dc65cdc59ee371a9aa37773bde686132b95946",
+  "reviewedStageCount": 8,
+  "reviewedCaptureCount": 12,
+  "reviews": [
+    {
+      "stageId": "arena-162-ahab-engineer",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted",
+      "notes": "Capture du site public après déplacement réel : sol, ruines, motifs et HUD correspondent à la version locale revue. Aucun rectangle opaque ni flottement visible.",
+      "file": "work-local/v60/qa/application-public-a/arena-162-ahab-engineer-fighters-apart.png",
+      "sha256": "980963d370082440230b0f7b3a2ed5144a91d8f35f6478a190848a7b20b43de9"
+    },
+    {
+      "stageId": "arena-176-phg-pirate",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted",
+      "notes": "Sur le site public, la vue élargie révèle les deux marins sur le pont arrière, la voile et le goéland. Gréement et planches corrects jusqu’aux bords ; aucun ancien pilier japonais ni défaut d’appui.",
+      "file": "work-local/v60/qa/application-public-b/arena-176-phg-pirate-fighters-apart.png",
+      "sha256": "35d107333de3cd508da3f17a818e0f1c9c15973b4c3f8e2542c5e1146305d093"
+    },
+    {
+      "stageId": "arena-165-kenner-throne",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted",
+      "notes": "Trône public conforme au rendu compilé local : gardes sur paliers, bannière et décor distincts ; pieds des combattants et HUD corrects.",
+      "file": "work-local/v60/qa/application-public-a/arena-165-kenner-throne-event-1.png",
+      "sha256": "2ac0dd57738d3d3b19722b669863c39e5ffb4219364ecf1b732fb55b4bf13ef1"
+    },
+    {
+      "stageId": "arena-178-bloodshed-ring",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted",
+      "notes": "Scène publique conforme : figurant assis sur son siège, observateur sur galerie, panneau intégré. Le duel reste devant ces éléments et aucun artefact d’alpha n’apparaît.",
+      "file": "work-local/v60/qa/application-public-b/arena-178-bloodshed-ring-event-1.png",
+      "sha256": "3b9c2541249648a36bcf2ac86d6b1d0b676c80d72762b02b8c63c402dd852365"
+    },
+    {
+      "stageId": "arena-170-gotham-bloodties",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted",
+      "notes": "Entrepôt public conforme : palan articulé et conteneur suspendu au bon support, quai horizontal et HUD net. Occlusion normale des silhouettes derrière les combattants.",
+      "file": "work-local/v60/qa/application-public-a/arena-170-gotham-bloodties-event-1.png",
+      "sha256": "38676e0b7a170e535cbbcb5466f2827d27d618728347f3cd8cdbda0f0f019a7d"
+    },
+    {
+      "stageId": "arena-174-phg-sands",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted",
+      "notes": "Halte désertique publique conforme : auvent, caravane dans l’arche et sonde originale conservent leurs plans distincts. Pas de glissement du sol ni de bloc d’alpha.",
+      "file": "work-local/v60/qa/application-public-a/arena-174-phg-sands-event-1.png",
+      "sha256": "6d6643205291457fd5b15931ba0d9723c4962b145b13527d84a3ce9a2b139b63"
+    },
+    {
+      "stageId": "arena-182-bullet-hangar",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted",
+      "notes": "Hangar public conforme : appareil dans la baie, opérateur soutenu par la galerie, dispositifs derrière le duel. Échelle et perspective stables, HUD lisible.",
+      "file": "work-local/v60/qa/application-public-b/arena-182-bullet-hangar-event-1.png",
+      "sha256": "88100c80eff566215a6e4746d247a6600459d84b9766f87a4b5d296d7539eb6f"
+    },
+    {
+      "stageId": "arena-186-snow-hunt",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted",
+      "notes": "Piste neigeuse publique conforme : proie sur la corniche gauche, vapeur sur le plateau central, chasseur en surplomb à droite. Motifs réellement en arrière-plan, ligne de combat continue et alpha propre.",
+      "file": "work-local/v60/qa/application-public-b/arena-186-snow-hunt-event-1.png",
+      "sha256": "864e842d429a96868738d4eb4f23ecbc81ed2de7f189022a30bf3e73a4ccc693"
+    },
+    {
+      "stageId": "arena-174-phg-sands",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted",
+      "notes": "Site public, Chrome mobile émulé844×390 : HUD et commandes tactiles visibles, aucun débordement horizontal ; décor et motifs conformes.",
+      "file": "work-local/v60/qa/application-public-a/mobile-landscape.png",
+      "sha256": "4181182eb70ba75fecebfd6d5dc9de7343fc7656ad7eff401bc970bac4f47c14"
+    },
+    {
+      "stageId": "arena-174-phg-sands",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted-with-limitation",
+      "notes": "Site public, Chrome mobile émulé390×844 : commandes dans l’écran. Grandes bandes noires autour du combat16:9 ; interface portrait fonctionnelle, non présentée comme optimisée.",
+      "file": "work-local/v60/qa/application-public-a/mobile-portrait.png",
+      "sha256": "8ce736b20d59cd1aba6c4d86332bade8bc1e599a9ce281e6926f837bde45ae53"
+    },
+    {
+      "stageId": "arena-162-ahab-engineer",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted",
+      "notes": "La panne503 simulée d’un PNG public bloque le départ et affiche la nouvelle tentative ; aucune arène de substitution ne démarre.",
+      "file": "work-local/v60/qa/application-public-a/native-png-503-blocked.png",
+      "sha256": "811fa44d57ba3a5c2a003644920ee37d55dd7ed42e6e3735d57b1fd8ba22db7e"
+    },
+    {
+      "stageId": "arena-162-ahab-engineer",
+      "reviewer": "v59_feral_muzzle",
+      "status": "visually-accepted",
+      "notes": "La nouvelle tentative publique restitue le décor réel et ses trois motifs ; le duel immersif démarre normalement après chargement.",
+      "file": "work-local/v60/qa/application-public-a/native-png-retry-restored.png",
+      "sha256": "382ff69c666f82c2920dc7d2d6ff969b74349ae25f7e8a5bea93b5175719bbc2"
+    }
+  ],
+  "limitations": [
+    "Only the listed12captured views were manually reviewed here; native source and full local25-stage reviews are separate.",
+    "Background actors may be temporarily hidden by fighters or HUD; their presence at every instant is not claimed.",
+    "Mobile uses Chromium emulation. Portrait preserves large black bars and is not claimed optimized.",
+    "Original adaptations remain documented adaptations, not certified1:1 source reconstructions."
+  ]
+}

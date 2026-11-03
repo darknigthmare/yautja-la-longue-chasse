@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "moto-de-poursuite-enforcer",
+  "name": "Moto de poursuite Enforcer",
+  "lore": "Proposition originale pour le jeu d’après le catalogue de la conversation véhicules ; aucune fidélité canonique 1:1 revendiquée.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Moto de poursuite Enforcer — châssis, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/moto-de-poursuite-enforcer/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/moto-de-poursuite-enforcer/identity-r1.png",
+      "originId": "exec-dde4b9f1-f63c-4b30-9654-89632495fdef.png",
+      "width": 2103,
+      "height": 748,
+      "sha256": "76c72a31cd205af64d5c4a347462e4b8b17c5c98b1aab4e5b2e25171768fe13a",
+      "bytes": 1431018,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573044
+      },
+      "prompt": "Create an original Yautja-inspired fan-game vehicle proposal for La Longue Chasse, not a canonical film replica. Exactly two full horizontal side-profile views SIDE BY SIDE, two columns one row: left craft faces RIGHT, right craft faces LEFT, separately authored opposite sides of the same construction at identical scale. Side-scrolling camera, no top-down or isometric presentation. Each complete craft inside central70percent of its half with broad blank margins, full nose/rear visible. Flat pure MAGENTA #FF00FF background, no shadows, checker, letters, logo, grid or environment. Detailed hand-painted game bitmap. No pilot, people, bodies, cargo, trophies, skulls, loose chains, exhaust, projectiles or energy beams: these are independent modules later. MOTO DE POURSUITE ENFORCER, a disciplined austere hunter-police antigravity pursuit bike. Compact sleek armored charcoal-metal chassis, clean severe geometry with restrained dark bronze seam trim, single rider saddle and rigid short handlebars, recessed pale cyan antigravity emitters and front tracking sensor. Protected empty modular hardpoint sockets for a precision plasma caster, reinforced net launcher, EMP module and immobilizer; do NOT mount those weapons yet. Small solid scanner turret integrated above the prow without any projected beam. Visually precise, maintained, purposeful and distinct from a rough outlaw Blood Runner. No Earth police markings, sirens, red-blue police lights, text, wheels, sails or giant blades. All hardware consistent in both profiles.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "role": "Recovered user vehicle design brief"
+        }
+      ],
+      "notes": [
+        "Châssis vide ; armements, passagers et effets doivent rester des modules indépendants.",
+        "Proposition graphique à contrôler en assemblage ; aucune animation ni conduite en jeu validée."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1051,
+            748
+          ],
+          "alpha16Bounds": [
+            26,
+            187,
+            996,
+            294
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 185237,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1051,
+            0,
+            1052,
+            748
+          ],
+          "alpha16Bounds": [
+            1085,
+            187,
+            995,
+            294
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 184924,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

@@ -1,0 +1,462 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-29T14:58:01.358831+00:00",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/25",
+  "parentCommit": "a185398b24ffe458c6a6f7e622e5d7283de3d701",
+  "publication": "The resulting commit and its independently observed CI state are recorded in PR #25. No commit identifies its own manifest hash.",
+  "method": {
+    "source": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills",
+    "pinnedCommit": "19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9",
+    "reference": "performance-optimization",
+    "projectGuide": "docs/GAMEDEV_AGENT_GUIDE.md",
+    "sequence": [
+      "reproduce the slow request",
+      "profile the responsible search",
+      "bound the local reconnection",
+      "compare identical native Worker requests",
+      "preserve navigation regressions"
+    ]
+  },
+  "sourceArtifacts": [
+    {
+      "path": ".github/workflows/audit-v94.yml",
+      "bytes": 56664,
+      "sha256": "85c2f75b16ccb4a7c9cd631886d892505e955371ce60266375ccaf4d05c5fe0c"
+    },
+    {
+      "path": "app/game/systems/homeworldNavigationV99.ts",
+      "bytes": 12842,
+      "sha256": "709fdaf1c2fe5cd040f9bcb0e6ef465ae6cb402131988299979509cdf76a45fd"
+    },
+    {
+      "path": "scripts/qa-homeworld-route-worker-v113.mjs",
+      "bytes": 10966,
+      "sha256": "d94ed7440d736ae9706bcc1f924d4405b79da942fcd570b82606901317b726d9"
+    },
+    {
+      "path": "tests/homeworld-navigation-cost-v113.test.mjs",
+      "bytes": 2317,
+      "sha256": "7e840e864d905671e1941eae7e7de122224e49004ad2bd2649b9c43282e459b8"
+    },
+    {
+      "path": "tests/fixtures/homeworld-return-route-v113.json",
+      "bytes": 15911,
+      "sha256": "ee550c4877e6081b07f5fa608bd17be903e4da400ffb5f1bda5c66a676926438"
+    },
+    {
+      "path": "docs/GAMEDEV_AGENT_GUIDE.md",
+      "bytes": 18338,
+      "sha256": "f92d34d79417c24f057e8928a1d69c69ec118d56d700cd3daf080ce647e39a71"
+    },
+    {
+      "path": "docs/gamedev-navigation-performance-20261029.md",
+      "bytes": 14192,
+      "sha256": "820fd47746e5ad0951d30ec752bbdc69d0fe8902cc137c355b1b6575f7402d36"
+    }
+  ],
+  "baselineAndAfterSourceHashes": {
+    "before": [
+      {
+        "path": "app/game/systems/homeworldNavigationV77.ts",
+        "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+      },
+      {
+        "path": "app/game/systems/homeworldNavigationV99.ts",
+        "sha256": "f8a639b341e80bad9d8f3f2a17b0b9e60f7068f44baa45bc1b168c9883225741"
+      },
+      {
+        "path": "app/game/systems/homeworldNavigationV109.ts",
+        "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+      },
+      {
+        "path": "app/game/systems/homeworldWayfindingV111.ts",
+        "sha256": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b"
+      }
+    ],
+    "after": [
+      {
+        "path": "app/game/systems/homeworldNavigationV77.ts",
+        "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+      },
+      {
+        "path": "app/game/systems/homeworldNavigationV99.ts",
+        "sha256": "709fdaf1c2fe5cd040f9bcb0e6ef465ae6cb402131988299979509cdf76a45fd"
+      },
+      {
+        "path": "app/game/systems/homeworldNavigationV109.ts",
+        "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+      },
+      {
+        "path": "app/game/systems/homeworldWayfindingV111.ts",
+        "sha256": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b"
+      }
+    ],
+    "onlyChangedModule": "app/game/systems/homeworldNavigationV99.ts"
+  },
+  "fixture": {
+    "path": "tests/fixtures/homeworld-return-route-v113.json",
+    "sha256": "ee550c4877e6081b07f5fa608bd17be903e4da400ffb5f1bda5c66a676926438",
+    "provenance": {
+      "commit": "a185398b24ffe458c6a6f7e622e5d7283de3d701",
+      "carryTicks": 1421,
+      "carryWalked": 7140.3749410165365,
+      "outward": {
+        "ticks": 854,
+        "walked": 4315.92830795082,
+        "rideTicks": 172,
+        "arrivals": [
+          {
+            "connectorId": "clan-lift",
+            "levelId": "+1",
+            "point": {
+              "x": 3250,
+              "y": 2350
+            }
+          },
+          {
+            "connectorId": "acropolis-stair",
+            "levelId": "+2",
+            "point": {
+              "x": 4880,
+              "y": 1610
+            }
+          }
+        ]
+      }
+    }
+  },
+  "moduleValidation": {
+    "total": 33,
+    "passed": 33,
+    "failed": 0,
+    "skipped": 0,
+    "execution": "Sequential, no historical test edits",
+    "suites": [
+      {
+        "command": "node --test-reporter=tap tests/homeworld-navigation-cost-v113.test.mjs",
+        "log": "cost-regression-green.log",
+        "exitCode": 0,
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "command": "node --test-reporter=tap tests/homeworld-connector-detour-v113.test.mjs",
+        "log": "guided-roundtrip.log",
+        "exitCode": 0,
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "command": "node --test-reporter=tap tests/homeworld-navigation-v99.test.mjs",
+        "log": "navigation-v99.log",
+        "exitCode": 0,
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "command": "node --test-reporter=tap tests/homeworld-navigation-review-v99.test.mjs",
+        "log": "navigation-review-v99.log",
+        "exitCode": 0,
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "command": "node --test-reporter=tap tests/homeworld-dynamic-navigation-v109.test.mjs",
+        "log": "navigation-v109.log",
+        "exitCode": 0,
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "command": "node --test-reporter=tap tests/homeworld-objectives-v111.test.mjs",
+        "log": "navigation-v111.log",
+        "exitCode": 0,
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    ]
+  },
+  "costRegression": {
+    "beforeLog": "cost-regression-red.log",
+    "beforeOutcome": "Expected failure: one global fine V77 call",
+    "afterLog": "cost-regression-green.log",
+    "afterOutcome": "Pass: zero global fine V77 calls, native segments valid, endpoints and length correct, copies independent",
+    "timingThreshold": null
+  },
+  "typescript": {
+    "command": "node_modules/.bin/tsc --noEmit --strict --skipLibCheck --target es2022 --module esnext --moduleResolution bundler --resolveJsonModule --esModuleInterop --jsx react-jsx --lib es2023,dom next-env.d.ts app/game/systems/homeworldNavigationV99.ts",
+    "exitCode": 0,
+    "log": "typecheck.log",
+    "emptyLogMeans": "Successful compiler exit without diagnostics"
+  },
+  "chromium": {
+    "runtime": {
+      "node": "v24.22.1",
+      "chromium": "153.0.8010.0",
+      "playwright": "1.62.1",
+      "esbuild": "0.25.12"
+    },
+    "freshWorkersPerVariant": 3,
+    "checksPerVariant": 10,
+    "beforeStatus": "PASS",
+    "afterStatus": "PASS",
+    "beforeCommand": "YAUTJA_ROUTE_WORKER_BASELINE_DIR=/tmp/yautja-route-worker-probe-v113/baseline YAUTJA_ROUTE_WORKER_SAMPLES=3 YAUTJA_ROUTE_WORKER_QA_OUTPUT=/tmp/yautja-route-worker-probe-v113/browser-before AUDIT_CHROME_EXECUTABLE=/tmp/chromium node scripts/qa-homeworld-route-worker-v113.mjs",
+    "afterCommand": "YAUTJA_ROUTE_WORKER_SAMPLES=3 YAUTJA_ROUTE_WORKER_QA_OUTPUT=/tmp/yautja-route-worker-probe-v113/browser-after AUDIT_CHROME_EXECUTABLE=/tmp/chromium node scripts/qa-homeworld-route-worker-v113.mjs",
+    "beforeReport": "browser-before.json",
+    "afterReport": "browser-after.json",
+    "beforeColdMs": [
+      9468.699999999255,
+      9519.79999999702,
+      8894.10000000149
+    ],
+    "afterColdMs": [
+      4207.199999999255,
+      4242.10000000149,
+      3892.099999997765
+    ],
+    "beforeColdMedianMs": 9468.699999999255,
+    "afterColdMedianMs": 4207.199999999255,
+    "coldReductionPercent": 55.567290124308656,
+    "coldMedianRatioBeforeToAfter": 2.250594219433574,
+    "beforeRepeatMedianMs": 25.699999999254942,
+    "afterRepeatMedianMs": 26.800000000745058,
+    "interpretation": "First response includes Worker startup, planning and messaging. No repeat-response speed gain is claimed. The baseline check label said reuses its cache; the final script says repeats in the same Worker, without changing its assertions.",
+    "errors": {
+      "javascript": 0,
+      "console": 0,
+      "http": 0
+    }
+  },
+  "nodeProfiles": {
+    "before": {
+      "report": "node-before.json",
+      "cpuProfile": "node-before.cpuprofile",
+      "runner": "node-profile-before-run.mjs",
+      "elapsedMs": 10678.656156,
+      "cpuMs": {
+        "user": 11524.635,
+        "system": 512.983
+      },
+      "totalCpuMs": 12037.618
+    },
+    "after": {
+      "report": "node-after.json",
+      "cpuProfile": "node-after.cpuprofile",
+      "runner": "node-profile-after-run.mjs",
+      "elapsedMs": 7958.074919000001,
+      "cpuMs": {
+        "user": 6073.207,
+        "system": 320.705
+      },
+      "totalCpuMs": 6393.912
+    },
+    "scope": "Single instrumented observations after module loading, separate from uninstrumented browser medians. The CPU profiler and call wrappers add overhead. Archived runners retain original environment paths."
+  },
+  "guidedReturn": {
+    "log": "guided-roundtrip.log",
+    "beforeConsultations": 1910,
+    "afterConsultations": 1940,
+    "beforeMotorSteps": 1906,
+    "afterMotorSteps": 1936,
+    "beforeWalkedWorldUnits": 9455.891617821404,
+    "afterWalkedWorldUnits": 9609.76251764046,
+    "walkedDistanceIncreasePercent": 1.6272489791344213,
+    "nativeTransitTicks": 172,
+    "portInteractionAdmitted": true,
+    "afterReturnPlanningMs": 1722.19599,
+    "planningScope": "Partially warmed by the outward journey; not a cold measurement. This is native module and motor guidance, not browser keyboard gameplay."
+  },
+  "staticGroundLeg": {
+    "beforeDistance": 6836.316343955092,
+    "afterDistance": 7101.073952597615,
+    "increasePercent": 3.8728109601983363,
+    "pointsBefore": 16,
+    "pointsAfter": 16
+  },
+  "additionalVerification": [
+    "Independent runtime and QA review: no blocking findings",
+    "Workflow parsed and compared structurally against parent",
+    "JavaScript syntax checks passed",
+    "git diff --check passed"
+  ],
+  "ci": {
+    "parentSnapshot": "parent-ci.json",
+    "parentApplicationSuccessfulSteps": 57,
+    "parentConclusion": "success",
+    "newCommit": "Must be read independently after publication; parent results are not new-commit results",
+    "workerSamplesPerCiRun": 1,
+    "artifactRetentionDays": 7,
+    "localVsCi": "Local Node 24.22.1 / Playwright 1.62.1; CI Node 22 / locked Playwright 1.63.0"
+  },
+  "limits": [
+    "Shared managed machine; no target-device performance guarantee",
+    "One reproduced audience-to-port return; not all city requests",
+    "Native V111 Worker bundled with esbuild; no complete Next production-page run in this continuation",
+    "No rendering, FPS, artistic or keyboard-playthrough validation",
+    "Cold response still approximately 4.2 seconds on this fixture",
+    "No claim of a globally shortest route",
+    "Historical reports are preserved with their own original execution context"
+  ],
+  "proofArtifacts": [
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/browser-after.json",
+      "bytes": 17540,
+      "sha256": "31ebd57ca92d3969e52f2c3734476bd56a7e94749e7f32a6ca8ce926ea6924a5"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/browser-after.log",
+      "bytes": 913,
+      "sha256": "e9f118f3071489696a36887f90e8640dac153f8baa298197e8640df2b7fbec0c"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/browser-before.json",
+      "bytes": 17516,
+      "sha256": "14d12e2e32634f352b23e95761340fe1f3a77b4962f83650c255e1e1ef4be046"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/browser-before.log",
+      "bytes": 884,
+      "sha256": "0518fdbb94fd54720c2040b03c4544e83115622ab9ac859d195d9bb90d1ec6c0"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/cost-regression-green.log",
+      "bytes": 468,
+      "sha256": "1da3296bd2f2e632fc3b8aa49323fd72b33f3ab11d078b53f4d7cc06b320df04"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/cost-regression-red.log",
+      "bytes": 1228,
+      "sha256": "e8519137edfd629e4d499dc054fd3694ad51b80b43d448cfdf7f0fcc3e842749"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/environment.json",
+      "bytes": 421,
+      "sha256": "513f303108df451b4acf9d260cc6c3eb6c3d7733b64096566b9d68aa80f57305"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/fixture-build-run.mjs",
+      "bytes": 9466,
+      "sha256": "fa324e5b24685141afa97706892f8d77df4c8d4479291b5a3717c142f01658f9"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/fixture-build.log",
+      "bytes": 541,
+      "sha256": "49fdb823d9fd5a3ca4534af65e4502925f15c8f5f7e289a300cebb19c07fa471"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/guided-roundtrip.log",
+      "bytes": 1935,
+      "sha256": "48a642e6c7e765dd2256258857c087fa6b2daa1af4bc506dc70909d4dbb5a3ba"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/navigation-review-v99.log",
+      "bytes": 1002,
+      "sha256": "adac4e94b48b53eb6ee2dd4b9d0e8168e1523a41002726f15e74435d9a3c7986"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/navigation-v109.log",
+      "bytes": 2445,
+      "sha256": "13486a1e7fec99560c9680fcbb04b0a4f7a2ea392754781085489b91058f0fb3"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/navigation-v111.log",
+      "bytes": 3341,
+      "sha256": "ff3e0cc21848f75bc46ababd9abdc8433e113459a5c174afbadd7a8968d62a18"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/navigation-v99.log",
+      "bytes": 1136,
+      "sha256": "45f0ef99f2e205bd0ba046d507f1f851c515f16829e83dec4e493f16ed803723"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/node-after.cpuprofile",
+      "bytes": 148880,
+      "sha256": "f25f2a2615d436ff650470dd62868751e791a1e228e6f51f5ae67fb219df43c4"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/node-after.json",
+      "bytes": 7844,
+      "sha256": "46483a04a3a7a3ef2d1f92c325904f1cdd164c35180b48585fef8e9abf617942"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/node-after.log",
+      "bytes": 2386,
+      "sha256": "b11cd5df6e5a3e39b57da7539b7a01a423ed572126c4d0696103276301ee2f90"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/node-before.cpuprofile",
+      "bytes": 182521,
+      "sha256": "46704cfe7e8b27fb5b3f1ae035f0de177652f2cac9580e23fa3fe1f8922ad20c"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/node-before.json",
+      "bytes": 7958,
+      "sha256": "c8b28cf77a40e6535ecf18600f40d0adbc9da68297e16a92b56b0fe551dd36d4"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/node-before.log",
+      "bytes": 2601,
+      "sha256": "c6ce4c43f9f584e3430b8340fed43d9c366523ffe01528375bf20a1bdd366754"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/node-profile-after-run.mjs",
+      "bytes": 3479,
+      "sha256": "f6d6219f05629906064fd7a1f65a3a1728d1e0bf64695ec083102e3705498917"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/node-profile-before-run.mjs",
+      "bytes": 3387,
+      "sha256": "56ea984d5c928055a763e38df21bb2863cf7fc9a9c6ee898d9c6acb1ab2f2926"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/parent-ci.json",
+      "bytes": 11850,
+      "sha256": "5a22b56da93b8e3044511f338dd62f4b1265de49e76a3f106f4d1bda35680420"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/probe-grid64.json",
+      "bytes": 6069,
+      "sha256": "0ac7910455a686f6a1ea7811b5ea1dfb3ab6285ecbce12d3feccba4ade7bf4c2"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/probe-grid96.json",
+      "bytes": 5376,
+      "sha256": "aa11ee28d9eec3273849369b57004537b9a33f25a9b06198ce370c23f029a371"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/probe-local-connection.json",
+      "bytes": 3477,
+      "sha256": "902d55e9b2911fde31414c45f531fe4f3a57474989da64ea38efbe501fe7fe67"
+    },
+    {
+      "path": "docs/qa/gamedev-navigation-performance-20261029/typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

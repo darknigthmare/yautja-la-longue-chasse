@@ -1,0 +1,57 @@
+TAP version 13
+# Subtest: V110 preserves its exact97 sheet baseline,56 open requirements and354 art targets as separate inventories
+ok 1 - V110 preserves its exact97 sheet baseline,56 open requirements and354 art targets as separate inventories
+  ---
+  duration_ms: 100.653361
+  type: 'test'
+  ...
+# Subtest: unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+ok 2 - unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+  ---
+  duration_ms: 9.419313
+  type: 'test'
+  ...
+Traceback (most recent call last):
+  File "/workspace/yautja-homeworld-v110/scripts/build-excel-followup-v110.py", line 25, in <module>
+    json.dump(append.verify_workbook(payload), sys.stdout, ensure_ascii=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/yautja-homeworld-v110/scripts/lib/excel_followup_append.py", line 105, in verify_workbook
+    assert set(changed) <= ASSEMBLY_PARTS, changed
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ['[Content_Types].xml', 'xl/_rels/workbook.xml.rels', 'xl/styles.xml', 'xl/workbook.xml', 'xl/worksheets/v109-sheet-86.xml']
+# Subtest: 105 worksheets retain all97 historical parts, styles, formulas and cells exactly
+ok 3 - 105 worksheets retain all97 historical parts, styles, formulas and cells exactly
+  ---
+  duration_ms: 980.520741
+  type: 'test'
+  ...
+# Subtest: a V109 browser recipe cannot be relabelled as V110 validation
+not ok 4 - a V109 browser recipe cannot be relabelled as V110 validation
+  ---
+  duration_ms: 2.77372
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/excel-followup-v110.test.mjs:53:1'
+  failureType: 'testCodeFailure'
+  error: "ENOSPC: no space left on device, mkdtemp '/workspace/yautja-homeworld-v110/outputs/v110-evidence-rejection-2t17rI'"
+  code: 'ENOSPC'
+  stack: |-
+    async Object.mkdtemp (node:internal/fs/promises:1192:10)
+    async TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/excel-followup-v110.test.mjs:57:21)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V110 workbook and metadata regenerate exactly without executing browser or nativeExcel
+ok 5 - V110 workbook and metadata regenerate exactly without executing browser or nativeExcel
+  ---
+  duration_ms: 1466.323164
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 4
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2568.391411

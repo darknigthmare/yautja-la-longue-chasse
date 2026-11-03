@@ -1,0 +1,3721 @@
+{
+  "schemaVersion": 1,
+  "id": "jungle-hunter-production-v34",
+  "fighterId": "jungle-hunter",
+  "checkedAt": "2026-09-13T00:20:52.439Z",
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "reference": {
+    "path": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+    "sha256": "af639ab27d298a99f993f6f328a8f0544cdc831bb0b2e55d9ada9624a6b0c44f",
+    "decision": "Existing project presentation inspected and displayed before each call; fan-made identity guidance, not certified1:1 film replica."
+  },
+  "generatedSheets": 9,
+  "generatedPoseSamples": 72,
+  "validatedRuntimeClips": 5,
+  "acceptedSourcePages": 3,
+  "runtimeDrawings": 18,
+  "actionSequencesIncludingFacings": 5,
+  "counts": {
+    "validated": 3,
+    "authoredReview": 1,
+    "rejected": 5
+  },
+  "runtimeLimitations": [
+    "V34 adds five oriented clips: hurt right/left, crouch right/left, forward walk left.",
+    "V32 idle and light retained byte-for-byte as data; styles can vary between production waves.",
+    "Right-facing forward walk and backward walk rejected; no inverse clip invented.",
+    "Heavy remains review-only because its shoulder check does not match inherited vertical heavy mechanics.",
+    "Jump-land and guard repair provider refusals produced no image; no retry.",
+    "Medium/guard initial hand problems remain rejected.",
+    "Other missing states use the already validated V32 idle held pose.",
+    "Crouch uses three drawings per facing; rising fourth drawing remains unintegrated."
+  ],
+  "assets": [
+    {
+      "id": "crouch",
+      "actionId": "crouch",
+      "label": "crouch",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-crouch-v34.png",
+      "originId": "exec-9e38389d-3c73-413e-80f2-5d6aa3021e82.png",
+      "sha256": "a00ee2490ceba65fe31172e920936a9f280e043afb57acb954fdace10ab680ba",
+      "bytes": 2078024,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Eight separate drawings, correct facing and recognizable gear. Deep pose folds a leg behind and may read as a kneel; held crouch requires review or targeted replacement. No runtime approval.",
+        "Superseded by repair-crouch-planted: original third drawing kneels instead of squatting."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1173944,
+        "fringePixels": 18135
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "standing ready",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 53039,
+          "alpha16Bounds": [
+            64,
+            93,
+            273,
+            384
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 27,
+          "pixelDigest": "d5d3eac1678a68e3eabf3d1710b822430dfea728a507d4acbaef8fadae099333",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "half descent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49975,
+          "alpha16Bounds": [
+            457,
+            131,
+            271,
+            345
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 30,
+          "pixelDigest": "0c5206186a85c50d1835717541f6e4925d63b6b442d4efc0c98cac346002acbc",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "deep stable crouch",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47001,
+          "alpha16Bounds": [
+            816,
+            199,
+            278,
+            278
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 177,
+          "pixelDigest": "f7d220b376254aca4c91638876f079219f06e47a23d7caf028d05b92a57d37ed",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "half rise",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50365,
+          "alpha16Bounds": [
+            1203,
+            119,
+            278,
+            358
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 26,
+          "pixelDigest": "6a31b56d0739c5a4de978f69366c3a83ebea2ab1eb4880fb360306fc80e8ea44",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "standing ready",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52068,
+          "alpha16Bounds": [
+            56,
+            544,
+            286,
+            374
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 14,
+          "pixelDigest": "3df9235923b8820980fc918c6b576b2886c8240995ad9b4f094e6bba9f4c6b05",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "half descent",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49673,
+          "alpha16Bounds": [
+            434,
+            575,
+            278,
+            343
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 23,
+          "pixelDigest": "5e120e71535adc4cf58e26ed70934d76b7bf8a2481cf981541f366cd4d99dd07",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "deep stable crouch",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46490,
+          "alpha16Bounds": [
+            803,
+            639,
+            272,
+            279
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 182,
+          "pixelDigest": "fad5032875045e14f4a01c4a75d5a445fab114861eee77a2a5968b558379d537",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "half rise",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50309,
+          "alpha16Bounds": [
+            1189,
+            565,
+            283,
+            353
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 19,
+          "pixelDigest": "9c3ee03a9e8685a4a72c1bb5f04369ec08b17bdee252a23dab0250dce712a594",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.crouch",
+          "index": 0,
+          "pageId": "jungle-hunter-crouch",
+          "rect": [
+            61,
+            90,
+            279,
+            390
+          ],
+          "pivot": [
+            139,
+            386
+          ],
+          "durationTicks": 10,
+          "phase": "standing ready",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.crouch",
+          "index": 1,
+          "pageId": "jungle-hunter-crouch",
+          "rect": [
+            454,
+            128,
+            277,
+            351
+          ],
+          "pivot": [
+            124,
+            347
+          ],
+          "durationTicks": 10,
+          "phase": "half descent",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.crouch",
+          "index": 2,
+          "pageId": "jungle-hunter-crouch",
+          "rect": [
+            813,
+            196,
+            284,
+            284
+          ],
+          "pivot": [
+            156.5,
+            280
+          ],
+          "durationTicks": 10,
+          "phase": "deep stable crouch",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.crouch",
+          "index": 3,
+          "pageId": "jungle-hunter-crouch",
+          "rect": [
+            1200,
+            116,
+            284,
+            364
+          ],
+          "pivot": [
+            130.5,
+            360
+          ],
+          "durationTicks": 10,
+          "phase": "half rise",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.crouch",
+          "index": 0,
+          "pageId": "jungle-hunter-crouch",
+          "rect": [
+            53,
+            541,
+            292,
+            380
+          ],
+          "pivot": [
+            149.5,
+            376
+          ],
+          "durationTicks": 10,
+          "phase": "standing ready",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.crouch",
+          "index": 1,
+          "pageId": "jungle-hunter-crouch",
+          "rect": [
+            431,
+            572,
+            284,
+            349
+          ],
+          "pivot": [
+            155,
+            345
+          ],
+          "durationTicks": 10,
+          "phase": "half descent",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.crouch",
+          "index": 2,
+          "pageId": "jungle-hunter-crouch",
+          "rect": [
+            800,
+            636,
+            278,
+            285
+          ],
+          "pivot": [
+            126,
+            281
+          ],
+          "durationTicks": 10,
+          "phase": "deep stable crouch",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.crouch",
+          "index": 3,
+          "pageId": "jungle-hunter-crouch",
+          "rect": [
+            1186,
+            562,
+            289,
+            359
+          ],
+          "pivot": [
+            157.5,
+            355
+          ],
+          "durationTicks": 10,
+          "phase": "half rise",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "guard",
+      "actionId": "guard",
+      "label": "guard",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-guard-v34.png",
+      "originId": "exec-ca0fea13-f52c-4bb5-8ef7-d5aa85d3ab5c.png",
+      "sha256": "edfb956e7a3d0103be4c5d26ff8cc1a90e93798222ed7ee4f357b239bbeb8c77",
+      "bytes": 2277236,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Raised blade-gauntlet ends in rails/blades without a readable complete right hand in guard poses. Rejected for hand anatomy; do not approve runtime guard."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1137829,
+        "fringePixels": 18613
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "guard entry",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 59281,
+          "alpha16Bounds": [
+            52,
+            43,
+            286,
+            431
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 29,
+          "pixelDigest": "b99719501e2c1d65b1c6fdc6e3f89f59ab8083f2f14ee2a27487cf45c6607a66",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "high guard set",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52898,
+          "alpha16Bounds": [
+            426,
+            30,
+            285,
+            442
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 52,
+          "pixelDigest": "c810609074ec1cff2fe43b4377843cd949a4a7c11f6749dd69bfcf05046b509e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "block absorption",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52166,
+          "alpha16Bounds": [
+            805,
+            67,
+            295,
+            407
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 90,
+          "pixelDigest": "3041efbd591d8cb804f80f5303dbfd6462b946bc131a880255166b278be7d8c7",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "guard return",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 53641,
+          "alpha16Bounds": [
+            1189,
+            52,
+            293,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 11,
+          "pixelDigest": "93370eac3ccb79cafd46add6002f051b11559884811550cbe73eb6f599cf8457",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "guard entry",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 59346,
+          "alpha16Bounds": [
+            45,
+            547,
+            295,
+            426
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 21,
+          "pixelDigest": "b73e4466d88a9e66c9f141c8124630820f18c652c2d9f2f4a0b30a58495856b8",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "high guard set",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52787,
+          "alpha16Bounds": [
+            448,
+            534,
+            292,
+            440
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 62,
+          "pixelDigest": "471674571fe2a825d7f0201283ddf6683dcf2d4a3fa4421f9ef9ccad8531c04f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "block absorption",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51121,
+          "alpha16Bounds": [
+            812,
+            566,
+            296,
+            408
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 69,
+          "pixelDigest": "d34499f9f1622bea9cda7d56a13af8d77b9cfcf8da0f03318ba4f4fa20c23d17",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "guard return",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53795,
+          "alpha16Bounds": [
+            1198,
+            553,
+            293,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 8,
+          "pixelDigest": "9b79a49119960d07675e76ddfee6eb03fbb72105ceab308d0280fdd9e57e1441",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 0,
+          "pageId": "jungle-hunter-guard",
+          "rect": [
+            49,
+            40,
+            292,
+            437
+          ],
+          "pivot": [
+            143,
+            433
+          ],
+          "durationTicks": 10,
+          "phase": "guard entry",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 1,
+          "pageId": "jungle-hunter-guard",
+          "rect": [
+            423,
+            27,
+            291,
+            448
+          ],
+          "pivot": [
+            145,
+            444
+          ],
+          "durationTicks": 10,
+          "phase": "high guard set",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 2,
+          "pageId": "jungle-hunter-guard",
+          "rect": [
+            802,
+            64,
+            301,
+            413
+          ],
+          "pivot": [
+            150,
+            409
+          ],
+          "durationTicks": 10,
+          "phase": "block absorption",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 3,
+          "pageId": "jungle-hunter-guard",
+          "rect": [
+            1186,
+            49,
+            299,
+            426
+          ],
+          "pivot": [
+            149,
+            422
+          ],
+          "durationTicks": 10,
+          "phase": "guard return",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 0,
+          "pageId": "jungle-hunter-guard",
+          "rect": [
+            42,
+            544,
+            301,
+            432
+          ],
+          "pivot": [
+            150.5,
+            428
+          ],
+          "durationTicks": 10,
+          "phase": "guard entry",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 1,
+          "pageId": "jungle-hunter-guard",
+          "rect": [
+            445,
+            531,
+            298,
+            446
+          ],
+          "pivot": [
+            148.5,
+            442
+          ],
+          "durationTicks": 10,
+          "phase": "high guard set",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 2,
+          "pageId": "jungle-hunter-guard",
+          "rect": [
+            809,
+            563,
+            302,
+            414
+          ],
+          "pivot": [
+            150.5,
+            410
+          ],
+          "durationTicks": 10,
+          "phase": "block absorption",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 3,
+          "pageId": "jungle-hunter-guard",
+          "rect": [
+            1195,
+            550,
+            299,
+            426
+          ],
+          "pivot": [
+            149,
+            422
+          ],
+          "durationTicks": 10,
+          "phase": "guard return",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "hurt",
+      "actionId": "hurt",
+      "label": "hurt",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-hurt-v34.png",
+      "originId": "exec-fcde8b93-39d3-4641-bf98-94473431b7aa.png",
+      "sha256": "92d1487daffcb26ffbc570472202e6d3e9f9d6ecb0d8b8f6bc5b0b949286d712",
+      "bytes": 2396886,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Impact, deeper recoil, recovery, neutral; hands and wrist blades visually reviewed.",
+        "Body height reference446px; modest authored size variation remains between rows."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1094137,
+        "fringePixels": 22820
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "upright reaction",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 64681,
+          "alpha16Bounds": [
+            43,
+            27,
+            304,
+            457
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 57,
+          "pixelDigest": "cc8a612fef8fad92e6bd4af59542da8b6acc7eab7b55dccede08c284444c964b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "small backward recoil",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 62211,
+          "alpha16Bounds": [
+            434,
+            41,
+            292,
+            443
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 33,
+          "pixelDigest": "379c054943fc16dfc431d08341a49f198ead84de61fd0053a964923ab9fb45bb",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "lower recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 59935,
+          "alpha16Bounds": [
+            787,
+            81,
+            309,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 142,
+          "pixelDigest": "4421429c2819f6dc92daeac821f90f2b186757211ef3c5eef4f83141f2af3aae",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "regaining stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 61008,
+          "alpha16Bounds": [
+            1186,
+            49,
+            309,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "0feb63aa9128c07f50075a37ead0c71a5a0a2332a9466df388d852c2859e41ec",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "upright reaction",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 58595,
+          "alpha16Bounds": [
+            37,
+            543,
+            305,
+            431
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 172,
+          "pixelDigest": "dec912c85fda91462b48fa888a701a64943ff0c4eee9b70e54b4361b16056c6d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "small backward recoil",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 59204,
+          "alpha16Bounds": [
+            410,
+            550,
+            288,
+            425
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 73,
+          "pixelDigest": "d754673fc86a16ea44fffaf13028b0c8a7bd042cda2046c80040e89ed8a51658",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "lower recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 57531,
+          "alpha16Bounds": [
+            789,
+            587,
+            300,
+            388
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 67,
+          "pixelDigest": "16eb2dc9c6576e9e0df5754371eaa692815973eaa478a46ff9637173c77d64ad",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "regaining stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 55562,
+          "alpha16Bounds": [
+            1181,
+            560,
+            308,
+            415
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 177,
+          "pixelDigest": "de53c0247f8cfaf91fd2d2b7878c8446f1c43b05b475bd925208db8c3cf6bca6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "pageId": "jungle-hunter-v34-hurt",
+          "rect": [
+            431,
+            38,
+            298,
+            449
+          ],
+          "pivot": [
+            151,
+            445
+          ],
+          "durationTicks": 2,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-hurt",
+          "rect": [
+            784,
+            78,
+            315,
+            409
+          ],
+          "pivot": [
+            175,
+            405
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-hurt",
+          "rect": [
+            1183,
+            46,
+            315,
+            441
+          ],
+          "pivot": [
+            136.5,
+            437
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-hurt",
+          "rect": [
+            40,
+            24,
+            310,
+            463
+          ],
+          "pivot": [
+            146,
+            459
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-hurt",
+          "rect": [
+            407,
+            547,
+            294,
+            431
+          ],
+          "pivot": [
+            143.5,
+            427
+          ],
+          "durationTicks": 2,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-hurt",
+          "rect": [
+            786,
+            584,
+            306,
+            394
+          ],
+          "pivot": [
+            143.5,
+            390
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-hurt",
+          "rect": [
+            1178,
+            557,
+            314,
+            421
+          ],
+          "pivot": [
+            173,
+            417
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-hurt",
+          "rect": [
+            34,
+            540,
+            311,
+            437
+          ],
+          "pivot": [
+            165,
+            433
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                431,
+                38,
+                298,
+                449
+              ],
+              "pivot": [
+                151,
+                445
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                784,
+                78,
+                315,
+                409
+              ],
+              "pivot": [
+                175,
+                405
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                1183,
+                46,
+                315,
+                441
+              ],
+              "pivot": [
+                136.5,
+                437
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                40,
+                24,
+                310,
+                463
+              ],
+              "pivot": [
+                146,
+                459
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                407,
+                547,
+                294,
+                431
+              ],
+              "pivot": [
+                143.5,
+                427
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                786,
+                584,
+                306,
+                394
+              ],
+              "pivot": [
+                143.5,
+                390
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                1178,
+                557,
+                314,
+                421
+              ],
+              "pivot": [
+                173,
+                417
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                34,
+                540,
+                311,
+                437
+              ],
+              "pivot": [
+                165,
+                433
+              ],
+              "durationTicks": 3
+            }
+          ]
+        }
+      ],
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "scope": "Four impact/recovery drawings per facing."
+      }
+    },
+    {
+      "id": "medium",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-medium-v34.png",
+      "originId": "exec-279f1d63-cf59-439b-a9b9-c91c1ef0cde8.png",
+      "sha256": "cf02044ca318346e136abbed176c88fd0b6eeb7194267213e633d0d721321c84",
+      "bytes": 2031969,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Front kick phases supplied but right hand is not clearly present beyond the blade gauntlet in multiple poses. Recovery also stops at chamber, no grounded final. Requires hand repair and correct phase mapping."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1237251,
+        "fringePixels": 18007
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "grounded ready",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43359,
+          "alpha16Bounds": [
+            85,
+            66,
+            231,
+            395
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 121,
+          "pixelDigest": "7316b7ffe9c775d5686be654c1adabcd81b622d171f6e33ca7d3800df51d541d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "front kick chamber",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39506,
+          "alpha16Bounds": [
+            436,
+            63,
+            332,
+            398
+          ],
+          "gridBorderPixels": 39,
+          "residualMagentaPixels": 133,
+          "pixelDigest": "d977c204face3771470ceea6ddbb9c23784baaad48494938f59c0721c3038485",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "front kick extension",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43087,
+          "alpha16Bounds": [
+            768,
+            65,
+            361,
+            396
+          ],
+          "gridBorderPixels": 44,
+          "residualMagentaPixels": 47,
+          "pixelDigest": "3b192223eb6e2ac722a17c572bfac7c31532b73c99571f4cd8c709d9c4c1570a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "leg withdrawal",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41114,
+          "alpha16Bounds": [
+            1207,
+            65,
+            225,
+            396
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 107,
+          "pixelDigest": "3f1feec4bf4cedacdecad91ce779fb5241a43dc8e533c31451547b93828bf8d9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "grounded ready",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43518,
+          "alpha16Bounds": [
+            74,
+            574,
+            236,
+            393
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 105,
+          "pixelDigest": "ad25152902437c401680c909085344bd78c31d100d62eabf804cf25d346820af",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "front kick chamber",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41762,
+          "alpha16Bounds": [
+            409,
+            570,
+            359,
+            396
+          ],
+          "gridBorderPixels": 32,
+          "residualMagentaPixels": 50,
+          "pixelDigest": "6e5c83a663174e4914feebdbfb172e6dac3852a35de0dc42eda770bb5630b407",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "front kick extension",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41466,
+          "alpha16Bounds": [
+            768,
+            574,
+            297,
+            392
+          ],
+          "gridBorderPixels": 32,
+          "residualMagentaPixels": 28,
+          "pixelDigest": "9963085f23e46358a4f9ab4e0afe76d86ff85aff85aa9c998d111acf6bffba51",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "leg withdrawal",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41801,
+          "alpha16Bounds": [
+            1195,
+            574,
+            227,
+            393
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 120,
+          "pixelDigest": "2ef7834730068ca24f439e040a321cbabc76b88ff23f9ab1b33cfac82b24149c",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 0,
+          "pageId": "jungle-hunter-medium",
+          "rect": [
+            82,
+            63,
+            237,
+            401
+          ],
+          "pivot": [
+            106.5,
+            397
+          ],
+          "durationTicks": 10,
+          "phase": "grounded ready",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 1,
+          "pageId": "jungle-hunter-medium",
+          "rect": [
+            433,
+            60,
+            222,
+            404
+          ],
+          "pivot": [
+            79.5,
+            400
+          ],
+          "durationTicks": 10,
+          "phase": "front kick chamber",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 2,
+          "pageId": "jungle-hunter-medium",
+          "rect": [
+            756,
+            62,
+            376,
+            402
+          ],
+          "pivot": [
+            101,
+            398
+          ],
+          "durationTicks": 10,
+          "phase": "front kick extension",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 3,
+          "pageId": "jungle-hunter-medium",
+          "rect": [
+            1204,
+            62,
+            231,
+            402
+          ],
+          "pivot": [
+            41,
+            398
+          ],
+          "durationTicks": 10,
+          "phase": "leg withdrawal",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 0,
+          "pageId": "jungle-hunter-medium",
+          "rect": [
+            71,
+            571,
+            242,
+            399
+          ],
+          "pivot": [
+            126.5,
+            395
+          ],
+          "durationTicks": 10,
+          "phase": "grounded ready",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 1,
+          "pageId": "jungle-hunter-medium",
+          "rect": [
+            406,
+            567,
+            224,
+            402
+          ],
+          "pivot": [
+            136,
+            398
+          ],
+          "durationTicks": 10,
+          "phase": "front kick chamber",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 2,
+          "pageId": "jungle-hunter-medium",
+          "rect": [
+            685,
+            571,
+            383,
+            398
+          ],
+          "pivot": [
+            284.5,
+            394
+          ],
+          "durationTicks": 10,
+          "phase": "front kick extension",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 3,
+          "pageId": "jungle-hunter-medium",
+          "rect": [
+            1192,
+            571,
+            233,
+            399
+          ],
+          "pivot": [
+            189.5,
+            395
+          ],
+          "durationTicks": 10,
+          "phase": "leg withdrawal",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "heavy",
+      "actionId": "heavy",
+      "label": "heavy",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-heavy-v34.png",
+      "originId": "exec-6579ecf4-c081-45b3-81ea-f44190453f70.png",
+      "sha256": "1cc7db79536519d1999682a71d51b3a4297c1048fc6da87245ac3cff5f7909ff",
+      "bytes": 2410741,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Two distinct forward weight shifts between ready/recovery, complete right hand visible outside blade rails. Actual phases relabeled to reflect received drawings. Gameplay move alignment pending."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1069846,
+        "fringePixels": 21483
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "ready",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 64816,
+          "alpha16Bounds": [
+            39,
+            41,
+            309,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 46,
+          "pixelDigest": "4615559ad3965c7443b46b00a0c039a94ad1552487f5fa03bbb42538ef50a1d8",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "body-check coil",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 64431,
+          "alpha16Bounds": [
+            387,
+            75,
+            329,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 43,
+          "pixelDigest": "6264f64d41a7d4b5aeffdcc6f9250bfd19a08b48cea943a6734b82b7695be1ee",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "forward body-check",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 66405,
+          "alpha16Bounds": [
+            789,
+            70,
+            363,
+            407
+          ],
+          "gridBorderPixels": 9,
+          "residualMagentaPixels": 43,
+          "pixelDigest": "37815888ab8c17ae6a0ce783af711cf094ac1fedf69c6d0f881a2ec53d5c6e18",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "grounded recovery",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 64451,
+          "alpha16Bounds": [
+            1152,
+            40,
+            347,
+            437
+          ],
+          "gridBorderPixels": 5,
+          "residualMagentaPixels": 52,
+          "pixelDigest": "99c0195a5c98bc90d7fc35eb2ed84aae733d93fee76b28b750cf1c090544b64a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "ready",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 59996,
+          "alpha16Bounds": [
+            29,
+            539,
+            318,
+            419
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 129,
+          "pixelDigest": "3f6b1e0669382b239032b6b56fc1dda867c8c3b08808918591cbc2a5d95ad14d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "body-check coil",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 60429,
+          "alpha16Bounds": [
+            412,
+            564,
+            344,
+            393
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 11,
+          "pixelDigest": "8e5e358b11956346230658d200603310a48fda7c9409deb2f5204570ea6b5616",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "forward body-check",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 62581,
+          "alpha16Bounds": [
+            790,
+            563,
+            362,
+            393
+          ],
+          "gridBorderPixels": 24,
+          "residualMagentaPixels": 18,
+          "pixelDigest": "ef614ae4ca7d384cc11bcbddb16254aa54811826c44ab7027e7be075737e389c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "grounded recovery",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 59909,
+          "alpha16Bounds": [
+            1152,
+            539,
+            348,
+            418
+          ],
+          "gridBorderPixels": 22,
+          "residualMagentaPixels": 49,
+          "pixelDigest": "c5c2c080660f7f46f8e02689e73db1de01d26080b05024c67c2a969b527d9268",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 0,
+          "pageId": "jungle-hunter-heavy",
+          "rect": [
+            36,
+            38,
+            315,
+            442
+          ],
+          "pivot": [
+            150.5,
+            438
+          ],
+          "durationTicks": 10,
+          "phase": "ready",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 1,
+          "pageId": "jungle-hunter-heavy",
+          "rect": [
+            384,
+            72,
+            335,
+            409
+          ],
+          "pivot": [
+            167,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "body-check coil",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 2,
+          "pageId": "jungle-hunter-heavy",
+          "rect": [
+            786,
+            67,
+            370,
+            413
+          ],
+          "pivot": [
+            176.5,
+            409
+          ],
+          "durationTicks": 10,
+          "phase": "forward body-check",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 3,
+          "pageId": "jungle-hunter-heavy",
+          "rect": [
+            1188,
+            37,
+            314,
+            443
+          ],
+          "pivot": [
+            162,
+            439
+          ],
+          "durationTicks": 10,
+          "phase": "grounded recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 0,
+          "pageId": "jungle-hunter-heavy",
+          "rect": [
+            26,
+            536,
+            324,
+            425
+          ],
+          "pivot": [
+            167,
+            421
+          ],
+          "durationTicks": 10,
+          "phase": "ready",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 1,
+          "pageId": "jungle-hunter-heavy",
+          "rect": [
+            409,
+            561,
+            350,
+            399
+          ],
+          "pivot": [
+            181.5,
+            395
+          ],
+          "durationTicks": 10,
+          "phase": "body-check coil",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 2,
+          "pageId": "jungle-hunter-heavy",
+          "rect": [
+            787,
+            560,
+            373,
+            399
+          ],
+          "pivot": [
+            197,
+            395
+          ],
+          "durationTicks": 10,
+          "phase": "forward body-check",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 3,
+          "pageId": "jungle-hunter-heavy",
+          "rect": [
+            1197,
+            536,
+            306,
+            424
+          ],
+          "pivot": [
+            155,
+            420
+          ],
+          "durationTicks": 10,
+          "phase": "grounded recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-walk-forward-v34.png",
+      "originId": "exec-010a1047-51a3-473c-8806-89654daeb5fa.png",
+      "sha256": "a941a23776c5511a3f4c6a1c235c3599f660a4f9d3dc32a710e4eb98f18463ff",
+      "bytes": 2226331,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Contacts 1 and 3 repeat the same near leg forward; left-facing passing poses also repeat same support. No full alternating forward walking cycle. Hands readable; cannot label this a valid walk."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1152248,
+        "fringePixels": 21904
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near leg forward contact",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 55966,
+          "alpha16Bounds": [
+            63,
+            32,
+            275,
+            437
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 117,
+          "pixelDigest": "800133ca1515209c53bd10690bcdb2a38b23f721b77afbaa294b929ad980af8d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "near leg planted far leg passes",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 53055,
+          "alpha16Bounds": [
+            434,
+            29,
+            261,
+            441
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 79,
+          "pixelDigest": "ba3fdd6ed5e8a18a23cfbaffbe3b731707310c5ccf7cc9ea9c4dc5714c794119",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far leg forward contact",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 54890,
+          "alpha16Bounds": [
+            813,
+            31,
+            282,
+            437
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 106,
+          "pixelDigest": "dc06ea67a1cd36965a49b274d997e80bf12195cab746f054ae0b471099485fba",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "far leg planted near leg passes",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51651,
+          "alpha16Bounds": [
+            1204,
+            30,
+            279,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "101a2fdcd68749026dc35460435d1a7a3e5034ed19856f4a7eae1801cc3ffcc1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near leg forward contact",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52817,
+          "alpha16Bounds": [
+            44,
+            543,
+            279,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 74,
+          "pixelDigest": "c6d3ead9e310a05644f6df34b0568146ea6be5a9534ebe330f8800aa8c4eca4a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "near leg planted far leg passes",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49173,
+          "alpha16Bounds": [
+            435,
+            542,
+            254,
+            430
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 41,
+          "pixelDigest": "5584754e30229dfa4a8c853cc317c9108e0911dc332f51e7a934806644d11303",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far leg forward contact",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53304,
+          "alpha16Bounds": [
+            807,
+            540,
+            271,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 139,
+          "pixelDigest": "4b14a656e826902bc1b5e56fb30016aa4bb673a2f608b0c0b64a3aae119da263",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "far leg planted near leg passes",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49760,
+          "alpha16Bounds": [
+            1181,
+            542,
+            285,
+            430
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 115,
+          "pixelDigest": "38fc79bc97619be1ed7c2318eabe555e604a6f63764468af77c2c905c1705dd3",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "jungle-hunter-walk-forward",
+          "rect": [
+            60,
+            29,
+            281,
+            443
+          ],
+          "pivot": [
+            138.5,
+            439
+          ],
+          "durationTicks": 10,
+          "phase": "near leg forward contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "jungle-hunter-walk-forward",
+          "rect": [
+            431,
+            26,
+            267,
+            447
+          ],
+          "pivot": [
+            130,
+            443
+          ],
+          "durationTicks": 10,
+          "phase": "near leg planted far leg passes",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "jungle-hunter-walk-forward",
+          "rect": [
+            810,
+            28,
+            288,
+            443
+          ],
+          "pivot": [
+            146.5,
+            439
+          ],
+          "durationTicks": 10,
+          "phase": "far leg forward contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "jungle-hunter-walk-forward",
+          "rect": [
+            1201,
+            27,
+            285,
+            442
+          ],
+          "pivot": [
+            127.5,
+            438
+          ],
+          "durationTicks": 10,
+          "phase": "far leg planted near leg passes",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "jungle-hunter-walk-forward",
+          "rect": [
+            41,
+            540,
+            285,
+            438
+          ],
+          "pivot": [
+            144,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "near leg forward contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "jungle-hunter-walk-forward",
+          "rect": [
+            432,
+            539,
+            260,
+            436
+          ],
+          "pivot": [
+            112.5,
+            432
+          ],
+          "durationTicks": 10,
+          "phase": "near leg planted far leg passes",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "jungle-hunter-walk-forward",
+          "rect": [
+            804,
+            537,
+            277,
+            441
+          ],
+          "pivot": [
+            132.5,
+            437
+          ],
+          "durationTicks": 10,
+          "phase": "far leg forward contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "jungle-hunter-walk-forward",
+          "rect": [
+            1178,
+            539,
+            291,
+            436
+          ],
+          "pivot": [
+            148,
+            432
+          ],
+          "durationTicks": 10,
+          "phase": "far leg planted near leg passes",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-walk-backward-v34.png",
+      "originId": "exec-b3392ffa-1c26-42be-be26-0ae65638d888.png",
+      "sha256": "17674b2b878a06240a3e23b5c4f4e00109afeccd5bc480952a09b2d30127d16f",
+      "bytes": 2147099,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Same rear contact support repeated at poses 1 and 3; left passing pose repeated at 2/4. Right hand concealed/replaced by wristblade gauntlet in several poses. No retreat cycle approval."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1188271,
+        "fringePixels": 17474
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near leg rear toe contact",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 54548,
+          "alpha16Bounds": [
+            37,
+            34,
+            299,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 93,
+          "pixelDigest": "027f532f755c8ec028a3cb0273dba66262f11960bc65093c3be3f2e23fefc3f5",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "near leg supports far leg retracts",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45040,
+          "alpha16Bounds": [
+            467,
+            33,
+            220,
+            434
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 82,
+          "pixelDigest": "f3809040966ced37ed58d1471b1e5321e3057732a5cfb04b8a35a79711c3f72e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far leg rear toe contact",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 53000,
+          "alpha16Bounds": [
+            785,
+            43,
+            336,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 101,
+          "pixelDigest": "446c250c3707e728d945b8a0414b3d646428213700b3d0a6762e1cfbbd55de2e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "far leg supports near leg retracts",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46520,
+          "alpha16Bounds": [
+            1240,
+            34,
+            222,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 135,
+          "pixelDigest": "58106bc7ef9de2a47ea0769ab8f0ee3a1f383725345fae20683df3e33af77e58",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near leg rear toe contact",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49064,
+          "alpha16Bounds": [
+            68,
+            544,
+            302,
+            417
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 119,
+          "pixelDigest": "49943b96c45ecf5eba80fb98d6c9b258163aa48dcefdb55848cb0a516ce5e97c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "near leg supports far leg retracts",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43950,
+          "alpha16Bounds": [
+            460,
+            545,
+            207,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 201,
+          "pixelDigest": "3da201af86666d2b8ee0b91052bd1b855047b2a9bb6ea137f7c72659fb22fd27",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far leg rear toe contact",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49093,
+          "alpha16Bounds": [
+            803,
+            550,
+            320,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 124,
+          "pixelDigest": "5687999d71c9b8ff799100f74b558fe08162580375f5987c94bef6c95a8b6474",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "far leg supports near leg retracts",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43378,
+          "alpha16Bounds": [
+            1227,
+            545,
+            208,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 175,
+          "pixelDigest": "5bbec1de61d59c31e6861b4b39e210140c2c94eeea92a6ae78f33c606b4e176f",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "jungle-hunter-walk-backward",
+          "rect": [
+            34,
+            31,
+            305,
+            441
+          ],
+          "pivot": [
+            149,
+            437
+          ],
+          "durationTicks": 10,
+          "phase": "near leg rear toe contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "jungle-hunter-walk-backward",
+          "rect": [
+            464,
+            30,
+            226,
+            440
+          ],
+          "pivot": [
+            116.5,
+            436
+          ],
+          "durationTicks": 10,
+          "phase": "near leg supports far leg retracts",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "jungle-hunter-walk-backward",
+          "rect": [
+            782,
+            40,
+            342,
+            429
+          ],
+          "pivot": [
+            158,
+            425
+          ],
+          "durationTicks": 10,
+          "phase": "far leg rear toe contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "jungle-hunter-walk-backward",
+          "rect": [
+            1237,
+            31,
+            228,
+            442
+          ],
+          "pivot": [
+            86,
+            438
+          ],
+          "durationTicks": 10,
+          "phase": "far leg supports near leg retracts",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "jungle-hunter-walk-backward",
+          "rect": [
+            65,
+            541,
+            308,
+            423
+          ],
+          "pivot": [
+            153.5,
+            419
+          ],
+          "durationTicks": 10,
+          "phase": "near leg rear toe contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "jungle-hunter-walk-backward",
+          "rect": [
+            457,
+            542,
+            213,
+            426
+          ],
+          "pivot": [
+            136.5,
+            422
+          ],
+          "durationTicks": 10,
+          "phase": "near leg supports far leg retracts",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "jungle-hunter-walk-backward",
+          "rect": [
+            800,
+            547,
+            326,
+            417
+          ],
+          "pivot": [
+            171,
+            413
+          ],
+          "durationTicks": 10,
+          "phase": "far leg rear toe contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "jungle-hunter-walk-backward",
+          "rect": [
+            1224,
+            542,
+            214,
+            428
+          ],
+          "pivot": [
+            140.5,
+            424
+          ],
+          "durationTicks": 10,
+          "phase": "far leg supports near leg retracts",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "repair-walk-forward-alternation",
+      "actionId": "walk-forward",
+      "label": "walk-forward revision2",
+      "revision": 2,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+      "originId": "exec-27d7c9f3-3aaf-4b69-983f-f18fe21d63f5.png",
+      "sha256": "7f5e012aaf83713344e0bd46fbde6a7f21c17f00b9978cf8b1296cfeeb5457ac",
+      "bytes": 2136880,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Only left-facing cycle accepted: opposing contacts and passing poses, pelvis projection pivots.",
+        "Right-facing cycle rejected for repeated contact; never mirrored to supply missing coverage."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1152008,
+        "fringePixels": 25752
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near leg forward contact",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 55740,
+          "alpha16Bounds": [
+            64,
+            32,
+            274,
+            438
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 136,
+          "pixelDigest": "11455ce3045e8c4198931a7f95726d523d74c0bc54c140bd43a36d4f4ab7b914",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "near leg planted far leg passes",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52865,
+          "alpha16Bounds": [
+            434,
+            30,
+            260,
+            441
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 115,
+          "pixelDigest": "02100257583844d9d3f8c603948d2784b54e06ec9900249c52760a3fe936f571",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far leg forward contact",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 54344,
+          "alpha16Bounds": [
+            810,
+            32,
+            276,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 107,
+          "pixelDigest": "fc5deb6562a937958c3fede7888f2f4acd6330233711f9ecdcab7c6b658bbd06",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "far leg planted near leg passes",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51317,
+          "alpha16Bounds": [
+            1204,
+            30,
+            278,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 107,
+          "pixelDigest": "a9b416c13d2badb74746e57569b9c7889ae9f5d2427a8860477a9f7d7d1acc54",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near leg forward contact",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52526,
+          "alpha16Bounds": [
+            44,
+            544,
+            279,
+            431
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 69,
+          "pixelDigest": "3a89475ec44e4b7b58103cb277116dee33daf5ce0595bb6e47f44a14860f1305",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "near leg planted far leg passes",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49028,
+          "alpha16Bounds": [
+            435,
+            544,
+            254,
+            428
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 50,
+          "pixelDigest": "2224314bfd2d648bd654e9546b33bbdd24241ad8733f6d4e0a107846e762e1ea",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far leg forward contact",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 54652,
+          "alpha16Bounds": [
+            778,
+            542,
+            291,
+            430
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 144,
+          "pixelDigest": "93c7d8d3ad437e86e52bf72e11d54759d337d74923fe676e665d27ecbeaa27e1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "far leg planted near leg passes",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50384,
+          "alpha16Bounds": [
+            1182,
+            543,
+            282,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 133,
+          "pixelDigest": "dd2a0efda8b9b8520e9e65597009dd4a8e4817137708f29a85aadba1d32b378c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            41,
+            541,
+            285,
+            437
+          ],
+          "pivot": [
+            146,
+            433
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            432,
+            541,
+            260,
+            434
+          ],
+          "pivot": [
+            144,
+            430
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            775,
+            539,
+            297,
+            436
+          ],
+          "pivot": [
+            176,
+            432
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            1179,
+            540,
+            288,
+            438
+          ],
+          "pivot": [
+            168,
+            434
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "walk",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                41,
+                541,
+                285,
+                437
+              ],
+              "pivot": [
+                146,
+                433
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                432,
+                541,
+                260,
+                434
+              ],
+              "pivot": [
+                144,
+                430
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                775,
+                539,
+                297,
+                436
+              ],
+              "pivot": [
+                176,
+                432
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                1179,
+                540,
+                288,
+                438
+              ],
+              "pivot": [
+                168,
+                434
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ],
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "scope": "LEFT facing only; right contact repeats its support and is rejected."
+      }
+    },
+    {
+      "id": "repair-crouch-planted",
+      "actionId": "crouch",
+      "label": "crouch",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-repair-crouch-planted-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-crouch-planted-v34.png",
+      "originId": "exec-96f8d5b6-d70a-4d51-b72a-fc6bbc7c22fb.png",
+      "sha256": "4a37c009da8e45e5cd48d9c47ca1aeefd47e0c508f43bb4238bcc9e61cedc898",
+      "bytes": 2062019,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Targeted OpenAI correction replaces the kneeling third drawing in both rows with a squat on two planted feet, knees above floor and vertical shins.",
+        "Two complete hands remain separated, with exactly two dorsal right-gauntlet blades.",
+        "Native height is about76% of standing; uniform page scale only, no squash or warped interpolation."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1180592,
+        "fringePixels": 21880
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "ready",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52891,
+          "alpha16Bounds": [
+            64,
+            93,
+            274,
+            383
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 39,
+          "pixelDigest": "ba7cedfd097cce5ab7cc5b0bafc545afcb48347785cf9d01207cd54220e09ded",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "entry",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49740,
+          "alpha16Bounds": [
+            458,
+            131,
+            270,
+            345
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 40,
+          "pixelDigest": "ff8d3214982c31bf53afbf19d38297cd49fea77c8b1637a4f1ac73aafa4fa9d3",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "deep planted squat",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44716,
+          "alpha16Bounds": [
+            833,
+            188,
+            262,
+            290
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 128,
+          "pixelDigest": "00b6efa9415cbac505a5276286bfefa80184a5eafb1247121b2903b4602b5dea",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "rise",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50217,
+          "alpha16Bounds": [
+            1204,
+            119,
+            278,
+            357
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 39,
+          "pixelDigest": "946a6472c8e66143d621da81d127ec1651a9a8f290eec5e5dd6db86268f3d49f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "ready",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51839,
+          "alpha16Bounds": [
+            56,
+            543,
+            286,
+            374
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 26,
+          "pixelDigest": "91643d90c7d9e72a2c314b2f0023fc393fc28db04e0e6b753b67e2530b83a9d1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "entry",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49453,
+          "alpha16Bounds": [
+            435,
+            574,
+            277,
+            342
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 28,
+          "pixelDigest": "e2d13fd81772d9f217998aa01a23d933d2b19fe6e0cdd03a94607f67e0e9ca54",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "deep planted squat",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43378,
+          "alpha16Bounds": [
+            806,
+            635,
+            262,
+            282
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 136,
+          "pixelDigest": "e2b04f52f2427101702728fb1be59deba84ab9988d6af9845232cee9947ce64c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "rise",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50038,
+          "alpha16Bounds": [
+            1190,
+            564,
+            282,
+            352
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 26,
+          "pixelDigest": "88b63f515c2367da4857db30aecb2e8bbc2acdab66120fd8310f028f612f0206",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "pageId": "jungle-hunter-v34-repair-crouch-planted",
+          "rect": [
+            61,
+            90,
+            280,
+            389
+          ],
+          "pivot": [
+            139.5,
+            385
+          ],
+          "durationTicks": 2,
+          "clipId": "crouch",
+          "facing": "right",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-crouch-planted",
+          "rect": [
+            455,
+            128,
+            276,
+            351
+          ],
+          "pivot": [
+            123.5,
+            347
+          ],
+          "durationTicks": 2,
+          "clipId": "crouch",
+          "facing": "right",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-crouch-planted",
+          "rect": [
+            830,
+            185,
+            268,
+            296
+          ],
+          "pivot": [
+            121.5,
+            292
+          ],
+          "durationTicks": 30,
+          "clipId": "crouch",
+          "facing": "right",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-crouch-planted",
+          "rect": [
+            53,
+            540,
+            292,
+            380
+          ],
+          "pivot": [
+            149.5,
+            376
+          ],
+          "durationTicks": 2,
+          "clipId": "crouch",
+          "facing": "left",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-crouch-planted",
+          "rect": [
+            432,
+            571,
+            283,
+            348
+          ],
+          "pivot": [
+            154,
+            344
+          ],
+          "durationTicks": 2,
+          "clipId": "crouch",
+          "facing": "left",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-crouch-planted",
+          "rect": [
+            803,
+            632,
+            268,
+            288
+          ],
+          "pivot": [
+            132.5,
+            284
+          ],
+          "durationTicks": 30,
+          "clipId": "crouch",
+          "facing": "left",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                61,
+                90,
+                280,
+                389
+              ],
+              "pivot": [
+                139.5,
+                385
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                455,
+                128,
+                276,
+                351
+              ],
+              "pivot": [
+                123.5,
+                347
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                830,
+                185,
+                268,
+                296
+              ],
+              "pivot": [
+                121.5,
+                292
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                53,
+                540,
+                292,
+                380
+              ],
+              "pivot": [
+                149.5,
+                376
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                432,
+                571,
+                283,
+                348
+              ],
+              "pivot": [
+                154,
+                344
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                803,
+                632,
+                268,
+                288
+              ],
+              "pivot": [
+                132.5,
+                284
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ],
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "scope": "First three frames each facing: ready, descending, deep squat with two planted feet. Fourth rising frame not integrated."
+      }
+    }
+  ],
+  "variantId": "predator-1987-v5-project-presentation",
+  "acceptedDefinitionPath": "art-source/v34/pit/jungle-hunter/jungle-hunter-runtime-contribution-v34.json",
+  "legacyPreservation": {
+    "priorDefinitionSHA256": "76afa0054c3cc8644a806c9c790800217cea69bf96a172fb97a14b7c7adf1200",
+    "preservedPages": 2,
+    "preservedClips": 8,
+    "unchanged": "V32 idle and stand.light in both orientations, exact frames/pivots/durations/transparency/body heights."
+  },
+  "nativeContrastReview": {
+    "captures": 36,
+    "errors": 0,
+    "borderPixels": 0,
+    "maxResidualMagentaPixels": 11,
+    "keyComparison": [
+      {
+        "pageId": "jungle-hunter-v34-hurt",
+        "removed": 2627,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+        "removed": 2432,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 62
+      },
+      {
+        "pageId": "jungle-hunter-v34-repair-crouch-planted",
+        "removed": 2171,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      }
+    ]
+  },
+  "nativeInterfaceReview": {
+    "status": "PASS",
+    "keyboardChecks": 6,
+    "realOpponentHitstun": true,
+    "errors": 0,
+    "missingRightWalk": "held V32 idle, no mirror"
+  }
+}

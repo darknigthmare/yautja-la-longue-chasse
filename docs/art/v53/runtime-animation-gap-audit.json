@@ -1,0 +1,193 @@
+{
+  "release": "V53",
+  "runtimeCorrection": "Standing still can hold the exact final intro drawing. This does not add idle-animation coverage.",
+  "pipeline": {
+    "selection": "fighterId + exact variantId; no legacy/costume borrowing",
+    "forward": "grounded, standing, no guard/action/cloak transition, velocityX*facing >0 => walk",
+    "backward": "velocityX*facing <0 => walk-backward, never a reverse loop substituted for absent art",
+    "nativeFacing": "separate right and left authored clips; no runtime mirror",
+    "time": "simulation ticks drive gameplay phases; presentation clock is separate",
+    "still": "alive, grounded, y0, vx0, vy0, no guard/action/cloak => final native intro held if valid",
+    "fallback": "Other missing states retain the exact supplied static bitmap, openly reported as static-bitmap"
+  },
+  "appearances": [
+    {
+      "fighterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "exactClips": [
+        {
+          "id": "pit.presentation.intro",
+          "facing": "right",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "right",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "right",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.intro",
+          "facing": "left",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "left",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "left",
+          "frames": 3
+        },
+        {
+          "id": "walk",
+          "facing": "right",
+          "frames": 2
+        },
+        {
+          "id": "walk",
+          "facing": "left",
+          "frames": 2
+        }
+      ],
+      "exactGameplayClips": 2,
+      "legacyGameplayClipCount": 10,
+      "legacyMayFillSelectedCostume": false,
+      "stillIdle": "held-native-intro-ending; not a new loop",
+      "missingGameplayFamilies": [
+        "idle",
+        "walk-backward",
+        "crouch",
+        "high/low guard",
+        "jump-rise/apex/fall",
+        "standing/crouching/aerial light, medium, heavy and technique attacks",
+        "blockstun/hitstun/knockdown/KO",
+        "throw-startup/capture/recovery/tech",
+        "cloak-transition poses"
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "exactClips": [
+        {
+          "id": "pit.presentation.intro",
+          "facing": "right",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "right",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "right",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.intro",
+          "facing": "left",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "left",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "left",
+          "frames": 3
+        },
+        {
+          "id": "walk",
+          "facing": "right",
+          "frames": 2
+        },
+        {
+          "id": "walk",
+          "facing": "left",
+          "frames": 2
+        }
+      ],
+      "exactGameplayClips": 2,
+      "legacyGameplayClipCount": 30,
+      "legacyMayFillSelectedCostume": false,
+      "stillIdle": "held-native-intro-ending; not a new loop",
+      "missingGameplayFamilies": [
+        "idle",
+        "walk-backward",
+        "crouch",
+        "high/low guard",
+        "jump-rise/apex/fall",
+        "standing/crouching/aerial light, medium, heavy and technique attacks",
+        "blockstun/hitstun/knockdown/KO",
+        "throw-startup/capture/recovery/tech",
+        "cloak-transition poses"
+      ]
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "exactClips": [
+        {
+          "id": "pit.presentation.intro",
+          "facing": "right",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "right",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "right",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.intro",
+          "facing": "left",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "left",
+          "frames": 3
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "left",
+          "frames": 3
+        }
+      ],
+      "exactGameplayClips": 0,
+      "legacyGameplayClipCount": 14,
+      "legacyMayFillSelectedCostume": false,
+      "stillIdle": "held-native-intro-ending; not a new loop",
+      "missingGameplayFamilies": [
+        "idle",
+        "walk-forward",
+        "walk-backward",
+        "crouch",
+        "high/low guard",
+        "jump-rise/apex/fall",
+        "standing/crouching/aerial light, medium, heavy and technique attacks",
+        "blockstun/hitstun/knockdown/KO",
+        "throw-startup/capture/recovery/tech",
+        "cloak-transition poses"
+      ]
+    }
+  ],
+  "rejectedV53GameplaySheets": 4,
+  "newRegisteredGameplayClips": 4,
+  "remainingCoverageIsNotCertified": true,
+  "acceptedMovement": "Two authored poses per native facing for City and Scar forward fighting shuffle only; not natural walk or backward gait."
+}

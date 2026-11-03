@@ -1,0 +1,97 @@
+{
+  "version": "V50",
+  "date": "2026-09-23",
+  "scope": [
+    "Immersive campaign main/new/load menus; five protected owner slots and nursery opening preserved",
+    "Full viewport PIT fighter and stage selection with modal secondary options",
+    "Six exact supplied masked appearances receive authored air movement; Ahab also crouches"
+  ],
+  "verification": {
+    "build": {
+      "passed": true,
+      "report": "outputs/qa-commercial-audit/v50/build-release.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "incremental": false,
+      "report": "outputs/qa-commercial-audit/v50/typecheck-release.log"
+    },
+    "lint": {
+      "passed": true,
+      "errors": 0,
+      "existingWarnings": 1,
+      "warning": "ClanChroniclePanel.tsx:42 next/no-img-element",
+      "report": "outputs/qa-commercial-audit/v50/lint-release.log"
+    },
+    "nodeTestSuite": {
+      "passed": true,
+      "tests": 1582,
+      "failed": 0,
+      "skipped": 0,
+      "report": "outputs/qa-commercial-audit/v50/unit-release.log",
+      "scope": "Includes source contracts, systems, rendering and isolated browser fixtures; not only unit tests."
+    },
+    "browser": {
+      "distinctLocalChecks": 54,
+      "reports": [
+        {
+          "path": "outputs/qa-commercial-audit/v50/release-campaign-menu-browser-qa/report.json",
+          "checks": 8,
+          "passed": true
+        },
+        {
+          "path": "outputs/qa-commercial-audit/v50/release-selection-browser-qa/report.json",
+          "checks": 16,
+          "passed": true
+        },
+        {
+          "path": "outputs/qa-commercial-audit/v50/release-air-movement-browser-qa/report.json",
+          "checks": 12,
+          "passed": true
+        },
+        {
+          "path": "outputs/qa-commercial-audit/v50/final-stage-journey-browser-qa/report.json",
+          "checks": 4,
+          "passed": true
+        },
+        {
+          "path": "outputs/qa-commercial-audit/v50/final-combat-regression/report.json",
+          "checks": 10,
+          "passed": true
+        },
+        {
+          "path": "outputs/qa-commercial-audit/v50/final-camera-regression/report.json",
+          "checks": 4,
+          "passed": true
+        }
+      ],
+      "buildNote": "PIT regressions passed integrated build2. Final build3 added only campaign intrinsic-width CSS fixes and test updates; campaign8, selection16 and air12 (including both crouch poses in the Ahab checks) were replayed without runtime injection. Rechecks do not inflate the distinct count."
+    },
+    "sourceAssets": {
+      "passed": true,
+      "count": 6,
+      "report": "outputs/qa-commercial-audit/v50/final-local-assets/report.json"
+    }
+  },
+  "art": {
+    "acceptedPhysicalPng": 6,
+    "acceptedLogicalPages": 12,
+    "sourceDrawings": 48,
+    "usedDistinctDrawings": 46,
+    "reservedDrawings": 2,
+    "orientedClips": 38,
+    "newWalkClips": 0
+  },
+  "limits": [
+    "City Hunter jump generation was refused by the image service and is not delivered. Rejected walk sheets remain unused.",
+    "No complete walk cycles, complete movesets or whole-roster completion claimed.",
+    "Text-described inspected references because direct tool upload failed; project adaptations, not certified 1:1.",
+    "Chrome, emulated touch and virtual controller; no physical hardware or console certification.",
+    "No new packaged Windows executable."
+  ],
+  "publication": {
+    "canonical": "https://yautja-la-longue-chasse.vercel.app",
+    "proofRecordedAfterPush": "outputs/qa-commercial-audit/v50/publication-verified.json",
+    "strategy": "Push validated commit to main, verify Vercel READY and exact production alias SHA, replay public menus/air movement and verify six PNG hashes."
+  }
+}

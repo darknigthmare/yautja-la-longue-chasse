@@ -1,0 +1,162 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-12T18:01:40.568Z",
+  "checks": [
+    {
+      "kind": "training-default",
+      "statuses": [
+        {
+          "id": "jungle-hunter",
+          "status": "sprite-sheet-animation"
+        },
+        {
+          "id": "city-hunter",
+          "status": "sprite-sheet-hold"
+        }
+      ]
+    },
+    {
+      "kind": "training-idle",
+      "statuses": [
+        {
+          "id": "jungle-hunter",
+          "status": "sprite-sheet-animation"
+        },
+        {
+          "id": "city-hunter",
+          "status": "sprite-sheet-animation"
+        }
+      ]
+    },
+    {
+      "kind": "light-keyboard",
+      "slot": 0,
+      "id": "jungle-hunter",
+      "facing": "right",
+      "phases": [
+        "pit.stand.light.startup",
+        "pit.stand.light.active",
+        "pit.stand.light.recovery"
+      ],
+      "uniqueDrawings": 4,
+      "observedDrawCount": 18
+    },
+    {
+      "kind": "light-keyboard",
+      "slot": 1,
+      "id": "city-hunter",
+      "facing": "left",
+      "phases": [
+        "pit.stand.light.startup",
+        "pit.stand.light.active",
+        "pit.stand.light.recovery"
+      ],
+      "uniqueDrawings": 4,
+      "observedDrawCount": 15
+    },
+    {
+      "kind": "walk-held-keyboard",
+      "slot": 0,
+      "id": "jungle-hunter",
+      "facing": "right",
+      "statuses": [
+        {
+          "id": "jungle-hunter",
+          "status": "sprite-sheet-hold"
+        },
+        {
+          "id": "city-hunter",
+          "status": "sprite-sheet-animation"
+        }
+      ],
+      "heldDrawings": 1,
+      "distinctDestinations": 14,
+      "observedDrawCount": 14
+    },
+    {
+      "kind": "walk-held-keyboard",
+      "slot": 1,
+      "id": "city-hunter",
+      "facing": "left",
+      "statuses": [
+        {
+          "id": "jungle-hunter",
+          "status": "sprite-sheet-animation"
+        },
+        {
+          "id": "city-hunter",
+          "status": "sprite-sheet-hold"
+        }
+      ],
+      "heldDrawings": 1,
+      "distinctDestinations": 12,
+      "observedDrawCount": 12
+    },
+    {
+      "kind": "light-keyboard",
+      "slot": 0,
+      "id": "city-hunter",
+      "facing": "right",
+      "phases": [
+        "pit.stand.light.startup",
+        "pit.stand.light.active",
+        "pit.stand.light.recovery"
+      ],
+      "uniqueDrawings": 4,
+      "observedDrawCount": 16
+    },
+    {
+      "kind": "light-keyboard",
+      "slot": 1,
+      "id": "jungle-hunter",
+      "facing": "left",
+      "phases": [
+        "pit.stand.light.startup",
+        "pit.stand.light.active",
+        "pit.stand.light.recovery"
+      ],
+      "uniqueDrawings": 4,
+      "observedDrawCount": 18
+    },
+    {
+      "kind": "walk-held-keyboard",
+      "slot": 0,
+      "id": "city-hunter",
+      "facing": "right",
+      "statuses": [
+        {
+          "id": "city-hunter",
+          "status": "sprite-sheet-hold"
+        },
+        {
+          "id": "jungle-hunter",
+          "status": "sprite-sheet-animation"
+        }
+      ],
+      "heldDrawings": 1,
+      "distinctDestinations": 14,
+      "observedDrawCount": 14
+    },
+    {
+      "kind": "walk-held-keyboard",
+      "slot": 1,
+      "id": "jungle-hunter",
+      "facing": "left",
+      "statuses": [
+        {
+          "id": "city-hunter",
+          "status": "sprite-sheet-animation"
+        },
+        {
+          "id": "jungle-hunter",
+          "status": "sprite-sheet-hold"
+        }
+      ],
+      "heldDrawings": 1,
+      "distinctDestinations": 13,
+      "observedDrawCount": 13
+    }
+  ],
+  "errors": [],
+  "failedRequests": []
+}

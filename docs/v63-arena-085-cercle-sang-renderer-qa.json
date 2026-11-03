@@ -1,0 +1,978 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-085-cercle-sang",
+  "checkedAt": "2026-09-30T22:36:46.541Z",
+  "compositionDigest": "332ec380471140916d3b7dcb69102dcad4d910e687a569bca7906af463cf5b94",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "1c9629f792a7ff97dd37582a2400290e0047e477a6c0c7f61ec14168a62feb8f",
+    "app/game/pitArenaProduction.ts": "b35d28c21ee173b5b0d385b6e08ef085e10b7c75f4fef93734d645fcd8a4b11e",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "app/game/pitStageLifeV63.ts": "a6920fcebc2fc166e2eef92b8d7592b5acde82eec7ad0ab382dd81189ad0b7f2",
+    "app/game/pitStageLifeDirectorV63.ts": "0f6f091487bb9d9e31de051212eb6a91b2a8a7ddb661c35cea8d35dcdf362cd8",
+    "app/game/pitStageLifeRenderingV63.ts": "2fab9d67b019d927bf3f62ff881bd62c4616a67f7ce88c5941a49067fb040351",
+    "app/game/pitStageCompositionV63.ts": "bd26ea648513d2fffe3473c01dfd903c90b6b0f8227c0bed29eb69008b1e6192",
+    "app/game/data/pitStageCompositionV63.json": "d913c3910e52fb01b1efa7a21b7b8123db3431cf5ab53978df85ed016cc64845",
+    "scripts/verify-pit-stage-composition-v63.mjs": "65e78854abbb3307e5a6c1c815a835daf68dc3f5c80893895338c04767dbf78f",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "44d3a06d0355a204bdbd2aee3ee0c29425f5969f6359320b612d457ec6fe1b32",
+    "app/game/data/pitStageLifeV63.json": "3df78b5068a25b46b30d514962ce56504dd0e2e66bf013bc70c0414de0469ab6",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "compositionOverlay": [
+      {
+        "stageId": "arena-085-cercle-sang",
+        "assetId": "p4-p4-b-front-fascia",
+        "sourceSha256": "c554643b719d1b3a41d4766eea2f14ba60aa3d0ae9f5cc398c07ca7e618c7519",
+        "sourceCrop": {
+          "x": 100,
+          "y": 299,
+          "width": 1972,
+          "height": 186
+        },
+        "placements": [
+          {
+            "x": 0,
+            "y": 454,
+            "width": 1280,
+            "height": 160
+          }
+        ]
+      }
+    ],
+    "production": {
+      "number": 85,
+      "catalogueId": "arena-085-cercle-sang",
+      "assetDirectory": "/game/sprites/v42/pit-arenas/arena-085-cercle-sang",
+      "name": "Cercle Sang",
+      "setting": "Dalle rouge désaturée, sans gore ni obstacle",
+      "wave": "pure-duel",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "pending-dedicated-conversation",
+      "runtimeEnabled": true,
+      "planes": [
+        {
+          "id": "P0",
+          "role": "ciel ou profondeur atmosphérique",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Profondeur originale propre à cette composition",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 640
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v42/pit-arenas/arena-085-cercle-sang/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v42/pit-arenas/arena-085-cercle-sang/receipt-p0-depth.json",
+                    "sha256": "c370c6542416d32d34ef943832ea8c61653c736bb6616eeee8a9c9bd649ebb1d",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v42/pit-arenas/arena-085-cercle-sang/p0-visual-review.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "silhouettes et repères lointains",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-p1-a-distant-left",
+              "role": "Repère éloigné gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.38,
+              "placements": [
+                {
+                  "x": -130,
+                  "y": -25,
+                  "width": 320,
+                  "height": 450
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p1-a-distant-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-020-trone-fracture/receipt-p1-a-distant-left-2d53305c89e6.json",
+                    "sha256": "2d53305c89e6b4f070c730bcb6f019c96f5d1cbfb7008fbaee49dea031458cea",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 81,
+                      "y": 33,
+                      "width": 1072,
+                      "height": 966
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-020-trone-fracture-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-020-trone-fracture/p1-a-distant-left"
+            },
+            {
+              "id": "p1-p1-b-distant-right",
+              "role": "Repère éloigné droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.38,
+              "placements": [
+                {
+                  "x": 770,
+                  "y": -25,
+                  "width": 320,
+                  "height": 450
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p1-b-distant-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-020-trone-fracture/receipt-p1-b-distant-right-43b5468b3954.json",
+                    "sha256": "43b5468b395437efc9c51317851ffe7570f917d9a46f788acd1d2f17e44896fd",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 102,
+                      "y": 15,
+                      "width": 814,
+                      "height": 1430
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-020-trone-fracture-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-020-trone-fracture/p1-b-distant-right"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "architecture de fond",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-p2-a-support-left",
+              "role": "Support architectural gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.68,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -120,
+                  "y": 100,
+                  "width": 280,
+                  "height": 328
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p2-a-support-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-013-mausolee-des-marques/receipt-p2-a-support-left-4e53095a133b.json",
+                    "sha256": "4e53095a133bdce5a760821fa9b34a620b21f1112ea8e21da590421eb45aeb1c",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 242,
+                      "y": 13,
+                      "width": 541,
+                      "height": 1507
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-013-mausolee-des-marques-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-013-mausolee-des-marques/p2-a-support-left"
+            },
+            {
+              "id": "p2-p2-b-support-right",
+              "role": "Support architectural droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.68,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 800,
+                  "y": 100,
+                  "width": 280,
+                  "height": 328
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p2-b-support-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-013-mausolee-des-marques/receipt-p2-b-support-right-ec9e7dddc753.json",
+                    "sha256": "ec9e7dddc7536b19e56877c24fcc707ad2f997d622fe9cd0639f2d39296a269e",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 237,
+                      "y": 14,
+                      "width": 630,
+                      "height": 1509
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-013-mausolee-des-marques-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-013-mausolee-des-marques/p2-b-support-right"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "activité médiane et public",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-p3-a-prop-left",
+              "role": "Accessoire de sol gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 240,
+                  "y": 349,
+                  "width": 105,
+                  "height": 79
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-a-prop-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-013-mausolee-des-marques/receipt-p3-a-prop-left-985326f565e9.json",
+                    "sha256": "985326f565e972687a1ba050d80984f4886a6ac73a3c0d82fd2a97175c21eb34",
+                    "width": 1224,
+                    "height": 1285,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 155,
+                      "y": 57,
+                      "width": 907,
+                      "height": 1158
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-013-mausolee-des-marques-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-013-mausolee-des-marques/p3-a-prop-left"
+            },
+            {
+              "id": "p3-p3-b-prop-right",
+              "role": "Accessoire de sol droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 615,
+                  "y": 349,
+                  "width": 105,
+                  "height": 79
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-b-prop-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-013-mausolee-des-marques/receipt-p3-b-prop-right-df9d36281ef1.json",
+                    "sha256": "df9d36281ef1dc4b54732ee289f24e25a25e5c82c1e28596130c11c05c2f8bd8",
+                    "width": 1214,
+                    "height": 1295,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 280,
+                      "y": 37,
+                      "width": 653,
+                      "height": 1222
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-013-mausolee-des-marques-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-013-mausolee-des-marques/p3-b-prop-right"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "sol de combat, ruptures et props actifs",
+          "nominalParallax": 1,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-p4-a-contact-floor",
+              "role": "Sol de contact",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 48,
+                "y": 275,
+                "width": 2077,
+                "height": 157
+              },
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 640,
+                  "height": 35
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-a-contact-floor.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-020-trone-fracture/receipt-p4-a-contact-floor-eddf92ce5e45.json",
+                    "sha256": "eddf92ce5e45cb0cbd74fe918354a986d72ad6d9b78930f74c490cf39083fc4f",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 43,
+                      "y": 273,
+                      "width": 2085,
+                      "height": 159
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-020-trone-fracture-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-020-trone-fracture/p4-a-contact-floor"
+            },
+            {
+              "id": "p4-p4-b-front-fascia",
+              "role": "Façade du sol",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "strip-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 454,
+                  "width": 1280,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-b-front-fascia.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-020-trone-fracture/receipt-p4-b-front-fascia-c554643b719d.json",
+                    "sha256": "c554643b719d1b3a41d4766eea2f14ba60aa3d0ae9f5cc398c07ca7e618c7519",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 12,
+                      "y": 239,
+                      "width": 2149,
+                      "height": 255
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-020-trone-fracture-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-020-trone-fracture/p4-b-front-fascia"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "avant-plan occultant avec fondu de lisibilité",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-p5-a-foreground-left",
+              "role": "Premier plan gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "verticalAlign": "top",
+              "placements": [
+                {
+                  "x": -70,
+                  "y": -20,
+                  "width": 165,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p5-a-foreground-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-013-mausolee-des-marques/receipt-p5-a-foreground-left-c86254351b9a.json",
+                    "sha256": "c86254351b9a37568a10db242f00d561d6695bf8efcbf3ca90a3b243f4ee1bc6",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 74,
+                      "y": 0,
+                      "width": 123,
+                      "height": 1480
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-013-mausolee-des-marques-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-013-mausolee-des-marques/p5-a-foreground-left"
+            },
+            {
+              "id": "p5-p5-b-foreground-right",
+              "role": "Premier plan droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "verticalAlign": "top",
+              "placements": [
+                {
+                  "x": 865,
+                  "y": -20,
+                  "width": 165,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p5-b-foreground-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-013-mausolee-des-marques/receipt-p5-b-foreground-right-08a25d11d746.json",
+                    "sha256": "08a25d11d7463cf6bd6438580c5f11b6918ed6617c42d4e84d1030a01154281b",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 786,
+                      "y": 0,
+                      "width": 230,
+                      "height": 1421
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-013-mausolee-des-marques-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-013-mausolee-des-marques/p5-b-foreground-right"
+            }
+          ]
+        }
+      ],
+      "compositionContract": "v42-explicit-shared-library-compositions",
+      "signatureBacklog": [],
+      "runtimeExtension": {
+        "arenaId": "arena-085-cercle-sang",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v42-arena-085-cercle-sang-renderer-qa.json",
+        "applicationEvidence": "docs/v42-arena-application-dev-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v42-arena-composition-visual-review.json",
+        "digest": "45bd5a337229d992568f4e427637bfa6fb31494531b781f878458e9f6086481a"
+      }
+    },
+    "life": null,
+    "story": null,
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [],
+  "loaded": {
+    "independentKit": true,
+    "images": 11,
+    "expectedImages": 11,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV63Ambient": false,
+    "hasV61Story": false
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-085-cercle-sang\\center.png",
+      "sha256": "4ac07519cf1938fd8b0df7feef43866ea1bf6f043128fd30f834764e9a0901e2"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-085-cercle-sang\\left-corner.png",
+      "sha256": "aa827e80d93055cd4e1f468fee9ef26f561f336c4880f16b47b013a59b1ed297"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-085-cercle-sang\\right-corner.png",
+      "sha256": "6240ce61cbb137da1abe35f9d3df2e38365b0a5f290e1884d6b2a50dbf02aa1b"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-085-cercle-sang\\wide.png",
+      "sha256": "25b83f9406c09a3397c79971fcfc2ef32338b8147b44285819a2fdb4cb4d29e0"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-085-cercle-sang\\close.png",
+      "sha256": "8615c321a7adb3b0a5f540fe2f2e079dcbf7041fa247cc49b0056c98aac8da86"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-085-cercle-sang\\reduced-motion.png",
+      "sha256": "9072996e725fda592fbed8ff09a2973ea29c80b70abf01032d39e789e6d5a881"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-085-cercle-sang\\high-contrast.png",
+      "sha256": "5bc925e5a1f95a51da540c62c4f0a7f6b99f4c5aba5ab41b90a28b9c095e744e"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-085-cercle-sang\\actual-game-camera.png",
+      "sha256": "a629c3d2bf7420477d0de66750b16f12fec477eeeb806a04f370d6e0dc770cd7"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-085-cercle-sang\\mobile-canvas.png",
+      "sha256": "118f864e94f2658638a5a33616b4f86a2dc72b6513ae0e093322d768a11cb446"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

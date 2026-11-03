@@ -1,0 +1,224 @@
+{
+  "version": "V41",
+  "checkedAt": "2026-09-19T21:47:50.839Z",
+  "status": "passed-local",
+  "commands": {
+    "build": {
+      "exitCode": 0,
+      "engine": "Vinext",
+      "environment": "YAUTJA_KEEP_BUILD_ROOT=1",
+      "output": "Verified pre-cleaned existing D: output junction"
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "lint": {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 1,
+      "note": "Existing ClanChroniclePanel native image warning"
+    },
+    "tests": {
+      "total": 1336,
+      "passed": 1336,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "browser": {
+    "art": {
+      "passed": true,
+      "version": "V41",
+      "checkedAt": "2026-09-19T21:47:17.551Z",
+      "url": "http://127.0.0.1:4174",
+      "labChecks": [
+        {
+          "fighter": "tracker",
+          "clip": "walk",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "tracker",
+          "clip": "walk",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "celtic",
+          "clip": "idle",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "celtic",
+          "clip": "idle",
+          "facing": "left",
+          "drawings": 2
+        }
+      ],
+      "combatChecks": [
+        {
+          "fighter": "celtic",
+          "clip": "idle",
+          "facing": "right",
+          "drawings": 2,
+          "nativeOrientation": true,
+          "stableGround": true,
+          "attackReturnsToIdle": true,
+          "uncoveredWalkRemainsHold": true,
+          "existingGuardAndRetreatPreserved": true
+        },
+        {
+          "fighter": "celtic",
+          "clip": "idle",
+          "facing": "left",
+          "drawings": 2,
+          "nativeOrientation": true,
+          "stableGround": true,
+          "attackReturnsToIdle": true,
+          "uncoveredWalkRemainsHold": true,
+          "existingGuardAndRetreatPreserved": true
+        },
+        {
+          "fighter": "tracker",
+          "clip": "walk",
+          "facing": "right",
+          "drawings": 4,
+          "realForwardMovement": true,
+          "advanceStopRetreat": true,
+          "sourceReuse": true
+        },
+        {
+          "fighter": "tracker",
+          "clip": "walk",
+          "facing": "left",
+          "drawings": 4,
+          "realForwardMovement": true,
+          "advanceStopRetreat": true,
+          "sourceReuse": true
+        }
+      ],
+      "mobileNoOverflow": true,
+      "errors": [],
+      "failures": [],
+      "limitations": [
+        "Browser input only, no complete moveset or physical hardware certification.",
+        "Tracker reuses eight existing retreat drawings in reverse order; no new Tracker image is claimed.",
+        "Celtic gains idle only; uncovered states remain native idle holds, not complete animations."
+      ]
+    },
+    "homeworldRecovery": {
+      "passed": true,
+      "expectedVersion": "V41",
+      "checkedAt": "2026-09-19T21:45:42.765Z",
+      "url": "http://127.0.0.1:4174",
+      "checks": [
+        "Fresh campaign enters the real city, records Port and inspects the actual convoy trophy before fault injection; no seeded state.",
+        "Physical crossing into Market reaches actual save refusal: pending notice appears, durable slot remains unchanged, no retry loop across 3.2 seconds.",
+        "Keyboard retry while storage still refuses remains pending, attempts once, announces no successful visit and leaves the slot unchanged.",
+        "Storage restored: actual gamepad Down/A retries successfully once, removes pending buttons, preserves useful focus and cannot activate the next action with held A.",
+        "Recovered Market visit is unique, pre-existing trophy evidence and all non-visit progression stay intact; no further save loop or actor reset.",
+        "Real page reload retains exactly Port+Market, prior evidence and campaign identity, with no pending visit or horizontal overflow at 390px."
+      ],
+      "routeEvidence": [
+        {
+          "from": {
+            "x": 430,
+            "y": 2210
+          },
+          "target": {
+            "x": 1040,
+            "y": 1970
+          },
+          "actual": {
+            "x": 1022,
+            "y": 2005
+          },
+          "waypoints": 28
+        },
+        {
+          "from": {
+            "x": 1022,
+            "y": 2005
+          },
+          "target": {
+            "x": 1750,
+            "y": 2000
+          },
+          "actual": {
+            "x": 1727,
+            "y": 2028
+          },
+          "waypoints": 30
+        }
+      ],
+      "errors": [],
+      "failures": [],
+      "scope": "Fresh isolated campaign; real city movement and trophy inspection. Only setItem on the campaign primary slot is fault-injected. No actor/progression/save injection; virtual gamepad is not physical hardware certification.",
+      "storageProof": {
+        "refusedAttempts": 2,
+        "recoveryWrites": 1,
+        "beforeVisited": [
+          "port"
+        ],
+        "afterVisited": [
+          "port",
+          "market"
+        ],
+        "sourceMutation": false
+      },
+      "visualInspection": {
+        "reviewed": true,
+        "desktop": "homeworld-recovery-refused-1280.png",
+        "mobilePending": "homeworld-recovery-pending-390.png",
+        "mobileReloaded": "homeworld-recovery-reloaded-390.png",
+        "transientToast": "homeworld-recovery-pending-toast-390.png",
+        "observations": [
+          "Avis de visite refusée et bouton de reprise visibles sur desktop et mobile.",
+          "Toast global existant de 2 600 ms recouvre transitoirement le bouton après refus ; capture conservée. Après expiration normale, contrôle Playwright trial confirme le bouton actionnable.",
+          "Après recharge : 2/12 quartiers et 1/3 preuves, attente disparue, aucun débordement horizontal."
+        ]
+      }
+    }
+  },
+  "logs": [
+    {
+      "file": "final-tests.log",
+      "sha256": "2a38ae2ca56609cef27943cd9ec0c32c5610213d02a51a0371b7364109c3d24c"
+    },
+    {
+      "file": "final-build.log",
+      "sha256": "0d06b272963f64e1bf3384071ed4930a132fa5dfb9bcd3a37087e612fd75a280"
+    },
+    {
+      "file": "typecheck.log",
+      "sha256": "fdd4010a5801a43e17e176b5cba5a4bd7484d414d207b9c36a14c36597cfde8e"
+    },
+    {
+      "file": "lint.log",
+      "sha256": "47f9ac92edcaa5111986f392eabf0cfbdfc37101c3dd2735ba9d737f29e0d51a"
+    }
+  ],
+  "coverage": {
+    "selectableFighters": 16,
+    "animatedFighters": 11,
+    "validatedOrientedClips": 267,
+    "addedClips": 4,
+    "completeMovesets": 0,
+    "playableArenas": 20,
+    "requestedArenas": 100,
+    "generationAttempts": 3,
+    "newSelectedSourceImages": 1,
+    "newDrawings": 4,
+    "reusedTrackerDrawings": 8,
+    "reviewSourceImages": 552
+  },
+  "limitations": [
+    "Celtic idle only: two drawings per facing, no complete moveset.",
+    "Tracker forward walk reuses eight existing retreat drawings in reverse order with the original coarse four-frame cadence.",
+    "Official 1:1 fidelity, physical controller and Steam Deck certification are not claimed.",
+    "Homeworld pending district visits are recoverable within the active city; leaving before acknowledgement cannot guarantee unsaved visits.",
+    "Desktop packaging and offline verification are recorded separately after the source commit."
+  ]
+}

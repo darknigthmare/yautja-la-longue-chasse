@@ -1,0 +1,346 @@
+{
+  "version": "V38",
+  "source": "/game/sprites/v33/pit/berserker/berserker-hurt-v33.png",
+  "sourceSha256": "f5430784fc4bd4ea40ded6095db75689b278a577a16be303a4c7cd64d4b0993b",
+  "origin": "Existing OpenAI V33 source, reused byte-for-byte; no new generation and no bitmap edit",
+  "status": "pixel-and-browser-validated",
+  "scope": "Two oriented standing hitstun clips, eight distinct drawings; no knockdown, blockstun, recovery-to-standing or complete moveset claim",
+  "review": {
+    "anatomy": "Two arms and two legs, visible hands, single wrist blade, shoulder cannon and mask consistent with the existing Berserker V33 identity",
+    "cropping": "Irregular rectangles measured from keyed pixels; row split at y=500 rather than the invalid uniform 512 boundary",
+    "pivots": "Ground anchor from painted feet; per-frame recoil remains drawn, never interpolated or mirrored"
+  },
+  "definition": {
+    "fighterId": "berserker",
+    "bodyHeightPx": 460,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "berserker-hitstun-v38",
+      "characterId": "berserker",
+      "variantId": "the-pit-v33-v23-identity",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "berserker-hurt-v38",
+          "src": "/game/sprites/v33/pit/berserker/berserker-hurt-v33.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                22,
+                28,
+                367,
+                453
+              ],
+              "pivot": [
+                210,
+                450
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                398,
+                30,
+                351,
+                452
+              ],
+              "pivot": [
+                214,
+                449
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                794,
+                38,
+                322,
+                444
+              ],
+              "pivot": [
+                165.5,
+                441
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                1181,
+                23,
+                319,
+                459
+              ],
+              "pivot": [
+                162,
+                456
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                20,
+                506,
+                337,
+                452
+              ],
+              "pivot": [
+                148,
+                449
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                383,
+                513,
+                341,
+                446
+              ],
+              "pivot": [
+                170,
+                443
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                792,
+                522,
+                326,
+                438
+              ],
+              "pivot": [
+                158,
+                435
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                1175,
+                511,
+                322,
+                450
+              ],
+              "pivot": [
+                161.5,
+                447
+              ],
+              "durationTicks": 3
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "schemaVersion": 1,
+  "fighterId": "berserker",
+  "name": "Berserker",
+  "assets": [
+    {
+      "id": "v38-hurt-review",
+      "label": "Réactions aux coups · droite et gauche · huit dessins",
+      "actionId": "pit.stand.hitstun",
+      "publicPath": "/game/sprites/v33/pit/berserker/berserker-hurt-v33.png",
+      "status": "integrated",
+      "replacesReview": true,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "f5430784fc4bd4ea40ded6095db75689b278a577a16be303a4c7cd64d4b0993b",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "reviewFrames": [
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            22,
+            28,
+            367,
+            453
+          ],
+          "pivot": [
+            210,
+            450
+          ],
+          "durationTicks": 2,
+          "facing": "right",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            398,
+            30,
+            351,
+            452
+          ],
+          "pivot": [
+            214,
+            449
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            794,
+            38,
+            322,
+            444
+          ],
+          "pivot": [
+            165.5,
+            441
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            1181,
+            23,
+            319,
+            459
+          ],
+          "pivot": [
+            162,
+            456
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            20,
+            506,
+            337,
+            452
+          ],
+          "pivot": [
+            148,
+            449
+          ],
+          "durationTicks": 2,
+          "facing": "left",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            383,
+            513,
+            341,
+            446
+          ],
+          "pivot": [
+            170,
+            443
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            792,
+            522,
+            326,
+            438
+          ],
+          "pivot": [
+            158,
+            435
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            1175,
+            511,
+            322,
+            450
+          ],
+          "pivot": [
+            161.5,
+            447
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "phase": "pit.stand.hitstun"
+        }
+      ],
+      "notes": [
+        "Source OpenAI V33 préservée ; revue V38 et recadrages irréguliers remplacent les cellules de grille coupées.",
+        "Two oriented standing hitstun clips, eight distinct drawings; no knockdown, blockstun, recovery-to-standing or complete moveset claim"
+      ]
+    }
+  ]
+}

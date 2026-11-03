@@ -1,0 +1,49 @@
+{
+  "id": "artisan-01",
+  "role": "artisan",
+  "description": "Short, stocky barrel-chested older craftsperson; broad ridged head; ochre scales with charcoal speckles; thick black dreadlocks in a low short bundle; large split-front knee-length russet leather apron, two square waist pouches, side tool wrap; right hand lowers a small tack hammer, left inspects a riveted metal buckle.",
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Short, stocky barrel-chested older craftsperson; broad ridged head; ochre scales with charcoal speckles; thick black dreadlocks in a low short bundle; large split-front knee-length russet leather apron, two square waist pouches, side tool wrap; right hand lowers a small tack hammer, left inspects a riveted metal buckle.",
+  "status": "validated",
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-01.png",
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-6c5aaba2-f024-4b6f-952a-a6e2da55e403.png",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "transparent_fraction": 0.5551350911458334,
+  "alpha_bounds": [
+    0,
+    19,
+    1005,
+    1521
+  ],
+  "sha256": "f8d941e175551f907f5d39ae49845f0c66515a7b0e0f3dfff6d2128442a2a5d6",
+  "byte_count": 2474771,
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  },
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-01.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-6c5aaba2-f024-4b6f-952a-a6e2da55e403.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "githubBlobSha": "faf38b194afe453875fec8a6ef7ed0d2ea9199c9",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6c5aaba2-f024-4b6f-952a-a6e2da55e403.png",
+  "gitBlobSha1": "faf38b194afe453875fec8a6ef7ed0d2ea9199c9",
+  "maxBorderAlpha": 1,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-01-before-face-review-cd94da6b4167.png",
+    "sha256": "cd94da6b4167c302e55f2cd22fd3f58f67af6a38a9a513c24bac283fc7221ba3"
+  }
+}

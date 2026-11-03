@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "grand-trophy-hauler",
+  "name": "Grand Trophy Hauler",
+  "lore": "original-game-design-proposal",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Identité · châssis de transport",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/grand-trophy-hauler/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/grand-trophy-hauler/identity-r1.png",
+      "originId": "exec-86020da0-53f5-467c-9b68-a920b17fb3fb.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "0317e865910d29b4c7a63b377c936e166f29267c7289e5ecaaeaf0e0a7810443",
+      "bytes": 1503251,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572528
+      },
+      "prompt": "Create an ORIGINAL Yautja-inspired fan-game transport design for La Longue Chasse, not a film vehicle replica. Two complete independent orthographic SIDE PROFILE views, SIDE BY SIDE in TWO COLUMNS and ONE ROW: left craft facing RIGHT, right craft facing LEFT. Identical scale, matching structural layout seen from opposite sides. Horizontal side-scrolling gameplay camera, no isometric or top view. Complete nose, rear, landing assemblies and equipment mounting points with wide clear margins. Each craft within central70percent of its half; broad center gutter. Detailed sharp hand-painted sci-fi game bitmap, weathered dark gunmetal and bronze, functional alien hunting technology. NO pilots, riders, creatures, corpses, trophies, cargo, guns, fire, exhaust, shadow, scenery, logos, writing, grid or checkerboard. The empty chassis and fixed structural framework only; riders, loads, weapons, effects and movable accessories are separate later modules. Uniform flat pure MAGENTA #FF00FF background, no colored lighting spill. Vehicle: GRAND TROPHY HAULER, a massive slow ceremonial antigravity extraction platform. Very long heavy reinforced open deck, ornate but functional bronze structural trim, a low pilot station at the front, six big downward-facing antigravity emitters under armored side sponsons. Strong short corner pylons and a pair of EMPTY overhead lifting anchor beams on removable hardpoints, enough open clearance for a gigantic future load, no hooks hanging across the whole deck. Elegant ritual geometric trim without letters or emblems; weight and bulk far exceed a small cargo sled. Clear usable EMPTY central platform with tie-down rails. No temple building, enclosed cargo box, statues, cargo, trophies or weapons. Gantry connections and emitter count coherent in both views.",
+      "references": [
+        {
+          "source": "recovered-vehicle-conversation",
+          "lines": [
+            338,
+            358
+          ],
+          "role": "Original game description; exact construction is a new design proposal."
+        }
+      ],
+      "notes": [
+        "Original ceremonial extraction platform. Five visible emitter pods per side in this candidate, not the six suggested in the generation prompt; module count must follow the reviewed design, not an unsupported lore claim."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            31,
+            128,
+            1020,
+            371
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 180446,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1086,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            1121,
+            128,
+            1020,
+            371
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 180784,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

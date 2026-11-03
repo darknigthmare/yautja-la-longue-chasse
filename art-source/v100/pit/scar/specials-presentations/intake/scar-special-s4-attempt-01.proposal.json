@@ -1,0 +1,267 @@
+{
+  "fighterId": "scar",
+  "actionId": "M_F003_S4",
+  "appearanceId": "runtime-default",
+  "atlasId": "scar-special-s4-body-v100",
+  "clipIds": [
+    "workbook.M_F003_S4"
+  ],
+  "source": {
+    "planPath": "app/game/data/pitWorkbookAnimationPlanV100.json",
+    "planSha256": "e320476807a1e5c36bb82202d243761097497e48b4d893884a8771bbf01f3141",
+    "sheet": "05_MOVES_PROPOSES",
+    "cell": "S7",
+    "sourceText": "M_F003_S4 · Garde de chasseur\nCommande 22+S · Selon trajectoire / prototype · Spécial\nArme : Gantelet / bras\nDévie une frappe de contact, puis répond du coude. Échoue contre une projection et ne renvoie pas automatiquement les tirs.\nPréparation / actif / récupération : 5 / 14 / 30 images · dégâts 85 · coût 10 %\nContre-jeu : Feinter, attendre la fin de fenêtre ou projeter.\nTechnique proposée pour The Pit ; valeurs à équilibrer. Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nCorps : F003_ACT_S4\nEntité : Aucune · équipement : Corps / gantelet de la tenue\nAdaptation originale sourcée · Cible de design ; le coût est un % de jauge, pas la valeur actuelle du moteur",
+    "phaseTicks": {
+      "startup": 5,
+      "active": 14,
+      "recovery": 30
+    }
+  },
+  "intake": {
+    "path": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s4-attempt-01.png",
+    "sha256": "1b5465debd9eb733744c8abd52c8b40c09beb8ad94028174b82ecf07f41b0618",
+    "measurement": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s4-attempt-01.measurement.json",
+    "prompt": "art-source/v100/pit/scar/specials-presentations/intake/scar-special-s4-attempt-01.prompt.txt",
+    "references": [
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-idle-v34.png",
+        "sha256": "725a14de4bf905122f4585663b2654d7925f57089fdbdae383e06da1290ec8c4"
+      },
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-medium-v34.png",
+        "sha256": "caa475bb7001a6795bdd677ce1d97b94f1078ccd1679f2d2961ea2498a5e1919"
+      },
+      {
+        "path": "public/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+        "sha256": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3"
+      }
+    ]
+  },
+  "definition": {
+    "fighterId": "scar",
+    "bodyHeightPx": 321,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-special-s4-body-v100",
+      "characterId": "scar",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-special-s4-page-01",
+          "src": "/game/sprites/v100/pit/scar/scar-special-s4.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.M_F003_S4",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                0,
+                0,
+                339,
+                407
+              ],
+              "pivot": [
+                175,
+                380
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                338,
+                0,
+                329,
+                407
+              ],
+              "pivot": [
+                170,
+                381
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                666,
+                0,
+                358,
+                407
+              ],
+              "pivot": [
+                166,
+                380
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                0,
+                406,
+                353,
+                365
+              ],
+              "pivot": [
+                179,
+                332
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                352,
+                406,
+                334,
+                365
+              ],
+              "pivot": [
+                160,
+                336
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                685,
+                406,
+                339,
+                365
+              ],
+              "pivot": [
+                171,
+                340
+              ],
+              "durationTicks": 15
+            }
+          ]
+        },
+        {
+          "id": "workbook.M_F003_S4",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                0,
+                770,
+                348,
+                370
+              ],
+              "pivot": [
+                175,
+                350
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                347,
+                770,
+                322,
+                370
+              ],
+              "pivot": [
+                186,
+                351
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                668,
+                770,
+                356,
+                370
+              ],
+              "pivot": [
+                208,
+                352
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                0,
+                1139,
+                365,
+                397
+              ],
+              "pivot": [
+                188,
+                341
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                364,
+                1139,
+                332,
+                397
+              ],
+              "pivot": [
+                166,
+                342
+              ],
+              "durationTicks": 15
+            },
+            {
+              "pageId": "scar-special-s4-page-01",
+              "rect": [
+                695,
+                1139,
+                329,
+                397
+              ],
+              "pivot": [
+                160,
+                341
+              ],
+              "durationTicks": 15
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "Native BODY artwork, source action choreography, alpha separation and manually reviewed foot pivots; not confirmation of combat mechanics.",
+    "sourceSha256": "1b5465debd9eb733744c8abd52c8b40c09beb8ad94028174b82ecf07f41b0618",
+    "notes": [
+      "Six independently articulated drawings for each facing, with preparation, equipment action and recovery.",
+      "Feet and complete weapon tips visually inspected; all12source cells have clear alpha gutters and zero visible border pixels.",
+      "One fixed bodyHeightPx from the first upright head-to-feet reference for the whole atlas, no per-pose fitting.",
+      "Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips.",
+      "Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing.",
+      "BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate."
+    ]
+  }
+}

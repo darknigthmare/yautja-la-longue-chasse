@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: V111 prelude keeps the first record and K17 controls in the same labelled scrollport through the actual offer and consent
+ok 1 - V111 prelude keeps the first record and K17 controls in the same labelled scrollport through the actual offer and consent
+  ---
+  duration_ms: 17.982317
+  type: 'test'
+  ...
+# Subtest: V111 active and interrupted journals group the continuation counter, first record and current study under one scrollport
+ok 2 - V111 active and interrupted journals group the continuation counter, first record and current study under one scrollport
+  ---
+  duration_ms: 8.796426
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2563.989803

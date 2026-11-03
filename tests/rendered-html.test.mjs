@@ -27,7 +27,7 @@ async function render() {
   );
 }
 
-test("server-renders the complete game shell", async () => {
+test("server-renders the campaign menu before local archive hydration", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
@@ -35,13 +35,48 @@ test("server-renders the complete game shell", async () => {
   const html = await response.text();
   assert.doesNotMatch(html, developmentPreviewMeta);
   assert.match(html, /<title>Yautja : La Longue Chasse<\/title>/i);
-  assert.match(html, /data-game-shell="yautja-long-hunt"/);
-  assert.match(html, /LA LONGUE CHASSE/i);
-  assert.match(html, /JOUER/i);
+  // Inspect actual SSR markup, not matching strings inside the RSC payload.
+  const markup = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+  const main = markup.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0];
+  assert.ok(main, "the initial document contains its main landmark");
+  assert.match(main, /^<main\b[^>]*\bdata-campaign-menu="main"/);
+  assert.match(main, /<h1>Yautja<span>La Longue Chasse<\/span><\/h1>/);
+  assert.match(main, /<section\b[^>]*\baria-label="Menu principal"/);
+  assert.match(main, /5 parties · 10 manuelles \+ 2 autos par partie/);
+  assert.match(main, /<p\b(?=[^>]*\brole="status")(?=[^>]*\baria-live="polite")[^>]*>Vérification et enregistrement des archives…<\/p>/);
+
+  const buttons = [...main.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi)];
+  // Read the action label through its presentation spans, excluding helper copy and decorative arrows.
+  const actionLabel = content => content
+    .replace(/<small\b[^>]*>[\s\S]*?<\/small>/gi, "")
+    .replace(/<span\b(?=[^>]*\baria-hidden=["']true["'])[^>]*>[\s\S]*?<\/span>/gi, "")
+    .replace(/<[^>]+>/g, "").trim();
+  assert.deepEqual(buttons.map(([, , content]) => actionLabel(content)), [
+    "Continuer", "Nouvelle partie", "Importer une campagne JSON", "The Pit", "Game Reserve Planet", "Guerres des clans", "Archives visuelles", "Compte &amp; sauvegardes", "DLC / Chroniques de chasse", "Charger une partie", "Actualiser les archives",
+  ]);
+  // No local archives are available to SSR: actions stay protected until hydration.
+  for (const [, attributes, content] of buttons) {
+    // Account access is independent of archive hydration; game actions remain protected.
+    if (actionLabel(content) !== "Compte &amp; sauvegardes") assert.match(attributes, /(?:^|\s)disabled(?:\s|=|$)/);
+  }
+  assert.doesNotMatch(main, /data-campaign-session=|data-game-shell=|<canvas\b/);
 });
 
 test("removes the disposable starter preview", async () => {
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));
   await access(new URL("public/game/sprites/hunter.webp", templateRoot));
   await access(new URL("public/game/backgrounds/ship.webp", templateRoot));
+  await access(new URL("public/game/assets/v2/manifest.json", templateRoot));
+  await access(
+    new URL(
+      "public/game/assets/v2/actors/yautja/hunter/body/base.webp",
+      templateRoot,
+    ),
+  );
+  await access(
+    new URL(
+      "public/game/assets/v2/environments/jungle/layers/far-lake.webp",
+      templateRoot,
+    ),
+  );
 });

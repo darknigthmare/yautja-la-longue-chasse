@@ -1,0 +1,543 @@
+{
+  "fighterId": "feral-hunter",
+  "actionId": "CIN_F006_FATALITE_1",
+  "appearanceId": "runtime-default",
+  "atlasId": "feral-workbook-fatalite-1-v100",
+  "clipIds": [
+    "workbook.CIN_F006_FATALITE_1"
+  ],
+  "definition": {
+    "fighterId": "feral-hunter",
+    "bodyHeightPx": 240,
+    "pageBodyHeightPx": {
+      "feral-special-fatalite-1-a-right-v100": 240,
+      "feral-special-fatalite-1-a-left-v100": 450,
+      "feral-special-fatalite-1-final-right-v100": 422,
+      "feral-special-fatalite-1-return-right-v100": 422,
+      "feral-special-fatalite-1-b-left-v100": 441
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "feral-special-fatalite-1-a-right-v100",
+        "rect": [
+          0,
+          0,
+          712,
+          272
+        ],
+        "visibleRect": [
+          241,
+          15,
+          250,
+          240
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-a-right-v100",
+        "rect": [
+          711,
+          0,
+          825,
+          272
+        ],
+        "visibleRect": [
+          923,
+          35,
+          515,
+          220
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-a-right-v100",
+        "rect": [
+          0,
+          271,
+          828,
+          250
+        ],
+        "visibleRect": [
+          298,
+          289,
+          339,
+          221
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-a-right-v100",
+        "rect": [
+          827,
+          271,
+          709,
+          250
+        ],
+        "visibleRect": [
+          1018,
+          290,
+          324,
+          220
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-a-left-v100",
+        "rect": [
+          0,
+          0,
+          736,
+          533
+        ],
+        "visibleRect": [
+          81,
+          46,
+          564,
+          450
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-a-left-v100",
+        "rect": [
+          735,
+          0,
+          801,
+          533
+        ],
+        "visibleRect": [
+          826,
+          76,
+          701,
+          417
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-a-left-v100",
+        "rect": [
+          0,
+          532,
+          794,
+          492
+        ],
+        "visibleRect": [
+          145,
+          570,
+          561,
+          399
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-a-left-v100",
+        "rect": [
+          793,
+          532,
+          743,
+          492
+        ],
+        "visibleRect": [
+          882,
+          569,
+          488,
+          404
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-final-right-v100",
+        "rect": [
+          0,
+          0,
+          691,
+          510
+        ],
+        "visibleRect": [
+          112,
+          58,
+          452,
+          423
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-final-right-v100",
+        "rect": [
+          690,
+          0,
+          846,
+          510
+        ],
+        "visibleRect": [
+          818,
+          68,
+          709,
+          411
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-return-right-v100",
+        "rect": [
+          0,
+          0,
+          691,
+          510
+        ],
+        "visibleRect": [
+          112,
+          58,
+          451,
+          422
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-return-right-v100",
+        "rect": [
+          0,
+          509,
+          791,
+          515
+        ],
+        "visibleRect": [
+          68,
+          546,
+          698,
+          416
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-return-right-v100",
+        "rect": [
+          790,
+          509,
+          746,
+          515
+        ],
+        "visibleRect": [
+          815,
+          539,
+          714,
+          432
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-b-left-v100",
+        "rect": [
+          0,
+          0,
+          764,
+          528
+        ],
+        "visibleRect": [
+          95,
+          48,
+          602,
+          446
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-b-left-v100",
+        "rect": [
+          763,
+          0,
+          773,
+          528
+        ],
+        "visibleRect": [
+          831,
+          65,
+          648,
+          428
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-b-left-v100",
+        "rect": [
+          0,
+          527,
+          826,
+          497
+        ],
+        "visibleRect": [
+          144,
+          562,
+          654,
+          406
+        ]
+      },
+      {
+        "pageId": "feral-special-fatalite-1-b-left-v100",
+        "rect": [
+          825,
+          527,
+          711,
+          497
+        ],
+        "visibleRect": [
+          853,
+          598,
+          639,
+          382
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "feral-workbook-fatalite-1-v100",
+      "characterId": "feral-hunter",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "feral-special-fatalite-1-a-right-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-right-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-fatalite-1-a-left-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-left-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-fatalite-1-final-right-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-fatalite-1-final-right-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-fatalite-1-return-right-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-fatalite-1-return-right-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-fatalite-1-b-left-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-fatalite-1-b-left-v100.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.CIN_F006_FATALITE_1",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-fatalite-1-a-right-v100",
+              "rect": [
+                711,
+                0,
+                825,
+                272
+              ],
+              "pivot": [
+                311,
+                252
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-fatalite-1-a-right-v100",
+              "rect": [
+                0,
+                271,
+                828,
+                250
+              ],
+              "pivot": [
+                399,
+                237
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-fatalite-1-a-right-v100",
+              "rect": [
+                827,
+                271,
+                709,
+                250
+              ],
+              "pivot": [
+                295,
+                238
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-fatalite-1-final-right-v100",
+              "rect": [
+                690,
+                0,
+                846,
+                510
+              ],
+              "pivot": [
+                316,
+                477
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "feral-special-fatalite-1-return-right-v100",
+              "rect": [
+                0,
+                509,
+                791,
+                515
+              ],
+              "pivot": [
+                246,
+                437
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "feral-special-fatalite-1-return-right-v100",
+              "rect": [
+                790,
+                509,
+                746,
+                515
+              ],
+              "pivot": [
+                191,
+                450
+              ],
+              "durationTicks": 60
+            }
+          ]
+        },
+        {
+          "id": "workbook.CIN_F006_FATALITE_1",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-fatalite-1-a-left-v100",
+              "rect": [
+                735,
+                0,
+                801,
+                533
+              ],
+              "pivot": [
+                636,
+                493
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-fatalite-1-a-left-v100",
+              "rect": [
+                0,
+                532,
+                794,
+                492
+              ],
+              "pivot": [
+                543,
+                434
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-fatalite-1-a-left-v100",
+              "rect": [
+                793,
+                532,
+                743,
+                492
+              ],
+              "pivot": [
+                412,
+                441
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-fatalite-1-b-left-v100",
+              "rect": [
+                763,
+                0,
+                773,
+                528
+              ],
+              "pivot": [
+                528,
+                491
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "feral-special-fatalite-1-b-left-v100",
+              "rect": [
+                0,
+                527,
+                826,
+                497
+              ],
+              "pivot": [
+                587,
+                435
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "feral-special-fatalite-1-b-left-v100",
+              "rect": [
+                825,
+                527,
+                711,
+                497
+              ],
+              "pivot": [
+                508,
+                439
+              ],
+              "durationTicks": 60
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "source-presentation-native-full-choreography-gray-mannequin-basalt-scene-study-only",
+    "sourceSha256": "f8ebcd3875efb88b5be0e3e8098216aca038e4443b3e73e0c110f468b2a9adaf",
+    "sourceHashes": {
+      "/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-right-v100.png": "f8ebcd3875efb88b5be0e3e8098216aca038e4443b3e73e0c110f468b2a9adaf",
+      "/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-left-v100.png": "8a5cdeb3eb3cbb42241af92f5e537ae1f3a334fcc1ad9d55386784259ebdc313",
+      "/game/sprites/v100/pit/feral/feral-special-fatalite-1-final-right-v100.png": "9fe4b4071699e2bd32713604f0a8131d85607dcc595a39d9455321e1f6f2ff34",
+      "/game/sprites/v100/pit/feral/feral-special-fatalite-1-return-right-v100.png": "1327b6fa5647ae4c4660877deb9d2b02fae5241f82d0eb9c00b4357d7d1da292",
+      "/game/sprites/v100/pit/feral/feral-special-fatalite-1-b-left-v100.png": "9c269b662f03f47c832b44e5603abaa00cedc8b85afce798922ccd551ac31573"
+    },
+    "notes": "H10. Six actual stages each facing: prepare, whole spear pin against small basalt support, anatomical LEFT shield screen, final contact truly hidden by opaque shield, effortful withdrawal, threat check and fold. QA independently approved all selected steps. Cropped right03b3 and unsafe originalA lower rows excluded. One spear, left shield stable, no projectile/gore or victory substitution. Gray articulated adult-sized mannequin and basalt are explicit scene-study stand-ins baked into these images: no real narrative victim, independent opponent synchronization, fatality input, lifecycle or duel binding implemented. Native spear-head detail varies between independently authored views; exact canon set/victim not certified. Fixed reviewed Feral body references and manually reviewed Feral-foot baselines exclude mannequin/slab feet. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+  }
+}

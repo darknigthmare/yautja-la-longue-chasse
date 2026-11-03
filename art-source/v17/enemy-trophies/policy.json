@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "packId": "enemy-trophies-v17",
+  "packVersion": 17,
+  "sourcePolicy": {
+    "authority": [
+      "app/game/enemyRosterV7.ts",
+      "app/game/ecologyV8.ts"
+    ],
+    "projectCanonRequired": true,
+    "webReferenceRequired": false,
+    "franchiseStatus": "project-original",
+    "exactEnemyCoverageRequired": true,
+    "genericAliasingAllowed": false,
+    "sharedExactTrophyNamesAllowed": true
+  },
+  "consumerPolicy": {
+    "allowed": [
+      "enemy-bestiary-v7",
+      "enemy-bestiary-v8"
+    ],
+    "forbidden": [
+      "franchise-archive",
+      "trophy-wall",
+      "hunter-rig",
+      "hunt-canvas"
+    ]
+  },
+  "artifactPolicy": {
+    "generator": "OpenAI ImageGen",
+    "masterBackground": "#00ff00",
+    "runtimeAlphaRequired": true,
+    "promptStorage": "art-source-only"
+  }
+}

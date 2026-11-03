@@ -1,0 +1,691 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "stageId": "arena-146-primal-hunt-pilot-ruins",
+  "proposalId": "new-primal-temple",
+  "workbookStage": "09_STAGES!A52:N52",
+  "workbookLife": "10_VIE_DES_STAGES!A146:N148",
+  "sourceUrls": [
+    "https://www.sknr.net/2008/06/19/aliens-vs-predator-primal-hunt-interview/"
+  ],
+  "sourceEvidence": [
+    "Direct interview with Fox associate producer Paul Pawlicki confirms ancient alien-repelling Artifact, 500-year earlier Predator/Alien timeline and native creatures. No reference image establishes our exact environmental mechanism."
+  ],
+  "loreLimits": [
+    "Original adjacent dais mechanism, not claimed reproduction of canonical Artifact geometry. Exact game prop requires an authenticated visual reference.",
+    "E147 named fauna existence verified by producer (Bhulag, internally nicknamed Sloth, rock worms), but species appearance 1:1 not verified; use explicit original vegetation ambient alternative, keep literal fauna event open."
+  ],
+  "backgroundReview": {
+    "p0": "public/game/sprites/v55/pit-arenas/arena-146-primal-hunt-pilot-ruins/p0-depth.png",
+    "composition": "work-local/v55/stage-renderer/arena-146-primal-hunt-pilot-ruins/center.png",
+    "notes": "Both actual PNGs viewed: overcast ancient ribbed biomechanical stone arches, lush grey-green vegetation, tiered moss-covered rocky dais at rear-right. No humans/labs. Mechanism should contact rear dais."
+  },
+  "assets": [
+    {
+      "id": "ambient-01",
+      "prompt": "Use case: stylized-concept. Native transparent PNG animation sprite sheet of one small ancient biomechanical stone mechanism associated with an artifact dais, for prehistoric alien ruins in a Primal Hunt-inspired setting before human installations. Exactly SIX isolated drawings3columns2rows1536x1024. A low darkbasalt weathered pedestal with two concentric ribbed mechanical collar rings, carved-organic alienarchitecture, moss in stonecrevices, extremelyfaint amber seamlight. Across sixframes inner stone-metal collar rotates clearly bysmallsteps, tiny vents open/close; outer pedestal fixed. NO actual canonical handheldArtifact reproduced: this is an original adjacent environmental mechanism, not a claim about its exact in-game shape. NO hightechhumancontrolpanel, no letters/glyphtext, no humanwalls, no cables, no neonmagic beam, no people/animals. Diffuseovercastdaylight, humid mutedgreen-grey ruinsmatchingpaintedcinematicgameart. CompleteobjectSMALLmaximum280wide240high centered each512cell, atleast105pixels genuinelytransparent on allborders, intactbase. Truealpha background, no scenery/groundplane/groundshadow/grid.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-33500702-92ea-4cc7-8afb-bc3dc1df4a69.png",
+      "workspacePath": "work-local/v61/generated/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E146"
+      ],
+      "visualNotes": "Viewed native atlas: six distinct opening and rotation phases of inner collar, coherent low stone pedestal with intact stable base; no actual canonical Artifact depicted.",
+      "sha256": "7641c5ff3700cb682be7c47396cb8a7a9c93db1c20406bf2e0ce9aa6f3bbb230",
+      "bytes": 2361940,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.577325185139974,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            29,
+            129,
+            463,
+            333
+          ],
+          "alphaBounds32": [
+            31,
+            131,
+            458,
+            328
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            259.5,
+            462
+          ],
+          "bodyCenterPivot": [
+            260,
+            462
+          ],
+          "opaquePixelCount": 105539,
+          "contentSha256": "9037ea1bda3f95760b73dce46ec44b5fc680878c70e44f3b2407b66855474dc9",
+          "margins": [
+            29,
+            129,
+            20,
+            50
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            122,
+            464,
+            341
+          ],
+          "alphaBounds32": [
+            33,
+            123,
+            460,
+            337
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            263,
+            463
+          ],
+          "bodyCenterPivot": [
+            262.5,
+            463
+          ],
+          "opaquePixelCount": 106600,
+          "contentSha256": "2ccf5e9e25eb688b457de104d317ec3871af25530c186700daf21476dd9e7b89",
+          "margins": [
+            31,
+            122,
+            17,
+            49
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            24,
+            112,
+            464,
+            350
+          ],
+          "alphaBounds32": [
+            26,
+            114,
+            460,
+            345
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            255,
+            462
+          ],
+          "bodyCenterPivot": [
+            255.5,
+            462
+          ],
+          "opaquePixelCount": 107599,
+          "contentSha256": "79cfd6165e351db74c3a33117d46a755b54a7c195e86a674840e9274015d0c3d",
+          "margins": [
+            24,
+            112,
+            24,
+            50
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            29,
+            98,
+            464,
+            346
+          ],
+          "alphaBounds32": [
+            31,
+            102,
+            459,
+            340
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            256.5,
+            444
+          ],
+          "bodyCenterPivot": [
+            260.5,
+            444
+          ],
+          "opaquePixelCount": 106642,
+          "contentSha256": "f8acead1b163a39df3aa74eb9d0dd0bd73319ae2e6aebcd951545d955a9937a6",
+          "margins": [
+            29,
+            98,
+            19,
+            68
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            30,
+            97,
+            465,
+            348
+          ],
+          "alphaBounds32": [
+            33,
+            101,
+            460,
+            341
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            260.5,
+            445
+          ],
+          "bodyCenterPivot": [
+            262,
+            445
+          ],
+          "opaquePixelCount": 107162,
+          "contentSha256": "6962b59b0b5605602bf230e19d75aeb8eef3c311714750a950137f803a97bb28",
+          "margins": [
+            30,
+            97,
+            17,
+            67
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            24,
+            100,
+            467,
+            346
+          ],
+          "alphaBounds32": [
+            26,
+            104,
+            462,
+            338
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            256.5,
+            446
+          ],
+          "bodyCenterPivot": [
+            257,
+            446
+          ],
+          "opaquePixelCount": 108016,
+          "contentSha256": "b6f2be3ec480fab8627059c37a39e39a11e4f5d412482b6fd0899078602be579",
+          "margins": [
+            24,
+            100,
+            21,
+            66
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "stageId": "arena-146-primal-hunt-pilot-ruins",
+      "id": "ambient-02",
+      "mode": "built-in-imagegen",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-006f43f8-cd21-452a-bd70-0b541a3a830a.png",
+      "workspacePath": "work-local/v61/generated/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+      "sha256": "8e1fee968aa9299058fa2d0dfba85b7f0be7ecb88983a797281e2b23dd3a5cd4",
+      "bytes": 2358401,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6679286956787109,
+      "copyByteIdentical": true,
+      "prompt": "Use case: stylized-concept. Create one production RGBA sprite animation atlas for a 2D fighting game. 1536 x 1024 pixels, exactly THREE columns and TWO rows, SIX separate hand-painted frames, each cell 512 x 512. Genuine transparent background. Subject: a SMALL tuft of ancient rain-forest ferns and lichen growing on a dark porous ribbed alien stone ledge. Grey-green fronds, subdued ochre moss, realistic weathered materials; somber misty ancient biomechanical ruins palette. This is an original environmental vegetation prop, not a named canonical creature. Match the mood and materials of the previous ancient jungle ruins image, but DO NOT include its landscape or any backdrop. Animation sequence: fronds at rest; fronds gently bending left; deeper left breeze with two tiny drifting leaves; fronds returning upright; bending right; returning nearly to rest. Six visibly different drawn poses, same planted root and stone ledge size, same camera, side view suitable for a distant background ledge. All six complete props must be strictly INSIDE their own cell with at least 65 transparent pixels margin on EVERY edge. Prop occupies at most 350 x 350 pixels per cell, centred at x256 y256. Tiny leaves also stay inside safe margin. Identical grounded base position in every frame, no shadow below base. Muted realistic painted 2D game sprites with clear silhouettes, no grids, no text, no labels, no frames, no magic, no human technology, no animals, no characters, no sheets or white background. Do not draw the whole stage. Transparency is essential.",
+      "referencedImagePaths": [],
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E147"
+      ],
+      "loreLimits": [
+        "Vegetation originale de remplacement : ne valide pas la faune E147, dont l'apparence reste non documentee."
+      ],
+      "rejectedAttempts": [],
+      "visualNotes": "Six complete native drawings inspected: muted ferns bending with wind, root and porous stone ledge remain coherent. All borders transparent. Original vegetation alternative; canonical fauna remains open.",
+      "status": "accepted",
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            63,
+            87,
+            412,
+            389
+          ],
+          "pivot": [
+            232.5,
+            476
+          ],
+          "margins": [
+            63,
+            87,
+            37,
+            36
+          ],
+          "opaquePixelCount": 90831,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "034399167a76c4b1ab61b2cb66d6d1a6cb96af511b3e80fbeb0bc811903e9751"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            116,
+            438,
+            361
+          ],
+          "pivot": [
+            239.5,
+            477
+          ],
+          "margins": [
+            41,
+            116,
+            33,
+            35
+          ],
+          "opaquePixelCount": 83323,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "bdb4f9c596ce7c4dd05173a23683a333aac98c1229192f3c67cdbf4e3f9215b6"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            43,
+            125,
+            436,
+            352
+          ],
+          "pivot": [
+            238.5,
+            477
+          ],
+          "margins": [
+            43,
+            125,
+            33,
+            35
+          ],
+          "opaquePixelCount": 78276,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "56be488b8ddb273fa70764577820ef0923110ed4b60196538569f4b6eec2bbd7"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            67,
+            79,
+            415,
+            377
+          ],
+          "pivot": [
+            241.5,
+            456
+          ],
+          "margins": [
+            67,
+            79,
+            30,
+            56
+          ],
+          "opaquePixelCount": 88310,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "f3bad60485e5071cd7f969f3c8a91b1077996cdcff9a3117cc6c65535e3bb9c8"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            66,
+            75,
+            412,
+            381
+          ],
+          "pivot": [
+            241.5,
+            456
+          ],
+          "margins": [
+            66,
+            75,
+            34,
+            56
+          ],
+          "opaquePixelCount": 88225,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "761ce509de9927343d89fbc5e45e9f9d9c0c1a1494d36d29c95f7d2b64f43dbd"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            68,
+            59,
+            412,
+            397
+          ],
+          "pivot": [
+            243.5,
+            456
+          ],
+          "margins": [
+            68,
+            59,
+            32,
+            56
+          ],
+          "opaquePixelCount": 93338,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "b99213dd2973b1896712ced22dde6228ffa10f35ae00c64d46bb9b6cbaf44b54"
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "stageId": "arena-146-primal-hunt-pilot-ruins",
+      "id": "ambient-03",
+      "mode": "built-in-imagegen",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-2adb670a-1f1b-4a8e-948a-f4e7866c7a59.png",
+      "workspacePath": "work-local/v61/generated/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+      "sha256": "2af3d3dc5e47e35ee37362333e5316e0c4550c62496e1951fac32e548b812a15",
+      "bytes": 2793922,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.4900506337483724,
+      "copyByteIdentical": true,
+      "prompt": "Create a production PNG RGBA sprite animation atlas for a 2D fighting game. Exactly 1536 x 1024, three columns and two rows, SIX complete independent drawings, 512 x 512 cells. TRANSPARENT BACKGROUND WITH REAL ZERO ALPHA, no environmental background, no colored wash, no gradients, no glow cloud behind the object. Subject: a compact ancient nonhuman ribbed biomechanical stone doorway mechanism from jungle ruins. Grey-black weathered stone and fossil-like curving ribs, very restrained ochre seams, moss flecks. No human controls or modern technology. Distant front-side view, low perspective, suitable for mounting to a large ruined wall. Each drawing is the SAME complete compact door and frame. Animation: 1 closed dormant stone iris; 2 faint internal ochre light and slight seam movement; 3 a small gap opens mechanically; 4 gap is widest but dark interior, a few particles of stone dust; 5 gap closes and dust settles; 6 closed again with fading faint light. No creature, no person, no magic beam, no portal. Style: richly textured realistic painted game background prop, sombre warm-grey ancient organic architecture. Safe composition: object NO LARGER than 300 pixels tall and 280 pixels wide within EACH cell, placed at centre (256,256); minimum 90 pixels completely transparent margin on every cell edge, including every dust particle. Identical outer frame silhouette and base position in all six poses, only inner mechanism/dust moves. Draw all six from scratch as distinct animation poses, readable differences. No text, labels, grid lines, checkerboard, drop shadow, painted backdrop or ground plane. All pixels outside the isolated door and sparse tiny dust must be genuinely transparent.",
+      "referencedImagePaths": [],
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E148"
+      ],
+      "loreLimits": [
+        "Mecanisme de porte original adapte a l'architecture des ruines, pas une reproduction canonique 1:1."
+      ],
+      "rejectedAttempts": [],
+      "visualNotes": "Six complete native drawings inspected: fixed ribbed stone frame and mechanical iris opening/closing, no characters or human machinery. All borders transparent. Original door design, not claimed 1:1.",
+      "status": "accepted",
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            37,
+            447,
+            427
+          ],
+          "pivot": [
+            270.5,
+            464
+          ],
+          "margins": [
+            47,
+            37,
+            18,
+            48
+          ],
+          "opaquePixelCount": 133267,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "d8ebef28e63b8b56f729e614a786c78bce1dcdcc777feba3cb250bf13516c88d"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            28,
+            37,
+            450,
+            427
+          ],
+          "pivot": [
+            253,
+            464
+          ],
+          "margins": [
+            28,
+            37,
+            34,
+            48
+          ],
+          "opaquePixelCount": 134331,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "8193fb710a9f5a7e96a2f3fe1f7b244380fc007e3ba54e00970ac7e6e1a085c9"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            39,
+            448,
+            425
+          ],
+          "pivot": [
+            240,
+            464
+          ],
+          "margins": [
+            16,
+            39,
+            48,
+            48
+          ],
+          "opaquePixelCount": 134076,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "1c10a685e0ba1ce4192a6ffa749fbdc86d13ccb3ad332aeb0c8deeb02271883a"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            23,
+            447,
+            425
+          ],
+          "pivot": [
+            270.5,
+            448
+          ],
+          "margins": [
+            47,
+            23,
+            18,
+            64
+          ],
+          "opaquePixelCount": 133491,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "d57d2276c8c53fdf36e6594f1dc6bb03a9da39a3196a77e4863227dd149cc759"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            22,
+            447,
+            426
+          ],
+          "pivot": [
+            254,
+            448
+          ],
+          "margins": [
+            31,
+            22,
+            34,
+            64
+          ],
+          "opaquePixelCount": 133550,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "f30f977fc6aa1e6fd022e035945a55a5dcce9b00d51d5267577c0b0d6242866c"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            19,
+            23,
+            445,
+            425
+          ],
+          "pivot": [
+            241,
+            448
+          ],
+          "margins": [
+            19,
+            23,
+            48,
+            64
+          ],
+          "opaquePixelCount": 133366,
+          "borderPixels": 0,
+          "borderSolidPixels": 0,
+          "contentSha256": "9cc9327b92affa15d496cde0cd618f75defaa388471bda6ed53886492d6a62cc"
+        }
+      ]
+    }
+  ],
+  "artStatus": "partial-generation-awaiting-root-02-03"
+}

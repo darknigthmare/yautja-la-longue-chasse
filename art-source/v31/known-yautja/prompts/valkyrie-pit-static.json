@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "assetId": "valkyrie-pit-static",
+  "fighterId": "valkyrie",
+  "rosterIds": {
+    "yautja": "Y-239",
+    "game": "G-025"
+  },
+  "status": "integrated-static-candidate",
+  "scope": "Single static PIT identity plate; no animation frames.",
+  "promptRecordType": "Post-generation fidelity and regeneration brief; not a verbatim record of the completed generation request.",
+  "generation": {
+    "provider": "OpenAI imagegen (built-in)",
+    "performed": true,
+    "sessionOutputId": "exec-ee2d108c-fcd2-4fde-b1a9-9d0110f16d30",
+    "candidateMasterPath": "art-source/v31/known-yautja/sources/valkyrie-chroma.png",
+    "candidateSha256": "7bc43aca94fe60b30d14b13c7de54eded3811d4473cc7c8e3d2604bacde3c2e2",
+    "staticVisualReview": true,
+    "animationClipsReviewed": 0,
+    "officialCertification": false,
+    "oneToOneCertified": false
+  },
+  "sourceEvidence": [
+    {
+      "class": "official-publisher-developer-post",
+      "url": "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/",
+      "reviewedAs": "Official PlayStation Blog post by IllFonic lead gameplay engineer Lucas Pederson; text reviewed directly.",
+      "supports": [
+        "official female Valkyrie class",
+        "Norse-lore warrior direction",
+        "hit-and-run combat role",
+        "two-handed Norse Hammer",
+        "heavy overhead hammer attack"
+      ]
+    },
+    {
+      "class": "secondary-community-index-only",
+      "url": "https://avp.fandom.com/wiki/Valkyrie_Predator",
+      "reviewedAs": "Direct access returned HTTP 402; retained only as the V26 secondary index, with no visual claim adopted."
+    },
+    {
+      "class": "local-project-lore",
+      "path": "app/game/hunterLore.ts",
+      "sha256": "bd40f527f92efb26f0409c81aa4fedcf225ffd546db799c753a7033df73db7cc",
+      "supports": [
+        "athletic huntress proportions",
+        "ashen mottling",
+        "nonsexualized combat silhouette",
+        "local armor palette"
+      ]
+    },
+    {
+      "class": "local-gameplay-adaptation",
+      "path": "app/game/systems/pitFirstEdition.ts",
+      "sha256": "63d61e40a331652d4f19f71e3deed3c9ccfdea7a1ec7605dd10d21ac7900fd45",
+      "supports": [
+        "PIT spear-intercept mechanic only; not canonical visual evidence"
+      ]
+    }
+  ],
+  "truthBoundary": {
+    "officialOrLicensed": [
+      "Valkyrie is an official female Hunting Grounds class with a Norse theme.",
+      "Her official signature weapon in the reviewed post is a two-handed Norse Hammer."
+    ],
+    "localInterpretation": [
+      "Ashen mottling, palette grouping, and the PIT combat framing come from project lore.",
+      "The spear-intercept PIT move is gameplay adaptation and does not replace the official hammer in this identity plate."
+    ],
+    "productionInference": [
+      "Exact winged mask, armor engravings, hammer geometry, and left/right attachment points require an attached primary game capture."
+    ],
+    "secondaryClaimsAdopted": [],
+    "oneToOneCertified": false
+  },
+  "structuredPrompt": {
+    "subject": "Valkyrie Predator from Predator: Hunting Grounds, as original fan-made game art anchored to the official female Norse warrior class.",
+    "anatomy": [
+      "adult female Yautja with athletic huntress proportions",
+      "powerful shoulders, arms, core, and legs suited to hit-and-run combat",
+      "clearly Yautja hands, feet, mandibles under the mask line, and black dreadlocks",
+      "nonsexualized functional combat silhouette",
+      "no human hourglass exaggeration"
+    ],
+    "equipment": [
+      "one official-style two-handed Norse Hammer",
+      "reference-matched winged or Norse biomask only if visible in attached primary capture",
+      "functional engraved armor with no invented fantasy cloth",
+      "omit the PIT spear from this static identity plate"
+    ],
+    "asymmetry": [
+      "preserve exact wing, horn, pauldron, gauntlet, strap, pouch, trophy, and hammer-head asymmetry from the attached capture",
+      "do not mirror a single side to fabricate the other"
+    ],
+    "poseAndFraming": [
+      "one complete full-body fighter",
+      "right-facing three-quarter lateral hit-and-run stance",
+      "hammer held in a readable two-handed guard without cropping",
+      "portrait canvas",
+      "subject about 80 percent of image height",
+      "at least 10 percent clear padding on every edge",
+      "feet, hammer, and dreadlock tips fully visible"
+    ],
+    "renderStyle": [
+      "dense cinematic 32-bit-era pre-rendered pixel art",
+      "crisp silhouette and weapon readability at gameplay scale",
+      "controlled metal, leather, and skin separation",
+      "no photoreal live-action compositing"
+    ],
+    "background": [
+      "exact flat opaque chroma green #00FF00",
+      "no gradient, floor, shadow, fog, particles, vignette, runes, or scenery",
+      "no green light, spill, halo, reflection, or #00FF00 on the subject"
+    ],
+    "forbidden": [
+      "text",
+      "logo",
+      "UI",
+      "watermark",
+      "border",
+      "cropping",
+      "sexualized armor",
+      "spear",
+      "generic Marvel-style Valkyrie",
+      "invented magic",
+      "extra limbs",
+      "copied official key art"
+    ]
+  },
+  "acceptanceGate": [
+    "Compare mask, armor, hammer, anatomy, and asymmetry against an attached direct Hunting Grounds capture.",
+    "Reject a spear-led identity, sexualized anatomy, and any claim of official, exact, or 1:1 fidelity.",
+    "Approve only as a static fan-made identity plate; animation coverage remains zero."
+  ],
+  "rightsAndLabel": "Original fan-made derivative artwork for this project; non-official and not certified 1:1.",
+  "integration": {
+    "confirmed": true,
+    "manifestPath": "public/game/sprites/v31/film-plates/manifest.json",
+    "runtimeUrl": "/game/sprites/v31/film-plates/valkyrie.png",
+    "runtimePath": "public/game/sprites/v31/film-plates/valkyrie.png",
+    "runtimeKind": "static-bitmap",
+    "runtimeSha256": "1188e38aea42f070a58b38f57161ab1e52a3df3d9cc73d48d9324bca1a530e93"
+  }
+}

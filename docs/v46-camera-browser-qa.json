@@ -1,0 +1,165 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-23T11:52:17.549Z",
+  "url": "http://127.0.0.1:4174",
+  "checks": [
+    {
+      "name": "single-retreat-and-approach",
+      "initial": {
+        "mode": "follow",
+        "zoom": 1.5887,
+        "targetZoom": 1.5887,
+        "x": 479.46,
+        "y": 362,
+        "back": 1.0294,
+        "floor": 1.5887,
+        "fighters": [
+          {
+            "x": 300,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ]
+      },
+      "far": {
+        "mode": "follow",
+        "zoom": 1.1983,
+        "targetZoom": 1.17,
+        "x": 373.92,
+        "y": 312.13,
+        "back": 1.0099,
+        "floor": 1.1983,
+        "fighters": [
+          {
+            "x": 83.8,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ]
+      },
+      "close": {
+        "mode": "follow",
+        "zoom": 1.9174,
+        "targetZoom": 1.95,
+        "x": 615.55,
+        "y": 359.2,
+        "back": 1.0459,
+        "floor": 1.9174,
+        "fighters": [
+          {
+            "x": 577.3,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ]
+      },
+      "screenShake": false,
+      "stableHud": true
+    },
+    {
+      "name": "jump-framing",
+      "minimumZoom": 1.722,
+      "maximumY": 100.64,
+      "stableHud": true
+    },
+    {
+      "name": "explicit-fixed-camera-toggle",
+      "fixed": {
+        "mode": "fixed",
+        "zoom": 0.9,
+        "targetZoom": 0.9,
+        "x": 480,
+        "y": 270,
+        "back": 0.9,
+        "floor": 0.9,
+        "fighters": [
+          {
+            "x": 577.3,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ]
+      },
+      "movedFixed": {
+        "mode": "fixed",
+        "zoom": 0.9,
+        "targetZoom": 0.9,
+        "x": 480,
+        "y": 270,
+        "back": 0.9,
+        "floor": 0.9,
+        "fighters": [
+          {
+            "x": 394,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ]
+      },
+      "restoredFollow": true
+    },
+    {
+      "name": "system-reduced-motion",
+      "reduced": {
+        "mode": "fixed",
+        "zoom": 0.9,
+        "targetZoom": 0.9,
+        "x": 480,
+        "y": 270,
+        "back": 0.9,
+        "floor": 0.9,
+        "fighters": [
+          {
+            "x": 394,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ]
+      },
+      "movedReduced": {
+        "mode": "fixed",
+        "zoom": 0.9,
+        "targetZoom": 0.9,
+        "x": 480,
+        "y": 270,
+        "back": 0.9,
+        "floor": 0.9,
+        "fighters": [
+          {
+            "x": 191.9,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ]
+      },
+      "fixedControlDisabled": true
+    }
+  ],
+  "errors": [],
+  "responses": [],
+  "limits": [
+    "Keyboard and emulated system preference; no physical controller certification.",
+    "Replay state invariance, crossing, all roster bounds and all arenas are covered by deterministic tests."
+  ]
+}

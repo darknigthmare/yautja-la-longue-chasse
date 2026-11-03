@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "id": "moto-propulsion-fx",
+  "status": "authored-review",
+  "generator": "openai-imagegen",
+  "originId": "exec-4cb7c881-99a0-4045-a6bb-88608b68a996.png",
+  "sourcePath": "art-source/v33/vehicles/moto-propulsion-fx-v33.png",
+  "publicPath": "/game/vehicles/v33/moto-propulsion-fx-v33.png",
+  "sha256": "21cee55cb7e5ae9df3816931c24255c764d3c2dfaaf1833df053eeeff90f3eba",
+  "width": 1536,
+  "height": 1024,
+  "transparency": {
+    "mode": "alpha"
+  },
+  "clearPixels": 1323879,
+  "translucentPixels": 248985,
+  "generatedDrawings": 8,
+  "runtimeClipsAccepted": 0,
+  "notes": [
+    "Effet de propulsion original indépendant du châssis, du pilote et des armes.",
+    "Huit dessins : quatre émissions vers la gauche et quatre vers la droite.",
+    "Alpha natif : les bords des cellules atteignent seulement1–2/255. Points d’émission alignés dans le lecteur à partir du cœur lumineux ; aucune transformation des PNG.",
+    "Planche de revue, aucun véhicule pilotable ajouté.",
+    "Orientation du véhicule indiquée dans le lecteur ; le jet part dans le sens opposé. Cadence de revue seulement, aucune accélération jouable certifiée."
+  ],
+  "cells": [
+    {
+      "index": 0,
+      "direction": "left",
+      "rect": [
+        0,
+        0,
+        384,
+        512
+      ],
+      "maxBorderAlpha": 1,
+      "strongBorderPixels": 0,
+      "pivot": [
+        299,
+        281
+      ],
+      "facing": "right",
+      "phase": "ignition",
+      "durationTicks": 8
+    },
+    {
+      "index": 1,
+      "direction": "left",
+      "rect": [
+        384,
+        0,
+        384,
+        512
+      ],
+      "maxBorderAlpha": 2,
+      "strongBorderPixels": 0,
+      "pivot": [
+        343,
+        281
+      ],
+      "facing": "right",
+      "phase": "extension",
+      "durationTicks": 8
+    },
+    {
+      "index": 2,
+      "direction": "left",
+      "rect": [
+        768,
+        0,
+        384,
+        512
+      ],
+      "maxBorderAlpha": 1,
+      "strongBorderPixels": 0,
+      "pivot": [
+        352,
+        281
+      ],
+      "facing": "right",
+      "phase": "split",
+      "durationTicks": 8
+    },
+    {
+      "index": 3,
+      "direction": "left",
+      "rect": [
+        1152,
+        0,
+        384,
+        512
+      ],
+      "maxBorderAlpha": 1,
+      "strongBorderPixels": 0,
+      "pivot": [
+        319,
+        281
+      ],
+      "facing": "right",
+      "phase": "contraction",
+      "durationTicks": 8
+    },
+    {
+      "index": 4,
+      "direction": "right",
+      "rect": [
+        0,
+        512,
+        384,
+        512
+      ],
+      "maxBorderAlpha": 1,
+      "strongBorderPixels": 0,
+      "pivot": [
+        103,
+        238
+      ],
+      "facing": "left",
+      "phase": "ignition",
+      "durationTicks": 8
+    },
+    {
+      "index": 5,
+      "direction": "right",
+      "rect": [
+        384,
+        512,
+        384,
+        512
+      ],
+      "maxBorderAlpha": 1,
+      "strongBorderPixels": 0,
+      "pivot": [
+        26,
+        238
+      ],
+      "facing": "left",
+      "phase": "extension",
+      "durationTicks": 8
+    },
+    {
+      "index": 6,
+      "direction": "right",
+      "rect": [
+        768,
+        512,
+        384,
+        512
+      ],
+      "maxBorderAlpha": 1,
+      "strongBorderPixels": 0,
+      "pivot": [
+        37,
+        238
+      ],
+      "facing": "left",
+      "phase": "split",
+      "durationTicks": 8
+    },
+    {
+      "index": 7,
+      "direction": "right",
+      "rect": [
+        1152,
+        512,
+        384,
+        512
+      ],
+      "maxBorderAlpha": 1,
+      "strongBorderPixels": 0,
+      "pivot": [
+        79,
+        238
+      ],
+      "facing": "left",
+      "phase": "contraction",
+      "durationTicks": 8
+    }
+  ],
+  "prompt": "Create a production-quality 2D side-view game VFX sprite sheet for an ORIGINAL alien hunting hoverbike, Yautja-inspired bronze hunting technology. ONLY the separate propulsion plasma exhaust, absolutely NO vehicle, rider, hardware, scenery, ground, UI, labels or text. True transparent RGBA background, never white/black/grey or checkerboard baked in. 1536 x 1024 landscape sheet, precisely 4 columns x 2 rows, 8 independent drawings in equally spaced cells with 36 pixel empty gutters. Top row: four distinct temporal drawings of a low-thrust teal green plasma plume pointing LEFT, emitted from a small attachment point at the RIGHT end of the plume. Bottom row: independently drawn corresponding four temporal phases of a plume pointing RIGHT emitted from its LEFT end. Each plume has a compact bright mint core and 3 to 5 irregular tapered green-teal translucent tongues; narrow restrained glow, no broad radial halo. The 4 phases read as irregular low-thrust ignition, extension, split tongue, contraction with smooth continuity; phase 4 returns toward phase 1. Keep constant emitter anchor and similar max length/height across each row, no translation of a repeated drawing. Fine hand-painted dark sci-fi sprite aesthetics, crisp silhouette, no fuzzy smoke, no orange fire, no magic glyphs, no stars, no detached particles crossing cell boundaries. One plume per cell. Horizontal orientation exactly, no perspective. Leave ample transparent padding around all shapes. This is an original game energy effect, not a depiction of any official vehicle or claim of franchise 1:1 accuracy."
+}

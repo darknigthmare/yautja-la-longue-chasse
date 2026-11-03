@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-12T17:58:12.410Z",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "contentVersion": "V32",
+  "checks": [
+    {
+      "name": "live-match",
+      "arena": "trophy-hall",
+      "planes": "P0,P1,P2,P3,P4,P5",
+      "missing": "0",
+      "statuses": [
+        {
+          "fighter": "jungle-hunter",
+          "status": "sprite-sheet-animation"
+        },
+        {
+          "fighter": "city-hunter",
+          "status": "sprite-sheet-animation"
+        }
+      ]
+    },
+    {
+      "name": "jungle-hunter-idle",
+      "HTTP": 200
+    },
+    {
+      "name": "jungle-hunter-light",
+      "HTTP": 200
+    },
+    {
+      "name": "city-hunter-idle",
+      "HTTP": 200
+    },
+    {
+      "name": "city-hunter-light",
+      "HTTP": 200
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": []
+}

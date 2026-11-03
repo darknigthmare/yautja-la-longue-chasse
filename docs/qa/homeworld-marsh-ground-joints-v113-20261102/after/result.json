@@ -1,0 +1,1077 @@
+{
+  "schemaVersion": 1,
+  "domain": "Homeworld marsh ground joints V113",
+  "status": "PASS_TARGETED_EXPLORATORY",
+  "phase": "after",
+  "baseUrl": "http://127.0.0.1:3105",
+  "scope": "Bounded comparison at six declared cameras, three real fissure crossings/returns (old-layout refusal expected only in before), native marsh-watch return and Worker-guided dock-door entry/exit. Initial checkpoints are explicit fixtures. This is not a complete Homeworld campaign or V112 production certificate; no artwork validated status.",
+  "sourceBefore": [
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25627,
+      "sha256": "b616e13d21e118804c776446bf85b366d1c9b92093cdd48e6985d449ad86c40f"
+    },
+    {
+      "file": "app/game/systems/homeworldWorldV77.ts",
+      "bytes": 36518,
+      "sha256": "e9f6da87934bdfab044a17b5d3ea46f3d16bfe5dab998c36021f699cfc6585de"
+    },
+    {
+      "file": "app/game/systems/homeworldMarshGroundJointsV113.ts",
+      "bytes": 11068,
+      "sha256": "8f2fb324502bed8221373da485f0b07500820ba0f7fbd22bdb8fec94f34eed21"
+    },
+    {
+      "file": "app/game/systems/homeworldGeometryRecoveryV112.ts",
+      "bytes": 23508,
+      "sha256": "52b9a63831661b90bace0047a63ab98b95249b19d9c6b54f4d5fdf9221c70c69"
+    },
+    {
+      "file": "scripts/qa-homeworld-marsh-ground-joints-v113.mjs",
+      "bytes": 14034,
+      "sha256": "525a232e26db6d73b6e8c3fa487a0e22044d59dba401422aae013b7bb484a179"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25627,
+      "sha256": "b616e13d21e118804c776446bf85b366d1c9b92093cdd48e6985d449ad86c40f"
+    },
+    {
+      "file": "app/game/systems/homeworldWorldV77.ts",
+      "bytes": 36518,
+      "sha256": "e9f6da87934bdfab044a17b5d3ea46f3d16bfe5dab998c36021f699cfc6585de"
+    },
+    {
+      "file": "app/game/systems/homeworldMarshGroundJointsV113.ts",
+      "bytes": 11068,
+      "sha256": "8f2fb324502bed8221373da485f0b07500820ba0f7fbd22bdb8fec94f34eed21"
+    },
+    {
+      "file": "app/game/systems/homeworldGeometryRecoveryV112.ts",
+      "bytes": 23508,
+      "sha256": "52b9a63831661b90bace0047a63ab98b95249b19d9c6b54f4d5fdf9221c70c69"
+    },
+    {
+      "file": "scripts/qa-homeworld-marsh-ground-joints-v113.mjs",
+      "bytes": 14034,
+      "sha256": "525a232e26db6d73b6e8c3fa487a0e22044d59dba401422aae013b7bb484a179"
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "central",
+      "point": {
+        "x": 6473,
+        "y": 2800
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "rampart-upper-end",
+      "point": {
+        "x": 6300,
+        "y": 2200
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "rampart-lower-end",
+      "point": {
+        "x": 6300,
+        "y": 3350
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "dock-upper-end",
+      "point": {
+        "x": 6500,
+        "y": 2500
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "dock-lower-end",
+      "point": {
+        "x": 6500,
+        "y": 3120
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "central-mobile",
+      "point": {
+        "x": 6473,
+        "y": 2800
+      },
+      "levelId": "0",
+      "width": 390,
+      "height": 844,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "cross-rampart-upper",
+      "point": {
+        "x": 6175,
+        "y": 2500
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "cross-rampart-lower",
+      "point": {
+        "x": 6175,
+        "y": 3250
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "cross-dock-road",
+      "point": {
+        "x": 6600,
+        "y": 2700
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "marsh-watch-return",
+      "point": {
+        "x": 6375,
+        "y": 2600
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    },
+    {
+      "name": "dock-door",
+      "point": {
+        "x": 6473,
+        "y": 2800
+      },
+      "levelId": "0",
+      "width": 1440,
+      "height": 1050,
+      "scope": "Declared normalized checkpoint only; not travel between cameras or played First Tracks"
+    }
+  ],
+  "responses": [
+    {
+      "scenario": "central",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "5f6f5c3aa152f82e5dc163dd3223d9354c0764f8aa1880a85de009aeb5d4055c",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "central",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "50dd1aa13da7b3234926f99966b751a2659a691b1932c97ceed1bea9d9d690c7",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "rampart-upper-end",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "3cfec5a3c866b2234479d42b5a4828c2359456045cff7e718957ed61ddf5f90a",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "rampart-upper-end",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "b8c68412af4cc72bdcf8cf84d42b75d8f10a74a10c7b5d06c7e7680707b2d5e4",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "rampart-lower-end",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "87d7cbb34bd2ae4ba62f96629548dac37a0845422c147ad4bf9eb61f191ef100",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "rampart-lower-end",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "5b15842a8b1d0be9aaa7cf592e5b3fbe15d12343ed66c5d0e54225e42b7d194e",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "dock-upper-end",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "f97e0d8e21897e570909665ba99ea69d0fec57d05ccf54bc7cf388a556917a2a",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "dock-upper-end",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "387a658722a47dae2e11749f710aa89e56437a521db4fe20eacfc6f1c858a90c",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "dock-lower-end",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "946621a393d92ea6ea0aaceae74103ca1da636d4ca7a4152679ed9a76d60ebfe",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "dock-lower-end",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "3bcaf06025b5a29eff34d802bbe5f42876be14f60361f38802cba23d1a5f1c13",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "central-mobile",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "f215e3f3eb44bee1215cd1b9c4e5b26d838bc604c3a56fefba5f0328ad229681",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "central-mobile",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "9a12b1676625d4bc4df41b47fa1a20d4b4ba89197b7062a68bc77fb4cc437157",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "cross-rampart-upper",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "0c8f4c02f486d5fb6ed33320cc377918e5b7c64049a973518bc8c73856d01f87",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "cross-rampart-upper",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "a383656952feb622f8f0c79fb6255f82bcc6858119f274a3e2ca8f97a5e9114f",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "cross-rampart-lower",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "49c8951119b216808f04e7a796584e344d11e97546a042a21fe2306de6c952ac",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "cross-rampart-lower",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "1f7401ea819acde59a34c6ea8783b96d8ee9b2f23b65b34f54f8fae74ae4b7fd",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "cross-dock-road",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "c36ab55292b79cf9a0741b9f33a57b528ae2b9f4a1c36f838ff24899b663e073",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "cross-dock-road",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "0dcf4d9a476f17f9f8f4a2122baf25811d764f787a82987b32bfede2a6bb7a9a",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "marsh-watch-return",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "af0bfb2b1d0f6c53ab8e732a602186634512152d0a59d94b67a4970dd68f66af",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "marsh-watch-return",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "e852c07b7b29eb36709af62e06d206565c5c745647a0ddf19fa7fde356e4664b",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "dock-door",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "04f57a0f793580f5768c08666dc2f65ee6bb313400d621bad0fc16746cb0ee32",
+      "observedBuildId": null
+    },
+    {
+      "scenario": "dock-door",
+      "url": "http://127.0.0.1:3105/",
+      "status": 200,
+      "htmlSha256": "80b9a0110814550ab2fb1d313132a79e4608863e54b117332a6c2faa26300405",
+      "observedBuildId": null
+    }
+  ],
+  "checks": [
+    {
+      "name": "central restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6473,
+          "y": 2800
+        },
+        "actual": {
+          "x": 6473,
+          "y": 2800
+        }
+      }
+    },
+    {
+      "name": "central mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "central actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "rampart-upper-end restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6300,
+          "y": 2200
+        },
+        "actual": {
+          "x": 6300,
+          "y": 2200
+        }
+      }
+    },
+    {
+      "name": "rampart-upper-end mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "rampart-upper-end actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "rampart-lower-end restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6300,
+          "y": 3350
+        },
+        "actual": {
+          "x": 6300,
+          "y": 3350
+        }
+      }
+    },
+    {
+      "name": "rampart-lower-end mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "rampart-lower-end actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "dock-upper-end restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6500,
+          "y": 2500
+        },
+        "actual": {
+          "x": 6500,
+          "y": 2500
+        }
+      }
+    },
+    {
+      "name": "dock-upper-end mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "dock-upper-end actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "dock-lower-end restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6500,
+          "y": 3120
+        },
+        "actual": {
+          "x": 6500,
+          "y": 3120
+        }
+      }
+    },
+    {
+      "name": "dock-lower-end mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "dock-lower-end actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "central-mobile restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6473,
+          "y": 2800
+        },
+        "actual": {
+          "x": 6473,
+          "y": 2800
+        }
+      }
+    },
+    {
+      "name": "central-mobile mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "central-mobile actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-rampart-upper restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6175,
+          "y": 2500
+        },
+        "actual": {
+          "x": 6175,
+          "y": 2500
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-upper mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "cross-rampart-upper actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-rampart-upper actual physical crossing follows served geometry",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "start": {
+          "x": 6175,
+          "y": 2500
+        },
+        "target": {
+          "x": 6080,
+          "y": 2500
+        },
+        "outward": {
+          "x": 6085,
+          "y": 2500,
+          "arrived": true,
+          "steps": 26
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-upper native return reaches the original side",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6175,
+          "y": 2500
+        },
+        "returned": {
+          "x": 6170,
+          "y": 2500,
+          "arrived": true,
+          "steps": 23
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-upper actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-rampart-lower restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6175,
+          "y": 3250
+        },
+        "actual": {
+          "x": 6175,
+          "y": 3250
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-lower mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "cross-rampart-lower actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-rampart-lower actual physical crossing follows served geometry",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "start": {
+          "x": 6175,
+          "y": 3250
+        },
+        "target": {
+          "x": 6050,
+          "y": 3250
+        },
+        "outward": {
+          "x": 6054,
+          "y": 3250,
+          "arrived": true,
+          "steps": 37
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-lower native return reaches the original side",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6175,
+          "y": 3250
+        },
+        "returned": {
+          "x": 6170,
+          "y": 3250,
+          "arrived": true,
+          "steps": 34
+        }
+      }
+    },
+    {
+      "name": "cross-rampart-lower actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-dock-road restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6600,
+          "y": 2700
+        },
+        "actual": {
+          "x": 6600,
+          "y": 2700
+        }
+      }
+    },
+    {
+      "name": "cross-dock-road mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "cross-dock-road actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "cross-dock-road actual physical crossing follows served geometry",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "start": {
+          "x": 6600,
+          "y": 2700
+        },
+        "target": {
+          "x": 6750,
+          "y": 2700
+        },
+        "outward": {
+          "x": 6748,
+          "y": 2700,
+          "arrived": true,
+          "steps": 41
+        }
+      }
+    },
+    {
+      "name": "cross-dock-road native return reaches the original side",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6600,
+          "y": 2700
+        },
+        "returned": {
+          "x": 6605,
+          "y": 2700,
+          "arrived": true,
+          "steps": 41
+        }
+      }
+    },
+    {
+      "name": "cross-dock-road actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "marsh-watch-return restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6375,
+          "y": 2600
+        },
+        "actual": {
+          "x": 6375,
+          "y": 2600
+        }
+      }
+    },
+    {
+      "name": "marsh-watch-return mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "marsh-watch-return actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "real marsh-watch lane outward traversal",
+      "status": "PASS",
+      "detail": {
+        "start": {
+          "x": 6375,
+          "y": 2600
+        },
+        "there": {
+          "x": 6375,
+          "y": 2800
+        }
+      }
+    },
+    {
+      "name": "real marsh-watch lane return traversal",
+      "status": "PASS"
+    },
+    {
+      "name": "marsh-watch-return actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "dock-door restores exact declared physical checkpoint",
+      "status": "PASS",
+      "detail": {
+        "expected": {
+          "x": 6473,
+          "y": 2800
+        },
+        "actual": {
+          "x": 6473,
+          "y": 2800
+        }
+      }
+    },
+    {
+      "name": "dock-door mounts expected comparison renderer",
+      "status": "PASS",
+      "detail": {
+        "phase": "after",
+        "count": 13
+      }
+    },
+    {
+      "name": "dock-door actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "real Worker reaches the retained dock door",
+      "status": "PASS",
+      "detail": {
+        "walked": 879.8619052438459,
+        "steps": 166,
+        "actor": {
+          "x": 6991,
+          "y": 3027
+        }
+      }
+    },
+    {
+      "name": "dock-door actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "real E enters retained dock-control interior",
+      "status": "PASS"
+    },
+    {
+      "name": "dock-door actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "retained dock exit is actually reachable",
+      "status": "PASS"
+    },
+    {
+      "name": "real E returns through the retained dock door",
+      "status": "PASS"
+    },
+    {
+      "name": "dock-door actual scene remains visible",
+      "status": "PASS"
+    },
+    {
+      "name": "no page error",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "no console.error",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "no Worker error",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "no failed request",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "no HTTP error",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "captures": [
+    {
+      "file": "central-camera.png",
+      "bytes": 1892663,
+      "sha256": "7e2d7c60427459917d915f71eaef5004aa49f82583d337f2a64b23f1150ace0a",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5105.7px, -902.913px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6473,
+        "y": 2800
+      }
+    },
+    {
+      "file": "rampart-upper-end-camera.png",
+      "bytes": 2137255,
+      "sha256": "d3b83ad4e265b2dfb63f9d11b2a2b019827131e473406d0335c44645f2a4a99a",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4950px, -593.181px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6300,
+        "y": 2200
+      }
+    },
+    {
+      "file": "rampart-lower-end-camera.png",
+      "bytes": 1740240,
+      "sha256": "972f2d555cb7173665d31137b489f52bd02e36f05d2614dc78d84e92c166f72e",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4950px, -1186.83px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6300,
+        "y": 3350
+      }
+    },
+    {
+      "file": "dock-upper-end-camera.png",
+      "bytes": 2054472,
+      "sha256": "0052302c38c6a2e438e509e98cf0b8ce91667ff1092c167466bd962fdf96ca1b",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5130px, -748.047px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6500,
+        "y": 2500
+      }
+    },
+    {
+      "file": "dock-lower-end-camera.png",
+      "bytes": 1780211,
+      "sha256": "2d9bae7950ead29ccc4e03fef02febac50c7b3eacd197f44f6590f510606f911",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5130px, -1068.1px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6500,
+        "y": 3120
+      }
+    },
+    {
+      "file": "central-mobile-camera.png",
+      "bytes": 363215,
+      "sha256": "90088bfb4eccca32219ab19709e1bc715b187950ab5f9e75705dcf0e6107def8",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5630.7px, -1065.97px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6473,
+        "y": 2800
+      }
+    },
+    {
+      "file": "cross-rampart-upper-camera.png",
+      "bytes": 1937987,
+      "sha256": "fe50a8cba74d97b19a844702bbff497199c133814a07e0f8ac31420914567c08",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4837.5px, -748.047px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6175,
+        "y": 2500
+      }
+    },
+    {
+      "file": "cross-rampart-upper-returned.png",
+      "bytes": 1916649,
+      "sha256": "2894063fe21a7f5e09cd9022921e2d5507340b56347c1f97914f62d5c547e269",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4832.75px, -748.047px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6170,
+        "y": 2500
+      }
+    },
+    {
+      "file": "cross-rampart-lower-camera.png",
+      "bytes": 1762761,
+      "sha256": "f4287254e345bec10636951d1697d8ce21cf437e93e0f6223b9da099312053e9",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4837.5px, -1135.21px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6175,
+        "y": 3250
+      }
+    },
+    {
+      "file": "cross-rampart-lower-returned.png",
+      "bytes": 1729050,
+      "sha256": "ea08aa494e92f030e7977b171f29fa75bca3a8c5b0e5df634ed046d889954f9d",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-4832.75px, -1135.21px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6170,
+        "y": 3250
+      }
+    },
+    {
+      "file": "cross-dock-road-camera.png",
+      "bytes": 1955289,
+      "sha256": "e7de5cd94efa0806779646682eb4c75a3df59bc906ba0d47f53c05c1763c48c6",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5220px, -851.291px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6600,
+        "y": 2700
+      }
+    },
+    {
+      "file": "cross-dock-road-returned.png",
+      "bytes": 1946380,
+      "sha256": "242a922158f54c42615085f2f7a75d55a8b63f246eda3377ef8f9a8e3b659d24",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5224.75px, -851.291px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6605,
+        "y": 2700
+      }
+    },
+    {
+      "file": "marsh-watch-return-camera.png",
+      "bytes": 1982983,
+      "sha256": "3e25d1c4cd28150f7451015ee36fdb9ec27426cde96b064e77bcf5e5ac1e4d37",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5017.5px, -799.669px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6375,
+        "y": 2600
+      }
+    },
+    {
+      "file": "marsh-watch-return-returned.png",
+      "bytes": 2003370,
+      "sha256": "7865328b674c494bf19b4c10b2be730d559e53b68fae101ea5ba11ea2bd4008c",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5017.5px, -801.816px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6375,
+        "y": 2604
+      }
+    },
+    {
+      "file": "dock-door-camera.png",
+      "bytes": 1892527,
+      "sha256": "7acaafee09c983e88bc54523f8fa03a4f90784296a165c5a9997efc451814fe9",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5105.7px, -902.913px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6473,
+        "y": 2800
+      }
+    },
+    {
+      "file": "dock-door-door-approach.png",
+      "bytes": 1935075,
+      "sha256": "d9e6131634a43d94f5f952408f4376b1c8f18f319925c51a8d129d7855bf30b2",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5571.75px, -1019.96px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6991,
+        "y": 3027
+      }
+    },
+    {
+      "file": "dock-door-entered.png",
+      "bytes": 520235,
+      "sha256": "e40221e59f1fc7b0021e1973ef4e61d8f26b189099d06118b4318fc674bfef2b",
+      "camera": {
+        "zoom": "1.350",
+        "style": "pointer-events: none; width: 538px; height: 176.662px; transform: translate(356.85px, 404.653px) scale(1.35);"
+      },
+      "actor": {
+        "x": 269,
+        "y": 236
+      }
+    },
+    {
+      "file": "dock-door-returned-outside.png",
+      "bytes": 1933586,
+      "sha256": "b3bfff8f7eba45b8f42037c6c2ff93093fffb9ce22780f28e5433d6f26273d82",
+      "camera": {
+        "zoom": "0.900",
+        "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5571.75px, -1019.96px) scale(0.9);"
+      },
+      "actor": {
+        "x": 6991,
+        "y": 3027
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "workerErrors": [],
+  "requestsFailed": [],
+  "httpErrors": [],
+  "failure": null
+}

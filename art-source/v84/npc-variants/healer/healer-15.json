@@ -1,0 +1,34 @@
+{
+  "n": 15,
+  "role": "healer",
+  "name": "Pulse technician",
+  "design": "Tall angular young adult male Yautja with dark slate mottled skin, narrow high skull and swept-back fine dreadlocks gathered into three narrow hanging braids. Teal wrapped sleeveless upper tunic beneath ivory segmented work apron, brown strap harness with a round compact medical sensor module, four sealed ceramic canisters on left hip. Right hand holds a wired palm-sized pulse sensor while left supports its short cable spool at abdomen, poised slightly sideways.",
+  "path": "/workspace/scratch/41fc0564188e/generated_images/exec-4aeadd05-7dda-4580-abef-1e9f7bf69b99.png",
+  "destination": "/workspace/scratch/41fc0564188e/npc-generation/healer/healer-15.png",
+  "filename": "healer-15.png",
+  "status": "generated",
+  "generator": "built-in image_gen",
+  "revision": 2,
+  "faceCorrection": true,
+  "ancestorPath": "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-15.png",
+  "referencePaths": [
+    "/workspace/scratch/41fc0564188e/npc-generation-ancestors/healer/healer-15.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "anatomyReference": "stan-winston-predator-test.jpg",
+  "prompt": "Use case: inpainting. EDIT IMAGE 1, keeping its exact individual full-body NPC sprite, body proportions, original clothing construction and colors, tendril arrangement, accessories, tools, pose, hands, feet, and realistic handpainted 2D rendering. The ONLY intended visual change is the head and exposed facial anatomy, with the minimum neck join needed. IMAGE 2, Stan Winston original 1987 Predator practical head, has ABSOLUTE PRIORITY for the corrected face anatomy: true cinematic Yautja, broad domed cranial roof, alien heavy bony orbital ridges, NO human nose, lips, ears or human facial proportions. Replace the original incorrect narrow folded/tubular mouth with FOUR LARGE DISTINCT EXTERNAL FLESHY MANDIBULAR LOBES positioned around a SEPARATE INTERNAL TOOTHED MOUTH. Two upper fleshy cheek lobes each carry one curved pointed tusk, and two longer lower fleshy lobes carry upward-curving tusks. Upper lobes spread wide near cheeks, lower lobes originate beside jaw and sweep upward. All FOUR lobes must be visibly anatomically distinct. NOT two nasal tubes, NOT only two hanging tusks, NOT a narrow pleated oval. Angle the face slightly more frontally toward the viewer, frontal three-quarter, so all four lobes read; calmly partly open jaw, not screaming. Match Image1 individual skin hue and mottling, age, distinctive skull contours and thick cylindrical scalp tendrils so this is still the same person. Do not homogenize each original individual to the exact same head. Keep ALL worn and held items unchanged. Preserve full body and all margins. Transparent alpha background; no ground, cast shadow, scenery, halo, environment, frame, logos or text. Do not reproduce Image2 watermark or photographic scene. One single full-body edited character only, no crops, no extra inset head, no comparison sheet. Specific target: healer 15, Pulse technician. Maintain this person's existing skull color, scale pattern, scalp tendrils, physician clothing, medical kit and individual body exactly.",
+  "width": 1024,
+  "height": 1536,
+  "transparentPixelRatio": 0.6703,
+  "bodyBoundsA128": [
+    292,
+    32,
+    895,
+    1506
+  ],
+  "sha256": "4af5beff88d57e6c47ab1683a750df9266ec264d219d4db5f375122ab056f32b",
+  "ancestorSha256": "4a7bf938cce9e093df077ed9094b2238cfc24d27b969c6f876b071ee689e1048",
+  "githubBlobSha": "e5cdb74f74123b5a5268a790b632c0be99265336",
+  "faceReview": "approved",
+  "face": "visible-four-mandibles"
+}

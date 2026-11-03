@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "release": "V99",
+  "asOf": "2026-10-20",
+  "result": "PASS",
+  "workbook": "docs/YAUTJA_V99_SUIVI.xlsx",
+  "sha256": "53116e8f0fe10867702cccdb2d7bf2c8bbc5baa7c6a9c528085c12f780392a15",
+  "bytes": 1130515,
+  "sheetNames": [
+    "LotV62",
+    "CombattantsV54",
+    "Resteclasseur",
+    "LotV63",
+    "StagesV54",
+    "SyntheseV99",
+    "ChantiersV99",
+    "SourcesV99",
+    "PlanetesV99",
+    "OuvragesV6",
+    "PitOuvertV99",
+    "StagesOuvertsV99",
+    "ValidationsV99",
+    "EntreesV99",
+    "JournalV99"
+  ],
+  "baselineSha256": "192b168456091239e65939b99c4630de791cfaca4f33f61a1c6a8a032fc9c7af",
+  "originalSheetValuesFormulasTablesPreserved": true,
+  "originalStylePrefixPreserved": true,
+  "originalZipPartsByteIdentical": 18,
+  "xmlPartsParsed": 32,
+  "formulas": [
+    {
+      "cell": "B5",
+      "formula": "=COUNTA('ChantiersV99'!A5:A24)",
+      "cached": 20
+    },
+    {
+      "cell": "B6",
+      "formula": "=COUNTIF('ChantiersV99'!F5:F24,\"EN_COURS\")",
+      "cached": 0
+    },
+    {
+      "cell": "B7",
+      "formula": "=COUNTIF('ChantiersV99'!F5:F24,\"A_VALIDER\")",
+      "cached": 0
+    },
+    {
+      "cell": "B8",
+      "formula": "=COUNTIF('ChantiersV99'!F5:F24,\"OUVERT\")",
+      "cached": 9
+    },
+    {
+      "cell": "B9",
+      "formula": "=COUNTIF('ChantiersV99'!F5:F24,\"LIVRE_PARTIEL\")",
+      "cached": 6
+    },
+    {
+      "cell": "B10",
+      "formula": "=COUNTIF('ChantiersV99'!F5:F24,\"VALIDE_CIBLE\")",
+      "cached": 5
+    },
+    {
+      "cell": "B11",
+      "formula": "=COUNTA('PlanetesV99'!A5:A34)",
+      "cached": 30
+    },
+    {
+      "cell": "B12",
+      "formula": "=COUNTIF('PlanetesV99'!C5:C34,\"classic\")",
+      "cached": 16
+    },
+    {
+      "cell": "B13",
+      "formula": "=COUNTIF('PlanetesV99'!C5:C34,\"exotic\")",
+      "cached": 14
+    },
+    {
+      "cell": "B14",
+      "formula": "=COUNTA('OuvragesV6'!A5:A22)",
+      "cached": 18
+    },
+    {
+      "cell": "B15",
+      "formula": "=COUNTIF('OuvragesV6'!F5:F22,\"INTEGRE_LIBRE\")",
+      "cached": 12
+    },
+    {
+      "cell": "B16",
+      "formula": "=COUNTIF('OuvragesV6'!F5:F22,\"OUVERT\")",
+      "cached": 6
+    }
+  ],
+  "inputFingerprintsVerified": 49,
+  "nodeTests": {
+    "command": "node --test --test-reporter=spec tests/excel-followup-v99.test.mjs",
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0
+  },
+  "independentReview": {
+    "result": "PASS",
+    "method": "Separate ZIP/XML reader without generator invocation: original parts, styles, relationships, cached counts."
+  },
+  "readers": {
+    "python": "3.12.14",
+    "openpyxl": "3.1.5"
+  },
+  "nativeExcelApplicationVerified": false,
+  "nativeExcelCalculationEngineExecuted": false,
+  "limits": [
+    "Formula caches independently recomputed from worksheet values; no native Excel calculation claimed.",
+    "Historical V63 worksheets preserved, not silently recertified as complete V99 runtime content.",
+    "Model tests and browser checks remain scoped in the registry: Homeworld has 23 production Chromium checks from a declared prepared fixture, using a controlled browser clock during actual keyboard walking and connector checks; no played campaign claim."
+  ],
+  "homeworldProductionProof": {
+    "path": "outputs/qa-three-modes-v99/production/result.json",
+    "homeworldChecks": 23,
+    "totalChecks": 76,
+    "coldMs": 2988,
+    "warmMs": 210,
+    "sameWorker": true,
+    "firstLegPoints": 18,
+    "runtimeFingerprintsIdentical": 22,
+    "capturesInspected": 21
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "yautja-v612-checkpoint-empty-png-review-1",
+  "recordedAtUtc": "2026-10-21T15:57:09.152Z",
+  "reviewCommentUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/9#discussion_r4338753902",
+  "correctedScript": {
+    "sourcePath": "scripts/checkpoint-enforcer-production-v612.mjs",
+    "sha256": "52cc986c0f36995348a3e465379ac380fa6366c994701c0f9b72e7c030f85cf7"
+  },
+  "changeFR": "Les bornes utilisent info.width/info.height. Le contrôle hasContent impose une largeur et une hauteur de contenu strictement positives avant validation du cadre.",
+  "validationScopeFR": "Les contrôles ciblés ont exécuté les boucles de validation extraites des fichiers source, avec des tampons RGBA synthétiques en mémoire. Ils n’ont pas exécuté les producteurs de checkpoint ou de manifeste, ni décodé de nouveaux fichiers PNG.",
+  "checkpointCases": {
+    "fixtureWidth": 8,
+    "fixtureHeight": 8,
+    "backgroundAlpha": 0,
+    "checks": [
+      {
+        "case": "fully-transparent",
+        "pixels": "Tous les alpha valent 0.",
+        "expected": "rejected",
+        "observed": "rejected",
+        "errorMatch": "Transparency or framing failed",
+        "passed": true
+      },
+      {
+        "case": "alpha-at-visible-threshold",
+        "pixels": "Un pixel en (3,3) a un alpha de 20 ; les autres restent à 0.",
+        "expected": "rejected",
+        "observed": "rejected",
+        "errorMatch": "Transparency or framing failed",
+        "passed": true
+      },
+      {
+        "case": "interior-content",
+        "pixels": "Un pixel en (3,3) a un alpha de 255 ; les autres restent à 0.",
+        "expected": "accepted",
+        "observed": "accepted with hasContent === true",
+        "passed": true
+      },
+      {
+        "case": "content-on-frame-edge",
+        "pixels": "Un pixel en (0,3) a un alpha de 255 ; les autres restent à 0.",
+        "expected": "rejected",
+        "observed": "rejected",
+        "errorMatch": "Transparency or framing failed",
+        "passed": true
+      }
+    ]
+  },
+  "normalizer": {
+    "sourcePath": "scripts/build-enforcer-production-v612.mjs",
+    "sha256": "92aa520e3eacea77f4c67e2930c4f2dfff9b2f17fb9a2a46f35d2df568399809",
+    "changedByThisFix": false,
+    "existingGuard": "solid === 0",
+    "solidPixelThreshold": "alpha >= 250",
+    "fixture": {
+      "width": 1024,
+      "height": 1536,
+      "channels": 4,
+      "allAlpha": 0
+    },
+    "expected": "rejected",
+    "observed": "rejected",
+    "errorMatch": "Missing real transparency",
+    "passed": true,
+    "executedSourceSha256": "ce3485cb94b0abc9fab1abfdc36b5d8b99195b7c0d1245214a5bdaf8bae8d18f",
+    "onlyPostExecutionChangeFR": "Suppression d’une ligne vide finale ; la garde contrôlée est inchangée."
+  },
+  "lint": {
+    "command": "./node_modules/.bin/eslint scripts/checkpoint-enforcer-production-v612.mjs",
+    "exitCode": 0,
+    "diagnostics": [],
+    "passed": true
+  },
+  "result": "passed",
+  "productionWritersExecuted": false,
+  "actual36AssetRevalidationIncluded": false,
+  "noteFR": "Les contrôles ont été exécutés avant la rédaction de ce rapport. Le présent enregistrement calcule les empreintes et ne relance pas la production."
+}

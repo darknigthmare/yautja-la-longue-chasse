@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "release": "V65",
+  "status": "PASS_AGENT_VISUAL_REVIEW",
+  "reviewer": "runtime-integration-agent",
+  "checkedAt": "2026-10-01T01:36:56.610Z",
+  "surface": "compiled-local-application",
+  "rawReport": {
+    "path": "I:/CodexTemp/yautja-v65-20261001/stages/qa/application-final/report.json",
+    "sha256": "3eb652849e943110f924fe6e9400b9deaf6236f862f03ca9a19de93453dd6b7e"
+  },
+  "capturesProduced": 18,
+  "capturesViewed": 13,
+  "captures": [
+    {
+      "name": "arena-012-balcon-du-roi-de-la-chasse-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\arena-012-balcon-du-roi-de-la-chasse-combat.png",
+      "sha256": "34ee3e059f9fc027fae14a9d6432b00591668265232ce9b92adc25906b85d40d",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "arena-020-trone-fracture-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\arena-020-trone-fracture-combat.png",
+      "sha256": "561114f2a83f11dc334877e3b43c478a4d423287b0cf4e7938832baa9f9b86b8",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "arena-036-temple-de-la-double-lune-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\arena-036-temple-de-la-double-lune-combat.png",
+      "sha256": "7e6d929e46747a6a17a716897900a01c57a4f4b5423ad81db78f5c7232ba4457",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "arena-050-porte-de-l-audience-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\arena-050-porte-de-l-audience-combat.png",
+      "sha256": "ca14a111e85ae957739acf9ca61fc8665012aa1c8b280933f76f35b4061c71e6",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "arena-069-salle-du-porte-cendres-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\arena-069-salle-du-porte-cendres-combat.png",
+      "sha256": "9e8f5b9857b492e63fe014dff8f58b5f875a16dbf8b1a8089a10acdbb4eed222",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "arena-076-atrium-des-mediateurs-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\arena-076-atrium-des-mediateurs-combat.png",
+      "sha256": "517046163571d3b892f4c20b7310f1060f708003b2628ccebf6b30ba68e1dce5",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "arena-020-trone-fracture-selection",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\arena-020-trone-fracture-selection.png",
+      "sha256": "444f1948d6b1201eea364e3b58d0d7525f954face47d0c50c540fe2d57ce5dce",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "fighters-apart-camera",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\fighters-apart-camera.png",
+      "sha256": "c653f0955852da85ca71944d489a5b4bfa98b60e07f0ed8e74518949343fabc3",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "mobile-landscape",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\mobile-landscape.png",
+      "sha256": "c52535bcbd21aa537aa38e3b116587993731fa8e073d24fcef66bfaeb3d8420b",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "mobile-portrait",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\mobile-portrait.png",
+      "sha256": "e3e53401aa9d9402945024692e718de45d2a99566f992938f17167efb9a9a826",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "reduced-landscape",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\reduced-landscape.png",
+      "sha256": "ae3dde4eb5b6628a5799b75c8c0778c9c06e979783e2050d14680f2fe8466294",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "required-atlas-503",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\required-atlas-503.png",
+      "sha256": "61c75262838f5ae88f76cb0c052750879bf985b7ad520cbfa7f4b6b95b8152c5",
+      "visualReview": "PASS"
+    },
+    {
+      "name": "required-atlas-recovered",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-final\\required-atlas-recovered.png",
+      "sha256": "34ee3e059f9fc027fae14a9d6432b00591668265232ce9b92adc25906b85d40d",
+      "visualReview": "PASS"
+    }
+  ],
+  "observations": [
+    "Six distinct environments visible in the actual fullscreen combat HUD; feet align with the solid contact band.",
+    "Throne020 lower steps now meet the rear edge of the floor.",
+    "Both moons remain visible in036; technical floor replaces figurative relief while old source files remain preserved.",
+    "Camera retreat keeps both fighters visible with grounded scenery and complete lower viewport coverage.",
+    "Mobile landscape and portrait preserve the combat aspect ratio with letterboxing; controls and HUD remain visible without horizontal overflow. Portrait combat field is intentionally smaller, not an optimized full-height composition.",
+    "Reduced-motion framing keeps the arena and support line visible.",
+    "Missing required atlas shows a clear blocked launch and retry control; recovery returns the complete arena."
+  ],
+  "limits": [
+    "Thirteen of eighteen application captures manually inspected by this agent; no claim that every generated screenshot was inspected.",
+    "Mobile is emulated Chromium, not physical device verification.",
+    "This report certifies local composition only, not canonical1:1 fidelity or public deployment."
+  ]
+}

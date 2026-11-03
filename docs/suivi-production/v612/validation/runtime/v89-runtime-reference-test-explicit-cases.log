@@ -1,0 +1,12 @@
+$ node --experimental-strip-types --test --test-isolation=none --test-name-pattern='all six full references' tests/drive-new-deposits-v89.test.mjs
+✔ all six full references are connected to the runtime viewer and codex without becoming gameplay bodies (2836.961676ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3016.474947
+
+[exit code: 0]

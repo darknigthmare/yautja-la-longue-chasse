@@ -1,0 +1,1778 @@
+{
+  "schemaVersion": 1,
+  "release": "V112",
+  "scope": "48 original backward-throw BODY drawings, separate attacker/victim and independently drawn starting orientations for the unvaried Feral/Scar duo. Facing labels describe the pre-throw stance; rotating airborne drawings are not certified opposite lateral profiles. Source action completion remains open.",
+  "calibrationScope": "Uniform scale per unchanged native PNG; explicit anatomical body-height references and pivots. Grounded phases use measured support, loaded/airborne phases preserve their authored floor anchor in addition to actual simulation height. No PNG pixels are cropped, mirrored, filtered, repainted or composited after generation.",
+  "groups": [
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "sourceActionId": "M_F006_TH_B",
+      "bodyHeightPx": 419,
+      "pages": [
+        {
+          "pageId": "v112-feral-backward-attacker-left-v112",
+          "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-attacker-left-v112.png",
+          "sha256": "d04e3938c2578cefebb2fe8a213aa5af6ac98bf339ae7c2a15b1d6f12077cec1",
+          "bytes": 2266096,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/feral-backward-attacker-left-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 419,
+          "scaleMethod": "Native guard crown-to-support reference"
+        }
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v112-feral-backward-attacker-left-v112",
+          "rect": [
+            85,
+            52,
+            378,
+            431
+          ],
+          "visibleRect": [
+            90,
+            60,
+            365,
+            419
+          ],
+          "visibleBodyBox": [
+            90,
+            59,
+            455,
+            479
+          ],
+          "pivot": [
+            200,
+            427
+          ],
+          "anatomicalBodyHeightPx": 419,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 5
+        },
+        {
+          "index": 1,
+          "pageId": "v112-feral-backward-attacker-left-v112",
+          "rect": [
+            474,
+            64,
+            519,
+            420
+          ],
+          "visibleRect": [
+            480,
+            76,
+            509,
+            403
+          ],
+          "visibleBodyBox": [
+            479,
+            75,
+            989,
+            479
+          ],
+          "pivot": [
+            351,
+            415
+          ],
+          "anatomicalBodyHeightPx": 419,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 5
+        },
+        {
+          "index": 2,
+          "pageId": "v112-feral-backward-attacker-left-v112",
+          "rect": [
+            1103,
+            48,
+            372,
+            437
+          ],
+          "visibleRect": [
+            1108,
+            124,
+            362,
+            356
+          ],
+          "visibleBodyBox": [
+            1107,
+            123,
+            1470,
+            479
+          ],
+          "pivot": [
+            215,
+            432
+          ],
+          "anatomicalBodyHeightPx": 419,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 1
+        },
+        {
+          "index": 3,
+          "pageId": "v112-feral-backward-attacker-left-v112",
+          "rect": [
+            110,
+            528,
+            461,
+            452
+          ],
+          "visibleRect": [
+            115,
+            535,
+            450,
+            434
+          ],
+          "visibleBodyBox": [
+            114,
+            534,
+            565,
+            968
+          ],
+          "pivot": [
+            208,
+            441
+          ],
+          "anatomicalBodyHeightPx": 419,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 2
+        },
+        {
+          "index": 4,
+          "pageId": "v112-feral-backward-attacker-left-v112",
+          "rect": [
+            584,
+            590,
+            443,
+            389
+          ],
+          "visibleRect": [
+            591,
+            602,
+            427,
+            366
+          ],
+          "visibleBodyBox": [
+            590,
+            601,
+            1018,
+            967
+          ],
+          "pivot": [
+            257,
+            378
+          ],
+          "anatomicalBodyHeightPx": 419,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 16
+        },
+        {
+          "index": 5,
+          "pageId": "v112-feral-backward-attacker-left-v112",
+          "rect": [
+            1118,
+            544,
+            355,
+            433
+          ],
+          "visibleRect": [
+            1122,
+            558,
+            346,
+            410
+          ],
+          "visibleBodyBox": [
+            1121,
+            557,
+            1467,
+            968
+          ],
+          "pivot": [
+            202,
+            424
+          ],
+          "anatomicalBodyHeightPx": 419,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 16
+        }
+      ]
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "sourceActionId": "M_F006_TH_B",
+      "bodyHeightPx": 453,
+      "pages": [
+        {
+          "pageId": "v112-feral-backward-attacker-right-v112",
+          "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-attacker-right-v112.png",
+          "sha256": "8df8ca393dafdf283b9c6919598ce5603e541967b1213159d9795480d3db6b30",
+          "bytes": 2388810,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/feral-backward-attacker-right-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 453,
+          "scaleMethod": "Native guard crown-to-support reference"
+        },
+        {
+          "pageId": "v112-feral-backward-attacker-right-v112-isolated-1-v112",
+          "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-attacker-right-v112-isolated-1-v112.png",
+          "sha256": "9c9f1bb54ef209f9796511c3b6f7e7bbd52853a1094ffb40ce31b389fb90ee11",
+          "bytes": 1782248,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/feral-backward-attacker-right-v112-isolated-1-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 947,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        },
+        {
+          "pageId": "v112-feral-backward-attacker-right-v112-isolated-2-v112",
+          "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-attacker-right-v112-isolated-2-v112.png",
+          "sha256": "81934f593b01b394b842e56c75fa60f562986970ef2e959494d7fbd46e3ab58d",
+          "bytes": 1608743,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/feral-backward-attacker-right-v112-isolated-2-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 900,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        }
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v112-feral-backward-attacker-right-v112",
+          "rect": [
+            62,
+            28,
+            387,
+            465
+          ],
+          "visibleRect": [
+            73,
+            33,
+            366,
+            453
+          ],
+          "visibleBodyBox": [
+            73,
+            32,
+            439,
+            486
+          ],
+          "pivot": [
+            188,
+            458
+          ],
+          "anatomicalBodyHeightPx": 453,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 5
+        },
+        {
+          "index": 1,
+          "pageId": "v112-feral-backward-attacker-right-v112-isolated-1-v112",
+          "rect": [
+            257,
+            46,
+            1060,
+            930
+          ],
+          "visibleRect": [
+            265,
+            51,
+            1047,
+            920
+          ],
+          "visibleBodyBox": [
+            265,
+            50,
+            1311,
+            971
+          ],
+          "pivot": [
+            403,
+            925
+          ],
+          "anatomicalBodyHeightPx": 947,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 5
+        },
+        {
+          "index": 2,
+          "pageId": "v112-feral-backward-attacker-right-v112-isolated-2-v112",
+          "rect": [
+            310,
+            109,
+            960,
+            806
+          ],
+          "visibleRect": [
+            316,
+            113,
+            950,
+            795
+          ],
+          "visibleBodyBox": [
+            316,
+            112,
+            1265,
+            908
+          ],
+          "pivot": [
+            440,
+            799
+          ],
+          "anatomicalBodyHeightPx": 900,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 1
+        },
+        {
+          "index": 3,
+          "pageId": "v112-feral-backward-attacker-right-v112",
+          "rect": [
+            46,
+            512,
+            475,
+            471
+          ],
+          "visibleRect": [
+            51,
+            519,
+            465,
+            460
+          ],
+          "visibleBodyBox": [
+            50,
+            518,
+            516,
+            979
+          ],
+          "pivot": [
+            204,
+            467
+          ],
+          "anatomicalBodyHeightPx": 453,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 2
+        },
+        {
+          "index": 4,
+          "pageId": "v112-feral-backward-attacker-right-v112",
+          "rect": [
+            542,
+            541,
+            499,
+            441
+          ],
+          "visibleRect": [
+            558,
+            545,
+            474,
+            433
+          ],
+          "visibleBodyBox": [
+            557,
+            544,
+            1032,
+            978
+          ],
+          "pivot": [
+            268,
+            437
+          ],
+          "anatomicalBodyHeightPx": 453,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 16
+        },
+        {
+          "index": 5,
+          "pageId": "v112-feral-backward-attacker-right-v112",
+          "rect": [
+            1102,
+            526,
+            360,
+            457
+          ],
+          "visibleRect": [
+            1108,
+            531,
+            350,
+            448
+          ],
+          "visibleBodyBox": [
+            1107,
+            530,
+            1458,
+            979
+          ],
+          "pivot": [
+            178,
+            453
+          ],
+          "anatomicalBodyHeightPx": 453,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 16
+        }
+      ]
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "sourceActionId": "backward-throw-v112-victim",
+      "bodyHeightPx": 414,
+      "pages": [
+        {
+          "pageId": "v112-feral-backward-victim-left-v112",
+          "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-left-v112.png",
+          "sha256": "46b2b1853bc0b56ea496106416c27855b959c637017ff6f15fe453d7c2b902ae",
+          "bytes": 2119300,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/feral-backward-victim-left-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 414,
+          "scaleMethod": "Native guard crown-to-support reference"
+        },
+        {
+          "pageId": "v112-feral-backward-victim-left-v112-isolated-3-v112",
+          "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-left-v112-isolated-3-v112.png",
+          "sha256": "4fdeb3442b3689336cda1441605affcdcb51d33318d3adf44d9c8b31b9ad180f",
+          "bytes": 1567696,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/feral-backward-victim-left-v112-isolated-3-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 950,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        },
+        {
+          "pageId": "v112-feral-backward-victim-left-v112-isolated-4-v112",
+          "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-left-v112-isolated-4-v112.png",
+          "sha256": "579231000b27273c9c17bdad5b5b5e5256d7de406c4d5b1eae465e3f356d185f",
+          "bytes": 1467180,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/feral-backward-victim-left-v112-isolated-4-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 1010,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        },
+        {
+          "pageId": "v112-feral-backward-victim-left-v112-isolated-5-v112",
+          "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-left-v112-isolated-5-v112.png",
+          "sha256": "f0caef85827d0d3d317e311113b688ce8e83c13857ca0235ce188aad65ab301f",
+          "bytes": 1512565,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/feral-backward-victim-left-v112-isolated-5-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 880,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        }
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v112-feral-backward-victim-left-v112",
+          "rect": [
+            78,
+            44,
+            395,
+            451
+          ],
+          "visibleRect": [
+            111,
+            69,
+            357,
+            414
+          ],
+          "visibleBodyBox": [
+            110,
+            68,
+            468,
+            483
+          ],
+          "pivot": [
+            234,
+            439
+          ],
+          "anatomicalBodyHeightPx": 414,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 4
+        },
+        {
+          "index": 1,
+          "pageId": "v112-feral-backward-victim-left-v112",
+          "rect": [
+            548,
+            138,
+            407,
+            357
+          ],
+          "visibleRect": [
+            555,
+            147,
+            395,
+            337
+          ],
+          "visibleBodyBox": [
+            554,
+            145,
+            950,
+            483
+          ],
+          "pivot": [
+            266,
+            346
+          ],
+          "anatomicalBodyHeightPx": 414,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 4
+        },
+        {
+          "index": 2,
+          "pageId": "v112-feral-backward-victim-left-v112",
+          "rect": [
+            988,
+            76,
+            497,
+            345
+          ],
+          "visibleRect": [
+            997,
+            80,
+            479,
+            332
+          ],
+          "visibleBodyBox": [
+            996,
+            80,
+            1476,
+            413
+          ],
+          "pivot": [
+            292,
+            412
+          ],
+          "anatomicalBodyHeightPx": 414,
+          "anchorKind": "authored-airborne-floor-reference",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 3
+        },
+        {
+          "index": 3,
+          "pageId": "v112-feral-backward-victim-left-v112-isolated-3-v112",
+          "rect": [
+            312,
+            92,
+            940,
+            902
+          ],
+          "visibleRect": [
+            317,
+            96,
+            931,
+            894
+          ],
+          "visibleBodyBox": [
+            316,
+            96,
+            1247,
+            990
+          ],
+          "pivot": [
+            456,
+            1018
+          ],
+          "anatomicalBodyHeightPx": 950,
+          "anchorKind": "authored-airborne-floor-reference",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 14
+        },
+        {
+          "index": 4,
+          "pageId": "v112-feral-backward-victim-left-v112-isolated-4-v112",
+          "rect": [
+            154,
+            253,
+            1346,
+            502
+          ],
+          "visibleRect": [
+            158,
+            256,
+            1338,
+            492
+          ],
+          "visibleBodyBox": [
+            157,
+            256,
+            1496,
+            748
+          ],
+          "pivot": [
+            614,
+            493
+          ],
+          "anatomicalBodyHeightPx": 1010,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 24
+        },
+        {
+          "index": 5,
+          "pageId": "v112-feral-backward-victim-left-v112-isolated-5-v112",
+          "rect": [
+            274,
+            174,
+            1007,
+            705
+          ],
+          "visibleRect": [
+            281,
+            183,
+            993,
+            689
+          ],
+          "visibleBodyBox": [
+            280,
+            182,
+            1273,
+            872
+          ],
+          "pivot": [
+            566,
+            698
+          ],
+          "anatomicalBodyHeightPx": 880,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 18
+        }
+      ]
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "sourceActionId": "backward-throw-v112-victim",
+      "bodyHeightPx": 450,
+      "pages": [
+        {
+          "pageId": "v112-feral-backward-victim-right-v112",
+          "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-right-v112.png",
+          "sha256": "351868d66cbe52b6e5df637376bfb11ce2d39704d3eefe6cbd2b2fe745c14c5b",
+          "bytes": 2207127,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/feral-backward-victim-right-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 450,
+          "scaleMethod": "Native guard crown-to-support reference"
+        },
+        {
+          "pageId": "v112-feral-backward-victim-right-v112-isolated-3-v112-r2",
+          "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-right-v112-isolated-3-v112-r2.png",
+          "sha256": "9b41ad610cbd0093d8d250589067954f15acfb16dc260485c81e5bf088e747e3",
+          "bytes": 1731841,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/feral-backward-victim-right-v112-isolated-3-v112-r2.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 1000,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        },
+        {
+          "pageId": "v112-feral-backward-victim-right-v112-isolated-4-v112",
+          "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-right-v112-isolated-4-v112.png",
+          "sha256": "591423641cb75545de32cca0891d0288674fc61d2ec4f969d78fa82cd9543684",
+          "bytes": 1544549,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/feral-backward-victim-right-v112-isolated-4-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 1080,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        }
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v112-feral-backward-victim-right-v112",
+          "rect": [
+            80,
+            44,
+            367,
+            466
+          ],
+          "visibleRect": [
+            88,
+            51,
+            349,
+            450
+          ],
+          "visibleBodyBox": [
+            87,
+            50,
+            436,
+            501
+          ],
+          "pivot": [
+            180,
+            457
+          ],
+          "anatomicalBodyHeightPx": 450,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 4
+        },
+        {
+          "index": 1,
+          "pageId": "v112-feral-backward-victim-right-v112",
+          "rect": [
+            586,
+            77,
+            379,
+            432
+          ],
+          "visibleRect": [
+            593,
+            93,
+            353,
+            405
+          ],
+          "visibleBodyBox": [
+            591,
+            92,
+            946,
+            498
+          ],
+          "pivot": [
+            217,
+            421
+          ],
+          "anatomicalBodyHeightPx": 450,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 4
+        },
+        {
+          "index": 2,
+          "pageId": "v112-feral-backward-victim-right-v112",
+          "rect": [
+            1116,
+            14,
+            405,
+            475
+          ],
+          "visibleRect": [
+            1123,
+            24,
+            393,
+            452
+          ],
+          "visibleBodyBox": [
+            1122,
+            23,
+            1516,
+            477
+          ],
+          "pivot": [
+            164,
+            474
+          ],
+          "anatomicalBodyHeightPx": 450,
+          "anchorKind": "authored-airborne-floor-reference",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 3
+        },
+        {
+          "index": 3,
+          "pageId": "v112-feral-backward-victim-right-v112-isolated-3-v112-r2",
+          "rect": [
+            298,
+            49,
+            1037,
+            957
+          ],
+          "visibleRect": [
+            303,
+            53,
+            1026,
+            933
+          ],
+          "visibleBodyBox": [
+            302,
+            52,
+            1329,
+            987
+          ],
+          "pivot": [
+            470,
+            1086
+          ],
+          "anatomicalBodyHeightPx": 1000,
+          "anchorKind": "authored-airborne-floor-reference",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 14
+        },
+        {
+          "index": 4,
+          "pageId": "v112-feral-backward-victim-right-v112-isolated-4-v112",
+          "rect": [
+            121,
+            286,
+            1323,
+            489
+          ],
+          "visibleRect": [
+            125,
+            295,
+            1316,
+            476
+          ],
+          "visibleBodyBox": [
+            124,
+            294,
+            1440,
+            771
+          ],
+          "pivot": [
+            649,
+            482
+          ],
+          "anatomicalBodyHeightPx": 1080,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 24
+        },
+        {
+          "index": 5,
+          "pageId": "v112-feral-backward-victim-right-v112",
+          "rect": [
+            1090,
+            629,
+            416,
+            348
+          ],
+          "visibleRect": [
+            1096,
+            642,
+            405,
+            331
+          ],
+          "visibleBodyBox": [
+            1095,
+            640,
+            1501,
+            972
+          ],
+          "pivot": [
+            190,
+            343
+          ],
+          "anatomicalBodyHeightPx": 450,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 18
+        }
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "sourceActionId": "M_F003_TH_B",
+      "bodyHeightPx": 405,
+      "pages": [
+        {
+          "pageId": "v112-scar-backward-attacker-left-v112",
+          "path": "public/game/sprites/v112/pit/scar/scar-backward-attacker-left-v112.png",
+          "sha256": "2aba79c37dae31e6e8d2e28c68519310d2c2e37a98677fe6a5e62b858f352b09",
+          "bytes": 2299496,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/scar-backward-attacker-left-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 405,
+          "scaleMethod": "Native guard crown-to-support reference"
+        },
+        {
+          "pageId": "v112-scar-backward-attacker-left-v112-isolated-5-v112",
+          "path": "public/game/sprites/v112/pit/scar/scar-backward-attacker-left-v112-isolated-5-v112.png",
+          "sha256": "34ce67acee00b2e48b1cd9235acce53d7e97f7d87f02a67f89dcaeeef94bb203",
+          "bytes": 1602508,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/scar-backward-attacker-left-v112-isolated-5-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 812,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        }
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v112-scar-backward-attacker-left-v112",
+          "rect": [
+            54,
+            12,
+            457,
+            493
+          ],
+          "visibleRect": [
+            62,
+            16,
+            440,
+            481
+          ],
+          "visibleBodyBox": [
+            62,
+            15,
+            502,
+            496
+          ],
+          "pivot": [
+            291,
+            484
+          ],
+          "anatomicalBodyHeightPx": 405,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 5
+        },
+        {
+          "index": 1,
+          "pageId": "v112-scar-backward-attacker-left-v112",
+          "rect": [
+            526,
+            26,
+            515,
+            474
+          ],
+          "visibleRect": [
+            534,
+            31,
+            503,
+            465
+          ],
+          "visibleBodyBox": [
+            533,
+            29,
+            1037,
+            496
+          ],
+          "pivot": [
+            336,
+            470
+          ],
+          "anatomicalBodyHeightPx": 405,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 5
+        },
+        {
+          "index": 2,
+          "pageId": "v112-scar-backward-attacker-left-v112",
+          "rect": [
+            1096,
+            30,
+            419,
+            469
+          ],
+          "visibleRect": [
+            1109,
+            34,
+            400,
+            452
+          ],
+          "visibleBodyBox": [
+            1108,
+            33,
+            1509,
+            486
+          ],
+          "pivot": [
+            219,
+            456
+          ],
+          "anatomicalBodyHeightPx": 405,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 1
+        },
+        {
+          "index": 3,
+          "pageId": "v112-scar-backward-attacker-left-v112",
+          "rect": [
+            90,
+            514,
+            459,
+            481
+          ],
+          "visibleRect": [
+            96,
+            520,
+            447,
+            468
+          ],
+          "visibleBodyBox": [
+            95,
+            519,
+            542,
+            988
+          ],
+          "pivot": [
+            196,
+            474
+          ],
+          "anatomicalBodyHeightPx": 405,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 2
+        },
+        {
+          "index": 4,
+          "pageId": "v112-scar-backward-attacker-left-v112",
+          "rect": [
+            588,
+            514,
+            467,
+            475
+          ],
+          "visibleRect": [
+            602,
+            522,
+            445,
+            462
+          ],
+          "visibleBodyBox": [
+            601,
+            521,
+            1046,
+            983
+          ],
+          "pivot": [
+            188,
+            470
+          ],
+          "anatomicalBodyHeightPx": 405,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 16
+        },
+        {
+          "index": 5,
+          "pageId": "v112-scar-backward-attacker-left-v112-isolated-5-v112",
+          "rect": [
+            277,
+            25,
+            987,
+            940
+          ],
+          "visibleRect": [
+            281,
+            30,
+            976,
+            931
+          ],
+          "visibleBodyBox": [
+            280,
+            29,
+            1257,
+            960
+          ],
+          "pivot": [
+            631,
+            935
+          ],
+          "anatomicalBodyHeightPx": 812,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 16
+        }
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "sourceActionId": "M_F003_TH_B",
+      "bodyHeightPx": 380,
+      "pages": [
+        {
+          "pageId": "v112-scar-backward-attacker-right-v112",
+          "path": "public/game/sprites/v112/pit/scar/scar-backward-attacker-right-v112.png",
+          "sha256": "14034c853b7a27d4c497c3b2efd898aef43525f03c34081341295f812c25789b",
+          "bytes": 2223393,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/scar-backward-attacker-right-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 380,
+          "scaleMethod": "Native guard crown-to-support reference"
+        }
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v112-scar-backward-attacker-right-v112",
+          "rect": [
+            76,
+            18,
+            399,
+            487
+          ],
+          "visibleRect": [
+            81,
+            22,
+            390,
+            466
+          ],
+          "visibleBodyBox": [
+            80,
+            21,
+            470,
+            488
+          ],
+          "pivot": [
+            169,
+            469
+          ],
+          "anatomicalBodyHeightPx": 380,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 5
+        },
+        {
+          "index": 1,
+          "pageId": "v112-scar-backward-attacker-right-v112",
+          "rect": [
+            556,
+            31,
+            490,
+            464
+          ],
+          "visibleRect": [
+            560,
+            35,
+            482,
+            452
+          ],
+          "visibleBodyBox": [
+            560,
+            34,
+            1042,
+            487
+          ],
+          "pivot": [
+            194,
+            456
+          ],
+          "anatomicalBodyHeightPx": 380,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 5
+        },
+        {
+          "index": 2,
+          "pageId": "v112-scar-backward-attacker-right-v112",
+          "rect": [
+            1150,
+            27,
+            359,
+            460
+          ],
+          "visibleRect": [
+            1154,
+            29,
+            351,
+            452
+          ],
+          "visibleBodyBox": [
+            1153,
+            28,
+            1505,
+            481
+          ],
+          "pivot": [
+            182,
+            454
+          ],
+          "anatomicalBodyHeightPx": 380,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 1
+        },
+        {
+          "index": 3,
+          "pageId": "v112-scar-backward-attacker-right-v112",
+          "rect": [
+            45,
+            555,
+            448,
+            408
+          ],
+          "visibleRect": [
+            50,
+            559,
+            438,
+            398
+          ],
+          "visibleBodyBox": [
+            49,
+            558,
+            488,
+            957
+          ],
+          "pivot": [
+            230,
+            402
+          ],
+          "anatomicalBodyHeightPx": 380,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 2
+        },
+        {
+          "index": 4,
+          "pageId": "v112-scar-backward-attacker-right-v112",
+          "rect": [
+            567,
+            537,
+            427,
+            442
+          ],
+          "visibleRect": [
+            571,
+            542,
+            419,
+            428
+          ],
+          "visibleBodyBox": [
+            570,
+            541,
+            989,
+            970
+          ],
+          "pivot": [
+            252,
+            433
+          ],
+          "anatomicalBodyHeightPx": 380,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 16
+        },
+        {
+          "index": 5,
+          "pageId": "v112-scar-backward-attacker-right-v112",
+          "rect": [
+            1099,
+            527,
+            390,
+            467
+          ],
+          "visibleRect": [
+            1103,
+            532,
+            380,
+            454
+          ],
+          "visibleBodyBox": [
+            1102,
+            531,
+            1482,
+            986
+          ],
+          "pivot": [
+            183,
+            459
+          ],
+          "anatomicalBodyHeightPx": 380,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 16
+        }
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "sourceActionId": "backward-throw-v112-victim",
+      "bodyHeightPx": 416,
+      "pages": [
+        {
+          "pageId": "v112-scar-backward-victim-left-v112-isolated-0-v112",
+          "path": "public/game/sprites/v112/pit/scar/scar-backward-victim-left-v112-isolated-0-v112.png",
+          "sha256": "7071767a534853d779e91814d96ad06f27418cd236906c95acf5ddb020794c1a",
+          "bytes": 1464818,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/scar-backward-victim-left-v112-isolated-0-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 793,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        },
+        {
+          "pageId": "v112-scar-backward-victim-left-v112",
+          "path": "public/game/sprites/v112/pit/scar/scar-backward-victim-left-v112.png",
+          "sha256": "76a4c7ae546b9d1cbc46316136a4e4626f9747a732a7d1790ef1a9d6edcc26f5",
+          "bytes": 2213663,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/scar-backward-victim-left-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 416,
+          "scaleMethod": "Native guard crown-to-support reference"
+        },
+        {
+          "pageId": "v112-scar-backward-victim-left-v112-isolated-3-v112",
+          "path": "public/game/sprites/v112/pit/scar/scar-backward-victim-left-v112-isolated-3-v112.png",
+          "sha256": "d4cd006cd0607804e297b69a42fa06b43ccfe2b9f2864b90d4c582a5d72e9905",
+          "bytes": 1572023,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/scar-backward-victim-left-v112-isolated-3-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 890,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        },
+        {
+          "pageId": "v112-scar-backward-victim-left-v112-isolated-4-v112",
+          "path": "public/game/sprites/v112/pit/scar/scar-backward-victim-left-v112-isolated-4-v112.png",
+          "sha256": "1a6e426e19b1348e943aaf0d72af93361e6e4b738393c98d16282b318f28270e",
+          "bytes": 1551037,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/scar-backward-victim-left-v112-isolated-4-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 1020,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        },
+        {
+          "pageId": "v112-scar-backward-victim-left-v112-isolated-5-v112",
+          "path": "public/game/sprites/v112/pit/scar/scar-backward-victim-left-v112-isolated-5-v112.png",
+          "sha256": "a75ac2ab80e5a24fb3010a9252d6d6c5f09c6ff6ebb4e9d4f7563a07107c8ad3",
+          "bytes": 1660383,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/scar-backward-victim-left-v112-isolated-5-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 810,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        }
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v112-scar-backward-victim-left-v112-isolated-0-v112",
+          "rect": [
+            384,
+            27,
+            747,
+            950
+          ],
+          "visibleRect": [
+            389,
+            30,
+            738,
+            942
+          ],
+          "visibleBodyBox": [
+            389,
+            30,
+            1126,
+            972
+          ],
+          "pivot": [
+            406,
+            945
+          ],
+          "anatomicalBodyHeightPx": 793,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 4
+        },
+        {
+          "index": 1,
+          "pageId": "v112-scar-backward-victim-left-v112",
+          "rect": [
+            558,
+            18,
+            371,
+            521
+          ],
+          "visibleRect": [
+            569,
+            26,
+            350,
+            494
+          ],
+          "visibleBodyBox": [
+            568,
+            25,
+            919,
+            520
+          ],
+          "pivot": [
+            262,
+            502
+          ],
+          "anatomicalBodyHeightPx": 416,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 4
+        },
+        {
+          "index": 2,
+          "pageId": "v112-scar-backward-victim-left-v112",
+          "rect": [
+            1024,
+            4,
+            479,
+            433
+          ],
+          "visibleRect": [
+            1037,
+            9,
+            458,
+            412
+          ],
+          "visibleBodyBox": [
+            1035,
+            8,
+            1495,
+            423
+          ],
+          "pivot": [
+            256,
+            484
+          ],
+          "anatomicalBodyHeightPx": 416,
+          "anchorKind": "authored-airborne-floor-reference",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 3
+        },
+        {
+          "index": 3,
+          "pageId": "v112-scar-backward-victim-left-v112-isolated-3-v112",
+          "rect": [
+            284,
+            40,
+            996,
+            910
+          ],
+          "visibleRect": [
+            289,
+            44,
+            987,
+            901
+          ],
+          "visibleBodyBox": [
+            288,
+            42,
+            1276,
+            946
+          ],
+          "pivot": [
+            484,
+            1070
+          ],
+          "anatomicalBodyHeightPx": 890,
+          "anchorKind": "authored-airborne-floor-reference",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 14
+        },
+        {
+          "index": 4,
+          "pageId": "v112-scar-backward-victim-left-v112-isolated-4-v112",
+          "rect": [
+            126,
+            124,
+            1275,
+            757
+          ],
+          "visibleRect": [
+            135,
+            128,
+            1262,
+            744
+          ],
+          "visibleBodyBox": [
+            134,
+            127,
+            1397,
+            872
+          ],
+          "pivot": [
+            642,
+            747
+          ],
+          "anatomicalBodyHeightPx": 1020,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 24
+        },
+        {
+          "index": 5,
+          "pageId": "v112-scar-backward-victim-left-v112-isolated-5-v112",
+          "rect": [
+            298,
+            16,
+            966,
+            950
+          ],
+          "visibleRect": [
+            302,
+            19,
+            955,
+            942
+          ],
+          "visibleBodyBox": [
+            301,
+            18,
+            1257,
+            962
+          ],
+          "pivot": [
+            502,
+            945
+          ],
+          "anatomicalBodyHeightPx": 810,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 18
+        }
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "sourceActionId": "backward-throw-v112-victim",
+      "bodyHeightPx": 390,
+      "pages": [
+        {
+          "pageId": "v112-scar-backward-victim-right-v112",
+          "path": "public/game/sprites/v112/pit/scar/scar-backward-victim-right-v112.png",
+          "sha256": "3dafeb18cff5d22552f94bc38bc2003e77d907eaa4935e60b2de8e334ac8ba8e",
+          "bytes": 2236000,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/scar-backward-victim-right-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 390,
+          "scaleMethod": "Native guard crown-to-support reference"
+        },
+        {
+          "pageId": "v112-scar-backward-victim-right-v112-isolated-2-v112",
+          "path": "public/game/sprites/v112/pit/scar/scar-backward-victim-right-v112-isolated-2-v112.png",
+          "sha256": "ae944097c6f8ed265cb094a757790c3de60ff9da3add13b341f92990ef52a4e9",
+          "bytes": 1761089,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/scar-backward-victim-right-v112-isolated-2-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 840,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        },
+        {
+          "pageId": "v112-scar-backward-victim-right-v112-isolated-5-v112",
+          "path": "public/game/sprites/v112/pit/scar/scar-backward-victim-right-v112-isolated-5-v112.png",
+          "sha256": "b7770c5e223dffe7449d9b31a542a2127f42924ab50377146cbd8db9908ee2e8",
+          "bytes": 1605677,
+          "receiptPath": "docs/suivi-production/v112-pit-backward/receipts/scar-backward-victim-right-v112-isolated-5-v112.json",
+          "width": 1536,
+          "height": 1024,
+          "anatomicalBodyHeightPx": 785,
+          "scaleMethod": "Manually calibrated uniform anatomical scale against the corresponding original pose; a lying or airborne bbox is not fitted to standing body height."
+        }
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v112-scar-backward-victim-right-v112",
+          "rect": [
+            96,
+            54,
+            371,
+            473
+          ],
+          "visibleRect": [
+            107,
+            71,
+            356,
+            434
+          ],
+          "visibleBodyBox": [
+            106,
+            69,
+            462,
+            505
+          ],
+          "pivot": [
+            198,
+            451
+          ],
+          "anatomicalBodyHeightPx": 390,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 4
+        },
+        {
+          "index": 1,
+          "pageId": "v112-scar-backward-victim-right-v112",
+          "rect": [
+            566,
+            8,
+            433,
+            523
+          ],
+          "visibleRect": [
+            625,
+            23,
+            351,
+            481
+          ],
+          "visibleBodyBox": [
+            624,
+            22,
+            976,
+            504
+          ],
+          "pivot": [
+            299,
+            496
+          ],
+          "anatomicalBodyHeightPx": 390,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 4
+        },
+        {
+          "index": 2,
+          "pageId": "v112-scar-backward-victim-right-v112-isolated-2-v112",
+          "rect": [
+            190,
+            43,
+            1186,
+            900
+          ],
+          "visibleRect": [
+            194,
+            47,
+            1177,
+            882
+          ],
+          "visibleBodyBox": [
+            193,
+            47,
+            1371,
+            928
+          ],
+          "pivot": [
+            578,
+            981
+          ],
+          "anatomicalBodyHeightPx": 840,
+          "anchorKind": "authored-airborne-floor-reference",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 3
+        },
+        {
+          "index": 3,
+          "pageId": "v112-scar-backward-victim-right-v112",
+          "rect": [
+            38,
+            526,
+            473,
+            419
+          ],
+          "visibleRect": [
+            45,
+            556,
+            456,
+            369
+          ],
+          "visibleBodyBox": [
+            45,
+            555,
+            501,
+            925
+          ],
+          "pivot": [
+            218,
+            474
+          ],
+          "anatomicalBodyHeightPx": 390,
+          "anchorKind": "authored-airborne-floor-reference",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 14
+        },
+        {
+          "index": 4,
+          "pageId": "v112-scar-backward-victim-right-v112",
+          "rect": [
+            528,
+            712,
+            541,
+            278
+          ],
+          "visibleRect": [
+            538,
+            730,
+            524,
+            237
+          ],
+          "visibleBodyBox": [
+            537,
+            730,
+            1062,
+            968
+          ],
+          "pivot": [
+            240,
+            255
+          ],
+          "anatomicalBodyHeightPx": 390,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 24
+        },
+        {
+          "index": 5,
+          "pageId": "v112-scar-backward-victim-right-v112-isolated-5-v112",
+          "rect": [
+            351,
+            23,
+            913,
+            914
+          ],
+          "visibleRect": [
+            354,
+            27,
+            902,
+            906
+          ],
+          "visibleBodyBox": [
+            354,
+            26,
+            1256,
+            933
+          ],
+          "pivot": [
+            449,
+            910
+          ],
+          "anatomicalBodyHeightPx": 785,
+          "anchorKind": "measured-ground-support",
+          "otherPosePixelsAboveAlpha16": 0,
+          "durationTicks": 18
+        }
+      ]
+    }
+  ]
+}

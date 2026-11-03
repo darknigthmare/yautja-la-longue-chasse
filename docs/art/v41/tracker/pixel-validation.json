@@ -1,0 +1,443 @@
+{
+  "status": "PASS-pixels-schema-loader-adapter",
+  "checkedAt": "2026-09-19T21:25:41.047Z",
+  "sourceSha256": "4f720315955814926d4e20d758ed9f6f3740e8f249556545cc9d73ad6cc99602",
+  "sourceEqualsPublicAndProvenance": true,
+  "bodyHeightPx": 400,
+  "inGameBodyHeightPx": 122,
+  "transparency": {
+    "mode": "color-key",
+    "rgb": [
+      255,
+      0,
+      255
+    ],
+    "tolerance": 64,
+    "fringe": {
+      "mode": "connected-magenta",
+      "radius": 2,
+      "minExcess": 16,
+      "strength": 1
+    }
+  },
+  "preparedKeyedPixels": 1196255,
+  "preparedFringePixels": 19618,
+  "candidateOrder": [
+    0,
+    3,
+    2,
+    1
+  ],
+  "reviewedFrames": [
+    {
+      "facing": "right",
+      "originalBackwardIndex": 0,
+      "proposedForwardIndex": 0,
+      "pageId": "tracker-repair-walk-backward-contact",
+      "rect": [
+        71,
+        63,
+        288,
+        405
+      ],
+      "pivot": [
+        129,
+        401
+      ],
+      "durationTicks": 8,
+      "pixelsSha256": "3deb814a6dc6b904898e73c2d9f6d6afde4965d4e9071b7c4aa832a46976f125",
+      "visiblePixels": 51168,
+      "boundaryPixels": 0,
+      "sourcePivot": [
+        200,
+        464
+      ],
+      "visibleBoundsInSource": [
+        74,
+        66,
+        282,
+        399
+      ],
+      "transparentMargins": {
+        "left": 3,
+        "top": 3,
+        "right": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "facing": "right",
+      "originalBackwardIndex": 1,
+      "proposedForwardIndex": 3,
+      "pageId": "tracker-repair-walk-backward-contact",
+      "rect": [
+        455,
+        64,
+        264,
+        405
+      ],
+      "pivot": [
+        127,
+        401
+      ],
+      "durationTicks": 8,
+      "pixelsSha256": "fb530c45df1d51475272fb13245b9edaf19e5f30b061eeaf08f59e0c0fe2657c",
+      "visiblePixels": 46646,
+      "boundaryPixels": 0,
+      "sourcePivot": [
+        582,
+        465
+      ],
+      "visibleBoundsInSource": [
+        458,
+        67,
+        258,
+        399
+      ],
+      "transparentMargins": {
+        "left": 3,
+        "top": 3,
+        "right": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "facing": "right",
+      "originalBackwardIndex": 2,
+      "proposedForwardIndex": 2,
+      "pageId": "tracker-repair-walk-backward-contact",
+      "rect": [
+        829,
+        64,
+        267,
+        407
+      ],
+      "pivot": [
+        134,
+        403
+      ],
+      "durationTicks": 8,
+      "pixelsSha256": "a3ec1529c9aa667bfaae47b6d80b1a1cf1cfaa0f1873a60b418396ce7fd30c0f",
+      "visiblePixels": 47723,
+      "boundaryPixels": 0,
+      "sourcePivot": [
+        963,
+        467
+      ],
+      "visibleBoundsInSource": [
+        832,
+        67,
+        260,
+        401
+      ],
+      "transparentMargins": {
+        "left": 3,
+        "top": 3,
+        "right": 4,
+        "bottom": 3
+      }
+    },
+    {
+      "facing": "right",
+      "originalBackwardIndex": 3,
+      "proposedForwardIndex": 1,
+      "pageId": "tracker-repair-walk-backward-contact",
+      "rect": [
+        1224,
+        65,
+        257,
+        404
+      ],
+      "pivot": [
+        132,
+        400
+      ],
+      "durationTicks": 8,
+      "pixelsSha256": "2e9aa0796aad73515b4aa0d60ba8213ef2daa37ccf5b7a70fa26259f519552b9",
+      "visiblePixels": 43628,
+      "boundaryPixels": 0,
+      "sourcePivot": [
+        1356,
+        465
+      ],
+      "visibleBoundsInSource": [
+        1227,
+        68,
+        251,
+        398
+      ],
+      "transparentMargins": {
+        "left": 3,
+        "top": 3,
+        "right": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "facing": "left",
+      "originalBackwardIndex": 0,
+      "proposedForwardIndex": 0,
+      "pageId": "tracker-repair-walk-backward-contact",
+      "rect": [
+        51,
+        554,
+        279,
+        404
+      ],
+      "pivot": [
+        149,
+        400
+      ],
+      "durationTicks": 8,
+      "pixelsSha256": "c9de34c662efc179dd31ffe4a5ded7428149f4bcda0e4458458d784859fb5d61",
+      "visiblePixels": 49593,
+      "boundaryPixels": 0,
+      "sourcePivot": [
+        200,
+        954
+      ],
+      "visibleBoundsInSource": [
+        54,
+        558,
+        273,
+        397
+      ],
+      "transparentMargins": {
+        "left": 3,
+        "top": 4,
+        "right": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "facing": "left",
+      "originalBackwardIndex": 1,
+      "proposedForwardIndex": 3,
+      "pageId": "tracker-repair-walk-backward-contact",
+      "rect": [
+        437,
+        555,
+        266,
+        403
+      ],
+      "pivot": [
+        150,
+        399
+      ],
+      "durationTicks": 8,
+      "pixelsSha256": "1cfafadb283e0c4211a7c9062d546ed2fc673db8a75ad65052cf84d20988fe65",
+      "visiblePixels": 46436,
+      "boundaryPixels": 0,
+      "sourcePivot": [
+        587,
+        954
+      ],
+      "visibleBoundsInSource": [
+        440,
+        558,
+        260,
+        397
+      ],
+      "transparentMargins": {
+        "left": 3,
+        "top": 3,
+        "right": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "facing": "left",
+      "originalBackwardIndex": 2,
+      "proposedForwardIndex": 2,
+      "pageId": "tracker-repair-walk-backward-contact",
+      "rect": [
+        811,
+        554,
+        269,
+        401
+      ],
+      "pivot": [
+        154,
+        397
+      ],
+      "durationTicks": 8,
+      "pixelsSha256": "cfa383b07f6c86a34406a38b4fd72ec0a9d60415bd8553997d0e03be8d519197",
+      "visiblePixels": 47711,
+      "boundaryPixels": 0,
+      "sourcePivot": [
+        965,
+        951
+      ],
+      "visibleBoundsInSource": [
+        815,
+        558,
+        262,
+        394
+      ],
+      "transparentMargins": {
+        "left": 4,
+        "top": 4,
+        "right": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "facing": "left",
+      "originalBackwardIndex": 3,
+      "proposedForwardIndex": 1,
+      "pageId": "tracker-repair-walk-backward-contact",
+      "rect": [
+        1203,
+        555,
+        258,
+        402
+      ],
+      "pivot": [
+        132,
+        398
+      ],
+      "durationTicks": 8,
+      "pixelsSha256": "243c005c98f9fc0f6e32f985e500308d4d9c68e9addc102b336113b8a38d39a9",
+      "visiblePixels": 43704,
+      "boundaryPixels": 0,
+      "sourcePivot": [
+        1335,
+        953
+      ],
+      "visibleBoundsInSource": [
+        1206,
+        558,
+        252,
+        396
+      ],
+      "transparentMargins": {
+        "left": 3,
+        "top": 3,
+        "right": 3,
+        "bottom": 3
+      }
+    }
+  ],
+  "readyClipCount": 2,
+  "resolvedFrames": [
+    {
+      "facing": "right",
+      "simulationFrame": 0,
+      "sourceIndex": 0,
+      "rect": [
+        71,
+        63,
+        288,
+        405
+      ]
+    },
+    {
+      "facing": "right",
+      "simulationFrame": 8,
+      "sourceIndex": 3,
+      "rect": [
+        1224,
+        65,
+        257,
+        404
+      ]
+    },
+    {
+      "facing": "right",
+      "simulationFrame": 16,
+      "sourceIndex": 2,
+      "rect": [
+        829,
+        64,
+        267,
+        407
+      ]
+    },
+    {
+      "facing": "right",
+      "simulationFrame": 24,
+      "sourceIndex": 1,
+      "rect": [
+        455,
+        64,
+        264,
+        405
+      ]
+    },
+    {
+      "facing": "right",
+      "simulationFrame": 32,
+      "sourceIndex": 0,
+      "rect": [
+        71,
+        63,
+        288,
+        405
+      ]
+    },
+    {
+      "facing": "left",
+      "simulationFrame": 0,
+      "sourceIndex": 0,
+      "rect": [
+        51,
+        554,
+        279,
+        404
+      ]
+    },
+    {
+      "facing": "left",
+      "simulationFrame": 8,
+      "sourceIndex": 3,
+      "rect": [
+        1203,
+        555,
+        258,
+        402
+      ]
+    },
+    {
+      "facing": "left",
+      "simulationFrame": 16,
+      "sourceIndex": 2,
+      "rect": [
+        811,
+        554,
+        269,
+        401
+      ]
+    },
+    {
+      "facing": "left",
+      "simulationFrame": 24,
+      "sourceIndex": 1,
+      "rect": [
+        437,
+        555,
+        266,
+        403
+      ]
+    },
+    {
+      "facing": "left",
+      "simulationFrame": 32,
+      "sourceIndex": 0,
+      "rect": [
+        51,
+        554,
+        279,
+        404
+      ]
+    }
+  ],
+  "noIdleOrBackwardCoverageAdded": true,
+  "sharedRegistryUnchanged": true,
+  "limitations": [
+    "Candidate only: no shared registry, runtime, public docs or source pixels were modified.",
+    "Both forward mappings reuse eight already integrated retreat drawings. No new drawing, page or generation.",
+    "Original and repaired forward sheets remain rejected for repeated support legs; their pixels are not promoted.",
+    "Native in-motion advance/stop/backward transition review remains required before integration. This four-drawing loop retains coarse original cadence and may show foot sliding.",
+    "Tracker follows the historical V5 project identity, not a certified official 1:1 recreation. No complete moveset is claimed."
+  ]
+}

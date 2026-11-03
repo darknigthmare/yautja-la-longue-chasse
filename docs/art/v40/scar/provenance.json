@@ -1,0 +1,525 @@
+{
+  "version": "V40",
+  "fighterId": "scar",
+  "name": "Scar",
+  "status": "pixel-and-browser-validated",
+  "newGenerations": 0,
+  "newDrawings": 0,
+  "sourcePreservedByteForByte": true,
+  "officialFidelityCertified": false,
+  "acceptedOrientedClips": 2,
+  "completeMovesets": 0,
+  "definition": {
+    "fighterId": "scar",
+    "bodyHeightPx": 405,
+    "pageBodyHeightPx": {
+      "scar-repair-walk-backward-support": 405
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-walk-forward-v40",
+      "characterId": "scar",
+      "variantId": "the-pit-v34-v5-identity",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-repair-walk-backward-support",
+          "src": "/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "walk",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                45,
+                39,
+                265,
+                432
+              ],
+              "pivot": [
+                140,
+                428
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                1201,
+                32,
+                265,
+                438
+              ],
+              "pivot": [
+                119,
+                434
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                810,
+                38,
+                258,
+                433
+              ],
+              "pivot": [
+                136,
+                429
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                430,
+                29,
+                261,
+                442
+              ],
+              "pivot": [
+                137,
+                438
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                61,
+                537,
+                256,
+                436
+              ],
+              "pivot": [
+                139,
+                432
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                1206,
+                531,
+                255,
+                438
+              ],
+              "pivot": [
+                130,
+                434
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                825,
+                537,
+                256,
+                434
+              ],
+              "pivot": [
+                135,
+                430
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                426,
+                531,
+                271,
+                441
+              ],
+              "pivot": [
+                159,
+                437
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "scar-repair-walk-backward-support",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a235f315b4e00bdfabec9d49830d039a153a4e8b23d6743965fe99d4af838599",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            45,
+            39,
+            265,
+            432
+          ],
+          "pivot": [
+            140,
+            428
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            430,
+            29,
+            261,
+            442
+          ],
+          "pivot": [
+            137,
+            438
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            810,
+            38,
+            258,
+            433
+          ],
+          "pivot": [
+            136,
+            429
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            1201,
+            32,
+            265,
+            438
+          ],
+          "pivot": [
+            119,
+            434
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            61,
+            537,
+            256,
+            436
+          ],
+          "pivot": [
+            139,
+            432
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            426,
+            531,
+            271,
+            441
+          ],
+          "pivot": [
+            159,
+            437
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            825,
+            537,
+            256,
+            434
+          ],
+          "pivot": [
+            135,
+            430
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            1206,
+            531,
+            255,
+            438
+          ],
+          "pivot": [
+            130,
+            434
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true,
+          "phase": "walk-backward"
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            45,
+            39,
+            265,
+            432
+          ],
+          "pivot": [
+            140,
+            428
+          ],
+          "durationTicks": 8,
+          "index": 0,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            1201,
+            32,
+            265,
+            438
+          ],
+          "pivot": [
+            119,
+            434
+          ],
+          "durationTicks": 8,
+          "index": 1,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            810,
+            38,
+            258,
+            433
+          ],
+          "pivot": [
+            136,
+            429
+          ],
+          "durationTicks": 8,
+          "index": 2,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            430,
+            29,
+            261,
+            442
+          ],
+          "pivot": [
+            137,
+            438
+          ],
+          "durationTicks": 8,
+          "index": 3,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            61,
+            537,
+            256,
+            436
+          ],
+          "pivot": [
+            139,
+            432
+          ],
+          "durationTicks": 8,
+          "index": 0,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            1206,
+            531,
+            255,
+            438
+          ],
+          "pivot": [
+            130,
+            434
+          ],
+          "durationTicks": 8,
+          "index": 1,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            825,
+            537,
+            256,
+            434
+          ],
+          "pivot": [
+            135,
+            430
+          ],
+          "durationTicks": 8,
+          "index": 2,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            426,
+            531,
+            271,
+            441
+          ],
+          "pivot": [
+            159,
+            437
+          ],
+          "durationTicks": 8,
+          "index": 3,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V40 : marche avant par lecture temporelle inverse [0,3,2,1] des huit dessins de recul corrigé V34, sans miroir ni nouveau dessin.",
+        "Recul existant conservé. Boucle courte de quatre appuis, pas de moveset complet ni de nouvelle marche dessinée sur mesure."
+      ]
+    }
+  ],
+  "operation": "Temporal reuse order [0,3,2,1] of the existing right and left corrected retreat cycles; no horizontal mirroring, deformation, source-pixel edit or interpolation.",
+  "limits": [
+    "Eight already integrated drawings are reused in reverse playback; no new image is counted.",
+    "Original forward-walk sources remain rejected.",
+    "Four-drawing cadence remains coarse; no complete moveset or official 1:1 fidelity is certified."
+  ]
+}

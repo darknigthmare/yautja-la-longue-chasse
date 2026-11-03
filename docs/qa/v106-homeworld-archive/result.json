@@ -1,0 +1,546 @@
+{
+  "status": "PASS",
+  "scope": "One accepted initial checkpoint for the source journey plus one explicitly declared carried regression fixture at a foreground boundary; then actual UI and keyboard/native physics: source B, two visible separate carries, actual pause, parking/resume, carried Continue, refused actions/retry, explicit uncertainty report and mobile. Controlled browser clock. No physical-controller certification.",
+  "baseUrl": "http://127.0.0.1:3101",
+  "mode": "compiled-app",
+  "runtimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
+  "contentVersion": "V106",
+  "buildId": "PSbg8NXFktzLqpiyuoPMt",
+  "servedBuilds": [
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "PSbg8NXFktzLqpiyuoPMt",
+      "foundInHtml": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "Visited-port archivist is discoverable in the existing atlas without granting archive progress",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing route worker plans the physical archivist post",
+      "status": "PASS"
+    },
+    {
+      "name": "Dedicated archivist and two native lecterns and containers exist at the physical port",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused initial choice leaves durable archive bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused initial choice freezes the physical motor",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the viewport synchronously",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated initial choice refusal remains recoverable",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the viewport synchronously",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful retry does not replay initial choice",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact source B choice appears only after the explicit choice",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact B reply remains in the source dialog with stable focus",
+      "status": "PASS"
+    },
+    {
+      "name": "Start returns synchronously to the viewport and working phase",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused first pickup leaves durable archive bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused first pickup freezes the physical motor",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the viewport synchronously",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated first pickup refusal remains recoverable",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the viewport synchronously",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful retry does not replay first pickup",
+      "status": "PASS"
+    },
+    {
+      "name": "Pickup carries exactly one visible A container",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual pause interrupts while retaining the carried A dossier",
+      "status": "PASS"
+    },
+    {
+      "name": "An interrupted carried load cannot move until resume or ground parking",
+      "status": "PASS"
+    },
+    {
+      "name": "Resume moves focus before its disappearing control is removed",
+      "status": "PASS"
+    },
+    {
+      "name": "Resume retains the working phase without an immediate re-interruption",
+      "status": "PASS"
+    },
+    {
+      "name": "Ordinary Continue restores the carried case at the exact saved actor point",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit parking conserves A at actual feet, leaves B at its own origin, and clears the load",
+      "status": "PASS"
+    },
+    {
+      "name": "A cannot be put on support B and neither case is replaced",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused first deposit leaves durable archive bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused first deposit freezes the physical motor",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the viewport synchronously",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated first deposit refusal remains recoverable",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the viewport synchronously",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful retry does not replay first deposit",
+      "status": "PASS"
+    },
+    {
+      "name": "A is visibly deposited on A while B stays at its source",
+      "status": "PASS"
+    },
+    {
+      "name": "The second trip carries B while A remains on its own support",
+      "status": "PASS"
+    },
+    {
+      "name": "Two real deposits unlock return but no completion or invented historical link",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused uncertainty report leaves durable archive bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused uncertainty report freezes the physical motor",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the viewport synchronously",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated uncertainty report refusal remains recoverable",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the viewport synchronously",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful retry does not replay uncertainty report",
+      "status": "PASS"
+    },
+    {
+      "name": "Only the explicit report records uncertainty and source success",
+      "status": "PASS"
+    },
+    {
+      "name": "Completion keeps focus in the surviving dialog",
+      "status": "PASS"
+    },
+    {
+      "name": "Archive grants no profile, permanent inventory or trophy reward",
+      "status": "PASS"
+    },
+    {
+      "name": "Optional prior cartographer A/B bytes remain unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile source dialog fits without horizontal overflow and retains 44px close control",
+      "status": "PASS"
+    },
+    {
+      "name": "Ordinary mobile Continue retains both real supported containers and final uncertainty",
+      "status": "PASS"
+    },
+    {
+      "name": "Real keyboard crosses the painted foreground with the dossier still working",
+      "status": "PASS"
+    },
+    {
+      "name": "A carried checkpoint beneath foreground paint remains importable",
+      "status": "PASS"
+    },
+    {
+      "name": "Pause beneath the facade preserves an importable interrupted carried pair",
+      "status": "PASS"
+    },
+    {
+      "name": "Occlusion does not permit a hidden ground manipulation",
+      "status": "PASS"
+    },
+    {
+      "name": "A hidden carrier can resume its physical walk without a hidden object interaction",
+      "status": "PASS"
+    },
+    {
+      "name": "Ordinary Continue beneath the facade restores a valid carried checkpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "Resumed keyboard travel and another save retain an importable actor/dossier pair",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser exception is raised",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "captures": [
+    {
+      "file": "01-source-and-adaptation.png",
+      "sha256": "ef8e4ccc340ade3ae16afbfb61dc7032b6128599cddb8dc783fb49cf64d992a9"
+    },
+    {
+      "file": "02-native-carry-a.png",
+      "sha256": "4da9df013dc63c9f92a05a935ab294a7673cea9b93844bbbc74d5b3e9d887022"
+    },
+    {
+      "file": "03-interrupted-load.png",
+      "sha256": "e10a65da4340ac2a91e43f6cd8545a314d6ebe363ad40c8aa498a9317de4ecfe"
+    },
+    {
+      "file": "04-parked-dossier.png",
+      "sha256": "99c7c1079506b6e753aef25e29ca636e346d5214c92c89c055eeeedade7762cb"
+    },
+    {
+      "file": "05-first-support.png",
+      "sha256": "5f6a73b5e937bae81088c731348ee5b23738ebfeacbb88b6bbf5eca2556d6102"
+    },
+    {
+      "file": "06-two-separate-supports.png",
+      "sha256": "c9306a462d7f188323fb987481319ebbc5ef79ac1794cc33d7b29248736ecab9"
+    },
+    {
+      "file": "07-completed-desktop.png",
+      "sha256": "f158f1aec7bf6c1909cfa1881b51fbcd5d20b12136b8637746b4afdb9d75e459"
+    },
+    {
+      "file": "08-completed-mobile.png",
+      "sha256": "008494075da8f163e5d9736911684406b0bbf066097f2e0d47efc5a20538a98d"
+    },
+    {
+      "file": "09-local-map-mobile.png",
+      "sha256": "5f6a8094e42f9eb818c158dbec4ba25459d20cd3832f9251a7c4a66c033ee6d8"
+    },
+    {
+      "file": "10-foreground-carry-resume.png",
+      "sha256": "1ad8e179baae6af3289851179982eead2c05d81434dfc2a34495dd304012b9b5"
+    }
+  ],
+  "fixture": {
+    "description": "One accepted first-tracks campaign and ordinary initial city checkpoint. Every archive action and subsequent position uses UI and real keyboard/native physics.",
+    "owner": "2026-09-20T10:00:00.000Z",
+    "profile": {
+      "hunterName": "QA V106 · archivage",
+      "rankId": "young-blood",
+      "honor": 0,
+      "clanMarks": 0,
+      "playTimeSeconds": 138
+    },
+    "inventory": {
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ],
+      "unlockedArmorIds": [
+        "hunter"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "trophies": [],
+    "legacyA": null,
+    "legacyB": null
+  },
+  "regressionFixture": {
+    "description": "Separately accepted carried fixture before foreground occlusion, derived by real source actions and native movement in the pure runtime. After this checkpoint only actual browser keyboard, save, pause, resume and Continue are used.",
+    "actor": {
+      "x": 6826.779811248433,
+      "y": 3008.1610110980905,
+      "vx": 329.9846980048824,
+      "vy": -2.503804240413956,
+      "facing": 1,
+      "grounded": true
+    },
+    "ledger": {
+      "version": 1,
+      "ownerCreatedAt": "2026-09-20T10:00:00.000Z",
+      "revision": 4,
+      "receipt": {
+        "sceneId": "D6-W-PNJ-ROLE-03",
+        "operationId": "port-separated-study-records-v106",
+        "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+        "phase": "working",
+        "resumePhase": null,
+        "last": {
+          "x": 6826.779811248433,
+          "y": 3008.1610110980905
+        },
+        "walked": 3687.7145491994493,
+        "cases": [
+          {
+            "id": "A",
+            "x": 6826.779811248433,
+            "y": 3008.1610110980905,
+            "place": "carried"
+          },
+          {
+            "id": "B",
+            "x": 7610,
+            "y": 5280,
+            "place": "ground"
+          }
+        ],
+        "carrier": "A",
+        "pickupWalked": 219.5358740616211,
+        "interruptedCount": 0,
+        "uncertaintyRecorded": false
+      }
+    }
+  },
+  "errors": [],
+  "sourceBefore": [
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "5b7b17244f07b1e377b57098ed98a9aeed50cefd2b0468694801a25adf12f531"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "d8082f37df8ce343a1bd27cc325bb293641c046f1f0ae87e9fad271270cca00c"
+    },
+    {
+      "file": "app/game/HomeworldArchiveWorldV106.tsx",
+      "sha256": "ac5d96cd5a0b972fef67dcba3e8f0d36e2e835b25aa6e54b9695d25d4cec34f9"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.tsx",
+      "sha256": "61caf4fd0916c9e4369b76a6b1ca6779b0b209e3b21d9ba1dfca63d8afc4131b"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.module.css",
+      "sha256": "67dd39b845f524f0037a00f5e4ecf39f9a4dbe39284cca791b4ce3b8f61f406c"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveDefinitionV106.ts",
+      "sha256": "00abbffa9464bac97a74d78b9047cb11350302d1e04f60eb870fa3e3adb6842d"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveLedgerV106.ts",
+      "sha256": "cbd307cbe7374b542a16c1a6597ef65087f65da2b0f7d5df362be080da6ae6df"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveSolidsV106.ts",
+      "sha256": "fa00c983c41a8c4e236c574c8fb4f5ecc08101a33f695a19f86df8cd77cf7a88"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveV106.ts",
+      "sha256": "44e8eb79b319e01bd80f0eedd083572fa79918c202b05c47d6f5f20bed1dadaf"
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "3fd5d2f542a1b19f5ba4f58fa59a01387f9b58c1fe8789e25722cf8ba1c84994"
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV83.ts",
+      "sha256": "fbe63d7ab83deae70b299106684b6c71a8d8e68bb64da5e158e01ee54d257b65"
+    },
+    {
+      "file": "app/game/data/bibleArchiveSceneV106.json",
+      "sha256": "1460ecc3362a9ba4da794762e64dc36a110fade7233298808eafb23e8f6857f4"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "15b7cc2849748de024224b59318612e880ea1d748f783200978fd1ba1908ab82"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "ddef4c2efdabc306c674eff70226222c99e6393d21d2c0cadfc2627291ace2c6"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "eae1e08c11bc9b6f3a35a9aac9395bea35f1bb38b8d173ce235723cb4d2fe9cf"
+    },
+    {
+      "file": "scripts/qa-homeworld-archive-v106.mjs",
+      "sha256": "9a88ad0037f590f9ae0324ab19578641625a1cb4716ebca0dc9830ed9bbf3a03"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "5b7b17244f07b1e377b57098ed98a9aeed50cefd2b0468694801a25adf12f531"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "d8082f37df8ce343a1bd27cc325bb293641c046f1f0ae87e9fad271270cca00c"
+    },
+    {
+      "file": "app/game/HomeworldArchiveWorldV106.tsx",
+      "sha256": "ac5d96cd5a0b972fef67dcba3e8f0d36e2e835b25aa6e54b9695d25d4cec34f9"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.tsx",
+      "sha256": "61caf4fd0916c9e4369b76a6b1ca6779b0b209e3b21d9ba1dfca63d8afc4131b"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.module.css",
+      "sha256": "67dd39b845f524f0037a00f5e4ecf39f9a4dbe39284cca791b4ce3b8f61f406c"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveDefinitionV106.ts",
+      "sha256": "00abbffa9464bac97a74d78b9047cb11350302d1e04f60eb870fa3e3adb6842d"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveLedgerV106.ts",
+      "sha256": "cbd307cbe7374b542a16c1a6597ef65087f65da2b0f7d5df362be080da6ae6df"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveSolidsV106.ts",
+      "sha256": "fa00c983c41a8c4e236c574c8fb4f5ecc08101a33f695a19f86df8cd77cf7a88"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveV106.ts",
+      "sha256": "44e8eb79b319e01bd80f0eedd083572fa79918c202b05c47d6f5f20bed1dadaf"
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "3fd5d2f542a1b19f5ba4f58fa59a01387f9b58c1fe8789e25722cf8ba1c84994"
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV83.ts",
+      "sha256": "fbe63d7ab83deae70b299106684b6c71a8d8e68bb64da5e158e01ee54d257b65"
+    },
+    {
+      "file": "app/game/data/bibleArchiveSceneV106.json",
+      "sha256": "1460ecc3362a9ba4da794762e64dc36a110fade7233298808eafb23e8f6857f4"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "15b7cc2849748de024224b59318612e880ea1d748f783200978fd1ba1908ab82"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "ddef4c2efdabc306c674eff70226222c99e6393d21d2c0cadfc2627291ace2c6"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "eae1e08c11bc9b6f3a35a9aac9395bea35f1bb38b8d173ce235723cb4d2fe9cf"
+    },
+    {
+      "file": "scripts/qa-homeworld-archive-v106.mjs",
+      "sha256": "9a88ad0037f590f9ae0324ab19578641625a1cb4716ebca0dc9830ed9bbf3a03"
+    }
+  ],
+  "sourceUnchanged": true,
+  "completedAt": "2026-10-23T05:09:59.413Z"
+}

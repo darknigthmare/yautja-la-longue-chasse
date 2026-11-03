@@ -1,0 +1,475 @@
+{
+  "schemaVersion": 2,
+  "fighterId": "scar",
+  "appearanceId": "runtime-default",
+  "scope": "Counts at top level cover only the original animation_source_v100 Scar intake lot. External native5H replacement and retained historical V34 are tracked separately below; final runtime/build QA remains outside this source-integrity review.",
+  "sourcePlan": "app/game/data/pitWorkbookAnimationPlanV100.json",
+  "pages": 22,
+  "sequences": 22,
+  "nativeSourceActions": 11,
+  "uniqueActionDrawings": 77,
+  "calibrationOnlyDrawings": 17,
+  "admittedFrameDescriptors": 94,
+  "historical5HDrawings": 8,
+  "historical5HSource": "public/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+  "historical5HSha256": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3",
+  "intakeStatusCounts": {
+    "reference-only-not-animation": 1,
+    "admitted-native-art-awaiting-renderer-qa": 19,
+    "rejected-crop": 5,
+    "partial-art-admitted-cropped-ending-excluded": 1,
+    "partial-art-admitted-wrong-facing-startup-excluded": 1,
+    "rejected-full-cycle-continuity": 4,
+    "partial-art-admitted-cropped-startup-excluded": 1,
+    "rejected-gesture-identity": 1
+  },
+  "checks": [
+    {
+      "id": "scar-workbook-5L-v100",
+      "sha256": "c4e42f89fc367b442ed1cb4ac67cd1bf45868de4cc97cabf072ae5caac0d0cac",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 6,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-2L-v100",
+      "sha256": "ba74a5756a0951847bdf7e78ae90761f131a17d1b63863e31124f51b4420f644",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 8,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-5M-right-v100",
+      "sha256": "54a70c307c11f41fc1252174cc863141eef3f10957972774493f9962dddf90d4",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-5M-left-v100",
+      "sha256": "56de9c7ca3110ed40ec810320788d37305b3f57dd8664b2abae54a0d612181f5",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-2M-right-v100",
+      "sha256": "5cd1f926dd04d74e139fe88faef820262eec047c2ad266febda6b23f5610d384",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-2M-left-v100",
+      "sha256": "74ad6714525cbba91bc6ef65c4d3798ce835b339893041b175ee2f40a530e283",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-2H-right-v100",
+      "sha256": "50cb107f553f54bf7519bd97939046c510f0aebae82223358ddc44ac1d9245d0",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-2H-left-partial-v100",
+      "sha256": "ebb4dd8320217091c3bbd8a8e6486231d19cf9b6c959b92d49231eaa419e5456",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 3,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-jL-right-v100",
+      "sha256": "fdb5f6a6dc8e4ca68b9c96a04bdea057748a6ad796b223fb377dd006e8810fb7",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-jH-right-v100",
+      "sha256": "9b48ac15b53a50d62ddea8a77189744352b3fb5661c5366940f77c87836fe199",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-6M-right-v100",
+      "sha256": "08e3c2586fb7ec07fd2ac2294f272580bf2a08bdf0677c8ae9d87c38f21e8fa9",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-jL-left-v100",
+      "sha256": "e3d2bc9e010351e37f9b208d6f8c06f417b9f0475c8bc9c991b578cfc82babc9",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-jM-left-v100",
+      "sha256": "4d714b5f7f334d22250adfca8231a3abf3fa147dd18c1f5d9b36498f45560388",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-jH-left-partial-v100",
+      "sha256": "9b3bb6de48183ddaec9e89268564012d8465d7bec120664b60b7adf1b307fbbe",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 3,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-6M-left-v100",
+      "sha256": "5fe2379e13bbcd90478302652cc5534b42ee8e6e5f95d6cb3dccf02fd2e2ed51",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-jM-right-v100",
+      "sha256": "63c91bce12397c460cd8f5a60b41eb0dcb3a02261e819a269db42337c26d8a7f",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 4,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-TH_F-right-v100",
+      "sha256": "3d27ef4ea3cf48a2a8e25d94f2087143d552bfcf37c54fae2086d926af6ebb4f",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 6,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-TH_B-right-v100",
+      "sha256": "45b253ef506a41b6a2555eb747a6e299dfc0b8617b22a0a28c3cd92adc6ddc9b",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 6,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-TH_F-left-partial-v100",
+      "sha256": "c1bfbe0edd26d99d63a0e6fb97a78e9f341578337f6888c766f13a86194890b4",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 5,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-TH_B-left-v100",
+      "sha256": "9fae9be652c52c4739eef1d7fb1b99fbe2fc57bff222eed93b915669a610aaf2",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 6,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-jH-left-startup-v100",
+      "sha256": "d906629e65873b4fba00377fec0a8f7528e98ce6791b02727f18cc596c9b5501",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 2,
+      "admittedBorderPixels": 0
+    },
+    {
+      "id": "scar-workbook-TH_F-left-recovery-v100",
+      "sha256": "ca683a3f009676f097fc842c9f265cfb1402865fef4646d73f4b3da19f7b2e91",
+      "byteIdenticalPublicCopy": true,
+      "admittedFrameCount": 1,
+      "admittedBorderPixels": 0
+    }
+  ],
+  "countsScope": {
+    "producer": "/root/animation_source_v100",
+    "archiveDirectory": "art-source/v100/pit/scar/intake",
+    "ownGeneratedOriginalPngs": 33,
+    "ownIntakeRecords": 33,
+    "ownPromptRecords": 33,
+    "ownAdmittedPages": 22,
+    "ownAdmittedSourceActions": 11,
+    "ownDirectionalSequences": 22,
+    "ownDistinctActionDrawings": 77,
+    "ownCalibrationOnlyDrawings": 17,
+    "ownAdmittedFrameDescriptors": 94,
+    "excludes": [
+      "Historical V34 heavy page and its 8 existing drawings",
+      "External heavy-alpha replacement: 3 originals, including 2 admitted pages and 8 new drawings",
+      "All specials-presentations sources and global fighter/workbook totals"
+    ],
+    "countingRule": "Count only explicitly admitted source frames; the shared 2H guard is counted once. Rejected and reference-only attempts remain archived without contributing action drawings."
+  },
+  "sourceProvenance": {
+    "planPath": "app/game/data/pitWorkbookAnimationPlanV100.json",
+    "planSha256": "e320476807a1e5c36bb82202d243761097497e48b4d893884a8771bbf01f3141",
+    "extractionPath": "docs/v56-excel-priorities.json",
+    "extractionSha256": "fc8e1c6c81de62d8966e04746ed0751b0eeefc62f0458728c818896ad79972f4",
+    "workbookSha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+    "originalWorkbookAvailable": false,
+    "admittedSourceCells": [
+      "05_MOVES_PROPOSES!D7",
+      "05_MOVES_PROPOSES!E7",
+      "05_MOVES_PROPOSES!G7",
+      "05_MOVES_PROPOSES!H7",
+      "05_MOVES_PROPOSES!I7",
+      "05_MOVES_PROPOSES!J7",
+      "05_MOVES_PROPOSES!K7",
+      "05_MOVES_PROPOSES!L7",
+      "05_MOVES_PROPOSES!M7",
+      "05_MOVES_PROPOSES!N7",
+      "05_MOVES_PROPOSES!O7"
+    ]
+  },
+  "ownArchiveChecks": [
+    {
+      "intake": "art-source/v100/pit/scar/intake/001-intake.json",
+      "original": "art-source/v100/pit/scar/intake/001-scar-5L-5M-original.png",
+      "sha256": "78d335bffeb40ab7616ced9c09f9431ac69e69e5bce22458bdece5d15a7bbfec",
+      "status": "rejected-crop"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/002-intake.json",
+      "original": "art-source/v100/pit/scar/intake/002-scar-5L-original.png",
+      "sha256": "c4e42f89fc367b442ed1cb4ac67cd1bf45868de4cc97cabf072ae5caac0d0cac",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/003-intake.json",
+      "original": "art-source/v100/pit/scar/intake/003-scar-5M-original.png",
+      "sha256": "5c10bf388384207874e990dd6b86471653ff535a6b59e25816e9c78c76d3a865",
+      "status": "rejected-crop"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/004-intake.json",
+      "original": "art-source/v100/pit/scar/intake/004-scar-5H-original.png",
+      "sha256": "47ec5c4aa8e2bed96f7b851658eb81ebb471224752bd41a0fa9b65d775cad925",
+      "status": "rejected-crop"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/005-intake.json",
+      "original": "art-source/v100/pit/scar/intake/005-scar-2L-original.png",
+      "sha256": "ba74a5756a0951847bdf7e78ae90761f131a17d1b63863e31124f51b4420f644",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/006-intake.json",
+      "original": "art-source/v100/pit/scar/intake/006-scar-2M-original.png",
+      "sha256": "f0213082cc2a9b00c33aaca5909d1fd7aea4bfd282bbb2f886184b48152fe766",
+      "status": "rejected-gesture-identity"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/007-intake.json",
+      "original": "art-source/v100/pit/scar/intake/007-scar-5M-original.png",
+      "sha256": "584710a88e4266ae350dd7cc199369afd281639370ec062af5389891c3a3a12e",
+      "status": "rejected-crop"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/008-intake.json",
+      "original": "art-source/v100/pit/scar/intake/008-scar-5H-original.png",
+      "sha256": "82ff25e83540262041ebab6657d2795066c02abf3b5a3bcd7141485c84c5dfd9",
+      "status": "rejected-crop"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/009-intake.json",
+      "original": "art-source/v100/pit/scar/intake/009-scar-5M-right-original.png",
+      "sha256": "54a70c307c11f41fc1252174cc863141eef3f10957972774493f9962dddf90d4",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/010-intake.json",
+      "original": "art-source/v100/pit/scar/intake/010-scar-5M-left-original.png",
+      "sha256": "56de9c7ca3110ed40ec810320788d37305b3f57dd8664b2abae54a0d612181f5",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/011-intake.json",
+      "original": "art-source/v100/pit/scar/intake/011-scar-2M-right-original.png",
+      "sha256": "5cd1f926dd04d74e139fe88faef820262eec047c2ad266febda6b23f5610d384",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/012-intake.json",
+      "original": "art-source/v100/pit/scar/intake/012-scar-2M-left-original.png",
+      "sha256": "74ad6714525cbba91bc6ef65c4d3798ce835b339893041b175ee2f40a530e283",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/013-intake.json",
+      "original": "art-source/v100/pit/scar/intake/013-scar-2H-right-original.png",
+      "sha256": "50cb107f553f54bf7519bd97939046c510f0aebae82223358ddc44ac1d9245d0",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/014-intake.json",
+      "original": "art-source/v100/pit/scar/intake/014-scar-2H-left-original.png",
+      "sha256": "ebb4dd8320217091c3bbd8a8e6486231d19cf9b6c959b92d49231eaa419e5456",
+      "status": "partial-art-admitted-wrong-facing-startup-excluded"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/015-intake.json",
+      "original": "art-source/v100/pit/scar/intake/015-scar-jL-right-original.png",
+      "sha256": "fdb5f6a6dc8e4ca68b9c96a04bdea057748a6ad796b223fb377dd006e8810fb7",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/016-intake.json",
+      "original": "art-source/v100/pit/scar/intake/016-scar-jL-left-original.png",
+      "sha256": "5bba23321115ba64fee35a5bf10bf7bf1701f182fd262026d4777bd7c5c940a5",
+      "status": "rejected-full-cycle-continuity"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/017-intake.json",
+      "original": "art-source/v100/pit/scar/intake/017-scar-jM-right-original.png",
+      "sha256": "0e31d8b56401a98e4da22ecf667b2a6e9999e01531e20335b5bdc5969230afa5",
+      "status": "rejected-full-cycle-continuity"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/018-intake.json",
+      "original": "art-source/v100/pit/scar/intake/018-scar-jM-left-original.png",
+      "sha256": "0871f19ae9c70e4ee90c2a817ac04a858bfc1e432f2b84bd7e7d40956202d0ff",
+      "status": "rejected-full-cycle-continuity"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/019-intake.json",
+      "original": "art-source/v100/pit/scar/intake/019-scar-jH-right-original.png",
+      "sha256": "9b48ac15b53a50d62ddea8a77189744352b3fb5661c5366940f77c87836fe199",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/020-intake.json",
+      "original": "art-source/v100/pit/scar/intake/020-scar-jH-left-original.png",
+      "sha256": "e5224a115796a3028c9d59b683230ca267a170d654399484cc080b9a20a5805e",
+      "status": "rejected-full-cycle-continuity"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/021-intake.json",
+      "original": "art-source/v100/pit/scar/intake/021-scar-left-reference-left-original.png",
+      "sha256": "afda5ebad65ed340201456786529962cdf1c7d97a1152f039d910cc537618d2c",
+      "status": "reference-only-not-animation"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/022-intake.json",
+      "original": "art-source/v100/pit/scar/intake/022-scar-6M-right-original.png",
+      "sha256": "08e3c2586fb7ec07fd2ac2294f272580bf2a08bdf0677c8ae9d87c38f21e8fa9",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/023-intake.json",
+      "original": "art-source/v100/pit/scar/intake/023-scar-TH_F-right-original.png",
+      "sha256": "3d27ef4ea3cf48a2a8e25d94f2087143d552bfcf37c54fae2086d926af6ebb4f",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/024-intake.json",
+      "original": "art-source/v100/pit/scar/intake/024-scar-TH_B-right-original.png",
+      "sha256": "45b253ef506a41b6a2555eb747a6e299dfc0b8617b22a0a28c3cd92adc6ddc9b",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/025-intake.json",
+      "original": "art-source/v100/pit/scar/intake/025-scar-jL-left-original.png",
+      "sha256": "e3d2bc9e010351e37f9b208d6f8c06f417b9f0475c8bc9c991b578cfc82babc9",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/026-intake.json",
+      "original": "art-source/v100/pit/scar/intake/026-scar-jM-left-original.png",
+      "sha256": "4d714b5f7f334d22250adfca8231a3abf3fa147dd18c1f5d9b36498f45560388",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/027-intake.json",
+      "original": "art-source/v100/pit/scar/intake/027-scar-jH-left-original.png",
+      "sha256": "9b3bb6de48183ddaec9e89268564012d8465d7bec120664b60b7adf1b307fbbe",
+      "status": "partial-art-admitted-cropped-startup-excluded"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/028-intake.json",
+      "original": "art-source/v100/pit/scar/intake/028-scar-6M-left-original.png",
+      "sha256": "5fe2379e13bbcd90478302652cc5534b42ee8e6e5f95d6cb3dccf02fd2e2ed51",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/029-intake.json",
+      "original": "art-source/v100/pit/scar/intake/029-scar-jM-right-original.png",
+      "sha256": "63c91bce12397c460cd8f5a60b41eb0dcb3a02261e819a269db42337c26d8a7f",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/030-intake.json",
+      "original": "art-source/v100/pit/scar/intake/030-scar-TH_F-left-original.png",
+      "sha256": "c1bfbe0edd26d99d63a0e6fb97a78e9f341578337f6888c766f13a86194890b4",
+      "status": "partial-art-admitted-cropped-ending-excluded"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/031-intake.json",
+      "original": "art-source/v100/pit/scar/intake/031-scar-TH_B-left-original.png",
+      "sha256": "9fae9be652c52c4739eef1d7fb1b99fbe2fc57bff222eed93b915669a610aaf2",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/032-intake.json",
+      "original": "art-source/v100/pit/scar/intake/032-scar-jH-startup-left-original.png",
+      "sha256": "d906629e65873b4fba00377fec0a8f7528e98ce6791b02727f18cc596c9b5501",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    },
+    {
+      "intake": "art-source/v100/pit/scar/intake/033-intake.json",
+      "original": "art-source/v100/pit/scar/intake/033-scar-TH_F-recovery-left-original.png",
+      "sha256": "ca683a3f009676f097fc842c9f265cfb1402865fef4646d73f4b3da19f7b2e91",
+      "status": "admitted-native-art-awaiting-renderer-qa"
+    }
+  ],
+  "historical5HRole": "Retained historical duel source, unchanged bytes. It was the former reader fallback and is no longer the reader5H study; eight historical drawings are not own new drawings.",
+  "external5HReaderReplacement": {
+    "owner": "root/release_review_v100; central admission animation_engine_v100",
+    "sourceCell": "05_MOVES_PROPOSES!F7",
+    "actionId": "M_F003_5H",
+    "handoffPath": "art-source/v100/pit/scar/heavy-alpha/intake/handoff.json",
+    "handoffSha256": "c30e32106ffb0c932f150dadad76f9d28bfe15a0c05ec62cc3b72232b5479229",
+    "handoffRecordedStatus": "TWO_BODY_STUDY_PAGES_FAVORABLE_PENDING_CENTRAL_ADMISSION",
+    "centralAdmissionPath": "app/game/data/pitWorkbookAnimationsV100.json",
+    "centralAdmissionStatus": "validated",
+    "atlasId": "scar-workbook-5h-v100",
+    "clipIds": [
+      "workbook.M_F003_5H"
+    ],
+    "combatClipIds": [],
+    "scope": "Reader BODY study only; native alpha reconstruction/redraw replaces former V34 reader fallback. Historical V34 duel source and clips remain unchanged. These counts are external to the original intake lot.",
+    "externalArchivedOriginalPngs": 3,
+    "externalAdmittedPages": 2,
+    "externalDirectionalSequences": 2,
+    "externalDistinctActionDrawings": 8,
+    "externalCalibrationOnlyDrawings": 0,
+    "pages": [
+      {
+        "producer": "root/release_review_v100; central admission animation_engine_v100",
+        "attemptId": "scar-5h-right-alpha",
+        "facing": "right",
+        "original": "art-source/v100/pit/scar/heavy-alpha/intake/001-scar-5h-right-alpha-original.png",
+        "sha256": "3da7a25a272d0e9398170b2b5fff7f295494a56043336009e2c29ca55268521b",
+        "measurement": "art-source/v100/pit/scar/heavy-alpha/intake/001-scar-5h-right-alpha-measurement.json",
+        "source": "/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+        "byteIdenticalPublicCopy": true,
+        "actionDrawings": 4,
+        "calibrationOnlyDrawings": 0,
+        "bodyHeightPx": 447
+      },
+      {
+        "producer": "root/release_review_v100; central admission animation_engine_v100",
+        "attemptId": "scar-5h-left-native-attempt-02",
+        "facing": "left",
+        "original": "art-source/v100/pit/scar/heavy-alpha/intake/003-scar-5h-left-native-original.png",
+        "sha256": "658a0587a4e2ca496c950028569c595bc5fec3ee614d164c760225845d17fee8",
+        "measurement": "art-source/v100/pit/scar/heavy-alpha/intake/003-scar-5h-left-native-measurement.json",
+        "source": "/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+        "byteIdenticalPublicCopy": true,
+        "actionDrawings": 4,
+        "calibrationOnlyDrawings": 0,
+        "bodyHeightPx": 385
+      }
+    ],
+    "retainedHistoricalSource": "public/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+    "retainedHistoricalSha256": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3",
+    "historicalShaUnchanged": true
+  }
+}

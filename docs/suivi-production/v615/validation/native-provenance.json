@@ -1,0 +1,426 @@
+{
+  "schemaVersion": "yautja-v615-final-native-provenance-1",
+  "verifiedAtUtc": "2026-10-23T17:30:59.859671+00:00",
+  "passed": true,
+  "manifestSha256": "7dea91603f6842f38a892d0a3aac1655facd89e59dcdf39159379941191ff356",
+  "nativePngFiles": 18,
+  "documentedGenerationAttempts": 23,
+  "matchingFinalReceipts": 18,
+  "nativePngBytes": 42600264,
+  "allVisibleBoundsInsideCanvas": true,
+  "targetEightPercentMarginMet": 8,
+  "allPixelsUnmodified": true,
+  "promptTransportCorrection": {
+    "ids": [
+      "ul-khar--sucklings-02",
+      "sha-rhess--sucklings-02",
+      "kaal-or--sucklings-02",
+      "vaal-tir--sucklings-02"
+    ],
+    "changeFR": "Un unique LF terminal ajouté par le fichier intermédiaire de prompt a été retiré des champs publics. Leurs chaînes sont désormais strictement égales à l’argument prompt des appels imagegen, selon comparaison par le générateur avec les chaînes originales persistées. Aucun mot, horodatage, référence ou octet PNG n’a changé.",
+    "finalPromptCharacterLengths": [
+      4482,
+      4510,
+      4427,
+      4516
+    ]
+  },
+  "assets": [
+    {
+      "id": "super-predators--sucklings-02",
+      "sha256": "b7c5acf74926b0273562e8885f194b20e64944a1bd63c5b20b31c3152153582a",
+      "receiptPath": "docs/suivi-production/v615/receipts/super-predators--sucklings-02.json",
+      "receiptSha256": "865ff4b7f17b728f7372460e8586d29935ffe9a7de929fc1d6500e9866a6ddc1",
+      "acceptedPromptSha256": "c27586fd800a6aaa03dab619cd437974fd46767de930a607763534119bc4f1f0",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": false,
+      "contentBoundsAlpha20": [
+        58,
+        131,
+        974,
+        1479
+      ],
+      "marginsFraction": [
+        0.056640625,
+        0.08528645833333333,
+        0.048828125,
+        0.037109375
+      ]
+    },
+    {
+      "id": "feral--sucklings-02",
+      "sha256": "8f95e82c3271be9bdae9d9983fc83a633544af73a36a46f4ffe61a98c857b0d2",
+      "receiptPath": "docs/suivi-production/v615/receipts/feral--sucklings-02.json",
+      "receiptSha256": "aa7ac791b9515d0a2c8c31366b733fe2849ef8622172627851252a25215d14eb",
+      "acceptedPromptSha256": "a864059339c10d6c22dbfc49d95032da05885036d7856921dd010e7747d3cf66",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": false,
+      "contentBoundsAlpha20": [
+        51,
+        169,
+        1008,
+        1420
+      ],
+      "marginsFraction": [
+        0.0498046875,
+        0.11002604166666667,
+        0.015625,
+        0.07552083333333333
+      ]
+    },
+    {
+      "id": "augmentes-assassin--sucklings-02",
+      "sha256": "722ef2fc2f6221db3209fd2c2efe78329d9328f383bbf7c4d7f2924a22e20f20",
+      "receiptPath": "docs/suivi-production/v615/receipts/augmentes-assassin--sucklings-02.json",
+      "receiptSha256": "2ed3421ee4ec417d66d1d32981026daabb345304d4aa1d1f0cabb78a8fcb4dd4",
+      "acceptedPromptSha256": "9aff89dd2a2da8ceecb4bc0f2a48a9c44f0fe6e3cd1b0a99b5eaa6b807fe07b9",
+      "attempts": 2,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": false,
+      "contentBoundsAlpha20": [
+        74,
+        84,
+        1000,
+        1485
+      ],
+      "marginsFraction": [
+        0.072265625,
+        0.0546875,
+        0.0234375,
+        0.033203125
+      ]
+    },
+    {
+      "id": "spiked-tail--sucklings-02",
+      "sha256": "d1be198957c5a93bfd5233bbadd148a5e943b6768be7a8dfcbab114897f41c60",
+      "receiptPath": "docs/suivi-production/v615/receipts/spiked-tail--sucklings-02.json",
+      "receiptSha256": "50bd7cae790e9bb72ead11c5dbed066398cf9077b2ddfca1014b2db04d65c471",
+      "acceptedPromptSha256": "1682435bf13ce6b3f48b4309a82541d7356b2f9f1421b4624a0f422c5233df34",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": false,
+      "contentBoundsAlpha20": [
+        71,
+        101,
+        984,
+        1500
+      ],
+      "marginsFraction": [
+        0.0693359375,
+        0.06575520833333333,
+        0.0390625,
+        0.0234375
+      ]
+    },
+    {
+      "id": "hornhead--sucklings-02",
+      "sha256": "cc31013695a22c31bbfd1bfa7032d04cf029bba66e64ff8428269e5b18ad1198",
+      "receiptPath": "docs/suivi-production/v615/receipts/hornhead--sucklings-02.json",
+      "receiptSha256": "e06637484c04bed7bdef4450783b2d5bcc6434a2fa3bae317bac43c5e24a74aa",
+      "acceptedPromptSha256": "c897f5cd5d04511fbd5c6e81821ed73259bd87a78053c2e1038ff1c30813ff4b",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": false,
+      "contentBoundsAlpha20": [
+        140,
+        144,
+        969,
+        1444
+      ],
+      "marginsFraction": [
+        0.13671875,
+        0.09375,
+        0.0537109375,
+        0.059895833333333336
+      ]
+    },
+    {
+      "id": "saar-keth--sucklings-02",
+      "sha256": "88787cdf5daeb77c019c991ba063be23c3abb2f587e5c768e187c8e68d74196a",
+      "receiptPath": "docs/suivi-production/v615/receipts/saar-keth--sucklings-02.json",
+      "receiptSha256": "6c3217aec07e399c8e3f44e595ca60aeebecbfcf63b7fab0bf1dfdbdbf8011c6",
+      "acceptedPromptSha256": "d1e9f2e9f45314e431b223de3e3a55b7429edec8f7cf1e89232cb7119238729c",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": false,
+      "contentBoundsAlpha20": [
+        62,
+        172,
+        982,
+        1454
+      ],
+      "marginsFraction": [
+        0.060546875,
+        0.11197916666666667,
+        0.041015625,
+        0.053385416666666664
+      ]
+    },
+    {
+      "id": "ul-khar--sucklings-02",
+      "sha256": "7a04ba24af458342ba33aaff3c86985cb7ba3212a25b5f8f0e67ede0feb513ad",
+      "receiptPath": "docs/suivi-production/v615/receipts/ul-khar--sucklings-02.json",
+      "receiptSha256": "4803a1b6ea54519a3102d73f27c3e2dd26a0601f76c460837d906db9b7638a44",
+      "acceptedPromptSha256": "225d004f726459d2f7d8407cbfe756c745b83b36636827f0a319f9ffdb00717c",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": false,
+      "contentBoundsAlpha20": [
+        68,
+        212,
+        982,
+        1430
+      ],
+      "marginsFraction": [
+        0.06640625,
+        0.13802083333333334,
+        0.041015625,
+        0.06901041666666667
+      ]
+    },
+    {
+      "id": "sha-rhess--sucklings-02",
+      "sha256": "9705724f441d4c95182062e2a062c645a553d63934687425f0f0153eb6db63df",
+      "receiptPath": "docs/suivi-production/v615/receipts/sha-rhess--sucklings-02.json",
+      "receiptSha256": "5cefcb7160139cc2bc7bf786582cb9ccfbc8629b00f72cadc3183c32b18ad95d",
+      "acceptedPromptSha256": "bea74d5a601700b51f1190e09a8485fb1ba0923ee4dc117c405f02004e193043",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": true,
+      "contentBoundsAlpha20": [
+        212,
+        291,
+        939,
+        1351
+      ],
+      "marginsFraction": [
+        0.20703125,
+        0.189453125,
+        0.0830078125,
+        0.12044270833333333
+      ]
+    },
+    {
+      "id": "kaal-or--sucklings-02",
+      "sha256": "7390f442a22fbe3518db808607d6f1b921752319916bb3bcea15018cb69ba618",
+      "receiptPath": "docs/suivi-production/v615/receipts/kaal-or--sucklings-02.json",
+      "receiptSha256": "1004425d305d8753e39f513ebb94a6360559f328121794427f133b90f8ec33eb",
+      "acceptedPromptSha256": "879172650afa963ed4806e0eaff0e63f33fb22ed11ad61d8aff7111d803597f9",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": false,
+      "contentBoundsAlpha20": [
+        120,
+        212,
+        993,
+        1442
+      ],
+      "marginsFraction": [
+        0.1171875,
+        0.13802083333333334,
+        0.0302734375,
+        0.061197916666666664
+      ]
+    },
+    {
+      "id": "vaal-tir--sucklings-02",
+      "sha256": "d51b18017512fd9df4e7568f5ffba96a67bac68929492f4e9d0f4d28fc4d495e",
+      "receiptPath": "docs/suivi-production/v615/receipts/vaal-tir--sucklings-02.json",
+      "receiptSha256": "cd83736b0c1aa38f0eac4accd02c725543ee753f81976d32a076a75bc283c6c5",
+      "acceptedPromptSha256": "e4b4ecc2235426e32b8bdd0c237ae610b8d0a7e6150182464a43287025dacf1b",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": false,
+      "contentBoundsAlpha20": [
+        72,
+        132,
+        973,
+        1469
+      ],
+      "marginsFraction": [
+        0.0703125,
+        0.0859375,
+        0.0498046875,
+        0.043619791666666664
+      ]
+    },
+    {
+      "id": "city-hunter--sucklings-02",
+      "sha256": "817ba64cadb8e9416458214bd71a5fb0d7c747f2d6060f0d9b7da111b14f74ca",
+      "receiptPath": "docs/suivi-production/v615/receipts/city-hunter--sucklings-02.json",
+      "receiptSha256": "d22002555bf9b8db5923963889de2dabd6b0e40218469aff1e6dc8a6848f1060",
+      "acceptedPromptSha256": "6d470fe94a36e8ff816127d718609601ec922dacbc832b85a5440e0f3ad8d938",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": true,
+      "contentBoundsAlpha20": [
+        220,
+        201,
+        924,
+        1397
+      ],
+      "marginsFraction": [
+        0.21484375,
+        0.130859375,
+        0.09765625,
+        0.09049479166666667
+      ]
+    },
+    {
+      "id": "pilot-kok--sucklings-02",
+      "sha256": "260019f33943e2c799a9dd393cde124d97cb6bbb78c91dc6945159eb480e5c3f",
+      "receiptPath": "docs/suivi-production/v615/receipts/pilot-kok--sucklings-02.json",
+      "receiptSha256": "e08588e296274ba7351aba3378992660a35c783374d6f7e7cb1dfe48d6fb36a0",
+      "acceptedPromptSha256": "dfd926238a46d20fbf6f78fe3d8eafa1fd37ad60638e079338ec6072d9e0b647",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": false,
+      "contentBoundsAlpha20": [
+        83,
+        170,
+        977,
+        1394
+      ],
+      "marginsFraction": [
+        0.0810546875,
+        0.11067708333333333,
+        0.0458984375,
+        0.09244791666666667
+      ]
+    },
+    {
+      "id": "oni-kok--sucklings-02",
+      "sha256": "be17eddf62d898dc27532be4cd7ff1349cb0c9dda38df53d3a43cd93b44762cc",
+      "receiptPath": "docs/suivi-production/v615/receipts/oni-kok--sucklings-02.json",
+      "receiptSha256": "38f97fe80879e61c301e5994ae2272c0d18142bf25402481980f7b87f1f1f985",
+      "acceptedPromptSha256": "717efcc2c6d676144af6a6feb8eb9735cd89ce33e1dd710c61593ade93a9e1c5",
+      "attempts": 2,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": true,
+      "contentBoundsAlpha20": [
+        164,
+        229,
+        923,
+        1318
+      ],
+      "marginsFraction": [
+        0.16015625,
+        0.14908854166666666,
+        0.0986328125,
+        0.14192708333333334
+      ]
+    },
+    {
+      "id": "grendel-kok--sucklings-02",
+      "sha256": "5b5301d5dbc6408e89c16bbb9905ee70fbb6fb4fb802bc67b8128d08e2d102ee",
+      "receiptPath": "docs/suivi-production/v615/receipts/grendel-kok--sucklings-02.json",
+      "receiptSha256": "7c84d075db1dd7272a137b200e099aa4f1a4560814082e05b7e400a8d71d0ede",
+      "acceptedPromptSha256": "1761f2cd9c41fc2424bb236da5490a43566010037bbbabfa8f06a5ab7a954084",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": true,
+      "contentBoundsAlpha20": [
+        161,
+        277,
+        933,
+        1304
+      ],
+      "marginsFraction": [
+        0.1572265625,
+        0.18033854166666666,
+        0.0888671875,
+        0.15104166666666666
+      ]
+    },
+    {
+      "id": "alpha--sucklings-02",
+      "sha256": "ed0c033b711b7082f09f6706ccd7489bba5e9d3d194250dd6f97e9884dd110c8",
+      "receiptPath": "docs/suivi-production/v615/receipts/alpha--sucklings-02.json",
+      "receiptSha256": "e818dc9cb1df74e93dc7ad6a48f39ae4331a13633dffb232866e55cbc473d6ef",
+      "acceptedPromptSha256": "d02adece1024dd23abd0b8eeee550b2fbaf806fce0a29ae2ef49d3eedb26a5ef",
+      "attempts": 2,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": true,
+      "contentBoundsAlpha20": [
+        268,
+        357,
+        872,
+        1187
+      ],
+      "marginsFraction": [
+        0.26171875,
+        0.232421875,
+        0.1484375,
+        0.22721354166666666
+      ]
+    },
+    {
+      "id": "bionic--sucklings-02",
+      "sha256": "e434a2befbad3ea3dd45b960bba197b5024c9e66cf079fce7a913b30b73485a9",
+      "receiptPath": "docs/suivi-production/v615/receipts/bionic--sucklings-02.json",
+      "receiptSha256": "31bbf252442d61cc48033e0c04dabc7de41f210f9da5c1b23e30fe81ba9a4f9c",
+      "acceptedPromptSha256": "53dfbb4a3f07bd1055ebc2e9dd84a9f00de1a2a61399638bd76d987b5559f361",
+      "attempts": 1,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": true,
+      "contentBoundsAlpha20": [
+        174,
+        233,
+        923,
+        1384
+      ],
+      "marginsFraction": [
+        0.169921875,
+        0.15169270833333334,
+        0.0986328125,
+        0.09895833333333333
+      ]
+    },
+    {
+      "id": "four-armed--sucklings-02",
+      "sha256": "67f8fd59c9b936791a2a34cd31b7a6298b3ee6896e9422f1c6b07d04c75f347b",
+      "receiptPath": "docs/suivi-production/v615/receipts/four-armed--sucklings-02.json",
+      "receiptSha256": "93d87b194b69bc644d9cc9da85c1963d11fd12059543a9dc1e70daeeec05615d",
+      "acceptedPromptSha256": "bca722152a7b82eb0dcffd6aeac29c0fb4ec85e14f38ccb288ce0457f95cbee6",
+      "attempts": 2,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": true,
+      "contentBoundsAlpha20": [
+        267,
+        331,
+        790,
+        1245
+      ],
+      "marginsFraction": [
+        0.2607421875,
+        0.21549479166666666,
+        0.228515625,
+        0.189453125
+      ]
+    },
+    {
+      "id": "human-accepted--sucklings-02",
+      "sha256": "48d25c479dfce450b255e7d2440e2651689f75879bf70198dc3ffc80708381db",
+      "receiptPath": "docs/suivi-production/v615/receipts/human-accepted--sucklings-02.json",
+      "receiptSha256": "35c17c088803ae9b0333f39d82f686d8ef6ac96207cf9be4a293440861828f86",
+      "acceptedPromptSha256": "d8a276809bb622b79ed56cdfed102b4a99c15721672895a33c4afc5c059cc6ca",
+      "attempts": 2,
+      "acceptedFinalAttempts": 1,
+      "targetEightPercentMarginMet": true,
+      "contentBoundsAlpha20": [
+        132,
+        204,
+        913,
+        1359
+      ],
+      "marginsFraction": [
+        0.12890625,
+        0.1328125,
+        0.1083984375,
+        0.115234375
+      ]
+    }
+  ]
+}

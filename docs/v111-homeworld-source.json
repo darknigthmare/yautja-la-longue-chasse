@@ -1,0 +1,695 @@
+{
+  "schemaVersion": 1,
+  "release": "V111",
+  "asOf": "2026-10-26",
+  "baseline": {
+    "path": "docs/YAUTJA_V110_SUIVI.xlsx",
+    "sha256": "0b7d7890c8d235a9cda0f6d61c62001efe150f2c4022924c20d88196afcdbd7c"
+  },
+  "baselineSheets": 105,
+  "runtimeFreeze": {
+    "path": "docs/v111-runtime-freeze.json",
+    "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+    "bytes": 264999
+  },
+  "closedSourceIds": [],
+  "newArtAssets": 4,
+  "nativeAssets": [
+    {
+      "id": "listen",
+      "status": "ADMITTED",
+      "png": {
+        "path": "public/game/homeworld/v111/archivist-conversation/listen.png",
+        "bytes": 1738415,
+        "sha256": "b0d2d1710be551d4b1b1be10f1860a73406c18a55f47c4eb16a2371c4e480d03"
+      },
+      "receipt": {
+        "path": "art-source/v111/archivist-conversation/generation-receipts.json",
+        "sha256": "2b8dfb2065943e212ad1384360e131330f10128cfc647556364e4973073f0dc4",
+        "bytes": 14223
+      },
+      "runtime": {
+        "path": "app/game/data/homeworldArchivistMotionV111.json",
+        "sha256": "008babf6455e803094c14ec58addbeb210399373f6e787bf275e1b6980f2027d",
+        "bytes": 5213
+      }
+    },
+    {
+      "id": "explain",
+      "status": "ADMITTED",
+      "png": {
+        "path": "public/game/homeworld/v111/archivist-conversation/explain.png",
+        "bytes": 1940541,
+        "sha256": "5a655cebec21b8efdf07ec4c56614892fa21b17bbfdb331a0e6399a8ccddec34"
+      },
+      "receipt": {
+        "path": "art-source/v111/archivist-conversation/generation-receipts.json",
+        "sha256": "2b8dfb2065943e212ad1384360e131330f10128cfc647556364e4973073f0dc4",
+        "bytes": 14223
+      },
+      "runtime": {
+        "path": "app/game/data/homeworldArchivistMotionV111.json",
+        "sha256": "008babf6455e803094c14ec58addbeb210399373f6e787bf275e1b6980f2027d",
+        "bytes": 5213
+      }
+    },
+    {
+      "id": "indicate",
+      "status": "ADMITTED",
+      "png": {
+        "path": "public/game/homeworld/v111/archivist-conversation/indicate.png",
+        "bytes": 1907698,
+        "sha256": "cf359e4b01e573876afc711dc85481d14c59558ac3678cd524dc21d72d698793"
+      },
+      "receipt": {
+        "path": "art-source/v111/archivist-conversation/generation-receipts.json",
+        "sha256": "2b8dfb2065943e212ad1384360e131330f10128cfc647556364e4973073f0dc4",
+        "bytes": 14223
+      },
+      "runtime": {
+        "path": "app/game/data/homeworldArchivistMotionV111.json",
+        "sha256": "008babf6455e803094c14ec58addbeb210399373f6e787bf275e1b6980f2027d",
+        "bytes": 5213
+      }
+    },
+    {
+      "id": "return",
+      "status": "ADMITTED",
+      "png": {
+        "path": "public/game/homeworld/v111/archivist-conversation/return.png",
+        "bytes": 1723190,
+        "sha256": "f6ea87e15053a67987f43117dd9654b2baff6eb5adbae58e70b06593353fe7a8"
+      },
+      "receipt": {
+        "path": "art-source/v111/archivist-conversation/generation-receipts.json",
+        "sha256": "2b8dfb2065943e212ad1384360e131330f10128cfc647556364e4973073f0dc4",
+        "bytes": 14223
+      },
+      "runtime": {
+        "path": "app/game/data/homeworldArchivistMotionV111.json",
+        "sha256": "008babf6455e803094c14ec58addbeb210399373f6e787bf275e1b6980f2027d",
+        "bytes": 5213
+      }
+    }
+  ],
+  "artInventory": {
+    "path": "docs/v111-homeworld-art-inventory.json",
+    "sha256": "bd12952381d4bd01a5c35bec27d88c2478987a56922b7149e8b4f509e893039b",
+    "bytes": 1891891
+  },
+  "sourceCompletion": false,
+  "production": {
+    "path": "docs/v111-homeworld-validation.json",
+    "sha256": "808c4d76e512207c9a0b757cb517624e836ac696c08614638e81e122bcd478b0",
+    "bytes": 549822
+  },
+  "workstreams": [
+    {
+      "id": "HW111-ARCHIVE-CONTINUATION",
+      "title": "Poursuivre volontairement l’étude K-17 différée B vers A",
+      "source": "Tâche ouverte HW110-ROLE03-DEFERRED-CONTINUATION. ROLE03 V6 scène 383, option 789/réplique 3189 : pour l’instant, conserver les états acquis.",
+      "status": "VALIDE_CIBLE",
+      "behavior": "Créer un épisode de continuation distinct au poste consentant. Conserver le reçu B et ses pièces à l’octet près, observer le bord et l’écart, rapporter l’échec, demander la reprise et étudier le fragment distinct sans redépôt artificiel.",
+      "implementation": [
+        "app/game/systems/homeworldArchiveContinuationDefinitionV111.ts",
+        "app/game/systems/homeworldArchiveContinuationLedgerV111.ts",
+        "app/game/systems/homeworldArchiveContinuationV111.ts",
+        "app/game/HomeworldHub.tsx",
+        "app/game/HomeworldArchiveContinuationV111.tsx",
+        "app/game/HomeworldArchiveContinuationV111.module.css"
+      ],
+      "proof": [
+        {
+          "path": "docs/v111-homeworld-archive-continuation.md",
+          "sha256": "24a1798e85f20c2195fb9b95eb562137dee1ef20a6f345520262cca264be6a30",
+          "bytes": 8238
+        },
+        {
+          "path": "docs/qa/v111-archive-continuation/model-tests.log",
+          "sha256": "5357dce6241826faea52960e669ad22a71c3e63e1a7f93c4aa41cb06aeaef731",
+          "bytes": 1938
+        },
+        {
+          "path": "docs/qa/v111-archive-continuation/doorway-carry-regressions.log",
+          "sha256": "eb74a5020240064048faad8ba3331025636d8be9b23d0e01ed4fc8fe0bdb8f43",
+          "bytes": 3377
+        },
+        {
+          "path": "docs/v111-homeworld-validation.json",
+          "sha256": "808c4d76e512207c9a0b757cb517624e836ac696c08614638e81e122bcd478b0",
+          "bytes": 549822
+        },
+        {
+          "path": "docs/v111-runtime-freeze.json",
+          "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+          "bytes": 264999
+        },
+        {
+          "path": "docs/qa/v111-homeworld/entry.json",
+          "sha256": "359dc8b2ac82192b4c4f0207ded15f2dadb3dbc76958064131a7f26e18808d7e",
+          "bytes": 3835
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-followup/production-integrated-evidence-verification.log",
+          "sha256": "fd29d060f82d4cc2923ec14443dbe2f846981fdc0587d470b81ecedcfb941e50",
+          "bytes": 188
+        }
+      ],
+      "remaining": "Continuation B vers A et conservation de l’outil explicitement prépossédé validées dans le jeu compilé intégré. Les onze intégrations couvrent aussi le refus de porte pendant le portage réel du fragment et la coexistence du Flaying Tool. Le reçu B reste conservé ; aucune réparation, lignée, récompense ou clôture globale ROLE03 n’est déduite de cet épisode."
+    },
+    {
+      "id": "HW111-ARRIVAL-RECOVERY",
+      "title": "Récupérer explicitement un ancien point intérieur bloqué",
+      "source": "Limite documentée HW110-ARRIVALS. ROLE19 V6 scène 398/choix 818–819/répliques 3303–3310 : continuité des lots et de leur propriété.",
+      "status": "VALIDE_CIBLE",
+      "behavior": "Proposer une reprise depuis un point physique déjà conservé lorsqu’une ancienne ancre de sortie est occupée. Sauvegarder atomiquement le checkpoint et son reçu de récupération ; préserver lots, propriétaires et ancien état en copie.",
+      "implementation": [
+        "app/game/systems/homeworldArrivalRecoveryLedgerV111.ts",
+        "app/game/systems/homeworldArrivalRecoveryV111.ts",
+        "app/game/HomeworldHub.tsx"
+      ],
+      "proof": [
+        {
+          "path": "docs/v111-homeworld-arrival-recovery.md",
+          "sha256": "b5268d8261a94e545f032d11e48a80823d6d6f378c89bbbf02a7e0b931011a78",
+          "bytes": 5212
+        },
+        {
+          "path": "docs/qa/v111-arrival-recovery/unit-tests.log",
+          "sha256": "6142d10101318a2fbc599d62e1362803350d7f4dbfe3279bd1c2d24a489e1bfb",
+          "bytes": 2762
+        },
+        {
+          "path": "docs/qa/v111-arrival-recovery/hub-integration-tests.log",
+          "sha256": "2e40e9f92eab2ec85a1a056024113f3a850ab41acffe67a1f2633dfc4c59f937",
+          "bytes": 1625
+        },
+        {
+          "path": "docs/v111-homeworld-validation.json",
+          "sha256": "808c4d76e512207c9a0b757cb517624e836ac696c08614638e81e122bcd478b0",
+          "bytes": 549822
+        },
+        {
+          "path": "docs/v111-runtime-freeze.json",
+          "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+          "bytes": 264999
+        },
+        {
+          "path": "docs/qa/v111-homeworld/entry.json",
+          "sha256": "359dc8b2ac82192b4c4f0207ded15f2dadb3dbc76958064131a7f26e18808d7e",
+          "bytes": 3835
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-followup/production-integrated-evidence-verification.log",
+          "sha256": "fd29d060f82d4cc2923ec14443dbe2f846981fdc0587d470b81ecedcfb941e50",
+          "bytes": 188
+        }
+      ],
+      "remaining": "Restauration explicite validée sur le runtime intégré depuis le point réellement conservé du checkpoint reproduit, avec refus d’écriture et nouvelle tentative. Aucun point libre n’est inventé ; aucun lot n’est déplacé et aucune marche n’est créditée. La sauvegarde conserve l’outil explicitement prépossédé par la fixture."
+    },
+    {
+      "id": "HW111-OBJECTIVE-CONTINUITY",
+      "title": "Conserver un guide utile et compact pendant les continuations et visites",
+      "source": "Parcours K-17 et ancre latérale V110. Le guide arrivé occupait une grande partie du terrain mobile ; le centre prévu d’une porte peut être occupé alors que le vrai point d’entrée est libre.",
+      "status": "VALIDE_CIBLE",
+      "behavior": "Guider la prochaine étape de continuation avec identité distincte et reçus stricts. Garder l’ancre réelle d’une visite, invalider les réponses périmées et offrir un guide arrivé compact avec commandes accessibles.",
+      "implementation": [
+        "app/game/HomeworldRouteGuideV111.tsx",
+        "app/game/HomeworldRouteGuideV111.module.css",
+        "app/game/systems/homeworldObjectivesV111.ts",
+        "app/game/systems/homeworldWayfindingV111.ts",
+        "app/game/homeworldRouteWorkerV111.ts",
+        "app/game/HomeworldWorldMapV77.tsx"
+      ],
+      "proof": [
+        {
+          "path": "docs/v111-homeworld-objectives-and-guide.md",
+          "sha256": "39042d66e54206ba2a1fa5f323b11fe7cbbbe34594464329dd02d3939db4bf4e",
+          "bytes": 4293
+        },
+        {
+          "path": "docs/qa/v111-homeworld-objectives/unit-tests-r2.log",
+          "sha256": "4c8b1ac22ebf3ca4ff2865fa7eb86d9c6f7060286107838be82f2622f2f78e86",
+          "bytes": 3339
+        },
+        {
+          "path": "docs/v111-homeworld-validation.json",
+          "sha256": "808c4d76e512207c9a0b757cb517624e836ac696c08614638e81e122bcd478b0",
+          "bytes": 549822
+        },
+        {
+          "path": "docs/v111-runtime-freeze.json",
+          "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+          "bytes": 264999
+        },
+        {
+          "path": "docs/qa/v111-homeworld/entry.json",
+          "sha256": "359dc8b2ac82192b4c4f0207ded15f2dadb3dbc76958064131a7f26e18808d7e",
+          "bytes": 3835
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-followup/production-integrated-evidence-verification.log",
+          "sha256": "fd29d060f82d4cc2923ec14443dbe2f846981fdc0587d470b81ecedcfb941e50",
+          "bytes": 188
+        }
+      ],
+      "remaining": "Guide, vrai Worker et carnet complet vérifiés dans le navigateur mobile intégré : hauteur bornée, défilement natif au pointeur, titre accessible et commandes clavier visibles de 44 pixels. Le guide ne manipule ni les objets, ni les consentements, ni la progression. Cette recette ne certifie pas tous les appareils ou parcours du Homeworld."
+    },
+    {
+      "id": "HW111-ART-INVENTORY",
+      "title": "Inventorier les 354 cibles et admettre quatre dessins de conversation K-17",
+      "source": "Brief Homeworld V81 §§55–76 et catalogue de 354 IDs. Le catalogue n’est pas une preuve que 354 éléments manquent ou sont livrés.",
+      "status": "VALIDE_CIBLE",
+      "behavior": "Reprendre les 354 IDs et vérifier le code actuel, 790 images historiques et quatre nouveaux PNG natifs de conversation K-17. Distinguer 313 besoins de variantes, 40 familles sans candidat et une cible d’animation, sans les transformer en clôtures. Les nouveaux dessins hors des 354 cibles possèdent leurs reçus, alignements et admission runtime.",
+      "implementation": [
+        "app/game/data/homeworldAssetCatalogueTargetV81.json",
+        "scripts/audit-homeworld-art-v111.mjs",
+        "app/game/data/homeworldArchivistMotionV111.json",
+        "app/game/systems/homeworldArchivistMotionV111.ts",
+        "app/game/HomeworldArchivistMotionV111.tsx",
+        "app/game/HomeworldArchivePlaqueV111.tsx"
+      ],
+      "proof": [
+        {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "sha256": "bd12952381d4bd01a5c35bec27d88c2478987a56922b7149e8b4f509e893039b",
+          "bytes": 1891891
+        },
+        {
+          "path": "docs/v111-homeworld-art.md",
+          "sha256": "af138c07cce56c3ab3dea7036264ed40115651a37e8aa3c4d64c23b42b350f49",
+          "bytes": 4292
+        },
+        {
+          "path": "art-source/v111/archivist-conversation/visual-review.json",
+          "sha256": "942dd559d54f00052c002d2c33e6882061119caebaa687dd78d5a6837a80ec2e",
+          "bytes": 3809
+        },
+        {
+          "path": "docs/v111-homeworld-validation.json",
+          "sha256": "808c4d76e512207c9a0b757cb517624e836ac696c08614638e81e122bcd478b0",
+          "bytes": 549822
+        },
+        {
+          "path": "docs/v111-runtime-freeze.json",
+          "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+          "bytes": 264999
+        },
+        {
+          "path": "docs/qa/v111-homeworld/entry.json",
+          "sha256": "359dc8b2ac82192b4c4f0207ded15f2dadb3dbc76958064131a7f26e18808d7e",
+          "bytes": 3835
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-followup/production-integrated-evidence-verification.log",
+          "sha256": "fd29d060f82d4cc2923ec14443dbe2f846981fdc0587d470b81ecedcfb941e50",
+          "bytes": 188
+        }
+      ],
+      "remaining": "Quatre dessins natifs de conversation admis, une orientation, pas de marche ou prise d’objet. La nouvelle recette du runtime intégré vérifie les quatre PNG sources décodés et le geste de conversation borné de cet archiviste, avec suspension d’activité et mouvement réduit. Les 354 cibles restent non clôturées ; aucune qualification visuelle globale des 790 images historiques."
+    }
+  ],
+  "remaining": [
+    {
+      "id": "HW111-ART-PRODUCTION",
+      "title": "Produire, animer et admettre les cibles artistiques restantes",
+      "source": "Brief utilisateur V81 §§55–76 et 354 cibles exactes.",
+      "status": "OUVERT",
+      "detail": "La présence de candidats et de dessins installés reste distincte d’une admission visuelle et fonctionnelle. Le catalogue n’est ni 354 absences ni 354 livraisons ; chaque clôture doit être justifiée par cible."
+    },
+    {
+      "id": "HW111-OTHER-HOMEWORLD-SCOPES",
+      "title": "Poursuivre les autres parcours et besoins Homeworld hors de ces quatre périmètres",
+      "source": "Mission utilisateur Homeworld V81 et scènes V6 non entièrement couvertes par la présente livraison.",
+      "status": "OUVERT",
+      "detail": "La continuation K-17, la récupération, le guidage et l’inventaire ne certifient pas tous les rôles, intérieurs, dialogues, animations ou variantes. Le suivi conserve les limites et les 56 exigences héritées sans clôture globale."
+    }
+  ],
+  "validations": [
+    {
+      "id": "HW111-HISTORY-V110",
+      "status": "PASS_HISTORICAL",
+      "scope": "56 assertions originales V110 inchangées, huit fichiers ; générateur original et classeur 0b7 reconstruit exactement dans la capsule privée. Trois tests d’isolation et reconstruction de capsule passent. Ne certifie pas le jeu V111.",
+      "command": "node scripts/check-excel-history-homeworld-v111.mjs --check --tests",
+      "evidence": [
+        {
+          "path": "docs/qa/v111-homeworld-excel-history/context-tests.log",
+          "sha256": "919c74a4fe7e6763c27100ec1eafb24219a33b2c153577a8082dc52eb099080c",
+          "bytes": 904
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-history/historical-v110.log",
+          "sha256": "997fa72eb5269436b5941239c6affee42321e4af56655cc51aaa5b5214a4de99",
+          "bytes": 16800
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-history/capsule-rebuild.log",
+          "sha256": "54338b498701c66f884d9d4c5456129e48189b4441120f7488ceed5e057ed3aa",
+          "bytes": 127
+        },
+        {
+          "path": "tests/fixtures/excel-history-v110-homeworld-v111.json",
+          "sha256": "59837fbfdfb6f6e64ef00a1e07d4676bddd1090fc8106718ed16f698200b5bdf",
+          "bytes": 494545
+        },
+        {
+          "path": "tests/fixtures/excel-history-v110-homeworld-v111.json.gz",
+          "sha256": "7806c606111c667beee13726e725df61a738e60921c273f0cd7b2b3b372d8fd2",
+          "bytes": 10684973
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-history/historical-v110-integrated.log",
+          "sha256": "47b6b1210c3fbacc3b448d269efd4836d89591fb666580164cd774b6a4cdfd86",
+          "bytes": 16808
+        }
+      ],
+      "limit": "Sources Git 59bcc329 privées en lecture seule ; les imports du jeu courant restent courants."
+    },
+    {
+      "id": "HW111-CURRENT-V110",
+      "status": "PASS_HISTORICAL",
+      "scope": "Avant PR21, la livraison r1 exécutait 51 cas dans sept fichiers V110, dont les 11 résidents. Ce journal ne constitue pas une nouvelle exécution du runtime intégré après fusion. Les assertions originales restent séparément conservées dans la capsule.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/excel-history-v110.test.mjs tests/homeworld-archive-record-v110.test.mjs tests/homeworld-doorway-entry-v110.test.mjs tests/homeworld-evidence-v110.test.mjs tests/homeworld-objectives-v110.test.mjs tests/homeworld-resident-contacts-v110.test.mjs tests/homeworld-transitions-v110.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v111-homeworld-excel-history/current-v110-regressions.log",
+          "sha256": "a0f220f7e1af958942190d7eef4e34601d42e572c225c1e1e1f9e53f4a31487d",
+          "bytes": 6428
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-history/current-v110-resident-r2.log",
+          "sha256": "0a45de3c9c128239f61ea2e636a1aac1f73acfeb9392bbcda50ee6c625f23299",
+          "bytes": 1699
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-history/resident-assertions-unchanged.json",
+          "sha256": "7bbf328e269731ffe2b8e760d0fcbf40f19da416ac3c3c4dc7557c24e397f3d9",
+          "bytes": 663
+        }
+      ],
+      "limit": "Ces régressions courantes restent distinctes des 56 assertions originales exécutées dans la capsule V110."
+    },
+    {
+      "id": "HW111-CONTINUATION-MODEL",
+      "status": "PASS_MODEL",
+      "scope": "Six tests du moteur et onze intégrations Save/Hub couvrent la continuation, le quota et Retry, le refus de porte pendant le portage réel du fragment et la coexistence d’un Flaying Tool réellement acheté. Save 11 migre vers 12 en préservant les champs existants ; seule la normalisation ajoute le défaut fieldToolIds à une ancienne campagne qui ne possédait pas ce champ.",
+      "command": "node --experimental-strip-types --test tests/homeworld-archive-continuation-v111.test.mjs tests/homeworld-continuation-integration-v111.test.mjs",
+      "evidence": [
+        {
+          "path": "tests/homeworld-archive-continuation-v111.test.mjs",
+          "sha256": "7a2dfb1dfd3c7079c348037ebcab3c64f36afab35c64a1d1e62760af53bc69f4",
+          "bytes": 8313
+        },
+        {
+          "path": "tests/homeworld-continuation-integration-v111.test.mjs",
+          "sha256": "edd8c9f77113a6d034f3e8efcc1d28cdc9b146a06a48a736c553848b1c861d1b",
+          "bytes": 25480
+        },
+        {
+          "path": "docs/qa/v111-archive-continuation/model-tests.log",
+          "sha256": "5357dce6241826faea52960e669ad22a71c3e63e1a7f93c4aa41cb06aeaef731",
+          "bytes": 1938
+        },
+        {
+          "path": "docs/qa/v111-archive-continuation/doorway-carry-regressions.log",
+          "sha256": "eb74a5020240064048faad8ba3331025636d8be9b23d0e01ed4fc8fe0bdb8f43",
+          "bytes": 3377
+        },
+        {
+          "path": "docs/qa/v111-archive-continuation/doorway-carry-oldguard-reproduced.log",
+          "sha256": "7a0c69d3810d44f7f79eb996ea55a3cd8fb58f91e246441991387b67303562dc",
+          "bytes": 1647
+        },
+        {
+          "path": "docs/qa/v111-archive-continuation/integrated-main-source-version.log",
+          "sha256": "37cdd7009b44124333e31804c409df541613cb2fbbc856d9e400acade26a3b9a",
+          "bytes": 401
+        },
+        {
+          "path": "docs/qa/v111-archive-continuation/input-assertions-unchanged.json",
+          "sha256": "8c4b11f1f4a165bf95c9421cb2bca1629102c27d7ec5676345abbed6f420880b",
+          "bytes": 297
+        }
+      ],
+      "limit": "Les onze intégrations comprennent le cas de porte ; elles ne s’ajoutent pas une seconde fois à ce cas. La contre-épreuve du garde ancien échoue volontairement en mémoire, sans modifier le Hub sur disque. Aucun rendu navigateur, réparation, lignée ou achèvement global de ROLE03 n’est certifié."
+    },
+    {
+      "id": "HW111-RECOVERY-MODEL",
+      "status": "PASS_MODEL",
+      "scope": "Neuf tests du moteur de récupération et cinq tests d’intégration Hub passent. La reprise exige un point conservé et physiquement libre ; l’ancien checkpoint reste conservé en copie.",
+      "command": "node --experimental-strip-types --test tests/homeworld-arrival-recovery-v111.test.mjs tests/homeworld-arrival-recovery-integration-v111.test.mjs",
+      "evidence": [
+        {
+          "path": "tests/homeworld-arrival-recovery-v111.test.mjs",
+          "sha256": "67f3bf6c77346cefed34f9db7daa64ed7eaec39a8f660ab4fa6ac3eaf03f680a",
+          "bytes": 12004
+        },
+        {
+          "path": "tests/homeworld-arrival-recovery-integration-v111.test.mjs",
+          "sha256": "a835c9c26ba6e39363c48be1df8cd90ca157e1e75b66849268a4035f7e5a2fa2",
+          "bytes": 12437
+        },
+        {
+          "path": "docs/qa/v111-arrival-recovery/unit-tests.log",
+          "sha256": "6142d10101318a2fbc599d62e1362803350d7f4dbfe3279bd1c2d24a489e1bfb",
+          "bytes": 2762
+        },
+        {
+          "path": "docs/qa/v111-arrival-recovery/hub-integration-tests.log",
+          "sha256": "2e40e9f92eab2ec85a1a056024113f3a850ab41acffe67a1f2633dfc4c59f937",
+          "bytes": 1625
+        }
+      ],
+      "limit": "Ces 14 cas ne clôturent pas toutes les récupérations possibles et ne certifient aucun parcours navigateur."
+    },
+    {
+      "id": "HW111-GUIDE-MODEL",
+      "status": "PASS_MODEL",
+      "scope": "Onze cas de modèle et de rendu React couvrent la continuation, ses reçus, le départ latéral réel, le déplacement de charge et le guide compact. La reproduction utilise les 603 pas du moteur historique.",
+      "command": "node --experimental-strip-types --test tests/homeworld-objectives-v111.test.mjs",
+      "evidence": [
+        {
+          "path": "tests/homeworld-objectives-v111.test.mjs",
+          "sha256": "af82788f52423ff359e01dbddb18f12f50fff7348c5131ae3e73a62c6d69be6c",
+          "bytes": 12112
+        },
+        {
+          "path": "docs/qa/v111-homeworld-objectives/unit-tests-r2.log",
+          "sha256": "4c8b1ac22ebf3ca4ff2865fa7eb86d9c6f7060286107838be82f2622f2f78e86",
+          "bytes": 3339
+        }
+      ],
+      "limit": "Le modèle et le rendu React statique ne certifient pas les pixels peints, le défilement, les dimensions mobiles ou le Worker dans le navigateur."
+    },
+    {
+      "id": "HW111-PRODUCTION-R1",
+      "status": "PASS_HISTORICAL",
+      "scope": "Première livraison r1, avant PR21 : 76 contrôles, 12 captures, 1 430 sources et 14 réponses HTML sur le runtime 402b238f098def39fbdf81ce624e3f841fdebc20, Build ID WNCgNY2MxAHaQy90_a7T5. Les fichiers archivés restent à l’octet près et ne certifient pas le runtime intégré ultérieur.",
+      "command": "node scripts/qa-homeworld-continuation-v111.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v111-homeworld-before-pr21/README.md",
+          "sha256": "25a7d5b1661c05dde5142dda1cfc539a118bc36c3e6ae4e7548e6ff7a13bf37f",
+          "bytes": 576
+        },
+        {
+          "path": "docs/qa/v111-homeworld-before-pr21/v111-homeworld-validation.json",
+          "sha256": "902cd2a6c1f05a0685b9573b05d3e7ce4ad4aad24db7aae21a9d96a7c0fd07a0",
+          "bytes": 546722
+        },
+        {
+          "path": "docs/qa/v111-homeworld-before-pr21/v111-runtime-freeze.json",
+          "sha256": "d3e67f9404aea0936b24398c9b16ff75c8c69a4a6748f6c04a80da425ec494bd",
+          "bytes": 264471
+        },
+        {
+          "path": "docs/qa/v111-homeworld-before-pr21/runtime-proof/entry.json",
+          "sha256": "79f8a63cb56013ae3b939266cb0d1577cb184c8350d5c517caabce58eee065b4",
+          "bytes": 3428
+        },
+        {
+          "path": "docs/qa/v111-homeworld-before-pr21/YAUTJA_V111_SUIVI.xlsx",
+          "sha256": "db66ff179b03891051afca7fb5979700d576c9ff4f87bf816fc77ef5daf7bfe0",
+          "bytes": 8123460
+        },
+        {
+          "path": "docs/qa/v111-homeworld-before-pr21/v111-homeworld-followup-qa.json",
+          "sha256": "f38d42fcfc59e38da683504d7125f6a47da3a7b579a7e5ba86807478a464e083",
+          "bytes": 4147
+        },
+        {
+          "path": "docs/qa/v111-homeworld-before-pr21/v111-homeworld-source.json",
+          "sha256": "8f8e1cc2b1e7661413d3d4a8f90dead4b214409168a0e9b0bd6aa12b63f03dac",
+          "bytes": 26551
+        }
+      ],
+      "limit": "Les chemins JSON internes originaux de r1 restent inchangés dans l’archive pour conserver les octets. Cette preuve historique ne permet aucune promotion du runtime courant."
+    },
+    {
+      "id": "HW111-EXCEL-FOLLOWUP",
+      "status": "PASS_HISTORICAL",
+      "scope": "Première livraison r1, avant PR21 : six tests du suivi passaient avec son rapport de production. Les produits exacts de cette passe sont archivés ; cette ligne ne certifie pas les métadonnées ou le runtime courants.",
+      "command": "node tests/homeworld-excel-followup-v111.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v111-homeworld-excel-followup/main-production-tests.log",
+          "sha256": "4d55e730a4394530d98dba011d551cc021849abc0f539e92a653d6963201a818",
+          "bytes": 2299
+        }
+      ],
+      "limit": "Ces tests contrôlent les structures ZIP/XML, les preuves et la reproduction ; ils n’exécutent pas Excel natif et ne remplacent pas la recette navigateur publiée."
+    },
+    {
+      "id": "HW111-SAVE-INTEGRATION",
+      "status": "PASS_REGRESSION",
+      "scope": "177 scénarios passent dans 18 fichiers de régressions de sauvegarde après intégration PR21. Le journal concerne migrations, exploration, import, stockage et registres ; le nombre de fichiers reste distinct du nombre de scénarios.",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/bible-cultural-save-v86.test.mjs tests/campaign-import-slot-v89.test.mjs tests/campaign-text-import-ui-v90.test.mjs tests/exploration-progress.test.mjs tests/homeworld-access-v69.test.mjs tests/homeworld-visit-recovery.test.mjs tests/save-homeworld-v7.test.mjs tests/save-recovery-import.test.mjs tests/save-social-reconciliation.test.mjs tests/save-storage-status.test.mjs tests/save-v2.test.mjs tests/ship-acquisition-save-v89.test.mjs tests/ship-preparation-save-v88.test.mjs tests/solo-save-v66.test.mjs tests/solo-save-v67.test.mjs tests/solo-save-v69.test.mjs tests/solo-save-v70.test.mjs tests/solo-save-v90.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v111-homeworld-integration/integrated-save-regressions.log",
+          "sha256": "fabbd0f1186c4db4d8fc868f466c63966db5be895648028078499a6dae5cce94",
+          "bytes": 43209
+        },
+        {
+          "path": "docs/qa/v111-homeworld-integration/integrated-save-command.json",
+          "sha256": "2ab00efcea442c39359e2128d171f1dc1f9ef3880ebb0979f85b08509038f83a",
+          "bytes": 1556
+        }
+      ],
+      "limit": "La liste exacte des 18 fichiers est reconstituée depuis les noms uniques du journal antérieur et conservée séparément. Cette passe ne certifie ni pixels, ni contrôles mobiles, ni parcours navigateur et ne clôture aucune exigence source."
+    },
+    {
+      "id": "HW111-BOUNDED-JOURNAL",
+      "status": "PASS_MODEL",
+      "scope": "Deux tests de rendu React statique vérifient le carnet K-17 : préambule et consentement, puis étude active ou interrompue, avec un titre accessible et un seul conteneur de défilement pour compteur, premier reçu B et étude courante.",
+      "command": "node tests/homeworld-continuation-journal-v111.test.mjs",
+      "evidence": [
+        {
+          "path": "tests/homeworld-continuation-journal-v111.test.mjs",
+          "sha256": "9a17410972bae49e7333905b0c1e4f429d89c2ae3e5ebb173f809c5e65295adb",
+          "bytes": 3413
+        },
+        {
+          "path": "docs/qa/v111-homeworld-integration/bounded-journal-tests.log",
+          "sha256": "40b5651cdbbfdf84e46ee11b393b9d9292a7a75e037ca97e4f8ebb94b291ff44",
+          "bytes": 745
+        }
+      ],
+      "limit": "Le rendu statique ne certifie ni hauteur peinte, ni absence de chevauchement, ni défilement natif dans le navigateur."
+    },
+    {
+      "id": "HW111-PREPUBLICATION-INITIAL",
+      "status": "ECHEC_METADATA_CONSERVE",
+      "scope": "Passe initiale intégrée conservée : 119 tests réussis sur 122 ; les trois échecs du suivi Excel pointaient le document archive anciennement épinglé à 6 175 octets au lieu de sa version mise à jour. Ce journal est conservé comme échec préparatoire.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v111.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v111-homeworld-integration/integrated-prepublication-regressions.log",
+          "sha256": "9992d956fd27ae86a3278387759742dbadd9f9d1e23f60a1e2b870cba0c88250",
+          "bytes": 17020
+        }
+      ],
+      "limit": "Le total 122 n’est pas promu à PASS. Le pin documentaire est rafraîchi dans le registre courant ; une nouvelle passe doit produire son propre résultat."
+    },
+    {
+      "id": "HW111-PRODUCTION",
+      "status": "PASS_CIBLE",
+      "scope": "Quatre parcours complets exécutés sur le jeu compilé intégré : continuation B vers A, récupération explicite, guide et carnet mobiles avec vrai Worker, ancien parcours A. 87 contrôles passent ; 14 captures inspectées, 1 433 sources identiques au gel et 14 réponses HTML portant le Build ID et leur SHA256. Aucune erreur navigateur, console ou Worker, aucune requête échouée. Runtime 4202c8a003c342d86f4749933a2a3c65cff2e613 ; Build ID tj39nnduLIdi202JSGX7p.",
+      "command": "node scripts/qa-homeworld-continuation-v111.mjs",
+      "evidence": [
+        {
+          "path": "docs/v111-homeworld-validation.json",
+          "sha256": "808c4d76e512207c9a0b757cb517624e836ac696c08614638e81e122bcd478b0",
+          "bytes": 549822
+        },
+        {
+          "path": "docs/v111-runtime-freeze.json",
+          "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+          "bytes": 264999
+        },
+        {
+          "path": "docs/qa/v111-homeworld/entry.json",
+          "sha256": "359dc8b2ac82192b4c4f0207ded15f2dadb3dbc76958064131a7f26e18808d7e",
+          "bytes": 3835
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-followup/production-integrated-evidence-verification.log",
+          "sha256": "fd29d060f82d4cc2923ec14443dbe2f846981fdc0587d470b81ecedcfb941e50",
+          "bytes": 188
+        },
+        {
+          "path": "docs/qa/v111-homeworld/browser-result.json.gz",
+          "sha256": "de78ff4cf179bf58220e63973b564b09b704343fc37be411f1cf8d8f1d1739a7",
+          "bytes": 169798
+        }
+      ],
+      "limit": "Recette locale bornée avec fixtures initiales de charge, de reçu B et d’outil explicitement prépossédé déclarées, ancien checkpoint bloqué déclaré et refus d’écriture injectés. La conservation d’un outil ne simule pas son achat navigateur ; la restauration ne simule pas une marche de sortie. Aucune clôture des 56 exigences héritées, des 354 cibles ou du Homeworld entier."
+    },
+    {
+      "id": "HW111-EXCEL-PREPUBLICATION",
+      "status": "PASS_STRUCTURE",
+      "scope": "Six tests du suivi passaient après intégration PR21 et rafraîchissement des métadonnées, avant la nouvelle publication. Ils corrigeaient les trois erreurs liées au pin documentaire périmé. Cette passe s’exécutait avec production null et construisait uniquement des produits temporaires.",
+      "command": "node tests/homeworld-excel-followup-v111.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v111-homeworld-excel-followup/main-integrated-preproduction-tests.log",
+          "sha256": "f9436229f602f715743e712efa1487ab09d549eb15d0a7ac567b6dc80cf3165f",
+          "bytes": 2296
+        }
+      ],
+      "limit": "Les produits construits par ces tests sont temporaires. Cette passe ne valide pas de nouveaux parcours navigateur et ne permet aucune promotion de production."
+    },
+    {
+      "id": "HW111-PR21-HISTORY-V110",
+      "status": "PASS_HISTORICAL",
+      "scope": "La préparation privée PR21 restaure les mêmes huit fichiers et 56 assertions originales V110 depuis dff1f6734284891b5a24238f890070616a8325cc. Les 56 passent, 1 386 entrées du gel sont vérifiées et le classeur 0b7 est reproduit exactement. Ses trois gardes de copie privée, refus et identités Git passent également.",
+      "command": "node scripts/check-excel-history-v111.mjs --check --tests",
+      "evidence": [
+        {
+          "path": "scripts/check-excel-history-v111.mjs",
+          "sha256": "cac52e3a2f4202ebc13b651bc0dfc4b4036c5b0cb31cbc4722a3a28d0471afcf",
+          "bytes": 10973
+        },
+        {
+          "path": "tests/excel-history-preservation-v111.test.mjs",
+          "sha256": "084f863da194d1342471156b3144e7e162f11dc6267537de02e33c1711b50457",
+          "bytes": 4074
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-history/pr21-historical-v110-integrated.log",
+          "sha256": "29951d240db02ac36551bb354b31cd179b53894fdd8271a076c8d99d1217c550",
+          "bytes": 16691
+        },
+        {
+          "path": "docs/qa/v111-homeworld-excel-history/pr21-preservation-guards.log",
+          "sha256": "e4ab5c5c4c328c79c18d1a25c2469bc35f6af714b7a7d8d44daf96795cb0790e",
+          "bytes": 401
+        }
+      ],
+      "limit": "Cette seconde préparation concerne le même jeu d’assertions historiques que la capsule Homeworld ; aucun cas métier supplémentaire ni couverture du runtime courant n’est déduit."
+    },
+    {
+      "id": "HW111-EXCEL-INTEGRATED-FOLLOWUP",
+      "status": "PASS_STRUCTURE",
+      "scope": "Six tests du suivi passent avec la vraie production intégrée : séparation des inventaires, refus des clôtures et copies inventées, conservation exacte des 105 feuilles historiques, rejet d’une ancienne recette renommée, reproduction des 113 feuilles et identité Git bornée des images historiques.",
+      "command": "node tests/homeworld-excel-followup-v111.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v111-homeworld-excel-followup/main-integrated-production-tests.log",
+          "sha256": "823c5b2a0012b18904613711f70ce8697f7f699fd700267744ca4b913482d57f",
+          "bytes": 2299
+        }
+      ],
+      "limit": "Ces tests exécutent les contrôles ZIP/XML, les preuves et la reproduction ; ils n’exécutent pas Excel natif et ne remplacent pas la recette navigateur publiée."
+    }
+  ],
+  "limits": [
+    "Les 105 feuilles V110 sont conservées exactement ; aucune régénération ancienne contre le jeu V111.",
+    "Les 56 exigences source et neuf actions héritées restent ouvertes. Elles ne constituent pas le catalogue Homeworld de 354 cibles.",
+    "Le relevé de présence des assets, la vérification visuelle et l’admission runtime sont des preuves différentes ; aucune catégorie entière n’est déclarée livrée par comptage.",
+    "Les contrôles ZIP/XML et caches de formules n’exécutent ni Excel natif ni navigateur.",
+    "Seul un rapport V111 complet, compilé, avec sources inchangées et captures inspectées peut promouvoir un périmètre VALIDE_CIBLE.",
+    "Aucun achèvement global du Homeworld, réparation du fragment ou lien de lignée n’est revendiqué.",
+    "Les 790 images historiques du recensement sont liées aux objets Git actuels ; les octets présents sont vérifiés en supplément, sans téléchargement global en CI. Les quatre nouveaux PNG et toutes les sources du relevé restent obligatoirement vérifiés en octets. Aucun contrôle de pixels ou de qualité n’est déduit du seul arbre Git."
+  ]
+}

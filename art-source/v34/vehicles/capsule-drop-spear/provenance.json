@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "capsule-drop-spear",
+  "name": "Capsule Drop Spear",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Single-person orbital deployment capsule PROPOSAL with a tall narrow spear-shaped armored shell, four small folded stabilizer vanes, heavy conical impact nose and ribbed circular brake collar. Draw TWO VERTICAL side profiles side by side, opposing detail sides, nose DOWN in both, complete vertical capsule from top cap to tip. Cabin opaque and sealed, no person, flames or parachute. Side-view object for vertical insertion gameplay; not a horizontal hoverbike.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Capsule Drop Spear — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/capsule-drop-spear/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/capsule-drop-spear/identity-r1.png",
+      "originId": "exec-89be687e-a61e-4fa8-940b-5302db0f1690.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "bbd6046541b4697c6ea0e50cc34a501737c460276b69ec425f1dd26d945fed53",
+      "bytes": 1794429,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Empty vehicle chassis: removable weapons and props excluded. Single-person orbital deployment capsule PROPOSAL with a tall narrow spear-shaped armored shell, four small folded stabilizer vanes, heavy conical impact nose and ribbed circular brake collar. Draw TWO VERTICAL side profiles side by side, opposing detail sides, nose DOWN in both, complete vertical capsule from top cap to tip. Cabin opaque and sealed, no person, flames or parachute. Side-view object for vertical insertion gameplay; not a horizontal hoverbike.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 6,
+          "recoveredLine": 1124,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : deux capsules verticales complètes, pointe d'impact dirigée vers le bas, coque et cabine fermées, vanes repliées et détails latéraux différenciés.",
+        "Aucune flamme, personne, parachute ou scène ; identité verticale statique uniquement."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "alpha16Bounds": [
+            259,
+            16,
+            281,
+            991
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 186015,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            768,
+            0,
+            768,
+            1024
+          ],
+          "alpha16Bounds": [
+            996,
+            16,
+            280,
+            992
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 185789,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

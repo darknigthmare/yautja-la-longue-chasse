@@ -1,0 +1,119 @@
+{
+  "version": "V6.14",
+  "verifiedAtUtc": "2026-10-23T13:30:13.797233+00:00",
+  "status": "PASS_TARGETED",
+  "scopeFR": "Exécution complète du contrôle historique V106 et de la frontière V6.14, avec les vrais fichiers gelés et toutes les pièces portables requises. Cette vérification ne constitue pas une nouvelle QA navigateur du runtime V6.14.",
+  "historicalRuntimeCommit": "db22b36aaa0bcbf6d31d2ed08c75b44c4570c4c2",
+  "sourceMainCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+  "currentRuntimeCoveredByHistoricalQA": false,
+  "historicalFrozenInputs": 963,
+  "historicalFrozenInputBytes": 268531140,
+  "archivedOriginalSources": 2,
+  "unchangedCurrentInputsVerified": 961,
+  "allowedCurrentModifications": [
+    "app/game/RecentSpriteLibraryV85.tsx",
+    "app/game/systems/recentSpriteLibraryV85.ts"
+  ],
+  "allowedCurrentAdditions": [
+    "app/game/data/enforcerProductionV614.json"
+  ],
+  "runtime": "Node.js v24.19.0",
+  "executions": [
+    {
+      "command": "node --test --test-reporter=spec tests/production-proofs-v106.test.mjs",
+      "exitCode": 0,
+      "testFilesPassed": 1,
+      "testFilesFailed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "node tests/production-proofs-v106.test.mjs",
+      "exitCode": 0,
+      "testsPassed": 4,
+      "testsFailed": 0,
+      "skipped": 0,
+      "durationMs": 9632.042649
+    }
+  ],
+  "passedChecksFR": [
+    "Le snapshot V106 original, exécuté dans un contexte historique privé, correspond intégralement au gel de 963 entrées.",
+    "Le runtime courant diffère uniquement par les deux insertions de bibliothèque autorisées et le registre statique V6.14 ; empreintes et contenus vérifiés.",
+    "Les contrôles négatifs rejettent une modification hors périmètre, un retrait, un ajout imprévu, une modification supplémentaire de la bibliothèque et une altération du registre.",
+    "Les trois parcours historiques conservent leur identité de compilation, leurs sources observées et les octets de toutes leurs preuves portables."
+  ],
+  "temporaryInputPreparation": {
+    "missingFrozenPublicInputsMaterialized": 135,
+    "missingPortableEvidenceFilesMaterialized": 29,
+    "totalMaterializedFiles": 164,
+    "totalMaterializedBytes": 261701579,
+    "everyMaterializedFileVerifiedBySha256AndGitBlob": true,
+    "all963RealFrozenInputsAvailable": true,
+    "nativeCheckoutUnmodified": true,
+    "modeFR": "Contexte temporaire complété à partir des objets Git immuables du main source ; aucun fichier manquant n’est ignoré ou remplacé par un faux contenu."
+  },
+  "reviewedFilesUnchangedSinceIndependentReview": true,
+  "reviewedFiles": [
+    {
+      "path": "tests/production-proofs-v106.test.mjs",
+      "bytes": 7634,
+      "sha256": "c17be8003d9027a721fcda4330db8298db5e9f12600b09d51f6ed02d656b3f1a"
+    },
+    {
+      "path": "scripts/historical-runtime-context-v614.mjs",
+      "bytes": 11804,
+      "sha256": "44efbe68d00e8c613ed25b75ec42535718712a7d4f933a1650c80bc4cb30460d"
+    },
+    {
+      "path": "tests/fixtures/runtime-history-v106-v614.json",
+      "bytes": 29563,
+      "sha256": "674c2ce278f937a6aa52d041c4071a1a5f93bfac418266a3e7b404d3e9615b5c"
+    },
+    {
+      "path": "scripts/snapshot-runtime-v106.mjs",
+      "bytes": 3566,
+      "sha256": "97ab4eca6e1faf7521641561131defeb6a87d23967863f2f82e2922a68c7f71f"
+    }
+  ],
+  "protectedHistoricalFiles": [
+    {
+      "path": "docs/v106-runtime-freeze.json",
+      "bytes": 170740,
+      "sha256": "5f17fda63e669a842289752295f83cd4b276090d9f897a12fefdb01b9872bfb1",
+      "matchesSourceMainByteForByte": true
+    },
+    {
+      "path": "docs/v106-validation-summary.json",
+      "bytes": 12554,
+      "sha256": "9fb50b0322c506f63db0aee95148b48725240559b0bf2d8d91ae99f4f5c81216",
+      "matchesSourceMainByteForByte": true
+    },
+    {
+      "path": "docs/v106-pit-workbook-validation.json",
+      "bytes": 78689,
+      "sha256": "e57536a4554e459f48cf2aa2c20a19a81d77ca9c2ff2002965368d6de7c8d1d4",
+      "matchesSourceMainByteForByte": true
+    },
+    {
+      "path": "docs/v106-homeworld-archive-validation.json",
+      "bytes": 9631,
+      "sha256": "18f8ab52f6d6824a2f745da8241cdb98ec99a31eb3e7edd9276808e08d63931a",
+      "matchesSourceMainByteForByte": true
+    },
+    {
+      "path": "docs/v106-clan-assault-validation.json",
+      "bytes": 13845,
+      "sha256": "f2c6178a7971573eaa7d1374a2b6ff9308d7d5b40025895147f599bfa4e01800",
+      "matchesSourceMainByteForByte": true
+    },
+    {
+      "path": "scripts/snapshot-runtime-v106.mjs",
+      "bytes": 3566,
+      "sha256": "97ab4eca6e1faf7521641561131defeb6a87d23967863f2f82e2922a68c7f71f",
+      "matchesSourceMainByteForByte": true
+    }
+  ],
+  "limitationsFR": [
+    "Validation locale ciblée ; la CI Node.js 22 doit exécuter le même test après publication du correctif.",
+    "Aucune preuve V106 historique ne certifie les changements de runtime V6.14."
+  ]
+}

@@ -1,0 +1,718 @@
+{
+  "schemaVersion": 1,
+  "release": "V104",
+  "status": "PASS_CIBLE",
+  "verifiedAtUtc": "2026-10-22T21:09:37.906988+00:00",
+  "runtimeCommit": "4fecb68b23d39570aa809587aef2b23b4160a9d5",
+  "productionBuildId": "1A5Wam-CqjuERBETVRmSh",
+  "sourceFreeze": {
+    "scope": "All app sources, production configuration and public assets consumed by the V100 follow-up. Other historical art is outside this snapshot.",
+    "files": 897,
+    "bytes": 258609927,
+    "snapshots": [
+      {
+        "path": "outputs/qa-v104/source-before-retry-build.json",
+        "sha256": "5d8bab972d449c6f747dfa93803c4efab986e43eb4ad3b223e4f2556ec762557",
+        "bytes": 158403
+      },
+      {
+        "path": "outputs/qa-v104/source-after-retry-build.json",
+        "sha256": "5d8bab972d449c6f747dfa93803c4efab986e43eb4ad3b223e4f2556ec762557",
+        "bytes": 158403
+      },
+      {
+        "path": "outputs/qa-v104/source-after-retry-recipes.json",
+        "sha256": "5d8bab972d449c6f747dfa93803c4efab986e43eb4ad3b223e4f2556ec762557",
+        "bytes": 158403
+      }
+    ],
+    "changesSinceOriginal897FileFreeze": [
+      "app/game/HomeworldCartographyV104.tsx",
+      "app/game/HomeworldHub.tsx"
+    ]
+  },
+  "validationGroups": [
+    {
+      "name": "productionBuild",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/v104-build-production-retry.log",
+        "sha256": "80575ec7ce02bee33190a4f5e461dc8c11243aa14ce7aeaccee807cfb34bf994",
+        "bytes": 4542
+      },
+      "passedWithinThisGroup": null,
+      "uniqueAcrossGroups": false
+    },
+    {
+      "name": "compiledHttpSmoke",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/v104-production-smoke-retry.log",
+        "sha256": "e0a4117d68cb61f341b7a429a64ded48649f9690335c476e02b065b45f549e09",
+        "bytes": 278
+      },
+      "passedWithinThisGroup": 5,
+      "uniqueAcrossGroups": false
+    },
+    {
+      "name": "strictLint37Files",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/v104-lint-retry-final.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "passedWithinThisGroup": null,
+      "uniqueAcrossGroups": false
+    },
+    {
+      "name": "targetedAuditV94",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/v104-audit-v94-final.log",
+        "sha256": "101b6814395f1496320e565416e7e8c8cebac19272b4699afdb5b2c142b2054d",
+        "bytes": 17523
+      },
+      "passedWithinThisGroup": 93,
+      "uniqueAcrossGroups": false
+    },
+    {
+      "name": "historicalWorldsV100",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/v104-worlds-regressions-final.log",
+        "sha256": "95aa92495459e140538fc8566a62919c886fc75a0aa013dbe22185baed558012",
+        "bytes": 22234
+      },
+      "passedWithinThisGroup": 195,
+      "uniqueAcrossGroups": false
+    },
+    {
+      "name": "cartographyAfterTypeRefinement",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/v104-cartography-type-refinement.log",
+        "sha256": "ee394388e41ad7811ffd00181ec5454b852c36901962cb2b4ee5b0ca38099eec",
+        "bytes": 1835
+      },
+      "passedWithinThisGroup": 13,
+      "uniqueAcrossGroups": false
+    },
+    {
+      "name": "preserveModelRegressions",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/preserve-v104-final51-tests.log",
+        "sha256": "1e78ef1632eb4f5e438dc930508169564c33e2bb003ee6d0f0624b7f03e853d3",
+        "bytes": 5971
+      },
+      "passedWithinThisGroup": 51,
+      "uniqueAcrossGroups": false
+    },
+    {
+      "name": "pitVersion12Regressions",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/pit-normals-v104-version12-regressions.log",
+        "sha256": "8b3c344cbdd2e426a26127d3fe8b5f50c1cf11099124fb311e568e4ae2e22888",
+        "bytes": 8528
+      },
+      "passedWithinThisGroup": 86,
+      "uniqueAcrossGroups": false
+    },
+    {
+      "name": "pitEquipmentRegressions",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/pit-normals-v104-equipment-final.log",
+        "sha256": "addfbd65b07c4e0242df040eb96302ff7d79defa94a6a681083c4307543d6a99",
+        "bytes": 9381
+      },
+      "passedWithinThisGroup": 90,
+      "uniqueAcrossGroups": false
+    },
+    {
+      "name": "cartographyAfterWriteRecoveryFix",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/homeworld-v104-pr12-tests.log",
+        "sha256": "65fa69096bc0484dbf28505afa130427d38a95bf8fe10d39ceed2274683e58c9",
+        "bytes": 4139
+      },
+      "passedWithinThisGroup": 31,
+      "uniqueAcrossGroups": false
+    },
+    {
+      "name": "homeworldInputFixtureAfterV104Wiring",
+      "status": "PASS",
+      "localLog": {
+        "path": "/tmp/v104-ci-input-reproduction.log",
+        "sha256": "c96daedf47bfe19df7dd679966b0cc06a6ec478211761f35931ec1f5ab937322",
+        "bytes": 1503
+      },
+      "passedFilesAfterCorrection": 9,
+      "detailLocalLog": {
+        "path": "/tmp/v104-ci-homeworld-input-detail.log",
+        "sha256": "f5ec50b80c74b9679dbce887e7fea23082a9145ef6150fdc47a6207c3b57ebd0",
+        "bytes": 6348
+      },
+      "homeworldCases": 25,
+      "uniqueAcrossGroups": false
+    }
+  ],
+  "countingRule": "Test groups overlap and are never summed as unique tests. The selected current scoped evidence has48 Pit+8 latest Homeworld+10 Preserve=66 inspected frames. Five earlier Homeworld production frames are historical, excluded from66. Six preview copies are included within66, not additional captures.",
+  "production": [
+    {
+      "domain": "Pit",
+      "status": "PASS_CIBLE",
+      "buildId": "KfYVJdIUFim-1m9MRRQ6_",
+      "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
+      "controls": 312,
+      "capturesActuallyOpened": 48,
+      "portable": {
+        "path": "docs/v104-pit-normals-validation.json",
+        "sha256": "9183731292a03122fee5e3e81d472196e6a73d275b78f602b230195719de1a6d",
+        "bytes": 179827
+      },
+      "rawReport": {
+        "path": "outputs/qa-v104/pit-normals-production/result.json",
+        "sha256": "f9ec9e05ef5102067dc4dd3f78f89d36a386879eb9ee2d0541152e37f5577afd",
+        "bytes": 1423356
+      },
+      "currentSourcesMatchRecipeFingerprintCount": 60,
+      "captures": [
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F003_2H-left-active.png",
+          "sha256": "3bd5e16081e52bb5e86f9f17fe596e21b80bb04ceab7078aaa2ad94ab78ab53a",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F003_2L-left-active.png",
+          "sha256": "9a94a67ccf79097711b3d43599dc174fe109caafad989aade769e7666f4de937",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F003_2M-left-active.png",
+          "sha256": "6aff4c545c6b771ac44885c01d00ebe5aaa050316f5d8d552e6d08ea34b42acf",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F003_5H-left-active.png",
+          "sha256": "39553122b39e31c8336b49b0fe33053ac4d63d873344d36572c22b4c8145b74d",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F003_5L-left-active.png",
+          "sha256": "971627c003fa14d542fee880a0a15d6f6ba073015f2d98f8c97fc752fac43901",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F003_5M-left-active.png",
+          "sha256": "bdc4f34c2bbb9d581594b771c54b8a2ee60ad6717321ebdfd9926c0cb96c576c",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F003_jH-left-active.png",
+          "sha256": "29c1b93567c887a9d44ad2d319b0e9592fb5fd9acbbf1a62300bc4a68dd57226",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F003_jL-left-active.png",
+          "sha256": "04881fef937c0d53f4221bf417599c3ddc9e3b01960f0fb9c68771b2957709b4",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F003_jM-left-active.png",
+          "sha256": "c255dfe663bfd40210276848a667a11e2e9bf6dfc5182f90ed7594ecba92690d",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F006_2H-right-active.png",
+          "sha256": "0b7044ce2c7fe097365267351ec9c42009f1a9e6b8829cb656d6284f16ede086",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F006_2L-right-active.png",
+          "sha256": "8b6e586eed820e18bcb9dbde4e330438e59ea6c8056d54bfc2325fb92b7039f0",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F006_2M-right-active.png",
+          "sha256": "30411b26ea46182ce0aacf19d33e7674fcf0036aec3970d698151002507cda4f",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F006_5H-right-active.png",
+          "sha256": "62f75b169d0902f436841112e0751c999df6ad4aa17e6a978555f8d0a28cf692",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F006_5L-right-active.png",
+          "sha256": "bd46ef1cc18ebb29c14d1d62882310e48f463e016d722685dfd3f5130907cc1e",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F006_5M-right-active.png",
+          "sha256": "017b261718dd7479d6010175826cf960e201c4f8a9b5c42d556b78eb78f86b7a",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F006_jH-right-active.png",
+          "sha256": "1acedba478dd5084d84a4c2c50539335665709e0e9190c379c46079edde08ca1",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F006_jL-right-active.png",
+          "sha256": "b6db5f0c67da24dde7c2f52affa649c26a67787e45a483d42ca76280b2d9b2f8",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-M_F006_jM-right-active.png",
+          "sha256": "b9bf6bb2e24430f020ea6f9fd60141556d6664256b339032ebe0c76f9fd41e62",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-1-source-options.png",
+          "sha256": "bb71b524969620a744c13a7057ef7b8c613eefca01a67dc642ec769c9b816164",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F003_2H-right-active.png",
+          "sha256": "4e7e5b4da2d501b6104e3de73c5ecf116cdc7183fb389c21d2bbfa36a697c386",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F003_2L-right-active.png",
+          "sha256": "81468c31db0363ed3303da5820a3be3d4d22f882562d24eebdae0e2f22f25435",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F003_2M-right-active.png",
+          "sha256": "40b69b5743b719bf4013a89f5bc25db17f54394dca256026aa969f5bc1d5ada1",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F003_5H-right-active.png",
+          "sha256": "e1363425e93393061f5295b5fb3dbd6d8e0daf1b802c7f5e285f46c3428e2216",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F003_5L-right-active.png",
+          "sha256": "417ea9a0aa543c9beb73d59c47b8226e6dc2e8014c9fe54db24f07291cff2e7c",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F003_5M-right-active.png",
+          "sha256": "f22bb3c6f7f8d864a77c23fd8b9f824112cc2071b75f21472d907e5697712d61",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F003_jH-right-active.png",
+          "sha256": "057a179b84c8ed92b2c515b4c9bdad09767cd47f341b3b50688128f913bf5648",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F003_jL-right-active.png",
+          "sha256": "c4891178c83f32c22d6961c27f756b5c999c2d1c3baea67afe4b256ce7f305f6",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F003_jM-right-active.png",
+          "sha256": "6862205b7325707afa05f8cd089643e07d841177bb548ade25bfd71e067f0ff4",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F006_2H-left-active.png",
+          "sha256": "e967a0892cc3ee96f67a3a740a3bd16937134c2e2a7a18535746acd50158618e",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F006_2L-left-active.png",
+          "sha256": "6e0a83a9e363735d86a75b6e7d59d82bc1d3534daca1d482d853ba78a1e41954",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F006_2M-left-active.png",
+          "sha256": "745c6505a955443f81bbe29292811f8a5b98fae01b46015dc5f96a7fa84f8962",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F006_5H-left-active.png",
+          "sha256": "32c23ab8ac1e033c23e520354f90a1eb900ad25410371d2a28e3d295fbb845e7",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F006_5L-left-active.png",
+          "sha256": "f10fcea1e5bce8fa206a37f45820941f0ecc59a7b24a28d4241e177871f57329",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F006_5M-left-active.png",
+          "sha256": "5b52ec0031a8ed93fea22b2d720d7cb2e2da1684c233a3ef6b10755259f75135",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F006_jH-left-active.png",
+          "sha256": "cd70c8dcb7cc00b9accb72d3e4b8005817d8971e651a59ca40cc1d2ee83ccac7",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F006_jL-left-active.png",
+          "sha256": "63e7e0bda5a97defaf3f9696021aeb3dfb9596555cb023676ae02ed566934af3",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-M_F006_jM-left-active.png",
+          "sha256": "4bd5be683916a5dfa4928ac7db09481cbd6df8e7721ef5d564e73a41f92193d6",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/body-match-2-source-options.png",
+          "sha256": "22b0f2acf8dda0fb4849fa32e0b2e3315d7b06ba416148b6079215afc9d97a06",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/mixed-body-1-costume-2-M_F006_5L-right-active.png",
+          "sha256": "1f7799258e1b5e2fdece14dfe56730ef9ed14668475c2071552b823fad2025d9",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/mixed-body-1-costume-2-source-options.png",
+          "sha256": "5b46be13539bd28975146b50aa38b5b7e06d0421603b821d40f778a85ed97065",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/mixed-body-1-costume-2.png",
+          "sha256": "bf26e1e3f26685ce6b3633356f91e5a934b0e48b87bbffa4d98e88bc85127a57",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/mixed-body-2-costume-1-M_F003_5L-left-active.png",
+          "sha256": "8ed46bac3546a64a54e1756f2429abc683bd679da221fa49eaa295074c36b4a8",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/mixed-body-2-costume-1-source-options.png",
+          "sha256": "a633c26cc8d990e5e6a4511375b106ad701f6338729bd75f33766c5c35f824d5",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/mixed-body-2-costume-1.png",
+          "sha256": "1015d5f83fe25e56c6ebcf2ac411deff3c1f833b8adc68d10f6632ccd24b0371",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/native-duel-mobile-pause.png",
+          "sha256": "3296e50231cad2c455a40c4f50c3e1b89142d55f0ae435235dc5bbce1d2bd497",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/native-duel-mobile.png",
+          "sha256": "3afe83ba3edca14acbed542388c7edf4404b6d88deeb3ca6cd2df64cb8ea8ae8",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/supplied-1-feral-hunter.png",
+          "sha256": "bf00fc0a5311a55ac1dfbf4ae617112ecee04e0ef49de5c82d773362cb337eba",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        },
+        {
+          "path": "outputs/qa-v104/pit-normals-production/supplied-1-scar.png",
+          "sha256": "6d2ebd64eaa62515c1169301c63bd017061832bb9d5cb9498fb581394b878028",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIQUE"
+        }
+      ],
+      "scopeNote": "Original compiled build; every exact source fingerprint consumed by this recipe is unchanged in the final tree. No new execution or recapture is claimed."
+    },
+    {
+      "domain": "Homeworld",
+      "status": "PASS_CIBLE",
+      "buildId": "1A5Wam-CqjuERBETVRmSh",
+      "runtimeCommit": "4fecb68b23d39570aa809587aef2b23b4160a9d5",
+      "controls": 29,
+      "capturesActuallyOpened": 8,
+      "portable": {
+        "path": "docs/homeworld-cartography-v104-validation.json",
+        "sha256": "f6c2612c2f9683edeae3825fb3d6b84d6d61078a74f9be0c6804cfa75f57da18",
+        "bytes": 29841
+      },
+      "rawReport": {
+        "path": "outputs/qa-v104/homeworld-cartography-production-retry/result.json",
+        "sha256": "38fb5b73f7450f012297b6677a4a1563eedf039d5917fe62fb5645b13437858c",
+        "bytes": 10030
+      },
+      "currentSourcesMatchRecipeFingerprintCount": 11,
+      "captures": [
+        {
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-post-desktop.png",
+          "sha256": "0e3440d7660d36bcb3756a00119acec1680de8ee689567ac0154b040dd67630c",
+          "opened": true,
+          "inspection": "PASS_CIBLE"
+        },
+        {
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-write-paused-offer-desktop.png",
+          "sha256": "d1207b3836b0b96a618f70376aa9a6292fcaf6a65177970ba8e9ed80502e4147",
+          "opened": true,
+          "inspection": "PASS_CIBLE"
+        },
+        {
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-write-paused-choice-desktop.png",
+          "sha256": "a967f15a9a6fd521a1196672e4fb6797ae15edcaf618e80053241ca8d439ad9f",
+          "opened": true,
+          "inspection": "PASS_CIBLE"
+        },
+        {
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-briefing-desktop.png",
+          "sha256": "c418fb562fc99fd928e7cda705821827fd62df5cf157f87022b68f1fb4ff070f",
+          "opened": true,
+          "inspection": "PASS_CIBLE"
+        },
+        {
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-write-paused-ready-desktop.png",
+          "sha256": "baba801829b4a64510705f6d53a85a18cced0cc65103ee1db3cefdb8c51c1ee3",
+          "opened": true,
+          "inspection": "PASS_CIBLE"
+        },
+        {
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-return-notebook-desktop.png",
+          "sha256": "acb123a6e355f9e4d7b92c08ba3a5f274a3f216edc50d2681ba2e87a74293ea0",
+          "opened": true,
+          "inspection": "PASS_CIBLE"
+        },
+        {
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-complete-desktop.png",
+          "sha256": "1edae48c0ef7635b432d79095f74171fd6af15c71d0c9dcf5771210507b52cbe",
+          "opened": true,
+          "inspection": "PASS_CIBLE"
+        },
+        {
+          "path": "outputs/qa-v104/homeworld-cartography-production-retry/cartographer-complete-mobile.png",
+          "sha256": "30aeb410c037c231b1cb9b13723ba22595cafaa1809cc1083d3776da21062a0a",
+          "opened": true,
+          "inspection": "PASS_CIBLE"
+        }
+      ],
+      "scopeNote": "Latest compiled build and three pre-walk write-refusal recovery cases."
+    },
+    {
+      "domain": "Preserve Hunt",
+      "status": "PASS_CIBLE",
+      "buildId": "KfYVJdIUFim-1m9MRRQ6_",
+      "runtimeCommit": "a974424b72a1ae2f94e271ecd3acd7fc5ec43418",
+      "controls": 25,
+      "capturesActuallyOpened": 10,
+      "portable": {
+        "path": "docs/v104-preserve-hunt-validation.json",
+        "sha256": "281af5ed5539f9f395d6b1c66f3f706ba9f977cdd23e7f84e4c94bb5fc429615",
+        "bytes": 31339
+      },
+      "rawReport": {
+        "path": "outputs/qa-v104/preserve-production/result.json",
+        "sha256": "aa480a5151b2bffee47886aeb1feb224ba1fd29d7f24a94ceaf733732e42d882",
+        "bytes": 61671
+      },
+      "currentSourcesMatchRecipeFingerprintCount": 10,
+      "captures": [
+        {
+          "path": "outputs/qa-v104/preserve-production/choice-v2-desktop.png",
+          "sha256": "f85d08c27b8be45e2f004d5203f76fe5ed9df8ddad55bd0e335c17107c56e5d6",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIC_FRAME"
+        },
+        {
+          "path": "outputs/qa-v104/preserve-production/v2-landscape-touch.png",
+          "sha256": "fe907550c9f584fd1855089e5bd1fedea7a1df4d4faa777f80d582330264d4fd",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIC_FRAME"
+        },
+        {
+          "path": "outputs/qa-v104/preserve-production/legacy-v1-preserved.png",
+          "sha256": "c5bd29e5c578aa0477054aba4c9d26de9dcc7feee4871720e98cf1a4cb69effb",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIC_FRAME"
+        },
+        {
+          "path": "outputs/qa-v104/preserve-production/campaign-v2-entry.png",
+          "sha256": "b3203ca999fb305b637a05d6658ef1401d3d1f3fe6afb5da1440afdf771e74ab",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIC_FRAME"
+        },
+        {
+          "path": "outputs/qa-v104/preserve-production/ridge-before-survey.png",
+          "sha256": "78db7904ce0e3c97d8fc2bcf97bf9c2aee7df9153923a7aee52e13d3ad490095",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIC_FRAME"
+        },
+        {
+          "path": "outputs/qa-v104/preserve-production/ridge-survey-in-progress.png",
+          "sha256": "a8b7463388a17639d872c7b3c7d813d8439f1267a90b36bbd9d22d6467be132f",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIC_FRAME"
+        },
+        {
+          "path": "outputs/qa-v104/preserve-production/ridge-survey-recorded.png",
+          "sha256": "7a6a65a362662b4160505b30874c8e649bd6da8f8e5bf82c7034437625f6c9c9",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIC_FRAME"
+        },
+        {
+          "path": "outputs/qa-v104/preserve-production/survey-notebook-desktop.png",
+          "sha256": "d38e3f58d68573aced802dd898ec4830efa042ed830105ffcef0edda70ceba9f",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIC_FRAME"
+        },
+        {
+          "path": "outputs/qa-v104/preserve-production/survey-notebook-mobile.png",
+          "sha256": "34a36cdea3e7b5547247e3e1cff2e115060707100c9f9dad90dbdce1dea142fc",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIC_FRAME"
+        },
+        {
+          "path": "outputs/qa-v104/preserve-production/survey-returned-outcome.png",
+          "sha256": "eef112e5e2cca6eacf85a295fa1890580fef3558b90981d18c445ffa236781b5",
+          "opened": true,
+          "inspection": "PASS_CIBLE_STATIC_FRAME"
+        }
+      ],
+      "scopeNote": "Original compiled build; every exact source fingerprint consumed by this recipe is unchanged in the final tree. No new execution or recapture is claimed."
+    }
+  ],
+  "independentCompatibilityReview": {
+    "path": "docs/v104-compatibility-review.json",
+    "sha256": "af0c464ee01026709ce41cde869e2cc5482d98ac5104108a905d37bd02693b95",
+    "bytes": 14202,
+    "scopeNote": "Historical version-boundary/model review. Its two UI source fingerprints changed in the subsequent write-recovery patch; they are re-reviewed separately below. The other22 fingerprints remain exact.",
+    "changedUiFingerprints": [
+      "app/game/HomeworldHub.tsx",
+      "app/game/HomeworldCartographyV104.tsx"
+    ]
+  },
+  "reviewPreviews": {
+    "path": "docs/v104-preview/provenance.json",
+    "sha256": "8600df54340be30da2535fbc8f3d291f71b8639989df60eb270212d24af8232c",
+    "bytes": 2700
+  },
+  "v100FrozenBaseline": {
+    "path": "docs/YAUTJA_V100_SUIVI.xlsx",
+    "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf",
+    "bytes": 1862541
+  },
+  "priorPullRequests": [
+    {
+      "number": 10,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/10",
+      "state": "MERGED",
+      "mergeCommit": "d71e995ae886df69c4165a1a153291449e8f22f6",
+      "scope": "36 new static native PNG; cumulative gallery of108 native images, not complete animated characters.21 final prompts remain unavailable."
+    },
+    {
+      "number": 11,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/11",
+      "state": "MERGED",
+      "mergeCommit": "18aba1b9c0372212eec88c426a5c7242f3f76e5e",
+      "checkedHead": "6827c8cef1d0133baf44e15d674c0304ba57cb76",
+      "githubActionsRun": 39843235101,
+      "status": "PASS",
+      "scope": "30 historical planets plus27 supported procedural formats; generation, editing, materials and saved clan fronts."
+    }
+  ],
+  "excelFinalValidation": {
+    "plannedAttestationPath": "docs/v104-excel-final-tests.json",
+    "note": "Generated after this proof. Deliberately not hashed here to avoid a dependency cycle through the V104 workbook and its source registry."
+  },
+  "limits": [
+    "Source normal recipe only:18 attacks opt-in for eligible native BODY Feral/Scar. Specials, entities, throws, finishers, costumes and complete character animation plans remain open.",
+    "Cartographer optionB only, known port route. OptionA and the broader dialogue backlog remain open.",
+    "Preserve V2 is an explicit separate expedition:4/80 sectors and8/100 combatants. Geometry journey uses an openly declared eight-humans-already-down fixture; ordinary entry/input checks start eight humans alive.",
+    "No new image generation or modified native pixels in V104. Enforcer10 production and missing private originals/receipts remain open.",
+    "Software Chromium static captures do not certify a physical touch device, controller, mobile GPU, full campaign, all art or canon1:1.",
+    "Local compiled build is not public/CDN/Vercel deployment certification. Exact Vercel-origin and static-output build gates are locally skipped.",
+    "OOXML, preserved worksheet bytes and cached formulas do not execute a native Excel application."
+  ],
+  "runtimeUnchangedAcrossLatestBuildAndHomeworldRecipe": true,
+  "productionBuildCounting": "Homeworld is re-executed on latest build1A5Wam-CqjuERBETVRmSh after its retry fix. Pit/Preserve retain original buildKfYVJdIUFim-1m9MRRQ6_ evidence, with every source fingerprint revalidated unchanged against the final tree. The three modes are not claimed newly executed on one shared latest build.",
+  "historicalSourceFreeze": {
+    "scope": "All app sources, production configuration and public assets consumed by the V100 follow-up. Other historical art is outside this snapshot.",
+    "files": 897,
+    "bytes": 258609494,
+    "snapshots": [
+      {
+        "path": "outputs/qa-v104/source-before-build.json",
+        "sha256": "cd259b8d392208fda80e1f6950b7c22501936d567aa411b3c8ffb869d51db002",
+        "bytes": 158403
+      },
+      {
+        "path": "outputs/qa-v104/source-after-build.json",
+        "sha256": "cd259b8d392208fda80e1f6950b7c22501936d567aa411b3c8ffb869d51db002",
+        "bytes": 158403
+      },
+      {
+        "path": "outputs/qa-v104/source-after-production-recipes.json",
+        "sha256": "cd259b8d392208fda80e1f6950b7c22501936d567aa411b3c8ffb869d51db002",
+        "bytes": 158403
+      }
+    ]
+  },
+  "cartographyWriteRecoveryReview": {
+    "path": "docs/v104-cartography-retry-review.json",
+    "sha256": "56db53fe6f56613ad421237e1657a1668534245074dfd51256523f2f5eb3cfa1",
+    "bytes": 7169
+  },
+  "writeRecoveryFix": {
+    "finding": "PR12 discussion4353451109",
+    "reproducedBeforeFix": {
+      "path": "outputs/qa-v104/homeworld-cartography-review-repro/result.json",
+      "sha256": "a2beb4da347204b221b288940a977dfc9f77c5e0f0db3907087e9e8f8c255a28",
+      "bytes": 6136
+    },
+    "scope": "A refused choose-b/reply/start write cannot strand the actor after closing the source dialog. Retry remains available before walking, never replays the refused source action and grants no free distance/waypoint."
+  }
+}

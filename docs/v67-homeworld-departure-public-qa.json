@@ -1,0 +1,204 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checks": [
+    "Actual city keyboard route and regional dialog call Hub→GameClient; new UUID and tick 0 acknowledged in storage before movement, no rewards.",
+    "Actual outward steps and keyboard retreat to the departure threshold, explicit E return, connector cleared durably, first city step remains outside beacon collider; rewards unchanged."
+  ],
+  "captures": [
+    "work-local/v67/qa/homeworld-departure-public/01-regional-dialog.jpg",
+    "work-local/v67/qa/homeworld-departure-public/02-new-passage-briefing.jpg",
+    "work-local/v67/qa/homeworld-departure-public/03-return-first-step.jpg"
+  ],
+  "errors": [],
+  "fixture": {
+    "kind": "adult legacy baseline",
+    "declaredPrerequisite": "suspect-trophy evidence supplied before gameplay; not claimed earned",
+    "passageBefore": null
+  },
+  "route": {
+    "start": {
+      "x": 1280,
+      "y": 4480
+    },
+    "reached": {
+      "x": 973,
+      "y": 2786
+    },
+    "target": {
+      "x": 970,
+      "y": 2783.5,
+      "vx": 0,
+      "vy": 0,
+      "grounded": true,
+      "facing": 1
+    },
+    "points": [
+      {
+        "x": 1280,
+        "y": 4480
+      },
+      {
+        "x": 1344,
+        "y": 4448
+      },
+      {
+        "x": 1376,
+        "y": 4416
+      },
+      {
+        "x": 1440,
+        "y": 3840
+      },
+      {
+        "x": 3008,
+        "y": 3712
+      },
+      {
+        "x": 3008,
+        "y": 3520
+      },
+      {
+        "x": 2944,
+        "y": 3456
+      },
+      {
+        "x": 2592,
+        "y": 3168
+      },
+      {
+        "x": 1664,
+        "y": 3200
+      },
+      {
+        "x": 1312,
+        "y": 2976
+      },
+      {
+        "x": 970,
+        "y": 2783.5
+      }
+    ],
+    "distance": 4745.119245450246
+  },
+  "departure": {
+    "version": 1,
+    "regionId": "ash-marches",
+    "direction": "outbound",
+    "journeyId": "39c885a4-f1d9-4918-abaf-3b68d6499ebd",
+    "tick": 0,
+    "actor": {
+      "x": 320,
+      "y": 1800,
+      "vx": 0,
+      "vy": 0,
+      "grounded": true,
+      "facing": 1
+    },
+    "visited": [
+      0
+    ],
+    "walked": 0,
+    "status": "travelling"
+  },
+  "returned": {
+    "x": 970,
+    "y": 2784
+  },
+  "firstStep": {
+    "x": 970,
+    "y": 2800
+  },
+  "scope": "Real UI departure and short explicit retreat only; no full passage or expedition completion claimed.",
+  "visualReview": {
+    "status": "PASS",
+    "reviewer": "agent",
+    "captures": [
+      {
+        "path": "work-local/v67/qa/homeworld-departure-public/01-regional-dialog.jpg",
+        "sha256": "4baca3e9d8440e3b8dd0494cfe408e440cea34c5995db91aab96f736001a389e"
+      },
+      {
+        "path": "work-local/v67/qa/homeworld-departure-public/02-new-passage-briefing.jpg",
+        "sha256": "048efb6dcc21068dcaf8a6431f72b28e187687ee28d5fdd206a187a9f8dd23fb"
+      },
+      {
+        "path": "work-local/v67/qa/homeworld-departure-public/03-return-first-step.jpg",
+        "sha256": "d9412fb87b8b4ef4a0dd6d26a5eb08f3f01f032ce59c6dc76d21ecab46466ca6"
+      }
+    ],
+    "observations": [
+      "The actual regional dialog presents the enabled departure action after the actor reaches its beacon.",
+      "The fresh passage screen shows its own title and explicit Begin walking action before any movement.",
+      "The returning actor and Ash beacon remain together in the city after the first ordinary step; no port-spawn recovery is observed. Existing transparent building cutaways remain visible in this city view; this check does not re-certify the entire city artwork."
+    ]
+  },
+  "public": true,
+  "checkedAt": "2026-10-01T05:04:48.924Z",
+  "deployment": {
+    "id": "dpl_CitLGkEgsR22vPyVz7tXip8rfHMG",
+    "commit": "2485dacc369f5887d0ec5c7c60585a31f35ccce5",
+    "alias": "https://yautja-la-longue-chasse.vercel.app",
+    "state": "READY",
+    "identityEvidence": {
+      "path": "work-local/v67/deployment-ready.json",
+      "sha256": "235617b385121d61fb1759713bcb7a59260563bbc1395ec92bbd79e29e19271c"
+    },
+    "identityVerification": "Matched deployment ID, READY state, commit and official alias from the saved Vercel response; browser separately asserted visible content version V67. Current runtime sources match the same local commit."
+  },
+  "reportEvidence": {
+    "path": "work-local/v67/qa/homeworld-departure-public/report.json",
+    "sha256": "13b5b3bd616ad83b812e93e1c10e704932d16c55b8e680d7d50f61401e6e8cdf"
+  },
+  "recipe": {
+    "path": "scripts/verify-homeworld-departure-v67.mjs",
+    "sha256": "f6b0f543481d99ed8ebc0eb007b60d0c31c7d686fc09891ab2c85f1769ec9a6c"
+  },
+  "runtime": [
+    {
+      "path": "app/game/HomeworldHub.tsx",
+      "sha256": "7ee5a43e18bff97b0b1c362d2734687c84f8eeff9d36376b2796ca47ca33da7f"
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "sha256": "e663407f5b7f28a51665281baf7983fff5faa966119466ee2fe705cc2a03acd6"
+    },
+    {
+      "path": "app/game/systems/homeworldArrivalV67.ts",
+      "sha256": "1b5c36c63b1c9df395edc156be5adeb24a6368c0a64ae7bd68a6a5b5d01597de"
+    },
+    {
+      "path": "app/game/systems/homeworldPassageV67.ts",
+      "sha256": "bedd50b9b65d5cc350c74141f8a781ede9c1022c6c460d0fe47b9f935041ea18"
+    },
+    {
+      "path": "app/game/systems/homeworldCity.ts",
+      "sha256": "38f63d88d79050c9d23c24719bc47b57ad984455acd00bb1043f36ba0e5c5e00"
+    },
+    {
+      "path": "app/game/save.ts",
+      "sha256": "80c48758e48107ae9d41f9da06fc549e9bc37f9cbf398af76fcc56a4102a7f76"
+    },
+    {
+      "path": "app/game/HomeworldPassageV67.tsx",
+      "sha256": "d9cccc67f587c64ff22b5a11c865ac9a47a3a8c564386d990a765cbfd62656d1"
+    }
+  ],
+  "rewardFieldsChecked": [
+    "profile",
+    "inventory",
+    "trophies",
+    "missionProgress",
+    "prologue",
+    "youthTraining",
+    "soloV66",
+    "soloV67",
+    "statistics",
+    "storyCompleted"
+  ],
+  "limits": [
+    "Prerequisite suspect-trophy is declared as fixture input before gameplay, not claimed earned during this browser run.",
+    "Only the initial departure and short retreat are covered; full passage traversal has a separate recipe.",
+    "No expedition completion, mission reward or rank promotion is claimed."
+  ]
+}

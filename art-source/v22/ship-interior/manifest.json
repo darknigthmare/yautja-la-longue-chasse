@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-08-31",
+  "generator": {
+    "provider": "OpenAI",
+    "tool": "image_gen.imagegen",
+    "model": null
+  },
+  "conversion": {
+    "tool": "sharp",
+    "format": "webp",
+    "quality": 86,
+    "alphaQuality": 100,
+    "effort": 6,
+    "resized": false,
+    "cropped": false
+  },
+  "note": "Source PNGs, transparent masters, and runtime encodings are separate records. Technical alpha preparation, when performed, is documented in alpha-preparation.json.",
+  "assets": [
+    {
+      "id": "floor-edge",
+      "generatedSource": {
+        "path": "art-source/v22/ship-interior/floor-edge.generated.png",
+        "sha256": "53a5cc491ee15e96f5118dc08556e0c786453bba159bb26110c3831927019709"
+      },
+      "master": {
+        "path": "art-source/v22/ship-interior/floor-edge.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1026555,
+        "sha256": "8a9fc39b64a35e0922123e12b0c4ac5232208896c8560fc1c7601cd7dd7b5728"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v22/floor-edge.webp",
+        "url": "/game/ship-interior/v22/floor-edge.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 61170,
+        "sha256": "cfa859e51539f631ef6abbf15f3b0b7adadc42d526841e50151750553e9f1550",
+        "hasAlpha": true
+      },
+      "alpha": {
+        "transparent": 1302396,
+        "opaque": 270468,
+        "bounds": {
+          "x": 40,
+          "y": 408,
+          "width": 1456,
+          "height": 186
+        }
+      }
+    },
+    {
+      "id": "gantry",
+      "generatedSource": {
+        "path": "art-source/v22/ship-interior/gantry.generated.png",
+        "sha256": "a96b5432f8b959b7cf60c9c58f6a4a5a772af5833c27db4c03f2185d3fae739b"
+      },
+      "master": {
+        "path": "art-source/v22/ship-interior/gantry.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1076005,
+        "sha256": "5a364389a141ae878ae1f26d0409e3b6f0cdc48bcb06a0098fb2e664d6b8eade"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v22/gantry.webp",
+        "url": "/game/ship-interior/v22/gantry.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 60078,
+        "sha256": "b19d93216fb7fc586676dfda45b6a3c1f81fa2a1caecd6e03316d19b78b71fbd",
+        "hasAlpha": true
+      },
+      "alpha": {
+        "transparent": 1339915,
+        "opaque": 232949,
+        "bounds": {
+          "x": 62,
+          "y": 386,
+          "width": 1411,
+          "height": 227
+        }
+      }
+    },
+    {
+      "id": "service-ladder",
+      "generatedSource": {
+        "path": "art-source/v22/ship-interior/service-ladder.generated.png",
+        "sha256": "25ee3d342b8686bcb327821d20421b56c16f7da08ed041494dde4355e5092ad9"
+      },
+      "master": {
+        "path": "art-source/v22/ship-interior/service-ladder.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 1334592,
+        "sha256": "b548545febceb6a0665049ffb2a3e36ce744fe9ae0be94ef4715e8c4b62bb62d"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v22/service-ladder.webp",
+        "url": "/game/ship-interior/v22/service-ladder.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 51858,
+        "sha256": "a546957d714c7d9b4813b3f639cd41e1662310f2434a8525478d73d324b8c4d6",
+        "hasAlpha": true
+      },
+      "alpha": {
+        "transparent": 1342781,
+        "opaque": 230083,
+        "bounds": {
+          "x": 258,
+          "y": 128,
+          "width": 508,
+          "height": 1280
+        }
+      }
+    },
+    {
+      "id": "medbay-bed",
+      "generatedSource": {
+        "path": "art-source/v22/ship-interior/medbay-bed.generated.png",
+        "sha256": "b9c34e33f7c02949ba175723c9f5c184a9bd91600965d5ac4c7ad31f4d79e8fa"
+      },
+      "master": {
+        "path": "art-source/v22/ship-interior/medbay-bed.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1431946,
+        "sha256": "c87e2880c83c1a72a17688649dae7ddc448096c68a0f8d47ea1fec3f60e38951"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v22/medbay-bed.webp",
+        "url": "/game/ship-interior/v22/medbay-bed.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 78310,
+        "sha256": "4086076cf406566c13ee125be880e721cba6ef7d6384c2e7a695df71c132a188",
+        "hasAlpha": true
+      },
+      "alpha": {
+        "transparent": 1221939,
+        "opaque": 350925,
+        "bounds": {
+          "x": 75,
+          "y": 119,
+          "width": 1385,
+          "height": 766
+        }
+      }
+    },
+    {
+      "id": "armory-rack",
+      "generatedSource": {
+        "path": "art-source/v22/ship-interior/armory-rack.generated.png",
+        "sha256": "91ae982f8634ba94e318da5fac477347d49fb1293f3145476d3334e2a2a17782"
+      },
+      "master": {
+        "path": "art-source/v22/ship-interior/armory-rack.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2375478,
+        "sha256": "e9475c69d8f90fbcf752476c54fe5de4110d831af82d6a30a8325a2289e03384"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v22/armory-rack.webp",
+        "url": "/game/ship-interior/v22/armory-rack.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 169014,
+        "sha256": "b4a7f41b836e3d8db98311e87bce348b54b4831024d84141aab41dbc0e295d2f",
+        "hasAlpha": true
+      },
+      "alpha": {
+        "transparent": 518073,
+        "opaque": 1054791,
+        "bounds": {
+          "x": 38,
+          "y": 137,
+          "width": 1459,
+          "height": 734
+        }
+      }
+    },
+    {
+      "id": "archive-terminal",
+      "generatedSource": {
+        "path": "art-source/v22/ship-interior/archive-terminal.generated.png",
+        "sha256": "013da949b16480aa3ad3a41af5f817b7794a709bad5cf8b3ceca6b5e8404cb13"
+      },
+      "master": {
+        "path": "art-source/v22/ship-interior/archive-terminal.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2302356,
+        "sha256": "ecb151413fb1681cd81116e9aafbd962742beb0b74eeeae192ff6e29bcac8884"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v22/archive-terminal.webp",
+        "url": "/game/ship-interior/v22/archive-terminal.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 153362,
+        "sha256": "b05026ffcb7e52fa1b4792cfda820e8ae6e7ed072359ac3e02762bacd5a34ef6",
+        "hasAlpha": true
+      },
+      "alpha": {
+        "transparent": 802998,
+        "opaque": 769866,
+        "bounds": {
+          "x": 144,
+          "y": 47,
+          "width": 734,
+          "height": 1428
+        }
+      }
+    },
+    {
+      "id": "forge-station",
+      "generatedSource": {
+        "path": "art-source/v22/ship-interior/forge-station.generated.png",
+        "sha256": "1734ec6149a0f039588d0956625967d76982ef1df74701899d7141f40c1e78b7"
+      },
+      "master": {
+        "path": "art-source/v22/ship-interior/forge-station.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 2010969,
+        "sha256": "db94945c5a349a4ff50b3120b14abecf9069033938c2080ba9625dfb25c77cab"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v22/forge-station.webp",
+        "url": "/game/ship-interior/v22/forge-station.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 141856,
+        "sha256": "c1bfcf7ad3536288a3bd60b7f359116f9dbe87070eea0664ba71756a2c7d4398",
+        "hasAlpha": true
+      },
+      "alpha": {
+        "transparent": 922235,
+        "opaque": 650629,
+        "bounds": {
+          "x": 89,
+          "y": 150,
+          "width": 843,
+          "height": 1245
+        }
+      }
+    }
+  ]
+}

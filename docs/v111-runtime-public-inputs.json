@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "release": "V111",
+  "assets": [
+    {
+      "path": "public/game/homeworld/v111/archivist-conversation/listen.png",
+      "bytes": 1738415,
+      "sha256": "b0d2d1710be551d4b1b1be10f1860a73406c18a55f47c4eb16a2371c4e480d03"
+    },
+    {
+      "path": "public/game/homeworld/v111/archivist-conversation/explain.png",
+      "bytes": 1940541,
+      "sha256": "5a655cebec21b8efdf07ec4c56614892fa21b17bbfdb331a0e6399a8ccddec34"
+    },
+    {
+      "path": "public/game/homeworld/v111/archivist-conversation/indicate.png",
+      "bytes": 1907698,
+      "sha256": "cf359e4b01e573876afc711dc85481d14c59558ac3678cd524dc21d72d698793"
+    },
+    {
+      "path": "public/game/homeworld/v111/archivist-conversation/return.png",
+      "bytes": 1723190,
+      "sha256": "f6ea87e15053a67987f43117dd9654b2baff6eb5adbae58e70b06593353fe7a8"
+    }
+  ],
+  "provenance": [
+    {
+      "path": "art-source/v111/archivist-conversation/raw/listen.png",
+      "bytes": 1738415,
+      "sha256": "b0d2d1710be551d4b1b1be10f1860a73406c18a55f47c4eb16a2371c4e480d03"
+    },
+    {
+      "path": "art-source/v111/archivist-conversation/raw/explain.png",
+      "bytes": 1940541,
+      "sha256": "5a655cebec21b8efdf07ec4c56614892fa21b17bbfdb331a0e6399a8ccddec34"
+    },
+    {
+      "path": "art-source/v111/archivist-conversation/raw/indicate.png",
+      "bytes": 1907698,
+      "sha256": "cf359e4b01e573876afc711dc85481d14c59558ac3678cd524dc21d72d698793"
+    },
+    {
+      "path": "art-source/v111/archivist-conversation/raw/return.png",
+      "bytes": 1723190,
+      "sha256": "f6ea87e15053a67987f43117dd9654b2baff6eb5adbae58e70b06593353fe7a8"
+    },
+    {
+      "path": "art-source/v111/archivist-conversation/rejected/indicate-gutter-r1.png",
+      "bytes": 1888277,
+      "sha256": "e12427febecb140539fbb2412063db131594fc85401ab33e6ab8f94a5946b830"
+    },
+    {
+      "path": "art-source/v111/archivist-conversation/generation-receipts.json",
+      "bytes": 14223,
+      "sha256": "2b8dfb2065943e212ad1384360e131330f10128cfc647556364e4973073f0dc4"
+    },
+    {
+      "path": "art-source/v111/archivist-conversation/visual-review.json",
+      "bytes": 3809,
+      "sha256": "942dd559d54f00052c002d2c33e6882061119caebaa687dd78d5a6837a80ec2e"
+    }
+  ],
+  "sourceDocuments": [
+    "app/game/data/homeworldArchivistMotionV111.json",
+    "app/game/HomeworldArchivistMotionV111.tsx",
+    "app/game/HomeworldArchivistPortraitV111.tsx",
+    "app/game/HomeworldArchivePlaqueWorldV111.tsx",
+    "app/game/systems/homeworldArchivistMotionV111.ts",
+    "scripts/build-homeworld-archivist-art-v111.mjs",
+    "scripts/audit-homeworld-art-v111.mjs",
+    "tests/homeworld-archivist-motion-v111.test.mjs",
+    "tests/homeworld-art-inventory-v111.test.mjs",
+    "docs/v111-homeworld-art.md",
+    "docs/v111-homeworld-art-inventory.json",
+    "docs/qa/v110-homeworld/k17-02-native-carried-plaque.png",
+    "app/game/HomeworldArchivePlaqueV111.tsx"
+  ]
+}

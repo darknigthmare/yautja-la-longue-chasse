@@ -1,0 +1,225 @@
+{
+  "version": 1,
+  "tool": "OpenAI built-in image_gen",
+  "sharedSpecification": {
+    "useCase": "stylized-concept",
+    "assetType": "production master sprite atlas for a dark science-fiction 2D side-scrolling game",
+    "grid": "exactly 5 horizontal rows by exactly 6 equal columns, one identity per row, 30 isolated figures total",
+    "columns": [
+      "idle",
+      "locomotion pose A",
+      "locomotion pose B",
+      "attack",
+      "hit recoil",
+      "collapsed death"
+    ],
+    "orientation": "full-body right-facing side profile except the collapsed death pose",
+    "style": "original dark cinematic hand-painted pixel-art-like game sprites with crisp pixel-painted edges, realistic alien materials and high-contrast readable silhouettes",
+    "composition": "wide 3:2 landscape canvas with an invisible regular 5x6 cell layout; every subject centered, fully visible and padded; no overlap or cell crossing",
+    "backdrop": "perfectly flat fully uniform solid #ff00ff chroma-key background",
+    "invariants": "same identity, anatomy, palette, proportions and scale across all six cells of a row; locomotion phases differ; attack, hit and death remain unambiguous",
+    "avoid": "magenta in subjects, text, labels, numbers, UI, icons, borders, grid lines, cast or contact shadows, ground, scenery, gradients, reflections, particles, detached parts, cropped anatomy, watermark, logo or recognizable copyrighted character"
+  },
+  "prompts": [
+    {
+      "master": "masters/supplemental-b1-serekh-chroma.png",
+      "sourceGenerationId": "exec-fd725e4c-2522-468f-9a45-b0f921b67c9d",
+      "biome": "Serekh-9 dry desert ecology",
+      "rows": [
+        {
+          "spriteId": "v8/serekh-9/dust-jackal",
+          "anatomyPrompt": "A lean six-limbed desert pack predator with charcoal hide, dusty tan dorsal mane, long ears, narrow canine skull and hooked feet."
+        },
+        {
+          "spriteId": "v8/serekh-9/burrow-snake",
+          "anatomyPrompt": "A long low sand serpent with armored sandstone shovel head, segmented umber scales and two short digging forelimbs; no extra detached body pieces."
+        },
+        {
+          "spriteId": "v8/serekh-9/dune-strider",
+          "anatomyPrompt": "A tall swift four-legged desert runner with stilt legs, ochre hide, black joints, narrow wedge head and swept-back sensory fins."
+        },
+        {
+          "spriteId": "v8/serekh-9/mirage-cat",
+          "anatomyPrompt": "A sleek alien feline ambusher with pale sand hide, dark heat-ripple stripes, long balancing tail, crystalline blue eyes and blade-like shoulder ridges."
+        },
+        {
+          "spriteId": "v8/serekh-9/armored-scarab",
+          "anatomyPrompt": "A squat six-legged desert beetle with heavy bronze-sand carapace, obsidian joints, paired mandibles and compact horned head."
+        }
+      ]
+    },
+    {
+      "master": "masters/supplemental-b2-serekh-pelagos-chroma.png",
+      "sourceGenerationId": "exec-87ed2e7c-16fd-43da-b7f8-2e464080333e",
+      "biome": "Serekh-9 desert and Pelagos-M ocean-shore ecology",
+      "rows": [
+        {
+          "spriteId": "v8/serekh-9/quill-lizard",
+          "anatomyPrompt": "A low muscular six-legged desert reptile with slate-brown scales, ochre porcupine quills along its spine, wedge head and hooked jaws."
+        },
+        {
+          "spriteId": "v8/serekh-9/desert-temple-guardian",
+          "anatomyPrompt": "An original non-human tall stone-and-bronze automaton with amber sun-disc core, slab forearm shield, attached heavy limbs and eroded geometric carvings."
+        },
+        {
+          "spriteId": "v8/serekh-9/excavation-drone",
+          "anatomyPrompt": "A compact industrial quadruped robot with sand-worn yellow ceramic shell, black pistons, front digging claws and cyan sensor visor; all tools attached."
+        },
+        {
+          "spriteId": "v8/pelagos-m/tide-octopus",
+          "anatomyPrompt": "A fully opaque amphibious alien cephalopod moving on six stout tentacle legs, with navy skin, turquoise rings, beaked mantle head and two attacking arms."
+        },
+        {
+          "spriteId": "v8/pelagos-m/skygull",
+          "anatomyPrompt": "A ground-capable alien coastal raptor with folded blade wings, pearl-gray feather scales, navy beak, cyan throat sac and taloned legs."
+        }
+      ]
+    },
+    {
+      "master": "masters/supplemental-b3-pelagos-chroma.png",
+      "sourceGenerationId": "exec-9627fbf7-a929-459a-a95f-d9da8551cc84",
+      "biome": "Pelagos-M ocean and shore ecology",
+      "rows": [
+        {
+          "spriteId": "v8/pelagos-m/foam-crawler",
+          "anatomyPrompt": "A squat six-legged shoreline crustacean with pearl foam-like carapace nodules, dark blue joints, broad shovel claws and small cyan eye clusters."
+        },
+        {
+          "spriteId": "v8/pelagos-m/storm-eel",
+          "anatomyPrompt": "A long muscular amphibious eel with four powerful walking fins used as legs, indigo armored skull, electric cyan lateral bands and hooked jaws; no electricity particles."
+        },
+        {
+          "spriteId": "v8/pelagos-m/deep-lantern",
+          "anatomyPrompt": "A low abyssal quadruped with black-blue armor, attached arching lure tipped by an opaque cyan bulb, oversized jaw, webbed claws and bioluminescent cheek dots."
+        },
+        {
+          "spriteId": "v8/pelagos-m/swimmer-xeno",
+          "anatomyPrompt": "An original eyeless biomechanical ocean predator with elongated smooth navy cranial crest, ribbed wet-black body, webbed clawed limbs and finned tail; not a recognizable franchise character."
+        },
+        {
+          "spriteId": "v8/pelagos-m/salvage-synth",
+          "anatomyPrompt": "An original humanoid marine salvage robot with corroded teal armor, brass joints, sealed blank diving mask, attached harpoon-tool forearm and ballast boots."
+        }
+      ]
+    },
+    {
+      "master": "masters/supplemental-b4-mycora-chroma.png",
+      "sourceGenerationId": "exec-40608cce-8872-4577-9d38-5723e75cf330",
+      "biome": "Mycora-V fungal hive ecology",
+      "rows": [
+        {
+          "spriteId": "v8/mycora-v/cap-mimic",
+          "anatomyPrompt": "A squat quadrupedal fungal predator disguised as a layered mushroom cap, with bark-black legs below an ivory-violet cap, toothed underside and amber eyes."
+        },
+        {
+          "spriteId": "v8/mycora-v/thread-leech",
+          "anatomyPrompt": "A long low segmented parasite with ivory mycelial fibers wrapped around charcoal flesh, circular mouth, six tiny hooked legs and violet sensory bulbs."
+        },
+        {
+          "spriteId": "v8/mycora-v/neural-liana",
+          "anatomyPrompt": "A mobile hostile vine organism with central violet nerve bulb and ivory braided lianas forming four root legs and two whip arms; every strand attached."
+        },
+        {
+          "spriteId": "v8/mycora-v/acid-puffball",
+          "anatomyPrompt": "A round armored fungal walker on six root legs with mottled yellow-green puffball plates, small toothed aperture and dark mycelium seams; acid remains inside."
+        },
+        {
+          "spriteId": "v8/mycora-v/web-mold",
+          "anatomyPrompt": "A low crawling colony with black root chassis, stretched ivory fungal web membranes between six jointed legs, violet fruiting nodes and central feeding maw."
+        }
+      ]
+    },
+    {
+      "master": "masters/supplemental-b5-mycora-acheron-chroma.png",
+      "sourceGenerationId": "exec-ea7aafb4-fd30-46bb-bc99-2b1f62f4f4d1",
+      "biome": "Mycora-V fungal hive and Acheron-Sigma ancient ruins ecology",
+      "rows": [
+        {
+          "spriteId": "v8/mycora-v/infected-colonist",
+          "anatomyPrompt": "An original human-shaped frontier worker overtaken by fungus, in torn neutral utility suit, with sealed face obscured by split mushroom crown, attached ivory mycelium cords and violet nodules; no exposed gore."
+        },
+        {
+          "spriteId": "v8/mycora-v/fungal-xeno",
+          "anatomyPrompt": "An original eyeless fungal alien predator with long ivory mushroom-plated cranial crest, bark-black ribbed body, elongated clawed limbs and attached violet hyphae; not a recognizable franchise character."
+        },
+        {
+          "spriteId": "v8/mycora-v/assimilated-synth",
+          "anatomyPrompt": "An original humanoid service robot colonized by fungus, with pale ceramic shell, dark joints, cracked blank faceplate, mushroom plates and attached mycelium cords on one side."
+        },
+        {
+          "spriteId": "v8/acheron-sigma/ruin-bat",
+          "anatomyPrompt": "A ground-capable alien ruin bat with folded stone-gray membrane wings, bronze bone struts, angular masked head, amber eyes and clawed hind legs."
+        },
+        {
+          "spriteId": "v8/acheron-sigma/glyph-serpent",
+          "anatomyPrompt": "A long ruined-temple serpent with black stone scales inset by worn bronze glyph plates, angular carved head, cyan eye stone and two short claw forelimbs."
+        }
+      ]
+    },
+    {
+      "master": "masters/supplemental-b6-acheron-relics-chroma.png",
+      "sourceGenerationId": "exec-c8756ec7-11d2-452d-8dff-22cc88333763",
+      "derivedFromGenerationId": "exec-b8077d34-d6f3-4357-800b-d98db2f3c954",
+      "biome": "Acheron-Sigma relic and techno-organic ruins ecology",
+      "editPrompt": "Remove only the tiny detached dark debris chips floating around the hit-recoil sprite in row 1, column 5; replace them with exact solid #ff00ff and preserve the canvas, all 30 sprites, poses, positions, scale, colors and detail.",
+      "rows": [
+        {
+          "spriteId": "v8/acheron-sigma/bronze-beetle",
+          "anatomyPrompt": "A squat six-legged ruin beetle with overlapping oxidized bronze carapace, black stone joints, heavy mandibles and tiny amber eye lenses."
+        },
+        {
+          "spriteId": "v8/acheron-sigma/relic-mimic",
+          "anatomyPrompt": "A quadrupedal temple beast unfolding from a cracked basalt reliquary shell, with carved horned mask, bronze hinge bones and granite claws; one connected body."
+        },
+        {
+          "spriteId": "v8/acheron-sigma/cable-ivy",
+          "anatomyPrompt": "A mobile techno-organic vine with central corroded bronze junction core and thick black cables braided into four root legs and two hooked arms; every cable attached."
+        },
+        {
+          "spriteId": "v8/acheron-sigma/archive-mold",
+          "anatomyPrompt": "A low crawling data-fungus colony with black stone base on six root legs, layered parchment-tan shelf growths patterned like circuit glyphs, amber memory nodules and central maw."
+        },
+        {
+          "spriteId": "v8/acheron-sigma/crystal-creeper",
+          "anatomyPrompt": "A low six-legged mineral predator with charcoal rock body, opaque smoky-quartz dorsal crystals, bronze seams, wedge head and hooked stone feet."
+        }
+      ]
+    },
+    {
+      "master": "masters/supplemental-b7-acheron-war-chroma.png",
+      "sourceGenerationId": "exec-fcff8d96-5e56-4129-ab4c-1e59d5260dfe",
+      "biome": "Acheron-Sigma temple war ecology",
+      "rows": [
+        {
+          "spriteId": "v8/acheron-sigma/stone-orchid",
+          "anatomyPrompt": "A mobile hostile temple flora with carved basalt flower head, layered stone petals, amber core, four root legs, two thorn arms and bronze veins; all petals attached."
+        },
+        {
+          "spriteId": "v8/acheron-sigma/temple-xeno",
+          "anatomyPrompt": "An original eyeless biomechanical ruin predator with elongated basalt cranial crest and bronze glyph bands, ribbed black body, long clawed limbs and armored tail; not a recognizable franchise character."
+        },
+        {
+          "spriteId": "v8/acheron-sigma/nanite-swarm",
+          "anatomyPrompt": "One cohesive side-view crawling swarm silhouette made of tightly interlocked black-metal micro-shards connected into a low feline-insectoid mass around amber core points; absolutely no detached particles."
+        },
+        {
+          "spriteId": "v8/acheron-sigma/war-construct",
+          "anatomyPrompt": "A massive original quadrupedal ancient combat automaton with basalt-and-bronze armor, amber chest furnace, slab shoulders and attached cannon-like hammer forelimb without projectiles."
+        },
+        {
+          "spriteId": "v8/acheron-sigma/sentinel-drone",
+          "anatomyPrompt": "A compact physically legged tripod guardian drone with circular carved bronze-stone body, cyan central eye, three articulated claw legs and two attached shield fins."
+        }
+      ]
+    }
+  ],
+  "postProcess": {
+    "helper": "C:/Users/chuck/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py",
+    "arguments": "--auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill",
+    "edgeContractRetries": [
+      "masters/supplemental-b2-serekh-pelagos-alpha.png",
+      "masters/supplemental-b5-mycora-acheron-alpha.png"
+    ],
+    "edgeContractArguments": "--edge-contract 1"
+  }
+}

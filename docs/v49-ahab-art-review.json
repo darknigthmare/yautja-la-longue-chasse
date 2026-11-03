@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent presentation and cell-isolation QA, not canon 1:1 certification",
+  "candidates": [
+    {
+      "file": "exec-a7dee7ac-8ff5-420e-9e4b-63cf717ee9a4.png",
+      "sha256": "a570537ee26a029c2509a4100e6715a54911925fae9c6090107c240f3aa57899",
+      "decision": "accepted",
+      "size": [
+        1536,
+        1024
+      ],
+      "alphaMinMax": [
+        0,
+        254
+      ],
+      "verticalSeams": [
+        {
+          "x": 768,
+          "opaquePixelsAcrossBothRows": 0
+        }
+      ],
+      "interpretation": "Masked Ahab native left idle + high guard, four distinct original drawings",
+      "alphaNoiseFloor": 2,
+      "fullCellRects": [
+        [
+          0,
+          0,
+          768,
+          512
+        ],
+        [
+          768,
+          0,
+          768,
+          512
+        ],
+        [
+          0,
+          512,
+          768,
+          512
+        ],
+        [
+          768,
+          512,
+          768,
+          512
+        ]
+      ],
+      "measuredStandingReferencePx": 495,
+      "footPivots": [
+        [
+          468,
+          503
+        ],
+        [
+          468,
+          503
+        ],
+        [
+          486.5,
+          483
+        ],
+        [
+          486.5,
+          483
+        ]
+      ],
+      "checks": [
+        "No foreign pose inside four full-cell crops at noise floor 2",
+        "No clipped body, hand, foot or weapon",
+        "Armor, cape, skull pendant, net and mask coherent with accepted Ahab interpretation",
+        "Only uniform body scale; crouch preserved"
+      ]
+    },
+    {
+      "file": "exec-385dfba0-9f60-4aaa-bc3a-b78a4edd64a2.png",
+      "sha256": "dbb901d015cda2a31f97ce8ae20013d35d369cfd83be16f5de7662553af2caf1",
+      "decision": "rejected",
+      "size": [
+        1536,
+        1024
+      ],
+      "alphaMinMax": [
+        0,
+        254
+      ],
+      "verticalSeams": [
+        {
+          "x": 512,
+          "opaquePixelsAcrossBothRows": 104
+        },
+        {
+          "x": 1024,
+          "opaquePixelsAcrossBothRows": 446
+        }
+      ],
+      "reason": "Three columns leave insufficient weapon/cape separation. The lower first attack overlaps the neighboring drawing envelope; rectangular crops would either truncate the spear/cape or include foreign pose pixels. No pixel cleanup performed."
+    },
+    {
+      "file": "exec-93538a09-28c4-469a-a520-9949a9b0e460.png",
+      "sha256": "6bfe856e2c6359d74271fc955108fc1ba3b8d78ce36a7c0e488033cf5d04d24f",
+      "decision": "rejected",
+      "size": [
+        1536,
+        1024
+      ],
+      "alphaMinMax": [
+        0,
+        254
+      ],
+      "verticalSeams": [
+        {
+          "x": 512,
+          "opaquePixelsAcrossBothRows": 321
+        },
+        {
+          "x": 1024,
+          "opaquePixelsAcrossBothRows": 329
+        }
+      ],
+      "reason": "Three columns leave insufficient weapon/cape separation. The lower first attack overlaps the neighboring drawing envelope; rectangular crops would either truncate the spear/cape or include foreign pose pixels. No pixel cleanup performed."
+    },
+    {
+      "file": "exec-17fd6aee-9b97-4603-a814-37807f6b599f.png",
+      "sha256": "628741b90e0216444b62e17e42af253c49ed1f80ca083b988ea646d7b6da71f4",
+      "decision": "accepted",
+      "size": [
+        1536,
+        1024
+      ],
+      "alphaNoiseFloor": 2,
+      "rects": [
+        [
+          0,
+          0,
+          768,
+          512
+        ],
+        [
+          768,
+          0,
+          768,
+          512
+        ],
+        [
+          0,
+          512,
+          858,
+          512
+        ],
+        [
+          858,
+          512,
+          678,
+          512
+        ]
+      ],
+      "footPivots": [
+        [
+          252.5,
+          489
+        ],
+        [
+          267.5,
+          488
+        ],
+        [
+          281.5,
+          482
+        ],
+        [
+          197,
+          483
+        ]
+      ],
+      "measuredStandingReferencePx": 477,
+      "safeVerticalSplitRangesAtAlphaAbove2": [
+        [
+          626,
+          817
+        ],
+        [
+          850,
+          868
+        ]
+      ],
+      "borderPixelsAboveNoiseFloor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "drawnFrames": 4,
+      "clips": [
+        "pit.stand.light.startup:right",
+        "pit.stand.light.active:right",
+        "pit.stand.light.recovery:right"
+      ],
+      "anatomyReview": "Both forearms and gauntlets remain visible at contact; the hands overlap in side projection around the spear grip. No extra or missing limb detected. Native right drawings, no image flip.",
+      "motionInterpretation": "Anticipation, contact, follow-through, return. Recovery holds the last drawing; no attack loop.",
+      "mechanicsLimit": "Shared adapted light attack retains its existing range, damage, hitboxes and timing. Spear image extent is not a new spear hitbox or canonical technique."
+    },
+    {
+      "file": "exec-f9a61e35-e3a1-4368-a8ef-bf71818e5d83.png",
+      "sha256": "47fe77b1fac2eb86c3ceb18e98c816833aa7d0a308e4a01139c4430d5123e034",
+      "decision": "rejected",
+      "size": [
+        1536,
+        1024
+      ],
+      "reason": "The upper-left drawing reaches the top source edge with 19 pixels of alpha3..5. The opaque helmet begins at y6, but strict existing cell-edge rules still fail. The noise floor was not increased and no pixels were edited. A replacement with larger margins was requested.",
+      "safeVerticalSplitRangesAtAlphaAbove2": [
+        [
+          686,
+          761
+        ],
+        [
+          821,
+          897
+        ]
+      ],
+      "topSourceEdgeMaximumAlpha": 5
+    },
+    {
+      "file": "exec-9932f40a-943d-4f76-a146-e55a4de73f16.png",
+      "sha256": "12dfae8b84c4fabb0b0e70fb3476eb05e5a707f93aeb6e7948d0338a065fb855",
+      "decision": "accepted",
+      "size": [
+        1536,
+        1024
+      ],
+      "alphaNoiseFloor": 2,
+      "rects": [
+        [
+          0,
+          0,
+          768,
+          512
+        ],
+        [
+          768,
+          0,
+          768,
+          512
+        ],
+        [
+          0,
+          512,
+          768,
+          512
+        ],
+        [
+          768,
+          512,
+          768,
+          512
+        ]
+      ],
+      "footPivots": [
+        [
+          478.5,
+          480
+        ],
+        [
+          484.5,
+          475
+        ],
+        [
+          524.5,
+          445
+        ],
+        [
+          491.5,
+          453
+        ]
+      ],
+      "measuredStandingReferencePx": 391,
+      "outerEdgeMaxAlpha": 0,
+      "internalSeamMaxAlpha": 1,
+      "borderPixelsAboveNoiseFloor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "drawnFrames": 4,
+      "clips": [
+        "pit.stand.light.startup:left",
+        "pit.stand.light.active:left",
+        "pit.stand.light.recovery:left"
+      ],
+      "anatomyReview": "Two distinct arms and hands grip the spear throughout the attack. No detached, extra or cropped member detected. Helmet, skull pendant, net, armor, red cape and shoulder cannon remain coherent with the project appearance. No flip or warping.",
+      "motionInterpretation": "Anticipation, contact, follow-through, return. One body reference for the page, crouch and lean preserved."
+    }
+  ],
+  "acceptedAddition": {
+    "sourcePngs": 3,
+    "newDrawings": 12,
+    "newPhaseClips": 8,
+    "resultingAhabClips": 10,
+    "resultingAhabDrawings": 16,
+    "sourcePixelsModified": false,
+    "referenceConditioning": "Generation based on a textual description of inspected existing project reference; local reference upload was unavailable. Canonical 1:1 fidelity is not certified.",
+    "gameplay": "Only masked Ahab native idle/high guard/light attack in standing posture. No medium/heavy/technique/jump/crouch/throw or complete moveset claim."
+  },
+  "cameraFraming": {
+    "purpose": "Exclude transparent padding from camera envelope only; original rendering crops and pivots remain unchanged.",
+    "visibleBoundsCount": 12,
+    "alphaNoiseFloorUnchanged": 2,
+    "processedVisiblePixelsDiscarded": 0,
+    "sourcePixelsModified": false,
+    "pixelEquivalence": {
+      "browser": "Chrome",
+      "comparisons": 72,
+      "differingRgbaBytes": 0,
+      "report": "outputs/qa-commercial-audit/v49/pit-camera-bounds-render-equivalence.json"
+    },
+    "rejectedExperiment": "Tightening drawImage crops changed nearest-neighbor sample placement in Chrome. That experiment was rejected; drawImage crops/pivots restored exactly.",
+    "measurementReport": "outputs/qa-commercial-audit/v49/pit-tight-crop-proof.json"
+  }
+}

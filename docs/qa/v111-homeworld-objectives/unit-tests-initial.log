@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: V111 keeps every legacy-only recommendation, landmark and path without saved-state changes
+ok 1 - V111 keeps every legacy-only recommendation, landmark and path without saved-state changes
+  ---
+  duration_ms: 12.962862
+  type: 'test'
+  ...
+# Subtest: V111 actual later choice, reply and consent receive distinct current-objective IDs at the unchanged K17 post
+ok 2 - V111 actual later choice, reply and consent receive distinct current-objective IDs at the unchanged K17 post
+  ---
+  duration_ms: 14.455519
+  type: 'test'
+  ...
+# Subtest: V111 continuation offers do not steal the current objective from another actual in-progress operation
+ok 3 - V111 continuation offers do not steal the current objective from another actual in-progress operation
+  ---
+  duration_ms: 1176.539562
+  type: 'test'
+  ...
+# Subtest: V111 voluntary interruption keeps its real exact stand, three-unit route and stale-result rejection
+ok 4 - V111 voluntary interruption keeps its real exact stand, three-unit route and stale-result rejection
+  ---
+  duration_ms: 60.218309
+  type: 'test'
+  ...
+# Subtest: V111 real failure and return recommend only the next source action, preserving physical legacy IDs and B bytes
+ok 5 - V111 real failure and return recommend only the next source action, preserving physical legacy IDs and B bytes
+  ---
+  duration_ms: 235.978927
+  type: 'test'
+  ...
+# Subtest: V111 owner, changed-base, future and unknown-port continuation receipts cannot supply objectives or fragment locations
+ok 6 - V111 owner, changed-base, future and unknown-port continuation receipts cannot supply objectives or fragment locations
+  ---
+  duration_ms: 81.065677
+  type: 'test'
+  ...
+# Subtest: V111 uses the real603-step doorway stand and only a motor-valid bounded departure before ordinary street clearance
+ok 7 - V111 uses the real603-step doorway stand and only a motor-valid bounded departure before ordinary street clearance
+  ---
+  duration_ms: 4947.8981
+  type: 'test'
+  ...
+# Subtest: V111 cannot use a foreign, wrong-room, wrong-floor or blocked old checkpoint as a side-door departure
+ok 8 - V111 cannot use a foreign, wrong-room, wrong-floor or blocked old checkpoint as a side-door departure
+  ---
+  duration_ms: 6.501517
+  type: 'test'
+  ...
+# Subtest: V111 arrived guide collapses to its real destination and mapped action while options remain accessible and pause/stale hide action advice
+ok 9 - V111 arrived guide collapses to its real destination and mapped action while options remain accessible and pause/stale hide action advice
+  ---
+  duration_ms: 27.828246
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6573.667655

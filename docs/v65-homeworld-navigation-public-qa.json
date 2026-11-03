@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checks": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "settings": true,
+      "justice": true,
+      "map": true,
+      "returnShip": true,
+      "positionPreserved": true,
+      "bounds": {
+        "top": 0,
+        "bottom": 1000,
+        "left": 0,
+        "right": 1440,
+        "height": 1000,
+        "width": 1440
+      }
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "settings": true,
+      "justice": true,
+      "map": true,
+      "returnShip": true,
+      "positionPreserved": true,
+      "bounds": {
+        "top": 0,
+        "bottom": 852,
+        "left": 0,
+        "right": 393,
+        "height": 852,
+        "width": 393
+      }
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "settings": true,
+      "justice": true,
+      "map": true,
+      "returnShip": true,
+      "positionPreserved": true,
+      "bounds": {
+        "top": 0,
+        "bottom": 390,
+        "left": 0,
+        "right": 844,
+        "height": 390,
+        "width": 844
+      }
+    }
+  ],
+  "errors": [],
+  "scope": "Real UI clicks, isolated legacy campaign fixture, three viewport sizes; no player storage touched."
+}

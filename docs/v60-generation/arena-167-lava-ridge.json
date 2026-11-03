@@ -1,0 +1,683 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-167-lava-ridge",
+  "proposalId": "new-lava-ridge",
+  "name": "Corniche basaltique",
+  "workbookStage": "09_STAGES!A31:N31",
+  "workbookLife": "10_VIE_DES_STAGES!A83:N85",
+  "sourceUrls": [
+    "https://store.necaonline.com/blogs/news/174240327-closer-look-predators-series-10-action-figures"
+  ],
+  "loreLimits": [
+    "Original volcanic biome inspired by Lava Planet toy theme; no asserted planet name or fire immunity.",
+    "Fauna deliberately original, not a named canonical creature."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "Native transparent PNG6frame sprite sheet1536x1024 with exactly3columns2rows,512squarecells. ORIGINAL SMALL rocky-biome lizard, not a claimed official Predator species. Anatomically plausible quadruped: four shortlegs, five smalltoes perfoot, low elongatedbody, stout neck, onehead, shortcurvingtail containedclose tobody, darkcharcoal pebble scales withsmall rust-colored spots. No wings, no horns, no extraheads, no magicalflames. Sixsequential quiet idleposes sideview facingleft:1crouchedstill,2headraises,3headturnsslightly,4smallfrontfootadjustment,5headlowers,6settles withtailtipcurled. Keep same animal anatomy andscale allsix; maximumspritewidth320px andheight200px, huge transparentmargin100px allaround. Allfourfeet andentiretail fullyvisible everyframe, groundbaseline localy360. Detailed handpainted cinematic sprite, mutedwarm rimlight. No terrainpatch, no shadow, nofog, nopeople, no background, no textorlabels, no gridlines, genuinealpha transparency.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-819ac63a-99be-4674-88d3-1554419ac163.png",
+      "workspacePath": "work-local/v60/generated/arena-167-lava-ridge/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six poses of original small rocky-biome quadruped: four limbs and one head/tail, coherent scales; not a named canonical creature. Column boundaries follow true gutters to retain complete tail; no bitmap edits.",
+      "anchorKind": "ground-bottom",
+      "frameRects": [
+        [
+          0,
+          0,
+          552,
+          512
+        ],
+        [
+          552,
+          0,
+          488,
+          512
+        ],
+        [
+          1040,
+          0,
+          496,
+          512
+        ],
+        [
+          0,
+          512,
+          552,
+          512
+        ],
+        [
+          552,
+          512,
+          488,
+          512
+        ],
+        [
+          1040,
+          512,
+          496,
+          512
+        ]
+      ],
+      "sha256": "32989ef1d1533116f969d50c260e21c63b788205b0f91a88b704f7af8336c9e7",
+      "bytes": 1585366,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8225682576497396,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            552,
+            512
+          ],
+          "alphaBounds": [
+            52,
+            295,
+            473,
+            152
+          ],
+          "pivot": [
+            317.5,
+            447
+          ],
+          "bodyCenterPivot": [
+            288,
+            447
+          ],
+          "opaquePixelCount": 42237,
+          "contentSha256": "830ab1dba202234956f99f37cbde672ff234fa9a28a64ba4c1a9642861db188d",
+          "margins": [
+            52,
+            295,
+            27,
+            65
+          ]
+        },
+        {
+          "rect": [
+            552,
+            0,
+            488,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            211,
+            405,
+            242
+          ],
+          "pivot": [
+            234,
+            453
+          ],
+          "bodyCenterPivot": [
+            252,
+            453
+          ],
+          "opaquePixelCount": 44106,
+          "contentSha256": "03f37501c3d81dbed697d33955742008c5df55c484b6b1d6e6f162e7eae2c858",
+          "margins": [
+            50,
+            211,
+            33,
+            59
+          ]
+        },
+        {
+          "rect": [
+            1040,
+            0,
+            496,
+            512
+          ],
+          "alphaBounds": [
+            59,
+            242,
+            386,
+            214
+          ],
+          "pivot": [
+            228.5,
+            456
+          ],
+          "bodyCenterPivot": [
+            251.5,
+            456
+          ],
+          "opaquePixelCount": 43833,
+          "contentSha256": "1f0aa220ee162c013b6d06e5ec5217d93b0bee41d806d20099d21c9739fec269",
+          "margins": [
+            59,
+            242,
+            51,
+            56
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            552,
+            512
+          ],
+          "alphaBounds": [
+            59,
+            168,
+            460,
+            161
+          ],
+          "pivot": [
+            273.5,
+            329
+          ],
+          "bodyCenterPivot": [
+            288.5,
+            329
+          ],
+          "opaquePixelCount": 43256,
+          "contentSha256": "ec9546a61e8fa1dd58fe6a9abe85703ad65d51edfa117ae9ae94f210ebd19ab1",
+          "margins": [
+            59,
+            168,
+            33,
+            183
+          ]
+        },
+        {
+          "rect": [
+            552,
+            512,
+            488,
+            512
+          ],
+          "alphaBounds": [
+            27,
+            170,
+            434,
+            155
+          ],
+          "pivot": [
+            242,
+            325
+          ],
+          "bodyCenterPivot": [
+            243.5,
+            325
+          ],
+          "opaquePixelCount": 42300,
+          "contentSha256": "10f6576f6f1629859f461d7c3f2cdc920ac0cf453dc7525c0862e753b05dc275",
+          "margins": [
+            27,
+            170,
+            27,
+            187
+          ]
+        },
+        {
+          "rect": [
+            1040,
+            512,
+            496,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            172,
+            414,
+            155
+          ],
+          "pivot": [
+            237.5,
+            327
+          ],
+          "bodyCenterPivot": [
+            242.5,
+            327
+          ],
+          "opaquePixelCount": 39805,
+          "contentSha256": "2e14781ead990354b674fd7b999f88076462e8839db2ceb0e6979ac5a265d817",
+          "margins": [
+            36,
+            172,
+            46,
+            185
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-02",
+      "prompt": "Native transparent PNG animation sprite sheet1536x1024, exactly6separate SMALL basalt lava-seep props in3columns2rows,512squarecells. All6fullywithincenter60percent ofeachcell, huge80pxtransparentmargins. The SAME low horizontal blackbasalt rockbasin, small shallow orange molten lava patch inside, no waterfall, nolargefountain, no explosivevolcano. Sixsequential states of a slowlava ripple:1smooth orangeband,2smallbubble bulges,3bubbleopens into low ring,4ringflattens,5two tinyripples drift,6smoothagain. Rocksilhouette fixed allsix; only molten surface subtlychanges. Paintedcinematictexture, sideview withslightvisibleinnerbasin, emberorange highlightscharcoalstone, faintcontainedglow butno background wash. Entire basin maximum340pxwide,180pxtall. Actualalpha everywhereoutsideobject, nofloor, noash, nosmoke, nocreatures, nopeople, notextlabels orgrids. Nooffscreenlinks; sixindividualcomplete sprites.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-94894557-7997-4482-9a09-47190b37eb22.png",
+      "workspacePath": "work-local/v60/generated/arena-167-lava-ridge/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six basalt basin sprites: stable rim geometry, distinct low lava ripple/bubble states, no explosive effect.",
+      "anchorKind": "ground-bottom",
+      "sha256": "3072881125544d6e5adcbf7e4859d346a92e81611c8d16c2f4efdce8715b6a20",
+      "bytes": 1713873,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7223809560139974,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            33,
+            227,
+            448,
+            204
+          ],
+          "pivot": [
+            268,
+            431
+          ],
+          "bodyCenterPivot": [
+            256.5,
+            431
+          ],
+          "opaquePixelCount": 69217,
+          "contentSha256": "a7a9333e7bf9a9de2ba7e5f5b6c2f17220ca3d8a4107b4d63f9b2cb0c6f77cef",
+          "margins": [
+            33,
+            227,
+            31,
+            81
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            39,
+            229,
+            448,
+            202
+          ],
+          "pivot": [
+            276.5,
+            431
+          ],
+          "bodyCenterPivot": [
+            262.5,
+            431
+          ],
+          "opaquePixelCount": 69243,
+          "contentSha256": "6215b8fe71dc5cf1ba28a9544a12432395c38dcd3b8aaa9cc91d5a1fe8f7f2f5",
+          "margins": [
+            39,
+            229,
+            25,
+            81
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            32,
+            229,
+            446,
+            202
+          ],
+          "pivot": [
+            265.5,
+            431
+          ],
+          "bodyCenterPivot": [
+            254.5,
+            431
+          ],
+          "opaquePixelCount": 69357,
+          "contentSha256": "0a7fa057b229366b9641c689ded2871c56a43acf99e63542509c7a6e8d9890ef",
+          "margins": [
+            32,
+            229,
+            34,
+            81
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            33,
+            156,
+            447,
+            202
+          ],
+          "pivot": [
+            267,
+            358
+          ],
+          "bodyCenterPivot": [
+            256,
+            358
+          ],
+          "opaquePixelCount": 69293,
+          "contentSha256": "7511b21f952470a8b60673d2952b893d33ca6d3a824f7f1a08a01aae251cbc90",
+          "margins": [
+            33,
+            156,
+            32,
+            154
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            35,
+            155,
+            448,
+            201
+          ],
+          "pivot": [
+            270.5,
+            356
+          ],
+          "bodyCenterPivot": [
+            258.5,
+            356
+          ],
+          "opaquePixelCount": 68985,
+          "contentSha256": "f1c2e11b30f59533f4b97f85ca4b6dd1df82d2928719776d2b7d2162672dacc1",
+          "margins": [
+            35,
+            155,
+            29,
+            156
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            32,
+            158,
+            447,
+            200
+          ],
+          "pivot": [
+            265.5,
+            358
+          ],
+          "bodyCenterPivot": [
+            255,
+            358
+          ],
+          "opaquePixelCount": 69247,
+          "contentSha256": "66e7cf9408cf9ee590af1cd527859211ff9131d6a3d2b34f07c8d569d5c19e91",
+          "margins": [
+            32,
+            158,
+            33,
+            154
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "life-03",
+      "prompt": "Native transparent PNG6frame animation sprite sheet1536x1024,3columns2rows,512squarecells. One SMALL original alien basaltbridge maintenance counterweight prop, not a canonical machine: squat darkbronze gearhousing on a lowstonefoot, bigexternal three-spoke wheel andshortvertical weighted slidingbar inenclosedframe. Sixcalm statesofmechanism cycling: wheel0,15,30,45,30,15degrees andweight moves3cm upthenbackdown. No hangingcablesoffcell. Samefoundation anddimensions everyframe, original practical mechanicalbridgefixture weatheredbyvolcanicheat withamberedgeglow. Detailedpainted grittycinematic2Dgameart sideview. Nooperator, nocharacters, nofire, nosteam, noelectricattack, nocreatures, nosignage. Tinypropmax300x300pixels centeredinsideeachcell with100pxblankalphaallaround, allpartsfullyincluded. Genuine transparentbackground andholes, nofloorpatch,nocastshadow,no labels/grids. Clear differentwheelposes sixframes.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-428a6f60-9ba0-4e7a-a9e1-e8cc5bc06726.png",
+      "workspacePath": "work-local/v60/generated/arena-167-lava-ridge/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected six original bridge counterweight states: connected slider moves within guide, wheel angle changes, static foundation. Replaces unverified operator with environmental mechanism.",
+      "anchorKind": "ground-bottom",
+      "sha256": "a7afc2bb6d406f5e5da1154f905337267e01acad8a6a1d83d3996ca8b137e3df",
+      "bytes": 2209962,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6207173665364584,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            90,
+            82,
+            367,
+            373
+          ],
+          "pivot": [
+            273,
+            455
+          ],
+          "bodyCenterPivot": [
+            273,
+            455
+          ],
+          "opaquePixelCount": 92941,
+          "contentSha256": "5dde9ba0f1f412e6b03f725a6e71fa54f2f52215089174c43fd32187c15e8e80",
+          "margins": [
+            90,
+            82,
+            55,
+            57
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            82,
+            83,
+            365,
+            374
+          ],
+          "pivot": [
+            264,
+            457
+          ],
+          "bodyCenterPivot": [
+            264,
+            457
+          ],
+          "opaquePixelCount": 92726,
+          "contentSha256": "b089a44237709d4d7b0f3e41fc098501b94fb8bec88d00703751c4a679fbf322",
+          "margins": [
+            82,
+            83,
+            65,
+            55
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            76,
+            83,
+            366,
+            373
+          ],
+          "pivot": [
+            258.5,
+            456
+          ],
+          "bodyCenterPivot": [
+            258.5,
+            456
+          ],
+          "opaquePixelCount": 91798,
+          "contentSha256": "03ed11a03919322516275a1c90fc0b2efe8b8e64fa7d65a6de12c76914e20d40",
+          "margins": [
+            76,
+            83,
+            70,
+            56
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            90,
+            70,
+            367,
+            369
+          ],
+          "pivot": [
+            273,
+            439
+          ],
+          "bodyCenterPivot": [
+            273,
+            439
+          ],
+          "opaquePixelCount": 92198,
+          "contentSha256": "0bacbb23b1dea00915506f258783cdca422389cfe968b729a22b3c81d4985f25",
+          "margins": [
+            90,
+            70,
+            55,
+            73
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            82,
+            72,
+            366,
+            367
+          ],
+          "pivot": [
+            264.5,
+            439
+          ],
+          "bodyCenterPivot": [
+            264.5,
+            439
+          ],
+          "opaquePixelCount": 91078,
+          "contentSha256": "3e44ca9f170f4337a78c3a1255ef7c2ade22b4615cc8e4755f9ea0bf157d417d",
+          "margins": [
+            82,
+            72,
+            64,
+            73
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            76,
+            71,
+            366,
+            368
+          ],
+          "pivot": [
+            258.5,
+            439
+          ],
+          "bodyCenterPivot": [
+            258.5,
+            439
+          ],
+          "opaquePixelCount": 92360,
+          "contentSha256": "b359de1741ddc0f4314c6c2d3eca68dcc7438ed8441e124f94e34607e7baa414",
+          "margins": [
+            76,
+            71,
+            70,
+            73
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case stylized-concept. Empty landscape depth backdrop1536x1024 for a2D side-view Predator fightinggame stage, original volcanic biome inspired by Kenner Lava Planet toy theme, not a named official planet. Obsidian cliffs and monumental basalt columns form a horizontal valley, distant lava river low behind darkrock ridges, desaturated rust atmosphere, deepcopper orange glow in narrow distantcracks. Low horizon around70percent, shallowtheatricaldepth; a broaddark ledge backs bottom20percent where separateplayable floorwilloverlay. Open centralspace, basalt bridge distant atupperright withemptymaintenancealcove, smallrock ledgeleft reserved for tinyseparate animated wildlife. Detailed handpainted cinematicgameart, realistic rockmaterial andscale, sombre blackgrey amber palette, no oversaturatedred. NO people, creatures, flyingrocks, eruptinglava, flame, ashparticles, animatedprops, signage,text, logos, orHUD. Static rockonly withcalm distant lava, no deep perspective road, no playablefightersbaked.",
+      "transparentRequested": false,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-0fdc79df-78d4-4de4-889f-98381ff2ddbc.png",
+      "workspacePath": "work-local/v60/generated/arena-167-lava-ridge/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected empty volcanic valley: horizontal ledge and distant bridge, no moving actors or effects embedded. Biome composition original, not an asserted canonical planet.",
+      "anchorKind": "ground-bottom",
+      "sha256": "6aa0c502bca3ff6f6bab28935cffb89a11dfb78bae0a89396567b12e917c7134",
+      "bytes": 2588488,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "artStatus": "complete-4-native-pngs-awaiting-runtime-qa"
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_STATIC_GALLERY_REVIEW_ONLY",
+  "gallery": {
+    "path": "production/native-open-gallery-20261102.html",
+    "bytes": 43419,
+    "sha256": "25f20db37d72d50f4c447a5eae5e0c134e84c318b079a36112751aae24ed3042"
+  },
+  "onlyRepositoryFileWritten": "production/native-open-gallery-20261102.html",
+  "pinnedProductionDirectoryWritten": false,
+  "priorFrozenProductsWritten": false,
+  "gitUsed": false,
+  "originalPNGPixelOperations": [],
+  "nativeNewPNGCount": 39,
+  "candidateFiles": 37,
+  "retainedRejectedFiles": 2,
+  "inheritedV113LinksSeparate": 4,
+  "visibleStates": "Candidates NON ADMIS, exact rejection statuses and source cells retained;1candidate variant per newHW target, not20",
+  "browser": {
+    "engine": "Chromium",
+    "url": "http://127.0.0.1:3122/production/native-open-gallery-20261102.html",
+    "checksPassed": 16,
+    "newPNGsLoaded": 39,
+    "pageErrors": 0,
+    "consoleErrors": 0,
+    "requestFailures": 0,
+    "httpErrors": 0,
+    "externalRequests": 0,
+    "filters": "family,source/ID,37candidatesvs2rejects,emptyresult,reset,background",
+    "mobileNoHorizontalOverflow": true,
+    "rawProofPath": "/workspace/native-gallery-review-20261102/final/browser-proof.json",
+    "rawProofSha256": "52f75cfbc08e9c90c46ac391900ce8e80499ecf7456022cc67932c2a04d9153a"
+  },
+  "capture": {
+    "path": "/workspace/native-gallery-review-20261102/final/gallery-desktop.png",
+    "sha256": "48ad8212a4cf5d93eb15b78ca6148e4fbdbeee486a83cacd862ac466fd5e7f98",
+    "actuallyOpenedWithViewImage": true,
+    "sourcePNGsEdited": false
+  },
+  "v114VerifyAfterCreation": {
+    "status": "PASS_STRUCTURE_SOURCES_NATIVE_BYTES_NOT_ADMISSION",
+    "rawPath": "/workspace/native-gallery-review-20261102/v114-verify-after.stdout.json",
+    "sha256": "5eb56bca0e29581ad46a9e3a568425edf47beb724b57a6faffaf37b1fabe845c",
+    "readOnly": true
+  },
+  "frozenProductSnapshots": [
+    {
+      "path": "production/YAUTJA_V114_SUIVI.xlsx",
+      "bytes": 10600088,
+      "sha256": "1367ac28a95c1ecf069ee1b5ee84b9438857c28ed5fb1b4e3b7059e4db619240"
+    },
+    {
+      "path": "production/native-open-20261102/source-manifest.json",
+      "bytes": 534565,
+      "sha256": "682a9dc03da5887eaa8816371f2f543ab731dcbf4b0464c9cee1da3b9c044f7e"
+    },
+    {
+      "path": "production/native-open-20261102/workbook-qa.json",
+      "bytes": 4922,
+      "sha256": "7f618000e36af0449bb834ab6e7f415f300b0f1abfbb45a9e95634d224c2894d"
+    }
+  ],
+  "humanValidated": false
+}

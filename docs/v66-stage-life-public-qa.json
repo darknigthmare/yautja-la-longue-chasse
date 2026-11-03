@@ -1,0 +1,505 @@
+{
+  "status": "PASS",
+  "surface": "full-application-public-roster-stage-duel-flow",
+  "checkedAt": "2026-10-01T03:46:19.598Z",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "version": "V66",
+  "completeV66ThreeStageGate": true,
+  "targets": [
+    "arena-012-balcon-du-roi-de-la-chasse",
+    "arena-036-temple-de-la-double-lune",
+    "arena-069-salle-du-porte-cendres"
+  ],
+  "cases": [
+    "desktop",
+    "reduced",
+    "mobile",
+    "retry"
+  ],
+  "sourceHashes": {
+    "app/game/data/pitStageLifeV66.json": "e0c6af6d78913976032c78b6f545d5af9b1d07f70bc0cea1b444b721ac938c34",
+    "app/game/pitStageLifeV66.ts": "f022e733138e31a40729116ba1701ee7981814937fb7f2903dfd176ccfd11ced",
+    "app/game/pitStageLifeDirectorV60.ts": "a7626f142ad4fd599a638443882f70385a9c513bb53c071f9713ff4533f2eaab",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/PitCanvas.tsx": "f7bf24d0197a8e12b2e94f1f90fbb4ef4fda574cf96f28736ad27c62592a2b27",
+    "scripts/verify-pit-stage-life-v66.mjs": "b759060a4fd820f18c4075bd2cd46999950e269360c1d1d84a2bcb0d49a15a1a"
+  },
+  "checks": [
+    {
+      "name": "public-movement-reveals-background",
+      "before": [
+        {
+          "x": 300,
+          "y": 0
+        },
+        {
+          "x": 660,
+          "y": 0
+        }
+      ],
+      "after": [
+        {
+          "x": 154.3,
+          "y": 0
+        },
+        {
+          "x": 815,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "name": "arena-012-balcon-du-roi-de-la-chasse-pause",
+      "frame": 1471,
+      "nativeFrames": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "arena-012-balcon-du-roi-de-la-chasse-application",
+      "loadedPaths": [
+        "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-01.png",
+        "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-02.png",
+        "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-03.png"
+      ],
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-01.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bag": [
+        {
+          "eventId": "ambient-02",
+          "firstObservedRoundFrame": 300
+        },
+        {
+          "eventId": "ambient-01",
+          "firstObservedRoundFrame": 1448
+        },
+        {
+          "eventId": "ambient-03",
+          "firstObservedRoundFrame": 2539
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "arena-036-temple-de-la-double-lune-application",
+      "loadedPaths": [
+        "/game/sprites/v66/pit-life/arena-036-temple-de-la-double-lune/ambient-01.png",
+        "/game/sprites/v66/pit-life/arena-036-temple-de-la-double-lune/ambient-02.png",
+        "/game/sprites/v66/pit-life/arena-036-temple-de-la-double-lune/ambient-03.png"
+      ],
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v66/pit-life/arena-036-temple-de-la-double-lune/ambient-01.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v66/pit-life/arena-036-temple-de-la-double-lune/ambient-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v66/pit-life/arena-036-temple-de-la-double-lune/ambient-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bag": [
+        {
+          "eventId": "ambient-01",
+          "firstObservedRoundFrame": 358
+        },
+        {
+          "eventId": "ambient-02",
+          "firstObservedRoundFrame": 1349
+        },
+        {
+          "eventId": "ambient-03",
+          "firstObservedRoundFrame": 2280
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "arena-069-salle-du-porte-cendres-application",
+      "loadedPaths": [
+        "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-01.png",
+        "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-02.png",
+        "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-03.png"
+      ],
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-01.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bag": [
+        {
+          "eventId": "ambient-01",
+          "firstObservedRoundFrame": 180
+        },
+        {
+          "eventId": "ambient-02",
+          "firstObservedRoundFrame": 1347
+        },
+        {
+          "eventId": "ambient-03",
+          "firstObservedRoundFrame": 2405
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "reduced-pause",
+      "frame": 2414,
+      "nativeFrames": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "reduced-motion",
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-01.png",
+          "seen": [
+            0
+          ]
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-02.png",
+          "seen": [
+            0
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-03.png",
+          "seen": [
+            0
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "mobile-landscape",
+      "viewport": [
+        844,
+        390
+      ],
+      "documentWidth": 844,
+      "canvas": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390
+      }
+    },
+    {
+      "name": "mobile-portrait",
+      "viewport": [
+        390,
+        844
+      ],
+      "documentWidth": 390,
+      "canvas": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "name": "mobile-pause",
+      "frame": 2313,
+      "nativeFrames": [
+        5,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mobile-native-events",
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-01.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v66/pit-life/arena-069-salle-du-porte-cendres/ambient-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true,
+      "limitation": "Chromium emulation, not a physical device."
+    },
+    {
+      "name": "native-png-retry-503",
+      "blockedPath": "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-02.png",
+      "intentionalFailures": 1,
+      "loadedPaths": [
+        "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-01.png",
+        "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-02.png",
+        "/game/sprites/v66/pit-life/arena-012-balcon-du-roi-de-la-chasse/ambient-03.png"
+      ],
+      "realActorsAfterRetry": 3,
+      "savedBytesUnchanged": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "arena-012-balcon-du-roi-de-la-chasse-selection.png",
+      "sha256": "f9b2aa6f312410fe5dea734fc451eb78e65579f28e488308c676c1d90dcb6877",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-012-balcon-du-roi-de-la-chasse-rest.png",
+      "sha256": "f646fc84a22d5f0c3619f8db6b1a0df7cff74474bf5e66aeb859ff3a968c9730",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-012-balcon-du-roi-de-la-chasse-fighters-apart.png",
+      "sha256": "9a94366602a9efb89a1a64a4077d53929f68d7a23ac29e32abb53fceb325959c",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-012-balcon-du-roi-de-la-chasse-paused.png",
+      "sha256": "b70477029a36a89223ef61731b9afdd848c19d3eb68ec3075d7b94238fa8cf9d",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-012-balcon-du-roi-de-la-chasse-event-0.png",
+      "sha256": "cf3b6944588571a28dce1f219c00c27ed62464f961c459faa7d5407924f65f85",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-012-balcon-du-roi-de-la-chasse-event-1.png",
+      "sha256": "9d5a632d228ae2fb9e94b0b80590daaada43224b0a0851fe83705d99cdb33f6d",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-012-balcon-du-roi-de-la-chasse-event-2.png",
+      "sha256": "6bbd085a4c183859ee19ec72bd135c9451368a121b449202bf38bca7c3b23f39",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-036-temple-de-la-double-lune-selection.png",
+      "sha256": "dc1eff8708b69088d5a9d6bf68eaf672af57c04638bc9c0a5591bf88d66e75c0",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-036-temple-de-la-double-lune-rest.png",
+      "sha256": "d75854b71fd5a166927fb54d70efa6d65c167a1b6954833afbfc4d206102fd51",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-036-temple-de-la-double-lune-event-0.png",
+      "sha256": "65956d86e92e2535027b72a3ac9508c3b4e9c6f266f3233c70e5b3886ba10c73",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-036-temple-de-la-double-lune-event-1.png",
+      "sha256": "a18beed4c614e926d82ecae3932977fc3c8b915b4ed43a20dd6941d68b332d6b",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-036-temple-de-la-double-lune-event-2.png",
+      "sha256": "1b33824e933fc2ed5c05914674040b928a6d275fb89c8ccc098c2000ca3e44ee",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-069-salle-du-porte-cendres-selection.png",
+      "sha256": "3d83c230dc17059176c3c5768553166b481e93df7e2a6b5cd6d14d936a364851",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-069-salle-du-porte-cendres-rest.png",
+      "sha256": "cf15de75008f44af6ae3558824b316f91d18fbcbb7af237701e383d5b37f75c1",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-069-salle-du-porte-cendres-event-0.png",
+      "sha256": "cb7e85e994e8266da4abe9f6d8999028798db00c026b1ba833c571dddb02c08c",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-069-salle-du-porte-cendres-event-1.png",
+      "sha256": "5e6f8b00d7d2528c99210e808a1e02c9f781f6cee0bc69afe9824d80ca085677",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-069-salle-du-porte-cendres-event-2.png",
+      "sha256": "03f97e3f9f5dcb781ab54bc669462beb6c0a80800800f53e036e910e53b55764",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "reduced-paused.png",
+      "sha256": "ed63098c5b2cc939b3bdeb8b8d843acda5c465cfe3bc7bb4dbb541d4cef512b3",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "reduced-motion.png",
+      "sha256": "5fd92b607c60fea307684232ebda31034f138a7fbe4fd0902a44b077990e332a",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "mobile-landscape.png",
+      "sha256": "e264e7eaa64aa7ea3922cf39e7663d0f02ffb543203c55bcaf010824248edbef",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "mobile-portrait.png",
+      "sha256": "823599dad5b171efe5bd83da62188a036b792d439db7b2ff796b4705fec85ecc",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "mobile-paused.png",
+      "sha256": "f541d369100a2cfd7cf09e382b316f9b8c3422aa3034ce1ddf9311f3c48f0e40",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "native-png-503-blocked.png",
+      "sha256": "152bc0347f9df2a75001e6ba214917efe810fc55c40be9ae67a8a00cfb63d632",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "native-png-retry-restored.png",
+      "sha256": "f646fc84a22d5f0c3619f8db6b1a0df7cff74474bf5e66aeb859ff3a968c9730",
+      "visualReview": "pending-separate-image-inspection"
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "failedRequests": [],
+  "limitations": [
+    "Browser timer control advances the normal simulation; no combat state or schedule was injected.",
+    "The compositor/alpha/native-pixel gates remain separate.",
+    "Screenshots require explicit independent visual review.",
+    "Mobile checks emulate Chromium, not physical devices."
+  ]
+}

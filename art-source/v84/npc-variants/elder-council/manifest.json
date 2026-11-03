@@ -1,0 +1,731 @@
+{
+  "role": "elder-council",
+  "requested": 20,
+  "completed": 20,
+  "reference": "/workspace/scratch/41fc0564188e/npc-reference/civic-specialists-spaced-atlas.png",
+  "referenceCell": 5,
+  "anatomyReference": "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg",
+  "basePrompt": "CRITICAL ANATOMICAL PRIORITY. Input image1 is the official Stan Winston Predator1987 mechanical head; use it as the strict reference for facial anatomy, never copy its photo background, logo or watermark. Input image2 is ONLY the civilian role/clothing/rendering reference, and its simplified face must NOT be copied. The new character is unequivocally a cinematic YAUTJA/PREDATOR, not a human-faced fantasy alien: broad rear cranium, deep alien orbital ridges, mottled leathery scales and small facial quills. Show FOUR clearly DISTINCT external fleshy mandibles arranged as TWO upper cheek jaw-lobes with tusks and TWO larger lower jaw-arms curling upward, around a SEPARATE tooth-filled inner mouth. Keep all four external mandibular tips visible and spatially separated. No human nose, human lips, human jaw, two nasal tubes, or mere paired descending fangs. Thick fleshy scalp tendrils, not human hair. BODY three-quarter facing right; HEAD slightly turned toward the spectator in near-frontal three-quarter so every mandible is visible. Neutral alert civic expression with the outer jaw-lobes slightly parted, not roaring. Any head-shape variation in the design must remain within these cinematic Yautja anatomical invariants. Use case: stylized-concept. Asset type: ONE INDIVIDUAL full-body transparent NPC sprite for the Yautja: La Longue Chasse 2D game. Reference image is used ONLY for painterly rendering, anatomy and perspective, not as an image to copy or a sheet to reproduce. Generate exactly ONE newly designed adult Yautja, no extra characters. Realistic intricately hand-painted 2D game character, subtle linework, tactile weathered bronze, leather and woven fabric. Slight view from above, three-quarter facing RIGHT, standing idle or light work gesture. Correct adult Yautja anatomy with four mandibles around toothed mouth, alien brow, mottled scaly hide, dreadlock tendrils, alien clawed hands and bare clawed feet. Entire body and held props fully visible. Keep hairstyle, head shape, body silhouette, garment construction, accessories and pose visibly unique. Genuine transparent alpha outside character: no ground, no terrain, no cast shadow, no backdrop or environment, no text or UI, no labels, no watermark, no duplicate, no human face, no extra limbs. Neutral diffuse illumination. Framing: zoom out; character including hair and toes occupies at most82% of height with at least8% blank transparent margin above highest hair and below lowest claw, and generous side margins. ROLE: ELDER OF THE YAUTJA COUNCIL. Use the bottom-right figure (cell5 of the 3columns x2rows) in input2 only as the civilian ceremonial clothing and painted sprite style reference. Produce ONE newly designed experienced local council elder, an individual member of a deliberative body, not a monarch or a clone of the story king. Must feel mature or elderly through weathered skin, healed scars, accumulated earned rank marks and visibly distinct ceremonial garments; always retains unmistakable cinematic Predator/Yautja anatomy. No crown, no throne, no royal guards, no scenes or other figures. Full body head to claws with generous transparent margins. ",
+  "entries": [
+    {
+      "number": 1,
+      "path": "elder-council-01.png",
+      "design": "INDIVIDUAL 01: a very old tall lean council elder with parchment-grey freckled hide, broad flat rear skull and a nicked upper mandibular tusk. Waist-long sparse silver scalp tendrils held with three heavy bronze cylinders, no head crown. Three long narrow rank stoles over a charcoal and muted purple split robe; large stone-and-bronze collar with a single central square. Holds a thin closed council tablet against one side and extends the other open clawed hand in calm deliberation. Narrow upright silhouette, visible bare clawed feet.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-18889233-579f-408d-8943-f35f9a51995b.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2430532,
+      "sha256": "8d8812092ef35e9b1092b3d055bb9f440089ac839b99f55bca9a489224ae0ba1",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        37,
+        1010,
+        1514
+      ],
+      "fully_transparent_pixels": 891527,
+      "githubBlobSha": "bc761e67d17dce082000dbc9609bdd54e7a7e83b",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        145,
+        40,
+        963,
+        1496
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 2,
+      "path": "elder-council-02.png",
+      "design": "INDIVIDUAL 02: a short extremely broad elderly councillor with a heavy powerful torso and old ochre spotted hide, wide round rear cranium, dense short charcoal-grey tendrils tied in two low bundles. Layered sleeveless burgundy coat with broad ivory shoulder panels, a thick belt of five unequal bronze rank medallions. Both hands rest on top of a short blunt bronze walking staff planted beside the leading foot. Sturdy bowed-leg stance and large bare clawed feet.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-7470ec39-aad4-41b4-a013-17f4c1f15671.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2617451,
+      "sha256": "86073ff7739459320ed467c4a920c3e8948af6d240342a92212583c89e457f17",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        37,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 830791,
+      "githubBlobSha": "d6f1e2586784a111f2564ffadb234cf6f397bd77",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        148,
+        88,
+        900,
+        1467
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 3,
+      "path": "elder-council-03.png",
+      "design": "INDIVIDUAL 03: a formidable mature female council elder, statuesque muscular shoulders and narrow waist, deep green mottled hide, sharply ridged but broad cinematic alien head, long black and white tendrils drawn into a high loop behind the skull. A diagonal ivory mantle over a fitted dark teal robe, only one large bronze shoulder ornament and a long double chain of ancestral seals. Holds an open two-leaf council docket at waist height as she reads. No human face or breasts exposed.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-6433de11-49d5-450e-9176-d96671e05045.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2270372,
+      "sha256": "2ca29562c1acd6bf629fd6b77405c8f6454ad1d46868371aa42081b22fd6eeb7",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        33,
+        1012,
+        1516
+      ],
+      "fully_transparent_pixels": 966530,
+      "githubBlobSha": "0a5a631d6ba992745613fbc86574c882e2e30a98",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        219,
+        37,
+        862,
+        1487
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 4,
+      "path": "elder-council-04.png",
+      "design": "INDIVIDUAL 04: an elderly very slender council mediator with a slightly bent attentive stance, warm rust-speckled skin, weathered broad brow, sparse thick grey tendrils just to shoulders. Long plain plum robe with a short square bronze-trimmed cape, many small repair patches and one long vertical ivory panel. Carries a ring of three large archival keys low in one hand while the other raises one clawed finger in measured discussion. Distinct long narrow silhouette.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-1c3b39f2-339d-40d0-91d9-b1733d095285.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2406719,
+      "sha256": "3f48b04fc32495ba31ee6a2f099081d4af8a1814536f28a80f950f470fb9e456",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        63,
+        1012,
+        1502
+      ],
+      "fully_transparent_pixels": 942559,
+      "githubBlobSha": "f04dec87f81bfdd512b264415dd249a0ed8cacc6",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        200,
+        72,
+        850,
+        1497
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 5,
+      "path": "elder-council-05.png",
+      "design": "INDIVIDUAL 05: a massive older councillor with barrel chest, pale silver-and-black hide, four broad fleshy external jaw lobes, thick silver tendrils in a wide low fan. Heavy indigo woven shawl crossing the chest in two layers, ivory short under-tunic, layered bronze wrist rings and several hanging octagonal experience badges. Presents a small round sealed bronze box with both hands extended slightly forward. Broad feet planted apart, no weapon.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e92e8ff5-f579-45fc-b966-066c87d33069.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2538780,
+      "sha256": "4bfdc2cf3a66485222e4984cc1f3a86c18f6204bfd38c3804fb3cb6496d25820",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        35,
+        978,
+        1514
+      ],
+      "fully_transparent_pixels": 889395,
+      "githubBlobSha": "5c6e62bd516ba4d2148301019e95ea514969a99b",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        199,
+        40,
+        845,
+        1506
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 6,
+      "path": "elder-council-06.png",
+      "design": "INDIVIDUAL 06: an elderly female Yautja historian on the council, compact and strong with dark umber speckled hide and one healed scalp scar, elongated rear cranium but cinematic broad face. A few very thick ash-white scalp tendrils over one shoulder. High-collared sleeveless robe of faded sage with a long purple shoulder sash and a three-disc bronze necklace. One arm cradles an old folded council cloth while the other holds a small teal voting token. Thoughtful dignified stance.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-5da97085-c5ce-424d-b78c-ad6c4236e60c.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2415477,
+      "sha256": "843c3c6d1ae9bf8971fc4e0a1b59c9e707e601b98a30f5fdd3748fb8fb00de6b",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        40,
+        1010,
+        1516
+      ],
+      "fully_transparent_pixels": 942646,
+      "githubBlobSha": "e354334aa10ef8a4b777b2311d16caa347ee251b",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        207,
+        80,
+        901,
+        1482
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 7,
+      "path": "elder-council-07.png",
+      "design": "INDIVIDUAL 07: a tall broad-shouldered scarred veteran council elder, muscular but aged, gold-green spotted scales, heavy orbital ridges, long dark tendrils silver at their tips gathered at nape. Short dark purple sleeveless vest over an ivory pleated robe, an asymmetrical broad brass sash and four large carved rank tags. One hand holds a blunt staff with a hollow triangular top, other hand relaxed beside the hip. No battle armor or crown, experienced civic authority.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-b0f85874-43de-4ef9-b512-ac4597c28077.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2567996,
+      "sha256": "932910f8549eb47565add74cc6c73cb4943160ac9aa3d82ddd30bf744a4d6cd3",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        23,
+        1010,
+        1512
+      ],
+      "fully_transparent_pixels": 862908,
+      "githubBlobSha": "fe05b4c077434d0eabe42fbba6eaf2093df18318",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        69,
+        100,
+        898,
+        1479
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 8,
+      "path": "elder-council-08.png",
+      "design": "INDIVIDUAL 08: a slim very old councillor with a slightly stooped back, pale weathered mottled skin, broad flat skull, widely separated four mouth mandibles and thick long silver tendrils parted into two tails. A deep aubergine robe with an oversized soft cowl resting behind the neck, bronze-bordered sleeves and three short embroidered cloth panels. Both hands open at waist level in a conciliatory gesture, no handheld object; small rectangular teal council docket in a side case.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-5af42a1f-ad80-4490-a403-c98a0f77245f.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2281888,
+      "sha256": "4f8fa5088f15ad5237ad585a0ca754b102398e35d65711a51be4d1fbb43becf6",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        67,
+        1004,
+        1514
+      ],
+      "fully_transparent_pixels": 948321,
+      "githubBlobSha": "4bb2037ad8b37f88f9dbd5924a80ae812f9942c0",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        203,
+        76,
+        947,
+        1479
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 9,
+      "path": "elder-council-09.png",
+      "design": "INDIVIDUAL 09: a robust elderly female councillor with strong legs and charcoal-speckled terracotta hide, wide short head with blunt cranial ridges, shoulder-length black tendrils and individual ivory beads. A calf-length dark teal coat with angular bronze fastenings over a purple side-split skirt, many thin rank chains crossing the chest. Holds an upright bronze-framed circular council seal in the left hand and supports it with the right. Broad stable stance.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-e8640879-26d6-4773-8e0d-2e2c43e61ee9.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2453276,
+      "sha256": "9e08f9821c4a11bb64d6d7b8287e47093ef4da0314b4152bc389e582c01659ab",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        37,
+        1010,
+        1516
+      ],
+      "fully_transparent_pixels": 881559,
+      "githubBlobSha": "42ab720d7fcc9d90a5a5dd279f7e37c7eb3c1ecd",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        197,
+        54,
+        926,
+        1497
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 10,
+      "path": "elder-council-10.png",
+      "design": "INDIVIDUAL 10: an imposing tall elder with narrow hips and very wide upper torso, grey-green old hide, long rear skull crest within Yautja anatomy and two pale healed brow scars. Silver scalp tendrils swept to one side held by a flat bronze clasp. A sleeveless charcoal robe with a heavy purple drape on only the left shoulder, wide hammered bronze torc and ivory hanging rank cords. Holds a closed heavy teal law codex under one arm; free hand laid over chest in formal greeting.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-9b0882a9-c635-4f06-a483-c3dc7001c071.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2598061,
+      "sha256": "f90caefe6d7c1ed0e0081ae7123414d57347f9a8e6ab2dc620511e0646af2310",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        41,
+        39,
+        976,
+        1514
+      ],
+      "fully_transparent_pixels": 807287,
+      "githubBlobSha": "c0d6080f02bb517ff31ca5c99f7b56ebf18e8f7e",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        209,
+        43,
+        933,
+        1482
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 11,
+      "path": "elder-council-11.png",
+      "design": "INDIVIDUAL 11: a short ancient council speaker with stocky weathered physique, yellow-brown mottled scales, deep black eye sockets under a broad ridged skull, coarse grey tendrils cropped to uneven shoulder length. A simple ivory tunic under a dark purple mantle, thick red-brown sash and three very large rectangular ancestral medals. Holds a bronze speaking baton horizontally in both hands at stomach level. Bare clawed feet, deliberate balanced posture.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "githubBlobSha": "2a22aea6cae4ddd3b573f86eaefaf713704d32fd",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2624154,
+      "sha256": "e20785aad9e3873b66ca2f94ab428735d2fcad4e93bf87717af7d7b2018a0b1f",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        45,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 811826,
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        157,
+        48,
+        933,
+        1494
+      ],
+      "edgeAlphaMax": 1,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-f574c76d-b613-459b-9596-23f4e31bb5c0.png"
+    },
+    {
+      "number": 12,
+      "path": "elder-council-12.png",
+      "design": "INDIVIDUAL 12: a tall lean elderly female council arbiter with slate-grey spotted skin and a broad long cranium, an aged four-mandibled face with a slightly uneven lower tusk, silver scalp tendrils tied into a high compact bundle. A fitted plum long vest over a pale wrap skirt with a short geometric bronze shoulder cape and a pendant made of two concentric squares. Holds a small closed council case in one hand and an exposed smooth teal token in the other, comparing them.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-a47e56fe-dbf9-4146-ab29-ca9b306a31da.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2238502,
+      "sha256": "3336e5e6c9d535dce008a519b88a68318b8a1b40bde76d884138033c0ad50e8c",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        24,
+        1012,
+        1509
+      ],
+      "fully_transparent_pixels": 994882,
+      "githubBlobSha": "ef9061e853d80c5285f5624273a39606200ce924",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        239,
+        28,
+        869,
+        1506
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 13,
+      "path": "elder-council-13.png",
+      "design": "INDIVIDUAL 13: an aged but huge heavily built council elder, dark green-black hide, broad compact head with deep thick orbital ridges, thick black tendrils interwoven with a few ivory cylinders and tied low. Heavy brown-purple ankle-length split coat with bronze scale-like collar ornament and two wide off-white rank ribbons. Both hands support a shallow rectangular tray holding three distinct carved council stones. Solid wide squat stance, complete clawed feet.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-3d182e0e-dc06-4332-b8a8-f6815d1ce0e8.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2807885,
+      "sha256": "86076084dd17cb1b8b2dda7f3ae1a4afed66fa81583881c18339e66a4c1e1b7e",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        25,
+        976,
+        1536
+      ],
+      "fully_transparent_pixels": 743901,
+      "githubBlobSha": "83e95f7dc396d14d0ed4d55845bf59f9d3c2b15a",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        141,
+        61,
+        925,
+        1493
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 14,
+      "path": "elder-council-14.png",
+      "design": "INDIVIDUAL 14: a very slender ancient council record-keeper with long limbs and pale spotted rust skin, broad ridged head and narrow inner tooth-filled mouth surrounded by four separate external mandibles. Long sparse grey tendrils braided together only at the tips using leather bands. A long sage robe with plum cuffs, asymmetrical knee-length ceremonial shawl and five tiny bronze sealed cylinders hanging at the belt. Supports a broad unfolded council parchment-like panel with one hand while pointing at it with the other.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c8fe8545-0004-4558-b272-e53de91ee9fc.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2297611,
+      "sha256": "b740d3073ec3f19ef4a85271a55b1b65f80231d0cebc423c63b35b8d56f275d3",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        63,
+        45,
+        984,
+        1514
+      ],
+      "fully_transparent_pixels": 981795,
+      "githubBlobSha": "7a5912a5b8c840def2227c55b462ee49e1941223",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        199,
+        70,
+        963,
+        1472
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 15,
+      "path": "elder-council-15.png",
+      "design": "INDIVIDUAL 15: a stocky older female councillor, broad shoulders and athletic calves, light ochre hide heavily mottled black, slightly arched rear cranium and short thick tendrils fanning down the back. Structured violet sleeveless tabard with big ivory side panels, large square bronze medallion and a low belt with three carved wooden plaques. One hand cups an old spherical council token, the other reaches gently toward an unseen interlocutor. Upright engaged silhouette.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-5605d1e5-8935-4c39-b945-8ae95db06358.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2417558,
+      "sha256": "b1e6723542494634ae456941268486d2508f7ebc02ec51b042edc5d524489808",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        65,
+        68,
+        994,
+        1479
+      ],
+      "fully_transparent_pixels": 913894,
+      "githubBlobSha": "857045cf318bc65c9e028a0b0ac096d589e154fb",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        189,
+        71,
+        961,
+        1477
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 16,
+      "path": "elder-council-16.png",
+      "design": "INDIVIDUAL 16: a tall mature elder of many campaigns, heavy scarred shoulders, weathered ash-grey hide with cream mottling, broad face and long tapered rear skull. Numerous silver tendrils fall to chest in three thick grouped locks. A long dark teal robe under a short purple geometric mantle, one large flat bronze rank plate across sternum and wrapped forearms. Carries a closed slim scroll cylinder at his side and braces the other palm against a bronze walking staff with a rounded disc top. Calm civic posture.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-94f63012-a7f8-4162-960a-75b5927b5ace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2643567,
+      "sha256": "c2aea75b9bf3c9ed336b327ee18c76fdbfd49d8b68762e419b4fedf1d90637d2",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        17,
+        1010,
+        1494
+      ],
+      "fully_transparent_pixels": 822224,
+      "githubBlobSha": "f21f1a293993a4531d603a89036f5a5dbc205d8e",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        145,
+        55,
+        939,
+        1490
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 17,
+      "path": "elder-council-17.png",
+      "design": "INDIVIDUAL 17: a compact ancient female council elder with rounded powerful torso and umber-grey spotted scales, deeply textured orbital ridges, white-and-charcoal scalp tendrils just below shoulders fastened with three dark stone clips. An ivory shawl fully draped across both shoulders, plum pleated long tunic and a belt of asymmetric bronze council seals. Holds a closed teal voting folio vertically against the abdomen, both hands resting on its top edge. Reserved patient stance.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-aa93a850-6247-4261-bf08-528c069ed524.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2457703,
+      "sha256": "31ba1826f904adf7dc2779d6a09bcdbc085969b49f6c1a030680f023d36760ac",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        27,
+        56,
+        972,
+        1507
+      ],
+      "fully_transparent_pixels": 890907,
+      "githubBlobSha": "346efa03200c8ec76941d5e9e0132037393f3e7f",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        195,
+        59,
+        837,
+        1504
+      ],
+      "edgeAlphaMax": 0
+    },
+    {
+      "number": 18,
+      "path": "elder-council-18.png",
+      "design": "INDIVIDUAL 18: a lanky elder council assessor with hunched attentive shoulders, sand-grey spotted hide, a low wide alien brow and healed shallow cheek scars without losing any mandible, thick long tendrils bundled entirely over the right shoulder. A simple dark violet sleeveless robe with diagonal bronze-edged sage sash and a double necklace of old circular ranks. Turns one palm upward in explanation while the other holds a small bronze rectangular tally slate down near hip. Legs apart in conversational stance.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-bb880f3c-4b6d-4f9c-87cd-3ef254ef76f2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2252164,
+      "sha256": "a7a24f38921620154ebebd418a000fda04be12866fcfc2cbbf9a0f0f9a85dde5",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        33,
+        1012,
+        1536
+      ],
+      "fully_transparent_pixels": 970252,
+      "githubBlobSha": "ad79995e67464dea463418d1a68fb26ddfc9f2ce",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        202,
+        69,
+        982,
+        1485
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 19,
+      "path": "elder-council-19.png",
+      "design": "INDIVIDUAL 19: a very broad elderly councillor with muscular forearms and green-brown scales, broad rear skull with small irregular facial quills, short charcoal tendrils with wide silver cuffs. A knee-length burgundy coat with one large layered ivory shoulder drape, plain long skirt, heavy bronze angular belt and a necklace of three long ancestral plaques. Carries an octagonal council reliquary low in both hands. Sturdy open stance and exposed strong clawed feet.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-08ff908f-1b41-4bc1-a870-eec513de9488.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2570469,
+      "sha256": "5ef9c9d1744030be4a0c70e636f1261a5d57c5084e15489430e3a89f498fa7f0",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        23,
+        1012,
+        1518
+      ],
+      "fully_transparent_pixels": 854495,
+      "githubBlobSha": "dc20986119f30f45bee574bc8a603f4ed19db83b",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        175,
+        44,
+        879,
+        1490
+      ],
+      "edgeAlphaMax": 1
+    },
+    {
+      "number": 20,
+      "path": "elder-council-20.png",
+      "design": "INDIVIDUAL 20: an exceptionally tall dignified ancient female councillor, slim powerful build, pale silver hide with fine dark mottles and broad cinematic cranial structure, waist-long white scalp tendrils held by a simple thin bronze nape ring. A long rich but worn purple split robe with a wide ivory front panel, asymmetric bronze neck collar and long embroidered teal rank ribbon. One hand holds a thin staff with a blunt open oval top, other presents a square bronze seal. No crown, no throne, no king regalia, quiet thoughtful authority.",
+      "status": "generated",
+      "strictFourMandiblesRequested": true,
+      "source": "/workspace/scratch/41fc0564188e/generated_images/exec-c7686ced-a035-4c62-aaa4-69a8c1478eaa.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 2638185,
+      "sha256": "d7069e3d178f98a084218872c89166dafb55dde38838159e74bd674016c5c6af",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alphaBoundingBox": [
+        0,
+        54,
+        1019,
+        1536
+      ],
+      "fully_transparent_pixels": 826381,
+      "githubBlobSha": "c3c58b2c71c67e2f7c4b96737540145fade46628",
+      "visuallyInspected": true,
+      "finalFaceValidation": "cinematic-four-mandibles-verified",
+      "alphaCoreBoundingBox": [
+        177,
+        63,
+        931,
+        1485
+      ],
+      "edgeAlphaMax": 1
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "version": "V40",
+  "fighterId": "machiko-noguchi",
+  "name": "Machiko Noguchi",
+  "status": "pixel-and-browser-validated",
+  "generator": "OpenAI image_gen intégré",
+  "generatedOutput": "exec-10e34f22-102f-4759-b060-08228e7c0d39.png",
+  "generationAttempts": [
+    "exec-373d0ff6-8ea4-4c3f-a9ad-32deac8c6fff.png",
+    "exec-10e34f22-102f-4759-b060-08228e7c0d39.png",
+    "exec-3487f38e-1053-442f-93a1-36e9192a8b16.png"
+  ],
+  "newSelectedSourcePages": 1,
+  "newDrawings": 4,
+  "acceptedOrientedClips": 2,
+  "completeMovesets": 0,
+  "sourcePreservedByteForByte": true,
+  "officialFidelityCertified": false,
+  "definition": {
+    "fighterId": "machiko-noguchi",
+    "bodyHeightPx": 454,
+    "pageBodyHeightPx": {
+      "machiko-noguchi-high-guard-v40": 454
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "machiko-noguchi-high-guard-v40",
+      "characterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "machiko-noguchi-high-guard-v40",
+          "src": "/game/sprites/v40/pit/machiko-noguchi/high-guard.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha"
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-high-guard-v40",
+              "rect": [
+                332,
+                45,
+                309,
+                469
+              ],
+              "pivot": [
+                133.5,
+                458
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "machiko-noguchi-high-guard-v40",
+              "rect": [
+                924,
+                43,
+                308,
+                472
+              ],
+              "pivot": [
+                132.75,
+                461
+              ],
+              "durationTicks": 60
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-high-guard-v40",
+              "rect": [
+                304,
+                526,
+                307,
+                453
+              ],
+              "pivot": [
+                170.75,
+                448
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "machiko-noguchi-high-guard-v40",
+              "rect": [
+                912,
+                525,
+                292,
+                454
+              ],
+              "pivot": [
+                158.25,
+                449
+              ],
+              "durationTicks": 60
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "machiko-noguchi-high-guard-v40",
+      "label": "Garde haute · deux orientations · quatre dessins",
+      "publicPath": "/game/sprites/v40/pit/machiko-noguchi/high-guard.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "cb1039609eb409aa1237cd1e59dd7f36e8a322ca9fe553cf37ec0d661267a51b",
+      "transparency": {
+        "mode": "alpha"
+      },
+      "status": "integrated",
+      "reviewFrames": [
+        {
+          "pageId": "machiko-noguchi-high-guard-v40",
+          "rect": [
+            332,
+            45,
+            309,
+            469
+          ],
+          "pivot": [
+            133.5,
+            458
+          ],
+          "durationTicks": 60,
+          "index": 0,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-high-guard-v40",
+          "rect": [
+            924,
+            43,
+            308,
+            472
+          ],
+          "pivot": [
+            132.75,
+            461
+          ],
+          "durationTicks": 60,
+          "index": 1,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-high-guard-v40",
+          "rect": [
+            304,
+            526,
+            307,
+            453
+          ],
+          "pivot": [
+            170.75,
+            448
+          ],
+          "durationTicks": 60,
+          "index": 0,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-high-guard-v40",
+          "rect": [
+            912,
+            525,
+            292,
+            454
+          ],
+          "pivot": [
+            158.25,
+            449
+          ],
+          "durationTicks": 60,
+          "index": 1,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "Garde haute OpenAI V40 : deux poses par orientation, fusil tenu à deux mains et canon unique. Aucun miroir.",
+        "PNG alpha natif conservé à l’identique ; rectangles mesurés aux bords alpha nuls pour exclure le bruit lointain du master.",
+        "Fusil/canon légèrement plus massifs que V34 ; fidélité officielle 1:1 non certifiée. Garde basse et réaction au blocage restent absentes."
+      ]
+    }
+  ],
+  "limits": [
+    "Only high guard, two separately drawn poses per facing. No blockstun, guard entry transition, low guard or complete moveset.",
+    "The full master contains alpha=1 specks outside the silhouettes. Explicit measured rectangles omit distant noise and have strictly zero-alpha borders; no pixel threshold or bitmap editing was applied.",
+    "Body alpha is mostly 252/253 rather than 255. This is retained unchanged and must not be silently normalized.",
+    "The rifle and shoulder cannon are slightly bulkier than V34. Native idle/guard visual comparison is required; exact official 1:1 fidelity is not certified.",
+    "Real browser Canvas is checked at native 110px body on light/dark backgrounds. Full in-game guard transitions remain a root release gate."
+  ],
+  "references": [
+    "public/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
+    "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png"
+  ],
+  "promptFiles": [
+    "prompt-initial.txt",
+    "prompt-repair.txt",
+    "prompt-chroma-alternative.txt"
+  ]
+}

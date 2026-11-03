@@ -1,0 +1,40 @@
+{
+  "status": "PASS_VISUAL_CIBLE",
+  "runtimeCommit": "80123ba7ec1f77c266ce8532b9f3d8d45beb7110",
+  "buildId": "lKVX-RK9EV3tJNCiGVJSV",
+  "mode": "compiled-app",
+  "imageFiles": [
+    "k17-01-carried-record-map.png",
+    "k17-01-carried-record-plaque-facts.png",
+    "k17-02-native-carried-plaque.png",
+    "k17-03-outside-parked-record-map.png",
+    "k17-03-outside-parked-record-plaque-facts.png",
+    "k17-04-operation-aware-atlas.png",
+    "k17-05-preserved-point-arrival.png",
+    "k17-06-mobile-recovered-record-map.png",
+    "k17-06-mobile-recovered-record-plaque-facts.png",
+    "k17-07-mobile-terrain-and-record.png",
+    "residents-01-normal-known-place-advice.png",
+    "residents-02-suspended-advice.png",
+    "residents-03-advice-atlas.png",
+    "residents-04-out-of-reach-no-old-speaker.png",
+    "blockedarrival-01-actual-descent.png",
+    "blockedarrival-02-refused-safe-upper-landing.png",
+    "doorway-01-real-free-side-entry.png",
+    "doorway-02-entered-domestic-room.png",
+    "doorway-03-returned-to-safe-anchor.png"
+  ],
+  "scope": "Les19captures de cette recette réelle ont été ouvertes et inspectées. Validation ciblée des parcours Homeworld, sans admission d’art nouveau ni clôture de la ville entière.",
+  "observations": [
+    "K-17 : lieu de découverte et position actuelle restent distincts dans les fiches. La pièce portée puis posée hors du cadrage conserve un marqueur et ses coordonnées. Le terrain reste présent avec le carnet ouvert, sur ordinateur et mobile.",
+    "Atlas : le panneau montre la reprise de l’étude courante et le bon repère conseillé par le résident. Le guide conduit réellement au point conservé ; les captures ne prétendent pas inspecter intégralement chaque étage.",
+    "Résident : le Convoyeur affiche un conseil français naturel vers le Contrôle des quais, sans la description technique du codex. Les sujets et le repère sont visibles normalement puis désactivés pendant la suspension déclarée.",
+    "Escalier du Conseil : la descente jouée et le retour au palier sûr sont visibles. La notification de refus pour charge au palier est réellement lisible dans la capture finale.",
+    "Porte : les captures montrent le point extérieur libre, la pièce intérieure, puis le retour au même ancrage extérieur, avec les positions de cargaison conservées."
+  ],
+  "limits": [
+    "Les placements de cargaison des scénarios Conseil et Porte sont des préconditions déclarées, produites par le modèle réel en1418 et603pas natifs. Ces livraisons préalables ne sont pas comptées comme des actions navigateur.",
+    "La suspension du dialogue utilise un événement window blur synthétique déclaré, reçu par le véritable écouteur. Aucun contrôleur matériel n’est certifié.",
+    "Le parcours K-17 reste une récupération partielle. Il ne termine pas toutes les branches ROLE03 et n’établit ni réparation, ni auteur de l’empreinte, ni lignée ou récompense."
+  ]
+}

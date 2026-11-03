@@ -1,0 +1,14 @@
+$ npm run typecheck
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> yautja-la-longue-chasse@1.0.0 typecheck
+> tsc --noEmit
+
+app/game/enemyTrophyGameplayV18.ts(1,45): error TS2307: Cannot find module '../../public/game/assets/v18/enemy-trophy-gameplay/manifest.json' or its corresponding type declarations.
+app/game/enemyTrophyVisualRegistry.ts(1,37): error TS2307: Cannot find module '../../public/game/assets/v17/enemy-trophies/manifest.json' or its corresponding type declarations.
+app/game/franchiseTrophyRegistry.ts(1,41): error TS2307: Cannot find module '../../public/game/assets/v16/franchise-trophies/manifest.json' or its corresponding type declarations.
+app/game/hunterKitRegistry.ts(1,35): error TS2307: Cannot find module '../../public/game/assets/v14/hunter-kit/manifest.json' or its corresponding type declarations.
+app/game/trophyVisualRegistry.ts(1,32): error TS2307: Cannot find module '../../public/game/assets/v15/trophies/manifest.json' or its corresponding type declarations.
+app/pit-lab/PitAnimationLab.tsx(10,31): error TS2307: Cannot find module '../../public/game/assets/v28/sprite-review/manifest.json' or its corresponding type declarations.
+
+[exit code: 2]

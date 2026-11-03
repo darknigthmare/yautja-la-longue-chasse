@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "civic-hall",
+  "tool": "OpenAI builtin image_gen",
+  "path": "/game/homeworld/v64/civic-hall.png",
+  "sourceNativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-b14b8be7-8da8-472f-b48a-992336bd35f7.png",
+  "sourcePreserved": true,
+  "nativeBytesUnchanged": true,
+  "sha256": "b6421a0a01379ce6fcb869dc0ff4530a1282b9a076f88b8bd19e26cca5bbb29e",
+  "width": 1536,
+  "height": 1024,
+  "drawings": 1,
+  "animationFrames": 0,
+  "alphaOutside": true,
+  "prompts": [
+    {
+      "file": "public-hall-prompt.txt",
+      "prompt": "Use case: stylized-concept. Production HD2D videogame asset: ONE complete isolated Yautja-inspired building with genuinely transparent native alpha. Original lore-compatible urban adaptation, not a canonical named building. Camera MUST be orthographic yawZERO: straight toward the FRONT/SOUTH wall, looking north downward at35degrees. Front wall edges horizontal and vertical, roof depth straight UP screen, top of roof visible, NO exterior sidewall visible, NO diamond isometric corner angle, NO vanishing point. Foundation width570 worldunits, depth340, front facade physically350worldunits high. Door clear opening centered on south front:140worldunits wide×180worldunits tall (larger than a100unit adult), height roughlyHALF of front facade. The rest is a SUBSTANTIAL stone wall band above the door. No stairs, porch or projecting feet; flat door threshold at the same horizontal ground level as the whole foundation front edge. Detailed dark inset doorway, visibly open. At2px/unit: foundation1140pxwide, facade700pxhigh, clear passage280×360px, roof depthprojects390px. Fit entire building into1536square or a tall canvas with margins, no cropping, do not squash facade. Stone foundation supports all architectural masses, no disconnected floaters. Neutral warm upperleft light, realistic handpainted stone and metal material, crisp game silhouette. No characters, labels, human windows, scenery or terrain patch. Alpha outside building, preserve dark doorway opaque. DESIGN: public clan assembly hall. A broad imposing heavy basalt structure with sweeping shallow curved canopy, two layered roof plates flaring slightly at left/right, ribbed blackened-bronze reinforcement recalling sophisticated alien starship interiors. Strong symmetric frontage with four massive integrated vertical piers, finely incised abstract alien geometric grooves (not readable writing), subdued amber recessed status light either side of the entrance. The central doorway is a broad tall trapezoid with metal jambs and deep interior darkness. Stone walls above and beside it. A low oval crest at rear of roof. No pyramidal temple steps, no human coat of arms, no medieval roof. Only one building."
+    },
+    {
+      "file": "public-hall-edit-prompt.txt",
+      "prompt": "Edit this one isolated transparent game building. Keep its same width, entire roof design, materials, symmetrical frontage, bronze ribs and center door, and preserve orthographic yawzero front camera. Make the FRONT FACADE WALL about60percent taller by adding a substantial broad stone wall band ABOVE the door and raising the whole roof. Make the open doorway25percent taller but keep its width. REMOVE the raised foundation step/plinth below the doorway and place the doorway floor directly on the same bottom horizontal ground line as the pillars' feet. No stairs or raised threshold. Stone walls/jambs extend consistently to ground. Use taller canvas so entire enlarged building remains visible, with transparent margins. Retain true alpha outside, no background, no characters, no text, no environment, no cropping. Do not squash proportions to retain the old landscape aspect."
+    },
+    {
+      "file": "public-hall-door-prompt.txt",
+      "prompt": "Precise object edit of this transparent HD2D alien building sprite. Change ONLY the central doorway: widen the ENTIRE clear dark opening and its metal jambs by25percent horizontally, symmetrically around its unchanged center. Keep doorway height and its bottom painted threshold at exactly the same positions. Move adjacent facade stone outward naturally to make room, preserve surrounding pillar positions, roof, overall building dimensions, style, texture, lighting and orthographic camera. The top of the trapezoidal clear passage must also widen, so a broad armored adult can pass. Keep the whole building silhouette and native transparent alpha unchanged outside this local doorway edit. No new step, stairs, decoration, people, text or scenery."
+    }
+  ],
+  "loreStatus": "original-game-adaptation-not-canonical-1-to-1"
+}

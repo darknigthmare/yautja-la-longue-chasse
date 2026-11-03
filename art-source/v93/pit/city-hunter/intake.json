@@ -1,0 +1,579 @@
+{
+  "schemaVersion": 1,
+  "batch": "pit-city-lifecycle-v93",
+  "fighterId": "city-hunter",
+  "variantId": "city-hunter-avec-casque-12136078fe",
+  "sourceReference": {
+    "src": "/game/sprites/v44/user-hunters/12136078fe2a5ba66cf19f90f31b58423d3c0eb5b309f1b12c400fa188d2d66d.png",
+    "sha256": "12136078fe2a5ba66cf19f90f31b58423d3c0eb5b309f1b12c400fa188d2d66d"
+  },
+  "generation": {
+    "tool": "OpenAI built-in image_gen",
+    "initialPages": 3,
+    "replacements": 3,
+    "transparentBackgroundRequested": true,
+    "archivedRawBytes": true,
+    "cropped": false,
+    "mirrored": false,
+    "recolored": false,
+    "alphaRetouched": false
+  },
+  "fidelity": {
+    "canonicalChoreography": false,
+    "appearance1to1Certified": false,
+    "statement": "Gameplay-adapted restrained movements matching the supplied masked City Hunter costume. No new weapons or costume changes intentionally introduced.",
+    "visualReview": "All six full-body drawings on each selected page inspected for coherent attachment, silhouette, feet, dreadlocks and hands. No obvious floating hand/extra arm/body fusion seen. A film-accurate five-digit or microscopic hand certification is not claimed; independent review at game scale remains required."
+  },
+  "layoutDeviation": "The requested150px transparent row gutters were not met despite one targeted replacement/page. Actual row gaps33–46px are retained and disclosed; every proposed rect has2px clear border at alpha>=2 and stays inside one isolated cell. No source pixels were moved, removed or repainted.",
+  "pages": [
+    {
+      "family": "idle",
+      "clipId": "idle",
+      "source": "art-source/v93/pit/city-hunter/idle-r2.png",
+      "sha256": "71fc0992f04b755b59ed8f4dcd2176a412976933a44db65057995735bbf292be",
+      "width": 1024,
+      "height": 1536,
+      "nativeFacing": true,
+      "loop": true,
+      "ticksPerSecond": 60,
+      "proposedDurationTicks": [
+        24,
+        28,
+        24
+      ],
+      "proposedSharedBodyHeightPx": 473,
+      "frames": [
+        {
+          "row": 0,
+          "facing": "right",
+          "rect": [
+            127,
+            20,
+            293,
+            477
+          ],
+          "pivot": [
+            146.5,
+            475
+          ],
+          "alphaBounds": [
+            129,
+            22,
+            289,
+            473
+          ],
+          "visiblePixels": 73801,
+          "pixelSha256": "7a8a77229d4642867a7a4a11000fdbf7cbd2f25a04534783376cfeaf9585e089",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 0,
+          "facing": "left",
+          "rect": [
+            602,
+            20,
+            297,
+            478
+          ],
+          "pivot": [
+            148.5,
+            476
+          ],
+          "alphaBounds": [
+            604,
+            22,
+            293,
+            474
+          ],
+          "visiblePixels": 74179,
+          "pixelSha256": "86e1ae7c71f4558d4eda560553a43bca0afc5a90215aec804d47cdbfa6522e03",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 1,
+          "facing": "right",
+          "rect": [
+            143,
+            526,
+            292,
+            486
+          ],
+          "pivot": [
+            146,
+            484
+          ],
+          "alphaBounds": [
+            145,
+            528,
+            288,
+            482
+          ],
+          "visiblePixels": 75074,
+          "pixelSha256": "dcf94ddd491633b3f56cf9e45bdef16bc171a6e2190672972e01f44088667342",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 1,
+          "facing": "left",
+          "rect": [
+            583,
+            528,
+            305,
+            484
+          ],
+          "pivot": [
+            152.5,
+            482
+          ],
+          "alphaBounds": [
+            585,
+            530,
+            301,
+            480
+          ],
+          "visiblePixels": 75073,
+          "pixelSha256": "cd21b6cd9e40ca4d20fb5f774ecb6610b986c13fc061e38c5cdb53f923b29494",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 2,
+          "facing": "right",
+          "rect": [
+            135,
+            1053,
+            281,
+            452
+          ],
+          "pivot": [
+            140.5,
+            450
+          ],
+          "alphaBounds": [
+            137,
+            1055,
+            277,
+            448
+          ],
+          "visiblePixels": 73775,
+          "pixelSha256": "320670b37860c093c7ce80c3c9aba41346111695724970971dd9b8ed56affd74",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 2,
+          "facing": "left",
+          "rect": [
+            607,
+            1054,
+            277,
+            451
+          ],
+          "pivot": [
+            138.5,
+            449
+          ],
+          "alphaBounds": [
+            609,
+            1056,
+            273,
+            447
+          ],
+          "visiblePixels": 71656,
+          "pixelSha256": "f9e64de643c7bb062292ce979653a597eb1253d1b0485a5ed5c6483ed6bc6891",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        }
+      ],
+      "transparentPixels": 1072791,
+      "verticalGapsPxAtAlpha2": [
+        [
+          33,
+          45
+        ],
+        [
+          34,
+          46
+        ]
+      ],
+      "requested150PixelGutters": false,
+      "reviewStatus": "reviewed-candidate-awaiting-registry-loader-and-browser-review"
+    },
+    {
+      "family": "dizzy",
+      "clipId": "pit.presentation.dizzy",
+      "source": "art-source/v93/pit/city-hunter/dizzy-r2.png",
+      "sha256": "46f14ebb98b78f7fac03c44e9f5f053d8aceee54a21d5a9f4f7a3495185f9183",
+      "width": 1024,
+      "height": 1536,
+      "nativeFacing": true,
+      "loop": true,
+      "ticksPerSecond": 60,
+      "proposedDurationTicks": [
+        20,
+        22,
+        20
+      ],
+      "proposedSharedBodyHeightPx": 473,
+      "frames": [
+        {
+          "row": 0,
+          "facing": "right",
+          "rect": [
+            97,
+            31,
+            343,
+            450
+          ],
+          "pivot": [
+            171.5,
+            448
+          ],
+          "alphaBounds": [
+            99,
+            33,
+            339,
+            446
+          ],
+          "visiblePixels": 75343,
+          "pixelSha256": "387b6e3010fa1fe1fc01ba92908bceb4ea8013a3e5f42f6b4851a3e224f8682d",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 0,
+          "facing": "left",
+          "rect": [
+            596,
+            29,
+            333,
+            452
+          ],
+          "pivot": [
+            166.5,
+            450
+          ],
+          "alphaBounds": [
+            598,
+            31,
+            329,
+            448
+          ],
+          "visiblePixels": 74197,
+          "pixelSha256": "f00ee53bc03b7f2ec8e123d36670f1931bbbb095bd94fb59c33c95502a28cf4c",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 1,
+          "facing": "right",
+          "rect": [
+            112,
+            519,
+            308,
+            491
+          ],
+          "pivot": [
+            154,
+            489
+          ],
+          "alphaBounds": [
+            114,
+            521,
+            304,
+            487
+          ],
+          "visiblePixels": 78829,
+          "pixelSha256": "3fb7f63dd7a3a934b8715a81a3174a5709aad4c1947326ca6c27d07e5600fe67",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 1,
+          "facing": "left",
+          "rect": [
+            602,
+            518,
+            314,
+            492
+          ],
+          "pivot": [
+            157,
+            490
+          ],
+          "alphaBounds": [
+            604,
+            520,
+            310,
+            488
+          ],
+          "visiblePixels": 78560,
+          "pixelSha256": "e6ab9b12d2b4748a4736f10e22c19c3917448ff10fcb5401473d369c4c7280a3",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 2,
+          "facing": "right",
+          "rect": [
+            101,
+            1041,
+            324,
+            466
+          ],
+          "pivot": [
+            162,
+            464
+          ],
+          "alphaBounds": [
+            103,
+            1043,
+            320,
+            462
+          ],
+          "visiblePixels": 77450,
+          "pixelSha256": "d967d9d03f850ff52989599e9d843fa01954cb30fa15b179fb320e2c41847ca4",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 2,
+          "facing": "left",
+          "rect": [
+            613,
+            1041,
+            310,
+            465
+          ],
+          "pivot": [
+            155,
+            463
+          ],
+          "alphaBounds": [
+            615,
+            1043,
+            306,
+            461
+          ],
+          "visiblePixels": 75279,
+          "pixelSha256": "541b90b6585ec013dc5f1ffda72906eeac6b922b922ad7266b5599a9b269a8ad",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        }
+      ],
+      "transparentPixels": 1054884,
+      "verticalGapsPxAtAlpha2": [
+        [
+          42,
+          35
+        ],
+        [
+          41,
+          35
+        ]
+      ],
+      "requested150PixelGutters": false,
+      "reviewStatus": "reviewed-candidate-awaiting-registry-loader-and-browser-review"
+    },
+    {
+      "family": "taunt",
+      "clipId": "pit.presentation.taunt",
+      "source": "art-source/v93/pit/city-hunter/taunt-r2.png",
+      "sha256": "1495609c5fa4c1a205394c44aabc58cdd8e5ac3341af843f93fe49e31fe67533",
+      "width": 1024,
+      "height": 1536,
+      "nativeFacing": true,
+      "loop": false,
+      "ticksPerSecond": 60,
+      "proposedDurationTicks": [
+        14,
+        20,
+        30
+      ],
+      "proposedSharedBodyHeightPx": 473,
+      "frames": [
+        {
+          "row": 0,
+          "facing": "right",
+          "rect": [
+            116,
+            51,
+            285,
+            448
+          ],
+          "pivot": [
+            142.5,
+            446
+          ],
+          "alphaBounds": [
+            118,
+            53,
+            281,
+            444
+          ],
+          "visiblePixels": 66541,
+          "pixelSha256": "d72b450518859d331a6f9e739cfa3903d2dd2b2a582133d93f841493f9880060",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 0,
+          "facing": "left",
+          "rect": [
+            626,
+            49,
+            284,
+            450
+          ],
+          "pivot": [
+            142,
+            448
+          ],
+          "alphaBounds": [
+            628,
+            51,
+            280,
+            446
+          ],
+          "visiblePixels": 65181,
+          "pixelSha256": "54dae819d2df5bbe1e6dac4fd9861f788cba74286b5b8f06d5afc014e7a7aa7f",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 1,
+          "facing": "right",
+          "rect": [
+            112,
+            540,
+            324,
+            461
+          ],
+          "pivot": [
+            162,
+            459
+          ],
+          "alphaBounds": [
+            114,
+            542,
+            320,
+            457
+          ],
+          "visiblePixels": 69487,
+          "pixelSha256": "36f15c2ca365da014677687511638b191a7b7088a7c0f1d8b8d223df86da2fe1",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 1,
+          "facing": "left",
+          "rect": [
+            604,
+            540,
+            307,
+            461
+          ],
+          "pivot": [
+            153.5,
+            459
+          ],
+          "alphaBounds": [
+            606,
+            542,
+            303,
+            457
+          ],
+          "visiblePixels": 67150,
+          "pixelSha256": "a260c847416a5ad650d1f56d5b2069ad85cfbcab9f55138babb6682f8e5d9425",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 2,
+          "facing": "right",
+          "rect": [
+            111,
+            1043,
+            290,
+            447
+          ],
+          "pivot": [
+            145,
+            445
+          ],
+          "alphaBounds": [
+            113,
+            1045,
+            286,
+            443
+          ],
+          "visiblePixels": 68681,
+          "pixelSha256": "ed99a5e1da413d8c4af17daa58cf1138c91a8dfc2d4b28159b7a4adb42b190e4",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        },
+        {
+          "row": 2,
+          "facing": "left",
+          "rect": [
+            623,
+            1038,
+            289,
+            453
+          ],
+          "pivot": [
+            144.5,
+            451
+          ],
+          "alphaBounds": [
+            625,
+            1040,
+            285,
+            449
+          ],
+          "visiblePixels": 68528,
+          "pixelSha256": "0fb8d569ccdf468cfef713ef91a2822575ef2c7cf8d4462e14047a6da20e3990",
+          "transparentBorderPxAtAlpha2": 2,
+          "borderAlpha2Pixels": 0
+        }
+      ],
+      "transparentPixels": 1118254,
+      "verticalGapsPxAtAlpha2": [
+        [
+          45,
+          46
+        ],
+        [
+          45,
+          41
+        ]
+      ],
+      "requested150PixelGutters": false,
+      "reviewStatus": "reviewed-candidate-awaiting-registry-loader-and-browser-review"
+    }
+  ],
+  "rejectedInitials": [
+    {
+      "family": "idle",
+      "source": "art-source/v93/pit/city-hunter/idle-r1-rejected.png",
+      "sha256": "085c1442e962e3fdc87dc158993a020b8af9de2e61b05a8cc951870b66ef70a4",
+      "reason": "Square originals crowd or cross equal-row cell boundaries; the requested150px gutters fail. Preserved without runtime registration."
+    },
+    {
+      "family": "dizzy",
+      "source": "art-source/v93/pit/city-hunter/dizzy-r1-rejected.png",
+      "sha256": "879f7d5deb9ee58dc40b582c7fc1f96624acc5ebf99071db588bdd84e07e8000",
+      "reason": "Square originals crowd or cross equal-row cell boundaries; the requested150px gutters fail. Preserved without runtime registration."
+    },
+    {
+      "family": "taunt",
+      "source": "art-source/v93/pit/city-hunter/taunt-r1-rejected.png",
+      "sha256": "498eaeff9db2584abefefad7dc8b3606f511d8ef35d06154e69357c3f6fea454",
+      "reason": "Square originals crowd or cross equal-row cell boundaries; the requested150px gutters fail. Preserved without runtime registration."
+    }
+  ],
+  "promptSet": "art-source/v93/pit/city-hunter/prompts-r2.json"
+}

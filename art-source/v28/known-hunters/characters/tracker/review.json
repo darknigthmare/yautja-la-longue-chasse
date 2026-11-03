@@ -1,0 +1,48 @@
+{
+  "verdict": "usable-for-review",
+  "reviewer": "modular_asset_audit",
+  "reviewKind": "self-review-plus-independent-second-reading",
+  "inspection": [
+    "Full sheet",
+    "Enlarged original draft head/caster/hands frames1/2",
+    "Full corrected sheet with same poses"
+  ],
+  "findings": [
+    "Six complete figures; masks and two tusks remain consistent enough for a draft.",
+    "Single right forearm blade stays on the housing; two hands plausible and empty.",
+    "Integrated correction removes lower duplicate barrel opening; one caster visible when not normally occluded.",
+    "High-guard rise and blocked-impact compression are readable; frames2/3 differ only slightly."
+  ],
+  "reservations": [
+    "Masks and materials are adaptations, not1:1 film scans.",
+    "Fingers partly occluded around face/gauntlet; not a full anatomical certification.",
+    "Normal caster occlusion in compressed guard does not establish missing equipment.",
+    "Body/margin prompt targets missed; fixed-scale registration provided.",
+    "Opaque magenta background varies; key edge and gameplay checks pending.",
+    "Integrated correction also slightly changes background/tonal values; it is a new generated source, not a claim of pixel-identical preservation outside the caster."
+  ],
+  "independentReview": {
+    "reviewer": "pit_animation_lab",
+    "date": "2026-09-05",
+    "inspection": "Full corrected sheet plus enlarged frame4",
+    "verdict": "usable-for-review",
+    "finding": "No duplicated cannon visible; caster can be normally hidden by head/guard in4. No obvious extra arm, floating hand or detached weapon. Two plausible fists, near blade attached to gauntlet, two mask tusks with partial glove occlusion. Frames2/3 close: held guard, not six strongly distinct motion stages.",
+    "playbackVerified": false,
+    "fidelity1to1Certified": false
+  },
+  "source": {
+    "path": "art-source/v28/known-hunters/sources/tracker-guard-absorb-v2.png",
+    "bytes": 1932274,
+    "sha256": "e4e2be3dd53112d376deadce01dc982117ce9a476f57c51b6e510b024e23cb16",
+    "width": 1536,
+    "height": 1024,
+    "channels": 3,
+    "hasAlpha": false
+  },
+  "registration": "art-source/v28/known-hunters/characters/tracker/registration.json",
+  "reviewDate": "2026-09-05",
+  "fidelity1to1Certified": false,
+  "anatomyCertified": false,
+  "playbackVerified": false,
+  "gameplayApproved": false
+}

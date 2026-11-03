@@ -1,0 +1,72 @@
+{
+  "result": "REVIEWED",
+  "checkedAt": "2026-09-30T19:14:40.144Z",
+  "method": "Actual inspection of the nine listed final PNGs with view_image after or during this exact completed run.",
+  "report": {
+    "path": "work-local/v61/qa/story-application-final/report.json",
+    "sha256": "5c440c3c527107b589cc58c4bf3325735151d844c0733699adcf8494e64298cd"
+  },
+  "captures": [
+    {
+      "file": "work-local/v61/qa/story-application-final/arena-140-bad-blood-pine-barrens-desktop-status-layout.png",
+      "sha256": "a4d522cb90385b7e58d9acad3eabbd9a863920482d5032868c71e291252163e6",
+      "review": "inspected-with-view_image",
+      "note": "Le message de victoire laisse un espace net au-dessus de MENU, dont le libellé reste entièrement visible. Les combattants rassemblés au KO occultent une partie du garde du plan arrière : visibilité locale limitée, pas une disparition ni une promesse de visibilité constante."
+    },
+    {
+      "file": "work-local/v61/qa/story-application-final/arena-142-dead-end-alley-desktop-active.png",
+      "sha256": "933a1b3a7dc05a7031295eda8a77905f1deb381b89e1b31235c7001eb58acf5d",
+      "review": "inspected-with-view_image",
+      "note": "Patrouille visible dans la profondeur de l’impasse, derrière Jungle Hunter et sans double corps au premier plan. Message de victoire au-dessus de MENU, HUD lisible."
+    },
+    {
+      "file": "work-local/v61/qa/story-application-final/arena-165-kenner-throne-desktop-active.png",
+      "sha256": "65a374aa273e6070894aafe56b20411ae0ec1e1dda610fb7901a6f735036e8c0",
+      "review": "inspected-with-view_image",
+      "note": "Garde saluant visible sur l’estrade gauche, pieds sur le support. Le trône et le combat restent distincts. Le remplacement de l’acteur est aussi contrôlé par la télémétrie, pas déduit de cette seule image."
+    },
+    {
+      "file": "work-local/v61/qa/story-application-final/arena-173-phg-japan-desktop-active.png",
+      "sha256": "bba1691d9dd4404050fe7cde33751953a7745bfcee8fb5359543ec6e6b5070e2",
+      "review": "inspected-with-view_image",
+      "note": "Cloche et percuteur lisibles sous la poutre du portique gauche, séparés de la lanterne. Le nouveau placement évite l’occlusion initiale par Jungle Hunter. Revue de cette pose capturée, sans certification visuelle de toutes les poses."
+    },
+    {
+      "file": "work-local/v61/qa/story-application-final/arena-185-training-desktop-active.png",
+      "sha256": "489265ed774d99bccf6a3b889383a7dc822406d7b0de662d678a09e05bdc8de6",
+      "review": "inspected-with-view_image",
+      "note": "Ancien présent sur la galerie centrale, pieds appuyés sur le sol de la galerie. L’annonce de fin de manche passe partiellement devant sa partie supérieure ; le personnage reste identifiable. Aucun deuxième ancien superposé dans cette capture."
+    },
+    {
+      "file": "work-local/v61/qa/story-application-final/arena-140-bad-blood-pine-barrens-mobile-status-layout.png",
+      "sha256": "3bb35d7097367796d4139132fc1a7625eac608edca8769dd50c201bc8025c3f1",
+      "review": "inspected-with-view_image",
+      "note": "Vue 844×390 émulée : MENU, les touches du joueur1 et la seconde rangée du joueur2 restent visibles et non recouverts par le toast. Le message transitoire occupe une portion de la scène à droite et peut masquer une partie du combattant ; la correction garantit les commandes, pas une scène sans aucune occlusion."
+    },
+    {
+      "file": "work-local/v61/qa/story-application-final/arena-173-phg-japan-503.png",
+      "sha256": "6eb8e73ea3d766ec7cc992c19077ab5b05d33746cbada5af73fd4e98ecf3815f",
+      "review": "inspected-with-view_image",
+      "note": "Échec503 volontaire : aperçu indisponible signalé, départ bloqué, boutons Réessayer visibles. Aucun combat lancé avec la feuille conditionnelle manquante."
+    },
+    {
+      "file": "work-local/v61/qa/story-application-final/arena-173-phg-japan-retry-active.png",
+      "sha256": "bba1691d9dd4404050fe7cde33751953a7745bfcee8fb5359543ec6e6b5070e2",
+      "review": "inspected-with-view_image",
+      "note": "Après le véritable bouton Réessayer, combat lancé et cloche visible à nouveau dans le portique. La récupération n’utilise aucun dessin de substitution."
+    },
+    {
+      "file": "work-local/v61/qa/story-application-final/arena-173-phg-japan-reduced-active.png",
+      "sha256": "4c676f6f64aba9cae29cdb24078086606e22a662b96a83fd6c3dbdb658003dad",
+      "review": "inspected-with-view_image",
+      "note": "Mode mouvements réduits : pose calme de la cloche sous la poutre ; combat et message COMBAT présents. La constance de la cellule0 provient de la trace drawImage et non de la seule capture."
+    }
+  ],
+  "limits": [
+    "Only the listed still captures were visually inspected here; all native animation cells are exercised technically, not each visually certified.",
+    "Mobile is Chromium emulation, not a physical handset.",
+    "Normal fighter/HUD foreground occlusion remains possible at KO.",
+    "The short-lived mobile status can overlay part of the scene; it does not cover MENU or touch controls.",
+    "Lore fidelity and full arena composition are covered by separate source and composition reviews."
+  ]
+}

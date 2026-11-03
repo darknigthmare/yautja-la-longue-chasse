@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "command": "node --experimental-strip-types --test tests/homeworld-outskirts-v71.test.mjs tests/homeworld-geometry-v64.test.mjs",
+  "newTests": 5,
+  "existingGeometryTests": 6,
+  "checks": [
+    "139 independent baked native objects, six art families, non-overlapping ground supports",
+    "Existing public terrain independently sampled with 42-unit clearance; no movement blockers added",
+    "Native PNG dimensions and SHA-256 preserved; source crop bounds, uniform scale and support pivots",
+    "Actual JSX renders one ground projection, union polygon masks, 43 frontages and camera-culled native objects; tile-snapped mask stays limited to camera",
+    "Every real building has a connected facade, threshold, approach and furnished proportionate interior in the codex",
+    "All associated codex links resolve to real existing records"
+  ],
+  "scope": {
+    "outskirtsModules": 139,
+    "buildingContexts": 43,
+    "frontageModules": 43,
+    "newCodexRecords": 226
+  },
+  "browserStatus": "PASS_LOCAL_10_CHECKS_8_INSPECTED_CAPTURES",
+  "browserEvidence": "docs/v71-outskirts-local-qa.json",
+  "limitations": "Targeted model, actual JSX and local browser checks cover this environmental lot, not the whole city or final production deployment. The environment is an original adaptation; outside supports remain non-walkable. Large plazas and pre-existing population composition remain outside this lot. Global typecheck, builds and release are tracked by root."
+}

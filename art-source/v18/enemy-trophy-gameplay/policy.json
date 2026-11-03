@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "packId": "enemy-trophy-gameplay-v18",
+  "packVersion": 18,
+  "sourcePolicy": {
+    "kind": "mechanical-runtime-derivative",
+    "authority": "public/game/assets/v17/enemy-trophies/manifest.json",
+    "sourcePackId": "enemy-trophies-v17",
+    "sourcePackVersion": 17,
+    "requiredDefinitions": 203,
+    "requiredEnemyIds": 228,
+    "forbiddenPackIds": [
+      "franchise-trophies-v16"
+    ],
+    "newImageGenerationAllowed": false,
+    "genericAliasingAllowed": false
+  },
+  "consumerPolicy": {
+    "allowed": [
+      "hunt-canvas",
+      "trophy-wall",
+      "trophy-workshop"
+    ],
+    "forbidden": [
+      "enemy-bestiary-v7",
+      "enemy-bestiary-v8",
+      "franchise-archive"
+    ]
+  },
+  "derivationPolicy": {
+    "canvas": {
+      "width": 256,
+      "height": 256,
+      "maxDimension": 256,
+      "background": "transparent"
+    },
+    "content": {
+      "maxDimension": 224,
+      "minimumSafePadding": 15
+    },
+    "sourceCropMargin": 4,
+    "resizeKernel": "nearest",
+    "format": "lossless-webp",
+    "encoderEffort": 1,
+    "alphaRequired": true,
+    "deterministic": true
+  },
+  "identityPolicy": {
+    "definitionIdPreserved": true,
+    "enemyIdsPreserved": true,
+    "namePreserved": true,
+    "objectKindPreserved": true,
+    "franchiseStatus": "project-original"
+  }
+}

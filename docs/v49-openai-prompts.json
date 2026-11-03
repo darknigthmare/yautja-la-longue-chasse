@@ -1,0 +1,146 @@
+{
+  "version": "V49",
+  "recordedAt": "2026-09-23T16:44:56.395940+00:00",
+  "generator": "OpenAI built-in image_gen",
+  "paidApiFallbackUsed": false,
+  "referenceMode": "The existing supplied/project Ahab PNG was visually inspected. Direct local reference upload failed with sandbox helper apply deny-read ACLs. Successful sheets are text-described generations, not pixel-conditioned edits.",
+  "failedReferenceAttempt": {
+    "prompt": "Use case: identity-preserve. Asset type: an additional native LEFT-facing Ahab masked sprite sheet for the existing illustrated 2D fighting game THE PIT. Use the reference image only as the exact character design and rendering reference. Preserve this SAME masked hunter: warm ochre mottled reptilian skin, black body net, layered scratched silver armor, black dreadlocks with sparse bronze rings, elongated silver grooved biomask with dark narrow eye slit and round cheek detail, single long pale ANIMAL skull mounted at upper chest, red cloth cape attached behind back without shoulder fur, fur only at belt, silver shin guards, coherent clawed feet, long split-tip silver spear held in BOTH hands. Preserve exact costume proportions, palette, and mask silhouette. Do not invent ornaments, human skull, teeth, antlers, extra armor, or extra weapons. His shoulder caster belongs on anatomical LEFT shoulder, the bulky wrist-blade gauntlet on RIGHT arm. This is a newly drawn opposite view, NOT a horizontally flipped copy; the far/near equipment must stay on the correct anatomical side.\nDraw one landscape 1536x1024 PNG, TRUE TRANSPARENT background, 2 columns and 2 rows, exactly FOUR distinct full body sprites with spear complete inside each cell. 24px transparent margins/gutters, no frame touches another cell, uniform character scale. Every sprite faces SCREEN LEFT, three-quarter side view still showing the chest trophy and both hands holding the same shaft. Weapons point left. Top left: ready idle stance with spear diagonally forward. Top right: subtle inhale with same planted foot anchors, slight shoulder lift, cape/dreads lag. Bottom left: defensive high guard, spear braced across upper body, slightly bent knees. Bottom right: same high guard absorbing a small impact, elbows yield slightly, both hands retain coherent grip, feet remain planted. Do not crouch so deeply that the body shrinks. Each hand clearly has one thumb and four fingers coherently wrapped around the single shaft; NO merged hands or extra digits/limbs. Native left-facing anatomy and detailed clean sprite rendering. No text, labels, scene, ground, cast shadow, grid, UI, logo or watermark.",
+    "reference": "/game/sprites/v45/pit/ahab/ahab-masked-idle-guard-right.png",
+    "error": "Referenced image could not be read: helper_unknown_error: apply deny-read ACLs",
+    "outputCreated": false
+  },
+  "identity": "user-ahab / ahab-avec-casque-0c8ceb1c95 only; original fan-game adaptation, no canon1:1 certification",
+  "delivered": {
+    "pngFiles": 5,
+    "newAhabDrawings": 12,
+    "nativeFacings": [
+      "left",
+      "right"
+    ],
+    "desertClues": 3
+  },
+  "runtimeProcessing": "Ahab uses existing explicit alpha noiseFloor2 in prepared in-memory Canvas only. Original files and all RGB and alpha>2 values remain unchanged. No code-generated source image edits.",
+  "limitations": [
+    "The new Ahab light gesture still uses the existing shared contact combat profile; spear tip length is not a new canonical weapon range.",
+    "Ahab unmasked and states not authored by this lot retain exact static supplied appearances.",
+    "No complete hunter moveset or complete roster animation claim.",
+    "Desert backdrop is a complete painting, not a complete separately generated parallax-layer pack."
+  ],
+  "candidates": [
+    {
+      "key": "desert",
+      "prompt": "Use case: stylized-concept. Asset type: original 2D side-scrolling videogame desert background for a guided young Yautja training outing. Produce ONE wide 16:9 painted raster game background, finely detailed dark science-fiction tribal alien world, visually compatible with illustrated fighting-game sprites. Eye-level orthographic side-scroller camera, not isometric, not aerial. Alien ochre ash desert and pale rust dunes, distant black basalt ridges and eroded volcanic spires, hazy desaturated golden morning sky. A modest distant hunter gathering camp of dark-hide awnings and stone posts sits far behind the walkable foreground; about eighteen small adult alien hunter silhouettes stand in groups there at background scale, not foreground characters, no close faces. Original homeworld interpretation, no claim of copying a named canonical location. The complete foreground walkable flat sandy strip begins at EXACTLY 80 percent image height and continues level across the full image, unobstructed from left to right. Small side-view stones at the very bottom, but no large foreground props or obstacles obscuring player. Keep the center and lower middle calm so foreground character silhouettes and modular clues read clearly. Depth separated by warm atmospheric perspective: sky, far mountains, dunes, far camp, flat near ground. NO HUD, text, logos, watermark, borders, foreground people, animals, floating platforms or painted clue icons. Lighting consistent warm upper-left morning light with subdued contrast. Deliver one polished original game background.",
+      "generatorFile": "exec-5364e53d-807d-4ae8-9804-ae62f631dcdd.png",
+      "sha256": "4c55f0071db8e51a257554332937c1351c37ab84c06e6288938e9eac8d6a3094",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "status": "accepted",
+      "reason": "Original desert background; source ground line727, distant group is scenery, not simulated NPCs.",
+      "runtimeSrc": "/game/youth/v49/desert.png",
+      "sourceBytesPreserved": true
+    },
+    {
+      "key": "clues",
+      "prompt": "Use case: stylized-concept. Asset type: modular alpha PNG environmental clue sprite atlas for a 2D side-scrolling alien desert tracking lesson. ONE wide landscape sheet, exactly THREE separated objects in one horizontal row, each centered inside its own equal-width third, large transparent gutters, each fully visible. TRUE transparent alpha background, no checkerboard painted into pixels, no floor, no shadows beyond tiny contact detail. Orthographic side-view with a shallow view of each object's upper surface, consistent with a 2D fighting game at eye level. Finely detailed hand-painted raster videogame props, warm ochre sand and black basalt. LEFT cell: a low small patch of loose sand with three DISTINCT consecutive three-toed animal footprints impressed into it; each footprint three claws pointing consistently right. CENTER cell: one short snapped dead dry alien shrub branch, ragged pale broken fibers at the broken end, simple coherent wood anatomy, rests at a shallow diagonal. RIGHT cell: one squat irregular black basalt stone with three parallel pale scrape marks across its upper face, whole rock shown. Every item independent, no scene connecting cells. Keep objects wide and low, no tall walls. No characters, hands, weapons, text, arrows, circles, UI, labels, numbers, decorative border or logo. Output actual transparent PNG, clean coherent silhouettes and no opaque rectangular backgrounds.",
+      "generatorFile": "exec-78467b12-bd8f-43ab-bd0b-618ca1443788.png",
+      "sha256": "78c164c42ccfacf90125fd5da9d67b203829cb81e715d28372e3eeb03f57e251",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "status": "accepted",
+      "reason": "Three separately cropped physical clues, original alpha preserved.",
+      "runtimeSrc": "/game/youth/v49/desert-clues.png",
+      "sourceBytesPreserved": true
+    },
+    {
+      "key": "ahabLeftText",
+      "prompt": "Use case: stylized-concept. Asset type: an additional native LEFT-facing Ahab masked sprite sheet for the existing illustrated 2D fighting game THE PIT. Generate from this written description based on the project's existing sprite; no reference image is attached. Preserve this SAME masked hunter: warm ochre mottled reptilian skin, black body net, layered scratched silver armor, black dreadlocks with sparse bronze rings, elongated silver grooved biomask with dark narrow eye slit and round cheek detail, single long pale ANIMAL skull mounted at upper chest, red cloth cape attached behind back without shoulder fur, fur only at belt, silver shin guards, coherent clawed feet, long split-tip silver spear held in BOTH hands. Preserve exact costume proportions, palette, and mask silhouette. Do not invent ornaments, human skull, teeth, antlers, extra armor, or extra weapons. His shoulder caster belongs on anatomical LEFT shoulder, the bulky wrist-blade gauntlet on RIGHT arm. This is a newly drawn opposite view, NOT a horizontally flipped copy; the far/near equipment must stay on the correct anatomical side.\nDraw one landscape 1536x1024 PNG, TRUE TRANSPARENT background, 2 columns and 2 rows, exactly FOUR distinct full body sprites with spear complete inside each cell. 24px transparent margins/gutters, no frame touches another cell, uniform character scale. Every sprite faces SCREEN LEFT, three-quarter side view still showing the chest trophy and both hands holding the same shaft. Weapons point left. Top left: ready idle stance with spear diagonally forward. Top right: subtle inhale with same planted foot anchors, slight shoulder lift, cape/dreads lag. Bottom left: defensive high guard, spear braced across upper body, slightly bent knees. Bottom right: same high guard absorbing a small impact, elbows yield slightly, both hands retain coherent grip, feet remain planted. Do not crouch so deeply that the body shrinks. Each hand clearly has one thumb and four fingers coherently wrapped around the single shaft; NO merged hands or extra digits/limbs. Native left-facing anatomy and detailed clean sprite rendering. No text, labels, scene, ground, cast shadow, grid, UI, logo or watermark.",
+      "generatorFile": "exec-a7dee7ac-8ff5-420e-9e4b-63cf717ee9a4.png",
+      "sha256": "a570537ee26a029c2509a4100e6715a54911925fae9c6090107c240f3aa57899",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "accepted",
+      "reason": "Four native left drawings for idle/high guard; measured pivots, no mirrored animation.",
+      "runtimeSrc": "/game/sprites/v49/pit/ahab/ahab-masked-idle-guard-left.png",
+      "sourceBytesPreserved": true
+    },
+    {
+      "key": "ahabLightRight",
+      "prompt": "Use case: stylized-concept. Asset type: true animation sprite sheet for Ahab masked, an existing original fan-game adaptation in THE PIT. Generate from the written design below, as a consistent mature detailed illustrated 2D fighting-game character, not chibi. Character: muscular ochre mottled reptilian Yautja skin, black diamond body netting, layered jagged scratched silver armor, black dreadlocks with sparse bronze bands, long silver grooved biomask with rounded dome and narrow dark eye slit and circular cheek vent, small tusk-like mouth details. A SINGLE long pale ANIMAL skull trophy is mounted at the upper chest, NOT a human skull. Plain long red cloth cape behind back, no shoulder fur or fur collar; brown fur only at hips; silver belt/groin guard and silver shin armor, three-clawed alien feet. ONE silver spear with a long metal shaft and a broad split spearhead. Both hands visibly grip the SAME shaft, right hand at rear near hip, left hand farther forward. Shoulder plasma caster on anatomical LEFT shoulder, bulky wristblade gauntlet on RIGHT arm. Keep exact identity, equipment, scale, silhouette and coherent anatomy unchanged across frames. Do not add skull necklaces, new armor or extra limbs/weapons.\nONE 1536x1024 landscape PNG with exactly SIX independent complete full-body drawings in precise 3 columns x2 rows, each cell512x512. TRUE transparent background, large gutters, at least18px transparent margins within each cell including complete spear, cape and feet. NO text, numbers, UI, grid, ground, shadows, logo, watermark, scene. This is a quick two-handed spear THRUST animation. Each pose contains exactly two coherent hands with one thumb/four fingers; grip never separates from shaft, no duplicate forearms, no doubled spearhead, no anatomical warping. Constant scale, support feet stay on baseline localy480; head around localy130 in neutral stance; avoid oversized spear that exits cell.\nRead left to right across top row then bottom row: frame1 wind-up with spear pulled slightly back and guarded elbows; frame2 sharper anticipation with weight over rear leg and spear leveled forward; frame3 first contact, thrust spear forward at chest height, both arms extend with coherent grip, leading leg planted; frame4 follow-through just beyond contact with subtle cape/dread lag and rear heel raised, same single spear; frame5 retract spear with elbows bending, front foot still planted; frame6 recover towards original guard, cape/dreads settling. Real distinct drawings, NO repetition, NO graphic scaling, rotation or deformation. Do not depict six unrelated poses. It must read as one continuous attack performed by this same hunter.\nEvery pose faces SCREEN RIGHT in three-quarter fighting side view; spear points RIGHT. Anatomical left shoulder cannon appears behind the near right shoulder; keep chest trophy visible.",
+      "generatorFile": "exec-385dfba0-9f60-4aaa-bc3a-b78a4edd64a2.png",
+      "sha256": "dbb901d015cda2a31f97ce8ae20013d35d369cfd83be16f5de7662553af2caf1",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "rejected",
+      "reason": "Six-pose layout overlaps adjacent rectangular crops with spear/cape pixels."
+    },
+    {
+      "key": "ahabLightLeft",
+      "prompt": "Use case: stylized-concept. Asset type: true animation sprite sheet for Ahab masked, an existing original fan-game adaptation in THE PIT. Generate from the written design below, as a consistent mature detailed illustrated 2D fighting-game character, not chibi. Character: muscular ochre mottled reptilian Yautja skin, black diamond body netting, layered jagged scratched silver armor, black dreadlocks with sparse bronze bands, long silver grooved biomask with rounded dome and narrow dark eye slit and circular cheek vent, small tusk-like mouth details. A SINGLE long pale ANIMAL skull trophy is mounted at the upper chest, NOT a human skull. Plain long red cloth cape behind back, no shoulder fur or fur collar; brown fur only at hips; silver belt/groin guard and silver shin armor, three-clawed alien feet. ONE silver spear with a long metal shaft and a broad split spearhead. Both hands visibly grip the SAME shaft, right hand at rear near hip, left hand farther forward. Shoulder plasma caster on anatomical LEFT shoulder, bulky wristblade gauntlet on RIGHT arm. Keep exact identity, equipment, scale, silhouette and coherent anatomy unchanged across frames. Do not add skull necklaces, new armor or extra limbs/weapons.\nONE 1536x1024 landscape PNG with exactly SIX independent complete full-body drawings in precise 3 columns x2 rows, each cell512x512. TRUE transparent background, large gutters, at least18px transparent margins within each cell including complete spear, cape and feet. NO text, numbers, UI, grid, ground, shadows, logo, watermark, scene. This is a quick two-handed spear THRUST animation. Each pose contains exactly two coherent hands with one thumb/four fingers; grip never separates from shaft, no duplicate forearms, no doubled spearhead, no anatomical warping. Constant scale, support feet stay on baseline localy480; head around localy130 in neutral stance; avoid oversized spear that exits cell.\nRead left to right across top row then bottom row: frame1 wind-up with spear pulled slightly back and guarded elbows; frame2 sharper anticipation with weight over rear leg and spear leveled forward; frame3 first contact, thrust spear forward at chest height, both arms extend with coherent grip, leading leg planted; frame4 follow-through just beyond contact with subtle cape/dread lag and rear heel raised, same single spear; frame5 retract spear with elbows bending, front foot still planted; frame6 recover towards original guard, cape/dreads settling. Real distinct drawings, NO repetition, NO graphic scaling, rotation or deformation. Do not depict six unrelated poses. It must read as one continuous attack performed by this same hunter.\nEvery pose faces SCREEN LEFT in three-quarter fighting side view; spear points LEFT. This is the opposite native viewpoint, NOT mirrored equipment: anatomical left shoulder with cannon is the near shoulder, bulky RIGHT wrist gauntlet remains on the farther right forearm. Keep chest trophy visible.",
+      "generatorFile": "exec-93538a09-28c4-469a-a520-9949a9b0e460.png",
+      "sha256": "6bfe856e2c6359d74271fc955108fc1ba3b8d78ce36a7c0e488033cf5d04d24f",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "rejected",
+      "reason": "Six-pose layout overlaps adjacent rectangular crops with spear/cape pixels."
+    },
+    {
+      "key": "ahabLightRight4",
+      "prompt": "Use case: stylized-concept. Asset type: true animation sprite sheet for Ahab masked, an existing original fan-game adaptation in THE PIT. Generate from the written design below, as a consistent mature detailed illustrated 2D fighting-game character, not chibi. Character: muscular ochre mottled reptilian Yautja skin, black diamond body netting, layered jagged scratched silver armor, black dreadlocks with sparse bronze bands, long silver grooved biomask with rounded dome and narrow dark eye slit and circular cheek vent, small tusk-like mouth details. A SINGLE long pale ANIMAL skull trophy is mounted at the upper chest, NOT a human skull. Plain long red cloth cape behind back, no shoulder fur or fur collar; brown fur only at hips; silver belt/groin guard and silver shin armor, three-clawed alien feet. ONE silver spear with a long metal shaft and a broad split spearhead. Both hands visibly grip the SAME shaft, right hand at rear near hip, left hand farther forward. Shoulder plasma caster on anatomical LEFT shoulder, bulky wristblade gauntlet on RIGHT arm. Keep exact identity, equipment, scale, silhouette and coherent anatomy unchanged across frames. Do not add skull necklaces, new armor or extra limbs/weapons.\nONE landscape 1536 x 1024 transparent PNG divided into TWO columns by TWO rows: exactly FOUR fully isolated full-body drawings, one in each 768 x 512 cell. Huge clear gutters. Every pixel of character, spear and cape stays inside its own cell with 24px margin. The spear MUST never overlap a neighboring sprite. Uniform scale: planted foot baseline y=480 local, crown about y=100 local. TRUE transparent background. NO haze, ground, cast shadows, grid, text, labels, UI or logo. Maximum COMPLETE sprite including spear width 700px. Fit the complete spear by using a believable compact hunting-spear length if necessary. Do not crop or overlap.\nRead top-left, top-right, bottom-left, bottom-right:\n1. ANTICIPATION: a two-handed spear jab, weapon retracted slightly with elbows bent, ready stance.\n2. CONTACT: direct forward thrust at chest height, leading foot firmly planted, arms extended with BOTH coherent hands still gripping the SAME shaft.\n3. FOLLOW-THROUGH: slightly deeper extension, rear heel raised, cape and dreadlocks lag but stay entirely inside the cell.\n4. RECOVERY: retract the spear toward guard, elbows bent again, body weight returning to center.\nDraw FOUR distinct coherent phases of ONE attack by the SAME hunter. Each hand has one thumb and four fingers: no extra hand, fused wrists or grip floating away from shaft. One spear with only one forward head and a small rear point. Keep mask, chest ANIMAL skull, armor palette and body proportions identical throughout. No graphic warps or scale changes.\nAll FOUR poses face SCREEN RIGHT in consistent three-quarter side view. Anatomical left shoulder cannon on far side behind head, right wrist gauntlet on near arm. Spear points RIGHT. Each complete sprite is contained within its own cell.",
+      "generatorFile": "exec-17fd6aee-9b97-4603-a814-37807f6b599f.png",
+      "sha256": "628741b90e0216444b62e17e42af253c49ed1f80ca083b988ea646d7b6da71f4",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "accepted",
+      "reason": "Four native right attack drawings; asymmetric measured bottom crop widths retain complete spear without neighboring pixels.",
+      "runtimeSrc": "/game/sprites/v49/pit/ahab/ahab-masked-light-right.png",
+      "sourceBytesPreserved": true
+    },
+    {
+      "key": "ahabLightLeft4",
+      "prompt": "Use case: stylized-concept. Asset type: true animation sprite sheet for Ahab masked, an existing original fan-game adaptation in THE PIT. Generate from the written design below, as a consistent mature detailed illustrated 2D fighting-game character, not chibi. Character: muscular ochre mottled reptilian Yautja skin, black diamond body netting, layered jagged scratched silver armor, black dreadlocks with sparse bronze bands, long silver grooved biomask with rounded dome and narrow dark eye slit and circular cheek vent, small tusk-like mouth details. A SINGLE long pale ANIMAL skull trophy is mounted at the upper chest, NOT a human skull. Plain long red cloth cape behind back, no shoulder fur or fur collar; brown fur only at hips; silver belt/groin guard and silver shin armor, three-clawed alien feet. ONE silver spear with a long metal shaft and a broad split spearhead. Both hands visibly grip the SAME shaft, right hand at rear near hip, left hand farther forward. Shoulder plasma caster on anatomical LEFT shoulder, bulky wristblade gauntlet on RIGHT arm. Keep exact identity, equipment, scale, silhouette and coherent anatomy unchanged across frames. Do not add skull necklaces, new armor or extra limbs/weapons.\nONE landscape 1536 x 1024 transparent PNG divided into TWO columns by TWO rows: exactly FOUR fully isolated full-body drawings, one in each 768 x 512 cell. Huge clear gutters. Every pixel of character, spear and cape stays inside its own cell with 24px margin. The spear MUST never overlap a neighboring sprite. Uniform scale: planted foot baseline y=480 local, crown about y=100 local. TRUE transparent background. NO haze, ground, cast shadows, grid, text, labels, UI or logo. Maximum COMPLETE sprite including spear width 700px. Fit the complete spear by using a believable compact hunting-spear length if necessary. Do not crop or overlap.\nRead top-left, top-right, bottom-left, bottom-right:\n1. ANTICIPATION: a two-handed spear jab, weapon retracted slightly with elbows bent, ready stance.\n2. CONTACT: direct forward thrust at chest height, leading foot firmly planted, arms extended with BOTH coherent hands still gripping the SAME shaft.\n3. FOLLOW-THROUGH: slightly deeper extension, rear heel raised, cape and dreadlocks lag but stay entirely inside the cell.\n4. RECOVERY: retract the spear toward guard, elbows bent again, body weight returning to center.\nDraw FOUR distinct coherent phases of ONE attack by the SAME hunter. Each hand has one thumb and four fingers: no extra hand, fused wrists or grip floating away from shaft. One spear with only one forward head and a small rear point. Keep mask, chest ANIMAL skull, armor palette and body proportions identical throughout. No graphic warps or scale changes.\nAll FOUR poses face SCREEN LEFT in consistent three-quarter side view. Anatomical left shoulder cannon on near shoulder, right wrist gauntlet on far arm. Spear points LEFT. NOT mirrored equipment: draw the native opposite viewpoint with correct anatomy. Each complete sprite is contained within its own cell.",
+      "generatorFile": "exec-f9a61e35-e3a1-4368-a8ef-bf71818e5d83.png",
+      "sha256": "47fe77b1fac2eb86c3ceb18e98c816833aa7d0a308e4a01139c4430d5123e034",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "rejected",
+      "reason": "Startup crown has alpha3..5 fragments on outer top edge; existing strict alpha-noise threshold2 was not weakened."
+    },
+    {
+      "key": "ahabLightLeft4Retry",
+      "prompt": "Use case: stylized-concept. Asset type: true animation sprite sheet for Ahab masked, an existing original fan-game adaptation in THE PIT. Generate from the written design below, as a consistent mature detailed illustrated 2D fighting-game character, not chibi. Character: muscular ochre mottled reptilian Yautja skin, black diamond body netting, layered jagged scratched silver armor, black dreadlocks with sparse bronze bands, long silver grooved biomask with rounded dome and narrow dark eye slit and circular cheek vent, small tusk-like mouth details. A SINGLE long pale ANIMAL skull trophy is mounted at the upper chest, NOT a human skull. Plain long red cloth cape behind back, no shoulder fur or fur collar; brown fur only at hips; silver belt/groin guard and silver shin armor, three-clawed alien feet. ONE silver spear with a long metal shaft and a broad split spearhead. Both hands visibly grip the SAME shaft, right hand at rear near hip, left hand farther forward. Shoulder plasma caster on anatomical LEFT shoulder, bulky wristblade gauntlet on RIGHT arm. Keep exact identity, equipment, scale, silhouette and coherent anatomy unchanged across frames. Do not add skull necklaces, new armor or extra limbs/weapons.\nONE landscape 1536 x 1024 transparent PNG divided into TWO columns by TWO rows: exactly FOUR fully isolated full-body drawings, one in each 768 x 512 cell. Huge clear gutters. Every pixel of character, spear and cape stays inside its own cell with at least 50px margin. The spear MUST never overlap a neighboring sprite. Uniform SMALLER scale: each body's crown must be at y=110 local or BELOW, support feet at y=440 local. Each drawn body only about 320 pixels tall. This leaves a LARGE completely empty transparent border above and below. This is mandatory sprite production margin, not a tight illustration crop. No pixels within 60 pixels of the OUTER top border of the whole image. TRUE transparent background. NO haze, ground, cast shadows, grid, text, labels, UI or logo. Maximum COMPLETE sprite including spear width 660px. Fit the complete spear by using a believable compact hunting-spear length if necessary. Do not crop or overlap.\nRead top-left, top-right, bottom-left, bottom-right:\n1. ANTICIPATION: a two-handed spear jab, weapon retracted slightly with elbows bent, ready stance.\n2. CONTACT: direct forward thrust at chest height, leading foot firmly planted, arms extended with BOTH coherent hands still gripping the SAME shaft.\n3. FOLLOW-THROUGH: slightly deeper extension, rear heel raised, cape and dreadlocks lag but stay entirely inside the cell.\n4. RECOVERY: retract the spear toward guard, elbows bent again, body weight returning to center.\nDraw FOUR distinct coherent phases of ONE attack by the SAME hunter. Each hand has one thumb and four fingers: no extra hand, fused wrists or grip floating away from shaft. One spear with only one forward head and a small rear point. Keep mask, chest ANIMAL skull, armor palette and body proportions identical throughout. No graphic warps or scale changes.\nAll FOUR poses face SCREEN LEFT in consistent three-quarter side view. Anatomical left shoulder cannon on near shoulder, right wrist gauntlet on far arm. Spear points LEFT. NOT mirrored equipment: draw the native opposite viewpoint with correct anatomy. Each complete sprite is contained within its own cell.\nCRITICAL alpha safety: all outermost 40 pixel rows and columns must be absolutely transparent alpha=0. No specks, halos, haze, shadows, glows or anti-aliased fragments in the outside margin. Keep every complete sprite visibly separated from all edges. Do not enlarge to fill these margins.",
+      "generatorFile": "exec-9932f40a-943d-4f76-a146-e55a4de73f16.png",
+      "sha256": "12dfae8b84c4fabb0b0e70fb3476eb05e5a707f93aeb6e7948d0338a065fb855",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "accepted",
+      "reason": "Four native left attack drawings with safe transparent margins; both hands visible at contact.",
+      "runtimeSrc": "/game/sprites/v49/pit/ahab/ahab-masked-light-left.png",
+      "sourceBytesPreserved": true
+    }
+  ]
+}

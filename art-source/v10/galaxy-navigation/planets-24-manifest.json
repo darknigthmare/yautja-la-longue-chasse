@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "generator": "OpenAI built-in image generation",
+  "asset": {
+    "id": "planets-24-atlas-v10",
+    "useCase": "stylized-concept",
+    "master": "art-source/v10/galaxy-navigation/openai-planets-24-atlas-master.png",
+    "dimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "layout": {
+      "columns": 6,
+      "rows": 4,
+      "planetCount": 24,
+      "cellWidth": 256,
+      "cellHeight": 256
+    },
+    "fileBytes": 2409089,
+    "masterSha256": "844fb76c1dc74ef90bb0889cd6efc733b00563a9e8f05a5a4da28a9496c1be71"
+  },
+  "prompt": [
+    "Create one high-definition landscape raster atlas for a dark retro-science-fiction galactic navigation game, containing exactly 24 distinct spherical alien planets in an exact invisible grid of six columns by four rows.",
+    "Place exactly one fully contained globe in each equal-size cell, centered horizontally and vertically, with regular margins, coherent diameter, a subtle three-quarter view and consistent upper-left lighting with a softly shadowed lower-right limb.",
+    "Use a perfectly flat, featureless pure-black background with no stars, dust, nebula, glow, vignette, texture, cast shadows, grid, frames, cards, labels or interface elements.",
+    "Row 1, left to right: dense emerald jungle world; blue-white glacial world; black-and-red volcanic world; ochre desert world; murky olive swamp world; deep ocean world with archipelagos.",
+    "Row 2, left to right: violet bioluminescent fungal world; original dark organic biomechanical hive world; golden savanna world; arid citadel world with subtle geometric settlement patterns; cyan-violet crystalline world; violent cobalt storm world.",
+    "Row 3, left to right: toxic chartreuse acid world; dark basalt hexagonal world with red fissures; arctic twilight world; radioactive amber-green wasteland; cream-and-rust banded gas giant without rings; midnight indigo gas giant with one pale cyclone and no rings.",
+    "Row 4, left to right: rust-red canyon planet; pale coral reef world; slate industrial mining world; copper cloud world; charcoal tidally locked world with molten and frozen hemispheres; opalescent exotic world with teal-violet continents.",
+    "Realistic dark retro-science-fiction alien planetary portraiture, high-definition surface detail, restrained cinematic lighting, tactile atmospheric layers, believable topography and cloud systems, and one coherent original game-asset set.",
+    "Do not reproduce or copy any existing franchise asset. No text, letters, numbers, labels, symbols, logos, watermark, rings, orbit lines, UI rings, frames, moons, spacecraft, comets, stars or extra objects. Exactly 24 isolated spherical planets only."
+  ],
+  "validation": {
+    "visualInspection": "passed",
+    "exactGrid": "6x4",
+    "distinctOccupiedCells": 24,
+    "fullyContained": true,
+    "noVisibleTextOrUi": true,
+    "background": "visually uniform black"
+  }
+}

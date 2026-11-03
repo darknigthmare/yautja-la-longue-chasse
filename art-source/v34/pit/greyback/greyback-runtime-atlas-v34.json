@@ -1,0 +1,1308 @@
+{
+  "fighterId": "greyback",
+  "bodyHeightPx": 424,
+  "pageBodyHeightPx": {
+    "greyback-idle": 424,
+    "greyback-repair-walk-backward-armor": 405,
+    "greyback-crouch": 390,
+    "greyback-guard": 420,
+    "greyback-hurt": 422,
+    "greyback-repair-light-cross": 424,
+    "greyback-repair-medium-pistol": 390,
+    "greyback-heavy": 450
+  },
+  "atlas": {
+    "schemaVersion": 1,
+    "id": "greyback-pit-v34",
+    "characterId": "greyback",
+    "variantId": "predator2-1990-elder-unmasked-flintlock",
+    "sourceKind": "authored-frames",
+    "status": "validated",
+    "pages": [
+      {
+        "id": "greyback-idle",
+        "src": "/game/sprites/v34/pit/greyback/greyback-idle-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "greyback-repair-walk-backward-armor",
+        "src": "/game/sprites/v34/pit/greyback/greyback-repair-walk-backward-armor-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "greyback-crouch",
+        "src": "/game/sprites/v34/pit/greyback/greyback-crouch-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "greyback-guard",
+        "src": "/game/sprites/v34/pit/greyback/greyback-guard-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "greyback-hurt",
+        "src": "/game/sprites/v34/pit/greyback/greyback-hurt-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "greyback-repair-light-cross",
+        "src": "/game/sprites/v34/pit/greyback/greyback-repair-light-cross-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "greyback-repair-medium-pistol",
+        "src": "/game/sprites/v34/pit/greyback/greyback-repair-medium-pistol-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "greyback-heavy",
+        "src": "/game/sprites/v34/pit/greyback/greyback-heavy-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      }
+    ],
+    "clips": [
+      {
+        "id": "idle",
+        "facing": "right",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-idle",
+            "rect": [
+              94,
+              48,
+              250,
+              430
+            ],
+            "pivot": [
+              104,
+              426
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "greyback-idle",
+            "rect": [
+              480,
+              48,
+              250,
+              430
+            ],
+            "pivot": [
+              101.5,
+              426
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "greyback-idle",
+            "rect": [
+              852,
+              62,
+              256,
+              416
+            ],
+            "pivot": [
+              109.5,
+              412
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "greyback-idle",
+            "rect": [
+              1245,
+              48,
+              247,
+              430
+            ],
+            "pivot": [
+              102.5,
+              426
+            ],
+            "durationTicks": 10
+          }
+        ]
+      },
+      {
+        "id": "idle",
+        "facing": "left",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-idle",
+            "rect": [
+              40,
+              555,
+              249,
+              430
+            ],
+            "pivot": [
+              146.5,
+              426
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "greyback-idle",
+            "rect": [
+              422,
+              555,
+              251,
+              430
+            ],
+            "pivot": [
+              148,
+              426
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "greyback-idle",
+            "rect": [
+              808,
+              573,
+              253,
+              413
+            ],
+            "pivot": [
+              146.5,
+              409
+            ],
+            "durationTicks": 10
+          },
+          {
+            "pageId": "greyback-idle",
+            "rect": [
+              1188,
+              555,
+              249,
+              430
+            ],
+            "pivot": [
+              147,
+              426
+            ],
+            "durationTicks": 10
+          }
+        ]
+      },
+      {
+        "id": "walk-backward",
+        "facing": "right",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-walk-backward-armor",
+            "rect": [
+              75,
+              51,
+              277,
+              411
+            ],
+            "pivot": [
+              136,
+              407
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "greyback-repair-walk-backward-armor",
+            "rect": [
+              479,
+              47,
+              231,
+              413
+            ],
+            "pivot": [
+              108,
+              409
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "greyback-repair-walk-backward-armor",
+            "rect": [
+              821,
+              49,
+              270,
+              413
+            ],
+            "pivot": [
+              148,
+              409
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "greyback-repair-walk-backward-armor",
+            "rect": [
+              1222,
+              48,
+              254,
+              413
+            ],
+            "pivot": [
+              138,
+              409
+            ],
+            "durationTicks": 8
+          }
+        ]
+      },
+      {
+        "id": "walk-backward",
+        "facing": "left",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-walk-backward-armor",
+            "rect": [
+              38,
+              545,
+              275,
+              407
+            ],
+            "pivot": [
+              148,
+              403
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "greyback-repair-walk-backward-armor",
+            "rect": [
+              439,
+              544,
+              227,
+              409
+            ],
+            "pivot": [
+              129,
+              405
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "greyback-repair-walk-backward-armor",
+            "rect": [
+              804,
+              543,
+              266,
+              410
+            ],
+            "pivot": [
+              147,
+              406
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "greyback-repair-walk-backward-armor",
+            "rect": [
+              1196,
+              545,
+              254,
+              408
+            ],
+            "pivot": [
+              144,
+              404
+            ],
+            "durationTicks": 8
+          }
+        ]
+      },
+      {
+        "id": "crouch",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-crouch",
+            "rect": [
+              89,
+              64,
+              266,
+              401
+            ],
+            "pivot": [
+              109.5,
+              397
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "greyback-crouch",
+            "rect": [
+              474,
+              112,
+              267,
+              353
+            ],
+            "pivot": [
+              104.5,
+              349
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "greyback-crouch",
+            "rect": [
+              849,
+              191,
+              276,
+              274
+            ],
+            "pivot": [
+              106,
+              270
+            ],
+            "durationTicks": 30
+          }
+        ]
+      },
+      {
+        "id": "crouch",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-crouch",
+            "rect": [
+              36,
+              567,
+              271,
+              378
+            ],
+            "pivot": [
+              156.5,
+              374
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "greyback-crouch",
+            "rect": [
+              416,
+              600,
+              266,
+              345
+            ],
+            "pivot": [
+              164,
+              341
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "greyback-crouch",
+            "rect": [
+              792,
+              673,
+              274,
+              272
+            ],
+            "pivot": [
+              162.5,
+              268
+            ],
+            "durationTicks": 30
+          }
+        ]
+      },
+      {
+        "id": "high-guard",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-guard",
+            "rect": [
+              98,
+              64,
+              263,
+              424
+            ],
+            "pivot": [
+              113,
+              420
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "greyback-guard",
+            "rect": [
+              453,
+              64,
+              255,
+              423
+            ],
+            "pivot": [
+              112.5,
+              419
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "greyback-guard",
+            "rect": [
+              791,
+              113,
+              305,
+              374
+            ],
+            "pivot": [
+              142.5,
+              370
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "greyback-guard",
+            "rect": [
+              1210,
+              61,
+              256,
+              426
+            ],
+            "pivot": [
+              112.5,
+              422
+            ],
+            "durationTicks": 6
+          }
+        ]
+      },
+      {
+        "id": "high-guard",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-guard",
+            "rect": [
+              412,
+              552,
+              253,
+              421
+            ],
+            "pivot": [
+              137,
+              417
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "greyback-guard",
+            "rect": [
+              788,
+              600,
+              306,
+              371
+            ],
+            "pivot": [
+              159,
+              367
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "greyback-guard",
+            "rect": [
+              1186,
+              553,
+              255,
+              422
+            ],
+            "pivot": [
+              139,
+              418
+            ],
+            "durationTicks": 6
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.hitstun",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-hurt",
+            "rect": [
+              475,
+              56,
+              261,
+              420
+            ],
+            "pivot": [
+              115.5,
+              416
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "greyback-hurt",
+            "rect": [
+              811,
+              82,
+              328,
+              394
+            ],
+            "pivot": [
+              160.5,
+              390
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "greyback-hurt",
+            "rect": [
+              1251,
+              49,
+              243,
+              428
+            ],
+            "pivot": [
+              103.5,
+              424
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "greyback-hurt",
+            "rect": [
+              80,
+              49,
+              261,
+              428
+            ],
+            "pivot": [
+              109,
+              424
+            ],
+            "durationTicks": 3
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.hitstun",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-hurt",
+            "rect": [
+              417,
+              564,
+              244,
+              423
+            ],
+            "pivot": [
+              142,
+              419
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "greyback-hurt",
+            "rect": [
+              753,
+              593,
+              326,
+              394
+            ],
+            "pivot": [
+              166.5,
+              390
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "greyback-hurt",
+            "rect": [
+              1195,
+              560,
+              248,
+              428
+            ],
+            "pivot": [
+              139.5,
+              424
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "greyback-hurt",
+            "rect": [
+              42,
+              560,
+              261,
+              428
+            ],
+            "pivot": [
+              150.5,
+              424
+            ],
+            "durationTicks": 3
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.startup",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-light-cross",
+            "rect": [
+              61,
+              47,
+              270,
+              429
+            ],
+            "pivot": [
+              115,
+              425
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.active",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-light-cross",
+            "rect": [
+              428,
+              47,
+              341,
+              430
+            ],
+            "pivot": [
+              132.5,
+              426
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.recovery",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-light-cross",
+            "rect": [
+              836,
+              47,
+              290,
+              430
+            ],
+            "pivot": [
+              124,
+              426
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "greyback-repair-light-cross",
+            "rect": [
+              1230,
+              47,
+              262,
+              428
+            ],
+            "pivot": [
+              114.5,
+              424
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.startup",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-light-cross",
+            "rect": [
+              42,
+              557,
+              268,
+              430
+            ],
+            "pivot": [
+              145,
+              426
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.active",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-light-cross",
+            "rect": [
+              397,
+              556,
+              343,
+              432
+            ],
+            "pivot": [
+              209.5,
+              428
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.light.recovery",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-light-cross",
+            "rect": [
+              821,
+              557,
+              278,
+              431
+            ],
+            "pivot": [
+              150.5,
+              427
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "greyback-repair-light-cross",
+            "rect": [
+              1207,
+              557,
+              259,
+              430
+            ],
+            "pivot": [
+              141,
+              426
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.startup",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-medium-pistol",
+            "rect": [
+              460,
+              54,
+              275,
+              392
+            ],
+            "pivot": [
+              118.5,
+              388
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.active",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-medium-pistol",
+            "rect": [
+              786,
+              56,
+              351,
+              396
+            ],
+            "pivot": [
+              122,
+              392
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.recovery",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-medium-pistol",
+            "rect": [
+              1232,
+              58,
+              239,
+              394
+            ],
+            "pivot": [
+              103,
+              390
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "greyback-repair-medium-pistol",
+            "rect": [
+              77,
+              61,
+              261,
+              393
+            ],
+            "pivot": [
+              114,
+              389
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.startup",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-medium-pistol",
+            "rect": [
+              414,
+              558,
+              261,
+              393
+            ],
+            "pivot": [
+              138,
+              389
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.active",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-medium-pistol",
+            "rect": [
+              755,
+              559,
+              354,
+              398
+            ],
+            "pivot": [
+              230,
+              394
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.medium.recovery",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-repair-medium-pistol",
+            "rect": [
+              1204,
+              560,
+              245,
+              397
+            ],
+            "pivot": [
+              141.5,
+              393
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "greyback-repair-medium-pistol",
+            "rect": [
+              48,
+              561,
+              250,
+              396
+            ],
+            "pivot": [
+              139.5,
+              392
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.startup",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-heavy",
+            "rect": [
+              53,
+              52,
+              301,
+              422
+            ],
+            "pivot": [
+              125.5,
+              418
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.active",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-heavy",
+            "rect": [
+              436,
+              74,
+              345,
+              399
+            ],
+            "pivot": [
+              134,
+              395
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.recovery",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-heavy",
+            "rect": [
+              831,
+              47,
+              297,
+              427
+            ],
+            "pivot": [
+              124.5,
+              423
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "greyback-heavy",
+            "rect": [
+              1232,
+              17,
+              273,
+              462
+            ],
+            "pivot": [
+              118,
+              458
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.startup",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-heavy",
+            "rect": [
+              415,
+              557,
+              282,
+              429
+            ],
+            "pivot": [
+              162.5,
+              425
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.active",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-heavy",
+            "rect": [
+              760,
+              578,
+              339,
+              407
+            ],
+            "pivot": [
+              204,
+              403
+            ],
+            "durationTicks": 1
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.heavy.recovery",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "greyback-heavy",
+            "rect": [
+              1189,
+              568,
+              295,
+              420
+            ],
+            "pivot": [
+              172,
+              416
+            ],
+            "durationTicks": 1
+          },
+          {
+            "pageId": "greyback-heavy",
+            "rect": [
+              29,
+              537,
+              266,
+              451
+            ],
+            "pivot": [
+              148,
+              447
+            ],
+            "durationTicks": 1
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,664 @@
+{
+  "status": "PASS",
+  "scope": "One accepted initial campaign checkpoint plus B prerequisite derived by source actions and real pure civic motor. Every A choice, discovery/copy/carry, parking, Continue, support observation, confrontation and report thereafter uses compiled app UI and actual native keyboard. Controlled browser clock. Generic sealed study container; no plaque/footprint/lineage/NPC gesture certification.",
+  "baseUrl": "http://127.0.0.1:3101",
+  "mode": "compiled-app",
+  "runtimeCommit": "e93d43046dde641e1637faf9f72b4e5fa8d48404",
+  "contentVersion": "V107",
+  "buildId": "7SF-x09qAzuBDG33EbB1i",
+  "invocation": {
+    "command": "node scripts/qa-homeworld-archive-comparison-v107.mjs",
+    "nodeExecutable": "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "nodeVersion": "v22.23.3",
+    "environment": {
+      "YAUTJA_QA_BASE_URL": "http://127.0.0.1:3101",
+      "YAUTJA_QA_BUILD_ID": "7SF-x09qAzuBDG33EbB1i",
+      "YAUTJA_QA_RUNTIME_COMMIT": "e93d43046dde641e1637faf9f72b4e5fa8d48404",
+      "YAUTJA_COMPARISON_QA_OUTPUT": "/workspace/yautja-la-longue-chasse/outputs/qa-v107/homeworld-comparison-e93"
+    }
+  },
+  "servedBuilds": [
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+      "foundInHtml": true
+    },
+    {
+      "url": "http://127.0.0.1:3101/",
+      "status": 200,
+      "expectedBuildId": "7SF-x09qAzuBDG33EbB1i",
+      "foundInHtml": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "C and its native comparison lectern exist before any A choice",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing atlas exposes a physical comparison target only after the completed B prerequisite",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker plans a real walk to the new lectern without starting A",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused A choice leaves durable study bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused A choice freezes physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated A choice refusal retains Retry",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful Retry does not replay A choice",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit choice shows the exact source A line",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact A response follows choice and retains focus in the surviving dialog",
+      "status": "PASS"
+    },
+    {
+      "name": "Start returns to viewport with unmodified C and no guessed provenance",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused discovery leaves durable study bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused discovery freezes physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated discovery refusal retains Retry",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful Retry does not replay discovery",
+      "status": "PASS"
+    },
+    {
+      "name": "Discovery records actual observer and fixed original C location before movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused provenance copy leaves durable study bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused provenance copy freezes physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated provenance copy refusal retains Retry",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful Retry does not replay provenance copy",
+      "status": "PASS"
+    },
+    {
+      "name": "Provenance copy is a separate explicit persisted operation",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused C pickup leaves durable study bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused C pickup freezes physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated C pickup refusal retains Retry",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful Retry does not replay C pickup",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual pickup visibly carries C without moving preserved A/B",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual pause interrupts a carried C with its discovery and copied provenance",
+      "status": "PASS"
+    },
+    {
+      "name": "Interrupted carried C freezes the motor until explicit resume",
+      "status": "PASS"
+    },
+    {
+      "name": "Resume focuses viewport synchronously",
+      "status": "PASS"
+    },
+    {
+      "name": "Ordinary Continue restores exact C/actor pair, discovery and copied provenance",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit parking changes placement but preserves original discovery",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused C deposit leaves durable study bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused C deposit freezes physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated C deposit refusal retains Retry",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful Retry does not replay C deposit",
+      "status": "PASS"
+    },
+    {
+      "name": "Third native lectern receives C while comparison remains unset",
+      "status": "PASS"
+    },
+    {
+      "name": "Observation A requires actual proximity and leaves B unobserved",
+      "status": "PASS"
+    },
+    {
+      "name": "Two physical observations do not automatically infer or complete a relationship",
+      "status": "PASS"
+    },
+    {
+      "name": "Useful comparison interface opens only back at the third lectern",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused explicit confrontation leaves durable study bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused explicit confrontation freezes physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated explicit confrontation refusal retains Retry",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful Retry does not replay explicit confrontation",
+      "status": "PASS"
+    },
+    {
+      "name": "Only explicit confrontation records measured context and cautious verdict",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused situated report leaves durable study bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Refused situated report freezes physical movement",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated situated report refusal retains Retry",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry focuses the persistent viewport before mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Successful Retry does not replay situated report",
+      "status": "PASS"
+    },
+    {
+      "name": "Only walked return and explicit report show source success",
+      "status": "PASS"
+    },
+    {
+      "name": "A preserves prior B and cartography A/B bytes exactly",
+      "status": "PASS"
+    },
+    {
+      "name": "No profile, inventory or trophy reward is invented",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile source comparison has no page overflow and retains 44px close control",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile ordinary Continue preserves completed provenance, both observations and all three visible placements",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser exception is raised",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "captures": [
+    {
+      "file": "01-a-source-and-limits.png",
+      "sha256": "697677166691caf12d0d8b2c0478eff372690a98172ad9305332d15ad7095440"
+    },
+    {
+      "file": "02-discovery-provenance.png",
+      "sha256": "eaf98be94ef0ce9b1361d84176bd76eac22fa619688073ed1eebf31645509073"
+    },
+    {
+      "file": "03-c-native-carry.png",
+      "sha256": "aea1b117596204b182d303e9e9519bbceeb5302ff161046f25bf52694bc7baa6",
+      "worldViewport": {
+        "x": 0,
+        "y": 56.5,
+        "width": 1440,
+        "height": 445.4375
+      }
+    },
+    {
+      "file": "04-parked-c-original-provenance.png",
+      "sha256": "4ceb2abd08554dd284f882197e6d85d20aff75281fe1d4dffcfd2548dfbe5bcb",
+      "worldViewport": {
+        "x": 0,
+        "y": 56.5,
+        "width": 1440,
+        "height": 478.234375
+      }
+    },
+    {
+      "file": "05-c-on-third-lectern.png",
+      "sha256": "edd9123505c56386c1ff6903167d67da3fea4d544d3d9ebe489b76fb17d0470a",
+      "worldViewport": {
+        "x": 0,
+        "y": 56.5,
+        "width": 1440,
+        "height": 445.4375
+      }
+    },
+    {
+      "file": "06-two-support-observations.png",
+      "sha256": "48473463313377d513c6856981339abbf6cf6220c04dc4e02fd5b40c91ac36bb",
+      "worldViewport": {
+        "x": 0,
+        "y": 56.5,
+        "width": 1440,
+        "height": 445.4375
+      }
+    },
+    {
+      "file": "07-comparison-interface.png",
+      "sha256": "c1ccd0570e19874e8536d38b69062c271f34c7ea4ddb4fcc27f80ee83aaea501"
+    },
+    {
+      "file": "08-completed-desktop.png",
+      "sha256": "55edbf0451c75681d631a0783dfe5fa9e71dc370b785209b5926e4a3c8eeac28"
+    },
+    {
+      "file": "09-completed-mobile.png",
+      "sha256": "8e7cffc0ba53098646713281859a3a7e6ab7b1fcb958f3b235d490e99b3d908c"
+    },
+    {
+      "file": "10-local-map-mobile.png",
+      "sha256": "2491676c9ebddba3474d2412e2baa61d6426c8078f3b6a46fbf3de8dd054fc77"
+    }
+  ],
+  "fixture": {
+    "description": "Accepted first-tracks campaign plus completed B prerequisite derived from exact source actions and actual civic motor/routes in the pure runtime. No V107 A receipt initially; every A step below uses browser UI/native keyboard.",
+    "owner": "2026-09-20T10:00:00.000Z",
+    "profile": {
+      "hunterName": "QA V107 · étude située",
+      "rankId": "young-blood",
+      "honor": 0,
+      "clanMarks": 0,
+      "playTimeSeconds": 138
+    },
+    "inventory": {
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ],
+      "unlockedArmorIds": [
+        "hunter"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "trophies": [],
+    "legacyArchive": {
+      "version": 1,
+      "ownerCreatedAt": "2026-09-20T10:00:00.000Z",
+      "revision": 8,
+      "receipt": {
+        "sceneId": "D6-W-PNJ-ROLE-03",
+        "operationId": "port-separated-study-records-v106",
+        "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+        "phase": "completed",
+        "resumePhase": null,
+        "last": {
+          "x": 7353.808679787635,
+          "y": 5259.500774566257
+        },
+        "walked": 1006.3349722168505,
+        "cases": [
+          {
+            "id": "A",
+            "x": 7240,
+            "y": 5180,
+            "place": "support"
+          },
+          {
+            "id": "B",
+            "x": 7470,
+            "y": 5180,
+            "place": "support"
+          }
+        ],
+        "carrier": null,
+        "pickupWalked": null,
+        "interruptedCount": 0,
+        "uncertaintyRecorded": true
+      }
+    },
+    "legacyA": null,
+    "legacyB": null
+  },
+  "errors": [],
+  "sourceBefore": [
+    {
+      "file": "app/game/HomeworldArchiveComparisonV107.tsx",
+      "sha256": "04e333dfbf3146b289c4f575bc8357f081b83080f5804fa382a2641366e8dc41"
+    },
+    {
+      "file": "app/game/HomeworldArchiveComparisonWorldV107.tsx",
+      "sha256": "c76dbc53f1e2bc2c13bf11098ff6265b69fe90fd4a09109f8361d8ae33d8d3f8"
+    },
+    {
+      "file": "app/game/HomeworldArchiveComparisonV107.module.css",
+      "sha256": "91824a07eb09962adb00722ee3c5fcf74de89108ca46edf7fcda04859c5f4c90"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonDefinitionV107.ts",
+      "sha256": "c23c654897fc91f43054615d88ce8ded3bab40e0242bf0c4b07722c3733e7342"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonLedgerV107.ts",
+      "sha256": "c0a5a799fe951cf4850eff4a61136222b396a7030e73f1042491ea301daf6b1e"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonSolidsV107.ts",
+      "sha256": "11f514cffdf685a756b052369543267371174887e56a86890e3e0d908a025a40"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonV107.ts",
+      "sha256": "db46038550659353cf93bc82016f1f0779d130bf19b3cfd2aa7ff0e2a93f5424"
+    },
+    {
+      "file": "tests/helpers/archive-comparison-v107-route.mjs",
+      "sha256": "f4e54075088092b35e1c317a05c2b754809b2809554384714846d04449c52a54"
+    },
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "b489de4256a6f966c1ee3aab6f5d5ed9d627806744fe30dcb6e61c996df1b2d4"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "7d06b04538ab05d7a359fff7bad76ec0beb5cf7322ef4f49aa29ea9f4b466261"
+    },
+    {
+      "file": "app/game/HomeworldArchiveWorldV106.tsx",
+      "sha256": "ac5d96cd5a0b972fef67dcba3e8f0d36e2e835b25aa6e54b9695d25d4cec34f9"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.tsx",
+      "sha256": "61caf4fd0916c9e4369b76a6b1ca6779b0b209e3b21d9ba1dfca63d8afc4131b"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.module.css",
+      "sha256": "67dd39b845f524f0037a00f5e4ecf39f9a4dbe39284cca791b4ce3b8f61f406c"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveDefinitionV106.ts",
+      "sha256": "00abbffa9464bac97a74d78b9047cb11350302d1e04f60eb870fa3e3adb6842d"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveLedgerV106.ts",
+      "sha256": "cbd307cbe7374b542a16c1a6597ef65087f65da2b0f7d5df362be080da6ae6df"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveSolidsV106.ts",
+      "sha256": "fa00c983c41a8c4e236c574c8fb4f5ecc08101a33f695a19f86df8cd77cf7a88"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveV106.ts",
+      "sha256": "44e8eb79b319e01bd80f0eedd083572fa79918c202b05c47d6f5f20bed1dadaf"
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "2dea22888be4f28db64e7e2c2784ef2d92978de7c9b68e75309c43416e98dc8e"
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV83.ts",
+      "sha256": "936edef7b270913c84e61729ba1dca6b293d9219dd317251211d3265edda98af"
+    },
+    {
+      "file": "app/game/data/bibleArchiveSceneV106.json",
+      "sha256": "1460ecc3362a9ba4da794762e64dc36a110fade7233298808eafb23e8f6857f4"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "c21dd22e37b0654657c6c5fae3463972d2cbb404a869713c3afb1bd509d96c66"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "3d188f726510f6a3816148ca3e60c4dfcea3ef52b4bdadc8bf513b8a90425a98"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "e0f251e07fb4083dba3bcc6e168c6e7458fa81ce183990e3a43853f206c0807a"
+    },
+    {
+      "file": "scripts/qa-homeworld-archive-comparison-v107.mjs",
+      "sha256": "d5cc05e5f735a22d752651846b6e5ba3eed82683410d038fee626027b0d7bfb4"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/HomeworldArchiveComparisonV107.tsx",
+      "sha256": "04e333dfbf3146b289c4f575bc8357f081b83080f5804fa382a2641366e8dc41"
+    },
+    {
+      "file": "app/game/HomeworldArchiveComparisonWorldV107.tsx",
+      "sha256": "c76dbc53f1e2bc2c13bf11098ff6265b69fe90fd4a09109f8361d8ae33d8d3f8"
+    },
+    {
+      "file": "app/game/HomeworldArchiveComparisonV107.module.css",
+      "sha256": "91824a07eb09962adb00722ee3c5fcf74de89108ca46edf7fcda04859c5f4c90"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonDefinitionV107.ts",
+      "sha256": "c23c654897fc91f43054615d88ce8ded3bab40e0242bf0c4b07722c3733e7342"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonLedgerV107.ts",
+      "sha256": "c0a5a799fe951cf4850eff4a61136222b396a7030e73f1042491ea301daf6b1e"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonSolidsV107.ts",
+      "sha256": "11f514cffdf685a756b052369543267371174887e56a86890e3e0d908a025a40"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveComparisonV107.ts",
+      "sha256": "db46038550659353cf93bc82016f1f0779d130bf19b3cfd2aa7ff0e2a93f5424"
+    },
+    {
+      "file": "tests/helpers/archive-comparison-v107-route.mjs",
+      "sha256": "f4e54075088092b35e1c317a05c2b754809b2809554384714846d04449c52a54"
+    },
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "b489de4256a6f966c1ee3aab6f5d5ed9d627806744fe30dcb6e61c996df1b2d4"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "7d06b04538ab05d7a359fff7bad76ec0beb5cf7322ef4f49aa29ea9f4b466261"
+    },
+    {
+      "file": "app/game/HomeworldArchiveWorldV106.tsx",
+      "sha256": "ac5d96cd5a0b972fef67dcba3e8f0d36e2e835b25aa6e54b9695d25d4cec34f9"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.tsx",
+      "sha256": "61caf4fd0916c9e4369b76a6b1ca6779b0b209e3b21d9ba1dfca63d8afc4131b"
+    },
+    {
+      "file": "app/game/HomeworldArchiveV106.module.css",
+      "sha256": "67dd39b845f524f0037a00f5e4ecf39f9a4dbe39284cca791b4ce3b8f61f406c"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveDefinitionV106.ts",
+      "sha256": "00abbffa9464bac97a74d78b9047cb11350302d1e04f60eb870fa3e3adb6842d"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveLedgerV106.ts",
+      "sha256": "cbd307cbe7374b542a16c1a6597ef65087f65da2b0f7d5df362be080da6ae6df"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveSolidsV106.ts",
+      "sha256": "fa00c983c41a8c4e236c574c8fb4f5ecc08101a33f695a19f86df8cd77cf7a88"
+    },
+    {
+      "file": "app/game/systems/homeworldArchiveV106.ts",
+      "sha256": "44e8eb79b319e01bd80f0eedd083572fa79918c202b05c47d6f5f20bed1dadaf"
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "2dea22888be4f28db64e7e2c2784ef2d92978de7c9b68e75309c43416e98dc8e"
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV83.ts",
+      "sha256": "936edef7b270913c84e61729ba1dca6b293d9219dd317251211d3265edda98af"
+    },
+    {
+      "file": "app/game/data/bibleArchiveSceneV106.json",
+      "sha256": "1460ecc3362a9ba4da794762e64dc36a110fade7233298808eafb23e8f6857f4"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "c21dd22e37b0654657c6c5fae3463972d2cbb404a869713c3afb1bd509d96c66"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "3d188f726510f6a3816148ca3e60c4dfcea3ef52b4bdadc8bf513b8a90425a98"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "e0f251e07fb4083dba3bcc6e168c6e7458fa81ce183990e3a43853f206c0807a"
+    },
+    {
+      "file": "scripts/qa-homeworld-archive-comparison-v107.mjs",
+      "sha256": "d5cc05e5f735a22d752651846b6e5ba3eed82683410d038fee626027b0d7bfb4"
+    }
+  ],
+  "sourceUnchanged": true,
+  "completedAt": "2026-10-24T00:20:33.965Z"
+}

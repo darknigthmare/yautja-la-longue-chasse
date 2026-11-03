@@ -1,0 +1,64 @@
+{
+  "id": "scar-5h-left-native-attempt-02",
+  "fighterId": "scar",
+  "actionId": "M_F003_5H",
+  "sourceCell": "05_MOVES_PROPOSES!F7",
+  "sourcePlan": "app/game/data/pitWorkbookAnimationPlanV100.json",
+  "facing": "left",
+  "columns": 2,
+  "rows": 2,
+  "transparent_background": true,
+  "referenced_image_paths": [
+    "/workspace/yautja-la-longue-chasse/public/game/sprites/v100/pit/scar/scar-5M-left-native.png"
+  ],
+  "prompt": "Create a native clean transparent-alpha sprite study of the EXACT Scar character in the supplied reference. Landscape 1536 x 1024, precisely FOUR complete figures in TWO columns and TWO rows, every single figure faces LEFT. IMPORTANT: the reference image has one top-left calibration figure looking right. IGNORE that top-left calibration entirely. Use ONLY the THREE LEFT-FACING figures at upper-right, lower-left and lower-right of the supplied reference to preserve the left-facing character design and asymmetric anatomical ownership. No right-facing figures anywhere on the new page, and no calibration figure: all four cells are genuine stages of this ONE left-facing heavy melee move.\n\nSource action 05_MOVES_PROPOSES!F7, M_F003_5H, Frappe d'engagement: step forward, then a heavy close-contact strike using the melee weapon actually carried. This is a BODY STUDY ONLY, no gameplay mechanics, invented hit effects or implied certification. Preserve the same film-inspired Scar costume exactly: silver biomask and red details from reference, yellow/ochre spotted muscular skin, black dreadlocks with gold rings, layered silver shoulder plates, black body mesh, brown leather loincloth, metal greaves, complete clawed feet, small skull accessories and hip disc HOLSTERED. Shoulder cannon is inert and stays mounted without firing or glow. No shield or new equipment.\n\nANATOMY IS FIXED IN ALL FOUR POSES: the continuous full-length combistick spear is held by the anatomical LEFT hand, visibly gripping the shaft; that hand never lets go or swaps arms. The TWO wrist blades stay attached to the anatomical RIGHT forearm and move with that arm. This is a RIGHT-WRIST-BLADE heavy strike, never a spear strike. In the reference's left-facing view the spear-holding left hand is on the picture-right side of the body; preserve that ownership naturally. The right wrist-blade arm reaches picture-left in the contact pose. Keep both arms separate and traceable at every stage. Do not mirror any drawing or transpose equipment. Keep a single intact spear per figure, no duplicates, detached tips or bent shafts.\n\nPose order, reading order:\nUPPER-LEFT 0 PREPARATION: faces left, bends knees and coils the torso, right wrist-blade arm drawn back close to the body preparing a powerful strike; left hand holds the spear upright behind the left-facing action, spear tip fully visible. Lead foot is beginning a short forward step to the left.\nUPPER-RIGHT 1 CONTACT: faces left, finishes a clear planted forward step toward picture-left, hips and shoulder drive the anatomical RIGHT fist and its two attached wrist blades strongly forward at mid-height toward picture-left. This is visibly heavier and more extended than the preparation, a stable grounded lunging punch/slash with intact feet. LEFT hand still grips the same spear upright/slightly diagonal behind the torso on picture-right. No target, no impact graphic, no projectile.\nLOWER-LEFT 2 RETRACTION: faces left, weight starts to settle back, right wrist blades withdraw toward the torso and lower slightly after the strike, right elbow visibly bends. The left spear hand is still unchanged on the shaft, the spear stays complete. This is an anatomically distinct recovery drawing, not a copy of the contact or guard.\nLOWER-RIGHT 3 RETURN: faces left, returns to a stable nearly upright guarded stance with BOTH complete feet planted and the mask-to-soles body fully visible. Right wrist blades are relaxed low in front of the body, left hand still holds the spear. This upright return is the single fixed body-height calibration reference for the whole page, while remaining an actual action pose.\n\nMake ALL figures noticeably SMALLER than the source figures: approximately 300 pixels from mask crown to soles in this 1536x1024 landscape sheet; spear may be taller. Give each figure and every spear tip, blade, toe, elbow and dreadlock generous EMPTY transparent room, at least 65 pixels from page edges and around the center gutters. No overlapping cells, no cropped or border-touching pixels. Consistent character proportions and one fixed drawing scale across all four poses. Do not fit each pose independently to its cell.\n\nThe background must be genuinely EMPTY TRANSPARENT ALPHA, not a drawn black, gray, colored or checkerboard background. No halo, no ambient backlight, no dark fog, no floor, no ground shadow, no vignetting, no blur, no white outline and especially no magenta/purple fringe. Clean natural dark antialiased character contours, completely isolated original figures. Match the crisp outlined detailed sprite illustration of the reference. No labels, letters, numbers, layout lines, grid or text. Native redraw by the image tool only.",
+  "source": "/workspace/generated_images/exec-3982e0b9-ea80-498b-b0e7-9114f0d2d1d9.png",
+  "sourceSha256": "658a0587a4e2ca496c950028569c595bc5fec3ee614d164c760225845d17fee8",
+  "bytes": 1736766,
+  "width": 1536,
+  "height": 1024,
+  "tool": "OpenAI built-in image_gen",
+  "cpuPixelEditing": false,
+  "scope": "BODY_STUDY_ONLY",
+  "measurement": "art-source/v100/pit/scar/heavy-alpha/intake/003-scar-5h-left-native-measurement.json",
+  "producerBodyReferenceCandidate": {
+    "frameIndex": 3,
+    "headRoi": [
+      1005,
+      585,
+      85,
+      90
+    ],
+    "headTopY": 594,
+    "soleY": 980,
+    "bodyHeightPx": 386,
+    "meaning": "Standing return pose, anatomical mask crown to soles; spear tip, cannon and dreadlocks excluded; verify before admission"
+  },
+  "alphaReview": {
+    "noiseFloor": 2,
+    "visiblePixels": 261647,
+    "opaquePixels": 203338,
+    "magentaPixels": 0,
+    "borderPixels": 0
+  },
+  "poseOrder": [
+    "preparation",
+    "contact",
+    "retraction",
+    "return"
+  ],
+  "phaseTicksForInspection": [
+    16,
+    5,
+    13,
+    13
+  ],
+  "decision": "FAVORABLE_PRODUCER_REVIEW_REQUIRES_INDEPENDENT_REVIEW_AND_ADMISSION",
+  "producerReview": "All four figures face left. RIGHT forearm wrist blades coil, strike with a planted forward step, retract, then settle in guard. The continuous combistick remains in the anatomical LEFT hand on picture-right throughout. Cannon stays inert and disc holstered. Four safe alpha rectangles, no border contact and no measured magenta. The actual upright return provides a fixed per-page body-reference candidate; weapon tip excluded.",
+  "original": "art-source/v100/pit/scar/heavy-alpha/intake/003-scar-5h-left-native-original.png",
+  "independentVisualReviews": [
+    "release_review_v100: favorable producer",
+    "animation_engine_v100: favorable independent"
+  ],
+  "promptRecord": "art-source/v100/pit/scar/heavy-alpha/intake/003-scar-5h-left-native.prompt.json"
+}

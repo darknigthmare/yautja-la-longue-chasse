@@ -1,0 +1,49 @@
+{
+  "id": "artisan-05",
+  "role": "artisan",
+  "description": "Tall angular long-armed adult instrument maker, cool silver-gray skin with dense fine black mottles, small sharp eye ridges, correct compact four mandibles. Many short thick dreadlocks trimmed to shoulders and bound with evenly spaced dull bronze rings. Narrow long black leather apron over sleeveless brown cloth tunic, a high cross-body tool pouch. Both hands carefully calibrate a small alien metal measuring ring at chest height. Straight legs, narrow stance, bare clawed feet.",
+  "prompt": "Use case: precise-object-edit. Asset: individual full-body Yautja/Predator game NPC sprite. IMAGE 1 is the EXACT sprite to repair; IMAGE 2 is the authoritative 1987 Stan Winston Predator facial anatomy reference. Change ONLY the head/face area in image 1. Preserve this exact individual's body, complexion, proportions, all clothing, tools, hands, accessories, pose, lighting and painterly rendering, full framing, feet, and tendril hairstyle. Replace the defective tiny two-tube mouth with a large anatomically faithful cinematic Predator face matching image 2: FOUR DISTINCT FLESHY OUTER MANDIBLE LOBES, two upper cheek lobes with inward curved tusks AND two larger lower hanging fleshy lobes with long tusks pointing upward, arrayed around a SEPARATE smaller inner toothed mouth. Clearly visible upper and lower mandibular flesh on both sides, not two tubes, not four teeth alone, not a human face. Broad domed posterior cranium and heavy ridged brow, eyes deep-set, no human nose or lips. Keep original skin color and markings, and natural thick anatomical dreadlock tendrils. Head near-front three-quarter so all four jaw lobes read, mouth moderately open. Keep the full character and every held tool completely inside canvas with empty transparent margins. One character only. Actual transparent RGBA background, preserve transparency; no backdrop, glow, ground shadow, text, watermark, or extra objects. Preserve exact slot identity: Tall angular long-armed adult instrument maker, cool silver-gray skin with dense fine black mottles, small sharp eye ridges, correct compact four mandibles. Many short thick dreadlocks trimmed to shoulders and bound with evenly spaced dull bronze rings. Narrow long black leather apron over sleeveless brown cloth tunic, a high cross-body tool pouch. Both hands carefully calibrate a small alien metal measuring ring at chest height. Straight legs, narrow stance, bare clawed feet.",
+  "status": "validated",
+  "original_path": "/workspace/scratch/41fc0564188e/generated_images/exec-aeb45144-1c6d-47cb-b201-5ef916ab589f.png",
+  "path": "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-05.png",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alpha_bounds": [
+    65,
+    0,
+    1010,
+    1536
+  ],
+  "transparent_fraction": 0.6680564880371094,
+  "sha256": "c40cd147323214141e2136fe0417d42e28e6e92ffc0b4f21b077034e097d2f08",
+  "byte_count": 2056059,
+  "validation": {
+    "original_bytes_preserved": true,
+    "genuine_transparency": true,
+    "separate_individual": true,
+    "full_body_visually_checked": true,
+    "face_visually_checked": true,
+    "four_mandibles_visually_checked": true
+  },
+  "references": [
+    "/workspace/scratch/41fc0564188e/npc-generation/artisan/artisan-05.png",
+    "/workspace/scratch/41fc0564188e/npc-reference/stan-winston-predator-test.jpg"
+  ],
+  "output_hint": "Generated images are saved to /workspace/scratch/41fc0564188e/generated_images as /workspace/scratch/41fc0564188e/generated_images/exec-aeb45144-1c6d-47cb-b201-5ef916ab589f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "githubBlobSha": "ac2f3493755a16bc5e00b176d0c2845b8672b658",
+  "source": "/workspace/scratch/41fc0564188e/generated_images/exec-aeb45144-1c6d-47cb-b201-5ef916ab589f.png",
+  "gitBlobSha1": "ac2f3493755a16bc5e00b176d0c2845b8672b658",
+  "maxBorderAlpha": 2,
+  "method": "built-in image_gen, anatomy-only edit of exact individual sprite",
+  "ancestor": {
+    "path": "/workspace/scratch/41fc0564188e/npc-generation-revisions/artisan/artisan-05-before-face-review-036a99caf684.png",
+    "sha256": "036a99caf684eb72743b4c909880f5578220e139590d3a373f16661fb9483d4e"
+  }
+}

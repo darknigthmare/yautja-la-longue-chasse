@@ -1,0 +1,162 @@
+{
+  "version": 57,
+  "status": "PASS targeted public capture review",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "publishedCommitReportedByParent": "7f318ad",
+  "publicationStateReportedByParent": "READY",
+  "sourceReport": "work-local/v57/qa/equipment-drone-public/report.json",
+  "browserCheckedAt": "2026-09-30T10:58:23.655Z",
+  "independentReviewAt": "2026-09-30T11:00:21.845Z",
+  "machineGroups": 6,
+  "machineRealBouts": 8,
+  "checks": [
+    {
+      "name": "jungle-final-right-desktop",
+      "nativeFacing": "right",
+      "noMirroring": true,
+      "noPlasma": true,
+      "noOffensiveResourceGain": true,
+      "resourceCheck": {
+        "fromFrame": 19,
+        "toFrame": 75,
+        "distance": 360,
+        "passiveGain": 5,
+        "interval": 12
+      },
+      "selectionRetained": true
+    },
+    {
+      "name": "jungle-final-left-desktop",
+      "nativeFacing": "left",
+      "noMirroring": true,
+      "noPlasma": true,
+      "noOffensiveResourceGain": true,
+      "resourceCheck": {
+        "fromFrame": 13,
+        "toFrame": 61,
+        "distance": 360,
+        "passiveGain": 4,
+        "interval": 12
+      },
+      "selectionRetained": true
+    },
+    {
+      "name": "falconer-slot-0",
+      "sameEntityOnRecall": 1,
+      "manualRecall": true,
+      "singleSensor": true,
+      "scanApplied": true,
+      "noDamageOrOffensiveResourceGain": true,
+      "recallResource": {
+        "fromFrame": 69,
+        "toFrame": 149,
+        "distance": 799.5,
+        "passiveGain": 0,
+        "interval": 12
+      },
+      "scanResource": {
+        "fromFrame": 13,
+        "toFrame": 116,
+        "distance": 360,
+        "passiveGain": 8,
+        "interval": 12
+      },
+      "actualFrames": 103
+    },
+    {
+      "name": "falconer-slot-1",
+      "sameEntityOnRecall": 1,
+      "manualRecall": true,
+      "singleSensor": true,
+      "scanApplied": true,
+      "noDamageOrOffensiveResourceGain": true,
+      "recallResource": {
+        "fromFrame": 68,
+        "toFrame": 148,
+        "distance": 799.5,
+        "passiveGain": 0,
+        "interval": 12
+      },
+      "scanResource": {
+        "fromFrame": 13,
+        "toFrame": 116,
+        "distance": 360,
+        "passiveGain": 8,
+        "interval": 12
+      },
+      "actualFrames": 103
+    },
+    {
+      "name": "jungle-final-right-mobile",
+      "nativeFacing": "right",
+      "noMirroring": true,
+      "noPlasma": true,
+      "noOffensiveResourceGain": true,
+      "resourceCheck": {
+        "fromFrame": 13,
+        "toFrame": 59,
+        "distance": 360,
+        "passiveGain": 3,
+        "interval": 12
+      },
+      "selectionRetained": true
+    },
+    {
+      "name": "jungle-final-left-mobile",
+      "nativeFacing": "left",
+      "noMirroring": true,
+      "noPlasma": true,
+      "noOffensiveResourceGain": true,
+      "resourceCheck": {
+        "fromFrame": 13,
+        "toFrame": 59,
+        "distance": 360,
+        "passiveGain": 3,
+        "interval": 12
+      },
+      "selectionRetained": true
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpFailures": [],
+  "allLocalStorageBytesUnchanged": true,
+  "reviewedCaptures": [
+    {
+      "file": "work-local/v57/qa/equipment-drone-public/jungle-final-no-cannon-right-desktop.png",
+      "sha256": "f9a5bf0c0974b290d2f318e509293700a75808a091ebb3a477b08fbf0d535e0a",
+      "actuallyViewed": true
+    },
+    {
+      "file": "work-local/v57/qa/equipment-drone-public/jungle-final-no-cannon-left-desktop.png",
+      "sha256": "dffdd95c6925d3c705461b0437a476bdfb0a7d9627f68655853f6f83dedd39e2",
+      "actuallyViewed": true
+    },
+    {
+      "file": "work-local/v57/qa/equipment-drone-public/jungle-final-no-cannon-right-mobile.png",
+      "sha256": "548cd7af479227dc1a02b163f0a91ab60c8c1aec7e99bb23074ef61b1e00c819",
+      "actuallyViewed": true
+    },
+    {
+      "file": "work-local/v57/qa/equipment-drone-public/jungle-final-no-cannon-left-mobile.png",
+      "sha256": "0d2609519586a9851a4c3f538677b5174eb487d3df0df47ed531fc6767a84ae6",
+      "actuallyViewed": true
+    },
+    {
+      "file": "work-local/v57/qa/equipment-drone-public/jungle-final-selection-right-1280.png",
+      "sha256": "2873e0c19fef65781aec43c8cca67763ce76402f2939bd9c59a4ee52fd249575",
+      "actuallyViewed": true
+    }
+  ],
+  "visualFindings": [
+    "Both native Jungle facings remain distinct and look toward the opponent on desktop and mobile.",
+    "Whole silhouettes without cannon or harness, support feet on stage floor, readable unavailable-technique HUD.",
+    "Published selection now explicitly warns that removed equipment can disable a technique."
+  ],
+  "limits": [
+    "Five public images visually inspected; the four public Falconer captures were not re-inspected in this targeted pass. Its public behavior is supported by the complete machine report, and local visuals were previously reviewed.",
+    "No new Jungle animation; two native static poses only.",
+    "Falconer artwork remains the existing procedural cyan sensor.",
+    "Mobile check is Chromium landscape emulation, not a physical handset."
+  ]
+}

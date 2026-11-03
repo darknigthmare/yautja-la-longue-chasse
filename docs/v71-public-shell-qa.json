@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "at": "2026-10-02T01:41:36.5Z",
+  "checks": [
+    {
+      "name": "public-game-http",
+      "passed": true,
+      "details": {
+        "status": 200
+      }
+    },
+    {
+      "name": "actual-account-dialog-and-inert-menu",
+      "passed": true
+    },
+    {
+      "name": "login-does-not-reject-legacy-password-length",
+      "passed": true
+    },
+    {
+      "name": "new-account-password-minimum",
+      "passed": true
+    },
+    {
+      "name": "real-provider-cors-and-auth-settings",
+      "passed": true,
+      "details": {
+        "authSettingsStatus": 200,
+        "emailEnabled": true,
+        "signupDisabled": false,
+        "anonymousTableStatus": 401
+      }
+    },
+    {
+      "name": "real-provider-anonymous-table-refused",
+      "passed": true,
+      "details": {
+        "status": 401
+      }
+    },
+    {
+      "name": "actual-new-game-menu",
+      "passed": true
+    },
+    {
+      "name": "native-bitmap-http-and-identity:game/homeworld/v70/temple-modules.png",
+      "passed": true,
+      "details": {
+        "http": 200,
+        "bytes": 2390561,
+        "sha256": "5490c9a2f87c6fe4b57364c72fc207362bf3d5d3f7ae335a4057136cf861ef93"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity:game/homeworld/v71/outskirts-kit.png",
+      "passed": true,
+      "details": {
+        "http": 200,
+        "bytes": 2469209,
+        "sha256": "9041169d7769db7cfb655a9166a87eab91332b508527a3cf16a7a8f7cfe306f4"
+      }
+    },
+    {
+      "name": "native-bitmap-http-and-identity:game/homeworld/v71/cinder-ground.png",
+      "passed": true,
+      "details": {
+        "http": 200,
+        "bytes": 3543109,
+        "sha256": "a8e5811e20dc9ff00c472d2cfeca9a50d81931db56210be0b4129387f531e4a3"
+      }
+    },
+    {
+      "name": "no-javascript-errors",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "errors": [],
+  "limits": "Read-only real provider CORS/settings and anonymous refusal; no user login, account creation, email or authenticated cloud transfer is certified here. Separate recipes verify gameplay and simulated transport.",
+  "sourceCommit": "e409775173407a2cb21f42bb57eebc947a7003a8",
+  "deploymentId": "dpl_2hLyn51LArJ8tmJ1Tk9MfX34JuEa",
+  "captureReview": {
+    "inspected": 2,
+    "count": 2,
+    "status": "PASS",
+    "notes": "Actual account signup panel and new game menu inspected at1440x900; no cropped controls or horizontal overflow."
+  }
+}

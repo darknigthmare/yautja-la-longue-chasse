@@ -1,0 +1,145 @@
+{
+  "version": "V84",
+  "baseCommit": "9456292f1e60f506b0c982187ca782eefbab2a81",
+  "checkedAtUtc": "2026-10-04T19:59:58.294144+00:00",
+  "status": "passed",
+  "manifestSha256": "a61de4c3c0b52aa19a485209b4b94beceec54c46bfc3d7f39053e351efe1c0f7",
+  "manifestUnchangedDuringChecks": true,
+  "sprites": 640,
+  "roles": 32,
+  "variantsPerRole": 20,
+  "facialReviews": 640,
+  "sourcePngBytesPreserved": true,
+  "declaredNpcIdentities": 444,
+  "addedNpcIdentities": 10,
+  "checks": [
+    {
+      "name": "tests",
+      "command": [
+        "node",
+        "--test",
+        "tests/homeworld-npc-variants-v84.test.mjs",
+        "tests/homeworld-npc-rendering-v84.test.mjs",
+        "tests/homeworld-monument-interiors-v81.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "passed",
+      "log": "art-source/v84/npc-variants/verification/npc-final-tests.log",
+      "resumedFromCompletedCheck": true,
+      "tests": 23,
+      "passed": 23,
+      "failed": 0,
+      "logSha256": "9f97ce2a637f358ea1f9b4c61e6c0da3be1a16f836c70d126d5a32f4cad13e0b"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "status": "passed",
+      "log": "art-source/v84/npc-variants/verification/npc-final-typecheck.log",
+      "resumedFromCompletedCheck": true,
+      "logSha256": "47d3893bcae7bf8c9cc220e4e4e3e92979a3f8f596cddaee97fba7409251a69b"
+    },
+    {
+      "name": "eslint",
+      "command": [
+        "npx",
+        "eslint",
+        "app/game/HomeworldCivilianV72.tsx",
+        "app/game/HomeworldCntlipHostsV77.tsx",
+        "app/game/HomeworldInteriorSurface.tsx",
+        "app/game/HomeworldLavaSceneV77.tsx",
+        "app/game/HomeworldNpcSpriteV84.tsx",
+        "app/game/HomeworldPointVisualV64.tsx",
+        "app/game/HomeworldPopulationV68.tsx",
+        "app/game/HomeworldRegionV68.tsx",
+        "app/game/HomeworldVillageLifeV69.tsx",
+        "app/game/HomeworldWorldSceneV77.tsx",
+        "app/game/TribeArtGallery.tsx",
+        "app/game/systems/homeworldMonumentInteriorCodexV81.ts",
+        "app/game/systems/homeworldMonumentInteriorsV81.ts",
+        "app/game/systems/homeworldNpcVariantsV84.ts",
+        "app/game/systems/homeworldUrbanPopulationV78.ts"
+      ],
+      "exitCode": 0,
+      "status": "passed",
+      "log": "art-source/v84/npc-variants/verification/npc-final-eslint.log",
+      "resumedFromCompletedCheck": true,
+      "logSha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f"
+    },
+    {
+      "name": "audio-manifest",
+      "command": [
+        "node",
+        "scripts/build-audio-manifest.mjs"
+      ],
+      "exitCode": 0,
+      "status": "passed",
+      "durationSeconds": 0.22,
+      "log": "art-source/v84/npc-variants/verification/npc-final-audio-manifest.log",
+      "logSha256": "ad9f4d63644fd8da559ee252b43782238de313e493a88c8cf4fd1bf7e741f3ac"
+    },
+    {
+      "name": "production-build",
+      "command": [
+        "npx",
+        "next",
+        "build",
+        "--webpack"
+      ],
+      "exitCode": 0,
+      "status": "passed",
+      "durationSeconds": 73.97,
+      "log": "art-source/v84/npc-variants/verification/npc-final-production-build.log",
+      "logSha256": "0466631866fe19567aebbbb8d75d8f1f74dee4d6a5565d9573b9921dfe286773"
+    },
+    {
+      "name": "compiled-css",
+      "command": [
+        "node",
+        "scripts/verify-pit-built-css-v61.mjs"
+      ],
+      "exitCode": 0,
+      "status": "passed",
+      "durationSeconds": 0.2,
+      "log": "art-source/v84/npc-variants/verification/npc-final-compiled-css.log",
+      "logSha256": "3b4ee605c4b93da66ed4bcc5a3e8f2580c1f87a971134d5667593881f61848c4"
+    }
+  ],
+  "browserNavigation": {
+    "status": "not-run",
+    "note": "Rendu React statique et tests de géométrie ; aucune navigation réelle de navigateur certifiée."
+  },
+  "scope": {
+    "animation": "640 poses fixes individuelles ; aucun nouveau cycle de marche.",
+    "historicalTribes": "200 images de cinq tribus historiques, ajoutées au catalogue ; aucun nouveau lieu jouable.",
+    "animalStaff": "Personnel des écuries et du chenil placé au port ; aucun nouveau bâtiment ou système de dressage.",
+    "storySpritesPreserved": [
+      "hunt-king",
+      "terrace-instructor"
+    ]
+  },
+  "knownBaselineTestFailures": [
+    {
+      "suite": "homeworld-identity-v72",
+      "assertion": "functional wings",
+      "expected": 39,
+      "actual": 47
+    },
+    {
+      "suite": "homeworld-identity-v72",
+      "assertion": "codex entries",
+      "expected": 87,
+      "actual": 101
+    },
+    {
+      "suite": "homeworld-world-native-v77",
+      "assertion": "residence-clans-1 overlaps council stair paint"
+    }
+  ],
+  "anatomyReference": "https://www.stanwinstonschool.com/blog/predator-behind-the-scenes-creating-the-mechanical-head-face-and-mouth-for-the-jungle-hunter"
+}

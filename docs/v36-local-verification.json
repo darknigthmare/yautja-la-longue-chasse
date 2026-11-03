@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "version": "V36",
+  "checkedAt": "2026-09-19T16:17:48.633Z",
+  "tests": {
+    "total": 1205,
+    "passed": 1205,
+    "failed": 0
+  },
+  "lint": "passed",
+  "builds": {
+    "next": "passed --webpack; existing Windows junctions unsupported by Turbopack locally",
+    "vinext": "passed"
+  },
+  "browser": {
+    "url": "http://localhost:4174",
+    "version": "V36",
+    "checkedAt": "2026-09-19T16:17:04.316Z",
+    "checks": [
+      "Historical Elder recognition preserved; nursery does not require a later hunt; all seven rites clearly unfinished.",
+      "Five Homeworld families and ten proposed preserves visible; original dark-surface/underground-forest rule retained.",
+      "All 100 text profiles present; exact ID, accent-insensitive search and empty-result recovery verified.",
+      "390px layout has no horizontal overflow; returning to menu leaves all localStorage bytes unchanged.",
+      "Existing adult campaign still opens its ship with THE PIT access."
+    ],
+    "errors": [],
+    "failedRequests": [],
+    "limitations": [
+      "No playable youth chapter or new art claimed.",
+      "No physical controller or PC package verification in this run."
+    ]
+  },
+  "logSha256": {
+    "tests-release.log": "f93a8b8c42632a779988d59f42ff5c5b0c95f0325b362ef58bb6a132579b7c12",
+    "lint-release.log": "1129f51762e9e6aae60a2a17d11f8aad9460b83d4d0dc8fd8bf87f99b78437f1",
+    "next-build-release.log": "0b945b619ae80214133318c0dabc213f62eacab8ba7e68e0d7b646c47bf96a83",
+    "vinext-build-final.log": "3d4bb387343f6d617a3efc1ddc276de31fc1a18f4f846d0e99c56f4965b31de9",
+    "browser-release.log": "9492f0b90ac9481f3e0d0a95d8b6c955c2c9bd8adf9186009cf0525134c48aa4"
+  },
+  "production": "Verified separately after deployment",
+  "desktop": "No new PC package; previously delivered V35 preserved",
+  "media": {
+    "userReferenceImagesInspected": 3,
+    "newGeneratedPacksImported": 0,
+    "newRuntimeClips": 0
+  },
+  "limitations": [
+    "Design dossier and pure narrative/import foundations; youth chapters remain unimplemented.",
+    "Only nine recent accessible ChatGPT sources; four long messages truncated and generated attachments unavailable."
+  ]
+}

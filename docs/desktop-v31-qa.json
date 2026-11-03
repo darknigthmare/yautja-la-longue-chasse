@@ -1,0 +1,49 @@
+{
+  "format": "yautja-desktop-v31-qa",
+  "version": 1,
+  "passed": true,
+  "sourceCommit": "c3f39e080197e639e10e68672101ad12ee394bd9",
+  "runtimeCommit": "c3f39e080197e639e10e68672101ad12ee394bd9",
+  "desktopVersion": "1.0.31",
+  "contentVersion": "V31",
+  "sourceDigest": "ab468a19b161c3909cd45b259399b0bd4959c9ea9bcdcfd9698545d7340aa71c",
+  "sourceQualification": {
+    "qaRelease": {
+      "passed": true,
+      "testsPassed": 1103,
+      "testsTotal": 1103
+    },
+    "biomePairsAvailable": 464,
+    "npmAuditVulnerabilities": 0,
+    "localBrowserQa": "PASS"
+  },
+  "runtime": {
+    "passed": true,
+    "testedAt": "2026-09-12T16:15:46.160Z"
+  },
+  "artifacts": {
+    "executable": {
+      "path": "tmp/desktop-release/v31/Yautja-La-Longue-Chasse-win32-x64/Yautja-La-Longue-Chasse.exe",
+      "sha256": "6459cd47f201c11965123cce7a7580f54f6199662fae3d421a3f04d946547c62"
+    },
+    "asar": {
+      "path": "tmp/desktop-release/v31/Yautja-La-Longue-Chasse-win32-x64/resources/app.asar",
+      "sha256": "fe31fc3ff906114583cc40647da5c14fffac173eee50774636d1fdf70a6333b6",
+      "entries": 2132
+    },
+    "zip": {
+      "path": "tmp/desktop-release/v31/Yautja-La-Longue-Chasse-PC-V31.zip",
+      "passed": true,
+      "bytes": 465811593,
+      "sha256": "c3c222f1a61cada9e04d0e812e72abfdbbb19198edc4a951bbbb3b0cfac97e1d",
+      "entries": 77,
+      "testedAt": "2026-09-12T16:16:48.992Z"
+    }
+  },
+  "limits": [
+    "No physical controller certification.",
+    "No target-hardware performance certification.",
+    "No complete commercial-game certification.",
+    "264 animation entries remain missing."
+  ]
+}

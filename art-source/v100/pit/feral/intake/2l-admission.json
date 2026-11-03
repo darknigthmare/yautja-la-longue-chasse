@@ -1,0 +1,600 @@
+{
+  "sourceCell": "05_MOVES_PROPOSES!G10",
+  "records": [
+    {
+      "source": "art-source/v100/pit/feral/intake/002-crouch-2l.png",
+      "destination": "public/game/sprites/v100/pit/feral/002-crouch-2l.png",
+      "bodyHeightPx": 426,
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            375,
+            0,
+            367,
+            505
+          ],
+          "visibleRect": [
+            425,
+            150,
+            277,
+            329
+          ],
+          "alphaPixels": 50745,
+          "borderPixels": 0,
+          "visiblePixelSha256": "dc842788af307b004f33048467ba56db1af01ff70c231282fea7f894aa623514",
+          "pivotCandidate": [
+            79,
+            479
+          ],
+          "visibleHeightCandidate": 329,
+          "pivot": [
+            187.5,
+            477
+          ]
+        },
+        {
+          "index": 2,
+          "row": 0,
+          "column": 2,
+          "rect": [
+            741,
+            0,
+            430,
+            505
+          ],
+          "visibleRect": [
+            781,
+            211,
+            367,
+            268
+          ],
+          "alphaPixels": 49053,
+          "borderPixels": 0,
+          "visiblePixelSha256": "a481041c523ae031fb537f961d839222bd9863efbd53279262d7ef98b25aabf4",
+          "pivotCandidate": [
+            68.5,
+            479
+          ],
+          "visibleHeightCandidate": 268,
+          "pivot": [
+            180.5,
+            475
+          ]
+        },
+        {
+          "index": 3,
+          "row": 0,
+          "column": 3,
+          "rect": [
+            1170,
+            0,
+            366,
+            505
+          ],
+          "visibleRect": [
+            1194,
+            155,
+            278,
+            324
+          ],
+          "alphaPixels": 50979,
+          "borderPixels": 0,
+          "visiblePixelSha256": "cc1fd5717631e158461da706312b1e54b39b2e721d465e85345603172a518617",
+          "pivotCandidate": [
+            53,
+            479
+          ],
+          "visibleHeightCandidate": 324,
+          "pivot": [
+            163,
+            477
+          ]
+        }
+      ]
+    },
+    {
+      "source": "art-source/v100/pit/feral/intake/013-crouch-2l-left.png",
+      "destination": "public/game/sprites/v100/pit/feral/013-crouch-2l-left.png",
+      "bodyHeightPx": 619,
+      "admittedIndices": [
+        1,
+        2,
+        3
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "row": 0,
+          "column": 1,
+          "rect": [
+            549,
+            0,
+            475,
+            838
+          ],
+          "visibleRect": [
+            614,
+            254,
+            373,
+            464
+          ],
+          "alphaPixels": 99382,
+          "borderPixels": 0,
+          "visiblePixelSha256": "6763f0ca89a453f57a32e205ecb13370c8991422a794cd449ffa3af7b13afb4b",
+          "pivotCandidate": [
+            116,
+            718
+          ],
+          "visibleHeightCandidate": 464,
+          "pivot": [
+            254,
+            715
+          ]
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 0,
+          "rect": [
+            0,
+            837,
+            598,
+            699
+          ],
+          "visibleRect": [
+            26,
+            982,
+            541,
+            436
+          ],
+          "alphaPixels": 102657,
+          "borderPixels": 0,
+          "visiblePixelSha256": "4a3616c1c83f6a4d8079de74a5f3c7a5b9b15f399975c1a8cc1ad12f0ae68232",
+          "pivotCandidate": [
+            242.5,
+            581
+          ],
+          "visibleHeightCandidate": 436,
+          "pivot": [
+            382.5,
+            578
+          ]
+        },
+        {
+          "index": 3,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            597,
+            837,
+            427,
+            699
+          ],
+          "visibleRect": [
+            628,
+            957,
+            377,
+            475
+          ],
+          "alphaPixels": 103476,
+          "borderPixels": 0,
+          "visiblePixelSha256": "0ab54fe67830525b785e91f40ddacd72b1999d3edd91eae0528007673c5b8bd0",
+          "pivotCandidate": [
+            76.5,
+            595
+          ],
+          "visibleHeightCandidate": 475,
+          "pivot": [
+            222.5,
+            592
+          ]
+        }
+      ]
+    }
+  ],
+  "admission": {
+    "fighterId": "feral-hunter",
+    "actionId": "M_F006_2L",
+    "appearanceId": "runtime-default",
+    "atlasId": "feral-source-2l-v100",
+    "clipIds": [
+      "workbook.M_F006_2L"
+    ],
+    "combatClipIds": [
+      "pit.crouch.light.startup",
+      "pit.crouch.light.active",
+      "pit.crouch.light.recovery"
+    ],
+    "definition": {
+      "fighterId": "feral-hunter",
+      "bodyHeightPx": 426,
+      "pageBodyHeightPx": {
+        "feral-source-2l-v100-002": 426,
+        "feral-source-2l-v100-013": 619
+      },
+      "visibleFrameBounds": [
+        {
+          "pageId": "feral-source-2l-v100-002",
+          "rect": [
+            375,
+            0,
+            367,
+            505
+          ],
+          "visibleRect": [
+            425,
+            150,
+            277,
+            329
+          ]
+        },
+        {
+          "pageId": "feral-source-2l-v100-002",
+          "rect": [
+            741,
+            0,
+            430,
+            505
+          ],
+          "visibleRect": [
+            781,
+            211,
+            367,
+            268
+          ]
+        },
+        {
+          "pageId": "feral-source-2l-v100-002",
+          "rect": [
+            1170,
+            0,
+            366,
+            505
+          ],
+          "visibleRect": [
+            1194,
+            155,
+            278,
+            324
+          ]
+        },
+        {
+          "pageId": "feral-source-2l-v100-013",
+          "rect": [
+            549,
+            0,
+            475,
+            838
+          ],
+          "visibleRect": [
+            614,
+            254,
+            373,
+            464
+          ]
+        },
+        {
+          "pageId": "feral-source-2l-v100-013",
+          "rect": [
+            0,
+            837,
+            598,
+            699
+          ],
+          "visibleRect": [
+            26,
+            982,
+            541,
+            436
+          ]
+        },
+        {
+          "pageId": "feral-source-2l-v100-013",
+          "rect": [
+            597,
+            837,
+            427,
+            699
+          ],
+          "visibleRect": [
+            628,
+            957,
+            377,
+            475
+          ]
+        }
+      ],
+      "atlas": {
+        "schemaVersion": 1,
+        "id": "feral-source-2l-v100",
+        "characterId": "feral-hunter",
+        "variantId": "body-default-v100",
+        "sourceKind": "authored-frames",
+        "status": "validated",
+        "pages": [
+          {
+            "id": "feral-source-2l-v100-002",
+            "src": "/game/sprites/v100/pit/feral/002-crouch-2l.png",
+            "width": 1536,
+            "height": 1024,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          },
+          {
+            "id": "feral-source-2l-v100-013",
+            "src": "/game/sprites/v100/pit/feral/013-crouch-2l-left.png",
+            "width": 1024,
+            "height": 1536,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          }
+        ],
+        "clips": [
+          {
+            "id": "workbook.M_F006_2L",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-2l-v100-002",
+                "rect": [
+                  375,
+                  0,
+                  367,
+                  505
+                ],
+                "pivot": [
+                  187.5,
+                  477
+                ],
+                "durationTicks": 6
+              },
+              {
+                "pageId": "feral-source-2l-v100-002",
+                "rect": [
+                  741,
+                  0,
+                  430,
+                  505
+                ],
+                "pivot": [
+                  180.5,
+                  475
+                ],
+                "durationTicks": 3
+              },
+              {
+                "pageId": "feral-source-2l-v100-002",
+                "rect": [
+                  1170,
+                  0,
+                  366,
+                  505
+                ],
+                "pivot": [
+                  163,
+                  477
+                ],
+                "durationTicks": 12
+              }
+            ]
+          },
+          {
+            "id": "pit.crouch.light.startup",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-2l-v100-002",
+                "rect": [
+                  375,
+                  0,
+                  367,
+                  505
+                ],
+                "pivot": [
+                  187.5,
+                  477
+                ],
+                "durationTicks": 6
+              }
+            ]
+          },
+          {
+            "id": "pit.crouch.light.active",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-2l-v100-002",
+                "rect": [
+                  741,
+                  0,
+                  430,
+                  505
+                ],
+                "pivot": [
+                  180.5,
+                  475
+                ],
+                "durationTicks": 3
+              }
+            ]
+          },
+          {
+            "id": "pit.crouch.light.recovery",
+            "facing": "right",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-2l-v100-002",
+                "rect": [
+                  1170,
+                  0,
+                  366,
+                  505
+                ],
+                "pivot": [
+                  163,
+                  477
+                ],
+                "durationTicks": 12
+              }
+            ]
+          },
+          {
+            "id": "workbook.M_F006_2L",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-2l-v100-013",
+                "rect": [
+                  549,
+                  0,
+                  475,
+                  838
+                ],
+                "pivot": [
+                  254,
+                  715
+                ],
+                "durationTicks": 6
+              },
+              {
+                "pageId": "feral-source-2l-v100-013",
+                "rect": [
+                  0,
+                  837,
+                  598,
+                  699
+                ],
+                "pivot": [
+                  382.5,
+                  578
+                ],
+                "durationTicks": 3
+              },
+              {
+                "pageId": "feral-source-2l-v100-013",
+                "rect": [
+                  597,
+                  837,
+                  427,
+                  699
+                ],
+                "pivot": [
+                  222.5,
+                  592
+                ],
+                "durationTicks": 12
+              }
+            ]
+          },
+          {
+            "id": "pit.crouch.light.startup",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-2l-v100-013",
+                "rect": [
+                  549,
+                  0,
+                  475,
+                  838
+                ],
+                "pivot": [
+                  254,
+                  715
+                ],
+                "durationTicks": 6
+              }
+            ]
+          },
+          {
+            "id": "pit.crouch.light.active",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-2l-v100-013",
+                "rect": [
+                  0,
+                  837,
+                  598,
+                  699
+                ],
+                "pivot": [
+                  382.5,
+                  578
+                ],
+                "durationTicks": 3
+              }
+            ]
+          },
+          {
+            "id": "pit.crouch.light.recovery",
+            "facing": "left",
+            "status": "validated",
+            "ticksPerSecond": 60,
+            "loop": false,
+            "frames": [
+              {
+                "pageId": "feral-source-2l-v100-013",
+                "rect": [
+                  597,
+                  837,
+                  427,
+                  699
+                ],
+                "pivot": [
+                  222.5,
+                  592
+                ],
+                "durationTicks": 12
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "review": {
+      "status": "validated",
+      "scope": "source-G10-2L-body-cycle",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/feral/002-crouch-2l.png": "9cc63fc5a91565f6bb281c11138000e3b1078245581aabd65b60d53d372eb605",
+        "/game/sprites/v100/pit/feral/013-crouch-2l-left.png": "d6faa6692304c6191bc28f1ee1d3e8856603a62b263c320f3de4f9e7f169fdb6"
+      },
+      "notes": "Originaux PNG copiés inchangés ; trois vrais dessins articulés par côté, calibration debout exclue. Double revue root/QA et texte exact G10 relu. Pivots manuels entre les deux appuis, soles alpha128 revues ; référence debout fixe indépendante par page, jamais par pose. Raccordement visuel aux phases de la posture existante, règles/durées du duel conservées ; propriétés de garde, anti-air, dégâts et cancels Excel non implémentés."
+    }
+  }
+}

@@ -1,0 +1,688 @@
+{
+  "version": "MMK-20261103-PASS7",
+  "date": "2026-11-03",
+  "baselineCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+  "previousDeliveryCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+  "status": "GENERATED_REVIEWED_SOURCE_ART_CANDIDATES",
+  "previousSelectedPNGCount": 70,
+  "plannedAdditionalPNGCount": 13,
+  "targetTotalPNGCount": 83,
+  "newV81Targets": 0,
+  "newBuildingIdentities": 0,
+  "newAssetPlan": [
+    {
+      "area": "market",
+      "productionPass": 7,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Conserver la vue exacte de la référence ; ni conversion à 0°/35°, ni angle réel mesuré, ni échelle de pixels commune ou raccord parfait revendiqués. Aucun miroir, recadrage, padding ou redimensionnement des sorties.",
+      "id": "HWM162-S22",
+      "priority": "P1",
+      "label": "Contenant vertical du chariot autonome",
+      "kind": "Composant de chargement",
+      "targetIds": [
+        "target-v81-64-166",
+        "target-v81-64-170"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v78/port-cargo-sorting-cart.png"
+      ],
+      "sourceAssetIds": [],
+      "expectedPath": "sprites/market/HWM162-S22-upright-cart-container.png",
+      "complements": [
+        "HWM162-S18",
+        "HWM162-S07",
+        "HWM162-S12"
+      ],
+      "gapClassification": "EXACT_UPRIGHT_LOAD_FUSED_IN_CART",
+      "purpose": "Garnir séparément un des trois logements verticaux du chariot S18 avec le contenant rectangulaire visible dans sa source chargée.",
+      "placementNote": "Régler la largeur et la hauteur dans le logement ; la traversée des barres fixes de S18, le pivot et les occlusions restent à vérifier en scène. Le fond masqué par le cadre dans la source sera interprété sobrement ; aucun contenu ou volume canonique attribué.",
+      "evidence": "Le chariot V78 contient trois boîtiers verticaux rectangulaires à couvercle anguleux et témoin ambre. S18 conserve leurs trois logements vides. S09 est un cylindre ; le pot S17 et les coffres V76/V80 ont une autre géométrie. Le rack V83 comporte aussi des contenants rectangulaires, tous fusionnés au rack et distincts de ceux du chariot. Aucun objet de cette identité autonome dans catalogue70 ni dans les chemins ciblés.",
+      "productionBrief": "Isoler seulement le contenant vertical le plus à droite du groupe de trois dans le chariot V78. Garder son volume rectangulaire élancé, couvercle anguleux, pierre/métal sombre, montants bronze, petit voyant ambre et motif de façade. Compléter sobrement la base masquée sans inventer un piédestal. Retirer intégralement le cadre de retenue, les traverses, les autres charges, le chariot, la corde et le sol. Un seul contenant fermé entier, vue héritée, véritable fond transparent.",
+      "sourceAssetSha256": {
+        "public/game/homeworld/v78/port-cargo-sorting-cart.png": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f"
+      },
+      "selectedAttempt": 1,
+      "review": "review-round7.json"
+    },
+    {
+      "area": "market",
+      "productionPass": 7,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Conserver la vue exacte de la référence ; ni conversion à 0°/35°, ni angle réel mesuré, ni échelle de pixels commune ou raccord parfait revendiqués. Aucun miroir, recadrage, padding ou redimensionnement des sorties.",
+      "id": "HWM162-S23",
+      "priority": "P2",
+      "label": "Coffre empilable du chariot autonome",
+      "kind": "Composant de chargement",
+      "targetIds": [
+        "target-v81-64-167",
+        "target-v81-64-170"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v78/port-cargo-sorting-cart.png"
+      ],
+      "sourceAssetIds": [],
+      "expectedPath": "sprites/market/HWM162-S23-stackable-cart-chest.png",
+      "complements": [
+        "HWM162-S18",
+        "HWM162-S07",
+        "HWM162-S12"
+      ],
+      "gapClassification": "EXACT_STACKABLE_CART_CHEST_FUSED",
+      "purpose": "Recomposer le chargement du chariot S18 en conservant l’identité du coffre plat empilé dans l’image d’origine, puis placer le même objet dans la réserve.",
+      "placementNote": "Un seul coffre par PNG ; les éventuelles instances empilées, leur contact, leur échelle et leur ordre d’occlusion devront être réglés en scène. Cette pièce complète une identité précise, sans déclarer absent le rôle générique déjà couvert par les coffres V76/V80.",
+      "evidence": "Le coffre supérieur du chariot a un fond plat sans les quatre pieds saillants des coffres autonomes V76/V80, deux sangles rouge-brun à boucles simples et des renforts propres. Aucun détachement de ce coffre exact trouvé. Les sources V76/V80 sont conservées pour la fonction générique : cet ajout vise la continuité du chargement historique, non une recoloration.",
+      "productionBrief": "Isoler seulement le grand coffre supérieur posé à gauche du chariot V78, en conservant sa vue, ses proportions, son fond plat, ses deux sangles rouge-brun, ses boucles simples, ses bords bronze et ses motifs d’origine. Un seul coffre fermé sans pieds nouveaux, sans le second coffre, sans chariot, rack, corde, textile ou sol. Garder toute la silhouette et un fond réellement transparent.",
+      "sourceAssetSha256": {
+        "public/game/homeworld/v78/port-cargo-sorting-cart.png": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f"
+      },
+      "selectedAttempt": 1,
+      "review": "review-round7.json"
+    },
+    {
+      "area": "market",
+      "productionPass": 7,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Conserver la vue exacte de la référence ; ni conversion à 0°/35°, ni angle réel mesuré, ni échelle de pixels commune ou raccord parfait revendiqués. Aucun miroir, recadrage, padding ou redimensionnement des sorties.",
+      "id": "HWM162-S24",
+      "priority": "P1",
+      "label": "Réserve — sol, parois et étagères arrière",
+      "kind": "Section de bâtiment",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-S05"
+      ],
+      "expectedPath": "sprites/market/HWM162-S24-stock-shelter-rear-interior.png",
+      "complements": [
+        "HWM162-S25",
+        "HWM162-S14",
+        "HWM162-S22",
+        "HWM162-S23"
+      ],
+      "gapClassification": "STOCK_INTERIOR_AND_FOREGROUND_FUSED",
+      "purpose": "Placer des marchandises et occupants sur le sol et les étagères de S05 avant de dessiner séparément sa façade et sa toiture au premier plan.",
+      "placementNote": "Couche arrière proposée. Le seuil transversal appartient à cette couche ; les deux gros piliers avant et leurs bases appartiennent seulement à S25. Prolongements cachés interprétés ; raccord, échelle, pivot et accessibilité non certifiés.",
+      "evidence": "S05 est une image unique : sol, murs arrière/latéraux, tablettes et toiture/piliers avant sont fusionnés. S20/S21 concernent une autre halle à trois travées et ne peuvent fournir les couches de cette réserve à baie unique. Aucune section de réserve trouvée dans catalogue70 ou les chemins ciblés.",
+      "productionBrief": "Éditer S05 à vue constante : garder tout le sol intérieur et le seuil transversal frontal, les murs arrière et latéraux intérieurs, leurs renforts et toutes les étagères fixes vides avec leurs supports arrière. Retirer toute la toiture et ses corniches, la draperie rouge du linteau, les deux gros piliers/contreforts de façade avec leurs pieds et leurs lampes, les équerres du premier plan. Restaurer seulement les surfaces masquées nécessaires, sans nouveau mobilier, charge ou porte. Ne pas dupliquer les supports avant réservés à S25.",
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866"
+      },
+      "selectedAttempt": 1,
+      "review": "review-round7.json"
+    },
+    {
+      "area": "market",
+      "productionPass": 7,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Conserver la vue exacte de la référence ; ni conversion à 0°/35°, ni angle réel mesuré, ni échelle de pixels commune ou raccord parfait revendiqués. Aucun miroir, recadrage, padding ou redimensionnement des sorties.",
+      "id": "HWM162-S25",
+      "priority": "P1",
+      "label": "Réserve — façade et toiture au premier plan",
+      "kind": "Section de bâtiment",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-S05"
+      ],
+      "expectedPath": "sprites/market/HWM162-S25-stock-shelter-front-roof.png",
+      "complements": [
+        "HWM162-S24",
+        "HWM162-S14"
+      ],
+      "gapClassification": "STOCK_INTERIOR_AND_FOREGROUND_FUSED",
+      "purpose": "Faire passer le toit, le linteau et les piliers de la réserve devant le stock sans masquer celui-ci par une image unique contenant aussi le sol.",
+      "placementNote": "Couche avant proposée, baie unique réellement transparente. S14 reste un volet indépendant ; ordre suggéré arrière→stock/occupants ou volet→façade, à valider en scène. Aucun assemblage pixel à pixel ni mécanisme canonique revendiqué.",
+      "evidence": "Même S05 monolithique ; le volet S14 est déjà autonome mais le contour de sa baie et le toit restent fusionnés avec le fond. Aucun autre candidat isolé ne reproduit cette façade précise.",
+      "productionBrief": "Éditer S05 à vue constante : garder la toiture entière avec nervures, emblème et corniches, le linteau et sa draperie rouge, les deux gros piliers/contreforts frontaux avec leurs bases, lampes et équerres fixes. Retirer intégralement le sol et le seuil transversal, les murs arrière/latéraux intérieurs, toutes les étagères et leurs supports. La baie unique sous le linteau doit être réellement transparente. Aucun élément de sol/arrière de S24 ni volet S14 fusionné.",
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866"
+      },
+      "selectedAttempt": 1,
+      "review": "review-round7.json"
+    },
+    {
+      "area": "mounts",
+      "productionPass": 7,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "targetIds": [
+        "target-v81-72-281"
+      ],
+      "id": "HWM162-M24",
+      "label": "Corps de borne d’attache dégagé",
+      "kind": "Borne",
+      "expectedPath": "sprites/mounts/HWM162-M24-tether-bollard-body.png",
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M02"
+      ],
+      "purpose": "Séparer le corps et les supports fixes pour composer l’attache indépendamment de l’anneau et de sa courte chaîne.",
+      "placementNote": "Axe horizontal et joues de support supérieures restent fixes sur la borne ; petit récepteur bas également. M25 porte le manchon mobile, l’anneau et la courte chaîne. Articulation et raccords à régler en scène.",
+      "include": [
+        "entire original basalt/gunmetal bollard and reinforced foot",
+        "original upper fixed bearing cheeks and horizontal axle",
+        "original empty lower receiver",
+        "fixed light and clan marks"
+      ],
+      "exclude": [
+        "large ring",
+        "central mobile sleeve wrapping the ring pivot",
+        "short captive chain and its moving terminal links",
+        "new hooks or loose parts"
+      ],
+      "absenceEvidence": "M02 alone combines all these parts in catalogue70. No bare state of this exact bollard is present; M13 and K07 are chains/leads, not the fixed station body.",
+      "limits": [
+        "Areas previously hidden by the ring, sleeve and chain need modest reconstruction.",
+        "Fixed-versus-mobile partition is a source-art interpretation; no engineering, strength, mechanism or exact registration certified."
+      ],
+      "referenceViewNote": "Vue de la source héritée demandée ; caméra réelle et raccords non mesurés. Cadrage et échelle source conservés dans la demande, sans garantie de superposition pixel par pixel.",
+      "cameraRequested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+        "actual_reference_view_inherited_requested": true,
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original source prompt request, not measured."
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "object_pose_changed": false
+      },
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa"
+      },
+      "selectedAttempt": 1,
+      "review": "review-round7.json"
+    },
+    {
+      "area": "mounts",
+      "productionPass": 7,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "targetIds": [
+        "target-v81-72-281"
+      ],
+      "id": "HWM162-M25",
+      "label": "Anneau et courte chaîne de la borne",
+      "kind": "Attache",
+      "expectedPath": "sprites/mounts/HWM162-M25-tether-ring-chain.png",
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M02"
+      ],
+      "purpose": "Fournir l’ensemble mobile relié en un article autonome pour la composition et l’entretien de la même borne.",
+      "placementNote": "Le manchon central mobile reste avec le gros anneau et la courte chaîne. Aucun axe horizontal, support fixe ou récepteur bas n’est inclus. Préserver la pose verticale de M02 ; contacts proposés, non validés.",
+      "include": [
+        "whole original large bronze ring",
+        "central mobile pivot sleeve attached to that ring",
+        "same short connected chain and complete moving end link"
+      ],
+      "exclude": [
+        "fixed horizontal axle and upper bearing cheeks",
+        "lower fixed receiver",
+        "bollard and foot",
+        "extra shackle, new longer chain, handle or third unattached object"
+      ],
+      "absenceEvidence": "This short captive ring/chain set is only incorporated in M02. M13 has two detached end shackles and a longer S chain; K07 is a handler lead. Inspected V33/V19 chain constructions have different identities and fixed scenery.",
+      "limits": [
+        "Complete only the contact/back surfaces and terminal link previously concealed by the fixed receiver.",
+        "The source does not establish a detachable real-world assembly, working hinge, load capacity or universal connector compatibility."
+      ],
+      "referenceViewNote": "Vue de la source héritée demandée ; caméra réelle et raccords non mesurés. Cadrage et échelle source conservés dans la demande, sans garantie de superposition pixel par pixel.",
+      "cameraRequested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+        "actual_reference_view_inherited_requested": true,
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original source prompt request, not measured."
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "object_pose_changed": false
+      },
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa"
+      },
+      "selectedAttempt": 1,
+      "review": "review-round7.json"
+    },
+    {
+      "area": "mounts",
+      "productionPass": 7,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "targetIds": [
+        "target-v81-72-281"
+      ],
+      "id": "HWM162-M26",
+      "label": "Longe à deux embouts — pose suspendue",
+      "kind": "Pose indépendante",
+      "expectedPath": "sprites/mounts/HWM162-M26-suspended-double-ended-tether.png",
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M13"
+      ],
+      "purpose": "Proposer la longe existante suspendue entre deux points d’attache élevés, au lieu de sa pose en S à plat.",
+      "placementNote": "Conserver les deux mêmes ferrures bronze fermées et la chaîne sombre continue ; extrémités élevées, ventre en U. Aucun support, sol, borne, harnais ou animal fusionné. Hauteur, longueur utile et ancrages à régler en scène.",
+      "include": [
+        "the same continuous dark oval-link chain",
+        "the same two complete bronze closed pin shackles",
+        "one hanging U-shaped pose with both ends visible"
+      ],
+      "exclude": [
+        "hand loop",
+        "new connector or latch mechanism",
+        "post, support, harness, animal or ground",
+        "unconnected links or extra chain"
+      ],
+      "absenceEvidence": "M13 and its prompt establish only a shallow horizontal S pose; no hanging pose of this exact two-shackle identity is selected among70. K07 and inspected vertical arena/climbing chains are different articles.",
+      "limits": [
+        "The suspended curve, link rotations and ferrule orientations are newly interpreted natively.",
+        "Not a measured physical catenary, animation frame sequence, exact deployed length, mechanical attachment or species fit.",
+        "Camera inherited as a request; changing the object pose does not assert measured camera alignment."
+      ],
+      "referenceViewNote": "Vue de la source héritée demandée ; caméra réelle et raccords non mesurés. Nouvelle pose suspendue de l’objet interprétée, sans rotation ni miroir de pixels.",
+      "cameraRequested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png",
+        "actual_reference_view_inherited_requested": true,
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original source prompt request, not measured."
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "object_pose_changed": true
+      },
+      "sourceAssetSha256": {
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png": "f9636f0a0d7defd5885977758fafe54542bfb7d638bd4207d8004ea4a9c385cb"
+      },
+      "selectedAttempt": 1,
+      "review": "review-round7.json"
+    },
+    {
+      "id": "HWM162-K27",
+      "area": "kennels",
+      "label": "Corps de petite cage sans battant",
+      "kind": "Corps de cage",
+      "purpose": "Séparer le corps de la petite cage pour recevoir un battant indépendant fermé ou ouvert.",
+      "placementNote": "Garder la base, le plancher, tous les côtés fixes et le toit ajouré, la poignée haute, le cadre fixe chanfreiné de l’ouverture, les deux parties fixes de charnière à gauche et le récepteur ambre à droite. Retirer entièrement le battant mobile et sa poignée, même en position ouverte ; ne pas supprimer les barres arrière visibles au travers de l’accès. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "targetIds": [
+        "target-v81-71-276"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K27-small-cage-body.png",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés.",
+      "sourceSha256": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44"
+      },
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state": "BODY_WITHOUT_DOOR",
+      "partition": "Garder la base, le plancher, tous les côtés fixes et le toit ajouré, la poignée haute, le cadre fixe chanfreiné de l’ouverture, les deux parties fixes de charnière à gauche et le récepteur ambre à droite. Retirer entièrement le battant mobile et sa poignée, même en position ouverte ; ne pas supprimer les barres arrière visibles au travers de l’accès.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "camera_measured": false
+      },
+      "absenceEvidence": "Les candidats fermés historiques et ouverts HWM162-K10 contiennent chacun le corps et le battant dans le même PNG. Le catalogue70 ne fournit aucun composant correspondant ; K25/K26 appartiennent au modèle moyen277 et ne les remplacent pas.",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "selectedAttempt": 1,
+      "review": "review-round7.json"
+    },
+    {
+      "id": "HWM162-K28",
+      "area": "kennels",
+      "label": "Battant de petite cage — pose fermée",
+      "kind": "Battant",
+      "purpose": "Fournir le battant de petite cage seul dans la pose fermée du modèle 276.",
+      "placementNote": "Cadre mobile chanfreiné, ses barreaux et prise ajourée au bord libre à droite ; seulement les attaches mobiles côté charnière gauche. Aucun voyant ambre, récepteur fixe, cylindre de pivot fixe, montant basaltique, sol, toit ou cage. Les parties fixes restent dans K27. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "targetIds": [
+        "target-v81-71-276"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K28-small-cage-door-leaf.png",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés.",
+      "sourceSha256": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44"
+      },
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state": "CLOSED_POSE",
+      "partition": "Cadre mobile chanfreiné, ses barreaux et prise ajourée au bord libre à droite ; seulement les attaches mobiles côté charnière gauche. Aucun voyant ambre, récepteur fixe, cylindre de pivot fixe, montant basaltique, sol, toit ou cage. Les parties fixes restent dansK27.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "camera_measured": false
+      },
+      "absenceEvidence": "Les candidats fermés historiques et ouverts HWM162-K10 contiennent chacun le corps et le battant dans le même PNG. Le catalogue70 ne fournit aucun composant correspondant ; K25/K26 appartiennent au modèle moyen277 et ne les remplacent pas.",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "selectedAttempt": 2,
+      "review": "review-round7.json"
+    },
+    {
+      "id": "HWM162-K29",
+      "area": "kennels",
+      "label": "Corps de cage lourde sans battant",
+      "kind": "Corps de cage",
+      "purpose": "Séparer le corps de cage lourde pour les deux poses indépendantes de son battant.",
+      "placementNote": "Conserver les trois arceaux, les patins et le plancher, les côtés et le toit à barreaux, le portique d’extrémité et les trois parties fixes de charnière. Retirer entièrement le battant mobile, ses attaches mobiles et son boîtier ambre ; aucun panneau replié ou posé à côté. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "targetIds": [
+        "target-v81-71-278"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K29-heavy-cage-body.png",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés.",
+      "sourceSha256": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650"
+      },
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state": "BODY_WITHOUT_DOOR",
+      "partition": "Conserver les trois arceaux, les patins et le plancher, les côtés et le toit à barreaux, le portique d’extrémité et les trois parties fixes de charnière. Retirer entièrement le battant mobile, ses attaches mobiles et son boîtier ambre ; aucun panneau replié ou posé à côté.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "camera_measured": false
+      },
+      "absenceEvidence": "Les candidats fermés historiques et ouverts HWM162-K12 contiennent chacun le corps et le battant dans le même PNG. Le catalogue70 ne fournit aucun composant correspondant ; K25/K26 appartiennent au modèle moyen277 et ne les remplacent pas.",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "selectedAttempt": 1,
+      "review": "review-round7.json"
+    },
+    {
+      "id": "HWM162-K30",
+      "area": "kennels",
+      "label": "Battant de cage lourde — pose fermée",
+      "kind": "Battant",
+      "purpose": "Fournir le battant lourd seul dans la pose fermée du modèle 278.",
+      "placementNote": "Cadre mobile bronze/métal sombre, barreaux verticaux, traverse médiane et boîtier ambre au bord libre à droite ; seulement les attaches mobiles côté charnière gauche. Aucune partie fixe de charnière, aucun montant basaltique, patin, sol, toit ni corps de cage. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "targetIds": [
+        "target-v81-71-278"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K30-heavy-cage-door-leaf.png",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés.",
+      "sourceSha256": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650"
+      },
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state": "CLOSED_POSE",
+      "partition": "Cadre mobile bronze/métal sombre, barreaux verticaux, traverse médiane et boîtier ambre au bord libre à droite ; seulement les attaches mobiles côté charnière gauche. Aucune partie fixe de charnière, aucun montant basaltique, patin, sol, toit ni corps de cage.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "camera_measured": false
+      },
+      "absenceEvidence": "Les candidats fermés historiques et ouverts HWM162-K12 contiennent chacun le corps et le battant dans le même PNG. Le catalogue70 ne fournit aucun composant correspondant ; K25/K26 appartiennent au modèle moyen277 et ne les remplacent pas.",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "selectedAttempt": 2,
+      "review": "review-round7.json"
+    },
+    {
+      "id": "HWM162-K31",
+      "area": "kennels",
+      "label": "Battant de petite cage — pose ouverte",
+      "kind": "Battant",
+      "purpose": "Garder visible le battant de petite cage quand son entrée est ouverte, sans dépendre du PNG complet K10.",
+      "placementNote": "Reprendre la pose ouverte de K10 : bord libre et prise ajourée à gauche, bord articulé à droite. Conserver uniquement le battant mobile et ses attaches ; aucun voyant, récepteur fixe, pivot fixe, montant basaltique ou corps. La forme du battant reste celle de 276/K10, sans miroir de pixels. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "targetIds": [
+        "target-v81-71-276"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K31-small-cage-door-leaf-open.png",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés. La pose ouverte est reprise du sprite ouvert existant, pas produite par un miroir ou une rotation de pixels.",
+      "sourceSha256": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073"
+      },
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state": "OPEN_POSE",
+      "partition": "Reprendre la pose ouverte deK10 : bord libre et prise ajourée à gauche, bord articulé à droite. Conserver uniquement le battant mobile et ses attaches ; aucun voyant, récepteur fixe, pivot fixe, montant basaltique ou corps. La forme du battant reste celle de276/K10, sans miroir de pixels.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "camera_measured": false
+      },
+      "absenceEvidence": "Les candidats fermés historiques et ouverts HWM162-K10 contiennent chacun le corps et le battant dans le même PNG. Le catalogue70 ne fournit aucun composant correspondant ; K25/K26 appartiennent au modèle moyen277 et ne les remplacent pas.",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "selectedAttempt": 2,
+      "review": "review-round7.json"
+    },
+    {
+      "id": "HWM162-K32",
+      "area": "kennels",
+      "label": "Battant de cage lourde — pose ouverte",
+      "kind": "Battant",
+      "purpose": "Garder visible le battant lourd dans sa pose ouverte indépendante, sans dépendre du PNG complet K12.",
+      "placementNote": "Reprendre la pose ouverte de K12 : bord libre et boîtier ambre à gauche, bord articulé à droite. Garder cadre, barreaux, traverse médiane, boîtier mobile et attaches mobiles, sans éléments de corps, charnières fixes, piliers basaltique, patins, sol ou toit. Aucun miroir de pixels. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "targetIds": [
+        "target-v81-71-278"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K32-heavy-cage-door-leaf-open.png",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "referenceViewNote": "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés. La pose ouverte est reprise du sprite ouvert existant, pas produite par un miroir ou une rotation de pixels.",
+      "sourceSha256": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0"
+      },
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state": "OPEN_POSE",
+      "partition": "Reprendre la pose ouverte deK12 : bord libre et boîtier ambre à gauche, bord articulé à droite. Garder cadre, barreaux, traverse médiane, boîtier mobile et attaches mobiles, sans éléments de corps, charnières fixes, piliers basaltique, patins, sol ou toit. Aucun miroir de pixels.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "camera_measured": false
+      },
+      "absenceEvidence": "Les candidats fermés historiques et ouverts HWM162-K12 contiennent chacun le corps et le battant dans le même PNG. Le catalogue70 ne fournit aucun composant correspondant ; K25/K26 appartiennent au modèle moyen277 et ne les remplacent pas.",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "selectedAttempt": 3,
+      "review": "review-round7.json"
+    }
+  ],
+  "cameraDecision": "Every addition requests the exact inherited reference view. M26 changes only the object pose natively. No measured camera, metre scale, pixel registration or runtime assembly is certified.",
+  "generatedAdditionalPNGCount": 13,
+  "review": "review-round7.json",
+  "generationCallCount": 18,
+  "archivedRejectedAttemptCount": 5
+}

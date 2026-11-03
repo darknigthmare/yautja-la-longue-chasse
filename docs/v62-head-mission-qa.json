@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4182",
+  "checks": [
+    {
+      "morph": "classic",
+      "mask": "jungle",
+      "headDraws": 41,
+      "maskDraws": 1,
+      "bareHeadDraws": 16,
+      "registeredDestination": [
+        88.83758,
+        11.42584,
+        96.98817,
+        96.98817
+      ],
+      "keyboardMovement": true,
+      "maskToggleObserved": true,
+      "fixture": "Isolated legacy campaign with selected appearance; not a full new-game/prologue test"
+    },
+    {
+      "morph": "feral",
+      "mask": "feral",
+      "headDraws": 38,
+      "maskDraws": 1,
+      "bareHeadDraws": 16,
+      "registeredDestination": [
+        96.29784,
+        11.91847,
+        79.34276,
+        99.14309
+      ],
+      "keyboardMovement": true,
+      "maskToggleObserved": true,
+      "fixture": "Isolated legacy campaign with selected appearance; not a full new-game/prologue test"
+    }
+  ],
+  "errors": [],
+  "failures": []
+}

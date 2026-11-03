@@ -1,0 +1,2605 @@
+{
+  "schemaVersion": 1,
+  "release": "V65",
+  "checkedAt": "2026-10-01T01:32:35.273Z",
+  "source": {
+    "path": "C:/Users/chuck/Downloads/THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx",
+    "sha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+    "unchanged": true
+  },
+  "counts": {
+    "workbookDossiers": 174,
+    "workbookTargets": 170,
+    "runtimeStages": 187,
+    "dossiersWithoutRuntimeKit": 0,
+    "selectedStaticRevisions": 6,
+    "integratedStaticRevisions": 6,
+    "newArenas": 0,
+    "newAnimations": 0,
+    "literalDossiersCertifiedComplete": 0
+  },
+  "priority": [
+    {
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "number": 12,
+      "name": "Balcon du Roi de la Chasse",
+      "workbookKey": "ST064",
+      "cells": "09_STAGES!A68:N68",
+      "sourceRow": {
+        "row": 68,
+        "cells": {
+          "A68": "ST064",
+          "B68": "arena-012-balcon-du-roi-de-la-chasse",
+          "C68": "Balcon du roi de la chasse",
+          "D68": "Original The Pit",
+          "E68": "Existant · composition documentée",
+          "F68": "Réserve de scènes / variante de campagne",
+          "G68": "Conserver la composition documentée ; dégager la ligne de combat et répartir la vie en profondeur.",
+          "H68": "Identifiant attesté par un rapport de composition ; nom lisible dérivé de l'identifiant. Enrichissement proposé, présence des PNJ à valider.",
+          "I68": "P0 ciel 0,04 ; P1 horizon 0,12 ; P2 architecture 0,25 ; P3 vie 0,38 ; P4 sol ancré ; P5 avant-plan 0,85",
+          "J68": "Plan de combat neutre : 960×540, sol Y430 comme base du moteur ; échelle proposée à contrôler sur l'art. Ne pas étirer les silhouettes.",
+          "K68": "Fond vivant uniquement ; dangers/portes interactives dans une variante narrative séparée, jamais aléatoires en duel classé.",
+          "L68": "Référence → cinq/six plans → appuis → acteurs du fond → lumière → QA visibilité.",
+          "M68": "À rapprocher",
+          "N68": "https://github.com/darknigthmare/yautja-la-longue-chasse/tree/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/app/game/systems/pitArenaExtensions.ts\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-delivery.md"
+        }
+      },
+      "before": "Runtime kit already present; this is a visual revision, not a missing arena.",
+      "visualFinding": "Architecture gothique, loge de clan peu identifiable",
+      "v65Status": "static-overlay-integrated-await-delivery-QA",
+      "fullDossierCertifiedComplete": false,
+      "canonicalLocation": false,
+      "newAnimations": 0,
+      "eventCellsStillNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E194",
+          "description": "Poussière ou vapeur discrète suivant les volumes du décor"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E195",
+          "description": "Éclairage local d'une structure à fréquence lente"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E196",
+          "description": "Mécanisme de porte ou d'obturateur au loin, sans collision de combat"
+        }
+      ],
+      "previousAssets": [
+        {
+          "plane": "P0",
+          "id": "p0-a-depth",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p0-a-depth.png"
+          ],
+          "sha256": [
+            "f11b1c7da54264e10da21572968626586003321ee4be2a9e7511a267bda3b74b"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-a-distant-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p1-a-distant-left.png"
+          ],
+          "sha256": [
+            "e1c2e24c8532d1d864ab87311c1f11b36c42b27bc773fc37db182e2f01e1d659"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-b-distant-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p1-b-distant-right.png"
+          ],
+          "sha256": [
+            "e1fc1389d69301cf60581f6c7c8fff5e838e70a2fd7d06a23eef37af02bb920e"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-a-support-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p2-a-support-left.png"
+          ],
+          "sha256": [
+            "8dddbb5cc24b6d8fa007a2c3a931869f5630d4005fb17fbb9836ec1b11d8b271"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-b-support-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p2-b-support-right.png"
+          ],
+          "sha256": [
+            "d6a9ddcac419f0116684157406f211054dfb2453aa9dcb7e93422a8a9930882c"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-c-central-structure",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p2-c-central-structure.png"
+          ],
+          "sha256": [
+            "ed01eccd0fcc04435638d885b194e901ac543019592725f64c0b9f3e447f5f2f"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-a-prop-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p3-a-prop-left.png"
+          ],
+          "sha256": [
+            "f33c65a40db2ec669af224db5f58ecd5ff9201f64afe305e52458b5b8b2127b9"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-b-prop-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p3-b-prop-right.png"
+          ],
+          "sha256": [
+            "6fd7528c9b5769aa11ab3a9d67c380befaa4aa7d83e7b8c101fb443fed49647a"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-c-light-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p3-c-light-left.png"
+          ],
+          "sha256": [
+            "f91f573d31017f238a2991e38569313a7997946ce9a9f560b694a162d57de355"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-d-light-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p3-d-light-right.png"
+          ],
+          "sha256": [
+            "6f6e470e0997b04392f483e97fd5a5cf2b74f83894efa43e697b640a8c33c1e4"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-a-contact-floor",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p4-a-contact-floor.png"
+          ],
+          "sha256": [
+            "9c8e7461e133c401198274d75c150d07a26c7e8058428edc6dc6a994f665c1d1"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-b-front-fascia",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p4-b-front-fascia.png"
+          ],
+          "sha256": [
+            "a994b01f6cffa1c2531b8e0e4a4bc0738e6e62b378fe0fdfd589e181d2400370"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-a-foreground-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p5-a-foreground-left.png"
+          ],
+          "sha256": [
+            "22ab699329a1eff3e39c80521b6ff1b0defcd1889202f9aa436b209f60dabdb2"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-b-foreground-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p5-b-foreground-right.png"
+          ],
+          "sha256": [
+            "6e4e6dfcc7def5d2c633ff31bc2c789d5da3465503c0d554aa84f2de1f3eaae4"
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-020-trone-fracture",
+      "number": 20,
+      "name": "Trône Fracturé",
+      "workbookKey": "ST072",
+      "cells": "09_STAGES!A76:N76",
+      "sourceRow": {
+        "row": 76,
+        "cells": {
+          "A76": "ST072",
+          "B76": "arena-020-trone-fracture",
+          "C76": "Trone fracture",
+          "D76": "Original The Pit",
+          "E76": "Existant · composition documentée",
+          "F76": "Réserve de scènes / variante de campagne",
+          "G76": "Conserver la composition documentée ; dégager la ligne de combat et répartir la vie en profondeur.",
+          "H76": "Identifiant attesté par un rapport de composition ; nom lisible dérivé de l'identifiant. Enrichissement proposé, présence des PNJ à valider.",
+          "I76": "P0 ciel 0,04 ; P1 horizon 0,12 ; P2 architecture 0,25 ; P3 vie 0,38 ; P4 sol ancré ; P5 avant-plan 0,85",
+          "J76": "Plan de combat neutre : 960×540, sol Y430 comme base du moteur ; échelle proposée à contrôler sur l'art. Ne pas étirer les silhouettes.",
+          "K76": "Fond vivant uniquement ; dangers/portes interactives dans une variante narrative séparée, jamais aléatoires en duel classé.",
+          "L76": "Référence → cinq/six plans → appuis → acteurs du fond → lumière → QA visibilité.",
+          "M76": "À rapprocher",
+          "N76": "https://github.com/darknigthmare/yautja-la-longue-chasse/tree/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/app/game/systems/pitArenaExtensions.ts\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-delivery.md"
+        }
+      },
+      "before": "Runtime kit already present; this is a visual revision, not a missing arena.",
+      "visualFinding": "Arches et ruines médiévales, technologie du clan peu lisible",
+      "v65Status": "static-overlay-integrated-await-delivery-QA",
+      "fullDossierCertifiedComplete": false,
+      "canonicalLocation": false,
+      "newAnimations": 0,
+      "eventCellsStillNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E218",
+          "description": "Observateurs anonymes du clan changeant lentement de posture"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E219",
+          "description": "Arbitre de fond réagissant seulement à la fin du round"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E220",
+          "description": "Suspension ou bannière qui bouge sans masquer les impacts"
+        }
+      ],
+      "previousAssets": [
+        {
+          "plane": "P0",
+          "id": "p0-a-depth",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p0-a-depth.png"
+          ],
+          "sha256": [
+            "b67ad96acd18b8741e1024052a174cb5de9397aca4fbdec89c4f865d9892f4ca"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-a-distant-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p1-a-distant-left.png"
+          ],
+          "sha256": [
+            "2d53305c89e6b4f070c730bcb6f019c96f5d1cbfb7008fbaee49dea031458cea"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-b-distant-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p1-b-distant-right.png"
+          ],
+          "sha256": [
+            "43b5468b395437efc9c51317851ffe7570f917d9a46f788acd1d2f17e44896fd"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-a-support-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p2-a-support-left.png"
+          ],
+          "sha256": [
+            "2b5b1ae795e2f92a5d1444947921adb7ac7d65e647cdbe12366ddffe4c2104b7"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-b-support-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p2-b-support-right.png"
+          ],
+          "sha256": [
+            "5b4e3aa0f9269332766070cb0faac44f893d0f8b89f255f44535c5d2588be6c7"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-c-central-structure",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p2-c-central-structure.png"
+          ],
+          "sha256": [
+            "025f466dc35653076807cf62b776737bd91726f740095c2429c85575c8ac3c1d"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-a-prop-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-a-prop-left.png"
+          ],
+          "sha256": [
+            "a3f254aa96f9696edbae2efd6570d18bb5144112048b45aa41d4284b6bf0a989"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-b-prop-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-b-prop-right.png"
+          ],
+          "sha256": [
+            "fa06756223b581cdb18fdbfb0cf648a9882b23eb36800be9c8d92ab016703f89"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-c-light-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-c-light-left.png"
+          ],
+          "sha256": [
+            "89496b6619974cd5f1b5f61d396bf14079965900e5573912718547d7d1766be9"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-d-light-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-d-light-right.png"
+          ],
+          "sha256": [
+            "df78ed7c44216434286ac04a0437cd5c07ce568de71556b0ac23ca0227b46dbd"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-a-contact-floor",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-a-contact-floor.png"
+          ],
+          "sha256": [
+            "eddf92ce5e45cb0cbd74fe918354a986d72ad6d9b78930f74c490cf39083fc4f"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-b-front-fascia",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-b-front-fascia.png"
+          ],
+          "sha256": [
+            "c554643b719d1b3a41d4766eea2f14ba60aa3d0ae9f5cc398c07ca7e618c7519"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-a-foreground-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p5-a-foreground-left.png"
+          ],
+          "sha256": [
+            "9b4daa7d2e805a025a89b8c18266a079e1bcfd9546bfe413ef2b8fe3a81795d6"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-b-foreground-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p5-b-foreground-right.png"
+          ],
+          "sha256": [
+            "80e712672bb13b00a3e6f3740aa7d7e0935ce84b5ae49e0a50f8e01e2a558c2a"
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-036-temple-de-la-double-lune",
+      "number": 36,
+      "name": "Temple de la Double Lune",
+      "workbookKey": "ST088",
+      "cells": "09_STAGES!A92:N92",
+      "sourceRow": {
+        "row": 92,
+        "cells": {
+          "A92": "ST088",
+          "B92": "arena-036-temple-de-la-double-lune",
+          "C92": "Temple de la double lune",
+          "D92": "Original The Pit",
+          "E92": "Existant · composition documentée",
+          "F92": "Réserve de scènes / variante de campagne",
+          "G92": "Conserver la composition documentée ; dégager la ligne de combat et répartir la vie en profondeur.",
+          "H92": "Identifiant attesté par un rapport de composition ; nom lisible dérivé de l'identifiant. Enrichissement proposé, présence des PNJ à valider.",
+          "I92": "P0 ciel 0,04 ; P1 horizon 0,12 ; P2 architecture 0,25 ; P3 vie 0,38 ; P4 sol ancré ; P5 avant-plan 0,85",
+          "J92": "Plan de combat neutre : 960×540, sol Y430 comme base du moteur ; échelle proposée à contrôler sur l'art. Ne pas étirer les silhouettes.",
+          "K92": "Fond vivant uniquement ; dangers/portes interactives dans une variante narrative séparée, jamais aléatoires en duel classé.",
+          "L92": "Référence → cinq/six plans → appuis → acteurs du fond → lumière → QA visibilité.",
+          "M92": "À rapprocher",
+          "N92": "https://github.com/darknigthmare/yautja-la-longue-chasse/tree/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/app/game/systems/pitArenaExtensions.ts\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-delivery.md"
+        }
+      },
+      "before": "Runtime kit already present; this is a visual revision, not a missing arena.",
+      "visualFinding": "Temple générique, original à rapprocher du vocabulaire matériel Yautja",
+      "v65Status": "static-overlay-integrated-await-delivery-QA",
+      "fullDossierCertifiedComplete": false,
+      "canonicalLocation": false,
+      "newAnimations": 0,
+      "eventCellsStillNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E266",
+          "description": "Poussière ou vapeur discrète suivant les volumes du décor"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E267",
+          "description": "Éclairage local d'une structure à fréquence lente"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E268",
+          "description": "Mécanisme de porte ou d'obturateur au loin, sans collision de combat"
+        }
+      ],
+      "previousAssets": [
+        {
+          "plane": "P0",
+          "id": "p0-depth",
+          "paths": [
+            "/game/sprites/v42/pit-arenas/arena-036-temple-de-la-double-lune/p0-depth.png"
+          ],
+          "sha256": [
+            "40041d0d205436ab4c72016e37cf1c6b95ba93f43352b73e1cfc5043221deb3e"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-p1-a-distant-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/ruins-tribunal/p1-a-distant-left.png"
+          ],
+          "sha256": [
+            "fba369e2c02bba45a074cf0aaac56f27ea2fa5584d123326c98925f8c20e2fdf"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-p1-b-distant-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/ruins-tribunal/p1-b-distant-right.png"
+          ],
+          "sha256": [
+            "cb568daf9e914d3736b56d0c952a7ef7a373fa965e2791f21d1cdcc7c7480ade"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-p2-a-support-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p2-a-support-left.png"
+          ],
+          "sha256": [
+            "4e53095a133bdce5a760821fa9b34a620b21f1112ea8e21da590421eb45aeb1c"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-p2-b-support-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p2-b-support-right.png"
+          ],
+          "sha256": [
+            "ec9e7dddc7536b19e56877c24fcc707ad2f997d622fe9cd0639f2d39296a269e"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-p3-a-prop-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-a-prop-left.png"
+          ],
+          "sha256": [
+            "985326f565e972687a1ba050d80984f4886a6ac73a3c0d82fd2a97175c21eb34"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-p3-b-prop-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-b-prop-right.png"
+          ],
+          "sha256": [
+            "df9d36281ef1dc4b54732ee289f24e25a25e5c82c1e28596130c11c05c2f8bd8"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-p4-a-contact-floor",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-a-contact-floor.png"
+          ],
+          "sha256": [
+            "789d1488cfb30adcc13b95468b03b1b50f1608fe1141542a5185975593be0675"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-p4-b-front-fascia",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png"
+          ],
+          "sha256": [
+            "ffedbeb2d761a7e6143e2e216683d08dfa8244feb12e6d555f21259555d1b7bf"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-p5-a-foreground-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p5-a-foreground-left.png"
+          ],
+          "sha256": [
+            "c86254351b9a37568a10db242f00d561d6695bf8efcbf3ca90a3b243f4ee1bc6"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-p5-b-foreground-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p5-b-foreground-right.png"
+          ],
+          "sha256": [
+            "08a25d11d7463cf6bd6438580c5f11b6918ed6617c42d4e84d1030a01154281b"
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-050-porte-de-l-audience",
+      "number": 50,
+      "name": "Porte de l'Audience",
+      "workbookKey": "ST102",
+      "cells": "09_STAGES!A106:N106",
+      "sourceRow": {
+        "row": 106,
+        "cells": {
+          "A106": "ST102",
+          "B106": "arena-050-porte-de-l-audience",
+          "C106": "Porte de l audience",
+          "D106": "Original The Pit",
+          "E106": "Existant · composition documentée",
+          "F106": "Réserve de scènes / variante de campagne",
+          "G106": "Conserver la composition documentée ; dégager la ligne de combat et répartir la vie en profondeur.",
+          "H106": "Identifiant attesté par un rapport de composition ; nom lisible dérivé de l'identifiant. Enrichissement proposé, présence des PNJ à valider.",
+          "I106": "P0 ciel 0,04 ; P1 horizon 0,12 ; P2 architecture 0,25 ; P3 vie 0,38 ; P4 sol ancré ; P5 avant-plan 0,85",
+          "J106": "Plan de combat neutre : 960×540, sol Y430 comme base du moteur ; échelle proposée à contrôler sur l'art. Ne pas étirer les silhouettes.",
+          "K106": "Fond vivant uniquement ; dangers/portes interactives dans une variante narrative séparée, jamais aléatoires en duel classé.",
+          "L106": "Référence → cinq/six plans → appuis → acteurs du fond → lumière → QA visibilité.",
+          "M106": "À rapprocher",
+          "N106": "https://github.com/darknigthmare/yautja-la-longue-chasse/tree/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/app/game/systems/pitArenaExtensions.ts\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-delivery.md"
+        }
+      },
+      "before": "Runtime kit already present; this is a visual revision, not a missing arena.",
+      "visualFinding": "Forteresse et grands masques génériques, sas industriel peu lisible",
+      "v65Status": "static-overlay-integrated-await-delivery-QA",
+      "fullDossierCertifiedComplete": false,
+      "canonicalLocation": false,
+      "newAnimations": 0,
+      "eventCellsStillNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E308",
+          "description": "Observateurs anonymes du clan changeant lentement de posture"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E309",
+          "description": "Arbitre de fond réagissant seulement à la fin du round"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E310",
+          "description": "Suspension ou bannière qui bouge sans masquer les impacts"
+        }
+      ],
+      "previousAssets": [
+        {
+          "plane": "P0",
+          "id": "p0-depth",
+          "paths": [
+            "/game/sprites/v42/pit-arenas/arena-050-porte-de-l-audience/p0-depth.png"
+          ],
+          "sha256": [
+            "316260c572d36e5ad3d876cc3324a6ca8ad77d0dcaf89333974d5ca2dbce515e"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-p1-a-distant-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p1-a-distant-left.png"
+          ],
+          "sha256": [
+            "e1c2e24c8532d1d864ab87311c1f11b36c42b27bc773fc37db182e2f01e1d659"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-p1-b-distant-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p1-b-distant-right.png"
+          ],
+          "sha256": [
+            "e1fc1389d69301cf60581f6c7c8fff5e838e70a2fd7d06a23eef37af02bb920e"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-p2-a-support-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p2-a-support-left.png"
+          ],
+          "sha256": [
+            "2b5b1ae795e2f92a5d1444947921adb7ac7d65e647cdbe12366ddffe4c2104b7"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-p2-b-support-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p2-b-support-right.png"
+          ],
+          "sha256": [
+            "5b4e3aa0f9269332766070cb0faac44f893d0f8b89f255f44535c5d2588be6c7"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-p3-a-prop-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-a-prop-left.png"
+          ],
+          "sha256": [
+            "985326f565e972687a1ba050d80984f4886a6ac73a3c0d82fd2a97175c21eb34"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-p3-b-prop-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-b-prop-right.png"
+          ],
+          "sha256": [
+            "df9d36281ef1dc4b54732ee289f24e25a25e5c82c1e28596130c11c05c2f8bd8"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-p4-a-contact-floor",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p4-a-contact-floor.png"
+          ],
+          "sha256": [
+            "9c8e7461e133c401198274d75c150d07a26c7e8058428edc6dc6a994f665c1d1"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-p4-b-front-fascia",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p4-b-front-fascia.png"
+          ],
+          "sha256": [
+            "a994b01f6cffa1c2531b8e0e4a4bc0738e6e62b378fe0fdfd589e181d2400370"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-p5-a-foreground-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p5-a-foreground-left.png"
+          ],
+          "sha256": [
+            "9b4daa7d2e805a025a89b8c18266a079e1bcfd9546bfe413ef2b8fe3a81795d6"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-p5-b-foreground-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p5-b-foreground-right.png"
+          ],
+          "sha256": [
+            "80e712672bb13b00a3e6f3740aa7d7e0935ce84b5ae49e0a50f8e01e2a558c2a"
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-069-salle-du-porte-cendres",
+      "number": 69,
+      "name": "Salle du Porte-Cendres",
+      "workbookKey": "ST120",
+      "cells": "09_STAGES!A124:N124",
+      "sourceRow": {
+        "row": 124,
+        "cells": {
+          "A124": "ST120",
+          "B124": "arena-069-salle-du-porte-cendres",
+          "C124": "Salle du porte cendres",
+          "D124": "Original The Pit",
+          "E124": "Existant · composition documentée",
+          "F124": "Réserve de scènes / variante de campagne",
+          "G124": "Conserver la composition documentée ; dégager la ligne de combat et répartir la vie en profondeur.",
+          "H124": "Identifiant attesté par un rapport de composition ; nom lisible dérivé de l'identifiant. Enrichissement proposé, présence des PNJ à valider.",
+          "I124": "P0 ciel 0,04 ; P1 horizon 0,12 ; P2 architecture 0,25 ; P3 vie 0,38 ; P4 sol ancré ; P5 avant-plan 0,85",
+          "J124": "Plan de combat neutre : 960×540, sol Y430 comme base du moteur ; échelle proposée à contrôler sur l'art. Ne pas étirer les silhouettes.",
+          "K124": "Fond vivant uniquement ; dangers/portes interactives dans une variante narrative séparée, jamais aléatoires en duel classé.",
+          "L124": "Référence → cinq/six plans → appuis → acteurs du fond → lumière → QA visibilité.",
+          "M124": "À rapprocher",
+          "N124": "https://github.com/darknigthmare/yautja-la-longue-chasse/tree/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/app/game/systems/pitArenaExtensions.ts\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-delivery.md"
+        }
+      },
+      "before": "Runtime kit already present; this is a visual revision, not a missing arena.",
+      "visualFinding": "Autel lévitant sans dispositif technologique explicite",
+      "v65Status": "static-overlay-integrated-await-delivery-QA",
+      "fullDossierCertifiedComplete": false,
+      "canonicalLocation": false,
+      "newAnimations": 0,
+      "eventCellsStillNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E362",
+          "description": "Poussière ou vapeur discrète suivant les volumes du décor"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E363",
+          "description": "Éclairage local d'une structure à fréquence lente"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E364",
+          "description": "Mécanisme de porte ou d'obturateur au loin, sans collision de combat"
+        }
+      ],
+      "previousAssets": [
+        {
+          "plane": "P0",
+          "id": "p0-depth",
+          "paths": [
+            "/game/sprites/v42/pit-arenas/arena-069-salle-du-porte-cendres/p0-depth.png"
+          ],
+          "sha256": [
+            "53b3cb31b5d7599d1c80580b21094dbb925ff23d2fd9c19e1cf251f2bf0bd97a"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-p1-a-distant-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p1-a-distant-left.png"
+          ],
+          "sha256": [
+            "2d53305c89e6b4f070c730bcb6f019c96f5d1cbfb7008fbaee49dea031458cea"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-p1-b-distant-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p1-b-distant-right.png"
+          ],
+          "sha256": [
+            "43b5468b395437efc9c51317851ffe7570f917d9a46f788acd1d2f17e44896fd"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-p2-a-support-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p2-a-support-left.png"
+          ],
+          "sha256": [
+            "8dddbb5cc24b6d8fa007a2c3a931869f5630d4005fb17fbb9836ec1b11d8b271"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-p2-b-support-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p2-b-support-right.png"
+          ],
+          "sha256": [
+            "d6a9ddcac419f0116684157406f211054dfb2453aa9dcb7e93422a8a9930882c"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-p3-a-prop-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-a-prop-left.png"
+          ],
+          "sha256": [
+            "592933853ef2164a59a69201fde0518dabaa57ab468cdbab03fae53c6c1cc33c"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-p3-b-prop-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-b-prop-right.png"
+          ],
+          "sha256": [
+            "7c9025649ded869f4c4dfb962dbdab69a1b05e7af9b2a174b81e4a469f0ee808"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-p4-a-contact-floor",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-a-contact-floor.png"
+          ],
+          "sha256": [
+            "eddf92ce5e45cb0cbd74fe918354a986d72ad6d9b78930f74c490cf39083fc4f"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-p4-b-front-fascia",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-b-front-fascia.png"
+          ],
+          "sha256": [
+            "c554643b719d1b3a41d4766eea2f14ba60aa3d0ae9f5cc398c07ca7e618c7519"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-p5-a-foreground-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p5-a-foreground-left.png"
+          ],
+          "sha256": [
+            "9b4daa7d2e805a025a89b8c18266a079e1bcfd9546bfe413ef2b8fe3a81795d6"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-p5-b-foreground-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p5-b-foreground-right.png"
+          ],
+          "sha256": [
+            "80e712672bb13b00a3e6f3740aa7d7e0935ce84b5ae49e0a50f8e01e2a558c2a"
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-076-atrium-des-mediateurs",
+      "number": 76,
+      "name": "Atrium des Médiateurs",
+      "workbookKey": "ST127",
+      "cells": "09_STAGES!A131:N131",
+      "sourceRow": {
+        "row": 131,
+        "cells": {
+          "A131": "ST127",
+          "B131": "arena-076-atrium-des-mediateurs",
+          "C131": "Atrium des mediateurs",
+          "D131": "Original The Pit",
+          "E131": "Existant · composition documentée",
+          "F131": "Réserve de scènes / variante de campagne",
+          "G131": "Conserver la composition documentée ; dégager la ligne de combat et répartir la vie en profondeur.",
+          "H131": "Identifiant attesté par un rapport de composition ; nom lisible dérivé de l'identifiant. Enrichissement proposé, présence des PNJ à valider.",
+          "I131": "P0 ciel 0,04 ; P1 horizon 0,12 ; P2 architecture 0,25 ; P3 vie 0,38 ; P4 sol ancré ; P5 avant-plan 0,85",
+          "J131": "Plan de combat neutre : 960×540, sol Y430 comme base du moteur ; échelle proposée à contrôler sur l'art. Ne pas étirer les silhouettes.",
+          "K131": "Fond vivant uniquement ; dangers/portes interactives dans une variante narrative séparée, jamais aléatoires en duel classé.",
+          "L131": "Référence → cinq/six plans → appuis → acteurs du fond → lumière → QA visibilité.",
+          "M131": "À rapprocher",
+          "N131": "https://github.com/darknigthmare/yautja-la-longue-chasse/tree/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/app/game/systems/pitArenaExtensions.ts\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-delivery.md"
+        }
+      },
+      "before": "Runtime kit already present; this is a visual revision, not a missing arena.",
+      "visualFinding": "Atrium ornemental générique, fonction de médiation peu lisible",
+      "v65Status": "static-overlay-integrated-await-delivery-QA",
+      "fullDossierCertifiedComplete": false,
+      "canonicalLocation": false,
+      "newAnimations": 0,
+      "eventCellsStillNotDeliveredByThisStaticLot": [
+        {
+          "cell": "10_VIE_DES_STAGES!E383",
+          "description": "Observateurs anonymes du clan changeant lentement de posture"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E384",
+          "description": "Arbitre de fond réagissant seulement à la fin du round"
+        },
+        {
+          "cell": "10_VIE_DES_STAGES!E385",
+          "description": "Suspension ou bannière qui bouge sans masquer les impacts"
+        }
+      ],
+      "previousAssets": [
+        {
+          "plane": "P0",
+          "id": "p0-depth",
+          "paths": [
+            "/game/sprites/v42/pit-arenas/arena-076-atrium-des-mediateurs/p0-depth.png"
+          ],
+          "sha256": [
+            "382a80e469b8c90fb0423ecb9a35206ddbbe8529810bf9072b39eb77c8e28adc"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-p1-a-distant-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p1-a-distant-left.png"
+          ],
+          "sha256": [
+            "e1c2e24c8532d1d864ab87311c1f11b36c42b27bc773fc37db182e2f01e1d659"
+          ]
+        },
+        {
+          "plane": "P1",
+          "id": "p1-p1-b-distant-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p1-b-distant-right.png"
+          ],
+          "sha256": [
+            "e1fc1389d69301cf60581f6c7c8fff5e838e70a2fd7d06a23eef37af02bb920e"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-p2-a-support-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-a-support-left.png"
+          ],
+          "sha256": [
+            "a27a6dabca2dbae390e69971894aa4a51e4bfab065f3d37756b848e24b60d26d"
+          ]
+        },
+        {
+          "plane": "P2",
+          "id": "p2-p2-b-support-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-b-support-right.png"
+          ],
+          "sha256": [
+            "73e00657c48766717931e61e6ba9adc678b7df22d0b2d2b80dd04f3b08fc1031"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-p3-a-prop-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-a-prop-left.png"
+          ],
+          "sha256": [
+            "985326f565e972687a1ba050d80984f4886a6ac73a3c0d82fd2a97175c21eb34"
+          ]
+        },
+        {
+          "plane": "P3",
+          "id": "p3-p3-b-prop-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-b-prop-right.png"
+          ],
+          "sha256": [
+            "df9d36281ef1dc4b54732ee289f24e25a25e5c82c1e28596130c11c05c2f8bd8"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-p4-a-contact-floor",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p4-a-contact-floor.png"
+          ],
+          "sha256": [
+            "9c8e7461e133c401198274d75c150d07a26c7e8058428edc6dc6a994f665c1d1"
+          ]
+        },
+        {
+          "plane": "P4",
+          "id": "p4-p4-b-front-fascia",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p4-b-front-fascia.png"
+          ],
+          "sha256": [
+            "a994b01f6cffa1c2531b8e0e4a4bc0738e6e62b378fe0fdfd589e181d2400370"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-p5-a-foreground-left",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/ruins-tribunal/p5-a-foreground-left.png"
+          ],
+          "sha256": [
+            "8ef63ca28a572ae6c2cc99d2bc65cb1649f2f89d776baa72d0321c089d965fda"
+          ]
+        },
+        {
+          "plane": "P5",
+          "id": "p5-p5-b-foreground-right",
+          "paths": [
+            "/game/sprites/v34/pit-arenas/ruins-tribunal/p5-b-foreground-right.png"
+          ],
+          "sha256": [
+            "570df832fdc03bba0fe4f7c91ee97bc5fbbb1c985edc388dab6d3b5b637e4e8a"
+          ]
+        }
+      ]
+    }
+  ],
+  "dossiers": [
+    {
+      "stageKey": "ST001",
+      "name": "Clairière des pièges",
+      "targetStageId": "arena-103-predator-1987-final-trap-clearing",
+      "workbookCells": "09_STAGES!A5:N5",
+      "runtimeId": "arena-103-predator-1987-final-trap-clearing",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST002",
+      "name": "Vaisseau des trophées",
+      "targetStageId": "arena-106-predator-2-1990-trophy-ship",
+      "workbookCells": "09_STAGES!A6:N6",
+      "runtimeId": "arena-106-predator-2-1990-trophy-ship",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST003",
+      "name": "Chambre sacrificielle",
+      "targetStageId": "arena-122-avp-2004-sacrificial-chamber",
+      "workbookCells": "09_STAGES!A7:N7",
+      "runtimeId": "arena-122-avp-2004-sacrificial-chamber",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST004",
+      "name": "Épave de Gunnison",
+      "targetStageId": "arena-127-avpr-2007-forest-crash",
+      "workbookCells": "09_STAGES!A8:N8",
+      "runtimeId": "arena-127-avpr-2007-forest-crash",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST005",
+      "name": "Camp de la réserve",
+      "targetStageId": "arena-107-predators-2010-hunting-camp",
+      "workbookCells": "09_STAGES!A9:N9",
+      "runtimeId": "arena-107-predators-2010-hunting-camp",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST006",
+      "name": "Bourbier",
+      "targetStageId": "arena-115-prey-2022-mud-pit",
+      "workbookCells": "09_STAGES!A10:N10",
+      "runtimeId": "arena-115-prey-2022-mud-pit",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST007",
+      "name": "Crash de la forêt",
+      "targetStageId": "arena-112-the-predator-2018-forest-crash",
+      "workbookCells": "09_STAGES!A11:N11",
+      "runtimeId": "arena-112-the-predator-2018-forest-crash",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST008",
+      "name": "Cour du clan",
+      "targetStageId": "arena-121-badlands-2025-clan-prologue",
+      "workbookCells": "09_STAGES!A12:N12",
+      "runtimeId": "arena-121-badlands-2025-clan-prologue",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST009",
+      "name": "Arène du Warlord",
+      "targetStageId": "arena-118-killer-of-killers-2025-yautja-arena",
+      "workbookCells": "09_STAGES!A13:N13",
+      "runtimeId": "arena-118-killer-of-killers-2025-yautja-arena",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST010",
+      "name": "Glace du récit The Shield",
+      "targetStageId": "arena-116-killer-of-killers-2025-viking-ice",
+      "workbookCells": "09_STAGES!A14:N14",
+      "runtimeId": "arena-116-killer-of-killers-2025-viking-ice",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST011",
+      "name": "Toits du récit The Sword",
+      "targetStageId": "arena-117-killer-of-killers-2025-japan-rooftops",
+      "workbookCells": "09_STAGES!A15:N15",
+      "runtimeId": "arena-117-killer-of-killers-2025-japan-rooftops",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST012",
+      "name": "Freya’s Prospect",
+      "targetStageId": "arena-131-avp-2010-freyas-prospect",
+      "workbookCells": "09_STAGES!A16:N16",
+      "runtimeId": "arena-131-avp-2010-freyas-prospect",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST013",
+      "name": "San Drad · étude arcade",
+      "targetStageId": "arena-052-city-in-despair-etude-capcom",
+      "workbookCells": "09_STAGES!A17:N17",
+      "runtimeId": "arena-052-city-in-despair-etude-capcom",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST014",
+      "name": "Overgrowth",
+      "targetStageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "workbookCells": "09_STAGES!A18:N18",
+      "runtimeId": "arena-134-predator-hunting-grounds-overgrowth",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST015",
+      "name": "Neonopolis",
+      "targetStageId": "arena-137-concrete-jungle-neonopolis",
+      "workbookCells": "09_STAGES!A19:N19",
+      "runtimeId": "arena-137-concrete-jungle-neonopolis",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST016",
+      "name": "Ryushi · Prosperity Wells",
+      "targetStageId": "arena-138-avp-ryushi-prosperity-wells",
+      "workbookCells": "09_STAGES!A20:N20",
+      "runtimeId": "arena-138-avp-ryushi-prosperity-wells",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST017",
+      "name": "Cercle de basalte",
+      "targetStageId": "arena-001-cercle-de-basalte",
+      "workbookCells": "09_STAGES!A21:N21",
+      "runtimeId": "the-pit",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST018",
+      "name": "Salle des trophées du clan",
+      "targetStageId": "arena-002-hall-des-trophees",
+      "workbookCells": "09_STAGES!A22:N22",
+      "runtimeId": "trophy-hall",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST019",
+      "name": "Tribunal des ruines",
+      "targetStageId": "arena-008-tribunal-des-ruines",
+      "workbookCells": "09_STAGES!A23:N23",
+      "runtimeId": "ruins-tribunal",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST020",
+      "name": "Toit de l’hôpital · variante narrative",
+      "targetStageId": "arena-126-avpr-2007-hospital-roof",
+      "workbookCells": "09_STAGES!A24:N24",
+      "runtimeId": "arena-126-avpr-2007-hospital-roof",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST021",
+      "name": "Vestiges de la chasse à l’Ingénieur",
+      "targetStageId": "arena-162-ahab-engineer",
+      "workbookCells": "09_STAGES!A25:N25",
+      "runtimeId": "arena-162-ahab-engineer",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST022",
+      "name": "Laboratoire des cyborgs",
+      "targetStageId": "arena-163-neonopolis-lab",
+      "workbookCells": "09_STAGES!A26:N26",
+      "runtimeId": "arena-163-neonopolis-lab",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST023",
+      "name": "Périmètre de traque du Bad Blood",
+      "targetStageId": "arena-140-bad-blood-pine-barrens",
+      "workbookCells": "09_STAGES!A27:N27",
+      "runtimeId": "arena-140-bad-blood-pine-barrens",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST024",
+      "name": "Carrière des premiers chasseurs",
+      "targetStageId": "arena-164-alpha-revolt",
+      "workbookCells": "09_STAGES!A28:N28",
+      "runtimeId": "arena-164-alpha-revolt",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST025",
+      "name": "Trône des clans · hommage Kenner",
+      "targetStageId": "arena-165-kenner-throne",
+      "workbookCells": "09_STAGES!A29:N29",
+      "runtimeId": "arena-165-kenner-throne",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST026",
+      "name": "Atelier des prothèses",
+      "targetStageId": "arena-166-forge-cyborg",
+      "workbookCells": "09_STAGES!A30:N30",
+      "runtimeId": "arena-166-forge-cyborg",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST027",
+      "name": "Corniche basaltique",
+      "targetStageId": "arena-167-lava-ridge",
+      "workbookCells": "09_STAGES!A31:N31",
+      "runtimeId": "arena-167-lava-ridge",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST028",
+      "name": "Front de la ruche",
+      "targetStageId": "arena-168-hive-front",
+      "workbookCells": "09_STAGES!A32:N32",
+      "runtimeId": "arena-168-hive-front",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST029",
+      "name": "Avant-poste Extinction",
+      "targetStageId": "arena-169-extinction-front",
+      "workbookCells": "09_STAGES!A33:N33",
+      "runtimeId": "arena-169-extinction-front",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST030",
+      "name": "Toits de Gotham",
+      "targetStageId": "arena-139-batman-gotham-rooftops",
+      "workbookCells": "09_STAGES!A34:N34",
+      "runtimeId": "arena-139-batman-gotham-rooftops",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST031",
+      "name": "Entrepôt des deux chasseurs",
+      "targetStageId": "arena-170-gotham-bloodties",
+      "workbookCells": "09_STAGES!A35:N35",
+      "runtimeId": "arena-170-gotham-bloodties",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST032",
+      "name": "Mégabloc de Mega-City One",
+      "targetStageId": "arena-155-judge-dredd-megacity",
+      "workbookCells": "09_STAGES!A36:N36",
+      "runtimeId": "arena-155-judge-dredd-megacity",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST033",
+      "name": "Allée de Riverdale",
+      "targetStageId": "arena-144-archie-riverdale",
+      "workbookCells": "09_STAGES!A37:N37",
+      "runtimeId": "arena-144-archie-riverdale",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST034",
+      "name": "Centre d’essai des Meta-Predators",
+      "targetStageId": "arena-171-meta-lab",
+      "workbookCells": "09_STAGES!A38:N38",
+      "runtimeId": "arena-171-meta-lab",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST035",
+      "name": "Terrasse du spectre jaune",
+      "targetStageId": "arena-156-sinestro-earth",
+      "workbookCells": "09_STAGES!A39:N39",
+      "runtimeId": "arena-156-sinestro-earth",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST036",
+      "name": "Ruelle de Dead End",
+      "targetStageId": "arena-142-dead-end-alley",
+      "workbookCells": "09_STAGES!A40:N40",
+      "runtimeId": "arena-142-dead-end-alley",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST037",
+      "name": "Lisière nordique",
+      "targetStageId": "arena-172-phg-north",
+      "workbookCells": "09_STAGES!A41:N41",
+      "runtimeId": "arena-172-phg-north",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST038",
+      "name": "Cour du chasseur Samurai",
+      "targetStageId": "arena-173-phg-japan",
+      "workbookCells": "09_STAGES!A42:N42",
+      "runtimeId": "arena-173-phg-japan",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST039",
+      "name": "Halte des sables",
+      "targetStageId": "arena-174-phg-sands",
+      "workbookCells": "09_STAGES!A43:N43",
+      "runtimeId": "arena-174-phg-sands",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST040",
+      "name": "Récif de l’exilé",
+      "targetStageId": "arena-175-phg-islands",
+      "workbookCells": "09_STAGES!A44:N44",
+      "runtimeId": "arena-175-phg-islands",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST041",
+      "name": "Pont des épaves",
+      "targetStageId": "arena-176-phg-pirate",
+      "workbookCells": "09_STAGES!A45:N45",
+      "runtimeId": "arena-176-phg-pirate",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST042",
+      "name": "Rive de la chasseuse",
+      "targetStageId": "arena-177-phg-amazon",
+      "workbookCells": "09_STAGES!A46:N46",
+      "runtimeId": "arena-177-phg-amazon",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST043",
+      "name": "Ring clandestin",
+      "targetStageId": "arena-178-bloodshed-ring",
+      "workbookCells": "09_STAGES!A47:N47",
+      "runtimeId": "arena-178-bloodshed-ring",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST044",
+      "name": "Réserve de The Last Hunt",
+      "targetStageId": "arena-179-last-hunt-preserve",
+      "workbookCells": "09_STAGES!A48:N48",
+      "runtimeId": "arena-179-last-hunt-preserve",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST045",
+      "name": "Soute du Sandpiper",
+      "targetStageId": "arena-180-sandpiper",
+      "workbookCells": "09_STAGES!A49:N49",
+      "runtimeId": "arena-180-sandpiper",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST046",
+      "name": "Golgotha · duel d’honneur",
+      "targetStageId": "arena-187-golgotha-uscm-airlock",
+      "workbookCells": "09_STAGES!A50:N50",
+      "runtimeId": "arena-187-golgotha-uscm-airlock",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST047",
+      "name": "Station orbitale Classic",
+      "targetStageId": "arena-130-avp-classic-2000-space-station",
+      "workbookCells": "09_STAGES!A51:N51",
+      "runtimeId": "arena-130-avp-classic-2000-space-station",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST048",
+      "name": "Sanctuaire de Primal Hunt",
+      "targetStageId": "arena-146-primal-hunt-pilot-ruins",
+      "workbookCells": "09_STAGES!A52:N52",
+      "runtimeId": "arena-146-primal-hunt-pilot-ruins",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST049",
+      "name": "Complexe de chasse AVP2",
+      "targetStageId": "arena-181-avp2",
+      "workbookCells": "09_STAGES!A53:N53",
+      "runtimeId": "arena-181-avp2",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST050",
+      "name": "Gorge de la planète hostile",
+      "targetStageId": "arena-119-badlands-2025-hostile-forest",
+      "workbookCells": "09_STAGES!A54:N54",
+      "runtimeId": "arena-119-badlands-2025-hostile-forest",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST051",
+      "name": "Plate-forme du pilote",
+      "targetStageId": "arena-182-bullet-hangar",
+      "workbookCells": "09_STAGES!A55:N55",
+      "runtimeId": "arena-182-bullet-hangar",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST052",
+      "name": "Lisière du monde natal",
+      "targetStageId": "arena-183-homeworld-wilds",
+      "workbookCells": "09_STAGES!A56:N56",
+      "runtimeId": "arena-183-homeworld-wilds",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST053",
+      "name": "Salle du seuil",
+      "targetStageId": "arena-184-warp-threshold",
+      "workbookCells": "09_STAGES!A57:N57",
+      "runtimeId": "arena-184-warp-threshold",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST054",
+      "name": "Dojo des épreuves",
+      "targetStageId": "arena-185-training",
+      "workbookCells": "09_STAGES!A58:N58",
+      "runtimeId": "arena-185-training",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST055",
+      "name": "Piste de la proie blanche",
+      "targetStageId": "arena-186-snow-hunt",
+      "workbookCells": "09_STAGES!A59:N59",
+      "runtimeId": "arena-186-snow-hunt",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST056",
+      "name": "Passerelle de canopée",
+      "targetStageId": "arena-003-chaussee-de-canopee",
+      "workbookCells": "09_STAGES!A60:N60",
+      "runtimeId": "canopy-causeway",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST057",
+      "name": "Chambre du givre",
+      "targetStageId": "arena-004-chambre-de-givre",
+      "workbookCells": "09_STAGES!A61:N61",
+      "runtimeId": "frost-chamber",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST058",
+      "name": "Cour des cendres",
+      "targetStageId": "arena-005-cour-de-cendre",
+      "workbookCells": "09_STAGES!A62:N62",
+      "runtimeId": "ash-courtyard",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST059",
+      "name": "Terrasse de verre",
+      "targetStageId": "arena-006-terrasse-de-verre",
+      "workbookCells": "09_STAGES!A63:N63",
+      "runtimeId": "glass-terrace",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST060",
+      "name": "Pont abyssal",
+      "targetStageId": "arena-007-pont-abyssal",
+      "workbookCells": "09_STAGES!A64:N64",
+      "runtimeId": "abyssal-bridge",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST061",
+      "name": "Quais du premier sang",
+      "targetStageId": "arena-009-quais-du-premier-sang",
+      "workbookCells": "09_STAGES!A65:N65",
+      "runtimeId": "arena-009-quais-du-premier-sang",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST062",
+      "name": "Forge des lames muettes",
+      "targetStageId": "arena-010-forge-des-lames-muettes",
+      "workbookCells": "09_STAGES!A66:N66",
+      "runtimeId": "arena-010-forge-des-lames-muettes",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST063",
+      "name": "Reserve des crocs",
+      "targetStageId": "arena-011-reserve-des-crocs",
+      "workbookCells": "09_STAGES!A67:N67",
+      "runtimeId": "arena-011-reserve-des-crocs",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST064",
+      "name": "Balcon du roi de la chasse",
+      "targetStageId": "arena-012-balcon-du-roi-de-la-chasse",
+      "workbookCells": "09_STAGES!A68:N68",
+      "runtimeId": "arena-012-balcon-du-roi-de-la-chasse",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "selected-six-originals"
+    },
+    {
+      "stageKey": "ST065",
+      "name": "Mausolee des marques",
+      "targetStageId": "arena-013-mausolee-des-marques",
+      "workbookCells": "09_STAGES!A69:N69",
+      "runtimeId": "arena-013-mausolee-des-marques",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST066",
+      "name": "Cour des navigateurs",
+      "targetStageId": "arena-014-cour-des-navigateurs",
+      "workbookCells": "09_STAGES!A70:N70",
+      "runtimeId": "arena-014-cour-des-navigateurs",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST067",
+      "name": "Bastion des enforcers",
+      "targetStageId": "arena-015-bastion-des-enforcers",
+      "workbookCells": "09_STAGES!A71:N71",
+      "runtimeId": "arena-015-bastion-des-enforcers",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST068",
+      "name": "Terrasse des jeunes sangs",
+      "targetStageId": "arena-016-terrasse-des-jeunes-sangs",
+      "workbookCells": "09_STAGES!A72:N72",
+      "runtimeId": "arena-016-terrasse-des-jeunes-sangs",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST069",
+      "name": "Puits des bannis",
+      "targetStageId": "arena-017-puits-des-bannis",
+      "workbookCells": "09_STAGES!A73:N73",
+      "runtimeId": "arena-017-puits-des-bannis",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST070",
+      "name": "Observatoire des lunes",
+      "targetStageId": "arena-018-observatoire-des-lunes",
+      "workbookCells": "09_STAGES!A74:N74",
+      "runtimeId": "arena-018-observatoire-des-lunes",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST071",
+      "name": "Porte des reserves",
+      "targetStageId": "arena-019-porte-des-reserves",
+      "workbookCells": "09_STAGES!A75:N75",
+      "runtimeId": "arena-019-porte-des-reserves",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST072",
+      "name": "Trone fracture",
+      "targetStageId": "arena-020-trone-fracture",
+      "workbookCells": "09_STAGES!A76:N76",
+      "runtimeId": "arena-020-trone-fracture",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "selected-six-originals"
+    },
+    {
+      "stageKey": "ST073",
+      "name": "Marche du convoi",
+      "targetStageId": "arena-021-marche-du-convoi",
+      "workbookCells": "09_STAGES!A77:N77",
+      "runtimeId": "arena-021-marche-du-convoi",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST074",
+      "name": "Lac des signatures",
+      "targetStageId": "arena-022-lac-des-signatures",
+      "workbookCells": "09_STAGES!A78:N78",
+      "runtimeId": "arena-022-lac-des-signatures",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST075",
+      "name": "Ravin des planeurs",
+      "targetStageId": "arena-023-ravin-des-planeurs",
+      "workbookCells": "09_STAGES!A79:N79",
+      "runtimeId": "arena-023-ravin-des-planeurs",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST076",
+      "name": "Caverne des vapeurs",
+      "targetStageId": "arena-024-caverne-des-vapeurs",
+      "workbookCells": "09_STAGES!A80:N80",
+      "runtimeId": "arena-024-caverne-des-vapeurs",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST077",
+      "name": "Corniche du leviathan",
+      "targetStageId": "arena-025-corniche-du-leviathan",
+      "workbookCells": "09_STAGES!A81:N81",
+      "runtimeId": "arena-025-corniche-du-leviathan",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST078",
+      "name": "Nid des razorwings",
+      "targetStageId": "arena-026-nid-des-razorwings",
+      "workbookCells": "09_STAGES!A82:N82",
+      "runtimeId": "arena-026-nid-des-razorwings",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST079",
+      "name": "Station des braconniers",
+      "targetStageId": "arena-027-station-des-braconniers",
+      "workbookCells": "09_STAGES!A83:N83",
+      "runtimeId": "arena-027-station-des-braconniers",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST080",
+      "name": "Mat du vaisseau temple",
+      "targetStageId": "arena-028-mat-du-vaisseau-temple",
+      "workbookCells": "09_STAGES!A84:N84",
+      "runtimeId": "arena-028-mat-du-vaisseau-temple",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST081",
+      "name": "Crypte du disciple",
+      "targetStageId": "arena-029-crypte-du-disciple",
+      "workbookCells": "09_STAGES!A85:N85",
+      "runtimeId": "arena-029-crypte-du-disciple",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST082",
+      "name": "Jardin des spores",
+      "targetStageId": "arena-030-jardin-des-spores",
+      "workbookCells": "09_STAGES!A86:N86",
+      "runtimeId": "arena-030-jardin-des-spores",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST083",
+      "name": "C ur de mangrove",
+      "targetStageId": "arena-031-c-ur-de-mangrove",
+      "workbookCells": "09_STAGES!A87:N87",
+      "runtimeId": "arena-031-c-ur-de-mangrove",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST084",
+      "name": "Dorsale du sandmaw",
+      "targetStageId": "arena-032-dorsale-du-sandmaw",
+      "workbookCells": "09_STAGES!A88:N88",
+      "runtimeId": "arena-032-dorsale-du-sandmaw",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST085",
+      "name": "Chantier des motherships",
+      "targetStageId": "arena-033-chantier-des-motherships",
+      "workbookCells": "09_STAGES!A89:N89",
+      "runtimeId": "arena-033-chantier-des-motherships",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST086",
+      "name": "Archive interdite",
+      "targetStageId": "arena-034-archive-interdite",
+      "workbookCells": "09_STAGES!A90:N90",
+      "runtimeId": "arena-034-archive-interdite",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST087",
+      "name": "Fosse des cent masques",
+      "targetStageId": "arena-035-fosse-des-cent-masques",
+      "workbookCells": "09_STAGES!A91:N91",
+      "runtimeId": "arena-035-fosse-des-cent-masques",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST088",
+      "name": "Temple de la double lune",
+      "targetStageId": "arena-036-temple-de-la-double-lune",
+      "workbookCells": "09_STAGES!A92:N92",
+      "runtimeId": "arena-036-temple-de-la-double-lune",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "selected-six-originals"
+    },
+    {
+      "stageKey": "ST089",
+      "name": "Ecluse des marais",
+      "targetStageId": "arena-037-ecluse-des-marais",
+      "workbookCells": "09_STAGES!A93:N93",
+      "runtimeId": "arena-037-ecluse-des-marais",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST090",
+      "name": "Cicatrice du monde",
+      "targetStageId": "arena-038-cicatrice-du-monde",
+      "workbookCells": "09_STAGES!A94:N94",
+      "runtimeId": "arena-038-cicatrice-du-monde",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST091",
+      "name": "Necropole des chasseurs",
+      "targetStageId": "arena-039-necropole-des-chasseurs",
+      "workbookCells": "09_STAGES!A95:N95",
+      "runtimeId": "arena-039-necropole-des-chasseurs",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST092",
+      "name": "Fonderie zero",
+      "targetStageId": "arena-040-fonderie-zero",
+      "workbookCells": "09_STAGES!A96:N96",
+      "runtimeId": "arena-040-fonderie-zero",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST093",
+      "name": "Promontoire de vey",
+      "targetStageId": "arena-041-promontoire-de-vey",
+      "workbookCells": "09_STAGES!A97:N97",
+      "runtimeId": "arena-041-promontoire-de-vey",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST094",
+      "name": "Couronne de glace",
+      "targetStageId": "arena-042-couronne-de-glace",
+      "workbookCells": "09_STAGES!A98:N98",
+      "runtimeId": "arena-042-couronne-de-glace",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST095",
+      "name": "Reacteur de basalte",
+      "targetStageId": "arena-043-reacteur-de-basalte",
+      "workbookCells": "09_STAGES!A99:N99",
+      "runtimeId": "arena-043-reacteur-de-basalte",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST096",
+      "name": "Pont des exiles",
+      "targetStageId": "arena-044-pont-des-exiles",
+      "workbookCells": "09_STAGES!A100:N100",
+      "runtimeId": "arena-044-pont-des-exiles",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST097",
+      "name": "Galerie des serments",
+      "targetStageId": "arena-045-galerie-des-serments",
+      "workbookCells": "09_STAGES!A101:N101",
+      "runtimeId": "arena-045-galerie-des-serments",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST098",
+      "name": "Station du dernier signal",
+      "targetStageId": "arena-046-station-du-dernier-signal",
+      "workbookCells": "09_STAGES!A102:N102",
+      "runtimeId": "arena-046-station-du-dernier-signal",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST099",
+      "name": "Bassin des chasses",
+      "targetStageId": "arena-047-bassin-des-chasses",
+      "workbookCells": "09_STAGES!A103:N103",
+      "runtimeId": "arena-047-bassin-des-chasses",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST100",
+      "name": "Cale du vaisseau perdu",
+      "targetStageId": "arena-048-cale-du-vaisseau-perdu",
+      "workbookCells": "09_STAGES!A104:N104",
+      "runtimeId": "arena-048-cale-du-vaisseau-perdu",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST101",
+      "name": "Aiguille des orages",
+      "targetStageId": "arena-049-aiguille-des-orages",
+      "workbookCells": "09_STAGES!A105:N105",
+      "runtimeId": "arena-049-aiguille-des-orages",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST102",
+      "name": "Porte de l audience",
+      "targetStageId": "arena-050-porte-de-l-audience",
+      "workbookCells": "09_STAGES!A106:N106",
+      "runtimeId": "arena-050-porte-de-l-audience",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "selected-six-originals"
+    },
+    {
+      "stageKey": "ST103",
+      "name": "Golgotha etude jaguar",
+      "targetStageId": "arena-187-golgotha-uscm-airlock",
+      "workbookCells": "09_STAGES!A107:N107",
+      "runtimeId": "arena-187-golgotha-uscm-airlock",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST104",
+      "name": "Reacteur aliens etude konami",
+      "targetStageId": "arena-053-reacteur-aliens-etude-konami",
+      "workbookCells": "09_STAGES!A108:N108",
+      "runtimeId": "arena-053-reacteur-aliens-etude-konami",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST105",
+      "name": "Egouts avp etude snes",
+      "targetStageId": "arena-054-egouts-avp-etude-snes",
+      "workbookCells": "09_STAGES!A109:N109",
+      "runtimeId": "arena-054-egouts-avp-etude-snes",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST106",
+      "name": "Furnace alien 3 etude snes",
+      "targetStageId": "arena-055-furnace-alien-3-etude-snes",
+      "workbookCells": "09_STAGES!A110:N110",
+      "runtimeId": "arena-055-furnace-alien-3-etude-snes",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST107",
+      "name": "Entrance alien trilogy etude ps1",
+      "targetStageId": "arena-056-entrance-alien-trilogy-etude-ps1",
+      "workbookCells": "09_STAGES!A111:N111",
+      "runtimeId": "arena-056-entrance-alien-trilogy-etude-ps1",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST108",
+      "name": "Temple avp etude pc",
+      "targetStageId": "arena-057-temple-avp-etude-pc",
+      "workbookCells": "09_STAGES!A112:N112",
+      "runtimeId": "arena-057-temple-avp-etude-pc",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST109",
+      "name": "Engineering alien resurrection etude ps1",
+      "targetStageId": "arena-058-engineering-alien-resurrection-etude-ps1",
+      "workbookCells": "09_STAGES!A113:N113",
+      "runtimeId": "arena-058-engineering-alien-resurrection-etude-ps1",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST110",
+      "name": "Sulaco infestation etude portable",
+      "targetStageId": "arena-059-sulaco-infestation-etude-portable",
+      "workbookCells": "09_STAGES!A114:N114",
+      "runtimeId": "arena-059-sulaco-infestation-etude-portable",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST111",
+      "name": "Nostromo mess etude isolation",
+      "targetStageId": "arena-060-nostromo-mess-etude-isolation",
+      "workbookCells": "09_STAGES!A115:N115",
+      "runtimeId": "arena-060-nostromo-mess-etude-isolation",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST112",
+      "name": "Chambre des echos",
+      "targetStageId": "arena-061-chambre-des-echos",
+      "workbookCells": "09_STAGES!A116:N116",
+      "runtimeId": "arena-061-chambre-des-echos",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST113",
+      "name": "Serre du predateur blanc",
+      "targetStageId": "arena-062-serre-du-predateur-blanc",
+      "workbookCells": "09_STAGES!A117:N117",
+      "runtimeId": "arena-062-serre-du-predateur-blanc",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST114",
+      "name": "Porte memoire",
+      "targetStageId": "arena-063-porte-memoire",
+      "workbookCells": "09_STAGES!A118:N118",
+      "runtimeId": "arena-063-porte-memoire",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST115",
+      "name": "Sanctuaire du fouisseur",
+      "targetStageId": "arena-064-sanctuaire-du-fouisseur",
+      "workbookCells": "09_STAGES!A119:N119",
+      "runtimeId": "arena-064-sanctuaire-du-fouisseur",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST116",
+      "name": "Cimetiere des drones",
+      "targetStageId": "arena-065-cimetiere-des-drones",
+      "workbookCells": "09_STAGES!A120:N120",
+      "runtimeId": "arena-065-cimetiere-des-drones",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST117",
+      "name": "Balise de rabattage",
+      "targetStageId": "arena-066-balise-de-rabattage",
+      "workbookCells": "09_STAGES!A121:N121",
+      "runtimeId": "arena-066-balise-de-rabattage",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST118",
+      "name": "Terrasses de la premiere cite",
+      "targetStageId": "arena-067-terrasses-de-la-premiere-cite",
+      "workbookCells": "09_STAGES!A122:N122",
+      "runtimeId": "arena-067-terrasses-de-la-premiere-cite",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST119",
+      "name": "Aqueduc des clans",
+      "targetStageId": "arena-068-aqueduc-des-clans",
+      "workbookCells": "09_STAGES!A123:N123",
+      "runtimeId": "arena-068-aqueduc-des-clans",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST120",
+      "name": "Salle du porte cendres",
+      "targetStageId": "arena-069-salle-du-porte-cendres",
+      "workbookCells": "09_STAGES!A124:N124",
+      "runtimeId": "arena-069-salle-du-porte-cendres",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "selected-six-originals"
+    },
+    {
+      "stageKey": "ST121",
+      "name": "Nef des serpents",
+      "targetStageId": "arena-070-nef-des-serpents",
+      "workbookCells": "09_STAGES!A125:N125",
+      "runtimeId": "arena-070-nef-des-serpents",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST122",
+      "name": "Observatoire du chasseur mort",
+      "targetStageId": "arena-071-observatoire-du-chasseur-mort",
+      "workbookCells": "09_STAGES!A126:N126",
+      "runtimeId": "arena-071-observatoire-du-chasseur-mort",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST123",
+      "name": "Reserve de quarantaine",
+      "targetStageId": "arena-072-reserve-de-quarantaine",
+      "workbookCells": "09_STAGES!A127:N127",
+      "runtimeId": "arena-072-reserve-de-quarantaine",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST124",
+      "name": "Cascade de resine",
+      "targetStageId": "arena-073-cascade-de-resine",
+      "workbookCells": "09_STAGES!A128:N128",
+      "runtimeId": "arena-073-cascade-de-resine",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST125",
+      "name": "Pont des trois soleils",
+      "targetStageId": "arena-074-pont-des-trois-soleils",
+      "workbookCells": "09_STAGES!A129:N129",
+      "runtimeId": "arena-074-pont-des-trois-soleils",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST126",
+      "name": "Depot des prises contestees",
+      "targetStageId": "arena-075-depot-des-prises-contestees",
+      "workbookCells": "09_STAGES!A130:N130",
+      "runtimeId": "arena-075-depot-des-prises-contestees",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST127",
+      "name": "Atrium des mediateurs",
+      "targetStageId": "arena-076-atrium-des-mediateurs",
+      "workbookCells": "09_STAGES!A131:N131",
+      "runtimeId": "arena-076-atrium-des-mediateurs",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "selected-six-originals"
+    },
+    {
+      "stageKey": "ST128",
+      "name": "Fosse du tonnerre",
+      "targetStageId": "arena-077-fosse-du-tonnerre",
+      "workbookCells": "09_STAGES!A132:N132",
+      "runtimeId": "arena-077-fosse-du-tonnerre",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST129",
+      "name": "Recif suspendu",
+      "targetStageId": "arena-078-recif-suspendu",
+      "workbookCells": "09_STAGES!A133:N133",
+      "runtimeId": "arena-078-recif-suspendu",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST130",
+      "name": "Salle des routes stellaires",
+      "targetStageId": "arena-079-salle-des-routes-stellaires",
+      "workbookCells": "09_STAGES!A134:N134",
+      "runtimeId": "arena-079-salle-des-routes-stellaires",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST131",
+      "name": "Dernier quai",
+      "targetStageId": "arena-080-dernier-quai",
+      "workbookCells": "09_STAGES!A135:N135",
+      "runtimeId": "arena-080-dernier-quai",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST132",
+      "name": "Cercle obsidienne",
+      "targetStageId": "arena-081-cercle-obsidienne",
+      "workbookCells": "09_STAGES!A136:N136",
+      "runtimeId": "arena-081-cercle-obsidienne",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST133",
+      "name": "Cercle ivoire",
+      "targetStageId": "arena-082-cercle-ivoire",
+      "workbookCells": "09_STAGES!A137:N137",
+      "runtimeId": "arena-082-cercle-ivoire",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST134",
+      "name": "Cercle bronze",
+      "targetStageId": "arena-083-cercle-bronze",
+      "workbookCells": "09_STAGES!A138:N138",
+      "runtimeId": "arena-083-cercle-bronze",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST135",
+      "name": "Cercle jade",
+      "targetStageId": "arena-084-cercle-jade",
+      "workbookCells": "09_STAGES!A139:N139",
+      "runtimeId": "arena-084-cercle-jade",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST136",
+      "name": "Cercle sang",
+      "targetStageId": "arena-085-cercle-sang",
+      "workbookCells": "09_STAGES!A140:N140",
+      "runtimeId": "arena-085-cercle-sang",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST137",
+      "name": "Cercle cobalt",
+      "targetStageId": "arena-086-cercle-cobalt",
+      "workbookCells": "09_STAGES!A141:N141",
+      "runtimeId": "arena-086-cercle-cobalt",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST138",
+      "name": "Cercle ambre",
+      "targetStageId": "arena-087-cercle-ambre",
+      "workbookCells": "09_STAGES!A142:N142",
+      "runtimeId": "arena-087-cercle-ambre",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST139",
+      "name": "Cercle cendre",
+      "targetStageId": "arena-088-cercle-cendre",
+      "workbookCells": "09_STAGES!A143:N143",
+      "runtimeId": "arena-088-cercle-cendre",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST140",
+      "name": "Cercle eclipse",
+      "targetStageId": "arena-089-cercle-eclipse",
+      "workbookCells": "09_STAGES!A144:N144",
+      "runtimeId": "arena-089-cercle-eclipse",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST141",
+      "name": "Cercle aurore",
+      "targetStageId": "arena-090-cercle-aurore",
+      "workbookCells": "09_STAGES!A145:N145",
+      "runtimeId": "arena-090-cercle-aurore",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST142",
+      "name": "Duel des lames",
+      "targetStageId": "arena-091-duel-des-lames",
+      "workbookCells": "09_STAGES!A146:N146",
+      "runtimeId": "arena-091-duel-des-lames",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST143",
+      "name": "Duel des disques",
+      "targetStageId": "arena-092-duel-des-disques",
+      "workbookCells": "09_STAGES!A147:N147",
+      "runtimeId": "arena-092-duel-des-disques",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST144",
+      "name": "Duel des filets",
+      "targetStageId": "arena-093-duel-des-filets",
+      "workbookCells": "09_STAGES!A148:N148",
+      "runtimeId": "arena-093-duel-des-filets",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST145",
+      "name": "Duel du plasma",
+      "targetStageId": "arena-094-duel-du-plasma",
+      "workbookCells": "09_STAGES!A149:N149",
+      "runtimeId": "arena-094-duel-du-plasma",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST146",
+      "name": "Duel des anciens",
+      "targetStageId": "arena-095-duel-des-anciens",
+      "workbookCells": "09_STAGES!A150:N150",
+      "runtimeId": "arena-095-duel-des-anciens",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST147",
+      "name": "Duel des jeunes sangs",
+      "targetStageId": "arena-096-duel-des-jeunes-sangs",
+      "workbookCells": "09_STAGES!A151:N151",
+      "runtimeId": "arena-096-duel-des-jeunes-sangs",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST148",
+      "name": "Duel du premier point",
+      "targetStageId": "arena-097-duel-du-premier-point",
+      "workbookCells": "09_STAGES!A152:N152",
+      "runtimeId": "arena-097-duel-du-premier-point",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST149",
+      "name": "Duel de l honneur",
+      "targetStageId": "arena-098-duel-de-l-honneur",
+      "workbookCells": "09_STAGES!A153:N153",
+      "runtimeId": "arena-098-duel-de-l-honneur",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST150",
+      "name": "Duel du jugement",
+      "targetStageId": "arena-099-duel-du-jugement",
+      "workbookCells": "09_STAGES!A154:N154",
+      "runtimeId": "arena-099-duel-du-jugement",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST151",
+      "name": "Le dernier cercle",
+      "targetStageId": "arena-100-le-dernier-cercle",
+      "workbookCells": "09_STAGES!A155:N155",
+      "runtimeId": "arena-100-le-dernier-cercle",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST152",
+      "name": "Predator 1987 guerrilla camp",
+      "targetStageId": "arena-101-predator-1987-guerrilla-camp",
+      "workbookCells": "09_STAGES!A156:N156",
+      "runtimeId": "arena-101-predator-1987-guerrilla-camp",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST153",
+      "name": "Predator 1987 rocky riverbank",
+      "targetStageId": "arena-102-predator-1987-rocky-riverbank",
+      "workbookCells": "09_STAGES!A157:N157",
+      "runtimeId": "arena-102-predator-1987-rocky-riverbank",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST154",
+      "name": "Predator 2 1990 subway",
+      "targetStageId": "arena-104-predator-2-1990-subway",
+      "workbookCells": "09_STAGES!A158:N158",
+      "runtimeId": "arena-104-predator-2-1990-subway",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST155",
+      "name": "Predator 2 1990 slaughterhouse",
+      "targetStageId": "arena-105-predator-2-1990-slaughterhouse",
+      "workbookCells": "09_STAGES!A159:N159",
+      "runtimeId": "arena-105-predator-2-1990-slaughterhouse",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST156",
+      "name": "Predators 2010 tall grass",
+      "targetStageId": "arena-108-predators-2010-tall-grass",
+      "workbookCells": "09_STAGES!A160:N160",
+      "runtimeId": "arena-108-predators-2010-tall-grass",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST157",
+      "name": "Predators 2010 noland wreck",
+      "targetStageId": "arena-109-predators-2010-noland-wreck",
+      "workbookCells": "09_STAGES!A161:N161",
+      "runtimeId": "arena-109-predators-2010-noland-wreck",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST158",
+      "name": "The predator 2018 stargazer lab",
+      "targetStageId": "arena-110-the-predator-2018-stargazer-lab",
+      "workbookCells": "09_STAGES!A162:N162",
+      "runtimeId": "arena-110-the-predator-2018-stargazer-lab",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST159",
+      "name": "The predator 2018 school field",
+      "targetStageId": "arena-111-the-predator-2018-school-field",
+      "workbookCells": "09_STAGES!A163:N163",
+      "runtimeId": "arena-111-the-predator-2018-school-field",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST160",
+      "name": "Prey 2022 trapper clearing",
+      "targetStageId": "arena-113-prey-2022-trapper-clearing",
+      "workbookCells": "09_STAGES!A164:N164",
+      "runtimeId": "arena-113-prey-2022-trapper-clearing",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST161",
+      "name": "Prey 2022 bear river",
+      "targetStageId": "arena-114-prey-2022-bear-river",
+      "workbookCells": "09_STAGES!A165:N165",
+      "runtimeId": "arena-114-prey-2022-bear-river",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST162",
+      "name": "Badlands 2025 hostile forest",
+      "targetStageId": "arena-119-badlands-2025-hostile-forest",
+      "workbookCells": "09_STAGES!A166:N166",
+      "runtimeId": "arena-119-badlands-2025-hostile-forest",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST163",
+      "name": "Badlands 2025 weyland lab",
+      "targetStageId": "arena-120-badlands-2025-weyland-lab",
+      "workbookCells": "09_STAGES!A167:N167",
+      "runtimeId": "arena-120-badlands-2025-weyland-lab",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST164",
+      "name": "Avp 2004 whaling station",
+      "targetStageId": "arena-123-avp-2004-whaling-station",
+      "workbookCells": "09_STAGES!A168:N168",
+      "runtimeId": "arena-123-avp-2004-whaling-station",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST165",
+      "name": "Avp 2004 queen chamber",
+      "targetStageId": "arena-124-avp-2004-queen-chamber",
+      "workbookCells": "09_STAGES!A169:N169",
+      "runtimeId": "arena-124-avp-2004-queen-chamber",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST166",
+      "name": "Avpr 2007 sewers",
+      "targetStageId": "arena-125-avpr-2007-sewers",
+      "workbookCells": "09_STAGES!A170:N170",
+      "runtimeId": "arena-125-avpr-2007-sewers",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST167",
+      "name": "Avpr 2007 hospital roof",
+      "targetStageId": "arena-126-avpr-2007-hospital-roof",
+      "workbookCells": "09_STAGES!A171:N171",
+      "runtimeId": "arena-126-avpr-2007-hospital-roof",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST168",
+      "name": "Avp classic 2000 colonial base",
+      "targetStageId": "arena-128-avp-classic-2000-colonial-base",
+      "workbookCells": "09_STAGES!A172:N172",
+      "runtimeId": "arena-128-avp-classic-2000-colonial-base",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST169",
+      "name": "Avp classic 2000 starship",
+      "targetStageId": "arena-129-avp-classic-2000-starship",
+      "workbookCells": "09_STAGES!A173:N173",
+      "runtimeId": "arena-129-avp-classic-2000-starship",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST170",
+      "name": "Avp classic 2000 space station",
+      "targetStageId": "arena-130-avp-classic-2000-space-station",
+      "workbookCells": "09_STAGES!A174:N174",
+      "runtimeId": "arena-130-avp-classic-2000-space-station",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST171",
+      "name": "Avp 2010 refinery",
+      "targetStageId": "arena-132-avp-2010-refinery",
+      "workbookCells": "09_STAGES!A175:N175",
+      "runtimeId": "arena-132-avp-2010-refinery",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST172",
+      "name": "Avp 2010 docks",
+      "targetStageId": "arena-133-avp-2010-docks",
+      "workbookCells": "09_STAGES!A176:N176",
+      "runtimeId": "arena-133-avp-2010-docks",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST173",
+      "name": "Predator hunting grounds excavation",
+      "targetStageId": "arena-135-predator-hunting-grounds-excavation",
+      "workbookCells": "09_STAGES!A177:N177",
+      "runtimeId": "arena-135-predator-hunting-grounds-excavation",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    },
+    {
+      "stageKey": "ST174",
+      "name": "Predator hunting grounds airstrip",
+      "targetStageId": "arena-136-predator-hunting-grounds-airstrip",
+      "workbookCells": "09_STAGES!A178:N178",
+      "runtimeId": "arena-136-predator-hunting-grounds-airstrip",
+      "runtimeKitPresent": true,
+      "staticVisualReviewV65": "not-audited-in-this-lot"
+    }
+  ],
+  "limits": [
+    "No absence of a dedicated V60–V63 ambient registry is treated as absence of a backdrop.",
+    "This limited visual pass does not review the other181 arenas.",
+    "Eighteen requested animation descriptions for the six selected dossiers remain outside this static lot.",
+    "Original architecture guided by references does not become a canonical location or a certified1:1 reproduction."
+  ]
+}

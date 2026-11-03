@@ -1,0 +1,554 @@
+{
+  "schemaVersion": 1,
+  "fighterId": "greyback",
+  "variantId": "elder-greyback-avec-casque-eda4af4a7d",
+  "generator": "built-in-imagegen",
+  "canonicalFidelityCertified": false,
+  "choreography": "gameplay-adaptation-not-canonical-ritual",
+  "reference": {
+    "path": "public/game/sprites/v44/user-hunters/eda4af4a7d6b975b26301ca7cd00a1b0e8c913de6f22d012e0434caed46d5763.png",
+    "sha256": "eda4af4a7d6b975b26301ca7cd00a1b0e8c913de6f22d012e0434caed46d5763"
+  },
+  "generationBudget": {
+    "permittedInitial": 10,
+    "actualInitial": 10,
+    "replacements": 0
+  },
+  "target": {
+    "families": 6,
+    "pages": 10,
+    "drawings": 128
+  },
+  "actual": {
+    "archivedPages": 10,
+    "publicPages": 1,
+    "acceptedDrawings": 6,
+    "acceptedClips": 1,
+    "completeFamilyCycles": 0
+  },
+  "archives": [
+    {
+      "sourcePath": "art-source/v94/pit/greyback/01-idle-original.png",
+      "generatorOriginalBasename": "exec-05a1d501-8377-4dde-be43-79fef8150a91.png",
+      "sha256": "5f883aa12d9d4fb044874955268fc087e4b25dd6666bfb951a75f0fd310881ad",
+      "bytes": 2952502,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "transparentPixels": 712602,
+      "apparentContactSheetDrawings": 16,
+      "runtimeAcceptedDrawings": 0,
+      "decision": "refused",
+      "geometry": {
+        "name": "01-idle-original.png",
+        "sha256": "5f883aa12d9d4fb044874955268fc087e4b25dd6666bfb951a75f0fd310881ad",
+        "safeRectangles": false,
+        "error": "No native transparent seam near 384"
+      },
+      "visualNote": "No gross equipment omission noted, but native alpha windows unsafe",
+      "pixelTransformation": "none-byte-identical-copy"
+    },
+    {
+      "sourcePath": "art-source/v94/pit/greyback/02-dizzy-original.png",
+      "generatorOriginalBasename": "exec-a00eab85-9cb3-4371-aa8c-358cdd8e9d8e.png",
+      "sha256": "a8b59a9597a6b1aacf120f2cc75f37fa102c6fabe1e6bae4957a392961231a8e",
+      "bytes": 2801708,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "transparentPixels": 825357,
+      "apparentContactSheetDrawings": 16,
+      "runtimeAcceptedDrawings": 0,
+      "decision": "refused",
+      "geometry": {
+        "name": "02-dizzy-original.png",
+        "sha256": "a8b59a9597a6b1aacf120f2cc75f37fa102c6fabe1e6bae4957a392961231a8e",
+        "safeRectangles": false,
+        "error": "No native transparent seam near 256"
+      },
+      "visualNote": "No gross equipment omission noted, but native alpha windows unsafe",
+      "pixelTransformation": "none-byte-identical-copy"
+    },
+    {
+      "sourcePath": "art-source/v94/pit/greyback/03-intro-a-original.png",
+      "generatorOriginalBasename": "exec-b2931c05-a4e2-4f00-ad24-951c419b9bb2.png",
+      "sha256": "73beabc86583d8b9964e35174f4ea11486378076da67dc28e3714a9c7492c1aa",
+      "bytes": 2975647,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "transparentPixels": 763464,
+      "apparentContactSheetDrawings": 12,
+      "runtimeAcceptedDrawings": 0,
+      "decision": "refused",
+      "geometry": {
+        "name": "03-intro-a-original.png",
+        "sha256": "73beabc86583d8b9964e35174f4ea11486378076da67dc28e3714a9c7492c1aa",
+        "safeRectangles": false,
+        "error": "No native transparent seam near 512"
+      },
+      "visualNote": "Sword missing on four left-facing drawings",
+      "pixelTransformation": "none-byte-identical-copy"
+    },
+    {
+      "sourcePath": "art-source/v94/pit/greyback/04-intro-b-original.png",
+      "generatorOriginalBasename": "exec-80c1612a-e70e-42e3-9bc1-317268948a64.png",
+      "sha256": "a8721c725766f99ad4526a894ed9e67b97ff049f0a09c73a4c7192bfcbef0ca5",
+      "bytes": 2968610,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "transparentPixels": 735527,
+      "apparentContactSheetDrawings": 12,
+      "runtimeAcceptedDrawings": 0,
+      "decision": "refused",
+      "geometry": {
+        "name": "04-intro-b-original.png",
+        "sha256": "a8721c725766f99ad4526a894ed9e67b97ff049f0a09c73a4c7192bfcbef0ca5",
+        "safeRectangles": false,
+        "error": "No native transparent seam near 256"
+      },
+      "visualNote": "Final right-half drawing faces right instead of left",
+      "pixelTransformation": "none-byte-identical-copy"
+    },
+    {
+      "sourcePath": "art-source/v94/pit/greyback/05-victory-a-original.png",
+      "generatorOriginalBasename": "exec-b88bfd7b-30ee-4798-8e09-43c853ec87c3.png",
+      "sha256": "d7899c6aa5f473070e90cc79ffe8f240c20d57443dc4376c8f36f989c7930236",
+      "bytes": 2936202,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "transparentPixels": 775677,
+      "apparentContactSheetDrawings": 12,
+      "runtimeAcceptedDrawings": 6,
+      "decision": "partial-right-native-six-cells-only",
+      "geometry": {
+        "name": "05-victory-a-original.png",
+        "sha256": "d7899c6aa5f473070e90cc79ffe8f240c20d57443dc4376c8f36f989c7930236",
+        "safeRectangles": true,
+        "drawings": 12,
+        "uniqueDrawings": 12
+      },
+      "visualNote": "Right native cells accepted only; left top fourth drawing has no sword, left forearm costume inconsistent",
+      "pixelTransformation": "none-byte-identical-copy"
+    },
+    {
+      "sourcePath": "art-source/v94/pit/greyback/06-victory-b-original.png",
+      "generatorOriginalBasename": "exec-5f1da650-9c0d-45ff-a988-4cddab7e9bfe.png",
+      "sha256": "1252e514699b3486aa47c131b50255fe54e5b568cfb60a10d5fc558b14d34d8c",
+      "bytes": 2862450,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "transparentPixels": 775186,
+      "apparentContactSheetDrawings": 12,
+      "runtimeAcceptedDrawings": 0,
+      "decision": "refused",
+      "geometry": {
+        "name": "06-victory-b-original.png",
+        "sha256": "1252e514699b3486aa47c131b50255fe54e5b568cfb60a10d5fc558b14d34d8c",
+        "safeRectangles": false,
+        "error": "No native transparent seam near 256"
+      },
+      "visualNote": "No gross equipment omission noted, but native alpha windows unsafe",
+      "pixelTransformation": "none-byte-identical-copy"
+    },
+    {
+      "sourcePath": "art-source/v94/pit/greyback/07-defeat-a-original.png",
+      "generatorOriginalBasename": "exec-6029963e-b5b6-4966-927c-f0e076d6a576.png",
+      "sha256": "230b64d24b1c45f3bbe54aa928fffd8158205cb5fdedb6f02a78efef5f866e99",
+      "bytes": 1985559,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "transparentPixels": 1189870,
+      "apparentContactSheetDrawings": 12,
+      "runtimeAcceptedDrawings": 0,
+      "decision": "refused",
+      "geometry": {
+        "name": "07-defeat-a-original.png",
+        "sha256": "230b64d24b1c45f3bbe54aa928fffd8158205cb5fdedb6f02a78efef5f866e99",
+        "safeRectangles": false,
+        "error": "No native transparent seam near 256"
+      },
+      "visualNote": "No gross equipment omission noted, but native alpha windows unsafe",
+      "pixelTransformation": "none-byte-identical-copy"
+    },
+    {
+      "sourcePath": "art-source/v94/pit/greyback/08-defeat-b-original.png",
+      "generatorOriginalBasename": "exec-7124ff56-ecab-4b29-9d41-0fc14f729dec.png",
+      "sha256": "298994ac53ff0725f5bd2dad5cc8d9ee1aec6424babf8ee694f60b5e675c3d07",
+      "bytes": 2287867,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "transparentPixels": 1075529,
+      "apparentContactSheetDrawings": 12,
+      "runtimeAcceptedDrawings": 0,
+      "decision": "refused",
+      "geometry": {
+        "name": "08-defeat-b-original.png",
+        "sha256": "298994ac53ff0725f5bd2dad5cc8d9ee1aec6424babf8ee694f60b5e675c3d07",
+        "safeRectangles": false,
+        "error": "No native transparent seam near 256"
+      },
+      "visualNote": "Sword absent on left-facing drawings",
+      "pixelTransformation": "none-byte-identical-copy"
+    },
+    {
+      "sourcePath": "art-source/v94/pit/greyback/09-taunt-a-original.png",
+      "generatorOriginalBasename": "exec-b7b87bca-7315-4f79-a4a5-04f10e2ad593.png",
+      "sha256": "6d0dbdfc18812706386171d0a1636e90396f573cfcfac9b3de1eaf6e17563811",
+      "bytes": 1996956,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "transparentPixels": 1175402,
+      "apparentContactSheetDrawings": 12,
+      "runtimeAcceptedDrawings": 0,
+      "decision": "refused",
+      "geometry": {
+        "name": "09-taunt-a-original.png",
+        "sha256": "6d0dbdfc18812706386171d0a1636e90396f573cfcfac9b3de1eaf6e17563811",
+        "safeRectangles": false,
+        "error": "No native transparent seam near 512"
+      },
+      "visualNote": "No gross equipment omission noted, but native alpha windows unsafe",
+      "pixelTransformation": "none-byte-identical-copy"
+    },
+    {
+      "sourcePath": "art-source/v94/pit/greyback/10-taunt-b-original.png",
+      "generatorOriginalBasename": "exec-ceed6547-3ef6-473b-9187-707c1539cfd1.png",
+      "sha256": "923c33bf10b986157b63366ba6af140a4a978edbd8052c19bf6e8b9526c39881",
+      "bytes": 2059291,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "transparentPixels": 1157260,
+      "apparentContactSheetDrawings": 12,
+      "runtimeAcceptedDrawings": 0,
+      "decision": "refused",
+      "geometry": {
+        "name": "10-taunt-b-original.png",
+        "sha256": "923c33bf10b986157b63366ba6af140a4a978edbd8052c19bf6e8b9526c39881",
+        "safeRectangles": false,
+        "error": "No native transparent seam near 256"
+      },
+      "visualNote": "No gross equipment omission noted, but native alpha windows unsafe",
+      "pixelTransformation": "none-byte-identical-copy"
+    }
+  ],
+  "admission": {
+    "atlasId": "greyback-masked-victory-right-partial-v94",
+    "publicPath": "public/game/sprites/v94/pit/greyback/05-greyback-masked-victory-right-partial-v94.png",
+    "sourcePath": "art-source/v94/pit/greyback/05-victory-a-original.png",
+    "sha256": "d7899c6aa5f473070e90cc79ffe8f240c20d57443dc4376c8f36f989c7930236",
+    "reviewDecision": "accepted-partial-right-native-six-cells-only",
+    "sourcePageDrawings": 12,
+    "acceptedCells": [
+      {
+        "row": 0,
+        "column": 0,
+        "facing": "right",
+        "rect": [
+          0,
+          0,
+          275,
+          504
+        ],
+        "visibleRect": [
+          41,
+          22,
+          216,
+          471
+        ],
+        "pivot": [
+          150.5,
+          492
+        ],
+        "borderAlpha": 0,
+        "foregroundPixels": 60328,
+        "drawingSha256": "0bfde2ac32522882ae07b7f8da0a1579f2707fb98a584b36aeb36ea0fe7e7331"
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "facing": "right",
+        "rect": [
+          275,
+          0,
+          237,
+          508
+        ],
+        "visibleRect": [
+          298,
+          19,
+          204,
+          476
+        ],
+        "pivot": [
+          125,
+          494
+        ],
+        "borderAlpha": 1,
+        "foregroundPixels": 61665,
+        "drawingSha256": "20537fa5fd17f879ab16417bfe5fd127b089edb7b7ecf228bf3fa69f2b0473ba"
+      },
+      {
+        "row": 1,
+        "column": 0,
+        "facing": "right",
+        "rect": [
+          0,
+          504,
+          275,
+          492
+        ],
+        "visibleRect": [
+          38,
+          506,
+          236,
+          477
+        ],
+        "pivot": [
+          151,
+          478
+        ],
+        "borderAlpha": 1,
+        "foregroundPixels": 63748,
+        "drawingSha256": "3265f3175cbcbab80d403bb18a04c31c96a871040735a994d3e261744f83e16b"
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "facing": "right",
+        "rect": [
+          275,
+          508,
+          237,
+          488
+        ],
+        "visibleRect": [
+          291,
+          510,
+          211,
+          475
+        ],
+        "pivot": [
+          125,
+          476
+        ],
+        "borderAlpha": 1,
+        "foregroundPixels": 61345,
+        "drawingSha256": "de18758be33fe936396e671fed17bc513fbc72028ead909aaa6190cea68bc048"
+      },
+      {
+        "row": 2,
+        "column": 0,
+        "facing": "right",
+        "rect": [
+          0,
+          996,
+          275,
+          540
+        ],
+        "visibleRect": [
+          45,
+          998,
+          211,
+          484
+        ],
+        "pivot": [
+          151,
+          485
+        ],
+        "borderAlpha": 1,
+        "foregroundPixels": 61383,
+        "drawingSha256": "ff335626a717450f1fbc71851e70fef1188430ececea6306db0df85562e69fd9"
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "facing": "right",
+        "rect": [
+          275,
+          996,
+          237,
+          540
+        ],
+        "visibleRect": [
+          294,
+          998,
+          209,
+          482
+        ],
+        "pivot": [
+          125.5,
+          483
+        ],
+        "borderAlpha": 1,
+        "foregroundPixels": 61134,
+        "drawingSha256": "8fed06dafa39931fedb5d4b4d1cccf28d820b42154b5df8d9b8c77cdce5dc887"
+      }
+    ],
+    "excludedCells": [
+      {
+        "row": 0,
+        "column": 2,
+        "facing": "left",
+        "rect": [
+          512,
+          0,
+          256,
+          508
+        ],
+        "visibleRect": [
+          543,
+          24,
+          210,
+          470
+        ],
+        "pivot": [
+          140.5,
+          493
+        ],
+        "borderAlpha": 1,
+        "foregroundPixels": 55310,
+        "drawingSha256": "c0518cd287d648f6015703adbd1748753560538083a9e1f5d6029494747c03f4"
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "facing": "left",
+        "rect": [
+          512,
+          508,
+          256,
+          491
+        ],
+        "visibleRect": [
+          546,
+          510,
+          208,
+          475
+        ],
+        "pivot": [
+          141,
+          476
+        ],
+        "borderAlpha": 0,
+        "foregroundPixels": 56915,
+        "drawingSha256": "04e91467cfc280e454ab66b0a142251b3d485d16285e8bbb7b92a45b162187e1"
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "facing": "left",
+        "rect": [
+          512,
+          999,
+          256,
+          537
+        ],
+        "visibleRect": [
+          541,
+          1001,
+          214,
+          478
+        ],
+        "pivot": [
+          140.5,
+          479
+        ],
+        "borderAlpha": 1,
+        "foregroundPixels": 56040,
+        "drawingSha256": "7dc29812147e3a36a856512d70171da84b314a0d186cd2b7e214666a70881eda"
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "facing": "left",
+        "rect": [
+          768,
+          0,
+          256,
+          508
+        ],
+        "visibleRect": [
+          785,
+          21,
+          208,
+          473
+        ],
+        "pivot": [
+          120.5,
+          493
+        ],
+        "borderAlpha": 0,
+        "foregroundPixels": 57089,
+        "drawingSha256": "9e7e5fb85600b587cc5d4846470bcc2aadd36bf640b6974e01f787103842eefa"
+      },
+      {
+        "row": 1,
+        "column": 3,
+        "facing": "left",
+        "rect": [
+          768,
+          508,
+          256,
+          491
+        ],
+        "visibleRect": [
+          791,
+          510,
+          203,
+          475
+        ],
+        "pivot": [
+          124.5,
+          476
+        ],
+        "borderAlpha": 1,
+        "foregroundPixels": 56118,
+        "drawingSha256": "da91d58de6579a47982a8ae999640b34c456cd3f83561c12ddc012c42d15ba71"
+      },
+      {
+        "row": 2,
+        "column": 3,
+        "facing": "left",
+        "rect": [
+          768,
+          999,
+          256,
+          537
+        ],
+        "visibleRect": [
+          795,
+          1001,
+          198,
+          480
+        ],
+        "pivot": [
+          126.5,
+          481
+        ],
+        "borderAlpha": 1,
+        "foregroundPixels": 56747,
+        "drawingSha256": "4a73caea5d3e1afadbb1ac0906f4a1eece28600769426b98ae134ceed1f25a98"
+      }
+    ],
+    "bodyHeightPx": 478,
+    "loop": false,
+    "ticksPerSecond": 60,
+    "durationTicks": 120,
+    "durationMs": 2000,
+    "fidelityLimits": [
+      "No left clip admitted",
+      "Only opening six of target twelve poses",
+      "No 1:1 canonical appearance or choreography certification",
+      "No public browser gameplay proof in this agent intake"
+    ],
+    "pixelTransformation": "none-byte-identical-copy"
+  }
+}

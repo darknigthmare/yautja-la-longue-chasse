@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "checkedAt": "2026-09-30T19:51:33.965Z",
+  "reviewer": "independent-workbook-stage-agent",
+  "commit": "c9feb1d0ae4f514ee737380eb786543b00039845",
+  "deployment": {
+    "id": "dpl_BVrRZ8ppU9fTwk6gEG62KVmjHt9y",
+    "alias": "https://yautja-la-longue-chasse.vercel.app",
+    "readyAt": "2026-09-30T19:42:43.756Z",
+    "readyEvidence": "Confirmation du coordinateur root avant cette relecture."
+  },
+  "scope": {
+    "stages": [
+      "arena-144-archie-riverdale",
+      "arena-156-sinestro-earth"
+    ],
+    "cases": [
+      "desktop",
+      "reduced",
+      "mobile",
+      "retry"
+    ],
+    "captures": 20,
+    "automatedChecks": 13,
+    "allCatalogueVisualReview": false
+  },
+  "sourceReport": {
+    "file": "work-local\\v61\\qa\\public-ambient\\report.json",
+    "sha256": "775b3f901bb0efe26cb62023ce3e31d4cabf2c63f577fcee72e1e3bb3ab07ad4",
+    "status": "PASS",
+    "checkedAt": "2026-09-30T19:49:24.153Z"
+  },
+  "verification": {
+    "allCaptureHashesMatchReport": true,
+    "allCaptureFilesWrittenAfterDeploymentReady": true,
+    "all20ImagesOpenedAndInspected": true,
+    "unexpectedBrowserErrors": [],
+    "unexpectedHttpFailures": [],
+    "unexpectedFailedRequests": [],
+    "intentional503Failures": 1
+  },
+  "findings": [],
+  "observations": [
+    {
+      "severity": "scope-limit",
+      "detail": "La vue portrait conserve le ratio horizontal de la scene avec des bandes noires importantes ; commandes et HUD restent accessibles dans les captures."
+    },
+    {
+      "severity": "scope-limit",
+      "detail": "L extracteur de la scene156 est volontairement petit et discret sur la facade ; presence et dessins natifs sont mesures separement dans la recette."
+    }
+  ],
+  "limits": [
+    "20 captures statiques inspectees, combinees au rapport public PASS13 ; ne certifie ni tous les174 dossiers du classeur, ni toutes les186 arenes du catalogue.",
+    "Les captures ne prouvent pas seules la fluidite temporelle : les six dessins, le gel en pause, la reprise et le respect des mouvements reduits sont controles par la recette et son evidence.",
+    "Mobile = emulation Chromium 844x390 et390x844, pas essais sur telephone physique.",
+    "Les scenes restent des reinterpretations laterales2D ; cette revue ne certifie pas une fidelite canonique1:1 des rues, appareils ou constructions.",
+    "L extracteur de156 est une alternative ambiante originale : les visiteurs conditionnels demandes en10_VIE_DES_STAGES!E108 ne sont pas declares livres par cette revue.",
+    "Les gates alpha/pivots/composition et les preuves des autres stages restent distincts.",
+    "Le cas503 est injecte intentionnellement dans le navigateur de QA ; aucun incident reseau public reel n est revendique."
+  ],
+  "captures": [
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-144-archie-riverdale-selection.png",
+      "sha256": "3ddc5cd32c43181327c61234c4f6b2a5462bccdb5dc3026c42cf70ccda98cee9",
+      "bytes": 825311,
+      "modifiedAt": "2026-09-30T19:45:18.402Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Apercu de Riverdale et selection lisibles ; source Archie vs Predator et reinterpretation laterale affichees. Le dossier du chasseur est explicitement distinct du decor choisi."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-144-archie-riverdale-rest.png",
+      "sha256": "02094081aac6108659399b5a4367f72acb639bc9e31cbe18332ab4f2bd84b479",
+      "bytes": 1168201,
+      "modifiedAt": "2026-09-30T19:45:24.516Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Decor de diner, enseigne et ambulance visibles derriere les combattants ; HUD et MENU lisibles, introduction du combat intacte."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-144-archie-riverdale-fighters-apart.png",
+      "sha256": "2b3b5bb61822b14b7a2611f86097643c6643feac6f005c6fea38a8d59bd5a6e1",
+      "bytes": 1131488,
+      "modifiedAt": "2026-09-30T19:45:25.309Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Eloignement des combattants degage la rue et les trois zones de decor ; ambulance reste dans le plan de fond, sans masquer le HUD."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-144-archie-riverdale-paused.png",
+      "sha256": "fa611c07680628cdac6d3fbd8cf37d8f5b8fe3634ceae05c871bd12b2edd6654",
+      "bytes": 283907,
+      "modifiedAt": "2026-09-30T19:45:41.277Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Panneau pause complet, boutons lisibles et non tronques en 1280x720."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-144-archie-riverdale-event-0.png",
+      "sha256": "656292642f5d2a84cc1778f41e46990f43db49b19d6b0bdc86ca0738c9201664",
+      "bytes": 1126015,
+      "modifiedAt": "2026-09-30T19:45:42.116Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Silhouettes adultes perceptibles dans les vitrines du diner, derriere le cadre de facade ; pas de silhouette devant le plan de combat dans cette capture."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-144-archie-riverdale-window-traversal-paused.png",
+      "sha256": "dc3b73a6bb0ec79cd444fd52cf7e479fa2ceb742e38a700779d894567e9eb98b",
+      "bytes": 283962,
+      "modifiedAt": "2026-09-30T19:45:42.604Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Pause lisible pendant le cas de traversee. Le gel effectif des dessins et positions est prouve par la recette, pas par cette seule image."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-144-archie-riverdale-event-1.png",
+      "sha256": "23c0400560b65a409390bb94b281003e6576df7bfea7a48009d450ae588da54c",
+      "bytes": 1125508,
+      "modifiedAt": "2026-09-30T19:45:55.106Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Ambulance et signal lumineux visibles dans la rue, enseigne et diner conservent leur placement ; combattants et HUD restent lisibles."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-144-archie-riverdale-event-2.png",
+      "sha256": "e96aafec0d901121e26d625624f12ebb9e80a104145cd01c597f89a0d440646a",
+      "bytes": 1125891,
+      "modifiedAt": "2026-09-30T19:46:04.834Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Pose distincte de la petite enseigne et de son tissu visible au-dessus du diner ; pas de debordement dans le HUD."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-156-sinestro-earth-selection.png",
+      "sha256": "6aec98661fd66db1fabf6e16c82c28885c29666e3e09f803f37383efb925d3f4",
+      "bytes": 799909,
+      "modifiedAt": "2026-09-30T19:46:31.824Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Apercu urbain sous constructions jaunes lisible ; reference Green Lantern / Sinestro Corps et limite de fidelite affichees."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-156-sinestro-earth-rest.png",
+      "sha256": "10ef2a513a8d441e051fd7071e57e986fd3d7f2ded3b87d53401160288c725d1",
+      "bytes": 1119113,
+      "modifiedAt": "2026-09-30T19:46:38.051Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Constructions et halo jaunes dans le ciel, extracteur discret sur facade de tour ; separation du decor et des combattants lisible."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-156-sinestro-earth-event-0.png",
+      "sha256": "ca5cb108fb2dd0a74a44241ac9527911bb0ebf6a117bcf68caa5dda41f9c6745",
+      "bytes": 1119343,
+      "modifiedAt": "2026-09-30T19:46:53.682Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Zone de facade contenant le petit extracteur visible. Son cycle de six dessins est confirme par le rapport de rendu natif ; cette capture seule ne certifie pas sa fluidite."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-156-sinestro-earth-event-1.png",
+      "sha256": "20a254941d9cb5afa84b834a2f9fd09ee47cfc4aa08afae31245ede1433f9509",
+      "bytes": 1118618,
+      "modifiedAt": "2026-09-30T19:47:04.906Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Halo jaune conserve dans le ciel a droite de la construction centrale ; aucun visiteur nomme ajoute a cette variante ambiante."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\arena-156-sinestro-earth-event-2.png",
+      "sha256": "2ce6968ea8c1bec030f8ee8bb3b552b0b9bf6a28e70a83a07a238f0b09bf6975",
+      "bytes": 1119084,
+      "modifiedAt": "2026-09-30T19:47:18.211Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Pose distincte de la construction jaune centrale visible ; lisibilite des combattants, timer et MENU preservee."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\reduced-paused.png",
+      "sha256": "4e04fab240c580778941c06f086e9dd5a226a9d29c2e20c673b47f9fe13d0a2d",
+      "bytes": 280110,
+      "modifiedAt": "2026-09-30T19:48:10.602Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Pause lisible, camera fixe explicitement affichee pour le mode de mouvements reduits."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\reduced-motion.png",
+      "sha256": "2a3f85b21135521905c8b2a753f947aeab96d22e7b809b7aabc23d64555b93ad",
+      "bytes": 1078516,
+      "modifiedAt": "2026-09-30T19:48:11.078Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Composition de Riverdale lisible avec camera fixe ; adultes caches au repos. L absence de cycle automatique est verifiee par les mesures de la recette."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\mobile-landscape.png",
+      "sha256": "401f1d0b1f681596e13e814273eb6ce924ab5857282ca1908b72e3db757869df",
+      "bytes": 395545,
+      "modifiedAt": "2026-09-30T19:49:07.650Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Deux combattants, HUD, MENU et commandes J1/J2 dans le viewport paysage. Aucune coupe laterale de ces commandes dans cette capture."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\mobile-portrait.png",
+      "sha256": "d1c79a134795d78ad0af780a8763da68f8e00bf7e4a4f6764baeba6a5bebef9c",
+      "bytes": 174946,
+      "modifiedAt": "2026-09-30T19:49:07.778Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "HUD, MENU, scene et commandes restent dans le viewport portrait. Bandes noires importantes preservees pour garder le ratio de la scene ; cette capture ne certifie pas le confort sur appareil physique."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\mobile-paused.png",
+      "sha256": "b7836fb4c384b8304f7852cdf35abab7363d75d7692a5c82a3fc0108f3151311",
+      "bytes": 117075,
+      "modifiedAt": "2026-09-30T19:49:08.162Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Panneau pause vertical entier avec libelles et boutons lisibles, sans debordement horizontal visible."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\native-png-503-blocked.png",
+      "sha256": "31d262a24d2805f6bc182cc03ab32cd263016b3279bf0b57c1429ee2c0b4976e",
+      "bytes": 660589,
+      "modifiedAt": "2026-09-30T19:49:17.988Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Apercu indisponible explicite et combat bloque ; actions de reessai visibles. Le 503 est volontaire et propre au contexte de QA."
+    },
+    {
+      "file": "work-local\\v61\\qa\\public-ambient\\native-png-retry-restored.png",
+      "sha256": "ea27e55850fb6941e02499934bdf055f42c84c7c2ddbe83300de0f76636b550b",
+      "bytes": 1167451,
+      "modifiedAt": "2026-09-30T19:49:24.135Z",
+      "status": "accepted-native-screenshot-inspected",
+      "notes": "Apres reessai, decor de Riverdale restaure, combattants et HUD charges, introduction COMBAT visible."
+    }
+  ]
+}

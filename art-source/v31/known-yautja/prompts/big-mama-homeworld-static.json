@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "assetId": "big-mama-homeworld-static",
+  "fighterId": "big-mama",
+  "name": "Big Mama",
+  "rosterIds": {
+    "catalogue": "Y-027",
+    "dlc": "C-007"
+  },
+  "useCase": "homeworld-named-hero-plate",
+  "status": "static-reviewed-candidate",
+  "scope": "One fixed full-body Homeworld identity plate; no animation clips.",
+  "promptRecordType": "Post-generation fidelity and regeneration brief; not a verbatim record of the completed generation request.",
+  "generation": {
+    "provider": "OpenAI integrated ImageGen",
+    "performed": true,
+    "generationOutputId": "exec-d97a94db-bcab-42b4-ae7a-d7df98475746",
+    "sourcePath": "art-source/v31/known-yautja/sources/big-mama-chroma.png",
+    "sourceMetadata": {
+      "bytes": 2212404,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": false,
+      "sha256": "5d82176dfbca2cf63e0f9c681a66920209e79b02d3add8e5672c523201129921"
+    },
+    "runtimeCandidatePath": "public/game/sprites/v31/film-plates/big-mama.png",
+    "runtimeCandidateMetadata": {
+      "bytes": 1555574,
+      "width": 799,
+      "height": 1568,
+      "hasAlpha": true,
+      "sha256": "0a501470c74d1db777e30058ceb7f183a571a05efe55ba80181cd640a15f6d09"
+    },
+    "staticVisualReview": true,
+    "reviewBasis": "Producing agent reported generation, chroma cleanup, alpha extraction, and static visual review.",
+    "animationClipsReviewed": 0,
+    "officialCertification": false,
+    "oneToOneCertified": false
+  },
+  "integration": {
+    "publicManifestPath": "public/game/sprites/v31/film-plates/manifest.json",
+    "confirmed": true,
+    "runtimeUrl": "/game/sprites/v31/film-plates/big-mama.png",
+    "runtimePath": "public/game/sprites/v31/film-plates/big-mama.png",
+    "runtimeSha256": "0a501470c74d1db777e30058ceb7f183a571a05efe55ba80181cd640a15f6d09",
+    "note": "Static Homeworld integration confirmed by the public V31 manifest; animation coverage remains zero.",
+    "manifestSnapshotRecordedIn": "art-source/v31/known-yautja/homeworld-named-nine-manifest.json"
+  },
+  "sourceEvidence": [
+    {
+      "class": "official-publisher-context-not-character-proof",
+      "url": "https://digital.darkhorse.com/books/9bb496a44e944fcda26662b44db247be/aliens-vs-predator-the-essential-comics-volume-1",
+      "access": "Dark Horse page reviewed directly.",
+      "supports": [
+        "licensed Aliens vs. Predator comics context"
+      ],
+      "doesNotSupport": [
+        "The accessible description lists the original AvP series, AvP: War, and Three World War; it does not mention Deadliest of the Species or establish Big Mama's appearance."
+      ]
+    },
+    {
+      "class": "independent-bibliographic-index",
+      "url": "https://www.comics.org/issue/172977/",
+      "access": "Direct fetch returned HTTP 403; retained as the V26 issue index, not as licensed visual authority."
+    },
+    {
+      "class": "secondary-community-index-only",
+      "url": "https://avp.fandom.com/wiki/Big_Mama",
+      "access": "Direct fetch returned HTTP 402; no visual claim adopted."
+    },
+    {
+      "class": "local-project-lore",
+      "path": "app/game/hunterLore.ts",
+      "sha256": "bd40f527f92efb26f0409c81aa4fedcf225ffd546db799c753a7033df73db7cc",
+      "supports": [
+        "large powerful female huntress direction",
+        "nonsexualized silhouette",
+        "dark mottling and bronze armor as project choices",
+        "mask variation warning"
+      ]
+    },
+    {
+      "class": "local-production-boundary",
+      "path": "docs/DLC-PRIVE-CATALOGUE.md",
+      "sha256": "7f2ecee2fa7393e399e68d3443c6fc823b666c4ad2fcabb8322c9d92d562eec0",
+      "supports": [
+        "named visual comics character",
+        "no primary multi-angle gallery found",
+        "comic pages still required"
+      ]
+    }
+  ],
+  "truthBoundary": {
+    "licensedCharacterVisualVerifiedInThisLot": false,
+    "catalogueIdentity": [
+      "The V26 catalogue maps Y-027/C-007 to Big Mama and Deadliest of the Species, but labels the identity not independently certified."
+    ],
+    "localLore": [
+      "The project uses a powerful nonsexualized huntress body and neutral modular armor choices."
+    ],
+    "interpretation": [
+      "The candidate's exact mask, skin, armor, weapons, and asymmetry are fan-made until checked against primary comic pages.",
+      "No Dark Horse multi-angle character reference was reviewed in this lot."
+    ],
+    "secondaryClaimsAdopted": [],
+    "identityFidelityCertified": false,
+    "oneToOneCertified": false
+  },
+  "structuredPrompt": {
+    "subject": "Big Mama from Aliens vs. Predator: Deadliest of the Species as original unofficial fan-made Homeworld game art.",
+    "anatomy": [
+      "adult female Yautja with large, powerful combat proportions comparable in presence to male hunters",
+      "functional shoulders, arms, torso, hips, and legs",
+      "nonsexualized silhouette",
+      "correct Yautja hands, feet, mandibles, dreadlocks, and limb count"
+    ],
+    "equipment": [
+      "use only armor, biomask state, trophies, and weapons visible in supplied primary comic panels",
+      "empty hands when no panel proves a specific loadout",
+      "do not treat the local city biomask proxy as canonical"
+    ],
+    "asymmetry": [
+      "copy pauldron side, gauntlets, mask variation, straps, pouches, armor breaks, scars, and weapon side from the same comic state",
+      "do not combine separate issue appearances or mirror unseen details"
+    ],
+    "composition": [
+      "one complete full-body figure",
+      "right-facing three-quarter lateral stance",
+      "portrait framing with at least 10 percent padding",
+      "feet, hands, armor tips, and dreadlocks fully inside frame"
+    ],
+    "style": [
+      "dense cinematic 32-bit-era pre-rendered pixel art",
+      "strong readable huntress silhouette at gameplay size",
+      "original fan-made derivative design, not copied comic art"
+    ],
+    "background": [
+      "exact flat opaque #00FF00 chroma green",
+      "no floor, shadow, scenery, gradient, fog, particles, vignette, text, logo, UI, or watermark",
+      "no green spill, halo, reflection, or #00FF00 on the subject"
+    ],
+    "forbidden": [
+      "sexualized armor",
+      "human female anatomy",
+      "generic City Hunter substitution",
+      "unproven loadout",
+      "invented mask treated as canon",
+      "extra limbs",
+      "malformed hands",
+      "1:1 or official claim"
+    ]
+  },
+  "rightsNote": "Original unofficial fan-made OpenAI artwork for this project; not rights-holder art and not certified 1:1."
+}

@@ -1,0 +1,762 @@
+{
+  "schemaVersion": 1,
+  "release": "V60",
+  "scope": "25 distinct missing settings or complements; 3 separate native life animations per stage",
+  "sourceSha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+  "stages": [
+    {
+      "id": "arena-162-ahab-engineer",
+      "number": 162,
+      "proposalId": "new-ahab-engineer",
+      "name": "Vestiges de la chasse à l’Ingénieur",
+      "work": "Fire and Stone",
+      "setting": "Terrain extraterrestre et ruines associés à la chasse d’Ahab ; relevés de planches nécessaires.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-ultimate-ahab-ultimate-dream-sequence-jason-and-chucky-thanos-groot-head-knockers-1"
+      ],
+      "sourceRange": "A25:N25",
+      "events": [
+        {
+          "id": "ST021_BG_01",
+          "description": "Faune alien seulement après validation d’espèce",
+          "sourceRange": "A65:N65"
+        },
+        {
+          "id": "ST021_BG_02",
+          "description": "Instruments abandonnés et poussière",
+          "sourceRange": "A66:N66"
+        },
+        {
+          "id": "ST021_BG_03",
+          "description": "Silhouette d’Ingénieur avant sa rencontre, retirée lorsqu’il devient boss",
+          "sourceRange": "A67:N67"
+        }
+      ]
+    },
+    {
+      "id": "arena-163-neonopolis-lab",
+      "number": 163,
+      "proposalId": "new-neonopolis-lab",
+      "name": "Laboratoire des cyborgs",
+      "work": "Concrete Jungle",
+      "setting": "Chaînes de maintenance, bras robotisés et caissons ; pas d’ennemi actif comme figurant simultané.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+      ],
+      "sourceRange": "A26:N26",
+      "events": [
+        {
+          "id": "ST022_BG_01",
+          "description": "Technicien derrière vitre renforcée",
+          "sourceRange": "A68:N68"
+        },
+        {
+          "id": "ST022_BG_02",
+          "description": "Bras de maintenance sur un emplacement vide",
+          "sourceRange": "A69:N69"
+        },
+        {
+          "id": "ST022_BG_03",
+          "description": "Voyants indiquant une panne progressive",
+          "sourceRange": "A70:N70"
+        }
+      ]
+    },
+    {
+      "id": "arena-164-alpha-revolt",
+      "number": 164,
+      "proposalId": "new-alpha-revolt",
+      "name": "Carrière des premiers chasseurs",
+      "work": "Alpha NECA",
+      "setting": "Carrière et ossements pour une chronique inspirée du design Alpha ; architecture non canonique.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://necaonline.com/2020/06/the-alpha-is-coming-to-predator-hunting-grounds/"
+      ],
+      "sourceRange": "A28:N28",
+      "events": [
+        {
+          "id": "ST024_BG_01",
+          "description": "Ouvriers aliens anonymes sous contrôle, identité à valider",
+          "sourceRange": "A74:N74"
+        },
+        {
+          "id": "ST024_BG_02",
+          "description": "Chaînes oscillant après ouverture d’une porte",
+          "sourceRange": "A75:N75"
+        },
+        {
+          "id": "ST024_BG_03",
+          "description": "Sentinelle non yautja au fond, sprite à référencer avant activation",
+          "sourceRange": "A76:N76"
+        }
+      ]
+    },
+    {
+      "id": "arena-165-kenner-throne",
+      "number": 165,
+      "proposalId": "new-kenner-throne",
+      "name": "Trône des clans · hommage Kenner",
+      "work": "Kenner / NECA",
+      "setting": "Trône inspiré du diorama NECA, salle conçue pour The Pit.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://necaonline.com/2016/02/predator-7-scale-action-figure-deluxe-clan-leader/",
+        "https://store.necaonline.com/products/predator-bone-throne-diorama-element"
+      ],
+      "sourceRange": "A29:N29",
+      "events": [
+        {
+          "id": "ST025_BG_01",
+          "description": "Gardes anonymes saluant à la victoire",
+          "sourceRange": "A77:N77"
+        },
+        {
+          "id": "ST025_BG_02",
+          "description": "Serviteur portant un râtelier d’armes",
+          "sourceRange": "A78:N78"
+        },
+        {
+          "id": "ST025_BG_03",
+          "description": "Tentacules du trône exclus : seuls ceux du personnage existent",
+          "sourceRange": "A79:N79"
+        }
+      ]
+    },
+    {
+      "id": "arena-166-forge-cyborg",
+      "number": 166,
+      "proposalId": "new-forge-cyborg",
+      "name": "Atelier des prothèses",
+      "work": "Kenner / NECA / The Pit",
+      "setting": "Atelier extraterrestre fictif ; pas annoncé lieu d’origine officiel.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-ultimate-lasershot-predator-8-cloth-new-nightmare-freddy-and-restocks-of-the-life-size-groot-flasher-gremlins-and-e-t-stunt-puppets-1",
+        "https://predator.illfonic.com/"
+      ],
+      "sourceRange": "A30:N30",
+      "events": [
+        {
+          "id": "ST026_BG_01",
+          "description": "Bras-outil réglant une prothèse désactivée",
+          "sourceRange": "A80:N80"
+        },
+        {
+          "id": "ST026_BG_02",
+          "description": "Technicien yautja adulte en silhouette",
+          "sourceRange": "A81:N81"
+        },
+        {
+          "id": "ST026_BG_03",
+          "description": "Vanne de refroidissement avec vapeur bornée",
+          "sourceRange": "A82:N82"
+        }
+      ]
+    },
+    {
+      "id": "arena-167-lava-ridge",
+      "number": 167,
+      "proposalId": "new-lava-ridge",
+      "name": "Corniche basaltique",
+      "work": "Lava Planet / The Pit",
+      "setting": "Biome volcanique cohérent au thème figurine ; aucune immunité au feu implicite.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+      ],
+      "sourceRange": "A31:N31",
+      "events": [
+        {
+          "id": "ST027_BG_01",
+          "description": "Faune thermophile originale derrière une faille",
+          "sourceRange": "A83:N83"
+        },
+        {
+          "id": "ST027_BG_02",
+          "description": "Coulée lente au lointain",
+          "sourceRange": "A84:N84"
+        },
+        {
+          "id": "ST027_BG_03",
+          "description": "Ouvrier contrôlant un pont au fond",
+          "sourceRange": "A85:N85"
+        }
+      ]
+    },
+    {
+      "id": "arena-168-hive-front",
+      "number": 168,
+      "proposalId": "new-hive-front",
+      "name": "Front de la ruche",
+      "work": "AVP / hommage figurines",
+      "setting": "Rempart de chasse devant une ruche ; identité de la planète non inventée comme canon.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+      ],
+      "sourceRange": "A32:N32",
+      "events": [
+        {
+          "id": "ST028_BG_01",
+          "description": "Drones xénomorphes au plafond arrière",
+          "sourceRange": "A86:N86"
+        },
+        {
+          "id": "ST028_BG_02",
+          "description": "Équipe yautja anonyme tenant une grille",
+          "sourceRange": "A87:N87"
+        },
+        {
+          "id": "ST028_BG_03",
+          "description": "Résine brillante et tuyaux de décontamination",
+          "sourceRange": "A88:N88"
+        }
+      ]
+    },
+    {
+      "id": "arena-169-extinction-front",
+      "number": 169,
+      "proposalId": "new-extinction-front",
+      "name": "Avant-poste Extinction",
+      "work": "AVP Extinction",
+      "setting": "Installation de guerre xénomorphe / marine ; pas de conversion automatique des effets RTS en canon cinéma.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+      ],
+      "sourceRange": "A33:N33",
+      "events": [
+        {
+          "id": "ST029_BG_01",
+          "description": "Transport de matériel au lointain",
+          "sourceRange": "A89:N89"
+        },
+        {
+          "id": "ST029_BG_02",
+          "description": "Hydra non jouable derrière une plate-forme hors combat",
+          "sourceRange": "A90:N90"
+        },
+        {
+          "id": "ST029_BG_03",
+          "description": "Balise de front et alerte de base",
+          "sourceRange": "A91:N91"
+        }
+      ]
+    },
+    {
+      "id": "arena-170-gotham-bloodties",
+      "number": 170,
+      "proposalId": "new-gotham-bloodties",
+      "name": "Entrepôt des deux chasseurs",
+      "work": "Batman vs Predator III",
+      "setting": "Zone portuaire proposée pour le duo père/fils ; planches nécessaires pour le lieu précis.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://en.wikipedia.org/wiki/Batman_Versus_Predator"
+      ],
+      "sourceRange": "A35:N35",
+      "events": [
+        {
+          "id": "ST031_BG_01",
+          "description": "Police évacuant le quai en fond",
+          "sourceRange": "A95:N95"
+        },
+        {
+          "id": "ST031_BG_02",
+          "description": "Grue et conteneurs en déplacement lent",
+          "sourceRange": "A96:N96"
+        },
+        {
+          "id": "ST031_BG_03",
+          "description": "Ombres du partenaire seulement hors de son duel",
+          "sourceRange": "A97:N97"
+        }
+      ]
+    },
+    {
+      "id": "arena-171-meta-lab",
+      "number": 171,
+      "proposalId": "new-meta-lab",
+      "name": "Centre d’essai des Meta-Predators",
+      "work": "Crossover JLA",
+      "setting": "Scène de laboratoire proposée ; effets limités au pouvoir réellement établi par chaque numéro.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+      ],
+      "sourceRange": "A38:N38",
+      "events": [
+        {
+          "id": "ST034_BG_01",
+          "description": "Écrans de signatures biologiques",
+          "sourceRange": "A104:N104"
+        },
+        {
+          "id": "ST034_BG_02",
+          "description": "Bras de contention vides",
+          "sourceRange": "A105:N105"
+        },
+        {
+          "id": "ST034_BG_03",
+          "description": "Héros uniquement par transmission avant leur intervention",
+          "sourceRange": "A106:N106"
+        }
+      ]
+    },
+    {
+      "id": "arena-172-phg-north",
+      "number": 172,
+      "proposalId": "new-phg-north",
+      "name": "Lisière nordique",
+      "work": "Hunting Grounds",
+      "setting": "Terrain de chasse inspiré des biographies Viking/Valkyrie ; village et époque non affirmés canoniques.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://predator.illfonic.com/"
+      ],
+      "sourceRange": "A41:N41",
+      "events": [
+        {
+          "id": "ST037_BG_01",
+          "description": "Guerriers adultes observant derrière une palissade",
+          "sourceRange": "A113:N113"
+        },
+        {
+          "id": "ST037_BG_02",
+          "description": "Bannière sans runes magiques animées",
+          "sourceRange": "A114:N114"
+        },
+        {
+          "id": "ST037_BG_03",
+          "description": "Corbeaux très éloignés et neige lente",
+          "sourceRange": "A115:N115"
+        }
+      ]
+    },
+    {
+      "id": "arena-173-phg-japan",
+      "number": 173,
+      "proposalId": "new-phg-japan",
+      "name": "Cour du chasseur Samurai",
+      "work": "Hunting Grounds",
+      "setting": "Cour japonaise inspirée de la biographie publiée ; distincte des toits d’Oni.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://predator.illfonic.com/",
+        "https://store.necaonline.com/products/predator-hunting-grounds-ultimate-samurai-predator-7-inch-scale-action-figure"
+      ],
+      "sourceRange": "A42:N42",
+      "events": [
+        {
+          "id": "ST038_BG_01",
+          "description": "Sentinelles adultes derrière une porte",
+          "sourceRange": "A116:N116"
+        },
+        {
+          "id": "ST038_BG_02",
+          "description": "Feuilles d’érable en faible densité",
+          "sourceRange": "A117:N117"
+        },
+        {
+          "id": "ST038_BG_03",
+          "description": "Cloche déplacée seulement au gong",
+          "sourceRange": "A118:N118"
+        }
+      ]
+    },
+    {
+      "id": "arena-174-phg-sands",
+      "number": 174,
+      "proposalId": "new-phg-sands",
+      "name": "Halte des sables",
+      "work": "Hunting Grounds",
+      "setting": "Ruines désertiques pour Cleopatra/Anubis ; pas d’anachronisme certifié ni de divinité réelle invoquée.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://predator.illfonic.com/"
+      ],
+      "sourceRange": "A43:N43",
+      "events": [
+        {
+          "id": "ST039_BG_01",
+          "description": "Caravane adulte très lointaine seulement dans la version terrestre",
+          "sourceRange": "A119:N119"
+        },
+        {
+          "id": "ST039_BG_02",
+          "description": "Voiles et sable soulevés",
+          "sourceRange": "A120:N120"
+        },
+        {
+          "id": "ST039_BG_03",
+          "description": "Sonde yautja non armée à l’arrière",
+          "sourceRange": "A121:N121"
+        }
+      ]
+    },
+    {
+      "id": "arena-175-phg-islands",
+      "number": 175,
+      "proposalId": "new-phg-islands",
+      "name": "Récif de l’exilé",
+      "work": "Hunting Grounds",
+      "setting": "Îles du Pacifique inspirées de la biographie Exiled ; pas d’ethnie précise inventée.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://predator.illfonic.com/"
+      ],
+      "sourceRange": "A44:N44",
+      "events": [
+        {
+          "id": "ST040_BG_01",
+          "description": "Vagues derrière la ligne jouable",
+          "sourceRange": "A122:N122"
+        },
+        {
+          "id": "ST040_BG_02",
+          "description": "Pirogue lointaine non interactive",
+          "sourceRange": "A123:N123"
+        },
+        {
+          "id": "ST040_BG_03",
+          "description": "Filets de pêche et feu sous abri",
+          "sourceRange": "A124:N124"
+        }
+      ]
+    },
+    {
+      "id": "arena-176-phg-pirate",
+      "number": 176,
+      "proposalId": "new-phg-pirate",
+      "name": "Pont des épaves",
+      "work": "Hunting Grounds",
+      "setting": "Épave maritime comme théâtre proposé ; pas de navire nommé sans référence.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://predator.illfonic.com/"
+      ],
+      "sourceRange": "A45:N45",
+      "events": [
+        {
+          "id": "ST041_BG_01",
+          "description": "Marins adultes se cachant entre les mâts",
+          "sourceRange": "A125:N125"
+        },
+        {
+          "id": "ST041_BG_02",
+          "description": "Voiles en boucles lentes",
+          "sourceRange": "A126:N126"
+        },
+        {
+          "id": "ST041_BG_03",
+          "description": "Oiseaux marins loin des tirs",
+          "sourceRange": "A127:N127"
+        }
+      ]
+    },
+    {
+      "id": "arena-177-phg-amazon",
+      "number": 177,
+      "proposalId": "new-phg-amazon",
+      "name": "Rive de la chasseuse",
+      "work": "Hunting Grounds",
+      "setting": "Jungle brésilienne inspirée de la biographie publiée ; aucune rhino africain.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://predator.illfonic.com/"
+      ],
+      "sourceRange": "A46:N46",
+      "events": [
+        {
+          "id": "ST042_BG_01",
+          "description": "Oiseaux tropicaux sur un arbre lointain",
+          "sourceRange": "A128:N128"
+        },
+        {
+          "id": "ST042_BG_02",
+          "description": "Bateau moderne après vérification de l’époque choisie",
+          "sourceRange": "A129:N129"
+        },
+        {
+          "id": "ST042_BG_03",
+          "description": "Feuillage réagissant aux déplacements de fond",
+          "sourceRange": "A130:N130"
+        }
+      ]
+    },
+    {
+      "id": "arena-178-bloodshed-ring",
+      "number": 178,
+      "proposalId": "new-bloodshed-ring",
+      "name": "Ring clandestin",
+      "work": "Bloodshed",
+      "setting": "Tournoi underground ; plan exact et identité du Predator encore à vérifier.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://www.marvel.com/comics/issue/134539/predator_bloodshed_2026_1_variant/variant"
+      ],
+      "sourceRange": "A47:N47",
+      "events": [
+        {
+          "id": "ST043_BG_01",
+          "description": "Organisateur coupant le commentaire lorsque la menace apparaît",
+          "sourceRange": "A131:N131"
+        },
+        {
+          "id": "ST043_BG_02",
+          "description": "Combattants adultes blessés derrière les grilles",
+          "sourceRange": "A132:N132"
+        },
+        {
+          "id": "ST043_BG_03",
+          "description": "Affichage des paris qui se coupe au premier incident",
+          "sourceRange": "A133:N133"
+        }
+      ]
+    },
+    {
+      "id": "arena-179-last-hunt-preserve",
+      "number": 179,
+      "proposalId": "new-last-hunt-preserve",
+      "name": "Réserve de The Last Hunt",
+      "work": "The Last Hunt",
+      "setting": "Enclos et itinéraire d’évasion des captifs ; pas une copie automatique de la réserve de 2010.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://www.marvel.com/comics/collection/110461/predator_the_last_hunt_trade_paperback"
+      ],
+      "sourceRange": "A48:N48",
+      "events": [
+        {
+          "id": "ST044_BG_01",
+          "description": "Captifs adultes gagnant une issue",
+          "sourceRange": "A134:N134"
+        },
+        {
+          "id": "ST044_BG_02",
+          "description": "Sentinelles observant depuis les passerelles",
+          "sourceRange": "A135:N135"
+        },
+        {
+          "id": "ST044_BG_03",
+          "description": "Balises de surveillance désactivées après objectif",
+          "sourceRange": "A136:N136"
+        }
+      ]
+    },
+    {
+      "id": "arena-180-sandpiper",
+      "number": 180,
+      "proposalId": "new-sandpiper",
+      "name": "Soute du Sandpiper",
+      "work": "Theta / Marvel",
+      "setting": "Lieu attesté ; soute latérale et implantation des caisses restent proposées.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://www.marvel.com/comics/issue/107414/predator_2023_5"
+      ],
+      "sourceRange": "A49:N49",
+      "events": [
+        {
+          "id": "ST045_BG_01",
+          "description": "Écran de navigation et état d’évacuation",
+          "sourceRange": "A137:N137"
+        },
+        {
+          "id": "ST045_BG_02",
+          "description": "Captifs adultes à distance selon chapitre",
+          "sourceRange": "A138:N138"
+        },
+        {
+          "id": "ST045_BG_03",
+          "description": "Porte de soute et câbles suspendus",
+          "sourceRange": "A139:N139"
+        }
+      ]
+    },
+    {
+      "id": "arena-181-avp2",
+      "number": 181,
+      "proposalId": "new-avp2",
+      "name": "Complexe de chasse AVP2",
+      "work": "AVP2",
+      "setting": "Installations coloniales et ruines ; relever le niveau précis avant dessin.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+      ],
+      "sourceRange": "A53:N53",
+      "events": [
+        {
+          "id": "ST049_BG_01",
+          "description": "Escouade humaine hors de la zone de duel",
+          "sourceRange": "A149:N149"
+        },
+        {
+          "id": "ST049_BG_02",
+          "description": "Xénomorphe derrière un conduit",
+          "sourceRange": "A150:N150"
+        },
+        {
+          "id": "ST049_BG_03",
+          "description": "Machine de laboratoire désactivée",
+          "sourceRange": "A151:N151"
+        }
+      ]
+    },
+    {
+      "id": "arena-182-bullet-hangar",
+      "number": 182,
+      "proposalId": "new-bullet-hangar",
+      "name": "Plate-forme du pilote",
+      "work": "Killer of Killers",
+      "setting": "Adapter la chasse aérienne au sol sans inventer un bombardement comme coup standard.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers"
+      ],
+      "sourceRange": "A55:N55",
+      "events": [
+        {
+          "id": "ST051_BG_01",
+          "description": "Vaisseau du pilote au loin",
+          "sourceRange": "A155:N155"
+        },
+        {
+          "id": "ST051_BG_02",
+          "description": "Mécanicien extraterrestre anonyme, création signalée",
+          "sourceRange": "A156:N156"
+        },
+        {
+          "id": "ST051_BG_03",
+          "description": "Éclairage d’atterrissage sans flash",
+          "sourceRange": "A157:N157"
+        }
+      ]
+    },
+    {
+      "id": "arena-183-homeworld-wilds",
+      "number": 183,
+      "proposalId": "new-homeworld-wilds",
+      "name": "Lisière du monde natal",
+      "work": "Création The Pit",
+      "setting": "Terrain naturel pour personnages sans lieu attesté ; aucune biographie officielle déduite du masque.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+      ],
+      "sourceRange": "A56:N56",
+      "events": [
+        {
+          "id": "ST052_BG_01",
+          "description": "Animal alien quadrupède original, jamais nommé rhino canonique",
+          "sourceRange": "A158:N158"
+        },
+        {
+          "id": "ST052_BG_02",
+          "description": "Patrouille adulte du clan au lointain",
+          "sourceRange": "A159:N159"
+        },
+        {
+          "id": "ST052_BG_03",
+          "description": "Fougères et poussière contrôlées",
+          "sourceRange": "A160:N160"
+        }
+      ]
+    },
+    {
+      "id": "arena-184-warp-threshold",
+      "number": 184,
+      "proposalId": "new-warp-threshold",
+      "name": "Salle du seuil",
+      "work": "Création Warp Universe",
+      "setting": "Portail propre au projet ; aucune capacité de téléportation individuelle implicite.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+      ],
+      "sourceRange": "A57:N57",
+      "events": [
+        {
+          "id": "ST053_BG_01",
+          "description": "Technicien calibrant des anneaux",
+          "sourceRange": "A161:N161"
+        },
+        {
+          "id": "ST053_BG_02",
+          "description": "Gardes adultes relevant une barrière",
+          "sourceRange": "A162:N162"
+        },
+        {
+          "id": "ST053_BG_03",
+          "description": "Portail lumineux lent qui s’arrête en pause",
+          "sourceRange": "A163:N163"
+        }
+      ]
+    },
+    {
+      "id": "arena-185-training",
+      "number": 185,
+      "proposalId": "new-training",
+      "name": "Dojo des épreuves",
+      "work": "Création The Pit",
+      "setting": "Duel non létal sur aire claire ; mannequin comme cible de démonstration.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+      ],
+      "sourceRange": "A58:N58",
+      "events": [
+        {
+          "id": "ST054_BG_01",
+          "description": "Instructeurs adultes observant",
+          "sourceRange": "A164:N164"
+        },
+        {
+          "id": "ST054_BG_02",
+          "description": "Râtelier et cible mécanique",
+          "sourceRange": "A165:N165"
+        },
+        {
+          "id": "ST054_BG_03",
+          "description": "Juge levant le bras à la fin",
+          "sourceRange": "A166:N166"
+        }
+      ]
+    },
+    {
+      "id": "arena-186-snow-hunt",
+      "number": 186,
+      "proposalId": "new-snow-hunt",
+      "name": "Piste de la proie blanche",
+      "work": "Création The Pit",
+      "setting": "Biome froid proposé pour figurines ou visuels blancs ; habitat réel non déduit de la couleur.",
+      "sourceLimits": "Scène latérale recomposée ; géométrie de jeu non canonique.",
+      "sourceUrls": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+      ],
+      "sourceRange": "A59:N59",
+      "events": [
+        {
+          "id": "ST055_BG_01",
+          "description": "Quadrupède alien original dans le lointain",
+          "sourceRange": "A167:N167"
+        },
+        {
+          "id": "ST055_BG_02",
+          "description": "Vapeur et stalactites éloignées",
+          "sourceRange": "A168:N168"
+        },
+        {
+          "id": "ST055_BG_03",
+          "description": "Guetteur derrière un rocher",
+          "sourceRange": "A169:N169"
+        }
+      ]
+    }
+  ]
+}

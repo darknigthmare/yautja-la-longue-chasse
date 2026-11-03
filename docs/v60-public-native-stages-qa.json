@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 1,
+  "release": "V60",
+  "status": "PASS",
+  "checkedAt": "2026-09-30T16:27:59.615Z",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "deployedCommitConfirmedByRoot": "56dc65cdc59ee371a9aa37773bde686132b95946",
+  "scope": "public representative application gate; the complete25-stage gate is separate",
+  "complete25StageGate": false,
+  "stageIds": [
+    "arena-162-ahab-engineer",
+    "arena-165-kenner-throne",
+    "arena-170-gotham-bloodties",
+    "arena-174-phg-sands",
+    "arena-176-phg-pirate",
+    "arena-178-bloodshed-ring",
+    "arena-182-bullet-hangar",
+    "arena-186-snow-hunt"
+  ],
+  "counts": {
+    "stages": 8,
+    "distinctNativeEvents": 24,
+    "nativeCellsObserved": 144,
+    "checks": 19,
+    "captures": 51,
+    "visuallyReviewedStages": 8,
+    "visuallyReviewedCaptures": 12
+  },
+  "sourceHashes": {
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "6f84b78b48faacbcbfaafb749f7547571a4dbb857b5b5afd722bb96896274600",
+    "app/game/PitCanvas.tsx": "d3d7773f8edef0e07a44eae28a7281608d973bce72e270faf8c15ae390006601",
+    "scripts/verify-pit-stage-life-v60.mjs": "5ff5c7b4e58ebe1be0e69c7b86d43dbdf7d8e7acfa74bd20a024458cc95a7cda"
+  },
+  "localCompleteGate": {
+    "file": "docs/v60-next-native-stages-qa.json",
+    "sha256": "95927c204395213da8049adcbd3c16e58c5b45ef46d2042acc5da57fa4ed2e9a"
+  },
+  "detailedReports": [
+    {
+      "file": "work-local/v60/qa/application-public-a/report.json",
+      "sha256": "7ae8fd48015b411e2848ac2bbb849247b5b9d87bc9da72d30b83893d08d39b97"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/report.json",
+      "sha256": "671172cf11c1502a4da0a5482f7a6fa6533f02ae4c254bcdc7fd49b1aa884d0d"
+    }
+  ],
+  "passedChecks": [
+    "public-movement-reveals-background",
+    "arena-162-ahab-engineer-pause",
+    "arena-162-ahab-engineer-application",
+    "arena-165-kenner-throne-application",
+    "arena-170-gotham-bloodties-application",
+    "arena-174-phg-sands-application",
+    "reduced-pause",
+    "reduced-motion",
+    "mobile-landscape",
+    "mobile-portrait",
+    "mobile-pause",
+    "mobile-native-events",
+    "native-png-retry-503",
+    "public-movement-reveals-background",
+    "arena-176-phg-pirate-pause",
+    "arena-176-phg-pirate-application",
+    "arena-178-bloodshed-ring-application",
+    "arena-182-bullet-hangar-application",
+    "arena-186-snow-hunt-application"
+  ],
+  "captures": [
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-162-ahab-engineer-selection.png",
+      "sha256": "8a1edfd27218157743b5fc785e588dc511cab1353b4b29c43c9555790695928c"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-162-ahab-engineer-rest.png",
+      "sha256": "382ff69c666f82c2920dc7d2d6ff969b74349ae25f7e8a5bea93b5175719bbc2"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-162-ahab-engineer-fighters-apart.png",
+      "sha256": "980963d370082440230b0f7b3a2ed5144a91d8f35f6478a190848a7b20b43de9"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-162-ahab-engineer-paused.png",
+      "sha256": "b477d8a362af7e489b2ed29bdc086712f06eb11b704ba217fcdc9b8247abeaf6"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-162-ahab-engineer-event-0.png",
+      "sha256": "4666d65ac9c6bf59fec6cc0cdb14aed875d951dde8c861d4c7907236e68833ee"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-162-ahab-engineer-event-1.png",
+      "sha256": "c12d575ae305a159aae4a61a19a1c11336e9b3cfcb2f52f5dcd5584763868f65"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-162-ahab-engineer-event-2.png",
+      "sha256": "5fb538d71f0c25e35e27e565397b8f3e54f61ee656304d891c9246c0eedef3c8"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-165-kenner-throne-selection.png",
+      "sha256": "f0051e883ece65afa53d1a7dcaa00f6cf30ac545ced29a0ff13e321b64389349"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-165-kenner-throne-rest.png",
+      "sha256": "4f0521869970d0d532cb8096a4687fb5d930daae44c838712f0d94ac730bb806"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-165-kenner-throne-event-0.png",
+      "sha256": "f63c2be3ce053e89599ce89ecd630668331b9d5fd92c06ca13a3226976a66358"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-165-kenner-throne-event-1.png",
+      "sha256": "2ac0dd57738d3d3b19722b669863c39e5ffb4219364ecf1b732fb55b4bf13ef1"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-165-kenner-throne-event-2.png",
+      "sha256": "19b15315b777076587a003eeb8cae7a32d72464094e8a5de2d51f2ec033189e6"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-170-gotham-bloodties-selection.png",
+      "sha256": "725b940afdb25e8393c6142f2b99cec74bd58b992e49d5b401ff397cf107fe4d"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-170-gotham-bloodties-rest.png",
+      "sha256": "3fb1feaabe9a00b84d9eff2e5675af40a98cb4257ba5875c39508227719cadff"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-170-gotham-bloodties-event-0.png",
+      "sha256": "d3cccb6cca79e547a12ce4ca559719da6655fa6645c7ab73a97c8a9ec8fdfb4f"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-170-gotham-bloodties-event-1.png",
+      "sha256": "38676e0b7a170e535cbbcb5466f2827d27d618728347f3cd8cdbda0f0f019a7d"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-170-gotham-bloodties-event-2.png",
+      "sha256": "c7d537e64130fc768c85e84d19229a747ec643ba93ff80370b1e239c778f724e"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-174-phg-sands-selection.png",
+      "sha256": "423a8bedea9b5662b961036083084dd39a51939f2e6d0e9b9a3013a079e7f4c7"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-174-phg-sands-rest.png",
+      "sha256": "ef6f09c58570965de2ffdd2bb564918b0eb13be8ee9c6c66fd491be3f81d1d68"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-174-phg-sands-event-0.png",
+      "sha256": "17bb5fcd6e8df13c3f93c9f6cc2b7474e7821b42f2f90ccaacd30d66cdd1d48d"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-174-phg-sands-event-1.png",
+      "sha256": "6d6643205291457fd5b15931ba0d9723c4962b145b13527d84a3ce9a2b139b63"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/arena-174-phg-sands-event-2.png",
+      "sha256": "7631a58a5a020f6b12e9fdd07d617a191c785c8a47fda66cb815ec35467882d6"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/reduced-paused.png",
+      "sha256": "0b53973577dd5b773b123a5b9e2a3a1b76ff4f99b02c47baf77cff2dbb95dc6a"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/reduced-motion.png",
+      "sha256": "132ea97b7330c56cb8a0cc960940a0aa6a835f4a76fc1cdc108b514adc602663"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/mobile-landscape.png",
+      "sha256": "4181182eb70ba75fecebfd6d5dc9de7343fc7656ad7eff401bc970bac4f47c14"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/mobile-portrait.png",
+      "sha256": "8ce736b20d59cd1aba6c4d86332bade8bc1e599a9ce281e6926f837bde45ae53"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/mobile-paused.png",
+      "sha256": "7558e51be16027886cc4af7933fd3f0bbfefd82b684262704b49ed9d910b7841"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/native-png-503-blocked.png",
+      "sha256": "811fa44d57ba3a5c2a003644920ee37d55dd7ed42e6e3735d57b1fd8ba22db7e"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-a/native-png-retry-restored.png",
+      "sha256": "382ff69c666f82c2920dc7d2d6ff969b74349ae25f7e8a5bea93b5175719bbc2"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-176-phg-pirate-selection.png",
+      "sha256": "c44a2c33272c986a0685967f80364afaad7a664b9803081d511366f8e5ec262e"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-176-phg-pirate-rest.png",
+      "sha256": "806b78bc23789208f89823e6d5943acc463bec557c94e954f244f38a8da384ff"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-176-phg-pirate-fighters-apart.png",
+      "sha256": "35d107333de3cd508da3f17a818e0f1c9c15973b4c3f8e2542c5e1146305d093"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-176-phg-pirate-paused.png",
+      "sha256": "3d10fcee02a27b095594b138a9400dad9d25b50ab28bb9446b2934f3359814d3"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-176-phg-pirate-event-0.png",
+      "sha256": "be09d79a6d541ce324638ccb85cba7b39d7989295742a21cb657d3533a4286bc"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-176-phg-pirate-event-1.png",
+      "sha256": "994886adedc4e43dac4e8c0bcf61c002fa6c7b33629f0acf990ee829fde2c92f"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-176-phg-pirate-event-2.png",
+      "sha256": "12da818e4f7e608323ecb3705cf289e3938dcbdcc4b44758fc68affd5570676e"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-178-bloodshed-ring-selection.png",
+      "sha256": "47d321fca76fbdc64c29a3324b5840cba7f05fc4289b83abd4c4013ab4cda7a8"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-178-bloodshed-ring-rest.png",
+      "sha256": "c80f369879ee3da3160ef076b35db2885edc66cf60ba5f420393e9ee2c745d86"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-178-bloodshed-ring-event-0.png",
+      "sha256": "c44ad597d72a4c5c9f2ba8cc4ff84bcc82bba742e2a82177573b587f40a2e9b2"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-178-bloodshed-ring-event-1.png",
+      "sha256": "3b9c2541249648a36bcf2ac86d6b1d0b676c80d72762b02b8c63c402dd852365"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-178-bloodshed-ring-event-2.png",
+      "sha256": "3b22bfd74e5b1dd7031202d575ac0e68aaa75c7c7c71051e7faadd5f124cc8ab"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-182-bullet-hangar-selection.png",
+      "sha256": "81fa8d9ba3dbedc294816135b026b725a935364f9c4d422bcdf9b6214b0d68df"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-182-bullet-hangar-rest.png",
+      "sha256": "b04bd6679bf2d871c22e7d59acfe40e126a16e751ad5d17422cdc291a1ec473e"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-182-bullet-hangar-event-0.png",
+      "sha256": "3793b8c8f9beeee17e05cfd4ee1c869f49b97bf4c502594bfd0057c2e421b974"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-182-bullet-hangar-event-1.png",
+      "sha256": "88100c80eff566215a6e4746d247a6600459d84b9766f87a4b5d296d7539eb6f"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-182-bullet-hangar-event-2.png",
+      "sha256": "c050655e981461a6667144d07f37961521a193f8da35b8421e5d6d8209ce216d"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-186-snow-hunt-selection.png",
+      "sha256": "63caeb132838740905e5787af004600bef192b746834dc35e1b0f5b8c443f138"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-186-snow-hunt-rest.png",
+      "sha256": "c92102c7af2780eb66b4c8406777c38345bb0efd79a1a08e4ce6b6930056b433"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-186-snow-hunt-event-0.png",
+      "sha256": "b409e0153d0f0913f34a3815a84eac091cd00cc207382927ae98476355e06acf"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-186-snow-hunt-event-1.png",
+      "sha256": "864e842d429a96868738d4eb4f23ecbc81ed2de7f189022a30bf3e73a4ccc693"
+    },
+    {
+      "file": "work-local/v60/qa/application-public-b/arena-186-snow-hunt-event-2.png",
+      "sha256": "5e24e3d38efa5e4e91a258c5fb709e9fc5fc965b8101a9c059de0df49c746c7b"
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "failedRequests": [],
+  "limitations": [
+    "The deployment commit identity and the104-public-PNG identity gate are verified separately by root.",
+    "The browser recipe executes the real public UI and normal simulation under a controlled browser clock.",
+    "Mobile uses Chromium emulation; portrait preserves black bars and is not claimed optimized.",
+    "Screenshots are separately inspected and identified by SHA; not every native cell is claimed manually reviewed in this application gate."
+  ],
+  "visualReview": {
+    "file": "docs/v60-public-native-stages-visual-review.json",
+    "sha256": "6553c2b2bb7f3746abedff530e076b359374aa5a1b2b61cad6163c8fefb48f3b"
+  }
+}

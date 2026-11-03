@@ -1,0 +1,6700 @@
+{
+  "schemaVersion": 1,
+  "id": "tracker-production-v34",
+  "fighterId": "tracker",
+  "checkedAt": "2026-09-13T00:07:54.322Z",
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "reference": {
+    "path": "public/game/sprites/v5/film-plates/tracker.png",
+    "sha256": "7517ab3c94be6197029bd7c7b510f4689b69a2d86fba2dc4262e1f9e3b9efa2d",
+    "decision": "Existing project presentation inspected and displayed before each call; fan-made identity guidance, not certified1:1 film replica.",
+    "variantId": "predators-2010-v5-presentation"
+  },
+  "generatedSheets": 15,
+  "generatedPoseSamples": 120,
+  "validatedRuntimeClips": 28,
+  "acceptedSourcePages": 8,
+  "runtimeDrawings": 58,
+  "actionSequencesIncludingFacings": 16,
+  "counts": {
+    "validated": 8,
+    "authoredReview": 1,
+    "rejected": 6
+  },
+  "runtimeLimitations": [
+    "Marche avant rejetée pour contacts répétés ; pose idle tenue, sans prétendre animer cet état.",
+    "Saut/réception : quatre poses de revue seulement, non intégrées aux phases moteur.",
+    "Technique, gardes basses, blockstun et attaques aériennes/accroupies sans clips dédiés.",
+    "Contre au gantelet et valeurs de combat : adaptations ; chiens non implémentés.",
+    "Présentation V5 fan-made, non certifiée cinéma 1:1. Quelques pixels magenta fins persistent sans large halo opaque observé à taille native.",
+    "Chroniques absentes : duels et entraînement seulement."
+  ],
+  "assets": [
+    {
+      "id": "idle",
+      "actionId": "idle",
+      "label": "idle",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-idle-v34.png",
+      "originId": "exec-9fb5eecd-7680-4121-9f30-0c3ff0e622c6.png",
+      "sha256": "7fa295e991e8c2c1d3a1b1d73ff13f6e03a410c98795900cd7203b33bfeb5399",
+      "bytes": 2230213,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predators (2010) variant; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Four distinct breathing/stance drawings per orientation."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1159495,
+        "fringePixels": 23650
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50900,
+          "alpha16Bounds": [
+            77,
+            49,
+            241,
+            409
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 131,
+          "pixelDigest": "165fce55b899ea02f25f2ed78825816426f310ab1df71a348798c109b61b688a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51844,
+          "alpha16Bounds": [
+            447,
+            42,
+            246,
+            416
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 145,
+          "pixelDigest": "c54b995e191ac070d5f38a9a6d3a8a87f48e7cb8bf5c932af6b811fa7f31c625",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49115,
+          "alpha16Bounds": [
+            833,
+            64,
+            234,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 235,
+          "pixelDigest": "45678bbdbae5740591e1de1a4aaee6a8134e4be5e3ee1da5f1b1f920af8d2c8c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51567,
+          "alpha16Bounds": [
+            1202,
+            47,
+            246,
+            412
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 121,
+          "pixelDigest": "c807d99431ab2677d641f506e0018230fa2d391ca88836d0f12713b382b636c7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52626,
+          "alpha16Bounds": [
+            78,
+            553,
+            251,
+            412
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 109,
+          "pixelDigest": "e3b327d79bfc577c300d5de37a4c80ab8607ddd254a0ffbe835e3c627d83c127",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 54263,
+          "alpha16Bounds": [
+            456,
+            546,
+            254,
+            419
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 89,
+          "pixelDigest": "24960cc9a4158b1df3b47509ad679a4ab5cdc1abad4eef1b8a1f3395cbb7e12a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50752,
+          "alpha16Bounds": [
+            842,
+            568,
+            244,
+            397
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 116,
+          "pixelDigest": "0ee84a4b6a2a5a38e534799352fb0091ac18656498218570d232abdfa81cea27",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52302,
+          "alpha16Bounds": [
+            1218,
+            554,
+            246,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 90,
+          "pixelDigest": "90859466abcf7e0747e8dea0ab3066519027dd9ffd193b3b03c5a4c1258f81d1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 0,
+          "pageId": "tracker-idle",
+          "rect": [
+            74,
+            46,
+            247,
+            415
+          ],
+          "pivot": [
+            129,
+            411
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 1,
+          "pageId": "tracker-idle",
+          "rect": [
+            444,
+            39,
+            252,
+            422
+          ],
+          "pivot": [
+            138.5,
+            418
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 2,
+          "pageId": "tracker-idle",
+          "rect": [
+            830,
+            61,
+            240,
+            400
+          ],
+          "pivot": [
+            127.5,
+            396
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 3,
+          "pageId": "tracker-idle",
+          "rect": [
+            1199,
+            44,
+            252,
+            418
+          ],
+          "pivot": [
+            135,
+            414
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 0,
+          "pageId": "tracker-idle",
+          "rect": [
+            75,
+            550,
+            257,
+            418
+          ],
+          "pivot": [
+            118.5,
+            414
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 1,
+          "pageId": "tracker-idle",
+          "rect": [
+            453,
+            543,
+            260,
+            425
+          ],
+          "pivot": [
+            118.5,
+            421
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 2,
+          "pageId": "tracker-idle",
+          "rect": [
+            839,
+            565,
+            250,
+            403
+          ],
+          "pivot": [
+            118,
+            399
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 3,
+          "pageId": "tracker-idle",
+          "rect": [
+            1215,
+            551,
+            252,
+            417
+          ],
+          "pivot": [
+            119,
+            413
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                74,
+                46,
+                247,
+                415
+              ],
+              "pivot": [
+                129,
+                411
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                444,
+                39,
+                252,
+                422
+              ],
+              "pivot": [
+                138.5,
+                418
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                830,
+                61,
+                240,
+                400
+              ],
+              "pivot": [
+                127.5,
+                396
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                1199,
+                44,
+                252,
+                418
+              ],
+              "pivot": [
+                135,
+                414
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                75,
+                550,
+                257,
+                418
+              ],
+              "pivot": [
+                118.5,
+                414
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                453,
+                543,
+                260,
+                425
+              ],
+              "pivot": [
+                118.5,
+                421
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                839,
+                565,
+                250,
+                403
+              ],
+              "pivot": [
+                118,
+                399
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                1215,
+                551,
+                252,
+                417
+              ],
+              "pivot": [
+                119,
+                413
+              ],
+              "durationTicks": 10
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "idle",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:18.649Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-walk-forward-v34.png",
+      "originId": "exec-adbc1875-bdd1-4f16-aa38-21794ff9777c.png",
+      "sha256": "f0a245e6e335bfc0bf59a0924c20513ca9450d5412588580fdef2f591b9a75c8",
+      "bytes": 2125159,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Same near-leg contact and swing repeated in1/3 and2/4, not an alternating walk. Private source retained, no playback approved."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1169468,
+        "fringePixels": 19771
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 53413,
+          "alpha16Bounds": [
+            88,
+            42,
+            268,
+            434
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 356,
+          "pixelDigest": "0977c5682bd8c356cdc60bd5bffbd398ef329d4afede11eed9d3d1a5ac730e2c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48351,
+          "alpha16Bounds": [
+            470,
+            40,
+            214,
+            430
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 272,
+          "pixelDigest": "98ee949f5d8a83c70ffb71c39196194ce3ea2390880175585d86ead1513ef9bd",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49312,
+          "alpha16Bounds": [
+            830,
+            40,
+            260,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 313,
+          "pixelDigest": "8b012668013e7b4c4424f1efb2ea03eab215185f7d694143f7dea876ac237915",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48675,
+          "alpha16Bounds": [
+            1210,
+            40,
+            213,
+            431
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 318,
+          "pixelDigest": "688b8c66dee13c199462eb1de1f69f662eb0e28f77c354d1a179f35a622f0f36",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53718,
+          "alpha16Bounds": [
+            69,
+            544,
+            270,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 337,
+          "pixelDigest": "d9a7c8708b0a593781cf83d2cf4ea98dbee28b5ee8a758b76ac14c40c3ee21a1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49072,
+          "alpha16Bounds": [
+            479,
+            544,
+            214,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 308,
+          "pixelDigest": "791728dbf1c2badb0999c6e53e4663fc705792e9915df9555b7869cd83ad1699",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51750,
+          "alpha16Bounds": [
+            815,
+            544,
+            268,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 333,
+          "pixelDigest": "9bf510cd66784ef45d575f6b5d113928d1239f990a6d6ce21cca46f91453633b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49105,
+          "alpha16Bounds": [
+            1223,
+            543,
+            209,
+            434
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 263,
+          "pixelDigest": "e2b4952f995db328d02dda51ff0369c8d6d7ede291fe3b713b1f3482288f9ebe",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "tracker-walk-forward",
+          "rect": [
+            85,
+            39,
+            274,
+            440
+          ],
+          "pivot": [
+            138,
+            436
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "tracker-walk-forward",
+          "rect": [
+            467,
+            37,
+            220,
+            436
+          ],
+          "pivot": [
+            104,
+            432
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "tracker-walk-forward",
+          "rect": [
+            827,
+            37,
+            266,
+            441
+          ],
+          "pivot": [
+            132,
+            437
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "tracker-walk-forward",
+          "rect": [
+            1207,
+            37,
+            219,
+            437
+          ],
+          "pivot": [
+            108,
+            433
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "tracker-walk-forward",
+          "rect": [
+            66,
+            541,
+            276,
+            441
+          ],
+          "pivot": [
+            137.5,
+            437
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "tracker-walk-forward",
+          "rect": [
+            476,
+            541,
+            220,
+            438
+          ],
+          "pivot": [
+            117.5,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "tracker-walk-forward",
+          "rect": [
+            812,
+            541,
+            274,
+            442
+          ],
+          "pivot": [
+            136.5,
+            438
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "tracker-walk-forward",
+          "rect": [
+            1220,
+            540,
+            215,
+            440
+          ],
+          "pivot": [
+            117,
+            436
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-walk-backward-v34.png",
+      "originId": "exec-2951b8d8-f433-4a8b-91fe-f2872548180e.png",
+      "sha256": "d4eeb387e377acb7912adc0dd688bf70c525853ccf3f5dd165ba499fc89471f0",
+      "bytes": 2137044,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Passing legs differ between2/4, but contact poses1/3 still use same near/far support. Needs targeted opposite contact3 repair before any looping approval. Hands and blade mounts coherent."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1192122,
+        "fringePixels": 21184
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51497,
+          "alpha16Bounds": [
+            73,
+            66,
+            282,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 128,
+          "pixelDigest": "9bf47b564e869515faa20e1f4caf451a91f4e5ec8002f6c404905e279545186a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46871,
+          "alpha16Bounds": [
+            457,
+            68,
+            259,
+            398
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 147,
+          "pixelDigest": "da9bed806cb16c97ec475f1ae42ed45a35a6eac61d7e6f97530571873c4085bb",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48908,
+          "alpha16Bounds": [
+            830,
+            68,
+            263,
+            398
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 167,
+          "pixelDigest": "2160a6696a6a50ef119d76abfebed1846120369ec6c610bf7b83e83f52235ce4",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43853,
+          "alpha16Bounds": [
+            1227,
+            68,
+            251,
+            398
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 132,
+          "pixelDigest": "e10a099eec503ed79db2a72af70a126b3a4a0aaaf33ddc9635d6a9b0ba600136",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49890,
+          "alpha16Bounds": [
+            53,
+            557,
+            274,
+            398
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 91,
+          "pixelDigest": "c86a510b09f2deb51143a2280d383771169d5de9f7fc207618e47edaed5b437b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46711,
+          "alpha16Bounds": [
+            440,
+            558,
+            259,
+            397
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 131,
+          "pixelDigest": "6e2d90f6a0af2a873a799adaebc39d308ed8611602feba4de825297298644e95",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49185,
+          "alpha16Bounds": [
+            821,
+            557,
+            268,
+            397
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 29,
+          "pixelDigest": "5620c89def42b675f84d778e130e982b5d950317fe6b5fce64cc04d4d9ecfbe9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43827,
+          "alpha16Bounds": [
+            1205,
+            558,
+            252,
+            396
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 26,
+          "pixelDigest": "6d3e8c5e432142f8685bebcfeb47e3f5cb57b8f2d1c762a9056fd849c3b293a9",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "tracker-walk-backward",
+          "rect": [
+            70,
+            63,
+            288,
+            405
+          ],
+          "pivot": [
+            129.5,
+            401
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "tracker-walk-backward",
+          "rect": [
+            454,
+            65,
+            265,
+            404
+          ],
+          "pivot": [
+            83,
+            400
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "tracker-walk-backward",
+          "rect": [
+            827,
+            65,
+            269,
+            404
+          ],
+          "pivot": [
+            131,
+            400
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "tracker-walk-backward",
+          "rect": [
+            1224,
+            65,
+            257,
+            404
+          ],
+          "pivot": [
+            103,
+            400
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "tracker-walk-backward",
+          "rect": [
+            50,
+            554,
+            280,
+            404
+          ],
+          "pivot": [
+            152,
+            400
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "tracker-walk-backward",
+          "rect": [
+            437,
+            555,
+            265,
+            403
+          ],
+          "pivot": [
+            188.5,
+            399
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "tracker-walk-backward",
+          "rect": [
+            818,
+            554,
+            274,
+            403
+          ],
+          "pivot": [
+            140,
+            399
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "tracker-walk-backward",
+          "rect": [
+            1202,
+            555,
+            258,
+            402
+          ],
+          "pivot": [
+            152,
+            398
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "crouch",
+      "actionId": "crouch",
+      "label": "crouch",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-crouch-v34.png",
+      "originId": "exec-6da5a169-4bc0-44f7-b74f-5ff352c48c33.png",
+      "sha256": "7e8acdd1ecaf0d8cf8ef303f82c786601b2bfce4a15a5185d1ecb72375af80a8",
+      "bytes": 2173406,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predators (2010) variant; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "First three drawings enter and hold crouch; fourth rising drawing excluded."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1189163,
+        "fringePixels": 19950
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52204,
+          "alpha16Bounds": [
+            52,
+            62,
+            271,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 203,
+          "pixelDigest": "5dc4d6b5dc9ead19c3d843a1dcd8a9eb1ee954ffaec0eb0c9f55681f4165c723",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49383,
+          "alpha16Bounds": [
+            434,
+            107,
+            281,
+            357
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 324,
+          "pixelDigest": "58d9b0b29a23c3b050c4893c2fc89c1e4f3f9d22bbaeb652cba386e932569324",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43648,
+          "alpha16Bounds": [
+            827,
+            180,
+            283,
+            283
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 370,
+          "pixelDigest": "6728b66113b281d274c785c4b161e1dd27bc38f1e6593ad9bc1c94ee8e1c3f33",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48586,
+          "alpha16Bounds": [
+            1208,
+            116,
+            281,
+            348
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 223,
+          "pixelDigest": "3276177942610b243bcebe8e18acb195dc1ebfaf9d94bc32943dbe5eca0ee19a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51889,
+          "alpha16Bounds": [
+            55,
+            551,
+            281,
+            393
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 193,
+          "pixelDigest": "76d47339ec06e4945a95dd08fe1ff4c83cb200afb5a5e8921ef9344dfb57516e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48202,
+          "alpha16Bounds": [
+            430,
+            592,
+            275,
+            352
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 286,
+          "pixelDigest": "785f5c1a4b6a013a7e7e10461868d848250a39e4821a18653891c14e2b289756",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41781,
+          "alpha16Bounds": [
+            810,
+            667,
+            280,
+            277
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 311,
+          "pixelDigest": "27c56a2343ec932ad990b526b105e169067072981e0d511f452b700ab803f819",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48008,
+          "alpha16Bounds": [
+            1205,
+            593,
+            274,
+            351
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 240,
+          "pixelDigest": "37ebf05c8360116df15419e88c8c5ff94e6dae97e6a5248829a9a606bd7be4d5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "tracker-crouch",
+          "rect": [
+            49,
+            59,
+            277,
+            409
+          ],
+          "pivot": [
+            133,
+            405
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "tracker-crouch",
+          "rect": [
+            431,
+            104,
+            287,
+            363
+          ],
+          "pivot": [
+            133,
+            359
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "tracker-crouch",
+          "rect": [
+            824,
+            177,
+            289,
+            289
+          ],
+          "pivot": [
+            136,
+            285
+          ],
+          "durationTicks": 30,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "tracker-crouch",
+          "rect": [
+            52,
+            548,
+            287,
+            399
+          ],
+          "pivot": [
+            150,
+            395
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "tracker-crouch",
+          "rect": [
+            427,
+            589,
+            281,
+            358
+          ],
+          "pivot": [
+            151.5,
+            354
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "tracker-crouch",
+          "rect": [
+            807,
+            664,
+            286,
+            283
+          ],
+          "pivot": [
+            151,
+            279
+          ],
+          "durationTicks": 30,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                49,
+                59,
+                277,
+                409
+              ],
+              "pivot": [
+                133,
+                405
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                431,
+                104,
+                287,
+                363
+              ],
+              "pivot": [
+                133,
+                359
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                824,
+                177,
+                289,
+                289
+              ],
+              "pivot": [
+                136,
+                285
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                52,
+                548,
+                287,
+                399
+              ],
+              "pivot": [
+                150,
+                395
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                427,
+                589,
+                281,
+                358
+              ],
+              "pivot": [
+                151.5,
+                354
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                807,
+                664,
+                286,
+                283
+              ],
+              "pivot": [
+                151,
+                279
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "crouch",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:18.650Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "label": "jump-land",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-jump-land-v34.png",
+      "originId": "exec-89872f83-c11c-4831-90ce-44f1edf5ca09.png",
+      "sha256": "3c7a03fd55e1708f30a02f59f85fa6603df33d71576f955bc4ae5c6b28a138b0",
+      "bytes": 2091648,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four readable launch/rise/fall/landing poses per facing; both hands remain empty below paired dorsal blades. No obvious missing limb at sheet review. Airborne sole-based pivot is provisional; engine jump mapping not validated."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1238099,
+        "fringePixels": 18190
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "deep launch crouch",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40990,
+          "alpha16Bounds": [
+            57,
+            186,
+            292,
+            268
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 234,
+          "pixelDigest": "6aadcb13d3c6e80d145e4f0a8b34893a25b8220c90ebfe158ebbd47beeb67925",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "airborne rising knees bent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41150,
+          "alpha16Bounds": [
+            427,
+            60,
+            315,
+            315
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 172,
+          "pixelDigest": "f161329e46288592fb9fdf37baca82a8c9fbec3f1bd25b7c0c5cda7e4c8cc149",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "falling feet extending downward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46050,
+          "alpha16Bounds": [
+            827,
+            48,
+            278,
+            408
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 134,
+          "pixelDigest": "69b0230938e55590ae0c73453bf43df896aa4ca6cc0dcbcc1911351229aa1e63",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "landing crouch absorbing impact",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40247,
+          "alpha16Bounds": [
+            1207,
+            208,
+            284,
+            250
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 308,
+          "pixelDigest": "808a0779ee12d5e0718affea882ab0f938ad38d27e7e873f1332eacd6daec8f9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "deep launch crouch",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40867,
+          "alpha16Bounds": [
+            42,
+            695,
+            296,
+            271
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 259,
+          "pixelDigest": "fa7a83adfb777d3ef39f34d5f1bd47c2a371d15d8cf761f37f4bdeecdbf29e4f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "airborne rising knees bent",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39089,
+          "alpha16Bounds": [
+            419,
+            571,
+            302,
+            303
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 117,
+          "pixelDigest": "bdb16fcd6009eec6e26b8466263909085563ef14e63398aa6794071bbbaf7c63",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "falling feet extending downward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45920,
+          "alpha16Bounds": [
+            815,
+            557,
+            273,
+            408
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 111,
+          "pixelDigest": "8f4ea9b80925b61e18380c9966d11a4a5bea2079fe4cf4c26ac2df75cc5ff88f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "landing crouch absorbing impact",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40452,
+          "alpha16Bounds": [
+            1197,
+            711,
+            272,
+            255
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 241,
+          "pixelDigest": "05ba7373237ef3dc9d1d90e2f6ca124268e772656ad497b4aa09699adbc2a4c6",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "pageId": "tracker-jump-land",
+          "rect": [
+            54,
+            183,
+            298,
+            274
+          ],
+          "pivot": [
+            119,
+            270
+          ],
+          "durationTicks": 10,
+          "phase": "deep launch crouch",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "pageId": "tracker-jump-land",
+          "rect": [
+            424,
+            57,
+            321,
+            321
+          ],
+          "pivot": [
+            142.5,
+            317
+          ],
+          "durationTicks": 10,
+          "phase": "airborne rising knees bent",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "pageId": "tracker-jump-land",
+          "rect": [
+            824,
+            45,
+            284,
+            414
+          ],
+          "pivot": [
+            133.5,
+            410
+          ],
+          "durationTicks": 10,
+          "phase": "falling feet extending downward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "pageId": "tracker-jump-land",
+          "rect": [
+            1204,
+            205,
+            290,
+            256
+          ],
+          "pivot": [
+            149.5,
+            252
+          ],
+          "durationTicks": 10,
+          "phase": "landing crouch absorbing impact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "pageId": "tracker-jump-land",
+          "rect": [
+            39,
+            692,
+            302,
+            277
+          ],
+          "pivot": [
+            179.5,
+            273
+          ],
+          "durationTicks": 10,
+          "phase": "deep launch crouch",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "pageId": "tracker-jump-land",
+          "rect": [
+            416,
+            568,
+            308,
+            309
+          ],
+          "pivot": [
+            174.5,
+            305
+          ],
+          "durationTicks": 10,
+          "phase": "airborne rising knees bent",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "pageId": "tracker-jump-land",
+          "rect": [
+            812,
+            554,
+            279,
+            414
+          ],
+          "pivot": [
+            151.5,
+            410
+          ],
+          "durationTicks": 10,
+          "phase": "falling feet extending downward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "pageId": "tracker-jump-land",
+          "rect": [
+            1194,
+            708,
+            278,
+            261
+          ],
+          "pivot": [
+            138.5,
+            257
+          ],
+          "durationTicks": 10,
+          "phase": "landing crouch absorbing impact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "guard",
+      "actionId": "guard",
+      "label": "guard",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-guard-v34.png",
+      "originId": "exec-bb596fe6-adaf-4bc5-b7e8-7cb7fa2c6c6d.png",
+      "sha256": "8be749694b8abdbd3de877c0985635cc043b12c1fa2a36b595e26c434702f4cd",
+      "bytes": 2217538,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Right weapon hand disappears behind blade rails in raised guard phases2-4 instead of remaining an anatomically complete fist. Left hand reads correctly. Needs targeted right fist repair, no guard clip accepted."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1153704,
+        "fringePixels": 19340
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "left forearm raises from chest; right closed empty fist near waist",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 53373,
+          "alpha16Bounds": [
+            57,
+            51,
+            257,
+            419
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 168,
+          "pixelDigest": "7144146c9833151bece6246c9a439fa458155a98626ec97c20bd0052e2a4e436",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "full guard left forearm vertical beside cheek; right forearm across sternum",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52378,
+          "alpha16Bounds": [
+            442,
+            51,
+            254,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 133,
+          "pixelDigest": "3a91a826c00e6b2a533150bf832986a2f1fab12ec922dc29585102fb877a406c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "absorb guard with knees flexed and shoulders braced",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52044,
+          "alpha16Bounds": [
+            815,
+            77,
+            265,
+            391
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 159,
+          "pixelDigest": "d9d269b803970b4879bb297259349818cbf3131ebeb857c23f0008f570ba5922",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "settled full guard held, both fists visible",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51483,
+          "alpha16Bounds": [
+            1210,
+            52,
+            254,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 126,
+          "pixelDigest": "fa5a1881f541b3355430319e656e297536ed7398ccffe6a6d79e2568c9762ebc",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "left forearm raises from chest; right closed empty fist near waist",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53738,
+          "alpha16Bounds": [
+            71,
+            561,
+            257,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 165,
+          "pixelDigest": "faa30852860c55c989f854b96e48f85c616f7fb79c84ba37ddc808f6251f2c44",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "full guard left forearm vertical beside cheek; right forearm across sternum",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52385,
+          "alpha16Bounds": [
+            455,
+            563,
+            257,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 110,
+          "pixelDigest": "73f3a7d083fbafe185acfcb889ae77acc317c17f7a52110b5ab1e9dbcdeeb8a1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "absorb guard with knees flexed and shoulders braced",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52076,
+          "alpha16Bounds": [
+            836,
+            589,
+            270,
+            391
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 238,
+          "pixelDigest": "07b9a8e4c89a3668b40ee28afe0e76d68a6959241882713675a2803dd5520347",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "settled full guard held, both fists visible",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51683,
+          "alpha16Bounds": [
+            1223,
+            563,
+            257,
+            417
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 116,
+          "pixelDigest": "d11aed581db7f1c3bf3cdcea834b8d17ae83236349dd53dabd74a469e385ba81",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 0,
+          "pageId": "tracker-guard",
+          "rect": [
+            54,
+            48,
+            263,
+            425
+          ],
+          "pivot": [
+            130,
+            421
+          ],
+          "durationTicks": 10,
+          "phase": "left forearm raises from chest; right closed empty fist near waist",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 1,
+          "pageId": "tracker-guard",
+          "rect": [
+            439,
+            48,
+            260,
+            424
+          ],
+          "pivot": [
+            129.5,
+            420
+          ],
+          "durationTicks": 10,
+          "phase": "full guard left forearm vertical beside cheek; right forearm across sternum",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 2,
+          "pageId": "tracker-guard",
+          "rect": [
+            812,
+            74,
+            271,
+            397
+          ],
+          "pivot": [
+            135,
+            393
+          ],
+          "durationTicks": 10,
+          "phase": "absorb guard with knees flexed and shoulders braced",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 3,
+          "pageId": "tracker-guard",
+          "rect": [
+            1207,
+            49,
+            260,
+            424
+          ],
+          "pivot": [
+            129.5,
+            420
+          ],
+          "durationTicks": 10,
+          "phase": "settled full guard held, both fists visible",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 0,
+          "pageId": "tracker-guard",
+          "rect": [
+            68,
+            558,
+            263,
+            426
+          ],
+          "pivot": [
+            131,
+            422
+          ],
+          "durationTicks": 10,
+          "phase": "left forearm raises from chest; right closed empty fist near waist",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 1,
+          "pageId": "tracker-guard",
+          "rect": [
+            452,
+            560,
+            263,
+            424
+          ],
+          "pivot": [
+            131,
+            420
+          ],
+          "durationTicks": 10,
+          "phase": "full guard left forearm vertical beside cheek; right forearm across sternum",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 2,
+          "pageId": "tracker-guard",
+          "rect": [
+            833,
+            586,
+            276,
+            397
+          ],
+          "pivot": [
+            137.5,
+            393
+          ],
+          "durationTicks": 10,
+          "phase": "absorb guard with knees flexed and shoulders braced",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 3,
+          "pageId": "tracker-guard",
+          "rect": [
+            1220,
+            560,
+            263,
+            423
+          ],
+          "pivot": [
+            131,
+            419
+          ],
+          "durationTicks": 10,
+          "phase": "settled full guard held, both fists visible",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "hurt",
+      "actionId": "hurt",
+      "label": "hurt",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-hurt-v34.png",
+      "originId": "exec-167638f3-1066-4854-a980-bf81b7e31326.png",
+      "sha256": "b32b6e13c5370acf81e5cafd7423712042338f376194c5d3482b8f331a0d5836",
+      "bytes": 2302348,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predators (2010) variant; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Distinct drawings reordered neutral, impact, recovery, neutral."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1134162,
+        "fringePixels": 21559
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "small torso recoil from chest hit",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 57690,
+          "alpha16Bounds": [
+            41,
+            40,
+            283,
+            421
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 145,
+          "pixelDigest": "352f5d39d00aef3b4ab9bef7f2abe0614c2845d9ee4dd8f6ff5ecf91628c6d07",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "larger backward torso lean, knees bent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52835,
+          "alpha16Bounds": [
+            451,
+            62,
+            282,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 333,
+          "pixelDigest": "b12cdff23895dd184c3b77ffc38bacb3b1b1f90b6b95237849612a8210df40c6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recover torso upright with protective arms",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51965,
+          "alpha16Bounds": [
+            814,
+            91,
+            304,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 265,
+          "pixelDigest": "e9eec6101e71e691465d390044ebdbe9ef975238ffcae509d575f8ad9530bc1c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return to neutral stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 57703,
+          "alpha16Bounds": [
+            1216,
+            40,
+            279,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 142,
+          "pixelDigest": "08dcc769123396134374d1f28aed958ccd04506d45189c0bc504022789ebd4e1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "small torso recoil from chest hit",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 57426,
+          "alpha16Bounds": [
+            40,
+            526,
+            280,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 115,
+          "pixelDigest": "080f12d83ca23951dbb03536130aed02001fc22aa94c75d6b91a2e57ab5207a9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "larger backward torso lean, knees bent",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51392,
+          "alpha16Bounds": [
+            390,
+            552,
+            275,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 234,
+          "pixelDigest": "36ee1519e258c7ef9cf6ec3f22461f0c7fd86437463de3a91864d1388e3a6a3a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recover torso upright with protective arms",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51849,
+          "alpha16Bounds": [
+            772,
+            572,
+            303,
+            374
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 315,
+          "pixelDigest": "4df9c340b656272f96e3b97689d5ba37a3fbb38509ac00d9f08107e8f53658da",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return to neutral stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 57842,
+          "alpha16Bounds": [
+            1212,
+            526,
+            283,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 198,
+          "pixelDigest": "4086d1900f7eeed4cb02e03ed4ecabbeb950fbb70a3d32c73ff819ae79929fe1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "pageId": "tracker-hurt",
+          "rect": [
+            38,
+            37,
+            289,
+            427
+          ],
+          "pivot": [
+            146,
+            423
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "pageId": "tracker-hurt",
+          "rect": [
+            811,
+            88,
+            310,
+            376
+          ],
+          "pivot": [
+            182.5,
+            372
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "pageId": "tracker-hurt",
+          "rect": [
+            448,
+            59,
+            288,
+            405
+          ],
+          "pivot": [
+            160.5,
+            401
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "pageId": "tracker-hurt",
+          "rect": [
+            1213,
+            37,
+            285,
+            428
+          ],
+          "pivot": [
+            144,
+            424
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "pageId": "tracker-hurt",
+          "rect": [
+            37,
+            523,
+            286,
+            426
+          ],
+          "pivot": [
+            140.5,
+            422
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "pageId": "tracker-hurt",
+          "rect": [
+            769,
+            569,
+            309,
+            380
+          ],
+          "pivot": [
+            124.5,
+            376
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "pageId": "tracker-hurt",
+          "rect": [
+            387,
+            549,
+            281,
+            400
+          ],
+          "pivot": [
+            123.5,
+            396
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "pageId": "tracker-hurt",
+          "rect": [
+            1209,
+            523,
+            289,
+            426
+          ],
+          "pivot": [
+            143,
+            422
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                38,
+                37,
+                289,
+                427
+              ],
+              "pivot": [
+                146,
+                423
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                811,
+                88,
+                310,
+                376
+              ],
+              "pivot": [
+                182.5,
+                372
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                448,
+                59,
+                288,
+                405
+              ],
+              "pivot": [
+                160.5,
+                401
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                1213,
+                37,
+                285,
+                428
+              ],
+              "pivot": [
+                144,
+                424
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                37,
+                523,
+                286,
+                426
+              ],
+              "pivot": [
+                140.5,
+                422
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                769,
+                569,
+                309,
+                380
+              ],
+              "pivot": [
+                124.5,
+                376
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                387,
+                549,
+                281,
+                400
+              ],
+              "pivot": [
+                123.5,
+                396
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                1209,
+                523,
+                289,
+                426
+              ],
+              "pivot": [
+                143,
+                422
+              ],
+              "durationTicks": 3
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.hitstun",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:18.650Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "light",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-light-v34.png",
+      "originId": "exec-4d34841a-2678-476f-92fa-f2dd517dc13f.png",
+      "sha256": "fdbcc00a266894ad1d7bf532958583af1033e41f411298f26084d0747da05c1e",
+      "bytes": 2141579,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predators (2010) variant; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Left row reordered startup, contact, recovery, neutral; hands and attached blades coherent."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1210465,
+        "fringePixels": 19392
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "short right forearm retract startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47223,
+          "alpha16Bounds": [
+            49,
+            96,
+            335,
+            375
+          ],
+          "gridBorderPixels": 65,
+          "residualMagentaPixels": 71,
+          "pixelDigest": "bede68f1e3dd31885449f22408889aaa9a18ba4448fb13f2b1fd4c2c2ddf1c2e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "short forward right wrist-blade jab contact",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43850,
+          "alpha16Bounds": [
+            384,
+            99,
+            349,
+            371
+          ],
+          "gridBorderPixels": 68,
+          "residualMagentaPixels": 127,
+          "pixelDigest": "7bc56de51b0a86c19c930e3f8d3a07d0fb14353fa6de091bc2349eeaac9cdaa2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right forearm retracts halfway",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44178,
+          "alpha16Bounds": [
+            779,
+            101,
+            290,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 71,
+          "pixelDigest": "30e95744515ccaff9298c54776f1e62f3b8b93c9bc402ca7791fa8d6d9807088",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral combat stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47918,
+          "alpha16Bounds": [
+            1216,
+            91,
+            251,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 202,
+          "pixelDigest": "326afba940235df1a7df896b63981ccb8807a85a32aeb98dce6a3f461c28c24a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "short right forearm retract startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46992,
+          "alpha16Bounds": [
+            39,
+            578,
+            345,
+            373
+          ],
+          "gridBorderPixels": 11,
+          "residualMagentaPixels": 143,
+          "pixelDigest": "e986b0574e6386cf9611a04ab722c2c652db6607c6142ebfa88e1095402e46f8",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "short forward right wrist-blade jab contact",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44172,
+          "alpha16Bounds": [
+            384,
+            586,
+            373,
+            364
+          ],
+          "gridBorderPixels": 12,
+          "residualMagentaPixels": 139,
+          "pixelDigest": "dffdfe00abd9d40e9c856606e63b4ef989afaeadafd21c066248c5ebe2e3fca3",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right forearm retracts halfway",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42783,
+          "alpha16Bounds": [
+            841,
+            586,
+            288,
+            361
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 49,
+          "pixelDigest": "41ddda782114757d70c65eea2d151a5a5c743d7052541fc92a7c3a43eaf0d236",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral combat stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45283,
+          "alpha16Bounds": [
+            1213,
+            583,
+            269,
+            369
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 45,
+          "pixelDigest": "60d133d027aebb0e03fe0a36fc86934f26a8f49a143d462f035bdabf6cc00299",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "tracker-light",
+          "rect": [
+            46,
+            93,
+            269,
+            381
+          ],
+          "pivot": [
+            119.5,
+            377
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "tracker-light",
+          "rect": [
+            352,
+            96,
+            384,
+            377
+          ],
+          "pivot": [
+            140,
+            373
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "tracker-light",
+          "rect": [
+            776,
+            98,
+            296,
+            376
+          ],
+          "pivot": [
+            132,
+            372
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "index": 1,
+          "pageId": "tracker-light",
+          "rect": [
+            1213,
+            88,
+            257,
+            387
+          ],
+          "pivot": [
+            120,
+            383
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "tracker-light",
+          "rect": [
+            1210,
+            580,
+            275,
+            375
+          ],
+          "pivot": [
+            148.5,
+            371
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "tracker-light",
+          "rect": [
+            370,
+            583,
+            390,
+            370
+          ],
+          "pivot": [
+            246.5,
+            366
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "tracker-light",
+          "rect": [
+            838,
+            583,
+            294,
+            367
+          ],
+          "pivot": [
+            164,
+            363
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "index": 1,
+          "pageId": "tracker-light",
+          "rect": [
+            36,
+            575,
+            262,
+            379
+          ],
+          "pivot": [
+            138.5,
+            375
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                46,
+                93,
+                269,
+                381
+              ],
+              "pivot": [
+                119.5,
+                377
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                352,
+                96,
+                384,
+                377
+              ],
+              "pivot": [
+                140,
+                373
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                776,
+                98,
+                296,
+                376
+              ],
+              "pivot": [
+                132,
+                372
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                1213,
+                88,
+                257,
+                387
+              ],
+              "pivot": [
+                120,
+                383
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                1210,
+                580,
+                275,
+                375
+              ],
+              "pivot": [
+                148.5,
+                371
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                370,
+                583,
+                390,
+                370
+              ],
+              "pivot": [
+                246.5,
+                366
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                838,
+                583,
+                294,
+                367
+              ],
+              "pivot": [
+                164,
+                363
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                36,
+                575,
+                262,
+                379
+              ],
+              "pivot": [
+                138.5,
+                375
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.light.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:18.650Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "medium",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-medium-v34.png",
+      "originId": "exec-721d4d38-2d24-4818-a5a8-ebf8360cb164.png",
+      "sha256": "f013ff2c6377d7e423fe1d7895667ede580ae778ff80b56c2648f2a5ebb9cbdf",
+      "bytes": 2205702,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Partial candidate RIGHT only columns1,2,4: complete fist at contact and neutral. Column3 recovery hides weapon hand and must be excluded. LEFT startup column1 loses both extended blades, column3 hides hand; left action rejected. Large forward reach crosses nominal cell2 boundary, explicit union rectangles required, no grid crop."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1177204,
+        "fringePixels": 20903
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right elbow draws back at waist",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50483,
+          "alpha16Bounds": [
+            54,
+            59,
+            259,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 113,
+          "pixelDigest": "509bad092024d70b64ec22b4a211a953432b0e72bfc68cc3a51d0eda724c1aa1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right forearm extends horizontally to opponent at chest height",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49981,
+          "alpha16Bounds": [
+            398,
+            81,
+            370,
+            371
+          ],
+          "gridBorderPixels": 42,
+          "residualMagentaPixels": 81,
+          "pixelDigest": "b4ce3f28aae324b22a07cdbbb9a05599410819656b78a0169f99609f8cea05ea",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right forearm retracts to ribs",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51005,
+          "alpha16Bounds": [
+            768,
+            58,
+            345,
+            402
+          ],
+          "gridBorderPixels": 42,
+          "residualMagentaPixels": 176,
+          "pixelDigest": "a39e4ea7113d06437e5c1a7ada00425fcc7abc47de71aec627fcb4d9ec3978ee",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47074,
+          "alpha16Bounds": [
+            1226,
+            59,
+            222,
+            400
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 110,
+          "pixelDigest": "4c26f3d8741a91a7c0ca1439e6eaefea66599dc7ee09bd5458c4e980d47a154a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right elbow draws back at waist",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48560,
+          "alpha16Bounds": [
+            63,
+            562,
+            321,
+            392
+          ],
+          "gridBorderPixels": 21,
+          "residualMagentaPixels": 115,
+          "pixelDigest": "2cf84d9f605454a9f33b0f3b2acd564176155440641fd8ec5c15a7ba969473b1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right forearm extends horizontally to opponent at chest height",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51415,
+          "alpha16Bounds": [
+            384,
+            572,
+            382,
+            380
+          ],
+          "gridBorderPixels": 21,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "af15783d3b27a5ed5214efb2fd4d8a02d61ed012a873eba52258cf50437431e7",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right forearm retracts to ribs",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49842,
+          "alpha16Bounds": [
+            844,
+            559,
+            270,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 98,
+          "pixelDigest": "c1d0cc97f26680ca4101291b84552fda44cc76bbd5b86b8a023cad11978bbbf3",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47300,
+          "alpha16Bounds": [
+            1237,
+            560,
+            222,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 115,
+          "pixelDigest": "c4be4489e7ac87fee9ce15c9467b91c7401eefc0c3fb38643f4fe8bd18d009e8",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 0,
+          "pageId": "tracker-medium",
+          "rect": [
+            60,
+            559,
+            254,
+            398
+          ],
+          "pivot": [
+            128,
+            394
+          ],
+          "durationTicks": 10,
+          "phase": "right elbow draws back at waist",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 1,
+          "pageId": "tracker-medium",
+          "rect": [
+            317,
+            569,
+            452,
+            386
+          ],
+          "pivot": [
+            294.5,
+            382
+          ],
+          "durationTicks": 10,
+          "phase": "right forearm extends horizontally to opponent at chest height",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 2,
+          "pageId": "tracker-medium",
+          "rect": [
+            841,
+            556,
+            276,
+            405
+          ],
+          "pivot": [
+            137.5,
+            401
+          ],
+          "durationTicks": 10,
+          "phase": "right forearm retracts to ribs",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 3,
+          "pageId": "tracker-medium",
+          "rect": [
+            1234,
+            557,
+            228,
+            405
+          ],
+          "pivot": [
+            115.5,
+            401
+          ],
+          "durationTicks": 10,
+          "phase": "neutral stance",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "heavy",
+      "actionId": "heavy",
+      "label": "heavy",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-heavy-v34.png",
+      "originId": "exec-74adf345-7aa8-483c-9255-44bf9a56489e.png",
+      "sha256": "58ebce960f55086b71288ae5dfe46c25ec31d1df9f185f1b6c4d0377b3dac04f",
+      "bytes": 2134374,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predators (2010) variant; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Three distinct poses per orientation; uncertain intermediate hand drawing excluded. Recovery is one held neutral drawing."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1213693,
+        "fringePixels": 19270
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "low loaded diagonal right arm drawn back at hip",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47736,
+          "alpha16Bounds": [
+            58,
+            95,
+            274,
+            356
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 159,
+          "pixelDigest": "7907cd7aca7c0410d53faf4ee02c674fb2bceeab35e639af71b218b398556357",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right forearm drives forward slightly upward in a heavy low diagonal slash",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43293,
+          "alpha16Bounds": [
+            410,
+            114,
+            346,
+            333
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 123,
+          "pixelDigest": "00c81ca2b372ab7bcb42bddd755977739596ca46c01fcf23ef28e49f2e522f36",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right elbow retracts with body settling",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42853,
+          "alpha16Bounds": [
+            812,
+            109,
+            259,
+            343
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 65,
+          "pixelDigest": "8ba867ce51ddcdda2bfecbe95c8b791456de3bb24d1e1fcf9216a8e0e20a1ce1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45552,
+          "alpha16Bounds": [
+            1221,
+            82,
+            226,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 215,
+          "pixelDigest": "6510002cc6d0cc7b0687c60b6e19bcf436110bfad5f866c0fa9605ed43ca78d4",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "low loaded diagonal right arm drawn back at hip",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45942,
+          "alpha16Bounds": [
+            87,
+            585,
+            227,
+            371
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 171,
+          "pixelDigest": "14c2d81382e3d0ada872dd02c339e5691dc1336f73675b107ac4eb716e907de6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right forearm drives forward slightly upward in a heavy low diagonal slash",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42857,
+          "alpha16Bounds": [
+            466,
+            614,
+            257,
+            342
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 55,
+          "pixelDigest": "5afb2e713eefc5fa40f5181ceb2d8e4826ce02bae73d3d288068f5d63d7ef00b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right elbow retracts with body settling",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43115,
+          "alpha16Bounds": [
+            780,
+            619,
+            347,
+            333
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 181,
+          "pixelDigest": "e43df3a43f537a008da80e89fe67a6e629c688cc47439420b19a34d842b05650",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47823,
+          "alpha16Bounds": [
+            1203,
+            601,
+            274,
+            354
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 111,
+          "pixelDigest": "32eacc729e70630a4a29259017256d1d91de200a0ddd58062a31a2c63b0b1236",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "tracker-heavy",
+          "rect": [
+            55,
+            92,
+            280,
+            362
+          ],
+          "pivot": [
+            131,
+            358
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "tracker-heavy",
+          "rect": [
+            407,
+            111,
+            352,
+            339
+          ],
+          "pivot": [
+            153,
+            335
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "tracker-heavy",
+          "rect": [
+            1218,
+            79,
+            232,
+            376
+          ],
+          "pivot": [
+            116.5,
+            372
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "tracker-heavy",
+          "rect": [
+            1200,
+            598,
+            280,
+            360
+          ],
+          "pivot": [
+            149,
+            356
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "tracker-heavy",
+          "rect": [
+            777,
+            616,
+            353,
+            339
+          ],
+          "pivot": [
+            198.5,
+            335
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "tracker-heavy",
+          "rect": [
+            84,
+            582,
+            233,
+            377
+          ],
+          "pivot": [
+            115.5,
+            373
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                55,
+                92,
+                280,
+                362
+              ],
+              "pivot": [
+                131,
+                358
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                407,
+                111,
+                352,
+                339
+              ],
+              "pivot": [
+                153,
+                335
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                1218,
+                79,
+                232,
+                376
+              ],
+              "pivot": [
+                116.5,
+                372
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                1200,
+                598,
+                280,
+                360
+              ],
+              "pivot": [
+                149,
+                356
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                777,
+                616,
+                353,
+                339
+              ],
+              "pivot": [
+                198.5,
+                335
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                84,
+                582,
+                233,
+                377
+              ],
+              "pivot": [
+                115.5,
+                373
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.heavy.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:18.650Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-guard-hand",
+      "actionId": "guard",
+      "label": "guard",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-repair-guard-hand-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-repair-guard-hand-v34.png",
+      "originId": "exec-60aa7d21-6d32-4f00-877f-d167ee41f07e.png",
+      "sha256": "df57147c987968b9d9ed232e24ef9059c4ee0d0710e501d7a448d10fcff3f2ac",
+      "bytes": 2214763,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predators (2010) variant; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Complete empty right fist below two mounted dorsal wrist blades."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1126985,
+        "fringePixels": 17751
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "left forearm raises from chest; right closed empty fist near waist",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 56551,
+          "alpha16Bounds": [
+            46,
+            50,
+            267,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 133,
+          "pixelDigest": "72f3391fa87a9e25da89a76557f66add6bbf1df5eac81941906627eff26af3d2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "full guard left forearm vertical beside cheek; right forearm across sternum",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 55942,
+          "alpha16Bounds": [
+            436,
+            50,
+            264,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 97,
+          "pixelDigest": "c83ad4b0d4c5b549b1f027e4c64f81efab093047546ffcf7af6f0b0622ad8534",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "absorb guard with knees flexed and shoulders braced",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 54240,
+          "alpha16Bounds": [
+            817,
+            82,
+            273,
+            391
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 92,
+          "pixelDigest": "6ff511a16728bf5d7fad99b696deb51511def27ce3c2a3bf5fc0b5f2beac0446",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "settled full guard held, both fists visible",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 55534,
+          "alpha16Bounds": [
+            1206,
+            50,
+            261,
+            425
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 80,
+          "pixelDigest": "f62d13b20cd9ce45cdb4defce0b6ac252ec752c6f9046a135ec98d044205867e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "left forearm raises from chest; right closed empty fist near waist",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 57119,
+          "alpha16Bounds": [
+            70,
+            555,
+            262,
+            426
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 128,
+          "pixelDigest": "643090c2484e52b242a3e9fb37d974c7b46c9e0a9393353bb872be3a4553d0d7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "full guard left forearm vertical beside cheek; right forearm across sternum",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 56035,
+          "alpha16Bounds": [
+            449,
+            555,
+            265,
+            426
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 102,
+          "pixelDigest": "427b9013e147b6f1468acfb162f0da74d635798aa5af0f5478348951189a9f94",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "absorb guard with knees flexed and shoulders braced",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 54742,
+          "alpha16Bounds": [
+            832,
+            582,
+            277,
+            398
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 98,
+          "pixelDigest": "9b62ae146c4100460b67b7def1ea0ee364241156269a99f3577f00375e1d703d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "settled full guard held, both fists visible",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 55716,
+          "alpha16Bounds": [
+            1217,
+            555,
+            265,
+            426
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 108,
+          "pixelDigest": "4fe507e48bdb6b767e697ce0bd77b9a859464b31c0f5f94499d0050abe29a1a7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "tracker-repair-guard-hand",
+          "rect": [
+            43,
+            47,
+            273,
+            430
+          ],
+          "pivot": [
+            136,
+            426
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "tracker-repair-guard-hand",
+          "rect": [
+            433,
+            47,
+            270,
+            430
+          ],
+          "pivot": [
+            134.5,
+            426
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "tracker-repair-guard-hand",
+          "rect": [
+            814,
+            79,
+            279,
+            397
+          ],
+          "pivot": [
+            139,
+            393
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 3,
+          "pageId": "tracker-repair-guard-hand",
+          "rect": [
+            1203,
+            47,
+            267,
+            431
+          ],
+          "pivot": [
+            133,
+            427
+          ],
+          "durationTicks": 6,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "tracker-repair-guard-hand",
+          "rect": [
+            67,
+            552,
+            268,
+            432
+          ],
+          "pivot": [
+            133.5,
+            428
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "tracker-repair-guard-hand",
+          "rect": [
+            446,
+            552,
+            271,
+            432
+          ],
+          "pivot": [
+            135,
+            428
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "tracker-repair-guard-hand",
+          "rect": [
+            829,
+            579,
+            283,
+            404
+          ],
+          "pivot": [
+            141,
+            400
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 3,
+          "pageId": "tracker-repair-guard-hand",
+          "rect": [
+            1214,
+            552,
+            271,
+            432
+          ],
+          "pivot": [
+            135,
+            428
+          ],
+          "durationTicks": 6,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                43,
+                47,
+                273,
+                430
+              ],
+              "pivot": [
+                136,
+                426
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                433,
+                47,
+                270,
+                430
+              ],
+              "pivot": [
+                134.5,
+                426
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                814,
+                79,
+                279,
+                397
+              ],
+              "pivot": [
+                139,
+                393
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                1203,
+                47,
+                267,
+                431
+              ],
+              "pivot": [
+                133,
+                427
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                67,
+                552,
+                268,
+                432
+              ],
+              "pivot": [
+                133.5,
+                428
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                446,
+                552,
+                271,
+                432
+              ],
+              "pivot": [
+                135,
+                428
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                829,
+                579,
+                283,
+                404
+              ],
+              "pivot": [
+                141,
+                400
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                1214,
+                552,
+                271,
+                432
+              ],
+              "pivot": [
+                135,
+                428
+              ],
+              "durationTicks": 6
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "high-guard",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:18.650Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-walk-backward-contact",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+      "originId": "exec-30145240-a584-4859-9d1f-cb46b42e9ae4.png",
+      "sha256": "4f720315955814926d4e20d758ed9f6f3740e8f249556545cc9d73ad6cc99602",
+      "bytes": 2079285,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predators (2010) variant; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Distinct alternating contacts and passing poses; manual pelvis projection pivots."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1194111,
+        "fringePixels": 20984
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51461,
+          "alpha16Bounds": [
+            74,
+            66,
+            282,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 64,
+          "pixelDigest": "527c381bb4d51b670d795d985491fc2fd088932905c3add67c1e1ab65e6a00ed",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46912,
+          "alpha16Bounds": [
+            458,
+            67,
+            258,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 128,
+          "pixelDigest": "1c9418f7dc806e4dd82dee3d582cfff24b2c81b2afad9d88b828c1dd82baa807",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48010,
+          "alpha16Bounds": [
+            832,
+            67,
+            261,
+            401
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 44,
+          "pixelDigest": "91dec4fe18b63a197fdc93f596816d0a6ffee292c3ef44a6755c3a7df1130365",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43904,
+          "alpha16Bounds": [
+            1227,
+            68,
+            251,
+            398
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 120,
+          "pixelDigest": "96a562d6bc2f29b9049b09dbf4dcf9c46c5fe2aabf3ccb1ee90483c86e72a31c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49848,
+          "alpha16Bounds": [
+            54,
+            557,
+            273,
+            398
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 84,
+          "pixelDigest": "2f7ec43266e005aff8f5218021baabf73a87fdd093f6cc2af3d98e6ab262f546",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46671,
+          "alpha16Bounds": [
+            440,
+            558,
+            260,
+            397
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 108,
+          "pixelDigest": "f266479853ba4528197d93e6eb66fa62cd90a9df7d49ea7973fd0aca12af65ec",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47989,
+          "alpha16Bounds": [
+            814,
+            557,
+            263,
+            395
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 39,
+          "pixelDigest": "95fb90a7a24211f0217f3652829eb9553baad9116df7a0bb4fbb875c95477e03",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43958,
+          "alpha16Bounds": [
+            1206,
+            558,
+            252,
+            396
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 27,
+          "pixelDigest": "2edcd5f72ee9573fca2118c6ef2c3004f0288f28033013628f5e834e6485b2c6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            71,
+            63,
+            288,
+            405
+          ],
+          "pivot": [
+            129,
+            401
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            455,
+            64,
+            264,
+            405
+          ],
+          "pivot": [
+            127,
+            401
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            829,
+            64,
+            267,
+            407
+          ],
+          "pivot": [
+            134,
+            403
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            1224,
+            65,
+            257,
+            404
+          ],
+          "pivot": [
+            132,
+            400
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            51,
+            554,
+            279,
+            404
+          ],
+          "pivot": [
+            149,
+            400
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            437,
+            555,
+            266,
+            403
+          ],
+          "pivot": [
+            150,
+            399
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            811,
+            554,
+            269,
+            401
+          ],
+          "pivot": [
+            154,
+            397
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            1203,
+            555,
+            258,
+            402
+          ],
+          "pivot": [
+            132,
+            398
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "walk-backward",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                71,
+                63,
+                288,
+                405
+              ],
+              "pivot": [
+                129,
+                401
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                455,
+                64,
+                264,
+                405
+              ],
+              "pivot": [
+                127,
+                401
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                829,
+                64,
+                267,
+                407
+              ],
+              "pivot": [
+                134,
+                403
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                1224,
+                65,
+                257,
+                404
+              ],
+              "pivot": [
+                132,
+                400
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk-backward",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                51,
+                554,
+                279,
+                404
+              ],
+              "pivot": [
+                149,
+                400
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                437,
+                555,
+                266,
+                403
+              ],
+              "pivot": [
+                150,
+                399
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                811,
+                554,
+                269,
+                401
+              ],
+              "pivot": [
+                154,
+                397
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                1203,
+                555,
+                258,
+                402
+              ],
+              "pivot": [
+                132,
+                398
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "walk-backward",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:18.650Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-walk-forward-alternation",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-repair-walk-forward-alternation-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-repair-walk-forward-alternation-v34.png",
+      "originId": "exec-433c69c9-dbc2-4b58-a0a5-dbbc28b23c0f.png",
+      "sha256": "be4da949924899abc7b27d6c47ae42708706bfeeedd06ab5e114aa4cf64ff527",
+      "bytes": 2088816,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Repair still repeats the same near-forward contact in columns1/3 and same support/passing legs2/4 both facings. Larger knee lift does not constitute alternating walk. No forward walk accepted."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1158669,
+        "fringePixels": 19054
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 53663,
+          "alpha16Bounds": [
+            81,
+            43,
+            288,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 303,
+          "pixelDigest": "8dc133f12c2d90cb69cf664c35b1cfa03193fb26fc291f159ecd4114ee18e04a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49408,
+          "alpha16Bounds": [
+            469,
+            41,
+            219,
+            439
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 282,
+          "pixelDigest": "ffd364829117c44fdf29a9f58b84ae3ed3411541af2420dee13621ee2c478542",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51422,
+          "alpha16Bounds": [
+            815,
+            41,
+            290,
+            439
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 273,
+          "pixelDigest": "d21b04b9fa41388b05d5ea356f1496c8723da12631cf4c888e2bf7d78ccfbe30",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49317,
+          "alpha16Bounds": [
+            1204,
+            41,
+            222,
+            439
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 274,
+          "pixelDigest": "063e564875e549acd5b617b589e1dc676d73ab1bf888d15b6c0b1e874dbd9d2d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 54415,
+          "alpha16Bounds": [
+            50,
+            543,
+            289,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 295,
+          "pixelDigest": "5cf63e351a7cc5093e9db9d7256ac50a7ac24e90ba3a14da840b5159e9acdcf0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51227,
+          "alpha16Bounds": [
+            475,
+            543,
+            227,
+            445
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 315,
+          "pixelDigest": "ce7081b8dadf269efd02351ab505feecbe02189a0e06e3b0d4650673f8737ee6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53790,
+          "alpha16Bounds": [
+            791,
+            542,
+            302,
+            441
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 292,
+          "pixelDigest": "59bdacaf399ecb050de194aa04834ee7d65dea2f81e06209170e2bdc65738411",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50953,
+          "alpha16Bounds": [
+            1216,
+            542,
+            227,
+            445
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 265,
+          "pixelDigest": "50156e2a0a365e273e9f14665f046f84575f83a21daa9f158c965dc97224d3a1",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "tracker-repair-walk-forward-alternation",
+          "rect": [
+            78,
+            40,
+            294,
+            442
+          ],
+          "pivot": [
+            142.5,
+            438
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "tracker-repair-walk-forward-alternation",
+          "rect": [
+            466,
+            38,
+            225,
+            445
+          ],
+          "pivot": [
+            96.5,
+            441
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "tracker-repair-walk-forward-alternation",
+          "rect": [
+            812,
+            38,
+            296,
+            445
+          ],
+          "pivot": [
+            144.5,
+            441
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "tracker-repair-walk-forward-alternation",
+          "rect": [
+            1201,
+            38,
+            228,
+            445
+          ],
+          "pivot": [
+            85.5,
+            441
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "tracker-repair-walk-forward-alternation",
+          "rect": [
+            47,
+            540,
+            295,
+            442
+          ],
+          "pivot": [
+            152,
+            438
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "tracker-repair-walk-forward-alternation",
+          "rect": [
+            472,
+            540,
+            233,
+            451
+          ],
+          "pivot": [
+            127,
+            447
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "tracker-repair-walk-forward-alternation",
+          "rect": [
+            788,
+            539,
+            308,
+            447
+          ],
+          "pivot": [
+            154.5,
+            443
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "tracker-repair-walk-forward-alternation",
+          "rect": [
+            1213,
+            539,
+            233,
+            451
+          ],
+          "pivot": [
+            130.5,
+            447
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "repair-medium-hand",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-repair-medium-hand-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-repair-medium-hand-v34.png",
+      "originId": "exec-45a4eab0-9b60-4f03-b036-d4d5301f84fb.png",
+      "sha256": "50a74ce2b614e0d7e4b02e9dd1602261c7341c6787329da7ae3730a9557cdefe",
+      "bytes": 2140114,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Repair restores two extended blades and complete right fist in LEFT startup. Candidate BOTH facings columns1,2,4 only for startup/contact/neutral recovery. Column3 still hides right hand, excluded. No interpolated replacement drawing."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1174295,
+        "fringePixels": 19818
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right elbow draws back at waist",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50809,
+          "alpha16Bounds": [
+            54,
+            59,
+            262,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 126,
+          "pixelDigest": "54c9fdaa8a06b0374e0759f363369ad55b943ee7afb1824aa9ed9a38d5b43aac",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right forearm extends horizontally to opponent at chest height",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49978,
+          "alpha16Bounds": [
+            398,
+            81,
+            370,
+            371
+          ],
+          "gridBorderPixels": 43,
+          "residualMagentaPixels": 90,
+          "pixelDigest": "47441b24f2c1f5823f95e316863ae137645e3718d476d80a6c86f794d3df5cfc",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right forearm retracts to ribs",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51047,
+          "alpha16Bounds": [
+            768,
+            58,
+            349,
+            402
+          ],
+          "gridBorderPixels": 43,
+          "residualMagentaPixels": 147,
+          "pixelDigest": "76d78fc2fae7fc639c8139fb2f8dad0fa996a371525e55b637e444f06c736118",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46977,
+          "alpha16Bounds": [
+            1227,
+            58,
+            224,
+            401
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 94,
+          "pixelDigest": "6a401b176cd34711aaf2be8bd8b2d300b4a85c63a8622eb256bb64aabf997b71",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right elbow draws back at waist",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49787,
+          "alpha16Bounds": [
+            59,
+            561,
+            325,
+            393
+          ],
+          "gridBorderPixels": 20,
+          "residualMagentaPixels": 195,
+          "pixelDigest": "68145c017b62df6dd90ea8df815fae60c7edbed0fa7e2d1a1c7c4ba63f3937c1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right forearm extends horizontally to opponent at chest height",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51913,
+          "alpha16Bounds": [
+            384,
+            570,
+            382,
+            382
+          ],
+          "gridBorderPixels": 20,
+          "residualMagentaPixels": 68,
+          "pixelDigest": "5b8911f8c3fb6e17c83b200fd1bc4514eb1bad8fdf187330998c4b2c7be1f3e6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right forearm retracts to ribs",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50456,
+          "alpha16Bounds": [
+            842,
+            558,
+            273,
+            400
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 91,
+          "pixelDigest": "d30730cf5397f61334c178fb84e288227fdec9a5c801503fc11a71f2cc37d36f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47602,
+          "alpha16Bounds": [
+            1234,
+            560,
+            226,
+            398
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "3faf22b923ec46383f7ceff7c8371b9b539e78f9a7ab92e48b251409f014cbc8",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 0,
+          "pageId": "tracker-repair-medium-hand",
+          "rect": [
+            56,
+            558,
+            260,
+            399
+          ],
+          "pivot": [
+            132.5,
+            395
+          ],
+          "durationTicks": 10,
+          "phase": "right elbow draws back at waist",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 1,
+          "pageId": "tracker-repair-medium-hand",
+          "rect": [
+            318,
+            567,
+            451,
+            388
+          ],
+          "pivot": [
+            293.5,
+            384
+          ],
+          "durationTicks": 10,
+          "phase": "right forearm extends horizontally to opponent at chest height",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 2,
+          "pageId": "tracker-repair-medium-hand",
+          "rect": [
+            839,
+            555,
+            279,
+            406
+          ],
+          "pivot": [
+            140,
+            402
+          ],
+          "durationTicks": 10,
+          "phase": "right forearm retracts to ribs",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 3,
+          "pageId": "tracker-repair-medium-hand",
+          "rect": [
+            1231,
+            557,
+            232,
+            404
+          ],
+          "pivot": [
+            118.5,
+            400
+          ],
+          "durationTicks": 10,
+          "phase": "neutral stance",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "repair-medium-spacing",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/tracker/tracker-repair-medium-spacing-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-repair-medium-spacing-v34.png",
+      "originId": "exec-7978afbd-5603-409d-b186-7dcdee480738.png",
+      "sha256": "f920e649b41bbd4468842012edcbeedb880504aef65822d38e1f43a25a528410",
+      "bytes": 1765606,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predators (2010) variant; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "OpenAI spacing correction gives separable bounds. Only columns 1,2,4 accepted; column3 has obscured hand. Armor detail is softer than idle. Recovery is one held neutral drawing."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1338724,
+        "fringePixels": 14520
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right elbow draws back at waist",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 29241,
+          "alpha16Bounds": [
+            89,
+            118,
+            199,
+            301
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 123,
+          "pixelDigest": "ef12817c7ac4fe31441b55fdfe2300e43cca88315f8c6becf28e818a90103626",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right forearm extends horizontally to opponent at chest height",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 29448,
+          "alpha16Bounds": [
+            441,
+            132,
+            327,
+            283
+          ],
+          "gridBorderPixels": 7,
+          "residualMagentaPixels": 89,
+          "pixelDigest": "343489269adb754e7695d74a406b315e55ab5212ba698de9efec0fbf64033c78",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right forearm retracts to ribs",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 28414,
+          "alpha16Bounds": [
+            768,
+            118,
+            283,
+            303
+          ],
+          "gridBorderPixels": 6,
+          "residualMagentaPixels": 77,
+          "pixelDigest": "e7f1bfd820e7775cdf55440256d2166711cc14a21a42cc6998ac27899f770011",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 27443,
+          "alpha16Bounds": [
+            1246,
+            118,
+            175,
+            303
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 61,
+          "pixelDigest": "9781d39eafb6eb0cfefa8aabeb093ecda048e36f4326d00782c610cee8085df9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right elbow draws back at waist",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 29572,
+          "alpha16Bounds": [
+            94,
+            596,
+            290,
+            302
+          ],
+          "gridBorderPixels": 5,
+          "residualMagentaPixels": 172,
+          "pixelDigest": "5b45f603fe865d141d4ee7f16d558b34022de01d9878f4f5eac916ca37f6d2f9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right forearm extends horizontally to opponent at chest height",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 30621,
+          "alpha16Bounds": [
+            384,
+            604,
+            333,
+            293
+          ],
+          "gridBorderPixels": 6,
+          "residualMagentaPixels": 59,
+          "pixelDigest": "27af7d469a23734922b2f1fc301dafe239980275b7fe08527178ebf5ae41e23b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right forearm retracts to ribs",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 29958,
+          "alpha16Bounds": [
+            862,
+            595,
+            215,
+            304
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 77,
+          "pixelDigest": "71bfefbe507107a4e38dea0f6c7f848b6499539f4917ac017a86b57f9ac4b231",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 29443,
+          "alpha16Bounds": [
+            1247,
+            593,
+            185,
+            309
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 114,
+          "pixelDigest": "91d2c728913d3a7f2eda55f4433ea4daec3cceadbe500cc1ea0e14ce4fdf8dbb",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "tracker-repair-medium-spacing",
+          "rect": [
+            86,
+            115,
+            205,
+            307
+          ],
+          "pivot": [
+            97,
+            303
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "tracker-repair-medium-spacing",
+          "rect": [
+            438,
+            129,
+            342,
+            289
+          ],
+          "pivot": [
+            121.5,
+            285
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "tracker-repair-medium-spacing",
+          "rect": [
+            1243,
+            115,
+            181,
+            309
+          ],
+          "pivot": [
+            89.5,
+            305
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "tracker-repair-medium-spacing",
+          "rect": [
+            91,
+            593,
+            202,
+            308
+          ],
+          "pivot": [
+            101,
+            304
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "tracker-repair-medium-spacing",
+          "rect": [
+            376,
+            601,
+            344,
+            299
+          ],
+          "pivot": [
+            223.5,
+            295
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "tracker-repair-medium-spacing",
+          "rect": [
+            1244,
+            590,
+            191,
+            315
+          ],
+          "pivot": [
+            99.5,
+            311
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                86,
+                115,
+                205,
+                307
+              ],
+              "pivot": [
+                97,
+                303
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                438,
+                129,
+                342,
+                289
+              ],
+              "pivot": [
+                121.5,
+                285
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                1243,
+                115,
+                181,
+                309
+              ],
+              "pivot": [
+                89.5,
+                305
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                91,
+                593,
+                202,
+                308
+              ],
+              "pivot": [
+                101,
+                304
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                376,
+                601,
+                344,
+                299
+              ],
+              "pivot": [
+                223.5,
+                295
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                1244,
+                590,
+                191,
+                315
+              ],
+              "pivot": [
+                99.5,
+                311
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.medium.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:18.650Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    }
+  ],
+  "acceptedDefinitionPath": "art-source/v34/pit/tracker/tracker-runtime-atlas-v34.json",
+  "nativeContrastReview": {
+    "captures": 116,
+    "bodyPixels": "real game scale, no Canvas scaling",
+    "backgrounds": [
+      "#f4f4ed",
+      "#0b1110"
+    ],
+    "errors": 0,
+    "failedRequests": 0,
+    "borderPixels": 0,
+    "maxResidualMagentaPixels": 23,
+    "keyComparison": [
+      {
+        "pageId": "tracker-idle",
+        "removedPixels": 2533,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "tracker-repair-walk-backward-contact",
+        "removedPixels": 2144,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "tracker-crouch",
+        "removedPixels": 2369,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "tracker-repair-guard-hand",
+        "removedPixels": 1854,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "tracker-hurt",
+        "removedPixels": 2284,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "tracker-light",
+        "removedPixels": 2147,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "tracker-repair-medium-spacing",
+        "removedPixels": 1627,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "tracker-heavy",
+        "removedPixels": 2036,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      }
+    ],
+    "method": "Real loadPitSpriteSheetAnimations and drawPitSpriteSheetAnimation in Chrome"
+  },
+  "variantId": "predators-2010-v5-presentation",
+  "runtimeAvailability": {
+    "modes": [
+      "cpu",
+      "local",
+      "training"
+    ],
+    "progressionModes": [],
+    "replay": "replay and JSON export verified in real PitCanvas",
+    "statisticsPersistence": false
+  },
+  "nativeInterfaceReview": {
+    "keyboardChecks": 14,
+    "facings": [
+      "right",
+      "left"
+    ],
+    "missingPageFallback": "static-bitmap",
+    "errors": 0
+  }
+}

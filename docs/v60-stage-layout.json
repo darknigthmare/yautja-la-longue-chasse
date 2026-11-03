@@ -1,0 +1,1432 @@
+{
+  "schemaVersion": 1,
+  "reference": {
+    "canvas": [
+      960,
+      540
+    ],
+    "ground": 430,
+    "p0Parallax": 0.05,
+    "notes": "Placements measured from native P0 architecture; world anchors use the identical P0 depth transform. Whole native-cell height, not tight alpha-bound height."
+  },
+  "stages": {
+    "arena-162-ahab-engineer": {
+      "supportNotes": "Plant rooted on the left raised ledge; abandoned instrument on the right front ledge; anonymous ribbed vent inset in right architecture. No Engineer or unverified alien fauna introduced.",
+      "events": {
+        "life-01": {
+          "name": "Végétation minérale originale — vent",
+          "placement": {
+            "x": 220,
+            "bottom": 354,
+            "height": 80,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Instrument d’expédition abandonné — sangle et poussière",
+          "placement": {
+            "x": 725,
+            "bottom": 390,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Évent architectural anonyme — ouverture et poussière",
+          "placement": {
+            "x": 851,
+            "bottom": 300,
+            "height": 120,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-163-neonopolis-lab": {
+      "supportNotes": "Technician stands inside upper left observation window, arm pedestal on the lower central bay floor, gauge on the right wall. All follow P0 architecture.",
+      "events": {
+        "life-01": {
+          "name": "Technicien anonyme derrière la vitre",
+          "placement": {
+            "x": 155,
+            "bottom": 119,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Bras de maintenance sur socle vide",
+          "placement": {
+            "x": 500,
+            "bottom": 389,
+            "height": 138,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Manomètre et voyant de maintenance",
+          "placement": {
+            "x": 839,
+            "bottom": 95,
+            "height": 75,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-170-gotham-bloodties": {
+      "supportNotes": "Police pair on left dock, fixed crane rail under warehouse overhead beam, anonymous crouched watcher on right raised balcony. Named father/son and superheroes deliberately absent.",
+      "events": {
+        "life-01": {
+          "name": "Patrouille anonyme sur le quai",
+          "placement": {
+            "x": 186,
+            "bottom": 397,
+            "height": 66,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Grue portuaire — déplacement du palan",
+          "placement": {
+            "x": 480,
+            "bottom": 116,
+            "height": 210,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              256,
+              160
+            ],
+            [
+              256,
+              160
+            ],
+            [
+              256,
+              160
+            ],
+            [
+              256,
+              160
+            ],
+            [
+              256,
+              160
+            ],
+            [
+              256,
+              160
+            ]
+          ]
+        },
+        "life-03": {
+          "name": "Guetteur Yautja anonyme de fond",
+          "placement": {
+            "x": 745,
+            "bottom": 291,
+            "height": 52,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-179-last-hunt-preserve": {
+      "supportNotes": "Captive at left corridor exit; anonymous watcher on upper right balcony; original warning panel bolted to right enclosure wall.",
+      "events": {
+        "life-01": {
+          "name": "Captif humain anonyme — hésitation et veille",
+          "placement": {
+            "x": 161,
+            "bottom": 357,
+            "height": 76,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Guetteur anonyme de la réserve",
+          "placement": {
+            "x": 808,
+            "bottom": 112,
+            "height": 70,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Balise d’enceinte originale — volets et voyants",
+          "placement": {
+            "x": 688,
+            "bottom": 269,
+            "height": 50,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-183-homeworld-wilds": {
+      "supportNotes": "Original small fauna stands on right distant rocky shelf; anonymous watcher stands on upper right arch; rooted fern on front left earth shelf. Original project fauna, not an asserted canon species.",
+      "events": {
+        "life-01": {
+          "name": "Faune originale de lisière — recherche et alerte",
+          "placement": {
+            "x": 688,
+            "bottom": 243,
+            "height": 72,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Éclaireur anonyme sur la corniche",
+          "placement": {
+            "x": 826,
+            "bottom": 153,
+            "height": 85,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Fougère du projet — vent et spores",
+          "placement": {
+            "x": 135,
+            "bottom": 427,
+            "height": 80,
+            "parallax": 0.3,
+            "renderPass": "P1",
+            "anchor": "ground"
+          }
+        }
+      }
+    },
+    "arena-186-snow-hunt": {
+      "supportNotes": "Small project fauna on left upper shelf, ice fumarole on central shelf, anonymous lookout on right middle shelf. Each anchor follows its P0 rock face.",
+      "events": {
+        "life-01": {
+          "name": "Petite faune polaire originale — flair et alerte",
+          "placement": {
+            "x": 210,
+            "bottom": 146,
+            "height": 75,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Évent glaciaire — bouffées de vapeur",
+          "placement": {
+            "x": 478,
+            "bottom": 300,
+            "height": 110,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Guetteur anonyme accroupi sur la glace",
+          "placement": {
+            "x": 808,
+            "bottom": 197,
+            "height": 70,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        }
+      },
+      "reviewInvalidation": "Root found a detached top branch fragment in right-corner capture; remove the unsuitable P5 branch module, then qualify and review the replacement composition."
+    },
+    "arena-180-sandpiper": {
+      "supportNotes": "Navigation console against lower middle wall, anonymous crew member on upper left walkway, autonomous maintenance hatch against lower left bulkhead. No identification as Theta.",
+      "events": {
+        "life-01": {
+          "name": "Console de navigation — contrôle du trajet",
+          "placement": {
+            "x": 575,
+            "bottom": 280,
+            "height": 80,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Membre d’équipage anonyme — écoute et observation",
+          "placement": {
+            "x": 197,
+            "bottom": 184,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Trappe de maintenance — ouverture et fermeture",
+          "placement": {
+            "x": 165,
+            "bottom": 350,
+            "height": 210,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-164-alpha-revolt": {
+      "supportNotes": "Winch on the right mid-distance quarry ledge; loose chain fixed by its upper plate to left stone doorway; opening relief on right front ledge. All are anonymous original machinery, no invented Amengi body.",
+      "events": {
+        "life-01": {
+          "name": "Treuil de carrière original — remontée du panier",
+          "placement": {
+            "x": 560,
+            "bottom": 352,
+            "height": 75,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Chaîne abandonnée — oscillation au vent",
+          "placement": {
+            "x": 165,
+            "bottom": 160,
+            "height": 110,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              288,
+              135
+            ],
+            [
+              258,
+              135
+            ],
+            [
+              230,
+              135
+            ],
+            [
+              288,
+              116
+            ],
+            [
+              258,
+              116
+            ],
+            [
+              230,
+              116
+            ]
+          ]
+        },
+        "life-03": {
+          "name": "Relief mécanique original — volets",
+          "placement": {
+            "x": 778,
+            "bottom": 321,
+            "height": 84,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-165-kenner-throne": {
+      "supportNotes": "Both anonymous adult attendants stand on the elevated lateral gallery flanking the central throne; banner top rail hangs from the left inset beam. Native wider P0 uses cover scale0.686 and horizontal offset about-200.",
+      "events": {
+        "life-01": {
+          "name": "Garde anonyme — observation et salut",
+          "placement": {
+            "x": 260,
+            "bottom": 265,
+            "height": 115,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Porteur anonyme — contrôle du reliquaire",
+          "placement": {
+            "x": 710,
+            "bottom": 265,
+            "height": 105,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "edgeHaloReview": {
+            "maxAlpha": 13,
+            "silhouetteAlpha32Reviewed": true,
+            "notes": "Integration measured two cells with only15/34edgepixels alpha>2; maxima8and13. Native sheet inspected; producer confirms zero border pixels atalpha32/128/240. Complete silhouette, no pixel modification."
+          }
+        },
+        "life-03": {
+          "name": "Bannière rituelle originale — mouvement du tissu",
+          "placement": {
+            "x": 170,
+            "bottom": 75,
+            "height": 150,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              280,
+              25
+            ],
+            [
+              272,
+              25
+            ],
+            [
+              256,
+              25
+            ],
+            [
+              276,
+              20
+            ],
+            [
+              270,
+              24
+            ],
+            [
+              255,
+              24
+            ]
+          ],
+          "edgeHaloReview": {
+            "maxAlpha": 7,
+            "silhouetteAlpha32Reviewed": true,
+            "notes": "Five cells have at most30edgepixels alpha>2, maximum7. Native banner/rail inspected; producer confirms zero edge pixels atalpha32/128/240. Source alpha bounds remain measured >2."
+          }
+        }
+      }
+    },
+    "arena-171-meta-lab": {
+      "supportNotes": "Carousel inside upper observation room, maintenance arms fixed to central recessed test-bay pedestal, anonymous transmission fixed to right laboratory wall. No superhero identity claimed.",
+      "events": {
+        "life-01": {
+          "name": "Carrousel d’échantillons — inspection robotisée",
+          "placement": {
+            "x": 165,
+            "bottom": 117,
+            "height": 85,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Pinces de maintenance sur emplacement vide",
+          "placement": {
+            "x": 478,
+            "bottom": 416,
+            "height": 170,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Transmission de personnel anonyme",
+          "placement": {
+            "x": 850,
+            "bottom": 225,
+            "height": 95,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-172-phg-north": {
+      "supportNotes": "Adults before the open left gate on the independent snow floor, banner attached to the native right-hand pole by the top wooden bar, crow suspended in distant sky with body pivot. No asserted official map.",
+      "events": {
+        "life-01": {
+          "name": "Adultes anonymes surveillant le fjord",
+          "placement": {
+            "x": 195,
+            "bottom": 430,
+            "height": 88,
+            "parallax": 0.3,
+            "renderPass": "P2",
+            "anchor": "ground"
+          }
+        },
+        "life-02": {
+          "name": "Bannière de laine — rafales",
+          "placement": {
+            "x": 905,
+            "bottom": 135,
+            "height": 118,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              268,
+              127
+            ],
+            [
+              260,
+              127
+            ],
+            [
+              233,
+              127
+            ],
+            [
+              268,
+              103
+            ],
+            [
+              260,
+              103
+            ],
+            [
+              245,
+              103
+            ]
+          ]
+        },
+        "life-03": {
+          "name": "Corbeau lointain — battements d’ailes",
+          "placement": {
+            "x": 435,
+            "bottom": 170,
+            "height": 70,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              266,
+              353
+            ],
+            [
+              271,
+              348
+            ],
+            [
+              276,
+              343
+            ],
+            [
+              265,
+              266
+            ],
+            [
+              270,
+              265
+            ],
+            [
+              265,
+              336
+            ]
+          ]
+        }
+      }
+    },
+    "arena-181-avp2": {
+      "supportNotes": "Guard on upper right observation walkway; anonymous xenomorph vent fixed below left observation glass; broken terminal on rear floor near central utility column. Environment adaptation from guide references, no named marine identity.",
+      "events": {
+        "life-01": {
+          "name": "Garde colonial anonyme — surveillance et radio",
+          "placement": {
+            "x": 738,
+            "bottom": 192,
+            "height": 90,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "edgeHaloReview": {
+            "maxAlpha": 4,
+            "silhouetteAlpha32Reviewed": true,
+            "notes": "Four cells have10–29borderpixels alpha>2, all maximum4/255. Root visually inspected intact silhouette and validated local weak halo exception. Bounds remain alpha>2 and native pixels unchanged."
+          }
+        },
+        "life-02": {
+          "name": "Xénomorphe anonyme dans un conduit secondaire",
+          "placement": {
+            "x": 312,
+            "bottom": 240,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Terminal hors service — câble desserré",
+          "placement": {
+            "x": 665,
+            "bottom": 428,
+            "height": 105,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-182-bullet-hangar": {
+      "supportNotes": "Airborne small craft in open upper center sky, anonymous mechanic on left balcony, guidance lights on right landing platform surface. Aircraft native custom cell rectangles and central body pivots retained.",
+      "events": {
+        "life-01": {
+          "name": "Appareil distant — ajustements d’assiette",
+          "placement": {
+            "x": 644,
+            "bottom": 106,
+            "height": 170,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Mécanicien anonyme — inspection d’une pièce",
+          "placement": {
+            "x": 205,
+            "bottom": 201,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Balises du hangar — séquence de guidage",
+          "placement": {
+            "x": 790,
+            "bottom": 392,
+            "height": 145,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-184-warp-threshold": {
+      "supportNotes": "Anonymous archivist left of rear portal stair, anonymous barrier keeper on right rear platform, energy disc centered within the circular rear opening. Portal is original Warp project fiction, no new franchise power asserted.",
+      "events": {
+        "life-01": {
+          "name": "Archiviste anonyme — examen d’un objet",
+          "placement": {
+            "x": 235,
+            "bottom": 314,
+            "height": 110,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Gardien anonyme — contrôle de la barrière",
+          "placement": {
+            "x": 740,
+            "bottom": 314,
+            "height": 110,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Seuil Warp original — fluctuations",
+          "placement": {
+            "x": 496,
+            "bottom": 157,
+            "height": 270,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              275,
+              260
+            ],
+            [
+              255,
+              260
+            ],
+            [
+              235,
+              260
+            ],
+            [
+              277,
+              243
+            ],
+            [
+              255,
+              243
+            ],
+            [
+              234,
+              243
+            ]
+          ]
+        }
+      }
+    },
+    "arena-185-training": {
+      "supportNotes": "Anonymous instructor and mechanical dummy on separate lower rear training stations, anonymous judge on upper gallery. No adult is asserted to be a named roster fighter.",
+      "events": {
+        "life-01": {
+          "name": "Instructeur anonyme — démonstration de posture",
+          "placement": {
+            "x": 264,
+            "bottom": 351,
+            "height": 104,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Mannequin mécanique — retour sur ressort",
+          "placement": {
+            "x": 700,
+            "bottom": 351,
+            "height": 98,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Arbitre anonyme sur galerie — salut et observation",
+          "placement": {
+            "x": 474,
+            "bottom": 160,
+            "height": 95,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-166-forge-cyborg": {
+      "supportNotes": "Anonymous precision machine mounted on left workbench, worker on rear floor, pressure assembly on right maintenance table. No Cyborg character duplicated in background.",
+      "events": {
+        "life-01": {
+          "name": "Machine de forge originale — contrôle d’une pièce",
+          "placement": {
+            "x": 343,
+            "bottom": 272,
+            "height": 95,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Technicien Yautja anonyme — diagnostic",
+          "placement": {
+            "x": 688,
+            "bottom": 350,
+            "height": 110,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Pompe de maintenance — soupapes et vapeur",
+          "placement": {
+            "x": 870,
+            "bottom": 285,
+            "height": 98,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-167-lava-ridge": {
+      "supportNotes": "Small original reptile on cooled left upper ledge, magma pool on separate right lower rock shelf, original mechanism on front-left cooled shelf. No heat immunity or canonical biome claimed.",
+      "events": {
+        "life-01": {
+          "name": "Petit reptile original sur roche froide — alerte",
+          "placement": {
+            "x": 86,
+            "bottom": 143,
+            "height": 75,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Poche volcanique — bulles de lave",
+          "placement": {
+            "x": 751,
+            "bottom": 394,
+            "height": 95,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Mécanisme de roche — contrepoids",
+          "placement": {
+            "x": 214,
+            "bottom": 416,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-173-phg-japan": {
+      "supportNotes": "Two anonymous guards on the upper left gateway ledge, maple leaves in open air before maples, passive lantern attached by its rope to right gate beam. Percussive gong is intentionally not in ambient runtime.",
+      "events": {
+        "life-01": {
+          "name": "Gardes anonymes sur le chemin de ronde",
+          "placement": {
+            "x": 252,
+            "bottom": 313,
+            "height": 96,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Feuilles d’érable — tourbillon au vent",
+          "placement": {
+            "x": 440,
+            "bottom": 180,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Lanterne passive — vent et ruban",
+          "placement": {
+            "x": 820,
+            "bottom": 137,
+            "height": 130,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              248,
+              11
+            ],
+            [
+              178,
+              10
+            ],
+            [
+              244,
+              15
+            ],
+            [
+              249,
+              4
+            ],
+            [
+              288,
+              4
+            ],
+            [
+              249,
+              4
+            ]
+          ],
+          "edgeHaloReview": {
+            "maxAlpha": 3,
+            "silhouetteAlpha32Reviewed": true,
+            "notes": "All six lantern poses visually inspected. Only four alpha3 edge pixels in cell1; all other borders <=1. No alpha32 silhouette touches border. Native rope, lantern and ribbon intact; bytes unchanged."
+          }
+        }
+      }
+    },
+    "arena-174-phg-sands": {
+      "supportNotes": "Caravan on distant sand visible through central arch, fabric shade suspended under left wooden beams, original passive probe in open sky. No ruler, location or new canon technology asserted. Caravan correction: feet attach to actual playable-floor ground430 behind fighters, not the distant canyon opening. P0 parallax0.05 keeps caravan within the arch while its feet remain on ground430 across camera corners.",
+      "events": {
+        "life-01": {
+          "name": "Caravane anonyme — attente et marche",
+          "placement": {
+            "x": 480,
+            "bottom": 430,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "ground"
+          }
+        },
+        "life-02": {
+          "name": "Toile d’abri — soulèvement par le vent",
+          "placement": {
+            "x": 118,
+            "bottom": 314,
+            "height": 200,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              265,
+              178
+            ],
+            [
+              255,
+              178
+            ],
+            [
+              253,
+              178
+            ],
+            [
+              265,
+              160
+            ],
+            [
+              255,
+              160
+            ],
+            [
+              253,
+              160
+            ]
+          ]
+        },
+        "life-03": {
+          "name": "Sonde d’observation originale — réglage de capteurs",
+          "placement": {
+            "x": 680,
+            "bottom": 220,
+            "height": 70,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-168-hive-front": {
+      "supportNotes": "Drone attaches by upper feet beneath central catwalk. Anonymous single guard works at the right gate; pipe/basin sits on the rear industrial floor. This is not a literal team or a named character.",
+      "events": {
+        "life-01": {
+          "name": "Drone générique — plafond arrière",
+          "placement": {
+            "x": 620,
+            "bottom": 73,
+            "height": 85,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              285,
+              48
+            ],
+            [
+              285,
+              51
+            ],
+            [
+              285,
+              52
+            ],
+            [
+              285,
+              34
+            ],
+            [
+              285,
+              28
+            ],
+            [
+              285,
+              35
+            ]
+          ]
+        },
+        "life-02": {
+          "name": "Garde anonyme — entretien de la grille",
+          "placement": {
+            "x": 835,
+            "bottom": 375,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Conduit résineux — goutte et bassin",
+          "placement": {
+            "x": 450,
+            "bottom": 370,
+            "height": 75,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-169-extinction-front": {
+      "supportNotes": "Transport wheels on left distant bridge; original servicing machine on rear factory floor, beacon on right raised crate/platform. No unverified Hydra identity or RTS projectiles.",
+      "events": {
+        "life-01": {
+          "name": "Transport de maintenance anonyme — roues",
+          "placement": {
+            "x": 205,
+            "bottom": 272,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Machine de service originale — bras mécaniques",
+          "placement": {
+            "x": 568,
+            "bottom": 355,
+            "height": 90,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Balise de front originale — volet diagnostique",
+          "placement": {
+            "x": 750,
+            "bottom": 329,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-175-phg-islands": {
+      "supportNotes": "Wave on shallower water behind rocks; canoe near far water; native combined net and small fire under left shelter, fire legs on stone ledge and net bar below roof crossbeam.",
+      "events": {
+        "life-01": {
+          "name": "Vague du récif — six phases natives",
+          "placement": {
+            "x": 355,
+            "bottom": 235,
+            "height": 190,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Pirogue lointaine — pagaie",
+          "placement": {
+            "x": 700,
+            "bottom": 205,
+            "height": 85,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Filet et brasero — souffle côtier",
+          "placement": {
+            "x": 118,
+            "bottom": 131,
+            "height": 145,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              256,
+              425
+            ],
+            [
+              256,
+              425
+            ],
+            [
+              256,
+              425
+            ],
+            [
+              256,
+              425
+            ],
+            [
+              256,
+              425
+            ],
+            [
+              256,
+              425
+            ]
+          ]
+        }
+      }
+    },
+    "arena-176-phg-pirate": {
+      "supportNotes": "Anonymous sailors crouch on rear deck next to mast. Sail upper yard aligns with P0 horizontal spar. Seabird body has a stable flight anchor despite irregular atlas cells.",
+      "events": {
+        "life-01": {
+          "name": "Marins anonymes — gestes de prudence",
+          "placement": {
+            "x": 244,
+            "bottom": 341,
+            "height": 115,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "life-02": {
+          "name": "Voile usée — vent de mer",
+          "placement": {
+            "x": 341,
+            "bottom": 98,
+            "height": 180,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              256,
+              87
+            ],
+            [
+              256,
+              87
+            ],
+            [
+              256,
+              87
+            ],
+            [
+              256,
+              87
+            ],
+            [
+              256,
+              87
+            ],
+            [
+              256,
+              87
+            ]
+          ]
+        },
+        "life-03": {
+          "name": "Oiseau marin — battement lointain",
+          "placement": {
+            "x": 750,
+            "bottom": 140,
+            "height": 55,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              250,
+              395
+            ],
+            [
+              240,
+              395
+            ],
+            [
+              252,
+              395
+            ],
+            [
+              265,
+              245
+            ],
+            [
+              240,
+              308
+            ],
+            [
+              253,
+              305
+            ]
+          ],
+          "edgeHaloReview": {
+            "maxAlpha": 5,
+            "silhouetteAlpha32Reviewed": true,
+            "notes": "All six native seabird drawings inspected intact. Producer custom rects preserve wide wing in top-right cell. Only alpha3 and alpha5 residual border pixels remain in top-middle and top-right; no alpha32 silhouette at border. No bitmap edited."
+          }
+        }
+      }
+    },
+    "arena-177-phg-amazon": {
+      "supportNotes": "Bird perch joins existing upper-left branch; modern skiff stays on original present-day river exhibition; foliage stems overlap right bank vegetation, never the water.",
+      "events": {
+        "life-01": {
+          "name": "Oiseaux tropicaux — perchoir",
+          "placement": {
+            "x": 155,
+            "bottom": 112,
+            "height": 85,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              245,
+              300
+            ],
+            [
+              245,
+              300
+            ],
+            [
+              245,
+              313
+            ],
+            [
+              245,
+              320
+            ],
+            [
+              245,
+              323
+            ],
+            [
+              245,
+              309
+            ]
+          ]
+        },
+        "life-02": {
+          "name": "Barque contemporaine — pilote anonyme",
+          "placement": {
+            "x": 580,
+            "bottom": 370,
+            "height": 110,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "life-03": {
+          "name": "Feuillage de rive — vent léger",
+          "placement": {
+            "x": 805,
+            "bottom": 339,
+            "height": 95,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              258,
+              459
+            ],
+            [
+              255,
+              453
+            ],
+            [
+              254,
+              475
+            ],
+            [
+              255,
+              454
+            ],
+            [
+              252,
+              443
+            ],
+            [
+              258,
+              454
+            ]
+          ]
+        }
+      }
+    },
+    "arena-178-bloodshed-ring": {
+      "supportNotes": "Announcer desk rests on left upper walkway; anonymous bandaged adult and bench on caged right gallery. Abstract diagnostic display attached to upper pipe-wall, not falsely presented as a triggered betting outage.",
+      "events": {
+        "life-01": {
+          "name": "Annonceur anonyme — mouvement au pupitre",
+          "placement": {
+            "x": 70,
+            "bottom": 170,
+            "height": 105,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              256,
+              480
+            ],
+            [
+              256,
+              480
+            ],
+            [
+              256,
+              480
+            ],
+            [
+              256,
+              480
+            ],
+            [
+              256,
+              480
+            ],
+            [
+              256,
+              480
+            ]
+          ]
+        },
+        "life-02": {
+          "name": "Adulte bandagé anonyme — repos sur banc",
+          "placement": {
+            "x": 800,
+            "bottom": 229,
+            "height": 112,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              256,
+              492
+            ],
+            [
+              256,
+              492
+            ],
+            [
+              256,
+              492
+            ],
+            [
+              256,
+              492
+            ],
+            [
+              256,
+              492
+            ],
+            [
+              256,
+              492
+            ]
+          ]
+        },
+        "life-03": {
+          "name": "Écran abstrait — contrôle lumineux",
+          "placement": {
+            "x": 520,
+            "bottom": 105,
+            "height": 85,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "pivots": [
+            [
+              245,
+              275
+            ],
+            [
+              245,
+              275
+            ],
+            [
+              245,
+              275
+            ],
+            [
+              245,
+              275
+            ],
+            [
+              245,
+              275
+            ],
+            [
+              245,
+              275
+            ]
+          ]
+        }
+      }
+    }
+  }
+}

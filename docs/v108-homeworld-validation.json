@@ -1,0 +1,716 @@
+{
+  "schemaVersion": 1,
+  "release": "V108",
+  "status": "PASS_CIBLE",
+  "scope": "Two explicit initial campaign checkpoints. Cargo A/B, consents, native movement/collision, incompatible rack refusal, atomic write refusal/Retry, carried Continue, conditional source reprise, walked passage and report run through production UI. NPC hand/speech animation remains open.",
+  "production": {
+    "mode": "production",
+    "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+    "buildId": "xymWQOgijMpjLfRYw7ynF",
+    "browserErrors": 0,
+    "checksFailed": 0,
+    "checksPassed": 56,
+    "servedBuilds": [
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "xymWQOgijMpjLfRYw7ynF",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "xymWQOgijMpjLfRYw7ynF",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "xymWQOgijMpjLfRYw7ynF",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "xymWQOgijMpjLfRYw7ynF",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "xymWQOgijMpjLfRYw7ynF",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "xymWQOgijMpjLfRYw7ynF",
+        "foundInHtml": true
+      },
+      {
+        "url": "http://127.0.0.1:3101/",
+        "status": 200,
+        "expectedBuildId": "xymWQOgijMpjLfRYw7ynF",
+        "foundInHtml": true
+      }
+    ]
+  },
+  "invocation": {
+    "command": "node scripts/qa-homeworld-cargo-v108.mjs",
+    "nodeExecutable": "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "nodeVersion": "v22.23.3",
+    "environment": {
+      "YAUTJA_QA_BASE_URL": "http://127.0.0.1:3101",
+      "YAUTJA_QA_BUILD_ID": "xymWQOgijMpjLfRYw7ynF",
+      "YAUTJA_QA_RUNTIME_COMMIT": "24ea9071b673c080325a39a50afeeab6695e4926",
+      "YAUTJA_CARGO_V108_OUTPUT": "/workspace/yautja-la-longue-chasse/outputs/qa-v108-release/homeworld"
+    }
+  },
+  "sourceBefore": [
+    {
+      "file": "app/game/HomeworldCargoV108.tsx",
+      "sha256": "69d34cbda6bd5e01e64c11f0fb72f64a4fee5666132fbd3d62f8233ec9e44a72"
+    },
+    {
+      "file": "app/game/HomeworldCargoWorldV108.tsx",
+      "sha256": "8a587819209d098184473a2b198deb7f52993de45cd680cfac079b38c5a12e2d"
+    },
+    {
+      "file": "app/game/HomeworldCargoV108.module.css",
+      "sha256": "b8379022e2024e3c184206662c22ab55f5e9615c8d09f31634b50583599d6cb1"
+    },
+    {
+      "file": "app/game/systems/homeworldCargoDefinitionV108.ts",
+      "sha256": "ff8b6ef6a2dfd416ed039f16d1601b051f46a508487481e47a46e80e387c3d32"
+    },
+    {
+      "file": "app/game/systems/homeworldCargoArrivalV108.ts",
+      "sha256": "7719dd88541ed4a15d5ea20cbdea909ab0378c69c6321bcf1f463d3a14105ef8"
+    },
+    {
+      "file": "app/game/systems/homeworldCargoLedgerV108.ts",
+      "sha256": "5ace5c6c1e606a74fe9353278e6281179123b9e052ad8b621435a96b83d31451"
+    },
+    {
+      "file": "app/game/systems/homeworldCargoSolidsV108.ts",
+      "sha256": "73b6d14139685afe6f78e17b0827f11a1251350aa10e05c61cbda8fd6fdbb96b"
+    },
+    {
+      "file": "app/game/systems/homeworldCargoV108.ts",
+      "sha256": "1be8191cd2e4760d268acf04086093bcf1357dcded8faa54141e49ea604fa33b"
+    },
+    {
+      "file": "app/game/data/bibleCargoSceneV108.json",
+      "sha256": "d25634089d480d9ce9260c0bca04baea7e8a4109179b9fa5cee08a7a63be87fc"
+    },
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "dbba3e669550830a1e7ddd49fbe5977d17664c2afe379b6d1657ae2d4acac9b5"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "5efa058ed0be8b20263c1ccf85d7862080e9d70aee2cea7786b16109e44837f1"
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "02b3461609c7aafb6bafb50443f9af490fc29fb5819323f404d5efc95eebf772"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "0282072c2ae8390d7648957c78fb91004aae3609b3d0a2914b6b7c82a89ef011"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "57ff5973c582a7a4f57bd5842e897b934bde6955281fa87a78f776edac850024"
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV83.ts",
+      "sha256": "01e59ba6510383d7b04f4954dd9908081d79086c9c6f811cd7f9c18a999f06b8"
+    },
+    {
+      "file": "app/game/systems/homeworldNavigationV77.ts",
+      "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+    },
+    {
+      "file": "app/game/HomeworldModularHunter.tsx",
+      "sha256": "acb0b274b9b388fa53a6176baf80ed7d992d5af1af1d710646a1611b6b632577"
+    },
+    {
+      "file": "tests/helpers/cargo-v108-route.mjs",
+      "sha256": "6e696f607f0c14410c4e3c0672f28617c3cb5673eb3aa7af58ed74c5e819bde1"
+    },
+    {
+      "file": "scripts/qa-homeworld-cargo-v108.mjs",
+      "sha256": "9cd633dfa3291da0ae6cb418ef6ad724c954fa3b43b13d1710d71197879321e4"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "e0f251e07fb4083dba3bcc6e168c6e7458fa81ce183990e3a43853f206c0807a"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+      "sha256": "af57e5c656a0df4297c6a73f5f460ecf9ea43068b952b7042221b80dfbb3fa3a"
+    },
+    {
+      "file": "public/game/sprites/v62/heads/classic-head.png",
+      "sha256": "10c91cfc7807fec0a5c50e612eb3e394e182d432515cb0195bf8c4e7fac4f9bd"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+      "sha256": "a7e6741ff184bde8af00b25867c675b1c10835935004f32308dc049c5f50297e"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+      "sha256": "0d34e7d21f68366fbc0159395e66798452cea56a731b591b62c4f001a79af681"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+      "sha256": "a6c83af29fdb0a346b49f5827088afa17708b434d011b8e3029588d5b400c8d7"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+      "sha256": "ebdb67e2130b46c3892552d3b77103c2e9c387cbf6616313b1e10c70fbc148de"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+      "sha256": "fda2af229ced15fe2dd1e00392c0c8a04d149e81ac6a80132e72b8873afb0c46"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+      "sha256": "a530fcb2b93dadd0753e7a2ce325cd2d77aca2a3f997e9786d65b501671411ac"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+      "sha256": "c8e43e27fb057de7048346b3f3b176029860b32a3c8ce2fec365fe6ea77fe4e4"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+      "sha256": "27545f03f48de88c5f64634f7372e36fd503c0077f6ad39413c4035a0d8b2435"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+      "sha256": "4ebbab85960059eee93d4f64f246fab27c6ace6f041dfb20368fa1512777f92a"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+      "sha256": "15d09331c50d9dc59828c69dc44de5a6cebff322a6107911555cbcb1eb5492d1"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+      "sha256": "ea30cb687a1e6eb28762dec97495e39951dc655179d8a9270c1b95cffa8ad1b9"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+      "sha256": "7d3a8803e0877655c455914f07dd01738c9d40ef4a7fb2051a660b5d89cdee0e"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+      "sha256": "ac103c84c6adb451e4779ff4c28ca6965cd4484cc96213d90a68fe0a34d75064"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+      "sha256": "412becddc6cd2b4bf78f61f848fe847afff6ad682850eb430672a498e54ec544"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp",
+      "sha256": "c855a9042e9a3795fb9906104a5e6182cafb31b27795f6f8231f25bcb50a64f9"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp",
+      "sha256": "82805f7c868f82cc619ca35217add18062911b541dd0882f9cd25ac5a56f751d"
+    },
+    {
+      "file": "public/game/homeworld/v78/port-cargo-sorting-cart.png",
+      "sha256": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f"
+    },
+    {
+      "file": "public/game/homeworld/v83/cargo-rack-right.png",
+      "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4"
+    },
+    {
+      "file": "public/game/homeworld/v80/sealed-cargo-case-left.png",
+      "sha256": "0d27b2eec19ddbd8d1ea65a8071971b34e24d93abb0052c98e7bd32058d98012"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "app/game/HomeworldCargoV108.tsx",
+      "sha256": "69d34cbda6bd5e01e64c11f0fb72f64a4fee5666132fbd3d62f8233ec9e44a72"
+    },
+    {
+      "file": "app/game/HomeworldCargoWorldV108.tsx",
+      "sha256": "8a587819209d098184473a2b198deb7f52993de45cd680cfac079b38c5a12e2d"
+    },
+    {
+      "file": "app/game/HomeworldCargoV108.module.css",
+      "sha256": "b8379022e2024e3c184206662c22ab55f5e9615c8d09f31634b50583599d6cb1"
+    },
+    {
+      "file": "app/game/systems/homeworldCargoDefinitionV108.ts",
+      "sha256": "ff8b6ef6a2dfd416ed039f16d1601b051f46a508487481e47a46e80e387c3d32"
+    },
+    {
+      "file": "app/game/systems/homeworldCargoArrivalV108.ts",
+      "sha256": "7719dd88541ed4a15d5ea20cbdea909ab0378c69c6321bcf1f463d3a14105ef8"
+    },
+    {
+      "file": "app/game/systems/homeworldCargoLedgerV108.ts",
+      "sha256": "5ace5c6c1e606a74fe9353278e6281179123b9e052ad8b621435a96b83d31451"
+    },
+    {
+      "file": "app/game/systems/homeworldCargoSolidsV108.ts",
+      "sha256": "73b6d14139685afe6f78e17b0827f11a1251350aa10e05c61cbda8fd6fdbb96b"
+    },
+    {
+      "file": "app/game/systems/homeworldCargoV108.ts",
+      "sha256": "1be8191cd2e4760d268acf04086093bcf1357dcded8faa54141e49ea604fa33b"
+    },
+    {
+      "file": "app/game/data/bibleCargoSceneV108.json",
+      "sha256": "d25634089d480d9ce9260c0bca04baea7e8a4109179b9fa5cee08a7a63be87fc"
+    },
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "dbba3e669550830a1e7ddd49fbe5977d17664c2afe379b6d1657ae2d4acac9b5"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "5efa058ed0be8b20263c1ccf85d7862080e9d70aee2cea7786b16109e44837f1"
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "02b3461609c7aafb6bafb50443f9af490fc29fb5819323f404d5efc95eebf772"
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "0282072c2ae8390d7648957c78fb91004aae3609b3d0a2914b6b7c82a89ef011"
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "57ff5973c582a7a4f57bd5842e897b934bde6955281fa87a78f776edac850024"
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV83.ts",
+      "sha256": "01e59ba6510383d7b04f4954dd9908081d79086c9c6f811cd7f9c18a999f06b8"
+    },
+    {
+      "file": "app/game/systems/homeworldNavigationV77.ts",
+      "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+    },
+    {
+      "file": "app/game/HomeworldModularHunter.tsx",
+      "sha256": "acb0b274b9b388fa53a6176baf80ed7d992d5af1af1d710646a1611b6b632577"
+    },
+    {
+      "file": "tests/helpers/cargo-v108-route.mjs",
+      "sha256": "6e696f607f0c14410c4e3c0672f28617c3cb5673eb3aa7af58ed74c5e819bde1"
+    },
+    {
+      "file": "scripts/qa-homeworld-cargo-v108.mjs",
+      "sha256": "9cd633dfa3291da0ae6cb418ef6ad724c954fa3b43b13d1710d71197879321e4"
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "e0f251e07fb4083dba3bcc6e168c6e7458fa81ce183990e3a43853f206c0807a"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+      "sha256": "af57e5c656a0df4297c6a73f5f460ecf9ea43068b952b7042221b80dfbb3fa3a"
+    },
+    {
+      "file": "public/game/sprites/v62/heads/classic-head.png",
+      "sha256": "10c91cfc7807fec0a5c50e612eb3e394e182d432515cb0195bf8c4e7fac4f9bd"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+      "sha256": "a7e6741ff184bde8af00b25867c675b1c10835935004f32308dc049c5f50297e"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+      "sha256": "0d34e7d21f68366fbc0159395e66798452cea56a731b591b62c4f001a79af681"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+      "sha256": "a6c83af29fdb0a346b49f5827088afa17708b434d011b8e3029588d5b400c8d7"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+      "sha256": "ebdb67e2130b46c3892552d3b77103c2e9c387cbf6616313b1e10c70fbc148de"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+      "sha256": "fda2af229ced15fe2dd1e00392c0c8a04d149e81ac6a80132e72b8873afb0c46"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+      "sha256": "a530fcb2b93dadd0753e7a2ce325cd2d77aca2a3f997e9786d65b501671411ac"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+      "sha256": "c8e43e27fb057de7048346b3f3b176029860b32a3c8ce2fec365fe6ea77fe4e4"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+      "sha256": "27545f03f48de88c5f64634f7372e36fd503c0077f6ad39413c4035a0d8b2435"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+      "sha256": "4ebbab85960059eee93d4f64f246fab27c6ace6f041dfb20368fa1512777f92a"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+      "sha256": "15d09331c50d9dc59828c69dc44de5a6cebff322a6107911555cbcb1eb5492d1"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+      "sha256": "ea30cb687a1e6eb28762dec97495e39951dc655179d8a9270c1b95cffa8ad1b9"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+      "sha256": "7d3a8803e0877655c455914f07dd01738c9d40ef4a7fb2051a660b5d89cdee0e"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+      "sha256": "ac103c84c6adb451e4779ff4c28ca6965cd4484cc96213d90a68fe0a34d75064"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+      "sha256": "412becddc6cd2b4bf78f61f848fe847afff6ad682850eb430672a498e54ec544"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp",
+      "sha256": "c855a9042e9a3795fb9906104a5e6182cafb31b27795f6f8231f25bcb50a64f9"
+    },
+    {
+      "file": "public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp",
+      "sha256": "82805f7c868f82cc619ca35217add18062911b541dd0882f9cd25ac5a56f751d"
+    },
+    {
+      "file": "public/game/homeworld/v78/port-cargo-sorting-cart.png",
+      "sha256": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f"
+    },
+    {
+      "file": "public/game/homeworld/v83/cargo-rack-right.png",
+      "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4"
+    },
+    {
+      "file": "public/game/homeworld/v80/sealed-cargo-case-left.png",
+      "sha256": "0d27b2eec19ddbd8d1ea65a8071971b34e24d93abb0052c98e7bd32058d98012"
+    }
+  ],
+  "checks": [
+    {
+      "name": "A refused migration backup preserves the complete legacy durable world",
+      "status": "PASS"
+    },
+    {
+      "name": "A unconfirmed original-checkpoint backup freezes native movement",
+      "status": "PASS"
+    },
+    {
+      "name": "A repeated original-checkpoint backup refusal leaves all durable bytes unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "A mobile migration Retry has a44px target without page overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "A explicit migration Retry confirms backup and atomic checkpoint before enabling play",
+      "status": "PASS"
+    },
+    {
+      "name": "A legacy checkpoint recovers to a nearby free point with its original checkpoint backed up",
+      "status": "PASS"
+    },
+    {
+      "name": "A native lots, racks and two present people precede choice",
+      "status": "PASS"
+    },
+    {
+      "name": "A exact source opening names the visible obstruction",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused choice preserves durable ledger",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused choice freezes native movement",
+      "status": "PASS"
+    },
+    {
+      "name": "A repeated refusal retains Retry",
+      "status": "PASS"
+    },
+    {
+      "name": "A Retry does not replay choice",
+      "status": "PASS"
+    },
+    {
+      "name": "A choice is an intention without moving a load",
+      "status": "PASS"
+    },
+    {
+      "name": "A exact source answer follows chosen branch",
+      "status": "PASS"
+    },
+    {
+      "name": "A separate local owner agreement precedes pickup",
+      "status": "PASS"
+    },
+    {
+      "name": "A failure source follows actual remaining load obstruction",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused pickup preserves durable ledger",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused pickup freezes native movement",
+      "status": "PASS"
+    },
+    {
+      "name": "A repeated refusal retains Retry",
+      "status": "PASS"
+    },
+    {
+      "name": "A Retry does not replay pickup",
+      "status": "PASS"
+    },
+    {
+      "name": "A native wide load visibly follows the actual carrier",
+      "status": "PASS"
+    },
+    {
+      "name": "A pause conserves carried lot and interrupts operation",
+      "status": "PASS"
+    },
+    {
+      "name": "A ordinary Continue restores exact load and actor checkpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "A incompatible narrow rack refuses wide lot without changing its owner or placement",
+      "status": "PASS"
+    },
+    {
+      "name": "A walked deposit records a single identified wide load",
+      "status": "PASS"
+    },
+    {
+      "name": "A exact reprise speaks only with first rack ready and narrow lot still on cart",
+      "status": "PASS"
+    },
+    {
+      "name": "A second pickup never duplicates the first load",
+      "status": "PASS"
+    },
+    {
+      "name": "A both physical destinations precede passage success",
+      "status": "PASS"
+    },
+    {
+      "name": "A explicit passage test begins at its actual start",
+      "status": "PASS"
+    },
+    {
+      "name": "A native traversal actually proves free passage",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused report preserves durable ledger",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused report freezes native movement",
+      "status": "PASS"
+    },
+    {
+      "name": "A repeated refusal retains Retry",
+      "status": "PASS"
+    },
+    {
+      "name": "A Retry does not replay report",
+      "status": "PASS"
+    },
+    {
+      "name": "A source success waits for walked return and explicit report",
+      "status": "PASS"
+    },
+    {
+      "name": "A no profile, inventory or trophy reward invented",
+      "status": "PASS"
+    },
+    {
+      "name": "A mobile dialog fits page and retains44px close control",
+      "status": "PASS"
+    },
+    {
+      "name": "A completed ordinary Continue conserves both destinations",
+      "status": "PASS"
+    },
+    {
+      "name": "B native lots, racks and two present people precede choice",
+      "status": "PASS"
+    },
+    {
+      "name": "B exact source opening names the visible obstruction",
+      "status": "PASS"
+    },
+    {
+      "name": "B choice is an intention without moving a load",
+      "status": "PASS"
+    },
+    {
+      "name": "B exact source answer follows chosen branch",
+      "status": "PASS"
+    },
+    {
+      "name": "B separate local owner agreement precedes pickup",
+      "status": "PASS"
+    },
+    {
+      "name": "B oversized load waits for actual depot agreement",
+      "status": "PASS"
+    },
+    {
+      "name": "B actual guardian interaction records depot authorization",
+      "status": "PASS"
+    },
+    {
+      "name": "B native wide load visibly follows the actual carrier",
+      "status": "PASS"
+    },
+    {
+      "name": "B walked deposit records a single identified wide load",
+      "status": "PASS"
+    },
+    {
+      "name": "B second pickup never duplicates the first load",
+      "status": "PASS"
+    },
+    {
+      "name": "B both physical destinations precede passage success",
+      "status": "PASS"
+    },
+    {
+      "name": "B explicit passage test begins at its actual start",
+      "status": "PASS"
+    },
+    {
+      "name": "B native traversal actually proves free passage",
+      "status": "PASS"
+    },
+    {
+      "name": "B source success waits for walked return and explicit report",
+      "status": "PASS"
+    },
+    {
+      "name": "B no profile, inventory or trophy reward invented",
+      "status": "PASS"
+    },
+    {
+      "name": "B mobile dialog fits page and retains44px close control",
+      "status": "PASS"
+    },
+    {
+      "name": "B completed ordinary Continue conserves both destinations",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser exception",
+      "status": "PASS"
+    }
+  ],
+  "captures": [
+    {
+      "file": "docs/qa/v108-homeworld/a-00-migration-retry-mobile.png",
+      "sha256": "8abc1380b9ff2a8f7a3eb06eaef0a66f5480c593b2f25e5462333f55a6dc2bcc",
+      "bytes": 15833
+    },
+    {
+      "file": "docs/qa/v108-homeworld/a-00-migration-retry.png",
+      "sha256": "1dd44d4fcc84cc5515544f59cc394e787e8e503e5c59dfad3b0d24aef685c5b4",
+      "bytes": 16699
+    },
+    {
+      "file": "docs/qa/v108-homeworld/a-01-source.png",
+      "sha256": "514403dc7b52e2cc1dd9fde69878dbebc9a8865ba6874b5d1615e29fd515582c",
+      "bytes": 191941
+    },
+    {
+      "file": "docs/qa/v108-homeworld/a-02-carry.png",
+      "sha256": "a78ab3775052413aef1ea92c398b03fd24852c2557583fb8921f47f8eecaf29e",
+      "bytes": 867828
+    },
+    {
+      "file": "docs/qa/v108-homeworld/a-03-reprise.png",
+      "sha256": "685e869830a5f34da61cee18ce804c185911ebff62ee28f788b87ad11e50b572",
+      "bytes": 185833
+    },
+    {
+      "file": "docs/qa/v108-homeworld/a-04-placed.png",
+      "sha256": "6bad9db7e4351e961d6730ac32bc30981476f8d67b1525f8b24facebfbf4783e",
+      "bytes": 1126478
+    },
+    {
+      "file": "docs/qa/v108-homeworld/a-05-completed.png",
+      "sha256": "12000fa4b31706fcfa02dffacaade9ffae7d35df84ae1b334bb77ededb2fe765",
+      "bytes": 187609
+    },
+    {
+      "file": "docs/qa/v108-homeworld/a-06-mobile.png",
+      "sha256": "6a57071a972efe823fb1a23908d2c0565616c38d1a38fbff0f7b482846372b8c",
+      "bytes": 131669
+    },
+    {
+      "file": "docs/qa/v108-homeworld/b-01-source.png",
+      "sha256": "ec1f3db1982ea81b4a49a43facf7ed7d716542af3c2c5078e8c4b5b6cffd34c5",
+      "bytes": 189875
+    },
+    {
+      "file": "docs/qa/v108-homeworld/b-02-carry.png",
+      "sha256": "132e8f82a03288d7cb7f177aa7d0bbcba2a52e921b1d7f49c97a99088bfbb04c",
+      "bytes": 1120821
+    },
+    {
+      "file": "docs/qa/v108-homeworld/b-04-placed.png",
+      "sha256": "66bff77269e25f6c3d89a0d1adf6f918744d66188dacf14c30690072f57d5651",
+      "bytes": 1116098
+    },
+    {
+      "file": "docs/qa/v108-homeworld/b-05-completed.png",
+      "sha256": "91c5f37a5ee450118fc0193d7775b175cf7712c4791e1e9da685200d02ed6f16",
+      "bytes": 187691
+    },
+    {
+      "file": "docs/qa/v108-homeworld/b-06-mobile.png",
+      "sha256": "5c68863f9b246802363b0619a7c7c46b65101828c1b02102093191fb2d6c7692",
+      "bytes": 131918
+    }
+  ],
+  "capturesOpened": [
+    "docs/qa/v108-homeworld/a-00-migration-retry-mobile.png",
+    "docs/qa/v108-homeworld/a-00-migration-retry.png",
+    "docs/qa/v108-homeworld/a-01-source.png",
+    "docs/qa/v108-homeworld/a-02-carry.png",
+    "docs/qa/v108-homeworld/a-03-reprise.png",
+    "docs/qa/v108-homeworld/a-04-placed.png",
+    "docs/qa/v108-homeworld/a-05-completed.png",
+    "docs/qa/v108-homeworld/a-06-mobile.png",
+    "docs/qa/v108-homeworld/b-01-source.png",
+    "docs/qa/v108-homeworld/b-02-carry.png",
+    "docs/qa/v108-homeworld/b-04-placed.png",
+    "docs/qa/v108-homeworld/b-05-completed.png",
+    "docs/qa/v108-homeworld/b-06-mobile.png"
+  ],
+  "rawEvidence": {
+    "path": "docs/qa/v108-homeworld/browser-result.json.gz",
+    "sha256": "99b6b75e92259465fe6f100d49a1b5d9864301a5d967c7205468fbf8a43d3383",
+    "bytes": 5199,
+    "decodedSha256": "b09c76e1cb322b4962cf7599830ccf96f4a21b5814a9ece1770db0c12518080a",
+    "decodedBytes": 26412
+  }
+}

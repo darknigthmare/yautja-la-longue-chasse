@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "yautja-runtime-validation-v612-1",
+  "firstObservedAtUtc": "2026-10-21T15:10:58.052Z",
+  "lastObservedAtUtc": "2026-10-21T15:20:29.207Z",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "branch": "codex/enforcers-v612-20261021",
+  "baseCommit": "dbd7625ade2c83d133875138516fb21fae2aa7bf",
+  "successorPullRequestNumber": 9,
+  "sourceBranchCommit": "ac2bc04d0bb65f6f8b725aefa982a503f01a74e1",
+  "nodeVersion": "v24.19.0",
+  "status": "passed",
+  "requiredChecks": {
+    "production": {
+      "passed": true,
+      "tests": 10,
+      "passedTests": 10,
+      "failedTests": 0,
+      "exitCode": 0,
+      "log": "production-tests-explicit-cases.log"
+    },
+    "v89SelectedRuntimeReference": {
+      "passed": true,
+      "tests": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "exitCode": 0,
+      "log": "v89-runtime-reference-test-explicit-cases.log"
+    },
+    "typecheck": {
+      "status": "passed",
+      "passed": true,
+      "exitCode": 0,
+      "log": "typecheck-restored-checkout.log",
+      "initialIncompleteCheckoutLog": "typecheck.log",
+      "restorationReceipt": "typecheck-checkout-restoration.json"
+    },
+    "eslint": {
+      "passed": true,
+      "exitCode": 0,
+      "files": 10,
+      "log": "eslint.log"
+    },
+    "whitespace": {
+      "passed": true,
+      "command": "git diff --check"
+    }
+  },
+  "commands": [
+    {
+      "name": "production-tests",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/enforcer-production-v611.test.mjs tests/enforcer-production-v612.test.mjs",
+      "workingDirectory": "yautja_excel_repo",
+      "startedObservedAtUtc": null,
+      "exitCode": 0,
+      "completedObservedAtUtc": "2026-10-21T15:12:05.104Z",
+      "log": "production-tests.log",
+      "reportedTestCount": 2,
+      "reportedDurationMs": 54596.723342
+    },
+    {
+      "name": "v89-runtime-reference-test",
+      "command": "node --experimental-strip-types --test --test-name-pattern='all six full references' tests/drive-new-deposits-v89.test.mjs",
+      "workingDirectory": "yautja_excel_repo",
+      "startedObservedAtUtc": null,
+      "exitCode": 0,
+      "completedObservedAtUtc": "2026-10-21T15:11:03.414Z",
+      "log": "v89-runtime-reference-test.log",
+      "reportedTestCount": 1,
+      "reportedDurationMs": 3105.538087
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "workingDirectory": "yautja_excel_repo",
+      "startedObservedAtUtc": null,
+      "exitCode": 2,
+      "completedObservedAtUtc": "2026-10-21T15:14:11.227Z",
+      "log": "typecheck.log"
+    },
+    {
+      "name": "eslint",
+      "command": "npx eslint app/game/RecentSpriteLibraryV85.tsx app/game/systems/recentSpriteLibraryV85.ts tests/drive-new-deposits-v89.test.mjs tests/enforcer-production-v611.test.mjs tests/enforcer-production-v612.test.mjs scripts/build-enforcer-gallery-v612.mjs scripts/build-enforcer-production-v612.mjs scripts/build-enforcer-workbook-v612.mjs scripts/checkpoint-enforcer-production-v612.mjs scripts/verify-enforcer-gallery-v612.mjs",
+      "workingDirectory": "yautja_excel_repo",
+      "startedObservedAtUtc": null,
+      "exitCode": 0,
+      "completedObservedAtUtc": "2026-10-21T15:11:37.596Z",
+      "log": "eslint.log"
+    },
+    {
+      "name": "production-tests-explicit-cases",
+      "command": "node --experimental-strip-types --test --test-isolation=none --test-concurrency=1 tests/enforcer-production-v611.test.mjs tests/enforcer-production-v612.test.mjs",
+      "workingDirectory": "yautja_excel_repo",
+      "startedObservedAtUtc": "2026-10-21T15:12:11.611Z",
+      "exitCode": 0,
+      "completedObservedAtUtc": "2026-10-21T15:12:58.998Z",
+      "log": "production-tests-explicit-cases.log",
+      "reportedTestCount": 10,
+      "reportedDurationMs": 42671.259299
+    },
+    {
+      "name": "v89-runtime-reference-test-explicit-cases",
+      "command": "node --experimental-strip-types --test --test-isolation=none --test-name-pattern='all six full references' tests/drive-new-deposits-v89.test.mjs",
+      "workingDirectory": "yautja_excel_repo",
+      "startedObservedAtUtc": "2026-10-21T15:12:11.611Z",
+      "exitCode": 0,
+      "completedObservedAtUtc": "2026-10-21T15:12:16.119Z",
+      "log": "v89-runtime-reference-test-explicit-cases.log",
+      "reportedTestCount": 1,
+      "reportedDurationMs": 3016.474947
+    },
+    {
+      "name": "typecheck-restored-checkout",
+      "command": "npm run typecheck",
+      "workingDirectory": "yautja_excel_repo",
+      "startedObservedAtUtc": "2026-10-21T15:16:27.712Z",
+      "exitCode": 0,
+      "completedObservedAtUtc": "2026-10-21T15:19:43.244Z",
+      "log": "typecheck-restored-checkout.log"
+    }
+  ],
+  "notesFR": [
+    "La première exécution isolée par processus affiche uniquement un résultat par fichier dans ce runtime Node. Les commandes avec --test-isolation=none donnent la preuve explicite des 10 tests de production et du test V89 ciblé ; elles sont conservées séparément.",
+    "Les contrôles V89 portant sur les 583 anciennes images absentes du sparse checkout ne sont pas lancés.",
+    "Le premier typecheck a échoué uniquement sur six imports JSON historiques absents de la copie locale. Les six fichiers exacts de HEAD ont été restaurés, leurs Git blob SHA vérifiés, sans différence dans la PR. Le second typecheck réussit.",
+    "Aucun auteur XLSX, marqueur tableur, script Python, build général ou suite exhaustive n’a été exécuté par cette validation.",
+    "npm affiche un avertissement de configuration http-proxy provenant de l’environnement ; il ne provoque aucun échec."
+  ],
+  "allRequiredChecksPassed": true,
+  "environmentRepair": {
+    "initialCommand": "npm run typecheck",
+    "initialExitCode": 2,
+    "causeFR": "Six manifestes JSON historiques présents dans HEAD étaient omis du sparse checkout.",
+    "restoreCommand": "node /workspace/scratch/efdb06941d0e/yautja_excel_audit/v612/review/restore-typecheck-manifests.mjs",
+    "restoredCommit": "dbd7625ade2c83d133875138516fb21fae2aa7bf",
+    "exactGitBlobShasVerified": true,
+    "pullRequestDiffUnchanged": true,
+    "receipt": "typecheck-checkout-restoration.json",
+    "finalCommand": "npm run typecheck",
+    "finalExitCode": 0
+  }
+}

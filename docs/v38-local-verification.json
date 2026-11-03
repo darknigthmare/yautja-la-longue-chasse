@@ -1,0 +1,880 @@
+{
+  "version": "V38",
+  "checkedAt": "2026-09-19T18:28:42.187Z",
+  "status": "passed-local",
+  "commands": {
+    "vinextBuild": {
+      "exitCode": 0,
+      "environment": "YAUTJA_KEEP_BUILD_ROOT=1",
+      "note": "Pre-cleaned D: build output used after C: space exhaustion"
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "lint": {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 1,
+      "note": "Pre-existing native thumbnail warning in ClanChroniclePanel"
+    },
+    "tests": {
+      "total": 1275,
+      "passed": 1275,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "browser": {
+    "honors": {
+      "passed": true,
+      "version": "V38",
+      "checkedAt": "2026-09-19T18:23:37.452Z",
+      "url": "http://127.0.0.1:4174",
+      "fixture": {
+        "mechanism": "real applyPitResult and descent reducers",
+        "earnedCount": 3,
+        "catalogueCount": 18,
+        "campaignSha256": "20eb1d4056d58de0e6d613663b9ba11f30bc9a638c962a22a76916ace25b59f3",
+        "pitSha256": "2a36e3b66b062dd92b5fef2dbde2ed00df1655b66baceafb3bd150203854ffc9",
+        "earnedIds": [
+          "pit-palette-wolf-judgment",
+          "pit-emblem-circle-call",
+          "pit-banner-descent-survivor"
+        ]
+      },
+      "cases": [
+        {
+          "name": "earned-desktop-mobile",
+          "passed": true,
+          "earned": 3,
+          "conditions": 18,
+          "categories": [
+            12,
+            5,
+            1
+          ],
+          "mobileWidth": 390,
+          "keyboardFilter": true,
+          "localStorageSha256": "70afe23b65d7bc222e9bfd0a4747156dc2fea585cbeeef0b88e275d93a2d0052",
+          "writes": 0
+        },
+        {
+          "name": "missing",
+          "passed": true,
+          "status": "empty",
+          "originalBytesPreserved": true,
+          "writes": 0,
+          "storageSha256": "bee50f13716aecec6b568eff9f0a10b2c7812e0891fc83a7a8ffe9671d9f3557"
+        },
+        {
+          "name": "empty",
+          "passed": true,
+          "status": "ready",
+          "originalBytesPreserved": true,
+          "writes": 0,
+          "storageSha256": "b85af510a950589b2cc59f4b616e5ef3c1daf6bd607759c9ab06a507b9bb1385"
+        },
+        {
+          "name": "corrupt",
+          "passed": true,
+          "status": "corrupt-save",
+          "originalBytesPreserved": true,
+          "writes": 0,
+          "storageSha256": "a195482feb4decf40ace959267d595bd7e3aa3e56503a066ca32fefd0aa2cf49"
+        },
+        {
+          "name": "wrong-owner",
+          "passed": true,
+          "status": "owner-conflict",
+          "originalBytesPreserved": true,
+          "writes": 0,
+          "storageSha256": "12ab4c6cbde36017382733cc229f6811789fda9702843b087ff7a4498b48f43c"
+        },
+        {
+          "name": "future",
+          "passed": true,
+          "status": "future-version",
+          "originalBytesPreserved": true,
+          "writes": 0,
+          "storageSha256": "5b558dc4edf32b5ebc28057a89f8fb12c47d37734dbc575b0abdc30094b948ad"
+        },
+        {
+          "name": "native-cross-tab-storage",
+          "passed": true,
+          "nativeEvents": [
+            {
+              "key": "yautja-long-hunt.the-pit.2026-09-19T10%3A00%3A00.000Z",
+              "trusted": true,
+              "length": 5967
+            },
+            {
+              "key": "yautja-long-hunt.the-pit.2026-09-19T10%3A00%3A01.000Z",
+              "trusted": true,
+              "length": 3586
+            },
+            {
+              "key": "yautja-long-hunt.the-pit.2026-09-19T10%3A00%3A00.000Z",
+              "trusted": true,
+              "length": 3795
+            },
+            {
+              "key": "yautja-long-hunt.the-pit.2026-09-19T10%3A00%3A00.000Z",
+              "trusted": true,
+              "length": null
+            }
+          ],
+          "sequence": [
+            "empty",
+            "earned3",
+            "foreign-key-ignored",
+            "owner-conflict",
+            "missing"
+          ],
+          "observerWrites": 0,
+          "campaignBytesPreserved": true,
+          "intentionalFixtureWritesOnlyInWriterTab": true
+        }
+      ],
+      "errors": [],
+      "failures": [],
+      "limitations": [
+        "Isolated synthetic profiles; no real user data read or modified.",
+        "No physical controller or desktop package checked.",
+        "This panel displays existing cosmetic rewards and does not award gameplay items."
+      ]
+    },
+    "training": {
+      "passed": true,
+      "version": "V38",
+      "checkedAt": "2026-09-19T18:24:59.209Z",
+      "url": "http://127.0.0.1:4174",
+      "availability": [
+        {
+          "fighterId": "tracker",
+          "available": 4,
+          "antiAirDisabled": true,
+          "reason": "Tracker ne possède pas de frappe lourde anti-air : cet exercice est indisponible pour ce chasseur."
+        },
+        {
+          "fighterId": "greyback",
+          "available": 4,
+          "antiAirDisabled": true,
+          "reason": "Greyback ne possède pas de frappe lourde anti-air : cet exercice est indisponible pour ce chasseur."
+        },
+        {
+          "fighterId": "jungle-hunter",
+          "available": 5,
+          "antiAirDisabled": false
+        }
+      ],
+      "errors": [],
+      "failures": [],
+      "keyboardResume": {
+        "rootFocusRestored": true,
+        "staleHeldGuardPurged": true,
+        "freshAttackSimulated": true,
+        "pauseFrozen": true,
+        "manualTick": true
+      },
+      "realGuidedExercise": "Three low attacks blocked in the real training simulation.",
+      "mobileNoOverflow": true,
+      "storageUnchanged": true,
+      "storageSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    "homeworld": {
+      "passed": true,
+      "version": "V38",
+      "checkedAt": "2026-09-19T18:21:34.440Z",
+      "url": "http://127.0.0.1:4174",
+      "checks": [
+        "Entered the playable city from the real game menu, without seeded save data.",
+        "All eleven DOM sprites decode with nonempty alpha; actual painted center/bottom, aspect, size and depth match authored sockets.",
+        "Reached the corrected gantry through physical keyboard movement and the unchanged city collision model.",
+        "Foreground rib fades near the real actor and restores when walking away; 390px layout, all eleven anchors, and mobile movement control verified.",
+        "Pause still blocks held keyboard movement and resumes normally."
+      ],
+      "routeEvidence": [
+        {
+          "from": {
+            "x": 430,
+            "y": 2210
+          },
+          "target": {
+            "x": 2675,
+            "y": 1360
+          },
+          "actual": {
+            "x": 2676,
+            "y": 1374
+          },
+          "waypoints": 102
+        },
+        {
+          "from": {
+            "x": 2676,
+            "y": 1374
+          },
+          "target": {
+            "x": 2750,
+            "y": 850
+          },
+          "actual": {
+            "x": 2750,
+            "y": 876
+          },
+          "waypoints": 22
+        },
+        {
+          "from": {
+            "x": 2707,
+            "y": 876
+          },
+          "target": {
+            "x": 2525,
+            "y": 925
+          },
+          "actual": {
+            "x": 2552,
+            "y": 921
+          },
+          "waypoints": 7
+        }
+      ],
+      "errors": [],
+      "failures": [],
+      "limitation": "Isolated browser profile; keyboard movement with a controlled clock. Not a hardware frame-rate or physical gamepad test.",
+      "desktopProps": [
+        {
+          "id": "dock-console",
+          "source": "/game/ship-interior/v21/console-navigation.webp",
+          "plane": "ground",
+          "naturalWidth": 1536,
+          "naturalHeight": 1024,
+          "bounds": {
+            "x": 103,
+            "y": 282,
+            "width": 1316,
+            "height": 629,
+            "transparent": 1030795,
+            "painted": 542069
+          },
+          "centerError": -0.02104695638024623,
+          "bottomError": -0.0211029052734375,
+          "ratioError": 0.000005086263020828707,
+          "paintedWidth": 119.98807779947916,
+          "paintedHeight": 57.34672546386719,
+          "zIndex": 2110,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "market-rack-a",
+          "source": "/game/ship-interior/v22/armory-rack.webp",
+          "plane": "ground",
+          "naturalWidth": 1536,
+          "naturalHeight": 1024,
+          "bounds": {
+            "x": 38,
+            "y": 137,
+            "width": 1459,
+            "height": 734,
+            "transparent": 518073,
+            "painted": 1054791
+          },
+          "centerError": -0.020151774088617458,
+          "bottomError": -0.0250396728515625,
+          "ratioError": 0.000005086263020828707,
+          "paintedWidth": 149.99037679036456,
+          "paintedHeight": 75.45407104492188,
+          "zIndex": 2050,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "market-rack-b",
+          "source": "/game/ship-interior/v22/armory-rack.webp",
+          "plane": "rear",
+          "naturalWidth": 1536,
+          "naturalHeight": 1024,
+          "bounds": {
+            "x": 38,
+            "y": 137,
+            "width": 1459,
+            "height": 734,
+            "transparent": 518073,
+            "painted": 1054791
+          },
+          "centerError": -0.005488077799554958,
+          "bottomError": -0.006702423095703125,
+          "ratioError": 0.000005086263020828707,
+          "paintedWidth": 129.9985860188802,
+          "paintedHeight": 65.39651489257812,
+          "zIndex": 1470,
+          "opacity": 0.52,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "forge-station",
+          "source": "/game/ship-interior/v22/forge-station.webp",
+          "plane": "ground",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 89,
+            "y": 150,
+            "width": 843,
+            "height": 1245,
+            "transparent": 922235,
+            "painted": 650629
+          },
+          "centerError": -0.0184326171875,
+          "bottomError": -0.015350341796875,
+          "ratioError": -0.000010172526041671293,
+          "paintedWidth": 98.171630859375,
+          "paintedHeight": 144.99923706054688,
+          "zIndex": 2080,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "undercity-rib-a",
+          "source": "/game/ship-interior/v21/foreground-rib.webp",
+          "plane": "front",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 326,
+            "y": 38,
+            "width": 509,
+            "height": 1468,
+            "transparent": 1276769,
+            "painted": 296095
+          },
+          "centerError": -0.007965087890625,
+          "bottomError": -0.0093994140625,
+          "ratioError": 0,
+          "paintedWidth": 114.41937255859375,
+          "paintedHeight": 329.995361328125,
+          "zIndex": 2230,
+          "opacity": 0.7,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "trophy-terminal",
+          "source": "/game/ship-interior/v22/archive-terminal.webp",
+          "plane": "ground",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 144,
+            "y": 47,
+            "width": 734,
+            "height": 1428,
+            "transparent": 802998,
+            "painted": 769866
+          },
+          "centerError": -0.0093994140625,
+          "bottomError": -0.011484781901032193,
+          "ratioError": -0.000010172526041671293,
+          "paintedWidth": 64.242919921875,
+          "paintedHeight": 124.9993896484375,
+          "zIndex": 1450,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "training-gantry",
+          "source": "/game/ship-interior/v22/gantry.webp",
+          "plane": "ground",
+          "naturalWidth": 1536,
+          "naturalHeight": 1024,
+          "bounds": {
+            "x": 62,
+            "y": 386,
+            "width": 1411,
+            "height": 227,
+            "transparent": 1339915,
+            "painted": 232949
+          },
+          "centerError": -0.0076446533203125,
+          "bottomError": -0.002655029296875,
+          "ratioError": 0,
+          "paintedWidth": 219.99508666992188,
+          "paintedHeight": 35.392547607421875,
+          "zIndex": 1300,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "clan-medbay",
+          "source": "/game/ship-interior/v22/medbay-bed.webp",
+          "plane": "ground",
+          "naturalWidth": 1536,
+          "naturalHeight": 1024,
+          "bounds": {
+            "x": 75,
+            "y": 119,
+            "width": 1385,
+            "height": 766,
+            "transparent": 1221939,
+            "painted": 350925
+          },
+          "centerError": -0.010289510091297416,
+          "bottomError": -0.0174407958984375,
+          "ratioError": -0.000005086263020842585,
+          "paintedWidth": 179.98631795247394,
+          "paintedHeight": 99.54867553710938,
+          "zIndex": 1480,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "memory-terminal",
+          "source": "/game/ship-interior/v22/archive-terminal.webp",
+          "plane": "ground",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 144,
+            "y": 47,
+            "width": 734,
+            "height": 1428,
+            "transparent": 802998,
+            "painted": 769866
+          },
+          "centerError": -0.0085906982421875,
+          "bottomError": -0.01653035481774623,
+          "ratioError": -0.000005086263020828707,
+          "paintedWidth": 69.38369750976562,
+          "paintedHeight": 134.9935302734375,
+          "zIndex": 820,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "arena-rib",
+          "source": "/game/ship-interior/v21/foreground-rib.webp",
+          "plane": "front",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 326,
+            "y": 38,
+            "width": 509,
+            "height": 1468,
+            "transparent": 1276769,
+            "painted": 296095
+          },
+          "centerError": -0.01424407958984375,
+          "bottomError": -0.023681640625,
+          "ratioError": -0.000005086263020842585,
+          "paintedWidth": 110.94764709472656,
+          "paintedHeight": 319.99007161458337,
+          "zIndex": 850,
+          "opacity": 0.7,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "citadel-rib",
+          "source": "/game/ship-interior/v21/foreground-rib.webp",
+          "plane": "front",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 326,
+            "y": 38,
+            "width": 509,
+            "height": 1468,
+            "transparent": 1276769,
+            "painted": 296095
+          },
+          "centerError": -0.00684356689453125,
+          "bottomError": -0.01312255859375,
+          "ratioError": -0.000005086263020842585,
+          "paintedWidth": 124.81901550292969,
+          "paintedHeight": 359.99629720052087,
+          "zIndex": 880,
+          "opacity": 0.7,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        }
+      ],
+      "nearOpacity": 0.14,
+      "mobileProps": [
+        {
+          "id": "dock-console",
+          "source": "/game/ship-interior/v21/console-navigation.webp",
+          "plane": "ground",
+          "naturalWidth": 1536,
+          "naturalHeight": 1024,
+          "bounds": {
+            "x": 103,
+            "y": 282,
+            "width": 1316,
+            "height": 629,
+            "transparent": 1030795,
+            "painted": 542069
+          },
+          "centerError": -0.021046956380132542,
+          "bottomError": -0.0211029052734375,
+          "ratioError": 0.000005086263020828707,
+          "paintedWidth": 119.98807779947916,
+          "paintedHeight": 57.34672546386719,
+          "zIndex": 2110,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "market-rack-a",
+          "source": "/game/ship-interior/v22/armory-rack.webp",
+          "plane": "ground",
+          "naturalWidth": 1536,
+          "naturalHeight": 1024,
+          "bounds": {
+            "x": 38,
+            "y": 137,
+            "width": 1459,
+            "height": 734,
+            "transparent": 518073,
+            "painted": 1054791
+          },
+          "centerError": -0.020151774088617458,
+          "bottomError": -0.0250396728515625,
+          "ratioError": 0.000005086263020828707,
+          "paintedWidth": 149.99037679036456,
+          "paintedHeight": 75.45407104492188,
+          "zIndex": 2050,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "market-rack-b",
+          "source": "/game/ship-interior/v22/armory-rack.webp",
+          "plane": "rear",
+          "naturalWidth": 1536,
+          "naturalHeight": 1024,
+          "bounds": {
+            "x": 38,
+            "y": 137,
+            "width": 1459,
+            "height": 734,
+            "transparent": 518073,
+            "painted": 1054791
+          },
+          "centerError": -0.005488077799441271,
+          "bottomError": -0.0066986083984375,
+          "ratioError": 0.000005086263020828707,
+          "paintedWidth": 129.9985860188802,
+          "paintedHeight": 65.39651489257812,
+          "zIndex": 1470,
+          "opacity": 0.52,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "forge-station",
+          "source": "/game/ship-interior/v22/forge-station.webp",
+          "plane": "ground",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 89,
+            "y": 150,
+            "width": 843,
+            "height": 1245,
+            "transparent": 922235,
+            "painted": 650629
+          },
+          "centerError": -0.0184326171875,
+          "bottomError": -0.015350341796875,
+          "ratioError": -0.000010172526041671293,
+          "paintedWidth": 98.171630859375,
+          "paintedHeight": 144.99923706054688,
+          "zIndex": 2080,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "undercity-rib-a",
+          "source": "/game/ship-interior/v21/foreground-rib.webp",
+          "plane": "front",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 326,
+            "y": 38,
+            "width": 509,
+            "height": 1468,
+            "transparent": 1276769,
+            "painted": 296095
+          },
+          "centerError": -0.007965087890625,
+          "bottomError": -0.0093994140625,
+          "ratioError": 0,
+          "paintedWidth": 114.41937255859375,
+          "paintedHeight": 329.995361328125,
+          "zIndex": 2230,
+          "opacity": 0.7,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "trophy-terminal",
+          "source": "/game/ship-interior/v22/archive-terminal.webp",
+          "plane": "ground",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 144,
+            "y": 47,
+            "width": 734,
+            "height": 1428,
+            "transparent": 802998,
+            "painted": 769866
+          },
+          "centerError": -0.0093994140625,
+          "bottomError": -0.011484781901117458,
+          "ratioError": -0.000010172526041671293,
+          "paintedWidth": 64.242919921875,
+          "paintedHeight": 124.9993896484375,
+          "zIndex": 1450,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "training-gantry",
+          "source": "/game/ship-interior/v22/gantry.webp",
+          "plane": "ground",
+          "naturalWidth": 1536,
+          "naturalHeight": 1024,
+          "bounds": {
+            "x": 62,
+            "y": 386,
+            "width": 1411,
+            "height": 227,
+            "transparent": 1339915,
+            "painted": 232949
+          },
+          "centerError": -0.0076446533203125,
+          "bottomError": -0.002655029296875,
+          "ratioError": 0,
+          "paintedWidth": 219.99508666992188,
+          "paintedHeight": 35.392547607421875,
+          "zIndex": 1300,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "clan-medbay",
+          "source": "/game/ship-interior/v22/medbay-bed.webp",
+          "plane": "ground",
+          "naturalWidth": 1536,
+          "naturalHeight": 1024,
+          "bounds": {
+            "x": 75,
+            "y": 119,
+            "width": 1385,
+            "height": 766,
+            "transparent": 1221939,
+            "painted": 350925
+          },
+          "centerError": -0.010289510091070042,
+          "bottomError": -0.0174407958984375,
+          "ratioError": -0.000005086263020842585,
+          "paintedWidth": 179.98631795247394,
+          "paintedHeight": 99.54867553710938,
+          "zIndex": 1480,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "memory-terminal",
+          "source": "/game/ship-interior/v22/archive-terminal.webp",
+          "plane": "ground",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 144,
+            "y": 47,
+            "width": 734,
+            "height": 1428,
+            "transparent": 802998,
+            "painted": 769866
+          },
+          "centerError": -0.0085906982421875,
+          "bottomError": -0.01653035481774623,
+          "ratioError": -0.000005086263020828707,
+          "paintedWidth": 69.38369750976562,
+          "paintedHeight": 134.9935302734375,
+          "zIndex": 820,
+          "opacity": 1,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "arena-rib",
+          "source": "/game/ship-interior/v21/foreground-rib.webp",
+          "plane": "front",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 326,
+            "y": 38,
+            "width": 509,
+            "height": 1468,
+            "transparent": 1276769,
+            "painted": 296095
+          },
+          "centerError": -0.01424407958984375,
+          "bottomError": -0.023681640625,
+          "ratioError": -0.000005086263020842585,
+          "paintedWidth": 110.94764709472656,
+          "paintedHeight": 319.99007161458337,
+          "zIndex": 850,
+          "opacity": 0.14,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        },
+        {
+          "id": "citadel-rib",
+          "source": "/game/ship-interior/v21/foreground-rib.webp",
+          "plane": "front",
+          "naturalWidth": 1024,
+          "naturalHeight": 1536,
+          "bounds": {
+            "x": 326,
+            "y": 38,
+            "width": 509,
+            "height": 1468,
+            "transparent": 1276769,
+            "painted": 296095
+          },
+          "centerError": -0.00684356689453125,
+          "bottomError": -0.01312255859375,
+          "ratioError": -0.000005086263020842585,
+          "paintedWidth": 124.81901550292969,
+          "paintedHeight": 359.99629720052087,
+          "zIndex": 880,
+          "opacity": 0.7,
+          "objectFit": "contain",
+          "fullSourceFits": true
+        }
+      ],
+      "farOpacity": 0.7
+    },
+    "animations": {
+      "passed": true,
+      "checkedAt": "2026-09-19T18:26:39.836Z",
+      "version": "V38",
+      "url": "http://127.0.0.1:4174",
+      "labChecks": [
+        {
+          "atlas": "city-hunter-high-guard-right-v37",
+          "clip": "high-guard",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "atlas": "berserker-hitstun-v38",
+          "clip": "pit.stand.hitstun",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "atlas": "berserker-hitstun-v38",
+          "clip": "pit.stand.hitstun",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "atlas": "city-hunter-high-guard-left-v38",
+          "clip": "high-guard",
+          "facing": "left",
+          "drawings": 2
+        }
+      ],
+      "combatChecks": [
+        {
+          "fighter": "city-hunter",
+          "side": "left",
+          "action": "high-guard",
+          "drawings": 2,
+          "actualTraining": true
+        },
+        {
+          "fighter": "berserker",
+          "side": "right",
+          "action": "hitstun",
+          "actualCpuHit": true
+        },
+        {
+          "fighter": "berserker",
+          "side": "left",
+          "action": "hitstun",
+          "actualPlayerHit": true
+        }
+      ],
+      "mobileNoOverflow": true,
+      "errors": [],
+      "failures": [],
+      "limitations": [
+        "Software browser only; no physical controller test.",
+        "No complete moveset or extra animation inferred from these clips."
+      ]
+    }
+  },
+  "logs": [
+    {
+      "file": "build.log",
+      "sha256": "86300a0d522dacb251874e57c9dbd1cbbf2e98a6ea7c8256719618b6220f284e"
+    },
+    {
+      "file": "typecheck.log",
+      "sha256": "fdd4010a5801a43e17e176b5cba5a4bd7484d414d207b9c36a14c36597cfde8e"
+    },
+    {
+      "file": "lint.log",
+      "sha256": "47f9ac92edcaa5111986f392eabf0cfbdfc37101c3dd2735ba9d737f29e0d51a"
+    },
+    {
+      "file": "full-tests.log",
+      "sha256": "70b0d527e369d018beef821d9dbaa8c8fc10ed34f11d53dcd6c0b39eea64c441"
+    }
+  ],
+  "coverage": {
+    "validatedOrientedClips": 208,
+    "animatedFighters": 9,
+    "completeMovesets": 0,
+    "playableArenas": 20,
+    "requestedArenas": 100,
+    "existingPITDistinctions": 18,
+    "alignedHomeworldProps": 11
+  },
+  "visualReview": {
+    "cityGuardLeftAndRight": true,
+    "berserkerDrawings": true,
+    "honorsDesktopAnd390px": true,
+    "homeworldGantry": true
+  },
+  "limitations": [
+    "Local Next junction build failed with a workStore invariant; production Next validation is separate.",
+    "No physical controller, Steam Deck or rebuilt PC archive.",
+    "No complete moveset, new playable chapter, physical banner model or commercial certification inferred."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "release": "V113",
+  "status": "PASS_OPEN_PRODUCTION_TRACKING_CANDIDATES_NOT_ADMITTED",
+  "finishedAtUtc": "2026-11-02T05:44:01.225053+00:00",
+  "scope": "Dated source audit and native candidate production only. No new runtime integration,gameplay completion or human artistic validation.",
+  "snapshot": {
+    "context": "SNAPSHOT_HISTORIQUE",
+    "commit": "03cf51badd450338d748da55599a317a71debd28",
+    "tree": "8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa"
+  },
+  "products": [
+    {
+      "path": "production/YAUTJA_V113_SUIVI.xlsx",
+      "bytes": 10373135,
+      "sha256": "082ccfdd584a8989124f81851bdcb50e1c6206940c9d1f46b328d758e428d84f"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/source-manifest.json",
+      "bytes": 958889,
+      "sha256": "2078785acd36e89aa6911522baba01c70ecbf995c049e25a3b24ec3f8b12d720"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/workbook-qa.json",
+      "bytes": 4519,
+      "sha256": "a3808b56c825b420dde7ffe1ea38846227d1ac7b9f92c1d1380f6d36824f10ab"
+    }
+  ],
+  "checks": {
+    "topLevelTests": 5,
+    "failed": 0,
+    "skipped": 0,
+    "worksheets": 130,
+    "historicalWorksheetsByteIdentical": 122,
+    "historicalZipPartsByteIdentical": 135,
+    "xmlPartsParsed": 147,
+    "appendedSourceCellsChecked": 5637,
+    "newFormulas": 0,
+    "workbookAndMetadataReproduced": true,
+    "sourceInputs": 208,
+    "historicalReferenceInputs": 190,
+    "strictCurrentInputs": 18,
+    "r7ProductsAndEvidencePinsPreserved": 29,
+    "r7PrimaryReproduced": true,
+    "r7CoordinationReproduced": true,
+    "oldGameplayTestsRerun": false,
+    "nativeExcelExecuted": false
+  },
+  "production": {
+    "generatedTargets": 3,
+    "nativeAttempts": 4,
+    "candidateStatus": "CANDIDAT_NON_ADMIS",
+    "strict48pxAlphaGt0MarginPassed": 0,
+    "pixelsEdited": false,
+    "runtimeIntegrated": 0,
+    "newGameplayTests": 0,
+    "humanArtisticValidations": 0
+  },
+  "sourceStatus": {
+    "requirementsOpen": 56,
+    "includedPitActions": 9,
+    "artTargetsOpen": 354,
+    "newClosures": 0,
+    "artReconciliation": {
+      "historicalExistingFamilyCandidates": 313,
+      "historicalMissing": 40,
+      "existingLiftFalseNegatives": 2,
+      "noIndependentSpriteIdentifiedBeforeGeneration": 38,
+      "newUnadmittedCandidateTargets": 3,
+      "otherSearchGapsWithoutIndependentSprite": 35,
+      "missingForgeAnimation": 1
+    }
+  },
+  "limits": [
+    "The original V54 workbook is not present; pinned extracted cells remain the available source.",
+    "The source V6 workbook and all122historical V112 worksheets stay unchanged.",
+    "No generated candidate is called human validated.",
+    "Native output dimensions1254x1254 differ from the1024request ; pivots are diagnostic proposals,not verified runtime ground contacts.",
+    "No R7 report,freeze,registry,coordinator workbook or its27sourceinventory is rewritten.",
+    "The new workbook lives in production/ to avoid changing the dated R7 coordinator corpus.",
+    "PR84 was merged only into the PR82 parent branch,not main; prior remote audit is a dated historical annex.",
+    "The190historical reference inputs use exact commit03cf51badd450338d748da55599a317a71debd28/tree8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa and regular Git blob identities.",
+    "If an old working file differs or disappears,a read-only Git blob lookup may supply exactly its pinned bytes. No pin update,fetch or ref mutation is automatic.",
+    "The16new product/annex/tool inputs and two frozen append-tool dependencies and all native candidate bytes stay strict-current; no Git fallback can hide their modification.",
+    "If the pinned historical object is absent in a shallow clone,fetch that exact commit explicitly before checking; do not replace its source identity.",
+    "Historical reference data may use pinned Git bytes. The actual Python append/layout toolchain stays current and byte-exact; no historical code import redirection is installed.",
+    "The five tests cover workbook/provenance boundaries,not game behavior.",
+    "Byte-preservation and reproduction checks of R7 belong to this pre-integration checkpoint and do not relabel future R8 sources.",
+    "The PR84 event targets parentPR82,notmain; the copied remote audit is a separate earlier snapshot.",
+    "Initial test-helper failures and pre-snapshot pass logs are retained as scoped development evidence."
+  ]
+}

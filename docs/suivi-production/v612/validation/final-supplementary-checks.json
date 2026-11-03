@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "yautja-v612-final-supplementary-checks-1",
+  "verifiedAtUtc": "2026-10-21T16:21:42.078Z",
+  "passed": true,
+  "checkpoint": {
+    "acceptedNativePngFiles": 36,
+    "actualFilesVerifiedAfterEmptyImageFix": true,
+    "source": "scripts/checkpoint-enforcer-production-v612.mjs",
+    "sourceSha256": "52cc986c0f36995348a3e465379ac380fa6366c994701c0f9b72e7c030f85cf7",
+    "result": "recovery/native-checkpoint.json"
+  },
+  "builderLint": {
+    "exitCode": 0,
+    "log": "validation/runtime/final-builder-eslint.log",
+    "files": [
+      "scripts/build-enforcer-workbook-v612.mjs",
+      "scripts/build-enforcer-gallery-v612.mjs",
+      "scripts/checkpoint-enforcer-production-v612.mjs"
+    ]
+  },
+  "workbookAuthor": {
+    "library": "@oai/artifact-tool",
+    "source": "scripts/build-enforcer-workbook-v612.mjs",
+    "sourceSha256": "d9c3f0f859e6bb1083c579d1281a979ed13efbb117f776fac50fc1439184854c",
+    "nodeFlags": [
+      "--expose-gc",
+      "--max-old-space-size=2560"
+    ],
+    "stages": [
+      {
+        "mode": "--checkpoint-only",
+        "exitCode": 0,
+        "log": "workbook-preview/workbook-checkpoint-build.log"
+      },
+      {
+        "mode": "--resume-checkpoint --export-only",
+        "exitCode": 0,
+        "log": "workbook-preview/workbook-checkpoint-export.log"
+      }
+    ],
+    "checkpointSha256": "b8253bec0038d9157c63cfb8da68770689ea2c8acd32dac05fc8e2003526d3e2",
+    "executedSourceSha256": "7265ce7c029e6a4ea5aaf38ce15d0bb69265311fa04392a43998c1d27290ff87",
+    "onlyPostExecutionChangeFR": "Suppression d’une ligne vide finale ; le code exécuté est inchangé."
+  },
+  "galleryFixesFR": [
+    "Réinitialisation différée après le comportement natif du formulaire.",
+    "Largeur des champs et menus limitée à leur conteneur, sans débordement à390pixels."
+  ],
+  "whitespace": {
+    "command": "git diff --cached --check",
+    "exitCode": 0
+  }
+}

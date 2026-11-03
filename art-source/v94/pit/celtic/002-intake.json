@@ -1,0 +1,217 @@
+{
+  "ordinal": 2,
+  "id": "celtic-v94-002-dizzy",
+  "family": "dizzy",
+  "part": null,
+  "targetDrawings": 16,
+  "targetPerFacing": 8,
+  "grid": {
+    "cols": 4,
+    "rows": 4,
+    "rightColumns": [
+      0,
+      1
+    ],
+    "leftColumns": [
+      2,
+      3
+    ],
+    "chronology": "row-major within native-facing half"
+  },
+  "reference": "public/game/sprites/v44/user-hunters/0764ed4b539cc40c2c3dc91cfca405f0e01ac7a528a3d3412da18552dbbccb4e.png",
+  "prompt": "Use case: identity-preserve. Asset: native RGBA transparent fighting-game sprite animation page. Match ONLY attached exact MASKED CELTIC reference: broad muscular AVP body; unique weathered SILVER domed Celtic biomask with narrow pale eyes, four orange-copper circular fittings and central vertical silver mouth grilles; dark dreadlocks with brass rings; yellow/tan black-mottled skin and black body netting; thick overlapping silver breast and shoulder armor, layered thigh plates, long silver plated loin apron, articulated shin armor and armored clawed feet; small skull necklace. Keep all equipment consistently anatomically attached: TWO jagged extended wrist blades only on CHARACTER RIGHT gauntlet; original single plasma caster visibly mounted above CHARACTER LEFT shoulder, with its original mounting and hose. No shoulder-device omission, opposite-arm weapon swap, pistol, spear, shield, blade on both arms, or new accessory. Opposite facings must be drawn independently with proper original anatomical gear, not mirrored. Match the supplied detailed painted 2D game-art style and neutral lighting, not a plastic action figure. Full bodies in a slight3/4 SIDE VIEW, facing an opponent at screen right or screen left. Same anatomy, costume, mask worn, equipment shape/length and drawing scale in EVERY frame/page. Plain fully TRANSPARENT background only; no ground, shadow, atmosphere, blood, particles, opponent, weapon discharge, captions, grid, frame numbers, backdrop, painted checkerboard or ornaments. Fingers simple and legible, one thumb and four claws, no floating hands/extra arms/fused digits; dreadlocks attached around back of head, draping behind shoulders without crossing chest or changing into blades. All body, cannon, hair and blade tips safely inside each cell, wide completely transparent gutters. Keep figure SMALL, approximately260pixels tall and180pixels wide at1024canvaswidth, at least30px transparent horizontal margins and55px vertical margins in its cell. Never increase figure to fill cell. Feet on a stable per-cell baseline unless a specified small nonlethal knee motion. A coherent restrained GAMEPLAY ADAPTATION, not alleged canon tribal ceremony. No dance, supernatural ritual, roar pose, mask removal, trophy or new power. Every chronological pose is genuinely independently drawn and slightly articulated, not duplicated or shifted copies.\nPORTRAIT1024x1536. Exactly SIXTEEN separate complete drawings in FOUR COLUMNS by FOUR ROWS. Columns1 and2 face SCREEN RIGHT (8 chronological poses read row1col1→row1col2→row2col1→row2col2→row3col1→row3col2→row4col1→row4col2). Columns3 and4 face SCREEN LEFT (the same8 chronological poses read row1col3→row1col4→row2col3→row2col4→row3col3→row3col4→row4col3→row4col4). Four256x384cells in eachrow, bigempty gutters; do not create2columns or only8figures.\nACTION: Eight-pose NONLETHAL DIZZY LOOP per facing:1 head slightly bowed shoulders relaxed,2 torso shifts small toward front,3 knees flex a little,4 rebalances to center,5 torso gently sways opposite,6 head cautiously straightens,7 knees stabilize,8 returns toward first unstable bowed stance. Both feet planted, hands low, no extra wounds, fall or gore. Shoulder device and long wrist blades remain attached and fully visible; downturned weapon never swings through leg.",
+  "originalPath": "C:/Users/chuck/.codex/generated_images/01a134c5-dc8c-74f1-bc35-516803001422/exec-ca24b6c4-95c7-4030-81e2-e3e906bf9f7e.png",
+  "sourcePath": "art-source/v94/pit/celtic/002-celtic-masked-dizzy-v94.png",
+  "fileName": "002-celtic-masked-dizzy-v94.png",
+  "sha256": "3d8be0a071a4a6dfb79061a0b50222cf6e01641944ed02e5adc06826f8950a80",
+  "bytes": 2830077,
+  "width": 1024,
+  "height": 1536,
+  "hasAlpha": true,
+  "channels": 4,
+  "zeroAlphaFraction": 0.525848388671875,
+  "nativeColumnRanges": [
+    {
+      "col": 0,
+      "x0": 0,
+      "x1": 256,
+      "ranges": [
+        [
+          27,
+          382
+        ],
+        [
+          418,
+          742
+        ],
+        [
+          771,
+          1125
+        ],
+        [
+          1145,
+          1501
+        ]
+      ]
+    },
+    {
+      "col": 1,
+      "x0": 256,
+      "x1": 512,
+      "ranges": [
+        [
+          26,
+          382
+        ],
+        [
+          402,
+          742
+        ],
+        [
+          768,
+          1124
+        ],
+        [
+          1126,
+          1126
+        ],
+        [
+          1153,
+          1501
+        ]
+      ]
+    },
+    {
+      "col": 2,
+      "x0": 512,
+      "x1": 768,
+      "ranges": [
+        [
+          25,
+          382
+        ],
+        [
+          419,
+          742
+        ],
+        [
+          770,
+          1126
+        ],
+        [
+          1152,
+          1501
+        ]
+      ]
+    },
+    {
+      "col": 3,
+      "x0": 768,
+      "x1": 1024,
+      "ranges": [
+        [
+          25,
+          383
+        ],
+        [
+          385,
+          385
+        ],
+        [
+          401,
+          742
+        ],
+        [
+          768,
+          1126
+        ],
+        [
+          1153,
+          1501
+        ]
+      ]
+    }
+  ],
+  "status": "accepted-selected-native-cells-only",
+  "pixelTransformation": "none-byte-identical-copy",
+  "review": {
+    "ordinal": 2,
+    "sourcePath": "art-source/v94/pit/celtic/002-celtic-masked-dizzy-v94.png",
+    "publicPath": "public/game/sprites/v94/pit/celtic/002-celtic-masked-dizzy-v94.png",
+    "sha256": "3d8be0a071a4a6dfb79061a0b50222cf6e01641944ed02e5adc06826f8950a80",
+    "bytes": 2830077,
+    "pageId": "celtic-masked-dizzy-v94",
+    "bodyHeightPx": 358,
+    "zeroAlphaFraction": 0.525848388671875,
+    "reviewDecision": "accepted-selected-native-cells-only",
+    "acceptedCells": [
+      {
+        "row": 0,
+        "col": 0
+      },
+      {
+        "row": 0,
+        "col": 1
+      },
+      {
+        "row": 0,
+        "col": 2
+      },
+      {
+        "row": 0,
+        "col": 3
+      },
+      {
+        "row": 1,
+        "col": 0
+      },
+      {
+        "row": 1,
+        "col": 1
+      },
+      {
+        "row": 1,
+        "col": 2
+      },
+      {
+        "row": 1,
+        "col": 3
+      },
+      {
+        "row": 2,
+        "col": 0
+      },
+      {
+        "row": 2,
+        "col": 1
+      },
+      {
+        "row": 2,
+        "col": 2
+      },
+      {
+        "row": 2,
+        "col": 3
+      },
+      {
+        "row": 3,
+        "col": 0
+      },
+      {
+        "row": 3,
+        "col": 1
+      },
+      {
+        "row": 3,
+        "col": 2
+      },
+      {
+        "row": 3,
+        "col": 3
+      }
+    ],
+    "excludedCells": [],
+    "pixelTransformation": "none-byte-identical-copy",
+    "canonicalFidelityCertified": false
+  }
+}

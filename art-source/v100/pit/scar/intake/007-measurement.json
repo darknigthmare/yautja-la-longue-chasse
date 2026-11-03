@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/scar/intake/007-scar-5M-original.png",
+  "sourceSha256": "584710a88e4266ae350dd7cc199369afd281639370ec062af5389891c3a3a12e",
+  "bytes": 1616123,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 2,
+  "rows": 4,
+  "strategy": "row-first",
+  "status": "REJECT_CROP",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [],
+  "frames": [],
+  "issues": [
+    "No safe horizontal alpha gutter before row 2",
+    "No safe horizontal alpha gutter before row 3",
+    "No safe horizontal alpha gutter before row 4",
+    "Column-first: No safe vertical alpha gutter in row 1, before column 2",
+    "Column-first: No safe vertical alpha gutter in row 1, before column 3",
+    "Column-first: No safe vertical alpha gutter in row 1, before column 4",
+    "Column-first: No safe vertical alpha gutter in row 2, before column 2",
+    "Column-first: No safe vertical alpha gutter in row 2, before column 3",
+    "Column-first: No safe vertical alpha gutter in row 2, before column 4"
+  ]
+}

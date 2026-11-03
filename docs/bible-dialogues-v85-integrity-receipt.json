@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "verificationScope": "SHA256 of unchanged, already published Git blobs; this receipt does not re-read the unavailable private XLSX or claim a new extraction audit.",
+  "historicalSourceReceipt": "docs/bible-dialogues-v85-source.json",
+  "historicalValidationReceipt": "docs/bible-dialogues-v85-targeted-tests.json",
+  "source": {
+    "workbook": "Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+    "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+    "totalWorkbookSheets": 139
+  },
+  "files": [
+    {
+      "path": "public/game/dialogues/v85/bible-dialogues.json",
+      "bytes": 8625812,
+      "sha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+      "unchangedSinceCommit": "0cf87a5ff1b339b1fa05949c428f5dbbd034aefd"
+    },
+    {
+      "path": "public/game/dialogues/v85/bible-ships.json",
+      "bytes": 501882,
+      "sha256": "b453927c3e4449da2e88c023356772c91de982132128e1a545a3390478279001",
+      "unchangedSinceCommit": "0cf87a5ff1b339b1fa05949c428f5dbbd034aefd"
+    },
+    {
+      "path": "app/game/data/shipFlightSourceV87.json",
+      "bytes": 12595,
+      "sha256": "fa1623343d5693f54c9f84e73383dde2d79402fee5a975546d5be122a1019a10",
+      "unchangedSinceCommit": "c9c1b6d466f4c7d169227b726107340a8c5253c1"
+    },
+    {
+      "path": "app/game/data/shipPreparationSourceV88.json",
+      "bytes": 21956,
+      "sha256": "3d69f8084e31f23ee73110fc9e108b411fbc21c3cfdcd15ecbd429d2ea36e6ef",
+      "unchangedSinceCommit": "f7db27512a080a2876be839c71dbce26c18ad48f"
+    }
+  ]
+}

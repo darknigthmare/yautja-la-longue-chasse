@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "status": "LOCAL_TOOL_OUTPUT_REVIEWED",
+  "recordedAt": "2026-10-25T07:40:38.439Z",
+  "tool": "image_gen.imagegen",
+  "submittedPrompt": "Create a production game sprite atlas, square 1024x1024, true transparent RGBA background. Four exact 512x512 cells arranged 2 columns and 2 rows, no visible cell grid. Three completely separate physical objects, one per cell, fourth cell completely transparent. This is original local alien archaeological equipment for a dark Yautja-inspired settlement, not an asserted canonical movie artifact. Painterly detailed realistic game art, blackened stone and weathered dark bronze, warm brass bevels, muted amber details, orthographic three-quarter view from above, light from upper left. Crisp opaque silhouettes, no ground plane, no scenery, no people, no hands, no floating annotations, no text except the tiny actual engraved operational inscription K-17 on the plaque. Keep every object's complete silhouette inside its cell with at least 48px transparent margins and no shadows extending into other cells. TOP LEFT: a portable palm-width rectangular dark stone/bronze evidence plaque with engraved K-17 and a simple three-notched angular registration mark. Its upper-right corner is genuinely broken off, exposing a rough diagonal fracture with three distinctive teeth; show the missing edge clearly. TOP RIGHT: a separate pale clay/stone impression slab with the same three-notched registration mark pressed into it, a matching but NOT identical separate trace, its own complete small irregular rectangular silhouette, no K-17 text. BOTTOM LEFT: the small detached upper-right corner fragment of the plaque, bearing exactly the corresponding three-tooth fracture so it visibly can be compared to the missing corner; this is a standalone object, no large plaque behind it. BOTTOM RIGHT: empty transparent cell. All three sprites must be separate objects, never merged or overlapping. Do not invent lineage, clan identity, magical effects or neon glows. Final deliverable is one clean sprite atlas with actual transparency, suitable for native sourceRect rendering.",
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-7f362cbd-c263-4b1b-bae7-0fac8d4d5b82.png",
+  "outputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-7f362cbd-c263-4b1b-bae7-0fac8d4d5b82.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "delivered": {
+    "path": "public/game/homeworld/v109/archive-plaque-atlas-v109.png",
+    "sha256": "a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe",
+    "bytes": 1582702,
+    "width": 1254,
+    "height": 1254
+  },
+  "visualReview": {
+    "reviewed": true,
+    "independentObjects": 3,
+    "inscription": "K-17",
+    "scope": "Original local plaque with missing corner, separate impression, separate candidate fragment. This review does not attest canonical identity, an actual matching repair, source NPC gestures or lineage.",
+    "alphaAnalysis": {
+      "mode": "RGBA",
+      "transparentPixelsPresent": true,
+      "visibleThreshold": 8,
+      "regions": {
+        "plaque": {
+          "x": 0,
+          "y": 0,
+          "width": 627,
+          "height": 750,
+          "pivot": {
+            "x": 331.5,
+            "y": 640
+          },
+          "alphaBounds": {
+            "x": 45,
+            "y": 46,
+            "width": 573,
+            "height": 594
+          }
+        },
+        "trace": {
+          "x": 627,
+          "y": 0,
+          "width": 627,
+          "height": 750,
+          "pivot": {
+            "x": 321,
+            "y": 623
+          },
+          "alphaBounds": {
+            "x": 60,
+            "y": 112,
+            "width": 522,
+            "height": 511
+          }
+        },
+        "fragment": {
+          "x": 0,
+          "y": 750,
+          "width": 627,
+          "height": 504,
+          "pivot": {
+            "x": 357,
+            "y": 398
+          },
+          "alphaBounds": {
+            "x": 194,
+            "y": 49,
+            "width": 326,
+            "height": 349
+          }
+        }
+      }
+    }
+  },
+  "filesEditedAfterGeneration": false
+}

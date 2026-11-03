@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-02",
+  "targetId": "target-v81-63-141",
+  "label": "Forge active",
+  "status": "OPEN_NATIVE_REUSE_BINDING_CANDIDATE_NOT_HUMAN_ADMITTED",
+  "gitUsed": false,
+  "baseRepositoryMutation": false,
+  "imageGenerationPerformedForForge": false,
+  "existingFilesNotMissing": true,
+  "finding": "Six painted native flame frames already exist with an eight-fps loop in the Pit. No Homeworld forge cycle or forge-specific CSS animation was found in the active World renderer/City stylesheet. V111 MISSING_ANIMATION identifies missing target binding/qualification, not globally absent fire artwork.",
+  "sourcePins": [
+    {
+      "path": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25424,
+      "sha256": "f005423055fa37eb3fcadae2ae22a8d7cdbbed577a2bcf5ec4d3020e4d773acc"
+    },
+    {
+      "path": "app/game/HomeworldHub.tsx",
+      "bytes": 182501,
+      "sha256": "82ffe540bcb87ec29a3534ed55ef7b82d0195322bb30304226a9cbc3f9678ceb"
+    },
+    {
+      "path": "app/game/HomeworldCity.module.css",
+      "bytes": 23775,
+      "sha256": "05f8f7e11fd01a9bd0491f2d39e1b283d3120f64eb7ba9e406474b75d1e47e19"
+    },
+    {
+      "path": "app/game/HomeworldNativePropV64.tsx",
+      "bytes": 1806,
+      "sha256": "8df29c0a8e09f2493369944278c0ae5c538840b7971bd6a6883ff8cb4cd36d6c"
+    },
+    {
+      "path": "app/game/systems/homeworldAssetCatalogueV81.ts",
+      "bytes": 8182,
+      "sha256": "72d0a350e00393464b574189e8bbb87baf198f7940afd89d4421e021e916c70e"
+    },
+    {
+      "path": "app/game/data/homeworldIdentityArtV72.json",
+      "bytes": 7954,
+      "sha256": "52b44e3a1ef4a0e38985eba465a1428fd498027648e390a62755e4af184d07b0"
+    },
+    {
+      "path": "app/game/systems/homeworldIdentityV72.ts",
+      "bytes": 4438,
+      "sha256": "415c58c301d7ca3589136f4bfb306ae51c23577375fff0bbe9a3c85b6c2e5605"
+    },
+    {
+      "path": "app/game/pitArenaProductionData.generated.json",
+      "bytes": 1758885,
+      "sha256": "c07d5d314269548b50f7a4d564fd6e9c6583d2ac5d6033c56254340909d01f5b"
+    }
+  ],
+  "actualSupport": {
+    "buildingId": "deep-forge",
+    "levelId": "0",
+    "worldAnchor": {
+      "x": 3080,
+      "y": 2898.5
+    },
+    "source": "/game/homeworld/v72/civic-identity-atlas.png",
+    "sourceRect": {
+      "x": 0,
+      "y": 512,
+      "width": 520,
+      "height": 512
+    },
+    "nativeCellPivot": {
+      "x": 268,
+      "y": 433
+    },
+    "threshold": {
+      "x": 276,
+      "y": 423
+    },
+    "paint": {
+      "left": 2757.622950819672,
+      "top": 1168.433431911048,
+      "width": 607.3770491803278,
+      "height": 598.0327868852459
+    },
+    "selectedZone": "Native front-left hearth under its painted hood, not the entire facade, doorway or a fictional working character",
+    "authoredCellAnchor": {
+      "x": 162,
+      "y": 381
+    },
+    "authoredCellMaskPolygon": [
+      [
+        140,
+        381
+      ],
+      [
+        141,
+        356
+      ],
+      [
+        150,
+        343
+      ],
+      [
+        165,
+        341
+      ],
+      [
+        177,
+        350
+      ],
+      [
+        184,
+        381
+      ]
+    ],
+    "anchorStatus": "Exact integer cell coordinates authored on the opened original, candidate pending contextual inspection; not human approved"
+  },
+  "neighbourDisposition": {
+    "v78Workstation": {
+      "source": "public/game/homeworld/v78/forge-workstation-left.png",
+      "nativeDimensions": [
+        1536,
+        1024
+      ],
+      "nativePivot": {
+        "x": 757.5,
+        "y": 777.5
+      },
+      "nativeHeightWorld": 155,
+      "acceptedPlacements": [],
+      "rejections": [
+        {
+          "id": "city-native-v78:forge-workstation-left",
+          "reason": "urban-v78:lower-work-south:pending-facade",
+          "x": 3600,
+          "y": 4630,
+          "levelId": "-1A"
+        }
+      ],
+      "meaning": "Do not animate a support that the active source placement provider does not mount."
+    },
+    "v83Bench": {
+      "source": "public/game/homeworld/v83/forge-bench-right.png",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativePivot": {
+        "x": 645,
+        "y": 1012
+      },
+      "heightWorld": 125,
+      "originalV83Accepted": [],
+      "originalV83Refusals": [
+        {
+          "id": "street-v83:forge-finishing-bench",
+          "reason": "unsupported-contact"
+        },
+        {
+          "id": "street-v83:lower-forge-bench",
+          "reason": "reserved:court-pedestrian:lower-forge"
+        }
+      ],
+      "v92Accepted": [
+        {
+          "id": "street-v92:lower-forge:forge-bench-right",
+          "compositionId": "lower-forge",
+          "buildingId": null,
+          "levelId": "-1A",
+          "districtId": "undercity",
+          "x": 3530,
+          "y": 4960,
+          "artId": "forge-bench-right",
+          "label": "Établi des artisans bas",
+          "purpose": "Finition près du stock de matières, mais hors du passage vers la rampe.",
+          "scale": 1,
+          "interactive": false,
+          "solid": true
+        }
+      ],
+      "meaning": "Real V92-mounted finishing bench exists; small native heating cup would be about14px wide in city and is secondary to the building hearth."
+    },
+    "oldCivicForge": "public/game/homeworld/v64/civic-forge.png exists but is not the active deep-forge bitmap; actual building uses V72 cell."
+  },
+  "reusedNativeFrames": [
+    {
+      "path": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+      "bytes": 1253095,
+      "sourceSha256": "c7e2903e1ff3021b8a81fb36817769716b68d6c920f1e76811b9ed78d2a4357d",
+      "destinationSha256": "c7e2903e1ff3021b8a81fb36817769716b68d6c920f1e76811b9ed78d2a4357d",
+      "byteExact": true,
+      "historicalExistingSource": true,
+      "newArt": false,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bboxAlphaGt0": [
+        105,
+        21,
+        1456,
+        1024
+      ],
+      "allSixOriginalsOpenedByAssistant": true
+    },
+    {
+      "path": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+      "bytes": 1378750,
+      "sourceSha256": "6dbb39f0d2b2a54cd74463ee54136446a5cb4a676e29d6da138d70fe39d7ff0b",
+      "destinationSha256": "6dbb39f0d2b2a54cd74463ee54136446a5cb4a676e29d6da138d70fe39d7ff0b",
+      "byteExact": true,
+      "historicalExistingSource": true,
+      "newArt": false,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bboxAlphaGt0": [
+        177,
+        21,
+        1522,
+        952
+      ],
+      "allSixOriginalsOpenedByAssistant": true
+    },
+    {
+      "path": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+      "bytes": 1326562,
+      "sourceSha256": "b8afc945c9021d55216bd117ae2b2751cc30153fafd176d09adf9d277b9fba86",
+      "destinationSha256": "b8afc945c9021d55216bd117ae2b2751cc30153fafd176d09adf9d277b9fba86",
+      "byteExact": true,
+      "historicalExistingSource": true,
+      "newArt": false,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bboxAlphaGt0": [
+        49,
+        31,
+        1522,
+        976
+      ],
+      "allSixOriginalsOpenedByAssistant": true
+    },
+    {
+      "path": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png",
+      "bytes": 1317805,
+      "sourceSha256": "cf27819e6f2934263fbe939865f013ad53f5cc8e8aafb423bf379f81d7c8e8d5",
+      "destinationSha256": "cf27819e6f2934263fbe939865f013ad53f5cc8e8aafb423bf379f81d7c8e8d5",
+      "byteExact": true,
+      "historicalExistingSource": true,
+      "newArt": false,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bboxAlphaGt0": [
+        49,
+        21,
+        1522,
+        1024
+      ],
+      "allSixOriginalsOpenedByAssistant": true
+    },
+    {
+      "path": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+      "bytes": 1219860,
+      "sourceSha256": "321b1b1eb34c2e131ec7a37bce3ffec5ef51aaa215a1d7e067d127ccd9e46a22",
+      "destinationSha256": "321b1b1eb34c2e131ec7a37bce3ffec5ef51aaa215a1d7e067d127ccd9e46a22",
+      "byteExact": true,
+      "historicalExistingSource": true,
+      "newArt": false,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bboxAlphaGt0": [
+        49,
+        21,
+        1522,
+        990
+      ],
+      "allSixOriginalsOpenedByAssistant": true
+    },
+    {
+      "path": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png",
+      "bytes": 1304701,
+      "sourceSha256": "bc7e020f0a13b8bd652656c8667a35d72422ebc18ffbdf0e31079d190e819721",
+      "destinationSha256": "bc7e020f0a13b8bd652656c8667a35d72422ebc18ffbdf0e31079d190e819721",
+      "byteExact": true,
+      "historicalExistingSource": true,
+      "newArt": false,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bboxAlphaGt0": [
+        65,
+        21,
+        1522,
+        968
+      ],
+      "allSixOriginalsOpenedByAssistant": true
+    }
+  ],
+  "previousPitContract": {
+    "source": "app/game/pitArenaProductionData.generated.json",
+    "jsonPointers": [
+      "/sharedLibrary/152",
+      "/stages/0/planes/3/assets/2"
+    ],
+    "fps": 8,
+    "reducedMotionFrame": 0,
+    "loop": true,
+    "legacySourceCrop": {
+      "x": 377,
+      "y": 107,
+      "width": 815,
+      "height": 778
+    },
+    "legacyPlacement": "Two Pit flames at76x62; that aspect ratio and source crop are not copied into the uniform-scale Homeworld binding.",
+    "preservedUnchanged": true
+  },
+  "chosenBinding": {
+    "isolatedWorkspace": "/workspace/yautja-homeworld-marsh-20261102",
+    "component": "app/game/HomeworldForgeFireV113.tsx",
+    "system": "app/game/systems/homeworldForgeFireV113.ts",
+    "test": "tests/homeworld-forge-fire-v113.test.mjs",
+    "qa": "docs/qa/forge-fire-v113-20261102/README.md",
+    "hook": "<HomeworldForgeFireV113 building={building} width={image.width} height={image.height} seconds={seconds} reducedMotion={reducedMotion}/>",
+    "hookOwner": "/root/homeworld_final_recovery",
+    "hookLocation": "Immediately after native building bitmap, inside its existing wrapper; renderer shared file stays owned by Homeworld parent.",
+    "visualMechanism": "Switch exact existing PNG source among six drawings, each entire1536x1024 image at a single positive uniform scale0.064 in V72 cell pixels; use native source pivots to align heat base, then non-destructive runtime aperture mask to retain hood/front lip. No PNG processing or modified crop exports.",
+    "framesPerSecond": 8,
+    "loopSeconds": 0.75,
+    "clock": "Existing gated city seconds prop; no timer/RAF/CSS pulse; same seconds holds same frame.",
+    "pause": "Existing city clock stops on pause/focus/modal gates; supplied static seconds stop fire.",
+    "reducedMotion": "Hold frame0.",
+    "decodeFailure": "Decode all six exact1536x1024 flame images AND exact1536x1024 V72 facade before overlay; any loading/error omits child. Static painted hearth remains if flames fail.",
+    "opacity": "Inherited exactly once from building wrapper; do not multiply parent fade again.",
+    "stateContract": "No new interaction, crafting, reward, collision, actor movement or save field."
+  },
+  "fallbackNativeProductionOnlyAfterReview": {
+    "requiredBeforeGeneration": "Coordinate internal allocation only if existing reuse fails the real contextual review. No Forge generation currently allocated.",
+    "proposedAtlases": [
+      {
+        "id": "forge-hearth-flame-four-frames-native",
+        "layout": "2x2 equal cells; requested1024square with512square cells, derive actual rects only from delivered native dimensions",
+        "frames": [
+          "low split flame",
+          "left curl",
+          "tall central fork",
+          "right curl returning to low"
+        ],
+        "pivot": "Same authored native hearth baseline in every cell; no scaling independently per frame.",
+        "orientation": "Front-facing upward flame for exact V72 front-left hearth; no building redraw or background.",
+        "integration": "Read sourceRect in the original atlas at runtime; never split/resample/repack PNGs."
+      },
+      {
+        "id": "forge-chimney-exhaust-four-frames-native",
+        "layout": "2x2 equal cells; use actual delivered dimensions",
+        "frames": [
+          "compact initial wisp",
+          "rising curl",
+          "split dissipating wisp",
+          "low returning wisp"
+        ],
+        "pivot": "Fixed authored chimney-mouth origin in all cells; V72 native chimney socket coordinates must be individually measured before allocation.",
+        "orientation": "Native V72 roof/chimney camera; not mirrored opposing chimney views.",
+        "integration": "Optional and lower priority; opening/hood readability first, do not create universal Yautja industrial canon."
+      }
+    ]
+  },
+  "admissionCriteria": [
+    "Actual six painted temporal shapes must be visible in the true Homeworld hearth; static light/opacity pulse does not count.",
+    "Inspect0→1→2→3→4→5→0 in context, base alignment, occlusion by native hood/lip and physical aperture fit.",
+    "Preserve reference source bytes, all Pit consumers and clock behavior; no full-building regeneration or source status promotion.",
+    "Browser screenshots/video at real scale, moving behind building, pause/focus/reduced-motion/error fallback; assistant inspection must be labeled separately from human validation."
+  ],
+  "verification": {
+    "sourceProviders": "Actual unmodified providers evaluated in memory, no browser implication.",
+    "targetedTests": "PASS:5 checks including empty initial child before image decode; node tests/homeworld-forge-fire-v113.test.mjs",
+    "eslint": "Two standalone source files pass targeted ESLint.",
+    "typecheck": "PASS: ./node_modules/.bin/tsc --noEmit --incremental false",
+    "browser": {
+      "status": "PASS_TARGETED_DEVELOPMENT_REUSE_CANDIDATE",
+      "rawResult": "/workspace/native-forge-production-20261102/context-run-lzpWOP/result.json",
+      "review": "/workspace/native-forge-production-20261102/forge-context-review.json",
+      "checks": 7,
+      "screenshotsOpened": 11,
+      "limitations": "Declared campaign/location fixture; no walked approach/focus/behind-facade or compiled production qualification. Missing atlas screenshot remains city-loading16/92."
+    },
+    "humanArtisticValidation": false,
+    "sourceClosure": false
+  }
+}

@@ -1,0 +1,1085 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4194",
+  "expectedVersion": "V76",
+  "checks": [
+    {
+      "name": "six-actual-keyboard-approaches-doors-exits-and-native-angled-metrology",
+      "id": "convoy-workshop",
+      "start": {
+        "x": 1280,
+        "y": 4480
+      },
+      "approach": {
+        "x": 1906.1213778006543,
+        "y": 4256.44361879196
+      },
+      "distance": 727.2013700891996,
+      "noTeleport": true,
+      "nativeSource": "/game/homeworld/v76/architecture/convoy-workshop.png",
+      "sourceState": {
+        "width": 1536,
+        "height": 1024,
+        "transforms": [
+          {
+            "tag": "IMG",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "matrix(0.96, 0, 0, 0.96, -1108.97, -1833)",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": {
+              "a": 0.96,
+              "b": 0,
+              "c": 0,
+              "d": 0.96
+            }
+          }
+        ]
+      },
+      "rect": {
+        "x": 278.105712890625,
+        "y": 162.0650634765625,
+        "width": 684.0150146484375,
+        "height": 456.0150146484375
+      },
+      "screenScale": 0.44532227516174316,
+      "nativeFront": {
+        "left": {
+          "x": 433.0778646469116,
+          "y": 602.9341158866882
+        },
+        "right": {
+          "x": 940.7452583312988,
+          "y": 485.8143575191498
+        }
+      },
+      "marker": {
+        "x": 695.8106689453125,
+        "y": 531.455078125
+      },
+      "threshold": {
+        "x": 695.8180069923401,
+        "y": 531.4598907232285
+      },
+      "measuredYaw": -21.910792036302766,
+      "door": {
+        "threshold": {
+          "x": 1880,
+          "y": 4191.5
+        },
+        "approach": {
+          "x": 1906.1213778006543,
+          "y": 4256.44361879196
+        },
+        "clearWidth": 101.98095013576162,
+        "clearHeight": 186.0170795398297,
+        "paintedSocket": {
+          "x": 836,
+          "y": 405,
+          "width": 204,
+          "height": 448,
+          "threshold": {
+            "x": 938,
+            "y": 829.5
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 18.29765930834961,
+        "normal": {
+          "x": 0.3731625400093468,
+          "y": 0.9277659827422927
+        },
+        "groundOpening": {
+          "left": {
+            "x": 1832.6839348801432,
+            "y": 4210.505749898955
+          },
+          "right": {
+            "x": 1927.3160651198568,
+            "y": 4172.494250101045
+          }
+        }
+      },
+      "physicalPolygon": [
+        {
+          "x": 1606.3090350910236,
+          "y": 4321.3052280332895
+        },
+        {
+          "x": 2135.1356452541304,
+          "y": 4108.602580227962
+        },
+        {
+          "x": 2008.2603816509525,
+          "y": 3793.162146095582
+        },
+        {
+          "x": 1479.4337714878457,
+          "y": 4005.8647939009097
+        }
+      ],
+      "gateLabels": [],
+      "gates": [],
+      "preservedInterior": "convoy-two-workbenches",
+      "zoneCount": 2,
+      "actualKeyboardExit": true
+    },
+    {
+      "name": "six-actual-keyboard-approaches-doors-exits-and-native-angled-metrology",
+      "id": "convoy-store",
+      "start": {
+        "x": 1906,
+        "y": 4256
+      },
+      "approach": {
+        "x": 2581.221641027005,
+        "y": 4157.810704860716
+      },
+      "distance": 2293.7209707169486,
+      "noTeleport": true,
+      "nativeSource": "/game/homeworld/v76/architecture/convoy-store.png",
+      "sourceState": {
+        "width": 1536,
+        "height": 1024,
+        "transforms": [
+          {
+            "tag": "IMG",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "matrix(0.96, 0, 0, 0.96, -1759.47, -1778.12)",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": {
+              "a": 0.96,
+              "b": 0,
+              "c": 0,
+              "d": 0.96
+            }
+          }
+        ]
+      },
+      "rect": {
+        "x": 492.3946533203125,
+        "y": 182.5867919921875,
+        "width": 665.0849609375,
+        "height": 443.3848876953125
+      },
+      "screenScale": 0.4329980214436849,
+      "nativeFront": {
+        "left": {
+          "x": 513.1785583496094,
+          "y": 481.3554267883301
+        },
+        "right": {
+          "x": 1011.9922790527344,
+          "y": 610.3888371785481
+        }
+      },
+      "marker": {
+        "x": 746.1197509765625,
+        "y": 532.65673828125
+      },
+      "threshold": {
+        "x": 746.1314938863118,
+        "y": 532.6656923294067
+      },
+      "measuredYaw": 24.27517405004309,
+      "door": {
+        "threshold": {
+          "x": 2610,
+          "y": 4094
+        },
+        "approach": {
+          "x": 2581.221641027005,
+          "y": 4157.810704860716
+        },
+        "clearWidth": 148.43478628219637,
+        "clearHeight": 177.71091390897385,
+        "paintedSocket": {
+          "x": 435,
+          "y": 377,
+          "width": 302,
+          "height": 469,
+          "threshold": {
+            "x": 586,
+            "y": 808.5
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 14.817177171024461,
+        "normal": {
+          "x": -0.4111194138999296,
+          "y": 0.9115814980102319
+        },
+        "groundOpening": {
+          "left": {
+            "x": 2541.8925177658502,
+            "y": 4064.511149422446
+          },
+          "right": {
+            "x": 2678.1074822341498,
+            "y": 4123.488850577553
+          }
+        }
+      },
+      "physicalPolygon": [
+        {
+          "x": 2367.338904357797,
+          "y": 4000.8152321749303
+        },
+        {
+          "x": 2886.940358223629,
+          "y": 4235.15329809789
+        },
+        {
+          "x": 3026.720958949605,
+          "y": 3925.215588774411
+        },
+        {
+          "x": 2507.119505083773,
+          "y": 3690.8775228514514
+        }
+      ],
+      "gateLabels": [],
+      "gates": [],
+      "preservedInterior": "convoy-three-storage-bays",
+      "zoneCount": 4,
+      "actualKeyboardExit": true
+    },
+    {
+      "name": "six-actual-keyboard-approaches-doors-exits-and-native-angled-metrology",
+      "id": "dock-control",
+      "start": {
+        "x": 2581,
+        "y": 4158
+      },
+      "approach": {
+        "x": 511.6273831772375,
+        "y": 3028.9921449447406
+      },
+      "distance": 3169.765552462945,
+      "noTeleport": true,
+      "nativeSource": "/game/homeworld/v76/architecture/dock-control.png",
+      "sourceState": {
+        "width": 1536,
+        "height": 1024,
+        "transforms": [
+          {
+            "tag": "IMG",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "matrix(0.96, 0, 0, 0.96, 229.903, -1156.04)",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": {
+              "a": 0.96,
+              "b": 0,
+              "c": 0,
+              "d": 0.96
+            }
+          }
+        ]
+      },
+      "rect": {
+        "x": 486.7476806640625,
+        "y": 169.5506591796875,
+        "width": 662.3699951171875,
+        "height": 441.5849609375
+      },
+      "screenScale": 0.43123046557108563,
+      "nativeFront": {
+        "left": {
+          "x": 507.4467430114746,
+          "y": 476.5867506663005
+        },
+        "right": {
+          "x": 1007.674083073934,
+          "y": 603.7997380097707
+        }
+      },
+      "marker": {
+        "x": 748.2877197265625,
+        "y": 533.07568359375
+      },
+      "threshold": {
+        "x": 748.288958032926,
+        "y": 533.0779416561127
+      },
+      "measuredYaw": 23.911375672914357,
+      "door": {
+        "threshold": {
+          "x": 540,
+          "y": 2965
+        },
+        "approach": {
+          "x": 511.6273831772375,
+          "y": 3028.9921449447406
+        },
+        "clearWidth": 115.37970592147386,
+        "clearHeight": 212.02520536863324,
+        "paintedSocket": {
+          "x": 490,
+          "y": 340,
+          "width": 233,
+          "height": 534,
+          "threshold": {
+            "x": 606.5,
+            "y": 843
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 7.8985972377070155,
+        "normal": {
+          "x": -0.405323097468036,
+          "y": 0.9141734992105804
+        },
+        "groundOpening": {
+          "left": {
+            "x": 487.6675075732081,
+            "y": 2940.7218334499653
+          },
+          "right": {
+            "x": 592.3324924267919,
+            "y": 2989.2781665500347
+          }
+        }
+      },
+      "physicalPolygon": [
+        {
+          "x": 289.1184805119033,
+          "y": 2862.405167159531
+        },
+        {
+          "x": 810.197375061934,
+          "y": 3093.439332716312
+        },
+        {
+          "x": 948.0072282010663,
+          "y": 2782.6203429847146
+        },
+        {
+          "x": 426.92833365103553,
+          "y": 2551.5861774279338
+        }
+      ],
+      "gateLabels": [
+        {
+          "text": "Chaussée des CendresApprocher le seuil · interagir",
+          "visibility": "hidden"
+        }
+      ],
+      "gates": [
+        {
+          "id": "gateway-v72:ash-marches",
+          "visibility": "visible"
+        }
+      ],
+      "preservedInterior": "dock-side-office",
+      "zoneCount": 2,
+      "actualKeyboardExit": true
+    },
+    {
+      "name": "six-actual-keyboard-approaches-doors-exits-and-native-angled-metrology",
+      "id": "trophy-mausoleum",
+      "start": {
+        "x": 512,
+        "y": 3029
+      },
+      "approach": {
+        "x": 653.2703181035313,
+        "y": 2029.6956266351413
+      },
+      "distance": 7013.754791517711,
+      "noTeleport": true,
+      "nativeSource": "/game/homeworld/v76/architecture/trophy-mausoleum.png",
+      "sourceState": {
+        "width": 1536,
+        "height": 1024,
+        "transforms": [
+          {
+            "tag": "IMG",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "matrix(0.96, 0, 0, 0.96, 95.1167, -605.532)",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": {
+              "a": 0.96,
+              "b": 0,
+              "c": 0,
+              "d": 0.96
+            }
+          }
+        ]
+      },
+      "rect": {
+        "x": 482.3116455078125,
+        "y": 157.37841796875,
+        "width": 674.31005859375,
+        "height": 449.53497314453125
+      },
+      "screenScale": 0.43900394439697266,
+      "nativeFront": {
+        "left": {
+          "x": 503.3838348388672,
+          "y": 480.0463171005249
+        },
+        "right": {
+          "x": 1009.1163787841797,
+          "y": 599.8943939208984
+        }
+      },
+      "marker": {
+        "x": 747.901611328125,
+        "y": 532.9334106445312
+      },
+      "threshold": {
+        "x": 747.909031867981,
+        "y": 532.9462924003601
+      },
+      "measuredYaw": 22.448484174899978,
+      "door": {
+        "threshold": {
+          "x": 680,
+          "y": 1965
+        },
+        "approach": {
+          "x": 653.2703181035313,
+          "y": 2029.6956266351413
+        },
+        "clearWidth": 110.58558631715283,
+        "clearHeight": 160.96888055648236,
+        "paintedSocket": {
+          "x": 494,
+          "y": 476,
+          "width": 222,
+          "height": 407,
+          "threshold": {
+            "x": 605,
+            "y": 855.5
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 8.471968381445201,
+        "normal": {
+          "x": -0.3818525985209811,
+          "y": 0.9242232376448747
+        },
+        "groundOpening": {
+          "left": {
+            "x": 629.2399268699729,
+            "y": 1943.0749469530535
+          },
+          "right": {
+            "x": 730.7600731300271,
+            "y": 1986.9250530469465
+          }
+        }
+      },
+      "physicalPolygon": [
+        {
+          "x": 425.2850384376118,
+          "y": 1868.928403921562
+        },
+        {
+          "x": 952.0922838951903,
+          "y": 2086.5843850785213
+        },
+        {
+          "x": 1081.922167392324,
+          "y": 1772.348484279264
+        },
+        {
+          "x": 555.1149219347453,
+          "y": 1554.6925031223045
+        }
+      ],
+      "gateLabels": [
+        {
+          "text": "Chaussée des CendresApprocher le seuil · interagir",
+          "visibility": "hidden"
+        },
+        {
+          "text": "Corniche des MaréesApprocher le seuil · interagir",
+          "visibility": "hidden"
+        }
+      ],
+      "gates": [
+        {
+          "id": "gateway-v72:ash-marches",
+          "visibility": "visible"
+        },
+        {
+          "id": "gateway-v72:leviathan-coast",
+          "visibility": "visible"
+        }
+      ],
+      "preservedInterior": "mausoleum-processional-aisle",
+      "zoneCount": 3,
+      "actualKeyboardExit": true
+    },
+    {
+      "name": "six-actual-keyboard-approaches-doors-exits-and-native-angled-metrology",
+      "id": "rite-sanctum",
+      "start": {
+        "x": 653,
+        "y": 2030
+      },
+      "approach": {
+        "x": 3624.318473912295,
+        "y": 966.6400169605175
+      },
+      "distance": 5944.853565880669,
+      "noTeleport": true,
+      "nativeSource": "/game/homeworld/v76/architecture/rite-sanctum.png",
+      "sourceState": {
+        "width": 1536,
+        "height": 1024,
+        "transforms": [
+          {
+            "tag": "IMG",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "matrix(0.96, 0, 0, 0.96, -2762.29, -20.5412)",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": {
+              "a": 0.96,
+              "b": 0,
+              "c": 0,
+              "d": 0.96
+            }
+          }
+        ]
+      },
+      "rect": {
+        "x": 250.91064453125,
+        "y": 143.1038360595703,
+        "width": 703.695068359375,
+        "height": 469.12498474121094
+      },
+      "screenScale": 0.45813481012980145,
+      "nativeFront": {
+        "left": {
+          "x": 419.50425465901696,
+          "y": 597.5735677083334
+        },
+        "right": {
+          "x": 932.6152420043945,
+          "y": 488.5374828974406
+        }
+      },
+      "marker": {
+        "x": 693.695556640625,
+        "y": 532.0538330078125
+      },
+      "threshold": {
+        "x": 693.6979385217031,
+        "y": 532.0602898597717
+      },
+      "measuredYaw": -20.328783383627798,
+      "door": {
+        "threshold": {
+          "x": 3600,
+          "y": 901
+        },
+        "approach": {
+          "x": 3624.318473912295,
+          "y": 966.6400169605175
+        },
+        "clearWidth": 135.10953385511144,
+        "clearHeight": 208.07215580392636,
+        "paintedSocket": {
+          "x": 833,
+          "y": 386,
+          "width": 267,
+          "height": 490,
+          "threshold": {
+            "x": 966.5,
+            "y": 849
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 12.341813611188805,
+        "normal": {
+          "x": 0.3474067701756413,
+          "y": 0.9377145280073939
+        },
+        "groundOpening": {
+          "left": {
+            "x": 3536.2898330279263,
+            "y": 923.4646646764837
+          },
+          "right": {
+            "x": 3663.7101669720737,
+            "y": 878.5353353235163
+          }
+        }
+      },
+      "physicalPolygon": [
+        {
+          "x": 3314.3780154847477,
+          "y": 1019.9795203235989
+        },
+        {
+          "x": 3848.875296448962,
+          "y": 821.9576613234833
+        },
+        {
+          "x": 3730.756994589244,
+          "y": 503.1347218009694
+        },
+        {
+          "x": 3196.2597136250297,
+          "y": 701.1565808010849
+        }
+      ],
+      "gateLabels": [
+        {
+          "text": "Passerelle des PiliersApprocher le seuil · interagir",
+          "visibility": "hidden"
+        },
+        {
+          "text": "Départ des Trois VentsApprocher le seuil · interagir",
+          "visibility": "hidden"
+        }
+      ],
+      "gates": [
+        {
+          "id": "gateway-v72:pillar-jungle",
+          "visibility": "visible"
+        },
+        {
+          "id": "gateway-v72:storm-chain",
+          "visibility": "visible"
+        }
+      ],
+      "preservedInterior": "rite-central-passage",
+      "zoneCount": 2,
+      "actualKeyboardExit": true
+    },
+    {
+      "name": "six-actual-keyboard-approaches-doors-exits-and-native-angled-metrology",
+      "id": "rampart-watch",
+      "start": {
+        "x": 3624,
+        "y": 967
+      },
+      "approach": {
+        "x": 5866.312298988585,
+        "y": 2885.866500768388
+      },
+      "distance": 3923.769831019611,
+      "noTeleport": true,
+      "nativeSource": "/game/homeworld/v76/architecture/rampart-watch.png",
+      "sourceState": {
+        "width": 1536,
+        "height": 1024,
+        "transforms": [
+          {
+            "tag": "IMG",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "matrix(0.96, 0, 0, 0.96, -4910.63, -1076.93)",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": {
+              "a": 0.96,
+              "b": 0,
+              "c": 0,
+              "d": 0.96
+            }
+          }
+        ]
+      },
+      "rect": {
+        "x": 243.748046875,
+        "y": 142.4189453125,
+        "width": 710.625,
+        "height": 473.7449951171875
+      },
+      "screenScale": 0.462646484375,
+      "nativeFront": {
+        "left": {
+          "x": 425.10546875,
+          "y": 611.54248046875
+        },
+        "right": {
+          "x": 932.166015625,
+          "y": 493.567626953125
+        }
+      },
+      "marker": {
+        "x": 695.7578125,
+        "y": 532.89892578125
+      },
+      "threshold": {
+        "x": 695.753662109375,
+        "y": 532.892578125
+      },
+      "measuredYaw": -22.079330058414957,
+      "door": {
+        "threshold": {
+          "x": 5840,
+          "y": 2821
+        },
+        "approach": {
+          "x": 5866.312298988585,
+          "y": 2885.866500768388
+        },
+        "clearWidth": 131.75492944673812,
+        "clearHeight": 217.8337494521318,
+        "paintedSocket": {
+          "x": 850,
+          "y": 363,
+          "width": 254,
+          "height": 510,
+          "threshold": {
+            "x": 977,
+            "y": 844
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 26.38807256357972,
+        "normal": {
+          "x": 0.3758899855512123,
+          "y": 0.9266642966912609
+        },
+        "groundOpening": {
+          "left": {
+            "x": 5778.794499600839,
+            "y": 2845.366515533967
+          },
+          "right": {
+            "x": 5901.205500399161,
+            "y": 2796.633484466033
+          }
+        }
+      },
+      "physicalPolygon": [
+        {
+          "x": 5558.0691517046525,
+          "y": 2963.8381945094607
+        },
+        {
+          "x": 6086.267800818671,
+          "y": 2749.5809027452697
+        },
+        {
+          "x": 5958.465205731259,
+          "y": 2434.515041870241
+        },
+        {
+          "x": 5430.26655661724,
+          "y": 2648.772333634432
+        }
+      ],
+      "gateLabels": [
+        {
+          "text": "Chaussée des RacinesApprocher le seuil · interagir",
+          "visibility": "hidden"
+        },
+        {
+          "text": "Galerie des ObservateursAccès accompagné / autorisation requise",
+          "visibility": "hidden"
+        }
+      ],
+      "gates": [
+        {
+          "id": "gateway-v72:luminous-marshes",
+          "visibility": "visible"
+        },
+        {
+          "id": "gateway-v72:forbidden-reserve",
+          "visibility": "visible"
+        }
+      ],
+      "preservedInterior": "rampart-cross-observation",
+      "zoneCount": 2,
+      "actualKeyboardExit": true
+    },
+    {
+      "name": "mobile393x852-port-native-angle-actor-and-keyboard-entry-exit",
+      "id": "dock-control",
+      "nativeSource": "/game/homeworld/v76/architecture/dock-control.png",
+      "sourceState": {
+        "width": 1536,
+        "height": 1024,
+        "transforms": [
+          {
+            "tag": "IMG",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "none",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": null
+          },
+          {
+            "tag": "DIV",
+            "transform": "matrix(0.96, 0, 0, 0.96, -296.369, -1262.21)",
+            "rotate": "none",
+            "scale": "none",
+            "matrix": {
+              "a": 0.96,
+              "b": 0,
+              "c": 0,
+              "d": 0.96
+            }
+          }
+        ]
+      },
+      "rect": {
+        "x": -39.523681640625,
+        "y": 60.88232421875,
+        "width": 662.3699951171875,
+        "height": 441.5849609375
+      },
+      "screenScale": 0.43123046557108563,
+      "nativeFront": {
+        "left": {
+          "x": -18.82461929321289,
+          "y": 367.918415705363
+        },
+        "right": {
+          "x": 481.40272076924646,
+          "y": 495.13140304883325
+        }
+      },
+      "marker": {
+        "x": 222.01632690429688,
+        "y": 424.4073486328125
+      },
+      "threshold": {
+        "x": 222.01759572823846,
+        "y": 424.40960669517517
+      },
+      "measuredYaw": 23.911375672914357,
+      "door": {
+        "threshold": {
+          "x": 540,
+          "y": 2965
+        },
+        "approach": {
+          "x": 511.6273831772375,
+          "y": 3028.9921449447406
+        },
+        "clearWidth": 115.37970592147386,
+        "clearHeight": 212.02520536863324,
+        "paintedSocket": {
+          "x": 490,
+          "y": 340,
+          "width": 233,
+          "height": 534,
+          "threshold": {
+            "x": 606.5,
+            "y": 843
+          },
+          "units": "source-pixels"
+        },
+        "frontOffset": 7.8985972377070155,
+        "normal": {
+          "x": -0.405323097468036,
+          "y": 0.9141734992105804
+        },
+        "groundOpening": {
+          "left": {
+            "x": 487.6675075732081,
+            "y": 2940.7218334499653
+          },
+          "right": {
+            "x": 592.3324924267919,
+            "y": 2989.2781665500347
+          }
+        }
+      },
+      "physicalPolygon": [
+        {
+          "x": 289.1184805119033,
+          "y": 2862.405167159531
+        },
+        {
+          "x": 810.197375061934,
+          "y": 3093.439332716312
+        },
+        {
+          "x": 948.0072282010663,
+          "y": 2782.6203429847146
+        },
+        {
+          "x": 426.92833365103553,
+          "y": 2551.5861774279338
+        }
+      ],
+      "gateLabels": [
+        {
+          "text": "Chaussée des CendresApprocher le seuil · interagir",
+          "visibility": "hidden"
+        }
+      ],
+      "gates": [
+        {
+          "id": "gateway-v72:ash-marches",
+          "visibility": "visible"
+        }
+      ],
+      "preservedInterior": "dock-side-office",
+      "zoneCount": 2,
+      "actualKeyboardExit": true,
+      "viewport": {
+        "x": 0,
+        "y": 54,
+        "width": 393,
+        "height": 652
+      },
+      "actor": {
+        "x": 180.13494873046875,
+        "y": 378.7249755859375,
+        "width": 31.93499755859375,
+        "height": 80.14501953125
+      }
+    },
+    {
+      "name": "all-six-native-orientations-and-real-oriented-footprints-readable-in-codex",
+      "records": [
+        {
+          "id": "v76-facade:convoy-workshop",
+          "yaw": -21.910792036302766,
+          "polygon": "1606.3090350910236,4321.3052280332895 2135.1356452541304,4108.602580227962 2008.2603816509525,3793.162146095582 1479.4337714878457,4005.8647939009097"
+        },
+        {
+          "id": "v76-facade:dock-control",
+          "yaw": 23.911375672914353,
+          "polygon": "289.1184805119033,2862.405167159531 810.197375061934,3093.439332716312 948.0072282010663,2782.6203429847146 426.92833365103553,2551.5861774279338"
+        },
+        {
+          "id": "v76-facade:rite-sanctum",
+          "yaw": -20.328783383627794,
+          "polygon": "3314.3780154847477,1019.9795203235989 3848.875296448962,821.9576613234833 3730.756994589244,503.1347218009694 3196.2597136250297,701.1565808010849"
+        },
+        {
+          "id": "v76-facade:trophy-mausoleum",
+          "yaw": 22.44848417489998,
+          "polygon": "425.2850384376118,1868.928403921562 952.0922838951903,2086.5843850785213 1081.922167392324,1772.348484279264 555.1149219347453,1554.6925031223045"
+        },
+        {
+          "id": "v76-facade:rampart-watch",
+          "yaw": -22.079330058414957,
+          "polygon": "5558.0691517046525,2963.8381945094607 6086.267800818671,2749.5809027452697 5958.465205731259,2434.515041870241 5430.26655661724,2648.772333634432"
+        },
+        {
+          "id": "v76-facade:convoy-store",
+          "yaw": 24.275174050043102,
+          "polygon": "2367.338904357797,4000.8152321749303 2886.940358223629,4235.15329809789 3026.720958949605,3925.215588774411 2507.119505083773,3690.8775228514514"
+        }
+      ]
+    },
+    {
+      "name": "all-six-served-native-PNG-HTTP200-and-byte-exact-SHA",
+      "count": 6
+    }
+  ],
+  "captures": [
+    "work-local/v76/qa/angles-local/convoy-workshop-native-angle.png",
+    "work-local/v76/qa/angles-local/convoy-workshop-interior.png",
+    "work-local/v76/qa/angles-local/convoy-store-native-angle.png",
+    "work-local/v76/qa/angles-local/convoy-store-interior.png",
+    "work-local/v76/qa/angles-local/dock-control-native-angle.png",
+    "work-local/v76/qa/angles-local/dock-control-interior.png",
+    "work-local/v76/qa/angles-local/trophy-mausoleum-native-angle.png",
+    "work-local/v76/qa/angles-local/trophy-mausoleum-interior.png",
+    "work-local/v76/qa/angles-local/rite-sanctum-native-angle.png",
+    "work-local/v76/qa/angles-local/rite-sanctum-interior.png",
+    "work-local/v76/qa/angles-local/rampart-watch-native-angle.png",
+    "work-local/v76/qa/angles-local/rampart-watch-interior.png",
+    "work-local/v76/qa/angles-local/dock-control-mobile-native-angle.png",
+    "work-local/v76/qa/angles-local/dock-control-mobile-interior.png",
+    "work-local/v76/qa/angles-local/native-angle-codex.png"
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "notes": [
+    "Seeded completed prologue prerequisite; every street/door/interior step uses actual keyboard runtime, never position injection.",
+    "Native yaw is measured at true supports; fixed35deg camera and uniform zoom only.",
+    "Six original adapted civic architectures, not a canonical city reproduction.",
+    "All37 secondary interiors/43 city doors are preserved; complete traversal coverage is tested in the separate37-interior recipe."
+  ]
+}

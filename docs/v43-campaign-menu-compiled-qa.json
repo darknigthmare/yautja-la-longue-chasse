@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "base": "http://127.0.0.1:4174",
+  "at": "2026-09-23T02:53:00.243Z",
+  "checks": [
+    {
+      "name": "fresh-main-menu",
+      "continueDisabled": true,
+      "loadDisabled": true
+    },
+    {
+      "name": "ten-manual-two-auto",
+      "manualCount": 10,
+      "autoCount": 2,
+      "overwriteRequiresConfirmation": true
+    },
+    {
+      "name": "owner-isolation-and-load",
+      "distinctOwners": true,
+      "otherSlotBytesUnchanged": true,
+      "checkpointLocation": "new-game"
+    },
+    {
+      "name": "real-first-hunt-and-continue",
+      "resumedPaused": true,
+      "owner": "2026-09-23T02:52:33.712Z"
+    },
+    {
+      "name": "mobile-390",
+      "touchCreationSlot5": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "legacy-migration",
+      "slot": 1,
+      "continuedLocation": "deck"
+    },
+    {
+      "name": "homeworld-location",
+      "continuedAtHomeworld": true
+    },
+    {
+      "name": "future-slot-protection",
+      "createDisabled": true,
+      "bytesPreserved": true
+    },
+    {
+      "name": "quota-refusal",
+      "sessionPreserved": true,
+      "slotBytesUnchanged": true,
+      "noFalseSuccess": true
+    },
+    {
+      "name": "keyboard-and-virtual-gamepad",
+      "aConfirm": true,
+      "bBack": true,
+      "enter": true,
+      "escape": true,
+      "physicalControllerCertified": false
+    },
+    {
+      "name": "cross-tab-owner-switch",
+      "oldSessionSuspended": true,
+      "returnWithoutWrite": true
+    }
+  ],
+  "errors": [],
+  "failures": []
+}

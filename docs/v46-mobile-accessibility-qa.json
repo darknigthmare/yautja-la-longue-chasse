@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-23T11:52:47.074Z",
+  "base": "http://127.0.0.1:4174",
+  "checks": [
+    {
+      "name": "new-player-keyboard-menu",
+      "viewport": 390,
+      "newGameActivatedWithKeyboard": true,
+      "briefingWithinViewport": true
+    },
+    {
+      "name": "guide-mobile-focus-and-pause",
+      "guideBox": {
+        "x": 7,
+        "right": 383,
+        "width": 376,
+        "height": 159.6875,
+        "viewport": 390,
+        "inside": true
+      },
+      "toggleBox": {
+        "x": 329,
+        "right": 373,
+        "width": 44,
+        "height": 44,
+        "viewport": 390,
+        "inside": true
+      },
+      "canvasFocusReturned": true,
+      "collapsedChoiceSurvivesPause": true
+    },
+    {
+      "name": "camera-mobile-keyboard-and-touch",
+      "cameraBox": {
+        "x": 177.8125,
+        "right": 376,
+        "width": 198.1875,
+        "height": 44,
+        "viewport": 390,
+        "inside": true
+      },
+      "scrollPosition": {
+        "pageY": 0,
+        "rootY": 26,
+        "rootTop": 0,
+        "headerTop": -26
+      },
+      "headerAccessibleAfterScroll": true,
+      "keyboardToggle": true,
+      "touchToggle": true,
+      "focusReturnedToCombat": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "mobile-system-reduced-motion",
+      "cameraFixed": true,
+      "controlDisabled": true
+    }
+  ],
+  "errors": [],
+  "responses": [],
+  "limits": [
+    "Chrome mobile emulation 390x844; no physical phone or screen reader certification.",
+    "Campaign creation uses real fresh isolated storage; THE PIT uses the existing legacy QA fixture in a separate context."
+  ]
+}

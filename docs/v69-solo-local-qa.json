@@ -1,0 +1,201 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:4187",
+  "checks": [
+    {
+      "name": "prior-chain-played-fixture-only-physical-mentor-start",
+      "routes": [
+        {
+          "kind": "city-and-door",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 1280,
+            "y": 4480
+          },
+          "approach": {
+            "x": 2230,
+            "y": 1868
+          },
+          "distance": 5821.9011259125045
+        },
+        {
+          "kind": "interior-and-dialog",
+          "pointId": "training-service",
+          "buildingId": "training-hall",
+          "from": {
+            "x": 269,
+            "y": 236
+          },
+          "to": {
+            "x": 269,
+            "y": 144
+          }
+        }
+      ]
+    },
+    {
+      "name": "quota-freezes-observation-proof-and-retries-same-scene",
+      "tick": 1320
+    },
+    {
+      "name": "portrait-native-view-controls-and-real-touch-movement",
+      "bounds": [
+        {
+          "label": "Pause",
+          "x": 248.046875,
+          "y": 5,
+          "right": 310.21875,
+          "bottom": 49,
+          "height": 44
+        },
+        {
+          "label": "Tactile",
+          "x": 318.21875,
+          "y": 5,
+          "right": 384,
+          "bottom": 49,
+          "height": 44
+        },
+        {
+          "label": "←",
+          "x": 32.4375,
+          "y": 763.3125,
+          "right": 76.4375,
+          "bottom": 807.3125,
+          "height": 44
+        },
+        {
+          "label": "→",
+          "x": 80.4375,
+          "y": 763.3125,
+          "right": 124.4375,
+          "bottom": 807.3125,
+          "height": 44
+        },
+        {
+          "label": "Saut",
+          "x": 128.4375,
+          "y": 763.3125,
+          "right": 174.203125,
+          "bottom": 807.3125,
+          "height": 44
+        },
+        {
+          "label": "Couvert / Signal",
+          "x": 178.203125,
+          "y": 763.3125,
+          "right": 289.21875,
+          "bottom": 807.3125,
+          "height": 44
+        },
+        {
+          "label": "Interagir",
+          "x": 293.21875,
+          "y": 763.3125,
+          "right": 360.5625,
+          "bottom": 807.3125,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "name": "first-sas-proof-cold-resume-without-replaying-prior-chapter",
+      "tick": 2511
+    },
+    {
+      "name": "timed-sas-expiration-retry-retains-first-sas",
+      "x": 3036.400000000024
+    },
+    {
+      "name": "settings-freeze-hazard-escort-and-durable-clock",
+      "tick": 3237
+    },
+    {
+      "name": "12-proofs-scout-sas-novice-and-physical-return-survive-reload-without-granting-Blooded",
+      "noNewRiteWeaponShipOrKill": true
+    }
+  ],
+  "captures": [
+    "work-local/v69/qa/solo-final/01-physical-mentor-start.jpg",
+    "work-local/v69/qa/solo-final/phase-briefing.jpg",
+    "work-local/v69/qa/solo-final/phase-observation.jpg",
+    "work-local/v69/qa/solo-final/phase-signals.jpg",
+    "work-local/v69/qa/solo-final/quota-retains-observation.jpg",
+    "work-local/v69/qa/solo-final/phase-stealth.jpg",
+    "work-local/v69/qa/solo-final/portrait-stealth-controls.jpg",
+    "work-local/v69/qa/solo-final/phase-gate-first.jpg",
+    "work-local/v69/qa/solo-final/phase-gate-second.jpg",
+    "work-local/v69/qa/solo-final/gate-window-expired-prior-sas-retained.jpg",
+    "work-local/v69/qa/solo-final/phase-gate-third.jpg",
+    "work-local/v69/qa/solo-final/phase-evacuation.jpg",
+    "work-local/v69/qa/solo-final/phase-escort.jpg",
+    "work-local/v69/qa/solo-final/phase-return.jpg",
+    "work-local/v69/qa/solo-final/phase-debrief.jpg",
+    "work-local/v69/qa/solo-final/phase-recognition.jpg",
+    "work-local/v69/qa/solo-final/preparation-complete-no-Blooded.jpg",
+    "work-local/v69/qa/solo-final/durable-city-return.jpg",
+    "work-local/v69/qa/solo-final/preparation-welcome-after-reload.jpg"
+  ],
+  "errors": [],
+  "failures": [],
+  "limits": "Fresh isolated browser. Only the initial after-V68 fixture is supplied, played through prior actual models. V69 uses public keyboard/touch input and declared quota injection; no actor coordinates, counters or receipts injected. Existing native training art reused. This is preparation, not a Temple/xenomorph encounter or Blooded rite.",
+  "verifiedAt": "2026-10-01T12:57:12.448Z",
+  "environment": "Local rebuilt Next production server, not a public deployment",
+  "modelChecks": {
+    "passed": 15,
+    "failed": 0,
+    "files": [
+      "tests/first-hunt-solo-v69.test.mjs",
+      "tests/campaign-solo-v69.test.mjs"
+    ],
+    "realAutosaveCadenceTicks": 120,
+    "refusedPhysicalBoundaries": [
+      "post",
+      "sas-open",
+      "safe-wait",
+      "river-scout"
+    ]
+  },
+  "inspection": {
+    "status": "PASS",
+    "inspectedCount": 19,
+    "inspectedCaptures": [
+      "work-local/v69/qa/solo-final/01-physical-mentor-start.jpg",
+      "work-local/v69/qa/solo-final/phase-briefing.jpg",
+      "work-local/v69/qa/solo-final/phase-observation.jpg",
+      "work-local/v69/qa/solo-final/phase-signals.jpg",
+      "work-local/v69/qa/solo-final/quota-retains-observation.jpg",
+      "work-local/v69/qa/solo-final/phase-stealth.jpg",
+      "work-local/v69/qa/solo-final/portrait-stealth-controls.jpg",
+      "work-local/v69/qa/solo-final/phase-gate-first.jpg",
+      "work-local/v69/qa/solo-final/phase-gate-second.jpg",
+      "work-local/v69/qa/solo-final/gate-window-expired-prior-sas-retained.jpg",
+      "work-local/v69/qa/solo-final/phase-gate-third.jpg",
+      "work-local/v69/qa/solo-final/phase-evacuation.jpg",
+      "work-local/v69/qa/solo-final/phase-escort.jpg",
+      "work-local/v69/qa/solo-final/phase-return.jpg",
+      "work-local/v69/qa/solo-final/phase-debrief.jpg",
+      "work-local/v69/qa/solo-final/phase-recognition.jpg",
+      "work-local/v69/qa/solo-final/preparation-complete-no-Blooded.jpg",
+      "work-local/v69/qa/solo-final/durable-city-return.jpg",
+      "work-local/v69/qa/solo-final/preparation-welcome-after-reload.jpg"
+    ],
+    "observations": [
+      "Native camp and dojo bitmap environments, character feet aligned with the foreground floor, no CSS actors or stand-in xenomorph.",
+      "Portrait 393x852 preserves actor size, all seven visible buttons stay within the viewport with at least 44px height; real CDP touch movement passed.",
+      "Closed and previously certified sas are visually distinguished; expired second window retains first sas proof and the route can be reopened.",
+      "Novice is drawn from existing native rival atlas; escort outcome visibly leaves him at refuge, with observation/wait/scout/follow evidence persisted.",
+      "Briefing, debrief and recognition use the animated Yautja text translation; completion and resumed city journal explicitly maintain Young Blood.",
+      "Quota warning keeps the playable physical state mounted, freezes its tick, and exact scene can retry after storage is restored."
+    ]
+  },
+  "scopeLimits": [
+    "Only the initial after-V68 fixture is supplied, derived by playing prior actual models; previous chapters are not replayed in this browser run.",
+    "V69 is played through public keyboard and touch inputs. No actor positions, phase counters, flags or receipts are injected.",
+    "Quota is intentionally injected through Storage.setItem only in an isolated temporary browser context.",
+    "Existing camp/dojo, mentor and novice atlases are reused. No new crouch atlas or new character animation set is claimed.",
+    "This verifies local production runtime. Public deployment and public browser QA remain separate release gates.",
+    "Preparation does not complete the Temple, Quatza-Rij hunt, xenomorph encounter, Blooded rite, personal plasma caster or ship entitlement."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "actionId": "CIN_F006_TAUNT_1",
+  "sheet": "07_PRESENTATIONS",
+  "cell": "F10",
+  "part": "b",
+  "originalGeneratedPath": "/workspace/generated_images/exec-b1134b25-3e21-41de-a8ca-2698802aa786.png",
+  "intakePath": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-taunt-1-attempt-03b.png",
+  "sha256": "2ebe6d121943779742f997271d08c0aa5eb0b9ddb6ba747b7fcf1f19f32ff87f",
+  "promptPath": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-taunt-1-attempt-03b.prompt.json",
+  "references": [
+    {
+      "path": "art-source/v100/pit/feral/specials-presentations/intake/feral-special-taunt-1-attempt-02b.png",
+      "sha256": "3b3b64dfefa3fb2f1fc873543c30c413d14b5f3e0423b67b66028eaaffadf98d"
+    }
+  ],
+  "status": "REJECTED_ALPHA_BACKGROUND",
+  "columns": 2,
+  "rows": 4,
+  "calibrationFrameIndices": [
+    0,
+    1
+  ],
+  "requestedCorrection": "Row3 open guard retains two already-deployed straight blades on actual right gauntlet in both facings; left shield remains left.",
+  "pixelEdits": false,
+  "mirrored": false,
+  "rigged": false,
+  "width": 1024,
+  "height": 1536,
+  "alphaExtrema": [
+    1,
+    254
+  ],
+  "reason": "Native image had nonzero alpha outside silhouettes (minimum1, corner13); background removal by new imagegen output required. No threshold adjustment or pixel edits."
+}

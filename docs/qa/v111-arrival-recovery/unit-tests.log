@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: V111: the real603-step legacy trap proposes only its recorded empty-handed exterior point at the walked interior exit
+ok 1 - V111: the real603-step legacy trap proposes only its recorded empty-handed exterior point at the walked interior exit
+  ---
+  duration_ms: 2469.678934
+  type: 'test'
+  ...
+# Subtest: V111: quota failure and throwing storage acknowledgements never consume the restoration or its original documents
+ok 2 - V111: quota failure and throwing storage acknowledgements never consume the restoration or its original documents
+  ---
+  duration_ms: 6.797333
+  type: 'test'
+  ...
+# Subtest: V111: a delayed confirmation rechecks ledger revision, interior pose, owner, pause and live obstacles
+ok 3 - V111: a delayed confirmation rechecks ledger revision, interior pose, owner, pause and live obstacles
+  ---
+  duration_ms: 13.333303
+  type: 'test'
+  ...
+# Subtest: V111: an occupied or distant recorded point, another carrier or an unknown/future document cannot be restored
+ok 4 - V111: an occupied or distant recorded point, another carrier or an unknown/future document cannot be restored
+  ---
+  duration_ms: 6.50999
+  type: 'test'
+  ...
+# Subtest: V111: free ordinary anchors and unwalked interior positions retain the existing exit instead of granting recovery
+ok 5 - V111: free ordinary anchors and unwalked interior positions retain the existing exit instead of granting recovery
+  ---
+  duration_ms: 3.148723
+  type: 'test'
+  ...
+# Subtest: V111: strict backup import rejects forged destination, source revision, owner, shape and future recovery versions
+ok 6 - V111: strict backup import rejects forged destination, source revision, owner, shape and future recovery versions
+  ---
+  duration_ms: 2.633601
+  type: 'test'
+  ...
+# Subtest: V111: one real atomic save retains the original interior checkpoint and all ledgers through load and ordinary egress
+ok 7 - V111: one real atomic save retains the original interior checkpoint and all ledgers through load and ordinary egress
+  ---
+  duration_ms: 12.429027
+  type: 'test'
+  ...
+# Subtest: V111: the real save quota adapter refuses the entire checkpoint/backup pair and leaves the old campaign intact
+ok 8 - V111: the real save quota adapter refuses the entire checkpoint/backup pair and leaves the old campaign intact
+  ---
+  duration_ms: 4.62899
+  type: 'test'
+  ...
+# Subtest: V111: the actual same-owner storage conflict prevents a stale-tab restore despite an unchanged local preview
+ok 9 - V111: the actual same-owner storage conflict prevents a stale-tab restore despite an unchanged local preview
+  ---
+  duration_ms: 5.683789
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2535.341933

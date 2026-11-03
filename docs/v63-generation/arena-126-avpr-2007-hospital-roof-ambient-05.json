@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-126-avpr-2007-hospital-roof",
+  "id": "ambient-05",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-692a-7751-b7cb-3b41ede4d39a\\exec-e8e0ca67-1587-4bb6-9547-dac720a1439c.png",
+  "workspacePath": "work-local/v63/generated/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+  "sha256": "b0ab59efa18fc98a2ac901e5f2eca30f97a97f57ec24752a8bb70ddd112301ab",
+  "bytes": 1263066,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.7853450775146484,
+  "copyByteIdentical": true,
+  "prompt": "Use case: stylized-concept. Asset type: native transparent PNG animation atlas for a 2D fighting game background. Exactly SIX different native drawings on a1536x1024 transparent canvas in a strict3 columns by2 rows grid, six512x512cells. At least45px completely transparent padding around every cell. No labels, grid lines, lettering, people, logo, whole scene, opaque background or black card. Subject stays at the same scale and structural anchor in all six cells. Realistic hand-painted muted dark industrial visual style. Subject: a SINGLE far-distance strip of original small-town night lights, like the distant city seen from an elevated hospital roof. Only a scattered horizontal band of small warm amber window rectangles and three tiny red mast markers in faint wisps of blue-grey night haze. NO actual buildings or solid black silhouette backdrop, no skyline block, no mountain, no horizon rectangle, just independent lights/haze with genuine alpha around and between. Lights span x60..450,y250..320 of each cell and are small enough to read as kilometers away. Six native states show slow mild variation of selected windows (about15% brightness) and red beacon highlight shifts, NOT aggressive blinking, no white flashes, no neon, no fireworks or explosions. Other lights fixed. The soft haze must fade to full transparency well before the cell borders.",
+  "referencedImagePaths": [],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E504"
+  ],
+  "loreLimits": [
+    "Original mechanical exhibition adaptation based on the workbook, not exact canonical machinery."
+  ],
+  "rejectedAttempts": [],
+  "visualNotes": "Six independent native gestures inspected, technical alpha and placement checks remain separate.",
+  "status": "visually-accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        47,
+        197,
+        447,
+        153
+      ],
+      "pivot": [
+        152,
+        270
+      ],
+      "margins": [
+        47,
+        197,
+        18,
+        162
+      ],
+      "opaquePixelCount": 56619,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "ea27482929dbd6a61ae9a561515512ef2472c122916263b6e8d2427981500f89"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        37,
+        195,
+        432,
+        155
+      ],
+      "pivot": [
+        141,
+        270
+      ],
+      "margins": [
+        37,
+        195,
+        43,
+        162
+      ],
+      "opaquePixelCount": 54642,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "a7e832a9789b06565bb66ec828eabfc1c5e4412dfe35177d0c35a9fda3a47b0e"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        25,
+        195,
+        441,
+        155
+      ],
+      "pivot": [
+        125,
+        270
+      ],
+      "margins": [
+        25,
+        195,
+        46,
+        162
+      ],
+      "opaquePixelCount": 55805,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "91c0518fbec2e7143be86a49a3ff81d1e8cf35537ca062c74aa7cc2613cf4533"
+    },
+    {
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        45,
+        187,
+        447,
+        161
+      ],
+      "pivot": [
+        151,
+        265
+      ],
+      "margins": [
+        45,
+        187,
+        20,
+        164
+      ],
+      "opaquePixelCount": 56744,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "627ee0649a7f029ee7352d2e551387aa1ef4d25a432d262ee2cc64e8584e029d"
+    },
+    {
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        35,
+        191,
+        435,
+        159
+      ],
+      "pivot": [
+        140,
+        265
+      ],
+      "margins": [
+        35,
+        191,
+        42,
+        162
+      ],
+      "opaquePixelCount": 56330,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "cf97ca47cd0973120296087218067ca34e03f3ed9da50ada8f3f31b327e5ee84"
+    },
+    {
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        19,
+        191,
+        449,
+        157
+      ],
+      "pivot": [
+        124,
+        265
+      ],
+      "margins": [
+        19,
+        191,
+        44,
+        164
+      ],
+      "opaquePixelCount": 57483,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "0e8ef8648ea264e7a39cd2c598cf786e10472a730ec353ae349bec57b7db136d"
+    }
+  ]
+}

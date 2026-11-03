@@ -1,0 +1,570 @@
+{
+  "schemaVersion": "yautja-v615-independent-review-1",
+  "reviewedAtUtc": "2026-10-23T17:26:26.016392+00:00",
+  "reviewerRole": "audit_v615",
+  "reviewType": "code-and-evidence-review",
+  "result": "complete-no-unresolved-integration-blocker-in-reviewed-scope",
+  "sourceMainCommit": "92e7c824fd80d6b8152855b3d66560448f8c48c0",
+  "sourceBranchCommit": "4a1b437eb60fa9d511722bf4930fd49ff7fb8f86",
+  "pullRequestNumber": 15,
+  "previousLotMerged": false,
+  "scopeFR": "Relecture indépendante de l’intégration V6.15 : tests de production, ajustements des tests historiques, checkout et déclencheurs CI, séparation des preuves V106, et confirmation des six PNG et reçus ART_A figés.",
+  "independenceFR": "La relecture de l’intégration est séparée de son implémentation et de son exécution. Les six images ART_A ont été produites puis contrôlées par le même agent ; leur contrôle de fichiers ne constitue pas une seconde expertise artistique indépendante.",
+  "executionBoundary": {
+    "v106ExecutionOwner": "integrate_v615",
+    "v106ExecutionResultIncluded": false,
+    "nodeTestSuiteExecutedByThisReview": false,
+    "browserJourneyExecutedByThisReview": false,
+    "newTestsAddedByThisReview": false,
+    "currentRuntimeCoveredByHistoricalV106QA": false,
+    "noteFR": "Ce document atteste une revue de code et de preuves, ainsi que les vérifications de fichiers indiquées. L’exécution V106 est prise en charge séparément par integrate_v615 ; ce document n’en déclare ni la réussite ni l’échec et ne remplace pas son compte rendu."
+  },
+  "reviewedCodeFingerprints": [
+    {
+      "path": ".github/workflows/audit-v94.yml",
+      "bytes": 27816,
+      "sha256": "24b604e43faf7b990471fa4d99138baeaac883efe1ba9492ed98b5e585d0e69c"
+    },
+    {
+      "path": "scripts/prepare-npc-plan-v615.mjs",
+      "bytes": 11634,
+      "sha256": "bd14d91bced7abc197d14da2d9e0b02abcc305bce9fefc7010813c731c0990e7"
+    },
+    {
+      "path": "scripts/reconcile-npc-main-v615.mjs",
+      "bytes": 4175,
+      "sha256": "1ebb70b6f9624ee31058987f36a8f30403447c0d2f71a6c572aa1bc9b535c569"
+    },
+    {
+      "path": "scripts/build-npc-production-v615.mjs",
+      "bytes": 12776,
+      "sha256": "c1ee57715f02f5f9626d1d4a752f1e0a5fa7046ca160ebb5cbe9df56b3d16ce1"
+    },
+    {
+      "path": "scripts/historical-runtime-context-v614.mjs",
+      "bytes": 11804,
+      "sha256": "44efbe68d00e8c613ed25b75ec42535718712a7d4f933a1650c80bc4cb30460d"
+    },
+    {
+      "path": "scripts/historical-runtime-context-v615.mjs",
+      "bytes": 12769,
+      "sha256": "b167d358178059d2afa7a7c62f5689fd7f9fad3af3a3624f5fbaf33ecfa08a34"
+    },
+    {
+      "path": "tests/npc-production-v615.test.mjs",
+      "bytes": 9810,
+      "sha256": "b648083f380eff4b25b7564ea8cf8f63730fa002043d1af1a518c081e4302b24"
+    },
+    {
+      "path": "tests/production-proofs-v106.test.mjs",
+      "bytes": 7988,
+      "sha256": "52312d32bbbe36cc3794c94ca37389bf942e0bbfc9eac82be7556691bc0e52e6"
+    },
+    {
+      "path": "tests/drive-new-deposits-v89.test.mjs",
+      "bytes": 9589,
+      "sha256": "ba62b4d3aa6d19532248c84c428a42d720dd56f2613e6430ccf38d028a0f0eae"
+    },
+    {
+      "path": "tests/enforcer-production-v611.test.mjs",
+      "bytes": 7080,
+      "sha256": "11cee8ec741d86afbf5d311022c52a5719930eae6d65ee943bc7bc940367e117"
+    },
+    {
+      "path": "tests/enforcer-production-v612.test.mjs",
+      "bytes": 10734,
+      "sha256": "d7cae665804570bd23ad80d255d23c992059430e0d0e956c916b46af7853a423"
+    },
+    {
+      "path": "tests/enforcer-production-v613.test.mjs",
+      "bytes": 12565,
+      "sha256": "9a6395990b993c9b2c09eca801266b25939811b24980d3ae94a9a1b1563582b2"
+    },
+    {
+      "path": "tests/enforcer-production-v614.test.mjs",
+      "bytes": 10606,
+      "sha256": "61dfcbf91518324b41519af2f0723e12f61c2aa93b5312b758a2e41f29ed93a5"
+    },
+    {
+      "path": "app/game/RecentSpriteLibraryV85.tsx",
+      "bytes": 10237,
+      "sha256": "d04e3583c7968087cb233083d2efd30e37f2899627870ffaf85d09fa058cf584"
+    },
+    {
+      "path": "app/game/systems/recentSpriteLibraryV85.ts",
+      "bytes": 16362,
+      "sha256": "ec2fa03e97cb5508a6c5fa002d265d791abe5d2e27f17d21defebb3c3ca799b5"
+    }
+  ],
+  "reviewedEvidenceFingerprints": [
+    {
+      "path": "docs/suivi-production/v615/references/production-plan-v615.json",
+      "bytes": 238827,
+      "sha256": "2f45b50d571a95fdb57ec605a9b5f91c360f733be77039b63616c23225028f9b"
+    },
+    {
+      "path": "docs/suivi-production/v615/data/base-workbooks.json",
+      "bytes": 7678,
+      "sha256": "d85ea6f363e85935753079f3e467cc4f7a37dc7c77f44a7f63afca4abc48507f"
+    },
+    {
+      "path": "docs/suivi-production/v615/data/main-reconciliation.json",
+      "bytes": 57754,
+      "sha256": "a805eed1ae9f40486d32b9239109575806d1222ce62f78df2088b96ecc339249"
+    },
+    {
+      "path": "docs/suivi-production/v614/data/default-selections-before.json",
+      "bytes": 182038,
+      "sha256": "221822aa4b2ddd8947ebe5fdc79db083f06e45d638e4fc1c0912ee2cdcf0ed21"
+    },
+    {
+      "path": "tests/fixtures/runtime-history-v106-v614.json",
+      "bytes": 29563,
+      "sha256": "674c2ce278f937a6aa52d041c4071a1a5f93bfac418266a3e7b404d3e9615b5c"
+    },
+    {
+      "path": "tests/fixtures/runtime-history-v106-v615.json",
+      "bytes": 31378,
+      "sha256": "df29bc7520ee3437cb53f26cd4c638567204588c91464cf9907dc032f04d0f22"
+    },
+    {
+      "path": "docs/v106-runtime-freeze.json",
+      "bytes": 170740,
+      "sha256": "5f17fda63e669a842289752295f83cd4b276090d9f897a12fefdb01b9872bfb1"
+    },
+    {
+      "path": "docs/v106-validation-summary.json",
+      "bytes": 12554,
+      "sha256": "9fb50b0322c506f63db0aee95148b48725240559b0bf2d8d91ae99f4f5c81216"
+    },
+    {
+      "path": "app/game/data/enforcerProductionV614.json",
+      "bytes": 49256,
+      "sha256": "721bf64fce4b7c88e98b139b690123f70e05e402c853e50032cca8ff43ad412a"
+    },
+    {
+      "path": "app/game/data/npcProductionV615.json",
+      "bytes": 52512,
+      "sha256": "3d3c2a15d29f9877ad5ceb8ff7cf135c6dbca4bf9235f3f922179b7eb18e0733"
+    }
+  ],
+  "invariants": [
+    {
+      "id": "default-selections-973",
+      "method": "code-review",
+      "result": "enforcement-confirmed",
+      "detailFR": "Le test V6.15 conserve les 973 requêtes de la preuve V6.14 et compare chacune au même assetId. Les anciens tests excluent seulement le nouveau pack de leurs totaux historiques.",
+      "evidencePaths": [
+        "tests/npc-production-v615.test.mjs",
+        "docs/suivi-production/v614/data/default-selections-before.json"
+      ]
+    },
+    {
+      "id": "master-preserves-v614",
+      "method": "code-review",
+      "result": "enforcement-confirmed",
+      "detailFR": "Le builder et le test limitent la modification à 18 nouveaux IDs sucklings-02 auparavant Pas faite. Chaque autre ligne est comparée intégralement à V6.14 ; les 18 Enforcers10 restent Conservée hors main. Aucune récupération V6.10 ni promotion historique n’est ajoutée.",
+      "expectedCounts": {
+        "Présente dans main": 2197,
+        "Produite — à vérifier": 205,
+        "Conservée hors main": 36,
+        "Pas faite": 2682
+      },
+      "evidencePaths": [
+        "scripts/build-npc-production-v615.mjs",
+        "scripts/reconcile-npc-main-v615.mjs",
+        "tests/npc-production-v615.test.mjs"
+      ]
+    },
+    {
+      "id": "ci-input-coverage",
+      "method": "explicit-path-and-directory-comparison",
+      "result": "verified",
+      "priorWorkbookCount": 17,
+      "cumulativeNativePngCount": 144,
+      "missingPaths": [],
+      "detailFR": "Les 17 chemins de classeurs disposent chacun d’une inclusion explicite et les 144 PNG appartiennent aux cinq répertoires de production inclus. Les reçus V6.15 et les fixtures sous tests sont inclus dans le checkout.",
+      "evidencePaths": [
+        ".github/workflows/audit-v94.yml",
+        "docs/suivi-production/v615/data/base-workbooks.json"
+      ]
+    },
+    {
+      "id": "historical-v106-sources",
+      "method": "git-object-and-byte-comparison",
+      "result": "verified",
+      "archivedSourceCount": 2,
+      "priorV614InsertionsPreserved": true,
+      "priorV614HelperAndFixturePreserved": true,
+      "detailFR": "Les deux sources archivées de la fixture correspondent aux vrais objets Git de main 92e7. Les empreintes du helper et de la fixture V6.14, les anciennes insertions littérales et le registre V6.14 sont préservés.",
+      "evidencePaths": [
+        "scripts/historical-runtime-context-v615.mjs",
+        "tests/fixtures/runtime-history-v106-v615.json",
+        "tests/fixtures/runtime-history-v106-v614.json"
+      ]
+    },
+    {
+      "id": "runtime-boundary-v106-v615",
+      "method": "code-review-and-delta-fingerprint-check",
+      "result": "enforcement-confirmed",
+      "historicalInputCount": 963,
+      "allowedModifiedSourceCount": 2,
+      "allowedAddedRegistryCount": 2,
+      "otherHistoricalInputsRequiredIdentical": 961,
+      "detailFR": "Le helper autorise uniquement les deux sources de bibliothèque reconstruites par insertions littérales et les deux registres V6.14/V6.15. Il impose l’identité des 961 autres entrées, refuse les suppressions ou ajouts étrangers et ne réattribue pas la QA navigateur V106 au runtime V6.15.",
+      "all961InputsRehashedByThisReview": false,
+      "evidencePaths": [
+        "scripts/historical-runtime-context-v615.mjs",
+        "tests/fixtures/runtime-history-v106-v615.json",
+        "tests/production-proofs-v106.test.mjs"
+      ]
+    },
+    {
+      "id": "art-a-frozen-native-files",
+      "method": "native-byte-comparison-sha256-png-alpha-and-receipt-check",
+      "result": "verified",
+      "pngCount": 6,
+      "receiptCount": 6,
+      "actualAttemptCount": 7,
+      "acceptedOutputCount": 6,
+      "detailFR": "Chaque PNG a été comparé byte pour byte à la sortie native originale ; taille, SHA256, format, alpha, contour visible, références et prompts des tentatives ont été vérifiés. Une seule tentative finale est acceptée par reçu. Les six PNG et reçus sont figés aux empreintes ci-dessous."
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "id": "physical-receipt-not-checked",
+      "status": "resolved",
+      "findingFR": "La première version du test ne comparait que la copie du reçu incluse dans le manifeste.",
+      "resolutionFR": "Le test relit maintenant a.receiptPath, vérifie a.receiptSha256, l’identité, le chemin du PNG, son empreinte et le prompt final accepté. Le workflow inclut les reçus au checkout et au déclenchement.",
+      "evidencePaths": [
+        "tests/npc-production-v615.test.mjs",
+        ".github/workflows/audit-v94.yml"
+      ]
+    },
+    {
+      "id": "historical-workbook-trigger-gap",
+      "status": "resolved",
+      "findingFR": "Les classeurs de suivi ajoutés au checkout CI ne déclenchaient pas tous ce workflow lorsqu’ils étaient seuls modifiés.",
+      "resolutionFR": "Le déclencheur docs/suivi-production/**/*.xlsx est présent et couvre ces classeurs.",
+      "evidencePaths": [
+        ".github/workflows/audit-v94.yml"
+      ]
+    }
+  ],
+  "unresolvedIntegrationFindings": [],
+  "artA": [
+    {
+      "id": "super-predators--sucklings-02",
+      "png": {
+        "path": "public/game/production/sucklings-v615/super-predators/sucklings-02.png",
+        "bytes": 2800726,
+        "sha256": "b7c5acf74926b0273562e8885f194b20e64944a1bd63c5b20b31c3152153582a"
+      },
+      "receipt": {
+        "path": "docs/suivi-production/v615/receipts/super-predators--sucklings-02.json",
+        "bytes": 15483,
+        "sha256": "865ff4b7f17b728f7372460e8586d29935ffe9a7de929fc1d6500e9866a6ddc1"
+      },
+      "frozenAtReview": true,
+      "nativeBytesComparedToOriginalOutput": true,
+      "nativeOutputName": "exec-e129ec1d-6c3b-473e-ad52-2c1410d4e3eb.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "realAlphaVerified": true,
+      "visibleBoundsAlpha20": [
+        58,
+        131,
+        974,
+        1479
+      ],
+      "visibleContentFullyInsideFrame": true,
+      "allMarginsAtLeastEightPercent": false,
+      "attemptCount": 1,
+      "currentAcceptedAttemptCount": 1,
+      "plannedPromptMatchedReceipt": true,
+      "finalPromptMatchedAcceptedAttempt": true,
+      "references": [
+        {
+          "id": "super-predators--sucklings-01",
+          "path": "public/game/imports/v85/library/491191cab73f7c29d523dfc7c98cbcee12cc74bd684cbca2e3b938d85960b051.png",
+          "bytes": 2612412,
+          "sha256": "491191cab73f7c29d523dfc7c98cbcee12cc74bd684cbca2e3b938d85960b051"
+        },
+        {
+          "id": "super-predators--blooded-01",
+          "path": "public/game/imports/v85/library/fc4570a9e3e684b0fa5ee9d42e229afcbe8bb931231d4f447aecaec9d9208e12.png",
+          "bytes": 2423314,
+          "sha256": "fc4570a9e3e684b0fa5ee9d42e229afcbe8bb931231d4f447aecaec9d9208e12"
+        }
+      ],
+      "limitationsFR": [
+        "La peau présente un fond beige olive clair et un fort moucheté sombre ; l’éclairage donne un rendu plus clair que l’intitulé olive charbon prévu.",
+        "Le textile occulte une partie des doigts ; le nombre exact de doigts ne peut pas être certifié sur ce rendu. Fidélité canonique 1:1 non certifiée.",
+        "Marges visibles au seuil alpha >20 : left 5.66 %, top 8.53 %, right 4.88 %, bottom 3.71 %. La cible de 8 % sur chaque côté n’est pas atteinte ; aucun contour visible ne touche le bord."
+      ]
+    },
+    {
+      "id": "feral--sucklings-02",
+      "png": {
+        "path": "public/game/production/sucklings-v615/feral/sucklings-02.png",
+        "bytes": 2635249,
+        "sha256": "8f95e82c3271be9bdae9d9983fc83a633544af73a36a46f4ffe61a98c857b0d2"
+      },
+      "receipt": {
+        "path": "docs/suivi-production/v615/receipts/feral--sucklings-02.json",
+        "bytes": 15451,
+        "sha256": "aa7ac791b9515d0a2c8c31366b733fe2849ef8622172627851252a25215d14eb"
+      },
+      "frozenAtReview": true,
+      "nativeBytesComparedToOriginalOutput": true,
+      "nativeOutputName": "exec-e4e5fe1b-2730-4e89-9cc3-bd5a8560f551.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "realAlphaVerified": true,
+      "visibleBoundsAlpha20": [
+        51,
+        169,
+        1008,
+        1420
+      ],
+      "visibleContentFullyInsideFrame": true,
+      "allMarginsAtLeastEightPercent": false,
+      "attemptCount": 1,
+      "currentAcceptedAttemptCount": 1,
+      "plannedPromptMatchedReceipt": true,
+      "finalPromptMatchedAcceptedAttempt": true,
+      "references": [
+        {
+          "id": "feral--sucklings-01",
+          "path": "public/game/imports/v85/library/181b54d9c6d9f2709d4a233cb7243618864a6d77373c6e7a9bf151f1a6eafaad.png",
+          "bytes": 2524593,
+          "sha256": "181b54d9c6d9f2709d4a233cb7243618864a6d77373c6e7a9bf151f1a6eafaad"
+        },
+        {
+          "id": "feral--blooded-01",
+          "path": "public/game/imports/v85/library/ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762.png",
+          "bytes": 2161194,
+          "sha256": "ee3659fcd33c2ebd743f1a4ff57110ceee2cf4dd4b363b253cb77f37e1bdd762"
+        }
+      ],
+      "limitationsFR": [
+        "La bande textile et la pose des mains occultent certains doigts ; aucun nombre anatomique exhaustif n’est certifié.",
+        "Création infantile du projet à partir des références historiques ; fidélité canonique 1:1 non certifiée.",
+        "Marges visibles au seuil alpha >20 : left 4.98 %, top 11.00 %, right 1.56 %, bottom 7.55 %. La cible de 8 % sur chaque côté n’est pas atteinte ; aucun contour visible ne touche le bord."
+      ]
+    },
+    {
+      "id": "augmentes-assassin--sucklings-02",
+      "png": {
+        "path": "public/game/production/sucklings-v615/augmentes-assassin/sucklings-02.png",
+        "bytes": 2841140,
+        "sha256": "722ef2fc2f6221db3209fd2c2efe78329d9328f383bbf7c4d7f2924a22e20f20"
+      },
+      "receipt": {
+        "path": "docs/suivi-production/v615/receipts/augmentes-assassin--sucklings-02.json",
+        "bytes": 15771,
+        "sha256": "2ed3421ee4ec417d66d1d32981026daabb345304d4aa1d1f0cabb78a8fcb4dd4"
+      },
+      "frozenAtReview": true,
+      "nativeBytesComparedToOriginalOutput": true,
+      "nativeOutputName": "exec-f120ece7-9dc5-481f-9075-d1f356d53661.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "realAlphaVerified": true,
+      "visibleBoundsAlpha20": [
+        74,
+        84,
+        1000,
+        1485
+      ],
+      "visibleContentFullyInsideFrame": true,
+      "allMarginsAtLeastEightPercent": false,
+      "attemptCount": 2,
+      "currentAcceptedAttemptCount": 1,
+      "plannedPromptMatchedReceipt": true,
+      "finalPromptMatchedAcceptedAttempt": true,
+      "references": [
+        {
+          "id": "augmentes-assassin--sucklings-01",
+          "path": "public/game/imports/v85/library/e7cf8b061dd2439fbea679601718bfe5e1fa561df75dd473f109cb721d4ef69d.png",
+          "bytes": 2338782,
+          "sha256": "e7cf8b061dd2439fbea679601718bfe5e1fa561df75dd473f109cb721d4ef69d"
+        },
+        {
+          "id": "augmentes-assassin--blooded-01",
+          "path": "public/game/imports/v85/library/10c468b46dfd40480c4dfede99120d878835b2603bc0cd45552a00b0364c8e71.png",
+          "bytes": 2428473,
+          "sha256": "10c468b46dfd40480c4dfede99120d878835b2603bc0cd45552a00b0364c8e71"
+        }
+      ],
+      "limitationsFR": [
+        "Le tissu et la perspective cachent toujours une partie des articulations et doigts. Les orteils latéraux ne sont pas tous lisibles simultanément ; aucun nombre anatomique exhaustif n’est certifié.",
+        "La petite enfance de la cohorte augmentée est une extrapolation du projet ; aucune fidélité canonique 1:1 n’est certifiée.",
+        "Marges visibles au seuil alpha >20 : left 7.23 %, top 5.47 %, right 2.34 %, bottom 3.32 %. La cible de 8 % sur chaque côté n’est pas atteinte ; aucun contour visible ne touche le bord."
+      ]
+    },
+    {
+      "id": "spiked-tail--sucklings-02",
+      "png": {
+        "path": "public/game/production/sucklings-v615/spiked-tail/sucklings-02.png",
+        "bytes": 2768799,
+        "sha256": "d1be198957c5a93bfd5233bbadd148a5e943b6768be7a8dfcbab114897f41c60"
+      },
+      "receipt": {
+        "path": "docs/suivi-production/v615/receipts/spiked-tail--sucklings-02.json",
+        "bytes": 17089,
+        "sha256": "50bd7cae790e9bb72ead11c5dbed066398cf9077b2ddfca1014b2db04d65c471"
+      },
+      "frozenAtReview": true,
+      "nativeBytesComparedToOriginalOutput": true,
+      "nativeOutputName": "exec-5f25d9b1-1e3e-4df0-abce-109f0a53cd73.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "realAlphaVerified": true,
+      "visibleBoundsAlpha20": [
+        71,
+        101,
+        984,
+        1500
+      ],
+      "visibleContentFullyInsideFrame": true,
+      "allMarginsAtLeastEightPercent": false,
+      "attemptCount": 1,
+      "currentAcceptedAttemptCount": 1,
+      "plannedPromptMatchedReceipt": true,
+      "finalPromptMatchedAcceptedAttempt": true,
+      "references": [
+        {
+          "id": "spiked-tail--sucklings-01",
+          "path": "public/game/imports/v85/library/a9d9816e19e8d7ad2e04d9c4ffe93b01b611fbe5b40550f8d172c947864c84da.png",
+          "bytes": 2595090,
+          "sha256": "a9d9816e19e8d7ad2e04d9c4ffe93b01b611fbe5b40550f8d172c947864c84da"
+        },
+        {
+          "id": "spiked-tail--blooded-01",
+          "path": "public/game/imports/v85/library/b8c061eabf27ade0126ca682fb44028db1744d89979508977b339da7484b824c.png",
+          "bytes": 2600668,
+          "sha256": "b8c061eabf27ade0126ca682fb44028db1744d89979508977b339da7484b824c"
+        }
+      ],
+      "limitationsFR": [
+        "La pigmentation cuivre gris prévue apparaît plus claire, avec un beige cuivré et des taches sombres ; cette différence de palette est conservée et documentée.",
+        "La bande textile masque partiellement certains doigts ; le décompte de tous les doigts n’est pas certifié.",
+        "Création fictive de jeune âge propre au projet ; aucune fidélité canonique 1:1 n’est certifiée.",
+        "Marges visibles au seuil alpha >20 : left 6.93 %, top 6.58 %, right 3.91 %, bottom 2.34 %. La cible de 8 % sur chaque côté n’est pas atteinte ; aucun contour visible ne touche le bord."
+      ]
+    },
+    {
+      "id": "hornhead--sucklings-02",
+      "png": {
+        "path": "public/game/production/sucklings-v615/hornhead/sucklings-02.png",
+        "bytes": 2427570,
+        "sha256": "cc31013695a22c31bbfd1bfa7032d04cf029bba66e64ff8428269e5b18ad1198"
+      },
+      "receipt": {
+        "path": "docs/suivi-production/v615/receipts/hornhead--sucklings-02.json",
+        "bytes": 16092,
+        "sha256": "e06637484c04bed7bdef4450783b2d5bcc6434a2fa3bae317bac43c5e24a74aa"
+      },
+      "frozenAtReview": true,
+      "nativeBytesComparedToOriginalOutput": true,
+      "nativeOutputName": "exec-8d2a3aef-9eff-4504-948b-025f0f613822.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "realAlphaVerified": true,
+      "visibleBoundsAlpha20": [
+        140,
+        144,
+        969,
+        1444
+      ],
+      "visibleContentFullyInsideFrame": true,
+      "allMarginsAtLeastEightPercent": false,
+      "attemptCount": 1,
+      "currentAcceptedAttemptCount": 1,
+      "plannedPromptMatchedReceipt": true,
+      "finalPromptMatchedAcceptedAttempt": true,
+      "references": [
+        {
+          "id": "hornhead--sucklings-01",
+          "path": "public/game/imports/v85/library/61b5c1fb530ce99b845c8629bb0656916959c1ab16c024ed271c8b65aa761d32.png",
+          "bytes": 2374591,
+          "sha256": "61b5c1fb530ce99b845c8629bb0656916959c1ab16c024ed271c8b65aa761d32"
+        },
+        {
+          "id": "hornhead--blooded-01",
+          "path": "public/game/imports/v85/library/c371befbed9f82f2b47ab5994756eb5251797e9059780831278d5868a1a00fc5.png",
+          "bytes": 2482079,
+          "sha256": "c371befbed9f82f2b47ab5994756eb5251797e9059780831278d5868a1a00fc5"
+        }
+      ],
+      "limitationsFR": [
+        "La pose et le textile occultent une partie des doigts ; l’image ne certifie pas un décompte anatomique complet des doigts et orteils.",
+        "Les reliefs crâniens sont interprétés au stade infantile ; cette création du projet n’est pas une reproduction canonique 1:1.",
+        "Marges visibles au seuil alpha >20 : left 13.67 %, top 9.38 %, right 5.37 %, bottom 5.99 %. La cible de 8 % sur chaque côté n’est pas atteinte ; aucun contour visible ne touche le bord."
+      ]
+    },
+    {
+      "id": "saar-keth--sucklings-02",
+      "png": {
+        "path": "public/game/production/sucklings-v615/saar-keth/sucklings-02.png",
+        "bytes": 2676828,
+        "sha256": "88787cdf5daeb77c019c991ba063be23c3abb2f587e5c768e187c8e68d74196a"
+      },
+      "receipt": {
+        "path": "docs/suivi-production/v615/receipts/saar-keth--sucklings-02.json",
+        "bytes": 16429,
+        "sha256": "6c3217aec07e399c8e3f44e595ca60aeebecbfcf63b7fab0bf1dfdbdbf8011c6"
+      },
+      "frozenAtReview": true,
+      "nativeBytesComparedToOriginalOutput": true,
+      "nativeOutputName": "exec-63667226-80bb-49d6-932c-3b691165ec1e.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "realAlphaVerified": true,
+      "visibleBoundsAlpha20": [
+        62,
+        172,
+        982,
+        1454
+      ],
+      "visibleContentFullyInsideFrame": true,
+      "allMarginsAtLeastEightPercent": false,
+      "attemptCount": 1,
+      "currentAcceptedAttemptCount": 1,
+      "plannedPromptMatchedReceipt": true,
+      "finalPromptMatchedAcceptedAttempt": true,
+      "references": [
+        {
+          "id": "saar-keth--sucklings-01",
+          "path": "public/game/imports/v85/library/9981f96d35d0e6d29b4792f05544dee58be9b8f0293cb0d8e0697a637f20e3d5.png",
+          "bytes": 2120354,
+          "sha256": "9981f96d35d0e6d29b4792f05544dee58be9b8f0293cb0d8e0697a637f20e3d5"
+        },
+        {
+          "id": "saar-keth--blooded-01",
+          "path": "public/game/imports/v85/library/51010b102b6626ca7ee9e55b7c1840b2ac330340c50fedc0f7e307dadfb39fee.png",
+          "bytes": 2030411,
+          "sha256": "51010b102b6626ca7ee9e55b7c1840b2ac330340c50fedc0f7e307dadfb39fee"
+        }
+      ],
+      "limitationsFR": [
+        "La pigmentation ocre est plus orangée que le qualificatif « minéral pâle » du brief ; les tissus clairs et la peau organique restent distincts.",
+        "Les doigts tenant le tissu se chevauchent partiellement ; leur articulation complète ne peut être certifiée.",
+        "Version de jeune âge créée pour le projet ; la fidélité canonique 1:1 n’est pas certifiée.",
+        "Marges visibles au seuil alpha >20 : left 6.05 %, top 11.20 %, right 4.10 %, bottom 5.34 %. La cible de 8 % sur chaque côté n’est pas atteinte ; aucun contour visible ne touche le bord."
+      ]
+    }
+  ],
+  "limitsFR": [
+    "Les six PNG ART_A restent entièrement dans le cadre au seuil alpha >20, mais la cible de 8 % de marge sur chaque côté n’est pas atteinte. Cette limite est conservée dans les reçus ; aucune modification de pixels n’a été faite après génération.",
+    "Les écarts de pigmentation et les doigts partiellement occultés par le textile restent documentés ; aucune fidélité canonique 1:1 ni nouvelle animation n’est certifiée.",
+    "Les empreintes décrivent les fichiers au moment de cette relecture. Toute modification ultérieure d’un fichier relu doit être confrontée à ces empreintes ou faire l’objet d’une nouvelle revue."
+  ]
+}

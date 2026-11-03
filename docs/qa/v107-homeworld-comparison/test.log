@@ -1,0 +1,521 @@
+Command: env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" node tests/homeworld-archive-comparison-v107.test.mjs
+TAP version 13
+# Subtest: V107 exact A lines retain pinned source, announced action and no automatic reward
+ok 1 - V107 exact A lines retain pinned source, announced action and no automatic reward
+  ---
+  duration_ms: 465.23557
+  type: 'test'
+  ...
+# Subtest: V107 prerequisite is the preserved completed B operation and choice cannot mutate B
+ok 2 - V107 prerequisite is the preserved completed B operation and choice cannot mutate B
+  ---
+  duration_ms: 17.815914
+  type: 'test'
+  ...
+# Subtest: V107 motor carries a discovered object with provenance, observes both supports and requires explicit confrontation and walked report
+ok 3 - V107 motor carries a discovered object with provenance, observes both supports and requires explicit confrontation and walked report
+  ---
+  duration_ms: 768.729594
+  type: 'test'
+  ...
+# Subtest: V107 discovery and provenance are separate durable gates, and table does not infer a result
+ok 4 - V107 discovery and provenance are separate durable gates, and table does not infer a result
+  ---
+  duration_ms: 193.658886
+  type: 'test'
+  ...
+# Subtest: V107 interruption, parking, imports and pickup retain original discovery and copied provenance
+ok 5 - V107 interruption, parking, imports and pickup retain original discovery and copied provenance
+  ---
+  duration_ms: 4.320561
+  type: 'test'
+  ...
+# Subtest: V107 refused durable discovery, carry, comparison and report are atomic and stale owners/revisions cannot write
+ok 6 - V107 refused durable discovery, carry, comparison and report are atomic and stale owners/revisions cannot write
+  ---
+  duration_ms: 181.637589
+  type: 'test'
+  ...
+# Subtest: V107 strict optional Save import enforces completed B, ownership, exact carried checkpoints and immutable source
+ok 7 - V107 strict optional Save import enforces completed B, ownership, exact carried checkpoints and immutable source
+  ---
+  duration_ms: 792.048203
+  type: 'test'
+  ...
+# Subtest: V107 new native lectern collision is shared by motor, routes and conditional atlas guides
+ok 8 - V107 new native lectern collision is shared by motor, routes and conditional atlas guides
+  ---
+  duration_ms: 492.940946
+  type: 'test'
+  ...
+# Subtest: V107 strict discriminants reject arrays and lookalike objects before Save import can lock a carried operation
+ok 9 - V107 strict discriminants reject arrays and lookalike objects before Save import can lock a carried operation
+  ---
+  duration_ms: 4.33309
+  type: 'test'
+  ...
+# Subtest: V107 physically valid foreground walking preserves save/pause/resume but never allows hidden interaction
+ok 10 - V107 physically valid foreground walking preserves save/pause/resume but never allows hidden interaction
+  ---
+  duration_ms: 5988.341555
+  type: 'test'
+  ...
+# Subtest: V107 local map preserves source C, displayed placements and uncertainty without claiming a plaque or contents
+ok 11 - V107 local map preserves source C, displayed placements and uncertainty without claiming a plaque or contents
+  ---
+  duration_ms: 22.215329
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8943.394701
+
+Process exit: 0
+
+Command: env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" node tests/homeworld-input-runtime.test.mjs
+TAP version 13
+# Subtest: the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock
+ok 1 - the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock
+  ---
+  duration_ms: 220.618947
+  type: 'test'
+  ...
+# Subtest: the live V105 cartography hook stays dormant and its refused write freezes the physical city
+ok 2 - the live V105 cartography hook stays dormant and its refused write freezes the physical city
+  ---
+  duration_ms: 120.26269
+  type: 'test'
+  ...
+# Subtest: held stick and A on first focus cannot move or open a dialogue until a neutral frame
+ok 3 - held stick and A on first focus cannot move or open a dialogue until a neutral frame
+  ---
+  duration_ms: 65.854732
+  type: 'test'
+  ...
+# Subtest: V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame
+ok 4 - V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame
+  ---
+  duration_ms: 83.19314
+  type: 'test'
+  ...
+# Subtest: V75 destination finder consumes no city controller action and requires release after closing
+ok 5 - V75 destination finder consumes no city controller action and requires release after closing
+  ---
+  duration_ms: 73.165517
+  type: 'test'
+  ...
+# Subtest: Homeworld focus return requires release, without losing position
+ok 6 - Homeworld focus return requires release, without losing position
+  ---
+  duration_ms: 87.055974
+  type: 'test'
+  ...
+# Subtest: Homeworld window return requires release, without losing position
+ok 7 - Homeworld window return requires release, without losing position
+  ---
+  duration_ms: 63.301976
+  type: 'test'
+  ...
+# Subtest: Homeworld hidden return requires release, without losing position
+ok 8 - Homeworld hidden return requires release, without losing position
+  ---
+  duration_ms: 69.983871
+  type: 'test'
+  ...
+# Subtest: Homeworld service return requires release, without losing position
+ok 9 - Homeworld service return requires release, without losing position
+  ---
+  duration_ms: 76.335076
+  type: 'test'
+  ...
+# Subtest: Start pauses and resumes intentionally but held Start/stick never repeats across the transition
+ok 10 - Start pauses and resumes intentionally but held Start/stick never repeats across the transition
+  ---
+  duration_ms: 91.858378
+  type: 'test'
+  ...
+# Subtest: dialog up starts at the last enabled choice, wraps and never repeats on render
+ok 11 - dialog up starts at the last enabled choice, wraps and never repeats on render
+  ---
+  duration_ms: 51.617473
+  type: 'test'
+  ...
+# Subtest: navigation dialog remains controller-accessible above an already paused city
+ok 12 - navigation dialog remains controller-accessible above an already paused city
+  ---
+  duration_ms: 58.049147
+  type: 'test'
+  ...
+# Subtest: the live city clock freezes strand position and velocity in pause, then settles after release
+ok 13 - the live city clock freezes strand position and velocity in pause, then settles after release
+  ---
+  duration_ms: 140.871799
+  type: 'test'
+  ...
+# Subtest: closing a dialogue by B cannot start walking on its still-held stick
+ok 14 - closing a dialogue by B cannot start walking on its still-held stick
+  ---
+  duration_ms: 74.349754
+  type: 'test'
+  ...
+# Subtest: controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral
+ok 15 - controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral
+  ---
+  duration_ms: 90.393922
+  type: 'test'
+  ...
+# Subtest: Start resumes after window inactivity in one intentional press, without toggling into another pause
+ok 16 - Start resumes after window inactivity in one intentional press, without toggling into another pause
+  ---
+  duration_ms: 85.80208
+  type: 'test'
+  ...
+# Subtest: real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait
+ok 17 - real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait
+  ---
+  duration_ms: 71.589606
+  type: 'test'
+  ...
+# Subtest: stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking
+ok 18 - stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking
+  ---
+  duration_ms: 144.093034
+  type: 'test'
+  ...
+# Subtest: the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel
+ok 19 - the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel
+  ---
+  duration_ms: 174.902827
+  type: 'test'
+  ...
+# Subtest: keyboard sprint uses the configured hold action, and touch sprint shares the same motor
+ok 20 - keyboard sprint uses the configured hold action, and touch sprint shares the same motor
+  ---
+  duration_ms: 125.390849
+  type: 'test'
+  ...
+# Subtest: held L3 alone cannot arm sprint across pause, dialog or focus ownership changes
+ok 21 - held L3 alone cannot arm sprint across pause, dialog or focus ownership changes
+  ---
+  duration_ms: 190.519368
+  type: 'test'
+  ...
+# Subtest: the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts
+ok 22 - the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts
+  ---
+  duration_ms: 63.908504
+  type: 'test'
+  ...
+# Subtest: the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking
+ok 23 - the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking
+  ---
+  duration_ms: 73.746676
+  type: 'test'
+  ...
+# Subtest: V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement
+ok 24 - V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement
+  ---
+  duration_ms: 60.042366
+  type: 'test'
+  ...
+# Subtest: V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement
+ok 25 - V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement
+  ---
+  duration_ms: 82.705297
+  type: 'test'
+  ...
+# Subtest: V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction
+ok 26 - V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction
+  ---
+  duration_ms: 45.141213
+  type: 'test'
+  ...
+# Subtest: the live V106 archive hook remains dormant during ordinary movement and a refused archive write freezes and resumes the physical clock
+ok 27 - the live V106 archive hook remains dormant during ordinary movement and a refused archive write freezes and resumes the physical clock
+  ---
+  duration_ms: 77.355254
+  type: 'test'
+  ...
+# Subtest: the live V106 archive callback rolls an invalid proposed step back before interruption and preserves an importable carried pair
+ok 28 - the live V106 archive callback rolls an invalid proposed step back before interruption and preserves an importable carried pair
+  ---
+  duration_ms: 2384.105143
+  type: 'test'
+  ...
+# Subtest: the live V107 comparison remains dormant and a refused write freezes and resumes the physical clock
+ok 29 - the live V107 comparison remains dormant and a refused write freezes and resumes the physical clock
+  ---
+  duration_ms: 59.27502
+  type: 'test'
+  ...
+# Subtest: the live V107 comparison callback rolls an invalid step back before interruption and saves the exact carried pair
+ok 30 - the live V107 comparison callback rolls an invalid step back before interruption and saves the exact carried pair
+  ---
+  duration_ms: 2078.181069
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7100.420388
+
+Process exit: 0
+
+Command: env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" node tests/homeworld-archive-v106.test.mjs
+TAP version 13
+# Subtest: V106 archive source extraction is byte-exact to the pinned V6 corpus and uses only represented B lines
+ok 1 - V106 archive source extraction is byte-exact to the pinned V6 corpus and uses only represented B lines
+  ---
+  duration_ms: 333.415123
+  type: 'test'
+  ...
+# Subtest: V106 native lectern hulls are shared by motor and route planner and leave every interaction point walkable
+ok 2 - V106 native lectern hulls are shared by motor and route planner and leave every interaction point walkable
+  ---
+  duration_ms: 415.980223
+  type: 'test'
+  ...
+# Subtest: V106 requires two actual one-at-a-time native carries and a walked return before recording uncertainty
+ok 3 - V106 requires two actual one-at-a-time native carries and a walked return before recording uncertainty
+  ---
+  duration_ms: 986.167533
+  type: 'test'
+  ...
+# Subtest: V106 refuses remote pickup, wrong support, two carried cases, a verbal completion, stale owner and revisions
+ok 4 - V106 refuses remote pickup, wrong support, two carried cases, a verbal completion, stale owner and revisions
+  ---
+  duration_ms: 32.995801
+  type: 'test'
+  ...
+# Subtest: V106 carry interruption, explicit ground parking and reload conserve both distinct dossiers
+ok 5 - V106 carry interruption, explicit ground parking and reload conserve both distinct dossiers
+  ---
+  duration_ms: 1.178093
+  type: 'test'
+  ...
+# Subtest: V106 refused durable actions remain atomic and expose recoverable refusal without fabricating placements
+ok 6 - V106 refused durable actions remain atomic and expose recoverable refusal without fabricating placements
+  ---
+  duration_ms: 0.296388
+  type: 'test'
+  ...
+# Subtest: V106 optional save field stays absent on legacy saves and strictly rejects incompatible or foreign carried data
+ok 7 - V106 optional save field stays absent on legacy saves and strictly rejects incompatible or foreign carried data
+  ---
+  duration_ms: 30.659035
+  type: 'test'
+  ...
+# Subtest: V106 archivist is discoverable only after visiting the port and the existing guide uses a real obstacle-aware walk
+ok 8 - V106 archivist is discoverable only after visiting the port and the existing guide uses a real obstacle-aware walk
+  ---
+  duration_ms: 227.675115
+  type: 'test'
+  ...
+# Subtest: V106 local map keeps exact dossier positions readable and marks an out-of-frame parked dossier without revealing terrain
+ok 9 - V106 local map keeps exact dossier positions readable and marks an out-of-frame parked dossier without revealing terrain
+  ---
+  duration_ms: 14.408128
+  type: 'test'
+  ...
+# Subtest: V106 carries through genuinely walkable foreground occlusion to7000,3000 and can save, pause, resume and save again
+ok 10 - V106 carries through genuinely walkable foreground occlusion to7000,3000 and can save, pause, resume and save again
+  ---
+  duration_ms: 9850.972734
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11904.931604
+
+Process exit: 0
+
+Command: env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" node tests/homeworld-cartography-v105.test.mjs
+TAP version 13
+# Subtest: V105 binds the exact source A action, choice and response while retaining the eight-line V104 extraction
+ok 1 - V105 binds the exact source A action, choice and response while retaining the eight-line V104 extraction
+  ---
+  duration_ms: 11.833354
+  type: 'test'
+  ...
+# Subtest: V105 walks the real city, the eight-second Council stairs and the actual upper viaduct before earning observation
+ok 2 - V105 walks the real city, the eight-second Council stairs and the actual upper viaduct before earning observation
+  ---
+  duration_ms: 18702.347317
+  type: 'test'
+  ...
+# Subtest: V105 comparison is ordered, requires the physical high point and retains the actual observation time
+ok 3 - V105 comparison is ordered, requires the physical high point and retains the actual observation time
+  ---
+  duration_ms: 1.497057
+  type: 'test'
+  ...
+# Subtest: V105 a completed survey requires the real descent and walked return to the source speaker
+ok 4 - V105 a completed survey requires the real descent and walked return to the source speaker
+  ---
+  duration_ms: 4553.071876
+  type: 'test'
+  ...
+# Subtest: V105 movement and stairs reject floor swaps, teleports, fabricated duration and a stale source endpoint
+ok 5 - V105 movement and stairs reject floor swaps, teleports, fabricated duration and a stale source endpoint
+  ---
+  duration_ms: 6.29953
+  type: 'test'
+  ...
+# Subtest: V105 interruption and reload preserve comparison, time and last safe floor without replaying actions
+ok 6 - V105 interruption and reload preserve comparison, time and last safe floor without replaying actions
+  ---
+  duration_ms: 0.856607
+  type: 'test'
+  ...
+# Subtest: V105 a refused durable action never publishes choice, comparison, date or success and stale callbacks cannot overwrite it
+ok 7 - V105 a refused durable action never publishes choice, comparison, date or success and stale callbacks cannot overwrite it
+  ---
+  duration_ms: 5.015471
+  type: 'test'
+  ...
+# Subtest: V105 the optional save ledger preserves old saves and V104 B and grants no rewards or permissions
+ok 8 - V105 the optional save ledger preserves old saves and V104 B and grants no rewards or permissions
+  ---
+  duration_ms: 16.720808
+  type: 'test'
+  ...
+# Subtest: V105 strict import rejects future, foreign, extra, contradictory, missing-high-point and forged-completion receipts without replacing bytes
+ok 9 - V105 strict import rejects future, foreign, extra, contradictory, missing-high-point and forged-completion receipts without replacing bytes
+  ---
+  duration_ms: 10.131549
+  type: 'test'
+  ...
+# Subtest: V105 real React dialogs expose exact source A, two known objects, date, preserved B and retry outside all pre-walk phases
+ok 10 - V105 real React dialogs expose exact source A, two known objects, date, preserved B and retry outside all pre-walk phases
+  ---
+  duration_ms: 95.220297
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 23462.980079
+
+Process exit: 0
+
+Command: env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" node tests/homeworld-navigation-v99.test.mjs
+TAP version 13
+# Subtest: V99: fractional connector departures preserve exact endpoints and full live collision margins
+ok 1 - V99: fractional connector departures preserve exact endpoints and full live collision margins
+  ---
+  duration_ms: 38.858442
+  type: 'test'
+  ...
+# Subtest: V99: consolidated port-to-audience route keeps every real connector and immutable cached points
+ok 2 - V99: consolidated port-to-audience route keeps every real connector and immutable cached points
+  ---
+  duration_ms: 8393.119631
+  type: 'test'
+  ...
+# Subtest: V99: every consolidated exterior segment guides its interior positions with decreasing distance
+ok 3 - V99: every consolidated exterior segment guides its interior positions with decreasing distance
+  ---
+  duration_ms: 313.370945
+  type: 'test'
+  ...
+# Subtest: V99: replacing a live street registry invalidates both cached grids and routes
+ok 4 - V99: replacing a live street registry invalidates both cached grids and routes
+  ---
+  duration_ms: 2594.011365
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11349.676832
+
+Process exit: 0
+
+Command: env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" node tests/homeworld-civic-v80.test.mjs
+TAP version 13
+# Subtest: V80 new PNGs are independent unchanged alpha sources with painted native contacts and actual consumers
+ok 1 - V80 new PNGs are independent unchanged alpha sources with painted native contacts and actual consumers
+  ---
+  duration_ms: 803.342267
+  type: 'test'
+  ...
+# Subtest: V80 whole native solids partition the candidate set, keep all refusals and share paint/collision/codex geometry
+ok 2 - V80 whole native solids partition the candidate set, keep all refusals and share paint/collision/codex geometry
+  ---
+  duration_ms: 212.31401
+  type: 'test'
+  ...
+# Subtest: all 98 old full-body paths, 14 additional resident circuits, 43 door approaches and 14 connector landings stay clear of new solids
+ok 3 - all 98 old full-body paths, 14 additional resident circuits, 43 door approaches and 14 connector landings stay clear of new solids
+  ---
+  duration_ms: 640.991488
+  type: 'test'
+  ...
+# Subtest: actual legacy motor stops against a V80 native solid and zero elapsed time preserves the exact actor
+ok 4 - actual legacy motor stops against a V80 native solid and zero elapsed time preserves the exact actor
+  ---
+  duration_ms: 109.403893
+  type: 'test'
+  ...
+# Subtest: owner-scoped checkpoint contract stays version1/revision1 and a newly obstructed old exterior falls back without mutating the save
+ok 5 - owner-scoped checkpoint contract stays version1/revision1 and a newly obstructed old exterior falls back without mutating the save
+  ---
+  duration_ms: 14.390407
+  type: 'test'
+  ...
+# Subtest: every new native prop has a full-body reachable observation side from the real port, not a fixture teleport
+ok 6 - every new native prop has a full-body reachable observation side from the real port, not a fixture teleport
+  ---
+  duration_ms: 42869.452117
+  type: 'test'
+  ...
+# Subtest: local neighborhood captions depend on the true floor and do not add campaign discovery or fake service IDs
+ok 7 - local neighborhood captions depend on the true floor and do not add campaign discovery or fake service IDs
+  ---
+  duration_ms: 0.781645
+  type: 'test'
+  ...
+# Subtest: 43 architectural notes bind each real exterior threshold to its actual unchanged room and honestly distinguish frontal art
+ok 8 - 43 architectural notes bind each real exterior threshold to its actual unchanged room and honestly distinguish frontal art
+  ---
+  duration_ms: 7.433093
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 44668.37619
+
+Process exit: 0

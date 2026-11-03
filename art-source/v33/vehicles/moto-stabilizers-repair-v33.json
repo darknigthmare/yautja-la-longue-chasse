@@ -1,0 +1,162 @@
+{
+  "asset": "moto-antigrav-chasse-stabilizers-v2-v33",
+  "prompt": "Use the reference ONLY as the precise identity of this original fan-game antigravity motorcycle. Create an ANIMATION SPRITESHEET of its landing stabilizers, not a presentation. Keep all chassis silhouette, single rear turbine, seat, handlebars, two landing-strut hinge anchors, footrests and bronze materials exactly consistent. Empty vehicle, no rider.\nCANVAS1536x1024, rigid grid4columns x2rows of384x512. Exactly8 full vehicles. Top row facingRIGHT, bottom row facingLEFT, independently drawn opposite side matchingreference. Centers x192,576,960,1344. All vehicle CHASSIS length280px (not bigger), its chassis baseline y245 for top row/y757bottomrow. Its maximum height170px including unfoldedstruts. At least40pixels pure-background padding to every cell border, no overlap.\nFour poses in EACHrow: 1) both two landingstruts fully extended as inreference; 2) BOTHstruts rotate30degrees backwards towardrear engine; 3) BOTHstruts rotate60degrees towardrear engine; 4) BOTHstruts fold90degrees and tuckunder chassis. Top hinge anchors remain at exact same chassis positions in allframes; each mechanical strut always visibly connected to its ownhinge. The footrest remains fixed and is not one ofthe landingstruts. Fuselage, camera, scale and chassis location MUST be identical betweenframes. Only these two landingstruts rotate about fixedhinges. No disappearing or added leg, no change in engine, no shockwave, no motiontrail.\nBackground pure uniform magenta #FF00FF across every empty pixel. No shadows beneath vehicle, no gradient, nocheckerboard, no text, labels or gridlines. Clean detailed hand-painted2D game bitmap matching reference. All eight vehicles small within theircells so mechanicalfeet and nosenever clip. This is original interpretation, not filmreplica.",
+  "origin": "exec-6851e55d-78a6-4894-820a-41b4b9b498cf.png",
+  "provider": "OpenAI integrated imagegen",
+  "reference": "art-source/v33/vehicles/moto-antigrav-chasse-identity-v33.png",
+  "status": "authored-review",
+  "review": "Eight source drawings. Struts clearer; regular-grid margins still insufficient, explicit rectangles required. Not gameplay integrated.",
+  "sourcePath": "art-source/v33/vehicles/moto-antigrav-chasse-stabilizers-v2-v33.png",
+  "publicPath": "/game/vehicles/v33/moto-antigrav-chasse-stabilizers-v2-v33.png",
+  "sha256": "aab044e41b9fb174f0a5c8e3e49d49c6326700c26876d53e1f932183dfd04aee",
+  "width": 1536,
+  "height": 1024,
+  "transparency": {
+    "mode": "color-key",
+    "rgb": [
+      255,
+      0,
+      255
+    ],
+    "tolerance": 48,
+    "fringe": {
+      "mode": "connected-magenta",
+      "radius": 2,
+      "minExcess": 16,
+      "strength": 1
+    }
+  },
+  "cells": [
+    {
+      "index": 0,
+      "facing": "right",
+      "phase": "extended",
+      "rect": [
+        24,
+        180,
+        366,
+        155
+      ],
+      "pivot": [
+        168,
+        150
+      ],
+      "durationTicks": 9
+    },
+    {
+      "index": 1,
+      "facing": "right",
+      "phase": "folding-30",
+      "rect": [
+        406,
+        180,
+        365,
+        151
+      ],
+      "pivot": [
+        170,
+        150
+      ],
+      "durationTicks": 9
+    },
+    {
+      "index": 2,
+      "facing": "right",
+      "phase": "folding-60",
+      "rect": [
+        789,
+        180,
+        364,
+        139
+      ],
+      "pivot": [
+        171,
+        150
+      ],
+      "durationTicks": 9
+    },
+    {
+      "index": 3,
+      "facing": "right",
+      "phase": "stowed",
+      "rect": [
+        1164,
+        180,
+        365,
+        117
+      ],
+      "pivot": [
+        180,
+        150
+      ],
+      "durationTicks": 9
+    },
+    {
+      "index": 4,
+      "facing": "left",
+      "phase": "extended",
+      "rect": [
+        7,
+        656,
+        363,
+        155
+      ],
+      "pivot": [
+        185,
+        186
+      ],
+      "durationTicks": 9
+    },
+    {
+      "index": 5,
+      "facing": "left",
+      "phase": "folding-30",
+      "rect": [
+        388,
+        657,
+        364,
+        150
+      ],
+      "pivot": [
+        188,
+        185
+      ],
+      "durationTicks": 9
+    },
+    {
+      "index": 6,
+      "facing": "left",
+      "phase": "folding-60",
+      "rect": [
+        769,
+        656,
+        365,
+        139
+      ],
+      "pivot": [
+        191,
+        186
+      ],
+      "durationTicks": 9
+    },
+    {
+      "index": 7,
+      "facing": "left",
+      "phase": "stowed",
+      "rect": [
+        1148,
+        656,
+        364,
+        119
+      ],
+      "pivot": [
+        196,
+        186
+      ],
+      "durationTicks": 9
+    }
+  ],
+  "residualMagenta": 81,
+  "validatedRuntimeClips": 0,
+  "reviewPlaybackOnly": true
+}

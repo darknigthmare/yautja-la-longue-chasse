@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "release": "V62",
+  "scope": "stages-only",
+  "checkedAt": "2026-09-30T21:01:55.356Z",
+  "status": "INTEGRATED_AND_LOCAL_QA_PASS",
+  "counts": {
+    "affectedStages": 3,
+    "newPlayableStages": 1,
+    "currentRuntimeStages": 187,
+    "addedNativePngs": 10,
+    "addedAmbientSheets": 9,
+    "addedNativeAnimationDrawings": 54,
+    "addedBackdropPngs": 1,
+    "totalDrawingsIncludingBackdrop": 55,
+    "replacedNativePngs": 0,
+    "deletedNativePngs": 0,
+    "renamedPreservedStageIdentities": 1,
+    "reusedNewStagePlanes": 5,
+    "newStoryClips": 0,
+    "sourceWorkbookDossiers": 174,
+    "sourceWorkbookEvents": 522,
+    "literalDossiersCertifiedComplete": 0
+  },
+  "nativeEvidence": {
+    "path": "docs/v62-stage-native-assets-qa.json",
+    "sha256": "6d101f2afa6d9bf76d13bf7edfce875446dbf5a497c80c87dda447a8a65e82ea",
+    "sourcePngsUntouched": true,
+    "p0Receipt": "docs/v62-generation/arena-187-golgotha-uscm-airlock-p0-depth.json",
+    "p0Sha256": "cb90f15c1ad7e6965b6050317e542c5115c7b0fbffb444a7a6f6019a885073bb"
+  },
+  "rendererEvidence": {
+    "path": "work-local/v62/qa/stages/renderer/report.json",
+    "sha256": "30f4268a7375d09444c83b73a8b0a4498280a13d7710a169b1d99cde164cf833",
+    "stages": 3,
+    "cameraChecks": 44,
+    "nativeFrameChecks": 54,
+    "captures": 101,
+    "currentProductionManifestSha256": "44d3a06d0355a204bdbd2aee3ee0c29425f5969f6359320b612d457ec6fe1b32",
+    "reviewedStageInputsStillExact": true,
+    "scopeNote": "The final manifest only additionally corrected the previousName documentation of preserved stage051. All three reviewed stage inputs and animation entries remain byte-equivalent as JSON objects to the compositor snapshots."
+  },
+  "applicationEvidence": {
+    "path": "docs/v62-stage-application-qa.json",
+    "sha256": "d08e12bdd86a69949e714d1fcd61a24a6144d99952be925517db8fd503eebfde",
+    "status": "PASS",
+    "checks": 16,
+    "desktopStages": [
+      "arena-126-avpr-2007-hospital-roof",
+      "arena-130-avp-classic-2000-space-station",
+      "arena-187-golgotha-uscm-airlock"
+    ],
+    "reducedMotionStage": "arena-126-avpr-2007-hospital-roof",
+    "mobileStage": "arena-187-golgotha-uscm-airlock",
+    "retryStage": "arena-126-avpr-2007-hospital-roof",
+    "mobilePhysicalDeviceVerified": false,
+    "savedBytesUnchanged": true,
+    "unexpectedErrors": 0,
+    "unexpectedHttpFailures": 0
+  },
+  "visualReview": "docs/v62-stage-composition-visual-review.json",
+  "targetedTests": {
+    "commands": [
+      "node --test tests/pit-stage-life-v62.test.mjs tests/pit-stage-life-v61.test.mjs tests/pit-stage-story-v61.test.mjs",
+      "node --test tests/pit-arena-catalogue.test.mjs tests/pit-stage-life-v62.test.mjs",
+      "node --test tests/pit-screen-arenas-v43.test.mjs tests/pit-stage-life-v62.test.mjs",
+      "node --test tests/pit-arena-runtime-data.test.mjs"
+    ],
+    "runsPassed": [
+      18,
+      10,
+      14,
+      6
+    ],
+    "note": "Runs overlap; do not sum them as distinct tests."
+  },
+  "stages": [
+    {
+      "stageId": "arena-126-avpr-2007-hospital-roof",
+      "name": "Toit de l’hôpital",
+      "change": "added-native-ambient-triplet",
+      "stageKey": "ST020",
+      "stageCells": "09_STAGES!A24:N24",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E62",
+        "10_VIE_DES_STAGES!E63",
+        "10_VIE_DES_STAGES!E64"
+      ],
+      "nativeSheets": 3,
+      "nativeDrawings": 18,
+      "distinctRandomVariants": 3,
+      "minimumThreeVariantsImplemented": true,
+      "status": "integrated-original-exhibition-adaptation",
+      "literalWorkbookDossierComplete": false,
+      "chapterReconstructionComplete": false,
+      "continuity": "Toit intact, ambiance d'exposition avant destruction. Evacuants adultes et appareil anonymes originaux ; aucune identité de survivant, route narrative ou continuité d'équipement de Wolf certifiée.",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Evacuants adultes anonymes — passage lointain",
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-01.png",
+          "sha256": "a7cf93205d78536d05b81f344ae52b3ad4cb1c144da9af6336a2bc0e00a8cb53",
+          "sourceCell": "10_VIE_DES_STAGES!E62",
+          "sourceRequest": "Évacuation humaine très lointaine",
+          "status": "native-six-pose-original-ambient-adaptation",
+          "literalConditionalCanonComplete": false
+        },
+        {
+          "id": "ambient-02",
+          "name": "Hélicoptère anonyme — rotor d'évacuation",
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "sha256": "dd7dda09f47359761670ad87d4e93bba2593c521cc4cfacb3b726f5c35da8209",
+          "sourceCell": "10_VIE_DES_STAGES!E63",
+          "sourceRequest": "Hélicoptère éloigné en version pré-bombardement",
+          "status": "native-six-pose-original-ambient-adaptation",
+          "literalConditionalCanonComplete": false
+        },
+        {
+          "id": "ambient-03",
+          "name": "Évent de toiture — vapeur dans le vent",
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "sha256": "03e496ae9570aef5d554f4436e99d484b7691d69952a33bf31cd110014b8ab2a",
+          "sourceCell": "10_VIE_DES_STAGES!E64",
+          "sourceRequest": "Vent et vapeur, horizon gardé lisible",
+          "status": "native-six-pose-original-ambient-adaptation",
+          "literalConditionalCanonComplete": false
+        }
+      ],
+      "newBackdropPngs": 0,
+      "reusedBackdropPlanes": 6
+    },
+    {
+      "stageId": "arena-130-avp-classic-2000-space-station",
+      "name": "Nœud de station — Classic 2000",
+      "change": "added-native-ambient-triplet",
+      "stageKey": "ST047",
+      "stageCells": "09_STAGES!A51:N51",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E143",
+        "10_VIE_DES_STAGES!E144",
+        "10_VIE_DES_STAGES!E145"
+      ],
+      "nativeSheets": 3,
+      "nativeDrawings": 18,
+      "distinctRandomVariants": 3,
+      "minimumThreeVariantsImplemented": true,
+      "status": "integrated-original-exhibition-adaptation",
+      "literalWorkbookDossierComplete": false,
+      "chapterReconstructionComplete": false,
+      "continuity": "Adaptation d'exposition de station industrielle. Marine adulte anonyme et mécanismes originaux ; ni héros Classic 2000 ni route scénarisée ou niveau exact certifié.",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Marine anonyme — traversée de passerelle",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "sha256": "29d448c1e45d4afad334de0a44b2d536f53ae4becbbdbf2cd6c420b9350bfd79",
+          "sourceCell": "10_VIE_DES_STAGES!E143",
+          "sourceRequest": "Marine en fuite par une passerelle",
+          "status": "native-six-pose-original-ambient-adaptation",
+          "literalConditionalCanonComplete": false
+        },
+        {
+          "id": "ambient-02",
+          "name": "Ascenseur de service — cycle de porte",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "sha256": "7c88338eedccbc433248dafa28a77332af643ba29f32afc37eda313a5710d097",
+          "sourceCell": "10_VIE_DES_STAGES!E144",
+          "sourceRequest": "Porte d’ascenseur hors zone jouable",
+          "status": "native-six-pose-original-ambient-adaptation",
+          "literalConditionalCanonComplete": false
+        },
+        {
+          "id": "ambient-03",
+          "name": "Quarantaine — indicateur mécanique lent",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "sha256": "8bbe4ad1a63b0341f4a3456ce84e0e6bdc6b9868e0dced818923f81d94e212af",
+          "sourceCell": "10_VIE_DES_STAGES!E145",
+          "sourceRequest": "Lumière de quarantaine à intensité bornée",
+          "status": "native-six-pose-original-ambient-adaptation",
+          "literalConditionalCanonComplete": false
+        }
+      ],
+      "newBackdropPngs": 0,
+      "reusedBackdropPlanes": 6
+    },
+    {
+      "stageId": "arena-187-golgotha-uscm-airlock",
+      "name": "Camp Golgotha — sas USCM",
+      "change": "new-stage-corrected-setting",
+      "stageKey": "ST046",
+      "stageCells": "09_STAGES!A50:N50",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E140",
+        "10_VIE_DES_STAGES!E141",
+        "10_VIE_DES_STAGES!E142"
+      ],
+      "nativeSheets": 3,
+      "nativeDrawings": 18,
+      "distinctRandomVariants": 3,
+      "minimumThreeVariantsImplemented": true,
+      "status": "integrated-original-exhibition-adaptation",
+      "literalWorkbookDossierComplete": false,
+      "chapterReconstructionComplete": false,
+      "continuity": "Le manuel Atari atteste la base militaire USCM, les sas et les conduits. Composition latérale, uniformes de protection anonymes et silhouette de xénomorphe originaux ; ni géométrie Jaguar exacte ni chapitre précis certifié.",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Sentinelles anonymes — sas d'observation",
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "sha256": "c1354791b2226240836b377ca9d31bb90c883b2be5a7fb2b1ac6d9aecb5ca661",
+          "sourceCell": "10_VIE_DES_STAGES!E140",
+          "sourceRequest": "Marines derrière un sas",
+          "status": "native-six-pose-original-ambient-adaptation",
+          "literalConditionalCanonComplete": false
+        },
+        {
+          "id": "ambient-02",
+          "name": "Capteur d'alarme — balayage lent",
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "sha256": "f46559eca972f66cc01ecb26c54bf67b0621546714bda00b506fb22746222ab5",
+          "sourceCell": "10_VIE_DES_STAGES!E141",
+          "sourceRequest": "Capteur d’alarme lent",
+          "status": "native-six-pose-original-ambient-adaptation",
+          "literalConditionalCanonComplete": false
+        },
+        {
+          "id": "ambient-03",
+          "name": "Xénomorphe anonyme — vitrage distant",
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "sha256": "969b5ba76914281bb6584a6b1240f1c99549feaa9fb68d0181320d4f90f93e7a",
+          "sourceCell": "10_VIE_DES_STAGES!E142",
+          "sourceRequest": "Xénomorphe derrière un vitrage distant",
+          "status": "native-six-pose-original-ambient-adaptation",
+          "literalConditionalCanonComplete": false
+        }
+      ],
+      "newBackdropPngs": 1,
+      "reusedBackdropPlanes": 5
+    }
+  ],
+  "reclassifiedPreservedStage": {
+    "id": "arena-051-golgotha-etude-jaguar",
+    "name": "Cataractes des Anciens · création originale",
+    "preserved": true,
+    "imagePaths": [
+      "/game/sprites/v42/pit-arenas/arena-051-golgotha-etude-jaguar/p0-depth.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-a-distant-left.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-b-distant-right.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-a-support-left.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-b-support-right.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-a-prop-left.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-b-prop-right.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-a-contact-floor.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-a-foreground-left.png",
+      "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-b-foreground-right.png"
+    ]
+  },
+  "duplicateDossiers": [
+    {
+      "targetStageId": "arena-126-avpr-2007-hospital-roof",
+      "dossiers": [
+        {
+          "key": "ST020",
+          "proposalId": "new-gunnison-rooftop",
+          "stageCells": "09_STAGES!A24:N24",
+          "eventCells": [
+            "10_VIE_DES_STAGES!E62",
+            "10_VIE_DES_STAGES!E63",
+            "10_VIE_DES_STAGES!E64"
+          ]
+        },
+        {
+          "key": "ST167",
+          "proposalId": "arena-126-avpr-2007-hospital-roof",
+          "stageCells": "09_STAGES!A171:N171",
+          "eventCells": [
+            "10_VIE_DES_STAGES!E503",
+            "10_VIE_DES_STAGES!E504",
+            "10_VIE_DES_STAGES!E505"
+          ]
+        }
+      ],
+      "resolution": "Two source dossiers retain six separate event requirements. This lot adds three original exhibition adaptations for the first dossier only; it does not erase or certify the second trio.",
+      "remainingDossiers": [
+        {
+          "key": "ST167",
+          "proposalId": "arena-126-avpr-2007-hospital-roof",
+          "stageCells": "09_STAGES!A171:N171",
+          "eventCells": [
+            "10_VIE_DES_STAGES!E503",
+            "10_VIE_DES_STAGES!E504",
+            "10_VIE_DES_STAGES!E505"
+          ],
+          "nativeEventsAddedByV62": 0,
+          "literalCompletionCertified": false
+        }
+      ]
+    },
+    {
+      "targetStageId": "arena-187-golgotha-uscm-airlock",
+      "dossiers": [
+        {
+          "key": "ST046",
+          "proposalId": "new-jaguar-golgotha",
+          "stageCells": "09_STAGES!A50:N50",
+          "eventCells": [
+            "10_VIE_DES_STAGES!E140",
+            "10_VIE_DES_STAGES!E141",
+            "10_VIE_DES_STAGES!E142"
+          ]
+        },
+        {
+          "key": "ST103",
+          "proposalId": "arena-051-golgotha-etude-jaguar",
+          "stageCells": "09_STAGES!A107:N107",
+          "eventCells": [
+            "10_VIE_DES_STAGES!E311",
+            "10_VIE_DES_STAGES!E312",
+            "10_VIE_DES_STAGES!E313"
+          ]
+        }
+      ],
+      "resolution": "Two source dossiers retain six separate event requirements. This lot adds three original exhibition adaptations for the first dossier only; it does not erase or certify the second trio.",
+      "remainingDossiers": [
+        {
+          "key": "ST103",
+          "proposalId": "arena-051-golgotha-etude-jaguar",
+          "stageCells": "09_STAGES!A107:N107",
+          "eventCells": [
+            "10_VIE_DES_STAGES!E311",
+            "10_VIE_DES_STAGES!E312",
+            "10_VIE_DES_STAGES!E313"
+          ],
+          "nativeEventsAddedByV62": 0,
+          "literalCompletionCertified": false
+        }
+      ]
+    },
+    {
+      "targetStageId": "arena-130-avp-classic-2000-space-station",
+      "dossiers": [
+        {
+          "key": "ST047",
+          "proposalId": "new-classic-station",
+          "stageCells": "09_STAGES!A51:N51",
+          "eventCells": [
+            "10_VIE_DES_STAGES!E143",
+            "10_VIE_DES_STAGES!E144",
+            "10_VIE_DES_STAGES!E145"
+          ]
+        },
+        {
+          "key": "ST170",
+          "proposalId": "arena-130-avp-classic-2000-space-station",
+          "stageCells": "09_STAGES!A174:N174",
+          "eventCells": [
+            "10_VIE_DES_STAGES!E512",
+            "10_VIE_DES_STAGES!E513",
+            "10_VIE_DES_STAGES!E514"
+          ]
+        }
+      ],
+      "resolution": "Two source dossiers retain six separate event requirements. This lot adds three original exhibition adaptations for the first dossier only; it does not erase or certify the second trio.",
+      "remainingDossiers": [
+        {
+          "key": "ST170",
+          "proposalId": "arena-130-avp-classic-2000-space-station",
+          "stageCells": "09_STAGES!A174:N174",
+          "eventCells": [
+            "10_VIE_DES_STAGES!E512",
+            "10_VIE_DES_STAGES!E513",
+            "10_VIE_DES_STAGES!E514"
+          ],
+          "nativeEventsAddedByV62": 0,
+          "literalCompletionCertified": false
+        }
+      ]
+    }
+  ],
+  "primarySources": [
+    {
+      "url": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+      "scope": "Film identity only; no exact helicopter model, roof geometry or survivor identities certified."
+    },
+    {
+      "url": "https://cdn.akamai.steamstatic.com/steam/apps/3730/manuals/Aliens%20Versus%20Predator%20Classic%202000%20Manual.pdf?t=1415299874",
+      "scope": "Official game manual; station ambience is a new lateral industrial adaptation, not an exact Classic 2000 hero or level."
+    },
+    {
+      "url": "https://www.atariage.com/manual_html_page.php?SoftwareLabelID=1060",
+      "scope": "Original Atari Jaguar manual text hosted by AtariAge attests Camp Golgotha as USCM training base and describes airlocks, lifts, vents and terminals. Exact geometry and character appearance remain unverified."
+    }
+  ],
+  "stillOpen": [
+    "Wolf equipment, survivor status and pre-destruction chapter continuity; no exact scene route added.",
+    "Classic 2000 named hero and full scenario route; not the Classic 2010 hunter.",
+    "Jaguar named Predator design, exact base geometry and scenario route; former waterfall study is preserved under original identity.",
+    "Second event trios ST167/E503–505, ST170/E512–514 and ST103/E311–313 remain separate and not delivered by this lot.",
+    "Badlands/Dek chapter framing ST050 and prior V61 Bloodshed, Last Hunt and Sandpiper scenario callers remain open.",
+    "All other literal workbook requirements retain their prior status. An animated exhibition stage is not a completed campaign chapter."
+  ],
+  "sourceWorkbook": {
+    "path": "C:/Users/chuck/Downloads/THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx",
+    "sha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+    "unchanged": true
+  },
+  "sourceWorkbookModified": false,
+  "globalBuildVerifiedByThisAgent": false,
+  "publishedByThisAgent": false
+}

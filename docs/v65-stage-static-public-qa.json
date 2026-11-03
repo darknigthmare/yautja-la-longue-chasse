@@ -1,0 +1,1237 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "version": "V65",
+  "checkedAt": "2026-10-01T01:57:22.277Z",
+  "surface": "real-roster-stage-duel-flow",
+  "targets": [
+    "arena-012-balcon-du-roi-de-la-chasse",
+    "arena-020-trone-fracture",
+    "arena-036-temple-de-la-double-lune",
+    "arena-050-porte-de-l-audience",
+    "arena-069-salle-du-porte-cendres",
+    "arena-076-atrium-des-mediateurs"
+  ],
+  "checks": [
+    {
+      "name": "dynamic-camera",
+      "initial": {
+        "stage": "arena-012-balcon-du-roi-de-la-chasse",
+        "art": "bitmap",
+        "planes": "P0,P1,P2,P3,P4,P5",
+        "missing": 0,
+        "positions": [
+          {
+            "x": 300,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ],
+        "zoom": 1.5887,
+        "centerY": 362,
+        "frame": 9,
+        "phase": "fight",
+        "paused": "false"
+      },
+      "apart": {
+        "stage": "arena-012-balcon-du-roi-de-la-chasse",
+        "art": "bitmap",
+        "planes": "P0,P1,P2,P3,P4,P5",
+        "missing": 0,
+        "positions": [
+          {
+            "x": 154.3,
+            "y": 0
+          },
+          {
+            "x": 815,
+            "y": 0
+          }
+        ],
+        "zoom": 1.0932,
+        "centerY": 293.9,
+        "frame": 43,
+        "phase": "fight",
+        "paused": "false"
+      }
+    },
+    {
+      "name": "pause-preserves-stage"
+    },
+    {
+      "name": "arena-012-balcon-du-roi-de-la-chasse",
+      "drawings": [
+        {
+          "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+          "plane": "P5",
+          "src": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+          "crop": {
+            "x": 665,
+            "y": 785,
+            "width": 578,
+            "height": 433
+          },
+          "uniform": true,
+          "args": [
+            665,
+            785,
+            578,
+            433,
+            1167.7473019997442,
+            369.192768814977,
+            393.03684743453266,
+            294.4376383030322
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+          "plane": "P0",
+          "src": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p0-depth.png",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1536,
+            "height": 1024
+          },
+          "uniform": true,
+          "args": [
+            0,
+            0,
+            1536,
+            1024,
+            -160,
+            -176.66666666666669,
+            1280,
+            853.3333333333334
+          ],
+          "matrix": [
+            1.0294336080551147,
+            0,
+            0,
+            1.0294336080551147,
+            -14.100342750549316,
+            -12.682452201843262
+          ]
+        },
+        {
+          "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+          "plane": "P1",
+          "src": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+          "crop": {
+            "x": 16,
+            "y": 187,
+            "width": 654,
+            "height": 428
+          },
+          "uniform": true,
+          "args": [
+            16,
+            187,
+            654,
+            428,
+            769.1422323430955,
+            104.77073486008385,
+            417.54980181369297,
+            273.25889170682046
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+          "plane": "P2",
+          "src": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+          "crop": {
+            "x": 694,
+            "y": 40,
+            "width": 530,
+            "height": 615
+          },
+          "uniform": true,
+          "args": [
+            694,
+            40,
+            530,
+            615,
+            873.8896861172478,
+            46.95045841155559,
+            285.3202587355038,
+            331.0791681553487
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-012-balcon-du-roi-de-la-chasse",
+          "plane": "P3",
+          "src": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png",
+          "crop": {
+            "x": 41,
+            "y": 833,
+            "width": 562,
+            "height": 339
+          },
+          "uniform": true,
+          "args": [
+            41,
+            833,
+            562,
+            339,
+            713.6904281537415,
+            256.47616003594,
+            197.35850068692602,
+            119.04720948908881
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "arena-020-trone-fracture",
+      "drawings": [
+        {
+          "stageId": "arena-020-trone-fracture",
+          "plane": "P5",
+          "src": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+          "crop": {
+            "x": 636,
+            "y": 907,
+            "width": 587,
+            "height": 288
+          },
+          "uniform": true,
+          "args": [
+            636,
+            907,
+            587,
+            288,
+            1135.258673703541,
+            438.9147990093918,
+            458.014104026939,
+            224.7156081086174
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-020-trone-fracture",
+          "plane": "P0",
+          "src": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/p0-depth.png",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1774,
+            "height": 887
+          },
+          "uniform": true,
+          "args": [
+            0,
+            0,
+            1774,
+            887,
+            -220,
+            -100,
+            1400,
+            700
+          ],
+          "matrix": [
+            1.0294336080551147,
+            0,
+            0,
+            1.0294336080551147,
+            -14.100342750549316,
+            -12.682452201843262
+          ]
+        },
+        {
+          "stageId": "arena-020-trone-fracture",
+          "plane": "P1",
+          "src": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+          "crop": {
+            "x": 36,
+            "y": 226,
+            "width": 638,
+            "height": 422
+          },
+          "uniform": true,
+          "args": [
+            36,
+            226,
+            638,
+            422,
+            769.1422323430955,
+            101.84464793778454,
+            417.54980181369297,
+            276.18497862911977
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-020-trone-fracture",
+          "plane": "P2",
+          "src": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+          "crop": {
+            "x": 786,
+            "y": 43,
+            "width": 428,
+            "height": 636
+          },
+          "uniform": true,
+          "args": [
+            786,
+            43,
+            428,
+            636,
+            889.8245533975703,
+            1.4068850360393412,
+            253.4505241748588,
+            376.62274153086497
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-020-trone-fracture",
+          "plane": "P3",
+          "src": "/game/sprites/v65/pit-arenas/arena-020-trone-fracture/static-modules.png",
+          "crop": {
+            "x": 51,
+            "y": 719,
+            "width": 554,
+            "height": 452
+          },
+          "uniform": true,
+          "args": [
+            51,
+            719,
+            554,
+            452,
+            329.91519793616044,
+            145.18296601575852,
+            300.75084502506644,
+            245.37794576052355
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "arena-036-temple-de-la-double-lune",
+      "drawings": [
+        {
+          "stageId": "arena-036-temple-de-la-double-lune",
+          "plane": "P5",
+          "src": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+          "crop": {
+            "x": 654,
+            "y": 810,
+            "width": 577,
+            "height": 379
+          },
+          "uniform": true,
+          "args": [
+            654,
+            810,
+            577,
+            379,
+            1140.1357556631194,
+            369.192768814977,
+            448.2599401077825,
+            294.4376383030322
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-036-temple-de-la-double-lune",
+          "plane": "P0",
+          "src": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/p0-depth.png",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1536,
+            "height": 1024
+          },
+          "uniform": true,
+          "args": [
+            0,
+            0,
+            1536,
+            1024,
+            0,
+            0,
+            960,
+            640
+          ],
+          "matrix": [
+            1.0294336080551147,
+            0,
+            0,
+            1.0294336080551147,
+            -14.100342750549316,
+            -12.682452201843262
+          ]
+        },
+        {
+          "stageId": "arena-036-temple-de-la-double-lune",
+          "plane": "P1",
+          "src": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+          "crop": {
+            "x": 45,
+            "y": 29,
+            "width": 570,
+            "height": 677
+          },
+          "uniform": true,
+          "args": [
+            45,
+            29,
+            570,
+            677,
+            -85.79268692739247,
+            19.365053214116756,
+            301.9775580666011,
+            358.66457335278756
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-036-temple-de-la-double-lune",
+          "plane": "P2",
+          "src": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+          "crop": {
+            "x": 706,
+            "y": 54,
+            "width": 506,
+            "height": 664
+          },
+          "uniform": true,
+          "args": [
+            706,
+            54,
+            506,
+            664,
+            873.8896861172478,
+            3.617271230195797,
+            285.3202587355038,
+            374.4123553367085
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-036-temple-de-la-double-lune",
+          "plane": "P3",
+          "src": "/game/sprites/v65/pit-arenas/arena-036-temple-de-la-double-lune/static-modules.png",
+          "crop": {
+            "x": 23,
+            "y": 849,
+            "width": 621,
+            "height": 332
+          },
+          "uniform": true,
+          "args": [
+            23,
+            849,
+            621,
+            332,
+            712.1193968221824,
+            268.33144193692135,
+            200.5005633500443,
+            107.19192758810742
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "arena-050-porte-de-l-audience",
+      "drawings": [
+        {
+          "stageId": "arena-050-porte-de-l-audience",
+          "plane": "P5",
+          "src": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/static-modules.png",
+          "crop": {
+            "x": 725,
+            "y": 917,
+            "width": 435,
+            "height": 189
+          },
+          "uniform": true,
+          "args": [
+            725,
+            917,
+            435,
+            189,
+            1135.258673703541,
+            464.63117571320123,
+            458.014104026939,
+            198.99923140480797
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-050-porte-de-l-audience",
+          "plane": "P0",
+          "src": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/p0-depth.png",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1672,
+            "height": 941
+          },
+          "uniform": true,
+          "args": [
+            0,
+            0,
+            1672,
+            941,
+            -160,
+            -110.19138755980862,
+            1280,
+            720.3827751196172
+          ],
+          "matrix": [
+            1.0294336080551147,
+            0,
+            0,
+            1.0294336080551147,
+            -14.100342750549316,
+            -12.682452201843262
+          ]
+        },
+        {
+          "stageId": "arena-050-porte-de-l-audience",
+          "plane": "P1",
+          "src": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/static-modules.png",
+          "crop": {
+            "x": 95,
+            "y": 301,
+            "width": 570,
+            "height": 271
+          },
+          "uniform": true,
+          "args": [
+            95,
+            301,
+            570,
+            271,
+            769.1422323430955,
+            179.51033482741167,
+            417.54980181369297,
+            198.51929173949264
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-050-porte-de-l-audience",
+          "plane": "P2",
+          "src": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/static-modules.png",
+          "crop": {
+            "x": 858,
+            "y": 154,
+            "width": 235,
+            "height": 428
+          },
+          "uniform": true,
+          "args": [
+            858,
+            154,
+            235,
+            428,
+            913.1545534993066,
+            1.4068850360393412,
+            206.79052397138616,
+            376.62274153086497
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-050-porte-de-l-audience",
+          "plane": "P3",
+          "src": "/game/sprites/v65/pit-arenas/arena-050-porte-de-l-audience/static-modules.png",
+          "crop": {
+            "x": 118,
+            "y": 884,
+            "width": 454,
+            "height": 214
+          },
+          "uniform": true,
+          "args": [
+            118,
+            884,
+            454,
+            214,
+            712.1193968221824,
+            281.0142934084881,
+            200.5005633500443,
+            94.50907611654073
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "arena-069-salle-du-porte-cendres",
+      "drawings": [
+        {
+          "stageId": "arena-069-salle-du-porte-cendres",
+          "plane": "P5",
+          "src": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+          "crop": {
+            "x": 715,
+            "y": 850,
+            "width": 521,
+            "height": 339
+          },
+          "uniform": true,
+          "args": [
+            715,
+            850,
+            521,
+            339,
+            1138.009074454651,
+            369.19276881497694,
+            452.51330252471917,
+            294.43763830303226
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-069-salle-du-porte-cendres",
+          "plane": "P0",
+          "src": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/p0-depth.png",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1774,
+            "height": 887
+          },
+          "uniform": true,
+          "args": [
+            0,
+            0,
+            1774,
+            887,
+            -220,
+            -100,
+            1400,
+            700
+          ],
+          "matrix": [
+            1.0294336080551147,
+            0,
+            0,
+            1.0294336080551147,
+            -14.100342750549316,
+            -12.682452201843262
+          ]
+        },
+        {
+          "stageId": "arena-069-salle-du-porte-cendres",
+          "plane": "P1",
+          "src": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+          "crop": {
+            "x": 29,
+            "y": 315,
+            "width": 789,
+            "height": 449
+          },
+          "uniform": true,
+          "args": [
+            29,
+            315,
+            789,
+            449,
+            -173.02142303139112,
+            122.13433026185663,
+            449.6690173378232,
+            255.89529630504768
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-069-salle-du-porte-cendres",
+          "plane": "P2",
+          "src": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+          "crop": {
+            "x": 849,
+            "y": 67,
+            "width": 350,
+            "height": 698
+          },
+          "uniform": true,
+          "args": [
+            849,
+            67,
+            350,
+            698,
+            922.1243430381496,
+            1.4068850360393412,
+            188.85094489370022,
+            376.62274153086497
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-069-salle-du-porte-cendres",
+          "plane": "P3",
+          "src": "/game/sprites/v65/pit-arenas/arena-069-salle-du-porte-cendres/static-modules.png",
+          "crop": {
+            "x": 30,
+            "y": 859,
+            "width": 673,
+            "height": 336
+          },
+          "uniform": true,
+          "args": [
+            30,
+            859,
+            673,
+            336,
+            712.1193968221824,
+            275.4220481496723,
+            200.5005633500443,
+            100.10132137535645
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "arena-076-atrium-des-mediateurs",
+      "drawings": [
+        {
+          "stageId": "arena-076-atrium-des-mediateurs",
+          "plane": "P5",
+          "src": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+          "crop": {
+            "x": 665,
+            "y": 922,
+            "width": 573,
+            "height": 153
+          },
+          "uniform": true,
+          "args": [
+            665,
+            922,
+            573,
+            153,
+            1135.258673703541,
+            541.3334474040098,
+            458.014104026939,
+            122.29695971399943
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-076-atrium-des-mediateurs",
+          "plane": "P0",
+          "src": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/p0-depth.png",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 1536,
+            "height": 1024
+          },
+          "uniform": true,
+          "args": [
+            0,
+            0,
+            1536,
+            1024,
+            -160,
+            -176.66666666666669,
+            1280,
+            853.3333333333334
+          ],
+          "matrix": [
+            1.0294336080551147,
+            0,
+            0,
+            1.0294336080551147,
+            -14.100342750549316,
+            -12.682452201843262
+          ]
+        },
+        {
+          "stageId": "arena-076-atrium-des-mediateurs",
+          "plane": "P1",
+          "src": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+          "crop": {
+            "x": 25,
+            "y": 239,
+            "width": 780,
+            "height": 372
+          },
+          "uniform": true,
+          "args": [
+            25,
+            239,
+            780,
+            372,
+            -183.72782820610118,
+            173.78435861858904,
+            428.256206988403,
+            204.24526794831527
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-076-atrium-des-mediateurs",
+          "plane": "P2",
+          "src": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+          "crop": {
+            "x": 849,
+            "y": 101,
+            "width": 389,
+            "height": 506
+          },
+          "uniform": true,
+          "args": [
+            849,
+            101,
+            389,
+            506,
+            873.8896861172478,
+            6.893248880105034,
+            285.3202587355038,
+            371.1363776867993
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "stageId": "arena-076-atrium-des-mediateurs",
+          "plane": "P3",
+          "src": "/game/sprites/v65/pit-arenas/arena-076-atrium-des-mediateurs/static-modules.png",
+          "crop": {
+            "x": 18,
+            "y": 872,
+            "width": 634,
+            "height": 199
+          },
+          "uniform": true,
+          "args": [
+            18,
+            872,
+            634,
+            199,
+            685.1676879296514,
+            287.8043730593844,
+            279.466551553862,
+            87.71899646564438
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "reduced",
+      "stageId": "arena-012-balcon-du-roi-de-la-chasse"
+    },
+    {
+      "name": "mobile",
+      "stageId": "arena-076-atrium-des-mediateurs"
+    },
+    {
+      "name": "required-atlas-503-retry",
+      "failureCount": 1,
+      "blockedPath": "/game/sprites/v65/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/static-modules.png"
+    }
+  ],
+  "captures": [
+    {
+      "name": "arena-012-balcon-du-roi-de-la-chasse-selection",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-012-balcon-du-roi-de-la-chasse-selection.png",
+      "sha256": "5d3038300d6d79a20a8346960dee55bf53271be1782a132604d1c9f8caac5dbc"
+    },
+    {
+      "name": "arena-012-balcon-du-roi-de-la-chasse-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-012-balcon-du-roi-de-la-chasse-combat.png",
+      "sha256": "34ee3e059f9fc027fae14a9d6432b00591668265232ce9b92adc25906b85d40d"
+    },
+    {
+      "name": "fighters-apart-camera",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\fighters-apart-camera.png",
+      "sha256": "326bfefc5348c5f1aa13e2f620cb1c1075917e1f396920783dca753874a878e1"
+    },
+    {
+      "name": "arena-020-trone-fracture-selection",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-020-trone-fracture-selection.png",
+      "sha256": "1a8f1823c4a0ef1efa3255b375f61035626e405f90296118ae4a17e91fd4baab"
+    },
+    {
+      "name": "arena-020-trone-fracture-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-020-trone-fracture-combat.png",
+      "sha256": "561114f2a83f11dc334877e3b43c478a4d423287b0cf4e7938832baa9f9b86b8"
+    },
+    {
+      "name": "arena-036-temple-de-la-double-lune-selection",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-036-temple-de-la-double-lune-selection.png",
+      "sha256": "243b3a4065840a6bb448c031a9ad17de1bbc84bc1b5624667b5e6ae726e1ea3c"
+    },
+    {
+      "name": "arena-036-temple-de-la-double-lune-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-036-temple-de-la-double-lune-combat.png",
+      "sha256": "7e6d929e46747a6a17a716897900a01c57a4f4b5423ad81db78f5c7232ba4457"
+    },
+    {
+      "name": "arena-050-porte-de-l-audience-selection",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-050-porte-de-l-audience-selection.png",
+      "sha256": "be94baf728f7354b6359a5c9c54e18439cd5f2a94bd00cbce62d07cf420680da"
+    },
+    {
+      "name": "arena-050-porte-de-l-audience-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-050-porte-de-l-audience-combat.png",
+      "sha256": "ca14a111e85ae957739acf9ca61fc8665012aa1c8b280933f76f35b4061c71e6"
+    },
+    {
+      "name": "arena-069-salle-du-porte-cendres-selection",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-069-salle-du-porte-cendres-selection.png",
+      "sha256": "14bcc2aa6a026fe2e55de3aaa5ab1aced58cbbaf74c1398ad6a59fdaf8784ad2"
+    },
+    {
+      "name": "arena-069-salle-du-porte-cendres-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-069-salle-du-porte-cendres-combat.png",
+      "sha256": "9e8f5b9857b492e63fe014dff8f58b5f875a16dbf8b1a8089a10acdbb4eed222"
+    },
+    {
+      "name": "arena-076-atrium-des-mediateurs-selection",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-076-atrium-des-mediateurs-selection.png",
+      "sha256": "2333020dd1934994b5b80fffa6aab2a5d78cf0082f711c4fcb9d56480cb6da83"
+    },
+    {
+      "name": "arena-076-atrium-des-mediateurs-combat",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-076-atrium-des-mediateurs-combat.png",
+      "sha256": "517046163571d3b892f4c20b7310f1060f708003b2628ccebf6b30ba68e1dce5"
+    },
+    {
+      "name": "reduced-landscape",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\reduced-landscape.png",
+      "sha256": "9aa0f4d0da434d3d4479381c1296c944c3fe0959cb92ec27acc602ea23d675b1"
+    },
+    {
+      "name": "mobile-landscape",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\mobile-landscape.png",
+      "sha256": "c52535bcbd21aa537aa38e3b116587993731fa8e073d24fcef66bfaeb3d8420b"
+    },
+    {
+      "name": "mobile-portrait",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\mobile-portrait.png",
+      "sha256": "e3e53401aa9d9402945024692e718de45d2a99566f992938f17167efb9a9a826"
+    },
+    {
+      "name": "required-atlas-503",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\required-atlas-503.png",
+      "sha256": "58e99d72d2704a3e4d291ca16b5b8af8ffae0114215e0cbb7457c37c34ef85f3"
+    },
+    {
+      "name": "required-atlas-recovered",
+      "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\required-atlas-recovered.png",
+      "sha256": "34ee3e059f9fc027fae14a9d6432b00591668265232ce9b92adc25906b85d40d"
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "sourceHashes": {
+    "app/game/data/pitStageCompositionV65.json": "4fee1202e0b39e1aedcb50f45ed5c15982f4de0563e2d8e8356b2d8dc4e9d87f",
+    "app/game/pitStageCompositionV65.ts": "711a1c3e5cf6f4a53302ddfe474e23eac513bda98694ef4ab3ddbc7ad2034ef0",
+    "app/game/pitArenaProduction.ts": "b49fbe048bce45c1328dd28e1c1985f6588a6f5a23d16f4323e2d995d8b94a7c",
+    "app/game/pitArenaRendering.ts": "1c9629f792a7ff97dd37582a2400290e0047e477a6c0c7f61ec14168a62feb8f",
+    "app/game/PitCanvas.tsx": "079d36bac6d080e6738d1731c34273559cf349864dd8f542c340443152f4f237",
+    "scripts/verify-pit-static-application-v65.mjs": "281f9eeeb36e5b313733459ba9ab91a8a5c1c76a5127011822c4c3baddef6785"
+  },
+  "manualVisualReview": {
+    "status": "PASS_AGENT_PUBLIC_VISUAL_REVIEW",
+    "reviewer": "runtime-integration-agent",
+    "capturesViewed": 13,
+    "captures": [
+      {
+        "name": "arena-012-balcon-du-roi-de-la-chasse-combat",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-012-balcon-du-roi-de-la-chasse-combat.png",
+        "sha256": "34ee3e059f9fc027fae14a9d6432b00591668265232ce9b92adc25906b85d40d",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "arena-020-trone-fracture-combat",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-020-trone-fracture-combat.png",
+        "sha256": "561114f2a83f11dc334877e3b43c478a4d423287b0cf4e7938832baa9f9b86b8",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "arena-036-temple-de-la-double-lune-combat",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-036-temple-de-la-double-lune-combat.png",
+        "sha256": "7e6d929e46747a6a17a716897900a01c57a4f4b5423ad81db78f5c7232ba4457",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "arena-050-porte-de-l-audience-combat",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-050-porte-de-l-audience-combat.png",
+        "sha256": "ca14a111e85ae957739acf9ca61fc8665012aa1c8b280933f76f35b4061c71e6",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "arena-069-salle-du-porte-cendres-combat",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-069-salle-du-porte-cendres-combat.png",
+        "sha256": "9e8f5b9857b492e63fe014dff8f58b5f875a16dbf8b1a8089a10acdbb4eed222",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "arena-076-atrium-des-mediateurs-combat",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-076-atrium-des-mediateurs-combat.png",
+        "sha256": "517046163571d3b892f4c20b7310f1060f708003b2628ccebf6b30ba68e1dce5",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "arena-020-trone-fracture-selection",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\arena-020-trone-fracture-selection.png",
+        "sha256": "1a8f1823c4a0ef1efa3255b375f61035626e405f90296118ae4a17e91fd4baab",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "fighters-apart-camera",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\fighters-apart-camera.png",
+        "sha256": "326bfefc5348c5f1aa13e2f620cb1c1075917e1f396920783dca753874a878e1",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "mobile-landscape",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\mobile-landscape.png",
+        "sha256": "c52535bcbd21aa537aa38e3b116587993731fa8e073d24fcef66bfaeb3d8420b",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "mobile-portrait",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\mobile-portrait.png",
+        "sha256": "e3e53401aa9d9402945024692e718de45d2a99566f992938f17167efb9a9a826",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "reduced-landscape",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\reduced-landscape.png",
+        "sha256": "9aa0f4d0da434d3d4479381c1296c944c3fe0959cb92ec27acc602ea23d675b1",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "required-atlas-503",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\required-atlas-503.png",
+        "sha256": "58e99d72d2704a3e4d291ca16b5b8af8ffae0114215e0cbb7457c37c34ef85f3",
+        "visualReview": "PASS"
+      },
+      {
+        "name": "required-atlas-recovered",
+        "file": "I:\\CodexTemp\\yautja-v65-20261001\\stages\\qa\\application-public\\required-atlas-recovered.png",
+        "sha256": "34ee3e059f9fc027fae14a9d6432b00591668265232ce9b92adc25906b85d40d",
+        "visualReview": "PASS"
+      }
+    ],
+    "observations": [
+      "Six distinct static environments and their foreground/background layers are visible in the public fullscreen combat flow.",
+      "Throne020 steps rest against the floor; both moons remain visible in036 with the technical020floor, not the former figurative relief.",
+      "Fighters keep visible ground support as the camera retreats; no missing native module or uncovered lower viewport was observed.",
+      "The public020selection capture was taken during ordinary asset loading: a clear loading state blocks launch; the subsequent ready gate and complete fight pass.",
+      "Mobile landscape and portrait preserve aspect ratio with letterboxing, visible HUD and touch controls, and no horizontal overflow. The portrait combat area remains smaller; full-height mobile composition is not claimed.",
+      "Reduced-motion mode retains the static scene and contact line.",
+      "An intentionally intercepted atlas503blocks launch and offers retry; recovery restores the complete arena."
+    ],
+    "limits": [
+      "Thirteen of eighteen public captures inspected by this agent; the other five selection captures are not claimed manually reviewed.",
+      "Mobile is Chromium emulation, not physical device verification.",
+      "These six original environments are adaptations, not certified1:1canonical locations.",
+      "The intentional503is confined to this isolated browser profile and does not affect other users."
+    ],
+    "evidence": {
+      "path": "docs/v65-stage-static-public-visual-review.json",
+      "sha256": "6358e420ba85f595e3ad4f069af5555cb2c7f4ba551c789b4e4228811c5660a8"
+    }
+  },
+  "limits": [
+    "Isolated browser profiles use a QA campaign fixture; user saves are not modified.",
+    "Browser clock controls elapsed time; real input and normal simulation are used.",
+    "No new stage animation is claimed.",
+    "Mobile is emulated Chromium, not hardware verification."
+  ],
+  "release": "V65",
+  "deployment": {
+    "id": "dpl_AEiaWTqBjGRZ9iZjjPYp2snPEKfH",
+    "commit": "73c0f6e8fe5e0a1301c6aa9becb5a67f0fb34aa9",
+    "confirmationSource": "READY and commit verified by root release agent before this browser run; this report separately verifies the public runtime."
+  },
+  "reportEvidence": {
+    "path": "I:/CodexTemp/yautja-v65-20261001/stages/qa/application-public/report.json",
+    "sha256": "6f33049ca45b539b70bb33a6bffccfc36bad242b36903682244acb8fd25f67f5"
+  },
+  "localProofsModified": false
+}

@@ -1,0 +1,56 @@
+TAP version 13
+# Subtest: V112 reproduces six unsupported retained foundations then supports every native edge of all 51 facades
+not ok 1 - V112 reproduces six unsupported retained foundations then supports every native edge of all 51 facades
+  ---
+  duration_ms: 1176.320949
+  type: 'test'
+  location: '/workspace/yautja-la-longue-chasse/tests/homeworld-spatial-v112.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + [
+    +   [
+    +     'foundation-v112:residence-terraces-3',
+    +     'residence-terraces-1'
+    +   ]
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0:
+      0: 'foundation-v112:residence-terraces-3'
+      1: 'residence-terraces-1'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-spatial-v112.test.mjs:18:53)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: foundation lips remain local to retained solids on their true floor and never relocate a threshold or make a whole outside district walkable
+ok 2 - foundation lips remain local to retained solids on their true floor and never relocate a threshold or make a whole outside district walkable
+  ---
+  duration_ms: 1.525055
+  type: 'test'
+  ...
+# Subtest: the real world draw pass paints the exact six physical plinth polygons and shares exposed foundation extraction
+ok 3 - the real world draw pass paints the exact six physical plinth polygons and shares exposed foundation extraction
+  ---
+  duration_ms: 1066.84643
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 2
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2253.24283

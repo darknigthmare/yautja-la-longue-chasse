@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "workbook": "YAUTJA_CONSOLIDATION_PR_20261103.xlsx",
+  "bytes": 26610,
+  "sha256": "858ed7a0a0099e409479841c00998c82a5fdbcd6bbeb19544062b96a2daf7080",
+  "targetCommit": "d5d2e16a2f0b6d4dd98802af018fff99bc63a941",
+  "mainCommit": "f322e0cb42f2b1b7e06c3be1dcfbb23cb24f02c8",
+  "counts": {
+    "total": 60,
+    "target": 60,
+    "missing": 0,
+    "unknown": 0,
+    "main": 0,
+    "merged": 0,
+    "remoteUnknown": 0
+  },
+  "checks": 23,
+  "formulaCountsVerified": true,
+  "changedInputRecalculationVerified": true,
+  "sourceUrlsVerified": true,
+  "formulaErrorMatches": 0,
+  "visualReview": {
+    "sheets": [
+      "Synthèse",
+      "PR",
+      "Vérifications"
+    ],
+    "previews": [
+      "01-synthese.png",
+      "02-pr.png",
+      "03-verifications.png",
+      "04-commandes.png",
+      "05-pr-finales.png"
+    ],
+    "result": "PASS"
+  },
+  "runtime": "@oai/artifact-tool via CODEX_PRIMARY_RUNTIME_NODE",
+  "publicationState": "local-tested-snapshot-before-remote-publication"
+}

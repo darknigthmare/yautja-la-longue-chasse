@@ -1,0 +1,744 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-183-homeworld-wilds",
+  "proposalId": "new-homeworld-wilds",
+  "workbookStage": "A56:N56",
+  "sourceUrls": [
+    "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3d8efbcfb42939a33093ee3ad923c0e97ff53ff5/docs/v54-character-stage-coverage.json"
+  ],
+  "loreLimits": [
+    "Homeworld sauvage du projet : composition, faune quadrupède et végétation originales, sans attribution à une espèce canonique identifiée.",
+    "Guetteur de clan anonyme, équipement sobre sans arme nommée ou pouvoir ajouté. Les corniches servent d’appuis séparés du terrain de duel."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "EDIT this native transparent atlas. Preserve exactly this original mossy quadruped design, anatomy, sideview,6distinct sniff/headturnposes, colors and lighting. Correct ONLY the packing: exact3columns2rows on1536x1024canvas, cells512x512. Each COMPLETE animal mustfitinsidean interior360x360 boxcenteredineachcell, with min70pixels CLEAR ALPHA gutter on all4sides. Makeanimals SMALLER. No tail, horn or snout maytouch orcross anycellborder. Entirefeetplantedsamey420baselineineachcell. Noextracreatures, background,shadow,gradient,grid,labels oroutlines. True alpha,6intactfigures. Thepriorversion crossedcolumn boundaries and is unusable; generous empty spaceisessential.",
+      "transparentRequested": true,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-d11d0679-e5fa-4f3b-b93e-6db5cbf40613.png",
+      "workspacePath": "work-local/v60/generated/arena-183-homeworld-wilds/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six intact quadruped poses with improved inter-cell clearance; four limbs and consistent mossy skin. Original species, no canonical species claim.",
+      "sha256": "ad6a925ef9a737d641fb75cdf80f79bbf630f94176ab687831a0e8e9fba8d1c1",
+      "bytes": 1748776,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8159872690836588,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            38,
+            149,
+            424,
+            273
+          ],
+          "pivot": [
+            250,
+            422
+          ],
+          "margins": [
+            38,
+            149,
+            50,
+            90
+          ],
+          "opaquePixelCount": 50387,
+          "contentSha256": "af14d600151aed810cb21080590a6e9ea99bb8a858870a95d00eb27a651e14b3"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            43,
+            226,
+            418,
+            195
+          ],
+          "pivot": [
+            250,
+            421
+          ],
+          "margins": [
+            43,
+            226,
+            51,
+            91
+          ],
+          "opaquePixelCount": 47149,
+          "contentSha256": "769e01c75efbb327d0c93dd73363f0895b06e57b93a9e45c0d48bb27fc4ba51e"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            233,
+            412,
+            188
+          ],
+          "pivot": [
+            276,
+            421
+          ],
+          "margins": [
+            51,
+            233,
+            49,
+            91
+          ],
+          "opaquePixelCount": 45655,
+          "contentSha256": "5ae01d2f155c557309714994095185b090852c6ee03216738272b8ed73498e66"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            55,
+            123,
+            390,
+            270
+          ],
+          "pivot": [
+            269.5,
+            393
+          ],
+          "margins": [
+            55,
+            123,
+            67,
+            119
+          ],
+          "opaquePixelCount": 49815,
+          "contentSha256": "153134d7169ed1a7ba580e651696b1170cd12419281d449fbc129bab467f40c8"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            57,
+            110,
+            388,
+            282
+          ],
+          "pivot": [
+            258.5,
+            392
+          ],
+          "margins": [
+            57,
+            110,
+            67,
+            120
+          ],
+          "opaquePixelCount": 47796,
+          "contentSha256": "1bae6c8d48ab8a5de50dde5f30bc163e670e4a517e0db382e52651ecd28ff1ee"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            39,
+            136,
+            417,
+            256
+          ],
+          "pivot": [
+            248.5,
+            392
+          ],
+          "margins": [
+            39,
+            136,
+            56,
+            120
+          ],
+          "opaquePixelCount": 48625,
+          "contentSha256": "d27be04651c2ad391c66c563a9c810305d342b26db7bbf524ea3e90aeed6dbd1"
+        }
+      ]
+    },
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One anonymous adult Yautja clan lookout with slim dark copper ceremonial armor, plain elongated closed biomask and long black tendrils. No weapons. Full body side-profile looking left. Different original civilian sentinel design, not a named fighter. Sixposes: calm arms relaxed, hand to visor, head peers left, small head turn toward distant valley, hand lowers, nearidle. Both feet planted, twoarms twolegs, hands coherent. Warm copper dusk lighting, muted earthy tones.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-f4e9b272-7ab9-4d67-8b6d-13ba2d6ddfce.png",
+      "workspacePath": "work-local/v60/generated/arena-183-homeworld-wilds/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six full lookout poses, consistent mask and limbs; small calm head and arm motion. Original anonymous clan attendant.",
+      "sha256": "21d7e321a9da629f5ec5f9ff3a5c24176bd49148413071be81b636033f37f9db",
+      "bytes": 1760773,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.804901123046875,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            184,
+            6,
+            165,
+            495
+          ],
+          "pivot": [
+            255.5,
+            501
+          ],
+          "margins": [
+            184,
+            6,
+            163,
+            11
+          ],
+          "opaquePixelCount": 48738,
+          "contentSha256": "9ccab58866e71b9c9b98c8ec3dbc2dde7b2d65bca6a76f48688175e52912689d"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            6,
+            180,
+            496
+          ],
+          "pivot": [
+            247.5,
+            502
+          ],
+          "margins": [
+            163,
+            6,
+            169,
+            10
+          ],
+          "opaquePixelCount": 53894,
+          "contentSha256": "98719b1820825cd1e77ed2cc62f29e08866537cae5b94c9c82a9b1aa15a3e228"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            165,
+            19,
+            192,
+            483
+          ],
+          "pivot": [
+            246.5,
+            502
+          ],
+          "margins": [
+            165,
+            19,
+            155,
+            10
+          ],
+          "opaquePixelCount": 52482,
+          "contentSha256": "8c6e050eeb572e8f7977e14a40b8383813a49256b3a7d9aa5ec3f5815b3589ff"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            182,
+            11,
+            168,
+            487
+          ],
+          "pivot": [
+            263,
+            498
+          ],
+          "margins": [
+            182,
+            11,
+            162,
+            14
+          ],
+          "opaquePixelCount": 49857,
+          "contentSha256": "0e6370cf7ba90c7a86938627781409e2e05570e3325afc57666cd507144d69c4"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            158,
+            6,
+            183,
+            493
+          ],
+          "pivot": [
+            247.5,
+            499
+          ],
+          "margins": [
+            158,
+            6,
+            171,
+            13
+          ],
+          "opaquePixelCount": 51988,
+          "contentSha256": "2d25cd79a987d48a61de20fc70ffd18b8cac82e295eae033bbeeb9a9792b3d0a"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            171,
+            5,
+            169,
+            494
+          ],
+          "pivot": [
+            242.5,
+            499
+          ],
+          "margins": [
+            171,
+            5,
+            172,
+            13
+          ],
+          "opaquePixelCount": 49905,
+          "contentSha256": "6d1762a3e9853bd24687b8ebf7de52c265717e0a3d299977e6725e15ae21bcca"
+        }
+      ]
+    },
+    {
+      "id": "life-03",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One compact tuft of ORIGINAL alien fern with seven broad ochre-olive segmented fronds, rough exposed root bulb, a few tiny dustmotessittingclosetofronds. No creatures. Six native drawings show a light gust travelling from left frond to middle to right, then settling, roots stay fixed. Detailed organic leaf structure, no randomleafcount changes, restrained dust inside bounds. Sideview, warmcopperlight, lowcontrast.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-fdd0d2da-94cd-46d8-8c74-127a4cb5fd46.png",
+      "workspacePath": "work-local/v60/generated/arena-183-homeworld-wilds/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six leaf bends with a stable root tuft and restrained dust; entire motif inside cells. Original vegetation matched to copper forest.",
+      "sha256": "7314f950bc9fc77213018123aa83002a6ee499012a7b2541425b8de2046de430",
+      "bytes": 2142444,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6954758961995443,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            38,
+            69,
+            430,
+            388
+          ],
+          "pivot": [
+            291,
+            457
+          ],
+          "margins": [
+            38,
+            69,
+            44,
+            55
+          ],
+          "opaquePixelCount": 83933,
+          "contentSha256": "1c32fd6154f4c1451297ee1e9a8d811d8c378ad2c8d09e965c417eb11489301d"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            80,
+            418,
+            376
+          ],
+          "pivot": [
+            282,
+            456
+          ],
+          "margins": [
+            51,
+            80,
+            43,
+            56
+          ],
+          "opaquePixelCount": 81366,
+          "contentSha256": "cca989193d4091eaabcbab75b062c661aafebc89e13c76ca923f5bf590e33056"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            98,
+            433,
+            358
+          ],
+          "pivot": [
+            274.5,
+            456
+          ],
+          "margins": [
+            47,
+            98,
+            32,
+            56
+          ],
+          "opaquePixelCount": 77872,
+          "contentSha256": "6270ee030b27b0ea1c85f8f30e4205643e01f409949fa4ebfd8e7c1937af9f96"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            49,
+            69,
+            417,
+            383
+          ],
+          "pivot": [
+            291.5,
+            452
+          ],
+          "margins": [
+            49,
+            69,
+            46,
+            60
+          ],
+          "opaquePixelCount": 85767,
+          "contentSha256": "3452239f33561e97f4952c8e94f398177fc2e2ecc3af6d4e41274651594e30fa"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            89,
+            422,
+            362
+          ],
+          "pivot": [
+            281.5,
+            451
+          ],
+          "margins": [
+            47,
+            89,
+            43,
+            61
+          ],
+          "opaquePixelCount": 75856,
+          "contentSha256": "8c53fa22dc8b1890464ae6379c68c2a21744bf5253b54235ac8994100037c4f4"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            99,
+            411,
+            353
+          ],
+          "pivot": [
+            274,
+            452
+          ],
+          "margins": [
+            51,
+            99,
+            50,
+            60
+          ],
+          "opaquePixelCount": 74181,
+          "contentSha256": "a4f75bb3c50123de8ac34d33685e3768e3960603bcc56bbcb003995bca0262f3"
+        }
+      ]
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case: stylized-concept. Asset: opaque P0 distant backdrop for a professional 2D side-view Predator-inspired fighting game. Original project environment, NOT an asserted canonical exact location. Create a wide richly painted alien forest EDGE at dusk: enormous dark basalt escarpments and winding distant tree roots, layered ochre and olive alien fern canopies, distant clan watch terraces carved into stone on the right, soft copper sky. Clear separation of near/distant depths, convincing scale, subdued colours and atmospheric perspective. Eye-level lateral side view, no tilted horizon, no top-down/isometric floor. The playable fighting floor is NOT part of this image; it will be a separate foreground layer. Bottom 20 percent dark quiet occlusion band; leave clean empty background pockets at left under low ferns for one small quadruped, near far right terrace for one clan lookout, and center-left foliage for a fern animation. DO NOT draw those actors or the specific ferns that will animate. No creatures, characters, flying objects, fire, luminous particles, text, logos, HUD or foreground combat platform. Make a coherent bespoke landscape, not a rectangular room, with asymmetrical natural terraces and readable silhouettes. Painterly detailed game-art style, grounded materials, 1536x1024 landscape PNG. Keep center contrast low so combatants will read.",
+      "transparentRequested": false,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-81070d22-8194-4efa-929e-33fb837b7770.png",
+      "workspacePath": "work-local/v60/generated/arena-183-homeworld-wilds/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Layered basalt and fern forest with copper dusk; no creatures baked into scenery. Original project layout, not asserted canon.",
+      "sha256": "ec0000a487c141a397ad91d4a949b682c33522a36dcc864aa6ba1b54de3db848",
+      "bytes": 2501731,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "rejectedAssets": [
+    {
+      "id": "life-01",
+      "prompt": "Use case: stylized-concept. Production native transparent PNG sprite atlas for hand-painted cinematic 2D fighting-game BACKGROUND life. Exactly SIX separately drawn poses in a precise three columns by two rows equal grid, canvas1536x1024, cell512x512. True alpha outside subject. Every complete subject fits in its cell with generous 48px transparent gutter on all four sides. NO labels, lines, floor, shadow, scenery, checkerboard, gradient or opaque background. Consistent scale, proportions, materials, side-view camera, stable ground attachment for all6frames. Clearly different native drawings, not 6 duplicate poses. Subject is a small ORIGINAL alien quadruped for an original Yautja homeworld forest, not any named species or Hellhound. An elongated low olive-brown mossy reptile with FOUR sturdy legs, one simple narrow snout, two small horns and one short thick tail, no wings, no spare limbs, realistic coherent anatomy. Entire body horizontal profile facing right, six readable little feet sets? CORRECTION exactly FOUR legs per animal, two near and two farther legs consistently overlapped. Body length330px maximum, height220pxmaximum. Poses left-to-right top-to-bottom:1calm alert;2lowers head;3sniffs ground with muzzle down;4turns head slightly towardviewer;5raises head alert;6settles back nearstartingpose. Feet positions fixed, no teleporting. Lighting copper twilight from upperleft, low contrast suitable for distant scene. No teethdisplay, no exaggerated spikes. Include exactly6animals, onepercell, no text.",
+      "transparentRequested": true,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-8b8874ad-734a-4bd8-9f81-a84f8185f965.png",
+      "workspacePath": "work-local/v60/generated/arena-183-homeworld-wilds/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "rejected",
+      "visualNotes": "",
+      "sha256": "dd3c896d57747812901bba853421e92ff1942f039ea253e16a60757ef4d710e1",
+      "bytes": 1902539,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7545204162597656,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            28,
+            125,
+            484,
+            314
+          ],
+          "pivot": [
+            275.5,
+            439
+          ],
+          "margins": [
+            28,
+            125,
+            0,
+            73
+          ],
+          "opaquePixelCount": 66206,
+          "contentSha256": "dcbab8bbcd5c2532319a1ec54b493416562c3b0b58e433254dc7bf780c20317e"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            195,
+            489,
+            243
+          ],
+          "pivot": [
+            252.5,
+            438
+          ],
+          "margins": [
+            0,
+            195,
+            23,
+            74
+          ],
+          "opaquePixelCount": 61335,
+          "contentSha256": "1031ef6827960bfeed2b2248bc2d73034727e7e1f8ba4f557ca74b6e61b6ced4"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            224,
+            468,
+            214
+          ],
+          "pivot": [
+            274.5,
+            438
+          ],
+          "margins": [
+            18,
+            224,
+            26,
+            74
+          ],
+          "opaquePixelCount": 58803,
+          "contentSha256": "80ffca95234f6a43f3f76f2871282b03c03416eff90c070e13c00d1a4f3c6981"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            34,
+            89,
+            459,
+            323
+          ],
+          "pivot": [
+            283,
+            412
+          ],
+          "margins": [
+            34,
+            89,
+            19,
+            100
+          ],
+          "opaquePixelCount": 67947,
+          "contentSha256": "74531077796e62686d3fa4d6f44f1abd08484f5e10cde00b5d04c9fa2de9332f"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            21,
+            64,
+            456,
+            349
+          ],
+          "pivot": [
+            258,
+            413
+          ],
+          "margins": [
+            21,
+            64,
+            35,
+            99
+          ],
+          "opaquePixelCount": 67063,
+          "contentSha256": "33c3ff6cfad74a3d032ebfe085842572b523178229073aa2a0a030f5c48580d7"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            1,
+            114,
+            484,
+            298
+          ],
+          "pivot": [
+            244,
+            412
+          ],
+          "margins": [
+            1,
+            114,
+            27,
+            100
+          ],
+          "opaquePixelCount": 64752,
+          "contentSha256": "6d947f07855207b61365bdfa28b569b87df5701fc5b9177dd376d6ef33bfff19"
+        }
+      ],
+      "rejection": "Replaced by native OpenAI edit to prevent cell-boundary clipping."
+    }
+  ],
+  "sourceReviewDate": "2026-09-30"
+}

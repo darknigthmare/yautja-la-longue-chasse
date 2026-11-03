@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "lot": "flora-other",
+  "generatedAt": "2026-07-22",
+  "generator": "OpenAI built-in image_gen",
+  "layout": {
+    "sheetWidth": 1536,
+    "sheetHeight": 192,
+    "frameWidth": 256,
+    "frameHeight": 192,
+    "direction": "right",
+    "frames": {
+      "idle": 0,
+      "moveA": 1,
+      "moveB": 2,
+      "attack": 3,
+      "hit": 4,
+      "death": 5
+    }
+  },
+  "references": {
+    "badlands-flora": "https://apnews.com/article/predator-badlands-movie-review-8ba41d0dec022713a5374fcf22fe5d5e",
+    "lv1201-flora": "https://avpunknown.com/games/2000/avp2primalhunt",
+    "avp2010-concept": "https://www.avpgalaxy.net/games/aliens-vs-predator-2010/gallery/concept-art/",
+    "xeno-acid": "https://www.avpcentral.com/xenomorph-acid-spitting",
+    "avp-pyramid": "https://www.mpcvfx.com/en/filmography/alien-vs-predator/",
+    "predator-technology": "https://www.cgw.com/Press-Center/Web-Exclusives/2018/Envisioning-Alien-Technology-for-The-Predator.aspx"
+  },
+  "enemies": [
+    {
+      "id": "carnivore-vine",
+      "displayName": "Liane carnassiere",
+      "category": "flora",
+      "role": "ambusher",
+      "sheet": "/game/sprites/v7/enemies/flora-other/carnivore-vine-sheet.png",
+      "master": "masters/openai-flora-01-chroma-master.png",
+      "masterRow": 0,
+      "sourceRefs": ["badlands-flora", "lv1201-flora"]
+    },
+    {
+      "id": "spore-bloom",
+      "displayName": "Floraison a spores",
+      "category": "flora",
+      "role": "area-controller",
+      "sheet": "/game/sprites/v7/enemies/flora-other/spore-bloom-sheet.png",
+      "master": "masters/openai-flora-01-chroma-master.png",
+      "masterRow": 1,
+      "sourceRefs": ["badlands-flora", "lv1201-flora"]
+    },
+    {
+      "id": "razor-reed",
+      "displayName": "Roseaux rasoirs",
+      "category": "flora",
+      "role": "mobile-hazard",
+      "sheet": "/game/sprites/v7/enemies/flora-other/razor-reed-sheet.png",
+      "master": "masters/openai-flora-01-chroma-master.png",
+      "masterRow": 2,
+      "sourceRefs": ["badlands-flora", "lv1201-flora"]
+    },
+    {
+      "id": "grapple-root",
+      "displayName": "Racine etrangleuse",
+      "category": "flora",
+      "role": "grappler",
+      "sheet": "/game/sprites/v7/enemies/flora-other/grapple-root-sheet.png",
+      "master": "masters/openai-flora-01-chroma-master.png",
+      "masterRow": 3,
+      "sourceRefs": ["badlands-flora", "lv1201-flora"]
+    },
+    {
+      "id": "acid-pitcher",
+      "displayName": "Nepenthes acide",
+      "category": "flora",
+      "role": "artillery",
+      "sheet": "/game/sprites/v7/enemies/flora-other/acid-pitcher-sheet.png",
+      "master": "masters/openai-flora-01-chroma-master.png",
+      "masterRow": 4,
+      "sourceRefs": ["badlands-flora", "lv1201-flora"]
+    },
+    {
+      "id": "sentinel-orchid",
+      "displayName": "Orchidee sentinelle",
+      "category": "flora",
+      "role": "sentry",
+      "sheet": "/game/sprites/v7/enemies/flora-other/sentinel-orchid-sheet.png",
+      "master": "masters/openai-flora-other-02-chroma-master.png",
+      "masterRow": 0,
+      "sourceRefs": ["badlands-flora", "lv1201-flora"]
+    },
+    {
+      "id": "xeno-drone",
+      "displayName": "Drone xenomorphe",
+      "category": "other",
+      "role": "stalker",
+      "sheet": "/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png",
+      "master": "masters/openai-flora-other-02-chroma-master.png",
+      "masterRow": 1,
+      "sourceRefs": ["avp2010-concept", "xeno-acid"]
+    },
+    {
+      "id": "xeno-praetorian",
+      "displayName": "Pretorien xenomorphe",
+      "category": "other",
+      "role": "elite",
+      "sheet": "/game/sprites/v7/enemies/flora-other/xeno-praetorian-sheet.png",
+      "master": "masters/openai-flora-other-02-chroma-master.png",
+      "masterRow": 2,
+      "sourceRefs": ["avp2010-concept", "xeno-acid"]
+    },
+    {
+      "id": "weyland-synth",
+      "displayName": "Synthetique de terrain",
+      "category": "other",
+      "role": "ranged",
+      "sheet": "/game/sprites/v7/enemies/flora-other/weyland-synth-sheet.png",
+      "master": "masters/openai-flora-other-02-chroma-master.png",
+      "masterRow": 3,
+      "sourceRefs": ["badlands-flora", "predator-technology"]
+    },
+    {
+      "id": "ancient-guardian",
+      "displayName": "Gardien ancien",
+      "category": "other",
+      "role": "boss",
+      "sheet": "/game/sprites/v7/enemies/flora-other/ancient-guardian-sheet.png",
+      "master": "masters/openai-flora-other-02-chroma-master.png",
+      "masterRow": 4,
+      "sourceRefs": ["avp-pyramid", "predator-technology"]
+    }
+  ]
+}

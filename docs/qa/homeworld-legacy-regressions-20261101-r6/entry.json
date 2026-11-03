@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_COMPATIBILITY_REGRESSION",
+  "domain": "LegacyHomeworldUI",
+  "runtimeCommit": "0f79d3d8eac494cec4c418ac5b2f867929850bb7",
+  "buildId": "vxOXqmuKalwQbkLqTZnwN",
+  "driver": "scripts/qa-homeworld-continuation-v111.mjs",
+  "command": "node scripts/qa-homeworld-continuation-v111.mjs",
+  "completedJourneys": [
+    "Continuation",
+    "Recovery",
+    "MobileGuide",
+    "LegacyA"
+  ],
+  "browserChecksPassed": 87,
+  "capturesInspected": 14,
+  "observedSources": 1492,
+  "observedSourcesMatchExecutedFreeze": true,
+  "fullFreezeObserved": false,
+  "executedFreeze": {
+    "path": "docs/v112-runtime-freeze.json",
+    "bytes": 299062,
+    "sha256": "c53ebc858df672268d6c59ae37cb5ddae67cd39fe73ba86682c6cd8c7a586cfe",
+    "archivedPath": "docs/qa/homeworld-legacy-regressions-20261101-r6/runtime-freeze.json",
+    "entries": 1608
+  },
+  "report": {
+    "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/verification.json",
+    "bytes": 12268,
+    "sha256": "8e3c391e6b59055959434cca9309cc61449844334df5aae77fa54de5624732c6"
+  },
+  "rawEvidence": {
+    "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/browser-result.json.gz",
+    "bytes": 177093,
+    "sha256": "89bb88d478859e39bdcd41bde496000627a695608f3054fb38e92d1699f14675",
+    "decodedBytes": 726971,
+    "decodedSha256": "d7714f3cbfd7d7455f0a9e5824bf563a0f6366bdd85dd0e50afe52f433ac92b5"
+  },
+  "capturesOpened": [
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-00-native-explanation-pose.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-00-native-indication-pose.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-01-conserved-b-keyboard-record.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-01-completed-deferred-b.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-02-new-consented-continuation.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-03-completed-independent-a.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/recovery-01-explicit-recovery-preview.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/recovery-02-confirmed-exterior-restoration.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/mobileguide-00-open-conserved-notebook.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/mobileguide-00-keyboard-conserved-notebook.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/mobileguide-01-compact-arrived-guide.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/mobileguide-02-requested-route-options.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/mobileguide-03-keyboard-route-options.png",
+    "docs/qa/homeworld-legacy-regressions-20261101-r6/legacya-01-direct-a-completed.png"
+  ],
+  "sourceCompletion": false,
+  "closedSourceIds": [],
+  "certifiesHistoricalV111": false,
+  "isV112ProductionCertificate": false,
+  "portableFiles": [
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/browser-result.json.gz",
+      "bytes": 177093,
+      "sha256": "89bb88d478859e39bdcd41bde496000627a695608f3054fb38e92d1699f14675"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/browser.log",
+      "bytes": 6842,
+      "sha256": "5e74ad2006cf4251504057327e69ca5056cd55cbf66449110e34a741badb3907"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-00-native-explanation-pose.png",
+      "bytes": 23917,
+      "sha256": "68f5c304ffa955a12a6e72eddb6f9f04a65b10943cc8914fef923b5f710d9dc1"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-00-native-indication-pose.png",
+      "bytes": 23981,
+      "sha256": "d8b20c1ddb40f3737f3ec03fd77fffa703ed3527d56b6a822f8cd9141d9fec5c"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-01-completed-deferred-b.png",
+      "bytes": 168952,
+      "sha256": "245aed467435dabf68d4c370307309063975a1f40e8dfc3768d4bbd948728348"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-01-conserved-b-keyboard-record.png",
+      "bytes": 207741,
+      "sha256": "f8574654304bc03b6e2647074d65f12a7b2e301e7b3a62afd08aef98f6d4c629"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-02-new-consented-continuation.png",
+      "bytes": 1007992,
+      "sha256": "a98d51878c3b7d1b20e2533e60536aaf90c42ec4f15ab0cffcc77714f8ada4fe"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/continuation-03-completed-independent-a.png",
+      "bytes": 205048,
+      "sha256": "3f8bab7abe6a109167c0275ff483e00245b384d693d9c02250b9385ba806acf6"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/image-review.md",
+      "bytes": 3072,
+      "sha256": "74d89538606afd6ce45cfbfeb2efc196cf26a1588dc3836cbec15de1b63d64fe"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/inspection.json",
+      "bytes": 3356,
+      "sha256": "84a7f2db362806c2d161af3e13bdca1c04eeb01a595ba65a32b6342f223848ec"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/legacya-01-direct-a-completed.png",
+      "bytes": 204879,
+      "sha256": "53a41d929a30efdf775153355977da747ca4a9f2eeefabb31d2268364d7c4569"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/mobileguide-00-keyboard-conserved-notebook.png",
+      "bytes": 217903,
+      "sha256": "d62c47446b4d2bb339a5bfa1239c4e54f137004e6f2dea2b2b9a51300ca824d3"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/mobileguide-00-open-conserved-notebook.png",
+      "bytes": 222575,
+      "sha256": "5337cbb2adc0ae2ab9c1253bbdc0ca4d69198fe1af763c03e54012a0aa211ab4"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/mobileguide-01-compact-arrived-guide.png",
+      "bytes": 201641,
+      "sha256": "909983bed7cfa3adb4a8a9b0398ec6d2c334b88fe8e8d7243bcdfe9061134002"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/mobileguide-02-requested-route-options.png",
+      "bytes": 114511,
+      "sha256": "50812c4463b11cbcf5b631c43a336a55b78932d01ccfdb7666f0c7aa00b3ee55"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/mobileguide-03-keyboard-route-options.png",
+      "bytes": 114731,
+      "sha256": "397405749f7efcedf61e1ed6501a53654c4923e06ef5e84560104ddcc0017ed9"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/opened.json",
+      "bytes": 679,
+      "sha256": "20708a8c21b3a60e783473041fffca580efbe54c3e86d2faa69864c750494000"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/README.md",
+      "bytes": 2224,
+      "sha256": "5c3a220ec18b642ad316b799f908b3bbd2afe403cb871d4172e32cdc91956277"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/recovery-01-explicit-recovery-preview.png",
+      "bytes": 88775,
+      "sha256": "5fd988bec92ea082911cec04e48e7dbe02a463b193d392174046266d2b152cd8"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/recovery-02-confirmed-exterior-restoration.png",
+      "bytes": 1548748,
+      "sha256": "185090bdfcb85c25dd1fb405b34b6dece963ceafd31f738c820a5142754dc61d"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/runtime-freeze.json",
+      "bytes": 299062,
+      "sha256": "c53ebc858df672268d6c59ae37cb5ddae67cd39fe73ba86682c6cd8c7a586cfe"
+    },
+    {
+      "path": "docs/qa/homeworld-legacy-regressions-20261101-r6/verification.json",
+      "bytes": 12268,
+      "sha256": "8e3c391e6b59055959434cca9309cc61449844334df5aae77fa54de5624732c6"
+    }
+  ]
+}

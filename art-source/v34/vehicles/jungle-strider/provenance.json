@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "jungle-strider",
+  "name": "Jungle Strider",
+  "lore": "Proposition originale de La Longue Chasse d’après le brief partiel récupéré ; aucun statut canonique revendiqué.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Jungle Strider — corps, deux orientations",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/jungle-strider/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/jungle-strider/identity-r1.png",
+      "originId": "exec-bbd80604-1dc9-4648-bcfa-59a27cad50a1.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "c2fe4746211e1da1bf95a394457fa84267ab3b29d69a4ab3c809a80d10f15a0c",
+      "bytes": 1796620,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Create an original Yautja-inspired creature or vehicle design for the 2D fan-game La Longue Chasse. Not a canonical franchise replica. Exactly TWO complete side-profile views arranged SIDE BY SIDE, two columns ONE ROW, left view faces RIGHT and right view faces LEFT. Separately draw the opposite side of the SAME design at identical scale and anatomy. Flat PURE MAGENTA #FF00FF background. No shadows, scenery, text, watermark, panels, grid, ground or effects. Both full silhouettes entirely inside their own half with generous blank margins and no parts crossing the center gutter. Detailed hand-painted production bitmap for horizontal side-scrolling play. No people, rider, cargo, mounted weapon, trophy or detachable saddle baked in. Keep body and attachments separable. Small compact insect-like articulated exploration machine, exactly FOUR mechanical legs: two clearly distinguishable legs per side, far pair staggered behind so all four endpoints can be counted. Dark bronze and green-black chitin-shaped metal hull, open EMPTY low single pilot saddle recess and protective handlebar console fixed on top, strong articulated knee actuators, wide gripping foot claws to step over roots. In the two static identity views stand balanced with hips distinct and feet apart. No wheels or antigravity pods, no gun, no extra arms or floating claws. Same four legs and joints in both views.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            435,
+            454
+          ],
+          "role": "Recovered user brief"
+        }
+      ],
+      "notes": [
+        "Vue d’identité et non animation. Anatomie, raccords et modules à valider avant intégration.",
+        "Inspection visuelle : seulement trois pieds détachés sont lisibles ; quatrième patte insuffisamment exposée. Pas de validation de locomotion.",
+        "Inspection visuelle : seulement trois pieds détachés sont lisibles ; quatrième patte insuffisamment exposée. Pas de validation de locomotion."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            14,
+            127,
+            824,
+            642
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 229075,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            937,
+            126,
+            823,
+            643
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 229016,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-right-r2",
+      "actionId": "identity",
+      "label": "Jungle Strider — châssis droit, quatre appuis",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/jungle-strider/identity-right-r2.png",
+      "publicPath": "/game/vehicles/v34/jungle-strider/identity-right-r2.png",
+      "originId": "exec-7b11c845-17c7-4078-935b-85ccd83a78b9.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a12a32a1c871b76d972f4babe2fa9fa4a3e623e6a499fbff7c090035e1431326",
+      "bytes": 1940369,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Use the immediately preceding Jungle Strider image as the exact machine design reference. Redraw it as ONE single complete vehicle only, facing RIGHT in a strict flat orthographic side profile, centered on pure uniform MAGENTA #FF00FF. Preserve the same compact insect-like dark bronze and green-black chitin-shaped exploration chassis, open EMPTY low pilot saddle recess and fixed protective handlebar console. Critical mechanical correction: EXACTLY FOUR complete articulated mechanical legs, two front and two rear, with FOUR distinct hip roots, FOUR complete upper-joint-lower chains and FOUR separately countable complete gripping claw feet. Show two large near-side legs and two slightly smaller/darker far-side legs, stagger all four feet horizontally so none hides behind another. Every leg attached; no fused shafts, floating foot, missing fourth foot, fifth leg or extra arm. Full chassis, handlebar, joints and feet in frame with generous magenta margins. Balanced static identity pose. No second vehicle, reflection, divider, grid, text, labels, ground, shadow, wheels, antigravity pod, weapon, rider, cargo or detachable saddle. Detailed hand-painted 2D game bitmap.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/jungle-strider/identity-r1.png",
+          "sha256": "c2fe4746211e1da1bf95a394457fa84267ab3b29d69a4ab3c809a80d10f15a0c"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : quatre chaînes mécaniques complètes et quatre pieds distincts ; cockpit vide. Plaque statique en revue.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key appliqué par le renderer de revue V34."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "alpha16Bounds": [
+            65,
+            76,
+            1390,
+            839
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 495525,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-left-r2",
+      "actionId": "identity",
+      "label": "Jungle Strider — châssis gauche, quatre appuis",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/jungle-strider/identity-left-r2.png",
+      "publicPath": "/game/vehicles/v34/jungle-strider/identity-left-r2.png",
+      "originId": "exec-5480b82a-0ff0-40b4-b126-59a7023be811.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "ee41ecd8fefc7e0c7cf776673bb01107278b9effc067486ff4d5da14adf7945f",
+      "bytes": 1881734,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Use the immediately preceding accepted Jungle Strider four-legged right-facing machine as the exact design reference. Independently redraw the SAME vehicle's opposite side as ONE single complete strict flat orthographic side profile facing LEFT, centered on pure uniform MAGENTA #FF00FF. Preserve identical dark bronze and green-black chitin-shaped chassis, open EMPTY saddle recess, handlebar console, proportions and construction. Preserve EXACTLY FOUR complete articulated mechanical legs with four distinct roots, four connected joint chains and FOUR separate complete gripping feet. Show two near-side and two slightly smaller/darker far-side legs; stagger all feet so each is countable. No hidden/fused shaft, missing foot, floating foot, fifth leg or extra arm. Full chassis and feet in frame with generous margins. No second vehicle, reflection, divider, grid, text, labels, ground, shadow, wheels, antigravity pod, weapon, rider, cargo or detachable saddle. Detailed hand-painted 2D game bitmap.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/jungle-strider/identity-right-r2.png",
+          "role": "Accepted opposite-facing design reference"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : quatre jambes, quatre raccords et quatre pieds distincts dans l’orientation gauche. Plaque statique en revue.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key appliqué par le renderer de revue V34."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "alpha16Bounds": [
+            66,
+            77,
+            1404,
+            838
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 496445,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 3,
+  "acceptedRuntimeClips": 0
+}

@@ -1,0 +1,30 @@
+✔ one actual held edge reaches real TH_B startup after non-progressing clock calls, then releases once (3.904107ms)
+✔ ignored input is refused by the effective-frame bound without a second press, with release and raw observations retained (1.808873ms)
+✔ a blocked simulation is refused by absence of progression and always releases the one input edge (0.379661ms)
+✔ the independent poll bound refuses a permanently stalled clock even when the stall allowance is larger (0.273041ms)
+✔ an actual normal attack cannot masquerade as the requested backward startup (0.521384ms)
+✔ a real TH_B startup on the other slot is refused immediately (0.27925ms)
+✔ a positive simulation frame that actually moves backward is rejected with its raw sample retained (0.409396ms)
+✔ reversed frames, skipped startup, unready state and changed health remain explicit failures (1.074097ms)
+✔ partially failed press still releases, and a failed release cannot be published as successful input observation (0.552942ms)
+✔ the actual release routine attempts every keyup even when one native release rejects (0.905293ms)
+✔ the actual browser adapter holds one J2 combo across clock calls with no tick, then releases all three keys after real startup (2.298931ms)
+✔ a partial native keydown failure in the actual adapter releases every owned key, including unreached ones (0.762928ms)
+✔ a native keyup failure in the actual adapter still releases the remaining keys and fails the observation (0.960326ms)
+✔ the actual whiff observer proves real startup and45 effective frames even when clock calls sometimes produce no simulation tick (8.631714ms)
+✔ an input never consumed by the real simulation cannot masquerade as a successful whiff (1.449062ms)
+✔ a capture during the observed interval is refused immediately and remains in the failure trace (1.167959ms)
+✔ a health change during the observed interval is refused rather than hidden by a later recovery (1.094197ms)
+✔ a stopped or blocked simulation cannot pass and cannot make the actual observer wait forever (4.688828ms)
+✔ premature idle, oversized action clocks and frame-window overruns are rejected by the actual routine (2.71718ms)
+✔ the actual browser initializer records and rethrows a native Worker constructor failure even when the app catches it (1.740019ms)
+✔ actual native error listeners stay attached and retain the unfiltered asynchronous Worker failure (0.583879ms)
+✔ the actual final collector captures early-abort records once and refuses an unobservable open page (1.559217ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 964.614277

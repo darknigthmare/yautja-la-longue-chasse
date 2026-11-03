@@ -1,0 +1,135 @@
+{
+  "release": "V63",
+  "result": "PASS",
+  "checkedAt": "2026-09-30T22:50:42.804Z",
+  "output": "outputs/01a056ec-9dd5-7433-8bd5-5ace123409c6/THE_PIT_V63_SUIVI.xlsx",
+  "outputSha256": "192b168456091239e65939b99c4630de791cfaca4f33f61a1c6a8a032fc9c7af",
+  "sourceSha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+  "baselineSha256": "c7c9986d872faf0cbc8398e697a28b9eae57328989fb09eed2881c431c1b57bb",
+  "sourceUnchanged": true,
+  "baselineUnchanged": true,
+  "historyV62ValuesAndFormulasPreserved": true,
+  "pngs": 13,
+  "nativeDrawings": 63,
+  "newAppearances": 2,
+  "newIdentities": 0,
+  "resolvedDossiers": 199,
+  "openDossiers": 6,
+  "runtimeIdentities": 199,
+  "stageDossiers": 174,
+  "stageEvents": 522,
+  "stageDossiersWithoutNativeRegistry": 136,
+  "uniqueStageTargetsWithoutNativeRegistry": 135,
+  "formulasVerified": true,
+  "liveCounterEditsVerified": true,
+  "nativeExcelApplicationVerified": false,
+  "visualReviewPending": false,
+  "previews": [
+    {
+      "path": "work-local/v63/spreadsheet/lot-top.png",
+      "sha256": "e9bd2a93c10e9cfe9ea5c550725852186e97fd9826a9c74346d0048a078689a7"
+    },
+    {
+      "path": "work-local/v63/spreadsheet/lot-tail.png",
+      "sha256": "f24ec471f64279a933c24f7f1c26c1106530cb001d984dc13f8e5f78419464ce"
+    },
+    {
+      "path": "work-local/v63/spreadsheet/lot-sources.png",
+      "sha256": "ec8af88c942ce88b552a28502e768a49d0567ede4d00e4ce14ee40f730e01f90"
+    },
+    {
+      "path": "work-local/v63/spreadsheet/fighters-top.png",
+      "sha256": "a0be21b91177e7680283d17345d14e0cb016be4842f61cab874638eb3b1657ed"
+    },
+    {
+      "path": "work-local/v63/spreadsheet/fighters-open.png",
+      "sha256": "931fd950dffee97c35247d7d4c778f1d6e4d76c9651f83f7f99c04e5db8f7247"
+    },
+    {
+      "path": "work-local/v63/spreadsheet/remaining-top.png",
+      "sha256": "c20e3cd1a8c0f3a820c31924755aa490d0efedcef00984ccc426c536e58ccf17"
+    },
+    {
+      "path": "work-local/v63/spreadsheet/remaining-tail.png",
+      "sha256": "fd6c0b272f14596aac8d3c8aff11b311e850e9431a72ac1e1f81708dff2e7371"
+    },
+    {
+      "path": "work-local/v63/spreadsheet/stages-top.png",
+      "sha256": "2d30ac48d6cf461ae4b67f1eace63774c6ca9c8cb1fa0440ec52dcdeb7a847d2"
+    },
+    {
+      "path": "work-local/v63/spreadsheet/stages-v63.png",
+      "sha256": "4adba8473425e18f8580ee62335e92e8987d84d9da61bbc7acc6dca5bd75f8e1"
+    }
+  ],
+  "proofs": [
+    {
+      "path": "docs/v63-workbook-roster-audit.json",
+      "sha256": "2db869d3de0ced92e5b28caa8aa302bbd265b2edf5848ca6b14b0c9e171839c3"
+    },
+    {
+      "path": "docs/v63-generation/fighters-art.json",
+      "sha256": "ef0229aabb5a3a55c556c4ec31cb25b559d09bca9340303296d8138f4583cdd4"
+    },
+    {
+      "path": "docs/v63-fighters-runtime-qa.json",
+      "sha256": "0b270289279b188fd7ee47d88f454b806913540dbaf0014f3815eab162af8d76"
+    },
+    {
+      "path": "docs/v63-stage-delivery.json",
+      "sha256": "bdb7259d1b67e82aab927b69b468f3e440045142580a1080c3199c1487934e82"
+    },
+    {
+      "path": "docs/v63-stage-open-work.json",
+      "sha256": "c3539a54657428d455196d9794c1a5682254eb3635dfced5800fc59e98f0788d"
+    },
+    {
+      "path": "docs/v63-rig-composition-qa.json",
+      "sha256": "630ed2aa33466dcc2c9c003ca3f727629cbc13dbe58ff4fc30fa99974a7c3562"
+    },
+    {
+      "path": "docs/V63-TETES-DREADLOCKS.md",
+      "sha256": "09e1c2b04920c1b976ba90d803089937cb0105cce07d4d87c1d64d67889568ae"
+    },
+    {
+      "path": "docs/V63-MENU-SAUVEGARDES.md",
+      "sha256": "7c7d25c9b7c0e589b973d5e33e550ea8ff0fe3e2a17c55da13080a3507ac0435"
+    },
+    {
+      "path": "docs/v63-menu-after-qa.json",
+      "sha256": "690ddf317050b3b8f8fb68ce9f275da9c1febd7be941d164f7b7c46013efe5ae"
+    }
+  ],
+  "publication": null,
+  "visualReview": {
+    "result": "PASS",
+    "reviewedRanges": [
+      "work-local/v63/spreadsheet/lot-top.png",
+      "work-local/v63/spreadsheet/lot-tail.png",
+      "work-local/v63/spreadsheet/lot-sources.png",
+      "work-local/v63/spreadsheet/fighters-top.png",
+      "work-local/v63/spreadsheet/fighters-open.png",
+      "work-local/v63/spreadsheet/remaining-top.png",
+      "work-local/v63/spreadsheet/remaining-tail.png",
+      "work-local/v63/spreadsheet/stages-top.png",
+      "work-local/v63/spreadsheet/stages-v63.png"
+    ],
+    "notes": "Nine changed ranges inspected: legible text and numerical counters, full sources, six open fighter dossiers, all three event descriptions per stage. Historical LotV62 remains unchanged."
+  },
+  "independentReadback": {
+    "result": "PASS",
+    "checkedAt": "2026-09-30T22:52:03.439Z",
+    "engine": "Fresh bundled artifact-tool process, read-only import; no rendering",
+    "outputSha256": "192b168456091239e65939b99c4630de791cfaca4f33f61a1c6a8a032fc9c7af",
+    "sourceUnchanged": true,
+    "baselineUnchanged": true,
+    "historyV62ValuesFormulasTablesPreserved": true,
+    "copiesIdentical": true,
+    "valuesVerified": true,
+    "originalStageDescriptionsVerified": 522,
+    "liveFormulasVerified": true,
+    "publicationNotClaimed": true,
+    "nativeExcelApplicationVerified": false
+  },
+  "rendererProcessLimitation": "The rendering/export process returned exit1 after writing the workbook, previews and proof. A fresh no-render readback process independently verified the saved workbook, all522 original event descriptions, historical values/formulas/tables and live counter recalculation, exiting0. Native Microsoft Excel was not exercised."
+}

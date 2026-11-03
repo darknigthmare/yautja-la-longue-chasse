@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "source": "art-source/v100/pit/feral/intake/004-stand-5m.png",
+  "sourceSha256": "29b1ec422e7ba947fb1307e1bf85985f0e5672879b8b52539cb484f23b6f73da",
+  "bytes": 2285236,
+  "width": 1536,
+  "height": 1024,
+  "noiseFloor": 2,
+  "columns": 3,
+  "rows": 2,
+  "strategy": "row-first",
+  "status": "MEASURED_REQUIRES_VISUAL_REVIEW",
+  "bodyHeightPx": null,
+  "bodyReferenceStatus": "REVIEWED_BODY_REFERENCE_REQUIRED",
+  "warning": "Foot pivots and silhouette heights are candidates. A weapon tip may be lower than a foot or higher than the head. Approve anatomy, actual feet and one fixed body reference before admission; these measurements do not approve art.",
+  "separators": [
+    {
+      "axis": "y",
+      "row": 1,
+      "start": 501,
+      "end": 527,
+      "cut": 514
+    },
+    {
+      "axis": "x",
+      "row": 0,
+      "column": 1,
+      "start": 414,
+      "end": 542,
+      "cut": 478
+    },
+    {
+      "axis": "x",
+      "row": 0,
+      "column": 2,
+      "start": 969,
+      "end": 1117,
+      "cut": 1043
+    },
+    {
+      "axis": "x",
+      "row": 1,
+      "column": 1,
+      "start": 449,
+      "end": 585,
+      "cut": 517
+    },
+    {
+      "axis": "x",
+      "row": 1,
+      "column": 2,
+      "start": 1000,
+      "end": 1147,
+      "cut": 1073
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "rect": [
+        0,
+        0,
+        479,
+        515
+      ],
+      "visibleRect": [
+        90,
+        28,
+        324,
+        472
+      ],
+      "alphaPixels": 72563,
+      "borderPixels": 0,
+      "visiblePixelSha256": "7b38cb7d3a15e64e38349e52e03ce079a493885fe6fc6e8e3c1be7f4795a89cb",
+      "pivotCandidate": [
+        120.5,
+        500
+      ],
+      "visibleHeightCandidate": 472
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "rect": [
+        478,
+        0,
+        566,
+        515
+      ],
+      "visibleRect": [
+        543,
+        24,
+        426,
+        476
+      ],
+      "alphaPixels": 81427,
+      "borderPixels": 0,
+      "visiblePixelSha256": "2c0fccf2c00428351d2f71b8670084b7c5ac7ba53f0a0875e888f7dbacd73233",
+      "pivotCandidate": [
+        156,
+        500
+      ],
+      "visibleHeightCandidate": 476
+    },
+    {
+      "index": 2,
+      "row": 0,
+      "column": 2,
+      "rect": [
+        1043,
+        0,
+        493,
+        515
+      ],
+      "visibleRect": [
+        1118,
+        27,
+        319,
+        474
+      ],
+      "alphaPixels": 75972,
+      "borderPixels": 0,
+      "visiblePixelSha256": "2b6aa89b1306a31c639c1b0f8ab744378d508f53f809529b47c6453dfbf47d19",
+      "pivotCandidate": [
+        103.5,
+        501
+      ],
+      "visibleHeightCandidate": 474
+    },
+    {
+      "index": 3,
+      "row": 1,
+      "column": 0,
+      "rect": [
+        0,
+        514,
+        518,
+        510
+      ],
+      "visibleRect": [
+        101,
+        528,
+        348,
+        465
+      ],
+      "alphaPixels": 73223,
+      "borderPixels": 0,
+      "visiblePixelSha256": "c5cb276490c7bc50a717078dedb835e6869b5981ce73c49b772e27bb6e253286",
+      "pivotCandidate": [
+        423.5,
+        479
+      ],
+      "visibleHeightCandidate": 465
+    },
+    {
+      "index": 4,
+      "row": 1,
+      "column": 1,
+      "rect": [
+        517,
+        514,
+        557,
+        510
+      ],
+      "visibleRect": [
+        586,
+        529,
+        414,
+        462
+      ],
+      "alphaPixels": 78622,
+      "borderPixels": 0,
+      "visiblePixelSha256": "40d4ba04bc85b0ceb8e22b1539c7af9854abedfeb6bfb294812e483fab309a54",
+      "pivotCandidate": [
+        404,
+        477
+      ],
+      "visibleHeightCandidate": 462
+    },
+    {
+      "index": 5,
+      "row": 1,
+      "column": 2,
+      "rect": [
+        1073,
+        514,
+        463,
+        510
+      ],
+      "visibleRect": [
+        1148,
+        528,
+        327,
+        463
+      ],
+      "alphaPixels": 75120,
+      "borderPixels": 0,
+      "visiblePixelSha256": "1a5bca8769f753bccc5505a8ac8604ad66941da0e70434d66b40e0dc6b4cb33f",
+      "pivotCandidate": [
+        371.5,
+        477
+      ],
+      "visibleHeightCandidate": 463
+    }
+  ],
+  "issues": []
+}

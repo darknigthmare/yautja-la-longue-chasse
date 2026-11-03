@@ -1,0 +1,20 @@
+{
+  "classification": "CONSTRUCTED_OPERATOR_TESTS_NOT_GAMEPLAY",
+  "files": {
+    "README.md": {
+      "bytes": 9571,
+      "sha256": "faaa8b903bee45e6a227eb4fd833eb3339eda010632bfabcba0d474f6fc91c16"
+    },
+    "operator-report.json": {
+      "bytes": 35342,
+      "sha256": "ffe1ef8443401eff9a677a3ba357493ecbe30652afad4aaffb4b680fc33458ad"
+    }
+  },
+  "runner": {
+    "path": "scripts/qa-hunt-ground-deposit-composition-v112.mjs",
+    "sha256": "dca5c0fba244e96f5b8b046b2308c9001c3bb12a6be7c6666dcf29956dcb9750"
+  },
+  "realGameplayEvidence": "docs/qa/v112-ground-campaign/qualified-unladen/report.json",
+  "realGameplayEvidenceSha256": "13e247b332b1f09febababb26f56b7f578fc5a44ea1deca4a9b83c3e5dcc5245",
+  "noAutomaticRequirementClosure": true
+}

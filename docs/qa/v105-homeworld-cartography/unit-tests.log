@@ -1,0 +1,335 @@
+Command: node --experimental-strip-types tests/homeworld-cartography-v104.test.mjs
+TAP version 13
+# Subtest: V104 cartographer source is an exact authorized V6 extraction, including all eight lines and both distinct options
+ok 1 - V104 cartographer source is an exact authorized V6 extraction, including all eight lines and both distinct options
+  ---
+  duration_ms: 188.117427
+  type: 'test'
+  ...
+# Subtest: V104 cartographer and three approaches use existing native objects and connected visible ground without replacing residents
+ok 2 - V104 cartographer and three approaches use existing native objects and connected visible ground without replacing residents
+  ---
+  duration_ms: 91.091276
+  type: 'test'
+  ...
+# Subtest: V104 cartographer gates the live owner, floor, known district, supported foot approach, availability and scene state
+ok 3 - V104 cartographer gates the live owner, floor, known district, supported foot approach, availability and scene state
+  ---
+  duration_ms: 1.864675
+  type: 'test'
+  ...
+# Subtest: V104 complete option B requires actual movement through both physical approaches and return to the source speaker
+ok 4 - V104 complete option B requires actual movement through both physical approaches and return to the source speaker
+  ---
+  duration_ms: 330.519892
+  type: 'test'
+  ...
+# Subtest: V104 buttons cannot grant a waypoint, teleport a route, cross floors, bypass a pause or report from afar
+ok 5 - V104 buttons cannot grant a waypoint, teleport a route, cross floors, bypass a pause or report from afar
+  ---
+  duration_ms: 11.123795
+  type: 'test'
+  ...
+# Subtest: V104 interruptions preserve the walked prefix and resume only at the recorded safe position for the same owner and revision
+ok 6 - V104 interruptions preserve the walked prefix and resume only at the recorded safe position for the same owner and revision
+  ---
+  duration_ms: 95.579359
+  type: 'test'
+  ...
+# Subtest: V104 the return leg also interrupts safely and resumes as return without losing its two approaches
+ok 7 - V104 the return leg also interrupts safely and resumes as return without losing its two approaches
+  ---
+  duration_ms: 864.837402
+  type: 'test'
+  ...
+# Subtest: V104 long real walks compact the drawn trace without locking progress, inventing shortcuts or losing the earned approaches
+ok 8 - V104 long real walks compact the drawn trace without locking progress, inventing shortcuts or losing the earned approaches
+  ---
+  duration_ms: 4225.363809
+  type: 'test'
+  ...
+# Subtest: V104 the actual city transaction cannot publish a choice after a refused write or a stale callback
+ok 9 - V104 the actual city transaction cannot publish a choice after a refused write or a stale callback
+  ---
+  duration_ms: 4.252544
+  type: 'test'
+  ...
+# Subtest: V104 imported receipts reject forged waypoint counts, missing paths, future versions, foreign sources and extra fields
+ok 10 - V104 imported receipts reject forged waypoint counts, missing paths, future versions, foreign sources and extra fields
+  ---
+  duration_ms: 6.885102
+  type: 'test'
+  ...
+# Subtest: V104 ledger is additive to the normal save, survives ordinary city actions and gives no marks, trophies, items or campaign permission
+ok 11 - V104 ledger is additive to the normal save, survives ordinary city actions and gives no marks, trophies, items or campaign permission
+  ---
+  duration_ms: 40.825114
+  type: 'test'
+  ...
+# Subtest: V104 main-save inspection rejects incompatible present ledgers before they can replace stored bytes
+ok 12 - V104 main-save inspection rejects incompatible present ledgers before they can replace stored bytes
+  ---
+  duration_ms: 23.039185
+  type: 'test'
+  ...
+# Subtest: V104 actual React source host, conversation, recorded map and interruption controls render with bounded scope
+ok 13 - V104 actual React source host, conversation, recorded map and interruption controls render with bounded scope
+  ---
+  duration_ms: 305.719387
+  type: 'test'
+  ...
+# Subtest: V104 storage retry stays available after closing every pre-walk phase without advertising an earned waypoint or resume
+ok 14 - V104 storage retry stays available after closing every pre-walk phase without advertising an earned waypoint or resume
+  ---
+  duration_ms: 20.677157
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6235.298845
+
+Command: node --experimental-strip-types tests/homeworld-cartography-v105.test.mjs
+TAP version 13
+# Subtest: V105 binds the exact source A action, choice and response while retaining the eight-line V104 extraction
+ok 1 - V105 binds the exact source A action, choice and response while retaining the eight-line V104 extraction
+  ---
+  duration_ms: 1.248295
+  type: 'test'
+  ...
+# Subtest: V105 walks the real city, the eight-second Council stairs and the actual upper viaduct before earning observation
+ok 2 - V105 walks the real city, the eight-second Council stairs and the actual upper viaduct before earning observation
+  ---
+  duration_ms: 8763.098781
+  type: 'test'
+  ...
+# Subtest: V105 comparison is ordered, requires the physical high point and retains the actual observation time
+ok 3 - V105 comparison is ordered, requires the physical high point and retains the actual observation time
+  ---
+  duration_ms: 1.120156
+  type: 'test'
+  ...
+# Subtest: V105 a completed survey requires the real descent and walked return to the source speaker
+ok 4 - V105 a completed survey requires the real descent and walked return to the source speaker
+  ---
+  duration_ms: 4007.98622
+  type: 'test'
+  ...
+# Subtest: V105 movement and stairs reject floor swaps, teleports, fabricated duration and a stale source endpoint
+ok 5 - V105 movement and stairs reject floor swaps, teleports, fabricated duration and a stale source endpoint
+  ---
+  duration_ms: 7.325262
+  type: 'test'
+  ...
+# Subtest: V105 interruption and reload preserve comparison, time and last safe floor without replaying actions
+ok 6 - V105 interruption and reload preserve comparison, time and last safe floor without replaying actions
+  ---
+  duration_ms: 0.835788
+  type: 'test'
+  ...
+# Subtest: V105 a refused durable action never publishes choice, comparison, date or success and stale callbacks cannot overwrite it
+ok 7 - V105 a refused durable action never publishes choice, comparison, date or success and stale callbacks cannot overwrite it
+  ---
+  duration_ms: 4.799809
+  type: 'test'
+  ...
+# Subtest: V105 the optional save ledger preserves old saves and V104 B and grants no rewards or permissions
+ok 8 - V105 the optional save ledger preserves old saves and V104 B and grants no rewards or permissions
+  ---
+  duration_ms: 23.985827
+  type: 'test'
+  ...
+# Subtest: V105 strict import rejects future, foreign, extra, contradictory, missing-high-point and forged-completion receipts without replacing bytes
+ok 9 - V105 strict import rejects future, foreign, extra, contradictory, missing-high-point and forged-completion receipts without replacing bytes
+  ---
+  duration_ms: 8.263761
+  type: 'test'
+  ...
+# Subtest: V105 real React dialogs expose exact source A, two known objects, date, preserved B and retry outside all pre-walk phases
+ok 10 - V105 real React dialogs expose exact source A, two known objects, date, preserved B and retry outside all pre-walk phases
+  ---
+  duration_ms: 133.22317
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 12962.977217
+
+Command: node --experimental-strip-types tests/homeworld-input-runtime.test.mjs
+TAP version 13
+# Subtest: the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock
+ok 1 - the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock
+  ---
+  duration_ms: 497.780565
+  type: 'test'
+  ...
+# Subtest: the live V105 cartography hook stays dormant and its refused write freezes the physical city
+ok 2 - the live V105 cartography hook stays dormant and its refused write freezes the physical city
+  ---
+  duration_ms: 205.333734
+  type: 'test'
+  ...
+# Subtest: held stick and A on first focus cannot move or open a dialogue until a neutral frame
+ok 3 - held stick and A on first focus cannot move or open a dialogue until a neutral frame
+  ---
+  duration_ms: 147.585716
+  type: 'test'
+  ...
+# Subtest: V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame
+ok 4 - V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame
+  ---
+  duration_ms: 162.091299
+  type: 'test'
+  ...
+# Subtest: V75 destination finder consumes no city controller action and requires release after closing
+ok 5 - V75 destination finder consumes no city controller action and requires release after closing
+  ---
+  duration_ms: 123.067703
+  type: 'test'
+  ...
+# Subtest: Homeworld focus return requires release, without losing position
+ok 6 - Homeworld focus return requires release, without losing position
+  ---
+  duration_ms: 102.834208
+  type: 'test'
+  ...
+# Subtest: Homeworld window return requires release, without losing position
+ok 7 - Homeworld window return requires release, without losing position
+  ---
+  duration_ms: 149.722021
+  type: 'test'
+  ...
+# Subtest: Homeworld hidden return requires release, without losing position
+ok 8 - Homeworld hidden return requires release, without losing position
+  ---
+  duration_ms: 75.875985
+  type: 'test'
+  ...
+# Subtest: Homeworld service return requires release, without losing position
+ok 9 - Homeworld service return requires release, without losing position
+  ---
+  duration_ms: 122.873287
+  type: 'test'
+  ...
+# Subtest: Start pauses and resumes intentionally but held Start/stick never repeats across the transition
+ok 10 - Start pauses and resumes intentionally but held Start/stick never repeats across the transition
+  ---
+  duration_ms: 96.546523
+  type: 'test'
+  ...
+# Subtest: dialog up starts at the last enabled choice, wraps and never repeats on render
+ok 11 - dialog up starts at the last enabled choice, wraps and never repeats on render
+  ---
+  duration_ms: 168.256494
+  type: 'test'
+  ...
+# Subtest: navigation dialog remains controller-accessible above an already paused city
+ok 12 - navigation dialog remains controller-accessible above an already paused city
+  ---
+  duration_ms: 162.005232
+  type: 'test'
+  ...
+# Subtest: the live city clock freezes strand position and velocity in pause, then settles after release
+ok 13 - the live city clock freezes strand position and velocity in pause, then settles after release
+  ---
+  duration_ms: 245.609784
+  type: 'test'
+  ...
+# Subtest: closing a dialogue by B cannot start walking on its still-held stick
+ok 14 - closing a dialogue by B cannot start walking on its still-held stick
+  ---
+  duration_ms: 85.602668
+  type: 'test'
+  ...
+# Subtest: controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral
+ok 15 - controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral
+  ---
+  duration_ms: 213.748061
+  type: 'test'
+  ...
+# Subtest: Start resumes after window inactivity in one intentional press, without toggling into another pause
+ok 16 - Start resumes after window inactivity in one intentional press, without toggling into another pause
+  ---
+  duration_ms: 248.309958
+  type: 'test'
+  ...
+# Subtest: real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait
+ok 17 - real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait
+  ---
+  duration_ms: 185.2934
+  type: 'test'
+  ...
+# Subtest: stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking
+ok 18 - stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking
+  ---
+  duration_ms: 339.708629
+  type: 'test'
+  ...
+# Subtest: the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel
+ok 19 - the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel
+  ---
+  duration_ms: 473.252975
+  type: 'test'
+  ...
+# Subtest: keyboard sprint uses the configured hold action, and touch sprint shares the same motor
+ok 20 - keyboard sprint uses the configured hold action, and touch sprint shares the same motor
+  ---
+  duration_ms: 245.446822
+  type: 'test'
+  ...
+# Subtest: held L3 alone cannot arm sprint across pause, dialog or focus ownership changes
+ok 21 - held L3 alone cannot arm sprint across pause, dialog or focus ownership changes
+  ---
+  duration_ms: 250.187711
+  type: 'test'
+  ...
+# Subtest: the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts
+ok 22 - the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts
+  ---
+  duration_ms: 82.181821
+  type: 'test'
+  ...
+# Subtest: the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking
+ok 23 - the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking
+  ---
+  duration_ms: 122.279865
+  type: 'test'
+  ...
+# Subtest: V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement
+ok 24 - V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement
+  ---
+  duration_ms: 124.034919
+  type: 'test'
+  ...
+# Subtest: V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement
+ok 25 - V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement
+  ---
+  duration_ms: 71.558644
+  type: 'test'
+  ...
+# Subtest: V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction
+ok 26 - V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction
+  ---
+  duration_ms: 41.517073
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4769.573504

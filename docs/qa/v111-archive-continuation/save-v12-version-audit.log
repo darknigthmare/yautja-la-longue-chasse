@@ -1,0 +1,42 @@
+tests/solo-save-v70.test.mjs:68:  assert.equal(restored.save.version,p.SAVE_VERSION);assert.equal(restored.save.soloV70,null);
+tests/solo-save-v70.test.mjs:70:  const future=storage({...run.save,version:p.SAVE_VERSION+1}),raw=future.getItem(key);
+tests/save-v2.test.mjs:38:const { SAVE_VERSION, applyMissionResult, defaultSave, normalizeSave } =
+tests/save-v2.test.mjs:125:  assert.equal(migrated.version, SAVE_VERSION);
+tests/save-v2.test.mjs:294:  assert.equal(migrated.version, SAVE_VERSION);
+app/game/systems/completeArchive.ts:7:import { normalizePitSave, pitSaveStorageKey, PIT_SAVE_VERSION, validateCanonicalPitSave, type PitSaveV5 } from "./pitSave";
+app/game/systems/completeArchive.ts:69:  if (record(annex.pit) && Number(annex.pit.version) > PIT_SAVE_VERSION) return bad("future-version");
+app/game/systems/completeArchive.ts:72:    : record(annex.pit) && annex.pit.version === PIT_SAVE_VERSION
+app/game/systems/campaignSlots.ts:10:import { defaultSave, parseSaveImport, SAVE_STORAGE_KEY, SAVE_VERSION, SAVE_MAX_SERIALIZED_BYTES } from "../save";
+app/game/systems/campaignSlots.ts:16:import { ACTIVE_HUNT_STORAGE_KEY, ACTIVE_HUNT_SAVE_VERSION } from "./activeHuntSave";
+app/game/systems/campaignSlots.ts:17:import { PIT_SAVE_STORAGE_KEY, pitSaveStorageKey, loadPitSave, PIT_SAVE_VERSION } from "./pitSave";
+app/game/systems/campaignSlots.ts:484:    const max = entry.key === ACTIVE_HUNT_STORAGE_KEY ? ACTIVE_HUNT_SAVE_VERSION : entry.key === SHIP_PROGRESSION_STORAGE_KEY ? SHIP_PROGRESSION_VERSION
+app/game/systems/campaignSlots.ts:485:      : entry.key === pitSaveStorageKey(owner) ? PIT_SAVE_VERSION : entry.key === pitReplayStorageKey(owner) ? PIT_REPLAY_STORAGE_VERSION : SAVE_VERSION;
+app/game/systems/campaignSlots.ts:609:      const maxVersion = entry.key === ACTIVE_HUNT_STORAGE_KEY ? ACTIVE_HUNT_SAVE_VERSION : entry.key === SHIP_PROGRESSION_STORAGE_KEY ? SHIP_PROGRESSION_VERSION
+app/game/systems/campaignSlots.ts:610:        : entry.key === pitSaveStorageKey(desired.campaign.createdAt) ? PIT_SAVE_VERSION : entry.key === pitReplayStorageKey(desired.campaign.createdAt) ? PIT_REPLAY_STORAGE_VERSION : SAVE_VERSION;
+tests/exploration-progress.test.mjs:14:  mergeExplorationProgress, explorationBonuses, explorationForMission, isExplorationMission, SAVE_VERSION,
+tests/exploration-progress.test.mjs:66:  assert.equal(SAVE_VERSION, 12);
+tests/exploration-progress.test.mjs:124:  assert.equal(migrated.version, SAVE_VERSION);
+tests/exploration-progress.test.mjs:201:  assert.equal(imported.save.version, SAVE_VERSION);
+tests/exploration-progress.test.mjs:241:  assert.equal(migrated.version, SAVE_VERSION);
+tests/save-homeworld-v7.test.mjs:15:const { defaultSave, normalizeSave, writeSaveWithStatus, loadSave, SAVE_VERSION } =
+tests/save-homeworld-v7.test.mjs:44:  assert.equal(migrated.version, SAVE_VERSION);
+tests/save-recovery-import.test.mjs:12:  SAVE_VERSION, SAVE_MAX_SERIALIZED_BYTES, defaultSave, normalizeSave,
+tests/save-recovery-import.test.mjs:37:    [JSON.stringify({ ...campaign(900), version: SAVE_VERSION + 1 }), "future-version"],
+tests/save-recovery-import.test.mjs:68:  const future = JSON.stringify({ ...campaign(900), version: SAVE_VERSION + 1 });
+tests/save-recovery-import.test.mjs:113:  assert.equal(imported.save.version, SAVE_VERSION);
+tests/save-recovery-import.test.mjs:126:    [JSON.stringify({ ...campaign(), version: SAVE_VERSION + 1 }), "future-version"],
+app/game/save.ts:88:export const SAVE_VERSION = 12;
+app/game/save.ts:309:    version: SAVE_VERSION,
+app/game/save.ts:566:  10: (input) => ({ ...input, version: 11, soloV70: input.soloV70 ?? null }),
+app/game/save.ts:569:  11: (input) => ({ ...input, version: 12 }),
+app/game/save.ts:582:  if (detectedVersion > SAVE_VERSION || detectedVersion < 0) {
+app/game/save.ts:589:  while (version < SAVE_VERSION) {
+app/game/save.ts:1174:    version: SAVE_VERSION,
+app/game/save.ts:1431:  if (Number(value.version) > SAVE_VERSION) {
+tests/homeworld-continuation-integration-v111.test.mjs:168:  assert.equal(old.SAVE_VERSION,11);assert.equal(saves.SAVE_VERSION,12);
+tests/homeworld-continuation-integration-v111.test.mjs:176:  assert.deepEqual(migrated,{...previous,version:12},'every pre-existing campaign field survives the schema-only migration');
+tests/homeworld-continuation-integration-v111.test.mjs:181:test('V111 actual V110 client treats a12 campaign as future and cannot drop its new continuation or overwrite its bytes',async()=>{
+tests/homeworld-continuation-integration-v111.test.mjs:184:  const actual=campaign(stateAt('carried')),previous=structuredClone(actual);previous.version=11;delete previous.homeworld.archiveContinuationV111;
+tests/homeworld-access-v69.test.mjs:27:  assert.equal(p.SAVE_VERSION,12);
+tests/homeworld-access-v69.test.mjs:28:  for(const edit of [s=>s.version=p.SAVE_VERSION+1,s=>s.soloV69={version:2},s=>s.homeworld.contractsV68={version:3}]) {
+tests/homeworld-access-v69.test.mjs:35:  const migrated=p.parseSaveImport(JSON.stringify(old));assert.equal(migrated.failure,null);assert.equal(migrated.save.version,p.SAVE_VERSION);

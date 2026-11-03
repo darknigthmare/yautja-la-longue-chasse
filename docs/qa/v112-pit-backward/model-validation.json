@@ -1,0 +1,42 @@
+{
+  "scope": "Model, input adaptation, save/replay and sprite-clock regressions only; no browser or pixel certification",
+  "commands": [
+    {
+      "command": "node --test --test-concurrency=1 tests/pit-backward-throws-v112.test.mjs tests/pit-forward-throws-v109.test.mjs tests/pit-replay.test.mjs tests/pit-training.test.mjs tests/hunterSpriteMotion.test.ts",
+      "result": "PASS",
+      "tests": 76,
+      "log": "docs/qa/v112-pit-backward/integrated-model-regressions.log"
+    },
+    {
+      "command": "node tests/pit-backward-controls-v112.test.mjs",
+      "result": "PASS",
+      "tests": 5,
+      "log": "docs/qa/v112-pit-backward/public-control-closure-tests.log",
+      "scope": "AST-extracted actual PitCanvas sourceCommand closure; both slots and facings; explicit forward/backward buttons, keyboard/pad contextual4+LM and fresh tech with retreat held; V16 public input shape unchanged"
+    },
+    {
+      "command": "node tests/pit-workbook-devices-v107.test.mjs",
+      "result": "PASS",
+      "tests": 13,
+      "log": "docs/qa/v112-pit-backward/device-v15-regressions.log"
+    }
+  ],
+  "currentVersionExpectationChange": {
+    "file": "tests/pit-forward-throws-v109.test.mjs",
+    "assertion": "PIT_REPLAY_MAX_ENGINE_VERSION",
+    "before": 16,
+    "after": 17,
+    "archiveEngineVersionAssertion": 16,
+    "archiveAssertionsRetained": true
+  },
+  "productionBrowserExecuted": false,
+  "correctedPublicControl": "Explicit forward button neutralizes left/right for its own sampled input; contextual keyboard/pad4+LM retains its direction; actual old closure failure and fixed countercheck retained.",
+  "futureCodecExpectationChange": {
+    "file": "tests/pit-workbook-devices-v107.test.mjs",
+    "before": 16,
+    "after": "PIT_REPLAY_MAX_ENGINE_VERSION + 1 (18)",
+    "sourceEngineAssertionsRetained": 15,
+    "trainingFutureVersionUnchanged": 5,
+    "initialFailedFullLog": "docs/qa/v112-pit-backward/initial-workbook-regressions-future-expectation-failed.log"
+  }
+}

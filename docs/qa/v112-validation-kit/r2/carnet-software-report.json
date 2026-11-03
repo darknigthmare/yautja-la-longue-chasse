@@ -1,0 +1,57 @@
+{
+  "result": "OK",
+  "scope": "LOCAL_CARNET_SOFTWARE_ONLY",
+  "chromeVersion": "154.0.8037.57",
+  "nodeVersion": "v24.19.0",
+  "viewports": [
+    "390x844",
+    "1280x900"
+  ],
+  "criteriaAutomaticallyClosed": [],
+  "checks": [
+    "source criteria unchanged",
+    "45 novice observations empty by default",
+    "manual consent and revocation",
+    "invalid attestations rejected",
+    "Excel / LibreOffice distinction",
+    "reviewed JSON equals download",
+    "edit invalidates review",
+    "field labels and keyboard skip link",
+    "no horizontal page overflow",
+    "no automatic follow-up network requests",
+    "no browser storage",
+    "reload clears report",
+    "JavaScript disabled: six complete protocols expanded",
+    "JavaScript disabled: nine shared novice objectives and observations",
+    "JavaScript disabled: no result or export fabricated",
+    "voluntary XLSX/PDF downloads preserve exact bytes with and without JavaScript"
+  ],
+  "downloadChecks": [
+    {
+      "javaScriptEnabled": true,
+      "path": "/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 734128,
+      "sha256": "f13dd1a3548aebac25ba77e11ad5c5835757fc49da94491dbe69dbd291b59989"
+    },
+    {
+      "javaScriptEnabled": true,
+      "path": "/aide/YAUTJA_V112_REVUES_IMPRIMABLE.pdf",
+      "bytes": 1480498,
+      "sha256": "e7b5793d7be0151b01bdc67919074f2bf21a713bdb037ec945b8b3d9d789e5dc"
+    },
+    {
+      "javaScriptEnabled": false,
+      "path": "/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 734128,
+      "sha256": "f13dd1a3548aebac25ba77e11ad5c5835757fc49da94491dbe69dbd291b59989"
+    },
+    {
+      "javaScriptEnabled": false,
+      "path": "/aide/YAUTJA_V112_REVUES_IMPRIMABLE.pdf",
+      "bytes": 1480498,
+      "sha256": "e7b5793d7be0151b01bdc67919074f2bf21a713bdb037ec945b8b3d9d789e5dc"
+    }
+  ],
+  "htmlSha256": "538c177f635f0522d4ada5a51961681f111817e69b5611947767f76ef7e3cf8c",
+  "workbookSha256": "f13dd1a3548aebac25ba77e11ad5c5835757fc49da94491dbe69dbd291b59989"
+}

@@ -1,0 +1,40 @@
+{
+  "execution": {
+    "passed": true,
+    "executablePath": "tmp/desktop-release/v29/Yautja-La-Longue-Chasse-win32-x64/Yautja-La-Longue-Chasse.exe",
+    "profile": "Isolated temporary QA profile; never the real player profile",
+    "checks": [
+      "Packaged EXE boots, renderer sandboxed, network blocked, bundled art readable, private paths rejected.",
+      "Real setting persisted; campaign exported through the native download path.",
+      "Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.",
+      "Hub to THE PIT training arena loads locally, with the exact Jungle Hunter and Berserker fixed-pose PNGs.",
+      "Local galaxy route to Oseris, mission briefing, deployment and suspended hunt saved.",
+      "Campaign bytes, suspended hunt, Homeworld evidence, Justice choice and setting retained after clean process exit and cold restart."
+    ],
+    "errors": [],
+    "failedLocalRequests": [],
+    "testedAt": "2026-09-08T04:18:17.192Z",
+    "limit": "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified."
+  },
+  "archive": {
+    "passed": true,
+    "sourceCommit": "866a797343761a8d0ee23d3fb88707a597d427ba",
+    "version": "1.0.29",
+    "asarEntries": 2109,
+    "asarTopLevel": [
+      "/main.mjs",
+      "/package.json",
+      "/protocol.mjs",
+      "/release.mjs",
+      "/renderer"
+    ],
+    "audioManifestIncluded": true,
+    "manifestHashesVerified": true,
+    "zip": "tmp/desktop-release/v29/Yautja-La-Longue-Chasse-PC-V29.zip",
+    "zipBytes": 441353467,
+    "zipSha256": "6eff4b304b77a26deb942fa6e37bd77653057b3837da4221117e81633c5219c0",
+    "zipEntries": 77,
+    "v25ZipBytes": 425771120,
+    "testedAt": "2026-09-08T04:21:08.806Z"
+  }
+}

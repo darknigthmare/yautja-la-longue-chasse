@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "characterId": "machiko",
+  "biologicalSpecies": "human",
+  "reviewDate": "2026-09-05",
+  "status": "usable-for-review-after-keying-and-registration",
+  "gameplayValidated": false,
+  "finalArtApproved": false,
+  "runtimeEnabled": false,
+  "summary": {
+    "generatedSourceBitmaps": 3,
+    "retainedSequenceCandidates": 2,
+    "retainedSourcePoses": 12,
+    "rejectedSourceBitmaps": 1,
+    "validatedGameplayClips": 0,
+    "variants": [
+      "machiko-ryushi",
+      "machiko-clan"
+    ]
+  },
+  "generation": {
+    "tool": "OpenAI integrated image_gen.imagegen",
+    "apiOrCliGenerationUsed": false,
+    "bytesPreservation": "Exact returned PNG data URL bytes, persisted in 24000-character base64 fragments on tmp junction D, assembled after PNG signature and Sharp decode checks.",
+    "rawPixelsEditedOutsideGenerator": false,
+    "postprocessingApplied": [],
+    "generatorCalls": [
+      {
+        "id": "machiko-ryushi-high-guard",
+        "operation": "new-six-pose-sheet-from-licensed-references",
+        "contextImages": 3,
+        "prompt": "art-source/v28/known-hunters/prompts/machiko-ryushi-high-guard.txt",
+        "output": "art-source/v28/known-hunters/sources/machiko-ryushi-high-guard.png"
+      },
+      {
+        "id": "machiko-clan-hit-reaction-rejected-v1",
+        "operation": "new-six-pose-sheet-from-neca-reference",
+        "contextImages": 3,
+        "prompt": "art-source/v28/known-hunters/prompts/machiko-clan-hit-reaction-rejected-v1.txt",
+        "output": "art-source/v28/known-hunters/sources/machiko-clan-hit-reaction-rejected-v1.png"
+      },
+      {
+        "id": "machiko-clan-hit-reaction",
+        "operation": "integrated-image-edit-retract-incorrect-wrist-blades",
+        "contextImages": 1,
+        "parentSource": "art-source/v28/known-hunters/sources/machiko-clan-hit-reaction-rejected-v1.png",
+        "prompt": "art-source/v28/known-hunters/prompts/machiko-clan-hit-reaction.txt",
+        "output": "art-source/v28/known-hunters/sources/machiko-clan-hit-reaction.png"
+      }
+    ]
+  },
+  "reviewMethod": "Author inspected complete generated sheets and enlarged hands/face/equipment crops. A different agent independently inspected each retained sheet and a clan frame1 magnification. These are static bitmap reviews, not playback or in-game validation.",
+  "sharedImportRequirements": [
+    "Les sources sont RGB opaques à fond magenta variable, pas des PNG alpha. Les coins ne sont pas #FF00FF exact : une égalité de couleur unique ne suffit pas.",
+    "Détourer le fond puis recaler selon registration.json ; aucun détourage ni atlas runtime n'a été écrit par ce lot.",
+    "Conserver une échelle constante à l'intérieur de chaque clip ; ne pas normaliser la hauteur de chaque pose.",
+    "Vérifier en lecture réelle mains, points de fixation, glissement des pieds, transitions et variations d'arme avant validation.",
+    "Ne pas retourner horizontalement ces feuilles pour produire une orientation gauche : équipement asymétrique, orientation opposée non produite.",
+    "Ne pas compter une variante comme couverture d'animation de l'autre."
+  ],
+  "entries": [
+    {
+      "id": "machiko-ryushi-high-guard",
+      "variantId": "machiko-ryushi",
+      "status": "usable-for-review",
+      "source": "art-source/v28/known-hunters/sources/machiko-ryushi-high-guard.png",
+      "sha256": "acb10f71b1ffe6298854a403407573bc46ea30eb597173f321c0dd47515169ee",
+      "bytes": 1730916,
+      "width": 1536,
+      "height": 1024,
+      "frames": 6,
+      "hasAlpha": false,
+      "observations": [
+        "Six corps humains complets, deux bras et deux mains plausibles, pieds humains chaussés.",
+        "Rifle tenu à deux mains ; sangle, étui de pistolet et katana au fourreau restent présents.",
+        "Lecture réelle : prêt bas > lever le fusil > visée défensive > recul > abaisser > prêt bas. Les frames2/3 sont proches.",
+        "Les corps mesurent environ415–425px, pas les330px demandés ; aucun pixel de silhouette mesuré hors du cadre proposé aux trois seuils.",
+        "Les lignes du texte sur le haut et les détails du fusil sont interprétés/simplifiés ; fidélité1:1 non certifiée."
+      ],
+      "blockingForReview": [],
+      "blockingForGameplayAcceptance": [
+        "Le geste évoque la visée à l'épaule davantage qu'une parade haute de mêlée. Ne pas valider un clip de garde haute à partir du seul nom du fichier.",
+        "Keying et recalage requis ; timings et raccords non vérifiés."
+      ],
+      "nonBlockingReservations": [
+        "Dimensions du fusil et attache de sangle légèrement variables à vérifier en lecture.",
+        "Doigts fins et position exacte de chaque pouce non certifiés dans toutes les poses.",
+        "Adaptation de port du pistolet en étui de cuisse pour libérer les mains ; ce n'est pas la pose de la référence."
+      ],
+      "intendedMechanic": {
+        "type": "candidate-raised-rifle-defense",
+        "entry": [
+          1,
+          2
+        ],
+        "holdCandidate": 3,
+        "impactCandidate": 4,
+        "release": [
+          5,
+          6
+        ],
+        "holdPolicy": "Ne pas boucler toute la séquence tant que la garde est tenue. La lecture de parade devra d'abord être acceptée.",
+        "expectedTransitions": [
+          "ready→raise→held defense",
+          "held defense→impact→held defense only after dedicated playback review",
+          "held defense→release→ready"
+        ],
+        "timingStatus": "not-measured"
+      },
+      "independentReview": {
+        "reviewer": "/root/modular_asset_audit",
+        "performed": true,
+        "findings": "Six corps complets ; aucune main flottante, arme dupliquée ou anatomie supplémentaire évidente. Lecture visée/recul/abaissement plutôt que garde haute. Doigts et sangle non certifiés."
+      }
+    },
+    {
+      "id": "machiko-clan-hit-reaction",
+      "variantId": "machiko-clan",
+      "status": "usable-for-review",
+      "source": "art-source/v28/known-hunters/sources/machiko-clan-hit-reaction.png",
+      "sha256": "a90bfaf2a5f4f02dff7c066ec16eb610394b01bd34b2940373c543b78bf16b44",
+      "bytes": 1824504,
+      "width": 1536,
+      "height": 1024,
+      "frames": 6,
+      "hasAlpha": false,
+      "observations": [
+        "Visage humain découvert, cheveux humains noirs tressés/perlés, cuirasse de clan et chaussures humaines fermées.",
+        "Six étapes distinctes : prêt > impact initial > recul maximal debout > flexion/rattrapage > redressement > prêt.",
+        "Deux mains tiennent le fusil bleu-vert, un canon d'épaule identifiable.",
+        "Correction intégrée effectivement visible : plus aucune lame déployée ni appendice pointant vers l'arrière sur les six gantelets droits.",
+        "Frames1/6 montrent une hauteur silhouette proche444px ; réduction de hauteur dans3/4 vient de la pose, à ne pas compenser par agrandissement.",
+        "Les détails de la marque frontale restent très fins ; présence/forme constante non certifiée, malgré la consigne de génération."
+      ],
+      "blockingForReview": [],
+      "blockingForGameplayAcceptance": [
+        "Détourage et recalage nécessaires ; raccords avec les autres animations de la variante de clan inexistants dans ce lot.",
+        "Variation de proportions et cohérence des appuis doivent être jugées en animation, pas seulement sur la feuille."
+      ],
+      "nonBlockingReservations": [
+        "Décompte détaillé des cinq doigts non certain lorsque le pouce est occulté par le fusil ; aucune troisième main constatée.",
+        "Marque frontale et visage exact à confronter à des cases de comic plus précises avant approbation de fidélité.",
+        "Canon d'épaule, genouillères, filets et petit matériel interprétés d'après la figurine ; pas reproduction1:1 garantie."
+      ],
+      "intendedMechanic": {
+        "type": "standing-hit-reaction-one-shot",
+        "order": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "loop": false,
+        "peakRecoil": 3,
+        "compression": 4,
+        "expectedTransitions": [
+          "ready→initial hit→peak recoil→catch balance→recover→ready"
+        ],
+        "notProduced": [
+          "knockdown",
+          "KO",
+          "death",
+          "left-facing orientation"
+        ],
+        "timingStatus": "not-measured"
+      },
+      "independentReview": {
+        "reviewer": "/root/modular_asset_audit",
+        "performed": true,
+        "findings": "Six corps complets ; recul2/3, compression4, retour5/6. Deux mains au fusil, quatre doigts de support visibles et pouce possiblement occulté normalement. Aucun appendice arrière ; un canon sur support articulé. Canon exact et playback non certifiés."
+      }
+    },
+    {
+      "id": "machiko-clan-hit-reaction-rejected-v1",
+      "variantId": "machiko-clan",
+      "status": "rejected",
+      "source": "art-source/v28/known-hunters/sources/machiko-clan-hit-reaction-rejected-v1.png",
+      "sha256": "3d9e46abbb4f8d210b5ef805a0cdca08322b9bd6fcc20bdd49d5a7e4ed40209e",
+      "bytes": 1856198,
+      "width": 1536,
+      "height": 1024,
+      "frames": 6,
+      "hasAlpha": false,
+      "blockingDefects": [
+        "Lames du gantelet droit projetées vers l'arrière, géométrie incohérente avec le poignet.",
+        "Plusieurs traits métalliques donnent un nombre ambigu de lames alors que deux avaient été demandées."
+      ],
+      "excludedFromRegistration": true,
+      "excludedFromUsablePoseCount": true,
+      "replacementId": "machiko-clan-hit-reaction",
+      "retentionReason": "Conserver les octets de l'essai initial et la chaîne d'édition OpenAI, sans le présenter comme un clip utilisable."
+    }
+  ]
+}

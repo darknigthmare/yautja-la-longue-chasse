@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-23T05:12:03.361Z",
+  "version": "V45",
+  "url": "http://127.0.0.1:4174",
+  "checks": [
+    {
+      "name": "all-roster-pages",
+      "identities": 195,
+      "suppliedIcons": 177,
+      "historicalPortraitsUntouched": 18,
+      "iconsDecodedAndShaVerified": 177,
+      "maximumMountedTiles": 24,
+      "maximumSuppliedPageBytes": 670394,
+      "sourcePngUsedByGrid": 0,
+      "campaignUnchanged": true
+    },
+    {
+      "name": "masked-ahab-lab",
+      "atlas": "ahab-masked-pit-v45",
+      "variant": "ahab-avec-casque-0c8ceb1c95",
+      "clip": "idle",
+      "facing": "right",
+      "distinctDrawings": 2
+    },
+    {
+      "name": "masked-ahab-lab",
+      "atlas": "ahab-masked-pit-v45",
+      "variant": "ahab-avec-casque-0c8ceb1c95",
+      "clip": "high-guard",
+      "facing": "right",
+      "distinctDrawings": 2
+    },
+    {
+      "name": "lab-appearance-isolation",
+      "ahabAppearanceCount": 2,
+      "missingLeftClipNotMirrored": true,
+      "unmaskedAhabAtlasCount": 0,
+      "cityImportedAtlasCount": 0,
+      "historicalCityDefaultPreserved": true,
+      "mobileNoHorizontalOverflow": true
+    },
+    {
+      "name": "masked-ahab-live-animation",
+      "variant": "ahab-avec-casque-0c8ceb1c95",
+      "clip": "idle",
+      "facing": "right",
+      "uniqueDrawings": 2,
+      "nativeNotMirrored": true,
+      "realKeyboardControl": false
+    },
+    {
+      "name": "masked-ahab-live-animation",
+      "variant": "ahab-avec-casque-0c8ceb1c95",
+      "clip": "high-guard",
+      "facing": "right",
+      "uniqueDrawings": 2,
+      "nativeNotMirrored": true,
+      "realKeyboardControl": true,
+      "heldFinalDrawing": 1,
+      "maintainedObservationMs": 550,
+      "releasedThenRestartedAtDrawing": 0
+    },
+    {
+      "name": "ahab-masked-left-static",
+      "fighter": "user-ahab",
+      "variant": "ahab-avec-casque-0c8ceb1c95",
+      "slot": 1,
+      "status": "static-bitmap",
+      "exactSourceDrawn": "/game/sprites/v44/user-hunters/0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb.png",
+      "idleAndGuardFallback": true,
+      "borrowedAtlasDraws": 0
+    },
+    {
+      "name": "ahab-unmasked-right-static",
+      "fighter": "user-ahab",
+      "variant": "ahab-sans-casque-91544a7fb2",
+      "slot": 0,
+      "status": "static-bitmap",
+      "exactSourceDrawn": "/game/sprites/v44/user-hunters/91544a7fb294bd2585977a09cb99d2ce7d9cf7b4da5d2cb0fe287240ea7d1a69.png",
+      "idleAndGuardFallback": true,
+      "borrowedAtlasDraws": 0
+    }
+  ],
+  "errors": [],
+  "failures": [],
+  "limitations": [
+    "Browser and keyboard validation only; no physical controller certification.",
+    "Ahab masked: idle and high guard, right-facing only. Other appearances and uncovered directions remain static source art.",
+    "The reduced roster thumbnails do not change full-resolution combat sources."
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "domain": "Homeworld",
+  "status": "PASS_CIBLE",
+  "buildId": "wVuSG_xIKNn3geLlIq7Cb",
+  "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+  "driver": "scripts/qa-homeworld-public-spaces-v112.mjs",
+  "command": "node scripts/qa-homeworld-public-spaces-v112.mjs",
+  "sourceFreeze": {
+    "path": "docs/v112-runtime-freeze.json",
+    "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e",
+    "bytes": 306338
+  },
+  "report": {
+    "path": "docs/v112-homeworld-validation.json",
+    "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124",
+    "bytes": 744079
+  },
+  "browserChecksPassed": 249,
+  "capturesInspected": 39,
+  "portableFiles": [
+    {
+      "path": "docs/qa/v112-homeworld/browser-result.json.gz",
+      "sha256": "79734d5de6b7ab42ef28c15b7cef048e3df8f3ac383dbc2ed1bc98fe3eb9d250",
+      "bytes": 192166,
+      "decodedSha256": "b24790d84fb0cd0eb9c9699f2d819911b6c7902aa822bc091db1452c9f3d1080",
+      "decodedBytes": 882416
+    },
+    {
+      "path": "docs/qa/v112-homeworld/foundation-trophy-mausoleum-supported-facade.png",
+      "sha256": "38ee458f4e4d6f9ddda52fd5b92447eff06e82a228d893674dd6d0db18b886ec",
+      "bytes": 1838035
+    },
+    {
+      "path": "docs/qa/v112-homeworld/foundation-residence-forges-1-supported-facade.png",
+      "sha256": "d5bf0770266c648797dacbf7cbafd3b2490fedf3eaed6e8acca9644d702617fe",
+      "bytes": 2220448
+    },
+    {
+      "path": "docs/qa/v112-homeworld/foundation-residence-esplanade-2-supported-facade.png",
+      "sha256": "183ffd8ceaf14a86dad8382d2eda76d4e42957201ec3e9e2e7f193c405fdd0a7",
+      "bytes": 2076803
+    },
+    {
+      "path": "docs/qa/v112-homeworld/foundation-residence-clans-1-supported-facade.png",
+      "sha256": "6dd8e2c4925ff6f9f081c47a343e61c479fada7c2a4ba10eda4e1ad9d12fa4e6",
+      "bytes": 2099660
+    },
+    {
+      "path": "docs/qa/v112-homeworld/foundation-residence-arenas-1-supported-facade.png",
+      "sha256": "605b3cccb703c052d0abfcf7aeec0bceefaa0f9e80b869ba626ff9e56ca3cc73",
+      "bytes": 2196802
+    },
+    {
+      "path": "docs/qa/v112-homeworld/foundation-residence-terraces-3-supported-facade.png",
+      "sha256": "54a2fb889486b0483c3749313f92fb2ca78c74ac6eab0979c4bee7f8fd57fd54",
+      "bytes": 2058874
+    },
+    {
+      "path": "docs/qa/v112-homeworld/natural-face-causeway-unmodified-connected-rock-faces.png",
+      "sha256": "0a62d1abb47b4ba1d1fd100e7d891e40aa971179679118032afd8fcc87e83aa4",
+      "bytes": 1616092
+    },
+    {
+      "path": "docs/qa/v112-homeworld/place-traveler-marker-native-contact-and-clearance.png",
+      "sha256": "a7e8abfc150b6eadd8a5b6549029fbcb047e71632c1a25e95514fd4318117acb",
+      "bytes": 1558226
+    },
+    {
+      "path": "docs/qa/v112-homeworld/place-delegation-planter-native-contact-and-clearance.png",
+      "sha256": "5109c4fbcce2eb66f44cf790f30000e453e3a08a3b949e801f31146e457b682f",
+      "bytes": 1699863
+    },
+    {
+      "path": "docs/qa/v112-homeworld/place-register-marker-native-contact-and-clearance.png",
+      "sha256": "67144aa3fcb8a49208d60792c9bffae68046e29c59208418ca13d4da0e68594f",
+      "bytes": 1648400
+    },
+    {
+      "path": "docs/qa/v112-homeworld/place-arrival-marker-native-contact-and-clearance.png",
+      "sha256": "496891f1917cf677dc172e225cf2c79da9c0d6d842d5702fc60341668bfeaeda",
+      "bytes": 1786382
+    },
+    {
+      "path": "docs/qa/v112-homeworld/place-arrival-planter-native-contact-and-clearance.png",
+      "sha256": "1ae672842ad81aca4720995ed45e2e7ccf6a98205dcd99c5776737891a26be59",
+      "bytes": 1772390
+    },
+    {
+      "path": "docs/qa/v112-homeworld/place-maintenance-console-native-contact-and-clearance.png",
+      "sha256": "c50b2152e6e57d5167383694680feee851cd694043eba7c60daaa05625c6bd59",
+      "bytes": 1778520
+    },
+    {
+      "path": "docs/qa/v112-homeworld/life-causeway-return-native-grounded.png",
+      "sha256": "54f6ec850de4ac4a1e794636b1fecbbf373b02cfd9aec165b29392658c8d2186",
+      "bytes": 1783005
+    },
+    {
+      "path": "docs/qa/v112-homeworld/life-causeway-maintenance-native-grounded.png",
+      "sha256": "12dea64d15c9bd542cd1bc97897cf88c794eab9f9747e9e7b0490ec179f29189",
+      "bytes": 1559065
+    },
+    {
+      "path": "docs/qa/v112-homeworld/life-causeway-relay-native-grounded.png",
+      "sha256": "5f1aadb833dc7ede507e64faec46dfd82c4cb8531a227f793fa64a4feb855a93",
+      "bytes": 1596197
+    },
+    {
+      "path": "docs/qa/v112-homeworld/life-quay-approach-native-grounded.png",
+      "sha256": "cb964824aff05125b9b1d81c885e312d015904c166513c41c146b14e0c7dc6c9",
+      "bytes": 1891927
+    },
+    {
+      "path": "docs/qa/v112-homeworld/life-rampart-watch-native-grounded.png",
+      "sha256": "d9652dadda398197d60105a647a7bc3790108fee4efa6c931be7c899d1c335f6",
+      "bytes": 1633173
+    },
+    {
+      "path": "docs/qa/v112-homeworld/life-marsh-watch-native-grounded.png",
+      "sha256": "bd452d17f50e3e6f31a6d5036b30dd1759e0f39c31d6859bd5adaa2d9dd4446b",
+      "bytes": 1838367
+    },
+    {
+      "path": "docs/qa/v112-homeworld/life-reserve-viaduct-native-grounded.png",
+      "sha256": "b11210197d86bbd0ac58b8be031a80a60cd548a039351887599697e06ff6ad96",
+      "bytes": 1924772
+    },
+    {
+      "path": "docs/qa/v112-homeworld/mobility-officer-desktop-actual-service-dialog.png",
+      "sha256": "d890549798269da8c17bbf0cf2d96a0126778c1c1e1e120edef17636b83702f3",
+      "bytes": 396653
+    },
+    {
+      "path": "docs/qa/v112-homeworld/mobility-mausoleum-desktop-actual-service-dialog.png",
+      "sha256": "119404986c9ab4ffab186a20a58bbf7004422245278069aa0743455578cb3939",
+      "bytes": 168894
+    },
+    {
+      "path": "docs/qa/v112-homeworld/mobility-archive-arrival-actual-archive-post.png",
+      "sha256": "830fc001ae73fbd633d4017b9e52734c5cd9f63dc68f71b245b2e06327bb4967",
+      "bytes": 416560
+    },
+    {
+      "path": "docs/qa/v112-homeworld/mobility-officer-mobile-actual-service-dialog.png",
+      "sha256": "784e3267a0307da6ffba889e9495f32312a8ea60b28932f7d77c719a623c723f",
+      "bytes": 189085
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-checkpoint-explicit-migration-preview.png",
+      "sha256": "8517d332492d42bbcbfcc1cef7ba17f6c99b7a8215a6e728cb44c707eac3ae8a",
+      "bytes": 1342561
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-checkpoint-accepted-local-migration.png",
+      "sha256": "36d692754a4e64bf4ab89e3bed95a21b9c5a8f57089ef5ff8809050c5b4176ea",
+      "bytes": 1213001
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-checkpoint-voluntary-study-reprise.png",
+      "sha256": "af15249288ee6701b9fc1f1c1d96fdf98d64c561f4f46cd97957f26017b1aac1",
+      "bytes": 1067909
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-remote-last-explicit-migration-preview.png",
+      "sha256": "cc4dd7c693a10fd9a20d5cb58161d6edcbf1b62d55c09aa529bb55d7a9f06416",
+      "bytes": 1076314
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-remote-last-accepted-local-migration.png",
+      "sha256": "b949e67eee6aa6dd40cd1f5ab90d8a96b6228999ceb857027f94b44de2a1e553",
+      "bytes": 1305899
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-remote-last-voluntary-study-reprise.png",
+      "sha256": "5cb8e89e2151c0f3d35aeb5cad003e5c74d9b59d51b91d677f28408b3c68680a",
+      "bytes": 1053158
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-ground-piece-explicit-migration-preview.png",
+      "sha256": "4d9b4f0276238b48525e15719a4f498ba5286c83c4f58cc68a15b41c3694afe8",
+      "bytes": 1036813
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-ground-piece-accepted-local-migration.png",
+      "sha256": "6c16fd08e1d3b7f50c504bfd544f4499d5d9a6be18c27e83ba350e6da59bf6ec",
+      "bytes": 1223390
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-ground-piece-voluntary-study-reprise.png",
+      "sha256": "71203f3ce05f3f4cc3edc68e7f9f16640b096bda3a1997ed69ba50a68b44135b",
+      "bytes": 1071053
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-checkpoint-mobile-explicit-migration-preview.png",
+      "sha256": "3d30ce8d41c74259491f7d6b5e1068fe27f1cc1685d209b6bd3fec2b19afae9b",
+      "bytes": 170109
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-checkpoint-mobile-accepted-local-migration.png",
+      "sha256": "bfe0aab9b1cb7764b6615afa4d90a557d6b4ac7bfd31fb978d92637f0eaf7884",
+      "bytes": 248285
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-checkpoint-mobile-voluntary-study-reprise.png",
+      "sha256": "b0db64951b3bbe41fa1ac6b30801d1b0919adc9748d472ec59001180e3968468",
+      "bytes": 241165
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-cargo-ground-piece-explicit-migration-preview.png",
+      "sha256": "4b4fe653bf54c08dcccd4a3beb5ccaba23c5ac28df271609105045f52ce84a49",
+      "bytes": 1036924
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-cargo-ground-piece-accepted-local-migration.png",
+      "sha256": "dda3d8899b0d0a083349ebccbf3b93c0de380e05754607b879ee3855dbaf6dd6",
+      "bytes": 1234434
+    },
+    {
+      "path": "docs/qa/v112-homeworld/upgrade-cargo-ground-piece-voluntary-cargo-reprise.png",
+      "sha256": "40db40abd9585d0cec9e26a5999d806f99608dfe25cdab4ea884df858444c2a0",
+      "bytes": 1173741
+    }
+  ]
+}

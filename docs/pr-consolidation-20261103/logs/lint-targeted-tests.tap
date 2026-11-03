@@ -1,0 +1,448 @@
+TAP version 13
+# Subtest: old inventory migrates empty without granting a field tool
+ok 1 - old inventory migrates empty without granting a field tool
+  ---
+  duration_ms: 8.000852
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.version=2
+ok 2 - present invalid or future preservation data is refused by actual save import: x=>x.version=2
+  ---
+  duration_ms: 1.548427
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=NaN
+ok 3 - present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=NaN
+  ---
+  duration_ms: 0.503357
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=101
+ok 4 - present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=101
+  ---
+  duration_ms: 0.440193
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=4.5
+ok 5 - present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=4.5
+  ---
+  duration_ms: 0.959363
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),massKg:Infinity}]
+ok 6 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),massKg:Infinity}]
+  ---
+  duration_ms: 0.573221
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"invented"}]
+ok 7 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"invented"}]
+  ---
+  duration_ms: 0.530678
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[item(),item()]
+ok 8 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[item(),item()]
+  ---
+  duration_ms: 0.397029
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.jobs=[{id:"invented"}]
+ok 9 - present invalid or future preservation data is refused by actual save import: x=>x.jobs=[{id:"invented"}]
+  ---
+  duration_ms: 3.754681
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolUseIds=["x","x"]
+ok 10 - present invalid or future preservation data is refused by actual save import: x=>x.toolUseIds=["x","x"]
+  ---
+  duration_ms: 0.591047
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.settledEncounterRuns={"unknown":0}
+ok 11 - present invalid or future preservation data is refused by actual save import: x=>x.settledEncounterRuns={"unknown":0}
+  ---
+  duration_ms: 0.493172
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.archive=[{speciesId:"x",partId:"bone",label:"Bone",count:0,qualityTotal:0}]
+ok 12 - present invalid or future preservation data is refused by actual save import: x=>x.archive=[{speciesId:"x",partId:"bone",label:"Bone",count:0,qualityTotal:0}]
+  ---
+  duration_ms: 0.695011
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"mounted"}]
+ok 13 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"mounted"}]
+  ---
+  duration_ms: 0.502305
+  type: 'test'
+  ...
+# Subtest: capacity is explicit for all armor classes and rejected pickup leaves source inventory untouched
+ok 14 - capacity is explicit for all armor classes and rejected pickup leaves source inventory untouched
+  ---
+  duration_ms: 0.749772
+  type: 'test'
+  ...
+# Subtest: volume can fill a pack before mass, and repeated anatomical part has no second slot
+ok 15 - volume can fill a pack before mass, and repeated anatomical part has no second slot
+  ---
+  duration_ms: 0.231133
+  type: 'test'
+  ...
+# Subtest: load changes movement jump climb effort and noise continuously; body mass adds load
+ok 16 - load changes movement jump climb effort and noise continuously; body mass adds load
+  ---
+  duration_ms: 0.307386
+  type: 'test'
+  ...
+# Subtest: a successful extraction deposits finite specimens and records actual tool wear atomically
+ok 17 - a successful extraction deposits finite specimens and records actual tool wear atomically
+  ---
+  duration_ms: 1.118369
+  type: 'test'
+  ...
+# Subtest: failed and abandoned extraction only records completed work wear, without bringing specimens home
+ok 18 - failed and abandoned extraction only records completed work wear, without bringing specimens home
+  ---
+  duration_ms: 0.145056
+  type: 'test'
+  ...
+# Subtest: same completed encounter cannot charge wear or restore a specimen after repair
+ok 19 - same completed encounter cannot charge wear or restore a specimen after repair
+  ---
+  duration_ms: 0.912013
+  type: 'test'
+  ...
+# Subtest: per-mission watermark compacts usage receipts safely across later encounters
+ok 20 - per-mission watermark compacts usage receipts safely across later encounters
+  ---
+  duration_ms: 0.286355
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"other:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],0]
+ok 21 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"other:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],0]
+  ---
+  duration_ms: 0.553281
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["other:0:flay:prey"],0]
+ok 22 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["other:0:flay:prey"],0]
+  ---
+  duration_ms: 0.504258
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],1]
+ok 23 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],1]
+  ---
+  duration_ms: 0.459742
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey","jungle-vey:0:flay:prey"],0]
+ok 24 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey","jungle-vey:0:flay:prey"],0]
+  ---
+  duration_ms: 0.40456
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: ["invalid",[],0]
+ok 25 - forged, duplicated, malformed or stale mission payload is refused: ["invalid",[],0]
+  ---
+  duration_ms: 0.331602
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[],{},0]
+ok 26 - forged, duplicated, malformed or stale mission payload is refused: [[],{},0]
+  ---
+  duration_ms: 0.285293
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":-1,"volumeUnits":2,"stage":"raw"}],[],0]
+ok 27 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":-1,"volumeUnits":2,"stage":"raw"}],[],0]
+  ---
+  duration_ms: 0.300546
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"},{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],[],0]
+ok 28 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"},{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],[],0]
+  ---
+  duration_ms: 0.307396
+  type: 'test'
+  ...
+# Subtest: tool-free campaign cannot claim wear or completed tool operations
+ok 29 - tool-free campaign cannot claim wear or completed tool operations
+  ---
+  duration_ms: 0.16863
+  type: 'test'
+  ...
+# Subtest: missing encounter proof cannot grant a new specimen; legacy empty results stay compatible
+ok 30 - missing encounter proof cannot grant a new specimen; legacy empty results stay compatible
+  ---
+  duration_ms: 0.15516
+  type: 'test'
+  ...
+# Subtest: start pays once, each work unit survives save roundtrip, completed step cannot repeat
+ok 31 - start pays once, each work unit survives save roundtrip, completed step cannot repeat
+  ---
+  duration_ms: 3.475257
+  type: 'test'
+  ...
+# Subtest: all four conservation stages require paid work, preserve quality, and mount a separate physical specimen
+ok 32 - all four conservation stages require paid work, preserve quality, and mount a separate physical specimen
+  ---
+  duration_ms: 5.37176
+  type: 'test'
+  ...
+# Subtest: archiving raw work is refused and insufficient marks never creates a job
+ok 33 - archiving raw work is refused and insufficient marks never creates a job
+  ---
+  duration_ms: 0.280085
+  type: 'test'
+  ...
+# Subtest: queue has 16 work stations and does not charge a seventeenth item
+ok 34 - queue has 16 work stations and does not charge a seventeenth item
+  ---
+  duration_ms: 1.47566
+  type: 'test'
+  ...
+# Subtest: full workbench refuses delivery as a whole, preserving every item and the terminal operation
+ok 35 - full workbench refuses delivery as a whole, preserving every item and the terminal operation
+  ---
+  duration_ms: 1.878267
+  type: 'test'
+  ...
+# Subtest: wear is deterministic at successful completion and worn tools remain recoverable free of charge
+ok 36 - wear is deterministic at successful completion and worn tools remain recoverable free of charge
+  ---
+  duration_ms: 0.200608
+  type: 'test'
+  ...
+# Subtest: real campaign reducer keeps specimens and tool wear through content unlocks in one result
+ok 37 - real campaign reducer keeps specimens and tool wear through content unlocks in one result
+  ---
+  duration_ms: 2.681749
+  type: 'test'
+  ...
+# Subtest: actual failed/abandoned campaign results retain wear and no raw specimens
+ok 38 - actual failed/abandoned campaign results retain wear and no raw specimens
+  ---
+  duration_ms: 0.991241
+  type: 'test'
+  ...
+# Subtest: a worn owned field tool can be sharpened with zero clan marks without blocking the campaign
+ok 39 - a worn owned field tool can be sharpened with zero clan marks without blocking the campaign
+  ---
+  duration_ms: 1.173777
+  type: 'test'
+  ...
+# Subtest: manual preservation keeps its paid partial work across a much later real save normalization
+ok 40 - manual preservation keeps its paid partial work across a much later real save normalization
+  ---
+  duration_ms: 3.610507
+  type: 'test'
+  ...
+# Subtest: atlas button cancels the request before the parent closes or a frame runs
+ok 41 - atlas button cancels the request before the parent closes or a frame runs
+  ---
+  duration_ms: 1383.666561
+  type: 'test'
+  ...
+# Subtest: atlas Escape cancels the request before the parent closes or a frame runs
+ok 42 - atlas Escape cancels the request before the parent closes or a frame runs
+  ---
+  duration_ms: 1194.930316
+  type: 'test'
+  ...
+# Subtest: atlas gamepad cancels the request before the parent closes or a frame runs
+ok 43 - atlas gamepad cancels the request before the parent closes or a frame runs
+  ---
+  duration_ms: 1317.393733
+  type: 'test'
+  ...
+# Subtest: an external atlas close rejects a response before the cancellation UI frame
+ok 44 - an external atlas close rejects a response before the cancellation UI frame
+  ---
+  duration_ms: 1314.51409
+  type: 'test'
+  ...
+# Subtest: reopening before the cancellation frame cannot revive the old request or leave planning stuck
+ok 45 - reopening before the cancellation frame cannot revive the old request or leave planning stuck
+  ---
+  duration_ms: 1209.208466
+  type: 'test'
+  ...
+# Subtest: cancelling a replacement keeps the previously confirmed route
+ok 46 - cancelling a replacement keeps the previously confirmed route
+  ---
+  duration_ms: 1167.025959
+  type: 'test'
+  ...
+# Subtest: suspension invalidates a pending replacement before RAF and preserves the confirmed route after resuming
+ok 47 - suspension invalidates a pending replacement before RAF and preserves the confirmed route after resuming
+  ---
+  duration_ms: 1284.710179
+  type: 'test'
+  ...
+# Subtest: an old cancellation frame cannot stop or clear a newer request after reopening
+ok 48 - an old cancellation frame cannot stop or clear a newer request after reopening
+  ---
+  duration_ms: 1220.122021
+  type: 'test'
+  ...
+# Subtest: voluntary recalculation while the atlas is closed still installs its current result
+ok 49 - voluntary recalculation while the atlas is closed still installs its current result
+  ---
+  duration_ms: 1257.032593
+  type: 'test'
+  ...
+# Subtest: late worker errors after cancellation cannot replace a new request notice or prevent retry
+ok 50 - late worker errors after cancellation cannot replace a new request notice or prevent retry
+  ---
+  duration_ms: 1330.909673
+  type: 'test'
+  ...
+# Subtest: old and future profiles receive safe defaults without input latches or grants
+ok 51 - old and future profiles receive safe defaults without input latches or grants
+  ---
+  duration_ms: 9.793884
+  type: 'test'
+  ...
+# Subtest: accessibility settings survive ordinary save export/import
+ok 52 - accessibility settings survive ordinary save export/import
+  ---
+  duration_ms: 2.540049
+  type: 'test'
+  ...
+# Subtest: malformed flags and duplicate/out-of-range gamepad buttons normalize safely
+ok 53 - malformed flags and duplicate/out-of-range gamepad buttons normalize safely
+  ---
+  duration_ms: 0.345733
+  type: 'test'
+  ...
+# Subtest: every controller rebind is a permutation retaining all twelve actions
+ok 54 - every controller rebind is a permutation retaining all twelve actions
+  ---
+  duration_ms: 2.186245
+  type: 'test'
+  ...
+# Subtest: hold latches use rising edges, release cleanly and reset while a physical button remains held
+ok 55 - hold latches use rising edges, release cleanly and reset while a physical button remains held
+  ---
+  duration_ms: 0.23603
+  type: 'test'
+  ...
+# Subtest: standard timing is unchanged, generous timing accepts later, unlimited timing still requires correct glyph
+ok 56 - standard timing is unchanged, generous timing accepts later, unlimited timing still requires correct glyph
+  ---
+  duration_ms: 0.52519
+  type: 'test'
+  ...
+# Subtest: press confirmation is one explicit event, never an automatic stream
+ok 57 - press confirmation is one explicit event, never an automatic stream
+  ---
+  duration_ms: 0.395978
+  type: 'test'
+  ...
+# Subtest: hold confirmation needs sustained input and never carries into next glyph
+ok 58 - hold confirmation needs sustained input and never carries into next glyph
+  ---
+  duration_ms: 0.378512
+  type: 'test'
+  ...
+# Subtest: toggle confirmation can disarm and requires a fresh arm on every glyph
+ok 59 - toggle confirmation can disarm and requires a fresh arm on every glyph
+  ---
+  duration_ms: 0.199336
+  type: 'test'
+  ...
+# Subtest: ready phase never advances a confirmation, even when armed
+ok 60 - ready phase never advances a confirmation, even when armed
+  ---
+  duration_ms: 0.319945
+  type: 'test'
+  ...
+# Subtest: production controller polling uses remapped actions and held jump/aim
+ok 61 - production controller polling uses remapped actions and held jump/aim
+  ---
+  duration_ms: 0.851714
+  type: 'test'
+  ...
+# Subtest: real fixed-step input keeps vertical axes physical while grip and aim can latch
+ok 62 - real fixed-step input keeps vertical axes physical while grip and aim can latch
+  ---
+  duration_ms: 70.591193
+  type: 'test'
+  ...
+# Subtest: pause and focus loss disarm production hold toggles and pending confirmations
+ok 63 - pause and focus loss disarm production hold toggles and pending confirmations
+  ---
+  duration_ms: 7.672877
+  type: 'test'
+  ...
+# Subtest: production snapshot uses the selected timing scale and unlimited meter stays static
+ok 64 - production snapshot uses the selected timing scale and unlimited meter stays static
+  ---
+  duration_ms: 4.707216
+  type: 'test'
+  ...
+# Subtest: real cue meter distinguishes finite progress from an explicitly unlimited static band
+ok 65 - real cue meter distinguishes finite progress from an explicitly unlimited static band
+  ---
+  duration_ms: 8.813248
+  type: 'test'
+  ...
+# Subtest: real settings callback preserves freshly confirmed inventory and successive preference patches before React rerenders
+ok 66 - real settings callback preserves freshly confirmed inventory and successive preference patches before React rerenders
+  ---
+  duration_ms: 168.523465
+  type: 'test'
+  ...
+# Subtest: flaying duration preview and real menu match the timed operation for sharp, worn and blunt tools
+ok 67 - flaying duration preview and real menu match the timed operation for sharp, worn and blunt tools
+  ---
+  duration_ms: 10.696673
+  type: 'test'
+  ...
+# Subtest: the native score formula has no direct accessibility modifier and still counts elapsed hunt time
+ok 68 - the native score formula has no direct accessibility modifier and still counts elapsed hunt time
+  ---
+  duration_ms: 31.891155
+  type: 'test'
+  ...
+# Subtest: native down+remapped interact opens a real corpse without dropping a carried body or starting its trophy
+ok 69 - native down+remapped interact opens a real corpse without dropping a carried body or starting its trophy
+  ---
+  duration_ms: 131.291249
+  type: 'test'
+  ...
+# Subtest: corpse pad navigation is edge-triggered while the real rite, clock and enemy keep advancing
+ok 70 - corpse pad navigation is edge-triggered while the real rite, clock and enemy keep advancing
+  ---
+  duration_ms: 6.751418
+  type: 'test'
+  ...
+# Subtest: corpse menu close cancels safely, requires controller release and preserves ordinary trophy interaction
+ok 71 - corpse menu close cancels safely, requires controller release and preserves ordinary trophy interaction
+  ---
+  duration_ms: 4.739553
+  type: 'test'
+  ...
+# Subtest: corpse pad suppression keeps simultaneous keyboard and touch actions, including overlapping fresh edges
+ok 72 - corpse pad suppression keeps simultaneous keyboard and touch actions, including overlapping fresh edges
+  ---
+  duration_ms: 16.670549
+  type: 'test'
+  ...
+# Subtest: opening requires a real nearby corpse and focus loss still pauses before any corpse UI action
+ok 73 - opening requires a real nearby corpse and focus loss still pauses before any corpse UI action
+  ---
+  duration_ms: 4.443844
+  type: 'test'
+  ...
+1..73
+# tests 73
+# suites 0
+# pass 73
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15140.90589

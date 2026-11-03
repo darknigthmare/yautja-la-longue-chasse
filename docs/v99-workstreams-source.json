@@ -1,0 +1,545 @@
+{
+  "schemaVersion": 1,
+  "release": "V99",
+  "asOf": "2026-10-20",
+  "baseline": {
+    "path": "docs/THE_PIT_V63_SUIVI.xlsx",
+    "sha256": "192b168456091239e65939b99c4630de791cfaca4f33f61a1c6a8a032fc9c7af"
+  },
+  "historicalWorkbooks": [
+    "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+    "docs/THE_PIT_STAGES_V60_SUIVI.xlsx",
+    "docs/THE_PIT_STAGES_V61_SUIVI.xlsx",
+    "docs/THE_PIT_V62_SUIVI.xlsx",
+    "docs/THE_PIT_V63_SUIVI.xlsx"
+  ],
+  "absentOriginals": [
+    {
+      "name": "Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+      "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+      "extractions": [
+        "app/game/clanWarBibleV6Source.json",
+        "public/game/dialogues/v85/bible-dialogues.json",
+        "public/game/dialogues/v85/bible-ships.json"
+      ],
+      "scope": "Original privé absent ; extractions de guerre, dialogues et navire présentes. Les 139 feuilles du classeur ne sont pas 139 fonctions livrées."
+    },
+    {
+      "name": "Yautja_V3_Guerres_de_Clans_Trois_Modes.xlsx",
+      "sha256": "3ef3712c9ffa865f918133bee7667155c1bb320f060b4a19cc58ff650ffd0dfa",
+      "extractions": [
+        "app/game/clanWarV85Source.json"
+      ],
+      "scope": "Original privé absent ; extraction de 39 feuilles / 679 fiches conservée. Aucun solde V6 ni identifiant W3 n'est confondu avec le modèle V3."
+    },
+    {
+      "name": "Classeur source THE PIT V54",
+      "sha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+      "extractions": [
+        "docs/v63-workbook-roster-audit.json",
+        "docs/v63-stage-open-work.json"
+      ],
+      "scope": "Original privé absent ; réconciliations historiques V63 disponibles, non recertifiées comme livraison intégrale V99."
+    }
+  ],
+  "openStructures": {
+    "W3-S09": "Raccorder un quai à une rive praticable et à un transport réellement identifié ; pas de téléportation de cargaison.",
+    "W3-S10": "Identifier et déplacer les montures existantes, leurs gardiens et leur capacité ; ne pas créer une monture depuis un compteur.",
+    "W3-S13": "Raccorder l'alimentation et le coût réel de confinement ; aucun effet gratuit déduit de la description.",
+    "W3-S14": "Raccorder un duel accepté par ses participants et son résultat réel ; pas de victoire automatique.",
+    "W3-S15": "Raccorder des sons enregistrés et situés, leur portée et leur occultation ; une direction de voix écrite n'est pas un son.",
+    "W3-S18": "Raccorder un navire acquis et une route orbitale effective ; l'inspection documentaire ne donne ni navire ni voyage."
+  },
+  "workstreams": [
+    {
+      "id": "CLANS-V99-GARRISONS",
+      "domain": "Guerre de clans",
+      "title": "Affecter et libérer une garnison existante",
+      "source": "V3 : Règles de conquête, CON-R08 ligne 13 ; CON-R12 ligne 17 ; CON-R15 ligne 20",
+      "implementation": [
+        "app/game/systems/clanWarV85.ts",
+        "app/game/ClanWarGarrisonV99.tsx"
+      ],
+      "status": "VALIDE_CIBLE",
+      "runtime": "Affectation locale de personnes existantes ; refus réservé / blessé / mort / formation ; confirmation du dernier garde.",
+      "tests": "PASS 101/101 ciblés ; dont 11 V99 + 4 revue",
+      "browser": "PASS_PRODUCTION 26/26 ; pilote renforcé",
+      "proof": [
+        "tests/clan-war-garrison-v99.test.mjs",
+        "docs/clan-war-garrison-v99.md",
+        "tests/clan-war-garrison-review-v99.test.mjs",
+        "outputs/qa-three-modes-v99/production/result.json"
+      ],
+      "remaining": "Modèle, SSR, régressions et Chromium production (26/26 avec pilote renforcé) validés. Portée limitée aux garnisons existantes ; les règles V3 globales et la campagne restent ouvertes. Publication suivie séparément.",
+      "owner": "clans_v99"
+    },
+    {
+      "id": "PRESERVE-V99-DEPOTS",
+      "domain": "Preserve Hunt",
+      "title": "Neutraliser un lot dans un dépôt physique",
+      "source": "Prolongement original V66/V98 ; demande Répartition des joueurs Predator 6aa9eb58-e760-83eb-8098-e735f1d01161",
+      "implementation": [
+        "app/game/systems/gameReserveV66.ts",
+        "app/game/GameReserveTacticalV98.tsx"
+      ],
+      "status": "VALIDE_CIBLE",
+      "runtime": "Interaction sur place pendant 2 s ; le lot identifié du dépôt est concerné.",
+      "tests": "PASS 40/40 ciblés ; 26 régressions + 9 V99 + 5 revue",
+      "browser": "PASS_PRODUCTION 26/26 ; pilote renforcé",
+      "proof": [
+        "tests/game-reserve-supply-denial-v99.test.mjs",
+        "docs/v99-preserve-hunt-supply-denial.md",
+        "tests/game-reserve-logistics-review-v99.test.mjs",
+        "outputs/qa-three-modes-v99/production/result.json"
+      ],
+      "remaining": "Modèle, interface, persistance et Chromium production (26/26 avec pilote renforcé) validés. Le terrain reste 3/80 secteurs et 8/100 combattants ; aucun nouvel asset, animation ou lore canonique. Publication suivie séparément.",
+      "owner": "preserve_v99"
+    },
+    {
+      "id": "PRESERVE-V99-RECUPERATION",
+      "domain": "Preserve Hunt",
+      "title": "Récupérer à pied un porteur abattu",
+      "source": "Prolongement original de docs/v66-game-reserve-delivery.md et docs/v98-preserve-hunt-interceptions.md",
+      "implementation": [
+        "app/game/systems/gameReserveV66.ts",
+        "app/game/GameReserveTacticalV98.tsx"
+      ],
+      "status": "VALIDE_CIBLE",
+      "runtime": "Un survivant proche se déplace réellement vers les composants du porteur abattu.",
+      "tests": "PASS 40/40 ciblés ; 26 régressions + 9 V99 + 5 revue",
+      "browser": "PASS_PRODUCTION 26/26 ; pilote renforcé",
+      "proof": [
+        "tests/game-reserve-supply-denial-v99.test.mjs",
+        "docs/v99-preserve-hunt-supply-denial.md",
+        "tests/game-reserve-logistics-review-v99.test.mjs",
+        "outputs/qa-three-modes-v99/production/result.json"
+      ],
+      "remaining": "Modèle, interface, persistance et Chromium production (26/26 avec pilote renforcé) validés. Le terrain reste 3/80 secteurs et 8/100 combattants ; aucun nouvel asset, animation ou lore canonique. Publication suivie séparément.",
+      "owner": "preserve_v99"
+    },
+    {
+      "id": "HW-NAV-PERF",
+      "domain": "Homeworld",
+      "title": "Réduire le calcul froid et les points du guidage",
+      "source": "Prolongement de docs/homeworld-wayfinding-v98.md ; navigation du projet, pas nouvelle source canonique",
+      "implementation": [
+        "app/game/systems/homeworldNavigationV99.ts",
+        "app/game/systems/homeworldWayfindingV98.ts"
+      ],
+      "status": "VALIDE_CIBLE",
+      "runtime": "Hiérarchie A* et repli V77 implémentés ; froid 11 297 → 3 190 ms (×3,54), premier palier 183 → 18 points ; longueur totale +7,6 %.",
+      "tests": "PASS 18/18 ; 4 V99 + 7 oracle + 4 SSR + 3 revue",
+      "browser": "PASS_PRODUCTION 23/23 ; fixture préparée et contrôles natifs",
+      "proof": [
+        "tests/homeworld-navigation-v99.test.mjs",
+        "docs/homeworld-navigation-v99.md",
+        "tests/homeworld-navigation-review-v99.test.mjs",
+        "outputs/qa-three-modes-v99/production/result.json"
+      ],
+      "remaining": "18 tests modèle/SSR et 23 contrôles Chromium Homeworld validés : marche clavier réelle, Escalier du Conseil vers +1, pause/reprise, sauvegarde et Continuer. Froid 2 988 ms, chaud 210 ms, même worker, 18 points. Portée : fixture Homeworld préparée et horloge navigateur contrôlée, pas une campagne jouée ; publication suivie séparément.",
+      "owner": "homeworld_v99"
+    },
+    {
+      "id": "EXCEL-V99-TRACE",
+      "domain": "Classeurs",
+      "title": "Relier sources, code, preuve et reste à faire",
+      "source": "5 classeurs locaux conservés ; suivi V63 comme base ; extraits source et exports runtime actuels",
+      "implementation": [
+        "scripts/build-excel-followup-v99.mjs",
+        "scripts/build-excel-followup-v99.py",
+        "docs/v99-workstreams-source.json"
+      ],
+      "status": "VALIDE_CIBLE",
+      "runtime": "Nouveau classeur V99 et registre JSON ; générateur reproductible sans nouvelle dépendance.",
+      "tests": "PASS 6/6 ; revue OOXML indépendante PASS",
+      "browser": "SANS_OBJET",
+      "proof": [
+        "tests/excel-followup-v99.test.mjs",
+        "docs/v99-excel-followup-qa.json"
+      ],
+      "remaining": "15 onglets dont 5 feuilles V63 conservées, 12 compteurs recomptés, textes source littéraux et génération déterministe vérifiés. Lecture indépendante openpyxl ; aucune application Excel/LibreOffice native disponible.",
+      "owner": "excel_v99"
+    },
+    {
+      "id": "CLANS-PLANETES-30",
+      "domain": "Guerre de clans",
+      "title": "30 théâtres et surfaces non jouables",
+      "source": "Créations originales du projet V96/V97 ; Korthas reprend ses noms et règles V3",
+      "implementation": [
+        "app/game/systems/clanWarPlanetsV96.ts",
+        "app/game/systems/clanWarCoastlinesV97.ts"
+      ],
+      "status": "LIVRE_PARTIEL",
+      "runtime": "30 mondes, dont classiques et exotiques ; contours continentaux, routes et couleurs de contrôle dans l'atlas.",
+      "tests": "HISTORIQUE_V98",
+      "browser": "HISTORIQUE_V98",
+      "proof": [
+        "docs/integration-v98.md",
+        "outputs/qa-three-modes-v98/verification.json"
+      ],
+      "remaining": "Préserver l'accès par routes courtes ; aucun statut de planète canonique 1:1 attribué aux créations originales. Validation V99 séparée.",
+      "owner": "clans_v99"
+    },
+    {
+      "id": "CLANS-COMMANDEMENT-V98",
+      "domain": "Guerre de clans",
+      "title": "Front, ordres et inspection sans fuite adverse",
+      "source": "Adaptation du projet de l'atlas V95–V98",
+      "implementation": [
+        "app/game/systems/clanWarCommandV98.ts",
+        "app/game/ClanWarCommandV98.tsx"
+      ],
+      "status": "LIVRE_PARTIEL",
+      "runtime": "État d'un front connu et aperçu d'un ordre valide ; ressources localisées selon le mode.",
+      "tests": "HISTORIQUE_V98",
+      "browser": "HISTORIQUE_V98",
+      "proof": [
+        "docs/integration-v98.md"
+      ],
+      "remaining": "La preuve V98 reste historique ; ne pas déclarer terminés les trois modes et toutes les règles du classeur.",
+      "owner": "clans_v99"
+    },
+    {
+      "id": "V6-OUVRAGES-18",
+      "domain": "Guerre de clans",
+      "title": "Ouvrages V6 : vérifier chaque ligne source",
+      "source": "V6, Structures de guerre, W3-S01 à W3-S18, lignes 6 à 23",
+      "implementation": [
+        "app/game/systems/clanWarWorksV6.ts",
+        "app/game/systems/clanWarMedicalV92.ts"
+      ],
+      "status": "LIVRE_PARTIEL",
+      "runtime": "12 définitions acceptées par l'export actuel ; standalone. Les six autres restent explicitement ouvertes dans OuvragesV6.",
+      "tests": "HISTORIQUE_V92",
+      "browser": "A_VALIDER",
+      "proof": [
+        "docs/clan-war-medical-v92.md",
+        "docs/clan-war-structures-v89.md"
+      ],
+      "remaining": "S09, S10, S13, S14, S15, S18 : transport, montures, énergie, duel, sons et route orbitale à raccorder. Le suivi V88 à 8/18 reste historique.",
+      "owner": "clans_v99"
+    },
+    {
+      "id": "V6-LOGISTIQUE-CAMPAGNE",
+      "domain": "Guerre de clans",
+      "title": "Raccorder les exercices à la campagne persistante",
+      "source": "docs/yautja-v88-import-and-excel-status.md ; séparation V3/V6 documentée en V85",
+      "implementation": [
+        "app/game/systems/clanWarBibleV6.ts",
+        "app/game/systems/clanWarWorksV6.ts"
+      ],
+      "status": "OUVERT",
+      "runtime": "Les démonstrations identifiées fonctionnent dans leur contexte libre.",
+      "tests": "NON_EXECUTE",
+      "browser": "NON_EXECUTE",
+      "proof": [
+        "docs/release-v85-imports-and-excel.md",
+        "docs/yautja-v88-import-and-excel-status.md"
+      ],
+      "remaining": "Arrivée effective, mandat, ravitaillement et sauvegarde persistante de campagne ; pas de conversion automatique des monnaies et identifiants V3/V6.",
+      "owner": "integration"
+    },
+    {
+      "id": "PRESERVE-EXPANSION-80",
+      "domain": "Preserve Hunt",
+      "title": "Étendre les secteurs et les combattants",
+      "source": "docs/v66-game-reserve-delivery.md et docs/v98-preserve-hunt-interceptions.md",
+      "implementation": [
+        "app/game/systems/gameReserveV66.ts"
+      ],
+      "status": "OUVERT",
+      "runtime": "Premier terrain Vharuun : 3 secteurs / 80 visés, 8 combattants / 100 visés.",
+      "tests": "HISTORIQUE_V98",
+      "browser": "HISTORIQUE_V98",
+      "proof": [
+        "docs/integration-v98.md"
+      ],
+      "remaining": "Créer, intégrer et jouer chaque secteur et combattant supplémentaire ; un plan, une liste ou une image n'est pas un terrain jouable.",
+      "owner": "preserve_v99"
+    },
+    {
+      "id": "HOMEWORLD-GUIDAGE-V98",
+      "domain": "Homeworld",
+      "title": "Parcourir les six étages et reprendre le guidage",
+      "source": "docs/homeworld-wayfinding-v98.md",
+      "implementation": [
+        "app/game/systems/homeworldWayfindingV98.ts"
+      ],
+      "status": "LIVRE_PARTIEL",
+      "runtime": "Parcours V98 joué du port aux escaliers du Conseil, guide annulable, reprise après rechargement.",
+      "tests": "HISTORIQUE_V98",
+      "browser": "HISTORIQUE_V98",
+      "proof": [
+        "docs/integration-v98.md",
+        "docs/homeworld-wayfinding-v98.md"
+      ],
+      "remaining": "Mesurer et rejouer V99 ; ne pas transformer une route calculée en preuve de toutes les interactions du Homeworld.",
+      "owner": "homeworld_v99"
+    },
+    {
+      "id": "V6-DIALOGUES-730",
+      "domain": "Homeworld / dialogues",
+      "title": "Séparer lecture documentaire et scènes incarnées",
+      "source": "V6 : Scènes de dialogue V6, Répliques V6, Choix et actions V6, Variantes V6, Réactions et gestes V6",
+      "implementation": [
+        "public/game/dialogues/v85/bible-dialogues.json",
+        "app/game/systems/bibleSourceV85.ts"
+      ],
+      "status": "LIVRE_PARTIEL",
+      "runtime": "Corpus documentaire consultable ; D6-W-CULT-25 partiellement incarnée en V86.",
+      "tests": "HISTORIQUE_V86",
+      "browser": "A_VALIDER",
+      "proof": [
+        "docs/release-v85-imports-and-excel.md",
+        "docs/release-v86-excel-and-garrisons.md"
+      ],
+      "remaining": "730 scènes écrites ne sont pas 730 missions jouées. Raccorder interlocuteurs, conditions, branches et gestes scène par scène.",
+      "owner": "homeworld_v99"
+    },
+    {
+      "id": "V6-VOIX-210",
+      "domain": "Audio",
+      "title": "Directions de voix et homonymes",
+      "source": "V6 : Voix V6, lignes identifiées par D6-V-* ; résolution exacte V88",
+      "implementation": [
+        "app/game/systems/bibleVoiceProfilesV88.ts",
+        "public/game/dialogues/v85/bible-dialogues.json"
+      ],
+      "status": "OUVERT",
+      "runtime": "Profils textuels conservés, résolution des homonymes sans inventer de correspondance.",
+      "tests": "HISTORIQUE_V88",
+      "browser": "SANS_OBJET",
+      "proof": [
+        "docs/yautja-v88-import-and-excel-status.md"
+      ],
+      "remaining": "Aucun clip enregistré livré par ce lot ; produire et raccorder l'audio, l'identité et les conditions de lecture avant de le déclarer audible.",
+      "owner": "audio"
+    },
+    {
+      "id": "V6-NAVIRE-VOYAGE",
+      "domain": "Navire",
+      "title": "Passer de l'inspection au voyage réel",
+      "source": "V6 navire : R2-M021 acquisition, R2-M022 préparation, R2-M023 voyage ; corpus de 19 feuilles",
+      "implementation": [
+        "public/game/dialogues/v85/bible-ships.json"
+      ],
+      "status": "OUVERT",
+      "runtime": "Huit postes d'inspection documentaire décrits en V88 ; aucun navire acquis par leur consultation.",
+      "tests": "HISTORIQUE_V88",
+      "browser": "A_VALIDER",
+      "proof": [
+        "docs/yautja-v88-import-and-excel-status.md"
+      ],
+      "remaining": "Jouer acquisition, préparation, manifestes et route orbitale avant toute arrivée ; l'interface ne constitue pas un voyage.",
+      "owner": "integration"
+    },
+    {
+      "id": "V84-VARIANTES-640",
+      "domain": "Graphismes",
+      "title": "Raccorder les variantes de PNJ et leurs images",
+      "source": "Suivi des imports V84/V85/V88",
+      "implementation": [],
+      "status": "OUVERT",
+      "runtime": "640 variantes V84 documentées comme métadonnées ; pas de PNG fourni par ce registre.",
+      "tests": "NON_EXECUTE",
+      "browser": "NON_EXECUTE",
+      "proof": [
+        "docs/yautja-v88-import-and-excel-status.md"
+      ],
+      "remaining": "Produire et vérifier les images natives puis leurs animations et intégrations ; une référence artistique reste une référence.",
+      "owner": "art"
+    },
+    {
+      "id": "V86-GARNISONS-72-PNG",
+      "domain": "Graphismes",
+      "title": "Distinguer corps statiques et kits animés",
+      "source": "docs/release-v86-excel-and-garrisons.md : 18 groupes / 72 PNG natifs",
+      "implementation": [],
+      "status": "LIVRE_PARTIEL",
+      "runtime": "Corps statiques documentés ; ce nombre ne valide ni toutes les animations ni une fidélité canonique 1:1.",
+      "tests": "HISTORIQUE_V86",
+      "browser": "A_VALIDER",
+      "proof": [
+        "docs/release-v86-excel-and-garrisons.md"
+      ],
+      "remaining": "Auditer et intégrer les gestes requis dans leur contexte ; aucune clôture générale des kits à partir d'un idle.",
+      "owner": "art"
+    },
+    {
+      "id": "PIT-V54-6-IDENTITES",
+      "domain": "The Pit",
+      "title": "Conserver les six identités ou incarnations ouvertes",
+      "source": "Classeur V54 : 02_PERSONNAGES lignes 200 à 205 ; réconciliation V63",
+      "implementation": [
+        "docs/v63-workbook-roster-audit.json"
+      ],
+      "status": "OUVERT",
+      "runtime": "Six dossiers historiques ouverts, détaillés dans PitOuvertV99 ; le nombre de combattants runtime est compté séparément.",
+      "tests": "HISTORIQUE_V63",
+      "browser": "NON_EXECUTE",
+      "proof": [
+        "docs/v63-workbook-roster-audit.md",
+        "docs/v63-workbook-roster-audit.json"
+      ],
+      "remaining": "Identifier et sourcer chaque apparence, produire son kit puis la jouer ; ne pas certifier un kit complet depuis des variantes idle.",
+      "owner": "pit"
+    },
+    {
+      "id": "PIT-V54-522-EVENEMENTS",
+      "domain": "The Pit",
+      "title": "Rouvrir les événements avec leurs cellules exactes",
+      "source": "174 dossiers / 522 descriptions de 10_VIE_DES_STAGES, réconciliation historique V63",
+      "implementation": [
+        "docs/v63-stage-open-work.json"
+      ],
+      "status": "OUVERT",
+      "runtime": "Les 522 descriptions et leur statut V63 sont reprises sans certifier tous les décors actuels.",
+      "tests": "HISTORIQUE_V63",
+      "browser": "NON_EXECUTE",
+      "proof": [
+        "docs/v63-stage-open-work.json",
+        "docs/v63-followup-workbook-qa.json"
+      ],
+      "remaining": "Recertifier sources, déclencheurs et conditions ; l'absence d'un registre V60–V63 ne prouve pas l'absence d'une animation legacy.",
+      "owner": "pit"
+    },
+    {
+      "id": "PIT-ST103-GOLGOTHA",
+      "domain": "The Pit",
+      "title": "Trio distinct de Golgotha encore ouvert",
+      "source": "10_VIE_DES_STAGES!E311:E313 ; ST103, arena-187-golgotha-uscm-airlock",
+      "implementation": [
+        "docs/v63-stage-open-work.json"
+      ],
+      "status": "OUVERT",
+      "runtime": "Adaptations V63 d'un autre dossier conservées ; ce trio distinct n'est pas livré par leur présence.",
+      "tests": "HISTORIQUE_V63",
+      "browser": "NON_EXECUTE",
+      "proof": [
+        "docs/v63-stage-open-work.json"
+      ],
+      "remaining": "Vérifier la présence dans la scène primaire pour E313 avant toute silhouette et traiter séparément les trois événements.",
+      "owner": "pit"
+    },
+    {
+      "id": "PIT-ST020-EVACUATION",
+      "domain": "The Pit",
+      "title": "Évacuation hors du toit et chronologie de Wolf",
+      "source": "10_VIE_DES_STAGES!E62 ; ST020, arena-126-avpr-2007-hospital-roof",
+      "implementation": [
+        "docs/v63-stage-open-work.json"
+      ],
+      "status": "OUVERT",
+      "runtime": "Sprite conservé mais inactif sur le toit, où il contredit E505.",
+      "tests": "HISTORIQUE_V63",
+      "browser": "NON_EXECUTE",
+      "proof": [
+        "docs/v63-stage-open-work.json"
+      ],
+      "remaining": "Trouver une continuité narrative ou hors toit vérifiée ; équipement et chronologie de Wolf toujours ouverts.",
+      "owner": "pit"
+    }
+  ],
+  "validations": [
+    {
+      "id": "V98-HISTORIQUE",
+      "scope": "Trois modes avant V99 : 105 tests ciblés, 54 vérifications navigateur ; 17 répétitions Preserve distinctes des cas uniques",
+      "status": "HISTORIQUE",
+      "command": "Voir docs/integration-v98.md",
+      "evidence": [
+        "docs/integration-v98.md",
+        "outputs/qa-three-modes-v98/verification.json"
+      ],
+      "limit": "Preuve historique, pas une nouvelle exécution V99 ni une certification complète des classeurs."
+    },
+    {
+      "id": "V63-CLASSEUR-HISTORIQUE",
+      "scope": "Lecture et compteurs du classeur V63 ; original Excel natif non lancé",
+      "status": "HISTORIQUE",
+      "command": "Voir docs/v63-followup-workbook-qa.json",
+      "evidence": [
+        "docs/v63-followup-workbook-qa.json"
+      ],
+      "limit": "Les valeurs historiques ne deviennent pas automatiquement des faits runtime V99."
+    },
+    {
+      "id": "CLANS-V99-MODELE",
+      "scope": "101/101 tests ciblés ; 11 garnisons V99, 4 revue (480 relèves), 9 commandement V98, 49 planètes, 6 session, 22 durabilité. ESLint ciblé propre.",
+      "status": "PASS_CIBLE",
+      "command": "node --test --test-reporter=spec tests/clan-war-garrison-v99.test.mjs tests/clan-war-garrison-review-v99.test.mjs tests/clan-war-command-v98.test.mjs tests/clan-war-planets-engine-v96.test.mjs tests/clan-war-session-v85.test.mjs tests/clan-war-durability-v94.test.mjs",
+      "evidence": [
+        "docs/clan-war-garrison-v99.md",
+        "tests/clan-war-garrison-v99.test.mjs",
+        "tests/clan-war-garrison-review-v99.test.mjs"
+      ],
+      "limit": "Aucun revenu immédiat, clôture des règles V3, campagne ou merge déduit des tests."
+    },
+    {
+      "id": "PRESERVE-V99-MODELE",
+      "scope": "40/40 tests ciblés : 26 régressions V66/V98, 9 V99, 5 revue ; moteur, rendu et persistance.",
+      "status": "PASS_CIBLE",
+      "command": "node --test tests/game-reserve-v66.test.mjs tests/game-reserve-campaign-slots-v66.test.mjs tests/game-reserve-tactical-v98.test.mjs tests/game-reserve-interception-review-v98.test.mjs tests/game-reserve-supply-denial-v99.test.mjs tests/game-reserve-logistics-review-v99.test.mjs",
+      "evidence": [
+        "docs/v99-preserve-hunt-supply-denial.md",
+        "tests/game-reserve-supply-denial-v99.test.mjs",
+        "tests/game-reserve-logistics-review-v99.test.mjs"
+      ],
+      "limit": "3/80 secteurs et 8/100 combattants ; zéro nouvelle image ou animation produite par ce lot."
+    },
+    {
+      "id": "HOMEWORLD-V99-MODELE",
+      "scope": "18/18 cas ciblés : 4 navigation V99, 7 oracle V98, 4 SSR, 3 revue indépendante. Froid 3,54 fois plus rapide sur la mesure documentée.",
+      "status": "PASS_CIBLE",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-navigation-v99.test.mjs tests/homeworld-wayfinding-adversarial-v98.test.mjs tests/homeworld-wayfinding-ui-v98.test.mjs tests/homeworld-navigation-review-v99.test.mjs",
+      "evidence": [
+        "docs/homeworld-navigation-v99.md",
+        "tests/homeworld-navigation-v99.test.mjs",
+        "tests/homeworld-navigation-review-v99.test.mjs"
+      ],
+      "limit": "Mesure locale modèle, trajet 7,6 % plus long. La preuve navigateur, depuis une fixture déclarée et avec marche réelle, est consignée séparément dans HOMEWORLD-V99-CHROMIUM."
+    },
+    {
+      "id": "CHROMIUM-V99-CLANS-PRESERVE",
+      "scope": "Clans 26/26 et Preserve 26/26 contrôles sur le build production corrigé ; reload avec carnet/runtime réels, booléen secured et prompt mobile vérifiés.",
+      "status": "PASS_CIBLE",
+      "command": "node scripts/qa-three-modes-v99.mjs ; build t-1gCnL18QyMeOAc2vfmd",
+      "evidence": [
+        "scripts/qa-three-modes-v99.mjs",
+        "outputs/qa-three-modes-v99/production/result.json"
+      ],
+      "limit": "Les 27 contrôles précédents étaient préfinaux et ne sont pas additionnés. Homeworld est vérifié séparément dans HOMEWORLD-V99-CHROMIUM ; publication et fusion sont suivies dans integration-v99.md."
+    },
+    {
+      "id": "EXCEL-V99-CIBLE",
+      "scope": "6/6 tests Node ; génération de véritables archives, 18 parties V63 byte-identiques, 5 feuilles et styles historiques conservés, relations OOXML et 12 caches de formules vérifiés.",
+      "status": "PASS_CIBLE",
+      "command": "node --test --test-reporter=spec tests/excel-followup-v99.test.mjs ; node scripts/build-excel-followup-v99.mjs --check",
+      "evidence": [
+        "tests/excel-followup-v99.test.mjs",
+        "docs/v99-excel-followup-qa.json"
+      ],
+      "limit": "ZIP/XML standard et lecture indépendante ; application Excel native et moteur de calcul Excel non exécutés."
+    },
+    {
+      "id": "HOMEWORLD-V99-CHROMIUM",
+      "scope": "23/23 contrôles Homeworld dans la recette production de 76 contrôles (26 Clans, 26 Preserve, 23 Homeworld, 1 absence d’erreurs). Marche clavier, Escalier du Conseil vers +1, recalcul, pause/reprise et sauvegarde/Continuer réellement exercés ; 21 captures de la recette inspectées.",
+      "status": "PASS_CIBLE",
+      "command": "Voir scripts/qa-three-modes-v99.mjs ; build production t-1gCnL18QyMeOAc2vfmd",
+      "evidence": [
+        "outputs/qa-three-modes-v99/production/result.json",
+        "outputs/qa-three-modes-v99/production/inspection.json",
+        "docs/homeworld-navigation-v99.md"
+      ],
+      "evidenceSha256": "f35205c33c4f055c65310ab8a6061a2a5185a6824d5d1bf05c1785e58f3a8bfd",
+      "completedAt": "2026-10-20T08:46:56.529Z",
+      "limit": "Fixture de jeunesse préparée via les modèles auteur, non progression narrative jouée dans ce navigateur ; horloge contrôlée pendant marche et connecteur. Froid 2 988 ms / chaud 210 ms, même worker, premier palier 18 points ; 22 empreintes runtime identiques avant/après. Aucun déploiement public ou campagne complète certifié."
+    }
+  ],
+  "limits": [
+    "Les cinq feuilles du suivi V63 et tous les classeurs antérieurs sont conservés ; ce nouveau classeur n'est pas une modification des originaux privés.",
+    "Présence d'un fichier, code livré, test réussi, image, animation et parcours joué sont des états distincts. Aucun test n'est déclaré passé par la seule existence de son fichier.",
+    "Les comptes runtime sont extraits du code actuel ; les états de validation sont des déclarations explicites assorties de preuves, jamais déduites d'un nom de fichier.",
+    "Le nombre de planètes classiques exprime une direction de biome du projet ; il ne certifie pas une planète ou une continuité canonique 1:1.",
+    "Les compteurs Excel ont une valeur mise en cache et sont recalculables à l'ouverture ; aucune application Excel native n'est déclarée testée dans cet environnement."
+  ]
+}

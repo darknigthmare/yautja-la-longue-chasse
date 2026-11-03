@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "release": "V106",
+  "scope": "Existing native public inputs connected to five Feral/Scar actions and the local Homeworld archive activity, plus two historical V11 exclusion references. No newly authored pixels or additional playable variants are claimed. The runtime freeze also preserves the full V105 public input set.",
+  "collector": "scripts/collect-v106-runtime-inputs.mjs",
+  "assets": [
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp",
+      "sha256": "82805f7c868f82cc619ca35217add18062911b541dd0882f9cd25ac5a56f751d",
+      "bytes": 80094,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp",
+      "sha256": "c855a9042e9a3795fb9906104a5e6182cafb31b27795f6f8231f25bcb50a64f9",
+      "bytes": 62568,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+      "sha256": "412becddc6cd2b4bf78f61f848fe847afff6ad682850eb430672a498e54ec544",
+      "bytes": 2970,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+      "sha256": "ea30cb687a1e6eb28762dec97495e39951dc655179d8a9270c1b95cffa8ad1b9",
+      "bytes": 2462,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+      "sha256": "27545f03f48de88c5f64634f7372e36fd503c0077f6ad39413c4035a0d8b2435",
+      "bytes": 2906,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+      "sha256": "fda2af229ced15fe2dd1e00392c0c8a04d149e81ac6a80132e72b8873afb0c46",
+      "bytes": 3834,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+      "sha256": "c8e43e27fb057de7048346b3f3b176029860b32a3c8ce2fec365fe6ea77fe4e4",
+      "bytes": 6562,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+      "sha256": "ebdb67e2130b46c3892552d3b77103c2e9c387cbf6616313b1e10c70fbc148de",
+      "bytes": 5770,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+      "sha256": "0d34e7d21f68366fbc0159395e66798452cea56a731b591b62c4f001a79af681",
+      "bytes": 9576,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+      "sha256": "ac103c84c6adb451e4779ff4c28ca6965cd4484cc96213d90a68fe0a34d75064",
+      "bytes": 5694,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+      "sha256": "15d09331c50d9dc59828c69dc44de5a6cebff322a6107911555cbcb1eb5492d1",
+      "bytes": 6838,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+      "sha256": "7d3a8803e0877655c455914f07dd01738c9d40ef4a7fb2051a660b5d89cdee0e",
+      "bytes": 6402,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+      "sha256": "4ebbab85960059eee93d4f64f246fab27c6ace6f041dfb20368fa1512777f92a",
+      "bytes": 6364,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+      "sha256": "a7e6741ff184bde8af00b25867c675b1c10835935004f32308dc049c5f50297e",
+      "bytes": 14142,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+      "sha256": "a530fcb2b93dadd0753e7a2ce325cd2d77aca2a3f997e9786d65b501671411ac",
+      "bytes": 9632,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+      "sha256": "a6c83af29fdb0a346b49f5827088afa17708b434d011b8e3029588d5b400c8d7",
+      "bytes": 5454,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+      "sha256": "af57e5c656a0df4297c6a73f5f460ecf9ea43068b952b7042221b80dfbb3fa3a",
+      "bytes": 6490,
+      "width": 256,
+      "height": 384,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    },
+    {
+      "path": "public/game/homeworld/v80/clan-lectern-right.png",
+      "sha256": "92a8a53ca5c303d4186ff17f44beccc282de384d7cf64b4e191d79cbd766a899",
+      "bytes": 1001621,
+      "width": 1254,
+      "height": 1254,
+      "scope": "Existing native court furniture, reused for local study cases and lecterns; no new plaque, lineage or painted asset."
+    },
+    {
+      "path": "public/game/homeworld/v80/sealed-cargo-case-left.png",
+      "sha256": "0d27b2eec19ddbd8d1ea65a8071971b34e24d93abb0052c98e7bd32058d98012",
+      "bytes": 1801987,
+      "width": 1254,
+      "height": 1254,
+      "scope": "Existing native court furniture, reused for local study cases and lecterns; no new plaque, lineage or painted asset."
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+      "sha256": "a45d64a6c524828225f29fc1757e58a1218fdfbea9f81a9acd5b1db820112c1e",
+      "bytes": 2081254,
+      "width": 1024,
+      "height": 1536,
+      "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-s2-b-v100.png",
+      "sha256": "1a341c55ddd26ecf1c626eb8baf791f558d2bc9ada9ac01c27463f0286c1cfce",
+      "bytes": 2037749,
+      "width": 1024,
+      "height": 1536,
+      "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+      "sha256": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3",
+      "bytes": 2249370,
+      "width": 1536,
+      "height": 1024,
+      "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+      "sha256": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
+      "bytes": 2147314,
+      "width": 1536,
+      "height": 1024,
+      "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+      "sha256": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b",
+      "bytes": 1824704,
+      "width": 1536,
+      "height": 1024,
+      "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+      "sha256": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced",
+      "bytes": 2223295,
+      "width": 1024,
+      "height": 1536,
+      "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-s3-left.png",
+      "sha256": "3bb94e42a714645f89ff8ce0c7567ac46193179676e28adbcc0bf760ba3b4481",
+      "bytes": 1447965,
+      "width": 1536,
+      "height": 1024,
+      "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-s3-right.png",
+      "sha256": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f",
+      "bytes": 1595986,
+      "width": 1536,
+      "height": 1024,
+      "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-super.png",
+      "sha256": "cd81a0503a546ad34281f2b8d221763aea15bcd54d5d1c92ed583bdbfd6830c3",
+      "bytes": 1789099,
+      "width": 1536,
+      "height": 1024,
+      "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "sha256": "6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd",
+      "bytes": 2412775,
+      "width": 1024,
+      "height": 1536,
+      "scope": "Existing single-frame V44 appearance for V11 exclusion only; no new BODY, variant animation or source action is admitted.",
+      "provenance": {
+        "metadataPath": "app/game/data/pitUserHuntersV44.json",
+        "fighterId": "scar",
+        "variantId": "scar-avec-casque-6a0a69930d",
+        "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "sourceEntry": "YAUTJA_NECA_84_PAIRES/03_AVP/scar/avec_casque.png",
+        "admission": "LEGACY_V11_EXCLUSION_ONLY"
+      }
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855.png",
+      "sha256": "b99fbf82fe81c06a1b94930a80aa9913b924d4617efbd358c070512537e44855",
+      "bytes": 2413012,
+      "width": 1024,
+      "height": 1536,
+      "scope": "Existing single-frame V44 appearance for V11 exclusion only; no new BODY, variant animation or source action is admitted.",
+      "provenance": {
+        "metadataPath": "app/game/data/pitUserHuntersV44.json",
+        "fighterId": "feral-hunter",
+        "variantId": "feral-avec-casque-b99fbf82fe",
+        "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "sourceEntry": "YAUTJA_NECA_84_PAIRES/01_FILMS/feral/avec_casque.png",
+        "admission": "LEGACY_V11_EXCLUSION_ONLY"
+      }
+    },
+    {
+      "path": "public/game/sprites/v59/pit/feral/launcher-left.png",
+      "sha256": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14",
+      "bytes": 2212312,
+      "width": 1536,
+      "height": 1024,
+      "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v59/pit/feral/launcher-right.png",
+      "sha256": "feb0b99112cb55470b0c9211461793a85ac8c4538a59ed24026366ff8e7a31ca",
+      "bytes": 2148287,
+      "width": 1536,
+      "height": 1024,
+      "scope": "Existing native BODY page; no standalone projectile sprite or new drawing is implied."
+    },
+    {
+      "path": "public/game/sprites/v62/heads/classic-head.png",
+      "sha256": "10c91cfc7807fec0a5c50e612eb3e394e182d432515cb0195bf8c4e7fac4f9bd",
+      "bytes": 1434487,
+      "width": 1254,
+      "height": 1254,
+      "scope": "Existing classic/reference modular NPC image, newly connected to the archive activity; no newly authored pixel or full BODY animation."
+    }
+  ]
+}

@@ -1,0 +1,592 @@
+{
+  "schemaVersion": 1,
+  "kind": "pit-rejected-original-preservation-plan",
+  "release": "V91",
+  "batch": "rejected-batch-01",
+  "originalOrdinalRange": [
+    1,
+    10
+  ],
+  "exactOriginalCount": 10,
+  "intendedArchiveRoot": "art-source/v91/pit/rejected-batch-01/",
+  "sourceLogRelative": "work-local/v91/generation/generation-log.json",
+  "sourceLogSha256": "3d600f276c65379ed8e478bc46e539d773283646b6afa525806038cd4a93b403",
+  "status": "ORIGINALS_PRESERVED_NOT_RUNTIME",
+  "rejected": 10,
+  "runtimeAccepted": 0,
+  "productionReady": 0,
+  "oneToOneCertified": 0,
+  "runtimeRegistryChanged": false,
+  "provenance": "Exactly the first ten physical generated plaquettes, including wrong-facing attempt 006. No substitution by later replacements, no relabeling failed walks as idle/victory.",
+  "limitations": "Technical variation is not a complete usable walk. All ten are rejected originals for historical preservation only; no PNG has been copied or admitted by this plan.",
+  "copyRules": [
+    "Copy exactly these ten source byte streams unchanged to the listed archive paths.",
+    "Verify destination SHA256 and sourceBytes after every copy.",
+    "Existing destination is allowed only if already byte-identical; never overwrite different evidence.",
+    "No public/game destination, source rewrite, crop, resize, alpha cleanup, mirror or recolor.",
+    "Keep every full original prompt and REJECTED verdict in the portable archive manifest."
+  ],
+  "entries": [
+    {
+      "ordinal": 1,
+      "filename": "001-ahab-masked-walk-right-candidate.png",
+      "sourceRelative": "work-local/v91/generation/001-ahab-masked-walk-right-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-01/001-ahab-masked-walk-right-candidate.png",
+      "sourceSha256": "9c1fb68e37ba0bce8fd811e09fa88e14b2a1aac99633e643a21a5fc00efb6fd7",
+      "sourceBytes": 2218658,
+      "fighterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "requestedClip": "walk",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Use case: identity-preserve. Asset type: native 2D fighting-game sprite sheet, missing forward walk cycle for Ahab Predator, exact masked appearance ahab-avec-casque-0c8ceb1c95. Reference image 1 is the supplied character identity reference: preserve the asymmetrical silver scarred biomask with lower mandibles visible, silver segmented armor, tan mottled skin, black dreadlocks with brass rings, red cape, skull pendant, shoulder plasma cannon on its anatomical side, and the exact long metal spear with curved broad blade. Do not replace the mask with a generic Predator helmet. Create ONE transparent PNG sheet 1536 x1024, exactly four independently drawn full-body frames in a precise 2columns x2rows grid, cells768x512, reading row-major. All frames face screen RIGHT at a consistent shallow side/three-quarter fighting-game view. Forward WALK cycle, not attack and not running: frame1 left foot planted ahead/right heel trailing; frame2 right leg passes bent at knee while left foot supports weight; frame3 right foot planted ahead/left heel trailing; frame4 left leg passes bent at knee while right foot supports weight. Anatomical limbs must remain exactly two arms and two legs, hands grip the same single spear coherently. Keep spear at a stable upward diagonal, never create extra blades, guns, fingers, or hands. Red cape and dreadlocks respond subtly with different natural lag, not clipping the torso. Character torso scale identical across the four cells; soles on local y485 ground line, root center local x384, body head around local y65. Entire character, cape, spear and cannon fit inside each cell with at least20px transparent margins; no crossing cell boundaries. Photoreal detailed comic/game bitmap rendering matching the reference, crisp readable silhouette, consistent neutral light. Actual RGBA transparency everywhere outside the drawings. No gradient, black rectangle, fake checkerboard, cast ground shadow, labels, text, floor, scene, grid lines, border or watermark. This is an original lore-compatible locomotion adaptation, not a claim to copy an existing canonical animation.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Contacts 1 et 3 gardent la meme jambe devant ; passages 2 et 4 repetent la meme jambe levee. Demi-foulee, pas de contact oppose lisible."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/001-ahab-measured-technical-admission.json",
+        "reportSha256": "06934749073e3fbf9668f0b810d786e8e85e851cff2f4146734ad78c629ae2c7",
+        "sourceSha256": "9c1fb68e37ba0bce8fd811e09fa88e14b2a1aac99633e643a21a5fc00efb6fd7",
+        "contractSha256": "e0842210a5ab6f8c37f481c47120ac733bde6f5071884cf8ac6087b7f81cb8aa",
+        "technicalAccepted": true,
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, row-major gait and supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, anatomy/canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 2,
+      "filename": "002-ahab-masked-walk-left-candidate.png",
+      "sourceRelative": "work-local/v91/generation/002-ahab-masked-walk-left-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-01/002-ahab-masked-walk-left-candidate.png",
+      "sourceSha256": "ae6d678baebf790403a15b482313d8fc4aea519cc8cb39d96ec4a034994af70f",
+      "sourceBytes": 2233358,
+      "fighterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "requestedClip": "walk",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Use case: identity-preserve. Asset type: native 2D fighting-game sprite sheet, missing forward walk cycle for Ahab Predator, exact masked appearance ahab-avec-casque-0c8ceb1c95. Reference image 1 is the supplied character identity reference. Reference image2 is ONLY the scale/style continuity reference for the right-facing walk, NOT a target to flip. preserve the asymmetrical silver scarred biomask with lower mandibles visible, silver segmented armor, tan mottled skin, black dreadlocks with brass rings, red cape, skull pendant, shoulder plasma cannon on its anatomical side, and the exact long metal spear with curved broad blade. Do not replace the mask with a generic Predator helmet. Create independently drawn LEFT-facing character views, preserving anatomical equipment sides; never merely mirror the opposite-side reference. Create ONE transparent PNG sheet 1536 x1024, exactly four independently drawn full-body frames in a precise 2columns x2rows grid, cells768x512, reading row-major. All frames face screen LEFT at a consistent shallow side/three-quarter fighting-game view. Forward WALK cycle, not attack and not running: frame1 left foot planted ahead/right heel trailing; frame2 right leg passes bent at knee while left foot supports weight; frame3 right foot planted ahead/left heel trailing; frame4 left leg passes bent at knee while right foot supports weight. Anatomical limbs must remain exactly two arms and two legs, hands grip the same single spear coherently. Keep spear at a stable upward diagonal, never create extra blades, guns, fingers, or hands. Red cape and dreadlocks respond subtly with different natural lag, not clipping the torso. Character torso scale identical across the four cells; soles on local y485 ground line, root center local x384, body head around local y65. Entire character, cape, spear and cannon fit inside each cell with at least20px transparent margins; no crossing cell boundaries. Photoreal detailed comic/game bitmap rendering matching the reference, crisp readable silhouette, consistent neutral light. Actual RGBA transparency everywhere outside the drawings. No gradient, black rectangle, fake checkerboard, cast ground shadow, labels, text, floor, scene, grid lines, border or watermark. This is an original lore-compatible locomotion adaptation, not a claim to copy an existing canonical animation. Opposite orientation must still have the same biomask, skull pendant, red cape, and exactly ONE spear. The anatomical shoulder cannon remains on its original shoulder, partially occluded when appropriate. Depict a complete alternating-foot walk with contact, passing, opposite contact, opposite passing; never draw the same lifted-leg pose twice.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Contacts 1 et 3 et levees 2 et 4 repetent une demi-foulee. Aucun cycle complet avec les deux appuis opposes."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/002-ahab-masked-walk-left-technical-admission.json",
+        "reportSha256": "e64a09f2638d9519a7e38659aba2e7f99a9fd3faf48044059817c332f03743c4",
+        "sourceSha256": "ae6d678baebf790403a15b482313d8fc4aea519cc8cb39d96ec4a034994af70f",
+        "contractSha256": "d73e3d8c6fb535e58ec54b6622f4f3ceca5d92492caff506a4d09fc6149e517b",
+        "technicalAccepted": true,
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, row-major gait and supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, anatomy/canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 3,
+      "filename": "003-wolf-masked-walk-right-candidate.png",
+      "sourceRelative": "work-local/v91/generation/003-wolf-masked-walk-right-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-01/003-wolf-masked-walk-right-candidate.png",
+      "sourceSha256": "1fbddcc4f367957771b94cffffc20e4f6441837e60240e0011c47cd739f7918e",
+      "sourceBytes": 2011843,
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "walk",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Use case: identity-preserve. Asset type: missing native 2D game sprite-sheet for Wolf Predator, exact masked appearance wolf-avec-casque-4261aca172. Image1 is identity reference. Preserve the distinctive rough-silver serrated tall biomask, tan mottled skin, sparse silver armor, black dreadlocks and brass rings, ribbed whip on belt, skull pendant, dark brown loincloth, armored feet, exact compact hand plasma pistol, and anatomical equipment sides. Generate one transparent1536x1024 PNG of FOUR distinct full-body FORWARD WALK frames facing screenRIGHT, in2columns x2rows regular768x512cells read row-major. This is walking cautiously in a duel, NOT a gun attack; pistol remains held safely without firing, wrist blades exactly as reference, no added weapons. Full alternating bipedal gait: frame1 near leg extended in front far leg trailing; frame2 near supporting leg straight while far knee passes in front; frame3 FAR leg extended in front and near leg trailing visibly different from frame1; frame4 far supporting leg straight while NEAR knee passes in front visibly different from frame2. Clear change of knee positions and planted foot on each opposite contact. Same torso scale and camera every frame, small natural arm swing/dreadlock response. Rootcenterlocalx384, soles~localy482, head~localy60. Complete character/hands/weapons/hair stay inside each cell with at least24px transparent clearance. True RGBA transparency outside drawings; crisp detailed comic/game bitmap consistent with reference, neutral lighting. Exactly2arms2legs, coherent fingers/thumb and joints. No scene, floor, gradient, black backdrop, checkerboard artwork, drop shadows, text, marks, gridlines or borders. Original lore-compatible locomotion adaptation, not a claim of a1:1canonical movie animation.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "La case 3 repete la jambe avant de la case 1 ; changement de genou seulement en case 4. Contact oppose et deux passages coherents manquants."
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              0,
+              0,
+              768,
+              511
+            ],
+            "pixels": 10
+          }
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              768,
+              0,
+              768,
+              511
+            ],
+            "pixels": 13
+          }
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/003-wolf-masked-walk-right-adaptive-technical-admission.json",
+        "reportSha256": "2e21db22e1a72e4efc67b26b3bcc4052cc83cd238cbd7a6307154070cb45f314",
+        "sourceSha256": "1fbddcc4f367957771b94cffffc20e4f6441837e60240e0011c47cd739f7918e",
+        "contractSha256": "22302b66776b5efca173795b16e41509bd5fdb2825cb92110037fb2247152e1b",
+        "technicalAccepted": false,
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, row-major gait and supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, anatomy/canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 4,
+      "filename": "004-wolf-masked-walk-left-candidate.png",
+      "sourceRelative": "work-local/v91/generation/004-wolf-masked-walk-left-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-01/004-wolf-masked-walk-left-candidate.png",
+      "sourceSha256": "7075f7f8d05030d55fb5e401595eb167166ff068f631edf2578b31b277360f5a",
+      "sourceBytes": 1971981,
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "requestedClip": "walk",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Use case: identity-preserve. Asset type: missing native 2D game sprite-sheet for Wolf Predator, exact masked appearance wolf-avec-casque-4261aca172. Image1 is identity reference; image2 is style/scale continuity only, do NOT horizontally flip it. Preserve the distinctive rough-silver serrated tall biomask, tan mottled skin, sparse silver armor, black dreadlocks and brass rings, ribbed whip on belt, skull pendant, dark brown loincloth, armored feet, exact compact hand plasma pistol, and anatomical equipment sides. Generate one transparent1536x1024 PNG of FOUR distinct full-body FORWARD WALK frames facing screenLEFT, in2columns x2rows regular768x512cells read row-major. This is walking cautiously in a duel, NOT a gun attack; pistol remains held safely without firing, wrist blades exactly as reference, no added weapons. Full alternating bipedal gait: frame1 near leg extended in front far leg trailing; frame2 near supporting leg straight while far knee passes in front; frame3 FAR leg extended in front and near leg trailing visibly different from frame1; frame4 far supporting leg straight while NEAR knee passes in front visibly different from frame2. Clear change of knee positions and planted foot on each opposite contact. Same torso scale and camera every frame, small natural arm swing/dreadlock response. Rootcenterlocalx384, soles~localy482, head~localy60. Complete character/hands/weapons/hair stay inside each cell with at least24px transparent clearance. True RGBA transparency outside drawings; crisp detailed comic/game bitmap consistent with reference, neutral lighting. Exactly2arms2legs, coherent fingers/thumb and joints. No scene, floor, gradient, black backdrop, checkerboard artwork, drop shadows, text, marks, gridlines or borders. Original lore-compatible locomotion adaptation, not a claim of a1:1canonical movie animation. Draw genuine new opposite-side views. Keep each arm’s and shoulder’s anatomical equipment on its original side, with proper occlusion rather than flipping the gun/blades to the wrong limb. Facing left must preserve the mask serrations, compact pistol, whip and dreadlock details. Continuous grounded walk, no amputated soles or extra fingers.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Case 3 repete le contact de 1 ; seul le dernier appui change. Aucun enchainement des quatre phases opposees complet."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/004-wolf-masked-walk-left-technical-admission.json",
+        "reportSha256": "3a8c689e61aa55a6ed7dfa2038cc7995f5e23d459d33dcdef9a97b9a8060ea02",
+        "sourceSha256": "7075f7f8d05030d55fb5e401595eb167166ff068f631edf2578b31b277360f5a",
+        "contractSha256": "3f01b43f90177a56e50bd8beb294ab9082610cea9982c15425a84799b235f581",
+        "technicalAccepted": true,
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, row-major gait and supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, anatomy/canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 5,
+      "filename": "005-falconer-masked-walk-right-candidate.png",
+      "sourceRelative": "work-local/v91/generation/005-falconer-masked-walk-right-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-01/005-falconer-masked-walk-right-candidate.png",
+      "sourceSha256": "d1021a2332ce4b2f2bfa76de2233a1b2f77f2ffa115fd56713b9e87c5c0a6f63",
+      "sourceBytes": 1886915,
+      "fighterId": "falconer",
+      "variantId": "falconer-avec-casque-f5618ed362",
+      "requestedClip": "walk",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/f5618ed36296630ec9061ebd115a5971e2c02a656412808a7e5bc0d6c8a7b96d.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Use case: identity-preserve. Asset: native2D fighting-game animation sheet for Falconer Predator exact masked appearance falconer-avec-casque-f5618ed362. Image1 is identity reference: preserve distinctive long bronze falcon-beak biomask with two angular crown points, green and yellow mottled muscular skin, sparse darkbronze armor, belt/loincloth, dreadlocks, long SINGLE serrated wrist blade on its original anatomical arm, other hand open. NO shoulder plasma cannon, NO gun, NO new drone, NO extra blades. Generate ONE1536x1024 actual transparent PNG, precisely4 full-body poses in2x2 grid, cells768x512 read row-major, screenRIGHT-facing forward WALK cycle. Natural guarded walking, not stabbing/swinging blade: near-leg forward contact; opposite knee passing; opposite-leg forward contact; near-knee passing. Anatomically distinct alternating planted legs, coherent knees/ankles, exactly2arms2legs with five fingers per hand, no crossed or fused fingers. Keep wrist blade angled modestly forward/up and wholly within cell, same attachment and length. Same body scale and shallow side-view camera for allframes, headlocaly60/soleslocaly482/rootx384. At least24px transparent margins on every cell including dreadlocks/wristblade/toes. True alpha transparency, no black or color backdrop/gradient/checkerboard/ground shadow. Detailed handdrawn realistic comic/gamebitmap consistent with reference and neutrallight. No scenery, ground, text, labels, grids, borders. This locomotion is an original lore-compatible game adaptation, not claimed1:1to a movie animation.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Cases 1 a 3 repetent essentiellement la meme demi-foulee. Le changement de jambe visible en 4 ne fournit pas deux passages opposes ni une boucle coherente."
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/005-falconer-masked-walk-right-adaptive-technical-admission.json",
+        "reportSha256": "d1bb8f8fea19037512609863bad6ecd48889763f8d6f414db0336ab954adf9de",
+        "sourceSha256": "d1021a2332ce4b2f2bfa76de2233a1b2f77f2ffa115fd56713b9e87c5c0a6f63",
+        "contractSha256": "6b2b7bf995d461334320bcbf7edc93879618827b6249984ba1490d41b96d1baf",
+        "technicalAccepted": true,
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, row-major gait and supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, anatomy/canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 6,
+      "filename": "006-falconer-wrong-facing-rejected.png",
+      "sourceRelative": "work-local/v91/generation/006-falconer-wrong-facing-rejected.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-01/006-falconer-wrong-facing-rejected.png",
+      "sourceSha256": "d89437592681b2ed00997ae86ea581a2791a59678d79e320dfe1c4af70e1d439",
+      "sourceBytes": 1926800,
+      "fighterId": "falconer",
+      "variantId": "falconer-avec-casque-f5618ed362",
+      "requestedClip": "walk",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/f5618ed36296630ec9061ebd115a5971e2c02a656412808a7e5bc0d6c8a7b96d.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Use case: identity-preserve. Asset: native2D fighting-game animation sheet for Falconer Predator exact masked appearance falconer-avec-casque-f5618ed362. Image1 is identity reference, image2 is scale/style reference ONLY, not an image to mirror: preserve distinctive long bronze falcon-beak biomask with two angular crown points, green and yellow mottled muscular skin, sparse darkbronze armor, belt/loincloth, dreadlocks, long SINGLE serrated wrist blade on its original anatomical arm, other hand open. NO shoulder plasma cannon, NO gun, NO new drone, NO extra blades. Generate ONE1536x1024 actual transparent PNG, precisely4 full-body poses in2x2 grid, cells768x512 read row-major, screenLEFT-facing forward WALK cycle. Natural guarded walking, not stabbing/swinging blade: near-leg forward contact; opposite knee passing; opposite-leg forward contact; near-knee passing. Anatomically distinct alternating planted legs, coherent knees/ankles, exactly2arms2legs with five fingers per hand, no crossed or fused fingers. Keep wrist blade angled modestly forward/up and wholly within cell, same attachment and length. Same body scale and shallow side-view camera for allframes, headlocaly60/soleslocaly482/rootx384. At least24px transparent margins on every cell including dreadlocks/wristblade/toes. True alpha transparency, no black or color backdrop/gradient/checkerboard/ground shadow. Detailed handdrawn realistic comic/gamebitmap consistent with reference and neutrallight. No scenery, ground, text, labels, grids, borders. This locomotion is an original lore-compatible game adaptation, not claimed1:1to a movie animation. Draw independently authored opposite-side views. Lame and gauntlet remain attached to the same anatomical arm, even when far-side occlusion is required. Do not copy/flip the right-facing sheet; preserve mask form, green-yellow skin and sparse bronze armor. No shoulder cannon, drone, gun or other invented weapon.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "wrong-native-facing",
+          "detail": "Orientation demandee LEFT, les quatre masques et la lame pointent RIGHT. Refus d orientation avant toute admission ; gait complet non certifie."
+        }
+      ],
+      "technicalEvidence": null,
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, row-major gait and supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, anatomy/canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 7,
+      "filename": "007-falconer-masked-walk-left-candidate.png",
+      "sourceRelative": "work-local/v91/generation/007-falconer-masked-walk-left-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-01/007-falconer-masked-walk-left-candidate.png",
+      "sourceSha256": "2b2336e4d880e81c903464870f5e9a74209bdee2db44782419b08003ad87ab38",
+      "sourceBytes": 1911616,
+      "fighterId": "falconer",
+      "variantId": "falconer-avec-casque-f5618ed362",
+      "requestedClip": "walk",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/f5618ed36296630ec9061ebd115a5971e2c02a656412808a7e5bc0d6c8a7b96d.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "ALL FOUR CHARACTERS MUST FACE LEFT. Helmet beak, eyes, chest gaze and wristblade tip point toward the LEFT EDGE of their cells. The reference faces right; construct a genuinely drawn new LEFT-facing view, do NOT output the reference orientation. This facing direction is the primary requirement. Preserve the exact identity of Falconer Predator from image1: long bronze falcon-beak biomask with angular crown, green-yellow mottled skin, sparse darkbronze armor, blackdreadlocks, one serrated wristblade on the original arm, other hand open. Four distinct fullbody WALK cycle drawings in1536x1024 transparentPNG, regular2columns2rows cells768x512. Frame1 leftward stride/nearleg leads; frame2 opposite knee passes; frame3 opposite planted leg leads; frame4 near knee passes. Walking slowly LEFT toward an adversary, not lunging. Camera sees opposite native side; keep anatomical blade attachment consistent, allow proper fararm occlusion. Nose/beak and blade all pointLEFT. Identical torso scale, fullbody insidecells with24pxempty margins, toes aroundy482, head aroundy60, centeredx384. Exactly2arms2legs, fingers grip sensibly, no gun, shouldercannon, drone or addedweapon. Detailed comic gamebitmap, actual alpha transparency, no backgroundgradient/checkerboard/blackrectangle/groundshadow, text, grid or floor. This is a lore-compatible walking adaptation.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Case 3 repete le contact de 1 ; changement d appui seulement en 4. Pas de deux passages opposes ni de contact oppose au bon temps."
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              0,
+              0,
+              768,
+              512
+            ],
+            "pixels": 8
+          }
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              768,
+              0,
+              768,
+              512
+            ],
+            "pixels": 9
+          }
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/007-falconer-masked-walk-left-adaptive-technical-admission.json",
+        "reportSha256": "9ec28a347b30dc64c8a32082418916edb7b5384e106ab1a967778550f15ea003",
+        "sourceSha256": "2b2336e4d880e81c903464870f5e9a74209bdee2db44782419b08003ad87ab38",
+        "contractSha256": "aecdff8f774f7cbd0d01dd1be2d7ffbdf16560131b43a26c8711713f9aa8b840",
+        "technicalAccepted": false,
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, row-major gait and supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, anatomy/canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 8,
+      "filename": "008-scarface-masked-walk-right-candidate.png",
+      "sourceRelative": "work-local/v91/generation/008-scarface-masked-walk-right-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-01/008-scarface-masked-walk-right-candidate.png",
+      "sourceSha256": "c6c0329cbfb75e19c472ad98ebcdc2b12cf4f8d8dc96cd79a1e140df81173ac6",
+      "sourceBytes": 2171894,
+      "fighterId": "scarface",
+      "variantId": "scarface-avec-casque-bca00052d4",
+      "requestedClip": "walk",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Use case: identity-preserve. Asset: native 2D fighting-game forward walking sprite sheet for Scarface Predator (Concrete Jungle), exact masked appearance scarface-avec-casque-bca00052d4. Image1 is the exact supplied appearance reference: preserve silver perforated biomask with RED crest marking, red handprint on silver chest armor, heavy segmented silver armor, black dreadlocks/brassrings, skull on shoulder and belt, red loincloth, golden mottled skin, and the SINGLE large dual-curved Maul held in two hands. Do not replace Maul by a sword/spear/bow or fire it; no energy or powers. One1536x1024 transparentPNG,4 fullbody WALK frames in regular2x2grid cells768x512 readrowmajor. Allcharacters faceSCREENRIGHT. Safe heavy armed walk cycle: nearleg forward contact, farleg passing at knee, farleg forward contact, nearleg passing. Full believable bentknees/ankles/twoarms/twolegs/fingers; keep Maul held close upright at consistent diagonal to fit eachcell. No attack. Same torso size/view/detaillight acrossframes, small dreadlock/cloth lag. Headlocaly55, toeslocaly480, rootx384, at least24px empty margins, ALL Maul tips/skulls/toes fullyinside eachcell with no overlap. Actual RGBA transparency, detailed realistic comic/game art matching source. No backdrops, gradient, floor, fakecheckerboard, castshadow, labels, text, grids or border. This original walk is lore-compatible adaptation, not certified1:1canonical game animation.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Meme jambe devant aux contacts 1 et 3 ; levees arriere similaires aux cases 2 et 4. Demi-foulee repetee, pas de marche complete."
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              0,
+              0,
+              768,
+              512
+            ],
+            "pixels": 43
+          }
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              0,
+              512,
+              768,
+              512
+            ],
+            "pixels": 22
+          }
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/008-scarface-masked-walk-right-adaptive-technical-admission.json",
+        "reportSha256": "357c3d99a01e4a7b3d4d914b51267b320b750c3a19a9362c2750eec819bf6880",
+        "sourceSha256": "c6c0329cbfb75e19c472ad98ebcdc2b12cf4f8d8dc96cd79a1e140df81173ac6",
+        "contractSha256": "c5f89d9d889bab313db85a7ffaaf45e605260b8a40f68e99cf67f1efe1b1177d",
+        "technicalAccepted": false,
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, row-major gait and supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, anatomy/canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 9,
+      "filename": "009-scarface-masked-walk-left-candidate.png",
+      "sourceRelative": "work-local/v91/generation/009-scarface-masked-walk-left-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-01/009-scarface-masked-walk-left-candidate.png",
+      "sourceSha256": "0a2eaf6d45875bc8805995d62960dfdc5e3e95a971a0714728fa70eaff85bd81",
+      "sourceBytes": 2059460,
+      "fighterId": "scarface",
+      "variantId": "scarface-avec-casque-bca00052d4",
+      "requestedClip": "walk",
+      "requestedFacing": "left",
+      "referenceAsset": "/game/sprites/v44/user-hunters/bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "ALL FOUR SCARFACE DRAWINGS MUST FACE SCREEN LEFT: nose/helmetgaze and fronttoes pointLEFT. Native newly drawn LEFT-facing views, not a flipped PNG. Use case: identity-preserve. Asset: native 2D fighting-game forward walking sprite sheet for Scarface Predator (Concrete Jungle), exact masked appearance scarface-avec-casque-bca00052d4. Image1 is the supplied right-facing identity reference ONLY; reconstruct coherent opposite-side views: preserve silver perforated biomask with RED crest marking, red handprint on silver chest armor, heavy segmented silver armor, black dreadlocks/brassrings, skull on shoulder and belt, red loincloth, golden mottled skin, and the SINGLE large dual-curved Maul held in two hands. Do not replace Maul by a sword/spear/bow or fire it; no energy or powers. One1536x1024 transparentPNG,4 fullbody WALK frames in regular2x2grid cells768x512 readrowmajor. Allcharacters faceSCREENLEFT. Depict the opposite side while keeping the shoulder skull and red markings on their anatomical sides, with sensible occlusion. Safe heavy armed walk cycle: nearleg forward contact, farleg passing at knee, farleg forward contact, nearleg passing. Full believable bentknees/ankles/twoarms/twolegs/fingers; keep Maul held close upright at consistent diagonal to fit eachcell. No attack. Same torso size/view/detaillight acrossframes, small dreadlock/cloth lag. Headlocaly55, toeslocaly480, rootx384, at least24px empty margins, ALL Maul tips/skulls/toes fullyinside eachcell with no overlap. Actual RGBA transparency, detailed realistic comic/game art matching source. No backdrops, gradient, floor, fakecheckerboard, castshadow, labels, text, grids or border. This original walk is lore-compatible adaptation, not certified1:1canonical game animation. Nose/helmetprofile explicitlypointsLEFT in everycell; do not outputRIGHT-facing poses.",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Le contact avant reste le meme aux cases 1 et 3 ; levee arriere repetee aux cases 2 et 4. Alternance complete absente."
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              0,
+              0,
+              768,
+              512
+            ],
+            "pixels": 67
+          }
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              768,
+              0,
+              768,
+              512
+            ],
+            "pixels": 47
+          }
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              0,
+              512,
+              768,
+              512
+            ],
+            "pixels": 65
+          }
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              768,
+              512,
+              768,
+              512
+            ],
+            "pixels": 46
+          }
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/009-scarface-masked-walk-left-adaptive-technical-admission.json",
+        "reportSha256": "0ad4e022be24668f650bdf52a501967643d84bff003817ceba6853bdfb460ba5",
+        "sourceSha256": "0a2eaf6d45875bc8805995d62960dfdc5e3e95a971a0714728fa70eaff85bd81",
+        "contractSha256": "6622f8d83c6a732855ccc3c008944751a883f4d6bfc79a27a7340e47d020ace9",
+        "technicalAccepted": false,
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, row-major gait and supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, anatomy/canon certification or production admission"
+      }
+    },
+    {
+      "ordinal": 10,
+      "filename": "010-enforcer-masked-walk-right-candidate.png",
+      "sourceRelative": "work-local/v91/generation/010-enforcer-masked-walk-right-candidate.png",
+      "destinationRelative": "art-source/v91/pit/rejected-batch-01/010-enforcer-masked-walk-right-candidate.png",
+      "sourceSha256": "c866005985e805119c1316ce5905fd47dbe0bb3f0cc4beec5c763115ac557cfc",
+      "sourceBytes": 1953699,
+      "fighterId": "enforcer",
+      "variantId": "enforcer-avec-casque-ca164d8925",
+      "requestedClip": "walk",
+      "requestedFacing": "right",
+      "referenceAsset": "/game/sprites/v44/user-hunters/ca164d8925d0c7ed7e5d598d93512d4c39c528c6ad0ec7216b55353a933a4494.png",
+      "generationTool": "OpenAI built-in image_gen",
+      "prompt": "Use case: identity-preserve. Asset: missing native2D fighting-game walking sprite sheet for Enforcer Predator, exact masked appearance enforcer-avec-casque-ca164d8925. Reference1 is identity: preserve silver helmet with3distinctcrownprongs and blue centralglyph, purple/cream mottledskin, silver sparse armor, dreadlocks/brassrings, blackloincloth, skull pendant, one original shoulder cannon and SINGLE longdouble-ended combistick with pointed tips held in bothhands. No added blades, cloak/cape, powers or firing. Generate exactly4 fullbody independently drawn forward WALK frames inONE1536x1024 transparentPNG regular2x2grid cells768x512 readrowmajor. Allfour characters FACE SCREEN RIGHT: nose, gaze and fronttoe direction towardRIGHTedge. Nearleg forward contact, oppositeleg passing bent at knee, oppositeleg forward contact, nearleg passing. Natural guarded slowwalk toward opponent, NOT spear attack. Same torso size and shallow sidecamera; arms keep rod at consistent upwarddiagonal, dreads respond subtly, feet alternateplanted support and stepping. Exactly2arms2legs, coherent5fingerhands grip rod, no fused wrists. HEADlocaly55/soleslocaly482/rootx384, all prongs/rodtips/hair/hands/toes insidecells with24pxemptymargins. Actual RGBA transparency, no backdropgradient/blackrectangle/checkerboard/groundshadow, text, scenery, floor or grid. Detailed realisticcomic/gamebitmap faithful to providedappearance. Original lore-compatible locomotion adaptation, not certifiedcanonicalanimation. Preserve anatomical sides of equipment from original..",
+      "decision": "REJECTED",
+      "runtimeAccepted": false,
+      "productionReady": false,
+      "canonicalFidelityCertified": false,
+      "reasons": [
+        {
+          "code": "incomplete-alternating-walk",
+          "detail": "Meme jambe avant/appui aux contacts 1 et 3, meme jambe arriere levee aux cases 2 et 4. Demi-foulee repetee."
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              0,
+              0,
+              768,
+              512
+            ],
+            "pixels": 7
+          }
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              768,
+              0,
+              768,
+              512
+            ],
+            "pixels": 9
+          }
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              0,
+              512,
+              768,
+              512
+            ],
+            "pixels": 9
+          }
+        },
+        {
+          "code": "cell-edge-alpha-or-seam",
+          "detail": {
+            "rect": [
+              768,
+              512,
+              768,
+              512
+            ],
+            "pixels": 8
+          }
+        }
+      ],
+      "technicalEvidence": {
+        "reportRelative": "work-local/v91/qa/010-enforcer-masked-walk-right-adaptive-technical-admission.json",
+        "reportSha256": "b24b79ba77c9113909e9031dd126d4f3ae7e370c5e4b921daa4aecfe21fb9b95",
+        "sourceSha256": "c866005985e805119c1316ce5905fd47dbe0bb3f0cc4beec5c763115ac557cfc",
+        "contractSha256": "044176aa2288dcde7c2859d27c233d79a327329a3490b7db99497d4d1118a59b",
+        "technicalAccepted": false,
+        "notVisualAdmission": true
+      },
+      "visualReview": {
+        "reviewer": "independent-campaign-v91-review",
+        "method": "view_image original PNG, row-major gait and supplied appearance comparison",
+        "reviewedAt": "2026-10-11",
+        "decision": "REJECTED",
+        "scope": "Not a browser playback, anatomy/canon certification or production admission"
+      }
+    }
+  ]
+}

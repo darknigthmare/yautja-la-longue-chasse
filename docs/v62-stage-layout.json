@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "reference": { "canvas": [960,540], "ground": 430, "notes": "Measured native cells; distant world supports at P0 depth, then checked through real canvas cameras." },
+  "stages": {
+    "arena-126-avpr-2007-hospital-roof": {
+      "sourceCells": ["10_VIE_DES_STAGES!E62","10_VIE_DES_STAGES!E63","10_VIE_DES_STAGES!E64"],
+      "continuityNote": "Toit intact, ambiance d'exposition avant destruction. Evacuants adultes et appareil anonymes originaux ; aucune identité de survivant, route narrative ou continuité d'équipement de Wolf certifiée.",
+      "supportNotes": "Evacuation behind the far right roof service passage, helicopter in open sky, vent fixed to the top of the central HVAC block.",
+      "events": {
+        "ambient-01": { "name": "Evacuants adultes anonymes — passage lointain", "fps": 2, "idleVisibility": "hidden", "travelX": [748,788], "clipWorld": {"x":732,"y":185,"width":78,"height":36}, "opacity": 0.75, "placement": {"x":748,"bottom":213,"height":26,"parallax":0.05,"renderPass":"P1","anchor":"world"} },
+        "ambient-02": { "name": "Hélicoptère anonyme — rotor d'évacuation", "fps": 4, "placement": {"x":290,"bottom":132,"height":76,"parallax":0.05,"renderPass":"P1","anchor":"world"} },
+        "ambient-03": { "name": "Évent de toiture — vapeur dans le vent", "fps": 3, "placement": {"x":620,"bottom":177,"height":68,"parallax":0.05,"renderPass":"P1","anchor":"world"} }
+      }
+    },
+    "arena-187-golgotha-uscm-airlock": {
+      "sourceCells": ["10_VIE_DES_STAGES!E140","10_VIE_DES_STAGES!E141","10_VIE_DES_STAGES!E142"],
+      "continuityNote": "Le manuel Atari atteste la base militaire USCM, les sas et les conduits. Composition latérale, uniformes de protection anonymes et silhouette de xénomorphe originaux ; ni géométrie Jaguar exacte ni chapitre précis certifié.",
+      "supportNotes": "Two observation modules sit inside the authored back-wall recesses above the remote service walkway. Sensor is bolted to the central wall mounting plate.",
+      "events": {
+        "ambient-01": { "name": "Sentinelles anonymes — sas d'observation", "fps": 2, "placement": {"x":257,"bottom":203,"height":162,"parallax":0.05,"renderPass":"P1","anchor":"world"} },
+        "ambient-02": { "name": "Capteur d'alarme — balayage lent", "fps": 2, "placement": {"x":480,"bottom":145,"height":52,"parallax":0.05,"renderPass":"P1","anchor":"world"} },
+        "ambient-03": { "name": "Xénomorphe anonyme — vitrage distant", "fps": 2, "placement": {"x":704,"bottom":203,"height":162,"parallax":0.05,"renderPass":"P1","anchor":"world"} }
+      }
+    },
+    "arena-130-avp-classic-2000-space-station": {
+      "sourceCells": ["10_VIE_DES_STAGES!E143","10_VIE_DES_STAGES!E144","10_VIE_DES_STAGES!E145"],
+      "continuityNote": "Adaptation d'exposition de station industrielle. Marine adulte anonyme et mécanismes originaux ; ni héros Classic 2000 ni route scénarisée ou niveau exact certifié.",
+      "supportNotes": "Marine crosses the small distant mid-shaft catwalk, service door stays on the right building's balcony, status module mounts next to its frame.",
+      "events": {
+        "ambient-01": { "name": "Marine anonyme — traversée de passerelle", "fps": 2, "idleVisibility": "hidden", "travelX": [447,524], "clipWorld": {"x":437,"y":276,"width":99,"height":47}, "opacity": 0.75, "placement": {"x":447,"bottom":318,"height":27,"parallax":0.05,"renderPass":"P1","anchor":"world"} },
+        "ambient-02": { "name": "Ascenseur de service — cycle de porte", "fps": 2, "placement": {"x":853,"bottom":236,"height":108,"parallax":0.05,"renderPass":"P1","anchor":"world"} },
+        "ambient-03": { "name": "Quarantaine — indicateur mécanique lent", "fps": 2, "placement": {"x":809,"bottom":175,"height":40,"parallax":0.05,"renderPass":"P1","anchor":"world"} }
+      }
+    }
+  }
+}

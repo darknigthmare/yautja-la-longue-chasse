@@ -1,0 +1,1381 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-035-fosse-des-cent-masques",
+  "compositionDigest": "243e4dd659e080c98177d5749e7e753d421c664b62d4302b7b43004be79972c0",
+  "conceptPreview": false,
+  "playablePromotion": false,
+  "checkedAt": "2026-09-26T23:08:20.059Z",
+  "surface": "isolated-renderer-with-real-game-fighters-and-images",
+  "ambienceProof": null,
+  "lifeProof": {
+    "passed": true,
+    "expectedActors": 2,
+    "nativeFrames": 6,
+    "fps": 3,
+    "sampledFrames": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        1
+      ]
+    ],
+    "pausedClockHolds": true,
+    "reducedMotionHolds": true,
+    "combatUnchanged": true
+  },
+  "applicationFlowVerified": false,
+  "loaded": {
+    "independentKit": true,
+    "images": 12,
+    "expectedImages": 12,
+    "failed": [],
+    "fighterFailures": []
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -640,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            0,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            640,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1280,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1920,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -709.1489361702128,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            0,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            709.1489361702128,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            1418.2978723404256,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            2127.446808510638,
+            454,
+            709.6489361702128,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "close",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -1256,
+            510.25,
+            992.5,
+            88.70769230769231
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -264,
+            510.25,
+            992.5,
+            88.70769230769231
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            728,
+            510.25,
+            992.5,
+            88.70769230769231
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1720,
+            510.25,
+            992.5,
+            88.70769230769231
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            2712,
+            510.25,
+            992.5,
+            88.70769230769231
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -1363.1808510638298,
+            547.45,
+            1099.6808510638298,
+            170.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -264,
+            547.45,
+            1099.6808510638298,
+            170.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            835.1808510638298,
+            547.45,
+            1099.6808510638298,
+            170.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            1934.3617021276596,
+            547.45,
+            1099.6808510638298,
+            170.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            3033.5425531914893,
+            547.45,
+            1099.6808510638298,
+            170.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "left-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -1782,
+            502,
+            928.5,
+            82.98461538461538
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -854,
+            502,
+            928.5,
+            82.98461538461538
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            74,
+            502,
+            928.5,
+            82.98461538461538
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1002,
+            502,
+            928.5,
+            82.98461538461538
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1930,
+            502,
+            928.5,
+            82.98461538461538
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -1982.5319148936169,
+            536.8,
+            1028.7659574468084,
+            159.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -954.2659574468084,
+            536.8,
+            1028.7659574468084,
+            159.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            74,
+            536.8,
+            1028.7659574468084,
+            159.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            1102.2659574468084,
+            536.8,
+            1028.7659574468084,
+            159.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            2130.531914893617,
+            536.8,
+            1028.7659574468084,
+            159.49999999999997
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "right-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -1434,
+            502,
+            928.5,
+            82.98461538461538
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -506,
+            502,
+            928.5,
+            82.98461538461538
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            422,
+            502,
+            928.5,
+            82.98461538461538
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1350,
+            502,
+            928.5,
+            82.98461538461538
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            2278,
+            502,
+            928.5,
+            82.98461538461538
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -1534.2659574468084,
+            536.8,
+            1028.7659574468084,
+            159.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -506,
+            536.8,
+            1028.7659574468084,
+            159.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            522.2659574468084,
+            536.8,
+            1028.7659574468084,
+            159.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            1550.5319148936169,
+            536.8,
+            1028.7659574468084,
+            159.49999999999997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            2578.7978723404253,
+            536.8,
+            1028.7659574468084,
+            159.49999999999997
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "wide",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -928,
+            398,
+            512.5,
+            45.784615384615385
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -416,
+            398,
+            512.5,
+            45.784615384615385
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            96,
+            398,
+            512.5,
+            45.784615384615385
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            608,
+            398,
+            512.5,
+            45.784615384615385
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1120,
+            398,
+            512.5,
+            45.784615384615385
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1632,
+            398,
+            512.5,
+            45.784615384615385
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -1038.6382978723404,
+            417.20000000000005,
+            567.8191489361702,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -471.3191489361702,
+            417.20000000000005,
+            567.8191489361702,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            96,
+            417.20000000000005,
+            567.8191489361702,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            663.3191489361702,
+            417.20000000000005,
+            567.8191489361702,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            1230.6382978723404,
+            417.20000000000005,
+            567.8191489361702,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            1797.9574468085107,
+            417.20000000000005,
+            567.8191489361702,
+            88
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "reduced-motion",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -1104,
+            414,
+            576.5,
+            51.50769230769231
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -528,
+            414,
+            576.5,
+            51.50769230769231
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            48,
+            414,
+            576.5,
+            51.50769230769231
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            624,
+            414,
+            576.5,
+            51.50769230769231
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1200,
+            414,
+            576.5,
+            51.50769230769231
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1776,
+            414,
+            576.5,
+            51.50769230769231
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -1228.4680851063831,
+            435.6,
+            638.7340425531916,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -590.2340425531916,
+            435.6,
+            638.7340425531916,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            48,
+            435.6,
+            638.7340425531916,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            686.2340425531916,
+            435.6,
+            638.7340425531916,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            1324.4680851063831,
+            435.6,
+            638.7340425531916,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            1962.7021276595747,
+            435.6,
+            638.7340425531916,
+            99
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          0
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "high-contrast",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -640,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            0,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            640,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1280,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1920,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -709.1489361702128,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            0,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            709.1489361702128,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            1418.2978723404256,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            2127.446808510638,
+            454,
+            709.6489361702128,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            -640,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            0,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            640,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1280,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+          "args": [
+            50,
+            317,
+            2080,
+            186,
+            1920,
+            430,
+            640.5,
+            57.23076923076923
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            -709.1489361702128,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            0,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            709.1489361702128,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            1418.2978723404256,
+            454,
+            709.6489361702128,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+          "args": [
+            26,
+            196,
+            2121,
+            329,
+            2127.446808510638,
+            454,
+            709.6489361702128,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "screenshots": [
+    "center.png",
+    "left-corner.png",
+    "right-corner.png",
+    "mobile.png"
+  ],
+  "limit": "Controlled Chromium renderer harness. Full-app navigation, physical hardware cadence, gamepad and deployment are not certified here."
+}

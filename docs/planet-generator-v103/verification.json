@@ -1,0 +1,181 @@
+{
+  "checkedAt": "2026-10-22T16:07:28.789857+00:00",
+  "runtime": {
+    "node": "24.19.0",
+    "next": "16.3.5",
+    "browser": "Chromium / SwiftShader",
+    "ciNode": "22"
+  },
+  "scope": "Focused final V103 integration and compatibility checks, not a complete game or release certification.",
+  "node": {
+    "uniqueTestsPassed": 148,
+    "failed": 0,
+    "v103Tests": 31,
+    "groups": [
+      {
+        "name": "V102 generator, persistence and V103 drafts",
+        "passed": 29,
+        "failed": 0,
+        "command": "node --test --test-isolation=none tests/planet-generator-v102.test.mjs tests/planet-generator-persistence-v102.test.mjs tests/planet-generator-draft-v103.test.mjs"
+      },
+      {
+        "name": "Materials, export durability, engine, archive boundaries, atlas and command regressions",
+        "passed": 79,
+        "failed": 0,
+        "command": "node --test --test-isolation=none tests/planet-material-v101.test.mjs tests/planet-material-export-v101.test.mjs tests/clan-war-planets-engine-v96.test.mjs tests/clan-war-planet-archive-boundaries-v96.test.mjs tests/clan-war-atlas-ui-v96.test.mjs tests/clan-war-command-v98.test.mjs"
+      },
+      {
+        "name": "V103 domain frozen geometry",
+        "passed": 10,
+        "failed": 0,
+        "command": "node --test --test-isolation=none tests/planet-generator-v102.test.mjs tests/planet-generator-v103.test.mjs",
+        "note": "The final command passed 20 tests. The ten V102 tests are already counted in the first group; only ten distinct V103 tests are counted here."
+      },
+      {
+        "name": "V103 final engine and persistence integration",
+        "passed": 11,
+        "failed": 0,
+        "durationMs": 11904.340517,
+        "command": "node --test --test-isolation=none tests/planet-generator-integration-v103.test.mjs"
+      },
+      {
+        "name": "V103 material profiles and V102 regional materials",
+        "passed": 13,
+        "failed": 0,
+        "breakdown": {
+          "v103": 6,
+          "v102": 7
+        },
+        "reproduceCommand": "node --test --test-isolation=none tests/planet-material-profiles-v103.test.mjs tests/planet-regional-material-v102.test.mjs",
+        "note": "The completed test results were retained. The original combined-versus-separate invocation was not retained after context compaction; this is the reproduction command, not an attested original invocation."
+      },
+      {
+        "name": "Audit workflow wiring",
+        "passed": 6,
+        "failed": 0,
+        "command": "node --test --test-isolation=none tests/audit-wiring-v94.test.mjs"
+      }
+    ]
+  },
+  "browser": {
+    "v103Ui": {
+      "passed": 36,
+      "ok": true,
+      "report": "ui-qa.json",
+      "command": "LD_LIBRARY_PATH=/tmp CHROMIUM_EXECUTABLE_PATH=/tmp/chromium node scripts/qa-planet-generator-v103.mjs"
+    },
+    "v102Ui": {
+      "passed": 35,
+      "ok": true,
+      "report": "../planet-generator-v102/ui-qa.json",
+      "command": "LD_LIBRARY_PATH=/tmp CHROMIUM_EXECUTABLE_PATH=/tmp/chromium node scripts/qa-planet-generator-v102.mjs"
+    },
+    "v103Materials": {
+      "passed": 10,
+      "ok": true,
+      "historicalPixelComparisons": 132,
+      "hydrologySamples": 56529,
+      "report": "materials-qa.json",
+      "command": "LD_LIBRARY_PATH=/tmp CHROMIUM_EXECUTABLE_PATH=/tmp/chromium node scripts/qa-planet-materials-v103.mjs"
+    },
+    "v102RegionalMaterials": {
+      "passed": 9,
+      "ok": true,
+      "report": "../planet-generator-v102/regional-material-qa.json",
+      "command": "LD_LIBRARY_PATH=/tmp CHROMIUM_EXECUTABLE_PATH=/tmp/chromium node scripts/qa-planet-regional-materials-v102.mjs"
+    }
+  },
+  "typecheck": {
+    "passed": true,
+    "command": "npm run typecheck"
+  },
+  "eslint": {
+    "passed": true,
+    "warnings": 0,
+    "files": 91,
+    "commandSource": ".github/workflows/audit-v94.yml / Lint changed game runtime",
+    "note": "The exact command was extracted from the parsed workflow and executed."
+  },
+  "workflow": {
+    "yamlParsed": true,
+    "jobs": 2,
+    "v103UnitUiAndMaterialGatesWired": true,
+    "productionBuild": "Reported separately by GitHub on the published commit."
+  },
+  "diffCheck": {
+    "passed": true,
+    "command": "git diff --check"
+  },
+  "v100Followup": {
+    "passed": true,
+    "command": "node scripts/build-excel-followup-v100.mjs --check",
+    "result": "PASS_STRUCTURE",
+    "inputs": 325,
+    "historicalFactsStatusesAndProvenanceUnchanged": true,
+    "v99Sha256": "53116e8f0fe10867702cccdb2d7bf2c8bbc5baa7c6a9c528085c12f780392a15",
+    "v100Sha256": "c980f7182ce70e794bbe58cc2d0b310fd39bfc44657648b92dd17b1efde89520",
+    "nativeExcelExecuted": false
+  },
+  "captureEvidence": {
+    "report": "screenshots.json",
+    "capturedAfterGeometryFreeze": true,
+    "visuallyInspected": true,
+    "gallery": "material-gallery-v103.png"
+  },
+  "sourceSha256": {
+    "app/game/ClanWarAtlasV95.module.css": "98f9f97cdac27b2e3c45812ef826866f7d416b2fc4faa8e01e0d5585432b5080",
+    "app/game/ClanWarAtlasV95.tsx": "f39ca432ed7f827daa4b63a6f9fd2d0ffb961e9bc84cd7e12552921a768e52e9",
+    "app/game/ClanWarPanelV85.tsx": "631158b9cb3919db548b5500bef6bf6948253da4e564e6b073987be53dac6208",
+    "app/game/ClanWarPlanetsV96.module.css": "afd8ed322d1ec45e79723d7010f6b1c6e47ad895b207cc6b6d4db14cf5aa3164",
+    "app/game/ClanWarPlanetsV96.tsx": "538c5442439ccffa6a3818b57ba4146da2112c02c34bb1fc0846c22d884e118e",
+    "app/game/PlanetGeneratorV102.tsx": "1c053831464071b6b88f791815e56f3ee59f85561398c2416f0568eac09952cb",
+    "app/game/PlanetGeneratorV103.module.css": "cf148b6f905825e46d6c8361fe06fa36d5cf46e9bedad57e2c2396ae18378061",
+    "app/game/PlanetGeneratorV103.tsx": "09854f58841865bb1a56a900c03730c444fd0c9d12fc99aefb7bbc6a3ae690db",
+    "app/game/planetDetailMaterialsV103.ts": "c48bc070b1f2ddde2ad7fd3e8dfd7986ebd8449245b4eb722059f714c26cb269",
+    "app/game/planetGeneratorControlsV103.ts": "53302c666c3c48448eafadac41822a27d18888d24383f764fb020f42857a85f1",
+    "app/game/planetMaterialRendererV101.ts": "31febb3399f4449767c393471779cdc42e9a40faf1653e42e731cdfd9a25b27c",
+    "app/game/planetRegionalMaterialsV102.ts": "a9d6359853520c06b4ab745a572dc465a485eb77cd102c4c7dbe1379d27edf69",
+    "app/game/systems/clanWarCommandV98.ts": "6621fae8c70f7b8d4b5639faf508f72106ed500446d06fa9e125600dfd6148ea",
+    "app/game/systems/clanWarDeploymentV103.ts": "88a22b26629f348f053226294748ffb3af3b62dd652da58c242986aa2530fba2",
+    "app/game/systems/clanWarGeneratedCatalogV103.ts": "692f8daf1b723597e2103195a26e8f3309d9cbff0ba35563901205f8b54ac4ce",
+    "app/game/systems/clanWarPlanetDraftV103.ts": "74d940e7639df66e2de7512bf0112ed64ec0a52a780474ba7eaeadf296564138",
+    "app/game/systems/clanWarPlanetGeneratorV102.ts": "c86a697d74b867a271ed3f4dcd0dab6a2d14e44d8966185d5bdbb30b1fbd9aaf",
+    "app/game/systems/clanWarPlanetGeneratorV103.ts": "cdec554ccc53c363e14a17269abe127f6c15d3f8fdb2bdd7e7d23a91be56e054",
+    "app/game/systems/clanWarPlanetGeographyV103.ts": "4e6a40fc1124325690bf2080938a8de13716c7906a1014e5224dded0519469a9",
+    "app/game/systems/clanWarPlanetsV96.ts": "a263e11a43dd43bf0bc8c4b9d39a5ea8a907034c4ee375832ba287e73c4da0b4",
+    "app/game/systems/clanWarProceduralV103.ts": "18505b3a51d0bb87e82dda6b4d92b9fe5b419667692cb43ffd39d846a0d81f48",
+    "app/game/systems/clanWarV85.ts": "deb710ef5766b0093889118dd590d7c87683efb226e14eb330579d82e7d3f17f",
+    "app/game/systems/planetMaterialProfilesV103.ts": "1208340900995e1ab03c33a317b1249bfa5d5cc1d2dd3006e008f28eae089943",
+    "app/game/systems/planetMaterialV101.ts": "f4ef5d4f9141e1db9d7b018201ddd0c10b243611c36f6550611dbfa73c516894",
+    "app/game/useGeneratedWarCatalogV103.ts": "4b3cb8bdcb8ffeb31c4a7bf0ab5421203c36247b3eebd2b8257bd6f717f8ad68",
+    "app/planet-generator-v103/page.tsx": "020e700a1f83a95ec2f9f1297cff0f91cc405a9be04f2361d3d9c0f4cdc84671",
+    "app/planet-generator-v103/review.module.css": "00474fee09384d33030cd41b99689b83ecc8c4b49006730d20d903cf787b6ac4",
+    "app/planet-generator-v103/review.tsx": "f7b0eec1dd8fcdace34138ce1ff9f33dbdc52eeb23fe2762b0063ede71fa9def",
+    "scripts/export-planet-materials-v101.mjs": "dd421a85bcd65ec67f7a2c71d423128c9606dd837947cbe11230537c51c7c096",
+    "scripts/prepare-planet-material-v102-baseline.mjs": "3b9d6444c753e3b214e2ab7b749a76a86907c18095d7a0c9237787b66b7561fc",
+    "scripts/qa-planet-generator-v102.mjs": "d31cd3e6a3bdd447fb506822b62961967fca366c8c0510cde501786b349e1271",
+    "scripts/qa-planet-generator-v103.mjs": "9386583f6fefb017f74228fc484d82ca3c1baac787e81e9ea03bf329eac1f7d6",
+    "scripts/qa-planet-materials-v103.mjs": "8fee07d8dadd2edf09b8bca360daf81828a4d8e333e19dc29dfc46d83c0ef350",
+    "tests/fixtures/planet-material-v102/planetMaterialRendererV101.ts.txt": "0c85dd77255a140c62fc43d1894182debb115d7423351b29d3b14281154bfd26",
+    "tests/fixtures/planet-material-v102/planetMaterialV101.ts.txt": "c0bddbc279f4084e09d3c591a01041d6cdb0a2b4140bf64198e42bf93c3db939",
+    "tests/fixtures/planet-material-v102/planetRegionalMaterialsV102.ts.txt": "aeadf441cab63bfefc60bf0cebc27264ebb386410e547fed1d50d16f78906fba",
+    "tests/planet-generator-draft-v103.test.mjs": "dd44a428ee4e05039bd68a1f3b2bc8dd927c63d91db630ea641a09f3c53cca42",
+    "tests/planet-generator-integration-v103.test.mjs": "12709128e812e2ff36dd00d79467566782a5a4958b021cb7a62863f6bdcd9856",
+    "tests/planet-generator-v103.test.mjs": "77cbdd7ffb428725547b80b0fc6e366ffcad4d4031dbc6825f1937133dae8eaf",
+    "tests/planet-material-export-v101.test.mjs": "788c91159c769345439dc9350da10624c03111f3286770e086241fbae11c07cc",
+    "tests/planet-material-profiles-v103.test.mjs": "0ee75f466b81aa10f0099f351ae751b15666a63efce20b5ae9c55804f2598ad6"
+  },
+  "limits": [
+    "Local checks use Node 24 and software WebGL, including highp and forced mediump. They do not certify every physical mobile GPU.",
+    "Full production build, deployment and repository-wide gates are reported by the GitHub checks attached to the exact published commit.",
+    "Hydrology is deterministic geometric cutouts, without fluid physics or naval territories; environmental dossiers add no combat modifier.",
+    "The V100 workbook was regenerated and checked by the native repository script; it was not opened in desktop Excel."
+  ],
+  "localFixtureNotes": [
+    {
+      "url": "/game/backgrounds/ship.webp",
+      "status": 404,
+      "origin": "Existing global CSS artwork is omitted from the local sparse checkout. All required planet materials loaded; runtime and hydration error lists are empty."
+    }
+  ]
+}

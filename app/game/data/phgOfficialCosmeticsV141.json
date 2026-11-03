@@ -1,0 +1,247 @@
+{
+  "schema": "phg-v141-official-cosmetic-categories",
+  "referenceDate": "2026-11-01",
+  "canonicalGameUVsIncluded": false,
+  "visualCertification1to1": false,
+  "sources": {
+    "patch219": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+    "patch250": "https://predator.illfonic.com/news/patch-notes-2-50/",
+    "patch300": "https://predator.illfonic.com/news/patch-notes-3-00/"
+  },
+  "armorTints": [
+    {
+      "id": "armor-requiem",
+      "name": "Requiem",
+      "classes": [
+        "alpha"
+      ],
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "not-in-runtime",
+      "note": "Official armor tint distinct from the Requiem biomask shader. No certified PHG UV/pixels."
+    },
+    {
+      "id": "armor-nova",
+      "name": "Nova",
+      "classes": [
+        "alpha",
+        "scout",
+        "hunter",
+        "berserker",
+        "city-hunter-97",
+        "jungle-hunter-87",
+        "elder",
+        "samurai",
+        "viking"
+      ],
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "not-in-runtime",
+      "note": "Official armor tint, not the V132 Nova biomask tile."
+    }
+  ],
+  "maskTints": [
+    {
+      "id": "mask-requiem",
+      "name": "Requiem",
+      "classes": [
+        "samurai",
+        "alpha"
+      ],
+      "materialId": "phg-study-v132-requiem",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "original-study-installed",
+      "visualCertified1to1": false
+    },
+    {
+      "id": "mask-nova",
+      "name": "Nova",
+      "classes": [
+        "samurai",
+        "alpha"
+      ],
+      "materialId": "phg-study-v132-nova",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "original-study-installed",
+      "visualCertified1to1": false
+    },
+    {
+      "id": "mask-ogre",
+      "name": "Ogre",
+      "classes": [
+        "alpha"
+      ],
+      "materialId": "phg-study-v131-alpha-ogre-biomask",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "original-study-installed",
+      "visualCertified1to1": false
+    },
+    {
+      "id": "mask-instinct",
+      "name": "Instinct",
+      "classes": [
+        "alpha"
+      ],
+      "materialId": "phg-study-v132-instinct",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "original-study-installed",
+      "visualCertified1to1": false
+    },
+    {
+      "id": "mask-glypic",
+      "name": "Glypic",
+      "classes": [
+        "alpha"
+      ],
+      "materialId": "phg-study-v132-glypic",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "original-study-installed",
+      "visualCertified1to1": false
+    },
+    {
+      "id": "mask-tyrant",
+      "name": "Tyrant",
+      "classes": [
+        "alpha"
+      ],
+      "materialId": "phg-study-v132-tyrant",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "original-study-installed",
+      "visualCertified1to1": false
+    },
+    {
+      "id": "mask-warlord",
+      "name": "Warlord",
+      "classes": [
+        "alpha"
+      ],
+      "materialId": "phg-study-v132-warlord",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "original-study-installed",
+      "visualCertified1to1": false
+    },
+    {
+      "id": "mask-paroxysm",
+      "name": "Paroxysm",
+      "classes": [
+        "alpha"
+      ],
+      "materialId": "phg-study-v132-paroxysm",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "original-study-installed",
+      "visualCertified1to1": false
+    }
+  ],
+  "skinPatternTints": [
+    {
+      "id": "skin-gator-waves",
+      "name": "Waves (Gator)",
+      "classes": [
+        "alpha",
+        "berserker",
+        "city-hunter-97",
+        "elder",
+        "hunter",
+        "jungle-hunter-87",
+        "scout"
+      ],
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "original-study-installed",
+      "materialId": "phg-study-v129-gator_waves_skin",
+      "visualCertified1to1": false
+    }
+  ],
+  "maskGeometry": [
+    {
+      "id": "mr-black-mask",
+      "name": "Mr Black",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "authentic-geometry-unverified",
+      "notes": "Year 1 Bundle early access mask, not a shader."
+    },
+    {
+      "id": "city-hunter-rebreather",
+      "name": "City Hunter Rebreather",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "authentic-geometry-unverified",
+      "notes": "Separate mask shape from the City Hunter armor."
+    },
+    {
+      "id": "saber-dutch-pauldron",
+      "name": "Saber (Dutch’s Shoulder Pauldron)",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "authentic-geometry-unverified",
+      "notes": "Named official mask; original model still needs source views."
+    }
+  ],
+  "warpaints": [
+    {
+      "id": "warpaint-waves",
+      "name": "Waves",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "reference-only",
+      "pixelMatchVerified": false
+    },
+    {
+      "id": "warpaint-sun",
+      "name": "Sun",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "reference-only",
+      "pixelMatchVerified": false
+    },
+    {
+      "id": "warpaint-erode",
+      "name": "Erode",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "reference-only",
+      "pixelMatchVerified": false
+    },
+    {
+      "id": "warpaint-cortex",
+      "name": "Cortex",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "reference-only",
+      "pixelMatchVerified": false
+    },
+    {
+      "id": "warpaint-retch",
+      "name": "Retch",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "reference-only",
+      "pixelMatchVerified": false
+    },
+    {
+      "id": "warpaint-attend",
+      "name": "Attend",
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "artStatus": "reference-only",
+      "pixelMatchVerified": false
+    }
+  ],
+  "maskCompatibility": [
+    {
+      "maskId": "pirate",
+      "disallowed": [
+        "warpaint",
+        "scar"
+      ],
+      "source": "https://predator.illfonic.com/news/patch-notes-2-50/",
+      "evidence": "Pirate mask Warpaint and Scar menus were wrongly accessible before patch 2.50."
+    },
+    {
+      "maskId": "scar",
+      "issue": "scar cosmetics display fixes",
+      "source": "https://predator.illfonic.com/news/patch-notes-3-00/"
+    },
+    {
+      "maskId": "jungle",
+      "issue": "Scar 1 cosmetic corrected on Jungle Hunter '87 mask",
+      "source": "https://predator.illfonic.com/news/patch-notes-3-00/"
+    }
+  ],
+  "productionRules": [
+    "Warpaint is not a skin-pattern shader; Waves (warpaint) and Waves (Gator skin) are separate cosmetic entries.",
+    "A mask tint is not an armor tint, even if both are named Nova or Requiem.",
+    "Original V133 mask concepts are not replicas of original PHG mask geometry.",
+    "Pirate's official Warpaint/Scar restriction does not automatically forbid original clan decorative decals, which are a separate game system.",
+    "Every visually unverified item remains a reference or provisional study, not a 1:1-certified render."
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-126-avpr-2007-hospital-roof",
+  "id": "ambient-03",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-8af8cfe6-2013-4289-9477-fdfb43d8f831.png",
+  "workspacePath": "work-local/v62/generated/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+  "sha256": "03e496ae9570aef5d554f4436e99d484b7691d69952a33bf31cd110014b8ab2a",
+  "bytes": 1685952,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.795989990234375,
+  "copyByteIdentical": true,
+  "prompt": "Use case: stylized-concept. Asset type: production native 2D fighting-game background animation sprite sheet. Output exactly 1536x1024 PNG with genuinely transparent background. EXACTLY six independently drawn animation frames in a perfectly regular 3 columns by 2 rows grid: each cell 512x512. No visible grid, no cell outlines, no labels, no text, no checkerboard painting. Each drawing must fit completely inside its own cell with at least 48 pixels of transparent gutter on every side; nothing crosses a cell boundary. The same subject with the same scale, proportions, color and orthographic side camera in all six cells. Hand-painted realistic production game art, crisp isolated alpha silhouette, realistic anatomy/materials, subdued cool blue night or steel light, not cartoon. Transparent outside the isolated subject, including negative spaces. Do not draw a scene, a floor, backdrop, shadow card or border. Six actual different poses, never six identical pasted copies. Read chronological order left-to-right top row then left-to-right bottom row. Subject: one isolated low hospital rooftop galvanized steel mushroom ventilation outlet, wet dark metal circular cap, square base flange, emits a restrained thin wisp of steam pushed toward screen right. Six consecutive native drawings of steam subtly curling in wind, the outlet and base stay perfectly identical and registered in all cells. Steam stays small and softly translucent, never fills the cell. No glow, no fire, no smoke from destruction, no people, no floating base shadow. Small realistic original utility prop compatible with a rainy early-2000s American rooftop at night. Base contact at exact same pixel height in all frames.\nCRITICAL REVISION: Previous attempt had steam touching/crossing the grid cell edges. This output must make EVERY COMPLETE vent+steam drawing at most 320 pixels wide and 300 pixels tall in its 512 square cell. Put 96 pixels of completely empty alpha around EACH cell. Short steam only immediately over the vent, no long trailing steam. The entire steam wisp ends at least 96 pixels before the right edge of its cell. Draw no atmospheric haze, shadow or colored glow around it. Fixed vent width240px centered at x256 in everycell, basebaseline y420 for all six cells.",
+  "referencedImagePaths": [],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E64"
+  ],
+  "loreLimits": [
+    "Original anonymous background adaptation, not certified 1:1.",
+    "The separate workbook chapter variant remains open."
+  ],
+  "rejectedAttempts": [
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-4d4e0a31-a7f9-47f7-af20-c904787f224f.png",
+      "reason": "Steam crosses cell boundaries: solid alpha at native grid borders. No erasing/cropping performed.",
+      "retained": true
+    }
+  ],
+  "visualNotes": "Fixed wet utility vent, six distinct limited steam curls; no destructive fire or magic.",
+  "status": "visually-accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        78,
+        192,
+        351,
+        242
+      ],
+      "pivot": [
+        224.5,
+        434
+      ],
+      "margins": [
+        78,
+        192,
+        83,
+        78
+      ],
+      "opaquePixelCount": 51455,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "40ea720a5caa4a28560604503515cdeb0b97fe09ad9f795b85ce1271ec87e900"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        80,
+        192,
+        349,
+        242
+      ],
+      "pivot": [
+        225.5,
+        434
+      ],
+      "margins": [
+        80,
+        192,
+        83,
+        78
+      ],
+      "opaquePixelCount": 52374,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "584893ea1a3e9cfc3cc32ed5589e87dbf0986c40d769742d797022e656929947"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        80,
+        192,
+        386,
+        242
+      ],
+      "pivot": [
+        226.5,
+        434
+      ],
+      "margins": [
+        80,
+        192,
+        46,
+        78
+      ],
+      "opaquePixelCount": 54424,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "51947aa6c749ebeeb8fe84d87fa8696b19a07c89527e4bbeb735325cbf110827"
+    },
+    {
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        80,
+        192,
+        370,
+        243
+      ],
+      "pivot": [
+        226,
+        435
+      ],
+      "margins": [
+        80,
+        192,
+        62,
+        77
+      ],
+      "opaquePixelCount": 52982,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "e639bf2d78c7e05cc9a8940fc18dad7fb09872318600b0d94983b08911b6cef0"
+    },
+    {
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        78,
+        192,
+        398,
+        242
+      ],
+      "pivot": [
+        224.5,
+        434
+      ],
+      "margins": [
+        78,
+        192,
+        36,
+        78
+      ],
+      "opaquePixelCount": 56695,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "ca07c3a1563ac782fdc65251695f045b1c41c89ed6dcc8b0f0853d72b8e06824"
+    },
+    {
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        80,
+        192,
+        367,
+        242
+      ],
+      "pivot": [
+        226.5,
+        434
+      ],
+      "margins": [
+        80,
+        192,
+        65,
+        78
+      ],
+      "opaquePixelCount": 52950,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "d84e628c349ece429befe2bd42812c85f8af4736a65e99c9f37000ff5014e7af"
+    }
+  ]
+}

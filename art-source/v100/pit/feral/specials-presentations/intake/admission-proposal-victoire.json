@@ -1,0 +1,444 @@
+{
+  "fighterId": "feral-hunter",
+  "actionId": "CIN_F006_VICTOIRE",
+  "appearanceId": "runtime-default",
+  "atlasId": "feral-workbook-victoire-v100",
+  "clipIds": [
+    "workbook.CIN_F006_VICTOIRE"
+  ],
+  "definition": {
+    "fighterId": "feral-hunter",
+    "bodyHeightPx": 363,
+    "pageBodyHeightPx": {
+      "feral-special-victoire-a-v100": 363,
+      "feral-special-victoire-b-right-v100": 459,
+      "feral-special-victoire-b-left-v100": 438
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "feral-special-victoire-a-v100",
+        "rect": [
+          0,
+          0,
+          506,
+          435
+        ],
+        "visibleRect": [
+          152,
+          32,
+          285,
+          383
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-a-v100",
+        "rect": [
+          505,
+          0,
+          519,
+          435
+        ],
+        "visibleRect": [
+          574,
+          31,
+          294,
+          383
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-a-v100",
+        "rect": [
+          0,
+          434,
+          515,
+          328
+        ],
+        "visibleRect": [
+          137,
+          454,
+          339,
+          291
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-a-v100",
+        "rect": [
+          514,
+          434,
+          510,
+          328
+        ],
+        "visibleRect": [
+          553,
+          462,
+          357,
+          288
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-a-v100",
+        "rect": [
+          0,
+          761,
+          532,
+          321
+        ],
+        "visibleRect": [
+          116,
+          776,
+          370,
+          296
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-a-v100",
+        "rect": [
+          531,
+          761,
+          493,
+          321
+        ],
+        "visibleRect": [
+          578,
+          774,
+          383,
+          295
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-a-v100",
+        "rect": [
+          0,
+          1081,
+          528,
+          455
+        ],
+        "visibleRect": [
+          162,
+          1091,
+          333,
+          405
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-a-v100",
+        "rect": [
+          527,
+          1081,
+          497,
+          455
+        ],
+        "visibleRect": [
+          561,
+          1097,
+          317,
+          390
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-b-right-v100",
+        "rect": [
+          0,
+          0,
+          509,
+          744
+        ],
+        "visibleRect": [
+          75,
+          154,
+          366,
+          468
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-b-right-v100",
+        "rect": [
+          0,
+          743,
+          513,
+          793
+        ],
+        "visibleRect": [
+          70,
+          866,
+          387,
+          467
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-b-right-v100",
+        "rect": [
+          512,
+          743,
+          512,
+          793
+        ],
+        "visibleRect": [
+          568,
+          869,
+          392,
+          461
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-b-left-v100",
+        "rect": [
+          0,
+          0,
+          530,
+          746
+        ],
+        "visibleRect": [
+          67,
+          117,
+          404,
+          501
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-b-left-v100",
+        "rect": [
+          0,
+          745,
+          518,
+          791
+        ],
+        "visibleRect": [
+          81,
+          872,
+          383,
+          498
+        ]
+      },
+      {
+        "pageId": "feral-special-victoire-b-left-v100",
+        "rect": [
+          517,
+          745,
+          507,
+          791
+        ],
+        "visibleRect": [
+          571,
+          872,
+          399,
+          501
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "feral-workbook-victoire-v100",
+      "characterId": "feral-hunter",
+      "variantId": "body-default-v100",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "feral-special-victoire-a-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-victoire-a-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-victoire-b-right-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-victoire-b-right-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-special-victoire-b-left-v100",
+          "src": "/game/sprites/v100/pit/feral/feral-special-victoire-b-left-v100.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "workbook.CIN_F006_VICTOIRE",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-victoire-a-v100",
+              "rect": [
+                0,
+                434,
+                515,
+                328
+              ],
+              "pivot": [
+                234,
+                300
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-victoire-a-v100",
+              "rect": [
+                0,
+                761,
+                532,
+                321
+              ],
+              "pivot": [
+                236,
+                308
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-victoire-a-v100",
+              "rect": [
+                0,
+                1081,
+                528,
+                455
+              ],
+              "pivot": [
+                264,
+                414
+              ],
+              "durationTicks": 50
+            },
+            {
+              "pageId": "feral-special-victoire-b-right-v100",
+              "rect": [
+                0,
+                743,
+                513,
+                793
+              ],
+              "pivot": [
+                274,
+                590
+              ],
+              "durationTicks": 80
+            },
+            {
+              "pageId": "feral-special-victoire-b-right-v100",
+              "rect": [
+                512,
+                743,
+                512,
+                793
+              ],
+              "pivot": [
+                265,
+                587
+              ],
+              "durationTicks": 90
+            }
+          ]
+        },
+        {
+          "id": "workbook.CIN_F006_VICTOIRE",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-special-victoire-a-v100",
+              "rect": [
+                514,
+                434,
+                510,
+                328
+              ],
+              "pivot": [
+                294,
+                295
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-victoire-a-v100",
+              "rect": [
+                531,
+                761,
+                493,
+                321
+              ],
+              "pivot": [
+                280,
+                303
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "feral-special-victoire-a-v100",
+              "rect": [
+                527,
+                1081,
+                497,
+                455
+              ],
+              "pivot": [
+                246,
+                404
+              ],
+              "durationTicks": 50
+            },
+            {
+              "pageId": "feral-special-victoire-b-left-v100",
+              "rect": [
+                0,
+                745,
+                518,
+                791
+              ],
+              "pivot": [
+                260,
+                625
+              ],
+              "durationTicks": 80
+            },
+            {
+              "pageId": "feral-special-victoire-b-left-v100",
+              "rect": [
+                517,
+                745,
+                507,
+                791
+              ],
+              "pivot": [
+                271,
+                628
+              ],
+              "durationTicks": 90
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "validated",
+    "scope": "source-presentation-native-recover-rejoin-bolt-check-listening-body-study-only",
+    "sourceSha256": "0373a5e8025c8c4b7ae7dbad9d50a6764af38d52989f7c98d4495828a6d4b25b",
+    "sourceHashes": {
+      "/game/sprites/v100/pit/feral/feral-special-victoire-a-v100.png": "0373a5e8025c8c4b7ae7dbad9d50a6764af38d52989f7c98d4495828a6d4b25b",
+      "/game/sprites/v100/pit/feral/feral-special-victoire-b-right-v100.png": "91fcac8364df3f192a94e1538fb7cb9537788f7ec4c00fa94bfda15302f80bd4",
+      "/game/sprites/v100/pit/feral/feral-special-victoire-b-left-v100.png": "2d3a80a33be972b20a725c6a1c671ca500f2bf1d4beb8cd028be7e9b13f3cb53"
+    },
+    "notes": "D10. Five actual action drawings each facing: recover first dropped spear part, recover second, rejoin mechanical spear, inspect remaining bolts in existing LEFT launcher, listen alertly without salute. QA opened final B08 in both directions and approved the mechanical two-ended red-core spear held RIGHT and short launcher LEFT, with correct two-arm grips. Drawing A carries a source ellipse between the assembled weapon and later launcher already in hand: no continuous launcher draw or inventory transition is claimed. Final B calibration0 and unneeded intermediate1 excluded, with genuine check2/listen3 retained. Native spear detail/shaft angle varies between independently authored sheets; no exact prop scale, forest decor, sound, ammunition counter or campaign victory lifecycle certified. Fixed body references use MASK crown and Feral feet, excluding spear tips and ground parts. Right final B08 abdomen is noticeably redder than page A; this native color variation is recorded, not claimed as a coherent skin-color transition. Calibrations are excluded; playback durations are for visual inspection, not source mechanics."
+  }
+}

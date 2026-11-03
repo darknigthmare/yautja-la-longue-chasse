@@ -1,3 +1,6 @@
+import type {FieldSpecimenV112,HarvestInventoryV112} from "./systems/harvestInventoryV112";
+import type { HuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
+import type { HunterChromaticsV113 } from "./hunterChromaticsV113";
 /**
  * Shared game contracts.
  *
@@ -6,6 +9,23 @@
  * definitions into its own mutable simulation state.
  */
 
+import type { ControlBindings } from "./systems/controlBindings";
+import type { HomeworldProgress } from "./systems/homeworld";
+import type { SoloV66Campaign } from "./systems/campaignSoloV66";
+import type { SoloV67Campaign } from "./systems/campaignSoloV67";
+import type { SoloV68Campaign } from "./systems/campaignSoloV68";
+import type { SoloV69Campaign } from "./systems/campaignSoloV69";
+import type { SoloV70Campaign } from "./systems/campaignSoloV70";
+import type { SoloV90Campaign } from "./systems/campaignSoloV90";
+import type { HomeworldRegionStateV68 } from "./systems/homeworldRegionsV68";
+import type { HomeworldPassageStateV67 } from "./systems/homeworldPassageV67";
+import type { GameReserveV66State } from "./systems/gameReserveV66";
+import type { YouthCampaignProgress } from "./systems/youthCampaign";
+import type { NurseryCampaignProgress } from "./systems/nurseryCampaign";
+import type { JusticeProgress } from "./systems/justice";
+import type { ShipPreparationStateV88 } from "./systems/shipPreparationV88";
+import type { ShipAcquisitionStateV89 } from "./systems/shipAcquisitionV89";
+
 // ---------------------------------------------------------------------------
 // Stable content identifiers
 // ---------------------------------------------------------------------------
@@ -13,9 +33,22 @@
 export type MissionId =
   | "jungle-vey"
   | "ice-cryostalker"
-  | "volcano-bad-blood";
+  | "volcano-bad-blood"
+  | "swamp-hydra"
+  | "desert-sandmaw"
+  | "ocean-leviathan"
+  | "fungal-hivemind"
+  | "ruins-ancient-guardian";
 
-export type BiomeId = "jungle" | "ice" | "volcano";
+export type BiomeId =
+  | "jungle"
+  | "ice"
+  | "volcano"
+  | "swamp"
+  | "desert"
+  | "ocean"
+  | "fungal"
+  | "ruins";
 
 export type WeaponId =
   | "wristblades"
@@ -23,6 +56,9 @@ export type WeaponId =
   | "plasma-caster"
   | "smart-disc"
   | "yautja-bow";
+
+/** Permanent field tools are carried independently of the two charged gear slots. */
+export type FieldToolId = "flaying-tool";
 
 export type GearId =
   | "netgun"
@@ -45,7 +81,17 @@ export type CodexEntryId =
   | "nivalis-ice"
   | "cryostalker"
   | "cinder-volcano"
-  | "bad-blood";
+  | "bad-blood"
+  | "naraka-swamp"
+  | "mire-hydra"
+  | "serekh-desert"
+  | "sandmaw"
+  | "pelagos-ocean"
+  | "abyss-leviathan"
+  | "mycora-fungal"
+  | "hivemind"
+  | "acheron-ruins"
+  | "ancient-guardian";
 
 export type TrophyQuality = "worthy" | "blooded" | "elite" | "flawless";
 
@@ -55,6 +101,163 @@ export type MissionProgressStatus = "locked" | "available" | "completed";
 
 export type UpgradeLevel = 0 | 1 | 2;
 
+/** Permanent traversal unlocks, independent of mission scores and equipment. */
+export type ExplorationAbilityId =
+  | "aerial-boost"
+  | "thermal-resistance"
+  | "acid-protection"
+  | "cutting-blade"
+  | "aquatic-respirator"
+  | "spore-vision"
+  | "ancient-tech-detection";
+
+export interface ExplorationProgress {
+  abilityIds: ExplorationAbilityId[];
+  openedGateIds: string[];
+  secretIds: string[];
+  discoveredRoomIds: string[];
+}
+
+export type HunterSkinId =
+  | "ochre-mottle"
+  | "ashen-mottle"
+  | "dark-mottle";
+
+export type HunterBodyMorphId =
+  | "classic"
+  | "elder"
+  | "super"
+  | "feral"
+  | "huntress"
+  | "young";
+
+export type HunterArmorStyleId =
+  | "classic"
+  | "city"
+  | "avp"
+  | "super"
+  | "feral";
+
+export type HunterPresetId =
+  | "custom"
+  | "jungle-hunter"
+  | "city-hunter"
+  | "greyback"
+  | "boar"
+  | "shaman"
+  | "lost-borg"
+  | "snake"
+  | "warrior"
+  | "guardian"
+  | "lost-scout"
+  | "lost-stalker"
+  | "scar"
+  | "celtic"
+  | "chopper"
+  | "avp-elder"
+  | "ancient-warrior"
+  | "temple-guard"
+  | "youngblood"
+  | "wolf"
+  | "bull"
+  | "bonegrill"
+  | "classic-captive"
+  | "berserker"
+  | "falconer"
+  | "tracker"
+  | "fugitive"
+  | "assassin"
+  | "emissary-one"
+  | "emissary-two"
+  | "feral-hunter"
+  | "kok-jotun"
+  | "kok-oni"
+  | "kok-pilot"
+  | "kok-warlord"
+  | "kok-captive"
+  | "kok-arena-guard"
+  | "dek"
+  | "kwei"
+  | "dek-father"
+  | "scarface"
+  | "stone-heart"
+  | "alpha"
+  | "samurai"
+  | "valkyrie"
+  | "cleopatra"
+  | "bionic"
+  | "witch"
+  | "broken-tusk"
+  | "ahab"
+  | "big-mama"
+  | "enforcer"
+  | "bad-blood-comic"
+  | "hashori";
+
+export type BiomaskId =
+  | "jungle"
+  | "city"
+  | "elder"
+  | "scar"
+  | "celtic"
+  | "chopper"
+  | "wolf"
+  | "feral"
+  | "boar"
+  | "snake"
+  | "falconer"
+  | "berserker"
+  | "fugitive"
+  | "dek"
+  | "enforcer"
+  | "clan-voile-argent"
+  | "clan-cuivre-remparts"
+  | "clan-entrelacs-forge"
+  | "clan-os-grave"
+  | "clan-cendre-balafree"
+  | "clan-arete-acier"
+  | "clan-veilleur-cendres"
+  | "clan-carapace-sombre"
+  | "clan-filigrane-cuivre"
+  | "clan-patine-dunes"
+  | "clan-gardien-ivoire"
+  | "concept-v133-requiem"
+  | "concept-v133-nova"
+  | "concept-v133-instinct"
+  | "concept-v133-glypic"
+  | "concept-v133-tyrant"
+  | "concept-v133-warlord"
+  | "concept-v133-paroxysm";
+
+export type DreadStyleId =
+  | "classic"
+  | "ringed"
+  | "braided"
+  | "veteran"
+  | "elder"
+  | "temple"
+  | "feral"
+  | "huntress";
+
+export type DreadTintId = "obsidian" | "umber" | "ashen";
+
+/** The preserved V3 head is an original clan design, not a named film likeness. */
+export type HunterHeadStyleId = "reference" | "legacy-clan";
+
+export type ArmorTintId = "gunmetal" | "bronze" | "obsidian";
+
+export type LaserColorId = "crimson" | "electric" | "amber" | "violet" | "cyan";
+
+export type TrophyAdornmentId = "none" | "skull-spine";
+
+export type TrophyPartId =
+  | "skull"
+  | "skull-and-spine"
+  | "mask"
+  | "insignia";
+
+export type TrophyCondition = "damaged" | "intact" | "pristine";
+
 // ---------------------------------------------------------------------------
 // Player loadout and equipment definitions
 // ---------------------------------------------------------------------------
@@ -63,6 +266,23 @@ export interface Loadout {
   armorId: ArmorId;
   weaponIds: [WeaponId, WeaponId];
   gearIds: [GearId, GearId];
+}
+
+export interface HunterAppearance {
+  presetId: HunterPresetId;
+  bodyMorphId: HunterBodyMorphId;
+  headStyleId?: HunterHeadStyleId;
+  skinId: HunterSkinId;
+  biomaskId: BiomaskId | null;
+  dreadStyleId: DreadStyleId;
+  dreadTintId: DreadTintId;
+  armorStyleId: HunterArmorStyleId;
+  armorTintId: ArmorTintId;
+  trophyAdornmentId: TrophyAdornmentId;
+  /** Optional on legacy/preset objects; persistence always supplies a value. */
+  laserColorId?: LaserColorId;
+  /** Optional for legacy V1-V112 saves; normalized by save.ts. */
+  chromaticsV113?: HunterChromaticsV113;
 }
 
 export interface ContentUnlock {
@@ -180,11 +400,23 @@ export type HonorRuleKind =
   | "accept-duel"
   | "no-second-wind";
 
+export type HonorRuleCondition =
+  | "target-scanned-before-strike"
+  | "scan-objective-complete"
+  | "recover-objective-complete"
+  | "no-plasma-on-regular-prey"
+  | "environmental-armor-break"
+  | "duel-kept"
+  | "purge-stopped"
+  | "no-second-wind";
+
 export interface HonorRuleDefinition {
   id: string;
   label: string;
   description: string;
   kind: HonorRuleKind;
+  /** Runtime fact that resolves this authored rule. */
+  condition: HonorRuleCondition;
   bonus: number;
   violationPenalty: number;
 }
@@ -256,7 +488,15 @@ export interface TrophyDefinition {
   name: string;
   description: string;
   targetName: string;
+  /** Physical object removed during the mission and carried to extraction. */
+  partId: TrophyPartId;
   icon: string;
+}
+
+export interface MissionDebriefDefinition {
+  success: string;
+  failureHint: string;
+  nextLead: string | null;
 }
 
 export interface MissionDefinition {
@@ -269,6 +509,7 @@ export interface MissionDefinition {
   targetName: string;
   targetKind: "human" | "beast" | "yautja";
   briefing: string;
+  debrief: MissionDebriefDefinition;
   threatLevel: 1 | 2 | 3 | 4;
   prerequisiteMissionId: MissionId | null;
   recommendedArmorId: ArmorId;
@@ -295,6 +536,20 @@ export interface HonorEvent {
   kind: "honorable-kill" | "scan" | "objective" | "violation" | "duel";
 }
 
+export interface TrophyClaim {
+  /** Unique physical-claim identifier supplied by the mission runtime. */
+  id: string;
+  /** Stable content definition used to select the trophy artwork/model. */
+  definitionId: string;
+  /** Enemy-roster identity for secondary V18 claims; absent on Apex trophies. */
+  sourceEnemyId?: string;
+  targetName: string;
+  targetKind: "human" | "beast" | "yautja";
+  partId: TrophyPartId;
+  condition: TrophyCondition;
+  quality: TrophyQuality;
+}
+
 export interface MissionResult {
   missionId: MissionId;
   difficultyId: DifficultyId;
@@ -303,9 +558,22 @@ export interface MissionResult {
   elapsedSeconds: number;
   completedObjectiveIds: string[];
   honorEvents: HonorEvent[];
+  /** Legacy aggregate quality remains authoritative for scoring. */
   trophyQuality: TrophyQuality | null;
+  /** Empty when no removable trophy part was claimed. */
+  trophyClaims: TrophyClaim[];
+  /** Finite anatomical specimens are delivered only after successful extraction. */
+  specimensV112?: FieldSpecimenV112[];
+  /** IDs of actual completed operations; wear is applied once, including failed hunts. */
+  toolUseIdsV112?: string[];
+  /** Monotone actual encounter index, matching missionProgress.attempts at launch. */
+  harvestEncounterRunV112?: number;
   kills: number;
   scans: number;
+  /** Stable V7/V8 roster identities encountered during this hunt. */
+  discoveredEnemyIds?: string[];
+  /** Permanent discoveries survive success, death and voluntary extraction. */
+  exploration?: ExplorationProgress;
   secondWindUsed: boolean;
   completedAt: string;
 }
@@ -314,14 +582,17 @@ export interface MissionResult {
 // Versioned persistence model
 // ---------------------------------------------------------------------------
 
-export interface TrophyRecord {
-  id: string;
+export interface TrophyRecord extends TrophyClaim {
   missionId: MissionId;
-  targetName: string;
-  quality: TrophyQuality;
   difficultyId: DifficultyId;
   score: number;
   claimedAt: string;
+  /** Ritual work is persisted only after at least one workshop mini-game. */
+  workshop?: {
+    completedActions: Array<"clean" | "prepare" | "display" | "rite">;
+    bestScore: number;
+    lastCompletedAt: string;
+  };
 }
 
 export interface MissionProgress {
@@ -344,6 +615,10 @@ export interface PlayerProfile {
 }
 
 export interface PlayerInventory {
+  /** Additive V112 ledger; missing old data migrates to an empty depot and sharp tool. */
+  harvestV112?: HarvestInventoryV112;
+  /** Purchased once at the armory; absence in an older save grants nothing. */
+  fieldToolIds: FieldToolId[];
   unlockedWeaponIds: WeaponId[];
   unlockedGearIds: GearId[];
   unlockedArmorIds: ArmorId[];
@@ -355,6 +630,8 @@ export interface PlayerInventory {
 export interface CodexProgress {
   unlockedEntryIds: CodexEntryId[];
   scanCounts: Partial<Record<CodexEntryId, number>>;
+  /** Validated V7/V8 roster identities permanently revealed in the bestiary. */
+  discoveredEnemyIds: string[];
 }
 
 export interface GameStatistics {
@@ -369,6 +646,8 @@ export interface GameStatistics {
 }
 
 export interface GameSettings {
+  /** Optional on legacy saves; normalizer supplies a complete, versioned profile. */
+  huntAccessibility?: HuntAccessibilityV112;
   difficultyId: DifficultyId;
   masterVolume: number;
   musicVolume: number;
@@ -376,19 +655,49 @@ export interface GameSettings {
   screenShake: boolean;
   reducedGore: boolean;
   highContrastVision: boolean;
+  controlBindings: ControlBindings;
 }
 
 export interface SaveGame {
+  /** Null preserves pre-prologue adult campaigns without retroactive narrative proof. */
+  prologue: NurseryCampaignProgress | null;
+  /** Actual Unblooded exercises and equipment; never the adult starter loadout. */
+  youthTraining: YouthCampaignProgress | null;
+  soloV66?: SoloV66Campaign | null;
+  /** The unaccompanied trial is independent of the earlier supervised tracks. */
+  soloV67?: SoloV67Campaign | null;
+  soloV68?: SoloV68Campaign | null;
+  soloV69?: SoloV69Campaign | null;
+  /** First act of the original clan temple; independent of the later Blooded rite. */
+  soloV70?: SoloV70Campaign | null;
+  /** Local preparation only; never substitutes for a Blooded rite. */
+  soloV90?: SoloV90Campaign | null;
+  homeworldRegionV68?: HomeworldRegionStateV68 | null;
+  /** Physical city/biome connector; separate from expedition evidence. */
+  homeworldPassageV67?: HomeworldPassageStateV67 | null;
+  gameReserveV66?: GameReserveV66State | null;
+  /** Physical station inspections only; no hull acquisition or travel credit. */
+  shipPreparationV88?: ShipPreparationStateV88 | null;
+  /** Owner-bound physical shipyard work; no ownership without real rights. */
+  shipAcquisitionV89?: ShipAcquisitionStateV89 | null;
+  /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
+  gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
   version: number;
   createdAt: string;
   updatedAt: string;
   profile: PlayerProfile;
   inventory: PlayerInventory;
   loadout: Loadout;
+  appearance: HunterAppearance;
   missionProgress: Record<MissionId, MissionProgress>;
   trophies: TrophyRecord[];
   codex: CodexProgress;
+  exploration: ExplorationProgress;
   statistics: GameStatistics;
   settings: GameSettings;
   storyCompleted: boolean;
+  /** Homeworld is a separate social destination; it does not replace campaign hunts. */
+  homeworld: HomeworldProgress;
+  /** Evidence and warrants are independent of honor and versus matches. */
+  justice: JusticeProgress;
 }

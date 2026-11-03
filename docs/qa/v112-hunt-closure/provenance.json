@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "release": "V112",
+  "asOf": "2026-11-01",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "qualifiedCodeCommit": "e1e45fbf85d843c26ac1bf4f816baf46313795b0",
+  "executedMergeCommit": "3c9575809068ac6c9e4a97f57896c4a4cfc60479",
+  "identicalTree": "c32dcc50b200929c71bef159a09c83106ac144c4",
+  "integratedMainCommit": "81fc1916fc285ca85d3c434737bc35b1e5f2fb7f",
+  "workflow": {
+    "runId": 41257774503,
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41257774503",
+    "nativeJob": {
+      "id": 124704501571,
+      "conclusion": "failure",
+      "cause": "Only the sparse-checkout TypeScript step failed: vite.config.ts(3,27) TS2307 ./.openai/hosting.json was absent. Native hunting rules (314), planet compatibility (25), workbook/resource checks and CPU benchmark steps passed."
+    },
+    "browserJob": {
+      "id": 124704502014,
+      "conclusion": "success",
+      "controlAndGuideGroups": 22,
+      "mountedLifecycleGroups": 12,
+      "pageErrors": 0
+    }
+  },
+  "completeApplicationTypeScript": {
+    "runId": 41257774563,
+    "jobId": 124704501883,
+    "step": "Generate Next route types and check application TypeScript",
+    "conclusion": "success",
+    "note": "This existing workflow includes .openai/hosting.json and checks the same qualified product tree."
+  },
+  "nativeRules": {
+    "tests": 314,
+    "passed": 314,
+    "failed": 0,
+    "skipped": 0,
+    "breakdown": {
+      "baselineHunt": 237,
+      "conservation": 4,
+      "catalogue": 41,
+      "guide": 8,
+      "groundRecovery": 24
+    }
+  },
+  "nativeCpu": {
+    "scenarios": 32,
+    "measuredSteps": 57600,
+    "warmupSteps": 7680,
+    "deterministicPairs": 16,
+    "status": "PASS",
+    "report": "native-performance.json"
+  },
+  "reports": [
+    {
+      "file": "native-performance.json",
+      "blobSha": "4398821efab14b18ac755a31b3a5524ed55f6e3c"
+    },
+    {
+      "file": "controls-guide-report.json",
+      "blobSha": "adc244f9a73a1264b051aa2e549d50f466b66ef4"
+    },
+    {
+      "file": "lifecycle-report.json",
+      "blobSha": "bc047feb4db09cfa2676c65fdc246b43946326f8"
+    }
+  ],
+  "captures": [
+    {
+      "file": "field-guide-readable.png",
+      "bytes": 27133,
+      "blobSha": "cccd787d2b76c90edea45cef3ebe88a8ecffdbfe"
+    },
+    {
+      "file": "accessibility-phone.png",
+      "bytes": 27253,
+      "blobSha": "eb5a4f2a1164e60552b2a3c72bcb2f7a8c3d346b"
+    },
+    {
+      "file": "workshop-cleaned.png",
+      "bytes": 82772,
+      "blobSha": "04b986cd4cc515f1e2383e5cca586b6f37eb0ee9"
+    },
+    {
+      "file": "corpse-rites.png",
+      "bytes": 55681,
+      "blobSha": "0a94f30ce8db80172afb3acef3649590a82225da"
+    },
+    {
+      "file": "canopy-native-release.png",
+      "bytes": 48314,
+      "blobSha": "a36616cd43b5aa1a55c354d057c9058533a3fb2d"
+    },
+    {
+      "file": "corpse-rites-gamepad.png",
+      "bytes": 55097,
+      "blobSha": "9d56ee4f66d8b2900fdb55d356011c241cc46b05"
+    },
+    {
+      "file": "mounted-harvest.png",
+      "bytes": 59435,
+      "blobSha": "6f0cbfe7bd25263a5c9d38cf4a44775991b56ea8"
+    },
+    {
+      "file": "mounted-conservation.png",
+      "bytes": 77677,
+      "blobSha": "4f538aab477953d116fa92104687cb1a2de56531"
+    },
+    {
+      "file": "mapped-workshop-phone.png",
+      "bytes": 71454,
+      "blobSha": "55c2fda8ea65ce795a01e374f6dc06c225a6922a"
+    }
+  ],
+  "visualReview": {
+    "capturesInspected": 9,
+    "scope": "The nine exact PNGs were visually inspected during this task for legibility, clipping, status consistency and control layout. This is not artistic fidelity or a physical-device qualification."
+  },
+  "scope": {
+    "controls": "The existing fixture mounts actual React panels and invokes production native functions with fixture input adapters and emulated controller polling.",
+    "lifecycle": "A mounted HuntCanvas executes its real rAF, window/pointer/gamepad input, death and harvesting. The fixture supplies encounter placement and Apex/mission prerequisites before the extraction segment. GameClient callbacks are extracted without alteration and use fixture session admission with the production browser save writer/readback/reconciliation.",
+    "persistence": "The HuntCanvas checkpoint callback is captured in memory. The mission settlement and workshop use real localStorage save bytes and a fresh document reload.",
+    "fallbacks": {
+      "requests": 267,
+      "note": "Mounted-lifecycle requests for absent artwork/audio use documented native fallbacks; pageerror=0 does not mean all network requests succeeded."
+    },
+    "unqualified": [
+      "A complete interactive combat campaign",
+      "The entire mounted GameClient flow",
+      "New-player comprehension",
+      "Physical phone/controller qualification",
+      "Target-device renderer/GPU/thermal performance",
+      "Native Microsoft Excel execution",
+      "Artistic fidelity"
+    ]
+  },
+  "delivery": "Reports and PNGs belong to the qualified code above. The final documentation/workbook/workflow-only delivery is validated separately in the pull request."
+}

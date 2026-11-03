@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-cov-obsidian-pylon-05-destructible",
+  "definitionId": "environment-prop-v19-volcano-cov-obsidian-pylon-05-destructible",
+  "biome": "volcano",
+  "role": "cover",
+  "archetypeId": "obsidian-pylon",
+  "variantId": "05-destructible",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\cov-obsidian-pylon-05-destructible.png",
+    "bytes": 1401035,
+    "sha256": "e0b0c0daa02a557c5c10338c5a8e938f1fedc39b8fc7a5247b350f6b89d826d4",
+    "width": 1254,
+    "height": 1254
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\cov\\masters\\cov-obsidian-pylon-05-destructible-chroma.webp",
+    "bytes": 140390,
+    "sha256": "93327cab8e45d38b23f93d91a9eb4825189ce660c786500ebd8954ff912cbf02"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\cov\\cov-obsidian-pylon-05-destructible.webp",
+    "bytes": 93024,
+    "sha256": "d352532231dfbec7916fa56d470dfe533044eafe754afb7b1ba06e1e8fe7433c"
+  },
+  "chromaInspection": {
+    "width": 1254,
+    "height": 1254,
+    "sampledKey": [
+      4,
+      250,
+      5
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 0.999867
+  },
+  "helperInspection": {
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.36838,
+    "transparentRatio": 0.631466,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 768,
+    "height": 705,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.587099,
+    "transparentRatio": 0.412633,
+    "dirtyTransparentPixels": 10780
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-Vqo6Rw\\cov-obsidian-pylon-05-destructible-alpha.png\r\nKey color: #04fa05\r\nTransparent pixels: 992990/1572516\r\nPartially transparent pixels: 5141/1572516",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}

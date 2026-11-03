@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-cov-obsidian-pylon-03-pierced",
+  "definitionId": "environment-prop-v19-volcano-cov-obsidian-pylon-03-pierced",
+  "biome": "volcano",
+  "role": "cover",
+  "archetypeId": "obsidian-pylon",
+  "variantId": "03-pierced",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\cov-obsidian-pylon-03-pierced.png",
+    "bytes": 1436447,
+    "sha256": "e4915029d4075877db747fde2e1b996682e178bc7f564e65c4af698ef1bee1b0",
+    "width": 1254,
+    "height": 1254
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\cov\\masters\\cov-obsidian-pylon-03-pierced-chroma.webp",
+    "bytes": 151780,
+    "sha256": "101c904dedc36f7c14dea474bfc763389ceb8defb928ae8e3d21fcb6b931c573"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\cov\\cov-obsidian-pylon-03-pierced.webp",
+    "bytes": 80840,
+    "sha256": "f893258bc5d09fe2c6ad704682880fd167d893cf566737e82cae6a87d40f5253"
+  },
+  "chromaInspection": {
+    "width": 1254,
+    "height": 1254,
+    "sampledKey": [
+      4,
+      250,
+      7
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 0.999867
+  },
+  "helperInspection": {
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.411079,
+    "transparentRatio": 0.588676,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 768,
+    "height": 765,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.482962,
+    "transparentRatio": 0.516774,
+    "dirtyTransparentPixels": 14640
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-RWXErm\\cov-obsidian-pylon-03-pierced-alpha.png\r\nKey color: #04fa07\r\nTransparent pixels: 925702/1572516\r\nPartially transparent pixels: 6523/1572516",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}

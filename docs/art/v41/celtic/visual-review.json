@@ -1,0 +1,32 @@
+{
+  "status": "PASS-independent-native-visual-with-declared-foot-drift",
+  "checkedAt": "2026-09-19T21:42:18.406Z",
+  "sourceSha256": "ae762952428477584d4c23be05b4b15cef55ea0fe0f734ee12d4171c828d9341",
+  "capturePath": "work/v41/celtic-candidate/native-light-dark.png",
+  "captureSha256": "91adf56672c84b2e113d0158349ff81355f0c711917c77e7c9708d279b8338b2",
+  "bodyHeightByFacing": {
+    "right": 459,
+    "left": 436
+  },
+  "footDrift": [
+    {
+      "facing": "right",
+      "nativeHorizontalDriftPerFoot": [
+        2.059912854030501,
+        2.059912854030501
+      ],
+      "pivotVerticalDrift": 0
+    },
+    {
+      "facing": "left",
+      "nativeHorizontalDriftPerFoot": [
+        0.7694954128440367,
+        0.7694954128440367
+      ],
+      "pivotVerticalDrift": 0
+    }
+  ],
+  "sourcePixelsUnchanged": true,
+  "runtimeGate": "pending root in-game idle/guard/attack/retreat QA",
+  "reviewPath": "work/v41/celtic-candidate/REVIEW.md"
+}

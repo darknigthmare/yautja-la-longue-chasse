@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "desktopVersion": "1.0.32",
+  "contentVersion": "V32",
+  "checks": [
+    "Packaged EXE boots with the expected release content marker, renderer sandboxed, network blocked, bundled art readable, private paths rejected.",
+    "Real setting persisted; campaign exported through the native download path.",
+    "Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.",
+    "Hub to THE PIT loads locally with an authored Jungle Hunter animation and the existing Berserker bitmap.",
+    "Local galaxy route to Oseris, mission briefing, deployment and suspended hunt saved.",
+    "Campaign bytes, suspended hunt, Homeworld evidence, Justice choice and setting retained after clean process exit and cold restart."
+  ],
+  "errors": [],
+  "failedLocalRequests": [],
+  "testedAt": "2026-09-12T17:59:56.521Z",
+  "limit": "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified.",
+  "profileIsolation": "Disposable automated test profile; no personal browser profile used."
+}

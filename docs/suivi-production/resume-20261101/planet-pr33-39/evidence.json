@@ -1,0 +1,445 @@
+{
+  "scope": "Read-only qualification of PR33 and original PR39 plus an isolated type-only candidate and proposed CI barrier. No production build or browser was executed locally for these planet PRs. Runtime behavior not changed by annotations, not a certification of all features.",
+  "pr33Head": "63c345fc7eaf999225df8f35cab787b8152f0b2c",
+  "pr39OriginalHead": "f54dd68ce1a8708409d0075f0dcc7a76f2be647b",
+  "pr33": {
+    "domainPass": 48,
+    "domainFail": 0,
+    "fullTypecheckExit": 0,
+    "lintErrors": 0,
+    "lintWarnings": 18,
+    "browserEvidence": "Existing same-SHA GitHub Actions run41097854075, no new local browser or image admission"
+  },
+  "pr39Original": {
+    "domainPass": 164,
+    "domainFail": 0,
+    "fullTypecheckExit": 2,
+    "typeErrors": 3,
+    "lintErrors": 0,
+    "lintWarnings": 18,
+    "browserEvidence": "Existing same-SHA GitHub Actions run41253623698, no new local browser or image admission"
+  },
+  "pr39Candidate": {
+    "isolated": true,
+    "fullTypecheckExit": 0,
+    "targetedPass": 20,
+    "targetedFail": 0,
+    "targetedOverlapWithOriginal164": true,
+    "twoEditedModulesEmitIdenticalJavaScript": true,
+    "jobTypesYamlParsed": true,
+    "sparseCheckoutValidation": "PASS_EXACT_GIT_SPARSE",
+    "realSparseTypegenExit": 0,
+    "realSparseTypecheckExit": 0,
+    "realSparseTargetedPass": 20,
+    "realSparseTargetedOverlapWithPrevious20": true,
+    "realSparseLintErrors": 0,
+    "realSparseLintWarnings": 0,
+    "localInstall": "Existing locked dependencies reused through symlink; package-lock verified byte-identical. No second npm ci was run locally."
+  },
+  "archives": {
+    "33": {
+      "headSha": "63c345fc7eaf999225df8f35cab787b8152f0b2c",
+      "sourceFiles": 2370,
+      "realPublicManifests": 17,
+      "archiveBytes": 130191360,
+      "archiveSha256": "07259edba0e79afdb1f812205aa197e4efa6c05e753e5a624303f9d74e6e1b51",
+      "rootConfigFiles": [
+        ".gitattributes",
+        ".gitignore",
+        ".vercelignore",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "README.md",
+        "design-qa.md",
+        "drizzle.config.ts",
+        "eslint.config.mjs",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "postcss.config.mjs",
+        "proxy.ts",
+        "tsconfig.json",
+        "vercel.json",
+        "vite.config.ts"
+      ],
+      "sourceOnly": true,
+      "noFakeManifestOrArtwork": true,
+      "additionalBuildAndTypeSources": {
+        "files": 14,
+        "paths": [
+          ".openai/hosting.json",
+          "build/sites-vite-plugin.ts",
+          "db/index.ts",
+          "db/schema.ts",
+          "desktop/LocalLink.tsx",
+          "desktop/build-paths.mjs",
+          "desktop/entry.tsx",
+          "desktop/index.html",
+          "desktop/main.mjs",
+          "desktop/protocol.mjs",
+          "desktop/release.mjs",
+          "desktop/vite.config.ts",
+          "drizzle/meta/_journal.json",
+          "worker/index.ts"
+        ],
+        "archiveBytes": 51200,
+        "sha256": "787c9b28845de864e6eff771703da3bdd9be4cf80a5e9b57fa962938b56a8885",
+        "reason": "Include real root Vite imports and all tracked desktop/db/worker/drizzle types, rather than treating archive omissions as application failures."
+      }
+    },
+    "39": {
+      "headSha": "f54dd68ce1a8708409d0075f0dcc7a76f2be647b",
+      "sourceFiles": 2497,
+      "realPublicManifests": 17,
+      "realEarthGeographyIncluded": true,
+      "archiveBytes": 135587840,
+      "archiveSha256": "c9663895195395a5b91d3113147fb4748483cd676f14c027b21153974d1f9592",
+      "rootConfigFiles": [
+        ".gitattributes",
+        ".gitignore",
+        ".vercelignore",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "README.md",
+        "design-qa.md",
+        "drizzle.config.ts",
+        "eslint.config.mjs",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "postcss.config.mjs",
+        "proxy.ts",
+        "tsconfig.json",
+        "vercel.json",
+        "vite.config.ts"
+      ],
+      "sourceOnly": true,
+      "noFakeManifestOrArtwork": true,
+      "additionalBuildAndTypeSources": {
+        "files": 14,
+        "paths": [
+          ".openai/hosting.json",
+          "build/sites-vite-plugin.ts",
+          "db/index.ts",
+          "db/schema.ts",
+          "desktop/LocalLink.tsx",
+          "desktop/build-paths.mjs",
+          "desktop/entry.tsx",
+          "desktop/index.html",
+          "desktop/main.mjs",
+          "desktop/protocol.mjs",
+          "desktop/release.mjs",
+          "desktop/vite.config.ts",
+          "drizzle/meta/_journal.json",
+          "worker/index.ts"
+        ],
+        "archiveBytes": 51200,
+        "sha256": "d6ad19993c3009046227c48ec2693270189381f4d5869a8c02f97a4270f469dc",
+        "reason": "Include real root Vite imports and all tracked desktop/db/worker/drizzle types, rather than treating archive omissions as application failures."
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "base-proof.json",
+      "bytes": 7660,
+      "sha256": "4cf0638e11d8fbf623450479658135c2ff9df32fba385488326d804b0eae0e58"
+    },
+    {
+      "path": "pr33-ci-jobs.json",
+      "bytes": 2045,
+      "sha256": "f4056dd1891e0aa02a067bc96c8b8f4cfaf01791e9d9b8f274b3961bb99c574a"
+    },
+    {
+      "path": "pr33-ci-run.json",
+      "bytes": 402,
+      "sha256": "64b11fa5fd1a069d8f155ed5e6d84b3a0d1d3a0674c460ee42895962e50c657f"
+    },
+    {
+      "path": "pr33-domain.log",
+      "bytes": 5042,
+      "sha256": "e406eafca264c68f741080cbad0d5184cb92badb0dd60ff09c31b21c18ea9b89"
+    },
+    {
+      "path": "pr33-final-state.json",
+      "bytes": 207,
+      "sha256": "24911223681ad2aba5d69ae4e88293b2acebbdcf4dcda25581d81e4975f013d1"
+    },
+    {
+      "path": "pr33-lint.log",
+      "bytes": 2255,
+      "sha256": "c078076c25ac31666599c0e6d2a484b8aad0391580eefd3cad06b4e7904bc9ea"
+    },
+    {
+      "path": "pr33-merge-tree.json",
+      "bytes": 202,
+      "sha256": "75c6b77762711958e899b71b3adf330c7060421f4600a621aac63d8e147c040a"
+    },
+    {
+      "path": "pr33-retarget-event.json",
+      "bytes": 269,
+      "sha256": "e3cceca1f14b132013097e62565bc70038d3361954d36b9a6d2de9f5515bf6cf"
+    },
+    {
+      "path": "pr33-runs-after-retarget-check.json",
+      "bytes": 429,
+      "sha256": "08fe2ce5f2ed59e0c6debc4d17f821c57b9127833fed03e37b0a136f19e7f21f"
+    },
+    {
+      "path": "pr33-typecheck-result.json",
+      "bytes": 344,
+      "sha256": "e01149b63176cd2225a419e79eb616599c1f46723dba27d0e031432f01c816e8"
+    },
+    {
+      "path": "pr33-typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pr39-after-parent-merge.json",
+      "bytes": 364,
+      "sha256": "f5f22fec017440ec5488c0e3d4a54073007e92a6c5f112fc0437ad4ba9aa1622"
+    },
+    {
+      "path": "pr39-candidate-emission.json",
+      "bytes": 587,
+      "sha256": "0ed04762a9b5ab6003265c2214783a0c9c9fd8ced5acc577494dace89b35def1"
+    },
+    {
+      "path": "pr39-candidate-targeted-result.json",
+      "bytes": 485,
+      "sha256": "66996e5f355cadcaf28f343c36b49eebc0276cbd758fcc70201c764c526448dd"
+    },
+    {
+      "path": "pr39-candidate-targeted-tests.log",
+      "bytes": 2001,
+      "sha256": "b114d17e305f2dc64d569c9120aa3b341c1ccd525c8c0ab01b39c96ee56a75d2"
+    },
+    {
+      "path": "pr39-candidate-typecheck-result.json",
+      "bytes": 370,
+      "sha256": "01b6f6a9b8ec378ce0824e8c8cd72d2a35cab4dcd9f395768a92ff54d82f3e75"
+    },
+    {
+      "path": "pr39-candidate-typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pr39-ci-jobs.json",
+      "bytes": 2045,
+      "sha256": "8de69a74060c23ad1c79ce0f83470dceeb38a4a70ed7e937970ef1d9154b8631"
+    },
+    {
+      "path": "pr39-ci-run.json",
+      "bytes": 411,
+      "sha256": "3a2523f8bbbd85a75461fd4b3db26ee4b4fc1b2ef4f405f0280ac749091b1efc"
+    },
+    {
+      "path": "pr39-domain-command.json",
+      "bytes": 1888,
+      "sha256": "17b28933b5160d31bf51bf4c4f2f856580fb056800ee19b88c01a4ab2283f2cb"
+    },
+    {
+      "path": "pr39-domain.log",
+      "bytes": 15998,
+      "sha256": "c5a904bdfc6f7ed295b6b9c9a05ab89b0f767395a19a2c9d9f3b5458a081325e"
+    },
+    {
+      "path": "pr39-final-head.json",
+      "bytes": 345,
+      "sha256": "be229b0634061664f6c3a2ca81269da55a9c39b95cabd5ce01c77c99e9f2f15b"
+    },
+    {
+      "path": "pr39-final-software-review.json",
+      "bytes": 7475,
+      "sha256": "747ad196e2ca9c1a6ec842435aec42e239deaa7ccb70c30fec0cc97f349dd191"
+    },
+    {
+      "path": "pr39-handoff.json",
+      "bytes": 902,
+      "sha256": "148d1ca379a8cf4290c1905e7e7a94d36afa62cee968b5d98bae43146cf30f14"
+    },
+    {
+      "path": "pr39-lint-command.json",
+      "bytes": 2462,
+      "sha256": "faa5bd3d187cb789a51918ab7090b2b3c6f57d769729ba538208dc87fd02a2cb"
+    },
+    {
+      "path": "pr39-lint.log",
+      "bytes": 2250,
+      "sha256": "b8985539bd4adc2037ae6b8de5692a539a0479b3f63b99dfdd490b6e915848a2"
+    },
+    {
+      "path": "pr39-ls-remote.txt",
+      "bytes": 99,
+      "sha256": "bc4d5e337fe4e47ad928a9bd53589cacc8e20eb9272ada761f55d537dc44f2c1"
+    },
+    {
+      "path": "pr39-merge-tree.json",
+      "bytes": 202,
+      "sha256": "d7cc5427553225644b6156ca4d2139cda10874d9b8ba749a9ef362edeab1047d"
+    },
+    {
+      "path": "pr39-merged-event.json",
+      "bytes": 280,
+      "sha256": "93b322d30bb16bc2820790419a71bd8fa793114cdaa1ed298519be2c81474a3b"
+    },
+    {
+      "path": "pr39-new-head-final.json",
+      "bytes": 7450,
+      "sha256": "9b47bfa5d87c75e7125a0dea5082b072793f1684f5655bf5cf7d26a8ae473dfe"
+    },
+    {
+      "path": "pr39-new-head-initial-jobs.json",
+      "bytes": 446,
+      "sha256": "13eb2e6c24cb7ee3c45bdf01899297c5cb5e5a59be0e053b33b10b41db984863"
+    },
+    {
+      "path": "pr39-new-head-initial-runs.json",
+      "bytes": 430,
+      "sha256": "3c6f31f627bcd5cf329f81f968355b54cc20eb64297fa35150c5a4aa7f0f1c67"
+    },
+    {
+      "path": "pr39-new-head-monitor.json",
+      "bytes": 7450,
+      "sha256": "9b47bfa5d87c75e7125a0dea5082b072793f1684f5655bf5cf7d26a8ae473dfe"
+    },
+    {
+      "path": "pr39-new-head-types-green.json",
+      "bytes": 7181,
+      "sha256": "f13f06118b38c3e0a199e001bd02d890c0c590dc20d7a1e5bc61300892f3ef0e"
+    },
+    {
+      "path": "pr39-patch.json",
+      "bytes": 316,
+      "sha256": "da6c51d09fdd9b7efaa5317b4c6fcec60c1acb641442334d08b14e03652f9613"
+    },
+    {
+      "path": "pr39-pushed-event.json",
+      "bytes": 364,
+      "sha256": "f5f22fec017440ec5488c0e3d4a54073007e92a6c5f112fc0437ad4ba9aa1622"
+    },
+    {
+      "path": "pr39-pushed-source-identity.json",
+      "bytes": 802,
+      "sha256": "5caaef5d93eded49050400267fcbd905d0f994b52379069a26ed0e43689e73f0"
+    },
+    {
+      "path": "pr39-real-sparse-inputs.json",
+      "bytes": 715,
+      "sha256": "f22a7490828f2c610144027c408c6ff97e9e76970703875163cc21799821b6d4"
+    },
+    {
+      "path": "pr39-real-sparse-lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pr39-real-sparse-targeted-result.json",
+      "bytes": 457,
+      "sha256": "6f23386bcffcedba0274a6428cb3fbe7f712af05d649f16690c519fe10c2009d"
+    },
+    {
+      "path": "pr39-real-sparse-targeted-tests.log",
+      "bytes": 1999,
+      "sha256": "d4381025c8a3d8453dde4ea1f6e9ce6010da8d44fd3993ea4d65b68edfa28a43"
+    },
+    {
+      "path": "pr39-real-sparse-type-results.json",
+      "bytes": 600,
+      "sha256": "701d046eefa825c11a71b8c7574adad741bc2248d5a5f1ac59fc07bf5d44e04f"
+    },
+    {
+      "path": "pr39-real-sparse-typecheck.log",
+      "bytes": 59,
+      "sha256": "7e963cd266edc6da8946458eef070015c14509120a807963ef61b9535323931b"
+    },
+    {
+      "path": "pr39-real-sparse-typegen.log",
+      "bytes": 59,
+      "sha256": "adba4af9194e10e47dda75ff0fd0f8c2b756474896d0eba5612799c527ff372a"
+    },
+    {
+      "path": "pr39-retarget-main-event.json",
+      "bytes": 331,
+      "sha256": "2df142baef3d85ac87fac531ecfd76de61670619535ac7b55e6081ce9ed29185"
+    },
+    {
+      "path": "pr39-root-integration.json",
+      "bytes": 652,
+      "sha256": "da11813c382a8ff2e957ebedf32215fca7fac1c43aa23683e4c998bc77192bca"
+    },
+    {
+      "path": "pr39-typecheck-result.json",
+      "bytes": 344,
+      "sha256": "95b50d674fcfe1af953c350a6b0b584f9fcddadffb735eb188d066c2f9dd5829"
+    },
+    {
+      "path": "pr39-typecheck.log",
+      "bytes": 1563,
+      "sha256": "3ec02bee3e284a5bcdf5ae3df0f9ca470321f9bc40b1dcebc7f5a17022bd8324"
+    },
+    {
+      "path": "pr39-types-and-ci.patch",
+      "bytes": 3185,
+      "sha256": "490e6b509ca150bc0cb7c797a57c2f5a23d27302fe644bbe13933488772cabae"
+    },
+    {
+      "path": "pr39-types-job.json",
+      "bytes": 1643,
+      "sha256": "b25951658dccc12cc9d632184c5cd9c99dc0151c58a81800831639b741fc4f0f"
+    },
+    {
+      "path": "pr39-types-source-coverage.json",
+      "bytes": 826,
+      "sha256": "953433d6443b634f730e203fd9324f4af9a13ddb0e2b71bb13ae91b6d47dc4a1"
+    },
+    {
+      "path": "pr39-types-sparse-patterns.txt",
+      "bytes": 121,
+      "sha256": "8919cacff49118e0f253583640c396058e88c9b4317733bd0db5e819d5376e6a"
+    }
+  ],
+  "pr39CommittedFix": {
+    "previousHead": "f54dd68ce1a8708409d0075f0dcc7a76f2be647b",
+    "headSha": "04d9d4dd306cc4e27d4c44c6a1eca01be9328b26",
+    "coordinatorPushConfirmedByRestAndLsRemote": true,
+    "directParentIsPreviousHead": true,
+    "committedFilesByteIdenticalToTestedCandidate": true,
+    "newRunId": 41259282388,
+    "newFullTypesJobAppeared": true,
+    "newCiFinal": true,
+    "baseRetargetedToMain": true,
+    "baseRetargetApiUpdatedAtUtc": "2026-11-01T01:07:22Z",
+    "retargetHeadUnchanged": true,
+    "newDomainJobStatus": "success",
+    "newFullTypesJobStatus": "success",
+    "newBrowserJobStatus": "success",
+    "newCiRunConclusion": "success",
+    "newCiObservedAtUtc": "2026-11-01T01:19:45Z",
+    "newCiApiUpdatedAtUtc": "2026-11-01T01:19:01Z",
+    "remoteHeadStillMatchesSuccessfulRun": true,
+    "pullRequestMerged": true,
+    "finalBoundedSoftwareMergeVerdict": "FAVORABLE_ON_04D9_AGAINST_C5FC",
+    "additionalSoftwareBlockersFound": [],
+    "mergeCommit": "f3a1acec8c2603b3442da774457dfe75947d97d8",
+    "mergedAtUtc": "2026-11-01T01:27:01Z",
+    "mergeTreeMatchesReviewedHead": true,
+    "rootIntegrationCommit": "035880eac699b8be77b757421933876dd4d6a234",
+    "physicalIndexNetSharesRetainedExactly": true,
+    "naturalEarthInRuntimeAndSparseInputs": true
+  },
+  "pr33AfterQualification": {
+    "merged": true,
+    "mergeCommit": "c5fc51dc42d8e04a4a8f0ca79273c44e4921f7e1",
+    "mergedAtUtc": "2026-11-01T01:04:42Z",
+    "mergedHeadSha": "63c345fc7eaf999225df8f35cab787b8152f0b2c",
+    "mergeTreeExactlyMatchesQualifiedHead": true
+  },
+  "metadataWriteBarrier": {
+    "status": "STABLE_FOR_COORDINATION_WORKBOOK",
+    "atUtc": "2026-11-01T01:35:04+00:00",
+    "furtherWritesRequireRootRequest": true
+  }
+}

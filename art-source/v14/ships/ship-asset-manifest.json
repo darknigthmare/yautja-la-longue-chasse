@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "pipelineVersion": "V14",
+  "runtimePriority": [
+    "accepted-v14-canon-replacement",
+    "historical-project-original-v12-v13",
+    "fallback"
+  ],
+  "ships": {
+    "avp-predator-mothership": {
+      "available": true,
+      "canonReplacement": true,
+      "fidelityTier": "reference-locked",
+      "manualInspection": "accepted",
+      "knownDeviation": null,
+      "profile": {
+        "promptId": "v14-profile-avp-predator-mothership",
+        "masterPath": "art-source/v14/ships/avp-predator-mothership-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/avp-predator-mothership.webp",
+        "width": 1774,
+        "height": 887,
+        "masterSha256": "e55c221c7506d780cb00fc402b60e814eb9c4c15aaa19859b4d8d1a6362df2cb",
+        "runtimeSha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907"
+      },
+      "top": {
+        "promptId": "v14-top-avp-predator-mothership",
+        "masterPath": "art-source/v14/ships/avp-predator-mothership-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/avp-predator-mothership-top.webp",
+        "width": 1774,
+        "height": 887,
+        "masterSha256": "66fc3fa068191e3dc3813d3d56d21a5cebde8d5130a9fe9cc812e25abfe2e02b",
+        "runtimeSha256": "f1d33bedb750f6984e900171b68cf3dd2b9663f723a5e220af1dca9b15f05ca1"
+      }
+    },
+    "avpr-scout-ship": {
+      "available": true,
+      "canonReplacement": true,
+      "fidelityTier": "reference-locked",
+      "manualInspection": "accepted",
+      "knownDeviation": null,
+      "profile": {
+        "promptId": "v14-profile-avpr-scout-ship",
+        "masterPath": "art-source/v14/ships/avpr-scout-ship-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/avpr-scout-ship.webp",
+        "width": 1536,
+        "height": 1024,
+        "masterSha256": "6aaf6e6a314c257888b9a921e3fc51e8648213a928a96385b7f7fd803924e86c",
+        "runtimeSha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+      },
+      "top": {
+        "promptId": "v14-top-avpr-scout-ship",
+        "masterPath": "art-source/v14/ships/avpr-scout-ship-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/avpr-scout-ship-top.webp",
+        "width": 1536,
+        "height": 1024,
+        "masterSha256": "397adacd9e94c57c54765b969289ca1e3ad95a009324220465cb02a53ae4e539",
+        "runtimeSha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+      }
+    },
+    "wolf-ship": {
+      "available": true,
+      "canonReplacement": true,
+      "fidelityTier": "reference-locked",
+      "manualInspection": "accepted",
+      "knownDeviation": null,
+      "profile": {
+        "promptId": "v14-profile-wolf-ship",
+        "masterPath": "art-source/v14/ships/wolf-ship-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/wolf-ship.webp",
+        "width": 1761,
+        "height": 893,
+        "masterSha256": "2166368dabbc9cec6f27b906cc774ed01ffc57e6469e864e6b1315c5852f7a3a",
+        "runtimeSha256": "8697aff1379201f33aba393871a24780098dcb8f2268424c56912fac9470eed8"
+      },
+      "top": {
+        "promptId": "v14-top-wolf-ship",
+        "masterPath": "art-source/v14/ships/wolf-ship-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/wolf-ship-top.webp",
+        "width": 1757,
+        "height": 895,
+        "masterSha256": "cb39ebb24c7c3292d4de458c60cbd9702c486be2f6450b13b7817532fa139ec9",
+        "runtimeSha256": "5c6b5866fc5fbad1f539b6006f19f9a78621660c9efd51afc3c74e4beb0acc72"
+      }
+    },
+    "game-preserve-ship": {
+      "available": true,
+      "canonReplacement": false,
+      "fidelityTier": "source-guided-approximation",
+      "manualInspection": "accepted-as-approximation",
+      "knownDeviation": "The corrected top now shows four peripheral propulsion pods, two per side; the profile remains insufficient, showing two external pods plus one central unit instead of clearly establishing the four-pod geometry.",
+      "viewInspection": {
+        "profile": "insufficient-for-canon-replacement",
+        "top": "accepted-reference-geometry"
+      },
+      "profile": {
+        "promptId": "v14-profile-game-preserve-ship",
+        "masterPath": "art-source/v14/ships/game-preserve-ship-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/game-preserve-ship.webp",
+        "width": 1735,
+        "height": 906,
+        "masterSha256": "891260cc4633e9ccddaa926984f00f6f946cf7386814dc8209603566c11486c5",
+        "runtimeSha256": "cce2adbdc45991fa2c5764d5de74bda3cf96403da7b13c5bbb05a5ccd441f8e2"
+      },
+      "top": {
+        "promptId": "v14-top-game-preserve-ship",
+        "masterPath": "art-source/v14/ships/game-preserve-ship-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/game-preserve-ship-top.webp",
+        "width": 1671,
+        "height": 941,
+        "masterSha256": "dac5378d8e592c466ca3d52a16852b5ee2c817a51d74b85067e47385fdf43736",
+        "runtimeSha256": "96e80af86f6ff88e9b76cbbb34fbd559bdb1f9e85b349826a5bd004119a76d47"
+      }
+    },
+    "fugitive-spaceship": {
+      "available": true,
+      "canonReplacement": true,
+      "fidelityTier": "reference-locked",
+      "manualInspection": "accepted",
+      "knownDeviation": null,
+      "profile": {
+        "promptId": "v14-profile-fugitive-spaceship",
+        "masterPath": "art-source/v14/ships/fugitive-spaceship-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/fugitive-spaceship.webp",
+        "width": 1693,
+        "height": 929,
+        "masterSha256": "b69e15a8663e6ae04a5cd67eb04d689f8908cfa142851b7e23662f7ce8497a7e",
+        "runtimeSha256": "643ae874e41a68f130e55aa472bc473dc21b4f7216357dcb87d320c7e88a6bc0"
+      },
+      "top": {
+        "promptId": "v14-top-fugitive-spaceship",
+        "masterPath": "art-source/v14/ships/fugitive-spaceship-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/fugitive-spaceship-top.webp",
+        "width": 1692,
+        "height": 930,
+        "masterSha256": "8e34a6f0a536a9e292c369107586cc6f310991e3b9f4692a0ea6879502ffff3a",
+        "runtimeSha256": "8f719e2cf6d31ba6bf74913c48e9adfc83754432ff7e37a0f70832bcf4891f77"
+      }
+    },
+    "upgrade-spaceship": {
+      "available": true,
+      "canonReplacement": true,
+      "fidelityTier": "reference-locked",
+      "manualInspection": "accepted",
+      "knownDeviation": null,
+      "profile": {
+        "promptId": "v14-profile-upgrade-spaceship",
+        "masterPath": "art-source/v14/ships/upgrade-spaceship-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/upgrade-spaceship.webp",
+        "width": 1672,
+        "height": 941,
+        "masterSha256": "5e99afa3ba18bce9933bf6f2e87b26d1c58f828c2b2b2abb5c6d7534e9a210e1",
+        "runtimeSha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3"
+      },
+      "top": {
+        "promptId": "v14-top-upgrade-spaceship",
+        "masterPath": "art-source/v14/ships/upgrade-spaceship-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/upgrade-spaceship-top.webp",
+        "width": 1672,
+        "height": 941,
+        "masterSha256": "d758c57577b6d149a7b34fa6b61b65baa59bc2d6d81fe7cafeaa82852470b36d",
+        "runtimeSha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4"
+      }
+    },
+    "feral-spaceship": {
+      "available": true,
+      "canonReplacement": true,
+      "fidelityTier": "reference-locked",
+      "manualInspection": "accepted",
+      "knownDeviation": null,
+      "profile": {
+        "promptId": "v14-profile-feral-spaceship",
+        "masterPath": "art-source/v14/ships/feral-spaceship-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/feral-spaceship.webp",
+        "width": 1672,
+        "height": 941,
+        "masterSha256": "7fba93b984eb5031b61d195f383ccde47c7c6302a4a0b63e3a6ff2809d180e14",
+        "runtimeSha256": "ff8147412252c56e5e810e5e1a6ea610d1ec01f5044ce892a677529863fb4a7d"
+      },
+      "top": {
+        "promptId": "v14-top-feral-spaceship",
+        "masterPath": "art-source/v14/ships/feral-spaceship-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/feral-spaceship-top.webp",
+        "width": 1672,
+        "height": 941,
+        "masterSha256": "1aeccb4c9abe8a813cc0f324decb5433ecb676d648f6ef98daabcd47fd380fbe",
+        "runtimeSha256": "c8f7d7d8a2db3ac0f2efc6fe0dba203b229103ad1f8215e46fab6b6c4e6e1947"
+      }
+    },
+    "avp-predator-drop-pod": {
+      "available": true,
+      "canonReplacement": true,
+      "fidelityTier": "reference-locked",
+      "manualInspection": "accepted",
+      "knownDeviation": null,
+      "viewInspection": {
+        "profile": "accepted-after-three-emitter-reference-correction",
+        "top": "accepted-after-three-emitter-reference-correction"
+      },
+      "profile": {
+        "promptId": "v14-profile-avp-predator-drop-pod",
+        "masterPath": "art-source/v14/ships/avp-predator-drop-pod-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/avp-predator-drop-pod.webp",
+        "width": 1536,
+        "height": 1024,
+        "masterSha256": "c7d6ae864788ebb7dd8e986e377309362b4ce2c75e927b45f42d316b41992e52",
+        "runtimeSha256": "8364c02ee79e473b639ad2da608437fdb06c69a7483033db22e252b164824f53"
+      },
+      "top": {
+        "promptId": "v14-top-avp-predator-drop-pod",
+        "masterPath": "art-source/v14/ships/avp-predator-drop-pod-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/avp-predator-drop-pod-top.webp",
+        "width": 1536,
+        "height": 1024,
+        "masterSha256": "c5045fec67bd7348401a3949ec1a94d0908cc37619b58de004010bb5ef0c7732",
+        "runtimeSha256": "2bd76690d067927634029cb41374f0cd8cf3f1b7b1300c37d780a30d8ca7216c"
+      }
+    }
+  }
+}

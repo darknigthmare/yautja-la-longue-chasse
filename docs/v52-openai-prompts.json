@@ -1,0 +1,112 @@
+{
+  "release": "V52",
+  "generationMode": "builtin image_gen",
+  "paidApiUsed": false,
+  "referenceMode": "image-conditioned from the supplied exact appearances and existing original grazer; not text-only approximations",
+  "calls": [
+    {
+      "id": "city-intro-v52",
+      "prompt": "Use case: stylized-concept. Asset type: a transparent production sprite atlas for THE PIT 2D fighting game. Use the supplied image as the exact COSTUME and IDENTITY reference of this masked City Hunter, not as the composition. Draw SIX separate complete full-body figures in THREE equal columns by TWO equal rows on a landscape1536x1024 transparent canvas. Top row: three successive pre-fight INTRO poses facing RIGHT toward the opponent. Bottom row: equivalent independently drawn native LEFT-facing poses preserving anatomical equipment placement. Pose1 relaxed guard with hands lowered; pose2 proud head and torso bow about20degrees, knees slightly flexed, arms low; pose3 straightens into combat-ready guard, both clawed hands visible and open, elbows bent. Preserve bronze pitted angular crested mask and dark visor, black dreadlocks with brass bands, ochre dark-spotted skin, black net suit, layered dark steel shoulder armor, steel gauntlets, layered thigh/shin plates, bronze disc on hip, brown leather loincloth, bare clawed feet, shoulder cannon on ANATOMICAL LEFT. Both hands EMPTY, wrist blades mechanically RETRACTED into anatomical RIGHT gauntlet throughout this ceremonial sequence, no projecting blades. Maintain coherent five-digit clawed hands separate from gauntlets, no extra limbs/fused fingers. Same body scale, costume details, mask and equipment in ALL6drawings; bodies must be fully intact with 40px transparent margins around head/feet/elbows. Shared floor baseline within each row. Small detailed illustrated bitmap figures matching the supplied style, no photoreal render, no duplicate-only translated poses. No text, labels, scenery, borders, drop shadows or checkerboard. True transparent alpha. Never crop extremities or let rows touch.",
+      "reference": "public/game/sprites/v44/user-hunters/12136078fe2a5ba66cf19f90f31b58423d3c0eb5b309f1b12c400fa188d2d66d.png",
+      "referenceRole": "identity and costume reference; inspected before built-in generation",
+      "source": "exec-8b4f8378-ac2e-4df0-bea5-3c4aa2b49484.png",
+      "transparentBackgroundRequested": true,
+      "status": "integrated-approved-crops-only",
+      "provenance": "docs/art/v52/city-hunter-round-presentation-provenance.json",
+      "usedDistinctDrawings": 6,
+      "pixelEdits": false
+    },
+    {
+      "id": "scar-intro-v52",
+      "prompt": "Use case: stylized-concept. Asset type: a transparent production sprite atlas for THE PIT 2D fighting game. The supplied image is the definitive COSTUME and IDENTITY reference of masked SCAR; preserve this exact armored appearance while changing its pose. SIX separate complete full-body figures in THREE equal columns by TWO equal rows on a landscape1536x1024 transparent canvas. Top row THREE successive pre-fight INTRO poses facing RIGHT. Bottom row matching naturally redrawn native LEFT-facing poses, preserving anatomical equipment placement, never mirroring. Pose1 relaxed full-body guard, arms down; pose2 respectful head-and-chest bow, slightly bent knees, arms low; pose3 straightens into open-handed combat-ready guard. Preserve engraved angular silver bio-mask with forehead scar mark and dark slim visor, black dreadlocks with brass and red cuffs, yellow spotted skin and black net, massive ribbed overlapping silver chest and shoulder armor, ornate vertical abdominal strip, layered pointed metal loin guard, engraved gauntlets, segmented silver knees/shins and armored claw-toe shoes, skull necklace, disc at hip, shoulder cannon on ANATOMICAL LEFT. Hands EMPTY, wrist blades mechanically RETRACTED into ANATOMICAL RIGHT gauntlet throughout the ceremony; no projecting blades. Each hand has five coherent separate clawed digits and clearly joins its wrist. All armor pieces stay on their correct anatomical side in both views. Constant body scale and floor baseline within each row, generously spaced figures with40px transparent clearance all around each complete body. Exact same costume and illustrated bitmap game style as reference. Distinct skeletal poses, no translated duplicates. True transparent alpha, no background/scenery/shadow, no text, labels, borders, checkerboard, cropped feet or body overlap.",
+      "reference": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "referenceRole": "identity and costume reference; inspected before built-in generation",
+      "source": "exec-290119fb-ca1e-4d0c-b15d-dc13a928650a.png",
+      "transparentBackgroundRequested": true,
+      "status": "integrated-approved-crops-only",
+      "provenance": "docs/art/v52/scar-round-presentation-provenance.json",
+      "usedDistinctDrawings": 4,
+      "pixelEdits": false
+    },
+    {
+      "id": "city-victory-v52",
+      "prompt": "Use case: stylized-concept. Transparent sprite atlas of the EXACT masked City Hunter costume in the reference for a 2D fighting-game VICTORY. SIX complete full-body drawings, THREE equal columns × TWO equal rows on1536x1024landscape. Top row3poses facesRIGHT; bottom row3matching independently redrawn nativeLEFT views preserving anatomical equipment placement. Pose1 upright relaxed guard arms low; pose2 chest and chin lift proudly, both elbows flex and empty fists rise to ribs; pose3 both clenched fists lift beside shoulders, elbows spread confidently, NO hands above crown. This is a restrained victorious salute, not an attack. Both soles remain planted on a common local ground line, same body scale, all poses whole head-to-toes with40px transparent gutters, no overlapping rows. Preserve angular bronze pitted crested mask, black dreadlocks/gold bands, ochre spotted skin and black mesh, dark steel layered shoulders/thighs, silver gauntlets/knees/shins, bronze hip disc, leather loincloth, bare clawed feet, LEFT shoulder cannon. BOTH hands EMPTY, wrist blades RETRACTED into anatomicalRIGHT gauntlet throughout all6poses, no protruding blades, never swap armor sides. Coherent closed fists with a visible thumb folded over fingers, only2arms2legs. Maintain the same detailed illustrated bitmap game style as supplied, not photorealism. Reference background MUST NOT be retained: true transparent alpha all around figures, no scenery, ground, shadows, text, labels, checkerboard or borders. Full bodies, generous spacing, distinct articulated motion.",
+      "reference": "public/game/sprites/v44/user-hunters/12136078fe2a5ba66cf19f90f31b58423d3c0eb5b309f1b12c400fa188d2d66d.png",
+      "referenceRole": "identity and costume reference; inspected before built-in generation",
+      "source": "exec-310b00cd-31d7-4e20-9cdb-c46335daffda.png",
+      "transparentBackgroundRequested": true,
+      "status": "integrated-approved-crops-only",
+      "provenance": "docs/art/v52/city-hunter-round-presentation-provenance.json",
+      "usedDistinctDrawings": 4,
+      "pixelEdits": false
+    },
+    {
+      "id": "scar-victory-v52",
+      "prompt": "Use case: stylized-concept. Transparent sprite atlas of the EXACT masked SCAR armored costume in the supplied reference, for a 2D fighting-game VICTORY. SIX isolated complete full-body drawings, THREE equal columns × TWO equal rows on1536x1024landscape. Top row3successive poses facingRIGHT, bottom row3matching nativeLEFT views naturally redrawn with anatomical equipment sides preserved. Pose1 upright guard arms lowered. Pose2 chest straightens and head raises slightly, empty fists rise beside ribs. Pose3 both clenched fists beside shoulders and elbows spread proudly, no hands above helmet. Both armored soles stay planted same local baseline, same body scale and costume through all6drawings. Preserve engraved angular silver mask with forehead scar mark, black dreads with red/brass cuffs, yellow spotted skin/net, ornate layered silver chest/rib/shoulder armor and narrow vertical abdominal plates, pointed layered loin guard, silver segmented shin/knee armor and claw-toe shoes, skull necklace and hip disc, cannon on anatomicalLEFT shoulder. Hands EMPTY, blades mechanically RETRACTED in anatomicalRIGHT gauntlet during all6ceremonial poses; no projecting blades or phantom handheld item. Coherent2arms2legs, clenched hands with fingers and thumbs correctly attached and distinct from gauntlets. Maintain detailed illustrated bitmap style exactly from reference. Entire bodies with40px transparent margin around heads/elbows/toes, broad separation of rows; never shrink one pose to fit. True transparent alpha, do NOT keep dark reference background, no scenery/shadows/ground/text/labels/checkerboard/borders. Poses must be articulated changes, not duplicate offsets.",
+      "reference": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "referenceRole": "identity and costume reference; inspected before built-in generation",
+      "source": "exec-dd8cf00b-f8fd-4d12-8912-c15285ceb87a.png",
+      "transparentBackgroundRequested": true,
+      "status": "integrated-approved-crops-only",
+      "provenance": "docs/art/v52/scar-round-presentation-provenance.json",
+      "usedDistinctDrawings": 4,
+      "pixelEdits": false
+    },
+    {
+      "id": "city-defeat-v52",
+      "prompt": "Use case: stylized-concept. Exact masked CITY HUNTER appearance from the reference, create a NON-GRAPHIC round-defeat animation sprite sheet for a 2D fighting game. SIX complete isolated drawings in a strict THREE columns by TWO rows on1536x1024landscape, real transparent alpha. Top row3successive poses facingRIGHT; bottom row3corresponding independently drawn nativeLEFT views, preserving anatomy and armor sides. Pose1 standing exhausted, shoulders slump and knees bend slightly. Pose2 lowers onto one knee, other foot still planted, empty hands lowering naturally. Pose3 kneels exhausted with head bowed, one EMPTY palm firmly braced on ground beside the forward foot and the other hand resting on thigh. This is recoverable defeat without wounds/blood/death. Preserve bronze pitted angular crested mask on face, black dreads with gold bands, ochre spotted skin and net, dark steel layered shoulders/thighs, silver gauntlets/knees/shins, bronze hipdisc, brown leather loincloth, bare clawed feet and anatomicalLEFT shoulder cannon. BOTH hands empty; wristblades fully retracted into anatomicalRIGHT gauntlet throughout. Each hand5coherent digits, palm separate from gauntlet, no fused hand/foot, no extra limb. Maintain constant limb lengths and body scale: standing character about380px tall inside its512px-high cell; kneeling bodies naturally SHORTER, do not enlarge them. All feet/knees/palm share the cell floor line around localy450. Each complete body fits with30–50px clear alpha margin, rows MUST NOTtouch. Detailed illustrated bitmap style matching source. Ignore dark reference background: no backdrop/ground/shadows/text/borders/labels/checkerboard. Full limbs, intact silhouette, visibly different skeletal poses.",
+      "reference": "public/game/sprites/v44/user-hunters/12136078fe2a5ba66cf19f90f31b58423d3c0eb5b309f1b12c400fa188d2d66d.png",
+      "referenceRole": "identity and costume reference; inspected before built-in generation",
+      "source": "exec-da36beb8-d558-4afe-95cc-6854d1abc6d0.png",
+      "transparentBackgroundRequested": true,
+      "status": "integrated-approved-crops-only",
+      "provenance": "docs/art/v52/city-hunter-round-presentation-provenance.json",
+      "usedDistinctDrawings": 4,
+      "pixelEdits": false
+    },
+    {
+      "id": "scar-defeat-v52",
+      "prompt": "Use case: stylized-concept. Exact masked SCAR armored appearance from the reference, create a NON-GRAPHIC round-defeat animation sprite sheet for a 2D fighting game. SIX separate intact full-body drawings in THREE equal columns by TWO equal rows on1536x1024landscape, genuine transparent alpha. Top row3successive poses facesRIGHT; bottomrow equivalent3nativeLEFT poses naturally redrawn with anatomical equipment sides maintained, never a software flip. Pose1 upright but exhausted, shoulders lowered and knees slightly bent. Pose2 kneeling on one knee with the other armored foot planted, empty hands lowering. Pose3 head bowed, one empty palm braced on ground beside forward foot, other hand on thigh in exhausted kneel. Recoverable loss, no blood/wounds/death. Preserve silver angular engraved bio-mask with scarforeheadmark, black dreadlocks with red/brass cuffs, yellow spotted skin/net, massive overlapping ribbed silver chest/shoulder armor, vertical ornate abdominal strip, long pointed layered silver loinplates, segmented shin/knee armor and armored claw-toe shoes, skullnecklace, hipdisc, cannon on anatomicalLEFT shoulder. BOTH hands empty, wristblades fully RETRACTED into anatomicalRIGHT gauntlet in ALL6frames. Five coherent fingers per hand, wrists attached naturally, no fused hand/shoe/gauntlet, exactly2arms2legs. Constant limb lengths/body scale: upright character about380px tall inside512px-highcell, kneeling figures naturally shorter rather than enlarged. Floor baseline localy450, knee/palm/foot contacts aligned. 30–50px true transparent margins around complete figures, no overlapping rows. Same illustrated game bitmap style as source; ignore its background entirely. No scene/ground/shadows/text/borders/checkerboard, no cutoff extremities. Distinct articulated pose changes.",
+      "reference": "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+      "referenceRole": "identity and costume reference; inspected before built-in generation",
+      "source": "exec-088f9078-8046-4999-8b12-7e5270f19d9f.png",
+      "transparentBackgroundRequested": true,
+      "status": "integrated-approved-crops-only",
+      "provenance": "docs/art/v52/scar-round-presentation-provenance.json",
+      "usedDistinctDrawings": 4,
+      "pixelEdits": false
+    },
+    {
+      "id": "grazer-native-v52",
+      "prompt": "Use case: stylized-concept. Asset type: transparent native-direction creature animation sprite atlas for a 2D side-scrolling game. The supplied small atlas is only an IDENTITY, COLOR and STYLE reference for the SAME original basalt ram grazer: bulky quadruped of dark charcoal volcanic rock, orange thin fissure lines, two heavy curled ram horns, four sturdy cloven-hoof legs, short tail. Make a NEW clean larger atlas with EIGHT COMPLETE isolated figures in FOUR equal columns × TWO equal rows, landscape2048x1024. Top row all FACE RIGHT. Bottom row all FACE LEFT, naturally redrawn not flipped to invent handedness. Four successive functional poses each direction: column1 calm idle all four hooves planted; column2 telegraphed warning, head/horns lowered and front legs bent while hind legs brace; column3 controlled forward charge stride A, forelegs reaching forward and hindlegs pushing off; column4 charge stride B, forelegs under chest and hindlegs swinging forward. Preserve same individual horn shapes, horns anchored to skull, stout proportions, short tail, stone plates and warm fissures in EVERY frame. Exactly four consistent legs, no extra feet, no detached horns, no changing species. Keep recognizable full silhouette and constant body scale with50px transparent gutters and floor baseline within each row. Head, horns, every hoof and tail fully INSIDE each cell. No injury, blood, wounds or dead poses; this is a territorial animal whose charge a young trainee can dodge, not a monster boss. Detailed readable hand-painted pixel-game bitmap style matching source, no text, UI, borders, numbers, scenery, effects, dust or ground shadows. Real transparent alpha, no opaque background and no checkerboard. Do not copy the source's injured or dead poses.",
+      "reference": "public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png",
+      "referenceRole": "identity and costume reference; inspected before built-in generation",
+      "source": "exec-f4f4568f-68e9-4de4-9574-70048506a352.png",
+      "transparentBackgroundRequested": true,
+      "status": "integrated-eight-measured-native-crops",
+      "provenance": "docs/art/v52/youth-grazer-provenance.json",
+      "usedDistinctDrawings": 8,
+      "pixelEdits": false
+    },
+    {
+      "id": "scar-neutral-v52",
+      "prompt": "Use case: stylized-concept. Create exactly TWO isolated full-body neutral standing game sprites of this exact masked SCAR, not a multirow atlas. Image1 is the definitive supplied costume reference. Image2 shows the approved detailed bitmap style and scale/proportions to match. ONE SINGLE HORIZONTAL ROW with TWO wide equal cells, landscape1536x768. LEFT CELL: neutral relaxed standing Scar facesRIGHT. RIGHT CELL: same neutral relaxed standing Scar facesLEFT, independently drawn native anatomical view, not a mirror. Both arms lowered naturally, hands empty and relaxed, five coherent fingers attached correctly, blades completely RETRACTED into anatomicalRIGHT gauntlet. Both soles grounded, whole toes visible. Preserve exactly silver angular mask with forehead scar glyph, dreads black with red/brasscuffs, skullnecklace, yellow spotted skin/net, large silver ribbed chest/shoulders, narrow ornate abdominal strip, layered pointed loinarmor, segmented silver knee/shinplates and armored clawtoeshoes, hipdisc, anatomicalLEFT shouldercannon. Match the body proportions/limb lengths/style of image2, keep the two figures same scale. These are neutral opening frames to reuse in existing intro/victory/defeat sequences. Critical layout: 100px EMPTY transparent margin at top/bottom and every outer edge and at least150px CLEAR transparent space BETWEEN the two complete figures. Absolutely NO second row and no other pose or object. Genuine transparent alpha; disregard reference backgrounds completely. No ground/shadows/scenery/text/labels/checkerboard/borders. Do not crop extremities. Whole isolated silhouettes, restrained neutral pose, no salute, no raised fist, no extended wrist blade.",
+      "references": [
+        "public/game/sprites/v44/user-hunters/6a0a69930df1068ab624e107482089d104e48947d4d526f7df3fc4a6ceb0fddd.png",
+        "exec-290119fb-ca1e-4d0c-b15d-dc13a928650a.png"
+      ],
+      "status": "refused-no-output",
+      "reason": "image service output moderation: other",
+      "requestId": "560ecfb3-3824-4124-9c9e-a6569c95ee12",
+      "disposition": "No retry or paid API fallback. Reuse approved same-costume guard poses from already generated sheets; no phantom asset."
+    }
+  ],
+  "acceptedRuntimeSummary": {
+    "physicalPng": 7,
+    "pitPresentationClips": 12,
+    "pitDistinctDrawings": 26,
+    "grazerDistinctDrawings": 8,
+    "sourceBytesUnchanged": true,
+    "completeMovesets": false
+  }
+}

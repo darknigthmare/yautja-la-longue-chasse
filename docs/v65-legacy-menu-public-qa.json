@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "checks": [
+    "Continue, New game and Load remain enabled with the full old archive and absent optional headStyleId.",
+    "The old auto-checkpoint is readable; cancelling load and leaving New game preserve every stored byte.",
+    "Continue resumes the actually played nursery result, preserves ownership and greetings, and applies the default reference head."
+  ],
+  "errors": [],
+  "archive": "work/v47/nursery-scene-browser-qa/played-campaign-storage.json",
+  "archiveSha256": "9010ddb54735c9def13d4e8fc35ec28269584df7b4ed6b75c7b84e3f1dffec4f",
+  "scope": "Isolated QA storage only. Full old V47 campaign plus ship, checkpoint and backup; no real user saves and no publication action.",
+  "release": "V65",
+  "deployment": {
+    "id": "dpl_AEiaWTqBjGRZ9iZjjPYp2snPEKfH",
+    "commit": "73c0f6e8fe5e0a1301c6aa9becb5a67f0fb34aa9",
+    "confirmation": "Release owner confirmed Vercel READY before these fresh browser recipes."
+  },
+  "reviewedAt": "2026-10-01T02:01:07.757Z",
+  "rawEvidence": "I:/CodexTemp/yautja-v64-20261001/public-v65/legacy-menu/report.json",
+  "visualReview": {
+    "status": "REVIEWED",
+    "captures": [
+      {
+        "path": "I:/CodexTemp/yautja-v64-20261001/public-v65/legacy-menu/legacy-menu.jpg",
+        "sha256": "4cc91583593f99b62374a07cacde2522d73ae4709ec1d4a71c717a255fe0f41a"
+      },
+      {
+        "path": "I:/CodexTemp/yautja-v64-20261001/public-v65/legacy-menu/legacy-resumed.jpg",
+        "sha256": "63acab963e093aa3f2df9592ce3d1d62c09b3283f80c0229aba71c8c4ef616ca"
+      }
+    ],
+    "observations": [
+      "Continue, New game and Load remain available with the old complete V47 archive.",
+      "The preserved nursery result resumes into Homeworld with youth objective and no invented greetings.",
+      "Menu artwork, active Continue button and resumed Homeworld HUD are visible and unobscured."
+    ],
+    "limitations": [
+      "An isolated historical QA archive was used; no real user save was inspected or changed."
+    ]
+  },
+  "isolation": {
+    "freshBrowser": true,
+    "realUserSavesAccessed": false,
+    "runtimeModified": false,
+    "localEvidenceModified": false
+  }
+}

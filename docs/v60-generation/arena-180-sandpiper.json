@@ -1,0 +1,565 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-180-sandpiper",
+  "proposalId": "new-sandpiper",
+  "workbookStage": "A49:N49",
+  "sourceUrls": [
+    "https://www.marvel.com/comics/issue/107413/predator_2023_4"
+  ],
+  "loreLimits": [
+    "Intérieur du Sandpiper recomposé pour le combat latéral ; géométrie, console et trappe originales.",
+    "Adulte anonyme d’équipage pour l’ambiance, pas Theta ni captif attribué à un chapitre non vérifié. La présence narrative des captifs du classeur reste conditionnelle et non simulée."
+  ],
+  "assets": [
+    {
+      "id": "life-01",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One compact wall-mounted human spaceship navigationconsole, worn greyangularframe, darktealscreen withplainamberline-map andsixsmallphysicalkeys, no text or letters. Sixnativephasesof navigationalgraph beingredrawn andsmallmechanicalselectorlevermovinggentlybetween twoadjacentpositions. Frameunchanged, no strobing,noflashes, no holographicportal. Clearhumanutilitarianindustrialdesign consistentwithSandpiperinspiredcargo interior. Subtlewarmgrey light. Entireconsolefrontthreequarterface inside360pxbox.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-20509ecb-477c-47ab-9b9f-db67d483b3b1.png",
+      "workspacePath": "work-local/v60/generated/arena-180-sandpiper/life-01.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six navigation-map and selector-lever phases, fixed human industrial housing, no text or flashing warning.",
+      "sha256": "33a067c44ac096031f20d18ce2462252696e4e2a2a186c538a532297a24bef06",
+      "bytes": 2045517,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.5230929056803385,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            64,
+            68,
+            395,
+            394
+          ],
+          "pivot": [
+            194.5,
+            462
+          ],
+          "margins": [
+            64,
+            68,
+            53,
+            50
+          ],
+          "opaquePixelCount": 125249,
+          "contentSha256": "35fc73c9d4386cd7b9fba1eb5f6b73159401448b39b711f4fc3718b77ef560ee"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            65,
+            67,
+            396,
+            395
+          ],
+          "pivot": [
+            196,
+            462
+          ],
+          "margins": [
+            65,
+            67,
+            51,
+            50
+          ],
+          "opaquePixelCount": 125280,
+          "contentSha256": "a0a3caee90698ac527f01e7ba276cee9390bf2180565f028004c0eb66007d633"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            66,
+            68,
+            395,
+            394
+          ],
+          "pivot": [
+            197,
+            462
+          ],
+          "margins": [
+            66,
+            68,
+            51,
+            50
+          ],
+          "opaquePixelCount": 125128,
+          "contentSha256": "45be23bb31f4a84344ff652dfbc621be92752672052812ff2d1e3d392405fb3a"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            63,
+            68,
+            395,
+            394
+          ],
+          "pivot": [
+            193.5,
+            462
+          ],
+          "margins": [
+            63,
+            68,
+            54,
+            50
+          ],
+          "opaquePixelCount": 124853,
+          "contentSha256": "579338045ac0dd7682666537a6af48ade4a357c97d30ded613510296a736de5d"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            65,
+            69,
+            396,
+            393
+          ],
+          "pivot": [
+            195.5,
+            462
+          ],
+          "margins": [
+            65,
+            69,
+            51,
+            50
+          ],
+          "opaquePixelCount": 124850,
+          "contentSha256": "878ca5ca1237667e77447d1262170408a5c2142689cd2e28ca9dc00b5741423e"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            66,
+            68,
+            395,
+            394
+          ],
+          "pivot": [
+            197,
+            462
+          ],
+          "margins": [
+            66,
+            68,
+            51,
+            50
+          ],
+          "opaquePixelCount": 124750,
+          "contentSha256": "49c811cbdcf9600cdf301b340568c965137bab21d4c79097e480535c3257459a"
+        }
+      ]
+    },
+    {
+      "id": "life-02",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One anonymous ADULT human crewworker in fadedoliveutilitycoveralls withrolledsleeves, smalltanbeltpouchandboots, no weapons andnotThetaorcomicnamedcharacter. Not identifiablecaptive; neutraldistantcrewattendant adaptstoanychapter. Fullbodythreequarterleft. Sixposes: waitinghandsatwaist, lookup towardindicator, liftlefthandtoradioearpiece, headlistens, lowerhand, shiftweighttowardsidle. Coherenthandsandfeet, exactlytwoarms/legs. Softwarmcabinlight, darktealshadows.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-2c51cc83-6c19-4264-a0d3-df68bae79571.png",
+      "workspacePath": "work-local/v60/generated/arena-180-sandpiper/life-02.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six calm adult crew gestures with consistent face, utility clothing and intact hands. Anonymous crew, not chapter-specific captive or Theta.",
+      "sha256": "d604a471a7e8267ad928dcc01cac792ea3c4e90a8f98781a0e8d15473026b3bc",
+      "bytes": 1778252,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7965450286865234,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            10,
+            204,
+            490
+          ],
+          "pivot": [
+            253,
+            500
+          ],
+          "margins": [
+            163,
+            10,
+            145,
+            12
+          ],
+          "opaquePixelCount": 53714,
+          "contentSha256": "efc798e6f68e9301bff9506a710d32dce3977647da7b94029a040a817a291be8"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            157,
+            14,
+            204,
+            486
+          ],
+          "pivot": [
+            248.5,
+            500
+          ],
+          "margins": [
+            157,
+            14,
+            151,
+            12
+          ],
+          "opaquePixelCount": 53670,
+          "contentSha256": "00e18ba9e77fee17d704fdac6684a17c19673505c5e489720fcef7d3612fcfa0"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            154,
+            12,
+            181,
+            489
+          ],
+          "pivot": [
+            251,
+            501
+          ],
+          "margins": [
+            154,
+            12,
+            177,
+            11
+          ],
+          "opaquePixelCount": 51959,
+          "contentSha256": "2fbe99a4d3ecad76bbf8bdf08c821a2d04033971a189b2f189082b22ce40a02c"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            11,
+            182,
+            489
+          ],
+          "pivot": [
+            259,
+            500
+          ],
+          "margins": [
+            163,
+            11,
+            167,
+            12
+          ],
+          "opaquePixelCount": 52683,
+          "contentSha256": "0b1df57e536270f8c536f8e63163ed5893bcab76a4adcb0c00565ca257f4b506"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            161,
+            10,
+            190,
+            490
+          ],
+          "pivot": [
+            251.5,
+            500
+          ],
+          "margins": [
+            161,
+            10,
+            161,
+            12
+          ],
+          "opaquePixelCount": 54191,
+          "contentSha256": "d91ea52b9f30a9507fd9f899010dd6fb724f5d00b7103278562245ecf6dbfaf1"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            175,
+            10,
+            173,
+            491
+          ],
+          "pivot": [
+            247,
+            501
+          ],
+          "margins": [
+            175,
+            10,
+            164,
+            11
+          ],
+          "opaquePixelCount": 53790,
+          "contentSha256": "5c85f1f57e64f5d39aebcadbfdd630f7a4e7ced9851b12637ccd33ee46176017"
+        }
+      ]
+    },
+    {
+      "id": "life-03",
+      "prompt": "Use case: stylized-concept. Native transparent PNG SPRITE ATLAS for cinematic painterly 2D fighting-game BACKGROUND life. Exactly SIX distinct native drawings in a precise THREE COLUMNS by TWO ROWS equal-cell grid, full canvas1536x1024 and eachcell512x512. Put the COMPLETE subject inside the central360x360 area of EACH cell, with at least70px empty transparent gutter on ALL sides. Subject centered x256 in each cell, attachment baseline y430. Stable scale, camera, anatomy, costume/materials across six drawings. TRUE ALPHA everywhere outside subject. No floor, scenery, cast shadow, gradient, grid, labels, text or background. Six poses follow reading order. Show a gentle coherent small animation, not an attack or fighting character. One complete compact human spaceship cargo hatch MODULE, weatheredgreyrectangularframe withtwo verticalsteeldoorpanelsandone shortthickblackcablesuspendedfromtoprim onleft. Wholemodule width280height340, generousalphagutter. Sixnativeframes: doorsclosed, open1/4, open1/2, open1/4, nearlyclosed, closedwithslightdifferentcablecurve. Door openingdarkinsidebutoutsideframealpha. Mechanicallyconsistentpanels slidehorizontallyinsidefixedframe, notthroughwalls, cablegentlyswayswithinmodule. No people,text or lightsflash.",
+      "transparentRequested": true,
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-0ab67523-7cc4-41b6-ad2c-ba1f020ec24a.png",
+      "workspacePath": "work-local/v60/generated/arena-180-sandpiper/life-03.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Six opening and closing cargo-hatch drawings; panels remain inside a stable frame, cable is separate from the backdrop and has controlled swing.",
+      "sha256": "6142e041393debe62742aa7543d22d9bed000aaaae9245c8d434ff6b1edff67a",
+      "bytes": 2152030,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.48947397867838544,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            100,
+            74,
+            362,
+            384
+          ],
+          "pivot": [
+            280,
+            458
+          ],
+          "margins": [
+            100,
+            74,
+            50,
+            54
+          ],
+          "opaquePixelCount": 133848,
+          "contentSha256": "92b4d3f6fa2c680721e7e9247119b2cbc63e70629540572454e8c5b12633c0ec"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            77,
+            74,
+            359,
+            385
+          ],
+          "pivot": [
+            256.5,
+            459
+          ],
+          "margins": [
+            77,
+            74,
+            76,
+            53
+          ],
+          "opaquePixelCount": 133073,
+          "contentSha256": "f51711120ce5e844ce7491c4f011544dce0b7461b81ca1e0bf799ffcbd6f0a8e"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            74,
+            360,
+            384
+          ],
+          "pivot": [
+            233.5,
+            458
+          ],
+          "margins": [
+            54,
+            74,
+            98,
+            54
+          ],
+          "opaquePixelCount": 133875,
+          "contentSha256": "87706a823f6be5f34c12b4f15dfb9f2f7c8a2d1707c02bb5f3c202fcf8a8af7b"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            100,
+            47,
+            363,
+            383
+          ],
+          "pivot": [
+            280,
+            430
+          ],
+          "margins": [
+            100,
+            47,
+            49,
+            82
+          ],
+          "opaquePixelCount": 134534,
+          "contentSha256": "e4933c3a9e427cce3d4c11557e9e25ac838d2abc14ae047846151df05c3e0da5"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            77,
+            45,
+            359,
+            385
+          ],
+          "pivot": [
+            256.5,
+            430
+          ],
+          "margins": [
+            77,
+            45,
+            76,
+            82
+          ],
+          "opaquePixelCount": 133416,
+          "contentSha256": "ad392dc5cc14b46ed13861ed087a4cebd88e9ef26a850a5b14e968c83693e329"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            47,
+            360,
+            383
+          ],
+          "pivot": [
+            233.5,
+            430
+          ],
+          "margins": [
+            54,
+            47,
+            98,
+            82
+          ],
+          "opaquePixelCount": 134242,
+          "contentSha256": "866fca737be753c45745f3ac1a9d2abe24522a5f6655a676dd47b66c9f8a6f0a"
+        }
+      ]
+    },
+    {
+      "id": "p0-depth",
+      "prompt": "Use case: stylized-concept. Opaque1536x1024 P0 depth backdrop only for a cinematic painterly 2D sideview fighting game. The foreground gameplayfloor willbeaseparatecomponent; lower20percent isdarkquietocclusionband, avoidlargeemptynearbyfloor. Horizontalrearwalkways and convincing eyelevel lateralperspective, notisometric orcentralvanishingcorridor. Layered deep environment, richwornmaterials subduedcontrast incenterforfighters. No text,Hud,logos,actors,flashes oractiveprops bakedintoimage. Setting: human spaceshipSandpiper cargo interior, originallateralrecomposition inspiredbyMarvelPredatorTheta storyline; exactdeckplan unverified. Humanutilityvessel notYautjaorganicship. Wornpalegrey and bluegrey modularmetalwalls, utilitarian overheadconduits, shadowedcargoalcovesleft, distantraisedcrewservicegallery throughglasscenter, rightrearcargodoorsurroundbutemptydarkaperture; doorslabwillbeseparateanimatedprop. Modestwarmcabinlamps,deeptealshadows. No people,cargoanimation,screens orhangingcablesbakedin. Quietleftwallrecessfornavigationdisplay, centercrewgalleryforadultanonymouspassenger, rightdooropeningforseparatehatch. Architectural beams horizontalandsturdy, noJapanese/ritual motifs.",
+      "transparentRequested": false,
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-9f4a1bcf-af25-4cd9-8ed4-9c1f241eee06.png",
+      "workspacePath": "work-local/v60/generated/arena-180-sandpiper/p0-depth.png",
+      "mode": "built-in-imagegen",
+      "status": "visually-accepted",
+      "visualNotes": "Human cargo hall with separate empty hatch, navigation recess and raised crew gallery. Original Sandpiper inspired layout, not a verified deck plan.",
+      "sha256": "cc04b75cdf09d8b124b1219d98de620bf33ade656594274c6d159b1862d9489b",
+      "bytes": 1747309,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "transparentFraction": 0,
+      "copyByteIdentical": true
+    }
+  ],
+  "sourceEvidence": "Official Marvel issue synopsis identifies the Sandpiper and a struggle for control. It does not attest this interior layout.",
+  "sourceReviewDate": "2026-09-30"
+}
