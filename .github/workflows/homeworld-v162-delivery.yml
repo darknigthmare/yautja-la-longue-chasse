@@ -1,70 +1,28 @@
-name: Homeworld V162 independent prototype delivery
+name: Homeworld V162 native prototype integrity
 on:
-  push:
-    branches: ['codex/homeworld-v158-urban-props-intake-20261102']
-    paths: ['.github/workflows/homeworld-v162-delivery.yml']
+  pull_request:
+    paths:
+      - 'production/homeworld-v162/**'
+      - 'production/homeworld-v161/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V161.xlsx'
+      - '.github/workflows/homeworld-v162-delivery.yml'
+  workflow_dispatch:
 permissions:
-  contents: write
-concurrency:
-  group: homeworld-pr99-v162-delivery
-  cancel-in-progress: false
+  contents: read
 jobs:
-  deliver:
-    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/codex/homeworld-v158-urban-props-intake-20261102'
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
           fetch-depth: 1
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /production/homeworld-v162/
             /production/homeworld-v161/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V161.xlsx
-            /.gitattributes
-            /.gitignore
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
-      - name: Import pinned workbook and QA metadata only
-        run: |
-          python - <<'PY'
-          from urllib.request import urlopen
-          from pathlib import Path,PurePosixPath
-          import io,hashlib,zipfile,stat
-          u='https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/59b156c1-4069-41a0-8267-8ea07de7d33f.zip'
-          with urlopen(u,timeout=60) as r:b=r.read(67123)
-          assert len(b)==67122
-          assert hashlib.sha256(b).hexdigest()=='b72577885c7e06cd6ffac8ceb0f4b1e3c7389796e7352eed7f90245320f57f8b'
-          allowed={'production/homeworld-v162/'+s for s in ('rejected-outputs.json','verification-report.json','index.html','YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx','tools/verify.py')}
-          root=Path.cwd()
-          with zipfile.ZipFile(io.BytesIO(b)) as z:
-            assert len(z.infolist())==5 and set(z.namelist())==allowed
-            assert sum(i.file_size for i in z.infolist())<1024*1024
-            for i in z.infolist():
-              p=PurePosixPath(i.filename)
-              assert not p.is_absolute() and '..' not in p.parts and '\\' not in i.filename
-              assert not stat.S_ISLNK(i.external_attr>>16)
-              d=root/i.filename;assert d.resolve().is_relative_to(root)
-              d.parent.mkdir(parents=True,exist_ok=True);d.write_bytes(z.read(i))
-          PY
-      - name: Verify seven native PNGs, workbook and preserved 354 targets
-        shell: bash
-        run: |
-          set -euo pipefail
-          python production/homeworld-v162/tools/verify.py | tee production/homeworld-v162/verification-report.json
-      - name: Commit tracking only to the existing PR branch
-        env:
-          EXPECTED_HEAD: ${{ github.sha }}
-        run: |
-          set -eu
-          BRANCH='codex/homeworld-v158-urban-props-intake-20261102'
-          test "$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)" = "$EXPECTED_HEAD"
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- production/homeworld-v162
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'docs(homeworld): V162 workbook with seven native prototypes and unchanged source requirements'
-          git push origin "HEAD:refs/heads/$BRANCH"
+      - name: Verify seven source PNGs, eleven workbook sheets and immutable inherited targets
+        run: python production/homeworld-v162/tools/verify.py
